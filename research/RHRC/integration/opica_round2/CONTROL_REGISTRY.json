@@ -1,0 +1,857 @@
+{
+  "schema": "OPICA2_CONTROLS_V3",
+  "inherited_controls": [
+    {
+      "id": "OPICA2_F01",
+      "title": "Raw small-dictionary and omitted squarefree obstruction",
+      "authority": "EXACT_PAPER_CONTROL",
+      "destination": "S01; P13-P15",
+      "scope": "Actual source; missing squarefree 2047 forces the stated lower bound.",
+      "source_refs": [
+        "SRC_ORIGINAL_RESEARCH"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F02",
+      "title": "Fixed-filter finite Euler products diverge",
+      "authority": "INHERITED_DERIVED_FAILURE",
+      "destination": "S04; S16; T_B",
+      "scope": "For actual primes M_P=product(I-p^(-1/2)D_logp), y_P=M_P(Bw) is locally Bv before log(next prime), but for each fixed 0<=epsilon<1/2 its weighted L2 norm grows at least exp(c_epsilon P^(1/2-epsilon)/log P) for all sufficiently large P. Requires the ordinary-PNT argument and a fixed transform interval. Does not refute optimized coefficients.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F03",
+      "title": "No-adjoint update is unstable",
+      "authority": "INHERITED_NUMERICAL_ENCLOSURE_NOT_RERUN",
+      "destination": "T_B",
+      "scope": "Actual A at epsilon=0 and 1/100, frequency12: Re A< -4/100 and |1-A|^2>109/100. An operator control; apply to a target only with nonzero boundary content on the unstable interval.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F04",
+      "title": "Landweber has a possible stationary residual",
+      "authority": "INHERITED_OPERATOR_DERIVATION",
+      "destination": "T_B",
+      "scope": "With f_0=0,e_n=y_epsilon-T_epsilon*f_n, correct f_(n+1)=f_n+T_epsilon^*e_n gives ||e_(n+1)||^2<=||e_n||^2-(2-(605/621)^2)||T_epsilon^*e_n||^2 and e_n->projection_(ker(T_epsilon^*))(y_epsilon). Projection zero or divergent-sum progress is OPEN. Old target -RJ*zeta_prime differs from today RJ.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F05",
+      "title": "Positive native completion not infinitely divisible",
+      "authority": "INHERITED_DERIVED_FAILURE_WITH_NORMALIZATION_ADAPTER",
+      "destination": "S12; T_B",
+      "scope": "For current A=R*zeta(z+1/2), the inverse Laplace measure of -A_prime/A is prime measure plus (exp(-t/2)+exp(-3t/2)-exp(t/2))dt, negative on (log2,log3). Every fixed probability tilt sigma>-1/2 lacks arbitrarily high positive convolution roots. Current 3/2 denominator is explicit. Not an RH or zero claim.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F06",
+      "title": "CT1 normalized limit is not order zero",
+      "authority": "EXISTING_NATIVE_THEOREM_AND_S14_PAPER_CONSEQUENCE",
+      "destination": "S14; optional C2/C3",
+      "scope": "Preserve all Schwartz tests and nonzero delta derivatives; no scalar measure repair.",
+      "source_refs": [
+        "SRC_CT1_NATIVE"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F07",
+      "title": "C3 epsilon4 counterexample",
+      "authority": "INHERITED_DERIVED_COUNTEREXAMPLE",
+      "destination": "optional C3",
+      "scope": "Retain two atoms and explicit regularizer from POST_GREEN_RESEARCH; original local-window inequality fails. Correct epsilon or window before acceptance.",
+      "source_refs": [
+        "SRC_POST_GREEN_CORRECTION"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F08",
+      "title": "Coupled Gram collisions",
+      "authority": "EXISTING_NATIVE_CONTROL",
+      "destination": "P17/P18; S17",
+      "scope": "Individual nonzero diagonal margins do not control a coupled Gram matrix at collision. Actual formal control: det(G_h)=h^2/[4*(1-h^2)]->0 while b_h^*G_h^(-1)b_h=(2-h^2)/(1-h^2)->2. Thus singularity/ill-conditioning alone does not force the source-coupled cost to diverge. Keep actual multiplicity and independent basis.",
+      "source_refs": [
+        "SRC_ORIGINAL_CONTROLS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F09",
+      "title": "Norm-first versus squared-energy error",
+      "authority": "EXISTING_NATIVE_CONTROL",
+      "destination": "S11; T_A",
+      "scope": "Cheap Type I norm may coexist with positive-rate raw squared-energy error; use actual sharp norm comparison and complete low-term correction.",
+      "source_refs": [
+        "SRC_ORIGINAL_CONTROLS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F10",
+      "title": "History recovery cost",
+      "authority": "EXISTING_NATIVE_CONTROL",
+      "destination": "S08; S17",
+      "scope": "Near-dependent observation histories can require cost proportional to 1/|epsilon|. Kernel compatibility without bounded recovery is insufficient.",
+      "source_refs": [
+        "SRC_ORIGINAL_CONTROLS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F11",
+      "title": "Positive forced Gram with nonreal spectral parameter",
+      "authority": "EXISTING_NATIVE_CONTROL",
+      "destination": "S09; boundary-amplitude lane",
+      "scope": "Positive sampling/Stieltjes Gram does not force real kappa or exclude nonreal forced resolvents.",
+      "source_refs": [
+        "SRC_ORIGINAL_CONTROLS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F12",
+      "title": "Duplicate profile and real-kappa degeneracy",
+      "authority": "EXISTING_NATIVE_AND_ELEMENTARY_CONTROLS",
+      "destination": "S09; S17",
+      "scope": "Deduplicate reflection nodes and prove actual basis independence. On the critical line the imaginary direction can vanish.",
+      "source_refs": [
+        "SRC_FINITE_SPAN_NATIVE"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F13",
+      "title": "Missing history, disconnected continuation and zero radius",
+      "authority": "EXISTING_NATIVE_CONTROL_SCOPE",
+      "destination": "S04; S08; S11",
+      "scope": "Keep every affine history, actual common connected continuation domain, nonzero radius, p*m-1 order, factorial coefficient and source/residue identity. Transform algebra alone does not bound physical observed noise.",
+      "source_refs": [
+        "SRC_NATIVE_WORDS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F14",
+      "title": "Boundary-error equality is sharp",
+      "authority": "EXISTING_NATIVE_CONTROL_SCOPE",
+      "destination": "S08; S11",
+      "scope": "Strict dual-witness margin must exceed the entire error budget; equality or zero radius cannot be silently certified.",
+      "source_refs": [
+        "SRC_NATIVE_WORDS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F15",
+      "title": "Actual square lattice repair and gap filling",
+      "authority": "EXISTING_NATIVE_THEOREM",
+      "destination": "S09; optional C4",
+      "scope": "Reuse arbitrary locally finite complex lattice measure with tempered compact-pairing extension. Projection to a selfdual component may fill the sharp gap.",
+      "source_refs": [
+        "SRC_SQUARE_DEFECT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F16",
+      "title": "Integer-supported delta derivatives",
+      "authority": "EXISTING_NATIVE_CONTROL",
+      "destination": "S14; optional C2",
+      "scope": "Integer lattice support alone does not imply Fourier self-duality; derivative distributions are not order-zero inputs.",
+      "source_refs": [
+        "SRC_CT1_NATIVE"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F17",
+      "title": "Equal-power twins and full-line versus causal inverse",
+      "authority": "EXISTING_S12_SYNTHETIC_CONTROL",
+      "destination": "S12; T_B",
+      "scope": "Positive causal equal-power comparison has its exact synthetic status; no phase-blind or full-line-to-causal inference.",
+      "source_refs": [
+        "SRC_DEEP_SEARCH"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F18",
+      "title": "Native ordered minor",
+      "authority": "S13_DERIVED_EXACT_ARITHMETIC_REPLAYED",
+      "destination": "S13; T_D",
+      "scope": "Literal prime-plus-Archimedean gain is not TP2 on the specified rectangles; no inference about neutral compressed resolvent or signed Weil negativity.",
+      "source_refs": [
+        "SRC_NATIVE_TP2"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F19",
+      "title": "Native metric-compatible transport failure",
+      "authority": "INHERITED_DERIVED_NATIVE_FAILURE",
+      "destination": "T_D",
+      "scope": "Trace derivative is negative in the actual small-aperture expansion; the proposed global PSD-remainder transport is falsified.",
+      "source_refs": [
+        "SRC_PATH_D_DEEP"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F20",
+      "title": "Modified-prime matched system",
+      "authority": "EXISTING_RESEARCH_CONTROL",
+      "destination": "T_C; T_D; WP5",
+      "scope": "Blocks geometry-only exclusion; actual-prime arithmetic remains a distinct possible input.",
+      "source_refs": [
+        "SRC_HISTORY_AUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F21",
+      "title": "Unrestricted signed-ray failure",
+      "authority": "EXISTING_RESEARCH_CONTROL",
+      "destination": "T_A; T_C; WP6",
+      "scope": "Unrestricted-ray falsification does not prove the admissible complete signed upper.",
+      "source_refs": [
+        "SRC_REPO_REAUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F22",
+      "title": "One-test repair versus full self-duality",
+      "authority": "INHERITED_DERIVED_CONTROL",
+      "destination": "optional C3/C4",
+      "scope": "A lattice atom can cancel one scalar test; fixed full distributional self-duality is a different requirement.",
+      "source_refs": [
+        "SRC_POST_GREEN_CORRECTION"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F23",
+      "title": "Rescaling, collision and growing-span cost",
+      "authority": "EXISTING_LIMIT_AND_OPEN_UNIFORMITY",
+      "destination": "S17; optional C3",
+      "scope": "Fixed-basis norm equivalence does not control support, recovery norm, coalescing-node constants or growing dimension.",
+      "source_refs": [
+        "SRC_POSITIVE_TEST_PAPER"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F24",
+      "title": "Variable filter and separate output tail",
+      "authority": "EXISTING_S08_CONTROL",
+      "destination": "S08; P23",
+      "scope": "Compare residual with transported witness; charge coefficient growth, lag error and target output tail separately.",
+      "source_refs": [
+        "SRC_REVISED_SPEC"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F25",
+      "title": "Schwartz convergence without common variation",
+      "authority": "EXISTING_NATIVE_TOPOLOGY_COUNTERCONTROL",
+      "destination": "S14; optional C2/C3",
+      "scope": "Synthetic eta_n=n*(delta_(1/n)+delta_(-1/n)-2*delta_0) tends to zero on Schwartz tests but has a nonvanishing pairing with a compactly supported continuous function equal to |x| near zero. The already proved C_c upgrade needs common local variation. This is not an actual zero-jet family.",
+      "source_refs": [
+        "SRC_CT1_NATIVE"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    }
+  ],
+  "control_source": "paper/ROUND2_V2_1.json",
+  "historical_execution_not_fresh_by_default": true,
+  "runtime_mutations": [
+    {
+      "id": "R2M01",
+      "mutation": "wrong source Q squared",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M02",
+      "mutation": "missing causal delay",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M03",
+      "mutation": "removable A(1/2) set to zero",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M04",
+      "mutation": "zero dictionary index",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M05",
+      "mutation": "v-shift Gram substituted for w-shift Gram",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M06",
+      "mutation": "complex transpose without conjugation",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M07",
+      "mutation": "jet factorial omitted",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M08",
+      "mutation": "repeated nodes treated independent",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M09",
+      "mutation": "integer truncation claimed L2 convergent",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M10",
+      "mutation": "omitted target tail",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M11",
+      "mutation": "lag cutoff used as output cutoff",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M12",
+      "mutation": "coefficient change with stale source budget",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M13",
+      "mutation": "noncausal input leakage omitted",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M14",
+      "mutation": "varying filter norm used without witness ratio",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M15",
+      "mutation": "NaN or Infinity",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M16",
+      "mutation": "negative error budget",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M17",
+      "mutation": "duplicate JSON key",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M18",
+      "mutation": "boolean used as integer",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M19",
+      "mutation": "fraction with zero denominator",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M20",
+      "mutation": "inward-rounded interval endpoint",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M21",
+      "mutation": "forged source/tree hash",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M22",
+      "mutation": "missing formal lane",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M23",
+      "mutation": "truncated compiler sentinel",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M24",
+      "mutation": "private axiom closure omitted",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M25",
+      "mutation": "copied signature masquerading as independent consumer",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M26",
+      "mutation": "source-only graph claim promoted",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M27",
+      "mutation": "unknown ancestor extension version",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M28",
+      "mutation": "old OPEN claim changed",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M29",
+      "mutation": "unauthorized source file",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M30",
+      "mutation": "stale generated products checked only after rewriting",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M31",
+      "mutation": "baseline projection used without current compatibility",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M32",
+      "mutation": "current compatibility used without frozen-contract replay",
+      "expected": "REJECT",
+      "implemented": false
+    }
+  ],
+  "typed_semantic_guards": [
+    {
+      "id": "OPICA2_G01",
+      "title": "S01e local inverse identity",
+      "statement_scope": "For causal nonzero w in L²(0,∞), or locally L² on every tested prefix, an exact finite left support endpoint supports finite-prefix Gram positivity. Full coefficient rigidity additionally requires the stated local target identity. Support alone does not imply finite Gram entries; w(t)=1_(0,1)(t)/t is a counterexample. An arbitrary-target rigidity extension must fail or retain the inverse identity premise.",
+      "expected_scientific_disposition": "REJECT_MISSING_LOCAL_IDENTITY; ACCEPT_NATIVE_P03_P13_ADAPTER",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G02",
+      "title": "S07 actual source-visible critical mode",
+      "statement_scope": "A critical zero alone is insufficient; retain multiplicity and source vanishing order. Unconditional nonrange requires a compiled compatible visibility/counting or bounded-certificate proof.",
+      "expected_scientific_disposition": "CONDITIONAL_HELPER_ONLY_WITHOUT_VISIBILITY; BLOCK_UNCONDITIONAL_S07",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G03",
+      "title": "Angular Fourier 2pi convention",
+      "statement_scope": "The energy is integrated in angular frequency with1/(2pi), and ordinary Laplace jet factorials are unchanged.",
+      "expected_scientific_disposition": "REJECT_INCORRECT_FREQUENCY_SCALING",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G04",
+      "title": "P20 half-line C1",
+      "statement_scope": "Compact good-kernel regularity is one-sided on x>=0. The nonzero linear slope near0 precludes a globally C1 zero extension to negative x.",
+      "expected_scientific_disposition": "REJECT_ZERO_EXTENSION_GLOBAL_C1; ACCEPT_HALF_LINE",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G05",
+      "title": "S15 odd corrector factor2",
+      "statement_scope": "Native centeredIndex(e)=2o; exact moment matrix/denominator scales accordingly. At least one parity negative is not both/preselected parity.",
+      "expected_scientific_disposition": "REJECT_UNSCALED_ODD_DENOMINATOR_OR_PARITY_PROMOTION",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G06",
+      "title": "Conditional antecedent firewall",
+      "statement_scope": "A range/limit/positive-observation/upper/no-exit hypothesis remains an explicit antecedent. Mathematical proof of its consumer does not discharge it.",
+      "expected_scientific_disposition": "ACCEPT_CONDITIONAL_THEOREM; REJECT_TERMINAL_PROMOTION",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G07",
+      "title": "All-pass range and fixed filter",
+      "statement_scope": "I is an isometry, not onto causal L2; strip I2 only on proved common range. No bounded inverseB. A variable filter requires the transported error/margin ratio.",
+      "expected_scientific_disposition": "REJECT_ARBITRARY_INNER_DIVISION_OR_RAW_LIMIT_INFERENCE",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G08",
+      "title": "Finite and monotone data are not a zero limit",
+      "statement_scope": "Finite positive Gram, monotonicity, ill-conditioning or a finite regional certificate cannot establish the terminal asymptotic law.",
+      "expected_scientific_disposition": "NO_GLOBAL_OR_LIMIT_CERTIFICATE_FROM_FINITE_DATA",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G09",
+      "title": "Complete same-source total budget",
+      "statement_scope": "Retain original source, coefficients, histories, phases, masks, domain, direct complement and every source/lag/output/filter error appropriate to the observation.",
+      "expected_scientific_disposition": "REJECT_OMITTED_OR_STALE_BUDGET",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G10",
+      "title": "Optional complete statement activation",
+      "statement_scope": "Optional acceptance requires every full normative clause, genuine proof closure and exact named binding; a summary or stronger-special-case theorem only completes matching clauses.",
+      "expected_scientific_disposition": "DISABLED_UNTIL_ALL_ACTIVATED_CLAUSES_PROVED",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G11",
+      "title": "Exact native construction identity",
+      "statement_scope": "A copied/replaced source or changed rational normalization is not the literal native object. Synthetic examples retain their own domain and do not instantiate zeta.",
+      "expected_scientific_disposition": "REJECT_SOURCE_SWAP; ACCEPT_PROVED_ADAPTER_ONLY",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G12",
+      "title": "Jump gain object boundary",
+      "statement_scope": "Off-diagonal gain ordered-minor failure does not imply negative Weil form or the same sign for neutral compression/resolvent/semigroup.",
+      "expected_scientific_disposition": "ACCEPT_SCOPED_GAIN_COUNTEREXAMPLE_ONLY",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G13",
+      "title": "C3 normalized regularizer and support window",
+      "statement_scope": "Retain unit probability, actual Jordan parts, epsilon<=1 or expanded variation window, regional epsilon/R/d constraints and all four native costs.",
+      "expected_scientific_disposition": "REJECT_EPS4_OLD_WINDOW_AND_OMITTED_COST",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G14",
+      "title": "Positive test versus positive native observation",
+      "statement_scope": "A nonnegative test has a negative actual pairing; it does not manufacture nonnegative arithmetic observations. One fixed direction, three adapted tests and four height-restricted explicit tests have distinct scopes.",
+      "expected_scientific_disposition": "CONDITIONAL_OBSERVATION_ERROR_THRESHOLD_ONLY",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G15",
+      "title": "Genuine compatible external/classical transfer",
+      "statement_scope": "No native toolchain upgrade, signature-only import, unchecked oracle or project axiom. Boundary/derivative hypotheses and genuine compatible proof closure remain explicit.",
+      "expected_scientific_disposition": "DISABLED_WITHOUT_FULL_PROOF_CLOSURE",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G16",
+      "title": "Fixed prefix/trial constants",
+      "statement_scope": "A fixed finite prefix eigenvalue and fixed-trial/all-fixed-order tail remainder are not uniform in growingN/M or changing source order.",
+      "expected_scientific_disposition": "REJECT_UNPROVED_UNIFORM_CONSTANT",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G17",
+      "title": "Complex jet Gram conventions",
+      "statement_scope": "Inner product conjugates the first slot; ordinary derivative jets retain conjugation, factorials, distinct nodes and exact multiplicity.",
+      "expected_scientific_disposition": "REJECT_MISSING_CONJUGATION_FACTORIAL_OR_DISTINCTNESS",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    },
+    {
+      "id": "OPICA2_G18",
+      "title": "Pole moments and source tails",
+      "statement_scope": "Keep removable valueA(1/2)=1/2 and double source moments; pole diagnostics for general coefficients keep Wthird P(1). Approximate sources need certified moments or separate tails.",
+      "expected_scientific_disposition": "REJECT_REMOVABLE_ZERO_GENERAL_POLE_TERM_OR_UNCERTIFIED_TAIL",
+      "evidence_class_required": [
+        "LEAN_EXPECTED_TYPE_AND_NATIVE_DOMAIN_CONSUMER",
+        "LEAN_NEGATIVE_FIXTURE_OR_EXPLICIT_COUNTEREXAMPLE_AS_APPROPRIATE"
+      ],
+      "evidence_required": true,
+      "actual_evidence": [],
+      "actual_theorem_references": [],
+      "state": "PROPOSED_TYPED_GUARD_NOT_IMPLEMENTED",
+      "proposed_query": "State the exact scoped lemma/consumer or rejected counterclaim independently, compile it against the locked source and bind source-pinned evidence; a metadata flag is insufficient."
+    }
+  ],
+  "clause_binding_source": "PAPER_CROSSWALK.json#/family_bindings",
+  "deferred_research_applicability": [
+    {
+      "id": "OPICA2_AC01",
+      "title": "A03_SHORT_COFACTOR_OPEN_S",
+      "applicability": "T_A/T_B",
+      "scope_and_expected_disposition": "DERIVED exact Gevrey2 integer-drive/cofactor reduction; independent complete signed upper remains OPEN. Preserve historical h two-copy source and all time-dependent sharp thresholds.",
+      "authority": "DERIVED_PAPER_OR_OPEN_RESEARCH_AS_STATED",
+      "disposition": "DEFERRED_RESEARCH_APPLICABILITY_NOT_NEW_CORE",
+      "locator": "A03 Proof6-8 pp28-39",
+      "source_url": "https://drive.google.com/file/d/1rOzKqhrzDpceddpMRgUU0EIGe5SchNOL/view",
+      "evidence_required": true,
+      "actual_evidence": [],
+      "resolved_lean_reference": null,
+      "proposed_query": "Before using this research route/control, read the exact original proof, bind its native/synthetic domains and preserved/lost assumptions, and either formally verify it or retain its paper-level authority.",
+      "adds_required_core_family": false
+    },
+    {
+      "id": "OPICA2_AC02",
+      "title": "A03_NATIVE_COMPOSITE_SIGNS_AND_MU2",
+      "applicability": "T_A/T_B",
+      "scope_and_expected_disposition": "Native prime-power coefficients vanish after exact localization; both composite signs survive. mu2 magnitude control still grows. Reject coefficientwise-sign/absolute-value repair.",
+      "authority": "DERIVED_PAPER_OR_OPEN_RESEARCH_AS_STATED",
+      "disposition": "DEFERRED_RESEARCH_APPLICABILITY_NOT_NEW_CORE",
+      "locator": "A03 Proof7-8 pp32-39",
+      "source_url": "https://drive.google.com/file/d/1rOzKqhrzDpceddpMRgUU0EIGe5SchNOL/view",
+      "evidence_required": true,
+      "actual_evidence": [],
+      "resolved_lean_reference": null,
+      "proposed_query": "Before using this research route/control, read the exact original proof, bind its native/synthetic domains and preserved/lost assumptions, and either formally verify it or retain its paper-level authority.",
+      "adds_required_core_family": false
+    },
+    {
+      "id": "OPICA2_AC03",
+      "title": "A03_RETAINED_RESIDUE_AND_DEFECT_ADAPTER",
+      "applicability": "T_A/T_C",
+      "scope_and_expected_disposition": "Short cofactor cutoff retains residue-mK(lambda). Delayed contact defect onset2a and controlled remainder do not bound the infinite tail.",
+      "authority": "DERIVED_PAPER_OR_OPEN_RESEARCH_AS_STATED",
+      "disposition": "DEFERRED_RESEARCH_APPLICABILITY_NOT_NEW_CORE",
+      "locator": "A03 Proof6,8; integrated§5",
+      "source_url": "https://drive.google.com/file/d/1rOzKqhrzDpceddpMRgUU0EIGe5SchNOL/view",
+      "evidence_required": true,
+      "actual_evidence": [],
+      "resolved_lean_reference": null,
+      "proposed_query": "Before using this research route/control, read the exact original proof, bind its native/synthetic domains and preserved/lost assumptions, and either formally verify it or retain its paper-level authority.",
+      "adds_required_core_family": false
+    },
+    {
+      "id": "OPICA2_AC04",
+      "title": "C05_FINITE_LOCAL_OBSERVATION_ANNIHILATOR",
+      "applicability": "S10/S17/T_A/T_C",
+      "scope_and_expected_disposition": "Under fixed local source/matrix and both positive far-prime controls, universal stable finite observations and finite jets cancel all native logarithmic-derivative coefficients. Success must use a global property these controls lose.",
+      "authority": "DERIVED_PAPER_OR_OPEN_RESEARCH_AS_STATED",
+      "disposition": "DEFERRED_RESEARCH_APPLICABILITY_NOT_NEW_CORE",
+      "locator": "C05 ProofI pp49-53",
+      "source_url": "https://drive.google.com/file/d/1Vg5dsSBQ3kum3LTfzTgX8E5WQ9B4wvw6/view",
+      "evidence_required": true,
+      "actual_evidence": [],
+      "resolved_lean_reference": null,
+      "proposed_query": "Before using this research route/control, read the exact original proof, bind its native/synthetic domains and preserved/lost assumptions, and either formally verify it or retain its paper-level authority.",
+      "adds_required_core_family": false
+    },
+    {
+      "id": "OPICA2_AC05",
+      "title": "C05_RENORMALIZED_JUMP_FLUX",
+      "applicability": "T_C/T_D",
+      "scope_and_expected_disposition": "Fixed-support natural renormalized jump scalar is tail-blind; translated-probe positive bound only exp(t/2). This is distinct from ordered-gain TP2 and metric-transport controls.",
+      "authority": "DERIVED_PAPER_OR_OPEN_RESEARCH_AS_STATED",
+      "disposition": "DEFERRED_RESEARCH_APPLICABILITY_NOT_NEW_CORE",
+      "locator": "C05 ProofJ pp54-57",
+      "source_url": "https://drive.google.com/file/d/1Vg5dsSBQ3kum3LTfzTgX8E5WQ9B4wvw6/view",
+      "evidence_required": true,
+      "actual_evidence": [],
+      "resolved_lean_reference": null,
+      "proposed_query": "Before using this research route/control, read the exact original proof, bind its native/synthetic domains and preserved/lost assumptions, and either formally verify it or retain its paper-level authority.",
+      "adds_required_core_family": false
+    },
+    {
+      "id": "OPICA2_AC06",
+      "title": "C05_LOSSLESS_COMPLETED_SCATTERING",
+      "applicability": "L02/T_B/T_C",
+      "scope_and_expected_disposition": "Lossless bounded completed pair with positive forward kernel and stable actual input can have unstable causal scattering; exact quartic-135/4. Preserve explicit loss of native integer/gamma/full-contact data.",
+      "authority": "DERIVED_PAPER_OR_OPEN_RESEARCH_AS_STATED",
+      "disposition": "DEFERRED_RESEARCH_APPLICABILITY_NOT_NEW_CORE",
+      "locator": "C05 ProofL pp62-65, M§5",
+      "source_url": "https://drive.google.com/file/d/1Vg5dsSBQ3kum3LTfzTgX8E5WQ9B4wvw6/view",
+      "evidence_required": true,
+      "actual_evidence": [],
+      "resolved_lean_reference": null,
+      "proposed_query": "Before using this research route/control, read the exact original proof, bind its native/synthetic domains and preserved/lost assumptions, and either formally verify it or retain its paper-level authority.",
+      "adds_required_core_family": false
+    },
+    {
+      "id": "OPICA2_AC07",
+      "title": "C05_ORIGINAL_SOURCE_CUMULATIVE_RATE_NQ",
+      "applicability": "T_C",
+      "scope_and_expected_disposition": "Original-contact exterior stable input and exact exponent2max(Delta-epsilon,0) are PAPER; one-generated-contact quiet-subsequence NQ remains OPEN. Historical denominator(p+1), advance2a and domains differ from current probe.",
+      "authority": "DERIVED_PAPER_OR_OPEN_RESEARCH_AS_STATED",
+      "disposition": "DEFERRED_RESEARCH_APPLICABILITY_NOT_NEW_CORE",
+      "locator": "C05 ProofF pp36-39, M pp66-71",
+      "source_url": "https://drive.google.com/file/d/1Vg5dsSBQ3kum3LTfzTgX8E5WQ9B4wvw6/view",
+      "evidence_required": true,
+      "actual_evidence": [],
+      "resolved_lean_reference": null,
+      "proposed_query": "Before using this research route/control, read the exact original proof, bind its native/synthetic domains and preserved/lost assumptions, and either formally verify it or retain its paper-level authority.",
+      "adds_required_core_family": false
+    }
+  ],
+  "global_pass_discharges_no_clause": true
+}

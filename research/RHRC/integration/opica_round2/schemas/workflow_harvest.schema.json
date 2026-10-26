@@ -1,0 +1,143 @@
+{
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "OPICA2_WORKFLOW_HARVEST_V1"
+    },
+    "head": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "tree": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "observed_at_utc": {
+      "type": "string"
+    },
+    "all_pages_read": {
+      "type": "boolean"
+    },
+    "is_final_post_run_snapshot": {
+      "type": "boolean"
+    },
+    "jobs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "head": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "workflow_path": {
+            "type": "string"
+          },
+          "event": {
+            "type": "string"
+          },
+          "run_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "attempt": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "job_id": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "execution": {
+            "enum": [
+              "success",
+              "failure",
+              "cancelled",
+              "timed_out",
+              "skipped",
+              "queued",
+              "in_progress",
+              "NOT_YET_INSTANTIATED"
+            ]
+          },
+          "classification": {
+            "enum": [
+              "FORMAL_VALIDITY_GATE",
+              "REGRESSION_GATE",
+              "RESEARCH_PRODUCING_CHECK",
+              "RELEASE_GATE",
+              "AGGREGATION_GATE"
+            ]
+          },
+          "scientific_disposition": {
+            "type": "string"
+          },
+          "evidence_scope": {
+            "type": "string"
+          },
+          "prior_result": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "comparison": {
+            "type": "string"
+          },
+          "artifact_hashes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "source_url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "head",
+          "workflow_path",
+          "event",
+          "run_id",
+          "attempt",
+          "job_id",
+          "name",
+          "execution",
+          "classification",
+          "scientific_disposition",
+          "evidence_scope",
+          "prior_result",
+          "comparison",
+          "artifact_hashes",
+          "source_url"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "RH": {
+      "const": "OPEN"
+    },
+    "Step4": {
+      "const": "OPEN"
+    }
+  },
+  "required": [
+    "schema",
+    "head",
+    "tree",
+    "observed_at_utc",
+    "all_pages_read",
+    "is_final_post_run_snapshot",
+    "jobs",
+    "RH",
+    "Step4"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

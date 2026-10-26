@@ -1,0 +1,595 @@
+"""Source-bound native compiler exports and reproducible, scoped receipt replay.
+
+The complete type/dependency parser adapts the frozen follow-up algorithm.
+Warm compiler replay is explicitly scoped and never cold isolation or review.
+"""
+from __future__ import annotations
+import argparse
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+import sys
+from typing import Any, Mapping
+
+try:
+    from .certificate_io import InvalidCertificate, canonical_sha256, failure_envelope, load_strict_json, loads_strict_json, validate_schema
+    from . import validate_contract as contract
+except ImportError:
+    from certificate_io import InvalidCertificate, canonical_sha256, failure_envelope, load_strict_json, loads_strict_json, validate_schema
+    import validate_contract as contract
+
+HERE = Path(__file__).resolve().parent
+REPO = HERE.parents[3]
+ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
+MATHEMATICAL_MODULES = frozenset()
+NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_.]*\Z")
+EXPRESSION_VALIDATOR = "research/RHRC/routes/R003_ccm_bridge/post290/lean_expr_dag.py"
+
+def require(ok, message):
+    if not ok:
+        raise InvalidCertificate("compiler_evidence", message)
+
+
+def frozen_tool(repo: Path, relative: str, module_name: str):
+    path = contract.file_at(repo, relative)
+    payload = path.read_bytes()
+    original = subprocess.run(["git", "-C", str(repo), "show", contract.FROZEN_COMMIT + ":" + relative],
+                              capture_output=True, check=True).stdout
+    require(payload == original, "Frozen evidence tool changed: " + relative)
+    spec = importlib.util.spec_from_file_location(module_name, path)
+    require(spec is not None and spec.loader is not None, "Evidence tool cannot be loaded")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+_EXPR_VALIDATOR = None
+
+def validate_expression(text):
+    global _EXPR_VALIDATOR
+    if _EXPR_VALIDATOR is None:
+        _EXPR_VALIDATOR = frozen_tool(REPO, EXPRESSION_VALIDATOR, "_opica2_frozen_expr")
+    # Strict JSON rejection is separate from Lean expression semantic validation.
+    loads_strict_json(text, 16 * 1024 * 1024)
+    return _EXPR_VALIDATOR.validate_expression(text)
+
+def validate_dependency_closure(declarations, metadata, dependencies):
+    """Check the complete project traversal, including private helper nodes.
+
+    Every project constant reached by the exporter is expanded in all three
+    channels. External constants are boundary nodes. Checking only public root
+    channels would accept a log truncated just before a helper's expansion.
+    """
+    public = {item['name']: item for item in declarations}
+    require(len(public) == len(declarations), 'duplicate public declaration')
+    nodes = {item['name']: item for item in metadata}
+    require(len(nodes) == len(metadata), 'duplicate dependency declaration')
+    kinds = {'AXIOM','DEFINITION','THEOREM','OPAQUE','QUOTIENT','INDUCTIVE','CONSTRUCTOR','RECURSOR'}
+    for item in metadata:
+        require(item['kind'] in kinds and type(item['internal']) is bool,
+            'invalid dependency declaration metadata')
+    def project(item):
+        return item['module'] == 'Zeta23' or item['module'].startswith('Zeta23.')
+    for item in metadata:
+        require(item['kind'] != 'AXIOM' or (item['name'] in ALLOWED_AXIOMS and not project(item)),
+                'unadmitted transitive/private axiom: '+item['name'])
+    for name, item in public.items():
+        require(name in nodes, 'missing public dependency metadata: '+name)
+        require(nodes[name]['module'] == item['module'] and nodes[name]['kind'] == item['kind']
+            and not nodes[name]['internal'], 'public dependency metadata mismatch: '+name)
+    channels = {}
+    for item in dependencies:
+        source, channel, targets = item['source'], item['channel'], item['targets']
+        require(source in nodes, 'unknown dependency source')
+        require(project(nodes[source]), 'external dependency boundary was expanded: '+source)
+        require(channel in {'TYPE','VALUE','STRUCTURE'}, 'unknown dependency channel')
+        require((source,channel) not in channels, 'duplicate dependency channel')
+        require(len(targets) == len(set(targets)) and all(targets), 'invalid dependency targets')
+        require(all(target in nodes for target in targets), 'unknown dependency target')
+        channels[source,channel] = targets
+    for name, item in nodes.items():
+        if project(item):
+            require(all((name,c) in channels for c in ('TYPE','VALUE','STRUCTURE')),
+                'incomplete project dependency channels: type/value/structure provenance: '+name)
+    reached, pending = set(), list(public)
+    while pending:
+        source = pending.pop()
+        if source in reached:
+            continue
+        reached.add(source)
+        if project(nodes[source]):
+            for channel in ('TYPE','VALUE','STRUCTURE'):
+                pending.extend(channels[source,channel])
+    require(reached == set(nodes), 'unreachable dependency metadata outside public-root closure')
+
+
+def validate_compiler_records(receipt, expected_roots=(), *, mathematical_modules=None):
+    """Revalidate serialized evidence without trusting its stored type hashes."""
+    modules = MATHEMATICAL_MODULES if mathematical_modules is None else frozenset(mathematical_modules)
+    records = receipt['declarations']
+    require(isinstance(records,list) and bool(records), 'empty or malformed public declaration inventory')
+    equations = receipt.get('generated_equations', {})
+    require(isinstance(equations,dict) and all(isinstance(name,str) and isinstance(origin,str)
+        for name,origin in equations.items()), 'malformed generated equation provenance')
+    declarations = {}
+    kinds = {'DEFINITION','THEOREM','OPAQUE','QUOTIENT','INDUCTIVE','CONSTRUCTOR','RECURSOR'}
+    for record in records:
+        require(isinstance(record,dict) and {'name','module','kind','axioms','type_expression',
+            'type_sha256','type_metrics'}<=set(record), 'missing public declaration evidence fields')
+        name,module,kind = record['name'],record['module'],record['kind']
+        require(isinstance(name,str) and name not in declarations, 'invalid or duplicate public declaration')
+        require(module in modules, 'foreign defining module')
+        require(kind in kinds, 'unadmitted public declaration kind')
+        require(name.startswith('Zeta23.OPICARound2.') or
+            (kind=='THEOREM' and (name.endswith('.congr_simp') or name in equations)),
+            'foreign declaration namespace')
+        axioms = record['axioms']
+        require(isinstance(axioms,list) and all(isinstance(ax,str) for ax in axioms)
+            and len(axioms)==len(set(axioms)) and set(axioms)<=ALLOWED_AXIOMS,
+            'unadmitted mathematical axiom: '+name)
+        require(isinstance(record['type_expression'],dict), 'missing or malformed full type DAG: '+name)
+        encoded = json.dumps(record['type_expression'],ensure_ascii=False,separators=(',',':'))
+        metrics = validate_expression(encoded)
+        digest = hashlib.sha256(encoded.encode('utf-8')).hexdigest()
+        require(record['type_sha256']==digest, 'full type DAG digest mismatch: '+name)
+        require(record['type_metrics']==metrics, 'full type DAG metrics mismatch: '+name)
+        declarations[name] = record
+    for root in expected_roots:
+        require(root['full_name'].startswith('Zeta23.OPICARound2.'), 'foreign primary root namespace')
+        require(root['module'] in modules, 'foreign primary defining module')
+        record = declarations.get(root['full_name'])
+        require(record is not None and record['module']==root['module'] and record['kind']==root['kind'],
+            'missing or wrong source-bound primary declaration: '+root['full_name'])
+        require(isinstance(record.get('full_type'),str) and bool(record['full_type'].strip()),
+            'missing human-readable root type')
+        if 'expected_type_sha256' in root:
+            require(record['type_sha256']==root['expected_type_sha256'], 'reviewed expected type changed: '+root['full_name'])
+    constructors = receipt.get('constructors')
+    require(isinstance(constructors,dict), 'missing or malformed constructor inventory')
+    require(set(constructors)=={name for name,record in declarations.items() if record['kind']=='CONSTRUCTOR'},
+        'constructor inventory differs from public constructor declarations')
+    validate_dependency_closure(records,receipt['dependency_declarations'],receipt['dependencies'])
+    channels = {(item['source'],item['channel']):item['targets'] for item in receipt['dependencies']}
+    validate_generated_equations(equations,declarations,channels,
+        {row['name']:(row['module'],row['kind'],'1' if row['internal'] else '0')
+            for row in receipt['dependency_declarations']})
+    for node in receipt['dependency_declarations']:
+        if node['module'] in modules and not node['internal']:
+            require(node['name'] in declarations, 'public mathematical dependency escaped enumeration: '+node['name'])
+    for name,record in constructors.items():
+        family = record['family']
+        require(family in declarations and declarations[family]['kind']=='INDUCTIVE', 'constructor family mismatch')
+        require(isinstance(record['type_expression'],dict), 'malformed constructor full type')
+        validate_expression(json.dumps(record['type_expression'],ensure_ascii=False,separators=(',',':')))
+        require(record['type_expression']==declarations[name]['type_expression'], 'constructor full type mismatch')
+        require(channels[name,'STRUCTURE']==[family], 'constructor structural family mismatch')
+        require(name in channels[family,'STRUCTURE'], 'constructor missing from inductive structural family')
+
+
+def validate_generated_equations(equations, declarations, channels, dependency_declarations):
+    """Reserved equation names are audited helpers, never additional roots."""
+    for name, origin in equations.items():
+        require(name in declarations and declarations[name]['kind'] == 'THEOREM',
+                'generated equation lacks public theorem audit')
+        require(re.fullmatch(re.escape(origin) + r'\.(?:eq_[0-9]+|eq_def|eq_unfold)', name) is not None,
+                'generated equation has noncanonical reserved name')
+        require(origin in channels.get((name, 'TYPE'), []),
+                'generated equation type does not reference its original definition')
+        require(origin in dependency_declarations and dependency_declarations[origin][1] == 'DEFINITION',
+                'generated equation origin is not an audited definition')
+
+
+def parse_compiler_output(text, expected_roots, *, mathematical_modules=None):
+    modules = MATHEMATICAL_MODULES if mathematical_modules is None else frozenset(mathematical_modules)
+    declarations, constructors, candidates, channels, dependency_declarations = {}, {}, {}, {}, {}
+    generated_equations = {}
+    count, complete = None, None
+    for root in expected_roots:
+        require(root['full_name'].startswith('Zeta23.OPICARound2.'), 'foreign primary root namespace')
+        require(root['module'] in modules, 'foreign primary defining module')
+    for line in text.splitlines():
+        require(complete is None or not line.strip(), 'output after the terminating completeness record')
+        if line.startswith('OPICA2_DECL\t'):
+            parts = line.split('\t')
+            require(len(parts) == 6, 'malformed OPICA declaration')
+            _, name, module, kind, expression, axioms_raw = parts
+            require(name not in declarations, 'duplicate OPICA declaration: '+name)
+            require(module in modules, 'foreign defining module')
+            # Lean caches constructor congruence lemmas in the current defining
+            # module under the original constructor namespace. Enumerate these
+            # public helpers with the same type, axiom and dependency audits;
+            # the exception never applies to primary root identities.
+            generated_congruence = kind == 'THEOREM' and name.endswith('.congr_simp')
+            generated_equation = kind == 'THEOREM' and name in generated_equations
+            require(name.startswith('Zeta23.OPICARound2.') or generated_congruence or generated_equation,
+                'foreign declaration namespace')
+            metrics = validate_expression(expression)
+            axioms = axioms_raw.split(',') if axioms_raw else []
+            require(len(axioms) == len(set(axioms)), 'duplicate axiom')
+            require(set(axioms) <= ALLOWED_AXIOMS, 'unadmitted mathematical axiom: '+name)
+            require(kind != 'AXIOM', 'new project axiom: '+name)
+            declarations[name] = {'name':name, 'module':module, 'kind':kind,
+                'type_expression':json.loads(expression), 'type_metrics':metrics,
+                'type_sha256':hashlib.sha256(expression.encode()).hexdigest(), 'axioms':axioms}
+        elif line.startswith('OPICA2_GENERATED_EQUATION\t'):
+            parts = line.split('\t')
+            require(len(parts) == 3 and all(parts[1:]), 'malformed generated equation provenance')
+            _, name, origin = parts
+            require(name not in generated_equations, 'duplicate generated equation provenance')
+            generated_equations[name] = origin
+        elif line.startswith('OPICA2_CONSTRUCTOR\t'):
+            parts = line.split('\t')
+            require(len(parts) == 4, 'malformed constructor')
+            _, family, name, expression = parts
+            require(name not in constructors, 'duplicate constructor: '+name)
+            validate_expression(expression)
+            constructors[name] = {'family':family, 'type_expression':json.loads(expression)}
+        elif line.startswith('OPICA2_PUBLIC_COUNT\t'):
+            require(count is None, 'duplicate public count')
+            parts = line.split('\t')
+            require(len(parts) == 2 and parts[1].isdigit(), 'malformed public count')
+            count = int(parts[1])
+        elif line.startswith('OPICA2_COMPLETE\t'):
+            require(complete is None, 'duplicate terminating completeness record')
+            parts = line.split('\t')
+            require(len(parts) == 2 and parts[1].isdigit(), 'malformed terminating completeness record')
+            complete = int(parts[1])
+        elif line.startswith('RHRC_CANDIDATE_RESULT\t'):
+            parts = line.split('\t')
+            require(len(parts) == 10, 'malformed exact candidate resolution')
+            _, identity, status, number, name, module, kind, private, pretty_type, _ = parts
+            require(identity not in candidates, 'duplicate root candidate')
+            require(status == 'RESOLVED_UNIQUE' and number == '1' and private == '0',
+                    'unresolved/private/ambiguous root: '+identity)
+            candidates[identity] = {'name':name, 'module':module, 'kind':kind, 'full_type':pretty_type}
+        elif line.startswith('RHKG_DEP_DECL\t'):
+            parts = line.split('\t')
+            require(len(parts) == 5, 'malformed dependency declaration')
+            _, name, module, kind, internal = parts
+            require(internal in {'0','1'}, 'invalid dependency privacy flag')
+            record = (module, kind, internal)
+            require(name not in dependency_declarations, 'duplicate dependency declaration')
+            dependency_declarations[name] = record
+        elif line.startswith('RHKG_DEP_CHANNEL\t'):
+            _, name, channel, *targets = line.split('\t')
+            require(channel in {'TYPE','VALUE','STRUCTURE'}, 'unknown dependency channel')
+            key = (name, channel)
+            require(key not in channels, 'duplicate dependency channel')
+            require(len(targets) == len(set(targets)) and all(targets), 'invalid dependency targets')
+            channels[key] = targets
+        elif line.startswith(('OPICA2_', 'RHKG_DEP_', 'RHRC_CANDIDATE_RESULT')):
+            raise ValueError('unknown or malformed compiler protocol record')
+    require(count is not None and count == len(declarations) and count > 0, 'incomplete public enumeration')
+    require(complete == count, 'missing or inconsistent terminating completeness record')
+    expected_ids = {root['id'] for root in expected_roots}
+    require(set(candidates) == expected_ids, 'missing or extra primary root resolutions')
+    for root in expected_roots:
+        name = root['full_name']
+        require(name in declarations, 'missing root type/axiom export: '+name)
+        record = declarations[name]
+        candidate = candidates[root['id']]
+        require(record['module'] == root['module'] and record['kind'] == root['kind'], 'root module/kind mismatch')
+        require(candidate['name'] == name and candidate['module'] == root['module'] and candidate['kind'] == root['kind'],
+                'root source resolution mismatch')
+        require(bool(candidate['full_type']), 'missing human-readable root type')
+        record['full_type'] = candidate['full_type']
+        if 'expected_type_sha256' in root:
+            require(record['type_sha256'] == root['expected_type_sha256'], 'reviewed expected type changed: '+name)
+    validate_generated_equations(generated_equations, declarations, channels, dependency_declarations)
+    result = {'declarations':list(declarations.values()), 'constructors':constructors,
+        'generated_equations':generated_equations,
+        'dependency_declarations':[{'name':name,'module':module,'kind':kind,'internal':internal == '1'}
+            for name,(module,kind,internal) in sorted(dependency_declarations.items())],
+        'dependencies':[{'source':source,'channel':channel,'targets':targets}
+            for (source,channel),targets in sorted(channels.items())]}
+    validate_compiler_records(result,expected_roots,mathematical_modules=modules)
+    return result
+
+
+def source_manifest(repo: Path, *, clean: bool = True) -> list[dict[str, Any]]:
+    """Hash actual source bytes against immutable Git objects, including modes."""
+    if clean:
+        require(not contract.git(repo, "status", "--porcelain", "--untracked-files=all"),
+                "Compiler receipts require a clean committed checkout")
+    result = subprocess.run(["git", "-C", str(repo), "ls-tree", "-r", "-z", "HEAD"],
+                            check=True, capture_output=True)
+    rows = []
+    for entry in result.stdout.split(b"\0"):
+        if not entry:
+            continue
+        metadata, name = entry.split(b"\t", 1)
+        mode, kind, oid = metadata.decode("ascii").split()
+        require(kind == "blob" and mode in {"100644", "100755"}, "Unsupported source mode or object")
+        relative = name.decode("utf-8", errors="strict")
+        path = contract.file_at(repo, relative)
+        size, blob, digest = contract.actual_blob_identity(path)
+        require(blob == oid, "Working source differs from the Git tree: " + relative)
+        rows.append({"path": relative, "mode": mode, "git_blob": oid,
+                     "bytes": size, "sha256": digest})
+    reject_untracked_source_providers(repo, {row["path"] for row in rows})
+    return sorted(rows, key=lambda r: r["path"])
+
+
+def reject_untracked_source_providers(repo: Path, tracked: set[str]) -> None:
+    """Git status alone misses ignored source files that could shadow imports."""
+    for directory, names, files in os.walk(repo, followlinks=False):
+        base = Path(directory)
+        names[:] = [name for name in names if name not in {".git", ".lake"}]
+        for name in names:
+            require(not (base/name).is_symlink(), "Linked project source directory is not accepted")
+        for name in files:
+            path = base/name
+            if path.suffix.lower() not in {".lean", ".py"}:
+                continue
+            relative = path.relative_to(repo).as_posix()
+            require(relative in tracked and not path.is_symlink(),
+                    "Ignored/untracked source provider outside the committed census: " + relative)
+
+
+def validate_query_plan(plan: Mapping[str, Any]) -> None:
+    require(type(plan) is dict and set(plan) == {"mathematical_modules", "validation_modules", "roots"},
+            "Exact query plan fields are required; clause acceptance is a separate gate")
+    modules = plan["mathematical_modules"] + plan["validation_modules"]
+    require(type(plan["mathematical_modules"]) is list and bool(plan["mathematical_modules"])
+            and type(plan["validation_modules"]) is list and len(set(modules)) == len(modules),
+            "Missing or duplicate module inventory")
+    require(all(type(m) is str and NAME.fullmatch(m) and m.startswith("Zeta23.OPICARound2.") for m in modules),
+            "Foreign or executable module name in query plan")
+    require(all(".Validation" not in m for m in plan["mathematical_modules"])
+            and all(m.startswith("Zeta23.OPICARound2.Validation.") for m in plan["validation_modules"]),
+            "Mathematical and validation inventories cross trust boundaries")
+    roots = plan["roots"]
+    require(type(roots) is list and bool(roots), "An exact nonempty root query inventory is required")
+    require(len({r.get("id") for r in roots}) == len(roots)
+            and len({r.get("full_name") for r in roots}) == len(roots), "Duplicate query identity")
+    for row in roots:
+        require(type(row) is dict and set(row) <= {"id", "full_name", "module", "kind", "expected_type_sha256"}
+                and {"id", "full_name", "module", "kind"} <= set(row), "Malformed exact root query")
+        require(all(type(row[k]) is str and NAME.fullmatch(row[k]) for k in ("id", "full_name", "module", "kind")),
+                "Executable or malformed query strings")
+        require(row["module"] in modules and row["full_name"].startswith("Zeta23.OPICARound2.")
+                and row["kind"] in {"THEOREM", "DEFINITION", "INDUCTIVE", "CONSTRUCTOR"},
+                "Foreign query module/namespace or wrong kind")
+        if "expected_type_sha256" in row:
+            require(type(row["expected_type_sha256"]) is str
+                    and contract.SHA.fullmatch(row["expected_type_sha256"]), "Invalid independently reviewed type digest")
+
+
+def render_exporter(repo: Path, plan: Mapping[str, Any]) -> bytes:
+    """Only substitute code-free module/query data into frozen audit machinery."""
+    validate_query_plan(plan)
+    relative = "Zeta23/RHRC/OpicaFollowupBindings.lean"
+    original = subprocess.run(["git", "-C", str(repo), "show", contract.FROZEN_COMMIT + ":" + relative],
+                              capture_output=True, check=True).stdout
+    require(contract.file_at(repo, relative).read_bytes() == original, "Frozen exporter template changed")
+    text = original.decode("utf-8").replace("\r\n", "\n")
+    text = text.replace("import Zeta23.OPICAFollowup.Validation\n", "")
+    text, count = re.subn(r"namespace FollowupDependencyExport\n.*?end FollowupDependencyExport\n",
+                          "", text, count=1, flags=re.S)
+    require(count == 1, "Frozen dependency-export template boundary changed")
+    text = text.replace("FollowupDependencyExport.exportDependencies names", "exportDependencies names")
+    text = text.replace("OPICA_FOLLOWUP_", "OPICA2_").replace("Zeta23.OPICAFollowup", "Zeta23.OPICARound2")
+    queries = []
+    for row in plan["roots"]:
+        values = [json.dumps(row[key]) for key in ("id", "module", "full_name", "kind")]
+        queries.append("    ({ sourceId := " + values[0] + ", moduleName := " + values[1]
+                       + ", shortName := " + values[2] + ", sourceKind := " + values[3]
+                       + " } : SourceCandidateQuery)")
+    block = "  let queries : Array SourceCandidateQuery := #[\n" + ",\n".join(queries) + "]\n  resolveSourceCandidates queries"
+    text, count = re.subn(r"  let queries : Array SourceCandidateQuery := #\[.*?\n  resolveSourceCandidates queries",
+                          lambda _: block, text, count=1, flags=re.S)
+    require(count == 1, "Frozen query template boundary changed")
+    modules = plan["mathematical_modules"] + plan["validation_modules"]
+    block = "  let mathematicalModules : Array String := #[\n" + ",\n".join("    " + json.dumps(m) for m in modules) + "]\n  let mut names"
+    text, count = re.subn(r"  let mathematicalModules : Array String := #\[.*?\n  let mut names",
+                          lambda _: block, text, count=1, flags=re.S)
+    require(count == 1, "Frozen module template boundary changed")
+    header = "\n".join("import " + m for m in modules) + "\nimport Zeta23.RHRC.DeclarationDependencyExport\n"
+    return (header + text).encode("utf-8")
+
+
+def validate_environment(repo: Path) -> dict[str, str]:
+    toolchain = (repo/"lean-toolchain").read_text(encoding="utf-8").strip()
+    require(toolchain == "leanprover/lean4:v4.33.0-rc2", "Pinned Lean toolchain changed")
+    manifest = load_strict_json(repo/"lake-manifest.json")
+    packages = [r for r in manifest["packages"] if r["name"] == "mathlib"]
+    require(len(packages) == 1 and packages[0]["rev"] == "51e6992efd06126df61a496bebf8f49482a4e129",
+            "Pinned Mathlib revision changed")
+    validate_packages(repo)
+    return {"lean_toolchain": toolchain, "mathlib_commit": packages[0]["rev"]}
+
+
+def validate_packages(repo: Path) -> list[dict[str, str]]:
+    manifest = load_strict_json(repo/"lake-manifest.json")
+    result = []
+    seen = set()
+    for row in manifest["packages"]:
+        name, revision = row.get("name"), row.get("rev")
+        require(row.get("type") == "git" and type(name) is str and NAME.fullmatch(name)
+                and name not in seen and type(revision) is str and re.fullmatch(r"[0-9a-f]{40}",revision),
+                "Every source package needs a unique exact Git revision")
+        seen.add(name)
+        package = repo/".lake/packages"/name
+        require(contract.git(package,"rev-parse","HEAD") == revision
+                and not contract.git(package,"status","--porcelain","--untracked-files=all"),
+                "Pinned package source is dirty or differs from its commit: " + name)
+        paths = set(contract.git(package,"ls-tree","-r","--name-only","HEAD").splitlines())
+        reject_untracked_source_providers(package, paths)
+        result.append({"name":name,"commit":revision})
+    return sorted(result,key=lambda r:r["name"])
+
+
+def run_command(repo: Path, argv: list[str], output: Path, name: str, tree: str,
+                *, timeout: int = 3600) -> dict[str, Any]:
+    """Persist raw stdout/stderr even on failure. Never use a shell or hide exits."""
+    require(type(argv) is list and argv and all(type(x) is str and x for x in argv), "Invalid compiler argv")
+    stdout_path, stderr_path = output/(name+".stdout.log"), output/(name+".stderr.log")
+    require(not stdout_path.exists() and not stderr_path.exists(), "Refuse to overwrite a prior command observation")
+    with stdout_path.open("xb") as stdout, stderr_path.open("xb") as stderr:
+        process = subprocess.Popen(argv, cwd=repo, stdout=stdout, stderr=stderr)
+        try:
+            code = process.wait(timeout=timeout)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.wait()
+            raise InvalidCertificate("compiler_timeout", "Compiler command timed out; raw logs preserved")
+    return {"argv": argv, "returncode": code, "stdout_sha256": contract.digest(stdout_path),
+            "stderr_sha256": contract.digest(stderr_path), "working_tree_sha": tree}
+
+
+def produce_receipt(repo: Path, output: Path, plan: Mapping[str, Any], *,
+                    requested_commit: str | None = None, lake: str = "lake", build_mode: str = "warm",
+                    timeout: int = 3600) -> dict[str, Any]:
+    """Run the exact plan. Output is intentionally INCOMPLETE until clause review.
+
+    `cold` requires a caller-provided source checkout with no project .lake/build
+    directory before execution. Package objects remain explicitly shared/pinned.
+    """
+    repo, output = repo.resolve(), output.resolve()
+    require(not output.is_relative_to(repo), "Compiler artifacts must be outside the source checkout")
+    require(not output.exists(), "Use a new evidence directory; prior evidence is immutable")
+    validate_query_plan(plan)
+    head, tree = contract.git(repo, "rev-parse", "HEAD"), contract.git(repo, "rev-parse", "HEAD^{tree}")
+    requested_commit = requested_commit or head
+    require(requested_commit == head, "This producer checks an exact PR head, not an implicit merge or projection")
+    contract.check_merged_base(repo, load_strict_json(HERE/"ANCESTOR_LOCK.json", 16*1024*1024))
+    sources = source_manifest(repo)
+    environment = validate_environment(repo)
+    require(build_mode in {"warm", "cold"}, "Unknown build isolation mode")
+    if build_mode == "cold":
+        require(not (repo/".lake/build").exists(), "Cold replay requires no pre-existing project build products")
+    output.mkdir(parents=True)
+    driver = render_exporter(repo, plan)
+    (output/"Round2Export.lean").write_bytes(driver)
+    (output/"query-plan.json").write_bytes(json.dumps(plan, ensure_ascii=False, sort_keys=True,
+                                                     separators=(",", ":")).encode("utf-8"))
+    (output/"source-manifest.json").write_text(json.dumps(sources, indent=2)+"\n", encoding="utf-8")
+    commands = []
+    def execute(argv, name):
+        record = run_command(repo, argv, output, name, tree, timeout=timeout)
+        commands.append(record)
+        require(record["returncode"] == 0, "Compiler command failed: " + name)
+    execute([lake, "env", "lean", "--version"], "lean-version")
+    version = (output/"lean-version.stdout.log").read_text(encoding="utf-8")
+    require("version 4.33.0-rc2," in version and "d8b18978322de05a8f3dba51ef03cf5461676c17" in version,
+            "Executed Lean binary is not the pinned compiler")
+    modules = plan["mathematical_modules"] + plan["validation_modules"]
+    execute([lake, "build", *modules], "build")
+    execute([lake, "env", "lean", "-o", str(output/"Round2Export.olean"), str(output/"Round2Export.lean")], "bindings")
+    parsed = parse_compiler_output((output/"bindings.stdout.log").read_text(encoding="utf-8"),
+                                   plan["roots"], mathematical_modules=modules)
+    (output/"compiler-records.json").write_text(json.dumps(parsed, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    require(source_manifest(repo) == sources and contract.git(repo, "rev-parse", "HEAD") == head,
+            "Source checkout changed during compiler execution")
+    require(validate_environment(repo) == environment, "Pinned package sources changed during compilation")
+    crosswalk = load_strict_json(HERE/"PAPER_CROSSWALK.json", 16*1024*1024)
+    clauses = sorted(c["clause_id"] for f in crosswalk["family_bindings"] if f["required_for_full_core"] for c in f["components"])
+    receipt = {"schema": "OPICA2_COMPILER_RECEIPT_V1", "requested_commit": requested_commit,
+        "checked_commit": head, "checked_tree": tree, "checkout_kind": "PR_HEAD", **environment,
+        "source_manifest_sha256": canonical_sha256(sources), "exporter_source_sha256": hashlib.sha256(driver).hexdigest(),
+        "exporter_object_sha256": contract.digest(output/"Round2Export.olean"),
+        "raw_compiler_log_sha256": contract.digest(output/"bindings.stdout.log"),
+        "independent_queries_sha256": canonical_sha256(plan), "commands": commands,
+        "root_records_sha256": canonical_sha256(parsed["declarations"]),
+        "constructor_records_sha256": canonical_sha256(parsed["constructors"]),
+        "dependency_records_sha256": canonical_sha256({k: parsed[k] for k in ("dependency_declarations", "dependencies")}),
+        "reparsed_records_match": True, "axioms": sorted({a for d in parsed["declarations"] for a in d["axioms"]}),
+        "required_clauses": clauses, "covered_clauses": [], "ancestor_baseline_replay": False,
+        "ancestor_current_compatibility": False, "implementation_state": "INCOMPLETE",
+        "human_review": "NOT_ESTABLISHED", "review_record_sha256": None,
+        "full_release_accepted": False, "RH": "OPEN", "Step4": "OPEN"}
+    validate_schema(receipt, load_strict_json(HERE/"schemas/receipt.schema.json"))
+    (output/"compiler-receipt.json").write_text(json.dumps(receipt, indent=2)+"\n", encoding="utf-8")
+    bundle = {"schema": "OPICA2_COMPILER_BUNDLE_V1", "build_mode": build_mode,
+        "project_objects_cold_at_start": build_mode == "cold", "package_objects": "EXISTING_PINNED_CACHE",
+        "cold_complete_toolchain_rebuild": False, "fresh_compiler_process": True,
+        "pinned_packages": validate_packages(repo),
+        "producer_source_sha256": contract.digest(Path(__file__)), "query_plan_sha256": canonical_sha256(plan),
+        "files": [{"path": p.name, "sha256": contract.digest(p), "bytes": p.stat().st_size}
+                  for p in sorted(output.iterdir()) if p.is_file()],
+        "authority": "SOURCE_BOUND_COMPILER_EXPORT_NO_CLAUSE_OR_RELEASE_ACCEPTANCE",
+        "full_core_accepted": False, "full_release_accepted": False, "RH": "OPEN", "Step4": "OPEN"}
+    (output/"bundle.json").write_text(json.dumps(bundle, indent=2)+"\n", encoding="utf-8")
+    return receipt
+
+
+def verify_receipt_artifacts(receipt: Mapping[str, Any], repo: Path, artifacts: Path,
+                            plan: Mapping[str, Any]) -> dict[str, Any]:
+    """Independent raw-log reparse and source/object/command checks, not fresh replay."""
+    validate_schema(receipt, load_strict_json(HERE/"schemas/receipt.schema.json"))
+    require(receipt["implementation_state"] == "INCOMPLETE" and receipt["covered_clauses"] == []
+            and receipt["ancestor_baseline_replay"] is False and receipt["ancestor_current_compatibility"] is False
+            and receipt["human_review"] == "NOT_ESTABLISHED" and receipt["review_record_sha256"] is None
+            and receipt["full_release_accepted"] is False,
+            "Scoped producer evidence cannot be promoted by flipping acceptance/coverage fields")
+    validate_query_plan(plan)
+    artifacts = artifacts.resolve()
+    require(receipt["checked_commit"] == contract.git(repo, "rev-parse", "HEAD")
+            and receipt["checked_tree"] == contract.git(repo, "rev-parse", "HEAD^{tree}"), "Stale receipt source")
+    require(receipt["source_manifest_sha256"] == canonical_sha256(source_manifest(repo)), "Changed source manifest")
+    require(receipt["independent_queries_sha256"] == canonical_sha256(plan), "Substituted query plan")
+    driver = render_exporter(repo, plan)
+    require((artifacts/"Round2Export.lean").read_bytes() == driver
+            and receipt["exporter_source_sha256"] == hashlib.sha256(driver).hexdigest()
+            and receipt["exporter_object_sha256"] == contract.digest(artifacts/"Round2Export.olean"), "Exporter identity differs")
+    expected = [["env", "lean", "--version"], ["build", *plan["mathematical_modules"], *plan["validation_modules"]],
+                ["env", "lean", "-o", str(artifacts/"Round2Export.olean"), str(artifacts/"Round2Export.lean")]]
+    require(len(receipt["commands"]) == 3, "Incomplete compiler command inventory")
+    for row, tail, name in zip(receipt["commands"], expected, ("lean-version", "build", "bindings")):
+        require(row["argv"][1:] == tail and row["returncode"] == 0
+                and row["working_tree_sha"] == receipt["checked_tree"], "Compiler command failed or changed")
+        for channel in ("stdout", "stderr"):
+            require(contract.digest(artifacts/(name+"."+channel+".log")) == row[channel+"_sha256"], "Raw command log changed")
+    require(receipt["raw_compiler_log_sha256"] == contract.digest(artifacts/"bindings.stdout.log"), "Raw exporter log changed")
+    modules = plan["mathematical_modules"] + plan["validation_modules"]
+    parsed = parse_compiler_output((artifacts/"bindings.stdout.log").read_text(encoding="utf-8"),
+                                   plan["roots"], mathematical_modules=modules)
+    saved = load_strict_json(artifacts/"compiler-records.json", 64*1024*1024)
+    require(saved == parsed, "Serialized compiler records differ from the independent raw-log parse")
+    require(receipt["root_records_sha256"] == canonical_sha256(parsed["declarations"])
+            and receipt["constructor_records_sha256"] == canonical_sha256(parsed["constructors"])
+            and receipt["dependency_records_sha256"] == canonical_sha256({k: parsed[k] for k in ("dependency_declarations", "dependencies")})
+            and receipt["axioms"] == sorted({a for d in parsed["declarations"] for a in d["axioms"]}),
+            "Receipt hashes or axioms differ from compiler evidence")
+    environment = validate_environment(repo)
+    require(all(receipt[k] == v for k, v in environment.items()), "Receipt package/toolchain differs")
+    version = (artifacts/"lean-version.stdout.log").read_text(encoding="utf-8")
+    require("version 4.33.0-rc2," in version and "d8b18978322de05a8f3dba51ef03cf5461676c17" in version, "Wrong compiler version log")
+    return {"status": "PASS_SOURCE_OBJECT_AND_RAW_LOG_REPARSE_ONLY", "fresh_compiler_replay": False,
+            "declarations": len(parsed["declarations"]), "parsed": parsed,
+            "full_core_accepted": False, "full_release_accepted": False, "RH": "OPEN", "Step4": "OPEN"}
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--repo", type=Path, default=REPO)
+    parser.add_argument("--query-plan", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--requested-commit")
+    parser.add_argument("--lake", default="lake")
+    parser.add_argument("--build-mode", choices=("warm", "cold"), default="warm")
+    parser.add_argument("--timeout", type=int, default=3600)
+    args = parser.parse_args()
+    output_existed = args.output_dir.exists()
+    try:
+        receipt = produce_receipt(args.repo, args.output_dir, load_strict_json(args.query_plan),
+            requested_commit=args.requested_commit, lake=args.lake, build_mode=args.build_mode, timeout=args.timeout)
+        print(json.dumps({"status": "PASS_SCOPED_COMPILER_EXPORT", "checked_commit": receipt["checked_commit"],
+                          "implementation_state": receipt["implementation_state"], "RH": "OPEN", "Step4": "OPEN"}))
+        return 0
+    except (OSError, ValueError, TypeError, KeyError, subprocess.SubprocessError) as exc:
+        failure = failure_envelope("compiler_receipt", exc)
+        if not output_existed and args.output_dir.is_dir():
+            target = args.output_dir/"failure.json"
+            if not target.exists():
+                target.write_text(json.dumps(failure, indent=2)+"\n", encoding="utf-8")
+        print(json.dumps(failure, indent=2))
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+

@@ -1,0 +1,1197 @@
+{
+  "schema": "OPICA2_OPEN_RESEARCH_V3",
+  "terminal_targets": [
+    {
+      "id": "OPICA2_T_A",
+      "path": "A",
+      "title": "Complete signed arithmetic upper or source-matched positive-observation comparison",
+      "proposed_lean_name": "Zeta23.OPICARound2.complete_native_signed_observation_quiet",
+      "status": "OPEN",
+      "tier": "ALTERNATIVE_TERMINAL_RESEARCH_TARGET",
+      "statement_contract": "Prove one independently sufficient source-matched arithmetic route: (a) a cofinal quiet upper for one fixed complete registered native high observation, with its exact rate theorem; or (b) for every hypothetical off-line witness, construct actual nonnegative observations of the same fixed-direction or phase-complete zero-measure pairings and an independent error bound strictly below their positive obstruction margin. No upper, positive observation, recovery budget or comparison premise is supplied by this contract.",
+      "dependencies": [],
+      "native_dependency_ids": [],
+      "native_source_scope": "The complete-signed branch uses exactly the registered full nativeRawHigh/nativeAbsorbedHigh object with every mask/collision/cross term. The observation branches use the literal actual zero-measure integral tests in S10/S17 with a proved physical arithmetic adapter, exact phase/margin and total recovery/history/source costs. These objects are distinct; one branch cannot borrow another branch's premise without a proved adapter.",
+      "statement_components": [
+        {
+          "formula": "There exists time:N->R with time(n)->infinity such that for every epsilon>0, eventually log(1+max(H(time(n)),0))/(2time(n))<=epsilon, for one fixed registered complete H."
+        },
+        {
+          "formula": "The three-unit-axis exponent 57/25+o(1)<5/2 controls only that paper-level subtrace and depends on the separately audited external result. It is not the full H upper; the complement/mixed-term estimate is missing."
+        },
+        {
+          "formula": "Separate observation alternative: for each hypothetical off-line witness construct the actual nonnegative observations and independently smaller comparison error required by S10 or S17, with exact source, phase, margin and recovery cost. No such construction or error upper is supplied."
+        }
+      ],
+      "source_refs": [
+        "SRC_CONSUMERS",
+        "SRC_WINDOW_RATE",
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "evidence_origin": {
+        "classification": "OPEN_TARGET_NOT_ESTABLISHED",
+        "note": "Existing conditional consumers and lower obstructions do not prove this premise."
+      },
+      "forbidden_substitutions": [
+        "No unit-axis-only substitution.",
+        "No omitted mask, collision or direct term.",
+        "A complete absolute majorant is acceptable only if it actually meets the required exponent for the unchanged object.",
+        "No small-T finite-mask pilot as a cofinal asymptotic proof.",
+        "The signed branch restrictions govern that branch; linear-observation branches require their own exact native adapter and full cost budget.",
+        "Do not replace three adapted tests by four explicit low-height tests or infer observation positivity from nonnegative test functions."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      },
+      "proposed_name_scope": "The inherited proposed name identifies the primary complete-signed branch only. Observation branches use their separately named S10/S17 consumers.",
+      "alternative_dependency_groups": [
+        {
+          "lane": "complete_signed_rate",
+          "ids": [
+            "OPICA2_S11"
+          ],
+          "native_dependency_ids": [
+            "NATIVE_RATE_AND_CUTS",
+            "NATIVE_SOURCE"
+          ],
+          "source_scope": "Exactly nativeRawHigh 1 2 1 (logSlackY 2 8 T) 2 T or nativeAbsorbedHigh 1 2 1 (by norm_num) (logSlackY 2 8 T) 2 T, including every signed correction.",
+          "missing_premise": "A cofinal independent complete upper meeting the zero-rate threshold."
+        },
+        {
+          "lane": "fixed_imaginary_observation",
+          "ids": [
+            "OPICA2_S10"
+          ],
+          "native_dependency_ids": [
+            "NATIVE_ZERO_PROFILES"
+          ],
+          "source_scope": "One fixed actual offcritical witness and S10 imaginary-direction compact integral. Reduce other quadrants by the genuine zeta symmetries.",
+          "missing_premise": "Actual nonnegative physical observation plus total error strictly below the fixed S10 margin."
+        },
+        {
+          "lane": "phase_complete_observation",
+          "ids": [
+            "OPICA2_S17"
+          ],
+          "native_dependency_ids": [
+            "NATIVE_FINITE_SPAN",
+            "NATIVE_OBSERVATION_RECOVERY"
+          ],
+          "source_scope": "Fixed actual independent canonical pair with S17 adapted tests, or the distinct four explicit first-cell tests under their height premise.",
+          "missing_premise": "Actual nonnegative physical observations plus independent total error below the corresponding margin, including nonvanishing coefficient amplitude and recovery cost."
+        }
+      ]
+    },
+    {
+      "id": "OPICA2_T_B",
+      "path": "B",
+      "title": "Actual native raw or fixed-filter approximation",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_probe_error_tends_to_zero",
+      "status": "OPEN",
+      "tier": "ALTERNATIVE_TERMINAL_RESEARCH_TARGET",
+      "statement_contract": "For the literal native dictionary prove d_N^2=q0-b_N^*G_N^(-1)b_N tends to zero, or supply actual finite coefficient vectors with residual norms tending to zero. A cofinal subsequence suffices. This is the inherited OPEN OPICA2_C1 target, not a new premise assumed by a wrapper. Alternatively prove the full fixed-filter approximation premise in S16, which independently implies RH without inverting B. The two premises are alternative routes; no equivalence of their norms is asserted.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_SOURCE",
+        "NATIVE_CAUSAL_COMPLETION"
+      ],
+      "native_source_scope": "Fixed sigma=1/4096, unchanged original one-copy source jPlus, actual c,a,T, v=c*jPlus, w=a*jPlus and g_n=n^(-1/2)D_log(n)w. Input norms are allowed to grow.",
+      "statement_components": [
+        {
+          "formula": "lim_(N->infinity)[q0-b_N^*G_N^(-1)b_N]=0; equivalently sufficient: exists finite x^(k) with ||v-sum_n x_n^(k)g_n||_2->0."
+        },
+        {
+          "formula": "Actual coefficient families must come with a proved whole-line residual bound including source/lag/output errors. Positive definiteness, monotone decrease, ill-conditioning and finitely many certificates do not prove the limit."
+        },
+        {
+          "formula": "Alternative: exists finite x^(k) with ||B(v-sum x_n^(k)g_n)||_2->0 for the one fixed B of S04. S16 gives sufficiency; this limit remains OPEN."
+        }
+      ],
+      "source_refs": [
+        "SRC_ORIGINAL_CONTRACTS",
+        "SRC_ORIGINAL_RESEARCH",
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "evidence_origin": {
+        "classification": "OPEN_TARGET_NOT_ESTABLISHED",
+        "note": "Existing conditional consumers and lower obstructions do not prove this premise."
+      },
+      "forbidden_substitutions": [
+        "No desired limit hidden in a structure field.",
+        "No uniformly bounded-input or exact-inversion requirement.",
+        "No replacement of v by the old completed input.",
+        "No variable-filter convergence without an applicable transported margin and separate implication.",
+        "No new project axiom for Nyman–Beurling or RH."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      },
+      "alternative_dependency_groups": [
+        {
+          "lane": "raw_optimal_Gram",
+          "ids": [
+            "OPICA2_P12",
+            "OPICA2_P19"
+          ]
+        },
+        {
+          "lane": "raw_explicit_primal",
+          "ids": [
+            "OPICA2_P05"
+          ]
+        },
+        {
+          "lane": "fixed_filtered_primal",
+          "ids": [
+            "OPICA2_S16"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OPICA2_T_C",
+      "path": "C",
+      "title": "Original-detector Schur upper or distinct contact-energy upper",
+      "proposed_lean_name": "Zeta23.OPICARound2.same_family_native_schur_upper",
+      "status": "OPEN",
+      "tier": "ALTERNATIVE_TERMINAL_RESEARCH_TARGET",
+      "statement_contract": "For each hypothetical off-line zero, fix a smaller positive beta and a legitimately generated same-packet cofinal family at an explicitly fixed phase. Independently bound the full original-detector complement loss on that family with an exponent strictly below its lower obstruction; alternatively prove the corresponding strictly smaller cumulative-energy upper for the separately defined full-contact construction.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_STEP123",
+        "NATIVE_CONTACT"
+      ],
+      "native_source_scope": "The original smooth detector and its complete complement are distinct from finite selected ground states and from full-contact nullsources. Bind all source, selector, phase, predecessor and aperture/time data to the same produced family.",
+      "statement_components": [
+        {
+          "formula": "On the selected family L_n->infinity with S_n>(1/2)exp(beta L_n), prove limsup_n log(1+max(S_n,0))/L_n<beta. A stronger all-selectors/subexponential upper is optional, not logically required for this family contradiction."
+        },
+        {
+          "formula": "The cumulative-energy alternative must define its exact full-contact outgoing observation and prove an upper exponent below that observation’s own lower law, including forcing, direct terms and the aperture/physical-time adapter."
+        },
+        {
+          "formula": "Complete same-packet existence and cofinality are conditional on the hypothetical zero; cofinality is separate for each parity and noncomputable. No simultaneous-aperture claim is introduced."
+        }
+      ],
+      "source_refs": [
+        "SRC_HISTORY_AUDIT",
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC",
+        "SRC_STEP123_PRODUCER"
+      ],
+      "evidence_origin": {
+        "classification": "OPEN_TARGET_NOT_ESTABLISHED",
+        "note": "Existing conditional consumers and lower obstructions do not prove this premise."
+      },
+      "forbidden_substitutions": [
+        "No inverse-capacity-only bound that omits forcing or direct complement.",
+        "No selected-shell or principal-minor proxy without proved transport.",
+        "No identification of original detector with full-contact nullsource.",
+        "No phase change or new selector between lower and upper."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_T_D",
+      "path": "D",
+      "title": "Native finite pole-neutral no-exit germ",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_first_boundary_no_exit",
+      "status": "OPEN",
+      "tier": "ALTERNATIVE_TERMINAL_RESEARCH_TARGET",
+      "statement_contract": "At every relevant generated first boundary of the actual finite pole-neutral path, prove an independent source-arithmetic restriction excluding a negative outgoing whole-kernel Schur germ, with the full parity/tie/inherited-kernel/seam structure. A regular justified nonmetric transport may be a proof method; the missing sign may not be assumed.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_PATH_D",
+        "NATIVE_STEP123"
+      ],
+      "native_source_scope": "Current Path D: T_a=D^2+aI, a=(L/(4pi))^2, fixed even/odd neutral seed constraints, metric G=B^*B and signed H=B^*M_KB. It is distinct from the full continuous Path C and from merely importing ESET.",
+      "statement_components": [
+        {
+          "formula": "On a C^2 cell with the whole kernel at contact, A(0)=B(0)=0 and C(0)>0, F(t)=A(t)-B(t)C(t)^(-1)B(t)^*. Prove actual outgoing F(t) is PSD on a genuine right neighborhood; at seams use the justified one-sided full germ and all registered compatibility data."
+        },
+        {
+          "formula": "F_prime(0)=A_prime(0), F_second(0)=A_second(0)-2B_prime(0)C(0)^(-1)B_prime(0)^*. PSD first derivative alone does not control its nullspace; strict PD gives a local interior-cell margin. No finite Taylor check covers every flat/seam branch."
+        },
+        {
+          "formula": "The global metric-compatible PSD-remainder proposal is already falsified: native H=-log(L)G+J yields d/dL tr(G^(-1)H)=-(K-2)/L+O(L)<0. The modified-prime control blocks geometry-only arguments but does not refute actual source-specific arithmetic."
+        }
+      ],
+      "source_refs": [
+        "SRC_PATH_D_START",
+        "SRC_PATH_D_DEEP",
+        "SRC_HISTORY_AUDIT",
+        "SRC_REVISED_SPEC"
+      ],
+      "evidence_origin": {
+        "classification": "OPEN_TARGET_NOT_ESTABLISHED",
+        "note": "Existing conditional consumers and lower obstructions do not prove this premise."
+      },
+      "forbidden_substitutions": [
+        "Do not reopen the already falsified global metric-compatible remainder as an untested premise.",
+        "Do not use C=H^(-1)H_prime/2 through a contact without integrability/regularity.",
+        "Do not omit odd/even ties, inherited kernels or prime seams.",
+        "Do not import positivity from ESET or a positive norm metric into signed stiffness.",
+        "The exact native no-exit-to-RH consumer still needs compatible formal evidence for any final claimed closure."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      },
+      "reusable_producer": "OPICA2_S15 is the existential fixed-aperture neutral producer; the stronger current Step1-3 quantitative same-packet producer retains its separate hypotheses and authority."
+    }
+  ],
+  "terminal_target_logic": {
+    "connective": "ALTERNATIVES_NOT_CONJUNCTIVE_PREREQUISITES",
+    "statement": "One valid independently proved terminal route with its full exact native consumer can close the goal. This file proves none of the terminal premises.",
+    "inherited_target_alias": {
+      "OPICA2_C1": "OPICA2_T_B"
+    },
+    "original_100_contracts": "IMMUTABLE_NOT_REPLACED_OR_RENUMBERED"
+  },
+  "research_lane_dispositions": [
+    {
+      "id": "L01",
+      "status": "DEFER_OPEN_FORMAL_SOURCE_BINDING_REQUIRED",
+      "title": "Autocorrelation logarithmic-window signed covariance",
+      "destination": "T_A",
+      "scope": "For fixed C>1, historical h=P^2(q*q)=q*j has Q^2, not current one-copy Q. Diagonal = ||U_h||_2^2*C*log(T)/zeta(2)+O(exp(-T/2)*T^(C/2)). Missing leaf: for every epsilon>0 and R>0 exists T>=R with signed offdiagonal O_C(T)<=exp(epsilon*T), composed with the same-source full rate theorem. The paper convolution identity already exists; formal transfer must bind the exact observations and enlarged horizon. Upper transfer j to h is one-way, no bounded reverse.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ]
+    },
+    {
+      "id": "L02",
+      "status": "DEFER_OPEN_SOURCE_ADAPTER_REQUIRED",
+      "title": "Suzuki local orbit on a fixed frequency interval",
+      "destination": "T_B",
+      "scope": "Original actual-source orbit on [1,2] has retained exponential type and exact work. Its independent subexponential bound is OPEN. Retain lossless-but-unstable, anticausal, theta-residual, symmetric-not-Hermitian and nonanalytic controls.",
+      "source_refs": [
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L03",
+      "status": "DEFER_OPEN_SOURCE_ADAPTER_REQUIRED",
+      "title": "Corrected prime-prefix OPEN-X",
+      "destination": "T_A/T_B",
+      "scope": "G_X=F_1X-B_X+F_ge2 with escaping continuum pulse and all prime powers. For every fixed epsilon in (0,1/2),eta>0, seek global residual O(X^eta). Zero convergence is unnecessary; ordinary PNT o(X^(1/2-epsilon)) is insufficient. Historical autocorrelation source remains distinct.",
+      "source_refs": [
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L04",
+      "status": "DEFER_OPEN_INDEPENDENT_CONSTRAINT",
+      "title": "Forced-profile boundary amplitude and actual sampling",
+      "destination": "S09/S10/S17",
+      "scope": "Existing boundaryAmplitude(rho)=zeta(rho)/b_rho and plateau iff zeta zero; seek an independent incompatible right-strip constraint. Do not infer from positive spectral density or sample Gram. General-parameter profile need not be L1; actual-zero cancellation yields the L1 profile. Real-spectrum quotients need their separate removable-zero proof.",
+      "source_refs": [
+        "SRC_REPO_REAUDIT",
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L05",
+      "status": "DEFER_OPEN",
+      "title": "Full-contact critical-line representer/cardinal annihilation",
+      "destination": "T_C",
+      "scope": "Exact exterior pairing annihilation on a superlinear distinct set of simple critical ordinates remains OPEN. Retain true fixed-aperture domain, source and compactness; no local-PSD or finite-sample replacement.",
+      "source_refs": [
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L06",
+      "status": "DEFER_RETAINED_ALTERNATIVES",
+      "title": "R002 unmasking and RES/TAIL/COFINAL outputs",
+      "destination": "terminal_target_logic",
+      "scope": "Global pair unmasking is not supplied by a block negative-index theorem. RES,TAIL,COFINAL are alternatives. COFINAL preserves exists L before forall K at each cofinal radius; TAIL uses one common threshold. No common finite cutoff requirement.",
+      "source_refs": [
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L07",
+      "status": "DEFER_OPTIONAL",
+      "title": "Finite-rank recovery with infinite-dimensional input",
+      "destination": "S08/S17",
+      "scope": "Current exact recovery API assumes finite-dimensional input. Generalization through a finite-dimensional observation range needs a separate boundedness proof; kernel inclusion alone is insufficient.",
+      "source_refs": [
+        "SRC_NATIVE_RECOVERY"
+      ]
+    },
+    {
+      "id": "L08",
+      "status": "DEFER_OPEN_UNIFORM_ESTIMATES",
+      "title": "Weighted-mixture endpoint and growing zero-jet spans",
+      "destination": "S17; optional C2/C3",
+      "scope": "Strict weight a>1/2 cannot be extended to a=1/2 by assertion. Growing/coalescing spans need common variation, actual multiplicity and source/recovery costs.",
+      "source_refs": [
+        "SRC_REPO_REAUDIT"
+      ]
+    },
+    {
+      "id": "L09",
+      "status": "DEFER_OPTIONAL_STRATEGY",
+      "title": "Moving sextic high-conductor OPEN-S",
+      "destination": "T_A",
+      "scope": "Alternative older route; not required for the fixed two-factor consumer. MS1 is already original full-scope infrastructure to reuse, not a new optional replacement root. If revived, test whether the all-row/nonreal-character OPEN-S assertion is stronger than zeta RH; retain complete signed rows, masks, conductor conditions, repeated-prime terms and uniformity in growing parameters. MS1 alone does not discharge these.",
+      "source_refs": [
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L10",
+      "status": "DEFER_REUSABLE_ESTIMATES",
+      "title": "Contact and selected-ground quantitative adapters",
+      "destination": "T_C/T_D",
+      "scope": "Same-interval forcing, full-future Green refinement, strict-even inverse comparison gamma>=p/(2K), exact compact-pair horizon and low-nullity repair control retain their source-specific hypotheses. No small same-state trial excess r_f/gamma follows automatically.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ]
+    },
+    {
+      "id": "L11",
+      "status": "NO_AGGREGATE_CLOSURE_FROM_UNIFORM_CONSTANTS",
+      "title": "Three-unit-axis summation limitation",
+      "destination": "T_A",
+      "scope": "57/25 is a subtrace exponent. Historical row counting still gives best aggregate exponent25/8>5/2 even with uniform individual constants; the complete mixed/complement estimate is missing.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ]
+    },
+    {
+      "id": "L12",
+      "status": "HISTORICAL_BENCHMARK_UNVERIFIED",
+      "title": "Baiying Liu October12 stronger numerical ceiling",
+      "destination": "external-benchmark register; not X01",
+      "scope": "Supplied manuscript2610.12234v2 Theorem27.1 claims Re rho<=B=(18*xi+7)/(18*xi+9)=0.87495701942009894612860385056145..., where xi in(0.38858,0.38859) solves1188xi^3-2160xi^2+171xi+190=0. Audit expressly did not inspect/rebuild its separate Lean proof. Corresponding Theta ceiling0.374957... is conditional on verified import. The unrelated Oct11 liu_scalar_fresh receipts do not verify this claim. Keep independently source-checked external7/8 lane X01 unchanged.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT",
+        "SRC_LIU_REPORTED_MANUSCRIPT"
+      ]
+    },
+    {
+      "id": "L13",
+      "status": "OUT_OF_SCOPE_AS_NATIVE_PREMISE",
+      "title": "Cross-framework positive metrics and audit frameworks",
+      "destination": "methodology only",
+      "scope": "QREG/ESET/Permansson/MCM/OODA/RACR may suggest methods or checks. No automatic equality to the signed native source/form, and no positivity transfer without proof.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ]
+    }
+  ],
+  "source_model_crosswalk": [
+    {
+      "id": "SOURCE_OLD_B02_B04",
+      "source": "h=(D^2-1/4)^2(q*q), transform H has Q^2",
+      "rational_factor": "R_old=(z-1/2)/[(z+1/2)(z+1)]",
+      "target": "-R_old*H*zeta_prime",
+      "adapter": "Paper h=q*j; contraction transfers suitable j upper bounds to h with the correct horizon enlargement, not conversely."
+    },
+    {
+      "id": "SOURCE_TRIANGLE_OCT13",
+      "source": "j=(D^2-1/4)^2 q, one Q",
+      "rational_factor": "R=(z-1/2)/[(z+1/2)(z+3/2)]",
+      "target": "-R*J*zeta_prime",
+      "adapter": "Multiplying both old operator and old input by (z+1)/(z+3/2) is boundedly causally invertible for nonnegative damping. This changes normalization, not the target numerator."
+    },
+    {
+      "id": "SOURCE_ROUND2_OCT25",
+      "source": "jPlus is literal delayed j, one Q",
+      "rational_factor": "R=(z-1/2)/[(z+1/2)(z+3/2)]",
+      "target": "V=R*JPlus, dictionary W=R*JPlus*zeta",
+      "adapter": "This new probe has no zeta-prime numerator. Establish its own nonvanishing/Laplace/source identities."
+    }
+  ],
+  "existing_reuse_dispositions": [
+    {
+      "id": "REUSE_C1",
+      "source": "Zeta23/OPICAFollowup/NormFirstTransfer.lean",
+      "roots": [
+        "sharp_norm_first_arsinh_bound",
+        "sharp_norm_first_scalar_attained",
+        "sharp_norm_first_log_comparison"
+      ],
+      "disposition": "Reuse strongest seminormed-group statement, scalar equality and positive-part/low-term companion; not a new missing root."
+    },
+    {
+      "id": "REUSE_CT1",
+      "source": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "disposition": "For 0<L<log2, positive sinc mass=2*exp(-L/2)*(1-exp(-L)); negative sinc mass zero; mass/L->2 and mass/L^2->infinity. Normalized local variation also diverges. Sinc squared is not Schwartz; use existing integrability/limit proof. Atoms at plus/minus exp(-L) violate the exact unit gap."
+    },
+    {
+      "id": "REUSE_CC_TOPOLOGY",
+      "source": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "disposition": "Controlled near-gap theorem already extends to continuous compact tests under its common variation premise. Retain the synthetic countercontrol F25."
+    },
+    {
+      "id": "REUSE_SQUARE",
+      "source": "Zeta23/OPICAFollowup/SquareDefect.lean",
+      "disposition": {
+        "roots": [
+          "square_actual_no_distribution_tempered_measure_repair",
+          "square_actual_no_selfdual_and_distribution_tempered_measure_repair"
+        ],
+        "scope": "Existing actual square result accepts arbitrary locally finite complex lattice measure plus a tempered distribution extending compact-test pairing; no total-variation-growth or global Schwartz-integrability premise is needed. Reuse this maximal scope.",
+        "limit": "This compiled single-square barrier does not automatically formalize the new arbitrary finite quadratic theorem S09 or generic C2/C4."
+      }
+    },
+    {
+      "id": "REUSE_CANONICAL_PAIR",
+      "source": "Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
+      "disposition": "Existing actual strict-strip/nonreal-kappa pair independence and weighted off-lattice negative-mass budget. No high-height, simple-zero, effective positive-test or uniform recovery claim."
+    },
+    {
+      "id": "REUSE_UNDAMPED",
+      "source": "Zeta23/CCM/NativeDampedCompletionOperator.lean",
+      "disposition": "Reuse genuine epsilon>=0 bounded causal L2 operator and norm<605/621, then instantiate the new target explicitly. A(1/2)=1/2 is removable, not a zero."
+    }
+  ],
+  "historical_requirements": "reference/prior_v2_1/round2_completeness/project_requirements_49_crosswalk.json",
+  "WP0_WP7": "reference/prior_v2_1/OPICA_Round2_PostGreen_Research_v2_2026-10-25.md section15",
+  "promotion_allowed": false,
+  "not_conjunctive_prerequisites": true,
+  "supplemental_foundation_register": {
+    "schema": "OPICA_ROUND2_SUPPLEMENTAL_FOUNDATION_REGISTER_V3_1",
+    "authority": "Historical paper/source scope and deferred research, not new formal proof",
+    "not_new_mandatory_core_families": true,
+    "original_registers_unchanged": true,
+    "AC_sources": [
+      {
+        "label": "A03",
+        "drive_id": "1rOzKqhrzDpceddpMRgUU0EIGe5SchNOL",
+        "title": "Genuine Signed Arithmetic: Round Three",
+        "drive_title_stem": "PRO_A_Round3_Genuine_Signed_Arithmetic_2026-10-13",
+        "url": "https://drive.google.com/file/d/1rOzKqhrzDpceddpMRgUU0EIGe5SchNOL/view",
+        "content_characters": 187094,
+        "content_utf8_sha256": "27a0e82d43b2591832251ec969b247d93f743e1add6ba8b2bf3edd663ef71062",
+        "content_evidence_file": "live_route_1rOzKqhrzDpceddpMRgUU0EIGe5SchNOL.txt",
+        "acquisition": "Parent freshly fetched via Google Drive connector; content/metadata in drive_route_reads_live.json. No new connector call by reviewer.",
+        "authority": "DERIVED/PAPER; no new Lean compilation; historical live-GitHub observations not current authority."
+      },
+      {
+        "label": "C05",
+        "drive_id": "1Vg5dsSBQ3kum3LTfzTgX8E5WQ9B4wvw6",
+        "title": "Native Exterior and Residue Observability",
+        "drive_title_stem": "PRO_C_C05_Round4_Native_Exterior_Observability_2026-10-12",
+        "url": "https://drive.google.com/file/d/1Vg5dsSBQ3kum3LTfzTgX8E5WQ9B4wvw6/view",
+        "content_characters": 177924,
+        "content_utf8_sha256": "86a7eb3d992c1b2e0eee6fc1438c06ca5e2553e887b8bea8c63fbeee66fd7bea",
+        "content_evidence_file": "live_route_1Vg5dsSBQ3kum3LTfzTgX8E5WQ9B4wvw6.txt",
+        "acquisition": "Parent freshly fetched via Google Drive connector; content/metadata in drive_route_reads_live.json. No new connector call by reviewer.",
+        "authority": "DERIVED/PAPER; no new Lean compilation; historical live-GitHub observations not current authority."
+      }
+    ],
+    "AC_findings": [
+      {
+        "id": "AC01",
+        "title": "A03 exact Gevrey native integer drive and logarithmic-squared cofactor reduction",
+        "source": "A03",
+        "locator": "Integrated §§2,4,9; Proof record6 pp28-31, esp Theorem A3-G2 and equations3.4,4.2,5.1",
+        "status": "DERIVED",
+        "exact_content": [
+          "r=1/4096; c_j=r/[j(j+1)]; q_r is the literal infinite uniform convolution; k_r=q_r_second-q_r/4; h=k_r*k_r, d=2r=1/2048. This is the historical two-copy source, distinct from Round2 jPlus.",
+          "N=sum n^(-1/2)delta_log(n), M=sum mu(n)n^(-1/2)delta_log(n), Pi=sum Lambda(n)n^(-1/2)delta_log(n); U=(tN)*h; F=Pi*h=M*U; N*F=U locally.",
+          "The source is Gevrey2; exact Poisson zero mode cancels by K(1/2)=K_prime(1/2)=0; |U(t)|<=C exp(-kappa exp(t/2)) for t>=0. Constants are source-dependent, no numerical kappa supplied.",
+          "For one fixed B with kappa*sqrt(B)>1/2, Fsmall_B(t)=sum_(n<=e^t/(B*t^2))mu(n)n^(-1/2)U(t-log n) satisfies |Fsmall_B(t)|<=2C/(sqrt(B)*t)*exp(-(kappa sqrt(B)-1/2)t).",
+          "F(t)=S_B(t)+Fsmall_B(t), with S_B=sum_(2<=m<B exp(d)t^2)(log m)/sqrt(m) sum_(n>e^t/(B t^2), mn<=e^(t+d)) mu(n)/sqrt(n) h(t-log(mn)). Both sums are finite. The sharp time-dependent threshold and full cross terms are load-bearing.",
+          "Alternate cutoff e^t/t^(2+eta), eta>0, gives independently superexponential small-divisor decay; one fixed B is not claimed to give every arbitrary decay rate."
+        ],
+        "missing_leaf": "For this one admissible fixed B, every epsilon>0: integral_(T0,infinity)e^(-2epsilon t)|S_B(t)|^2dt<infinity, or a weaker independently sufficient upper below the off-line-zero lower. OPEN-S in A03.",
+        "v21_coverage": "Broadly compatible with T_A and historical two-copy source crosswalk, but not explicitly named/formula-bound in main v2.1 report or 13 research_lane_dispositions. This is a more specific narrowed arithmetic leaf than generic complete signed upper.",
+        "final_spec_action": "Add an explicitly deferred A03_SHORT_COFACTOR lane with source proof, exact cutoff, controlled remainder, full signed quadratic form and independent-constraint target. Do not force it as a prerequisite to the filtered baseline."
+      },
+      {
+        "id": "AC02",
+        "title": "A03 exact composite support and both native coefficient signs",
+        "source": "A03",
+        "locator": "Proof record7 pp32-36, equations2.1-2.4,3.1-3.3,4.1,5.1-5.4",
+        "status": "DERIVED",
+        "exact_content": [
+          "For X=e^(t+d), Y=e^t/(B t^2), define A_Y(k)=sum_(n|k,n>Y)mu(n)log(k/n). Then S_B=sum_(k<=X)A_Y(k)/sqrt(k)h(t-log k).",
+          "Eventually Y>sqrt(X), and every active prime-power coefficient A_Y(p^j)=0, including repeated powers. This is exact cancellation after smoothing, not permission to delete prime powers from the original source.",
+          "If q>Y prime, qm<=X, then A_Y(qm)=-Lambda(m); in particular A_Y(2q)=-log2. If p,q<=Y<pq and p^2q<=X, p!=q, then A_Y(p^2q)=log p>0.",
+          "Ordinary fixed-ratio PNT places both signs in every sufficiently late fixed open source interval on which h has one sign. No short-interval uniformity theorem or sampled detector value is claimed.",
+          "The full energy is the finite double-cofactor/divisor Gram sum with genuine mu(n)mu(k), time-dependent n>Y(t),k>Y(t) INSIDE its integral, all pairs m,ell and source overlaps. Nonnegativity of this Gram supplies no upper."
+        ],
+        "controls": [
+          "Replacing mu by mu^2 preserves the same source/cutoff removal while the actual-input control grows like P_r(i/2)^2 exp(t/2)/zeta(2). Magnitudes and short cofactor count alone cannot close.",
+          "A hypothetical multiplicity-m zero leaves nonzero residue -mK(lambda); exact Gevrey shortening retains it. Do not infer a pointwise explicit decomposition of the atomic Mobius measure.",
+          "PNT bound gives only full energy upper exponent1-2epsilon, larger than individual zero lower2Re(rho)-1-2epsilon by2(1-Re(rho))>0."
+        ],
+        "v21_coverage": "Current generic signed controls do not explicitly retain the native composite-sign and exact-cutoff tests.",
+        "final_spec_action": "Attach these source-native falsifiers to A03_SHORT_COFACTOR; distinguish them from altered-prime synthetic controls and from modern high-mask arithmetic."
+      },
+      {
+        "id": "AC03",
+        "title": "A03 finite negative variation and delayed-defect adapter",
+        "source": "A03",
+        "locator": "Integrated §§2.2,5; Proof record8 pp37-39; Proof record9 locator pp40-44 reviewed through integrated statement only",
+        "status": "DERIVED",
+        "exact_content": [
+          "For fixed0<epsilon<1/2, exact completed fluctuation R_epsilon(T)=E_epsilon(T)-D_epsilon(exp(T+d)); E continuous nondecreasing, D bounded nondecreasing. Its only negative variations are diagonal prime-entry jumps.",
+          "R(T2)>=R(T1)-[Dstar-D(exp(T1+d))], with tail O_epsilon,h(exp(-2epsilon T1)(1+T1)^2). Hence bounded upper values along an unbounded horizon sequence bound the entire cumulative prefix energy. This does not apply to the dilating K2 scalar.",
+          "Conditional on the separately imported full contact and its original p_a, D_a=Wplus-p_a has exact onset inf supp D_a=2a. F=s_a,h-D_a*h, with s_a,h in every positively damped L2 space. Short-cofactor field is -D_a*h modulo controlled remainder.",
+          "Exact onset/delay/positive-realness controls the companion channel, not the remaining infinite defect tail."
+        ],
+        "v21_coverage": "T_C and L10 broadly preserve source-specific adapters, but this exact A03 same-source bridge and horizon-coverage consequence are not named in the main contracts.",
+        "final_spec_action": "Retain as a reusable paper adapter with contact assumptions, exact origin convention and full future boundary. Do not identify h with the canonical generator or a finite K2 ground."
+      },
+      {
+        "id": "AC04",
+        "title": "C05 original-contact stable input is a separate source construction",
+        "source": "C05",
+        "locator": "Integrated §§2-3; Proof recordM pp66-69; Proof recordA only integrated and M restatement reviewed, not entire Sobolev proof",
+        "status": "DERIVED",
+        "exact_content": [
+          "Assume PAPER full PSD compact-resolvent contact on I=[-a,a] using the zero-extension logarithmic form domain. The canonical real definite-parity generator f0 has real simple Fourier zeros, exact support endpoints and full-domain companion c=-P Wplus f0. E=G C[z]_(<=r-1), zero-extension f0 in H^(r-1+s) for0<s<1/2 but not H^r. Covers every nullity, including1 and2; companion has positive energy and is not null.",
+          "Original right exterior v(s)=(W*f0)(a+s), with V(p)=exp(ap){G(-ip)J(p)+F_c(-ip)}, J=xi_prime/xi(1/2+p). At native right zero lambda multiplicity m, residue=m exp(a lambda)G(-i lambda)!=0.",
+          "Historical a_N(t)=3exp(-t)sum_(n<=exp t)sqrt(n)-2exp(-t/2)floor(exp t), transfer A_N=c0*zeta(p+1/2), c0=(p-1/2)/((p+1/2)(p+1)). This is not the current floor completion with denominator p+3/2.",
+          "The actual causal completed kernel q_N=a_N*Wplus has exp(tau t)a_N,exp(tau t)q_N in L1 intersect L2 for every0<=tau<1/2. Q_N=A_N J=A_N_prime+C_N A_N, C_N=2/(p+1/2)+1/(p+1)+(1/2)digamma(p/2+1/4)-(1/2)log pi.",
+          "For fplus=T_a f0,cplus=T_a c, y_f(s)=(q_N*fplus+a_N*cplus)(s+2a), a_N*v=y_f. The advance and zero-before2a cancellation are literal. The first nonzero input jet is Y_f^(m-1)(lambda)=c0(lambda)exp(a lambda)G(-i lambda)zeta^(m)(rho), no extra factor m; all lower jets vanish."
+        ],
+        "v21_coverage": "NATIVE_CONTACT/T_C mention distinct exterior laws, but exact stable-input kernel and source/advance/domain identities are implicit. Current three-item source_model_crosswalk does not include this full-contact y_f construction.",
+        "final_spec_action": "Add a full-contact source identity row; retain its PAPER foundations and separate formalization cost. Never substitute Round2 v=c*jPlus or original-detector Schur source."
+      },
+      {
+        "id": "AC05",
+        "title": "C05 exact cumulative exponent and one-contact quiet-subsequence target",
+        "source": "C05",
+        "locator": "Proof recordF pp36-39, C05-HE; Proof recordM §§4,6 pp69-71",
+        "status": "DERIVED",
+        "exact_content": [
+          "Delta=sup over nontrivial zeros |Re(rho)-1/2| need not be attained. For each fixed epsilon>=0, lim_(T->infinity)T^(-1)log(1+integral_0^T exp(-2epsilon s)|v(s)|^2 ds)=2max(Delta-epsilon,0).",
+          "Every fixed right zero and0<=epsilon<Re(rho)-1/2 supply all-large-horizon positive exponential lower with no polynomial multiplicity penalty; no uniform derivative lower bound or rightmost zero.",
+          "Matching upper uses inherited weighted L2 only at alpha>Delta; take T limit before alpha decreases to Delta. At epsilon=Delta exponent0 does not establish bounded energy.",
+          "The same exact rate transfers by proved adapters to unchanged B detector and complete signed A remainder, with source-specific normalizations; at epsilon0 higher powers have O(sqrt(T)) prefix norm and diagonal O((1+T)^3), rather than positive-damping boundedness."
+        ],
+        "missing_leaf": "NQ: for the one original generated contact, liminf_(T->infinity)T^(-1)log(1+integral_0^T |(W*f0)(a+s)|^2 ds)=0. A construction of one such contact under any hypothetical zero suffices; no all-aperture/nullity/source uniformity is logically necessary.",
+        "v21_coverage": "T_C retains cumulative upper broadly. Preserve the exact fixed-contact quantifiers and formula to avoid imposing excessive uniformity or silently borrowing the native one-copy window theorem.",
+        "final_spec_action": "Bind C05_HE and NQ explicitly as distinct paper obligations/reuse entries; NQ remains OPEN, equivalent RH-strength upper information for this native construction."
+      },
+      {
+        "id": "AC06",
+        "title": "C05 complete local-observation/finite-jet annihilator no-go",
+        "source": "C05",
+        "locator": "Proof recordI pp49-53, Theorems3.1 and5.1",
+        "status": "DERIVED",
+        "exact_content": [
+          "Fix actual compact Dom(T) sources f_j selected solely from unchanged local contact data, entire source vector D_j and compact image vector C_j, with X=D J-C. Fix analytic observation Y=M X+E on Re(p)>0, invariant under specified far-prime controls.",
+          "Controls beyond P>exp(2a) use positive prime-base weights1+sigma*2*p^(-alpha)*cos(omega log p),sigma=+/-1,alpha=1/2-delta. Same weight on every power; local compression/domain/source/companion/smooth completion/prefix remain unchanged. The two-sign transfer difference has prescribed simple pole at every lambda=delta+iomega in open half-strip0<delta<1/2,omega>0.",
+          "If every such two-sign output is stable after every positive damping in some finite negative Sobolev order (no common order needed), holomorphy forces M(p)D(p) identically0. Canonical D0 has no right-half-plane zeros; annihilator rows form a free analytic module of rankN-1, generated by e_j^T-(D_j/D0)e_0^T.",
+          "Converse requires ACTUAL causal multiplier polynomial boundary growth and stable offset. Kernel/rank algebra alone is not the full causal sufficiency theorem.",
+          "For finite Laplace-jet observations sum_(k<=K)M_k X^(k)+E, all coefficients S_l=sum_(k>=l)binom(k,l)M_k D^(k-l) of J^(l) vanish identically; induct on highest pole order. No derivative-domain tower of compact null vectors follows."
+        ],
+        "control_losses": [
+          "Exact Lambda*1=log divisor identity generally fails; no full native functional equation or entire xi divisor.",
+          "The theorem classifies stable observations justified uniformly from preserved local data; it does not say every native global theorem is blind."
+        ],
+        "v21_coverage": "Broader than explicit twin-kernel and forced-Gram controls; not directly named in failure_control_registry, main report or 13 lane dispositions.",
+        "final_spec_action": "Add explicit finite_local_observation_annihilator control and require any proposed positive/bounded observation to identify the global native property escaping its hypotheses."
+      },
+      {
+        "id": "AC07",
+        "title": "C05 native jump-renormalization saturation and inadequate translated bound",
+        "source": "C05",
+        "locator": "Proof recordJ pp54-57, C05-JF equations1-9",
+        "status": "DERIVED",
+        "exact_content": [
+          "For native positive jump form J_R and kappa_R=2sum_(log n<=R)Lambda(n)/sqrt(n)-A0, define F_R=J_R-kappa_R||f||^2+2|<cosh(x/2),f>|^2-2|<sinh(x/2),f>|^2.",
+          "For supp f subset[-a,a], every R>=2a: F_R(f)=q_W(f). At full contact F_R(f0)=0; every far-prime variation changes positive jump and diagonal compensation equally, so this renormalized scalar is tail-blind.",
+          "A translated pole-neutral interior probe restores the residue-sensitive long-prime cross form. Positive Cauchy-Schwarz requires retaining divergent J_R, with kappa_R~4exp(R/2); smallest legal R=t+a+b gives only |C_b(t)|<=C exp(t/2), compatible with every right-strip exponent.",
+          "Subtracting compensation before positive Cauchy-Schwarz invalidates positivity."
+        ],
+        "v21_coverage": "S13 native ordered-gain TP2 falsifier is a DIFFERENT object and result. Metric-compatible transport failure is also distinct. This exact renormalized flux no-go is not explicitly represented in current failure_control_registry.",
+        "final_spec_action": "Add named native renormalized_jump_flux control alongside S13; retain exact compensator and source support rather than treating all positivity failures as one control."
+      },
+      {
+        "id": "AC08",
+        "title": "C05 lossless completed pair is still compatible with unstable causal scattering",
+        "source": "C05",
+        "locator": "Proof recordL pp62-65 and M §5 pp69-70",
+        "status": "DERIVED",
+        "exact_content": [
+          "Genuine completed native kernels define bounded causal A,Q with A_star Q+Q_star A=0 and (A+Q)_star(A+Q)=(A-Q)_star(A-Q). For legal x_T=1_[0,T]v the actual finite-horizon work equals the NEGATIVE full future flux; no favorable sign is established. Direct use on unknown global-L2 v is a domain error; positive damping does not preserve the boundary zero-real-part identity.",
+          "Explicit nonnative positive causal kernel is constructed from aplus=exp(-t/2)(1-sin(3t)/2), aminus=exp(-t)(1-sin(3t)/2), k=aplus*aminus, a=k_prime+4k. Completed divisor X(p)=p^4+(67/4)p^2+289/4 has quartet +/-1/4+/-i*3sqrt(15)/4.",
+          "A=(p+4)X/D, Q=(p+4)X_prime/D have exponentially decaying kernels at every weight tau<1/2, stable nonzero actual input for unstable exp(lambda t), and exactly the same lossless pair.",
+          "Scattering S=(X-X_prime)/(X+X_prime) has unit modulus on imaginary axis yet genuine right-half-plane poles; exact quartic necessary stability expression abc-c^2-a^2d=-135/4<0. Boundary-unitary full-line realization cannot replace stable causal inverse."
+        ],
+        "control_losses": [
+          "Literal native integer formula, gamma/pole completion, full entire native divisor, full supported contact and generator are absent.",
+          "No claim these controls preserve union of far-prime, native jump and actual zeta hypotheses."
+        ],
+        "v21_coverage": "L02 generically mentions lossless-but-unstable controls, but tied to Suzuki orbit. F17 twins do not subsume the stronger even-completed-divisor/global-coupling countermodel.",
+        "final_spec_action": "Bind the full C05 lossless scattering countermodel as its own control or explicit subrecord of L02; require bounded native output/range theorem beyond the lossless identity."
+      },
+      {
+        "id": "AC09",
+        "title": "OPEN-S is overloaded and source maps remain directional",
+        "source": "A03/C05",
+        "locator": "A03 Proof record8 OPEN-S p37; current v2.1 L09 moving-sextic OPEN-S; current source_model_crosswalk",
+        "status": "DERIVED",
+        "exact_content": [
+          "A03 OPEN-S is the old fixed two-copy short-cofactor signed mean-square law. Current v2.1 L09 OPEN-S is a moving sextic high-conductor/all-row target. They are different.",
+          "Historical A fixed legal dilating K2 scalar, B fixed detector, C full-contact generator, current original-detector Schur source and Round2 one-copy stable probe are distinct. Their support, aperture/time, parity, multiplicity and physical domain must be transported explicitly.",
+          "A03 h=q*j convolution gives a one-way upper adapter only with actual horizon enlargement; C05 stable-input advance2a and polarized delays are not this q convolution."
+        ],
+        "final_spec_action": "Use unique route IDs such as A03_SHORT_COFACTOR_OPEN_S and SEXTIC_HIGH_CONDUCTOR_OPEN_S and formula-level source identity ledger."
+      }
+    ],
+    "history_sources_and_findings": [
+      {
+        "id": "H01",
+        "status": "OPEN",
+        "claim": "Step 4 and RH remain open throughout the historical sources; every terminal source inequality or stability law remains a missing premise. Old snapshots of main and PR #288 must be superseded by the live #294 audit, not copied as current facts.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Research_Master_v2_9_Three_Path_Spectral_Pressure_Point_2026-10-12.zip!RH_Research_Master_v2_9_Three_Path_Spectral_Pressure_Point/01_CURRENT_SSOT/CURRENT_STATE_v2_9.md",
+            "sha256": "d9aa5ba7aef33844d77fa5ba0afad2e83df37696e95e17ba4e4f143db2456e0c",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\d9aa5ba7aef3_CURRENT_STATE_v2_9.md.txt"
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/01_First_Attempts_and_Findings.md",
+            "sha256": "29f88ca232213eb036e8a09b07470499824ad97a2e0a701206e8d925471fde25",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\29f88ca23221_01_First_Attempts_and_Findings.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H02",
+        "status": "DERIVED_FROM_HISTORICAL_FORMAL_INPUTS_PENDING_CURRENT_TYPE_CONFIRMATION",
+        "claim": "Actual retained predecessor nonnegativity plus same-state determinant regularity gives positive definiteness. Generic singular-safe Schur criteria remain useful, but a singular predecessor is not an open branch of that selected state. The independent remaining F1 sign is d-c*P^-1 c >= 0.",
+        "sources": [
+          {
+            "origin": "sources\\RH_All_Session_Outputs_2026-10-12.zip!outputs/05_Final_Proof_Campaign/RH_Final_Proof_Discovery_Expanded_Package.zip!RH_Proof_Discovery_Campaign/proofs/Root_Cross_Route_Proofs.txt",
+            "sha256": "0efe29073eb825203695585b5243bd4083a6c39f0252cda77c0ac0b1d5e7a082",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\0efe29073eb8_Root_Cross_Route_Proofs.txt.txt"
+          },
+          {
+            "origin": "sources\\RH_Research_Master_v2_9_Three_Path_Spectral_Pressure_Point_2026-10-12.zip!RH_Research_Master_v2_9_Three_Path_Spectral_Pressure_Point/07_PUBLICATIONS/RH_Research_Program_Single_Master_v2_9_2026-10-12.md",
+            "sha256": "b8df1e3c847750036881f3fd0411dc03830d2bb54b3c3dc10a5460a26f588d64",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\b8df1e3c8477_RH_Research_Program_Single_Master_v2_9_2026-10-12.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H03",
+        "status": "PAPER",
+        "claim": "The quartic Gevrey detector schedule K(L)=ceil(L^4), retained cutoff upper bound and exponentially negative detector depth are different statements. Reselecting the least bad finite ground retains a cutoff bound and negativity, not the detector depth, pole neutrality, source shape or smoothness.",
+        "sources": [
+          {
+            "origin": "sources\\RH_All_Session_Outputs_2026-10-12.zip!outputs/05_Final_Proof_Campaign/RH_Final_Proof_Discovery_Expanded_Package.zip!RH_Proof_Discovery_Campaign/proofs/Root_Cross_Route_Proofs.txt",
+            "sha256": "0efe29073eb825203695585b5243bd4083a6c39f0252cda77c0ac0b1d5e7a082",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\0efe29073eb8_Root_Cross_Route_Proofs.txt.txt"
+          },
+          {
+            "origin": "sources\\RH_Research_Master_v2_9_Three_Path_Spectral_Pressure_Point_2026-10-12.zip!RH_Research_Master_v2_9_Three_Path_Spectral_Pressure_Point/07_PUBLICATIONS/RH_Research_Program_Single_Master_v2_9_2026-10-12.md",
+            "sha256": "b8df1e3c847750036881f3fd0411dc03830d2bb54b3c3dc10a5460a26f588d64",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\b8df1e3c8477_RH_Research_Program_Single_Master_v2_9_2026-10-12.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H04",
+        "status": "LEAD",
+        "claim": "The universal sinc-product detector and the original explicit Gevrey bump used in the quartic approximation are different sources. A transfer needs its own endpoint moment correction, H1 error, parity, normalization and aperture/cutoff quantifier proof. Universal visibility alone does not prove that bridge.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Research_Master_v2_9_Three_Path_Spectral_Pressure_Point_2026-10-12.zip!RH_Research_Master_v2_9_Three_Path_Spectral_Pressure_Point/10_CROSS_ROUTE_SYNTHESIS/SINGLE_DETECTOR_SHARED_SOURCE_COMPOSITION_v2_9.md",
+            "sha256": "ae4c0466ae88da283e21b5fa35191450d091a899799d4a2039735d1863b145e8",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\ae4c0466ae88_SINGLE_DETECTOR_SHARED_SOURCE_COMPOSITION_v2_9.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H05",
+        "status": "PAPER",
+        "claim": "Latest historical A campaign compresses one sufficient criterion to the legal even K=2 vector (1,-4,6,-4,1)/sqrt(70). If RH fails, both positive and negative energy excursions have limsup exponential type Delta. Therefore eventual subexponential lower control suffices; positivity at merely cofinally many apertures does not.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/01_First_Attempts_and_Findings.md",
+            "sha256": "29f88ca232213eb036e8a09b07470499824ad97a2e0a701206e8d925471fde25",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\29f88ca23221_01_First_Attempts_and_Findings.md.txt"
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H06",
+        "status": "PAPER",
+        "claim": "A distinct Gaussian construction supplies real even legal pole-neutral negative witnesses at every sufficiently large aperture with zero-dependent linear cutoff ceil((gamma0+16)L/(2pi)). Any dominating superlinear schedule can be a cofinal opposing bound target. Its tail quantifier must not be confused with the K=2 excursion quantifier.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/01_First_Attempts_and_Findings.md",
+            "sha256": "29f88ca232213eb036e8a09b07470499824ad97a2e0a701206e8d925471fde25",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\29f88ca23221_01_First_Attempts_and_Findings.md.txt"
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H07",
+        "status": "PAPER_COMPOSITION",
+        "claim": "Cofinal K=2 negative excursions plus continuity and inherited whole-cell badness produce cofinally many first-bad cells with K*=2. Their predecessors are zero-dimensional; inverse-capacity is then zero and sigma=d. Controlling small predecessor eigenvalues alone cannot close this terminal case. At K=2 numerator identities are 24 and 12x, already real-rooted.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt"
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!05_REGISTERS/CROSS_PATH_INTERFACES.json",
+            "sha256": "034b7e2f1711992b414cbd862b3abd602cbf8682581749ef9ed40bdf453a9afd",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\034b7e2f1711_CROSS_PATH_INTERFACES.json.txt"
+          }
+        ]
+      },
+      {
+        "id": "H08",
+        "status": "PAPER",
+        "claim": "B complete scalar observation B_obs(t)=integral_[1,2] conjugate(a)V_t has the same unstable pole type Delta because the transfer G(p) has positive real part for Re p>0. Observability is no longer the decisive missing premise; control of actual forcing or work remains open.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/01_First_Attempts_and_Findings.md",
+            "sha256": "29f88ca232213eb036e8a09b07470499824ad97a2e0a701206e8d925471fde25",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\29f88ca23221_01_First_Attempts_and_Findings.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H09",
+        "status": "PAPER_PLUS_SOURCE_REPORTED_INTERVAL",
+        "claim": "Latest B native calculations rule out all-time conservation/nonincrease of its prescribed local energy (E prime(0)=0, E double-prime(0)>0), nonnegative native retarded impulse memory (negative fourth derivative of alpha at zero), and a specific absolute Euler/gamma small-gain split. Stable signed memory and long-time subexponential control remain open. Historical integration marked 8 Arb scripts blocked; no fresh mathematical replay was performed by this intake.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/01_First_Attempts_and_Findings.md",
+            "sha256": "29f88ca232213eb036e8a09b07470499824ad97a2e0a701206e8d925471fde25",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\29f88ca23221_01_First_Attempts_and_Findings.md.txt"
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!06_VALIDATION/COVERAGE_AND_LIMITATIONS.md",
+            "sha256": "107356db10bb64031a3e6eb2785bf347d7f8672e3db3b7d5fdcf72db8f1d754e",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\107356db10bb_COVERAGE_AND_LIMITATIONS.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H10",
+        "status": "PAPER",
+        "claim": "A bounded tempered boundary inverse differs from the original causal source by exactly G_plus, its unstable exponential contribution. Hermitian projection of the full reflected matrix boundary retains critical-line positive mass and discards the off-line skew-Hermitian part. A positive boundary measure therefore cannot replace the complete Weil form or supply the missing source-preserving causal identity.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/01_First_Attempts_and_Findings.md",
+            "sha256": "29f88ca232213eb036e8a09b07470499824ad97a2e0a701206e8d925471fde25",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\29f88ca23221_01_First_Attempts_and_Findings.md.txt"
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H11",
+        "status": "PAPER",
+        "claim": "C gives explicit same-aperture legal descent from a nonreal Fourier zero of a selected global parity ground, and repeated-numerator-root descents. The surviving first-bad ground has only real Fourier zeros; nonzero numerator roots are simple and the origin multiplicity is at most two. This is a restriction on a source transform/numerator, not on native zeta zeros.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/01_First_Attempts_and_Findings.md",
+            "sha256": "29f88ca232213eb036e8a09b07470499824ad97a2e0a701206e8d925471fde25",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\29f88ca23221_01_First_Attempts_and_Findings.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H12",
+        "status": "PAPER",
+        "claim": "C full-contact null source is definite parity and real-zero, lies in the supported logarithmic domain and has absolute reflected zero sampling. Its critical energy is positive and is balanced by negative off-line energy. It is not the original smooth detector or a finite Fourier ground, and excessive derivative-domain closure fails.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/01_First_Attempts_and_Findings.md",
+            "sha256": "29f88ca232213eb036e8a09b07470499824ad97a2e0a701206e8d925471fde25",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\29f88ca23221_01_First_Attempts_and_Findings.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H13",
+        "status": "OPEN",
+        "claim": "C native cardinal source gives an exact exterior pairing defect. Vanishing for one selected null source on a superlinear set of simple critical ordinates would suffice. Local supported operator range, evaluation annihilation of the kernel and form domination are equivalent missing conditions at contact, not independent available premises. A compactly supported global cardinal representer is ruled out and is stronger than needed.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/01_First_Attempts_and_Findings.md",
+            "sha256": "29f88ca232213eb036e8a09b07470499824ad97a2e0a701206e8d925471fde25",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\29f88ca23221_01_First_Attempts_and_Findings.md.txt"
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H14",
+        "status": "LEAD",
+        "claim": "BC-1 contact-source adapted local spectral orbit is proposed for independent audit. Absolute sampling and fixed interval separation can supply a local first derivative and exposed-pole observation without global Gevrey assumptions. No theorem identifies its work, C exterior pairing, G_plus or Hankel defect; such maps must be proved.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt"
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!05_REGISTERS/CROSS_PATH_INTERFACES.json",
+            "sha256": "034b7e2f1711992b414cbd862b3abd602cbf8682581749ef9ed40bdf453a9afd",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\034b7e2f1711_CROSS_PATH_INTERFACES.json.txt"
+          }
+        ]
+      },
+      {
+        "id": "H15",
+        "status": "PAPER_COUNTEREXAMPLE",
+        "claim": "Unit cosine-fourth sources have real Fourier zeros and derivative norm tending to zero as aperture grows, but converge weakly to zero and lose tightness. Fixed-aperture compactness plus bounded H1 does not justify an increasing-aperture compact limit.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H16",
+        "status": "PAPER_COUNTERMODELS",
+        "claim": "Positive prime-tail modifications, rotating capacity carrier, small-Hankel quartet, finite native-zero replacement, smooth-quartet addition preserving literal native prime atoms, and negative finite zero-indexed truncations preserve different hypothesis sets. They must not be merged into a fictitious one-model counterexample satisfying all zeta properties. Each candidate requires an exact premise-matching discriminator.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!05_REGISTERS/COUNTERMODEL_MATRIX.md",
+            "sha256": "5986c2c9fe035ff507f919001c6bb81c100ebc0f492f80dec19c14bb6484eb94",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\5986c2c9fe03_COUNTERMODEL_MATRIX.md.txt"
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H17",
+        "status": "PAPER_COUNTERMODELS",
+        "claim": "Older controls remain relevant: global aperture/Schur monotonicity failures; genuine K4/K5 signed secular residues even on positive canonical matrices; higher-order outgoing contacts; inverse moments; modified Q14 and coherent prime powers; high complement positivity with negative corrected low Schur block; complex squares versus modulus squares; positive theta and generic FE symmetries with off-line quartets.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Research_Master_v2_8_FINAL_Three_Path_Strategy_2026-10-12.zip!RH_Research_Master_v2_8_FINAL_Three_Path_Strategy/04_RESEARCH_WORKBENCH/THREE_PATH_FALSIFICATION_AND_ROUTE_TRIAGE_v2_8.md",
+            "sha256": "69ea7fdf0a679c62518a671ac0452b102c91cb8f8bb5f9448ab52cad013c4396",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\69ea7fdf0a67_THREE_PATH_FALSIFICATION_AND_ROUTE_TRIAGE_v2_8.md.txt"
+          },
+          {
+            "origin": "sources\\RH_All_Session_Outputs_2026-10-12.zip!outputs/05_Final_Proof_Campaign/RH_Final_Proof_Discovery_Expanded_Package.zip!RH_Proof_Discovery_Campaign/proofs/Root_Cross_Route_Proofs.txt",
+            "sha256": "0efe29073eb825203695585b5243bd4083a6c39f0252cda77c0ac0b1d5e7a082",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\0efe29073eb8_Root_Cross_Route_Proofs.txt.txt"
+          },
+          {
+            "origin": "sources\\RH_All_Session_Outputs_2026-10-12.zip!outputs/08_Analytic_Pressure_Point/RH_Analytic_Pressure_Point_Report_2026-10-12.md",
+            "sha256": "0ef5cc897ff100eb0d421b4af2c4ade4149f474446fdf211decc5cca0eaa49ac",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\0ef5cc897ff1_RH_Analytic_Pressure_Point_Report_2026-10-12.md.txt"
+          }
+        ]
+      },
+      {
+        "id": "H18",
+        "status": "HISTORICAL_SPECIFICATION_NOT_EXECUTION_AUTHORITY",
+        "claim": "The 49 original requirements retain genuine source/complex normalization, same witness/ground, shifts, strict even/odd/tie and seam coverage or proved bypass, complete error budget and quantifier order. RES, TAIL and COFINAL are alternatives. WP4 historical scope is full continuous K3 both parities on [1/512,log16]; this is a separate preserved historical commitment, not proof that a future OPICA spec automatically authorizes executing it.",
+        "sources": [
+          {
+            "origin": "sources\\RH_Research_Master_v2_6_Step3_Step4_Requirements_2026-10-12.zip!RH_Research_Master_v2_6/00_REQUIREMENTS/REQUIREMENTS_REGISTER_49_v2_6.json",
+            "sha256": "2bad4b8d54b9fad543477a57fe9ffd1e21b1ac75f2d8ba968122e171958365a9",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json.txt"
+          },
+          {
+            "origin": "sources\\RH_All_Session_Outputs_2026-10-12.zip!outputs/03_Requirements/RH_Step_3_and_4_Requirements_v1_0_2026-10-12.docx",
+            "sha256": "7360108eb04835d45bfb098cd47e53664b62fa5e50447bf4dd97262446a84078",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\7360108eb048_RH_Step_3_and_4_Requirements_v1_0_2026-10-12.docx.txt"
+          }
+        ]
+      },
+      {
+        "id": "H19",
+        "status": "HISTORICAL_SOURCE_REPORT_PENDING_LIVE_CONFIRMATION",
+        "claim": "Later OPICA ten-root synthesis supplies actual native window rates, finite zero-jet independence and fixed-basis sinc-squared negative mass budget. Fixed-basis norm equivalence gives no uniform constant for collisions, rescaling, growing dimension or changing bases. Quietness is an explicit open antecedent; positive exponential rate identities do not supply zero-rate upper bounds. Current source/CI must resolve old production-candidate labels.",
+        "sources": [
+          {
+            "path": "work/audit-novelty/TEN_ROOT_NOVELTY_SYNTHESIS_2026-10-24.md"
+          }
+        ]
+      },
+      {
+        "id": "H20",
+        "status": "HISTORICAL_SOURCE_SCOPE",
+        "claim": "R001 scalar shortcut is RH-equivalent; R002 pair-block negativity can be masked in the full form, so generic Pair-B/CCM identification is not established. Zero-shift/Riesz approaches have already fed the retained-state stack rather than remaining untouched fallback programmes.",
+        "sources": [
+          {
+            "origin": "sources\\Repository-Anchored-Historical-Route-Audit.txt",
+            "sha256": "bc89f83e1a9621d462215c2a869a559f2af1d1535d9d987793651690228a8f21",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\bc89f83e1a96_Repository-Anchored-Historical-Route-Audit.txt.txt"
+          }
+        ]
+      }
+    ],
+    "focused_history_audit": [
+      {
+        "id": "HFS01",
+        "severity": "P2",
+        "category": "FOUNDATIONAL_RESEARCH_SCOPE_OMISSION",
+        "title": "Later fixed-K2 and Gaussian reductions have no explicit disposition",
+        "spec_locators": [
+          {
+            "path": "OPEN_RESEARCH.json",
+            "pointer": "/research_lane_dispositions",
+            "lines": [
+              275,
+              410
+            ]
+          },
+          {
+            "path": "FINAL_BUILD_SPEC.md",
+            "lines": [
+              276,
+              282
+            ]
+          }
+        ],
+        "observation": "The thirteen named deferred lanes do not identify the later historical fixed legal K=2 scalar criterion, the distinct Gaussian zero-dependent linear-cutoff producer, or the cofinal K*=2/empty-predecessor consequence. No matching fixed-K2 excursion/Gaussian/BC-1 text was found in the controlling documents or the prior-v2.1 project/Drive findings searched. Generic RES/TAIL/COFINAL in L06 does not preserve these source-specific alternative quantified cuts.",
+        "why_material": "The fixed K2 source can bypass inverse-capacity and growing-cutoff work. Under the paper result, both positive and negative K2 excursions have type Delta if RH fails: cofinal positivity is therefore insufficient, whereas an eventual all-large-aperture subexponential lower suffices. Gaussian even witnesses instead occur on an entire tail at a zero-dependent linear schedule, so an appropriate cofinal opposing bound can suffice. Cofinal K*=2 cells have zero-dimensional predecessor and satisfy the real-root constraints automatically. Losing these distinctions risks pursuing a strictly harder or logically insufficient replacement.",
+        "authority": "PAPER for universal reductions and compositions; no fresh Lean proof asserted.",
+        "source_evidence": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/01_First_Attempts_and_Findings.md",
+            "sha256": "29f88ca232213eb036e8a09b07470499824ad97a2e0a701206e8d925471fde25",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\29f88ca23221_01_First_Attempts_and_Findings.md.txt",
+            "lines": [
+              75,
+              198
+            ]
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt",
+            "lines": [
+              33,
+              130
+            ]
+          }
+        ],
+        "current_disposition": "OMITTED_AS_EXPLICIT_NAMED_RECORD; not a mandatory core obligation",
+        "concrete_repair": "Append separately named DEFER_RETAINED_ALTERNATIVE records for HIST_FIXED_K2, HIST_GAUSSIAN_LINEAR_SCHEDULE and their terminal-carrier consequence. Bind cosine-fourth versus Gaussian source, exact quantifiers and paper references. Add controls rejecting cofinal-K2 positivity as closure and descent below the zero predecessor. Do not add them to FULL_CORE or require every route to be implemented.",
+        "blocks": "A claim that all known foundational research alternatives have been reconciled; does not independently block the selected finite-filter core."
+      },
+      {
+        "id": "HFS02",
+        "severity": "P2",
+        "category": "MISSING_SCOPED_FALSIFIERS",
+        "title": "Deferred Suzuki lane omits later native and boundary-information controls",
+        "spec_locators": [
+          {
+            "path": "OPEN_RESEARCH.json",
+            "pointer": "/research_lane_dispositions/1",
+            "lines": [
+              289,
+              300
+            ]
+          },
+          {
+            "path": "CONTROL_REGISTRY.json",
+            "pointer": "/inherited_controls",
+            "lines": [
+              1,
+              277
+            ]
+          },
+          {
+            "path": "FINAL_BUILD_SPEC.md",
+            "lines": [
+              270,
+              280
+            ]
+          }
+        ],
+        "observation": "L02 names lossless/anticausal/theta-residual/symmetric/nonanalytic controls, but no explicit subrecord preserves the later native initial local-energy increase, nonnegative-memory failure, genuine safe-half-plane absolute small-gain failure, arbitrarily small nonzero global Hankel defect with fixed positive rate, or the causal-versus-tempered/Hermitian boundary information loss. F11 positive forced Gram, F20 modified primes and F21 unrestricted signed-ray controls do not substitute for these particular native/source-aware statements.",
+        "why_material": "For the exact older Suzuki source, all-time local conservation/nonincrease and nonnegative retarded memory are stronger false targets, while stable signed memory/subexponential long-time growth remain open. A positive Hermitian boundary retains critical-line mass but discards the balancing off-line skew-Hermitian contribution. Boundary temperedness cannot be silently substituted for the original causal source; H*C=B_boundary+G_plus retains precisely the unstable term.",
+        "authority": "PAPER plus source-reported computer-assisted finite certificates; their historical integration reported eight flint-dependent replays blocked. This audit runs none of those mathematical tests.",
+        "source_evidence": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/01_First_Attempts_and_Findings.md",
+            "sha256": "29f88ca232213eb036e8a09b07470499824ad97a2e0a701206e8d925471fde25",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\29f88ca23221_01_First_Attempts_and_Findings.md.txt",
+            "lines": [
+              225,
+              297
+            ]
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt",
+            "lines": [
+              143,
+              165
+            ]
+          }
+        ],
+        "current_disposition": "PARTIALLY_INCLUDED_GENERIC_L02; later exact falsifiers not individually scoped",
+        "concrete_repair": "Add named L02 control subrecords with exact source, energy/transfer, preserved hypotheses, failed claim and evidence status. Include native E_double_prime(0)>0, alpha_fourth(0)<0, small nonzero Hankel nonclosure, full causal-boundary split, and Hermitian blind-boundary control. Require them only if the corresponding route/argument is used; never transfer them automatically to the October25 one-copy probe.",
+        "blocks": "Complete inherited falsification coverage for L02 and any revived boundary-positivity proof; does not create new core formal requirements."
+      },
+      {
+        "id": "HFS03",
+        "severity": "P2",
+        "category": "RECOVERED_COMPOSITION_NOT_DISPOSED",
+        "title": "BC-1 local contact-source orbit and its domain guards are absent",
+        "spec_locators": [
+          {
+            "path": "OPEN_RESEARCH.json",
+            "pointer": "/research_lane_dispositions/4",
+            "lines": [
+              320,
+              329
+            ]
+          },
+          {
+            "path": "OPEN_RESEARCH.json",
+            "pointer": "/terminal_targets/2",
+            "lines": [
+              166,
+              221
+            ]
+          }
+        ],
+        "observation": "L05 preserves cardinal/exterior annihilation and T_C distinguishes full contact from original detector, which is correct. Neither supplies an explicit disposition for BC-1: the proposed local spectral orbit formed from the real-zero full contact source using absolute reflected zero sampling. Associated X4 blind positive-boundary composition and X5 increasing-aperture non-tightness control are also not named.",
+        "why_material": "BC-1 is a specific upstream/downstream composition opened by later history, not another general demand to pursue every route. It proposes using H_a f=0 to constrain a local forcing observation while avoiding unsupported global Suzuki-domain or Gevrey regularity. Its stability remains OPEN, and no theorem identifies exterior pairing, Hankel defect, G_plus and work. The normalized cosine-fourth counterexample prevents increasing-aperture compactness from being borrowed from fixed-aperture domain results.",
+        "authority": "BC-1 is LEAD / PROPOSED_PAPER_INTERFACE_FOR_INDEPENDENT_AUDIT; X4/X5 are paper compositions/examples, not formal roots.",
+        "source_evidence": [
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt",
+            "lines": [
+              143,
+              232
+            ]
+          },
+          {
+            "origin": "sources\\RH_Three_Path_Round1_Review_and_Round2_Handoff_2026-10-12.zip!01_REPORTS/02_Cross_Path_Synthesis_and_Next_Research.md",
+            "sha256": "30f1da59c3a0a2e5f92be20b3521f7a57b40804a98a0f86e52d266adf12e9099",
+            "text_path": "work\\opica-round2-foundation-audit\\project_history\\30f1da59c3a0_02_Cross_Path_Synthesis_and_Next_Research.md.txt",
+            "lines": [
+              255,
+              276
+            ]
+          }
+        ],
+        "current_disposition": "L05_INCLUDED; BC-1/X4/X5_OMITTED_AS_EXPLICIT_DISPOSITION",
+        "concrete_repair": "Append DEFER_OPEN_SOURCE_ADAPTER_REQUIRED record CONTACT_LOCAL_ORBIT_BC1, linked to L02 and L05, and preserve absolute sampling, reflected conjugations, fixed separated interval, local first-derivative scope and no assumed global regularity. Add the boundary-blindness and aperture-nontightness controls. Do not make BC-1 a prerequisite of the new causal baseline.",
+        "blocks": "Complete history/composition disposition only."
+      },
+      {
+        "id": "HFS04",
+        "severity": "P3",
+        "category": "REFERENCE_WORDING_CONFLICT",
+        "title": "Inherited S4-01 summary overstates the condition for a conditional theorem",
+        "spec_locators": [
+          {
+            "path": "reference/prior_v2_1/round2_completeness/project_requirements_49_crosswalk.json",
+            "pointer": "/requirements/16/carry_forward",
+            "lines": [
+              349,
+              360
+            ]
+          },
+          {
+            "path": "FINAL_BUILD_SPEC.md",
+            "lines": [
+              14,
+              16
+            ]
+          }
+        ],
+        "observation": "The inherited carry_forward says a conditional wrapper is permissible only when its premise is proved. The main v3 spec correctly allows an implemented hypothesis -> RH conditional theorem while keeping the hypothesis OPEN. The original requirement concerned using that premise for a completed proof, not banning proof of conditional implications.",
+        "why_material": "Taken literally as a current acceptance instruction, the summary could wrongly reject legitimate conditional sufficiency consumers or blur the distinction between proving an implication and proving its premise.",
+        "authority": "Instruction/claim-boundary clarification, not new mathematics.",
+        "current_disposition": "MAIN_SPEC_CORRECT; inherited summary ambiguous",
+        "concrete_repair": "Preserve the inherited file bytes and append a v3 clarification: conditional sufficiency theorems are valid partial results; applying them to claim closure requires independent proof of their premises. No acceptance flag for the open premise follows from compiling the wrapper.",
+        "blocks": "No core blocker; resolves an avoidable reference conflict."
+      },
+      {
+        "id": "HFS05",
+        "severity": "P3",
+        "category": "HISTORICAL_LOCATOR_RESOLUTION",
+        "title": "49-requirement crosswalk retains prior-version destination strings",
+        "spec_locators": [
+          {
+            "path": "reference/prior_v2_1/round2_completeness/project_requirements_49_crosswalk.json",
+            "pointer": "/requirements"
+          },
+          {
+            "path": "FINAL_BUILD_SPEC.md",
+            "lines": [
+              276,
+              282
+            ]
+          }
+        ],
+        "observation": "All49 IDs and original paragraph scopes are preserved, but several round2_targets point to prior-v2.1 prose/schema vocabulary rather than resolved v3 destinations: TARGET-02 main section4 now means file footprint; FALS-02 main section10.4 does not exist in v3; NUM-04 main section14 now describes historical obligations. The target PROJ identifiers/global_invariants/native_prerequisites refer to inherited reference schemas unless a current alias is supplied.",
+        "why_material": "A reader or future validator should not count an old target string as a resolved current acceptance destination. This is mapping maintenance rather than evidence that the mathematical requirement was omitted.",
+        "authority": "Provenance/mapping observation.",
+        "current_disposition": "ALL49_INCLUDED; several destination locators are historical",
+        "concrete_repair": "Append an explicit v3 requirement-resolution map with current file+JSON pointer/section+status for all49, retaining prior strings as historical provenance. Resolve to REUSE, current contract, applicable terminal lane, deferred research, or route-specific bypass; do not require all historical alternatives to enter FULL_CORE.",
+        "blocks": "A fully machine-resolved current requirement crosswalk, not the correctness of the preserved49 paragraphs."
+      }
+    ],
+    "scope_policy": "Native source identities and quantifiers must be proved for each composition. Deferred historical controls are required only when applicable to the selected argument; archive inclusion alone is not a completed disposition.",
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "current_requirement_aliases": "PAPER_CROSSWALK.json#/requirement_destination_aliases",
+  "implementation_promotes_no_terminal": true
+}

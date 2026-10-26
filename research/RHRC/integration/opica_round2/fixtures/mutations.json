@@ -1,0 +1,198 @@
+{
+  "schema": "OPICA2_MUTATION_FIXTURE_V1",
+  "mutations": [
+    {
+      "id": "R2M01",
+      "mutation": "wrong source Q squared",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M02",
+      "mutation": "missing causal delay",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M03",
+      "mutation": "removable A(1/2) set to zero",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M04",
+      "mutation": "zero dictionary index",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M05",
+      "mutation": "v-shift Gram substituted for w-shift Gram",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M06",
+      "mutation": "complex transpose without conjugation",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M07",
+      "mutation": "jet factorial omitted",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M08",
+      "mutation": "repeated nodes treated independent",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M09",
+      "mutation": "integer truncation claimed L2 convergent",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M10",
+      "mutation": "omitted target tail",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M11",
+      "mutation": "lag cutoff used as output cutoff",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M12",
+      "mutation": "coefficient change with stale source budget",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M13",
+      "mutation": "noncausal input leakage omitted",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M14",
+      "mutation": "varying filter norm used without witness ratio",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M15",
+      "mutation": "NaN or Infinity",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M16",
+      "mutation": "negative error budget",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M17",
+      "mutation": "duplicate JSON key",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M18",
+      "mutation": "boolean used as integer",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M19",
+      "mutation": "fraction with zero denominator",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M20",
+      "mutation": "inward-rounded interval endpoint",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M21",
+      "mutation": "forged source/tree hash",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M22",
+      "mutation": "missing formal lane",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M23",
+      "mutation": "truncated compiler sentinel",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M24",
+      "mutation": "private axiom closure omitted",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M25",
+      "mutation": "copied signature masquerading as independent consumer",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M26",
+      "mutation": "source-only graph claim promoted",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M27",
+      "mutation": "unknown ancestor extension version",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M28",
+      "mutation": "old OPEN claim changed",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M29",
+      "mutation": "unauthorized source file",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M30",
+      "mutation": "stale generated products checked only after rewriting",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M31",
+      "mutation": "baseline projection used without current compatibility",
+      "expected": "REJECT",
+      "implemented": false
+    },
+    {
+      "id": "R2M32",
+      "mutation": "current compatibility used without frozen-contract replay",
+      "expected": "REJECT",
+      "implemented": false
+    }
+  ],
+  "not_yet_implemented_in_repository": true
+}

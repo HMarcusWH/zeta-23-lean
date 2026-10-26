@@ -1,0 +1,2755 @@
+{
+  "schema": "OPICA2_SOURCE_REGISTER_V3_1",
+  "merged_base": "adab10a37207f75b9a8b415a0fe9eadca2e4c9aa",
+  "merged_tree": "0506bca8ffe613e9cd9ab844650a1141d4494f66",
+  "frozen_source": "416aec21d4d6634675639b5397cc300d1f826e34",
+  "spec_package": {
+    "sha256": "e5914b423f0ec66d13e2d0933edadc04ccc82a560191ce6fa78fd65bcf93efa5",
+    "authority": "User-supplied final implementation specification, not proof"
+  },
+  "inputs": [
+    {
+      "path": "paper/ROUND2_ORIGINAL_25.json",
+      "sha256": "2374df94db84eaeb2d97bd8b402ac86b267958cb159724445c1b8ced88da3c15"
+    },
+    {
+      "path": "paper/ROUND2_V2_1.json",
+      "sha256": "18d17ee9cc18c94e13293051f0744a5aacafc65110e99ea56f82cf13aef61a6c"
+    },
+    {
+      "path": "paper/ROUND2_RESEARCH.md",
+      "sha256": "84d39bdbb6bc9a56a6f6d6ef15958ff21e5e1dd03234dd498e5e50e2d3464e9c"
+    },
+    {
+      "path": "paper/DEEP_SEARCH.md",
+      "sha256": "84d05886eb1a7708732aa90262d5ccba3aa9c94fcf23ac9f8a4fcda4494f921b"
+    },
+    {
+      "path": "paper/ROUND2_POSTGREEN_V2_1.md",
+      "sha256": "8714a068beb490ae4f35f853e6723fc88d670d248f145ece84b83e3694dcd444"
+    }
+  ],
+  "audit_amendments": {
+    "schema": "OPICA_ROUND2_BUILD_PLAN_AUDIT_AMENDMENTS_V3_1",
+    "source_package_sha256": "e5914b423f0ec66d13e2d0933edadc04ccc82a560191ce6fa78fd65bcf93efa5",
+    "source_spec_sha256": "70b49fe28743797eeb68d069039b1c0fe69c9fae7ce8473465ba83b34b0d1cd5",
+    "authority": "AUDIT_AMENDMENT_SET; supplied files and repository unchanged; not compiled implementation, human release approval or proof",
+    "user_scope": "Check the entire build plan now; begin implementation only after PR294 is actually merged.",
+    "mathematical_scope_unchanged": {
+      "required_core_families": 40,
+      "optional_families": 6,
+      "terminal_alternatives_open": 4,
+      "original100_unchanged": true,
+      "original25_unchanged": true
+    },
+    "application_status": "CONCRETE_REPAIRS_RECORDED_IN_AUDIT_OVERLAY; NOT_APPLIED_TO_SUPPLIED_PACKAGE_OR_REPOSITORY",
+    "amendments": [
+      {
+        "id": "A14",
+        "title": "User-controlled merged-base transition",
+        "source_findings": [
+          "INT-01"
+        ],
+        "destinations": [
+          "AGENT_START_HERE.md",
+          "FINAL_BUILD_SPEC.md §2 and Wave0",
+          "INTEGRATION_PATCH_PLAN.md §3"
+        ],
+        "old": "The static validator admits the frozen416 source, and package prose allows a stacked branch from it.",
+        "new": "Implementation begins only after observed PR294 merge, as the user requires. Keep416/0506 as immutable historical source/evidence. At merge, record actual merge/main commit, tree, parents and merge evidence; compare source/modes/blobs/toolchain/imports and refresh current compiler/workflow disposition in a separate versioned build-base lock. Static plan PASS never supplies merge evidence."
+      },
+      {
+        "id": "A15",
+        "title": "Complete package inventory",
+        "source_findings": [
+          "INT-02"
+        ],
+        "destinations": [
+          "PACKAGE_MANIFEST.json",
+          "tools/spec_validate.py",
+          "tools/test_spec_tools.py"
+        ],
+        "old": "Outer manifest omits two nested manifests; validator never reads PACKAGE_MANIFEST.",
+        "new": "Hash every package file except the root manifest itself, including both nested manifests. Verify exact census and digest/size for all records; reject duplicate/missing/unlisted/unsafe paths and disallowed links/modes. Add nested-manifest and extra-file mutations. A manifest establishes integrity only relative to an authenticated root digest; it is not human approval."
+      },
+      {
+        "id": "A16",
+        "title": "Bind static metadata to actual authenticated source and compiler evidence",
+        "source_findings": [
+          "INT-03",
+          "INT-04"
+        ],
+        "destinations": [
+          "tools/spec_validate.py",
+          "ROOT100_AUDIT.json",
+          "UPSTREAM_SYMBOLS.json",
+          "templates/FILE_CLASS_RULES.json"
+        ],
+        "old": "Original100 loaded but not compared; symbol names/audit pins and classifier precedence are not checked by the supplied plan verifier.",
+        "new": "Check exact original100 contract/name sets, audit pins and source/proof hashes against immutable originals; resolve module/kind/type/axioms/consumer records in authenticated compiler output. Resolve upstream full names and source hashes, transitive imports and minimal/full/optional closures. Check all first-match classifications and unchanged old classifications. Preserve the independent raw-log reparse as a distinct compiler-evidence gate. The present independent audit confirms the supplied values are correct; the repair concerns guard coverage."
+      },
+      {
+        "id": "A17",
+        "title": "Schema, semantic and early-failure receipt validation",
+        "source_findings": [
+          "INT-05"
+        ],
+        "destinations": [
+          "schemas/",
+          "tools/test_spec_tools.py",
+          "INTEGRATION_PATCH_PLAN.md §4",
+          "FINAL_BUILD_SPEC.md §7 and §11"
+        ],
+        "old": "Plan schema check inspects only top-level additionalProperties=false; deleting receipt.required passes.",
+        "new": "Pin/meta-validate complete schemas and use positive/negative instances. Runtime strict loading and independent recomputation must also enforce canonical rationals, matched index/coefficient arrays, nonnegative complete budgets, valid regions, exact clause/source identities and evidence class. Define a separate failure envelope for stages that fail before exporter/log/type objects exist; never fabricate success fields to serialize an error."
+      },
+      {
+        "id": "A18",
+        "title": "Required late dual-certificate slice",
+        "source_findings": [
+          "INT-06"
+        ],
+        "destinations": [
+          "MODULE_DAG.json / DualCertificates.build_slice",
+          "MODULE_IMPLEMENTATION_GUIDE.md / DualCertificates"
+        ],
+        "old": "DualCertificates is required but its slice is named OPTIONAL_MULTI_ZERO.",
+        "new": "Use LATE_REQUIRED_MULTI_ZERO. Preserve mandatory P17/P18 in full-core coverage, facade and workflow lanes. Their omission remains legitimate only for an explicitly labelled MINIMAL_ONLY milestone."
+      },
+      {
+        "id": "A19",
+        "title": "Explicit clause-to-control acceptance bindings",
+        "source_findings": [
+          "MATH-009"
+        ],
+        "destinations": [
+          "ACCEPTANCE_MATRIX.json",
+          "CONTROL_REGISTRY.json",
+          "planned PAPER_CROSSWALK.json",
+          "FINAL_BUILD_SPEC.md §13"
+        ],
+        "old": "Acceptance has generic negative_controls flags but no family/clause→control→expected-outcome binding.",
+        "new": "Use control_binding_overlay.json as a proposed binding layer:46 families,143 component clauses, expected scientific dispositions and evidence classes, with actual evidence references initially null and acceptance false. Refine the audit-proposed component splits against the complete normative source before freezing expected types. Require scoped review for NOT_APPLICABLE; reject a global controls PASS as coverage. Integrate the mapping into already authorized planned metadata paths, or version the footprint before introducing a new path."
+      },
+      {
+        "id": "A20",
+        "title": "Scope the arbitrary-kernel S01e generalization",
+        "source_findings": [
+          "MATH-006"
+        ],
+        "destinations": [
+          "MODULE_IMPLEMENTATION_GUIDE.md / S01e",
+          "independent expected types and native S01 consumers"
+        ],
+        "old": "The arbitrary causal-w generalization could be read as including Möbius residual rigidity.",
+        "new": "A causal nonzero w in L²(0,∞), or with local L² regularity on every tested prefix, and an exact finite left support endpoint yields the shifted-prefix Gram positivity result. Support alone does not ensure finite Gram entries: w(t)=1_(0,1)(t)/t is a counterexample. Residual coefficient rigidity additionally requires the actual local relation v=Σμ(n)g_n on that interval. Discharge the relation in the native instance through the source/convolution identities. Keep the inherited source record unchanged and reject an arbitrary target0 used to infer coefficients→μ."
+      },
+      {
+        "id": "A21",
+        "title": "S07 prerequisite and semantic-independent consumer evidence",
+        "source_findings": [
+          "MATH-007",
+          "MATH-008"
+        ],
+        "destinations": [
+          "MODULE_IMPLEMENTATION_GUIDE.md / S07",
+          "ACCEPTANCE_MATRIX.json",
+          "FINAL_BUILD_SPEC.md §11"
+        ],
+        "old": "The critical-mode split is acknowledged, while generic independent-consumer flags can be mistaken for semantic evidence.",
+        "new": "Freeze distinct S07 clauses for conditional boundary-pole/input cost, actual source-visible critical-mode/counting evidence, and unconditional nonrange. Missing visible-mode proof leaves that exact clause and full core unaccepted; the minimal baseline remains separate. Signature/hash mutation checks are provenance checks, not proof of independently reasoned expected types. Record full quantifiers, construction-premise discharge and actual independent review without auto-approving human review or requiring an unconditional off-line zero example."
+      },
+      {
+        "id": "A22",
+        "title": "A03/C05 explicit research and control carry-forward",
+        "source_findings": [
+          "MATH-001",
+          "MATH-002",
+          "MATH-003",
+          "MATH-004",
+          "MATH-005"
+        ],
+        "destinations": [
+          "OPEN_RESEARCH.json",
+          "CONTROL_REGISTRY.json",
+          "FINAL_BUILD_SPEC.md §14"
+        ],
+        "old": "The explicit register retains13 lanes/3 source rows/25 controls but does not name the additional A03/C05 leaves and distinct controls.",
+        "new": "Carry AC01–AC09 from supplemental_foundation_register.json. Add A03_SHORT_COFACTOR_OPEN_S with exact historical two-copy source, cutoff/remainder, complete signed quadratic and native composite-sign/μ²/residue controls; distinguish it from the moving-sextic OPEN-S. Add the original C05 contact source/stable input/advance/domain, exact cumulative exponent and one-contact NQ target. Name finite-local-observation/finite-jet annihilator, renormalized jump-flux and even-completed-divisor lossless-scattering controls with their precise preserved/lost hypotheses. These are PAPER/OPEN or deferred controls, not additional mandatory core Lean families."
+      },
+      {
+        "id": "A23",
+        "title": "Later historical alternatives and source-aware failures",
+        "source_findings": [
+          "HFS01",
+          "HFS02",
+          "HFS03"
+        ],
+        "destinations": [
+          "OPEN_RESEARCH.json",
+          "CONTROL_REGISTRY.json",
+          "FINAL_BUILD_SPEC.md §14"
+        ],
+        "old": "Fixed-K2/Gaussian/empty-predecessor, BC-1 and several later native/boundary controls lack explicit named dispositions.",
+        "new": "Retain separate PAPER/DEFERRED fixed-K2 excursion and Gaussian linear-schedule routes. Fixed-K2 needs eventual all-large-aperture subexponential lower control; cofinal positive values are insufficient. Gaussian tail-negative witnesses permit an appropriate cofinal opposing bound. Preserve cofinal K*=2/zero-predecessor warning, scalar-work observation, native E″(0)>0/memory and small-gain failures, nonzero small Hankel control, causal-boundary G_plus/Hermitian blindness and increasing-aperture non-tightness. BC-1 stays a LEAD requiring actual local/source/domain adapters. Do not transfer old-source failures automatically to the new probe or add these alternatives as conjunctive core obligations."
+      },
+      {
+        "id": "A24",
+        "title": "Current requirement aliases and conditional-proof wording",
+        "source_findings": [
+          "HFS04",
+          "HFS05"
+        ],
+        "destinations": [
+          "requirement_destination_aliases_v3_1.json",
+          "FINAL_BUILD_SPEC.md §14",
+          "planned PAPER_CROSSWALK.json"
+        ],
+        "old": "All49 IDs survive, but some destination strings refer to old section numbering and S4-01 wording overrestricts conditional wrappers.",
+        "new": "Use the verified49-ID/8-WP current alias map while retaining the historical crosswalk bytes. Section titles and JSON pointers are primary locators; refresh supplemental line locators after edits. Proving P→RH while P remains OPEN is a valid conditional theorem; claiming closure/application requires independent proof of P. Historical4A/4B/4C, modern PathsA–D and legacy CI/requirements tracks remain separately mapped."
+      }
+    ],
+    "all_new_acceptance_flags": false,
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "control_binding_overlay_sha256": "6c4a253bf2112368e643c394d797aa03dc93bef5d7635c3772ced3511f650147",
+  "module_dag": {
+    "schema": "OPICA_ROUND2_MODULE_PLAN_V3_0",
+    "modules": [
+      {
+        "module": "Zeta23.OPICARound2.CausalProbe",
+        "path": "Zeta23/OPICARound2/CausalProbe.lean",
+        "contract_ids": [
+          "OPICA2_P01",
+          "OPICA2_P02",
+          "OPICA2_P03",
+          "OPICA2_P04",
+          "OPICA2_P05"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "CORE_M1",
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.CCM.NativeDampedCompletionPointwiseBridge",
+          "Zeta23.CCM.NativeCausalRangeObstruction",
+          "Zeta23.CCM.NativeFloorCompletionSource",
+          "Zeta23.CCM.NativeCompletionIntegerKernel",
+          "Zeta23.CCM.NativePositiveCompletionComplexLaplace",
+          "Zeta23.CCM.OriginalSincWeightedPoleMoments",
+          "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
+          "Zeta23.ExceptionalZero.RHTerminalConfigAttempt",
+          "Zeta23.OPICAFollowup.MultiplicityTail"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/CausalProbe.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.delayed_original_source",
+          "Zeta23.OPICARound2.native_probe_transforms",
+          "Zeta23.OPICARound2.native_probe_integer_action",
+          "Zeta23.OPICARound2.native_probe_zero_separation",
+          "Zeta23.OPICARound2.rh_of_native_probe_range"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.ProbeGram",
+        "path": "Zeta23/OPICARound2/ProbeGram.lean",
+        "contract_ids": [
+          "OPICA2_P06",
+          "OPICA2_P07",
+          "OPICA2_P08",
+          "OPICA2_P09",
+          "OPICA2_P10",
+          "OPICA2_P11",
+          "OPICA2_P12",
+          "OPICA2_S02"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "GENERAL_M4",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.FixedFilter"
+        ],
+        "upstream_project_imports": [],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/ProbeGram.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.probe_tail_and_correlation",
+          "Zeta23.OPICARound2.probe_target_column",
+          "Zeta23.OPICARound2.probe_finite_gram_positive",
+          "Zeta23.OPICARound2.probe_schur_error",
+          "Zeta23.OPICARound2.probe_monotone_innovation",
+          "Zeta23.OPICARound2.probe_dirichlet_norm",
+          "Zeta23.OPICARound2.rh_of_probe_error_limit",
+          "Zeta23.OPICARound2.native_probe_pole_moment_constraints"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.TruncationControls",
+        "path": "Zeta23/OPICARound2/TruncationControls.lean",
+        "contract_ids": [
+          "OPICA2_P13",
+          "OPICA2_P14",
+          "OPICA2_P15",
+          "OPICA2_P16",
+          "OPICA2_S01",
+          "OPICA2_S03",
+          "OPICA2_S07"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "CONTROLS_M3",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.NativeCuts",
+          "Zeta23.OPICARound2.FixedFilter",
+          "Zeta23.OPICARound2.ProbeGram"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.CCM.UniversalSincSourceTail",
+          "Zeta23.CCM.NativeDampedCompletionPointwiseBridge",
+          "Zeta23.OPICAFollowup.LogSlackBalance",
+          "Zeta23.OPICAFollowup.MultiplicityTail",
+          "Zeta23.CCM.NativeCompletedInputZetaLaplace"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/TruncationControls.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.native_mobius_probe_inverse",
+          "Zeta23.OPICARound2.integer_partial_divergence_and_safe_cutoff",
+          "Zeta23.OPICARound2.mobius_partial_zero_barrier",
+          "Zeta23.OPICARound2.noncausal_probe_leakage",
+          "Zeta23.OPICARound2.native_dictionary_prefix_rigidity",
+          "Zeta23.OPICARound2.native_completed_output_bernoulli_tail",
+          "Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.DualCertificates",
+        "path": "Zeta23/OPICARound2/DualCertificates.lean",
+        "contract_ids": [
+          "OPICA2_P17",
+          "OPICA2_P18"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "LATE_REQUIRED_MULTI_ZERO",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.ConfluentProfiles",
+          "Zeta23.ExceptionalZero.NativeActualKernelZeroJets"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/DualCertificates.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.laplace_jet_gram",
+          "Zeta23.OPICARound2.simultaneous_zero_distance"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.CertifiedEvaluation",
+        "path": "Zeta23/OPICARound2/CertifiedEvaluation.lean",
+        "contract_ids": [
+          "OPICA2_P19",
+          "OPICA2_P23",
+          "OPICA2_S08"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "GENERAL_M3_M4",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.ProbeGram",
+          "Zeta23.OPICARound2.TruncationControls"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.CCM.UniversalSincSourceTail"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/CertifiedEvaluation.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.finite_residual_certificate",
+          "Zeta23.OPICARound2.native_source_prefix_error",
+          "Zeta23.OPICARound2.native_probe_adaptive_error_budgets"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.ClassicalAdapter",
+        "path": "Zeta23/OPICARound2/ClassicalAdapter.lean",
+        "contract_ids": [
+          "OPICA2_P20"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "EXACT_ADAPTER",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.LogFourierSobolev"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/ClassicalAdapter.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.native_compact_muntz_adapter"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.FixedFilter",
+        "path": "Zeta23/OPICARound2/FixedFilter.lean",
+        "contract_ids": [
+          "OPICA2_S04",
+          "OPICA2_S16"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "CORE_M2",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.ClassicalAdapter"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.LogFourierSobolev"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/FixedFilter.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.native_probe_fixed_stable_filter",
+          "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.FilteredClassicalComparison",
+        "path": "Zeta23/OPICARound2/FilteredClassicalComparison.lean",
+        "contract_ids": [
+          "OPICA2_S05"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "CORE_M2",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.FixedFilter"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.SawtoothForce"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/FilteredClassicalComparison.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.filtered_probe_classical_comparison"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.FiniteFilteredBaseline",
+        "path": "Zeta23/OPICARound2/FiniteFilteredBaseline.lean",
+        "contract_ids": [
+          "OPICA2_S06"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "CORE_M2",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.FilteredClassicalComparison"
+        ],
+        "upstream_project_imports": [],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/FiniteFilteredBaseline.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.filtered_four_column_region_certificate"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.RegionalCertificates",
+        "path": "Zeta23/OPICARound2/RegionalCertificates.lean",
+        "contract_ids": [
+          "OPICA2_P21",
+          "OPICA2_P22"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "GENERAL_M4",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": [],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/RegionalCertificates.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.native_product_box_margin",
+          "Zeta23.OPICARound2.zero_region_of_finite_probe_certificate"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.ClassicalTransfer",
+        "path": "Zeta23/OPICARound2/ClassicalTransfer.lean",
+        "contract_ids": [
+          "OPICA2_P24",
+          "OPICA2_P25"
+        ],
+        "required_for_full_core": false,
+        "build_slice": "OPTIONAL_GENUINE_CLASSICAL_IMPORT",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.ClassicalAdapter",
+          "Zeta23.OPICARound2.ProbeGram"
+        ],
+        "upstream_project_imports": [],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/ClassicalTransfer.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.rh_implies_probe_approximation",
+          "Zeta23.OPICARound2.rh_iff_native_probe_approximation"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.ProfileControls",
+        "path": "Zeta23/OPICARound2/ProfileControls.lean",
+        "contract_ids": [
+          "OPICA2_S09",
+          "OPICA2_S10",
+          "OPICA2_S17"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "PARALLEL_PROFILE",
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+          "Zeta23.OPICAFollowup.SquareDefect"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/ProfileControls.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction",
+          "Zeta23.OPICARound2.fixed_imaginary_direction_positive_test_margin",
+          "Zeta23.OPICARound2.phase_complete_positive_test_observability"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.NativeCuts",
+        "path": "Zeta23/OPICARound2/NativeCuts.lean",
+        "contract_ids": [
+          "OPICA2_S11"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "PARALLEL_ARITHMETIC",
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.Consumers",
+          "Zeta23.OPICAFollowup.MovingSourceWindowRate",
+          "Zeta23.RvM.MainTerm",
+          "Zeta23.GammaFacts.Complete"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/NativeCuts.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.SyntheticControls",
+        "path": "Zeta23/OPICARound2/SyntheticControls.lean",
+        "contract_ids": [
+          "OPICA2_S12"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "CONTROLS",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.ClassicalAdapter",
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.LogFourierSobolev",
+          "Zeta23.OPICAFollowup.NativeFilters"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/SyntheticControls.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.positive_equal_power_causal_twins"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.NativeJumpControls",
+        "path": "Zeta23/OPICARound2/NativeJumpControls.lean",
+        "contract_ids": [
+          "OPICA2_S13"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "CONTROLS",
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.CCM.Components"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/NativeJumpControls.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.native_jump_gain_negative_ordered_minor"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.CT1Controls",
+        "path": "Zeta23/OPICARound2/CT1Controls.lean",
+        "contract_ids": [
+          "OPICA2_S14"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "CONTROLS",
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.NearGapLimits"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/CT1Controls.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.ct1_scalar_limit_classification"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.FiniteNeutralApproximation",
+        "path": "Zeta23/OPICARound2/FiniteNeutralApproximation.lean",
+        "contract_ids": [
+          "OPICA2_S15"
+        ],
+        "required_for_full_core": true,
+        "build_slice": "PARALLEL_D_PRODUCER",
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.CCM.BoundaryFlatApproximation",
+          "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+          "Zeta23.CCM.CanonicalPoleExponentialMoments",
+          "Zeta23.CCM.CanonicalPoleNeutralNesting",
+          "Zeta23.ExceptionalZero.FiniteNegativeObstruction",
+          "Zeta23.ExceptionalZero.RHTerminalConfigAttempt"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/FiniteNeutralApproximation.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [
+          "Zeta23.OPICARound2.finite_pole_neutral_approximation"
+        ],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.OptionalPolynomialGap",
+        "path": "Zeta23/OPICARound2/OptionalPolynomialGap.lean",
+        "contract_ids": [
+          "OPICA2_O_C2"
+        ],
+        "required_for_full_core": false,
+        "build_slice": "OPTIONAL_RESEARCH",
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.OPICA.SignedHeatSeparator",
+          "Zeta23.OPICAFollowup.ComplexLocalMeasures"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/OptionalPolynomialGap.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.OptionalFourCost",
+        "path": "Zeta23/OPICARound2/OptionalFourCost.lean",
+        "contract_ids": [
+          "OPICA2_O_C3"
+        ],
+        "required_for_full_core": false,
+        "build_slice": "OPTIONAL_RESEARCH",
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.OPICA.SincTriangle",
+          "Zeta23.OPICAFollowup.ComplexLocalMeasures"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/OptionalFourCost.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.OptionalLatticeRepair",
+        "path": "Zeta23/OPICARound2/OptionalLatticeRepair.lean",
+        "contract_ids": [
+          "OPICA2_O_C4"
+        ],
+        "required_for_full_core": false,
+        "build_slice": "OPTIONAL_RESEARCH",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.OptionalPolynomialGap"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.SquareDefect"
+        ],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/OptionalLatticeRepair.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      },
+      {
+        "module": "Zeta23.OPICARound2.OptionalExternalTransfer",
+        "path": "Zeta23/OPICARound2/OptionalExternalTransfer.lean",
+        "contract_ids": [
+          "OPICA2_X01"
+        ],
+        "required_for_full_core": false,
+        "build_slice": "OPTIONAL_EXTERNAL",
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.NativeCuts"
+        ],
+        "upstream_project_imports": [],
+        "independent_consumer": "Zeta23/OPICARound2/Validation/OptionalExternalTransfer.lean",
+        "audit_imports_allowed": false,
+        "implementation_state": "NOT_IMPLEMENTED",
+        "required_public_names": [],
+        "definition_policy": "Actual definitions and all component clauses in inputs/ROUND2_V2_1.json; supporting helpers may be private. Every public helper also appears in the compiler census."
+      }
+    ],
+    "umbrellas": [
+      {
+        "path": "Zeta23/OPICARound2.lean",
+        "module": "Zeta23.OPICARound2",
+        "imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.FixedFilter",
+          "Zeta23.OPICARound2.FilteredClassicalComparison",
+          "Zeta23.OPICARound2.FiniteFilteredBaseline"
+        ],
+        "kind": "MATHEMATICAL_MINIMAL",
+        "required": true
+      },
+      {
+        "path": "Zeta23/OPICARound2/All.lean",
+        "module": "Zeta23.OPICARound2.All",
+        "imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.ProbeGram",
+          "Zeta23.OPICARound2.TruncationControls",
+          "Zeta23.OPICARound2.DualCertificates",
+          "Zeta23.OPICARound2.CertifiedEvaluation",
+          "Zeta23.OPICARound2.ClassicalAdapter",
+          "Zeta23.OPICARound2.FixedFilter",
+          "Zeta23.OPICARound2.FilteredClassicalComparison",
+          "Zeta23.OPICARound2.FiniteFilteredBaseline",
+          "Zeta23.OPICARound2.RegionalCertificates",
+          "Zeta23.OPICARound2.ProfileControls",
+          "Zeta23.OPICARound2.NativeCuts",
+          "Zeta23.OPICARound2.SyntheticControls",
+          "Zeta23.OPICARound2.NativeJumpControls",
+          "Zeta23.OPICARound2.CT1Controls",
+          "Zeta23.OPICARound2.FiniteNeutralApproximation"
+        ],
+        "kind": "MATHEMATICAL_FULL_CORE",
+        "required": true
+      },
+      {
+        "path": "Zeta23/OPICARound2/Validation.lean",
+        "module": "Zeta23.OPICARound2.Validation",
+        "imports": [
+          "Zeta23.OPICARound2.Validation.CausalProbe",
+          "Zeta23.OPICARound2.Validation.ProbeGram",
+          "Zeta23.OPICARound2.Validation.TruncationControls",
+          "Zeta23.OPICARound2.Validation.DualCertificates",
+          "Zeta23.OPICARound2.Validation.CertifiedEvaluation",
+          "Zeta23.OPICARound2.Validation.ClassicalAdapter",
+          "Zeta23.OPICARound2.Validation.FixedFilter",
+          "Zeta23.OPICARound2.Validation.FilteredClassicalComparison",
+          "Zeta23.OPICARound2.Validation.FiniteFilteredBaseline",
+          "Zeta23.OPICARound2.Validation.RegionalCertificates",
+          "Zeta23.OPICARound2.Validation.ProfileControls",
+          "Zeta23.OPICARound2.Validation.NativeCuts",
+          "Zeta23.OPICARound2.Validation.SyntheticControls",
+          "Zeta23.OPICARound2.Validation.NativeJumpControls",
+          "Zeta23.OPICARound2.Validation.CT1Controls",
+          "Zeta23.OPICARound2.Validation.FiniteNeutralApproximation"
+        ],
+        "kind": "AUDIT_ONLY",
+        "required": true
+      },
+      {
+        "path": "Zeta23/OPICARound2/OptionalResearch.lean",
+        "module": "Zeta23.OPICARound2.OptionalResearch",
+        "imports": [
+          "Zeta23.OPICARound2.ClassicalTransfer",
+          "Zeta23.OPICARound2.OptionalPolynomialGap",
+          "Zeta23.OPICARound2.OptionalFourCost",
+          "Zeta23.OPICARound2.OptionalLatticeRepair",
+          "Zeta23.OPICARound2.OptionalExternalTransfer"
+        ],
+        "kind": "OPTIONAL_MATHEMATICAL",
+        "required": false
+      },
+      {
+        "path": "Zeta23/OPICARound2/OptionalValidation.lean",
+        "module": "Zeta23.OPICARound2.OptionalValidation",
+        "imports": [
+          "Zeta23.OPICARound2.Validation.ClassicalTransfer",
+          "Zeta23.OPICARound2.Validation.OptionalPolynomialGap",
+          "Zeta23.OPICARound2.Validation.OptionalFourCost",
+          "Zeta23.OPICARound2.Validation.OptionalLatticeRepair",
+          "Zeta23.OPICARound2.Validation.OptionalExternalTransfer"
+        ],
+        "kind": "OPTIONAL_AUDIT",
+        "required": false
+      }
+    ],
+    "scope_note": "P17/P18 scheduled later but required for full original core; optional imports never enter default/full core. All paths are proposed, not compiled."
+  },
+  "upstream_symbols": [
+    {
+      "symbol": "nativeOriginalSource_supported",
+      "path": "Zeta23/CCM/OriginalSincNativeSource.lean",
+      "line": 26,
+      "module": "Zeta23.CCM.OriginalSincNativeSource",
+      "sha256": "aa45eed6367f434a6198dc4f10d582ab2251f314c38e92449dddcdb2780b4ab5",
+      "consumer_module": "Zeta23.OPICARound2.CausalProbe",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "nativeOriginalSourceLaplace_formula",
+      "path": "Zeta23/ExceptionalZero/NativeOriginalSourceLaplaceVisibility.lean",
+      "line": 39,
+      "module": "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
+      "sha256": "4099933bd79abc49e7fcd10ac41aeecec196b6c7681176fadee7a1e9d0792355",
+      "consumer_module": "Zeta23.OPICARound2.CausalProbe",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "nativeOriginalSourceLaplace_ne_zero_at_off_line_zero",
+      "path": "Zeta23/ExceptionalZero/NativeOriginalSourceLaplaceVisibility.lean",
+      "line": 58,
+      "module": "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
+      "sha256": "4099933bd79abc49e7fcd10ac41aeecec196b6c7681176fadee7a1e9d0792355",
+      "consumer_module": "Zeta23.OPICARound2.CausalProbe",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "nativeIntegerTranslateAction_rationalKernel_eq_positiveCompletion",
+      "path": "Zeta23/CCM/NativeFloorCompletionSource.lean",
+      "line": 100,
+      "module": "Zeta23.CCM.NativeFloorCompletionSource",
+      "sha256": "d8268164de0c4082da29b4502efde38293c4fc01b1de0c62ef2f616419863267",
+      "consumer_module": "Zeta23.OPICARound2.CausalProbe",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "nativePositiveCompletion_complexLaplace",
+      "path": "Zeta23/CCM/NativePositiveCompletionComplexLaplace.lean",
+      "line": 49,
+      "module": "Zeta23.CCM.NativePositiveCompletionComplexLaplace",
+      "sha256": "4cc3df5964cc1e4fd3261c971d7383aa570dabcda826bd11152ad1ae91a962a3",
+      "consumer_module": "Zeta23.OPICARound2.CausalProbe",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "nativePositiveCompletion_complexLaplace_half",
+      "path": "Zeta23/CCM/NativePositiveCompletionComplexLaplace.lean",
+      "line": 74,
+      "module": "Zeta23.CCM.NativePositiveCompletionComplexLaplace",
+      "sha256": "4cc3df5964cc1e4fd3261c971d7383aa570dabcda826bd11152ad1ae91a962a3",
+      "consumer_module": "Zeta23.OPICARound2.CausalProbe",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "nativeDampedCompletionCausalL2Operator",
+      "path": "Zeta23/CCM/NativeDampedCompletionOperator.lean",
+      "line": 200,
+      "module": "Zeta23.CCM.NativeDampedCompletionOperator",
+      "sha256": "e0921f97810403c3d7f488905c93ac4426a09cd93d0d5fb5ccaa85c563452367",
+      "consumer_module": "Zeta23.OPICARound2.CausalProbe",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "nativeDampedCompletionL2Operator_coeFn_pointwise",
+      "path": "Zeta23/CCM/NativeDampedCompletionPointwiseBridge.lean",
+      "line": 131,
+      "module": "Zeta23.CCM.NativeDampedCompletionPointwiseBridge",
+      "sha256": "c9e81261ec5d53a3bca21e73a5883bb375a9bfd21c4873a11a0732adc2c39370",
+      "consumer_module": "Zeta23.OPICARound2.CausalProbe",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "nativePositiveCompletion_complexLaplace",
+      "path": "Zeta23/CCM/NativePositiveCompletionComplexLaplace.lean",
+      "line": 49,
+      "module": "Zeta23.CCM.NativePositiveCompletionComplexLaplace",
+      "sha256": "4cc3df5964cc1e4fd3261c971d7383aa570dabcda826bd11152ad1ae91a962a3",
+      "consumer_module": "Zeta23.OPICARound2.ProbeGram",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "log_fourier_plancherel",
+      "path": "Zeta23/OPICAFollowup/LogFourierSobolev.lean",
+      "line": 935,
+      "module": "Zeta23.OPICAFollowup.LogFourierSobolev",
+      "sha256": "e83a452a615021238d912756f608ad346dd87187f70d0a177db6a2581e9afd9a",
+      "consumer_module": "Zeta23.OPICARound2.ProbeGram",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "native_coefficients_moebius_inverse",
+      "path": "Zeta23/OPICAFollowup/BalancedCoefficients.lean",
+      "line": 102,
+      "module": "Zeta23.OPICAFollowup.BalancedCoefficients",
+      "sha256": "921728358a333c7b3e6d2bbc94d1cefc942b3f79ed7011a972e8c906bbb5dc0c",
+      "consumer_module": "Zeta23.OPICARound2.TruncationControls",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "laguerre_tail_norm",
+      "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "line": 307,
+      "module": "Zeta23.OPICAFollowup.MultiplicityTail",
+      "sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+      "consumer_module": "Zeta23.OPICARound2.TruncationControls",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "native_auxiliary_tail_residual_lower",
+      "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "line": 1365,
+      "module": "Zeta23.OPICAFollowup.MultiplicityTail",
+      "sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+      "consumer_module": "Zeta23.OPICARound2.TruncationControls",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "laguerre_tail_norm",
+      "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "line": 307,
+      "module": "Zeta23.OPICAFollowup.MultiplicityTail",
+      "sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+      "consumer_module": "Zeta23.OPICARound2.DualCertificates",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "native_auxiliary_tail_residual_lower",
+      "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "line": 1365,
+      "module": "Zeta23.OPICAFollowup.MultiplicityTail",
+      "sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+      "consumer_module": "Zeta23.OPICARound2.DualCertificates",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "originalSourceLaw_eq_prefix_conv_tail",
+      "path": "Zeta23/CCM/UniversalSincSourceTail.lean",
+      "line": 141,
+      "module": "Zeta23.CCM.UniversalSincSourceTail",
+      "sha256": "c93f6a56ed21c2478c35398325427b3ee66f83e939784854205fc47641811c7d",
+      "consumer_module": "Zeta23.OPICARound2.CertifiedEvaluation",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "nativeOriginalSourceLaplace_formula",
+      "path": "Zeta23/ExceptionalZero/NativeOriginalSourceLaplaceVisibility.lean",
+      "line": 39,
+      "module": "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
+      "sha256": "4099933bd79abc49e7fcd10ac41aeecec196b6c7681176fadee7a1e9d0792355",
+      "consumer_module": "Zeta23.OPICARound2.RegionalCertificates",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "zero_measure_first_cell_sign",
+      "path": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+      "line": 368,
+      "module": "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+      "sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+      "consumer_module": "Zeta23.OPICARound2.ProfileControls",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "finite_zero_span_positive_only_zero",
+      "path": "Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
+      "line": 231,
+      "module": "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+      "sha256": "69d2d89a32311dec71bc9831b21717097e94a980d7b9dfcd0f8dbf10f8fbb9f5",
+      "consumer_module": "Zeta23.OPICARound2.ProfileControls",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "fixed_basis_negative_mass_budget",
+      "path": "Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
+      "line": 935,
+      "module": "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+      "sha256": "69d2d89a32311dec71bc9831b21717097e94a980d7b9dfcd0f8dbf10f8fbb9f5",
+      "consumer_module": "Zeta23.OPICARound2.ProfileControls",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "square_actual_no_distribution_tempered_measure_repair",
+      "path": "Zeta23/OPICAFollowup/SquareDefect.lean",
+      "line": 1322,
+      "module": "Zeta23.OPICAFollowup.SquareDefect",
+      "sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
+      "consumer_module": "Zeta23.OPICARound2.ProfileControls",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "canonical_pair_negative_mass_budget",
+      "path": "Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
+      "line": 1101,
+      "module": "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+      "sha256": "69d2d89a32311dec71bc9831b21717097e94a980d7b9dfcd0f8dbf10f8fbb9f5",
+      "consumer_module": "Zeta23.OPICARound2.ProfileControls",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "native_fixed_source_window_rate",
+      "path": "Zeta23/OPICAFollowup/NativeWindowRate.lean",
+      "line": 1154,
+      "module": "Zeta23.OPICAFollowup.NativeWindowRate",
+      "sha256": "1b388ffd7828390307605cc4804d7d9e1400343a3bafa0858a9d76aa0f369b33",
+      "consumer_module": "Zeta23.OPICARound2.NativeCuts",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "native_slow_source_window_rate",
+      "path": "Zeta23/OPICAFollowup/MovingSourceWindowRate.lean",
+      "line": 11,
+      "module": "Zeta23.OPICAFollowup.MovingSourceWindowRate",
+      "sha256": "31fb27cf1e3f75a45b2ae1bfbf65625fc8784d7b6aba2f8251f9762be52ee51d",
+      "consumer_module": "Zeta23.OPICARound2.NativeCuts",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "native_field_theta_envelope",
+      "path": "Zeta23/OPICAFollowup/UniformSourceBounds.lean",
+      "line": 1181,
+      "module": "Zeta23.OPICAFollowup.UniformSourceBounds",
+      "sha256": "4c27940d617e68a78e17d7d4bde902558e60d6a2783abc86b2759cef0a3ceb04",
+      "consumer_module": "Zeta23.OPICARound2.NativeCuts",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "quiet_balanced_observation_implies_native_cut",
+      "path": "Zeta23/OPICAFollowup/Consumers.lean",
+      "line": 326,
+      "module": "Zeta23.OPICAFollowup.Consumers",
+      "sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
+      "consumer_module": "Zeta23.OPICARound2.NativeCuts",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "dilation_normalized_limit_not_measure",
+      "path": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "line": 2824,
+      "module": "Zeta23.OPICAFollowup.NearGapLimits",
+      "sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
+      "consumer_module": "Zeta23.OPICARound2.CT1Controls",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "near_gap_controlled_limit_zero",
+      "path": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "line": 2068,
+      "module": "Zeta23.OPICAFollowup.NearGapLimits",
+      "sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
+      "consumer_module": "Zeta23.OPICARound2.CT1Controls",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    },
+    {
+      "symbol": "square_actual_no_distribution_tempered_measure_repair",
+      "path": "Zeta23/OPICAFollowup/SquareDefect.lean",
+      "line": 1322,
+      "module": "Zeta23.OPICAFollowup.SquareDefect",
+      "sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
+      "consumer_module": "Zeta23.OPICARound2.OptionalLatticeRepair",
+      "authority": "Existing source declaration; full formal authority from relevant upstream receipt, not name search alone."
+    }
+  ],
+  "full_core_accepted": false,
+  "human_review": "NOT_ESTABLISHED",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "historical_requirement_source": {
+    "schema": "opica-project-requirements-crosswalk-1",
+    "date": "2026-10-25",
+    "status": "SPECIFICATION_TRACEABILITY_ONLY_NOT_PROOF_OF49REQUIREMENTS",
+    "source_register_sha256": "2bad4b8d54b9fad543477a57fe9ffd1e21b1ac75f2d8ba968122e171958365a9",
+    "requirements": [
+      {
+        "requirement_id": "BASE-01",
+        "title": "Claim authority, exact types and dependency provenance",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 90,
+        "original_source_paragraph": "**Requirement BASE-01.** Every claim used in the eventual proof must\nretain its authority label, exact theorem statement, version, and\nhypotheses. Acceptance requires a dependency record distinguishing a\nproved implication from a proved premise, and distinguishing a finite\ncertificate from a universal theorem. Obsolete conditional registry\ndescriptions must not override a newer proved declaration, and a newer\ndeclaration must not be credited with a stronger conclusion than its\ntype.",
+        "round2_targets": [
+          "source_catalog",
+          "native_prerequisites",
+          "acceptance",
+          "main §§2,11"
+        ],
+        "carry_forward": "Preserve exact type, pin, hypothesis and receipt; inventory and compiler authority stay distinct.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 84,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "BASE-02",
+        "title": "True-zeta target with complete zero, gamma and pole conventions",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 99,
+        "original_source_paragraph": "**Requirement BASE-02.** The final target must refer to the genuine\nRiemann zeta function and the existing definition of RiemannHypothesis.\nAcceptance includes the nontrivial-zero domain, multiplicities where\nrelevant, the standard functional equation and gamma/pole normalization,\nand the final connection to the project’s zero configuration. A theorem\nabout a synthetic prime system, an auxiliary real-zero function, or a\nmodified matrix is not the terminal target.",
+        "round2_targets": [
+          "OPICA2_P04",
+          "OPICA2_P05",
+          "OPICA2_P12",
+          "OPICA2_T_A",
+          "OPICA2_T_B",
+          "OPICA2_T_C",
+          "OPICA2_T_D"
+        ],
+        "carry_forward": "Actual zeta, nontrivial zeros, multiplicity, pole/gamma normalization and reflection; synthetic controls are not target replacements.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 93,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "TARGET-01",
+        "title": "Choose sufficient terminal contract and preserve its quantifier order",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 219,
+        "original_source_paragraph": "**Requirement TARGET-01.** The selected output contract and its\nquantifier order must be written before evaluating a candidate.\nAcceptance is an exact composition from the existing generator to a\ncontradiction. Cofinal positive apertures cannot be justified from\nunbounded badness alone; their sufficiency here uses the stronger\ntheorem (3).",
+        "round2_targets": [
+          "terminal_target_logic",
+          "OPICA2_T_A",
+          "OPICA2_T_B",
+          "OPICA2_T_C",
+          "OPICA2_T_D",
+          "PROJ-003"
+        ],
+        "carry_forward": "Write sufficient quantifiers; add the fixed-filter consumer while leaving its approximation premise open.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 213,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "TARGET-02",
+        "title": "Do not add unnecessary success conditions",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 226,
+        "original_source_paragraph": "**Requirement TARGET-02.** Do not add unnecessary success conditions. A\nuniversal detector index, a common finite cutoff, positivity at every\naperture, a nonvanishing spectral gap uniform in aperture, all-real\ncoefficients only, or completion of every research track is not part of\nthe general specification. Additional conditions introduced by a chosen\nmethod must themselves be proved or the method must be narrowed.",
+        "round2_targets": [
+          "terminal_target_logic",
+          "main §4",
+          "PROJ-011"
+        ],
+        "carry_forward": "Routes are alternatives; no universal gap, bounded input, all-path completion or common finite cutoff is silently added.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 220,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-01",
+        "title": "State identity and provenance.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 237,
+        "original_source_paragraph": "**S3-01 State identity and provenance.** Every relation combined on the\nresidual route must start from the same named state $s$, or from an\nexplicitly defined image of it. The record must include the\nzero-dependent existence choices where used, physical cell, aperture,\ncutoff, selected parity, negative shift, nonzero vector, legal moments,\nmetric, and ground equation. It must distinguish the true groundTrial\nfrom a historical zero-shift trial. **Acceptance:** a reader can\nsubstitute the same symbols into all premises without making an\nadditional existential choice or identifying different vectors by\nnotation. \\[S2–S5\\]",
+        "round2_targets": [
+          "NATIVE_STEP123",
+          "global_invariants",
+          "OPICA2_T_C",
+          "OPICA2_T_D"
+        ],
+        "carry_forward": "Same generated state or proved image; current original detector, finite ground, full contact and new probe remain distinct.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 231,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-02",
+        "title": "Transformation strength.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 248,
+        "original_source_paragraph": "**S3-02 Transformation strength.** Every representation map must state\nexactly what it preserves: quadratic value, sign, norm, eigenvalue,\nground minimality, source moments, parity, or only existence of a\nnegative vector. **Acceptance:** downstream arguments use only the\npreserved properties. An isometry preserves norm; transporting energy\nadditionally requires a proved form identity or intertwining. A\ncongruence transports inertia under its stated invertibility conditions.\nSimilarity transports eigenvalues but need not transport Hermitian\npositivity. A Schur projection normally changes the vector and does not\npreserve its original moments.",
+        "round2_targets": [
+          "OPICA2_P01",
+          "OPICA2_S04",
+          "OPICA2_S05",
+          "OPICA2_T_C",
+          "OPICA2_T_D",
+          "PROJ-008"
+        ],
+        "carry_forward": "Record energy/norm/inertia/visibility preservation separately; congruence is not isometry and smoothing has no bounded reverse.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 242,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-03",
+        "title": "Normalization and complex scalars.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 259,
+        "original_source_paragraph": "**S3-03 Normalization and complex scalars.** The proof must fix the\ninner-product convention, Fourier sign, centering phase, support units,\nsource coefficients and normalization. If $u = cv$ with $c \\neq 0$,\nquadratic energies scale by $|c|^{2}$, while linear moments and the\nsource functional scale by $c$. **Acceptance:** every normalization\ndivides only by a proved nonzero quantity and transports the prime\nremainder and budget together. A real-vector restriction requires an\nexplicit decomposition theorem valid for the actual Hermitian form.",
+        "round2_targets": [
+          "OPICA2_P01",
+          "OPICA2_P02",
+          "OPICA2_P11",
+          "OPICA2_S04",
+          "NATIVE_STEP123"
+        ],
+        "carry_forward": "Retain complex conjugation, exact delay, one-copy Q, source normalization and all nonzero divisors.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 253,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-04",
+        "title": "Additive identity if used.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 270,
+        "original_source_paragraph": "**S3-04 Additive identity if used.** The available PAPER bridge uses\n\n$$f_{L,u}(x) = L^{- 1/2}\\mathbf{1}_{\\lbrack 0,L\\rbrack}(x)\\sum_{n = - K}^{K}u_{n}e^{2\\pi inx/L},\\quad\\quad F_{f}(t) = \\int f(x)e^{- itx}\\, dx.$$\n\nIt proves $\\parallel f_{L,u} \\parallel_{2} = \\parallel u \\parallel$ and\n\n$$Q_{Weil}\\left( f_{L,u} \\right) = u^{*}S_{L,K}u.\\quad\\quad\\text{(4)}$$\n\nThe factor is one. **Acceptance:** the exact pole pairing\n$2\\Re\\left( F_{f}(i/2)\\overline{F_{f}( - i/2)} \\right)$, complete\ndigamma contribution, every prime power, and source correction occur\nexactly once. Full source aperture $L$ corresponds to external\nhalf-width $L/2$. The complete complex domain is retained. A separately\ndefined multiplicative carrier requires its own identity; (4) does not\nidentify all similarly named forms automatically. \\[R2, S11\\]",
+        "round2_targets": [
+          "NATIVE_STEP123",
+          "NATIVE_PATH_D",
+          "PROJ-002"
+        ],
+        "carry_forward": "Reuse exact physical finite-Weil identity on legal coefficients, including pole/gamma/prime terms once.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 264,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-05",
+        "title": "Analytic operations and regularity.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 286,
+        "original_source_paragraph": "**S3-05 Analytic operations and regularity.** Every interchange, limit,\nintegration by parts, derivative, and operator extension must have a\ndomain and a convergence justification. The supported logarithmic form\ndomain is described by\n\n$$J(f) = \\frac{1}{2\\pi}\\int_{\\mathbb{R}}^{}\\left\\lbrack A_{\\infty}(t) - A_{\\infty}(0) \\right\\rbrack\\left| F_{f}(t) \\right|^{2}dt < \\infty,$$\n\nwhere $A_{\\infty}(t) = \\Re\\psi(1/4 + it/2) - \\log\\pi$. The preceding\nPAPER proof gives the smooth form core and hard-window membership. For\nactual boundary-flat vectors, the repository already proves a compactly\nsupported global $C^{2}$ extension; zero-trace $H^{1}$ membership\nfollows by an elementary analytic bridge. **Acceptance:** use the\navailable regularity actually needed, prove any stronger regularity\nbeing invoked, and state the topology in which every limiting identity\nholds. Totalized integrals do not establish convergence. \\[R2, S12\\]",
+        "round2_targets": [
+          "OPICA2_P01",
+          "OPICA2_P02",
+          "OPICA2_P06",
+          "OPICA2_P11",
+          "OPICA2_S04",
+          "OPICA2_S05",
+          "OPICA2_P23"
+        ],
+        "carry_forward": "All transforms, integrals, tails, derivatives and limits need the declared native domain and convergence topology.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 280,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-06",
+        "title": "Finite and continuous operators.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 302,
+        "original_source_paragraph": "**S3-06 Finite and continuous operators.** If an external theorem\nconcerns a full continuous ground state, the proof must separately\nestablish why it applies to the chosen finite state or construct and\ncontrol a new continuous ground. Equation (4) preserves the quadratic\nvalue; the finite eigen-equation generally supplies only a Galerkin\nequation. **Acceptance:** a new continuous ground has proved existence\nand sign, and every finite source or moment restriction later used on it\nhas its own transport theorem. The continuous spectral bottom must not\nbe renamed $\\lambda$ without proving equality. A form core is not\nautomatically an operator core; essential self-adjointness and\noperator-core density must be proved when the selected theorem requires\nthem.",
+        "round2_targets": [
+          "NATIVE_CONTACT",
+          "OPICA2_T_C",
+          "NATIVE_PATH_D"
+        ],
+        "carry_forward": "A finite eigenvector gives a Galerkin equation; no automatic full continuous eigenvector or operator-core claim. Direct causal route bypasses this only because its proof does not use that representation.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 296,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-07",
+        "title": "Strict even.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 329,
+        "original_source_paragraph": "**S3-07 Strict even.** Under $\\lambda = a < b$, use\n$B - \\lambda I \\succ 0$. The canonical ray is\n\n$$v = D^{- 1}(B - \\lambda I)^{- 1}g,$$\n\nand the adapter must establish $u = H(u)v$, $H(u) \\neq 0$, and\n$H(v) = 1$ for the retained even ground. **Acceptance:** invoke a\nnegative-shift theorem with its strict gap, preserve the scalar gauge,\nand transport the arithmetic from $u$. Zero-contact identities\ncontaining $B^{- 1}$ do not apply by changing the name of the spectral\nparameter.",
+        "round2_targets": [
+          "NATIVE_STEP123",
+          "NATIVE_PATH_D",
+          "OPICA2_T_D"
+        ],
+        "carry_forward": "If strict-even secular route used, bind actual negative shift and strict opposite gap; do not substitute zero-shift theorem.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 323,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-08",
+        "title": "Strict odd.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 341,
+        "original_source_paragraph": "**S3-08 Strict odd.** Under $\\lambda = b < a$, use the reverse ray\n\n$$v_{E} = (A - \\lambda I)^{- 1}d,\\quad\\quad v_{O} = Dv_{E},\\quad\\quad H\\left( v_{E} \\right) = - 1.$$\n\nThe reverse determinant has the sign $1 + H\\left( v_{E} \\right)$. Source\nstatements on an odd vector use its even pullback. The current branch\npackage contains an existential odd ground in hreverse; it is not stated\nto equal groundTrial. **Acceptance:** prove direct applicability to\ngroundTrial or prove eigenline/scalar transport, retaining all norm\nfactors. The reviewed quantitative odd cubic-moment estimate is an\navailable PAPER result, not an already exported negative-ground Lean\nwrapper. \\[S14, R3\\]",
+        "round2_targets": [
+          "NATIVE_STEP123",
+          "NATIVE_PATH_D",
+          "OPICA2_T_D"
+        ],
+        "carry_forward": "If strict-odd route used, preserve reverse-ray sign and prove same-ground transport; no even M4 statement imported.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 335,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-09",
+        "title": "Tied ground.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 354,
+        "original_source_paragraph": "**S3-09 Tied ground.** Under $a = b = \\lambda$, both shifted operators\nare singular. Retain both kernels and the even selection made by the\nresidual type. **Acceptance:** use kernel projection or a pseudoinverse\nwith its kernel component. Both cases $P_{\\ker(B - \\lambda I)}g = 0$ and\n$\\neq 0$ must be covered if this classification is used. The finite\nscalar limit of a secular function need not determine its vector\nresolvent. A tie cannot be excluded by importing a strict-branch\ninverse. At the negative first-bad tie, the predecessor argument bounds\neach parity’s negative multiplicity by one; it does not establish\nsimplicity at every zero contact. \\[R3\\]",
+        "round2_targets": [
+          "NATIVE_STEP123",
+          "NATIVE_PATH_D",
+          "OPICA2_T_D"
+        ],
+        "carry_forward": "Tie requires whole kernels/projector and kernel components; no strict inverse or scalar removable-pole shortcut.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 348,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-10",
+        "title": "Contact provenance if used.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 367,
+        "original_source_paragraph": "**S3-10 Contact provenance if used.** A transition from a negative\nresidual to a zero contact changes the aperture and usually the vector.\nIf the argument uses first-crossing properties, its finite-cutoff\nextraction must produce the exact first-negative boundary, with\nnonnegative prefix and negative values arbitrarily close on the outgoing\nside. A continuous-operator route needs its analogous proved extraction\nand transport. **Acceptance:** preserve the fields actually required by\nthe exclusion theorem, prove its branch coverage, and independently\nestablish source or derivative properties at the contact. A theorem\nexcluding every zero contact may instead use a weaker contact\nextraction. A tangent zero alone does not supply outgoing negativity.\n\\[S15\\]",
+        "round2_targets": [
+          "OPICA2_T_C",
+          "OPICA2_T_D",
+          "PROJ-002"
+        ],
+        "carry_forward": "Actual first-negative prefix and arbitrarily close outgoing negativity must be generated; zero contact alone is insufficient.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 361,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-11",
+        "title": "Derivative authority if used.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 380,
+        "original_source_paragraph": "**S3-11 Derivative authority if used.** Reuse global F04 for its exact\ncanonical even target. Distinguish differentiation in spectral shift,\nphysical aperture, reciprocal aperture, and a fixed or moving vector.\n**Acceptance:** include chain-rule factors, Euler correction, source\ntransport, and one-sided seam terms required by the selected derivative.\nOdd or multiple-contact uses require an applicable theorem. F04\nidentifies a physical expression; its sign remains a separate question.\n\\[S16\\]",
+        "round2_targets": [
+          "NATIVE_STEP123",
+          "NATIVE_CONTACT",
+          "NATIVE_PATH_D",
+          "OPICA2_T_D",
+          "PROJ-012"
+        ],
+        "carry_forward": "Keep aperture/source/spectral derivatives, Euler correction and seam one-sided hypotheses separate.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 374,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S3-12",
+        "title": "Relation register and dependency graph.",
+        "original_applicability": "IF_REPRESENTATION_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 389,
+        "original_source_paragraph": "**S3-12 Relation register and dependency graph.** The Step 3 output must\nlist each used map or theorem with its domain, codomain, preserved\nfacts, hypotheses, source, status and downstream use. The graph must\ndistinguish equivalence, one-way implication, exact identity, inequality\nand conditional transfer. **Acceptance:** every path in the proposed\nproof has a theorem-backed composition. Numerical agreement and similar\nterminology are not graph edges. Only the subgraph needed for the\nselected sufficient contract must be completed.",
+        "round2_targets": [
+          "contracts.dependencies",
+          "native_prerequisites",
+          "source_catalog",
+          "PROJ-011"
+        ],
+        "carry_forward": "An implication graph needs exact typed application, not only a source-only dependency edge.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 383,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S4-01",
+        "title": "Independent derivation.",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 402,
+        "original_source_paragraph": "**S4-01 Independent derivation.** The closing restriction must be proved\nfrom accepted mathematics and the actual hypotheses of the\ncounterexample argument. A result with RH-equivalent strength is an\nadmissible target. **Acceptance:** the dependency tree contains no\nunproved RH, residual exclusion, global positivity, global\npositive-kernel property, or renamed opposite arithmetic sign. The proof\nmust expose where it uses information beyond the negative-ground\nidentity. A contradiction may use all consequences of the hypothetical\nnegative state, provided no desired conclusion is inserted as a premise.",
+        "round2_targets": [
+          "terminal_targets",
+          "main §§4,6,11"
+        ],
+        "carry_forward": "Independent proof of closing premise remains required; conditional wrapper is permissible only when premise is proved.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 396,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S4-02",
+        "title": "Actual applicability.",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 412,
+        "original_source_paragraph": "**S4-02 Actual applicability.** The proved restriction must apply to\nevery state required by the chosen contract. **Acceptance:** all extra\nhypotheses are derived from the generator, established independently on\nthe covered domain, or handled by a proved branch reduction. An\ninequality for a convenient trial function, pole-neutral subspace, fixed\nsource gauge, or special parity remains partial if the actual state is\nnot shown to belong to that class.",
+        "round2_targets": [
+          "terminal_targets.native_source_scope",
+          "global_invariants",
+          "PROJ-008"
+        ],
+        "carry_forward": "Prove every extra input on the generated class; a convenient changed vector is not automatically applicable.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 406,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S4-03",
+        "title": "Incompatibility strength.",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 420,
+        "original_source_paragraph": "**S4-03 Incompatibility strength.** The new result must logically\ncontradict the existing necessary conditions. **Acceptance:** write the\nfinal algebraic or analytic contradiction explicitly. For the direct\narithmetic route, an upper bound $U_{s}$ is sufficient only if the proof\nalso gives $P_{s} + B_{s} \\leq U_{s} \\leq 0$. A small positive upper\nbound, a relative error larger than the available margin, or another\nexpression equal to $P_{s} + B_{s}$ does not exclude the state. A\nsuccessful alternative can contradict a different necessary condition,\nbut must exhibit that contradiction equally explicitly.",
+        "round2_targets": [
+          "OPICA2_P04",
+          "OPICA2_P12",
+          "OPICA2_S06",
+          "OPICA2_T_C",
+          "PROJ-003"
+        ],
+        "carry_forward": "Compare complete upper with actual retained positive lower; preserve exponent and family quantifiers.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 414,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S4-04",
+        "title": "Genuine arithmetic.",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 430,
+        "original_source_paragraph": "**S4-04 Genuine arithmetic.** Where the argument distinguishes zeta from\nmatched modified-prime systems, it must use a proved property of the\nactual coefficients or their analytic completion. **Acceptance:**\nidentify the exact coefficient formula\n$\\Lambda\\left( p^{j} \\right) = \\log p$, the gamma and pole data,\nEuler-product or functional-equation input, or other established\narithmetic theorem that does the distinguishing. Positive weights,\nprime-power consistency and coarse prime asymptotics alone are\ninsufficient for the controls already constructed. The proof need not\nfail on every artificial system; it must exclude every negative model\nsatisfying all premises actually used.",
+        "round2_targets": [
+          "OPICA2_T_A",
+          "NATIVE_SOURCE",
+          "OPICA2_T_D",
+          "OPICA2_S12",
+          "OPICA2_S13"
+        ],
+        "carry_forward": "Use actual divisor/prime/gamma data to distinguish matched controls; positive weights alone do not suffice.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 424,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S4-05",
+        "title": "All required parameters.",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 442,
+        "original_source_paragraph": "**S4-05 All required parameters.** The theorem must cover variable $K$\nand the aperture range of the selected contract, with no lower bound on\nthe hypothetical nonzero distance from the critical line.\n**Acceptance:** every constant has declared dependence, and every limit\nor estimate is uniform exactly where the composition requires it.\nState-dependent constants are allowed when the final quantifiers remain\nvalid. A cutoff-dependent threshold cannot establish the\ncommon-threshold version of TAIL without further work.",
+        "round2_targets": [
+          "OPICA2_T_A",
+          "OPICA2_T_B",
+          "OPICA2_T_C",
+          "OPICA2_T_D",
+          "OPICA2_S08",
+          "OPICA2_S11"
+        ],
+        "carry_forward": "Declare dependence of constants, cofinal schedules and zero-dependent parameters; no illicit K/L or varying-filter quantifier switch.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 436,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S4-06",
+        "title": "Complete branch coverage.",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 451,
+        "original_source_paragraph": "**S4-06 Complete branch coverage.** Every generated possibility must be\ncovered by a theorem or bypassed by a stronger common argument.\n**Acceptance:** the branch table in Section 8 has no unresolved required\nrow. In particular, strict even, strict odd and tied grounds cannot be\nidentified. A proof of COFINAL by a direct form inequality can cover\nthem simultaneously and need not prove separate contact theorems.",
+        "round2_targets": [
+          "terminal_target_logic",
+          "OPICA2_T_D",
+          "NATIVE_STEP123"
+        ],
+        "carry_forward": "Cover required even/odd/tie/seam/inherited/fresh branches, or prove a route bypass; direct B consumer does not need contact branch analysis.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 445,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "S4-07",
+        "title": "Preserve information under elimination.",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 458,
+        "original_source_paragraph": "**S4-07 Preserve information under elimination.** Elimination must\npreserve logical direction, exceptional loci and inequalities.\n**Acceptance:** establish nonzero denominators, range conditions,\ncomplex conjugation, and any positivity needed by Schur complements or\ndivisions. If an elimination enlarges the possible state set, prove\nincompatibility on that enlarged set or retain the missing restrictions.\nPolynomial syzygies alone do not preserve spectral ordering, positivity\nor analytic realizability.",
+        "round2_targets": [
+          "OPICA2_P09",
+          "OPICA2_P17",
+          "OPICA2_P18",
+          "OPICA2_S04",
+          "OPICA2_T_C",
+          "OPICA2_T_D"
+        ],
+        "carry_forward": "Nonzero denominators, positive complements, preserved kernel terms and complete sign data remain explicit.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 452,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "A-01",
+        "title": "Same signed integral.",
+        "original_applicability": "ROUTE_SELECTED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 471,
+        "original_source_paragraph": "**A-01 Same signed integral.** The candidate must constrain (2), or an\nexactly equivalent expression, on the retained true ground. If a bound\non $\\psi(x) - x$ is imported, derive its relation to the weighted\nremainder $R(x)$ by justified partial summation. **Acceptance:** retain\nendpoint contributions, the chain-rule factor, prime-power jumps, and\nthe actual signed weight $e_{u}\\prime(1 - t/L)$. An upper bound on $|R|$\nbecomes useful only after a proved bound on the matching source-weighted\nvariation and a closed final budget.",
+        "round2_targets": [
+          "OPICA2_T_A",
+          "NATIVE_STEP123"
+        ],
+        "carry_forward": "Historical A concerns same retained ground prime remainder; current field/high-mask route needs its own exact adapter, not label identity.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 465,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "A-02",
+        "title": "Entire energy budget.",
+        "original_applicability": "ROUTE_SELECTED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 480,
+        "original_source_paragraph": "**A-02 Entire energy budget.** Local moment or endpoint information must\nbe combined with the older-prime contribution and the entire prime-free\nbudget. The PAPER strict-odd result supplies a nonzero cubic moment and\na favorable recent-prime interval, with a radius depending on the parity\ngap and $K$. **Acceptance:** quantify that interval, estimate every\ncontribution outside it, and prove that the resulting inequality\ncontradicts (1). A sign on a subset of primes is not a sign for the\ncomplete sum.",
+        "round2_targets": [
+          "OPICA2_T_A",
+          "main §4 Path A",
+          "PROJ-004",
+          "PROJ-015"
+        ],
+        "carry_forward": "Keep complete arithmetic budget, old primes, endpoint/future and cross terms; subtrace or favorable prime subset is insufficient.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 474,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "A-03",
+        "title": "Gap and source normalization control.",
+        "original_applicability": "ROUTE_SELECTED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 489,
+        "original_source_paragraph": "**A-03 Gap and source normalization control.** A resolvent or moment\nestimate containing $(a - \\lambda)^{- 1}$, $(b - \\lambda)^{- 1}$,\n$\\parallel H \\parallel$, or a normalization factor must track it through\nthe final inequality. **Acceptance:** either prove the necessary bound\nin the covered branch, show cancellation with a justified nonzero\nfactor, or treat the small-gap and tie regimes separately. Neither a\nfitted lower gap nor a source normalization sampled at one ground is\nadmissible.",
+        "round2_targets": [
+          "OPICA2_T_C",
+          "OPICA2_T_D",
+          "PROJ-010"
+        ],
+        "carry_forward": "Retain gap/source factors through final budget and handle small gaps/ties; no fitted uniform gap.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 483,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "B-01",
+        "title": "Generate the correct first boundary.",
+        "original_applicability": "ROUTE_SELECTED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 500,
+        "original_source_paragraph": "**B-01 Generate the correct first boundary.** Starting from a negative\nwitness, construct a fixed-cutoff positive/negative bracket and its\nboundary using the exact continuity theorem. **Acceptance:** the\nboundary has zero ground value, a nonnegative prefix, and outgoing\nnegative values. Excluding arbitrary zeros is stronger than necessary;\nharmless tangent contacts may remain. When using the full continuous\nbottom instead, prove the finite-to-continuous reduction and state which\nwitness changes. \\[S15, S17\\]",
+        "round2_targets": [
+          "OPICA2_T_D",
+          "OPICA2_T_C",
+          "PROJ-002"
+        ],
+        "carry_forward": "Historical Track B is first-negative propagation. Generate fixed-cutoff positive/negative bracket, correct boundary and source transport.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 494,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "B-02",
+        "title": "Prove continuation through a vanishing margin.",
+        "original_applicability": "ROUTE_SELECTED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 509,
+        "original_source_paragraph": "**B-02 Prove continuation through a vanishing margin.** A Gronwall-type\nroute must independently estimate a coefficient whose integral remains\nfinite all the way up to the alleged crossing. It must establish\nabsolute continuity of the scalar margin $m$, or the corresponding\nregularity hypotheses of the chosen comparison theorem. For example, if\n$m\\prime + Cm \\geq 0$ is used with a positive initial $m$, the\ncomparison requires an integrable coefficient on the relevant interval\nincluding its contact endpoint. An unbounded but integrable coefficient\nis permitted. **Acceptance:** derive $C$ from established arithmetic or\noperator estimates. Defining $C = - m\\prime/m$ is merely an identity\nuntil the required integrability is separately proved. Other noncrossing\nprinciples are admissible with their own complete hypotheses.",
+        "round2_targets": [
+          "OPICA2_T_D",
+          "main §4 Path D"
+        ],
+        "carry_forward": "Any comparison coefficient must be integrable up to contact; fitted inverse-energy connection is not a barrier.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 503,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "B-03",
+        "title": "Seam compatibility.",
+        "original_applicability": "ROUTE_SELECTED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 522,
+        "original_source_paragraph": "**B-03 Seam compatibility.** A propagation proof crossing $L = \\log q$\nmust treat entry of each prime power, the exact endpoint correlation,\nand every derivative jump used. The PAPER estimate bounds the entering\natom by $\\beta_{q}J(f)/R_{\\rho}\\left( L - \\log q \\right)$, with a\ncoefficient tending to zero, where $\\beta_{q} = \\Lambda(q)/\\sqrt{q}$ and\n$R_{\\rho}(\\delta) = \\int_{\\delta}^{\\infty}\\rho(s)ds$. **Acceptance:**\nprove a background estimate strong enough to absorb this relative form\nbound. Small overlap length is not an $L^{2}$ operator-norm bound. A\nbound relative to $J$ is not automatically relative to the vanishing\nWeil margin. \\[R4\\]",
+        "round2_targets": [
+          "OPICA2_T_D",
+          "NATIVE_STEP123",
+          "PROJ-012"
+        ],
+        "carry_forward": "Actual prime seams and relative form bounds; small overlap is not operator-norm or vanishing-Weil-energy control.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 516,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "B-04",
+        "title": "Global continuation or cofinal reach.",
+        "original_applicability": "ROUTE_SELECTED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 533,
+        "original_source_paragraph": "**B-04 Global continuation or cofinal reach.** Local extension from\n$Q \\geq cI$ to a slightly larger interval with $Q \\geq (c/2)I$ is\navailable on paper. **Acceptance:** if iterated, prove that the reached\napertures have the required unbounded range. Steps that shrink as $c$\ntends to zero can accumulate at a finite aperture. Higher-order\ncontacts, eigenvalue multiplicities, parity changes and fresh/inherited\nregions must be covered unless the argument bypasses them.",
+        "round2_targets": [
+          "OPICA2_T_D",
+          "OPICA2_T_C"
+        ],
+        "carry_forward": "Local extension must reach the required global/cofinal domain; finite accumulation and all branch changes remain covered.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 527,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "C-01",
+        "title": "Identify the nonredundant remainder.",
+        "original_applicability": "ROUTE_SELECTED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 543,
+        "original_source_paragraph": "**C-01 Identify the nonredundant remainder.** For each proposed\nelimination, record the original relations, eliminated variables,\nsurviving relation and its independent premises. **Acceptance:** verify\nthat the survivor is not simply the characteristic equation, negative\nenergy, Ward identity, normalization, or the desired positivity in\nanother notation. Logical equivalence to RH is not a reason to discard a\ntarget; absence of an independent proof is the relevant failure.",
+        "round2_targets": [
+          "terminal_targets",
+          "main §§4,6"
+        ],
+        "carry_forward": "Historical compatibility remainder must carry new information; equivalence to RH is an allowed target but not its proof.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 537,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "C-02",
+        "title": "Preserve the domain of a Schur reduction.",
+        "original_applicability": "ROUTE_SELECTED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 551,
+        "original_source_paragraph": "**C-02 Preserve the domain of a Schur reduction.** If a positive\ncomplement is eliminated, prove the complement’s lower bound, existence\nand boundedness of its inverse, and the domain of the cross operator.\nThe exact remaining expression has the form\n\n$$S_{eff} = H_{E} - C^{*}H_{F}^{- 1}C.$$\n\n**Acceptance:** prove the completed-square identity and the required\nsign or inertia implication. Eigenvalues need not be preserved\nindividually. The projected vector is a new witness; source moments of\nthe original ground require transport. A finite-dimensional $S_{eff}$\ncontaining an infinite-dimensional inverse is not yet a finite\narithmetic certificate. \\[R5\\]",
+        "round2_targets": [
+          "OPICA2_T_C",
+          "OPICA2_T_D",
+          "NATIVE_CONTACT"
+        ],
+        "carry_forward": "Exact completed square, full complement inverse domain and response; a finite matrix containing infinite inverse is not a finite certificate.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 545,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "C-03",
+        "title": "Control omitted directions.",
+        "original_applicability": "ROUTE_SELECTED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 565,
+        "original_source_paragraph": "**C-03 Control omitted directions.** Finite negative index at each\naperture does not identify a sufficient canonical Fourier cutoff and\ndoes not prove index zero. **Acceptance:** any finite checker used for\nall-$K$ positivity must include a theorem covering the entire omitted\nspace and its coupling to the retained space. Any asymptotic source-atom\nor bulk trace law must be connected to the complete zeta-weighted\noperator and the spectral edge needed for exclusion, with valid\nparameter dependence.",
+        "round2_targets": [
+          "OPICA2_T_C",
+          "OPICA2_T_D"
+        ],
+        "carry_forward": "Control omitted directions/couplings; finite negative index or high-tail positivity does not imply zero index.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 559,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "EXT-01",
+        "title": "Exact source and status.",
+        "original_applicability": "IF_USED_EXTERNAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 578,
+        "original_source_paragraph": "**EXT-01 Exact source and status.** Pin the author, title, version,\ntheorem number, domain, assumptions, and applicable errata. Record which\nproof and certificate components were inspected and which were\nindependently reproduced. **Acceptance:** author claims, theorem proofs,\nnumerical certificates, reproduction receipts, and Lean declarations\nremain distinct. The research scan below covers the programmes\nmaterially relevant to this construction; it is not a claim to have\nexhaustively audited all RH literature.",
+        "round2_targets": [
+          "OPICA2_X01",
+          "source_catalog",
+          "PROJ-017"
+        ],
+        "carry_forward": "Pin exact external theorem/version/proof scope and separate verified7/8 from reported stronger benchmark.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 572,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "EXT-02",
+        "title": "Independent certificate authority.",
+        "original_applicability": "IF_USED_EXTERNAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 587,
+        "original_source_paragraph": "**EXT-02 Independent certificate authority.** If a computational theorem\nis used as a premise, verify its complete source-to-target construction\nand every finite certificate required by the theorem, together with the\nanalytic reduction and tails. **Acceptance:** no substitution of a\nchecksum, sample entry, previously recorded PASS, small scalar subset,\nor host program axiom for the complete asserted sign. A finite\ncertificate can prove an infinite-dimensional statement only through a\nproved reduction.",
+        "round2_targets": [
+          "OPICA2_P19",
+          "OPICA2_P22",
+          "OPICA2_S06",
+          "OPICA2_X01"
+        ],
+        "carry_forward": "Full analytic reduction plus complete certificate authority; scalar subset/hash does not prove larger sign.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 581,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "EXT-03",
+        "title": "Spectral identification if used.",
+        "original_applicability": "IF_USED_EXTERNAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 596,
+        "original_source_paragraph": "**EXT-03 Spectral identification if used.** Self-adjointness and real\nzeros of an auxiliary characteristic function require a separate theorem\nidentifying the object with the zeta target. **Acceptance:** establish\nthe shift, normalization, completeness and limit topology needed to\ntransport zero exclusion. If a locally uniform analytic limit is used,\nprove its nonzero target and domain; numerical matching of finitely many\nzeros is insufficient. A positive shifted form does not prove the\nunshifted form positive.",
+        "round2_targets": [
+          "NATIVE_CONTACT",
+          "optional_external_transfer_lanes"
+        ],
+        "carry_forward": "Required only if external spectral identification is used; no auxiliary self-adjoint real-zero object is identified with zeta by name.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 590,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "EXT-04",
+        "title": "Arithmetic estimates if used.",
+        "original_applicability": "IF_USED_EXTERNAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 605,
+        "original_source_paragraph": "**EXT-04 Arithmetic estimates if used.** A zero-density,\npair-correlation, PNT or finite-height result must be converted to an\nestimate on the covered witness class. **Acceptance:** supply an exact\nsource-weighted bound or an amplification theorem showing that one\noff-line zero would violate the imported quantitative result. A positive\nproportion, density-one statement, or finite verification can leave\nisolated exceptions.",
+        "round2_targets": [
+          "OPICA2_T_A",
+          "OPICA2_S11",
+          "OPICA2_X01",
+          "PROJ-017"
+        ],
+        "carry_forward": "Convert arithmetic/density/finite-height input into exact source-weighted estimate; a positive ceiling is not Theta=0.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 599,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "COVER-01",
+        "title": "Branch-coverage or mathematically proved bypass certificate",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 757,
+        "original_source_paragraph": "**Requirement COVER-01.** The finished proof must include a coverage\ncertificate identifying which theorem covers each required row and which\nrows are bypassed by the selected contract. A row marked irrelevant\nneeds a mathematical reason, not a numerical absence of that case. For a\ndirect all-vector inequality, most local contact rows are bypassed\nbecause no negative vector exists to generate a contact.",
+        "round2_targets": [
+          "terminal_target_logic",
+          "main §4",
+          "PROJ-011"
+        ],
+        "carry_forward": "Record a selected-route covering theorem or mathematical bypass per required branch. This crosswalk itself is not a covering proof.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 751,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "FALS-01",
+        "title": "Match the hypotheses.",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 766,
+        "original_source_paragraph": "**FALS-01 Match the hypotheses.** Before accepting a candidate, list its\nfull hypotheses and compare them with the relevant controls below. A\ncounterexample refutes a candidate only if it satisfies all those\nhypotheses. Conversely, a candidate is not repaired merely by adding a\ncondition that has not been proved for the actual state. Record which\nmathematical input excludes each otherwise matched negative control.\n\n| **Control**                                 | **What it tests**                                                                                        | **Required interpretation**                                                                               |\n|---------------------------------------------|----------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|\n| Pair-D C1                                   | Carrier geometry, reversal, centered-index commutator and positive predecessors with negative successors | Structural parity squeeze alone is insufficient; full canonical arithmetic is absent                      |\n| Legal K equals 2 negative source atom       | Actual moments, D and cubic source, phase and shifted overlap                                            | Source geometry and one atom’s coefficient do not determine the complete form                             |\n| Generic positive rank-one secular example   | A positive increasing transform can attain its root at negative shift                                    | Positive measure or positive slope alone is not exclusion                                                 |\n| Strict-branch and tied exact models         | Pseudoinverse kernel terms, removable scalar poles and singular limits                                   | Retain the full kernel and actual branch hypotheses                                                       |\n| Odd-order contact family                    | Stationary contacts with optimized curvature zero and outgoing negative Schur scalar                     | No fixed finite jet list establishes general noncrossing                                                  |\n| Genuine canonical K equals 4 and 5 residues | Signed secular residues on genuine positive matrices                                                     | Universal positive-residue assertions are false; no negative-ground premise was tested                    |\n| Q14 genuine point and modified weights      | Near-zero margins, coefficient sensitivity and ground rotation                                           | Exact genuine arithmetic must distinguish modified systems; fixed-ray and moving-ground thresholds differ |\n| Prime-power-consistent extension            | Modified finite prime bases with all their powers scaled coherently                                      | Positive weights and coarse PNT behaviour alone remain insufficient                                       |\n| Endpoint packets                            | Order-one correlation on a shrinking overlap                                                             | Ordinary L2 norm does not give seam smallness; control form energy                                        |\n| Compact-resolvent crossing and Schur model  | Positive high tail and finite negative index with a bad low block                                        | Compactness and finite index do not prove positivity                                                      |\n| Large-aperture and variable-cutoff examples | Quantifier order and loss of constants                                                                   | Fixed-K or bounded-window success does not establish TAIL or COFINAL                                      |\n\nThe decisive exact instances already available include\n$T(\\mu) = 3/(2 - \\mu)$, which is positive and increasing but satisfies\n$T( - 1) = 1$; a fixed-$D$ family with Schur scalar $- t^{m}$ for every\nodd $m \\geq 3$; and genuine residue signs $( + , + , - )$ at\n$K = 4,L = 13/10$ and $( + , + , - , - )$ at $K = 5,L = 11/10$. The\nlatter were checked by outward source intervals and exact interval\ninertia. \\[R3–R6\\]\n\nAt the rational Q14 aperture, the certified modified-weight crossing\nlies near $2.17232814518 \\times 10^{- 13}$ in the multiplicative\nperturbation parameter, while the original fixed-ray threshold is\ndifferent. A coherent extension of that perturbation changes the\nweighted remainder uniformly by less than $1.674 \\times 10^{- 12}$ and\nretains a coarse PNT asymptotic. It does not retain the genuine\ncoefficients or completed functional equation. These are controls on\ninadequate hypotheses, not counterexamples to RH. \\[R6\\]",
+        "round2_targets": [
+          "OPICA2_S12",
+          "OPICA2_S13",
+          "OPICA2_T_D",
+          "PROJ-005",
+          "PROJ-006",
+          "PROJ-007"
+        ],
+        "carry_forward": "Counterexample must satisfy the whole proposed premise set; preserve native/synthetic distinction.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 760,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "FALS-02",
+        "title": "Use the fastest decisive test.",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 804,
+        "original_source_paragraph": "**FALS-02 Use the fastest decisive test.** First test algebraic and\nquantifier consistency, then matched exact low-dimensional controls,\nthen canonical interval cases, then expensive parameter ranges. A proof\nproposal requiring all secular residues nonnegative fails immediately on\nthe existing genuine controls. A barrier derived by division by its\nmargin fails the explicit higher-order contact test unless integrability\nis separately proved. A surviving candidate still needs an analytic\nproof.",
+        "round2_targets": [
+          "implementation_milestones",
+          "main §10.4",
+          "PROJ-005",
+          "PROJ-006"
+        ],
+        "carry_forward": "Use algebra/quantifier and existing native failures before expensive sweeps; finite optimization does not bypass them.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 798,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "FALS-03",
+        "title": "Preserve rejected claims precisely.",
+        "original_applicability": "GENERAL",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 813,
+        "original_source_paragraph": "**FALS-03 Preserve rejected claims precisely.** Record the exact\nfalsified statement, counterexample, verified hypotheses, and scope. Do\nnot promote a failed lower bound into a negative value of the actual\nform, or a method-specific obstruction into an impossibility theorem for\nall Step 4 approaches. Repair is legitimate when the strengthened\npremises are independently established on every needed generated state.",
+        "round2_targets": [
+          "supporting_amendments.forbidden_substitutions",
+          "PROJ-001",
+          "PROJ-005",
+          "PROJ-006",
+          "PROJ-007"
+        ],
+        "carry_forward": "Preserve exact refuted claim and scope; a method failure is not general Step4 impossibility or negative actual energy.",
+        "specification_disposition": "AMEND_TRACEABILITY",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 807,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "NUM-01",
+        "title": "Proof-relevant precision.",
+        "original_applicability": "IF_NUMERICAL_EVIDENCE_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 822,
+        "original_source_paragraph": "**NUM-01 Proof-relevant precision.** Every numerical sign used as proof\nevidence must have exact rational or outward-rounded bounds, validated\nsource normalization, complete input data, and a theorem relating the\nverified finite object to the claimed object. **Acceptance:** a sign\ninterval excludes zero in the required direction, or a non-strict\nequality/sign has an exact proof. A higher precision floating-point\nvalue is not automatically an enclosure.",
+        "round2_targets": [
+          "OPICA2_P19",
+          "OPICA2_P22",
+          "OPICA2_S06"
+        ],
+        "carry_forward": "Exact/outward enclosures with actual source-to-target theorem; floating precision alone is not a certificate.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 816,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "NUM-02",
+        "title": "Continuous coverage.",
+        "original_applicability": "IF_NUMERICAL_EVIDENCE_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 830,
+        "original_source_paragraph": "**NUM-02 Continuous coverage.** A continuous-aperture certificate must\nprove coverage of every claimed point, including endpoints and seams,\nwith an error estimate valid on each covered cell. **Acceptance:** the\nunion of certified cells is the full stated range, every parity sector\nclaimed by that certificate is covered, and any omitted tail or\nparameter range has its own theorem. Both sectors are required by the\ncombined WP4 Full or terminal positivity claim; a correctly labeled\none-parity partial certificate remains valid. A positive grid, frozen\nbasin or single rational aperture cannot be labeled a continuous\ncertificate.",
+        "round2_targets": [
+          "OPICA2_P22",
+          "OPICA2_S06",
+          "WP4"
+        ],
+        "carry_forward": "Regional/continuous claims include all endpoints,seams,parities and omitted tails; finite points do not establish continuous cover.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 824,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "NUM-03",
+        "title": "Full error budget.",
+        "original_applicability": "IF_NUMERICAL_EVIDENCE_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 841,
+        "original_source_paragraph": "**NUM-03 Full error budget.** The inequality must include source\napproximation, quadrature, rounding, basis conversion, compression,\ncomplement and coupling errors, as applicable. **Acceptance:** the final\nmargin dominates the sum or correct quadratic combination of all errors.\nSigned channel cancellations may be bounded separately only after\nproving that the resulting loss still leaves a sufficient bound.",
+        "round2_targets": [
+          "OPICA2_P23",
+          "OPICA2_S08",
+          "OPICA2_P19",
+          "OPICA2_T_C"
+        ],
+        "carry_forward": "Include every source, quadrature, rounding, compression, complement, coupling, filter, lag and physical-output error as applicable.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 835,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "NUM-04",
+        "title": "Reproducibility and authority.",
+        "original_applicability": "IF_NUMERICAL_EVIDENCE_USED",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 848,
+        "original_source_paragraph": "**NUM-04 Reproducibility and authority.** A finite verification package\nmust identify its exact input hashes, dependency versions, precision and\nrounding model, expected mathematical statement, checker and output.\nSeparate proposal generation from verification where possible.\n**Acceptance:** another execution can reproduce the certificate from the\npinned inputs, and the report distinguishes interval authority from a\nkernel-checked fact. Replaying a subset of a larger certificate does not\ndischarge the omitted obligations.",
+        "round2_targets": [
+          "acceptance",
+          "validation",
+          "main §14"
+        ],
+        "carry_forward": "Pinned input/dependency/checker/rounding model and reproducible output; inherited execution distinct from fresh execution.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 842,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "GATE-01",
+        "title": "Step 3 selected-path composition completion",
+        "original_applicability": "STAGE_SPECIFIC",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 886,
+        "original_source_paragraph": "**GATE-01.** Step 3 is complete for a selected construction when its\nused representation graph composes from the existing counterexample\ngenerator to the exact input of the proposed exclusion theorem. Every\nedge has a proof, every domain and shift agrees, every change of vector\nhas sufficient transported properties, and every branch needed by that\nconstruction is covered. Equivalent descriptions beyond this used graph\nare optional.\n\nThe review deliverable must include the state definitions, the map\nregister, the normalization/domain proof, the used shifted or contact\nadapters, and the source/status ledger. A collection of individually\nvalid theorems with incompatible witnesses does not pass.",
+        "round2_targets": [
+          "NATIVE_STEP123",
+          "native_prerequisites",
+          "main §3"
+        ],
+        "carry_forward": "Selected used graph must compose actual generator to exclusion input. Current exact producer evidence is owned by repository audit.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 880,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "GATE-02",
+        "title": "Step 4 paper-proof completion with no open leaf",
+        "original_applicability": "STAGE_SPECIFIC",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 901,
+        "original_source_paragraph": "**GATE-02.** Step 4 is complete on paper only when a finite proof chain\nestablishes one sufficient terminal contract with no open mathematical\nleaf. The proof must explicitly contradict a generated necessary\ncondition or otherwise imply RH, pass the branch assessment, and survive\nindependent checking of its arithmetic, limits, quantifiers and\ncountermodels. Independent internal review must be described accurately\nand not represented as external peer review.\n\nThe shortest direct arithmetic chain has four obligations:\n\n1.  Instantiate an arbitrary actual residual beyond the chosen common\n    threshold.\n2.  Transport the existing strict inequality $P_{s} + B_{s} > 0$ without\n    changing its witness.\n3.  Prove from independent mathematics $P_{s} + B_{s} \\leq 0$ on that\n    same covered state.\n4.  Derive the contradiction and invoke the existing off-line-zero\n    generator or terminal equivalence.\n\nOnly item 3 is the decisive missing sign; items 1 and 2 still require\nexact interfaces in any changed representation. The shortest cofinal\nalternative is to prove all-$K$ legal nonnegativity at arbitrarily large\ncommon apertures and contradict (3). These are specifications of the\nrequired output, not proofs that either output has been constructed.",
+        "round2_targets": [
+          "terminal_targets.status",
+          "main §§7.4,12"
+        ],
+        "carry_forward": "No mathematical open leaf in a claimed closing proof; all current terminal premises remain OPEN.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 895,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "GATE-03",
+        "title": "Authorized Lean and terminal claim-validation gates",
+        "original_applicability": "STAGE_SPECIFIC",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 928,
+        "original_source_paragraph": "**GATE-03.** Lean implementation follows an accepted paper proof and\nseparate authorization. Its specification must match the mathematical\nstatement actually proved, discharge every imported premise through an\naccepted route, and identify the permitted foundational axioms. The\nexisting project axiom policy permits propext, Classical.choice and\nQuot.sound; additional unproved arithmetic or RH-strength axioms cannot\nsilently stand in for the result. Exact-head formal-validity checks,\nrelevant regression checks, graph consistency and claim-validation gates\nmust then pass. Source and certificate audits remain distinct from a\nsuccessful build.",
+        "round2_targets": [
+          "acceptance",
+          "global_invariants",
+          "main §11"
+        ],
+        "carry_forward": "Real compatible build, independent expected type, transitive standard-axiom audit, native consumer and exact receipt before promotion.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 922,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      },
+      {
+        "requirement_id": "GATE-04",
+        "title": "RH_OPEN firewall until complete proof passes",
+        "original_applicability": "STAGE_SPECIFIC",
+        "original_register_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/2bad4b8d54b9_REQUIREMENTS_REGISTER_49_v2_6.json",
+        "original_extract_path": "/workspace/scratch/6937f618d770/analysis/attachments/files/5573150eaf7d_STEP3_STEP4_REQUIREMENTS_v1_0_SOURCE_EXTRACTED.md",
+        "original_extract_line": 939,
+        "original_source_paragraph": "**GATE-04.** The project retains RH_OPEN until the complete proof and\nformal claim-validation gates succeed. Partial improvements must be\nrecorded with their exact scope. A complete finite window, a new\nequality, a paper adapter, a green check or an RH-equivalent target is\nnot itself a terminal proof.",
+        "round2_targets": [
+          "status",
+          "global_invariants",
+          "main §12"
+        ],
+        "carry_forward": "Keep RH_OPEN until literal terminal proof and claim gates; finite certificate and green count cannot close RH.",
+        "specification_disposition": "RETAIN_IN_SPECIFICATION",
+        "proof_discharge": "NOT_ASSERTED_BY_THIS_CROSSWALK",
+        "current_lean_acceptance_inferred": false,
+        "original_register_reported_source_line": 933,
+        "source_line_note": "The materialized extraction prepends6orientation lines; original register line retained separately."
+      }
+    ],
+    "work_packages": [
+      {
+        "id": "WP0",
+        "historical_obligation": "Exact live source and theorem authority; do not restart completed orientation",
+        "round2_targets": [
+          "source_catalog",
+          "native_prerequisites",
+          "acceptance"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Parent/repository auditor owns live pin, complete expected types and current receipts.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false
+      },
+      {
+        "id": "WP1",
+        "historical_obligation": "Reciprocal-aperture concavity with actual normalization and derivative premises",
+        "round2_targets": [
+          "NATIVE_STEP123",
+          "OPICA2_T_C",
+          "OPICA2_T_D"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Historical work package; exact current theorem status requires source reconciliation, not a new OPICA root.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false
+      },
+      {
+        "id": "WP2",
+        "historical_obligation": "K2 gap gluing/hybrid record; M51 has K2 even scope",
+        "round2_targets": [
+          "NATIVE_STEP123"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Do not infer all-cutoff or odd/tie scope from the K2 even component.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false
+      },
+      {
+        "id": "WP3",
+        "historical_obligation": "Strict-even true-ground to shifted-ray adapter",
+        "round2_targets": [
+          "NATIVE_STEP123",
+          "NATIVE_PATH_D"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Reuse existing exact current adapters; paper broader branches are not automatically compiled wrappers.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false
+      },
+      {
+        "id": "WP4",
+        "historical_obligation": "D2 Full: forall p in{even,odd}, forall L in[1/512,log16], parityRayleighBottom(p,L,3)>0",
+        "round2_targets": [
+          "Historical D2 campaign",
+          "NUM-02"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Full legal K3 continuous coverage is distinct from one-parity, pointwise, or pole-neutral K3 checks. Retain current completion/supersession review; do not silently add as blocker to finite-filter milestone.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false
+      },
+      {
+        "id": "WP5",
+        "historical_obligation": "Prescribed modified-prime K2 crossing certificate",
+        "round2_targets": [
+          "Historical controls",
+          "OPICA2_T_D failure ledger"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Later K3 Q14 and neutral modified-prime controls do not by themselves replace the original prescribed K2 obligation.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false
+      },
+      {
+        "id": "WP6",
+        "historical_obligation": "Signed-correlation investigation with matched controls and exact disposition",
+        "round2_targets": [
+          "OPICA2_T_A",
+          "OPICA2_T_B",
+          "PROJ-005",
+          "PROJ-006"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Retain source/target and countermodel scope; no global covariance upper is inferred.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false
+      },
+      {
+        "id": "WP7",
+        "historical_obligation": "Integration, exact-head checks, graph/registry consistency and post-green mathematical assessment",
+        "round2_targets": [
+          "acceptance",
+          "validation",
+          "main §§11,12,14"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "No new implementation/receipt claimed in this audit; preserve exact declaration and workflow authority.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false
+      }
+    ],
+    "label_warning": "Historical12-Oct TrackB is first-negative propagation and TrackC is compatibility/Schur reduction; do not equate with current causal PathB or legacy CI Track labels.",
+    "terminal_status": "RH_OPEN",
+    "requirements_count": 49,
+    "work_package_count": 8,
+    "source_line_validation": {
+      "all49_locators_checked": true,
+      "materialized_extraction_header_offset": 6
+    }
+  },
+  "historical_wp_source": {
+    "schema": "OPICA_ROUND2_WP_CARRY_FORWARD_V2_1",
+    "date": "2026-10-25",
+    "work_packages": [
+      {
+        "id": "WP0",
+        "historical_obligation": "Exact live source and theorem authority; do not restart completed orientation",
+        "round2_targets": [
+          "source_catalog",
+          "native_prerequisites",
+          "acceptance"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Parent/repository auditor owns live pin, complete expected types and current receipts.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false,
+        "revision_2_1_disposition": "REFRESHED_SOURCE_EVIDENCE_RELEASE_OPEN",
+        "current_audit_note": "Current head416aec; old full100 receipt/source bindings checked; fresh CI snapshot remains incomplete.",
+        "evidence": [
+          "repo_omission_audit.md",
+          "drive_omission_audit.md",
+          "project_requirements_49_crosswalk.json"
+        ]
+      },
+      {
+        "id": "WP1",
+        "historical_obligation": "Reciprocal-aperture concavity with actual normalization and derivative premises",
+        "round2_targets": [
+          "NATIVE_STEP123",
+          "OPICA2_T_C",
+          "OPICA2_T_D"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Historical work package; exact current theorem status requires source reconciliation, not a new OPICA root.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false,
+        "revision_2_1_disposition": "REUSE_IF_USED_FULL_DISCHARGE_NOT_REASSERTED",
+        "current_audit_note": "Keep actual reciprocal-aperture variable, normalization, derivative assumptions and current native concavity statement.",
+        "evidence": [
+          "repo_omission_audit.md",
+          "drive_omission_audit.md",
+          "project_requirements_49_crosswalk.json"
+        ]
+      },
+      {
+        "id": "WP2",
+        "historical_obligation": "K2 gap gluing/hybrid record; M51 has K2 even scope",
+        "round2_targets": [
+          "NATIVE_STEP123"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Do not infer all-cutoff or odd/tie scope from the K2 even component.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false,
+        "revision_2_1_disposition": "REUSE_CONDITIONAL_API_RETAIN_hM51",
+        "current_audit_note": "K2 even M51/hM51 and transcript prerequisites are explicit; no all-cutoff/odd/tie promotion.",
+        "evidence": [
+          "repo_omission_audit.md",
+          "drive_omission_audit.md",
+          "project_requirements_49_crosswalk.json"
+        ]
+      },
+      {
+        "id": "WP3",
+        "historical_obligation": "Strict-even true-ground to shifted-ray adapter",
+        "round2_targets": [
+          "NATIVE_STEP123",
+          "NATIVE_PATH_D"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Reuse existing exact current adapters; paper broader branches are not automatically compiled wrappers.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false,
+        "revision_2_1_disposition": "REUSE_STRICT_EVEN_RETAIN_ODD_TIE_ADAPTERS",
+        "current_audit_note": "Strict-even true-ground adapter is distinct from the unresolved broader selected-ground odd/tie branches.",
+        "evidence": [
+          "repo_omission_audit.md",
+          "drive_omission_audit.md",
+          "project_requirements_49_crosswalk.json"
+        ]
+      },
+      {
+        "id": "WP4",
+        "historical_obligation": "D2 Full: forall p in{even,odd}, forall L in[1/512,log16], parityRayleighBottom(p,L,3)>0",
+        "round2_targets": [
+          "Historical D2 campaign",
+          "NUM-02"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Full legal K3 continuous coverage is distinct from one-parity, pointwise, or pole-neutral K3 checks. Retain current completion/supersession review; do not silently add as blocker to finite-filter milestone.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false,
+        "revision_2_1_disposition": "DEFERRED_RETAINED_FULL_SCOPE_OPEN",
+        "current_audit_note": "Both K3 parity bottoms strictly positive for every L in[1/512,log16], plus the small-aperture base below, all seams and normalization. Archived run38332529352@31512dbb has30verifiedlayers/26complete; evenQ9/Q13/Q14/Q15 retain7/7/11/10 unresolvedintervals. All15oddcomplete. FrozenSECOND18/18 is feasibility only. FOURTH fallback follows frozenSECONDUNRESOLVED, not tilewise. hWindows remains a premise; no new fullcampaign dispatched.",
+        "evidence": [
+          "repo_omission_audit.md",
+          "drive_omission_audit.md",
+          "project_requirements_49_crosswalk.json"
+        ]
+      },
+      {
+        "id": "WP5",
+        "historical_obligation": "Prescribed modified-prime K2 crossing certificate",
+        "round2_targets": [
+          "Historical controls",
+          "OPICA2_T_D failure ledger"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Later K3 Q14 and neutral modified-prime controls do not by themselves replace the original prescribed K2 obligation.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false,
+        "revision_2_1_disposition": "DEFERRED_RETAINED_PRESCRIBED_K2_SCOPE",
+        "current_audit_note": "Historical prescribed modified-prime K2 crossing is not replaced by later K3Q14 or neutral matched controls; present controls are retained without certifying the prescribed campaign.",
+        "evidence": [
+          "repo_omission_audit.md",
+          "drive_omission_audit.md",
+          "project_requirements_49_crosswalk.json"
+        ]
+      },
+      {
+        "id": "WP6",
+        "historical_obligation": "Signed-correlation investigation with matched controls and exact disposition",
+        "round2_targets": [
+          "OPICA2_T_A",
+          "OPICA2_T_B",
+          "PROJ-005",
+          "PROJ-006"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "Retain source/target and countermodel scope; no global covariance upper is inferred.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false,
+        "revision_2_1_disposition": "REUSE_CONTROLS_SIGNED_UPPER_OPEN",
+        "current_audit_note": "Native unrestricted signed-ray and other matched falsifiers retained. Admissible complete source-specific signed/covariance upper remains OPEN.",
+        "evidence": [
+          "repo_omission_audit.md",
+          "drive_omission_audit.md",
+          "project_requirements_49_crosswalk.json"
+        ]
+      },
+      {
+        "id": "WP7",
+        "historical_obligation": "Integration, exact-head checks, graph/registry consistency and post-green mathematical assessment",
+        "round2_targets": [
+          "acceptance",
+          "validation",
+          "main §§11,12,14"
+        ],
+        "disposition": "RETAIN_HISTORY_AND_RECONCILE_CURRENT_STATUS",
+        "note": "No new implementation/receipt claimed in this audit; preserve exact declaration and workflow authority.",
+        "current_completion": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+        "source": "/workspace/scratch/6937f618d770/analysis/attachments/files/de0c6a5f012d_STEP3_STEP4_REQUIREMENTS_WITH_MATH.md",
+        "source_section": "13 Preservation of the established work packages",
+        "becomes_new_round2_blocker_without_review": false,
+        "revision_2_1_disposition": "REFRESHED_AUDIT_NEW_HEAD_ACCEPTANCE_PENDING",
+        "current_audit_note": "Current job harvest, original-root mapping, source/hash checks and revision structural validation complete at dated snapshots; full release and new terminal premise remain OPEN.",
+        "evidence": [
+          "repo_omission_audit.md",
+          "drive_omission_audit.md",
+          "project_requirements_49_crosswalk.json"
+        ]
+      }
+    ],
+    "all_eight_preserved": true,
+    "not_conjunctive_blockers_for_filtered_baseline": true
+  },
+  "implementation_path_aliases": {
+    "inputs/": "paper/",
+    "FINAL_BUILD_SPEC.md": "BUILD_SPEC.md"
+  },
+  "reviewed_import_refinements": [
+    {
+      "module": "CausalProbe",
+      "reason": "Actual signed convolution, inclusive integer history and exact RH seam reuse. No new assumption or audit dependency."
+    },
+    {
+      "module": "NativeCuts",
+      "reason": "Logical-strength and abscissa consequences of actual existing native envelope/window/mask rates."
+    }
+  ],
+  "implementation_import_refinements": [
+    {
+      "module": "Zeta23.OPICARound2.CausalProbe",
+      "previous": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.CCM.NativeDampedCompletionOperator",
+          "Zeta23.CCM.NativeDampedCompletionPointwiseBridge",
+          "Zeta23.CCM.NativeFloorCompletionSource",
+          "Zeta23.CCM.NativePositiveCompletionComplexLaplace",
+          "Zeta23.CCM.OriginalSincNativeSource",
+          "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
+          "Zeta23.OPICAFollowup.MultiplicityTail",
+          "Zeta23.CCM.NativeCompletionIntegerKernel",
+          "Zeta23.ExceptionalZero.RHTerminalConfigAttempt"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.CCM.NativeDampedCompletionPointwiseBridge",
+          "Zeta23.CCM.NativeCausalRangeObstruction",
+          "Zeta23.CCM.NativeFloorCompletionSource",
+          "Zeta23.CCM.NativeCompletionIntegerKernel",
+          "Zeta23.CCM.NativePositiveCompletionComplexLaplace",
+          "Zeta23.CCM.OriginalSincWeightedPoleMoments",
+          "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
+          "Zeta23.ExceptionalZero.RHTerminalConfigAttempt",
+          "Zeta23.OPICAFollowup.MultiplicityTail"
+        ]
+      },
+      "reason": "Actual direct imports of compiled source; frozen source and transitive mathematical scope unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.NativeCuts",
+      "previous": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency",
+          "Zeta23.ExceptionalZero.Step4OutputSufficiency",
+          "Zeta23.OPICAFollowup.Consumers",
+          "Zeta23.OPICAFollowup.MovingSourceWindowRate",
+          "Zeta23.OPICAFollowup.NativeWindowRate",
+          "Zeta23.OPICAFollowup.UniformSourceBounds"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.Consumers",
+          "Zeta23.OPICAFollowup.MovingSourceWindowRate"
+        ]
+      },
+      "reason": "Actual direct imports of compiled source; frozen source and transitive mathematical scope unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.NativeCuts",
+      "previous": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.Consumers",
+          "Zeta23.OPICAFollowup.MovingSourceWindowRate"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.Consumers",
+          "Zeta23.OPICAFollowup.MovingSourceWindowRate",
+          "Zeta23.RvM.MainTerm",
+          "Zeta23.GammaFacts.Complete"
+        ]
+      },
+      "reason": "Actual direct imports of compiled source; frozen source and transitive mathematical scope unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.ProbeGram",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.CCM.NativePositiveCompletionComplexLaplace",
+          "Zeta23.OPICAFollowup.LogFourierSobolev"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.FixedFilter"
+        ],
+        "upstream_project_imports": []
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.TruncationControls",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.ProbeGram"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.BalancedCoefficients",
+          "Zeta23.OPICAFollowup.MultiplicityTail"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.NativeCuts",
+          "Zeta23.OPICARound2.FixedFilter",
+          "Zeta23.OPICARound2.ProbeGram"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.CCM.UniversalSincSourceTail",
+          "Zeta23.CCM.NativeDampedCompletionPointwiseBridge",
+          "Zeta23.OPICAFollowup.LogSlackBalance",
+          "Zeta23.OPICAFollowup.MultiplicityTail",
+          "Zeta23.CCM.NativeCompletedInputZetaLaplace"
+        ]
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.DualCertificates",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.MultiplicityTail"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.ConfluentProfiles",
+          "Zeta23.ExceptionalZero.NativeActualKernelZeroJets"
+        ]
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.CertifiedEvaluation",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.ProbeGram",
+          "Zeta23.OPICARound2.TruncationControls"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.CCM.UniversalSincSourceTail"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.ProbeGram",
+          "Zeta23.OPICARound2.TruncationControls"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.CCM.UniversalSincSourceTail"
+        ]
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.ClassicalAdapter",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.ProbeGram"
+        ],
+        "upstream_project_imports": []
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.LogFourierSobolev"
+        ]
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.FixedFilter",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": []
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.ClassicalAdapter"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.LogFourierSobolev"
+        ]
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.FilteredClassicalComparison",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.FixedFilter"
+        ],
+        "upstream_project_imports": []
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.FixedFilter"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.SawtoothForce"
+        ]
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.FiniteFilteredBaseline",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.FilteredClassicalComparison",
+          "Zeta23.OPICARound2.FixedFilter"
+        ],
+        "upstream_project_imports": []
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.FilteredClassicalComparison"
+        ],
+        "upstream_project_imports": []
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.RegionalCertificates",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.CertifiedEvaluation"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": []
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.ProfileControls",
+      "previous": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.CoPoissonJets",
+          "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+          "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+          "Zeta23.OPICAFollowup.SquareDefect"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+          "Zeta23.OPICAFollowup.SquareDefect"
+        ]
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.SyntheticControls",
+      "previous": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": []
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.ClassicalAdapter",
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.LogFourierSobolev",
+          "Zeta23.OPICAFollowup.NativeFilters"
+        ]
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.FiniteNeutralApproximation",
+      "previous": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.CCM.BoundaryFlatApproximation",
+          "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+          "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+          "Zeta23.ExceptionalZero.BoundaryFlatFiniteWeil",
+          "Zeta23.ExceptionalZero.FiniteNegativeObstruction"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.CCM.BoundaryFlatApproximation",
+          "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+          "Zeta23.CCM.CanonicalPoleExponentialMoments",
+          "Zeta23.CCM.CanonicalPoleNeutralNesting",
+          "Zeta23.ExceptionalZero.FiniteNegativeObstruction",
+          "Zeta23.ExceptionalZero.RHTerminalConfigAttempt"
+        ]
+      },
+      "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    }
+  ]
+}

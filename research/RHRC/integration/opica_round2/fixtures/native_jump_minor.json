@@ -1,0 +1,10 @@
+{
+  "schema": "OPICA2_NATIVE_GAIN_MINOR_V1",
+  "h": "1/1000",
+  "smooth_upper_coefficient": "2",
+  "smooth_lower_coefficient": "1/2",
+  "prime_two_lower": "1/3",
+  "computed_upper": "-61/375000000000",
+  "authority": "RATIONAL_BUDGET_ONLY_NATIVE_ANALYTIC_BRIDGE_REQUIRED",
+  "RH": "OPEN"
+}

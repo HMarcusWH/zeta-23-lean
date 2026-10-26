@@ -1,0 +1,848 @@
+{
+  "schema": "OPICA2_PUBLIC_ROOTS_V1",
+  "source_commit": "adab10a37207f75b9a8b415a0fe9eadca2e4c9aa",
+  "frozen_spec_commit": "416aec21d4d6634675639b5397cc300d1f826e34",
+  "roots": [
+    {
+      "id": "OPICA2_P01",
+      "input_contract_sha256": "06ae2a2ccf4f9b80bf84b97567670e0d3377696de5cebd106c6fbe27d16e0f76",
+      "input_pointer": "contracts/OPICA2_P01",
+      "module": "Zeta23.OPICARound2.CausalProbe",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.delayed_original_source",
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P02",
+      "input_contract_sha256": "3a4638d9da095628f9fa645ec83932bd6521615d834f73962a00361bf3c7e9c2",
+      "input_pointer": "contracts/OPICA2_P02",
+      "module": "Zeta23.OPICARound2.CausalProbe",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_probe_transforms",
+      "dependencies": [
+        "OPICA2_P01"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P03",
+      "input_contract_sha256": "778b441f7df03a93231dbf96d78ae4689d42ff74d932aa3afc518f7136c57ae5",
+      "input_pointer": "contracts/OPICA2_P03",
+      "module": "Zeta23.OPICARound2.CausalProbe",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_probe_integer_action",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P04",
+      "input_contract_sha256": "6b534fa48cb2b54331acd34a919e36404bb518b62bc6e212803b3bc9c1981bf3",
+      "input_pointer": "contracts/OPICA2_P04",
+      "module": "Zeta23.OPICARound2.CausalProbe",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_probe_zero_separation",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P05",
+      "input_contract_sha256": "683c7df10dcdff54e410f065e4f602d97eb260118fed9b63915b3e7f660a4e22",
+      "input_pointer": "contracts/OPICA2_P05",
+      "module": "Zeta23.OPICARound2.CausalProbe",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.rh_of_native_probe_range",
+      "dependencies": [
+        "OPICA2_P04"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P06",
+      "input_contract_sha256": "466dfb3a5fd28d67f23100baa7dbbb0ce5d15cd3d0a500b4e5ce4608cc71a888",
+      "input_pointer": "contracts/OPICA2_P06",
+      "module": "Zeta23.OPICARound2.ProbeGram",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.probe_tail_and_correlation",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P07",
+      "input_contract_sha256": "686fe0934be9da32adeaffc202cb69110bafc10f732fba217e6612081505544c",
+      "input_pointer": "contracts/OPICA2_P07",
+      "module": "Zeta23.OPICARound2.ProbeGram",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.probe_target_column",
+      "dependencies": [
+        "OPICA2_P03",
+        "OPICA2_P06"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P08",
+      "input_contract_sha256": "a9bf6c6bb0cf07841252690ee1a66f8bd0efd89ed9e5b47fa4f871a8032ea8f8",
+      "input_pointer": "contracts/OPICA2_P08",
+      "module": "Zeta23.OPICARound2.ProbeGram",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.probe_finite_gram_positive",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P09",
+      "input_contract_sha256": "223ab23b7d9c787fe4ee78f264d234bf86191d1a25153bae0802a2208722ab71",
+      "input_pointer": "contracts/OPICA2_P09",
+      "module": "Zeta23.OPICARound2.ProbeGram",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.probe_schur_error",
+      "dependencies": [
+        "OPICA2_P07",
+        "OPICA2_P08"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P10",
+      "input_contract_sha256": "75c1be56b9fc205daf6d65c73066a9cafe843c899b3f3d88c19fc47e0a827dcf",
+      "input_pointer": "contracts/OPICA2_P10",
+      "module": "Zeta23.OPICARound2.ProbeGram",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.probe_monotone_innovation",
+      "dependencies": [
+        "OPICA2_P09"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P11",
+      "input_contract_sha256": "4bef4dd94c5111c1c6b780cb4bc87d55373f22fc3a1737175f28033f39bc909a",
+      "input_pointer": "contracts/OPICA2_P11",
+      "module": "Zeta23.OPICARound2.ProbeGram",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.probe_dirichlet_norm",
+      "dependencies": [
+        "OPICA2_P02",
+        "OPICA2_P09"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P12",
+      "input_contract_sha256": "9ce8b19d546ea39c2e9af37ab224e1d929660b4c77e9d815dc7d5e391e38a76e",
+      "input_pointer": "contracts/OPICA2_P12",
+      "module": "Zeta23.OPICARound2.ProbeGram",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.rh_of_probe_error_limit",
+      "dependencies": [
+        "OPICA2_P05",
+        "OPICA2_P09",
+        "OPICA2_P10"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P13",
+      "input_contract_sha256": "467104fa6596826a4a13897e4c27a96e9e6c31380565a33b9dd9038e9b562e59",
+      "input_pointer": "contracts/OPICA2_P13",
+      "module": "Zeta23.OPICARound2.TruncationControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_mobius_probe_inverse",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P03"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P14",
+      "input_contract_sha256": "de1def135949c65a16d36128f424791c6b3906edf57d67fc50c8b39740a3c768",
+      "input_pointer": "contracts/OPICA2_P14",
+      "module": "Zeta23.OPICARound2.TruncationControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.integer_partial_divergence_and_safe_cutoff",
+      "dependencies": [
+        "OPICA2_P03",
+        "OPICA2_P06",
+        "OPICA2_P08"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P15",
+      "input_contract_sha256": "d80b7c52398c277824a7b7ed8717a9e2e69a4b72cab1711dbd058cdd5d467c3e",
+      "input_pointer": "contracts/OPICA2_P15",
+      "module": "Zeta23.OPICARound2.TruncationControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.mobius_partial_zero_barrier",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_P13"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P16",
+      "input_contract_sha256": "e47327423035e1b8f19051112f95bd6222e3a0d6553ab06d10054125bc8123ef",
+      "input_pointer": "contracts/OPICA2_P16",
+      "module": "Zeta23.OPICARound2.TruncationControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.noncausal_probe_leakage",
+      "dependencies": [
+        "OPICA2_P04"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P17",
+      "input_contract_sha256": "ef8a96f10e05d9a1c68f82545be534d4f0289665f3d881e218bb9e52c4981e61",
+      "input_pointer": "contracts/OPICA2_P17",
+      "module": "Zeta23.OPICARound2.DualCertificates",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.laplace_jet_gram",
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P18",
+      "input_contract_sha256": "5659734be8b5cada122b065cbb17350ef487082486507ec60db0ea66dc0280cd",
+      "input_pointer": "contracts/OPICA2_P18",
+      "module": "Zeta23.OPICARound2.DualCertificates",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.simultaneous_zero_distance",
+      "dependencies": [
+        "OPICA2_P02",
+        "OPICA2_P17"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P19",
+      "input_contract_sha256": "b50e636ce54f7dff24598c34123691094392fff1b36c3b392fbb0d5a8d8220df",
+      "input_pointer": "contracts/OPICA2_P19",
+      "module": "Zeta23.OPICARound2.CertifiedEvaluation",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.finite_residual_certificate",
+      "dependencies": [
+        "OPICA2_P09"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P20",
+      "input_contract_sha256": "cad0af746a0699e109293311692c7bf2b6e8570dd9662d5b858b170d26d47620",
+      "input_pointer": "contracts/OPICA2_P20",
+      "module": "Zeta23.OPICARound2.ClassicalAdapter",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_compact_muntz_adapter",
+      "dependencies": [
+        "OPICA2_P02",
+        "OPICA2_P03",
+        "OPICA2_P06"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P21",
+      "input_contract_sha256": "802ea2079b7310c157ea859125f2e2ac151e93f2f30726a175318afd99e9ea64",
+      "input_pointer": "contracts/OPICA2_P21",
+      "module": "Zeta23.OPICARound2.RegionalCertificates",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_product_box_margin",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P22",
+      "input_contract_sha256": "707aec017dd7d2b18e1630d2f1a1a5b11f5499632cf346283b31ed4345e1a151",
+      "input_pointer": "contracts/OPICA2_P22",
+      "module": "Zeta23.OPICARound2.RegionalCertificates",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.zero_region_of_finite_probe_certificate",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_P19",
+        "OPICA2_P21"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P23",
+      "input_contract_sha256": "bd55e4a0b12f28b0c402ea3e20c27210a99437a72c99f29b043ec4e34b590526",
+      "input_pointer": "contracts/OPICA2_P23",
+      "module": "Zeta23.OPICARound2.CertifiedEvaluation",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_source_prefix_error",
+      "dependencies": [
+        "OPICA2_P01"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P24",
+      "input_contract_sha256": "6285becc6535518436444ad3622197e255c67a363b14c77a061906dfdf664809",
+      "input_pointer": "contracts/OPICA2_P24",
+      "module": "Zeta23.OPICARound2.ClassicalTransfer",
+      "required_for_full_core": false,
+      "proposed_public_name": "Zeta23.OPICARound2.rh_implies_probe_approximation",
+      "dependencies": [
+        "OPICA2_P20",
+        "OPICA2_P09"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_P25",
+      "input_contract_sha256": "9889e420550b157e7c3028768b38da529efcf23457cf33ba57734686fe0bef0c",
+      "input_pointer": "contracts/OPICA2_P25",
+      "module": "Zeta23.OPICARound2.ClassicalTransfer",
+      "required_for_full_core": false,
+      "proposed_public_name": "Zeta23.OPICARound2.rh_iff_native_probe_approximation",
+      "dependencies": [
+        "OPICA2_P12",
+        "OPICA2_P24"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S01",
+      "input_contract_sha256": "8e957e321684178a6b29ce2d76f9c505068358489ae2fd3706e0d161d21a7c8e",
+      "input_pointer": "supporting_amendments/OPICA2_S01",
+      "module": "Zeta23.OPICARound2.TruncationControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_dictionary_prefix_rigidity",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03",
+        "OPICA2_P06",
+        "OPICA2_P13"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S02",
+      "input_contract_sha256": "d21da912d7a2d957885fd686ad4a4b6d1ff5049ea8b69542236039812af8e249",
+      "input_pointer": "supporting_amendments/OPICA2_S02",
+      "module": "Zeta23.OPICARound2.ProbeGram",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_probe_pole_moment_constraints",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S03",
+      "input_contract_sha256": "fcf8ca9a5fbc058259c3d031fd8b1390fd066df6f4faa62b23b4c6c4b013a007",
+      "input_pointer": "supporting_amendments/OPICA2_S03",
+      "module": "Zeta23.OPICARound2.TruncationControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_completed_output_bernoulli_tail",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P06"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S04",
+      "input_contract_sha256": "602fa648e99b3bdb3dc19f8550d5d71d64350e61d9cafba080a05082181a14cc",
+      "input_pointer": "supporting_amendments/OPICA2_S04",
+      "module": "Zeta23.OPICARound2.FixedFilter",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_probe_fixed_stable_filter",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S05",
+      "input_contract_sha256": "115e05b06e5a475d070b8ebd8bd28a97db0033ff0333edf6741f408e53fc584b",
+      "input_pointer": "supporting_amendments/OPICA2_S05",
+      "module": "Zeta23.OPICARound2.FilteredClassicalComparison",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.filtered_probe_classical_comparison",
+      "dependencies": [
+        "OPICA2_S04"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S06",
+      "input_contract_sha256": "3719a25d91dd1278e17ca855af2e0fcd9ab3d3090e857be29769780828f08261",
+      "input_pointer": "supporting_amendments/OPICA2_S06",
+      "module": "Zeta23.OPICARound2.FiniteFilteredBaseline",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.filtered_four_column_region_certificate",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_S04",
+        "OPICA2_S05"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S07",
+      "input_contract_sha256": "bfb9c3253fe46df45a6d65fe69a8aae4024a2b32b39f339388074d5dcc5f21ad",
+      "input_pointer": "supporting_amendments/OPICA2_S07",
+      "module": "Zeta23.OPICARound2.TruncationControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P04",
+        "OPICA2_P05"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S08",
+      "input_contract_sha256": "27dca4e793b120dcf9ec8c9a0bacd980c9aa35ca815eaff30703dabe6f858605",
+      "input_pointer": "supporting_amendments/OPICA2_S08",
+      "module": "Zeta23.OPICARound2.CertifiedEvaluation",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_probe_adaptive_error_budgets",
+      "dependencies": [
+        "OPICA2_P06",
+        "OPICA2_P14",
+        "OPICA2_P19",
+        "OPICA2_P23",
+        "OPICA2_S07"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S09",
+      "input_contract_sha256": "0cfe50c5eaae42bc6c8b6aee6c407e285d6fd10a463ce64c660d0e1aad0f7433",
+      "input_pointer": "supporting_amendments/OPICA2_S09",
+      "module": "Zeta23.OPICARound2.ProfileControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction",
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S10",
+      "input_contract_sha256": "a67ea82d5e715ee7cf42bf75e2ff9a99a4107eac9dc35af6ea0d45aa337896ad",
+      "input_pointer": "supporting_amendments/OPICA2_S10",
+      "module": "Zeta23.OPICARound2.ProfileControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.fixed_imaginary_direction_positive_test_margin",
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S11",
+      "input_contract_sha256": "102f1e6c7458ff74b96a453cabf50d2229ee58666e98c838ed99dae2b95d92e2",
+      "input_pointer": "supporting_amendments/OPICA2_S11",
+      "module": "Zeta23.OPICARound2.NativeCuts",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S12",
+      "input_contract_sha256": "fa8d0ab1b1623a7ef34a7c2a029b279e016a9834561d0a2824eb0ed90934cecd",
+      "input_pointer": "supporting_amendments/OPICA2_S12",
+      "module": "Zeta23.OPICARound2.SyntheticControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.positive_equal_power_causal_twins",
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S13",
+      "input_contract_sha256": "f570bb8165fd45375e2bcf8f8ccf030fee3b5a73b3841389e26e8d9c29931481",
+      "input_pointer": "supporting_amendments/OPICA2_S13",
+      "module": "Zeta23.OPICARound2.NativeJumpControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.native_jump_gain_negative_ordered_minor",
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S14",
+      "input_contract_sha256": "0ba71653455d798599d85b69ee38d30ce5c5c5e9887c6c1f2206a77e27201963",
+      "input_pointer": "supporting_amendments/OPICA2_S14",
+      "module": "Zeta23.OPICARound2.CT1Controls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.ct1_scalar_limit_classification",
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S15",
+      "input_contract_sha256": "2635cdb06b6b17843664bee9009edee2077ba4ac63a1ac3c513c111286141e0a",
+      "input_pointer": "supporting_amendments/OPICA2_S15",
+      "module": "Zeta23.OPICARound2.FiniteNeutralApproximation",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.finite_pole_neutral_approximation",
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S16",
+      "input_contract_sha256": "f728f59d8fae72f8436703e144d9a65a87a809092c89b557662bab701a7c33e1",
+      "input_pointer": "supporting_amendments/OPICA2_S16",
+      "module": "Zeta23.OPICARound2.FixedFilter",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_S04"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_S17",
+      "input_contract_sha256": "00dcb8e3a8e059ceb1579c1f18daff04a7a2f9ad3884efcfa93e3cd8458644e3",
+      "input_pointer": "supporting_amendments/OPICA2_S17",
+      "module": "Zeta23.OPICARound2.ProfileControls",
+      "required_for_full_core": true,
+      "proposed_public_name": "Zeta23.OPICARound2.phase_complete_positive_test_observability",
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_O_C2",
+      "input_contract_sha256": "28f8ff24e36b6ffd87486abc411d6c675b58eede47d149c2143776791e6f9df6",
+      "input_pointer": "optional_extensions/OPICA2_O_C2",
+      "module": "Zeta23.OPICARound2.OptionalPolynomialGap",
+      "required_for_full_core": false,
+      "proposed_public_name": null,
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_O_C3",
+      "input_contract_sha256": "ff4f012928bcecca45cdec7f23cb4dce8849c1967cd5cf4b6edf78e4efee96cc",
+      "input_pointer": "optional_extensions/OPICA2_O_C3",
+      "module": "Zeta23.OPICARound2.OptionalFourCost",
+      "required_for_full_core": false,
+      "proposed_public_name": null,
+      "dependencies": [],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    },
+    {
+      "id": "OPICA2_O_C4",
+      "input_contract_sha256": "61473a7084db386fe95ef4d21fc1d34c8dc69d0fb2353440c94bbd04f861075e",
+      "input_pointer": "optional_extensions/OPICA2_O_C4",
+      "module": "Zeta23.OPICARound2.OptionalLatticeRepair",
+      "required_for_full_core": false,
+      "proposed_public_name": null,
+      "dependencies": [
+        "OPICA2_O_C2"
+      ],
+      "status": "NOT_IMPLEMENTED",
+      "all_clauses_required": true,
+      "independent_expected_type": false,
+      "actual_domain_consumer": false,
+      "kernel_axiom_audit": false,
+      "source_pinned_receipt": null
+    }
+  ],
+  "external_optional": [
+    {
+      "id": "OPICA2_X01",
+      "title": "Optional external seven-eighths transfer",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_theta_le_three_eighths_of_external_seven_eighths",
+      "tier": "OPTIONAL_EXTERNAL_FORMAL_TRANSFER",
+      "status": "SOURCE_VERIFIED_FORMAL_TRANSFER_OPEN",
+      "statement_contract": "Under a genuinely proved and compatible import of the pinned external ordinary-zeta nonvanishing theorem for Re(s)>7/8, derive the native ceiling Theta<=3/8, and for every fixed native source order d and epsilon>3/8 derive finite positive-damped L2 energy. This is a bounded zero-free improvement, not any terminal Path A/B/C/D closure.",
+      "dependencies": [
+        "OPICA2_S11"
+      ],
+      "native_dependency_ids": [
+        "NATIVE_RATE_AND_CUTS",
+        "EXTERNAL_SEVEN_EIGHTHS_SOURCE"
+      ],
+      "native_source_scope": "Actual Mathlib riemannZeta and actual native displacement supremum, with the native reflection/source adapter. No family-specific Hecke probe is silently identified with the native one-copy prime field.",
+      "statement_components": [
+        {
+          "formula": "External root: OAI.riemannZeta_ne_zero_of_seven_eighths_lt_re {s:C} (hs:(7/8:R)<s.re):riemannZeta(s)!=0."
+        },
+        {
+          "formula": "Actual nontrivial-zero reflection plus this strict right-strip exclusion gives Theta<=3/8. Integrability is asserted for epsilon>3/8 only; no boundary epsilon=3/8 or all-epsilon conclusion follows."
+        },
+        {
+          "formula": "The ordinary Dirichlet L companion retains its principal-pole exclusion. The zeta root uses ordinary Mathlib riemannZeta, including that library’s pole convention; it is not an ordinate-bounded or renamed object."
+        }
+      ],
+      "evidence_origin": {
+        "classification": "FRESH_ROOT_SOURCE_IDENTITY_WITH_INHERITED_EXTERNAL_BUILD_RECORD",
+        "source_commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+        "source_blob": "46c67f4000906b1391a471d6e6396ac0da3c16a5",
+        "root_source_verified_in_both_repositories": true,
+        "external_build_replayed_this_turn": false,
+        "compatibility_note": "The inherited external proof used Lean 4.34.1; native PR294 uses its frozen Lean 4.33.0-rc2 toolchain. A compatible full proof/adapter is required. Do not change the parent toolchain or add an axiom to bypass this obligation."
+      },
+      "source_refs": [
+        "SRC_EXTERNAL_SEVEN_EIGHTHS",
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "No iteration of 7/8 to 1/2 without a new improvement theorem.",
+        "No all-height native arithmetic estimate from a family-specific external detector without exact transport.",
+        "No claim that the external source is already imported into this native build.",
+        "No project axiom, signature-only surrogate or parent-toolchain replacement.",
+        "No promotion of historical receipts to a fresh external rebuild."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    }
+  ],
+  "mandatory_count": 40,
+  "optional_count": 6,
+  "full_core_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

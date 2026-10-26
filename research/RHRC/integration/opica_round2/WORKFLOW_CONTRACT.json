@@ -1,0 +1,77 @@
+{
+  "schema": "OPICA2_WORKFLOW_PLAN_V3",
+  "formal_lane_targets": {
+    "causal": [
+      "Zeta23.OPICARound2.CausalProbe",
+      "Zeta23.OPICARound2.Validation.CausalProbe"
+    ],
+    "filtered": [
+      "Zeta23.OPICARound2.FixedFilter",
+      "Zeta23.OPICARound2.Validation.FixedFilter",
+      "Zeta23.OPICARound2.FilteredClassicalComparison",
+      "Zeta23.OPICARound2.Validation.FilteredClassicalComparison",
+      "Zeta23.OPICARound2.FiniteFilteredBaseline",
+      "Zeta23.OPICARound2.Validation.FiniteFilteredBaseline"
+    ],
+    "gram": [
+      "Zeta23.OPICARound2.ProbeGram",
+      "Zeta23.OPICARound2.Validation.ProbeGram",
+      "Zeta23.OPICARound2.TruncationControls",
+      "Zeta23.OPICARound2.Validation.TruncationControls",
+      "Zeta23.OPICARound2.DualCertificates",
+      "Zeta23.OPICARound2.Validation.DualCertificates",
+      "Zeta23.OPICARound2.CertifiedEvaluation",
+      "Zeta23.OPICARound2.Validation.CertifiedEvaluation",
+      "Zeta23.OPICARound2.ClassicalAdapter",
+      "Zeta23.OPICARound2.Validation.ClassicalAdapter",
+      "Zeta23.OPICARound2.RegionalCertificates",
+      "Zeta23.OPICARound2.Validation.RegionalCertificates"
+    ],
+    "structural": [
+      "Zeta23.OPICARound2.ProfileControls",
+      "Zeta23.OPICARound2.Validation.ProfileControls",
+      "Zeta23.OPICARound2.NativeCuts",
+      "Zeta23.OPICARound2.Validation.NativeCuts",
+      "Zeta23.OPICARound2.SyntheticControls",
+      "Zeta23.OPICARound2.Validation.SyntheticControls",
+      "Zeta23.OPICARound2.NativeJumpControls",
+      "Zeta23.OPICARound2.Validation.NativeJumpControls",
+      "Zeta23.OPICARound2.CT1Controls",
+      "Zeta23.OPICARound2.Validation.CT1Controls",
+      "Zeta23.OPICARound2.FiniteNeutralApproximation",
+      "Zeta23.OPICARound2.Validation.FiniteNeutralApproximation"
+    ]
+  },
+  "aggregate_targets": [
+    "Zeta23.OPICARound2.All",
+    "Zeta23.OPICARound2.Validation",
+    "Zeta23.RHRC.OpicaRound2Bindings"
+  ],
+  "environment": {
+    "python": "3.13.5",
+    "os": "ubuntu-24.04",
+    "lean": "read unchanged lean-toolchain",
+    "mathlib": "read unchanged lake-manifest.json"
+  },
+  "required_jobs": [
+    "contract",
+    "formal(causal)",
+    "formal(filtered)",
+    "formal(gram)",
+    "formal(structural)",
+    "controls",
+    "ancestry",
+    "aggregate",
+    "generated",
+    "harvest",
+    "acceptance"
+  ],
+  "artifact_directory_env": "OPICA2_OUTPUT_DIR",
+  "optional_lanes_enabled": false,
+  "new_cli_arguments": [
+    "--evidence-dir PATH",
+    "--snapshot-mode in-workflow|post-run"
+  ],
+  "final_post_run_harvest": "After the workflow completes, run harvest --snapshot-mode post-run outside that still-running workflow; preserve in-workflow pending/self rows instead of declaring them complete.",
+  "human_review_auto_approval": false
+}
