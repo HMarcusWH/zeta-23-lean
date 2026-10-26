@@ -6,6 +6,7 @@ import json
 import os
 import subprocess
 import sys
+import uuid
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -115,12 +116,41 @@ def verify_source_freeze(source: Path, *, repo: Path = REPO) -> None:
         raise ValueError("Source identity changed during workflow commands")
 
 
+DIAGNOSTIC_TEST_FILES = (
+    "test_certificate_io.py", "test_contract.py", "test_ancestry.py",
+    "test_file_classes.py", "test_finite_baseline.py", "test_generated.py",
+    "test_receipt.py", "test_workflow_harvest.py",
+)
+
+
+def prepare_round2_diagnostic(args: argparse.Namespace) -> tuple[Path, Path]:
+    """Preserve the protected Python-only caller without inventing native gates."""
+    output = REPO.parent / "opica2-diagnostic-runs" / uuid.uuid4().hex
+    output.mkdir(parents=True, exist_ok=False)
+    freeze_source(output / "source-before.json")
+    frozen = "416aec21d4d6634675639b5397cc300d1f826e34"
+    available = subprocess.run(["git", "-C", str(REPO), "cat-file", "-e", frozen + "^{commit}"],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
+    if available.returncode:
+        run(["git", "fetch", "--no-tags", "origin", frozen])
+    projection = args.ancestor_projection.resolve() if args.ancestor_projection else output / "source"
+    if args.ancestor_projection is None:
+        run([sys.executable, "-B", str(ROOT / "integration/opica_round2/ancestor_projection.py"),
+             "create", "--repo", str(REPO), "--destination", str(projection)])
+    return projection, output
+
+
 def run_round2_suite(args: argparse.Namespace) -> None:
     """Frozen predicates run only in the authenticated ancestor projection."""
-    if args.ancestor_projection is None:
-        raise ValueError("Round2 suite requires explicit --ancestor-projection PATH")
-    projection = args.ancestor_projection.resolve()
     os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
+    diagnostic = bool(args.skip_derived_state)
+    diagnostic_output = None
+    if diagnostic:
+        projection, diagnostic_output = prepare_round2_diagnostic(args)
+    elif args.ancestor_projection is None:
+        raise ValueError("Round2 suite requires explicit --ancestor-projection PATH")
+    else:
+        projection = args.ancestor_projection.resolve()
     round2 = ROOT / "integration" / "opica_round2"
     run([sys.executable, "-B", str(round2 / "ancestor_projection.py"), "verify",
          "--repo", str(REPO), "--destination", str(projection)])
@@ -136,17 +166,35 @@ def run_round2_suite(args: argparse.Namespace) -> None:
     if args.skip_derived_state:
         old_command.append("--skip-derived-state")
     run(old_command, cwd=projection)
-    for mode in ([], ["-O"]):
-        run([sys.executable, *mode, "-m", "unittest", "discover", "-s",
-             str(projection / "research/RHRC/integration/opica_followup/tests"), "-p", "test_*.py", "-v"],
-            cwd=projection)
+    if not diagnostic:
+        for mode in ([], ["-O"]):
+            run([sys.executable, *mode, "-m", "unittest", "discover", "-s",
+                 str(projection / "research/RHRC/integration/opica_followup/tests"), "-p", "test_*.py", "-v"],
+                cwd=projection)
     run_base_suite(args, include_ancestor=False)
     run([sys.executable, "-B", str(round2 / "run_checks.py"), "contract", "--scope", "full-core"])
     for mode in ([], ["-O"]):
-        run([sys.executable, *mode, "-m", "unittest", "discover", "-s", str(round2 / "tests"),
-             "-p", "test_*.py", "-v"])
+        for pattern in DIAGNOSTIC_TEST_FILES if diagnostic else ("test_*.py",):
+            run([sys.executable, *mode, "-B", "-m", "unittest", "discover", "-s", str(round2 / "tests"),
+                 "-p", pattern, "-v"])
     run([sys.executable, "-B", str(round2 / "ancestor_projection.py"), "verify",
          "--repo", str(REPO), "--destination", str(projection)])
+    if diagnostic:
+        verify_source_freeze(diagnostic_output / "source-before.json")
+        source = json.loads((diagnostic_output / "source-before.json").read_bytes())
+        report = {"schema": "OPICA2_PYTHON_DIAGNOSTIC_SUITE_V1",
+            "status": "PASS_DIAGNOSTIC_METADATA_AND_FROZEN_BASE_REGRESSIONS_ONLY",
+            "checked_commit": source["checked_commit"], "checked_tree": source["checked_tree"],
+            "scope": "ACTUAL_CHECKOUT_DIAGNOSTIC_NOT_PR_HEAD_COMPILER_ACCEPTANCE",
+            "frozen_base_suite": "ORIGINAL_UNCHANGED_SKIP_DERIVED_STATE_COMMAND",
+            "new_diagnostic_test_files": list(DIAGNOSTIC_TEST_FILES),
+            "native_lean_typed_controls": "NOT_RUN_HERE_REQUIRED_IN_ROUND2_CONTROLS_JOB",
+            "interval_runtime_and_certifier_tests": "NOT_RUN_HERE_REQUIRED_IN_ROUND2_CONTROLS_JOB",
+            "canonical_generated_state": "NOT_RUN_HERE_REQUIRED_IN_ROUND2_GENERATED_JOB",
+            "full_core_accepted": False, "full_release_accepted": False,
+            "human_review": "NOT_ESTABLISHED", "RH": "OPEN", "Step4": "OPEN"}
+        (diagnostic_output / "diagnostic-report.json").write_bytes((json.dumps(report, indent=2) + "\n").encode("utf-8"))
+        print(json.dumps({"diagnostic_report": str(diagnostic_output / "diagnostic-report.json"), **report}), flush=True)
 
 
 # BEGIN REVIEWED WORKFLOW CLASSIFICATION INVENTORY

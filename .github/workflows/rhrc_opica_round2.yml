@@ -84,6 +84,7 @@ jobs:
         build: false
         test: false
         lint: false
+        use-github-cache: false
         use-mathlib-cache: true
     - name: Compile actual frozen lane targets and independent consumers
       shell: bash
@@ -139,6 +140,7 @@ jobs:
         build: false
         test: false
         lint: false
+        use-github-cache: false
         use-mathlib-cache: true
     - name: Install declared hash-locked audit and framework dependencies
       shell: bash
@@ -243,6 +245,7 @@ jobs:
         build: false
         test: false
         lint: false
+        use-github-cache: false
         use-mathlib-cache: true
     - name: Install declared hash-locked audit and framework dependencies
       shell: bash
@@ -262,28 +265,11 @@ jobs:
         printf '%s\n' "OPICA2_ANCESTOR_PROJECTION=$projection" >> "$GITHUB_ENV"
         python -B research/RHRC/integration/opica/validate_contract.py --phase preflight --ancestor-projection "$projection" --output "$OPICA2_OUTPUT_DIR/static76.json"
         python -B research/RHRC/integration/opica_followup/validate_contract.py --phase preflight --ancestor-projection "$projection" --output "$OPICA2_OUTPUT_DIR/static100.json"
-    - name: Execute original frozen baseline compiler producers unchanged
+    - name: Execute and authenticate both frozen baselines and both genuine current compiler exports
       shell: bash
       run: |-
         set -euo pipefail
-        python -B "$OPICA2/capture_ancestor.py" --projection "$OPICA2_ANCESTOR_PROJECTION" --output-dir "$OPICA2_OUTPUT_DIR/baseline" --population 76 --population 100 --timeout 20000
-    - name: Compile and freshly export both original populations from the current source
-      shell: bash
-      run: |-
-        set -euo pipefail
-        python -B "$OPICA2/dependency_delta.py" --produce-current 76 --repo "$GITHUB_WORKSPACE" --output-dir "$OPICA2_OUTPUT_DIR/current76" --timeout 20000
-        python -B "$OPICA2/dependency_delta.py" --produce-current 100 --repo "$GITHUB_WORKSPACE" --output-dir "$OPICA2_OUTPUT_DIR/current100" --timeout 20000
-    - name: Independently reparse and compare distinct baseline and current compiler evidence
-      shell: bash
-      run: |-
-        set -euo pipefail
-        mkdir -p "$OPICA2_OUTPUT_DIR/ancestry"
-        python -B "$OPICA2/dependency_delta.py" --repo "$GITHUB_WORKSPACE" \
-          --baseline76 "$OPICA2_OUTPUT_DIR/baseline/original-76/compiler-receipt.json" \
-          --baseline100 "$OPICA2_OUTPUT_DIR/baseline/original-100/compiler-receipt.json" \
-          --current76 "$OPICA2_OUTPUT_DIR/current76/current-compiler-receipt.json" \
-          --current100 "$OPICA2_OUTPUT_DIR/current100/current-compiler-receipt.json" \
-          --output "$OPICA2_OUTPUT_DIR/ancestry/result.json"
+        python -B "$OPICA2/run_checks.py" ancestry --ancestor-projection "$OPICA2_ANCESTOR_PROJECTION" --timeout 20000
     - name: Verify exact source unchanged after all commands
       shell: bash
       run: |-
@@ -324,6 +310,7 @@ jobs:
         build: false
         test: false
         lint: false
+        use-github-cache: false
         use-mathlib-cache: true
     - name: Install declared hash-locked audit and framework dependencies
       shell: bash
@@ -364,7 +351,11 @@ jobs:
         set -euo pipefail
         test ! -e .lake/build
         python -B "$OPICA2/run_checks.py" aggregate --build-mode cold --timeout 20000 \
-          --query-plan "$OPICA2_OUTPUT_DIR/reviewed-query-plan.json"
+          --query-plan "$OPICA2_OUTPUT_DIR/reviewed-query-plan.json" \
+          --clause-evidence "$OPICA2/PAPER_CROSSWALK.json" \
+          --control-evidence "$RUNNER_TEMP/opica2-controls-input/normal/controls/result.json" \
+          --optimized-control-evidence "$RUNNER_TEMP/opica2-controls-input/optimized/controls/result.json" \
+          --ancestry-evidence "$RUNNER_TEMP/opica2-ancestry-input/ancestry/result.json"
     - name: Compile all required full facade and binding targets after the cold core export
       shell: bash
       run: |-
@@ -414,6 +405,7 @@ jobs:
         build: false
         test: false
         lint: false
+        use-github-cache: false
         use-mathlib-cache: true
     - name: Install declared hash-locked audit and framework dependencies
       shell: bash
@@ -465,6 +457,48 @@ jobs:
             'products':rows,'full_release_accepted':False,'RH':'OPEN','Step4':'OPEN'}
         Path(os.environ['OPICA2_OUTPUT_DIR'],'generated-independent.json').write_text(json.dumps(report,indent=2)+'\n')
         PY
+    - name: Build exact native prerequisites for every paired typed control
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python - <<'PY'
+        import hashlib,json,os,re,subprocess
+        from pathlib import Path
+        registry=json.loads(Path(os.environ['OPICA2'],'CONTROL_REGISTRY.json').read_bytes())
+        fixtures=registry['runtime_typed_negative_fixtures']
+        required={'R2M03','R2M05','R2M07','R2M08','R2M09','R2M13','R2M14'}
+        expected={'Zeta23.OPICARound2.Validation.CausalProbe','Zeta23.OPICARound2.Validation.CertifiedEvaluation',
+            'Zeta23.OPICARound2.Validation.DualCertificates','Zeta23.OPICARound2.Validation.ProbeGram',
+            'Zeta23.OPICARound2.Validation.TruncationControls'}
+        if len(fixtures)!=7 or {r.get('id') for r in fixtures}!=required:
+            raise SystemExit('Exact seven typed native control pairs required')
+        observed=set()
+        for fixture in fixtures:
+            pair=[]
+            for mode in ('positive','negative'):
+                imports=[]
+                for line in fixture[mode+'_source'].splitlines():
+                    if line.startswith('import '):
+                        match=re.fullmatch(r'import (Zeta23\.OPICARound2\.Validation\.[A-Za-z_][A-Za-z0-9_]*)',line)
+                        if match is None:raise SystemExit('Unreviewed typed control import')
+                        imports.append(match.group(1))
+                pair.append(imports)
+            if not pair[0] or pair[0]!=pair[1]:raise SystemExit('Typed control pair imports differ')
+            observed.update(pair[0])
+        if observed!=expected:raise SystemExit('Typed control Validation prerequisites changed')
+        command=['lake','build',*sorted(expected)]
+        log=Path(os.environ['OPICA2_OUTPUT_DIR'],'typed-control-prerequisite-build.log')
+        with log.open('wb') as stream:
+            code=subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT).returncode
+        report={'schema':'OPICA2_TYPED_CONTROL_PREREQUISITE_BUILD_V1','argv':command,'exit_code':code,
+            'checked_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+            'checked_tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),
+            'log_sha256':hashlib.sha256(log.read_bytes()).hexdigest(),
+            'scope':'NATIVE_PREREQUISITES_WARM_PROJECT_OBJECTS_ALLOWED_NO_COLD_CLAIM',
+            'full_core_accepted':False,'full_release_accepted':False,'RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'typed-control-prerequisite-build.json').write_text(json.dumps(report,indent=2)+'\n')
+        raise SystemExit(code)
+        PY
     - name: Run all frozen and current suites with explicit ancestry scope
       shell: bash
       run: |-
@@ -489,6 +523,8 @@ jobs:
         name: opica2-generated
         path: ${{ env.OPICA2_OUTPUT_DIR }}
         if-no-files-found: error
+    env:
+      OPICA2_TYPED_CONTROL_OUTPUT: /tmp/opica2-evidence/typed-native-pairs
     needs: aggregate
     if: ${{ always() && !cancelled() }}
   harvest:
@@ -565,6 +601,7 @@ jobs:
         build: false
         test: false
         lint: false
+        use-github-cache: false
         use-mathlib-cache: true
     - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
       with:
@@ -591,7 +628,7 @@ jobs:
         PY
       env:
         REQUIRED_NEEDS: ${{ toJSON(needs) }}
-    - name: Check compiler acceptance boundary (fails closed until composition is complete)
+    - name: Independently recompose exact compiler, clause, control and ancestry evidence
       shell: bash
       run: |-
         set -euo pipefail
@@ -600,18 +637,22 @@ jobs:
         from pathlib import Path
         source=Path(os.environ['RUNNER_TEMP'],'opica2-aggregate-input','aggregate','compiler-receipt.json')
         receipt=json.loads(source.read_bytes())
-        report={'schema':'OPICA2_CHECKPOINT_COMPOSITION_OBSERVATION_V1',
-            'observed_implementation_state':receipt['implementation_state'],
-            'observed_ancestor_baseline_replay':receipt['ancestor_baseline_replay'],
-            'observed_ancestor_current_compatibility':receipt['ancestor_current_compatibility'],
+        composed=json.loads(source.with_name('composed-receipt.json').read_bytes())
+        report={'schema':'OPICA2_COMPOSITION_STATUS_OBSERVATION_V1',
+            'observed_raw_implementation_state':receipt['implementation_state'],
+            'observed_composed_implementation_state':composed['implementation_state'],
             'scope':'STATUS_OBSERVATION_ONLY_ACCEPTANCE_STILL_REQUIRES_INDEPENDENT_REVALIDATION',
             'full_core_accepted':False,'full_release_accepted':False,'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
-        Path(os.environ['OPICA2_OUTPUT_DIR'],'checkpoint-composition.json').write_text(json.dumps(report,indent=2)+'\n')
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'composition-observation.json').write_text(json.dumps(report,indent=2)+'\n')
         PY
         python -B "$OPICA2/run_checks.py" acceptance \
           --query-plan "$RUNNER_TEMP/opica2-aggregate-input/reviewed-query-plan.json" \
           --formal-receipt "$RUNNER_TEMP/opica2-aggregate-input/aggregate/compiler-receipt.json" \
-          --formal-artifacts "$RUNNER_TEMP/opica2-aggregate-input/aggregate"
+          --formal-artifacts "$RUNNER_TEMP/opica2-aggregate-input/aggregate" \
+          --clause-evidence "$OPICA2/PAPER_CROSSWALK.json" \
+          --control-evidence "$RUNNER_TEMP/opica2-controls-input/normal/controls/result.json" \
+          --optimized-control-evidence "$RUNNER_TEMP/opica2-controls-input/optimized/controls/result.json" \
+          --ancestry-evidence "$RUNNER_TEMP/opica2-ancestry-input/ancestry/result.json"
         printf '%s\n' 'Compiler evidence only. A separate post-run all-job harvest and independent human review remain required; full release, RH and Step4 are not inferred.' > "$OPICA2_OUTPUT_DIR/acceptance-boundary.txt"
     - name: Verify exact source unchanged after all commands
       shell: bash

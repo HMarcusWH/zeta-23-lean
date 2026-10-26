@@ -250,6 +250,39 @@ def check_math_sources(repo: Path, dag_result: Mapping[str, Any]) -> None:
                 "import_drift", "Actual direct project imports differ from the reviewed DAG: " + name)
 
 
+def check_facade_sources(repo: Path, dag: Mapping[str, Any], public: Mapping[str, Any]) -> None:
+    """Required facades import exactly their reviewed scope and add no declarations."""
+    for row in dag["umbrellas"]:
+        path=file_at(repo,row["path"])
+        if not path.exists() and row.get("required") is False:
+            continue
+        require(path.is_file(),"facade_source","Required facade source absent: "+row["path"])
+        text=path.read_text(encoding="utf-8")
+        lines=[line.strip() for line in _strip_comments_and_strings(text).splitlines() if line.strip()]
+        require(all(re.fullmatch(r"import [A-Za-z_][A-Za-z0-9_.]*(?:[ \t]+[A-Za-z_][A-Za-z0-9_.]*)*",line) for line in lines),
+                "facade_declaration","Import facade gained a declaration or executable command: "+row["path"])
+        actual=imports(text)
+        require(len(actual)==len(set(actual)) and set(actual)==set(row["imports"]),
+                "facade_import_drift","Actual facade imports differ from its reviewed scope: "+row["path"])
+    binding=file_at(repo,"Zeta23/RHRC/OpicaRound2Bindings.lean")
+    require(binding.is_file(),"binding_facade","Required compiler binding facade absent")
+    lines=[line.strip() for line in _strip_comments_and_strings(binding.read_text(encoding="utf-8")).splitlines() if line.strip()]
+    required={row["proposed_public_name"] for row in public["roots"] if row["required_for_full_core"]}
+    imports_seen=[];checks=[];axioms=[]
+    for line in lines:
+        match=re.fullmatch(r"import ([A-Za-z_][A-Za-z0-9_.]*)",line)
+        if match:imports_seen.append(match.group(1));continue
+        match=re.fullmatch(r"#check ([A-Za-z_][A-Za-z0-9_.]*)",line)
+        if match:checks.append(match.group(1));continue
+        match=re.fullmatch(r"#print axioms ([A-Za-z_][A-Za-z0-9_.]*)",line)
+        require(match is not None,"binding_command","Compiler binding facade gained an unreviewed command/declaration")
+        axioms.append(match.group(1))
+    require(imports_seen==["Zeta23.OPICARound2.Validation"]
+            and len(checks)==len(set(checks))==len(required) and set(checks)==required
+            and len(axioms)==len(set(axioms))==len(required) and set(axioms)==required,
+            "binding_inventory","Compiler binding facade must check every required root and exactly its axiom surface")
+
+
 def check_original_rows(current: Any, frozen: Any, array_name: str) -> None:
     require(type(current) is dict and type(frozen) is dict
             and type(current.get(array_name)) is list and type(frozen.get(array_name)) is list,
@@ -460,6 +493,7 @@ def preflight(repo: Path = REPO, here: Path = HERE, *, scope: str = "full-core")
         run("actual mathematical imports and proof-escape scan", lambda: check_math_sources(repo, dag_result))
         crosswalk = load_strict_json(here / "PAPER_CROSSWALK.json", 16*1024*1024)
         public = load_strict_json(here / "PUBLIC_ROOTS.json", 8*1024*1024)
+        run("literal minimal/full/audit facade source scopes", lambda: check_facade_sources(repo, dag, public))
         run("original25 and exact45-plus-external public contract bindings",
             lambda: check_family_contracts(here, public, crosswalk, dag_result))
         run("46-family / 143-clause control binding plan", lambda: check_control_bindings(control_mapping(here, crosswalk)))

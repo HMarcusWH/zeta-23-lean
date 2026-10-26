@@ -52,7 +52,8 @@ def validate_current_export_envelope(data):
     command_keys={"argv","returncode","stdout_sha256","stderr_sha256","working_tree_sha"}
     require(type(commands) is list and len(commands)==3 and all(type(row) is dict and set(row)==command_keys
         and type(row.get("argv")) is list and row["argv"]
-        and all(type(arg) is str and arg for arg in row["argv"]) for row in commands),
+        and all(type(arg) is str and arg for arg in row["argv"])
+        and type(row.get("returncode")) is int and row["returncode"]==0 for row in commands),
         "Current compiler requires three complete native command records")
     recorded_current_export_root(data.get("producer_artifact_root"))
 
@@ -197,10 +198,13 @@ def verify_current_export(repo: Path, receipt_path: Path, artifacts: Path, *,pop
     require(all(data.get(key)==value for key,value in compiler.validate_environment(repo).items()),
             "Current compiler recorded environment differs from the actual pinned source")
     source_records=load_strict_json(artifact("source-manifest.json"),16*1024*1024)
-    require(sources==source_records and canonical_sha256(sources)==data.get("source_manifest_sha256"),
+    require(canonical_sha256(sources)==canonical_sha256(source_records)
+            and canonical_sha256(sources)==data.get("source_manifest_sha256"),
             "Current replay source inventory differs from the exact checkout")
-    require(data.get("pinned_packages")==compiler.validate_packages(repo),"Current replay package source differs")
-    require(data.get("descendant_source_scope")==inspect_descendant(repo,repo/"research/RHRC/integration/opica_round2"),
+    require(canonical_sha256(data.get("pinned_packages"))==canonical_sha256(compiler.validate_packages(repo)),
+            "Current replay package source differs")
+    require(canonical_sha256(data.get("descendant_source_scope"))==
+            canonical_sha256(inspect_descendant(repo,repo/"research/RHRC/integration/opica_round2")),
             "Current replay does not preserve the authenticated ancestor source scope")
     plan=current_export_plan(repo,population);plan["repo"]=repo
     require(artifact("CurrentAncestorExport.lean").read_bytes()==plan["driver"]
@@ -223,7 +227,8 @@ def verify_current_export(repo: Path, receipt_path: Path, artifacts: Path, *,pop
     require("version 4.33.0-rc2," in version and "d8b18978322de05a8f3dba51ef03cf5461676c17" in version,
             "Current replay compiler pin differs")
     parsed=_parse_current(plan,artifact("bindings.stdout.log").read_text(encoding="utf-8"))
-    require(parsed==data.get("parsed"),"Current raw-log reparse differs from claimed records")
+    require(canonical_sha256(parsed)==canonical_sha256(data.get("parsed")),
+            "Current raw-log reparse differs from claimed records")
     return {"schema":"OPICA2_CURRENT_ANCESTOR_REPARSE_V1","population":population,
             "checked_commit":expected_commit,"checked_tree":expected_tree,"parsed":parsed,
             "root_names":sorted(r["full_name"] for r in plan["roots"]),
@@ -277,11 +282,11 @@ def compare_exports(baseline: Mapping[str, Any], current: Mapping[str, Any],
     require(root_names and root_names <= set(old) and root_names <= set(new), "Missing original root")
     differences = []
     for name, row in old.items():
-        if new.get(name) != row:
+        if canonical_sha256(new.get(name)) != canonical_sha256(row):
             differences.append(name)
     require(not differences, "Original compiler declaration/type/axiom changed: " + ", ".join(differences[:10]))
-    require(current.get("constructors") == baseline.get("constructors")
-            and current.get("generated_equations", {}) == baseline.get("generated_equations", {}),
+    require(canonical_sha256(current.get("constructors")) == canonical_sha256(baseline.get("constructors"))
+            and canonical_sha256(current.get("generated_equations", {})) == canonical_sha256(baseline.get("generated_equations", {})),
             "Original constructor/generated-equation metadata changed")
     old_channels, new_channels = channels(baseline), channels(current)
     require(old_channels == new_channels, "Original transitive TYPE/VALUE/STRUCTURE use graph changed")
@@ -290,7 +295,8 @@ def compare_exports(baseline: Mapping[str, Any], current: Mapping[str, Any],
         result = {r["name"]: r for r in rows}
         require(len(result) == len(rows), "Duplicate dependency metadata")
         return result
-    require(nodes(baseline) == nodes(current), "Original private/helper/kind/module dependency metadata changed")
+    require(canonical_sha256(nodes(baseline)) == canonical_sha256(nodes(current)),
+            "Original private/helper/kind/module dependency metadata changed")
     return {"status": "PASS_EXACT_ORIGINAL_COMPILER_EXPORT_EQUALITY", "original_roots": len(root_names),
             "original_public_declarations": len(old), "dependency_channels": len(old_channels),
             "current_additional_public_declarations": sorted(set(new)-set(old)),
@@ -351,7 +357,8 @@ def verify_legacy(repo: Path, receipt_path: Path, artifacts: Path, *, population
         sources = data.get("source_manifest")
         require(type(sources) is list and sources and data.get("source_manifest_sha256") == builder.object_sha256(sources),
                 "Original100 source inventory hash differs")
-    require(all(data.get(key) == value for key, value in parsed.items()), "Reparsed legacy records differ from receipt")
+    require(all(canonical_sha256(data.get(key)) == canonical_sha256(value) for key, value in parsed.items()),
+            "Reparsed legacy records differ from receipt")
     names = [r["path"] for r in sources]
     require(len(set(names)) == len(names), "Duplicate legacy source record")
     index = {}
@@ -379,7 +386,7 @@ def verify_legacy(repo: Path, receipt_path: Path, artifacts: Path, *, population
         require(sha256 == row["sha256"], "Legacy receipt source hash differs: " + path)
     for command in data["commands"]:
         name = contract.safe_relative(command["log"])
-        require("/" not in name and command["exit_code"] == 0
+        require("/" not in name and type(command.get("exit_code")) is int and command["exit_code"] == 0
                 and contract.digest(contract.file_at(artifacts, name)) == command["log_sha256"],
                 "Legacy command log missing, altered or failed")
     return {"schema": "OPICA2_LEGACY_REPARSE_V1", "population": population,

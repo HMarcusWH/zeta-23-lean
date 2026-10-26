@@ -361,6 +361,25 @@ class CurrentArtifactReparseBoundaries(unittest.TestCase):
             with self.assertRaises(InvalidCertificate):
                 self.verify(receipt, artifacts)
 
+    def test_boolean_or_float_exit_is_not_a_native_success_integer(self):
+        for index,value in enumerate((False,0.0,True)):
+            receipt,artifacts,data=self.fixture(name='exit-type-'+str(index))
+            data['commands'][0]['returncode']=value
+            self.write_receipt(receipt,data)
+            with self.assertRaises(InvalidCertificate): self.verify(receipt,artifacts)
+
+    def test_bool_integer_substitution_in_source_or_proof_records_rejected(self):
+        self.sources[0]['bytes']=0
+        receipt,artifacts,data=self.fixture(name='source-boolean')
+        source=copy.deepcopy(self.sources);source[0]['bytes']=False
+        (artifacts/'source-manifest.json').write_bytes(json.dumps(source).encode('utf-8'))
+        with self.assertRaises(InvalidCertificate): self.verify(receipt,artifacts)
+        self.parsed['declarations'][0]['is_private']=False
+        receipt,artifacts,data=self.fixture(name='proof-boolean')
+        data['parsed']['declarations'][0]['is_private']=0
+        self.write_receipt(receipt,data)
+        with self.assertRaises(InvalidCertificate): self.verify(receipt,artifacts)
+
     def test_original_argv_root_and_filename_substitution_rejected(self):
         receipt, artifacts, data = self.fixture()
         data['commands'][-1]['argv'][-2] = '/substituted/CurrentAncestorExport.olean'

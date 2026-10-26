@@ -131,6 +131,7 @@ jobs:
           build: false
           test: false
           lint: false
+          use-github-cache: ${{ hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') == '' }}
           use-mathlib-cache: true
       - name: Build every required target and export complete compiler evidence
         env:

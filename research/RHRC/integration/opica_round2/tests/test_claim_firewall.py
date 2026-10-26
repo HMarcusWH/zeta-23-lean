@@ -24,7 +24,7 @@ from certificate_io import InvalidCertificate
 from test_native_evaluation import request_fixture
 
 
-def execute_typed_semantic_guards(repo,registry,*,output,timeout=180):
+def execute_typed_semantic_guards(repo,registry,*,output,timeout=180,lake=None):
     """Fresh positive and rejected-type Lean runs; never count missing tools as a negative result."""
     import build_receipt as compiler
     from certificate_io import canonical_sha256,loads_strict_json
@@ -40,7 +40,7 @@ def execute_typed_semantic_guards(repo,registry,*,output,timeout=180):
     required={'R2M03','R2M05','R2M07','R2M08','R2M09','R2M13','R2M14'}
     if type(fixtures) is not list or {r.get('id') for r in fixtures}!=required or len(fixtures)!=7:
         raise InvalidCertificate('typed_control_scope','All seven actual typed negative fixture pairs are required')
-    lake=shutil.which('lake')
+    lake=lake or shutil.which('lake')
     if not lake:
         raise InvalidCertificate('typed_control_runtime','Pinned Lake/Lean runtime unavailable')
     sources=compiler.source_manifest(repo)

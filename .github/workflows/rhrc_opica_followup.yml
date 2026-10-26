@@ -270,6 +270,7 @@ jobs:
           build: false
           test: false
           lint: false
+          use-github-cache: ${{ hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') == '' }}
           use-mathlib-cache: true
       - name: Compile the exact frozen target list for this lane
         env:
@@ -963,6 +964,7 @@ jobs:
           build: false
           test: false
           lint: false
+          use-github-cache: ${{ hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') == '' }}
           use-mathlib-cache: true
       - name: Compile every original final target at the clean requested head
         run: |
@@ -1088,6 +1090,7 @@ jobs:
           build: false
           test: false
           lint: false
+          use-github-cache: ${{ hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') == '' }}
           use-mathlib-cache: true
       - run: |
           if [ -n "${OPICA_ANCESTOR_PROJECTION:-}" ]; then
@@ -1200,6 +1203,7 @@ jobs:
           build: false
           test: false
           lint: false
+          use-github-cache: ${{ hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') == '' }}
           use-mathlib-cache: true
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:

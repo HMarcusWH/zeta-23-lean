@@ -127,6 +127,28 @@ class ContractBoundaryTests(unittest.TestCase):
                 contract.check_upstream_symbols(repo,{"upstream_symbols":[row]},
                     {"modules":{consumer:{"direct_round2_imports":[],"upstream_project_imports":[]}}})
 
+    def test_facade_actual_scope_and_hidden_commands_are_checked(self):
+        register=io.load_strict_json(HERE/"SOURCE_REGISTER.json",16*1024*1024)
+        public=io.load_strict_json(HERE/"PUBLIC_ROOTS.json",16*1024*1024)
+        dag=register["module_dag"]
+        contract.check_facade_sources(contract.REPO,dag,public)
+        with tempfile.TemporaryDirectory() as tmp:
+            repo=Path(tmp)
+            paths=[row["path"] for row in dag["umbrellas"] if row["required"]]+["Zeta23/RHRC/OpicaRound2Bindings.lean"]
+            for relative in paths:
+                path=repo/relative;path.parent.mkdir(parents=True,exist_ok=True)
+                path.write_bytes((contract.REPO/relative).read_bytes())
+            minimal=next(row for row in dag["umbrellas"] if row["kind"]=="MATHEMATICAL_MINIMAL")
+            (repo/minimal["path"]).write_bytes(("\n".join("import "+name for name in minimal["imports"])+"\n").encode("utf-8"))
+            contract.check_facade_sources(repo,dag,public)
+            mutations=[("Zeta23/OPICARound2.lean",b"import Zeta23.OPICARound2.All\n"),
+                ("Zeta23/OPICARound2/All.lean",(repo/"Zeta23/OPICARound2/All.lean").read_bytes()+b"theorem hidden : True := by trivial\n"),
+                ("Zeta23/RHRC/OpicaRound2Bindings.lean",(repo/"Zeta23/RHRC/OpicaRound2Bindings.lean").read_bytes()+b"#eval 1\n")]
+            for relative,payload in mutations:
+                path=repo/relative;original=path.read_bytes();path.write_bytes(payload)
+                with self.subTest(path=relative),self.assertRaises(io.InvalidCertificate):contract.check_facade_sources(repo,dag,public)
+                path.write_bytes(original)
+
     def test_comment_parser_does_not_hide_proof_escapes(self):
         self.assertEqual(contract.imports('/- import Fake /- nested -/ -/\nimport Real.Module -- comment\n'), ["Real.Module"])
         with self.assertRaises(io.InvalidCertificate):
