@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
+import hashlib
+import io
 import json
 import runpy
 import shlex
@@ -11,7 +13,8 @@ import subprocess
 import sys
 import tempfile
 import unittest
-from unittest.mock import patch
+from types import SimpleNamespace
+from unittest.mock import Mock, patch
 
 HERE = Path(__file__).resolve().parents[1]
 REPO = HERE.parents[3]
@@ -38,7 +41,8 @@ class GeneratedBeforeWriteTests(unittest.TestCase):
         (self.config / "BUILD_MANIFEST.json").write_text(json.dumps({"generated": [{"path": "product.json"}]}))
 
     def execute(self, command):
-        with patch.object(run_checks, "HERE", self.config), patch.object(run_checks.contract, "git", return_value="a" * 40):
+        with patch.object(run_checks, "HERE", self.config), patch.object(run_checks.contract, "git", return_value="a" * 40), \
+                patch.object(run_checks, "_generated_windows_transport_required", return_value=False):
             with patch.object(run_checks.compiler, "run_command", side_effect=command) as called:
                 result = run_checks.execute_generated(self.repo, self.root / "evidence", 30)
         return result, called
@@ -75,6 +79,214 @@ class GeneratedBeforeWriteTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 run_checks.execute_generated(self.repo, self.root / "evidence", 30)
             command.assert_not_called()
+
+
+class WindowsGeneratedTransportTests(unittest.TestCase):
+    """Synthetic transport/router fixtures; no frozen CLI, real Git or Lean runs."""
+    def setUp(self):
+        self.writers = []
+
+    def tearDown(self):
+        for handle in self.writers:
+            handle.close()
+
+    @staticmethod
+    def source_pin(repo, relative):
+        return {"path": relative, "frozen_tree": run_checks.contract.FROZEN_TREE,
+                "mode": "100644", "git_blob": "0" * 40, "bytes": 0, "sha256": "0" * 64}
+
+    @staticmethod
+    def synthetic_caller(path, name="run_lean"):
+        namespace = {}
+        exec(compile("def " + name + "(factory, **kwargs):\n    return factory(**kwargs)\n", str(path), "exec"), namespace)
+        return namespace[name]
+
+    @staticmethod
+    def no_event(*args, **kwargs):
+        pass
+
+    def text_factory(self, *args, **kwargs):
+        self.last_kwargs = kwargs
+        raw = io.BytesIO()
+        # Deliberately emulate default Windows translation on every test OS.
+        handle = io.TextIOWrapper(raw, encoding=kwargs.get("encoding", "utf-8"),
+                                  newline=kwargs.get("newline", "\r\n"))
+        self.writers.append(handle)
+        return handle
+
+    @staticmethod
+    def payload(handle):
+        handle.write("source-id\tZeta23.Native\tname\tTHEOREM\n")
+        handle.flush()
+        return handle.buffer.getvalue()
+
+    def test_scoped_writer_repairs_crlf_kind_transport_without_changing_other_payload_bytes(self):
+        caller = self.synthetic_caller(REPO / run_checks._GENERATED_CANDIDATE)
+        options = dict(mode="w", suffix=".tsv", encoding="utf-8", delete=False)
+        before = self.payload(caller(self.text_factory, **options))
+        factory, count = run_checks._generated_make_tsv_factory(REPO, factory=self.text_factory,
+            pin=self.source_pin, emit=self.no_event)
+        after = self.payload(caller(factory, **options))
+        self.assertEqual(before.split(b"\n")[0].split(b"\t")[-1], b"THEOREM\r")
+        self.assertEqual(after.split(b"\n")[0].split(b"\t")[-1], b"THEOREM")
+        self.assertEqual(before.replace(b"\r\n", b"\n"), after)
+        self.assertEqual(self.last_kwargs["newline"], "\n")
+        self.assertEqual(count, [1])
+
+    def test_other_callers_suffixes_modes_encodings_and_explicit_newlines_are_unchanged(self):
+        records = []
+        def original(*args, **kwargs):
+            records.append((args, kwargs))
+            return object()
+        factory, count = run_checks._generated_make_tsv_factory(REPO, factory=original,
+            pin=self.source_pin, emit=self.no_event)
+        default = dict(mode="w", suffix=".tsv", encoding="utf-8", delete=False)
+        cases = [(HERE / "foreign.py", "run_lean", default),
+                 (REPO / run_checks._GENERATED_CANDIDATE, "foreign_function", default),
+                 (REPO / run_checks._GENERATED_CANDIDATE, "run_lean", {**default, "suffix": ".lean"}),
+                 (REPO / run_checks._GENERATED_CANDIDATE, "run_lean", {**default, "encoding": "ascii"}),
+                 (REPO / run_checks._GENERATED_CANDIDATE, "run_lean", {**default, "mode": "w+b"}),
+                 (REPO / run_checks._GENERATED_CANDIDATE, "run_lean", {**default, "newline": "\r\n"})]
+        for source, function, options in cases:
+            self.synthetic_caller(source, function)(factory, **options)
+            self.assertEqual(records[-1][1], options)
+        self.assertEqual(count, [0])
+
+    def test_router_changes_only_exact_candidate_child_and_preserves_all_io_arguments(self):
+        records = []
+        def original(command, *args, **kwargs):
+            records.append((command, args, kwargs))
+            return "original-result"
+        report = REPO.parent / "not-created-transport.jsonl"
+        routed, count = run_checks._generated_make_materialize_router(REPO, report, "a" * 64, "b" * 32,
+            runner=original, pin=self.source_pin, emit=self.no_event)
+        command = [sys.executable, str(REPO / run_checks._GENERATED_CANDIDATE), "--check"]
+        self.assertEqual(routed(command, cwd=REPO, check=True, stdout=subprocess.PIPE), "original-result")
+        actual, args, kwargs = records[0]
+        self.assertEqual(actual, run_checks._generated_worker_argv(REPO, report, "a" * 64, "b" * 32, "candidate", "check"))
+        self.assertEqual(kwargs, dict(cwd=REPO, check=True, stdout=subprocess.PIPE))
+        self.assertEqual(args, ())
+        unrelated = ["lake", "env", "lean", "driver.lean"]
+        routed(unrelated, cwd=REPO, capture_output=True)
+        self.assertIs(records[-1][0], unrelated)
+        self.assertEqual(count, [1])
+
+    def test_wrong_candidate_flags_interpreter_cwd_shell_and_second_route_are_refused(self):
+        original = Mock()
+        routed, count = run_checks._generated_make_materialize_router(REPO, REPO.parent / "unused.jsonl", "a" * 64, "b" * 32,
+            runner=original, pin=self.source_pin, emit=self.no_event)
+        command = [sys.executable, str(REPO / run_checks._GENERATED_CANDIDATE), "--check"]
+        for argv, kwargs in [(command + ["--extra"], dict(cwd=REPO)),
+                             ([*command[:2], "--unknown"], dict(cwd=REPO)),
+                             (["wrong-python", *command[1:]], dict(cwd=REPO)),
+                             (command, dict(cwd=REPO.parent)), (command, dict(cwd=REPO, shell=True))]:
+            with self.subTest(argv=argv, kwargs=kwargs), self.assertRaises(ValueError):
+                routed(argv, **kwargs)
+        original.assert_not_called()
+        routed(command, cwd=REPO)
+        with self.assertRaises(ValueError):
+            routed(command, cwd=REPO)
+        self.assertEqual(original.call_count, 1)
+
+    def test_frozen_cli_blob_authentication_is_readonly_and_rejects_wrong_source_identity(self):
+        relative = run_checks._GENERATED_CANDIDATE
+        raw = (REPO / relative).read_bytes()
+        blob = hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
+        original = Mock(return_value=SimpleNamespace(returncode=0,
+            stdout=("100644 blob " + blob + "\t" + relative + "\0").encode("utf-8")))
+        pin = run_checks._generated_frozen_cli_pin(REPO, relative, runner=original)
+        self.assertEqual(pin["git_blob"], blob)
+        self.assertEqual(original.call_args.args[0], ["git", "-C", str(REPO), "ls-tree", "-r", "--full-tree", "-z",
+            run_checks.contract.FROZEN_TREE, "--", relative])
+        original.return_value.stdout = ("100644 blob " + "0" * 40 + "\t" + relative + "\0").encode()
+        with self.assertRaises(ValueError):
+            run_checks._generated_frozen_cli_pin(REPO, relative, runner=original)
+
+    def test_original_cli_failure_restores_interpreter_state_and_all_patches(self):
+        argv, path, original_run, original_factory = sys.argv, sys.path, subprocess.run, tempfile.NamedTemporaryFile
+        def fail(target, run_name):
+            self.assertEqual(sys.argv, [str(REPO / run_checks._GENERATED_MATERIALIZE), "--check"])
+            self.assertEqual(sys.path[0], str((REPO / run_checks._GENERATED_MATERIALIZE).parent))
+            raise RuntimeError("synthetic frozen failure")
+        with self.assertRaises(RuntimeError):
+            run_checks._generated_execute_frozen(REPO, "materialize", "check", REPO.parent / "unused.jsonl",
+                "a" * 64, "b" * 32, emit=self.no_event, pin=self.source_pin, run_path=fail)
+        self.assertIs(sys.argv, argv)
+        self.assertIs(sys.path, path)
+        self.assertIs(subprocess.run, original_run)
+        self.assertIs(tempfile.NamedTemporaryFile, original_factory)
+
+    def test_linux_command_is_exact_direct_cli_and_windows_command_is_explicit_internal_worker(self):
+        output = REPO.parent / "unused-generated-output"
+        with patch.object(run_checks, "_generated_windows_transport_required", return_value=False):
+            argv, transport = run_checks._generated_check_command(REPO, output)
+        self.assertEqual(argv, [sys.executable, "-B", "research/RHRC/tools/materialize_derived_state.py", "--check"])
+        self.assertEqual(transport["mode"], "DIRECT_FROZEN_CLI_PLATFORM_DEFAULT_UNCHANGED")
+        with patch.object(run_checks, "_generated_windows_transport_required", return_value=True), \
+                patch.object(run_checks.contract, "digest", return_value="a" * 64):
+            argv, transport = run_checks._generated_check_command(REPO, output)
+        self.assertEqual(argv[:4], [sys.executable, "-B", str(REPO / run_checks._GENERATED_WORKER), run_checks._GENERATED_INTERNAL_FLAG])
+        self.assertEqual(argv[-4:], ["--target", "materialize", "--mode", "check"])
+        self.assertEqual(transport["normalization_scope"], run_checks._GENERATED_LF_SCOPE)
+        self.assertFalse(transport["full_release_authority"])
+
+    def test_internal_worker_is_not_a_ninth_public_check(self):
+        observed = []
+        class ParsedOnly(Exception):
+            pass
+        def parse_only(parser, *args, **kwargs):
+            observed.extend(action.choices for action in parser._actions if action.dest == "check")
+            raise ParsedOnly()
+        with patch.object(argparse.ArgumentParser, "parse_args", autospec=True, side_effect=parse_only), \
+                self.assertRaises(ParsedOnly):
+            run_checks.main()
+        self.assertEqual(observed, [("contract", "formal", "controls", "ancestry", "aggregate", "generated", "harvest", "acceptance")])
+
+    def test_transport_report_requires_exact_scope_source_pins_order_and_zero_exit_completion(self):
+        TEMP_ROOT.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=TEMP_ROOT) as tmp:
+            output = Path(tmp).resolve()
+            transport = {"mode": "EXPLICIT_WINDOWS_FROZEN_CLI_LF_TRANSPORT", "worker_sha256": "a" * 64,
+                         "run_id": "b" * 32, "report": "windows-lf-transport.jsonl"}
+            report = output / transport["report"]
+            events = []
+            def event(name, **fields):
+                return {"schema": "OPICA2_GENERATED_LF_TRANSPORT_EVENT_V1", "event": name, "repo": str(REPO),
+                        "run_id": transport["run_id"], "worker_sha256": transport["worker_sha256"],
+                        "normalization_scope": run_checks._GENERATED_LF_SCOPE, **fields}
+            materialize, candidate = self.source_pin(REPO, run_checks._GENERATED_MATERIALIZE), self.source_pin(REPO, run_checks._GENERATED_CANDIDATE)
+            candidate_argv = [sys.executable, str(REPO / run_checks._GENERATED_CANDIDATE), "--check"]
+            events.append(event("WORKER_START", target="materialize", mode="check", source_pin=materialize,
+                original_argv=[sys.executable, str(REPO / run_checks._GENERATED_MATERIALIZE), "--check"]))
+            events.append(event("ROUTE_CANDIDATE_SUBPROCESS", target="materialize", mode="check", source_pin=candidate,
+                original_argv=candidate_argv, actual_argv=run_checks._generated_worker_argv(REPO, report, "a" * 64, "b" * 32, "candidate", "check")))
+            events.append(event("WORKER_START", target="candidate", mode="check", source_pin=candidate, original_argv=candidate_argv))
+            events.append(event("SELECT_EXPLICIT_LF_TSV_WRITER", target="candidate", source_pin=candidate, caller_function="run_lean",
+                suffix=".tsv", encoding="utf-8", original_newline_argument="OMITTED", actual_newline_argument="LF"))
+            for target, pin in [("candidate", candidate), ("materialize", materialize)]:
+                events.append(event("WORKER_FINISH", target=target, mode="check", source_pin=pin, selected_count=1,
+                    status="PASS_TRANSPORT_ONLY_ORIGINAL_EXIT_ZERO"))
+            def write(rows):
+                report.write_bytes(b"".join((json.dumps(row) + "\n").encode("utf-8") for row in rows))
+            write(events)
+            with patch.object(run_checks, "_generated_frozen_cli_pin", side_effect=self.source_pin), \
+                    patch.object(run_checks.contract, "digest", return_value="a" * 64):
+                result = run_checks._generated_verify_transport(REPO, output, transport)
+                self.assertEqual(result["event_count"], 6)
+                for mutated in [events[:-1], [events[0], *events[2:]], list(reversed(events))]:
+                    write(mutated)
+                    with self.assertRaises(ValueError):
+                        run_checks._generated_verify_transport(REPO, output, transport)
+                for index, field, value in [(1, "mode", "write"), (3, "suffix", ".lean"), (1, "actual_argv", candidate_argv),
+                                            (4, "selected_count", True), (4, "status", "ASSUMED_SUCCESS"),
+                                            (2, "run_id", "c" * 32), (0, "source_pin", candidate)]:
+                    mutated = json.loads(json.dumps(events))
+                    mutated[index][field] = value
+                    write(mutated)
+                    with self.subTest(index=index, field=field), self.assertRaises(ValueError):
+                        run_checks._generated_verify_transport(REPO, output, transport)
+
+
 
 
 class SourceFreezeTests(unittest.TestCase):

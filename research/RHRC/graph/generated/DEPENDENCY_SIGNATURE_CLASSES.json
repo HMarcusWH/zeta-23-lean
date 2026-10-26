@@ -55,6 +55,246 @@
       "root_theorem": "Zeta23.ZeroSide.TightMult.lemmaR_tight_two"
     },
     {
+      "claim_id": "OPICA2_P01",
+      "closure_sha256": "311b4b8bbdfff5035dca2deed6497f296a37b6cd90efadf3a22b43321001eadb",
+      "local_dependency_count": 220,
+      "root_theorem": "Zeta23.OPICARound2.delayed_original_source"
+    },
+    {
+      "claim_id": "OPICA2_P02",
+      "closure_sha256": "58afba57ee12f140a23262ae6d08ec8535b039428f500f75c517fafa069b8ff5",
+      "local_dependency_count": 437,
+      "root_theorem": "Zeta23.OPICARound2.native_probe_transforms"
+    },
+    {
+      "claim_id": "OPICA2_P03",
+      "closure_sha256": "4beab4c96bd45efcf7cec94cc1eeb546590d08785d9b9297707b6efbaf29e1e1",
+      "local_dependency_count": 205,
+      "root_theorem": "Zeta23.OPICARound2.native_probe_integer_action"
+    },
+    {
+      "claim_id": "OPICA2_P04",
+      "closure_sha256": "9fe0f6105fb66d7001630a210740732f79b88fb13faeff810f83a5684e9eb596",
+      "local_dependency_count": 516,
+      "root_theorem": "Zeta23.OPICARound2.native_probe_zero_separation"
+    },
+    {
+      "claim_id": "OPICA2_P05",
+      "closure_sha256": "fa7bb86d2939971cc4a6d9b2c6936c19c3a0607b40b386591c05e3321580692f",
+      "local_dependency_count": 481,
+      "root_theorem": "Zeta23.OPICARound2.rh_of_native_probe_range"
+    },
+    {
+      "claim_id": "OPICA2_P06",
+      "closure_sha256": "e69061d398443ec44dec0846b03820e47c527796dce3c4323b2eeff0d1b87db4",
+      "local_dependency_count": 329,
+      "root_theorem": "Zeta23.OPICARound2.probe_tail_and_correlation"
+    },
+    {
+      "claim_id": "OPICA2_P07",
+      "closure_sha256": "aba10724d8717da88fc827f48abdbff2b8151efb50156c79f1eec81ed6dfdcd5",
+      "local_dependency_count": 493,
+      "root_theorem": "Zeta23.OPICARound2.probe_target_column"
+    },
+    {
+      "claim_id": "OPICA2_P08",
+      "closure_sha256": "f67b995abd4735bbf249c3c4e3e9aeacd0d1a0f2ffac9c873fc5ececdd0e8e71",
+      "local_dependency_count": 408,
+      "root_theorem": "Zeta23.OPICARound2.probe_finite_gram_positive"
+    },
+    {
+      "claim_id": "OPICA2_P09",
+      "closure_sha256": "ed746e1d84b1f84f67e498be3fff4a5272b6e53475af45b1bb1c123c5178df5a",
+      "local_dependency_count": 469,
+      "root_theorem": "Zeta23.OPICARound2.probe_schur_error"
+    },
+    {
+      "claim_id": "OPICA2_P10",
+      "closure_sha256": "fded0b9727d6a4662369e1b3fc3cc889157099a0a88c1a263d8973f31cf32e61",
+      "local_dependency_count": 482,
+      "root_theorem": "Zeta23.OPICARound2.probe_monotone_innovation"
+    },
+    {
+      "claim_id": "OPICA2_P11",
+      "closure_sha256": "41c9d4a484bd568ab55ae73582af197009166191922da92dfefc67961a2299bc",
+      "local_dependency_count": 485,
+      "root_theorem": "Zeta23.OPICARound2.probe_dirichlet_norm"
+    },
+    {
+      "claim_id": "OPICA2_P12",
+      "closure_sha256": "ff51999619e67fc4dfd810177917080c65c533b57bb6aff5382be1653a17d900",
+      "local_dependency_count": 510,
+      "root_theorem": "Zeta23.OPICARound2.rh_of_probe_error_limit"
+    },
+    {
+      "claim_id": "OPICA2_P13",
+      "closure_sha256": "f64c90e1712ad537293d8faf4d9eca30fde294645dc58b06935f1fb45db2699f",
+      "local_dependency_count": 246,
+      "root_theorem": "Zeta23.OPICARound2.native_mobius_probe_inverse"
+    },
+    {
+      "claim_id": "OPICA2_P14",
+      "closure_sha256": "1b23f36d7c85bc24e2b480e6c6a02f4f6c6859b602f673156f533bdaf4976814",
+      "local_dependency_count": 380,
+      "root_theorem": "Zeta23.OPICARound2.integer_partial_divergence_and_safe_cutoff"
+    },
+    {
+      "claim_id": "OPICA2_P15",
+      "closure_sha256": "a38354053af815710ee00f57cb5f51038eca601e8ca6b9f97dae09373de1bdc0",
+      "local_dependency_count": 536,
+      "root_theorem": "Zeta23.OPICARound2.mobius_partial_zero_barrier"
+    },
+    {
+      "claim_id": "OPICA2_P16",
+      "closure_sha256": "1f84cfab040782fc6c816c23c687668260da3383d19c05c72755f329426c16eb",
+      "local_dependency_count": 489,
+      "root_theorem": "Zeta23.OPICARound2.noncausal_probe_leakage"
+    },
+    {
+      "claim_id": "OPICA2_P17",
+      "closure_sha256": "aacbf30a224062cf87bb405574213674855352bb00c097e55b27a102482172e9",
+      "local_dependency_count": 199,
+      "root_theorem": "Zeta23.OPICARound2.laplace_jet_gram"
+    },
+    {
+      "claim_id": "OPICA2_P18",
+      "closure_sha256": "693f780d006467e6911d6565a225e2e6b98927b1f78851d7b20ff2f3f998158d",
+      "local_dependency_count": 597,
+      "root_theorem": "Zeta23.OPICARound2.simultaneous_zero_distance"
+    },
+    {
+      "claim_id": "OPICA2_P19",
+      "closure_sha256": "c4af63a0e65ecd630af5e9c3e0bd6fac441d6724f3de3a9582d093e24cb791e2",
+      "local_dependency_count": 495,
+      "root_theorem": "Zeta23.OPICARound2.finite_residual_certificate"
+    },
+    {
+      "claim_id": "OPICA2_P20",
+      "closure_sha256": "15c2de44cc0f12dac0d3dafc954a6d4f6c67f2a7f8b5c8022ea42c0dbd649a52",
+      "local_dependency_count": 463,
+      "root_theorem": "Zeta23.OPICARound2.native_compact_muntz_adapter"
+    },
+    {
+      "claim_id": "OPICA2_P21",
+      "closure_sha256": "a0ff0785118f884c5c72bb655ba4cf5d5bc9e2a54c584eb1c7e063e996a60ad7",
+      "local_dependency_count": 268,
+      "root_theorem": "Zeta23.OPICARound2.native_product_box_margin"
+    },
+    {
+      "claim_id": "OPICA2_P22",
+      "closure_sha256": "ad4f9dc699b8c74bd5f2ff416aa3f318d93a90d55397fde0d440a9e8bc868fd2",
+      "local_dependency_count": 527,
+      "root_theorem": "Zeta23.OPICARound2.zero_region_of_finite_probe_certificate"
+    },
+    {
+      "claim_id": "OPICA2_P23",
+      "closure_sha256": "8c9fcf51a646bb0837bf3403b433b3d14dba65c23eb0c7a5057926875cd6d2bf",
+      "local_dependency_count": 535,
+      "root_theorem": "Zeta23.OPICARound2.native_source_prefix_error"
+    },
+    {
+      "claim_id": "OPICA2_S01",
+      "closure_sha256": "10596d5a24405fd5b5334bc97aa7c9af2f3377a7ffa0b6ca706c84ab97fdd794",
+      "local_dependency_count": 748,
+      "root_theorem": "Zeta23.OPICARound2.native_dictionary_prefix_rigidity"
+    },
+    {
+      "claim_id": "OPICA2_S02",
+      "closure_sha256": "2d7f828774298907111b1c55cfcbae79f3af9ba82f56297de0b570be22e74a75",
+      "local_dependency_count": 512,
+      "root_theorem": "Zeta23.OPICARound2.native_probe_pole_moment_constraints"
+    },
+    {
+      "claim_id": "OPICA2_S03",
+      "closure_sha256": "e8a6fb3939eecea02fdeefdd5c2181380f725ac2c3440a5cbc0572c68c74d783",
+      "local_dependency_count": 395,
+      "root_theorem": "Zeta23.OPICARound2.native_completed_output_bernoulli_tail"
+    },
+    {
+      "claim_id": "OPICA2_S04",
+      "closure_sha256": "e01b12c4318cce0ca7f096920bbadd65fa04b156b0d5f1b5322893ec541288f8",
+      "local_dependency_count": 636,
+      "root_theorem": "Zeta23.OPICARound2.native_probe_fixed_stable_filter"
+    },
+    {
+      "claim_id": "OPICA2_S05",
+      "closure_sha256": "79917b5afbed5404c07446a717ae9a451246023d3af09403a411a6b8c703673c",
+      "local_dependency_count": 708,
+      "root_theorem": "Zeta23.OPICARound2.filtered_probe_classical_comparison"
+    },
+    {
+      "claim_id": "OPICA2_S06",
+      "closure_sha256": "615472bbea98d4ae11662d20fedf758cb56a8f4b0aeb5b7202d3e082bab4715a",
+      "local_dependency_count": 908,
+      "root_theorem": "Zeta23.OPICARound2.filtered_four_column_region_certificate"
+    },
+    {
+      "claim_id": "OPICA2_S07",
+      "closure_sha256": "cd5a42c8a5252632b46c686db7b3355becf7a9b80adb9b3f3edc46ac88a13888",
+      "local_dependency_count": 1029,
+      "root_theorem": "Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost"
+    },
+    {
+      "claim_id": "OPICA2_S08",
+      "closure_sha256": "27fc57a315e80ed454e15004ba1abbe0ed80daa63b71ed41c5151e9c9b539a7a",
+      "local_dependency_count": 1136,
+      "root_theorem": "Zeta23.OPICARound2.native_probe_adaptive_error_budgets"
+    },
+    {
+      "claim_id": "OPICA2_S09",
+      "closure_sha256": "51fc2ad7153343defab4aea9b6f545bbd93d9f6d161503caa0ad558296bab752",
+      "local_dependency_count": 786,
+      "root_theorem": "Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction"
+    },
+    {
+      "claim_id": "OPICA2_S10",
+      "closure_sha256": "1d6ef1940f49b67a2fab221e70c5168edcfa3083c725e90c1bd081c4dcf13207",
+      "local_dependency_count": 324,
+      "root_theorem": "Zeta23.OPICARound2.fixed_imaginary_direction_positive_test_margin"
+    },
+    {
+      "claim_id": "OPICA2_S11",
+      "closure_sha256": "8dc751c6bea8e0f7a6507a62651aac0542895487dc27f2d5a98838122a4f11e1",
+      "local_dependency_count": 2259,
+      "root_theorem": "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence"
+    },
+    {
+      "claim_id": "OPICA2_S12",
+      "closure_sha256": "febff208d5ec2221c1b918c9607c566e9ce3e7fce762eadf3aaf4a95a1e9493c",
+      "local_dependency_count": 347,
+      "root_theorem": "Zeta23.OPICARound2.positive_equal_power_causal_twins"
+    },
+    {
+      "claim_id": "OPICA2_S13",
+      "closure_sha256": "c43503c2bce373223a70030d4f23a41c2f5d323217b6405ca258f7f651d54e67",
+      "local_dependency_count": 27,
+      "root_theorem": "Zeta23.OPICARound2.native_jump_gain_negative_ordered_minor"
+    },
+    {
+      "claim_id": "OPICA2_S14",
+      "closure_sha256": "a7d900274cd6063362947990e00cef84d701b70c20fd08e7342834f0dfbed857",
+      "local_dependency_count": 188,
+      "root_theorem": "Zeta23.OPICARound2.ct1_scalar_limit_classification"
+    },
+    {
+      "claim_id": "OPICA2_S15",
+      "closure_sha256": "f16db868fb8da08033d4898f52fa6fc9c6863b5d8df79399610cace04ada7eac",
+      "local_dependency_count": 1398,
+      "root_theorem": "Zeta23.OPICARound2.finite_pole_neutral_approximation"
+    },
+    {
+      "claim_id": "OPICA2_S16",
+      "closure_sha256": "a086403879040c38ab8c5b3c3331270d8465b329b2c0526e967656642af58802",
+      "local_dependency_count": 572,
+      "root_theorem": "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation"
+    },
+    {
+      "claim_id": "OPICA2_S17",
+      "closure_sha256": "961aa9df41321f0f3edf3561ab7cfb77dbd6693a9f228f478fed43a93034a583",
+      "local_dependency_count": 976,
+      "root_theorem": "Zeta23.OPICARound2.phase_complete_positive_test_observability"
+    },
+    {
       "claim_id": "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
       "closure_sha256": "adee68edc4c36a8b4eca06886a2ce5b1bf276ca73111ea8a0273cddd34bad31b",
       "local_dependency_count": 8,
@@ -1843,6 +2083,104 @@
       "superset_count": 1745
     },
     {
+      "difference_count": 288,
+      "subset_claim_id": "OPICA2_P03",
+      "subset_count": 205,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 41,
+      "subset_claim_id": "OPICA2_P03",
+      "subset_count": 205,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 331,
+      "subset_claim_id": "OPICA2_P03",
+      "subset_count": 205,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 258,
+      "subset_claim_id": "OPICA2_P03",
+      "subset_count": 205,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 543,
+      "subset_claim_id": "OPICA2_P03",
+      "subset_count": 205,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 29,
+      "subset_claim_id": "OPICA2_P05",
+      "subset_count": 481,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 548,
+      "subset_claim_id": "OPICA2_P05",
+      "subset_count": 481,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 655,
+      "subset_claim_id": "OPICA2_P05",
+      "subset_count": 481,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 61,
+      "subset_claim_id": "OPICA2_P08",
+      "subset_count": 408,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 74,
+      "subset_claim_id": "OPICA2_P08",
+      "subset_count": 408,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 87,
+      "subset_claim_id": "OPICA2_P08",
+      "subset_count": 408,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 259,
+      "subset_claim_id": "OPICA2_P21",
+      "subset_count": 268,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 200,
+      "subset_claim_id": "OPICA2_S05",
+      "subset_count": 708,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 2251,
+      "subset_claim_id": "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
+      "subset_count": 8,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 54,
       "subset_claim_id": "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
       "subset_count": 8,
@@ -1906,6 +2244,13 @@
       "superset_count": 317
     },
     {
+      "difference_count": 2256,
+      "subset_claim_id": "OPICA_A1_DIVISOR_COUNT_SQRT_SUM_LE",
+      "subset_count": 3,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 59,
       "subset_claim_id": "OPICA_A1_DIVISOR_COUNT_SQRT_SUM_LE",
       "subset_count": 3,
@@ -1967,6 +2312,13 @@
       "subset_count": 3,
       "superset_claim_id": "OPICA_NATIVE_NATIVE_ORIGINAL_DRIVE_LOW_MASK_BOUND",
       "superset_count": 317
+    },
+    {
+      "difference_count": 2253,
+      "subset_claim_id": "OPICA_A1_DIVISOR_COUNT_SQUARE_LE",
+      "subset_count": 6,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 2,
@@ -2037,6 +2389,13 @@
       "subset_count": 6,
       "superset_claim_id": "OPICA_NATIVE_NATIVE_ORIGINAL_DRIVE_LOW_MASK_BOUND",
       "superset_count": 317
+    },
+    {
+      "difference_count": 2257,
+      "subset_claim_id": "OPICA_A1_DIVISOR_COUNT_SUBMULTIPLICATIVE",
+      "subset_count": 2,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 6,
@@ -2116,6 +2475,13 @@
       "superset_count": 317
     },
     {
+      "difference_count": 2214,
+      "subset_claim_id": "OPICA_A2_LOW_PRIMITIVE_BILINEAR_BOUND",
+      "subset_count": 45,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 17,
       "subset_claim_id": "OPICA_A2_LOW_PRIMITIVE_BILINEAR_BOUND",
       "subset_count": 45,
@@ -2193,6 +2559,13 @@
       "superset_count": 60
     },
     {
+      "difference_count": 2240,
+      "subset_claim_id": "OPICA_A2_PRIMITIVE_MASK_PARTITION",
+      "subset_count": 19,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1908,
       "subset_claim_id": "OPICA_A2_PRIMITIVE_MASK_PARTITION",
       "subset_count": 19,
@@ -2219,6 +2592,13 @@
       "subset_count": 19,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 2244,
+      "subset_claim_id": "OPICA_A3_MASK_REGROUPING_DIFFERENCE",
+      "subset_count": 15,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 24,
@@ -2254,6 +2634,13 @@
       "subset_count": 15,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 2214,
+      "subset_claim_id": "OPICA_B1_LAPLACE_HOLOMORPHIC_OF_WEIGHTED_L2",
+      "subset_count": 45,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 2,
@@ -2396,6 +2783,286 @@
       "superset_count": 28
     },
     {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
       "subset_count": 0,
@@ -4370,6 +5037,286 @@
       "superset_count": 28
     },
     {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
       "subset_count": 0,
@@ -6344,6 +7291,286 @@
       "superset_count": 28
     },
     {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
       "subset_count": 0,
@@ -8316,6 +9543,286 @@
       "subset_count": 0,
       "superset_claim_id": "OBS_TIGHTMULT",
       "superset_count": 28
+    },
+    {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
     },
     {
       "difference_count": 8,
@@ -10355,6 +11862,13 @@
       "superset_count": 39
     },
     {
+      "difference_count": 2251,
+      "subset_claim_id": "OPICA_E2_SUBEXPALONG_MUL",
+      "subset_count": 8,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 31,
       "subset_claim_id": "OPICA_E2_SUBEXPALONG_MUL",
       "subset_count": 8,
@@ -10474,6 +11988,13 @@
       "superset_count": 24
     },
     {
+      "difference_count": 2254,
+      "subset_claim_id": "OPICA_E5_QUIET_COFINAL_RATE_ZERO",
+      "subset_count": 5,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 34,
       "subset_claim_id": "OPICA_E5_QUIET_COFINAL_RATE_ZERO",
       "subset_count": 5,
@@ -10558,6 +12079,13 @@
       "superset_count": 738
     },
     {
+      "difference_count": 2082,
+      "subset_claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+      "subset_count": 177,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1750,
       "subset_claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
       "subset_count": 177,
@@ -10600,6 +12128,13 @@
       "superset_count": 2235
     },
     {
+      "difference_count": 2176,
+      "subset_claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
+      "subset_count": 83,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1844,
       "subset_claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
       "subset_count": 83,
@@ -10626,6 +12161,13 @@
       "subset_count": 83,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 2173,
+      "subset_claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+      "subset_count": 86,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 91,
@@ -10677,6 +12219,13 @@
       "superset_count": 2235
     },
     {
+      "difference_count": 2229,
+      "subset_claim_id": "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND",
+      "subset_count": 30,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1897,
       "subset_claim_id": "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND",
       "subset_count": 30,
@@ -10710,6 +12259,20 @@
       "subset_count": 665,
       "superset_claim_id": "OPICA_FOLLOWUP_ACTUAL_ZERO_MEASURE_SPAN_CONSUMER",
       "superset_count": 843
+    },
+    {
+      "difference_count": 714,
+      "subset_claim_id": "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+      "subset_count": 72,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 904,
+      "subset_claim_id": "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+      "subset_count": 72,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
     },
     {
       "difference_count": 734,
@@ -10859,6 +12422,13 @@
       "superset_count": 445
     },
     {
+      "difference_count": 2,
+      "subset_claim_id": "OPICA_FOLLOWUP_DILATION_NORMALIZED_LIMIT_NOT_MEASURE",
+      "subset_count": 186,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
       "difference_count": 2140,
       "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
       "subset_count": 0,
@@ -10920,6 +12490,286 @@
       "subset_count": 0,
       "superset_claim_id": "OBS_TIGHTMULT",
       "superset_count": 28
+    },
+    {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
     },
     {
       "difference_count": 8,
@@ -12833,6 +14683,13 @@
       "superset_count": 76
     },
     {
+      "difference_count": 466,
+      "subset_claim_id": "OPICA_FOLLOWUP_FINITE_ZERO_JET_INDEPENDENT",
+      "subset_count": 510,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
+    },
+    {
       "difference_count": 110,
       "subset_claim_id": "OPICA_FOLLOWUP_FINITE_ZERO_SPAN_POSITIVE_ONLY_ZERO",
       "subset_count": 733,
@@ -12847,11 +14704,25 @@
       "superset_count": 816
     },
     {
+      "difference_count": 332,
+      "subset_claim_id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+      "subset_count": 1927,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 308,
       "subset_claim_id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
       "subset_count": 1927,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 1738,
+      "subset_claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+      "subset_count": 521,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 1406,
@@ -12894,6 +14765,13 @@
       "subset_count": 521,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 1929,
+      "subset_claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+      "subset_count": 330,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 1597,
@@ -12943,6 +14821,13 @@
       "subset_count": 330,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 2007,
+      "subset_claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_PHYSICAL_LAPLACE",
+      "subset_count": 252,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 1675,
@@ -13036,6 +14921,83 @@
       "superset_count": 10
     },
     {
+      "difference_count": 478,
+      "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "subset_count": 38,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 498,
+      "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "subset_count": 38,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 451,
+      "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "subset_count": 38,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "subset_count": 38,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 598,
+      "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "subset_count": 38,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 870,
+      "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "subset_count": 38,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 991,
+      "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "subset_count": 38,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1098,
+      "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "subset_count": 38,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 2221,
+      "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "subset_count": 38,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 309,
+      "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "subset_count": 38,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 534,
+      "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "subset_count": 38,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
       "difference_count": 1889,
       "subset_claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
       "subset_count": 38,
@@ -13113,6 +15075,13 @@
       "superset_count": 703
     },
     {
+      "difference_count": 1544,
+      "subset_claim_id": "OPICA_FOLLOWUP_LOG_SLACK_BOTH_LOW_MASKS_SUBEXP",
+      "subset_count": 715,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1212,
       "subset_claim_id": "OPICA_FOLLOWUP_LOG_SLACK_BOTH_LOW_MASKS_SUBEXP",
       "subset_count": 715,
@@ -13134,6 +15103,13 @@
       "superset_count": 2235
     },
     {
+      "difference_count": 1437,
+      "subset_claim_id": "OPICA_FOLLOWUP_LOG_SLACK_MASKED_ENERGY_RATE_DIFFERENCE",
+      "subset_count": 822,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1105,
       "subset_claim_id": "OPICA_FOLLOWUP_LOG_SLACK_MASKED_ENERGY_RATE_DIFFERENCE",
       "subset_count": 822,
@@ -13153,6 +15129,13 @@
       "subset_count": 192,
       "superset_claim_id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_PREPARATION",
       "superset_count": 671
+    },
+    {
+      "difference_count": 1658,
+      "subset_claim_id": "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR",
+      "subset_count": 601,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 1326,
@@ -13330,6 +15313,13 @@
       "superset_count": 3189
     },
     {
+      "difference_count": 2225,
+      "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY",
+      "subset_count": 34,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1893,
       "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY",
       "subset_count": 34,
@@ -13365,6 +15355,13 @@
       "superset_count": 2235
     },
     {
+      "difference_count": 1324,
+      "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+      "subset_count": 935,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 992,
       "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
       "subset_count": 935,
@@ -13391,6 +15388,13 @@
       "subset_count": 935,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 706,
+      "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+      "subset_count": 1553,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 374,
@@ -13428,6 +15432,13 @@
       "superset_count": 554
     },
     {
+      "difference_count": 707,
+      "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
+      "subset_count": 1552,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 375,
       "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
       "subset_count": 1552,
@@ -13447,6 +15458,13 @@
       "subset_count": 1552,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 1404,
+      "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+      "subset_count": 855,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 1072,
@@ -13482,6 +15500,13 @@
       "subset_count": 855,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 1432,
+      "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
+      "subset_count": 827,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 1100,
@@ -13566,6 +15591,20 @@
       "subset_count": 228,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2660
+    },
+    {
+      "difference_count": 2031,
+      "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+      "subset_count": 228,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 1170,
+      "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+      "subset_count": 228,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
     },
     {
       "difference_count": 1699,
@@ -13827,6 +15866,13 @@
       "superset_count": 533
     },
     {
+      "difference_count": 2208,
+      "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
+      "subset_count": 51,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1876,
       "subset_claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
       "subset_count": 51,
@@ -13869,6 +15915,13 @@
       "superset_count": 154
     },
     {
+      "difference_count": 2254,
+      "subset_claim_id": "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON",
+      "subset_count": 5,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1922,
       "subset_claim_id": "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON",
       "subset_count": 5,
@@ -13909,6 +15962,13 @@
       "subset_count": 19,
       "superset_claim_id": "OPICA_FOLLOWUP_NORM_FIRST_STRICTLY_WEAKER_CONTROL",
       "superset_count": 27
+    },
+    {
+      "difference_count": 24,
+      "subset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
+      "subset_count": 2235,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 30,
@@ -13967,6 +16027,13 @@
       "superset_count": 806
     },
     {
+      "difference_count": 1980,
+      "subset_claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_LAPLACE_IDENTITY",
+      "subset_count": 279,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1648,
       "subset_claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_LAPLACE_IDENTITY",
       "subset_count": 279,
@@ -14007,6 +16074,13 @@
       "subset_count": 279,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 2029,
+      "subset_claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_SUPPORT_SMOOTH_MOMENTS",
+      "subset_count": 230,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 1697,
@@ -14058,6 +16132,13 @@
       "superset_count": 2235
     },
     {
+      "difference_count": 2224,
+      "subset_claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+      "subset_count": 35,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 697,
       "subset_claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
       "subset_count": 35,
@@ -14086,6 +16167,13 @@
       "superset_count": 3189
     },
     {
+      "difference_count": 1903,
+      "subset_claim_id": "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS",
+      "subset_count": 356,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1571,
       "subset_claim_id": "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS",
       "subset_count": 356,
@@ -14112,6 +16200,13 @@
       "subset_count": 356,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 2222,
+      "subset_claim_id": "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+      "subset_count": 37,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 1890,
@@ -14282,6 +16377,13 @@
       "superset_count": 498
     },
     {
+      "difference_count": 2185,
+      "subset_claim_id": "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND",
+      "subset_count": 74,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1853,
       "subset_claim_id": "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND",
       "subset_count": 74,
@@ -14336,6 +16438,13 @@
       "subset_count": 74,
       "superset_claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
       "superset_count": 2235
+    },
+    {
+      "difference_count": 855,
+      "subset_claim_id": "OPICA_H1_SIGNED_SHARP_GAP_SEPARATOR",
+      "subset_count": 121,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
     },
     {
       "difference_count": 722,
@@ -14604,6 +16713,286 @@
       "superset_count": 28
     },
     {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
       "subset_count": 0,
@@ -16515,6 +18904,13 @@
       "superset_count": 76
     },
     {
+      "difference_count": 1763,
+      "subset_claim_id": "OPICA_NATIVE_NATIVE_COMPLETED_INPUT_OBSTRUCTION_JET",
+      "subset_count": 496,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
       "difference_count": 1739,
       "subset_claim_id": "OPICA_NATIVE_NATIVE_COMPLETED_INPUT_OBSTRUCTION_JET",
       "subset_count": 496,
@@ -16548,6 +18944,13 @@
       "subset_count": 496,
       "superset_claim_id": "OPICA_NATIVE_STEP123_EACHPHASE_OPICA_CONSUMER",
       "superset_count": 4268
+    },
+    {
+      "difference_count": 1739,
+      "subset_claim_id": "OPICA_NATIVE_NATIVE_COMPLETED_INPUT_OBSTRUCTION_NE_ZERO",
+      "subset_count": 520,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
     },
     {
       "difference_count": 1715,
@@ -16676,6 +19079,286 @@
       "superset_count": 28
     },
     {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
       "subset_count": 0,
@@ -18650,6 +21333,286 @@
       "superset_count": 28
     },
     {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
       "subset_count": 0,
@@ -20622,6 +23585,286 @@
       "subset_count": 0,
       "superset_claim_id": "OBS_TIGHTMULT",
       "superset_count": 28
+    },
+    {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
     },
     {
       "difference_count": 8,
@@ -22605,6 +25848,286 @@
       "superset_count": 28
     },
     {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
       "subset_count": 0,
@@ -24579,6 +28102,286 @@
       "superset_count": 28
     },
     {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
       "subset_count": 0,
@@ -26551,6 +30354,286 @@
       "subset_count": 0,
       "superset_claim_id": "OBS_TIGHTMULT",
       "superset_count": 28
+    },
+    {
+      "difference_count": 220,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P01",
+      "superset_count": 220
+    },
+    {
+      "difference_count": 437,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P02",
+      "superset_count": 437
+    },
+    {
+      "difference_count": 205,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P03",
+      "superset_count": 205
+    },
+    {
+      "difference_count": 516,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P04",
+      "superset_count": 516
+    },
+    {
+      "difference_count": 481,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P05",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 329,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P06",
+      "superset_count": 329
+    },
+    {
+      "difference_count": 493,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P07",
+      "superset_count": 493
+    },
+    {
+      "difference_count": 408,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P08",
+      "superset_count": 408
+    },
+    {
+      "difference_count": 469,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P09",
+      "superset_count": 469
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P10",
+      "superset_count": 482
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P11",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 510,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P12",
+      "superset_count": 510
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P13",
+      "superset_count": 246
+    },
+    {
+      "difference_count": 380,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P14",
+      "superset_count": 380
+    },
+    {
+      "difference_count": 536,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P15",
+      "superset_count": 536
+    },
+    {
+      "difference_count": 489,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P16",
+      "superset_count": 489
+    },
+    {
+      "difference_count": 199,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P17",
+      "superset_count": 199
+    },
+    {
+      "difference_count": 597,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P18",
+      "superset_count": 597
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P19",
+      "superset_count": 495
+    },
+    {
+      "difference_count": 463,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P20",
+      "superset_count": 463
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P21",
+      "superset_count": 268
+    },
+    {
+      "difference_count": 527,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P22",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 535,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_P23",
+      "superset_count": 535
+    },
+    {
+      "difference_count": 748,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S01",
+      "superset_count": 748
+    },
+    {
+      "difference_count": 512,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S02",
+      "superset_count": 512
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S03",
+      "superset_count": 395
+    },
+    {
+      "difference_count": 636,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S04",
+      "superset_count": 636
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S05",
+      "superset_count": 708
+    },
+    {
+      "difference_count": 908,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S06",
+      "superset_count": 908
+    },
+    {
+      "difference_count": 1029,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S07",
+      "superset_count": 1029
+    },
+    {
+      "difference_count": 1136,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S08",
+      "superset_count": 1136
+    },
+    {
+      "difference_count": 786,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S09",
+      "superset_count": 786
+    },
+    {
+      "difference_count": 324,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S10",
+      "superset_count": 324
+    },
+    {
+      "difference_count": 2259,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S11",
+      "superset_count": 2259
+    },
+    {
+      "difference_count": 347,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S12",
+      "superset_count": 347
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S13",
+      "superset_count": 27
+    },
+    {
+      "difference_count": 188,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S14",
+      "superset_count": 188
+    },
+    {
+      "difference_count": 1398,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
+      "difference_count": 572,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S16",
+      "superset_count": 572
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA2_S17",
+      "superset_count": 976
     },
     {
       "difference_count": 8,
@@ -28520,6 +32603,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 1283,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 496,
       "subset_claim_id": "R001_FILTERED_ZERO_POLE",
       "subset_count": 115,
@@ -28693,6 +32783,13 @@
       "subset_count": 528,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2660
+    },
+    {
+      "difference_count": 870,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
     },
     {
       "difference_count": 3740,
@@ -29178,6 +33275,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 405,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 2196,
       "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
       "subset_count": 993,
@@ -29346,6 +33450,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 1372,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 125,
       "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
       "subset_count": 26,
@@ -29498,6 +33609,13 @@
       "subset_count": 151,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2660
+    },
+    {
+      "difference_count": 1247,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
     },
     {
       "difference_count": 1137,
@@ -30501,6 +34619,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 1025,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 2816,
       "subset_claim_id": "R003_CCM_RHS_IDENTITY",
       "subset_count": 373,
@@ -31320,6 +35445,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 1361,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 4231,
       "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
       "subset_count": 37,
@@ -31815,6 +35947,13 @@
       "subset_count": 29,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2660
+    },
+    {
+      "difference_count": 1369,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
     },
     {
       "difference_count": 3160,
@@ -32447,6 +36586,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 967,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 2758,
       "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
       "subset_count": 431,
@@ -32697,6 +36843,13 @@
       "subset_count": 6,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2660
+    },
+    {
+      "difference_count": 1392,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
     },
     {
       "difference_count": 3183,
@@ -32979,6 +37132,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 1331,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 3122,
       "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
       "subset_count": 67,
@@ -33252,6 +37412,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 1330,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 83,
       "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
       "subset_count": 68,
@@ -33404,6 +37571,13 @@
       "subset_count": 666,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2660
+    },
+    {
+      "difference_count": 732,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
     },
     {
       "difference_count": 622,
@@ -34113,6 +38287,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 1353,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 4223,
       "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
       "subset_count": 45,
@@ -34505,6 +38686,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 691,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 581,
       "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
       "subset_count": 707,
@@ -34643,6 +38831,13 @@
       "subset_count": 672,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2660
+    },
+    {
+      "difference_count": 726,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
     },
     {
       "difference_count": 616,
@@ -34790,6 +38985,13 @@
       "subset_count": 700,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2660
+    },
+    {
+      "difference_count": 698,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
     },
     {
       "difference_count": 588,
@@ -35121,6 +39323,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 1153,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 2944,
       "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
       "subset_count": 245,
@@ -35287,6 +39496,13 @@
       "subset_count": 567,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2660
+    },
+    {
+      "difference_count": 831,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
     },
     {
       "difference_count": 2622,
@@ -35464,6 +39680,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 865,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "OPICA2_S15",
+      "superset_count": 1398
+    },
+    {
       "difference_count": 2656,
       "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
       "subset_count": 533,
@@ -35622,6 +39845,46 @@
     "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
     "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
     "OBS_TIGHTMULT",
+    "OPICA2_P01",
+    "OPICA2_P02",
+    "OPICA2_P03",
+    "OPICA2_P04",
+    "OPICA2_P05",
+    "OPICA2_P06",
+    "OPICA2_P07",
+    "OPICA2_P08",
+    "OPICA2_P09",
+    "OPICA2_P10",
+    "OPICA2_P11",
+    "OPICA2_P12",
+    "OPICA2_P13",
+    "OPICA2_P14",
+    "OPICA2_P15",
+    "OPICA2_P16",
+    "OPICA2_P17",
+    "OPICA2_P18",
+    "OPICA2_P19",
+    "OPICA2_P20",
+    "OPICA2_P21",
+    "OPICA2_P22",
+    "OPICA2_P23",
+    "OPICA2_S01",
+    "OPICA2_S02",
+    "OPICA2_S03",
+    "OPICA2_S04",
+    "OPICA2_S05",
+    "OPICA2_S06",
+    "OPICA2_S07",
+    "OPICA2_S08",
+    "OPICA2_S09",
+    "OPICA2_S10",
+    "OPICA2_S11",
+    "OPICA2_S12",
+    "OPICA2_S13",
+    "OPICA2_S14",
+    "OPICA2_S15",
+    "OPICA2_S16",
+    "OPICA2_S17",
     "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
     "OPICA_A1_DIVISOR_COUNT_SQRT_SUM_LE",
     "OPICA_A1_DIVISOR_COUNT_SQUARE_LE",
