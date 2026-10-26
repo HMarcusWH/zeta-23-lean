@@ -1,3 +1,16 @@
+import Zeta23.OPICARound2.TruncationControls
+import Zeta23.OPICAFollowup.ConfluentProfiles
+import Mathlib.Algebra.Polynomial.Sequence
+import Mathlib.LinearAlgebra.Lagrange
+import Mathlib.LinearAlgebra.Vandermonde
+import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+import Mathlib.Analysis.SpecialFunctions.Complex.LogDeriv
+import Mathlib.Analysis.Fourier.FourierTransformDeriv
+import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
+import Mathlib.LinearAlgebra.Matrix.ToLin
+import Mathlib.Data.Nat.Choose.Sum
+import Mathlib.Tactic
+import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
 import Mathlib.Geometry.Manifold.PartitionOfUnity
 import Mathlib.Geometry.Manifold.ContMDiff.NormedSpace
 import Mathlib.Analysis.Convex.Cone.InnerDual
@@ -1682,5 +1695,2452 @@ theorem phase_complete_positive_test_observability :
     fun _ hz h0 h1 hk => profile_canonical_three_physical_tests hz h0 h1 hk,
     profile_four_positive_test_observability,
     fun _ _ hn hm F => profile_at_most_n_linear_tests_cannot_exclude hn hm F⟩
+
+end Zeta23.OPICARound2
+
+
+/-! ## Finite native quadratic obstruction (S09)
+The all-order analytic, source, real-block and correction-domain proofs below
+are specialized to the actual normalized co-Poisson zero profiles.
+-/
+
+/-! Generic analytic/bootstrap helpers only. Actual source-profile premises
+are proved and instantiated separately; this is not an S09 completion claim. -/
+noncomputable section
+set_option backward.isDefEq.respectTransparency.types false
+open Set Filter MeasureTheory Matrix
+open scoped Topology BigOperators FourierTransform SchwartzMap ContDiff
+
+namespace Zeta23.OPICARound2.QuadraticProfileBootstrap
+
+/-- Literal Schwartz-pairing self-duality determines an ordinary continuous L1 function. -/
+theorem ordinary_fourier_eq_of_pairing {q : ℝ → ℂ} (hq : Integrable q)
+    (hc : Continuous q)
+    (hsd : ∀ φ : 𝓢(ℝ,ℂ), (∫ x, q x*(𝓕 φ : 𝓢(ℝ,ℂ)) x)=∫ x, q x*φ x) :
+    𝓕 q=q := by
+  have hFc : Continuous (𝓕 q) :=
+    VectorFourier.fourierIntegral_continuous Real.continuous_fourierChar continuous_inner hq
+  have key : ∀ φ : 𝓢(ℝ,ℂ), (∫ x, (𝓕 q x-q x)*φ x)=0 := by
+    intro φ
+    have hm := OPICAFollowup.integral_fourier_mul_eq_of_integrable hq φ.integrable
+    have hp := hsd φ
+    have hFφ : Integrable (fun x => 𝓕 q x*φ x) := by
+      have hb : ∀ x, ‖𝓕 q x‖≤∫ y, ‖q y‖ := fun x => by
+        rw [Real.fourier_real_eq]
+        refine (norm_integral_le_integral_norm _).trans (le_of_eq ?_)
+        simp_rw [Circle.norm_smul]
+      exact φ.integrable.bdd_mul hFc.aestronglyMeasurable (Eventually.of_forall hb)
+    have hqφ := OPICAFollowup.square_integrable_mul_schwartz hq φ
+    rw [show (fun x => (𝓕 q x-q x)*φ x) =
+      (fun x => 𝓕 q x*φ x-q x*φ x) by funext x; ring,
+      integral_sub hFφ hqφ, hm]
+    rw [←hp]
+    simp only [SchwartzMap.fourier_coe,sub_self]
+  have hae : ∀ᵐ x, 𝓕 q x-q x=0 := by
+    refine ae_eq_zero_of_integral_contDiff_smul_eq_zero (hFc.sub hc).locallyIntegrable
+      (fun g hg hgs => ?_)
+    have hgc : HasCompactSupport (fun x => (g x:ℂ)) := hgs.comp_left Complex.ofReal_zero
+    have hgd : ContDiff ℝ ∞ (fun x => (g x:ℂ)) := Complex.ofRealCLM.contDiff.comp hg
+    have h := key (hgc.toSchwartzMap hgd)
+    calc
+      (∫ x, g x • (𝓕 q x-q x)) = ∫ x, (𝓕 q x-q x)*(hgc.toSchwartzMap hgd) x := by
+        congr 1
+        funext x
+        rw [Complex.real_smul,mul_comm]
+        rfl
+      _ = 0 := h
+  have he : (fun x => 𝓕 q x-q x) = fun _ => 0 :=
+    (Continuous.ae_eq_iff_eq volume (hFc.sub hc) continuous_const).mp hae
+  funext x
+  exact sub_eq_zero.mp (congrFun he x)
+
+theorem ordinary_selfdual_contDiff {q : ℝ → ℂ} (hq : Integrable q) (hc : Continuous q)
+    (hsd : ∀ φ : 𝓢(ℝ,ℂ), (∫ x, q x*(𝓕 φ : 𝓢(ℝ,ℂ)) x)=∫ x, q x*φ x)
+    (M : ℕ) (hm : ∀ k : ℕ, k≤M → Integrable (fun x : ℝ => ‖x‖^k*‖q x‖)) :
+    ContDiff ℝ M q := by
+  rw [←ordinary_fourier_eq_of_pairing hq hc hsd]
+  apply Real.contDiff_fourier
+  intro k hk
+  exact hm k (by exact_mod_cast hk)
+
+/-- Actual closed one-sided equality transfers every finite jet at an endpoint. -/
+theorem right_cell_jet_eq {q g : ℝ → ℂ} (m : ℕ) {a ε : ℝ} (hε : 0<ε)
+    (hq : ContDiffAt ℝ m q a) (hg : ContDiffAt ℝ m g a)
+    (he : EqOn g q (Icc a (a+ε))) : iteratedDeriv m g a=iteratedDeriv m q a := by
+  have ha : a∈Icc a (a+ε) := ⟨le_rfl,by linarith⟩
+  have h := iteratedDerivWithin_congr (n := m) he ha
+  rw [iteratedDerivWithin_eq_iteratedDeriv (uniqueDiffOn_Icc (by linarith)) hg ha,
+    iteratedDerivWithin_eq_iteratedDeriv (uniqueDiffOn_Icc (by linarith)) hq ha] at h
+  exact h
+
+theorem left_cell_jet_eq {q g : ℝ → ℂ} (m : ℕ) {a ε : ℝ} (hε : 0<ε)
+    (hq : ContDiffAt ℝ m q a) (hg : ContDiffAt ℝ m g a)
+    (he : EqOn g q (Icc (a-ε) a)) : iteratedDeriv m g a=iteratedDeriv m q a := by
+  have ha : a∈Icc (a-ε) a := ⟨by linarith,le_rfl⟩
+  have h := iteratedDerivWithin_congr (n := m) he ha
+  rw [iteratedDerivWithin_eq_iteratedDeriv (uniqueDiffOn_Icc (by linarith)) hg ha,
+    iteratedDerivWithin_eq_iteratedDeriv (uniqueDiffOn_Icc (by linarith)) hq ha] at h
+  exact h
+
+theorem scalar_cell_jet_match {q gp gm : ℝ → ℂ} (m : ℕ) {a ε : ℝ} (hε : 0<ε)
+    (hq : ContDiffAt ℝ m q a) (hgp : ContDiffAt ℝ m gp a) (hgm : ContDiffAt ℝ m gm a)
+    (hp : EqOn gp q (Icc a (a+ε))) (hm : EqOn gm q (Icc (a-ε) a)) :
+    iteratedDeriv m gp a-iteratedDeriv m gm a=0 := by
+  rw [right_cell_jet_eq m hε hq hgp hp,left_cell_jet_eq m hε hq hgm hm,sub_self]
+
+
+
+def QuadraticKillsBelow {d : ℕ} (A : Matrix (Fin d) (Fin d) ℂ)
+    (R : ℕ → Fin d → ℂ) (j : ℕ) : Prop := ∀ r : ℕ, r<j → A.mulVec (R r)=0
+
+def quadraticJumpScale (j n : ℕ) : ℂ :=
+  2*(-1:ℂ)^(j+1)/((n+1:ℕ):ℂ)^(2*j+2)
+
+theorem quadraticJumpScale_ne_zero (j n : ℕ) : quadraticJumpScale j n≠0 := by
+  unfold quadraticJumpScale
+  apply div_ne_zero
+  · exact mul_ne_zero (by norm_num) (pow_ne_zero _ (by norm_num))
+  · apply pow_ne_zero
+    exact_mod_cast Nat.succ_ne_zero n
+
+/-- A bilinear functional vanishing on a true spanning sample set vanishes identically. -/
+theorem vector_eq_zero_of_sample_span {d : ℕ} (H : ℝ → Fin d → ℂ)
+    (hspan : Submodule.span ℂ (Set.range (fun n : ℕ => H ((n+1:ℕ):ℝ)))=⊤)
+    (v : Fin d → ℂ) (hv : ∀ n : ℕ, dotProduct (H ((n+1:ℕ):ℝ)) v=0) : v=0 := by
+  let L : (Fin d → ℂ) →ₗ[ℂ] ℂ := (dotProductBilin ℂ ℂ).flip v
+  have hk : Submodule.span ℂ (Set.range (fun n : ℕ => H ((n+1:ℕ):ℝ)))≤LinearMap.ker L := by
+    apply Submodule.span_le.mpr
+    rintro _ ⟨n,rfl⟩
+    exact hv n
+  have hall (x : Fin d → ℂ) : L x=0 := by
+    apply hk
+    rw [hspan]
+    trivial
+  ext i
+  have h := hall (Pi.single i 1)
+  change dotProduct (Pi.single i 1) v=0 at h
+  simpa only [single_one_dotProduct,Pi.zero_apply] using h
+
+theorem matrix_eq_zero_of_row_span {d : ℕ} (A : Matrix (Fin d) (Fin d) ℂ)
+    (R : ℕ → Fin d → ℂ)
+    (hspan : Submodule.span ℂ (Set.range (fun r : Fin d => R r.val))=⊤)
+    (hR : ∀ r : Fin d, A.mulVec (R r.val)=0) : A=0 := by
+  let L := A.mulVecLin
+  have hk : Submodule.span ℂ (Set.range (fun r : Fin d => R r.val))≤LinearMap.ker L := by
+    apply Submodule.span_le.mpr
+    rintro _ ⟨r,rfl⟩
+    exact hR r
+  have hall (x : Fin d → ℂ) : A.mulVec x=0 := by
+    apply hk
+    rw [hspan]
+    trivial
+  ext i j
+  have h := congrFun (hall (Pi.single j 1)) i
+  simpa only [Matrix.mulVec_single_one,Matrix.col_apply,Pi.zero_apply,Matrix.zero_apply] using h
+
+/-- The generic Fourier/bootstrap argument. Every analytic cell identity,
+weighted moment and span premise is an explicit independent source obligation.
+No positivity assumption on A occurs. -/
+theorem quadratic_fourier_bootstrap {d : ℕ}
+    (A : Matrix (Fin d) (Fin d) ℂ) (H : ℝ → Fin d → ℂ)
+    (R : ℕ → Fin d → ℂ) (q : ℝ → ℂ) (gp gm : ℕ → ℝ → ℂ)
+    (hq : Integrable q) (hc : Continuous q)
+    (hsd : ∀ φ : 𝓢(ℝ,ℂ), (∫ x, q x*(𝓕 φ : 𝓢(ℝ,ℂ)) x)=∫ x, q x*φ x)
+    (hHspan : Submodule.span ℂ (Set.range (fun n : ℕ => H ((n+1:ℕ):ℝ)))=⊤)
+    (hRspan : Submodule.span ℂ (Set.range (fun r : Fin d => R r.val))=⊤)
+    (hMom : ∀ j : ℕ, j<d → QuadraticKillsBelow A R j →
+      ∀ k : ℕ, k≤4*j+2 → Integrable (fun x : ℝ => ‖x‖^k*‖q x‖))
+    (hCell : ∀ n : ℕ, ∃ ε : ℝ, 0<ε ∧
+      ContDiffAt ℝ ∞ (gp n) ((n+1:ℕ):ℝ) ∧
+      ContDiffAt ℝ ∞ (gm n) ((n+1:ℕ):ℝ) ∧
+      EqOn (gp n) q (Icc ((n+1:ℕ):ℝ) (((n+1:ℕ):ℝ)+ε)) ∧
+      EqOn (gm n) q (Icc (((n+1:ℕ):ℝ)-ε) ((n+1:ℕ):ℝ)))
+    (hJump : ∀ j : ℕ, j<d → QuadraticKillsBelow A R j → ∀ n : ℕ,
+      iteratedDeriv (2*j+1) (gp n) ((n+1:ℕ):ℝ)-
+        iteratedDeriv (2*j+1) (gm n) ((n+1:ℕ):ℝ) =
+      quadraticJumpScale j n * dotProduct (H ((n+1:ℕ):ℝ)) (A.mulVec (R j))) : A=0 := by
+  have hstep (j : ℕ) (hj : j<d) (hlow : QuadraticKillsBelow A R j) : A.mulVec (R j)=0 := by
+    have hreg := ordinary_selfdual_contDiff hq hc hsd (4*j+2) (hMom j hj hlow)
+    apply vector_eq_zero_of_sample_span H hHspan
+    intro n
+    rcases hCell n with ⟨ε,hε,hgp,hgm,hp,hm⟩
+    have hqAt : ContDiffAt ℝ (2*j+1) q ((n+1:ℕ):ℝ) :=
+      (hreg.of_le (by exact_mod_cast (show 2*j+1≤4*j+2 by omega))).contDiffAt
+    have hz := scalar_cell_jet_match (2*j+1) hε hqAt (hgp.of_le (ENat.natCast_le_of_coe_top_le_withTop le_rfl _))
+      (hgm.of_le (ENat.natCast_le_of_coe_top_le_withTop le_rfl _)) hp hm
+    have hJ := hJump j hj hlow n
+    rw [hz] at hJ
+    exact (mul_eq_zero.mp hJ.symm).resolve_left (quadraticJumpScale_ne_zero j n)
+  have hstage : ∀ j : ℕ, j≤d → QuadraticKillsBelow A R j := by
+    intro j
+    induction j with
+    | zero => intro _ r hr; omega
+    | succ j ih =>
+      intro hj
+      have hjd : j<d := by omega
+      have hlow := ih (by omega)
+      have hkill := hstep j hjd hlow
+      intro r hr
+      by_cases he : r=j
+      · simpa only [he] using hkill
+      · exact hlow r (by omega)
+  exact matrix_eq_zero_of_row_span A R hRspan (fun r => hstage d le_rfl r.val r.isLt)
+
+end Zeta23.OPICARound2.QuadraticProfileBootstrap
+
+noncomputable section
+open Finset Matrix
+open scoped BigOperators
+namespace Zeta23.OPICARound2.QuadraticProfileBootstrap
+
+theorem symmetric_bilinear_swap {d : ℕ} (A : Matrix (Fin d) (Fin d) ℂ)
+    (hA : A.transpose=A) (u v : Fin d → ℂ) :
+    dotProduct u (A.mulVec v)=dotProduct v (A.mulVec u) := by
+  have h := Matrix.dotProduct_transpose_mulVec A u v
+  rwa [hA] at h
+
+theorem bilinear_eq_of_killed_jump {d : ℕ} (A : Matrix (Fin d) (Fin d) ℂ)
+    (hA : A.transpose=A) (u v w : Fin d → ℂ) (hk : A.mulVec (u-v)=0) :
+    dotProduct u (A.mulVec w)=dotProduct v (A.mulVec w) := by
+  have he : A.mulVec u=A.mulVec v := by
+    apply sub_eq_zero.mp
+    simpa only [Matrix.mulVec_sub] using hk
+  rw [symmetric_bilinear_swap A hA u w,he,symmetric_bilinear_swap A hA w v]
+
+/-- Pure finite Leibniz cancellation. Symmetry and killed lower jumps suffice;
+there is no positivity assumption on the matrix. -/
+theorem symmetric_leibniz_jump_cancel {d : ℕ} (A : Matrix (Fin d) (Fin d) ℂ)
+    (hA : A.transpose=A) (JP JM : ℕ → Fin d → ℂ) (H : Fin d → ℂ)
+    (r : ℕ) (hr : 1≤r) (hP0 : JP 0=H) (hM0 : JM 0=H)
+    (hKill : ∀ s : ℕ, 0<s → s<r → A.mulVec (JP s-JM s)=0) :
+    (∑ k ∈ range (r+1), (r.choose k:ℂ)*
+      (dotProduct (JP k) (A.mulVec (JP (r-k)))-dotProduct (JM k) (A.mulVec (JM (r-k))))) =
+      2*dotProduct H (A.mulVec (JP r-JM r)) := by
+  let F : ℕ → ℂ := fun k => (r.choose k:ℂ)*
+    (dotProduct (JP k) (A.mulVec (JP (r-k)))-dotProduct (JM k) (A.mulVec (JM (r-k))))
+  have hinterior (k : ℕ) (hk0 : 0<k) (hkr : k<r) : F k=0 := by
+    have hkn := hKill k hk0 hkr
+    have hkm := hKill (r-k) (by omega) (by omega)
+    have he : A.mulVec (JP (r-k))=A.mulVec (JM (r-k)) := by
+      apply sub_eq_zero.mp
+      simpa only [Matrix.mulVec_sub] using hkm
+    have hl := bilinear_eq_of_killed_jump A hA (JP k) (JM k) (JM (r-k)) hkn
+    simp only [F,he,hl,sub_self,mul_zero]
+  have hsum : (∑ k ∈ range r, F k)=F 0 := by
+    apply Finset.sum_eq_single 0
+    · intro k hk hk0
+      exact hinterior k (by omega) (Finset.mem_range.mp hk)
+    · intro hn
+      exact (hn (Finset.mem_range.mpr (by omega))).elim
+  have hright : F 0=dotProduct H (A.mulVec (JP r-JM r)) := by
+    simp only [F,Nat.choose_zero_right,Nat.cast_one,one_mul,Nat.sub_zero,hP0,hM0,
+      Matrix.mulVec_sub,dotProduct_sub]
+  have hleft : F r=dotProduct H (A.mulVec (JP r-JM r)) := by
+    simp only [F,Nat.choose_self,Nat.cast_one,one_mul,Nat.sub_self,hP0,hM0,
+      Matrix.mulVec_sub,dotProduct_sub]
+    rw [symmetric_bilinear_swap A hA (JP r) H,symmetric_bilinear_swap A hA (JM r) H]
+  change (∑ k ∈ range (r+1), F k)=_
+  rw [Finset.sum_range_succ,hsum,hright,hleft]
+  ring
+
+end Zeta23.OPICARound2.QuadraticProfileBootstrap
+
+noncomputable section
+open Set Filter MeasureTheory
+open scoped Topology
+
+namespace Zeta23.OPICARound2.QuadraticProfileBootstrap
+
+theorem weighted_rpow_tail_kernel {a : ℝ} (ha : 1≤a) (p k : ℕ) (hpk : k+2≤p) :
+    a^k*a^(-(p:ℝ)) ≤ (a^2)⁻¹ := by
+  have hap : 0<a := by linarith
+  rw [←Real.rpow_natCast a k,←Real.rpow_add hap]
+  have he : (k:ℝ)+(-(p:ℝ))≤-2 := by
+    have hle : (k:ℝ)+2≤(p:ℝ) := by exact_mod_cast hpk
+    linarith
+  have h := Real.rpow_le_rpow_of_exponent_le ha he
+  simpa only [Real.rpow_neg hap.le,Real.rpow_two] using h
+
+/-- A real polynomial tail rate yields every weighted L1 moment below the
+sharp integrability threshold; compact behavior is handled by continuity. -/
+theorem continuous_weighted_moment_integrable {q : ℝ → ℂ} (hc : Continuous q)
+    (C : ℝ) (hC : 0≤C) (p k : ℕ) (hpk : k+2≤p)
+    (htail : ∀ x : ℝ, 1≤|x| → ‖q x‖≤C*|x|^(-(p:ℝ))) :
+    Integrable (fun x : ℝ => ‖x‖^k*‖q x‖) := by
+  have hfc : Continuous (fun x : ℝ => ‖x‖^k*‖q x‖) := (continuous_norm.pow k).mul hc.norm
+  obtain ⟨B,hB⟩ := (isCompact_Icc : IsCompact (Icc (-1:ℝ) 1)).exists_bound_of_continuousOn hfc.continuousOn
+  have hmax : 0≤max B C := hC.trans (le_max_right B C)
+  apply (integrable_inv_one_add_sq.const_mul (2*max B C)).mono' hfc.aestronglyMeasurable
+  exact Eventually.of_forall fun x => by
+    rw [Real.norm_eq_abs,abs_of_nonneg (by positivity)]
+    have hd : 0<1+x^2 := by positivity
+    by_cases hx : |x|≤1
+    · have hmem : x∈Icc (-1:ℝ) 1 := abs_le.mp hx
+      have hb := hB x hmem
+      rw [Real.norm_eq_abs,abs_of_nonneg (by positivity)] at hb
+      have hx2 : x^2≤1 := by nlinarith [sq_abs x,abs_nonneg x]
+      have hratio : max B C≤2*max B C*(1+x^2)⁻¹ := by
+        change max B C≤(2*max B C)/(1+x^2)
+        apply (le_div_iff₀ hd).2
+        have h := mul_le_mul_of_nonneg_left (show 1+x^2≤2 by linarith) hmax
+        nlinarith
+      exact (hb.trans (le_max_left B C)).trans hratio
+    · have hx1 : 1≤|x| := (lt_of_not_ge hx).le
+      have hxp : 0 < |x| := by linarith
+      have hker := weighted_rpow_tail_kernel hx1 p k hpk
+      have hq := mul_le_mul_of_nonneg_left (htail x hx1) (show 0≤‖x‖^k by positivity)
+      have htailw : ‖x‖^k*‖q x‖≤C*(x^2)⁻¹ := by
+        calc
+          _ ≤ ‖x‖^k*(C*|x|^(-(p:ℝ))) := hq
+          _ = C*(|x|^k*|x|^(-(p:ℝ))) := by rw [Real.norm_eq_abs]; ring
+          _ ≤ C*(|x|^2)⁻¹ := mul_le_mul_of_nonneg_left hker hC
+          _ = _ := by rw [sq_abs]
+      have hx2 : 1≤x^2 := by nlinarith [sq_abs x,abs_nonneg x]
+      have hinv : (x^2)⁻¹≤2*(1+x^2)⁻¹ := by
+        have hdiv : 1/(x^2)≤2/(1+x^2) := by
+          apply (div_le_div_iff₀ (by linarith) hd).2
+          nlinarith
+        simpa only [one_div,div_eq_mul_inv,one_mul] using hdiv
+      calc
+        _ ≤ C*(x^2)⁻¹ := htailw
+        _ ≤ C*(2*(1+x^2)⁻¹) := mul_le_mul_of_nonneg_left hinv hC
+        _ ≤ (max B C)*(2*(1+x^2)⁻¹) := mul_le_mul_of_nonneg_right (le_max_right B C) (by positivity)
+        _ = _ := by ring
+
+theorem quadratic_tail_weighted_moments {q : ℝ → ℂ} (hc : Continuous q)
+    (j : ℕ) (hTail : ∃ C : ℝ, 0≤C ∧ ∀ x : ℝ, 1≤|x| →
+      ‖q x‖≤C*|x|^(-(4*(j:ℝ)+4))) :
+    ∀ k : ℕ, k≤4*j+2 → Integrable (fun x : ℝ => ‖x‖^k*‖q x‖) := by
+  rcases hTail with ⟨C,hC,htail⟩
+  intro k hk
+  apply continuous_weighted_moment_integrable hc C hC (4*j+4) k (by omega)
+  intro x hx
+  simpa only [Nat.cast_add,Nat.cast_mul,Nat.cast_ofNat] using htail x hx
+
+end Zeta23.OPICARound2.QuadraticProfileBootstrap
+
+/-! Generic order-zero lattice Fourier rigidity, extracted from the checked
+physical-square argument without its special density or origin witness. -/
+noncomputable section
+open Set MeasureTheory Filter Complex
+open scoped Topology FourierTransform SchwartzMap ContDiff
+namespace Zeta23.OPICARound2.QuadraticProfileBootstrap
+open Zeta23.OPICAFollowup
+
+theorem continuous_cocompact_zero_of_lattice_fourier_key (d : ℝ → ℂ)
+    (hdc : Continuous d) (hdt : Tendsto d (cocompact ℝ) (𝓝 0))
+    (S : 𝓢(ℝ,ℂ) → ℂ)
+    (hSzero : ∀ χ : 𝓢(ℝ,ℂ), (∀ n : ℤ, χ n=0) → S χ=0)
+    (hScongr : ∀ χ ψ : 𝓢(ℝ,ℂ), (∀ n : ℤ, χ n=ψ n) → S χ=S ψ)
+    (key : ∀ φ : 𝓢(ℝ,ℂ), S (𝓕 φ)=S φ-∫ x, d x*φ x) : d=0 := by
+  -- d is bounded
+  obtain ⟨M, hM⟩ : ∃ M, ∀ x, ‖d x‖ ≤ M := by
+    obtain ⟨K, hK, hKc⟩ : ∃ K : Set ℝ, IsCompact K ∧ ∀ x ∉ K, ‖d x‖ < 1 := by
+      have := hdt (Metric.ball_mem_nhds 0 one_pos)
+      rw [Filter.mem_map, Filter.mem_cocompact] at this
+      obtain ⟨K, hK, hKs⟩ := this
+      exact ⟨K, hK, fun x hx => by simpa using hKs hx⟩
+    obtain ⟨B, hB⟩ := hK.exists_bound_of_continuousOn hdc.continuousOn
+    exact ⟨max B 1, fun x => by
+      by_cases hx : x ∈ K
+      · exact (hB x hx).trans (le_max_left _ _)
+      · exact (hKc x hx).le.trans (le_max_right _ _)⟩
+  set U : Set ℝ := (Set.range (fun n : ℤ => (n : ℝ)))ᶜ with hU
+  have hUo : IsOpen U := by
+    rw [hU, isOpen_compl_iff]
+    exact (Int.isClosedEmbedding_coe_real.isClosed_range)
+  set D : ℝ → ℂ := fun x => d (x + 1) - d x with hD
+  have hDc : Continuous D := (hdc.comp (continuous_id.add continuous_const)).sub hdc
+  have hint0 : ∀ φ : ℝ → ℂ, Continuous φ → HasCompactSupport φ → Integrable (fun x => d x * φ x) := by
+    intro φ hφ hcs
+    exact (hφ.integrable_of_hasCompactSupport hcs).bdd_mul hdc.aestronglyMeasurable
+      (Eventually.of_forall hM)
+  have hDzero : ∀ g : ℝ → ℝ, ContDiff ℝ ∞ g → HasCompactSupport g → tsupport g ⊆ U →
+      ∫ x, g x • D x = 0 := by
+    intro g hg hgc hgU
+    set φ : ℝ → ℂ := fun x => (g x : ℂ) with hφ
+    have hφs : ContDiff ℝ ∞ φ := Complex.ofRealCLM.contDiff.comp hg
+    have hφc : HasCompactSupport φ := hgc.comp_left Complex.ofReal_zero
+    set ψ : ℝ → ℂ := fun x => φ (x - 1) with hψ
+    have hψs : ContDiff ℝ ∞ ψ := hφs.comp (contDiff_id.sub contDiff_const)
+    have hψc : HasCompactSupport ψ := hφc.comp_homeomorph (Homeomorph.subRight (1 : ℝ))
+    have hφZ : ∀ n : ℤ, φ n = 0 := fun n => by
+      have : (n : ℝ) ∉ tsupport g := fun hn => hgU hn ⟨n, rfl⟩
+      simp [φ, image_eq_zero_of_notMem_tsupport this]
+    have hψZ : ∀ n : ℤ, ψ n = 0 := fun n => by
+      simp only [ψ, show (n : ℝ) - 1 = ((n - 1 : ℤ) : ℝ) by push_cast; ring, hφZ]
+    set Φ : 𝓢(ℝ, ℂ) := hφc.toSchwartzMap hφs
+    set Ψ : 𝓢(ℝ, ℂ) := hψc.toSchwartzMap hψs
+    have hkΦ := key Φ
+    have hkΨ := key Ψ
+    have hl0 : ∀ χ : 𝓢(ℝ, ℂ), (∀ n : ℤ, χ n = 0) → S χ = 0 := hSzero
+    rw [hl0 Φ hφZ] at hkΦ
+    rw [hl0 Ψ hψZ] at hkΨ
+    have hsame : S (𝓕 Ψ) = S (𝓕 Φ) := by
+      apply hScongr
+      intro n
+      simp only [SchwartzMap.fourier_coe]
+      exact fourier_shift_int φ n
+    have hI : (∫ x, d x * ψ x) = ∫ x, d (x + 1) * φ x := by
+      rw [← integral_add_right_eq_self (fun x => d x * ψ x) (1 : ℝ)]
+      simp only [ψ, add_sub_cancel_right]
+    have heq : (∫ x, d (x + 1) * φ x) = ∫ x, d x * φ x := by
+      have e1 : S (𝓕 Ψ) = -∫ x, d x * Ψ x := by rw [hkΨ]; ring
+      have e2 : S (𝓕 Φ) = -∫ x, d x * Φ x := by rw [hkΦ]; ring
+      have : (∫ x, d x * Ψ x) = ∫ x, d x * Φ x := by rw [← neg_inj, ← e1, ← e2, hsame]
+      rw [← hI]; exact this
+    have hi1 : Integrable (fun x => d (x + 1) * φ x) :=
+      (hφs.continuous.integrable_of_hasCompactSupport hφc).bdd_mul
+        (hdc.comp (continuous_id.add continuous_const)).aestronglyMeasurable
+        (Eventually.of_forall fun x => hM _)
+    have hi2 := hint0 φ hφs.continuous hφc
+    calc ∫ x, g x • D x = ∫ x, d (x + 1) * φ x - d x * φ x := by
+          refine integral_congr_ae (Eventually.of_forall fun x => ?_)
+          simp only [hD, φ, Complex.real_smul]; ring
+      _ = 0 := by rw [integral_sub hi1 hi2, heq, sub_self]
+  have hae := hUo.ae_eq_zero_of_integral_contDiff_smul_eq_zero (μ := volume)
+    (hDc.locallyIntegrable.locallyIntegrableOn U) hDzero
+  have hnull : (volume : Measure ℝ) (Set.range (fun n : ℤ => (n : ℝ))) = 0 :=
+    (Set.countable_range _).measure_zero _
+  have hae' : D =ᵐ[volume] 0 := by
+    filter_upwards [hae, measure_eq_zero_iff_ae_notMem.mp hnull] with x hx hxU
+    exact hx hxU
+  have hDall : ∀ x, D x = 0 := fun x => congrFun ((hDc.ae_eq_iff_eq volume continuous_const).mp hae') x
+  have hper (x : ℝ) (n : ℕ) : d (x+(n:ℝ))=d x := by
+    induction n with
+    | zero => simp
+    | succ n ih =>
+      have h := hDall (x+(n:ℝ))
+      simp only [hD,sub_eq_zero] at h
+      have ht : x+((n+1:ℕ):ℝ)=(x+(n:ℝ))+1 := by push_cast; ring
+      rw [ht,h,ih]
+  funext x
+  have ht : Tendsto (fun n : ℕ => x+(n:ℝ)) atTop atTop := by
+    simpa only [add_comm] using tendsto_natCast_atTop_atTop.atTop_add
+      (tendsto_const_nhds (x := x))
+  have hlim : Tendsto (fun n : ℕ => d (x+(n:ℝ))) atTop (𝓝 0) :=
+    hdt.comp (ht.mono_right atTop_le_cocompact)
+  have hconst : Tendsto (fun n : ℕ => d (x+(n:ℝ))) atTop (𝓝 (d x)) :=
+    tendsto_const_nhds.congr fun n => (hper x n).symm
+  exact tendsto_nhds_unique hconst hlim
+
+/-- A genuine order-zero lattice repair cannot change a continuous C0 L1
+function's ordinary Fourier self-duality. -/
+theorem ordinary_fourier_eq_of_lattice_repair {q : ℝ → ℂ} (hq : Integrable q)
+    (hc : Continuous q) (hvan : Tendsto q (cocompact ℝ) (𝓝 0))
+    (S : 𝓢(ℝ,ℂ) → ℂ)
+    (hSzero : ∀ χ : 𝓢(ℝ,ℂ), (∀ n : ℤ, χ n=0) → S χ=0)
+    (hScongr : ∀ χ ψ : 𝓢(ℝ,ℂ), (∀ n : ℤ, χ n=ψ n) → S χ=S ψ)
+    (hRepair : ∀ φ : 𝓢(ℝ,ℂ),
+      (∫ x, q x*(𝓕 φ : 𝓢(ℝ,ℂ)) x)+S (𝓕 φ)=(∫ x, q x*φ x)+S φ) : 𝓕 q=q := by
+  have hFc : Continuous (𝓕 q) :=
+    VectorFourier.fourierIntegral_continuous Real.continuous_fourierChar continuous_inner hq
+  let d : ℝ → ℂ := fun x => 𝓕 q x-q x
+  have hdc : Continuous d := hFc.sub hc
+  have hdt : Tendsto d (cocompact ℝ) (𝓝 0) := by
+    simpa only [d,sub_zero] using (Real.zero_at_infty_fourier q).sub hvan
+  have key : ∀ φ : 𝓢(ℝ,ℂ), S (𝓕 φ)=S φ-∫ x, d x*φ x := by
+    intro φ
+    have hFφ : Integrable (fun x => 𝓕 q x*φ x) := by
+      have hb : ∀ x, ‖𝓕 q x‖≤∫ y, ‖q y‖ := fun x => by
+        rw [Real.fourier_real_eq]
+        refine (norm_integral_le_integral_norm _).trans (le_of_eq ?_)
+        simp_rw [Circle.norm_smul]
+      exact φ.integrable.bdd_mul hFc.aestronglyMeasurable (Eventually.of_forall hb)
+    have hqφ := OPICAFollowup.square_integrable_mul_schwartz hq φ
+    have hfub := OPICAFollowup.integral_fourier_mul_eq_of_integrable hq φ.integrable
+    have hqF : (∫ x, q x*(𝓕 φ : 𝓢(ℝ,ℂ)) x)=∫ x, 𝓕 q x*φ x := by
+      simpa only [SchwartzMap.fourier_coe] using hfub.symm
+    have hD : (∫ x, d x*φ x)=(∫ x, 𝓕 q x*φ x)-∫ x, q x*φ x := by
+      dsimp only [d]
+      simp_rw [sub_mul]
+      exact integral_sub hFφ hqφ
+    have hh := hRepair φ
+    rw [hqF] at hh
+    rw [hD]
+    linear_combination hh
+  have he := continuous_cocompact_zero_of_lattice_fourier_key d hdc hdt S hSzero hScongr key
+  funext x
+  have h := congrFun he x
+  change 𝓕 q x-q x=0 at h
+  exact sub_eq_zero.mp h
+
+theorem pairing_selfdual_of_lattice_repair {q : ℝ → ℂ} (hq : Integrable q)
+    (hc : Continuous q) (hvan : Tendsto q (cocompact ℝ) (𝓝 0))
+    (S : 𝓢(ℝ,ℂ) → ℂ)
+    (hSzero : ∀ χ : 𝓢(ℝ,ℂ), (∀ n : ℤ, χ n=0) → S χ=0)
+    (hScongr : ∀ χ ψ : 𝓢(ℝ,ℂ), (∀ n : ℤ, χ n=ψ n) → S χ=S ψ)
+    (hRepair : ∀ φ : 𝓢(ℝ,ℂ),
+      (∫ x, q x*(𝓕 φ : 𝓢(ℝ,ℂ)) x)+S (𝓕 φ)=(∫ x, q x*φ x)+S φ) :
+    ∀ φ : 𝓢(ℝ,ℂ), (∫ x, q x*(𝓕 φ : 𝓢(ℝ,ℂ)) x)=∫ x, q x*φ x := by
+  have he := ordinary_fourier_eq_of_lattice_repair hq hc hvan S hSzero hScongr hRepair
+  intro φ
+  have h := OPICAFollowup.integral_fourier_mul_eq_of_integrable hq φ.integrable
+  rw [he] at h
+  simpa only [SchwartzMap.fourier_coe] using h.symm
+
+end Zeta23.OPICARound2.QuadraticProfileBootstrap
+namespace Zeta23.OPICARound2.QuadraticProfileRealification
+abbrev MixedIndex (r c : ℕ) := Fin r ⊕ (Fin c × Fin 2)
+
+def realify {r c : ℕ} (v : MixedIndex r c → ℂ) : MixedIndex r c → ℂ
+  | .inl i => v (.inl i)
+  | .inr (i,k) => if k = 0 then (v (.inr (i,0)) + v (.inr (i,1))) / 2
+      else (v (.inr (i,0)) - v (.inr (i,1))) / (2 * Complex.I)
+
+def unrealify {r c : ℕ} (v : MixedIndex r c → ℂ) : MixedIndex r c → ℂ
+  | .inl i => v (.inl i)
+  | .inr (i,k) => if k = 0 then v (.inr (i,0)) + Complex.I * v (.inr (i,1))
+      else v (.inr (i,0)) - Complex.I * v (.inr (i,1))
+
+theorem realify_unrealify {r c : ℕ} (v : MixedIndex r c → ℂ) :
+    realify (unrealify v) = v := by
+  funext i
+  rcases i with i | ⟨i,k⟩
+  · rfl
+  · fin_cases k <;> simp [realify, unrealify] <;> field_simp <;> ring
+
+theorem unrealify_realify {r c : ℕ} (v : MixedIndex r c → ℂ) :
+    unrealify (realify v) = v := by
+  funext i
+  rcases i with i | ⟨i,k⟩
+  · rfl
+  · fin_cases k <;> simp [realify, unrealify] <;> field_simp <;> ring
+
+def realifyLinear {r c : ℕ} : (MixedIndex r c → ℂ) →ₗ[ℂ] (MixedIndex r c → ℂ) where
+  toFun := realify
+  map_add' v w := by
+    funext i
+    rcases i with i | ⟨i,k⟩
+    · rfl
+    · fin_cases k <;> simp [realify] <;> ring
+  map_smul' a v := by
+    funext i
+    rcases i with i | ⟨i,k⟩
+    · rfl
+    · fin_cases k <;> simp [realify] <;> ring
+
+def unrealifyLinear {r c : ℕ} : (MixedIndex r c → ℂ) →ₗ[ℂ] (MixedIndex r c → ℂ) where
+  toFun := unrealify
+  map_add' v w := by
+    funext i
+    rcases i with i | ⟨i,k⟩
+    · rfl
+    · fin_cases k <;> simp [unrealify] <;> ring
+  map_smul' a v := by
+    funext i
+    rcases i with i | ⟨i,k⟩
+    · rfl
+    · fin_cases k <;> simp [unrealify] <;> ring
+
+def realificationEquiv {r c : ℕ} : (MixedIndex r c → ℂ) ≃ₗ[ℂ] (MixedIndex r c → ℂ) where
+  toFun := realify
+  invFun := unrealify
+  left_inv := unrealify_realify
+  right_inv := realify_unrealify
+  map_add' := realifyLinear.map_add
+  map_smul' := realifyLinear.map_smul
+
+def realificationMatrix {r c : ℕ} : Matrix (MixedIndex r c) (MixedIndex r c) ℂ :=
+  LinearMap.toMatrix' realifyLinear
+
+def inverseRealificationMatrix {r c : ℕ} : Matrix (MixedIndex r c) (MixedIndex r c) ℂ :=
+  LinearMap.toMatrix' unrealifyLinear
+
+theorem realificationMatrix_mulVec {r c : ℕ} (v : MixedIndex r c → ℂ) :
+    realificationMatrix.mulVec v = realify v := LinearMap.toMatrix'_mulVec _ _
+
+theorem inverseRealificationMatrix_mulVec {r c : ℕ} (v : MixedIndex r c → ℂ) :
+    inverseRealificationMatrix.mulVec v = unrealify v := LinearMap.toMatrix'_mulVec _ _
+
+theorem realificationMatrix_mul_inverse {r c : ℕ} :
+    (realificationMatrix : Matrix (MixedIndex r c) _ ℂ) * inverseRealificationMatrix = 1 := by
+  apply Matrix.ext_iff_mulVec.mpr
+  intro v
+  rw [← Matrix.mulVec_mulVec, realificationMatrix_mulVec, inverseRealificationMatrix_mulVec]
+  simpa using realify_unrealify v
+
+theorem inverseRealificationMatrix_mul {r c : ℕ} :
+    (inverseRealificationMatrix : Matrix (MixedIndex r c) _ ℂ) * realificationMatrix = 1 := by
+  apply Matrix.ext_iff_mulVec.mpr
+  intro v
+  rw [← Matrix.mulVec_mulVec, inverseRealificationMatrix_mulVec, realificationMatrix_mulVec]
+  simpa using unrealify_realify v
+
+def expandedVector {r c : ℕ} (u : Fin r → ℝ) (v : Fin c → ℂ) : MixedIndex r c → ℂ
+  | .inl i => (u i : ℂ)
+  | .inr (i,k) => if k = 0 then v i else star (v i)
+
+def realVector {r c : ℕ} (u : Fin r → ℝ) (v : Fin c → ℂ) : MixedIndex r c → ℝ
+  | .inl i => u i
+  | .inr (i,k) => if k = 0 then (v i).re else (v i).im
+
+theorem realify_expandedVector {r c : ℕ} (u : Fin r → ℝ) (v : Fin c → ℂ) :
+    realify (expandedVector u v) = fun i => ((realVector u v i : ℝ) : ℂ) := by
+  funext i
+  rcases i with i | ⟨i,k⟩
+  · rfl
+  · fin_cases k <;> apply Complex.ext <;> simp [realify, expandedVector, realVector,
+      Complex.div_re, Complex.div_im] <;> ring
+
+def transportedMatrix {r c : ℕ} (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) :
+    Matrix (MixedIndex r c) (MixedIndex r c) ℂ :=
+  realificationMatrix.transpose * A.map Complex.ofReal * realificationMatrix
+
+theorem transportedMatrix_symmetric {r c : ℕ}
+    (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) (hA : A.IsSymm) :
+    (transportedMatrix A).IsSymm := by
+  unfold transportedMatrix Matrix.IsSymm
+  rw [Matrix.transpose_mul, Matrix.transpose_mul, Matrix.transpose_transpose,
+    (hA.map Complex.ofReal).eq, Matrix.mul_assoc]
+
+theorem transportedMatrix_eq_zero_iff {r c : ℕ}
+    (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) :
+    transportedMatrix A = 0 ↔ A = 0 := by
+  constructor
+  · intro h
+    have he := congrArg (fun B => inverseRealificationMatrix.transpose * B *
+      inverseRealificationMatrix) h
+    have hcancel : inverseRealificationMatrix.transpose * transportedMatrix A *
+        inverseRealificationMatrix = A.map Complex.ofReal := by
+      unfold transportedMatrix
+      calc
+        _ = (realificationMatrix * inverseRealificationMatrix).transpose *
+            A.map Complex.ofReal * (realificationMatrix * inverseRealificationMatrix) := by
+          rw [Matrix.transpose_mul]
+          simp only [Matrix.mul_assoc]
+        _ = A.map Complex.ofReal := by rw [realificationMatrix_mul_inverse]; simp
+    rw [hcancel] at he
+    ext i j
+    have hij := congrArg (fun B => B i j) he
+    simpa using congrArg Complex.re hij
+  · intro h
+    subst A
+    simp [transportedMatrix]
+
+theorem transported_quadratic {r c : ℕ}
+    (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) (v : MixedIndex r c → ℂ) :
+    dotProduct v ((transportedMatrix A).mulVec v) =
+      dotProduct (realify v) ((A.map Complex.ofReal).mulVec (realify v)) := by
+  unfold transportedMatrix
+  rw [← Matrix.mulVec_mulVec, ← Matrix.mulVec_mulVec,
+    Matrix.dotProduct_transpose_mulVec, realificationMatrix_mulVec]
+  rw [dotProduct_comm]
+
+theorem transported_real_quadratic {r c : ℕ}
+    (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ)
+    (u : Fin r → ℝ) (v : Fin c → ℂ) :
+    dotProduct (expandedVector u v) ((transportedMatrix A).mulVec (expandedVector u v)) =
+      ((dotProduct (realVector u v) (A.mulVec (realVector u v)) : ℝ) : ℂ) := by
+  rw [transported_quadratic, realify_expandedVector]
+  symm
+  exact (RingHom.map_dotProduct Complex.ofRealHom _ _).trans (by
+    congr 1
+    funext i
+    exact RingHom.map_mulVec Complex.ofRealHom A (realVector u v) i)
+
+def realBlockOperator {r c : ℕ} (α : Fin r → ℝ) (ξ : Fin c → ℂ)
+    (v : MixedIndex r c → ℝ) : MixedIndex r c → ℝ
+  | .inl i => α i * v (.inl i)
+  | .inr (i,k) => if k = 0 then (ξ i).re * v (.inr (i,0)) - (ξ i).im * v (.inr (i,1))
+      else (ξ i).im * v (.inr (i,0)) + (ξ i).re * v (.inr (i,1))
+
+def cyclicVector {r c : ℕ} : MixedIndex r c → ℝ
+  | .inl _ => 1
+  | .inr (_,k) => if k = 0 then 1 else 0
+
+theorem realBlockOperator_realVector {r c : ℕ}
+    (α : Fin r → ℝ) (ξ : Fin c → ℂ) (u : Fin r → ℝ) (v : Fin c → ℂ) :
+    realBlockOperator α ξ (realVector u v) =
+      realVector (fun i => α i * u i) (fun i => ξ i * v i) := by
+  funext i
+  rcases i with i | ⟨i,k⟩
+  · rfl
+  · fin_cases k <;> simp [realBlockOperator, realVector, Complex.mul_re, Complex.mul_im] <;> ring
+
+theorem realBlockOperator_iterate {r c : ℕ}
+    (α : Fin r → ℝ) (ξ : Fin c → ℂ) (n : ℕ) :
+    (realBlockOperator α ξ)^[n] cyclicVector =
+      realVector (fun i => α i ^ n) (fun i => ξ i ^ n) := by
+  induction n with
+  | zero => funext i; rcases i with i | ⟨i,k⟩
+            · simp [cyclicVector, realVector]
+            · fin_cases k <;> simp [cyclicVector, realVector]
+  | succ n ih =>
+    rw [Function.iterate_succ_apply', ih, realBlockOperator_realVector]
+    simp only [pow_succ']
+
+theorem realify_spectral_powers {r c : ℕ}
+    (α : Fin r → ℝ) (ξ : Fin c → ℂ) (n : ℕ) :
+    realify (fun i => (expandedVector α ξ i)^n) =
+      fun i => (((realBlockOperator α ξ)^[n] cyclicVector i : ℝ) : ℂ) := by
+  rw [realBlockOperator_iterate]
+  have h : (fun i => (expandedVector α ξ i)^n) =
+      expandedVector (fun i => α i^n) (fun i => ξ i^n) := by
+    funext i
+    rcases i with i | ⟨i,k⟩
+    · simp [expandedVector]
+    · fin_cases k <;> simp [expandedVector]
+  rw [h, realify_expandedVector]
+
+theorem real_span_top_of_complex_cast_span {ι ν : Type*} (v : ν → ι → ℝ)
+    (h : Submodule.span ℂ (Set.range (fun j i => ((v j i : ℝ) : ℂ))) = ⊤) :
+    Submodule.span ℝ (Set.range v) = ⊤ := by
+  let S := Submodule.span ℝ (Set.range v)
+  have hparts : ∀ z ∈ Submodule.span ℂ (Set.range (fun j i => ((v j i : ℝ) : ℂ))),
+      (fun i => (z i).re) ∈ S ∧ (fun i => (z i).im) ∈ S := by
+    intro z hz
+    induction hz using Submodule.span_induction with
+    | mem z hz =>
+      rcases hz with ⟨j,rfl⟩
+      constructor
+      · simpa using (Submodule.subset_span (Set.mem_range_self j) : v j ∈ S)
+      · convert (S.zero_mem : (0 : ι → ℝ) ∈ S) using 1
+        funext i
+        simp
+    | zero =>
+      constructor <;> convert (S.zero_mem : (0 : ι → ℝ) ∈ S) using 1 <;> funext i <;> simp
+    | add z w hz hw ihz ihw =>
+      constructor
+      · convert S.add_mem ihz.1 ihw.1 using 1
+        funext i
+        simp
+      · convert S.add_mem ihz.2 ihw.2 using 1
+        funext i
+        simp
+    | smul a z hz ih =>
+      constructor
+      · convert S.sub_mem (S.smul_mem a.re ih.1) (S.smul_mem a.im ih.2) using 1
+        funext i
+        simp only [Pi.smul_apply, smul_eq_mul, Complex.mul_re, Pi.sub_apply]
+      · convert S.add_mem (S.smul_mem a.re ih.2) (S.smul_mem a.im ih.1) using 1
+        funext i
+        simp only [Pi.smul_apply, smul_eq_mul, Complex.mul_im, Pi.add_apply]
+  apply top_unique
+  intro x hx
+  have hxC : (fun i => ((x i : ℝ) : ℂ)) ∈
+      Submodule.span ℂ (Set.range (fun j i => ((v j i : ℝ) : ℂ))) := by rw [h]; trivial
+  simpa only [Complex.ofReal_re] using (hparts _ hxC).1
+
+theorem realify_span_top {r c : ℕ} {ν : Type*} (v : ν → MixedIndex r c → ℂ)
+    (h : Submodule.span ℂ (Set.range v) = ⊤) :
+    Submodule.span ℂ (Set.range (fun j => realify (v j))) = ⊤ := by
+  have he : Set.range (fun j => realify (v j)) = realify '' Set.range v := by
+    ext x
+    simp only [Set.mem_range, Set.mem_image]
+    aesop
+  rw [he]
+  change Submodule.span ℂ (realifyLinear '' Set.range v) = ⊤
+  rw [← Submodule.map_span, h]
+  rw [Submodule.map_top]
+  exact LinearMap.range_eq_top.mpr (show Function.Surjective realifyLinear from
+    realificationEquiv.surjective)
+
+theorem real_block_cyclic_of_spectral_span {r c d : ℕ}
+    (α : Fin r → ℝ) (ξ : Fin c → ℂ)
+    (h : Submodule.span ℂ (Set.range (fun n : Fin d =>
+      fun i => (expandedVector α ξ i)^(n.val+1))) = ⊤) :
+    Submodule.span ℝ (Set.range (fun n : Fin d =>
+      (realBlockOperator α ξ)^[n.val+1] cyclicVector)) = ⊤ := by
+  apply real_span_top_of_complex_cast_span
+  have ht := realify_span_top _ h
+  have he : (fun n : Fin d => realify (fun i => (expandedVector α ξ i)^(n.val+1))) =
+      (fun n : Fin d => fun i =>
+        (((realBlockOperator α ξ)^[n.val+1] cyclicVector i : ℝ) : ℂ)) := by
+    funext n
+    exact realify_spectral_powers α ξ (n.val+1)
+  rw [he] at ht
+  exact ht
+
+def realBlockLinear {r c : ℕ} (α : Fin r → ℝ) (ξ : Fin c → ℂ) :
+    (MixedIndex r c → ℝ) →ₗ[ℝ] (MixedIndex r c → ℝ) where
+  toFun := realBlockOperator α ξ
+  map_add' v w := by
+    funext i
+    rcases i with i | ⟨i,k⟩
+    · simp [realBlockOperator, mul_add]
+    · fin_cases k <;> simp [realBlockOperator] <;> ring
+  map_smul' a v := by
+    funext i
+    rcases i with i | ⟨i,k⟩
+    · simp [realBlockOperator]; ring
+    · fin_cases k <;> simp [realBlockOperator] <;> ring
+
+def realBlockMatrix {r c : ℕ} (α : Fin r → ℝ) (ξ : Fin c → ℂ) :
+    Matrix (MixedIndex r c) (MixedIndex r c) ℝ :=
+  LinearMap.toMatrix' (realBlockLinear α ξ)
+
+theorem realBlockMatrix_mulVec {r c : ℕ} (α : Fin r → ℝ) (ξ : Fin c → ℂ)
+    (v : MixedIndex r c → ℝ) :
+    (realBlockMatrix α ξ).mulVec v = realBlockOperator α ξ v :=
+  LinearMap.toMatrix'_mulVec _ _
+
+theorem realBlockMatrix_power_cyclic {r c : ℕ} (α : Fin r → ℝ) (ξ : Fin c → ℂ) (n : ℕ) :
+    ((realBlockMatrix α ξ)^n).mulVec cyclicVector =
+      (realBlockOperator α ξ)^[n] cyclicVector := by
+  induction n with
+  | zero => simp
+  | succ n ih =>
+    rw [pow_succ', ← Matrix.mulVec_mulVec, ih, realBlockMatrix_mulVec,
+      Function.iterate_succ_apply']
+
+theorem real_block_matrix_cyclic_of_spectral_span {r c d : ℕ}
+    (α : Fin r → ℝ) (ξ : Fin c → ℂ)
+    (h : Submodule.span ℂ (Set.range (fun n : Fin d =>
+      fun i => (expandedVector α ξ i)^(n.val+1))) = ⊤) :
+    Submodule.span ℝ (Set.range (fun n : Fin d =>
+      ((realBlockMatrix α ξ)^(n.val+1)).mulVec cyclicVector)) = ⊤ := by
+  simpa only [realBlockMatrix_power_cyclic] using
+    real_block_cyclic_of_spectral_span α ξ h
+
+
+end Zeta23.OPICARound2.QuadraticProfileRealification
+noncomputable section
+set_option backward.isDefEq.respectTransparency.types false
+open Set MeasureTheory Filter Polynomial
+open scoped Topology FourierTransform SchwartzMap ContDiff BigOperators
+namespace Zeta23.OPICARound2
+open OPICAFollowup NativeBernoulli
+def profileFactorPolynomial : ℕ → ℂ[X]
+  | 0 => 0
+  | 1 => 1
+  | n + 2 => C (2 * ((n + 1 : ℕ) : ℂ)) * profileFactorPolynomial (n + 1) -
+      (C ((n : ℂ) * ((n + 1 : ℕ) : ℂ)) + X) * profileFactorPolynomial n
+
+theorem profileEMRising_difference_recurrence (rho : ℂ) (n : ℕ) :
+    profileEMRising rho (n + 2) - profileEMRising (1 - rho) (n + 2) =
+      2 * ((n + 1 : ℕ) : ℂ) *
+        (profileEMRising rho (n + 1) - profileEMRising (1 - rho) (n + 1)) -
+      ((n : ℂ) * ((n + 1 : ℕ) : ℂ) + rho * (1 - rho)) *
+        (profileEMRising rho n - profileEMRising (1 - rho) n) := by
+  simp only [profileEMRising, Nat.cast_add, Nat.cast_one]
+  ring
+
+theorem profileEMRising_difference (rho : ℂ) (n : ℕ) :
+    profileEMRising rho n - profileEMRising (1 - rho) n =
+      (2 * rho - 1) * (profileFactorPolynomial n).eval (rho * (1 - rho)) := by
+  induction n using Nat.twoStepInduction with
+  | zero => simp [profileEMRising, profileFactorPolynomial]
+  | one => simp [profileEMRising, profileFactorPolynomial]; ring
+  | more n hn hn1 =>
+    rw [profileEMRising_difference_recurrence, hn, hn1, profileFactorPolynomial]
+    simp only [Polynomial.eval_sub, Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_add, Polynomial.eval_X]
+    ring
+
+theorem profileFactorPolynomial_coeff_recurrence (n m : ℕ) :
+    (profileFactorPolynomial (n + 2)).coeff (m + 1) =
+      (2 * ((n + 1 : ℕ) : ℂ)) * (profileFactorPolynomial (n + 1)).coeff (m + 1) -
+      ((n : ℂ) * ((n + 1 : ℕ) : ℂ) * (profileFactorPolynomial n).coeff (m + 1) +
+        (profileFactorPolynomial n).coeff m) := by
+  rw [profileFactorPolynomial, add_mul]
+  simp only [coeff_sub, coeff_add, coeff_C_mul, coeff_X_mul]
+
+theorem profileFactorPolynomial_degree_pair (r : ℕ) :
+    (profileFactorPolynomial (2 * r + 1)).natDegree ≤ r ∧
+    (profileFactorPolynomial (2 * r + 1)).coeff r = (-1 : ℂ) ^ r ∧
+    (profileFactorPolynomial (2 * r + 2)).natDegree ≤ r := by
+  induction r with
+  | zero => simp [profileFactorPolynomial]
+  | succ r ih =>
+    obtain ⟨hodd, hcoeff, heven⟩ := ih
+    have hvanOdd := natDegree_le_iff_coeff_eq_zero.mp hodd
+    have hvanEven := natDegree_le_iff_coeff_eq_zero.mp heven
+    have hoddNext : (profileFactorPolynomial (2 * (r + 1) + 1)).natDegree ≤ r + 1 := by
+      apply natDegree_le_iff_coeff_eq_zero.mpr
+      intro m hm
+      obtain ⟨m, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (by omega : m ≠ 0)
+      have h1 : r < m + 1 := by omega
+      have h0 : r < m := by omega
+      rw [show 2 * (r + 1) + 1 = 2 * r + 1 + 2 by omega,
+        profileFactorPolynomial_coeff_recurrence]
+      rw [show 2 * r + 1 + 1 = 2 * r + 2 by omega, hvanEven _ h1, hvanOdd _ h1, hvanOdd _ h0]
+      ring
+    have hcoeffNext : (profileFactorPolynomial (2 * (r + 1) + 1)).coeff (r + 1) = (-1 : ℂ) ^ (r + 1) := by
+      rw [show 2 * (r + 1) + 1 = 2 * r + 1 + 2 by omega,
+        profileFactorPolynomial_coeff_recurrence]
+      rw [show 2 * r + 1 + 1 = 2 * r + 2 by omega,
+        hvanEven _ (by omega), hvanOdd _ (by omega), hcoeff, pow_succ]
+      ring
+    refine ⟨hoddNext, hcoeffNext, ?_⟩
+    apply natDegree_le_iff_coeff_eq_zero.mpr
+    intro m hm
+    obtain ⟨m, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (by omega : m ≠ 0)
+    have h1 : r + 1 < m + 1 := by omega
+    have h0 : r < m := by omega
+    rw [show 2 * (r + 1) + 2 = (2 * (r + 1) + 1) + 1 by omega]
+    rw [show (2 * (r + 1) + 1) + 1 = (2 * r + 2) + 2 by omega,
+      profileFactorPolynomial_coeff_recurrence]
+    rw [show 2 * r + 2 + 1 = 2 * (r + 1) + 1 by omega,
+      natDegree_le_iff_coeff_eq_zero.mp hoddNext _ h1,
+      hvanEven _ (by omega), hvanEven _ h0]
+    ring
+
+theorem profileFactorPolynomial_odd_leading (r : ℕ) :
+    (profileFactorPolynomial (2 * r + 1)).natDegree = r ∧
+      (profileFactorPolynomial (2 * r + 1)).leadingCoeff = (-1 : ℂ) ^ r := by
+  obtain ⟨hdeg, hc, heven⟩ := profileFactorPolynomial_degree_pair r
+  have hn : (profileFactorPolynomial (2 * r + 1)).coeff r ≠ 0 := by rw [hc]; exact pow_ne_zero _ (by norm_num)
+  have hd : (profileFactorPolynomial (2 * r + 1)).natDegree = r :=
+    le_antisymm hdeg (le_natDegree_of_ne_zero hn)
+  exact ⟨hd, by rw [Polynomial.leadingCoeff, hd, hc]⟩
+
+def profileZeroEMTerms (rho : ℂ) (N : ℕ) (x : ℝ) : ℂ :=
+  ∑ n ∈ Finset.range N, (spectralKappa rho *
+    (profileFactorPolynomial n).eval (spectralKappa rho) / ((n + 1).factorial : ℂ)) *
+      (profilePeriodicBernoulli (n + 1) x : ℂ) * (x : ℂ) ^ (-(n : ℂ) - 1)
+
+def profileZeroEMRawRemainder (rho : ℂ) (N : ℕ) (x : ℝ) : ℂ :=
+  (x : ℂ) ^ (-rho) * profileEMCoefficient (1 - rho) N * profileBernoulliTailIntegral (1 - rho) N x -
+    (x : ℂ) ^ (rho - 1) * profileEMCoefficient rho N * profileBernoulliTailIntegral rho N x
+
+def profileZeroEMRemainder (rho : ℂ) (N : ℕ) (x : ℝ) : ℂ :=
+  -profileZeroEMRawRemainder rho N x / normalizationBrho rho
+
+theorem profileEMTerms_source_transport (rho : ℂ) (N : ℕ) {x : ℝ} (hx : 0 < x) :
+    (x : ℂ) ^ (-rho) * profileEMTerms (1 - rho) N x -
+      (x : ℂ) ^ (rho - 1) * profileEMTerms rho N x =
+    ∑ n ∈ Finset.range N, ((profileEMRising (1 - rho) n - profileEMRising rho n) /
+      ((n + 1).factorial : ℂ)) * (profilePeriodicBernoulli (n + 1) x : ℂ) *
+        (x : ℂ) ^ (-(n : ℂ) - 1) := by
+  have hxC : (x : ℂ) ≠ 0 := Complex.ofReal_ne_zero.mpr hx.ne'
+  unfold profileEMTerms
+  rw [Finset.mul_sum, Finset.mul_sum, ← Finset.sum_sub_distrib]
+  apply Finset.sum_congr rfl
+  intro n hn
+  have hA : (x : ℂ) ^ (-rho) * (x : ℂ) ^ (-(1 - rho) - (n : ℂ)) =
+      (x : ℂ) ^ (-(n : ℂ) - 1) := by
+    rw [← Complex.cpow_add _ _ hxC]
+    congr 1
+    ring
+  have hB : (x : ℂ) ^ (rho - 1) * (x : ℂ) ^ (-rho - (n : ℂ)) =
+      (x : ℂ) ^ (-(n : ℂ) - 1) := by
+    rw [← Complex.cpow_add _ _ hxC]
+    congr 1
+    ring
+  calc
+    _ = (profileEMRising (1 - rho) n / ((n + 1).factorial : ℂ)) *
+        (profilePeriodicBernoulli (n + 1) x : ℂ) *
+          ((x : ℂ) ^ (-rho) * (x : ℂ) ^ (-(1 - rho) - (n : ℂ))) -
+        (profileEMRising rho n / ((n + 1).factorial : ℂ)) *
+          (profilePeriodicBernoulli (n + 1) x : ℂ) *
+            ((x : ℂ) ^ (rho - 1) * (x : ℂ) ^ (-rho - (n : ℂ))) := by ring
+    _ = _ := by rw [hA, hB]; ring
+
+theorem profileZeroEMTerms_source_factor {rho : ℂ} (h0 : 0 < rho.re) (h1 : rho.re < 1)
+    (hh : rho ≠ 1 / 2) (N : ℕ) {x : ℝ} (hx : 0 < x) :
+    ((x : ℂ) ^ (-rho) * profileEMTerms (1 - rho) N x -
+      (x : ℂ) ^ (rho - 1) * profileEMTerms rho N x) / normalizationBrho rho =
+        profileZeroEMTerms rho N x := by
+  rw [profileEMTerms_source_transport rho N hx, Finset.sum_div]
+  unfold profileZeroEMTerms
+  apply Finset.sum_congr rfl
+  intro n hn
+  have hd := profileEMRising_difference rho n
+  have hk := kappa_div_brho h0 h1 hh
+  have hn : profileEMRising (1 - rho) n - profileEMRising rho n =
+      -(2 * rho - 1) * (profileFactorPolynomial n).eval (spectralKappa rho) := by
+    rw [spectralKappa]
+    linear_combination -hd
+  rw [hn]
+  calc
+    _ = -((2 * rho - 1) / normalizationBrho rho) *
+        (profileFactorPolynomial n).eval (spectralKappa rho) / ((n + 1).factorial : ℂ) *
+          (profilePeriodicBernoulli (n + 1) x : ℂ) * (x : ℂ) ^ (-(n : ℂ) - 1) := by ring
+    _ = _ := by rw [hk]; ring
+
+theorem profile_finiteSumSrho_all_order {rho : ℂ} (hz : riemannZeta rho = 0)
+    (h0 : 0 < rho.re) (h1 : rho.re < 1) {x : ℝ} (hx : 1 ≤ x)
+    (N : ℕ) (hN : 1 ≤ N) :
+    finiteSumSrho rho x = normalizationBrho rho -
+      ((x : ℂ) ^ (-rho) * profileEMTerms (1 - rho) N x -
+        (x : ℂ) ^ (rho - 1) * profileEMTerms rho N x) +
+      profileZeroEMRawRemainder rho N x := by
+  have hx0 : 0 < x := one_pos.trans_le hx
+  have hxC : (x : ℂ) ≠ 0 := Complex.ofReal_ne_zero.mpr hx0.ne'
+  obtain ⟨hr0, hr1⟩ := strip_ne h0 h1
+  have hz' : riemannZeta (1 - rho) = 0 := by
+    have hn : ∀ n : ℕ, rho ≠ -n := fun n h => by
+      have he := congrArg Complex.re h
+      simp at he
+      linarith [(Nat.cast_nonneg n : (0 : ℝ) ≤ n)]
+    rw [riemannZeta_one_sub hn hr1, hz, mul_zero]
+  have hmainA : (x : ℂ) ^ (-rho) * ((x : ℂ) ^ (1 - (1 - rho)) / (1 - (1 - rho))) = 1 / rho := by
+    rw [← mul_div_assoc, ← Complex.cpow_add _ _ hxC]
+    rw [show -rho + (1 - (1 - rho)) = 0 by ring, Complex.cpow_zero,
+      show 1 - (1 - rho) = rho by ring]
+  have hmainB : (x : ℂ) ^ (rho - 1) * ((x : ℂ) ^ (1 - rho) / (1 - rho)) = 1 / (1 - rho) := by
+    rw [← mul_div_assoc, ← Complex.cpow_add _ _ hxC]
+    rw [show rho - 1 + (1 - rho) = 0 by ring, Complex.cpow_zero]
+  rw [finiteSumSrho_eq_rightPowerSum,
+    profile_rightPowerSum_all_order (by simp; linarith) (by intro h; apply hr0; linear_combination -h) hx N hN,
+    profile_rightPowerSum_all_order h0 hr1 hx N hN, hz, hz', brho_eq h0 h1]
+  unfold profileZeroEMRawRemainder
+  linear_combination hmainA - hmainB
+
+theorem profile_zeroProfile_all_order {rho : ℂ} (hz : riemannZeta rho = 0)
+    (h0 : 0 < rho.re) (h1 : rho.re < 1) {x : ℝ} (hx : 1 ≤ |x|)
+    (N : ℕ) (hN : 1 ≤ N) :
+    zeroProfile rho x = profileZeroEMTerms rho N |x| + profileZeroEMRemainder rho N |x| := by
+  obtain ⟨hr0, hr1⟩ := strip_ne h0 h1
+  have hh := zero_ne_half hz
+  have hb := normalizationBrho_ne_zero hr0 hr1 hh
+  have hp := profile_finiteSumSrho_all_order hz h0 h1 hx N hN
+  rw [zeroProfile, hp]
+  rw [← profileZeroEMTerms_source_factor h0 h1 hh N (one_pos.trans_le hx)]
+  unfold profileZeroEMRemainder
+  field_simp [hb]
+  ring
+
+
+theorem profileZeroEMRemainder_norm_bound {rho : ℂ} (h0 : 0 < rho.re) (h1 : rho.re < 1)
+    (N : ℕ) (hN : 1 ≤ N) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ x : ℝ, 0 < x →
+      ‖profileZeroEMRemainder rho N x‖ ≤ C * x ^ (-(N : ℝ)) := by
+  have hs : 0 < (1 - rho).re := by simp; linarith
+  obtain ⟨CA, hCA, hbA⟩ := profile_periodic_bernoulli_tail_norm hN hs
+  obtain ⟨CB, hCB, hbB⟩ := profile_periodic_bernoulli_tail_norm hN h0
+  let K : ℝ := ‖profileEMCoefficient (1 - rho) N‖ * CA + ‖profileEMCoefficient rho N‖ * CB
+  have hK : 0 ≤ K := by dsimp [K]; positivity
+  refine ⟨K / ‖normalizationBrho rho‖, div_nonneg hK (norm_nonneg _), fun x hx => ?_⟩
+  have hA : ‖(x : ℂ) ^ (-rho) * profileEMCoefficient (1 - rho) N *
+      profileBernoulliTailIntegral (1 - rho) N x‖ ≤
+      (‖profileEMCoefficient (1 - rho) N‖ * CA) * x ^ (-(N : ℝ)) := by
+    rw [norm_mul, norm_mul, Complex.norm_cpow_eq_rpow_re_of_pos hx]
+    simp only [Complex.neg_re]
+    calc
+      _ ≤ x ^ (-rho.re) * ‖profileEMCoefficient (1 - rho) N‖ *
+          (CA * x ^ (-(1 - rho).re - (N : ℝ) + 1)) :=
+        mul_le_mul_of_nonneg_left (hbA x hx) (by positivity)
+      _ = (‖profileEMCoefficient (1 - rho) N‖ * CA) *
+          (x ^ (-rho.re) * x ^ (-(1 - rho).re - (N : ℝ) + 1)) := by ring
+      _ = _ := by rw [← Real.rpow_add hx]; congr 2; simp only [Complex.sub_re, Complex.one_re]; ring
+  have hB : ‖(x : ℂ) ^ (rho - 1) * profileEMCoefficient rho N *
+      profileBernoulliTailIntegral rho N x‖ ≤
+      (‖profileEMCoefficient rho N‖ * CB) * x ^ (-(N : ℝ)) := by
+    rw [norm_mul, norm_mul, Complex.norm_cpow_eq_rpow_re_of_pos hx]
+    simp only [Complex.sub_re, Complex.one_re]
+    calc
+      _ ≤ x ^ (rho.re - 1) * ‖profileEMCoefficient rho N‖ *
+          (CB * x ^ (-rho.re - (N : ℝ) + 1)) :=
+        mul_le_mul_of_nonneg_left (hbB x hx) (by positivity)
+      _ = (‖profileEMCoefficient rho N‖ * CB) *
+          (x ^ (rho.re - 1) * x ^ (-rho.re - (N : ℝ) + 1)) := by ring
+      _ = _ := by rw [← Real.rpow_add hx]; congr 2; ring
+  have hraw : ‖profileZeroEMRawRemainder rho N x‖ ≤ K * x ^ (-(N : ℝ)) := by
+    exact (norm_sub_le _ _).trans ((add_le_add hA hB).trans_eq (by dsimp [K]; ring))
+  unfold profileZeroEMRemainder
+  rw [norm_div, norm_neg]
+  exact (div_le_div_of_nonneg_right hraw (norm_nonneg _)).trans_eq (by ring)
+
+theorem profile_zeroProfile_all_order_asymptotic {rho : ℂ} (hz : riemannZeta rho = 0)
+    (h0 : 0 < rho.re) (h1 : rho.re < 1) (N : ℕ) (hN : 1 ≤ N) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ x : ℝ, 1 ≤ |x| →
+      ‖zeroProfile rho x - profileZeroEMTerms rho N |x|‖ ≤ C * |x| ^ (-(N : ℝ) - 1) := by
+  obtain ⟨CR, hCR, hbR⟩ := profileZeroEMRemainder_norm_bound h0 h1 (N + 1) (by omega)
+  obtain ⟨B, hB, hbB⟩ := profilePeriodicBernoulli_bound (N + 1)
+  let C0 : ℝ := ‖spectralKappa rho * (profileFactorPolynomial N).eval (spectralKappa rho) /
+    ((N + 1).factorial : ℂ)‖ * B
+  refine ⟨C0 + CR, by dsimp [C0]; positivity, fun x hx => ?_⟩
+  have hx0 : 0 < |x| := one_pos.trans_le hx
+  rw [profile_zeroProfile_all_order hz h0 h1 hx (N + 1) (by omega)]
+  have hterms : profileZeroEMTerms rho (N + 1) |x| = profileZeroEMTerms rho N |x| +
+      (spectralKappa rho * (profileFactorPolynomial N).eval (spectralKappa rho) /
+        ((N + 1).factorial : ℂ)) * (profilePeriodicBernoulli (N + 1) |x| : ℂ) *
+          ((|x| : ℝ) : ℂ) ^ (-(N : ℂ) - 1) := by
+    exact Finset.sum_range_succ _ _
+  rw [hterms, add_assoc, add_sub_cancel_left]
+  have ht : ‖(spectralKappa rho * (profileFactorPolynomial N).eval (spectralKappa rho) /
+        ((N + 1).factorial : ℂ)) * (profilePeriodicBernoulli (N + 1) |x| : ℂ) *
+          ((|x| : ℝ) : ℂ) ^ (-(N : ℂ) - 1)‖ ≤ C0 * |x| ^ (-(N : ℝ) - 1) := by
+    rw [norm_mul, norm_mul, Complex.norm_real, Real.norm_eq_abs,
+      Complex.norm_cpow_eq_rpow_re_of_pos hx0]
+    simp only [Complex.sub_re, Complex.neg_re, Complex.natCast_re, Complex.one_re]
+    exact mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_left (hbB |x|) (norm_nonneg _))
+      (Real.rpow_nonneg hx0.le _)
+  have hr := hbR |x| hx0
+  push_cast at hr
+  have hr' : ‖profileZeroEMRemainder rho (N + 1) |x|‖ ≤ CR * |x| ^ (-(N : ℝ) - 1) := by
+    convert hr using 1 <;> ring
+  exact (norm_add_le _ _).trans ((add_le_add ht hr').trans_eq (by ring))
+
+
+def profileOddPolynomialSequence : Polynomial.Sequence ℂ where
+  elems' r := profileFactorPolynomial (2 * r + 1)
+  degree_eq' r := by
+    obtain ⟨hd, hc⟩ := profileFactorPolynomial_odd_leading r
+    have hp : profileFactorPolynomial (2 * r + 1) ≠ 0 := by
+      intro hz
+      rw [hz, leadingCoeff_zero] at hc
+      exact (pow_ne_zero r (by norm_num : (-1 : ℂ) ≠ 0)) hc.symm
+    rw [degree_eq_natDegree hp, hd]
+
+def profileWeightedPolynomialEvaluation {d : ℕ} (kappa : Fin d → ℂ) :
+    ℂ[X] →ₗ[ℂ] (Fin d → ℂ) where
+  toFun p i := kappa i * p.eval (kappa i)
+  map_add' p q := by ext i; simp [mul_add]
+  map_smul' c p := by ext i; simp [smul_eq_mul]; ring
+
+theorem profile_spectral_polynomial_vectors_span {d : ℕ} (kappa : Fin d → ℂ)
+    (hne : ∀ i, kappa i ≠ 0) (hinj : Function.Injective kappa) :
+    Submodule.span ℂ (Set.range (fun r : ℕ => fun i : Fin d =>
+      kappa i * (profileFactorPolynomial (2 * r + 1)).eval (kappa i))) = ⊤ := by
+  let V : Submodule ℂ (Fin d → ℂ) := Submodule.span ℂ (Set.range (fun r : ℕ => fun i : Fin d =>
+    kappa i * (profileFactorPolynomial (2 * r + 1)).eval (kappa i)))
+  let E := profileWeightedPolynomialEvaluation kappa
+  have hcoeff (r : ℕ) : IsUnit (profileOddPolynomialSequence r).leadingCoeff := by
+    apply isUnit_iff_ne_zero.mpr
+    change (profileFactorPolynomial (2 * r + 1)).leadingCoeff ≠ 0
+    rw [(profileFactorPolynomial_odd_leading r).2]
+    exact pow_ne_zero r (by norm_num)
+  have hle : Submodule.span ℂ (Set.range profileOddPolynomialSequence) ≤ V.comap E := by
+    apply Submodule.span_le.mpr
+    rintro p ⟨r, rfl⟩
+    exact Submodule.subset_span ⟨r, rfl⟩
+  rw [profileOddPolynomialSequence.span hcoeff] at hle
+  have hany (p : ℂ[X]) : E p ∈ V := hle (show p ∈ (⊤ : Submodule ℂ ℂ[X]) from trivial)
+  have hs (i : Fin d) : Pi.single i (1 : ℂ) ∈ V := by
+    have hp := hany (C ((kappa i)⁻¹) * Lagrange.basis Finset.univ kappa i)
+    convert hp using 1
+    ext j
+    dsimp [E, profileWeightedPolynomialEvaluation]
+    by_cases hij : i = j
+    · subst j
+      rw [eval_mul, eval_C, Lagrange.eval_basis_self hinj.injOn (Finset.mem_univ i), mul_one]
+      simp [hne i]
+    · rw [eval_mul, eval_C, Lagrange.eval_basis_of_ne hij (Finset.mem_univ j)]
+      simp [Pi.single_apply, hij, Ne.symm hij]
+  change V = ⊤
+  apply top_unique
+  intro v hv
+  have hd : v = ∑ i : Fin d, v i • Pi.single i (1 : ℂ) := by
+    ext j
+    simp [Pi.single_apply]
+  rw [hd]
+  exact V.sum_mem (fun i _ => V.smul_mem (v i) (hs i))
+
+
+def profileSampleSpan {d : ℕ} (H : ℕ → Fin d → ℂ) : Submodule ℂ (Fin d → ℂ) :=
+  Submodule.span ℂ (Set.range (fun n : ℕ => H (n + 1)))
+
+/-- Actual all-order coefficient estimates recover coefficients inside the
+closed finite-dimensional span of the actual positive-integer samples. -/
+theorem profile_sample_span_contains_coefficients {d : ℕ} (H : ℕ → Fin d → ℂ)
+    (a : ℕ → Fin d → ℂ)
+    (happrox : ∀ N : ℕ, 1 ≤ N → ∀ i : Fin d, ∃ C : ℝ, 0 ≤ C ∧
+      ∀ n : ℕ, 1 ≤ n →
+        ‖H n i - ∑ k ∈ Finset.range N, (((n : ℂ) ^ (k + 1))⁻¹ * a k i)‖ ≤
+          C / (n : ℝ) ^ (N + 1)) :
+    ∀ k : ℕ, a k ∈ profileSampleSpan H := by
+  intro k
+  induction k using Nat.strong_induction_on with
+  | h k ih =>
+    let R : ℕ → Fin d → ℂ := fun n => (((n + 1 : ℕ) : ℂ) ^ (k + 1)) •
+      (H (n + 1) - ∑ j ∈ Finset.range k, ((((n + 1 : ℕ) : ℂ) ^ (j + 1))⁻¹) • a j)
+    have hmem (n : ℕ) : R n ∈ profileSampleSpan H := by
+      apply Submodule.smul_mem
+      apply Submodule.sub_mem
+      · exact Submodule.subset_span ⟨n, rfl⟩
+      · apply Submodule.sum_mem
+        intro j hj
+        exact Submodule.smul_mem _ _ (ih j (Finset.mem_range.mp hj))
+    have hlim : Tendsto R atTop (𝓝 (a k)) := by
+      apply tendsto_pi_nhds.mpr
+      intro i
+      obtain ⟨C, hC, hb⟩ := happrox (k + 1) (by omega) i
+      have hbound (n : ℕ) : ‖R n i - a k i‖ ≤ C / ((n : ℝ) + 1) := by
+        have hy : (((n + 1 : ℕ) : ℂ)) ≠ 0 := by exact_mod_cast (Nat.succ_ne_zero n)
+        have hyR : 0 < ((n + 1 : ℕ) : ℝ) := by positivity
+        have hp : (((n + 1 : ℕ) : ℂ) ^ (k + 1)) ≠ 0 := pow_ne_zero _ hy
+        have he : R n i - a k i = (((n + 1 : ℕ) : ℂ) ^ (k + 1)) *
+            (H (n + 1) i - ∑ j ∈ Finset.range (k + 1),
+              ((((n + 1 : ℕ) : ℂ) ^ (j + 1))⁻¹ * a j i)) := by
+          dsimp only [R]
+          simp only [Pi.smul_apply, Pi.sub_apply, Finset.sum_apply, smul_eq_mul, Finset.sum_range_succ]
+          have hc : (((n + 1 : ℕ) : ℂ) ^ (k + 1)) *
+              ((((n + 1 : ℕ) : ℂ) ^ (k + 1))⁻¹ * a k i) = a k i := by
+            rw [← mul_assoc, mul_inv_cancel₀ hp, one_mul]
+          linear_combination hc
+        rw [he, norm_mul, norm_pow]
+        have hn : ‖(((n + 1 : ℕ) : ℂ))‖ = (((n + 1 : ℕ) : ℝ)) := Complex.norm_natCast (n + 1)
+        rw [hn]
+        calc
+          _ ≤ (((n + 1 : ℕ) : ℝ) ^ (k + 1)) *
+              (C / (((n + 1 : ℕ) : ℝ) ^ (k + 1 + 1))) :=
+            mul_le_mul_of_nonneg_left (hb (n + 1) (by omega)) (by positivity)
+          _ = C / ((n : ℝ) + 1) := by
+            simp only [pow_succ]
+            push_cast
+            field_simp <;> ring
+      have hz : Tendsto (fun n : ℕ => C / ((n : ℝ) + 1)) atTop (𝓝 0) := by
+        simpa only [mul_zero, ← div_eq_mul_inv, one_div] using
+          tendsto_one_div_add_atTop_nhds_zero_nat.const_mul C
+      have hn := squeeze_zero (fun n => norm_nonneg _) hbound hz
+      exact tendsto_iff_norm_sub_tendsto_zero.mpr hn
+    exact (profileSampleSpan H).closed_of_finiteDimensional.mem_of_tendsto hlim (Eventually.of_forall hmem)
+
+theorem profilePeriodicBernoulli_nat (N n : ℕ) :
+    profilePeriodicBernoulli N (n : ℝ) = (_root_.bernoulli N : ℝ) := by
+  change bernoulliFun N (Int.fract (n : ℝ)) = _
+  rw [Int.fract_natCast, bernoulliFun_eval_zero]
+
+def profileZeroEMIntegerCoefficient (rho : ℂ) (k : ℕ) : ℂ :=
+  spectralKappa rho * (profileFactorPolynomial k).eval (spectralKappa rho) /
+    ((k + 1).factorial : ℂ) * (_root_.bernoulli (k + 1) : ℂ)
+
+theorem profileZeroEMTerms_nat (rho : ℂ) (N n : ℕ) :
+    profileZeroEMTerms rho N (n : ℝ) =
+      ∑ k ∈ Finset.range N, ((n : ℂ) ^ (k + 1))⁻¹ * profileZeroEMIntegerCoefficient rho k := by
+  unfold profileZeroEMTerms
+  apply Finset.sum_congr rfl
+  intro k hk
+  rw [profilePeriodicBernoulli_nat]
+  have hp : (-(k : ℂ) - 1) = -((k + 1 : ℕ) : ℂ) := by push_cast; ring
+  rw [hp, Complex.cpow_neg, Complex.cpow_natCast]
+  unfold profileZeroEMIntegerCoefficient
+  push_cast
+  ring
+
+theorem profile_zero_samples_coefficient_estimate {rho : ℂ} (hz : riemannZeta rho = 0)
+    (h0 : 0 < rho.re) (h1 : rho.re < 1) (N : ℕ) (hN : 1 ≤ N) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ n : ℕ, 1 ≤ n →
+      ‖zeroProfile rho (n : ℝ) - ∑ k ∈ Finset.range N,
+        ((n : ℂ) ^ (k + 1))⁻¹ * profileZeroEMIntegerCoefficient rho k‖ ≤ C / (n : ℝ) ^ (N + 1) := by
+  obtain ⟨C, hC, hb⟩ := profile_zeroProfile_all_order_asymptotic hz h0 h1 N hN
+  refine ⟨C, hC, fun n hn => ?_⟩
+  have hnr : (1 : ℝ) ≤ n := by exact_mod_cast hn
+  have hnp : 0 < (n : ℝ) := one_pos.trans_le hnr
+  have hh := hb (n : ℝ) (by rwa [abs_of_pos hnp])
+  rw [abs_of_pos hnp, profileZeroEMTerms_nat] at hh
+  convert hh using 1
+  rw [show -(N : ℝ) - 1 = -((N + 1 : ℕ) : ℝ) by push_cast; ring,
+    Real.rpow_neg hnp.le, Real.rpow_natCast]
+  ring
+
+theorem profile_zero_integer_samples_span {d : ℕ} (rho : Fin d → ℂ)
+    (hz : ∀ i, riemannZeta (rho i) = 0) (h0 : ∀ i, 0 < (rho i).re)
+    (h1 : ∀ i, (rho i).re < 1)
+    (hinj : Function.Injective (fun i => spectralKappa (rho i))) :
+    profileSampleSpan (fun n i => zeroProfile (rho i) (n : ℝ)) = ⊤ := by
+  let H : ℕ → Fin d → ℂ := fun n i => zeroProfile (rho i) (n : ℝ)
+  let kappa : Fin d → ℂ := fun i => spectralKappa (rho i)
+  let V := profileSampleSpan H
+  have hcoeff (k : ℕ) : (fun i => profileZeroEMIntegerCoefficient (rho i) k) ∈ V := by
+    exact profile_sample_span_contains_coefficients H (fun k i => profileZeroEMIntegerCoefficient (rho i) k)
+      (fun N hN i => profile_zero_samples_coefficient_estimate (hz i) (h0 i) (h1 i) N hN) k
+  have hrows (r : ℕ) : (fun i => kappa i * (profileFactorPolynomial (2 * r + 1)).eval (kappa i)) ∈ V := by
+    let alpha : ℂ := (_root_.bernoulli (2 * r + 2) : ℂ) / ((2 * r + 2).factorial : ℂ)
+    have ha : alpha ≠ 0 := by
+      apply div_ne_zero
+      · have hb := profile_even_bernoulli_ne_zero (r + 1) (by omega)
+        have he : 2 * (r + 1) = 2 * r + 2 := by omega
+        rw [he] at hb
+        exact_mod_cast hb
+      · exact_mod_cast Nat.factorial_ne_zero (2 * r + 2)
+    have hm := V.smul_mem (alpha⁻¹) (hcoeff (2 * r + 1))
+    convert hm using 1
+    ext i
+    change _ = alpha⁻¹ * profileZeroEMIntegerCoefficient (rho i) (2 * r + 1)
+    have he : profileZeroEMIntegerCoefficient (rho i) (2 * r + 1) =
+        alpha * (kappa i * (profileFactorPolynomial (2 * r + 1)).eval (kappa i)) := by
+      dsimp [profileZeroEMIntegerCoefficient, alpha, kappa]
+      rw [show 2 * r + 1 + 1 = 2 * r + 2 by omega]
+      ring
+    rw [he, ← mul_assoc, inv_mul_cancel₀ ha, one_mul]
+  have hspan := profile_spectral_polynomial_vectors_span kappa
+    (fun i => by
+      obtain ⟨hr0, hr1⟩ := strip_ne (h0 i) (h1 i)
+      exact mul_ne_zero hr0 (sub_ne_zero.mpr hr1.symm)) hinj
+  have hle : Submodule.span ℂ (Set.range (fun r : ℕ => fun i =>
+      kappa i * (profileFactorPolynomial (2 * r + 1)).eval (kappa i))) ≤ V := by
+    apply Submodule.span_le.mpr
+    rintro p ⟨r, rfl⟩
+    exact hrows r
+  rw [hspan] at hle
+  exact top_unique hle
+
+
+
+def profileComplexQuadratic {d : ℕ} (rho : Fin d → ℂ) (A : Matrix (Fin d) (Fin d) ℂ) (x : ℝ) : ℂ :=
+  dotProduct (fun i => zeroProfile (rho i) x) (A.mulVec (fun i => zeroProfile (rho i) x))
+
+def profilePowerRow {d : ℕ} (kappa : Fin d → ℂ) (r : ℕ) : Fin d → ℂ :=
+  fun i => kappa i ^ (r + 1)
+
+theorem profile_polynomial_vector_annihilation {d j : ℕ}
+    (kappa : Fin d → ℂ) (A : Matrix (Fin d) (Fin d) ℂ)
+    (hA : ∀ r : ℕ, r < j → A.mulVec (profilePowerRow kappa r) = 0)
+    (p : ℂ[X]) (hp : p.natDegree < j) :
+    A.mulVec (fun i => kappa i * p.eval (kappa i)) = 0 := by
+  let F : ℂ[X] →ₗ[ℂ] (Fin d → ℂ) := A.mulVecLin.comp (profileWeightedPolynomialEvaluation kappa)
+  have hpow (r : ℕ) : F (X ^ r) = A.mulVec (profilePowerRow kappa r) := by
+    change A.mulVec _ = _
+    congr 1
+    ext i
+    simp [profileWeightedPolynomialEvaluation, profilePowerRow, pow_succ, mul_comm]
+  change F p = 0
+  rw [p.as_sum_range_C_mul_X_pow' hp, map_sum]
+  apply Finset.sum_eq_zero
+  intro r hr
+  rw [← Polynomial.smul_eq_C_mul, map_smul, hpow, hA r (Finset.mem_range.mp hr), smul_zero]
+
+theorem profileFactorPolynomial_small_degree {m j : ℕ} (hm : m ≠ 0) (hb : m ≤ 2 * j) :
+    (profileFactorPolynomial m).natDegree < j := by
+  rcases Nat.even_or_odd m with he | ho
+  · rcases he with ⟨r, hr⟩
+    have heq : m = 2 * (r - 1) + 2 := by omega
+    rw [heq]
+    exact (profileFactorPolynomial_degree_pair (r - 1)).2.2.trans_lt (by omega)
+  · rcases ho with ⟨r, hr⟩
+    have heq : m = 2 * r + 1 := by omega
+    rw [heq]
+    exact (profileFactorPolynomial_degree_pair r).1.trans_lt (by omega)
+
+theorem profile_small_coefficient_vector_annihilation {d j : ℕ}
+    (kappa : Fin d → ℂ) (A : Matrix (Fin d) (Fin d) ℂ)
+    (hA : ∀ r : ℕ, r < j → A.mulVec (profilePowerRow kappa r) = 0)
+    {m : ℕ} (hm : m ≤ 2 * j) :
+    A.mulVec (fun i => kappa i * (profileFactorPolynomial m).eval (kappa i)) = 0 := by
+  by_cases hz : m = 0
+  · subst m
+    simp only [profileFactorPolynomial, eval_zero, mul_zero]
+    exact Matrix.mulVec_zero A
+  · exact profile_polynomial_vector_annihilation kappa A hA _ (profileFactorPolynomial_small_degree hz hm)
+
+theorem profileZeroEMTerms_vector_annihilation {d j : ℕ} (rho : Fin d → ℂ)
+    (A : Matrix (Fin d) (Fin d) ℂ)
+    (hA : ∀ r : ℕ, r < j → A.mulVec (profilePowerRow (fun i => spectralKappa (rho i)) r) = 0)
+    (x : ℝ) : A.mulVec (fun i => profileZeroEMTerms (rho i) (2 * j + 1) x) = 0 := by
+  have he : (fun i => profileZeroEMTerms (rho i) (2 * j + 1) x) =
+      ∑ m ∈ Finset.range (2 * j + 1),
+        (((profilePeriodicBernoulli (m + 1) x : ℂ) * (x : ℂ) ^ (-(m : ℂ) - 1)) /
+          ((m + 1).factorial : ℂ)) •
+            (fun i => spectralKappa (rho i) * (profileFactorPolynomial m).eval (spectralKappa (rho i))) := by
+    ext i
+    simp only [profileZeroEMTerms, Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
+    apply Finset.sum_congr rfl
+    intro m hm
+    ring
+  rw [he, Matrix.mulVec_sum]
+  apply Finset.sum_eq_zero
+  intro m hm
+  rw [Matrix.mulVec_smul, profile_small_coefficient_vector_annihilation
+    (fun i => spectralKappa (rho i)) A hA (by have h := Finset.mem_range.mp hm; omega), smul_zero]
+
+theorem profile_symmetric_quadratic_remove_annihilated {d : ℕ}
+    (A : Matrix (Fin d) (Fin d) ℂ) (hA : A.IsSymm) (u v : Fin d → ℂ) (hv : A.mulVec v = 0) :
+    dotProduct u (A.mulVec u) = dotProduct (u - v) (A.mulVec (u - v)) := by
+  have ht : dotProduct v (A.mulVec u) = 0 := by
+    rw [← Matrix.dotProduct_transpose_mulVec A u v, hA, hv]
+    simp
+  rw [Matrix.mulVec_sub, hv, sub_zero, sub_dotProduct, ht, sub_zero]
+
+
+
+theorem profile_power_rows_span {d : ℕ} (kappa : Fin d → ℂ)
+    (hne : ∀ i, kappa i ≠ 0) (hinj : Function.Injective kappa) :
+    Submodule.span ℂ (Set.range (fun r : Fin d => profilePowerRow kappa r.val)) = ⊤ := by
+  let M : Matrix (Fin d) (Fin d) ℂ := Matrix.diagonal kappa * Matrix.vandermonde kappa
+  have hdet : M.det ≠ 0 := by
+    rw [Matrix.det_mul, Matrix.det_diagonal]
+    exact mul_ne_zero (Finset.prod_ne_zero_iff.mpr fun i _ => hne i)
+      (Matrix.det_vandermonde_ne_zero_iff.mpr hinj)
+  have hunit : IsUnit M := (Matrix.isUnit_iff_isUnit_det M).mpr (isUnit_iff_ne_zero.mpr hdet)
+  have hsurj := Matrix.mulVec_surjective_iff_isUnit.mpr hunit
+  have hm (i r : Fin d) : M i r = profilePowerRow kappa r.val i := by
+    simp [M, Matrix.diagonal_mul, Matrix.vandermonde_apply, profilePowerRow, pow_succ, mul_comm]
+  apply top_unique
+  intro v hv
+  obtain ⟨a, ha⟩ := hsurj v
+  have he : M.mulVec a = ∑ r : Fin d, a r • profilePowerRow kappa r.val := by
+    ext i
+    simp only [Matrix.mulVec, dotProduct, Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
+    apply Finset.sum_congr rfl
+    intro r hr
+    rw [hm]
+    ring
+  rw [← ha, he]
+  apply Submodule.sum_mem
+  intro r hr
+  exact Submodule.smul_mem _ _ (Submodule.subset_span ⟨r, rfl⟩)
+
+
+theorem profile_quadratic_bound_from_coordinates {d : ℕ}
+    (A : Matrix (Fin d) (Fin d) ℂ) (v : Fin d → ℂ) (C : Fin d → ℝ)
+    (hC : ∀ i, 0 ≤ C i) (X : ℝ) (hX : 0 ≤ X) (hv : ∀ i, ‖v i‖ ≤ C i * X) :
+    ‖dotProduct v (A.mulVec v)‖ ≤
+      (∑ i : Fin d, ∑ j : Fin d, ‖A i j‖ * C i * C j) * X ^ 2 := by
+  have he : dotProduct v (A.mulVec v) = ∑ i : Fin d, ∑ j : Fin d, v i * A i j * v j := by
+    simp only [Matrix.mulVec, dotProduct, Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro i hi
+    apply Finset.sum_congr rfl
+    intro j hj
+    ring
+  rw [he]
+  calc
+    _ ≤ ∑ i : Fin d, ‖∑ j : Fin d, v i * A i j * v j‖ := norm_sum_le _ _
+    _ ≤ ∑ i : Fin d, ∑ j : Fin d, ‖v i * A i j * v j‖ :=
+      Finset.sum_le_sum (fun i _ => norm_sum_le _ _)
+    _ = ∑ i : Fin d, ∑ j : Fin d, ‖v i‖ * ‖A i j‖ * ‖v j‖ := by simp only [norm_mul]
+    _ ≤ ∑ i : Fin d, ∑ j : Fin d, (C i * X) * ‖A i j‖ * (C j * X) := by
+      apply Finset.sum_le_sum
+      intro i hi
+      apply Finset.sum_le_sum
+      intro j hj
+      exact mul_le_mul (mul_le_mul_of_nonneg_right (hv i) (norm_nonneg _))
+        (hv j) (norm_nonneg _) (mul_nonneg (mul_nonneg (hC i) hX) (norm_nonneg _))
+    _ = _ := by
+      simp only [Finset.sum_mul]
+      apply Finset.sum_congr rfl
+      intro i hi
+      apply Finset.sum_congr rfl
+      intro j hj
+      ring
+
+theorem profileComplexQuadratic_continuous {d : ℕ} (rho : Fin d → ℂ)
+    (A : Matrix (Fin d) (Fin d) ℂ) : Continuous (profileComplexQuadratic rho A) := by
+  unfold profileComplexQuadratic Matrix.mulVec dotProduct
+  exact continuous_finset_sum _ (fun i _ => (continuous_zeroProfile (rho i)).mul
+    (continuous_finset_sum _ (fun j _ => continuous_const.mul (continuous_zeroProfile (rho j)))))
+
+theorem profileComplexQuadratic_improved_tail {d : ℕ} (rho : Fin d → ℂ)
+    (hz : ∀ i, riemannZeta (rho i) = 0) (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (A : Matrix (Fin d) (Fin d) ℂ) (hSym : A.IsSymm) (j : ℕ)
+    (hA : ∀ r : ℕ, r < j → A.mulVec (profilePowerRow (fun i => spectralKappa (rho i)) r) = 0) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ x : ℝ, 1 ≤ |x| →
+      ‖profileComplexQuadratic rho A x‖ ≤ C * |x| ^ (-((4 * j + 4 : ℕ) : ℝ)) := by
+  have hcoeff (i : Fin d) := profile_zeroProfile_all_order_asymptotic (hz i) (h0 i) (h1 i)
+    (2 * j + 1) (by omega)
+  choose C hC hb using hcoeff
+  refine ⟨∑ i : Fin d, ∑ k : Fin d, ‖A i k‖ * C i * C k,
+    Finset.sum_nonneg (fun i _ => Finset.sum_nonneg (fun k _ =>
+      mul_nonneg (mul_nonneg (norm_nonneg _) (hC i)) (hC k))), fun x hx => ?_⟩
+  let R : Fin d → ℂ := fun i => zeroProfile (rho i) x - profileZeroEMTerms (rho i) (2 * j + 1) |x|
+  have hq : profileComplexQuadratic rho A x = dotProduct R (A.mulVec R) :=
+    profile_symmetric_quadratic_remove_annihilated A hSym _ _
+      (profileZeroEMTerms_vector_annihilation rho A hA |x|)
+  rw [hq]
+  have hx0 : 0 < |x| := one_pos.trans_le hx
+  have hbound := profile_quadratic_bound_from_coordinates A R C hC
+    (|x| ^ (-((2 * j + 1 : ℕ) : ℝ) - 1)) (Real.rpow_nonneg hx0.le _) (fun i => hb i x hx)
+  have he : (|x| ^ (-((2 * j + 1 : ℕ) : ℝ) - 1)) ^ 2 =
+      |x| ^ (-((4 * j + 4 : ℕ) : ℝ)) := by
+    rw [← Real.rpow_natCast, ← Real.rpow_mul hx0.le]
+    congr 1
+    push_cast
+    ring
+  rwa [he] at hbound
+
+
+
+def profilePowerOrder (s : ℂ) (r : ℕ) (x : ℝ) : ℂ :=
+  (-1 : ℂ) ^ r * profileEMRising (-s) r * (x : ℂ) ^ (s - (r : ℂ))
+
+theorem profile_hasDerivAt_real_cpow (s : ℂ) {x : ℝ} (hx : 0 < x) :
+    HasDerivAt (fun t : ℝ => (t : ℂ) ^ s) (s * (x : ℂ) ^ (s - 1)) x := by
+  by_cases hs : s = 0
+  · subst s
+    simpa using (hasDerivAt_const x (1 : ℂ))
+  · exact hasDerivAt_ofReal_cpow_const hx.ne' hs
+
+theorem profile_contDiffAt_real_cpow (s : ℂ) {x : ℝ} (hx : 0 < x) :
+    ContDiffAt ℝ ∞ (fun t : ℝ => (t : ℂ) ^ s) x := by
+  have hl : ContDiffAt ℝ ∞ (fun t : ℝ => Complex.log (t : ℂ)) x :=
+    ((Complex.contDiffAt_log (Complex.ofReal_mem_slitPlane.mpr hx)).restrict_scalars ℝ).comp x
+      Complex.ofRealCLM.contDiff.contDiffAt
+  have he : ContDiffAt ℝ ∞ (fun t : ℝ => Complex.exp (Complex.log (t : ℂ) * s)) x :=
+    ((Complex.contDiff_exp (𝕜 := ℝ) (n := ∞)).contDiffAt).comp x (hl.mul contDiffAt_const)
+  apply he.congr_of_eventuallyEq
+  filter_upwards [isOpen_Ioi.mem_nhds hx] with t ht
+  exact Complex.cpow_def_of_ne_zero (Complex.ofReal_ne_zero.mpr ht.ne') s
+
+theorem profilePowerOrder_hasDerivAt (s : ℂ) (r : ℕ) {x : ℝ} (hx : 0 < x) :
+    HasDerivAt (profilePowerOrder s r) (profilePowerOrder s (r + 1) x) x := by
+  have he := (profile_hasDerivAt_real_cpow (s - (r : ℂ)) hx).const_mul
+    ((-1 : ℂ) ^ r * profileEMRising (-s) r)
+  apply he.congr_deriv
+  simp only [profilePowerOrder, profileEMRising, pow_succ, Nat.cast_add, Nat.cast_one]
+  rw [show s - (r : ℂ) - 1 = s - ((r : ℂ) + 1) by ring]
+  ring
+
+theorem profilePowerOrder_iteratedDeriv (s : ℂ) (r : ℕ) {x : ℝ} (hx : 0 < x) :
+    iteratedDeriv r (fun t : ℝ => (t : ℂ) ^ s) x = profilePowerOrder s r x := by
+  induction r generalizing x with
+  | zero => simp [profilePowerOrder, profileEMRising]
+  | succ r ih =>
+    rw [iteratedDeriv_succ]
+    have hh : iteratedDeriv r (fun t : ℝ => (t : ℂ) ^ s) =ᶠ[𝓝 x] profilePowerOrder s r := by
+      filter_upwards [isOpen_Ioi.mem_nhds hx] with t ht
+      exact ih ht
+    rw [hh.deriv_eq]
+    exact (profilePowerOrder_hasDerivAt s r hx).deriv
+
+def profileAnalyticCell (rho : ℂ) (n : ℕ) (x : ℝ) : ℂ :=
+  1 - srhoCell rho n x / normalizationBrho rho
+
+def profileAnalyticCellJet (rho : ℂ) (n r : ℕ) (x : ℝ) : ℂ :=
+  if r = 0 then profileAnalyticCell rho n x else
+    -(profilePowerOrder (-rho) r x * cellSumA rho n -
+      profilePowerOrder (rho - 1) r x * cellSumB rho n) / normalizationBrho rho
+
+theorem profileAnalyticCell_contDiffAt (rho : ℂ) (n : ℕ) {x : ℝ} (hx : 0 < x) :
+    ContDiffAt ℝ ∞ (profileAnalyticCell rho n) x := by
+  unfold profileAnalyticCell srhoCell
+  exact contDiffAt_const.sub ((((profile_contDiffAt_real_cpow (-rho) hx).mul contDiffAt_const).sub
+    ((profile_contDiffAt_real_cpow (rho - 1) hx).mul contDiffAt_const)).div_const _)
+
+theorem profileAnalyticCellJet_hasDerivAt (rho : ℂ) (n r : ℕ) {x : ℝ} (hx : 0 < x) :
+    HasDerivAt (profileAnalyticCellJet rho n r) (profileAnalyticCellJet rho n (r + 1) x) x := by
+  by_cases hr : r = 0
+  · subst r
+    have h := ((profile_hasDerivAt_real_cpow (-rho) hx).mul_const (cellSumA rho n)).sub
+      ((profile_hasDerivAt_real_cpow (rho - 1) hx).mul_const (cellSumB rho n))
+    convert! (h.div_const (normalizationBrho rho)).const_sub 1 using 1 <;>
+      simp +unfoldPartialApp [profileAnalyticCellJet, profileAnalyticCell, srhoCell,
+        profilePowerOrder, profileEMRising] <;> ring
+  · have h := ((profilePowerOrder_hasDerivAt (-rho) r hx).mul_const (cellSumA rho n)).sub
+      ((profilePowerOrder_hasDerivAt (rho - 1) r hx).mul_const (cellSumB rho n))
+    simpa +unfoldPartialApp [profileAnalyticCellJet, hr, Nat.succ_ne_zero] using!
+      (h.neg.div_const (normalizationBrho rho))
+
+theorem profileAnalyticCellJet_iteratedDeriv (rho : ℂ) (n r : ℕ) {x : ℝ} (hx : 0 < x) :
+    iteratedDeriv r (profileAnalyticCell rho n) x = profileAnalyticCellJet rho n r x := by
+  induction r generalizing x with
+  | zero => simp [profileAnalyticCellJet]
+  | succ r ih =>
+    rw [iteratedDeriv_succ]
+    have he : iteratedDeriv r (profileAnalyticCell rho n) =ᶠ[𝓝 x] profileAnalyticCellJet rho n r := by
+      filter_upwards [isOpen_Ioi.mem_nhds hx] with t ht
+      exact ih ht
+    rw [he.deriv_eq]
+    exact (profileAnalyticCellJet_hasDerivAt rho n r hx).deriv
+
+theorem profileAnalyticCell_eq_source (rho : ℂ) {n : ℕ} {x : ℝ}
+    (hn : 0 < x) (hx : x ∈ Ico (n : ℝ) (n + 1)) :
+    profileAnalyticCell rho n x = zeroProfile rho x := by
+  rw [zeroProfile, abs_of_pos hn, finiteSumSrho_eq_cell rho hx]
+  rfl
+
+
+theorem profileAnalyticCellJet_jump {rho : ℂ} (h0 : 0 < rho.re) (h1 : rho.re < 1)
+    (hh : rho ≠ 1 / 2) (n r : ℕ) :
+    profileAnalyticCellJet rho (n + 1) r ((n + 1 : ℕ) : ℝ) -
+      profileAnalyticCellJet rho n r ((n + 1 : ℕ) : ℝ) =
+        (-1 : ℂ) ^ r * spectralKappa rho * (profileFactorPolynomial r).eval (spectralKappa rho) *
+          ((n + 1 : ℕ) : ℂ) ^ (-(r : ℂ) - 1) := by
+  by_cases hr : r = 0
+  · subst r
+    have he := srhoCell_succ_eq rho n
+    simp only [Nat.cast_add, Nat.cast_one] at he
+    simp [profileAnalyticCellJet, profileAnalyticCell, he, profileFactorPolynomial]
+
+  · let m : ℕ := n + 1
+    have hm : (m : ℂ) ≠ 0 := by dsimp [m]; exact_mod_cast (Nat.succ_ne_zero n)
+    have hA : cellSumA rho (n + 1) = cellSumA rho n + (m : ℂ) ^ (rho - 1) := by
+      unfold cellSumA
+      rw [Finset.sum_Icc_succ_top (by omega)]
+    have hB : cellSumB rho (n + 1) = cellSumB rho n + (m : ℂ) ^ (-rho) := by
+      unfold cellSumB
+      rw [Finset.sum_Icc_succ_top (by omega)]
+    have hPA : profilePowerOrder (-rho) r (m : ℝ) * (m : ℂ) ^ (rho - 1) =
+        (-1 : ℂ) ^ r * profileEMRising rho r * (m : ℂ) ^ (-(r : ℂ) - 1) := by
+      unfold profilePowerOrder
+      rw [neg_neg]
+      simp only [Complex.ofReal_natCast]
+      calc
+        _ = (-1 : ℂ) ^ r * profileEMRising rho r *
+            ((m : ℂ) ^ (-rho - (r : ℂ)) * (m : ℂ) ^ (rho - 1)) := by ring
+        _ = _ := by rw [← Complex.cpow_add _ _ hm]; congr 2; ring
+    have hPB : profilePowerOrder (rho - 1) r (m : ℝ) * (m : ℂ) ^ (-rho) =
+        (-1 : ℂ) ^ r * profileEMRising (1 - rho) r * (m : ℂ) ^ (-(r : ℂ) - 1) := by
+      unfold profilePowerOrder
+      rw [show -(rho - 1) = 1 - rho by ring]
+      simp only [Complex.ofReal_natCast]
+      calc
+        _ = (-1 : ℂ) ^ r * profileEMRising (1 - rho) r *
+            ((m : ℂ) ^ (rho - 1 - (r : ℂ)) * (m : ℂ) ^ (-rho)) := by ring
+        _ = _ := by rw [← Complex.cpow_add _ _ hm]; congr 2; ring
+    simp only [profileAnalyticCellJet, if_neg hr]
+    change -(profilePowerOrder (-rho) r (m : ℝ) * cellSumA rho (n + 1) -
+        profilePowerOrder (rho - 1) r (m : ℝ) * cellSumB rho (n + 1)) / normalizationBrho rho -
+      -(profilePowerOrder (-rho) r (m : ℝ) * cellSumA rho n -
+        profilePowerOrder (rho - 1) r (m : ℝ) * cellSumB rho n) / normalizationBrho rho = _
+    rw [hA, hB]
+    have hd := profileEMRising_difference rho r
+    have hk := kappa_div_brho h0 h1 hh
+    calc
+      _ = -(profilePowerOrder (-rho) r (m : ℝ) * (m : ℂ) ^ (rho - 1) -
+          profilePowerOrder (rho - 1) r (m : ℝ) * (m : ℂ) ^ (-rho)) / normalizationBrho rho := by ring
+      _ = -((-1 : ℂ) ^ r * (profileEMRising rho r - profileEMRising (1 - rho) r) *
+          (m : ℂ) ^ (-(r : ℂ) - 1)) / normalizationBrho rho := by rw [hPA, hPB]; ring
+      _ = (-1 : ℂ) ^ r * (-((2 * rho - 1) / normalizationBrho rho)) *
+          (profileFactorPolynomial r).eval (spectralKappa rho) * (m : ℂ) ^ (-(r : ℂ) - 1) := by
+        rw [hd]
+        unfold spectralKappa
+        ring
+      _ = _ := by rw [hk]; ring
+
+
+
+def profileQuadraticCell {d : ℕ} (rho : Fin d → ℂ) (A : Matrix (Fin d) (Fin d) ℂ) (n : ℕ) (x : ℝ) : ℂ :=
+  ∑ i : Fin d, ∑ k : Fin d, A i k * profileAnalyticCell (rho i) n x * profileAnalyticCell (rho k) n x
+
+def profileQuadraticCellJet {d : ℕ} (rho : Fin d → ℂ) (A : Matrix (Fin d) (Fin d) ℂ)
+    (n r : ℕ) (x : ℝ) : ℂ :=
+  ∑ k ∈ Finset.range (r + 1), (r.choose k : ℂ) *
+    dotProduct (fun i => profileAnalyticCellJet (rho i) n k x)
+      (A.mulVec (fun i => profileAnalyticCellJet (rho i) n (r - k) x))
+
+theorem profileQuadraticCell_contDiffAt {d : ℕ} (rho : Fin d → ℂ)
+    (A : Matrix (Fin d) (Fin d) ℂ) (n : ℕ) {x : ℝ} (hx : 0 < x) :
+    ContDiffAt ℝ ∞ (profileQuadraticCell rho A n) x := by
+  unfold profileQuadraticCell
+  apply ContDiffAt.sum
+  intro i hi
+  apply ContDiffAt.sum
+  intro k hk
+  exact (contDiffAt_const.mul (profileAnalyticCell_contDiffAt (rho i) n hx)).mul
+    (profileAnalyticCell_contDiffAt (rho k) n hx)
+
+theorem profileQuadraticCell_iteratedDeriv {d : ℕ} (rho : Fin d → ℂ)
+    (A : Matrix (Fin d) (Fin d) ℂ) (n r : ℕ) {x : ℝ} (hx : 0 < x) :
+    iteratedDeriv r (profileQuadraticCell rho A n) x = profileQuadraticCellJet rho A n r x := by
+  have hci (i : Fin d) : ContDiffAt ℝ (r : ℕ∞ω) (profileAnalyticCell (rho i) n) x :=
+    (profileAnalyticCell_contDiffAt (rho i) n hx).of_le (ENat.natCast_le_of_coe_top_le_withTop le_rfl r)
+  have hd (i j : Fin d) :
+      iteratedDeriv r (fun t : ℝ => A i j * profileAnalyticCell (rho i) n t *
+        profileAnalyticCell (rho j) n t) x =
+      ∑ k ∈ Finset.range (r + 1), (r.choose k : ℂ) * A i j *
+        profileAnalyticCellJet (rho i) n k x * profileAnalyticCellJet (rho j) n (r - k) x := by
+    have hf : ContDiffAt ℝ (r : ℕ∞ω) (fun t : ℝ => A i j * profileAnalyticCell (rho i) n t) x :=
+      contDiffAt_const.mul (hci i)
+    have hh := iteratedDeriv_mul hf (hci j)
+    have hh' : iteratedDeriv r (fun t : ℝ => A i j * profileAnalyticCell (rho i) n t *
+        profileAnalyticCell (rho j) n t) x =
+        ∑ k ∈ Finset.range (r + 1), (r.choose k : ℂ) *
+          iteratedDeriv k (fun t : ℝ => A i j * profileAnalyticCell (rho i) n t) x *
+            iteratedDeriv (r - k) (profileAnalyticCell (rho j) n) x := by
+      simpa only [Pi.mul_apply] using! hh
+    rw [hh']
+    apply Finset.sum_congr rfl
+    intro k hk
+    rw [iteratedDeriv_const_mul_field, profileAnalyticCellJet_iteratedDeriv _ _ _ hx,
+      profileAnalyticCellJet_iteratedDeriv _ _ _ hx]
+    ring
+  have hsij (i j : Fin d) : ContDiffAt ℝ (r : ℕ∞ω)
+      (fun t : ℝ => A i j * profileAnalyticCell (rho i) n t * profileAnalyticCell (rho j) n t) x :=
+    (contDiffAt_const.mul (hci i)).mul (hci j)
+  change iteratedDeriv r (fun t : ℝ => ∑ i : Fin d, ∑ j : Fin d,
+    A i j * profileAnalyticCell (rho i) n t * profileAnalyticCell (rho j) n t) x = _
+  rw [iteratedDeriv_fun_sum (fun i _ => ContDiffAt.sum (fun j _ => hsij i j))]
+  simp_rw [iteratedDeriv_fun_sum (fun j _ => hsij _ j), hd]
+  calc
+    _ = ∑ i : Fin d, ∑ k ∈ Finset.range (r + 1), ∑ j : Fin d,
+        (r.choose k : ℂ) * A i j * profileAnalyticCellJet (rho i) n k x *
+          profileAnalyticCellJet (rho j) n (r - k) x := by
+      apply Finset.sum_congr rfl
+      intro i hi
+      rw [Finset.sum_comm]
+    _ = ∑ k ∈ Finset.range (r + 1), ∑ i : Fin d, ∑ j : Fin d,
+        (r.choose k : ℂ) * A i j * profileAnalyticCellJet (rho i) n k x *
+          profileAnalyticCellJet (rho j) n (r - k) x := Finset.sum_comm
+    _ = _ := by
+      unfold profileQuadraticCellJet Matrix.mulVec dotProduct
+      simp only [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro k hk
+      apply Finset.sum_congr rfl
+      intro i hi
+      apply Finset.sum_congr rfl
+      intro j hj
+      ring
+
+theorem profileQuadraticCell_eq_source {d : ℕ} (rho : Fin d → ℂ)
+    (A : Matrix (Fin d) (Fin d) ℂ) {n : ℕ} {x : ℝ} (hpos : 0 < x)
+    (hx : x ∈ Ico (n : ℝ) (n + 1)) : profileQuadraticCell rho A n x = profileComplexQuadratic rho A x := by
+  unfold profileQuadraticCell profileComplexQuadratic Matrix.mulVec dotProduct
+  simp only [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i hi
+  apply Finset.sum_congr rfl
+  intro j hj
+  rw [profileAnalyticCell_eq_source _ hpos hx, profileAnalyticCell_eq_source _ hpos hx]
+  ring
+
+theorem profileAnalyticCell_endpoint_eq (rho : ℂ) (n : ℕ) :
+    profileAnalyticCell rho (n + 1) ((n + 1 : ℕ) : ℝ) = profileAnalyticCell rho n ((n + 1 : ℕ) : ℝ) := by
+  unfold profileAnalyticCell
+  rw [srhoCell_succ_eq]
+
+theorem profileQuadraticCell_endpoint_eq {d : ℕ} (rho : Fin d → ℂ)
+    (A : Matrix (Fin d) (Fin d) ℂ) (n : ℕ) :
+    profileQuadraticCell rho A (n + 1) ((n + 1 : ℕ) : ℝ) =
+      profileQuadraticCell rho A n ((n + 1 : ℕ) : ℝ) := by
+  unfold profileQuadraticCell
+  simp only [profileAnalyticCell_endpoint_eq]
+
+theorem profileQuadraticCell_right_eq {d : ℕ} (rho : Fin d → ℂ)
+    (A : Matrix (Fin d) (Fin d) ℂ) (n : ℕ) :
+    EqOn (profileQuadraticCell rho A (n + 1)) (profileComplexQuadratic rho A)
+      (Icc (((n + 1 : ℕ) : ℝ)) (((n + 1 : ℕ) : ℝ) + 1 / 2)) := by
+  intro x hx
+  have hpos : 0 < x := by
+    have hn : (0 : ℝ) < ((n + 1 : ℕ) : ℝ) := by positivity
+    exact hn.trans_le hx.1
+  apply profileQuadraticCell_eq_source rho A hpos
+  constructor
+  · exact hx.1
+  · push_cast at *
+    linarith [hx.2]
+
+theorem profileQuadraticCell_left_eq {d : ℕ} (rho : Fin d → ℂ)
+    (A : Matrix (Fin d) (Fin d) ℂ) (n : ℕ) :
+    EqOn (profileQuadraticCell rho A n) (profileComplexQuadratic rho A)
+      (Icc ((((n + 1 : ℕ) : ℝ)) - 1 / 2) (((n + 1 : ℕ) : ℝ))) := by
+  intro x hx
+  by_cases he : x = ((n + 1 : ℕ) : ℝ)
+  · subst x
+    rw [← profileQuadraticCell_endpoint_eq]
+    exact profileQuadraticCell_right_eq rho A n ⟨le_rfl, by linarith⟩
+  · apply profileQuadraticCell_eq_source rho A (by have hn : (0 : ℝ) ≤ n := Nat.cast_nonneg n; push_cast at *; linarith [hx.1])
+    constructor
+    · push_cast at *
+      linarith [hx.1]
+    · have hlt := lt_of_le_of_ne hx.2 he
+      simpa only [Nat.cast_add, Nat.cast_one] using hlt
+
+
+
+theorem profile_top_coefficient_vector_mod_lower {d j : ℕ}
+    (kappa : Fin d → ℂ) (A : Matrix (Fin d) (Fin d) ℂ)
+    (hA : ∀ r : ℕ, r < j → A.mulVec (profilePowerRow kappa r) = 0)
+    (p : ℂ[X]) (hp : p.natDegree ≤ j) :
+    A.mulVec (fun i => kappa i * p.eval (kappa i)) =
+      p.coeff j • A.mulVec (profilePowerRow kappa j) := by
+  let F : ℂ[X] →ₗ[ℂ] (Fin d → ℂ) := A.mulVecLin.comp (profileWeightedPolynomialEvaluation kappa)
+  have hpow (r : ℕ) : F (X ^ r) = A.mulVec (profilePowerRow kappa r) := by
+    change A.mulVec _ = _
+    congr 1
+    ext i
+    simp [profileWeightedPolynomialEvaluation, profilePowerRow, pow_succ, mul_comm]
+  change F p = _
+  conv_lhs => rw [p.as_sum_range_C_mul_X_pow' (show p.natDegree < j + 1 by omega)]
+  rw [map_sum, Finset.sum_range_succ]
+  have hl : (∑ r ∈ Finset.range j, F (C (p.coeff r) * X ^ r)) = 0 := by
+    apply Finset.sum_eq_zero
+    intro r hr
+    rw [← Polynomial.smul_eq_C_mul, map_smul, hpow, hA r (Finset.mem_range.mp hr), smul_zero]
+  rw [hl, zero_add, ← Polynomial.smul_eq_C_mul, map_smul, hpow]
+
+theorem profile_odd_coefficient_vector_mod_lower {d j : ℕ}
+    (kappa : Fin d → ℂ) (A : Matrix (Fin d) (Fin d) ℂ)
+    (hA : ∀ r : ℕ, r < j → A.mulVec (profilePowerRow kappa r) = 0) :
+    A.mulVec (fun i => kappa i * (profileFactorPolynomial (2*j+1)).eval (kappa i)) =
+      (-1 : ℂ)^j • A.mulVec (profilePowerRow kappa j) := by
+  rw [profile_top_coefficient_vector_mod_lower kappa A hA _
+    (profileFactorPolynomial_degree_pair j).1, (profileFactorPolynomial_degree_pair j).2.1]
+
+theorem profile_cell_jump_vector {d : ℕ} (rho : Fin d → ℂ)
+    (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (hh : ∀ i, rho i ≠ 1/2) (n r : ℕ) :
+    (fun i => profileAnalyticCellJet (rho i) (n+1) r ((n+1:ℕ):ℝ)) -
+      (fun i => profileAnalyticCellJet (rho i) n r ((n+1:ℕ):ℝ)) =
+    ((-1:ℂ)^r * ((n+1:ℕ):ℂ)^(-(r:ℂ)-1)) •
+      (fun i => spectralKappa (rho i) * (profileFactorPolynomial r).eval (spectralKappa (rho i))) := by
+  ext i
+  simpa only [Pi.sub_apply, Pi.smul_apply, smul_eq_mul, mul_assoc, mul_left_comm, mul_comm]
+    using profileAnalyticCellJet_jump (h0 i) (h1 i) (hh i) n r
+
+theorem profile_lower_cell_jumps_killed {d j : ℕ} (rho : Fin d → ℂ)
+    (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (hh : ∀ i, rho i ≠ 1/2) (A : Matrix (Fin d) (Fin d) ℂ)
+    (hA : ∀ r : ℕ, r < j → A.mulVec (profilePowerRow (fun i => spectralKappa (rho i)) r) = 0)
+    (n s : ℕ) (hs : s < 2*j+1) :
+    A.mulVec ((fun i => profileAnalyticCellJet (rho i) (n+1) s ((n+1:ℕ):ℝ)) -
+      (fun i => profileAnalyticCellJet (rho i) n s ((n+1:ℕ):ℝ))) = 0 := by
+  rw [profile_cell_jump_vector rho h0 h1 hh, Matrix.mulVec_smul,
+    profile_small_coefficient_vector_annihilation _ A hA (by omega), smul_zero]
+
+theorem profile_odd_cell_jump_after_projection {d j : ℕ} (rho : Fin d → ℂ)
+    (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (hh : ∀ i, rho i ≠ 1/2) (A : Matrix (Fin d) (Fin d) ℂ)
+    (hA : ∀ r : ℕ, r < j → A.mulVec (profilePowerRow (fun i => spectralKappa (rho i)) r) = 0)
+    (n : ℕ) :
+    A.mulVec ((fun i => profileAnalyticCellJet (rho i) (n+1) (2*j+1) ((n+1:ℕ):ℝ)) -
+      (fun i => profileAnalyticCellJet (rho i) n (2*j+1) ((n+1:ℕ):ℝ))) =
+      ((-1:ℂ)^(j+1) / ((n+1:ℕ):ℂ)^(2*j+2)) •
+        A.mulVec (profilePowerRow (fun i => spectralKappa (rho i)) j) := by
+  rw [profile_cell_jump_vector rho h0 h1 hh, Matrix.mulVec_smul,
+    profile_odd_coefficient_vector_mod_lower _ A hA, smul_smul]
+  congr 1
+  have he : (-((2*j+1:ℕ):ℂ)-1) = -((2*j+2:ℕ):ℂ) := by push_cast; ring
+  rw [he, Complex.cpow_neg, Complex.cpow_natCast]
+  have hp : (-1:ℂ)^(2*j+1) * (-1:ℂ)^j = (-1:ℂ)^(j+1) := by
+    rw [pow_add, pow_mul]
+    norm_num
+    simp [pow_succ]
+  rw [mul_right_comm, hp, div_eq_mul_inv]
+
+theorem profile_actual_quadratic_odd_jump {d j : ℕ} (rho : Fin d → ℂ)
+    (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (hh : ∀ i, rho i ≠ 1/2) (A : Matrix (Fin d) (Fin d) ℂ) (hSym : A.IsSymm)
+    (hA : ∀ r : ℕ, r < j → A.mulVec (profilePowerRow (fun i => spectralKappa (rho i)) r) = 0)
+    (n : ℕ) :
+    iteratedDeriv (2*j+1) (profileQuadraticCell rho A (n+1)) ((n+1:ℕ):ℝ) -
+      iteratedDeriv (2*j+1) (profileQuadraticCell rho A n) ((n+1:ℕ):ℝ) =
+    QuadraticProfileBootstrap.quadraticJumpScale j n *
+      dotProduct (fun i => zeroProfile (rho i) ((n+1:ℕ):ℝ))
+        (A.mulVec (profilePowerRow (fun i => spectralKappa (rho i)) j)) := by
+  have hn : (0:ℝ) < ((n+1:ℕ):ℝ) := by positivity
+  rw [profileQuadraticCell_iteratedDeriv _ _ _ _ hn, profileQuadraticCell_iteratedDeriv _ _ _ _ hn]
+  let JP : ℕ → Fin d → ℂ := fun r i => profileAnalyticCellJet (rho i) (n+1) r ((n+1:ℕ):ℝ)
+  let JM : ℕ → Fin d → ℂ := fun r i => profileAnalyticCellJet (rho i) n r ((n+1:ℕ):ℝ)
+  let H : Fin d → ℂ := fun i => zeroProfile (rho i) ((n+1:ℕ):ℝ)
+  have hp0 : JP 0 = H := by
+    ext i
+    change profileAnalyticCell (rho i) (n+1) ((n+1:ℕ):ℝ) = _
+    apply profileAnalyticCell_eq_source _ hn
+    constructor <;> push_cast <;> linarith
+  have hm0 : JM 0 = H := by
+    ext i
+    change profileAnalyticCell (rho i) n ((n+1:ℕ):ℝ) = _
+    rw [← profileAnalyticCell_endpoint_eq]
+    exact congrFun hp0 i
+  have hk : ∀ s : ℕ, 0<s → s<2*j+1 → A.mulVec (JP s-JM s)=0 := by
+    intro s _ hs
+    exact profile_lower_cell_jumps_killed rho h0 h1 hh A hA n s hs
+  have hc := QuadraticProfileBootstrap.symmetric_leibniz_jump_cancel A hSym JP JM H
+    (2*j+1) (by omega) hp0 hm0 hk
+  change (∑ k ∈ Finset.range (2*j+1+1), _) - (∑ k ∈ Finset.range (2*j+1+1), _) = _
+  rw [← Finset.sum_sub_distrib]
+  calc
+    _ = ∑ k ∈ Finset.range (2*j+1+1), ((2*j+1).choose k:ℂ) *
+        (dotProduct (JP k) (A.mulVec (JP (2*j+1-k))) - dotProduct (JM k) (A.mulVec (JM (2*j+1-k)))) := by
+      apply Finset.sum_congr rfl
+      intro k hk
+      dsimp [JP, JM]
+      ring
+    _ = 2*dotProduct H (A.mulVec (JP (2*j+1)-JM (2*j+1))) := hc
+    _ = _ := by
+      have he := profile_odd_cell_jump_after_projection rho h0 h1 hh A hA n
+      change A.mulVec (JP (2*j+1)-JM (2*j+1)) = _ at he
+      rw [he, dotProduct_smul]
+      unfold QuadraticProfileBootstrap.quadraticJumpScale
+      simp only [smul_eq_mul]
+      ring
+
+
+
+theorem profileComplexQuadratic_weighted_moments {d : ℕ} (rho : Fin d → ℂ)
+    (hz : ∀ i, riemannZeta (rho i) = 0) (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (A : Matrix (Fin d) (Fin d) ℂ) (hSym : A.IsSymm) (j : ℕ)
+    (hA : ∀ r : ℕ, r < j → A.mulVec (profilePowerRow (fun i => spectralKappa (rho i)) r) = 0) :
+    ∀ k : ℕ, k ≤ 4*j+2 → Integrable (fun x : ℝ => ‖x‖^k * ‖profileComplexQuadratic rho A x‖) := by
+  apply QuadraticProfileBootstrap.quadratic_tail_weighted_moments
+    (profileComplexQuadratic_continuous rho A) j
+  simpa only [Nat.cast_add, Nat.cast_mul, Nat.cast_ofNat] using
+    profileComplexQuadratic_improved_tail rho hz h0 h1 A hSym j hA
+
+theorem profileComplexQuadratic_integrable {d : ℕ} (rho : Fin d → ℂ)
+    (hz : ∀ i, riemannZeta (rho i) = 0) (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (A : Matrix (Fin d) (Fin d) ℂ) (hSym : A.IsSymm) :
+    Integrable (profileComplexQuadratic rho A) := by
+  have hm := profileComplexQuadratic_weighted_moments rho hz h0 h1 A hSym 0
+    (by intro r hr; omega) 0 (by omega)
+  apply (integrable_norm_iff (profileComplexQuadratic_continuous rho A).aestronglyMeasurable).mp
+  simpa only [pow_zero, one_mul] using hm
+
+/-- Source-faithful complex strengthening of the finite quadratic obstruction:
+the matrix is symmetric, with no positivity premise. Every source asymptotic,
+sample-span, moment and integer-cell jump obligation is discharged above. -/
+theorem profile_complex_symmetric_selfdual_rigidity {d : ℕ} (rho : Fin d → ℂ)
+    (hz : ∀ i, riemannZeta (rho i) = 0) (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (hinj : Function.Injective (fun i => spectralKappa (rho i)))
+    (A : Matrix (Fin d) (Fin d) ℂ) (hSym : A.IsSymm)
+    (hsd : ∀ φ : 𝓢(ℝ,ℂ),
+      (∫ x, profileComplexQuadratic rho A x * (𝓕 φ : 𝓢(ℝ,ℂ)) x) =
+        ∫ x, profileComplexQuadratic rho A x * φ x) : A = 0 := by
+  let H : ℝ → Fin d → ℂ := fun x i => zeroProfile (rho i) x
+  let R : ℕ → Fin d → ℂ := profilePowerRow (fun i => spectralKappa (rho i))
+  have hκ : ∀ i, spectralKappa (rho i) ≠ 0 := by
+    intro i
+    obtain ⟨hr0, hr1⟩ := strip_ne (h0 i) (h1 i)
+    exact mul_ne_zero hr0 (sub_ne_zero.mpr hr1.symm)
+  refine QuadraticProfileBootstrap.quadratic_fourier_bootstrap A H R
+    (profileComplexQuadratic rho A) (fun n => profileQuadraticCell rho A (n+1))
+    (fun n => profileQuadraticCell rho A n)
+    (profileComplexQuadratic_integrable rho hz h0 h1 A hSym)
+    (profileComplexQuadratic_continuous rho A) hsd ?_ ?_ ?_ ?_ ?_
+  · exact profile_zero_integer_samples_span rho hz h0 h1 hinj
+  · exact profile_power_rows_span _ hκ hinj
+  · intro j hj hlow
+    exact profileComplexQuadratic_weighted_moments rho hz h0 h1 A hSym j hlow
+  · intro n
+    refine ⟨1/2, by norm_num, ?_, ?_, profileQuadraticCell_right_eq rho A n,
+      profileQuadraticCell_left_eq rho A n⟩
+    · exact profileQuadraticCell_contDiffAt rho A (n+1) (by positivity)
+    · exact profileQuadraticCell_contDiffAt rho A n (by positivity)
+  · intro j hj hlow n
+    exact profile_actual_quadratic_odd_jump rho h0 h1 (fun i => zero_ne_half (hz i)) A hSym hlow n
+
+
+
+
+theorem profile_spectral_conj (rho : ℂ) :
+    spectralKappa (starRingEnd ℂ rho) = starRingEnd ℂ (spectralKappa rho) := by
+  simp only [spectralKappa, map_mul, map_sub, map_one]
+
+theorem profile_spectral_eq_iff_reflection (rho sigma : ℂ) :
+    spectralKappa rho = spectralKappa sigma ↔ rho = sigma ∨ rho = 1-sigma := by
+  constructor
+  · intro h
+    have hf : (rho-sigma)*(rho+sigma-1)=0 := by
+      unfold spectralKappa at h
+      linear_combination -h
+    rcases mul_eq_zero.mp hf with he | he
+    · exact Or.inl (sub_eq_zero.mp he)
+    · exact Or.inr (by linear_combination he)
+  · rintro (rfl | rfl)
+    · rfl
+    · exact spectralKappa_one_sub sigma
+
+theorem profile_source_eq_of_spectral_eq {rho sigma : ℂ}
+    (hr0 : rho ≠ 0) (hr1 : rho ≠ 1) (hrh : rho ≠ 1/2)
+    (hs0 : sigma ≠ 0) (hs1 : sigma ≠ 1) (hsh : sigma ≠ 1/2)
+    (he : spectralKappa rho = spectralKappa sigma) : zeroProfile rho = zeroProfile sigma := by
+  funext x
+  rw [zeroProfile_eq_one_sub_family hr0 hr1 hrh, zeroProfile_eq_one_sub_family hs0 hs1 hsh, he]
+
+theorem profile_source_conj {rho : ℂ} (hr0 : rho ≠ 0) (hr1 : rho ≠ 1) (hrh : rho ≠ 1/2) (x : ℝ) :
+    zeroProfile (starRingEnd ℂ rho) x = starRingEnd ℂ (zeroProfile rho x) := by
+  have hc0 : starRingEnd ℂ rho ≠ 0 := (_root_.map_ne_zero _).mpr hr0
+  have hc1 : starRingEnd ℂ rho ≠ 1 := by
+    intro he
+    apply hr1
+    have hc := congrArg (starRingEnd ℂ) he
+    simpa using hc
+  have hch : starRingEnd ℂ rho ≠ 1/2 := by
+    intro he
+    apply hrh
+    have hc := congrArg (starRingEnd ℂ) he
+    simp only [map_div₀, map_one, map_ofNat] at hc
+    simpa using hc
+  rw [zeroProfile_eq_one_sub_family hc0 hc1 hch, zeroProfile_eq_one_sub_family hr0 hr1 hrh,
+    profile_spectral_conj, zeroFamilyDensity_conj, map_sub, map_one]
+
+theorem profile_source_real_of_real_spectral {rho : ℂ}
+    (hr0 : rho ≠ 0) (hr1 : rho ≠ 1) (hrh : rho ≠ 1/2)
+    (hk : (spectralKappa rho).im = 0) (x : ℝ) :
+    ((zeroProfile rho x).re : ℂ) = zeroProfile rho x := by
+  apply Complex.conj_eq_iff_re.mp
+  rw [zeroProfile_eq_one_sub_family hr0 hr1 hrh, map_sub, map_one,
+    ← zeroFamilyDensity_conj, Complex.conj_eq_iff_im.mpr hk]
+
+theorem profile_source_cocompact_zero {rho : ℂ}
+    (hz : riemannZeta rho = 0) (h0 : 0 < rho.re) (h1 : rho.re < 1) :
+    Tendsto (zeroProfile rho) (cocompact ℝ) (𝓝 0) := by
+  rw [← fourier_zeroProfile hz h0 h1]
+  exact Real.zero_at_infty_fourier _
+
+theorem profileComplexQuadratic_cocompact_zero {d : ℕ} (rho : Fin d → ℂ)
+    (hz : ∀ i, riemannZeta (rho i) = 0) (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (A : Matrix (Fin d) (Fin d) ℂ) :
+    Tendsto (profileComplexQuadratic rho A) (cocompact ℝ) (𝓝 0) := by
+  have ht (i : Fin d) := profile_source_cocompact_zero (hz i) (h0 i) (h1 i)
+  unfold profileComplexQuadratic Matrix.mulVec dotProduct
+  have hinner (i : Fin d) : Tendsto (fun x : ℝ => ∑ j : Fin d, A i j * zeroProfile (rho j) x)
+      (cocompact ℝ) (𝓝 0) := by
+    simpa only [mul_zero, Finset.sum_const_zero] using
+      tendsto_finset_sum Finset.univ (fun j _ => tendsto_const_nhds.mul (ht j))
+  simpa only [mul_zero, Finset.sum_const_zero] using
+    tendsto_finset_sum Finset.univ (fun i _ => (ht i).mul (hinner i))
+
+
+
+
+/-- Full locally finite complex-measure correction domain. The correction
+has a genuine order-zero tempered extension of its compact-test pairing;
+no total-variation growth exponent is prescribed. Selfdual comb terms may
+remain when the quadratic density is zero. -/
+theorem profile_complex_quadratic_lattice_repair_rigidity {d : ℕ} (rho : Fin d → ℂ)
+    (hz : ∀ i, riemannZeta (rho i) = 0) (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (hinj : Function.Injective (fun i => spectralKappa (rho i)))
+    (A : Matrix (Fin d) (Fin d) ℂ) (hSym : A.IsSymm)
+    (sigma : LocallyFiniteComplexMeasure) (T : TemperedDistribution ℝ ℂ)
+    (hsigma : sigma.totalVariation (Set.range (fun n : ℤ => (n : ℝ)))ᶜ = 0)
+    (hT : TemperedLatticeBridge.ExtendsCompactPairing sigma T)
+    (hRepair : ∀ φ : 𝓢(ℝ,ℂ),
+      (∫ x, profileComplexQuadratic rho A x * (𝓕 φ : 𝓢(ℝ,ℂ)) x) + T (𝓕 φ) =
+        (∫ x, profileComplexQuadratic rho A x * φ x) + T φ) : A = 0 := by
+  apply profile_complex_symmetric_selfdual_rigidity rho hz h0 h1 hinj A hSym
+  exact QuadraticProfileBootstrap.pairing_selfdual_of_lattice_repair
+    (profileComplexQuadratic_integrable rho hz h0 h1 A hSym)
+    (profileComplexQuadratic_continuous rho A)
+    (profileComplexQuadratic_cocompact_zero rho hz h0 h1 A) T
+    (TemperedLatticeBridge.extension_annihilates_lattice_zero sigma T hsigma hT)
+    (TemperedLatticeBridge.extension_congr_on_lattice sigma T hsigma hT) hRepair
+
+
+
+
+def profileComplexQuadraticOnIndex {ι : Type*} [Fintype ι]
+    (rho : ι → ℂ) (A : Matrix ι ι ℂ) (x : ℝ) : ℂ :=
+  dotProduct (fun i => zeroProfile (rho i) x) (A.mulVec (fun i => zeroProfile (rho i) x))
+
+theorem profileComplexQuadratic_reindex {ι : Type*} [Fintype ι]
+    (rho : ι → ℂ) (A : Matrix ι ι ℂ) (e : Fin (Fintype.card ι) ≃ ι) (x : ℝ) :
+    profileComplexQuadratic (fun i => rho (e i)) (fun i j => A (e i) (e j)) x =
+      profileComplexQuadraticOnIndex rho A x := by
+  unfold profileComplexQuadratic profileComplexQuadraticOnIndex Matrix.mulVec dotProduct
+  change (∑ i : Fin (Fintype.card ι), zeroProfile (rho (e i)) x *
+    ∑ j : Fin (Fintype.card ι), A (e i) (e j) * zeroProfile (rho (e j)) x) =
+    ∑ i : ι, zeroProfile (rho i) x * ∑ j : ι, A i j * zeroProfile (rho j) x
+  calc
+    _ = ∑ i : Fin (Fintype.card ι), zeroProfile (rho (e i)) x *
+        ∑ j : ι, A (e i) j * zeroProfile (rho j) x := by
+      apply Finset.sum_congr rfl
+      intro i hi
+      exact congrArg (fun z : ℂ => zeroProfile (rho (e i)) x * z)
+        (e.sum_comp (fun j => A (e i) j * zeroProfile (rho j) x))
+    _ = _ := e.sum_comp (fun i : ι => zeroProfile (rho i) x *
+      ∑ j : ι, A i j * zeroProfile (rho j) x)
+
+theorem profile_complex_symmetric_selfdual_rigidity_on_index {ι : Type*} [Fintype ι]
+    (rho : ι → ℂ) (hz : ∀ i, riemannZeta (rho i) = 0)
+    (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (hinj : Function.Injective (fun i => spectralKappa (rho i)))
+    (A : Matrix ι ι ℂ) (hSym : A.IsSymm)
+    (hsd : ∀ φ : 𝓢(ℝ,ℂ),
+      (∫ x, profileComplexQuadraticOnIndex rho A x * (𝓕 φ : 𝓢(ℝ,ℂ)) x) =
+        ∫ x, profileComplexQuadraticOnIndex rho A x * φ x) : A = 0 := by
+  let e : Fin (Fintype.card ι) ≃ ι := (Fintype.equivFin ι).symm
+  let AF : Matrix (Fin (Fintype.card ι)) (Fin (Fintype.card ι)) ℂ := fun i j => A (e i) (e j)
+  have hAF : AF.IsSymm := by
+    ext i j
+    exact congrFun (congrFun hSym (e i)) (e j)
+  have heq : profileComplexQuadratic (fun i => rho (e i)) AF = profileComplexQuadraticOnIndex rho A := by
+    funext x
+    exact profileComplexQuadratic_reindex rho A e x
+  have hf := profile_complex_symmetric_selfdual_rigidity (fun i => rho (e i))
+    (fun i => hz (e i)) (fun i => h0 (e i)) (fun i => h1 (e i))
+    (hinj.comp e.injective) AF hAF (by simpa only [heq] using hsd)
+  ext i j
+  have hh := congrFun (congrFun hf (e.symm i)) (e.symm j)
+  simpa only [AF, e.apply_symm_apply, Matrix.zero_apply] using hh
+
+
+
+
+theorem profile_source_tail_order_two {rho : ℂ}
+    (hz : riemannZeta rho = 0) (h0 : 0 < rho.re) (h1 : rho.re < 1) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ x : ℝ, 1 ≤ |x| → ‖zeroProfile rho x‖ ≤ C * |x|^(-2:ℝ) := by
+  obtain ⟨C,hC,hb⟩ := zeroProfile_norm_le hz h0 h1
+  refine ⟨C,hC,fun x hx => (hb x).trans ?_⟩
+  apply mul_le_mul_of_nonneg_left _ hC
+  have hx0 : 0 < x^2 := by nlinarith [sq_abs x]
+  rw [Real.rpow_neg (abs_nonneg x), Real.rpow_two, sq_abs]
+  exact (inv_le_inv₀ (by positivity) hx0).mpr (by linarith)
+
+/-- The actual inherited source model, including its gap normalization,
+integrability, Fourier normalization and decay, before taking quadratic forms. -/
+theorem profile_actual_source_properties {rho : ℂ}
+    (hz : riemannZeta rho = 0) (h0 : 0 < rho.re) (h1 : rho.re < 1) :
+    rho ≠ 0 ∧ rho ≠ 1 ∧ rho ≠ 1/2 ∧ normalizationBrho rho ≠ 0 ∧ spectralKappa rho ≠ 0 ∧
+    Continuous (zeroProfile rho) ∧ Integrable (zeroProfile rho) ∧
+    𝓕 (zeroProfile rho) = zeroProfile rho ∧
+    (∀ x : ℝ, |x| ≤ 1 → zeroProfile rho x = 1) ∧
+    Tendsto (zeroProfile rho) (cocompact ℝ) (𝓝 0) ∧
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ x : ℝ, 1 ≤ |x| → ‖zeroProfile rho x‖ ≤ C * |x|^(-2:ℝ) := by
+  obtain ⟨hr0,hr1⟩ := strip_ne h0 h1
+  have hh := zero_ne_half hz
+  exact ⟨hr0,hr1,hh,normalizationBrho_ne_zero hr0 hr1 hh,
+    mul_ne_zero hr0 (sub_ne_zero.mpr hr1.symm),continuous_zeroProfile rho,
+    integrable_zeroProfile hz h0 h1,fourier_zeroProfile hz h0 h1,
+    fun _ hx => zeroProfile_eq_one rho hx,profile_source_cocompact_zero hz h0 h1,
+    profile_source_tail_order_two hz h0 h1⟩
+
+theorem profile_complex_quadratic_selfdual_and_lattice_repair_rigidity {d : ℕ} (rho : Fin d → ℂ)
+    (hz : ∀ i, riemannZeta (rho i) = 0) (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (hinj : Function.Injective (fun i => spectralKappa (rho i)))
+    (A : Matrix (Fin d) (Fin d) ℂ) (hSym : A.IsSymm)
+    (sigma : LocallyFiniteComplexMeasure) (T S : TemperedDistribution ℝ ℂ)
+    (hsigma : sigma.totalVariation (Set.range (fun n : ℤ => (n : ℝ)))ᶜ = 0)
+    (hT : TemperedLatticeBridge.ExtendsCompactPairing sigma T) (hS : 𝓕 S = S)
+    (hRepair : ∀ φ : 𝓢(ℝ,ℂ),
+      (∫ x, profileComplexQuadratic rho A x * (𝓕 φ : 𝓢(ℝ,ℂ)) x) + S (𝓕 φ) + T (𝓕 φ) =
+        (∫ x, profileComplexQuadratic rho A x * φ x) + S φ + T φ) : A = 0 := by
+  apply profile_complex_quadratic_lattice_repair_rigidity rho hz h0 h1 hinj A hSym sigma T hsigma hT
+  intro φ
+  have hs : S (𝓕 φ) = S φ := by
+    simpa only [TemperedDistribution.fourier_apply] using congrArg (fun D : TemperedDistribution ℝ ℂ => D φ) hS
+  have hh := hRepair φ
+  rw [hs] at hh
+  linear_combination hh
+
+
+
+
+theorem profile_span_top_of_reindex {ι ν : Type*} [Fintype ι]
+    (e : Fin (Fintype.card ι) ≃ ι) (v : ν → ι → ℂ)
+    (h : Submodule.span ℂ (Set.range (fun n i => v n (e i))) = ⊤) :
+    Submodule.span ℂ (Set.range v) = ⊤ := by
+  let E : (Fin (Fintype.card ι) → ℂ) ≃ₗ[ℂ] (ι → ℂ) :=
+    LinearEquiv.funCongrLeft ℂ ℂ e.symm
+  have he : Set.range v = E '' Set.range (fun n i => v n (e i)) := by
+    ext x
+    constructor
+    · rintro ⟨n,rfl⟩
+      refine ⟨(fun i => v n (e i)),⟨n,rfl⟩,?_⟩
+      ext i
+      simp [E, LinearEquiv.funCongrLeft_apply, LinearMap.funLeft]
+    · rintro ⟨w,⟨n,rfl⟩,rfl⟩
+      refine ⟨n,?_⟩
+      ext i
+      simp [E, LinearEquiv.funCongrLeft_apply, LinearMap.funLeft]
+  rw [he]
+  change Submodule.span ℂ (E.toLinearMap '' Set.range (fun n i => v n (e i))) = ⊤
+  rw [← Submodule.map_span, h]
+  simpa only [Submodule.map_top] using (LinearMap.range_eq_top.mpr E.surjective)
+
+theorem profile_power_rows_span_on_index {ι : Type*} [Fintype ι]
+    (kappa : ι → ℂ) (hne : ∀ i, kappa i ≠ 0) (hinj : Function.Injective kappa) :
+    Submodule.span ℂ (Set.range (fun r : Fin (Fintype.card ι) =>
+      fun i => kappa i ^ (r.val+1))) = ⊤ := by
+  let e : Fin (Fintype.card ι) ≃ ι := (Fintype.equivFin ι).symm
+  apply profile_span_top_of_reindex e
+  exact profile_power_rows_span (fun i => kappa (e i)) (fun i => hne (e i)) (hinj.comp e.injective)
+
+
+
+
+theorem profileComplexQuadraticOnIndex_integrable {ι : Type*} [Fintype ι]
+    (rho : ι → ℂ) (hz : ∀ i, riemannZeta (rho i) = 0)
+    (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (A : Matrix ι ι ℂ) (hSym : A.IsSymm) : Integrable (profileComplexQuadraticOnIndex rho A) := by
+  let e : Fin (Fintype.card ι) ≃ ι := (Fintype.equivFin ι).symm
+  have hs : Matrix.IsSymm (fun i j => A (e i) (e j) : Matrix (Fin (Fintype.card ι)) (Fin (Fintype.card ι)) ℂ) := by
+    ext i j
+    exact congrFun (congrFun hSym (e i)) (e j)
+  have he : profileComplexQuadratic (fun i => rho (e i)) (fun i j => A (e i) (e j)) =
+      profileComplexQuadraticOnIndex rho A := funext (profileComplexQuadratic_reindex rho A e)
+  rw [← he]
+  exact profileComplexQuadratic_integrable _ (fun i => hz (e i)) (fun i => h0 (e i)) (fun i => h1 (e i)) _ hs
+
+theorem profileComplexQuadraticOnIndex_continuous {ι : Type*} [Fintype ι]
+    (rho : ι → ℂ) (A : Matrix ι ι ℂ) : Continuous (profileComplexQuadraticOnIndex rho A) := by
+  let e : Fin (Fintype.card ι) ≃ ι := (Fintype.equivFin ι).symm
+  have he : profileComplexQuadratic (fun i => rho (e i)) (fun i j => A (e i) (e j)) =
+      profileComplexQuadraticOnIndex rho A := funext (profileComplexQuadratic_reindex rho A e)
+  rw [← he]
+  exact profileComplexQuadratic_continuous _ _
+
+theorem profileComplexQuadraticOnIndex_cocompact_zero {ι : Type*} [Fintype ι]
+    (rho : ι → ℂ) (hz : ∀ i, riemannZeta (rho i) = 0)
+    (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1) (A : Matrix ι ι ℂ) :
+    Tendsto (profileComplexQuadraticOnIndex rho A) (cocompact ℝ) (𝓝 0) := by
+  let e : Fin (Fintype.card ι) ≃ ι := (Fintype.equivFin ι).symm
+  have he : profileComplexQuadratic (fun i => rho (e i)) (fun i j => A (e i) (e j)) =
+      profileComplexQuadraticOnIndex rho A := funext (profileComplexQuadratic_reindex rho A e)
+  rw [← he]
+  exact profileComplexQuadratic_cocompact_zero _ (fun i => hz (e i)) (fun i => h0 (e i)) (fun i => h1 (e i)) _
+
+
+
+open QuadraticProfileRealification
+
+def profileExpandedNodes {r c : ℕ} (rhoReal : Fin r → ℂ) (rhoComplex : Fin c → ℂ) : MixedIndex r c → ℂ
+  | .inl i => rhoReal i
+  | .inr (i,k) => if k = 0 then rhoComplex i else starRingEnd ℂ (rhoComplex i)
+
+/-- Reflection has already been quotiented by requiring distinct actual κ
+coordinates; a nonreal conjugate pair has exactly one real/imaginary block. -/
+structure ProfileBlockFamily (r c : ℕ) where
+  rhoReal : Fin r → ℂ
+  rhoComplex : Fin c → ℂ
+  realZero : ∀ i, riemannZeta (rhoReal i) = 0
+  complexZero : ∀ i, riemannZeta (rhoComplex i) = 0
+  realRight : ∀ i, 0 < (rhoReal i).re
+  realLeft : ∀ i, (rhoReal i).re < 1
+  complexRight : ∀ i, 0 < (rhoComplex i).re
+  complexLeft : ∀ i, (rhoComplex i).re < 1
+  realSpectral : ∀ i, (spectralKappa (rhoReal i)).im = 0
+  nonrealSpectral : ∀ i, (spectralKappa (rhoComplex i)).im ≠ 0
+  distinctSpectral : Function.Injective (fun i => spectralKappa (profileExpandedNodes rhoReal rhoComplex i))
+
+def profileBlockH {r c : ℕ} (F : ProfileBlockFamily r c) (x : ℝ) : MixedIndex r c → ℝ :=
+  realVector (fun i => (zeroProfile (F.rhoReal i) x).re) (fun i => zeroProfile (F.rhoComplex i) x)
+
+def profileBlockK {r c : ℕ} (F : ProfileBlockFamily r c) : (MixedIndex r c → ℝ) → (MixedIndex r c → ℝ) :=
+  realBlockOperator (fun i => (spectralKappa (F.rhoReal i)).re) (fun i => spectralKappa (F.rhoComplex i))
+
+def profileRealQuadratic {r c : ℕ} (F : ProfileBlockFamily r c)
+    (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) (x : ℝ) : ℝ :=
+  dotProduct (profileBlockH F x) (A.mulVec (profileBlockH F x))
+
+theorem profileExpandedNodes_zero {r c : ℕ} (F : ProfileBlockFamily r c) :
+    ∀ i, riemannZeta (profileExpandedNodes F.rhoReal F.rhoComplex i) = 0 := by
+  intro i
+  rcases i with i | ⟨i,k⟩
+  · exact F.realZero i
+  · fin_cases k <;> simp [profileExpandedNodes, _root_.riemannZeta_conj, F.complexZero]
+
+theorem profileExpandedNodes_right {r c : ℕ} (F : ProfileBlockFamily r c) :
+    ∀ i, 0 < (profileExpandedNodes F.rhoReal F.rhoComplex i).re := by
+  intro i
+  rcases i with i | ⟨i,k⟩
+  · exact F.realRight i
+  · fin_cases k <;> simpa [profileExpandedNodes] using F.complexRight i
+
+theorem profileExpandedNodes_left {r c : ℕ} (F : ProfileBlockFamily r c) :
+    ∀ i, (profileExpandedNodes F.rhoReal F.rhoComplex i).re < 1 := by
+  intro i
+  rcases i with i | ⟨i,k⟩
+  · exact F.realLeft i
+  · fin_cases k <;> simpa [profileExpandedNodes] using F.complexLeft i
+
+theorem profileExpandedNodes_profile {r c : ℕ} (F : ProfileBlockFamily r c) (x : ℝ) :
+    (fun i => zeroProfile (profileExpandedNodes F.rhoReal F.rhoComplex i) x) =
+      expandedVector (fun i => (zeroProfile (F.rhoReal i) x).re) (fun i => zeroProfile (F.rhoComplex i) x) := by
+  funext i
+  rcases i with i | ⟨i,k⟩
+  · obtain ⟨hr0,hr1⟩ := strip_ne (F.realRight i) (F.realLeft i)
+    exact (profile_source_real_of_real_spectral hr0 hr1 (zero_ne_half (F.realZero i)) (F.realSpectral i) x).symm
+  · fin_cases k
+    · rfl
+    · obtain ⟨hr0,hr1⟩ := strip_ne (F.complexRight i) (F.complexLeft i)
+      exact profile_source_conj hr0 hr1 (zero_ne_half (F.complexZero i)) x
+
+theorem profileExpandedNodes_spectral {r c : ℕ} (F : ProfileBlockFamily r c) :
+    (fun i => spectralKappa (profileExpandedNodes F.rhoReal F.rhoComplex i)) =
+      expandedVector (fun i => (spectralKappa (F.rhoReal i)).re) (fun i => spectralKappa (F.rhoComplex i)) := by
+  funext i
+  rcases i with i | ⟨i,k⟩
+  · exact (Complex.conj_eq_iff_re.mp (Complex.conj_eq_iff_im.mpr (F.realSpectral i))).symm
+  · fin_cases k
+    · rfl
+    · exact profile_spectral_conj _
+
+theorem profileBlockQuadratic_transport {r c : ℕ} (F : ProfileBlockFamily r c)
+    (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) (x : ℝ) :
+    profileComplexQuadraticOnIndex (profileExpandedNodes F.rhoReal F.rhoComplex) (transportedMatrix A) x =
+      ((profileRealQuadratic F A x : ℝ) : ℂ) := by
+  unfold profileComplexQuadraticOnIndex
+  rw [profileExpandedNodes_profile]
+  exact transported_real_quadratic A _ _
+
+theorem profile_real_block_symmetric_selfdual_rigidity {r c : ℕ} (F : ProfileBlockFamily r c)
+    (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) (hSym : A.IsSymm)
+    (hsd : ∀ φ : 𝓢(ℝ,ℂ),
+      (∫ x, (profileRealQuadratic F A x : ℂ) * (𝓕 φ : 𝓢(ℝ,ℂ)) x) =
+        ∫ x, (profileRealQuadratic F A x : ℂ) * φ x) : A = 0 := by
+  apply (transportedMatrix_eq_zero_iff A).mp
+  apply profile_complex_symmetric_selfdual_rigidity_on_index _ (profileExpandedNodes_zero F)
+    (profileExpandedNodes_right F) (profileExpandedNodes_left F) F.distinctSpectral _
+    (transportedMatrix_symmetric A hSym)
+  intro φ
+  simpa only [profileBlockQuadratic_transport] using hsd φ
+
+theorem profileRealQuadratic_integrable {r c : ℕ} (F : ProfileBlockFamily r c)
+    (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) (hSym : A.IsSymm) :
+    Integrable (profileRealQuadratic F A) := by
+  have h := profileComplexQuadraticOnIndex_integrable _ (profileExpandedNodes_zero F)
+    (profileExpandedNodes_right F) (profileExpandedNodes_left F) (transportedMatrix A)
+    (transportedMatrix_symmetric A hSym)
+  have he : profileComplexQuadraticOnIndex (profileExpandedNodes F.rhoReal F.rhoComplex) (transportedMatrix A) =
+      fun x => (profileRealQuadratic F A x : ℂ) := funext (profileBlockQuadratic_transport F A)
+  rw [he] at h
+  simpa using h.re
+
+theorem profileBlockK_cyclic {r c : ℕ} (F : ProfileBlockFamily r c) :
+    Submodule.span ℝ (Set.range (fun n : Fin (Fintype.card (MixedIndex r c)) =>
+      (profileBlockK F)^[n.val+1] cyclicVector)) = ⊤ := by
+  apply real_block_cyclic_of_spectral_span
+  rw [← profileExpandedNodes_spectral F]
+  apply profile_power_rows_span_on_index _ _ F.distinctSpectral
+  intro i
+  obtain ⟨hr0,hr1⟩ := strip_ne (profileExpandedNodes_right F i) (profileExpandedNodes_left F i)
+  exact mul_ne_zero hr0 (sub_ne_zero.mpr hr1.symm)
+
+
+
+
+theorem profile_finite_source_combination_selfdual {ι : Type*} [Fintype ι]
+    (rho : ι → ℂ) (hz : ∀ i, riemannZeta (rho i) = 0)
+    (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1) (a : ι → ℂ) :
+    𝓕 (fun x : ℝ => ∑ i, a i * zeroProfile (rho i) x) =
+      fun x : ℝ => ∑ i, a i * zeroProfile (rho i) x := by
+  have hi : Integrable (fun x : ℝ => ∑ i, a i * zeroProfile (rho i) x) :=
+    integrable_finset_sum _ (fun i _ => (integrable_zeroProfile (hz i) (h0 i) (h1 i)).const_mul (a i))
+  have hc : Continuous (fun x : ℝ => ∑ i, a i * zeroProfile (rho i) x) := by
+    exact continuous_finset_sum _ (fun i _ => continuous_const.mul (continuous_zeroProfile (rho i)))
+  apply QuadraticProfileBootstrap.ordinary_fourier_eq_of_pairing hi hc
+  intro φ
+  simp_rw [Finset.sum_mul]
+  rw [integral_finset_sum _ (fun i _ =>
+      ((square_integrable_mul_schwartz (integrable_zeroProfile (hz i) (h0 i) (h1 i)) (𝓕 φ)).const_mul (a i)).congr
+        (Eventually.of_forall fun x => by ring)),
+    integral_finset_sum _ (fun i _ =>
+      ((square_integrable_mul_schwartz (integrable_zeroProfile (hz i) (h0 i) (h1 i)) φ).const_mul (a i)).congr
+        (Eventually.of_forall fun x => by ring))]
+  apply Finset.sum_congr rfl
+  intro i hi
+  simp_rw [mul_assoc]
+  rw [integral_const_mul, integral_const_mul, zeroProfile_pairing_fourier (hz i) (h0 i) (h1 i)]
+
+theorem profileBlockH_as_source_combination {r c : ℕ} (F : ProfileBlockFamily r c) (i : MixedIndex r c) :
+    (fun x : ℝ => (profileBlockH F x i : ℂ)) = fun x : ℝ =>
+      ∑ j : MixedIndex r c, realificationMatrix i j *
+        zeroProfile (profileExpandedNodes F.rhoReal F.rhoComplex j) x := by
+  funext x
+  have he := realificationMatrix_mulVec (fun j => zeroProfile (profileExpandedNodes F.rhoReal F.rhoComplex j) x)
+  have hv := congrArg realify (profileExpandedNodes_profile F x)
+  rw [realify_expandedVector] at hv
+  rw [hv] at he
+  exact (congrFun he i).symm
+
+theorem profileBlockH_fourier {r c : ℕ} (F : ProfileBlockFamily r c) (i : MixedIndex r c) :
+    𝓕 (fun x : ℝ => (profileBlockH F x i : ℂ)) = fun x : ℝ => (profileBlockH F x i : ℂ) := by
+  rw [profileBlockH_as_source_combination]
+  exact profile_finite_source_combination_selfdual _ (profileExpandedNodes_zero F)
+    (profileExpandedNodes_right F) (profileExpandedNodes_left F) _
+
+theorem profileBlockH_gap {r c : ℕ} (F : ProfileBlockFamily r c) {x : ℝ} (hx : |x| ≤ 1) :
+    profileBlockH F x = cyclicVector := by
+  funext i
+  rcases i with i | ⟨i,k⟩
+  · simp [profileBlockH, realVector, cyclicVector, zeroProfile_eq_one _ hx]
+  · fin_cases k <;> simp [profileBlockH, realVector, cyclicVector, zeroProfile_eq_one _ hx]
+
+theorem profileBlockH_tail {r c : ℕ} (F : ProfileBlockFamily r c) :
+    ∃ C : MixedIndex r c → ℝ, (∀ i, 0 ≤ C i) ∧ ∀ x : ℝ, 1 ≤ |x| →
+      ∀ i, ‖profileBlockH F x i‖ ≤ C i * |x|^(-2:ℝ) := by
+  have hb (i : MixedIndex r c) := profile_source_tail_order_two (profileExpandedNodes_zero F i)
+    (profileExpandedNodes_right F i) (profileExpandedNodes_left F i)
+  choose C hC hbound using hb
+  refine ⟨fun i => ∑ j : MixedIndex r c, ‖realificationMatrix i j‖ * C j,
+    fun i => Finset.sum_nonneg (fun j _ => mul_nonneg (norm_nonneg _) (hC j)), ?_⟩
+  intro x hx i
+  have he := congrFun (profileBlockH_as_source_combination F i) x
+  rw [← Complex.norm_real, he]
+  calc
+    _ ≤ ∑ j : MixedIndex r c, ‖realificationMatrix i j *
+        zeroProfile (profileExpandedNodes F.rhoReal F.rhoComplex j) x‖ := norm_sum_le _ _
+    _ ≤ ∑ j : MixedIndex r c, ‖realificationMatrix i j‖ * (C j * |x|^(-2:ℝ)) := by
+      apply Finset.sum_le_sum
+      intro j hj
+      rw [norm_mul]
+      exact mul_le_mul_of_nonneg_left (hbound j x hx) (norm_nonneg _)
+    _ = _ := by simp only [Finset.sum_mul]; apply Finset.sum_congr rfl; intro j hj; ring
+
+def profileBlockKMatrix {r c : ℕ} (F : ProfileBlockFamily r c) : Matrix (MixedIndex r c) (MixedIndex r c) ℝ :=
+  realBlockMatrix (fun i => (spectralKappa (F.rhoReal i)).re) (fun i => spectralKappa (F.rhoComplex i))
+
+theorem profileBlockKMatrix_mulVec {r c : ℕ} (F : ProfileBlockFamily r c) (v : MixedIndex r c → ℝ) :
+    (profileBlockKMatrix F).mulVec v = profileBlockK F v := realBlockMatrix_mulVec _ _ _
+
+theorem profileBlockKMatrix_cyclic {r c : ℕ} (F : ProfileBlockFamily r c) :
+    Submodule.span ℝ (Set.range (fun n : Fin (Fintype.card (MixedIndex r c)) =>
+      ((profileBlockKMatrix F)^(n.val+1)).mulVec cyclicVector)) = ⊤ := by
+  simpa only [profileBlockKMatrix, profileBlockK, realBlockMatrix_power_cyclic] using profileBlockK_cyclic F
+
+theorem profileBlockK_represents_spectral {r c : ℕ} (F : ProfileBlockFamily r c)
+    (u : Fin r → ℝ) (v : Fin c → ℂ) :
+    (profileBlockKMatrix F).mulVec (realVector u v) =
+      realVector (fun i => (spectralKappa (F.rhoReal i)).re * u i)
+        (fun i => spectralKappa (F.rhoComplex i) * v i) := by
+  rw [profileBlockKMatrix_mulVec]
+  exact realBlockOperator_realVector _ _ _ _
+
+
+
+
+theorem profile_real_block_lattice_repair_rigidity {r c : ℕ} (F : ProfileBlockFamily r c)
+    (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) (hSym : A.IsSymm)
+    (sigma : LocallyFiniteComplexMeasure) (T S : TemperedDistribution ℝ ℂ)
+    (hsigma : sigma.totalVariation (Set.range (fun n : ℤ => (n : ℝ)))ᶜ = 0)
+    (hT : TemperedLatticeBridge.ExtendsCompactPairing sigma T) (hS : 𝓕 S = S)
+    (hRepair : ∀ φ : 𝓢(ℝ,ℂ),
+      (∫ x, (profileRealQuadratic F A x : ℂ) * (𝓕 φ : 𝓢(ℝ,ℂ)) x) + S (𝓕 φ) + T (𝓕 φ) =
+        (∫ x, (profileRealQuadratic F A x : ℂ) * φ x) + S φ + T φ) : A = 0 := by
+  have he : profileComplexQuadraticOnIndex (profileExpandedNodes F.rhoReal F.rhoComplex) (transportedMatrix A) =
+      fun x => (profileRealQuadratic F A x : ℂ) := funext (profileBlockQuadratic_transport F A)
+  have hi := profileComplexQuadraticOnIndex_integrable _ (profileExpandedNodes_zero F)
+    (profileExpandedNodes_right F) (profileExpandedNodes_left F) (transportedMatrix A)
+    (transportedMatrix_symmetric A hSym)
+  have hc := profileComplexQuadraticOnIndex_continuous
+    (profileExpandedNodes F.rhoReal F.rhoComplex) (transportedMatrix A)
+  have hv := profileComplexQuadraticOnIndex_cocompact_zero _ (profileExpandedNodes_zero F)
+    (profileExpandedNodes_right F) (profileExpandedNodes_left F) (transportedMatrix A)
+  rw [he] at hi hc hv
+  apply profile_real_block_symmetric_selfdual_rigidity F A hSym
+  apply QuadraticProfileBootstrap.pairing_selfdual_of_lattice_repair hi hc hv T
+    (TemperedLatticeBridge.extension_annihilates_lattice_zero sigma T hsigma hT)
+    (TemperedLatticeBridge.extension_congr_on_lattice sigma T hsigma hT)
+  intro φ
+  have hs : S (𝓕 φ) = S φ := by
+    simpa only [TemperedDistribution.fourier_apply] using congrArg (fun D : TemperedDistribution ℝ ℂ => D φ) hS
+  have hh := hRepair φ
+  rw [hs] at hh
+  linear_combination hh
+
+/-- Native source clauses for the specified finite reflection-deduplicated
+real blocks. The normalization is exp(-2π i x ξ). -/
+structure ProfileQuadraticSourceContract {r c : ℕ} (F : ProfileBlockFamily r c) : Prop where
+  nonexceptional : ∀ i, let rho := profileExpandedNodes F.rhoReal F.rhoComplex i
+    rho ≠ 0 ∧ rho ≠ 1 ∧ rho ≠ 1/2 ∧ normalizationBrho rho ≠ 0 ∧ spectralKappa rho ≠ 0
+  gap : ∀ x : ℝ, |x| ≤ 1 → profileBlockH F x = cyclicVector
+  tail : ∃ C : MixedIndex r c → ℝ, (∀ i, 0 ≤ C i) ∧ ∀ x : ℝ, 1 ≤ |x| →
+    ∀ i, ‖profileBlockH F x i‖ ≤ C i * |x|^(-2:ℝ)
+  selfdual : ∀ i : MixedIndex r c, 𝓕 (fun x : ℝ => (profileBlockH F x i : ℂ)) =
+    fun x : ℝ => (profileBlockH F x i : ℂ)
+  spectralMultiplication : ∀ (u : Fin r → ℝ) (v : Fin c → ℂ),
+    (profileBlockKMatrix F).mulVec (realVector u v) =
+      realVector (fun i => (spectralKappa (F.rhoReal i)).re * u i)
+        (fun i => spectralKappa (F.rhoComplex i) * v i)
+  cyclic : Submodule.span ℝ (Set.range (fun n : Fin (Fintype.card (MixedIndex r c)) =>
+    ((profileBlockKMatrix F)^(n.val+1)).mulVec cyclicVector)) = ⊤
+
+theorem profile_quadratic_source_contract {r c : ℕ} (F : ProfileBlockFamily r c) :
+    ProfileQuadraticSourceContract F := by
+  refine ⟨?_,fun _ hx => profileBlockH_gap F hx,profileBlockH_tail F,profileBlockH_fourier F,
+    profileBlockK_represents_spectral F,profileBlockKMatrix_cyclic F⟩
+  intro i
+  obtain ⟨hr0,hr1⟩ := strip_ne (profileExpandedNodes_right F i) (profileExpandedNodes_left F i)
+  have hh := zero_ne_half (profileExpandedNodes_zero F i)
+  exact ⟨hr0,hr1,hh,normalizationBrho_ne_zero hr0 hr1 hh,mul_ne_zero hr0 (sub_ne_zero.mpr hr1.symm)⟩
+
+/-- Complete finite quadratic profile obstruction. There is no PSD premise,
+no pointwise positivity premise, no repeated-node jet coordinate, and no
+infinite or higher-degree family. Order-zero lattice repairs may retain
+selfdual comb terms; the conclusion concerns the native quadratic matrix. -/
+theorem finite_quadratic_profile_selfdual_obstruction {r c : ℕ} (F : ProfileBlockFamily r c) :
+    ProfileQuadraticSourceContract F ∧
+    (∀ A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ, A.IsSymm →
+      Integrable (profileRealQuadratic F A) ∧
+      ((∀ φ : 𝓢(ℝ,ℂ),
+        (∫ x, (profileRealQuadratic F A x : ℂ) * (𝓕 φ : 𝓢(ℝ,ℂ)) x) =
+          ∫ x, (profileRealQuadratic F A x : ℂ) * φ x) → A = 0)) ∧
+    (∀ (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ), A.IsSymm →
+      ∀ (sigma : LocallyFiniteComplexMeasure) (T S : TemperedDistribution ℝ ℂ),
+      sigma.totalVariation (Set.range (fun n : ℤ => (n : ℝ)))ᶜ = 0 →
+      TemperedLatticeBridge.ExtendsCompactPairing sigma T → 𝓕 S = S →
+      (∀ φ : 𝓢(ℝ,ℂ),
+        (∫ x, (profileRealQuadratic F A x : ℂ) * (𝓕 φ : 𝓢(ℝ,ℂ)) x) + S (𝓕 φ) + T (𝓕 φ) =
+          (∫ x, (profileRealQuadratic F A x : ℂ) * φ x) + S φ + T φ) → A = 0) := by
+  exact ⟨profile_quadratic_source_contract F,
+    fun A hA => ⟨profileRealQuadratic_integrable F A hA,profile_real_block_symmetric_selfdual_rigidity F A hA⟩,
+    fun A hA sigma T S hsigma hT hS hRepair =>
+      profile_real_block_lattice_repair_rigidity F A hA sigma T S hsigma hT hS hRepair⟩
+
+theorem profile_zero_quadratic_allows_selfdual_correction {r c : ℕ} (F : ProfileBlockFamily r c)
+    (S : TemperedDistribution ℝ ℂ) (hS : 𝓕 S = S) (φ : 𝓢(ℝ,ℂ)) :
+    (∫ x, (profileRealQuadratic F 0 x : ℂ) * (𝓕 φ : 𝓢(ℝ,ℂ)) x) + S (𝓕 φ) =
+      (∫ x, (profileRealQuadratic F 0 x : ℂ) * φ x) + S φ := by
+  have hs : S (𝓕 φ) = S φ := by
+    simpa only [TemperedDistribution.fourier_apply] using congrArg (fun D : TemperedDistribution ℝ ℂ => D φ) hS
+  simp only [profileRealQuadratic, Matrix.zero_mulVec, dotProduct_zero, Complex.ofReal_zero,
+    zero_mul, integral_zero, zero_add, hs]
+
+
 
 end Zeta23.OPICARound2

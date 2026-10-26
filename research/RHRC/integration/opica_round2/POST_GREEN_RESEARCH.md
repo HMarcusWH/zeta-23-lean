@@ -67,3 +67,68 @@ Authority: warm native development only; all full acceptance flags false.
 | `Zeta23/OPICARound2/Validation/TruncationControls.lean` | `dbfbd6c0a4b5cb1dd58d51f54b2c00f9c1b00d508acbd06ddbddecc8883fa680` | `TruncationControls-20261026T015501-aa9481a0` |
 
 A later working copy may contain pending appended proofs; only the checked snapshots listed above are in this initial draft. Full source/consumer handbacks remain development evidence and do not establish release acceptance.
+
+## Complete mathematical implementation checkpoint — 2026-10-26
+
+**What became formally true — PROVED, scoped native checks.** All forty mandatory supporting family roots and their literal independent consumers have native checks. The fixed source has computable, centered prefix-error bounds transported to actual finite certificates. Adaptive sufficient budgets retain coefficient growth and the exact noncompact target tail. Arbitrary symmetric finite quadratic profile selfduality and the stated tempered lattice correction reduce to zero. The explicit native adjoint and CT1 quotient consumers make their vulnerable interfaces inspectable. These are supporting statements with their displayed hypotheses; RH, Step4 and four terminal estimates remain OPEN.
+
+**Workflow harvest.** The forty-root facade passed its native axiom audit with only standard axioms. Individual source/consumer checks are warm development evidence. On initial PR head85b63e, the observed historical compiler builds preserved their original mathematical results, while source-extension/census and generated standalone-inventory gates failed; remaining jobs were not silently treated as passed. This is a partial diagnostic harvest, not the final all-job harvest. The next exact head must replay the repaired integration, cold source/export, ancestry and control gates.
+
+**What changed.** The source-prefix estimates now control actual q/b/G and residual errors. S01 includes the arbitrary-L2 essential-endpoint prefix theorem, its native quantitative lower and the squarefree obstruction. S03 shows the exact affine moment constraint is free in finite-output closure, so cancelling a leading tail alone cannot prove closure. S09 uses actual real/conjugate profile blocks and arbitrary symmetric matrices, with no positivity hypothesis.
+
+**Upstream implications.** Literal probability splits unify normalization, true tail moments, Fourier identities and all three source errors. The one-sided compact adapter and all-order Bernoulli machinery are shared with exact source provenance. The changed module imports are recorded explicitly; all ancestor mathematics is preserved.
+
+**Downstream implications.** Finite bounded-region exclusions can combine an actual coefficient witness, source error, lag error, target tail and independent interval computation. A positive certified Gram lower controls a finite projection gap. None supplies the missing approximation limit. The small raw numerical trial remains NO_CERTIFICATE, consistent with the existing prefix barriers.
+
+**Resurrected routes.** Finite-product computation is usable with its actual source-tail error instead of treating a prefix as canonical. Exact affine leading-tail cancellation remains available as a construction tool, but supplies no closure restriction. Unbounded-input approximation and the independently sufficient fixed-filter route remain OPEN.
+
+**New RH-relevant clues — LEAD.** Test whether source-preserving error budgets and the actual boundary cost constrain a proposed family more tightly in combination. Compare centered second-order and corrected fourth-order bounds using certified derivative norms. Examine growing or infinite profile families outside the proved finite quadratic no-repair class. Test combinations with Paths A, C and D rather than treating causal approximation as the sole route.
+
+**Falsification checks.** Derivative norms may grow with prefix precision, so formal error order alone is not a complexity improvement. A finite source is never identified with the original. The canonical target tail is nonzero beyond every finite horizon and is not transferred to an approximate source without proof. Changing coefficients, filters or source precision invalidates old budgets. Causal nonrange is distinct from closure, Euclidean spectral norms from entrywise surrogates, and a finite-family obstruction from an unrestricted theorem.
+
+**Highest-leverage next moves.** Complete the exact-head source/export, all paired semantic controls, genuine baseline/current76/100 replays and complete workflow harvest. Then seek a new independently source-matched restriction, or a certified trial family that tests the terminal approximation premise. Success is mathematical information gain, not root or CI count.
+
+Given everything now formally true, source-faithful finite experiments become possible with explicit absolute errors. The decisive question remains which independent arithmetic restriction can conflict with a surviving hypothetical off-line witness. The next experiment should test that independence and try to falsify it before a larger implementation campaign.
+
+### Current source fingerprints
+
+Authority: successful scoped native development checks; no cold/release acceptance inferred.
+
+| Source | SHA256 | Native check |
+|---|---|---|
+| `Zeta23/OPICARound2.lean` | `5765f6db4344132ec3d83f1bbf30327fd949233e1b747f1e35fd0d051cb3d665` | `OPICARound2-20261026T034732-eddf02ab` |
+| `Zeta23/OPICARound2/All.lean` | `952a21c3d50d8eba010d69946eeadef99a8910aa3434e49de9435fd36b89fafa` | `All-20261026T030822-c61b517b` |
+| `Zeta23/OPICARound2/CT1Controls.lean` | `1d7bc6fc342ad0ab2c280ae8c48906cf3190945b3061e6cbf685f012310114e3` | `CT1Controls-20261025T221350-5be97340` |
+| `Zeta23/OPICARound2/CausalProbe.lean` | `3d126c355060b94f13db6143260daf35f3251d23fa7f4694e4eb04d529f83502` | `CausalProbe-20261025T220410-76eb5787` |
+| `Zeta23/OPICARound2/CertifiedEvaluation.lean` | `ac2a60594598a02151bdf38387d43b731374897f689acac4fdfa3936cf5750bc` | `CertifiedEvaluation-20261026T024750-613172af` |
+| `Zeta23/OPICARound2/ClassicalAdapter.lean` | `52f8ef731303a1f2088012fd6fd9d2f3d056f8970602958e0784ae081e65caca` | `ClassicalAdapter-20261026T003000-e757e387` |
+| `Zeta23/OPICARound2/DualCertificates.lean` | `daa061958b261bfe4e96de85732bd51dbdb3d66c091489197825fd378fbefce9` | `DualCertificates-20261026T010602-67f272ec` |
+| `Zeta23/OPICARound2/FilteredClassicalComparison.lean` | `14573622803730296b87c269c737ac7edc78a0a37492f88801ec81fdd7f86b90` | `FilteredClassicalComparison-20261026T000646-562b1796` |
+| `Zeta23/OPICARound2/FiniteFilteredBaseline.lean` | `f22a04457b2389417b22924f0727e87e3e068ded392724fbdbae5f20f1f4f8f6` | `FiniteFilteredBaseline-20261026T001143-dc210857` |
+| `Zeta23/OPICARound2/FiniteNeutralApproximation.lean` | `f7af3754ca3ffd1ada867661a302c2ea297d67888311de1e6278a62948706316` | `FiniteNeutralApproximation-20261025T225229-3a62a0cf` |
+| `Zeta23/OPICARound2/FixedFilter.lean` | `5a07984846333f374b9b4631978881db7e3f4105880d998b3ec9671d10a2cd3e` | `FixedFilter-20261026T003150-d3181704` |
+| `Zeta23/OPICARound2/NativeCuts.lean` | `59dc6fb83390ae7abd1109719371d5fb002be2850730e0685587fea4de33bdf0` | `NativeCuts-20261025T231239-69af0a13` |
+| `Zeta23/OPICARound2/NativeJumpControls.lean` | `47df4ba96599f6fa3505449da4c146c7cbec026f791c24d25afe8ec757ba5be9` | `NativeJumpControls-20261025T225336-e01488b5` |
+| `Zeta23/OPICARound2/ProbeGram.lean` | `553af86db4a1d0dcf3d9484b9da8480a831a323a6025ca2b3ef6f75a086584b1` | `ProbeGram-20261026T003322-4ffd4108` |
+| `Zeta23/OPICARound2/ProfileControls.lean` | `550cf36a2a84e2b0a1269bbf5fb3bb917640b716ce1a72dce9ba39abd431eaed` | `ProfileControls-20261026T030557-ca63bd13` |
+| `Zeta23/OPICARound2/RegionalCertificates.lean` | `5bdb59b7bfff8a07adbe78fe33ad2ac16a08dae34b606fc22fa8dc595f2ab14e` | `RegionalCertificates-20261026T025934-10a908df` |
+| `Zeta23/OPICARound2/SyntheticControls.lean` | `ee6e7cd3f67c8965df4d46616adb45d579cd1f0dd8230733c79d89380c5aa88a` | `SyntheticControls-20261026T003253-a3ae13e1` |
+| `Zeta23/OPICARound2/TruncationControls.lean` | `1837ca3a1fd3c813613fd7e545e80b7452cb797f07a6af5595fdf19184ab3548` | `TruncationControls-20261026T033239-798f3400` |
+| `Zeta23/OPICARound2/Validation.lean` | `2592f3d4308ced8129f3752c5175f9e20e05e34aa3ec5cce7ab4c33d9b00695c` | `Validation-20261026T031025-173473e6` |
+| `Zeta23/OPICARound2/Validation/CT1Controls.lean` | `50d8430415fdfd82f21e2afa45c18f62b79412fd3b17feee96f46fdc8a1944cc` | `CT1Controls-20261026T031824-a62e0bcb` |
+| `Zeta23/OPICARound2/Validation/CausalProbe.lean` | `a912e04055dd1a5c5cbfbc6a351a156dd165e1c018714e86b68fe49d6697f24d` | `CausalProbe-20261026T032310-92c6b287` |
+| `Zeta23/OPICARound2/Validation/CertifiedEvaluation.lean` | `9a9f59a1e4c41b3dbb1da0e5b36bbe456ae6a7d41d5713c9439fd0b276ad081c` | `CertifiedEvaluation-20261026T024952-2ea4aa24` |
+| `Zeta23/OPICARound2/Validation/ClassicalAdapter.lean` | `180105da9678d5fd439d226ca70b28a37faf0d16385aa9faa53acb51be614c28` | `ClassicalAdapter-20261026T003607-b179609c` |
+| `Zeta23/OPICARound2/Validation/DualCertificates.lean` | `4a172cb872f9f5301b0257b28b378b07767ba87eeea27da35053a5883ee648fd` | `DualCertificates-20261026T010940-835504ba` |
+| `Zeta23/OPICARound2/Validation/FilteredClassicalComparison.lean` | `c634d3c1ae001ab0d93d568c220d42814e0af0b32ce7a3ce219dcd78c8bf25e8` | `FilteredClassicalComparison-20261026T000824-f038a944` |
+| `Zeta23/OPICARound2/Validation/FiniteFilteredBaseline.lean` | `e70c0f9af278242996e708592965e8c67babf89e460471b6945a7e23d4831f7c` | `FiniteFilteredBaseline-20261026T001255-612b4c77` |
+| `Zeta23/OPICARound2/Validation/FiniteNeutralApproximation.lean` | `f4fc7b3da57853a5e7b35a2e76e164d600004d0b8c660c24dfebf299335f93e9` | `FiniteNeutralApproximation-20261025T225331-752076a8` |
+| `Zeta23/OPICARound2/Validation/FixedFilter.lean` | `499fff78ddc73d4d2ffba663e4faca1854c24e71526f2086b67f094d405f936a` | `FixedFilter-20261026T000134-8bce3de7` |
+| `Zeta23/OPICARound2/Validation/NativeCuts.lean` | `1832cc7f47a86382ed72e9cdbcdfbf57ace8dafb5c9a75eae2035b8dacf02cfc` | `NativeCuts-20261025T231604-70d1c295` |
+| `Zeta23/OPICARound2/Validation/NativeJumpControls.lean` | `5e5bd150ebe7a550503479010e4895ea829abc6786cac85b8912e9676b65b3a9` | `NativeJumpControls-20261025T225504-5a563d2b` |
+| `Zeta23/OPICARound2/Validation/ProbeGram.lean` | `25563732f27c95bc17f41f35f7ca18c068af9cb0bff0a7f90760fb5024462c47` | `ProbeGram-20261026T003736-ad8141b2` |
+| `Zeta23/OPICARound2/Validation/ProfileControls.lean` | `a26df1af2fe11a08b0d61bc25b35bd23eda1d1502ee33329c5431524df189d87` | `ProfileControls-20261026T030714-76152525` |
+| `Zeta23/OPICARound2/Validation/RegionalCertificates.lean` | `17950998ecc8ddf15a251141b0925ee5e86246f9ed28fa638159468f46caa7bf` | `RegionalCertificates-20261026T030151-a2ab53bb` |
+| `Zeta23/OPICARound2/Validation/SyntheticControls.lean` | `97f33d34670897ff4000edf346372f7cdda58bccde6f91553703bf173fe99602` | `SyntheticControls-20261026T003543-3c322e25` |
+| `Zeta23/OPICARound2/Validation/TruncationControls.lean` | `9100173d3697da8b15f354904ceb5a4a5cb087dc5a38dde06136f674513f1726` | `TruncationControls-20261026T033541-56acf962` |
+| `Zeta23/RHRC/OpicaRound2Bindings.lean` | `a8f207a2d502e1976d262a772b2cf2d8d5c88c658f4a2a3c8bee5ade3b09349b` | `OpicaRound2Bindings-20261026T031143-c46ca235` |

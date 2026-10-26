@@ -3675,6 +3675,501 @@
       ],
       "status": "PROVED_UNCONDITIONAL",
       "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P01",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.delayed_original_source holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/OPICARound2/CausalProbe.lean",
+      "theorem": "Zeta23.OPICARound2.delayed_original_source",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P02",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_probe_transforms holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P01"
+      ],
+      "source": "Zeta23/OPICARound2/CausalProbe.lean",
+      "theorem": "Zeta23.OPICARound2.native_probe_transforms",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P03",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_probe_integer_action holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "source": "Zeta23/OPICARound2/CausalProbe.lean",
+      "theorem": "Zeta23.OPICARound2.native_probe_integer_action",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P04",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_probe_zero_separation holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "source": "Zeta23/OPICARound2/CausalProbe.lean",
+      "theorem": "Zeta23.OPICARound2.native_probe_zero_separation",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P05",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.rh_of_native_probe_range holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P04"
+      ],
+      "source": "Zeta23/OPICARound2/CausalProbe.lean",
+      "theorem": "Zeta23.OPICARound2.rh_of_native_probe_range",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P06",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.probe_tail_and_correlation holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "source": "Zeta23/OPICARound2/ProbeGram.lean",
+      "theorem": "Zeta23.OPICARound2.probe_tail_and_correlation",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P07",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.probe_target_column holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P03",
+        "OPICA2_P06"
+      ],
+      "source": "Zeta23/OPICARound2/ProbeGram.lean",
+      "theorem": "Zeta23.OPICARound2.probe_target_column",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P08",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.probe_finite_gram_positive holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "source": "Zeta23/OPICARound2/ProbeGram.lean",
+      "theorem": "Zeta23.OPICARound2.probe_finite_gram_positive",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P09",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.probe_schur_error holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P07",
+        "OPICA2_P08"
+      ],
+      "source": "Zeta23/OPICARound2/ProbeGram.lean",
+      "theorem": "Zeta23.OPICARound2.probe_schur_error",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P10",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.probe_monotone_innovation holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P09"
+      ],
+      "source": "Zeta23/OPICARound2/ProbeGram.lean",
+      "theorem": "Zeta23.OPICARound2.probe_monotone_innovation",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P11",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.probe_dirichlet_norm holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P02",
+        "OPICA2_P09"
+      ],
+      "source": "Zeta23/OPICARound2/ProbeGram.lean",
+      "theorem": "Zeta23.OPICARound2.probe_dirichlet_norm",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P12",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.rh_of_probe_error_limit holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P05",
+        "OPICA2_P09",
+        "OPICA2_P10"
+      ],
+      "source": "Zeta23/OPICARound2/ProbeGram.lean",
+      "theorem": "Zeta23.OPICARound2.rh_of_probe_error_limit",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P13",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_mobius_probe_inverse holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P03"
+      ],
+      "source": "Zeta23/OPICARound2/TruncationControls.lean",
+      "theorem": "Zeta23.OPICARound2.native_mobius_probe_inverse",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P14",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.integer_partial_divergence_and_safe_cutoff holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P03",
+        "OPICA2_P06",
+        "OPICA2_P08"
+      ],
+      "source": "Zeta23/OPICARound2/TruncationControls.lean",
+      "theorem": "Zeta23.OPICARound2.integer_partial_divergence_and_safe_cutoff",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P15",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.mobius_partial_zero_barrier holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_P13"
+      ],
+      "source": "Zeta23/OPICARound2/TruncationControls.lean",
+      "theorem": "Zeta23.OPICARound2.mobius_partial_zero_barrier",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P16",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.noncausal_probe_leakage holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P04"
+      ],
+      "source": "Zeta23/OPICARound2/TruncationControls.lean",
+      "theorem": "Zeta23.OPICARound2.noncausal_probe_leakage",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P17",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.laplace_jet_gram holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/OPICARound2/DualCertificates.lean",
+      "theorem": "Zeta23.OPICARound2.laplace_jet_gram",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P18",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.simultaneous_zero_distance holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P02",
+        "OPICA2_P17"
+      ],
+      "source": "Zeta23/OPICARound2/DualCertificates.lean",
+      "theorem": "Zeta23.OPICARound2.simultaneous_zero_distance",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P19",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.finite_residual_certificate holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P09"
+      ],
+      "source": "Zeta23/OPICARound2/CertifiedEvaluation.lean",
+      "theorem": "Zeta23.OPICARound2.finite_residual_certificate",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P20",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_compact_muntz_adapter holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P02",
+        "OPICA2_P03",
+        "OPICA2_P06"
+      ],
+      "source": "Zeta23/OPICARound2/ClassicalAdapter.lean",
+      "theorem": "Zeta23.OPICARound2.native_compact_muntz_adapter",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P21",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_product_box_margin holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02"
+      ],
+      "source": "Zeta23/OPICARound2/RegionalCertificates.lean",
+      "theorem": "Zeta23.OPICARound2.native_product_box_margin",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P22",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.zero_region_of_finite_probe_certificate holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_P19",
+        "OPICA2_P21"
+      ],
+      "source": "Zeta23/OPICARound2/RegionalCertificates.lean",
+      "theorem": "Zeta23.OPICARound2.zero_region_of_finite_probe_certificate",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_P23",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_source_prefix_error holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P01"
+      ],
+      "source": "Zeta23/OPICARound2/CertifiedEvaluation.lean",
+      "theorem": "Zeta23.OPICARound2.native_source_prefix_error",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S01",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_dictionary_prefix_rigidity holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03",
+        "OPICA2_P06",
+        "OPICA2_P13"
+      ],
+      "source": "Zeta23/OPICARound2/TruncationControls.lean",
+      "theorem": "Zeta23.OPICARound2.native_dictionary_prefix_rigidity",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S02",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_probe_pole_moment_constraints holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03"
+      ],
+      "source": "Zeta23/OPICARound2/ProbeGram.lean",
+      "theorem": "Zeta23.OPICARound2.native_probe_pole_moment_constraints",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S03",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_completed_output_bernoulli_tail holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P06"
+      ],
+      "source": "Zeta23/OPICARound2/TruncationControls.lean",
+      "theorem": "Zeta23.OPICARound2.native_completed_output_bernoulli_tail",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S04",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_probe_fixed_stable_filter holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03"
+      ],
+      "source": "Zeta23/OPICARound2/FixedFilter.lean",
+      "theorem": "Zeta23.OPICARound2.native_probe_fixed_stable_filter",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S05",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.filtered_probe_classical_comparison holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_S04"
+      ],
+      "source": "Zeta23/OPICARound2/FilteredClassicalComparison.lean",
+      "theorem": "Zeta23.OPICARound2.filtered_probe_classical_comparison",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S06",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.filtered_four_column_region_certificate holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_S04",
+        "OPICA2_S05"
+      ],
+      "source": "Zeta23/OPICARound2/FiniteFilteredBaseline.lean",
+      "theorem": "Zeta23.OPICARound2.filtered_four_column_region_certificate",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S07",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P04",
+        "OPICA2_P05"
+      ],
+      "source": "Zeta23/OPICARound2/TruncationControls.lean",
+      "theorem": "Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S08",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_probe_adaptive_error_budgets holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P06",
+        "OPICA2_P14",
+        "OPICA2_P19",
+        "OPICA2_P23",
+        "OPICA2_S07"
+      ],
+      "source": "Zeta23/OPICARound2/CertifiedEvaluation.lean",
+      "theorem": "Zeta23.OPICARound2.native_probe_adaptive_error_budgets",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S09",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/OPICARound2/ProfileControls.lean",
+      "theorem": "Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S10",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.fixed_imaginary_direction_positive_test_margin holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/OPICARound2/ProfileControls.lean",
+      "theorem": "Zeta23.OPICARound2.fixed_imaginary_direction_positive_test_margin",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S11",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/OPICARound2/NativeCuts.lean",
+      "theorem": "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S12",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.positive_equal_power_causal_twins holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/OPICARound2/SyntheticControls.lean",
+      "theorem": "Zeta23.OPICARound2.positive_equal_power_causal_twins",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S13",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.native_jump_gain_negative_ordered_minor holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/OPICARound2/NativeJumpControls.lean",
+      "theorem": "Zeta23.OPICARound2.native_jump_gain_negative_ordered_minor",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S14",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.ct1_scalar_limit_classification holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/OPICARound2/CT1Controls.lean",
+      "theorem": "Zeta23.OPICARound2.ct1_scalar_limit_classification",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S15",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.finite_pole_neutral_approximation holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/OPICARound2/FiniteNeutralApproximation.lean",
+      "theorem": "Zeta23.OPICARound2.finite_pole_neutral_approximation",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S16",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_S04"
+      ],
+      "source": "Zeta23/OPICARound2/FixedFilter.lean",
+      "theorem": "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA2_S17",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound2.phase_complete_positive_test_observability holds for its stated native objects, with every displayed guard and antecedent retained. This is supporting mathematics; RH, Step4 and the four terminal restrictions remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/OPICARound2/ProfileControls.lean",
+      "theorem": "Zeta23.OPICARound2.phase_complete_positive_test_observability",
+      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
     }
   ]
 }

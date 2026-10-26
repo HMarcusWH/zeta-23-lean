@@ -184,3 +184,104 @@ end Zeta23.OPICARound2.Validation
 #print axioms Zeta23.OPICARound2.Validation.actual_canonical_three_phase_complete_tests
 #print axioms Zeta23.OPICARound2.Validation.actual_canonical_three_same_pairing_error_floor
 #print axioms Zeta23.OPICARound2.Validation.actual_canonical_Re_Im_pairing_dictionary
+
+
+noncomputable section
+open Set MeasureTheory Filter
+open scoped Topology FourierTransform SchwartzMap BigOperators
+namespace Zeta23.OPICARound2.Validation
+open QuadraticProfileRealification
+
+theorem actual_deduplicated_real_block_source_consumer {r c : ℕ} (F : ProfileBlockFamily r c) :
+    (∀ x : ℝ, |x| ≤ 1 → profileBlockH F x = cyclicVector) ∧
+    (∃ C : MixedIndex r c → ℝ, (∀ i, 0 ≤ C i) ∧ ∀ x : ℝ, 1 ≤ |x| →
+      ∀ i, ‖profileBlockH F x i‖ ≤ C i * |x|^(-2:ℝ)) ∧
+    (∀ i : MixedIndex r c, 𝓕 (fun x : ℝ => (profileBlockH F x i : ℂ)) =
+      fun x : ℝ => (profileBlockH F x i : ℂ)) ∧
+    Submodule.span ℝ (Set.range (fun n : Fin (Fintype.card (MixedIndex r c)) =>
+      ((profileBlockKMatrix F)^(n.val+1)).mulVec cyclicVector)) = ⊤ := by
+  have h := (finite_quadratic_profile_selfdual_obstruction F).1
+  exact ⟨h.gap,h.tail,h.selfdual,h.cyclic⟩
+
+theorem actual_real_block_physical_dictionary {r c : ℕ} (F : ProfileBlockFamily r c) (x : ℝ) :
+    (∀ i : Fin r, profileBlockH F x (.inl i) =
+      (1 - OPICAFollowup.finiteSumSrho (F.rhoReal i) |x| /
+        OPICAFollowup.normalizationBrho (F.rhoReal i)).re) ∧
+    (∀ i : Fin c, profileBlockH F x (.inr (i,0)) =
+      (1 - OPICAFollowup.finiteSumSrho (F.rhoComplex i) |x| /
+        OPICAFollowup.normalizationBrho (F.rhoComplex i)).re) ∧
+    (∀ i : Fin c, profileBlockH F x (.inr (i,1)) =
+      (1 - OPICAFollowup.finiteSumSrho (F.rhoComplex i) |x| /
+        OPICAFollowup.normalizationBrho (F.rhoComplex i)).im) := by
+  exact ⟨fun _ => rfl,fun _ => rfl,fun _ => rfl⟩
+
+theorem actual_finite_real_quadratic_integrability {r c : ℕ} (F : ProfileBlockFamily r c)
+    (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) (hA : A.IsSymm) :
+    Integrable (fun x : ℝ => ∑ i : MixedIndex r c, ∑ j : MixedIndex r c,
+      profileBlockH F x i * A i j * profileBlockH F x j) := by
+  have he : (fun x : ℝ => ∑ i : MixedIndex r c, ∑ j : MixedIndex r c,
+      profileBlockH F x i * A i j * profileBlockH F x j) = profileRealQuadratic F A := by
+    funext x
+    unfold profileRealQuadratic Matrix.mulVec dotProduct
+    simp only [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro i hi
+    apply Finset.sum_congr rfl
+    intro j hj
+    ring
+  rw [he]
+  exact ((finite_quadratic_profile_selfdual_obstruction F).2.1 A hA).1
+
+theorem actual_finite_symmetric_quadratic_rigidity {r c : ℕ} (F : ProfileBlockFamily r c)
+    (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) (hA : A.IsSymm)
+    (hsd : ∀ φ : 𝓢(ℝ,ℂ),
+      (∫ x, ((dotProduct (profileBlockH F x) (A.mulVec (profileBlockH F x)) : ℝ) : ℂ) *
+        (𝓕 φ : 𝓢(ℝ,ℂ)) x) =
+      ∫ x, ((dotProduct (profileBlockH F x) (A.mulVec (profileBlockH F x)) : ℝ) : ℂ) * φ x) : A = 0 :=
+  ((finite_quadratic_profile_selfdual_obstruction F).2.1 A hA).2 hsd
+
+theorem actual_quadratic_arbitrary_tempered_lattice_measure_control {r c : ℕ}
+    (F : ProfileBlockFamily r c) (A : Matrix (MixedIndex r c) (MixedIndex r c) ℝ) (hA : A.IsSymm)
+    (sigma : OPICAFollowup.LocallyFiniteComplexMeasure) (T S : TemperedDistribution ℝ ℂ)
+    (hsigma : sigma.totalVariation (Set.range (fun n : ℤ => (n : ℝ)))ᶜ = 0)
+    (hT : OPICAFollowup.TemperedLatticeBridge.ExtendsCompactPairing sigma T) (hS : 𝓕 S = S)
+    (hRepair : ∀ φ : 𝓢(ℝ,ℂ),
+      (∫ x, (profileRealQuadratic F A x : ℂ) * (𝓕 φ : 𝓢(ℝ,ℂ)) x) + S (𝓕 φ) + T (𝓕 φ) =
+        (∫ x, (profileRealQuadratic F A x : ℂ) * φ x) + S φ + T φ) : A = 0 :=
+  (finite_quadratic_profile_selfdual_obstruction F).2.2 A hA sigma T S hsigma hT hS hRepair
+
+theorem actual_all_order_source_asymptotic_consumer {rho : ℂ} (hz : riemannZeta rho = 0)
+    (h0 : 0 < rho.re) (h1 : rho.re < 1) (N : ℕ) (hN : 1 ≤ N) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ x : ℝ, 1 ≤ |x| →
+      ‖OPICAFollowup.zeroProfile rho x - profileZeroEMTerms rho N |x|‖ ≤ C * |x|^(-(N:ℝ)-1) :=
+  profile_zeroProfile_all_order_asymptotic hz h0 h1 N hN
+
+theorem actual_integer_samples_span_consumer {d : ℕ} (rho : Fin d → ℂ)
+    (hz : ∀ i, riemannZeta (rho i) = 0) (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (hinj : Function.Injective (fun i => OPICAFollowup.spectralKappa (rho i))) :
+    Submodule.span ℂ (Set.range (fun n : ℕ => fun i => OPICAFollowup.zeroProfile (rho i) ((n+1:ℕ):ℝ))) = ⊤ :=
+  profile_zero_integer_samples_span rho hz h0 h1 hinj
+
+theorem actual_odd_projected_jump_consumer {d j : ℕ} (rho : Fin d → ℂ)
+    (hz : ∀ i, riemannZeta (rho i) = 0) (h0 : ∀ i, 0 < (rho i).re) (h1 : ∀ i, (rho i).re < 1)
+    (A : Matrix (Fin d) (Fin d) ℂ) (hSym : A.IsSymm)
+    (hA : ∀ r : ℕ, r < j → A.mulVec (profilePowerRow (fun i => OPICAFollowup.spectralKappa (rho i)) r) = 0)
+    (n : ℕ) :
+    iteratedDeriv (2*j+1) (profileQuadraticCell rho A (n+1)) ((n+1:ℕ):ℝ) -
+      iteratedDeriv (2*j+1) (profileQuadraticCell rho A n) ((n+1:ℕ):ℝ) =
+    (2*(-1:ℂ)^(j+1)/((n+1:ℕ):ℂ)^(2*j+2)) *
+      dotProduct (fun i => OPICAFollowup.zeroProfile (rho i) ((n+1:ℕ):ℝ))
+        (A.mulVec (profilePowerRow (fun i => OPICAFollowup.spectralKappa (rho i)) j)) :=
+  profile_actual_quadratic_odd_jump rho h0 h1 (fun i => OPICAFollowup.zero_ne_half (hz i)) A hSym hA n
+
+end Zeta23.OPICARound2.Validation
+#print axioms Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction
+#print axioms Zeta23.OPICARound2.Validation.actual_deduplicated_real_block_source_consumer
+#print axioms Zeta23.OPICARound2.Validation.actual_real_block_physical_dictionary
+#print axioms Zeta23.OPICARound2.Validation.actual_finite_real_quadratic_integrability
+#print axioms Zeta23.OPICARound2.Validation.actual_finite_symmetric_quadratic_rigidity
+#print axioms Zeta23.OPICARound2.Validation.actual_quadratic_arbitrary_tempered_lattice_measure_control
+#print axioms Zeta23.OPICARound2.Validation.actual_all_order_source_asymptotic_consumer
+#print axioms Zeta23.OPICARound2.Validation.actual_integer_samples_span_consumer
+#print axioms Zeta23.OPICARound2.Validation.actual_odd_projected_jump_consumer
+

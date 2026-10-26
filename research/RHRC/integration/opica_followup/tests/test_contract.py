@@ -1060,5 +1060,145 @@ class ExactDependencyAmendment04Tests(unittest.TestCase):
         self.reject()
 
 
+
+
+class Round2DescendantDispatchTests(unittest.TestCase):
+    """Explicit ancestor replay cannot become current-tree acceptance."""
+    def setUp(self):
+        import types
+        self.runtime = contract._round2_descendant_runtime(contract.REPO)
+        self.inspection = {'status': 'PASS_SOURCE_SCOPE_ONLY', 'checked_commit': 'current'}
+        self.projection = {'status': 'PASS_EXACT_FROZEN_SOURCE_ONLY', 'checked_commit': 'frozen'}
+        self.raw = {'schema': 'OPICA_FOLLOWUP_PREPARATION_V1', 'status': 'PASS_PREPARATION_ONLY', 'errors': [],
+                    'planned_roots': 100, 'RH': 'OPEN', 'Step4': 'OPEN'}
+        self.types = types
+        self.temp_root = contract.REPO.parent / 'opica-round2-test-temp'
+        self.temp_root.mkdir(exist_ok=True)
+
+    def replay(self, mutate=None, code=0, inspection_after=None):
+        import types
+        def runner(command, **kwargs):
+            raw = dict(self.raw)
+            if mutate:
+                mutate(raw)
+            Path(command[command.index('--output')+1]).write_text(json.dumps(raw), encoding='utf-8')
+            self.assertEqual(kwargs['cwd'], self.source.resolve())
+            self.assertEqual(command[2], 'research/RHRC/integration/opica_followup/validate_contract.py')
+            self.assertIn('--phase', command)
+            self.assertEqual(command[command.index('--phase')+1], 'preflight')
+            self.assertNotIn('--ancestor-projection', command)
+            return types.SimpleNamespace(returncode=code, stderr=b'original failure')
+        with tempfile.TemporaryDirectory(dir=self.temp_root) as tmp:
+            self.source = Path(tmp) / 'source'
+            with patch.object(contract, '_round2_descendant_runtime', return_value=self.runtime), \
+                 patch.object(self.runtime, 'inspect_descendant', side_effect=[self.inspection,
+                    inspection_after if inspection_after is not None else self.inspection]), \
+                 patch.object(self.runtime, 'verify_projection', return_value=self.projection), \
+                 patch.object(contract.subprocess, 'run', side_effect=runner):
+                return contract.descendant_preflight(contract.REPO, self.source)
+
+    def test_static_success_retains_baseline_scope_and_zero_formal_authority(self):
+        result = self.replay()
+        self.assertEqual(result['status'], 'PASS_BASELINE_STATIC_ONLY')
+        self.assertTrue(result['baseline_static_replay_accepted'])
+        self.assertEqual(result['population'], 100)
+        self.assertEqual(result['frozen_report'], self.raw)
+        self.assertEqual(result['formal_acceptance'], 'NOT_CHECKED')
+        for flag in ('baseline_replay_accepted', 'current_tree_compatibility_accepted',
+                     'full_core_accepted', 'full_release_accepted'):
+            self.assertIs(result[flag], False)
+        self.assertEqual((result['RH'], result['Step4']), ('OPEN', 'OPEN'))
+
+    def test_wrong_legacy_population_or_schema_never_becomes_pass(self):
+        for mutate in (lambda r: r.update(planned_roots=100-1),
+                       lambda r: r.update(schema='UNKNOWN'),
+                       lambda r: r.update(status='PASS_FULL_RELEASE'),
+                       lambda r: r.update(RH='PROVED')):
+            with self.assertRaises(ValueError):
+                self.replay(mutate)
+
+    def test_original_cli_failure_is_not_hidden(self):
+        with self.assertRaisesRegex(ValueError, 'unchanged frozen CLI rejected'):
+            self.replay(code=1)
+
+    def test_source_drift_during_original_replay_rejects(self):
+        with self.assertRaisesRegex(ValueError, 'source identities changed'):
+            self.replay(inspection_after={**self.inspection, 'checked_commit': 'different'})
+
+    def test_unknown_extension_version_rejects_before_frozen_execution(self):
+        with tempfile.TemporaryDirectory(dir=self.temp_root) as tmp:
+            root = Path(tmp)
+            here = root / 'research/RHRC/integration/opica_round2'
+            here.mkdir(parents=True)
+            for name in ('BUILD_MANIFEST.json', 'ANCESTOR_LOCK.json'):
+                (here/name).write_bytes((self.runtime.HERE/name).read_bytes())
+            extension = json.loads((self.runtime.HERE/'DESCENDANT_EXTENSION.json').read_text(encoding='utf-8'))
+            extension['schema'] = 'UNKNOWN_DESCENDANT_VERSION'
+            (here/'DESCENDANT_EXTENSION.json').write_text(json.dumps(extension), encoding='utf-8')
+            with patch.object(contract, '_round2_descendant_runtime', return_value=self.runtime), \
+                 patch.object(contract.subprocess, 'run') as run:
+                with self.assertRaisesRegex(ValueError, 'Unknown extension version'):
+                    contract.descendant_preflight(root, root/'source')
+                run.assert_not_called()
+
+    def test_wrong_projection_commit_rejects_before_execution(self):
+        with tempfile.TemporaryDirectory(dir=self.temp_root) as tmp:
+            root = Path(tmp)
+            source = root/'source'
+            source.mkdir()
+            with patch.object(contract, '_round2_descendant_runtime', return_value=self.runtime), \
+                 patch.object(self.runtime, 'inspect_descendant', return_value=self.inspection), \
+                 patch.object(self.runtime.contract, 'git', return_value='wrong-head'), \
+                 patch.object(contract.subprocess, 'run') as run:
+                with self.assertRaisesRegex(ValueError, 'frozen Git source identity'):
+                    contract.descendant_preflight(root, source)
+                run.assert_not_called()
+
+    def test_untracked_ignored_provider_census_rejects_before_execution(self):
+        with tempfile.TemporaryDirectory(dir=self.temp_root) as tmp:
+            root = Path(tmp)
+            source = root/'source'
+            source.mkdir()
+            (source/'frozen.lean').write_bytes(b'theorem frozen : True := True.intro\n')
+            (source/'hidden.py').write_bytes(b'pass\n')
+            size, blob, digest = self.runtime.contract.actual_blob_identity(source/'frozen.lean')
+            here = root/'research/RHRC/integration/opica_round2'
+            here.mkdir(parents=True)
+            row = {'path': 'frozen.lean', 'mode': '100644', 'git_blob': blob, 'bytes': size, 'sha256': digest}
+            (here/'ANCESTOR_LOCK.json').write_text(json.dumps({'frozen_ancestor': {'source_manifest': [row]}}), encoding='utf-8')
+            def git(_repo, *parts):
+                if parts == ('rev-parse', 'HEAD'):
+                    return self.runtime.contract.FROZEN_COMMIT
+                if parts[0] == 'rev-parse':
+                    return self.runtime.contract.FROZEN_TREE
+                if parts[0] == 'status':
+                    return ''
+                if parts[0] == 'ls-tree':
+                    return '100644 blob '+blob+'\tfrozen.lean'
+                raise AssertionError(parts)
+            with patch.object(contract, '_round2_descendant_runtime', return_value=self.runtime), \
+                 patch.object(self.runtime, 'inspect_descendant', return_value=self.inspection), \
+                 patch.object(self.runtime.contract, 'git', side_effect=git), \
+                 patch.object(contract.subprocess, 'run') as run:
+                with self.assertRaisesRegex(ValueError, 'Untracked or ignored source file'):
+                    contract.descendant_preflight(root, source)
+                run.assert_not_called()
+
+    def test_every_original_predicate_body_is_byte_preserved(self):
+        import ast
+        import subprocess
+        relative = 'research/RHRC/integration/opica_followup/validate_contract.py'
+        baseline = subprocess.check_output(['git', 'show', self.runtime.contract.FROZEN_COMMIT+':'+relative],
+                                           cwd=contract.REPO).decode('utf-8')
+        current = (contract.REPO/relative).read_text(encoding='utf-8')
+        old_nodes = {n.name: ast.get_source_segment(baseline, n) for n in ast.parse(baseline).body
+                     if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) and n.name != 'main'}
+        new_nodes = {n.name: ast.get_source_segment(current, n) for n in ast.parse(current).body
+                     if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))}
+        self.assertTrue(old_nodes)
+        for name, source in old_nodes.items():
+            self.assertEqual(new_nodes.get(name), source, name)
+
+
 if __name__ == '__main__':
     unittest.main()

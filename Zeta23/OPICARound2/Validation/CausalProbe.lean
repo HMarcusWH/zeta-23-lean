@@ -132,3 +132,33 @@ theorem consumer_030 (h : probeTarget ∈ closure (Set.range
 #print axioms Zeta23.OPICARound2.rh_of_native_probe_range
 
 end Zeta23.OPICARound2.Validation
+
+namespace Zeta23.OPICARound2.Validation
+
+/-- The bounded functional vanishes on every literal native causal output. -/
+theorem causal_actual_range_annihilator (rho : zetaZeroConfig.carrier)
+    (hright : 1 / 2 < (rho : ℂ).re) (f : CausalProbeL2) :
+    CCM.nativeCausalLaplaceMoment ((rho : ℂ) - 1 / 2) 0
+      ((CCM.nativeDampedCompletionCausalL2Operator 0 (le_rfl)) f : ProbeL2) = 0 :=
+  probe_laplace_annihilates_range rho hright f
+
+/-- Closure is the actual Hilbert closure, with no source-density premise. -/
+theorem causal_actual_range_closure_annihilator (rho : zetaZeroConfig.carrier)
+    (hright : 1 / 2 < (rho : ℂ).re) (f : CausalProbeL2)
+    (hf : f ∈ closure (Set.range (CCM.nativeDampedCompletionCausalL2Operator 0 (le_rfl)))) :
+    CCM.nativeCausalLaplaceMoment ((rho : ℂ) - 1 / 2) 0 (f : ProbeL2) = 0 :=
+  probe_laplace_annihilates_rangeClosure rho hright hf
+
+/-- Positivity is obtained from the actual original source at this arbitrary zero. -/
+theorem causal_actual_source_strict_zero_margin (rho : zetaZeroConfig.carrier)
+    (hright : 1 / 2 < (rho : ℂ).re) :
+    0 < Real.sqrt (2 * ((rho : ℂ) - 1 / 2).re) *
+      ‖CCM.nativeCompletionRationalMultiplier ((rho : ℂ) - 1 / 2) *
+        JPlus ((rho : ℂ) - 1 / 2)‖ :=
+  (native_probe_zero_separation rho hright).1
+
+#print axioms Zeta23.OPICARound2.Validation.causal_actual_range_annihilator
+#print axioms Zeta23.OPICARound2.Validation.causal_actual_range_closure_annihilator
+#print axioms Zeta23.OPICARound2.Validation.causal_actual_source_strict_zero_margin
+
+end Zeta23.OPICARound2.Validation

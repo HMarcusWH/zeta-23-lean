@@ -1,3 +1,5 @@
+import Mathlib.Analysis.InnerProductSpace.Adjoint
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
 import Zeta23.OPICARound2.CausalProbe
 import Zeta23.OPICARound2.NativeCuts
 import Zeta23.OPICARound2.FixedFilter
@@ -6,6 +8,9 @@ import Zeta23.CCM.UniversalSincSourceTail
 import Zeta23.CCM.NativeDampedCompletionPointwiseBridge
 import Zeta23.OPICAFollowup.LogSlackBalance
 import Zeta23.OPICAFollowup.MultiplicityTail
+import Zeta23.OPICAFollowup.ZeroProfiles
+import Mathlib.NumberTheory.BernoulliPolynomials
+import Mathlib.NumberTheory.ZetaValues
 import Zeta23.CCM.NativeCompletedInputZetaLaplace
 import Mathlib.Analysis.Complex.JensenFormula
 import Mathlib.MeasureTheory.Integral.Gamma
@@ -3510,5 +3515,1742 @@ theorem noncausal_probe_leakage (rho : zetaZeroConfig.carrier)
   · rw [max_eq_left (le_of_not_ge hA)]
     exact htrade
 
+
+
+/-! Shared all-order literal Bernoulli primitives, from the checked V2 helper offer. -/
+namespace NativeBernoulli
+set_option backward.isDefEq.respectTransparency.types false
+open Polynomial
+open OPICAFollowup
+
+def profileBernoulliPolynomial (n : ℕ) : ℝ[X] :=
+  (Polynomial.bernoulli n).map (algebraMap ℚ ℝ)
+
+def profilePeriodicBernoulli (n : ℕ) (x : ℝ) : ℝ :=
+  (profileBernoulliPolynomial n).eval (Int.fract x)
+
+theorem profileBernoulliPolynomial_derivative (n : ℕ) :
+    derivative (profileBernoulliPolynomial (n + 1)) =
+      Polynomial.C ((n + 1 : ℕ) : ℝ) * profileBernoulliPolynomial n := by
+  unfold profileBernoulliPolynomial
+  rw [Polynomial.derivative_map, Polynomial.derivative_bernoulli_add_one]
+  simp
+
+theorem profileBernoulliPolynomial_endpoints (n : ℕ) (hn : n ≠ 1) :
+    (profileBernoulliPolynomial n).eval 0 = (profileBernoulliPolynomial n).eval 1 := by
+  simp only [profileBernoulliPolynomial, Polynomial.eval_map, Polynomial.eval₂_at_zero,
+    Polynomial.eval₂_at_one, Polynomial.coeff_zero_eq_eval_zero]
+  rw [Polynomial.bernoulli_eval_zero, Polynomial.bernoulli_eval_one,
+    bernoulli_eq_bernoulli'_of_ne_one hn]
+
+theorem profilePeriodicBernoulli_one (x : ℝ) :
+    profilePeriodicBernoulli 1 x = bernoulliOneRight x := by
+  simp [profilePeriodicBernoulli, profileBernoulliPolynomial, Polynomial.bernoulli_one,
+    bernoulliOneRight]
+
+theorem profilePeriodicBernoulli_continuous (n : ℕ) (hn : n ≠ 1) :
+    Continuous (profilePeriodicBernoulli n) := by
+  have h := ContinuousOn.comp_fract (s := fun x : ℝ => x)
+    (f := fun (_ : ℝ) (u : ℝ) => (profileBernoulliPolynomial n).eval u)
+    (by fun_prop) continuous_id (fun _ => profileBernoulliPolynomial_endpoints n hn)
+  exact h
+
+theorem profilePeriodicBernoulli_measurable (n : ℕ) : Measurable (profilePeriodicBernoulli n) :=
+  (profileBernoulliPolynomial n).continuous.measurable.comp measurable_fract
+
+theorem profilePeriodicBernoulli_bound (n : ℕ) :
+    ∃ C : ℝ, 0 < C ∧ ∀ x : ℝ, |profilePeriodicBernoulli n x| ≤ C := by
+  obtain ⟨C, hC⟩ := isCompact_Icc.bddAbove_image (profileBernoulliPolynomial n).continuous.abs.continuousOn
+  refine ⟨max 1 C, lt_of_lt_of_le one_pos (le_max_left _ _), fun x => ?_⟩
+  have hx : Int.fract x ∈ Icc (0 : ℝ) 1 := ⟨Int.fract_nonneg x, (Int.fract_lt_one x).le⟩
+  exact (hC ⟨Int.fract x, hx, rfl⟩).trans (le_max_right _ _)
+
+theorem profilePeriodicBernoulli_right_derivative (n : ℕ) (t : ℝ) :
+    HasDerivWithinAt (profilePeriodicBernoulli (n + 1))
+      (((n + 1 : ℕ) : ℝ) * profilePeriodicBernoulli n t) (Ioi t) t := by
+  have hp := (profileBernoulliPolynomial (n + 1)).hasDerivAt (Int.fract t)
+  rw [profileBernoulliPolynomial_derivative, Polynomial.eval_mul, Polynomial.eval_C] at hp
+  simpa only [profilePeriodicBernoulli, Function.comp_def, mul_one] using!
+    hp.comp_hasDerivWithinAt t (hasDerivWithinAt_fract_Ioi t)
+
+/-- Bounded primitives need not be artificially normalized to at most one. -/
+theorem profile_integral_Ioi_parts_bounded {P Q : ℝ → ℝ} (C : ℝ) (hC : 0 < C)
+    (hP : Measurable P) (hPb : ∀ t, |P t| ≤ C)
+    (hQc : Continuous Q) (hQb : ∀ t, |Q t| ≤ C)
+    (hQd : ∀ t, HasDerivWithinAt Q (P t) (Ioi t) t)
+    {w : ℂ} (hw : w.re < -1) {x : ℝ} (hx : 0 < x) :
+    ∫ t in Ioi x, (P t : ℂ) * (t : ℂ) ^ w =
+      -(Q x : ℂ) * (x : ℂ) ^ w - w * ∫ t in Ioi x, (Q t : ℂ) * (t : ℂ) ^ (w - 1) := by
+  have hc : (C : ℂ) ≠ 0 := by exact_mod_cast hC.ne'
+  have hpn (t : ℝ) : |P t / C| ≤ 1 := by
+    rw [abs_div, abs_of_pos hC]
+    exact (div_le_one hC).mpr (hPb t)
+  have hqn (t : ℝ) : |Q t / C| ≤ 1 := by
+    rw [abs_div, abs_of_pos hC]
+    exact (div_le_one hC).mpr (hQb t)
+  have he := integral_Ioi_parts (hP.div_const C) hpn (hQc.div_const C) hqn
+    (fun t => (hQd t).div_const C) hw hx
+  have hdiv (F : ℝ → ℝ) (z : ℂ) :
+      (∫ t in Ioi x, ((F t / C : ℝ) : ℂ) * (t : ℂ) ^ z) =
+        (∫ t in Ioi x, (F t : ℂ) * (t : ℂ) ^ z) / (C : ℂ) := by
+    rw [← integral_div]
+    apply integral_congr_ae
+    filter_upwards with t
+    push_cast
+    ring
+  rw [hdiv, hdiv] at he
+  apply (div_left_inj' hc).mp
+  convert he using 1 <;> push_cast <;> ring
+
+
+theorem profile_even_bernoulli_ne_zero (k : ℕ) (hk : 0 < k) : _root_.bernoulli (2 * k) ≠ 0 := by
+  intro hB
+  have hs := hasSum_zeta_nat hk.ne'
+  have hz : (∑' n : ℕ, 1 / (n : ℝ) ^ (2 * k)) = 0 := by
+    simpa [hB] using hs.tsum_eq
+  have hle := hs.summable.le_tsum 1 (fun (i : ℕ) _ => by positivity)
+  rw [hz] at hle
+  norm_num at hle
+
+
+/-- Rising factorial coefficients, defined independently of any asymptotic claim. -/
+def profileEMRising (s : ℂ) : ℕ → ℂ
+  | 0 => 1
+  | n + 1 => profileEMRising s n * (s + (n : ℂ))
+
+def profileEMCoefficient (s : ℂ) (n : ℕ) : ℂ :=
+  profileEMRising s n / (n.factorial : ℂ)
+
+def profileBernoulliTailIntegral (s : ℂ) (N : ℕ) (x : ℝ) : ℂ :=
+  ∫ t in Ioi x, (profilePeriodicBernoulli N t : ℂ) * (t : ℂ) ^ (-s - (N : ℂ))
+
+def profileEMTerms (s : ℂ) (N : ℕ) (x : ℝ) : ℂ :=
+  ∑ n ∈ Finset.range N, (profileEMRising s n / ((n + 1).factorial : ℂ)) *
+    (profilePeriodicBernoulli (n + 1) x : ℂ) * (x : ℂ) ^ (-s - (n : ℂ))
+
+theorem profile_periodic_bernoulli_tail_parts {N : ℕ} (hN : 1 ≤ N)
+    {s : ℂ} (hs : 0 < s.re) {x : ℝ} (hx : 0 < x) :
+    profileBernoulliTailIntegral s N x =
+      -(profilePeriodicBernoulli (N + 1) x : ℂ) * (x : ℂ) ^ (-s - (N : ℂ)) / (N + 1 : ℂ) +
+        (s + (N : ℂ)) / (N + 1 : ℂ) * profileBernoulliTailIntegral s (N + 1) x := by
+  obtain ⟨CP, hCP, hbP⟩ := profilePeriodicBernoulli_bound N
+  obtain ⟨CQ, hCQ, hbQ⟩ := profilePeriodicBernoulli_bound (N + 1)
+  let C := max CP CQ
+  have hC : 0 < C := hCP.trans_le (le_max_left _ _)
+  have hNat : 0 < ((N + 1 : ℕ) : ℝ) := by positivity
+  have hD (t : ℝ) : HasDerivWithinAt
+      (fun u => profilePeriodicBernoulli (N + 1) u / ((N + 1 : ℕ) : ℝ))
+        (profilePeriodicBernoulli N t) (Ioi t) t := by
+    convert! (profilePeriodicBernoulli_right_derivative N t).div_const ((N + 1 : ℕ) : ℝ) using 1
+    field_simp
+  have hQb (t : ℝ) : |profilePeriodicBernoulli (N + 1) t / ((N + 1 : ℕ) : ℝ)| ≤ C := by
+    rw [abs_div, abs_of_pos hNat]
+    apply (div_le_iff₀ hNat).mpr
+    have hh : 1 ≤ ((N + 1 : ℕ) : ℝ) := by exact_mod_cast (show 1 ≤ N + 1 by omega)
+    have hb := (hbQ t).trans (le_max_right CP CQ)
+    exact hb.trans (le_mul_of_one_le_right hC.le hh)
+  have he := profile_integral_Ioi_parts_bounded C hC
+    (profilePeriodicBernoulli_measurable N) (fun t => (hbP t).trans (le_max_left CP CQ))
+    ((profilePeriodicBernoulli_continuous (N + 1) (by omega)).div_const _)
+    hQb hD (w := -s - (N : ℂ)) (by
+      simp only [Complex.sub_re, Complex.neg_re, Complex.natCast_re]
+      have hnr : (1 : ℝ) ≤ N := by exact_mod_cast hN
+      linarith) hx
+  have hdiv : (∫ t in Ioi x,
+      ((profilePeriodicBernoulli (N + 1) t / ((N + 1 : ℕ) : ℝ) : ℝ) : ℂ) *
+        (t : ℂ) ^ (-s - (N : ℂ) - 1)) =
+      profileBernoulliTailIntegral s (N + 1) x / (N + 1 : ℂ) := by
+    unfold profileBernoulliTailIntegral
+    rw [← integral_div]
+    apply integral_congr_ae
+    filter_upwards with t
+    push_cast
+    rw [show -s - (N : ℂ) - 1 = -s - (N + 1 : ℂ) by ring]
+    ring
+  rw [hdiv] at he
+  change (∫ t in Ioi x, (profilePeriodicBernoulli N t : ℂ) * (t : ℂ) ^ (-s - (N : ℂ))) = _
+  rw [he]
+  push_cast
+  ring
+
+theorem profile_rightPowerSum_first_order {s : ℂ} (h0 : 0 < s.re) (h1 : s ≠ 1)
+    {x : ℝ} (hx : 1 ≤ x) :
+    rightPowerSum s x = riemannZeta s + (x : ℂ) ^ (1 - s) / (1 - s) -
+      (profilePeriodicBernoulli 1 x : ℂ) * (x : ℂ) ^ (-s) +
+        s * profileBernoulliTailIntegral s 1 x := by
+  have hIB1 := integrableOn_bounded_mul_cpow measurable_bernoulliOneRight abs_bernoulliOneRight_le
+    (w := -s - 1) (by simp; linarith) one_pos
+  have hsplit : zetaBernoulliIntegral s =
+      (∫ t in Ioc 1 x, (bernoulliOneRight t : ℂ) * (t : ℂ) ^ (-s - 1)) +
+        ∫ t in Ioi x, (bernoulliOneRight t : ℂ) * (t : ℂ) ^ (-s - 1) := by
+    unfold zetaBernoulliIntegral
+    rw [← Set.Ioc_union_Ioi_eq_Ioi hx]
+    exact setIntegral_union (Set.disjoint_left.mpr (fun t h1 h2 => by
+        simp only [Set.mem_Ioc, Set.mem_Ioi] at h1 h2; linarith)) measurableSet_Ioi
+      (hIB1.mono_set (Set.Ioc_subset_Ioi_self)) (hIB1.mono_set (Ioi_subset_Ioi hx))
+  have hFI := rightPowerSum_abel h1 hx
+  have hz := zeta_eq_bernoulli h0 h1
+  rw [hsplit] at hz
+  have hneg : s / (s - 1) + s / (1 - s) = 0 := by
+    rw [show s - 1 = -(1 - s) by ring, div_neg]; ring
+  unfold profileBernoulliTailIntegral
+  simp only [profilePeriodicBernoulli_one, Nat.cast_one]
+  linear_combination hFI - hz - hneg
+
+theorem profile_rightPowerSum_all_order {s : ℂ} (h0 : 0 < s.re) (h1 : s ≠ 1)
+    {x : ℝ} (hx : 1 ≤ x) (N : ℕ) (hN : 1 ≤ N) :
+    rightPowerSum s x = riemannZeta s + (x : ℂ) ^ (1 - s) / (1 - s) -
+      profileEMTerms s N x + profileEMCoefficient s N * profileBernoulliTailIntegral s N x := by
+  induction N, hN using Nat.le_induction with
+  | base =>
+    simpa [profileEMTerms, profileEMCoefficient, profileEMRising] using profile_rightPowerSum_first_order h0 h1 hx
+  | succ N hN ih =>
+    have he := profile_periodic_bernoulli_tail_parts hN h0 (lt_of_lt_of_le one_pos hx)
+    rw [he] at ih
+    rw [profileEMTerms, Finset.sum_range_succ]
+    rw [← profileEMTerms]
+    convert ih using 1
+    unfold profileEMCoefficient
+    simp only [profileEMRising, Nat.factorial_succ, Nat.cast_mul, Nat.cast_add, Nat.cast_one]
+    have hn : (N + 1 : ℂ) ≠ 0 := by exact_mod_cast (Nat.succ_ne_zero N)
+    have hf : (N.factorial : ℂ) ≠ 0 := by exact_mod_cast (Nat.factorial_ne_zero N)
+    field_simp [hn, hf]
+    ring
+
+
+theorem profile_periodic_bernoulli_tail_norm {N : ℕ} (hN : 1 ≤ N)
+    {s : ℂ} (hs : 0 < s.re) :
+    ∃ C : ℝ, 0 < C ∧ ∀ x : ℝ, 0 < x →
+      ‖profileBernoulliTailIntegral s N x‖ ≤ C * x ^ (-s.re - (N : ℝ) + 1) := by
+  obtain ⟨B, hB, hbound⟩ := profilePeriodicBernoulli_bound N
+  have hnr : (1 : ℝ) ≤ N := by exact_mod_cast hN
+  have hd : 0 < s.re + (N : ℝ) - 1 := by linarith
+  refine ⟨B / (s.re + (N : ℝ) - 1), div_pos hB hd, fun x hx => ?_⟩
+  have he : -s.re - (N : ℝ) < -1 := by linarith
+  have hi := (integrableOn_Ioi_rpow_of_lt he hx).const_mul B
+  unfold profileBernoulliTailIntegral
+  calc
+    _ ≤ ∫ t in Ioi x, B * t ^ (-s.re - (N : ℝ)) := by
+      apply norm_integral_le_of_norm_le hi
+      filter_upwards [ae_restrict_mem measurableSet_Ioi] with t ht
+      rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+        Complex.norm_cpow_eq_rpow_re_of_pos (hx.trans ht)]
+      simp only [Complex.sub_re, Complex.neg_re, Complex.natCast_re]
+      exact mul_le_mul_of_nonneg_right (hbound t) (Real.rpow_nonneg (hx.trans ht).le _)
+    _ = B / (s.re + (N : ℝ) - 1) * x ^ (-s.re - (N : ℝ) + 1) := by
+      rw [integral_const_mul, integral_Ioi_rpow_of_lt he hx]
+      have hh : -s.re - (N : ℝ) + 1 = -(s.re + (N : ℝ) - 1) := by ring
+      rw [hh]
+      field_simp <;> ring
+
+
+
+end NativeBernoulli
+
+/-! S03a: the native floor kernel retains its exact Bernoulli seam convention. -/
+
+
+theorem native_floor_bernoulli_expansion (t : ℝ) (ht : 0 ≤ t) :
+    CCM.nativePositiveCompletion t = (1 / 2) * Real.exp (-t / 2) -
+      (1 / 6) * Real.exp (-3 * t / 2) - Real.exp (-t / 2) *
+        OPICAFollowup.bernoulliOneRight (Real.exp t) + Real.exp (-3 * t / 2) *
+          OPICAFollowup.bernoulliTwo (Real.exp t) := by
+  have hz : ((⌊Real.exp t⌋₊ : ℕ) : ℤ) = ⌊Real.exp t⌋ :=
+    Int.natCast_floor_eq_floor (Real.exp_pos t).le
+  have hfloor : ((⌊Real.exp t⌋₊ : ℕ) : ℝ) = Real.exp t - Int.fract (Real.exp t) := by
+    have h : ((⌊Real.exp t⌋₊ : ℕ) : ℝ) = ((⌊Real.exp t⌋ : ℤ) : ℝ) := by
+      rw [← hz]
+      norm_cast
+    unfold Int.fract
+    rw [h]
+    ring
+  have he : Real.exp (-t / 2) = Real.exp (-3 * t / 2) * Real.exp t := by
+    rw [← Real.exp_add]
+    congr 1
+    ring
+  rw [CCM.nativePositiveCompletion,if_pos ht,
+    show -(3 * t / 2) = -3 * t / 2 by ring,hfloor,he]
+  unfold OPICAFollowup.bernoulliOneRight OPICAFollowup.bernoulliTwo
+  ring
+
+
+/-! S03d: exact finite affine correction and its unchanged attainable closure. -/
+theorem probeSparseOutput_eq_linearCombination (x : ℕ →₀ ℂ) :
+    probeSparseOutput x = Finsupp.linearCombination ℂ (fun n => (probeColumn n : ProbeL2)) x := rfl
+
+def probeSparseFirstMoment : (ℕ →₀ ℂ) →ₗ[ℂ] ℂ :=
+  Finsupp.linearCombination ℂ (fun n : ℕ => (n : ℂ))
+
+def probeAffineCorrection (x : ℕ →₀ ℂ) (M : ℕ) : ℕ →₀ ℂ :=
+  x + Finsupp.single M ((-12 - probeSparseFirstMoment x) / (M : ℂ))
+
+theorem probeAffineCorrection_firstMoment (x : ℕ →₀ ℂ) {M : ℕ} (hM : M ≠ 0) :
+    probeSparseFirstMoment (probeAffineCorrection x M) = -12 := by
+  rw [probeAffineCorrection,map_add]
+  change probeSparseFirstMoment x + Finsupp.linearCombination ℂ (fun n : ℕ => (n : ℂ))
+    (Finsupp.single M ((-12 - probeSparseFirstMoment x) / (M : ℂ))) = -12
+  rw [Finsupp.linearCombination_single,smul_eq_mul,div_mul_cancel₀ _ (by exact_mod_cast hM)]
+  ring
+
+theorem probeAffineCorrection_unchanged (x : ℕ →₀ ℂ) (M n : ℕ) (hn : n ≠ M) :
+    probeAffineCorrection x M n = x n := by
+  simp [probeAffineCorrection,Finsupp.single_apply,hn]
+
+theorem probeColumn_norm {n : ℕ} (hn : n ≠ 0) :
+    ‖(probeColumn n : ProbeL2)‖ = CCM.nativeIntegerCoefficient n * ‖probeCompletedSource‖ := by
+  change ‖probeColumn n‖ = _
+  rw [probeColumn_eq_delay hn,norm_smul,probeDelay_norm,Complex.norm_real,Real.norm_eq_abs,
+    abs_of_nonneg (show 0 ≤ CCM.nativeIntegerCoefficient n by
+      unfold CCM.nativeIntegerCoefficient
+      positivity)]
+
+theorem probeAffineCorrection_output_difference (x : ℕ →₀ ℂ) (M : ℕ) :
+    probeSparseOutput (probeAffineCorrection x M) - probeSparseOutput x =
+      ((-12 - probeSparseFirstMoment x) / (M : ℂ)) • (probeColumn M : ProbeL2) := by
+  rw [probeSparseOutput_eq_linearCombination,probeSparseOutput_eq_linearCombination,
+    probeAffineCorrection,map_add,Finsupp.linearCombination_single,add_sub_cancel_left]
+
+theorem probeAffineCorrection_output_norm (x : ℕ →₀ ℂ) {M : ℕ} (hM : M ≠ 0) :
+    ‖probeSparseOutput (probeAffineCorrection x M) - probeSparseOutput x‖ =
+      ‖-12 - probeSparseFirstMoment x‖ * ‖probeCompletedSource‖ / ((M : ℝ) * Real.sqrt M) := by
+  rw [probeAffineCorrection_output_difference,norm_smul,norm_div,Complex.norm_natCast,
+    probeColumn_norm hM,CCM.nativeIntegerCoefficient]
+  have hMR : (M : ℝ) ≠ 0 := by exact_mod_cast hM
+  have hs : Real.sqrt (M : ℝ) ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr (by exact_mod_cast Nat.pos_of_ne_zero hM))
+  field_simp
+
+theorem probeSparseFirstMoment_eq_sum (x : ℕ →₀ ℂ) :
+    probeSparseFirstMoment x = ∑ n ∈ x.support, (n : ℂ) * x n := by
+  rw [probeSparseFirstMoment,Finsupp.linearCombination_apply]
+  unfold Finsupp.sum
+  apply Finset.sum_congr rfl
+  intro n _hn
+  change x n * (n : ℂ) = (n : ℂ) * x n
+  ring
+
+theorem probeAffineCorrection_output_rpow (x : ℕ →₀ ℂ) {M : ℕ} (hM : M ≠ 0) :
+    ‖probeSparseOutput (probeAffineCorrection x M) - probeSparseOutput x‖ =
+      ‖-12 - probeSparseFirstMoment x‖ * ‖probeCompletedSource‖ / (M : ℝ) ^ (3 / 2 : ℝ) := by
+  rw [probeAffineCorrection_output_norm x hM]
+  have hpos : (0 : ℝ) < M := by exact_mod_cast Nat.pos_of_ne_zero hM
+  have he : (M : ℝ) * Real.sqrt M = (M : ℝ) ^ (3 / 2 : ℝ) := by
+    rw [Real.sqrt_eq_rpow]
+    nth_rw 1 [← Real.rpow_one (M : ℝ)]
+    rw [← Real.rpow_add hpos]
+    norm_num
+  rw [he]
+
+theorem probeAffineCorrection_output_tendsto (x : ℕ →₀ ℂ) :
+    Tendsto (fun n : ℕ => probeSparseOutput (probeAffineCorrection x (n + 1))) atTop
+      (𝓝 (probeSparseOutput x)) := by
+  rw [tendsto_iff_norm_sub_tendsto_zero]
+  have hlim : Tendsto (fun n : ℕ =>
+      ‖-12 - probeSparseFirstMoment x‖ * ‖probeCompletedSource‖ / ((n : ℝ) + 1)) atTop (𝓝 0) :=
+    tendsto_const_nhds.div_atTop (tendsto_natCast_atTop_atTop.atTop_add tendsto_const_nhds)
+  apply squeeze_zero (fun n => norm_nonneg _) (fun n => ?_) hlim
+  rw [probeAffineCorrection_output_norm x (Nat.succ_ne_zero n),Nat.cast_succ]
+  apply div_le_div_of_nonneg_left (mul_nonneg (norm_nonneg _) (norm_nonneg _)) (by positivity)
+  have hs : (1 : ℝ) ≤ Real.sqrt ((n : ℝ) + 1) := by
+    have h : (1 : ℝ) ≤ (n : ℝ) + 1 := by linarith [Nat.cast_nonneg (α := ℝ) n]
+    simpa only [Real.sqrt_one] using Real.sqrt_le_sqrt h
+  nlinarith [Nat.cast_nonneg (α := ℝ) n]
+
+def probeAffineAttainable : Set ProbeL2 :=
+  {y | ∃ x : ℕ →₀ ℂ, probeSparseFirstMoment x = -12 ∧ probeSparseOutput x = y}
+
+theorem native_affine_constraint_closure :
+    closure probeAffineAttainable = closure (Set.range probeSparseOutput) := by
+  apply Set.Subset.antisymm
+  · apply closure_mono
+    rintro y ⟨x,_hx,hy⟩
+    exact ⟨x,hy⟩
+  · apply closure_minimal ?_ isClosed_closure
+    rintro y ⟨x,rfl⟩
+    apply isClosed_closure.mem_of_tendsto (probeAffineCorrection_output_tendsto x)
+    apply Filter.Eventually.of_forall
+    intro n
+    apply subset_closure
+    exact ⟨probeAffineCorrection x (n + 1),
+      probeAffineCorrection_firstMoment x (Nat.succ_ne_zero n),rfl⟩
+
+theorem probeAffineCorrection_eventually_late (x : ℕ →₀ ℂ) :
+    ∀ᶠ n : ℕ in atTop, ∀ k ∈ x.support, k < n + 1 := by
+  filter_upwards [eventually_ge_atTop (x.support.sup id)] with n hn k hk
+  have hks : k ≤ x.support.sup id := Finset.le_sup (f := id) hk
+  omega
+
+
+/-! S03b: exact smoothed floor tail with literal Bernoulli convolution remainder. -/
+theorem probe_source_real_exp_integrable (a : ℝ) :
+    Integrable (fun u : ℝ => Real.exp (a * u) * jPlus u) := by
+  apply Continuous.integrable_of_hasCompactSupport
+  · exact (by fun_prop : Continuous (fun u : ℝ => Real.exp (a * u))).mul jPlus_contDiff.continuous
+  · exact jPlus_hasCompactSupport.mul_left
+
+theorem probe_source_real_weight_integrable (a t : ℝ) :
+    Integrable (fun u : ℝ => Real.exp (-a * (t - u)) * jPlus u) := by
+  have hi := (probe_source_real_exp_integrable a).const_mul (Real.exp (-a * t))
+  apply hi.congr
+  apply Filter.Eventually.of_forall
+  intro u
+  dsimp only
+  rw [← mul_assoc,← Real.exp_add]
+  congr 2
+  ring
+
+theorem probe_source_real_periodic_integrable (a t : ℝ) (P : ℝ → ℝ)
+    (hP : Measurable P) (C : ℝ) (hbound : ∀ x, |P x| ≤ C) :
+    Integrable (fun u : ℝ => Real.exp (-a * (t - u)) * P (Real.exp (t - u)) * jPlus u) := by
+  have hm : Measurable (fun u : ℝ => P (Real.exp (t - u))) := hP.comp (by fun_prop)
+  have hi := (probe_source_real_weight_integrable a t).bdd_mul hm.aestronglyMeasurable
+    (Filter.Eventually.of_forall fun u => by rw [Real.norm_eq_abs]; exact hbound _)
+  apply hi.congr
+  apply Filter.Eventually.of_forall
+  intro u
+  ring
+
+def probeBernoulliOscillation (a : ℝ) (P : ℝ → ℝ) (t : ℝ) : ℝ :=
+  ∫ u : ℝ, Real.exp (-a * (t - u)) * P (Real.exp (t - u)) * jPlus u
+
+def probeBernoulliRemainder (t : ℝ) : ℝ :=
+  -probeBernoulliOscillation (1 / 2) OPICAFollowup.bernoulliOneRight t +
+    probeBernoulliOscillation (3 / 2) OPICAFollowup.bernoulliTwo t
+
+theorem probe_source_real_exp_eq_JPlus (a : ℝ) :
+    ((∫ u : ℝ, Real.exp (a * u) * jPlus u : ℝ) : ℂ) = JPlus (-(a : ℂ)) := by
+  rw [JPlus,← integral_complex_ofReal]
+  apply integral_congr_ae
+  apply Filter.Eventually.of_forall
+  intro u
+  dsimp only
+  rw [Complex.ofReal_mul,Complex.ofReal_exp]
+  congr 2
+  push_cast
+  ring
+
+theorem probeW_source_first (t : ℝ) :
+    probeW t = ∫ u : ℝ, (CCM.nativePositiveCompletion (t - u) : ℂ) * (jPlus u : ℂ) := by
+  have h := integral_sub_left_eq_self
+    (fun s : ℝ => (CCM.nativePositiveCompletion s : ℂ) * (jPlus (t - s) : ℂ)) t
+    (μ := (volume : Measure ℝ))
+  simpa only [sub_sub_cancel,probeW] using h.symm
+
+theorem native_completed_output_bernoulli_identity {t : ℝ} (ht : 2 * probeSigma ≤ t) :
+    probeW t = -(JPlus (-3 / 2 : ℂ) / 6) * Complex.exp (-(3 / 2 : ℂ) * (t : ℂ)) +
+      (probeBernoulliRemainder t : ℂ) := by
+  have hiA := probe_source_real_weight_integrable (1 / 2) t
+  have hiB := probe_source_real_weight_integrable (3 / 2) t
+  have hi1 := probe_source_real_periodic_integrable (1 / 2) t OPICAFollowup.bernoulliOneRight
+    OPICAFollowup.measurable_bernoulliOneRight 1 OPICAFollowup.abs_bernoulliOneRight_le
+  have hi2 := probe_source_real_periodic_integrable (3 / 2) t OPICAFollowup.bernoulliTwo
+    OPICAFollowup.measurable_bernoulliTwo 1 OPICAFollowup.abs_bernoulliTwo_le
+  have hp : (fun u : ℝ => CCM.nativePositiveCompletion (t - u) * jPlus u) =
+      fun u : ℝ => (1 / 2) * (Real.exp (-(1 / 2) * (t - u)) * jPlus u) -
+        (1 / 6) * (Real.exp (-(3 / 2) * (t - u)) * jPlus u) -
+          Real.exp (-(1 / 2) * (t - u)) * OPICAFollowup.bernoulliOneRight (Real.exp (t - u)) * jPlus u +
+            Real.exp (-(3 / 2) * (t - u)) * OPICAFollowup.bernoulliTwo (Real.exp (t - u)) * jPlus u := by
+    funext u
+    by_cases hu : u ∈ Icc 0 (2 * probeSigma)
+    · rw [native_floor_bernoulli_expansion (t - u) (by linarith [hu.2])]
+      have h1 : -(t - u) / 2 = -(1 / 2 : ℝ) * (t - u) := by ring
+      have h3 : -3 * (t - u) / 2 = -(3 / 2 : ℝ) * (t - u) := by ring
+      rw [h1,h3]
+      ring
+    · rw [jPlus_zero_outside hu]
+      ring
+  have hsplit (a : ℝ) : (∫ u : ℝ, Real.exp (-a * (t - u)) * jPlus u) =
+      Real.exp (-a * t) * (∫ u : ℝ, Real.exp (a * u) * jPlus u) := by
+    rw [← integral_const_mul]
+    apply integral_congr_ae
+    apply Filter.Eventually.of_forall
+    intro u
+    dsimp only
+    rw [← mul_assoc,← Real.exp_add]
+    congr 2
+    ring
+  rw [probeW_source_first]
+  have hcast : (∫ u : ℝ, (CCM.nativePositiveCompletion (t - u) : ℂ) * (jPlus u : ℂ)) =
+      ((∫ u : ℝ, CCM.nativePositiveCompletion (t - u) * jPlus u : ℝ) : ℂ) := by
+    simp_rw [← Complex.ofReal_mul]
+    exact integral_complex_ofReal
+  rw [hcast]
+  have hreal : (∫ u : ℝ, CCM.nativePositiveCompletion (t - u) * jPlus u) =
+      (1 / 2) * (Real.exp (-(1 / 2) * t) * (∫ u : ℝ, Real.exp ((1 / 2) * u) * jPlus u)) -
+        (1 / 6) * (Real.exp (-(3 / 2) * t) * (∫ u : ℝ, Real.exp ((3 / 2) * u) * jPlus u)) +
+          probeBernoulliRemainder t := by
+    have hab := integral_sub (hiA.const_mul (1 / 2)) (hiB.const_mul (1 / 6))
+    have habc := integral_sub ((hiA.const_mul (1 / 2)).sub (hiB.const_mul (1 / 6))) hi1
+    have habcd := integral_add (((hiA.const_mul (1 / 2)).sub (hiB.const_mul (1 / 6))).sub hi1) hi2
+    simp only [Pi.add_apply,Pi.sub_apply] at hab habc habcd
+    rw [hab] at habc
+    rw [habc] at habcd
+    simp only [integral_const_mul] at habcd
+    rw [hsplit,hsplit] at habcd
+    rw [hp]
+    convert habcd using 1 <;> unfold probeBernoulliRemainder probeBernoulliOscillation <;> ring
+  rw [hreal]
+  push_cast
+  rw [probe_source_real_exp_eq_JPlus,probe_source_real_exp_eq_JPlus]
+  have hJ1 : JPlus (-((1 / 2 : ℝ) : ℂ)) = 0 := by
+    convert JPlus_neg_half using 1 <;> push_cast <;> ring
+  have hJ3 : JPlus (-((3 / 2 : ℝ) : ℂ)) = JPlus (-3 / 2 : ℂ) := by
+    congr 1
+    push_cast
+    ring
+  rw [hJ1,hJ3]
+  ring
+
+
+/-! S01c: genuine explicit positive scalar lower bound for the original real Laplace transform. -/
+namespace NativeRealLaplace
+set_option backward.isDefEq.respectTransparency.types false
+open Set Filter Finset MeasureTheory
+
+open CCM.UniversalSinc
+
+def headConstant (a : ℝ) : ℝ := (1-Real.exp (-2*a))/(2*a)
+def nativePrefixConstant (K : ℕ) : ℝ :=
+  (∏ n ∈ range K, headConstant (width probeSigma n))/16
+
+theorem headConstant_pos {a : ℝ} (ha : 0<a) : 0<headConstant a := by
+  have he : Real.exp (-2*a)<1 := by rw [← Real.exp_zero]; exact Real.exp_lt_exp.mpr (by linarith)
+  unfold headConstant
+  positivity
+
+theorem real_sinhc_head_lower {a x : ℝ} (ha : 0<a) (hx : 1≤x) :
+    headConstant a*Real.exp (a*x)/x ≤ Real.sinh (a*x)/(a*x) := by
+  have hxp : 0<x := by linarith
+  have he : Real.exp (-2*a*x)≤Real.exp (-2*a) := Real.exp_le_exp.mpr (by nlinarith)
+  have hid : Real.exp (-(a*x)) = Real.exp (a*x)*Real.exp (-2*a*x) := by
+    rw [← Real.exp_add]
+    congr 1
+    ring
+  have hcore : (1-Real.exp (-2*a))/2*Real.exp (a*x) ≤ Real.sinh (a*x) := by
+    rw [Real.sinh_eq, hid]
+    have hb := mul_le_mul_of_nonneg_left he (Real.exp_pos (a*x)).le
+    nlinarith
+  calc
+    _ = ((1-Real.exp (-2*a))/2*Real.exp (a*x))/(a*x) := by
+      unfold headConstant
+      field_simp
+    _ ≤ _ := div_le_div_of_nonneg_right hcore (mul_pos ha hxp).le
+
+theorem native_real_factor_eq (x : ℝ) (hx : x≠0) :
+    sinc (Complex.I*(x:ℂ)) = ((Real.sinh x/x : ℝ):ℂ) := by
+  rw [sinc_of_ne_zero (mul_ne_zero Complex.I_ne_zero (by exact_mod_cast hx)),
+    mul_comm Complex.I (x:ℂ), Complex.sin_mul_I, ← Complex.ofReal_sinh]
+  push_cast
+  field_simp
+
+theorem native_real_factor_norm {a x : ℝ} (ha : 0<a) (hx : 0<x) :
+    ‖sinc ((a:ℂ)*(Complex.I*(x:ℂ)))‖ = Real.sinh (a*x)/(a*x) := by
+  have he : (a:ℂ)*(Complex.I*(x:ℂ)) = Complex.I*((a*x:ℝ):ℂ) := by push_cast; ring
+  rw [he, native_real_factor_eq (a*x) (mul_ne_zero ha.ne' hx.ne'), Complex.norm_real,
+    Real.norm_eq_abs, abs_of_pos (div_pos (Real.sinh_pos_iff.mpr (mul_pos ha hx)) (mul_pos ha hx))]
+
+theorem native_real_factor_norm_ge_one {a x : ℝ} (ha : 0<a) (hx : 0<x) :
+    1≤‖sinc ((a:ℂ)*(Complex.I*(x:ℂ)))‖ := by
+  rw [native_real_factor_norm ha hx]
+  exact (one_le_div (mul_pos ha hx)).2 (Real.self_le_sinh_iff.mpr (mul_pos ha hx).le)
+
+theorem native_product_norm_ge_prefix (K : ℕ) {x : ℝ} (hx : 0<x) :
+    ‖∏ n ∈ range K, sinc ((width probeSigma n:ℂ)*(Complex.I*(x:ℂ)))‖ ≤
+      ‖product probeSigma (Complex.I*(x:ℂ))‖ := by
+  have ht := ((tendsto_partial_product probeSigma_pos.le (Complex.I*(x:ℂ))).comp
+    (tendsto_add_atTop_nat K)).norm
+  apply le_of_tendsto_of_tendsto' tendsto_const_nhds ht
+  intro M
+  change _ ≤ ‖∏ n ∈ range (M+K), sinc ((width probeSigma n:ℂ)*(Complex.I*(x:ℂ)))‖
+  have he : (∏ n ∈ range (M+K), sinc ((width probeSigma n:ℂ)*(Complex.I*(x:ℂ)))) =
+      (∏ n ∈ range K, sinc ((width probeSigma n:ℂ)*(Complex.I*(x:ℂ)))) *
+        ∏ n ∈ range M, sinc ((width probeSigma (n+K):ℂ)*(Complex.I*(x:ℂ))) := by
+    simpa only [Nat.add_comm] using Finset.prod_range_add
+      (fun n => sinc ((width probeSigma n:ℂ)*(Complex.I*(x:ℂ)))) K M
+  rw [he,norm_mul]
+  have htail : 1≤‖∏ n ∈ range M, sinc ((width probeSigma (n+K):ℂ)*(Complex.I*(x:ℂ)))‖ := by
+    rw [norm_prod]
+    exact Finset.one_le_prod (fun n _ => native_real_factor_norm_ge_one (width_pos probeSigma_pos (n+K)) hx)
+  simpa only [mul_one] using mul_le_mul_of_nonneg_left htail
+    (norm_nonneg (∏ n ∈ range K, sinc ((width probeSigma n:ℂ)*(Complex.I*(x:ℂ)))))
+
+theorem native_real_product_prefix_growth (K : ℕ) {x : ℝ} (hx : 1≤x) :
+    (∏ n ∈ range K, headConstant (width probeSigma n))*
+      Real.exp ((probeSigma-probeSigma/((K:ℝ)+1))*x)/x^K ≤
+      ‖product probeSigma (Complex.I*(x:ℂ))‖ := by
+  have hxp : 0<x := by linarith
+  have hf (n : ℕ) : headConstant (width probeSigma n)*Real.exp (width probeSigma n*x)/x ≤
+      ‖sinc ((width probeSigma n:ℂ)*(Complex.I*(x:ℂ)))‖ := by
+    rw [native_real_factor_norm (width_pos probeSigma_pos n) hxp]
+    exact real_sinhc_head_lower (width_pos probeSigma_pos n) hx
+  have hprod := Finset.prod_le_prod (fun n (_ : n∈range K) =>
+    (div_pos (mul_pos (headConstant_pos (width_pos probeSigma_pos n)) (Real.exp_pos _)) hxp).le)
+    (fun n _ => hf n)
+  rw [← norm_prod] at hprod
+  have he : (∏ n ∈ range K, headConstant (width probeSigma n)*Real.exp (width probeSigma n*x)/x) =
+      (∏ n ∈ range K, headConstant (width probeSigma n))*
+        Real.exp ((probeSigma-probeSigma/((K:ℝ)+1))*x)/x^K := by
+    rw [Finset.prod_div_distrib, Finset.prod_mul_distrib, ← Real.exp_sum,
+      ← Finset.sum_mul, sum_width_range]
+    simp only [Finset.prod_const, Finset.card_range]
+  rw [he] at hprod
+  exact hprod.trans (native_product_norm_ge_prefix K hxp)
+
+
+
+theorem native_probeV_product_formula {z : ℂ} (hz : 0 < z.re) :
+    probeLaplace probeV z = Complex.exp (-z*(probeSigma:ℂ)) *
+      ((z-1/2)^3*(z+1/2)/(z+3/2)) * product probeSigma (Complex.I*z) := by
+  have h1 : z+(1/2:ℂ) ≠ 0 := by
+    intro h
+    have hr := congrArg Complex.re h
+    norm_num at hr
+    linarith
+  have h3 : z+(3/2:ℂ) ≠ 0 := by
+    intro h
+    have hr := congrArg Complex.re h
+    norm_num at hr
+    linarith
+  have hp : ((Complex.I*z)^2+1/4)^2 = (z-1/2)^2*(z+1/2)^2 := by
+    simp only [mul_pow, Complex.I_sq]
+    ring
+  have hr : ∀ a b c : ℂ, b ≠ 0 → c ≠ 0 →
+      a/(b*c)*(a^2*b^2) = a^3*b/c := by
+    intro a b c hb hc
+    field_simp <;> ring
+  rw [probeV_laplace hz.le, JPlus_one_copy_formula, hp]
+  unfold CCM.nativeCompletionRationalMultiplier
+  calc
+    _ = Complex.exp (-z*(probeSigma:ℂ)) *
+        (((z-1/2)/((z+1/2)*(z+3/2)))*((z-1/2)^2*(z+1/2)^2)) *
+          product probeSigma (Complex.I*z) := by ring
+    _ = _ := by rw [hr (z-1/2) (z+1/2) (z+3/2) h1 h3]
+theorem native_probeV_norm {z : ℂ} (hz : 0 < z.re) :
+    ‖probeLaplace probeV z‖ = Real.exp (-probeSigma*z.re) *
+      (‖z-1/2‖^3*‖z+1/2‖/‖z+3/2‖) * ‖product probeSigma (Complex.I*z)‖ := by
+  rw [native_probeV_product_formula hz]
+  simp only [norm_mul, norm_div, norm_pow, Complex.norm_exp, Complex.mul_re,
+    Complex.neg_re, Complex.neg_im, Complex.ofReal_re, Complex.ofReal_im,
+    mul_zero, sub_zero]
+  congr 2
+  congr 1
+  ring
+
+
+theorem nativePrefixConstant_pos (K : ℕ) : 0<nativePrefixConstant K := by
+  unfold nativePrefixConstant
+  apply div_pos (Finset.prod_pos (fun n _ => headConstant_pos (width_pos probeSigma_pos n)))
+  norm_num
+
+theorem real_native_integer_coefficient (x : ℝ) (n : ℕ) :
+    CCM.nativeIntegerLaplaceCoefficient (x:ℂ) n =
+      ((CCM.nativeIntegerCoefficient n*Real.exp (-x*Real.log n):ℝ):ℂ) := by
+  simp only [CCM.nativeIntegerLaplaceCoefficient, Complex.ofReal_mul,
+    Complex.ofReal_exp, Complex.ofReal_neg]
+
+theorem native_zeta_real_re_ge_one {x : ℝ} (hx : 1/2<x) :
+    1≤(riemannZeta ((x:ℂ)+1/2)).re := by
+  have hxc : 1/2<(x:ℂ).re := by simpa using hx
+  have hs := (CCM.nativeIntegerLaplaceCoefficient_summable_norm hxc).of_norm
+  have hsum := Complex.reCLM.hasSum hs.hasSum
+  rw [CCM.nativeIntegerLaplaceCoefficient_tsum hxc] at hsum
+  have hn (n : ℕ) : 0≤(CCM.nativeIntegerLaplaceCoefficient (x:ℂ) n).re := by
+    rw [real_native_integer_coefficient]
+    simp only [Complex.ofReal_re]
+    unfold CCM.nativeIntegerCoefficient
+    positivity
+  calc
+    1 = ∑ n ∈ ({1}:Finset ℕ), (CCM.nativeIntegerLaplaceCoefficient (x:ℂ) n).re := by
+      simp [CCM.nativeIntegerLaplaceCoefficient, CCM.nativeIntegerCoefficient]
+    _ ≤ ∑' n : ℕ, (CCM.nativeIntegerLaplaceCoefficient (x:ℂ) n).re :=
+      hsum.summable.sum_le_tsum _ (fun n _ => hn n)
+    _ = _ := hsum.tsum_eq
+
+theorem native_probeW_norm_ge_V {x : ℝ} (hx : 1≤x) :
+    ‖probeLaplace probeV (x:ℂ)‖≤‖probeLaplace probeW (x:ℂ)‖ := by
+  have hxpos : 0<(x:ℂ).re := by simpa using (show 0<x by linarith)
+  have hxne : (x:ℂ)≠1/2 := by
+    intro he
+    have h := congrArg Complex.re he
+    norm_num at h
+    linarith
+  have hreal := native_zeta_real_re_ge_one (show 1/2<x by linarith)
+  have hzeta : 1≤‖riemannZeta ((x:ℂ)+1/2)‖ := hreal.trans (Complex.re_le_norm _)
+  have he : probeLaplace probeW (x:ℂ) =
+      probeLaplace probeV (x:ℂ)*riemannZeta ((x:ℂ)+1/2) := by
+    rw [probeW_laplace hxpos hxne,probeV_laplace hxpos.le]
+    ring
+  rw [he,norm_mul]
+  simpa only [mul_one] using mul_le_mul_of_nonneg_left hzeta (norm_nonneg (probeLaplace probeV (x:ℂ)))
+
+theorem real_probe_rational_lower {x : ℝ} (hx : 2≤x) :
+    x^3/16≤(x-1/2)^3*(x+1/2)/(x+3/2) := by
+  have hxp : 0<x := by linarith
+  have hxm : 0<x-1/2 := by linarith
+  have hminus : x/2≤x-1/2 := by linarith
+  have hnum : (x/2)^3*x≤(x-1/2)^3*(x+1/2) :=
+    mul_le_mul (pow_le_pow_left₀ (by positivity) hminus 3) (by linarith) hxp.le (by positivity)
+  have hden : x+3/2≤2*x := by linarith
+  calc
+    _ = (x/2)^3*x/(2*x) := by field_simp; ring
+    _ ≤ _ := div_le_div₀ (by positivity) hnum (by positivity) hden
+
+/-- Every fixed prefix gives the exact subexponential lower form, with a
+signed integer power (there is no truncated natural subtraction). -/
+theorem native_probeW_real_laplace_lower (K : ℕ) :
+    0<nativePrefixConstant K ∧ ∀ x : ℝ, 2≤x →
+      nativePrefixConstant K*x^((3:ℤ)-(K:ℤ))*Real.exp (-probeSigma*x/((K:ℝ)+1)) ≤
+        ‖probeLaplace probeW (x:ℂ)‖ := by
+  refine ⟨nativePrefixConstant_pos K, ?_⟩
+  intro x hx
+  have hxp : 0<x := by linarith
+  have hxc : 0<(x:ℂ).re := by simpa using hxp
+  have hxm : 0<x-1/2 := by linarith
+  have hC : 0<(∏ n ∈ range K, headConstant (width probeSigma n)) :=
+    Finset.prod_pos (fun n _ => headConstant_pos (width_pos probeSigma_pos n))
+  have hp := native_real_product_prefix_growth K (show 1≤x by linarith)
+  have hr := real_probe_rational_lower hx
+  have hnorm : ‖probeLaplace probeV (x:ℂ)‖ = Real.exp (-probeSigma*x)*
+      ((x-1/2)^3*(x+1/2)/(x+3/2))*‖product probeSigma (Complex.I*(x:ℂ))‖ := by
+    have hm : ‖(x:ℂ)-(1/2:ℂ)‖=x-1/2 := by
+      rw [show (x:ℂ)-(1/2:ℂ)=((x-1/2:ℝ):ℂ) by push_cast; rfl,
+        Complex.norm_real, Real.norm_eq_abs, abs_of_pos hxm]
+    have hp : ‖(x:ℂ)+(1/2:ℂ)‖=x+1/2 := by
+      rw [show (x:ℂ)+(1/2:ℂ)=((x+1/2:ℝ):ℂ) by push_cast; rfl,
+        Complex.norm_real, Real.norm_eq_abs, abs_of_pos (by linarith)]
+    have hd : ‖(x:ℂ)+(3/2:ℂ)‖=x+3/2 := by
+      rw [show (x:ℂ)+(3/2:ℂ)=((x+3/2:ℝ):ℂ) by push_cast; rfl,
+        Complex.norm_real, Real.norm_eq_abs, abs_of_pos (by linarith)]
+    rw [native_probeV_norm hxc,hm,hp,hd]
+    rfl
+  have hm := mul_le_mul hr hp
+    (by positivity : 0≤(∏ n ∈ range K, headConstant (width probeSigma n))*
+      Real.exp ((probeSigma-probeSigma/((K:ℝ)+1))*x)/x^K)
+    (by positivity : 0≤(x-1/2)^3*(x+1/2)/(x+3/2))
+  have hb := mul_le_mul_of_nonneg_left hm (Real.exp_pos (-probeSigma*x)).le
+  have he : Real.exp (-probeSigma*x)*
+      (x^3/16*((∏ n ∈ range K, headConstant (width probeSigma n))*
+        Real.exp ((probeSigma-probeSigma/((K:ℝ)+1))*x)/x^K)) =
+      nativePrefixConstant K*x^((3:ℤ)-(K:ℤ))*Real.exp (-probeSigma*x/((K:ℝ)+1)) := by
+    rw [zpow_sub₀ hxp.ne', zpow_natCast]
+    norm_num only [zpow_ofNat]
+    unfold nativePrefixConstant
+    have hex : Real.exp (-probeSigma*x)*Real.exp ((probeSigma-probeSigma/((K:ℝ)+1))*x) =
+        Real.exp (-probeSigma*x/((K:ℝ)+1)) := by
+      rw [← Real.exp_add]
+      congr 1
+      ring
+    calc
+      _ = ((∏ n ∈ range K, headConstant (width probeSigma n))/16)*(x^3/x^K)*
+          (Real.exp (-probeSigma*x)*Real.exp ((probeSigma-probeSigma/((K:ℝ)+1))*x)) := by ring
+      _ = _ := by rw [hex]
+  rw [he] at hb
+  have hbV : nativePrefixConstant K*x^((3:ℤ)-(K:ℤ))*Real.exp (-probeSigma*x/((K:ℝ)+1)) ≤
+      ‖probeLaplace probeV (x:ℂ)‖ := by
+    rw [hnorm]
+    simpa only [mul_assoc] using hb
+  exact hbV.trans (native_probeW_norm_ge_V (show 1≤x by linarith))
+
+
+
+theorem native_real_factor_complex_eq (n : ℕ) {x : ℝ} (hx : 0<x) :
+    sinc ((width probeSigma n:ℂ)*(Complex.I*(x:ℂ))) =
+      ((Real.sinh (width probeSigma n*x)/(width probeSigma n*x):ℝ):ℂ) := by
+  have he : (width probeSigma n:ℂ)*(Complex.I*(x:ℂ)) =
+      Complex.I*((width probeSigma n*x:ℝ):ℂ) := by push_cast; ring
+  rw [he,native_real_factor_eq _ (mul_ne_zero (width_pos probeSigma_pos n).ne' hx.ne')]
+
+theorem native_real_product_im_and_re {x : ℝ} (hx : 0<x) :
+    (product probeSigma (Complex.I*(x:ℂ))).im=0 ∧
+    1≤(product probeSigma (Complex.I*(x:ℂ))).re := by
+  have hf (N : ℕ) : (∏ n ∈ range N, sinc ((width probeSigma n:ℂ)*(Complex.I*(x:ℂ)))) =
+      ((∏ n ∈ range N, Real.sinh (width probeSigma n*x)/(width probeSigma n*x):ℝ):ℂ) := by
+    simp_rw [native_real_factor_complex_eq _ hx]
+    push_cast
+    rfl
+  have ht := tendsto_partial_product probeSigma_pos.le (Complex.I*(x:ℂ))
+  constructor
+  · have hi := (Complex.continuous_im.tendsto _).comp ht
+    have he : (fun N : ℕ => (∏ n ∈ range N, sinc ((width probeSigma n:ℂ)*(Complex.I*(x:ℂ)))).im) =
+        fun _ : ℕ => (0:ℝ) := by funext N; rw [hf]; simp only [Complex.ofReal_im]
+    simp only [Function.comp_def] at hi
+    rw [he] at hi
+    exact tendsto_nhds_unique hi tendsto_const_nhds
+  · apply le_of_tendsto_of_tendsto' tendsto_const_nhds ((Complex.continuous_re.tendsto _).comp ht)
+    intro N
+    change 1≤(∏ n ∈ range N, sinc ((width probeSigma n:ℂ)*(Complex.I*(x:ℂ)))).re
+    rw [hf]
+    simp only [Complex.ofReal_re]
+    apply Finset.one_le_prod
+    intro n _
+    apply (one_le_div (mul_pos (width_pos probeSigma_pos n) hx)).2
+    exact Real.self_le_sinh_iff.mpr (mul_pos (width_pos probeSigma_pos n) hx).le
+
+theorem native_zeta_real_im_eq_zero {x : ℝ} (hx : 1/2<x) :
+    (riemannZeta ((x:ℂ)+1/2)).im=0 := by
+  have hxc : 1/2<(x:ℂ).re := by simpa using hx
+  have hs := (CCM.nativeIntegerLaplaceCoefficient_summable_norm hxc).of_norm
+  have h := (Complex.imCLM.hasSum hs.hasSum).tsum_eq
+  rw [CCM.nativeIntegerLaplaceCoefficient_tsum hxc] at h
+  change (∑' n : ℕ, (CCM.nativeIntegerLaplaceCoefficient (x:ℂ) n).im) =
+    (riemannZeta ((x:ℂ)+1/2)).im at h
+  have hn (n : ℕ) : (CCM.nativeIntegerLaplaceCoefficient (x:ℂ) n).im=0 := by
+    rw [real_native_integer_coefficient]
+    simp only [Complex.ofReal_im]
+  simpa only [hn,tsum_zero] using h.symm
+
+/-- The same actual W is real and strictly positive on this real half-line. -/
+theorem native_probeW_real_positive {x : ℝ} (hx : 2≤x) :
+    (probeLaplace probeW (x:ℂ)).im=0 ∧
+    0<(probeLaplace probeW (x:ℂ)).re ∧
+    ‖probeLaplace probeW (x:ℂ)‖=(probeLaplace probeW (x:ℂ)).re := by
+  have hxp : 0<x := by linarith
+  have hxc : 0<(x:ℂ).re := by simpa using hxp
+  have hxne : (x:ℂ)≠1/2 := by
+    intro he
+    have h := congrArg Complex.re he
+    norm_num at h
+    linarith
+  have hp := native_real_product_im_and_re hxp
+  have hzi := native_zeta_real_im_eq_zero (show 1/2<x by linarith)
+  have hzr := native_zeta_real_re_ge_one (show 1/2<x by linarith)
+  let r : ℝ := (x-1/2)^3*(x+1/2)/(x+3/2)
+  have hrpos : 0<r := by
+    have hm : 0<x-1/2 := by linarith
+    dsimp only [r]
+    positivity
+  have hex : Complex.exp (-(x:ℂ)*(probeSigma:ℂ)) = ((Real.exp (-probeSigma*x):ℝ):ℂ) := by
+    rw [Complex.ofReal_exp]
+    congr 1
+    push_cast
+    ring
+  have hrat : ((x:ℂ)-1/2)^3*((x:ℂ)+1/2)/((x:ℂ)+3/2) = (r:ℂ) := by
+    dsimp only [r]
+    push_cast
+    rfl
+  have hW : probeLaplace probeW (x:ℂ) =
+      ((Real.exp (-probeSigma*x):ℝ):ℂ)*(r:ℂ)*product probeSigma (Complex.I*(x:ℂ))*
+        riemannZeta ((x:ℂ)+1/2) := by
+    have he : probeLaplace probeW (x:ℂ) =
+        probeLaplace probeV (x:ℂ)*riemannZeta ((x:ℂ)+1/2) := by
+      rw [probeW_laplace hxc hxne,probeV_laplace hxc.le]
+      ring
+    rw [he,native_probeV_product_formula hxc,hex,hrat]
+  have hIm : (probeLaplace probeW (x:ℂ)).im=0 := by
+    rw [hW]
+    simp only [Complex.mul_im,Complex.mul_re,Complex.ofReal_re,Complex.ofReal_im,
+      hp.1,hzi,zero_mul,mul_zero,sub_zero,add_zero,zero_add]
+  have hRe : (probeLaplace probeW (x:ℂ)).re = Real.exp (-probeSigma*x)*r*
+      (product probeSigma (Complex.I*(x:ℂ))).re*(riemannZeta ((x:ℂ)+1/2)).re := by
+    rw [hW]
+    simp only [Complex.mul_re,Complex.mul_im,Complex.ofReal_re,Complex.ofReal_im,
+      hp.1,hzi,zero_mul,mul_zero,sub_zero,add_zero,zero_add]
+  have hPos : 0<(probeLaplace probeW (x:ℂ)).re := by
+    rw [hRe]
+    have hp0 : 0<(product probeSigma (Complex.I*(x:ℂ))).re := by linarith [hp.2]
+    have hz0 : 0<(riemannZeta ((x:ℂ)+1/2)).re := by linarith
+    positivity
+  refine ⟨hIm,hPos,?_⟩
+  have he : probeLaplace probeW (x:ℂ) = ((probeLaplace probeW (x:ℂ)).re:ℂ) := by
+    apply Complex.ext
+    · simp
+    · simpa using hIm
+  rw [he,Complex.norm_real,Real.norm_eq_abs,abs_of_pos hPos]
+  simp only [Complex.ofReal_re]
+
+theorem native_probeW_real_laplace_scalar_lower (K : ℕ) :
+    0<nativePrefixConstant K ∧ ∀ x : ℝ, 2≤x →
+      (probeLaplace probeW (x:ℂ)).im=0 ∧
+      ‖probeLaplace probeW (x:ℂ)‖=(probeLaplace probeW (x:ℂ)).re ∧
+      nativePrefixConstant K*x^((3:ℤ)-(K:ℤ))*Real.exp (-probeSigma*x/((K:ℝ)+1)) ≤
+        (probeLaplace probeW (x:ℂ)).re := by
+  refine ⟨nativePrefixConstant_pos K,?_⟩
+  intro x hx
+  have h := native_probeW_real_positive hx
+  refine ⟨h.1,h.2.2,?_⟩
+  rw [←h.2.2]
+  exact (native_probeW_real_laplace_lower K).2 x hx
+
+
+
+/-- Independent literal physical/source consumer of the full scalar statement. -/
+theorem native_probeW_real_laplace_literal_contract (K : ℕ) :
+    let C : ℝ := (∏ n ∈ range K,
+      (1-Real.exp (-2*width probeSigma n))/(2*width probeSigma n))/16
+    0<C ∧ ∀ x : ℝ, 2≤x →
+      (∫ t : ℝ, Complex.exp (-(x:ℂ)*(t:ℂ))*probeW t).im=0 ∧
+      ‖∫ t : ℝ, Complex.exp (-(x:ℂ)*(t:ℂ))*probeW t‖ =
+        (∫ t : ℝ, Complex.exp (-(x:ℂ)*(t:ℂ))*probeW t).re ∧
+      C*x^((3:ℤ)-(K:ℤ))*Real.exp (-probeSigma*x/((K:ℝ)+1)) ≤
+        (∫ t : ℝ, Complex.exp (-(x:ℂ)*(t:ℂ))*probeW t).re :=
+  native_probeW_real_laplace_scalar_lower K
+
+theorem native_probeW_fourth_prefix_power_control (x : ℝ) :
+    x^((3:ℤ)-(4:ℤ)) = x⁻¹ := by norm_num
+
+end NativeRealLaplace
+
+theorem native_probeW_real_laplace_scalar_lower (K : ℕ) :
+    0 < NativeRealLaplace.nativePrefixConstant K ∧ ∀ x : ℝ, 2 ≤ x →
+      (probeLaplace probeW (x:ℂ)).im = 0 ∧
+      ‖probeLaplace probeW (x:ℂ)‖ = (probeLaplace probeW (x:ℂ)).re ∧
+      NativeRealLaplace.nativePrefixConstant K * x ^ ((3:ℤ)-(K:ℤ)) *
+        Real.exp (-probeSigma*x/((K:ℝ)+1)) ≤ (probeLaplace probeW (x:ℂ)).re :=
+  NativeRealLaplace.native_probeW_real_laplace_scalar_lower K
+
+theorem native_probeW_real_laplace_arbitrarily_small_rate (h : ℝ) (hh : 0 < h) :
+    ∃ K : ℕ, probeSigma / ((K:ℝ)+1) < h := by
+  obtain ⟨K,hK⟩ := exists_nat_gt (probeSigma / h)
+  refine ⟨K,?_⟩
+  apply (div_lt_iff₀ (by positivity : (0:ℝ) < (K:ℝ)+1)).mpr
+  have hmul := (div_lt_iff₀ hh).mp hK
+  nlinarith
+
+
+section NativeCompactBernoulli
+open NativeBernoulli
+set_option backward.isDefEq.respectTransparency.types false
+theorem probe_normalized_periodic_bernoulli_pseries_bound {k : ℕ} (hk : 2 ≤ k) (x : ℝ) :
+    |bernoulliFun k (Int.fract x)| / (k.factorial : ℝ) ≤
+      2 * (∑' n : ℕ, 1 / (n : ℝ) ^ k) / (2 * Real.pi) ^ k := by
+  have hs := hasSum_one_div_nat_pow_mul_fourier hk
+    (show Int.fract x ∈ Icc (0 : ℝ) 1 from ⟨Int.fract_nonneg x,(Int.fract_lt_one x).le⟩)
+  have hp : Summable (fun n : ℕ => 1 / (n : ℝ) ^ k) :=
+    Real.summable_one_div_nat_pow.mpr (by omega)
+  have hmajor : HasSum (fun n : ℕ => 2 / (n : ℝ) ^ k)
+      (2 * ∑' n : ℕ, 1 / (n : ℝ) ^ k) := by
+    simpa only [mul_one_div] using hp.hasSum.mul_left 2
+  have hnorm (n : ℤ) : ‖fourier n (↑(Int.fract x) : UnitAddCircle)‖ = 1 := Circle.norm_coe _
+  have hterm (n : ℕ) : ‖(1 : ℂ) / (n : ℂ) ^ k *
+      (fourier n (↑(Int.fract x) : UnitAddCircle) + (-1 : ℂ) ^ k * fourier (-n) (↑(Int.fract x) : UnitAddCircle))‖ ≤
+        2 / (n : ℝ) ^ k := by
+    have hb : ‖fourier n (↑(Int.fract x) : UnitAddCircle) +
+        (-1 : ℂ) ^ k * fourier (-n) (↑(Int.fract x) : UnitAddCircle)‖ ≤ 2 := by
+      have h := norm_add_le (fourier n (↑(Int.fract x) : UnitAddCircle))
+        ((-1 : ℂ) ^ k * fourier (-n) (↑(Int.fract x) : UnitAddCircle))
+      simpa only [norm_mul,norm_pow,norm_neg,norm_one,one_pow,hnorm,one_mul,one_add_one_eq_two] using h
+    rw [norm_mul,norm_div,norm_one,norm_pow,Complex.norm_natCast]
+    have h := mul_le_mul_of_nonneg_left hb
+      (show 0 ≤ 1 / (n : ℝ) ^ k by positivity)
+    calc
+      1 / (n : ℝ)^k * ‖fourier n (↑(Int.fract x) : UnitAddCircle) + (-1 : ℂ)^k * fourier (-n) (↑(Int.fract x) : UnitAddCircle)‖ ≤ 1 / (n : ℝ)^k * 2 := h
+      _ = 2 / (n : ℝ)^k := by ring
+  have hb := hs.norm_le_of_bounded hmajor hterm
+  have hbase : ‖2 * (Real.pi : ℂ) * Complex.I‖ = 2 * Real.pi := by
+    simp only [norm_mul,Complex.norm_ofNat,Complex.norm_real,Real.norm_eq_abs,
+      abs_of_pos Real.pi_pos,Complex.norm_I,mul_one]
+  rw [norm_mul,norm_div,norm_neg,norm_pow,hbase,Complex.norm_natCast,
+    Complex.norm_real,Real.norm_eq_abs] at hb
+  apply (le_div_iff₀ (pow_pos (by positivity : (0 : ℝ) < 2 * Real.pi) k)).mpr
+  calc
+    |bernoulliFun k (Int.fract x)| / (k.factorial : ℝ) * (2 * Real.pi)^k = (2 * Real.pi)^k / (k.factorial : ℝ) * |bernoulliFun k (Int.fract x)| := by ring
+    _ ≤ _ := hb
+
+theorem probe_zeta_nat_real_series {k : ℕ} (hk : 1 < k) :
+    (riemannZeta (k : ℂ)).re = ∑' n : ℕ, 1 / (n : ℝ) ^ k := by
+  have h : riemannZeta (k : ℂ) = (↑(∑' n : ℕ, 1 / (n : ℝ) ^ k) : ℂ) := by
+    rw [zeta_nat_eq_tsum_of_gt_one hk,Complex.ofReal_tsum]
+    congr 1
+    funext n
+    push_cast
+    rfl
+  simpa only [Complex.ofReal_re] using congrArg Complex.re h
+
+theorem probe_normalized_periodic_bernoulli_zeta_bound {k : ℕ} (hk : 2 ≤ k) (x : ℝ) :
+    |bernoulliFun k (Int.fract x)| / (k.factorial : ℝ) ≤
+      2 * (riemannZeta (k : ℂ)).re / (2 * Real.pi) ^ k := by
+  rw [probe_zeta_nat_real_series (by omega : 1 < k)]
+  exact probe_normalized_periodic_bernoulli_pseries_bound hk x
+
+
+theorem probe_compact_bernoulli_integrable (a t : ℝ) (n : ℕ) {f : ℝ → ℝ}
+    (hc : Continuous f) (hs : HasCompactSupport f) :
+    Integrable (fun u => Real.exp (-a * (t + u)) * profilePeriodicBernoulli n (Real.exp (t+u)) * f u) := by
+  obtain ⟨C,hC,hB⟩ := profilePeriodicBernoulli_bound n
+  have hbase : Integrable (fun u => Real.exp (-a * (t+u)) * f u) :=
+    ((by fun_prop : Continuous (fun u : ℝ => Real.exp (-a*(t+u)))).mul hc).integrable_of_hasCompactSupport hs.mul_left
+  have hm : Measurable (fun u : ℝ => profilePeriodicBernoulli n (Real.exp (t+u))) := (profilePeriodicBernoulli_measurable n).comp (by fun_prop)
+  have hmul := hbase.bdd_mul hm.aestronglyMeasurable
+    (Filter.Eventually.of_forall fun u => by rw [Real.norm_eq_abs]; exact hB _)
+  apply hmul.congr
+  exact Filter.Eventually.of_forall fun u => by dsimp; ring
+
+theorem probe_compact_bernoulli_parts (a t ell : ℝ) (hell : 0 ≤ ell) (n : ℕ) (hn : 1 ≤ n)
+    {f f' : ℝ → ℝ} (hc : Continuous f) (hc' : Continuous f')
+    (hd : ∀ u, HasDerivAt f (f' u) u)
+    (hs : Function.support f ⊆ Icc 0 ell) (hs' : Function.support f' ⊆ Icc 0 ell) :
+    (∫ u : ℝ, Real.exp (-a*(t-u)) * profilePeriodicBernoulli n (Real.exp (t-u)) * f u) =
+      (1 / ((n+1:ℕ):ℝ)) * ∫ u : ℝ,
+        Real.exp (-(a+1)*(t-u)) * profilePeriodicBernoulli (n+1) (Real.exp (t-u)) *
+          (f' u + (a+1)*f u) := by
+  let g : ℝ → ℝ := fun v => f (-v)
+  let dg : ℝ → ℝ := fun v => f' (-v)+(a+1)*f (-v)
+  let A : ℝ → ℝ := fun v => Real.exp (-a*(t+v)) * profilePeriodicBernoulli n (Real.exp (t+v)) * g v
+  let B : ℝ → ℝ := fun v => Real.exp (-(a+1)*(t+v)) * profilePeriodicBernoulli (n+1) (Real.exp (t+v)) * dg v
+  let H : ℝ → ℝ := fun v => Real.exp (-(a+1)*(t+v)) * profilePeriodicBernoulli (n+1) (Real.exp (t+v)) * g v
+  have hg : Continuous g := hc.comp continuous_neg
+  have hdg : Continuous dg := (hc'.comp continuous_neg).add ((hc.comp continuous_neg).const_mul _)
+  have hgs : Function.support g ⊆ Icc (-ell) 0 := by
+    intro v hv
+    have hfv : -v ∈ Function.support f := hv
+    have hh := hs hfv
+    constructor <;> linarith [hh.1,hh.2]
+  have hdgs : Function.support dg ⊆ Icc (-ell) 0 := by
+    intro v hv
+    by_contra hh
+    have hn : -v ∉ Icc 0 ell := by intro hv'; apply hh; constructor <;> linarith [hv'.1,hv'.2]
+    have hf0 : f (-v)=0 := by by_contra h; exact hn (hs h)
+    have hf'0 : f' (-v)=0 := by by_contra h; exact hn (hs' h)
+    exact hv (by simp [dg,hf0,hf'0])
+  have hgc : HasCompactSupport g := HasCompactSupport.of_support_subset_isCompact isCompact_Icc hgs
+  have hdgc : HasCompactSupport dg := HasCompactSupport.of_support_subset_isCompact isCompact_Icc hdgs
+  have hiA : Integrable A := probe_compact_bernoulli_integrable a t n hg hgc
+  have hiB : Integrable B := probe_compact_bernoulli_integrable (a+1) t (n+1) hdg hdgc
+  have hAc : Function.support A ⊆ Ioc (-ell-1) 1 := by
+    intro v hv
+    have hv' : v ∈ Function.support g := by intro hh; apply hv; simp [A,hh]
+    have hh := hgs hv'
+    constructor <;> linarith [hh.1,hh.2]
+  have hBc : Function.support B ⊆ Ioc (-ell-1) 1 := by
+    intro v hv
+    have hv' : v ∈ Function.support dg := by intro hh; apply hv; simp [B,hh]
+    have hh := hdgs hv'
+    constructor <;> linarith [hh.1,hh.2]
+  have hHc : Continuous H := by
+    exact ((by fun_prop : Continuous (fun v : ℝ => Real.exp (-(a+1)*(t+v)))).mul
+      ((profilePeriodicBernoulli_continuous (n+1) (by omega)).comp (by fun_prop))).mul hg
+  have hHd (v : ℝ) : HasDerivWithinAt H ((((n+1:ℕ):ℝ))*A v-B v) (Ioi v) v := by
+    have hex : HasDerivAt (fun v : ℝ => Real.exp (t+v)) (Real.exp (t+v)) v := by
+      simpa only [Function.comp_def,mul_one] using! (Real.hasDerivAt_exp (t+v)).comp v ((hasDerivAt_id v).const_add t)
+    have hmaps : MapsTo (fun v : ℝ => Real.exp (t+v)) (Ioi v) (Ioi (Real.exp (t+v))) := by
+      intro y hy
+      change v < y at hy
+      exact Real.exp_lt_exp.mpr (by linarith)
+    have hb := (profilePeriodicBernoulli_right_derivative n (Real.exp (t+v))).scomp v hex.hasDerivWithinAt hmaps
+    have he : HasDerivAt (fun v : ℝ => Real.exp (-(a+1)*(t+v)))
+        (-(a+1)*Real.exp (-(a+1)*(t+v))) v := by
+      convert! ((Real.hasDerivAt_exp (-(a+1)*(t+v))).comp v (((hasDerivAt_id v).const_add t).const_mul (-(a+1)))) using 1 <;> ring
+    have hg' : HasDerivAt g (-f' (-v)) v := by
+      simpa [g,Function.comp_def] using (hd (-v)).comp v ((hasDerivAt_id v).neg)
+    have h := (he.hasDerivWithinAt.mul hb).mul hg'.hasDerivWithinAt
+    have heq : Real.exp (-(a+1)*(t+v))*Real.exp (t+v) = Real.exp (-a*(t+v)) := by
+      rw [← Real.exp_add]
+      congr 1
+      ring
+    convert! h using 1
+    dsimp [H,A,B,g,dg,Function.comp_def] at *
+    linear_combination -((((n+1:ℕ):ℝ))*profilePeriodicBernoulli n (Real.exp (t+v))*f (-v))*heq
+  have hFTC := intervalIntegral.integral_eq_sub_of_hasDeriv_right_of_le
+    (a := -ell-1) (b := 1) (by linarith : -ell-1 ≤ (1:ℝ)) hHc.continuousOn
+    (fun v hv => hHd v) ((hiA.const_mul ((n+1:ℕ):ℝ)).sub hiB).intervalIntegrable
+  have hends : H 1 = 0 ∧ H (-ell-1)=0 := by
+    constructor <;> (dsimp [H,g]; rw [show f (-_) = 0 from ?_]; ring)
+    · by_contra h
+      have hh := hs h
+      linarith [hh.1]
+    · by_contra h
+      have hh := hs h
+      linarith [hh.2]
+  rw [hends.1,hends.2,sub_self,intervalIntegral.integral_sub
+    (hiA.const_mul ((n+1:ℕ):ℝ)).intervalIntegrable hiB.intervalIntegrable,
+    intervalIntegral.integral_const_mul,intervalIntegral.integral_eq_integral_of_support_subset hAc,
+    intervalIntegral.integral_eq_integral_of_support_subset hBc] at hFTC
+  have hA : (∫ v, A v) = ∫ u : ℝ, Real.exp (-a*(t-u))*profilePeriodicBernoulli n (Real.exp (t-u))*f u := by
+    simpa only [A,g,sub_neg_eq_add] using (integral_neg_eq_self (fun u : ℝ => Real.exp (-a*(t-u))*profilePeriodicBernoulli n (Real.exp (t-u))*f u) volume)
+  have hB : (∫ v, B v) = ∫ u : ℝ, Real.exp (-(a+1)*(t-u))*profilePeriodicBernoulli (n+1) (Real.exp (t-u))*(f' u+(a+1)*f u) := by
+    simpa only [B,dg,sub_neg_eq_add] using (integral_neg_eq_self (fun u : ℝ => Real.exp (-(a+1)*(t-u))*profilePeriodicBernoulli (n+1) (Real.exp (t-u))*(f' u+(a+1)*f u)) volume)
+  rw [hA,hB] at hFTC
+  have hn0 : ((n+1:ℕ):ℝ) ≠ 0 := by positivity
+  rw [one_div,mul_comm,← div_eq_mul_inv]
+  apply (eq_div_iff hn0).mpr
+  simpa only [mul_comm] using sub_eq_zero.mp hFTC
+
+
+end NativeCompactBernoulli
+
+/-! S03c/d: literal all-order compact-source IBP and true finite-trial tail. -/
+section NativeCompletedOutputTail
+open NativeBernoulli
+set_option backward.isDefEq.respectTransparency.types false
+def probeBernoulliDifferential (a : ℝ) : ℕ → (ℝ → ℝ)
+  | 0 => jPlus
+  | m+1 => fun u => deriv (probeBernoulliDifferential a m) u +
+      (a+(m:ℝ)+1)*probeBernoulliDifferential a m u
+
+theorem probeBernoulliDifferential_contDiff (a : ℝ) (m : ℕ) :
+    ContDiff ℝ (⊤ : ℕ∞) (probeBernoulliDifferential a m) := by
+  induction m with
+  | zero => exact jPlus_contDiff
+  | succ m ih =>
+    exact (contDiff_infty_iff_deriv.mp ih).2.add (contDiff_const.mul ih)
+
+theorem probeBernoulliDifferential_support (a : ℝ) (m : ℕ) :
+    Function.support (probeBernoulliDifferential a m) ⊆ Icc 0 (2*probeSigma) := by
+  induction m with
+  | zero =>
+    intro u hu
+    by_contra hh
+    exact hu (jPlus_zero_outside hh)
+  | succ m ih =>
+    have ht : tsupport (probeBernoulliDifferential a m) ⊆ Icc 0 (2*probeSigma) :=
+      closure_minimal ih isClosed_Icc
+    have hd := support_deriv_subset (f := probeBernoulliDifferential a m)
+    intro u hu
+    by_contra hh
+    have h0 : probeBernoulliDifferential a m u = 0 := by by_contra h; exact hh (ih h)
+    have hd0 : deriv (probeBernoulliDifferential a m) u = 0 := by by_contra h; exact hh (ht (hd h))
+    exact hu (by simp [probeBernoulliDifferential,h0,hd0])
+
+def probeBernoulliWeightedOscillation (a : ℝ) (n : ℕ) (f : ℝ → ℝ) (t : ℝ) : ℝ :=
+  ∫ u : ℝ, Real.exp (-a*(t-u))*profilePeriodicBernoulli n (Real.exp (t-u))*f u
+
+theorem probeBernoulliDifferential_all_order (a t : ℝ) (n : ℕ) (hn : 1 ≤ n) (m : ℕ) :
+    probeBernoulliWeightedOscillation a n jPlus t =
+      ((n.factorial:ℝ) / ((n+m).factorial:ℝ)) *
+        probeBernoulliWeightedOscillation (a+(m:ℝ)) (n+m) (probeBernoulliDifferential a m) t := by
+  induction m with
+  | zero => simp [probeBernoulliDifferential,Nat.factorial_ne_zero]
+  | succ m ih =>
+    have hcont := probeBernoulliDifferential_contDiff a m
+    have hsupp := probeBernoulliDifferential_support a m
+    have hderiv : Function.support (deriv (probeBernoulliDifferential a m)) ⊆ Icc 0 (2*probeSigma) :=
+      support_deriv_subset.trans (closure_minimal hsupp isClosed_Icc)
+    have hp := probe_compact_bernoulli_parts (a+(m:ℝ)) t (2*probeSigma)
+      ((mul_pos (by norm_num : (0:ℝ)<2) probeSigma_pos).le) (n+m) (by omega)
+      hcont.continuous (hcont.continuous_deriv (by simp))
+      (fun u => ((hcont.differentiable (by simp)).differentiableAt).hasDerivAt) hsupp hderiv
+    have hp' : probeBernoulliWeightedOscillation (a+(m:ℝ)) (n+m) (probeBernoulliDifferential a m) t =
+        (1/((n+m+1:ℕ):ℝ))*probeBernoulliWeightedOscillation (a+((m+1:ℕ):ℝ)) (n+(m+1))
+          (probeBernoulliDifferential a (m+1)) t := by
+      simpa only [probeBernoulliWeightedOscillation,probeBernoulliDifferential,Nat.cast_add,Nat.cast_one,add_assoc] using hp
+    have hcoef : ((n.factorial:ℝ)/((n+m).factorial:ℝ))*(1/((n+m+1:ℕ):ℝ)) =
+        ((n.factorial:ℝ)/((n+(m+1)).factorial:ℝ)) := by
+      rw [show n+(m+1)=(n+m)+1 by omega,Nat.factorial_succ]
+      push_cast
+      field_simp
+    rw [ih,hp',←mul_assoc,hcoef]
+
+
+def probeBernoulliH (a : ℝ) (m : ℕ) : ℝ :=
+  ∫ u : ℝ in Icc 0 (2*probeSigma), Real.exp ((a+(m:ℝ))*u)*|probeBernoulliDifferential a m u|
+
+theorem probeBernoulliH_eq_full (a : ℝ) (m : ℕ) :
+    probeBernoulliH a m = ∫ u : ℝ, Real.exp ((a+(m:ℝ))*u)*|probeBernoulliDifferential a m u| := by
+  apply setIntegral_eq_integral_of_forall_compl_eq_zero
+  intro u hu
+  have hh : probeBernoulliDifferential a m u = 0 := by
+    by_contra h
+    exact hu (probeBernoulliDifferential_support a m h)
+  simp [hh]
+
+theorem probeBernoulliH_nonneg (a : ℝ) (m : ℕ) : 0 ≤ probeBernoulliH a m := by
+  apply integral_nonneg
+  intro u
+  positivity
+
+theorem probeBernoulliDifferential_integrable (a : ℝ) (m : ℕ) :
+    Integrable (fun u : ℝ => Real.exp ((a+(m:ℝ))*u)*|probeBernoulliDifferential a m u|) := by
+  apply Continuous.integrable_of_hasCompactSupport
+  · exact (by fun_prop : Continuous (fun u : ℝ => Real.exp ((a+(m:ℝ))*u))).mul
+      (probeBernoulliDifferential_contDiff a m).continuous.abs
+  · exact (HasCompactSupport.of_support_subset_isCompact isCompact_Icc
+      (probeBernoulliDifferential_support a m)).abs.mul_left
+
+theorem probeBernoulliWeightedOscillation_bound (a t : ℝ) (k : ℕ) (hk : 2 ≤ k)
+    {f : ℝ → ℝ} (hc : Continuous f) (hs : HasCompactSupport f) :
+    |probeBernoulliWeightedOscillation a k f t| ≤
+      (2*(riemannZeta (k:ℂ)).re/(2*Real.pi)^k)*(k.factorial:ℝ)*Real.exp (-a*t)*
+        (∫ u : ℝ, Real.exp (a*u)*|f u|) := by
+  let C : ℝ := 2*(riemannZeta (k:ℂ)).re/(2*Real.pi)^k
+  have hB (x : ℝ) : |profilePeriodicBernoulli k x| ≤ C*(k.factorial:ℝ) := by
+    have hb := probe_normalized_periodic_bernoulli_zeta_bound hk x
+    have hp : (0:ℝ) < k.factorial := by positivity
+    exact (div_le_iff₀ hp).mp (by simpa [C,profilePeriodicBernoulli,profileBernoulliPolynomial,bernoulliFun] using hb)
+  have hC : 0 ≤ C := by
+    have h := hB 0
+    have hp : (0:ℝ) < k.factorial := by positivity
+    have hprod : 0 ≤ C*(k.factorial:ℝ) := (abs_nonneg _).trans h
+    exact nonneg_of_mul_nonneg_left hprod hp
+  have hi : Integrable (fun u : ℝ => Real.exp (a*u)*|f u|) :=
+    ((by fun_prop : Continuous (fun u : ℝ => Real.exp (a*u))).mul hc.abs).integrable_of_hasCompactSupport hs.abs.mul_left
+  have him := hi.const_mul (C*(k.factorial:ℝ)*Real.exp (-a*t))
+  have hb := norm_integral_le_of_norm_le (f := fun u : ℝ => Real.exp (-a*(t-u))*profilePeriodicBernoulli k (Real.exp (t-u))*f u) him (Filter.Eventually.of_forall fun u => ?_)
+  · change |∫ u : ℝ, Real.exp (-a*(t-u))*profilePeriodicBernoulli k (Real.exp (t-u))*f u| ≤ _
+    simpa only [Real.norm_eq_abs,integral_const_mul] using hb
+  · rw [Real.norm_eq_abs,abs_mul,abs_mul,abs_of_pos (Real.exp_pos _)]
+    have he : Real.exp (-a*(t-u)) = Real.exp (-a*t)*Real.exp (a*u) := by
+      rw [← Real.exp_add]
+      congr 1
+      ring
+    rw [he]
+    have h := mul_le_mul_of_nonneg_left (hB (Real.exp (t-u)))
+      (mul_nonneg (mul_nonneg (Real.exp_pos (-a*t)).le (Real.exp_pos (a*u)).le) (abs_nonneg (f u)))
+    nlinarith only [h]
+
+theorem probeBernoulliDifferential_tail_bound (a t : ℝ) (n : ℕ) (hn : 1 ≤ n)
+    (m : ℕ) (hm : 1 ≤ m) :
+    |probeBernoulliWeightedOscillation a n jPlus t| ≤
+      (n.factorial:ℝ) * (2*(riemannZeta ((n+m:ℕ):ℂ)).re/(2*Real.pi)^(n+m))*
+        probeBernoulliH a m * Real.exp (-(a+(m:ℝ))*t) := by
+  rw [probeBernoulliDifferential_all_order a t n hn m,abs_mul,
+    abs_of_nonneg (show (0:ℝ) ≤ (n.factorial:ℝ)/((n+m).factorial:ℝ) by positivity)]
+  have hc := probeBernoulliDifferential_contDiff a m
+  have hs : HasCompactSupport (probeBernoulliDifferential a m) :=
+    HasCompactSupport.of_support_subset_isCompact isCompact_Icc (probeBernoulliDifferential_support a m)
+  have h := mul_le_mul_of_nonneg_left
+    (probeBernoulliWeightedOscillation_bound (a+(m:ℝ)) t (n+m) (by omega) hc.continuous hs)
+    (show (0:ℝ) ≤ (n.factorial:ℝ)/((n+m).factorial:ℝ) by positivity)
+  rw [← probeBernoulliH_eq_full a m] at h
+  have hf : ((n+m).factorial:ℝ) ≠ 0 := by positivity
+  have heq : ((n.factorial:ℝ)/((n+m).factorial:ℝ))*
+      ((2*(riemannZeta ((n+m:ℕ):ℂ)).re/(2*Real.pi)^(n+m))*((n+m).factorial:ℝ)*
+        Real.exp (-(a+(m:ℝ))*t)*probeBernoulliH a m) =
+      (n.factorial:ℝ) * (2*(riemannZeta ((n+m:ℕ):ℂ)).re/(2*Real.pi)^(n+m))*
+        probeBernoulliH a m * Real.exp (-(a+(m:ℝ))*t) := by field_simp [hf]
+  rw [heq] at h
+  exact h
+
+
+theorem probePeriodicBernoulli_two (x : ℝ) :
+    profilePeriodicBernoulli 2 x = OPICAFollowup.bernoulliTwo x := by
+  change bernoulliFun 2 (Int.fract x) = _
+  rw [bernoulliFun_two]
+  unfold OPICAFollowup.bernoulliTwo
+  ring
+
+theorem native_completed_output_bernoulli_remainder_bound (m : ℕ) (hm : 1 ≤ m) (t : ℝ) :
+    |probeBernoulliRemainder t| ≤
+      (2*(riemannZeta ((m+1:ℕ):ℂ)).re/(2*Real.pi)^(m+1))*probeBernoulliH (1/2) m *
+        Real.exp (-((m:ℝ)+1/2)*t) +
+      (4*(riemannZeta ((m+2:ℕ):ℂ)).re/(2*Real.pi)^(m+2))*probeBernoulliH (3/2) m *
+        Real.exp (-((m:ℝ)+3/2)*t) := by
+  have h1 := probeBernoulliDifferential_tail_bound (1/2) t 1 (by omega) m hm
+  have h2 := probeBernoulliDifferential_tail_bound (3/2) t 2 (by omega) m hm
+  have he1 : probeBernoulliWeightedOscillation (1/2) 1 jPlus t =
+      probeBernoulliOscillation (1/2) OPICAFollowup.bernoulliOneRight t := by
+    simp only [probeBernoulliWeightedOscillation,profilePeriodicBernoulli_one,probeBernoulliOscillation]
+  have he2 : probeBernoulliWeightedOscillation (3/2) 2 jPlus t =
+      probeBernoulliOscillation (3/2) OPICAFollowup.bernoulliTwo t := by
+    simp only [probeBernoulliWeightedOscillation,probePeriodicBernoulli_two,probeBernoulliOscillation]
+  rw [he1] at h1
+  rw [he2] at h2
+  have h := (abs_add_le (-probeBernoulliOscillation (1/2) OPICAFollowup.bernoulliOneRight t)
+      (probeBernoulliOscillation (3/2) OPICAFollowup.bernoulliTwo t)).trans (add_le_add (by simpa only [abs_neg] using h1) h2)
+  simpa only [probeBernoulliRemainder,Nat.factorial_one,Nat.factorial_two,Nat.cast_one,Nat.cast_ofNat,
+    one_mul,mul_div_assoc,←mul_assoc,show 1+m=m+1 by omega,show 2+m=m+2 by omega,
+    show (1/2:ℝ)+(m:ℝ)=(m:ℝ)+1/2 by ring,show (3/2:ℝ)+(m:ℝ)=(m:ℝ)+3/2 by ring,
+    show (2:ℝ)*2=4 by norm_num] using h
+
+def probeBernoulliZetaConstant (k : ℕ) : ℝ := 2*(riemannZeta (k:ℂ)).re/(2*Real.pi)^k
+
+theorem probeBernoulliZetaConstant_nonneg {k : ℕ} (hk : 2 ≤ k) :
+    0 ≤ probeBernoulliZetaConstant k := by
+  unfold probeBernoulliZetaConstant
+  rw [probe_zeta_nat_real_series (by omega : 1<k)]
+  apply div_nonneg
+  · apply mul_nonneg (by norm_num)
+    exact tsum_nonneg (fun n => by positivity)
+  · positivity
+
+def probeBernoulliRemainderRateConstant (m : ℕ) : ℝ :=
+  probeBernoulliZetaConstant (m+1)*probeBernoulliH (1/2) m +
+    2*probeBernoulliZetaConstant (m+2)*probeBernoulliH (3/2) m
+
+theorem probeBernoulliRemainderRateConstant_nonneg {m : ℕ} (hm : 1 ≤ m) :
+    0 ≤ probeBernoulliRemainderRateConstant m := by
+  exact add_nonneg (mul_nonneg (probeBernoulliZetaConstant_nonneg (by omega)) (probeBernoulliH_nonneg _ _))
+    (mul_nonneg (mul_nonneg (by norm_num) (probeBernoulliZetaConstant_nonneg (by omega))) (probeBernoulliH_nonneg _ _))
+
+theorem probeBernoulliRemainder_single_rate (m : ℕ) (hm : 1 ≤ m) {t : ℝ} (ht : 0 ≤ t) :
+    |probeBernoulliRemainder t| ≤ probeBernoulliRemainderRateConstant m * Real.exp (-((m:ℝ)+1/2)*t) := by
+  have hb := native_completed_output_bernoulli_remainder_bound m hm t
+  have he : Real.exp (-((m:ℝ)+3/2)*t) ≤ Real.exp (-((m:ℝ)+1/2)*t) :=
+    Real.exp_le_exp.mpr (by nlinarith)
+  have hC : 0 ≤ 2*probeBernoulliZetaConstant (m+2)*probeBernoulliH (3/2) m :=
+    mul_nonneg (mul_nonneg (by norm_num) (probeBernoulliZetaConstant_nonneg (by omega))) (probeBernoulliH_nonneg _ _)
+  have hmulte := mul_le_mul_of_nonneg_left he hC
+  have hfour : 4*(riemannZeta ((m+2:ℕ):ℂ)).re/(2*Real.pi)^(m+2) =
+      2*probeBernoulliZetaConstant (m+2) := by unfold probeBernoulliZetaConstant; ring
+  rw [hfour] at hb
+  calc
+    |probeBernoulliRemainder t| ≤
+        probeBernoulliZetaConstant (m+1)*probeBernoulliH (1/2) m*Real.exp (-((m:ℝ)+1/2)*t) +
+          2*probeBernoulliZetaConstant (m+2)*probeBernoulliH (3/2) m*Real.exp (-((m:ℝ)+3/2)*t) := hb
+    _ ≤ probeBernoulliZetaConstant (m+1)*probeBernoulliH (1/2) m*Real.exp (-((m:ℝ)+1/2)*t) +
+          2*probeBernoulliZetaConstant (m+2)*probeBernoulliH (3/2) m*Real.exp (-((m:ℝ)+1/2)*t) := add_le_add le_rfl hmulte
+    _ = _ := by unfold probeBernoulliRemainderRateConstant; ring
+
+theorem probeBernoulliRemainder_every_fixed_exponential (L : ℝ) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ t : ℝ, 0 ≤ t → |probeBernoulliRemainder t| ≤ C*Real.exp (-L*t) := by
+  obtain ⟨m,hm⟩ := exists_nat_gt (max 1 L)
+  have hm1 : 1 ≤ m := by have h := (le_max_left 1 L).trans_lt hm; exact_mod_cast h.le
+  refine ⟨probeBernoulliRemainderRateConstant m,probeBernoulliRemainderRateConstant_nonneg hm1,?_⟩
+  intro t ht
+  have hrate : L ≤ (m:ℝ)+1/2 := by linarith [le_max_right 1 L]
+  apply (probeBernoulliRemainder_single_rate m hm1 ht).trans
+  exact mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr (by nlinarith))
+    (probeBernoulliRemainderRateConstant_nonneg hm1)
+
+def probeSparseResidualPhysical (x : ℕ →₀ ℂ) (t : ℝ) : ℂ :=
+  probeV t - ∑ n ∈ x.support, x n*((CCM.nativeIntegerCoefficient n:ℂ)*probeW (t-Real.log n))
+
+def probeFiniteBernoulliRemainder (x : ℕ →₀ ℂ) (t : ℝ) : ℂ :=
+  -∑ n ∈ x.support, x n*((CCM.nativeIntegerCoefficient n:ℂ)*(probeBernoulliRemainder (t-Real.log n):ℂ))
+
+theorem probeSparseResidualPhysical_coeFn (x : ℕ →₀ ℂ) :
+    probeSparseResidual x =ᵐ[volume] probeSparseResidualPhysical x :=
+  probeSparseResidual_coeFn x
+
+theorem probeFiniteBernoulliRemainder_identity (x : ℕ →₀ ℂ) {t : ℝ}
+    (ht : 2*probeSigma ≤ t)
+    (hnative : ∀ n ∈ x.support, n ≠ 0 → 2*probeSigma ≤ t-Real.log n) :
+    probeSparseResidualPhysical x t = probeNativeTailAmplitude *
+      (1 + probeSparseFirstMoment x / 12)*Complex.exp (-(3/2:ℂ)*(t:ℂ)) +
+        probeFiniteBernoulliRemainder x t := by
+  have hterm (n : ℕ) (hn : n ∈ x.support) :
+      (CCM.nativeIntegerCoefficient n:ℂ)*probeW (t-Real.log n) =
+        -(probeNativeTailAmplitude/12)*(n:ℂ)*Complex.exp (-(3/2:ℂ)*(t:ℂ)) +
+          (CCM.nativeIntegerCoefficient n:ℂ)*(probeBernoulliRemainder (t-Real.log n):ℂ) := by
+    by_cases hn0 : n=0
+    · subst n
+      simp [CCM.nativeIntegerCoefficient]
+    rw [native_completed_output_bernoulli_identity (hnative n hn hn0),mul_add]
+    congr 1
+    have heq : Complex.exp (-(3/2:ℂ)*((t-Real.log n:ℝ):ℂ)) =
+        Complex.exp (-(3/2:ℂ)*(t:ℂ))*(Real.exp (3*Real.log n/2):ℂ) := by
+      rw [Complex.ofReal_exp,←Complex.exp_add]
+      congr 1
+      push_cast
+      ring
+    rw [heq]
+    have hweight : (CCM.nativeIntegerCoefficient n:ℂ)*(Real.exp (3*Real.log n/2):ℂ) = (n:ℂ) := by
+      simpa only [Complex.ofReal_mul,Complex.ofReal_natCast] using
+        congrArg (fun r:ℝ => (r:ℂ)) (probe_integer_weight_growing hn0)
+    calc
+      _ = -(probeNativeTailAmplitude/12)*Complex.exp (-(3/2:ℂ)*(t:ℂ))*
+          ((CCM.nativeIntegerCoefficient n:ℂ)*(Real.exp (3*Real.log n/2):ℂ)) := by
+        unfold probeNativeTailAmplitude
+        ring
+      _ = _ := by rw [hweight]; ring
+  have hsum : (∑ n ∈ x.support, x n*((CCM.nativeIntegerCoefficient n:ℂ)*probeW (t-Real.log n))) =
+      -(probeNativeTailAmplitude/12)*Complex.exp (-(3/2:ℂ)*(t:ℂ))*probeSparseFirstMoment x +
+        ∑ n ∈ x.support, x n*((CCM.nativeIntegerCoefficient n:ℂ)*(probeBernoulliRemainder (t-Real.log n):ℂ)) := by
+    calc
+      _ = ∑ n ∈ x.support, (-(probeNativeTailAmplitude/12)*Complex.exp (-(3/2:ℂ)*(t:ℂ))*((n:ℂ)*x n) +
+          x n*((CCM.nativeIntegerCoefficient n:ℂ)*(probeBernoulliRemainder (t-Real.log n):ℂ))) := by
+        apply Finset.sum_congr rfl
+        intro n hn
+        rw [hterm n hn]
+        ring
+      _ = _ := by rw [Finset.sum_add_distrib,←Finset.mul_sum,←probeSparseFirstMoment_eq_sum]
+  rw [probeSparseResidualPhysical,hsum,probeV_tail ht]
+  unfold probeNativeTailAmplitude probeFiniteBernoulliRemainder
+  ring
+
+def probeFiniteTrialTailThreshold (x : ℕ →₀ ℂ) : ℝ :=
+  2*probeSigma + Real.log (max 1 (x.support.sup id):ℕ)
+
+theorem probeFiniteTrialTailThreshold_native (x : ℕ →₀ ℂ) {t : ℝ}
+    (ht : probeFiniteTrialTailThreshold x ≤ t) :
+    2*probeSigma ≤ t ∧ ∀ n ∈ x.support, n ≠ 0 → 2*probeSigma ≤ t-Real.log n := by
+  let N : ℕ := max 1 (x.support.sup id)
+  have hN : (1:ℕ) ≤ N := le_max_left _ _
+  have hNR : (1:ℝ) ≤ (N:ℝ) := by exact_mod_cast hN
+  have hlog0 : 0 ≤ Real.log (N:ℝ) := Real.log_nonneg hNR
+  have hT : 2*probeSigma+Real.log (N:ℝ) ≤ t := ht
+  refine ⟨by linarith,?_⟩
+  intro n hn hn0
+  have hnN : n ≤ N := (Finset.le_sup (f := id) hn).trans (le_max_right _ _)
+  have hnp : (0:ℝ) < n := by exact_mod_cast Nat.pos_of_ne_zero hn0
+  have hlogs := Real.log_le_log hnp (show (n:ℝ) ≤ N by exact_mod_cast hnN)
+  linarith
+
+theorem native_finite_trial_tail_identity (x : ℕ →₀ ℂ) {t : ℝ}
+    (ht : probeFiniteTrialTailThreshold x ≤ t) :
+    probeSparseResidualPhysical x t = probeNativeTailAmplitude *
+      (1+probeSparseFirstMoment x/12)*Complex.exp (-(3/2:ℂ)*(t:ℂ)) +
+        probeFiniteBernoulliRemainder x t :=
+  probeFiniteBernoulliRemainder_identity x (probeFiniteTrialTailThreshold_native x ht).1
+    (probeFiniteTrialTailThreshold_native x ht).2
+
+
+
+theorem probeFiniteBernoulliRemainder_every_fixed_exponential (x : ℕ →₀ ℂ) (L : ℝ) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ t : ℝ, probeFiniteTrialTailThreshold x ≤ t →
+      ‖probeFiniteBernoulliRemainder x t‖ ≤ C*Real.exp (-L*t) := by
+  obtain ⟨C,hC,hbound⟩ := probeBernoulliRemainder_every_fixed_exponential L
+  let A : ℝ := C*∑ n ∈ x.support, ‖x n‖*CCM.nativeIntegerCoefficient n*Real.exp (L*Real.log n)
+  have hco (n : ℕ) : 0 ≤ CCM.nativeIntegerCoefficient n := by unfold CCM.nativeIntegerCoefficient; positivity
+  have hA : 0 ≤ A := by
+    apply mul_nonneg hC
+    exact Finset.sum_nonneg (fun n hn => mul_nonneg (mul_nonneg (norm_nonneg _) (hco n)) (Real.exp_pos _).le)
+  refine ⟨A,hA,?_⟩
+  intro t ht
+  have hdom := probeFiniteTrialTailThreshold_native x ht
+  have hb (n : ℕ) (hn : n ∈ x.support) :
+      ‖x n*((CCM.nativeIntegerCoefficient n:ℂ)*(probeBernoulliRemainder (t-Real.log n):ℂ))‖ ≤
+        C*‖x n‖*CCM.nativeIntegerCoefficient n*Real.exp (L*Real.log n)*Real.exp (-L*t) := by
+    by_cases hn0 : n=0
+    · subst n
+      simp [CCM.nativeIntegerCoefficient]
+    have ht0 : 0 ≤ t-Real.log n := (mul_pos (by norm_num : (0:ℝ)<2) probeSigma_pos).le.trans (hdom.2 n hn hn0)
+    have he := hbound (t-Real.log n) ht0
+    rw [norm_mul,norm_mul,Complex.norm_real,Real.norm_eq_abs,abs_of_nonneg (hco n),
+      Complex.norm_real,Real.norm_eq_abs]
+    have hmul := mul_le_mul_of_nonneg_left he (mul_nonneg (norm_nonneg (x n)) (hco n))
+    have hex : Real.exp (-L*(t-Real.log n)) = Real.exp (L*Real.log n)*Real.exp (-L*t) := by
+      rw [←Real.exp_add]
+      congr 1
+      ring
+    rw [hex] at hmul
+    nlinarith only [hmul]
+  rw [probeFiniteBernoulliRemainder,norm_neg]
+  calc
+    ‖∑ n ∈ x.support, x n*((CCM.nativeIntegerCoefficient n:ℂ)*(probeBernoulliRemainder (t-Real.log n):ℂ))‖ ≤
+        ∑ n ∈ x.support, ‖x n*((CCM.nativeIntegerCoefficient n:ℂ)*(probeBernoulliRemainder (t-Real.log n):ℂ))‖ := norm_sum_le _ _
+    _ ≤ ∑ n ∈ x.support, C*‖x n‖*CCM.nativeIntegerCoefficient n*Real.exp (L*Real.log n)*Real.exp (-L*t) :=
+      Finset.sum_le_sum (fun n hn => hb n hn)
+    _ = A*Real.exp (-L*t) := by
+      rw [←Finset.sum_mul]
+      congr 1
+      unfold A
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro n hn
+      ring
+
+theorem probeFiniteBernoulliRemainder_superexponential (x : ℕ →₀ ℂ) (L : ℝ) :
+    Tendsto (fun t : ℝ => Real.exp (L*t)*‖probeFiniteBernoulliRemainder x t‖) atTop (𝓝 0) := by
+  obtain ⟨C,hC,hbound⟩ := probeFiniteBernoulliRemainder_every_fixed_exponential x (L+1)
+  have hlim : Tendsto (fun t : ℝ => C*Real.exp (-t)) atTop (𝓝 0) := by
+    simpa only [mul_zero] using Real.tendsto_exp_neg_atTop_nhds_zero.const_mul C
+  apply squeeze_zero' (Filter.Eventually.of_forall fun t => mul_nonneg (Real.exp_pos _).le (norm_nonneg _)) ?_ hlim
+  filter_upwards [eventually_ge_atTop (probeFiniteTrialTailThreshold x)] with t ht
+  have h := mul_le_mul_of_nonneg_left (hbound t ht) (Real.exp_pos (L*t)).le
+  have hex : Real.exp (L*t)*Real.exp (-(L+1)*t) = Real.exp (-t) := by
+    rw [←Real.exp_add]
+    congr 1
+    ring
+  calc
+    _ ≤ Real.exp (L*t)*(C*Real.exp (-(L+1)*t)) := h
+    _ = C*Real.exp (-t) := by rw [mul_left_comm,hex]
+
+/-- The affine constraint cancels exactly the leading physical tail, with no small-residual claim. -/
+theorem native_affine_constraint_superexponential_tail (x : ℕ →₀ ℂ)
+    (hx : probeSparseFirstMoment x = -12) (L : ℝ) :
+    Tendsto (fun t : ℝ => Real.exp (L*t)*‖probeSparseResidualPhysical x t‖) atTop (𝓝 0) := by
+  apply (probeFiniteBernoulliRemainder_superexponential x L).congr'
+  filter_upwards [eventually_ge_atTop (probeFiniteTrialTailThreshold x)] with t ht
+  rw [native_finite_trial_tail_identity x ht,hx]
+  norm_num
+
+
+theorem probeAffineCorrection_late_assignment (x : ℕ →₀ ℂ) (M : ℕ)
+    (hM : ∀ n ∈ x.support, n < M) :
+    x M = 0 ∧ probeAffineCorrection x M M = (-12-probeSparseFirstMoment x)/(M:ℂ) := by
+  have hx : x M = 0 := by
+    by_contra hh
+    have hm := hM M (Finsupp.mem_support_iff.mpr hh)
+    exact (lt_irrefl M) hm
+  exact ⟨hx,by simp [probeAffineCorrection,hx]⟩
+
+/-- Literal source, explicit source-derivative constants, and fixed-trial quantifiers. -/
+theorem native_completed_output_bernoulli_tail :
+    (∀ t : ℝ, 0 ≤ t → CCM.nativePositiveCompletion t =
+      (1/2)*Real.exp (-t/2)-(1/6)*Real.exp (-3*t/2)-Real.exp (-t/2)*
+        OPICAFollowup.bernoulliOneRight (Real.exp t)+Real.exp (-3*t/2)*
+          OPICAFollowup.bernoulliTwo (Real.exp t)) ∧
+    (∀ t : ℝ, 2*probeSigma ≤ t → probeW t =
+      -(JPlus (-3/2:ℂ)/6)*Complex.exp (-(3/2:ℂ)*(t:ℂ))+(probeBernoulliRemainder t:ℂ)) ∧
+    (∀ m : ℕ, 1 ≤ m → ∀ t : ℝ, |probeBernoulliRemainder t| ≤
+      (2*(riemannZeta ((m+1:ℕ):ℂ)).re/(2*Real.pi)^(m+1))*probeBernoulliH (1/2) m *
+        Real.exp (-((m:ℝ)+1/2)*t) +
+      (4*(riemannZeta ((m+2:ℕ):ℂ)).re/(2*Real.pi)^(m+2))*probeBernoulliH (3/2) m *
+        Real.exp (-((m:ℝ)+3/2)*t)) ∧
+    (∀ (x : ℕ →₀ ℂ) (t : ℝ), probeFiniteTrialTailThreshold x ≤ t →
+      probeSparseResidualPhysical x t = probeNativeTailAmplitude*(1+probeSparseFirstMoment x/12)*
+        Complex.exp (-(3/2:ℂ)*(t:ℂ))+probeFiniteBernoulliRemainder x t) ∧
+    (∀ (x : ℕ →₀ ℂ) (L : ℝ),
+      Tendsto (fun t : ℝ => Real.exp (L*t)*‖probeFiniteBernoulliRemainder x t‖) atTop (𝓝 0)) ∧
+    closure probeAffineAttainable = closure (Set.range probeSparseOutput) := by
+  exact ⟨native_floor_bernoulli_expansion,fun t ht => native_completed_output_bernoulli_identity ht,
+    native_completed_output_bernoulli_remainder_bound,fun x t ht => native_finite_trial_tail_identity x ht,
+    probeFiniteBernoulliRemainder_superexponential,native_affine_constraint_closure⟩
+
+
+end NativeCompletedOutputTail
+
+/-! S01e in its full essential-support L2 scope; no continuous representative premise. -/
+theorem sourcePrefixColumns_linearIndependent_essential {w : ℝ → ℂ} (hw : MemLp w 2 volume)
+    {α : ℝ} (hα : 0 ≤ α)
+    (hbefore : ∀ᵐ t : ℝ, t < α → w t = 0)
+    (hendpoint : ∀ ε : ℝ, 0 < ε → ¬ (∀ᵐ u : ℝ, u ∈ Set.Ioo α (α+ε) → w u = 0))
+    (M : ℕ) : LinearIndependent ℂ (fun i : Fin M => sourcePrefixColumn hw α M (i.val + 1)) := by
+  classical
+  apply Fintype.linearIndependent_iff.2
+  intro x hx i
+  by_contra hxi
+  let S : Finset (Fin M) := Finset.univ.filter (fun j => x j ≠ 0)
+  have hS : S.Nonempty := ⟨i,Finset.mem_filter.mpr ⟨Finset.mem_univ _,hxi⟩⟩
+  let j : Fin M := S.min' hS
+  have hjS : j ∈ S := Finset.min'_mem S hS
+  have hxj : x j ≠ 0 := (Finset.mem_filter.mp hjS).2
+  have hsmall (m : Fin M) (hm : m < j) : x m = 0 := by
+    by_contra hxm
+    have hmS : m ∈ S := Finset.mem_filter.mpr ⟨Finset.mem_univ _,hxm⟩
+    have hmin : j ≤ m := Finset.min'_le S m hmS
+    exact (not_lt_of_ge hmin) hm
+  let T : ℝ := α + Real.log (M + 1 : ℕ)
+  let H : ℝ → ℂ := fun t => ∑ m : Fin M,
+    x m * ((CCM.nativeIntegerCoefficient (m.val + 1) : ℂ) * w (t - Real.log (m.val + 1 : ℕ)))
+  have hterms (m : Fin M) :
+      (x m • sourcePrefixColumn hw α M (m.val + 1)) =ᵐ[volume] fun t : ℝ =>
+        x m * sourcePrefixProfile w α M (m.val + 1) t := by
+    filter_upwards [Lp.coeFn_smul (x m) (sourcePrefixColumn hw α M (m.val + 1)),
+      sourcePrefixColumn_coeFn hw α M (m.val + 1)] with t hsm hcfn
+    rw [hsm,Pi.smul_apply,hcfn,smul_eq_mul]
+  have hrep : ((∑ m : Fin M, x m • sourcePrefixColumn hw α M (m.val + 1)) : ProbeL2) =ᵐ[volume]
+      fun t : ℝ => ∑ m : Fin M, x m * sourcePrefixProfile w α M (m.val + 1) t := by
+    filter_upwards [Lp.coeFn_fun_finsetSum Finset.univ
+      (fun m : Fin M => x m • sourcePrefixColumn hw α M (m.val + 1)),
+      ae_all_iff.mpr hterms] with t hsum hterm
+    rw [hsum]
+    exact Finset.sum_congr rfl (fun m _hm => hterm m)
+  have hz : ((∑ m : Fin M, x m • sourcePrefixColumn hw α M (m.val + 1)) : ProbeL2) =ᵐ[volume]
+      fun _t : ℝ => (0 : ℂ) := by
+    rw [hx]
+    exact Lp.coeFn_zero ℂ 2 volume
+  have hHz : H =ᵐ[volume.restrict (Set.Ioo 0 T)] fun _t : ℝ => (0 : ℂ) := by
+    filter_upwards [ae_restrict_mem measurableSet_Ioo,ae_restrict_of_ae hrep,
+      ae_restrict_of_ae hz] with t ht hrt hzt
+    have hp : H t = ∑ m : Fin M, x m * sourcePrefixProfile w α M (m.val + 1) t := by
+      apply Finset.sum_congr rfl
+      intro m _hm
+      rw [sourcePrefixProfile,indicator_of_mem ht]
+    exact hp.trans (hrt.symm.trans hzt)
+  let δ : ℝ := Real.log (j.val + 2 : ℕ) - Real.log (j.val + 1 : ℕ)
+  have hδ : 0 < δ := sub_pos.mpr (Real.log_lt_log (by positivity) (by exact_mod_cast Nat.lt_succ_self (j.val + 1)))
+  have hHzfull : ∀ᵐ t : ℝ, t ∈ Set.Ioo 0 T → H t = 0 :=
+    (ae_restrict_iff' measurableSet_Ioo).mp hHz
+  have hshift : ∀ᵐ u : ℝ, u + Real.log (j.val+1:ℕ) ∈ Set.Ioo 0 T →
+      H (u+Real.log (j.val+1:ℕ))=0 :=
+    (measurePreserving_add_right volume (Real.log (j.val+1:ℕ))).quasiMeasurePreserving.tendsto_ae.eventually hHzfull
+  have hbeforeShift (m : Fin M) : ∀ᵐ u : ℝ,
+      u+Real.log (j.val+1:ℕ)-Real.log (m.val+1:ℕ)<α →
+        w (u+Real.log (j.val+1:ℕ)-Real.log (m.val+1:ℕ))=0 := by
+    have hh := (measurePreserving_add_right volume
+      (Real.log (j.val+1:ℕ)-Real.log (m.val+1:ℕ))).quasiMeasurePreserving.tendsto_ae.eventually hbefore
+    simpa only [add_sub_assoc] using hh
+  apply hendpoint δ hδ
+  filter_upwards [hshift,ae_all_iff.mpr hbeforeShift] with u hpoint hbeforeAll hu
+  let t : ℝ := u + Real.log (j.val + 1 : ℕ)
+  have ht : t ∈ Set.Ioo 0 T := by
+    have hlogj : 0 ≤ Real.log (j.val + 1 : ℕ) := probe_log_nonneg (Nat.succ_ne_zero _)
+    have hlogM : Real.log (j.val + 2 : ℕ) ≤ Real.log (M + 1 : ℕ) :=
+      Real.log_le_log (by positivity) (by exact_mod_cast (show j.val + 2 ≤ M + 1 by omega))
+    dsimp only [t,T]
+    dsimp only [δ] at hu
+    constructor <;> linarith [hu.1,hu.2]
+  have hzero := hpoint ht
+  have hsum : H t = x j * (CCM.nativeIntegerCoefficient (j.val + 1) : ℂ) * w u := by
+    dsimp only [H]
+    rw [Finset.sum_eq_single j]
+    · dsimp only [t]
+      rw [add_sub_cancel_right]
+      ring
+    · intro m _hm hmj
+      rcases lt_or_gt_of_ne hmj with hlt | hgt
+      · rw [hsmall m hlt,zero_mul]
+      · have hlogm : Real.log (j.val + 2 : ℕ) ≤ Real.log (m.val + 1 : ℕ) :=
+          Real.log_le_log (by positivity) (by exact_mod_cast (show j.val + 2 ≤ m.val + 1 by exact Nat.succ_le_succ hgt))
+        have htb : t - Real.log (m.val + 1 : ℕ) < α := by
+          dsimp only [t]
+          dsimp only [δ] at hu
+          linarith [hu.2]
+        rw [hbeforeAll m htb,mul_zero,mul_zero]
+    · intro hjnot
+      exact (hjnot (Finset.mem_univ _)).elim
+  rw [hsum] at hzero
+  have hcoef : (CCM.nativeIntegerCoefficient (j.val + 1) : ℂ) ≠ 0 := by
+    apply Complex.ofReal_ne_zero.mpr
+    unfold CCM.nativeIntegerCoefficient
+    exact one_div_ne_zero (ne_of_gt (Real.sqrt_pos.mpr (by positivity)))
+  exact (mul_eq_zero.mp hzero).resolve_left (mul_ne_zero hxj hcoef)
+
+
+theorem sourcePrefixGram_posDef_essential {w : ℝ → ℂ} (hw : MemLp w 2 volume)
+    {alpha : ℝ} (ha : 0 ≤ alpha) (hb : ∀ᵐ t : ℝ, t<alpha → w t=0)
+    (he : ∀ epsilon : ℝ, 0<epsilon → ¬ (∀ᵐ u : ℝ, u ∈ Ioo alpha (alpha+epsilon) → w u=0))
+    (M : ℕ) : (sourcePrefixGram hw alpha M).PosDef :=
+  Matrix.posDef_gram_of_linearIndependent (sourcePrefixColumns_linearIndependent_essential hw ha hb he M)
+
+theorem sourcePrefixLeastEigenvalue_pos_essential {w : ℝ → ℂ} (hw : MemLp w 2 volume)
+    {α : ℝ} (hα : 0 ≤ α)
+    (hbefore : ∀ᵐ t : ℝ, t < α → w t = 0)
+    (hendpoint : ∀ ε : ℝ, 0 < ε → ¬ (∀ᵐ u : ℝ, u ∈ Set.Ioo α (α+ε) → w u = 0))
+    {M : ℕ} (hM : 0 < M) : 0 < sourcePrefixLeastEigenvalue hw α M := by
+  obtain ⟨x,hx,hE⟩ := sourcePrefixLeastEigenvalue_mem hw α hM
+  have hxn : x ≠ 0 := by
+    intro hz
+    simpa [hz] using hx
+  have hS : (∑ i : Fin M, x i • sourcePrefixColumn hw α M (i.val + 1)) ≠ 0 := by
+    intro hz
+    have hcoeff := Fintype.linearIndependent_iff.mp
+      (sourcePrefixColumns_linearIndependent_essential hw hα hbefore hendpoint M) (fun i => x i) hz
+    apply hxn
+    ext i
+    exact hcoeff i
+  rw [← hE,sourcePrefixEnergy]
+  exact sq_pos_of_pos (norm_pos_iff.mpr hS)
+
+
+/-- Arbitrary L2 representatives with an exact essential activation endpoint. -/
+theorem sourcePrefixEssential_quantitative {w : ℝ → ℂ} (hw : MemLp w 2 volume)
+    {alpha : ℝ} (ha : 0 ≤ alpha) (hb : ∀ᵐ t : ℝ, t<alpha → w t=0)
+    (he : ∀ epsilon : ℝ, 0<epsilon → ¬ (∀ᵐ u : ℝ, u ∈ Ioo alpha (alpha+epsilon) → w u=0))
+    {M : ℕ} (hM : 0<M) :
+    (sourcePrefixGram hw alpha M).PosDef ∧ 0<sourcePrefixLeastEigenvalue hw alpha M ∧
+      ∀ x : EuclideanSpace ℂ (Fin M), sourcePrefixLeastEigenvalue hw alpha M*‖x‖^2 ≤ sourcePrefixEnergy hw alpha M x :=
+  ⟨sourcePrefixGram_posDef_essential hw ha hb he M,
+    sourcePrefixLeastEigenvalue_pos_essential hw ha hb he hM,sourcePrefixLeastEigenvalue_lower hw alpha hM⟩
+
+
+/-- All native prefix restrictions retain the fixed-prefix quantifiers. -/
+theorem native_dictionary_prefix_rigidity :
+    (12 * Real.exp (-1/512) * (2048:ℝ)^3 ≤ probePulseSeparation) ∧
+    (∀ (x : ℕ →₀ ℂ) (K : Finset ℕ), (∀ k ∈ K, 0 < k ∧ k ≤ 2047) →
+      probePulseSeparation * (∑ k ∈ K, ‖probeDivisorDefect x k‖^2/(k:ℝ)) ≤ ‖probeSparseResidual x‖^2) ∧
+    (∀ (x : ℕ →₀ ℂ) (k : ℕ), 0 < k → k ≤ 2047 → Squarefree k → x k = 0 →
+      probePulseSeparation / (∑ d ∈ k.divisors,(d:ℝ)) ≤ ‖probeSparseResidual x‖^2) ∧
+    (∀ epsilon : ℝ, 0 < epsilon → ∃ u ∈ Ioo 0 epsilon, probeW u ≠ 0) ∧
+    (∀ K : ℕ, 0 < NativeRealLaplace.nativePrefixConstant K ∧ ∀ x : ℝ, 2 ≤ x →
+      (probeLaplace probeW (x:ℂ)).im = 0 ∧
+      ‖probeLaplace probeW (x:ℂ)‖ = (probeLaplace probeW (x:ℂ)).re ∧
+      NativeRealLaplace.nativePrefixConstant K*x^((3:ℤ)-(K:ℤ))*
+        Real.exp (-probeSigma*x/((K:ℝ)+1)) ≤ (probeLaplace probeW (x:ℂ)).re) ∧
+    (∀ M : ℕ, 0 < M → (nativePrefixGram M).PosDef ∧ 0 < nativePrefixLeastEigenvalue M ∧
+      ∀ x : ℕ →₀ ℂ, nativePrefixLeastEigenvalue M *
+        (∑ i : Fin M, ‖(ArithmeticFunction.moebius (i.val+1):ℂ)-x (i.val+1)‖^2) ≤
+          ‖probeSparseResidual x‖^2) ∧
+    (∀ (w : ℝ → ℂ) (hw : MemLp w 2 volume) (alpha : ℝ), 0 ≤ alpha →
+      (∀ᵐ t : ℝ, t < alpha → w t = 0) →
+      (∀ epsilon : ℝ, 0 < epsilon → ¬ (∀ᵐ u : ℝ, u ∈ Ioo alpha (alpha+epsilon) → w u=0)) →
+      ∀ M : ℕ, 0 < M → (sourcePrefixGram hw alpha M).PosDef ∧
+        0 < sourcePrefixLeastEigenvalue hw alpha M ∧
+        ∀ x : EuclideanSpace ℂ (Fin M), sourcePrefixLeastEigenvalue hw alpha M*‖x‖^2 ≤
+          sourcePrefixEnergy hw alpha M x) := by
+  exact ⟨probePulseSeparation_paper_lower,native_isolated_pulse_lower_bound,
+    fun x k hk hmax hsq hx => native_squarefree_omission_bound x hk hmax hsq hx,
+    native_probeW_left_endpoint,native_probeW_real_laplace_scalar_lower,
+    fun M hM => ⟨native_prefix_gram_posDef M,native_prefix_eigenvalue_pos hM,
+      fun x => native_prefix_coefficient_bound x hM⟩,
+    fun w hw alpha ha hb he M hM => sourcePrefixEssential_quantitative hw ha hb he hM⟩
+
+/-! P16a: the literal full-line adjoint and its actual negative-time projection. -/
+section NativeAdjointLeakage
+set_option backward.isDefEq.respectTransparency.types false
+theorem probeNegativePart_inner_self (f : ProbeL2) :
+    inner ℂ f (probeNegativePart f) = inner ℂ (probeNegativePart f) (probeNegativePart f) := by
+  rw [L2.inner_def,L2.inner_def]
+  apply integral_congr_ae
+  filter_upwards [probeNegativePart_coeFn f] with t ht
+  rw [ht]
+  by_cases h : t<0
+  · rw [indicator_of_mem (show t ∈ Iio (0:ℝ) from h)]
+  · rw [indicator_of_notMem (show t ∉ Iio (0:ℝ) from h)]
+    simp
+
+def probeNativeAdjointExponential (z : ℂ) (hz : 0<z.re) : ProbeL2 :=
+  (CCM.nativeDampedCompletionL2Operator 0 (le_refl 0)).adjoint
+    (CCM.nativeCausalExponentialPolynomialL2 z hz 0)
+
+theorem native_probe_adjoint_negative_norm_bound (z : ℂ) (hz : 0<z.re) :
+    ‖probeNegativePart (probeNativeAdjointExponential z hz)‖ ≤ 1/(z.re+1/2) := by
+  let g := probeNativeAdjointExponential z hz
+  have h := native_negative_output_evaluation_bound z hz g
+  have he : probeFullEvaluation z hz (CCM.nativeDampedCompletionL2Operator 0 (le_refl 0) (probeNegativePart g)) =
+      inner ℂ (probeNegativePart g) (probeNegativePart g) := by
+    rw [probeFullEvaluation,←ContinuousLinearMap.adjoint_inner_left,←probeNegativePart_inner_self]
+    rfl
+  rw [he,←inner_self_re_eq_norm,inner_self_eq_norm_sq] at h
+  have ha : 0<z.re+1/2 := by linarith
+  by_cases hn : ‖probeNegativePart g‖=0
+  · rw [show probeNegativePart (probeNativeAdjointExponential z hz)=probeNegativePart g from rfl,hn]
+    positivity
+  have hpos : 0<‖probeNegativePart g‖ := lt_of_le_of_ne (norm_nonneg _) (Ne.symm hn)
+  have hm := (le_div_iff₀ ha).mp h
+  apply (le_div_iff₀ ha).mpr
+  nlinarith
+
+/-- Literal independent consumer of the actual full-line adjoint, not a replacement operator. -/
+theorem native_probe_adjoint_negative_literal_consumer (z : ℂ) (hz : 0<z.re) :
+    ‖probeNegativePart ((CCM.nativeDampedCompletionL2Operator 0 (le_refl 0)).adjoint
+      (CCM.nativeCausalExponentialPolynomialL2 z hz 0))‖ ≤ 1/(z.re+1/2) :=
+  native_probe_adjoint_negative_norm_bound z hz
+
+
+theorem probePositivePart_coeFn (f : ProbeL2) :
+    (probePositivePart f:ProbeL2) =ᵐ[volume] (Ici (0:ℝ)).indicator f := by
+  filter_upwards [Lp.coeFn_sub f (probeNegativePart f),probeNegativePart_coeFn f] with t hs hn
+  change (f-probeNegativePart f) t = _
+  rw [hs,Pi.sub_apply,hn]
+  by_cases ht : t<0
+  · rw [indicator_of_mem (show t∈Iio (0:ℝ) from ht),indicator_of_notMem (show t∉Ici (0:ℝ) from not_le.mpr ht),sub_self]
+  · rw [indicator_of_notMem (show t∉Iio (0:ℝ) from ht),indicator_of_mem (show t∈Ici (0:ℝ) from le_of_not_gt ht),sub_zero]
+
+theorem probePositivePart_inner_self (f : ProbeL2) :
+    inner ℂ f (probePositivePart f:ProbeL2) = inner ℂ (probePositivePart f:ProbeL2) (probePositivePart f:ProbeL2) := by
+  rw [L2.inner_def,L2.inner_def]
+  apply integral_congr_ae
+  filter_upwards [probePositivePart_coeFn f] with t ht
+  rw [ht]
+  by_cases h : 0≤t
+  · rw [indicator_of_mem (show t ∈ Ici (0:ℝ) from h)]
+  · rw [indicator_of_notMem (show t ∉ Ici (0:ℝ) from h)]
+    simp
+
+theorem native_probe_adjoint_positive_part_zero (rho : zetaZeroConfig.carrier)
+    (hright : 1/2<(rho:ℂ).re) :
+    probePositivePart (probeNativeAdjointExponential ((rho:ℂ)-1/2)
+      (by simp only [Complex.sub_re,Complex.ofReal_re]; norm_num; linarith)) = 0 := by
+  let z : ℂ := (rho:ℂ)-1/2
+  have hz : 0<z.re := by
+    change 0<((rho:ℂ)-1/2).re
+    rw [Complex.sub_re]
+    norm_num
+    linarith
+  let g := probeNativeAdjointExponential z hz
+  have h := native_full_operator_causal_evaluation_zero rho hright (probePositivePart g)
+  change probeFullEvaluation z hz (CCM.nativeDampedCompletionL2Operator 0 (le_refl 0) (probePositivePart g:ProbeL2))=0 at h
+  rw [probeFullEvaluation,←ContinuousLinearMap.adjoint_inner_left] at h
+  change inner ℂ g (probePositivePart g:ProbeL2)=0 at h
+  rw [probePositivePart_inner_self] at h
+  have hg : (probePositivePart g:ProbeL2)=0 := (inner_self_eq_zero (𝕜:=ℂ)).mp h
+  apply Subtype.ext
+  exact hg
+
+theorem native_probe_adjoint_right_zero_norm_bound (rho : zetaZeroConfig.carrier)
+    (hright : 1/2<(rho:ℂ).re) :
+    let hz : 0<((rho:ℂ)-1/2).re := by simp only [Complex.sub_re,Complex.ofReal_re]; norm_num; linarith
+    ‖(CCM.nativeDampedCompletionL2Operator 0 (le_refl 0)).adjoint
+      (CCM.nativeCausalExponentialPolynomialL2 ((rho:ℂ)-1/2) hz 0)‖ ≤ 1/(((rho:ℂ)-1/2).re+1/2) := by
+  dsimp only
+  let z : ℂ := (rho:ℂ)-1/2
+  have hz : 0<z.re := by
+    change 0<((rho:ℂ)-1/2).re
+    rw [Complex.sub_re]
+    norm_num
+    linarith
+  let g := probeNativeAdjointExponential z hz
+  have hp : probePositivePart g=0 := native_probe_adjoint_positive_part_zero rho hright
+  have he : g=probeNegativePart g := by
+    have h := probe_signed_time_decomposition g
+    rw [hp,Submodule.coe_zero,zero_add] at h
+    exact h
+  have h := native_probe_adjoint_negative_norm_bound z hz
+  rw [←he] at h
+  exact h
+
+
+end NativeAdjointLeakage
 
 end Zeta23.OPICARound2

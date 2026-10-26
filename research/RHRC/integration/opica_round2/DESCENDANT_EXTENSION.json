@@ -125,7 +125,7 @@
     "research/RHRC/CURRENT_RESEARCH_PLAN.md"
   ],
   "generated_policy": "List is the exact current producer-owned inventory, not a license to hand-edit. Only canonical materialization can change it; new/missing shard or output paths require explicit source-pinned amended inventory with lossless logical-stream validation.",
-  "manifest_sha256": "8a76e08337e26cb602b0aa15fb68b06e6bf4bf0fc3464d41e4b7b7682920927f",
+  "manifest_sha256": "e327ecb25fd9ea0bfd6ca9326619c3ed248055ecab8bb5dd8d061ded4f88ceb1",
   "policy_review": "NOT_ESTABLISHED",
   "frozen_replay_accepted": false,
   "current_compatibility_accepted": false,

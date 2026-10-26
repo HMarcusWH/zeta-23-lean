@@ -494,6 +494,171 @@ theorem control_016 (rho : zetaZeroConfig.carrier) (hright : 1 / 2 < (rho : ℂ)
     linarith
   exact lt_of_lt_of_le (mul_pos ha (norm_pos_iff.mpr (control_015 rho hright))) h
 
+/-- Literal right-floor expansion includes every integer seam. -/
+theorem consumer_061 (t : ℝ) (ht : 0 ≤ t) :
+    CCM.nativePositiveCompletion t = (1 / 2) * Real.exp (-t / 2) -
+      (1 / 6) * Real.exp (-3 * t / 2) - Real.exp (-t / 2) *
+        OPICAFollowup.bernoulliOneRight (Real.exp t) + Real.exp (-3 * t / 2) *
+          OPICAFollowup.bernoulliTwo (Real.exp t) :=
+  native_floor_bernoulli_expansion t ht
+
+theorem consumer_062 {t : ℝ} (ht : 2 * probeSigma ≤ t) :
+    probeW t = -(JPlus (-3 / 2 : ℂ) / 6) * Complex.exp (-(3 / 2 : ℂ) * (t : ℂ)) +
+      (probeBernoulliRemainder t : ℂ) :=
+  native_completed_output_bernoulli_identity ht
+
+theorem consumer_063 (x : ℕ →₀ ℂ) {M : ℕ} (hM : M ≠ 0) :
+    probeSparseFirstMoment (probeAffineCorrection x M) = -12 ∧
+      ‖probeSparseOutput (probeAffineCorrection x M) - probeSparseOutput x‖ =
+        ‖-12 - probeSparseFirstMoment x‖ * ‖probeCompletedSource‖ / (M : ℝ) ^ (3 / 2 : ℝ) :=
+  ⟨probeAffineCorrection_firstMoment x hM,probeAffineCorrection_output_rpow x hM⟩
+
+theorem consumer_064 : closure probeAffineAttainable = closure (Set.range probeSparseOutput) :=
+  native_affine_constraint_closure
+
+theorem consumer_065 (x : ℕ →₀ ℂ) :
+    Tendsto (fun n : ℕ => probeSparseOutput (probeAffineCorrection x (n + 1))) atTop
+      (𝓝 (probeSparseOutput x)) ∧
+      ∀ᶠ n : ℕ in atTop, ∀ k ∈ x.support, k < n + 1 :=
+  ⟨probeAffineCorrection_output_tendsto x,probeAffineCorrection_eventually_late x⟩
+
+/-- The affine moment equation alone allows an actual residual above 6900. -/
+theorem control_017 :
+    probeSparseFirstMoment (probeAffineCorrection 0 2048) = -12 ∧
+      6900 < ‖probeSparseResidual (probeAffineCorrection 0 2048)‖ := by
+  refine ⟨probeAffineCorrection_firstMoment 0 (by norm_num),?_⟩
+  apply native_2047_omission_residual_lower
+  simp [probeAffineCorrection,Finsupp.single_apply]
+
+/-- This consumer binds the explicit product constant to the physical W integral. -/
+theorem consumer_066 (K : ℕ) :
+    let C : ℝ := (∏ n ∈ Finset.range K,
+      (1-Real.exp (-2*CCM.UniversalSinc.width probeSigma n))/(2*CCM.UniversalSinc.width probeSigma n))/16
+    0<C ∧ ∀ x : ℝ, 2≤x →
+      (∫ t : ℝ, Complex.exp (-(x:ℂ)*(t:ℂ))*probeW t).im=0 ∧
+      ‖∫ t : ℝ, Complex.exp (-(x:ℂ)*(t:ℂ))*probeW t‖ =
+        (∫ t : ℝ, Complex.exp (-(x:ℂ)*(t:ℂ))*probeW t).re ∧
+      C*x^((3:ℤ)-(K:ℤ))*Real.exp (-probeSigma*x/((K:ℝ)+1)) ≤
+        (∫ t : ℝ, Complex.exp (-(x:ℂ)*(t:ℂ))*probeW t).re :=
+  NativeRealLaplace.native_probeW_real_laplace_literal_contract K
+
+theorem consumer_067 {x : ℝ} (hx : 2 ≤ x) :
+    (probeLaplace probeW (x:ℂ)).im = 0 ∧ 0 < (probeLaplace probeW (x:ℂ)).re ∧
+      ‖probeLaplace probeW (x:ℂ)‖ = (probeLaplace probeW (x:ℂ)).re :=
+  NativeRealLaplace.native_probeW_real_positive hx
+
+theorem consumer_068 (h : ℝ) (hh : 0 < h) :
+    ∃ K : ℕ, probeSigma / ((K:ℝ)+1) < h :=
+  native_probeW_real_laplace_arbitrarily_small_rate h hh
+
+theorem consumer_069 {k : ℕ} (hk : 2 ≤ k) (x : ℝ) :
+    |bernoulliFun k (Int.fract x)| / (k.factorial : ℝ) ≤
+      2 * (riemannZeta (k : ℂ)).re / (2 * Real.pi)^k :=
+  probe_normalized_periodic_bernoulli_zeta_bound hk x
+
+theorem control_018 (x : ℝ) : x^((3:ℤ)-(4:ℤ)) = x⁻¹ :=
+  NativeRealLaplace.native_probeW_fourth_prefix_power_control x
+
+/-- The explicit real transform cannot vanish anywhere in the quantified domain. -/
+theorem control_019 {x : ℝ} (hx : 2 ≤ x) : probeLaplace probeW (x:ℂ) ≠ 0 := by
+  intro he
+  have hp := (NativeRealLaplace.native_probeW_real_positive hx).2.1
+  rw [he] at hp
+  simpa using hp
+
+theorem consumer_070 (a : ℝ) (m : ℕ) (u : ℝ) :
+    probeBernoulliDifferential a (m+1) u = deriv (probeBernoulliDifferential a m) u +
+      (a+(m:ℝ)+1)*probeBernoulliDifferential a m u := rfl
+
+theorem consumer_071 (a : ℝ) (m : ℕ) :
+    probeBernoulliH a m = ∫ u : ℝ in Icc 0 (2*probeSigma),
+      Real.exp ((a+(m:ℝ))*u)*|probeBernoulliDifferential a m u| := rfl
+
+theorem consumer_072 (m : ℕ) (hm : 1 ≤ m) (t : ℝ) :
+    |probeBernoulliRemainder t| ≤
+      (2*(riemannZeta ((m+1:ℕ):ℂ)).re/(2*Real.pi)^(m+1))*probeBernoulliH (1/2) m *
+        Real.exp (-((m:ℝ)+1/2)*t) +
+      (4*(riemannZeta ((m+2:ℕ):ℂ)).re/(2*Real.pi)^(m+2))*probeBernoulliH (3/2) m *
+        Real.exp (-((m:ℝ)+3/2)*t) :=
+  native_completed_output_bernoulli_remainder_bound m hm t
+
+theorem consumer_073 (x : ℕ →₀ ℂ) {t : ℝ} (ht : probeFiniteTrialTailThreshold x ≤ t) :
+    probeV t - (∑ n ∈ x.support, x n*((CCM.nativeIntegerCoefficient n:ℂ)*probeW (t-Real.log n))) =
+      (2*JPlus (-3/2:ℂ))*(1+(∑ n ∈ x.support, (n:ℂ)*x n)/12)*
+        Complex.exp (-(3/2:ℂ)*(t:ℂ)) + probeFiniteBernoulliRemainder x t := by
+  simpa only [probeSparseResidualPhysical,probeNativeTailAmplitude,probeSparseFirstMoment_eq_sum] using
+    native_finite_trial_tail_identity x ht
+
+theorem consumer_074 (x : ℕ →₀ ℂ) (L : ℝ) :
+    Tendsto (fun t : ℝ => Real.exp (L*t)*‖probeFiniteBernoulliRemainder x t‖) atTop (𝓝 0) :=
+  probeFiniteBernoulliRemainder_superexponential x L
+
+theorem consumer_075 (x : ℕ →₀ ℂ) (hx : probeSparseFirstMoment x = -12) (L : ℝ) :
+    Tendsto (fun t : ℝ => Real.exp (L*t)*‖probeSparseResidualPhysical x t‖) atTop (𝓝 0) :=
+  native_affine_constraint_superexponential_tail x hx L
+
+theorem consumer_076 (a t : ℝ) (n : ℕ) (hn : 1 ≤ n) (m : ℕ) :
+    probeBernoulliWeightedOscillation a n jPlus t =
+      ((n.factorial:ℝ)/((n+m).factorial:ℝ))*probeBernoulliWeightedOscillation (a+(m:ℝ))
+        (n+m) (probeBernoulliDifferential a m) t :=
+  probeBernoulliDifferential_all_order a t n hn m
+
+theorem consumer_077 (x : ℕ →₀ ℂ) (M : ℕ) (hM : ∀ n ∈ x.support, n < M) :
+    x M = 0 ∧ probeAffineCorrection x M M = (-12-probeSparseFirstMoment x)/(M:ℂ) :=
+  probeAffineCorrection_late_assignment x M hM
+
+/-- An exactly constant nonzero tail moment can have outputs converging to zero. -/
+theorem control_020 :
+    Tendsto (fun n : ℕ => probeSparseOutput (probeAffineCorrection 0 (n+1))) atTop (𝓝 0) ∧
+      ∀ n : ℕ, probeSparseFirstMoment (probeAffineCorrection 0 (n+1)) = -12 := by
+  refine ⟨?_,fun n => probeAffineCorrection_firstMoment 0 (Nat.succ_ne_zero n)⟩
+  simpa [probeSparseOutput] using probeAffineCorrection_output_tendsto 0
+
+theorem control_021 (a : ℝ) (m : ℕ) :
+    0 ≤ probeBernoulliH a m ∧ Integrable (fun u : ℝ =>
+      Real.exp ((a+(m:ℝ))*u)*|probeBernoulliDifferential a m u|) :=
+  ⟨probeBernoulliH_nonneg a m,probeBernoulliDifferential_integrable a m⟩
+
+theorem consumer_078 {w : ℝ → ℂ} (hw : MemLp w 2 volume)
+    {alpha : ℝ} (ha : 0 ≤ alpha) (hb : ∀ᵐ t : ℝ, t<alpha → w t=0)
+    (he : ∀ epsilon : ℝ, 0<epsilon → ¬ (∀ᵐ u : ℝ, u ∈ Ioo alpha (alpha+epsilon) → w u=0))
+    {M : ℕ} (hM : 0<M) :
+    (sourcePrefixGram hw alpha M).PosDef ∧ 0<sourcePrefixLeastEigenvalue hw alpha M ∧
+      ∀ x : EuclideanSpace ℂ (Fin M), sourcePrefixLeastEigenvalue hw alpha M*‖x‖^2 ≤ sourcePrefixEnergy hw alpha M x :=
+  sourcePrefixEssential_quantitative hw ha hb he hM
+
+theorem consumer_079 {w : ℝ → ℂ} (hw : MemLp w 2 volume)
+    {alpha : ℝ} (ha : 0 ≤ alpha) (hb : ∀ᵐ t : ℝ, t<alpha → w t=0)
+    (he : ∀ epsilon : ℝ, 0<epsilon → ¬ (∀ᵐ u : ℝ, u ∈ Ioo alpha (alpha+epsilon) → w u=0))
+    (M : ℕ) : LinearIndependent ℂ (fun i : Fin M => sourcePrefixColumn hw alpha M (i.val+1)) :=
+  sourcePrefixColumns_linearIndependent_essential hw ha hb he M
+
+/-- Null-set support decorations cannot supply an essential activation endpoint. -/
+theorem control_022 {w : ℝ → ℂ} (hw : w =ᵐ[volume] 0) (alpha : ℝ) :
+    ¬ (∀ epsilon : ℝ, 0<epsilon → ¬ (∀ᵐ u : ℝ, u ∈ Ioo alpha (alpha+epsilon) → w u=0)) := by
+  intro he
+  apply he 1 (by norm_num)
+  filter_upwards [hw] with u hu _
+  exact hu
+
+/-- Literal full-line adjoint and negative-time projection, with the actual native operator. -/
+theorem consumer_080 (z : ℂ) (hz : 0<z.re) :
+    ‖probeNegativePart ((CCM.nativeDampedCompletionL2Operator 0 (le_refl 0)).adjoint
+      (CCM.nativeCausalExponentialPolynomialL2 z hz 0))‖ ≤ 1/(z.re+1/2) :=
+  native_probe_adjoint_negative_norm_bound z hz
+
+theorem consumer_081 (rho : zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re) :
+    probePositivePart ((CCM.nativeDampedCompletionL2Operator 0 (le_refl 0)).adjoint
+      (CCM.nativeCausalExponentialPolynomialL2 ((rho:ℂ)-1/2)
+        (by simp only [Complex.sub_re,Complex.ofReal_re]; norm_num; linarith) 0)) = 0 :=
+  native_probe_adjoint_positive_part_zero rho hright
+
+theorem consumer_082 (rho : zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re) :
+    let hz : 0<((rho:ℂ)-1/2).re := by simp only [Complex.sub_re,Complex.ofReal_re]; norm_num; linarith
+    ‖(CCM.nativeDampedCompletionL2Operator 0 (le_refl 0)).adjoint
+      (CCM.nativeCausalExponentialPolynomialL2 ((rho:ℂ)-1/2) hz 0)‖ ≤ 1/(((rho:ℂ)-1/2).re+1/2) :=
+  native_probe_adjoint_right_zero_norm_bound rho hright
+
 end Zeta23.OPICARound2.Validation
 
 #print axioms Zeta23.OPICARound2.native_mobius_probe_inverse
@@ -541,3 +706,34 @@ end Zeta23.OPICARound2.Validation
 #print axioms Zeta23.OPICARound2.probeFullEvaluation_bound
 #print axioms Zeta23.OPICARound2.native_negative_output_evaluation_bound
 #print axioms Zeta23.OPICARound2.noncausal_probe_leakage
+
+#print axioms Zeta23.OPICARound2.native_floor_bernoulli_expansion
+#print axioms Zeta23.OPICARound2.native_completed_output_bernoulli_identity
+#print axioms Zeta23.OPICARound2.probeAffineCorrection_output_rpow
+#print axioms Zeta23.OPICARound2.native_affine_constraint_closure
+
+#print axioms Zeta23.OPICARound2.native_probeW_real_laplace_scalar_lower
+#print axioms Zeta23.OPICARound2.native_probeW_real_laplace_arbitrarily_small_rate
+#print axioms Zeta23.OPICARound2.native_dictionary_prefix_rigidity
+#print axioms Zeta23.OPICARound2.probe_normalized_periodic_bernoulli_zeta_bound
+#print axioms Zeta23.OPICARound2.probe_compact_bernoulli_parts
+
+#print axioms Zeta23.OPICARound2.probeBernoulliDifferential_all_order
+#print axioms Zeta23.OPICARound2.probeBernoulliDifferential_tail_bound
+#print axioms Zeta23.OPICARound2.native_completed_output_bernoulli_remainder_bound
+#print axioms Zeta23.OPICARound2.probeBernoulliRemainder_every_fixed_exponential
+#print axioms Zeta23.OPICARound2.native_finite_trial_tail_identity
+#print axioms Zeta23.OPICARound2.native_affine_constraint_superexponential_tail
+#print axioms Zeta23.OPICARound2.probeFiniteBernoulliRemainder_superexponential
+#print axioms Zeta23.OPICARound2.probeAffineCorrection_late_assignment
+#print axioms Zeta23.OPICARound2.native_completed_output_bernoulli_tail
+
+#print axioms Zeta23.OPICARound2.sourcePrefixColumns_linearIndependent_essential
+#print axioms Zeta23.OPICARound2.sourcePrefixGram_posDef_essential
+#print axioms Zeta23.OPICARound2.sourcePrefixLeastEigenvalue_pos_essential
+#print axioms Zeta23.OPICARound2.sourcePrefixEssential_quantitative
+
+#print axioms Zeta23.OPICARound2.native_probe_adjoint_negative_norm_bound
+#print axioms Zeta23.OPICARound2.native_probe_adjoint_negative_literal_consumer
+#print axioms Zeta23.OPICARound2.native_probe_adjoint_positive_part_zero
+#print axioms Zeta23.OPICARound2.native_probe_adjoint_right_zero_norm_bound

@@ -104,6 +104,29 @@ class ContractBoundaryTests(unittest.TestCase):
             with self.subTest(mutation=mutation), self.assertRaises(io.InvalidCertificate):
                 contract.check_dag(bad)
 
+    def test_upstream_symbols_follow_actual_round2_transitive_imports(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo=Path(tmp)
+            for name,text in (("Zeta23.OPICARound2.Middle","import Zeta23.Native.Source\n"),
+                              ("Zeta23.Native.Source","theorem native_symbol : True := by trivial\n"),
+                              ("Zeta23.Native.Unreachable","theorem native_symbol : True := by trivial\n")):
+                path=repo/(name.replace(".","/")+".lean")
+                path.parent.mkdir(parents=True,exist_ok=True)
+                path.write_bytes(text.encode("utf-8"))
+            consumer="Zeta23.OPICARound2.Consumer"
+            source=repo/"Zeta23/Native/Source.lean"
+            row={"consumer_module":consumer,"module":"Zeta23.Native.Source","symbol":"native_symbol",
+                 "path":"Zeta23/Native/Source.lean","sha256":contract.digest(source)}
+            dag={"modules":{consumer:{"direct_round2_imports":["Zeta23.OPICARound2.Middle"],"upstream_project_imports":[]}}}
+            contract.check_upstream_symbols(repo,{"upstream_symbols":[row]},dag)
+            bad={**row,"module":"Zeta23.Native.Unreachable","path":"Zeta23/Native/Unreachable.lean",
+                 "sha256":contract.digest(repo/"Zeta23/Native/Unreachable.lean")}
+            with self.assertRaises(io.InvalidCertificate):
+                contract.check_upstream_symbols(repo,{"upstream_symbols":[bad]},dag)
+            with self.assertRaises(io.InvalidCertificate):
+                contract.check_upstream_symbols(repo,{"upstream_symbols":[row]},
+                    {"modules":{consumer:{"direct_round2_imports":[],"upstream_project_imports":[]}}})
+
     def test_comment_parser_does_not_hide_proof_escapes(self):
         self.assertEqual(contract.imports('/- import Fake /- nested -/ -/\nimport Real.Module -- comment\n'), ["Real.Module"])
         with self.assertRaises(io.InvalidCertificate):
@@ -245,6 +268,22 @@ class ClauseBindingTests(unittest.TestCase):
             with self.subTest(key=key), self.assertRaises(io.InvalidCertificate):
                 controls.check_control_bindings(bad)
 
+
+
+
+class MinimalNativeDependencyTests(unittest.TestCase):
+    def test_minimal_keeps_exact_classical_adapter_dependency(self):
+        register = io.load_strict_json(HERE/'SOURCE_REGISTER.json', 16*1024*1024)
+        dag = register['module_dag']
+        result = contract.check_dag(dag)
+        fixed = result['modules']['Zeta23.OPICARound2.FixedFilter']
+        self.assertIn('Zeta23.OPICARound2.ClassicalAdapter', fixed['direct_round2_imports'])
+        self.assertEqual(len(result['required_modules']), 16)
+        bad = deepcopy(dag)
+        target = next(row for row in bad['modules'] if row['module']=='Zeta23.OPICARound2.FixedFilter')
+        target['direct_round2_imports'].remove('Zeta23.OPICARound2.ClassicalAdapter')
+        with self.assertRaises(ValueError):
+            contract.check_dag(bad)
 
 if __name__ == "__main__":
     unittest.main()

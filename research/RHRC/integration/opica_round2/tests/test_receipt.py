@@ -91,6 +91,29 @@ class CompilerProtocolTests(unittest.TestCase):
                     {**plan,"self_approved":True}):
             with self.assertRaises(ValueError):receipt.validate_query_plan(bad)
 
+    def test_cold_recipe_builds_frozen_audit_tools_and_sets_external_root(self):
+        plan={"mathematical_modules":[MODULE],"validation_modules":["Zeta23.OPICARound2.Validation.CausalProbe"],"roots":[QUERY]}
+        output=Path("external-evidence").resolve()
+        recipe=receipt.compiler_commands(plan,output,"lake")
+        self.assertEqual([name for _,name in recipe],["lean-version","build","bindings"])
+        self.assertEqual(recipe[1][0],["lake","build",MODULE,"Zeta23.OPICARound2.Validation.CausalProbe",
+            "Zeta23.RHRC.DeclarationDependencyExport","Zeta23.RHRC.SourceCandidateResolution","Zeta23.RHRC.OpicaTypeExprExport"])
+        self.assertEqual(recipe[2][0],["lake","env","lean","-R",str(output),"-o",str(output/"Round2Export.olean"),str(output/"Round2Export.lean")])
+        self.assertNotIn("Zeta23.RHRC.DeclarationDependencyExport",plan["mathematical_modules"])
+
+    def test_relocated_artifacts_keep_exact_producer_paths_and_reject_mixed_roots(self):
+        plan={"mathematical_modules":[MODULE],"validation_modules":["Zeta23.OPICARound2.Validation.CausalProbe"],"roots":[QUERY]}
+        from pathlib import PurePosixPath, PureWindowsPath
+        for producer in (PurePosixPath("/runner/artifacts/original"),PureWindowsPath("C:/runner/original")):
+            commands=[{"argv":argv} for argv,_ in receipt.compiler_commands(plan,producer,"lake")]
+            self.assertEqual(receipt.recorded_export_root(commands),producer)
+            bad=deepcopy(commands);bad[2]["argv"][-1]=str(producer.parent/"different"/"Round2Export.lean")
+            with self.assertRaises(ValueError):receipt.recorded_export_root(bad)
+            bad=deepcopy(commands);bad[2]["argv"][3]="-R-injected"
+            with self.assertRaises(ValueError):receipt.recorded_export_root(bad)
+        commands=[{"argv":argv} for argv,_ in receipt.compiler_commands(plan,Path("relative"),"lake")]
+        with self.assertRaises(ValueError):receipt.recorded_export_root(commands)
+
     def test_command_failure_keeps_exact_raw_logs_and_never_overwrites(self):
         with tempfile.TemporaryDirectory() as tmp:
             out=Path(tmp)

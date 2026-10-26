@@ -184,7 +184,7 @@ def check_dag(dag: Mapping[str, Any]) -> dict[str, Any]:
 
     umbrellas = {r["kind"]: r for r in dag["umbrellas"]}
     expected_minimal = {"Zeta23.OPICARound2." + s for s in (
-        "CausalProbe", "FixedFilter", "FilteredClassicalComparison", "FiniteFilteredBaseline")}
+        "CausalProbe", "ClassicalAdapter", "FixedFilter", "FilteredClassicalComparison", "FiniteFilteredBaseline")}
     require(closure(umbrellas["MATHEMATICAL_MINIMAL"]["imports"]) == expected_minimal,
             "minimal_scope", "Minimal facade gained general Gram or optional dependencies")
     require(closure(umbrellas["MATHEMATICAL_FULL_CORE"]["imports"]) == required,
@@ -355,7 +355,7 @@ def check_upstream_symbols(repo: Path, register: Mapping[str, Any], dag_result: 
                 "upstream_symbol", "Required upstream declaration is absent")
         consumer = dag_result["modules"].get(row["consumer_module"])
         require(consumer is not None, "upstream_consumer", "Unknown upstream consumer")
-        reachable, pending = set(), list(consumer.get("upstream_project_imports", []))
+        reachable, pending = set(), list(consumer.get("direct_round2_imports", [])) + list(consumer.get("upstream_project_imports", []))
         while pending:
             name = pending.pop()
             if name in reachable:
@@ -469,7 +469,7 @@ def preflight(repo: Path = REPO, here: Path = HERE, *, scope: str = "full-core")
         selected = {r["path"] for r in manifest["create"] if r.get("required") is True}
         if scope == "minimal":
             minimal = {"Zeta23.OPICARound2." + x for x in (
-                "CausalProbe", "FixedFilter", "FilteredClassicalComparison", "FiniteFilteredBaseline")}
+                "CausalProbe", "ClassicalAdapter", "FixedFilter", "FilteredClassicalComparison", "FiniteFilteredBaseline")}
             math_paths = {r["path"] for r in dag["modules"]}
             consumer_paths = {r["independent_consumer"] for r in dag["modules"]}
             excluded = {r["path"] for r in dag["modules"] if r["module"] not in minimal}

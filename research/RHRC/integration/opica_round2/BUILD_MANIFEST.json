@@ -1485,5 +1485,14 @@
       "reason": "Reuse actual signed-kernel Bochner/Fubini/Laplace convolution theorems; no audit import or new assumption."
     }
   ],
-  "source_identity_policy": "Frozen416 evidence remains immutable; actual merged build base adab has the identical0506 tree. Full future source receipts bind their exact candidate head/tree."
+  "source_identity_policy": "Frozen416 evidence remains immutable; actual merged build base adab has the identical0506 tree. Full future source receipts bind their exact candidate head/tree.",
+  "implementation_refinements": [
+    {
+      "path": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "reason": "The unchanged registered_theorem_binding_lint requires the import set to equal actual theorem provider modules. Import the sixteen checked mathematical provider modules directly instead of adding an extra umbrella import. No audit or optional module enters the registered mathematical import surface.",
+      "path_policy_changed": false,
+      "old_claim_objects_changed": false,
+      "old_OPEN_claims_changed": false
+    }
+  ]
 }

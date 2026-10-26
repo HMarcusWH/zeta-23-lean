@@ -840,3 +840,9 @@ RH and the existing closing obligations remain OPEN.
 
 
 </details>
+
+## Round 2 implementation checkpoint — 2026-10-26
+
+OPICA Round 2 adds forty supporting theorem families for the fixed delayed single-copy source, with independent native consumers and explicit negative controls. The original 76/100 contracts and mathematical sources are preserved. RH, Step 4 and the four terminal restrictions remain OPEN.
+
+The implementation and exact validation scope are described in [the Round 2 guide](research/RHRC/integration/opica_round2/README.md). The PR remains a development checkpoint until the complete cold, historical, generated-state and workflow evidence gates are harvested. Six optional families remain disabled.

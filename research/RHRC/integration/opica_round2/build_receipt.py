@@ -28,6 +28,9 @@ ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 MATHEMATICAL_MODULES = frozenset()
 NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_.]*\Z")
 EXPRESSION_VALIDATOR = "research/RHRC/routes/R003_ccm_bridge/post290/lean_expr_dag.py"
+# Frozen audit helpers are compiler tooling, not additional mathematical roots.
+AUDIT_BUILD_TARGETS = ("Zeta23.RHRC.DeclarationDependencyExport",
+    "Zeta23.RHRC.SourceCandidateResolution", "Zeta23.RHRC.OpicaTypeExprExport")
 
 def require(ok, message):
     if not ok:
@@ -440,6 +443,33 @@ def run_command(repo: Path, argv: list[str], output: Path, name: str, tree: str,
             "stderr_sha256": contract.digest(stderr_path), "working_tree_sha": tree}
 
 
+def compiler_commands(plan: Mapping[str, Any], output: Path, lake: str) -> list[tuple[list[str], str]]:
+    """Exact compiler recipe, including frozen audit tools and external source root."""
+    validate_query_plan(plan)
+    modules = plan["mathematical_modules"] + plan["validation_modules"]
+    return [([lake, "env", "lean", "--version"], "lean-version"),
+            ([lake, "build", *modules, *AUDIT_BUILD_TARGETS], "build"),
+            ([lake, "env", "lean", "-R", str(output), "-o",
+              str(output/"Round2Export.olean"), str(output/"Round2Export.lean")], "bindings")]
+
+
+def recorded_export_root(commands: list[dict[str, Any]]):
+    """Authenticate the producer's absolute path while allowing artifact relocation.
+
+    The recorded path is compared as data. It is never executed or used to read
+    supplied files; those are read only below the verifier's artifact directory.
+    """
+    from pathlib import PurePosixPath, PureWindowsPath
+    require(type(commands) is list and len(commands)==3, "Incomplete compiler command inventory")
+    argv=commands[2].get("argv")
+    require(type(argv) is list and len(argv)==8 and argv[1:4]==["env","lean","-R"]
+            and argv[5]=="-o" and all(type(x) is str and x for x in argv), "Malformed external exporter command")
+    root=PureWindowsPath(argv[4]) if re.match(r"^[A-Za-z]:[\\/]",argv[4]) else PurePosixPath(argv[4])
+    require(root.is_absolute() and ".." not in root.parts and argv[6]==str(root/"Round2Export.olean")
+            and argv[7]==str(root/"Round2Export.lean"), "External exporter paths do not share one absolute producer root")
+    return root
+
+
 def produce_receipt(repo: Path, output: Path, plan: Mapping[str, Any], *,
                     requested_commit: str | None = None, lake: str = "lake", build_mode: str = "warm",
                     timeout: int = 3600) -> dict[str, Any]:
@@ -472,13 +502,14 @@ def produce_receipt(repo: Path, output: Path, plan: Mapping[str, Any], *,
         record = run_command(repo, argv, output, name, tree, timeout=timeout)
         commands.append(record)
         require(record["returncode"] == 0, "Compiler command failed: " + name)
-    execute([lake, "env", "lean", "--version"], "lean-version")
+    recipe = compiler_commands(plan, output, lake)
+    execute(*recipe[0])
     version = (output/"lean-version.stdout.log").read_text(encoding="utf-8")
     require("version 4.33.0-rc2," in version and "d8b18978322de05a8f3dba51ef03cf5461676c17" in version,
             "Executed Lean binary is not the pinned compiler")
     modules = plan["mathematical_modules"] + plan["validation_modules"]
-    execute([lake, "build", *modules], "build")
-    execute([lake, "env", "lean", "-o", str(output/"Round2Export.olean"), str(output/"Round2Export.lean")], "bindings")
+    execute(*recipe[1])
+    execute(*recipe[2])
     parsed = parse_compiler_output((output/"bindings.stdout.log").read_text(encoding="utf-8"),
                                    plan["roots"], mathematical_modules=modules)
     (output/"compiler-records.json").write_text(json.dumps(parsed, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
@@ -535,11 +566,11 @@ def verify_receipt_artifacts(receipt: Mapping[str, Any], repo: Path, artifacts: 
     require((artifacts/"Round2Export.lean").read_bytes() == driver
             and receipt["exporter_source_sha256"] == hashlib.sha256(driver).hexdigest()
             and receipt["exporter_object_sha256"] == contract.digest(artifacts/"Round2Export.olean"), "Exporter identity differs")
-    expected = [["env", "lean", "--version"], ["build", *plan["mathematical_modules"], *plan["validation_modules"]],
-                ["env", "lean", "-o", str(artifacts/"Round2Export.olean"), str(artifacts/"Round2Export.lean")]]
     require(len(receipt["commands"]) == 3, "Incomplete compiler command inventory")
-    for row, tail, name in zip(receipt["commands"], expected, ("lean-version", "build", "bindings")):
-        require(row["argv"][1:] == tail and row["returncode"] == 0
+    producer_root = recorded_export_root(receipt["commands"])
+    expected = compiler_commands(plan, producer_root, receipt["commands"][0]["argv"][0])
+    for row, (argv, name) in zip(receipt["commands"], expected):
+        require(row["argv"] == argv and row["returncode"] == 0
                 and row["working_tree_sha"] == receipt["checked_tree"], "Compiler command failed or changed")
         for channel in ("stdout", "stderr"):
             require(contract.digest(artifacts/(name+"."+channel+".log")) == row[channel+"_sha256"], "Raw command log changed")

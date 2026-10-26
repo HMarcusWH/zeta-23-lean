@@ -313,6 +313,7 @@
           "Zeta23.CCM.NativeDampedCompletionPointwiseBridge",
           "Zeta23.OPICAFollowup.LogSlackBalance",
           "Zeta23.OPICAFollowup.MultiplicityTail",
+          "Zeta23.OPICAFollowup.ZeroProfiles",
           "Zeta23.CCM.NativeCompletedInputZetaLaplace"
         ],
         "independent_consumer": "Zeta23/OPICARound2/Validation/TruncationControls.lean",
@@ -366,10 +367,15 @@
         "build_slice": "GENERAL_M3_M4",
         "direct_round2_imports": [
           "Zeta23.OPICARound2.ProbeGram",
-          "Zeta23.OPICARound2.TruncationControls"
+          "Zeta23.OPICARound2.TruncationControls",
+          "Zeta23.OPICARound2.FixedFilter",
+          "Zeta23.OPICARound2.CausalProbe"
         ],
         "upstream_project_imports": [
-          "Zeta23.CCM.UniversalSincSourceTail"
+          "Zeta23.CCM.UniversalSincSourceTail",
+          "Zeta23.CCM.UniversalSincSourceDensityIdentification",
+          "Zeta23.CCM.OriginalSincNativeConvolution",
+          "Zeta23.CCM.UniversalSincDetectorInverse"
         ],
         "independent_consumer": "Zeta23/OPICARound2/Validation/CertifiedEvaluation.lean",
         "audit_imports_allowed": false,
@@ -480,7 +486,8 @@
         "required_for_full_core": true,
         "build_slice": "GENERAL_M4",
         "direct_round2_imports": [
-          "Zeta23.OPICARound2.CausalProbe"
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.CertifiedEvaluation"
         ],
         "upstream_project_imports": [],
         "independent_consumer": "Zeta23/OPICARound2/Validation/RegionalCertificates.lean",
@@ -525,8 +532,11 @@
         ],
         "required_for_full_core": true,
         "build_slice": "PARALLEL_PROFILE",
-        "direct_round2_imports": [],
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.TruncationControls"
+        ],
         "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.ConfluentProfiles",
           "Zeta23.OPICAFollowup.FiniteSpanSeparation",
           "Zeta23.OPICAFollowup.SquareDefect"
         ],
@@ -2750,6 +2760,106 @@
         ]
       },
       "reason": "Actual checked development snapshot imports; all original sources and terminal claims unchanged."
+    },
+    {
+      "module": "Zeta23.OPICARound2.TruncationControls",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.NativeCuts",
+          "Zeta23.OPICARound2.FixedFilter",
+          "Zeta23.OPICARound2.ProbeGram"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.CCM.UniversalSincSourceTail",
+          "Zeta23.CCM.NativeDampedCompletionPointwiseBridge",
+          "Zeta23.OPICAFollowup.LogSlackBalance",
+          "Zeta23.OPICAFollowup.MultiplicityTail",
+          "Zeta23.CCM.NativeCompletedInputZetaLaplace"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.NativeCuts",
+          "Zeta23.OPICARound2.FixedFilter",
+          "Zeta23.OPICARound2.ProbeGram"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.CCM.UniversalSincSourceTail",
+          "Zeta23.CCM.NativeDampedCompletionPointwiseBridge",
+          "Zeta23.OPICAFollowup.LogSlackBalance",
+          "Zeta23.OPICAFollowup.MultiplicityTail",
+          "Zeta23.OPICAFollowup.ZeroProfiles",
+          "Zeta23.CCM.NativeCompletedInputZetaLaplace"
+        ]
+      },
+      "reason": "Exact implemented source imports, with all frozen ancestor mathematics preserved."
+    },
+    {
+      "module": "Zeta23.OPICARound2.CertifiedEvaluation",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.ProbeGram",
+          "Zeta23.OPICARound2.TruncationControls"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.CCM.UniversalSincSourceTail"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.ProbeGram",
+          "Zeta23.OPICARound2.TruncationControls",
+          "Zeta23.OPICARound2.FixedFilter",
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.CCM.UniversalSincSourceTail",
+          "Zeta23.CCM.UniversalSincSourceDensityIdentification",
+          "Zeta23.CCM.OriginalSincNativeConvolution",
+          "Zeta23.CCM.UniversalSincDetectorInverse"
+        ]
+      },
+      "reason": "Exact implemented source imports, with all frozen ancestor mathematics preserved."
+    },
+    {
+      "module": "Zeta23.OPICARound2.RegionalCertificates",
+      "previous": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe"
+        ],
+        "upstream_project_imports": []
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.CausalProbe",
+          "Zeta23.OPICARound2.CertifiedEvaluation"
+        ],
+        "upstream_project_imports": []
+      },
+      "reason": "Exact implemented source imports, with all frozen ancestor mathematics preserved."
+    },
+    {
+      "module": "Zeta23.OPICARound2.ProfileControls",
+      "previous": {
+        "direct_round2_imports": [],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+          "Zeta23.OPICAFollowup.SquareDefect"
+        ]
+      },
+      "actual": {
+        "direct_round2_imports": [
+          "Zeta23.OPICARound2.TruncationControls"
+        ],
+        "upstream_project_imports": [
+          "Zeta23.OPICAFollowup.ConfluentProfiles",
+          "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+          "Zeta23.OPICAFollowup.SquareDefect"
+        ]
+      },
+      "reason": "Exact implemented source imports, with all frozen ancestor mathematics preserved."
     }
   ]
 }

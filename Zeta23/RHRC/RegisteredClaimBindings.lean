@@ -10,6 +10,22 @@ OPEN-candidate section and remain non-promoted; none remains after the
 post-#287 promotion. RH remains OPEN.
 -/
 
+import Zeta23.OPICARound2.CT1Controls
+import Zeta23.OPICARound2.CausalProbe
+import Zeta23.OPICARound2.CertifiedEvaluation
+import Zeta23.OPICARound2.ClassicalAdapter
+import Zeta23.OPICARound2.DualCertificates
+import Zeta23.OPICARound2.FilteredClassicalComparison
+import Zeta23.OPICARound2.FiniteFilteredBaseline
+import Zeta23.OPICARound2.FiniteNeutralApproximation
+import Zeta23.OPICARound2.FixedFilter
+import Zeta23.OPICARound2.NativeCuts
+import Zeta23.OPICARound2.NativeJumpControls
+import Zeta23.OPICARound2.ProbeGram
+import Zeta23.OPICARound2.ProfileControls
+import Zeta23.OPICARound2.RegionalCertificates
+import Zeta23.OPICARound2.SyntheticControls
+import Zeta23.OPICARound2.TruncationControls
 import Zeta23.CCM.BoundaryFlatApproximation
 import Zeta23.CCM.BoundaryFlatProjection
 import Zeta23.CCM.CanonicalPrimeRemainder
@@ -996,3 +1012,85 @@ import Zeta23.OPICAFollowup.ZetaLeftLineBounds
 #print axioms Zeta23.OPICAFollowup.actual_zero_measure_span_consumer
 #check Zeta23.OPICAFollowup.actual_force_sampling_consumer
 #print axioms Zeta23.OPICAFollowup.actual_force_sampling_consumer
+
+-- Round2 supporting roots; no new terminal claim is promoted.
+#check Zeta23.OPICARound2.delayed_original_source
+#print axioms Zeta23.OPICARound2.delayed_original_source
+#check Zeta23.OPICARound2.native_probe_transforms
+#print axioms Zeta23.OPICARound2.native_probe_transforms
+#check Zeta23.OPICARound2.native_probe_integer_action
+#print axioms Zeta23.OPICARound2.native_probe_integer_action
+#check Zeta23.OPICARound2.native_probe_zero_separation
+#print axioms Zeta23.OPICARound2.native_probe_zero_separation
+#check Zeta23.OPICARound2.rh_of_native_probe_range
+#print axioms Zeta23.OPICARound2.rh_of_native_probe_range
+#check Zeta23.OPICARound2.probe_tail_and_correlation
+#print axioms Zeta23.OPICARound2.probe_tail_and_correlation
+#check Zeta23.OPICARound2.probe_target_column
+#print axioms Zeta23.OPICARound2.probe_target_column
+#check Zeta23.OPICARound2.probe_finite_gram_positive
+#print axioms Zeta23.OPICARound2.probe_finite_gram_positive
+#check Zeta23.OPICARound2.probe_schur_error
+#print axioms Zeta23.OPICARound2.probe_schur_error
+#check Zeta23.OPICARound2.probe_monotone_innovation
+#print axioms Zeta23.OPICARound2.probe_monotone_innovation
+#check Zeta23.OPICARound2.probe_dirichlet_norm
+#print axioms Zeta23.OPICARound2.probe_dirichlet_norm
+#check Zeta23.OPICARound2.rh_of_probe_error_limit
+#print axioms Zeta23.OPICARound2.rh_of_probe_error_limit
+#check Zeta23.OPICARound2.native_mobius_probe_inverse
+#print axioms Zeta23.OPICARound2.native_mobius_probe_inverse
+#check Zeta23.OPICARound2.integer_partial_divergence_and_safe_cutoff
+#print axioms Zeta23.OPICARound2.integer_partial_divergence_and_safe_cutoff
+#check Zeta23.OPICARound2.mobius_partial_zero_barrier
+#print axioms Zeta23.OPICARound2.mobius_partial_zero_barrier
+#check Zeta23.OPICARound2.noncausal_probe_leakage
+#print axioms Zeta23.OPICARound2.noncausal_probe_leakage
+#check Zeta23.OPICARound2.laplace_jet_gram
+#print axioms Zeta23.OPICARound2.laplace_jet_gram
+#check Zeta23.OPICARound2.simultaneous_zero_distance
+#print axioms Zeta23.OPICARound2.simultaneous_zero_distance
+#check Zeta23.OPICARound2.finite_residual_certificate
+#print axioms Zeta23.OPICARound2.finite_residual_certificate
+#check Zeta23.OPICARound2.native_compact_muntz_adapter
+#print axioms Zeta23.OPICARound2.native_compact_muntz_adapter
+#check Zeta23.OPICARound2.native_product_box_margin
+#print axioms Zeta23.OPICARound2.native_product_box_margin
+#check Zeta23.OPICARound2.zero_region_of_finite_probe_certificate
+#print axioms Zeta23.OPICARound2.zero_region_of_finite_probe_certificate
+#check Zeta23.OPICARound2.native_source_prefix_error
+#print axioms Zeta23.OPICARound2.native_source_prefix_error
+#check Zeta23.OPICARound2.native_dictionary_prefix_rigidity
+#print axioms Zeta23.OPICARound2.native_dictionary_prefix_rigidity
+#check Zeta23.OPICARound2.native_probe_pole_moment_constraints
+#print axioms Zeta23.OPICARound2.native_probe_pole_moment_constraints
+#check Zeta23.OPICARound2.native_completed_output_bernoulli_tail
+#print axioms Zeta23.OPICARound2.native_completed_output_bernoulli_tail
+#check Zeta23.OPICARound2.native_probe_fixed_stable_filter
+#print axioms Zeta23.OPICARound2.native_probe_fixed_stable_filter
+#check Zeta23.OPICARound2.filtered_probe_classical_comparison
+#print axioms Zeta23.OPICARound2.filtered_probe_classical_comparison
+#check Zeta23.OPICARound2.filtered_four_column_region_certificate
+#print axioms Zeta23.OPICARound2.filtered_four_column_region_certificate
+#check Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost
+#print axioms Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost
+#check Zeta23.OPICARound2.native_probe_adaptive_error_budgets
+#print axioms Zeta23.OPICARound2.native_probe_adaptive_error_budgets
+#check Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction
+#print axioms Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction
+#check Zeta23.OPICARound2.fixed_imaginary_direction_positive_test_margin
+#print axioms Zeta23.OPICARound2.fixed_imaginary_direction_positive_test_margin
+#check Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence
+#print axioms Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence
+#check Zeta23.OPICARound2.positive_equal_power_causal_twins
+#print axioms Zeta23.OPICARound2.positive_equal_power_causal_twins
+#check Zeta23.OPICARound2.native_jump_gain_negative_ordered_minor
+#print axioms Zeta23.OPICARound2.native_jump_gain_negative_ordered_minor
+#check Zeta23.OPICARound2.ct1_scalar_limit_classification
+#print axioms Zeta23.OPICARound2.ct1_scalar_limit_classification
+#check Zeta23.OPICARound2.finite_pole_neutral_approximation
+#print axioms Zeta23.OPICARound2.finite_pole_neutral_approximation
+#check Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation
+#print axioms Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation
+#check Zeta23.OPICARound2.phase_complete_positive_test_observability
+#print axioms Zeta23.OPICARound2.phase_complete_positive_test_observability

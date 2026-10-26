@@ -17,6 +17,7 @@ concurrency:
 env:
   OPICA: research/RHRC/integration/opica
   PYTHONUTF8: '1'
+  PYTHONDONTWRITEBYTECODE: '1'
 
 jobs:
   opica-contract:
@@ -26,17 +27,66 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
+      - name: Authenticate explicit Round2 ancestor projection (baseline scope only)
+        id: round2-ancestor
+        if: ${{ hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/opica2-baseline-scope"
+          projection="$GITHUB_WORKSPACE/../opica2-frozen-$GITHUB_JOB"
+          mkdir -p "$evidence"
+          python -B research/RHRC/tools/run_suite.py --freeze-source "$evidence/descendant-source-before.json"
+          git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+          python -B research/RHRC/integration/opica_round2/ancestor_projection.py create --repo "$GITHUB_WORKSPACE" --destination "$projection" > "$evidence/projection.json"
+          python -B research/RHRC/integration/opica/validate_contract.py --phase preflight --ancestor-projection "$projection" --output "$evidence/dispatch.json"
+          printf '%s\n' "OPICA_ANCESTOR_PROJECTION=$projection" "OPICA_CURRENT_SOURCE_ROOT=$GITHUB_WORKSPACE" "PYTHONDONTWRITEBYTECODE=1" >> "$GITHUB_ENV"
+          python - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          root=Path(os.environ['GITHUB_WORKSPACE'])
+          report={'schema':'OPICA2_BASELINE_WORKFLOW_SCOPE_V1','workflow_checked_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+              'baseline_commit':'416aec21d4d6634675639b5397cc300d1f826e34','baseline_tree':'0506bca8ffe613e9cd9ab844650a1141d4494f66',
+              'scope':'FROZEN_ANCESTOR_BASELINE_ONLY','current_tree_compatibility_accepted':False,'full_release_accepted':False,'RH':'OPEN','Step4':'OPEN'}
+          Path(os.environ['RUNNER_TEMP'],'opica2-baseline-scope','scope.json').write_text(json.dumps(report,indent=2)+'\n')
+          PY
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.14'
       - name: Check full source contract and protected baseline
-        run: python "$OPICA/validate_contract.py" --output-dir /tmp/opica-contract
+        run: |
+          if [ -n "${OPICA_ANCESTOR_PROJECTION:-}" ]; then
+            set -euo pipefail
+            if [ -d "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" ] && [ ! -e "$OPICA_ANCESTOR_PROJECTION/.lake/packages" ]; then
+              mkdir -p "$OPICA_ANCESTOR_PROJECTION/.lake"
+              ln -s "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" "$OPICA_ANCESTOR_PROJECTION/.lake/packages"
+            fi
+            cd "$OPICA_ANCESTOR_PROJECTION"
+            export REQUESTED_HEAD="$(git rev-parse HEAD)"
+          fi
+          python "$OPICA/validate_contract.py" --output-dir /tmp/opica-contract
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: opica-contract
           path: /tmp/opica-contract
+          if-no-files-found: error
+
+      - name: Verify unchanged descendant source and exact baseline projection
+        if: ${{ always() && steps.round2-ancestor.outcome == 'success' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$OPICA_CURRENT_SOURCE_ROOT"
+          python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$RUNNER_TEMP/opica2-baseline-scope/descendant-source-before.json"
+          python -B research/RHRC/integration/opica_round2/ancestor_projection.py verify --repo "$GITHUB_WORKSPACE" --destination "$OPICA_ANCESTOR_PROJECTION" > "$RUNNER_TEMP/opica2-baseline-scope/projection-after.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() && hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') != '' }}
+        with:
+          name: opica-baseline-source-scope-${{ github.job }}-${{ strategy.job-index || 0 }}
+          path: ${{ runner.temp }}/opica2-baseline-scope
           if-no-files-found: error
 
   opica-formal:
@@ -47,7 +97,31 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
+      - name: Authenticate explicit Round2 ancestor projection (baseline scope only)
+        id: round2-ancestor
+        if: ${{ hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/opica2-baseline-scope"
+          projection="$GITHUB_WORKSPACE/../opica2-frozen-$GITHUB_JOB"
+          mkdir -p "$evidence"
+          python -B research/RHRC/tools/run_suite.py --freeze-source "$evidence/descendant-source-before.json"
+          git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+          python -B research/RHRC/integration/opica_round2/ancestor_projection.py create --repo "$GITHUB_WORKSPACE" --destination "$projection" > "$evidence/projection.json"
+          python -B research/RHRC/integration/opica/validate_contract.py --phase preflight --ancestor-projection "$projection" --output "$evidence/dispatch.json"
+          printf '%s\n' "OPICA_ANCESTOR_PROJECTION=$projection" "OPICA_CURRENT_SOURCE_ROOT=$GITHUB_WORKSPACE" "PYTHONDONTWRITEBYTECODE=1" >> "$GITHUB_ENV"
+          python - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          root=Path(os.environ['GITHUB_WORKSPACE'])
+          report={'schema':'OPICA2_BASELINE_WORKFLOW_SCOPE_V1','workflow_checked_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+              'baseline_commit':'416aec21d4d6634675639b5397cc300d1f826e34','baseline_tree':'0506bca8ffe613e9cd9ab844650a1141d4494f66',
+              'scope':'FROZEN_ANCESTOR_BASELINE_ONLY','current_tree_compatibility_accepted':False,'full_release_accepted':False,'RH':'OPEN','Step4':'OPEN'}
+          Path(os.environ['RUNNER_TEMP'],'opica2-baseline-scope','scope.json').write_text(json.dumps(report,indent=2)+'\n')
+          PY
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.14'
@@ -61,9 +135,29 @@ jobs:
       - name: Build every required target and export complete compiler evidence
         env:
           REQUESTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: python "$OPICA/build_receipt.py" --requested-head "$REQUESTED_HEAD" --requested-base 97926d6a949fed7af0429a373b47abc772012834 --output-dir /tmp/opica-formal
+        run: |
+          if [ -n "${OPICA_ANCESTOR_PROJECTION:-}" ]; then
+            set -euo pipefail
+            if [ -d "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" ] && [ ! -e "$OPICA_ANCESTOR_PROJECTION/.lake/packages" ]; then
+              mkdir -p "$OPICA_ANCESTOR_PROJECTION/.lake"
+              ln -s "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" "$OPICA_ANCESTOR_PROJECTION/.lake/packages"
+            fi
+            cd "$OPICA_ANCESTOR_PROJECTION"
+            export REQUESTED_HEAD="$(git rev-parse HEAD)"
+          fi
+          python "$OPICA/build_receipt.py" --requested-head "$REQUESTED_HEAD" --requested-base 97926d6a949fed7af0429a373b47abc772012834 --output-dir /tmp/opica-formal
       - name: Verify release contract against the complete compiler receipt
-        run: python "$OPICA/validate_contract.py" --phase release --formal-receipt /tmp/opica-formal/compiler-receipt.json --output /tmp/opica-formal/release-contract.json
+        run: |
+          if [ -n "${OPICA_ANCESTOR_PROJECTION:-}" ]; then
+            set -euo pipefail
+            if [ -d "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" ] && [ ! -e "$OPICA_ANCESTOR_PROJECTION/.lake/packages" ]; then
+              mkdir -p "$OPICA_ANCESTOR_PROJECTION/.lake"
+              ln -s "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" "$OPICA_ANCESTOR_PROJECTION/.lake/packages"
+            fi
+            cd "$OPICA_ANCESTOR_PROJECTION"
+            export REQUESTED_HEAD="$(git rev-parse HEAD)"
+          fi
+          python "$OPICA/validate_contract.py" --phase release --formal-receipt /tmp/opica-formal/compiler-receipt.json --output /tmp/opica-formal/release-contract.json
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
@@ -74,6 +168,15 @@ jobs:
         id: materialize-derived
         if: github.event_name == 'push'
         run: |
+          if [ -n "${OPICA_ANCESTOR_PROJECTION:-}" ]; then
+            set -euo pipefail
+            if [ -d "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" ] && [ ! -e "$OPICA_ANCESTOR_PROJECTION/.lake/packages" ]; then
+              mkdir -p "$OPICA_ANCESTOR_PROJECTION/.lake"
+              ln -s "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" "$OPICA_ANCESTOR_PROJECTION/.lake/packages"
+            fi
+            cd "$OPICA_ANCESTOR_PROJECTION"
+            export REQUESTED_HEAD="$(git rev-parse HEAD)"
+          fi
           python - <<'PY'
           import datetime, hashlib, importlib.util, json, os, shutil, subprocess, sys, tempfile
           from pathlib import Path, PurePosixPath
@@ -246,6 +349,15 @@ jobs:
       - name: Require canonical generated files to be committed
         if: github.event_name == 'push' && !cancelled() && steps.materialize-derived.outcome == 'success'
         run: |
+          if [ -n "${OPICA_ANCESTOR_PROJECTION:-}" ]; then
+            set -euo pipefail
+            if [ -d "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" ] && [ ! -e "$OPICA_ANCESTOR_PROJECTION/.lake/packages" ]; then
+              mkdir -p "$OPICA_ANCESTOR_PROJECTION/.lake"
+              ln -s "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" "$OPICA_ANCESTOR_PROJECTION/.lake/packages"
+            fi
+            cd "$OPICA_ANCESTOR_PROJECTION"
+            export REQUESTED_HEAD="$(git rev-parse HEAD)"
+          fi
           python - <<'PY'
           import importlib.util, json, subprocess, sys
           from pathlib import Path
@@ -284,6 +396,21 @@ jobs:
           print('All ' + str(len(allowed)) + ' authenticated canonical generated files match HEAD.')
           PY
 
+      - name: Verify unchanged descendant source and exact baseline projection
+        if: ${{ always() && steps.round2-ancestor.outcome == 'success' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$OPICA_CURRENT_SOURCE_ROOT"
+          python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$RUNNER_TEMP/opica2-baseline-scope/descendant-source-before.json"
+          python -B research/RHRC/integration/opica_round2/ancestor_projection.py verify --repo "$GITHUB_WORKSPACE" --destination "$OPICA_ANCESTOR_PROJECTION" > "$RUNNER_TEMP/opica2-baseline-scope/projection-after.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() && hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') != '' }}
+        with:
+          name: opica-baseline-source-scope-${{ github.job }}-${{ strategy.job-index || 0 }}
+          path: ${{ runner.temp }}/opica2-baseline-scope
+          if-no-files-found: error
+
   opica-regression:
     runs-on: ubuntu-latest
     timeout-minutes: 25
@@ -291,16 +418,58 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
+      - name: Authenticate explicit Round2 ancestor projection (baseline scope only)
+        id: round2-ancestor
+        if: ${{ hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/opica2-baseline-scope"
+          projection="$GITHUB_WORKSPACE/../opica2-frozen-$GITHUB_JOB"
+          mkdir -p "$evidence"
+          python -B research/RHRC/tools/run_suite.py --freeze-source "$evidence/descendant-source-before.json"
+          git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+          python -B research/RHRC/integration/opica_round2/ancestor_projection.py create --repo "$GITHUB_WORKSPACE" --destination "$projection" > "$evidence/projection.json"
+          python -B research/RHRC/integration/opica/validate_contract.py --phase preflight --ancestor-projection "$projection" --output "$evidence/dispatch.json"
+          printf '%s\n' "OPICA_ANCESTOR_PROJECTION=$projection" "OPICA_CURRENT_SOURCE_ROOT=$GITHUB_WORKSPACE" "PYTHONDONTWRITEBYTECODE=1" >> "$GITHUB_ENV"
+          python - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          root=Path(os.environ['GITHUB_WORKSPACE'])
+          report={'schema':'OPICA2_BASELINE_WORKFLOW_SCOPE_V1','workflow_checked_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+              'baseline_commit':'416aec21d4d6634675639b5397cc300d1f826e34','baseline_tree':'0506bca8ffe613e9cd9ab844650a1141d4494f66',
+              'scope':'FROZEN_ANCESTOR_BASELINE_ONLY','current_tree_compatibility_accepted':False,'full_release_accepted':False,'RH':'OPEN','Step4':'OPEN'}
+          Path(os.environ['RUNNER_TEMP'],'opica2-baseline-scope','scope.json').write_text(json.dumps(report,indent=2)+'\n')
+          PY
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.14'
       - name: Reproduce all 5112 exact finite controls in both Python modes
         run: |
+          if [ -n "${OPICA_ANCESTOR_PROJECTION:-}" ]; then
+            set -euo pipefail
+            if [ -d "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" ] && [ ! -e "$OPICA_ANCESTOR_PROJECTION/.lake/packages" ]; then
+              mkdir -p "$OPICA_ANCESTOR_PROJECTION/.lake"
+              ln -s "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" "$OPICA_ANCESTOR_PROJECTION/.lake/packages"
+            fi
+            cd "$OPICA_ANCESTOR_PROJECTION"
+            export REQUESTED_HEAD="$(git rev-parse HEAD)"
+          fi
           python "$OPICA/check_exact.py" --output /tmp/opica-regression/exact.json
           python -O "$OPICA/check_exact.py" --output /tmp/opica-regression/exact-optimized.json
       - name: Exercise fail-closed evidence and authority mutations in both modes
         run: |
+          if [ -n "${OPICA_ANCESTOR_PROJECTION:-}" ]; then
+            set -euo pipefail
+            if [ -d "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" ] && [ ! -e "$OPICA_ANCESTOR_PROJECTION/.lake/packages" ]; then
+              mkdir -p "$OPICA_ANCESTOR_PROJECTION/.lake"
+              ln -s "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" "$OPICA_ANCESTOR_PROJECTION/.lake/packages"
+            fi
+            cd "$OPICA_ANCESTOR_PROJECTION"
+            export REQUESTED_HEAD="$(git rev-parse HEAD)"
+          fi
           python -m unittest discover -s "$OPICA/tests" -p 'test_*.py' -v
           python -O -m unittest discover -s "$OPICA/tests" -p 'test_*.py' -v
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -308,6 +477,21 @@ jobs:
         with:
           name: opica-regression
           path: /tmp/opica-regression
+          if-no-files-found: error
+
+      - name: Verify unchanged descendant source and exact baseline projection
+        if: ${{ always() && steps.round2-ancestor.outcome == 'success' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$OPICA_CURRENT_SOURCE_ROOT"
+          python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$RUNNER_TEMP/opica2-baseline-scope/descendant-source-before.json"
+          python -B research/RHRC/integration/opica_round2/ancestor_projection.py verify --repo "$GITHUB_WORKSPACE" --destination "$OPICA_ANCESTOR_PROJECTION" > "$RUNNER_TEMP/opica2-baseline-scope/projection-after.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() && hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') != '' }}
+        with:
+          name: opica-baseline-source-scope-${{ github.job }}-${{ strategy.job-index || 0 }}
+          path: ${{ runner.temp }}/opica2-baseline-scope
           if-no-files-found: error
 
   opica-dependency-delta:
@@ -318,7 +502,31 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
+      - name: Authenticate explicit Round2 ancestor projection (baseline scope only)
+        id: round2-ancestor
+        if: ${{ hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/opica2-baseline-scope"
+          projection="$GITHUB_WORKSPACE/../opica2-frozen-$GITHUB_JOB"
+          mkdir -p "$evidence"
+          python -B research/RHRC/tools/run_suite.py --freeze-source "$evidence/descendant-source-before.json"
+          git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+          python -B research/RHRC/integration/opica_round2/ancestor_projection.py create --repo "$GITHUB_WORKSPACE" --destination "$projection" > "$evidence/projection.json"
+          python -B research/RHRC/integration/opica/validate_contract.py --phase preflight --ancestor-projection "$projection" --output "$evidence/dispatch.json"
+          printf '%s\n' "OPICA_ANCESTOR_PROJECTION=$projection" "OPICA_CURRENT_SOURCE_ROOT=$GITHUB_WORKSPACE" "PYTHONDONTWRITEBYTECODE=1" >> "$GITHUB_ENV"
+          python - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          root=Path(os.environ['GITHUB_WORKSPACE'])
+          report={'schema':'OPICA2_BASELINE_WORKFLOW_SCOPE_V1','workflow_checked_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+              'baseline_commit':'416aec21d4d6634675639b5397cc300d1f826e34','baseline_tree':'0506bca8ffe613e9cd9ab844650a1141d4494f66',
+              'scope':'FROZEN_ANCESTOR_BASELINE_ONLY','current_tree_compatibility_accepted':False,'full_release_accepted':False,'RH':'OPEN','Step4':'OPEN'}
+          Path(os.environ['RUNNER_TEMP'],'opica2-baseline-scope','scope.json').write_text(json.dumps(report,indent=2)+'\n')
+          PY
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.14'
@@ -327,12 +535,37 @@ jobs:
           name: opica-formal
           path: /tmp/opica-formal
       - name: Compare source-bound compiler uses with the immutable baseline
-        run: python "$OPICA/dependency_delta.py" --formal-receipt /tmp/opica-formal/compiler-receipt.json --output /tmp/opica-delta/dependency-delta.json
+        run: |
+          if [ -n "${OPICA_ANCESTOR_PROJECTION:-}" ]; then
+            set -euo pipefail
+            if [ -d "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" ] && [ ! -e "$OPICA_ANCESTOR_PROJECTION/.lake/packages" ]; then
+              mkdir -p "$OPICA_ANCESTOR_PROJECTION/.lake"
+              ln -s "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" "$OPICA_ANCESTOR_PROJECTION/.lake/packages"
+            fi
+            cd "$OPICA_ANCESTOR_PROJECTION"
+            export REQUESTED_HEAD="$(git rev-parse HEAD)"
+          fi
+          python "$OPICA/dependency_delta.py" --formal-receipt /tmp/opica-formal/compiler-receipt.json --output /tmp/opica-delta/dependency-delta.json
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: opica-dependency-delta
           path: /tmp/opica-delta
+          if-no-files-found: error
+
+      - name: Verify unchanged descendant source and exact baseline projection
+        if: ${{ always() && steps.round2-ancestor.outcome == 'success' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$OPICA_CURRENT_SOURCE_ROOT"
+          python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$RUNNER_TEMP/opica2-baseline-scope/descendant-source-before.json"
+          python -B research/RHRC/integration/opica_round2/ancestor_projection.py verify --repo "$GITHUB_WORKSPACE" --destination "$OPICA_ANCESTOR_PROJECTION" > "$RUNNER_TEMP/opica2-baseline-scope/projection-after.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() && hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') != '' }}
+        with:
+          name: opica-baseline-source-scope-${{ github.job }}-${{ strategy.job-index || 0 }}
+          path: ${{ runner.temp }}/opica2-baseline-scope
           if-no-files-found: error
 
   opica-component-summary:
@@ -345,6 +578,15 @@ jobs:
         env:
           COMPONENTS: ${{ toJson(needs) }}
         run: |
+          if [ -n "${OPICA_ANCESTOR_PROJECTION:-}" ]; then
+            set -euo pipefail
+            if [ -d "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" ] && [ ! -e "$OPICA_ANCESTOR_PROJECTION/.lake/packages" ]; then
+              mkdir -p "$OPICA_ANCESTOR_PROJECTION/.lake"
+              ln -s "$OPICA_CURRENT_SOURCE_ROOT/.lake/packages" "$OPICA_ANCESTOR_PROJECTION/.lake/packages"
+            fi
+            cd "$OPICA_ANCESTOR_PROJECTION"
+            export REQUESTED_HEAD="$(git rev-parse HEAD)"
+          fi
           python - <<'PY'
           import json, os
           results = json.loads(os.environ['COMPONENTS'])
@@ -353,3 +595,17 @@ jobs:
               raise SystemExit('An OPICA component is failed, pending, cancelled, or skipped')
           print('All OPICA components passed. Repository-wide checks and mathematical review are separate requirements.')
           PY
+      - name: Verify unchanged descendant source and exact baseline projection
+        if: ${{ always() && steps.round2-ancestor.outcome == 'success' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$OPICA_CURRENT_SOURCE_ROOT"
+          python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$RUNNER_TEMP/opica2-baseline-scope/descendant-source-before.json"
+          python -B research/RHRC/integration/opica_round2/ancestor_projection.py verify --repo "$GITHUB_WORKSPACE" --destination "$OPICA_ANCESTOR_PROJECTION" > "$RUNNER_TEMP/opica2-baseline-scope/projection-after.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() && hashFiles('research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json') != '' }}
+        with:
+          name: opica-baseline-source-scope-${{ github.job }}-${{ strategy.job-index || 0 }}
+          path: ${{ runner.temp }}/opica2-baseline-scope
+          if-no-files-found: error

@@ -1,4 +1,5 @@
 import Zeta23.OPICARound2.CausalProbe
+import Zeta23.OPICARound2.CertifiedEvaluation
 import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 
@@ -262,5 +263,250 @@ theorem regional_product_prefix_lower {s L : ℝ} (hs : 0 ≤ s) (hL0 : 0 ≤ L)
     (norm_nonneg _)
 
 #print axioms regional_product_prefix_lower
+
+
+
+theorem regional_product_small_lower {s L : ℝ} (hs : 0 ≤ s) (hL0 : 0 ≤ L)
+    (z : ℂ) (hL : ‖z‖ ≤ L) (hsmall : s*L ≤ 1) :
+    Real.exp (-(s^2*L^2/3)) ≤ ‖product s (Complex.I*z)‖ := by
+  have hc : width s 0*L ≤ 1/2 := by
+    norm_num [width]
+    nlinarith
+  have h := regional_product_prefix_lower hs hL0 z hL 0 hc
+  norm_num only [Finset.range_zero, Finset.prod_empty, norm_one, one_mul, Nat.cast_zero,
+    zero_add, one_pow, mul_one] at h
+  apply le_trans _ h
+  apply Real.exp_le_exp.mpr
+  nlinarith [sq_nonneg (s*L)]
+
+theorem regional_product_split_lower {s delta0 L : ℝ} (hs : 0 < s)
+    (hdelta : 0 < delta0) (z : ℂ) (hRe : delta0 ≤ z.re) (hL : ‖z‖ ≤ L)
+    (M : ℕ) (hM : 1 ≤ M) (hcut : s*L/(((M:ℝ)+1)*((M:ℝ)+2)) ≤ 1/2) :
+    (delta0/L)^M * Real.exp (-(2*s^2*L^2/(9*(M:ℝ)^3))) ≤
+      ‖product s (Complex.I*z)‖ := by
+  have hz : 0 < z.re := hdelta.trans_le hRe
+  have hnorm : 0 < ‖z‖ := norm_pos_iff.mpr (by intro h; simp [h] at hz)
+  have hLp : 0 < L := hnorm.trans_le hL
+  have hMp : 0 < (M:ℝ) := by exact_mod_cast (show 0<M by omega)
+  have hc : width s M*L ≤ 1/2 := by convert hcut using 1 <;> simp only [width]; ring
+  have hp : (delta0/L)^M ≤ ‖∏ n ∈ range M, sinc ((width s n:ℂ)*(Complex.I*z))‖ := by
+    rw [norm_prod]
+    calc
+      _ = ∏ _n ∈ range M, delta0/L := by simp [div_pow]
+      _ ≤ _ := Finset.prod_le_prod (fun _ _ => (div_pos hdelta hLp).le)
+        (fun n _ => regional_native_factor_prefix_lower hs hdelta z hRe hL n)
+  have ht := regional_product_prefix_lower hs.le hLp.le z hL M hc
+  have hd : 9*(M:ℝ)^3 ≤ 9*((M:ℝ)+1)^3 := by gcongr <;> linarith
+  have hq := div_le_div_of_nonneg_left (show 0 ≤ 2*s^2*L^2 by positivity)
+    (show 0 < 9*(M:ℝ)^3 by positivity) hd
+  have he : Real.exp (-(2*s^2*L^2/(9*(M:ℝ)^3))) ≤
+      Real.exp (-(2*s^2*L^2/(9*((M:ℝ)+1)^3))) := Real.exp_le_exp.mpr (neg_le_neg hq)
+  exact (mul_le_mul hp he (Real.exp_pos _).le (norm_nonneg _)).trans ht
+
+theorem regional_probeV_product_formula {z : ℂ} (hz : 0 < z.re) :
+    probeLaplace probeV z = Complex.exp (-z*(probeSigma:ℂ)) *
+      ((z-1/2)^3*(z+1/2)/(z+3/2)) * product probeSigma (Complex.I*z) := by
+  have h1 : z+(1/2:ℂ) ≠ 0 := by
+    intro h
+    have hr := congrArg Complex.re h
+    norm_num at hr
+    linarith
+  have h3 : z+(3/2:ℂ) ≠ 0 := by
+    intro h
+    have hr := congrArg Complex.re h
+    norm_num at hr
+    linarith
+  have hp : ((Complex.I*z)^2+1/4)^2 = (z-1/2)^2*(z+1/2)^2 := by
+    simp only [mul_pow, Complex.I_sq]
+    ring
+  have hr : ∀ a b c : ℂ, b ≠ 0 → c ≠ 0 →
+      a/(b*c)*(a^2*b^2) = a^3*b/c := by
+    intro a b c hb hc
+    field_simp <;> ring
+  rw [probeV_laplace hz.le, JPlus_one_copy_formula, hp]
+  unfold CCM.nativeCompletionRationalMultiplier
+  calc
+    _ = Complex.exp (-z*(probeSigma:ℂ)) *
+        (((z-1/2)/((z+1/2)*(z+3/2)))*((z-1/2)^2*(z+1/2)^2)) *
+          product probeSigma (Complex.I*z) := by ring
+    _ = _ := by rw [hr (z-1/2) (z+1/2) (z+3/2) h1 h3]
+theorem regional_probeV_norm {z : ℂ} (hz : 0 < z.re) :
+    ‖probeLaplace probeV z‖ = Real.exp (-probeSigma*z.re) *
+      (‖z-1/2‖^3*‖z+1/2‖/‖z+3/2‖) * ‖product probeSigma (Complex.I*z)‖ := by
+  rw [regional_probeV_product_formula hz]
+  simp only [norm_mul, norm_div, norm_pow, Complex.norm_exp, Complex.mul_re,
+    Complex.neg_re, Complex.neg_im, Complex.ofReal_re, Complex.ofReal_im,
+    mul_zero, sub_zero]
+  congr 2
+  congr 1
+  ring
+
+#print axioms regional_product_small_lower
+#print axioms regional_product_split_lower
+#print axioms regional_probeV_product_formula
+
+
+
+theorem probeBoxMargin_pos {delta0 delta1 L BQ : ℝ}
+    (h0 : 0 < delta0) (h01 : delta0 ≤ delta1) (h1 : delta1 < 1/2)
+    (hL : delta1 ≤ L) (hBQ : 0 < BQ) : 0 < probeBoxMargin delta0 delta1 L BQ := by
+  have hLp : 0 < L := (h0.trans_le h01).trans_le hL
+  have hdiff : 0 < 1/2-delta1 := by linarith
+  unfold probeBoxMargin
+  positivity
+
+theorem regional_box_rational_lower {delta0 delta1 L : ℝ}
+    (h0 : 0 < delta0) (h01 : delta0 ≤ delta1) (h1 : delta1 < 1/2)
+    (hL : delta1 ≤ L) {z : ℂ} (hz : z ∈ ProbeParameterBox delta0 delta1 L) :
+    (1/2-delta1)^3*(1/2+delta0)/(L+3/2) ≤
+      ‖z-1/2‖^3*‖z+1/2‖/‖z+3/2‖ := by
+  rcases hz with ⟨hz0,hz1,hzL⟩
+  have hzpos : 0 < z.re := h0.trans_le hz0
+  have hminus : 1/2-delta1 ≤ ‖z-1/2‖ := by
+    have h := Complex.re_le_norm ((1/2:ℂ)-z)
+    rw [norm_sub_rev] at h
+    norm_num at h
+    linarith
+  have hplus : 1/2+delta0 ≤ ‖z+1/2‖ := by
+    have h := Complex.re_le_norm (z+(1/2:ℂ))
+    norm_num at h
+    linarith
+  have hden : ‖z+3/2‖ ≤ L+3/2 := by
+    have h := norm_add_le z (3/2:ℂ)
+    norm_num at h
+    linarith
+  have hdenpos : 0 < ‖z+3/2‖ := by
+    apply norm_pos_iff.mpr
+    intro he
+    have h := congrArg Complex.re he
+    norm_num at h
+    linarith
+  apply div_le_div₀ (show 0 ≤ ‖z-1/2‖^3*‖z+1/2‖ by positivity) _ hdenpos hden
+  exact mul_le_mul (pow_le_pow_left₀ (by linarith : 0 ≤ 1/2-delta1) hminus 3)
+    hplus (by linarith) (by positivity)
+
+theorem regional_box_margin_lower {delta0 delta1 L BQ : ℝ}
+    (h0 : 0 < delta0) (h01 : delta0 ≤ delta1) (h1 : delta1 < 1/2)
+    (hL : delta1 ≤ L) (hBQ0 : 0 ≤ BQ) {z : ℂ}
+    (hz : z ∈ ProbeParameterBox delta0 delta1 L)
+    (hBQ : BQ ≤ ‖product probeSigma (Complex.I*z)‖) :
+    probeBoxMargin delta0 delta1 L BQ ≤ Real.sqrt (2*z.re)*‖probeLaplace probeV z‖ := by
+  have hzpos : 0 < z.re := h0.trans_le hz.1
+  have hs : Real.sqrt (2*delta0) ≤ Real.sqrt (2*z.re) := Real.sqrt_le_sqrt (by linarith [hz.1])
+  have he : Real.exp (-probeSigma*delta1) ≤ Real.exp (-probeSigma*z.re) :=
+    Real.exp_le_exp.mpr (by nlinarith [probeSigma_pos, hz.2.1])
+  have hr := regional_box_rational_lower h0 h01 h1 hL hz
+  have hr0 : 0 ≤ (1/2-delta1)^3*(1/2+delta0)/(L+3/2) := by
+    have : 0 < L := (h0.trans_le h01).trans_le hL
+    have : 0 < 1/2-delta1 := by linarith
+    positivity
+  have hm1 := mul_le_mul hs he (Real.exp_pos _).le (Real.sqrt_nonneg _)
+  have hm2 := mul_le_mul hm1 hr hr0 (show 0 ≤ Real.sqrt (2*z.re)*Real.exp (-probeSigma*z.re) by positivity)
+  have hm3 := mul_le_mul hm2 hBQ hBQ0
+    (show 0 ≤ Real.sqrt (2*z.re)*Real.exp (-probeSigma*z.re)*
+      (‖z-1/2‖^3*‖z+1/2‖/‖z+3/2‖) by positivity)
+  rw [regional_probeV_norm hzpos]
+  simpa only [probeBoxMargin, mul_assoc] using hm3
+
+def ProbeBoxCutValid (L : ℝ) (M : ℕ) : Prop :=
+  (M=0 ∧ probeSigma*L ≤ 1) ∨
+    (1 ≤ M ∧ probeSigma*L/(((M:ℝ)+1)*((M:ℝ)+2)) ≤ 1/2)
+
+def probeBoxProductLower (delta0 L : ℝ) (M : ℕ) : ℝ :=
+  if M=0 then probeBoxSmallProductLower L else probeBoxSplitProductLower delta0 L M
+
+/-- Explicit Section10 source margin, both guarded cut branches. -/
+theorem native_product_box_margin {delta0 delta1 L : ℝ}
+    (h0 : 0 < delta0) (h01 : delta0 ≤ delta1) (h1 : delta1 < 1/2)
+    (hL : delta1 ≤ L) (M : ℕ) (hcut : ProbeBoxCutValid L M) :
+    0 < probeBoxProductLower delta0 L M ∧
+    0 < probeBoxMargin delta0 delta1 L (probeBoxProductLower delta0 L M) ∧
+    ∀ z ∈ ProbeParameterBox delta0 delta1 L,
+      probeBoxProductLower delta0 L M ≤ ‖product probeSigma (Complex.I*z)‖ ∧
+      probeBoxMargin delta0 delta1 L (probeBoxProductLower delta0 L M) ≤
+        Real.sqrt (2*z.re)*‖probeLaplace probeV z‖ := by
+  have hLp : 0 < L := (h0.trans_le h01).trans_le hL
+  have hp : 0 < probeBoxProductLower delta0 L M := by
+    unfold probeBoxProductLower probeBoxSmallProductLower probeBoxSplitProductLower
+    split_ifs
+    · exact Real.exp_pos _
+    · exact mul_pos (pow_pos (div_pos h0 hLp) _) (Real.exp_pos _)
+  refine ⟨hp, probeBoxMargin_pos h0 h01 h1 hL hp, ?_⟩
+  intro z hz
+  have hprod : probeBoxProductLower delta0 L M ≤ ‖product probeSigma (Complex.I*z)‖ := by
+    rcases hcut with ⟨rfl,hs⟩ | ⟨hM,hs⟩
+    · simpa [probeBoxProductLower, probeBoxSmallProductLower] using
+        regional_product_small_lower probeSigma_pos.le hLp.le z hz.2.2 hs
+    · have hM0 : M ≠ 0 := by omega
+      simpa only [probeBoxProductLower, if_neg hM0, probeBoxSplitProductLower] using
+        regional_product_split_lower probeSigma_pos h0 z hz.1 hz.2.2 M hM hs
+  exact ⟨hprod, regional_box_margin_lower h0 h01 h1 hL hp.le hz hprod⟩
+
+theorem probeBoxMargin_zero_lower (delta1 L BQ : ℝ) : probeBoxMargin 0 delta1 L BQ = 0 := by
+  simp [probeBoxMargin]
+
+theorem probeBoxMargin_critical_upper (delta0 L BQ : ℝ) : probeBoxMargin delta0 (1/2) L BQ = 0 := by
+  simp [probeBoxMargin]
+
+theorem probeBoxSplitProductLower_zero_cut (delta0 L : ℝ) : probeBoxSplitProductLower delta0 L 0 = 1 := by
+  simp [probeBoxSplitProductLower]
+
+#print axioms native_product_box_margin
+
+
+
+/-- At an actual zero in the bounded box, the literal finite native residual
+must exceed the independently established source margin. -/
+theorem regional_zero_residual_lower {delta0 delta1 L : ℝ}
+    (h0 : 0 < delta0) (h01 : delta0 ≤ delta1) (h1 : delta1 < 1/2)
+    (hL : delta1 ≤ L) (M : ℕ) (hcut : ProbeBoxCutValid L M)
+    {N : ℕ} (x : Fin N → ℂ) {z : ℂ} (hz : z ∈ ProbeParameterBox delta0 delta1 L)
+    (hzero : riemannZeta (1/2+z) = 0) :
+    probeBoxMargin delta0 delta1 L (probeBoxProductLower delta0 L M) ≤ ‖probeResidual x‖ := by
+  have hzpos : 0 < z.re := h0.trans_le hz.1
+  have hne : z ≠ (1/2:ℂ) := by
+    intro he
+    have h := hz.2.1
+    rw [he] at h
+    norm_num at h
+    linarith
+  have hw : probeLaplace probeW z = 0 := by
+    rw [probeW_laplace hzpos hne, show riemannZeta (z+1/2) = 0 by simpa only [add_comm] using hzero]
+    simp
+  have heval := probe_laplace_evaluation_bound z hzpos (probeResidual x)
+  rw [probeResidual_laplace_dirichlet z hzpos x, hw, zero_mul, sub_zero] at heval
+  exact ((native_product_box_margin h0 h01 h1 hL M hcut).2.2 z hz).2.trans heval
+
+/-- A certified absolute square upper bound below the computed positive
+source threshold excludes zeros throughout this bounded box. -/
+theorem zero_region_of_finite_probe_certificate {delta0 delta1 L : ℝ}
+    (h0 : 0 < delta0) (h01 : delta0 ≤ delta1) (h1 : delta1 < 1/2)
+    (hL : delta1 ≤ L) (M : ℕ) (hcut : ProbeBoxCutValid L M)
+    {N : ℕ} (x : Fin N → ℂ) (U : ℝ) (hU : ‖probeResidual x‖^2 ≤ U)
+    (hthreshold : U < probeBoxMargin delta0 delta1 L (probeBoxProductLower delta0 L M)^2) :
+    ∀ z ∈ ProbeParameterBox delta0 delta1 L, riemannZeta (1/2+z) ≠ 0 := by
+  intro z hz hzero
+  have hp := (native_product_box_margin h0 h01 h1 hL M hcut).2.1
+  have hb := regional_zero_residual_lower h0 h01 h1 hL M hcut x hz hzero
+  nlinarith [norm_nonneg (probeResidual x)]
+
+/-- Direct composition with the genuine Euclidean P19 absolute error budget. -/
+theorem zero_region_of_enclosed_probe_data {delta0 delta1 L : ℝ}
+    (h0 : 0 < delta0) (h01 : delta0 ≤ delta1) (h1 : delta1 < 1/2)
+    (hL : delta1 ≤ L) (M : ℕ) (hcut : ProbeBoxCutValid L M)
+    {N : ℕ} (x : Fin N → ℂ) (qhat : ℝ) (bhat : Fin N → ℂ)
+    (Ghat : Matrix (Fin N) (Fin N) ℂ) (epsilonQ epsilonB epsilonG : ℝ)
+    (hQ : |probeQ0-qhat| ≤ epsilonQ)
+    (hB : ‖probeCoefficientVector (probeTargetColumn N)-probeCoefficientVector bhat‖ ≤ epsilonB)
+    (hG : ‖probeCertificateMatrix (probeGram N)-probeCertificateMatrix Ghat‖ ≤ epsilonG)
+    (hthreshold : probeNominalEnergy qhat bhat Ghat x+epsilonQ+
+        2*epsilonB*‖probeCoefficientVector x‖+epsilonG*‖probeCoefficientVector x‖^2 <
+      probeBoxMargin delta0 delta1 L (probeBoxProductLower delta0 L M)^2) :
+    ∀ z ∈ ProbeParameterBox delta0 delta1 L, riemannZeta (1/2+z) ≠ 0 := by
+  exact zero_region_of_finite_probe_certificate h0 h01 h1 hL M hcut x _
+    (finite_residual_certificate x qhat bhat Ghat epsilonQ epsilonB epsilonG hQ hB hG).2.1 hthreshold
+
+#print axioms zero_region_of_finite_probe_certificate
+#print axioms zero_region_of_enclosed_probe_data
 
 end Zeta23.OPICARound2

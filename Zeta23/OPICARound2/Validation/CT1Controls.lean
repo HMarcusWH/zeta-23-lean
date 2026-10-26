@@ -43,8 +43,50 @@ theorem ct1_actual_limit_delta_series (φ : SchwartzMap ℝ ℂ) :
         (TemperedDistribution.delta (n:ℝ))) φ) (ct1NormalizedLimit φ) :=
   ct1NormalizedLimit_hasSum_delta φ
 
+theorem ct1_actual_quotient_denominator_nonzero (L : ℕ→ℝ)
+    (hL : ∀ j,L j≠0) (hzero : Tendsto L atTop (𝓝 0)) :
+    ∀ᶠ j in atTop,nearGapCombDistribution (L j)
+      (ct1BumpTest 1 (ε:=1/4) (by norm_num))/(L j:ℂ)^2≠0 := by
+  have hd := ct1_normalized_sequence L hL hzero
+    (ct1BumpTest 1 (ε:=1/4) (by norm_num))
+  rw [ct1_actual_nonzero_test] at hd
+  exact hd.eventually_ne (by norm_num : (2:ℂ)≠0)
+
+theorem ct1_actual_scalar_quotient_limit (L : ℕ→ℝ) (c : ℕ→ℂ)
+    (hL : ∀ j,L j≠0) (hzero : Tendsto L atTop (𝓝 0))
+    (U : TemperedDistribution ℝ ℂ)
+    (hU : ∀ φ : SchwartzMap ℝ ℂ,
+      Tendsto (fun j => c j*nearGapCombDistribution (L j) φ) atTop (𝓝 (U φ))) :
+    Tendsto (fun j =>
+      (c j*nearGapCombDistribution (L j) (ct1BumpTest 1 (ε:=1/4) (by norm_num)))/
+      (nearGapCombDistribution (L j) (ct1BumpTest 1 (ε:=1/4) (by norm_num))/(L j:ℂ)^2))
+      atTop (𝓝 (U (ct1BumpTest 1 (ε:=1/4) (by norm_num))/2)) := by
+  have hd := ct1_normalized_sequence L hL hzero
+    (ct1BumpTest 1 (ε:=1/4) (by norm_num))
+  rw [ct1_actual_nonzero_test] at hd
+  exact (hU _).div hd (by norm_num : (2:ℂ)≠0)
+
+theorem ct1_actual_recovered_scalar (L : ℕ→ℝ) (c : ℕ→ℂ)
+    (hL : ∀ j,L j≠0) (hzero : Tendsto L atTop (𝓝 0))
+    (U : TemperedDistribution ℝ ℂ)
+    (hU : ∀ φ : SchwartzMap ℝ ℂ,
+      Tendsto (fun j => c j*nearGapCombDistribution (L j) φ) atTop (𝓝 (U φ))) :
+    U=(U (ct1BumpTest 1 (ε:=1/4) (by norm_num))/2) • ct1NormalizedLimit := by
+  obtain ⟨a,ha,h⟩ := ct1_scalar_limit_classification L c hL hzero U hU
+  have ht := congrArg (fun D : TemperedDistribution ℝ ℂ =>
+    D (ct1BumpTest 1 (ε:=1/4) (by norm_num))) h
+  change U (ct1BumpTest 1 (ε:=1/4) (by norm_num))=
+    a*ct1NormalizedLimit (ct1BumpTest 1 (ε:=1/4) (by norm_num)) at ht
+  rw [ct1_actual_nonzero_test] at ht
+  have heq : U (ct1BumpTest 1 (ε:=1/4) (by norm_num))/2=a := by rw [ht]; ring
+  rw [heq]
+  exact h
+
 #print axioms Zeta23.OPICARound2.ct1_scalar_limit_classification
 #print axioms Zeta23.OPICARound2.ct1_scalar_order_zero_at_integer
 #print axioms Zeta23.OPICARound2.ct1_order_zero_scalar_limit_is_zero
+#print axioms Zeta23.OPICARound2.Validation.ct1_actual_quotient_denominator_nonzero
+#print axioms Zeta23.OPICARound2.Validation.ct1_actual_scalar_quotient_limit
+#print axioms Zeta23.OPICARound2.Validation.ct1_actual_recovered_scalar
 
 end Zeta23.OPICARound2.Validation
