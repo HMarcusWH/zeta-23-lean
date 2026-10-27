@@ -1,0 +1,43 @@
+{
+  "schema": "OPICA3_OPEN_RESEARCH_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "terminals": [
+    {
+      "id": "R3-D05",
+      "status": "OPEN",
+      "target": "Corrected complete-source even-odd intertwining with projected output residual, all arithmetic terms and both Schur branches; no sign inference from identity alone."
+    },
+    {
+      "id": "R3-XD",
+      "status": "OPEN",
+      "target": "Independent eventual no-simultaneous-negativity restriction for the actual complete source; not assumed or proved in Phase1."
+    },
+    {
+      "id": "R3-B",
+      "status": "OPEN",
+      "target": "Actual source-preserving causal approximation Gram residual tends to zero."
+    },
+    {
+      "id": "R3-A",
+      "status": "OPEN",
+      "target": "Complete signed observation bound with all cross terms, collision masks and recovery budgets."
+    },
+    {
+      "id": "R3-C",
+      "status": "OPEN",
+      "target": "Complete original-detector forcing/direct-complement upper bound beating the off-line lower exponent."
+    },
+    {
+      "id": "R3-D06",
+      "status": "OPEN",
+      "target": "Independent retained pair radius bound; exact rational falsification before source theorem."
+    }
+  ],
+  "deferred": [
+    "Full-canonical interval arithmetic research campaign",
+    "Exhaustive semantic analysis of all 185 contact cells",
+    "Independent source sign or limit theorem",
+    "RH closure"
+  ]
+}

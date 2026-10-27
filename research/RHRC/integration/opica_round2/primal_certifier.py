@@ -15,10 +15,10 @@ from typing import Any, Callable, Mapping
 
 try:
     from .certificate_io import (InvalidCertificate, UnsupportedCertification, canonical_sha256,
-        failure_envelope, load_strict_json, parse_rational, require, validate_certificate)
+        failure_envelope, load_strict_json, parse_endpoint_rational, parse_rational, require, validate_certificate)
 except ImportError:
     from certificate_io import (InvalidCertificate, UnsupportedCertification, canonical_sha256,
-        failure_envelope, load_strict_json, parse_rational, require, validate_certificate)
+        failure_envelope, load_strict_json, parse_endpoint_rational, parse_rational, require, validate_certificate)
 
 HERE = Path(__file__).resolve().parent
 SIGMA = Fraction(1,4096)
@@ -104,8 +104,8 @@ def produce_primal(request: dict, region: dict, *, expected_source: Mapping[str,
     require(evaluation.get("request_sha256") == before and evaluation.get("source_identity") == dict(expected_source),
             "native_binding","Native enclosure differs from the requested original source")
     margin = regional_margin(region,cut_M=cut_M,precision_bits=request["precision_bits"])
-    upper = parse_rational(evaluation["upper_square"],nonnegative=True)
-    lower = parse_rational(margin["lower_square"],nonnegative=True)
+    upper = parse_endpoint_rational(evaluation["upper_square"],nonnegative=True)
+    lower = parse_endpoint_rational(margin["lower_square"],nonnegative=True)
     implementation = checker_digest()
     require(type(evaluation.get("backend")) is dict,"backend_identity","Native backend identity is required")
     certificate = {"schema":"OPICA2_PRIMAL_CERTIFICATE_V1","source":dict(expected_source),
@@ -153,10 +153,10 @@ def independent_primal_checker(request: dict, *, expected_source: Mapping[str, A
         margin = regional_margin(fixed_region,cut_M=cut_M,precision_bits=fixed_request["precision_bits"])
         require(certificate["backend"] == fresh["backend"] and certificate["error_budget"] == fresh["error_budget"],
                 "recompute_budget","Missing, stale or forged absolute error component")
-        total = parse_rational(fresh["error_budget"]["total_norm_error"],nonnegative=True)
+        total = parse_endpoint_rational(fresh["error_budget"]["total_norm_error"],nonnegative=True)
         components = ("source_norm_error","kernel_lag_norm_error","output_target_tail_norm_error",
                       "quadrature_norm_error","rounding_norm_error")
-        require(total >= sum((parse_rational(fresh["error_budget"][k],nonnegative=True) for k in components),Fraction()),
+        require(total >= sum((parse_endpoint_rational(fresh["error_budget"][k],nonnegative=True) for k in components),Fraction()),
                 "incomplete_budget","Recomputed total omits an absolute norm error")
         require(certificate["upper_square"] == fresh["upper_square"] and
                 certificate["witness_lower_square"] == margin["lower_square"],
@@ -178,7 +178,7 @@ def accept_primal(certificate: dict, request: dict, *, expected_source: Mapping[
     require(required <= {row["declaration"] for row in certificate["analytic_dependencies"]},
             "missing_analytic_dependency","Native certificate omits an actual source, budget or regional theorem")
     proposed = deepcopy(certificate)
-    if parse_rational(proposed["upper_square"]) < parse_rational(proposed["witness_lower_square"]):
+    if parse_endpoint_rational(proposed["upper_square"],nonnegative=True) < parse_endpoint_rational(proposed["witness_lower_square"],nonnegative=True):
         require(proposed["outcome"] in {"UNRESOLVED","CERTIFIED_FINITE"},"promotion_scope","Unexpected finite candidate outcome")
         proposed["outcome"] = "CERTIFIED_FINITE"
     return validate_certificate(proposed,expected_source,

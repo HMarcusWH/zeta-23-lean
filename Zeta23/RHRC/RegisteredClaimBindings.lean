@@ -10,6 +10,7 @@ OPEN-candidate section and remain non-promoted; none remains after the
 post-#287 promotion. RH remains OPEN.
 -/
 
+import Zeta23.RHRC.OpicaRound3Bindings
 import Zeta23.OPICARound2.CT1Controls
 import Zeta23.OPICARound2.CausalProbe
 import Zeta23.OPICARound2.CertifiedEvaluation

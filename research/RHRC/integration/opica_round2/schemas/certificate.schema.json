@@ -163,37 +163,37 @@
         "source_norm_error": {
           "type": "string",
           "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
-          "maxLength": 180
+          "maxLength": 4096
         },
         "kernel_lag_norm_error": {
           "type": "string",
           "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
-          "maxLength": 180
+          "maxLength": 4096
         },
         "output_target_tail_norm_error": {
           "type": "string",
           "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
-          "maxLength": 180
+          "maxLength": 4096
         },
         "quadrature_norm_error": {
           "type": "string",
           "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
-          "maxLength": 180
+          "maxLength": 4096
         },
         "rounding_norm_error": {
           "type": "string",
           "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
-          "maxLength": 180
+          "maxLength": 4096
         },
         "filter_operator_norm_upper": {
           "type": "string",
           "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
-          "maxLength": 180
+          "maxLength": 4096
         },
         "total_norm_error": {
           "type": "string",
           "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
-          "maxLength": 180
+          "maxLength": 4096
         }
       },
       "required": [
@@ -210,12 +210,12 @@
     "upper_square": {
       "type": "string",
       "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
-      "maxLength": 180
+      "maxLength": 4096
     },
     "witness_lower_square": {
       "type": "string",
       "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
-      "maxLength": 180
+      "maxLength": 4096
     },
     "analytic_dependencies": {
       "type": "array",
@@ -289,5 +289,5 @@
   ],
   "additionalProperties": false,
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "Shape only. Runtime semantic checks independently recompute bounds and identity; this schema alone never validates mathematical truth. Exact baseline uses its separate fixed fixture schema."
+  "description": "Shape only. Runtime semantic checks independently recompute bounds and identity; this schema alone never validates mathematical truth. Exact baseline uses its separate fixed fixture schema. Generated bounds and error budgets have a 4096-character rational endpoint budget; user coefficients, regions and horizons retain their 180-character input budget. Runtime also requires reduced canonical rationals."
 }

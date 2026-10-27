@@ -48,6 +48,21 @@ def path_policy(manifest: dict[str, Any]) -> dict[str, list[str]]:
 
 def inspect_descendant(repo: Path = REPO, here: Path = HERE) -> dict[str, Any]:
     repo, here = repo.resolve(), here.resolve()
+    child = contract.round3_extension_context(repo)
+    if child is not None:
+        # The child authenticates every unchanged775 byte and its exact reviewed
+        # delta. Original416 projection verification below is never widened.
+        manifest = load_strict_json(here/'BUILD_MANIFEST.json', 8*1024*1024)
+        lock = load_strict_json(here/'ANCESTOR_LOCK.json', 8*1024*1024)
+        path_policy(manifest)
+        identity = contract.check_merged_base(repo, lock)
+        return {'schema': 'OPICA2_DESCENDANT_SOURCE_INSPECTION_V1', **identity,
+                'status': 'PASS_SOURCE_SCOPE_ONLY', 'path_policy_sha256': AUDITED_PATH_POLICY,
+                'round3_source_inspection': child,
+                'source_lock_sha256': contract.digest(here/'ANCESTOR_LOCK.json'),
+                'current_tree_compatibility_accepted': False, 'baseline_replay_accepted': False,
+                'policy_review': 'EXPLICIT_PINNED_ROUND3_EXTENSION_SOURCE_SCOPE_ONLY',
+                'full_core_accepted': False, 'full_release_accepted': False, 'RH': 'OPEN', 'Step4': 'OPEN'}
     manifest = load_strict_json(here/'BUILD_MANIFEST.json', 8*1024*1024)
     extension = load_strict_json(here/'DESCENDANT_EXTENSION.json', 8*1024*1024)
     lock = load_strict_json(here/'ANCESTOR_LOCK.json', 8*1024*1024)

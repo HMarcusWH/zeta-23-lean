@@ -9,7 +9,8 @@ sys.path.insert(0,str(HERE))
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 import gram_diagnostics as gram
 import native_evaluation as native
-from certificate_io import InvalidCertificate,canonical_sha256,parse_complex
+from certificate_io import (InvalidCertificate,MAX_ENDPOINT_RATIONAL_CHARS,canonical_bytes,
+                            canonical_sha256,loads_strict_json,parse_complex)
 from test_native_evaluation import request_fixture
 
 
@@ -35,6 +36,52 @@ def toy_energy(request, *, expected_source):
 
 
 class GramTests(unittest.TestCase):
+    def test_real_high_precision_gram_and_conditioned_reader_roundtrip(self):
+        for bits in (256,512):
+            with self.subTest(bits=bits):
+                request = request_fixture()
+                request["precision_bits"] = bits
+                original = deepcopy(request)
+                result = gram.evaluate_gram(request,expected_source=request["source"])
+                restored = loads_strict_json(canonical_bytes(result))
+                self.assertEqual(request,original)
+                self.assertEqual(restored,result)
+                if bits == 512:
+                    self.assertGreater(len(restored["q"]["upper"]),180)
+                for energy in [restored["q"],*[row["energy"] for row in restored["observations"]]]:
+                    self.assertEqual(gram.Interval.read(energy).json(),energy)
+                for interval in [*restored["b"],*(value for row in restored["G"] for value in row)]:
+                    self.assertEqual(gram.ComplexInterval.read(interval).json(),interval)
+                diagnostics = gram.conditioned_gap(restored,request["coefficients"])
+                self.assertLessEqual(Q(diagnostics["energy"]["lower"]),Q(diagnostics["energy"]["upper"]))
+                self.assertFalse(result["asymptotic_claim"])
+                self.assertFalse(result["full_core_accepted"])
+                self.assertFalse(result["full_release_accepted"])
+                self.assertEqual(diagnostics["RH"],"OPEN")
+
+    def test_large_interval_readers_preserve_order_and_coefficient_boundaries(self):
+        endpoint = str(Q(1,2**700))
+        interval = {"lower":"0", "upper":endpoint}
+        self.assertEqual(gram.Interval.read(interval).json(),interval)
+        complex_interval = {"re":interval, "im":{"lower":"-"+endpoint,"upper":"0"}}
+        self.assertEqual(gram.ComplexInterval.read(complex_interval).json(),complex_interval)
+        for bad in ({"lower":endpoint,"upper":"0"},
+                    {"lower":"0","upper":"9"*(MAX_ENDPOINT_RATIONAL_CHARS+1)},
+                    {"lower":"0","upper":"2/2"}, {"lower":False,"upper":"1"}):
+            with self.subTest(bad=bad), self.assertRaises(InvalidCertificate):
+                gram.Interval.read(bad)
+        with self.assertRaises(InvalidCertificate):
+            gram.ComplexInterval.point({"re":endpoint,"im":"0"})
+
+    def test_generated_energy_cannot_exceed_endpoint_budget(self):
+        request = request_fixture()
+        def oversized(request,*,expected_source):
+            result = toy_energy(request,expected_source=expected_source)
+            result["upper_square"] = "9"*(MAX_ENDPOINT_RATIONAL_CHARS+1)
+            return result
+        with self.assertRaises(InvalidCertificate):
+            gram.evaluate_gram(request,expected_source=request["source"],evaluator=oversized)
+
     def test_exact_complex_polarization_recovers_b_and_completed_gram(self):
         req=request_fixture()
         req["dictionary_indices"]=["1","2"]
