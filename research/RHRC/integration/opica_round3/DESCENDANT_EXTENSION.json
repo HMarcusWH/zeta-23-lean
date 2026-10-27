@@ -453,8 +453,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_round3/tests/test_source_evaluator.py",
-      "bytes": 19132,
-      "sha256": "85fefa1a303d9b0e8d454e427d6ffa7c9c78864d45ed4baa706c1a9e9f26116c"
+      "bytes": 19652,
+      "sha256": "88efd41968c103d1c56736e08c984fcc68daf61f21297c9ae81083454a9249a2"
     },
     {
       "path": "research/RHRC/integration/opica_round3/validate_contract.py",

@@ -157,8 +157,15 @@ class FailClosedInputs(unittest.TestCase):
     def test_public_producer_deadline_is_unresolved(self):
         with tempfile.TemporaryDirectory(prefix='opica3-deadline-') as tmp:
             identity={'head':'a'*40,'tree':'b'*40,'clean':True,'source_sha256':{}}
-            with patch.object(B,'source_identity',return_value=identity),patch.object(E.subprocess,'run',side_effect=subprocess.TimeoutExpired('unit-fixture',1)):
-                result=E.evaluate(E.CASES,Path(tmp)/'result',128,1)
+            with patch.object(B,'source_identity',return_value=identity),patch.object(E.subprocess,'run',side_effect=subprocess.TimeoutExpired('unit-fixture',1)) as run:
+                # Mocked source identity must not inherit CI's real requested head.
+                with patch.dict(os.environ,{'REQUESTED_HEAD':'c'*40}):
+                    with self.assertRaisesRegex(B.InvalidRequest,'Another requested head'):
+                        E.evaluate(E.CASES,Path(tmp)/'wrong-head',128,1)
+                run.assert_not_called()
+                self.assertFalse((Path(tmp)/'wrong-head').exists())
+                with patch.dict(os.environ,{'REQUESTED_HEAD':identity['head']}):
+                    result=E.evaluate(E.CASES,Path(tmp)/'result',128,1)
             self.assertEqual(result['status'],'UNRESOLVED')
             self.assertEqual(len(result['cases']),3)
             for row in result['cases']:
