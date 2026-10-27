@@ -1,0 +1,3624 @@
+{
+  "schema": "OPICA_ROUND2_RESEARCH_CONTRACTS_V2_1",
+  "date": "2026-10-25",
+  "source_repository": "HMarcusWH/zeta-23-lean",
+  "source_pull_request": 294,
+  "source_commit": "416aec21d4d6634675639b5397cc300d1f826e34",
+  "source_tree": "0506bca8ffe613e9cd9ab844650a1141d4494f66",
+  "status": "PROPOSED_PAPER_SPECIFICATION_NOT_IMPLEMENTED",
+  "namespace": "Zeta23.OPICARound2",
+  "scope": "Versioned research specification preserving every inherited Round 2 contract; supporting paper deductions and OPEN alternatives do not change the immutable original 100-root project contracts.",
+  "counts": {
+    "inherited_contracts": 25,
+    "inherited_core_contracts": 23,
+    "inherited_optional_classical_transfer_contracts": 2,
+    "supporting_amendments": 17,
+    "open_alternative_terminal_targets": 4,
+    "optional_external_transfer_lanes": 1,
+    "terminal_estimates_proved": 0,
+    "new_lean_declarations_compiled": 0,
+    "original_100_root_count_change": 0,
+    "optional_research_extensions": 3,
+    "failure_control_records": 25,
+    "research_lane_dispositions": 13,
+    "proposed_implementation_modules": 21
+  },
+  "original_contract_preservation": {
+    "input_path": "upload/OPICA_Round2_Theorem_Contracts_2026-10-25(2).json",
+    "input_sha256": "2374df94db84eaeb2d97bd8b402ac86b267958cb159724445c1b8ced88da3c15",
+    "input_contract_count": 25,
+    "raw_contract_array_sha256": "d13893a0f8a169799292565bfb6127255e487d69e9e14ad653f9d5e85c0ef536",
+    "canonical_contract_array_sha256": "808bd3cd54e76dabde25f314a98eae006ac31eee9c4907b95a40dc1050841026",
+    "canonicalization": "UTF-8 JSON, ensure_ascii=false, sort_keys=true, separators=(comma,colon)",
+    "raw_contract_array_preserved_byte_for_byte": true,
+    "all_contract_objects_deep_equal": true,
+    "all_original_top_level_metadata_preserved_under": "inherited_specification_metadata",
+    "all_inherited_acceptance_flags_unchanged": true,
+    "original_top_level_terminal_target_unchanged_in_inherited_metadata": true,
+    "per_contract_canonical_sha256": {
+      "OPICA2_P01": "06ae2a2ccf4f9b80bf84b97567670e0d3377696de5cebd106c6fbe27d16e0f76",
+      "OPICA2_P02": "3a4638d9da095628f9fa645ec83932bd6521615d834f73962a00361bf3c7e9c2",
+      "OPICA2_P03": "778b441f7df03a93231dbf96d78ae4689d42ff74d932aa3afc518f7136c57ae5",
+      "OPICA2_P04": "6b534fa48cb2b54331acd34a919e36404bb518b62bc6e212803b3bc9c1981bf3",
+      "OPICA2_P05": "683c7df10dcdff54e410f065e4f602d97eb260118fed9b63915b3e7f660a4e22",
+      "OPICA2_P06": "466dfb3a5fd28d67f23100baa7dbbb0ce5d15cd3d0a500b4e5ce4608cc71a888",
+      "OPICA2_P07": "686fe0934be9da32adeaffc202cb69110bafc10f732fba217e6612081505544c",
+      "OPICA2_P08": "a9bf6c6bb0cf07841252690ee1a66f8bd0efd89ed9e5b47fa4f871a8032ea8f8",
+      "OPICA2_P09": "223ab23b7d9c787fe4ee78f264d234bf86191d1a25153bae0802a2208722ab71",
+      "OPICA2_P10": "75c1be56b9fc205daf6d65c73066a9cafe843c899b3f3d88c19fc47e0a827dcf",
+      "OPICA2_P11": "4bef4dd94c5111c1c6b780cb4bc87d55373f22fc3a1737175f28033f39bc909a",
+      "OPICA2_P12": "9ce8b19d546ea39c2e9af37ab224e1d929660b4c77e9d815dc7d5e391e38a76e",
+      "OPICA2_P13": "467104fa6596826a4a13897e4c27a96e9e6c31380565a33b9dd9038e9b562e59",
+      "OPICA2_P14": "de1def135949c65a16d36128f424791c6b3906edf57d67fc50c8b39740a3c768",
+      "OPICA2_P15": "d80b7c52398c277824a7b7ed8717a9e2e69a4b72cab1711dbd058cdd5d467c3e",
+      "OPICA2_P16": "e47327423035e1b8f19051112f95bd6222e3a0d6553ab06d10054125bc8123ef",
+      "OPICA2_P17": "ef8a96f10e05d9a1c68f82545be534d4f0289665f3d881e218bb9e52c4981e61",
+      "OPICA2_P18": "5659734be8b5cada122b065cbb17350ef487082486507ec60db0ea66dc0280cd",
+      "OPICA2_P19": "b50e636ce54f7dff24598c34123691094392fff1b36c3b392fbb0d5a8d8220df",
+      "OPICA2_P20": "cad0af746a0699e109293311692c7bf2b6e8570dd9662d5b858b170d26d47620",
+      "OPICA2_P21": "802ea2079b7310c157ea859125f2e2ac151e93f2f30726a175318afd99e9ea64",
+      "OPICA2_P22": "707aec017dd7d2b18e1630d2f1a1a5b11f5499632cf346283b31ed4345e1a151",
+      "OPICA2_P23": "bd55e4a0b12f28b0c402ea3e20c27210a99437a72c99f29b043ec4e34b590526",
+      "OPICA2_P24": "6285becc6535518436444ad3622197e255c67a363b14c77a061906dfdf664809",
+      "OPICA2_P25": "9889e420550b157e7c3028768b38da529efcf23457cf33ba57734686fe0bef0c"
+    }
+  },
+  "inherited_specification_metadata": {
+    "schema": "OPICA_ROUND2_RESEARCH_CONTRACTS_V1",
+    "date": "2026-10-25",
+    "source_commit": "e6baabd98dc9d6c3228c168f786524604830e163",
+    "source_tree": "09bb70b30fbfeac710cf7684f95e7d142f305fe2",
+    "status": "PROPOSED_PAPER_SPECIFICATION_NOT_IMPLEMENTED",
+    "namespace": "Zeta23.OPICARound2",
+    "counts": {
+      "core_contracts": 23,
+      "optional_classical_transfer_contracts": 2,
+      "terminal_estimates_proved": 0,
+      "new_lean_declarations_compiled": 0
+    },
+    "terminal_target": {
+      "id": "OPICA2_C1",
+      "status": "OPEN",
+      "statement": "For the exact native probe and completed-delay dictionary, q0-b_N*G_N^{-1}b_N tends to zero.",
+      "not_a_proof": "Positive definiteness, monotone decrease, finite numerical examples, and proving C1 implies RH do not establish C1."
+    },
+    "global_invariants": [
+      "Do not edit the original 100 OPICA theorem contracts or substitute the original j,c,a.",
+      "Do not alter existing OPEN claims or historical evidence.",
+      "Every new theorem needs actual compiler/standard-axiom evidence before PROVED status.",
+      "Synthetic kernels and polynomial sources are controls, never claimed actual arithmetic instances.",
+      "Finite numerical certificate requires native source, tail, quadrature and conditioning enclosures.",
+      "No repository writes or implementation were performed by this research continuation.",
+      "Source scale and source delay are fixed; no N-dependent target replacement.",
+      "Common normalization must scale both residual and zero-witness threshold; it cannot improve their ratio.",
+      "Laplace lambda=rho-1/2 is not spectral kappa=rho*(1-rho); their roles and domains must not be conflated."
+    ],
+    "priority_order": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      23,
+      14,
+      19,
+      21,
+      22,
+      13,
+      15,
+      16,
+      17,
+      18,
+      20,
+      24,
+      25
+    ],
+    "new_source_files_proposed": [
+      "Zeta23/OPICARound2/CausalProbe.lean",
+      "Zeta23/OPICARound2/ProbeGram.lean",
+      "Zeta23/OPICARound2/TruncationControls.lean",
+      "Zeta23/OPICARound2/DualCertificates.lean",
+      "Zeta23/OPICARound2/CertifiedEvaluation.lean",
+      "Zeta23/OPICARound2/RegionalCertificates.lean",
+      "Zeta23/OPICARound2/ClassicalAdapter.lean",
+      "Zeta23/OPICARound2.lean",
+      "Zeta23/OPICARound2/Validation.lean"
+    ],
+    "original_contract_families_reused": [
+      "native actual-source visibility and rational/floor transform identities",
+      "causal L2 operator and Laplace-witness interfaces",
+      "weighted Dirichlet/Moebius inverse coefficients",
+      "all-multiplicity Laguerre residual lower bounds",
+      "original probability source prefix/tail law"
+    ]
+  },
+  "contracts": [
+    {
+      "id": "OPICA2_P01",
+      "proposed_lean_name": "Zeta23.OPICARound2.delayed_original_source",
+      "unit": "CausalProbe",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "At sigma=1/4096 define jPlus(t)=nativeOriginalSource(t-sigma), not a new source. Prove support [0,2sigma], smoothness, realness, L1/L2, JPlus(z)=exp(-sigma*z)J(z), integral 1/16, and double killed moments at z=±1/2.",
+      "dependencies": [],
+      "proof_strategy": "Use frozen support/smoothness/transform, literal translation and compact integration by parts.",
+      "forbidden_substitutions": [
+        "Do not declare the symmetric original j causal.",
+        "Do not square Q in J.",
+        "Do not remove the delay from transforms."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P02",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_probe_transforms",
+      "unit": "CausalProbe",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Use the existing undamped causal operator T, c=actual rational kernel and a=actual floor kernel. Define v=c*jPlus and w=a*jPlus. Prove causal L1/L2 representatives, V=R JPlus and W=A JPlus on correct domains; v nonzero, with integral v=-1/24.",
+      "dependencies": [
+        "OPICA2_P01"
+      ],
+      "proof_strategy": "Young's inequality and genuine convolution/Laplace interchange; identify Bochner and physical representatives.",
+      "forbidden_substitutions": [
+        "No prime-field L2 or range-closure assumption.",
+        "v is not the old completed input.",
+        "A(1/2)=1/2; do not totalize R*zeta at that point as zero."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P03",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_probe_integer_action",
+      "unit": "CausalProbe",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Prove w(t)=sum_{n>=1} n^(-1/2) v(t-log n) by an exact locally finite history at every t.",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "proof_strategy": "Reuse a=N c and integrate the finite history against compact causal jPlus.",
+      "forbidden_substitutions": [
+        "No asserted convergence of integer partial sums in L2.",
+        "Do not change inclusive floor/casual conventions."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P04",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_probe_zero_separation",
+      "unit": "CausalProbe",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For an actual right-half nontrivial zero rho, lambda=rho-1/2, delta=Re lambda>0: for all causal f, ||v-Tf||>=sqrt(2delta)*|R(lambda)JPlus(lambda)|>0; extend to the range closure.",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "proof_strategy": "Bounded Laplace functional annihilates actual range; frozen original-source visibility makes target pairing nonzero.",
+      "forbidden_substitutions": [
+        "No simple-zero restriction.",
+        "No zeta-derivative lower bound.",
+        "No finite global spectral mass assumption."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P05",
+      "proposed_lean_name": "Zeta23.OPICARound2.rh_of_native_probe_range",
+      "unit": "CausalProbe",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "If the literal v belongs to closure(range T) at damping zero, derive RiemannHypothesis using P04 and reflection.",
+      "dependencies": [
+        "OPICA2_P04"
+      ],
+      "proof_strategy": "Contradict each hypothetical off-line zero with the fixed stable probe.",
+      "forbidden_substitutions": [
+        "Do not assert the membership premise.",
+        "Do not identify with B-Y's distinct input.",
+        "Do not assume the desired result in a structure field."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P06",
+      "proposed_lean_name": "Zeta23.OPICARound2.probe_tail_and_correlation",
+      "unit": "ProbeGram",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For t>=2sigma prove v(t)=2JPlus(-3/2)exp(-3t/2). For |L|>=2sigma prove K_v(L)=C exp(-3|L|/2), C=J(3/2)^2/3. Prove compact support of the remainder and the separated finite-shift Gram formula.",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "proof_strategy": "Use the killed -1/2 moment, literal convolution and R(3/2)=1/6.",
+      "forbidden_substitutions": [
+        "Keep C versus 2JPlus(-3/2) distinct.",
+        "Do not call the v-shift Gram the w-shift Gram.",
+        "Do not extend the tail formula inside the source interval."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P07",
+      "proposed_lean_name": "Zeta23.OPICARound2.probe_target_column",
+      "unit": "ProbeGram",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For g_n=n^(-1/2)D_log(n)w, q0=||v||², prove b_1=q0+C(zeta(2)-1) and b_n=C*zeta(2)/n² for n>=2. Prove 16/3<=C<=16/3*cosh(3sigma/2)^2 and the stated rational upper bound.",
+      "dependencies": [
+        "OPICA2_P03",
+        "OPICA2_P06"
+      ],
+      "proof_strategy": "Compute n>=2 directly from the target tail; justify the single absolutely convergent pairing interchange for n=1.",
+      "forbidden_substitutions": [
+        "No unjustified infinite double Gram interchange.",
+        "No missing n^(-1/2) normalization.",
+        "Retain both delay factors until cancellation."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P08",
+      "proposed_lean_name": "Zeta23.OPICARound2.probe_finite_gram_positive",
+      "unit": "ProbeGram",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For every N>=1 the actual G_N=(<g_m,g_n>) is Hermitian strictly positive definite.",
+      "dependencies": [
+        "OPICA2_P02"
+      ],
+      "proof_strategy": "Take Laplace transforms of a finite relation; W(x)>0 for real x>1; strip the least Dirichlet index as x tends to infinity.",
+      "forbidden_substitutions": [
+        "Do not assume positive definiteness as an input.",
+        "Do not silently truncate basis function w.",
+        "N=0 must be separate or excluded."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P09",
+      "proposed_lean_name": "Zeta23.OPICARound2.probe_schur_error",
+      "unit": "ProbeGram",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Prove actual least-squares distance d_N²=q0-b*G_N^(-1)b and the bordered determinant ratio, with a minimizer and correct complex inner-product convention.",
+      "dependencies": [
+        "OPICA2_P07",
+        "OPICA2_P08"
+      ],
+      "proof_strategy": "Finite Hilbert projection and completion of squares.",
+      "forbidden_substitutions": [
+        "No floating-point inverse as authority.",
+        "Use Hermitian conjugation, not transpose for complex coefficients."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P10",
+      "proposed_lean_name": "Zeta23.OPICARound2.probe_monotone_innovation",
+      "unit": "ProbeGram",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Prove d_N nonnegative/nonincreasing and the exact positive innovation-decrement identity when one column is added.",
+      "dependencies": [
+        "OPICA2_P09"
+      ],
+      "proof_strategy": "Nested subspaces and a one-step Schur complement.",
+      "forbidden_substitutions": [
+        "Do not infer limit zero from monotonicity.",
+        "A small innovation denominator is not automatically progress."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P11",
+      "proposed_lean_name": "Zeta23.OPICARound2.probe_dirichlet_norm",
+      "unit": "ProbeGram",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "With angular-frequency Fourier convention, prove ||v-sum x_ng_n||²=int Omega(xi)|1-zeta(1/2+i xi)sum x_n n^(-1/2-i xi)|² dxi, Omega=|J(i xi)|²/[2pi(xi²+9/4)].",
+      "dependencies": [
+        "OPICA2_P02",
+        "OPICA2_P09"
+      ],
+      "proof_strategy": "First prove boundary transform transport by dominated convergence; then Plancherel with exact scaling.",
+      "forbidden_substitutions": [
+        "No 2pi drift.",
+        "Do not erase the phase-sensitive cross term.",
+        "|Q|² in an energy does not redefine the source."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P12",
+      "proposed_lean_name": "Zeta23.OPICARound2.rh_of_probe_error_limit",
+      "unit": "ProbeGram",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "If the exact d_N tends to zero, derive RiemannHypothesis. Also allow a cofinal subsequence or explicit actual coefficient vectors with errors tending to zero.",
+      "dependencies": [
+        "OPICA2_P05",
+        "OPICA2_P09",
+        "OPICA2_P10"
+      ],
+      "proof_strategy": "Dictionary span lies in actual range; take closure and apply P05.",
+      "forbidden_substitutions": [
+        "C1 remains an explicit antecedent.",
+        "Do not replace actual w by an arbitrary transform."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P13",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_mobius_probe_inverse",
+      "unit": "TruncationControls",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Define the locally finite M(t)=sum mu(n)n^(-1/2)jPlus(t-log n). Prove N M=jPlus and a*M=v locally, with actual finite-history regrouping.",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P03"
+      ],
+      "proof_strategy": "Reuse native_coefficients_moebius_inverse at Q=1; finite multiplicative regrouping.",
+      "forbidden_substitutions": [
+        "Do not claim M is L2.",
+        "Do not cancel a nonconvergent global transform quotient.",
+        "Preserve n=1."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P14",
+      "proposed_lean_name": "Zeta23.OPICARound2.integer_partial_divergence_and_safe_cutoff",
+      "unit": "TruncationControls",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For w_K=N_K v prove exact tail-square C exp(-3sigma)(K+1)^2/K and ||w_K||→infinity. Separately prove ||a*jPlus-(a 1_[0,T])*jPlus||2<=2exp(-T/2)||j||2 and corresponding finite Gram entry error.",
+      "dependencies": [
+        "OPICA2_P03",
+        "OPICA2_P06",
+        "OPICA2_P08"
+      ],
+      "proof_strategy": "Explicit target tail and causal floor-kernel L1 tail bound.",
+      "forbidden_substitutions": [
+        "Do not conflate integer cutoff with physical-time cutoff.",
+        "The divergence assertion needs no off-line-zero premise.",
+        "Do not infer w is not L2."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P15",
+      "proposed_lean_name": "Zeta23.OPICARound2.mobius_partial_zero_barrier",
+      "unit": "TruncationControls",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For an actual right zero, e_N=v-T M_N vanishes before log(N+1) and ||e_N||>=sqrt(2delta)|V(lambda)|(N+1)^delta.",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_P13"
+      ],
+      "proof_strategy": "History equality plus the invariant Laplace functional, restricted to the tail.",
+      "forbidden_substitutions": [
+        "Do not claim this disproves optimized C1.",
+        "Do not recount existing general Laguerre bounds as new.",
+        "Do not silently let coefficients differ from raw mu(n)."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P16",
+      "proposed_lean_name": "Zeta23.OPICARound2.noncausal_probe_leakage",
+      "unit": "TruncationControls",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For full-line f and an actual right zero, prove ||f_-||>=(delta+1/2)(|V(lambda)|-||v-Tf||/sqrt(2delta))_+.",
+      "dependencies": [
+        "OPICA2_P04"
+      ],
+      "proof_strategy": "Compute T*psi on negative time using a(t)<=exp(-t/2), and bound the two inner products.",
+      "forbidden_substitutions": [
+        "No existence of a full-line inverse is asserted.",
+        "Do not discard f_- or replace causal T by a full-line inverse."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P17",
+      "proposed_lean_name": "Zeta23.OPICARound2.laplace_jet_gram",
+      "unit": "DualCertificates",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For finitely many distinct lambda_i with positive real part and m_i>=1, prove exact factorial Gram entries, positive definiteness and the confluent Cauchy determinant in report Eq.9.2.",
+      "dependencies": [],
+      "proof_strategy": "Cauchy determinant with normalized confluent limits, or a direct rational determinant proof; preserve ordinary derivative factorials.",
+      "forbidden_substitutions": [
+        "Distinct nodes and positive real parts remain explicit.",
+        "Do not normalize jets without changing the determinant.",
+        "No finite family is asserted complete."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P18",
+      "proposed_lean_name": "Zeta23.OPICARound2.simultaneous_zero_distance",
+      "unit": "DualCertificates",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For actual zeros with selected allowed multiplicities, prove b*G^(-1)b<=dist(v,closure(range T))², where b_{i,k}=(-1)^k V^(k)(lambda_i). Prove monotonicity under adding witnesses.",
+      "dependencies": [
+        "OPICA2_P02",
+        "OPICA2_P17"
+      ],
+      "proof_strategy": "Finite projection onto an explicitly proved adjoint-kernel subspace.",
+      "forbidden_substitutions": [
+        "No global completeness or singular-inner-factor assumption.",
+        "Do not insert zeta derivative bounds for the new target.",
+        "Compare with existing Laguerre normalization."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P19",
+      "proposed_lean_name": "Zeta23.OPICARound2.finite_residual_certificate",
+      "unit": "CertifiedEvaluation",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Prove primal residual upper enclosures from errors in q,b,G; prove the two-sided estimate E_x²-||b-Gx||²/ell<=d_N²<=E_x² when G>=ell I, ell>0.",
+      "dependencies": [
+        "OPICA2_P09"
+      ],
+      "proof_strategy": "Exact completion of squares and spectral norm perturbation inequalities.",
+      "forbidden_substitutions": [
+        "No unchecked numerical rank/inverse.",
+        "Reject NaN, infinite or negative error budgets.",
+        "A sampled grid is not an integral enclosure.",
+        "No asymptotic claim from finitely many N."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P20",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_compact_muntz_adapter",
+      "unit": "ClassicalAdapter",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Define f(x)=x^(-1/2)v(-log x) for x>0, f(0)=0. Prove C1 compact support [0,1], mean zero, exact Mellin transform, U(Pf)=w and U((Pf)(n·))=g_n.",
+      "dependencies": [
+        "OPICA2_P02",
+        "OPICA2_P03",
+        "OPICA2_P06"
+      ],
+      "proof_strategy": "Unitary substitution and the explicit linear behavior of f near zero; prove flat matching at x=1.",
+      "forbidden_substitutions": [
+        "Do not omit the mean subtraction until mean zero is proved.",
+        "Do not assume f nonnegative.",
+        "Do not assert its Mellin transform has no critical-line zeros."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P21",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_product_box_margin",
+      "unit": "RegionalCertificates",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For 0<delta0<=delta1<1/2, L>=delta1, prove the explicit product lower bounds B_Q and Gamma_K in Section10, including M=0/small-factor and finite-prefix alternatives.",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02"
+      ],
+      "proof_strategy": "Original widths, sinh lower bound on a right-half box, uniform logarithmic tail product estimate.",
+      "forbidden_substitutions": [
+        "No zeta-zero assumptions in the analytic product bound.",
+        "Use the original one-copy product.",
+        "Keep M>=1 in the M^(-3) branch.",
+        "No box touching delta=0 or delta1=1/2."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P22",
+      "proposed_lean_name": "Zeta23.OPICARound2.zero_region_of_finite_probe_certificate",
+      "unit": "RegionalCertificates",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "If an actual finite residual has certified upper square U<Gamma_K², prove zeta(1/2+lambda) nonzero throughout K.",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_P19",
+        "OPICA2_P21"
+      ],
+      "proof_strategy": "Contradict the uniform explicit Laplace-witness lower bound.",
+      "forbidden_substitutions": [
+        "A failed finite certificate is NO_CERTIFICATE, not a counterexample.",
+        "No empirical tiny residual without absolute error control.",
+        "No global theorem from one bounded region."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P23",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_source_prefix_error",
+      "unit": "CertifiedEvaluation",
+      "tier": "CORE_PAPER_DERIVATION",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For M>=12 use the literal first-M box convolution q_M and actual tail law. Prove source L2 error bounds r_M||j_M'||, (v_M/2)||j_M''||, and corrected error ||j-(j_M+v_M j_M''/2)||<=v_M²||j_M^(4)||/8; transport to v,w and Gram budgets.",
+      "dependencies": [
+        "OPICA2_P01"
+      ],
+      "proof_strategy": "Reuse originalSourceLaw_eq_prefix_conv_tail; commute P² through convolution; use centered symmetric independent tail moments and integral Taylor remainders in L2.",
+      "forbidden_substitutions": [
+        "Finite box source is only an approximation with an explicit error.",
+        "Do not replace the exact canonical source in a theorem.",
+        "Retain regularity M>=12 or prove a sharper threshold.",
+        "Use absolute rather than relative error at the final certificate."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P24",
+      "proposed_lean_name": "Zeta23.OPICARound2.rh_implies_probe_approximation",
+      "unit": "ClassicalAdapter",
+      "tier": "OPTIONAL_CLASSICAL_TRANSFER",
+      "status": "CLASSICAL_RESEARCH_DERIVATION_FORMAL_PREREQUISITE_MISSING",
+      "statement_contract": "From RiemannHypothesis derive the exact native d_N→0 by a genuinely proved strong Nyman–Beurling necessity theorem and P20.",
+      "dependencies": [
+        "OPICA2_P20",
+        "OPICA2_P09"
+      ],
+      "proof_strategy": "Formalize or import an actual theorem proving RH⇒good-kernel approximation; the primary paper is research support, not Lean authority.",
+      "forbidden_substitutions": [
+        "No new project axiom standing for classical Nyman–Beurling.",
+        "No hidden assumption of desired approximation.",
+        "Do not misapply a theorem requiring Mellin nonvanishing on the entire strip."
+      ],
+      "external_prerequisite": "Báez-Duarte general strong Nyman–Beurling theorem, necessity direction; not located in project Lean sources.",
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_P25",
+      "proposed_lean_name": "Zeta23.OPICARound2.rh_iff_native_probe_approximation",
+      "unit": "ClassicalAdapter",
+      "tier": "OPTIONAL_CLASSICAL_TRANSFER",
+      "status": "CLASSICAL_RESEARCH_DERIVATION_FORMAL_PREREQUISITE_MISSING",
+      "statement_contract": "After P24 is genuinely formalized, prove RiemannHypothesis iff d_N→0, preserving actual native normalization.",
+      "dependencies": [
+        "OPICA2_P12",
+        "OPICA2_P24"
+      ],
+      "proof_strategy": "Combine exact forward and reverse implications.",
+      "forbidden_substitutions": [
+        "An equivalence is not a proof of either side.",
+        "Do not register the terminal estimate as established."
+      ],
+      "external_prerequisite": null,
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    }
+  ],
+  "supporting_amendments": [
+    {
+      "id": "OPICA2_S01",
+      "label": "S01",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_dictionary_prefix_rigidity",
+      "unit": "TruncationControls",
+      "title": "Isolated-squarefree obstruction and quantitative all-prefix Möbius constraint",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For the unchanged v,w and any finite complex coefficient dictionary, prove the isolated-pulse lower bound through 2047, the omitted-squarefree bound, the exact native left support endpoint alpha=0, and the positive finite-prefix Gram lower bound forcing every fixed coefficient to the literal Möbius value along a convergent residual sequence.",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03",
+        "OPICA2_P06",
+        "OPICA2_P13"
+      ],
+      "native_dependency_ids": [
+        "NATIVE_SOURCE",
+        "NATIVE_CAUSAL_COMPLETION",
+        "CLASSICAL_HILBERT_ANALYSIS"
+      ],
+      "native_source_scope": "Original raw jPlus,v,w and g_n=n^(-1/2)D_log(n)w; all absent coefficients are zero. The pulse constant is confined to the stated isolated range.",
+      "evidence_origin": {
+        "classification": "INHERITED_RESULTS_WITH_DERIVED_QUANTITATIVE_REFINEMENT",
+        "inherited": "Earlier 25 October isolated-prime/squarefree obstruction and coordinatewise Möbius convergence.",
+        "current_refinement": "Explicit all-prefix positive Gram inequality and direct proof of the exact native activation endpoint. No novelty claim for coordinatewise convergence."
+      },
+      "statement_components": [
+        {
+          "id": "S01a",
+          "formula": "d_k=1_(k=1)-sum_(n|k)x_n; ||v-sum x_n g_n||_2^2 >= S_pulse^2 sum_(k in K)|d_k|^2/k, for every K subset {1,...,2047}; S_pulse^2 >= 12 exp(-1/512) 2048^3."
+        },
+        {
+          "id": "S01b",
+          "formula": "If squarefree k<=2047 is absent then ||r_x||_2^2 >= S_pulse^2/sigma_1(k). For k=2047=23*89, sigma_1(k)=2160 and every initial segment N<=2046 has ||r_x||_2>6900; later nonconsecutive columns cannot repair the omitted early column."
+        },
+        {
+          "id": "S01c",
+          "formula": "With a_k=sigma/[k(k+1)], JPlus(z)=exp(-sigma*z)(z^2-1/4)^2 product_(k>=1)sinh(a_k*z)/(a_k*z). For every h>0 choose K with sigma/(K+1)<h; for sufficiently large real z, W(z)>=C_K z^(3-K) exp(-sigma*z/(K+1)), C_K>0. A supposed initial support gap h would give |W(z)|<=||w||_1 exp(-h*z), contradiction. Thus inf ess supp(w)=0."
+        },
+        {
+          "id": "S01d",
+          "formula": "For fixed M>=1, Gpre_M=(integral_[0,log(M+1)) conjugate(g_m) g_n)_(m,n<=M) is strictly positive definite. For N>=M, r_N=sum_(n<=M)(mu(n)-x_n)g_n on that interval; hence ||r_N||_2^2 >= (x_1:M-mu_1:M)^*Gpre_M(x_1:M-mu_1:M) >= lambda_min(Gpre_M)||x_1:M-mu_1:M||_2^2."
+        },
+        {
+          "id": "S01e",
+          "formula": "For any causal nonzero w with finite exact left support endpoint alpha, the analogous interval is [0,alpha+log(M+1)); the native specialization uses the proved alpha=0. Each fixed-prefix constant is positive; no uniform-in-M lower bound is asserted."
+        }
+      ],
+      "source_refs": [
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_HISTORY_AUDIT",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "Do not extend the isolated-pulse constant beyond 2047 without a new overlap analysis.",
+        "Do not infer nonclosure from the finite obstruction.",
+        "Do not infer an exact support endpoint from support containment.",
+        "Do not replace a fixed-prefix lower eigenvalue by a uniform all-prefix bound.",
+        "Do not count coefficientwise Möbius convergence as a new result of this pass."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S02",
+      "label": "S02",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_probe_pole_moment_constraints",
+      "unit": "ProbeGram",
+      "title": "Bounded pole-moment diagnostics",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For P_x(s)=sum_n x_n n^(-s) and residual r_x, prove explicit bounded-functional constraints at z=1/2, including P_x(1)->0 and P_x_prime(1)->1 whenever the actual residual tends to zero.",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03"
+      ],
+      "native_dependency_ids": [
+        "NATIVE_SOURCE",
+        "NATIVE_CAUSAL_COMPLETION"
+      ],
+      "native_source_scope": "Unchanged delayed probability source qPlus; QPlus(z)=integral exp(-z*t)qPlus(t)dt and qbar=QPlus(1/2)>0. Laurent cancellation is performed at the actual removable pole.",
+      "evidence_origin": {
+        "classification": "INHERITED_PAPER_DERIVATION",
+        "origin": "Earlier 25 October report, exact pole moments; not new here."
+      },
+      "statement_components": [
+        {
+          "id": "S02a",
+          "formula": "V_second(1/2)=0; V_third(1/2)=3*qbar; W(1/2)=W_prime(1/2)=0; W_second(1/2)=qbar."
+        },
+        {
+          "id": "S02b",
+          "formula": "qbar*|P_x(1)| <= sqrt(24)||r_x||_2."
+        },
+        {
+          "id": "S02c",
+          "formula": "|3*qbar*(1-P_x_prime(1))-W_third(1/2)*P_x(1)| <= sqrt(720)||r_x||_2. If P_x(1)=0 then 3*qbar*|1-P_x_prime(1)| <= sqrt(720)||r_x||_2."
+        },
+        {
+          "id": "S02d",
+          "formula": "P_x_prime(1)=-sum_n x_n log(n)/n. The general derivative constraint retains the W_third(1/2)P_x(1) term before taking limits."
+        }
+      ],
+      "source_refs": [
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "Do not impose P_x(1)=0 without recording it as a trial constraint.",
+        "Do not drop the W_third term for general coefficients.",
+        "Moment constraints are necessary diagnostics, not an independent closure proof."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S03",
+      "label": "S03",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_completed_output_bernoulli_tail",
+      "unit": "TruncationControls",
+      "title": "Bernoulli tail and asymptotically free leading-tail neutrality",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Prove the exact smoothed floor-kernel tail, explicit source-derivative remainder bounds and the finite correction showing that the affine constraint sum_n n*x_n=-12 does not change the closure of the attainable finite outputs.",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P06"
+      ],
+      "native_dependency_ids": [
+        "NATIVE_SOURCE",
+        "NATIVE_CAUSAL_COMPLETION"
+      ],
+      "native_source_scope": "Actual floor kernel a and unchanged C-infinity compact jPlus; ell=2sigma, D=2JPlus(-3/2). This is the tail of w=a*jPlus, not the old completed input.",
+      "evidence_origin": {
+        "classification": "INHERITED_PAPER_DERIVATION",
+        "origin": "Earlier 25 October completed-output Bernoulli calculation and free-tail-moment proof; older smoothing methods are credited separately."
+      },
+      "statement_components": [
+        {
+          "id": "S03a",
+          "formula": "a(t)=0.5 exp(-t/2)-(1/6)exp(-3t/2)-exp(-t/2)B1tilde(exp t)+exp(-3t/2)B2tilde(exp t), for t>=0, modulo irrelevant endpoint conventions in convolution."
+        },
+        {
+          "id": "S03b",
+          "formula": "For t>=ell, w(t)=-(JPlus(-3/2)/6)exp(-3t/2)+epsilon_j(t)=-(D/12)exp(-3t/2)+epsilon_j(t)."
+        },
+        {
+          "id": "S03c",
+          "formula": "For M>=1 and alpha>0 define H_(alpha,M)=integral_0^ell exp((alpha+M)u)|product_(r=1)^M(partial_u+alpha+r)jPlus(u)|du. Then |epsilon_j(t)| <= [2 zeta(M+1)/(2pi)^(M+1)]H_(1/2,M)exp(-(M+1/2)t)+[4 zeta(M+2)/(2pi)^(M+2)]H_(3/2,M)exp(-(M+3/2)t). No uniform bound in M is asserted."
+        },
+        {
+          "id": "S03d",
+          "formula": "For each fixed finite trial, r_x(t)=D[1+(1/12)sum_n n*x_n]exp(-3t/2)+a remainder faster than every prescribed fixed exponential. If C=-12-sum_n n*x_n, adjoining x_M=C/M at M>max supp(x) changes the output by norm |C| ||w||_2/M^(3/2)->0."
+        }
+      ],
+      "source_refs": [
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "Do not infer small residual from leading-tail cancellation.",
+        "Do not ignore the transition region or let finite-trial remainder constants become uniform in N without proof.",
+        "Do not replace the actual smooth source by an uncertified finite box approximation."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S04",
+      "label": "S04",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_probe_fixed_stable_filter",
+      "unit": "CausalProbe",
+      "title": "Fixed stable filter and exact common-inner-factor removal",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Construct the literal fixed stable filter B and causal isometry I; prove Bv=I^2(qPlus*u0), Bw=I^2(qPlus*h0) and the corresponding finite-delay norm identity, removing I^2 only on this established range.",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03"
+      ],
+      "native_dependency_ids": [
+        "NATIVE_SOURCE",
+        "NATIVE_CAUSAL_COMPLETION",
+        "CLASSICAL_HILBERT_ANALYSIS"
+      ],
+      "native_source_scope": "The original qPlus and jPlus remain fixed; B is an output filter applied to both sides. I is a causal L2 isometry but is not asserted onto the causal half-line.",
+      "evidence_origin": {
+        "classification": "INHERITED_PAPER_DERIVATION",
+        "origin": "Earlier 25 October exact filtered certificate; not a fresh filter discovery."
+      },
+      "statement_components": [
+        {
+          "id": "S04a",
+          "formula": "B(z)=(z+3/2)/(z+1/2)^5; b(t)=1_(t>=0)exp(-t/2)(t^3/6+t^4/24); ||b||_1=48."
+        },
+        {
+          "id": "S04b",
+          "formula": "I(z)=(z-1/2)/(z+1/2); If=f-[1_(t>=0)exp(-t/2)]*f. |I(i tau)|=1 gives ||If||_2=||f||_2 on causal L2."
+        },
+        {
+          "id": "S04c",
+          "formula": "u0(t)=1_(t>=0)exp(-t/2)(1-t); h0(t)=1_(t>=0)exp(-t/2)[(1-t)floor(exp t)+log(floor(exp t)!)]. Both belong to L1 intersect L2; H0(z)=U0(z)zeta(z+1/2) on the proved causal transform domain, with U0(z)=(z-1/2)/(z+1/2)^2."
+        },
+        {
+          "id": "S04d",
+          "formula": "u=qPlus*u0, h=qPlus*h0; Bv=I^2u, Bw=I^2h, Bg_n=I^2[n^(-1/2)D_log(n)h]. Consequently ||B r_x||_2=||u-sum_n x_n n^(-1/2)D_log(n)h||_2."
+        }
+      ],
+      "source_refs": [
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "No bounded inverse of B is asserted.",
+        "No division by I on arbitrary causal inputs.",
+        "Do not alter the source, remove one delay, or square the original probability product.",
+        "Filtered convergence is not an unfiltered residual bound."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      },
+      "removable_value_note": "The intermediate H0(z)=U0(z)*zeta(z+1/2) identity is interpreted through the removable point z=1/2; H0(1/2)=1 and the qPlus-convolved value is QPlus(1/2). The native completion A(1/2)=1/2 remains distinct."
+    },
+    {
+      "id": "OPICA2_S05",
+      "label": "S05",
+      "proposed_lean_name": "Zeta23.OPICARound2.filtered_probe_classical_comparison",
+      "unit": "ClassicalAdapter",
+      "title": "Full-line comparison with negative-time cancellation",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Prove the exact full-line unitary comparison to the fractional-part residual, including cancellation of negative time, and retain actual qPlus convolution solely as a contraction when estimating the filtered native residual.",
+      "dependencies": [
+        "OPICA2_S04"
+      ],
+      "native_dependency_ids": [
+        "CLASSICAL_HILBERT_ANALYSIS"
+      ],
+      "native_source_scope": "Comparison objects u0,h0 are derived adapters. Their Gram is classical; the actual source-smoothed Gram is not identified with it.",
+      "evidence_origin": {
+        "classification": "INHERITED_PAPER_DERIVATION",
+        "origin": "Earlier 25 October filtered certificate and classical-comparison audit."
+      },
+      "statement_components": [
+        {
+          "id": "S05a",
+          "formula": "M:L2((0,infinity),dx)->L2(R,dt), (Mf)(t)=exp(-t/2)f(exp(-t)), is unitary. I from S04 is unitary on the full line."
+        },
+        {
+          "id": "S05b",
+          "formula": "chi=1_(0,1); rho_n(x)={1/(n*x)}. Prove I M chi=u0 and I M rho_n=-n^(-1/2)D_log(n)h0, with exact cancellation for t<log(n), not deletion of a negative-time component."
+        },
+        {
+          "id": "S05c",
+          "formula": "||B r_x||_2^2 <= ||u0-sum_n x_n n^(-1/2)D_log(n)h0||_2^2 = ||chi+sum_n x_n rho_n||_(L2(0,infinity))^2. The inequality uses ||qPlus||_1=1."
+        },
+        {
+          "id": "S05d",
+          "formula": "If sum_n x_n/n=0, the comparison residual vanishes for x>1. The reduced Mellin kernel 1+log(x) is not a compact good kernel at zero; a general good-kernel theorem cannot be applied directly to it."
+        }
+      ],
+      "source_refs": [
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "Do not claim equality of actual and unconvolved comparison Gram matrices.",
+        "Do not discard negative-time leakage or assume Hardy causality for an arbitrary boundary inverse.",
+        "Do not apply the good-kernel theorem to 1+log(x) at x=0.",
+        "No global Nyman–Beurling convergence is established by this adapter."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S06",
+      "label": "S06",
+      "proposed_lean_name": "Zeta23.OPICARound2.filtered_four_column_region_certificate",
+      "unit": "RegionalCertificates",
+      "title": "Transported witness and exact four-column regional baseline",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For the fixed filter and literal source, prove the exact rational four-column upper and the transported positive zero-witness lower on the specified compact rectangle; conclude zeta nonvanishing only on that rectangle and its justified functional-equation reflections.",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_S04",
+        "OPICA2_S05"
+      ],
+      "native_dependency_ids": [
+        "NATIVE_SOURCE",
+        "NATIVE_CAUSAL_COMPLETION"
+      ],
+      "native_source_scope": "Unchanged native source, fixed B, rational x=(1,-1,-1,-2/3), delta in [1/4,3/8], 1<=|tau|<=2. No external seven-eighths theorem is needed for this finite baseline.",
+      "evidence_origin": {
+        "classification": "INHERITED_ANALYTIC_PROOF_WITH_FRESH_FINITE_ARITHMETIC_RECHECK",
+        "origin": "Earlier 25 October analytic certificate; period, Abel tail and rational margins independently rechecked in the current pass. Neither check is a Lean compilation."
+      },
+      "statement_components": [
+        {
+          "id": "S06a",
+          "formula": "sum_(n=1)^4 x_n/n=0. C(y)=1-floor(y)+floor(y/2)+floor(y/3)+(2/3)floor(y/4) has period 12 with values (1,0,0,0,2/3,-1/3,2/3,-1/3,1/3,1/3,1/3,-2/3)."
+        },
+        {
+          "id": "S06b",
+          "formula": "E0=sum_(k>=1)c_(k mod 12)^2(1/k-1/(k+1)); squared-period mean=13/54, centered cumulative bound=41/54. The first 47 cells and Abel tail at 48 give ||B r_x||_2^2<=E0<=315384568453197375401/4648566756368995059600<17/250."
+        },
+        {
+          "id": "S06c",
+          "formula": "At any hypothetical zero lambda=delta+i*tau in [1/4,3/8] x {1<=|tau|<=2}, use the isometrically reduced residual from S04 and Laplace evaluation to obtain ||B r_x||_2^2 >= (8192/93025)(2096767/2097152)^2 =4396431852289/49942416588800>0.08803."
+        },
+        {
+          "id": "S06d",
+          "formula": "Since 17/250<4396431852289/49942416588800, zeta(rho) !=0 for 3/4<=Re(rho)<=7/8 and 1<=|Im(rho)|<=2; reflect only via the actual functional equation."
+        }
+      ],
+      "source_refs": [
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "Do not use an untransported raw-source margin after filtering.",
+        "Do not claim a novel low-height zero-free region or a global zero-free strip.",
+        "Do not promote finite rational checks to the analytic operator proof or to Lean acceptance.",
+        "A failed upper-versus-lower comparison returns NO_CERTIFICATE."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      },
+      "implementation_note": "The standalone finite certificate uses P04/S04/S05 and exact periodic/Abel arithmetic directly. P19 remains available for the general optimized certificate; it is not a prerequisite of this proof."
+    },
+    {
+      "id": "OPICA2_S07",
+      "label": "S07",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost",
+      "unit": "TruncationControls",
+      "title": "Exact undamped nonrange and multiplicity-aware input growth",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For the new undamped T,v prove v is outside the exact causal L2 range by the inherited actual-source boundary-pole argument, and separately prove the quantitative input-cost lower bound under explicit source-visible critical-zero evidence.",
+      "dependencies": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P04",
+        "OPICA2_P05"
+      ],
+      "native_dependency_ids": [
+        "NATIVE_CAUSAL_COMPLETION",
+        "NATIVE_SOURCE",
+        "CRITICAL_ZERO_EVIDENCE",
+        "CLASSICAL_HILBERT_ANALYSIS"
+      ],
+      "native_source_scope": "This is the new undamped target v=c*jPlus, not the old B–Y completed input. Every boundary zero and its multiplicity/source-vanishing order remain explicit.",
+      "evidence_origin": {
+        "classification": "INHERITED_PAPER_DERIVATION_WITH_SEPARATE_EVIDENCE_ROUTES",
+        "origin": "Earlier 25 October nonrange/input-cost proof. Older source-visible mode and critical-zero certificates are credited, not relabelled as fresh discoveries.",
+        "evidence_routes": [
+          "Exact range would imply RH via P05; the inherited source-visible critical-mode argument in that branch yields a boundary pole contradiction.",
+          "Alternatively, an explicitly admitted historical critical zero at height 14–15, or published finite-height verification together with the explicit count below 100, supplies an unconditional visible critical zero. Those certificates were not replayed here."
+        ]
+      },
+      "statement_components": [
+        {
+          "id": "S07a",
+          "formula": "If Tf=v, then the actual Laplace identity gives F(z)=JPlus(z)/zeta(z+1/2) on its domain. A critical zero of multiplicity m with source order k<m forces a boundary pole epsilon^(-(m-k)), incompatible with |F(epsilon+i*gamma)|<=||f||_2/sqrt(2epsilon)."
+        },
+        {
+          "id": "S07b",
+          "formula": "More generally, ||v-Tf||_2 >= sqrt(2epsilon)|V(epsilon+i*gamma)|-|A(epsilon+i*gamma)| ||f||_2. If |V|>=c epsilon^k and |A|<=C epsilon^m, m>k, then for sufficiently large ||f||_2 the residual is at least c_star ||f||_2^(-(2k+1)/(2m-2k-1))."
+        },
+        {
+          "id": "S07c",
+          "formula": "For a fully visible critical zero (k=0) of multiplicity m>=1 there exist c_star>0 and eta0>0 such that 0<eta<=eta0 and ||v-Tf||_2<=eta imply ||f||_2 >=(c_star/eta)^(2m-1). Constants depend on the actual zero and source Taylor data."
+        },
+        {
+          "id": "S07d",
+          "formula": "Every successful approximation to v has unbounded input norms. This is compatible with closure(range T) containing v, and excludes only exact inversion or uniformly bounded-input compactness shortcuts."
+        }
+      ],
+      "source_refs": [
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "Do not conflate exact range and range closure.",
+        "Do not claim the visible-critical-zero input was newly Lean compiled.",
+        "Do not silently assume simple zeros or k=0.",
+        "Do not treat nonrange as a disproof of RH or of the approximation criterion."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S08",
+      "label": "S08",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_probe_adaptive_error_budgets",
+      "unit": "CertifiedEvaluation",
+      "title": "Coefficient-dependent lag/source/output budgets and normalized filter margins",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For each actual finite trial prove a complete absolute error budget with distinct kernel-lag and output-time cutoffs, explicitly include the noncompact target tail, and derive the stated asymptotic requirements for those sufficient certificates under S07. Variable filters must transport their witness margins.",
+      "dependencies": [
+        "OPICA2_P06",
+        "OPICA2_P14",
+        "OPICA2_P19",
+        "OPICA2_P23",
+        "OPICA2_S07"
+      ],
+      "native_dependency_ids": [
+        "NATIVE_SOURCE",
+        "NATIVE_CAUSAL_COMPLETION",
+        "CLASSICAL_HILBERT_ANALYSIS"
+      ],
+      "native_source_scope": "f_x=sum_(n<=N)x_n n^(-1/2)D_log(n)jPlus; A_x=sum|x_n|/sqrt(n); J2=||j||_2; T^(Tlag) uses a*1_[0,Tlag]. All bounds concern actual coefficients and the fixed source.",
+      "evidence_origin": {
+        "classification": "DERIVED_IMPLEMENTATION_REFINEMENT_THIS_PASS",
+        "origin": "Combines inherited input cost and tail/source bounds; adds explicit lag-versus-output semantics, target-tail accounting and normalized variable-filter checks. No universal complexity theorem is claimed."
+      },
+      "statement_components": [
+        {
+          "id": "S08a",
+          "formula": "||f_x||_2<=J2*A_x and ||(T-T^(Tlag))f_x||_2<=2 exp(-Tlag/2)J2*A_x for Tlag>=0."
+        },
+        {
+          "id": "S08b",
+          "formula": "For A_x>0, eta>0 and fixed theta>0, requiring the particular upper 2exp(-Tlag/2)J2*A_x<=theta*eta entails Tlag>=2log(2J2*A_x/(theta*eta)). Under the fully visible multiplicity-m bound in S07 this is >=4m log(1/eta)+O(1). This is necessary for this chosen certificate bound, not a universal lower bound on actual error or computational complexity."
+        },
+        {
+          "id": "S08c",
+          "formula": "If a source approximation has L2 error epsilon_j, the combined target/output error is at most epsilon_j(||c||_1+||a||_1*A_x). The allowable epsilon_j in the requirement that this bound be <=theta*eta is at most order eta^(2m) along successful raw trials satisfying S07. This does not assert that every actual approximation error has that lower complexity."
+        },
+        {
+          "id": "S08d",
+          "formula": "S>=Tlag+log(N)+2sigma covers only the support of T^(Tlag)f_x. For the exact target and S>=2sigma, ||1_[S,infinity)v||_2=(2/sqrt(3))|JPlus(-3/2)|exp(-3S/2). The target tail must be included separately."
+        },
+        {
+          "id": "S08e",
+          "formula": "If E_S=integral_0^S |v-T^(Tlag)f_x|^2, then ||v-Tf_x||_2 <= sqrt(E_S+(4/3)|JPlus(-3/2)|^2 exp(-3S))+2exp(-Tlag/2)J2*A_x. Add certified quadrature/source errors; do not apply exact killed-moment tails to an approximate source unless its moments are certified."
+        },
+        {
+          "id": "S08f",
+          "formula": "A fixed convolution filter B multiplies an absolute error bound by at most ||B|| and may require its own output-tail analysis. For varying filters B_N, every residual certificate must use a proved strictly positive transported witness Gamma_N and compare ||B_N r_N||/Gamma_N (or the squared ratio). The example B_N=2^(-N)Id makes every fixed residual norm tend to zero while its witness shrinks equally."
+        }
+      ],
+      "source_refs": [
+        "SRC_REVISED_SPEC",
+        "SRC_HISTORY_AUDIT",
+        "SRC_MATH_REVIEW",
+        "SRC_PRIOR_INVESTIGATION"
+      ],
+      "forbidden_substitutions": [
+        "Do not treat the lag cutoff as an absolute output-time cutoff.",
+        "Do not omit the noncompact v tail from a whole-line norm certificate.",
+        "Do not reuse an error bar after changing coefficients, source precision, horizon or filter.",
+        "Do not infer raw convergence from vanishing variable-filter norms.",
+        "Do not claim a universal truncation-cost lower bound from a sufficient majorant.",
+        "Do not use the unfiltered covering horizon to omit a stable filter output tail."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S09",
+      "label": "S09",
+      "proposed_lean_name": "Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction",
+      "unit": "ProfileControls",
+      "title": "Finite eligible-profile quadratic Fourier-self-duality obstruction",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For a finite real profile vector H formed from distinct eligible actual spectral nodes after reflection deduplication and conjugate-block realification, prove that a real symmetric A and Fourier(H^T A H)=H^T A H force A=0. Retain every eligibility and finite-class restriction.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_ZERO_PROFILES",
+        "CLASSICAL_HILBERT_ANALYSIS"
+      ],
+      "native_source_scope": "Use actual normalized profiles h_rho=1-S_rho(|x|)/b_rho, kappa=rho(1-rho), b_rho=(1-2rho)/kappa, at nontrivial zeros with kappa!=0 and b_rho!=0. Identify rho and 1-rho before choosing distinct kappa nodes; a real node contributes one real profile and a nonreal conjugate pair contributes one real/imaginary two-dimensional block.",
+      "evidence_origin": {
+        "classification": "INHERITED_PAPER_PROOF",
+        "origin": "Earlier 25 October finite-indefinite quadratic theorem and its independent paper review. The current pass preserves its scope; no novelty or infinite/Jordan extension is claimed."
+      },
+      "statement_components": [
+        {
+          "id": "S09a",
+          "formula": "With the specified deduplicated real blocks, H=a on |x|<=1, H=O(|x|^-2), Fourier(H)=H under exp(-2pi*i*x*xi), and K represents multiplication by the distinct nonzero spectral nodes. The vectors K*a,...,K^d*a span R^d."
+        },
+        {
+          "id": "S09b",
+          "formula": "For every real symmetric d-by-d A, q_A(x)=H(x)^T A H(x) is integrable. Distributional Fourier self-duality qhat_A=q_A implies A=0, using inherited all-order Euler–Maclaurin asymptotics, integer sample spanning, derivative jumps and successive Fourier regularity."
+        },
+        {
+          "id": "S09c",
+          "formula": "No matrix-PSD or pointwise q_A positivity assumption is needed. Under the inherited tempered-extension and order-zero regularity hypotheses for the stated affine/quadratic plus lattice-correction convention, an added lattice correction cannot cancel a nonzero decaying continuous defect; self-dual comb terms can survive and are not claimed zero."
+        }
+      ],
+      "source_refs": [
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_ZERO_PROFILES",
+        "SRC_FORCED_EULER",
+        "SRC_PROFILE_EM",
+        "SRC_SQUARE_DEFECT",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "Do not retain duplicate kappa coordinates and then infer A=0 from a degenerate representation.",
+        "No repeated multiplicity jets, Jordan-block extension, infinite matrices or arbitrary nonlinear/higher-degree maps are covered.",
+        "Do not infer the result for an arbitrary synthetic profile curve.",
+        "Do not claim that every self-dual lattice correction vanishes.",
+        "The all-order paper argument is not already a new compiled Lean theorem."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      },
+      "existing_stronger_single_square_reuse": {
+        "roots": [
+          "square_actual_no_distribution_tempered_measure_repair",
+          "square_actual_no_selfdual_and_distribution_tempered_measure_repair"
+        ],
+        "scope": "Existing actual square result accepts arbitrary locally finite complex lattice measure plus a tempered distribution extending compact-test pairing; no total-variation-growth or global Schwartz-integrability premise is needed. Reuse this maximal scope.",
+        "limit": "This compiled single-square barrier does not automatically formalize the new arbitrary finite quadratic theorem S09 or generic C2/C4."
+      }
+    },
+    {
+      "id": "OPICA2_S10",
+      "label": "S10",
+      "proposed_lean_name": "Zeta23.OPICARound2.fixed_imaginary_direction_positive_test_margin",
+      "unit": "ProfileControls",
+      "title": "Height-free fixed imaginary-direction positive test and conditional threshold",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For one fixed actual offcritical witness rho=1/2+delta+i*gamma with 0<delta<1/2 and gamma>0, construct a nonnegative smooth unit-integral test in (1,2) whose imaginary zero-measure pairing is <=-3m_star/4 with explicit m_star>0. A genuinely native nonnegative observation approximating that same fixed pairing with smaller absolute error would contradict the witness; its construction remains open.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_ZERO_PROFILES"
+      ],
+      "native_source_scope": "Actual first-cell density of the canonical zero measure, not an arbitrarily chosen independent phase basis and not a replacement for the original source. The chosen zero, direction and test are fixed before any horizon tends to infinity.",
+      "evidence_origin": {
+        "classification": "INHERITED_DEEP_SEARCH_PAPER_DERIVATION",
+        "origin": "Attached proof-directed deep search, sections 7.1–7.4; qualitative first-cell sign change already exists in the repository."
+      },
+      "statement_components": [
+        {
+          "id": "S10a",
+          "formula": "q=delta+i*gamma, kappa=1/4-q^2, Z=kappa/q, g_rho(exp u)=Z exp(-u/2)sinh(q*u) for 0<u<log(2). R=|q|^2+|kappa|>0; u_star=min(log(2)/2,R^(-1/2)); x_star=exp(u_star)."
+        },
+        {
+          "id": "S10b",
+          "formula": "-Im(g_rho(x_star)) >= m_star=2delta*gamma*u_star*exp(-u_star/2)*(1-1/(2e))>0. This has no positive lower-height restriction."
+        },
+        {
+          "id": "S10c",
+          "formula": "D_rho=|Z|(|q|+1/2)cosh(delta*log 2) bounds |g_rho_prime| on (1,2). Any smooth nonnegative unit-integral bump phi supported within radius min((x_star-1)/2,(2-x_star)/2,m_star/(4D_rho)) has integral phi d(Im nu_rho)<=-3m_star/4; lattice atoms do not contribute there."
+        },
+        {
+          "id": "S10d",
+          "formula": "If a real observation P>=0 from the same actual arithmetic construction satisfies |P-integral phi d(Im nu_rho)|<3m_star/4, contradiction follows. This is a conditional consumer, not existence of P or of the comparison error."
+        }
+      ],
+      "source_refs": [
+        "SRC_DEEP_SEARCH",
+        "SRC_ZERO_PROFILES",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "Do not assume the missing arithmetic observation is positive.",
+        "Do not change the witness or phase while keeping its fixed margin.",
+        "Do not apply the imaginary-direction conclusion at delta=0; its margin correctly vanishes.",
+        "The local sign identity holds also for generic nonzero parameters and alone is not zero-specific arithmetic exclusion.",
+        "Do not replace the allowed native test cone without an adapter."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      },
+      "related_phase_complete_contract": "OPICA2_S17",
+      "existing_reuse": "canonical_pair_negative_mass_budget and canonicalBasis_independent are existing actual-source results; their fixed-basis margin does not bound a physical recovery cost."
+    },
+    {
+      "id": "OPICA2_S11",
+      "label": "S11",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
+      "unit": "NativeCuts",
+      "title": "Exact positive-damping abscissa and actual-cut equivalence",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For every fixed native source order d, derive the exact positive-damping L2 abscissa Theta from the proved native envelope and logarithmic-window rate. Separately record the actual-zeta equivalence of Theta=0, A-X, B-Y, RH and complete quietness, without asserting any of those closing conditions.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_RATE_AND_CUTS",
+        "NATIVE_SOURCE",
+        "NATIVE_CAUSAL_COMPLETION"
+      ],
+      "native_source_scope": "F_d is the literal primeFieldFamily d, Theta=nativeZeroDisplacementSup; d is fixed and C>1. A-X and B-Y retain the old original prime field/completed input, distinct from the new undamped probe.",
+      "evidence_origin": {
+        "classification": "INHERITED_DEEP_SEARCH_DERIVATION_FROM_CURRENT_RATE_THEOREMS",
+        "origin": "Attached deep search sections 4.2–4.3 and current source-level rate/consumer theorems. No independent upper is added by the equivalence."
+      },
+      "statement_components": [
+        {
+          "id": "S11a",
+          "formula": "I_d(epsilon)=integral_0^infinity exp(-2epsilon*t)|F_d(t)|^2 dt. If epsilon>Theta, I_d(epsilon)<infinity by the actual envelope. If 0<epsilon<Theta, I_d(epsilon)=infinity because E_d(T;C)<=exp(2epsilon*T)I_d(epsilon) would contradict the actual normalized rate Theta."
+        },
+        {
+          "id": "S11b",
+          "formula": "inf {epsilon>0:I_d(epsilon)<infinity}=Theta. No assertion is made at epsilon=Theta or at undamped epsilon=0."
+        },
+        {
+          "id": "S11c",
+          "formula": "Within the actual zeta construction, Theta=0 -> A-X -> B-Y -> RH -> Theta=0; complete quietness of either registered full fixed two-factor raw/absorbed high observation along a cofinal sequence is equivalent via its exact Theta rate."
+        },
+        {
+          "id": "S11d",
+          "formula": "The slow-source extension requires d(T)log(d(T)+2)=o(T) and the registered horizon hypotheses; it cannot be extended to unrestricted source growth by this argument."
+        }
+      ],
+      "source_refs": [
+        "SRC_DEEP_SEARCH",
+        "SRC_WINDOW_RATE",
+        "SRC_CONSUMERS",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "Do not count equivalent cuts as independently established constraints.",
+        "No boundary integrability at epsilon=Theta is supplied.",
+        "Do not infer generic causal invertibility from native B-Y.",
+        "Do not omit full masks, collisions or corrections from the observation.",
+        "Do not substitute the new undamped v for the old completed input."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S12",
+      "label": "S12",
+      "proposed_lean_name": "Zeta23.OPICARound2.positive_equal_power_causal_twins",
+      "unit": "SyntheticControls",
+      "title": "Synthetic positive equal-power twins with distinct causal ranges",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Construct the exact synthetic positive causal contraction twins with equal T* T, prove their causal output range closures differ, and give an L2 completed output with an unstable local input and a positive distance from the causal range. Explicitly delimit this as a generic countermodel, not an arithmetic instance.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "CLASSICAL_HILBERT_ANALYSIS"
+      ],
+      "native_source_scope": "SYNTHETIC CONTROL ONLY. f(t)=exp(-t)1_(t>=0), r=3/2, c=1/4. These are not the actual floor kernel and satisfy no asserted full OPICA native identity.",
+      "evidence_origin": {
+        "classification": "INHERITED_DEEP_SEARCH_EXACT_SYNTHETIC_CONTROL",
+        "origin": "Attached proof-directed deep search section 5; no claim of novelty in the literature."
+      },
+      "statement_components": [
+        {
+          "id": "S12a",
+          "formula": "a_minus=c[f(t)+r f(t-1)], a_plus=c[r f(t)+f(t-1)]; both are positive causal L1 kernels of mass 5/8 with a(t)<=exp(-t/2). A_minus(z)=(1+r exp(-z))/(4(z+1)), A_plus(z)=(r+exp(-z))/(4(z+1))."
+        },
+        {
+          "id": "S12b",
+          "formula": "|A_minus(i xi)|^2=|A_plus(i xi)|^2=(13+12cos(xi))/(64(1+xi^2)); hence T_minus^* T_minus=T_plus^* T_plus on causal L2 by zero extension and Plancherel."
+        },
+        {
+          "id": "S12c",
+          "formula": "T_plus=c E(rI+D_1) has dense causal range: rI+D_1 is boundedly invertible and E is convolution with f, with E(y_prime+y)=y for y in C_c^infinity(0,infinity). A_minus has right zeros lambda_k=log(3/2)+(2k+1)pi*i, whose bounded Laplace functionals annihilate range(T_minus), so its causal range is not dense."
+        },
+        {
+          "id": "S12d",
+          "formula": "For lambda=log(3/2)+9pi*i and X=exp(lambda*t)1_(t>=0), X is not L2 but local Y=a_minus*X is L2, with Y=c(exp(lambda*t)-exp(-t))/(lambda+1) for 0<=t<1 and Y=-c(1+r*e)exp(-t)/(lambda+1) for t>=1. Its lambda Laplace pairing is c/(lambda+1), so dist(Y,closure range(T_minus))>=sqrt(2Re lambda)|c/(lambda+1)|>0."
+        },
+        {
+          "id": "S12e",
+          "formula": "The full-line convolution ranges are dense because their common boundary multiplier is nonzero almost everywhere; this does not identify the causal ranges. Damping by 0<epsilon<Re lambda retains the shifted causal witness."
+        }
+      ],
+      "source_refs": [
+        "SRC_DEEP_SEARCH",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "Never identify the twins with the native floor completion.",
+        "Equal boundary power does not preserve causal output-range closure.",
+        "Norm(T)<1 inverts I-T, not T.",
+        "A local convolution equation with a non-L2 input does not establish causal L2 range membership."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S13",
+      "label": "S13",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_jump_gain_negative_ordered_minor",
+      "unit": "NativeJumpControls",
+      "title": "Actual off-diagonal gain has a negative ordered minor",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For the literal prime-plus-Archimedean positive off-diagonal gain measure, evaluate the specified four ordered rectangles and prove a strictly negative 2-by-2 determinant. This rejects TP2 of that gain measure only.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_JUMP_GAIN"
+      ],
+      "native_source_scope": "rho(t)=exp(-t/2)/(1-exp(-2t)), c_n=Lambda(n)/sqrt(n), and nu_a(I x J)=|(I-a) intersect J|. On [0,R]^2 away from x=y use rho(|x-y|)dxdy+sum_(2<=n<=exp R)c_n(nu_log(n)+nu_-log(n)); R>=1.",
+      "evidence_origin": {
+        "classification": "FRESH_DERIVED_NATIVE_COUNTEREXAMPLE_THIS_PASS",
+        "origin": "Drive audit proof, independently reviewed by the historical audit; exact rational determinant budget rechecked. Not Lean compiled; distinct from the older floor-completion counterexample."
+      },
+      "statement_components": [
+        {
+          "id": "S13a",
+          "formula": "a=log(2), d=1/10, h=1/1000; I1=[a+d,a+d+h], I2=[a+2d,a+2d+h], J1=[0,h], J2=[d,d+h]. The rows and columns are each strictly ordered; every row lies to the right of every column."
+        },
+        {
+          "id": "S13b",
+          "formula": "Every lag lies in (1/2,1), where 1/2<rho(t)<2. Since log(3)>1, only the prime-two atom can contribute; it contributes only to K12, with exact overlap h and c2=log(2)/sqrt(2)>1/3."
+        },
+        {
+          "id": "S13c",
+          "formula": "Writing Kij=b_ij+the stated atom, h^2/2<b_ij<2h^2, K12>h/3 and K21>h^2/2 while K11,K22<2h^2. Thus det(K)<4h^4-h^3/6=-61/375000000000<0."
+        },
+        {
+          "id": "S13d",
+          "formula": "The rectangles avoid the singular diagonal. Smooth nonnegative approximations preserve the strict negative minor with an explicit approximation argument if smooth tests are required."
+        }
+      ],
+      "source_refs": [
+        "SRC_COMPONENTS",
+        "SRC_NATIVE_TP2",
+        "SRC_HISTORY_AUDIT",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "Do not infer a negative Weil form, an RH counterexample, or failure of the full signed stiffness.",
+        "Do not infer the same determinant for a pole-neutral compression, resolvent or full semigroup.",
+        "Do not confuse positive off-diagonal gain with its negative sign in the signed jump stiffness.",
+        "Do not replace the line atom by area density or insert an unproved extra factor two.",
+        "Do not count this as TP2 failure of every possible transformed kernel."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S14",
+      "label": "S14",
+      "proposed_lean_name": "Zeta23.OPICARound2.ct1_scalar_limit_classification",
+      "unit": "CT1Controls",
+      "title": "Every convergent scalar normalization of CT1 has limit aT",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For the actual CT1 family, every Schwartz-distributional limit of scalar-rescaled near-zero dilations is a scalar multiple of its non-order-zero normalized limit. Every order-zero such limit is zero.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_CT1"
+      ],
+      "native_source_scope": "The exact inherited CT1 dilation family; complex scalar sequences, ordinary distributional convergence on all Schwartz tests.",
+      "evidence_origin": {
+        "classification": "INHERITED_DERIVATION_EXPLICITLY_RESTORED_IN_COMPLETENESS_AUDIT",
+        "note": "Not a novelty claim, new compiled root, or terminal estimate."
+      },
+      "statement_components": [
+        {
+          "id": "S14a",
+          "formula": "nu_L=D_L+D_(-L)-2*cosh(L/2)*D_0. For every real sequence L_j!=0 with L_j->0 and complex c_j, if c_j*nu_(L_j)->U on every Schwartz test, then exists a in C: c_j*L_j^2->a and U=a*T."
+        },
+        {
+          "id": "S14b",
+          "formula": "T=sum_(n in Z)(n^2*delta_n_second-2*n*delta_n_prime) is nonzero and not order zero near any nonzero integer. Hence if U is locally order zero on R, or on a neighborhood of at least one nonzero integer, U=0."
+        },
+        {
+          "id": "S14c",
+          "formula": "Choose phi0 with T(phi0)!=0; the quotient [c_j nu_(L_j)(phi0)]/[L_j^(-2) nu_(L_j)(phi0)] converges to a. Apply to every other test. No monotonicity or common variation bound is required."
+        }
+      ],
+      "source_refs": [
+        "SRC_CT1_NATIVE",
+        "SRC_PROJECT_REAUDIT",
+        "SRC_PRIOR_INVESTIGATION"
+      ],
+      "forbidden_substitutions": [
+        "No claim about nonscalar transforms, changed families, new counterterms, or arbitrary nonlinear limits.",
+        "Do not treat delta derivatives as signed Radon measures or infer an RH obstruction."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S15",
+      "label": "S15",
+      "proposed_lean_name": "Zeta23.OPICARound2.finite_pole_neutral_approximation",
+      "unit": "FiniteNeutralApproximation",
+      "title": "Fixed-aperture legal approximation with exact neutral repair",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "Compose the existing compact negative neutral witness, boundary-flat finite approximation and exact legal pole correctors to obtain a negative finite neutral vector at every sufficiently large aperture. This does not supply a no-exit sign.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_FINITE_NEUTRAL_INPUTS"
+      ],
+      "native_source_scope": "Literal native hard-window finite Fourier lift and canonical complete Weil form; fixed-L continuity, exact centered indexing and parity split.",
+      "evidence_origin": {
+        "classification": "INHERITED_DERIVATION_EXPLICITLY_RESTORED_IN_COMPLETENESS_AUDIT",
+        "note": "Not a novelty claim, new compiled root, or terminal estimate."
+      },
+      "statement_components": [
+        {
+          "id": "S15a",
+          "formula": "At fixed L>0 put a=(L/(4*pi))^2, ell0(u)=sum u_n/(a+n^2), ell1(u)=sum n*u_n/(a+n^2). Centered e=(1,-4,6,-4,1), o=(-1,2,0,-2,1) are legal; ell0(e)=24/[a*(a+1)*(a+4)], ell1(o)=-12/[(a+1)*(a+4)], and cross terms vanish."
+        },
+        {
+          "id": "S15b",
+          "formula": "After common centered zero extension to K>=3, uTilde=u-ell0(u)/ell0(e)*e-ell1(u)/ell1(o)*o is exactly legal and neutral. Native odd witness centeredIndex(e)=2*o requires the corresponding scaled denominator."
+        },
+        {
+          "id": "S15c",
+          "formula": "For a fixed-aperture compact C2 neutral target f with strict support collar inside (0,L), use the same native physical lift p_u=L^(-1/2)*1_[0,L]*sum u_n exp(2*pi*i*n*x/L), X=||.||_1+||secondDerivative(.)||_1. If p_uN->f in X then p_uTildeN->f in X, with finite fixed-L bound C_L. Use actual moment-to-functional scaling, WCONT and exact same-source finite-Weil dictionary."
+        },
+        {
+          "id": "S15d",
+          "formula": "Not RH implies exists L0>0, for every L>L0 exists K>=3 and nonzero legal neutral u with Q_(L,K)(u)<0. At least one reflection-parity component is negative; both, or a preselected parity, are not asserted."
+        }
+      ],
+      "source_refs": [
+        "SRC_NEUTRAL_PAPER",
+        "SRC_POLE_CORRECTORS",
+        "SRC_POLE_PUBLIC_API",
+        "SRC_BOUNDARY_APPROX",
+        "SRC_NEGATIVE_NEUTRAL_WITNESS",
+        "SRC_WCONT_FIXED_APERTURE",
+        "SRC_EXACT_FINITE_WEIL",
+        "SRC_APERTURE_FREEDOM",
+        "SRC_NEUTRAL_NESTING",
+        "SRC_PROJECT_REAUDIT"
+      ],
+      "forbidden_substitutions": [
+        "No uniform-in-L approximation rate, effective cutoff, quartic schedule, exponential depth, or original smooth detector identity.",
+        "Correctors themselves are not neutral negative witnesses.",
+        "Do not identify this producer with the selected ground or the outgoing whole-kernel sign."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S16",
+      "label": "S16",
+      "proposed_lean_name": "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation",
+      "unit": "FixedFilter",
+      "title": "Global fixed-filter approximation is sufficient for RH",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For the fixed B=(z+3/2)/(z+1/2)^5 and unchanged native finite dictionary, existence of finite trials whose full causal filtered residual norm tends to zero implies RH. Existence of those trials remains OPEN.",
+      "dependencies": [
+        "OPICA2_P04",
+        "OPICA2_S04"
+      ],
+      "native_dependency_ids": [
+        "NATIVE_SOURCE",
+        "NATIVE_CAUSAL_COMPLETION"
+      ],
+      "native_source_scope": "One fixed B, same one-copy source jPlus, same v,w and g_n; full L2(0,infinity) norm.",
+      "evidence_origin": {
+        "classification": "INHERITED_DERIVATION_EXPLICITLY_RESTORED_IN_COMPLETENESS_AUDIT",
+        "note": "Not a novelty claim, new compiled root, or terminal estimate."
+      },
+      "statement_components": [
+        {
+          "id": "S16a",
+          "formula": "For every actual right zero rho=1/2+lambda, delta=Re(lambda)>0, every finite x satisfies ||B(v-sum x_n*g_n)||_2 >= sqrt(2*delta)*|B(lambda)*V(lambda)|>0."
+        },
+        {
+          "id": "S16b",
+          "formula": "Thus [exists finite x^(k), ||B(v-sum x_n^(k)*g_n)||_2->0] implies RH. A cofinal sequence is enough; fixed-filter premise is an alternative to the raw approximation premise."
+        },
+        {
+          "id": "S16c",
+          "formula": "Use causal Laplace evaluation, W(lambda)=0, exact V(lambda)!=0 and B(lambda)!=0. No inverse of B or raw-norm limit is needed. Optional reverse implication needs the separately genuine classical transfer."
+        }
+      ],
+      "source_refs": [
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_PROJECT_REAUDIT",
+        "SRC_ORIGINAL_RESEARCH"
+      ],
+      "forbidden_substitutions": [
+        "No bounded inverse of B, and no inference of a raw residual estimate from filtered convergence.",
+        "No varying-filter substitution or silent old completed-input replacement.",
+        "The conditional consumer does not prove its approximation premise."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_S17",
+      "label": "S17",
+      "proposed_lean_name": "Zeta23.OPICARound2.phase_complete_positive_test_observability",
+      "unit": "ProfileControls",
+      "title": "Adapted three-test and explicit four-test phase-complete alternatives",
+      "tier": "PROPOSED_SUPPORTING_AMENDMENT",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "statement_contract": "For the fixed actual canonical nonreal-kappa Re/Im pair, retain the paper realization by three adapted nonnegative compact off-lattice tests. Separately formalize the explicit four first-cell bumps under their stated height restriction. Both give conditional observation-error thresholds, not positive native observations.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_FINITE_SPAN",
+        "NATIVE_OBSERVATION_RECOVERY"
+      ],
+      "native_source_scope": "Actual canonical zero-jet Jordan measures with exact multiplicity and independent embedded real basis. Four explicit tests live in (1,2); three adapted tests may use other compact off-lattice supports.",
+      "evidence_origin": {
+        "classification": "INHERITED_DERIVATION_EXPLICITLY_RESTORED_IN_COMPLETENESS_AUDIT",
+        "note": "Not a novelty claim, new compiled root, or terminal estimate."
+      },
+      "statement_components": [
+        {
+          "id": "S17a",
+          "formula": "For any one fixed independent n>=1 real basis of actual valid finite zero-jet combinations, there exist n+1 nonnegative smooth compact off-lattice tests realizing covectors e_1,...,e_n,-sum e_i. min_j pairing_j(a)<=-c*||a||_2 for some fixed c>0. This is a paper consequence of positivity-only-zero and finite-dimensional cone separation, not an already compiled test realization."
+        },
+        {
+          "id": "S17b",
+          "formula": "The actual strip-zero canonical pair has internally proved independence when Im(kappa)!=0. Thus n=2 gives three adapted tests with no lower-height or simple-zero requirement. Supports and test/recovery costs are source-dependent and not controlled uniformly."
+        },
+        {
+          "id": "S17c",
+          "formula": "For the explicit four-test option assume rho=1/2+delta+i*gamma, 0<delta<1/2 and gamma>2*pi/log(2). Put q=delta+i*gamma, kappa=1/4-q^2, Z=kappa/q, u_j=j*pi/(2*gamma). Then g(exp u_j)=(i*Z*p1,-Z*p2,-i*Z*p3,Z*p4), with p1,p3=exp(-u_j/2)*cosh(delta*u_j), p2,p4=exp(-u_j/2)*sinh(delta*u_j)."
+        },
+        {
+          "id": "S17d",
+          "formula": "eta=|Z|*min_j(p_j)/sqrt(2)>0 gives min_j Re(c*g(exp u_j))<=-eta*|c| for every c in C. With D=|Z|*(|q|+1/2)*cosh(delta*log2), unit-integral bumps of radius at most min(half the endpoint distances,eta/(4*D)) give min_j integral phi_j dRe(c*nu_rho)<=-eta*|c|/2."
+        },
+        {
+          "id": "S17e",
+          "formula": "If actual observations P_j(T)>=0 approximate those same pairings within epsilon_T and |c_T|>=a0>0, then epsilon_T>=eta*a0/2. For three adapted tests use its own fixed c margin. Producing positive observations and an independent cheaper comparison is OPEN; phase may vary only within the stated phase-complete construction."
+        },
+        {
+          "id": "S17f",
+          "formula": "For the precise one-sided real linear task, n tests cannot force a=0: a rank-deficient map has a nonzero kernel, while an invertible n-by-n map has a nonzero preimage of the positive all-ones vector. This is not a minimal point-sample or quadratic-test result."
+        }
+      ],
+      "source_refs": [
+        "SRC_POSITIVE_TEST_PAPER",
+        "SRC_FINITE_SPAN_NATIVE",
+        "SRC_DEEP_SEARCH",
+        "SRC_NATIVE_RECOVERY"
+      ],
+      "forbidden_substitutions": [
+        "Do not apply the explicit four-point construction below its height threshold; use the separately proved height-free alternatives.",
+        "Do not infer positive arithmetic observations, bounded recovery cost, or growing-basis uniformity from finite test existence.",
+        "Complex phase is not the same as even/odd finite Fourier parity.",
+        "On real kappa, including the critical line, raw Re/Im independence can fail.",
+        "These are linear compact-test integrals, not native finite Weil quadratic values without a bridge."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    }
+  ],
+  "terminal_targets": [
+    {
+      "id": "OPICA2_T_A",
+      "path": "A",
+      "title": "Complete signed arithmetic upper or source-matched positive-observation comparison",
+      "proposed_lean_name": "Zeta23.OPICARound2.complete_native_signed_observation_quiet",
+      "status": "OPEN",
+      "tier": "ALTERNATIVE_TERMINAL_RESEARCH_TARGET",
+      "statement_contract": "Prove one independently sufficient source-matched arithmetic route: (a) a cofinal quiet upper for one fixed complete registered native high observation, with its exact rate theorem; or (b) for every hypothetical off-line witness, construct actual nonnegative observations of the same fixed-direction or phase-complete zero-measure pairings and an independent error bound strictly below their positive obstruction margin. No upper, positive observation, recovery budget or comparison premise is supplied by this contract.",
+      "dependencies": [],
+      "native_dependency_ids": [],
+      "native_source_scope": "The complete-signed branch uses exactly the registered full nativeRawHigh/nativeAbsorbedHigh object with every mask/collision/cross term. The observation branches use the literal actual zero-measure integral tests in S10/S17 with a proved physical arithmetic adapter, exact phase/margin and total recovery/history/source costs. These objects are distinct; one branch cannot borrow another branch's premise without a proved adapter.",
+      "statement_components": [
+        {
+          "formula": "There exists time:N->R with time(n)->infinity such that for every epsilon>0, eventually log(1+max(H(time(n)),0))/(2time(n))<=epsilon, for one fixed registered complete H."
+        },
+        {
+          "formula": "The three-unit-axis exponent 57/25+o(1)<5/2 controls only that paper-level subtrace and depends on the separately audited external result. It is not the full H upper; the complement/mixed-term estimate is missing."
+        },
+        {
+          "formula": "Separate observation alternative: for each hypothetical off-line witness construct the actual nonnegative observations and independently smaller comparison error required by S10 or S17, with exact source, phase, margin and recovery cost. No such construction or error upper is supplied."
+        }
+      ],
+      "source_refs": [
+        "SRC_CONSUMERS",
+        "SRC_WINDOW_RATE",
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "evidence_origin": {
+        "classification": "OPEN_TARGET_NOT_ESTABLISHED",
+        "note": "Existing conditional consumers and lower obstructions do not prove this premise."
+      },
+      "forbidden_substitutions": [
+        "No unit-axis-only substitution.",
+        "No omitted mask, collision or direct term.",
+        "A complete absolute majorant is acceptable only if it actually meets the required exponent for the unchanged object.",
+        "No small-T finite-mask pilot as a cofinal asymptotic proof.",
+        "The signed branch restrictions govern that branch; linear-observation branches require their own exact native adapter and full cost budget.",
+        "Do not replace three adapted tests by four explicit low-height tests or infer observation positivity from nonnegative test functions."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      },
+      "proposed_name_scope": "The inherited proposed name identifies the primary complete-signed branch only. Observation branches use their separately named S10/S17 consumers.",
+      "alternative_dependency_groups": [
+        {
+          "lane": "complete_signed_rate",
+          "ids": [
+            "OPICA2_S11"
+          ],
+          "native_dependency_ids": [
+            "NATIVE_RATE_AND_CUTS",
+            "NATIVE_SOURCE"
+          ],
+          "source_scope": "Exactly nativeRawHigh 1 2 1 (logSlackY 2 8 T) 2 T or nativeAbsorbedHigh 1 2 1 (by norm_num) (logSlackY 2 8 T) 2 T, including every signed correction.",
+          "missing_premise": "A cofinal independent complete upper meeting the zero-rate threshold."
+        },
+        {
+          "lane": "fixed_imaginary_observation",
+          "ids": [
+            "OPICA2_S10"
+          ],
+          "native_dependency_ids": [
+            "NATIVE_ZERO_PROFILES"
+          ],
+          "source_scope": "One fixed actual offcritical witness and S10 imaginary-direction compact integral. Reduce other quadrants by the genuine zeta symmetries.",
+          "missing_premise": "Actual nonnegative physical observation plus total error strictly below the fixed S10 margin."
+        },
+        {
+          "lane": "phase_complete_observation",
+          "ids": [
+            "OPICA2_S17"
+          ],
+          "native_dependency_ids": [
+            "NATIVE_FINITE_SPAN",
+            "NATIVE_OBSERVATION_RECOVERY"
+          ],
+          "source_scope": "Fixed actual independent canonical pair with S17 adapted tests, or the distinct four explicit first-cell tests under their height premise.",
+          "missing_premise": "Actual nonnegative physical observations plus independent total error below the corresponding margin, including nonvanishing coefficient amplitude and recovery cost."
+        }
+      ]
+    },
+    {
+      "id": "OPICA2_T_B",
+      "path": "B",
+      "title": "Actual native raw or fixed-filter approximation",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_probe_error_tends_to_zero",
+      "status": "OPEN",
+      "tier": "ALTERNATIVE_TERMINAL_RESEARCH_TARGET",
+      "statement_contract": "For the literal native dictionary prove d_N^2=q0-b_N^*G_N^(-1)b_N tends to zero, or supply actual finite coefficient vectors with residual norms tending to zero. A cofinal subsequence suffices. This is the inherited OPEN OPICA2_C1 target, not a new premise assumed by a wrapper. Alternatively prove the full fixed-filter approximation premise in S16, which independently implies RH without inverting B. The two premises are alternative routes; no equivalence of their norms is asserted.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_SOURCE",
+        "NATIVE_CAUSAL_COMPLETION"
+      ],
+      "native_source_scope": "Fixed sigma=1/4096, unchanged original one-copy source jPlus, actual c,a,T, v=c*jPlus, w=a*jPlus and g_n=n^(-1/2)D_log(n)w. Input norms are allowed to grow.",
+      "statement_components": [
+        {
+          "formula": "lim_(N->infinity)[q0-b_N^*G_N^(-1)b_N]=0; equivalently sufficient: exists finite x^(k) with ||v-sum_n x_n^(k)g_n||_2->0."
+        },
+        {
+          "formula": "Actual coefficient families must come with a proved whole-line residual bound including source/lag/output errors. Positive definiteness, monotone decrease, ill-conditioning and finitely many certificates do not prove the limit."
+        },
+        {
+          "formula": "Alternative: exists finite x^(k) with ||B(v-sum x_n^(k)g_n)||_2->0 for the one fixed B of S04. S16 gives sufficiency; this limit remains OPEN."
+        }
+      ],
+      "source_refs": [
+        "SRC_ORIGINAL_CONTRACTS",
+        "SRC_ORIGINAL_RESEARCH",
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "evidence_origin": {
+        "classification": "OPEN_TARGET_NOT_ESTABLISHED",
+        "note": "Existing conditional consumers and lower obstructions do not prove this premise."
+      },
+      "forbidden_substitutions": [
+        "No desired limit hidden in a structure field.",
+        "No uniformly bounded-input or exact-inversion requirement.",
+        "No replacement of v by the old completed input.",
+        "No variable-filter convergence without an applicable transported margin and separate implication.",
+        "No new project axiom for Nyman–Beurling or RH."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      },
+      "alternative_dependency_groups": [
+        {
+          "lane": "raw_optimal_Gram",
+          "ids": [
+            "OPICA2_P12",
+            "OPICA2_P19"
+          ]
+        },
+        {
+          "lane": "raw_explicit_primal",
+          "ids": [
+            "OPICA2_P05"
+          ]
+        },
+        {
+          "lane": "fixed_filtered_primal",
+          "ids": [
+            "OPICA2_S16"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OPICA2_T_C",
+      "path": "C",
+      "title": "Original-detector Schur upper or distinct contact-energy upper",
+      "proposed_lean_name": "Zeta23.OPICARound2.same_family_native_schur_upper",
+      "status": "OPEN",
+      "tier": "ALTERNATIVE_TERMINAL_RESEARCH_TARGET",
+      "statement_contract": "For each hypothetical off-line zero, fix a smaller positive beta and a legitimately generated same-packet cofinal family at an explicitly fixed phase. Independently bound the full original-detector complement loss on that family with an exponent strictly below its lower obstruction; alternatively prove the corresponding strictly smaller cumulative-energy upper for the separately defined full-contact construction.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_STEP123",
+        "NATIVE_CONTACT"
+      ],
+      "native_source_scope": "The original smooth detector and its complete complement are distinct from finite selected ground states and from full-contact nullsources. Bind all source, selector, phase, predecessor and aperture/time data to the same produced family.",
+      "statement_components": [
+        {
+          "formula": "On the selected family L_n->infinity with S_n>(1/2)exp(beta L_n), prove limsup_n log(1+max(S_n,0))/L_n<beta. A stronger all-selectors/subexponential upper is optional, not logically required for this family contradiction."
+        },
+        {
+          "formula": "The cumulative-energy alternative must define its exact full-contact outgoing observation and prove an upper exponent below that observation’s own lower law, including forcing, direct terms and the aperture/physical-time adapter."
+        },
+        {
+          "formula": "Complete same-packet existence and cofinality are conditional on the hypothetical zero; cofinality is separate for each parity and noncomputable. No simultaneous-aperture claim is introduced."
+        }
+      ],
+      "source_refs": [
+        "SRC_HISTORY_AUDIT",
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC",
+        "SRC_STEP123_PRODUCER"
+      ],
+      "evidence_origin": {
+        "classification": "OPEN_TARGET_NOT_ESTABLISHED",
+        "note": "Existing conditional consumers and lower obstructions do not prove this premise."
+      },
+      "forbidden_substitutions": [
+        "No inverse-capacity-only bound that omits forcing or direct complement.",
+        "No selected-shell or principal-minor proxy without proved transport.",
+        "No identification of original detector with full-contact nullsource.",
+        "No phase change or new selector between lower and upper."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_T_D",
+      "path": "D",
+      "title": "Native finite pole-neutral no-exit germ",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_first_boundary_no_exit",
+      "status": "OPEN",
+      "tier": "ALTERNATIVE_TERMINAL_RESEARCH_TARGET",
+      "statement_contract": "At every relevant generated first boundary of the actual finite pole-neutral path, prove an independent source-arithmetic restriction excluding a negative outgoing whole-kernel Schur germ, with the full parity/tie/inherited-kernel/seam structure. A regular justified nonmetric transport may be a proof method; the missing sign may not be assumed.",
+      "dependencies": [],
+      "native_dependency_ids": [
+        "NATIVE_PATH_D",
+        "NATIVE_STEP123"
+      ],
+      "native_source_scope": "Current Path D: T_a=D^2+aI, a=(L/(4pi))^2, fixed even/odd neutral seed constraints, metric G=B^*B and signed H=B^*M_KB. It is distinct from the full continuous Path C and from merely importing ESET.",
+      "statement_components": [
+        {
+          "formula": "On a C^2 cell with the whole kernel at contact, A(0)=B(0)=0 and C(0)>0, F(t)=A(t)-B(t)C(t)^(-1)B(t)^*. Prove actual outgoing F(t) is PSD on a genuine right neighborhood; at seams use the justified one-sided full germ and all registered compatibility data."
+        },
+        {
+          "formula": "F_prime(0)=A_prime(0), F_second(0)=A_second(0)-2B_prime(0)C(0)^(-1)B_prime(0)^*. PSD first derivative alone does not control its nullspace; strict PD gives a local interior-cell margin. No finite Taylor check covers every flat/seam branch."
+        },
+        {
+          "formula": "The global metric-compatible PSD-remainder proposal is already falsified: native H=-log(L)G+J yields d/dL tr(G^(-1)H)=-(K-2)/L+O(L)<0. The modified-prime control blocks geometry-only arguments but does not refute actual source-specific arithmetic."
+        }
+      ],
+      "source_refs": [
+        "SRC_PATH_D_START",
+        "SRC_PATH_D_DEEP",
+        "SRC_HISTORY_AUDIT",
+        "SRC_REVISED_SPEC"
+      ],
+      "evidence_origin": {
+        "classification": "OPEN_TARGET_NOT_ESTABLISHED",
+        "note": "Existing conditional consumers and lower obstructions do not prove this premise."
+      },
+      "forbidden_substitutions": [
+        "Do not reopen the already falsified global metric-compatible remainder as an untested premise.",
+        "Do not use C=H^(-1)H_prime/2 through a contact without integrability/regularity.",
+        "Do not omit odd/even ties, inherited kernels or prime seams.",
+        "Do not import positivity from ESET or a positive norm metric into signed stiffness.",
+        "The exact native no-exit-to-RH consumer still needs compatible formal evidence for any final claimed closure."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      },
+      "reusable_producer": "OPICA2_S15 is the existential fixed-aperture neutral producer; the stronger current Step1-3 quantitative same-packet producer retains its separate hypotheses and authority."
+    }
+  ],
+  "terminal_target_logic": {
+    "connective": "ALTERNATIVES_NOT_CONJUNCTIVE_PREREQUISITES",
+    "statement": "One valid independently proved terminal route with its full exact native consumer can close the goal. This file proves none of the terminal premises.",
+    "inherited_target_alias": {
+      "OPICA2_C1": "OPICA2_T_B"
+    },
+    "original_100_contracts": "IMMUTABLE_NOT_REPLACED_OR_RENUMBERED"
+  },
+  "optional_external_transfer_lanes": [
+    {
+      "id": "OPICA2_X01",
+      "title": "Optional external seven-eighths transfer",
+      "proposed_lean_name": "Zeta23.OPICARound2.native_theta_le_three_eighths_of_external_seven_eighths",
+      "tier": "OPTIONAL_EXTERNAL_FORMAL_TRANSFER",
+      "status": "SOURCE_VERIFIED_FORMAL_TRANSFER_OPEN",
+      "statement_contract": "Under a genuinely proved and compatible import of the pinned external ordinary-zeta nonvanishing theorem for Re(s)>7/8, derive the native ceiling Theta<=3/8, and for every fixed native source order d and epsilon>3/8 derive finite positive-damped L2 energy. This is a bounded zero-free improvement, not any terminal Path A/B/C/D closure.",
+      "dependencies": [
+        "OPICA2_S11"
+      ],
+      "native_dependency_ids": [
+        "NATIVE_RATE_AND_CUTS",
+        "EXTERNAL_SEVEN_EIGHTHS_SOURCE"
+      ],
+      "native_source_scope": "Actual Mathlib riemannZeta and actual native displacement supremum, with the native reflection/source adapter. No family-specific Hecke probe is silently identified with the native one-copy prime field.",
+      "statement_components": [
+        {
+          "formula": "External root: OAI.riemannZeta_ne_zero_of_seven_eighths_lt_re {s:C} (hs:(7/8:R)<s.re):riemannZeta(s)!=0."
+        },
+        {
+          "formula": "Actual nontrivial-zero reflection plus this strict right-strip exclusion gives Theta<=3/8. Integrability is asserted for epsilon>3/8 only; no boundary epsilon=3/8 or all-epsilon conclusion follows."
+        },
+        {
+          "formula": "The ordinary Dirichlet L companion retains its principal-pole exclusion. The zeta root uses ordinary Mathlib riemannZeta, including that library’s pole convention; it is not an ordinate-bounded or renamed object."
+        }
+      ],
+      "evidence_origin": {
+        "classification": "FRESH_ROOT_SOURCE_IDENTITY_WITH_INHERITED_EXTERNAL_BUILD_RECORD",
+        "source_commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+        "source_blob": "46c67f4000906b1391a471d6e6396ac0da3c16a5",
+        "root_source_verified_in_both_repositories": true,
+        "external_build_replayed_this_turn": false,
+        "compatibility_note": "The inherited external proof used Lean 4.34.1; native PR294 uses its frozen Lean 4.33.0-rc2 toolchain. A compatible full proof/adapter is required. Do not change the parent toolchain or add an axiom to bypass this obligation."
+      },
+      "source_refs": [
+        "SRC_EXTERNAL_SEVEN_EIGHTHS",
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_REVISED_SPEC"
+      ],
+      "forbidden_substitutions": [
+        "No iteration of 7/8 to 1/2 without a new improvement theorem.",
+        "No all-height native arithmetic estimate from a family-specific external detector without exact transport.",
+        "No claim that the external source is already imported into this native build.",
+        "No project axiom, signature-only surrogate or parent-toolchain replacement.",
+        "No promotion of historical receipts to a fresh external rebuild."
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    }
+  ],
+  "native_prerequisites": [
+    {
+      "id": "NATIVE_SOURCE",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_ORIGINAL_SOURCE",
+        "SRC_ORIGINAL_RESEARCH"
+      ],
+      "statement": "Literal sigma=1/4096, compact symmetric probability q, j=(D^2-1/4)^2 q, one-copy product and actual source visibility.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "NATIVE_CAUSAL_COMPLETION",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_CAUSAL_OPERATOR",
+        "SRC_POSITIVE_COMPLETION",
+        "SRC_CAUSAL_RANGE"
+      ],
+      "statement": "Actual c,a,T and their physical causal L1/L2 representatives, delay conventions and Laplace functional.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "NATIVE_RATE_AND_CUTS",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_WINDOW_RATE",
+        "SRC_CONSUMERS",
+        "SRC_DEEP_SEARCH"
+      ],
+      "statement": "Actual fixed-source and priced slow-source rates, complete fixed two-factor high-mask consumers, theta-zero -> A-X -> B-Y -> RH and actual reflection.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "NATIVE_STEP123",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_STEP123_PRODUCER",
+        "SRC_CONSUMERS",
+        "SRC_HISTORY_AUDIT"
+      ],
+      "statement": "Complete same-packet existence conditional on an actual off-line zero and positive smaller beta; separately cofinal for each phase; noncomputable, not a witness at every aperture.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "NATIVE_CONTACT",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_HISTORY_AUDIT",
+        "SRC_PRIOR_INVESTIGATION"
+      ],
+      "statement": "Source-specific original-detector complement obstruction and distinct full continuous-contact exterior/range laws; no closing upper supplied.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "NATIVE_PATH_D",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_PATH_D_START",
+        "SRC_PATH_D_DEEP"
+      ],
+      "statement": "Finite pole-neutral first-boundary construction, whole kernel, generalized metric, both parities, ties, inherited kernels and prime seams.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "NATIVE_ZERO_PROFILES",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_ZERO_PROFILES",
+        "SRC_FORCED_EULER",
+        "SRC_PROFILE_EM",
+        "SRC_SQUARE_DEFECT"
+      ],
+      "statement": "Eligible actual zero profiles and exact forced identities; no finite or infinite quadratic repair accepted without its own scope proof.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "NATIVE_JUMP_GAIN",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_COMPONENTS",
+        "SRC_NATIVE_TP2"
+      ],
+      "statement": "Literal positive off-diagonal gain density and prime-power atom coefficients; distinct from floor completion and signed stiffness.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "CRITICAL_ZERO_EVIDENCE",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_PRIOR_INVESTIGATION"
+      ],
+      "statement": "Separate evidence obligation: source-visible critical-zero existence in the RH branch from the inherited actual explicit-formula/source lemma, or separately admitted historical/published finite verification. None is newly replayed or imported into Lean here.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "EXTERNAL_SEVEN_EIGHTHS_SOURCE",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_EXTERNAL_SEVEN_EIGHTHS",
+        "SRC_PRIOR_INVESTIGATION"
+      ],
+      "statement": "Pinned external root source identity and historical external compiler evidence, not a compatible native import.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "CLASSICAL_HILBERT_ANALYSIS",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_PRIOR_INVESTIGATION",
+        "SRC_DEEP_SEARCH"
+      ],
+      "statement": "Young, Plancherel, bounded Laplace evaluation, finite positive Gram algebra, weak compactness, and exact elementary synthetic-control calculations. Each used fact still needs an actual formal proof for Lean acceptance.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "NATIVE_CT1",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_CT1_NATIVE"
+      ],
+      "statement": "Actual dilation_normalized_limit_not_measure, normalized Schwartz convergence, nonzero T, local failure of order zero.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "NATIVE_FINITE_NEUTRAL_INPUTS",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_POLE_CORRECTORS",
+        "SRC_POLE_PUBLIC_API",
+        "SRC_BOUNDARY_APPROX",
+        "SRC_NEGATIVE_NEUTRAL_WITNESS",
+        "SRC_WCONT_FIXED_APERTURE",
+        "SRC_EXACT_FINITE_WEIL",
+        "SRC_APERTURE_FREEDOM",
+        "SRC_NEUTRAL_NESTING",
+        "SRC_NEUTRAL_PAPER"
+      ],
+      "statement": "Existing strict-collar compact negative neutral witness, legal approximation, fixed-L WCONT, exact same-source finite form and centered zero extension; composition is new proposed paper contract.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "NATIVE_FINITE_SPAN",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_FINITE_SPAN_NATIVE",
+        "SRC_POSITIVE_TEST_PAPER"
+      ],
+      "statement": "Literal actual realified zero-jet measure constructor, actual multiplicity, positive-only-zero and fixed-basis independence; optional finite test realization remains paper-level.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    },
+    {
+      "id": "NATIVE_OBSERVATION_RECOVERY",
+      "dependencies": [],
+      "source_refs": [
+        "SRC_NATIVE_RECOVERY"
+      ],
+      "statement": "Already formal finite-dimensional observation/recovery with exact optimal norm; no uniform varying-basis estimate.",
+      "status": "EXISTING_INPUT_OR_PAPER_PREREQUISITE_NOT_RECOMPILED_HERE"
+    }
+  ],
+  "source_catalog": [
+    {
+      "id": "SRC_ORIGINAL_CONTRACTS",
+      "workspace_path": "upload/OPICA_Round2_Theorem_Contracts_2026-10-25(2).json",
+      "sha256_at_authoring": "2374df94db84eaeb2d97bd8b402ac86b267958cb159724445c1b8ced88da3c15",
+      "scope": "All 25 original contract objects and all original top-level metadata; immutable input."
+    },
+    {
+      "id": "SRC_ORIGINAL_RESEARCH",
+      "workspace_path": "upload/OPICA_Round2_Research_and_Specification_2026-10-25(2).md",
+      "sha256_at_authoring": "84d39bdbb6bc9a56a6f6d6ef15958ff21e5e1dd03234dd498e5e50e2d3464e9c",
+      "scope": "Original Round 2 source equations, P01–P25 paper contracts and exact regional-certificate conventions."
+    },
+    {
+      "id": "SRC_DEEP_SEARCH",
+      "workspace_path": "upload/OPICA_Proof_Directed_Deep_Search_2026-10-25(2).md",
+      "sha256_at_authoring": "84d05886eb1a7708732aa90262d5ccba3aa9c94fcf23ac9f8a4fcda4494f921b",
+      "scope": "Sections 4–7: exact positive-damping abscissa, native cut equivalence, positive twins, fixed imaginary-direction test."
+    },
+    {
+      "id": "SRC_PRIOR_INVESTIGATION",
+      "workspace_path": "analysis/prior/Step4_Closure_Investigation_2026-10-25.txt",
+      "sha256_at_authoring": "34b972bfee38360ae6bb93376d3d2b8113044186b6c40366a2652f4a91a00101",
+      "scope": "Earlier 25 October report, especially finite-filter proof, causal deductions, nonrange/input cost and finite quadratic obstruction; inherited paper results, not fresh Lean authority."
+    },
+    {
+      "id": "SRC_REVISED_SPEC",
+      "workspace_path": "analysis/OPICA_Round2_PostGreen_Research_v2_2026-10-25.md",
+      "sha256_at_authoring": "8714a068beb490ae4f35f853e6723fc88d670d248f145ece84b83e3694dcd444",
+      "scope": "Sections 3–11 of the revised research specification. Hash is the authoring snapshot, not a claim that later editorial revisions are identical."
+    },
+    {
+      "id": "SRC_HISTORY_AUDIT",
+      "workspace_path": "analysis/history_math_audit.md",
+      "sha256_at_authoring": "ea5c0f1fa85a539fe3b40c7683141b8e1e0c677b6dcf46fe420711a42ba151cd",
+      "scope": "Attached-history reconciliation, exact support-endpoint/prefix proof, adaptive budget review and Path D historical falsification."
+    },
+    {
+      "id": "SRC_MATH_REVIEW",
+      "workspace_path": "analysis/ROOT_DRAFT_MATHEMATICAL_REVIEW.md",
+      "sha256_at_authoring": "dc49e7c8d65a8103db880f682cf7e5716d9ec3c82a4c2c7ac0a1f5b5dae2686f",
+      "scope": "Target-tail correction, Schur regularity/contact conditions, Path C source distinction and Step 3 authority qualifications."
+    },
+    {
+      "id": "SRC_NATIVE_TP2",
+      "workspace_path": "analysis/drive/NATIVE_JUMP_ORDERED_MINOR.md",
+      "sha256_at_authoring": "133b62ac6a9f65719052c63482c5b0b35b87fbfd7fabf5f986ec78e9d1fef200",
+      "scope": "Exact negative ordered minor for the actual positive off-diagonal prime-plus-Archimedean gain measure."
+    },
+    {
+      "id": "SRC_COMPONENTS",
+      "workspace_path": "repo/Zeta23/CCM/Components.lean",
+      "sha256_at_authoring": "015e04bad2f7c74e1bef8c456f44e758b164ba08ac1aaa80d2a861e6ab9ae158",
+      "scope": "Literal Archimedean density and prime-power coefficient definitions."
+    },
+    {
+      "id": "SRC_ORIGINAL_SOURCE",
+      "workspace_path": "repo/Zeta23/CCM/OriginalSincNativeSource.lean",
+      "sha256_at_authoring": "aa45eed6367f434a6198dc4f10d582ab2251f314c38e92449dddcdb2780b4ab5",
+      "scope": "Unchanged one-copy probability source and native original source."
+    },
+    {
+      "id": "SRC_CAUSAL_OPERATOR",
+      "workspace_path": "repo/Zeta23/CCM/NativeDampedCompletionOperator.lean",
+      "sha256_at_authoring": "e0921f97810403c3d7f488905c93ac4426a09cd93d0d5fb5ccaa85c563452367",
+      "scope": "Actual damped causal L2 operator; zero-damping instance retained for the new probe."
+    },
+    {
+      "id": "SRC_POSITIVE_COMPLETION",
+      "workspace_path": "repo/Zeta23/CCM/NativePositiveCompletion.lean",
+      "sha256_at_authoring": "9a19cc764b2d58da9235199a1497c06675eef2b8b251f057ad4c73ceae8d9816",
+      "scope": "Actual positive floor completion, distinct from the signed jump gain."
+    },
+    {
+      "id": "SRC_CAUSAL_RANGE",
+      "workspace_path": "repo/Zeta23/CCM/NativeCausalRangeObstruction.lean",
+      "sha256_at_authoring": "56f4800e925ecc284a58870986a75294a96d7e7f9a1f03d9b82275e4c0ecfbc5",
+      "scope": "Actual causal range and Laplace witness interface."
+    },
+    {
+      "id": "SRC_WINDOW_RATE",
+      "workspace_path": "repo/Zeta23/OPICAFollowup/NativeWindowRate.lean",
+      "sha256_at_authoring": "1b388ffd7828390307605cc4804d7d9e1400343a3bafa0858a9d76aa0f369b33",
+      "scope": "native_fixed_source_window_rate and the priced slow-source extension."
+    },
+    {
+      "id": "SRC_CONSUMERS",
+      "workspace_path": "repo/Zeta23/OPICAFollowup/Consumers.lean",
+      "sha256_at_authoring": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
+      "scope": "fixed_two_factor_mask_rate_theta; originalPrimeField_allDampedL2_of_native_theta_zero; explicitly conditional quiet_balanced_observation_implies_native_cut."
+    },
+    {
+      "id": "SRC_STEP123_PRODUCER",
+      "workspace_path": "repo/Zeta23/ExceptionalZero/Step123OutputProducer.lean",
+      "sha256_at_authoring": "a6d1c9a0eca5a318d52d48dec887c2cd43f53c006c5b39677a4cb74544536372",
+      "scope": "Conditional complete same-packet producer; phase-specific cofinality and noncomputable existence must remain explicit."
+    },
+    {
+      "id": "SRC_ZERO_PROFILES",
+      "workspace_path": "repo/Zeta23/OPICAFollowup/ZeroProfiles.lean",
+      "sha256_at_authoring": "d5ee76f621001bcd97e555cd6a92517349080d4315c86a496289acf49a7af7fc",
+      "scope": "Actual normalized zero profiles, spectral kappa, plateau, Fourier self-duality, tail and derivative-jump definitions."
+    },
+    {
+      "id": "SRC_FORCED_EULER",
+      "workspace_path": "repo/Zeta23/OPICAFollowup/ForcedEuler.lean",
+      "sha256_at_authoring": "fbf5c1bb6aabcf2f171ce1d11aeb289ff71ea14243d7099a09f3e05153dd8657",
+      "scope": "Actual forced Euler cell equation and lattice atoms."
+    },
+    {
+      "id": "SRC_PROFILE_EM",
+      "workspace_path": "repo/Zeta23/OPICAFollowup/ProfileEulerMaclaurin.lean",
+      "sha256_at_authoring": "c4ee9e0c04d0f7c53b26c92dee78287800e6ddd331377832cb8b271885441c8b",
+      "scope": "Existing finite-order Euler–Maclaurin profile identities; the full all-order quadratic proof is inherited paper work."
+    },
+    {
+      "id": "SRC_SQUARE_DEFECT",
+      "workspace_path": "repo/Zeta23/OPICAFollowup/SquareDefect.lean",
+      "sha256_at_authoring": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
+      "scope": "Existing square defect and fixed lattice correction convention."
+    },
+    {
+      "id": "SRC_PATH_D_START",
+      "workspace_path": "analysis/attachments/files/5716b85e5d95_PATH_D_START_HERE_2026-10-14.md",
+      "sha256_at_authoring": "5716b85e5d95066433d40a6484db8a62b43d6386def75d57550c8076d146aaa7",
+      "scope": "Current Path D means the finite pole-neutral first-negative-boundary programme."
+    },
+    {
+      "id": "SRC_PATH_D_DEEP",
+      "workspace_path": "analysis/attachments/files/78bc64ed2e9b_ESET_PATH_D_DEEP_RESEARCH_NOTE_2026-10-14.md",
+      "sha256_at_authoring": "78bc64ed2e9b585d20cff5ecc0155450ac5a6761a33b5230f3b39748dcff490e",
+      "scope": "Native trace obstruction to globally PSD metric-compatible remainder; pointwise contact compression and transport limitations."
+    },
+    {
+      "id": "SRC_EXTERNAL_SEVEN_EIGHTHS",
+      "repositories": [
+        "openai/math",
+        "HMarcusWH/math"
+      ],
+      "commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "path": "lean/OAI/NumberTheory/DirichletL/Nonvanishing.lean",
+      "git_blob_sha": "46c67f4000906b1391a471d6e6396ac0da3c16a5",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/OAI/NumberTheory/DirichletL/Nonvanishing.lean",
+      "evidence": "Both pinned root sources were freshly fetched and agreed. Historical external compiler/standard-axiom receipts are described in the prior investigation; the transitive external build was not replayed here.",
+      "scope": "Ordinary Mathlib riemannZeta is nonzero for Re(s)>7/8. The Dirichlet L companion retains its principal-pole exception."
+    },
+    {
+      "id": "SRC_COMPLETENESS_AUDIT",
+      "workspace_path": "analysis/round2_completeness/OPICA_Round2_Completeness_Audit_2026-10-25.md",
+      "scope": "Review findings, precise additions, deferred lanes, source and coverage boundaries.",
+      "sha256_at_authoring": "2c5676ecfa3e38445fa424b7e80427517a71eb21394995b7b24319c6e555bc18"
+    },
+    {
+      "id": "SRC_PROJECT_REAUDIT",
+      "workspace_path": "analysis/round2_completeness/project_omission_audit.md",
+      "scope": "Original paper proofs of CT1 scalar classification, finite neutral repair, filtered consumer, Euler-product and iteration controls.",
+      "sha256_at_authoring": "87e4ba31359b7ecf6238c287514b02c472a234fef30d2d12b21363827cbf27d9"
+    },
+    {
+      "id": "SRC_DRIVE_REAUDIT",
+      "workspace_path": "analysis/round2_completeness/drive_omission_audit.md",
+      "scope": "Live metadata comparison and expanded reading of retained optional and historical routes.",
+      "sha256_at_authoring": "26f08d919d0155ccdaf6769b1da418fc9b4acf860d648603aecb76f3e13fd64a"
+    },
+    {
+      "id": "SRC_REPO_REAUDIT",
+      "workspace_path": "analysis/round2_completeness/repo_omission_audit.md",
+      "scope": "Current source and all-root reuse review; CI and receipt boundaries.",
+      "sha256_at_authoring": "510065442ec1886c24f1b5c960d368953e40517029e1a6ad9ed2145f7e88a5cf"
+    },
+    {
+      "id": "SRC_CT1_NATIVE",
+      "workspace_path": "repo/Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "scope": "Normalized dilation limit, nonzero witness and not-order-zero theorem; unchanged mathematical source at current head.",
+      "sha256_at_authoring": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03"
+    },
+    {
+      "id": "SRC_FINITE_SPAN_NATIVE",
+      "workspace_path": "repo/Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
+      "scope": "Actual zero-jet spans, canonical pair independence and negative-mass budget.",
+      "sha256_at_authoring": "69d2d89a32311dec71bc9831b21717097e94a980d7b9dfcd0f8dbf10f8fbb9f5"
+    },
+    {
+      "id": "SRC_POSITIVE_TEST_PAPER",
+      "workspace_path": "repo/research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/post-green/DERIVED_FINITE_POSITIVE_TEST_OBSERVABILITY_2026-10-24.md",
+      "scope": "Complete n+1 adapted positive-integral-test derivation, exact hypotheses and limits; not Lean compiled.",
+      "sha256_at_authoring": "92cc2e03a9a67670cc994ab95e72feded20d329a60fb97f2c1edcbf75845ffef"
+    },
+    {
+      "id": "SRC_POLE_CORRECTORS",
+      "workspace_path": "repo/Zeta23/CCM/CanonicalPoleNeutralCarrier.lean",
+      "scope": "Legal e and centeredIndex e=2o, pole-functional nonvanishing and surjectivity.",
+      "sha256_at_authoring": "c105da764725316e6d256e342cfed7a5db2f857ed5f1a332199de22a1617927d"
+    },
+    {
+      "id": "SRC_POLE_PUBLIC_API",
+      "workspace_path": "repo/Zeta23/CCM/CanonicalPoleNeutralPublicAPI.lean",
+      "scope": "Pole neutrality as physical exponential moments; parity branches.",
+      "sha256_at_authoring": "8cbc264589d13a25d9fad21fe4aaab42310d49acf87f7337e60a9c7af482a55f"
+    },
+    {
+      "id": "SRC_BOUNDARY_APPROX",
+      "workspace_path": "repo/Zeta23/CCM/BoundaryFlatApproximation.lean",
+      "scope": "Strict-collar fixed-aperture finite approximation in L1 plus second-derivative L1.",
+      "sha256_at_authoring": "1280b442bcc167aa768d58a0cd854f0d59cda0fc0be983878e238ad184ab10c8"
+    },
+    {
+      "id": "SRC_NEGATIVE_NEUTRAL_WITNESS",
+      "workspace_path": "repo/Zeta23/ExceptionalZero/NegativeWeilTestSupport.lean",
+      "scope": "exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero: actual strict-collar compact negative neutral witness.",
+      "sha256_at_authoring": "8ae77fd091d9be13a03e34c4b592ab778c0f454850d37d8fe9f14ae0b49f1423"
+    },
+    {
+      "id": "SRC_WCONT_FIXED_APERTURE",
+      "workspace_path": "repo/Zeta23/ExceptionalZero/FiniteNegativeObstruction.lean",
+      "scope": "zeta_W_self_sub_self_norm_le_of_WCONT_errors: fixed-L finite-Weil continuity bound.",
+      "sha256_at_authoring": "4a6ea80d6d78b2a2d910edb514105f53e5eb322ce59fc61c0f02fe1727b46a4e"
+    },
+    {
+      "id": "SRC_EXACT_FINITE_WEIL",
+      "workspace_path": "repo/Zeta23/ExceptionalZero/BoundaryFlatFiniteWeil.lean",
+      "scope": "zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm: exact same-source finite form identity.",
+      "sha256_at_authoring": "b3283d2af2827a37010094dc86e7f7df5c805805d450637f19acc1987be92c81"
+    },
+    {
+      "id": "SRC_APERTURE_FREEDOM",
+      "workspace_path": "repo/Zeta23/ExceptionalZero/ApertureFreedom.lean",
+      "scope": "Existing eventual-aperture producer; its current finite conclusion does not by itself retain pole neutrality.",
+      "sha256_at_authoring": "11c2ad5eb61c71d689453c7f01e189f75d582f55a4880a6395696a7b21a4b015"
+    },
+    {
+      "id": "SRC_NEUTRAL_NESTING",
+      "workspace_path": "repo/Zeta23/CCM/CanonicalPoleNeutralNesting.lean",
+      "scope": "Both pole-functional centeredZeroExtend theorems; legal parity embeddings, coefficient norm and complete canonical self-form preservation at fixed L, not compressed-operator or aperture-flow invariance.",
+      "sha256_at_authoring": "6eafb09261ac35a2f43de288a8d7986062d3c36645946109f86afcc250bf7d27"
+    },
+    {
+      "id": "SRC_LIU_REPORTED_MANUSCRIPT",
+      "workspace_path": "analysis/attachments/files/5ed4bb381d97_2610.12234v2_1_.pdf",
+      "scope": "Supplied manuscript Theorem27.1; reported stronger numerical boundary. Separate Lean proof neither inspected nor rebuilt here.",
+      "sha256_at_authoring": "5ed4bb381d9721e0e1138600ae95871e27de372b00c434a4ff5a3a9dc600ae6e"
+    },
+    {
+      "id": "SRC_NEUTRAL_PAPER",
+      "workspace_path": "analysis/attachments/files/51809713fec8_RH_PoleNeutral_Contact_Investigation_2026-10-13.md",
+      "scope": "Sections 2.1-2.3: existential finite neutral repair composition.",
+      "sha256_at_authoring": "51809713fec877743aa33675774cdd876242728ada7ebbe5ab1cea40be93cd38"
+    },
+    {
+      "id": "SRC_OPTIONAL_AMENDMENT",
+      "workspace_path": "analysis/drive/1m2eHS65c7pH4aF8qSJe9s8FowyzZIr_D__OPICA_Followup_PostGreen_Amendment_v1_1_2026-10-21.md",
+      "scope": "Original optional C2/C3/C4; read with explicit C3 correction.",
+      "sha256_at_authoring": "0f61cf0f053aa9c5d5dec24e351f0968ab30b800b1d9c0cfe2e4bd4b7af77f4c",
+      "url": "https://drive.google.com/file/d/1m2eHS65c7pH4aF8qSJe9s8FowyzZIr_D/view"
+    },
+    {
+      "id": "SRC_POST_GREEN_CORRECTION",
+      "workspace_path": "repo/research/RHRC/integration/opica_followup/POST_GREEN_RESEARCH.md",
+      "scope": "Epsilon=4 counterexample, repaired smoothing domain, native four-cost limit and nonpromotion rules.",
+      "sha256_at_authoring": "31137871ab964ff327318b3474bfac517fc6ec8d89081db91cb407f989381a78"
+    },
+    {
+      "id": "SRC_NATIVE_RECOVERY",
+      "workspace_path": "repo/Zeta23/OPICAFollowup/JointObservation.lean",
+      "scope": "Existing finite-dimensional canonical recovery and exact norm; not a whole-space infinite-dimensional theorem.",
+      "sha256_at_authoring": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162"
+    },
+    {
+      "id": "SRC_NATIVE_WORDS",
+      "workspace_path": "repo/Zeta23/OPICAFollowup/NativeTransformationWords.lean",
+      "scope": "Native transform words, exact pole order, all affine histories and physical continuation scope.",
+      "sha256_at_authoring": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125"
+    },
+    {
+      "id": "SRC_ORIGINAL_CONTROLS",
+      "workspace_path": "repo/Zeta23/OPICAFollowup/Counterexamples.lean",
+      "scope": "Inherited exact counterexamples, distinct from compiler rejection tests.",
+      "sha256_at_authoring": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34"
+    }
+  ],
+  "global_invariants": [
+    "All 25 original contract objects, names, dependencies and acceptance values are preserved exactly; inherited metadata is preserved separately.",
+    "The original 100 project roots, 28-unit contracts, parent source, toolchain and existing OPEN claims remain immutable.",
+    "Supporting amendments are paper/source specifications and do not inflate the original root count or claim fresh Lean compilation.",
+    "The actual source is j=(D^2-1/4)^2q at sigma=1/4096 with one-copy product; jPlus is its literal delay, not a replacement bump.",
+    "The new undamped v, old B-Y completed input, original smooth detector, selected finite ground and full-contact nullsource are distinct typed objects.",
+    "Terminal lower and upper estimates must refer to the same actual source, phase, family, selectors, masks, forcing and physical domain.",
+    "Physical and kernel-lag cutoffs are different; all actual target, input, filter, discretization and arithmetic error budgets must be retained.",
+    "Every new Lean acceptance requires compatible real compilation, an independently stated expected type, native domain/source consumers, transitive standard-axiom audit and a source-pinned receipt.",
+    "No project axiom, sorry, desired conclusion hidden in a premise, or copied signature-only proof surrogate is accepted.",
+    "Existing paper results remain inherited; current rational calculations are finite arithmetic evidence, not analytic or Lean proof promotion.",
+    "Synthetic twins and modified-prime controls are explicitly nonnative and refute only implications using their common properties.",
+    "External seven-eighths transfer and classical P24/P25 transfers are optional until genuine compatible proof prerequisites are supplied.",
+    "No external messages, repository changes or publication are authorized by this specification.",
+    "A finding is closed for handoff only when it has an explicit ADD, AMEND, REUSE, DEFER or OUT_OF_SCOPE destination, evidence and claim boundary.",
+    "The fixed-filter conditional consumer does not require a bounded filter inverse or a raw-norm implication.",
+    "Retain the full D2 continuous both-parity obligation and actual hWindows/hM51 premises separately from the selected finite-filter milestone.",
+    "Three adapted phase-complete tests are not the four explicit first-cell tests; fixed imaginary direction, complex phase and parity are different notions.",
+    "The stronger archived0.874957 benchmark is unverified in this investigation and does not replace X01.",
+    "Existing maximal square repair must not be weakened to a polynomial-variation premise for convenience."
+  ],
+  "implementation_milestones": [
+    {
+      "id": "M0",
+      "title": "Pin and native identity",
+      "contract_ids": [],
+      "note": "Preserve inherited contracts and bind reused declarations to their complete types/source hashes; keep aggregate release status distinct from mathematical slices."
+    },
+    {
+      "id": "M1",
+      "title": "Actual probe and obstruction",
+      "contract_ids": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03",
+        "OPICA2_P04",
+        "OPICA2_P05"
+      ],
+      "note": "P05 is conditional, not a closing premise."
+    },
+    {
+      "id": "M2",
+      "title": "Finite filtered baseline",
+      "contract_ids": [
+        "OPICA2_S04",
+        "OPICA2_S05",
+        "OPICA2_S06",
+        "OPICA2_S16"
+      ],
+      "note": "Minimal transitive contract slice: P01-P04 plus S04-S06 and the conditional S16. P19/Gram/inverse, multi-zero and optional classical necessity are not dependencies. Exact arithmetic remains analytic proof input, not a terminal estimate."
+    },
+    {
+      "id": "M3",
+      "title": "Failure controls and adaptive budgets",
+      "contract_ids": [
+        "OPICA2_S01",
+        "OPICA2_S07",
+        "OPICA2_S08",
+        "OPICA2_P13",
+        "OPICA2_P14",
+        "OPICA2_P15",
+        "OPICA2_P16"
+      ],
+      "note": "Use controls relevant to the chosen operation; keep input growth and the separate target tail."
+    },
+    {
+      "id": "M4",
+      "title": "Actual asymptotic residual",
+      "contract_ids": [
+        "OPICA2_P06",
+        "OPICA2_P07",
+        "OPICA2_P08",
+        "OPICA2_P09",
+        "OPICA2_P10",
+        "OPICA2_P11",
+        "OPICA2_P12",
+        "OPICA2_P19",
+        "OPICA2_P21",
+        "OPICA2_P22",
+        "OPICA2_P23",
+        "OPICA2_T_B"
+      ],
+      "note": "Seek actual coefficient families with a proved residual bound, allowing input norms to grow; optional P17/P18 and P24/P25 only when they resolve a concrete obligation."
+    },
+    {
+      "id": "PARALLEL",
+      "title": "Alternative arithmetic/contact lanes",
+      "contract_ids": [
+        "OPICA2_T_A",
+        "OPICA2_T_C",
+        "OPICA2_T_D",
+        "OPICA2_S09",
+        "OPICA2_S10",
+        "OPICA2_S11",
+        "OPICA2_S14",
+        "OPICA2_S15",
+        "OPICA2_S17"
+      ],
+      "note": "A valid route may suffice; no assumption of the desired upper or outgoing sign."
+    },
+    {
+      "id": "SUPPORT",
+      "title": "Additional reusable controls and exact finite identities",
+      "contract_ids": [
+        "OPICA2_S02",
+        "OPICA2_S03",
+        "OPICA2_S12",
+        "OPICA2_S13",
+        "OPICA2_P20"
+      ],
+      "note": "Implement when used by the selected proof; do not inflate primary root counts."
+    },
+    {
+      "id": "OPTIONAL",
+      "title": "Optional research extensions and genuine external transfer",
+      "contract_ids": [
+        "OPICA2_P17",
+        "OPICA2_P18",
+        "OPICA2_P24",
+        "OPICA2_P25",
+        "OPICA2_O_C2",
+        "OPICA2_O_C3",
+        "OPICA2_O_C4",
+        "OPICA2_X01"
+      ],
+      "note": "Separate opt-in imports. No stub axiom, no hidden new gate on M2."
+    }
+  ],
+  "validation": {
+    "scope": "Structural preservation, reference resolution, dependency acyclicity and false-acceptance checks only; not theorem verification.",
+    "all_contract_objects_preserved": true,
+    "all_original_metadata_preserved": true,
+    "all_dependencies_resolve": true,
+    "dependency_graph_acyclic": true,
+    "all_new_lean_acceptance_flags_false": true,
+    "receipt_filename": "OPICA_Round2_Contract_Validation_v2_2026-10-25.json"
+  },
+  "revision": "2.1",
+  "source_evidence_boundary": {
+    "current_workflow_ledger": "round2_completeness/repo/current_workflow_harvest.json",
+    "prior_mathematical_source": "f5bafbc575c5663cdfaa4ce9e1de69d9fb9f9486",
+    "lean_and_dependency_pins_unchanged": true,
+    "comparison_evidence": "round2_completeness/repo/compare_live.json",
+    "historical_review_hashes": "round2_completeness/repo/historical_review_source_identity.json",
+    "current_ci_acceptance_is_not_inferred_from_prior_head": true,
+    "new_lean_declarations_compiled_in_this_investigation": 0
+  },
+  "revision_history": [
+    {
+      "revision": "2.1",
+      "reason": "User-requested omission audit across repository, all 40 project attachments, and live Drive folder.",
+      "baseline_contract_sha256": "203bcf5e3eb0c1399c4ebcdae13fcf660d6b0fdfa0168aa130ad975980f88c7f",
+      "baseline_preserved_at": "round2_completeness/baseline_v2/",
+      "original_P01_P25_unchanged": true,
+      "amendments": [
+        "Add S14 CT1 scalar-limit classification, S15 finite neutral approximation, S16 fixed-filter global consumer, S17 phase-complete positive observations.",
+        "S06 removes unnecessary P19 dependency; the finite primal proof uses no Gram inverse. Its mathematical statement is unchanged.",
+        "T_A records a separate native-positive-observation alternative with its own missing comparison; T_B records fixed-filter approximation as an alternative sufficient premise.",
+        "Add optional repaired C2/C3/C4, inherited controls, source-specific research dispositions, 49-requirement/WP0-WP7 crosswalk, original-100 reuse map, and complete proposed-module manifest.",
+        "Refresh current source pin and keep old and current workflow evidence separate."
+      ]
+    }
+  ],
+  "optional_extensions": [
+    {
+      "id": "OPICA2_O_C2",
+      "title": "Polynomial-growth punctured-gap classification",
+      "status": "DERIVED_PAPER_PROPOSAL_FORMALIZATION_OPEN",
+      "dependencies": [],
+      "native_dependency_ids": [],
+      "statement_contract": "For a real signed Radon measure with polynomial total-variation growth, exact distributional Fourier self-duality under exp(-2*pi*i*x*xi), zero restriction on (-1,1) minus {0}, and nonnegative off-integer restriction, prove nu=nu({0})*sum_(n in Z)delta_n. Derive evenness from Fourier-square.",
+      "proof_obligations": [
+        "Polynomial-growth-to-tempered embedding",
+        "Positive autocorrelation regularizer and both pairings",
+        "Fixed-compact convergence and positivity/Fatou support",
+        "Integer support plus Fourier self-duality implies equal comb weights"
+      ],
+      "limits": [
+        "Original linear-growth/full-origin-gap P0 theorem is not already this extension.",
+        "No generic tempered distributions or atom derivatives.",
+        "No actual native measure construction follows."
+      ],
+      "source_refs": [
+        "SRC_OPTIONAL_AMENDMENT",
+        "SRC_POST_GREEN_CORRECTION"
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_O_C3",
+      "title": "Repaired finite-stage four-cost separator and conditional native consumer",
+      "status": "PAPER_BOUND_REPAIRED_NATIVE_MAP_AND_COST_ESTIMATES_OPEN",
+      "dependencies": [],
+      "native_dependency_ids": [],
+      "definitions": "nu is a real signed Radon measure of polynomial total-variation growth with canonical Jordan parts nu_plus,nu_minus. Fourier convention exp(-2*pi*i*x*xi). Delta(x)=max(1-|x|,0), sinc(x)=sin(pi*x)/(pi*x) with sinc(0)=1. Choose real even phi in C_c^infinity, phi>=0, integral phi=1, phiTilde(x)=phi(-x), psi=phi*phiTilde, support psi subset [-epsilon,epsilon]. Set f=Delta*psi, w=sinc^2*|Fourier(phi)|^2, P=integral_(R minus Z) w dnu_plus, N=integral_(R minus Z) w dnu_minus, D=<Fourier(nu)-nu,f>. Prove all absolute pairings; normalization gives w(0)=1.",
+      "statement_contract": "Use actual polynomial-growth signed measures, autocorrelation psi supported in [-epsilon,epsilon], f=Delta*psi and w=sinc^2*|Fourier(phi)|^2. Prove P-N=D+integral f dnu-nu({0}). For punctured gap (-a,a),0<a<=1, require 0<epsilon<=1 for P<=N+|D|+(1-a)|nu|[-1,1]+epsilon|nu|[-2,2], or enlarge the last window to [-1-epsilon,1+epsilon].",
+      "regional_statement": "For R>=1,0<d<=1/2 and epsilon<=1/(2*pi*R), the same right side bounds [d^2/(pi^2*R^2)]*nu_plus({|x|<=R,dist(x,Z)>=d}).",
+      "native_consumer": "Separately construct actual nonnegative E_T,b_T,c_T and source-to-measure bound E_T<=b_T*P_epsilonT+c_T (or the regional version). Independently price all four measure costs, multipliers b_T and c_T, and any observation penalty pi^2*R_T^2/d_T^2. Subexponential upper control of these quantities gives log(1+E_T)=o(T). No literal equality E_T=exp(o(T)) and no hidden map/defect premise.",
+      "controls": [
+        "Nonzero integer comb allowed with origin mass",
+        "Positive gapped off-lattice atoms with large tested defect",
+        "Sign-changing off-lattice cancellation",
+        "Shrinking epsilon with divergent derivative/defect cost",
+        "d->0 witness near lattice",
+        "R->infinity escaping witness",
+        "CT1 atom-derivative distribution outside measure scope",
+        "Repository epsilon=4 two-atom counterexample to original bound"
+      ],
+      "source_refs": [
+        "SRC_OPTIONAL_AMENDMENT",
+        "SRC_POST_GREEN_CORRECTION",
+        "SRC_CT1_NATIVE"
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    },
+    {
+      "id": "OPICA2_O_C4",
+      "title": "Generic fixed lattice-repair corollary; reuse maximal existing actual-square theorem",
+      "status": "OPTIONAL_C2_COROLLARY_WITH_EXISTING_STRONGER_ACTUAL_SQUARE_REUSE",
+      "dependencies": [
+        "OPICA2_O_C2"
+      ],
+      "native_dependency_ids": [],
+      "statement_contract": "Under all C2 measure/gap/self-duality/positive-off-lattice hypotheses, a fixed polynomial-growth lattice correction cannot leave a nonzero positive off-lattice component. Quantify over full distributional self-duality or every shrinking regularized test.",
+      "limits": [
+        "One lattice atom can cancel one tested defect.",
+        "No epsilon-dependent unbounded repair or delta-derivative extension.",
+        "Existing square_actual_no_distribution_tempered_measure_repair already covers arbitrary locally finite complex lattice corrections with a tempered compact-pairing extension; do not weaken/rebuild it.",
+        "Retain actual square defect, origin calculation and selfdual-projection gap-fill control."
+      ],
+      "source_refs": [
+        "SRC_OPTIONAL_AMENDMENT",
+        "SRC_POST_GREEN_CORRECTION",
+        "SRC_SQUARE_DEFECT"
+      ],
+      "acceptance": {
+        "actual_lean_build": false,
+        "independent_expected_type": false,
+        "standard_axiom_audit": false,
+        "native_source_identity_checked_in_lean": false,
+        "native_domain_consumer_checked_in_lean": false,
+        "negative_controls_completed_in_lean": false,
+        "source_pinned_receipt": null
+      }
+    }
+  ],
+  "failure_control_registry": [
+    {
+      "id": "OPICA2_F01",
+      "title": "Raw small-dictionary and omitted squarefree obstruction",
+      "authority": "EXACT_PAPER_CONTROL",
+      "destination": "S01; P13-P15",
+      "scope": "Actual source; missing squarefree 2047 forces the stated lower bound.",
+      "source_refs": [
+        "SRC_ORIGINAL_RESEARCH"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F02",
+      "title": "Fixed-filter finite Euler products diverge",
+      "authority": "INHERITED_DERIVED_FAILURE",
+      "destination": "S04; S16; T_B",
+      "scope": "For actual primes M_P=product(I-p^(-1/2)D_logp), y_P=M_P(Bw) is locally Bv before log(next prime), but for each fixed 0<=epsilon<1/2 its weighted L2 norm grows at least exp(c_epsilon P^(1/2-epsilon)/log P) for all sufficiently large P. Requires the ordinary-PNT argument and a fixed transform interval. Does not refute optimized coefficients.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F03",
+      "title": "No-adjoint update is unstable",
+      "authority": "INHERITED_NUMERICAL_ENCLOSURE_NOT_RERUN",
+      "destination": "T_B",
+      "scope": "Actual A at epsilon=0 and 1/100, frequency12: Re A< -4/100 and |1-A|^2>109/100. An operator control; apply to a target only with nonzero boundary content on the unstable interval.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F04",
+      "title": "Landweber has a possible stationary residual",
+      "authority": "INHERITED_OPERATOR_DERIVATION",
+      "destination": "T_B",
+      "scope": "With f_0=0,e_n=y_epsilon-T_epsilon*f_n, correct f_(n+1)=f_n+T_epsilon^*e_n gives ||e_(n+1)||^2<=||e_n||^2-(2-(605/621)^2)||T_epsilon^*e_n||^2 and e_n->projection_(ker(T_epsilon^*))(y_epsilon). Projection zero or divergent-sum progress is OPEN. Old target -RJ*zeta_prime differs from today RJ.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F05",
+      "title": "Positive native completion not infinitely divisible",
+      "authority": "INHERITED_DERIVED_FAILURE_WITH_NORMALIZATION_ADAPTER",
+      "destination": "S12; T_B",
+      "scope": "For current A=R*zeta(z+1/2), the inverse Laplace measure of -A_prime/A is prime measure plus (exp(-t/2)+exp(-3t/2)-exp(t/2))dt, negative on (log2,log3). Every fixed probability tilt sigma>-1/2 lacks arbitrarily high positive convolution roots. Current 3/2 denominator is explicit. Not an RH or zero claim.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F06",
+      "title": "CT1 normalized limit is not order zero",
+      "authority": "EXISTING_NATIVE_THEOREM_AND_S14_PAPER_CONSEQUENCE",
+      "destination": "S14; optional C2/C3",
+      "scope": "Preserve all Schwartz tests and nonzero delta derivatives; no scalar measure repair.",
+      "source_refs": [
+        "SRC_CT1_NATIVE"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F07",
+      "title": "C3 epsilon4 counterexample",
+      "authority": "INHERITED_DERIVED_COUNTEREXAMPLE",
+      "destination": "optional C3",
+      "scope": "Retain two atoms and explicit regularizer from POST_GREEN_RESEARCH; original local-window inequality fails. Correct epsilon or window before acceptance.",
+      "source_refs": [
+        "SRC_POST_GREEN_CORRECTION"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F08",
+      "title": "Coupled Gram collisions",
+      "authority": "EXISTING_NATIVE_CONTROL",
+      "destination": "P17/P18; S17",
+      "scope": "Individual nonzero diagonal margins do not control a coupled Gram matrix at collision. Actual formal control: det(G_h)=h^2/[4*(1-h^2)]->0 while b_h^*G_h^(-1)b_h=(2-h^2)/(1-h^2)->2. Thus singularity/ill-conditioning alone does not force the source-coupled cost to diverge. Keep actual multiplicity and independent basis.",
+      "source_refs": [
+        "SRC_ORIGINAL_CONTROLS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F09",
+      "title": "Norm-first versus squared-energy error",
+      "authority": "EXISTING_NATIVE_CONTROL",
+      "destination": "S11; T_A",
+      "scope": "Cheap Type I norm may coexist with positive-rate raw squared-energy error; use actual sharp norm comparison and complete low-term correction.",
+      "source_refs": [
+        "SRC_ORIGINAL_CONTROLS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F10",
+      "title": "History recovery cost",
+      "authority": "EXISTING_NATIVE_CONTROL",
+      "destination": "S08; S17",
+      "scope": "Near-dependent observation histories can require cost proportional to 1/|epsilon|. Kernel compatibility without bounded recovery is insufficient.",
+      "source_refs": [
+        "SRC_ORIGINAL_CONTROLS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F11",
+      "title": "Positive forced Gram with nonreal spectral parameter",
+      "authority": "EXISTING_NATIVE_CONTROL",
+      "destination": "S09; boundary-amplitude lane",
+      "scope": "Positive sampling/Stieltjes Gram does not force real kappa or exclude nonreal forced resolvents.",
+      "source_refs": [
+        "SRC_ORIGINAL_CONTROLS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F12",
+      "title": "Duplicate profile and real-kappa degeneracy",
+      "authority": "EXISTING_NATIVE_AND_ELEMENTARY_CONTROLS",
+      "destination": "S09; S17",
+      "scope": "Deduplicate reflection nodes and prove actual basis independence. On the critical line the imaginary direction can vanish.",
+      "source_refs": [
+        "SRC_FINITE_SPAN_NATIVE"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F13",
+      "title": "Missing history, disconnected continuation and zero radius",
+      "authority": "EXISTING_NATIVE_CONTROL_SCOPE",
+      "destination": "S04; S08; S11",
+      "scope": "Keep every affine history, actual common connected continuation domain, nonzero radius, p*m-1 order, factorial coefficient and source/residue identity. Transform algebra alone does not bound physical observed noise.",
+      "source_refs": [
+        "SRC_NATIVE_WORDS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F14",
+      "title": "Boundary-error equality is sharp",
+      "authority": "EXISTING_NATIVE_CONTROL_SCOPE",
+      "destination": "S08; S11",
+      "scope": "Strict dual-witness margin must exceed the entire error budget; equality or zero radius cannot be silently certified.",
+      "source_refs": [
+        "SRC_NATIVE_WORDS"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F15",
+      "title": "Actual square lattice repair and gap filling",
+      "authority": "EXISTING_NATIVE_THEOREM",
+      "destination": "S09; optional C4",
+      "scope": "Reuse arbitrary locally finite complex lattice measure with tempered compact-pairing extension. Projection to a selfdual component may fill the sharp gap.",
+      "source_refs": [
+        "SRC_SQUARE_DEFECT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F16",
+      "title": "Integer-supported delta derivatives",
+      "authority": "EXISTING_NATIVE_CONTROL",
+      "destination": "S14; optional C2",
+      "scope": "Integer lattice support alone does not imply Fourier self-duality; derivative distributions are not order-zero inputs.",
+      "source_refs": [
+        "SRC_CT1_NATIVE"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F17",
+      "title": "Equal-power twins and full-line versus causal inverse",
+      "authority": "EXISTING_S12_SYNTHETIC_CONTROL",
+      "destination": "S12; T_B",
+      "scope": "Positive causal equal-power comparison has its exact synthetic status; no phase-blind or full-line-to-causal inference.",
+      "source_refs": [
+        "SRC_DEEP_SEARCH"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F18",
+      "title": "Native ordered minor",
+      "authority": "S13_DERIVED_EXACT_ARITHMETIC_REPLAYED",
+      "destination": "S13; T_D",
+      "scope": "Literal prime-plus-Archimedean gain is not TP2 on the specified rectangles; no inference about neutral compressed resolvent or signed Weil negativity.",
+      "source_refs": [
+        "SRC_NATIVE_TP2"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F19",
+      "title": "Native metric-compatible transport failure",
+      "authority": "INHERITED_DERIVED_NATIVE_FAILURE",
+      "destination": "T_D",
+      "scope": "Trace derivative is negative in the actual small-aperture expansion; the proposed global PSD-remainder transport is falsified.",
+      "source_refs": [
+        "SRC_PATH_D_DEEP"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F20",
+      "title": "Modified-prime matched system",
+      "authority": "EXISTING_RESEARCH_CONTROL",
+      "destination": "T_C; T_D; WP5",
+      "scope": "Blocks geometry-only exclusion; actual-prime arithmetic remains a distinct possible input.",
+      "source_refs": [
+        "SRC_HISTORY_AUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F21",
+      "title": "Unrestricted signed-ray failure",
+      "authority": "EXISTING_RESEARCH_CONTROL",
+      "destination": "T_A; T_C; WP6",
+      "scope": "Unrestricted-ray falsification does not prove the admissible complete signed upper.",
+      "source_refs": [
+        "SRC_REPO_REAUDIT"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F22",
+      "title": "One-test repair versus full self-duality",
+      "authority": "INHERITED_DERIVED_CONTROL",
+      "destination": "optional C3/C4",
+      "scope": "A lattice atom can cancel one scalar test; fixed full distributional self-duality is a different requirement.",
+      "source_refs": [
+        "SRC_POST_GREEN_CORRECTION"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F23",
+      "title": "Rescaling, collision and growing-span cost",
+      "authority": "EXISTING_LIMIT_AND_OPEN_UNIFORMITY",
+      "destination": "S17; optional C3",
+      "scope": "Fixed-basis norm equivalence does not control support, recovery norm, coalescing-node constants or growing dimension.",
+      "source_refs": [
+        "SRC_POSITIVE_TEST_PAPER"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F24",
+      "title": "Variable filter and separate output tail",
+      "authority": "EXISTING_S08_CONTROL",
+      "destination": "S08; P23",
+      "scope": "Compare residual with transported witness; charge coefficient growth, lag error and target output tail separately.",
+      "source_refs": [
+        "SRC_REVISED_SPEC"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    },
+    {
+      "id": "OPICA2_F25",
+      "title": "Schwartz convergence without common variation",
+      "authority": "EXISTING_NATIVE_TOPOLOGY_COUNTERCONTROL",
+      "destination": "S14; optional C2/C3",
+      "scope": "Synthetic eta_n=n*(delta_(1/n)+delta_(-1/n)-2*delta_0) tends to zero on Schwartz tests but has a nonvanishing pairing with a compactly supported continuous function equal to |x| near zero. The already proved C_c upgrade needs common local variation. This is not an actual zero-jet family.",
+      "source_refs": [
+        "SRC_CT1_NATIVE"
+      ],
+      "execution_in_this_completeness_pass": "No new Lean execution. Historical numerical controls are not represented as fresh replays."
+    }
+  ],
+  "research_lane_dispositions": [
+    {
+      "id": "L01",
+      "status": "DEFER_OPEN_FORMAL_SOURCE_BINDING_REQUIRED",
+      "title": "Autocorrelation logarithmic-window signed covariance",
+      "destination": "T_A",
+      "scope": "For fixed C>1, historical h=P^2(q*q)=q*j has Q^2, not current one-copy Q. Diagonal = ||U_h||_2^2*C*log(T)/zeta(2)+O(exp(-T/2)*T^(C/2)). Missing leaf: for every epsilon>0 and R>0 exists T>=R with signed offdiagonal O_C(T)<=exp(epsilon*T), composed with the same-source full rate theorem. The paper convolution identity already exists; formal transfer must bind the exact observations and enlarged horizon. Upper transfer j to h is one-way, no bounded reverse.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ]
+    },
+    {
+      "id": "L02",
+      "status": "DEFER_OPEN_SOURCE_ADAPTER_REQUIRED",
+      "title": "Suzuki local orbit on a fixed frequency interval",
+      "destination": "T_B",
+      "scope": "Original actual-source orbit on [1,2] has retained exponential type and exact work. Its independent subexponential bound is OPEN. Retain lossless-but-unstable, anticausal, theta-residual, symmetric-not-Hermitian and nonanalytic controls.",
+      "source_refs": [
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L03",
+      "status": "DEFER_OPEN_SOURCE_ADAPTER_REQUIRED",
+      "title": "Corrected prime-prefix OPEN-X",
+      "destination": "T_A/T_B",
+      "scope": "G_X=F_1X-B_X+F_ge2 with escaping continuum pulse and all prime powers. For every fixed epsilon in (0,1/2),eta>0, seek global residual O(X^eta). Zero convergence is unnecessary; ordinary PNT o(X^(1/2-epsilon)) is insufficient. Historical autocorrelation source remains distinct.",
+      "source_refs": [
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L04",
+      "status": "DEFER_OPEN_INDEPENDENT_CONSTRAINT",
+      "title": "Forced-profile boundary amplitude and actual sampling",
+      "destination": "S09/S10/S17",
+      "scope": "Existing boundaryAmplitude(rho)=zeta(rho)/b_rho and plateau iff zeta zero; seek an independent incompatible right-strip constraint. Do not infer from positive spectral density or sample Gram. General-parameter profile need not be L1; actual-zero cancellation yields the L1 profile. Real-spectrum quotients need their separate removable-zero proof.",
+      "source_refs": [
+        "SRC_REPO_REAUDIT",
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L05",
+      "status": "DEFER_OPEN",
+      "title": "Full-contact critical-line representer/cardinal annihilation",
+      "destination": "T_C",
+      "scope": "Exact exterior pairing annihilation on a superlinear distinct set of simple critical ordinates remains OPEN. Retain true fixed-aperture domain, source and compactness; no local-PSD or finite-sample replacement.",
+      "source_refs": [
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L06",
+      "status": "DEFER_RETAINED_ALTERNATIVES",
+      "title": "R002 unmasking and RES/TAIL/COFINAL outputs",
+      "destination": "terminal_target_logic",
+      "scope": "Global pair unmasking is not supplied by a block negative-index theorem. RES,TAIL,COFINAL are alternatives. COFINAL preserves exists L before forall K at each cofinal radius; TAIL uses one common threshold. No common finite cutoff requirement.",
+      "source_refs": [
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L07",
+      "status": "DEFER_OPTIONAL",
+      "title": "Finite-rank recovery with infinite-dimensional input",
+      "destination": "S08/S17",
+      "scope": "Current exact recovery API assumes finite-dimensional input. Generalization through a finite-dimensional observation range needs a separate boundedness proof; kernel inclusion alone is insufficient.",
+      "source_refs": [
+        "SRC_NATIVE_RECOVERY"
+      ]
+    },
+    {
+      "id": "L08",
+      "status": "DEFER_OPEN_UNIFORM_ESTIMATES",
+      "title": "Weighted-mixture endpoint and growing zero-jet spans",
+      "destination": "S17; optional C2/C3",
+      "scope": "Strict weight a>1/2 cannot be extended to a=1/2 by assertion. Growing/coalescing spans need common variation, actual multiplicity and source/recovery costs.",
+      "source_refs": [
+        "SRC_REPO_REAUDIT"
+      ]
+    },
+    {
+      "id": "L09",
+      "status": "DEFER_OPTIONAL_STRATEGY",
+      "title": "Moving sextic high-conductor OPEN-S",
+      "destination": "T_A",
+      "scope": "Alternative older route; not required for the fixed two-factor consumer. MS1 is already original full-scope infrastructure to reuse, not a new optional replacement root. If revived, test whether the all-row/nonreal-character OPEN-S assertion is stronger than zeta RH; retain complete signed rows, masks, conductor conditions, repeated-prime terms and uniformity in growing parameters. MS1 alone does not discharge these.",
+      "source_refs": [
+        "SRC_DRIVE_REAUDIT"
+      ]
+    },
+    {
+      "id": "L10",
+      "status": "DEFER_REUSABLE_ESTIMATES",
+      "title": "Contact and selected-ground quantitative adapters",
+      "destination": "T_C/T_D",
+      "scope": "Same-interval forcing, full-future Green refinement, strict-even inverse comparison gamma>=p/(2K), exact compact-pair horizon and low-nullity repair control retain their source-specific hypotheses. No small same-state trial excess r_f/gamma follows automatically.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ]
+    },
+    {
+      "id": "L11",
+      "status": "NO_AGGREGATE_CLOSURE_FROM_UNIFORM_CONSTANTS",
+      "title": "Three-unit-axis summation limitation",
+      "destination": "T_A",
+      "scope": "57/25 is a subtrace exponent. Historical row counting still gives best aggregate exponent25/8>5/2 even with uniform individual constants; the complete mixed/complement estimate is missing.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ]
+    },
+    {
+      "id": "L12",
+      "status": "HISTORICAL_BENCHMARK_UNVERIFIED",
+      "title": "Baiying Liu October12 stronger numerical ceiling",
+      "destination": "external-benchmark register; not X01",
+      "scope": "Supplied manuscript2610.12234v2 Theorem27.1 claims Re rho<=B=(18*xi+7)/(18*xi+9)=0.87495701942009894612860385056145..., where xi in(0.38858,0.38859) solves1188xi^3-2160xi^2+171xi+190=0. Audit expressly did not inspect/rebuild its separate Lean proof. Corresponding Theta ceiling0.374957... is conditional on verified import. The unrelated Oct11 liu_scalar_fresh receipts do not verify this claim. Keep independently source-checked external7/8 lane X01 unchanged.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT",
+        "SRC_LIU_REPORTED_MANUSCRIPT"
+      ]
+    },
+    {
+      "id": "L13",
+      "status": "OUT_OF_SCOPE_AS_NATIVE_PREMISE",
+      "title": "Cross-framework positive metrics and audit frameworks",
+      "destination": "methodology only",
+      "scope": "QREG/ESET/Permansson/MCM/OODA/RACR may suggest methods or checks. No automatic equality to the signed native source/form, and no positivity transfer without proof.",
+      "source_refs": [
+        "SRC_PROJECT_REAUDIT"
+      ]
+    }
+  ],
+  "source_model_crosswalk": [
+    {
+      "id": "SOURCE_OLD_B02_B04",
+      "source": "h=(D^2-1/4)^2(q*q), transform H has Q^2",
+      "rational_factor": "R_old=(z-1/2)/[(z+1/2)(z+1)]",
+      "target": "-R_old*H*zeta_prime",
+      "adapter": "Paper h=q*j; contraction transfers suitable j upper bounds to h with the correct horizon enlargement, not conversely."
+    },
+    {
+      "id": "SOURCE_TRIANGLE_OCT13",
+      "source": "j=(D^2-1/4)^2 q, one Q",
+      "rational_factor": "R=(z-1/2)/[(z+1/2)(z+3/2)]",
+      "target": "-R*J*zeta_prime",
+      "adapter": "Multiplying both old operator and old input by (z+1)/(z+3/2) is boundedly causally invertible for nonnegative damping. This changes normalization, not the target numerator."
+    },
+    {
+      "id": "SOURCE_ROUND2_OCT25",
+      "source": "jPlus is literal delayed j, one Q",
+      "rational_factor": "R=(z-1/2)/[(z+1/2)(z+3/2)]",
+      "target": "V=R*JPlus, dictionary W=R*JPlus*zeta",
+      "adapter": "This new probe has no zeta-prime numerator. Establish its own nonvanishing/Laplace/source identities."
+    }
+  ],
+  "existing_reuse_dispositions": [
+    {
+      "id": "REUSE_C1",
+      "source": "Zeta23/OPICAFollowup/NormFirstTransfer.lean",
+      "roots": [
+        "sharp_norm_first_arsinh_bound",
+        "sharp_norm_first_scalar_attained",
+        "sharp_norm_first_log_comparison"
+      ],
+      "disposition": "Reuse strongest seminormed-group statement, scalar equality and positive-part/low-term companion; not a new missing root."
+    },
+    {
+      "id": "REUSE_CT1",
+      "source": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "disposition": "For 0<L<log2, positive sinc mass=2*exp(-L/2)*(1-exp(-L)); negative sinc mass zero; mass/L->2 and mass/L^2->infinity. Normalized local variation also diverges. Sinc squared is not Schwartz; use existing integrability/limit proof. Atoms at plus/minus exp(-L) violate the exact unit gap."
+    },
+    {
+      "id": "REUSE_CC_TOPOLOGY",
+      "source": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "disposition": "Controlled near-gap theorem already extends to continuous compact tests under its common variation premise. Retain the synthetic countercontrol F25."
+    },
+    {
+      "id": "REUSE_SQUARE",
+      "source": "Zeta23/OPICAFollowup/SquareDefect.lean",
+      "disposition": {
+        "roots": [
+          "square_actual_no_distribution_tempered_measure_repair",
+          "square_actual_no_selfdual_and_distribution_tempered_measure_repair"
+        ],
+        "scope": "Existing actual square result accepts arbitrary locally finite complex lattice measure plus a tempered distribution extending compact-test pairing; no total-variation-growth or global Schwartz-integrability premise is needed. Reuse this maximal scope.",
+        "limit": "This compiled single-square barrier does not automatically formalize the new arbitrary finite quadratic theorem S09 or generic C2/C4."
+      }
+    },
+    {
+      "id": "REUSE_CANONICAL_PAIR",
+      "source": "Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
+      "disposition": "Existing actual strict-strip/nonreal-kappa pair independence and weighted off-lattice negative-mass budget. No high-height, simple-zero, effective positive-test or uniform recovery claim."
+    },
+    {
+      "id": "REUSE_UNDAMPED",
+      "source": "Zeta23/CCM/NativeDampedCompletionOperator.lean",
+      "disposition": "Reuse genuine epsilon>=0 bounded causal L2 operator and norm<605/621, then instantiate the new target explicitly. A(1/2)=1/2 is removable, not a zero."
+    }
+  ],
+  "proposed_module_manifest": [
+    {
+      "path": "Zeta23/OPICARound2/CausalProbe.lean",
+      "contract_ids": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03",
+        "OPICA2_P04",
+        "OPICA2_P05"
+      ],
+      "build_slice": "CORE_M1",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/CausalProbe.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/ProbeGram.lean",
+      "contract_ids": [
+        "OPICA2_P06",
+        "OPICA2_P07",
+        "OPICA2_P08",
+        "OPICA2_P09",
+        "OPICA2_P10",
+        "OPICA2_P11",
+        "OPICA2_P12",
+        "OPICA2_S02"
+      ],
+      "build_slice": "GENERAL_M4",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/ProbeGram.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/TruncationControls.lean",
+      "contract_ids": [
+        "OPICA2_P13",
+        "OPICA2_P14",
+        "OPICA2_P15",
+        "OPICA2_P16",
+        "OPICA2_S01",
+        "OPICA2_S03",
+        "OPICA2_S07"
+      ],
+      "build_slice": "CONTROLS_M3",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/TruncationControls.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/DualCertificates.lean",
+      "contract_ids": [
+        "OPICA2_P17",
+        "OPICA2_P18"
+      ],
+      "build_slice": "OPTIONAL_MULTI_ZERO",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/DualCertificates.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/CertifiedEvaluation.lean",
+      "contract_ids": [
+        "OPICA2_P19",
+        "OPICA2_P23",
+        "OPICA2_S08"
+      ],
+      "build_slice": "GENERAL_M3_M4",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/CertifiedEvaluation.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/ClassicalAdapter.lean",
+      "contract_ids": [
+        "OPICA2_P20"
+      ],
+      "build_slice": "EXACT_ADAPTER",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/ClassicalAdapter.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/FixedFilter.lean",
+      "contract_ids": [
+        "OPICA2_S04",
+        "OPICA2_S16"
+      ],
+      "build_slice": "CORE_M2",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/FixedFilter.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/FilteredClassicalComparison.lean",
+      "contract_ids": [
+        "OPICA2_S05"
+      ],
+      "build_slice": "CORE_M2",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/FilteredClassicalComparison.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/FiniteFilteredBaseline.lean",
+      "contract_ids": [
+        "OPICA2_S06"
+      ],
+      "build_slice": "CORE_M2",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/FiniteFilteredBaseline.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/RegionalCertificates.lean",
+      "contract_ids": [
+        "OPICA2_P21",
+        "OPICA2_P22"
+      ],
+      "build_slice": "GENERAL_M4",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/RegionalCertificates.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/ClassicalTransfer.lean",
+      "contract_ids": [
+        "OPICA2_P24",
+        "OPICA2_P25"
+      ],
+      "build_slice": "OPTIONAL_GENUINE_CLASSICAL_IMPORT",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/ClassicalTransfer.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/ProfileControls.lean",
+      "contract_ids": [
+        "OPICA2_S09",
+        "OPICA2_S10",
+        "OPICA2_S17"
+      ],
+      "build_slice": "PARALLEL_PROFILE",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/ProfileControls.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/NativeCuts.lean",
+      "contract_ids": [
+        "OPICA2_S11"
+      ],
+      "build_slice": "PARALLEL_ARITHMETIC",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/NativeCuts.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/SyntheticControls.lean",
+      "contract_ids": [
+        "OPICA2_S12"
+      ],
+      "build_slice": "CONTROLS",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/SyntheticControls.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/NativeJumpControls.lean",
+      "contract_ids": [
+        "OPICA2_S13"
+      ],
+      "build_slice": "CONTROLS",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/NativeJumpControls.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/CT1Controls.lean",
+      "contract_ids": [
+        "OPICA2_S14"
+      ],
+      "build_slice": "CONTROLS",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/CT1Controls.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/FiniteNeutralApproximation.lean",
+      "contract_ids": [
+        "OPICA2_S15"
+      ],
+      "build_slice": "PARALLEL_D_PRODUCER",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/FiniteNeutralApproximation.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/OptionalPolynomialGap.lean",
+      "contract_ids": [
+        "OPICA2_O_C2"
+      ],
+      "build_slice": "OPTIONAL_RESEARCH",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/OptionalPolynomialGap.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/OptionalFourCost.lean",
+      "contract_ids": [
+        "OPICA2_O_C3"
+      ],
+      "build_slice": "OPTIONAL_RESEARCH",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/OptionalFourCost.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/OptionalLatticeRepair.lean",
+      "contract_ids": [
+        "OPICA2_O_C4"
+      ],
+      "build_slice": "OPTIONAL_RESEARCH",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/OptionalLatticeRepair.lean"
+    },
+    {
+      "path": "Zeta23/OPICARound2/OptionalExternalTransfer.lean",
+      "contract_ids": [
+        "OPICA2_X01"
+      ],
+      "build_slice": "OPTIONAL_EXTERNAL",
+      "status": "PROPOSED_PATH_NOT_CREATED",
+      "independent_consumer": "Zeta23/OPICARound2/Validation/OptionalExternalTransfer.lean"
+    }
+  ],
+  "proposed_umbrella_modules": [
+    {
+      "path": "Zeta23/OPICARound2.lean",
+      "scope": "Core actual-source and fixed-filter finite baseline only; no optional classical-import dependency."
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation.lean",
+      "scope": "Selected-slice independently stated expected types and physical-domain consumers; no existence premise manufactured by a wrapper."
+    },
+    {
+      "path": "Zeta23/OPICARound2/OptionalResearch.lean",
+      "scope": "Opt-in optional targets and genuinely proved imports; never axiomatic stubs."
+    }
+  ],
+  "terminal_implementation_policy": "T_A-T_D are open mathematical research statements, not Lean declarations to implement with assumptions equal to the desired conclusion. Only independently proved sufficient consumers may be exported.",
+  "traceability": {
+    "original_100_roots": "round2_completeness/repo_root_reuse_crosswalk.json",
+    "original_49_requirements": "round2_completeness/project_requirements_49_crosswalk.json",
+    "retained_WP0_WP7": "round2_completeness/wp0_wp7_carry_forward.json",
+    "all_40_project_files": "round2_completeness/project_findings.json",
+    "live_drive_metadata_diff": "round2_completeness/drive_inventory_diff.json",
+    "expanded_drive_reading": "round2_completeness/drive_expanded_reading_ledger.json",
+    "all_review_findings_disposition": "round2_completeness/disposition_matrix.json",
+    "naming": "Historical requirements Track B is mainly current first-boundary Path D/C, and is distinct from both current causal Path B and older CI Tracks A-D.",
+    "logical_scope": "The49 requirements have mixed applicability. A successful route completes its used subgraph, not all alternative routes. Deferred engineering scope remains visible independently."
+  }
+}

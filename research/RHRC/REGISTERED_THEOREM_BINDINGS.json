@@ -1572,6 +1572,206 @@
       "id": "OPICA_FOLLOWUP_ACTUAL_FORCE_SAMPLING_CONSUMER",
       "theorem": "Zeta23.OPICAFollowup.actual_force_sampling_consumer",
       "source": "Zeta23/OPICAFollowup/Consumers.lean"
+    },
+    {
+      "id": "OPICA2_P01",
+      "theorem": "Zeta23.OPICARound2.delayed_original_source",
+      "source": "Zeta23/OPICARound2/CausalProbe.lean"
+    },
+    {
+      "id": "OPICA2_P02",
+      "theorem": "Zeta23.OPICARound2.native_probe_transforms",
+      "source": "Zeta23/OPICARound2/CausalProbe.lean"
+    },
+    {
+      "id": "OPICA2_P03",
+      "theorem": "Zeta23.OPICARound2.native_probe_integer_action",
+      "source": "Zeta23/OPICARound2/CausalProbe.lean"
+    },
+    {
+      "id": "OPICA2_P04",
+      "theorem": "Zeta23.OPICARound2.native_probe_zero_separation",
+      "source": "Zeta23/OPICARound2/CausalProbe.lean"
+    },
+    {
+      "id": "OPICA2_P05",
+      "theorem": "Zeta23.OPICARound2.rh_of_native_probe_range",
+      "source": "Zeta23/OPICARound2/CausalProbe.lean"
+    },
+    {
+      "id": "OPICA2_P06",
+      "theorem": "Zeta23.OPICARound2.probe_tail_and_correlation",
+      "source": "Zeta23/OPICARound2/ProbeGram.lean"
+    },
+    {
+      "id": "OPICA2_P07",
+      "theorem": "Zeta23.OPICARound2.probe_target_column",
+      "source": "Zeta23/OPICARound2/ProbeGram.lean"
+    },
+    {
+      "id": "OPICA2_P08",
+      "theorem": "Zeta23.OPICARound2.probe_finite_gram_positive",
+      "source": "Zeta23/OPICARound2/ProbeGram.lean"
+    },
+    {
+      "id": "OPICA2_P09",
+      "theorem": "Zeta23.OPICARound2.probe_schur_error",
+      "source": "Zeta23/OPICARound2/ProbeGram.lean"
+    },
+    {
+      "id": "OPICA2_P10",
+      "theorem": "Zeta23.OPICARound2.probe_monotone_innovation",
+      "source": "Zeta23/OPICARound2/ProbeGram.lean"
+    },
+    {
+      "id": "OPICA2_P11",
+      "theorem": "Zeta23.OPICARound2.probe_dirichlet_norm",
+      "source": "Zeta23/OPICARound2/ProbeGram.lean"
+    },
+    {
+      "id": "OPICA2_P12",
+      "theorem": "Zeta23.OPICARound2.rh_of_probe_error_limit",
+      "source": "Zeta23/OPICARound2/ProbeGram.lean"
+    },
+    {
+      "id": "OPICA2_P13",
+      "theorem": "Zeta23.OPICARound2.native_mobius_probe_inverse",
+      "source": "Zeta23/OPICARound2/TruncationControls.lean"
+    },
+    {
+      "id": "OPICA2_P14",
+      "theorem": "Zeta23.OPICARound2.integer_partial_divergence_and_safe_cutoff",
+      "source": "Zeta23/OPICARound2/TruncationControls.lean"
+    },
+    {
+      "id": "OPICA2_P15",
+      "theorem": "Zeta23.OPICARound2.mobius_partial_zero_barrier",
+      "source": "Zeta23/OPICARound2/TruncationControls.lean"
+    },
+    {
+      "id": "OPICA2_P16",
+      "theorem": "Zeta23.OPICARound2.noncausal_probe_leakage",
+      "source": "Zeta23/OPICARound2/TruncationControls.lean"
+    },
+    {
+      "id": "OPICA2_P17",
+      "theorem": "Zeta23.OPICARound2.laplace_jet_gram",
+      "source": "Zeta23/OPICARound2/DualCertificates.lean"
+    },
+    {
+      "id": "OPICA2_P18",
+      "theorem": "Zeta23.OPICARound2.simultaneous_zero_distance",
+      "source": "Zeta23/OPICARound2/DualCertificates.lean"
+    },
+    {
+      "id": "OPICA2_P19",
+      "theorem": "Zeta23.OPICARound2.finite_residual_certificate",
+      "source": "Zeta23/OPICARound2/CertifiedEvaluation.lean"
+    },
+    {
+      "id": "OPICA2_P20",
+      "theorem": "Zeta23.OPICARound2.native_compact_muntz_adapter",
+      "source": "Zeta23/OPICARound2/ClassicalAdapter.lean"
+    },
+    {
+      "id": "OPICA2_P21",
+      "theorem": "Zeta23.OPICARound2.native_product_box_margin",
+      "source": "Zeta23/OPICARound2/RegionalCertificates.lean"
+    },
+    {
+      "id": "OPICA2_P22",
+      "theorem": "Zeta23.OPICARound2.zero_region_of_finite_probe_certificate",
+      "source": "Zeta23/OPICARound2/RegionalCertificates.lean"
+    },
+    {
+      "id": "OPICA2_P23",
+      "theorem": "Zeta23.OPICARound2.native_source_prefix_error",
+      "source": "Zeta23/OPICARound2/CertifiedEvaluation.lean"
+    },
+    {
+      "id": "OPICA2_S01",
+      "theorem": "Zeta23.OPICARound2.native_dictionary_prefix_rigidity",
+      "source": "Zeta23/OPICARound2/TruncationControls.lean"
+    },
+    {
+      "id": "OPICA2_S02",
+      "theorem": "Zeta23.OPICARound2.native_probe_pole_moment_constraints",
+      "source": "Zeta23/OPICARound2/ProbeGram.lean"
+    },
+    {
+      "id": "OPICA2_S03",
+      "theorem": "Zeta23.OPICARound2.native_completed_output_bernoulli_tail",
+      "source": "Zeta23/OPICARound2/TruncationControls.lean"
+    },
+    {
+      "id": "OPICA2_S04",
+      "theorem": "Zeta23.OPICARound2.native_probe_fixed_stable_filter",
+      "source": "Zeta23/OPICARound2/FixedFilter.lean"
+    },
+    {
+      "id": "OPICA2_S05",
+      "theorem": "Zeta23.OPICARound2.filtered_probe_classical_comparison",
+      "source": "Zeta23/OPICARound2/FilteredClassicalComparison.lean"
+    },
+    {
+      "id": "OPICA2_S06",
+      "theorem": "Zeta23.OPICARound2.filtered_four_column_region_certificate",
+      "source": "Zeta23/OPICARound2/FiniteFilteredBaseline.lean"
+    },
+    {
+      "id": "OPICA2_S07",
+      "theorem": "Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost",
+      "source": "Zeta23/OPICARound2/TruncationControls.lean"
+    },
+    {
+      "id": "OPICA2_S08",
+      "theorem": "Zeta23.OPICARound2.native_probe_adaptive_error_budgets",
+      "source": "Zeta23/OPICARound2/CertifiedEvaluation.lean"
+    },
+    {
+      "id": "OPICA2_S09",
+      "theorem": "Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction",
+      "source": "Zeta23/OPICARound2/ProfileControls.lean"
+    },
+    {
+      "id": "OPICA2_S10",
+      "theorem": "Zeta23.OPICARound2.fixed_imaginary_direction_positive_test_margin",
+      "source": "Zeta23/OPICARound2/ProfileControls.lean"
+    },
+    {
+      "id": "OPICA2_S11",
+      "theorem": "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
+      "source": "Zeta23/OPICARound2/NativeCuts.lean"
+    },
+    {
+      "id": "OPICA2_S12",
+      "theorem": "Zeta23.OPICARound2.positive_equal_power_causal_twins",
+      "source": "Zeta23/OPICARound2/SyntheticControls.lean"
+    },
+    {
+      "id": "OPICA2_S13",
+      "theorem": "Zeta23.OPICARound2.native_jump_gain_negative_ordered_minor",
+      "source": "Zeta23/OPICARound2/NativeJumpControls.lean"
+    },
+    {
+      "id": "OPICA2_S14",
+      "theorem": "Zeta23.OPICARound2.ct1_scalar_limit_classification",
+      "source": "Zeta23/OPICARound2/CT1Controls.lean"
+    },
+    {
+      "id": "OPICA2_S15",
+      "theorem": "Zeta23.OPICARound2.finite_pole_neutral_approximation",
+      "source": "Zeta23/OPICARound2/FiniteNeutralApproximation.lean"
+    },
+    {
+      "id": "OPICA2_S16",
+      "theorem": "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation",
+      "source": "Zeta23/OPICARound2/FixedFilter.lean"
+    },
+    {
+      "id": "OPICA2_S17",
+      "theorem": "Zeta23.OPICARound2.phase_complete_positive_test_observability",
+      "source": "Zeta23/OPICARound2/ProfileControls.lean"
     }
   ],
   "candidate_scope": "OPEN_CANDIDATE_BINDINGS_AUDIT_ONLY_NOT_PROVED_AUTHORITY",

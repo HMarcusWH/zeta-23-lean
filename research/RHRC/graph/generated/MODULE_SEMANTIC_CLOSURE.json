@@ -142,7 +142,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 14,
+      "compiler_dependency_surface_declaration_count": 15,
       "file_id": "rh:file:Zeta23/Analytic/RectangleLogDeriv.lean",
       "module": "Zeta23.Analytic.RectangleLogDeriv",
       "module_id": "rh:module:Zeta23.Analytic.RectangleLogDeriv",
@@ -1686,7 +1686,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 25,
+      "compiler_dependency_surface_declaration_count": 27,
       "file_id": "rh:file:Zeta23/CCM/CanonicalSourceMomentAtoms.lean",
       "module": "Zeta23.CCM.CanonicalSourceMomentAtoms",
       "module_id": "rh:module:Zeta23.CCM.CanonicalSourceMomentAtoms",
@@ -3212,7 +3212,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 23,
+      "compiler_dependency_surface_declaration_count": 22,
       "file_id": "rh:file:Zeta23/CCM/DictionaryTentMollifier.lean",
       "module": "Zeta23.CCM.DictionaryTentMollifier",
       "module_id": "rh:module:Zeta23.CCM.DictionaryTentMollifier",
@@ -4760,7 +4760,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 6,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/NativeCausalAdjointZeroJets.lean",
       "module": "Zeta23.CCM.NativeCausalAdjointZeroJets",
       "module_id": "rh:module:Zeta23.CCM.NativeCausalAdjointZeroJets",
@@ -4864,7 +4864,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 23,
+      "compiler_dependency_surface_declaration_count": 24,
       "file_id": "rh:file:Zeta23/CCM/NativeCompletedInput.lean",
       "module": "Zeta23.CCM.NativeCompletedInput",
       "module_id": "rh:module:Zeta23.CCM.NativeCompletedInput",
@@ -4916,7 +4916,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 7,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/NativeCompletionComplexLaplace.lean",
       "module": "Zeta23.CCM.NativeCompletionComplexLaplace",
       "module_id": "rh:module:Zeta23.CCM.NativeCompletionComplexLaplace",
@@ -5228,7 +5228,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 9,
+      "compiler_dependency_surface_declaration_count": 10,
       "file_id": "rh:file:Zeta23/CCM/NativePositiveCompletion.lean",
       "module": "Zeta23.CCM.NativePositiveCompletion",
       "module_id": "rh:module:Zeta23.CCM.NativePositiveCompletion",
@@ -7694,7 +7694,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 8,
+      "compiler_dependency_surface_declaration_count": 11,
       "file_id": "rh:file:Zeta23/CCM/SourceSignCountermodels.lean",
       "module": "Zeta23.CCM.SourceSignCountermodels",
       "module_id": "rh:module:Zeta23.CCM.SourceSignCountermodels",
@@ -8002,7 +8002,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 10,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincDetectorBounds.lean",
       "module": "Zeta23.CCM.UniversalSincDetectorBounds",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincDetectorBounds",
@@ -8067,7 +8067,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 2,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceCharacteristic.lean",
       "module": "Zeta23.CCM.UniversalSincSourceCharacteristic",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceCharacteristic",
@@ -8106,7 +8106,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 8,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceDensityIdentification.lean",
       "module": "Zeta23.CCM.UniversalSincSourceDensityIdentification",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceDensityIdentification",
@@ -8145,7 +8145,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 19,
+      "compiler_dependency_surface_declaration_count": 21,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceLaw.lean",
       "module": "Zeta23.CCM.UniversalSincSourceLaw",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceLaw",
@@ -9292,7 +9292,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 13,
+      "compiler_dependency_surface_declaration_count": 14,
       "file_id": "rh:file:Zeta23/ExceptionalZero/NativeActualInputZeroJets.lean",
       "module": "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
       "module_id": "rh:module:Zeta23.ExceptionalZero.NativeActualInputZeroJets",
@@ -10508,7 +10508,7 @@
       "trust_zone": "UPSTREAM_DERIVED"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/FromPNTPlus/ZetaConj.lean",
       "module": "Zeta23.FromPNTPlus.ZetaConj",
       "module_id": "rh:module:Zeta23.FromPNTPlus.ZetaConj",
@@ -10634,7 +10634,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 4,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/Hypotheses.lean",
       "module": "Zeta23.Hypotheses",
       "module_id": "rh:module:Zeta23.Hypotheses",
@@ -11202,7 +11202,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 56,
+      "compiler_dependency_surface_declaration_count": 57,
       "file_id": "rh:file:Zeta23/OPICA/SignedHeatSeparator.lean",
       "module": "Zeta23.OPICA.SignedHeatSeparator",
       "module_id": "rh:module:Zeta23.OPICA.SignedHeatSeparator",
@@ -11293,7 +11293,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 49,
+      "compiler_dependency_surface_declaration_count": 48,
       "file_id": "rh:file:Zeta23/OPICAFollowup/BoundaryAmplitude.lean",
       "module": "Zeta23.OPICAFollowup.BoundaryAmplitude",
       "module_id": "rh:module:Zeta23.OPICAFollowup.BoundaryAmplitude",
@@ -11306,7 +11306,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 194,
+      "compiler_dependency_surface_declaration_count": 195,
       "file_id": "rh:file:Zeta23/OPICAFollowup/CoPoissonJets.lean",
       "module": "Zeta23.OPICAFollowup.CoPoissonJets",
       "module_id": "rh:module:Zeta23.OPICAFollowup.CoPoissonJets",
@@ -11384,7 +11384,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 102,
+      "compiler_dependency_surface_declaration_count": 110,
       "file_id": "rh:file:Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
       "module": "Zeta23.OPICAFollowup.FiniteSpanSeparation",
       "module_id": "rh:module:Zeta23.OPICAFollowup.FiniteSpanSeparation",
@@ -11605,7 +11605,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 164,
+      "compiler_dependency_surface_declaration_count": 165,
       "file_id": "rh:file:Zeta23/OPICAFollowup/NearGapLimits.lean",
       "module": "Zeta23.OPICAFollowup.NearGapLimits",
       "module_id": "rh:module:Zeta23.OPICAFollowup.NearGapLimits",
@@ -11709,7 +11709,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 44,
+      "compiler_dependency_surface_declaration_count": 72,
       "file_id": "rh:file:Zeta23/OPICAFollowup/SquareDefect.lean",
       "module": "Zeta23.OPICAFollowup.SquareDefect",
       "module_id": "rh:module:Zeta23.OPICAFollowup.SquareDefect",
@@ -11798,6 +11798,461 @@
       "registered_root_count": 1,
       "standalone_role": "OPICA_GENERIC_FORMALIZATION",
       "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2.lean",
+      "module": "Zeta23.OPICARound2",
+      "module_id": "rh:module:Zeta23.OPICARound2",
+      "named_source_declaration_count": 0,
+      "path": "Zeta23/OPICARound2.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_MINIMAL_MATHEMATICAL_FACADE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/All.lean",
+      "module": "Zeta23.OPICARound2.All",
+      "module_id": "rh:module:Zeta23.OPICARound2.All",
+      "named_source_declaration_count": 0,
+      "path": "Zeta23/OPICARound2/All.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_REQUIRED_CORE_MATHEMATICAL_FACADE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 2,
+      "file_id": "rh:file:Zeta23/OPICARound2/CT1Controls.lean",
+      "module": "Zeta23.OPICARound2.CT1Controls",
+      "module_id": "rh:module:Zeta23.OPICARound2.CT1Controls",
+      "named_source_declaration_count": 5,
+      "path": "Zeta23/OPICARound2/CT1Controls.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "OPICA2_ADVERSARIAL_FORMAL_CONTROLS",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 127,
+      "file_id": "rh:file:Zeta23/OPICARound2/CausalProbe.lean",
+      "module": "Zeta23.OPICARound2.CausalProbe",
+      "module_id": "rh:module:Zeta23.OPICARound2.CausalProbe",
+      "named_source_declaration_count": 109,
+      "path": "Zeta23/OPICARound2/CausalProbe.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 5,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 291,
+      "file_id": "rh:file:Zeta23/OPICARound2/CertifiedEvaluation.lean",
+      "module": "Zeta23.OPICARound2.CertifiedEvaluation",
+      "module_id": "rh:module:Zeta23.OPICARound2.CertifiedEvaluation",
+      "named_source_declaration_count": 249,
+      "path": "Zeta23/OPICARound2/CertifiedEvaluation.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 3,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 93,
+      "file_id": "rh:file:Zeta23/OPICARound2/ClassicalAdapter.lean",
+      "module": "Zeta23.OPICARound2.ClassicalAdapter",
+      "module_id": "rh:module:Zeta23.OPICARound2.ClassicalAdapter",
+      "named_source_declaration_count": 86,
+      "path": "Zeta23/OPICARound2/ClassicalAdapter.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 162,
+      "file_id": "rh:file:Zeta23/OPICARound2/DualCertificates.lean",
+      "module": "Zeta23.OPICARound2.DualCertificates",
+      "module_id": "rh:module:Zeta23.OPICARound2.DualCertificates",
+      "named_source_declaration_count": 133,
+      "path": "Zeta23/OPICARound2/DualCertificates.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 2,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 37,
+      "file_id": "rh:file:Zeta23/OPICARound2/FilteredClassicalComparison.lean",
+      "module": "Zeta23.OPICARound2.FilteredClassicalComparison",
+      "module_id": "rh:module:Zeta23.OPICARound2.FilteredClassicalComparison",
+      "named_source_declaration_count": 43,
+      "path": "Zeta23/OPICARound2/FilteredClassicalComparison.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 94,
+      "file_id": "rh:file:Zeta23/OPICARound2/FiniteFilteredBaseline.lean",
+      "module": "Zeta23.OPICARound2.FiniteFilteredBaseline",
+      "module_id": "rh:module:Zeta23.OPICARound2.FiniteFilteredBaseline",
+      "named_source_declaration_count": 75,
+      "path": "Zeta23/OPICARound2/FiniteFilteredBaseline.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 46,
+      "file_id": "rh:file:Zeta23/OPICARound2/FiniteNeutralApproximation.lean",
+      "module": "Zeta23.OPICARound2.FiniteNeutralApproximation",
+      "module_id": "rh:module:Zeta23.OPICARound2.FiniteNeutralApproximation",
+      "named_source_declaration_count": 51,
+      "path": "Zeta23/OPICARound2/FiniteNeutralApproximation.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 168,
+      "file_id": "rh:file:Zeta23/OPICARound2/FixedFilter.lean",
+      "module": "Zeta23.OPICARound2.FixedFilter",
+      "module_id": "rh:module:Zeta23.OPICARound2.FixedFilter",
+      "named_source_declaration_count": 138,
+      "path": "Zeta23/OPICARound2/FixedFilter.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 2,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 24,
+      "file_id": "rh:file:Zeta23/OPICARound2/NativeCuts.lean",
+      "module": "Zeta23.OPICARound2.NativeCuts",
+      "module_id": "rh:module:Zeta23.OPICARound2.NativeCuts",
+      "named_source_declaration_count": 21,
+      "path": "Zeta23/OPICARound2/NativeCuts.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 26,
+      "file_id": "rh:file:Zeta23/OPICARound2/NativeJumpControls.lean",
+      "module": "Zeta23.OPICARound2.NativeJumpControls",
+      "module_id": "rh:module:Zeta23.OPICARound2.NativeJumpControls",
+      "named_source_declaration_count": 44,
+      "path": "Zeta23/OPICARound2/NativeJumpControls.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "OPICA2_ADVERSARIAL_FORMAL_CONTROLS",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 205,
+      "file_id": "rh:file:Zeta23/OPICARound2/ProbeGram.lean",
+      "module": "Zeta23.OPICARound2.ProbeGram",
+      "module_id": "rh:module:Zeta23.OPICARound2.ProbeGram",
+      "named_source_declaration_count": 170,
+      "path": "Zeta23/OPICARound2/ProbeGram.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 8,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 414,
+      "file_id": "rh:file:Zeta23/OPICARound2/ProfileControls.lean",
+      "module": "Zeta23.OPICARound2.ProfileControls",
+      "module_id": "rh:module:Zeta23.OPICARound2.ProfileControls",
+      "named_source_declaration_count": 315,
+      "path": "Zeta23/OPICARound2/ProfileControls.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 3,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 40,
+      "file_id": "rh:file:Zeta23/OPICARound2/RegionalCertificates.lean",
+      "module": "Zeta23.OPICARound2.RegionalCertificates",
+      "module_id": "rh:module:Zeta23.OPICARound2.RegionalCertificates",
+      "named_source_declaration_count": 39,
+      "path": "Zeta23/OPICARound2/RegionalCertificates.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 2,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 187,
+      "file_id": "rh:file:Zeta23/OPICARound2/SyntheticControls.lean",
+      "module": "Zeta23.OPICARound2.SyntheticControls",
+      "module_id": "rh:module:Zeta23.OPICARound2.SyntheticControls",
+      "named_source_declaration_count": 153,
+      "path": "Zeta23/OPICARound2/SyntheticControls.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "OPICA2_ADVERSARIAL_FORMAL_CONTROLS",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 412,
+      "file_id": "rh:file:Zeta23/OPICARound2/TruncationControls.lean",
+      "module": "Zeta23.OPICARound2.TruncationControls",
+      "module_id": "rh:module:Zeta23.OPICARound2.TruncationControls",
+      "named_source_declaration_count": 361,
+      "path": "Zeta23/OPICARound2/TruncationControls.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 7,
+      "standalone_role": "OPICA2_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation.lean",
+      "module": "Zeta23.OPICARound2.Validation",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation",
+      "named_source_declaration_count": 0,
+      "path": "Zeta23/OPICARound2/Validation.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_REQUIRED_CORE_AUDIT_FACADE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/CT1Controls.lean",
+      "module": "Zeta23.OPICARound2.Validation.CT1Controls",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.CT1Controls",
+      "named_source_declaration_count": 8,
+      "path": "Zeta23/OPICARound2/Validation/CT1Controls.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/CausalProbe.lean",
+      "module": "Zeta23.OPICARound2.Validation.CausalProbe",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.CausalProbe",
+      "named_source_declaration_count": 33,
+      "path": "Zeta23/OPICARound2/Validation/CausalProbe.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/CertifiedEvaluation.lean",
+      "module": "Zeta23.OPICARound2.Validation.CertifiedEvaluation",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.CertifiedEvaluation",
+      "named_source_declaration_count": 52,
+      "path": "Zeta23/OPICARound2/Validation/CertifiedEvaluation.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/ClassicalAdapter.lean",
+      "module": "Zeta23.OPICARound2.Validation.ClassicalAdapter",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.ClassicalAdapter",
+      "named_source_declaration_count": 10,
+      "path": "Zeta23/OPICARound2/Validation/ClassicalAdapter.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/DualCertificates.lean",
+      "module": "Zeta23.OPICARound2.Validation.DualCertificates",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.DualCertificates",
+      "named_source_declaration_count": 21,
+      "path": "Zeta23/OPICARound2/Validation/DualCertificates.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/FilteredClassicalComparison.lean",
+      "module": "Zeta23.OPICARound2.Validation.FilteredClassicalComparison",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.FilteredClassicalComparison",
+      "named_source_declaration_count": 7,
+      "path": "Zeta23/OPICARound2/Validation/FilteredClassicalComparison.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/FiniteFilteredBaseline.lean",
+      "module": "Zeta23.OPICARound2.Validation.FiniteFilteredBaseline",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.FiniteFilteredBaseline",
+      "named_source_declaration_count": 10,
+      "path": "Zeta23/OPICARound2/Validation/FiniteFilteredBaseline.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/FiniteNeutralApproximation.lean",
+      "module": "Zeta23.OPICARound2.Validation.FiniteNeutralApproximation",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.FiniteNeutralApproximation",
+      "named_source_declaration_count": 18,
+      "path": "Zeta23/OPICARound2/Validation/FiniteNeutralApproximation.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/FixedFilter.lean",
+      "module": "Zeta23.OPICARound2.Validation.FixedFilter",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.FixedFilter",
+      "named_source_declaration_count": 14,
+      "path": "Zeta23/OPICARound2/Validation/FixedFilter.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/NativeCuts.lean",
+      "module": "Zeta23.OPICARound2.Validation.NativeCuts",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.NativeCuts",
+      "named_source_declaration_count": 8,
+      "path": "Zeta23/OPICARound2/Validation/NativeCuts.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/NativeJumpControls.lean",
+      "module": "Zeta23.OPICARound2.Validation.NativeJumpControls",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.NativeJumpControls",
+      "named_source_declaration_count": 11,
+      "path": "Zeta23/OPICARound2/Validation/NativeJumpControls.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/ProbeGram.lean",
+      "module": "Zeta23.OPICARound2.Validation.ProbeGram",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.ProbeGram",
+      "named_source_declaration_count": 41,
+      "path": "Zeta23/OPICARound2/Validation/ProbeGram.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/ProfileControls.lean",
+      "module": "Zeta23.OPICARound2.Validation.ProfileControls",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.ProfileControls",
+      "named_source_declaration_count": 26,
+      "path": "Zeta23/OPICARound2/Validation/ProfileControls.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/RegionalCertificates.lean",
+      "module": "Zeta23.OPICARound2.Validation.RegionalCertificates",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.RegionalCertificates",
+      "named_source_declaration_count": 18,
+      "path": "Zeta23/OPICARound2/Validation/RegionalCertificates.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/SyntheticControls.lean",
+      "module": "Zeta23.OPICARound2.Validation.SyntheticControls",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.SyntheticControls",
+      "named_source_declaration_count": 33,
+      "path": "Zeta23/OPICARound2/Validation/SyntheticControls.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound2/Validation/TruncationControls.lean",
+      "module": "Zeta23.OPICARound2.Validation.TruncationControls",
+      "module_id": "rh:module:Zeta23.OPICARound2.Validation.TruncationControls",
+      "named_source_declaration_count": 106,
+      "path": "Zeta23/OPICARound2/Validation/TruncationControls.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_INDEPENDENT_TYPE_AND_CONTROL_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
@@ -12507,6 +12962,19 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/RHRC/OpicaRound2Bindings.lean",
+      "module": "Zeta23.RHRC.OpicaRound2Bindings",
+      "module_id": "rh:module:Zeta23.RHRC.OpicaRound2Bindings",
+      "named_source_declaration_count": 0,
+      "path": "Zeta23/RHRC/OpicaRound2Bindings.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA2_REGISTERED_SUPPORTING_ROOT_AUDIT_BINDINGS",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/RHRC/OpicaTypeExprExport.lean",
       "module": "Zeta23.RHRC.OpicaTypeExprExport",
       "module_id": "rh:module:Zeta23.RHRC.OpicaTypeExprExport",
@@ -12584,7 +13052,7 @@
       "trust_zone": "AUDIT_ONLY"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 21,
       "file_id": "rh:file:Zeta23/RvM/Backlund.lean",
       "module": "Zeta23.RvM.Backlund",
       "module_id": "rh:module:Zeta23.RvM.Backlund",
@@ -12602,7 +13070,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/RvM/BacklundDefs.lean",
       "module": "Zeta23.RvM.BacklundDefs",
       "module_id": "rh:module:Zeta23.RvM.BacklundDefs",
@@ -12620,7 +13088,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 11,
+      "compiler_dependency_surface_declaration_count": 16,
       "file_id": "rh:file:Zeta23/RvM/CountByIntegral.lean",
       "module": "Zeta23.RvM.CountByIntegral",
       "module_id": "rh:module:Zeta23.RvM.CountByIntegral",
@@ -12638,7 +13106,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 3,
       "file_id": "rh:file:Zeta23/RvM/Defs.lean",
       "module": "Zeta23.RvM.Defs",
       "module_id": "rh:module:Zeta23.RvM.Defs",
@@ -12656,7 +13124,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 14,
       "file_id": "rh:file:Zeta23/RvM/Fold.lean",
       "module": "Zeta23.RvM.Fold",
       "module_id": "rh:module:Zeta23.RvM.Fold",
@@ -12674,7 +13142,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/RvM/GammaSide.lean",
       "module": "Zeta23.RvM.GammaSide",
       "module_id": "rh:module:Zeta23.RvM.GammaSide",
@@ -12728,7 +13196,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 9,
       "file_id": "rh:file:Zeta23/RvM/MainTerm.lean",
       "module": "Zeta23.RvM.MainTerm",
       "module_id": "rh:module:Zeta23.RvM.MainTerm",
@@ -12746,7 +13214,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/RvM/NcountWindow.lean",
       "module": "Zeta23.RvM.NcountWindow",
       "module_id": "rh:module:Zeta23.RvM.NcountWindow",
@@ -12764,7 +13232,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/RvM/ReZeroCount.lean",
       "module": "Zeta23.RvM.ReZeroCount",
       "module_id": "rh:module:Zeta23.RvM.ReZeroCount",
@@ -12800,7 +13268,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 13,
+      "compiler_dependency_surface_declaration_count": 14,
       "file_id": "rh:file:Zeta23/RvM/ZetaGrowth.lean",
       "module": "Zeta23.RvM.ZetaGrowth",
       "module_id": "rh:module:Zeta23.RvM.ZetaGrowth",
@@ -12945,7 +13413,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 4,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/Statement/SeamClosed.lean",
       "module": "Zeta23.Statement.SeamClosed",
       "module_id": "rh:module:Zeta23.Statement.SeamClosed",
@@ -16238,7 +16706,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1088,
+  "entry_count": 1124,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

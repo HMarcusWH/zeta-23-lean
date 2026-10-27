@@ -49,17 +49,17 @@
   "inherits_runtime_qualification": false,
   "input_snapshot": {
     "candidate_count": 5548,
-    "candidate_resolution_sha256": "1fba593392bdaf7dd5ca7e14df2b5a95ac12f4f634e6f031c918cd73e5951468",
-    "candidate_source_surface_sha256": "ee9eb8826753f83dbaa03b35c40a6b51fb2dede8ebe01edbfbc28969478ecaa2",
-    "candidate_summary_sha256": "7fa763365a27544ead38de41e1f44bf886bac46665f60802e9834b08fd1017ad",
+    "candidate_resolution_sha256": "063000713cd4cc914b2be13887abaecbd7d292679f4bbb5da336f1812884f6c7",
+    "candidate_source_surface_sha256": "c5bcaa6df50b72a1a456ab10600342a39e2f6be1730a8d84e5471370dcda03fe",
+    "candidate_summary_sha256": "2d2314a32671c87595353ced3bef877e1ddc1da35c17474e615d2d83c5a0d0ef",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
-    "registered_compiler_receipt_sha256": "78c7ecda2299328e5dc57ad31c8d5892b65f5b8f78ed4091e5b7efd7c3061cb4",
-    "rhkg_subject_digest_sha256": "2e04c71ac1f039a9d6da762bb14897d230b6e0c1b9d920346a2f19ce53a48844",
-    "source_only_public_theorem_count": 1775
+    "registered_compiler_receipt_sha256": "26c4b7080684448e6e3b354fc962ec0e47994bd8bd9c3dae6de72cecbe052ecf",
+    "rhkg_subject_digest_sha256": "40ce2b87bb6587302df1cf494e573615228db7229c9f03bc5efd41db1714ef6f",
+    "source_only_public_theorem_count": 1761
   },
   "qualification_identity": {
-    "execution_digest": "f913fe6c77e9cf5cc00ec226278b1ee22808e4f1d438e887ae5785583834a0bb",
-    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:2e04c71ac1f039a9",
+    "execution_digest": "7346979cc2aeeb544f723e0c0567d1a7b1badb519e381a9cc82eb0885bedc0ce",
+    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:40ce2b87bb658730",
     "profile_digest": "0ab841ca4f9c683bcf206c0cd2e434f07f35b3861073feb370f10195cac49929",
     "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
     "protocol_digest": "30fd49aa7806e29ea8ce750cb91ad0f9edb3d655b9697f6a6dd82d3666a4ac26",
@@ -675,7 +675,7 @@
         "fiber_count": 657,
         "full_state_count": 5548,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 302,
+        "mixed_value_fiber_count": 299,
         "passed": false
       },
       "declared_use": "NEGATIVE_CONTROL_ONLY",
@@ -1264,7 +1264,7 @@
         "fiber_count": 657,
         "full_state_count": 5548,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 406,
+        "mixed_value_fiber_count": 405,
         "passed": false
       },
       "id": "MODULE_ONLY_SNAPSHOT",
@@ -1279,9 +1279,9 @@
         "status": "PASS"
       },
       "decision_factorization": {
-        "collision_fiber_count": 846,
+        "collision_fiber_count": 842,
         "counterexamples": [],
-        "fiber_count": 1183,
+        "fiber_count": 1180,
         "full_state_count": 5548,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
@@ -1290,9 +1290,9 @@
       "declared_use": "POST_REFERENCE_COHORT_NAVIGATION_ONLY",
       "description": "Retains module and exact visibility disposition for post-reference cohort navigation.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 846,
+        "collision_fiber_count": 842,
         "counterexamples": [],
-        "fiber_count": 1183,
+        "fiber_count": 1180,
         "full_state_count": 5548,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
@@ -1747,7 +1747,7 @@
   "schema_version": "RHRC-FFBBP-RHKG-assurance-report-2.0",
   "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
   "selected_reduction_disposition": "PASS_FOR_POST_REFERENCE_COHORT_NAVIGATION_ONLY",
-  "source_only_module_cohort_count": 441,
+  "source_only_module_cohort_count": 438,
   "source_only_module_cohorts": [
     {
       "count": 67,
@@ -2123,26 +2123,6 @@
       "module": "Zeta23.CCM.SourceLatticeCoordinates"
     },
     {
-      "count": 14,
-      "declarations": [
-        "Zeta23.CCM.evenSixthMomentWitness_moments",
-        "Zeta23.CCM.fourthMoment_firewall_even",
-        "Zeta23.CCM.negativeEvenSourceWitness_control",
-        "Zeta23.CCM.negativeEvenSourceWitness_even",
-        "Zeta23.CCM.negativeEvenSourceWitness_half_energy",
-        "Zeta23.CCM.negativeEvenSourceWitness_mem",
-        "Zeta23.CCM.negativeEvenSourceWitness_moments",
-        "Zeta23.CCM.oddFifthMomentWitness_moments",
-        "Zeta23.CCM.oddSourceWitnessK2_half_energy",
-        "Zeta23.CCM.oddSourceWitnessK2_mem",
-        "Zeta23.CCM.oddSourceWitnessK2_moments",
-        "Zeta23.CCM.oddSourceWitnessK2_odd",
-        "Zeta23.CCM.oddSource_half_negative_control",
-        "Zeta23.CCM.positiveEvenSourceWitness_half_energy"
-      ],
-      "module": "Zeta23.CCM.SourceSignCountermodels"
-    },
-    {
       "count": 13,
       "declarations": [
         "Zeta23.CCM.continuous_sourceEnergyRe",
@@ -2411,6 +2391,23 @@
         "Zeta23.CCM.sourceIndexAction_smul"
       ],
       "module": "Zeta23.CCM.FirstCrossingProductionRemainder"
+    },
+    {
+      "count": 11,
+      "declarations": [
+        "Zeta23.CCM.evenSixthMomentWitness_moments",
+        "Zeta23.CCM.fourthMoment_firewall_even",
+        "Zeta23.CCM.negativeEvenSourceWitness_control",
+        "Zeta23.CCM.negativeEvenSourceWitness_even",
+        "Zeta23.CCM.negativeEvenSourceWitness_half_energy",
+        "Zeta23.CCM.negativeEvenSourceWitness_mem",
+        "Zeta23.CCM.negativeEvenSourceWitness_moments",
+        "Zeta23.CCM.oddFifthMomentWitness_moments",
+        "Zeta23.CCM.oddSourceWitnessK2_half_energy",
+        "Zeta23.CCM.oddSource_half_negative_control",
+        "Zeta23.CCM.positiveEvenSourceWitness_half_energy"
+      ],
+      "module": "Zeta23.CCM.SourceSignCountermodels"
     },
     {
       "count": 10,
@@ -2863,20 +2860,6 @@
     {
       "count": 8,
       "declarations": [
-        "Zeta23.CCM.UniversalSinc.fixed_originalSourceLaw_isProbabilityMeasure",
-        "Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_map_scale",
-        "Zeta23.CCM.UniversalSinc.originalSourceLaw_interval_mass",
-        "Zeta23.CCM.UniversalSinc.originalSourceLaw_isProbabilityMeasure",
-        "Zeta23.CCM.UniversalSinc.sourceCoordinateLaw_ae_unit_interval",
-        "Zeta23.CCM.UniversalSinc.sourceSampleSum_abs_le",
-        "Zeta23.CCM.UniversalSinc.sourceSampleSum_ae_eq_unclamped",
-        "Zeta23.CCM.UniversalSinc.sourceSampleSum_eq_scale"
-      ],
-      "module": "Zeta23.CCM.UniversalSincSourceLaw"
-    },
-    {
-      "count": 8,
-      "declarations": [
         "Zeta23.CCM.cubicCouplingKernelPart_eq_zero_iff_exists_zeroShiftPreimage",
         "Zeta23.CCM.cubicZeroShiftSchurEndpoint_re_neg_of_parityBad_of_preimage",
         "Zeta23.CCM.cubicZeroShiftTrialVector_ne_zero",
@@ -3004,6 +2987,19 @@
         "Zeta23.CCM.Step123NativeOutput.rangeView_eq_actual"
       ],
       "module": "Zeta23.CCM.Step123OutputFieldEvidence"
+    },
+    {
+      "count": 7,
+      "declarations": [
+        "Zeta23.CCM.UniversalSinc.fixed_originalSourceLaw_isProbabilityMeasure",
+        "Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_map_scale",
+        "Zeta23.CCM.UniversalSinc.originalSourceLaw_interval_mass",
+        "Zeta23.CCM.UniversalSinc.sourceCoordinateLaw_ae_unit_interval",
+        "Zeta23.CCM.UniversalSinc.sourceSampleSum_abs_le",
+        "Zeta23.CCM.UniversalSinc.sourceSampleSum_ae_eq_unclamped",
+        "Zeta23.CCM.UniversalSinc.sourceSampleSum_eq_scale"
+      ],
+      "module": "Zeta23.CCM.UniversalSincSourceLaw"
     },
     {
       "count": 7,
@@ -3961,16 +3957,6 @@
     {
       "count": 4,
       "declarations": [
-        "Zeta23.CCM.UniversalSinc.charFun_originalSourceLaw",
-        "Zeta23.CCM.UniversalSinc.charFun_sourceSamplePartialSum",
-        "Zeta23.CCM.UniversalSinc.fixed_charFun_originalSourceLaw",
-        "Zeta23.CCM.UniversalSinc.originalSourceLaw_map_neg"
-      ],
-      "module": "Zeta23.CCM.UniversalSincSourceCharacteristic"
-    },
-    {
-      "count": 4,
-      "declarations": [
         "Zeta23.CCM.cubicCoupling_zero_on_intrinsicPredecessorBlock_kernel_iff",
         "Zeta23.CCM.inner_cubicCoupling_eq_zero_iff_successor_zero_of_intrinsicPredecessorBlock_eq_zero",
         "Zeta23.CCM.inner_intrinsicPredecessorBlock_kernel_cubicCoupling_eq",
@@ -4378,15 +4364,6 @@
         "Zeta23.CCM.UniversalSinc.sinc_int_mul_pi_eq_zero"
       ],
       "module": "Zeta23.CCM.UniversalSincDetector"
-    },
-    {
-      "count": 3,
-      "declarations": [
-        "Zeta23.CCM.UniversalSinc.charFun_originalDensityMeasure",
-        "Zeta23.CCM.UniversalSinc.originalDensityMeasure_isProbabilityMeasure",
-        "Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_withDensity"
-      ],
-      "module": "Zeta23.CCM.UniversalSincSourceDensityIdentification"
     },
     {
       "count": 3,
@@ -4799,14 +4776,6 @@
     {
       "count": 2,
       "declarations": [
-        "Zeta23.CCM.nativeCompletedInputUniformBound_nonneg",
-        "Zeta23.CCM.nativeCompletionCorrection_measurable"
-      ],
-      "module": "Zeta23.CCM.NativeCompletedInput"
-    },
-    {
-      "count": 2,
-      "declarations": [
         "Zeta23.CCM.nativeCompletionCorrection_integer_sum_eq",
         "Zeta23.CCM.nativeCompletionCorrection_integer_term"
       ],
@@ -4827,14 +4796,6 @@
         "Zeta23.CCM.nativeIntegerTranslateAction_summable_primeField"
       ],
       "module": "Zeta23.CCM.NativeIntegerPrimeConvolution"
-    },
-    {
-      "count": 2,
-      "declarations": [
-        "Zeta23.CCM.nativePositiveCompletion_pos_of_nonneg",
-        "Zeta23.CCM.nativePositiveCompletion_zero"
-      ],
-      "module": "Zeta23.CCM.NativePositiveCompletion"
     },
     {
       "count": 2,
@@ -5063,10 +5024,10 @@
     {
       "count": 2,
       "declarations": [
-        "Zeta23.CCM.UniversalSinc.partialProduct_norm_le_one",
-        "Zeta23.CCM.UniversalSinc.product_norm_ofReal_le_one"
+        "Zeta23.CCM.UniversalSinc.fixed_charFun_originalSourceLaw",
+        "Zeta23.CCM.UniversalSinc.originalSourceLaw_map_neg"
       ],
-      "module": "Zeta23.CCM.UniversalSincDetectorBounds"
+      "module": "Zeta23.CCM.UniversalSincSourceCharacteristic"
     },
     {
       "count": 2,
@@ -5641,13 +5602,6 @@
     {
       "count": 1,
       "declarations": [
-        "Zeta23.CCM.nativeCausalExponentialWitness_mem_adjointKernel_of_kernel_moments"
-      ],
-      "module": "Zeta23.CCM.NativeCausalAdjointZeroJets"
-    },
-    {
-      "count": 1,
-      "declarations": [
         "Zeta23.CCM.nativeCompletedInput_rangeResidual_lower_of_moments"
       ],
       "module": "Zeta23.CCM.NativeCausalRangeObstruction"
@@ -5655,9 +5609,9 @@
     {
       "count": 1,
       "declarations": [
-        "Zeta23.CCM.nativeRationalCausalKernel_complexDamped_integrableOn"
+        "Zeta23.CCM.nativeCompletedInputUniformBound_nonneg"
       ],
-      "module": "Zeta23.CCM.NativeCompletionComplexLaplace"
+      "module": "Zeta23.CCM.NativeCompletedInput"
     },
     {
       "count": 1,
@@ -5721,6 +5675,13 @@
         "Zeta23.CCM.nativeLaplaceContinuationDomain_isOpen"
       ],
       "module": "Zeta23.CCM.NativeLaplaceHalfPlaneContinuation"
+    },
+    {
+      "count": 1,
+      "declarations": [
+        "Zeta23.CCM.nativePositiveCompletion_zero"
+      ],
+      "module": "Zeta23.CCM.NativePositiveCompletion"
     },
     {
       "count": 1,
@@ -5917,6 +5878,13 @@
         "Zeta23.CCM.Step123NativeOutput.originalInterior_ne_zero"
       ],
       "module": "Zeta23.CCM.Step123SameStateN39"
+    },
+    {
+      "count": 1,
+      "declarations": [
+        "Zeta23.CCM.UniversalSinc.product_norm_ofReal_le_one"
+      ],
+      "module": "Zeta23.CCM.UniversalSincDetectorBounds"
     },
     {
       "count": 1,
@@ -6176,10 +6144,10 @@
   "theorem_promotion": false,
   "theory_version": "1.7",
   "visibility_counts": {
-    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 3041,
+    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 3055,
     "ALREADY_REGISTERED_ROOT": 112,
     "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 617,
-    "SOURCE_ONLY_PUBLIC_THEOREM": 1775,
+    "SOURCE_ONLY_PUBLIC_THEOREM": 1761,
     "UNRESOLVED_SOURCE_IDENTITY": 3
   }
 }

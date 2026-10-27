@@ -1,0 +1,677 @@
+name: OPICA Round2 exact-source core and research controls
+'on':
+  pull_request:
+    branches:
+    - main
+  push:
+    branches:
+    - research/opica-round2
+  workflow_dispatch: null
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: opica-round2-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+env:
+  OPICA2: research/RHRC/integration/opica_round2
+  OPICA2_OUTPUT_DIR: /tmp/opica2-evidence
+  REQUESTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+  PYTHONUTF8: '1'
+  PYTHONDONTWRITEBYTECODE: '1'
+  LEAN_NUM_THREADS: '2'
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        persist-credentials: false
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+      with:
+        python-version: 3.13.5
+    - name: Capture immutable requested source before all checks
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR/source"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        python -B research/RHRC/tools/run_suite.py --freeze-source "$OPICA2_OUTPUT_DIR/source/before.json"
+        git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+    - name: Validate frozen specification and full source contract
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B "$OPICA2/run_checks.py" contract --scope full-core
+    - name: Verify exact source unchanged after all commands
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
+      if: ${{ always() }}
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      if: ${{ always() }}
+      with:
+        name: opica2-contract
+        path: ${{ env.OPICA2_OUTPUT_DIR }}
+        if-no-files-found: error
+  formal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        persist-credentials: false
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+      with:
+        python-version: 3.13.5
+    - name: Capture immutable requested source before all checks
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR/source"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        python -B research/RHRC/tools/run_suite.py --freeze-source "$OPICA2_OUTPUT_DIR/source/before.json"
+        git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+    - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+      with:
+        auto-config: false
+        build: false
+        test: false
+        lint: false
+        use-github-cache: false
+        use-mathlib-cache: true
+    - name: Compile actual frozen lane targets and independent consumers
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B "$OPICA2/run_checks.py" formal --lane "${{ matrix.lane }}" --timeout 20000
+    - name: Verify exact source unchanged after all commands
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
+      if: ${{ always() }}
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      if: ${{ always() }}
+      with:
+        name: opica2-formal-${{ matrix.lane }}
+        path: ${{ env.OPICA2_OUTPUT_DIR }}
+        if-no-files-found: error
+    name: formal(${{ matrix.lane }})
+    strategy:
+      fail-fast: false
+      matrix:
+        lane:
+        - causal
+        - filtered
+        - gram
+        - structural
+    needs: contract
+    if: ${{ always() && !cancelled() }}
+  controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        persist-credentials: false
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+      with:
+        python-version: 3.13.5
+    - name: Capture immutable requested source before all checks
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR/source"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        python -B research/RHRC/tools/run_suite.py --freeze-source "$OPICA2_OUTPUT_DIR/source/before.json"
+        git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+    - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+      with:
+        auto-config: false
+        build: false
+        test: false
+        lint: false
+        use-github-cache: false
+        use-mathlib-cache: true
+    - name: Install declared hash-locked audit and framework dependencies
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -m pip install --require-hashes --only-binary=:all: -r "$OPICA2/python-checks.lock"
+        python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+        python -m pip install -r research/RHRC/requirements.txt
+    - name: Build exact native prerequisites for every paired typed control
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python - <<'PY'
+        import hashlib,json,os,re,subprocess
+        from pathlib import Path
+        registry=json.loads(Path(os.environ['OPICA2'],'CONTROL_REGISTRY.json').read_bytes())
+        fixtures=registry['runtime_typed_negative_fixtures']
+        required={'R2M03','R2M05','R2M07','R2M08','R2M09','R2M13','R2M14'}
+        expected={'Zeta23.OPICARound2.Validation.CausalProbe','Zeta23.OPICARound2.Validation.CertifiedEvaluation',
+            'Zeta23.OPICARound2.Validation.DualCertificates','Zeta23.OPICARound2.Validation.ProbeGram',
+            'Zeta23.OPICARound2.Validation.TruncationControls'}
+        if len(fixtures)!=7 or {r.get('id') for r in fixtures}!=required:
+            raise SystemExit('Exact seven typed native control pairs required')
+        observed=set()
+        for fixture in fixtures:
+            pair=[]
+            for mode in ('positive','negative'):
+                imports=[]
+                for line in fixture[mode+'_source'].splitlines():
+                    if line.startswith('import '):
+                        match=re.fullmatch(r'import (Zeta23\.OPICARound2\.Validation\.[A-Za-z_][A-Za-z0-9_]*)',line)
+                        if match is None:raise SystemExit('Unreviewed typed control import')
+                        imports.append(match.group(1))
+                pair.append(imports)
+            if not pair[0] or pair[0]!=pair[1]:raise SystemExit('Typed control pair imports differ')
+            observed.update(pair[0])
+        if observed!=expected:raise SystemExit('Typed control Validation prerequisites changed')
+        command=['lake','build',*sorted(expected)]
+        log=Path(os.environ['OPICA2_OUTPUT_DIR'],'typed-control-prerequisite-build.log')
+        with log.open('wb') as stream:
+            code=subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT).returncode
+        report={'schema':'OPICA2_TYPED_CONTROL_PREREQUISITE_BUILD_V1','argv':command,'exit_code':code,
+            'checked_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+            'checked_tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),
+            'log_sha256':hashlib.sha256(log.read_bytes()).hexdigest(),
+            'scope':'NATIVE_PREREQUISITES_WARM_PROJECT_OBJECTS_ALLOWED_NO_COLD_CLAIM',
+            'full_core_accepted':False,'full_release_accepted':False,'RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'typed-control-prerequisite-build.json').write_text(json.dumps(report,indent=2)+'\n')
+        raise SystemExit(code)
+        PY
+    - name: Run all core adversarial runtime checks in both Python modes
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -m unittest discover -s "$OPICA2/tests" -p 'test_*.py' -v > "$OPICA2_OUTPUT_DIR/runtime-normal.log" 2>&1
+        python -O -m unittest discover -s "$OPICA2/tests" -p 'test_*.py' -v > "$OPICA2_OUTPUT_DIR/runtime-optimized.log" 2>&1
+        for legacy in opica opica_followup; do
+          python -B -m unittest discover -s "research/RHRC/integration/$legacy/tests" -p test_contract.py -k Round2DescendantDispatchTests -v
+          python -O -B -m unittest discover -s "research/RHRC/integration/$legacy/tests" -p test_contract.py -k Round2DescendantDispatchTests -v
+        done
+        python -B "$OPICA2/run_checks.py" controls --evidence-dir "$OPICA2_OUTPUT_DIR/normal"
+        python -O -B "$OPICA2/run_checks.py" controls --evidence-dir "$OPICA2_OUTPUT_DIR/optimized"
+    - name: Verify exact source unchanged after all commands
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
+      if: ${{ always() }}
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      if: ${{ always() }}
+      with:
+        name: opica2-controls
+        path: ${{ env.OPICA2_OUTPUT_DIR }}
+        if-no-files-found: error
+    env:
+      OPICA2_TYPED_CONTROL_OUTPUT: /tmp/opica2-evidence/typed-native-pairs
+    needs: contract
+    if: ${{ always() && !cancelled() }}
+  ancestry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        persist-credentials: false
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+      with:
+        python-version: 3.13.5
+    - name: Capture immutable requested source before all checks
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR/source"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        python -B research/RHRC/tools/run_suite.py --freeze-source "$OPICA2_OUTPUT_DIR/source/before.json"
+        git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+    - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+      with:
+        auto-config: false
+        build: false
+        test: false
+        lint: false
+        use-github-cache: false
+        use-mathlib-cache: true
+    - name: Install declared hash-locked audit and framework dependencies
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -m pip install --require-hashes --only-binary=:all: -r "$OPICA2/python-checks.lock"
+        python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+        python -m pip install -r research/RHRC/requirements.txt
+    - name: Authenticate original source and explicitly dispatch original predicates
+      shell: bash
+      run: |-
+        set -euo pipefail
+        projection="$GITHUB_WORKSPACE/../opica2-frozen-$GITHUB_JOB"
+        python -B "$OPICA2/ancestor_projection.py" create --repo "$GITHUB_WORKSPACE" --destination "$projection" > "$OPICA2_OUTPUT_DIR/ancestor-projection.json"
+        mkdir -p "$projection/.lake"
+        ln -s "$GITHUB_WORKSPACE/.lake/packages" "$projection/.lake/packages"
+        printf '%s\n' "OPICA2_ANCESTOR_PROJECTION=$projection" >> "$GITHUB_ENV"
+        python -B research/RHRC/integration/opica/validate_contract.py --phase preflight --ancestor-projection "$projection" --output "$OPICA2_OUTPUT_DIR/static76.json"
+        python -B research/RHRC/integration/opica_followup/validate_contract.py --phase preflight --ancestor-projection "$projection" --output "$OPICA2_OUTPUT_DIR/static100.json"
+    - name: Execute and authenticate both frozen baselines and both genuine current compiler exports
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B "$OPICA2/run_checks.py" ancestry --ancestor-projection "$OPICA2_ANCESTOR_PROJECTION" --timeout 20000
+    - name: Verify exact source unchanged after all commands
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
+      if: ${{ always() }}
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      if: ${{ always() }}
+      with:
+        name: opica2-ancestry
+        path: ${{ env.OPICA2_OUTPUT_DIR }}
+        if-no-files-found: error
+    needs: contract
+    if: ${{ always() && !cancelled() }}
+  aggregate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        persist-credentials: false
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+      with:
+        python-version: 3.13.5
+    - name: Capture immutable requested source before all checks
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR/source"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        python -B research/RHRC/tools/run_suite.py --freeze-source "$OPICA2_OUTPUT_DIR/source/before.json"
+        git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+    - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+      with:
+        auto-config: false
+        build: false
+        test: false
+        lint: false
+        use-github-cache: false
+        use-mathlib-cache: true
+    - name: Install declared hash-locked audit and framework dependencies
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -m pip install --require-hashes --only-binary=:all: -r "$OPICA2/python-checks.lock"
+        python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+        python -m pip install -r research/RHRC/requirements.txt
+    - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+      with:
+        name: opica2-controls
+        path: ${{ runner.temp }}/opica2-controls-input
+    - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+      with:
+        name: opica2-ancestry
+        path: ${{ runner.temp }}/opica2-ancestry-input
+    - name: Capture the source-reviewed exact compiler query inventory
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python - <<'PY'
+        import json,os,sys
+        from pathlib import Path
+        sys.path.insert(0,os.environ['OPICA2'])
+        from build_receipt import validate_query_plan
+        from certificate_io import canonical_sha256
+        doc=json.loads(Path(os.environ['OPICA2'],'WORKFLOW_CONTRACT.json').read_bytes())
+        plan=doc['compiler_query_plan']
+        validate_query_plan(plan)
+        if canonical_sha256(plan)!=doc['compiler_query_plan_sha256']:
+            raise SystemExit('Source-reviewed compiler query inventory hash differs')
+        out=Path(os.environ['OPICA2_OUTPUT_DIR'],'reviewed-query-plan.json')
+        out.write_text(json.dumps(plan,indent=2)+'\n',encoding='utf-8')
+        PY
+    - name: Require genuinely absent project build objects before cold aggregate
+      shell: bash
+      run: |-
+        set -euo pipefail
+        test ! -e .lake/build
+        python -B "$OPICA2/run_checks.py" aggregate --build-mode cold --timeout 20000 \
+          --query-plan "$OPICA2_OUTPUT_DIR/reviewed-query-plan.json" \
+          --clause-evidence "$OPICA2/PAPER_CROSSWALK.json" \
+          --control-evidence "$RUNNER_TEMP/opica2-controls-input/normal/controls/result.json" \
+          --optimized-control-evidence "$RUNNER_TEMP/opica2-controls-input/optimized/controls/result.json" \
+          --ancestry-evidence "$RUNNER_TEMP/opica2-ancestry-input/ancestry/result.json"
+    - name: Compile all required full facade and binding targets after the cold core export
+      shell: bash
+      run: |-
+        set -euo pipefail
+        lake build Zeta23.OPICARound2.All Zeta23.OPICARound2.Validation Zeta23.RHRC.OpicaRound2Bindings 2>&1 | tee "$OPICA2_OUTPUT_DIR/aggregate-facades.log"
+    - name: Verify exact source unchanged after all commands
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
+      if: ${{ always() }}
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      if: ${{ always() }}
+      with:
+        name: opica2-aggregate
+        path: ${{ env.OPICA2_OUTPUT_DIR }}
+        if-no-files-found: error
+    needs:
+    - contract
+    - formal
+    - controls
+    - ancestry
+    if: ${{ always() && !cancelled() }}
+  generated:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        persist-credentials: false
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+      with:
+        python-version: 3.13.5
+    - name: Capture immutable requested source before all checks
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR/source"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        python -B research/RHRC/tools/run_suite.py --freeze-source "$OPICA2_OUTPUT_DIR/source/before.json"
+        git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+    - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+      with:
+        auto-config: false
+        build: false
+        test: false
+        lint: false
+        use-github-cache: false
+        use-mathlib-cache: true
+    - name: Install declared hash-locked audit and framework dependencies
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -m pip install --require-hashes --only-binary=:all: -r "$OPICA2/python-checks.lock"
+        python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+        python -m pip install -r research/RHRC/requirements.txt
+    - name: Build the unchanged canonical exporter prerequisites
+      shell: bash
+      run: |-
+        set -euo pipefail
+        lake build Zeta23.RHRC.RegisteredClaimBindings Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution
+    - name: Inspect all 81 committed products before any regeneration
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B "$OPICA2/run_checks.py" generated --timeout 20000
+    - name: Regenerate independently in a disposable exact-head worktree
+      shell: bash
+      run: |-
+        set -euo pipefail
+        disposable="$GITHUB_WORKSPACE/../opica2-generated-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+        git worktree add --detach "$disposable" "$REQUESTED_HEAD"
+        mkdir -p "$disposable/.lake"
+        ln -s "$GITHUB_WORKSPACE/.lake/packages" "$disposable/.lake/packages"
+        (
+          cd "$disposable"
+          lake build Zeta23.RHRC.RegisteredClaimBindings Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution
+          python -B research/RHRC/tools/materialize_derived_state.py --write
+          python -B research/RHRC/tools/materialize_derived_state.py --check
+          git diff --exit-code HEAD --
+        )
+        python - <<'PY'
+        import hashlib,json,os,subprocess
+        from pathlib import Path
+        root=Path.cwd()
+        other=root.parent/('opica2-generated-'+os.environ['GITHUB_RUN_ID']+'-'+os.environ['GITHUB_RUN_ATTEMPT'])
+        manifest=json.loads((root/os.environ['OPICA2']/'BUILD_MANIFEST.json').read_bytes())
+        paths=[r['path'] for r in manifest['generated']]
+        if len(paths)!=81 or len(set(paths))!=81:raise SystemExit('Exact81 generated inventory required')
+        rows=[]
+        for rel in paths:
+            a,b=(root/rel).read_bytes(),(other/rel).read_bytes()
+            if a!=b:raise SystemExit('Independent canonical product differs: '+rel)
+            rows.append({'path':rel,'bytes':len(a),'sha256':hashlib.sha256(a).hexdigest()})
+        report={'schema':'OPICA2_INDEPENDENT_GENERATED_COMPARISON_V1','status':'PASS_EXACT81_BYTES',
+            'checked_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+            'products':rows,'full_release_accepted':False,'RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'generated-independent.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
+    - name: Build exact native prerequisites for every paired typed control
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python - <<'PY'
+        import hashlib,json,os,re,subprocess
+        from pathlib import Path
+        registry=json.loads(Path(os.environ['OPICA2'],'CONTROL_REGISTRY.json').read_bytes())
+        fixtures=registry['runtime_typed_negative_fixtures']
+        required={'R2M03','R2M05','R2M07','R2M08','R2M09','R2M13','R2M14'}
+        expected={'Zeta23.OPICARound2.Validation.CausalProbe','Zeta23.OPICARound2.Validation.CertifiedEvaluation',
+            'Zeta23.OPICARound2.Validation.DualCertificates','Zeta23.OPICARound2.Validation.ProbeGram',
+            'Zeta23.OPICARound2.Validation.TruncationControls'}
+        if len(fixtures)!=7 or {r.get('id') for r in fixtures}!=required:
+            raise SystemExit('Exact seven typed native control pairs required')
+        observed=set()
+        for fixture in fixtures:
+            pair=[]
+            for mode in ('positive','negative'):
+                imports=[]
+                for line in fixture[mode+'_source'].splitlines():
+                    if line.startswith('import '):
+                        match=re.fullmatch(r'import (Zeta23\.OPICARound2\.Validation\.[A-Za-z_][A-Za-z0-9_]*)',line)
+                        if match is None:raise SystemExit('Unreviewed typed control import')
+                        imports.append(match.group(1))
+                pair.append(imports)
+            if not pair[0] or pair[0]!=pair[1]:raise SystemExit('Typed control pair imports differ')
+            observed.update(pair[0])
+        if observed!=expected:raise SystemExit('Typed control Validation prerequisites changed')
+        command=['lake','build',*sorted(expected)]
+        log=Path(os.environ['OPICA2_OUTPUT_DIR'],'typed-control-prerequisite-build.log')
+        with log.open('wb') as stream:
+            code=subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT).returncode
+        report={'schema':'OPICA2_TYPED_CONTROL_PREREQUISITE_BUILD_V1','argv':command,'exit_code':code,
+            'checked_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+            'checked_tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),
+            'log_sha256':hashlib.sha256(log.read_bytes()).hexdigest(),
+            'scope':'NATIVE_PREREQUISITES_WARM_PROJECT_OBJECTS_ALLOWED_NO_COLD_CLAIM',
+            'full_core_accepted':False,'full_release_accepted':False,'RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'typed-control-prerequisite-build.json').write_text(json.dumps(report,indent=2)+'\n')
+        raise SystemExit(code)
+        PY
+    - name: Run all frozen and current suites with explicit ancestry scope
+      shell: bash
+      run: |-
+        set -euo pipefail
+        projection="$GITHUB_WORKSPACE/../opica2-frozen-$GITHUB_JOB"
+        python -B "$OPICA2/ancestor_projection.py" create --repo "$GITHUB_WORKSPACE" --destination "$projection" > "$OPICA2_OUTPUT_DIR/ancestor-projection.json"
+        mkdir -p "$projection/.lake"
+        ln -s "$GITHUB_WORKSPACE/.lake/packages" "$projection/.lake/packages"
+        printf '%s\n' "OPICA2_ANCESTOR_PROJECTION=$projection" >> "$GITHUB_ENV"
+        python -B research/RHRC/integration/opica/validate_contract.py --phase preflight --ancestor-projection "$projection" --output "$OPICA2_OUTPUT_DIR/static76.json"
+        python -B research/RHRC/integration/opica_followup/validate_contract.py --phase preflight --ancestor-projection "$projection" --output "$OPICA2_OUTPUT_DIR/static100.json"
+        python -B research/RHRC/tools/run_suite.py --ancestor-projection "$projection"
+    - name: Verify exact source unchanged after all commands
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
+      if: ${{ always() }}
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      if: ${{ always() }}
+      with:
+        name: opica2-generated
+        path: ${{ env.OPICA2_OUTPUT_DIR }}
+        if-no-files-found: error
+    env:
+      OPICA2_TYPED_CONTROL_OUTPUT: /tmp/opica2-evidence/typed-native-pairs
+    needs: aggregate
+    if: ${{ always() && !cancelled() }}
+  harvest:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        persist-credentials: false
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+      with:
+        python-version: 3.13.5
+    - name: Capture immutable requested source before all checks
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR/source"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        python -B research/RHRC/tools/run_suite.py --freeze-source "$OPICA2_OUTPUT_DIR/source/before.json"
+        git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+    - name: Record every provider job and preserve the unfinished self observation
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B research/RHRC/tools/run_suite.py --workflow-classifications "$OPICA2_OUTPUT_DIR/workflow-classifications.json"
+        python -B "$OPICA2/run_checks.py" harvest --snapshot-mode in-workflow --classifications "$OPICA2_OUTPUT_DIR/workflow-classifications.json"
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+    - name: Verify exact source unchanged after all commands
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
+      if: ${{ always() }}
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      if: ${{ always() }}
+      with:
+        name: opica2-harvest
+        path: ${{ env.OPICA2_OUTPUT_DIR }}
+        if-no-files-found: error
+    needs:
+    - contract
+    - formal
+    - controls
+    - ancestry
+    - aggregate
+    - generated
+    if: ${{ always() && !cancelled() }}
+  acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        persist-credentials: false
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+      with:
+        python-version: 3.13.5
+    - name: Capture immutable requested source before all checks
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR/source"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        python -B research/RHRC/tools/run_suite.py --freeze-source "$OPICA2_OUTPUT_DIR/source/before.json"
+        git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
+    - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+      with:
+        auto-config: false
+        build: false
+        test: false
+        lint: false
+        use-github-cache: false
+        use-mathlib-cache: true
+    - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+      with:
+        name: opica2-aggregate
+        path: ${{ runner.temp }}/opica2-aggregate-input
+    - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+      with:
+        name: opica2-controls
+        path: ${{ runner.temp }}/opica2-controls-input
+    - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+      with:
+        name: opica2-ancestry
+        path: ${{ runner.temp }}/opica2-ancestry-input
+    - name: Reject every missing or unsuccessful required current workflow lane
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python - <<'PY'
+        import json,os
+        needs=json.loads(os.environ['REQUIRED_NEEDS'])
+        expected={'contract','formal','controls','ancestry','aggregate','generated','harvest'}
+        if set(needs)!=expected or any(row.get('result')!='success' for row in needs.values()):
+            raise SystemExit('Required gate missing or incomplete: '+json.dumps(needs,sort_keys=True))
+        PY
+      env:
+        REQUIRED_NEEDS: ${{ toJSON(needs) }}
+    - name: Independently recompose exact compiler, clause, control and ancestry evidence
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python - <<'PY'
+        import json,os
+        from pathlib import Path
+        source=Path(os.environ['RUNNER_TEMP'],'opica2-aggregate-input','aggregate','compiler-receipt.json')
+        receipt=json.loads(source.read_bytes())
+        composed=json.loads(source.with_name('composed-receipt.json').read_bytes())
+        report={'schema':'OPICA2_COMPOSITION_STATUS_OBSERVATION_V1',
+            'observed_raw_implementation_state':receipt['implementation_state'],
+            'observed_composed_implementation_state':composed['implementation_state'],
+            'scope':'STATUS_OBSERVATION_ONLY_ACCEPTANCE_STILL_REQUIRES_INDEPENDENT_REVALIDATION',
+            'full_core_accepted':False,'full_release_accepted':False,'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'composition-observation.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
+        python -B "$OPICA2/run_checks.py" acceptance \
+          --query-plan "$RUNNER_TEMP/opica2-aggregate-input/reviewed-query-plan.json" \
+          --formal-receipt "$RUNNER_TEMP/opica2-aggregate-input/aggregate/compiler-receipt.json" \
+          --formal-artifacts "$RUNNER_TEMP/opica2-aggregate-input/aggregate" \
+          --clause-evidence "$OPICA2/PAPER_CROSSWALK.json" \
+          --control-evidence "$RUNNER_TEMP/opica2-controls-input/normal/controls/result.json" \
+          --optimized-control-evidence "$RUNNER_TEMP/opica2-controls-input/optimized/controls/result.json" \
+          --ancestry-evidence "$RUNNER_TEMP/opica2-ancestry-input/ancestry/result.json"
+        printf '%s\n' 'Compiler evidence only. A separate post-run all-job harvest and independent human review remain required; full release, RH and Step4 are not inferred.' > "$OPICA2_OUTPUT_DIR/acceptance-boundary.txt"
+    - name: Verify exact source unchanged after all commands
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
+      if: ${{ always() }}
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      if: ${{ always() }}
+      with:
+        name: opica2-acceptance
+        path: ${{ env.OPICA2_OUTPUT_DIR }}
+        if-no-files-found: error
+    needs:
+    - contract
+    - formal
+    - controls
+    - ancestry
+    - aggregate
+    - generated
+    - harvest
+    if: ${{ always() && !cancelled() }}

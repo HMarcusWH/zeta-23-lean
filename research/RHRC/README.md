@@ -543,3 +543,9 @@ independent mathematical review have separate authority.
 
 
 </details>
+
+## Round 2 implementation checkpoint — 2026-10-26
+
+Round 2 now contains all forty mandatory mathematical families, their independent consumers, and source-faithful numerical tools. The inventory contains 143 clauses: 125 required clauses and 18 clauses in six disabled optional families. Individual native proof checks do not establish full release acceptance.
+
+See [the implementation guide](integration/opica_round2/README.md), [source register](integration/opica_round2/SOURCE_REGISTER.json), [clause/control crosswalk](integration/opica_round2/PAPER_CROSSWALK.json) and [research ledger](integration/opica_round2/POST_GREEN_RESEARCH.md). Original claim objects, the original 76/100 contracts, and all existing OPEN caps are preserved. New supporting claim registrations retain every antecedent in their exact Lean types. The four independent terminal targets remain OPEN in the Round 2 research register and have no invented theorem bindings.

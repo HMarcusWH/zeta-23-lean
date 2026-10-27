@@ -1,0 +1,243 @@
+{
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "OPICA2_COMPILER_RECEIPT_V1"
+    },
+    "requested_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "checked_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "checked_tree": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "checkout_kind": {
+      "enum": [
+        "PR_HEAD",
+        "MERGE_TREE",
+        "BASELINE_PROJECTION"
+      ]
+    },
+    "lean_toolchain": {
+      "type": "string"
+    },
+    "mathlib_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "source_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "exporter_source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "exporter_object_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "raw_compiler_log_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "independent_queries_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "argv": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "returncode": {
+            "type": "integer"
+          },
+          "stdout_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "stderr_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "working_tree_sha": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          }
+        },
+        "required": [
+          "argv",
+          "returncode",
+          "stdout_sha256",
+          "stderr_sha256",
+          "working_tree_sha"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "root_records_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "constructor_records_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "dependency_records_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "reparsed_records_match": {
+      "type": "boolean"
+    },
+    "axioms": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "required_clauses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "covered_clauses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "ancestor_baseline_replay": {
+      "type": "boolean"
+    },
+    "ancestor_current_compatibility": {
+      "type": "boolean"
+    },
+    "implementation_state": {
+      "enum": [
+        "MINIMAL_ONLY",
+        "FULL_CORE_COMPILER_VERIFIED",
+        "INCOMPLETE",
+        "INVALID"
+      ]
+    },
+    "human_review": {
+      "enum": [
+        "NOT_ESTABLISHED",
+        "ESTABLISHED_BY_EXTERNAL_REVIEW_RECORD"
+      ]
+    },
+    "review_record_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "full_release_accepted": {
+      "type": "boolean"
+    },
+    "RH": {
+      "const": "OPEN"
+    },
+    "Step4": {
+      "const": "OPEN"
+    }
+  },
+  "required": [
+    "schema",
+    "requested_commit",
+    "checked_commit",
+    "checked_tree",
+    "checkout_kind",
+    "lean_toolchain",
+    "mathlib_commit",
+    "source_manifest_sha256",
+    "exporter_source_sha256",
+    "exporter_object_sha256",
+    "raw_compiler_log_sha256",
+    "independent_queries_sha256",
+    "commands",
+    "root_records_sha256",
+    "constructor_records_sha256",
+    "dependency_records_sha256",
+    "reparsed_records_match",
+    "axioms",
+    "required_clauses",
+    "covered_clauses",
+    "ancestor_baseline_replay",
+    "ancestor_current_compatibility",
+    "implementation_state",
+    "human_review",
+    "review_record_sha256",
+    "full_release_accepted",
+    "RH",
+    "Step4"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A separate terminal-closure schema/amendment would be required for a genuine RH theorem. Supporting-receipt flags cannot self-approve independent review.",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "full_release_accepted": {
+            "const": true
+          }
+        },
+        "required": [
+          "full_release_accepted"
+        ]
+      },
+      "then": {
+        "properties": {
+          "human_review": {
+            "const": "ESTABLISHED_BY_EXTERNAL_REVIEW_RECORD"
+          },
+          "review_record_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "implementation_state": {
+            "const": "FULL_CORE_COMPILER_VERIFIED"
+          },
+          "ancestor_baseline_replay": {
+            "const": true
+          },
+          "ancestor_current_compatibility": {
+            "const": true
+          },
+          "reparsed_records_match": {
+            "const": true
+          }
+        }
+      }
+    }
+  ]
+}

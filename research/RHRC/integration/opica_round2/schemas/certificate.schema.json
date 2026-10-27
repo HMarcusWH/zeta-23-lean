@@ -1,0 +1,293 @@
+{
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "OPICA2_PRIMAL_CERTIFICATE_V1"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "tree": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "source_definition_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "kernel_definition_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "filter_definition_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sigma": {
+          "const": "1/4096"
+        },
+        "delay": {
+          "const": "1/4096"
+        },
+        "source_product_copies": {
+          "const": 1
+        }
+      },
+      "required": [
+        "commit",
+        "tree",
+        "source_definition_sha256",
+        "kernel_definition_sha256",
+        "filter_definition_sha256",
+        "sigma",
+        "delay",
+        "source_product_copies"
+      ],
+      "additionalProperties": false
+    },
+    "coefficients": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "re": {
+            "type": "string",
+            "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+            "maxLength": 180
+          },
+          "im": {
+            "type": "string",
+            "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+            "maxLength": 180
+          }
+        },
+        "required": [
+          "re",
+          "im"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 100000
+    },
+    "dictionary_indices": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[1-9][0-9]*$"
+      },
+      "minItems": 1,
+      "maxItems": 100000
+    },
+    "region": {
+      "type": "object",
+      "properties": {
+        "delta_lower": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 180
+        },
+        "delta_upper": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 180
+        },
+        "abs_tau_lower": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 180
+        },
+        "abs_tau_upper": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 180
+        }
+      },
+      "required": [
+        "delta_lower",
+        "delta_upper",
+        "abs_tau_lower",
+        "abs_tau_upper"
+      ],
+      "additionalProperties": false
+    },
+    "source_prefix_M": {
+      "type": "integer",
+      "minimum": 12
+    },
+    "kernel_lag_horizon": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+      "maxLength": 180
+    },
+    "absolute_output_horizon": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+      "maxLength": 180
+    },
+    "precision_bits": {
+      "type": "integer",
+      "minimum": 64,
+      "maximum": 100000
+    },
+    "backend": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lock_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "lock_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "error_budget": {
+      "type": "object",
+      "properties": {
+        "source_norm_error": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 180
+        },
+        "kernel_lag_norm_error": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 180
+        },
+        "output_target_tail_norm_error": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 180
+        },
+        "quadrature_norm_error": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 180
+        },
+        "rounding_norm_error": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 180
+        },
+        "filter_operator_norm_upper": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 180
+        },
+        "total_norm_error": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 180
+        }
+      },
+      "required": [
+        "source_norm_error",
+        "kernel_lag_norm_error",
+        "output_target_tail_norm_error",
+        "quadrature_norm_error",
+        "rounding_norm_error",
+        "filter_operator_norm_upper",
+        "total_norm_error"
+      ],
+      "additionalProperties": false
+    },
+    "upper_square": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+      "maxLength": 180
+    },
+    "witness_lower_square": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$",
+      "maxLength": 180
+    },
+    "analytic_dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "declaration": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "compiler_receipt_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "declaration",
+          "type_sha256",
+          "compiler_receipt_sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "producer_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "checker_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "outcome": {
+      "enum": [
+        "EXACT_FINITE_ARITHMETIC",
+        "CERTIFIED_FINITE",
+        "KERNEL_CHECKED_THEOREM",
+        "EXPERIMENTAL_SIGNAL",
+        "NO_CERTIFICATE",
+        "UNRESOLVED",
+        "INVALID_CERTIFICATE"
+      ]
+    },
+    "RH": {
+      "const": "OPEN"
+    }
+  },
+  "required": [
+    "schema",
+    "source",
+    "coefficients",
+    "dictionary_indices",
+    "region",
+    "source_prefix_M",
+    "kernel_lag_horizon",
+    "absolute_output_horizon",
+    "precision_bits",
+    "backend",
+    "error_budget",
+    "upper_square",
+    "witness_lower_square",
+    "analytic_dependencies",
+    "producer_sha256",
+    "checker_sha256",
+    "outcome",
+    "RH"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Shape only. Runtime semantic checks independently recompute bounds and identity; this schema alone never validates mathematical truth. Exact baseline uses its separate fixed fixture schema."
+}

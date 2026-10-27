@@ -928,6 +928,73 @@ def full_release_companions(args, output, *, root=REPO):
 
 
 
+
+def _round2_descendant_runtime(root: Path):
+    """Load the versioned projection API under an isolated package namespace."""
+    import importlib
+    import types
+    folder = root.resolve() / 'research/RHRC/integration/opica_round2'
+    name = '_opica2_descendant_' + hashlib.sha256(str(folder).encode('utf-8')).hexdigest()[:16]
+    package = sys.modules.get(name)
+    if package is None:
+        package = types.ModuleType(name)
+        package.__path__ = [str(folder)]
+        sys.modules[name] = package
+    elif list(getattr(package, '__path__', [])) != [str(folder)]:
+        raise ValueError('descendant runtime namespace collision')
+    return importlib.import_module(name + '.ancestor_projection')
+
+
+def descendant_preflight(root: Path, ancestor_projection: Path, *, base: str | None = None) -> dict:
+    """Replay the original static CLI in an authenticated immutable checkout.
+
+    This entrypoint does not invoke or widen any current-tree legacy predicate.
+    It cannot authorize release, compiler compatibility, or a new theorem.
+    """
+    import tempfile
+    root, source = root.resolve(), ancestor_projection.resolve()
+    here = root / 'research/RHRC/integration/opica_round2'
+    runtime = _round2_descendant_runtime(root)
+    inspection = runtime.inspect_descendant(root, here)
+    frozen = runtime.verify_projection(source, reference_repo=root, here=here)
+    if inspection.get('status') != 'PASS_SOURCE_SCOPE_ONLY' or frozen.get('status') != 'PASS_EXACT_FROZEN_SOURCE_ONLY':
+        raise ValueError('authenticated source projection and descendant inspection required')
+    script = 'research/RHRC/integration/opica_followup/validate_contract.py'
+    expected_schema = 'OPICA_FOLLOWUP_PREPARATION_V1'
+    expected_status = 'PASS_PREPARATION_ONLY'
+    with tempfile.TemporaryDirectory(prefix='opica2_ancestor_static_', dir=root.parent) as temporary:
+        raw_output = Path(temporary) / 'frozen-static-contract.json'
+        command = [sys.executable, '-B', script, '--phase', 'preflight', '--output', str(raw_output)]
+        if base is not None:
+            command.extend(('--base', base))
+        run = subprocess.run(command, cwd=source, capture_output=True, timeout=900)
+        if run.returncode != 0:
+            raise ValueError('unchanged frozen CLI rejected its source: ' +
+                             run.stderr.decode('utf-8', errors='replace')[-2000:])
+        raw = raw_output.read_bytes()
+        # Use the same bounded duplicate-free parser as the versioned runtime.
+        io = __import__(runtime.__package__ + '.certificate_io', fromlist=['loads_strict_json'])
+        report = io.loads_strict_json(raw, 8 * 1024 * 1024)
+    if (type(report) is not dict or report.get('schema') != expected_schema
+            or report.get('status') != expected_status or report.get('errors') != []
+            or report.get('planned_roots') != 100
+            or (report.get('RH'), report.get('Step4')) != ('OPEN', 'OPEN')):
+        raise ValueError('frozen CLI returned an incomplete or wrong-scope static report')
+    # Recheck both sides after execution; no frozen byte may be rewritten.
+    frozen_after = runtime.verify_projection(source, reference_repo=root, here=here)
+    inspection_after = runtime.inspect_descendant(root, here)
+    if frozen_after != frozen or inspection_after != inspection:
+        raise ValueError('source identities changed while replaying frozen static checks')
+    return {'schema': 'OPICA2_ANCESTOR_STATIC_DISPATCH_V1',
+        'status': 'PASS_BASELINE_STATIC_ONLY', 'scope': 'FROZEN_ANCESTOR_STATIC_PREFLIGHT_ONLY',
+        'errors': [], 'population': 100, 'source_projection': frozen,
+        'descendant_source_inspection': inspection, 'frozen_cli': script,
+        'frozen_report': report, 'frozen_report_sha256': hashlib.sha256(raw).hexdigest(),
+        'baseline_static_replay_accepted': True, 'baseline_replay_accepted': False,
+        'current_tree_compatibility_accepted': False, 'formal_acceptance': 'NOT_CHECKED',
+        'full_core_accepted': False, 'full_release_accepted': False,
+        'RH': 'OPEN', 'Step4': 'OPEN'}
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--phase', choices=['preflight', 'release'], required=True)
@@ -951,7 +1018,31 @@ def main() -> int:
                         help='optional offline folder containing exactly both unchanged hash-locked wheels')
     parser.add_argument('--lake', default='lake')
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--ancestor-projection', type=Path,
+                        help='explicit authenticated frozen-ancestor static replay; no current-tree acceptance')
     args = parser.parse_args()
+    if args.ancestor_projection is not None:
+        if args.phase != 'preflight':
+            parser.error('descendant projection dispatch is static preflight only; run original release gates in their exact source checkout')
+        try:
+            report = descendant_preflight(REPO, args.ancestor_projection)
+        except (OSError, ValueError, RuntimeError, KeyError, TypeError, ImportError, subprocess.SubprocessError) as exc:
+            report = {'schema': 'OPICA2_ANCESTOR_STATIC_DISPATCH_V1', 'status': 'FAIL',
+                'scope': 'FROZEN_ANCESTOR_STATIC_PREFLIGHT_ONLY', 'errors': [str(exc)],
+                'baseline_static_replay_accepted': False, 'baseline_replay_accepted': False,
+                'current_tree_compatibility_accepted': False, 'full_core_accepted': False,
+                'full_release_accepted': False, 'RH': 'OPEN', 'Step4': 'OPEN'}
+        encoded = json.dumps(report, indent=2) + '\n'
+        target = args.output
+        if target is not None:
+            target = target.resolve()
+            if target.is_relative_to(REPO.resolve()) or target.is_relative_to(args.ancestor_projection.resolve()):
+                parser.error('descendant replay reports must be outside both source checkouts')
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(encoded, encoding='utf-8')
+        print(encoded, end='')
+        return 0 if report['status'] == 'PASS_BASELINE_STATIC_ONLY' else 1
+
     try:
         release_artifact(args.output)
     except ValueError as exc:

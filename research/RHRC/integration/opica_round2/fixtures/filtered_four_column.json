@@ -1,0 +1,28 @@
+{
+  "schema": "OPICA2_FIXED_BASELINE_V1",
+  "source_commit": "416aec21d4d6634675639b5397cc300d1f826e34",
+  "source_tree": "0506bca8ffe613e9cd9ab844650a1141d4494f66",
+  "source": "original-one-copy-Q; sigma=1/4096; delay=sigma",
+  "filter": "(z+3/2)/(z+1/2)^5",
+  "coefficients": [
+    "1",
+    "-1",
+    "-1",
+    "-2/3"
+  ],
+  "region": {
+    "delta": [
+      "1/4",
+      "3/8"
+    ],
+    "abs_tau": [
+      "1",
+      "2"
+    ]
+  },
+  "tail_start": 48,
+  "upper_square": "315384568453197375401/4648566756368995059600",
+  "lower_square": "4396431852289/49942416588800",
+  "authority": "EXACT_FINITE_ARITHMETIC_NOT_ANALYTIC_OR_LEAN",
+  "RH": "OPEN"
+}

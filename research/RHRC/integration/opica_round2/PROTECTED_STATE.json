@@ -1,0 +1,13 @@
+{
+  "schema": "OPICA2_PROTECTED_STATE_V1",
+  "ancestor": "416aec21d4d6634675639b5397cc300d1f826e34",
+  "tree": "0506bca8ffe613e9cd9ab844650a1141d4494f66",
+  "protected_source_manifest_sha256": "fbb73630a04589f4eb188ea1c955793dc18cf23a8e5d10faeb62b8351d0d6bc5",
+  "old_claims_and_open_rows_must_be_object_identical": true,
+  "toolchain_and_mathlib_changes_allowed": false,
+  "deletions_allowed": false,
+  "renames_allowed": false,
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

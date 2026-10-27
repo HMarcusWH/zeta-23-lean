@@ -1,106 +1,106 @@
 {
-  "declaration_count": 18915,
-  "logical_bytes": 112050770,
-  "logical_sha256": "78c7ecda2299328e5dc57ad31c8d5892b65f5b8f78ed4091e5b7efd7c3061cb4",
+  "declaration_count": 21973,
+  "logical_bytes": 140036292,
+  "logical_sha256": "26c4b7080684448e6e3b354fc962ec0e47994bd8bd9c3dae6de72cecbe052ecf",
   "row_schema_version": "RHKG-phase2b-compiler-dependencies-0.4",
   "schema": "RHKG_REGISTERED_DEPENDENCY_SHARDS_V1",
   "shard_key": "SHA256_UTF8_DECLARATION_FIRST_HEX_NIBBLE",
   "shards": [
     {
-      "bytes": 6490979,
-      "declaration_count": 1132,
+      "bytes": 8202776,
+      "declaration_count": 1339,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-0.jsonl",
-      "sha256": "368935f64b1e8cb892502bd82d34f368830392bd690ecc502c664b1f42d8f05e"
+      "sha256": "83dfdc1c260af4a4bc4b4d913d2a96a9e6a741b7c3430fab28dfc06bcf482009"
     },
     {
-      "bytes": 6641101,
-      "declaration_count": 1170,
+      "bytes": 8252142,
+      "declaration_count": 1363,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-1.jsonl",
-      "sha256": "56645bcfd277645c976a48f77263d8d280129bc1fcca32833f4362df04b51342"
+      "sha256": "7f5bdc68fa4a8c06217dc97a77a6bd72dbabffbbf0407864de95b50e94060de9"
     },
     {
-      "bytes": 6941816,
-      "declaration_count": 1203,
+      "bytes": 8561636,
+      "declaration_count": 1380,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-2.jsonl",
-      "sha256": "5adb436a07bbf5f5663bbd4283e53aeeb1a1d859e0a40361b9df2deb1f6b561d"
+      "sha256": "b04e18d9fe258f602c3af8a20053561b6bc9ef3f2415c62d86c94ff511eff8cf"
     },
     {
-      "bytes": 7051233,
-      "declaration_count": 1182,
+      "bytes": 8972303,
+      "declaration_count": 1382,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-3.jsonl",
-      "sha256": "20921be2155f8f74338218a5c58a1922df090876df4433e6ecd111c88d0e5458"
+      "sha256": "05b1938497f4553a85158b297709ad73a771e9970ced7df215eb9f6143ab7e33"
     },
     {
-      "bytes": 7012724,
-      "declaration_count": 1201,
+      "bytes": 8888405,
+      "declaration_count": 1388,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-4.jsonl",
-      "sha256": "2c0bcbe3cbaadda0a2f4576a090b926ea00a6f263ebcdac2e27f22db0d5034b3"
+      "sha256": "a7657a35288f1bef71605542aef61aad2edab484f8253cf4cffc44dca9db866c"
     },
     {
-      "bytes": 7118401,
-      "declaration_count": 1171,
+      "bytes": 9069237,
+      "declaration_count": 1369,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-5.jsonl",
-      "sha256": "ef9eace12e5a346483e11ae4938574b25d17bb22d1b66fdf64193f88be9b38de"
+      "sha256": "4ff233b0c2239a391974961da4744a051df1fb175a212d1bcdbfb0f21674cd75"
     },
     {
-      "bytes": 7202103,
-      "declaration_count": 1238,
+      "bytes": 9138112,
+      "declaration_count": 1450,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-6.jsonl",
-      "sha256": "0e4386a403c11f202c194d80ee1fe6aded0ca972b09e2671b018b22c354de207"
+      "sha256": "77e8231f7a01e119bacd70af627c71cb2f505ff256298d901b69efef8a82efaa"
     },
     {
-      "bytes": 7022015,
-      "declaration_count": 1142,
+      "bytes": 8739379,
+      "declaration_count": 1324,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-7.jsonl",
-      "sha256": "7e557766124c10202edea08d0b9812f71165215e22869b26aaed52b4aa3ed4be"
+      "sha256": "167766cdde481caacbfbf2b0eec31dbf0998085a3fa7e235c105e55f34e45476"
     },
     {
-      "bytes": 7313728,
-      "declaration_count": 1236,
+      "bytes": 9462879,
+      "declaration_count": 1452,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-8.jsonl",
-      "sha256": "03e9cab508d1f53ebd156d1d5f019fb263b92771e8c18da91f3a0048c3f032cd"
+      "sha256": "f3dcba712fe1a195aa72d25667f9c0cd94f997e046d37b4f5f0952134635eed6"
     },
     {
-      "bytes": 6729853,
-      "declaration_count": 1138,
+      "bytes": 8301521,
+      "declaration_count": 1324,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-9.jsonl",
-      "sha256": "85b9c24328a70176a7df99962836c82455335e952023c61121bb3ca68f1e3774"
+      "sha256": "27363f31d0b05fc5553d73c298b2bb5ca18beee94c41c2bbaf6c6e9b86918815"
     },
     {
-      "bytes": 7111101,
-      "declaration_count": 1224,
+      "bytes": 8468378,
+      "declaration_count": 1381,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-a.jsonl",
-      "sha256": "82aa187d42ea0698f2a15b36a0d655c9e632b5a9d45eb0bb43997ddb692ba193"
+      "sha256": "659c55b2caf5b1a77d9ead39db5fe2f0018680880b3be0ee967952c46324dade"
     },
     {
-      "bytes": 7347794,
-      "declaration_count": 1234,
+      "bytes": 9170896,
+      "declaration_count": 1432,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-b.jsonl",
-      "sha256": "8b445c2adbae7db3925278386953538542448fe4ddeba3a9a6a2f21c28313fac"
+      "sha256": "dcb0815bbb4cdfe87f2d89568b6e6f69142bdc290cdd2eda8ca70a7813b080e8"
     },
     {
-      "bytes": 7152269,
-      "declaration_count": 1163,
+      "bytes": 8928179,
+      "declaration_count": 1366,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-c.jsonl",
-      "sha256": "9897daa3a10bf791bf11bb2eab699164f4bcab3b3fbd509ce1e7ec917ab3a851"
+      "sha256": "a1ae29550cd643ecea0ddb449d0fba4eded2871025277639bdb069e4bb83e616"
     },
     {
-      "bytes": 7563444,
-      "declaration_count": 1211,
+      "bytes": 9224098,
+      "declaration_count": 1396,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-d.jsonl",
-      "sha256": "70c973b8493646e2971b72f36d7db0a32ae59c0ef1a709371fbf11433aadcf84"
+      "sha256": "ce3e855d28f466d78a57889a8171393f10471e86e5e3f3deedfe650eb3f5ac13"
     },
     {
-      "bytes": 6361204,
-      "declaration_count": 1141,
+      "bytes": 8012545,
+      "declaration_count": 1310,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-e.jsonl",
-      "sha256": "67219a40b80747aecadf1a16493dc1a96f2c690cc6c37d9273ed5dc7a884d706"
+      "sha256": "a61ad01a4374725be813539cfa1fd5572d417bd8f08361e0484a2319d132b2b8"
     },
     {
-      "bytes": 6991005,
-      "declaration_count": 1129,
+      "bytes": 8643806,
+      "declaration_count": 1317,
       "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-f.jsonl",
-      "sha256": "63e73575461a05ba7293a2a0fecb8c0ae17812b2a7f8bf4802c56dc07438a760"
+      "sha256": "7c1a5afeb1e880296e73b5b885969f14de6c833f5688420d0bb8774e27210779"
     }
   ]
 }

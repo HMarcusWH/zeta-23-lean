@@ -36,6 +36,72 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
+      "id": "opica_round2_lean_source_audit_only",
+      "pattern": "\\A(?:Zeta23/OPICARound2/OptionalValidation\\.lean|Zeta23/OPICARound2/Validation\\.lean|Zeta23/OPICARound2/Validation/CT1Controls\\.lean|Zeta23/OPICARound2/Validation/CausalProbe\\.lean|Zeta23/OPICARound2/Validation/CertifiedEvaluation\\.lean|Zeta23/OPICARound2/Validation/ClassicalAdapter\\.lean|Zeta23/OPICARound2/Validation/ClassicalTransfer\\.lean|Zeta23/OPICARound2/Validation/DualCertificates\\.lean|Zeta23/OPICARound2/Validation/FilteredClassicalComparison\\.lean|Zeta23/OPICARound2/Validation/FiniteFilteredBaseline\\.lean|Zeta23/OPICARound2/Validation/FiniteNeutralApproximation\\.lean|Zeta23/OPICARound2/Validation/FixedFilter\\.lean|Zeta23/OPICARound2/Validation/NativeCuts\\.lean|Zeta23/OPICARound2/Validation/NativeJumpControls\\.lean|Zeta23/OPICARound2/Validation/OptionalExternalTransfer\\.lean|Zeta23/OPICARound2/Validation/OptionalFourCost\\.lean|Zeta23/OPICARound2/Validation/OptionalLatticeRepair\\.lean|Zeta23/OPICARound2/Validation/OptionalPolynomialGap\\.lean|Zeta23/OPICARound2/Validation/ProbeGram\\.lean|Zeta23/OPICARound2/Validation/ProfileControls\\.lean|Zeta23/OPICARound2/Validation/RegionalCertificates\\.lean|Zeta23/OPICARound2/Validation/SyntheticControls\\.lean|Zeta23/OPICARound2/Validation/TruncationControls\\.lean|Zeta23/RHRC/OpicaRound2Bindings\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round2_build_configuration_audit_only",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round2/ACCEPTANCE_MATRIX\\.json|research/RHRC/integration/opica_round2/BUILD_MANIFEST\\.json|research/RHRC/integration/opica_round2/BUILD_SPEC\\.md|research/RHRC/integration/opica_round2/CONTROL_REGISTRY\\.json|research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION\\.json|research/RHRC/integration/opica_round2/PAPER_CROSSWALK\\.json|research/RHRC/integration/opica_round2/PUBLIC_ROOTS\\.json|research/RHRC/integration/opica_round2/WORKFLOW_CONTRACT\\.json|research/RHRC/integration/opica_round2/python\\-checks\\.lock|research/RHRC/integration/opica_round2/schemas/certificate\\.schema\\.json|research/RHRC/integration/opica_round2/schemas/failure\\.schema\\.json|research/RHRC/integration/opica_round2/schemas/receipt\\.schema\\.json|research/RHRC/integration/opica_round2/schemas/workflow_harvest\\.schema\\.json)\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round2_ci_workflow_audit_only",
+      "pattern": "\\A(?:\\.github/workflows/rhrc_opica_round2\\.yml)\\Z",
+      "file_class": "CI_WORKFLOW",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round2_documentation_audit_only",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round2/README\\.md)\\Z",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round2_documentation_research_only",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round2/OPEN_RESEARCH\\.json|research/RHRC/integration/opica_round2/POST_GREEN_RESEARCH\\.md)\\Z",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "opica_round2_external_source_manifest_audit_only",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round2/SOURCE_REGISTER\\.json)\\Z",
+      "file_class": "EXTERNAL_SOURCE_MANIFEST",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round2_lean_source_auxiliary_formalization",
+      "pattern": "\\A(?:Zeta23/OPICARound2\\.lean|Zeta23/OPICARound2/All\\.lean|Zeta23/OPICARound2/CT1Controls\\.lean|Zeta23/OPICARound2/CausalProbe\\.lean|Zeta23/OPICARound2/CertifiedEvaluation\\.lean|Zeta23/OPICARound2/ClassicalAdapter\\.lean|Zeta23/OPICARound2/ClassicalTransfer\\.lean|Zeta23/OPICARound2/DualCertificates\\.lean|Zeta23/OPICARound2/FilteredClassicalComparison\\.lean|Zeta23/OPICARound2/FiniteFilteredBaseline\\.lean|Zeta23/OPICARound2/FiniteNeutralApproximation\\.lean|Zeta23/OPICARound2/FixedFilter\\.lean|Zeta23/OPICARound2/NativeCuts\\.lean|Zeta23/OPICARound2/NativeJumpControls\\.lean|Zeta23/OPICARound2/OptionalExternalTransfer\\.lean|Zeta23/OPICARound2/OptionalFourCost\\.lean|Zeta23/OPICARound2/OptionalLatticeRepair\\.lean|Zeta23/OPICARound2/OptionalPolynomialGap\\.lean|Zeta23/OPICARound2/OptionalResearch\\.lean|Zeta23/OPICARound2/ProbeGram\\.lean|Zeta23/OPICARound2/ProfileControls\\.lean|Zeta23/OPICARound2/RegionalCertificates\\.lean|Zeta23/OPICARound2/SyntheticControls\\.lean|Zeta23/OPICARound2/TruncationControls\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "id": "opica_round2_research_executable_audit_only",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round2/ancestor_projection\\.py|research/RHRC/integration/opica_round2/build_receipt\\.py|research/RHRC/integration/opica_round2/capture_ancestor\\.py|research/RHRC/integration/opica_round2/dependency_delta\\.py|research/RHRC/integration/opica_round2/harvest_workflows\\.py|research/RHRC/integration/opica_round2/run_checks\\.py|research/RHRC/integration/opica_round2/tests/test_ancestry\\.py|research/RHRC/integration/opica_round2/tests/test_certificate_io\\.py|research/RHRC/integration/opica_round2/tests/test_claim_firewall\\.py|research/RHRC/integration/opica_round2/tests/test_contract\\.py|research/RHRC/integration/opica_round2/tests/test_file_classes\\.py|research/RHRC/integration/opica_round2/tests/test_finite_baseline\\.py|research/RHRC/integration/opica_round2/tests/test_generated\\.py|research/RHRC/integration/opica_round2/tests/test_gram\\.py|research/RHRC/integration/opica_round2/tests/test_native_evaluation\\.py|research/RHRC/integration/opica_round2/tests/test_primal_certifier\\.py|research/RHRC/integration/opica_round2/tests/test_receipt\\.py|research/RHRC/integration/opica_round2/tests/test_workflow_harvest\\.py|research/RHRC/integration/opica_round2/validate_contract\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round2_research_executable_research_only",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round2/certificate_io\\.py|research/RHRC/integration/opica_round2/controls\\.py|research/RHRC/integration/opica_round2/finite_baseline\\.py|research/RHRC/integration/opica_round2/gram_diagnostics\\.py|research/RHRC/integration/opica_round2/native_evaluation\\.py|research/RHRC/integration/opica_round2/primal_certifier\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "opica_round2_research_fixture_audit_only",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round2/ANCESTOR_LOCK\\.json|research/RHRC/integration/opica_round2/PROTECTED_STATE\\.json)\\Z",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round2_research_fixture_research_only",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round2/fixtures/filtered_four_column\\.json|research/RHRC/integration/opica_round2/fixtures/mutations\\.json|research/RHRC/integration/opica_round2/fixtures/native_jump_minor\\.json|research/RHRC/integration/opica_round2/paper/DEEP_SEARCH\\.md|research/RHRC/integration/opica_round2/paper/ROUND2_ORIGINAL_25\\.json|research/RHRC/integration/opica_round2/paper/ROUND2_POSTGREEN_V2_1\\.md|research/RHRC/integration/opica_round2/paper/ROUND2_RESEARCH\\.md|research/RHRC/integration/opica_round2/paper/ROUND2_V2_1\\.json|research/RHRC/integration/opica_round2/paper/SUPPORTING_PROOFS\\.md)\\Z",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
       "id": "post290_review_git_attributes",
       "pattern": "^research/RHRC/integration/post290/(?:review_2026-10-14|review_execution_2026-10-14)/\\.gitattributes$",
       "file_class": "BUILD_CONFIGURATION",

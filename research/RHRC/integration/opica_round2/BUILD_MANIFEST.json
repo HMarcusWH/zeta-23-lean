@@ -1,0 +1,1498 @@
+{
+  "schema": "OPICA_ROUND2_BUILD_MANIFEST_V3_1",
+  "status": "IMPLEMENTATION_IN_PROGRESS_NOT_ACCEPTED",
+  "base_commit": "adab10a37207f75b9a8b415a0fe9eadca2e4c9aa",
+  "base_tree": "0506bca8ffe613e9cd9ab844650a1141d4494f66",
+  "accepted_parent": "d53dd70d38b0762af130b1d19b795af259f505f5",
+  "lean": "leanprover/lean4:v4.33.0-rc2",
+  "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "namespace": "Zeta23.OPICARound2",
+  "counts": {
+    "required_new_paths": 90,
+    "optional_new_paths": 12,
+    "existing_authoritative_edits": 15,
+    "current_producer_owned_paths": 81,
+    "mandatory_contract_families": 40,
+    "optional_contract_families": 6,
+    "original_100_change": 0
+  },
+  "create": [
+    {
+      "path": "Zeta23/OPICARound2/CausalProbe.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03",
+        "OPICA2_P04",
+        "OPICA2_P05"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/CausalProbe.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_P01",
+        "OPICA2_P02",
+        "OPICA2_P03",
+        "OPICA2_P04",
+        "OPICA2_P05"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/ProbeGram.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_P06",
+        "OPICA2_P07",
+        "OPICA2_P08",
+        "OPICA2_P09",
+        "OPICA2_P10",
+        "OPICA2_P11",
+        "OPICA2_P12",
+        "OPICA2_S02"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/ProbeGram.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_P06",
+        "OPICA2_P07",
+        "OPICA2_P08",
+        "OPICA2_P09",
+        "OPICA2_P10",
+        "OPICA2_P11",
+        "OPICA2_P12",
+        "OPICA2_S02"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/TruncationControls.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_P13",
+        "OPICA2_P14",
+        "OPICA2_P15",
+        "OPICA2_P16",
+        "OPICA2_S01",
+        "OPICA2_S03",
+        "OPICA2_S07"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/TruncationControls.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_P13",
+        "OPICA2_P14",
+        "OPICA2_P15",
+        "OPICA2_P16",
+        "OPICA2_S01",
+        "OPICA2_S03",
+        "OPICA2_S07"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/DualCertificates.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_P17",
+        "OPICA2_P18"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/DualCertificates.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_P17",
+        "OPICA2_P18"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/CertifiedEvaluation.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_P19",
+        "OPICA2_P23",
+        "OPICA2_S08"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/CertifiedEvaluation.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_P19",
+        "OPICA2_P23",
+        "OPICA2_S08"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/ClassicalAdapter.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_P20"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/ClassicalAdapter.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_P20"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/FixedFilter.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_S04",
+        "OPICA2_S16"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/FixedFilter.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_S04",
+        "OPICA2_S16"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/FilteredClassicalComparison.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_S05"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/FilteredClassicalComparison.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_S05"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/FiniteFilteredBaseline.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_S06"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/FiniteFilteredBaseline.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_S06"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/RegionalCertificates.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_P21",
+        "OPICA2_P22"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/RegionalCertificates.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_P21",
+        "OPICA2_P22"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/ClassicalTransfer.lean",
+      "role": "LEAN_MATH",
+      "required": false,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_P24",
+        "OPICA2_P25"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/ClassicalTransfer.lean",
+      "role": "LEAN_AUDIT",
+      "required": false,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_P24",
+        "OPICA2_P25"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/ProfileControls.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_S09",
+        "OPICA2_S10",
+        "OPICA2_S17"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/ProfileControls.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_S09",
+        "OPICA2_S10",
+        "OPICA2_S17"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/NativeCuts.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_S11"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/NativeCuts.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_S11"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/SyntheticControls.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_S12"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/SyntheticControls.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_S12"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/NativeJumpControls.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_S13"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/NativeJumpControls.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_S13"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/CT1Controls.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_S14"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/CT1Controls.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_S14"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/FiniteNeutralApproximation.lean",
+      "role": "LEAN_MATH",
+      "required": true,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_S15"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/FiniteNeutralApproximation.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_S15"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/OptionalPolynomialGap.lean",
+      "role": "LEAN_MATH",
+      "required": false,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_O_C2"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/OptionalPolynomialGap.lean",
+      "role": "LEAN_AUDIT",
+      "required": false,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_O_C2"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/OptionalFourCost.lean",
+      "role": "LEAN_MATH",
+      "required": false,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_O_C3"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/OptionalFourCost.lean",
+      "role": "LEAN_AUDIT",
+      "required": false,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_O_C3"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/OptionalLatticeRepair.lean",
+      "role": "LEAN_MATH",
+      "required": false,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_O_C4"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/OptionalLatticeRepair.lean",
+      "role": "LEAN_AUDIT",
+      "required": false,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_O_C4"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/OptionalExternalTransfer.lean",
+      "role": "LEAN_MATH",
+      "required": false,
+      "action": "Prove every mapped frozen contract clause using the listed actual objects; no assumed conclusion.",
+      "contract_ids": [
+        "OPICA2_X01"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation/OptionalExternalTransfer.lean",
+      "role": "LEAN_AUDIT",
+      "required": false,
+      "action": "Independently restate all contract clauses, exact native definitions, boundary cases and forbidden-premise controls.",
+      "contract_ids": [
+        "OPICA2_X01"
+      ],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2.lean",
+      "role": "MATHEMATICAL_MINIMAL",
+      "required": true,
+      "action": "Imports only; respect the explicitly enumerated dependency direction.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/All.lean",
+      "role": "MATHEMATICAL_FULL_CORE",
+      "required": true,
+      "action": "Imports only; respect the explicitly enumerated dependency direction.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/Validation.lean",
+      "role": "AUDIT_ONLY",
+      "required": true,
+      "action": "Imports only; respect the explicitly enumerated dependency direction.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/OptionalResearch.lean",
+      "role": "OPTIONAL_MATHEMATICAL",
+      "required": false,
+      "action": "Imports only; respect the explicitly enumerated dependency direction.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/OPICARound2/OptionalValidation.lean",
+      "role": "OPTIONAL_AUDIT",
+      "required": false,
+      "action": "Imports only; respect the explicitly enumerated dependency direction.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaRound2Bindings.lean",
+      "role": "LEAN_AUDIT",
+      "required": true,
+      "action": "Compiler-derived complete namespace inventory, exact types and constructors, transitive axioms, all TYPE/VALUE/STRUCTURE channels; no mathematical facade imports this file.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/README.md",
+      "role": "DOCUMENTATION",
+      "required": true,
+      "action": "Scope, commands, status and exact source pointers.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/BUILD_SPEC.md",
+      "role": "FROZEN_SPEC",
+      "required": true,
+      "action": "Copy final specification; freeze reviewed version, never mark paper status proved.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/BUILD_MANIFEST.json",
+      "role": "FROZEN_SPEC",
+      "required": true,
+      "action": "Exact allowlisted new/edit/generated paths, modes and proof-module DAG.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/PUBLIC_ROOTS.json",
+      "role": "FROZEN_SPEC",
+      "required": true,
+      "action": "One root family per mandatory contract plus clause exports; preserve exact types and conditionality. Optional roots separately tagged.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/PAPER_CROSSWALK.json",
+      "role": "FROZEN_SPEC",
+      "required": true,
+      "action": "Every original P and S component maps to full type consumer and native domain consumer.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/SOURCE_REGISTER.json",
+      "role": "EVIDENCE_METADATA",
+      "required": true,
+      "action": "Pins, immutable inputs, approved source hashes, actual compiler evidence; no self-authorized human review.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/ANCESTOR_LOCK.json",
+      "role": "FROZEN_BASELINE",
+      "required": true,
+      "action": "Freeze exact416 tree, original76+100 contracts, reviewed types/axioms/dependencies and current source hashes.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/DESCENDANT_EXTENSION.json",
+      "role": "EXPLICIT_EXTENSION",
+      "required": true,
+      "action": "Exact candidate delta and reversible registry/file-class projections; no prefix allowlists or ancestor-root changes.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/PROTECTED_STATE.json",
+      "role": "FROZEN_BASELINE",
+      "required": true,
+      "action": "Original mathematical sources,100/76 contracts,all OPEN claims and frozen controls must preserve bytes/object projections.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/WORKFLOW_CONTRACT.json",
+      "role": "FROZEN_SPEC",
+      "required": true,
+      "action": "Expected required jobs, conditional optional jobs, exact commands, artifact types, event/head identity and result meanings.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/ACCEPTANCE_MATRIX.json",
+      "role": "FROZEN_SPEC",
+      "required": true,
+      "action": "Per-clause expected types/domains/axioms/controls plus module coverage; mandatory/full/minimal distinction.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/CONTROL_REGISTRY.json",
+      "role": "FROZEN_SPEC",
+      "required": true,
+      "action": "25 inherited controls plus numerical/provenance mutation controls, scoped scientific dispositions.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/OPEN_RESEARCH.json",
+      "role": "RESEARCH_ONLY",
+      "required": true,
+      "action": "All four terminal routes and alternatives, independent missing estimates,13 deferred lanes,49 requirements/WP ledger.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/POST_GREEN_RESEARCH.md",
+      "role": "RESEARCH_ONLY",
+      "required": true,
+      "action": "Full harvest, implications, falsifiers,next moves; no workflow color as theorem authority.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/python-checks.lock",
+      "role": "BUILD_CONFIGURATION",
+      "required": true,
+      "action": "Version+hash lock for audit/research dependencies; separate core stdlib checks from optional Arb packages.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/validate_contract.py",
+      "role": "AUDIT_RUNTIME",
+      "required": true,
+      "action": "preflight/full checks; original preservation, exact delta, no omitted clauses, no optional-as-core trick; fail closed.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/ancestor_projection.py",
+      "role": "AUDIT_RUNTIME",
+      "required": true,
+      "action": "Authenticate baseline via git objects, validate exact descendant modifications, build isolated immutable baseline projection and compare current ancestor semantics.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/capture_ancestor.py",
+      "role": "AUDIT_RUNTIME",
+      "required": true,
+      "action": "Recreate baseline from exact commit/tree; refuse moving aliases, local untrusted worktrees and different source bytes.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/build_receipt.py",
+      "role": "AUDIT_RUNTIME",
+      "required": true,
+      "action": "Cold current-source builds, sealed independent expected-type consumers, parser-reparsed full compiler record, type/axiom/dependency closure and source/log/object hashes.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/dependency_delta.py",
+      "role": "AUDIT_RUNTIME",
+      "required": true,
+      "action": "All-channel parent comparison, preserve old theorem authority, report new native cuts separately from graph contacts.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/harvest_workflows.py",
+      "role": "AUDIT_RUNTIME",
+      "required": true,
+      "action": "Paginated every-head/event/attempt/job/step/artifact harvest including push and ready-for-review; compare scientific outputs, not colors.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/run_checks.py",
+      "role": "AUDIT_RUNTIME",
+      "required": true,
+      "action": "One fail-closed CLI for contract,formal lanes,controls,numerics,ancestry,generated,harvest,acceptance; no unsupported success defaults.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/certificate_io.py",
+      "role": "RESEARCH_RUNTIME",
+      "required": true,
+      "action": "Strict rational/complex parser, unique JSON keys, source/filter/region identity, size bounds, nonfinite rejection and tagged outcome modes.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/finite_baseline.py",
+      "role": "RESEARCH_RUNTIME",
+      "required": true,
+      "action": "Exact four-column period/Abel-tail verifier with transported lower, explicit analytic dependencies and no implicit RH flag.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/native_evaluation.py",
+      "role": "RESEARCH_RUNTIME",
+      "required": true,
+      "action": "Actual finite-box source approximation with absolute budgets, lag truncation and separate output tail; no uncompleted integer-series quadrature.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/primal_certifier.py",
+      "role": "RESEARCH_RUNTIME",
+      "required": true,
+      "action": "Rational coefficient witnesses, sound absolute enclosures; no matrix inverse needed; rigorous result distinct from kernel theorem.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/gram_diagnostics.py",
+      "role": "RESEARCH_RUNTIME",
+      "required": true,
+      "action": "Actual w-shift finite Gram, explicit target column, optional verified lower eigenvalue/Schur residual; reports not asymptotic proof.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/controls.py",
+      "role": "RESEARCH_RUNTIME",
+      "required": true,
+      "action": "Execute exact finite controls and targeted mutation tests; assertions must survive Python -O.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/schemas/certificate.schema.json",
+      "role": "SCHEMA",
+      "required": true,
+      "action": "Exact tagged rational-complex certificate and provenance fields.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/schemas/receipt.schema.json",
+      "role": "SCHEMA",
+      "required": true,
+      "action": "Separate execution/scientific/formal/release/terminal statuses; reject unknown version.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/schemas/workflow_harvest.schema.json",
+      "role": "SCHEMA",
+      "required": true,
+      "action": "Every attempt/job with scope/status/source/log/evidence/comparison and unfinished records.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/fixtures/filtered_four_column.json",
+      "role": "RESEARCH_FIXTURE",
+      "required": true,
+      "action": "Literal rational trial, period12, first47cells, Abel tail48, fixed rectangle and exact upper/lower; no guessed intervals.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/fixtures/native_jump_minor.json",
+      "role": "RESEARCH_FIXTURE",
+      "required": true,
+      "action": "h=1/1000,d=1/10,native atom2 bounds and negative rational minor only.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/fixtures/mutations.json",
+      "role": "RESEARCH_FIXTURE",
+      "required": true,
+      "action": "Source/filter/history/complex-conjugate/lag/NaN/replay/coverage/type-repair attacks with rejection expectations.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/paper/ROUND2_ORIGINAL_25.json",
+      "role": "FROZEN_PAPER",
+      "required": true,
+      "action": "Copy inputs/ROUND2_ORIGINAL_25.json unchanged.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/paper/ROUND2_V2_1.json",
+      "role": "FROZEN_PAPER",
+      "required": true,
+      "action": "Copy inputs/ROUND2_V2_1.json unchanged; this is historical mathematical proposal not implementation status.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/paper/ROUND2_RESEARCH.md",
+      "role": "FROZEN_PAPER",
+      "required": true,
+      "action": "Copy source-preserving probe derivations.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/paper/DEEP_SEARCH.md",
+      "role": "FROZEN_PAPER",
+      "required": true,
+      "action": "Copy phase/rate/causal controls.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/paper/ROUND2_POSTGREEN_V2_1.md",
+      "role": "FROZEN_PAPER",
+      "required": true,
+      "action": "Copy all supporting derivations/research dispositions.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/paper/SUPPORTING_PROOFS.md",
+      "role": "FROZEN_PAPER",
+      "required": true,
+      "action": "Copy exact inherited prefix,budget,minor and finite-neutral/CT1 proof references, with source hashes.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_contract.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "25+17 preservation; required40 completeness; optional registration cannot conceal omissions.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_ancestry.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "Unauthorized delta, changed originalroot, oldprivatehelperchange, forged baseline, newclaim inserted into oldid, untrustedprovider, any channel missing.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_receipt.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "Wrong SHA/tree/toolchain, missing/tampered root/consumer/constructor, silent axiom, truncation, stale object, partial coverage, copied-signature-only review.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_certificate_io.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "NaN,Infinity,bool-as-int,zero denominators,duplicate keys,negative error,wrong source/filter,unknown tag.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_finite_baseline.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "Exact published bounds plus strictness/equality/incorrect period/pole-moment mutations.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_native_evaluation.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "Moments/source-prefix convergence with rigorous bounds, inclusivefloor convention, source error scaled by coefficient budget, support versus endpoint.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_primal_certifier.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "Correct upper arithmetic, independent checker; small raw dictionary barrier and variablefilter false positives rejected.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_gram.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "Hermitian conjugation,indices>=1,N=0scope,wversusv,coupledcollision and conservative lower eigenvalue.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_workflow_harvest.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "Pagination,push+PR,reruns,matrixexpansion,skippedconditional,timeoutUNRESOLVED,unknownpending,scientificresultchange.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_file_classes.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "Audit fixtures cannot enter math; facade reachability; exact classification rule order.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_generated.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "Committedstale products rejected BEFORE write; missing shard,logical digest change,unexpected producer paths.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_claim_firewall.py",
+      "role": "AUDIT_TEST",
+      "required": true,
+      "action": "Conditionalconsumer not premise; boundedregion notglobal; fullreleasefalsewithoutreview; originalOPEN claims unchanged.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica_round2.yml",
+      "role": "CI_WORKFLOW",
+      "required": true,
+      "action": "Use exact head; independent formal lanes, existing ancestor math current-tree compatibility, frozen baseline gate projection, rational controls, canonical generated-state and fail-closed summary. Template supplied.",
+      "contract_ids": [],
+      "baseline": "ABSENT_AT_PIN"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/schemas/failure.schema.json",
+      "role": "JSON_SCHEMA",
+      "required": true,
+      "action": "Separate early failure envelope; no fabricated compiler objects. Explicit A17 footprint amendment.",
+      "baseline": "ABSENT_AT_PIN"
+    }
+  ],
+  "edit": [
+    {
+      "path": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "baseline_sha256": "9e4803509dd087c21942f8d1abc198ef71ad4dee7c633ed5f0b28e13ed31fdc0",
+      "action": "Append import of Round2.All (never audit/optional stubs) and #check/#print axioms for only actually proved approved core roots; preserve existing content.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "research/RHRC/CLAIM_REGISTRY.json",
+      "baseline_sha256": "d9aca1e236caa3cc262b8b00fa0e2657ef048b18eb6aae2d0ed024b6403253ef",
+      "action": "Append distinct OPICA2_* supporting claim rows only after evidence; preserve all old objects, dependencies and OPEN terminal caps. Conditional statements explicitly name antecedents.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "baseline_sha256": "c808e424ce312d11a466f5652086499de76b678c3192bab467c1c640591be4d0",
+      "action": "Append exact proved OPICA2 bindings (one per registeredclaim) with actualmodule/kind/source; preserve candidate and old bindings.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "research/RHRC/graph/FILE_CLASSES.json",
+      "baseline_sha256": "e2ddad1479ee23d663700076b43ac1a5ae4a4f89c89e7508944c8fe1103f7378",
+      "action": "Prepend precise Round2 validation/exporter/fixtures audit rules before mathematical namespace rule; map each new path exactly, retain existingrules byteobjectequivalence.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json",
+      "baseline_sha256": "27d17a60f726d94556606cad39d520469fd12c7d2650ad02c82f28608bcc5699",
+      "action": "Add Round2 math/audit/document roles; graph_theorem_promotion remains false; all priorroles retained.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "research/RHRC/tools/run_suite.py",
+      "baseline_sha256": "8960af1cbf4881d0290346c1c38b0e52aa5cef377edb317580d347ec17924214",
+      "action": "Route ancestor preflights through authenticated versioned descendant projection when present; run new core tests/contract alongside all oldchecks. Never use skip-derived as full acceptance.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "research/RHRC/integration/opica/validate_contract.py",
+      "baseline_sha256": "640dc69094c6bc0b431cf06977659efe2fd6c78871a16e984398e322dc71c267",
+      "action": "Add narrow versioned descendant entrypoint before existing CLI branch; unknown or invalid extension fails. Original predicates remain unchanged and execute in authenticated immutable baseline projection.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/validate_contract.py",
+      "baseline_sha256": "a83e0ca7d430993b0f08a058d5a846939e484592d7e141fe84316131cb87c38c",
+      "action": "Same exactdescendant dispatcher; preserve originalfrozen contract predicates and fixed hashes. Tests of original function retain original scope.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "research/RHRC/integration/opica/tests/test_contract.py",
+      "baseline_sha256": "2781075b8afc709896e825a4070a5164f4de62bab1071f262ad85e0892738065",
+      "action": "Add descendant-dispatch and malformed-extension regression tests without changing existingexpectedfalse cases.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/tests/test_contract.py",
+      "baseline_sha256": "549303df79b6fd40a3665fccbd870c2688aca301c3708da9ef6fcbcbb49d7e02",
+      "action": "Add exact-parent100/no-extraaxiom/no-contract-rewrite regressions and projectionfailure tests.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica.yml",
+      "baseline_sha256": "ddfcbf1b422a9409dd0896413c5cc0187493844e4af452611716734ecc7b69bb",
+      "action": "For explicitly reviewed Round2 descendants, run ancestor workflow in verified projection, label baseline-regression evidence; ALSO require current-tree ancestor compatibility in Round2. Old branch without extension runs original workflow unchanged.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica_followup.yml",
+      "baseline_sha256": "0a167425ab58dea46a5e13fae93cd26da2d0a8da66e9ab258eb2917412ce2c2d",
+      "action": "Analogous versioned descendant mode; preserve original100 commands/roots/consumers. Do not rebind old receipts to a newhead or suppress requiredsteps.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "README.md",
+      "baseline_sha256": "c671dfdf36f36eaacea76efeb4b7524fcd062594cbed23540dc0be5e6c18bf7a",
+      "action": "Add bounded Round2 scope/status/source and command entry; no RH claim.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "research/RHRC/README.md",
+      "baseline_sha256": "bed0916bb89a09bcbdf582886b46e83af0ab82b366759017feb285b993bd575d",
+      "action": "Add research+formal+release status navigation, original100reuse and new independentestimatefrontier.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    },
+    {
+      "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+      "baseline_sha256": "9ff141ff470f2d979ad093b909007f355abd831e9d3125e31d690c5fc195580a",
+      "action": "Append datedRound2 priority and all A-D alternatives; preserve historicaltext.",
+      "scope": "EXPLICIT_VERSIONED_INTEGRATION_EDIT_NO_ANCESTOR_MATHEMATICS_CHANGE"
+    }
+  ],
+  "generated": [
+    {
+      "path": "research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl",
+      "baseline_sha256": "a1acf1f5472db26d7bc4d1cbe22f395028019783fcfd9d97545461819d06034d",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-0.jsonl",
+      "baseline_sha256": "368935f64b1e8cb892502bd82d34f368830392bd690ecc502c664b1f42d8f05e",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-1.jsonl",
+      "baseline_sha256": "56645bcfd277645c976a48f77263d8d280129bc1fcca32833f4362df04b51342",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-2.jsonl",
+      "baseline_sha256": "5adb436a07bbf5f5663bbd4283e53aeeb1a1d859e0a40361b9df2deb1f6b561d",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-3.jsonl",
+      "baseline_sha256": "20921be2155f8f74338218a5c58a1922df090876df4433e6ecd111c88d0e5458",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-4.jsonl",
+      "baseline_sha256": "2c0bcbe3cbaadda0a2f4576a090b926ea00a6f263ebcdac2e27f22db0d5034b3",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-5.jsonl",
+      "baseline_sha256": "ef9eace12e5a346483e11ae4938574b25d17bb22d1b66fdf64193f88be9b38de",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-6.jsonl",
+      "baseline_sha256": "0e4386a403c11f202c194d80ee1fe6aded0ca972b09e2671b018b22c354de207",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-7.jsonl",
+      "baseline_sha256": "7e557766124c10202edea08d0b9812f71165215e22869b26aaed52b4aa3ed4be",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-8.jsonl",
+      "baseline_sha256": "03e9cab508d1f53ebd156d1d5f019fb263b92771e8c18da91f3a0048c3f032cd",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-9.jsonl",
+      "baseline_sha256": "85b9c24328a70176a7df99962836c82455335e952023c61121bb3ca68f1e3774",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-a.jsonl",
+      "baseline_sha256": "82aa187d42ea0698f2a15b36a0d655c9e632b5a9d45eb0bb43997ddb692ba193",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-b.jsonl",
+      "baseline_sha256": "8b445c2adbae7db3925278386953538542448fe4ddeba3a9a6a2f21c28313fac",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-c.jsonl",
+      "baseline_sha256": "9897daa3a10bf791bf11bb2eab699164f4bcab3b3fbd509ce1e7ec917ab3a851",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-d.jsonl",
+      "baseline_sha256": "70c973b8493646e2971b72f36d7db0a32ae59c0ef1a709371fbf11433aadcf84",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-e.jsonl",
+      "baseline_sha256": "67219a40b80747aecadf1a16493dc1a96f2c690cc6c37d9273ed5dc7a884d706",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-f.jsonl",
+      "baseline_sha256": "63e73575461a05ba7293a2a0fecb8c0ae17812b2a7f8bf4802c56dc07438a760",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/CONTACT_QUOTIENT_DECLARATION_DEPENDENCIES.jsonl",
+      "baseline_sha256": "27debcecea86631b449a1d1fb33b00726af9de1fdb1a7050d8af0d9eb6bc9411",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/CONTACT_QUOTIENT_VIEW.json",
+      "baseline_sha256": "d5b873d5d5791c8727e6af6257f8da9759e0ee4d5bc3d1a7ad94bd9fce282133",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_BRIDGE_FRONTIERS.json",
+      "baseline_sha256": "67ed95841ed64d6fd878c8b89b610e64bad63c5b8595928f1fb90ba3ac72781b",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_COHORT_ATOMS.json",
+      "baseline_sha256": "42528e89a20d3a513091f8de497e764db6f9a749c0a6dca5efa2a6d44fb336e5",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_COHORT_OVERLAP.json",
+      "baseline_sha256": "74cd8a806869bbf2aad82f079453c9a427d07ea4551d68b5cc8be2e27f813b90",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_KERNEL_ATLAS.json",
+      "baseline_sha256": "434a1afd304bcff6342d2c0be593646f255002a0ee786df9dd75099878044390",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_KERNEL_QUOTIENT.json",
+      "baseline_sha256": "9c0be32594b0fd64dd56a5b951dd1c05229f6f5a31fd641f52740b788cbf55eb",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_FRONTIERS.json",
+      "baseline_sha256": "9a05c8b8192f8d6ce8405b657d1f539b7116a48fb6466556c1a4a83342cf89ee",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_QUOTIENTS.json",
+      "baseline_sha256": "967d92a4edff8a2fefab69d1a037bb1da0c22c3c796bf580a959751b3ff17f1a",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_SUMMARY.json",
+      "baseline_sha256": "ccdd32f7bf10da7db1971821b8c9873f9c7c74444b0c80bf0b9e29ca52beb99d",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_SIGNATURE_CLASSES.json",
+      "baseline_sha256": "12cac65aea2344a18b07bb5735a5626864269ecf88ada7971d402e4b68b69a76",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json",
+      "baseline_sha256": "f47b2738d177f458253b8f8ff11615cbe998f3b751e98b5124b9b37051917326",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json",
+      "baseline_sha256": "a0175b5e5e6460d786fffe9f3081eb8779d5cb11ef6bf4e7eddf9f7aead7a0e9",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/MODULE_SEMANTIC_CLOSURE.json",
+      "baseline_sha256": "66fdf7d14355de654e374469687d9ff464890d70a310bd126aad0eeea2360bb6",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json",
+      "baseline_sha256": "ef6807bce0784375bfce8c365abed7ba168bd5e03e5ded10c5f12ddca946cea5",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json",
+      "baseline_sha256": "40ebece06a8b1bd9700928a5cda75dec6fad044322dda30c068c7fa7b85706c2",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json",
+      "baseline_sha256": "f857620214c23126ce3588e9ff4d7e692f1a480b4f1decb260ffbe9ed48debd3",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json",
+      "baseline_sha256": "603c5fb37a654a53db416fa2eac0e2f8f4c71ac875fe4aa621edda8e7fbe29f8",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/lean_declarations.jsonl",
+      "baseline_sha256": "770f8b5f3344ab15bdcaed001fba84150f47bd3f45a1c430efee41851dc8652c",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/lean_modules.jsonl",
+      "baseline_sha256": "a8a370edfa8aa4823f930b1ad66a5698817fbc4f9c1bb66d73cafb86eb613813",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/lean_source_declarations.jsonl",
+      "baseline_sha256": "ee9eb8826753f83dbaa03b35c40a6b51fb2dede8ebe01edbfbc28969478ecaa2",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/registry_nodes.jsonl",
+      "baseline_sha256": "eb1b1165f63a0a780f42b3ea3cb79657eea352128eb6e704ce6175f8eb396a37",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-0.jsonl",
+      "baseline_sha256": "5a895ceff16d52fddc353050d88777ce1f7fba863f9b1c0ec7cc45dd2c065311",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-1.jsonl",
+      "baseline_sha256": "90c1bc33337342fb765800f15f9e7aefa2ffe6bff7ec9ecf5287a15ea5f71f13",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-2.jsonl",
+      "baseline_sha256": "f9ca3c0be161261e84879fee66d0c176ba4d5f1a2c7fcb5106424e29ea0b6e7a",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-3.jsonl",
+      "baseline_sha256": "e6b6f52d10fbd771198b0cc73fba41881668886cc4eed9fe3cc144e6f6b2130e",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-4.jsonl",
+      "baseline_sha256": "240db2e6e582ad80d121904ea74ca81f0c80308309ab90379513fd5f1079ca81",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-5.jsonl",
+      "baseline_sha256": "a200907c7ad54b8100f738218b545281ccdfbc80af9554babb5b9523980e463c",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-6.jsonl",
+      "baseline_sha256": "53e181b5b609983acee1e050b65cd2b429663702e436406e07ed0be90edbee05",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-7.jsonl",
+      "baseline_sha256": "8c83b6a18bf7efe41457c88b85f5c20341f0a09c19b812307c27436da7c749bd",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-8.jsonl",
+      "baseline_sha256": "faac61b4f87cea2dcd7a63c7bdb541aafbe855a4cceb042e48f7023cae522cbe",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-9.jsonl",
+      "baseline_sha256": "2dbccac0057f915b5f0f52c3964246784f6e535a251894d57029119946748c6a",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-a.jsonl",
+      "baseline_sha256": "a32579cfc934adcc1c452c9cc22348489063d3867d3b0f2eb5c71dd9aaf77d2b",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-b.jsonl",
+      "baseline_sha256": "792b9c198e7ddacfbeb4f10706f560fd2842f3267a9e2511eb91ff7d7363ba23",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-c.jsonl",
+      "baseline_sha256": "36a185674d991ff6f67ed24cba1e16c5474c36052f8d1a552bc5ad5bc98e4366",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-d.jsonl",
+      "baseline_sha256": "09d14daf3413d276eafe3bf5ba3f2c63a4c2bce1446c7b6037d2ed52cf27a4d2",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-e.jsonl",
+      "baseline_sha256": "6c52fbe1a6076ca1333711f8902b6a9cc0026c2d4a05859a7491ab6d5c99cf1b",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-f.jsonl",
+      "baseline_sha256": "4ec62d2692b41ac8a6f90fc6c0331528ce68adfcd8378fe61101eb7b6d81e242",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/repository_files.jsonl",
+      "baseline_sha256": "cb89d439c12971d1665dce8354fbfd323028abd15ac4fb57bc9ddf11121fbe15",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl",
+      "baseline_sha256": "c51716f423534ea3d4e89bf2be80d9851959bb7c4fa431cb086192b7c95eba4a",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl",
+      "baseline_sha256": "1fba593392bdaf7dd5ca7e14df2b5a95ac12f4f634e6f031c918cd73e5951468",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json",
+      "baseline_sha256": "7fa763365a27544ead38de41e1f44bf886bac46665f60802e9834b08fd1017ad",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-0.jsonl",
+      "baseline_sha256": "15296ce55e052340465dd89b74b4b0384bbe57703c458a7bd64d5bd7261462e8",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-1.jsonl",
+      "baseline_sha256": "2c0a7bc42915f16bb1fd639066dcefffd0066a99a2ad3671f1ddf35d6d4a7bbf",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-2.jsonl",
+      "baseline_sha256": "282b5fa4af66b0e5f09e85d37fa66e49c7f65d3c5dfe05dd44f0377c3992cfb8",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-3.jsonl",
+      "baseline_sha256": "60935d175c0a8a254a9c97fad7040172e6fa02b211b249892c0582b86da88b3f",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-4.jsonl",
+      "baseline_sha256": "cfe4322a010bfaa38d10a5d7d5054094968f9a785983e29fea361a9a9219ba5f",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-5.jsonl",
+      "baseline_sha256": "94df76a680f46a1a3420c02752f42462f9fcd0d5da37137b8274e30834bb334a",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-6.jsonl",
+      "baseline_sha256": "6c0c51b0a5a979d3672b492a4a379ea33b49ee6d92dd20fab5cf277db20fce77",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-7.jsonl",
+      "baseline_sha256": "8fad97379fafebe2615a0a1c4f78434f56a495770846abda9151efcd1afe6585",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-8.jsonl",
+      "baseline_sha256": "545a296d9b585cacaa3bb35d1f4ab9f9628c758bc5d62bf8cf94e7c090b8504c",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-9.jsonl",
+      "baseline_sha256": "59c965bef5aa3fab4817c06e833355dd566d48a87c9d349b78d4af192104bf5b",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-a.jsonl",
+      "baseline_sha256": "2a0650f5c6ca3acab1e565b8c31af89516134392afe28f5fa862f419df099baa",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-b.jsonl",
+      "baseline_sha256": "5253c252b02e044bf9dbcb15a73c1e4f52a910490c504d77f23a18f626414795",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-c.jsonl",
+      "baseline_sha256": "776130cdedcf127ba67de070031a71cb2eeb375bb61a982f063c401de5f538a7",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-d.jsonl",
+      "baseline_sha256": "395e57a6e90d3f527fd4bdfb15dbda150147a6e651984e04065a768fe98081cf",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-e.jsonl",
+      "baseline_sha256": "4034b578bc03562766847b69786c381d26b31043df36e51c61b6bb59deaad5b3",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-f.jsonl",
+      "baseline_sha256": "6315fdca638209a48b5761d046b0a555e1b14786d7b401da4ec7a7434e89d608",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json",
+      "baseline_sha256": "e2a4f833232c2ffdbf04569c28b6ab793d3e083932aa3e61e16b982567940e31",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/ffbbp/generated/history/RHKG_CANDIDATE_REDUCTION_ASSURANCE_v1_PR265.json",
+      "baseline_sha256": "226b2d12e6fa5551df31972591fbdce7d23187d9461e0ec01e6114591d903493",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json",
+      "baseline_sha256": "d0b38f505caf20a72ddff68696546ec16e4c51c8341d7d0e3719a2e863258e23",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/ool/generated/RHKG_OOL_ROUTE_CONTACTS.jsonl",
+      "baseline_sha256": "69a3110c2f542ae2ab7d8075ae419193487af3391b814a6e0bd79ccca35b3fa4",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/ool/generated/history/RHKG_OOL_PHASE_ATLAS_v1_PR266.json",
+      "baseline_sha256": "59905fcf4b8ae2e0219ddc006b0e4e39a1b70ad4205547d145312beea654e2ed",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    },
+    {
+      "path": "research/RHRC/ool/generated/history/RHKG_OOL_ROUTE_CONTACTS_v1_PR266.jsonl",
+      "baseline_sha256": "f00b39376c8db5cc85b52593cd9cd1ab31243eb650180426f475df01d85f6791",
+      "action": "REGENERATE_ONLY_WITH_CANONICAL_MATERIALIZER"
+    }
+  ],
+  "generated_policy": "List is the exact current producer-owned inventory, not a license to hand-edit. Only canonical materialization can change it; new/missing shard or output paths require explicit source-pinned amended inventory with lossless logical-stream validation.",
+  "protected": "Every baseline path outside exact edit/generated lists remains unchanged. All ancestor Lean mathematical sources, 76/100 frozen contract objects, source kernels, toolchain and originalOPEN claims are protected.",
+  "deletions": [],
+  "renames": [],
+  "ancestor_extension_warning": "Existing sealed validators do not accept this descendant automatically. Implement and adversarially review explicit projection + current-tree compatibility mode before claiming integration green; never reseal originalcontracts or forgehumanreview.",
+  "frozen_spec_commit": "416aec21d4d6634675639b5397cc300d1f826e34",
+  "implementation_amendments": [
+    {
+      "id": "A17_FOOTPRINT_01",
+      "path": "research/RHRC/integration/opica_round2/schemas/failure.schema.json",
+      "change": "One required failure-envelope schema; all original101 planned new paths preserved."
+    },
+    {
+      "id": "MATH_IMPORT_01",
+      "module": "Zeta23.OPICARound2.CausalProbe",
+      "add_upstream_import": "Zeta23.OPICAFollowup.MultiplicityTail",
+      "reason": "Reuse actual signed-kernel Bochner/Fubini/Laplace convolution theorems; no audit import or new assumption."
+    }
+  ],
+  "source_identity_policy": "Frozen416 evidence remains immutable; actual merged build base adab has the identical0506 tree. Full future source receipts bind their exact candidate head/tree.",
+  "implementation_refinements": [
+    {
+      "path": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "reason": "The unchanged registered_theorem_binding_lint requires the import set to equal actual theorem provider modules. Import the sixteen checked mathematical provider modules directly instead of adding an extra umbrella import. No audit or optional module enters the registered mathematical import surface.",
+      "path_policy_changed": false,
+      "old_claim_objects_changed": false,
+      "old_OPEN_claims_changed": false
+    }
+  ]
+}

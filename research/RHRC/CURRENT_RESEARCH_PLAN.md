@@ -1665,3 +1665,11 @@ D2 dispositions and independent-review gates retain their prior authority.
 
 
 </details>
+
+## Round 2 implementation checkpoint — 2026-10-26
+
+Prioritize source-faithful mathematical information rather than theorem or workflow counts. Round 2 proves quantitative source-prefix errors and their target/dictionary/Euclidean-Gram transport, adaptive lag/precision budgets with the noncompact target tail, and finite real quadratic profile rigidity. These provide bounded exclusions and strategy restrictions; they do not supply a terminal estimate.
+
+Path B still needs genuine residual approximation (or its independently sufficient fixed-filter alternative). Paths A, C and D still need their independently proved, correctly matched arithmetic restriction. Test compositions among all four routes. Exact nonrange, a fixed input-budget barrier, or an all-order finite-family obstruction must not be promoted to a closure obstruction.
+
+Before the next theorem campaign, complete the current cold source/export checks, historical baseline and current compatibility replays, numerical/semantic controls, and complete post-run workflow harvest. Keep discovery leads separate from Lean theorems. All four terminal statements, RH and Step 4 remain OPEN.
