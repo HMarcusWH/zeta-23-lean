@@ -227,8 +227,8 @@
     },
     {
       "path": "Zeta23/RHRC/RegisteredClaimBindings.lean",
-      "bytes": 56283,
-      "sha256": "e702c430d4ab85c092b03dc89555c74bc54ace8142b06cbba5fbfc0c2d00e708"
+      "bytes": 57045,
+      "sha256": "2158e6698ffe143caf522cacc52fa4a7e484ee946dcce303b0e0d4421615252d"
     },
     {
       "path": "research/RHRC/CLAIM_REGISTRY.json",
@@ -303,7 +303,7 @@
     {
       "path": "research/RHRC/integration/opica_round2/validate_contract.py",
       "bytes": 37564,
-      "sha256": "3a16163dbb8e6b68de56ddace6f7532decac02e141d388aa60b739ff448b4183"
+      "sha256": "f4f1e19f88fae5fbca929d2091b094f8f79c024f4fefeb977b4db2e128f18752"
     },
     {
       "path": "research/RHRC/integration/opica_round3/OPEN_RESEARCH.json",
@@ -362,8 +362,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_round3/validate_contract.py",
-      "bytes": 31111,
-      "sha256": "59b9fde7710243320a011f32f71d4eedf17b8673b43b5fa1a0e548b5fff92ff8"
+      "bytes": 31182,
+      "sha256": "1c71c151293c3fbdec09ca2374b662ed7edd6f9b6e31107832cc3d4359b006c3"
     }
   ],
   "premise_contracts": {

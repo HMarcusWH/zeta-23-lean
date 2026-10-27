@@ -473,7 +473,8 @@ def formal_checks(repo: Path, output: Path, timeout: int) -> dict[str, Any]:
         query = output / "CurrentRootAudit.lean"
         query.write_text("import Zeta23.OPICARound2.All\nimport Zeta23.OPICARound3.Validation\n"
                          "set_option pp.universes true\nset_option pp.fullNames true\n"
-                         + "\n".join("#check " + n + "\n#print axioms " + n for n in names) + "\n",
+                         + "\n".join("#check " + n + "\nset_option pp.universes false in\n#print axioms " + n
+                                     for n in names) + "\n",
                          encoding="utf-8", newline="\n")
         text = run(["lake", "env", "lean", "-R", str(output), "-o",
                     str(output / "CurrentRootAudit.olean"), str(query)], "current-root-audit")
