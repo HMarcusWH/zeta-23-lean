@@ -268,8 +268,8 @@
     },
     {
       "path": "research/RHRC/CLAIM_REGISTRY.json",
-      "bytes": 284446,
-      "sha256": "075d7b992522523933b7a75c838a311c2427d0690b6d0bdd561f1c5c86d86e94"
+      "bytes": 285090,
+      "sha256": "ffa0266980d9c79eb4770c602a17315cc69dc10e53a83d837734f01f744793ab"
     },
     {
       "path": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
@@ -373,8 +373,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS.jsonl",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "bytes": 12332935,
+      "sha256": "c0becd027e18be98c29647b85e0d18aeb0748a66c2c6ab6690a4940b2945150e"
     },
     {
       "path": "research/RHRC/integration/opica_round3/atlas/SEMANTIC_OVERLAY.json",
