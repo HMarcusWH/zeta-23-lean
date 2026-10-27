@@ -232,8 +232,8 @@
     },
     {
       "path": "research/RHRC/CLAIM_REGISTRY.json",
-      "bytes": 280313,
-      "sha256": "37e4a0d24adb7e7eae88d91eb2309fe8c5139a153c44c4e075cea128ed3343ea"
+      "bytes": 283786,
+      "sha256": "bde4b49a24f66f1061c4ca164f55d72879fd35dc8063abc0bc285ef9425b8a68"
     },
     {
       "path": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
