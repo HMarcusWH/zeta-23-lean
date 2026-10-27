@@ -42,7 +42,7 @@ IMMUTABLE_INPUT_HASHES = {
 
 # Explicit versioned child boundary. These pins are finalized after reviewed
 # authored-source freeze; the original Round2 path policy/locks remain intact.
-ROUND3_PROVIDER_SHA256 = "1c71c151293c3fbdec09ca2374b662ed7edd6f9b6e31107832cc3d4359b006c3"
+ROUND3_PROVIDER_SHA256 = "3430e13e5522a600b73442037e4d721fa346736cf8a9ea70b10e798db09ef51a"
 ROUND3_PATH_POLICY_SHA256 = "a407dc32c4975b0728f385e5fe828c39393d551b57d12ab965d5ee83e42c997e"
 
 

@@ -62,6 +62,17 @@ authority. The workflow additionally runs the fresh formal gate, four
 positive/stronger-type mutation pairs and the existing canonical generated
 checker against current committed products.
 
+The separate current Phase 1 acceptance job downloads the contract, runtime
+and formal artifacts from its own workflow run. It requires every contributing
+lane to succeed and independently checks their exact current source identity
+and raw evidence. Missing, skipped, failed or mismatched inputs cannot produce
+a successful Phase 1 acceptance report. This is acceptance of the explicitly
+selected D01–D04, precision-fix and falsification scope; it grants no full-release
+or human-review authority. The original Round 2 required-lane rejection and
+independent compiler/clause/control/ancestry recomposition remain active for
+the explicitly selected historical baseline. Neither gate substitutes a
+historical replay for current-source evidence.
+
 For review, inspect `PUBLIC_ROOTS.json`, the exact statements and independent
 consumers, `SOURCE_REGISTER.json`, the scope guard and mutation tests, the
 falsification controls and current #296 tests. Read `OPEN_RESEARCH.json` before

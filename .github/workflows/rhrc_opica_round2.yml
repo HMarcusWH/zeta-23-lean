@@ -883,7 +883,6 @@ jobs:
         name: opica2-ancestry
         path: ${{ runner.temp }}/opica2-ancestry-input
     - name: Reject every missing or unsuccessful required current workflow lane
-      if: ${{ env.ROUND2_BASELINE_REPLAY != 'true' }}
       shell: bash
       run: |-
         set -euo pipefail
@@ -897,7 +896,6 @@ jobs:
       env:
         REQUIRED_NEEDS: ${{ toJSON(needs) }}
     - name: Independently recompose exact compiler, clause, control and ancestry evidence
-      if: ${{ env.ROUND2_BASELINE_REPLAY != 'true' }}
       shell: bash
       run: |-
         set -euo pipefail
@@ -923,7 +921,7 @@ jobs:
           --optimized-control-evidence "$RUNNER_TEMP/opica2-controls-input/optimized/controls/result.json" \
           --ancestry-evidence "$RUNNER_TEMP/opica2-ancestry-input/ancestry/result.json"
         printf '%s\n' 'Compiler evidence only. A separate post-run all-job harvest and independent human review remain required; full release, RH and Step4 are not inferred.' > "$OPICA2_OUTPUT_DIR/acceptance-boundary.txt"
-    - name: Record Round3 current-release boundary as explicitly not applicable
+    - name: Bind the checked historical acceptance to its explicit source scope
       if: ${{ env.ROUND2_BASELINE_REPLAY == 'true' }}
       shell: bash
       run: |-
@@ -931,15 +929,23 @@ jobs:
         python - <<'PY'
         import json,os
         from pathlib import Path
-        report={'schema':'OPICA3_LEGACY_RELEASE_SCOPE_DISPOSITION_V1',
-          'disposition':'NOT_APPLICABLE_TO_ROUND3_CURRENT_RELEASE',
+        accepted=json.loads(Path(os.environ['OPICA2_OUTPUT_DIR'],'acceptance','result.json').read_bytes())
+        if (accepted.get('status')!='PASS_COMPILER_EVIDENCE_ONLY'
+            or accepted.get('checked_commit')!='775692f2e72d76b6a97cf66926a86cc96342c109'
+            or accepted.get('checked_tree')!='acd548eb97ddaee68eb6c9df73f82756ee10d13f'
+            or accepted.get('full_core_compiler_verified') is not True
+            or accepted.get('full_release_accepted') is not False):
+            raise SystemExit('Historical Round2 acceptance did not independently complete')
+        report={'schema':'OPICA3_CHECKED_BASELINE_ACCEPTANCE_SCOPE_V1',
+          'disposition':'HISTORICAL_BASELINE_CORE_ACCEPTANCE_EXECUTED_AND_REPARSED',
           'requested_child_commit':os.environ['REQUESTED_CHILD_HEAD'],
           'requested_child_tree':os.environ['REQUESTED_CHILD_TREE'],
           'baseline':'775692f2e72d76b6a97cf66926a86cc96342c109',
-          'reason':'This historical775 replay supplies no current Round3 provider harvest or full-release acceptance.',
+          'baseline_core_compiler_verified':True,
+          'reason':'The unchanged Round2 acceptance predicate ran against exact775 evidence. Current Phase1 acceptance is separately required by the Round3 aggregate gate; full release remains OPEN.',
           'current_tree_compiler_accepted':False,'full_core_accepted':False,'full_release_accepted':False,
           'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
-        Path(os.environ['OPICA2_OUTPUT_DIR'],'legacy-release-not-applicable.json').write_text(json.dumps(report,indent=2)+'\n')
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'checked-baseline-acceptance-scope.json').write_text(json.dumps(report,indent=2)+'\n')
         PY
     - name: Verify exact source unchanged after all commands
       shell: bash

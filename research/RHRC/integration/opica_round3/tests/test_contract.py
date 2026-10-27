@@ -9,6 +9,7 @@ import copy
 from fractions import Fraction as F
 import importlib.util
 import hashlib
+import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -331,6 +332,331 @@ class ExactFalsificationTests(unittest.TestCase):
             local_eta = 1/(aperture+2)
             for point in (aperture, aperture+F(1, 2), aperture+1):
                 self.assertLessEqual(-1/(point+1), -local_eta)
+
+
+def write_fixture(path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(value if isinstance(value, bytes) else
+                     (json.dumps(value, indent=2) + "\n").encode("utf-8"))
+
+
+def unit_log(ids):
+    return "\n".join(name.rsplit(".", 1)[1] + " (" + name + ") ... ok" for name in ids) + (
+        "\n\n----------------------------------------------------------------------\nRan " + str(len(ids)) + " tests in 0.001s\n\nOK\n")
+
+
+def formal_artifact_fixture(root, names):
+    """Protocol bytes for parser tests only; these objects are not Lean evidence."""
+    source = {"checked_commit": "a" * 40, "checked_tree": "b" * 40}
+    environment = {"lean_toolchain": "leanprover/lean4:v4.33.0-rc2", "mathlib_commit": "c" * 40}
+    packages = [{"name": "fixture", "commit": "d" * 40}]
+    report = {"schema": "OPICA3_CURRENT_COMPILER_GATE_V1", "status": "PASS_CURRENT_COMPILER_SCOPE_ONLY",
+              **source, "scope": "CURRENT_FOUR_ROOTS_AND_CONSUMERS_PLUS_CURRENT_ORIGINAL_FORTY",
+              "build_mode": "FRESH_CI_PROJECT_BUILD_PACKAGE_CACHE_ALLOWED", "commands": [],
+              "current_tree_compiler_accepted": True, "environment": environment, "pinned_packages": packages,
+              "source_manifest_sha256": "e" * 64,
+              "lean_version": "Lean (version 4.33.0-rc2, commit d8b18978322de05a8f3dba51ef03cf5461676c17)",
+              "axioms": {name: ["propext", "Classical.choice", "Quot.sound"] for name in names},
+              "semantic_controls": [], **contract.CAPS}
+    producer = "/original-ci-root/formal"
+    def command(argv, label, text, positive=True):
+        write_fixture(root / (label + ".log"), text.encode())
+        report["commands"].append({"argv": argv, "exit_code": 0 if positive else 1, "timeout": False,
+                                   "log": label + ".log", "log_sha256": contract.sha(root / (label + ".log"))})
+    command(["lake", "env", "lean", "--version"], "lean-version", report["lean_version"] + "\n")
+    command(["lake", "build", "Zeta23.OPICARound2.All", "Zeta23.OPICARound2.Validation",
+             "Zeta23.RHRC.OpicaRound2Bindings", "Zeta23.OPICARound3.All", "Zeta23.OPICARound3.Validation",
+             "Zeta23.RHRC.OpicaRound3Bindings"], "current-build", "fixture build\n")
+    write_fixture(root / "CurrentRootAudit.lean", contract.render_current_audit(names))
+    write_fixture(root / "CurrentRootAudit.olean", b"PARSER UNIT FIXTURE, NOT A LEAN OBJECT")
+    report["query_sha256"] = contract.sha(root / "CurrentRootAudit.lean")
+    report["object_sha256"] = contract.sha(root / "CurrentRootAudit.olean")
+    text = "".join(name + " : True\n'" + name + "' depends on axioms: [propext, Classical.choice, Quot.sound]\n" for name in names)
+    command(["lake", "env", "lean", "-R", producer, "-o", producer + "/CurrentRootAudit.olean",
+             producer + "/CurrentRootAudit.lean"], "current-root-audit", text)
+    for index in range(4):
+        positive, negative, scope = contract.semantic_control_pair(index)
+        pair = {"id": f"R3-D{index+1:02d}", "scope": scope,
+                "negative_authority": "PRODUCER_TYPE_REJECTION_ONLY_NOT_SOURCE_FALSE_THEOREM"}
+        for mode, content in (("positive", positive), ("negative", negative)):
+            name = "Control" + str(index + 1) + mode
+            write_fixture(root / (name + ".lean"), content.encode())
+            if mode == "positive":
+                write_fixture(root / (name + ".olean"), b"UNIT PARSER OBJECT")
+            pair[mode] = {"source": name + ".lean", "sha256": contract.sha(root / (name + ".lean")),
+                          "command_index": len(report["commands"]),
+                          "object_sha256": contract.sha(root / (name + ".olean")) if mode == "positive" else None}
+            command(["lake", "env", "lean", "-R", producer, "-o", producer + "/" + name + ".olean",
+                     producer + "/" + name + ".lean"], f"D{index+1:02d}-{mode}",
+                    "" if mode == "positive" else "error: Type mismatch: expected stronger type\n", mode == "positive")
+        report["semantic_controls"].append(pair)
+    write_fixture(root / "result.json", report)
+    return report, source, environment, packages
+
+
+class CurrentPhase1AggregateTests(unittest.TestCase):
+    def test_three_required_jobs_fail_closed_on_all_non_success_states(self):
+        data = {name: {"result": "success", "outputs": {}} for name in contract.PHASE1_JOBS}
+        contract.require_phase1_needs(data)
+        for mode in ("missing", "extra", "skipped", "failure", "cancelled", "pending", None, True):
+            trial = copy.deepcopy(data)
+            if mode == "missing":
+                trial.pop("current-formal")
+            elif mode == "extra":
+                trial["historical-baseline"] = {"result": "success"}
+            else:
+                trial["current-formal"]["result"] = mode
+            with self.subTest(mode=mode), self.assertRaises(contract.InvalidContract):
+                contract.require_phase1_needs(trial)
+
+    def test_raw_unit_population_docstrings_and_summary_are_exact(self):
+        ids = ["test_module.Cases.test_a", "test_module.Cases.test_b"]
+        contract.verify_unit_log(unit_log(ids), ids)
+        text = unit_log(ids).replace("test_a (test_module.Cases.test_a) ... ok",
+                                     "test_a (test_module.Cases.test_a)\nLiteral current source description. ... ok")
+        contract.verify_unit_log(text, ids, {ids[0]: "Literal current source description."})
+        for trial in (text, unit_log(ids[:1]), unit_log(ids + ids[:1]), unit_log(ids).replace("Ran 2", "Ran 1"),
+                      unit_log(ids).replace("... ok", "... skipped 'missing prerequisites'", 1),
+                      unit_log(ids).replace("\nOK\n", "\nFAILED (failures=1)\n")):
+            with self.subTest(trial=trial), self.assertRaises(contract.InvalidContract):
+                contract.verify_unit_log(trial, ids)
+
+    def test_current_literal_212_inventory_keeps_native_case_separate(self):
+        names = contract.test_inventory(HERE.parent / "opica_round2/tests")
+        self.assertEqual(len(names), 212)
+        self.assertEqual(names.count(contract.NATIVE_CASE), 1)
+        self.assertEqual(len(set(names) - {contract.NATIVE_CASE}), 211)
+
+    def test_integer_identity_does_not_accept_boolean_or_float_substitution(self):
+        self.assertTrue(contract.same_json({"bytes": 0}, {"bytes": 0}))
+        self.assertFalse(contract.same_json({"bytes": False}, {"bytes": 0}))
+        self.assertFalse(contract.same_json({"bytes": 0.0}, {"bytes": 0}))
+        for data in ({**contract.CAPS, "full_core_accepted": 0}, {**contract.CAPS, "human_review": "APPROVED"}):
+            with self.assertRaises(contract.InvalidContract):
+                contract.require_open_caps(data)
+
+    def test_formal_raw_protocol_reparse_survives_artifact_relocation(self):
+        names = contract.current_audit_names(HERE.parents[3])
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            report, source, env, packages = formal_artifact_fixture(root, names)
+            parsed = contract.verify_current_formal(root, report, names, source, "e" * 64, env, packages)
+            self.assertEqual(parsed["roots_and_consumers"], 48)
+            self.assertEqual(parsed["semantic_pairs"], 4)
+            self.assertNotEqual(str(root), report["commands"][2]["argv"][4])
+
+    def test_formal_head_caps_axiom_recipe_exit_and_pin_mutations_rejected(self):
+        names = contract.current_audit_names(HERE.parents[3])
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            original, source, env, packages = formal_artifact_fixture(root, names)
+            def mutate(report, mode):
+                if mode == "head": report["checked_commit"] = contract.BASE
+                elif mode == "caps": report["full_release_accepted"] = True
+                elif mode == "environment": report["environment"] = {}
+                elif mode == "manifest": report["source_manifest_sha256"] = "0" * 64
+                elif mode == "command": report["commands"][2]["argv"][4] = "/another-root"
+                elif mode == "boolean": report["commands"][0]["exit_code"] = False
+                elif mode == "timeout": report["commands"][3]["timeout"] = True
+                elif mode == "missing_pair": report["semantic_controls"].pop()
+                elif mode == "axioms": report["axioms"][names[0]] = ["Project.assumed"]
+                elif mode == "index": report["semantic_controls"][0]["positive"]["command_index"] = True
+                elif mode == "fields": report["accepted"] = True
+            for mode in ("head", "caps", "environment", "manifest", "command", "boolean", "timeout",
+                         "missing_pair", "axioms", "index", "fields"):
+                report = copy.deepcopy(original)
+                mutate(report, mode)
+                with self.subTest(mode=mode), self.assertRaises(contract.InvalidContract):
+                    contract.verify_current_formal(root, report, names, source, "e" * 64, env, packages)
+
+    def test_formal_sources_logs_objects_and_semantic_failure_are_reparsed(self):
+        names = contract.current_audit_names(HERE.parents[3])
+        for mode in ("query", "source", "log", "object", "negative_object", "infrastructure", "project_axiom", "missing_type"):
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                report, source, env, packages = formal_artifact_fixture(root, names)
+                if mode == "query":
+                    write_fixture(root / "CurrentRootAudit.lean", b"#check True\n")
+                    report["query_sha256"] = contract.sha(root / "CurrentRootAudit.lean")
+                elif mode == "source":
+                    write_fixture(root / "Control1positive.lean", b"example : True := by trivial\n")
+                    report["semantic_controls"][0]["positive"]["sha256"] = contract.sha(root / "Control1positive.lean")
+                elif mode == "log":
+                    write_fixture(root / "current-root-audit.log", b"changed raw output")
+                elif mode == "object":
+                    write_fixture(root / "CurrentRootAudit.olean", b"changed object")
+                elif mode == "negative_object":
+                    write_fixture(root / "Control1negative.olean", b"unexpected object")
+                elif mode == "infrastructure":
+                    write_fixture(root / "D01-negative.log", b"error: type mismatch; unknown identifier\n")
+                    report["commands"][4]["log_sha256"] = contract.sha(root / "D01-negative.log")
+                else:
+                    text = (root / "current-root-audit.log").read_text()
+                    text = text.replace("propext, Classical.choice, Quot.sound", "Project.assumed", 1) if mode == "project_axiom" else text.replace(names[0] + " : True\n", "", 1)
+                    write_fixture(root / "current-root-audit.log", text.encode())
+                    report["commands"][2]["log_sha256"] = contract.sha(root / "current-root-audit.log")
+                with self.assertRaises(contract.InvalidContract):
+                    contract.verify_current_formal(root, report, names, source, "e" * 64, env, packages)
+
+    def test_artifact_closed_budget_and_plain_paths(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            with self.assertRaises(contract.InvalidContract):
+                contract.artifact_inventory(root)
+            write_fixture(root / "one.json", {})
+            self.assertEqual(len(contract.artifact_inventory(root)), 1)
+            with self.assertRaises(contract.InvalidContract):
+                contract.evidence_file(root, "../one.json")
+            with patch.object(Path, "is_symlink", return_value=True):
+                with self.assertRaises(contract.InvalidContract):
+                    contract.artifact_inventory(root)
+
+    def aggregate_fixture(self, base):
+        """Mock only checkout/package and protected native engines, never their verdict inputs."""
+        from research.RHRC.integration.opica_round2 import build_receipt as compiler, controls
+        repo, artifacts = base / "repo", base / "artifacts"
+        ordinary = [f"test_fixture.Cases.test_case_{index:03d}" for index in range(211)]
+        write_fixture(repo / contract.R2 / "tests/test_fixture.py", ("import unittest\nclass Cases(unittest.TestCase):\n" +
+            "".join(f"    def test_case_{index:03d}(self): pass\n" for index in range(211))).encode())
+        write_fixture(repo / contract.R2 / "tests/test_claim_firewall.py", (
+            "import unittest\nclass NativeTypedSemanticControls(unittest.TestCase):\n"
+            "    def test_seven_positive_and_wrong_type_native_fixtures(self): pass\n").encode())
+        guard = ["test_contract.Cases.test_guard"]
+        write_fixture(repo / contract.PREFIX / "tests/test_contract.py",
+                      b"import unittest\nclass Cases(unittest.TestCase):\n    def test_guard(self): pass\n")
+        names = contract.current_audit_names(HERE.parents[3])
+        formal, identity, environment, packages = formal_artifact_fixture(artifacts / "formal/formal", names)
+        source = {**identity, "status": "PASS_SOURCE_SCOPE_ONLY", "descriptor_sha256": "f" * 64,
+                  "path_policy_sha256": "1" * 64, **contract.CAPS}
+        manifest = [{"path": "fixture", "mode": "100644", "git_blob": "2" * 40, "bytes": 0, "sha256": "3" * 64}]
+        frozen = {"schema": "OPICA2_WORKFLOW_SOURCE_FREEZE_V1", **identity, "sources": manifest,
+                  "authority": "SOURCE_IDENTITY_ONLY", "full_core_accepted": False,
+                  "full_release_accepted": False, "RH": "OPEN", "Step4": "OPEN"}
+        for job in ("contract", "runtime", "formal"):
+            write_fixture(artifacts / job / "source/before.json", frozen)
+        for suffix, optimized in (("", False), ("-optimized", True)):
+            write_fixture(artifacts / ("contract/preflight" + suffix + ".json"), {**source, "python_optimized": optimized})
+        registry = {"fixture": "protected native engine is mocked in this parser-only unit fixture"}
+        write_fixture(repo / contract.R2 / "CONTROL_REGISTRY.json", registry)
+        native_result = {"status": "PASS_SOURCE_BOUND_TYPED_PAIR_REPARSE", "ids": [str(i) for i in range(7)],
+                         "receipt_sha256": "4" * 64, "fresh_compiler_replay": False,
+                         "provider_authenticity_established_here": False}
+        for mode in ("normal", "optimized"):
+            write_fixture(artifacts / f"contract/falsifiers-{mode}.log", unit_log(guard).encode())
+            report = {"schema": "OPICA3_CURRENT_ROUND2_RUNTIME_REGRESSION_V1", "mode": mode,
+                      "python_optimized": mode == "optimized", **identity,
+                      "discovered": 212, "selected": 211, "selected_test_ids": ordinary,
+                      "held_native_case": {"id": contract.NATIVE_CASE, "execution": "NOT_EXECUTED_HERE_REQUIRED_SEPARATE_CURRENT_NATIVE_GATE"},
+                      "run": 211, "errors": 0, "failures": 0, "skipped": 0, "successful": True,
+                      "scope": "ALL_CURRENT211_NON_LEAN_TESTS_INCLUDING_ACTUAL_ARB_256_512_PRODUCER_GRAM_SCHEMA_AND_ADVERSARIES",
+                      "full_core_accepted": False, "full_release_accepted": False, "RH": "OPEN", "Step4": "OPEN"}
+            write_fixture(artifacts / f"runtime/runtime-{mode}.json", report)
+            write_fixture(artifacts / f"runtime/runtime-{mode}.log", unit_log(ordinary).encode())
+            write_fixture(artifacts / f"formal/current-native-{mode}/one/receipt.json", {"unit_parser_fixture": True})
+            native = {"schema": "OPICA3_CURRENT_NATIVE_ROUND2_UNIT_V1", "mode": mode,
+                      "python_optimized": mode == "optimized", "test_id": contract.NATIVE_CASE, "run": 1,
+                      "skipped": 0, **identity, "raw_artifacts": f"/original-ci/current-native-{mode}/one",
+                      "independent_protected_reparse": native_result,
+                      "scope": "CURRENT_SINGLE_NATIVE_UNIT_ACTUAL_SEVEN_POSITIVE_AND_SEVEN_TYPE_REJECTION_COMMANDS",
+                      "full_core_accepted": False, "full_release_accepted": False, "RH": "OPEN", "Step4": "OPEN"}
+            write_fixture(artifacts / f"formal/current-native-{mode}.json", native)
+            write_fixture(artifacts / f"formal/current-native-{mode}.log", unit_log([contract.NATIVE_CASE]).encode())
+        formal["source_manifest_sha256"] = compiler.canonical_sha256(manifest)
+        write_fixture(artifacts / "formal/formal/result.json", formal)
+        # Deliberately not sorted: the actual canonical producer follows manifest order.
+        paths = [f"generated/product-{i:02d}.json" for i in reversed(range(81))]
+        write_fixture(repo / contract.R2 / "BUILD_MANIFEST.json", {"generated": [{"path": name} for name in paths]})
+        for name in paths:
+            write_fixture(repo / name, {"fixture": name})
+        products = [{"path": name, "bytes": (repo / name).stat().st_size, "sha256": contract.sha(repo / name)} for name in paths]
+        canonical = artifacts / "formal/current-canonical/generated"
+        command = {"argv": ["/ci/python", "-B", "research/RHRC/tools/materialize_derived_state.py", "--check"],
+                   "returncode": 0, "working_tree_sha": identity["checked_tree"]}
+        for channel in ("stdout", "stderr"):
+            write_fixture(canonical / ("canonical-generated-check." + channel + ".log"), b"UNIT CANONICAL LOG")
+            command[channel + "_sha256"] = contract.sha(canonical / ("canonical-generated-check." + channel + ".log"))
+        write_fixture(canonical / "result.json", {"schema": "OPICA2_GENERATED_CHECK_V1",
+            "status": "PASS_CANONICAL_CHECK_WITHOUT_REWRITE", "before": products, "after": products,
+            "command": command, "transport": {"mode": "DIRECT_FROZEN_CLI_PLATFORM_DEFAULT_UNCHANGED", "original_argv": command["argv"]},
+            "full_core_accepted": False, "full_release_accepted": False, "RH": "OPEN", "Step4": "OPEN"})
+        needs = base / "needs.json"
+        write_fixture(needs, {job: {"result": "success", "outputs": {}} for job in contract.PHASE1_JOBS})
+        return repo, artifacts, needs, source, manifest, environment, packages, names, native_result, compiler, controls
+
+    def run_aggregate_fixture(self, fixture, *, statuses=("", "")):
+        repo, artifacts, needs, source, manifest, env, packages, names, native_result, compiler, controls = fixture
+        with patch.object(contract, "inspect_descendant", return_value=source), \
+             patch.object(contract, "git_text", side_effect=statuses) as clean, \
+             patch.object(contract, "current_audit_names", return_value=names), \
+             patch.object(contract, "path_policy", return_value={"generated": sorted(
+                 r["path"] for r in contract.read_json(repo / contract.R2 / "BUILD_MANIFEST.json")["generated"])}), \
+             patch.object(compiler, "source_manifest", return_value=manifest), \
+             patch.object(compiler, "validate_environment", return_value=env), \
+             patch.object(compiler, "validate_packages", return_value=packages), \
+             patch.object(controls, "verify_typed_control_artifacts", return_value=native_result) as native, \
+             patch.dict(contract.os.environ, {"REQUESTED_HEAD": source["checked_commit"]}):
+            result = contract.aggregate_phase1(repo, artifacts, needs)
+            self.assertEqual(clean.call_count, 2)
+            self.assertEqual([call.kwargs["optimized"] for call in native.call_args_list], [False, True])
+            return result
+
+    def test_full_phase1_composition_preserves_open_release_and_manifest_order(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            result = self.run_aggregate_fixture(self.aggregate_fixture(Path(temporary)))
+            self.assertEqual(result["status"], "PASS_CURRENT_PHASE1_AGGREGATE")
+            self.assertEqual(result["canonical_products"], 81)
+            self.assertEqual(result["ordinary_tests_per_mode"], 211)
+            self.assertFalse(result["full_core_accepted"])
+            self.assertFalse(result["full_release_accepted"])
+            self.assertFalse(result["fresh_compiler_replay"])
+            self.assertFalse(result["provider_authenticity_established_here"])
+
+    def test_full_composition_rejects_dirty_source_at_entry_and_finish(self):
+        for statuses in ((" M tracked.py",), ("", "?? untracked.py")):
+            with self.subTest(statuses=statuses), tempfile.TemporaryDirectory() as temporary:
+                fixture = self.aggregate_fixture(Path(temporary))
+                with self.assertRaises(contract.InvalidContract):
+                    self.run_aggregate_fixture(fixture, statuses=statuses)
+
+    def test_full_composition_rejects_stale_missing_or_forged_lane_evidence(self):
+        for mode in ("baseline_freeze", "numeric_freeze", "preflight_mode", "runtime_mode", "runtime_bool",
+                     "runtime_ids", "runtime_log", "canonical_tree", "canonical_write", "canonical_number", "native_mode", "failed_needs"):
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as temporary:
+                fixture = self.aggregate_fixture(Path(temporary))
+                repo, artifacts, needs = fixture[:3]
+                path = None
+                if mode in ("baseline_freeze", "numeric_freeze"):
+                    path = artifacts / "formal/source/before.json"
+                    data = contract.read_json(path)
+                    if mode == "baseline_freeze": data["checked_commit"] = contract.BASE
+                    else: data["sources"][0]["bytes"] = False
+                elif mode == "preflight_mode":
+                    path = artifacts / "contract/preflight-optimized.json"
+                    data = contract.read_json(path); data["python_optimized"] = False
+                elif mode.startswith("runtime_") and mode != "runtime_log":
+                    path = artifacts / "runtime/runtime-optimized.json"
+                    data = contract.read_json(path)
+                    if mode == "runtime_mode": data["python_optimized"] = False
+                    elif mode == "runtime_bool": data["errors"] = False
+                    else: data["selected_test_ids"][-1] = data["selected_test_ids"][0]
+                elif mode == "runtime_log":
+                    path = artifacts / "runtime/runtime-normal.log"
+                    write_fixture(path, b"Ran 211 tests in 0.1s\n\nOK\n")
+                    path = None
+                elif mode.startswith("canonical_"):
+                    path = artifacts / "formal/current-canonical/generated/result.json"
+                    data = contract.read_json(path)
+                    if mode == "canonical_tree": data["command"]["working_tree_sha"] = "0" * 40
+                    elif mode == "canonical_write": data["command"]["argv"][-1] = "--write"
+                    else: data["before"][0]["bytes"] = float(data["before"][0]["bytes"])
+                elif mode == "native_mode":
+                    path = artifacts / "formal/current-native-optimized.json"
+                    data = contract.read_json(path); data["python_optimized"] = False
+                else:
+                    path = needs; data = contract.read_json(path); data["current-formal"]["result"] = "skipped"
+                if path is not None: write_fixture(path, data)
+                with self.assertRaises(contract.InvalidContract):
+                    self.run_aggregate_fixture(fixture)
 
 
 if __name__ == "__main__":

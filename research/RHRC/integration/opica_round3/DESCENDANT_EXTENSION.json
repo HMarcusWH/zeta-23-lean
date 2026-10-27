@@ -142,13 +142,13 @@
   "files": [
     {
       "path": ".github/workflows/rhrc_opica_round2.yml",
-      "bytes": 51925,
-      "sha256": "f9c1ae3a742f6e5045f4d08f50e1c09d47067d4f583c05da6e60d491c5890c8b"
+      "bytes": 52552,
+      "sha256": "800db283b9d02312f383a4bb69c000bc3273dfb54e3a3f763f93dbb7f1a6b6a4"
     },
     {
       "path": ".github/workflows/rhrc_opica_round3.yml",
-      "bytes": 11867,
-      "sha256": "4e4f2aba2748b8576f305e265a2e4813543beb7e3269fcec9621042a0031133e"
+      "bytes": 15080,
+      "sha256": "cdaf01299386517793e5073f4d35fe61ec2cde0bae5c903c83181537df2416c6"
     },
     {
       "path": "Zeta23/OPICARound3.lean",
@@ -303,7 +303,7 @@
     {
       "path": "research/RHRC/integration/opica_round2/validate_contract.py",
       "bytes": 37564,
-      "sha256": "f4f1e19f88fae5fbca929d2091b094f8f79c024f4fefeb977b4db2e128f18752"
+      "sha256": "a8276507ff53c6751a41535c154352550b4eaf02ebb9594fd4effd5e25941832"
     },
     {
       "path": "research/RHRC/integration/opica_round3/OPEN_RESEARCH.json",
@@ -322,8 +322,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_round3/README.md",
-      "bytes": 4281,
-      "sha256": "6a93065cc7534539e39cde381355040705ab0a06c081be15a359cdd6d589bd2d"
+      "bytes": 5027,
+      "sha256": "0be5c4e4ad60dee3a7d2d303561234fdec9fa2e7bfdd5a8b9bd655a8322db59e"
     },
     {
       "path": "research/RHRC/integration/opica_round3/SOURCE_REGISTER.json",
@@ -357,13 +357,13 @@
     },
     {
       "path": "research/RHRC/integration/opica_round3/tests/test_contract.py",
-      "bytes": 17428,
-      "sha256": "b80f07f3fcb19976079b0eff117be3fd1ef52cb36832c2011171e7728aff7753"
+      "bytes": 41222,
+      "sha256": "53a9b9e3d2d4596f6e34939e7e34907423f8738a2f8f3fca494e464a1acc4f1f"
     },
     {
       "path": "research/RHRC/integration/opica_round3/validate_contract.py",
-      "bytes": 31182,
-      "sha256": "1c71c151293c3fbdec09ca2374b662ed7edd6f9b6e31107832cc3d4359b006c3"
+      "bytes": 55663,
+      "sha256": "3430e13e5522a600b73442037e4d721fa346736cf8a9ea70b10e798db09ef51a"
     }
   ],
   "premise_contracts": {
