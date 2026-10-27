@@ -1825,6 +1825,16 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round3/BUILD_PLAN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round3/BUILD_PLAN.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_round3/BUILD_PLAN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:research/RHRC/integration/opica_round3/POST_GREEN_RESEARCH.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
@@ -1839,7 +1849,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_round3/README.md",
-      "heading_count": 1,
+      "heading_count": 3,
       "path": "research/RHRC/integration/opica_round3/README.md",
       "route_mentions": []
     },
@@ -3175,7 +3185,7 @@
       ]
     }
   ],
-  "entry_count": 296,
+  "entry_count": 297,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

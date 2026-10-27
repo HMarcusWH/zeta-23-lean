@@ -1166,7 +1166,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 34,
+      "compiler_dependency_surface_declaration_count": 35,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralNormals.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralNormals",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralNormals",
@@ -12359,6 +12359,32 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
+      "compiler_dependency_surface_declaration_count": 43,
+      "file_id": "rh:file:Zeta23/OPICARound3/NewbornSource.lean",
+      "module": "Zeta23.OPICARound3.NewbornSource",
+      "module_id": "rh:module:Zeta23.OPICARound3.NewbornSource",
+      "named_source_declaration_count": 17,
+      "path": "Zeta23/OPICARound3/NewbornSource.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "OPICA3_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 11,
+      "file_id": "rh:file:Zeta23/OPICARound3/SchurNegativeWitness.lean",
+      "module": "Zeta23.OPICARound3.SchurNegativeWitness",
+      "module_id": "rh:module:Zeta23.OPICARound3.SchurNegativeWitness",
+      "named_source_declaration_count": 7,
+      "path": "Zeta23/OPICARound3/SchurNegativeWitness.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA3_GENERIC_KERNEL_SAFE_LINEAR_ALGEBRA",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 17,
       "file_id": "rh:file:Zeta23/OPICARound3/UniformNeutralInterval.lean",
       "module": "Zeta23.OPICARound3.UniformNeutralInterval",
@@ -12417,6 +12443,19 @@
       "module_id": "rh:module:Zeta23.OPICARound3.Validation.NeutralParityCover",
       "named_source_declaration_count": 3,
       "path": "Zeta23/OPICARound3/Validation/NeutralParityCover.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA3_INDEPENDENT_TYPE_AND_AXIOM_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound3/Validation/NewbornSource.lean",
+      "module": "Zeta23.OPICARound3.Validation.NewbornSource",
+      "module_id": "rh:module:Zeta23.OPICARound3.Validation.NewbornSource",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/OPICARound3/Validation/NewbornSource.lean",
       "reachability": "STANDALONE_OR_AUXILIARY",
       "reachable_from": [],
       "registered_root_count": 0,
@@ -13153,6 +13192,19 @@
       "reachable_from": [],
       "registered_root_count": 0,
       "standalone_role": "OPICA2_REGISTERED_SUPPORTING_ROOT_AUDIT_BINDINGS",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/RHRC/OpicaRound3AtlasExport.lean",
+      "module": "Zeta23.RHRC.OpicaRound3AtlasExport",
+      "module_id": "rh:module:Zeta23.RHRC.OpicaRound3AtlasExport",
+      "named_source_declaration_count": 9,
+      "path": "Zeta23/RHRC/OpicaRound3AtlasExport.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA3_INDEPENDENT_TYPE_AND_AXIOM_AUDIT",
       "trust_zone": "AUDIT_ONLY"
     },
     {
@@ -16901,7 +16953,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1139,
+  "entry_count": 1143,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

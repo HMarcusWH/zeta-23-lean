@@ -49,17 +49,17 @@
   "inherits_runtime_qualification": false,
   "input_snapshot": {
     "candidate_count": 5548,
-    "candidate_resolution_sha256": "03b0927743cd123580ef228d45f28383108553c0653d44169ff39ea0f76a3d1b",
-    "candidate_source_surface_sha256": "be3aba320ab084e7690401bda5c3e40f94a36a273b2f55471204173dbd130ca0",
-    "candidate_summary_sha256": "13dad77cdda2de692798de832327dce510a5115ec79664dd400a0a14d969b066",
+    "candidate_resolution_sha256": "085279ba8a6f7ed640a128ecf4f45c5060f7e95dcde5a73ce6da20a617718071",
+    "candidate_source_surface_sha256": "6b7a15ec7508b13b78874b262b8979c6f05d69b7779627e407c4e0da636d6526",
+    "candidate_summary_sha256": "d7ac440a7b1a7548143385b0d6c477d4d4b757f2f51bfe222f3139b68cb6be9b",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
-    "registered_compiler_receipt_sha256": "5de5b06c30bd4fb0d0e1c7e5bb7ddf7a909249af51d0def4d3048f4506788508",
-    "rhkg_subject_digest_sha256": "883d6b7cafd3e38c2cc04b5d9db8f3f7103bdfaa53c330ee68a46cc5ed7c57f2",
-    "source_only_public_theorem_count": 1745
+    "registered_compiler_receipt_sha256": "0d40e4a8343f60b5260fe5a5a3c65f88dda51665d14b271d0fb23fd13328bc41",
+    "rhkg_subject_digest_sha256": "c06972a0ad5e544b8da17c387cf4ea19a24967c9fe1f29598e7badf1fac1844d",
+    "source_only_public_theorem_count": 1744
   },
   "qualification_identity": {
-    "execution_digest": "2dbabfec4a0a531a087824f917164e263068d8d5ae849a9223c08368ae201c98",
-    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:883d6b7cafd3e38c",
+    "execution_digest": "43556bf42ff71169071f5b5a111e912c3a9d31197cc6d6cc76dc07d884ae83e6",
+    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:c06972a0ad5e544b",
     "profile_digest": "0ab841ca4f9c683bcf206c0cd2e434f07f35b3861073feb370f10195cac49929",
     "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
     "protocol_digest": "30fd49aa7806e29ea8ce750cb91ad0f9edb3d655b9697f6a6dd82d3666a4ac26",
@@ -3644,16 +3644,6 @@
     {
       "count": 4,
       "declarations": [
-        "Zeta23.CCM.canonicalPoleEvenLegalNormal_ne_zero",
-        "Zeta23.CCM.canonicalPoleOddLegalNormal_ne_zero",
-        "Zeta23.CCM.poleNeutralCorrectedCubicFunctional_apply",
-        "Zeta23.CCM.poleNeutralCorrectedCubicSource_eq_explicitCanonicalSourceMoment"
-      ],
-      "module": "Zeta23.CCM.CanonicalPoleNeutralNormals"
-    },
-    {
-      "count": 4,
-      "declarations": [
         "Zeta23.CCM.poleNeutralIndexInverse_norm_le_two",
         "Zeta23.CCM.poleNeutral_strictEven_momentFour_ne_zero",
         "Zeta23.CCM.poleNeutral_strictEven_source_moment_pos",
@@ -4063,6 +4053,15 @@
         "Zeta23.CCM.poleNeutralOddRayleighBottom_antitone_of_le"
       ],
       "module": "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"
+    },
+    {
+      "count": 3,
+      "declarations": [
+        "Zeta23.CCM.canonicalPoleEvenLegalNormal_ne_zero",
+        "Zeta23.CCM.canonicalPoleOddLegalNormal_ne_zero",
+        "Zeta23.CCM.poleNeutralCorrectedCubicFunctional_apply"
+      ],
+      "module": "Zeta23.CCM.CanonicalPoleNeutralNormals"
     },
     {
       "count": 3,
@@ -6127,10 +6126,10 @@
   "theorem_promotion": false,
   "theory_version": "1.7",
   "visibility_counts": {
-    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 3071,
+    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 3072,
     "ALREADY_REGISTERED_ROOT": 112,
     "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 617,
-    "SOURCE_ONLY_PUBLIC_THEOREM": 1745,
+    "SOURCE_ONLY_PUBLIC_THEOREM": 1744,
     "UNRESOLVED_SOURCE_IDENTITY": 3
   }
 }

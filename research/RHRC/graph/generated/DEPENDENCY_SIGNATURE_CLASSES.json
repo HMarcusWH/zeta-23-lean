@@ -319,6 +319,12 @@
       "root_theorem": "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff"
     },
     {
+      "claim_id": "OPICA3_D05",
+      "closure_sha256": "36866ff7ae3815addbb98accac2e5609e4432ec9a56478a95f7300718b961727",
+      "local_dependency_count": 1144,
+      "root_theorem": "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses"
+    },
+    {
       "claim_id": "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
       "closure_sha256": "adee68edc4c36a8b4eca06886a2ce5b1bf276ca73111ea8a0273cddd34bad31b",
       "local_dependency_count": 8,
@@ -3136,6 +3142,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
       "subset_count": 0,
@@ -5418,6 +5431,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
       "subset_count": 0,
@@ -7700,6 +7720,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
       "subset_count": 0,
@@ -9980,6 +10007,13 @@
       "subset_count": 0,
       "superset_claim_id": "OPICA3_D04",
       "superset_count": 814
+    },
+    {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 8,
@@ -12955,6 +12989,13 @@
       "subset_count": 0,
       "superset_claim_id": "OPICA3_D04",
       "superset_count": 814
+    },
+    {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 8,
@@ -17227,6 +17268,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
       "subset_count": 0,
@@ -19649,6 +19697,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
       "subset_count": 0,
@@ -21931,6 +21986,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
       "subset_count": 0,
@@ -24211,6 +24273,13 @@
       "subset_count": 0,
       "superset_claim_id": "OPICA3_D04",
       "superset_count": 814
+    },
+    {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 8,
@@ -26502,6 +26571,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
       "subset_count": 0,
@@ -28784,6 +28860,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 8,
       "subset_claim_id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
       "subset_count": 0,
@@ -31064,6 +31147,13 @@
       "subset_count": 0,
       "superset_claim_id": "OPICA3_D04",
       "superset_count": 814
+    },
+    {
+      "difference_count": 1144,
+      "subset_claim_id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "subset_count": 0,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 8,
@@ -33481,6 +33571,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1117,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 3162,
       "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
       "subset_count": 27,
@@ -34433,6 +34530,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1141,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 3186,
       "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
       "subset_count": 3,
@@ -34711,6 +34815,13 @@
       "subset_count": 51,
       "superset_claim_id": "OPICA3_D04",
       "superset_count": 814
+    },
+    {
+      "difference_count": 1093,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 3138,
@@ -35000,6 +35111,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1094,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 3139,
       "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
       "subset_count": 50,
@@ -35278,6 +35396,13 @@
       "subset_count": 373,
       "superset_claim_id": "OPICA3_D04",
       "superset_count": 814
+    },
+    {
+      "difference_count": 771,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 2816,
@@ -35623,6 +35748,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1047,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 3092,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
       "subset_count": 97,
@@ -35880,6 +36012,13 @@
       "subset_count": 60,
       "superset_claim_id": "OPICA3_D04",
       "superset_count": 814
+    },
+    {
+      "difference_count": 1084,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 3129,
@@ -36167,6 +36306,13 @@
       "subset_count": 37,
       "superset_claim_id": "OPICA3_D03",
       "superset_count": 3781
+    },
+    {
+      "difference_count": 1107,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 4231,
@@ -36582,6 +36728,13 @@
       "superset_count": 2660
     },
     {
+      "difference_count": 1049,
+      "subset_claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "subset_count": 95,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 4173,
       "subset_claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
       "subset_count": 95,
@@ -36727,6 +36880,13 @@
       "subset_count": 29,
       "superset_claim_id": "OPICA3_D04",
       "superset_count": 814
+    },
+    {
+      "difference_count": 1115,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 3160,
@@ -37394,6 +37554,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 713,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 2758,
       "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
       "subset_count": 431,
@@ -37679,6 +37846,13 @@
       "subset_count": 6,
       "superset_claim_id": "OPICA3_D04",
       "superset_count": 814
+    },
+    {
+      "difference_count": 1138,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 3183,
@@ -37994,6 +38168,13 @@
       "subset_count": 67,
       "superset_claim_id": "OPICA3_D04",
       "superset_count": 814
+    },
+    {
+      "difference_count": 1077,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 3122,
@@ -38780,6 +38961,13 @@
       "superset_count": 814
     },
     {
+      "difference_count": 1054,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
+    },
+    {
       "difference_count": 3099,
       "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
       "subset_count": 90,
@@ -39016,6 +39204,13 @@
       "subset_count": 47,
       "superset_claim_id": "OPICA3_D04",
       "superset_count": 814
+    },
+    {
+      "difference_count": 1097,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 3142,
@@ -39499,6 +39694,13 @@
       "subset_count": 33,
       "superset_claim_id": "OPICA3_D03",
       "superset_count": 3781
+    },
+    {
+      "difference_count": 1111,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "OPICA3_D05",
+      "superset_count": 1144
     },
     {
       "difference_count": 4235,
@@ -40991,6 +41193,7 @@
     "OPICA3_D02",
     "OPICA3_D03",
     "OPICA3_D04",
+    "OPICA3_D05",
     "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
     "OPICA_A1_DIVISOR_COUNT_SQRT_SUM_LE",
     "OPICA_A1_DIVISOR_COUNT_SQUARE_LE",

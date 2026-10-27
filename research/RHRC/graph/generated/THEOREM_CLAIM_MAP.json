@@ -852,6 +852,22 @@
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "OPICA3_D05",
+      "claim_node_id": "rh:claim:OPICA3_D05",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses",
+      "historical_r003_promoted": false,
+      "module": "Zeta23.OPICARound3.NewbornSource",
+      "module_id": "rh:module:Zeta23.OPICARound3.NewbornSource",
+      "provenance": "REGISTRY_EXACT",
+      "route": null,
+      "source_file_id": "rh:file:Zeta23/OPICARound3/NewbornSource.lean",
+      "source_path": "Zeta23/OPICARound3/NewbornSource.lean",
+      "theorem": "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
       "claim_id": "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
       "claim_node_id": "rh:claim:OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
       "claim_status": "PROVED_UNCONDITIONAL",
@@ -5412,7 +5428,7 @@
     }
   ],
   "graph_theorem_promotion": false,
-  "registered_proved_binding_count": 338,
+  "registered_proved_binding_count": 339,
   "schema_version": "RHKG-phase2b-theorem-claim-map-0.4",
   "scope": "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS",
   "terminal_claim": "RH_OPEN",

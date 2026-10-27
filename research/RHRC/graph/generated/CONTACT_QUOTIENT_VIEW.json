@@ -1,5 +1,5 @@
 {
-  "contacting_root_count": 858,
+  "contacting_root_count": 857,
   "contacts": [
     {
       "active_interfaces": [
@@ -17239,42 +17239,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 34,
-          "examples": [
-            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.explicitCanonicalSourceMoment",
-            "Zeta23.CCM.explicitCanonicalSourceMoment._proof_1",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1",
-            "Zeta23.CCM.poleProfileScale",
-            "Zeta23.CCM.poleProfileScaleReal",
-            "Zeta23.CCM.poleProfileScaleReal._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate"
-          ],
-          "sha256": "7e2e3e16e49f252a0e69774fd03233f0c4bc789552611aa26f49f5f5b4d513b3",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.poleNeutralCorrectedCubicSource_eq_explicitCanonicalSourceMoment",
-      "module": "Zeta23.CCM.CanonicalPoleNeutralNormals"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 3,
           "examples": [
             "Zeta23.CCM.poleOddProfileReal._proof_1",
@@ -24359,7 +24323,7 @@
   "interpretation": "Compiler-dependency contact view only. Cross-interface contact does not establish theorem composition, independence, mathematical relevance, or RH evidence.",
   "projection": "THEOREM_VALUE_ERASED_SUPPORT",
   "schema_version": "RHRC-CONTACT-QUOTIENT-VIEW-1.1",
-  "source_only_root_count": 1745,
+  "source_only_root_count": 1744,
   "status": "RESEARCH_CONTROL_ONLY",
   "terminal_claim": "RH_OPEN",
   "theorem_promotion": false
