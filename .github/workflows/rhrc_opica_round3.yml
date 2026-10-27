@@ -42,10 +42,22 @@ jobs:
       shell: bash
       run: |
         set -euo pipefail
+        python -m pip install --require-hashes --only-binary=:all: -r "$OPICA2/python-checks.lock"
+        python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
         python -B "$OPICA3/validate_contract.py" --output "$OPICA3_OUTPUT/preflight.json"
         python -O -B "$OPICA3/validate_contract.py" --output "$OPICA3_OUTPUT/preflight-optimized.json"
-        python -B -m unittest discover -s "$OPICA3/tests" -p test_contract.py -v > "$OPICA3_OUTPUT/falsifiers-normal.log" 2>&1
-        python -O -B -m unittest discover -s "$OPICA3/tests" -p test_contract.py -v > "$OPICA3_OUTPUT/falsifiers-optimized.log" 2>&1
+        for mode in normal optimized; do
+          flags=()
+          if [ "$mode" = optimized ]; then flags=(-O); fi
+          OPICA3_TEST_MODE="$mode" python "${flags[@]}" -B - <<'PY' > "$OPICA3_OUTPUT/contract-tests-$mode.log" 2>&1
+        import os
+        from pathlib import Path
+        from research.RHRC.integration.opica_round3.validate_contract import run_unit_lane
+        mode=os.environ['OPICA3_TEST_MODE']
+        raise SystemExit(run_unit_lane(Path.cwd(),'contract',mode,
+            Path(os.environ['OPICA3_OUTPUT'],'contract-tests-'+mode+'.json')))
+        PY
+        done
     - name: Verify source remained unchanged
       if: ${{ always() }}
       shell: bash
@@ -163,7 +175,7 @@ jobs:
         lint: false
         use-github-cache: false
         use-mathlib-cache: true
-    - name: Compile current original forty and new four with typed consumers and axiom audits
+    - name: Compile current original forty and new five with typed consumers and axiom audits
       shell: bash
       run: |
         set -euo pipefail
@@ -223,6 +235,11 @@ jobs:
         set -euo pipefail
         lake build Zeta23.RHRC.RegisteredClaimBindings Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution
         python -B "$OPICA2/run_checks.py" generated --evidence-dir "$OPICA3_OUTPUT/current-canonical" --timeout 20000
+    - name: Check the committed statement atlas against a fresh native export
+      shell: bash
+      run: |
+        set -euo pipefail
+        python -B "$OPICA3/constraint_atlas.py" check --evidence-dir "$OPICA3_OUTPUT/atlas" --timeout 20000
     - name: Verify current compiler source remained unchanged
       if: ${{ always() }}
       shell: bash
@@ -235,10 +252,83 @@ jobs:
         name: opica3-current-formal
         path: ${{ env.OPICA3_OUTPUT }}
         if-no-files-found: error
+  source-evaluator:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    needs: contract
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        persist-credentials: false
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+      with:
+        python-version: 3.13.5
+    - name: Freeze the current finite source evaluator
+      shell: bash
+      run: |
+        set -euo pipefail
+        mkdir -p "$OPICA3_OUTPUT/source"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        python -B research/RHRC/tools/run_suite.py --freeze-source "$OPICA3_OUTPUT/source/before.json"
+    - name: Install the existing pinned interval and symbolic dependencies
+      shell: bash
+      run: |
+        set -euo pipefail
+        python -m pip install --require-hashes --only-binary=:all: -r "$OPICA2/python-checks.lock"
+        python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+    - name: Run every targeted source control and actual finite case in both modes
+      shell: bash
+      run: |
+        set -euo pipefail
+        for mode in normal optimized; do
+          flags=()
+          if [ "$mode" = optimized ]; then flags=(-O); fi
+          OPICA3_TEST_MODE="$mode" python "${flags[@]}" -B - <<'PY' > "$OPICA3_OUTPUT/evaluator-tests-$mode.log" 2>&1
+        import os
+        from pathlib import Path
+        from research.RHRC.integration.opica_round3.validate_contract import run_unit_lane
+        mode=os.environ['OPICA3_TEST_MODE']
+        raise SystemExit(run_unit_lane(Path.cwd(),'evaluator',mode,
+            Path(os.environ['OPICA3_OUTPUT'],'evaluator-tests-'+mode+'.json')))
+        PY
+          python "${flags[@]}" -B "$OPICA3/source_evaluator.py" \
+            --cases "$OPICA3/fixtures/source_evaluator_cases.json" \
+            --output-dir "$OPICA3_OUTPUT/source-evaluator/$mode" \
+            --precision-bits 128 --seconds-per-case 30
+        done
+    - name: Independently recompute the actual source and check every finite enclosure
+      shell: bash
+      run: |
+        set -euo pipefail
+        python -B - <<'PY'
+        import json,os,subprocess,shutil
+        from pathlib import Path
+        from research.RHRC.integration.opica_round3.source_checker import verify_evaluator_evidence
+        result=verify_evaluator_evidence(Path.cwd(),Path(os.environ['OPICA3_OUTPUT']),
+            expected_head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+            expected_tree=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),recompute=True)
+        shutil.copytree(result['recompute_directory'],Path(os.environ['OPICA3_OUTPUT'],'direct-checks'))
+        result['uploaded_recomputation_copy']='direct-checks'
+        Path(os.environ['OPICA3_OUTPUT'],'source-check.json').write_text(json.dumps(result,indent=2)+'\n')
+        PY
+    - name: Verify finite source inputs remained unchanged
+      if: ${{ always() }}
+      shell: bash
+      run: |
+        set -euo pipefail
+        python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA3_OUTPUT/source/before.json"
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      if: ${{ always() }}
+      with:
+        name: opica3-current-source-evaluator
+        path: ${{ env.OPICA3_OUTPUT }}
+        if-no-files-found: error
   current-acceptance:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
-    needs: [contract, runtime-regressions, current-formal]
+    needs: [contract, runtime-regressions, current-formal, source-evaluator]
     if: ${{ always() && !cancelled() }}
     steps:
     - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -269,6 +359,7 @@ jobs:
       run: |
         set -euo pipefail
         python -m pip install --require-hashes --only-binary=:all: -r "$OPICA2/python-checks.lock"
+        python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
     - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
       with:
         auto-config: false
@@ -289,7 +380,11 @@ jobs:
       with:
         name: opica3-current-formal
         path: ${{ runner.temp }}/opica3-aggregate-input/formal
-    - name: Independently recompose every current Phase1 requirement
+    - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+      with:
+        name: opica3-current-source-evaluator
+        path: ${{ runner.temp }}/opica3-aggregate-input/evaluator
+    - name: Independently recompose every selected current build requirement
       shell: bash
       run: |
         set -euo pipefail

@@ -10,6 +10,8 @@ from fractions import Fraction as F
 import importlib.util
 import hashlib
 import json
+import io
+from contextlib import redirect_stdout
 from pathlib import Path
 import tempfile
 import unittest
@@ -109,7 +111,7 @@ class SourcePolicyMutationTests(unittest.TestCase):
         with self.assertRaises(contract.InvalidContract):
             contract.check_claim_extension(old, new, "claims", public)
 
-    def test_only_four_exact_new_binding_identities(self):
+    def test_only_five_exact_new_binding_identities(self):
         public = public_fixture()
         old = {"schema": "fixture", "bindings": [{"id": "old", "theorem": "Old.actual"}]}
         new = copy.deepcopy(old)
@@ -121,13 +123,13 @@ class SourcePolicyMutationTests(unittest.TestCase):
             if mutation == "old_drift":
                 trial["bindings"][0]["theorem"] = "Old.replacement"
             elif mutation == "extra":
-                trial["bindings"].append({"id": "OPICA3_D05"})
+                trial["bindings"].append({"id": "OPICA3_D06"})
             else:
                 trial["bindings"][-1]["theorem"] = "Synthetic.desired"
             with self.assertRaises(contract.InvalidContract):
                 contract.check_claim_extension(old, trial, "bindings", public)
 
-    def test_four_actual_public_consumers_positive_and_mutations(self):
+    def test_five_actual_public_consumers_positive_and_mutations(self):
         doc = public_fixture()
         contract.check_public(doc)
         for field, value in (("consumer_declaration", "Synthetic.assumed"), ("required", 1),
@@ -238,7 +240,7 @@ class NativeProtocolTests(unittest.TestCase):
             contract.require_semantic_rejection("error: generic failure without semantic evidence")
 
     def test_literal_native_pairs_are_changed_semantics_with_identical_imports(self):
-        for index in range(4):
+        for index in range(5):
             positive, negative, scope = contract.semantic_control_pair(index)
             self.assertNotEqual(positive, negative)
             self.assertEqual(positive.splitlines()[0], negative.splitlines()[0])
@@ -351,7 +353,7 @@ def formal_artifact_fixture(root, names):
     environment = {"lean_toolchain": "leanprover/lean4:v4.33.0-rc2", "mathlib_commit": "c" * 40}
     packages = [{"name": "fixture", "commit": "d" * 40}]
     report = {"schema": "OPICA3_CURRENT_COMPILER_GATE_V1", "status": "PASS_CURRENT_COMPILER_SCOPE_ONLY",
-              **source, "scope": "CURRENT_FOUR_ROOTS_AND_CONSUMERS_PLUS_CURRENT_ORIGINAL_FORTY",
+              **source, "scope": "CURRENT_FIVE_ROOTS_AND_CONSUMERS_PLUS_CURRENT_ORIGINAL_FORTY",
               "build_mode": "FRESH_CI_PROJECT_BUILD_PACKAGE_CACHE_ALLOWED", "commands": [],
               "current_tree_compiler_accepted": True, "environment": environment, "pinned_packages": packages,
               "source_manifest_sha256": "e" * 64,
@@ -374,7 +376,7 @@ def formal_artifact_fixture(root, names):
     text = "".join(name + " : True\n'" + name + "' depends on axioms: [propext, Classical.choice, Quot.sound]\n" for name in names)
     command(["lake", "env", "lean", "-R", producer, "-o", producer + "/CurrentRootAudit.olean",
              producer + "/CurrentRootAudit.lean"], "current-root-audit", text)
-    for index in range(4):
+    for index in range(5):
         positive, negative, scope = contract.semantic_control_pair(index)
         pair = {"id": f"R3-D{index+1:02d}", "scope": scope,
                 "negative_authority": "PRODUCER_TYPE_REJECTION_ONLY_NOT_SOURCE_FALSE_THEOREM"}
@@ -395,7 +397,23 @@ def formal_artifact_fixture(root, names):
 
 
 class CurrentPhase1AggregateTests(unittest.TestCase):
-    def test_three_required_jobs_fail_closed_on_all_non_success_states(self):
+    def test_arithmetic_uncertainty_writes_an_open_failed_acceptance_receipt(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            folder = Path(temporary)
+            output = folder / "acceptance"
+            argv = ["validate_contract.py", "--aggregate-artifacts", str(folder / "inputs"),
+                    "--required-needs-json", str(folder / "needs.json"), "--aggregate-output", str(output)]
+            with patch.object(contract.sys, "argv", argv), \
+                 patch.object(contract, "aggregate_phase1", side_effect=ArithmeticError("Independent quadrature unresolved")), \
+                 redirect_stdout(io.StringIO()):
+                self.assertEqual(contract.main(), 1)
+            result = contract.read_json(output / "result.json")
+            self.assertEqual(result["status"], "FAIL_CURRENT_BUILD_AGGREGATE")
+            self.assertEqual(result["authority"], "NO_ACCEPTANCE")
+            self.assertFalse(result["full_release_accepted"])
+            self.assertEqual(result["RH"], "OPEN")
+
+    def test_four_required_jobs_fail_closed_on_all_non_success_states(self):
         data = {name: {"result": "success", "outputs": {}} for name in contract.PHASE1_JOBS}
         contract.require_phase1_needs(data)
         for mode in ("missing", "extra", "skipped", "failure", "cancelled", "pending", None, True):
@@ -421,6 +439,29 @@ class CurrentPhase1AggregateTests(unittest.TestCase):
             with self.subTest(trial=trial), self.assertRaises(contract.InvalidContract):
                 contract.verify_unit_log(trial, ids)
 
+    def test_added_lane_cannot_be_missing_or_fail_while_old_three_are_green(self):
+        data = {name: {"result": "success", "outputs": {}} for name in contract.PHASE1_JOBS}
+        for state in ("missing", "skipped", "failure", "cancelled", "queued"):
+            trial = copy.deepcopy(data)
+            if state == "missing":
+                trial.pop("source-evaluator")
+            else:
+                trial["source-evaluator"]["result"] = state
+            with self.subTest(state=state), self.assertRaises(contract.InvalidContract):
+                contract.require_phase1_needs(trial)
+
+    def test_every_round3_test_file_has_exactly_one_lane(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            folder = Path(temporary)
+            for index, name in enumerate(contract.CONTRACT_TEST_FILES + contract.EVALUATOR_TEST_FILES):
+                write_fixture(folder / name, ("import unittest\nclass Cases(unittest.TestCase):\n"
+                    f"    def test_case_{index}(self): pass\n").encode())
+            self.assertEqual(len(contract.selected_test_descriptions(folder, contract.CONTRACT_TEST_FILES)), 2)
+            self.assertEqual(len(contract.selected_test_descriptions(folder, contract.EVALUATOR_TEST_FILES)), 1)
+            write_fixture(folder / "test_unexecuted.py", b"import unittest\nclass Cases(unittest.TestCase):\n    def test_hidden(self): pass\n")
+            with self.assertRaises(contract.InvalidContract):
+                contract.selected_test_descriptions(folder, contract.CONTRACT_TEST_FILES)
+
     def test_current_literal_212_inventory_keeps_native_case_separate(self):
         names = contract.test_inventory(HERE.parent / "opica_round2/tests")
         self.assertEqual(len(names), 212)
@@ -441,8 +482,8 @@ class CurrentPhase1AggregateTests(unittest.TestCase):
             root = Path(temporary)
             report, source, env, packages = formal_artifact_fixture(root, names)
             parsed = contract.verify_current_formal(root, report, names, source, "e" * 64, env, packages)
-            self.assertEqual(parsed["roots_and_consumers"], 48)
-            self.assertEqual(parsed["semantic_pairs"], 4)
+            self.assertEqual(parsed["roots_and_consumers"], 50)
+            self.assertEqual(parsed["semantic_pairs"], 5)
             self.assertNotEqual(str(root), report["commands"][2]["argv"][4])
 
     def test_formal_head_caps_axiom_recipe_exit_and_pin_mutations_rejected(self):
@@ -521,9 +562,14 @@ class CurrentPhase1AggregateTests(unittest.TestCase):
         write_fixture(repo / contract.R2 / "tests/test_claim_firewall.py", (
             "import unittest\nclass NativeTypedSemanticControls(unittest.TestCase):\n"
             "    def test_seven_positive_and_wrong_type_native_fixtures(self): pass\n").encode())
-        guard = ["test_contract.Cases.test_guard"]
+        guard = ["test_contract.Cases.test_guard", "test_constraint_atlas.Cases.test_atlas"]
         write_fixture(repo / contract.PREFIX / "tests/test_contract.py",
                       b"import unittest\nclass Cases(unittest.TestCase):\n    def test_guard(self): pass\n")
+        write_fixture(repo / contract.PREFIX / "tests/test_constraint_atlas.py",
+                      b"import unittest\nclass Cases(unittest.TestCase):\n    def test_atlas(self): pass\n")
+        evaluator_ids = ["test_source_evaluator.Cases.test_evaluator"]
+        write_fixture(repo / contract.PREFIX / "tests/test_source_evaluator.py",
+                      b"import unittest\nclass Cases(unittest.TestCase):\n    def test_evaluator(self): pass\n")
         names = contract.current_audit_names(HERE.parents[3])
         formal, identity, environment, packages = formal_artifact_fixture(artifacts / "formal/formal", names)
         source = {**identity, "status": "PASS_SOURCE_SCOPE_ONLY", "descriptor_sha256": "f" * 64,
@@ -532,7 +578,7 @@ class CurrentPhase1AggregateTests(unittest.TestCase):
         frozen = {"schema": "OPICA2_WORKFLOW_SOURCE_FREEZE_V1", **identity, "sources": manifest,
                   "authority": "SOURCE_IDENTITY_ONLY", "full_core_accepted": False,
                   "full_release_accepted": False, "RH": "OPEN", "Step4": "OPEN"}
-        for job in ("contract", "runtime", "formal"):
+        for job in contract.ARTIFACT_JOBS:
             write_fixture(artifacts / job / "source/before.json", frozen)
         for suffix, optimized in (("", False), ("-optimized", True)):
             write_fixture(artifacts / ("contract/preflight" + suffix + ".json"), {**source, "python_optimized": optimized})
@@ -542,7 +588,13 @@ class CurrentPhase1AggregateTests(unittest.TestCase):
                          "receipt_sha256": "4" * 64, "fresh_compiler_replay": False,
                          "provider_authenticity_established_here": False}
         for mode in ("normal", "optimized"):
-            write_fixture(artifacts / f"contract/falsifiers-{mode}.log", unit_log(guard).encode())
+            for lane, test_ids in (("contract", guard), ("evaluator", evaluator_ids)):
+                write_fixture(artifacts / f"{lane}/{lane}-tests-{mode}.log", unit_log(test_ids).encode())
+                write_fixture(artifacts / f"{lane}/{lane}-tests-{mode}.json", {
+                    "schema": "OPICA3_CURRENT_UNIT_LANE_V1", "lane": lane, "mode": mode,
+                    "python_optimized": mode == "optimized", **identity, "test_ids": sorted(test_ids),
+                    "run": len(test_ids), "errors": 0, "failures": 0, "skipped": 0, "successful": True,
+                    "scope": "EXACT_CURRENT_LITERAL_TEST_PARTITION", **contract.CAPS})
             report = {"schema": "OPICA3_CURRENT_ROUND2_RUNTIME_REGRESSION_V1", "mode": mode,
                       "python_optimized": mode == "optimized", **identity,
                       "discovered": 212, "selected": 211, "selected_test_ids": ordinary,
@@ -584,6 +636,7 @@ class CurrentPhase1AggregateTests(unittest.TestCase):
         return repo, artifacts, needs, source, manifest, environment, packages, names, native_result, compiler, controls
 
     def run_aggregate_fixture(self, fixture, *, statuses=("", "")):
+        from research.RHRC.integration.opica_round3 import constraint_atlas, source_checker
         repo, artifacts, needs, source, manifest, env, packages, names, native_result, compiler, controls = fixture
         with patch.object(contract, "inspect_descendant", return_value=source), \
              patch.object(contract, "git_text", side_effect=statuses) as clean, \
@@ -594,16 +647,23 @@ class CurrentPhase1AggregateTests(unittest.TestCase):
              patch.object(compiler, "validate_environment", return_value=env), \
              patch.object(compiler, "validate_packages", return_value=packages), \
              patch.object(controls, "verify_typed_control_artifacts", return_value=native_result) as native, \
+             patch.object(constraint_atlas, "check_atlas", return_value={"status": "PASS_PARSER_UNIT_FIXTURE", **source}) as atlas, \
+             patch.object(source_checker, "verify_evaluator_evidence", return_value={"status": "PASS_PARSER_UNIT_FIXTURE", **source}) as evaluator, \
              patch.dict(contract.os.environ, {"REQUESTED_HEAD": source["checked_commit"]}):
             result = contract.aggregate_phase1(repo, artifacts, needs)
             self.assertEqual(clean.call_count, 2)
             self.assertEqual([call.kwargs["optimized"] for call in native.call_args_list], [False, True])
+            self.assertEqual(atlas.call_args.args, (repo, artifacts / "formal/atlas"))
+            self.assertEqual(evaluator.call_args.args, (repo, artifacts / "evaluator"))
+            self.assertEqual(evaluator.call_args.kwargs, {"expected_head": source["checked_commit"],
+                "expected_tree": source["checked_tree"], "recompute": True,
+                "artifact_collection_root": artifacts})
             return result
 
     def test_full_phase1_composition_preserves_open_release_and_manifest_order(self):
         with tempfile.TemporaryDirectory() as temporary:
             result = self.run_aggregate_fixture(self.aggregate_fixture(Path(temporary)))
-            self.assertEqual(result["status"], "PASS_CURRENT_PHASE1_AGGREGATE")
+            self.assertEqual(result["status"], "PASS_CURRENT_BUILD_AGGREGATE")
             self.assertEqual(result["canonical_products"], 81)
             self.assertEqual(result["ordinary_tests_per_mode"], 211)
             self.assertFalse(result["full_core_accepted"])
@@ -654,6 +714,28 @@ class CurrentPhase1AggregateTests(unittest.TestCase):
                     data = contract.read_json(path); data["python_optimized"] = False
                 else:
                     path = needs; data = contract.read_json(path); data["current-formal"]["result"] = "skipped"
+                if path is not None: write_fixture(path, data)
+                with self.assertRaises(contract.InvalidContract):
+                    self.run_aggregate_fixture(fixture)
+
+    def test_added_unit_modes_populations_and_fourth_source_freeze_are_checked(self):
+        for mode in ("contract_mode", "evaluator_mode", "evaluator_tests", "evaluator_freeze", "evaluator_log"):
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as temporary:
+                fixture = self.aggregate_fixture(Path(temporary))
+                artifacts = fixture[1]
+                if mode == "evaluator_freeze":
+                    path = artifacts / "evaluator/source/before.json"
+                    data = contract.read_json(path); data["checked_commit"] = contract.BASE
+                elif mode == "evaluator_log":
+                    path = artifacts / "evaluator/evaluator-tests-normal.log"
+                    write_fixture(path, b"Ran 1 test in 0.001s\n\nOK\n")
+                    path = None
+                else:
+                    lane = "contract" if mode == "contract_mode" else "evaluator"
+                    path = artifacts / f"{lane}/{lane}-tests-optimized.json"
+                    data = contract.read_json(path)
+                    if mode == "evaluator_tests": data["test_ids"] = []
+                    else: data["python_optimized"] = False
                 if path is not None: write_fixture(path, data)
                 with self.assertRaises(contract.InvalidContract):
                     self.run_aggregate_fixture(fixture)

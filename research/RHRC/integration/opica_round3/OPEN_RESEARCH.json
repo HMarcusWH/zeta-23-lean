@@ -4,11 +4,6 @@
   "Step4": "OPEN",
   "terminals": [
     {
-      "id": "R3-D05",
-      "status": "OPEN",
-      "target": "Corrected complete-source even-odd intertwining with projected output residual, all arithmetic terms and both Schur branches; no sign inference from identity alone."
-    },
-    {
       "id": "R3-XD",
       "status": "OPEN",
       "target": "Independent eventual no-simultaneous-negativity restriction for the actual complete source; not assumed or proved in Phase1."
@@ -35,9 +30,44 @@
     }
   ],
   "deferred": [
-    "Full-canonical interval arithmetic research campaign",
+    "Larger-cutoff/continuum complete-source arithmetic research campaign beyond the targeted K2/K3 point evaluator",
     "Exhaustive semantic analysis of all 185 contact cells",
     "Independent source sign or limit theorem",
     "RH closure"
+  ],
+  "completed_support": [
+    {
+      "id": "R3-D05-UPSTREAM-IDENTITY",
+      "status": "PROVED",
+      "target": "The corrected complete-source scalar, even index identity and odd adjoint identity already exist in the merged upstream mathematics.",
+      "declarations": [
+        "Zeta23.CCM.poleNeutralCorrectedCubicSource_eq_explicitCanonicalSourceMoment",
+        "Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_correctedCubicSource",
+        "Zeta23.CCM.poleNeutral_adjoint_rankOne_identity"
+      ],
+      "limitation": "No independent sign or branch exclusion follows from identity alone."
+    },
+    {
+      "id": "R3-D05",
+      "status": "PROVED",
+      "target": "Construct actual regular/resonant negative newborn witnesses and evaluate complete corrected arithmetic and shifted whole-output compatibility on those same witnesses, preserving least cutoffs and selected common-cutoff clauses.",
+      "declaration": "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses",
+      "source": "Zeta23/OPICARound3/NewbornSource.lean",
+      "verification": "Native Lean accepted the exact source; current-head CI remains a separate required gate.",
+      "limitation": "The source alone need not have zero opposite-kernel projection. No quantitative cost, terminal sign or asymptotic estimate is claimed."
+    }
+  ],
+  "implemented_research_tools": [
+    {
+      "id": "R3-CONSTRAINT-ATLAS",
+      "scope": "Exact compiler statements for all mandatory76+100+40+five-root memberships, current source crosswalk and explicit185-contact review backlog.",
+      "limitation": "Unreviewed semantic fields and missing adapters remain visible; graph edges never certify an implication."
+    },
+    {
+      "id": "R3-FINITE-SOURCE",
+      "scope": "Targeted complete-source K2/K3 point enclosures, both native parities, all pole/Archimedean/active prime-power terms and actual corrected output residuals.",
+      "authority": "CERTIFIED_FINITE_ONLY_WHEN_INDEPENDENT_RECOMPUTATION_PASSES",
+      "limitation": "No continuum, larger-cutoff, eventual-sign or RH authority. Numerical uncertainty is UNRESOLVED; exact resonance requires a symbolic certificate."
+    }
   ]
 }

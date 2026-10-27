@@ -37,20 +37,38 @@
   "rules": [
     {
       "id": "opica_round3_math",
-      "pattern": "\\A(?:Zeta23/OPICARound3\\.lean|Zeta23/OPICARound3/All\\.lean|Zeta23/OPICARound3/CofinalSimultaneousNegative\\.lean|Zeta23/OPICARound3/FirstNeutralCutoff\\.lean|Zeta23/OPICARound3/FirstSimultaneousNegative\\.lean|Zeta23/OPICARound3/KernelSafeSchur\\.lean|Zeta23/OPICARound3/NeutralParityCover\\.lean|Zeta23/OPICARound3/NeutralParityTopology\\.lean|Zeta23/OPICARound3/UniformNeutralInterval\\.lean)\\Z",
+      "pattern": "\\A(?:Zeta23/OPICARound3\\.lean|Zeta23/OPICARound3/All\\.lean|Zeta23/OPICARound3/CofinalSimultaneousNegative\\.lean|Zeta23/OPICARound3/FirstNeutralCutoff\\.lean|Zeta23/OPICARound3/FirstSimultaneousNegative\\.lean|Zeta23/OPICARound3/KernelSafeSchur\\.lean|Zeta23/OPICARound3/NeutralParityCover\\.lean|Zeta23/OPICARound3/NeutralParityTopology\\.lean|Zeta23/OPICARound3/NewbornSource\\.lean|Zeta23/OPICARound3/SchurNegativeWitness\\.lean|Zeta23/OPICARound3/UniformNeutralInterval\\.lean)\\Z",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
       "id": "opica_round3_audit",
-      "pattern": "\\A(?:Zeta23/OPICARound3/Validation\\.lean|Zeta23/OPICARound3/Validation/CofinalSimultaneousNegative\\.lean|Zeta23/OPICARound3/Validation/FirstSimultaneousNegative\\.lean|Zeta23/OPICARound3/Validation/NeutralParityCover\\.lean|Zeta23/OPICARound3/Validation/UniformNeutralInterval\\.lean|Zeta23/RHRC/OpicaRound3Bindings\\.lean)\\Z",
+      "pattern": "\\A(?:Zeta23/OPICARound3/Validation\\.lean|Zeta23/OPICARound3/Validation/CofinalSimultaneousNegative\\.lean|Zeta23/OPICARound3/Validation/FirstSimultaneousNegative\\.lean|Zeta23/OPICARound3/Validation/NeutralParityCover\\.lean|Zeta23/OPICARound3/Validation/NewbornSource\\.lean|Zeta23/OPICARound3/Validation/UniformNeutralInterval\\.lean|Zeta23/RHRC/OpicaRound3AtlasExport\\.lean|Zeta23/RHRC/OpicaRound3Bindings\\.lean)\\Z",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "opica_round3_configuration",
-      "pattern": "\\A(?:research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION\\.json|research/RHRC/integration/opica_round3/OPEN_RESEARCH\\.json|research/RHRC/integration/opica_round3/PUBLIC_ROOTS\\.json|research/RHRC/integration/opica_round3/SOURCE_REGISTER\\.json)\\Z",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION\\.json|research/RHRC/integration/opica_round3/OPEN_RESEARCH\\.json|research/RHRC/integration/opica_round3/PUBLIC_ROOTS\\.json|research/RHRC/integration/opica_round3/SOURCE_REGISTER\\.json|research/RHRC/integration/opica_round3/atlas/SEMANTIC_OVERLAY\\.json|research/RHRC/integration/opica_round3/schemas/constraint_atlas\\.schema\\.json|research/RHRC/integration/opica_round3/schemas/source_evaluator\\.schema\\.json)\\Z",
       "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round3_atlas_product",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS\\.jsonl)\\Z",
+      "file_class": "GENERATED_GRAPH_PRODUCT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round3_source_cases",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round3/fixtures/source_evaluator_cases\\.json)\\Z",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "opica_round3_audit_executables",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round3/constraint_atlas\\.py|research/RHRC/integration/opica_round3/source_backend\\.py|research/RHRC/integration/opica_round3/source_checker\\.py|research/RHRC/integration/opica_round3/source_evaluator\\.py|research/RHRC/integration/opica_round3/tests/test_constraint_atlas\\.py|research/RHRC/integration/opica_round3/tests/test_contract\\.py|research/RHRC/integration/opica_round3/tests/test_source_evaluator\\.py|research/RHRC/integration/opica_round3/validate_contract\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
       "trust_zone": "AUDIT_ONLY"
     },
     {

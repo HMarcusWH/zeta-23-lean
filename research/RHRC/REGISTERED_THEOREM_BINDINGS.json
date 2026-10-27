@@ -1792,6 +1792,11 @@
       "id": "OPICA3_D04",
       "theorem": "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff",
       "source": "Zeta23/OPICARound3/FirstSimultaneousNegative.lean"
+    },
+    {
+      "id": "OPICA3_D05",
+      "theorem": "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses",
+      "source": "Zeta23/OPICARound3/NewbornSource.lean"
     }
   ],
   "candidate_scope": "OPEN_CANDIDATE_BINDINGS_AUDIT_ONLY_NOT_PROVED_AUTHORITY",

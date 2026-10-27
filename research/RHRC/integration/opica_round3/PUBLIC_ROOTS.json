@@ -44,6 +44,17 @@
       "consumer": "Zeta23/OPICARound3/Validation/FirstSimultaneousNegative.lean",
       "consumer_declaration": "Zeta23.OPICARound3.Validation.first_simultaneous_neutral_negative_cutoff_consumer",
       "required": true
+    },
+    {
+      "id": "R3-D05",
+      "claim_id": "OPICA3_D05",
+      "theorem": "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses",
+      "module": "Zeta23.OPICARound3.NewbornSource",
+      "source": "Zeta23/OPICARound3/NewbornSource.lean",
+      "consumer_module": "Zeta23.OPICARound3.Validation.NewbornSource",
+      "consumer": "Zeta23/OPICARound3/Validation/NewbornSource.lean",
+      "consumer_declaration": "Zeta23.OPICARound3.Validation.first_simultaneous_newborn_source_witnesses_consumer",
+      "required": true
     }
   ],
   "RH": "OPEN",

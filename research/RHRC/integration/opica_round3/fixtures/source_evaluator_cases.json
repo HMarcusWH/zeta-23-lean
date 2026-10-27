@@ -1,0 +1,8 @@
+{
+  "schema": "OPICA3_FINITE_SOURCE_CASES_V1",
+  "cases": [
+    {"id": "K2_Q1_HALF", "K": 2, "Q": 1, "aperture": {"kind": "rational", "value": "1/2"}},
+    {"id": "K3_Q4_THREE_HALVES", "K": 3, "Q": 4, "aperture": {"kind": "rational", "value": "3/2"}},
+    {"id": "K3_LOG2_SEAM", "K": 3, "Q": 2, "aperture": {"kind": "log_integer", "n": 2}}
+  ]
+}

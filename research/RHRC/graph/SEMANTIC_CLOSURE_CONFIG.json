@@ -428,7 +428,11 @@
     "Zeta23.OPICARound3.Validation.UniformNeutralInterval": "OPICA3_INDEPENDENT_TYPE_AND_AXIOM_AUDIT",
     "Zeta23.OPICARound3.Validation.FirstSimultaneousNegative": "OPICA3_INDEPENDENT_TYPE_AND_AXIOM_AUDIT",
     "Zeta23.OPICARound3": "OPICA3_PHASE1_MATHEMATICAL_FACADE",
-    "Zeta23.OPICARound3.All": "OPICA3_PHASE1_MATHEMATICAL_FACADE"
+    "Zeta23.OPICARound3.All": "OPICA3_PHASE1_MATHEMATICAL_FACADE",
+    "Zeta23.OPICARound3.NewbornSource": "OPICA3_SOURCE_FAITHFUL_FORMAL_SUPPORT",
+    "Zeta23.OPICARound3.SchurNegativeWitness": "OPICA3_GENERIC_KERNEL_SAFE_LINEAR_ALGEBRA",
+    "Zeta23.RHRC.OpicaRound3AtlasExport": "OPICA3_INDEPENDENT_TYPE_AND_AXIOM_AUDIT",
+    "Zeta23.OPICARound3.Validation.NewbornSource": "OPICA3_INDEPENDENT_TYPE_AND_AXIOM_AUDIT"
   },
   "reachable_module_roles": {
     "Zeta23.CCM.CanonicalCompressedApertureC2": "CONTACT_CALCULUS_FORMAL_SUPPORT",

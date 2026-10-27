@@ -8,3 +8,5 @@ import Zeta23.OPICARound3.All
 #print axioms Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero
 #check Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff
 #print axioms Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff
+#check Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses
+#print axioms Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses

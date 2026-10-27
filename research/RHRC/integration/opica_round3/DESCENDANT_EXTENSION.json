@@ -14,25 +14,41 @@
       "Zeta23/OPICARound3/KernelSafeSchur.lean",
       "Zeta23/OPICARound3/NeutralParityCover.lean",
       "Zeta23/OPICARound3/NeutralParityTopology.lean",
+      "Zeta23/OPICARound3/NewbornSource.lean",
+      "Zeta23/OPICARound3/SchurNegativeWitness.lean",
       "Zeta23/OPICARound3/UniformNeutralInterval.lean",
       "Zeta23/OPICARound3/Validation.lean",
       "Zeta23/OPICARound3/Validation/CofinalSimultaneousNegative.lean",
       "Zeta23/OPICARound3/Validation/FirstSimultaneousNegative.lean",
       "Zeta23/OPICARound3/Validation/NeutralParityCover.lean",
+      "Zeta23/OPICARound3/Validation/NewbornSource.lean",
       "Zeta23/OPICARound3/Validation/UniformNeutralInterval.lean",
+      "Zeta23/RHRC/OpicaRound3AtlasExport.lean",
       "Zeta23/RHRC/OpicaRound3Bindings.lean",
+      "research/RHRC/integration/opica_round3/BUILD_PLAN.md",
       "research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json",
       "research/RHRC/integration/opica_round3/OPEN_RESEARCH.json",
       "research/RHRC/integration/opica_round3/POST_GREEN_RESEARCH.md",
       "research/RHRC/integration/opica_round3/PUBLIC_ROOTS.json",
       "research/RHRC/integration/opica_round3/README.md",
       "research/RHRC/integration/opica_round3/SOURCE_REGISTER.json",
+      "research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS.jsonl",
+      "research/RHRC/integration/opica_round3/atlas/SEMANTIC_OVERLAY.json",
+      "research/RHRC/integration/opica_round3/constraint_atlas.py",
+      "research/RHRC/integration/opica_round3/fixtures/source_evaluator_cases.json",
       "research/RHRC/integration/opica_round3/paper/draft_spec.md",
       "research/RHRC/integration/opica_round3/paper/first_neutral_bad_one_shell_schur.md",
       "research/RHRC/integration/opica_round3/paper/first_simultaneous_neutral_cutoff.md",
       "research/RHRC/integration/opica_round3/paper/proposed_contracts.json",
       "research/RHRC/integration/opica_round3/paper/ucdp_research_report.md",
+      "research/RHRC/integration/opica_round3/schemas/constraint_atlas.schema.json",
+      "research/RHRC/integration/opica_round3/schemas/source_evaluator.schema.json",
+      "research/RHRC/integration/opica_round3/source_backend.py",
+      "research/RHRC/integration/opica_round3/source_checker.py",
+      "research/RHRC/integration/opica_round3/source_evaluator.py",
+      "research/RHRC/integration/opica_round3/tests/test_constraint_atlas.py",
       "research/RHRC/integration/opica_round3/tests/test_contract.py",
+      "research/RHRC/integration/opica_round3/tests/test_source_evaluator.py",
       "research/RHRC/integration/opica_round3/validate_contract.py"
     ],
     "edits": [
@@ -138,7 +154,7 @@
       "research/RHRC/ool/generated/history/RHKG_OOL_ROUTE_CONTACTS_v1_PR266.jsonl"
     ]
   },
-  "path_policy_sha256": "a407dc32c4975b0728f385e5fe828c39393d551b57d12ab965d5ee83e42c997e",
+  "path_policy_sha256": "1efef90366541653a42df027045ba317e52a664cdfcce7a305d6b5c5638538ad",
   "files": [
     {
       "path": ".github/workflows/rhrc_opica_round2.yml",
@@ -147,8 +163,8 @@
     },
     {
       "path": ".github/workflows/rhrc_opica_round3.yml",
-      "bytes": 15080,
-      "sha256": "cdaf01299386517793e5073f4d35fe61ec2cde0bae5c903c83181537df2416c6"
+      "bytes": 19752,
+      "sha256": "96084415eea270d859c01d335ebf2203c87e7de5407fe6ed52593123b72b7f97"
     },
     {
       "path": "Zeta23/OPICARound3.lean",
@@ -157,8 +173,8 @@
     },
     {
       "path": "Zeta23/OPICARound3/All.lean",
-      "bytes": 101,
-      "sha256": "0cf960816ca71c0758d72be277433754aac5a33f86590741c44d9ba47ab6f8f3"
+      "bytes": 141,
+      "sha256": "35c0ada61d0428959777a8b49685ebfeb79506ce674214148dfc6aea435d0311"
     },
     {
       "path": "Zeta23/OPICARound3/CofinalSimultaneousNegative.lean",
@@ -191,14 +207,24 @@
       "sha256": "5beecf1ed379638ae26dfe556e08fc383ebed60b0cf61b7583edd1a5aa6aefbd"
     },
     {
+      "path": "Zeta23/OPICARound3/NewbornSource.lean",
+      "bytes": 14781,
+      "sha256": "551e814e37e2346246479ac225e1de309a67919e861c9ef36da34d7b20b7ac85"
+    },
+    {
+      "path": "Zeta23/OPICARound3/SchurNegativeWitness.lean",
+      "bytes": 5066,
+      "sha256": "7f4ab60a44f55510665f643034ba42faafab0fcaac09afc691f8fe8008096a4b"
+    },
+    {
       "path": "Zeta23/OPICARound3/UniformNeutralInterval.lean",
       "bytes": 15197,
       "sha256": "998bb3fe850a7127427989c43cb99623e06d9c970a799115dae8cbf989111580"
     },
     {
       "path": "Zeta23/OPICARound3/Validation.lean",
-      "bytes": 244,
-      "sha256": "7571abea757d26d2ab47e9d7cc6af60581812ac292e8b3795a05dcf02801b6a9"
+      "bytes": 295,
+      "sha256": "dc29b34dbafeafe3a776a21a34e7354f9920e0475f1e8977558ac405bfa0284d"
     },
     {
       "path": "Zeta23/OPICARound3/Validation/CofinalSimultaneousNegative.lean",
@@ -216,39 +242,49 @@
       "sha256": "0525db7cc9411383218c0538c0e7d569265b2374f6ee7a94ef164137bafca608"
     },
     {
+      "path": "Zeta23/OPICARound3/Validation/NewbornSource.lean",
+      "bytes": 4321,
+      "sha256": "55c5a6787a8a0f341420169ece109ecdb6a1490a48e346a043001ef9b5c166fb"
+    },
+    {
       "path": "Zeta23/OPICARound3/Validation/UniformNeutralInterval.lean",
       "bytes": 4475,
       "sha256": "43341db3234adc814f7dbfd08492b1bd6a4cf2eda1c31f336b5f53825b6ec036"
     },
     {
+      "path": "Zeta23/RHRC/OpicaRound3AtlasExport.lean",
+      "bytes": 5038,
+      "sha256": "dacdb5b6bb7d9460f1c273aa5cd5186050a723858f7ef9efa5d1f056cc62ba81"
+    },
+    {
       "path": "Zeta23/RHRC/OpicaRound3Bindings.lean",
-      "bytes": 631,
-      "sha256": "92140ca775a1a98da637ad6d8a96ba0e40cbac5c058fc3686c400ca7d9ccb64e"
+      "bytes": 778,
+      "sha256": "2d80cb25de3e835145e496a5267a65caa8a7f779906bbf9a9b41d132c82fb38f"
     },
     {
       "path": "Zeta23/RHRC/RegisteredClaimBindings.lean",
-      "bytes": 57045,
-      "sha256": "2158e6698ffe143caf522cacc52fa4a7e484ee946dcce303b0e0d4421615252d"
+      "bytes": 57232,
+      "sha256": "ccc22386bf1b1e215091b97d597dad0c9e1f32ece3cceecb5d262d6c28c8c709"
     },
     {
       "path": "research/RHRC/CLAIM_REGISTRY.json",
-      "bytes": 283786,
-      "sha256": "bde4b49a24f66f1061c4ca164f55d72879fd35dc8063abc0bc285ef9425b8a68"
+      "bytes": 284446,
+      "sha256": "075d7b992522523933b7a75c838a311c2427d0690b6d0bdd561f1c5c86d86e94"
     },
     {
       "path": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
-      "bytes": 70422,
-      "sha256": "deb029ce4c85bd6918429ac032d874799203f2f89410e51bbc3392b11081992f"
+      "bytes": 70600,
+      "sha256": "19f71efeaee558cfa6cd5ff78aec615a79edbfe62bd16fe577b136e05140715d"
     },
     {
       "path": "research/RHRC/graph/FILE_CLASSES.json",
-      "bytes": 355046,
-      "sha256": "b7370163e3a08386965a7334a12473bd64512fa181d1012ef7b67ca5ac118e6f"
+      "bytes": 356603,
+      "sha256": "104564704d412a1eb7efaf1a4f9843cc4343ef6fbfb00eed79080c489efe7e95"
     },
     {
       "path": "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json",
-      "bytes": 38916,
-      "sha256": "4e6938363a50000df3a99231acab33bf0b77424d5bc6cea8f922828be6346450"
+      "bytes": 39268,
+      "sha256": "0105058fc8dc31fd1b24363a02048542174a581582982afe2e90e35f090679c7"
     },
     {
       "path": "research/RHRC/integration/opica_round2/ancestor_projection.py",
@@ -282,8 +318,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_round2/tests/test_file_classes.py",
-      "bytes": 12532,
-      "sha256": "dfdcab5021af8f83a3acbd3e6c82574bc44967ec88c3264c643208b7d92f1958"
+      "bytes": 13686,
+      "sha256": "ac1385f81330ff1cb039b1da3875c89c24485f1979df3ebe4c7848d86b90abf7"
     },
     {
       "path": "research/RHRC/integration/opica_round2/tests/test_gram.py",
@@ -303,32 +339,57 @@
     {
       "path": "research/RHRC/integration/opica_round2/validate_contract.py",
       "bytes": 37564,
-      "sha256": "a8276507ff53c6751a41535c154352550b4eaf02ebb9594fd4effd5e25941832"
+      "sha256": "623f2a71875bc0fc736a9a3aed7eab8c9ba4f6c9c061044d7cd2db55a87dd481"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/BUILD_PLAN.md",
+      "bytes": 7437,
+      "sha256": "0ec1da543521d66b977ffd5f6832e751cfb5d2a0b91cdad71378b1843b3ba445"
     },
     {
       "path": "research/RHRC/integration/opica_round3/OPEN_RESEARCH.json",
-      "bytes": 1413,
-      "sha256": "3aef7650d4f2d836fcb6a1001b53e2f8bc62d786a5ee01c19a898f229da2b962"
+      "bytes": 3403,
+      "sha256": "2bd27739c7ff69f20b4403fc719a360624635727fdfaaa4db9372d9868c5b9bb"
     },
     {
       "path": "research/RHRC/integration/opica_round3/POST_GREEN_RESEARCH.md",
-      "bytes": 2139,
-      "sha256": "b6de252b58e7f71da4b71494cb04f419dae10b84f574c86cd2260cd4ee4f82f1"
+      "bytes": 3896,
+      "sha256": "d8541c3a63ef965cb6f19b1d5d38df3fa6eed70d1bc44210a6684e134399df71"
     },
     {
       "path": "research/RHRC/integration/opica_round3/PUBLIC_ROOTS.json",
-      "bytes": 2459,
-      "sha256": "7fae8fec489b63569d8a40eb8104757f43ea1d87a90f790101061c861db8fb4b"
+      "bytes": 2999,
+      "sha256": "d005a9179bc28226dbe6e9e93bb87130b25ec4c5adcffda66bdb37a565726873"
     },
     {
       "path": "research/RHRC/integration/opica_round3/README.md",
-      "bytes": 5027,
-      "sha256": "0be5c4e4ad60dee3a7d2d303561234fdec9fa2e7bfdd5a8b9bd655a8322db59e"
+      "bytes": 9844,
+      "sha256": "e8fd49baa5f4fce69ab2a005ce5624a72f5be85a83c1376334244f5c2be8c4fc"
     },
     {
       "path": "research/RHRC/integration/opica_round3/SOURCE_REGISTER.json",
-      "bytes": 1642,
-      "sha256": "5841b8b4b60b5fbda1adf47dc7fb58f587b73126949aa10a5b1628186fe1ad44"
+      "bytes": 1755,
+      "sha256": "9bc044cdc84819864a9c14c2dccc012183d42d13ec3b45043bd27d4d21cfd1a6"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/atlas/SEMANTIC_OVERLAY.json",
+      "bytes": 865954,
+      "sha256": "b74b386dbc07ec92b9b2fece9eb58dc320b8572888d4dbeeedc24c676771a19d"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/constraint_atlas.py",
+      "bytes": 36028,
+      "sha256": "ceb097635e6f1c2335900ea2a9df9355c8f40ab6e03dfb8b6f32652754d93192"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/fixtures/source_evaluator_cases.json",
+      "bytes": 346,
+      "sha256": "8547affb8b68c5f86a233a4482a1837a963d67de16352eccec27ce0f31edec6c"
     },
     {
       "path": "research/RHRC/integration/opica_round3/paper/draft_spec.md",
@@ -356,14 +417,49 @@
       "sha256": "1326abcc9a1bf6034bd3c219e2faa2652c5031828bb7d4d4d8987fe2e8e51ec2"
     },
     {
+      "path": "research/RHRC/integration/opica_round3/schemas/constraint_atlas.schema.json",
+      "bytes": 29608,
+      "sha256": "179745d99feffee4d61089ec3883976628473cb160f1b1ef5bbca2eaebbaa291"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/schemas/source_evaluator.schema.json",
+      "bytes": 1825,
+      "sha256": "4694235a7abc1bb53f77de4488fb10fc20f7d5bc98e9a2527e0e94cfc571712a"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/source_backend.py",
+      "bytes": 18412,
+      "sha256": "91bf2857fada970648dc2de6fdf38b983d844d02115d3a42018d4158b3138b48"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/source_checker.py",
+      "bytes": 14455,
+      "sha256": "1bc9df64060427c2e691864a062ff79bf2b7b38ec1014fd503638ce84a93debb"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/source_evaluator.py",
+      "bytes": 7437,
+      "sha256": "b073debb71d2ab518c44721aee5663b54c7928181db45c74f8d1ffca3ac05af9"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/tests/test_constraint_atlas.py",
+      "bytes": 19892,
+      "sha256": "0f53e0b87c1cb23db833a9a9c2ab49a1a9be8b1aa4b882b048f778151c97ef0f"
+    },
+    {
       "path": "research/RHRC/integration/opica_round3/tests/test_contract.py",
-      "bytes": 41222,
-      "sha256": "53a9b9e3d2d4596f6e34939e7e34907423f8738a2f8f3fca494e464a1acc4f1f"
+      "bytes": 47067,
+      "sha256": "5117c83805dc93a2519f19f4fa04fbabbd8bd540dcb5125abd2f73dc830de7d1"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/tests/test_source_evaluator.py",
+      "bytes": 19132,
+      "sha256": "85fefa1a303d9b0e8d454e427d6ffa7c9c78864d45ed4baa706c1a9e9f26116c"
     },
     {
       "path": "research/RHRC/integration/opica_round3/validate_contract.py",
-      "bytes": 55663,
-      "sha256": "3430e13e5522a600b73442037e4d721fa346736cf8a9ea70b10e798db09ef51a"
+      "bytes": 64276,
+      "sha256": "cf7091e77c22ccce43dcf685456de4ca98da0aba079000cc71ffbe140c8c4ec4"
     }
   ],
   "premise_contracts": {
@@ -400,6 +496,16 @@
       "one_dimensional_successor_shell",
       "kernel_projected_coupling",
       "regular_or_resonant_schur"
+    ],
+    "R3-D05": [
+      "actual_first_parity_cutoffs",
+      "same_aperture_cutoff_and_witness",
+      "constructed_negative_schur_witness",
+      "regular_and_resonant_branches",
+      "both_selected_parities",
+      "complete_corrected_source_identity",
+      "retained_shifted_operator_output",
+      "distinct_parity_and_cutoff_maps"
     ]
   },
   "authority": "SOURCE_SCOPE_ONLY",

@@ -30,21 +30,28 @@ ROOT_NAMES = (
     "cofinally_both_neutral_negative_of_off_line_zero",
     "cofinally_uniform_neutral_interval_of_off_line_zero",
     "first_simultaneous_neutral_negative_cutoff",
+    "first_simultaneous_newborn_source_witnesses",
 )
 MODULES = ("NeutralParityCover", "CofinalSimultaneousNegative", "UniformNeutralInterval",
-           "FirstSimultaneousNegative")
+           "FirstSimultaneousNegative", "NewbornSource")
 MATH_MODULES = ("NeutralParityCover", "NeutralParityTopology", "CofinalSimultaneousNegative",
                 "UniformNeutralInterval", "FirstNeutralCutoff", "KernelSafeSchur",
-                "FirstSimultaneousNegative")
+                "FirstSimultaneousNegative", "SchurNegativeWitness", "NewbornSource")
 ADDITIONS = frozenset(
     ["Zeta23/OPICARound3/" + n + ".lean" for n in MATH_MODULES]
     + ["Zeta23/OPICARound3/Validation/" + n + ".lean" for n in MODULES]
     + ["Zeta23/OPICARound3.lean", "Zeta23/OPICARound3/All.lean",
        "Zeta23/OPICARound3/Validation.lean", "Zeta23/RHRC/OpicaRound3Bindings.lean",
+       "Zeta23/RHRC/OpicaRound3AtlasExport.lean",
        ".github/workflows/rhrc_opica_round3.yml"]
     + [PREFIX + n for n in ("README.md", "PUBLIC_ROOTS.json", "SOURCE_REGISTER.json",
        "OPEN_RESEARCH.json", "POST_GREEN_RESEARCH.md", "DESCENDANT_EXTENSION.json",
-       "validate_contract.py", "tests/test_contract.py")]
+       "validate_contract.py", "tests/test_contract.py", "BUILD_PLAN.md",
+       "constraint_atlas.py", "schemas/constraint_atlas.schema.json",
+       "atlas/SEMANTIC_OVERLAY.json", "atlas/CONSTRAINT_ATLAS.jsonl",
+       "tests/test_constraint_atlas.py", "source_backend.py", "source_evaluator.py",
+       "source_checker.py", "fixtures/source_evaluator_cases.json",
+       "schemas/source_evaluator.schema.json", "tests/test_source_evaluator.py")]
     + [PREFIX + "paper/" + n for n in ("draft_spec.md", "proposed_contracts.json",
        "ucdp_research_report.md", "first_neutral_bad_one_shell_schur.md",
        "first_simultaneous_neutral_cutoff.md")])
@@ -71,10 +78,16 @@ PREMISES = {
     "R3-D04": ["least_parity_cutoffs", "maximum_simultaneous_cutoff", "newborn_only_psd",
                 "empty_predecessor_boundary", "one_dimensional_successor_shell",
                 "kernel_projected_coupling", "regular_or_resonant_schur"],
+    "R3-D05": ["actual_first_parity_cutoffs", "same_aperture_cutoff_and_witness",
+                "constructed_negative_schur_witness", "regular_and_resonant_branches",
+                "both_selected_parities", "complete_corrected_source_identity",
+                "retained_shifted_operator_output", "distinct_parity_and_cutoff_maps"],
 }
 FORBIDDEN = frozenset(("cofinality_only", "unprojected_output_residual", "both_predecessors_psd",
                        "equal_cutoffs_imply_spectral_tie", "globally_uniform_eta",
-                       "desired_frame_assumed", "imported_false_source_sign"))
+                       "desired_frame_assumed", "imported_false_source_sign",
+                       "source_alone_kernel_compatibility", "parity_map_is_cutoff_embedding",
+                       "numerical_near_zero_is_exact_kernel"))
 
 
 class InvalidContract(ValueError):
@@ -204,7 +217,7 @@ def check_claim_extension(old: Any, new: Any, key: str, public: dict[str, Any]) 
     before, after = index(old), index(new)
     need(all(after.get(cid) == row for cid, row in before.items()), "An original claim/binding drifted")
     expected = {row["claim_id"]: row for row in public["roots"]}
-    need(set(after) - set(before) == set(expected), "Exactly four new Round 3 registry rows required")
+    need(set(after) - set(before) == set(expected), "Exactly five new Round 3 registry rows required")
     for cid, root in expected.items():
         need(after[cid].get("theorem") == root["theorem"] and after[cid].get("source") == root["source"],
              "New registry identity differs from public root")
@@ -218,7 +231,7 @@ def check_public(doc: Any) -> None:
     need(type(doc) is dict and doc.get("schema") == "OPICA3_PUBLIC_ROOTS_V1", "Unknown public root schema")
     need(doc.get("RH") == doc.get("Step4") == "OPEN" and doc.get("full_release_accepted") is False,
          "Public root claim firewall changed")
-    need(type(doc.get("roots")) is list and len(doc["roots"]) == 4, "Exactly four required roots")
+    need(type(doc.get("roots")) is list and len(doc["roots"]) == 5, "Exactly five required roots")
     for i, (row, name, module) in enumerate(zip(doc["roots"], ROOT_NAMES, MODULES), 1):
         expected = {"id": f"R3-D{i:02d}", "claim_id": f"OPICA3_D{i:02d}",
             "theorem": "Zeta23.OPICARound3." + name, "module": "Zeta23.OPICARound3." + module,
@@ -346,7 +359,7 @@ def semantic_control_pair(index: int) -> tuple[str, str, str]:
     it does not establish that the stronger source theorem is mathematically
     false. The exact synthetic countermodels have a separate test scope.
     """
-    need(type(index) is int and 0 <= index < 4, "Unknown native control")
+    need(type(index) is int and 0 <= index < 5, "Unknown native control")
     header = ("import Zeta23.OPICARound3.Validation." + MODULES[index] + "\n"
               "noncomputable section\nopen Zeta23.OPICARound3 Zeta23.OPICARound3.Validation\n"
               "open Zeta23.CCM\n")
@@ -373,7 +386,7 @@ def semantic_control_pair(index: int) -> tuple[str, str, str]:
         positive = header + "example " + zero + " : " + local + " := by\n  exact " + consumer + " ρ hoff\n"
         negative = positive.replace(local, global_eta)
         description = "D03_LOCAL_INTERVAL_MARGIN_DOES_NOT_SUPPLY_ONE_GLOBAL_ETA"
-    else:
+    elif index == 3:
         binders = "{L : ℝ} (hL : 0 < L) {K : ℕ} (hK : 3 ≤ K) (hboth : BothNeutralNegative L K)"
         target = """∃ Ke Ko : ℕ, 3 ≤ Ke ∧ 3 ≤ Ko ∧
       EvenNeutralNegative L Ke ∧ OddNeutralNegative L Ko ∧
@@ -392,6 +405,29 @@ def semantic_control_pair(index: int) -> tuple[str, str, str]:
         negative = negative.replace("PoleNeutralParityPSD .odd L (Ko - 1)",
                                     "PoleNeutralParityPSD .odd L (max Ke Ko - 1)")
         description = "D04_NEWBORN_PREDECESSORS_DO_NOT_SUPPLY_BOTH_PSD_AT_LATER_PREDECESSOR"
+    else:
+        target = """∃ Ke Ko : ℕ, 3 ≤ Ke ∧ 3 ≤ Ko ∧
+      EvenNeutralNegative L Ke ∧ OddNeutralNegative L Ko ∧
+      (∀ M, 3 ≤ M → EvenNeutralNegative L M → Ke ≤ M) ∧
+      (∀ M, 3 ≤ M → OddNeutralNegative L M → Ko ≤ M) ∧
+      BothNeutralNegative L (max Ke Ko) ∧
+      (∀ M, 3 ≤ M → BothNeutralNegative L M → max Ke Ko ≤ M) ∧
+      Nonempty (NativeNewbornSourceWitness .even L Ke hL) ∧
+      Nonempty (NativeNewbornSourceWitness .odd L Ko hL) ∧
+      (Ko ≤ Ke → Nonempty (NativeNewbornSourceWitness .even L (max Ke Ko) hL)) ∧
+      (Ke ≤ Ko → Nonempty (NativeNewbornSourceWitness .odd L (max Ke Ko) hL))"""
+        positive = (header + "example {L : ℝ} (hL : 0 < L) {K : ℕ} (hK : 3 ≤ K) "
+                    "(hboth : BothNeutralNegative L K) : " + target
+                    + " := by\n  exact " + consumer + " hL hK hboth\n"
+                    + """example {L : ℝ} (hL : 0 < L) (p : ReversalParity) (K : ℕ)
+    (W : NativeNewbornSourceWitness p L K hL) (lam : ℝ) :
+    (nativePoleNeutralParityShifted (sourceOppositeParity p) L K lam).ker.starProjection
+      (nativeParitySourceOutput p hL K W.w lam) = 0 := by
+  exact newborn_source_full_output_projection_consumer hL p K W lam
+""")
+        negative = positive.replace("nativeParitySourceOutput p hL K W.w lam",
+                                    "nativeParitySourceDefect p hL K W.w")
+        description = "D05_WHOLE_OUTPUT_KERNEL_COMPATIBILITY_DOES_NOT_SUPPLY_SOURCE_ALONE"
     need(positive != negative, "Semantic mutation did not change the expected type/producer")
     return positive, negative, description
 
@@ -411,7 +447,10 @@ def require_compiler_exit(code: int, positive: bool) -> None:
          "Compiler must succeed or reject normally; crashes are not semantic rejection")
 
 
-PHASE1_JOBS = frozenset({"contract", "runtime-regressions", "current-formal"})
+PHASE1_JOBS = frozenset({"contract", "runtime-regressions", "current-formal", "source-evaluator"})
+ARTIFACT_JOBS = ("contract", "runtime", "formal", "evaluator")
+CONTRACT_TEST_FILES = ("test_contract.py", "test_constraint_atlas.py")
+EVALUATOR_TEST_FILES = ("test_source_evaluator.py",)
 NATIVE_CASE = "test_claim_firewall.NativeTypedSemanticControls.test_seven_positive_and_wrong_type_native_fixtures"
 
 
@@ -423,7 +462,7 @@ def current_audit_names(repo: Path) -> list[str]:
     need(len(rows) == 40, "Original forty required roots changed")
     names = [r["proposed_public_name"] for r in rows]
     names += [r[key] for r in public["roots"] for key in ("theorem", "consumer_declaration")]
-    need(len(names) == len(set(names)) == 48, "Exact current forty-plus-eight audit required")
+    need(len(names) == len(set(names)) == 50, "Exact current forty-plus-ten audit required")
     return names
 
 
@@ -435,7 +474,7 @@ def render_current_audit(names: list[str]) -> bytes:
 
 
 def require_phase1_needs(data: Any) -> None:
-    need(type(data) is dict and set(data) == PHASE1_JOBS, "Exact three current Phase 1 jobs required")
+    need(type(data) is dict and set(data) == PHASE1_JOBS, "Exact four current build jobs required")
     for row in data.values():
         need(type(row) is dict and set(row) <= {"result", "outputs"}
              and row.get("result") == "success" and type(row.get("outputs", {})) is dict,
@@ -492,10 +531,10 @@ def require_clean_source(repo: Path) -> None:
          "Current Phase 1 aggregate requires a clean committed checkout and index")
 
 
-def test_descriptions(folder: Path) -> dict[str, str | None]:
+def test_descriptions(folder: Path, pattern: str = "test_*.py") -> dict[str, str | None]:
     """Read literal TestCase methods without importing or executing the tests."""
     names = {}
-    for path in sorted(folder.glob("test_*.py")):
+    for path in sorted(folder.glob(pattern)):
         tree = ast.parse(path.read_text(encoding="utf-8"))
         for node in tree.body:
             if isinstance(node, ast.ClassDef) and any(isinstance(b, ast.Attribute) and b.attr == "TestCase"
@@ -512,6 +551,68 @@ def test_descriptions(folder: Path) -> dict[str, str | None]:
 
 def test_inventory(folder: Path) -> list[str]:
     return sorted(test_descriptions(folder))
+
+
+def selected_test_descriptions(folder: Path, filenames: tuple[str, ...]) -> dict[str, str | None]:
+    """Closed lane partition: every test file has one owner and actually exists."""
+    all_files = CONTRACT_TEST_FILES + EVALUATOR_TEST_FILES
+    need(len(all_files) == len(set(all_files))
+         and {p.name for p in folder.glob("test_*.py")} == set(all_files),
+         "Round 3 unit files differ from the exact required lane partition")
+    need(bool(filenames) and set(filenames) <= set(all_files), "Unknown unit-test lane")
+    descriptions = {}
+    for filename in filenames:
+        for name, description in test_descriptions(folder, filename).items():
+            need(name not in descriptions, "Repeated test across lane files")
+            descriptions[name] = description
+    return descriptions
+
+
+def run_unit_lane(repo: Path, lane: str, mode: str, output: Path) -> int:
+    """Execute only this lane's exact literal tests and record observed mode."""
+    import unittest
+    need(lane in ("contract", "evaluator") and mode in ("normal", "optimized"), "Unknown unit lane/mode")
+    need(bool(sys.flags.optimize) is (mode == "optimized"), "Actual Python mode differs from requested unit mode")
+    need(not output.exists() and not output.resolve().is_relative_to(repo.resolve()), "Fresh external unit receipt required")
+    files = CONTRACT_TEST_FILES if lane == "contract" else EVALUATOR_TEST_FILES
+    descriptions = selected_test_descriptions(repo / PREFIX / "tests", files)
+    def flatten(suite):
+        for item in suite:
+            if isinstance(item, unittest.TestSuite):
+                yield from flatten(item)
+            else:
+                yield item
+    loader = unittest.TestLoader()
+    cases = [case for filename in files for case in flatten(loader.discover(str(repo / PREFIX / "tests"), pattern=filename))]
+    need(sorted(case.id() for case in cases) == sorted(descriptions), "Loaded unit population differs from current literal source")
+    before = {"checked_commit": git_text(repo, "rev-parse", "HEAD"), "checked_tree": git_text(repo, "rev-parse", "HEAD^{tree}")}
+    result = unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite(cases))
+    need(all(git_text(repo, "rev-parse", "HEAD" if key == "checked_commit" else "HEAD^{tree}") == value
+             for key, value in before.items()), "Source ref changed during unit lane")
+    report = {"schema": "OPICA3_CURRENT_UNIT_LANE_V1", "lane": lane, "mode": mode,
+              "python_optimized": bool(sys.flags.optimize), **before, "test_ids": sorted(descriptions),
+              "run": result.testsRun, "errors": len(result.errors), "failures": len(result.failures),
+              "skipped": len(result.skipped), "successful": result.wasSuccessful(),
+              "scope": "EXACT_CURRENT_LITERAL_TEST_PARTITION", **CAPS}
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    return 0 if result.wasSuccessful() and not result.skipped and result.testsRun == len(descriptions) else 1
+
+
+def verify_unit_lane(root: Path, repo: Path, lane: str, source: dict[str, Any]) -> int:
+    files = CONTRACT_TEST_FILES if lane == "contract" else EVALUATOR_TEST_FILES
+    descriptions = selected_test_descriptions(repo / PREFIX / "tests", files)
+    ids = sorted(descriptions)
+    for mode in ("normal", "optimized"):
+        report = read_json(evidence_file(root, lane + "-tests-" + mode + ".json"))
+        expected = {"schema": "OPICA3_CURRENT_UNIT_LANE_V1", "lane": lane, "mode": mode,
+                    "python_optimized": mode == "optimized", "checked_commit": source["checked_commit"],
+                    "checked_tree": source["checked_tree"], "test_ids": ids, "run": len(ids),
+                    "errors": 0, "failures": 0, "skipped": 0, "successful": True,
+                    "scope": "EXACT_CURRENT_LITERAL_TEST_PARTITION", **CAPS}
+        need(same_json(report, expected), "Unit lane changed source, observed mode, population or disposition: " + lane)
+        verify_unit_log(evidence_file(root, lane + "-tests-" + mode + ".log").read_text(encoding="utf-8"), ids, descriptions)
+    return len(ids)
 
 
 def verify_unit_log(text: str, expected: list[str], descriptions: dict[str, str | None] | None = None) -> None:
@@ -545,14 +646,14 @@ def verify_current_formal(root: Path, report: Any, names: list[str], source: dic
     need(report["schema"] == "OPICA3_CURRENT_COMPILER_GATE_V1"
          and report["status"] == "PASS_CURRENT_COMPILER_SCOPE_ONLY"
          and report["current_tree_compiler_accepted"] is True
-         and report["scope"] == "CURRENT_FOUR_ROOTS_AND_CONSUMERS_PLUS_CURRENT_ORIGINAL_FORTY"
+         and report["scope"] == "CURRENT_FIVE_ROOTS_AND_CONSUMERS_PLUS_CURRENT_ORIGINAL_FORTY"
          and report["build_mode"] == "FRESH_CI_PROJECT_BUILD_PACKAGE_CACHE_ALLOWED"
          and all(report[k] == source[k] for k in ("checked_commit", "checked_tree"))
          and report["source_manifest_sha256"] == manifest_sha
          and report["environment"] == environment and report["pinned_packages"] == packages,
          "Compiler source, pins, requested population or cold-project scope differs")
     commands = report["commands"]
-    need(type(commands) is list and len(commands) == 11, "Exact eleven native compiler commands required")
+    need(type(commands) is list and len(commands) == 13, "Exact thirteen native compiler commands required")
     audit = evidence_file(root, "CurrentRootAudit.lean")
     need(audit.read_bytes() == render_current_audit(names) and report["query_sha256"] == sha(audit)
          and report["object_sha256"] == sha(evidence_file(root, "CurrentRootAudit.olean")),
@@ -570,7 +671,7 @@ def verify_current_formal(root: Path, report: Any, names: list[str], source: dic
                   str(producer / "CurrentRootAudit.olean"), str(producer / "CurrentRootAudit.lean")],
                  "current-root-audit", True)]
     pairs = report["semantic_controls"]
-    need(type(pairs) is list and len(pairs) == 4, "All four current semantic pairs required")
+    need(type(pairs) is list and len(pairs) == 5, "All five current semantic pairs required")
     for index, pair in enumerate(pairs):
         positive, negative, description = semantic_control_pair(index)
         need(type(pair) is dict and set(pair) == {"id", "scope", "negative_authority", "positive", "negative"}
@@ -610,17 +711,18 @@ def verify_current_formal(root: Path, report: Any, names: list[str], source: dic
          and report["lean_version"].startswith("Lean (version 4.33.0-rc2,")
          and "d8b18978322de05a8f3dba51ef03cf5461676c17" in report["lean_version"], "Actual pinned Lean version differs")
     axioms = parse_axiom_audit(logs["current-root-audit"], names)
-    need(axioms == report["axioms"], "Serialized axiom summary differs from raw48-name output")
+    need(axioms == report["axioms"], "Serialized axiom summary differs from raw50-name output")
     return {"status": "PASS_REPARSED_CURRENT_COMPILER_ARTIFACTS", "roots_and_consumers": len(names),
             "semantic_pairs": len(pairs), "axioms": axioms, "receipt_sha256": sha(evidence_file(root, "result.json"))}
 
 
-def aggregate_phase1(repo: Path, artifacts: Path, needs_path: Path) -> dict[str, Any]:
+def aggregate_phase1(repo: Path, artifacts: Path, needs_path: Path, *,
+                     recompute_output: Path | None = None) -> dict[str, Any]:
     """Independently reparse same-run current artifacts; never run Lean or accept full release."""
     repo = repo.resolve()
     need(not artifacts.is_symlink() and not artifacts.resolve().is_relative_to(repo), "External plain downloaded artifacts required")
     before_artifacts = artifact_inventory(artifacts)
-    need({p.name for p in artifacts.iterdir()} == {"contract", "runtime", "formal"}, "Exact three separately downloaded job roots required")
+    need({p.name for p in artifacts.iterdir()} == set(ARTIFACT_JOBS), "Exact four separately downloaded job roots required")
     need(needs_path.is_file() and needs_path.absolute() == needs_path.resolve()
          and not needs_path.resolve().is_relative_to(repo), "External plain required-jobs input required")
     required_needs = read_json(needs_path)
@@ -639,16 +741,14 @@ def aggregate_phase1(repo: Path, artifacts: Path, needs_path: Path) -> dict[str,
     frozen = {"schema": "OPICA2_WORKFLOW_SOURCE_FREEZE_V1", "checked_commit": source["checked_commit"],
               "checked_tree": source["checked_tree"], "sources": manifest, "authority": "SOURCE_IDENTITY_ONLY",
               "full_core_accepted": False, "full_release_accepted": False, "RH": "OPEN", "Step4": "OPEN"}
-    for job in ("contract", "runtime", "formal"):
+    for job in ARTIFACT_JOBS:
         need(same_json(read_json(evidence_file(artifacts, job + "/source/before.json")), frozen),
              "Job source freeze is missing, stale or belongs to another checkout: " + job)
     for name, optimized in (("preflight.json", False), ("preflight-optimized.json", True)):
         need(same_json(read_json(evidence_file(artifacts, "contract/" + name)), {**source, "python_optimized": optimized}),
              "Current preflight source or actual Python mode differs from independent inspection")
-    guard_ids = test_inventory(repo / PREFIX / "tests")
-    guard_descriptions = test_descriptions(repo / PREFIX / "tests")
-    for mode in ("normal", "optimized"):
-        verify_unit_log(evidence_file(artifacts, "contract/falsifiers-" + mode + ".log").read_text(encoding="utf-8"), guard_ids, guard_descriptions)
+    guard_count = verify_unit_lane(artifacts / "contract", repo, "contract", source)
+    evaluator_count = verify_unit_lane(artifacts / "evaluator", repo, "evaluator", source)
     ids = test_inventory(repo / R2 / "tests")
     descriptions = test_descriptions(repo / R2 / "tests")
     need(len(ids) == 212 and ids.count(NATIVE_CASE) == 1, "Exact current212-test inventory required")
@@ -675,6 +775,26 @@ def aggregate_phase1(repo: Path, artifacts: Path, needs_path: Path) -> dict[str,
     formal_root = artifacts / "formal/formal"
     formal = verify_current_formal(formal_root, read_json(evidence_file(formal_root, "result.json")), current_audit_names(repo),
                                    source, compiler.canonical_sha256(manifest), environment, packages)
+    old_path = list(sys.path)
+    try:
+        sys.path.insert(0, str(repo))
+        from research.RHRC.integration.opica_round3 import constraint_atlas, source_checker
+        atlas = constraint_atlas.check_atlas(repo, artifacts / "formal/atlas")
+        evaluator_kwargs = {"expected_head": source["checked_commit"],
+                            "expected_tree": source["checked_tree"], "recompute": True,
+                            "artifact_collection_root": artifacts}
+        if recompute_output is not None:
+            need(not recompute_output.exists() and not recompute_output.resolve().is_relative_to(artifacts.resolve())
+                 and not recompute_output.resolve().is_relative_to(repo), "Fresh recomputation output outside source and input artifacts required")
+            evaluator_kwargs["recompute_output"] = recompute_output
+        evaluator = source_checker.verify_evaluator_evidence(repo, artifacts / "evaluator", **evaluator_kwargs)
+        for component, label in ((atlas, "statement atlas"), (evaluator, "complete-source evaluator")):
+            require_open_caps(component)
+            need(all(component.get(key) == source[key] for key in ("checked_commit", "checked_tree"))
+                 and type(component.get("status")) is str and component["status"].startswith("PASS_"),
+                 "Added component did not accept the exact current source: " + label)
+    finally:
+        sys.path[:] = old_path
     native = {}
     registry = read_json(repo / R2 / "CONTROL_REGISTRY.json")
     for mode in ("normal", "optimized"):
@@ -731,16 +851,18 @@ def aggregate_phase1(repo: Path, artifacts: Path, needs_path: Path) -> dict[str,
     need(artifact_inventory(artifacts) == before_artifacts and same_json(read_json(needs_path), required_needs),
          "Input artifacts or required-job evidence changed during aggregate reparse")
     require_clean_source(repo)
-    return {"schema": "OPICA3_CURRENT_PHASE1_AGGREGATE_V1", "status": "PASS_CURRENT_PHASE1_AGGREGATE",
+    return {"schema": "OPICA3_CURRENT_BUILD_AGGREGATE_V2", "status": "PASS_CURRENT_BUILD_AGGREGATE",
             "checked_commit": source["checked_commit"], "checked_tree": source["checked_tree"],
             "descriptor_sha256": source["descriptor_sha256"], "path_policy_sha256": source["path_policy_sha256"],
-            "scope": "USER_SELECTED_D01_D04_ISSUE296_FALSIFIERS_WITH_CURRENT_ORIGINAL40_REGRESSION",
+            "scope": "USER_SELECTED_D01_D05_ATLAS_COMPLETE_SOURCE_K2_K3_ISSUE296_FALSIFIERS_CURRENT_ORIGINAL40_REGRESSION",
             "required_jobs": sorted(required_needs), "source_manifest_sha256": compiler.canonical_sha256(manifest),
-            "formal": formal, "ordinary_tests_per_mode": len(ordinary), "guard_tests_per_mode": len(guard_ids),
+            "formal": formal, "atlas": atlas, "evaluator": evaluator,
+            "ordinary_tests_per_mode": len(ordinary), "guard_tests_per_mode": guard_count,
+            "evaluator_tests_per_mode": evaluator_count,
             "current_native": native, "canonical_products": len(products), "artifact_inventory": before_artifacts,
             "fresh_compiler_replay": False, "provider_authenticity_established_here": False,
             "historical_baseline_substituted_for_current": False,
-            "authority": "CURRENT_PHASE1_ARTIFACT_COMPOSITION_ONLY_NOT_FULL_ROUND2_CORE_OR_RELEASE", **CAPS}
+            "authority": "CURRENT_SELECTED_BUILD_ARTIFACT_COMPOSITION_ONLY_NOT_FULL_ROUND2_CORE_OR_RELEASE", **CAPS}
 
 
 def formal_checks(repo: Path, output: Path, timeout: int) -> dict[str, Any]:
@@ -771,7 +893,7 @@ def formal_checks(repo: Path, output: Path, timeout: int) -> dict[str, Any]:
         return log.read_text(encoding="utf-8")
     report = {"schema": "OPICA3_CURRENT_COMPILER_GATE_V1", "status": "FAILED_OR_INCOMPLETE",
               "checked_commit": source["checked_commit"], "checked_tree": source["checked_tree"],
-              "scope": "CURRENT_FOUR_ROOTS_AND_CONSUMERS_PLUS_CURRENT_ORIGINAL_FORTY",
+              "scope": "CURRENT_FIVE_ROOTS_AND_CONSUMERS_PLUS_CURRENT_ORIGINAL_FORTY",
               "build_mode": "FRESH_CI_PROJECT_BUILD_PACKAGE_CACHE_ALLOWED", "commands": commands,
               "current_tree_compiler_accepted": False, **CAPS}
     try:
@@ -806,7 +928,7 @@ def formal_checks(repo: Path, output: Path, timeout: int) -> dict[str, Any]:
         report["query_sha256"] = sha(query)
         report["object_sha256"] = sha(output / "CurrentRootAudit.olean")
         report["semantic_controls"] = []
-        for index in range(4):
+        for index in range(5):
             positive, negative, description = semantic_control_pair(index)
             pair = {"id": f"R3-D{index+1:02d}", "scope": description,
                     "negative_authority": "PRODUCER_TYPE_REJECTION_ONLY_NOT_SOURCE_FALSE_THEOREM"}
@@ -842,9 +964,9 @@ def main() -> int:
     parser.add_argument("--output", type=Path)
     parser.add_argument("--formal-output", type=Path,
                         help="Explicit CI native compiler gate; never implied by preflight")
-    parser.add_argument("--aggregate-artifacts", type=Path, help="Three separate same-run current job artifact roots")
-    parser.add_argument("--required-needs-json", type=Path, help="Actual workflow needs object for the three current jobs")
-    parser.add_argument("--aggregate-output", type=Path, help="Fresh external current Phase 1 composition result directory")
+    parser.add_argument("--aggregate-artifacts", type=Path, help="Four separate same-run current job artifact roots")
+    parser.add_argument("--required-needs-json", type=Path, help="Actual workflow needs object for all four current jobs")
+    parser.add_argument("--aggregate-output", type=Path, help="Fresh external current build composition result directory")
     parser.add_argument("--timeout", type=int, default=20000)
     args = parser.parse_args()
     aggregate_output = None
@@ -860,22 +982,24 @@ def main() -> int:
             need(not args.aggregate_output.resolve().is_relative_to(args.aggregate_artifacts.resolve()),
                  "Aggregate result must be separate from immutable input artifacts")
             aggregate_output = args.aggregate_output
-            report = aggregate_phase1(args.repo, args.aggregate_artifacts, args.required_needs_json)
+            aggregate_output.mkdir(parents=True, exist_ok=False)
+            report = aggregate_phase1(args.repo, args.aggregate_artifacts, args.required_needs_json,
+                                      recompute_output=aggregate_output / "recomputation")
         else:
             report = (formal_checks(args.repo, args.formal_output, args.timeout) if args.formal_output
                       else inspect_descendant(args.repo))
             if not args.formal_output:
                 report = {**report, "python_optimized": bool(sys.flags.optimize)}
-    except (OSError, ValueError, TypeError, KeyError, subprocess.SubprocessError) as exc:
-        report = {"schema": "OPICA3_CURRENT_PHASE1_AGGREGATE_V1" if args.aggregate_artifacts else "OPICA3_DESCENDANT_SOURCE_INSPECTION_V1",
-                  "status": "FAIL_CURRENT_PHASE1_AGGREGATE" if args.aggregate_artifacts else "FAIL_SOURCE_SCOPE",
+    except (OSError, ValueError, TypeError, KeyError, ArithmeticError, subprocess.SubprocessError) as exc:
+        report = {"schema": "OPICA3_CURRENT_BUILD_AGGREGATE_V2" if args.aggregate_artifacts else "OPICA3_DESCENDANT_SOURCE_INSPECTION_V1",
+                  "status": "FAIL_CURRENT_BUILD_AGGREGATE" if args.aggregate_artifacts else "FAIL_SOURCE_SCOPE",
                   "errors": [str(exc)], "authority": "NO_ACCEPTANCE", **CAPS}
     if args.output:
         need(not args.output.resolve().is_relative_to(args.repo.resolve()), "Evidence must be external")
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     if aggregate_output is not None:
-        aggregate_output.mkdir(parents=True, exist_ok=False)
+        aggregate_output.mkdir(parents=True, exist_ok=True)
         (aggregate_output / "result.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
     return 0 if report["status"].startswith("PASS_") else 1

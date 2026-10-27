@@ -1,0 +1,1173 @@
+{
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "OPICA3_CONSTRAINT_ATLAS_ROW_V1"
+    },
+    "declaration": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "module": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "kind": {
+      "enum": [
+        "THEOREM",
+        "DEFINITION",
+        "OPAQUE",
+        "INDUCTIVE",
+        "CONSTRUCTOR",
+        "RECURSOR"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)(?!.*[:\\\\]).+$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "memberships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "cohort": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "identity": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "provenance": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "cohort",
+          "identity",
+          "provenance"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 64
+    },
+    "statement": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "OPICA3_ATLAS_COMPILER_ROW_V1"
+        },
+        "declaration": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "module": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "kind": {
+          "enum": [
+            "THEOREM",
+            "DEFINITION",
+            "OPAQUE",
+            "INDUCTIVE",
+            "CONSTRUCTOR",
+            "RECURSOR"
+          ]
+        },
+        "universe_parameters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 4096
+        },
+        "type_text": {
+          "type": "string",
+          "maxLength": 1000000,
+          "minLength": 1
+        },
+        "type_expression": {
+          "type": "object",
+          "properties": {
+            "format": {
+              "const": "LEAN_EXPR_DAG_V1"
+            },
+            "root": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            },
+            "nodes": {
+              "type": "array",
+              "items": {},
+              "maxItems": 1000000
+            }
+          },
+          "required": [
+            "format",
+            "root",
+            "nodes"
+          ],
+          "additionalProperties": false
+        },
+        "outer_telescope": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "position": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000000
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 1000000
+              },
+              "binder_info": {
+                "enum": [
+                  "default",
+                  "implicit",
+                  "strictImplicit",
+                  "instImplicit"
+                ]
+              },
+              "domain_text": {
+                "type": "string",
+                "maxLength": 1000000,
+                "minLength": 1
+              },
+              "domain_is_prop": {
+                "type": "boolean"
+              },
+              "typeclass_binder": {
+                "type": "boolean"
+              },
+              "class_name": {
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "maxLength": 1000000
+              }
+            },
+            "required": [
+              "position",
+              "name",
+              "binder_info",
+              "domain_text",
+              "domain_is_prop",
+              "typeclass_binder",
+              "class_name"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 4096
+        },
+        "conclusion_text": {
+          "type": "string",
+          "maxLength": 1000000,
+          "minLength": 1
+        },
+        "type_constants": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 100000
+        },
+        "value_constants": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 100000
+        },
+        "structure_constants": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 100000
+        },
+        "axioms": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ]
+          },
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "schema",
+        "declaration",
+        "module",
+        "kind",
+        "universe_parameters",
+        "type_text",
+        "type_expression",
+        "outer_telescope",
+        "conclusion_text",
+        "type_constants",
+        "value_constants",
+        "structure_constants",
+        "axioms"
+      ],
+      "additionalProperties": false
+    },
+    "type_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "type_sha256_format": {
+      "const": "STRICT_CANONICAL_JSON_SORTED_KEYS_UTF8_V1"
+    },
+    "exporter_source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "semantic_overlay_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "theorem_inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 1000000
+          },
+          "binder_info": {
+            "enum": [
+              "default",
+              "implicit",
+              "strictImplicit",
+              "instImplicit"
+            ]
+          },
+          "domain_text": {
+            "type": "string",
+            "maxLength": 1000000,
+            "minLength": 1
+          },
+          "domain_is_prop": {
+            "type": "boolean"
+          },
+          "typeclass_binder": {
+            "type": "boolean"
+          },
+          "class_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "maxLength": 1000000
+          }
+        },
+        "required": [
+          "position",
+          "name",
+          "binder_info",
+          "domain_text",
+          "domain_is_prop",
+          "typeclass_binder",
+          "class_name"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4096
+    },
+    "proposition_hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 1000000
+          },
+          "binder_info": {
+            "enum": [
+              "default",
+              "implicit",
+              "strictImplicit",
+              "instImplicit"
+            ]
+          },
+          "domain_text": {
+            "type": "string",
+            "maxLength": 1000000,
+            "minLength": 1
+          },
+          "domain_is_prop": {
+            "type": "boolean"
+          },
+          "typeclass_binder": {
+            "type": "boolean"
+          },
+          "class_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "maxLength": 1000000
+          }
+        },
+        "required": [
+          "position",
+          "name",
+          "binder_info",
+          "domain_text",
+          "domain_is_prop",
+          "typeclass_binder",
+          "class_name"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4096
+    },
+    "non_theorem_prop_arguments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 1000000
+          },
+          "binder_info": {
+            "enum": [
+              "default",
+              "implicit",
+              "strictImplicit",
+              "instImplicit"
+            ]
+          },
+          "domain_text": {
+            "type": "string",
+            "maxLength": 1000000,
+            "minLength": 1
+          },
+          "domain_is_prop": {
+            "type": "boolean"
+          },
+          "typeclass_binder": {
+            "type": "boolean"
+          },
+          "class_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "maxLength": 1000000
+          }
+        },
+        "required": [
+          "position",
+          "name",
+          "binder_info",
+          "domain_text",
+          "domain_is_prop",
+          "typeclass_binder",
+          "class_name"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4096
+    },
+    "data_and_typeclass_parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 1000000
+          },
+          "binder_info": {
+            "enum": [
+              "default",
+              "implicit",
+              "strictImplicit",
+              "instImplicit"
+            ]
+          },
+          "domain_text": {
+            "type": "string",
+            "maxLength": 1000000,
+            "minLength": 1
+          },
+          "domain_is_prop": {
+            "type": "boolean"
+          },
+          "typeclass_binder": {
+            "type": "boolean"
+          },
+          "class_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "maxLength": 1000000
+          }
+        },
+        "required": [
+          "position",
+          "name",
+          "binder_info",
+          "domain_text",
+          "domain_is_prop",
+          "typeclass_binder",
+          "class_name"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4096
+    },
+    "proof_only_dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 100000
+    },
+    "implementation_only_dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 100000
+    },
+    "input_classification": {
+      "const": "THEOREM_INPUTS_ARE_ALL_OUTER_BINDERS_PROP_AND_DATA_ROLES_EXPLICIT_PROOF_DEPENDENCIES_ARE_NOT_PREMISES"
+    },
+    "dependency_semantics": {
+      "const": "DIRECT_TYPE_VALUE_STRUCTURE_CONSTANT_USE_IS_NOT_A_HYPOTHESIS_OR_MATHEMATICAL_IMPLICATION"
+    },
+    "semantic_review": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "REVIEWED_SOURCE_CROSSWALK",
+            "UNREVIEWED"
+          ]
+        },
+        "axes": {
+          "type": "object",
+          "properties": {
+            "object_identity": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "enum": [
+                    "REVIEWED",
+                    "NOT_APPLICABLE",
+                    "UNREVIEWED"
+                  ]
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "constants": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "maxItems": 128
+                }
+              },
+              "required": [
+                "status",
+                "description",
+                "constants"
+              ],
+              "additionalProperties": false
+            },
+            "aperture_cutoff_quantifiers": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "enum": [
+                    "REVIEWED",
+                    "NOT_APPLICABLE",
+                    "UNREVIEWED"
+                  ]
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "constants": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "maxItems": 128
+                }
+              },
+              "required": [
+                "status",
+                "description",
+                "constants"
+              ],
+              "additionalProperties": false
+            },
+            "parity": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "enum": [
+                    "REVIEWED",
+                    "NOT_APPLICABLE",
+                    "UNREVIEWED"
+                  ]
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "constants": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "maxItems": 128
+                }
+              },
+              "required": [
+                "status",
+                "description",
+                "constants"
+              ],
+              "additionalProperties": false
+            },
+            "normalization": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "enum": [
+                    "REVIEWED",
+                    "NOT_APPLICABLE",
+                    "UNREVIEWED"
+                  ]
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "constants": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "maxItems": 128
+                }
+              },
+              "required": [
+                "status",
+                "description",
+                "constants"
+              ],
+              "additionalProperties": false
+            },
+            "maps": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "enum": [
+                    "REVIEWED",
+                    "NOT_APPLICABLE",
+                    "UNREVIEWED"
+                  ]
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "constants": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "maxItems": 128
+                }
+              },
+              "required": [
+                "status",
+                "description",
+                "constants"
+              ],
+              "additionalProperties": false
+            },
+            "norms": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "enum": [
+                    "REVIEWED",
+                    "NOT_APPLICABLE",
+                    "UNREVIEWED"
+                  ]
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "constants": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "maxItems": 128
+                }
+              },
+              "required": [
+                "status",
+                "description",
+                "constants"
+              ],
+              "additionalProperties": false
+            },
+            "derivative_moment_order": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "enum": [
+                    "REVIEWED",
+                    "NOT_APPLICABLE",
+                    "UNREVIEWED"
+                  ]
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "constants": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "maxItems": 128
+                }
+              },
+              "required": [
+                "status",
+                "description",
+                "constants"
+              ],
+              "additionalProperties": false
+            },
+            "polarity": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "enum": [
+                    "REVIEWED",
+                    "NOT_APPLICABLE",
+                    "UNREVIEWED"
+                  ]
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "constants": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "maxItems": 128
+                }
+              },
+              "required": [
+                "status",
+                "description",
+                "constants"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "object_identity",
+            "aperture_cutoff_quantifiers",
+            "parity",
+            "normalization",
+            "maps",
+            "norms",
+            "derivative_moment_order",
+            "polarity"
+          ],
+          "additionalProperties": false
+        },
+        "evidence_declarations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 128
+        },
+        "source_anchors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096,
+                "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)(?!.*[:\\\\]).+$"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "contains": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "maxItems": 128
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "contains"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "status",
+        "axes",
+        "evidence_declarations",
+        "source_anchors"
+      ],
+      "additionalProperties": false
+    },
+    "connections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "from": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "maxItems": 128
+          },
+          "to": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "maxItems": 128
+          },
+          "status": {
+            "enum": [
+              "PROVED_TARGET_WITH_REVIEWED_COMPOSITION",
+              "PROVED_IDENTITY_ADAPTER",
+              "DERIVED_COUNTERMODEL_GENERAL_INFERENCE",
+              "UNSUPPORTED_STRENGTHENING_TYPE_REJECTED",
+              "NOT_APPLICABLE",
+              "OPEN_SOURCE_LEAF",
+              "UNREVIEWED"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "evidence_declarations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "maxItems": 128
+          },
+          "evidence_tests": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096,
+                  "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)(?!.*[:\\\\]).+$"
+                },
+                "class": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "method": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "class",
+                "method",
+                "sha256"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 64
+          },
+          "scientific_scope": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "terminal_progress": {
+            "enum": [
+              "SUPPORTING_ONLY",
+              "EXCLUDES_GENERAL_INFERENCE",
+              "UNREVIEWED",
+              "OPEN"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "from",
+          "to",
+          "status",
+          "description",
+          "evidence_declarations",
+          "evidence_tests",
+          "scientific_scope",
+          "terminal_progress"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 256
+    },
+    "relevant_known_falsifiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)(?!.*[:\\\\]).+$"
+          },
+          "class": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "method": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "class",
+          "method",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 256
+    },
+    "possible_downstream_consumers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "connection_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "disposition": {
+            "enum": [
+              "PROVED_TARGET_WITH_REVIEWED_COMPOSITION",
+              "PROVED_IDENTITY_ADAPTER",
+              "DERIVED_COUNTERMODEL_GENERAL_INFERENCE",
+              "UNSUPPORTED_STRENGTHENING_TYPE_REJECTED",
+              "NOT_APPLICABLE",
+              "OPEN_SOURCE_LEAF",
+              "UNREVIEWED"
+            ]
+          }
+        },
+        "required": [
+          "connection_id",
+          "target",
+          "disposition"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 256
+    },
+    "not_applicable_links": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 256
+    },
+    "contact_backlog": {
+      "type": "object",
+      "properties": {
+        "interfaces": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 3
+        },
+        "priority_triple": {
+          "type": "boolean"
+        },
+        "review_status": {
+          "enum": [
+            "REVIEWED_SOURCE_CROSSWALK",
+            "UNREVIEWED",
+            "NOT_A_HISTORICAL_CONTACT"
+          ]
+        },
+        "authority": {
+          "const": "INTERFACE_MEMBERSHIP_DOES_NOT_PROVE_A_MATHEMATICAL_ADAPTER"
+        }
+      },
+      "required": [
+        "interfaces",
+        "priority_triple",
+        "review_status",
+        "authority"
+      ],
+      "additionalProperties": false
+    },
+    "historical_source": {
+      "type": "object",
+      "properties": {
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          ]
+        },
+        "matches_current": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "HISTORICAL_REFERENCE_PRESERVED_NOT_CURRENT_COMPILER_AUTHORITY",
+            "NO_HISTORICAL_ROOT216_RECORD"
+          ]
+        }
+      },
+      "required": [
+        "sha256",
+        "matches_current",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "scientific_status": {
+      "enum": [
+        "PROVED_EXACT_ELABORATED_STATEMENT",
+        "COMPILED_DECLARATION_NOT_THEOREM"
+      ]
+    },
+    "semantic_exhaustion": {
+      "const": false
+    },
+    "full_core_accepted": {
+      "const": false
+    },
+    "full_release_accepted": {
+      "const": false
+    },
+    "RH": {
+      "const": "OPEN"
+    },
+    "Step4": {
+      "const": "OPEN"
+    }
+  },
+  "required": [
+    "schema",
+    "declaration",
+    "module",
+    "kind",
+    "source",
+    "memberships",
+    "statement",
+    "type_sha256",
+    "type_sha256_format",
+    "exporter_source_sha256",
+    "semantic_overlay_sha256",
+    "theorem_inputs",
+    "proposition_hypotheses",
+    "non_theorem_prop_arguments",
+    "data_and_typeclass_parameters",
+    "proof_only_dependencies",
+    "implementation_only_dependencies",
+    "input_classification",
+    "dependency_semantics",
+    "semantic_review",
+    "connections",
+    "relevant_known_falsifiers",
+    "possible_downstream_consumers",
+    "not_applicable_links",
+    "contact_backlog",
+    "historical_source",
+    "scientific_status",
+    "semantic_exhaustion",
+    "full_core_accepted",
+    "full_release_accepted",
+    "RH",
+    "Step4"
+  ],
+  "additionalProperties": false
+}

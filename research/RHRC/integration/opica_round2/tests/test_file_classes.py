@@ -18,21 +18,26 @@ ROUND3_BASE_TREE = 'acd548eb97ddaee68eb6c9df73f82756ee10d13f'
 ROUND3_MATH = {'Zeta23/OPICARound3.lean', 'Zeta23/OPICARound3/All.lean'} | {
     'Zeta23/OPICARound3/'+name+'.lean' for name in ('NeutralParityCover', 'NeutralParityTopology',
         'CofinalSimultaneousNegative', 'UniformNeutralInterval', 'FirstNeutralCutoff',
-        'KernelSafeSchur', 'FirstSimultaneousNegative')}
-ROUND3_AUDIT = {'Zeta23/OPICARound3/Validation.lean', 'Zeta23/RHRC/OpicaRound3Bindings.lean'} | {
+        'KernelSafeSchur', 'FirstSimultaneousNegative', 'SchurNegativeWitness', 'NewbornSource')}
+ROUND3_AUDIT = {'Zeta23/OPICARound3/Validation.lean', 'Zeta23/RHRC/OpicaRound3Bindings.lean',
+                'Zeta23/RHRC/OpicaRound3AtlasExport.lean'} | {
     'Zeta23/OPICARound3/Validation/'+name+'.lean' for name in ('NeutralParityCover',
-        'CofinalSimultaneousNegative', 'UniformNeutralInterval', 'FirstSimultaneousNegative')}
+        'CofinalSimultaneousNegative', 'UniformNeutralInterval', 'FirstSimultaneousNegative',
+        'NewbornSource')}
 ROUND3_ROLES = {
     **{'Zeta23.OPICARound3.'+name: 'OPICA3_SOURCE_FAITHFUL_FORMAL_SUPPORT' for name in (
        'NeutralParityCover', 'NeutralParityTopology', 'CofinalSimultaneousNegative',
-       'UniformNeutralInterval', 'FirstNeutralCutoff', 'FirstSimultaneousNegative')},
+       'UniformNeutralInterval', 'FirstNeutralCutoff', 'FirstSimultaneousNegative', 'NewbornSource')},
     'Zeta23.OPICARound3.KernelSafeSchur': 'OPICA3_GENERIC_KERNEL_SAFE_LINEAR_ALGEBRA',
+    'Zeta23.OPICARound3.SchurNegativeWitness': 'OPICA3_GENERIC_KERNEL_SAFE_LINEAR_ALGEBRA',
     **{name: 'OPICA3_INDEPENDENT_TYPE_AND_AXIOM_AUDIT' for name in (
        'Zeta23.OPICARound3.Validation', 'Zeta23.RHRC.OpicaRound3Bindings',
+       'Zeta23.RHRC.OpicaRound3AtlasExport',
        'Zeta23.OPICARound3.Validation.NeutralParityCover',
        'Zeta23.OPICARound3.Validation.CofinalSimultaneousNegative',
        'Zeta23.OPICARound3.Validation.UniformNeutralInterval',
-       'Zeta23.OPICARound3.Validation.FirstSimultaneousNegative')},
+       'Zeta23.OPICARound3.Validation.FirstSimultaneousNegative',
+       'Zeta23.OPICARound3.Validation.NewbornSource')},
     'Zeta23.OPICARound3': 'OPICA3_PHASE1_MATHEMATICAL_FACADE',
     'Zeta23.OPICARound3.All': 'OPICA3_PHASE1_MATHEMATICAL_FACADE',
 }
@@ -46,8 +51,19 @@ def round3_rules():
     return [rule('opica_round3_math', ROUND3_MATH, 'LEAN_SOURCE', 'AUXILIARY_FORMALIZATION'),
             rule('opica_round3_audit', ROUND3_AUDIT, 'LEAN_SOURCE', 'AUDIT_ONLY'),
             rule('opica_round3_configuration', {prefix+n+'.json' for n in (
-                'DESCENDANT_EXTENSION', 'OPEN_RESEARCH', 'PUBLIC_ROOTS', 'SOURCE_REGISTER')},
+                'DESCENDANT_EXTENSION', 'OPEN_RESEARCH', 'PUBLIC_ROOTS', 'SOURCE_REGISTER',
+                'atlas/SEMANTIC_OVERLAY', 'schemas/constraint_atlas.schema',
+                'schemas/source_evaluator.schema')},
                 'BUILD_CONFIGURATION', 'AUDIT_ONLY'),
+            rule('opica_round3_atlas_product', {prefix+'atlas/CONSTRAINT_ATLAS.jsonl'},
+                'GENERATED_GRAPH_PRODUCT', 'AUDIT_ONLY'),
+            rule('opica_round3_source_cases', {prefix+'fixtures/source_evaluator_cases.json'},
+                'RESEARCH_FIXTURE', 'RESEARCH_ONLY'),
+            rule('opica_round3_audit_executables', {prefix+n for n in (
+                'validate_contract.py', 'constraint_atlas.py', 'source_backend.py',
+                'source_evaluator.py', 'source_checker.py', 'tests/test_contract.py',
+                'tests/test_constraint_atlas.py', 'tests/test_source_evaluator.py')},
+                'RESEARCH_EXECUTABLE', 'AUDIT_ONLY'),
             rule('opica_round3_workflow', {'.github/workflows/rhrc_opica_round3.yml'}, 'CI_WORKFLOW', 'AUDIT_ONLY')]
 sys.path.insert(0, str(GRAPH))
 spec = importlib.util.spec_from_file_location('_opica2_class_graph', GRAPH/'build.py')
@@ -159,7 +175,7 @@ class ExactRound2FileClasses(unittest.TestCase):
         self.assertTrue(all(role.startswith('OPICA2_') for role in new.values()))
         self.assertEqual(roles, {**base_roles, **(ROUND3_ROLES if self.round3 else {})})
         if self.round3:
-            self.assertEqual(len(ROUND3_ROLES), 15)
+            self.assertEqual(len(ROUND3_ROLES), 19)
             self.assertEqual(set(ROUND3_ROLES), {graph.module_name(p) for p in ROUND3_MATH | ROUND3_AUDIT})
         for row in self.manifest['create']:
             if row['path'].endswith('.lean') and not (REPO/row['path']).exists():

@@ -4239,6 +4239,15 @@
       "source": "Zeta23/OPICARound3/FirstSimultaneousNegative.lean",
       "theorem": "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff",
       "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA3_D05",
+      "statement": "The exact quantified Lean statement of Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses constructs actual regular or resonant negative newborn witnesses and retains complete corrected source and shifted output compatibility at the stated same-source cutoffs. No independent source sign or limit is assumed. RH and Step4 remain OPEN.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/OPICARound3/NewbornSource.lean",
+      "theorem": "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
     }
   ]
 }

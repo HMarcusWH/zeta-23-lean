@@ -3,7 +3,7 @@
   "base_commit": "775692f2e72d76b6a97cf66926a86cc96342c109",
   "base_tree": "acd548eb97ddaee68eb6c9df73f82756ee10d13f",
   "drive_folder": "https://drive.google.com/drive/folders/1SZKmZpX2KucVC13lPwgmMtjJo7Vwygfk",
-  "user_selected_scope": "D01-D04 + issue296 + falsification gates; larger source-arithmetic campaign deferred",
+  "user_selected_scope": "D01-D05, issue296, falsification gates, statement atlas/source crosswalk and targeted complete-source K2/K3 finite evaluator; larger arithmetic campaign and terminal source restrictions remain open",
   "files": [
     {
       "path": "paper/draft_spec.md",
