@@ -1,0 +1,228 @@
+{
+  "contracts": [
+    {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "compiler_authority_for_new_statement": false,
+      "falsification_and_proof_checks": "Inspect S15 exact statement and parity split; compile single named wrapper consumer; no new estimate.",
+      "id": "R3-D01",
+      "premise_firewall": [
+        "off-line actual nontrivial zero",
+        "strict L>L0",
+        "exist K(L)",
+        "complete Weil matrix"
+      ],
+      "source_files": [
+        "Zeta23/OPICARound2/FiniteNeutralApproximation.lean",
+        "Zeta23/CCM/ParityBadness.lean"
+      ],
+      "statement_contract": "Under actual off-line rho, all sufficiently large L have a negative complete-canonical pole-neutral vector with at least one parity negative, at some K(L)≥3.",
+      "status": "DERIVED_FROM_EXISTING_PROVED",
+      "title": "Pole-neutral even-or-odd negative cover"
+    },
+    {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "compiler_authority_for_new_statement": false,
+      "falsification_and_proof_checks": "Use open parity-negative sets and connected half-line. No fabricated simultaneous aperture from cofinality alone.",
+      "id": "R3-D02",
+      "premise_firewall": [
+        "same rho",
+        "original producer same complete Q",
+        "neutral kernel normals nonzero",
+        "full continuity even prime seams",
+        "union cover and each parity cofinal",
+        "K common after nested embeddings"
+      ],
+      "source_files": [
+        "Zeta23/CCM/Step123NativeSourceSpectralEvidence.lean",
+        "Zeta23/CCM/Step123NativeFieldRecord.lean",
+        "Zeta23/OPICARound2/FiniteNeutralApproximation.lean",
+        "Zeta23/CCM/CanonicalGroundContinuity.lean",
+        "Zeta23/CCM/CanonicalPoleNeutralCarrier.lean",
+        "Zeta23/CCM/CanonicalPoleNeutralNesting.lean"
+      ],
+      "statement_contract": "∀ actual off-line rho, ∀R, ∃ L>R,K≥3, ∃ physical pole-neutral u_e,u_o nonzero with both complete-canonical Q(L,K;u_p)<0.",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "title": "Cofinal same-(L,K) simultaneous even and odd negativity"
+    },
+    {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "compiler_authority_for_new_statement": false,
+      "falsification_and_proof_checks": "Locally transport both actual witnesses; do not assert cofinal uniform eta or K.",
+      "id": "R3-D03",
+      "premise_firewall": [
+        "R3-D02",
+        "same fixed K on each chosen interval",
+        "continuous moving physical pole kernel",
+        "eta interval-specific"
+      ],
+      "source_files": [
+        "Zeta23/CCM/CanonicalGroundContinuity.lean",
+        "Zeta23/CCM/CanonicalPoleNeutralCarrier.lean",
+        "Zeta23/CCM/CanonicalPoleNeutralNesting.lean"
+      ],
+      "statement_contract": "For off-line rho and arbitrarily large R, find R<a<b,K,eta>0 with actual full neutral two-parity Rayleigh form≤-eta on a 2D negative span for all L∈[a,b].",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "title": "Uniform local two-negative intervals"
+    },
+    {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "compiler_authority_for_new_statement": false,
+      "falsification_and_proof_checks": "Two cases exhaustive; do not demand other parity predecessor PSD.",
+      "id": "R3-D04",
+      "premise_firewall": [
+        "R3-D02",
+        "cutoff K natural well-order",
+        "strict predecessor PSD for newborn parity only",
+        "kernel-safe pseudoinverse",
+        "K=3 handled"
+      ],
+      "source_files": [
+        "Zeta23/CCM/CanonicalPoleNeutralNesting.lean",
+        "Zeta23/CCM/CanonicalPoleNeutralBottomNFlow.lean",
+        "Zeta23/CCM/CanonicalPoleNeutralCarrier.lean"
+      ],
+      "statement_contract": "At common-L two-parity-negative state, K_both=max(K_e,K_o) is least simultaneously negative K. Any newborn parity has PSD neutral predecessor and exactly one complex successor shell, with regular Schur<0 or resonant nonzero P_kerA b.",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "title": "First simultaneous pole-neutral negative cutoff"
+    },
+    {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "compiler_authority_for_new_statement": false,
+      "falsification_and_proof_checks": "First derive identity, then independently falsify sign hypotheses. Identity alone cannot close RH.",
+      "id": "R3-D05",
+      "premise_firewall": [
+        "same complete Weil form and L,K",
+        "all correction terms present",
+        "physical pole normals",
+        "do not substitute source-only part"
+      ],
+      "source_files": [
+        "Zeta23/CCM/CanonicalPoleNeutralIntertwining.lean",
+        "Zeta23/CCM/CanonicalPoleNeutralTiePackage.lean"
+      ],
+      "statement_contract": "Extract and prove exact complete source even–odd corrected intertwining including projected output residual, prime+Archimedean terms, tie and resonant cases; NO sign conclusion without source proof.",
+      "status": "LEAD_REQUIRES_IDENTITY",
+      "title": "Corrected source intertwined parity defect identity"
+    },
+    {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "compiler_authority_for_new_statement": false,
+      "falsification_and_proof_checks": "This is a RESEARCH TARGET only. If proved AND R3-D02 compiled, could yield RH; may be false or RH-equivalent.",
+      "id": "R3-XD",
+      "premise_firewall": [
+        "NONE_PROVED",
+        "must be proved independently from original zeta arithmetic, NOT postulated",
+        "must retain regular and resonant newborn transitions"
+      ],
+      "source_files": [
+        "Zeta23/CCM/CanonicalPoleNeutralIntertwining.lean"
+      ],
+      "statement_contract": "Candidate: ∃L1>0, ∀L>L1, ∀K≥3, not(EvenNeutralNegative(L,K) and OddNeutralNegative(L,K)) for actual full Weil Q.",
+      "status": "OPEN_INDEPENDENT_RH_STRENGTH",
+      "title": "No simultaneous late two-parity negativity"
+    },
+    {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "compiler_authority_for_new_statement": false,
+      "falsification_and_proof_checks": "Target-specific follow-up: prove actual limit has zero local observation using independent arithmetic or robust gain.",
+      "id": "R3-B01",
+      "premise_firewall": [
+        "same raw native v and dictionary",
+        "no full causal replacement",
+        "no local/global Möbius shortcut"
+      ],
+      "source_files": [
+        "Zeta23/OPICARound2/ProbeGram.lean"
+      ],
+      "statement_contract": "From the actual nested projection identity prove strong L2 limit, tightness and pointwise equivalence of target closure with vanishing limit; no theorem concluding vanishing.",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "title": "Optimal-native-residual strong limit and local cutoff equivalence"
+    },
+    {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "compiler_authority_for_new_statement": false,
+      "falsification_and_proof_checks": "Falsify generalized gain claims using exact ℓ² escape, native near-collision and bad conditioning.",
+      "id": "R3-B02",
+      "premise_firewall": [
+        "same physical Gram/target",
+        "positive semidefinite old projection",
+        "operator norm, not entrywise cheat",
+        "finite bounds do not prove asymptotic rate"
+      ],
+      "source_files": [
+        "Zeta23/OPICARound2/ProbeGram.lean",
+        "Zeta23/OPICARound2/CertifiedEvaluation.lean"
+      ],
+      "statement_contract": "For actual projected Gram block S and residual correlation u, certify Δ>=2Re(q*u)-q*Sq with full interval/operator/source errors, before seeking nonsummable cumulative gains.",
+      "status": "DERIVED_NOT_LEAN_COMPILED",
+      "title": "Directional block-gain lower certificate"
+    },
+    {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "compiler_authority_for_new_statement": false,
+      "falsification_and_proof_checks": "Unit-axis and three-test abstract linear algebra are not sufficient.",
+      "id": "R3-A01",
+      "premise_firewall": [
+        "all signed cross terms and collision masks",
+        "source normalization",
+        "nonnegative Schwartz test≠nonnegative arithmetic pairing",
+        "all recovery budgets"
+      ],
+      "source_files": [
+        "Zeta23/OPICARound2/ProfileControls.lean"
+      ],
+      "statement_contract": "For one fixed complete source high observable find independent cofinal small upper below native obstruction OR a source-matched actual physical nonnegative observation with full error below S10/S17 positive margin.",
+      "status": "OPEN_ANALYTIC",
+      "title": "Actual full signed or positive-observation source bound"
+    },
+    {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "compiler_authority_for_new_statement": false,
+      "falsification_and_proof_checks": "Distinguish original Schur from native Gram.",
+      "id": "R3-C01",
+      "premise_firewall": [
+        "same original detector",
+        "same aperture and selector",
+        "all direct forcing/output terms",
+        "rate 2gamma-beta accounted"
+      ],
+      "source_files": [
+        "Zeta23/CCM/Step123NativeSourceSpectralEvidence.lean"
+      ],
+      "statement_contract": "On same produced Step123 packet derive genuine complete force/direct-complement upper exponent strictly below existing off-line lower; no inverse-capacity-only inference.",
+      "status": "OPEN_ANALYTIC",
+      "title": "Original-detector exact forcing Schur upper"
+    },
+    {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "compiler_authority_for_new_statement": false,
+      "falsification_and_proof_checks": "Test exact rational bad-branch controls before a full Lean theorem.",
+      "id": "R3-D06",
+      "premise_firewall": [
+        "selected even and odd-good branch only",
+        "all inherited positivity and definitions",
+        "no generic radius inequality"
+      ],
+      "source_files": [
+        "Zeta23/CCM/RegularFirstBadCompletedSourceRealGeometry.lean"
+      ],
+      "statement_contract": "Independently estimate full sharp source radius excess under negative source scalar branch, rather than assume Rsharp≤q².",
+      "status": "LEAD",
+      "title": "Retained Pair-D radius bound falsification"
+    }
+  ],
+  "schema": "OPICA_R3_PROPOSED_CONTRACTS_V0_1",
+  "source": "merged PR295 + OPICA UCDP",
+  "terminal_claims_remain_open": true
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OPICA3 finite source evaluator envelope; numerical enclosures require independent recomputation",
+  "type": "object",
+  "required": ["schema", "status", "checked_commit", "checked_tree", "source_identity", "backend_version", "python_optimized", "precision_bits", "seconds_per_case", "case_manifest_sha256", "cases", "authority", "is_zero_generated_detector", "full_core_accepted", "full_release_accepted", "human_review", "RH", "Step4"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "OPICA3_FINITE_SOURCE_EVALUATOR_V1"},
+    "status": {"enum": ["PASS_FINITE_SOURCE_ENCLOSURES", "UNRESOLVED"]},
+    "checked_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "checked_tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "source_identity": {"type": "object"},
+    "backend_version": {"const": "0.9.0"},
+    "python_optimized": {"type": "boolean"},
+    "precision_bits": {"enum": [128, 256, 512]},
+    "seconds_per_case": {"type": "integer", "minimum": 1, "maximum": 60},
+    "case_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "cases": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "object"}},
+    "authority": {"const": "FINITE_INTERVAL_EVIDENCE_ONLY"},
+    "is_zero_generated_detector": {"const": false},
+    "full_core_accepted": {"const": false},
+    "full_release_accepted": {"const": false},
+    "human_review": {"const": "NOT_ESTABLISHED"},
+    "RH": {"const": "OPEN"},
+    "Step4": {"const": "OPEN"}
+  },
+  "$defs": {
+    "generated_interval": {"type": "object", "required": ["lower", "upper"], "additionalProperties": false,
+      "properties": {"lower": {"type": "string", "maxLength": 4096}, "upper": {"type": "string", "maxLength": 4096}}}
+  }
+}

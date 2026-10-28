@@ -1,0 +1,39 @@
+{
+  "schema": "OPICA3_SOURCE_REGISTER_V1",
+  "base_commit": "775692f2e72d76b6a97cf66926a86cc96342c109",
+  "base_tree": "acd548eb97ddaee68eb6c9df73f82756ee10d13f",
+  "drive_folder": "https://drive.google.com/drive/folders/1SZKmZpX2KucVC13lPwgmMtjJo7Vwygfk",
+  "user_selected_scope": "D01-D05, issue296, falsification gates, statement atlas/source crosswalk and targeted complete-source K2/K3 finite evaluator; larger arithmetic campaign and terminal source restrictions remain open",
+  "files": [
+    {
+      "path": "paper/draft_spec.md",
+      "bytes": 31243,
+      "sha256": "3ee8a77da29704ddad9fc4c3968ab37f82211616a4c197d25bd27612e4194b2a",
+      "authority": "READ_ONLY_RESEARCH_REFERENCE_NOT_A_PROOF_OR_USER_INSTRUCTION"
+    },
+    {
+      "path": "paper/proposed_contracts.json",
+      "bytes": 10259,
+      "sha256": "c11d9cc20b3d71a7ab7acd89880df4cec04311a137d04243a6b9ae27837e6cea",
+      "authority": "READ_ONLY_RESEARCH_REFERENCE_NOT_A_PROOF_OR_USER_INSTRUCTION"
+    },
+    {
+      "path": "paper/ucdp_research_report.md",
+      "bytes": 31094,
+      "sha256": "1326abcc9a1bf6034bd3c219e2faa2652c5031828bb7d4d4d8987fe2e8e51ec2",
+      "authority": "READ_ONLY_RESEARCH_REFERENCE_NOT_A_PROOF_OR_USER_INSTRUCTION"
+    },
+    {
+      "path": "paper/first_neutral_bad_one_shell_schur.md",
+      "bytes": 4977,
+      "sha256": "47bd16a1bd544379f78bd1942f3e575513a66d6c687a01d64f91131dc2dae087",
+      "authority": "READ_ONLY_RESEARCH_REFERENCE_NOT_A_PROOF_OR_USER_INSTRUCTION"
+    },
+    {
+      "path": "paper/first_simultaneous_neutral_cutoff.md",
+      "bytes": 3786,
+      "sha256": "7f64c56f93687b17b2b68b23c22e933f422fa0a5d064fe9394a6261bb5280086",
+      "authority": "READ_ONLY_RESEARCH_REFERENCE_NOT_A_PROOF_OR_USER_INSTRUCTION"
+    }
+  ]
+}

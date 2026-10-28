@@ -1,0 +1,63 @@
+{
+  "schema": "OPICA3_PUBLIC_ROOTS_V1",
+  "roots": [
+    {
+      "id": "R3-D01",
+      "claim_id": "OPICA3_D01",
+      "theorem": "Zeta23.OPICARound3.neutral_parity_cover_of_off_line_zero",
+      "module": "Zeta23.OPICARound3.NeutralParityCover",
+      "source": "Zeta23/OPICARound3/NeutralParityCover.lean",
+      "consumer_module": "Zeta23.OPICARound3.Validation.NeutralParityCover",
+      "consumer": "Zeta23/OPICARound3/Validation/NeutralParityCover.lean",
+      "consumer_declaration": "Zeta23.OPICARound3.Validation.neutral_parity_cover_of_off_line_zero_consumer",
+      "required": true
+    },
+    {
+      "id": "R3-D02",
+      "claim_id": "OPICA3_D02",
+      "theorem": "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero",
+      "module": "Zeta23.OPICARound3.CofinalSimultaneousNegative",
+      "source": "Zeta23/OPICARound3/CofinalSimultaneousNegative.lean",
+      "consumer_module": "Zeta23.OPICARound3.Validation.CofinalSimultaneousNegative",
+      "consumer": "Zeta23/OPICARound3/Validation/CofinalSimultaneousNegative.lean",
+      "consumer_declaration": "Zeta23.OPICARound3.Validation.cofinally_both_neutral_negative_of_off_line_zero_consumer",
+      "required": true
+    },
+    {
+      "id": "R3-D03",
+      "claim_id": "OPICA3_D03",
+      "theorem": "Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero",
+      "module": "Zeta23.OPICARound3.UniformNeutralInterval",
+      "source": "Zeta23/OPICARound3/UniformNeutralInterval.lean",
+      "consumer_module": "Zeta23.OPICARound3.Validation.UniformNeutralInterval",
+      "consumer": "Zeta23/OPICARound3/Validation/UniformNeutralInterval.lean",
+      "consumer_declaration": "Zeta23.OPICARound3.Validation.cofinally_uniform_neutral_interval_of_off_line_zero_consumer",
+      "required": true
+    },
+    {
+      "id": "R3-D04",
+      "claim_id": "OPICA3_D04",
+      "theorem": "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff",
+      "module": "Zeta23.OPICARound3.FirstSimultaneousNegative",
+      "source": "Zeta23/OPICARound3/FirstSimultaneousNegative.lean",
+      "consumer_module": "Zeta23.OPICARound3.Validation.FirstSimultaneousNegative",
+      "consumer": "Zeta23/OPICARound3/Validation/FirstSimultaneousNegative.lean",
+      "consumer_declaration": "Zeta23.OPICARound3.Validation.first_simultaneous_neutral_negative_cutoff_consumer",
+      "required": true
+    },
+    {
+      "id": "R3-D05",
+      "claim_id": "OPICA3_D05",
+      "theorem": "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses",
+      "module": "Zeta23.OPICARound3.NewbornSource",
+      "source": "Zeta23/OPICARound3/NewbornSource.lean",
+      "consumer_module": "Zeta23.OPICARound3.Validation.NewbornSource",
+      "consumer": "Zeta23/OPICARound3/Validation/NewbornSource.lean",
+      "consumer_declaration": "Zeta23.OPICARound3.Validation.first_simultaneous_newborn_source_witnesses_consumer",
+      "required": true
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "full_release_accepted": false
+}

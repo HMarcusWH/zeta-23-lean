@@ -22,6 +22,12 @@ MAX_NODES = 1_000_000
 # Explicit callers may select a larger bounded structure budget. Ordinary
 # certificates, schema checks and canonical hashes retain MAX_NODES by default.
 MAX_EXPLICIT_NODES = 8_000_000
+MAX_INPUT_RATIONAL_CHARS = 180
+# Generated Arb bounds and sums of their dyadic endpoints can exceed the input
+# coefficient budget even at supported precision. This separate finite budget
+# covers their serialization without rounding; precision alone does not bound
+# exponents, so larger endpoints still fail closed. JSON byte/node caps remain.
+MAX_ENDPOINT_RATIONAL_CHARS = 4096
 INTEGER = re.compile(r"-?(?:0|[1-9][0-9]*)\Z")
 RATIONAL = re.compile(r"-?(?:0|[1-9][0-9]*)(?:/[1-9][0-9]*)?\Z")
 HASH = re.compile(r"[0-9a-f]{64}\Z")
@@ -137,13 +143,23 @@ def parse_integer(value: Any, *, minimum: int | None = None, maximum: int | None
     return result
 
 
-def parse_rational(value: Any, *, nonnegative: bool = False) -> Fraction:
-    require(type(value) is str and len(value) <= 180 and RATIONAL.fullmatch(value) is not None,
+def _parse_rational(value: Any, max_chars: int, *, nonnegative: bool) -> Fraction:
+    require(type(value) is str and len(value) <= max_chars and RATIONAL.fullmatch(value) is not None,
             "rational", "Canonical rational string required")
     result = Fraction(value)
     require(str(result) == value, "rational", "Rational must be reduced and canonical")
     require(not nonnegative or result >= 0, "negative_budget", "Negative budget or squared norm")
     return result
+
+
+def parse_rational(value: Any, *, nonnegative: bool = False) -> Fraction:
+    """Parse a user coefficient/parameter with the original 180-character cap."""
+    return _parse_rational(value, MAX_INPUT_RATIONAL_CHARS, nonnegative=nonnegative)
+
+
+def parse_endpoint_rational(value: Any, *, nonnegative: bool = False) -> Fraction:
+    """Parse an exact generated bound/budget; at most 4096 canonical characters."""
+    return _parse_rational(value, MAX_ENDPOINT_RATIONAL_CHARS, nonnegative=nonnegative)
 
 
 class RationalComplex(NamedTuple):
@@ -326,7 +342,7 @@ def validate_certificate(obj: Any, expected_source: Mapping[str, Any] | None = N
     horizon = parse_rational(obj["absolute_output_horizon"], nonnegative=True)
     require(lag > 0 and horizon > lag, "horizons", "Positive distinct lag and output horizons required")
     require(obj["source_prefix_M"] <= 1_000_000, "source_prefix_limit", "Source prefix exceeds resource limit")
-    budgets = {k: parse_rational(v, nonnegative=True) for k, v in obj["error_budget"].items()}
+    budgets = {k: parse_endpoint_rational(v, nonnegative=True) for k, v in obj["error_budget"].items()}
     require(budgets["filter_operator_norm_upper"] > 0, "filter_norm", "Nonzero filter needs positive norm upper")
     # Each component is an absolute error in the final output norm. Any filter
     # multiplication must already be included by the independent analytic checker.
@@ -334,8 +350,8 @@ def validate_certificate(obj: Any, expected_source: Mapping[str, Any] | None = N
              "quadrature_norm_error", "rounding_norm_error")
     require(budgets["total_norm_error"] >= sum((budgets[k] for k in names), Fraction()),
             "incomplete_budget", "Total norm budget does not cover all components")
-    upper = parse_rational(obj["upper_square"], nonnegative=True)
-    lower = parse_rational(obj["witness_lower_square"], nonnegative=True)
+    upper = parse_endpoint_rational(obj["upper_square"], nonnegative=True)
+    lower = parse_endpoint_rational(obj["witness_lower_square"], nonnegative=True)
     names_seen: set[str] = set()
     for dep in obj["analytic_dependencies"]:
         require(dep["declaration"] not in names_seen, "duplicate_dependency", "Duplicate analytic dependency")
@@ -365,9 +381,9 @@ def validate_certificate(obj: Any, expected_source: Mapping[str, Any] | None = N
                 {"certificate_sha256", "upper_square", "witness_lower_square", "total_norm_error"},
                 "checker_result", "Independent checker returned incomplete evidence")
         require(recomputed["certificate_sha256"] == canonical_sha256(obj), "stale_checker", "Checker evidence is stale")
-        require(parse_rational(recomputed["upper_square"], nonnegative=True) == upper
-                and parse_rational(recomputed["witness_lower_square"], nonnegative=True) == lower
-                and parse_rational(recomputed["total_norm_error"], nonnegative=True) == budgets["total_norm_error"],
+        require(parse_endpoint_rational(recomputed["upper_square"], nonnegative=True) == upper
+                and parse_endpoint_rational(recomputed["witness_lower_square"], nonnegative=True) == lower
+                and parse_endpoint_rational(recomputed["total_norm_error"], nonnegative=True) == budgets["total_norm_error"],
                 "checker_bounds", "Certificate differs from independent recomputation")
         require(0 <= upper < lower, "no_strict_margin", "Rigorous upper does not beat witness lower")
         authority = "CERTIFIED_FINITE_NOT_LEAN"

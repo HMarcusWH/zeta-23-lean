@@ -36,6 +36,48 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
+      "id": "opica_round3_math",
+      "pattern": "\\A(?:Zeta23/OPICARound3\\.lean|Zeta23/OPICARound3/All\\.lean|Zeta23/OPICARound3/CofinalSimultaneousNegative\\.lean|Zeta23/OPICARound3/FirstNeutralCutoff\\.lean|Zeta23/OPICARound3/FirstSimultaneousNegative\\.lean|Zeta23/OPICARound3/KernelSafeSchur\\.lean|Zeta23/OPICARound3/NeutralParityCover\\.lean|Zeta23/OPICARound3/NeutralParityTopology\\.lean|Zeta23/OPICARound3/NewbornSource\\.lean|Zeta23/OPICARound3/SchurNegativeWitness\\.lean|Zeta23/OPICARound3/UniformNeutralInterval\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "id": "opica_round3_audit",
+      "pattern": "\\A(?:Zeta23/OPICARound3/Validation\\.lean|Zeta23/OPICARound3/Validation/CofinalSimultaneousNegative\\.lean|Zeta23/OPICARound3/Validation/FirstSimultaneousNegative\\.lean|Zeta23/OPICARound3/Validation/NeutralParityCover\\.lean|Zeta23/OPICARound3/Validation/NewbornSource\\.lean|Zeta23/OPICARound3/Validation/UniformNeutralInterval\\.lean|Zeta23/RHRC/OpicaRound3AtlasExport\\.lean|Zeta23/RHRC/OpicaRound3Bindings\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round3_configuration",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION\\.json|research/RHRC/integration/opica_round3/OPEN_RESEARCH\\.json|research/RHRC/integration/opica_round3/PUBLIC_ROOTS\\.json|research/RHRC/integration/opica_round3/SOURCE_REGISTER\\.json|research/RHRC/integration/opica_round3/atlas/SEMANTIC_OVERLAY\\.json|research/RHRC/integration/opica_round3/schemas/constraint_atlas\\.schema\\.json|research/RHRC/integration/opica_round3/schemas/source_evaluator\\.schema\\.json)\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round3_atlas_product",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS\\.jsonl)\\Z",
+      "file_class": "GENERATED_GRAPH_PRODUCT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round3_source_cases",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round3/fixtures/source_evaluator_cases\\.json)\\Z",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "opica_round3_audit_executables",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round3/constraint_atlas\\.py|research/RHRC/integration/opica_round3/source_backend\\.py|research/RHRC/integration/opica_round3/source_checker\\.py|research/RHRC/integration/opica_round3/source_evaluator\\.py|research/RHRC/integration/opica_round3/tests/test_constraint_atlas\\.py|research/RHRC/integration/opica_round3/tests/test_contract\\.py|research/RHRC/integration/opica_round3/tests/test_source_evaluator\\.py|research/RHRC/integration/opica_round3/validate_contract\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round3_workflow",
+      "pattern": "\\A(?:\\.github/workflows/rhrc_opica_round3\\.yml)\\Z",
+      "file_class": "CI_WORKFLOW",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "opica_round2_lean_source_audit_only",
       "pattern": "\\A(?:Zeta23/OPICARound2/OptionalValidation\\.lean|Zeta23/OPICARound2/Validation\\.lean|Zeta23/OPICARound2/Validation/CT1Controls\\.lean|Zeta23/OPICARound2/Validation/CausalProbe\\.lean|Zeta23/OPICARound2/Validation/CertifiedEvaluation\\.lean|Zeta23/OPICARound2/Validation/ClassicalAdapter\\.lean|Zeta23/OPICARound2/Validation/ClassicalTransfer\\.lean|Zeta23/OPICARound2/Validation/DualCertificates\\.lean|Zeta23/OPICARound2/Validation/FilteredClassicalComparison\\.lean|Zeta23/OPICARound2/Validation/FiniteFilteredBaseline\\.lean|Zeta23/OPICARound2/Validation/FiniteNeutralApproximation\\.lean|Zeta23/OPICARound2/Validation/FixedFilter\\.lean|Zeta23/OPICARound2/Validation/NativeCuts\\.lean|Zeta23/OPICARound2/Validation/NativeJumpControls\\.lean|Zeta23/OPICARound2/Validation/OptionalExternalTransfer\\.lean|Zeta23/OPICARound2/Validation/OptionalFourCost\\.lean|Zeta23/OPICARound2/Validation/OptionalLatticeRepair\\.lean|Zeta23/OPICARound2/Validation/OptionalPolynomialGap\\.lean|Zeta23/OPICARound2/Validation/ProbeGram\\.lean|Zeta23/OPICARound2/Validation/ProfileControls\\.lean|Zeta23/OPICARound2/Validation/RegionalCertificates\\.lean|Zeta23/OPICARound2/Validation/SyntheticControls\\.lean|Zeta23/OPICARound2/Validation/TruncationControls\\.lean|Zeta23/RHRC/OpicaRound2Bindings\\.lean)\\Z",
       "file_class": "LEAN_SOURCE",

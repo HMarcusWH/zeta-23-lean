@@ -1772,6 +1772,31 @@
       "id": "OPICA2_S17",
       "theorem": "Zeta23.OPICARound2.phase_complete_positive_test_observability",
       "source": "Zeta23/OPICARound2/ProfileControls.lean"
+    },
+    {
+      "id": "OPICA3_D01",
+      "theorem": "Zeta23.OPICARound3.neutral_parity_cover_of_off_line_zero",
+      "source": "Zeta23/OPICARound3/NeutralParityCover.lean"
+    },
+    {
+      "id": "OPICA3_D02",
+      "theorem": "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero",
+      "source": "Zeta23/OPICARound3/CofinalSimultaneousNegative.lean"
+    },
+    {
+      "id": "OPICA3_D03",
+      "theorem": "Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero",
+      "source": "Zeta23/OPICARound3/UniformNeutralInterval.lean"
+    },
+    {
+      "id": "OPICA3_D04",
+      "theorem": "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff",
+      "source": "Zeta23/OPICARound3/FirstSimultaneousNegative.lean"
+    },
+    {
+      "id": "OPICA3_D05",
+      "theorem": "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses",
+      "source": "Zeta23/OPICARound3/NewbornSource.lean"
     }
   ],
   "candidate_scope": "OPEN_CANDIDATE_BINDINGS_AUDIT_ONLY_NOT_PROVED_AUTHORITY",

@@ -1,5 +1,5 @@
 {
-  "contacting_root_count": 874,
+  "contacting_root_count": 857,
   "contacts": [
     {
       "active_interfaces": [
@@ -7083,144 +7083,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.Step123NativeCorePacket.original_negative_schur",
-      "module": "Zeta23.CCM.Step123NativeCorePacket"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.Step123NativeOutput.arithmeticView_eq_fixed",
-      "module": "Zeta23.CCM.Step123OutputFieldEvidence"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.Step123NativeOutput.detector_inverse_budget",
-      "module": "Zeta23.CCM.Step123NativeResidualOutput"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.Step123NativeOutput.detector_source_unit",
-      "module": "Zeta23.CCM.Step123OutputFieldEvidence"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.Step123NativeOutput.finite_image_H1_bound",
-      "module": "Zeta23.CCM.Step123OutputFieldEvidence"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.Step123NativeOutput.finite_image_unit",
-      "module": "Zeta23.CCM.Step123OutputFieldEvidence"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 11,
           "examples": [
             "Zeta23.CCM.centeredQuadraticNormal",
@@ -7539,54 +7401,8 @@
           "truncated": false
         }
       },
-      "declaration": "Zeta23.CCM.Step123NativeOutput.originalDetector_schur_loss",
-      "module": "Zeta23.CCM.Step123OutputData"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
       "declaration": "Zeta23.CCM.Step123NativeOutput.originalInterior_ne_zero",
       "module": "Zeta23.CCM.Step123SameStateN39"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.Step123NativeOutput.originalSchur_full_complement",
-      "module": "Zeta23.CCM.Step123OutputFieldEvidence"
     },
     {
       "active_interfaces": [
@@ -7656,52 +7472,6 @@
       },
       "declaration": "Zeta23.CCM.Step123NativeOutput.physicalFiniteImage_ae_originalDetector",
       "module": "Zeta23.CCM.Step123SameStateN38"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.Step123NativeOutput.rangeView_eq_actual",
-      "module": "Zeta23.CCM.Step123OutputFieldEvidence"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.Step123NativeOutput.selected_inverse_budget",
-      "module": "Zeta23.CCM.Step123NativeResidualOutput"
     },
     {
       "active_interfaces": [
@@ -13145,30 +12915,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 8,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1"
-          ],
-          "sha256": "de978412163947aa04616b3c03cd0bc4f20be02aaaf4dbcc6d66b706c2e2347c",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.exists_generatedStep123ComposedEvidencePacket_cofinal",
-      "module": "Zeta23.CCM.Step123NativeSourceSpectralEvidence"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 7,
           "examples": [
             "Zeta23.CCM.evenCompressedCanonical",
@@ -13184,29 +12930,6 @@
         }
       },
       "declaration": "Zeta23.CCM.exists_generatedStep123IntegratedPacket",
-      "module": "Zeta23.CCM.Step123NativeArithmeticRangeEvidence"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.exists_generatedStep123IntegratedPacket_cofinal",
       "module": "Zeta23.CCM.Step123NativeArithmeticRangeEvidence"
     },
     {
@@ -13922,45 +13645,6 @@
       },
       "declaration": "Zeta23.CCM.finiteRestriction_eq_cutoffFreeQuadraticForm_of_matches",
       "module": "Zeta23.CCM.LocalizedWeilRestriction"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 4,
-          "examples": [
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "256f4d79a7aad998020964dddb34354317434832dc5f6e4f510e5f19a345132c",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.finrank_poleNeutralEven_successor_shell_eq_one",
-      "module": "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 3,
-          "examples": [
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "34abec4ce6656bed821acbf81ba2c4e71ee7951d766c3e130d6cc02f5931ae81",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.finrank_poleNeutralOdd_successor_shell_eq_one",
-      "module": "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"
     },
     {
       "active_interfaces": [
@@ -17547,42 +17231,6 @@
         }
       },
       "declaration": "Zeta23.CCM.poleNeutralCorrectedCubicFunctional_apply",
-      "module": "Zeta23.CCM.CanonicalPoleNeutralNormals"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 34,
-          "examples": [
-            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.explicitCanonicalSourceMoment",
-            "Zeta23.CCM.explicitCanonicalSourceMoment._proof_1",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1",
-            "Zeta23.CCM.poleProfileScale",
-            "Zeta23.CCM.poleProfileScaleReal",
-            "Zeta23.CCM.poleProfileScaleReal._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate"
-          ],
-          "sha256": "7e2e3e16e49f252a0e69774fd03233f0c4bc789552611aa26f49f5f5b4d513b3",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.poleNeutralCorrectedCubicSource_eq_explicitCanonicalSourceMoment",
       "module": "Zeta23.CCM.CanonicalPoleNeutralNormals"
     },
     {
@@ -23111,52 +22759,6 @@
           "truncated": false
         }
       },
-      "declaration": "Zeta23.ExceptionalZero.exists_generatedStep123BoundaryPacket_cofinal",
-      "module": "Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.ExceptionalZero.exists_generatedStep123Output_cofinal",
-      "module": "Zeta23.ExceptionalZero.Step123OutputProducer"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.oddCompressedCanonical",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1"
-          ],
-          "sha256": "642f5c44da0501367671101512e8d4374f36eccab1fe2d84639a9d9e7743486b",
-          "truncated": false
-        }
-      },
       "declaration": "Zeta23.ExceptionalZero.exists_generatedStep123Output_forcingError_cofinal_atLateness",
       "module": "Zeta23.ExceptionalZero.Step123SameStateN37"
     },
@@ -24721,7 +24323,7 @@
   "interpretation": "Compiler-dependency contact view only. Cross-interface contact does not establish theorem composition, independence, mathematical relevance, or RH evidence.",
   "projection": "THEOREM_VALUE_ERASED_SUPPORT",
   "schema_version": "RHRC-CONTACT-QUOTIENT-VIEW-1.1",
-  "source_only_root_count": 1761,
+  "source_only_root_count": 1744,
   "status": "RESEARCH_CONTROL_ONLY",
   "terminal_claim": "RH_OPEN",
   "theorem_promotion": false

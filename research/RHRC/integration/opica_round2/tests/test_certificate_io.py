@@ -5,6 +5,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
@@ -76,6 +77,49 @@ class StrictInputTests(unittest.TestCase):
         self.assertEqual(io.parse_complex({"re": "1/2", "im": "-1"}).re, Fraction(1, 2))
         with self.assertRaises(io.InvalidCertificate):
             io.parse_complex({"re": "1/2", "im": "0", "ignored": 1})
+
+    def test_generated_endpoint_budget_is_separate_from_user_input(self):
+        endpoint = str(Fraction(1, 2**700))
+        self.assertGreater(len(endpoint), io.MAX_INPUT_RATIONAL_CHARS)
+        self.assertEqual(io.parse_endpoint_rational(endpoint), Fraction(1, 2**700))
+        for call in (lambda: io.parse_rational(endpoint),
+                     lambda: io.parse_complex({"re": endpoint, "im": "0"})):
+            with self.assertRaises(io.InvalidCertificate):
+                call()
+        boundary = "1/" + "9" * (io.MAX_ENDPOINT_RATIONAL_CHARS-2)
+        self.assertEqual(str(io.parse_endpoint_rational(boundary)), boundary)
+        with patch.object(io, "Fraction") as constructor:
+            with self.assertRaises(io.InvalidCertificate):
+                io.parse_endpoint_rational(boundary + "9")
+            constructor.assert_not_called()
+
+    def test_generated_endpoints_keep_canonical_and_nonnegative_guards(self):
+        for value in (False, True, 1, Fraction(1), "01", "-0", "2/2", "0/2", "1/0",
+                      "1/-2", "1.0", "NaN", "Infinity", "+1", "1\n"):
+            with self.subTest(value=value), self.assertRaises(io.InvalidCertificate):
+                io.parse_endpoint_rational(value)
+        self.assertEqual(io.parse_endpoint_rational("-1/2"), Fraction(-1, 2))
+        with self.assertRaises(io.InvalidCertificate):
+            io.parse_endpoint_rational("-1/2", nonnegative=True)
+
+    def test_schema_endpoint_and_input_budgets_match_their_runtime_parsers(self):
+        properties = io.load_strict_json(HERE/"schemas/certificate.schema.json")["properties"]
+        endpoints = [properties["upper_square"], properties["witness_lower_square"],
+                     *properties["error_budget"]["properties"].values()]
+        self.assertEqual(len(endpoints), 9)
+        boundary = "1/" + "9" * (io.MAX_ENDPOINT_RATIONAL_CHARS-2)
+        for rule in endpoints:
+            self.assertEqual(rule["maxLength"], io.MAX_ENDPOINT_RATIONAL_CHARS)
+            io.validate_schema(boundary, rule)
+            with self.assertRaises(io.InvalidCertificate):
+                io.validate_schema(boundary + "9", rule)
+        inputs = [*properties["coefficients"]["items"]["properties"].values(),
+                  *properties["region"]["properties"].values(),
+                  properties["kernel_lag_horizon"], properties["absolute_output_horizon"]]
+        for rule in inputs:
+            self.assertEqual(rule["maxLength"], 180)
+            with self.assertRaises(io.InvalidCertificate):
+                io.validate_schema("1/" + "9"*179, rule)
 
     def test_closed_schema_definition(self):
         for schema in ({"type": "object", "required": ["missing"]},
@@ -193,6 +237,29 @@ class CertificateBoundaryTests(unittest.TestCase):
         self.obj["outcome"] = "CERTIFIED_FINITE"
         result = self.check(**self.checker_config())
         self.assertEqual(result["authority"], "CERTIFIED_FINITE_NOT_LEAN")
+
+    def test_synthetic_recomputation_protocol_roundtrips_large_endpoints(self):
+        # A parser/checker protocol fixture, not an actual analytic certificate.
+        upper, lower, total = (str(Fraction(1, 2**k)) for k in (700, 699, 701))
+        self.obj.update(outcome="CERTIFIED_FINITE", upper_square=upper, witness_lower_square=lower)
+        self.obj["error_budget"] = {key: "0" for key in self.obj["error_budget"]}
+        self.obj["error_budget"].update(filter_operator_norm_upper="1", total_norm_error=total)
+        config = self.checker_config()
+        config["independent_checker"] = lambda obj: {"certificate_sha256": io.canonical_sha256(obj),
+            "upper_square": upper, "witness_lower_square": lower, "total_norm_error": total}
+        encoded = io.canonical_bytes(self.obj)
+        result = self.check(io.loads_strict_json(encoded), **config)
+        self.assertEqual(result["authority"], "CERTIFIED_FINITE_NOT_LEAN")
+        self.assertEqual(result["upper_square"], upper)
+        for field in ("upper_square", "witness_lower_square", "total_norm_error"):
+            def oversized(obj, field=field):
+                record = {"certificate_sha256": io.canonical_sha256(obj),
+                          "upper_square": upper, "witness_lower_square": lower, "total_norm_error": total}
+                record[field] = "9" * (io.MAX_ENDPOINT_RATIONAL_CHARS+1)
+                return record
+            config["independent_checker"] = oversized
+            with self.subTest(field=field), self.assertRaises(io.InvalidCertificate):
+                self.check(**config)
 
     def test_stale_or_forged_checker_and_analytic_identity_rejected(self):
         self.obj["outcome"] = "CERTIFIED_FINITE"

@@ -356,8 +356,17 @@ class RegisteredFortyDependencyTests(unittest.TestCase):
     """Synthetic directed use graphs test metadata rejection, not Lean authority."""
     @classmethod
     def setUpClass(cls):
-        cls.claims=io.load_strict_json(receipt.REPO/"research/RHRC/CLAIM_REGISTRY.json",16*1024*1024)
-        cls.bindings=io.load_strict_json(receipt.REPO/"research/RHRC/REGISTERED_THEOREM_BINDINGS.json",16*1024*1024)
+        # This fixture tests the unchanged, exact334-binding Round2 predicate.
+        # New descendant registrations are tested by their own versioned guard.
+        baseline="775692f2e72d76b6a97cf66926a86cc96342c109"
+        tree=subprocess.check_output(["git","-C",str(receipt.REPO),"rev-parse",baseline+"^{tree}"],text=True).strip()
+        if tree!="acd548eb97ddaee68eb6c9df73f82756ee10d13f":
+            raise AssertionError("Authenticated exact Round2 fixture tree differs")
+        def baseline_json(relative):
+            raw=subprocess.check_output(["git","-C",str(receipt.REPO),"show",baseline+":"+relative])
+            return io.loads_strict_json(raw,16*1024*1024)
+        cls.claims=baseline_json("research/RHRC/CLAIM_REGISTRY.json")
+        cls.bindings=baseline_json("research/RHRC/REGISTERED_THEOREM_BINDINGS.json")
         cls.public=io.load_strict_json(HERE/"PUBLIC_ROOTS.json",16*1024*1024)
         def old(relative):
             raw=subprocess.run(["git","-C",str(receipt.REPO),"show",receipt.contract.FROZEN_COMMIT+":"+relative],capture_output=True,check=True).stdout
@@ -399,6 +408,7 @@ class RegisteredFortyDependencyTests(unittest.TestCase):
         self.assertIn("not mathematical necessity or independence",report["interpretation"])
 
     def test_planning_extra_missing_and_pruned_private_dependencies_rejected(self):
+        self.assertEqual(len(self.check()["rows"]),40)  # Prove valid fixture before attacking its mapping.
         for kind in ("missing","extra","transitive","private_channel","private_edge"):
             with self.subTest(kind=kind):
                 claims,parsed=deepcopy(self.correct),deepcopy(self.parsed)
@@ -411,6 +421,7 @@ class RegisteredFortyDependencyTests(unittest.TestCase):
                 with self.assertRaises(ValueError):self.check(claims,parsed)
 
     def test_original_objects_and_actual_registered_root_identity_are_immutable(self):
+        self.assertEqual(len(self.check()["rows"]),40)  # Prevent wrong-population rejection from masking mutations.
         claims=deepcopy(self.correct)
         next(row for row in claims["claims"] if row["id"]==self.old_claims["claims"][0]["id"])["statement"]+=" altered"
         with self.assertRaises(ValueError):self.check(claims=claims)

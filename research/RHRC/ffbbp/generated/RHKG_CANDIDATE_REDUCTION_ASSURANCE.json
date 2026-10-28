@@ -49,17 +49,17 @@
   "inherits_runtime_qualification": false,
   "input_snapshot": {
     "candidate_count": 5548,
-    "candidate_resolution_sha256": "063000713cd4cc914b2be13887abaecbd7d292679f4bbb5da336f1812884f6c7",
-    "candidate_source_surface_sha256": "c5bcaa6df50b72a1a456ab10600342a39e2f6be1730a8d84e5471370dcda03fe",
-    "candidate_summary_sha256": "2d2314a32671c87595353ced3bef877e1ddc1da35c17474e615d2d83c5a0d0ef",
+    "candidate_resolution_sha256": "80b679a1118f9ae36ad60eb33eb7f302704c9a62014b6b4e1ef46f8f850e61dc",
+    "candidate_source_surface_sha256": "6b7a15ec7508b13b78874b262b8979c6f05d69b7779627e407c4e0da636d6526",
+    "candidate_summary_sha256": "cfd06d78906888fcb5bdd0fde70142e1e92b5fd88eaa156902aff781f3b3c0b2",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
-    "registered_compiler_receipt_sha256": "26c4b7080684448e6e3b354fc962ec0e47994bd8bd9c3dae6de72cecbe052ecf",
-    "rhkg_subject_digest_sha256": "40ce2b87bb6587302df1cf494e573615228db7229c9f03bc5efd41db1714ef6f",
-    "source_only_public_theorem_count": 1761
+    "registered_compiler_receipt_sha256": "0d40e4a8343f60b5260fe5a5a3c65f88dda51665d14b271d0fb23fd13328bc41",
+    "rhkg_subject_digest_sha256": "7e17fa568485d53921f856c172887f2274e9cc1af3c7792c1f8e5f90afa3c5b1",
+    "source_only_public_theorem_count": 1744
   },
   "qualification_identity": {
-    "execution_digest": "7346979cc2aeeb544f723e0c0567d1a7b1badb519e381a9cc82eb0885bedc0ce",
-    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:40ce2b87bb658730",
+    "execution_digest": "8a042326f7ce7765f9a817a923cd8f163637080e544603c8c38a37dd1a83be2e",
+    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:7e17fa568485d539",
     "profile_digest": "0ab841ca4f9c683bcf206c0cd2e434f07f35b3861073feb370f10195cac49929",
     "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
     "protocol_digest": "30fd49aa7806e29ea8ce750cb91ad0f9edb3d655b9697f6a6dd82d3666a4ac26",
@@ -675,7 +675,7 @@
         "fiber_count": 657,
         "full_state_count": 5548,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 299,
+        "mixed_value_fiber_count": 301,
         "passed": false
       },
       "declared_use": "NEGATIVE_CONTROL_ONLY",
@@ -1264,7 +1264,7 @@
         "fiber_count": 657,
         "full_state_count": 5548,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 405,
+        "mixed_value_fiber_count": 407,
         "passed": false
       },
       "id": "MODULE_ONLY_SNAPSHOT",
@@ -1279,9 +1279,9 @@
         "status": "PASS"
       },
       "decision_factorization": {
-        "collision_fiber_count": 842,
+        "collision_fiber_count": 837,
         "counterexamples": [],
-        "fiber_count": 1180,
+        "fiber_count": 1182,
         "full_state_count": 5548,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
@@ -1290,9 +1290,9 @@
       "declared_use": "POST_REFERENCE_COHORT_NAVIGATION_ONLY",
       "description": "Retains module and exact visibility disposition for post-reference cohort navigation.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 842,
+        "collision_fiber_count": 837,
         "counterexamples": [],
-        "fiber_count": 1180,
+        "fiber_count": 1182,
         "full_state_count": 5548,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
@@ -1472,6 +1472,17 @@
           },
           {
             "member_ids": [
+              "rh:source-decl:481b7689a5ab135976106e2e27b8f71c1dc074a54381f9b19d1cfb239846f684",
+              "rh:source-decl:c3040de5e9b64db2996df8adfab776a8c5507e888597cda54015ad1f3172bf71"
+            ],
+            "reduction_key": "[\"bc8c4ecfcb8ef95d5b0545149b03db3cb71369f057d9dd6292165ac26e2b7450\"]",
+            "values": [
+              "\"NOT_SOURCE_ONLY_PUBLIC_THEOREM\"",
+              "\"SOURCE_ONLY_PUBLIC_THEOREM\""
+            ]
+          },
+          {
+            "member_ids": [
               "rh:source-decl:30d1c772589e5b4f3558df90110ade539d38048280b5fc8d6548f585df443fb3",
               "rh:source-decl:fc00997367bf7209ec0fa1eb7585fa110a44a2287072a7ddd7ea7b0a65bae3a3"
             ],
@@ -1496,7 +1507,7 @@
         "fiber_count": 5452,
         "full_state_count": 5548,
         "max_fiber_size": 6,
-        "mixed_value_fiber_count": 16,
+        "mixed_value_fiber_count": 17,
         "passed": false
       },
       "declared_use": "CURRENT_SNAPSHOT_DECISION_PROBE_ONLY",
@@ -1716,10 +1727,10 @@
           },
           {
             "member_ids": [
-              "rh:source-decl:30d1c772589e5b4f3558df90110ade539d38048280b5fc8d6548f585df443fb3",
-              "rh:source-decl:fc00997367bf7209ec0fa1eb7585fa110a44a2287072a7ddd7ea7b0a65bae3a3"
+              "rh:source-decl:481b7689a5ab135976106e2e27b8f71c1dc074a54381f9b19d1cfb239846f684",
+              "rh:source-decl:c3040de5e9b64db2996df8adfab776a8c5507e888597cda54015ad1f3172bf71"
             ],
-            "reduction_key": "[\"c2959f909a8a31ae92d88dacfbfc0ddfc7c51e2596ae295ffbb83e2b1a5cae1c\"]",
+            "reduction_key": "[\"bc8c4ecfcb8ef95d5b0545149b03db3cb71369f057d9dd6292165ac26e2b7450\"]",
             "values": [
               "\"ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE\"",
               "\"SOURCE_ONLY_PUBLIC_THEOREM\""
@@ -1729,7 +1740,7 @@
         "fiber_count": 5452,
         "full_state_count": 5548,
         "max_fiber_size": 6,
-        "mixed_value_fiber_count": 25,
+        "mixed_value_fiber_count": 26,
         "passed": false
       },
       "id": "TYPE_DIGEST_SNAPSHOT",
@@ -1747,7 +1758,7 @@
   "schema_version": "RHRC-FFBBP-RHKG-assurance-report-2.0",
   "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
   "selected_reduction_disposition": "PASS_FOR_POST_REFERENCE_COHORT_NAVIGATION_ONLY",
-  "source_only_module_cohort_count": 438,
+  "source_only_module_cohort_count": 436,
   "source_only_module_cohorts": [
     {
       "count": 67,
@@ -2978,19 +2989,6 @@
     {
       "count": 7,
       "declarations": [
-        "Zeta23.CCM.Step123NativeOutput.arithmeticView_eq_fixed",
-        "Zeta23.CCM.Step123NativeOutput.detector_source_unit",
-        "Zeta23.CCM.Step123NativeOutput.finite_image_H1_bound",
-        "Zeta23.CCM.Step123NativeOutput.finite_image_unit",
-        "Zeta23.CCM.Step123NativeOutput.originalSchur_full_complement",
-        "Zeta23.CCM.Step123NativeOutput.original_forcing_source_bound",
-        "Zeta23.CCM.Step123NativeOutput.rangeView_eq_actual"
-      ],
-      "module": "Zeta23.CCM.Step123OutputFieldEvidence"
-    },
-    {
-      "count": 7,
-      "declarations": [
         "Zeta23.CCM.UniversalSinc.fixed_originalSourceLaw_isProbabilityMeasure",
         "Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_map_scale",
         "Zeta23.CCM.UniversalSinc.originalSourceLaw_interval_mass",
@@ -3364,17 +3362,6 @@
     {
       "count": 5,
       "declarations": [
-        "Zeta23.CCM.finrank_poleNeutralEven_successor_shell_eq_one",
-        "Zeta23.CCM.finrank_poleNeutralOdd_successor_shell_eq_one",
-        "Zeta23.CCM.poleNeutralEvenRayleighBottom_antitone_of_le",
-        "Zeta23.CCM.poleNeutralGlobalRayleighBottom_antitone_of_le",
-        "Zeta23.CCM.poleNeutralOddRayleighBottom_antitone_of_le"
-      ],
-      "module": "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"
-    },
-    {
-      "count": 5,
-      "declarations": [
         "Zeta23.CCM.canonical_evenBottom_pos_of_gronwall",
         "Zeta23.CCM.evenCompressedCanonical_det_eq_zero_of_bottom_eq_zero",
         "Zeta23.CCM.gronwall_lower_bound",
@@ -3653,16 +3640,6 @@
         "Zeta23.CCM.coe_poleNeutralOddCenteredZeroExtendLinearMap"
       ],
       "module": "Zeta23.CCM.CanonicalPoleNeutralNesting"
-    },
-    {
-      "count": 4,
-      "declarations": [
-        "Zeta23.CCM.canonicalPoleEvenLegalNormal_ne_zero",
-        "Zeta23.CCM.canonicalPoleOddLegalNormal_ne_zero",
-        "Zeta23.CCM.poleNeutralCorrectedCubicFunctional_apply",
-        "Zeta23.CCM.poleNeutralCorrectedCubicSource_eq_explicitCanonicalSourceMoment"
-      ],
-      "module": "Zeta23.CCM.CanonicalPoleNeutralNormals"
     },
     {
       "count": 4,
@@ -4071,6 +4048,24 @@
     {
       "count": 3,
       "declarations": [
+        "Zeta23.CCM.poleNeutralEvenRayleighBottom_antitone_of_le",
+        "Zeta23.CCM.poleNeutralGlobalRayleighBottom_antitone_of_le",
+        "Zeta23.CCM.poleNeutralOddRayleighBottom_antitone_of_le"
+      ],
+      "module": "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"
+    },
+    {
+      "count": 3,
+      "declarations": [
+        "Zeta23.CCM.canonicalPoleEvenLegalNormal_ne_zero",
+        "Zeta23.CCM.canonicalPoleOddLegalNormal_ne_zero",
+        "Zeta23.CCM.poleNeutralCorrectedCubicFunctional_apply"
+      ],
+      "module": "Zeta23.CCM.CanonicalPoleNeutralNormals"
+    },
+    {
+      "count": 3,
+      "declarations": [
         "Zeta23.CCM.canonicalPoleNeutralTrialResidual_even_eq_R3",
         "Zeta23.CCM.canonicalPoleNeutralTrialResidual_even_momentFour_lower",
         "Zeta23.CCM.canonicalTrialResidual_channels_sum"
@@ -4409,15 +4404,6 @@
         "Zeta23.ExceptionalZero.positiveLaplaceTilt_isFiniteMeasure"
       ],
       "module": "Zeta23.ExceptionalZero.PositiveLaplaceTilt"
-    },
-    {
-      "count": 3,
-      "declarations": [
-        "Zeta23.ExceptionalZero.exists_eachPhase_cofinal_step123Output",
-        "Zeta23.ExceptionalZero.exists_generatedStep123Output_cofinal",
-        "Zeta23.ExceptionalZero.exists_step123Output_of_offLine_zero"
-      ],
-      "module": "Zeta23.ExceptionalZero.Step123OutputProducer"
     },
     {
       "count": 3,
@@ -4968,38 +4954,6 @@
     {
       "count": 2,
       "declarations": [
-        "Zeta23.CCM.exists_generatedStep123IntegratedPacket",
-        "Zeta23.CCM.exists_generatedStep123IntegratedPacket_cofinal"
-      ],
-      "module": "Zeta23.CCM.Step123NativeArithmeticRangeEvidence"
-    },
-    {
-      "count": 2,
-      "declarations": [
-        "Zeta23.CCM.Step123NativeCorePacket.original_negative_schur",
-        "Zeta23.CCM.exists_originalDetectorPaddedPhase_nativeCorePacket"
-      ],
-      "module": "Zeta23.CCM.Step123NativeCorePacket"
-    },
-    {
-      "count": 2,
-      "declarations": [
-        "Zeta23.CCM.Step123NativeOutput.detector_inverse_budget",
-        "Zeta23.CCM.Step123NativeOutput.selected_inverse_budget"
-      ],
-      "module": "Zeta23.CCM.Step123NativeResidualOutput"
-    },
-    {
-      "count": 2,
-      "declarations": [
-        "Zeta23.CCM.exists_generatedStep123ComposedEvidencePacket",
-        "Zeta23.CCM.exists_generatedStep123ComposedEvidencePacket_cofinal"
-      ],
-      "module": "Zeta23.CCM.Step123NativeSourceSpectralEvidence"
-    },
-    {
-      "count": 2,
-      "declarations": [
         "Zeta23.CCM.step123_enteringPrimeSourceMatrix_zero",
         "Zeta23.CCM.step123_qBasis_logSeam_zero"
       ],
@@ -5060,14 +5014,6 @@
         "Zeta23.ExceptionalZero.eventually_fixedCell_negativeCanonicalSourceWitness_persists_of_offLine_zero"
       ],
       "module": "Zeta23.ExceptionalZero.FixedCellWitnessPersistence"
-    },
-    {
-      "count": 2,
-      "declarations": [
-        "Zeta23.ExceptionalZero.exists_generatedStep123BoundaryPacket",
-        "Zeta23.ExceptionalZero.exists_generatedStep123BoundaryPacket_cofinal"
-      ],
-      "module": "Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket"
     },
     {
       "count": 2,
@@ -5172,6 +5118,14 @@
         "Zeta23.ExceptionalZero.subexponential_of_le_one"
       ],
       "module": "Zeta23.ExceptionalZero.ScaleRate"
+    },
+    {
+      "count": 2,
+      "declarations": [
+        "Zeta23.ExceptionalZero.exists_eachPhase_cofinal_step123Output",
+        "Zeta23.ExceptionalZero.exists_step123Output_of_offLine_zero"
+      ],
+      "module": "Zeta23.ExceptionalZero.Step123OutputProducer"
     },
     {
       "count": 2,
@@ -5861,9 +5815,30 @@
     {
       "count": 1,
       "declarations": [
-        "Zeta23.CCM.Step123NativeOutput.originalDetector_schur_loss"
+        "Zeta23.CCM.exists_generatedStep123IntegratedPacket"
       ],
-      "module": "Zeta23.CCM.Step123OutputData"
+      "module": "Zeta23.CCM.Step123NativeArithmeticRangeEvidence"
+    },
+    {
+      "count": 1,
+      "declarations": [
+        "Zeta23.CCM.exists_originalDetectorPaddedPhase_nativeCorePacket"
+      ],
+      "module": "Zeta23.CCM.Step123NativeCorePacket"
+    },
+    {
+      "count": 1,
+      "declarations": [
+        "Zeta23.CCM.exists_generatedStep123ComposedEvidencePacket"
+      ],
+      "module": "Zeta23.CCM.Step123NativeSourceSpectralEvidence"
+    },
+    {
+      "count": 1,
+      "declarations": [
+        "Zeta23.CCM.Step123NativeOutput.original_forcing_source_bound"
+      ],
+      "module": "Zeta23.CCM.Step123OutputFieldEvidence"
     },
     {
       "count": 1,
@@ -5983,6 +5958,13 @@
         "Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_exists_offLine_zero"
       ],
       "module": "Zeta23.ExceptionalZero.FirstBadRigidity"
+    },
+    {
+      "count": 1,
+      "declarations": [
+        "Zeta23.ExceptionalZero.exists_generatedStep123BoundaryPacket"
+      ],
+      "module": "Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket"
     },
     {
       "count": 1,
@@ -6144,10 +6126,10 @@
   "theorem_promotion": false,
   "theory_version": "1.7",
   "visibility_counts": {
-    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 3055,
+    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 3072,
     "ALREADY_REGISTERED_ROOT": 112,
     "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 617,
-    "SOURCE_ONLY_PUBLIC_THEOREM": 1761,
+    "SOURCE_ONLY_PUBLIC_THEOREM": 1744,
     "UNRESOLVED_SOURCE_IDENTITY": 3
   }
 }

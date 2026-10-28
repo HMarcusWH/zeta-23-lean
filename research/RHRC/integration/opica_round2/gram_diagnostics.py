@@ -12,9 +12,9 @@ import math
 from typing import Any, Callable, Mapping
 
 try:
-    from .certificate_io import canonical_sha256, parse_complex, parse_integer, parse_rational, require
+    from .certificate_io import canonical_sha256, parse_complex, parse_endpoint_rational, parse_integer, parse_rational, require
 except ImportError:
-    from certificate_io import canonical_sha256, parse_complex, parse_integer, parse_rational, require
+    from certificate_io import canonical_sha256, parse_complex, parse_endpoint_rational, parse_integer, parse_rational, require
 
 
 def _q(value: Any) -> Fraction:
@@ -38,7 +38,9 @@ class Interval:
     @classmethod
     def read(cls, obj):
         require(type(obj) is dict and set(obj) == {"lower", "upper"}, "interval", "Exact interval fields required")
-        return cls(_q(obj["lower"]), _q(obj["upper"]))
+        def endpoint(value):
+            return value if type(value) is Fraction else parse_endpoint_rational(value)
+        return cls(endpoint(obj["lower"]), endpoint(obj["upper"]))
 
     def json(self):
         return {"lower": str(self.lower), "upper": str(self.upper)}
@@ -165,8 +167,8 @@ def evaluate_gram(base_request: Mapping[str, Any], *, expected_source: Mapping[s
                 and result.get("source_identity") == dict(expected_source)
                 and result.get("coefficient_sha256") == request["coefficient_sha256"],
                 "gram_energy_binding", "Native energy does not match exact source and trial")
-        value = Interval(parse_rational(result["lower_square"], nonnegative=True),
-                         parse_rational(result["upper_square"], nonnegative=True))
+        value = Interval(parse_endpoint_rational(result["lower_square"], nonnegative=True),
+                         parse_endpoint_rational(result["upper_square"], nonnegative=True))
         observations.append({"request_sha256": wanted,"coefficient_sha256":request["coefficient_sha256"],
                              "energy":value.json()})
         return value

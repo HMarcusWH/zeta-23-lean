@@ -7,7 +7,8 @@ import unittest
 HERE=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(HERE));sys.path.insert(0,str(Path(__file__).resolve().parent))
 import primal_certifier as primal
-from certificate_io import InvalidCertificate,UnsupportedCertification,validate_certificate
+from certificate_io import (InvalidCertificate,UnsupportedCertification,canonical_bytes,loads_strict_json,
+                            parse_endpoint_rational,validate_certificate)
 from test_native_evaluation import request_fixture
 
 REGION={"delta_lower":"1/4","delta_upper":"3/8","abs_tau_lower":"1","abs_tau_upper":"2"}
@@ -16,6 +17,63 @@ NONAUTHORITY_DEPENDENCY=[{"declaration":"Zeta23.OPICARound2.native_source_prefix
 
 
 class PrimalTests(unittest.TestCase):
+    def test_real_high_precision_producer_checker_and_certificate_roundtrip(self):
+        # Metadata selects the actual evaluator; these fixtures grant no theorem authority.
+        declarations = ("native_source_prefix_error", "native_probe_adaptive_error_budgets",
+                        "native_product_box_margin", "zero_region_of_finite_probe_certificate")
+        dependencies = [{**NONAUTHORITY_DEPENDENCY[0], "declaration":"Zeta23.OPICARound2."+name}
+                        for name in declarations]
+        approved = {row["declaration"]:{key:row[key] for key in ("type_sha256","compiler_receipt_sha256")}
+                    for row in dependencies}
+        for bits in (256,512):
+            with self.subTest(bits=bits):
+                request = request_fixture()
+                request["precision_bits"] = bits
+                before = deepcopy(request)
+                out = primal.produce_primal(request,REGION,expected_source=request["source"],
+                                            analytic_dependencies=dependencies)
+                certificate = loads_strict_json(canonical_bytes(out["certificate"]))
+                self.assertEqual(request,before)
+                self.assertEqual(certificate,out["certificate"])
+                self.assertEqual(certificate["outcome"],"NO_CERTIFICATE")
+                self.assertGreater(len(certificate["error_budget"]["total_norm_error"]),180)
+                if bits == 512:
+                    self.assertGreater(len(certificate["upper_square"]),180)
+                    self.assertGreater(len(certificate["witness_lower_square"]),180)
+                self.assertGreaterEqual(parse_endpoint_rational(certificate["upper_square"]),
+                                        parse_endpoint_rational(certificate["witness_lower_square"]))
+                checker = primal.independent_primal_checker(request,expected_source=request["source"],expected_region=REGION)
+                self.assertEqual(checker(certificate)["upper_square"],certificate["upper_square"])
+                accepted = primal.accept_primal(certificate,request,expected_source=request["source"],
+                    expected_region=REGION,expected_checker_sha256=primal.checker_digest(),
+                    approved_analytic_dependencies=approved)
+                self.assertEqual(accepted["claimed_outcome"],"NO_CERTIFICATE")
+                self.assertEqual(accepted["authority"],"VALIDATED_INPUT_ONLY_NO_ANALYTIC_AUTHORITY")
+                self.assertEqual(accepted["RH"],"OPEN")
+                forged = deepcopy(certificate)
+                forged.update(upper_square="0",outcome="UNRESOLVED")
+                with self.assertRaises(InvalidCertificate):
+                    primal.accept_primal(forged,request,expected_source=request["source"],
+                        expected_region=REGION,expected_checker_sha256=primal.checker_digest(),
+                        approved_analytic_dependencies=approved)
+
+    def test_high_precision_does_not_relax_native_input_limits(self):
+        from native_evaluation import evaluate_native
+        long_input = str(Fraction(1,2**700))
+        request = request_fixture()
+        request["precision_bits"] = 512
+        for key in ("coefficient", "kernel_lag_horizon", "absolute_output_horizon"):
+            bad = deepcopy(request)
+            if key == "coefficient":
+                bad["coefficients"][0]["re"] = long_input
+            else:
+                bad[key] = long_input
+            with self.subTest(key=key), self.assertRaises(InvalidCertificate) as caught:
+                evaluate_native(bad,expected_source=request["source"])
+            self.assertEqual(caught.exception.code,"rational")
+        with self.assertRaises(InvalidCertificate):
+            primal.regional_margin({**REGION,"delta_lower":long_input},precision_bits=512)
+
     def test_actual_regional_formula_both_guards(self):
         small=primal.regional_margin(REGION,cut_M=0)
         split=primal.regional_margin(REGION,cut_M=1)

@@ -1824,6 +1824,76 @@
       "route_mentions": []
     },
     {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round3/BUILD_PLAN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round3/BUILD_PLAN.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_round3/BUILD_PLAN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round3/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round3/POST_GREEN_RESEARCH.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_round3/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round3/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round3/README.md",
+      "heading_count": 3,
+      "path": "research/RHRC/integration/opica_round3/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round3/paper/draft_spec.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round3/paper/draft_spec.md",
+      "heading_count": 26,
+      "path": "research/RHRC/integration/opica_round3/paper/draft_spec.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round3/paper/first_neutral_bad_one_shell_schur.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round3/paper/first_neutral_bad_one_shell_schur.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_round3/paper/first_neutral_bad_one_shell_schur.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round3/paper/first_simultaneous_neutral_cutoff.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round3/paper/first_simultaneous_neutral_cutoff.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_round3/paper/first_simultaneous_neutral_cutoff.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round3/paper/ucdp_research_report.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round3/paper/ucdp_research_report.md",
+      "heading_count": 21,
+      "path": "research/RHRC/integration/opica_round3/paper/ucdp_research_report.md",
+      "route_mentions": []
+    },
+    {
       "claim_mentions": [
         "R003_COMPRESSED_PRODUCTION_C2",
         "R003_INHERITED_FIRST_VARIATION_RESTRICTION"
@@ -3115,7 +3185,7 @@
       ]
     }
   ],
-  "entry_count": 290,
+  "entry_count": 297,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

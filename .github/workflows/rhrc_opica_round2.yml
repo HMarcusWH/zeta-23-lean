@@ -33,6 +33,37 @@ jobs:
     - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
       with:
         python-version: 3.13.5
+    - name: Select explicit historical Round2 scope for a reviewed Round3 extension
+      id: scope-selection
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        test -z "$(git status --porcelain --untracked-files=all)"
+        if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
+          python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
+          child_head=$(git rev-parse HEAD)
+          child_tree=$(git rev-parse 'HEAD^{tree}')
+          test "$(git rev-parse '775692f2e72d76b6a97cf66926a86cc96342c109^{tree}')" = acd548eb97ddaee68eb6c9df73f82756ee10d13f
+          git checkout --detach 775692f2e72d76b6a97cf66926a86cc96342c109
+          printf '%s\n' 'REQUESTED_HEAD=775692f2e72d76b6a97cf66926a86cc96342c109' "REQUESTED_CHILD_HEAD=$child_head" "REQUESTED_CHILD_TREE=$child_tree" 'ROUND2_BASELINE_REPLAY=true' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=true' >> "$GITHUB_OUTPUT"
+          CHILD_HEAD="$child_head" CHILD_TREE="$child_tree" python - <<'PY'
+        import json,os
+        from pathlib import Path
+        report={'schema':'OPICA3_EXPLICIT_ROUND2_BASELINE_SCOPE_V1','requested_child_commit':os.environ['CHILD_HEAD'],
+          'requested_child_tree':os.environ['CHILD_TREE'],'checked_baseline':'775692f2e72d76b6a97cf66926a86cc96342c109',
+          'checked_baseline_tree':'acd548eb97ddaee68eb6c9df73f82756ee10d13f',
+          'scope':'EXACT775_HISTORICAL_ROUND2_REPLAY_NOT_CURRENT_ROUND3_COMPILER_ACCEPTANCE',
+          'current_tree_compiler_accepted':False,'full_core_accepted':False,'full_release_accepted':False,
+          'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'scope-selection.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
+        else
+          printf '%s\n' 'ROUND2_BASELINE_REPLAY=false' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=false' >> "$GITHUB_OUTPUT"
+        fi
     - name: Capture immutable requested source before all checks
       shell: bash
       run: |-
@@ -70,6 +101,37 @@ jobs:
     - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
       with:
         python-version: 3.13.5
+    - name: Select explicit historical Round2 scope for a reviewed Round3 extension
+      id: scope-selection
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        test -z "$(git status --porcelain --untracked-files=all)"
+        if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
+          python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
+          child_head=$(git rev-parse HEAD)
+          child_tree=$(git rev-parse 'HEAD^{tree}')
+          test "$(git rev-parse '775692f2e72d76b6a97cf66926a86cc96342c109^{tree}')" = acd548eb97ddaee68eb6c9df73f82756ee10d13f
+          git checkout --detach 775692f2e72d76b6a97cf66926a86cc96342c109
+          printf '%s\n' 'REQUESTED_HEAD=775692f2e72d76b6a97cf66926a86cc96342c109' "REQUESTED_CHILD_HEAD=$child_head" "REQUESTED_CHILD_TREE=$child_tree" 'ROUND2_BASELINE_REPLAY=true' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=true' >> "$GITHUB_OUTPUT"
+          CHILD_HEAD="$child_head" CHILD_TREE="$child_tree" python - <<'PY'
+        import json,os
+        from pathlib import Path
+        report={'schema':'OPICA3_EXPLICIT_ROUND2_BASELINE_SCOPE_V1','requested_child_commit':os.environ['CHILD_HEAD'],
+          'requested_child_tree':os.environ['CHILD_TREE'],'checked_baseline':'775692f2e72d76b6a97cf66926a86cc96342c109',
+          'checked_baseline_tree':'acd548eb97ddaee68eb6c9df73f82756ee10d13f',
+          'scope':'EXACT775_HISTORICAL_ROUND2_REPLAY_NOT_CURRENT_ROUND3_COMPILER_ACCEPTANCE',
+          'current_tree_compiler_accepted':False,'full_core_accepted':False,'full_release_accepted':False,
+          'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'scope-selection.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
+        else
+          printf '%s\n' 'ROUND2_BASELINE_REPLAY=false' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=false' >> "$GITHUB_OUTPUT"
+        fi
     - name: Capture immutable requested source before all checks
       shell: bash
       run: |-
@@ -126,6 +188,37 @@ jobs:
     - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
       with:
         python-version: 3.13.5
+    - name: Select explicit historical Round2 scope for a reviewed Round3 extension
+      id: scope-selection
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        test -z "$(git status --porcelain --untracked-files=all)"
+        if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
+          python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
+          child_head=$(git rev-parse HEAD)
+          child_tree=$(git rev-parse 'HEAD^{tree}')
+          test "$(git rev-parse '775692f2e72d76b6a97cf66926a86cc96342c109^{tree}')" = acd548eb97ddaee68eb6c9df73f82756ee10d13f
+          git checkout --detach 775692f2e72d76b6a97cf66926a86cc96342c109
+          printf '%s\n' 'REQUESTED_HEAD=775692f2e72d76b6a97cf66926a86cc96342c109' "REQUESTED_CHILD_HEAD=$child_head" "REQUESTED_CHILD_TREE=$child_tree" 'ROUND2_BASELINE_REPLAY=true' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=true' >> "$GITHUB_OUTPUT"
+          CHILD_HEAD="$child_head" CHILD_TREE="$child_tree" python - <<'PY'
+        import json,os
+        from pathlib import Path
+        report={'schema':'OPICA3_EXPLICIT_ROUND2_BASELINE_SCOPE_V1','requested_child_commit':os.environ['CHILD_HEAD'],
+          'requested_child_tree':os.environ['CHILD_TREE'],'checked_baseline':'775692f2e72d76b6a97cf66926a86cc96342c109',
+          'checked_baseline_tree':'acd548eb97ddaee68eb6c9df73f82756ee10d13f',
+          'scope':'EXACT775_HISTORICAL_ROUND2_REPLAY_NOT_CURRENT_ROUND3_COMPILER_ACCEPTANCE',
+          'current_tree_compiler_accepted':False,'full_core_accepted':False,'full_release_accepted':False,
+          'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'scope-selection.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
+        else
+          printf '%s\n' 'ROUND2_BASELINE_REPLAY=false' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=false' >> "$GITHUB_OUTPUT"
+        fi
     - name: Capture immutable requested source before all checks
       shell: bash
       run: |-
@@ -231,6 +324,37 @@ jobs:
     - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
       with:
         python-version: 3.13.5
+    - name: Select explicit historical Round2 scope for a reviewed Round3 extension
+      id: scope-selection
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        test -z "$(git status --porcelain --untracked-files=all)"
+        if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
+          python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
+          child_head=$(git rev-parse HEAD)
+          child_tree=$(git rev-parse 'HEAD^{tree}')
+          test "$(git rev-parse '775692f2e72d76b6a97cf66926a86cc96342c109^{tree}')" = acd548eb97ddaee68eb6c9df73f82756ee10d13f
+          git checkout --detach 775692f2e72d76b6a97cf66926a86cc96342c109
+          printf '%s\n' 'REQUESTED_HEAD=775692f2e72d76b6a97cf66926a86cc96342c109' "REQUESTED_CHILD_HEAD=$child_head" "REQUESTED_CHILD_TREE=$child_tree" 'ROUND2_BASELINE_REPLAY=true' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=true' >> "$GITHUB_OUTPUT"
+          CHILD_HEAD="$child_head" CHILD_TREE="$child_tree" python - <<'PY'
+        import json,os
+        from pathlib import Path
+        report={'schema':'OPICA3_EXPLICIT_ROUND2_BASELINE_SCOPE_V1','requested_child_commit':os.environ['CHILD_HEAD'],
+          'requested_child_tree':os.environ['CHILD_TREE'],'checked_baseline':'775692f2e72d76b6a97cf66926a86cc96342c109',
+          'checked_baseline_tree':'acd548eb97ddaee68eb6c9df73f82756ee10d13f',
+          'scope':'EXACT775_HISTORICAL_ROUND2_REPLAY_NOT_CURRENT_ROUND3_COMPILER_ACCEPTANCE',
+          'current_tree_compiler_accepted':False,'full_core_accepted':False,'full_release_accepted':False,
+          'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'scope-selection.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
+        else
+          printf '%s\n' 'ROUND2_BASELINE_REPLAY=false' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=false' >> "$GITHUB_OUTPUT"
+        fi
     - name: Capture immutable requested source before all checks
       shell: bash
       run: |-
@@ -296,6 +420,37 @@ jobs:
     - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
       with:
         python-version: 3.13.5
+    - name: Select explicit historical Round2 scope for a reviewed Round3 extension
+      id: scope-selection
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        test -z "$(git status --porcelain --untracked-files=all)"
+        if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
+          python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
+          child_head=$(git rev-parse HEAD)
+          child_tree=$(git rev-parse 'HEAD^{tree}')
+          test "$(git rev-parse '775692f2e72d76b6a97cf66926a86cc96342c109^{tree}')" = acd548eb97ddaee68eb6c9df73f82756ee10d13f
+          git checkout --detach 775692f2e72d76b6a97cf66926a86cc96342c109
+          printf '%s\n' 'REQUESTED_HEAD=775692f2e72d76b6a97cf66926a86cc96342c109' "REQUESTED_CHILD_HEAD=$child_head" "REQUESTED_CHILD_TREE=$child_tree" 'ROUND2_BASELINE_REPLAY=true' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=true' >> "$GITHUB_OUTPUT"
+          CHILD_HEAD="$child_head" CHILD_TREE="$child_tree" python - <<'PY'
+        import json,os
+        from pathlib import Path
+        report={'schema':'OPICA3_EXPLICIT_ROUND2_BASELINE_SCOPE_V1','requested_child_commit':os.environ['CHILD_HEAD'],
+          'requested_child_tree':os.environ['CHILD_TREE'],'checked_baseline':'775692f2e72d76b6a97cf66926a86cc96342c109',
+          'checked_baseline_tree':'acd548eb97ddaee68eb6c9df73f82756ee10d13f',
+          'scope':'EXACT775_HISTORICAL_ROUND2_REPLAY_NOT_CURRENT_ROUND3_COMPILER_ACCEPTANCE',
+          'current_tree_compiler_accepted':False,'full_core_accepted':False,'full_release_accepted':False,
+          'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'scope-selection.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
+        else
+          printf '%s\n' 'ROUND2_BASELINE_REPLAY=false' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=false' >> "$GITHUB_OUTPUT"
+        fi
     - name: Capture immutable requested source before all checks
       shell: bash
       run: |-
@@ -391,6 +546,37 @@ jobs:
     - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
       with:
         python-version: 3.13.5
+    - name: Select explicit historical Round2 scope for a reviewed Round3 extension
+      id: scope-selection
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        test -z "$(git status --porcelain --untracked-files=all)"
+        if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
+          python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
+          child_head=$(git rev-parse HEAD)
+          child_tree=$(git rev-parse 'HEAD^{tree}')
+          test "$(git rev-parse '775692f2e72d76b6a97cf66926a86cc96342c109^{tree}')" = acd548eb97ddaee68eb6c9df73f82756ee10d13f
+          git checkout --detach 775692f2e72d76b6a97cf66926a86cc96342c109
+          printf '%s\n' 'REQUESTED_HEAD=775692f2e72d76b6a97cf66926a86cc96342c109' "REQUESTED_CHILD_HEAD=$child_head" "REQUESTED_CHILD_TREE=$child_tree" 'ROUND2_BASELINE_REPLAY=true' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=true' >> "$GITHUB_OUTPUT"
+          CHILD_HEAD="$child_head" CHILD_TREE="$child_tree" python - <<'PY'
+        import json,os
+        from pathlib import Path
+        report={'schema':'OPICA3_EXPLICIT_ROUND2_BASELINE_SCOPE_V1','requested_child_commit':os.environ['CHILD_HEAD'],
+          'requested_child_tree':os.environ['CHILD_TREE'],'checked_baseline':'775692f2e72d76b6a97cf66926a86cc96342c109',
+          'checked_baseline_tree':'acd548eb97ddaee68eb6c9df73f82756ee10d13f',
+          'scope':'EXACT775_HISTORICAL_ROUND2_REPLAY_NOT_CURRENT_ROUND3_COMPILER_ACCEPTANCE',
+          'current_tree_compiler_accepted':False,'full_core_accepted':False,'full_release_accepted':False,
+          'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'scope-selection.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
+        else
+          printf '%s\n' 'ROUND2_BASELINE_REPLAY=false' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=false' >> "$GITHUB_OUTPUT"
+        fi
     - name: Capture immutable requested source before all checks
       shell: bash
       run: |-
@@ -539,6 +725,37 @@ jobs:
     - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
       with:
         python-version: 3.13.5
+    - name: Select explicit historical Round2 scope for a reviewed Round3 extension
+      id: scope-selection
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        test -z "$(git status --porcelain --untracked-files=all)"
+        if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
+          python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
+          child_head=$(git rev-parse HEAD)
+          child_tree=$(git rev-parse 'HEAD^{tree}')
+          test "$(git rev-parse '775692f2e72d76b6a97cf66926a86cc96342c109^{tree}')" = acd548eb97ddaee68eb6c9df73f82756ee10d13f
+          git checkout --detach 775692f2e72d76b6a97cf66926a86cc96342c109
+          printf '%s\n' 'REQUESTED_HEAD=775692f2e72d76b6a97cf66926a86cc96342c109' "REQUESTED_CHILD_HEAD=$child_head" "REQUESTED_CHILD_TREE=$child_tree" 'ROUND2_BASELINE_REPLAY=true' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=true' >> "$GITHUB_OUTPUT"
+          CHILD_HEAD="$child_head" CHILD_TREE="$child_tree" python - <<'PY'
+        import json,os
+        from pathlib import Path
+        report={'schema':'OPICA3_EXPLICIT_ROUND2_BASELINE_SCOPE_V1','requested_child_commit':os.environ['CHILD_HEAD'],
+          'requested_child_tree':os.environ['CHILD_TREE'],'checked_baseline':'775692f2e72d76b6a97cf66926a86cc96342c109',
+          'checked_baseline_tree':'acd548eb97ddaee68eb6c9df73f82756ee10d13f',
+          'scope':'EXACT775_HISTORICAL_ROUND2_REPLAY_NOT_CURRENT_ROUND3_COMPILER_ACCEPTANCE',
+          'current_tree_compiler_accepted':False,'full_core_accepted':False,'full_release_accepted':False,
+          'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'scope-selection.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
+        else
+          printf '%s\n' 'ROUND2_BASELINE_REPLAY=false' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=false' >> "$GITHUB_OUTPUT"
+        fi
     - name: Capture immutable requested source before all checks
       shell: bash
       run: |-
@@ -548,6 +765,7 @@ jobs:
         python -B research/RHRC/tools/run_suite.py --freeze-source "$OPICA2_OUTPUT_DIR/source/before.json"
         git cat-file -e '416aec21d4d6634675639b5397cc300d1f826e34^{commit}' || git fetch --no-tags origin 416aec21d4d6634675639b5397cc300d1f826e34
     - name: Record every provider job and preserve the unfinished self observation
+      if: ${{ env.ROUND2_BASELINE_REPLAY != 'true' }}
       shell: bash
       run: |-
         set -euo pipefail
@@ -555,6 +773,24 @@ jobs:
         python -B "$OPICA2/run_checks.py" harvest --snapshot-mode in-workflow --classifications "$OPICA2_OUTPUT_DIR/workflow-classifications.json"
       env:
         GITHUB_TOKEN: ${{ github.token }}
+    - name: Record Round3 current-release boundary as explicitly not applicable
+      if: ${{ env.ROUND2_BASELINE_REPLAY == 'true' }}
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python - <<'PY'
+        import json,os
+        from pathlib import Path
+        report={'schema':'OPICA3_LEGACY_RELEASE_SCOPE_DISPOSITION_V1',
+          'disposition':'NOT_APPLICABLE_TO_ROUND3_CURRENT_RELEASE',
+          'requested_child_commit':os.environ['REQUESTED_CHILD_HEAD'],
+          'requested_child_tree':os.environ['REQUESTED_CHILD_TREE'],
+          'baseline':'775692f2e72d76b6a97cf66926a86cc96342c109',
+          'reason':'This historical775 replay supplies no current Round3 provider harvest or full-release acceptance.',
+          'current_tree_compiler_accepted':False,'full_core_accepted':False,'full_release_accepted':False,
+          'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'legacy-release-not-applicable.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
     - name: Verify exact source unchanged after all commands
       shell: bash
       run: |-
@@ -587,6 +823,37 @@ jobs:
     - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
       with:
         python-version: 3.13.5
+    - name: Select explicit historical Round2 scope for a reviewed Round3 extension
+      id: scope-selection
+      shell: bash
+      run: |-
+        set -euo pipefail
+        mkdir -p "$OPICA2_OUTPUT_DIR"
+        test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
+        test -z "$(git status --porcelain --untracked-files=all)"
+        if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
+          python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
+          child_head=$(git rev-parse HEAD)
+          child_tree=$(git rev-parse 'HEAD^{tree}')
+          test "$(git rev-parse '775692f2e72d76b6a97cf66926a86cc96342c109^{tree}')" = acd548eb97ddaee68eb6c9df73f82756ee10d13f
+          git checkout --detach 775692f2e72d76b6a97cf66926a86cc96342c109
+          printf '%s\n' 'REQUESTED_HEAD=775692f2e72d76b6a97cf66926a86cc96342c109' "REQUESTED_CHILD_HEAD=$child_head" "REQUESTED_CHILD_TREE=$child_tree" 'ROUND2_BASELINE_REPLAY=true' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=true' >> "$GITHUB_OUTPUT"
+          CHILD_HEAD="$child_head" CHILD_TREE="$child_tree" python - <<'PY'
+        import json,os
+        from pathlib import Path
+        report={'schema':'OPICA3_EXPLICIT_ROUND2_BASELINE_SCOPE_V1','requested_child_commit':os.environ['CHILD_HEAD'],
+          'requested_child_tree':os.environ['CHILD_TREE'],'checked_baseline':'775692f2e72d76b6a97cf66926a86cc96342c109',
+          'checked_baseline_tree':'acd548eb97ddaee68eb6c9df73f82756ee10d13f',
+          'scope':'EXACT775_HISTORICAL_ROUND2_REPLAY_NOT_CURRENT_ROUND3_COMPILER_ACCEPTANCE',
+          'current_tree_compiler_accepted':False,'full_core_accepted':False,'full_release_accepted':False,
+          'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'scope-selection.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
+        else
+          printf '%s\n' 'ROUND2_BASELINE_REPLAY=false' >> "$GITHUB_ENV"
+          printf '%s\n' 'round3=false' >> "$GITHUB_OUTPUT"
+        fi
     - name: Capture immutable requested source before all checks
       shell: bash
       run: |-
@@ -654,6 +921,32 @@ jobs:
           --optimized-control-evidence "$RUNNER_TEMP/opica2-controls-input/optimized/controls/result.json" \
           --ancestry-evidence "$RUNNER_TEMP/opica2-ancestry-input/ancestry/result.json"
         printf '%s\n' 'Compiler evidence only. A separate post-run all-job harvest and independent human review remain required; full release, RH and Step4 are not inferred.' > "$OPICA2_OUTPUT_DIR/acceptance-boundary.txt"
+    - name: Bind the checked historical acceptance to its explicit source scope
+      if: ${{ env.ROUND2_BASELINE_REPLAY == 'true' }}
+      shell: bash
+      run: |-
+        set -euo pipefail
+        python - <<'PY'
+        import json,os
+        from pathlib import Path
+        accepted=json.loads(Path(os.environ['OPICA2_OUTPUT_DIR'],'acceptance','result.json').read_bytes())
+        if (accepted.get('status')!='PASS_COMPILER_EVIDENCE_ONLY'
+            or accepted.get('checked_commit')!='775692f2e72d76b6a97cf66926a86cc96342c109'
+            or accepted.get('checked_tree')!='acd548eb97ddaee68eb6c9df73f82756ee10d13f'
+            or accepted.get('full_core_compiler_verified') is not True
+            or accepted.get('full_release_accepted') is not False):
+            raise SystemExit('Historical Round2 acceptance did not independently complete')
+        report={'schema':'OPICA3_CHECKED_BASELINE_ACCEPTANCE_SCOPE_V1',
+          'disposition':'HISTORICAL_BASELINE_CORE_ACCEPTANCE_EXECUTED_AND_REPARSED',
+          'requested_child_commit':os.environ['REQUESTED_CHILD_HEAD'],
+          'requested_child_tree':os.environ['REQUESTED_CHILD_TREE'],
+          'baseline':'775692f2e72d76b6a97cf66926a86cc96342c109',
+          'baseline_core_compiler_verified':True,
+          'reason':'The unchanged Round2 acceptance predicate ran against exact775 evidence. Current Phase1 acceptance is separately required by the Round3 aggregate gate; full release remains OPEN.',
+          'current_tree_compiler_accepted':False,'full_core_accepted':False,'full_release_accepted':False,
+          'human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN'}
+        Path(os.environ['OPICA2_OUTPUT_DIR'],'checked-baseline-acceptance-scope.json').write_text(json.dumps(report,indent=2)+'\n')
+        PY
     - name: Verify exact source unchanged after all commands
       shell: bash
       run: |-

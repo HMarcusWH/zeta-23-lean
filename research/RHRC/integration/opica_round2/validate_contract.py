@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 from collections.abc import Callable, Mapping
 import hashlib
+import importlib.util
 import json
 from pathlib import Path, PurePosixPath
 import re
@@ -38,6 +39,37 @@ IMMUTABLE_INPUT_HASHES = {
     "paper/DEEP_SEARCH.md": "84d05886eb1a7708732aa90262d5ccba3aa9c94fcf23ac9f8a4fcda4494f921b",
     "paper/ROUND2_POSTGREEN_V2_1.md": "8714a068beb490ae4f35f853e6723fc88d670d248f145ece84b83e3694dcd444",
 }
+
+# Explicit versioned child boundary. These pins are finalized after reviewed
+# authored-source freeze; the original Round2 path policy/locks remain intact.
+ROUND3_PROVIDER_SHA256 = "cf7091e77c22ccce43dcf685456de4ca98da0aba079000cc71ffbe140c8c4ec4"
+ROUND3_PATH_POLICY_SHA256 = "1efef90366541653a42df027045ba317e52a664cdfcce7a305d6b5c5638538ad"
+
+
+def round3_extension_context(repo: Path) -> dict[str, Any] | None:
+    child = repo / "research/RHRC/integration/opica_round3"
+    marker = child / "DESCENDANT_EXTENSION.json"
+    if not marker.exists():
+        return None
+    provider = child / "validate_contract.py"
+    require(SHA.fullmatch(ROUND3_PROVIDER_SHA256) is not None
+            and SHA.fullmatch(ROUND3_PATH_POLICY_SHA256) is not None,
+            "round3_unreviewed", "Round3 extension has not received its explicit source freeze")
+    require(provider.is_file() and not provider.is_symlink()
+            and digest(provider) == ROUND3_PROVIDER_SHA256,
+            "round3_provider", "Round3 source-scope provider differs from the reviewed pin")
+    spec = importlib.util.spec_from_file_location("_opica3_reviewed_extension", provider)
+    require(spec is not None and spec.loader is not None, "round3_import", "Missing child provider")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    require(module.policy_digest(module.path_policy(repo)) == ROUND3_PATH_POLICY_SHA256,
+            "round3_policy", "Round3 extension cannot enlarge its reviewed path authority")
+    result = module.inspect_descendant(repo)
+    require(result.get("status") == "PASS_SOURCE_SCOPE_ONLY"
+            and result.get("path_policy_sha256") == ROUND3_PATH_POLICY_SHA256
+            and result.get("full_release_accepted") is False,
+            "round3_inspection", "Round3 source inspection failed")
+    return result
 
 
 def digest(path: Path) -> str:
@@ -458,6 +490,14 @@ def preflight(repo: Path = REPO, here: Path = HERE, *, scope: str = "full-core")
         action()
         checks.append({"check": name, "pass": True})
     try:
+        child = round3_extension_context(repo)
+        if child is not None:
+            return {"schema": "OPICA3_ROUND2_PARENT_STATIC_COMPATIBILITY_V1",
+                    "status": "PASS_PARENT_SOURCE_SCOPE_ONLY", "scope": scope,
+                    "round3_source_inspection": child,
+                    "authority": "REVIEWED_CHILD_SOURCE_SCOPE_ONLY_NO_ROUND2_COMPILER_ACCEPTANCE",
+                    "full_core_accepted": False, "full_release_accepted": False,
+                    "human_review": "NOT_ESTABLISHED", "RH": "OPEN", "Step4": "OPEN"}
         manifest = load_strict_json(here / "BUILD_MANIFEST.json", 8*1024*1024)
         ancestor = load_strict_json(here / "ANCESTOR_LOCK.json", 16*1024*1024)
         register = load_strict_json(here / "SOURCE_REGISTER.json", 16*1024*1024)
