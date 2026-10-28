@@ -3,6 +3,7 @@ from copy import deepcopy
 from fractions import Fraction as F
 import importlib.util
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -139,6 +140,27 @@ class FailClosed(unittest.TestCase):
         self.assertEqual(str(B.recorded_root('C:\\native\\source\\normal')),'C:\\native\\source\\normal')
         for root in ('relative/root','/tmp/../source','/tmp/source/'):
             with self.assertRaises(B.InvalidRequest):B.recorded_root(root)
+
+    def test_interpreter_alias_uses_canonical_worker_receipts_in_both_modes(self):
+        canonical=E.python_executable()
+        alias=str(Path(canonical).parent)+os.sep+'.'+os.sep+Path(canonical).name
+        cases=E.prescribed_cases()
+        with tempfile.TemporaryDirectory(dir=B.REPO.parent) as tmp:
+            output=Path(tmp)/'producer'
+            with patch.object(sys,'executable',alias):
+                result=E.lane(output,require_clean=False)
+                self.assertEqual(result['independently_recomputed_cases'],len(cases))
+                for mode in ('normal','optimized'):
+                    path=output/mode/'result.json';doc=B.strict_json(path.read_bytes())
+                    self.assertEqual(doc['runtime']['python_executable'],canonical)
+                    self.assertEqual(doc['cases'][0]['command']['argv'][0],canonical)
+                # Even another spelling of the same executable cannot replace
+                # the exact canonical command after its receipt was produced.
+                doc['cases'][0]['command']['argv'][0]=alias
+                path.write_text(json.dumps(doc),encoding='utf-8')
+                with self.assertRaisesRegex(B.InvalidRequest,'Wrong bound worker command'):
+                    C.verify_evaluator_evidence(output,Path(tmp)/'must-not-recompute',require_clean=False)
+                self.assertFalse((Path(tmp)/'must-not-recompute').exists())
 
     def test_modified_entering_q2_atom_uses_same_source_weight(self):
         case=deepcopy(E.prescribed_cases()[4]);original=B.evaluate_request(case,256)

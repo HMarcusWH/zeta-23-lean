@@ -45,13 +45,18 @@ def external(path):
     p=B.unlinked(path).resolve();B.require(not p.is_relative_to(B.REPO),'Evidence must be outside checkout');return p
 
 
+def python_executable():
+    """Launch the same resolved interpreter image recorded in every receipt."""
+    return str(Path(sys.executable).resolve())
+
+
 def runtime_identity():
     import flint
     package=Path(flint.__file__).resolve().parent
     native=list(package.glob('*.pyd'))+list(package.glob('*.so'))
     shared=package.parent/'python_flint.libs'
     if shared.is_dir():native.extend(p for p in shared.iterdir() if p.is_file())
-    return {'python_executable':str(Path(sys.executable).resolve()),'python_executable_sha256':B.digest(sys.executable),
+    return {'python_executable':python_executable(),'python_executable_sha256':B.digest(python_executable()),
       'python_version':platform.python_version(),'python_optimized':bool(sys.flags.optimize),
       'python_flint_version':flint.__version__,'python_flint_module_sha256':B.digest(flint.__file__),
       'flint_version':flint.__FLINT_VERSION__,'native_library_sha256':{str(p):B.digest(p) for p in sorted(native)},
@@ -89,7 +94,7 @@ def evaluate(output,bits=256,seconds=60,require_clean=True):
     try:
         for case in cases:
             name=case['id'];target=output/(name+'.json');out=output/(name+'.stdout.log');err=output/(name+'.stderr.log')
-            argv=[sys.executable,*(['-O'] if sys.flags.optimize else []),'-B',str(HERE/'source_evaluator.py'),'--_worker',name,
+            argv=[python_executable(),*(['-O'] if sys.flags.optimize else []),'-B',str(HERE/'source_evaluator.py'),'--_worker',name,
               '--precision-bits',str(bits),'--worker-output',str(target)]
             begin=time.monotonic()
             with out.open('xb') as a,err.open('xb') as b:
@@ -112,7 +117,7 @@ def evaluate(output,bits=256,seconds=60,require_clean=True):
 def lane(output,bits=256,seconds=60,require_clean=True):
     output=external(output);B.require(not output.exists(),'Lane output must be fresh');output.mkdir(parents=True)
     for mode in ('normal','optimized'):
-        argv=[sys.executable,*(['-O'] if mode=='optimized' else []),'-B',str(HERE/'source_evaluator.py'),
+        argv=[python_executable(),*(['-O'] if mode=='optimized' else []),'-B',str(HERE/'source_evaluator.py'),
           '--output-dir',str(output/mode),'--precision-bits',str(bits),'--seconds-per-case',str(seconds)]
         if not require_clean:argv.append('--allow-dirty-development')
         with (output/(mode+'.stdout.log')).open('xb') as out,(output/(mode+'.stderr.log')).open('xb') as err:

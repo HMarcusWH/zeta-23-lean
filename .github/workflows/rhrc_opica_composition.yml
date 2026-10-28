@@ -45,10 +45,12 @@ jobs:
         with:
           python-version: 3.13.5
       - uses: ./host/.github/actions/opica4-runtime
+        id: runtime
         with:
           native: ${{ matrix.native }}
           provider: ${{ matrix.provider }}
       - name: Execute exact source-bound lane in a bounded cgroup
+        id: lane
         working-directory: host
         shell: bash
         env:
@@ -70,6 +72,41 @@ jobs:
           name: opica4-${{ matrix.lane }}
           path: ${{ runner.temp }}/opica4-lanes/${{ matrix.lane }}
           if-no-files-found: error
+      - name: Record lane diagnostic disposition
+        if: ${{ always() }}
+        continue-on-error: true
+        shell: bash
+        env:
+          LANE: ${{ matrix.lane }}
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          STEPS_JSON: ${{ toJSON(steps) }}
+        run: |
+          python3 -B - <<'PY'
+          import json, os, pathlib, subprocess
+          output = pathlib.Path(os.environ['RUNNER_TEMP']) / 'opica4-diagnostics' / os.environ['LANE']
+          output.mkdir(parents=True, exist_ok=True)
+          host = pathlib.Path(os.environ['GITHUB_WORKSPACE']) / 'host'
+          def checked(revision):
+              result = subprocess.run(['git', '-C', str(host), 'rev-parse', revision], capture_output=True, text=True)
+              return result.stdout.strip() if result.returncode == 0 else None
+          report = {'schema': 'OPICA_CI_DIAGNOSTICS_V1', 'authority': 'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE',
+                    'lane': os.environ['LANE'], 'run_id': os.environ['GITHUB_RUN_ID'],
+                    'attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'requested_commit': os.environ['REQUESTED_COMMIT'],
+                    'checked_commit': checked('HEAD'), 'checked_tree': checked('HEAD^{tree}'),
+                    'steps': json.loads(os.environ['STEPS_JSON'])}
+          (output / 'disposition.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Preserve optional lane bootstrap diagnostics
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        continue-on-error: true
+        with:
+          name: opica-diagnostics-${{ matrix.lane }}
+          path: |
+            ${{ runner.temp }}/opica4-diagnostics/${{ matrix.lane }}
+            ${{ runner.temp }}/opica4-native/bootstrap
+            ${{ runner.temp }}/opica4-source-before.json
+          if-no-files-found: warn
   acceptance:
     name: Round4 / ACCEPTANCE
     needs: lanes
@@ -77,7 +114,17 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
+      - name: Record upstream matrix disposition
+        if: ${{ always() }}
+        continue-on-error: true
+        shell: bash
+        env:
+          UPSTREAM_JSON: ${{ toJSON(needs) }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/opica4-diagnostics/ACCEPTANCE"
+          printf '%s\n' "$UPSTREAM_JSON" > "$RUNNER_TEMP/opica4-diagnostics/ACCEPTANCE/upstream.json"
       - name: Require every matrix job to succeed
+        id: upstream
         env:
           UPSTREAM: ${{ needs.lanes.result }}
         run: test "$UPSTREAM" = success
@@ -91,6 +138,7 @@ jobs:
         with:
           python-version: 3.13.5
       - uses: ./host/.github/actions/opica4-runtime
+        id: runtime
         with:
           native: 'true'
           provider: 'true'
@@ -99,6 +147,7 @@ jobs:
           pattern: opica4-*
           path: ${{ runner.temp }}/opica4-input
       - name: Reconstruct eleven complete bundles and run independent checkers
+        id: acceptance
         working-directory: host
         shell: bash
         run: |
@@ -123,3 +172,37 @@ jobs:
           name: opica4-ACCEPTANCE
           path: ${{ runner.temp }}/opica4-acceptance
           if-no-files-found: error
+      - name: Record acceptance diagnostic disposition
+        if: ${{ always() }}
+        continue-on-error: true
+        shell: bash
+        env:
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          STEPS_JSON: ${{ toJSON(steps) }}
+        run: |
+          python3 -B - <<'PY'
+          import json, os, pathlib, subprocess
+          output = pathlib.Path(os.environ['RUNNER_TEMP']) / 'opica4-diagnostics' / 'ACCEPTANCE'
+          output.mkdir(parents=True, exist_ok=True)
+          host = pathlib.Path(os.environ['GITHUB_WORKSPACE']) / 'host'
+          def checked(revision):
+              result = subprocess.run(['git', '-C', str(host), 'rev-parse', revision], capture_output=True, text=True)
+              return result.stdout.strip() if result.returncode == 0 else None
+          report = {'schema': 'OPICA_CI_DIAGNOSTICS_V1', 'authority': 'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE',
+                    'lane': 'ACCEPTANCE', 'run_id': os.environ['GITHUB_RUN_ID'],
+                    'attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'requested_commit': os.environ['REQUESTED_COMMIT'],
+                    'checked_commit': checked('HEAD'), 'checked_tree': checked('HEAD^{tree}'),
+                    'steps': json.loads(os.environ['STEPS_JSON'])}
+          (output / 'disposition.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Preserve optional acceptance bootstrap diagnostics
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        continue-on-error: true
+        with:
+          name: opica-diagnostics-ACCEPTANCE
+          path: |
+            ${{ runner.temp }}/opica4-diagnostics/ACCEPTANCE
+            ${{ runner.temp }}/opica4-native/bootstrap
+            ${{ runner.temp }}/opica4-source-before.json
+          if-no-files-found: warn

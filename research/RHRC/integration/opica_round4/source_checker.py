@@ -132,7 +132,7 @@ def execution(value,identity,case,bits,direct=False,optimized=False):
 
 def recompute_case(case,bits,directory):
     output=directory/(case['id']+'.json');out=directory/(case['id']+'.stdout.log');err=directory/(case['id']+'.stderr.log')
-    argv=[sys.executable,'-B',str(HERE/'source_evaluator.py'),'--_verify-worker',case['id'],'--precision-bits',str(bits),'--worker-output',str(output)]
+    argv=[E.python_executable(),'-B',str(HERE/'source_evaluator.py'),'--_verify-worker',case['id'],'--precision-bits',str(bits),'--worker-output',str(output)]
     with out.open('xb') as a,err.open('xb') as b:
         try:code=subprocess.run(argv,cwd=B.REPO,stdout=a,stderr=b,timeout=60,check=False).returncode
         except subprocess.TimeoutExpired as exc:raise B.Unresolved('INDEPENDENT_CHECKER_WALL_DEADLINE') from exc

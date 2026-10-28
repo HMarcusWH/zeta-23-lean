@@ -108,6 +108,36 @@ def worker_capability(worker):
         require(done.returncode==0,"actual Linux namespace isolation probe failed")
     return "LINUX_ISOLATED" if worker.production else "NATIVE_DEVELOPMENT_ONLY"
 
+def _toolchain_file_record(path, root):
+    """Hash a pinned toolchain file, including contained regular-file aliases.
+
+    Directory links, reparse points, escapes and cycles remain forbidden. This
+    exception never applies to project, package, import or evidence paths.
+    """
+    root=unlinked(root).absolute();current=Path(os.path.abspath(path));seen=set();links=[]
+    require(current.is_relative_to(root),'Toolchain file is outside approved prefix')
+    while True:
+        unlinked(current.parent)
+        info=os.lstat(current)
+        require(not (getattr(info,'st_file_attributes',0)&1024),'Toolchain reparse point refused')
+        if not stat.S_ISLNK(info.st_mode):
+            require(stat.S_ISREG(info.st_mode),'Regular toolchain target required')
+            break
+        require(current not in seen and len(links)<40,'Cyclic or excessive toolchain file links')
+        seen.add(current);target=os.readlink(current)
+        resolved=Path(os.path.abspath(current.parent/target))
+        require(resolved.is_relative_to(root),'Toolchain link escapes approved prefix')
+        links.append({'path':current.relative_to(root).as_posix(),'target':target})
+        current=resolved
+    value=file_hash(current)
+    # Bind both the exact chain and target bytes, and detect mutation while read.
+    for row in links:
+        alias=root/row['path']
+        require(stat.S_ISLNK(os.lstat(alias).st_mode) and os.readlink(alias)==row['target'],
+                'Toolchain link changed while hashing')
+    return value,links
+
+
 def worker_environment(worker,*,manifest_output=None):
     """Fingerprint every selected import object and the actual compiler bytes.
 
@@ -115,12 +145,19 @@ def worker_environment(worker,*,manifest_output=None):
     hashing a stale cache is not fresh compilation of its source.
     """
     worker_capability(worker)
-    objects={}; semantic_objects={}
+    objects={}; semantic_objects={}; toolchain_links={}
     for index,root in enumerate([worker.toolchain_root,*worker.lean_paths]):
         for path in Path(root).rglob("*"):
-            if path.is_file() and any(path.name.endswith(s) for s in
-                    (".olean",".olean.server",".olean.private",".ir",".so",".dll",".exe",".bc")):
-                value=file_hash(path)
+            linked=path.is_symlink()
+            if linked and index!=0:
+                unlinked(path)
+            if linked or (path.is_file() and any(path.name.endswith(s) for s in
+                    (".olean",".olean.server",".olean.private",".ir",".so",".dll",".exe",".bc"))):
+                if index==0:
+                    value,links=_toolchain_file_record(path,root)
+                    if links:toolchain_links[path.relative_to(root).as_posix()]=links
+                else:
+                    value=file_hash(path)
                 objects[str(path.absolute())]=value
                 slot="TOOLCHAIN" if index==0 else "IMPORT_"+str(index-1)
                 semantic_objects[slot+"/"+path.relative_to(root).as_posix()]=value
@@ -133,9 +170,11 @@ def worker_environment(worker,*,manifest_output=None):
         path=unlinked(manifest_output)
         require(not path.exists(),"fresh object manifest path required")
         path.write_bytes(raw)
-    semantic_raw=json.dumps(semantic_objects,ensure_ascii=False,sort_keys=True,separators=(",",":"),allow_nan=False).encode("utf-8")
+    semantic_raw=json.dumps({'objects':semantic_objects,'toolchain_file_links':toolchain_links},
+        ensure_ascii=False,sort_keys=True,separators=(",",":"),allow_nan=False).encode("utf-8")
     return {"compiler_sha256":file_hash(worker.lean),"version_sha256":hashlib.sha256(version).hexdigest(),
-            "object_count":len(semantic_objects),"objects_digest":hashlib.sha256(b"OPICA_IMPORT_OBJECTS_V1\0"+semantic_raw).hexdigest()}
+            "object_count":len(semantic_objects),"objects_digest":hashlib.sha256(b"OPICA_IMPORT_OBJECTS_V2\0"+semantic_raw).hexdigest(),
+            "toolchain_file_links":toolchain_links}
 
 def _recipe(worker,output,source,object_name,budget):
     lean=Path(worker.lean); output=Path(output)

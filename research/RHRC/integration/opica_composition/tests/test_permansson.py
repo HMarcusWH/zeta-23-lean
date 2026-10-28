@@ -1,7 +1,9 @@
 """Frozen acceptance IDs: pure capability boundaries and actual durable dispatch."""
 from copy import deepcopy
+import hashlib
 import os
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -108,6 +110,31 @@ class PermanssonTests(unittest.TestCase):
             rows.append(provider.MARKER+__import__('json').dumps({**api,'type_expression':'actual','consumer_type_expression':'actual','proof_value_expression':'actual','axioms':['sorryAx'],'consumer_axioms':[]}))
         rows.append(provider.MODULE_MARKER+__import__('json').dumps([provider.MODULE]))
         with self.assertRaises(ContractError):provider.parse_audit(('\n'.join(rows)).encode())
+
+    def test_provider_git_blob_pin_accepts_only_exact_platform_checkout_bytes(self):
+        base=Path(os.environ.get('OPICA_TEST_TMP',str(provider.HOST.parent)))
+        with tempfile.TemporaryDirectory(prefix='opica-provider-pin-',dir=base) as tmp:
+            root=Path(tmp);source=root/'Selected.lean';blob=b'first line\nsecond line\n'
+            source.write_bytes(blob)
+            def git(*args):
+                return subprocess.run(['git',*args],cwd=root,stdout=subprocess.PIPE,
+                  stderr=subprocess.PIPE,check=True).stdout.decode().strip()
+            git('init');git('-c','core.autocrlf=false','add','Selected.lean')
+            git('-c','user.name=OPICA test','-c','user.email=opica-test@example.invalid',
+              '-c','commit.gpgsign=false','commit','-m','Pinned test source')
+            commit=git('rev-parse','HEAD');pin=hashlib.sha256(blob).hexdigest()
+            with patch.object(provider,'PROVIDER_COMMIT',commit):
+                for policy in ('false','true'):
+                    with self.subTest(policy=policy),patch.object(provider,'CHECKOUT_EOL',policy):
+                        expected=blob if policy=='false' else blob.replace(b'\n',b'\r\n')
+                        source.write_bytes(expected);provider.pinned_source_file(root,'Selected.lean',pin)
+                        for bad in (expected+b'changed',b'first line\r\nsecond line\n'):
+                            source.write_bytes(bad)
+                            with self.assertRaisesRegex(ContractError,'checkout bytes differ'):
+                                provider.pinned_source_file(root,'Selected.lean',pin)
+                        source.write_bytes(expected)
+                        with self.assertRaisesRegex(ContractError,'Git blob differs'):
+                            provider.pinned_source_file(root,'Selected.lean',hashlib.sha256(blob.replace(b'\n',b'\r\n')).hexdigest())
 
     def test_recorded_producer_root_is_metadata_not_artifact_location(self):
         self.assertEqual(str(provider.recorded_producer_root('/tmp/original/producer')),'/tmp/original/producer')

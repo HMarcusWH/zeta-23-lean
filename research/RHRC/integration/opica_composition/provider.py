@@ -80,12 +80,31 @@ def source_closure(root):
     visit(MODULE);require(order and order[-1]==MODULE,'Selected source module missing');return order
 
 
+def pinned_source_file(root,relative,expected):
+    """Pin Git object bytes and require the exact platform checkout encoding.
+
+    The configured digest always names the immutable Git blob. Windows has one
+    fixed CRLF checkout policy; input bytes are never normalized for comparison.
+    Raw checkout hashes remain part of the independently replayed identity.
+    """
+    result=subprocess.run(['git','cat-file','blob',PROVIDER_COMMIT+':'+relative],cwd=root,
+      stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=False)
+    require(result.returncode==0,'Pinned provider Git blob missing: '+relative)
+    blob=result.stdout
+    require(hashlib.sha256(blob).hexdigest()==expected,'Pinned provider Git blob differs: '+relative)
+    require(b'\r' not in blob,'Pinned provider text must use LF: '+relative)
+    checkout=blob.replace(b'\n',b'\r\n') if CHECKOUT_EOL=='true' else blob
+    require(file_hash(root/relative)==hashlib.sha256(checkout).hexdigest(),
+      'Pinned provider checkout bytes differ: '+relative)
+
+
 def provider_identity(root):
     root=unlinked(root).resolve();require(root.is_dir() and root!=HOST,'Separate provider checkout required')
     c=configuration();require(git(root,'rev-parse','HEAD')==PROVIDER_COMMIT,'Wrong provider commit')
     require(not clean_status(root),'Provider source must be clean')
     require((root/'lean-toolchain').read_text(encoding='utf-8').strip()==PROVIDER_LEAN,'Wrong provider toolchain pin')
-    require(file_hash(root/c['source_path'])==c['source_sha256'] and file_hash(root/'lake-manifest.json')==c['lake_manifest_sha256'],'Pinned provider source/manifest bytes differ')
+    pinned_source_file(root,c['source_path'],c['source_sha256'])
+    pinned_source_file(root,'lake-manifest.json',c['lake_manifest_sha256'])
     manifest=load_bytes((root/'lake-manifest.json').read_bytes());require(manifest['packagesDir']=='.lake/packages','Provider package path override')
     packages={};source_hash=BatchHasher()
     for p in manifest['packages']:
