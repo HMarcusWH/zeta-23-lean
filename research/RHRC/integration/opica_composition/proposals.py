@@ -39,7 +39,7 @@ def used_constant_ids(plan):
         for k in ("arguments", "branches"): pending += p.get(k, [])
     return found
 
-def enumerate_candidates(inventory, target, grammar, budget):
+def enumerate_candidates(inventory, target, grammar, budget, *, search_contract=None):
     require(type(target) is TargetSpec and type(grammar) is GrammarProfile and type(budget) is SearchBudget,
             "trusted typed enumeration inputs required")
     forbidden = set(grammar.excluded_declarations) | set(target.forbidden_constants or []) | {target.declaration}
@@ -58,11 +58,18 @@ def enumerate_candidates(inventory, target, grammar, budget):
             validate_plan(plan,budget)
             rows.append({"action_id":digest(plan,domain="OPICA_REVIEWED_CALIBRATION_PLAN_V1"),
                          "declaration":None,"term_plan":plan,"scientific_scope":"KNOWN_ENDPOINT_CALIBRATION"})
+    search_complete = True
+    if search_contract is not None:
+        from .composition_search import retrieve
+        require(set(search_contract) in ({"expected_expression","statements"},{"expected_expression","statements","proof_constants"}), "closed retrieval contract required")
+        proposed, search_complete, provenance = retrieve(inventory,target,grammar,budget,
+            search_contract["expected_expression"],search_contract["statements"],search_contract.get('proof_constants',[]))
+        rows.extend({**row,"search_provenance":provenance} for row in proposed)
     for cid, name in sorted(target.allowed_constants.items()):
         if name in forbidden: continue
         # This is a finite menu, not a claim that a bare theorem solves the goal.
         rows.append({"action_id": cid, "declaration": name, "term_plan": {"tag": "const", "constant_id": cid}})
-    complete = len(rows) <= budget.candidates
+    complete = len(rows) <= budget.candidates and search_complete
     return CandidateBatch(inventory.digest, target.target_id, rows[:budget.candidates], complete,
                           ("ENUMERATED" if rows else "NO_MATCH_IN_GRAMMAR") if complete else "RESOURCE_EXHAUSTED")
 

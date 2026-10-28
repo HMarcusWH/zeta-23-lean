@@ -11,6 +11,20 @@ must all succeed. Conditional hypotheses remain in the resulting proposition.
 The two mandatory calibrations compose the actual D02→D05 and D02→D04 theorems.
 They reproduce established conditional results and are not independent research.
 
+`composition_search.py` additionally retrieves multi-step applications, scoped
+dependent witnesses, conjunction/existential elimination, both disjunction
+branches and shared intermediate packets from compiler type DAGs. The reviewed
+`SEARCH_CONTRACTS.json` adds three actual non-calibration targets without changing
+the frozen462-declaration atlas. Fresh compiler exports verify the retrieval
+contracts in the native acceptance lane. Proof terms are erased only for retrieval
+using compiler-classified proof constants; full types and instances are rechecked
+by Lean. Universe erasure and retrieval matching grant no proof authority.
+
+Search stops at explicit state, depth and candidate budgets. A resource stop can
+still yield a frozen partial menu for independent checking; it never means that a
+goal is unprovable or that the mathematical search was exhaustive. Replaying a
+plan reconstructs the same source-bound bounded menu before dispatch.
+
 Linux production workers require read-only project/package/toolchain mounts,
 an empty environment, isolated network/process namespaces, bounded process
 resources, a hard 4 GiB cgroup memory ceiling and a hard 4 GiB tmpfs output

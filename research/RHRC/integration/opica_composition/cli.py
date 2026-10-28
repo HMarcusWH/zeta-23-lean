@@ -119,6 +119,10 @@ def run_lane(lane,repo,output,exp,*,provider_root=None):
         results['independent']=numerical_lane(output/'source-producer',bits=256,seconds=60,require_clean=True)
         for mode in ([],['-O']):
             run_command(repo,[sys.executable,*mode,'-B','-m','unittest','research.RHRC.integration.opica_round4.tests.test_source_evaluator'],output,'source-tests-'+('optimized' if mode else 'normal'))
+            name='optimized' if mode else 'normal'
+            run_command(repo,[sys.executable,*mode,'-B','-m','research.RHRC.integration.opica_round4.source_research',
+                '--output-dir',str(output/('source-research-'+name))],output,'source-research-'+name)
+            run_command(repo,[sys.executable,*mode,'-B','-m','unittest','research.RHRC.integration.opica_round4.tests.test_source_research'],output,'source-research-tests-'+name)
     elif lane=='PROVIDER_SELECTED':
         from .provider import produce,verify
         require(provider_root is not None,'Pinned provider checkout required')
@@ -181,6 +185,9 @@ def verify_lane_raw(expected,record,files,repo,independent_output,provider_root=
         root=files['results.json'].parent
         verify_evaluator_evidence(root/'source-producer',independent_output/'source-independent',require_clean=True,
             expected_head=record['experiment']['requested_commit'],expected_tree=record['experiment']['requested_tree'])
+        from research.RHRC.integration.opica_round4.source_research import verify_campaign
+        for name in ('normal','optimized'):
+            verify_campaign(root/('source-research-'+name),independent_output/('source-research-independent-'+name),require_clean=True)
     elif lane=='PROVIDER_SELECTED':
         from .provider import verify
         require(provider_root is not None,'Independent pinned provider required')

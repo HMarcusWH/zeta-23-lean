@@ -17,7 +17,8 @@ LEAN_NAME=re.compile(r"[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*\Z")
 DEFAULT_AXIOMS={"propext","Classical.choice","Quot.sound"}
 CALIBRATION_GOLD={"Zeta23.OPICAComposition.cofinal_newborn_packet_calibration",
     "Zeta23.OPICAComposition.cofinal_schur_packet_calibration"}
-VALIDATION_PREFIXES=("Zeta23.RHRC.OpicaComposition.Validation.","Zeta23.OPICARound3.Validation.")
+VALIDATION_PREFIXES=("Zeta23.RHRC.OpicaComposition.Validation.","Zeta23.OPICARound3.Validation.",
+                     "Zeta23.OPICARound4.Validation.")
 FIXED_OUTPUT_FILES={"proposal.json","target.json","snapshot.json","constant-table.json","receipt.json",
     "application-receipt.json","import-objects-before.json","import-objects-after-summary.json",
     "consumer-imports-before-summary.json","consumer-imports-after-summary.json"} | {

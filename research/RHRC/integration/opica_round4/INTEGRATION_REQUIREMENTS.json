@@ -1,0 +1,91 @@
+{
+  "schema": "OPICA4_RESEARCH_INTEGRATION_REQUIREMENTS_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "REVIEWED_BUILD_SCOPE_NOT_PROOF_EVIDENCE",
+  "packages": [
+    {
+      "id": "E1",
+      "implementation": [
+        "ClosureConsumers"
+      ],
+      "scope": "Conditional eventual and negative-ground restrictions; all-ray obligations retained separately"
+    },
+    {
+      "id": "E2",
+      "implementation": [
+        "composition_search.py",
+        "SEARCH_CONTRACTS.json",
+        "IntegrationTargets"
+      ],
+      "scope": "Bounded untemplated retrieval;3 actual noncalibration chains require fresh native acceptance"
+    },
+    {
+      "id": "E3",
+      "implementation": [
+        "NativeSpectralMeasure",
+        "SignedPickKernel"
+      ],
+      "scope": "Grouped real residues and signed measure/Pick identity; no rank-one negative-square cap"
+    },
+    {
+      "id": "E4",
+      "implementation": [
+        "NativeVisibility",
+        "VisibilityRigidity",
+        "NativeObservation"
+      ],
+      "scope": "Full-structure zero-residue classification; finite Gram and infinite blind invariant space distinct; quantitative negative observation OPEN"
+    },
+    {
+      "id": "E5",
+      "implementation": [
+        "NativeSourceBudget",
+        "SourceExchangeConcentration",
+        "NativeConcentrationBudget"
+      ],
+      "scope": "Actual full prime-power and Arch costs, full-range overlap multiplicity, signed intervals; no uniform contraction inferred"
+    },
+    {
+      "id": "E6",
+      "implementation": [
+        "PrimeDiscrepancyIntegral",
+        "AdaptiveBudget",
+        "OddReciprocalSource"
+      ],
+      "scope": "Exact discrepancy integral and priced adaptive test classes; reciprocal input and sign; independent uniform estimate OPEN"
+    },
+    {
+      "id": "E7",
+      "implementation": [
+        "NativeJointIndex"
+      ],
+      "scope": "Actual physical D03 two-plane and conditional joint cap; Pick index remains separate"
+    },
+    {
+      "id": "E8",
+      "implementation": [
+        "RegularCells.FixedSeed",
+        "NeutralContactPencil"
+      ],
+      "scope": "All L>0,K diagonal fixed-seed equivalence with Gram cost, moving Hprime-lambda Gprime; exact existing seam jets retained; uniform moving contact/remainder estimates OPEN"
+    },
+    {
+      "id": "E9",
+      "implementation": [
+        "SourceDictionaryCrosswalk"
+      ],
+      "scope": "Native sine and divided differences; diagonal requires actual derivatives; external full dictionary OPEN"
+    },
+    {
+      "id": "E10",
+      "implementation": [
+        "EXPECTED_TESTS.json",
+        "ROOTS.json",
+        "math_gate.py",
+        "source_research.py"
+      ],
+      "scope": "Closed inventories, semantic mutations, independent replay, sealed source and canonical outputs"
+    }
+  ]
+}

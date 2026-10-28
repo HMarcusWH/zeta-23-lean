@@ -18,7 +18,7 @@ BASE_TREE = "5442650eb749576e4a82e2d57460a4b97e19b5a9"
 LEGACY_SCOPE_TEMPLATES = {"rhrc_opica.yml": 4, "rhrc_opica_followup.yml": 7}
 LEGACY_SUITE_TEMPLATES = {"rhrc.yml": 1}
 MANIFEST = "research/RHRC/integration/opica_round4/BUILD_MANIFEST.json"
-AUDITED_PATH_POLICY = "e2a3a557ab2ff2af36f3e2f11a98d69f982ed47904b24273c8917b7d4b043ac7"
+AUDITED_PATH_POLICY = "303e6f854a763b867d691304c4d80cd8d7d6ccf311aba99e18f4dcd09a9898a2"
 REPO = Path(__file__).resolve().parents[4]
 
 def git(repo: Path, *args: str) -> str:

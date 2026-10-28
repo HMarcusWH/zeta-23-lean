@@ -21,6 +21,9 @@ from .contracts import WorkerConfig,SearchBudget,as_record
 from .snapshot import unlinked,file_hash,git
 from .executor import run_worker,worker_environment,lean_name,lean_string
 from .inventory import expression_hash,validate_telescope
+from ..opica_round4.math_gate import (MODULES as MATHEMATICAL_MODULES,
+    EXPECTED_MODULE_COUNT, EXPECTED_DECLARATION_COUNT,
+    BASELINE_MODULE_COUNT, BASELINE_DECLARATION_COUNT)
 
 ATLAS='research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS.jsonl'
 ATLAS_SHA256='c0becd027e18be98c29647b85e0d18aeb0748a66c2c6ab6690a4940b2945150e'
@@ -30,9 +33,10 @@ CORE_MODULES=(
  'Zeta23.RHRC.OpicaComposition.Export','Zeta23.RHRC.OpicaComposition.Audit',
  'Zeta23.RHRC.OpicaComposition.FiniteWorlds','Zeta23.OPICAComposition.Calibration',
  'Zeta23.RHRC.OpicaComposition.Validation','Zeta23.RHRC.OpicaComposition.ResearchTargets',
+ 'Zeta23.RHRC.OpicaComposition.SearchExamples',
  'Zeta23.RHRC.RegisteredClaimBindings','Zeta23.RHRC.DeclarationDependencyExport',
  'Zeta23.RHRC.SourceCandidateResolution',
- 'Zeta23.OPICARound4.Validation','Zeta23.RHRC.OpicaRound3AtlasExport')
+ 'Zeta23.OPICARound4.Validation','Zeta23.RHRC.OpicaRound3AtlasExport')+tuple(MATHEMATICAL_MODULES)
 COHORTS={'UCDP_HISTORICAL216':216,'UCDP_CONTACT185':185,'OPICA_FOLLOWUP100':100,
  'OPICA_ORIGINAL76':76,'REVIEWED_SUPPORT_IDENTITY':51,'OPICA_ROUND2_40':40,
  'UCDP_PRIORITY_TRIPLE18':18,'ROUND3_INDEPENDENT_CONSUMERS5':5,'OPICA_ROUND3_5':5}
@@ -209,7 +213,12 @@ def check_mathematical_support(repo,output,worker):
     try:
         require(record['returncode']==0 and record['timeout'] is False,'Actual mathematical support gate failed')
         result=load_bytes((output/'native/result.json').read_bytes())
-        require(result.get('status')=='PASS' and result.get('module_count')==16 and result.get('declaration_count')==98 and result.get('semantic_mutation_count')==4,'Mathematical support gate incomplete or not actual native evidence')
+        require(result.get('status')=='PASS' and result.get('module_count')==EXPECTED_MODULE_COUNT and
+                result.get('declaration_count')==EXPECTED_DECLARATION_COUNT and
+                result.get('baseline_module_count')==BASELINE_MODULE_COUNT==16 and
+                result.get('baseline_declaration_count')==BASELINE_DECLARATION_COUNT==98 and
+                result.get('semantic_mutation_count')==9,
+                'Mathematical support gate incomplete or not actual native evidence')
         report.update({'status':'PASS_MATHEMATICAL_SUPPORT' if worker.production else 'DEVELOPMENT_MATHEMATICAL_SUPPORT',
           'native_result':result,'native_result_sha256':file_hash(output/'native/result.json')});return report
     finally:(output/'result.json').write_bytes(canonical_bytes(report)+b'\n')

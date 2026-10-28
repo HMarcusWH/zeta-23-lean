@@ -1624,30 +1624,6 @@
   ],
   "implemented_methods": [
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_raw_file_mutation_rejected",
-      "case": null,
-      "lane": "FRAMEWORK_ADAPTERS",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t100",
-      "case": "T100",
-      "lane": "FRAMEWORK_ADAPTERS",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t105",
-      "case": "T105",
-      "lane": "FRAMEWORK_ADAPTERS",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t115",
-      "case": "T115",
-      "lane": "FRAMEWORK_ADAPTERS",
-      "native": false
-    },
-    {
       "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t64",
       "case": "T64",
       "lane": "FRAMEWORK_ADAPTERS",
@@ -1732,6 +1708,30 @@
       "native": false
     },
     {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t100",
+      "case": "T100",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t105",
+      "case": "T105",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t115",
+      "case": "T115",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_raw_file_mutation_rejected",
+      "case": null,
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
       "method": "research.RHRC.integration.opica_composition.tests.test_applications.ApplicationTests.test_empty_current_journal_exports_no_mathematical_edges",
       "case": null,
       "lane": "FRAMEWORK_ADAPTERS",
@@ -1756,6 +1756,12 @@
       "native": false
     },
     {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_original_acceptance_census_has_every_numbered_method_once",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
       "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_all_thirteen_work_packages_remain_explicit",
       "case": null,
       "lane": "CONTRACT",
@@ -1768,7 +1774,7 @@
       "native": false
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_original_acceptance_census_has_every_numbered_method_once",
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_source_report_mismatch_stops_before_any_heavy_checker",
       "case": null,
       "lane": "CONTRACT",
       "native": false
@@ -1780,21 +1786,9 @@
       "native": false
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_source_report_mismatch_stops_before_any_heavy_checker",
-      "case": null,
-      "lane": "CONTRACT",
-      "native": false
-    },
-    {
       "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_support_receipt_rejects_empty_skipped_or_wrong_mode_wrappers",
       "case": null,
       "lane": "CONTRACT",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_closure.ClosureTests.test_cycles_rejected",
-      "case": null,
-      "lane": "FRAMEWORK_ADAPTERS",
       "native": false
     },
     {
@@ -1810,9 +1804,87 @@
       "native": false
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_contracts.ContractCases.test_closed_mutable_fields",
+      "method": "research.RHRC.integration.opica_composition.tests.test_closure.ClosureTests.test_cycles_rejected",
       "case": null,
-      "lane": "CONTRACT",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_untemplated_two_step_chain",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_dependent_witness_is_preserved",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_other_witness_does_not_supply_property",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_existential_packet_is_eliminated_in_scope",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_supplied_context_packet_precedes_backward_consumer",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_conjunction_packet",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_disjunction_requires_both_branches",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_budget_stop_is_not_unprovability",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_forbidden_answer_is_not_retrieved",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_cycles_terminate",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_target_digest_cannot_be_replaced",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_shared_dag_retrieval_preserves_linear_work",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_composition_search.CompositionSearchTests.test_deep_valid_dag_reports_resource_exhaustion",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
       "native": false
     },
     {
@@ -1840,6 +1912,12 @@
       "native": false
     },
     {
+      "method": "research.RHRC.integration.opica_composition.tests.test_contracts.ContractCases.test_closed_mutable_fields",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
       "method": "research.RHRC.integration.opica_composition.tests.test_countermodels.CountermodelTests.test_exact_rankone_controls_are_source_scoped",
       "case": null,
       "lane": "SEMANTIC_NEGATIVES",
@@ -1847,6 +1925,30 @@
     },
     {
       "method": "research.RHRC.integration.opica_composition.tests.test_countermodels.CountermodelTests.test_resonant_cost_preserves_nonunit_w",
+      "case": null,
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_countermodels.CountermodelTests.test_pick_index_and_physical_index_are_not_identified",
+      "case": null,
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_countermodels.CountermodelTests.test_repeated_spectral_coordinates_are_grouped",
+      "case": null,
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_countermodels.CountermodelTests.test_overlap_and_visibility_controls_preserve_scope",
+      "case": null,
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_countermodels.CountermodelTests.test_odd_input_and_instantaneous_kernel_controls",
       "case": null,
       "lane": "SEMANTIC_NEGATIVES",
       "native": false
@@ -1888,18 +1990,6 @@
       "native": false
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t103",
-      "case": "T103",
-      "lane": "CONTRACT",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t114",
-      "case": "T114",
-      "lane": "CONTRACT",
-      "native": false
-    },
-    {
       "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t74",
       "case": "T74",
       "lane": "CONTRACT",
@@ -1936,9 +2026,15 @@
       "native": false
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_end_to_end.EndToEndTests.test_t117",
-      "case": "T117",
-      "lane": "REPLAY_CAMPAIGN",
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t103",
+      "case": "T103",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t114",
+      "case": "T114",
+      "lane": "CONTRACT",
       "native": false
     },
     {
@@ -1972,10 +2068,10 @@
       "native": false
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t113",
-      "case": "T113",
-      "lane": "SEMANTIC_NEGATIVES",
-      "native": true
+      "method": "research.RHRC.integration.opica_composition.tests.test_end_to_end.EndToEndTests.test_t117",
+      "case": "T117",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
     },
     {
       "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t21",
@@ -1996,14 +2092,14 @@
       "native": true
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t24",
-      "case": "T24",
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t25",
+      "case": "T25",
       "lane": "SEMANTIC_NEGATIVES",
       "native": true
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t25",
-      "case": "T25",
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t24",
+      "case": "T24",
       "lane": "SEMANTIC_NEGATIVES",
       "native": true
     },
@@ -2050,6 +2146,12 @@
       "native": true
     },
     {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t113",
+      "case": "T113",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
       "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t09",
       "case": "T09",
       "lane": "COMPOSITION_FORMAL",
@@ -2064,18 +2166,6 @@
     {
       "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t11",
       "case": "T11",
-      "lane": "COMPOSITION_FORMAL",
-      "native": true
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t112",
-      "case": "T112",
-      "lane": "COMPOSITION_FORMAL",
-      "native": true
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t116",
-      "case": "T116",
       "lane": "COMPOSITION_FORMAL",
       "native": true
     },
@@ -2164,22 +2254,16 @@
       "native": true
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_complete_positive_and_replay_rejection",
-      "case": null,
-      "lane": "CONTRACT",
-      "native": false
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t112",
+      "case": "T112",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_native_nonunit_witness_is_legal",
-      "case": null,
-      "lane": "CONTRACT",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_reduction_gold_leakage",
-      "case": null,
-      "lane": "CONTRACT",
-      "native": false
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t116",
+      "case": "T116",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
     },
     {
       "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t31",
@@ -2278,7 +2362,37 @@
       "native": false
     },
     {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_complete_positive_and_replay_rejection",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_native_nonunit_witness_is_legal",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_reduction_gold_leakage",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_harvest.HarvestTests.test_paginates_past_one_hundred",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
       "method": "research.RHRC.integration.opica_composition.tests.test_harvest.HarvestTests.test_green_falsifier_preserves_negative_result",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_harvest.HarvestTests.test_running_job_cannot_be_complete",
       "case": null,
       "lane": "CONTRACT",
       "native": false
@@ -2296,16 +2410,22 @@
       "native": false
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_harvest.HarvestTests.test_paginates_past_one_hundred",
+      "method": "research.RHRC.integration.opica_composition.tests.test_integration_search_native.NativeIntegrationSearchTests.test_actual_eventual_closure_chain",
       "case": null,
-      "lane": "CONTRACT",
-      "native": false
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_harvest.HarvestTests.test_running_job_cannot_be_complete",
+      "method": "research.RHRC.integration.opica_composition.tests.test_integration_search_native.NativeIntegrationSearchTests.test_actual_complete_signed_source_budget_chain",
       "case": null,
-      "lane": "CONTRACT",
-      "native": false
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_integration_search_native.NativeIntegrationSearchTests.test_actual_physical_joint_index_chain",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
     },
     {
       "method": "research.RHRC.integration.opica_composition.tests.test_inventory.InventoryCases.test_t05",
@@ -2329,30 +2449,6 @@
       "method": "research.RHRC.integration.opica_composition.tests.test_inventory.InventoryCases.test_t08",
       "case": "T08",
       "lane": "CONTRACT",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_cas_failure_is_atomic",
-      "case": null,
-      "lane": "REPLAY_CAMPAIGN",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_dispatch_is_durable_and_fair",
-      "case": null,
-      "lane": "REPLAY_CAMPAIGN",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_forged_count_projection_fails_restart",
-      "case": null,
-      "lane": "REPLAY_CAMPAIGN",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_nonproof_status_cannot_publish",
-      "case": null,
-      "lane": "REPLAY_CAMPAIGN",
       "native": false
     },
     {
@@ -2392,15 +2488,27 @@
       "native": false
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_cyclic_proof_rejected",
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_dispatch_is_durable_and_fair",
       "case": null,
-      "lane": "CONTRACT",
+      "lane": "REPLAY_CAMPAIGN",
       "native": false
     },
     {
-      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_positive_complete_route",
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_forged_count_projection_fails_restart",
       "case": null,
-      "lane": "CONTRACT",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_cas_failure_is_atomic",
+      "case": null,
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_nonproof_status_cannot_publish",
+      "case": null,
+      "lane": "REPLAY_CAMPAIGN",
       "native": false
     },
     {
@@ -2452,63 +2560,21 @@
       "native": false
     },
     {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_positive_complete_route",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_cyclic_proof_rejected",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
       "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_transport_needs_checked_receipt",
       "case": null,
       "lane": "CONTRACT",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_current_compatibility_retains_exact_frozen_population",
-      "case": null,
-      "lane": "CONTRACT",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_native_preparation_requires_linux_before_creating_outputs",
-      "case": null,
-      "lane": "CONTRACT",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_recorded_producer_root_is_metadata_not_artifact_location",
-      "case": null,
-      "lane": "CONTRACT",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_selected_audit_rejects_metadata_only_and_unapproved_axioms",
-      "case": null,
-      "lane": "CONTRACT",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t101",
-      "case": "T101",
-      "lane": "PROVIDER_SELECTED",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t102",
-      "case": "T102",
-      "lane": "PROVIDER_SELECTED",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t106",
-      "case": "T106",
-      "lane": "FRAMEWORK_ADAPTERS",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t107",
-      "case": "T107",
-      "lane": "FRAMEWORK_ADAPTERS",
-      "native": false
-    },
-    {
-      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t108",
-      "case": "T108",
-      "lane": "REPLAY_CAMPAIGN",
       "native": false
     },
     {
@@ -2552,6 +2618,90 @@
       "case": "T61",
       "lane": "PROVIDER_SELECTED",
       "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t101",
+      "case": "T101",
+      "lane": "PROVIDER_SELECTED",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t102",
+      "case": "T102",
+      "lane": "PROVIDER_SELECTED",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t106",
+      "case": "T106",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t107",
+      "case": "T107",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t108",
+      "case": "T108",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_selected_audit_rejects_metadata_only_and_unapproved_axioms",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_recorded_producer_root_is_metadata_not_artifact_location",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_current_compatibility_retains_exact_frozen_population",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_native_preparation_requires_linux_before_creating_outputs",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_search_native.NativeCompositionSearchTests.test_native_untemplated_chain",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_search_native.NativeCompositionSearchTests.test_native_dependent_witness_chain",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_search_native.NativeCompositionSearchTests.test_native_existential_elimination",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_search_native.NativeCompositionSearchTests.test_native_complete_disjunction",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_search_native.NativeCompositionSearchTests.test_native_changed_witness_is_rejected",
+      "case": null,
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
     }
   ],
   "migrations": [
@@ -2670,5 +2820,21 @@
   ],
   "execution_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS",
   "RH": "OPEN",
-  "Step4": "OPEN"
+  "Step4": "OPEN",
+  "integration_extension": {
+    "schema": "OPICA4_INTEGRATION_ACCEPTANCE_V1",
+    "original117_cases_retained": true,
+    "original42_requirements_retained": true,
+    "native_noncalibration_targets": [
+      "INTEGRATION_CLOSURE",
+      "INTEGRATION_SOURCE",
+      "INTEGRATION_INDEX"
+    ],
+    "acceptance": "Fresh compiler target/menu exports, generated restricted plan, kernel and independent exact-type+axiom consumer. Retrieval metadata and warm development receipts do not qualify production.",
+    "scientific_campaign": "Original six probes preserved; 256-bit unit versus independent512-bit direct source/Fourier reconstruction; no empty negative-subspace visibility claim.",
+    "source_research_tests": "research.RHRC.integration.opica_round4.tests.test_source_research",
+    "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  }
 }

@@ -49,7 +49,7 @@ def _registry(repo):
 
 def _target(repo,snapshot,target_id):
     registry=_registry(repo)
-    rows=[*registry["calibration"],*registry.get("open",[]),*registry.get("open_research",[])]
+    rows=[*registry["calibration"],*registry.get("open",[]),*registry.get("open_research",[]),*registry.get("intermediate",[])]
     matches=[r for r in rows if r["id"]==target_id]
     require(len(matches)==1,"target is not uniquely registered in the frozen evaluator inventory")
     row=matches[0]
@@ -74,6 +74,30 @@ def _target(repo,snapshot,target_id):
     target=TargetSpec(target_id,row["declaration"],row["module"],row["expected_type_sha256"],constants,
         ["propext","Classical.choice","Quot.sound"],[row["module"]],list(PER_ATTEMPT_GATES),row.get("target_kind","value"),sorted(set(forbidden)))
     return target,table
+
+def _search_contract(repo,target):
+    """Source-bound compiler DAGs guide retrieval, never confer acceptance."""
+    from .inventory import expression_hash
+    path=Path(repo)/'research/RHRC/integration/opica_composition/SEARCH_CONTRACTS.json'
+    if not path.exists():
+        return None
+    doc=load_bytes(path.read_bytes())
+    require(doc['schema']=='OPICA4_SEARCH_CONTRACTS_V1' and doc['kernel_acceptance'] is False,
+            'retrieval registry authority differs')
+    rows=[row for row in doc['targets'] if row['target_id']==target.target_id]
+    require(len(rows)<=1,'duplicate retrieval target')
+    if not rows:
+        return None
+    row=rows[0]
+    require(expression_hash(row['expected_expression'])==target.expected_type_hash,
+            'retrieval target is not the independent expected type')
+    allowed=set(target.allowed_constants.values())
+    statements=[x for x in doc['statements'] if x['declaration'] in allowed]
+    require(len({x['declaration'] for x in statements})==len(statements),'duplicate retrieval statement')
+    for item in [row,*statements]:
+        require(file_hash(Path(repo)/item['source_path'])==item['source_sha256'],
+                'retrieval contract source is stale')
+    return {'expected_expression':row['expected_expression'],'statements':statements,'proof_constants':row['proof_constants']}
 
 def freeze(repo,experiment,output,*,worker):
     """Freeze only an independently reviewed complete source/worker profile."""
@@ -130,8 +154,7 @@ def plan(repo,snapshot,inventory_file,target_id,output,*,budget=None):
     snapshot=_snapshot(repo,snapshot);table_inventory=_load_inventory(snapshot,inventory_file)
     target,constants=_target(repo,snapshot,target_id);budget=budget or SearchBudget()
     grammar=GrammarProfile(GOLD,[])
-    candidates=enumerate_candidates(table_inventory,target,grammar,budget)
-    require(candidates.complete,"incomplete bounded enumeration cannot be dispatched as a complete menu")
+    candidates=enumerate_candidates(table_inventory,target,grammar,budget,search_contract=_search_contract(repo,target))
     output=_directory(repo,output)
     proposals={r["action_id"]:CompositionProposal(r["action_id"],target_id,snapshot.generation,r["term_plan"]).to_dict() for r in candidates.candidates}
     row={"schema":"OPICA_SERVICE_PLAN_V1","source_generation":snapshot.generation,"snapshot_digest":snapshot.digest,
@@ -158,8 +181,8 @@ def run_one(repo,snapshot,proposals,journal,output,*,worker,budget=1):
     require(supplied["target"]==target.to_dict() and supplied["constant_table"]==table,"candidate attempted to replace target/import/constant policy")
     inv=_load_inventory(snapshot,folder/"inventory.json");search=SearchBudget.from_dict(supplied["budget"])
     require(search==SearchBudget(**(worker.budget or {})),"planner/worker resource profile differs")
-    candidates=enumerate_candidates(inv,target,GrammarProfile(GOLD,[]),search)
-    require(candidates.complete and supplied["inventory_digest"]==inv.digest and supplied["candidates"]==candidates.to_dict(),"menu/inventory reconstruction differs")
+    candidates=enumerate_candidates(inv,target,GrammarProfile(GOLD,[]),search,search_contract=_search_contract(repo,target))
+    require(supplied["inventory_digest"]==inv.digest and supplied["candidates"]==candidates.to_dict(),"menu/inventory reconstruction differs")
     wanted={r["action_id"]:CompositionProposal(r["action_id"],target.target_id,snapshot.generation,r["term_plan"]) for r in candidates.candidates}
     require(supplied["proposals"]=={k:v.to_dict() for k,v in wanted.items()},"proposal/menu substitution")
     require(type(budget)is int and 0<=budget<=10000,"bounded host dispatch budget required")

@@ -1,58 +1,74 @@
 {
-  "schema": "OPICA4_SOURCE_CLOSURE_OBLIGATIONS_V1",
+  "schema": "OPICA4_SOURCE_CLOSURE_OBLIGATIONS_V2",
   "registration_authority": "RESEARCH_GRAPH_ONLY",
   "nodes": [
     {
-      "id": "D_JOINT_RAY_BUDGET",
+      "id": "D1_ACTUAL_RAYS",
       "kind": "LEAF",
       "status": "OPEN",
       "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
-      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
-      "proposition": "Uniform actual even/odd resolvent-test arithmetic budget below one, with moving-test norms and source/limit exchanges justified",
+      "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+      "proposition": "EventualActualRayClosure",
+      "typed_declaration": "Zeta23.OPICARound4.EventualActualRayClosure",
       "quantifiers": [
-        "EXACT_TYPED_CONTRACT_REQUIRED"
+        "exists R before every L>R, hL, K>=3 and every negative real resolvent shift; separate shared-negative-ground exclusion",
+        "Read full compiler-exported Lean type; metadata is not a substitute"
       ],
-      "consumers": [],
-      "next_test": "Source-specific proof or falsifying control before promotion"
+      "consumers": [
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_actual_ray_closure"
+      ],
+      "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
     },
     {
-      "id": "D_REGULAR_CELL_SELECTION",
+      "id": "D2_NEGATIVE_GROUNDS",
       "kind": "LEAF",
       "status": "OPEN",
       "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
-      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
-      "proposition": "Actual source nonidentity, separated spectra, and common regular interval selection; retain shared negative grounds",
+      "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+      "proposition": "EventualNegativeGroundClosure",
+      "typed_declaration": "Zeta23.OPICARound4.EventualNegativeGroundClosure",
       "quantifiers": [
-        "EXACT_TYPED_CONTRACT_REQUIRED"
+        "exists R before every L>R,K>=3; compare only corresponding actual negative ground strictly below opposite bottom; exclude shared negative ground separately",
+        "Read full compiler-exported Lean type; metadata is not a substitute"
       ],
-      "consumers": [],
-      "next_test": "Source-specific proof or falsifying control before promotion"
+      "consumers": [
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_ground_closure"
+      ],
+      "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
     },
     {
-      "id": "D_SINGULAR_ALTERNATIVE",
+      "id": "D3_NATIVE_JOINT_INDEX",
       "kind": "LEAF",
       "status": "OPEN",
       "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
-      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
-      "proposition": "Actual singular predecessor and zero/shared-ground alternative",
+      "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+      "proposition": "EventualNativeJointNegativeIndexCap",
+      "typed_declaration": "Zeta23.OPICARound4.EventualNativeJointNegativeIndexCap",
       "quantifiers": [
-        "EXACT_TYPED_CONTRACT_REQUIRED"
+        "exists R before every L>R,K>=3; bound finrank of every strictly negative physical two-pole-neutral subspace by1",
+        "Read full compiler-exported Lean type; metadata is not a substitute"
       ],
-      "consumers": [],
-      "next_test": "Source-specific proof or falsifying control before promotion"
+      "consumers": [
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_native_joint_index"
+      ],
+      "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
     },
     {
-      "id": "D_DIRECT",
+      "id": "D4_DIRECT",
       "kind": "LEAF",
       "status": "OPEN",
       "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
-      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
-      "proposition": "Independent eventual no-simultaneous-negativity without spectral genericity",
+      "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+      "proposition": "EventualNoSimultaneousNegativity",
+      "typed_declaration": "Zeta23.OPICAComposition.EventualNoSimultaneousNegativity",
       "quantifiers": [
-        "EXACT_TYPED_CONTRACT_REQUIRED"
+        "exists R before every L>R,K>=3; no actual simultaneous parity negativity",
+        "Read full compiler-exported Lean type; metadata is not a substitute"
       ],
-      "consumers": [],
-      "next_test": "Source-specific proof or falsifying control before promotion"
+      "consumers": [
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_noBothNeg"
+      ],
+      "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
     },
     {
       "id": "B_CAUSAL",
@@ -62,10 +78,12 @@
       "witness": "SAME_DEPENDENT_SOURCE_PACKET",
       "proposition": "Actual source-preserving causal Gram residual tends to zero",
       "quantifiers": [
-        "EXACT_TYPED_CONTRACT_REQUIRED"
+        "OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE",
+        "No complete new Lean route contract is supplied by this extension"
       ],
       "consumers": [],
-      "next_test": "Source-specific proof or falsifying control before promotion"
+      "next_test": "Source-specific proof or falsifying control before promotion",
+      "typed_declaration": null
     },
     {
       "id": "A_SIGNED_OBSERVATION",
@@ -75,10 +93,12 @@
       "witness": "SAME_DEPENDENT_SOURCE_PACKET",
       "proposition": "Complete signed observation estimate including all cross terms and recovery budgets",
       "quantifiers": [
-        "EXACT_TYPED_CONTRACT_REQUIRED"
+        "OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE",
+        "No complete new Lean route contract is supplied by this extension"
       ],
       "consumers": [],
-      "next_test": "Source-specific proof or falsifying control before promotion"
+      "next_test": "Source-specific proof or falsifying control before promotion",
+      "typed_declaration": null
     },
     {
       "id": "C_DIRECT_COMPLEMENT",
@@ -88,26 +108,21 @@
       "witness": "SAME_DEPENDENT_SOURCE_PACKET",
       "proposition": "Actual original detector forcing/complement upper bound beating the off-line lower exponent",
       "quantifiers": [
-        "EXACT_TYPED_CONTRACT_REQUIRED"
+        "OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE",
+        "No complete new Lean route contract is supplied by this extension"
       ],
       "consumers": [],
-      "next_test": "Source-specific proof or falsifying control before promotion"
-    },
-    {
-      "id": "D_RAY_ROUTE",
-      "kind": "AND",
-      "children": [
-        "D_JOINT_RAY_BUDGET",
-        "D_REGULAR_CELL_SELECTION",
-        "D_SINGULAR_ALTERNATIVE"
-      ]
+      "next_test": "Source-specific proof or falsifying control before promotion",
+      "typed_declaration": null
     },
     {
       "id": "STEP4_ALTERNATIVES",
       "kind": "OR",
       "children": [
-        "D_RAY_ROUTE",
-        "D_DIRECT",
+        "D1_ACTUAL_RAYS",
+        "D2_NEGATIVE_GROUNDS",
+        "D3_NATIVE_JOINT_INDEX",
+        "D4_DIRECT",
         "B_CAUSAL",
         "A_SIGNED_OBSERVATION",
         "C_DIRECT_COMPLEMENT"
@@ -144,5 +159,134 @@
   ],
   "metadata_can_discharge_leaf": false,
   "RH": "OPEN",
-  "Step4": "OPEN"
+  "Step4": "OPEN",
+  "retained_research_nodes": [
+    {
+      "id": "D1_ACTUAL_RAYS",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+      "proposition": "EventualActualRayClosure",
+      "typed_declaration": "Zeta23.OPICARound4.EventualActualRayClosure",
+      "quantifiers": [
+        "exists R before every L>R, hL, K>=3 and every negative real resolvent shift; separate shared-negative-ground exclusion",
+        "Read full compiler-exported Lean type; metadata is not a substitute"
+      ],
+      "consumers": [
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_actual_ray_closure"
+      ],
+      "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
+    },
+    {
+      "id": "D2_NEGATIVE_GROUNDS",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+      "proposition": "EventualNegativeGroundClosure",
+      "typed_declaration": "Zeta23.OPICARound4.EventualNegativeGroundClosure",
+      "quantifiers": [
+        "exists R before every L>R,K>=3; compare only corresponding actual negative ground strictly below opposite bottom; exclude shared negative ground separately",
+        "Read full compiler-exported Lean type; metadata is not a substitute"
+      ],
+      "consumers": [
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_ground_closure"
+      ],
+      "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
+    },
+    {
+      "id": "D3_NATIVE_JOINT_INDEX",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+      "proposition": "EventualNativeJointNegativeIndexCap",
+      "typed_declaration": "Zeta23.OPICARound4.EventualNativeJointNegativeIndexCap",
+      "quantifiers": [
+        "exists R before every L>R,K>=3; bound finrank of every strictly negative physical two-pole-neutral subspace by1",
+        "Read full compiler-exported Lean type; metadata is not a substitute"
+      ],
+      "consumers": [
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_native_joint_index"
+      ],
+      "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
+    },
+    {
+      "id": "D4_DIRECT",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+      "proposition": "EventualNoSimultaneousNegativity",
+      "typed_declaration": "Zeta23.OPICAComposition.EventualNoSimultaneousNegativity",
+      "quantifiers": [
+        "exists R before every L>R,K>=3; no actual simultaneous parity negativity",
+        "Read full compiler-exported Lean type; metadata is not a substitute"
+      ],
+      "consumers": [
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_noBothNeg"
+      ],
+      "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
+    },
+    {
+      "id": "B_CAUSAL",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+      "proposition": "Actual source-preserving causal Gram residual tends to zero",
+      "quantifiers": [
+        "OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE",
+        "No complete new Lean route contract is supplied by this extension"
+      ],
+      "consumers": [],
+      "next_test": "Source-specific proof or falsifying control before promotion",
+      "typed_declaration": null
+    },
+    {
+      "id": "A_SIGNED_OBSERVATION",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+      "proposition": "Complete signed observation estimate including all cross terms and recovery budgets",
+      "quantifiers": [
+        "OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE",
+        "No complete new Lean route contract is supplied by this extension"
+      ],
+      "consumers": [],
+      "next_test": "Source-specific proof or falsifying control before promotion",
+      "typed_declaration": null
+    },
+    {
+      "id": "C_DIRECT_COMPLEMENT",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+      "proposition": "Actual original detector forcing/complement upper bound beating the off-line lower exponent",
+      "quantifiers": [
+        "OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE",
+        "No complete new Lean route contract is supplied by this extension"
+      ],
+      "consumers": [],
+      "next_test": "Source-specific proof or falsifying control before promotion",
+      "typed_declaration": null
+    },
+    {
+      "id": "STEP4_ALTERNATIVES",
+      "kind": "OR",
+      "children": [
+        "D1_ACTUAL_RAYS",
+        "D2_NEGATIVE_GROUNDS",
+        "D3_NATIVE_JOINT_INDEX",
+        "D4_DIRECT",
+        "B_CAUSAL",
+        "A_SIGNED_OBSERVATION",
+        "C_DIRECT_COMPLEMENT"
+      ]
+    }
+  ],
+  "interpretation": "D1-D4 are alternative typed sufficient routes; D1 does not require the whole regular-cell programme. A/B/C remain independent OPEN research routes. Graph reachability never supplies theorem authority."
 }

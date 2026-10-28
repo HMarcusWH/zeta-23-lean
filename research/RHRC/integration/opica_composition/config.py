@@ -5,6 +5,8 @@ from .canonical import require,load_bytes
 from .snapshot import file_hash
 from .accept import ROUND4_LANES
 from .testing import checked_inventory
+from ..opica_round4.math_gate import (EXPECTED_DECLARATIONS, BASELINE_EXPECTED_DECLARATIONS,
+    BASELINE_MODULES, BASELINE_DECLARATION_COUNT, BASELINE_MODULE_COUNT)
 
 def check_configuration(repo):
     repo=Path(repo);here=repo/'research/RHRC/integration/opica_composition';r4=here.parent/'opica_round4'
@@ -27,8 +29,15 @@ def check_configuration(repo):
     require(len(requirements)==42 and len({r['id'] for r in requirements})==42,'Exact42 requirement inventory differs')
     packages=load_bytes((r4/'WORK_PACKAGES.json').read_bytes())['packages']
     require([r['id'] for r in packages]==['R4-'+str(i).zfill(2) for i in range(13)],'All13 work packages required')
-    roots=load_bytes((r4/'ROOTS.json').read_bytes())['roots']
-    require(len(roots)==98 and len({r['declaration'] for r in roots})==98,'Exact98 new supporting declarations required')
+    root_doc=load_bytes((r4/'ROOTS.json').read_bytes());roots=root_doc['roots']
+    require(len(roots)==len(EXPECTED_DECLARATIONS) and
+            {r['declaration'] for r in roots}==set(EXPECTED_DECLARATIONS),
+            'Exact current supporting declaration inventory required')
+    baseline=root_doc['historical_subset']
+    require(baseline['declaration_count']==BASELINE_DECLARATION_COUNT==98 and
+            baseline['module_count']==BASELINE_MODULE_COUNT==16 and
+            baseline['declarations']==BASELINE_EXPECTED_DECLARATIONS and
+            baseline['modules']==BASELINE_MODULES,'Original 98/16 support subset changed')
     for row in roots:require(row['module'].replace('.','/')+'.lean'==row['path'] and (repo/row['path']).is_file(),'Root origin differs')
     targets=load_bytes((here/'PUBLIC_TARGETS.json').read_bytes())
     require([r['id'] for r in targets['calibration']]==['D02_D05','D02_D04'],'Both full calibration targets required')
@@ -40,4 +49,7 @@ def check_configuration(repo):
         row=load_bytes((r4/document).read_bytes());require(row['RH']=='OPEN' and row['Step4']=='OPEN','Research registration escalated a claim')
     return {'schema':'OPICA4_CONFIGURATION_CHECK_V1','status':'PASS_CONTRACT_ONLY','requirements':42,
             'mandatory_requirements':41,'baseline_cases':117,'registered_test_methods':len(inventory),
-            'new_support_declarations':98,'work_packages':13,'historical_connections':17,'RH':'OPEN','Step4':'OPEN'}
+            'new_support_declarations':len(EXPECTED_DECLARATIONS),
+            'retained_support_declarations':BASELINE_DECLARATION_COUNT,
+            'retained_support_modules':BASELINE_MODULE_COUNT,
+            'work_packages':13,'historical_connections':17,'RH':'OPEN','Step4':'OPEN'}

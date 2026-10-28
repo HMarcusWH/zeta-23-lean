@@ -22,6 +22,19 @@ def exportTarget (n : Name) (kind : String) : CommandElabM Unit := do
   let text ← liftIO <| OpicaTypeExprExport.exportType target
   liftIO <| IO.println ("OPICA_TARGET\t" ++ text)
 
+/-- Retrieval may erase proof terms only using this compiler-derived list.
+The original full type DAG remains the independent acceptance target. -/
+def exportRetrievalProofConstants (n : Name) (kind : String) : CommandElabM Unit := do
+  let expr ← liftTermElabM <| if kind == "value" then expectedTarget n kind
+    else return (← getConstInfo n).type
+  let names ← liftTermElabM do
+    let mut names : List String := []
+    for used in expr.getUsedConstantsAsSet.toList do
+      if ← isProp (← getConstInfo used).type then
+        names := used.toString :: names
+    return names.mergeSort (· < ·)
+  liftIO <| IO.println ("OPICA_RETRIEVAL_PROOFS\t" ++ (toJson names).compress)
+
 def dependencyClosure (name : Name) : CoreM (Array Name) := do
   let mut seen : NameSet := {}
   let mut discovered : NameSet := {}
@@ -57,7 +70,8 @@ def auditDeclaration (name : Name) (target : Expr) (allowed forbidden : Array St
   for n in closure do
     if forbidden.contains n.toString ||
         n.toString.startsWith "Zeta23.RHRC.OpicaComposition.Validation." ||
-        n.toString.startsWith "Zeta23.OPICARound3.Validation." then
+        n.toString.startsWith "Zeta23.OPICARound3.Validation." ||
+        n.toString.startsWith "Zeta23.OPICARound4.Validation." then
       throwError "hidden forbidden answer dependency {n}"
   let dagText ← liftIO <| OpicaTypeExprExport.exportType info.type
   let termText ← match info.value? (allowOpaque := true) with
