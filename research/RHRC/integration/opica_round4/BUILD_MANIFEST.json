@@ -96,7 +96,7 @@
     },
     {
       "path": ".github/workflows/rhrc_opica_composition.yml",
-      "sha256": "3442331adca4e0a4c8818a017044087af9cda980867398015214859d6eab53d5"
+      "sha256": "46573987cf992d02afffdc77e8592601bb34d0040a39967622b47374702353c3"
     },
     {
       "path": "Zeta23/OPICAComposition/Calibration.lean",

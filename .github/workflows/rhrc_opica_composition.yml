@@ -2,8 +2,6 @@ name: OPICA Round4 governed deduction and independent source gates
 on:
   pull_request:
     branches: [main]
-  push:
-    branches: [research/opica-round4]
   workflow_dispatch:
 permissions:
   contents: read
