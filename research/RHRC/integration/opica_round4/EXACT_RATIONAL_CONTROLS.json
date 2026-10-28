@@ -1,0 +1,182 @@
+{
+  "schema": "OPICA4_EXACT_RATIONAL_MATH_CONTROLS_V1",
+  "status": "PASS_EXACT_RATIONAL_CONTROLS",
+  "authority": "EXACT_RATIONAL_FINITE_RESEARCH_CONTROL_NOT_LEAN_OR_NATIVE_ZETA_THEOREM",
+  "script_sha256": "32509d92399b8424e7d82f7fd5962a9e1d454bd9432a0de973516043223eea3b",
+  "controls": [
+    {
+      "id": "G06_SHARED_GROUND_D1",
+      "A": [
+        [
+          "-2",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "B": [
+        [
+          "-2",
+          "0"
+        ],
+        [
+          "0",
+          "3"
+        ]
+      ],
+      "D": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "g": [
+        "0",
+        "1"
+      ],
+      "f": [
+        "0",
+        "2"
+      ],
+      "rank_one_identity": true,
+      "psd_predecessors": true,
+      "negative_successors": true,
+      "common_ground": "-2",
+      "nonzero_g_and_f": true,
+      "source_invisible_shared_mode": true,
+      "parameter_family": "constant real-analytic on every interval",
+      "native_zeta_source": false,
+      "disposition": "FALSIFIES_SOURCE_BLIND_REGULAR_SELECTION"
+    },
+    {
+      "id": "G06_SHARED_GROUND_D2",
+      "A": [
+        [
+          "-2",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "B": [
+        [
+          "-2",
+          "0"
+        ],
+        [
+          "0",
+          "3"
+        ]
+      ],
+      "D": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "2"
+        ]
+      ],
+      "g": [
+        "0",
+        "2"
+      ],
+      "f": [
+        "0",
+        "2"
+      ],
+      "rank_one_identity": true,
+      "psd_predecessors": true,
+      "negative_successors": true,
+      "common_ground": "-2",
+      "nonzero_g_and_f": true,
+      "source_invisible_shared_mode": true,
+      "parameter_family": "constant real-analytic on every interval",
+      "native_zeta_source": false,
+      "disposition": "FALSIFIES_SOURCE_BLIND_REGULAR_SELECTION"
+    },
+    {
+      "id": "S06_ABSOLUTE_SHIFT",
+      "A": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "2"
+        ]
+      ],
+      "B": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "4"
+        ]
+      ],
+      "D": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "2"
+        ]
+      ],
+      "shift": "5",
+      "shifted_A": [
+        [
+          "-4",
+          "0"
+        ],
+        [
+          "0",
+          "-3"
+        ]
+      ],
+      "shifted_B": [
+        [
+          "-4",
+          "0"
+        ],
+        [
+          "0",
+          "-1"
+        ]
+      ],
+      "defect_unchanged": true,
+      "positive_before_negative_after": true,
+      "native_zeta_source": false,
+      "disposition": "FALSIFIES_ABSOLUTE_POSITIVITY_FROM_RELATIVE_TRANSPORT"
+    },
+    {
+      "id": "S03_SIGNED_DERIVATIVE",
+      "eigenvalues": [
+        "1",
+        "3"
+      ],
+      "residues": [
+        "-1",
+        "2"
+      ],
+      "lambda": "0",
+      "derivative": "-7/9",
+      "disposition": "FALSIFIES_AUTOMATIC_RESPONSE_MONOTONICITY"
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

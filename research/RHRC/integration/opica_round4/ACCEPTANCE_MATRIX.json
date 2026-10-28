@@ -1,0 +1,2662 @@
+{
+  "schema": "OPICA4_EXTENDED_ACCEPTANCE_MATRIX_V1",
+  "original_cases": [
+    {
+      "id": "T01",
+      "area": "source",
+      "case": "Changed source commit with old positive artifact",
+      "expected": "Reject current-source acceptance",
+      "requirements": [
+        "W01",
+        "O04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t01"
+    },
+    {
+      "id": "T02",
+      "area": "source",
+      "case": "Same displayed theorem name but changed definition/source dependency",
+      "expected": "Invalidate current application; retain historical record",
+      "requirements": [
+        "W01",
+        "W07",
+        "O05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t02"
+    },
+    {
+      "id": "T03",
+      "area": "source",
+      "case": "Provider uses wrong compiler or package tree",
+      "expected": "Reject provider admission",
+      "requirements": [
+        "P01",
+        "P03"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t03"
+    },
+    {
+      "id": "T04",
+      "area": "source",
+      "case": "Cross-version .olean or shared LEAN_PATH injected",
+      "expected": "Reject before proof attempt",
+      "requirements": [
+        "P03",
+        "W08"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t04"
+    },
+    {
+      "id": "T05",
+      "area": "coverage",
+      "case": "Omit one mandatory OPICA membership",
+      "expected": "Fail exact inventory check",
+      "requirements": [
+        "W03"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_inventory.py",
+      "method": "test_t05"
+    },
+    {
+      "id": "T06",
+      "area": "coverage",
+      "case": "Deduplicate declaration while silently dropping cohort membership",
+      "expected": "Fail membership reconciliation",
+      "requirements": [
+        "W03"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_inventory.py",
+      "method": "test_t06"
+    },
+    {
+      "id": "T07",
+      "area": "coverage",
+      "case": "Use only old CCM/ExceptionalZero source-only census",
+      "expected": "Reject incomplete OPICA input scope",
+      "requirements": [
+        "W03"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_inventory.py",
+      "method": "test_t07"
+    },
+    {
+      "id": "T08",
+      "area": "coverage",
+      "case": "Historical contact is unreviewed",
+      "expected": "Retain UNREVIEWED; no manufactured adapter",
+      "requirements": [
+        "W03",
+        "O01"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_inventory.py",
+      "method": "test_t08"
+    },
+    {
+      "id": "T09",
+      "area": "application",
+      "case": "Producer and consumer hypotheses match by genuine Lean conversion",
+      "expected": "Accept conditional application with exact retained context",
+      "requirements": [
+        "W04",
+        "O02"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t09"
+    },
+    {
+      "id": "T10",
+      "area": "application",
+      "case": "A transport requires a supplied proved equality adapter",
+      "expected": "Accept only after exact adapter and premises replay",
+      "requirements": [
+        "W04",
+        "F04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t10"
+    },
+    {
+      "id": "T11",
+      "area": "application",
+      "case": "Two same-type witnesses are substituted without equality",
+      "expected": "Reject that application or emit exact adapter obligation",
+      "requirements": [
+        "O02",
+        "W04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t11"
+    },
+    {
+      "id": "T12",
+      "area": "application",
+      "case": "Existential witness leaks out of its local scope",
+      "expected": "Reject",
+      "requirements": [
+        "W04",
+        "O03"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t12"
+    },
+    {
+      "id": "T13",
+      "area": "application",
+      "case": "Universe/typeclass obligation remains unresolved",
+      "expected": "Keep explicit open obligation; no accepted export",
+      "requirements": [
+        "W04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t13"
+    },
+    {
+      "id": "T14",
+      "area": "application",
+      "case": "Data structure silently loses proof-bearing fields",
+      "expected": "Reject contract/consumer mismatch",
+      "requirements": [
+        "W02",
+        "W04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t14"
+    },
+    {
+      "id": "T15",
+      "area": "application",
+      "case": "Generated result contains unresolved metavariable",
+      "expected": "Reject accepted declaration",
+      "requirements": [
+        "W04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t15"
+    },
+    {
+      "id": "T16",
+      "area": "application",
+      "case": "Candidate adds hGoal : Goal and claims Goal discharged",
+      "expected": "Retain hGoal as debt; no terminal acceptance",
+      "requirements": [
+        "O03",
+        "W04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t16"
+    },
+    {
+      "id": "T17",
+      "area": "application",
+      "case": "Off-line-zero premise persists through valid deductions",
+      "expected": "Accept valid conditional theorem; applicability remains conditional",
+      "requirements": [
+        "O03",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t17"
+    },
+    {
+      "id": "T18",
+      "area": "application",
+      "case": "Unproved RH-equivalent upper is smuggled in as an adapter",
+      "expected": "Reject discharge; record OPEN_SOURCE_LEAF",
+      "requirements": [
+        "O03",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t18"
+    },
+    {
+      "id": "T19",
+      "area": "application",
+      "case": "Search times out on a legitimate theorem",
+      "expected": "RESOURCE_EXHAUSTED/UNRESOLVED, not false",
+      "requirements": [
+        "O06",
+        "W08"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t19"
+    },
+    {
+      "id": "T20",
+      "area": "application",
+      "case": "Negative consumer fails due to missing import rather than type mismatch",
+      "expected": "Infrastructure failure; semantic control not passed",
+      "requirements": [
+        "W04",
+        "W09"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t20"
+    },
+    {
+      "id": "T21",
+      "area": "D01-D05",
+      "case": "Cofinality alone used to claim simultaneous negativity",
+      "expected": "Reject attempted inference; matched countermodel scope retained",
+      "requirements": [
+        "F05",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t21"
+    },
+    {
+      "id": "T22",
+      "area": "D01-D05",
+      "case": "Local interval margin treated as a global uniform margin",
+      "expected": "Reject strengthening",
+      "requirements": [
+        "F05",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t22"
+    },
+    {
+      "id": "T23",
+      "area": "D01-D05",
+      "case": "Both predecessors assumed PSD at max of unequal first cutoffs",
+      "expected": "Reject strengthening",
+      "requirements": [
+        "F05",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t23"
+    },
+    {
+      "id": "T24",
+      "area": "D01-D05",
+      "case": "Equal first cutoffs treated as equal negative eigenvalues",
+      "expected": "Reject strengthening",
+      "requirements": [
+        "F05",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t24"
+    },
+    {
+      "id": "T25",
+      "area": "D01-D05",
+      "case": "D05 transferred operator output deleted",
+      "expected": "Actual genuine consumer succeeds; unsupported source-only use rejects",
+      "requirements": [
+        "F05",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t25"
+    },
+    {
+      "id": "T26",
+      "area": "D01-D05",
+      "case": "Odd-parity adjoint sign or conjugation altered",
+      "expected": "Reject exact source identity",
+      "requirements": [
+        "F04",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t26"
+    },
+    {
+      "id": "T27",
+      "area": "D01-D05",
+      "case": "Earlier sector labeled newborn again at the later common cutoff",
+      "expected": "Reject",
+      "requirements": [
+        "O03",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t27"
+    },
+    {
+      "id": "T28",
+      "area": "D01-D05",
+      "case": "Regular branch selected and resonant branch omitted",
+      "expected": "Retain branch debt or reject full-route claim",
+      "requirements": [
+        "O03",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t28"
+    },
+    {
+      "id": "T29",
+      "area": "D01-D05",
+      "case": "K2 empty carrier assigned fictitious negative eigenvalue",
+      "expected": "Reject numerical/formal scope violation",
+      "requirements": [
+        "F04",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t29"
+    },
+    {
+      "id": "T30",
+      "area": "D01-D05",
+      "case": "Replay the 17 authored connection dispositions",
+      "expected": "Reproduce categories without claiming new mathematics",
+      "requirements": [
+        "F05",
+        "W05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t30"
+    },
+    {
+      "id": "T31",
+      "area": "FFBBP",
+      "case": "Empty required_results under claim-bearing profile",
+      "expected": "Reject expected-gate completeness",
+      "requirements": [
+        "F03"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t31"
+    },
+    {
+      "id": "T32",
+      "area": "FFBBP",
+      "case": "One required gate absent but all supplied gates PASS",
+      "expected": "Reject",
+      "requirements": [
+        "F03"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t32"
+    },
+    {
+      "id": "T33",
+      "area": "FFBBP",
+      "case": "Required gate marked NOT_APPLICABLE after observation",
+      "expected": "Reject post-hoc waiver",
+      "requirements": [
+        "F03"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t33"
+    },
+    {
+      "id": "T34",
+      "area": "FFBBP",
+      "case": "Required gate marked NOT_EVALUATED",
+      "expected": "Unresolved; no acceptance",
+      "requirements": [
+        "F03"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t34"
+    },
+    {
+      "id": "T35",
+      "area": "FFBBP",
+      "case": "Gate statuses from different source/run identities combined",
+      "expected": "Reject",
+      "requirements": [
+        "F03",
+        "O04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t35"
+    },
+    {
+      "id": "T36",
+      "area": "FFBBP",
+      "case": "Module/type-digest reduction merges different applicability contexts",
+      "expected": "Record exact collision and refuse decision-bearing use",
+      "requirements": [
+        "F01",
+        "F02"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t36"
+    },
+    {
+      "id": "T37",
+      "area": "FFBBP",
+      "case": "Lossy ranking retrieves candidate but full contract is restored",
+      "expected": "Permit attempt; do not infer preservation theorem",
+      "requirements": [
+        "F02"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t37"
+    },
+    {
+      "id": "T38",
+      "area": "FFBBP",
+      "case": "Different norms or aperture domains added in residual budget",
+      "expected": "Reject until checked norm/domain adapter supplied",
+      "requirements": [
+        "F04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t38"
+    },
+    {
+      "id": "T39",
+      "area": "FFBBP",
+      "case": "Finite ball contains zero and is called exact resonance",
+      "expected": "UNRESOLVED, not exact certificate",
+      "requirements": [
+        "F04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t39"
+    },
+    {
+      "id": "T40",
+      "area": "FFBBP",
+      "case": "Positive causal Gram substituted for canonical Weil form",
+      "expected": "Reject missing source/form adapter",
+      "requirements": [
+        "F04",
+        "F05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t40"
+    },
+    {
+      "id": "T41",
+      "area": "FFBBP",
+      "case": "Toy countermodel violates one target hypothesis",
+      "expected": "Not a falsifier of that exact target",
+      "requirements": [
+        "F05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t41"
+    },
+    {
+      "id": "T42",
+      "area": "FFBBP",
+      "case": "Native prime-power term omitted from evaluator",
+      "expected": "Reject complete-source claim",
+      "requirements": [
+        "F04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t42"
+    },
+    {
+      "id": "T43",
+      "area": "FFBBP",
+      "case": "Same raw evidence reaches system through three framework summaries",
+      "expected": "Count one origin; derived records remain linked",
+      "requirements": [
+        "F06"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t43"
+    },
+    {
+      "id": "T44",
+      "area": "FFBBP",
+      "case": "Private N29 source or synthetic qualification silently promoted",
+      "expected": "Refuse scope/visibility promotion",
+      "requirements": [
+        "F01",
+        "F07",
+        "W11"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t44"
+    },
+    {
+      "id": "T45",
+      "area": "OoL",
+      "case": "Only one PASS interface supplied for a five-interface route",
+      "expected": "Reject exact interface inventory",
+      "requirements": [
+        "O02"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ool.py",
+      "method": "test_t45"
+    },
+    {
+      "id": "T46",
+      "area": "OoL",
+      "case": "actual_output_bound=true without a checked binding receipt",
+      "expected": "Reject",
+      "requirements": [
+        "O02"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ool.py",
+      "method": "test_t46"
+    },
+    {
+      "id": "T47",
+      "area": "OoL",
+      "case": "Valid signature binds an unproved mathematical assertion",
+      "expected": "Attested binding only; theorem remains open",
+      "requirements": [
+        "O04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ool.py",
+      "method": "test_t47"
+    },
+    {
+      "id": "T48",
+      "area": "OoL",
+      "case": "Incomplete finite search claims universal absence",
+      "expected": "NA/UNRESOLVED for universal claim",
+      "requirements": [
+        "O06"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ool.py",
+      "method": "test_t48"
+    },
+    {
+      "id": "T49",
+      "area": "OoL",
+      "case": "Conflicting/duplicate route interface ID",
+      "expected": "Reject",
+      "requirements": [
+        "O02"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ool.py",
+      "method": "test_t49"
+    },
+    {
+      "id": "T50",
+      "area": "OoL",
+      "case": "Expected frozen phase but observed discovery phase",
+      "expected": "Reject confirmatory binding",
+      "requirements": [
+        "O04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ool.py",
+      "method": "test_t50"
+    },
+    {
+      "id": "T51",
+      "area": "journal",
+      "case": "Insert/correct/replace/remove input then restart",
+      "expected": "Deterministic reconstructed view matches independent replay",
+      "requirements": [
+        "O05",
+        "F06"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_journal.py",
+      "method": "test_t51"
+    },
+    {
+      "id": "T52",
+      "area": "journal",
+      "case": "Worker returns result for previous source generation",
+      "expected": "Store as stale history; cannot update current acceptance",
+      "requirements": [
+        "O05",
+        "F06"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_journal.py",
+      "method": "test_t52"
+    },
+    {
+      "id": "T53",
+      "area": "journal",
+      "case": "Changed premise justifies reconsidering failed route",
+      "expected": "Create scoped revival with blocker/change evidence",
+      "requirements": [
+        "O05",
+        "O07"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_journal.py",
+      "method": "test_t53"
+    },
+    {
+      "id": "T54",
+      "area": "journal",
+      "case": "Same failed route renamed without changed premise",
+      "expected": "Do not count revival or new information gain",
+      "requirements": [
+        "O05",
+        "P05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_journal.py",
+      "method": "test_t54"
+    },
+    {
+      "id": "T55",
+      "area": "Permansson",
+      "case": "Intervention alters mathematical source or checker",
+      "expected": "Classify as world change; reject strategy-only label",
+      "requirements": [
+        "P02"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "PROVIDER_SELECTED",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t55"
+    },
+    {
+      "id": "T56",
+      "area": "Permansson",
+      "case": "Finite menu has no admissible action",
+      "expected": "Stop/abstain; no arbitrary default action",
+      "requirements": [
+        "P04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "PROVIDER_SELECTED",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t56"
+    },
+    {
+      "id": "T57",
+      "area": "Permansson",
+      "case": "Scheduler chooses an action outside declared menu",
+      "expected": "Reject host proposal",
+      "requirements": [
+        "P02",
+        "P04"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "PROVIDER_SELECTED",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t57"
+    },
+    {
+      "id": "T58",
+      "area": "Permansson",
+      "case": "Bellman output claimed optimal for unknown real search law",
+      "expected": "No such claim; model-relative scope only",
+      "requirements": [
+        "P04",
+        "P06"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "PROVIDER_SELECTED",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t58"
+    },
+    {
+      "id": "T59",
+      "area": "Permansson",
+      "case": "Proposal changes a certified rational model after qualification",
+      "expected": "Reject source/model binding",
+      "requirements": [
+        "P01",
+        "P03"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "PROVIDER_SELECTED",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t59"
+    },
+    {
+      "id": "T60",
+      "area": "Permansson",
+      "case": "Heuristic repeatedly starves an open obligation",
+      "expected": "Coverage/fairness control schedules or explicitly defers it",
+      "requirements": [
+        "P04",
+        "P05"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "PROVIDER_SELECTED",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t60"
+    },
+    {
+      "id": "T61",
+      "area": "Permansson",
+      "case": "Many theorem aliases counted as scientific progress",
+      "expected": "Deduplicate/report no novelty; no reward inflation",
+      "requirements": [
+        "P05",
+        "W10"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "PROVIDER_SELECTED",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t61"
+    },
+    {
+      "id": "T62",
+      "area": "qualification",
+      "case": "Proposal process accesses evaluator-only answer labels",
+      "expected": "Invalidate benchmark qualification",
+      "requirements": [
+        "F07",
+        "W10"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_end_to_end.py",
+      "method": "test_t62"
+    },
+    {
+      "id": "T63",
+      "area": "qualification",
+      "case": "Adaptive strategy compared with weaker budget baseline",
+      "expected": "Reject superiority claim; run matched comparison",
+      "requirements": [
+        "P05",
+        "W10"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_end_to_end.py",
+      "method": "test_t63"
+    },
+    {
+      "id": "T64",
+      "area": "release",
+      "case": "All support lanes green but open terminal premise persists",
+      "expected": "Release support scope only; RH/Step4 OPEN",
+      "requirements": [
+        "O03",
+        "W12"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t64"
+    },
+    {
+      "id": "T65",
+      "area": "release",
+      "case": "Missing/skipped/cross-run acceptance artifact",
+      "expected": "Fail independent aggregate",
+      "requirements": [
+        "W09"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t65"
+    },
+    {
+      "id": "T66",
+      "area": "release",
+      "case": "Generated graph changed but fresh producer not replayed",
+      "expected": "Reject stale current view",
+      "requirements": [
+        "W07",
+        "W09"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t66"
+    },
+    {
+      "id": "T67",
+      "area": "release",
+      "case": "Historical 76/100/40/#297 predicate weakened to pass new build",
+      "expected": "Reject protected-contract regression",
+      "requirements": [
+        "W09",
+        "W11"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t67"
+    },
+    {
+      "id": "T68",
+      "area": "release",
+      "case": "Candidate executes arbitrary shell or network command",
+      "expected": "Sandbox/payload rejection",
+      "requirements": [
+        "W08"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t68"
+    },
+    {
+      "id": "T69",
+      "area": "release",
+      "case": "Two workers write the same native build cache",
+      "expected": "Prevent unsafe scheduling; isolate or serialize",
+      "requirements": [
+        "W08"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t69"
+    },
+    {
+      "id": "T70",
+      "area": "release",
+      "case": "New result preserves an old numerical falsification",
+      "expected": "Harvest as preserved negative disposition, not new theorem",
+      "requirements": [
+        "O07"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t70"
+    },
+    {
+      "id": "T71",
+      "area": "release",
+      "case": "A workflow remains running",
+      "expected": "Pending; no inferred pass",
+      "requirements": [
+        "O07",
+        "W09"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t71"
+    },
+    {
+      "id": "T72",
+      "area": "release",
+      "case": "Provider manifest/registry updates erase historical authority",
+      "expected": "Reject; require side-by-side versioned records",
+      "requirements": [
+        "W11"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t72"
+    },
+    {
+      "id": "T73",
+      "area": "integration",
+      "case": "End-to-end candidate traverses FFBBP, Permansson, OoL and the host checker",
+      "expected": "All consumers bind the same evidence envelope/source generation; only actual host proof and declared acceptance gates can justify the mathematical result",
+      "requirements": [
+        "W06",
+        "O02",
+        "F03",
+        "P03"
+      ],
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION",
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_end_to_end.py",
+      "method": "test_t73"
+    },
+    {
+      "id": "T74",
+      "area": "migration",
+      "case": "New ignored .lean added outside original Round3 list",
+      "expected": "Reject old-source claim; new approved descendant scope required",
+      "requirements": [
+        "K01",
+        "W11"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t74",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T75",
+      "area": "migration",
+      "case": "Only Round3 workflow migrated, Round2 invokes old guard",
+      "expected": "Reject incomplete migration; every selector occurrence handled",
+      "requirements": [
+        "K01",
+        "K08"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t75",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T76",
+      "area": "migration",
+      "case": "Classification changed by broad prefix rule",
+      "expected": "Reject; exact paths and old rule preservation required",
+      "requirements": [
+        "K08",
+        "W11"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t76",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T77",
+      "area": "migration",
+      "case": "Parent replay labeled current child acceptance",
+      "expected": "Reject source-scope substitution",
+      "requirements": [
+        "K01",
+        "K05",
+        "W09"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t77",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T78",
+      "area": "D01-D05",
+      "case": "Treat D04 output packet as the literal required input of D05",
+      "expected": "Report input mismatch or require explicit extraction/transport; direct calibration uses D02->D05",
+      "requirements": [
+        "K02",
+        "W05"
+      ],
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t78",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T79",
+      "area": "D01-D05",
+      "case": "Join two existential Ke/Ko variables by matching labels",
+      "expected": "Require proof of least-cutoff equality and dependent transport",
+      "requirements": [
+        "K02",
+        "O02"
+      ],
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t79",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T80",
+      "area": "application",
+      "case": "Nonempty proof exported as a computed vector without extraction bridge",
+      "expected": "Retain symbolic scope; numerical witness claim not accepted",
+      "requirements": [
+        "K02",
+        "W05"
+      ],
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t80",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T81",
+      "area": "FFBBP",
+      "case": "Empty required-gate inventory",
+      "expected": "Reject before checking submitted rows",
+      "requirements": [
+        "K03",
+        "F03"
+      ],
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t81",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T82",
+      "area": "FFBBP",
+      "case": "All supplied gate rows PASS but one independently required ID absent",
+      "expected": "Reject missing required evidence",
+      "requirements": [
+        "K03",
+        "F03"
+      ],
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "method": "test_t82",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T83",
+      "area": "OoL",
+      "case": "Same interface ID appears twice with successful flags",
+      "expected": "Reject duplicate interface ID",
+      "requirements": [
+        "K03",
+        "O02"
+      ],
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ool.py",
+      "method": "test_t83",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T84",
+      "area": "OoL",
+      "case": "Observed DISCOVERY phase presented against frozen confirmatory phase",
+      "expected": "Reject phase mismatch",
+      "requirements": [
+        "K03",
+        "O04"
+      ],
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_ool.py",
+      "method": "test_t84",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T85",
+      "area": "source",
+      "case": "Whole tree digest committed into a product contributing to that tree",
+      "expected": "Reject descriptor/product self-reference; external execution binding",
+      "requirements": [
+        "K04",
+        "W07"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t85",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T86",
+      "area": "source",
+      "case": "Different run IDs change otherwise identical semantic export",
+      "expected": "Semantic bytes stable; run receipt stays separate",
+      "requirements": [
+        "K04",
+        "W07"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t86",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T87",
+      "area": "release",
+      "case": "External provider legitimately has another commit/toolchain",
+      "expected": "Accept only declared provider scope; never transplant host theorem authority",
+      "requirements": [
+        "K05",
+        "P03"
+      ],
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t87",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T88",
+      "area": "release",
+      "case": "Different GitHub run attempt reuses same-named artifact",
+      "expected": "Reject stale run-attempt evidence",
+      "requirements": [
+        "K05",
+        "W09"
+      ],
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t88",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T89",
+      "area": "journal",
+      "case": "Verifier finishes just before source invalidation commits",
+      "expected": "Final compare-and-swap rejects stale publication",
+      "requirements": [
+        "K06",
+        "O05"
+      ],
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_journal.py",
+      "method": "test_t89",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T90",
+      "area": "journal",
+      "case": "Repeated old generation digest reactivated after correction",
+      "expected": "Reject reuse; explicit new generation required",
+      "requirements": [
+        "K06",
+        "O05"
+      ],
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_journal.py",
+      "method": "test_t90",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T91",
+      "area": "application",
+      "case": "Proposer references evaluator answer theorem",
+      "expected": "Reject forbidden constant even though target would compile",
+      "requirements": [
+        "K07",
+        "W04"
+      ],
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t91",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T92",
+      "area": "application",
+      "case": "Raw tactic/import/run_cmd supplied through JSON term plan",
+      "expected": "Reject at grammar and sandbox boundaries",
+      "requirements": [
+        "K07",
+        "W08"
+      ],
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t92",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T93",
+      "area": "qualification",
+      "case": "Lossy reduction includes hidden expected outcome in its key",
+      "expected": "Reject benchmark leakage; no composition capability inferred",
+      "requirements": [
+        "K07",
+        "F07"
+      ],
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_end_to_end.py",
+      "method": "test_t93",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T94",
+      "area": "release",
+      "case": "Inherited exact-class assertion removed instead of updated precisely",
+      "expected": "Reject compatibility regression",
+      "requirements": [
+        "K08",
+        "W11"
+      ],
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t94",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T95",
+      "area": "application",
+      "case": "Application type mismatch displayed as mathematical countermodel",
+      "expected": "Reject stronger disposition; retain attempted-application scope",
+      "requirements": [
+        "K09",
+        "O06"
+      ],
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t95",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T96",
+      "area": "application",
+      "case": "Zero-premise theorem is rejected merely because authorized context is empty",
+      "expected": "Permit empty mathematical context; still require nonempty source/verification gate inventory",
+      "requirements": [
+        "K09",
+        "O03"
+      ],
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t96",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T97",
+      "area": "release",
+      "case": "Lean not installed but native test marks skip/success",
+      "expected": "Required native lane fails; kit/reference evidence remains separate",
+      "requirements": [
+        "K10",
+        "W09"
+      ],
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t97",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T98",
+      "area": "release",
+      "case": "Uncompiled .lean.in source called proved",
+      "expected": "Reject authority promotion",
+      "requirements": [
+        "K10",
+        "W12"
+      ],
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t98",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T99",
+      "area": "integration",
+      "case": "Three summaries of one compiler run count as three independent sources",
+      "expected": "Keep one origin and distinct checker roles",
+      "requirements": [
+        "K05",
+        "F06"
+      ],
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_end_to_end.py",
+      "method": "test_t99",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T100",
+      "area": "release",
+      "case": "All17 semantic-overlay rows coerced into positive test targets",
+      "expected": "Reject; invalid/open/not-applicable dispositions preserved",
+      "requirements": [
+        "K02",
+        "W10"
+      ],
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t100",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T101",
+      "area": "Permansson",
+      "case": "Admissible finite menu empty",
+      "expected": "Return kind=STOP, reason=EMPTY_ELIGIBLE_MENU without fabricated optimum or forced action; not a bare action-name sentinel",
+      "requirements": [
+        "K09",
+        "P04"
+      ],
+      "lane": "PROVIDER_SELECTED",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t101",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T102",
+      "area": "Permansson",
+      "case": "Heuristic selector presented as verified rational policy optimum",
+      "expected": "Reject capability upgrade unless actual model/consumer qualification supplied",
+      "requirements": [
+        "K10",
+        "P01",
+        "P04"
+      ],
+      "lane": "PROVIDER_SELECTED",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t102",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T103",
+      "area": "migration",
+      "case": "Protected source/checker policy changes during attempt",
+      "expected": "Invalidate source identity; never patch evidence to match",
+      "requirements": [
+        "K01",
+        "W01"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t103",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T104",
+      "area": "contracts",
+      "case": "Prose/profile lane ID differs from canonical PARENT_REGRESSION",
+      "expected": "Reject before scheduling; no alias accepted",
+      "requirements": [
+        "K01",
+        "W09"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_contracts.py",
+      "method": "test_t104",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T105",
+      "area": "acceptance",
+      "case": "Composition aggregate asks for its own result or omits CONTRACT",
+      "expected": "Reject cyclic/incomplete inputs; nine upstream artifacts and separate ACCEPTANCE output",
+      "requirements": [
+        "K03",
+        "W09"
+      ],
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t105",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T106",
+      "area": "Permansson",
+      "case": "Legal action ID STOP is selected",
+      "expected": "Return kind=SELECT, action_id=STOP; distinguish empty/infeasible menu STOP",
+      "requirements": [
+        "P04",
+        "K09"
+      ],
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t106",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T107",
+      "area": "Permansson",
+      "case": "One eligible action is omitted from proposal menu",
+      "expected": "Reject incomplete enumeration; do not emit empty-menu STOP",
+      "requirements": [
+        "P04",
+        "P05"
+      ],
+      "lane": "FRAMEWORK_ADAPTERS",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t107",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T108",
+      "area": "Permansson",
+      "case": "Candidate forges or resets attempt history",
+      "expected": "Use journal-authenticated dispatch counts only; mismatched inventory/revision rejects",
+      "requirements": [
+        "P04",
+        "K06"
+      ],
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "method": "test_t108",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T109",
+      "area": "contracts",
+      "case": "Digest has final LF, CR, space or wrong length in any hash field",
+      "expected": "Schema and runtime both reject at every digest position",
+      "requirements": [
+        "W02",
+        "K04"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_contracts.py",
+      "method": "test_t109",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T110",
+      "area": "contracts",
+      "case": "Logical path contains Win32 reserved stem, trailing dot/space or short-name alias",
+      "expected": "Reject before native mapping without trimming or renaming",
+      "requirements": [
+        "W02",
+        "W08"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_contracts.py",
+      "method": "test_t110",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T111",
+      "area": "contracts",
+      "case": "File inventory has case-folded leaf/prefix alias or file/directory overlap",
+      "expected": "Reject complete inventory before filesystem writes",
+      "requirements": [
+        "W02",
+        "W08"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_contracts.py",
+      "method": "test_t111",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T112",
+      "area": "mathematics",
+      "case": "D05 packet with unit e and nonzero nonunit w is treated as invalid",
+      "expected": "Accept original scope; no unit-w premise added",
+      "requirements": [
+        "K02",
+        "F04",
+        "W05"
+      ],
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t112",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T113",
+      "area": "mathematics",
+      "case": "Rescaled w is inserted into unchanged Schur realization or resonant energy -1",
+      "expected": "Require separate checked scaling/view transport; do not forge original packet",
+      "requirements": [
+        "K02",
+        "F04"
+      ],
+      "lane": "SEMANTIC_NEGATIVES",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t113",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T114",
+      "area": "migration",
+      "case": "Kit attempts repository implementation before accepted-parent reanchor",
+      "expected": "Require new descendant PR and verified merge/tree/evidence comparison; reference head alone insufficient",
+      "requirements": [
+        "K01",
+        "W01",
+        "W11"
+      ],
+      "lane": "CONTRACT",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "method": "test_t114",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T115",
+      "area": "acceptance",
+      "case": "Round3 four-job success is substituted for ten-lane composition qualification",
+      "expected": "Keep aggregates separate; require every fresh current-child scope",
+      "requirements": [
+        "W09",
+        "K03"
+      ],
+      "lane": "ACCEPTANCE",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "method": "test_t115",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T116",
+      "area": "native_execution",
+      "case": "Optional calibration stops without completed compiler protocol",
+      "expected": "Report unresolved/unqualified; not pass or semantic rejection",
+      "requirements": [
+        "W04",
+        "W05",
+        "K10"
+      ],
+      "lane": "COMPOSITION_FORMAL",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "method": "test_t116",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    },
+    {
+      "id": "T117",
+      "area": "Permansson",
+      "case": "Menu, budget or history revision changes after selection and before dispatch",
+      "expected": "Reject stale selection; rederive same-generation menu/history with atomic attempt start",
+      "requirements": [
+        "P04",
+        "O05",
+        "K06"
+      ],
+      "lane": "REPLAY_CAMPAIGN",
+      "test_file": "research/RHRC/integration/opica_composition/tests/test_end_to_end.py",
+      "method": "test_t117",
+      "execution_status": "REQUIRES_REPOSITORY_IMPLEMENTATION_AND_EXECUTION"
+    }
+  ],
+  "implemented_methods": [
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_raw_file_mutation_rejected",
+      "case": null,
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t100",
+      "case": "T100",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t105",
+      "case": "T105",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t115",
+      "case": "T115",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t64",
+      "case": "T64",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t65",
+      "case": "T65",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t66",
+      "case": "T66",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t67",
+      "case": "T67",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t68",
+      "case": "T68",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t69",
+      "case": "T69",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t70",
+      "case": "T70",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t71",
+      "case": "T71",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t72",
+      "case": "T72",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t87",
+      "case": "T87",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t88",
+      "case": "T88",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t94",
+      "case": "T94",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t97",
+      "case": "T97",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t98",
+      "case": "T98",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_applications.ApplicationTests.test_empty_current_journal_exports_no_mathematical_edges",
+      "case": null,
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_applications.ApplicationTests.test_forged_verified_flag_is_not_a_proof",
+      "case": null,
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_applications.ApplicationTests.test_shared_source_edge_is_not_implication",
+      "case": null,
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_applications.ApplicationTests.test_unpublished_application_rejected",
+      "case": null,
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_all_thirteen_work_packages_remain_explicit",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_every_lane_uses_its_own_source_identity",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_original_acceptance_census_has_every_numbered_method_once",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_real_support_runner_yields_all_forty_nine_tests_in_both_modes",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_source_report_mismatch_stops_before_any_heavy_checker",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_support_receipt_rejects_empty_skipped_or_wrong_mode_wrappers",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_closure.ClosureTests.test_cycles_rejected",
+      "case": null,
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_closure.ClosureTests.test_one_route_suffices_but_all_its_premises_required",
+      "case": null,
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_closure.ClosureTests.test_open_field_does_not_supply_a_proof",
+      "case": null,
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_contracts.ContractCases.test_closed_mutable_fields",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_contracts.ContractCases.test_t104",
+      "case": "T104",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_contracts.ContractCases.test_t109",
+      "case": "T109",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_contracts.ContractCases.test_t110",
+      "case": "T110",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_contracts.ContractCases.test_t111",
+      "case": "T111",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_countermodels.CountermodelTests.test_exact_rankone_controls_are_source_scoped",
+      "case": null,
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_countermodels.CountermodelTests.test_resonant_cost_preserves_nonunit_w",
+      "case": null,
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t01",
+      "case": "T01",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t02",
+      "case": "T02",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t03",
+      "case": "T03",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t04",
+      "case": "T04",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t103",
+      "case": "T103",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t114",
+      "case": "T114",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t74",
+      "case": "T74",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t75",
+      "case": "T75",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t76",
+      "case": "T76",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t77",
+      "case": "T77",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t85",
+      "case": "T85",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t86",
+      "case": "T86",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_end_to_end.EndToEndTests.test_t117",
+      "case": "T117",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_end_to_end.EndToEndTests.test_t62",
+      "case": "T62",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_end_to_end.EndToEndTests.test_t63",
+      "case": "T63",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_end_to_end.EndToEndTests.test_t73",
+      "case": "T73",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_end_to_end.EndToEndTests.test_t93",
+      "case": "T93",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_end_to_end.EndToEndTests.test_t99",
+      "case": "T99",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t113",
+      "case": "T113",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t21",
+      "case": "T21",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t22",
+      "case": "T22",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t23",
+      "case": "T23",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t24",
+      "case": "T24",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t25",
+      "case": "T25",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t26",
+      "case": "T26",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t27",
+      "case": "T27",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t28",
+      "case": "T28",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t29",
+      "case": "T29",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t30",
+      "case": "T30",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t78",
+      "case": "T78",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t79",
+      "case": "T79",
+      "lane": "SEMANTIC_NEGATIVES",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t09",
+      "case": "T09",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t10",
+      "case": "T10",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t11",
+      "case": "T11",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t112",
+      "case": "T112",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t116",
+      "case": "T116",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t12",
+      "case": "T12",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t13",
+      "case": "T13",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t14",
+      "case": "T14",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t15",
+      "case": "T15",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t16",
+      "case": "T16",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t17",
+      "case": "T17",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t18",
+      "case": "T18",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t19",
+      "case": "T19",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t20",
+      "case": "T20",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t80",
+      "case": "T80",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t91",
+      "case": "T91",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t92",
+      "case": "T92",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t95",
+      "case": "T95",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_executor.NativeExecutorCases.test_t96",
+      "case": "T96",
+      "lane": "COMPOSITION_FORMAL",
+      "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_complete_positive_and_replay_rejection",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_native_nonunit_witness_is_legal",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_reduction_gold_leakage",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t31",
+      "case": "T31",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t32",
+      "case": "T32",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t33",
+      "case": "T33",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t34",
+      "case": "T34",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t35",
+      "case": "T35",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t36",
+      "case": "T36",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t37",
+      "case": "T37",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t38",
+      "case": "T38",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t39",
+      "case": "T39",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t40",
+      "case": "T40",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t41",
+      "case": "T41",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t42",
+      "case": "T42",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t43",
+      "case": "T43",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t44",
+      "case": "T44",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t81",
+      "case": "T81",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ffbbp.AssuranceTests.test_t82",
+      "case": "T82",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_harvest.HarvestTests.test_green_falsifier_preserves_negative_result",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_harvest.HarvestTests.test_green_wrapper_without_artifacts_needs_review",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_harvest.HarvestTests.test_invalid_head_rejected",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_harvest.HarvestTests.test_paginates_past_one_hundred",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_harvest.HarvestTests.test_running_job_cannot_be_complete",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_inventory.InventoryCases.test_t05",
+      "case": "T05",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_inventory.InventoryCases.test_t06",
+      "case": "T06",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_inventory.InventoryCases.test_t07",
+      "case": "T07",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_inventory.InventoryCases.test_t08",
+      "case": "T08",
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_cas_failure_is_atomic",
+      "case": null,
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_dispatch_is_durable_and_fair",
+      "case": null,
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_forged_count_projection_fails_restart",
+      "case": null,
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_nonproof_status_cannot_publish",
+      "case": null,
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_t51",
+      "case": "T51",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_t52",
+      "case": "T52",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_t53",
+      "case": "T53",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_t54",
+      "case": "T54",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_t89",
+      "case": "T89",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_journal.JournalTests.test_t90",
+      "case": "T90",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_cyclic_proof_rejected",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_positive_complete_route",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_t45",
+      "case": "T45",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_t46",
+      "case": "T46",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_t47",
+      "case": "T47",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_t48",
+      "case": "T48",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_t49",
+      "case": "T49",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_t50",
+      "case": "T50",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_t83",
+      "case": "T83",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_t84",
+      "case": "T84",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_ool.RouteTests.test_transport_needs_checked_receipt",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_current_compatibility_retains_exact_frozen_population",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_native_preparation_requires_linux_before_creating_outputs",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_recorded_producer_root_is_metadata_not_artifact_location",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_selected_audit_rejects_metadata_only_and_unapproved_axioms",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t101",
+      "case": "T101",
+      "lane": "PROVIDER_SELECTED",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t102",
+      "case": "T102",
+      "lane": "PROVIDER_SELECTED",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t106",
+      "case": "T106",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t107",
+      "case": "T107",
+      "lane": "FRAMEWORK_ADAPTERS",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t108",
+      "case": "T108",
+      "lane": "REPLAY_CAMPAIGN",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t55",
+      "case": "T55",
+      "lane": "PROVIDER_SELECTED",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t56",
+      "case": "T56",
+      "lane": "PROVIDER_SELECTED",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t57",
+      "case": "T57",
+      "lane": "PROVIDER_SELECTED",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t58",
+      "case": "T58",
+      "lane": "PROVIDER_SELECTED",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t59",
+      "case": "T59",
+      "lane": "PROVIDER_SELECTED",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t60",
+      "case": "T60",
+      "lane": "PROVIDER_SELECTED",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_permansson.PermanssonTests.test_t61",
+      "case": "T61",
+      "lane": "PROVIDER_SELECTED",
+      "native": false
+    }
+  ],
+  "migrations": [
+    {
+      "case": "T64",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t64",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T65",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t65",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T66",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t66",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T67",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t67",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T68",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t68",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T69",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t69",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T70",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t70",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T71",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t71",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T72",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t72",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T87",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t87",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T88",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t88",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T94",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t94",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T97",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t97",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T98",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t98",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T100",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t100",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T105",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t105",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T113",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_evidence.NativeEvidenceCases.test_t113",
+      "reason": "Reviewed method placement; original case meaning retained"
+    },
+    {
+      "case": "T115",
+      "original_file": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "actual_method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_t115",
+      "reason": "Reviewed method placement; original case meaning retained"
+    }
+  ],
+  "additional_lanes": [
+    "MATHEMATICAL_SUPPORT",
+    "SOURCE_NUMERICS"
+  ],
+  "execution_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

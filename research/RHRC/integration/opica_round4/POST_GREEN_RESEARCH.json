@@ -1,0 +1,101 @@
+{
+  "schema": "OPICA4_MATH_POST_GREEN_RESEARCH_V1",
+  "authority": "ISOLATED_WARM_NATIVE_FORMAL_SUPPORT_CONSUMER_AND_AXIOM_SWEEP_PASSED",
+  "what_became_formally_true": [
+    "The actual D05 regular/resonant witness carries its full physical norm cost before bounding the actual bottom.",
+    "A genuine negative ground eigenmode can be selected at the same L,K without identifying it with the Schur witness.",
+    "The common-cutoff source selection retains the shared-negative-ground alternative.",
+    "The corrected uncompressed source row includes the removed canonical output, cancels the pole action on actual neutral inputs and exposes every von-Mangoldt prime power.",
+    "Both source-test endpoints vanish and differentiation pays the exact -1/L aperture factor for the same arithmetic-dependent input.",
+    "PSD codimension-one predecessors plus a genuinely negative successor give exact negative index one in the invariant subspace formulation.",
+    "Trace and metric identities retain the nonunitary transport and the distinct odd orientation.",
+    "The improved one-sided Hermitian resolvent estimate is instantiated on both actual parity orientations, with D^-1-adjoint f versus D^-1 g and the reversed odd trace displacement; no arithmetic smallness is supplied."
+  ],
+  "workflow_harvest": [
+    {
+      "kind": "FORMAL VALIDITY GATE",
+      "scope": "Isolated native Windows Lean elaboration with authenticated read-only warm dependencies",
+      "disposition": "PASS:16 exact-source modules,98 complete types and allowed transitive-axiom records; warm native dependencies remain read-only. Full cold/CI/release authority is not claimed."
+    },
+    {
+      "kind": "RESEARCH-PRODUCING CHECK",
+      "scope": "Four exact rational synthetic controls",
+      "disposition": "PASS controls preserving FALSIFIED source-blind selection, positivity and automatic signed-response-monotonicity inferences. They are not native zeta counterexamples."
+    },
+    {
+      "kind": "FORMAL VALIDITY GATE",
+      "scope": "Independent expected-type consumers and four rejected semantic mutations",
+      "disposition": "PASS: independently restated consumers and4 exact intended semantic type mismatches; all failures and superseded attempts retained in ATTEMPT_HARVEST.json."
+    }
+  ],
+  "what_changed": [
+    "The original five-file corrected overlay is preserved and extended with actual native state adapters.",
+    "Complete source identity, physical absolute energy and relative transport are separate typed results.",
+    "The G-chain audit found existing G02 and ambient analytic support; it did not install the missing all-K nonidentity/selection premises.",
+    "Finite signed response calculus retains cancellation and endpoint terms instead of assuming positive residues."
+  ],
+  "upstream_implications": [
+    {
+      "label": "PROVED_DEFINITIONAL_FACT",
+      "claim": "The explicit corrected row h is geometric in L,K and the pole normals; its definition contains no prime weights. The arithmetic dependence of the source test remains in the actual resolvent-selected input."
+    },
+    {
+      "label": "DERIVED_NOT_SEPARATELY_FORMALIZED",
+      "claim": "By source Hermitian symmetry and row representation, the corrected source Riesz vector is the neutral projection of M*h. This may compress source-norm budgeting into one canonical off-diagonal coupling calculation."
+    },
+    {
+      "label": "LEAD",
+      "claim": "Use the row's orthogonal geometric components to obtain exact norm formulas before adding crude source estimates. This does not supply arithmetic smallness."
+    }
+  ],
+  "downstream_implications": [
+    "The exact same-state physical quotient can now feed the retained selected-ground interfaces without losing witness normalization.",
+    "An independent source response bound must be compared with the correct opposite gap at the same L,K and spectral parameter.",
+    "Full complex-residue reality is not needed merely to bound the real response: cross-coefficient real parts and Hermitian resolvent coordinates suffice. The complete S01 grouped-measure contract remains open in its own scope."
+  ],
+  "resurrected_routes": [
+    {
+      "route": "D-direct source exclusion",
+      "disposition": "Still active. Genuine ground selection and source arithmetic adapters are now available without assuming generic cells."
+    },
+    {
+      "route": "D-regular cell selection",
+      "disposition": "Now reduced to explicit fixed-carrier, asymptotic, all-K separation, nonidentity and exceptional-set leaves; not yet a theorem."
+    },
+    {
+      "route": "A/B/C alternatives",
+      "disposition": "Preserved. None of the new normalized ground costs supplies complete observation, zero dictionary residual or original-detector forcing."
+    }
+  ],
+  "new_RH_relevant_clues": [
+    {
+      "label": "LEAD",
+      "claim": "Attack the actual arithmetic-dependent pairing E(exp y)*(F'(y)-F(y)/2) while retaining resolvent gap and row norm, instead of treating F as an externally fixed test."
+    },
+    {
+      "label": "LEAD",
+      "claim": "A source-specific nonidentity anchor could remove shared and resonant configurations on a selected interval, but constant analytic rank-one families show that transport and first-birth structure alone cannot do so."
+    }
+  ],
+  "falsification_checks": [
+    "Common scalar shifts preserve relative transport while changing the absolute zero level.",
+    "Constant analytic nonzero rank-one examples preserve PSD one-shell predecessors and a shared source-invisible negative ground on every interval.",
+    "Negative energy -1 is not unit-vector depth; all response and kernel-projection norm terms remain.",
+    "Mixed signed residues can have a negative response derivative below the entire opposite spectrum.",
+    "The frozen-Q family equals the real growing-cutoff source only on the declared actual prime cell.",
+    "No finite controls or point certificates become eventual, cofinal or all-K conclusions."
+  ],
+  "highest_leverage_next_moves": [
+    "Formalize the fixed seed-to-physical diagonal equivalences and retain their nontrivial Gram metrics.",
+    "Prove fixed-Q,K complete-source asymptotics and the all-K Jacobi cyclicity/separation anchor needed for nonidentity.",
+    "Complete the log-coordinate Stieltjes identity on the same resolvent-selected test, then seek a genuinely independent joint arithmetic estimate.",
+    "Test candidate smallness budgets against existing difficult actual-source and modified-prime controls before building any closing consumer around them."
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "production_runner": {
+    "path": "research/RHRC/integration/opica_round4/math_gate.py",
+    "parser_status": "PASS",
+    "Linux_native_CI_run": "PENDING_CALLER_WORKER"
+  }
+}

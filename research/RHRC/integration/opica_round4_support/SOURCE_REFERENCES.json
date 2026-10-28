@@ -1,0 +1,67 @@
+{
+  "schema": "OPICA4_SUPPORT_SOURCE_REFS_V2",
+  "repository": "HMarcusWH/zeta-23-lean",
+  "head": "8109728135135a58eb98920180e03f77439c1da4",
+  "tree": "5442650eb749576e4a82e2d57460a4b97e19b5a9",
+  "accepted_merge": null,
+  "kit_sha256": "e5c3c2808b929d0bb2120b806a278ca5c43fa7a64958f41707022c220660f11a",
+  "reference_snapshot_sha256": "52962e4259e6e8ea8acee0c7234aa5c163be8288595a0a2ea48224eb107b2c63",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "source_blobs": [
+    {
+      "path": "Zeta23/OPICARound3/SchurNegativeWitness.lean",
+      "blob": "7847c11479a999156fb6168574829b68b664a6bb",
+      "sha256": "7f4ab60a44f55510665f643034ba42faafab0fcaac09afc691f8fe8008096a4b"
+    },
+    {
+      "path": "Zeta23/OPICARound3/KernelSafeSchur.lean",
+      "blob": "47a922e36cca517f9854b5539fb793b75d3ecc7d",
+      "sha256": "d3555b704953a4392fc31e33dae3882f9a6c8c05071c197e2d1d087556f98fec"
+    },
+    {
+      "path": "Zeta23/CCM/IsometricDetectorSchur.lean",
+      "blob": "96b4d508d9866ce2b6c9017af6c7c04a84935a1c",
+      "sha256": "e60b5643c626bfec5027d3d3a0f4721e202287eb3c128bca2b213d9ec1f77875"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPoleNeutralShiftedSecular.lean",
+      "blob": "b164425ac709fa9d119c6e7e54c5d9a2be51842c",
+      "sha256": "f210682858a328216e916fd9a103dfa62dc2e790029dd3ef4e5fb11c8111353f"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSecularResolvent.lean",
+      "blob": "4f7ad32df70667a9e2a22e7989d740368276c54f",
+      "sha256": "b139d16ce7870e0a0f40e801ee619d4b42a69b1db3a26580d6b10b81b837b800"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPoleNeutralNormals.lean",
+      "blob": "3ad9d6b42ac96d55a93f86cac448ffb37246d7bf",
+      "sha256": "6ba64dc7ae340d2286d55d92a342fc180607a2cd7f79261418c0646650b2d289"
+    },
+    {
+      "path": "Zeta23/OPICARound3/NewbornSource.lean",
+      "blob": "df7e3d6f9281f63cd35c585329a5c9ec277eca47",
+      "sha256": "551e814e37e2346246479ac225e1de309a67919e861c9ef36da34d7b20b7ac85"
+    },
+    {
+      "path": "AGENTS.md",
+      "blob": "aa1b4c9c84f3c7f32ccd59dbb9bd620afbf6d815",
+      "sha256": "f978c4d1b221647ff836840e5af81adabb5690fc87cc4067ff1678f0f6995097"
+    },
+    {
+      "path": "lean-toolchain",
+      "blob": "c084c7fbe586b0276863b66f16d2955a43bc3fc6",
+      "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6"
+    },
+    {
+      "path": "lake-manifest.json",
+      "blob": "af9ef405e4e292f2e0176b12b6cb66f547575314",
+      "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448"
+    }
+  ],
+  "verified_scope": "ARCHIVE_SOURCE_BYTES_MATCH_INSPECTED_SNAPSHOT_ONLY",
+  "current_lean_compilation": "NOT_EXECUTED",
+  "current_child_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

@@ -1,0 +1,148 @@
+{
+  "schema": "OPICA4_SOURCE_CLOSURE_OBLIGATIONS_V1",
+  "registration_authority": "RESEARCH_GRAPH_ONLY",
+  "nodes": [
+    {
+      "id": "D_JOINT_RAY_BUDGET",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+      "proposition": "Uniform actual even/odd resolvent-test arithmetic budget below one, with moving-test norms and source/limit exchanges justified",
+      "quantifiers": [
+        "EXACT_TYPED_CONTRACT_REQUIRED"
+      ],
+      "consumers": [],
+      "next_test": "Source-specific proof or falsifying control before promotion"
+    },
+    {
+      "id": "D_REGULAR_CELL_SELECTION",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+      "proposition": "Actual source nonidentity, separated spectra, and common regular interval selection; retain shared negative grounds",
+      "quantifiers": [
+        "EXACT_TYPED_CONTRACT_REQUIRED"
+      ],
+      "consumers": [],
+      "next_test": "Source-specific proof or falsifying control before promotion"
+    },
+    {
+      "id": "D_SINGULAR_ALTERNATIVE",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+      "proposition": "Actual singular predecessor and zero/shared-ground alternative",
+      "quantifiers": [
+        "EXACT_TYPED_CONTRACT_REQUIRED"
+      ],
+      "consumers": [],
+      "next_test": "Source-specific proof or falsifying control before promotion"
+    },
+    {
+      "id": "D_DIRECT",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+      "proposition": "Independent eventual no-simultaneous-negativity without spectral genericity",
+      "quantifiers": [
+        "EXACT_TYPED_CONTRACT_REQUIRED"
+      ],
+      "consumers": [],
+      "next_test": "Source-specific proof or falsifying control before promotion"
+    },
+    {
+      "id": "B_CAUSAL",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+      "proposition": "Actual source-preserving causal Gram residual tends to zero",
+      "quantifiers": [
+        "EXACT_TYPED_CONTRACT_REQUIRED"
+      ],
+      "consumers": [],
+      "next_test": "Source-specific proof or falsifying control before promotion"
+    },
+    {
+      "id": "A_SIGNED_OBSERVATION",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+      "proposition": "Complete signed observation estimate including all cross terms and recovery budgets",
+      "quantifiers": [
+        "EXACT_TYPED_CONTRACT_REQUIRED"
+      ],
+      "consumers": [],
+      "next_test": "Source-specific proof or falsifying control before promotion"
+    },
+    {
+      "id": "C_DIRECT_COMPLEMENT",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+      "proposition": "Actual original detector forcing/complement upper bound beating the off-line lower exponent",
+      "quantifiers": [
+        "EXACT_TYPED_CONTRACT_REQUIRED"
+      ],
+      "consumers": [],
+      "next_test": "Source-specific proof or falsifying control before promotion"
+    },
+    {
+      "id": "D_RAY_ROUTE",
+      "kind": "AND",
+      "children": [
+        "D_JOINT_RAY_BUDGET",
+        "D_REGULAR_CELL_SELECTION",
+        "D_SINGULAR_ALTERNATIVE"
+      ]
+    },
+    {
+      "id": "STEP4_ALTERNATIVES",
+      "kind": "OR",
+      "children": [
+        "D_RAY_ROUTE",
+        "D_DIRECT",
+        "B_CAUSAL",
+        "A_SIGNED_OBSERVATION",
+        "C_DIRECT_COMPLEMENT"
+      ]
+    }
+  ],
+  "terminal": "STEP4_ALTERNATIVES",
+  "existing_open_research": [
+    {
+      "id": "R3-XD",
+      "status": "OPEN",
+      "target": "Independent eventual no-simultaneous-negativity restriction for the actual complete source; not assumed or proved in Phase1."
+    },
+    {
+      "id": "R3-B",
+      "status": "OPEN",
+      "target": "Actual source-preserving causal approximation Gram residual tends to zero."
+    },
+    {
+      "id": "R3-A",
+      "status": "OPEN",
+      "target": "Complete signed observation bound with all cross terms, collision masks and recovery budgets."
+    },
+    {
+      "id": "R3-C",
+      "status": "OPEN",
+      "target": "Complete original-detector forcing/direct-complement upper bound beating the off-line lower exponent."
+    },
+    {
+      "id": "R3-D06",
+      "status": "OPEN",
+      "target": "Independent retained pair radius bound; exact rational falsification before source theorem."
+    }
+  ],
+  "metadata_can_discharge_leaf": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

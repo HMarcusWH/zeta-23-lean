@@ -1,0 +1,138 @@
+{
+  "schema": "OPICA4_REGULAR_CELL_PROOF_AUDIT_V1",
+  "status": "OPEN_SOURCE_FAITHFUL_GENERICITY_NOT_ASSUMED",
+  "head": "fe16565b2a31fb8b68bef916ae8f04d535880e7a",
+  "tree": "5442650eb749576e4a82e2d57460a4b97e19b5a9",
+  "evidence_precedence": "Exact source and compiler; historical packet derivations are hypotheses until consumed.",
+  "proof_chain": [
+    {
+      "id": "G01",
+      "status": "OPEN",
+      "exact_leaf": "For every L>0 and K, the invertible diagonal multiplication a+n^2, a=(L/(4*pi))^2, identifies the fixed even seed M0=M2=M4=0 and fixed odd seed M1=M3=0 with the actual moving physical pole-neutral spaces. The induced Gram metrics must be retained.",
+      "known": "Native pole-neutral carriers, dimensions and nonunitary D equivalence are proved.",
+      "missing": "Explicit fixed-seed diagonal equivalences and their metric identification; no isometry may be inferred.",
+      "next_test": "Prove both diagonal directions on raw centered moments before transporting source matrices."
+    },
+    {
+      "id": "G02",
+      "status": "EXISTING_PROVED_REUSE",
+      "declaration": "Zeta23.CCM.frozenCanonicalSourceMatrix_eq_canonicalSourceMatrix_fixedCell",
+      "source": "Zeta23/CCM/FrozenCanonicalSourceAnalytic.lean",
+      "exact_domain": "Q>=1 and log Q<L<log(Q+1)",
+      "boundary": "Equality to native source is restricted to that physical cell; fixed-Q continuation outside it is auxiliary."
+    },
+    {
+      "id": "G03",
+      "status": "PARTIAL_EXISTING_PROVED_REUSE",
+      "declarations": [
+        "Zeta23.CCM.analyticOnNhd_complexFrozenCanonicalSourceRemainder_apply_sourceDomain",
+        "Zeta23.CCM.continuousOn_canonicalSourceMatrix_apply_fixedCell"
+      ],
+      "missing": "Composition with the still-missing G01 fixed carriers and exact positive Gram metrics. Entrywise ambient holomorphy does not identify moving physical eigenvalues by itself."
+    },
+    {
+      "id": "G04",
+      "status": "OPEN",
+      "exact_leaf": "At each fixed K,Q prove the neutral compressed energy/metric expansion -c_Q I+kappa_Q X/L^2+O(L^-3) with positive constants in justified fixed coordinates.",
+      "known": "Exact neutral pole cancellation is proved. Ambient frozen -log L scalar decomposition is proved.",
+      "missing": "Complete Archimedean and finite-prime large-aperture remainders and their compression through the exact Gram metrics.",
+      "next_test": "Derive the fixed-Q diagonal and off-diagonal coefficients analytically and compare low-dimensional exact leading matrices. Never label fixed-Q limits as native growing-cutoff asymptotics."
+    },
+    {
+      "id": "G05",
+      "status": "OPEN",
+      "exact_leaf": "For every K, the limiting even and odd seed-compression spectra are simple and strictly disjoint via the Jacobi/cyclic rank-one comparison.",
+      "known": "Bounded historical rational checks K=3..7; these are not all-K proofs.",
+      "missing": "All-K Jacobi-tail cyclicity, strict rank-one interlacing and treatment of K=2 empty predecessor.",
+      "next_test": "Prove cyclicity of the exact limiting coordinate vector. The auxiliary polar unitary cannot change the physical D metric."
+    },
+    {
+      "id": "G06",
+      "status": "OPEN",
+      "exact_leaf": "The fixed-cell determinant and mutual spectral-resultant functions are not identically zero in the actual source family.",
+      "missing": "Needs source-faithful G04/G05 or another actual nonvanishing anchor. Ambient analyticity alone is insufficient.",
+      "countermodel": "CM_G06_CONSTANT_SHARED_GROUND",
+      "next_test": "Find an exact source-specific nonvanishing value or rigorous limiting coefficient for every relevant cutoff."
+    },
+    {
+      "id": "G07",
+      "status": "OPEN",
+      "exact_leaf": "Inside each forced negative interval choose an actual prime-cell subinterval avoiding the exceptional sets for all finitely many relevant K<=M.",
+      "missing": "Native nonidentity from G06, local discreteness, finite exceptional union and interval selection with exact quantifiers.",
+      "next_test": "After G06, prove the finite-union selection theorem without a uniform gap/width assertion."
+    },
+    {
+      "id": "G08",
+      "status": "OPEN",
+      "exact_leaf": "Compose D03 negativity persistence and D04/D05 first-cutoff witnesses with G07, preserving all first-cutoff predicates and same common K for paired parity sources.",
+      "known": "Round4 common-cutoff negative-ground alternatives explicitly retain the equal-ground branch; strict branches use their genuine source rays.",
+      "missing": "Cannot remove shared, singular or resonant branches until G07 is proved.",
+      "next_test": "Keep the D-direct branch active while G01/G04/G05/G06 are pursued."
+    }
+  ],
+  "countermodels": [
+    {
+      "id": "CM_G06_CONSTANT_SHARED_GROUND",
+      "authority": "EXACT_RATIONAL_SYNTHETIC_CONTROL_NOT_A_ZETA_COUNTEREXAMPLE",
+      "domain": "constant real-analytic two-dimensional families on any real interval",
+      "A": [
+        [
+          -2,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "B": [
+        [
+          -2,
+          0
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "D": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "g": [
+        0,
+        1
+      ],
+      "f": [
+        0,
+        2
+      ],
+      "rank_one_identity": "B*D-D*A=g*f=[[0,0],[0,2]]",
+      "predecessor": "span e2 has energies 1 and 3, hence PSD and positive definite; shell span e1 has codimension one",
+      "preserves": [
+        "Hermitian A,B",
+        "invertible D",
+        "nonzero g,f",
+        "rank-one intertwining",
+        "real analyticity",
+        "negative successors with PSD codimension-one predecessors",
+        "common negative ground -2"
+      ],
+      "falsifies": "Analyticity plus rank-one transport and first-birth structure imply a subinterval with disjoint spectra or source-visible ground.",
+      "mechanism": "Shared eigenvector e1 is annihilated by f and paired orthogonally to g. The mutual resultant vanishes identically.",
+      "does_not_preserve": [
+        "canonical zeta arithmetic source",
+        "canonical diagonal normalization",
+        "native seed/frozen-source asymptotic conditions"
+      ]
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

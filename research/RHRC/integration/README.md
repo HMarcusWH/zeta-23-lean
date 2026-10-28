@@ -120,3 +120,10 @@ and against the exact #261 21-edge arithmetic frontier.
 A contact means only that an exact declaration survives the declared support
 filter. It is not theorem composition, implication, independence, usefulness,
 or RH evidence. Surviving contacts must return to exact Lean theorem work.
+
+
+OPICA Round 4 adds governed deduction, independently checked source probes and
+new supporting mathematics. See [the Round 4 state](opica_round4/README.md) and
+[the governed runner](opica_composition/README.md). The new aggregate retains
+all historical scopes and requires fresh current-child compatibility.
+RH and Step 4 remain OPEN.

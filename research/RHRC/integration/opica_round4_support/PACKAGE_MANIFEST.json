@@ -1,0 +1,107 @@
+{
+  "files": [
+    {
+      "bytes": 1824,
+      "path": "Zeta23/OPICARound4/NativeRayConsumer.lean",
+      "sha256": "71f7a5833d7397ab74051b4c753c80826a64c684572a3d5c1a42e560cc8a51c8"
+    },
+    {
+      "bytes": 1296,
+      "path": "Zeta23/OPICARound4/ScalarShift.lean",
+      "sha256": "a7b02fa624a07d13aea5580cb7d4be14a919af3f33aa16b4acdd21a2e84781e6"
+    },
+    {
+      "bytes": 5871,
+      "path": "Zeta23/OPICARound4/Validation.lean",
+      "sha256": "d05263556f97176de8e8f696ea6583bdea88b830f1a6338238242a270f97efc4"
+    },
+    {
+      "bytes": 4010,
+      "path": "Zeta23/OPICARound4/WitnessNorms.lean",
+      "sha256": "76515d9dfed585bf28d601462cbab395211178fe60f1d9939d44f66c61ec0506"
+    },
+    {
+      "bytes": 121,
+      "path": "Zeta23/OPICARound4.lean",
+      "sha256": "9f735ef6d8c8afd24949938e262a6239f19288d3f7a22833033dbe4feb9eda40"
+    },
+    {
+      "bytes": 3380,
+      "path": "research/RHRC/integration/opica_round4_support/EXPECTED_TEST_IDS.json",
+      "sha256": "eddd360b0ed46ceac49fc0d0ed119038232d49b9e870b4cdda275ea86065e964"
+    },
+    {
+      "bytes": 998,
+      "path": "research/RHRC/integration/opica_round4_support/OPEN_OBLIGATIONS.json",
+      "sha256": "70811cb310ead7e6f994b2f3f275d8380e15428ce32dc2a6c9e64897b0479bad"
+    },
+    {
+      "bytes": 2070,
+      "path": "research/RHRC/integration/opica_round4_support/PACKAGE_STATUS.json",
+      "sha256": "4f9871ea96568100cfd8e0ef3ebaab2d25fa52f8a42ad1f50ee8430a5c1ab940"
+    },
+    {
+      "bytes": 7086,
+      "path": "research/RHRC/integration/opica_round4_support/README.md",
+      "sha256": "7aea15243ad73a2f2c08a2d3a03e54f0cce4c044947227966f08e4a95c82280f"
+    },
+    {
+      "bytes": 2721,
+      "path": "research/RHRC/integration/opica_round4_support/SOURCE_REFERENCES.json",
+      "sha256": "9c4777fecd12af3e8fd9c01c319e27e3ddc36a821d8c357de9ca3293f94cc08c"
+    },
+    {
+      "bytes": 167,
+      "path": "research/RHRC/integration/opica_round4_support/__init__.py",
+      "sha256": "74cb792af839739ebadc82428b08002b89c2cf224f3e9e42af76ffec7cb625b3"
+    },
+    {
+      "bytes": 2243,
+      "path": "research/RHRC/integration/opica_round4_support/run_python_tests.py",
+      "sha256": "0038a1b2959073fecb5aab75ec0a862a0330019bfe798b5300318b46fc222b84"
+    },
+    {
+      "bytes": 2958,
+      "path": "research/RHRC/integration/opica_round4_support/schedule.py",
+      "sha256": "3b32e78c5b396818cf775d81ceae01ea5b4ee6859349cfe6f01d3f5407099e88"
+    },
+    {
+      "bytes": 2571,
+      "path": "research/RHRC/integration/opica_round4_support/source_context.py",
+      "sha256": "b6db2f39b3f40e7b4fb4a5216dbea8be498fdb699b8670d1b8a13e2b9cb395c7"
+    },
+    {
+      "bytes": 2159,
+      "path": "research/RHRC/integration/opica_round4_support/source_lock.py",
+      "sha256": "016e78f0e453cff1fb821d97c6ce0582744570116e8340b54e272bb71d6e3228"
+    },
+    {
+      "bytes": 2085,
+      "path": "research/RHRC/integration/opica_round4_support/tests/test_context.py",
+      "sha256": "2dcb056af6847272aa87a84312c2ca7cb63e65b3da2d2403de4d3fa8523933fb"
+    },
+    {
+      "bytes": 1662,
+      "path": "research/RHRC/integration/opica_round4_support/tests/test_scheduler.py",
+      "sha256": "6513179cffbfd8a902b4dcd3c884dd5fef9eb5efe076047529d410ed1325b961"
+    },
+    {
+      "bytes": 1885,
+      "path": "research/RHRC/integration/opica_round4_support/tests/test_source_lock.py",
+      "sha256": "b30fafc832cc30675e5a2758e17797d02ebe503fc91881da3a376213954b06fe"
+    },
+    {
+      "bytes": 8307,
+      "path": "research/RHRC/integration/opica_round4_support/tests/test_verifier_guards.py",
+      "sha256": "1f694f9542756217ef278ce65d8fc9b724a994ebbc08c78fbd1f41d1fc68899f"
+    },
+    {
+      "bytes": 17357,
+      "path": "research/RHRC/integration/opica_round4_support/verify_support.py",
+      "sha256": "847d1ef821df2fe966e2d788b1eb3c391aaae1a02817d33db0787dc1f4da9416"
+    }
+  ],
+  "parent_head": "8109728135135a58eb98920180e03f77439c1da4",
+  "schema": "OPICA4_SUPPORT_PACKAGE_MANIFEST_V3",
+  "self_hash_policy": "manifest excluded from its own hash"
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "OPICA4_MATHEMATICAL_SUPPORT_SCOPE_V1",
+  "authority": "CURRENT_SOURCE_NATIVE_CONSUMER_AXIOM_GATES_PASSED_WARM_ONLY",
+  "required_original_roots_unchanged": true,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "contracts": [
+    {
+      "id": "S01",
+      "status": "PARTIAL_SUPPORT_FULL_PROJECTOR_MEASURE_OPEN",
+      "support": "realCrossResidue, diagonal_resolvent_response retain arbitrary signed real parts and repeated spectral entries.",
+      "open_leaf": "Construct grouped native spectral projectors, establish exact complex residue reality from the native intertwining context, and export the grouped signed measure expansion.",
+      "compression": "S05 can bound the real response directly using cross-coefficient real parts, so its proof does not require pretending complex cross residues are automatically real."
+    },
+    {
+      "id": "S02",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "one_shell_negative_index_exact proves existence of a negative line and an upper bound one on every strictly negative subspace, requiring PSD predecessor, one-dimensional physical shell, and an actually negative successor.",
+      "open_leaf": "Export the eigenvalue-list counting formulation and a direct first-cutoff native specialization if that exact API is required. The invariant negative-index formulation is the proved supporting result."
+    },
+    {
+      "id": "S03",
+      "status": "PARTIAL_SUPPORT_GLOBAL_THRESHOLD_INTERVAL_OPEN",
+      "support": "signed_response_hasDerivAt computes the exact signed derivative on the resolvent set. Actual native eigenvalue threshold equality is reused unchanged in both orientations.",
+      "open_leaf": "Any global below/equal/above-one threshold interval theorem needs its precise inertia and spectrum hypotheses. Signed residues do not justify monotonicity.",
+      "countermodel": "EXACT_RATIONAL_CONTROLS:S03_SIGNED_DERIVATIVE"
+    },
+    {
+      "id": "S04",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "rank_one_trace_displacement, rank_one_metric_identity, native_even_trace_displacement and native_odd_trace_displacement retain D, D-adjoint and the reversed odd trace sign."
+    },
+    {
+      "id": "S05",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "hermitian_resolvent_signed_upper and native_even_signed_upper/native_odd_signed_upper prove the improved one-sided norm-and-trace formulas for the actual parity source, with repeated eigenvalues permitted and the genuine nonunitary inverse/adjoint orientations.",
+      "open_leaf": "Independently bound the complete actual-source norm/trace cost strongly enough to contradict source-equals-one below the opposite spectrum. No such arithmetic smallness or eventual bound is assumed or proved."
+    },
+    {
+      "id": "S06",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "Relative intertwining and the corrected orthogonal source row are shift-invariant, while real_scalar_shift_energy changes absolute energy by -c*norm(u)^2. scalar_shift_negative_control supplies the exact synthetic contrast.",
+      "native_anchor": "even_absolute_energy_anchor and odd_absolute_energy_anchor fix energies to the unchanged canonical equation-(4.4) matrix."
+    },
+    {
+      "id": "S07",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "signed_prefix_abel retains the endpoint term. signed_prefix_nonnegative requires nonnegative prefixes, final kernel and the exact decreasing-kernel order.",
+      "open_leaf": "Native arithmetic residues must independently satisfy the prefix hypotheses before a source-specific comparison can be claimed."
+    },
+    {
+      "id": "WITNESS_COSTS",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "Actual D05 witnesses retain both resonant and regular costs. Physical bottom bounds divide the same witness energy by its complete norm. Ground selection creates a genuine eigenmode at the same L,K without relabelling the Schur vector.",
+      "branches": "common_cutoff_negative_ground_alternatives retains equal negative grounds, and uses the genuine even or odd-adjoint source equality only on the corresponding strict branch."
+    },
+    {
+      "id": "SOURCE_ROW_AND_ARITHMETIC",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "correctedSourceRow includes the removed output; correctedSourceTest_complete_arithmetic contains full Archimedean output and all prime powers. Both endpoint zeros and exact aperture-priced differentiation are proved for the same arithmetic-dependent even ray or odd resolvent/Riesz state.",
+      "open_leaf": "The complete log-coordinate Stieltjes discrepancy identity, together with a useful independent joint bound on E(exp y) and the resolvent-selected test, remains OPEN. No fixed-test estimate is imported as a uniform resolvent-family estimate."
+    },
+    {
+      "id": "REGULAR_CELLS",
+      "status": "OPEN_WITH_EXACT_LEAF_AND_COUNTERMODEL_AUDIT",
+      "audit": "REGULAR_CELL_AUDIT.json",
+      "support": "Exact existing fixed-cell frozen-source equality is freshly consumed; actual neutral pole cancellation is applied to fixed-Q auxiliary source. G01 and G04-G08 remain open with all exceptional branches retained."
+    }
+  ],
+  "semantic_controls": [
+    "Omitted witness norm cost must fail exact type checking.",
+    "PSD predecessor must not supply the omitted negative-successor premise.",
+    "Uncorrected cubic source must not substitute for the corrected row functional.",
+    "A source equality at K must not supply an equality at a different M.",
+    "Exact shared-negative-ground controls preserve nonzero rank-one transport and PSD predecessors while falsifying source-blind generic selection.",
+    "Common scalar shifts preserve transport while moving all absolute eigenvalues through zero."
+  ],
+  "native_gate": {
+    "result": "RESULT.json",
+    "modules": 16,
+    "complete_type_axiom_records": 98,
+    "semantic_mutations": 4
+  }
+}

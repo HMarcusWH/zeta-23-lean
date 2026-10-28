@@ -1,0 +1,84 @@
+{
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "commands": [
+    {
+      "command": [
+        "python",
+        "-B",
+        "tools/check_kit.py",
+        "--require-checksums",
+        "--require-schema"
+      ],
+      "exit_code": 0,
+      "log": "evidence/v11-kit-check-v3.log"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reference_impl/tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "evidence/v11-reference-normal-v3.log"
+    },
+    {
+      "command": [
+        "python",
+        "-O",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reference_impl/tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "evidence/v11-reference-optimized-v3.log"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "research/RHRC/integration/opica_round4_support/run_python_tests.py"
+      ],
+      "exit_code": 0,
+      "log": "evidence/support-tests-normal-v3.log"
+    },
+    {
+      "command": [
+        "python",
+        "-O",
+        "-B",
+        "research/RHRC/integration/opica_round4_support/run_python_tests.py"
+      ],
+      "exit_code": 0,
+      "log": "evidence/support-tests-optimized-v3.log"
+    }
+  ],
+  "complete_round4_system": "NOT_IMPLEMENTED",
+  "exact_test_inventory_and_no_skips": true,
+  "full_round4_implemented": false,
+  "kit_python_tests_normal": 120,
+  "kit_python_tests_optimized": 120,
+  "kit_reconciled": false,
+  "kit_schema_and_checksums": "PASS",
+  "lean_status": "NOT_COMPILED_AUTHORING_SESSION",
+  "new_lean_axiom_audit": "NOT_RUN",
+  "new_lean_compiler": "NOT_RUN_EXECUTABLE_UNAVAILABLE",
+  "new_python_tests_normal": 49,
+  "new_python_tests_optimized": 49,
+  "pinned_native_compile_required": true,
+  "python_tests_current_count": 49,
+  "revision": "CORRECTED_V3",
+  "schema": "OPICA4_SUPPORT_AUTHORING_EVIDENCE_V3",
+  "source_anchors_checked": 10,
+  "source_backed_integration": "NOT_RUN",
+  "status": "PYTHON_TESTS_AND_SOURCE_LOCKS_VERIFIED_LEAN_UNCOMPILED"
+}

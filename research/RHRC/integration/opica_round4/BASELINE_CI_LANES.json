@@ -1,0 +1,201 @@
+{
+  "schema": "OPICA_KIT_CI_LANE_CONTRACT_V1",
+  "authority": "PROPOSED_PRODUCTION_PROFILE_NOT_EXECUTED",
+  "release": "THREE_FRAMEWORK_INTEGRATED_V1",
+  "missing_or_skipped_required_is_success": false,
+  "lanes": [
+    {
+      "id": "CONTRACT",
+      "classification": "STATIC_CONTRACT",
+      "scope": "CURRENT_HOST",
+      "depends_on": [],
+      "required": true,
+      "requires": [
+        "source path/byte policy",
+        "schema/identity checks",
+        "complete expected inventory"
+      ],
+      "expected_identity": "RESOLVE_FROM_TRUSTED_EXPERIMENT_NOT_PROPOSER"
+    },
+    {
+      "id": "PARENT_REGRESSION",
+      "classification": "REGRESSION",
+      "scope": "FROZEN_BASELINE",
+      "depends_on": [
+        "CONTRACT"
+      ],
+      "required": true,
+      "requires": [
+        "unaltered exact parent checks",
+        "historical scope retained"
+      ],
+      "expected_identity": "RESOLVE_FROM_TRUSTED_EXPERIMENT_NOT_PROPOSER"
+    },
+    {
+      "id": "CURRENT_COMPATIBILITY",
+      "classification": "FORMAL_VALIDITY",
+      "scope": "CURRENT_HOST",
+      "depends_on": [
+        "CONTRACT"
+      ],
+      "required": true,
+      "requires": [
+        "all original 76/100/40/5 root types and consumers",
+        "permitted axioms",
+        "preserved source and canonical contracts"
+      ],
+      "expected_identity": "RESOLVE_FROM_TRUSTED_EXPERIMENT_NOT_PROPOSER"
+    },
+    {
+      "id": "COMPOSITION_FORMAL",
+      "classification": "FORMAL_VALIDITY",
+      "scope": "CURRENT_HOST",
+      "depends_on": [
+        "CONTRACT",
+        "CURRENT_COMPATIBILITY"
+      ],
+      "required": true,
+      "requires": [
+        "real host expression execution",
+        "exact independently specified target",
+        "full context and witness",
+        "independent replay"
+      ],
+      "expected_identity": "RESOLVE_FROM_TRUSTED_EXPERIMENT_NOT_PROPOSER"
+    },
+    {
+      "id": "SEMANTIC_NEGATIVES",
+      "classification": "SCOPED_REGRESSION_AND_RESEARCH",
+      "scope": "CURRENT_HOST",
+      "depends_on": [
+        "COMPOSITION_FORMAL"
+      ],
+      "required": true,
+      "requires": [
+        "genuine positive twin",
+        "typed semantic rejection",
+        "exact countermodels with hypotheses"
+      ],
+      "expected_identity": "RESOLVE_FROM_TRUSTED_EXPERIMENT_NOT_PROPOSER"
+    },
+    {
+      "id": "FRAMEWORK_ADAPTERS",
+      "classification": "REGRESSION",
+      "scope": "CURRENT_HOST",
+      "depends_on": [
+        "CONTRACT"
+      ],
+      "required": true,
+      "requires": [
+        "FFBBP expected gates",
+        "OoL expected interfaces",
+        "bounded policy",
+        "normal and optimized tests"
+      ],
+      "expected_identity": "RESOLVE_FROM_TRUSTED_EXPERIMENT_NOT_PROPOSER"
+    },
+    {
+      "id": "PROVIDER_SELECTED",
+      "classification": "PROVIDER_FORMAL_VALIDITY_ONLY",
+      "scope": "SELECTED_PROVIDER",
+      "depends_on": [
+        "CONTRACT"
+      ],
+      "required": true,
+      "requires": [
+        "exact provider source packages",
+        "independent consumers of every admitted API",
+        "axiom closure",
+        "no host proof promotion"
+      ],
+      "expected_identity": "RESOLVE_FROM_TRUSTED_EXPERIMENT_NOT_PROPOSER"
+    },
+    {
+      "id": "REPLAY_CAMPAIGN",
+      "classification": "SCOPED_REGRESSION_AND_RESEARCH",
+      "scope": "CURRENT_HOST",
+      "depends_on": [
+        "COMPOSITION_FORMAL",
+        "FRAMEWORK_ADAPTERS",
+        "PROVIDER_SELECTED"
+      ],
+      "required": true,
+      "requires": [
+        "transactional replay and stale-worker rejection",
+        "known calibration",
+        "held-out menu",
+        "complete disposition coverage"
+      ],
+      "expected_identity": "RESOLVE_FROM_TRUSTED_EXPERIMENT_NOT_PROPOSER"
+    },
+    {
+      "id": "GENERATED_STATE",
+      "classification": "REGRESSION",
+      "scope": "CURRENT_HOST",
+      "depends_on": [
+        "CURRENT_COMPATIBILITY"
+      ],
+      "required": true,
+      "requires": [
+        "unchanged canonical producers",
+        "byte-current results",
+        "external application view determinism"
+      ],
+      "expected_identity": "RESOLVE_FROM_TRUSTED_EXPERIMENT_NOT_PROPOSER"
+    },
+    {
+      "id": "ACCEPTANCE",
+      "classification": "INDEPENDENT_AGGREGATION",
+      "scope": "CURRENT_HOST",
+      "depends_on": [
+        "CONTRACT",
+        "PARENT_REGRESSION",
+        "CURRENT_COMPATIBILITY",
+        "COMPOSITION_FORMAL",
+        "SEMANTIC_NEGATIVES",
+        "FRAMEWORK_ADAPTERS",
+        "PROVIDER_SELECTED",
+        "REPLAY_CAMPAIGN",
+        "GENERATED_STATE"
+      ],
+      "required": true,
+      "requires": [
+        "all nine required upstream artifacts/statuses, never its own result",
+        "per-lane source identity",
+        "independent raw reconstruction"
+      ],
+      "expected_identity": "RESOLVE_FROM_TRUSTED_EXPERIMENT_NOT_PROPOSER"
+    }
+  ],
+  "host_normal_optimized_modes": [
+    "normal",
+    "optimized"
+  ],
+  "provider_version_inheritance": false,
+  "human_review": "NOT_ESTABLISHED",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "canonical_parent_lane_id": "PARENT_REGRESSION",
+  "aggregation": {
+    "output_lane": "ACCEPTANCE",
+    "required_input_lanes": [
+      "CONTRACT",
+      "PARENT_REGRESSION",
+      "CURRENT_COMPATIBILITY",
+      "COMPOSITION_FORMAL",
+      "SEMANTIC_NEGATIVES",
+      "FRAMEWORK_ADAPTERS",
+      "PROVIDER_SELECTED",
+      "REPLAY_CAMPAIGN",
+      "GENERATED_STATE"
+    ],
+    "self_receipt_required": false,
+    "separate_from_round3_acceptance": true,
+    "round3_upstream_job_ids": [
+      "contract",
+      "runtime-regressions",
+      "current-formal",
+      "source-evaluator"
+    ]
+  }
+}

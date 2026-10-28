@@ -41,6 +41,18 @@ jobs:
         mkdir -p "$OPICA2_OUTPUT_DIR"
         test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
         test -z "$(git status --porcelain --untracked-files=all)"
+        # R4_PARENT_SCOPE_V1: inspect the actual child before historical replay.
+        if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
+          round4_child_head=$(git rev-parse HEAD)
+          round4_child_tree=$(git rev-parse 'HEAD^{tree}')
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
+          test "$(git rev-parse HEAD)" = "$round4_child_head"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
+          git checkout --detach fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          export REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          printf '%s\n' 'REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a' "REQUESTED_ROUND4_CHILD_HEAD=$round4_child_head" "REQUESTED_ROUND4_CHILD_TREE=$round4_child_tree" 'ROUND4_PARENT_SCOPE_REPLAY=true' >> "$GITHUB_ENV"
+        fi
         if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
           python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
           child_head=$(git rev-parse HEAD)
@@ -109,6 +121,18 @@ jobs:
         mkdir -p "$OPICA2_OUTPUT_DIR"
         test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
         test -z "$(git status --porcelain --untracked-files=all)"
+        # R4_PARENT_SCOPE_V1: inspect the actual child before historical replay.
+        if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
+          round4_child_head=$(git rev-parse HEAD)
+          round4_child_tree=$(git rev-parse 'HEAD^{tree}')
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
+          test "$(git rev-parse HEAD)" = "$round4_child_head"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
+          git checkout --detach fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          export REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          printf '%s\n' 'REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a' "REQUESTED_ROUND4_CHILD_HEAD=$round4_child_head" "REQUESTED_ROUND4_CHILD_TREE=$round4_child_tree" 'ROUND4_PARENT_SCOPE_REPLAY=true' >> "$GITHUB_ENV"
+        fi
         if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
           python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
           child_head=$(git rev-parse HEAD)
@@ -196,6 +220,18 @@ jobs:
         mkdir -p "$OPICA2_OUTPUT_DIR"
         test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
         test -z "$(git status --porcelain --untracked-files=all)"
+        # R4_PARENT_SCOPE_V1: inspect the actual child before historical replay.
+        if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
+          round4_child_head=$(git rev-parse HEAD)
+          round4_child_tree=$(git rev-parse 'HEAD^{tree}')
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
+          test "$(git rev-parse HEAD)" = "$round4_child_head"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
+          git checkout --detach fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          export REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          printf '%s\n' 'REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a' "REQUESTED_ROUND4_CHILD_HEAD=$round4_child_head" "REQUESTED_ROUND4_CHILD_TREE=$round4_child_tree" 'ROUND4_PARENT_SCOPE_REPLAY=true' >> "$GITHUB_ENV"
+        fi
         if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
           python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
           child_head=$(git rev-parse HEAD)
@@ -332,6 +368,18 @@ jobs:
         mkdir -p "$OPICA2_OUTPUT_DIR"
         test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
         test -z "$(git status --porcelain --untracked-files=all)"
+        # R4_PARENT_SCOPE_V1: inspect the actual child before historical replay.
+        if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
+          round4_child_head=$(git rev-parse HEAD)
+          round4_child_tree=$(git rev-parse 'HEAD^{tree}')
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
+          test "$(git rev-parse HEAD)" = "$round4_child_head"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
+          git checkout --detach fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          export REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          printf '%s\n' 'REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a' "REQUESTED_ROUND4_CHILD_HEAD=$round4_child_head" "REQUESTED_ROUND4_CHILD_TREE=$round4_child_tree" 'ROUND4_PARENT_SCOPE_REPLAY=true' >> "$GITHUB_ENV"
+        fi
         if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
           python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
           child_head=$(git rev-parse HEAD)
@@ -428,6 +476,18 @@ jobs:
         mkdir -p "$OPICA2_OUTPUT_DIR"
         test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
         test -z "$(git status --porcelain --untracked-files=all)"
+        # R4_PARENT_SCOPE_V1: inspect the actual child before historical replay.
+        if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
+          round4_child_head=$(git rev-parse HEAD)
+          round4_child_tree=$(git rev-parse 'HEAD^{tree}')
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
+          test "$(git rev-parse HEAD)" = "$round4_child_head"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
+          git checkout --detach fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          export REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          printf '%s\n' 'REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a' "REQUESTED_ROUND4_CHILD_HEAD=$round4_child_head" "REQUESTED_ROUND4_CHILD_TREE=$round4_child_tree" 'ROUND4_PARENT_SCOPE_REPLAY=true' >> "$GITHUB_ENV"
+        fi
         if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
           python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
           child_head=$(git rev-parse HEAD)
@@ -554,6 +614,18 @@ jobs:
         mkdir -p "$OPICA2_OUTPUT_DIR"
         test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
         test -z "$(git status --porcelain --untracked-files=all)"
+        # R4_PARENT_SCOPE_V1: inspect the actual child before historical replay.
+        if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
+          round4_child_head=$(git rev-parse HEAD)
+          round4_child_tree=$(git rev-parse 'HEAD^{tree}')
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
+          test "$(git rev-parse HEAD)" = "$round4_child_head"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
+          git checkout --detach fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          export REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          printf '%s\n' 'REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a' "REQUESTED_ROUND4_CHILD_HEAD=$round4_child_head" "REQUESTED_ROUND4_CHILD_TREE=$round4_child_tree" 'ROUND4_PARENT_SCOPE_REPLAY=true' >> "$GITHUB_ENV"
+        fi
         if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
           python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
           child_head=$(git rev-parse HEAD)
@@ -733,6 +805,18 @@ jobs:
         mkdir -p "$OPICA2_OUTPUT_DIR"
         test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
         test -z "$(git status --porcelain --untracked-files=all)"
+        # R4_PARENT_SCOPE_V1: inspect the actual child before historical replay.
+        if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
+          round4_child_head=$(git rev-parse HEAD)
+          round4_child_tree=$(git rev-parse 'HEAD^{tree}')
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
+          test "$(git rev-parse HEAD)" = "$round4_child_head"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
+          git checkout --detach fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          export REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          printf '%s\n' 'REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a' "REQUESTED_ROUND4_CHILD_HEAD=$round4_child_head" "REQUESTED_ROUND4_CHILD_TREE=$round4_child_tree" 'ROUND4_PARENT_SCOPE_REPLAY=true' >> "$GITHUB_ENV"
+        fi
         if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
           python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
           child_head=$(git rev-parse HEAD)
@@ -831,6 +915,18 @@ jobs:
         mkdir -p "$OPICA2_OUTPUT_DIR"
         test "$(git rev-parse HEAD)" = "$REQUESTED_HEAD"
         test -z "$(git status --porcelain --untracked-files=all)"
+        # R4_PARENT_SCOPE_V1: inspect the actual child before historical replay.
+        if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
+          round4_child_head=$(git rev-parse HEAD)
+          round4_child_tree=$(git rev-parse 'HEAD^{tree}')
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
+          test "$(git rev-parse HEAD)" = "$round4_child_head"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
+          git checkout --detach fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          export REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          printf '%s\n' 'REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a' "REQUESTED_ROUND4_CHILD_HEAD=$round4_child_head" "REQUESTED_ROUND4_CHILD_TREE=$round4_child_tree" 'ROUND4_PARENT_SCOPE_REPLAY=true' >> "$GITHUB_ENV"
+        fi
         if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then
           python -B research/RHRC/integration/opica_round3/validate_contract.py --output "$OPICA2_OUTPUT_DIR/current-round3-source-scope.json"
           child_head=$(git rev-parse HEAD)

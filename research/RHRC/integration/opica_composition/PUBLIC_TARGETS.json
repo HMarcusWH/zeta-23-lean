@@ -1,0 +1,79 @@
+{
+  "schema": "OPICA4_PUBLIC_TARGETS_V1",
+  "calibration": [
+    {
+      "id": "D02_D05",
+      "declaration": "Zeta23.OPICAComposition.CofinalNewbornPacket",
+      "module": "Zeta23.OPICAComposition.Calibration",
+      "target_kind": "value",
+      "expected_type_sha256": "012431ee89958cffa20c70cf0e69767f1a6b727cbe4fd390837dff0821eed8ff",
+      "role": "KNOWN_CONDITIONAL_CALIBRATION_NOT_NEW_RESEARCH",
+      "forbidden_gold": [
+        "cofinal_newborn_packet_calibration",
+        "cofinal_schur_packet_calibration"
+      ]
+    },
+    {
+      "id": "D02_D04",
+      "declaration": "Zeta23.OPICAComposition.CofinalSchurPacket",
+      "module": "Zeta23.OPICAComposition.Calibration",
+      "target_kind": "value",
+      "expected_type_sha256": "7a1cb709c3e32e19c3cd0343b455afa479c918107c5642cc3406c1b49f055523",
+      "role": "KNOWN_CONDITIONAL_CALIBRATION_NOT_NEW_RESEARCH",
+      "forbidden_gold": [
+        "cofinal_newborn_packet_calibration",
+        "cofinal_schur_packet_calibration"
+      ]
+    }
+  ],
+  "open_research": [
+    {
+      "id": "EvenRayComparison",
+      "declaration": "Zeta23.OPICAComposition.EvenRayComparison",
+      "module": "Zeta23.RHRC.OpicaComposition.ResearchTargets",
+      "target_kind": "value",
+      "expected_type_sha256": "588692b797fb7adb32334719f70357b2301fb468bd90b444589ef62837e33c04",
+      "approved_constants": [],
+      "status": "OPEN",
+      "truth_established": false,
+      "search_scope": "NO_REVIEWED_PROOF_MENU_YET;DEFINITION_WELL_FORMED_ONLY"
+    },
+    {
+      "id": "OddAdjointRayComparison",
+      "declaration": "Zeta23.OPICAComposition.OddAdjointRayComparison",
+      "module": "Zeta23.RHRC.OpicaComposition.ResearchTargets",
+      "target_kind": "value",
+      "expected_type_sha256": "36ffdf490af1450c572b41333328f0a59a30ebdb5884280b4797cfdbc72da125",
+      "approved_constants": [],
+      "status": "OPEN",
+      "truth_established": false,
+      "search_scope": "NO_REVIEWED_PROOF_MENU_YET;DEFINITION_WELL_FORMED_ONLY"
+    },
+    {
+      "id": "SharedGroundExclusion",
+      "declaration": "Zeta23.OPICAComposition.SharedGroundExclusion",
+      "module": "Zeta23.RHRC.OpicaComposition.ResearchTargets",
+      "target_kind": "value",
+      "expected_type_sha256": "48c4af81a43e6463392e45fca461e3da014eb6265ab5cb59c1783a0edc75264f",
+      "approved_constants": [],
+      "status": "OPEN",
+      "truth_established": false,
+      "search_scope": "NO_REVIEWED_PROOF_MENU_YET;DEFINITION_WELL_FORMED_ONLY"
+    },
+    {
+      "id": "EventualNoSimultaneousNegativity",
+      "declaration": "Zeta23.OPICAComposition.EventualNoSimultaneousNegativity",
+      "module": "Zeta23.RHRC.OpicaComposition.ResearchTargets",
+      "target_kind": "value",
+      "expected_type_sha256": "c87ce44bc43a5e4ff1635678a092ed5749e8ffbde13aa2e462fd61ad246a5162",
+      "approved_constants": [],
+      "status": "OPEN",
+      "truth_established": false,
+      "search_scope": "NO_REVIEWED_PROOF_MENU_YET;DEFINITION_WELL_FORMED_ONLY"
+    }
+  ],
+  "open_research_targets_module": "Zeta23.RHRC.OpicaComposition.ResearchTargets",
+  "target_registration_grants_proof": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "OPICA4_WORK_PACKAGES_V1",
+  "packages": [
+    {
+      "id": "R4-00",
+      "name": "Intake and authority",
+      "implementation": "IMPLEMENTED_REQUIRES_EXACT_HEAD_CI",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-01",
+      "name": "Mathematical context",
+      "implementation": "IMPLEMENTED_REQUIRES_EXACT_HEAD_CI",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-02",
+      "name": "Application graph",
+      "implementation": "IMPLEMENTED_REQUIRES_EXACT_HEAD_CI",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-03",
+      "name": "Governed execution",
+      "implementation": "IMPLEMENTED_REQUIRES_EXACT_HEAD_CI",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-04",
+      "name": "Spectral support",
+      "implementation": "IMPLEMENTED_SUPPORT_WITH_EXPLICIT_OPEN_RESEARCH",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-05",
+      "name": "Witness cost",
+      "implementation": "IMPLEMENTED_REQUIRES_EXACT_HEAD_CI",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-06",
+      "name": "Regular-cell reduction",
+      "implementation": "IMPLEMENTED_SUPPORT_WITH_EXPLICIT_OPEN_RESEARCH",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-07",
+      "name": "Signed arithmetic",
+      "implementation": "IMPLEMENTED_SUPPORT_WITH_EXPLICIT_OPEN_RESEARCH",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-08",
+      "name": "Cross-path closure interfaces",
+      "implementation": "IMPLEMENTED_SUPPORT_WITH_EXPLICIT_OPEN_RESEARCH",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-09",
+      "name": "Certified experiments",
+      "implementation": "IMPLEMENTED_REQUIRES_EXACT_HEAD_CI",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-10",
+      "name": "Countermodel bank",
+      "implementation": "IMPLEMENTED_REQUIRES_EXACT_HEAD_CI",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-11",
+      "name": "Workflow harvest and acceptance",
+      "implementation": "IMPLEMENTED_REQUIRES_EXACT_HEAD_CI",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    },
+    {
+      "id": "R4-12",
+      "name": "Deduction campaign",
+      "implementation": "IMPLEMENTED_SUPPORT_WITH_EXPLICIT_OPEN_RESEARCH",
+      "acceptance_authority": "EXTERNAL_EXACT_SOURCE_ACTIONS_ARTIFACTS"
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

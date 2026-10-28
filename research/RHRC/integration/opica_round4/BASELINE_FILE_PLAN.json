@@ -1,0 +1,1307 @@
+{
+  "schema": "OPICA_FILE_PLAN_V1",
+  "additions_are_proposed": true,
+  "rows": [
+    {
+      "id": "F001",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/__init__.py",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "integration",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Declare package only; no import-time I/O or execution.",
+      "acceptance": [
+        "Import is side-effect free."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F002",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/canonical.py",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "contracts",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "load_strict_json",
+        "canonical_message_bytes",
+        "message_digest",
+        "safe_relative"
+      ],
+      "implementation": "Closed JSON parser, bounded integers/strings/AST, duplicate-key rejection, no floats/repr fallback. Preserve existing compiler Expr hashes; new envelopes have their own domain. Add exact hash length checks and portable logical-path/complete-inventory checks; reject Windows trailing/device/case-prefix aliases without normalization.",
+      "acceptance": [
+        "Normal/-O identical behavior; duplicate, surrogate, traversal, nonfinite and depth attacks reject."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F003",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/contracts.py",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "contracts",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "SnapshotIdentity",
+        "RunIdentity",
+        "StatementContract",
+        "ObjectBinding",
+        "CompositionProposal",
+        "ApplicationReceipt",
+        "RouteSpec",
+        "AdapterObligation"
+      ],
+      "implementation": "Typed dataclasses plus closed-schema conversion. Formal validity, open-premise status, integrity, search disposition and release are separate fields. Reject unrecognized fields and bool-as-int. Include closed tagged PolicyChoice SELECT(action_id) versus STOP(reason); a legal action named STOP is not termination.",
+      "acceptance": [
+        "Every schema example round-trips; a PASS field cannot become a theorem."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F004",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/descendant.py",
+      "operation": "ADD",
+      "stage": "S0",
+      "owner": "compatibility",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "validate_descendant",
+        "classification_delta",
+        "current_compatibility_scope"
+      ],
+      "implementation": "Compare exact Git trees against PR297 base, closed added/edited/generated sets, file modes and actual bytes; reject undeclared/ignored source providers. Validate unchanged parent objects; no broad wildcard exception. Target the next descendant PR only after an accepted #297 merge and explicit source/pin/evidence comparison; inspected head is not accepted-parent authority.",
+      "acceptance": [
+        "A hidden .lean/.py and deletion of an old claim reject; approved exact delta passes."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F005",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/baseline.py",
+      "operation": "ADD",
+      "stage": "S0",
+      "owner": "compatibility",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "select_replay_scope",
+        "replay_parent",
+        "compare_parent_contracts"
+      ],
+      "implementation": "Select explicit frozen parent checkout for historical gates, preserving original source code and source identities. Emit requested-child and checked-parent identities separately. Never mark a historical replay current-head formal validity.",
+      "acceptance": [
+        "Wrong parent SHA, wrong checkout, mislabeled historical PASS and old source receipt all reject."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F006",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/snapshot.py",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "integration",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "freeze_source_epoch",
+        "verify_epoch",
+        "compute_source_fingerprint",
+        "verify_packages"
+      ],
+      "implementation": "Bind source commit/tree, actual compiler version, pinned package objects, checker recipes, profile and target inventory. Exclude run-generated artifacts from content-hash inputs. Evidence lives outside checkout.",
+      "acceptance": [
+        "Changed definition/checker/profile invalidates epoch; reordering JSON keys does not; no self-hash cycle."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F007",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/inventory.py",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "OPICA",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "load_statement_inventory",
+        "check_membership_coverage",
+        "resolve_registered_sources"
+      ],
+      "implementation": "Read exact compiler atlas plus source-only optional cohort without widening old selector. Preserve all memberships, evidence scopes and review backlog. Resolve actual compiled origin not suffix guess.",
+      "acceptance": [
+        "Required root omitted, duplicate identity or swapped source rejects; unreviewed remains explicit."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F008",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/proposals.py",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "host",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "validate_term_plan",
+        "enumerate_bounded_candidates",
+        "make_adapter_obligation",
+        "enumerate_candidates"
+      ],
+      "implementation": "Finite typed expression-plan AST with frozen target, permitted constants/local slots, depth/node budgets. No raw Lean/Python/shell text. Empty complete eligible menu yields a tagged STOP result. Retrieval is not proof. Deterministic finite candidate enumeration restores full contracts before actual Lean unification; exclude evaluator gold. Require complete frozen eligible enumeration and return explicit unresolved inventory when incomplete, not an apparent empty-menu stop.",
+      "acceptance": [
+        "Forbidden target/candidate axiom, raw run_cmd, unbounded search and dangling variable reject."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F009",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/executor.py",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "host",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "execute_attempt",
+        "run_fixed_recipe",
+        "collect_raw_artifacts",
+        "terminate_process_group"
+      ],
+      "implementation": "Run frozen Lean commands in an OS-isolated worker with read-only sources and no network/tokens. Temporary source generated by trusted codec only. Capture exit/stdout/stderr/object hashes and termination reasons.",
+      "acceptance": [
+        "Missing compiler, timeout, crash, wrong .olean and output truncation never count as semantic rejection."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F010",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/evidence.py",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "host verifier",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "verify_application",
+        "verify_expected_type",
+        "verify_axioms_and_dependencies",
+        "replay_consumer"
+      ],
+      "implementation": "Independently parse exact compiler output and compare target, telescope/context, sources and proof dependencies. Re-run consumer in a separate clean process. No candidate supplied checker.",
+      "acceptance": [
+        "Forged PASS, hidden premise, theorem of True, source substitution and unadmitted axiom reject."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F011",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/accept.py",
+      "operation": "ADD",
+      "stage": "S3",
+      "owner": "release verifier",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "verify_gate_inventory",
+        "verify_lane_bundle",
+        "accept_application_scope"
+      ],
+      "implementation": "Use independently frozen expected gate set and per-gate checker/source/run identity. Host lanes use current source; parent/provider lanes retain their own explicitly required identities. Hashes bind bytes, not authenticity alone. Canonical lane ID is PARENT_REGRESSION. Verify nine required upstream composition inputs; ACCEPTANCE is output, not a required self-receipt. Round3 four-job aggregate remains distinct.",
+      "acceptance": [
+        "Empty/missing/extra/duplicate gates, cross-run artifacts and synthetic evidence in native lane reject."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F012",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/journal.py",
+      "operation": "ADD",
+      "stage": "S5",
+      "owner": "OoL persistence",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "append_event_cas",
+        "replay_events",
+        "invalidate_generation",
+        "publish_verified_application"
+      ],
+      "implementation": "Single-writer transactional storage outside repo. Commit with compare-and-swap source generation/revision after verification. Hash-linked immutable events; archived evidence retained; current view derived.",
+      "acceptance": [
+        "Crash/restart, duplicate IDs, stale worker, invalidation race and truncated log reject or recover without false acceptance."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F013",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/historical.py",
+      "operation": "ADD",
+      "stage": "S3",
+      "owner": "integration",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "load_historical_constraints",
+        "assess_revival_request"
+      ],
+      "implementation": "Read Control-v2 and frozen obstructions as typed historical inputs. Require changed-premise evidence for revival. Do not execute or rewrite frozen #117 scores as current policy.",
+      "acceptance": [
+        "Renamed old failure cannot silently revive; changed proved premise can reopen with explicit scope."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F014",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/campaign.py",
+      "operation": "ADD",
+      "stage": "S5",
+      "owner": "integration",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "run_one_iteration",
+        "reconstruct_campaign",
+        "enforce_campaign_budget"
+      ],
+      "implementation": "Wire inventory->FFBBP->Permansson->OoL preflight->host->independent replay->OoL commit. One shared evidence origin; useful rejected/blocked outcomes enter feedback without becoming proofs.",
+      "acceptance": [
+        "Known positive and matched negative run end-to-end; all unfinished leaves remain visible."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F015",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/views.py",
+      "operation": "ADD",
+      "stage": "S5",
+      "owner": "graph",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "render_applications",
+        "render_obligations",
+        "check_views"
+      ],
+      "implementation": "Export deterministic application hypergraph/obligation views outside tracked source by default. Edge IDs include instantiated context/witness/application identity, not only theorem name.",
+      "acceptance": [
+        "Same source+events yields identical semantic bytes; imports never become implication edges."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F016",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/harvest.py",
+      "operation": "ADD",
+      "stage": "S6",
+      "owner": "research",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "normalize_workflow_inventory",
+        "classify_job_disposition",
+        "render_post_green_delta"
+      ],
+      "implementation": "Read complete paginated workflow/job artifacts supplied by trusted fetcher; keep pending/skipped/failure states. Classify formal/regression/research jobs and compare frozen scientific outcomes.",
+      "acceptance": [
+        "Success preserving a countermodel is not a new theorem; missing page and running job block complete harvest."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F017",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/cli.py",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "integration",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "main"
+      ],
+      "implementation": "Subcommands freeze, inventory, plan, run-one, verify, replay, export, harvest, check-descendant. Commands are inert without required source/profile/evidence arguments. Write only fresh output paths outside checkout.",
+      "acceptance": [
+        "Bad args and unavailable native backend return nonzero; no implicit mutable-main or synthetic fallback."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F018",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/README.md",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "docs",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Document source scope, commands, release labels and nonclaims; link concrete manifests.",
+      "acceptance": [
+        "Every link resolves; distinguish calibration from discovery."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F019",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/BUILD_CONTRACT.json",
+      "operation": "ADD",
+      "stage": "S0",
+      "owner": "contracts",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Closed exact new/edited paths, parent anchor, unchanged objects and authored hashes; unsealed draft rejected by acceptance.",
+      "acceptance": [
+        "Closed schema, independent expected identity and negative mutation tests."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F020",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/FRAMEWORK_PROVIDERS.json",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "contracts",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Separate old reference, selected provider candidate and actual admitted capability; no version-string qualification.",
+      "acceptance": [
+        "Closed schema, independent expected identity and negative mutation tests."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F021",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/PUBLIC_TARGETS.json",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "contracts",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Independent calibration goal/context declarations and forbidden answer constants; no hidden RHS assumption.",
+      "acceptance": [
+        "Closed schema, independent expected identity and negative mutation tests."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F022",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/PROFILE.json",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "contracts",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Finite action grammar, resource ceilings, expected gate/interface sets, phase and domain scope.",
+      "acceptance": [
+        "Closed schema, independent expected identity and negative mutation tests."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F023",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/schemas/contracts.schema.json",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "contracts",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Versioned closed schema with bounded AST, identities, outcomes, typed routes and receipts. Preserve Lean Expr payload as an opaque validated encoding reference rather than inventing its semantics. Enforce minLength=maxLength=64 at all SHA-256 schema positions; schema/runtime newline mutations must agree; include tagged PolicyChoice and RelativePath definitions.",
+      "acceptance": [
+        "Schema checker is required in production; unit-only successful parsing cannot replace it."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F024",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/fixtures/calibration_routes.json",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "qualification",
+      "trust_zone": "RESEARCH_ONLY",
+      "entrypoints": [],
+      "implementation": "Freeze D02->D05 and separate D02->D04 positive contracts; source-output-drop and other invalid cases. Do not invent a literal D04->D05 root dependency.",
+      "acceptance": [
+        "Expected positive/negative dispositions with exact intended types."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F025",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/fixtures/metadata_adversaries.json",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "qualification",
+      "trust_zone": "RESEARCH_ONLY",
+      "entrypoints": [],
+      "implementation": "Synthetic fixtures visibly scoped; include omitted gates, wrong identity, context collision, duplicate origin and late-worker cases.",
+      "acceptance": [
+        "Cannot be admitted to native formal acceptance."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F026",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/providers/permansson/selected_exports.json",
+      "operation": "ADD",
+      "stage": "S4",
+      "owner": "Permansson",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Pin exact current provider source, selected finite-monitor definitions and consumers. Unverified selected exports remain NOT_ADMITTED.",
+      "acceptance": [
+        "Default frozen-core build alone is insufficient."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F027",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/providers/permansson/ProviderAudit.lean.in",
+      "operation": "ADD",
+      "stage": "S4",
+      "owner": "Permansson",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "selected provider consumers"
+      ],
+      "implementation": "Trusted template materialized only in isolated Lean4.34 provider workspace. Use computedValue_eq_value/computedMaximizer_attains and actual model instance when claimed.",
+      "acceptance": [
+        "All exported types and permitted axioms verified; no .olean transferred to RH."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F028",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/ffbbp/opica_composition.py",
+      "operation": "ADD",
+      "stage": "S3",
+      "owner": "FFBBP",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "assess_composition_reduction",
+        "validate_residual_budget",
+        "build_falsifier_requirements",
+        "deduplicate_evidence_origins"
+      ],
+      "implementation": "New domain profile over shared contracts. Preserve old snapshot helper; verify information needed by exact composition task. Signed/error-bounded arithmetic remains scoped. Apply normalization to the actual object: D05 e is unit; w is nonzero only. Any unit-w operation needs a separate checked scaling view, not mutation of the original Schur packet.",
+      "acceptance": [
+        "Module/type-hash collisions, omitted source/output, masking and origin cloning detected."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F029",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/ool/opica_composition.py",
+      "operation": "ADD",
+      "stage": "S3",
+      "owner": "OoL",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "preflight_route",
+        "verify_interface_set",
+        "verify_context_and_branches",
+        "prepare_route_event"
+      ],
+      "implementation": "Proof-backed full route interface inventory and explicit conditional contexts. Use host-verified binding receipts, never proposal booleans. Include observed phase and branch coverage.",
+      "acceptance": [
+        "Missing interface, same-type changed witness, unauthorized premise and wrong phase reject."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F030",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/permansson/__init__.py",
+      "operation": "ADD",
+      "stage": "S4",
+      "owner": "Permansson",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Package marker, no automatic provider import.",
+      "acceptance": [
+        "No side effects."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F031",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/permansson/opica_composition.py",
+      "operation": "ADD",
+      "stage": "S4",
+      "owner": "Permansson",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "select_action",
+        "validate_policy_intervention",
+        "verify_provider_capability",
+        "compare_policy_runs"
+      ],
+      "implementation": "Stable finite-menu selector, stop state, exact fixed-world check and optional qualified sidecar. Do not assert learned Markov dynamics or global optimality. Closed tagged selection, exact eligible/proposal/count inventory equality, host-derived journal dispatch counts and same-generation revision binding. Fairness is conditional on fixed complete feasible menu and enough budget.",
+      "acceptance": [
+        "Changing P, stale source, forged capability, illegal menu action and starvation controls."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F032",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "Zeta23/RHRC/OpicaComposition/Protocol.lean",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "Lean host",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "TermPlan",
+        "parsePlan"
+      ],
+      "implementation": "Parse closed bounded JSON plan into a narrow AST; only allowlisted constants and authorized telescope slots.",
+      "acceptance": [
+        "Compile using host pin; paired semantic mutation rejection with same imports/toolchain."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F033",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "Zeta23/RHRC/OpicaComposition/Elaborate.lean",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "Lean host",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "elaboratePlan",
+        "checkApplication"
+      ],
+      "implementation": "Use fresh Lean metavariable context, actual imported constants and typeclass resolution. All remaining goals explicitly reported; no extra assumptions or broad unrestricted tactics.",
+      "acceptance": [
+        "Compile using host pin; paired semantic mutation rejection with same imports/toolchain."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F034",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "Zeta23/RHRC/OpicaComposition/Export.lean",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "Lean host",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "exportApplication"
+      ],
+      "implementation": "Export exact target/type DAG/context, retained witness terms, source origins and allowed axioms; no unresolved expression/universe metavariables.",
+      "acceptance": [
+        "Compile using host pin; paired semantic mutation rejection with same imports/toolchain."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F035",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "Zeta23/RHRC/OpicaComposition/Audit.lean",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "Lean host",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "auditApplication"
+      ],
+      "implementation": "Fresh independent expected-type consumer and transitive axiom/dependency checks; trusted process cannot import proposal-provided extensions.",
+      "acceptance": [
+        "Compile using host pin; paired semantic mutation rejection with same imports/toolchain."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F036",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "Zeta23/OPICAComposition/Calibration.lean",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "mathematics",
+      "trust_zone": "AUXILIARY_FORMALIZATION",
+      "entrypoints": [
+        "cofinal_newborn_packet_calibration"
+      ],
+      "implementation": "Optional checked calibration wrapper with complete D02/D05 context. Imports mathematics only. Not a newly registered terminal claim or search target answer available to planner. Retain original unnormalized D05 packets; no norm(w)=1 assumption. Native template is unqualified until actual host build and independent consumer complete.",
+      "acceptance": [
+        "Independent consumer checks exact full type and axioms."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F037",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "Zeta23/RHRC/OpicaComposition/Validation.lean",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "Lean host",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "calibration_consumer",
+        "context_consumers"
+      ],
+      "implementation": "Independent expected statements, positive/negative source tests and #print axioms; no proof terms or metadata promoted from test success.",
+      "acceptance": [
+        "No hidden source-only conclusion, no global margin or equal-eigenvalue shortcut."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F038",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/tests/test_contracts.py",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "qualification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Closed parsing, schemas, identity and budgets; every test recorded in exact method inventory.",
+      "acceptance": [
+        "No skip, mock-native evidence or -O-dependent enforcement; native tests fail when tools absent."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F039",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "operation": "ADD",
+      "stage": "S0",
+      "owner": "qualification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Source/diff policy, inherited workflow selection and protected fields; every test recorded in exact method inventory.",
+      "acceptance": [
+        "No skip, mock-native evidence or -O-dependent enforcement; native tests fail when tools absent."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F040",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/tests/test_inventory.py",
+      "operation": "ADD",
+      "stage": "S1",
+      "owner": "qualification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Mandatory cohort coverage and declaration origins; every test recorded in exact method inventory.",
+      "acceptance": [
+        "No skip, mock-native evidence or -O-dependent enforcement; native tests fail when tools absent."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F041",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "qualification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Actual Lean subprocess/grammar/object/target behavior; every test recorded in exact method inventory.",
+      "acceptance": [
+        "No skip, mock-native evidence or -O-dependent enforcement; native tests fail when tools absent."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F042",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "operation": "ADD",
+      "stage": "S2",
+      "owner": "qualification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Independent replay, premise and axiom audit; every test recorded in exact method inventory.",
+      "acceptance": [
+        "No skip, mock-native evidence or -O-dependent enforcement; native tests fail when tools absent."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F043",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "operation": "ADD",
+      "stage": "S3",
+      "owner": "qualification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Composition reductions, residuals and complete gates; every test recorded in exact method inventory.",
+      "acceptance": [
+        "No skip, mock-native evidence or -O-dependent enforcement; native tests fail when tools absent."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F044",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/tests/test_ool.py",
+      "operation": "ADD",
+      "stage": "S3",
+      "owner": "qualification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Interfaces, contexts, branches and phases; every test recorded in exact method inventory.",
+      "acceptance": [
+        "No skip, mock-native evidence or -O-dependent enforcement; native tests fail when tools absent."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F045",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "operation": "ADD",
+      "stage": "S4",
+      "owner": "qualification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Legal deterministic policies and selected provider qualification; every test recorded in exact method inventory.",
+      "acceptance": [
+        "No skip, mock-native evidence or -O-dependent enforcement; native tests fail when tools absent."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F046",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/tests/test_journal.py",
+      "operation": "ADD",
+      "stage": "S5",
+      "owner": "qualification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "CAS/restart, source invalidation and duplicate origins; every test recorded in exact method inventory.",
+      "acceptance": [
+        "No skip, mock-native evidence or -O-dependent enforcement; native tests fail when tools absent."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F047",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/tests/test_end_to_end.py",
+      "operation": "ADD",
+      "stage": "S5",
+      "owner": "qualification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Calibration, held-out transfer and baseline comparisons; every test recorded in exact method inventory.",
+      "acceptance": [
+        "No skip, mock-native evidence or -O-dependent enforcement; native tests fail when tools absent."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F048",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_composition/tests/test_harvest.py",
+      "operation": "ADD",
+      "stage": "S6",
+      "owner": "qualification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Pagination, scientific dispositions and post-green change records; every test recorded in exact method inventory.",
+      "acceptance": [
+        "No skip, mock-native evidence or -O-dependent enforcement; native tests fail when tools absent."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F049",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": ".github/workflows/rhrc_opica_composition.yml",
+      "operation": "ADD",
+      "stage": "S6",
+      "owner": "CI",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [
+        "reusable current-child workflow"
+      ],
+      "implementation": "Run contract, current host compatibility, native composition, framework adapters, provider, journal/campaign and independent aggregate. Explicit requested source; no project caches for required cold proof lane. CI profile/prose/workflow lane IDs must agree. Reject missing/cyclic/duplicated lanes and keep original four-job acceptance separate.",
+      "acceptance": [
+        "Exact artifact/lane set and real current head; failed/skipped required jobs fail closed."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED"
+    },
+    {
+      "id": "F050",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/graph/FILE_CLASSES.json",
+      "operation": "EDIT",
+      "stage": "S0",
+      "owner": "classification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Prepend exact new-path rule groups by role. Preserve every old rule object and order; no broad directory wildcard and no reclassification of historical sources.",
+      "acceptance": [
+        "Exact approved delta and source-bound current regression; original predicates survive."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED",
+      "baseline_git_blob": "44a8b9a1ee6e9895f8346bfa25ff9bbee895e643",
+      "pin_status": "VERIFIED_SOURCE_BLOB"
+    },
+    {
+      "id": "F051",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json",
+      "operation": "EDIT",
+      "stage": "S0",
+      "owner": "classification",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Add only newly computed standalone module roles; derive reachability and exact set equality. Preserve all prior fields and roles.",
+      "acceptance": [
+        "Exact approved delta and source-bound current regression; original predicates survive."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED",
+      "baseline_git_blob": "4b43cdec4755b2afcf2b551d8f2866871eecbaa0",
+      "pin_status": "VERIFIED_SOURCE_BLOB"
+    },
+    {
+      "id": "F052",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": ".github/workflows/rhrc_opica_round2.yml",
+      "operation": "EDIT",
+      "stage": "S0",
+      "owner": "CI migration",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Add composition-aware scope selection BEFORE the existing Round3 branch in every duplicated selector. Validate child, replay exact Round2 as historical, retain current-head identity separately. Preserve all original required jobs/checkers.",
+      "acceptance": [
+        "Exact approved delta and source-bound current regression; original predicates survive."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED",
+      "baseline_git_blob": "ea91a6ecdf21d0130c217db8a25d0ec375c52fa0",
+      "pin_status": "VERIFIED_SOURCE_BLOB"
+    },
+    {
+      "id": "F053",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": ".github/workflows/rhrc_opica_round3.yml",
+      "operation": "EDIT",
+      "stage": "S0",
+      "owner": "CI migration",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Route original producer/guard jobs to exact parent for reviewed descendants; label historical. Invoke required reusable current-child compatibility/composition workflow and fail-closed final aggregate. Original #297 mode remains unchanged.",
+      "acceptance": [
+        "Exact approved delta and source-bound current regression; original predicates survive."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED",
+      "baseline_git_blob": "ce61738be5c7b4dce299b07cf75991d6e0505def",
+      "pin_status": "VERIFIED_SOURCE_BLOB"
+    },
+    {
+      "id": "F054",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_round2/tests/test_file_classes.py",
+      "operation": "EDIT",
+      "stage": "S0",
+      "owner": "compatibility tests",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Add exact composition rule and role deltas to the two explicit current-layout equality checks, retaining all old assertions and current full reachability checks. Do not remove tests or accept arbitrary extra rules. Original file replayed unchanged on parent.",
+      "acceptance": [
+        "Exact approved delta and source-bound current regression; original predicates survive."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED",
+      "baseline_git_blob": "f3f78d76d331ace243f73a299b419b9f1a34a090",
+      "pin_status": "VERIFIED_SOURCE_BLOB"
+    },
+    {
+      "id": "F055",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/README.md",
+      "operation": "EDIT",
+      "stage": "S1",
+      "owner": "docs",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Add dated pointer to composition profile and explicit scope. Retain historical authority text as historical; do not rewrite old snapshots.",
+      "acceptance": [
+        "Exact approved delta and source-bound current regression; original predicates survive."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED",
+      "baseline_git_blob": "3e0077fd8208a427522b7706e61c8f29b2fc7c87",
+      "pin_status": "VERIFIED_SOURCE_BLOB"
+    },
+    {
+      "id": "F056",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/graph/README.md",
+      "operation": "EDIT",
+      "stage": "S5",
+      "owner": "docs",
+      "trust_zone": "AUDIT_ONLY",
+      "entrypoints": [],
+      "implementation": "Document proof-backed application view as a separate external product, not compiler USES_CONSTANT authority.",
+      "acceptance": [
+        "Exact approved delta and source-bound current regression; original predicates survive."
+      ],
+      "status": "TO_IMPLEMENT_NOT_INSTALLED",
+      "baseline_git_blob": "dde7830a63cde7a68cc2aa50fd3db9f96dc66d09",
+      "pin_status": "VERIFIED_SOURCE_BLOB"
+    },
+    {
+      "id": "F057",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "lean-toolchain",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F058",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "lake-manifest.json",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F059",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "Zeta23.lean",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F060",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/CLAIM_REGISTRY.json",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F061",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F062",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/FRAMEWORK_REGISTRY.json",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F063",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/integration_lint.py",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F064",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_round3/validate_contract.py",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F065",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F066",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_round3/atlas/SEMANTIC_OVERLAY.json",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F067",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS.jsonl",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F068",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/ffbbp/v17_gates.py",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F069",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/ffbbp/v17_contracts.py",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F070",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/ool/semantics.py",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F071",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/control_v2/ACTION_REGISTRY.json",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F072",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/control_v2/CONTROL_STATE.json",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F073",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/control_v2/router.py",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F074",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/control_v2/regime_monitor.py",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F075",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/graph/build.py",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F076",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/graph/GRAPH_SCHEMA.json",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F077",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/tools/materialize_derived_state.py",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    },
+    {
+      "id": "F078",
+      "repository": "HMarcusWH/zeta-23-lean",
+      "path": "research/RHRC/integration/opica_round2/tests/test_receipt.py",
+      "operation": "PRESERVE",
+      "stage": "ALL",
+      "owner": "baseline",
+      "trust_zone": "PRESERVE_EXISTING",
+      "entrypoints": [],
+      "implementation": "Byte-preserve in first composition release; historical source/policy is not silently widened. New registered theorem promotion or changed frozen semantics needs a separate reviewed contract.",
+      "acceptance": [
+        "Compare exact baseline blob; fail on unauthorized change."
+      ],
+      "status": "PROTECTED"
+    }
+  ],
+  "generated_existing": "Regenerate the original declared canonical products only with their existing producers; use the exact inherited generated manifest, not a manually maintained list.",
+  "runtime_external_artifacts": [
+    "run/snapshot.json",
+    "run/attempts/<id>/raw/",
+    "run/attempts/<id>/ApplicationReceipt.json",
+    "run/journal.sqlite",
+    "run/views/APPLICATIONS.jsonl",
+    "run/views/OBLIGATIONS.jsonl",
+    "run/harvest.json"
+  ],
+  "no_repos_modified_here": true
+}

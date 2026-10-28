@@ -1,0 +1,1105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "ExperimentSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "approved_commit",
+        "source_files",
+        "environment",
+        "source_policy",
+        "schema"
+      ],
+      "properties": {
+        "profile_id": {
+          "type": "string"
+        },
+        "approved_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "source_files": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "environment": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "source_policy": {
+          "type": "string"
+        },
+        "schema": {
+          "const": "OPICA_EXPERIMENT_SPEC_V1"
+        }
+      }
+    },
+    "SnapshotIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo",
+        "commit",
+        "tree",
+        "source_digest",
+        "generation",
+        "files",
+        "environment",
+        "profile_id",
+        "source_policy",
+        "schema"
+      ],
+      "properties": {
+        "repo": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "tree": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "source_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "generation": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "files": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "environment": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "profile_id": {
+          "type": "string"
+        },
+        "source_policy": {
+          "type": "string"
+        },
+        "schema": {
+          "const": "OPICA_SOURCE_SNAPSHOT_V1"
+        }
+      }
+    },
+    "StatementContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "declaration",
+        "module",
+        "type_expression",
+        "type_sha256",
+        "universe_parameters",
+        "outer_telescope",
+        "conclusion_text",
+        "type_constants",
+        "value_constants",
+        "axioms",
+        "schema"
+      ],
+      "properties": {
+        "declaration": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "type_expression": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "type_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "universe_parameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "outer_telescope": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        },
+        "conclusion_text": {
+          "type": "string"
+        },
+        "type_constants": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "value_constants": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "axioms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "schema": {
+          "const": "OPICA_STATEMENT_CONTRACT_V1"
+        }
+      }
+    },
+    "StatementInventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "snapshot_digest",
+        "statements",
+        "native_export_sha256",
+        "schema",
+        "envelope_codec"
+      ],
+      "properties": {
+        "snapshot_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "statements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        },
+        "native_export_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "schema": {
+          "const": "OPICA_STATEMENT_INVENTORY_V1"
+        },
+        "envelope_codec": {
+          "const": "OPICA_NATIVE_EVIDENCE_JSON_V1"
+        }
+      }
+    },
+    "CohortInventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "declarations",
+        "memberships",
+        "schema"
+      ],
+      "properties": {
+        "declarations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "memberships": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schema": {
+          "const": "OPICA_COHORT_INVENTORY_V1"
+        }
+      }
+    },
+    "CoverageReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "complete",
+        "missing",
+        "unexpected",
+        "duplicates",
+        "schema"
+      ],
+      "properties": {
+        "complete": {
+          "type": "boolean"
+        },
+        "missing": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unexpected": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "duplicates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "schema": {
+          "const": "OPICA_COVERAGE_REPORT_V1"
+        }
+      }
+    },
+    "TargetSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_id",
+        "declaration",
+        "module",
+        "expected_type_hash",
+        "allowed_constants",
+        "allowed_axioms",
+        "imports",
+        "required_gates",
+        "target_kind",
+        "forbidden_constants",
+        "schema"
+      ],
+      "properties": {
+        "target_id": {
+          "type": "string"
+        },
+        "declaration": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "expected_type_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "allowed_constants": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "allowed_axioms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "imports": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "required_gates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "target_kind": {
+          "type": "string"
+        },
+        "forbidden_constants": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schema": {
+          "const": "OPICA_TARGET_SPEC_V1"
+        }
+      }
+    },
+    "GrammarProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "excluded_declarations",
+        "approved_adapters",
+        "schema"
+      ],
+      "properties": {
+        "excluded_declarations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "approved_adapters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "schema": {
+          "const": "OPICA_GRAMMAR_PROFILE_V1"
+        }
+      }
+    },
+    "SearchBudget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidates",
+        "term_nodes",
+        "term_depth",
+        "heartbeats",
+        "wall_seconds",
+        "output_bytes",
+        "memory_bytes",
+        "disk_bytes",
+        "schema"
+      ],
+      "properties": {
+        "candidates": {
+          "type": "integer"
+        },
+        "term_nodes": {
+          "type": "integer"
+        },
+        "term_depth": {
+          "type": "integer"
+        },
+        "heartbeats": {
+          "type": "integer"
+        },
+        "wall_seconds": {
+          "type": "integer"
+        },
+        "output_bytes": {
+          "type": "integer"
+        },
+        "memory_bytes": {
+          "type": "integer"
+        },
+        "disk_bytes": {
+          "type": "integer"
+        },
+        "schema": {
+          "const": "OPICA_SEARCH_BUDGET_V1"
+        }
+      }
+    },
+    "CompositionProposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proposal_id",
+        "target_id",
+        "source_generation",
+        "plan",
+        "schema"
+      ],
+      "properties": {
+        "proposal_id": {
+          "type": "string"
+        },
+        "target_id": {
+          "type": "string"
+        },
+        "source_generation": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "plan": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "schema": {
+          "const": "OPICA_COMPOSITION_PROPOSAL_RECORD_V1"
+        }
+      }
+    },
+    "CandidateBatch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inventory_digest",
+        "target_id",
+        "candidates",
+        "complete",
+        "disposition",
+        "schema"
+      ],
+      "properties": {
+        "inventory_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "target_id": {
+          "type": "string"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "disposition": {
+          "type": "string"
+        },
+        "schema": {
+          "const": "OPICA_CANDIDATE_BATCH_V1"
+        }
+      }
+    },
+    "AttemptArtifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "target_digest",
+        "snapshot_digest",
+        "proposal_digest",
+        "output",
+        "manifest",
+        "native",
+        "reason",
+        "schema"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "target_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "snapshot_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "proposal_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output": {
+          "type": "string"
+        },
+        "manifest": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "native": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "reason": {
+          "type": "string"
+        },
+        "schema": {
+          "const": "OPICA_ATTEMPT_ARTIFACTS_V1"
+        }
+      }
+    },
+    "VerifiedApplication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "target_digest",
+        "snapshot_digest",
+        "proposal_digest",
+        "evidence_digest",
+        "source_generation",
+        "axioms",
+        "constants",
+        "context",
+        "independent_replay",
+        "publication_eligible",
+        "object_bindings",
+        "schema"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "target_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "snapshot_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "proposal_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "evidence_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_generation": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "axioms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "constants": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "context": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        },
+        "independent_replay": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "publication_eligible": {
+          "type": "boolean"
+        },
+        "object_bindings": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": {}
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schema": {
+          "const": "OPICA_VERIFIED_APPLICATION_V1"
+        }
+      }
+    },
+    "WorkerConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lean",
+        "toolchain_root",
+        "lean_paths",
+        "bubblewrap",
+        "prlimit",
+        "production",
+        "budget",
+        "schema"
+      ],
+      "properties": {
+        "lean": {
+          "type": "string"
+        },
+        "toolchain_root": {
+          "type": "string"
+        },
+        "lean_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "bubblewrap": {
+          "type": "string"
+        },
+        "prlimit": {
+          "type": "string"
+        },
+        "production": {
+          "type": "boolean"
+        },
+        "budget": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schema": {
+          "const": "OPICA_WORKER_CONFIG_V1"
+        }
+      }
+    },
+    "ObjectBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_digest",
+        "context_digest",
+        "scope_index",
+        "object_kind",
+        "term_expression",
+        "type_expression",
+        "context",
+        "physical_source",
+        "aperture",
+        "cutoff",
+        "parity",
+        "normalization",
+        "residual_contract",
+        "schema"
+      ],
+      "properties": {
+        "source_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "context_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "scope_index": {
+          "type": "integer"
+        },
+        "object_kind": {
+          "type": "string"
+        },
+        "term_expression": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "type_expression": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "context": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        },
+        "physical_source": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": {}
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "aperture": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": {}
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cutoff": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": {}
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "parity": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": {}
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normalization": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": {}
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "residual_contract": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": {}
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schema": {
+          "const": "OPICA_OBJECT_BINDING_V1"
+        }
+      }
+    },
+    "AdapterObligation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "obligation_id",
+        "source_generation",
+        "target_digest",
+        "context_digest",
+        "expected_expression",
+        "context",
+        "disposition",
+        "schema"
+      ],
+      "properties": {
+        "obligation_id": {
+          "type": "string"
+        },
+        "source_generation": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "target_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "context_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "expected_expression": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "context": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        },
+        "disposition": {
+          "type": "string"
+        },
+        "schema": {
+          "const": "OPICA_ADAPTER_OBLIGATION_V1"
+        }
+      }
+    },
+    "RouteSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "route_id",
+        "source_generation",
+        "phase",
+        "target_digest",
+        "context_digest",
+        "authorized_premise_refs",
+        "interfaces",
+        "required_gates",
+        "schema"
+      ],
+      "properties": {
+        "route_id": {
+          "type": "string"
+        },
+        "source_generation": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "target_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "context_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "authorized_premise_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "interfaces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        },
+        "required_gates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "schema": {
+          "const": "OPICA_ROUTE_SPEC_RECORD_V1"
+        }
+      }
+    },
+    "ApplicationReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attempt_id",
+        "source_generation",
+        "target_digest",
+        "context_digest",
+        "result",
+        "used_authorized_premise_refs",
+        "remaining_obligation_refs",
+        "raw_artifacts",
+        "axioms",
+        "actual_type_expression",
+        "proof_expression",
+        "producer_protocol_complete",
+        "object_bindings",
+        "authority",
+        "schema"
+      ],
+      "properties": {
+        "attempt_id": {
+          "type": "string"
+        },
+        "source_generation": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "target_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "context_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "result": {
+          "type": "string"
+        },
+        "used_authorized_premise_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remaining_obligation_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "raw_artifacts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "axioms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actual_type_expression": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {}
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "proof_expression": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {}
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "producer_protocol_complete": {
+          "type": "boolean"
+        },
+        "object_bindings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        },
+        "authority": {
+          "type": "string"
+        },
+        "schema": {
+          "const": "OPICA_APPLICATION_RECEIPT_RECORD_V1"
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/ExperimentSpec"
+    },
+    {
+      "$ref": "#/$defs/SnapshotIdentity"
+    },
+    {
+      "$ref": "#/$defs/StatementContract"
+    },
+    {
+      "$ref": "#/$defs/StatementInventory"
+    },
+    {
+      "$ref": "#/$defs/CohortInventory"
+    },
+    {
+      "$ref": "#/$defs/CoverageReport"
+    },
+    {
+      "$ref": "#/$defs/TargetSpec"
+    },
+    {
+      "$ref": "#/$defs/GrammarProfile"
+    },
+    {
+      "$ref": "#/$defs/SearchBudget"
+    },
+    {
+      "$ref": "#/$defs/CompositionProposal"
+    },
+    {
+      "$ref": "#/$defs/CandidateBatch"
+    },
+    {
+      "$ref": "#/$defs/AttemptArtifacts"
+    },
+    {
+      "$ref": "#/$defs/VerifiedApplication"
+    },
+    {
+      "$ref": "#/$defs/WorkerConfig"
+    },
+    {
+      "$ref": "#/$defs/ObjectBinding"
+    },
+    {
+      "$ref": "#/$defs/AdapterObligation"
+    },
+    {
+      "$ref": "#/$defs/RouteSpec"
+    },
+    {
+      "$ref": "#/$defs/ApplicationReceipt"
+    }
+  ],
+  "$comment": "Closed envelope inventory. Dataclass validation additionally enforces field types, resources, DAG and semantic constraints."
+}

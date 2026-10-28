@@ -1,0 +1,25 @@
+{
+  "schema": "OPICA4_RELEASE_PROFILE_V1",
+  "profile_id": "ROUND4_GOVERNED_DEDUCTION_V1",
+  "retained_profile": "THREE_FRAMEWORK_INTEGRATED_V1",
+  "required_input_lanes": [
+    "CONTRACT",
+    "PARENT_REGRESSION",
+    "CURRENT_COMPATIBILITY",
+    "COMPOSITION_FORMAL",
+    "SEMANTIC_NEGATIVES",
+    "FRAMEWORK_ADAPTERS",
+    "PROVIDER_SELECTED",
+    "REPLAY_CAMPAIGN",
+    "GENERATED_STATE",
+    "MATHEMATICAL_SUPPORT",
+    "SOURCE_NUMERICS"
+  ],
+  "aggregate_lane": "ACCEPTANCE",
+  "linux_isolation_required": true,
+  "normal_and_optimized_required": true,
+  "missing_or_skipped_is_success": false,
+  "human_review": "NOT_ESTABLISHED",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

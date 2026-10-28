@@ -1,0 +1,30 @@
+{
+  "schema": "OPICA4_BUILD_CONTRACT_V1",
+  "baseline_files": [
+    {
+      "path": "BASELINE_REQUIREMENTS.json",
+      "sha256": "94ab906887f936570dc747de3d8088a6beed72049b9fb715a587e81ded7f2f59"
+    },
+    {
+      "path": "BASELINE_ACCEPTANCE_MATRIX.json",
+      "sha256": "6b0fcf90bee8cf8435ce3a6d9d3f674cda32bcb2ef6d17fc79d9bf64c30ebb40"
+    },
+    {
+      "path": "BASELINE_FILE_PLAN.json",
+      "sha256": "d0744fd7679cff6b24f13d5b394e4d20b2880a528d9b8a296ebdbfca87b6e12f"
+    },
+    {
+      "path": "BASELINE_CI_LANES.json",
+      "sha256": "5ab1bfecf1f5e6a77ea173eab07c5bc230e62d799c55867f5a93827b701e5bfe"
+    }
+  ],
+  "required_requirements": 42,
+  "mandatory_requirements": 41,
+  "optional_requirements": [
+    "P06"
+  ],
+  "source_authority": "descendant.py sealed path policy plus per-file bytes",
+  "proof_authority": "actual compiler and independent consumer",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

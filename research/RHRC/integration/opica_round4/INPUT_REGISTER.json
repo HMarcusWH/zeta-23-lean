@@ -1,0 +1,52 @@
+{
+  "schema": "OPICA4_INPUT_REGISTER_V1",
+  "parent_commit": "fe16565b2a31fb8b68bef916ae8f04d535880e7a",
+  "parent_tree": "5442650eb749576e4a82e2d57460a4b97e19b5a9",
+  "frozen_atlas": {
+    "path": "research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS.jsonl",
+    "sha256": "c0becd027e18be98c29647b85e0d18aeb0748a66c2c6ab6690a4940b2945150e",
+    "declarations": 462,
+    "memberships": 696,
+    "mandatory_memberships": 221,
+    "historical_contacts": 185,
+    "source_only_census": 1744,
+    "source_only_semantically_admitted": false
+  },
+  "provider": {
+    "schema": "OPICA_PERMANSSON_SELECTED_EXPORTS_V1",
+    "repository": "HMarcusWH/PermanssonLean",
+    "commit": "17c315f7df7abf457eb94d393bd526d46da6f6f4",
+    "toolchain": "leanprover/lean4:v4.34.0",
+    "module": "PermanssonResearch.ReverseSolver.ComputableFiniteMonitor",
+    "source_path": "PermanssonResearch/ReverseSolver/ComputableFiniteMonitor.lean",
+    "source_sha256": "a9bb4fcf09e9b225ed1737a74af6758e0bfd65bcd34d5da1802bc3af077b260c",
+    "lake_manifest_sha256": "3e71568ae8d3183d2fab71e6ff523445a4355b3ddae6af5cb7fff74bb7e075a3",
+    "template": "ProviderAudit.lean.in",
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "mode": "POLICY_ADAPTER_ONLY",
+    "model_optimality": "NOT_ESTABLISHED",
+    "apis": [
+      {
+        "declaration": "PermanssonResearch.ReverseSolver.FiniteMonitor.computedValue_eq_value",
+        "consumer": "OPICAProviderAudit.value_eq_spec_consumer"
+      },
+      {
+        "declaration": "PermanssonResearch.ReverseSolver.FiniteMonitor.leastMaximizingControl_spec",
+        "consumer": "OPICAProviderAudit.least_choice_consumer"
+      },
+      {
+        "declaration": "PermanssonResearch.ReverseSolver.FiniteMonitor.computedMaximizer_attains",
+        "consumer": "OPICAProviderAudit.maximizer_attains_consumer"
+      }
+    ]
+  },
+  "reference_authority": "Reference specifications are inputs; only user request authorizes the build.",
+  "kit_sha256": "e5c3c2808b929d0bb2120b806a278ca5c43fa7a64958f41707022c220660f11a",
+  "corrected_prepared_overlay_sha256": "b3f76bd992eb3087a0bd64773360dbf1b7b9912ff0a1aa3dad80277b892a46ea",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}
