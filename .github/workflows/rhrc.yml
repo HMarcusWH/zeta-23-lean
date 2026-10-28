@@ -16,6 +16,30 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Authenticate current Round4 child before historical diagnostic replay
+        id: round4-parent-scope
+        if: ${{ hashFiles('research/RHRC/integration/opica_round4/BUILD_MANIFEST.json') != '' }}
+        shell: bash
+        env:
+          ROUND4_TRIGGER_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          # R4_PARENT_SCOPE_V1: preserve the legacy diagnostic on the accepted parent.
+          evidence="$RUNNER_TEMP/rhrc-round4-parent-scope"
+          mkdir -p "$evidence"
+          test "$(git rev-parse HEAD)" = "$ROUND4_TRIGGER_HEAD"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          round4_child_head=$(git rev-parse HEAD)
+          round4_child_tree=$(git rev-parse 'HEAD^{tree}')
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$evidence/current-round4-source-scope.json"
+          test "$(git rev-parse HEAD)" = "$round4_child_head"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          git cat-file -e 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{commit}' || git fetch --no-tags origin fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
+          git checkout --detach fe16565b2a31fb8b68bef916ae8f04d535880e7a
+          printf '%s\n' 'REQUESTED_HEAD=fe16565b2a31fb8b68bef916ae8f04d535880e7a' "REQUESTED_ROUND4_CHILD_HEAD=$round4_child_head" "REQUESTED_ROUND4_CHILD_TREE=$round4_child_tree" 'ROUND4_PARENT_SCOPE_REPLAY=true' >> "$GITHUB_ENV"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.14'
@@ -49,6 +73,13 @@ jobs:
           assert all(r['search_paths'] for r in p['retro_receipts'])
           print('Control v2 smoke: PASS')
           PY
+      - name: Upload the Round4 child source inspection for historical diagnostics
+        if: ${{ always() && steps.round4-parent-scope.outcome != 'skipped' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rhrc-python-round4-source-scope
+          path: ${{ runner.temp }}/rhrc-round4-parent-scope
+          if-no-files-found: error
 
 
   rhkg-compiler-receipt:

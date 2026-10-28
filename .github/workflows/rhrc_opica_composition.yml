@@ -9,7 +9,7 @@ permissions:
   contents: read
   actions: read
 concurrency:
-  group: opica-round4-${{ github.event.pull_request.number || github.ref }}
+  group: opica-round4-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 env:
   PYTHONUTF8: '1'

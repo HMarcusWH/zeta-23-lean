@@ -231,6 +231,18 @@
       "native": false
     },
     {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_all_legacy_workflow_families_have_current_child_hops",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_missing_original_contract_hop_rejects",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
       "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_t01",
       "case": "T01",
       "lane": "CONTRACT",

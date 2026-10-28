@@ -28,7 +28,7 @@ no-simultaneous-negativity route, causal approximation, complete signed
 observation and direct detector complement remain separate open alternatives.
 
 `BUILD_MANIFEST.json` closes the source delta at the merged PR #297 tree.
-Historical Round 2/3 workflows select their frozen source scopes; fresh
+Historical OPICA, follow-up, diagnostic and Round 2/3 checks select their frozen source scopes; fresh
 current compatibility checks the complete 462-declaration/696-membership
 inventory on the actual child. The new eleven-lane aggregate is separate
 from the old acceptance workflow. Source-only census entries and unreviewed

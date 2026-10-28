@@ -15,8 +15,10 @@ from .snapshot import unlinked, file_hash
 
 BASE = "fe16565b2a31fb8b68bef916ae8f04d535880e7a"
 BASE_TREE = "5442650eb749576e4a82e2d57460a4b97e19b5a9"
+LEGACY_SCOPE_TEMPLATES = {"rhrc_opica.yml": 4, "rhrc_opica_followup.yml": 7}
+LEGACY_SUITE_TEMPLATES = {"rhrc.yml": 1}
 MANIFEST = "research/RHRC/integration/opica_round4/BUILD_MANIFEST.json"
-AUDITED_PATH_POLICY = "dff73c900e375ea5aecd2f14fc49186a9fe540d2a34e4bb4ce21285b5e5b9712"
+AUDITED_PATH_POLICY = "e2a3a557ab2ff2af36f3e2f11a98d69f982ed47904b24273c8917b7d4b043ac7"
 REPO = Path(__file__).resolve().parents[4]
 
 def git(repo: Path, *args: str) -> str:
@@ -46,7 +48,7 @@ def classification_delta(base_paths, current_paths, policy: dict) -> dict:
     return {"added": sorted(added), "deleted": []}
 
 def validate_workflow_migration(repo: Path) -> None:
-    for name in ("rhrc_opica_round2.yml", "rhrc_opica_round3.yml"):
+    for name in ("rhrc_opica_round2.yml", "rhrc_opica_round3.yml", *LEGACY_SCOPE_TEMPLATES, *LEGACY_SUITE_TEMPLATES):
         text = (repo/".github/workflows"/name).read_text(encoding="utf-8")
         require("R4_PARENT_SCOPE_V1" in text and BASE in text,
                 "historical selector not migrated: " + name)
@@ -55,6 +57,16 @@ def validate_workflow_migration(repo: Path) -> None:
     selectors = round2.count("if [ -f research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json ]; then")
     require(selectors > 0 and round2.count("# R4_PARENT_SCOPE_V1") == selectors,
             "not every Round2 historical selector migrated")
+    for name, count in LEGACY_SCOPE_TEMPLATES.items():
+        text=(repo/".github/workflows"/name).read_text(encoding="utf-8")
+        require(text.count("ancestor_projection.py create")==count and
+                text.count("# R4_PARENT_SCOPE_V1")==count,
+                "not every original-contract ancestor selector migrated: "+name)
+    for name,count in LEGACY_SUITE_TEMPLATES.items():
+        text=(repo/".github/workflows"/name).read_text(encoding="utf-8")
+        require(text.count("# R4_PARENT_SCOPE_V1")==count and
+                text.count("run_suite.py --skip-derived-state")==count,
+                "legacy full-suite dispatcher lacks its own source hop: "+name)
 
 def validate_descendant(repo: Path = REPO, *, require_clean=False) -> dict:
     repo = unlinked(repo).resolve()

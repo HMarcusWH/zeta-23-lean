@@ -9,6 +9,17 @@ from research.RHRC.integration.opica_composition.canonical import ContractError,
 from research.RHRC.permansson.opica_composition import qualify_provider,PROVIDER_REPO,PROVIDER_COMMIT,PROVIDER_LEAN,SELECTED_APIS
 
 class DescendantTests(unittest.TestCase):
+    def test_all_legacy_workflow_families_have_current_child_hops(self):
+        validate_workflow_migration(Path(__file__).resolve().parents[5])
+    def test_missing_original_contract_hop_rejects(self):
+        repo=Path(__file__).resolve().parents[5]
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);workflows=root/'.github/workflows';workflows.mkdir(parents=True)
+            for name in ('rhrc_opica.yml','rhrc_opica_followup.yml','rhrc_opica_round2.yml','rhrc_opica_round3.yml','rhrc.yml'):
+                text=(repo/'.github/workflows'/name).read_text(encoding='utf-8')
+                if name=='rhrc_opica_followup.yml':text=text.replace('# R4_PARENT_SCOPE_V1','# missing_scope_hop',1)
+                (workflows/name).write_text(text,encoding='utf-8')
+            with self.assertRaises(ContractError):validate_workflow_migration(root)
     def test_t01(self):
         with self.assertRaises(ContractError):current_compatibility_scope({'scope':'CURRENT_HOST','checked_commit':'old','checked_tree':'t'},'new','t')
     def test_t02(self):
