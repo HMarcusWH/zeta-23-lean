@@ -339,6 +339,12 @@
       "native": false
     },
     {
+      "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_documentation_migration_is_closed_and_preserves_renderer_bytes",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
       "method": "research.RHRC.integration.opica_composition.tests.test_descendant.DescendantTests.test_missing_original_contract_hop_rejects",
       "case": null,
       "lane": "CONTRACT",

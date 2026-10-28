@@ -4,11 +4,41 @@ import tempfile
 import unittest
 from research.RHRC.integration.opica_composition.descendant import (
  classification_delta,current_compatibility_scope,require_acyclic_fingerprint,policy_body,
- validate_workflow_migration,validate_classification_extension,exact_rule,BASE,BASE_TREE)
+ validate_workflow_migration,validate_classification_extension,exact_rule,BASE,BASE_TREE,
+ DOCUMENTATION_ADDITIONS,DOCUMENTATION_EDITS,documentation_migration,preserve_documentation_renderer,
+ preserve_agent_instructions)
 from research.RHRC.integration.opica_composition.canonical import ContractError,canonical_bytes,digest
 from research.RHRC.permansson.opica_composition import qualify_provider,PROVIDER_REPO,PROVIDER_COMMIT,PROVIDER_LEAN,SELECTED_APIS
 
 class DescendantTests(unittest.TestCase):
+    def test_documentation_migration_is_closed_and_preserves_renderer_bytes(self):
+        manifest={'schema':'OPICA4_CLOSED_DESCENDANT_MANIFEST_V1','base':BASE,'base_tree':BASE_TREE,
+                  'add':[{'path':p} for p in DOCUMENTATION_ADDITIONS],
+                  'edit':[{'path':p} for p in DOCUMENTATION_EDITS], 'generated':[], 'preserve':[],
+                  'documentation_migration':documentation_migration()}
+        policy=policy_body(manifest)
+        for mutation in ('extra_authorization','missing_add','missing_edit','missing_migration'):
+            altered=json.loads(json.dumps(manifest))
+            if mutation=='extra_authorization':
+                altered['documentation_migration']['edit'].append('Zeta23/Final.lean')
+            elif mutation=='missing_add':altered['add'].pop()
+            elif mutation=='missing_edit':altered['edit'].pop()
+            else:altered.pop('documentation_migration')
+            with self.subTest(mutation=mutation),self.assertRaises(ContractError):policy_body(altered)
+        with self.assertRaises(ContractError):
+            classification_delta({'README.md'},{'README.md','docs/unreviewed.md'},policy)
+        block=b'<!-- RHRC_CURRENT_STATE_BEGIN -->\nRH = OPEN\n<!-- RHRC_CURRENT_STATE_END -->'
+        parent=b'old introduction\n'+block+b'\nold history\n'
+        preserve_documentation_renderer(b'new introduction\n'+block+b'\nnew navigation\n',parent,path='README.md')
+        for changed in (block.replace(b'RH = OPEN',b'RH = PROVED'),b'no markers',block+block,
+                        b'<!-- RHRC_CURRENT_STATE_END --><!-- RHRC_CURRENT_STATE_BEGIN -->'):
+            with self.subTest(changed=changed),self.assertRaises(ContractError):
+                preserve_documentation_renderer(changed,parent,path='README.md')
+        instructions=b'Keep the original Markdown/JSON contracts\nAll proof and post-green rules remain.\n'
+        preserve_agent_instructions(b'New navigation\n'+instructions,b'Old navigation\n'+instructions)
+        for changed in (b'no anchor',instructions+instructions,instructions.replace(b'All proof',b'No proof')):
+            with self.subTest(changed=changed),self.assertRaises(ContractError):
+                preserve_agent_instructions(changed,instructions)
     def test_all_legacy_workflow_families_have_current_child_hops(self):
         validate_workflow_migration(Path(__file__).resolve().parents[5])
     def test_missing_original_contract_hop_rejects(self):

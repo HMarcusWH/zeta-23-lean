@@ -1,8 +1,32 @@
-> Current checkpoint: [Stage22](STAGE22_HANDOVER.md), checked code `2440dcde7607baa7bcff2ce9626effa1ae9f3f07`, tree `dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99`. All100 original bodies have historical/narrow evidence. Physical/canonical and continuous-compact domain findings are mathematically closed; full export, registry, parent extension, canonical and release acceptance remain OPEN. Earlier statements retain their historical scope.
+# OPICA follow-up continuation
 
-> Current checkpoint: [Stage21](STAGE21_HANDOVER.md), checked code `139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e`, tree `3e63b0c72fc04da7bab45388d6096e82e95c4acb`. Ledger:41 historical +59 narrow +0 absent bodies; this is not original-contract/aggregate acceptance. Fresh physical/interface findings and all release obligations remain OPEN. Earlier stage statements below retain their historical scope.
+For repository-wide navigation as of 28 October 2026, use the
+[root guide](../../../../../../README.md),
+[current state](../../../../../../docs/CURRENT_STATE.md),
+[project guide](../../../../../../docs/PROJECT_GUIDE.md) and
+[framework map](../../../../../../docs/FRAMEWORKS.md).
 
-> Latest: [Stage 20](STAGE20_HANDOVER.md), checked code `9a8b2a4baee49f2056c7945b1544a7bc2893735b`, tree `6aa53d22d50d2aa24046d73b128c64a1d262f7f3`. The unchanged 100-root ledger records 41 historical + 56 narrow + 3 absent. Six original H2a/J5.2/MS1/Q3 roots now have clean full-type/domain/axiom evidence. Full release, RH and Step4 remain OPEN. Earlier stage descriptions below retain their historical scope.
+## Package checkpoint: Stage22 — 24 October 2026
+
+> [Stage22](STAGE22_HANDOVER.md), checked code `2440dcde7607baa7bcff2ce9626effa1ae9f3f07`, tree `dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99`. All100 original bodies have historical/narrow evidence. Physical/canonical and continuous-compact domain findings are mathematically closed; full export, registry, parent extension, canonical and release acceptance remain OPEN. Earlier statements retain their historical scope.
+
+Use the [100-root ledger](ROOT_LEDGER_100.json), [module status](MODULE_STATUS.md)
+and [documentation index](DOCUMENTATION_INDEX.md) for this continuation's scope.
+The ledger retains41 historical +59 narrow theorem bodies; full acceptance is
+separate. Stage22's exact handover and evidence take precedence over the earlier
+stage instructions preserved below. Live source/CI evidence governs a changed
+checkout. RH, Step4 and the independent closing inequalities remain OPEN.
+
+<details>
+<summary>Historical Stage21, Stage20 and earlier continuation instructions</summary>
+
+The records below describe their named source checkpoints. Their current/next
+labels and remaining-work counts are historical; use Stage22 and the ledger above
+before selecting new work or assessing the package's later evidence.
+
+> Historical Stage21 checkpoint: [Stage21](STAGE21_HANDOVER.md), checked code `139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e`, tree `3e63b0c72fc04da7bab45388d6096e82e95c4acb`. Ledger:41 historical +59 narrow +0 absent bodies; this is not original-contract/aggregate acceptance. Fresh physical/interface findings and all release obligations remain OPEN. Earlier stage statements below retain their historical scope.
+
+> Historical Stage20 checkpoint: [Stage 20](STAGE20_HANDOVER.md), checked code `9a8b2a4baee49f2056c7945b1544a7bc2893735b`, tree `6aa53d22d50d2aa24046d73b128c64a1d262f7f3`. The unchanged 100-root ledger records 41 historical + 56 narrow + 3 absent. Six original H2a/J5.2/MS1/Q3 roots now have clean full-type/domain/axiom evidence. Full release, RH and Step4 remain OPEN. Earlier stage descriptions below retain their historical scope.
 
 # Continue the OPICA draft directly in this repository
 
@@ -183,3 +207,5 @@ The earlier [six-root research pass](POST_GREEN_RESEARCH.md) retains its histori
 After meaningful green results, perform the Post-Green Research Pass described
 in root `AGENTS.md`. After full CI, harvest every job and scientific artifact
 before claiming the full review complete.
+
+</details>

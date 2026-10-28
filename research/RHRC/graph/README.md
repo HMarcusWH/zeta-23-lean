@@ -1,3 +1,29 @@
+# RHKG: repository knowledge graph
+
+Use the [repository map](../../../docs/REPOSITORY_MAP.md) for a question-by-question
+index of graph products and the [dated snapshot](../../../docs/CURRENT_STATE.md)
+for active source scope. The [project guide](../../../docs/PROJECT_GUIDE.md)
+explains the mathematics; the [framework guide](../../../docs/FRAMEWORKS.md)
+explains assurance and composition. RH and Step 4 remain OPEN.
+
+Read [CONSTITUTION.md](CONSTITUTION.md) and [GRAPH_CONTRACT.md](GRAPH_CONTRACT.md)
+before interpreting edges. File coverage, import reachability, compiler uses,
+registered theorem bindings, projection overlaps and document links have different
+meanings. A graph contact or shared dependency is not a mathematical implication.
+
+The [manual follow-up map](OPICA_FOLLOWUP_CURRENT_STATE.md) is scoped human
+navigation for the original package. Generated JSON/JSONL records retain their
+producer, source and disposition fields. Rebuild them through the canonical
+[materializer](../tools/materialize_derived_state.py), not manual edits.
+The implementation phases below preserve the graph's development history;
+old phase counts and active-PR labels are historical, not live status.
+
+<details>
+<summary>Preserved historical account and checkpoint wording</summary>
+
+The dates, counts, active-PR labels and next steps below belong to their original checkpoints.
+Use the dated navigation above for the repository-wide reading path.
+
 # RHRC Repository Knowledge Graph (RHKG)
 
 RHKG is a deterministic, derived integration layer over the repository's existing
@@ -400,3 +426,6 @@ Round 4 adds exact reviewed path rules and standalone module roles through
 semantic roles are preserved. Applications and closure alternatives are
 external source-bound views; graph reachability does not promote them to
 mathematical implication or RH closure.
+
+
+</details>

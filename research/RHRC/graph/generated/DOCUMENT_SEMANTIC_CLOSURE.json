@@ -16,7 +16,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:AUDIT.md",
-      "heading_count": 29,
+      "heading_count": 30,
       "path": "AUDIT.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -28,7 +28,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:FORK_NOTES.md",
-      "heading_count": 19,
+      "heading_count": 20,
       "path": "FORK_NOTES.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -40,11 +40,9 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:README.md",
-      "heading_count": 39,
+      "heading_count": 10,
       "path": "README.md",
-      "route_mentions": [
-        "R003_ccm_bridge"
-      ]
+      "route_mentions": []
     },
     {
       "claim_mentions": [],
@@ -87,6 +85,74 @@
       "route_mentions": []
     },
     {
+      "claim_mentions": [],
+      "document_id": "rh:document:docs/AGENT_GUIDE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:docs/AGENT_GUIDE.md",
+      "heading_count": 6,
+      "path": "docs/AGENT_GUIDE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:docs/CURRENT_STATE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:docs/CURRENT_STATE.md",
+      "heading_count": 6,
+      "path": "docs/CURRENT_STATE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:docs/FRAMEWORKS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:docs/FRAMEWORKS.md",
+      "heading_count": 6,
+      "path": "docs/FRAMEWORKS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:docs/MATHEMATICAL_GLOSSARY.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:docs/MATHEMATICAL_GLOSSARY.md",
+      "heading_count": 6,
+      "path": "docs/MATHEMATICAL_GLOSSARY.md",
+      "route_mentions": [
+        "R001_exceptional_zero",
+        "R002_multi_probe",
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:docs/PROJECT_GUIDE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:docs/PROJECT_GUIDE.md",
+      "heading_count": 15,
+      "path": "docs/PROJECT_GUIDE.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:docs/REPOSITORY_MAP.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:docs/REPOSITORY_MAP.md",
+      "heading_count": 5,
+      "path": "docs/REPOSITORY_MAP.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
       "claim_mentions": [
         "C_RH",
         "R001_PRIME_UPPER",
@@ -102,7 +168,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/CURRENT_RESEARCH_PLAN.md",
-      "heading_count": 73,
+      "heading_count": 74,
       "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -129,7 +195,7 @@
       "document_role": "LIVING_AUTHORITY_INDEX",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/DOCUMENTATION_AUTHORITY.md",
-      "heading_count": 43,
+      "heading_count": 44,
       "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -205,7 +271,7 @@
       "document_role": "LIVING_PROJECT_STATE",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/README.md",
-      "heading_count": 25,
+      "heading_count": 26,
       "path": "research/RHRC/README.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -383,6 +449,16 @@
       "route_mentions": []
     },
     {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/ffbbp/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/ffbbp/README.md",
+      "heading_count": 4,
+      "path": "research/RHRC/ffbbp/README.md",
+      "route_mentions": []
+    },
+    {
       "claim_mentions": [
         "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
       ],
@@ -421,7 +497,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
-      "heading_count": 4,
+      "heading_count": 5,
       "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
       "route_mentions": []
     },
@@ -437,7 +513,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/graph/README.md",
-      "heading_count": 13,
+      "heading_count": 14,
       "path": "research/RHRC/graph/README.md",
       "route_mentions": []
     },
@@ -447,7 +523,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/README.md",
-      "heading_count": 7,
+      "heading_count": 8,
       "path": "research/RHRC/integration/README.md",
       "route_mentions": []
     },
@@ -489,7 +565,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica/README.md",
-      "heading_count": 2,
+      "heading_count": 3,
       "path": "research/RHRC/integration/opica/README.md",
       "route_mentions": []
     },
@@ -549,7 +625,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_followup/README.md",
-      "heading_count": 5,
+      "heading_count": 7,
       "path": "research/RHRC/integration/opica_followup/README.md",
       "route_mentions": []
     },
@@ -559,7 +635,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md",
-      "heading_count": 5,
+      "heading_count": 8,
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md",
       "route_mentions": []
     },
@@ -599,7 +675,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md",
-      "heading_count": 5,
+      "heading_count": 7,
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md",
       "route_mentions": []
     },
@@ -2690,8 +2766,18 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/ool/README.md",
-      "heading_count": 2,
+      "heading_count": 3,
       "path": "research/RHRC/ool/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/permansson/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/permansson/README.md",
+      "heading_count": 5,
+      "path": "research/RHRC/permansson/README.md",
       "route_mentions": []
     },
     {
@@ -3235,7 +3321,7 @@
       ]
     }
   ],
-  "entry_count": 302,
+  "entry_count": 310,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

@@ -18,8 +18,62 @@ BASE_TREE = "5442650eb749576e4a82e2d57460a4b97e19b5a9"
 LEGACY_SCOPE_TEMPLATES = {"rhrc_opica.yml": 4, "rhrc_opica_followup.yml": 7}
 LEGACY_SUITE_TEMPLATES = {"rhrc.yml": 1}
 MANIFEST = "research/RHRC/integration/opica_round4/BUILD_MANIFEST.json"
-AUDITED_PATH_POLICY = "e2e7e5ede7ae5fc91e9f3ec113545603767e4154bfd1ace2d46fb99be81408cd"
+AUDITED_PATH_POLICY = "76aa1cb88930f2c4d501d15c3097702a20580eaea8fde9f4a51b788a7f23dc60"
 REPO = Path(__file__).resolve().parents[4]
+DOCUMENTATION_ADDITIONS = (
+    "docs/AGENT_GUIDE.md",
+    "docs/CURRENT_STATE.md",
+    "docs/FRAMEWORKS.md",
+    "docs/MATHEMATICAL_GLOSSARY.md",
+    "docs/PROJECT_GUIDE.md",
+    "docs/REPOSITORY_MAP.md",
+    "research/RHRC/ffbbp/README.md",
+    "research/RHRC/permansson/README.md",
+)
+DOCUMENTATION_EDITS = (
+    "AGENTS.md",
+    "AUDIT.md",
+    "FORK_NOTES.md",
+    "README.md",
+    "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+    "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+    "research/RHRC/README.md",
+    "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+    "research/RHRC/graph/README.md",
+    "research/RHRC/integration/README.md",
+    "research/RHRC/integration/opica/README.md",
+    "research/RHRC/integration/opica_followup/README.md",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md",
+    "research/RHRC/ool/README.md",
+)
+
+def documentation_migration() -> dict:
+    """The reviewed documentation-only extension; no prefix can authorize paths."""
+    return {"schema": "OPICA4_DOCUMENTATION_MIGRATION_V1", "id": "DOC_NAV_2026_10_28_01",
+            "add": list(DOCUMENTATION_ADDITIONS), "edit": list(DOCUMENTATION_EDITS),
+            "renderer_blocks": "UNCHANGED_ACCEPTED_PARENT_BYTES", "claim_cap": "DOCUMENTATION_ONLY",
+            "agent_instructions": "UNCHANGED_ACCEPTED_PARENT_TAIL_FROM_LITERAL_ANCHOR",
+            "RH": "OPEN", "Step4": "OPEN"}
+
+def preserve_documentation_renderer(current: bytes, parent: bytes, *, path: str) -> None:
+    begin, end = b"<!-- RHRC_CURRENT_STATE_BEGIN -->", b"<!-- RHRC_CURRENT_STATE_END -->"
+    if begin not in parent and end not in parent:
+        return
+    def block(data: bytes) -> bytes:
+        require(data.count(begin) == data.count(end) == 1,
+                "historical renderer marker pair differs: " + path)
+        start, stop = data.index(begin), data.index(end)
+        require(start < stop, "historical renderer markers reversed: " + path)
+        return data[start:stop + len(end)]
+    require(block(current) == block(parent), "historical renderer bytes changed: " + path)
+
+def preserve_agent_instructions(current: bytes, parent: bytes) -> None:
+    anchor = b"Keep the original Markdown/JSON contracts"
+    require(current.count(anchor) == parent.count(anchor) == 1,
+            "AGENTS instruction-tail anchor differs")
+    require(current[current.index(anchor):] == parent[parent.index(anchor):],
+            "protected AGENTS instruction tail changed")
 
 def git(repo: Path, *args: str) -> str:
     env = {**os.environ, "GIT_NO_LAZY_FETCH": "1", "GIT_TERMINAL_PROMPT": "0"}
@@ -37,6 +91,11 @@ def policy_body(manifest: dict) -> dict:
     union = [x for k in result for x in result[k]]
     require(len(union) == len(set(union)), "overlapping file operations")
     validate_path_inventory(result["add"])
+    require(manifest.get("documentation_migration") == documentation_migration(),
+            "reviewed documentation migration differs or is absent")
+    require(set(DOCUMENTATION_ADDITIONS) <= set(result["add"]) and
+            set(DOCUMENTATION_EDITS) <= set(result["edit"]),
+            "reviewed documentation paths missing from exact operations")
     return result
 
 def classification_delta(base_paths, current_paths, policy: dict) -> dict:
@@ -95,6 +154,11 @@ def validate_descendant(repo: Path = REPO, *, require_clean=False) -> dict:
         require(file.is_file(), "parent path missing: " + path)
         if path not in mutable:
             require(blob_hash(file.read_bytes()) == old_blob, "protected parent bytes changed: " + path)
+        if path in DOCUMENTATION_EDITS:
+            parent = subprocess.check_output(["git", "-C", str(repo), "show", BASE + ":" + path])
+            preserve_documentation_renderer(file.read_bytes(), parent, path=path)
+            if path == "AGENTS.md":
+                preserve_agent_instructions(file.read_bytes(), parent)
     for operation in ("add", "edit"):
         for row in manifest[operation]:
             path = unlinked(repo/row["path"])

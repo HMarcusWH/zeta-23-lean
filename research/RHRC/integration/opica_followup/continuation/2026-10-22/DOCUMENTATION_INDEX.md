@@ -1,18 +1,31 @@
-> Current checkpoint: [Stage22](STAGE22_HANDOVER.md), checked code `2440dcde7607baa7bcff2ce9626effa1ae9f3f07`, tree `dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99`. All100 original bodies have historical/narrow evidence. Physical/canonical and continuous-compact domain findings are mathematically closed; full export, registry, parent extension, canonical and release acceptance remain OPEN. Earlier statements retain their historical scope.
-
-> Current checkpoint: [Stage21](STAGE21_HANDOVER.md), checked code `139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e`, tree `3e63b0c72fc04da7bab45388d6096e82e95c4acb`. Ledger:41 historical +59 narrow +0 absent bodies; this is not original-contract/aggregate acceptance. Fresh physical/interface findings and all release obligations remain OPEN. Earlier stage statements below retain their historical scope.
-
-> Current source-pinned research report: [Stage 20](STAGE20_HANDOVER.md). Read its exact theorem domains, controls, all-workflow provenance and novelty comparison before using older stage descriptions. Status:41 historical + 56 narrow + 3 absent; full release/RH/Step4 OPEN.
-
 # Documentation and evidence index
+
+For repository-wide navigation as of 28 October 2026, use the
+[root guide](../../../../../../README.md),
+[current state](../../../../../../docs/CURRENT_STATE.md),
+[project guide](../../../../../../docs/PROJECT_GUIDE.md) and
+[framework map](../../../../../../docs/FRAMEWORKS.md).
+
+## Package checkpoint: Stage22 — 24 October 2026
+
+> [Stage22](STAGE22_HANDOVER.md), checked code `2440dcde7607baa7bcff2ce9626effa1ae9f3f07`, tree `dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99`. All100 original bodies have historical/narrow evidence. Physical/canonical and continuous-compact domain findings are mathematically closed; full export, registry, parent extension, canonical and release acceptance remain OPEN. Earlier statements retain their historical scope.
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE20_HANDOVER.md](STAGE20_HANDOVER.md)
-for the latest exact sources and gates. Check the live Git head and workflow
-results before editing. The next agent starts from [NEXT_AGENT_PROMPT.md](NEXT_AGENT_PROMPT.md). The stage
+checkpoint and its staged repairs through [Stage22](STAGE22_HANDOVER.md).
+The [100-root ledger](ROOT_LEDGER_100.json) retains41 historical +59 narrow
+theorem-body records; this does not imply aggregate or full-release acceptance.
+Check the live Git head and workflow results before editing. Compare older task
+instructions in [NEXT_AGENT_PROMPT.md](NEXT_AGENT_PROMPT.md) with Stage22 and the
+ledger before selecting new work. The stage
 pipeline and its Stage 18 scripts are in [tools/stage_record](tools/stage_record/README.md),
 and unregistered proof drafts (no authority) are in [drafts](drafts/README.md).
+
+### Historical checkpoint summaries
+
+> Historical Stage21 checkpoint: [Stage21](STAGE21_HANDOVER.md), checked code `139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e`, tree `3e63b0c72fc04da7bab45388d6096e82e95c4acb`. Ledger:41 historical +59 narrow +0 absent bodies; this is not original-contract/aggregate acceptance. Fresh physical/interface findings and all release obligations remain OPEN. Earlier stage statements below retain their historical scope.
+
+> Historical source-pinned Stage20 report: [Stage 20](STAGE20_HANDOVER.md). Read its exact theorem domains, controls, all-workflow provenance and novelty comparison before using older stage descriptions. Status:41 historical + 56 narrow + 3 absent; full release/RH/Step4 OPEN.
 
 ## Reading order
 
@@ -29,7 +42,7 @@ and unregistered proof drafts (no authority) are in [drafts](drafts/README.md).
    and [Post-Green Amendment v1.1](inputs/OPICA_Followup_PostGreen_Amendment_v1_1_2026-10-21.md).
    The amendment supplies supporting research, not extra mandatory roots.
 4. Inspect the actual [Lean sources](../../../../../../Zeta23/OPICAFollowup),
-   [independent consumers](consumers), [current proof review](evidence/current-codex/lean-review/REVIEW.md)
+   [independent consumers](consumers), [original narrow proof review](evidence/current-codex/lean-review/REVIEW.md)
    and [source/import provenance](provenance/MODULE_IMPORT_REFINEMENTS.json).
 5. Choose work from [REMAINING_WORK.md](REMAINING_WORK.md),
    [NEXT_AGENT_PROMPT.md](NEXT_AGENT_PROMPT.md) and the
@@ -43,7 +56,7 @@ and unregistered proof drafts (no authority) are in [drafts](drafts/README.md).
 | Original Markdown/JSON specifications | Define all 100 primary contracts and 28 acceptance units. Historical PLANNED fields are preserved input metadata, not current proof receipts. |
 | ROOT_LEDGER_100.json | Current per-root implementation and evidence stages. Every embedded contract equals its original PUBLIC_ROOTS object. All current aggregate/full-release gates remain OPEN. |
 | MODULE_STATUS.md | Deterministic navigation table derived from the ledger and file presence. Counts and source links confer no proof authority. |
-| README / next-agent task / remaining work | Current operational instructions and named unfinished obligations. Read actual definitions and full contracts before proving anything. |
+| README / next-agent task / remaining work | Package instructions and unfinished obligations at their named checkpoints; compare older task lists with Stage22 and the ledger. Read actual definitions and full contracts before proving anything. |
 | Manual OPICA map | Shows work lanes and evidence locations. Its arrows are navigation, not compiler dependencies or mathematical implications. |
 | Generated RHKG and integration views | Governed producer outputs with their own exact source/compiler anchors. Follow the producer chain before claiming current freshness. |
 | SOURCE_REGISTER / WORKFLOW_CONTRACT | Implementation refinements and draft/planned gate metadata. Their historical fingerprints and planned job lists are not fresh receipts. |
@@ -70,6 +83,8 @@ and unregistered proof drafts (no authority) are in [drafts](drafts/README.md).
   retained two blocked tests; supplied successful Linux evidence is separate.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
+
+### Historical stage findings through Stage19
 
 [Stage 19](STAGE19_HANDOVER.md) proves the original actual force-sampling consumer (F1-F3):
 for actual strip zeros with nonreal kappa, both Fourier conventions, the physical lattice force,

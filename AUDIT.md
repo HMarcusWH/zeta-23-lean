@@ -1,28 +1,19 @@
-# RHRC formal audit — merged theorem authority PR #272; research evidence PR #223
+# Formal audit history and evidence
 
-<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
-## Current audit routing — 22 October 2026
+For current repository routing, read the [README](README.md),
+[dated snapshot](docs/CURRENT_STATE.md), [project guide](docs/PROJECT_GUIDE.md)
+and [repository map](docs/REPOSITORY_MAP.md).
+The [upstream README](UPSTREAM_README.md), [upstream audit](UPSTREAM_AUDIT.md),
+[LICENSE](LICENSE) and [NOTICE](NOTICE) retain original attribution.
+RH, Step 4 and the independent closing premises remain OPEN.
 
-The active OPICA work is draft PR #294, following accepted parent PR #293.
-Read the [continuation guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md),
-[documentation and evidence index](research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md),
-[current root ledger](research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json) and [current module status](research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md).
-Use the current-stage handover and exact source/evidence links from those pages;
-check the live head and actual CI before asserting current acceptance.
+The account below is historical. Its dates, theorem anchors and pending-work
+labels must be read with their exact source receipts, not as live PR status.
 
-The target remains 100 roots / 28 acceptance units. The ledger separates
-historical source-bound results, narrow local gates, candidates and absent
-implementations; current aggregate/release acceptance remains OPEN.
-The generated Control-v2 block and dated current/next wording below retain their
-historical authority scope. They do not describe current PR routing or accept
-the child package. Frozen specifications define obligations; live exact-source
-compiler/CI evidence determines what is proved. Graph/framework views do not.
+<details>
+<summary>Historical Control-v2 snapshot: frozen PR #287 scope</summary>
 
-RH, Step 4 and the independent closing inequalities remain OPEN.
-
----
-
-> **RH remains OPEN.**
+This preserved machine block is a historical receipt, not current PR routing.
 
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
@@ -76,6 +67,42 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+</details>
+
+<details>
+<summary>Preserved historical account and checkpoint wording</summary>
+
+The dates, counts, active-PR labels and next steps below belong to their original checkpoints.
+Use the dated navigation above for the repository-wide reading path.
+
+# RHRC formal audit — merged theorem authority PR #272; research evidence PR #223
+
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+## Current audit routing — 22 October 2026
+
+The active OPICA work is draft PR #294, following accepted parent PR #293.
+Read the [continuation guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md),
+[documentation and evidence index](research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md),
+[current root ledger](research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json) and [current module status](research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md).
+Use the current-stage handover and exact source/evidence links from those pages;
+check the live head and actual CI before asserting current acceptance.
+
+The target remains 100 roots / 28 acceptance units. The ledger separates
+historical source-bound results, narrow local gates, candidates and absent
+implementations; current aggregate/release acceptance remains OPEN.
+The generated Control-v2 block and dated current/next wording below retain their
+historical authority scope. They do not describe current PR routing or accept
+the child package. Frozen specifications define obligations; live exact-source
+compiler/CI evidence determines what is proved. Graph/framework views do not.
+
+RH, Step 4 and the independent closing inequalities remain OPEN.
+
+---
+
+> **RH remains OPEN.**
+
+
 
 ## Post-#247 programme override
 
@@ -554,3 +581,6 @@ R_max  =  1.02497161190896926446719955942e-6
 No Lean theorem changed. Theorem authority remains #213. The retained-state implication was not tested. The current active target is the exact retained negative-root cross-parity secular composition, not a universal full-carrier sign and not an unproved contact-state substitution.
 
 **RH remains OPEN.**
+
+
+</details>
