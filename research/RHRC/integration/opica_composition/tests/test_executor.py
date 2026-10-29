@@ -240,17 +240,24 @@ class NativeExecutorCases(unittest.TestCase):
         with self.assertRaises(ContractError): parse_native(log,"OPICA_NATIVE")
 
 
+def _fixture_interpreter():
+    # Resolve the host-selected test interpreter before building trusted paths.
+    # Linux Python launchers may be aliases; worker link guards stay strict.
+    return str(Path(sys.executable).resolve(strict=True))
+
+
 class PortableResourceOutcomeTests(unittest.TestCase):
     """Real small local processes test coordinator behavior, never Lean validity."""
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory(prefix="opica-worker-outcomes-")
         self.addCleanup(self.tmp.cleanup)
         self.root=Path(self.tmp.name)
-        self.worker=WorkerConfig(sys.executable,str(Path(sys.executable).parent),[str(self.root)],production=False)
+        self.python=_fixture_interpreter()
+        self.worker=WorkerConfig(self.python,str(Path(self.python).parent),[str(self.root)],production=False)
 
     def run_script(self,script,budget=None):
         output=self.root/uuid.uuid4().hex;output.mkdir()
-        with patch.object(executor,"_recipe",return_value=([sys.executable,"-c",script],dict(os.environ))), \
+        with patch.object(executor,"_recipe",return_value=([self.python,"-c",script],dict(os.environ))), \
                 redirect_stderr(io.StringIO()):
             result=run_worker(self.worker,output,"Fixture.lean","Fixture.olean",budget or SearchBudget())
         return result,output
@@ -352,6 +359,16 @@ class PortableResourceOutcomeTests(unittest.TestCase):
         self.assertEqual(result["output_sizes"]["log_bytes"],1000)
 
     def test_success_receipt_preserves_wait_scope_and_observed_sizes(self):
+        with patch.object(sys,"executable",str(self.root/"missing-python")):
+            with self.assertRaises(FileNotFoundError):_fixture_interpreter()
+        if os.name!="nt":
+            alias=self.root/"python-alias"
+            alias.symlink_to(self.python)
+            with self.assertRaises(ContractError):worker_capability(replace(self.worker,lean=str(alias)))
+            with patch.object(sys,"executable",str(alias)):
+                canonical=_fixture_interpreter()
+            self.assertEqual(canonical,self.python)
+            self.assertEqual(worker_capability(replace(self.worker,lean=canonical)),"NATIVE_DEVELOPMENT_ONLY")
         result,output=self.run_script("from pathlib import Path; Path('Fixture.olean').write_bytes(b'object'); print('done')")
         self.assertEqual(result["exit_code"],0)
         self.assertIsNone(result["resource_status"])
@@ -399,8 +416,9 @@ class NativeResourceLimitCases(unittest.TestCase):
     def linux_probe(self,args,script):
         worker,_,_=native_context()
         require(platform.system()=="Linux" and worker.production,"real isolated Linux worker required")
-        process=subprocess.run([worker.prlimit,"--core=0",*args,"--",sys.executable,"-c",script],
-            env={"PATH":str(Path(sys.executable).parent)},stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=10)
+        python=_fixture_interpreter()
+        process=subprocess.run([worker.prlimit,"--core=0",*args,"--",python,"-c",script],
+            env={"PATH":str(Path(python).parent)},stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=10)
         self.assertLessEqual(len(process.stdout)+len(process.stderr),4096)
         return process,executor._classify_worker_exit(process.returncode)
 

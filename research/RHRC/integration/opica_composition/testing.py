@@ -8,11 +8,33 @@ import subprocess
 import sys
 import unittest
 from .canonical import require, canonical_bytes, load_bytes
-from .snapshot import file_hash
+from .snapshot import file_hash, _evidence_file
 
 PACKAGE = 'research.RHRC.integration.opica_composition.tests'
 TEST_ROOT = Path(__file__).parent/'tests'
 INVENTORY = Path(__file__).parent/'EXPECTED_TESTS.json'
+FAILURE_TAIL_BYTES = 8192
+
+
+def _emit_failed_test_diagnostics(output,mode):
+    """Fixed-path, no-follow, bounded tails; never interpret receipt log paths."""
+    require(mode in {'normal','optimized'},'Known test mode required')
+    for suffix in ('.json','.log','.driver.log'):
+        name=mode+suffix
+        try:
+            with _evidence_file(output,name) as (stream,info):
+                stream.seek(max(0,info.st_size-FAILURE_TAIL_BYTES))
+                raw=stream.read(FAILURE_TAIL_BYTES)
+            row={'authority':'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE','file':name,
+                 'bytes':info.st_size,'tail_bytes':len(raw),'truncated':info.st_size>len(raw),
+                 'tail':raw.decode('utf-8',errors='replace')}
+            # One escaped line cannot introduce workflow commands or control
+            # characters from child output into the parent job log.
+            sys.stderr.write('OPICA_TEST_DIAGNOSTIC_ONLY '+json.dumps(row,ensure_ascii=True)+'\n')
+        except FileNotFoundError:continue
+        except Exception as error:
+            try:sys.stderr.write('OPICA_TEST_DIAGNOSTIC_ONLY_UNAVAILABLE '+name+' '+type(error).__name__+'\n')
+            except (OSError,ValueError,AttributeError):pass
 
 def discover_methods():
     result=[]
@@ -65,13 +87,19 @@ def run_modes(lane,output,repo):
     require(methods,'Lane has no declared methods')
     output=Path(output);output.mkdir(parents=True,exist_ok=True);rows=[]
     for optimized in (False,True):
-        receipt=output/('optimized.json' if optimized else 'normal.json')
+        mode='optimized' if optimized else 'normal'
+        receipt=output/(mode+'.json')
         argv=[sys.executable,*(['-O'] if optimized else []),'-B','-m',__name__,
               '--lane',lane,'--receipt',str(receipt)]
-        with receipt.with_suffix('.driver.log').open('wb') as stream:
-            process=subprocess.run(argv,cwd=repo,stdout=stream,stderr=subprocess.STDOUT,timeout=30000)
-        require(process.returncode==0,'Normal/optimized test process failed: '+str(receipt))
-        rows.append(load_bytes(receipt.read_bytes()))
+        try:
+            with receipt.with_suffix('.driver.log').open('wb') as stream:
+                process=subprocess.run(argv,cwd=repo,stdout=stream,stderr=subprocess.STDOUT,timeout=30000)
+            require(process.returncode==0,'Normal/optimized test process failed: '+str(receipt))
+            rows.append(load_bytes(receipt.read_bytes()))
+        except BaseException:
+            try:_emit_failed_test_diagnostics(output,mode)
+            except Exception:pass
+            raise
     return rows
 
 if __name__=='__main__':

@@ -7,19 +7,20 @@ The positive support-receipt test executes the real authored49-test runner.
 from collections import Counter
 from pathlib import Path
 import json
+import io
 import copy
 import hashlib
 import subprocess
 import sys
 import os
 import stat
-from contextlib import contextmanager
+from contextlib import contextmanager, redirect_stderr
 from types import SimpleNamespace
 import tempfile
 import unittest
 from unittest.mock import patch
 
-from research.RHRC.integration.opica_composition import cli, executor, qualification, snapshot
+from research.RHRC.integration.opica_composition import cli, executor, qualification, snapshot, testing
 from research.RHRC.integration.opica_composition.contracts import WorkerConfig, SearchBudget
 from research.RHRC.integration.opica_round4 import math_gate
 from research.RHRC.integration.opica_composition.accept import ROUND4_LANES
@@ -450,6 +451,107 @@ class CliOrchestrationTests(unittest.TestCase):
                 with patch.object(cli, "run_command", side_effect=rejected_wrapper):
                     with self.assertRaises(ContractError):
                         cli.support_regressions(REPO, root)
+
+        # Exercise an actual failing unittest child and its real receipt/log,
+        # including the CONTRACT lane's optional diagnostic transport. This
+        # fixture supplies no successful test or native-proof authority.
+        emitter = '''import sys, types
+from research.RHRC.integration.opica_composition.testing import run_tests
+fixture = types.ModuleType('opica_failed_test_fixture')
+exec("import unittest\\nclass Failing(unittest.TestCase):\\n def test_failure(self):\\n  self.fail('x'*20000+' FAILURE_TAIL_MARKER\\\\n::error::child output\\\\x1b[31m')\\n", fixture.__dict__)
+sys.modules[fixture.__name__] = fixture
+run_tests(['opica_failed_test_fixture.Failing.test_failure'], sys.argv[1])
+'''
+        actual_run = subprocess.run
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);output=root/'failed-contract';stderr=io.StringIO()
+            def failed_child(command,**options):
+                receipt=command[command.index('--receipt')+1]
+                return actual_run([sys.executable,*(['-O'] if '-O' in command else []),'-B','-c',emitter,receipt],**options)
+            def failed_lane(lane,repo,folder,experiment,**options):
+                return testing.run_modes(lane,folder/'tests',repo)
+            with patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':''}), \
+                    patch.object(testing,'checked_inventory',return_value={'tests':[
+                        {'lane':'CONTRACT','method':'opica_failed_test_fixture.Failing.test_failure'}]}), \
+                    patch.object(testing.subprocess,'run',side_effect=failed_child) as child, \
+                    patch.object(cli,'_run_lane_impl',side_effect=failed_lane),redirect_stderr(stderr), \
+                    self.assertRaisesRegex(ContractError,'Normal/optimized test process failed'):
+                cli.run_lane('CONTRACT',REPO,output,{})
+            self.assertEqual(child.call_count,1)
+            receipt=load_bytes((output/'tests/normal.json').read_bytes())
+            self.assertEqual((receipt['status'],receipt['failures'],receipt['errors']),('FAIL',1,0))
+            self.assertEqual(receipt['test_ids'],['opica_failed_test_fixture.Failing.test_failure'])
+            self.assertFalse((output/'tests/optimized.json').exists())
+            records=[json.loads(line.removeprefix('OPICA_TEST_DIAGNOSTIC_ONLY '))
+                     for line in stderr.getvalue().splitlines()]
+            self.assertEqual({row['file'] for row in records},{'normal.json','normal.log','normal.driver.log'})
+            self.assertTrue(all(row['tail_bytes']<=testing.FAILURE_TAIL_BYTES for row in records))
+            self.assertTrue(all(row['authority']=='DIAGNOSTIC_ONLY_NOT_ACCEPTANCE' for row in records))
+            log=next(row for row in records if row['file']=='normal.log')
+            self.assertTrue(log['truncated']);self.assertIn('FAILURE_TAIL_MARKER',log['tail'])
+            self.assertNotIn('\x1b',stderr.getvalue())
+            self.assertNotIn('\n::error::',stderr.getvalue())
+            report=load_bytes((output/'failure-diagnostics/index.json').read_bytes())
+            self.assertEqual(report['authority'],'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE')
+            self.assertIsNone(report['native_root'])
+            self.assertEqual({row['path'] for row in report['files']},
+                             {'tests/normal.json','tests/normal.log','tests/normal.driver.log'})
+            for row in report['files']:
+                self.assertEqual((output/'failure-diagnostics'/row['path']).read_bytes(),(output/row['path']).read_bytes())
+            self.assertFalse((output/'lane.json').exists())
+            self.assertFalse((output/'results.json').exists())
+
+            primary=ContractError('original child launch failure')
+            with patch.object(testing,'checked_inventory',return_value={'tests':[{'lane':'CONTRACT','method':'fixture'}]}), \
+                    patch.object(testing.subprocess,'run',side_effect=primary), \
+                    patch.object(testing,'_emit_failed_test_diagnostics',side_effect=RuntimeError('optional tail failed')), \
+                    self.assertRaises(ContractError) as caught:
+                testing.run_modes('CONTRACT',root/'reporter-failed',REPO)
+            self.assertIs(caught.exception,primary)
+
+            # Linked logs and receipt-supplied paths never redirect either the
+            # bounded tail reporter or the optional fixed-path artifact copy.
+            hostile=root/'hostile';(hostile/'tests').mkdir(parents=True)
+            outside=root/'external.log';secret=b'EXTERNAL_TEST_LOG_BYTES_MUST_NEVER_BE_READ';outside.write_bytes(secret)
+            (hostile/'tests/normal.json').write_bytes(canonical_bytes({'log':str(outside)}))
+            (hostile/'tests/normal.driver.log').write_bytes(b'x'*1000+b'BOUNDED_DRIVER_END')
+            (hostile/'tests/optimized.json').write_bytes(b'{}')
+            alias=hostile/'tests/normal.log'
+            @contextmanager
+            def linked_log():
+                if os.name!='nt':
+                    alias.symlink_to(outside);yield
+                else:
+                    alias.write_bytes(b'placeholder')
+                    original=os.lstat
+                    def lstat(path,*args,**kwargs):
+                        info=original(path,*args,**kwargs)
+                        if Path(os.path.abspath(path))==alias:
+                            fields={name:getattr(info,name) for name in dir(info) if name.startswith('st_')}
+                            fields['st_file_attributes']=1024
+                            return SimpleNamespace(**fields)
+                        return info
+                    with patch.object(os,'lstat',side_effect=lstat):yield
+            stderr=io.StringIO()
+            with linked_log(),patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':''}), \
+                    patch.object(testing,'FAILURE_TAIL_BYTES',32), \
+                    patch.object(cli,'FAILURE_DIAGNOSTIC_MAX_FILE_BYTES',128), \
+                    patch.object(cli,'FAILURE_DIAGNOSTIC_MAX_TOTAL_BYTES',128),redirect_stderr(stderr):
+                testing._emit_failed_test_diagnostics(hostile/'tests','normal')
+                report=cli._collect_failed_native_diagnostics('CONTRACT',REPO,hostile)
+            records=[json.loads(line.removeprefix('OPICA_TEST_DIAGNOSTIC_ONLY '))
+                     for line in stderr.getvalue().splitlines() if line.startswith('OPICA_TEST_DIAGNOSTIC_ONLY ')]
+            self.assertTrue(all(row['tail_bytes']<=32 for row in records))
+            self.assertTrue(any(row['file']=='normal.driver.log' and row['truncated'] and
+                                row['tail'].endswith('BOUNDED_DRIVER_END') for row in records))
+            self.assertNotIn(secret.decode(),stderr.getvalue())
+            self.assertNotIn('tests/normal.log',{row['path'] for row in report['files']})
+            self.assertLessEqual(report['retained_bytes'],128)
+            self.assertTrue(any(row['path']=='tests/normal.driver.log' and row['reason']=='PER_FILE_LIMIT'
+                                for row in report['omissions']))
+            for row in report['files']:
+                self.assertNotIn(secret,(hostile/'failure-diagnostics'/row['path']).read_bytes())
+            self.assertEqual(outside.read_bytes(),secret)
 
 
 if __name__ == "__main__":

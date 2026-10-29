@@ -445,7 +445,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/cli.py",
-      "sha256": "a9152d53c0755b73e944889e8cd241a928725455a3e2f6c34d178392ed6fd023"
+      "sha256": "e26c26f7fecb75d852f83bd1c96a5ba395f5e74ad1a19e2eb0a7f97bfa551998"
     },
     {
       "path": "research/RHRC/integration/opica_composition/closure.py",
@@ -541,7 +541,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/testing.py",
-      "sha256": "790eed282ba526ff5f2b7f55201e3f28ab0e80e7d16e278eba2dfd0bd918370a"
+      "sha256": "002e57d4afc590ae957caa06f374e8692408f278a4e8619ad8e03d6dae59d4cf"
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_acceptance.py",
@@ -553,7 +553,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_cli.py",
-      "sha256": "17985b3c3ece8854deb59e7c10e513b984f52b73ea34c733be057a1b58cb6c16"
+      "sha256": "2c4f1f7125dfc88e163fa236363a18292bb34214a3bb246cfc5939602e8cc6bc"
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_closure.py",
@@ -585,7 +585,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_executor.py",
-      "sha256": "23e1c9567e91deaebf16d85dc3dd3af6bef3f65f2fe9eaa1704d4b84173403d0"
+      "sha256": "4ec76016c83b35afe79db94eae2a1887d0e3f4723c308e244bd6664ab0d3d170"
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
@@ -653,7 +653,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/CI_REPAIR_2026-10-28.md",
-      "sha256": "dcb97b2df0b77c3ecac36ed46a7318769bb9a76128b1609520bea89c5861cdfa"
+      "sha256": "a2a48cc8230044116c46f82d9acdbd71ad98fc54c368812a6254185efb6e854d"
     },
     {
       "path": "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json",

@@ -88,19 +88,19 @@ def _failure_diagnostic_bytes(root,relative,maximum):
 
 
 def _collect_failed_native_diagnostics(lane,repo,output):
-    """Best-effort failed-run evidence, categorically outside lane acceptance."""
+    """Best-effort fixed test receipts and native files, outside lane acceptance."""
     repo=unlinked(repo).resolve();output=external(repo,output)
     require(output.is_dir(),'Validated existing lane output required for diagnostics')
     native=os.environ.get('OPICA_NATIVE_OUTPUT')
-    require(native,'Native volume unavailable for failure diagnostics')
-    native=unlinked(native).resolve()
-    require(native.is_dir() and not native.is_relative_to(repo) and
-      not native.is_relative_to(output) and not output.is_relative_to(native),
-      'Diagnostic native volume must be disjoint from source and lane output')
+    if native:
+        native=unlinked(native).resolve()
+        require(native.is_dir() and not native.is_relative_to(repo) and
+          not native.is_relative_to(output) and not output.is_relative_to(native),
+          'Diagnostic native volume must be disjoint from source and lane output')
     destination=unlinked(output/'failure-diagnostics')
     require(not destination.exists(),'Fresh diagnostic directory required');destination.mkdir()
     report={'schema':'OPICA_FAILED_NATIVE_DIAGNOSTICS_V1','authority':'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE',
-      'lane':lane,'native_root':str(native),'files':[],'omissions':[],'omission_counts':{},
+      'lane':lane,'native_root':str(native) if native else None,'files':[],'omissions':[],'omission_counts':{},
       'traversal_truncated':False,'omissions_truncated':False,'retained_bytes':0,
       'limits':{'files':FAILURE_DIAGNOSTIC_MAX_FILES,'file_bytes':FAILURE_DIAGNOSTIC_MAX_FILE_BYTES,
         'total_bytes':FAILURE_DIAGNOSTIC_MAX_TOTAL_BYTES,'entries':FAILURE_DIAGNOSTIC_MAX_ENTRIES}}
@@ -109,7 +109,7 @@ def _collect_failed_native_diagnostics(lane,repo,output):
         if len(report['omissions'])<FAILURE_DIAGNOSTIC_MAX_OMISSIONS:
             report['omissions'].append({'path':relative,'reason':reason,**details})
         else:report['omissions_truncated']=True
-    stack=[native];candidates=[];entries=0
+    stack=[native] if native else [];candidates=[];entries=0
     while stack:
         directory=stack.pop();relative=directory.relative_to(native).as_posix()
         scan_descriptors=[]
@@ -148,6 +148,29 @@ def _collect_failed_native_diagnostics(lane,repo,output):
         unlinked(path.parent);path.parent.mkdir(parents=True,exist_ok=True);unlinked(path.parent)
         fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL|getattr(os,'O_NOFOLLOW',0),0o600)
         with os.fdopen(fd,'wb') as stream:stream.write(data)
+    # Test lanes can fail before native work starts. Only these six authored
+    # output paths are eligible: receipt fields cannot redirect collection.
+    # They share the native collector's byte/file budgets and no-follow reads.
+    for mode in ('normal','optimized'):
+        for suffix in ('.json','.log','.driver.log'):
+            relative='tests/'+mode+suffix
+            try:
+                path=unlinked(output/relative);info=os.lstat(path)
+                if not stat.S_ISREG(info.st_mode):omit(relative,'NONREGULAR_REFUSED');continue
+                if info.st_size>FAILURE_DIAGNOSTIC_MAX_FILE_BYTES:
+                    omit(relative,'PER_FILE_LIMIT',bytes=info.st_size);continue
+                if len(report['files'])>=FAILURE_DIAGNOSTIC_MAX_FILES:
+                    omit(relative,'FILE_COUNT_LIMIT',bytes=info.st_size);continue
+                remaining=FAILURE_DIAGNOSTIC_MAX_TOTAL_BYTES-report['retained_bytes']
+                if info.st_size>remaining:omit(relative,'TOTAL_BYTES_LIMIT',bytes=info.st_size);continue
+                data=evidence_bytes(output,relative,min(remaining,FAILURE_DIAGNOSTIC_MAX_FILE_BYTES))
+                value=hashlib.sha256(data).hexdigest()
+                save(destination/relative,data)
+                report['files'].append({'path':relative,'bytes':len(data),'sha256':value})
+                report['retained_bytes']+=len(data)
+            except FileNotFoundError:continue
+            except (OSError,ValueError) as error:
+                omit(relative,'FILE_READ_OR_COPY_FAILED',error=type(error).__name__)
     for relative,size in sorted(candidates,key=priority):
         if size>FAILURE_DIAGNOSTIC_MAX_FILE_BYTES:omit(relative,'PER_FILE_LIMIT',bytes=size);continue
         if len(report['files'])>=FAILURE_DIAGNOSTIC_MAX_FILES:omit(relative,'FILE_COUNT_LIMIT',bytes=size);continue
