@@ -8,6 +8,7 @@ Pinned benchmark projection tests use real Git objects and checkout commands;
 Linux tests create actual symlinks rather than skipping their conversion.
 """
 from contextlib import contextmanager, redirect_stderr
+from dataclasses import asdict, replace
 import hashlib
 import io
 import json
@@ -16,6 +17,7 @@ from pathlib import Path
 import shutil
 import stat
 import subprocess
+import sys
 import tempfile
 from types import SimpleNamespace
 import unittest
@@ -540,6 +542,13 @@ class PinnedBenchmarkProjectionTests(unittest.TestCase):
 
 
 class FailedNativeDiagnosticTests(unittest.TestCase):
+    PROBE_SOURCES = {
+        "stdlib": "import Lean\nopen Lean Elab Command\nrun_cmd do\n  let _ ← getEnv\n  pure ()\nexample : True := True.intro\n",
+        "project": "import Zeta23.RHRC.OpicaComposition.FiniteWorlds\n"
+                   "import Zeta23.RHRC.OpicaComposition.Export\n"
+                   "run_cmd Zeta23.RHRC.OpicaComposition.exportTarget "
+                   "`Zeta23.RHRC.OpicaComposition.FiniteWorlds.IdentityTarget \"value\"\n"}
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(prefix="opica-failed-native-")
         self.addCleanup(self.tmp.cleanup)
@@ -556,7 +565,7 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
             report = cli._collect_failed_native_diagnostics("CURRENT_COMPATIBILITY", self.repo, output)
         return output, report
 
-    def smoke_worker(self):
+    def smoke_worker(self, *, project=False):
         """Filesystem fixture only; no test invokes a real compiler or tracer."""
         toolchain = self.root / "toolchain"
         standard = toolchain / "lib" / "lean"
@@ -564,9 +573,101 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
         lean = toolchain / "bin" / "lean"
         lean.parent.mkdir(exist_ok=True)
         lean.write_bytes(b"compiler fixture: never executed")
-        return WorkerConfig(str(lean), str(toolchain), [str(standard.resolve())], production=True)
+        paths = [str(standard.resolve())]
+        if project:
+            compiled = self.repo / ".lake" / "build" / "lib" / "lean"
+            for name in ("FiniteWorlds", "Export"):
+                obj = compiled / "Zeta23" / "RHRC" / "OpicaComposition" / (name + ".olean")
+                obj.parent.mkdir(parents=True, exist_ok=True)
+                obj.write_bytes(b"prepared import fixture: never loaded")
+            paths.insert(0, str(compiled.resolve()))
+        return WorkerConfig(str(lean), str(toolchain), paths, production=True)
+
+    def assert_probe_preparation_order(self):
+        """Mock orchestration stops before qualification; no full PASS fixture."""
+        worker = self.smoke_worker(project=True)
+        standard = str((Path(worker.toolchain_root) / "lib" / "lean").resolve())
+        compiled = str((self.repo / ".lake/build/lib/lean").resolve())
+        (self.repo / "lean-toolchain").write_text(qualification.LEAN_PIN + "\n", encoding="utf-8")
+        lake = "/fixture/lake"
+        for failed_stage in ("stdlib", "project", "post-source"):
+            events, commands = [], {}
+            source_calls = [0]
+            output = self.native / ("prepare-order-" + failed_stage)
+
+            def source_scope(repo, modules):
+                source_calls[0] += 1
+                events.append("source-preflight" if source_calls[0] == 1 else "source-recheck")
+                return {"fixture": ("e" if failed_stage == "post-source" and source_calls[0] > 1 else "f") * 64}
+
+            def command(argv, repo, env, folder, label, seconds):
+                events.append(label)
+                commands[label] = (argv, seconds)
+                payloads = {"volume": json.dumps({"filesystems": [{"fstype": "tmpfs", "size": 4294967296,
+                            "target": str(self.native)}]}),
+                            "compiler": "Lean (version 4.33.0-rc2, d8b18978322de05a8f3dba51ef03cf5461676c17)",
+                            "prefix": worker.toolchain_root, "lean-path": worker.lean,
+                            "selected-build": "mock selected build command only",
+                            "import-paths": os.pathsep.join([compiled, standard])}
+                raw = payloads[label].encode("utf-8")
+                (folder / (label + ".stdout.log")).write_bytes(raw)
+                (folder / (label + ".stderr.log")).write_bytes(b"")
+                return {"argv": argv, "returncode": 0, "timeout": False,
+                        "stdout": label + ".stdout.log", "stderr": label + ".stderr.log"}
+
+            def probe(folder, config, *, probe="stdlib"):
+                events.append("probe:" + probe)
+                self.assertTrue(config.production)
+                self.assertEqual(config.budget, asdict(SearchBudget()))
+                self.assertEqual(config.lean, worker.lean)
+                self.assertEqual(config.lean_paths, [standard] if probe == "stdlib" else [compiled, standard])
+                self.assertEqual(folder, output / ("smoke" if probe == "stdlib" else "project-export-probe"))
+                return {"status": "ENVIRONMENT_ERROR" if failed_stage == probe else "PASS_INFRASTRUCTURE_SMOKE",
+                        "authority": "MOCK_ORCHESTRATION_ONLY_NOT_NATIVE", "probe": probe}
+
+            def environment(config, *, manifest_output):
+                events.append("worker-environment")
+                manifest_output.write_bytes(b"{}")
+                return {"authority": "MOCK_ORCHESTRATION_ONLY_NOT_NATIVE"}
+
+            def git(repo, *args):
+                if args[0] == "status":
+                    return ""
+                return ("b" if args[-1] == "HEAD^{tree}" else "a") * 40
+
+            resource = SimpleNamespace(RLIMIT_NOFILE=1, getrlimit=lambda _: (65536, 65536))
+            with self.subTest(failed_preparation_stage=failed_stage), \
+                    patch.object(qualification.platform, "system", return_value="Linux"), \
+                    patch.object(qualification, "git", side_effect=git), \
+                    patch.object(qualification, "_packages", return_value={"fixture": "a" * 40}), \
+                    patch.object(qualification, "frozen_atlas", return_value=[{"module": "Fixture.Module"}]), \
+                    patch.object(qualification, "_source", side_effect=source_scope), \
+                    patch.object(qualification, "_materialize_pinned_benchmark_alias", return_value={"fixture": "NO_GIT_WRITE"}), \
+                    patch.object(qualification, "discover_source_paths", return_value={"lean-toolchain"}), \
+                    patch.object(qualification.shutil, "which", return_value=lake), \
+                    patch.object(qualification, "_command", side_effect=command), \
+                    patch.object(qualification, "_native_infrastructure_smoke", side_effect=probe), \
+                    patch.object(qualification, "worker_environment", side_effect=environment), \
+                    patch.dict(sys.modules, {"resource": resource}), \
+                    patch.dict(os.environ, {"OPICA_NATIVE_OUTPUT": str(self.native)}), self.assertRaises(ContractError):
+                qualification.prepare_native(self.repo, output)
+            self.assertLess(events.index("source-preflight"), events.index("probe:stdlib"))
+            if failed_stage == "stdlib":
+                self.assertNotIn("selected-build", commands)
+                self.assertNotIn("probe:project", events)
+            else:
+                self.assertEqual(commands["selected-build"],
+                    ([lake, "build", *sorted(set(qualification.CORE_MODULES) | {"Fixture.Module"})], 7200))
+                self.assertLess(events.index("probe:stdlib"), events.index("selected-build"))
+                self.assertLess(events.index("selected-build"), events.index("worker-environment"))
+                self.assertLess(events.index("worker-environment"), events.index("probe:project"))
+                if failed_stage == "post-source":
+                    self.assertLess(events.index("probe:project"), events.index("source-recheck"))
+            self.assertEqual(json.loads((output / "result.json").read_bytes())["status"], "ENVIRONMENT_ERROR")
+            self.assertFalse((output / "worker.json").exists())
 
     def assert_startup_diagnostic_boundaries(self):
+        from research.RHRC.integration.opica_round4 import math_gate
         worker = self.smoke_worker()
         budget = SearchBudget(wall_seconds=6)
         tracer = self.root / "trusted-strace-fixture"
@@ -574,12 +675,15 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
         real_unlinked = qualification.unlinked
         observations = {"scope": "MOCK_DIAGNOSTIC_COORDINATOR_HOST_AND_CGROUP", "errors": []}
 
-        def run_case(name, mode):
+        def run_case(name, mode, *, probe="stdlib"):
+            config = self.smoke_worker(project=probe == "project")
             output = self.native / name
             output.mkdir()
             source = output / "OpicaInfrastructureSmoke.lean"
-            source.write_bytes(b"example : True := True.intro\n")
-            completed = mode in {"completed", "object-alias", "object-reparse", "object-nonregular"}
+            source.write_bytes(self.PROBE_SOURCES[probe].encode("utf-8"))
+            if mode == "source-drift":
+                source.write_bytes(b"example : True := True.intro\n")
+            completed = mode not in {"timeout", "output-limit", "cleanup-error"}
             proc = SimpleNamespace(pid=314159, returncode=0 if completed else None)
             proc.poll = Mock(side_effect=lambda: proc.returncode)
 
@@ -636,6 +740,13 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
                     return tracer if mode != "unavailable" else self.root / "missing-strace"
                 return real_unlinked(path)
 
+            real_copy = math_gate._copy_regular
+
+            def copy_fixed_source(original, destination):
+                if mode == "copy-race":
+                    original.write_bytes(b"stable changed source after initial hash\n")
+                return real_copy(original, destination)
+
             clock_calls = [0]
 
             def clock():
@@ -648,15 +759,17 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
                     patch.object(qualification, "unlinked", side_effect=trusted_path), \
                     patch.object(qualification, "_smoke_resource_snapshot", return_value=observations) as observe, \
                     patch.object(qualification.subprocess, "Popen", side_effect=dispatch) as popen, \
+                    patch.object(math_gate, "_copy_regular", side_effect=copy_fixed_source), \
                     patch.object(qualification.time, "monotonic", side_effect=clock), \
                     patch.object(qualification.time, "sleep") as sleep, \
                     patch.object(qualification.os, "killpg", side_effect=kill_error, create=True) as killpg, \
                     patch.object(qualification.signal, "SIGKILL", 9, create=True), \
                     patch.dict(os.environ, {"OPICA_DIAGNOSTIC_SECRET": "fixture-only-never-inherited"}), \
                     redirect_stderr(stderr):
-                report = qualification._failed_smoke_diagnostics(output, worker, budget)
+                report = qualification._failed_smoke_diagnostics(output, config, budget, probe=probe)
             observe.assert_has_calls([unittest.mock.call(), unittest.mock.call()])
             self.assertEqual(report["status"], "DIAGNOSTIC_ONLY")
+            self.assertEqual(report["probe"], probe)
             self.assertEqual(report["authority"], "NO_ACCEPTANCE_OR_PROOF_AUTHORITY")
             self.assertIs(report["accepted"], False)
             self.assertEqual(report["maximum_seconds"], 6)
@@ -672,19 +785,22 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
             self.assertTrue(stderr.getvalue().startswith("OPICA_FAILED_SMOKE_DIAGNOSTIC_ONLY\t"))
             self.assertNotIn("\x1b", stderr.getvalue())
             self.assertIs(json.loads(stderr.getvalue().split("\t", 1)[1])["accepted"], False)
-            if mode == "unavailable":
-                self.assertEqual(report["disposition"], "UNAVAILABLE")
+            if mode in {"unavailable", "source-drift", "copy-race"}:
+                self.assertEqual(report["disposition"], "UNAVAILABLE" if mode == "unavailable" else "ERROR")
                 popen.assert_not_called()
                 killpg.assert_not_called()
                 self.assertNotIn("exit_code", report)
             else:
-                original, env = executor._recipe(worker, output / "diagnostic-only",
+                original, env = executor._recipe(config, output / "diagnostic-only",
                     "OpicaInfrastructureSmoke.lean", "OpicaInfrastructureSmoke.olean", budget)
-                position = original.index(worker.lean)
-                expected = original[:position] + [str(tracer), "-f", "-qq", "-s", "128", "-e",
-                    "trace=mmap,mprotect,munmap,clone,clone3,prlimit64", "-o", "/out/syscalls.trace", "--"] + original[position:]
+                position = original.index(config.lean)
+                expected = original[:position] + [str(tracer), "-f", "-qq", "-yy", "-s", "128", "-e",
+                    "trace=openat,read,lseek,brk,mmap,mprotect,munmap,clone,clone3,prlimit64",
+                    "-e", "status=failed", "-o", "/out/syscalls.trace", "--"] + original[position:]
                 self.assertEqual(popen.call_args.args[0], expected)
                 self.assertEqual(report["command"], expected)
+                self.assertEqual((output / "diagnostic-only" / source.name).read_bytes(), source.read_bytes())
+                self.assertEqual(report["source_sha256"], sha256(self.PROBE_SOURCES[probe].encode("utf-8")))
                 self.assertEqual(report["same_worker_budget"], budget.to_dict())
                 self.assertEqual(env, {})
                 if mode == "completed":
@@ -718,10 +834,13 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
             self.assertIs(stored["accepted"], False)
             return report
 
-        for mode in ("completed", "timeout", "output-limit", "cleanup-error", "unavailable",
+        for probe, text in self.PROBE_SOURCES.items():
+            self.assertEqual(qualification._infrastructure_probe_source(probe), text)
+        for mode in ("completed", "timeout", "output-limit", "cleanup-error", "unavailable", "source-drift", "copy-race",
                      "object-alias", "object-reparse", "object-nonregular"):
             with self.subTest(diagnostic_mode=mode):
                 run_case("trace-" + mode, mode)
+        run_case("trace-project-completed", "completed", probe="project")
 
         linked_output = self.native / "linked-diagnostic-directory"
         linked_output.mkdir()
@@ -834,6 +953,7 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
                 trace.assert_called_once()
                 self.assertEqual(trace.call_args.args[:2], (output, worker))
                 self.assertEqual(trace.call_args.args[2], SearchBudget())
+                self.assertEqual(trace.call_args.kwargs, {"probe": "stdlib"})
                 self.assertEqual(report["status"], "ENVIRONMENT_ERROR")
                 self.assertIs(report["native"], native)
                 self.assertEqual(report["diagnostics"], diagnostic)
@@ -1002,19 +1122,86 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
 
         # A mocked successful worker is used only to check dispatch policy;
         # this fixture does not supply a native qualification receipt.
-        worker = self.smoke_worker()
+        expression = {"format": "LEAN_EXPR_DAG_V1", "nodes": [["const", ["str", ["anonymous"], "True"], []]], "root": "0"}
+        target_row = b"OPICA_TARGET\t" + json.dumps(expression).encode() + b"\n"
+        direct_budget = SearchBudget(heartbeats=314159, wall_seconds=17, output_bytes=512345)
+        for probe in ("stdlib", "project"):
+            worker = replace(self.smoke_worker(project=probe == "project"), budget=asdict(direct_budget))
 
-        def successful_actual(config, output, source, obj, budget):
-            self.assertEqual(config, worker)
-            (output / obj).write_bytes(b"mock compiler object")
-            return {"exit_code": 0, "resource_status": None, "capability": "LINUX_ISOLATED"}
+            def successful_actual(config, output, source, obj, budget):
+                self.assertEqual(config, worker)
+                self.assertEqual(budget, direct_budget)
+                self.assertEqual(source, "OpicaInfrastructureSmoke.lean")
+                self.assertEqual(obj, "OpicaInfrastructureSmoke.olean")
+                self.assertEqual((output / source).read_bytes(), self.PROBE_SOURCES[probe].encode("utf-8"))
+                (output / obj).write_bytes(b"mock compiler object")
+                (output / (source + ".log")).write_bytes(target_row if probe == "project" else b"")
+                return {"exit_code": 0, "resource_status": None, "capability": "LINUX_ISOLATED"}
 
-        with patch.object(qualification, "run_worker", side_effect=successful_actual), \
-                patch.object(qualification, "_failed_smoke_diagnostics") as trace:
-            report = qualification._native_infrastructure_smoke(self.native / "mock-success-smoke", worker)
-        self.assertEqual(report["status"], "PASS_INFRASTRUCTURE_SMOKE")
-        trace.assert_not_called()
-        self.assertNotIn("diagnostics", report)
+            with self.subTest(success_probe=probe), patch.object(qualification, "run_worker", side_effect=successful_actual), \
+                    patch.object(qualification, "_failed_smoke_diagnostics") as trace:
+                report = qualification._native_infrastructure_smoke(self.native / ("mock-success-" + probe), worker, probe=probe)
+            self.assertEqual(report["status"], "PASS_INFRASTRUCTURE_SMOKE")
+            self.assertEqual(report["authority"], "INFRASTRUCTURE_ONLY_NO_RH_AUTHORITY")
+            self.assertEqual(report["probe"], probe)
+            self.assertEqual(report["source_sha256"], sha256(self.PROBE_SOURCES[probe].encode("utf-8")))
+            if probe == "project":
+                self.assertEqual(report["target_type_expression_sha256"], qualification.expression_hash(expression))
+            trace.assert_not_called()
+            self.assertNotIn("diagnostics", report)
+
+        worker = self.smoke_worker(project=True)
+        native = {"exit_code": 1, "resource_status": None, "capability": "LINUX_ISOLATED"}
+        diagnostic = {"status": "DIAGNOSTIC_ONLY", "accepted": False, "disposition": "COMPLETED", "exit_code": 0}
+        with patch.object(qualification, "run_worker", return_value=native), \
+                patch.object(qualification, "_failed_smoke_diagnostics", return_value=diagnostic) as trace:
+            report = qualification._native_infrastructure_smoke(self.native / "project-returned-error", worker, probe="project")
+        self.assertEqual(report["status"], "ENVIRONMENT_ERROR")
+        self.assertIs(report["native"], native)
+        self.assertEqual(trace.call_args.kwargs, {"probe": "project"})
+        self.assertNotIn("target_type_expression_sha256", report)
+
+        for index, raw in enumerate((b"", target_row + target_row)):
+            output = self.native / ("project-invalid-export-" + str(index))
+
+            def invalid_export(config, folder, source, obj, budget):
+                (folder / obj).write_bytes(b"mock compiler object without one complete export")
+                (folder / (source + ".log")).write_bytes(raw)
+                return {"exit_code": 0, "resource_status": None, "capability": "LINUX_ISOLATED"}
+
+            with patch.object(qualification, "run_worker", side_effect=invalid_export), \
+                    patch.object(qualification, "_failed_smoke_diagnostics") as trace, self.assertRaises(ContractError):
+                qualification._native_infrastructure_smoke(output, worker, probe="project")
+            trace.assert_not_called()
+            self.assertEqual(json.loads((output / "result.json").read_bytes())["status"], "ENVIRONMENT_ERROR")
+
+        for index, selector in enumerate(("unknown", "../project", None, {})):
+            output = self.native / ("unknown-profile-" + str(index))
+            with self.subTest(selector=selector), patch.object(qualification, "run_worker") as actual, \
+                    patch.object(qualification.subprocess, "Popen") as trace, self.assertRaises(ContractError):
+                qualification._native_infrastructure_smoke(output, worker, probe=selector)
+            actual.assert_not_called()
+            trace.assert_not_called()
+            self.assertFalse(output.exists())
+            with patch.object(qualification.subprocess, "Popen") as trace, self.assertRaises(ContractError):
+                qualification._failed_smoke_diagnostics(output, worker, SearchBudget(), probe=selector)
+            trace.assert_not_called()
+            self.assertFalse(output.exists())
+        for probe, config in (("stdlib", worker), ("project", self.smoke_worker())):
+            output = self.native / ("wrong-import-profile-" + probe)
+            with self.subTest(wrong_import_profile=probe), patch.object(qualification, "run_worker") as actual, \
+                    self.assertRaises(ContractError):
+                qualification._native_infrastructure_smoke(output, config, probe=probe)
+            actual.assert_not_called()
+            self.assertFalse(output.exists())
+        export = Path(worker.lean_paths[0]) / "Zeta23/RHRC/OpicaComposition/Export.olean"
+        export.unlink()
+        output = self.native / "missing-fixed-project-exporter"
+        with patch.object(qualification, "run_worker") as actual, self.assertRaises(ContractError):
+            qualification._native_infrastructure_smoke(output, worker, probe="project")
+        actual.assert_not_called()
+        self.assertFalse(output.exists())
+        self.assert_probe_preparation_order()
 
 
 if __name__ == "__main__":

@@ -521,7 +521,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/qualification.py",
-      "sha256": "8d139e0f4b6cc546555e88c14c9a3fe6a8dcffede9b0c07cbbc3d4c920d76d0a"
+      "sha256": "6047bfa767dfffdb4b11885acd20c9161c07fa00882de967dce7c3c1269b3a5b"
     },
     {
       "path": "research/RHRC/integration/opica_composition/research_contracts.py",
@@ -609,7 +609,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_native_environment.py",
-      "sha256": "cb26e9604903816cc294bcd77d69ef3e6c1ce443d8955c17adea8ee6e31c960b"
+      "sha256": "4042927914a86d1c5218ecb7070c65d40dbb86d7baee220990f0d15bf5504b73"
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_ool.py",
@@ -653,7 +653,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/CI_REPAIR_2026-10-28.md",
-      "sha256": "0fd82c3e79877954389fe8361cd997903cd1cf835d288d8ec57ece49186dca1f"
+      "sha256": "01aefc89cf967c0c4330c8c4acd999d1f19a683ff2ea8f0c2b1d4f19770ef45c"
     },
     {
       "path": "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json",

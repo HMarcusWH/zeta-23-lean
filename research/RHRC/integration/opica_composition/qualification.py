@@ -291,10 +291,24 @@ def _smoke_resource_snapshot():
     return row
 
 
-def _failed_smoke_diagnostics(output,worker,budget):
+def _infrastructure_probe_source(probe):
+    require(type(probe)is str and probe in {'stdlib','project'},'Closed infrastructure probe selector required')
+    if probe=='stdlib':
+        return ('import Lean\nopen Lean Elab Command\n'
+                'run_cmd do\n  let _ \u2190 getEnv\n  pure ()\n'
+                'example : True := True.intro\n')
+    return ('import Zeta23.RHRC.OpicaComposition.FiniteWorlds\n'
+            'import Zeta23.RHRC.OpicaComposition.Export\n'
+            'run_cmd Zeta23.RHRC.OpicaComposition.exportTarget '
+            '`Zeta23.RHRC.OpicaComposition.FiniteWorlds.IdentityTarget "value"\n')
+
+
+def _failed_smoke_diagnostics(output,worker,budget,*,probe='stdlib'):
     """One bounded traced replay can explain failure, never authorize a pass."""
     from ..opica_round4.math_gate import _copy_regular
+    source_text=_infrastructure_probe_source(probe)
     row={'schema':'OPICA_FAILED_SMOKE_DIAGNOSTIC_V1','status':'DIAGNOSTIC_ONLY',
+         'probe':probe,
          'authority':'NO_ACCEPTANCE_OR_PROOF_AUTHORITY','accepted':False,'disposition':'ERROR',
          'maximum_seconds':min(SMOKE_DIAGNOSTIC_TIMEOUT,budget.wall_seconds),
          'trace_capture_bytes':SMOKE_DIAGNOSTIC_TRACE_BYTES,'log_capture_bytes':SMOKE_DIAGNOSTIC_LOG_BYTES,
@@ -313,11 +327,16 @@ def _failed_smoke_diagnostics(output,worker,budget):
         else:
             row['tracer_sha256']=file_hash(tracer)
             source='OpicaInfrastructureSmoke.lean';obj='OpicaInfrastructureSmoke.olean'
+            expected_source=hashlib.sha256(source_text.encode('utf-8')).hexdigest()
+            require(file_hash(Path(output)/source)==expected_source,
+                    'Diagnostic source differs from fixed infrastructure probe')
             row['source_sha256']=_copy_regular(Path(output)/source,folder/source)
+            require(row['source_sha256']==expected_source,'Copied diagnostic source differs from fixed infrastructure probe')
             command,env=_recipe(worker,folder,source,obj,budget)
             position=command.index(str(Path(worker.lean)))
-            command[position:position]=[str(tracer),'-f','-qq','-s','128','-e',
-                'trace=mmap,mprotect,munmap,clone,clone3,prlimit64','-o','/out/syscalls.trace','--']
+            command[position:position]=[str(tracer),'-f','-qq','-yy','-s','128','-e',
+                'trace=openat,read,lseek,brk,mmap,mprotect,munmap,clone,clone3,prlimit64',
+                '-e','status=failed','-o','/out/syscalls.trace','--']
             row['command']=command;row['same_worker_budget']=budget.to_dict()
             log=folder/'diagnostic.log';trace=folder/'syscalls.trace';started=time.monotonic()
             flags=os.O_WRONLY|os.O_CREAT|os.O_EXCL|getattr(os,'O_NOFOLLOW',0)
@@ -384,7 +403,7 @@ def _safe_smoke_resource_snapshot():
                 'errors':['RESOURCE_SNAPSHOT_UNAVAILABLE:'+type(exc).__name__[:128]]}
 
 
-def _native_infrastructure_smoke(output,worker):
+def _native_infrastructure_smoke(output,worker,*,probe='stdlib'):
     """Exercise the production recipe before the expensive project build.
 
     The separate helper makes the exact worker/source recipe inspectable in
@@ -393,15 +412,25 @@ def _native_infrastructure_smoke(output,worker):
     """
     require(type(worker)is WorkerConfig and worker.production is True,
             'Infrastructure smoke requires the actual production worker')
+    source_text=_infrastructure_probe_source(probe)
     standard=unlinked(Path(worker.toolchain_root)/'lib/lean').resolve()
-    require(worker.lean_paths==[str(standard)],'Infrastructure smoke imports only pinned Lean standard library')
+    if probe=='stdlib':
+        require(worker.lean_paths==[str(standard)],'Infrastructure smoke imports only pinned Lean standard library')
+    else:
+        require(str(standard) in worker.lean_paths and len(worker.lean_paths)>1,
+                'Project export probe requires full prepared native import paths')
+        for module in ('FiniteWorlds','Export'):
+            relative='Zeta23/RHRC/OpicaComposition/'+module+'.olean'
+            require(any(unlinked(Path(root)/relative).is_file() for root in worker.lean_paths),
+                    'Project export probe object absent: '+module)
     output=unlinked(output).absolute();require(not output.exists(),'Fresh infrastructure smoke output required')
     output.mkdir(parents=True)
     source='OpicaInfrastructureSmoke.lean';obj='OpicaInfrastructureSmoke.olean'
-    (output/source).write_text('example : True := True.intro\n',encoding='utf-8',newline='\n')
+    (output/source).write_text(source_text,encoding='utf-8',newline='\n')
     before=file_hash(output/source)
+    require(before==hashlib.sha256(source_text.encode('utf-8')).hexdigest(),'Fixed infrastructure probe source differs')
     report={'schema':'OPICA_NATIVE_INFRASTRUCTURE_SMOKE_V1','status':'ENVIRONMENT_ERROR',
-      'authority':'INFRASTRUCTURE_ONLY_NO_RH_AUTHORITY','source':source,'source_sha256':before,
+      'authority':'INFRASTRUCTURE_ONLY_NO_RH_AUTHORITY','probe':probe,'source':source,'source_sha256':before,
       'object':obj,'native':None,'RH':'OPEN','Step4':'OPEN'}
     worker_raised=False
     try:
@@ -421,10 +450,15 @@ def _native_infrastructure_smoke(output,worker):
         require(file_hash(output/source)==before,'Infrastructure smoke source changed during execution')
         if native['exit_code']==0 and native['resource_status'] is None and (output/obj).is_file():
             require(native['capability']=='LINUX_ISOLATED','Infrastructure smoke was not isolated production execution')
+            if probe=='project':
+                records=[line.split(b'\t',1)[1] for line in (output/(source+'.log')).read_bytes().splitlines()
+                         if line.startswith(b'OPICA_TARGET\t')]
+                require(len(records)==1,'Project infrastructure target export incomplete')
+                report['target_type_expression_sha256']=expression_hash(load_bytes(records[0]))
             report['object_sha256']=file_hash(output/obj)
             report['status']='PASS_INFRASTRUCTURE_SMOKE'
         else:
-            try:report['diagnostics']=_failed_smoke_diagnostics(output,worker,budget)
+            try:report['diagnostics']=_failed_smoke_diagnostics(output,worker,budget,probe=probe)
             except Exception as exc:
                 # A diagnostic failure cannot replace the actual failed worker.
                 report['diagnostics']={'status':'DIAGNOSTIC_ONLY','accepted':False,'disposition':'ERROR','error':str(exc)}
@@ -494,6 +528,9 @@ def prepare_native(repo,output):
         require(str(repo/'.lake/build/lib/lean') in paths,'Fresh host object root absent')
         budget=asdict(SearchBudget());worker=WorkerConfig(str(lean),str(prefix),paths,production=True,budget=budget)
         summary=worker_environment(worker,manifest_output=output/'native-objects.json')
+        report['project_export_probe']=_native_infrastructure_smoke(output/'project-export-probe',worker,probe='project')
+        require(report['project_export_probe']['status']=='PASS_INFRASTRUCTURE_SMOKE',
+                'Actual isolated project target export failed after selected build')
         require(_source(repo,modules)==before and _packages(repo)==packages and git(repo,'rev-parse','HEAD')==report['checked_commit'],'Source changed during native preparation')
         report.update({'status':'PASS_NATIVE_PREPARED','worker':worker.to_dict(),'worker_environment':summary,
           'native_objects_sha256':file_hash(output/'native-objects.json'),'compiler':version,'worker_config_path':str(output/'worker.json')})
