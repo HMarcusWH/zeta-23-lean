@@ -49,17 +49,17 @@
   "inherits_runtime_qualification": false,
   "input_snapshot": {
     "candidate_count": 5548,
-    "candidate_resolution_sha256": "30bc558a0251d547fddf2116b783ba4fba639c6f97952995d9a0a412895de737",
+    "candidate_resolution_sha256": "70caf0e76d2df89f247793c709644e5b36731ca4adabfbc5d31a38d50cc8b3c2",
     "candidate_source_surface_sha256": "78565305b3a3ca04bb2e6a5474d51dce320ee1b0be95b2a88e3121a887691301",
-    "candidate_summary_sha256": "512b16f0e4bb3698729fe8cd442df77803c04a7b6c6333b1ce745431d94d9144",
+    "candidate_summary_sha256": "09daa4cbd856332ad9c66434e20b76323364bc428682b89807a2392cb94b39f0",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
     "registered_compiler_receipt_sha256": "0d40e4a8343f60b5260fe5a5a3c65f88dda51665d14b271d0fb23fd13328bc41",
-    "rhkg_subject_digest_sha256": "0f32eaef3db4d6b818fae48f75500f10ef6c190d1105200e4ecd4d4e813af779",
+    "rhkg_subject_digest_sha256": "2ecea09cb272a799aefcb39c15cd80639baf74b99e2dd891df4712d74fcfa70c",
     "source_only_public_theorem_count": 1744
   },
   "qualification_identity": {
-    "execution_digest": "f66b3eb7bdd720be6abf62b2df09419e18473957d32e98aab916ef5f98390dcb",
-    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:0f32eaef3db4d6b8",
+    "execution_digest": "d93214319aa973f5f6953abc2224404fd6cd491eb44b5073970712a5f01a812f",
+    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:2ecea09cb272a799",
     "profile_digest": "0ab841ca4f9c683bcf206c0cd2e434f07f35b3861073feb370f10195cac49929",
     "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
     "protocol_digest": "30fd49aa7806e29ea8ce750cb91ad0f9edb3d655b9697f6a6dd82d3666a4ac26",

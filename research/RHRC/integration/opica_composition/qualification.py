@@ -105,6 +105,40 @@ def _materialize_pinned_benchmark_alias(package_root,*,expected_commit,expected_
         before='REGULAR_LINK_TEXT'
     # Persist only the checkout representation; HEAD, tree and index stay pinned.
     git(root,'config','--local','core.symlinks','false')
+    if before=='SYMLINK':
+        # Git may retain an already-clean symlink despite checkout-index --force.
+        # Remove only this verified leaf, without opening or following its target.
+        def same_leaf(current):
+            fields=('st_dev','st_ino','st_mode','st_size','st_mtime_ns')
+            require(stat.S_ISLNK(current.st_mode) and
+                    not(getattr(current,'st_file_attributes',0)&1024) and
+                    tuple(getattr(current,k) for k in fields)==tuple(getattr(info,k) for k in fields),
+                    'Pinned benchmark symlink identity changed before unlink')
+        unlinked(path.parent)
+        if os.name!='nt':
+            descriptors=[]
+            try:
+                flags=os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW
+                descriptors.append(os.open(root,flags))
+                for part in Path(relative).parts[:-1]:
+                    descriptors.append(os.open(part,flags,dir_fd=descriptors[-1]))
+                parent_fd=descriptors[-1];parent=os.fstat(parent_fd);current_parent=os.lstat(path.parent)
+                require((parent.st_dev,parent.st_ino)==(current_parent.st_dev,current_parent.st_ino),
+                        'Pinned benchmark parent identity changed before unlink')
+                same_leaf(os.stat(path.name,dir_fd=parent_fd,follow_symlinks=False))
+                require(os.fsencode(os.readlink(path.name,dir_fd=parent_fd))==blob,
+                        'Pinned benchmark raw target changed before unlink')
+                unlinked(path.parent)
+                same_leaf(os.stat(path.name,dir_fd=parent_fd,follow_symlinks=False))
+                os.unlink(path.name,dir_fd=parent_fd)
+            finally:
+                for descriptor in reversed(descriptors):os.close(descriptor)
+        else:
+            same_leaf(os.lstat(path))
+            require(os.fsencode(os.readlink(path))==blob,
+                    'Pinned benchmark raw target changed before unlink')
+            unlinked(path.parent);same_leaf(os.lstat(path))
+            os.unlink(path)
     raw('checkout-index','--force','-z','--stdin',input=encoded+b'\0')
     info=os.lstat(path)
     require(stat.S_ISREG(info.st_mode) and not(getattr(info,'st_file_attributes',0)&1024),

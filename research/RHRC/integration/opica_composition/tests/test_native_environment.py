@@ -308,30 +308,57 @@ class PinnedBenchmarkProjectionTests(unittest.TestCase):
 
     @contextmanager
     def linux_alias_metadata_on_windows(self, alias):
+        # Git may regard an existing symlink as already up to date even with
+        # core.symlinks=false. Keep the Windows model linked until the helper
+        # actually removes the verified leaf; readlink must not advance it.
+        real_lstat, real_readlink, real_unlink = os.lstat, os.readlink, os.unlink
+        initial = real_lstat(alias)
+        pending = [os.name == "nt"]
+        events = []
+        reads = []
         if os.name != "nt":
-            self.assertTrue(alias.is_symlink())
-            yield
-            return
-        # Only the initial leaf metadata/target lookup is modeled. Git, index
-        # objects, all file reads, and post-checkout metadata remain real.
-        real_lstat, real_readlink = os.lstat, os.readlink
-        pending = [True]
+            self.assertTrue(alias.is_symlink(), "Linux must exercise an actual symlink")
+
+        def is_alias(path, kwargs):
+            if kwargs.get("dir_fd") is None:
+                return native_path(path) == native_path(alias)
+            parent = os.fstat(kwargs["dir_fd"])
+            actual_parent = real_lstat(alias.parent)
+            return os.fsdecode(path) == alias.name and (parent.st_dev, parent.st_ino) == \
+                (actual_parent.st_dev, actual_parent.st_ino)
 
         def lstat(path, *args, **kwargs):
-            if pending[0] and native_path(path) == native_path(alias):
-                return SimpleNamespace(st_mode=stat.S_IFLNK | 0o777, st_file_attributes=0)
+            if pending[0] and is_alias(path, kwargs):
+                return SimpleNamespace(st_mode=stat.S_IFLNK | 0o777, st_file_attributes=0,
+                                       st_dev=initial.st_dev, st_ino=initial.st_ino,
+                                       st_size=initial.st_size, st_mtime_ns=initial.st_mtime_ns)
             return real_lstat(path, *args, **kwargs)
 
         def readlink(path, *args, **kwargs):
-            if native_path(path) == native_path(alias):
-                pending[0] = False
+            if pending[0] and is_alias(path, kwargs):
+                reads.append("run")
                 return "run"
             return real_readlink(path, *args, **kwargs)
 
+        def unlink(path, *args, **kwargs):
+            matched = is_alias(path, kwargs)
+            result = real_unlink(path, *args, **kwargs)
+            if matched:
+                pending[0] = False
+                events.append("removed")
+                with self.assertRaises(FileNotFoundError):
+                    real_lstat(alias)
+            return result
+
         with patch.object(os, "lstat", side_effect=lstat), patch.object(Path, "lstat", new=lstat), \
-                patch.object(os, "readlink", side_effect=readlink):
-            yield
-        self.assertFalse(pending[0], "The modeled symlink branch must inspect its raw target")
+                patch.object(os, "readlink", side_effect=readlink), patch.object(os, "unlink", side_effect=unlink):
+            yield events
+        if os.name == "nt":
+            self.assertTrue(reads, "The modeled symlink branch must inspect its raw target")
+            self.assertFalse(pending[0], "The modeled symlink must persist until its actual unlink")
+        self.assertEqual(events, ["removed"], "The verified leaf must actually be removed once")
+        self.assertTrue(stat.S_ISREG(real_lstat(alias).st_mode))
+        events.append("recreated")
 
     def project(self, package, head, *, blob=None):
         return qualification._materialize_pinned_benchmark_alias(
@@ -346,8 +373,12 @@ class PinnedBenchmarkProjectionTests(unittest.TestCase):
     def test_pinned_alias_projection_uses_real_git_and_keeps_source_identity(self):
         host, package, alias, head = self.fixture()
         before = self.identity(package)
-        with self.linux_alias_metadata_on_windows(alias):
+        target = alias.parent / "run"
+        target_before = target.read_bytes()
+        with self.linux_alias_metadata_on_windows(alias) as events:
             record = self.project(package, head)
+        self.assertEqual(events, ["removed", "recreated"])
+        self.assertEqual(target.read_bytes(), target_before)
         self.assertEqual(self.identity(package), before)
         self.assertTrue(stat.S_ISREG(os.lstat(alias).st_mode))
         self.assertFalse(alias.is_symlink())
@@ -366,8 +397,10 @@ class PinnedBenchmarkProjectionTests(unittest.TestCase):
     def test_regular_git_link_text_projection_is_idempotent(self):
         _, package, alias, head = self.fixture(regular=True)
         before = self.identity(package)
-        first = self.project(package, head)
-        second = self.project(package, head)
+        with patch.object(os, "unlink", wraps=os.unlink) as unlink:
+            first = self.project(package, head)
+            second = self.project(package, head)
+        unlink.assert_not_called()
         self.assertEqual(first, second)
         self.assertEqual(first["input_leaf_kind"], "REGULAR_LINK_TEXT")
         self.assertEqual(alias.read_bytes(), b"run")
