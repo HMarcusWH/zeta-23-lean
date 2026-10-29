@@ -3,9 +3,12 @@
 The CI evaluator supplies OPICA_NATIVE_CONFIG (closed WorkerConfig JSON) and
 OPICA_NATIVE_OUTPUT (fresh external evidence parent). Neither is proposer input.
 """
-import functools, hashlib, os, tempfile, unittest, uuid
+import functools, hashlib, io, os, platform, signal, subprocess, sys, tempfile, unittest, uuid
+from contextlib import redirect_stderr
 from dataclasses import replace
 from pathlib import Path
+from unittest.mock import patch
+from research.RHRC.integration.opica_composition import executor
 from research.RHRC.integration.opica_composition.canonical import ContractError,canonical_bytes,load_bytes,digest,require
 from research.RHRC.integration.opica_composition.contracts import *
 from research.RHRC.integration.opica_composition.snapshot import discover_source_paths,file_hash,hash_inventory,git
@@ -235,3 +238,219 @@ class NativeExecutorCases(unittest.TestCase):
         out=fresh("unfinished"); out.mkdir(); log=out/"unfinished.log"
         log.write_text("calibration still running\n",encoding="utf-8")
         with self.assertRaises(ContractError): parse_native(log,"OPICA_NATIVE")
+
+
+class PortableResourceOutcomeTests(unittest.TestCase):
+    """Real small local processes test coordinator behavior, never Lean validity."""
+    def setUp(self):
+        self.tmp=tempfile.TemporaryDirectory(prefix="opica-worker-outcomes-")
+        self.addCleanup(self.tmp.cleanup)
+        self.root=Path(self.tmp.name)
+        self.worker=WorkerConfig(sys.executable,str(Path(sys.executable).parent),[str(self.root)],production=False)
+
+    def run_script(self,script,budget=None):
+        output=self.root/uuid.uuid4().hex;output.mkdir()
+        with patch.object(executor,"_recipe",return_value=([sys.executable,"-c",script],dict(os.environ))), \
+                redirect_stderr(io.StringIO()):
+            result=run_worker(self.worker,output,"Fixture.lean","Fixture.olean",budget or SearchBudget())
+        return result,output
+
+    def test_resource_budget_names_preserve_legacy_effective_limits(self):
+        default=SearchBudget()
+        self.assertEqual((default.wall_seconds,default.cpu_seconds,default.log_bytes,default.max_file_bytes),
+                         (600,600,8388608,8388608))
+        short=SearchBudget(wall_seconds=17,output_bytes=512345)
+        self.assertEqual((short.cpu_seconds,short.max_file_bytes),(17,512345))
+        distinct=SearchBudget(wall_seconds=17,cpu_seconds=13,output_bytes=512345,max_file_bytes=678901)
+        self.assertEqual((distinct.cpu_seconds,distinct.log_bytes,distinct.max_file_bytes),(13,512345,678901))
+        for kwargs in ({"cpu_seconds":601},{"cpu_seconds":True},{"max_file_bytes":8388609},
+                       {"max_file_bytes":True},{"wall_seconds":1,"cpu_seconds":2}):
+            with self.subTest(kwargs=kwargs),self.assertRaises(ContractError):SearchBudget(**kwargs)
+        self.assertEqual(SearchBudget.from_dict(default.to_dict()),default)
+        old={**default.to_dict(),"schema":"OPICA_SEARCH_BUDGET_V1"}
+        with self.assertRaises(ContractError):SearchBudget.from_dict(old)
+
+    def test_current_budget_schema_matches_resolved_record(self):
+        schema=load_bytes((Path(executor.__file__).parent/"schemas/contracts.schema.json").read_bytes())["$defs"]["SearchBudget"]
+        record=SearchBudget().to_dict()
+        self.assertEqual(set(schema["required"]),set(record))
+        self.assertEqual(set(schema["properties"]),set(record))
+        self.assertEqual(schema["properties"]["schema"]["const"],record["schema"])
+        self.assertEqual(schema["properties"]["cpu_seconds"]["maximum"],600)
+        self.assertEqual(schema["properties"]["max_file_bytes"]["maximum"],8388608)
+
+    def test_signal_classification_requires_actual_wait_signal(self):
+        for code,reason in ((-24,"CPU_TIME"),(-25,"FILE_BYTES")):
+            result=executor._classify_worker_exit(code,posix_signals=True)
+            self.assertEqual((result["resource_status"],result["resource_reason"]),("RESOURCE_EXHAUSTED",reason))
+            self.assertTrue(executor.native_resource_failure({"exit_code":code,**result}))
+        for code,reason in ((-9,"KILLED_UNATTRIBUTED"),(137,"KILLED_UNATTRIBUTED"),
+                            (152,"WRAPPED_EXIT_UNATTRIBUTED"),(-15,"SIGNAL_UNATTRIBUTED")):
+            with self.subTest(code=code):
+                result=executor._classify_worker_exit(code,posix_signals=True)
+                self.assertIsNone(result["resource_status"])
+                self.assertIsNone(result["resource_reason"])
+                self.assertEqual(result["failure_reason"],reason)
+                self.assertTrue(executor.native_resource_failure({"exit_code":code,**result}))
+        self.assertIsNone(executor._classify_worker_exit(-24,posix_signals=False)["resource_status"])
+
+    def test_normal_failure_and_generic_stderr_are_not_resource_or_semantic_proof(self):
+        result,output=self.run_script("import sys; print('out of memory RESOURCE_EXHAUSTED TYPE_REJECTED_THIS_APPLICATION'); sys.exit(1)")
+        self.assertEqual(result["exit_code"],1)
+        self.assertIsNone(result["resource_status"])
+        self.assertEqual(result["failure_reason"],"UNCLASSIFIED_WORKER_FAILURE")
+        self.assertFalse(executor.native_resource_failure(result))
+        text=(output/"Fixture.lean.log").read_text()
+        self.assertEqual(executor._lean_error_messages(text,output,"Fixture.lean"),[])
+        diagnostic="/out/Fixture.lean:4:0: error: TYPE_REJECTED_THIS_APPLICATION: fixture"
+        self.assertEqual(executor._lean_error_messages(diagnostic,output,"Fixture.lean"),
+                         ["TYPE_REJECTED_THIS_APPLICATION: fixture"])
+        self.assertEqual(executor._lean_error_messages(diagnostic.replace("Fixture.lean","Other.lean"),output,"Fixture.lean"),[])
+
+    def test_attempt_failures_cannot_become_semantic_negative_from_stderr_words(self):
+        repo=self.root/"repo";repo.mkdir()
+        snapshot=SnapshotIdentity(str(repo),"0"*40,"1"*40,"a"*64,"b"*64,
+            {"Fixture.lean":"c"*64},{"development":True},"PORTABLE_DISPOSITION_FIXTURE","DRAFT")
+        target=TargetSpec("fixture","Fixture.Target.identity","Fixture.Target","d"*64,{},[],["Fixture.Target"],
+            ["SOURCE","KERNEL","AXIOMS","INDEPENDENT_EXPECTED_TYPE"])
+        proposal=CompositionProposal("fixture",target.target_id,snapshot.generation,{"tag":"local","binder_slot":0})
+        typed="/out/OpicaAttempt.lean:4:0: error: TYPE_REJECTED_THIS_APPLICATION: fixture\n"
+        generic="out of memory RESOURCE_EXHAUSTED TYPE_REJECTED_THIS_APPLICATION\n"
+        cases=((-9,typed,"ENVIRONMENT_ERROR","KILLED_UNATTRIBUTED"),
+               (137,typed,"ENVIRONMENT_ERROR","KILLED_UNATTRIBUTED"),
+               (-24,typed,"RESOURCE_EXHAUSTED","CPU_TIME"),
+               (-25,typed,"RESOURCE_EXHAUSTED","FILE_BYTES"),
+               (1,generic,"ENVIRONMENT_ERROR","UNCLASSIFIED_WORKER_FAILURE"),
+               (1,typed,"TYPE_REJECTED_THIS_APPLICATION","ordinary Lean rejected application"),
+               (1,"/out/OpicaAttempt.lean:4:0: error: maximum number of heartbeats reached\n",
+                "RESOURCE_EXHAUSTED","LEAN_HEARTBEATS"))
+        for code,text,status,reason in cases:
+            with self.subTest(code=code,text=text):
+                native={"exit_code":code,**executor._classify_worker_exit(code,posix_signals=True)}
+                def dispatch(worker,output,source,object_name,budget):
+                    (output/(source+".log")).write_text(text,encoding="utf-8")
+                    return native
+                with patch.object(executor,"check_snapshot",return_value=snapshot), \
+                        patch.object(executor,"run_worker",side_effect=dispatch):
+                    result=execute_attempt(proposal,target,snapshot,self.root/uuid.uuid4().hex,worker=self.worker)
+                self.assertEqual((result.status,result.reason),(status,reason))
+                if status=="RESOURCE_EXHAUSTED":self.assertEqual(result.native["resource_reason"],reason)
+
+    def test_wall_watchdog_records_specific_cause(self):
+        result,_=self.run_script("import time; time.sleep(10)",SearchBudget(wall_seconds=1))
+        self.assertEqual((result["resource_status"],result["resource_reason"]),("RESOURCE_EXHAUSTED","WALL_TIME"))
+        self.assertEqual(worker_failure_reason(result),"WALL_TIME")
+        self.assertTrue(executor.native_resource_failure(result))
+        self.assertLess(result["elapsed_milliseconds"],5000)
+
+    def test_log_watchdog_is_distinct_from_per_file_limit(self):
+        result,_=self.run_script("import sys,time; sys.stdout.write('x'*1000); sys.stdout.flush(); time.sleep(10)",
+            SearchBudget(wall_seconds=5,output_bytes=32,max_file_bytes=8388608))
+        self.assertEqual((result["resource_status"],result["resource_reason"]),("RESOURCE_EXHAUSTED","LOG_BYTES"))
+        self.assertEqual(result["resource_caps"]["log_bytes"],32)
+        self.assertEqual(result["resource_caps"]["max_file_bytes"],8388608)
+        self.assertEqual(result["output_sizes"]["log_bytes"],1000)
+
+    def test_success_receipt_preserves_wait_scope_and_observed_sizes(self):
+        result,output=self.run_script("from pathlib import Path; Path('Fixture.olean').write_bytes(b'object'); print('done')")
+        self.assertEqual(result["exit_code"],0)
+        self.assertIsNone(result["resource_status"])
+        self.assertIsNone(result["failure_reason"])
+        self.assertEqual(result["child_status"]["return_code"],0)
+        self.assertIsNone(result["child_status"]["signal"])
+        self.assertEqual(result["child_status"]["scope"],"COMMAND_PROCESS_ONLY_WRAPPED_CHILD_UNKNOWN")
+        self.assertEqual(result["output_sizes"]["object_bytes"],6)
+        self.assertEqual(result["log_sha256"],file_hash(output/"Fixture.lean.log"))
+        self.assertFalse(result["resource_caps"]["os_limits_enforced"])
+
+    def test_monitor_exception_preserves_original_error_and_reaps_worker(self):
+        output=self.root/"exception";output.mkdir()
+        class Process:
+            pid=1
+            def poll(self):return None
+            def wait(self):return 0
+        failure=RuntimeError("original monitor failure")
+        with patch.object(executor,"_recipe",return_value=(["fixed-fixture"],{})), \
+                patch.object(executor.subprocess,"Popen",return_value=Process()), \
+                patch.object(executor.time,"monotonic",side_effect=[0,failure]), \
+                patch.object(executor,"_kill_worker") as kill:
+            with self.assertRaises(RuntimeError) as caught:
+                run_worker(self.worker,output,"Fixture.lean","Fixture.olean",SearchBudget())
+        self.assertIs(caught.exception,failure)
+        kill.assert_called_once()
+
+    def test_cgroup_deltas_are_bounded_and_shared_events_do_not_attribute_oom(self):
+        for name,raw in (("memory.events","low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\n"),("pids.events","max 0\n")):
+            (self.root/name).write_text(raw)
+        before=executor._cgroup_event_snapshot(self.root)
+        (self.root/"memory.events").write_text("low 0\nhigh 0\nmax 1\noom 1\noom_kill 1\n")
+        after=executor._cgroup_event_snapshot(self.root)
+        delta=executor._cgroup_event_delta(before,after)
+        self.assertEqual(delta["memory.events"]["oom_kill"],1)
+        result=executor._classify_worker_exit(-9,posix_signals=True)
+        self.assertEqual(result["failure_reason"],"KILLED_UNATTRIBUTED")
+        self.assertIsNone(result["resource_reason"])
+        (self.root/"pids.events").write_bytes(b"x"*4097)
+        with self.assertRaises(ContractError):executor._cgroup_event_snapshot(self.root)
+
+
+class NativeResourceLimitCases(unittest.TestCase):
+    """Mandatory Linux limit probes; configuration absence fails, never skips."""
+    def linux_probe(self,args,script):
+        worker,_,_=native_context()
+        require(platform.system()=="Linux" and worker.production,"real isolated Linux worker required")
+        process=subprocess.run([worker.prlimit,"--core=0",*args,"--",sys.executable,"-c",script],
+            env={"PATH":str(Path(sys.executable).parent)},stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=10)
+        self.assertLessEqual(len(process.stdout)+len(process.stderr),4096)
+        return process,executor._classify_worker_exit(process.returncode)
+
+    def test_native_soft_cpu_signal_is_resource_failure(self):
+        process,result=self.linux_probe(["--cpu=1:2"],"while True: pass")
+        self.assertEqual(process.returncode,-signal.SIGXCPU)
+        self.assertEqual(result["resource_reason"],"CPU_TIME")
+
+    def test_native_equal_cpu_caps_kill_remains_unattributed(self):
+        process,result=self.linux_probe(["--cpu=1:1"],"while True: pass")
+        self.assertEqual(process.returncode,-signal.SIGKILL)
+        self.assertIsNone(result["resource_status"])
+        self.assertEqual(result["failure_reason"],"KILLED_UNATTRIBUTED")
+
+    def test_native_file_overflow_with_quiet_log_is_resource_failure(self):
+        worker,_,root=native_context()
+        destination=root/("file-limit-"+uuid.uuid4().hex)
+        script="import signal; signal.signal(signal.SIGXFSZ,signal.SIG_DFL); open("+repr(str(destination))+",'wb').write(b'x'*4096)"
+        try:
+            process,result=self.linux_probe(["--fsize=1024:1024"],script)
+            self.assertEqual(process.returncode,-signal.SIGXFSZ)
+            self.assertEqual(process.stdout,b"")
+            self.assertEqual(process.stderr,b"")
+            self.assertEqual(result["resource_reason"],"FILE_BYTES")
+        finally:
+            if destination.exists():destination.unlink()
+
+    def test_native_enospc_is_environment_failure_without_trusted_cause_record(self):
+        script="import os,errno; fd=os.open('/dev/full',os.O_WRONLY)\ntry: os.write(fd,b'x')\nexcept OSError as exc:\n if exc.errno!=errno.ENOSPC: raise\n raise SystemExit(1)"
+        process,result=self.linux_probe([],script)
+        self.assertEqual(process.returncode,1)
+        self.assertIsNone(result["resource_status"])
+        self.assertEqual(result["failure_reason"],"UNCLASSIFIED_WORKER_FAILURE")
+
+    def test_native_production_wrapper_keeps_translated_signal_ambiguous(self):
+        worker,_,_=native_context()
+        require(platform.system()=="Linux" and worker.production,"real isolated Linux worker required")
+        require(Path("/usr/bin/python3").is_file(),"trusted Linux test interpreter required")
+        output=fresh("wrapper-limit");output.mkdir()
+        budget=SearchBudget(wall_seconds=5,cpu_seconds=5,max_file_bytes=1024)
+        command,env=executor._recipe(worker,output,"Fixture.lean","Fixture.olean",budget)
+        index=command.index(worker.lean)
+        script="import signal; signal.signal(signal.SIGXFSZ,signal.SIG_DFL); open('/out/Fixture.olean','wb').write(b'x'*4096)"
+        command=command[:index]+["/usr/bin/python3","-c",script]
+        with patch.object(executor,"_recipe",return_value=(command,env)),redirect_stderr(io.StringIO()):
+            result=run_worker(worker,output,"Fixture.lean","Fixture.olean",budget)
+        self.assertIn(result["exit_code"],(-signal.SIGXFSZ,128+signal.SIGXFSZ))
+        if result["exit_code"]<0:self.assertEqual(result["resource_reason"],"FILE_BYTES")
+        else:
+            self.assertIsNone(result["resource_status"])
+            self.assertEqual(result["failure_reason"],"WRAPPED_EXIT_UNATTRIBUTED")
+        self.assertTrue(executor.native_resource_failure(result))
+        self.assertEqual(result["cgroup_events"]["attribution"],"SHARED_COORDINATOR_UNATTRIBUTED")

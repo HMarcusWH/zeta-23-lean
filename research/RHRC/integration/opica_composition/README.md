@@ -37,6 +37,25 @@ the actual production probes and complete native workload to pass.
 Windows execution is development evidence only. Missing native setup
 fails its lane; native tests do not skip.
 
+The V3 compiler/import fingerprint includes `.ir.sig` alongside its `.ir`
+payload and the retained object/library inputs. V2 environment epochs cannot
+qualify current attempts or independent consumers. Budget V2 names CPU seconds
+and maximum regular-file bytes separately from wall time and log bytes
+(`output_bytes` remains the compatible log-limit name). Default CPU and per-file
+limits remain 600 seconds and 8 MiB. Short legacy configurations retain their
+effective limits. Resource receipts distinguish watchdog, CPU and file-size
+signals; translated wrapper exits and shared cgroup events retain their explicit
+attribution uncertainty and cannot establish semantic rejection.
+
+Each successful producer transports its complete sealed tree inside a bounded
+stored ZIP with a closed source/run/attempt/lane envelope. Empty directories and
+dot-prefixed entries survive the outer file-only artifact upload. The consumer
+checks the full archive before safe extraction, then repeats the existing exact
+tree, lane and independent native checks. Transport success grants no proof
+authority. Artifacts use exact run/attempt names: rerun **all jobs**, or start a
+new workflow run, to qualify a new attempt. Earlier producers and ACCEPTANCE
+outputs cannot fill missing lanes in the current eleven-lane input set.
+
 `Journal` maintains a transactionally verified event chain, durable attempt
 counts, frozen menus, compare-and-swap revisions and archived stale results.
 Native publication repeats the independent checker and reconstructs all four

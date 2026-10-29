@@ -210,6 +210,8 @@ class CliOrchestrationTests(unittest.TestCase):
             self.assertEqual(budget.heartbeats, 1200000)
             self.assertEqual((budget.wall_seconds, budget.memory_bytes, budget.disk_bytes),
                              (600, 4294967296, 4294967296))
+            short = math_gate.mathematical_budget(worker, 10)
+            self.assertEqual((short.wall_seconds, short.cpu_seconds), (10, 10))
             source = 'Zeta23/OPICARound4/Validation.lean'
             command, env = executor._recipe(worker, root / 'output', source, source[:-5] + '.olean',
                                             budget, mathematical_support=True)
@@ -307,11 +309,31 @@ class CliOrchestrationTests(unittest.TestCase):
                       'resource_scope': {'mode': 'LINUX_CGROUP_V2_TMPFS', 'memory_bytes': 4294967296,
                                          'address_space_bytes': 68719476736,
                                          'processes': 64, 'disk_bytes': 4294967296, 'cgroup': '/fixture'}}
+            native.update(resource_reason=None,failure_reason=None,
+              resource_caps={'wall_seconds':budget.wall_seconds,'cpu_seconds_soft':budget.cpu_seconds,
+                'cpu_seconds_hard':budget.cpu_seconds,'log_bytes':budget.log_bytes,'max_file_bytes':budget.max_file_bytes,
+                'memory_bytes':budget.memory_bytes,'disk_bytes':budget.disk_bytes,
+                'address_space_bytes':executor.LEAN_ADDRESS_SPACE_BYTES,'os_limits_enforced':True},
+              child_status={'schema':'OPICA_WORKER_WAIT_STATUS_V1','return_code':0,'signal':None,
+                'observation':'PYTHON_SUBPROCESS_WAIT','scope':'COMMAND_PROCESS_ONLY_WRAPPED_CHILD_UNKNOWN'})
             first = {'module': module, 'worker_output': str(folder), 'argv': command, 'native': native,
                      'exit_code': 0, 'source_sha256': sha(folder / source), 'log_sha256': sha(log)}
             base = {'execution_mode': 'PRODUCTION_ISOLATED', 'authority': 'CURRENT_SOURCE_ISOLATED_NATIVE_SUPPORT',
                     'worker': worker.to_dict(), 'worker_budget': budget.to_dict(),
                     'module_records': [first] + [{'module': m} for m in math_gate.MODULES[1:]]}
+            for patch_value, message in (
+                    ({'resource_caps': {}}, 'resource caps differ'),
+                    ({'resource_caps': {**native['resource_caps'], 'os_limits_enforced': 1}}, 'resource caps differ'),
+                    ({'resource_caps': {**native['resource_caps'], 'max_file_bytes': 1}}, 'resource caps differ'),
+                    ({'child_status': {}}, 'wait status differs'),
+                    ({'child_status': {**native['child_status'], 'return_code': False}}, 'wait status differs'),
+                    ({'failure_reason': 'UNCLASSIFIED_WORKER_FAILURE'}, 'failure reason differs'),
+                    ({'failure_reason': 'KILLED_UNATTRIBUTED'}, 'receipt missing or invalid'),
+                    ({'resource_reason': 'CPU_TIME'}, 'receipt missing or invalid')):
+                with self.subTest(resource_evidence=patch_value):
+                    forged = copy.deepcopy(base); forged['module_records'][0]['native'].update(patch_value)
+                    with self.assertRaisesRegex(ContractError, message):
+                        qualification._validate_mathematical_worker_receipts(forged, output, worker)
             # Correct resource fields must pass their guard and reach the
             # deliberately incomplete products, never qualify this fixture.
             with self.assertRaisesRegex(ContractError, 'Mathematical module product binding differs'):

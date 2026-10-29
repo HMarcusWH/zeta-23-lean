@@ -9,8 +9,10 @@ import stat
 import subprocess
 import sys
 import uuid
-from .canonical import require,canonical_bytes,load_bytes,digest,MAX_BYTES
-from .snapshot import file_hash,unlinked,seal_evidence_tree,copy_evidence_tree,verify_evidence_tree,evidence_bytes
+from .canonical import require,canonical_bytes,load_bytes,digest,MAX_BYTES,closed_keys
+from .snapshot import (file_hash,unlinked,seal_evidence_tree,copy_evidence_tree,verify_evidence_tree,evidence_bytes,
+                       pack_evidence_bundle,unpack_evidence_bundle,_evidence_directory,_transport_new_directory,_transport_seal,
+                       TRANSPORT_MAX_ENTRIES,TRANSPORT_MAX_DEPTH)
 from .descendant import validate_descendant,BASE,BASE_TREE,git
 from .accept import ROUND4_LANES,verify_lane_bundle,require_test_receipt,accept_application_scope
 
@@ -372,14 +374,71 @@ def aggregate(repo,bundles,output,exp,*,provider_root=None):
                                     required_needs={lane:'success' for lane in ROUND4_LANES})
     write(output/'acceptance.json',result);return result
 
+
+def pack_lane_bundle(repo,bundle,output,lane,exp):
+    """Transport publication requires the completed, exact lane record."""
+    bundle=external(repo,bundle);output=external(repo,output)
+    native=os.environ.get('OPICA_NATIVE_OUTPUT')
+    if native:
+        native=unlinked(native)
+        require(not output.is_relative_to(native) and not native.is_relative_to(output),
+                'Transport staging and native output must be disjoint')
+    current=validate_descendant(repo,require_clean=True)
+    sealed=_transport_seal(bundle)
+    record=load_bytes(evidence_bytes(bundle,'lane.json',MAX_BYTES))
+    closed_keys(record,{'schema','lane_id','scope','experiment','checked','conclusion','artifacts','records'})
+    expected=lane_expected(lane,exp)
+    require(record['schema']=='OPICA4_LANE_BUNDLE_V1' and record['lane_id']==lane and
+            record['scope']==expected['scope'] and record['checked']==expected['checked'] and
+            record['experiment']==exp and record['conclusion']=='success','Completed exact lane required for transport')
+    require(type(record['artifacts'])is list and
+            sorted(record['artifacts'],key=lambda row:row['path'])==
+            [row for row in sealed[0]['files'] if row['path']!='lane.json'],
+            'Transport lane artifact inventory/content differs')
+    files={row['path'] for row in sealed[0]['files'] if row['path']!='lane.json'}
+    require(type(record['records'])is list and record['records'] and set(record['records'])<=files,
+            'Transport lane scientific/command records absent')
+    # Descriptor-bound reads avoid the legacy verifier's path-based reads at
+    # this new boundary. Acceptance still runs that verifier and its fixed
+    # independent scientific/native reconstruction, without changed semantics.
+    require(load_bytes(evidence_bytes(bundle,'source.json',MAX_BYTES))==current==
+            load_bytes(evidence_bytes(bundle,'source-after.json',MAX_BYTES)),
+            'Transport lane source differs from clean current checkout')
+    if lane in NATIVE_EVIDENCE_LANES:
+        manifest=load_bytes(evidence_bytes(bundle,'native-evidence-inventory.json',MAX_BYTES))
+        verify_evidence_tree(bundle/'native-evidence',manifest,maximum_entries=TRANSPORT_MAX_ENTRIES,maximum_depth=TRANSPORT_MAX_DEPTH)
+    return pack_evidence_bundle(bundle,output,{'lane_id':lane,'experiment':exp},sealed=sealed)
+
+
+def unpack_lane_bundles(repo,input_root,output,exp):
+    """Only the eleven distinct current-attempt artifacts can reach acceptance."""
+    input_root=external(repo,input_root);output=external(repo,output)
+    prefix='opica4-'+exp['run_id']+'-'+str(exp['attempt'])+'-lane-'
+    expected={prefix+lane for lane in ROUND4_LANES}
+    with _evidence_directory(input_root) as (fd,path):
+        with os.scandir(fd if fd is not None else path) as entries:names=[entry.name for entry in entries]
+        require(len(names)==len(expected) and set(names)==expected,'Exact attempt eleven-lane transport set differs')
+    require(not output.exists() and not output.is_relative_to(input_root) and not input_root.is_relative_to(output),
+            'Fresh disjoint bundle reconstruction required')
+    owned=_transport_new_directory(output)
+    for lane in ROUND4_LANES:
+        unpack_evidence_bundle(input_root/(prefix+lane),output/lane,{'lane_id':lane,'experiment':exp})
+    with _evidence_directory(output,identities=owned):pass
+    # The accept command immediately runs verify_lane_bundle, the complete native
+    # inventory verification, and independent scientific/native replay.
+    return output
+
 def main():
     p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='command',required=True)
-    for name in ('inspect','prepare','lane','accept'):
+    for name in ('inspect','prepare','lane','accept','transport-pack','transport-unpack'):
         q=sub.add_parser(name,aliases=['check-descendant'] if name=='inspect' else []);q.add_argument('--repo',type=Path,default=REPO);q.add_argument('--output','--out',type=Path,required=True)
-        if name in {'lane','accept'}:
+        if name in {'lane','accept','transport-pack','transport-unpack'}:
             q.add_argument('--run-id',required=True);q.add_argument('--attempt',type=int,required=True);q.add_argument('--provider-root',type=Path)
-        if name=='lane':q.add_argument('--lane',choices=ROUND4_LANES,required=True)
+        if name in {'lane','transport-pack'}:q.add_argument('--lane',choices=ROUND4_LANES,required=True)
         if name=='accept':q.add_argument('--bundles',type=Path,required=True)
+        if name in {'transport-pack','transport-unpack'}:
+            q.add_argument('--input',type=Path,required=True)
+            q.add_argument('--requested-commit',required=True);q.add_argument('--requested-tree',required=True)
     for name in ('freeze','inventory','plan','run-one','verify','replay','export'):
         q=sub.add_parser(name);q.add_argument('--repo',type=Path,default=REPO)
         q.add_argument('--output','--out',type=Path,required=True)
@@ -400,6 +459,12 @@ def main():
             prepare_native(a.repo,external(a.repo,a.output))
     elif a.command=='lane':run_lane(a.lane,a.repo,a.output,experiment(a.repo,a.run_id,a.attempt),provider_root=a.provider_root)
     elif a.command=='accept':aggregate(a.repo,a.bundles,a.output,experiment(a.repo,a.run_id,a.attempt),provider_root=a.provider_root)
+    elif a.command in {'transport-pack','transport-unpack'}:
+        exp=experiment(a.repo,a.run_id,a.attempt)
+        require((exp['requested_commit'],exp['requested_tree'])==(a.requested_commit,a.requested_tree),
+                'Workflow requested source differs from checked transport source')
+        if a.command=='transport-pack':pack_lane_bundle(a.repo,a.input,a.output,a.lane,exp)
+        else:unpack_lane_bundles(a.repo,a.input,a.output,exp)
     else:
         from . import service
         if a.command=='freeze':service.freeze(a.repo,a.experiment,a.output,worker=worker_from_environment())

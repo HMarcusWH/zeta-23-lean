@@ -152,7 +152,7 @@ def worker_environment(worker,*,manifest_output=None):
             if linked and index!=0:
                 unlinked(path)
             if linked or (path.is_file() and any(path.name.endswith(s) for s in
-                    (".olean",".olean.server",".olean.private",".ir",".so",".dll",".exe",".bc"))):
+                    (".olean",".olean.server",".olean.private",".ir",".ir.sig",".so",".dll",".exe",".bc"))):
                 if index==0:
                     value,links=_toolchain_file_record(path,root)
                     if links:toolchain_links[path.relative_to(root).as_posix()]=links
@@ -172,8 +172,12 @@ def worker_environment(worker,*,manifest_output=None):
         path.write_bytes(raw)
     semantic_raw=json.dumps({'objects':semantic_objects,'toolchain_file_links':toolchain_links},
         ensure_ascii=False,sort_keys=True,separators=(",",":"),allow_nan=False).encode("utf-8")
+    # V2 did not bind importer signature files and cannot qualify this scope.
+    # Never relabel a historical V2 snapshot as V3: re-freeze through the trusted
+    # source/environment workflow and replay both producer and consumer.
     return {"compiler_sha256":file_hash(worker.lean),"version_sha256":hashlib.sha256(version).hexdigest(),
-            "object_count":len(semantic_objects),"objects_digest":hashlib.sha256(b"OPICA_IMPORT_OBJECTS_V2\0"+semantic_raw).hexdigest(),
+            "inventory_scope":"OPICA_IMPORT_OBJECTS_V3",
+            "object_count":len(semantic_objects),"objects_digest":hashlib.sha256(b"OPICA_IMPORT_OBJECTS_V3\0"+semantic_raw).hexdigest(),
             "toolchain_file_links":toolchain_links}
 
 MATH_SUPPORT_RECIPE="OPICA_MATHEMATICAL_LEAN_ISOLATED_V1"
@@ -203,8 +207,9 @@ def _recipe(worker,output,source,object_name,budget,*,mathematical_support=False
                 "-DmaxRecDepth=2048","-o",str(output/object_name),str(output/source)],env
     # Every mounted path is evaluator-owned. No home, cloud credentials, sockets
     # or inherited environment is visible inside the unshared network namespace.
-    cmd=[worker.prlimit,"--as="+str(LEAN_ADDRESS_SPACE_BYTES),"--cpu="+str(budget.wall_seconds),
-         "--fsize="+str(budget.output_bytes),"--",worker.bubblewrap,
+    cmd=[worker.prlimit,"--as="+str(LEAN_ADDRESS_SPACE_BYTES),
+         "--cpu="+str(budget.cpu_seconds)+":"+str(budget.cpu_seconds),
+         "--fsize="+str(budget.max_file_bytes),"--",worker.bubblewrap,
          "--unshare-all","--die-with-parent","--new-session","--clearenv",
          "--proc","/proc","--dev","/dev","--tmpfs","/tmp"]
     mounts=[]
@@ -229,6 +234,77 @@ def _recipe(worker,output,source,object_name,budget,*,mathematical_support=False
 _FAILED_WORKER_LOG_TAIL_BYTES=16*1024
 _FAILED_WORKER_LOG_TAIL_LINES=120
 
+def _classify_worker_exit(code,watchdog_reason=None,*,posix_signals=None):
+    """Classify trusted observations only; compiler text is not kernel evidence.
+
+    Python's negative POSIX return code authenticates the command process's
+    signal. A wrapper's positive 128+signal exit is not an authenticated signal
+    of its child, even if that convention is common. Equal CPU soft/hard caps
+    can yield SIGKILL; that remains unattributed without per-attempt evidence.
+    """
+    if posix_signals is None:posix_signals=os.name!="nt"
+    resource=watchdog_reason
+    if resource is None and posix_signals and code<0:
+        if -code==getattr(signal,"SIGXCPU",24):resource="CPU_TIME"
+        elif -code==getattr(signal,"SIGXFSZ",25):resource="FILE_BYTES"
+    failure=None
+    if resource is None and code!=0:
+        if code==137 or (posix_signals and code==-getattr(signal,"SIGKILL",9)):
+            failure="KILLED_UNATTRIBUTED"
+        elif posix_signals and code<0:failure="SIGNAL_UNATTRIBUTED"
+        elif 128<=code<=192:failure="WRAPPED_EXIT_UNATTRIBUTED"
+        else:failure="UNCLASSIFIED_WORKER_FAILURE"
+    return {"resource_status":"RESOURCE_EXHAUSTED" if resource else None,
+            "resource_reason":resource,"failure_reason":failure}
+
+def native_resource_failure(native):
+    """Whether execution evidence rules out accepting a semantic negative.
+
+    Ordinary code-1 compiler failures still need an independently recognized
+    Lean diagnostic. This helper does not itself establish semantic rejection.
+    """
+    return bool(native.get("resource_status") or native.get("resource_reason") or
+        native.get("failure_reason") not in {None,"UNCLASSIFIED_WORKER_FAILURE"} or
+        native.get("exit_code",0)<0 or native.get("exit_code")==137)
+
+def worker_failure_reason(native):
+    return native.get("resource_reason") or native.get("failure_reason") or "UNCLASSIFIED_WORKER_FAILURE"
+
+def _cgroup_event_snapshot(group):
+    """Read a finite kernel counter inventory; unavailable is never zero."""
+    result={}
+    for name in ("memory.events","pids.events"):
+        try:
+            with (group/name).open("rb") as stream:raw=stream.read(4097)
+            require(len(raw)<=4096,"cgroup event inventory exceeds bound")
+            rows={}
+            for line in raw.decode("ascii").splitlines():
+                fields=line.split()
+                require(len(fields)==2 and re.fullmatch(r"[a-z_]+",fields[0]) is not None and
+                        fields[1].isdecimal() and fields[0] not in rows,"malformed cgroup counter")
+                rows[fields[0]]=int(fields[1])
+            require(bool(rows) and len(rows)<=32,"closed cgroup counter inventory required")
+            result[name]={"available":True,"counters":rows}
+        except OSError as exc:
+            result[name]={"available":False,"error_errno":exc.errno}
+    return result
+
+def _cgroup_event_delta(before,after):
+    result={}
+    for name in before:
+        old,new=before[name],after[name]
+        if old["available"] and new["available"]:
+            require(old["counters"].keys()==new["counters"].keys(),"cgroup counter inventory changed")
+            require(all(new["counters"][key]>=value for key,value in old["counters"].items()),
+                    "cgroup counters decreased during worker")
+            result[name]={key:new["counters"][key]-value for key,value in old["counters"].items()}
+        else:result[name]=None
+    return result
+
+def _kill_worker(proc):
+    if os.name!="nt":os.killpg(proc.pid,signal.SIGKILL)
+    else:proc.kill()
+
 def _report_worker_failure(code,disposition,log,raw):
     """Preserve a bounded diagnostic in the parent log without changing evidence."""
     tail=raw[-_FAILED_WORKER_LOG_TAIL_BYTES:]
@@ -251,6 +327,7 @@ def _report_worker_failure(code,disposition,log,raw):
 def run_worker(worker,output,source,object_name,budget,*,mathematical_support=False):
     capability=worker_capability(worker)
     resource_scope={"mode":"NATIVE_DEVELOPMENT_ONLY"}
+    group=None; events_before={}
     if worker.production:
         rows=Path("/proc/self/cgroup").read_text(encoding="utf-8").splitlines()
         groups=[line.split(":",2)[2] for line in rows if line.startswith("0::")]
@@ -276,29 +353,75 @@ def run_worker(worker,output,source,object_name,budget,*,mathematical_support=Fa
         resource_scope={"mode":"LINUX_CGROUP_V2_TMPFS","memory_bytes":memory,
                         "address_space_bytes":LEAN_ADDRESS_SPACE_BYTES,"processes":processes,
                         "disk_bytes":space.f_blocks*space.f_frsize,"cgroup":groups[0]}
+        events_before=_cgroup_event_snapshot(group)
     cmd,env=_recipe(worker,output,source,object_name,budget,mathematical_support=mathematical_support)
     log=Path(output)/(source+".log")
-    start=time.monotonic(); disposition=None
+    start=time.monotonic(); watchdog_reason=None
     kwargs={"start_new_session":True} if os.name!="nt" else {"creationflags":subprocess.CREATE_NEW_PROCESS_GROUP}
     # The log's descriptor is owned before dispatch; no attacker-selected file.
     fd=os.open(log,os.O_WRONLY|os.O_CREAT|os.O_EXCL,getattr(stat,"S_IRUSR",256)|getattr(stat,"S_IWUSR",128))
     with os.fdopen(fd,"wb") as stream:
         proc=subprocess.Popen(cmd,cwd=output,env=env,stdout=stream,stderr=subprocess.STDOUT,**kwargs)
-        while proc.poll() is None:
-            if time.monotonic()-start>budget.wall_seconds or log.stat().st_size>budget.output_bytes:
-                disposition="RESOURCE_EXHAUSTED"
-                if os.name!="nt": os.killpg(proc.pid,signal.SIGKILL)
-                else: proc.kill()
-                break
-            time.sleep(0.05)
-        code=proc.wait()
-    raw=log.read_bytes()
-    if len(raw)>budget.output_bytes: disposition="RESOURCE_EXHAUSTED"
-    if code!=0 or disposition is not None:
-        _report_worker_failure(code,disposition,log,raw)
+        try:
+            while proc.poll() is None:
+                if log.stat().st_size>budget.log_bytes:watchdog_reason="LOG_BYTES"
+                elif time.monotonic()-start>budget.wall_seconds:watchdog_reason="WALL_TIME"
+                if watchdog_reason:
+                    try:_kill_worker(proc)
+                    except ProcessLookupError:pass  # Reaped naturally at this boundary.
+                    break
+                time.sleep(0.05)
+            code=proc.wait()
+        except BaseException:
+            # Preserve the original monitor/wait failure, including interrupts,
+            # while ensuring it cannot leave an unmonitored worker behind.
+            try:
+                if proc.poll() is None:_kill_worker(proc)
+                proc.wait()
+            except BaseException:pass
+            raise
+    log_size=log.stat().st_size
+    if log_size>budget.log_bytes:watchdog_reason="LOG_BYTES"
+    # A racing writer can exceed the polling threshold; bounded diagnostics do
+    # not load an arbitrarily grown log into the coordinator's memory.
+    with log.open("rb") as stream:raw=stream.read(budget.log_bytes+1)
+    outcome=_classify_worker_exit(code,watchdog_reason)
+    events_after=_cgroup_event_snapshot(group) if group is not None else {}
+    events={"attribution":"SHARED_COORDINATOR_UNATTRIBUTED" if group is not None else "UNAVAILABLE",
+            "before":events_before,"after":events_after,
+            "delta":_cgroup_event_delta(events_before,events_after) if group is not None else {}}
+    # Shared cgroup changes are observations only: another job can account for
+    # an OOM/pids event. They never turn a SIGKILL/137 into attributed OOM.
+    signum=-code if os.name!="nt" and code<0 else None
+    child_status={"schema":"OPICA_WORKER_WAIT_STATUS_V1","return_code":code,
+                  "signal":signum,"observation":"PYTHON_SUBPROCESS_WAIT",
+                  "scope":"COMMAND_PROCESS_ONLY_WRAPPED_CHILD_UNKNOWN"}
+    obj=Path(output)/object_name
+    sizes={"log_bytes":log_size,"object_bytes":obj.stat().st_size if obj.is_file() else None}
+    if code!=0 or outcome["resource_status"] is not None:
+        _report_worker_failure(code,outcome["resource_status"],log,raw)
     return {"exit_code":code,"capability":capability,"recipe":MATH_SUPPORT_RECIPE if mathematical_support else "OPICA_LEAN_ISOLATED_V1",
-            "elapsed_milliseconds":int((time.monotonic()-start)*1000),"resource_status":disposition,
-            "log_sha256":file_hash(log),"command":cmd,"resource_scope":resource_scope}
+            "elapsed_milliseconds":int((time.monotonic()-start)*1000),**outcome,
+            "log_sha256":file_hash(log),"command":cmd,"resource_scope":resource_scope,
+            "resource_caps":{"wall_seconds":budget.wall_seconds,"cpu_seconds_soft":budget.cpu_seconds,
+                "cpu_seconds_hard":budget.cpu_seconds,"log_bytes":budget.log_bytes,
+                "max_file_bytes":budget.max_file_bytes,
+                "memory_bytes":resource_scope.get("memory_bytes",budget.memory_bytes),
+                "disk_bytes":resource_scope.get("disk_bytes",budget.disk_bytes),
+                "address_space_bytes":LEAN_ADDRESS_SPACE_BYTES,"os_limits_enforced":worker.production},
+            "child_status":child_status,"cgroup_events":events,"output_sizes":sizes}
+
+def _lean_error_messages(text,output,source):
+    """Recognize source-positioned diagnostics from this fixed Lean invocation.
+
+    Bare stderr words, including forged status labels, are not enough. The
+    source and invocation are trusted, but every negative still needs its
+    intended compiler diagnostic after execution failure causes are excluded.
+    """
+    names={source,str(Path(output)/source),"/out/"+source}
+    prefix=re.compile(r"^(?:"+"|".join(re.escape(name) for name in sorted(names))+
+                      r"):[0-9]+:[0-9]+: error: (.*)$")
+    return [match.group(1) for line in text.splitlines() if (match:=prefix.fullmatch(line))]
 
 def parse_native(log,marker):
     raw=Path(log).read_bytes()
@@ -365,17 +488,26 @@ def execute_attempt(proposal,target,snapshot,output,*,worker=None,constant_table
         after_environment=worker_environment(worker)
         (output/"import-objects-after-summary.json").write_bytes(canonical_bytes(after_environment))
         require(after_environment==snapshot.environment["worker_environment"],"compiler/import object bytes changed during attempt")
-    if native["resource_status"]: return result("RESOURCE_EXHAUSTED",native,"native budget hit")
+    if native["resource_status"]: return result("RESOURCE_EXHAUSTED",native,worker_failure_reason(native))
+    if native_resource_failure(native):return result("ENVIRONMENT_ERROR",native,worker_failure_reason(native))
     if native["exit_code"]!=0:
         text=(output/"OpicaAttempt.lean.log").read_text(encoding="utf-8",errors="replace")
-        if any(s in text for s in ("maximum number of heartbeats","out of memory","RESOURCE_EXHAUSTED")):
-            return result("RESOURCE_EXHAUSTED",native,"native compiler budget hit")
-        if any(s in text for s in ("UNRESOLVED","failed to synthesize","result contains metavariables")):
+        messages=_lean_error_messages(text,output,"OpicaAttempt.lean")
+        # These are trusted fixed-checker/Lean diagnostics, not kernel-cause
+        # attribution. Generic 'out of memory' stderr remains an environment
+        # failure unless separately authenticated execution evidence exists.
+        if any("maximum number of heartbeats" in message for message in messages):
+            native={**native,"resource_status":"RESOURCE_EXHAUSTED","resource_reason":"LEAN_HEARTBEATS"}
+            return result("RESOURCE_EXHAUSTED",native,"LEAN_HEARTBEATS")
+        if any(message.startswith("RESOURCE_EXHAUSTED:") for message in messages):
+            native={**native,"resource_status":"RESOURCE_EXHAUSTED","resource_reason":"CHECKER_BUDGET"}
+            return result("RESOURCE_EXHAUSTED",native,"CHECKER_BUDGET")
+        if any(message.startswith(("UNRESOLVED:","failed to synthesize","result contains metavariables")) for message in messages):
             return result("UNRESOLVED",native,"native elaboration obligations remain")
-        semantic=any(s in text for s in ("TYPE_REJECTED_THIS_APPLICATION","application arity differs",
-                     "lambda outside expected telescope","unknown restricted grammar tag","unauthorized local slot"))
+        semantic=any(message.startswith(("TYPE_REJECTED_THIS_APPLICATION:","application arity differs",
+                     "lambda outside expected telescope","unknown restricted grammar tag","unauthorized local slot")) for message in messages)
         return result("TYPE_REJECTED_THIS_APPLICATION" if semantic else "ENVIRONMENT_ERROR",native,
-                      "ordinary Lean rejected application" if semantic else "native compiler/environment failed; inspect raw output")
+                      "ordinary Lean rejected application" if semantic else worker_failure_reason(native))
     validate_output_inventory(output)
     row=parse_native(output/"OpicaAttempt.lean.log","OPICA_NATIVE")
     require(expression_hash(row["type_expression"])==target.expected_type_hash,"frozen target expression differs")

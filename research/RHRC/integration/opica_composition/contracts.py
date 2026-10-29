@@ -183,7 +183,7 @@ class GrammarProfile(Record):
 
 @dataclass(frozen=True)
 class SearchBudget(Record):
-    schema: ClassVar[str] = "OPICA_SEARCH_BUDGET_V1"
+    schema: ClassVar[str] = "OPICA_SEARCH_BUDGET_V2"
     candidates: int = 128
     term_nodes: int = 2048
     term_depth: int = 64
@@ -192,12 +192,27 @@ class SearchBudget(Record):
     output_bytes: int = 8388608
     memory_bytes: int = 4294967296
     disk_bytes: int = 4294967296
+    cpu_seconds: int | None = None
+    max_file_bytes: int | None = None
 
     def __post_init__(self):
+        # Resolve omitted fields to the old recipe's effective limits. Existing
+        # short wall/log configurations must not silently gain CPU/file space.
+        if self.cpu_seconds is None and type(self.wall_seconds)is int:
+            object.__setattr__(self,"cpu_seconds",min(self.wall_seconds,600))
+        if self.max_file_bytes is None and type(self.output_bytes)is int:
+            object.__setattr__(self,"max_file_bytes",min(self.output_bytes,8388608))
         require(all(type(v) is int and v > 0 for v in asdict(self).values()), "positive finite resource caps required")
         require(self.term_depth <= 64 and self.term_nodes <= 100000 and self.candidates <= 10000,
                 "grammar resource hard cap exceeded")
+        require(self.cpu_seconds<=min(self.wall_seconds,600) and self.max_file_bytes<=8388608,
+                "worker CPU/file hard cap exceeded")
         super().__post_init__()
+
+    @property
+    def log_bytes(self):
+        """Explicit log limit; output_bytes remains the compatible wire name."""
+        return self.output_bytes
 
 @dataclass(frozen=True)
 class CompositionProposal(Record):

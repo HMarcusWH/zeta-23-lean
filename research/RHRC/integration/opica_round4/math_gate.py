@@ -585,6 +585,7 @@ def mathematical_budget(worker, timeout: int):
     configured = asdict(SearchBudget(**(worker.budget or {})))
     values = {key: min(value, configured[key]) for key, value in defaults.items()}
     values.update(heartbeats=1200000, wall_seconds=min(values["wall_seconds"], timeout))
+    values["cpu_seconds"] = min(values["cpu_seconds"], values["wall_seconds"])
     return SearchBudget(**values)
 
 
@@ -634,6 +635,7 @@ def run_gate(args: argparse.Namespace, *, worker=None) -> dict:
                    "RH": "OPEN", "Step4": "OPEN", "module_records": [],
                    "execution_mode": "PRODUCTION_ISOLATED" if worker is not None and worker.production else "DEVELOPMENT_ONLY"}
     try:
+        from research.RHRC.integration.opica_composition.executor import native_resource_failure, worker_failure_reason
         roots = (args.roots or repo / "research/RHRC/integration/opica_round4/ROOTS.json").resolve()
         require(roots.is_file(), "Missing required ROOTS ledger: " + str(roots))
         names, open_rows = root_names(roots)
@@ -728,7 +730,10 @@ def run_gate(args: argparse.Namespace, *, worker=None) -> dict:
                     sources[m], relative(m).as_posix(), budget)
                 code = native["exit_code"]
                 _copy_regular(native_log, log)
-                require(native["resource_status"] is None, "Mathematical module worker exhausted resources: " + m)
+                if native_resource_failure(native):
+                    state["native_failure"] = {"module": m, "reason": worker_failure_reason(native), "native": native}
+                require(not native_resource_failure(native), "Mathematical module worker resource/environment failure: " +
+                        m + ": " + worker_failure_reason(native))
                 if code == 0:
                     require(relative(m, ".olean").as_posix() in products and relative(m, ".ilean").as_posix() in products,
                             "Mathematical module object/interface output absent: " + m)
@@ -767,7 +772,10 @@ def run_gate(args: argparse.Namespace, *, worker=None) -> dict:
                 output / "workers" / "semantic-mutations", lib, mutation, mutation.name, budget)
             rejected_code = mutation_native["exit_code"]
             _copy_regular(native_log, mutation_log)
-            require(mutation_native["resource_status"] is None and not mutation_products,
+            if native_resource_failure(mutation_native):
+                state["native_failure"] = {"module": "semantic-mutations",
+                    "reason": worker_failure_reason(mutation_native), "native": mutation_native}
+            require(not native_resource_failure(mutation_native) and not mutation_products,
                     "Semantic mutation worker exhausted resources or emitted an object")
         else:
             with mutation_log.open("wb") as stream:

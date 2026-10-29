@@ -26,7 +26,8 @@ from unittest.mock import Mock, patch
 from research.RHRC.integration.opica_composition import cli, executor, qualification, snapshot
 from research.RHRC.integration.opica_composition.accept import verify_lane_bundle
 from research.RHRC.integration.opica_composition.canonical import ContractError
-from research.RHRC.integration.opica_composition.contracts import SearchBudget, WorkerConfig
+from research.RHRC.integration.opica_composition.contracts import (CompositionProposal, ExperimentSpec,
+    SearchBudget, TargetSpec, WorkerConfig)
 
 
 def sha256(raw):
@@ -244,8 +245,9 @@ class NativeEnvironmentTests(unittest.TestCase):
         self.assertEqual(environment, {
             "compiler_sha256": sha256(self.lean.read_bytes()),
             "version_sha256": sha256(self.VERSION),
+            "inventory_scope": "OPICA_IMPORT_OBJECTS_V3",
             "object_count": 2,
-            "objects_digest": sha256(b"OPICA_IMPORT_OBJECTS_V2\0" + raw),
+            "objects_digest": sha256(b"OPICA_IMPORT_OBJECTS_V3\0" + raw),
             "toolchain_file_links": links})
         self.assertEqual(json.loads(manifest.read_bytes()), {
             str(alias.absolute()): sha256(target.read_bytes()),
@@ -254,7 +256,8 @@ class NativeEnvironmentTests(unittest.TestCase):
         # Lean's shell thread pool follows its CLI flag. Merely retaining the
         # environment variable can still spawn a host-sized pool under RLIMIT_AS.
         budgets = (SearchBudget(), SearchBudget(heartbeats=314159, wall_seconds=17,
-                   output_bytes=512345, memory_bytes=987654321, disk_bytes=456789000))
+                   cpu_seconds=13, max_file_bytes=678901, output_bytes=512345,
+                   memory_bytes=987654321, disk_bytes=456789000))
         for budget in budgets:
             for production in (False, True):
                 with self.subTest(production=production, budget=budget):
@@ -286,8 +289,8 @@ class NativeEnvironmentTests(unittest.TestCase):
                             "LEAN_PATH": os.pathsep.join([str(self.evidence), str(self.imports)])})
                     else:
                         prefix = [worker.prlimit, "--as=68719476736",
-                            "--cpu=" + str(budget.wall_seconds),
-                            "--fsize=" + str(budget.output_bytes), "--", worker.bubblewrap,
+                            "--cpu=" + str(budget.cpu_seconds) + ":" + str(budget.cpu_seconds),
+                            "--fsize=" + str(budget.max_file_bytes), "--", worker.bubblewrap,
                             "--unshare-all", "--die-with-parent", "--new-session", "--clearenv",
                             "--proc", "/proc", "--dev", "/dev", "--tmpfs", "/tmp"]
                         suffix = ["--bind", str(self.evidence), "/out", "--chdir", "/out",
@@ -332,6 +335,113 @@ class NativeEnvironmentTests(unittest.TestCase):
             after = self.environment()
         self.assertNotEqual(before["objects_digest"], after["objects_digest"])
         self.assertEqual(before["toolchain_file_links"], after["toolchain_file_links"])
+
+    def assert_import_input_transitions(self, name):
+        """Real inventory traversal observes existence and bytes in both roots."""
+        for slot, root in (("TOOLCHAIN", self.toolchain / "lib"), ("IMPORT_0", self.imports)):
+            with self.subTest(slot=slot, name=name):
+                path = root / name
+                baseline = self.environment()
+                self.write(path, b"first native import input")
+                manifest = self.evidence / (slot + "-" + name + ".json")
+                added = self.environment(manifest_output=manifest)
+                self.assertEqual(added["object_count"], baseline["object_count"] + 1)
+                self.assertNotEqual(added["objects_digest"], baseline["objects_digest"])
+                self.assertEqual(json.loads(manifest.read_bytes())[str(path.absolute())],
+                                 sha256(b"first native import input"))
+                path.write_bytes(b"other native import input")
+                changed = self.environment()
+                self.assertEqual(changed["object_count"], added["object_count"])
+                self.assertNotEqual(changed["objects_digest"], added["objects_digest"])
+                path.unlink()
+                deleted = self.environment()
+                self.assertNotEqual(deleted["objects_digest"], changed["objects_digest"])
+                self.assertEqual(deleted, baseline)
+
+    def test_signature_add_change_and_delete_change_both_root_inventories(self):
+        self.assert_import_input_transitions("Signature.ir.sig")
+
+    def test_existing_native_import_objects_retain_byte_and_existence_controls(self):
+        for name in ("Control.ir", "Control.olean", "Control.olean.private"):
+            self.assert_import_input_transitions(name)
+
+    def test_contained_signature_alias_binds_target_and_rejects_escape(self):
+        alias = self.write(self.toolchain / "lib" / "Alias.ir.sig")
+        target = self.write(self.toolchain / "lib" / "signature.bin", b"native signature bytes")
+        with leaf_links({alias: "signature.bin"}):
+            before = self.environment()
+            target.write_bytes(b"changed signature bytes")
+            changed = self.environment()
+        self.assertNotEqual(before["objects_digest"], changed["objects_digest"])
+        self.assertEqual(before["toolchain_file_links"], {
+            "lib/Alias.ir.sig": [{"path": "lib/Alias.ir.sig", "target": "signature.bin"}]})
+        outside = self.write(self.root / "outside-signature.bin", b"outside bytes")
+        for raw_target in ("../../outside-signature.bin", str(outside)):
+            with self.subTest(target=raw_target), leaf_links({alias: raw_target}), \
+                    self.assertRaises(ContractError):
+                self.environment()
+
+    def test_import_signature_aliases_reject_contained_and_escaping_targets(self):
+        alias = self.write(self.imports / "Alias.ir.sig")
+        target = self.write(self.imports / "signature.bin", b"import signature bytes")
+        outside = self.write(self.root / "outside-signature.bin", b"outside bytes")
+        for raw_target in ("signature.bin", str(target), "../outside-signature.bin", str(outside)):
+            with self.subTest(target=raw_target), leaf_links({alias: raw_target}), \
+                    self.assertRaises(ContractError):
+                self.environment()
+
+    def test_v3_scope_invalidates_v2_source_epoch_before_compiler_dispatch(self):
+        # No signatures are needed: the scope change itself invalidates V2.
+        current = self.environment()
+        objects = {"IMPORT_0/Module.olean": sha256(self.module.read_bytes())}
+        raw = json.dumps({"objects": objects, "toolchain_file_links": {}}, ensure_ascii=False,
+                         sort_keys=True, separators=(",", ":"), allow_nan=False).encode("utf-8")
+        legacy = {key: value for key, value in current.items() if key != "inventory_scope"}
+        legacy["objects_digest"] = sha256(b"OPICA_IMPORT_OBJECTS_V2\0" + raw)
+        self.assertEqual(current["objects_digest"], sha256(b"OPICA_IMPORT_OBJECTS_V3\0" + raw))
+        self.assertNotEqual(current, legacy)
+        self.assertNotEqual(current, {**legacy, "inventory_scope": "OPICA_IMPORT_OBJECTS_V3"})
+
+        repo = self.root / "epoch-source"
+        files = {name: sha256(self.write(repo / name, value).read_bytes()) for name, value in (
+            ("lean-toolchain", b"fixture toolchain"), ("lake-manifest.json", b"{}"),
+            ("lakefile.toml", b"name = 'fixture'\n"), ("Zeta23/Fixture.lean", b"-- fixture\n"))}
+        git_env = {**os.environ, "GIT_CONFIG_NOSYSTEM": "1", "GIT_CONFIG_GLOBAL": os.devnull,
+                   "GIT_NO_LAZY_FETCH": "1", "GIT_TERMINAL_PROMPT": "0"}
+        for args in (("init", "--quiet"), ("add", "--all"),
+                     ("-c", "user.name=OPICA fixture", "-c", "user.email=fixture@example.invalid",
+                      "commit", "--quiet", "-m", "Source epoch fixture")):
+            subprocess.run(["git", "-C", str(repo), *args], env=git_env, capture_output=True, check=True)
+        commit = snapshot.git(repo, "rev-parse", "HEAD")
+        profile = "SIGNATURE_SCOPE_FIXTURE"
+        old = snapshot.freeze_source_epoch(repo, ExperimentSpec(profile, commit, files,
+            {"worker_environment": legacy}))
+        fresh = snapshot.freeze_source_epoch(repo, ExperimentSpec(profile, commit, files,
+            {"worker_environment": current}))
+        self.assertNotEqual(old.generation, fresh.generation)
+        self.assertEqual(snapshot.check_snapshot(old), old)
+        self.assertEqual(snapshot.check_snapshot(fresh), fresh)
+
+        target = TargetSpec("Fixture", "Zeta23.Fixture", "Zeta23.Fixture", "1" * 64,
+            {}, [], ["Zeta23.Fixture"],
+            ["SOURCE", "KERNEL", "AXIOMS", "INDEPENDENT_EXPECTED_TYPE"], "value", [])
+        proposal = CompositionProposal("v2-scope-fixture", target.target_id, old.generation,
+            {"tag": "local", "binder_slot": 0})
+        actual_environment = executor.worker_environment
+
+        def environment(config, **kwargs):
+            with patch.object(executor.subprocess, "run", return_value=SimpleNamespace(stdout=self.VERSION)):
+                return actual_environment(config, **kwargs)
+
+        with patch.object(executor, "worker_capability", return_value="LINUX_ISOLATED"), \
+                patch.object(executor, "worker_environment", side_effect=environment), \
+                patch.object(executor, "run_worker") as dispatch:
+            with self.assertRaisesRegex(ContractError, "compiler/import object inventory changed"):
+                executor.execute_attempt(proposal, target, old, self.evidence / "old-epoch-attempt",
+                    worker=replace(self.worker, production=True))
+            dispatch.assert_not_called()
+        # This tests epoch admission using real byte inventory and Git objects;
+        # the mocked version/platform supplies no Linux compiler qualification.
 
     def test_equal_byte_retarget_changes_environment_identity(self):
         alias = self.write(self.toolchain / "lib" / "libLLVM.so")

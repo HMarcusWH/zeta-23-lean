@@ -7,7 +7,7 @@ import subprocess
 from .contracts import (AttemptArtifacts, CompositionProposal, TargetSpec, VerifiedApplication,
                         SearchBudget, ObjectBinding, as_record)
 from .snapshot import file_hash, unlinked, check_snapshot
-from .executor import execute_attempt, generate_source, generate_consumer, run_worker, parse_native, worker_environment, validate_output_inventory
+from .executor import execute_attempt, generate_source, generate_consumer, run_worker, parse_native, worker_environment, validate_output_inventory, worker_failure_reason
 from .inventory import expression_hash
 
 def validate_artifact_manifest(artifacts):
@@ -63,7 +63,8 @@ def verify_application(artifacts,target,snapshot,check_output,*,worker=None):
     if consumer["resource_status"] or consumer["exit_code"]!=0:
         status="RESOURCE_EXHAUSTED" if consumer["resource_status"] else "ENVIRONMENT_ERROR"
         return VerifiedApplication(status,target.digest,snapshot.digest,proposal.digest,replay.digest,
-            snapshot.generation,[],[],[],{"replay":replay.to_dict(),"consumer":consumer},False)
+            snapshot.generation,[],[],[],{"replay":replay.to_dict(),"consumer":consumer,
+                "reason":worker_failure_reason(consumer)},False)
     row=parse_native(check/"OpicaConsumer.lean.log","OPICA_INDEPENDENT")
     validate_output_inventory(check)
     require(expression_hash(row["type_expression"])==target.expected_type_hash,"independent target changed")

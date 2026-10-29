@@ -66,11 +66,29 @@ jobs:
             python -B -m research.RHRC.integration.opica_composition.cli lane \
             --lane "$LANE" --output "$RUNNER_TEMP/opica4-lanes/$LANE" \
             --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" --provider-root "$GITHUB_WORKSPACE/provider"
+      - name: Seal directory-preserving evidence transport
+        id: transport
+        working-directory: host
+        shell: bash
+        env:
+          LANE: ${{ matrix.lane }}
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/opica4-transports"
+          python -B -m research.RHRC.integration.opica_composition.cli transport-pack \
+            --lane "$LANE" --input "$RUNNER_TEMP/opica4-lanes/$LANE" \
+            --output "$RUNNER_TEMP/opica4-transports/$LANE" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --requested-commit "$REQUESTED_COMMIT" --requested-tree "$(git rev-parse "$REQUESTED_COMMIT^{tree}")"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: ${{ always() }}
+        if: ${{ success() && steps.lane.outcome == 'success' && steps.transport.outcome == 'success' }}
         with:
-          name: opica4-${{ matrix.lane }}
-          path: ${{ runner.temp }}/opica4-lanes/${{ matrix.lane }}
+          name: opica4-${{ github.run_id }}-${{ github.run_attempt }}-lane-${{ matrix.lane }}
+          path: |
+            ${{ runner.temp }}/opica4-transports/${{ matrix.lane }}/bundle.zip
+            ${{ runner.temp }}/opica4-transports/${{ matrix.lane }}/transport.json
+          compression-level: 0
           if-no-files-found: error
       - name: Record lane diagnostic disposition
         if: ${{ always() }}
@@ -101,11 +119,12 @@ jobs:
         if: ${{ always() }}
         continue-on-error: true
         with:
-          name: opica-diagnostics-${{ matrix.lane }}
+          name: opica4-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.lane }}
           path: |
             ${{ runner.temp }}/opica4-diagnostics/${{ matrix.lane }}
             ${{ runner.temp }}/opica4-native/bootstrap
             ${{ runner.temp }}/opica4-source-before.json
+            ${{ runner.temp }}/opica4-lanes/${{ matrix.lane }}/failure-diagnostics
           if-no-files-found: warn
   acceptance:
     name: Round4 / ACCEPTANCE
@@ -144,19 +163,20 @@ jobs:
           provider: 'true'
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          pattern: opica4-*
+          pattern: opica4-${{ github.run_id }}-${{ github.run_attempt }}-lane-*
           path: ${{ runner.temp }}/opica4-input
       - name: Reconstruct eleven complete bundles and run independent checkers
         id: acceptance
         working-directory: host
         shell: bash
+        env:
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/opica4-bundles"
-          for lane in CONTRACT PARENT_REGRESSION CURRENT_COMPATIBILITY COMPOSITION_FORMAL SEMANTIC_NEGATIVES FRAMEWORK_ADAPTERS PROVIDER_SELECTED REPLAY_CAMPAIGN GENERATED_STATE MATHEMATICAL_SUPPORT SOURCE_NUMERICS; do
-            test -f "$RUNNER_TEMP/opica4-input/opica4-$lane/lane.json"
-            mv "$RUNNER_TEMP/opica4-input/opica4-$lane" "$RUNNER_TEMP/opica4-bundles/$lane"
-          done
+          python -B -m research.RHRC.integration.opica_composition.cli transport-unpack \
+            --input "$RUNNER_TEMP/opica4-input" --output "$RUNNER_TEMP/opica4-bundles" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --requested-commit "$REQUESTED_COMMIT" --requested-tree "$(git rev-parse "$REQUESTED_COMMIT^{tree}")"
           sudo systemd-run --wait --pipe --collect --unit="opica4-accept-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
             --uid="$(id -u)" --gid="$(id -g)" \
             -p MemoryMax=4294967296 -p MemorySwapMax=0 -p TasksMax=64 -p CPUQuota=200% \
@@ -167,9 +187,9 @@ jobs:
             --bundles "$RUNNER_TEMP/opica4-bundles" --output "$RUNNER_TEMP/opica4-acceptance" \
             --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" --provider-root "$GITHUB_WORKSPACE/provider"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: ${{ always() }}
+        if: ${{ success() && steps.acceptance.outcome == 'success' }}
         with:
-          name: opica4-ACCEPTANCE
+          name: opica4-acceptance-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/opica4-acceptance
           if-no-files-found: error
       - name: Record acceptance diagnostic disposition
@@ -200,7 +220,7 @@ jobs:
         if: ${{ always() }}
         continue-on-error: true
         with:
-          name: opica-diagnostics-ACCEPTANCE
+          name: opica4-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}-ACCEPTANCE
           path: |
             ${{ runner.temp }}/opica4-diagnostics/ACCEPTANCE
             ${{ runner.temp }}/opica4-native/bootstrap

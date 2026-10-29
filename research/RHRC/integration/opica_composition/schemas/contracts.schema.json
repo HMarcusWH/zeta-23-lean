@@ -384,6 +384,8 @@
         "output_bytes",
         "memory_bytes",
         "disk_bytes",
+        "cpu_seconds",
+        "max_file_bytes",
         "schema"
       ],
       "properties": {
@@ -411,8 +413,18 @@
         "disk_bytes": {
           "type": "integer"
         },
+        "cpu_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 600
+        },
+        "max_file_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8388608
+        },
         "schema": {
-          "const": "OPICA_SEARCH_BUDGET_V1"
+          "const": "OPICA_SEARCH_BUDGET_V2"
         }
       }
     },

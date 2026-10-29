@@ -22,7 +22,8 @@ import time
 from .canonical import require,canonical_bytes,load_bytes,digest,ContractError
 from .contracts import WorkerConfig,SearchBudget,as_record
 from .snapshot import unlinked,file_hash,git,hash_inventory,discover_source_paths
-from .executor import run_worker,worker_environment,lean_name,lean_string,_recipe,MATH_SUPPORT_RECIPE,LEAN_ADDRESS_SPACE_BYTES
+from .executor import (run_worker,worker_environment,lean_name,lean_string,_recipe,MATH_SUPPORT_RECIPE,
+                       LEAN_ADDRESS_SPACE_BYTES,native_resource_failure)
 from .inventory import expression_hash,validate_telescope
 from ..opica_round4.math_gate import (MODULES as MATHEMATICAL_MODULES,
     EXPECTED_MODULE_COUNT, EXPECTED_DECLARATION_COUNT,
@@ -604,7 +605,7 @@ def _validate_mathematical_worker_receipts(result,output,worker):
     def check(native,folder,source,code,log):
         require(type(native)is dict and native.get('recipe')==MATH_SUPPORT_RECIPE and
                 native.get('capability')==('LINUX_ISOLATED' if worker.production else 'NATIVE_DEVELOPMENT_ONLY') and
-                native.get('exit_code')==code and native.get('resource_status') is None,
+                native.get('exit_code')==code and not native_resource_failure(native),
                 'Mathematical isolated worker receipt missing or invalid')
         command,_=_recipe(isolated,folder,source,source[:-5]+'.olean',budget,mathematical_support=True)
         require(native.get('command')==command,'Mathematical isolated worker argv differs')
@@ -619,6 +620,22 @@ def _validate_mathematical_worker_receipts(result,output,worker):
                     type(scope.get('cgroup'))is str and scope['cgroup'].startswith('/'),
                     'Mathematical isolated worker resource scope differs')
         else:require(scope=={'mode':'NATIVE_DEVELOPMENT_ONLY'},'Development mathematical worker scope differs')
+        expected_caps={'wall_seconds':budget.wall_seconds,'cpu_seconds_soft':budget.cpu_seconds,
+          'cpu_seconds_hard':budget.cpu_seconds,'log_bytes':budget.log_bytes,'max_file_bytes':budget.max_file_bytes,
+          'memory_bytes':scope.get('memory_bytes',budget.memory_bytes),'disk_bytes':scope.get('disk_bytes',budget.disk_bytes),
+          'address_space_bytes':LEAN_ADDRESS_SPACE_BYTES,'os_limits_enforced':worker.production}
+        caps=native.get('resource_caps')
+        require(type(caps)is dict and caps==expected_caps and
+                all(type(caps[key])is type(value) for key,value in expected_caps.items()),
+                'Mathematical isolated worker resource caps differ')
+        require(native.get('resource_reason') is None and
+                native.get('failure_reason')==(None if code==0 else 'UNCLASSIFIED_WORKER_FAILURE'),
+                'Mathematical isolated worker failure reason differs')
+        child=native.get('child_status',{})
+        require(type(child)is dict and type(child.get('return_code'))is int and
+                child=={'schema':'OPICA_WORKER_WAIT_STATUS_V1','return_code':code,'signal':None,
+                       'observation':'PYTHON_SUBPROCESS_WAIT','scope':'COMMAND_PROCESS_ONLY_WRAPPED_CHILD_UNKNOWN'},
+                'Mathematical isolated worker wait status differs')
     for row in rows:
         module=row['module'];source=relative(module).as_posix();folder=output/'workers'/module
         require(row.get('worker_output')==str(folder) and row.get('argv')==row.get('native',{}).get('command') and
