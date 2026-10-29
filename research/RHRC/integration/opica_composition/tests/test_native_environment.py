@@ -24,7 +24,7 @@ from unittest.mock import patch
 from research.RHRC.integration.opica_composition import cli, executor, qualification, snapshot
 from research.RHRC.integration.opica_composition.accept import verify_lane_bundle
 from research.RHRC.integration.opica_composition.canonical import ContractError
-from research.RHRC.integration.opica_composition.contracts import WorkerConfig
+from research.RHRC.integration.opica_composition.contracts import SearchBudget, WorkerConfig
 
 
 def sha256(raw):
@@ -189,6 +189,58 @@ class NativeEnvironmentTests(unittest.TestCase):
         self.assertEqual(json.loads(manifest.read_bytes()), {
             str(alias.absolute()): sha256(target.read_bytes()),
             str(self.module.absolute()): sha256(self.module.read_bytes())})
+
+        # Lean's shell thread pool follows its CLI flag. Merely retaining the
+        # environment variable can still spawn a host-sized pool under RLIMIT_AS.
+        budgets = (SearchBudget(), SearchBudget(heartbeats=314159, wall_seconds=17,
+                   output_bytes=512345, memory_bytes=987654321, disk_bytes=456789000))
+        for budget in budgets:
+            for production in (False, True):
+                with self.subTest(production=production, budget=budget):
+                    worker = WorkerConfig(str(self.lean), str(self.toolchain), [str(self.imports)],
+                                          bubblewrap="/fixture/bwrap", prlimit="/fixture/prlimit",
+                                          production=production)
+                    inherited = {"PATH": "unsafe-inherited-path", "LEAN_PATH": "unsafe-imports",
+                                 "LEAN_NUM_THREADS": "999", "OPICA_TEST_SECRET": "not-a-real-secret",
+                                 "SYSTEMROOT": "system-root", "WINDIR": "windows-directory",
+                                 "TEMP": "temporary-directory", "TMP": "temporary-directory"}
+                    with patch.dict(os.environ, inherited, clear=True):
+                        command, env = executor._recipe(worker, self.evidence, "Smoke.lean",
+                                                        "Smoke.olean", budget)
+                    lean_index = command.index(str(self.lean))
+                    self.assertEqual(command[lean_index + 1], "-j2")
+                    self.assertEqual(command.count("-j2"), 1)
+                    self.assertNotIn("-j2", command[:lean_index])
+                    self.assertEqual(command.count(str(self.lean)), 1)
+                    if not production:
+                        self.assertEqual(command, [str(self.lean), "-j2", "--root=" + str(self.evidence),
+                            "-DmaxHeartbeats=" + str(budget.heartbeats), "-DmaxRecDepth=2048",
+                            "-o", str(self.evidence / "Smoke.olean"), str(self.evidence / "Smoke.lean")])
+                        self.assertEqual(env, {"SYSTEMROOT": "system-root", "WINDIR": "windows-directory",
+                            "TEMP": "temporary-directory", "TMP": "temporary-directory",
+                            "PATH": str(self.lean.parent), "LEAN_NUM_THREADS": "2",
+                            "LEAN_PATH": os.pathsep.join([str(self.evidence), str(self.imports)])})
+                    else:
+                        prefix = [worker.prlimit, "--as=" + str(budget.memory_bytes),
+                            "--cpu=" + str(budget.wall_seconds), "--nproc=64",
+                            "--fsize=" + str(budget.output_bytes), "--", worker.bubblewrap,
+                            "--unshare-all", "--die-with-parent", "--new-session", "--clearenv",
+                            "--proc", "/proc", "--dev", "/dev", "--tmpfs", "/tmp"]
+                        suffix = ["--bind", str(self.evidence), "/out", "--chdir", "/out",
+                            "--setenv", "PATH", str(self.lean.parent),
+                            "--setenv", "LEAN_NUM_THREADS", "2",
+                            "--setenv", "LEAN_PATH", ":".join(["/out", str(self.imports)]),
+                            str(self.lean), "-j2", "--root=/out",
+                            "-DmaxHeartbeats=" + str(budget.heartbeats), "-DmaxRecDepth=2048",
+                            "-o", "/out/Smoke.olean", "/out/Smoke.lean"]
+                        self.assertEqual(command[:len(prefix)], prefix)
+                        self.assertEqual(command[-len(suffix):], suffix)
+                        self.assertEqual(command.count("--bind"), 1)
+                        for mounted in (self.toolchain, self.imports):
+                            index = command.index(str(mounted), len(prefix))
+                            self.assertEqual(command[index - 1:index + 2],
+                                             ["--ro-bind", str(mounted), str(mounted)])
+                        self.assertEqual(env, {})
 
     def test_target_byte_change_changes_environment_identity(self):
         alias = self.write(self.toolchain / "lib" / "libLLVM.so")

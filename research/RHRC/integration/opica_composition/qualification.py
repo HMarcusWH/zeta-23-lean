@@ -6,7 +6,7 @@ theorem, source pin or generated parent file is rewritten here.
 """
 from __future__ import annotations
 from collections import Counter
-from dataclasses import asdict
+from dataclasses import asdict,replace
 import hashlib
 import json
 import os
@@ -21,7 +21,7 @@ import time
 from .canonical import require,canonical_bytes,load_bytes,digest,ContractError
 from .contracts import WorkerConfig,SearchBudget,as_record
 from .snapshot import unlinked,file_hash,git,hash_inventory,discover_source_paths
-from .executor import run_worker,worker_environment,lean_name,lean_string
+from .executor import run_worker,worker_environment,lean_name,lean_string,_recipe,MATH_SUPPORT_RECIPE
 from .inventory import expression_hash,validate_telescope
 from ..opica_round4.math_gate import (MODULES as MATHEMATICAL_MODULES,
     EXPECTED_MODULE_COUNT, EXPECTED_DECLARATION_COUNT,
@@ -377,26 +377,91 @@ def check_current_compatibility(repo,output,worker):
     finally:(output/'result.json').write_bytes(canonical_bytes(report)+b'\n')
 
 
+def _validate_mathematical_worker_receipts(result,output,worker):
+    """A PASS label cannot substitute for the fixed isolated compiler recipe."""
+    from ..opica_round4.math_gate import mathematical_budget,relative,SEMANTIC_MUTATIONS
+    require(result.get('execution_mode')==('PRODUCTION_ISOLATED' if worker.production else 'DEVELOPMENT_ONLY') and
+            result.get('authority')==('CURRENT_SOURCE_ISOLATED_NATIVE_SUPPORT' if worker.production else 'DEVELOPMENT_NATIVE_SUPPORT_ONLY'),
+            'Mathematical support execution authority differs')
+    budget=mathematical_budget(worker,600)
+    require(result.get('worker')==worker.to_dict() and result.get('worker_budget')==budget.to_dict(),
+            'Mathematical support worker/budget differs')
+    rows=result.get('module_records')
+    require(type(rows)is list and len(rows)==EXPECTED_MODULE_COUNT and
+            {r.get('module') for r in rows}==set(MATHEMATICAL_MODULES),
+            'Mathematical isolated module receipt inventory differs')
+    isolated=replace(worker,lean_paths=[str(output/'lib'),*worker.lean_paths])
+    def check(native,folder,source,code,log):
+        require(type(native)is dict and native.get('recipe')==MATH_SUPPORT_RECIPE and
+                native.get('capability')==('LINUX_ISOLATED' if worker.production else 'NATIVE_DEVELOPMENT_ONLY') and
+                native.get('exit_code')==code and native.get('resource_status') is None,
+                'Mathematical isolated worker receipt missing or invalid')
+        command,_=_recipe(isolated,folder,source,source[:-5]+'.olean',budget,mathematical_support=True)
+        require(native.get('command')==command,'Mathematical isolated worker argv differs')
+        require(native.get('log_sha256')==file_hash(folder/(source+'.log'))==file_hash(log),
+                'Mathematical isolated worker log binding differs')
+        scope=native.get('resource_scope',{})
+        if worker.production:
+            require(scope.get('mode')=='LINUX_CGROUP_V2_TMPFS' and
+                    all(type(scope.get(key))is int and 0<scope[key]<=cap for key,cap in
+                        (('memory_bytes',budget.memory_bytes),('processes',64),('disk_bytes',budget.disk_bytes))) and
+                    type(scope.get('cgroup'))is str and scope['cgroup'].startswith('/'),
+                    'Mathematical isolated worker resource scope differs')
+        else:require(scope=={'mode':'NATIVE_DEVELOPMENT_ONLY'},'Development mathematical worker scope differs')
+    for row in rows:
+        module=row['module'];source=relative(module).as_posix();folder=output/'workers'/module
+        require(row.get('worker_output')==str(folder) and row.get('argv')==row.get('native',{}).get('command') and
+                row.get('exit_code')==0 and row.get('source_sha256')==file_hash(folder/source) and
+                row.get('log_sha256')==file_hash(output/(module+'.log')),
+                'Mathematical module source/receipt binding differs')
+        check(row.get('native'),folder,source,0,output/(module+'.log'))
+        products=row.get('products',{})
+        required={relative(module,suffix).as_posix() for suffix in ('.olean','.ilean')}
+        allowed=required|{relative(module,suffix).as_posix() for suffix in ('.olean.private','.olean.server')}
+        require(type(products)is dict and required<=set(products)<=allowed and
+                all(file_hash(folder/name)==expected==file_hash(output/'lib'/name) for name,expected in products.items()) and
+                row.get('object_sha256')==products[relative(module,'.olean').as_posix()],
+                'Mathematical module product binding differs')
+    mutation=result.get('mutation',{});source='RejectedSemanticMutations.lean';folder=output/'workers'/'semantic-mutations'
+    require(mutation.get('source_sha256')==hashlib.sha256(SEMANTIC_MUTATIONS.encode('utf-8')).hexdigest()==
+            file_hash(output/source)==file_hash(folder/source) and mutation.get('exit_code')==1 and
+            mutation.get('error_count')==9 and mutation.get('log_sha256')==file_hash(output/'semantic-mutations.log'),
+            'Mathematical semantic mutation binding differs')
+    check(mutation.get('native'),folder,source,1,output/'semantic-mutations.log')
+
+
 def check_mathematical_support(repo,output,worker):
+    from ..opica_round4.math_gate import load_worker_config
     worker=as_record(worker,WorkerConfig);repo=unlinked(repo).resolve();output=_external(repo,output,worker.production)
     gate=repo/'research/RHRC/integration/opica_round4/math_gate.py';require(gate.is_file(),'Actual mathematical support gate missing')
     version=_worker_version(repo,output,worker)
-    env={**os.environ,'PYTHONDONTWRITEBYTECODE':'1','PYTHONUTF8':'1'}
-    command=[sys.executable,'-B',str(gate),'--repo',str(repo),'--output-dir',str(output/'native'),
-      '--lean',worker.lean,'--lean-paths',os.pathsep.join(worker.lean_paths)]
-    record=_command(command,repo,env,output,'mathematical-support',7200)
-    report={'schema':'OPICA_MATHEMATICAL_SUPPORT_QUALIFICATION_V1','status':'ENVIRONMENT_ERROR','command':record,
+    report={'schema':'OPICA_MATHEMATICAL_SUPPORT_QUALIFICATION_V1','status':'ENVIRONMENT_ERROR',
       'gate_sha256':file_hash(gate),'RH':'OPEN','Step4':'OPEN'}
     report['worker_version_command']=version
     try:
-        require(record['returncode']==0 and record['timeout'] is False,'Actual mathematical support gate failed')
+        before=worker_environment(worker) if worker.production else None
+        config=output/'worker-config.json';config.write_bytes(worker.to_bytes()+b'\n')
+        config_hash=file_hash(config);report['worker_config_sha256']=config_hash
+        command=[sys.executable,'-B',str(gate),'--repo',str(repo),'--output-dir',str(output/'native'),
+          '--lean',worker.lean,'--lean-paths',os.pathsep.join(worker.lean_paths),'--timeout','600','--worker-config',str(config)]
+        env={**os.environ,'PYTHONDONTWRITEBYTECODE':'1','PYTHONUTF8':'1'}
+        record=_command(command,repo,env,output,'mathematical-support',7200);report['command']=record
+        require(record['returncode']==0 and record['timeout'] is False,'Actual bounded mathematical support gate failed')
+        checked_worker,checked_hash=load_worker_config(config)
+        require(checked_hash==config_hash and checked_worker==worker,
+                'Mathematical coordinator worker configuration changed')
         result=load_bytes((output/'native/result.json').read_bytes())
+        require(result.get('worker_config_sha256')==config_hash,'Mathematical coordinator configuration binding differs')
         require(result.get('status')=='PASS' and result.get('module_count')==EXPECTED_MODULE_COUNT and
                 result.get('declaration_count')==EXPECTED_DECLARATION_COUNT and
                 result.get('baseline_module_count')==BASELINE_MODULE_COUNT==16 and
                 result.get('baseline_declaration_count')==BASELINE_DECLARATION_COUNT==98 and
                 result.get('semantic_mutation_count')==9,
                 'Mathematical support gate incomplete or not actual native evidence')
+        _validate_mathematical_worker_receipts(result,output/'native',worker)
+        if worker.production:
+            require(worker_environment(worker)==before,'Mathematical compiler/import environment changed')
+            report['worker_environment']=before
         report.update({'status':'PASS_MATHEMATICAL_SUPPORT' if worker.production else 'DEVELOPMENT_MATHEMATICAL_SUPPORT',
           'native_result':result,'native_result_sha256':file_hash(output/'native/result.json')});return report
     finally:(output/'result.json').write_bytes(canonical_bytes(report)+b'\n')

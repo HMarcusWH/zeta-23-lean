@@ -176,12 +176,27 @@ def worker_environment(worker,*,manifest_output=None):
             "object_count":len(semantic_objects),"objects_digest":hashlib.sha256(b"OPICA_IMPORT_OBJECTS_V2\0"+semantic_raw).hexdigest(),
             "toolchain_file_links":toolchain_links}
 
-def _recipe(worker,output,source,object_name,budget):
+MATH_SUPPORT_RECIPE="OPICA_MATHEMATICAL_LEAN_ISOLATED_V1"
+
+def _recipe(worker,output,source,object_name,budget,*,mathematical_support=False):
     lean=Path(worker.lean); output=Path(output)
+    require(type(mathematical_support)is bool,"closed mathematical recipe selector required")
+    if mathematical_support:
+        require(type(source)is str and (re.fullmatch(r"Zeta23(?:/[A-Za-z0-9_]+)+\.lean",source) or
+                source=="RejectedSemanticMutations.lean") and object_name==source[:-5]+".olean",
+                "fixed mathematical module source/object pairing required")
+    def lean_argv(root):
+        args=[str(lean),"-j2","--root="+root,"-DmaxHeartbeats="+str(budget.heartbeats),"-DmaxRecDepth=2048"]
+        if mathematical_support:args += ["-DrelaxedAutoImplicit=false"]
+        args += ["-o",root+"/"+object_name]
+        if mathematical_support:args += ["-i",root+"/"+object_name[:-6]+".ilean"]
+        return args+[root+"/"+source]
     if not worker.production:
         env={k:v for k,v in os.environ.items() if k.upper() in {"SYSTEMROOT","WINDIR","TEMP","TMP"}}
-        env.update({"PATH":str(lean.parent),"LEAN_PATH":os.pathsep.join([str(output),*worker.lean_paths]),"LEAN_NUM_THREADS":"2"})
-        return [str(lean),"--root="+str(output),"-DmaxHeartbeats="+str(budget.heartbeats),
+        imports=worker.lean_paths if mathematical_support else [str(output),*worker.lean_paths]
+        env.update({"PATH":str(lean.parent),"LEAN_PATH":os.pathsep.join(imports),"LEAN_NUM_THREADS":"2"})
+        if mathematical_support:return lean_argv(str(output)),env
+        return [str(lean),"-j2","--root="+str(output),"-DmaxHeartbeats="+str(budget.heartbeats),
                 "-DmaxRecDepth=2048","-o",str(output/object_name),str(output/source)],env
     # Every mounted path is evaluator-owned. No home, cloud credentials, sockets
     # or inherited environment is visible inside the unshared network namespace.
@@ -198,8 +213,10 @@ def _recipe(worker,output,source,object_name,budget):
             cmd += ["--ro-bind",p,p]; mounts.append(p)
     cmd += ["--bind",str(output),"/out","--chdir","/out",
             "--setenv","PATH",str(lean.parent),"--setenv","LEAN_NUM_THREADS","2",
-            "--setenv","LEAN_PATH",":".join(["/out",*worker.lean_paths]),
-            str(lean),"--root=/out","-DmaxHeartbeats="+str(budget.heartbeats),
+            "--setenv","LEAN_PATH",":".join(worker.lean_paths if mathematical_support else ["/out",*worker.lean_paths])]
+    if mathematical_support:return cmd+lean_argv("/out"),{}
+    cmd += [
+            str(lean),"-j2","--root=/out","-DmaxHeartbeats="+str(budget.heartbeats),
             "-DmaxRecDepth=2048","-o","/out/"+object_name,"/out/"+source]
     return cmd,{}
 
@@ -225,7 +242,7 @@ def _report_worker_failure(code,disposition,log,raw):
     except (OSError,ValueError):
         pass  # Diagnostic transport must not change the worker's return status.
 
-def run_worker(worker,output,source,object_name,budget):
+def run_worker(worker,output,source,object_name,budget,*,mathematical_support=False):
     capability=worker_capability(worker)
     resource_scope={"mode":"NATIVE_DEVELOPMENT_ONLY"}
     if worker.production:
@@ -252,7 +269,7 @@ def run_worker(worker,output,source,object_name,budget):
         require(0<space.f_blocks*space.f_frsize<=budget.disk_bytes,"output volume exceeds approved hard disk cap")
         resource_scope={"mode":"LINUX_CGROUP_V2_TMPFS","memory_bytes":memory,"processes":processes,
                         "disk_bytes":space.f_blocks*space.f_frsize,"cgroup":groups[0]}
-    cmd,env=_recipe(worker,output,source,object_name,budget)
+    cmd,env=_recipe(worker,output,source,object_name,budget,mathematical_support=mathematical_support)
     log=Path(output)/(source+".log")
     start=time.monotonic(); disposition=None
     kwargs={"start_new_session":True} if os.name!="nt" else {"creationflags":subprocess.CREATE_NEW_PROCESS_GROUP}
@@ -272,7 +289,7 @@ def run_worker(worker,output,source,object_name,budget):
     if len(raw)>budget.output_bytes: disposition="RESOURCE_EXHAUSTED"
     if code!=0 or disposition is not None:
         _report_worker_failure(code,disposition,log,raw)
-    return {"exit_code":code,"capability":capability,"recipe":"OPICA_LEAN_ISOLATED_V1",
+    return {"exit_code":code,"capability":capability,"recipe":MATH_SUPPORT_RECIPE if mathematical_support else "OPICA_LEAN_ISOLATED_V1",
             "elapsed_milliseconds":int((time.monotonic()-start)*1000),"resource_status":disposition,
             "log_sha256":file_hash(log),"command":cmd,"resource_scope":resource_scope}
 

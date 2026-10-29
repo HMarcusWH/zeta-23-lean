@@ -31,16 +31,28 @@ class EndToEndTests(unittest.TestCase):
         ids={name:hashlib.sha256(name.encode()).hexdigest() for name in names}
         plan=calibration_plan({'D02':ids[names[0]],'D05':ids[names[1]],'And.intro':ids[names[2]],'Exists.intro':ids[names[3]]},'D05')
         proposal=CompositionProposal('full-native-round4',target.target_id,snapshot.generation,plan)
+        unaffordable=CompositionProposal('unaffordable-native-round4',target.target_id,snapshot.generation,plan)
         table=load_bytes((Path(artifacts.output)/'constant-table.json').read_bytes())
         out=root/('campaign-'+uuid.uuid4().hex)
-        result=run_bounded_campaign(snapshot=snapshot,targets={'D02_D05':target},proposals={'D02_D05':proposal},
-            constant_tables={'D02_D05':table},output=out,worker=worker,budget=1,priorities={'D02_D05':{'priority':1,'cost':1}})
-        self.assertEqual(result['published_applications'],1)
+        proposals={'D02_D05':proposal,'D02_D05_UNAFFORDABLE':unaffordable}
+        # Only the cost-1 action is affordable in either iteration. The same
+        # proposal must publish twice without a proposal-wide uniqueness error.
+        result=run_bounded_campaign(snapshot=snapshot,targets={k:target for k in proposals},proposals=proposals,
+            constant_tables={k:table for k in proposals},output=out,worker=worker,budget=2,
+            priorities={'D02_D05':{'priority':1,'cost':1},'D02_D05_UNAFFORDABLE':{'priority':1,'cost':3}})
+        self.assertEqual(result['published_applications'],2)
+        self.assertEqual(result['remaining_budget'],0)
+        self.assertEqual([r['action'] for r in result['dispositions']],['D02_D05','D02_D05'])
+        self.assertEqual(load_bytes((out/'campaign.json').read_bytes()),result)
         events=replay_events((out/'EVENTS.jsonl').read_bytes())
-        self.assertTrue(any(r['kind']=='APPLICATION_VERIFIED' for r in events))
+        verified=[r for r in events if r['kind']=='APPLICATION_VERIFIED']
+        self.assertEqual(len(verified),2)
+        self.assertEqual(len({r['payload']['attempt_id'] for r in verified}),2)
+        self.assertEqual([r['evidence'] for r in result['dispositions']],
+                         [r['payload']['evidence'] for r in verified])
         self.assertEqual(result['Step4'],'OPEN')
-        # A second durable iteration may independently check the same proposal.
-        # Keep both execution records, resolve each attempt exactly, and export
+        # A further durable iteration may independently check the same proposal.
+        # Keep all execution records, resolve each attempt exactly, and export
         # one mathematical edge. No test-issued proof capability is used.
         from research.RHRC.integration.opica_composition.contracts import AttemptArtifacts
         from research.RHRC.integration.opica_composition.journal import publish_verified_application
@@ -50,7 +62,7 @@ class EndToEndTests(unittest.TestCase):
         raw=AttemptArtifacts.from_bytes((out/'attempts'/prior/'receipt.json').read_bytes())
         with Journal(out/'journal.db',repository=Path(snapshot.repo)) as journal:
             state=journal.state()
-            next_choice=journal.dispatch({'D02_D05':proposal.digest},1,generation=snapshot.generation,
+            next_choice=journal.dispatch({k:v.digest for k,v in proposals.items()},1,generation=snapshot.generation,
                 source=snapshot.source_digest,expected_revision=state['revision'])
             publish_verified_application(journal,next_choice['attempt_id'],raw,snapshot,target,worker=worker,
                 generation=snapshot.generation,source=snapshot.source_digest,expected_revision=next_choice['revision'])
@@ -59,7 +71,7 @@ class EndToEndTests(unittest.TestCase):
             self.assertEqual(first['id'],second['id'])
             views=export_state(journal)
             self.assertEqual(len(views['APPLICATIONS.jsonl'].splitlines()),1)
-            self.assertEqual(len(journal.current_applications()),2)
+            self.assertEqual(len(journal.current_applications()),3)
     def test_t93(self):
         with self.assertRaises(ContractError):assess_composition_reduction([{'id':'x','gold':'answer'}],('gold',),lambda _:True)
     def test_t99(self):

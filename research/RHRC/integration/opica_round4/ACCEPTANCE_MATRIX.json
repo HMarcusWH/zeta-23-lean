@@ -2876,6 +2876,24 @@
       "case": null,
       "lane": "CONTRACT",
       "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_mathematical_support_uses_closed_worker_recipe_and_bounded_caps",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_mathematical_support_copies_exact_module_before_dispatch",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_mathematical_support_rejects_unisolated_and_forged_worker_receipts",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
     }
   ],
   "migrations": [

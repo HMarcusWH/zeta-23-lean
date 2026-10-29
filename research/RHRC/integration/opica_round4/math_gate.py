@@ -12,9 +12,14 @@ import os
 from pathlib import Path
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import time
+
+# Direct CLI execution resolves package helpers from this trusted source tree.
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
 
 BASELINE_EXPECTED_DECLARATIONS = [
   "Zeta23.OPICARound4.even_absolute_energy_anchor",
@@ -470,7 +475,8 @@ SEMANTIC_MUTATION_COUNT = 9
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 def sha(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    from research.RHRC.integration.opica_composition.snapshot import hash_inventory
+    return hash_inventory(path.parent, [path.name])[path.name]
 
 def require(value: bool, message: str) -> None:
     if not value:
@@ -535,20 +541,112 @@ def audit_validation(text: str) -> dict[str, dict]:
         types[name] = {"type": match.group(1), "axioms": axioms[name]}
     return types
 
-def run_gate(args: argparse.Namespace) -> dict:
+def _regular(path: Path) -> Path:
+    from research.RHRC.integration.opica_composition.snapshot import unlinked
+    path = unlinked(path)
+    require(stat.S_ISREG(path.lstat().st_mode),
+            "Regular mathematical gate file required: " + str(path))
+    return path
+
+
+def _copy_regular(source: Path, target: Path) -> str:
+    from research.RHRC.integration.opica_composition.snapshot import unlinked
+    source = _regular(source); target = unlinked(target)
+    expected = sha(source)
+    fd = os.open(source, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_BINARY", 0))
+    with os.fdopen(fd, "rb") as stream, target.open("xb") as destination:
+        before = os.fstat(stream.fileno())
+        require(stat.S_ISREG(before.st_mode) and not (getattr(before, "st_file_attributes", 0) & 1024),
+                "Regular no-reparse mathematical input required")
+        shutil.copyfileobj(stream, destination)
+        after = os.fstat(stream.fileno())
+        require((before.st_ino, before.st_dev, before.st_size, before.st_mtime_ns) ==
+                (after.st_ino, after.st_dev, after.st_size, after.st_mtime_ns), "Mathematical input changed during copy")
+    require(sha(source) == expected == sha(_regular(target)), "Copied mathematical file differs")
+    return expected
+
+
+def _lib_inventory(lib: Path) -> dict[str, str]:
+    rows = {}
+    for path in sorted(lib.rglob("*")):
+        require(not path.is_symlink() and not path.is_junction(), "Linked mathematical import view forbidden")
+        if path.is_file():
+            rows[path.relative_to(lib).as_posix()] = sha(_regular(path))
+        else:
+            require(path.is_dir(), "Unexpected mathematical import view entry")
+    return rows
+
+
+def mathematical_budget(worker, timeout: int):
+    """The historical heartbeat allowance changes no process, memory or disk cap."""
+    from dataclasses import asdict
+    from research.RHRC.integration.opica_composition.contracts import SearchBudget
+    defaults = asdict(SearchBudget())
+    configured = asdict(SearchBudget(**(worker.budget or {})))
+    values = {key: min(value, configured[key]) for key, value in defaults.items()}
+    values.update(heartbeats=1200000, wall_seconds=min(values["wall_seconds"], timeout))
+    return SearchBudget(**values)
+
+
+def _isolated_compile(worker, output: Path, lib: Path, source: Path, relative_source: str,
+                      budget) -> tuple[dict, Path, dict[str, str]]:
+    """Only the coordinator installs compiler products into the read-only view."""
+    from dataclasses import replace
+    from research.RHRC.integration.opica_composition.executor import run_worker
+    output.mkdir(parents=True, exist_ok=False)
+    copied = output / relative_source
+    copied.parent.mkdir(parents=True, exist_ok=True)
+    expected_source = sha(_regular(source))
+    _copy_regular(source, copied)
+    require(sha(_regular(copied)) == expected_source, "Copied mathematical source differs")
+    before = _lib_inventory(lib)
+    isolated = replace(worker, lean_paths=[str(lib), *worker.lean_paths])
+    obj_name = relative_source[:-5] + ".olean"
+    native = run_worker(isolated, output, relative_source, obj_name, budget, mathematical_support=True)
+    require(_lib_inventory(lib) == before, "Read-only mathematical import view changed during worker")
+    require(sha(_regular(copied)) == expected_source and sha(_regular(source)) == expected_source,
+            "Mathematical source changed during worker")
+    expected = {relative_source, relative_source + ".log"}
+    products = {}
+    for suffix in (".olean", ".olean.private", ".olean.server", ".ilean"):
+        name = relative_source[:-5] + suffix
+        path = output / name
+        if path.exists() or path.is_symlink():
+            products[name] = sha(_regular(path)); expected.add(name)
+    for path in output.rglob("*"):
+        require(not path.is_symlink() and not path.is_junction(), "Linked mathematical worker output forbidden")
+        if path.is_file():
+            require(path.relative_to(output).as_posix() in expected,
+                    "Unexpected mathematical worker output: " + str(path))
+        else:
+            require(path.is_dir() and any((output / name).is_relative_to(path) for name in expected),
+                    "Unexpected mathematical worker output directory")
+    return native, output / (relative_source + ".log"), products
+
+
+def run_gate(args: argparse.Namespace, *, worker=None) -> dict:
     repo, output, lean = args.repo.resolve(), args.output_dir.resolve(), args.lean.resolve()
     require(repo.is_dir() and lean.is_file(), "Missing checkout or native compiler")
     require(not output.is_relative_to(repo), "Gate outputs must stay outside the checkout")
     output.mkdir(parents=True, exist_ok=True)
     require(not any(output.iterdir()), "Gate output directory must be fresh and empty")
     state: dict = {"schema": "OPICA4_CURRENT_SOURCE_MATH_GATE_V1", "status": "FAIL",
-                   "RH": "OPEN", "Step4": "OPEN", "module_records": []}
+                   "RH": "OPEN", "Step4": "OPEN", "module_records": [],
+                   "execution_mode": "PRODUCTION_ISOLATED" if worker is not None and worker.production else "DEVELOPMENT_ONLY"}
     try:
         roots = (args.roots or repo / "research/RHRC/integration/opica_round4/ROOTS.json").resolve()
         require(roots.is_file(), "Missing required ROOTS ledger: " + str(roots))
         names, open_rows = root_names(roots)
         paths = [Path(p).resolve() for p in args.lean_paths.split(os.pathsep) if p]
         require(paths and all(p.is_dir() for p in paths), "Missing prepared native import roots")
+        if worker is not None:
+            from research.RHRC.integration.opica_composition.contracts import WorkerConfig, as_record
+            worker = as_record(worker, WorkerConfig)
+            require(Path(worker.lean).resolve() == lean and [Path(p).resolve() for p in worker.lean_paths] == paths,
+                    "Mathematical worker/compiler import binding differs")
+            budget = mathematical_budget(worker, args.timeout)
+            state["worker"] = worker.to_dict()
+            state["worker_budget"] = budget.to_dict()
         version = subprocess.check_output([str(lean), "--version"], text=True).strip()
         pin = (repo / "lean-toolchain").read_text(encoding="utf-8").strip().rsplit(":v", 1)[-1]
         require(pin in version, "Compiler does not match the source toolchain pin")
@@ -588,21 +686,19 @@ def run_gate(args: argparse.Namespace) -> dict:
             parent_objects[m] = {"path": str(obj), "sha256": sha(obj),
                                  "source_sha256": row["source_sha256"]}
         lib = output / "lib"
-        # A namespace binds to its first import root.  Link only authenticated
-        # native parent artifacts into the external view, never old Round4 objects.
+        lib.mkdir()
+        # The coordinator copies authenticated parents; a worker receives this
+        # cumulative view read-only and never sees writable checkout/package paths.
+        parent_artifacts = {}
         for m, row in parent_objects.items():
             for suffix in (".olean", ".olean.private", ".olean.server"):
                 source = Path(row["path"]).with_suffix(suffix)
                 if source.is_file():
                     target = lib / relative(m, suffix)
                     target.parent.mkdir(parents=True, exist_ok=True)
-                    if os.name == "nt":
-                        try:
-                            os.link(source, target)
-                        except OSError:
-                            shutil.copyfile(source, target)
-                    else:
-                        target.symlink_to(source)
+                    original_hash = _copy_regular(source, target)
+                    parent_artifacts[str(source)] = original_hash
+        state["parent_artifacts"] = parent_artifacts
         env = dict(os.environ, LEAN_PATH=os.pathsep.join(map(str, [lib] + paths)),
                    LEAN_NUM_THREADS="2", PYTHONDONTWRITEBYTECODE="1")
         temp = output / "temp"
@@ -623,34 +719,63 @@ def run_gate(args: argparse.Namespace) -> dict:
             obj = lib / relative(m, ".olean")
             obj.parent.mkdir(parents=True, exist_ok=True)
             log = output / (m + ".log")
-            argv = [str(lean), "-DmaxHeartbeats=1200000", "-DrelaxedAutoImplicit=false",
+            argv = [str(lean), "-j2", "-DmaxHeartbeats=1200000", "-DrelaxedAutoImplicit=false",
                     relative(m).as_posix(), "-o", str(obj), "-i", str(obj.with_suffix(".ilean"))]
             start = time.monotonic()
-            with log.open("wb") as stream:
-                result = subprocess.run(argv, cwd=repo, env=env, stdout=stream,
-                                        stderr=subprocess.STDOUT, timeout=args.timeout)
+            native = None
+            if worker is not None:
+                native, native_log, products = _isolated_compile(worker, output / "workers" / m, lib,
+                    sources[m], relative(m).as_posix(), budget)
+                code = native["exit_code"]
+                _copy_regular(native_log, log)
+                require(native["resource_status"] is None, "Mathematical module worker exhausted resources: " + m)
+                if code == 0:
+                    require(relative(m, ".olean").as_posix() in products and relative(m, ".ilean").as_posix() in products,
+                            "Mathematical module object/interface output absent: " + m)
+                    for name, expected_hash in products.items():
+                        target = lib / name
+                        require(not target.exists(), "Mathematical module overwrote import object")
+                        _copy_regular(output / "workers" / m / name, target)
+                        require(sha(_regular(target)) == expected_hash, "Installed mathematical object differs")
+                argv = native["command"]
+            else:
+                with log.open("wb") as stream:
+                    direct = subprocess.run(argv, cwd=repo, env=env, stdout=stream,
+                                            stderr=subprocess.STDOUT, timeout=args.timeout)
+                code = direct.returncode
             text = log.read_text(encoding="utf-8", errors="replace")
             row = {"module": m, "source_sha256": source_hashes[m], "argv": argv,
-                   "exit_code": result.returncode, "elapsed_ms": int((time.monotonic() - start) * 1000),
+                   "exit_code": code, "elapsed_ms": int((time.monotonic() - start) * 1000),
                    "log": str(log), "log_sha256": sha(log),
-                   "object_sha256": sha(obj) if obj.is_file() and result.returncode == 0 else None}
+                   "object_sha256": sha(obj) if obj.is_file() and code == 0 else None}
+            if native is not None:
+                row.update(native=native, worker_output=str(output / "workers" / m), products=products)
             state["module_records"].append(row)
-            require(result.returncode == 0 and obj.is_file() and "sorryAx" not in text and
+            require(code == 0 and obj.is_file() and "sorryAx" not in text and
                     not re.search(r"(?m)^.*:\d+:\d+: error(?:\(|:)", text), "Lean module failed: " + m)
         validation = output / "Zeta23.OPICARound4.Validation.log"
         text = validation.read_text(encoding="utf-8")
         types = audit_validation(text)
         dump(output / "types-and-axioms.json", types)
         mutation = output / "RejectedSemanticMutations.lean"
-        mutation.write_text(SEMANTIC_MUTATIONS, encoding="utf-8")
+        mutation.write_text(SEMANTIC_MUTATIONS, encoding="utf-8", newline="\n")
         mutation_log = output / "semantic-mutations.log"
-        mutation_argv = [str(lean), "-DmaxHeartbeats=1200000", "-DrelaxedAutoImplicit=false", str(mutation)]
-        with mutation_log.open("wb") as stream:
-            rejected = subprocess.run(mutation_argv, cwd=repo, env=env, stdout=stream,
-                                      stderr=subprocess.STDOUT, timeout=args.timeout)
+        mutation_argv = [str(lean), "-j2", "-DmaxHeartbeats=1200000", "-DrelaxedAutoImplicit=false", str(mutation)]
+        mutation_native = None
+        if worker is not None:
+            mutation_native, native_log, mutation_products = _isolated_compile(worker,
+                output / "workers" / "semantic-mutations", lib, mutation, mutation.name, budget)
+            rejected_code = mutation_native["exit_code"]
+            _copy_regular(native_log, mutation_log)
+            require(mutation_native["resource_status"] is None and not mutation_products,
+                    "Semantic mutation worker exhausted resources or emitted an object")
+        else:
+            with mutation_log.open("wb") as stream:
+                rejected_code = subprocess.run(mutation_argv, cwd=repo, env=env, stdout=stream,
+                                          stderr=subprocess.STDOUT, timeout=args.timeout).returncode
         text = mutation_log.read_text(encoding="utf-8", errors="replace")
         errors = [line for line in text.splitlines() if "error:" in line or "error(" in line]
-        require(rejected.returncode == 1 and len(errors) == SEMANTIC_MUTATION_COUNT and
+        require(rejected_code == 1 and len(errors) == SEMANTIC_MUTATION_COUNT and
                 all("type mismatch" in line.casefold() for line in errors), "Semantic mutations not rejected as intended")
         require(not any(x in text.casefold() for x in ("unknown module", "unknown identifier", "unknown constant",
                     "file not found", "maximum number of heartbeats", "maximum recursion", "out of memory", "panic")),
@@ -661,6 +786,8 @@ def run_gate(args: argparse.Namespace) -> dict:
             require(sha(repo / relative(m)) == row["source_sha256"], "Dependency source changed: " + m)
         for m, row in parent_objects.items():
             require(sha(Path(row["path"])) == row["sha256"], "Prepared parent object changed: " + m)
+        for path, expected_hash in parent_artifacts.items():
+            require(sha(_regular(Path(path))) == expected_hash, "Prepared parent artifact changed: " + path)
         state.update(status="PASS", module_count=len(order), declaration_count=len(types),
                      baseline_module_count=BASELINE_MODULE_COUNT, baseline_declaration_count=BASELINE_DECLARATION_COUNT,
                      semantic_mutation_count=SEMANTIC_MUTATION_COUNT, roots_count=len(names), open_root_rows=open_rows,
@@ -668,15 +795,34 @@ def run_gate(args: argparse.Namespace) -> dict:
                      parent_objects=parent_objects, lean=str(lean), lean_sha256=sha(lean), lean_version=version,
                      toolchain_sha256=sha(repo / "lean-toolchain"), manifest_sha256=sha(repo / "lake-manifest.json"),
                      checker_sha256=sha(Path(__file__)), types_and_axioms_sha256=sha(output / "types-and-axioms.json"),
-                     mutation={"exit_code": rejected.returncode, "source_sha256": sha(mutation),
-                               "log_sha256": sha(mutation_log), "error_count": SEMANTIC_MUTATION_COUNT},
+                     mutation={"exit_code": rejected_code, "source_sha256": sha(mutation),
+                               "log_sha256": sha(mutation_log), "error_count": SEMANTIC_MUTATION_COUNT,
+                               **({"native": mutation_native} if mutation_native is not None else {})},
                      head=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip(),
                      committed_tree=subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], cwd=repo, text=True).strip(),
-                     authority="CURRENT_SOURCE_NATIVE_SUPPORT_WITH_PREPARED_NATIVE_PARENT_OBJECTS")
+                     authority="CURRENT_SOURCE_ISOLATED_NATIVE_SUPPORT" if worker is not None and worker.production
+                               else "DEVELOPMENT_NATIVE_SUPPORT_ONLY")
     except Exception as exc:
         state["failure"] = str(exc)
     dump(output / "result.json", state)
     return state
+
+def load_worker_config(path: Path):
+    """Read only the trusted coordinator's closed, hash-bound worker record."""
+    from research.RHRC.integration.opica_composition.contracts import WorkerConfig
+    path = _regular(path); expected = sha(path)
+    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_BINARY", 0)
+    with os.fdopen(os.open(path, flags), "rb") as stream:
+        before = os.fstat(stream.fileno())
+        require(stat.S_ISREG(before.st_mode) and not (getattr(before, "st_file_attributes", 0) & 1024),
+                "Regular no-reparse worker configuration required")
+        raw = stream.read(65537)
+        after = os.fstat(stream.fileno())
+        require(len(raw) <= 65536 and (before.st_ino, before.st_dev, before.st_size, before.st_mtime_ns) ==
+                (after.st_ino, after.st_dev, after.st_size, after.st_mtime_ns), "Worker configuration oversized or changed")
+    require(hashlib.sha256(raw).hexdigest() == expected == sha(path), "Worker configuration bytes changed")
+    return WorkerConfig.from_bytes(raw), expected
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -686,8 +832,14 @@ def main() -> int:
     parser.add_argument("--lean-paths", required=True)
     parser.add_argument("--roots", type=Path)
     parser.add_argument("--timeout", type=int, default=900)
+    parser.add_argument("--worker-config", type=Path)
     args = parser.parse_args()
-    result = run_gate(args)
+    worker, config_hash = load_worker_config(args.worker_config) if args.worker_config else (None, None)
+    result = run_gate(args, worker=worker)
+    if args.worker_config:
+        require(sha(args.worker_config) == config_hash, "Worker configuration changed during gate")
+        result["worker_config_sha256"] = config_hash
+        dump(args.output_dir / "result.json", result)
     print(json.dumps({k: result.get(k) for k in ("status", "module_count", "declaration_count", "semantic_mutation_count", "failure")}))
     return 0 if result["status"] == "PASS" else 1
 

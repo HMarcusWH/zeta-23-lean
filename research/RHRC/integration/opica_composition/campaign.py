@@ -48,10 +48,11 @@ def run_bounded_campaign(*, snapshot, targets: dict, proposals: dict, constant_t
                 event=publish_verified_application(journal,choice['attempt_id'],attempt,snapshot,target,
                     worker=worker,generation=snapshot.generation,source=snapshot.source_digest,
                     expected_revision=choice['revision'])
-                matches=[r for r in journal.current_applications() if r['proposal_digest']==proposals[key].digest]
-                require(len(matches)==1,'native published application identity ambiguous')
-                app=matches[0]
+                # Resolve this attempt, not every earlier check of the proposal.
+                # The publication resolver checks the journal source generation,
+                # attempt/proposal binding and independent production proof gate.
                 application=application_from_publication(journal,choice['attempt_id'])
+                evidence=application['proof_evidence']
                 proof_packets=[(key,obj) for key,obj in application['witness_bindings'].items()
                                if obj['object_kind']=='DEPENDENT_PROOF_PACKET']
                 require(len(proof_packets)==1,'native proof packet binding missing')
@@ -59,12 +60,13 @@ def run_bounded_campaign(*, snapshot, targets: dict, proposals: dict, constant_t
                 wanted={'id':'native-target','source':snapshot.source_digest,'context':packet['context_digest'],
                     'producer':packet_id,'consumer':packet_id,'witness':packet_id,
                     'phase':'CONFIRMATORY_FROZEN'}
-                observed={**wanted,'observed_phase':'CONFIRMATORY_FROZEN','receipt':app['evidence_digest'],'transport':None}
+                observed={**wanted,'observed_phase':'CONFIRMATORY_FROZEN','receipt':evidence,'transport':None}
                 verify_interfaces([wanted],[observed],lambda req,row:
-                    row['receipt']==app['evidence_digest'] and app['target_digest']==target.digest and
-                    row['witness'] in application['witness_bindings'] and app['publication_eligible'])
+                    row['receipt']==evidence and application['target_digest']==target.digest and
+                    application['source_generation']==snapshot.generation and
+                    row['witness'] in application['witness_bindings'] and application['authority']=='PROVED_CONDITIONAL')
                 dispositions.append({'action':key,'status':'PROVED_CONDITIONAL','controls':list(controls),
-                    'evidence':app['evidence_digest'],'journal_revision':event['revision'],
+                    'evidence':evidence,'journal_revision':event['revision'],
                     'frameworks':['FFBBP','POLICY_ADAPTER_ONLY','OOL','NATIVE_EXPECTED_TYPE_REPLAY']})
             else:
                 journal.record_outcome(choice['attempt_id'],attempt.status,{'reason':attempt.reason},
