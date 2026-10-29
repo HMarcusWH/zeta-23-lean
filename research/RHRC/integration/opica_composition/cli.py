@@ -1,9 +1,11 @@
 """Trusted Round4 lane coordinator. All generated evidence stays outside Git."""
 from __future__ import annotations
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
+import stat
 import subprocess
 import sys
 import uuid
@@ -15,6 +17,147 @@ from .accept import ROUND4_LANES,verify_lane_bundle,require_test_receipt,accept_
 HERE=Path(__file__).resolve().parent
 REPO=HERE.parents[3]
 PROFILE=HERE/'PROFILE.json'
+FAILURE_DIAGNOSTIC_MAX_FILES=512
+FAILURE_DIAGNOSTIC_MAX_FILE_BYTES=16*1024*1024
+FAILURE_DIAGNOSTIC_MAX_TOTAL_BYTES=128*1024*1024
+FAILURE_DIAGNOSTIC_MAX_ENTRIES=20000
+FAILURE_DIAGNOSTIC_MAX_OMISSIONS=256
+
+
+def _failure_diagnostic_bytes(root,relative,maximum):
+    """Bounded authenticated bytes; Linux keeps no-follow directory handles."""
+    require(not Path(relative).is_absolute() and '..' not in Path(relative).parts,
+            'Diagnostic relative path required')
+    path=root/relative;unlinked(path)
+    descriptors=[]
+    try:
+        if os.name!='nt':
+            flags=os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW
+            descriptors.append(os.open(root,flags))
+            for part in Path(relative).parts[:-1]:
+                descriptors.append(os.open(part,flags,dir_fd=descriptors[-1]))
+            fd=os.open(Path(relative).name,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK,dir_fd=descriptors[-1])
+        else:
+            import ctypes,msvcrt
+            from ctypes import wintypes
+            kernel=ctypes.WinDLL('kernel32',use_last_error=True)
+            create=kernel.CreateFileW;create.restype=wintypes.HANDLE
+            create.argtypes=[wintypes.LPCWSTR,wintypes.DWORD,wintypes.DWORD,
+              wintypes.LPVOID,wintypes.DWORD,wintypes.DWORD,wintypes.HANDLE]
+            close=kernel.CloseHandle;close.argtypes=[wintypes.HANDLE]
+            query=kernel.GetFileInformationByHandleEx
+            query.argtypes=[wintypes.HANDLE,ctypes.c_int,wintypes.LPVOID,wintypes.DWORD]
+            class AttributeTag(ctypes.Structure):
+                _fields_=[('attributes',wintypes.DWORD),('tag',wintypes.DWORD)]
+            # OPEN_REPARSE_POINT opens the leaf itself rather than its target.
+            handle=create(str(path),0x80000000,7,None,3,0x00200000|0x08000000,None)
+            require(handle!=wintypes.HANDLE(-1).value,'Diagnostic no-follow handle unavailable')
+            try:
+                attributes=AttributeTag()
+                require(query(handle,9,ctypes.byref(attributes),ctypes.sizeof(attributes)) and
+                  not(attributes.attributes&(1024|16)),'Diagnostic reparse/directory handle refused')
+                fd=msvcrt.open_osfhandle(handle,os.O_RDONLY|os.O_BINARY);handle=None
+            finally:
+                if handle is not None:close(handle)
+        with os.fdopen(fd,'rb') as stream:
+            before=os.fstat(stream.fileno())
+            require(stat.S_ISREG(before.st_mode) and before.st_size<=maximum,'Diagnostic regular file/size differs')
+            data=stream.read(maximum+1);after=os.fstat(stream.fileno())
+            require(len(data)<=maximum and len(data)==before.st_size and
+              (before.st_dev,before.st_ino,before.st_size,before.st_mtime_ns)==
+              (after.st_dev,after.st_ino,after.st_size,after.st_mtime_ns),'Diagnostic file changed while reading')
+        unlinked(path)
+        return data,hashlib.sha256(data).hexdigest()
+    finally:
+        for fd in reversed(descriptors):os.close(fd)
+
+
+def _collect_failed_native_diagnostics(lane,repo,output):
+    """Best-effort failed-run evidence, categorically outside lane acceptance."""
+    repo=unlinked(repo).resolve();output=external(repo,output)
+    require(output.is_dir(),'Validated existing lane output required for diagnostics')
+    native=os.environ.get('OPICA_NATIVE_OUTPUT')
+    require(native,'Native volume unavailable for failure diagnostics')
+    native=unlinked(native).resolve()
+    require(native.is_dir() and not native.is_relative_to(repo) and
+      not native.is_relative_to(output) and not output.is_relative_to(native),
+      'Diagnostic native volume must be disjoint from source and lane output')
+    destination=unlinked(output/'failure-diagnostics')
+    require(not destination.exists(),'Fresh diagnostic directory required');destination.mkdir()
+    report={'schema':'OPICA_FAILED_NATIVE_DIAGNOSTICS_V1','authority':'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE',
+      'lane':lane,'native_root':str(native),'files':[],'omissions':[],'omission_counts':{},
+      'traversal_truncated':False,'omissions_truncated':False,'retained_bytes':0,
+      'limits':{'files':FAILURE_DIAGNOSTIC_MAX_FILES,'file_bytes':FAILURE_DIAGNOSTIC_MAX_FILE_BYTES,
+        'total_bytes':FAILURE_DIAGNOSTIC_MAX_TOTAL_BYTES,'entries':FAILURE_DIAGNOSTIC_MAX_ENTRIES}}
+    def omit(relative,reason,**details):
+        report['omission_counts'][reason]=report['omission_counts'].get(reason,0)+1
+        if len(report['omissions'])<FAILURE_DIAGNOSTIC_MAX_OMISSIONS:
+            report['omissions'].append({'path':relative,'reason':reason,**details})
+        else:report['omissions_truncated']=True
+    stack=[native];candidates=[];entries=0
+    while stack:
+        directory=stack.pop();relative=directory.relative_to(native).as_posix()
+        scan_descriptors=[]
+        try:
+            unlinked(directory)
+            if os.name!='nt':
+                flags=os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW
+                scan_descriptors.append(os.open(native,flags))
+                for part in directory.relative_to(native).parts:
+                    scan_descriptors.append(os.open(part,flags,dir_fd=scan_descriptors[-1]))
+            with os.scandir(scan_descriptors[-1] if scan_descriptors else directory) as iterator:
+                for entry in iterator:
+                    entries+=1
+                    if entries>FAILURE_DIAGNOSTIC_MAX_ENTRIES:
+                        report['traversal_truncated']=True;omit('.', 'TRAVERSAL_LIMIT');stack.clear();break
+                    path=directory/entry.name;rel=path.relative_to(native).as_posix();info=os.lstat(path)
+                    if scan_descriptors and not(stat.S_ISLNK(info.st_mode) or getattr(info,'st_file_attributes',0)&1024):
+                        info=os.stat(entry.name,dir_fd=scan_descriptors[-1],follow_symlinks=False)
+                    if stat.S_ISLNK(info.st_mode) or getattr(info,'st_file_attributes',0)&1024:
+                        omit(rel,'LINK_OR_REPARSE_REFUSED');continue
+                    if stat.S_ISDIR(info.st_mode):
+                        if len(Path(rel).parts)>64:omit(rel,'DEPTH_LIMIT')
+                        else:stack.append(path)
+                    elif not stat.S_ISREG(info.st_mode):omit(rel,'NONREGULAR_REFUSED')
+                    elif path.name in {'lane.json','acceptance.json'}:omit(rel,'ACCEPTANCE_RECORD_REFUSED')
+                    elif path.suffix not in {'.log','.json','.lean'}:omit(rel,'UNSELECTED_EXTENSION')
+                    else:candidates.append((rel,info.st_size))
+        except (OSError,ValueError) as error:omit(relative,'DIRECTORY_READ_FAILED',error=type(error).__name__)
+        finally:
+            for fd in reversed(scan_descriptors):os.close(fd)
+        if report['traversal_truncated']:break
+    def priority(row):
+        path=Path(row[0]);return (0 if path.name=='result.json' else
+          1 if path.suffix=='.log' else 2 if path.suffix=='.lean' else 3,row[0])
+    def save(path,data):
+        unlinked(path.parent);path.parent.mkdir(parents=True,exist_ok=True);unlinked(path.parent)
+        fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL|getattr(os,'O_NOFOLLOW',0),0o600)
+        with os.fdopen(fd,'wb') as stream:stream.write(data)
+    for relative,size in sorted(candidates,key=priority):
+        if size>FAILURE_DIAGNOSTIC_MAX_FILE_BYTES:omit(relative,'PER_FILE_LIMIT',bytes=size);continue
+        if len(report['files'])>=FAILURE_DIAGNOSTIC_MAX_FILES:omit(relative,'FILE_COUNT_LIMIT',bytes=size);continue
+        remaining=FAILURE_DIAGNOSTIC_MAX_TOTAL_BYTES-report['retained_bytes']
+        if size>remaining:omit(relative,'TOTAL_BYTES_LIMIT',bytes=size);continue
+        try:
+            data,value=_failure_diagnostic_bytes(native,relative,min(remaining,FAILURE_DIAGNOSTIC_MAX_FILE_BYTES))
+            save(destination/'native'/relative,data)
+            report['files'].append({'path':'native/'+relative,'bytes':len(data),'sha256':value})
+            report['retained_bytes']+=len(data)
+        except (OSError,ValueError) as error:omit(relative,'FILE_READ_OR_COPY_FAILED',error=type(error).__name__)
+    save(destination/'index.json',canonical_bytes(report)+b'\n')
+    return report
+
+
+def run_lane(lane,repo,output,exp,*,provider_root=None):
+    repo=Path(repo).resolve();output=external(repo,output)
+    require(not output.exists(),'Fresh lane output directory required');output.mkdir(parents=True)
+    try:return _run_lane_impl(lane,repo,output,exp,provider_root=provider_root)
+    except BaseException:
+        try:_collect_failed_native_diagnostics(lane,repo,output)
+        except Exception as error:
+            try:sys.stderr.write('OPICA_DIAGNOSTIC_ONLY_COLLECTION_FAILED '+type(error).__name__+'\n')
+            except (OSError,ValueError,AttributeError):pass
+        raise
 
 def write(path,row):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(canonical_bytes(row)+b'\n')
@@ -94,9 +237,7 @@ def support_regressions(repo,output):
         rows.append({'command':row,'receipt':receipt})
     return rows
 
-def run_lane(lane,repo,output,exp,*,provider_root=None):
-    repo=Path(repo).resolve();output=external(repo,output)
-    require(not output.exists(),'Fresh lane output directory required');output.mkdir(parents=True)
+def _run_lane_impl(lane,repo,output,exp,*,provider_root=None):
     source=validate_descendant(repo,require_clean=True);write(output/'source.json',source)
     from .testing import run_modes,checked_inventory
     methods=[r for r in checked_inventory()['tests'] if r['lane']==lane]

@@ -4,7 +4,7 @@ Production requires Linux namespaces through bubblewrap plus process limits.
 Native Windows mode is development evidence and cannot authorize publication.
 """
 from __future__ import annotations
-import hashlib, json, os, platform, re, signal, stat, subprocess, time
+import hashlib, json, os, platform, re, signal, stat, subprocess, sys, time
 from pathlib import Path
 from .canonical import require, canonical_bytes, load_bytes, ContractError, digest
 from .contracts import (CompositionProposal, TargetSpec, SnapshotIdentity, SearchBudget,
@@ -203,6 +203,28 @@ def _recipe(worker,output,source,object_name,budget):
             "-DmaxRecDepth=2048","-o","/out/"+object_name,"/out/"+source]
     return cmd,{}
 
+_FAILED_WORKER_LOG_TAIL_BYTES=16*1024
+_FAILED_WORKER_LOG_TAIL_LINES=120
+
+def _report_worker_failure(code,disposition,log,raw):
+    """Preserve a bounded diagnostic in the parent log without changing evidence."""
+    tail=raw[-_FAILED_WORKER_LOG_TAIL_BYTES:]
+    lines=tail.decode("utf-8",errors="replace").splitlines()[-_FAILED_WORKER_LOG_TAIL_LINES:]
+    messages=["OPICA_WORKER_DIAGNOSTIC_ONLY exit_code="+str(code)+
+              " resource_status="+str(disposition)+" log_path="+json.dumps(str(log),ensure_ascii=True)+
+              " log_bytes="+str(len(raw))+" tail_bytes="+str(len(tail))]
+    for line in lines:
+        # Prefix each line and escape terminal controls; untrusted compiler text
+        # cannot become a GitHub Actions command or replace the diagnostic label.
+        safe="".join(c if c=="\t" or (ord(c)>=32 and ord(c)!=127) else
+                     "\\x"+format(ord(c),"02x") for c in line)
+        messages.append("OPICA_WORKER_LOG_TAIL | "+safe)
+    try:
+        sys.stderr.write("\n".join(messages)+"\n")
+        sys.stderr.flush()
+    except (OSError,ValueError):
+        pass  # Diagnostic transport must not change the worker's return status.
+
 def run_worker(worker,output,source,object_name,budget):
     capability=worker_capability(worker)
     resource_scope={"mode":"NATIVE_DEVELOPMENT_ONLY"}
@@ -248,6 +270,8 @@ def run_worker(worker,output,source,object_name,budget):
         code=proc.wait()
     raw=log.read_bytes()
     if len(raw)>budget.output_bytes: disposition="RESOURCE_EXHAUSTED"
+    if code!=0 or disposition is not None:
+        _report_worker_failure(code,disposition,log,raw)
     return {"exit_code":code,"capability":capability,"recipe":"OPICA_LEAN_ISOLATED_V1",
             "elapsed_milliseconds":int((time.monotonic()-start)*1000),"resource_status":disposition,
             "log_sha256":file_hash(log),"command":cmd,"resource_scope":resource_scope}

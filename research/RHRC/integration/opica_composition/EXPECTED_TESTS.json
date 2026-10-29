@@ -1189,6 +1189,72 @@
       "case": null,
       "lane": "COMPOSITION_FORMAL",
       "native": true
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_native_environment.PinnedBenchmarkProjectionTests.test_pinned_alias_projection_uses_real_git_and_keeps_source_identity",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_native_environment.PinnedBenchmarkProjectionTests.test_projection_does_not_materialize_unreviewed_or_lean_source_aliases",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_native_environment.PinnedBenchmarkProjectionTests.test_projection_rejects_altered_index_and_dirty_worktree",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_native_environment.PinnedBenchmarkProjectionTests.test_projection_rejects_altered_tracked_blob_and_regular_git_mode",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_native_environment.PinnedBenchmarkProjectionTests.test_projection_rejects_linked_or_reparse_parent",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_native_environment.PinnedBenchmarkProjectionTests.test_projection_rejects_reparse_leaf",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_native_environment.PinnedBenchmarkProjectionTests.test_projection_rejects_wrong_pin_and_reviewed_blob",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_native_environment.PinnedBenchmarkProjectionTests.test_regular_git_link_text_projection_is_idempotent",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_native_environment.FailedNativeDiagnosticTests.test_failed_lane_retains_partial_native_files_and_original_exception",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_native_environment.FailedNativeDiagnosticTests.test_failure_collection_refuses_links_and_records_all_boundaries",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_native_environment.FailedNativeDiagnosticTests.test_failure_dump_cannot_qualify_a_lane_or_change_success_behavior",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
     }
   ]
 }

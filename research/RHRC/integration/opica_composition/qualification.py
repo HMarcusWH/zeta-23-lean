@@ -7,18 +7,20 @@ theorem, source pin or generated parent file is rewritten here.
 from __future__ import annotations
 from collections import Counter
 from dataclasses import asdict
+import hashlib
 import json
 import os
 from pathlib import Path
 import platform
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import time
 from .canonical import require,canonical_bytes,load_bytes,digest,ContractError
 from .contracts import WorkerConfig,SearchBudget,as_record
-from .snapshot import unlinked,file_hash,git
+from .snapshot import unlinked,file_hash,git,hash_inventory,discover_source_paths
 from .executor import run_worker,worker_environment,lean_name,lean_string
 from .inventory import expression_hash,validate_telescope
 from ..opica_round4.math_gate import (MODULES as MATHEMATICAL_MODULES,
@@ -57,6 +59,71 @@ def _packages(repo):
     return result
 
 
+def _materialize_pinned_benchmark_alias(package_root,*,expected_commit,expected_blob):
+    """Check out one reviewed benchmark alias as its exact Git link-text bytes.
+
+    This is trusted dependency preparation, never permission to follow a source
+    link. The sole admitted path is Mathlib's unused benchmark runner alias;
+    no Lean, configuration, import-object or evidence alias is projected.
+    """
+    relative='scripts/bench/size/run.py';expected=b'run'
+    require(re.fullmatch('[0-9a-f]{40}',expected_commit) and
+            re.fullmatch('[0-9a-f]{40}',expected_blob),'Pinned benchmark identity required')
+    require(hashlib.sha1(b'blob 3\0'+expected).hexdigest()==expected_blob,
+            'Pinned benchmark link blob differs')
+    root=unlinked(package_root).resolve();require(root.is_dir(),'Pinned benchmark package absent')
+    path=root/relative;unlinked(path.parent)
+    require(git(root,'rev-parse','HEAD')==expected_commit,'Pinned benchmark package commit differs')
+    tree=git(root,'rev-parse','HEAD^{tree}')
+    require(not git(root,'-c','core.autocrlf=false','status','--porcelain','--untracked-files=all'),
+            'Pinned benchmark package must be clean before projection')
+    env={'PATH':os.environ.get('PATH',''),'SYSTEMROOT':os.environ.get('SYSTEMROOT',''),
+         'GIT_CONFIG_NOSYSTEM':'1','GIT_CONFIG_GLOBAL':os.devnull,
+         'GIT_NO_LAZY_FETCH':'1','GIT_TERMINAL_PROMPT':'0'}
+    def raw(*args,input=None):
+        result=subprocess.run(['git','-C',str(root),*args],env=env,input=input,
+          stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=False)
+        require(result.returncode==0,'Pinned benchmark Git command failed: '+args[0])
+        return result.stdout
+    encoded=relative.encode('utf-8')
+    want_tree=b'120000 blob '+expected_blob.encode('ascii')+b'\t'+encoded+b'\0'
+    want_index=b'120000 '+expected_blob.encode('ascii')+b' 0\t'+encoded+b'\0'
+    require(raw('ls-tree','-z',expected_commit,'--',relative)==want_tree,
+            'Pinned benchmark source tree mode/blob differs')
+    require(raw('ls-files','--stage','-z','--',relative)==want_index,
+            'Pinned benchmark index mode/blob/stage differs')
+    blob=raw('cat-file','blob',expected_commit+':'+relative)
+    require(blob==expected,'Pinned benchmark raw link target differs')
+    info=os.lstat(path)
+    require(not(getattr(info,'st_file_attributes',0)&1024),'Pinned benchmark reparse point refused')
+    if stat.S_ISLNK(info.st_mode):
+        require(os.fsencode(os.readlink(path))==blob,'Pinned benchmark checkout link target differs')
+        before='SYMLINK'
+    else:
+        require(stat.S_ISREG(info.st_mode) and path.read_bytes()==blob,
+                'Pinned benchmark regular link-text bytes differ')
+        before='REGULAR_LINK_TEXT'
+    # Persist only the checkout representation; HEAD, tree and index stay pinned.
+    git(root,'config','--local','core.symlinks','false')
+    raw('checkout-index','--force','-z','--stdin',input=encoded+b'\0')
+    info=os.lstat(path)
+    require(stat.S_ISREG(info.st_mode) and not(getattr(info,'st_file_attributes',0)&1024),
+            'Pinned benchmark projection must be a regular non-reparse file')
+    sha256=hashlib.sha256(blob).hexdigest()
+    require(hash_inventory(root,[relative])[relative]==sha256 and path.read_bytes()==blob,
+            'Pinned benchmark projected raw bytes/hash differ')
+    require(git(root,'config','--local','--get','core.symlinks')=='false' and
+            git(root,'rev-parse','HEAD')==expected_commit and git(root,'rev-parse','HEAD^{tree}')==tree and
+            raw('ls-files','--stage','-z','--',relative)==want_index,
+            'Pinned benchmark package/index changed during projection')
+    require(not git(root,'-c','core.autocrlf=false','status','--porcelain','--untracked-files=all'),
+            'Pinned benchmark package dirty after projection')
+    return {'policy':'EXACT_PINNED_BENCHMARK_LINK_TEXT_V1','path':relative,'commit':expected_commit,
+      'tree':tree,'git_mode':'120000','git_blob':expected_blob,'raw_link_text':blob.decode('ascii'),
+      'input_leaf_kind':before,'checkout_leaf_kind':'REGULAR_LINK_TEXT','checkout_core_symlinks':False,
+      'checkout_sha256':sha256,'target_dereferenced':False}
+
+
 def _worker_version(repo,output,worker):
     require(Path(worker.lean).resolve().is_relative_to(Path(worker.toolchain_root).resolve()),'Worker compiler prefix differs')
     env={k:v for k,v in os.environ.items() if not k.startswith(('LEAN_','ELAN_'))}
@@ -92,18 +159,73 @@ def _external(repo,output,production):
     require(not output.exists(),'Fresh native qualification output required');output.mkdir(parents=True);return output
 
 
+def _emit_failed_command_tails(stdout,stderr,label):
+    """Expose bounded failure diagnostics without admitting a failed command."""
+    limit=4096;streams={}
+    for name,path in (('stdout',stdout),('stderr',stderr)):
+        path=unlinked(path)
+        flags=os.O_RDONLY|getattr(os,'O_NOFOLLOW',0)|getattr(os,'O_BINARY',0)
+        with os.fdopen(os.open(path,flags),'rb') as source:
+            info=os.fstat(source.fileno())
+            require(stat.S_ISREG(info.st_mode),'Regular failed-command diagnostic log required')
+            source.seek(max(0,info.st_size-limit));tail=source.read(limit)
+        streams[name]={'file_bytes':info.st_size,'captured_bytes':len(tail),
+          'tail':tail.decode('utf-8',errors='replace')}
+    # JSON escaping keeps compiler output from becoming terminal control syntax.
+    row={'label':label,'maximum_bytes_per_stream':limit,'streams':streams}
+    try:
+        sys.stderr.write('OPICA_PREPARATION_COMMAND_FAILURE\t'+json.dumps(row,ensure_ascii=True,sort_keys=True)+'\n')
+        sys.stderr.flush()
+    except (OSError,ValueError,AttributeError):
+        pass  # Only diagnostic transport is best-effort; log reads stay fail-closed.
+
+
 def _command(argv,repo,env,output,label,seconds):
     stdout=output/(label+'.stdout.log');stderr=output/(label+'.stderr.log');started=time.monotonic()
     with stdout.open('xb') as a,stderr.open('xb') as b:
         try:code=subprocess.run(argv,cwd=repo,env=env,stdout=a,stderr=b,timeout=seconds,check=False).returncode;timeout=False
         except subprocess.TimeoutExpired:code=None;timeout=True
-    return {'argv':list(map(str,argv)),'returncode':code,'timeout':timeout,'elapsed_ms':int((time.monotonic()-started)*1000),
-      'stdout':stdout.name,'stderr':stderr.name,'stdout_sha256':file_hash(stdout),'stderr_sha256':file_hash(stderr)}
+    elapsed_ms=int((time.monotonic()-started)*1000)
+    stdout_sha256=file_hash(stdout);stderr_sha256=file_hash(stderr)
+    if timeout or code!=0:_emit_failed_command_tails(stdout,stderr,label)
+    return {'argv':list(map(str,argv)),'returncode':code,'timeout':timeout,'elapsed_ms':elapsed_ms,
+      'stdout':stdout.name,'stderr':stderr.name,'stdout_sha256':stdout_sha256,'stderr_sha256':stderr_sha256}
 
 
 def _source(repo,modules):
     paths={m.replace('.','/')+'.lean' for m in modules}|{'lean-toolchain','lake-manifest.json','lakefile.toml',ATLAS}
     return {p:file_hash(repo/p) for p in sorted(paths)}
+
+
+def _native_infrastructure_smoke(output,worker):
+    """Exercise the production recipe before the expensive project build.
+
+    The separate helper makes the exact worker/source recipe inspectable in
+    portable tests. Actual qualification still requires run_worker's Linux
+    isolation, cgroup and tmpfs checks; development execution cannot pass here.
+    """
+    require(type(worker)is WorkerConfig and worker.production is True,
+            'Infrastructure smoke requires the actual production worker')
+    standard=unlinked(Path(worker.toolchain_root)/'lib/lean').resolve()
+    require(worker.lean_paths==[str(standard)],'Infrastructure smoke imports only pinned Lean standard library')
+    output=unlinked(output).absolute();require(not output.exists(),'Fresh infrastructure smoke output required')
+    output.mkdir(parents=True)
+    source='OpicaInfrastructureSmoke.lean';obj='OpicaInfrastructureSmoke.olean'
+    (output/source).write_text('example : True := True.intro\n',encoding='utf-8',newline='\n')
+    before=file_hash(output/source)
+    report={'schema':'OPICA_NATIVE_INFRASTRUCTURE_SMOKE_V1','status':'ENVIRONMENT_ERROR',
+      'authority':'INFRASTRUCTURE_ONLY_NO_RH_AUTHORITY','source':source,'source_sha256':before,
+      'object':obj,'native':None,'RH':'OPEN','Step4':'OPEN'}
+    try:
+        budget=SearchBudget(**worker.budget) if worker.budget else SearchBudget()
+        native=run_worker(worker,output,source,obj,budget);report['native']=native
+        require(file_hash(output/source)==before,'Infrastructure smoke source changed during execution')
+        if native['exit_code']==0 and native['resource_status'] is None and (output/obj).is_file():
+            require(native['capability']=='LINUX_ISOLATED','Infrastructure smoke was not isolated production execution')
+            report['object_sha256']=file_hash(output/obj)
+            report['status']='PASS_INFRASTRUCTURE_SMOKE'
+        return report
+    finally:(output/'result.json').write_bytes(canonical_bytes(report)+b'\n')
 
 
 def prepare_native(repo,output):
@@ -125,6 +247,23 @@ def prepare_native(repo,output):
         c=_command(argv,repo,env,output,label,seconds);report['commands'].append(c)
         require(c['returncode']==0 and c['timeout'] is False,'Native preparation command failed: '+label);return output/c['stdout']
     try:
+        import resource
+        soft,hard=resource.getrlimit(resource.RLIMIT_NOFILE)
+        report['coordinator_file_descriptor_limit']={'scope':'ACTUAL_PREPARATION_COORDINATOR_RLIMIT_NOFILE',
+          'soft':soft,'hard':hard}
+        projection=_materialize_pinned_benchmark_alias(repo/'.lake/packages/mathlib',
+          expected_commit='51e6992efd06126df61a496bebf8f49482a4e129',
+          expected_blob='e5224d533ef27b001224859a9b36696846a7e7fe')
+        report['dependency_source_projections']=[{'package':'mathlib',**projection}]
+        require(_packages(repo)==packages,'Pinned package identity changed during source preparation')
+        scope=discover_source_paths(repo)
+        report['source_scope_preflight']={'status':'PASS_STRICT_NO_LINK_SOURCE_DISCOVERY',
+          'source_path_count':len(scope),
+          'source_parent_directory_count':len({'.'}|{p.as_posix() for relative in scope for p in Path(relative).parents}),
+          'path_inventory_digest':digest(sorted(scope),domain='OPICA_NATIVE_SOURCE_PATHS_V1')}
+        source_files=hash_inventory(repo,scope)
+        report['source_hash_preflight']={'source_file_count':len(source_files),
+          'source_digest':digest(source_files,domain='OPICA_SOURCE_FILES_V1')}
         mount=load_bytes(run(['/usr/bin/findmnt','--json','--bytes','--target',os.environ['OPICA_NATIVE_OUTPUT'],'--output','FSTYPE,SIZE,TARGET'],'volume').read_bytes())
         fs=mount['filesystems'];require(len(fs)==1 and fs[0]['fstype']=='tmpfs' and 0<int(fs[0]['size'])<=SearchBudget().disk_bytes,'Actual native tmpfs volume is absent or exceeds disk budget')
         report['native_volume']=fs[0]
@@ -133,6 +272,11 @@ def prepare_native(repo,output):
         prefix=unlinked(run([lake,'env','lean','--print-prefix'],'prefix').read_text(encoding='utf-8').strip()).resolve()
         lean=unlinked(run([lake,'env','which','lean'],'lean-path').read_text(encoding='utf-8').strip()).resolve()
         require(lean.is_relative_to(prefix),'Host Lean binary/prefix mismatch')
+        smoke_worker=WorkerConfig(str(lean),str(prefix),[str(unlinked(prefix/'lib/lean').resolve())],
+          production=True,budget=asdict(SearchBudget()))
+        report['infrastructure_smoke']=_native_infrastructure_smoke(output/'smoke',smoke_worker)
+        require(report['infrastructure_smoke']['status']=='PASS_INFRASTRUCTURE_SMOKE',
+                'Actual isolated Lean infrastructure smoke failed before project build')
         run([lake,'build',*modules],'selected-build',7200)
         text=run([lake,'env','printenv','LEAN_PATH'],'import-paths').read_text(encoding='utf-8').strip()
         paths=[]

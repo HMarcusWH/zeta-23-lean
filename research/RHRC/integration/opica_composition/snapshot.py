@@ -81,12 +81,12 @@ def discover_source_paths(repo):
             dirs[:]=[d for d in dirs if d not in {".git","__pycache__","build",".lake"}]
             for d in dirs:
                 info=os.lstat(Path(directory)/d)
-                require(not stat.S_ISLNK(info.st_mode) and not(getattr(info,"st_file_attributes",0)&1024),"linked source directory refused")
+                require(not stat.S_ISLNK(info.st_mode) and not(getattr(info,"st_file_attributes",0)&1024),"linked source directory refused: "+str(Path(directory)/d))
             for name in names:
                 p=Path(directory)/name
                 if p.suffix in {".lean",".py",".json",".yaml",".yml",".toml",".sh",".ps1"} or p.name.endswith(".lean.in"):
                     info=os.lstat(p)
-                    require(stat.S_ISREG(info.st_mode) and not(getattr(info,"st_file_attributes",0)&1024),"linked source file refused")
+                    require(stat.S_ISREG(info.st_mode) and not(getattr(info,"st_file_attributes",0)&1024),"linked source file refused: "+str(p))
                     found.add(p.relative_to(repo).as_posix())
     return found
 
