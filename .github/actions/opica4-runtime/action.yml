@@ -42,7 +42,22 @@ runs:
       shell: bash
       run: |
         set -euo pipefail
-        sudo apt-get install -y strace
+        install_exit=0
+        if sudo apt-get install -y strace; then
+          install_disposition=INSTALL_SUCCEEDED
+        else
+          install_exit=$?
+          install_disposition=INSTALL_FAILED_DIAGNOSTIC_ONLY
+        fi
+        tracer_available=false
+        if test -f /usr/bin/strace && test -x /usr/bin/strace && ! test -L /usr/bin/strace; then
+          tracer_available=true
+        fi
+        printf '%s\n' "OPICA_DIAGNOSTIC_STRACE_INSTALL_EXIT=$install_exit" \
+          "OPICA_DIAGNOSTIC_STRACE_INSTALL_DISPOSITION=$install_disposition" \
+          "OPICA_DIAGNOSTIC_STRACE_AVAILABLE=$tracer_available" >> "$GITHUB_ENV"
+        printf 'Native failure diagnostic tracer: install_exit=%s disposition=%s available=%s\n' \
+          "$install_exit" "$install_disposition" "$tracer_available"
     - if: ${{ inputs.provider == 'true' }}
       uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       with:

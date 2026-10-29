@@ -365,6 +365,25 @@ def _failed_smoke_diagnostics(output,worker,budget):
     return row
 
 
+def _raised_smoke_diagnostics(error):
+    """Record an unknown execution boundary without replaying failed guards."""
+    text=str(error);limit=4096
+    return {'schema':'OPICA_FAILED_SMOKE_DIAGNOSTIC_V1','status':'DIAGNOSTIC_ONLY',
+            'authority':'NO_ACCEPTANCE_OR_PROOF_AUTHORITY','accepted':False,
+            'disposition':'NOT_REPLAYED_WORKER_EXCEPTION','replay_attempted':False,
+            'execution_boundary':'NO_RETURNED_NATIVE_RECEIPT','compiler_reached':'NOT_ESTABLISHED',
+            'exception_type':type(error).__name__[:128],'exception_message':text[:limit],
+            'maximum_exception_message_characters':limit,'exception_message_truncated':len(text)>limit}
+
+
+def _safe_smoke_resource_snapshot():
+    """Optional observations must not mask the actual worker exception."""
+    try:return _smoke_resource_snapshot()
+    except Exception as exc:
+        return {'scope':'DIAGNOSTIC_COORDINATOR_HOST_AND_CGROUP_NOT_LEAN_PROCESS',
+                'errors':['RESOURCE_SNAPSHOT_UNAVAILABLE:'+type(exc).__name__[:128]]}
+
+
 def _native_infrastructure_smoke(output,worker):
     """Exercise the production recipe before the expensive project build.
 
@@ -384,11 +403,21 @@ def _native_infrastructure_smoke(output,worker):
     report={'schema':'OPICA_NATIVE_INFRASTRUCTURE_SMOKE_V1','status':'ENVIRONMENT_ERROR',
       'authority':'INFRASTRUCTURE_ONLY_NO_RH_AUTHORITY','source':source,'source_sha256':before,
       'object':obj,'native':None,'RH':'OPEN','Step4':'OPEN'}
+    worker_raised=False
     try:
         budget=SearchBudget(**worker.budget) if worker.budget else SearchBudget()
-        report['resource_observations']={'authority':'DIAGNOSTIC_ONLY','before':_smoke_resource_snapshot()}
+        report['resource_observations']={'authority':'DIAGNOSTIC_ONLY','before':_safe_smoke_resource_snapshot()}
         try:native=run_worker(worker,output,source,obj,budget);report['native']=native
-        finally:report['resource_observations']['after']=_smoke_resource_snapshot()
+        except Exception as exc:
+            worker_raised=True
+            try:report['diagnostics']=_raised_smoke_diagnostics(exc)
+            except Exception:
+                report['diagnostics']={'schema':'OPICA_FAILED_SMOKE_DIAGNOSTIC_V1','status':'DIAGNOSTIC_ONLY',
+                  'authority':'NO_ACCEPTANCE_OR_PROOF_AUTHORITY','accepted':False,'disposition':'ERROR',
+                  'replay_attempted':False,'execution_boundary':'NO_RETURNED_NATIVE_RECEIPT',
+                  'compiler_reached':'NOT_ESTABLISHED','reason':'Worker exception diagnostic unavailable'}
+            raise
+        finally:report['resource_observations']['after']=_safe_smoke_resource_snapshot()
         require(file_hash(output/source)==before,'Infrastructure smoke source changed during execution')
         if native['exit_code']==0 and native['resource_status'] is None and (output/obj).is_file():
             require(native['capability']=='LINUX_ISOLATED','Infrastructure smoke was not isolated production execution')
@@ -400,7 +429,10 @@ def _native_infrastructure_smoke(output,worker):
                 # A diagnostic failure cannot replace the actual failed worker.
                 report['diagnostics']={'status':'DIAGNOSTIC_ONLY','accepted':False,'disposition':'ERROR','error':str(exc)}
         return report
-    finally:(output/'result.json').write_bytes(canonical_bytes(report)+b'\n')
+    finally:
+        try:(output/'result.json').write_bytes(canonical_bytes(report)+b'\n')
+        except Exception:
+            if not worker_raised:raise
 
 
 def prepare_native(repo,output):

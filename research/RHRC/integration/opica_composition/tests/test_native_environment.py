@@ -857,6 +857,75 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
                 self.assertIs(report["diagnostics"]["accepted"], False)
                 self.assertNotIn("object_sha256", report)
 
+        # A raised worker call has no returned execution receipt. Observe the
+        # boundary, preserve the identical exception, and never replay guards.
+        failures = (OSError("launch fixture: " + "x" * 5000),
+                    ContractError("namespace/cgroup fixture refused before dispatch"),
+                    subprocess.SubprocessError("process launch fixture failed"))
+        for index, primary in enumerate(failures):
+            original_args = primary.args
+            for diagnostic_failure in (False, True):
+                with self.subTest(raised_worker=type(primary).__name__, diagnostic_failure=diagnostic_failure):
+                    output = self.native / ("raised-smoke-" + str(index) + "-" + str(diagnostic_failure))
+                    observations = [{"scope": "MOCK_BEFORE_WORKER"}, {"scope": "MOCK_AFTER_WORKER"}]
+                    with patch.object(qualification, "run_worker", side_effect=primary) as actual, \
+                            patch.object(qualification, "_smoke_resource_snapshot", side_effect=observations) as observe, \
+                            patch.object(qualification, "_failed_smoke_diagnostics") as replay, \
+                            patch.object(qualification, "_raised_smoke_diagnostics", wraps=qualification._raised_smoke_diagnostics,
+                                side_effect=RuntimeError("optional diagnostic fixture failed") if diagnostic_failure else None) as disposition, \
+                            self.assertRaises(type(primary)) as caught:
+                        qualification._native_infrastructure_smoke(output, worker)
+                    self.assertIs(caught.exception, primary)
+                    self.assertEqual(primary.args, original_args)
+                    actual.assert_called_once()
+                    observe.assert_has_calls([unittest.mock.call(), unittest.mock.call()])
+                    self.assertEqual(observe.call_count, 2)
+                    disposition.assert_called_once_with(primary)
+                    replay.assert_not_called()
+                    stored = json.loads((output / "result.json").read_bytes())
+                    self.assertEqual(stored["status"], "ENVIRONMENT_ERROR")
+                    self.assertIsNone(stored["native"])
+                    self.assertEqual(stored["resource_observations"], {
+                        "authority": "DIAGNOSTIC_ONLY", "before": observations[0], "after": observations[1]})
+                    boundary = stored["diagnostics"]
+                    self.assertEqual(boundary["status"], "DIAGNOSTIC_ONLY")
+                    self.assertEqual(boundary["authority"], "NO_ACCEPTANCE_OR_PROOF_AUTHORITY")
+                    self.assertIs(boundary["accepted"], False)
+                    self.assertIs(boundary["replay_attempted"], False)
+                    self.assertEqual(boundary["execution_boundary"], "NO_RETURNED_NATIVE_RECEIPT")
+                    self.assertEqual(boundary["compiler_reached"], "NOT_ESTABLISHED")
+                    self.assertFalse({"command", "exit_code", "trace", "object_sha256"} & set(boundary))
+                    if diagnostic_failure:
+                        self.assertEqual(boundary["disposition"], "ERROR")
+                    else:
+                        self.assertEqual(boundary["disposition"], "NOT_REPLAYED_WORKER_EXCEPTION")
+                        self.assertEqual(boundary["exception_type"], type(primary).__name__)
+                        self.assertEqual(boundary["maximum_exception_message_characters"], 4096)
+                        self.assertEqual(boundary["exception_message"], str(primary)[:4096])
+                        self.assertEqual(boundary["exception_message_truncated"], len(str(primary)) > 4096)
+                    self.assertFalse((output / "diagnostic-only").exists())
+
+        primary = OSError("primary worker fixture survives observation failure")
+        output = self.native / "raised-smoke-snapshot-error"
+        with patch.object(qualification, "run_worker", side_effect=primary), \
+                patch.object(qualification, "_smoke_resource_snapshot", side_effect=RuntimeError("optional snapshot failed")), \
+                patch.object(qualification, "_failed_smoke_diagnostics") as replay, self.assertRaises(OSError) as caught:
+            qualification._native_infrastructure_smoke(output, worker)
+        self.assertIs(caught.exception, primary)
+        replay.assert_not_called()
+        stored = json.loads((output / "result.json").read_bytes())
+        self.assertEqual(stored["status"], "ENVIRONMENT_ERROR")
+        for phase in ("before", "after"):
+            self.assertEqual(stored["resource_observations"][phase]["errors"],
+                             ["RESOURCE_SNAPSHOT_UNAVAILABLE:RuntimeError"])
+        with patch.object(qualification, "run_worker", side_effect=primary), \
+                patch.object(qualification, "_smoke_resource_snapshot", return_value={"scope": "MOCK"}), \
+                patch.object(qualification.Path, "write_bytes", side_effect=OSError("secondary report write failed")), \
+                patch.object(qualification, "_failed_smoke_diagnostics") as replay, self.assertRaises(OSError) as caught:
+            qualification._native_infrastructure_smoke(self.native / "raised-smoke-result-write-error", worker)
+        self.assertIs(caught.exception, primary)
+        replay.assert_not_called()
+
     def test_failure_collection_refuses_links_and_records_all_boundaries(self):
         (self.native / "a-good.log").write_bytes(b"abc")
         (self.native / "b-extra.log").write_bytes(b"def")

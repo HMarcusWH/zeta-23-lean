@@ -11,11 +11,15 @@ import copy
 import hashlib
 import subprocess
 import sys
+import os
+import stat
+from contextlib import contextmanager
+from types import SimpleNamespace
 import tempfile
 import unittest
 from unittest.mock import patch
 
-from research.RHRC.integration.opica_composition import cli, executor, qualification
+from research.RHRC.integration.opica_composition import cli, executor, qualification, snapshot
 from research.RHRC.integration.opica_composition.contracts import WorkerConfig, SearchBudget
 from research.RHRC.integration.opica_round4 import math_gate
 from research.RHRC.integration.opica_composition.accept import ROUND4_LANES
@@ -35,6 +39,167 @@ REQUIRED_LANES = (
 
 
 class CliOrchestrationTests(unittest.TestCase):
+    def test_native_evidence_copy_preserves_complete_inventory(self):
+        # Actual filesystem bytes only; this does not manufacture native proof.
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);native=root/'native';native.mkdir();(native/'empty').mkdir()
+            payloads={'bootstrap/result.json':b'{}\n','attempt/OpicaAttempt.olean':b'object bytes',
+                      'attempt/OpicaAttempt.olean.server':b'server bytes','journal.db':b'database bytes',
+                      'unfiltered.bin':b'\0\xffcomplete bytes'}
+            for name,raw in payloads.items():
+                path=native/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(raw)
+            sealed=snapshot.seal_evidence_tree(native);output=root/'lane';output.mkdir()
+            manifest=cli._publish_native_evidence(native,output)
+            self.assertEqual(manifest,sealed[0])
+            self.assertEqual({r['path'] for r in manifest['files']},set(payloads))
+            self.assertEqual(manifest['total_bytes'],sum(map(len,payloads.values())))
+            self.assertIn('empty',manifest['directories'])
+            self.assertEqual(load_bytes((output/'native-evidence-inventory.json').read_bytes()),manifest)
+            for name,raw in payloads.items():self.assertEqual((output/'native-evidence'/name).read_bytes(),raw)
+            self.assertTrue(snapshot.verify_evidence_tree(output/'native-evidence',manifest))
+            with self.assertRaisesRegex(ContractError,'logical bytes'):
+                snapshot.seal_evidence_tree(native,maximum_bytes=1)
+            # Missing, extra and changed files and empty directories all matter.
+            for change in ('missing','extra','changed','empty-directory'):
+                destination=root/change;snapshot.copy_evidence_tree(native,destination,sealed)
+                if change=='missing':(destination/'unfiltered.bin').unlink()
+                elif change=='extra':(destination/'extra.bin').write_bytes(b'extra')
+                elif change=='changed':(destination/'unfiltered.bin').write_bytes(b'changed')
+                else:(destination/'empty').rmdir()
+                with self.subTest(change=change),self.assertRaises(ContractError):
+                    snapshot.verify_evidence_tree(destination,manifest)
+            for name,row in (('results.json',{}),('source.json',{'fixture':'not proof'}),
+                             ('source-after.json',{'fixture':'not proof'})):
+                (output/name).write_bytes(canonical_bytes(row))
+            (output/'native-evidence/unfiltered.bin').unlink()
+            files={name:output/name for name in ('results.json','source.json','source-after.json','native-evidence-inventory.json')}
+            with patch.object(cli,'validate_descendant',return_value={'fixture':'not proof'}), \
+                    patch('research.RHRC.integration.opica_composition.testing.checked_inventory',
+                          side_effect=AssertionError('heavy replay must not run')) as replay:
+                with self.assertRaisesRegex(ContractError,'inventory/content'):
+                    cli.verify_lane_raw({'id':'MATHEMATICAL_SUPPORT'},{},files,REPO,root/'independent')
+                replay.assert_not_called()
+            self.assertFalse((root/'independent').exists())
+
+    def test_native_evidence_rejects_links_and_nonregular_entries(self):
+        @contextmanager
+        def bad_entry(path,kind,outside):
+            if os.name!='nt':
+                if kind=='fifo':os.mkfifo(path)
+                else:path.symlink_to(outside if kind!='dangling' else outside/'absent',target_is_directory=kind=='directory')
+                yield
+            else:
+                # Windows needs no symlink privilege: only the exact leaf's
+                # metadata changes; outside bytes and all parent reads are real.
+                path.write_bytes(b'placeholder')
+                original=os.lstat
+                def lstat(candidate,*args,**kwargs):
+                    info=original(candidate,*args,**kwargs)
+                    if Path(os.path.abspath(candidate))==path:
+                        fields={name:getattr(info,name) for name in dir(info) if name.startswith('st_')}
+                        fields['st_mode']=(stat.S_IFIFO if kind=='fifo' else stat.S_IFLNK)|0o600
+                        fields['st_file_attributes']=1024 if kind=='reparse' else 0
+                        return SimpleNamespace(**fields)
+                    return info
+                with patch.object(os,'lstat',side_effect=lstat):yield
+        for kind in ('file','directory','dangling','reparse','fifo'):
+            with self.subTest(kind=kind),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp);native=root/'native';native.mkdir();outside=root/'outside';outside.mkdir()
+                secret=b'EXTERNAL_BYTES_MUST_NEVER_BE_COPIED';(outside/'secret.log').write_bytes(secret)
+                path=native/'alias.log';target=outside if kind=='directory' else outside/'secret.log'
+                with bad_entry(path,kind,target),patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':str(native)}), \
+                        patch.object(cli,'validate_descendant',return_value={'fixture':'not proof'}), \
+                        patch('research.RHRC.integration.opica_composition.testing.checked_inventory',
+                              return_value={'tests':[{'lane':'COMPOSITION_FORMAL','method':'boundary fixture only'}]}), \
+                        patch('research.RHRC.integration.opica_composition.testing.run_modes',return_value=[]), \
+                        patch.object(cli,'_collect_failed_native_diagnostics'):
+                    with self.assertRaises((ContractError,OSError)):
+                        cli.run_lane('COMPOSITION_FORMAL',REPO,root/'lane',{})
+                self.assertFalse((root/'lane/lane.json').exists())
+                self.assertFalse((root/'lane/native-evidence-inventory.json').exists())
+                self.assertFalse(any(p.is_file() and p.read_bytes()==secret for p in (root/'lane').rglob('*')))
+                self.assertEqual((outside/'secret.log').read_bytes(),secret)
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);native=root/'native';native.mkdir();(native/'ok').write_bytes(b'original')
+            if os.name!='nt':
+                alias=root/'root-alias';alias.symlink_to(native,target_is_directory=True)
+                with self.assertRaises(ContractError):snapshot.seal_evidence_tree(alias)
+                repo_alias=root/'repo-alias';repo_alias.symlink_to(REPO,target_is_directory=True)
+                with self.assertRaises(ContractError):cli.run_lane('CONTRACT',repo_alias,root/'aliased-output',{})
+            else:
+                with bad_entry(root/'root-alias','reparse',native),self.assertRaises(ContractError):
+                    snapshot.seal_evidence_tree(root/'root-alias')
+                with bad_entry(root/'repo-alias','reparse',REPO),self.assertRaises(ContractError):
+                    cli.run_lane('CONTRACT',root/'repo-alias',root/'aliased-output',{})
+            self.assertFalse((root/'aliased-output').exists())
+
+    def test_native_evidence_copy_races_never_publish_success(self):
+        # Inject changes after sealing, at the actual copy boundary. No native
+        # checker or successful lane receipt is substituted or accepted here.
+        for kind in ('content','file-to-directory','directory-to-link','dangling-link','root-swap','during-copy',
+                     'open-boundary-link','open-boundary-directory'):
+            with self.subTest(kind=kind),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp);native=root/'native';(native/'parent').mkdir(parents=True)
+                source=native/'parent/evidence.log';source.write_bytes(b'original')
+                outside=root/'outside';outside.mkdir();secret=b'EXTERNAL_RACE_BYTES';(outside/'evidence.log').write_bytes(secret)
+                output=root/'lane';original=cli.copy_evidence_tree
+                def changed(tree,destination,sealed):
+                    if kind.startswith('open-boundary-'):
+                        original_file=snapshot._evidence_file;calls=0
+                        @contextmanager
+                        def swap_before_open(base,relative,identities=None):
+                            nonlocal calls
+                            if Path(base)==tree and relative=='parent/evidence.log':
+                                calls+=1
+                                # First read is copy's pre-seal; second is the
+                                # actual source open after the destination exists.
+                                if calls==2:
+                                    if kind=='open-boundary-link':
+                                        source.unlink()
+                                        if os.name!='nt':source.symlink_to(outside/'evidence.log')
+                                        else:source.write_bytes(secret)
+                                    else:
+                                        (tree/'parent').rename(tree/'old-parent')
+                                        if os.name!='nt':(tree/'parent').symlink_to(outside,target_is_directory=True)
+                                        else:(tree/'parent').mkdir();(tree/'parent/evidence.log').write_bytes(secret)
+                            with original_file(base,relative,identities) as value:yield value
+                        with patch.object(snapshot,'_evidence_file',side_effect=swap_before_open):
+                            return original(tree,destination,sealed)
+                    if kind=='during-copy':
+                        original_directory=snapshot._evidence_directory
+                        @contextmanager
+                        def mutate_after_open(base,relative='',identities=None):
+                            with original_directory(base,relative,identities) as value:
+                                if Path(base)==destination and relative=='parent':source.write_bytes(b'changed during copy')
+                                yield value
+                        with patch.object(snapshot,'_evidence_directory',side_effect=mutate_after_open):
+                            return original(tree,destination,sealed)
+                    if kind=='content':source.write_bytes(b'changed')
+                    elif kind=='file-to-directory':source.unlink();source.mkdir()
+                    elif kind=='root-swap':
+                        tree.rename(root/'old-root');tree.mkdir();(tree/'parent').mkdir();(tree/'parent/evidence.log').write_bytes(b'original')
+                    elif os.name!='nt':
+                        source.unlink();(tree/'parent').rmdir()
+                        (tree/'parent').symlink_to(outside if kind=='directory-to-link' else root/'absent',target_is_directory=True)
+                    else:
+                        # Real replacement-directory identity guards remain
+                        # active without requiring Windows symlink privileges.
+                        (tree/'parent').rename(tree/'old-parent');(tree/'parent').mkdir()
+                        (tree/'parent/evidence.log').write_bytes(b'original')
+                    return original(tree,destination,sealed)
+                with patch.object(cli,'copy_evidence_tree',side_effect=changed), \
+                        patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':str(native)}), \
+                        patch.object(cli,'validate_descendant',return_value={'fixture':'not proof'}), \
+                        patch('research.RHRC.integration.opica_composition.testing.checked_inventory',
+                              return_value={'tests':[{'lane':'COMPOSITION_FORMAL','method':'boundary fixture only'}]}), \
+                        patch('research.RHRC.integration.opica_composition.testing.run_modes',return_value=[]), \
+                        patch.object(cli,'_collect_failed_native_diagnostics'):
+                    with self.assertRaises((ContractError,OSError)):cli.run_lane('COMPOSITION_FORMAL',REPO,output,{})
+                self.assertFalse((output/'lane.json').exists())
+                self.assertFalse((output/'native-evidence-inventory.json').exists())
+                self.assertFalse(any(p.is_file() and p.read_bytes()==secret for p in output.rglob('*')))
+                self.assertEqual((outside/'evidence.log').read_bytes(),secret)
+
     def test_mathematical_support_uses_closed_worker_recipe_and_bounded_caps(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

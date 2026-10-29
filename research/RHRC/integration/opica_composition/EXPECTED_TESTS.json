@@ -1273,6 +1273,24 @@
       "case": null,
       "lane": "CONTRACT",
       "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_native_evidence_copy_preserves_complete_inventory",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_native_evidence_rejects_links_and_nonregular_entries",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_native_evidence_copy_races_never_publish_success",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
     }
   ]
 }

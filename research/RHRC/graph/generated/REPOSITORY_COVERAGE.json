@@ -132,7 +132,7 @@
   "semantic_accounting_status": "FILE_MODULE_DOCUMENT_AND_NAMED_SOURCE_SURFACE_CLOSED",
   "source_surface_module_count": 1192,
   "source_surface_nonempty_module_count": 1164,
-  "subject_digest_sha256": "626e3e8cf36b11ef84a864c72f43ac2165d7f5f2e02d34235a6434dff529fb32",
+  "subject_digest_sha256": "3451af992726723f8cdd5c9c04b62c3e36cc25324216b6134e321da8e744637c",
   "subject_file_count": 5008,
   "terminal_claim": "RH_OPEN",
   "tracked_file_count": 5085,

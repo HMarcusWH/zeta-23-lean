@@ -9,8 +9,8 @@ import stat
 import subprocess
 import sys
 import uuid
-from .canonical import require,canonical_bytes,load_bytes,digest
-from .snapshot import file_hash,unlinked
+from .canonical import require,canonical_bytes,load_bytes,digest,MAX_BYTES
+from .snapshot import file_hash,unlinked,seal_evidence_tree,copy_evidence_tree,verify_evidence_tree,evidence_bytes
 from .descendant import validate_descendant,BASE,BASE_TREE,git
 from .accept import ROUND4_LANES,verify_lane_bundle,require_test_receipt,accept_application_scope
 
@@ -22,6 +22,19 @@ FAILURE_DIAGNOSTIC_MAX_FILE_BYTES=16*1024*1024
 FAILURE_DIAGNOSTIC_MAX_TOTAL_BYTES=128*1024*1024
 FAILURE_DIAGNOSTIC_MAX_ENTRIES=20000
 FAILURE_DIAGNOSTIC_MAX_OMISSIONS=256
+NATIVE_EVIDENCE_LANES=frozenset({'COMPOSITION_FORMAL','SEMANTIC_NEGATIVES','REPLAY_CAMPAIGN',
+                               'CURRENT_COMPATIBILITY','MATHEMATICAL_SUPPORT'})
+
+
+def _publish_native_evidence(native,output):
+    native=unlinked(native);output=unlinked(output)
+    require(native.is_dir() and not output.is_relative_to(native) and not native.is_relative_to(output),
+            'Native evidence and lane output must be disjoint')
+    sealed=seal_evidence_tree(native)
+    require(sealed[0]['files'],'Nonempty complete native evidence required')
+    manifest=copy_evidence_tree(native,output/'native-evidence',sealed)
+    write(output/'native-evidence-inventory.json',manifest)
+    return manifest
 
 
 def _failure_diagnostic_bytes(root,relative,maximum):
@@ -149,7 +162,7 @@ def _collect_failed_native_diagnostics(lane,repo,output):
 
 
 def run_lane(lane,repo,output,exp,*,provider_root=None):
-    repo=Path(repo).resolve();output=external(repo,output)
+    repo=unlinked(repo).resolve();output=external(repo,output)
     require(not output.exists(),'Fresh lane output directory required');output.mkdir(parents=True)
     try:return _run_lane_impl(lane,repo,output,exp,provider_root=provider_root)
     except BaseException:
@@ -277,12 +290,13 @@ def _run_lane_impl(lane,repo,output,exp,*,provider_root=None):
     # Test native evidence is generated on the bounded external volume. Copy its
     # complete tree after the test process exits; no omitted producer directories.
     native=os.environ.get('OPICA_NATIVE_OUTPUT')
-    if lane in {'COMPOSITION_FORMAL','SEMANTIC_NEGATIVES','REPLAY_CAMPAIGN','CURRENT_COMPATIBILITY','MATHEMATICAL_SUPPORT'}:
+    native_manifest=None
+    if lane in NATIVE_EVIDENCE_LANES:
         require(native,'Native evidence volume required')
-        import shutil
-        native_path=Path(native).resolve()
-        require(not output.is_relative_to(native_path),'Bundle output must be outside the bounded native volume')
-        shutil.copytree(native_path,output/'native-evidence')
+        native_path=unlinked(native)
+        require(not native_path.is_relative_to(repo) and not Path(repo).is_relative_to(native_path),
+                'Native evidence must be disjoint from source')
+        native_manifest=_publish_native_evidence(native_path,output)
     write(output/'results.json',results)
     write(output/'source-after.json',validate_descendant(repo,require_clean=True))
     files=sorted(p for p in output.rglob('*') if p.is_file())
@@ -290,6 +304,10 @@ def _run_lane_impl(lane,repo,output,exp,*,provider_root=None):
             'experiment':exp,'checked':lane_expected(lane,exp)['checked'],'conclusion':'success',
             'artifacts':[{'path':p.relative_to(output).as_posix(),'bytes':p.stat().st_size,'sha256':file_hash(p)} for p in files],
             'records':['results.json','source.json','source-after.json']}
+    if native_manifest is not None:
+        require(load_bytes(evidence_bytes(output,'native-evidence-inventory.json',MAX_BYTES))==native_manifest,
+                'Sealed native evidence manifest changed')
+        verify_evidence_tree(output/'native-evidence',native_manifest)
     write(output/'lane.json',record);return record
 
 def verify_lane_raw(expected,record,files,repo,independent_output,provider_root=None):
@@ -299,6 +317,14 @@ def verify_lane_raw(expected,record,files,repo,independent_output,provider_root=
     source=load_bytes(files['source.json'].read_bytes());after=load_bytes(files['source-after.json'].read_bytes())
     current=validate_descendant(repo,require_clean=True)
     require(source==after==current,'Lane source differs from the clean current checkout')
+    if lane in NATIVE_EVIDENCE_LANES:
+        require('native-evidence-inventory.json' in files,'Complete native evidence manifest required')
+        manifest_path=unlinked(files['native-evidence-inventory.json'])
+        manifest=load_bytes(evidence_bytes(manifest_path.parent,manifest_path.name,MAX_BYTES))
+        verify_evidence_tree(manifest_path.parent/'native-evidence',manifest)
+        require({name for name in files if name.startswith('native-evidence/')}==
+                {'native-evidence/'+row['path'] for row in manifest['files']},
+                'Bundle native evidence file inventory differs')
     independent_output=external(repo,independent_output);independent_output.mkdir(parents=True,exist_ok=False)
     methods=sorted(r['method'] for r in checked_inventory()['tests'] if r['lane']==lane)
     if methods:
