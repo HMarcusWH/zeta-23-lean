@@ -178,6 +178,7 @@ def worker_environment(worker,*,manifest_output=None):
 
 MATH_SUPPORT_RECIPE="OPICA_MATHEMATICAL_LEAN_ISOLATED_V1"
 
+# Lean's default 1GiB thread stacks compete with the fixed 4GiB address-space cap.
 def _recipe(worker,output,source,object_name,budget,*,mathematical_support=False):
     lean=Path(worker.lean); output=Path(output)
     require(type(mathematical_support)is bool,"closed mathematical recipe selector required")
@@ -186,7 +187,7 @@ def _recipe(worker,output,source,object_name,budget,*,mathematical_support=False
                 source=="RejectedSemanticMutations.lean") and object_name==source[:-5]+".olean",
                 "fixed mathematical module source/object pairing required")
     def lean_argv(root):
-        args=[str(lean),"-j2","--root="+root,"-DmaxHeartbeats="+str(budget.heartbeats),"-DmaxRecDepth=2048"]
+        args=[str(lean),"-j2","-s262144","--root="+root,"-DmaxHeartbeats="+str(budget.heartbeats),"-DmaxRecDepth=2048"]
         if mathematical_support:args += ["-DrelaxedAutoImplicit=false"]
         args += ["-o",root+"/"+object_name]
         if mathematical_support:args += ["-i",root+"/"+object_name[:-6]+".ilean"]
@@ -196,12 +197,12 @@ def _recipe(worker,output,source,object_name,budget,*,mathematical_support=False
         imports=worker.lean_paths if mathematical_support else [str(output),*worker.lean_paths]
         env.update({"PATH":str(lean.parent),"LEAN_PATH":os.pathsep.join(imports),"LEAN_NUM_THREADS":"2"})
         if mathematical_support:return lean_argv(str(output)),env
-        return [str(lean),"-j2","--root="+str(output),"-DmaxHeartbeats="+str(budget.heartbeats),
+        return [str(lean),"-j2","-s262144","--root="+str(output),"-DmaxHeartbeats="+str(budget.heartbeats),
                 "-DmaxRecDepth=2048","-o",str(output/object_name),str(output/source)],env
     # Every mounted path is evaluator-owned. No home, cloud credentials, sockets
     # or inherited environment is visible inside the unshared network namespace.
     cmd=[worker.prlimit,"--as="+str(budget.memory_bytes),"--cpu="+str(budget.wall_seconds),
-         "--nproc=64","--fsize="+str(budget.output_bytes),"--",worker.bubblewrap,
+         "--fsize="+str(budget.output_bytes),"--",worker.bubblewrap,
          "--unshare-all","--die-with-parent","--new-session","--clearenv",
          "--proc","/proc","--dev","/dev","--tmpfs","/tmp"]
     mounts=[]
@@ -214,9 +215,12 @@ def _recipe(worker,output,source,object_name,budget,*,mathematical_support=False
     cmd += ["--bind",str(output),"/out","--chdir","/out",
             "--setenv","PATH",str(lean.parent),"--setenv","LEAN_NUM_THREADS","2",
             "--setenv","LEAN_PATH",":".join(worker.lean_paths if mathematical_support else ["/out",*worker.lean_paths])]
+    # Set the per-UID limit after creating the user namespace. The verified
+    # cgroup pids.max=64 still caps all worker threads and namespace helpers.
+    cmd += [worker.prlimit,"--nproc=64","--"]
     if mathematical_support:return cmd+lean_argv("/out"),{}
     cmd += [
-            str(lean),"-j2","--root=/out","-DmaxHeartbeats="+str(budget.heartbeats),
+            str(lean),"-j2","-s262144","--root=/out","-DmaxHeartbeats="+str(budget.heartbeats),
             "-DmaxRecDepth=2048","-o","/out/"+object_name,"/out/"+source]
     return cmd,{}
 

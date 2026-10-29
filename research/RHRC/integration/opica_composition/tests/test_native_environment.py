@@ -19,7 +19,7 @@ import subprocess
 import tempfile
 from types import SimpleNamespace
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from research.RHRC.integration.opica_composition import cli, executor, qualification, snapshot
 from research.RHRC.integration.opica_composition.accept import verify_lane_bundle
@@ -209,11 +209,14 @@ class NativeEnvironmentTests(unittest.TestCase):
                                                         "Smoke.olean", budget)
                     lean_index = command.index(str(self.lean))
                     self.assertEqual(command[lean_index + 1], "-j2")
+                    self.assertEqual(command[lean_index + 2], "-s262144")
                     self.assertEqual(command.count("-j2"), 1)
+                    self.assertEqual(command.count("-s262144"), 1)
                     self.assertNotIn("-j2", command[:lean_index])
+                    self.assertNotIn("-s262144", command[:lean_index])
                     self.assertEqual(command.count(str(self.lean)), 1)
                     if not production:
-                        self.assertEqual(command, [str(self.lean), "-j2", "--root=" + str(self.evidence),
+                        self.assertEqual(command, [str(self.lean), "-j2", "-s262144", "--root=" + str(self.evidence),
                             "-DmaxHeartbeats=" + str(budget.heartbeats), "-DmaxRecDepth=2048",
                             "-o", str(self.evidence / "Smoke.olean"), str(self.evidence / "Smoke.lean")])
                         self.assertEqual(env, {"SYSTEMROOT": "system-root", "WINDIR": "windows-directory",
@@ -222,7 +225,7 @@ class NativeEnvironmentTests(unittest.TestCase):
                             "LEAN_PATH": os.pathsep.join([str(self.evidence), str(self.imports)])})
                     else:
                         prefix = [worker.prlimit, "--as=" + str(budget.memory_bytes),
-                            "--cpu=" + str(budget.wall_seconds), "--nproc=64",
+                            "--cpu=" + str(budget.wall_seconds),
                             "--fsize=" + str(budget.output_bytes), "--", worker.bubblewrap,
                             "--unshare-all", "--die-with-parent", "--new-session", "--clearenv",
                             "--proc", "/proc", "--dev", "/dev", "--tmpfs", "/tmp"]
@@ -230,17 +233,32 @@ class NativeEnvironmentTests(unittest.TestCase):
                             "--setenv", "PATH", str(self.lean.parent),
                             "--setenv", "LEAN_NUM_THREADS", "2",
                             "--setenv", "LEAN_PATH", ":".join(["/out", str(self.imports)]),
-                            str(self.lean), "-j2", "--root=/out",
+                            worker.prlimit, "--nproc=64", "--", str(self.lean), "-j2", "-s262144", "--root=/out",
                             "-DmaxHeartbeats=" + str(budget.heartbeats), "-DmaxRecDepth=2048",
                             "-o", "/out/Smoke.olean", "/out/Smoke.lean"]
                         self.assertEqual(command[:len(prefix)], prefix)
                         self.assertEqual(command[-len(suffix):], suffix)
+                        self.assertNotIn("--nproc=64", command[:command.index(worker.bubblewrap)])
+                        self.assertEqual(command[lean_index - 3:lean_index],
+                                         [worker.prlimit, "--nproc=64", "--"])
                         self.assertEqual(command.count("--bind"), 1)
                         for mounted in (self.toolchain, self.imports):
                             index = command.index(str(mounted), len(prefix))
                             self.assertEqual(command[index - 1:index + 2],
                                              ["--ro-bind", str(mounted), str(mounted)])
                         self.assertEqual(env, {})
+                    with patch.dict(os.environ, inherited, clear=True):
+                        math_command, _ = executor._recipe(worker, self.evidence, "Zeta23/Smoke.lean",
+                            "Zeta23/Smoke.olean", budget, mathematical_support=True)
+                    math_lean_index = math_command.index(str(self.lean))
+                    self.assertEqual(math_command[math_lean_index + 1:math_lean_index + 3],
+                                     ["-j2", "-s262144"])
+                    self.assertEqual(math_command.count("-s262144"), 1)
+                    self.assertNotIn("-s262144", math_command[:math_lean_index])
+                    if production:
+                        self.assertNotIn("--nproc=64", math_command[:math_command.index(worker.bubblewrap)])
+                        self.assertEqual(math_command[math_lean_index - 3:math_lean_index],
+                                         [worker.prlimit, "--nproc=64", "--"])
 
     def test_target_byte_change_changes_environment_identity(self):
         alias = self.write(self.toolchain / "lib" / "libLLVM.so")
@@ -538,6 +556,224 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
             report = cli._collect_failed_native_diagnostics("CURRENT_COMPATIBILITY", self.repo, output)
         return output, report
 
+    def smoke_worker(self):
+        """Filesystem fixture only; no test invokes a real compiler or tracer."""
+        toolchain = self.root / "toolchain"
+        standard = toolchain / "lib" / "lean"
+        standard.mkdir(parents=True, exist_ok=True)
+        lean = toolchain / "bin" / "lean"
+        lean.parent.mkdir(exist_ok=True)
+        lean.write_bytes(b"compiler fixture: never executed")
+        return WorkerConfig(str(lean), str(toolchain), [str(standard.resolve())], production=True)
+
+    def assert_startup_diagnostic_boundaries(self):
+        worker = self.smoke_worker()
+        budget = SearchBudget(wall_seconds=6)
+        tracer = self.root / "trusted-strace-fixture"
+        tracer.write_bytes(b"trusted tracer fixture: never executed")
+        real_unlinked = qualification.unlinked
+        observations = {"scope": "MOCK_DIAGNOSTIC_COORDINATOR_HOST_AND_CGROUP", "errors": []}
+
+        def run_case(name, mode):
+            output = self.native / name
+            output.mkdir()
+            source = output / "OpicaInfrastructureSmoke.lean"
+            source.write_bytes(b"example : True := True.intro\n")
+            completed = mode in {"completed", "object-alias", "object-reparse", "object-nonregular"}
+            proc = SimpleNamespace(pid=314159, returncode=0 if completed else None)
+            proc.poll = Mock(side_effect=lambda: proc.returncode)
+
+            def reaped(timeout):
+                self.assertEqual(timeout, 1)
+                proc.returncode = 0 if completed else -9
+                return proc.returncode
+
+            proc.wait = Mock(side_effect=reaped)
+            proc.kill = Mock(side_effect=lambda: setattr(proc, "returncode", -9))
+            raw_log = b"diagnostic fixture only\n"
+            raw_trace = b"mmap(...) = -1 ENOMEM\n::error::untrusted-text\x1b[31m\n"
+            if mode == "output-limit":
+                raw_log = b"l" * qualification.SMOKE_DIAGNOSTIC_LOG_BYTES
+                raw_trace = b"t" * (qualification.SMOKE_DIAGNOSTIC_TRACE_BYTES + 1)
+            aliases = {}
+            reparse = []
+            optional = output / "diagnostic-only" / {"object-alias": "OpicaInfrastructureSmoke.olean",
+                "object-reparse": "OpicaInfrastructureSmoke.olean.private",
+                "object-nonregular": "OpicaInfrastructureSmoke.olean.server"}.get(mode, "unused")
+            outside_object = self.root / (name + "-outside-object")
+            if mode == "object-alias":
+                outside_object.write_bytes(b"outside optional object must never be followed")
+                if os.name == "nt":
+                    aliases[optional] = str(outside_object)
+            elif mode == "object-reparse":
+                reparse.append(optional)
+
+            def dispatch(command, **kwargs):
+                self.assertEqual(kwargs["cwd"], output / "diagnostic-only")
+                self.assertEqual(kwargs["env"], {})
+                self.assertIs(kwargs["start_new_session"], True)
+                self.assertEqual(kwargs["stderr"], subprocess.STDOUT)
+                self.assertNotIn("shell", kwargs)
+                kwargs["stdout"].write(raw_log)
+                kwargs["stdout"].flush()
+                (kwargs["cwd"] / "syscalls.trace").write_bytes(raw_trace)
+                if mode == "object-alias":
+                    if os.name == "nt":
+                        optional.write_bytes(b"placeholder must not qualify")
+                    else:
+                        optional.symlink_to(outside_object)
+                elif mode == "object-reparse":
+                    optional.write_bytes(b"reparse placeholder must not qualify")
+                elif mode == "object-nonregular":
+                    if os.name == "nt":
+                        optional.mkdir()
+                    else:
+                        os.mkfifo(optional)
+                return proc
+
+            def trusted_path(path):
+                if str(path) == "/usr/bin/strace":
+                    return tracer if mode != "unavailable" else self.root / "missing-strace"
+                return real_unlinked(path)
+
+            clock_calls = [0]
+
+            def clock():
+                clock_calls[0] += 1
+                return 0 if clock_calls[0] == 1 or mode not in {"timeout", "cleanup-error"} else 6
+
+            stderr = io.StringIO()
+            kill_error = OSError("fixture group kill unavailable") if mode == "cleanup-error" else None
+            with leaf_links(aliases, reparse=reparse), \
+                    patch.object(qualification, "unlinked", side_effect=trusted_path), \
+                    patch.object(qualification, "_smoke_resource_snapshot", return_value=observations) as observe, \
+                    patch.object(qualification.subprocess, "Popen", side_effect=dispatch) as popen, \
+                    patch.object(qualification.time, "monotonic", side_effect=clock), \
+                    patch.object(qualification.time, "sleep") as sleep, \
+                    patch.object(qualification.os, "killpg", side_effect=kill_error, create=True) as killpg, \
+                    patch.object(qualification.signal, "SIGKILL", 9, create=True), \
+                    patch.dict(os.environ, {"OPICA_DIAGNOSTIC_SECRET": "fixture-only-never-inherited"}), \
+                    redirect_stderr(stderr):
+                report = qualification._failed_smoke_diagnostics(output, worker, budget)
+            observe.assert_has_calls([unittest.mock.call(), unittest.mock.call()])
+            self.assertEqual(report["status"], "DIAGNOSTIC_ONLY")
+            self.assertEqual(report["authority"], "NO_ACCEPTANCE_OR_PROOF_AUTHORITY")
+            self.assertIs(report["accepted"], False)
+            self.assertEqual(report["maximum_seconds"], 6)
+            self.assertEqual(report["trace_capture_bytes"], 262144)
+            self.assertEqual(report["log_capture_bytes"], 65536)
+            self.assertEqual(report["per_file_hard_bytes"], budget.output_bytes)
+            self.assertEqual(report["poll_output_limit_bytes"], 327680)
+            self.assertEqual(report["trace_file_count"], 1)
+            self.assertEqual(report["before"], observations)
+            self.assertEqual(report["after"], observations)
+            self.assertNotIn("fixture-only-never-inherited", stderr.getvalue())
+            self.assertEqual(len(stderr.getvalue().splitlines()), 1)
+            self.assertTrue(stderr.getvalue().startswith("OPICA_FAILED_SMOKE_DIAGNOSTIC_ONLY\t"))
+            self.assertNotIn("\x1b", stderr.getvalue())
+            self.assertIs(json.loads(stderr.getvalue().split("\t", 1)[1])["accepted"], False)
+            if mode == "unavailable":
+                self.assertEqual(report["disposition"], "UNAVAILABLE")
+                popen.assert_not_called()
+                killpg.assert_not_called()
+                self.assertNotIn("exit_code", report)
+            else:
+                original, env = executor._recipe(worker, output / "diagnostic-only",
+                    "OpicaInfrastructureSmoke.lean", "OpicaInfrastructureSmoke.olean", budget)
+                position = original.index(worker.lean)
+                expected = original[:position] + [str(tracer), "-f", "-qq", "-s", "128", "-e",
+                    "trace=mmap,mprotect,munmap,clone,clone3,prlimit64", "-o", "/out/syscalls.trace", "--"] + original[position:]
+                self.assertEqual(popen.call_args.args[0], expected)
+                self.assertEqual(report["command"], expected)
+                self.assertEqual(report["same_worker_budget"], budget.to_dict())
+                self.assertEqual(env, {})
+                if mode == "completed":
+                    self.assertEqual(report["disposition"], "COMPLETED")
+                    self.assertEqual(report["exit_code"], 0)
+                    killpg.assert_not_called()
+                    sleep.assert_not_called()
+                elif mode == "cleanup-error":
+                    self.assertEqual(report["disposition"], "ERROR")
+                    self.assertGreaterEqual(killpg.call_count, 2)
+                    proc.kill.assert_called_once()
+                elif mode.startswith("object-"):
+                    self.assertEqual(report["disposition"], "ERROR")
+                    killpg.assert_not_called()
+                    if mode == "object-alias":
+                        self.assertEqual(outside_object.read_bytes(), b"outside optional object must never be followed")
+                else:
+                    self.assertEqual(report["disposition"], "TIMED_OUT" if mode == "timeout" else "OUTPUT_LIMIT")
+                    killpg.assert_called_once_with(proc.pid, 9)
+                proc.wait.assert_called_once_with(timeout=1)
+                if mode != "cleanup-error":
+                    for key, raw, limit in (("log", raw_log, 65536), ("trace", raw_trace, 262144)):
+                        self.assertEqual(report[key]["captured_bytes"], min(len(raw), limit))
+                        self.assertEqual(report[key]["file_bytes"], len(raw))
+                        self.assertEqual(report[key]["text"].encode(), raw[-limit:])
+                        self.assertEqual(report[key]["sha256"], sha256(raw))
+                        self.assertEqual(report[key]["truncated"], len(raw) > limit)
+                        self.assertEqual(report[key]["capture"], "TAIL")
+            stored = json.loads((output / "diagnostic-only" / "result.json").read_bytes())
+            self.assertEqual(stored["status"], "DIAGNOSTIC_ONLY")
+            self.assertIs(stored["accepted"], False)
+            return report
+
+        for mode in ("completed", "timeout", "output-limit", "cleanup-error", "unavailable",
+                     "object-alias", "object-reparse", "object-nonregular"):
+            with self.subTest(diagnostic_mode=mode):
+                run_case("trace-" + mode, mode)
+
+        linked_output = self.native / "linked-diagnostic-directory"
+        linked_output.mkdir()
+        outside = self.root / "diagnostic-outside"
+        outside.mkdir()
+        sentinel = outside / "result.json"
+        sentinel.write_bytes(b"outside bytes must stay unchanged")
+        child = linked_output / "diagnostic-only"
+        if os.name == "nt":
+            child.mkdir()
+            links = {child: str(outside)}
+        else:
+            child.symlink_to(outside, target_is_directory=True)
+            links = {}
+        with leaf_links(links), \
+                patch.object(qualification, "_smoke_resource_snapshot", return_value=observations), \
+                patch.object(qualification.subprocess, "Popen") as popen, redirect_stderr(io.StringIO()):
+            report = qualification._failed_smoke_diagnostics(linked_output, worker, budget)
+        self.assertEqual(report["disposition"], "ERROR")
+        self.assertIs(report["accepted"], False)
+        popen.assert_not_called()
+        self.assertEqual(sentinel.read_bytes(), b"outside bytes must stay unchanged")
+
+        # Capture uses actual regular bytes and refuses linked/reparse leaves.
+        regular = self.native / "capture.log"
+        raw = b"first bytes\nlast bytes\n"
+        regular.write_bytes(raw)
+        real_open = os.open
+        with patch.object(qualification.os, "open", wraps=real_open) as opened:
+            capture = qualification._smoke_diagnostic_capture(regular, 8)
+        self.assertEqual(capture["text"].encode(), raw[-8:])
+        self.assertEqual(capture["sha256"], sha256(raw))
+        flags = opened.call_args.args[1]
+        self.assertEqual(flags & getattr(os, "O_NOFOLLOW", 0), getattr(os, "O_NOFOLLOW", 0))
+        self.assertEqual(flags & getattr(os, "O_NONBLOCK", 0), getattr(os, "O_NONBLOCK", 0))
+        alias = self.native / "linked-capture.log"
+        if os.name == "nt":
+            alias.write_bytes(b"placeholder must not be read")
+            links = {alias: str(regular)}
+        else:
+            alias.symlink_to(regular)
+            links = {}
+        with leaf_links(links), self.assertRaises(ContractError):
+            qualification._smoke_diagnostic_capture(alias, 8)
+        with leaf_links({}, reparse=[regular]), self.assertRaises(ContractError):
+            qualification._smoke_diagnostic_capture(regular, 8)
+        if os.name != "nt":
+            fifo = self.native / "capture.fifo"
+            os.mkfifo(fifo)
+            with self.assertRaises(ContractError):
+                qualification._smoke_diagnostic_capture(fifo, 8)
+
     def test_failed_lane_retains_partial_native_files_and_original_exception(self):
         batch = self.native / "atlas"
         batch.mkdir()
@@ -573,6 +809,53 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
                 patch.object(cli.sys, "stderr", None), self.assertRaises(ContractError) as caught:
             cli.run_lane("CURRENT_COMPATIBILITY", self.repo, self.root / "stderr-unavailable", {})
         self.assertIs(caught.exception, primary)
+
+        # A diagnostic replay reporting exit0 must never replace the failed
+        # actual worker, including a resource-exhausted worker that left output.
+        worker = self.smoke_worker()
+        diagnostic = {"schema": "OPICA_FAILED_SMOKE_DIAGNOSTIC_V1", "status": "DIAGNOSTIC_ONLY",
+                      "disposition": "COMPLETED", "authority": "NO_ACCEPTANCE_OR_PROOF_AUTHORITY",
+                      "accepted": False, "exit_code": 0}
+        for index, (code, resource) in enumerate(((1, None), (0, "RESOURCE_EXHAUSTED"))):
+            with self.subTest(actual_exit=code, resource=resource):
+                native = {"exit_code": code, "resource_status": resource, "capability": "LINUX_ISOLATED"}
+
+                def failed_actual(config, output, source, obj, budget):
+                    self.assertEqual(config, worker)
+                    (output / (source + ".log")).write_bytes(b"failed to create thread\n")
+                    if code == 0:
+                        (output / obj).write_bytes(b"incomplete fixture output")
+                    return native
+
+                output = self.native / ("failed-smoke-" + str(index))
+                with patch.object(qualification, "run_worker", side_effect=failed_actual), \
+                        patch.object(qualification, "_failed_smoke_diagnostics", return_value=diagnostic) as trace:
+                    report = qualification._native_infrastructure_smoke(output, worker)
+                trace.assert_called_once()
+                self.assertEqual(trace.call_args.args[:2], (output, worker))
+                self.assertEqual(trace.call_args.args[2], SearchBudget())
+                self.assertEqual(report["status"], "ENVIRONMENT_ERROR")
+                self.assertIs(report["native"], native)
+                self.assertEqual(report["diagnostics"], diagnostic)
+                self.assertNotIn("object_sha256", report)
+                stored = json.loads((output / "result.json").read_bytes())
+                self.assertEqual(stored["status"], "ENVIRONMENT_ERROR")
+                self.assertEqual(stored["native"]["exit_code"], code)
+                self.assertEqual(stored["native"]["resource_status"], resource)
+        for disposition in ("UNAVAILABLE", "ERROR"):
+            with self.subTest(optional_diagnostic=disposition):
+                native = {"exit_code": 1, "resource_status": None, "capability": "LINUX_ISOLATED"}
+                unavailable = {"status": "DIAGNOSTIC_ONLY", "disposition": "UNAVAILABLE", "accepted": False}
+                output = self.native / ("optional-smoke-" + disposition.lower())
+                with patch.object(qualification, "run_worker", return_value=native), \
+                        patch.object(qualification, "_failed_smoke_diagnostics", return_value=unavailable,
+                                     side_effect=OSError("diagnostic fixture unavailable") if disposition == "ERROR" else None):
+                    report = qualification._native_infrastructure_smoke(output, worker)
+                self.assertEqual(report["status"], "ENVIRONMENT_ERROR")
+                self.assertIs(report["native"], native)
+                self.assertEqual(report["diagnostics"]["disposition"], disposition)
+                self.assertIs(report["diagnostics"]["accepted"], False)
+                self.assertNotIn("object_sha256", report)
 
     def test_failure_collection_refuses_links_and_records_all_boundaries(self):
         (self.native / "a-good.log").write_bytes(b"abc")
@@ -619,6 +902,7 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
             _, report = self.collect("bounded-traversal")
         self.assertTrue(report["traversal_truncated"])
         self.assertEqual(report["omission_counts"]["TRAVERSAL_LIMIT"], 1)
+        self.assert_startup_diagnostic_boundaries()
 
     def test_failure_dump_cannot_qualify_a_lane_or_change_success_behavior(self):
         (self.native / "lane.json").write_bytes(b'{"conclusion":"success"}')
@@ -646,6 +930,22 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
                     self.assertRaises(ContractError):
                 cli._collect_failed_native_diagnostics("CURRENT_COMPATIBILITY", self.repo, unsafe_output)
         self.assertFalse((unsafe_output / "failure-diagnostics").exists())
+
+        # A mocked successful worker is used only to check dispatch policy;
+        # this fixture does not supply a native qualification receipt.
+        worker = self.smoke_worker()
+
+        def successful_actual(config, output, source, obj, budget):
+            self.assertEqual(config, worker)
+            (output / obj).write_bytes(b"mock compiler object")
+            return {"exit_code": 0, "resource_status": None, "capability": "LINUX_ISOLATED"}
+
+        with patch.object(qualification, "run_worker", side_effect=successful_actual), \
+                patch.object(qualification, "_failed_smoke_diagnostics") as trace:
+            report = qualification._native_infrastructure_smoke(self.native / "mock-success-smoke", worker)
+        self.assertEqual(report["status"], "PASS_INFRASTRUCTURE_SMOKE")
+        trace.assert_not_called()
+        self.assertNotIn("diagnostics", report)
 
 
 if __name__ == "__main__":

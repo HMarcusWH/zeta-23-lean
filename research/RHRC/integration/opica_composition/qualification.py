@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 import platform
 import re
+import signal
 import shutil
 import stat
 import subprocess
@@ -231,6 +232,139 @@ def _source(repo,modules):
     return {p:file_hash(repo/p) for p in sorted(paths)}
 
 
+SMOKE_DIAGNOSTIC_TIMEOUT=10
+SMOKE_DIAGNOSTIC_TRACE_BYTES=262144
+SMOKE_DIAGNOSTIC_LOG_BYTES=65536
+
+
+def _smoke_diagnostic_capture(path,limit):
+    """Bounded no-follow text plus a hash of the actual regular diagnostic file."""
+    path=unlinked(path)
+    flags=os.O_RDONLY|getattr(os,'O_NOFOLLOW',0)|getattr(os,'O_NONBLOCK',0)|getattr(os,'O_BINARY',0)
+    with os.fdopen(os.open(path,flags),'rb') as stream:
+        before=os.fstat(stream.fileno())
+        require(stat.S_ISREG(before.st_mode) and not(getattr(before,'st_file_attributes',0)&1024),
+                'Regular no-reparse smoke diagnostic required')
+        stream.seek(max(0,before.st_size-limit));raw=stream.read(limit);stream.seek(0)
+        sha256=hashlib.file_digest(stream,'sha256').hexdigest();after=os.fstat(stream.fileno())
+        require((before.st_ino,before.st_dev,before.st_size,before.st_mtime_ns)==
+                (after.st_ino,after.st_dev,after.st_size,after.st_mtime_ns),'Smoke diagnostic changed during capture')
+    return {'file_bytes':before.st_size,'captured_bytes':len(raw),'sha256':sha256,'capture':'TAIL',
+            'truncated':before.st_size>len(raw),'text':raw.decode('utf-8',errors='replace')}
+
+
+def _smoke_resource_snapshot():
+    """Diagnostic observation only: coordinator limits and host/cgroup counters."""
+    row={'scope':'DIAGNOSTIC_COORDINATOR_HOST_AND_CGROUP_NOT_LEAN_PROCESS','errors':[],
+         'nproc_scope':'Worker sets NPROC=64 inside its new user namespace; inherited coordinator NPROC can still constrain ancestor accounting',
+         'nproc_precondition':'These observations neither raise inherited NPROC limits nor identify the original pthread error'}
+    try:
+        import resource
+        row['rlimits']={name:list(resource.getrlimit(getattr(resource,'RLIMIT_'+name)))
+                       for name in ('AS','NPROC','STACK','NOFILE')}
+        row['cpu_affinity']=sorted(os.sched_getaffinity(0))
+        status=Path('/proc/self/status').read_text(encoding='ascii')
+        row['coordinator_status']={line.split(':',1)[0]:line.split(':',1)[1].strip() for line in status.splitlines()
+                                   if line.split(':',1)[0] in {'VmSize','VmPeak','VmRSS','Threads','Uid','NSpid'}}
+        uid=os.getuid();tasks=0;scanned=0;unreadable=0;truncated=False
+        for path in Path('/proc').iterdir():
+            if not path.name.isdecimal():continue
+            if scanned>=4096:truncated=True;break
+            scanned+=1
+            try:
+                fields=dict(line.split(':',1) for line in (path/'status').read_text(encoding='ascii').splitlines() if ':' in line)
+                if int(fields['Uid'].split()[0])==uid:tasks+=int(fields['Threads'])
+            except (OSError,KeyError,ValueError):unreadable+=1
+        row['host_real_uid_tasks']={'uid':uid,'tasks':tasks,'scanned_processes':scanned,
+                                    'unreadable_processes':unreadable,'truncated':truncated,
+                                    'incomplete':bool(unreadable or truncated)}
+        groups=[line.split(':',2)[2] for line in Path('/proc/self/cgroup').read_text().splitlines() if line.startswith('0::')]
+        require(len(groups)==1 and groups[0].startswith('/') and '..' not in Path(groups[0]).parts,'Diagnostic cgroup path differs')
+        group=Path('/sys/fs/cgroup')/groups[0].lstrip('/');row['cgroup']=groups[0]
+        row['cgroup_counters']={}
+        for name in ('pids.current','pids.max','pids.events','memory.current','memory.max','memory.events','memory.peak'):
+            try:row['cgroup_counters'][name]=(group/name).read_text(encoding='ascii').strip()
+            except OSError as exc:row['errors'].append(name+': '+str(exc))
+        row['global_limits']={name:(Path('/proc/sys/kernel')/name).read_text(encoding='ascii').strip()
+                              for name in ('threads-max','pid_max')}
+    except (OSError,ValueError,KeyError,AttributeError,ImportError,ContractError) as exc:row['errors'].append(str(exc))
+    return row
+
+
+def _failed_smoke_diagnostics(output,worker,budget):
+    """One bounded traced replay can explain failure, never authorize a pass."""
+    from ..opica_round4.math_gate import _copy_regular
+    row={'schema':'OPICA_FAILED_SMOKE_DIAGNOSTIC_V1','status':'DIAGNOSTIC_ONLY',
+         'authority':'NO_ACCEPTANCE_OR_PROOF_AUTHORITY','accepted':False,'disposition':'ERROR',
+         'maximum_seconds':min(SMOKE_DIAGNOSTIC_TIMEOUT,budget.wall_seconds),
+         'trace_capture_bytes':SMOKE_DIAGNOSTIC_TRACE_BYTES,'log_capture_bytes':SMOKE_DIAGNOSTIC_LOG_BYTES,
+         'trace_file_count':1,'per_file_hard_bytes':budget.output_bytes,
+         'poll_output_limit_bytes':min(budget.output_bytes,SMOKE_DIAGNOSTIC_TRACE_BYTES+SMOKE_DIAGNOSTIC_LOG_BYTES),
+         'overhead_caveat':'Tracer adds a process; this replay cannot prove the original failure errno',
+         'before':_smoke_resource_snapshot()}
+    folder=Path(output)/'diagnostic-only';proc=None;created=False
+    try:
+        folder=unlinked(folder)
+        require(worker.production is True,'Failed smoke diagnostics require production worker')
+        require(not folder.exists(),'Fresh smoke diagnostic directory required');folder.mkdir();created=True
+        tracer=unlinked('/usr/bin/strace')
+        if not tracer.is_file():
+            row['disposition']='UNAVAILABLE';row['reason']='Trusted /usr/bin/strace is absent'
+        else:
+            row['tracer_sha256']=file_hash(tracer)
+            source='OpicaInfrastructureSmoke.lean';obj='OpicaInfrastructureSmoke.olean'
+            row['source_sha256']=_copy_regular(Path(output)/source,folder/source)
+            command,env=_recipe(worker,folder,source,obj,budget)
+            position=command.index(str(Path(worker.lean)))
+            command[position:position]=[str(tracer),'-f','-qq','-s','128','-e',
+                'trace=mmap,mprotect,munmap,clone,clone3,prlimit64','-o','/out/syscalls.trace','--']
+            row['command']=command;row['same_worker_budget']=budget.to_dict()
+            log=folder/'diagnostic.log';trace=folder/'syscalls.trace';started=time.monotonic()
+            flags=os.O_WRONLY|os.O_CREAT|os.O_EXCL|getattr(os,'O_NOFOLLOW',0)
+            with os.fdopen(os.open(log,flags,0o600),'wb') as stream:
+                proc=subprocess.Popen(command,cwd=folder,env=env,stdout=stream,stderr=subprocess.STDOUT,start_new_session=True)
+                row['disposition']='COMPLETED'
+                while proc.poll() is None:
+                    size=sum(p.lstat().st_size for p in (log,trace) if p.exists() or p.is_symlink())
+                    if time.monotonic()-started>=row['maximum_seconds']:row['disposition']='TIMED_OUT'
+                    elif size>row['poll_output_limit_bytes']:row['disposition']='OUTPUT_LIMIT'
+                    else:time.sleep(0.025);continue
+                    try:os.killpg(proc.pid,signal.SIGKILL)
+                    except ProcessLookupError:pass
+                    break
+                row['exit_code']=proc.wait(timeout=1)
+            row['elapsed_ms']=int((time.monotonic()-started)*1000)
+            require(file_hash(folder/source)==row['source_sha256'],'Diagnostic smoke source changed')
+            row['log']=_smoke_diagnostic_capture(log,SMOKE_DIAGNOSTIC_LOG_BYTES)
+            if trace.exists() or trace.is_symlink():row['trace']=_smoke_diagnostic_capture(trace,SMOKE_DIAGNOSTIC_TRACE_BYTES)
+            else:row['trace_unavailable']=True
+            allowed={source,obj,obj+'.private',obj+'.server','diagnostic.log','syscalls.trace'}
+            for path in folder.iterdir():
+                path=unlinked(path);info=path.lstat()
+                require(path.name in allowed and stat.S_ISREG(info.st_mode) and
+                        not(getattr(info,'st_file_attributes',0)&1024),'Unexpected smoke diagnostic output file')
+    except (OSError,ValueError,AttributeError,ContractError,RuntimeError,subprocess.SubprocessError) as exc:row['error']=str(exc);row['disposition']='ERROR'
+    finally:
+        if proc is not None and proc.poll() is None:
+            try:os.killpg(proc.pid,signal.SIGKILL)
+            except OSError as exc:row['cleanup_group_error']=str(exc)
+            try:
+                if proc.poll() is None:proc.kill()
+                proc.wait(timeout=1)
+            except (OSError,subprocess.SubprocessError) as exc:row['cleanup_error']=str(exc);row['disposition']='ERROR'
+        row['after']=_smoke_resource_snapshot()
+        if created:
+            try:(unlinked(folder/'result.json')).write_bytes(canonical_bytes(row)+b'\n')
+            except (OSError,ContractError) as exc:row['artifact_error']=str(exc)
+        try:
+            summary={key:value for key,value in row.items() if key not in {'trace','log'}}
+            for key in ('trace','log'):
+                if key in row:summary[key]={**row[key],'text':row[key]['text'][-4096:]}
+            sys.stderr.write('OPICA_FAILED_SMOKE_DIAGNOSTIC_ONLY\t'+json.dumps(summary,ensure_ascii=True,sort_keys=True)+'\n');sys.stderr.flush()
+        except (OSError,ValueError,AttributeError):pass
+    return row
+
+
 def _native_infrastructure_smoke(output,worker):
     """Exercise the production recipe before the expensive project build.
 
@@ -252,12 +386,19 @@ def _native_infrastructure_smoke(output,worker):
       'object':obj,'native':None,'RH':'OPEN','Step4':'OPEN'}
     try:
         budget=SearchBudget(**worker.budget) if worker.budget else SearchBudget()
-        native=run_worker(worker,output,source,obj,budget);report['native']=native
+        report['resource_observations']={'authority':'DIAGNOSTIC_ONLY','before':_smoke_resource_snapshot()}
+        try:native=run_worker(worker,output,source,obj,budget);report['native']=native
+        finally:report['resource_observations']['after']=_smoke_resource_snapshot()
         require(file_hash(output/source)==before,'Infrastructure smoke source changed during execution')
         if native['exit_code']==0 and native['resource_status'] is None and (output/obj).is_file():
             require(native['capability']=='LINUX_ISOLATED','Infrastructure smoke was not isolated production execution')
             report['object_sha256']=file_hash(output/obj)
             report['status']='PASS_INFRASTRUCTURE_SMOKE'
+        else:
+            try:report['diagnostics']=_failed_smoke_diagnostics(output,worker,budget)
+            except Exception as exc:
+                # A diagnostic failure cannot replace the actual failed worker.
+                report['diagnostics']={'status':'DIAGNOSTIC_ONLY','accepted':False,'disposition':'ERROR','error':str(exc)}
         return report
     finally:(output/'result.json').write_bytes(canonical_bytes(report)+b'\n')
 

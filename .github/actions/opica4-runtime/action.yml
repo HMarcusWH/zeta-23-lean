@@ -37,6 +37,12 @@ runs:
         lint: false
         use-github-cache: false
         use-mathlib-cache: true
+    - if: ${{ inputs.native == 'true' }}
+      name: Install native failure diagnostic tracer
+      shell: bash
+      run: |
+        set -euo pipefail
+        sudo apt-get install -y strace
     - if: ${{ inputs.provider == 'true' }}
       uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       with:
