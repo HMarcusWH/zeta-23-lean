@@ -177,8 +177,10 @@ def worker_environment(worker,*,manifest_output=None):
             "toolchain_file_links":toolchain_links}
 
 MATH_SUPPORT_RECIPE="OPICA_MATHEMATICAL_LEAN_ISOLATED_V1"
+LEAN_ADDRESS_SPACE_BYTES=64*1024**3
 
-# Lean's default 1GiB thread stacks compete with the fixed 4GiB address-space cap.
+# Virtual reservations and mapped import objects are distinct from the verified
+# hard 4GiB cgroup memory budget. The finite VA policy still needs native replay.
 def _recipe(worker,output,source,object_name,budget,*,mathematical_support=False):
     lean=Path(worker.lean); output=Path(output)
     require(type(mathematical_support)is bool,"closed mathematical recipe selector required")
@@ -201,7 +203,7 @@ def _recipe(worker,output,source,object_name,budget,*,mathematical_support=False
                 "-DmaxRecDepth=2048","-o",str(output/object_name),str(output/source)],env
     # Every mounted path is evaluator-owned. No home, cloud credentials, sockets
     # or inherited environment is visible inside the unshared network namespace.
-    cmd=[worker.prlimit,"--as="+str(budget.memory_bytes),"--cpu="+str(budget.wall_seconds),
+    cmd=[worker.prlimit,"--as="+str(LEAN_ADDRESS_SPACE_BYTES),"--cpu="+str(budget.wall_seconds),
          "--fsize="+str(budget.output_bytes),"--",worker.bubblewrap,
          "--unshare-all","--die-with-parent","--new-session","--clearenv",
          "--proc","/proc","--dev","/dev","--tmpfs","/tmp"]
@@ -258,7 +260,7 @@ def run_worker(worker,output,source,object_name,budget,*,mathematical_support=Fa
             value=(group/name).read_text(encoding="ascii").strip()
             require(value.isdecimal() and 0<int(value)<=maximum,"unbounded/oversized cgroup "+name)
             return int(value)
-        memory=capped("memory.max",budget.memory_bytes); processes=capped("pids.max",64)
+        memory=capped("memory.max",min(budget.memory_bytes,4294967296)); processes=capped("pids.max",64)
         # A trusted coordinator mounts this bounded writable volume before any
         # candidate dispatch. RLIMIT_FSIZE alone cannot cap many small files.
         output_path=Path(output).resolve(); mounts=[]
@@ -271,7 +273,8 @@ def run_worker(worker,output,source,object_name,budget,*,mathematical_support=Fa
         require(mounts and max(mounts)[1]=="tmpfs","bounded tmpfs output volume required")
         space=os.statvfs(output_path)
         require(0<space.f_blocks*space.f_frsize<=budget.disk_bytes,"output volume exceeds approved hard disk cap")
-        resource_scope={"mode":"LINUX_CGROUP_V2_TMPFS","memory_bytes":memory,"processes":processes,
+        resource_scope={"mode":"LINUX_CGROUP_V2_TMPFS","memory_bytes":memory,
+                        "address_space_bytes":LEAN_ADDRESS_SPACE_BYTES,"processes":processes,
                         "disk_bytes":space.f_blocks*space.f_frsize,"cgroup":groups[0]}
     cmd,env=_recipe(worker,output,source,object_name,budget,mathematical_support=mathematical_support)
     log=Path(output)/(source+".log")

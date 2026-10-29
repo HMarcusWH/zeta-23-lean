@@ -22,7 +22,7 @@ import time
 from .canonical import require,canonical_bytes,load_bytes,digest,ContractError
 from .contracts import WorkerConfig,SearchBudget,as_record
 from .snapshot import unlinked,file_hash,git,hash_inventory,discover_source_paths
-from .executor import run_worker,worker_environment,lean_name,lean_string,_recipe,MATH_SUPPORT_RECIPE
+from .executor import run_worker,worker_environment,lean_name,lean_string,_recipe,MATH_SUPPORT_RECIPE,LEAN_ADDRESS_SPACE_BYTES
 from .inventory import expression_hash,validate_telescope
 from ..opica_round4.math_gate import (MODULES as MATHEMATICAL_MODULES,
     EXPECTED_MODULE_COUNT, EXPECTED_DECLARATION_COUNT,
@@ -613,6 +613,7 @@ def _validate_mathematical_worker_receipts(result,output,worker):
         scope=native.get('resource_scope',{})
         if worker.production:
             require(scope.get('mode')=='LINUX_CGROUP_V2_TMPFS' and
+                    type(scope.get('address_space_bytes'))is int and scope['address_space_bytes']==LEAN_ADDRESS_SPACE_BYTES and
                     all(type(scope.get(key))is int and 0<scope[key]<=cap for key,cap in
                         (('memory_bytes',budget.memory_bytes),('processes',64),('disk_bytes',budget.disk_bytes))) and
                     type(scope.get('cgroup'))is str and scope['cgroup'].startswith('/'),

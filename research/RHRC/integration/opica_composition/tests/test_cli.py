@@ -217,7 +217,9 @@ class CliOrchestrationTests(unittest.TestCase):
             self.assertIn('--unshare-all', command)
             self.assertIn('--clearenv', command)
             self.assertIn('--nproc=64', command)
-            self.assertIn('--as=4294967296', command)
+            self.assertIs(type(executor.LEAN_ADDRESS_SPACE_BYTES), int)
+            self.assertEqual(executor.LEAN_ADDRESS_SPACE_BYTES, 68719476736)
+            self.assertEqual([arg for arg in command if arg.startswith('--as=')], ['--as=68719476736'])
             self.assertEqual(command[command.index('--bind') + 1:command.index('--bind') + 3],
                              [str(root / 'output'), '/out'])
             self.assertEqual(command[-1], '/out/' + source)
@@ -303,12 +305,32 @@ class CliOrchestrationTests(unittest.TestCase):
             native = {'recipe': executor.MATH_SUPPORT_RECIPE, 'capability': 'LINUX_ISOLATED', 'exit_code': 0,
                       'resource_status': None, 'command': command, 'log_sha256': sha(log),
                       'resource_scope': {'mode': 'LINUX_CGROUP_V2_TMPFS', 'memory_bytes': 4294967296,
+                                         'address_space_bytes': 68719476736,
                                          'processes': 64, 'disk_bytes': 4294967296, 'cgroup': '/fixture'}}
             first = {'module': module, 'worker_output': str(folder), 'argv': command, 'native': native,
                      'exit_code': 0, 'source_sha256': sha(folder / source), 'log_sha256': sha(log)}
             base = {'execution_mode': 'PRODUCTION_ISOLATED', 'authority': 'CURRENT_SOURCE_ISOLATED_NATIVE_SUPPORT',
                     'worker': worker.to_dict(), 'worker_budget': budget.to_dict(),
                     'module_records': [first] + [{'module': m} for m in math_gate.MODULES[1:]]}
+            # Correct resource fields must pass their guard and reach the
+            # deliberately incomplete products, never qualify this fixture.
+            with self.assertRaisesRegex(ContractError, 'Mathematical module product binding differs'):
+                qualification._validate_mathematical_worker_receipts(base, output, worker)
+            absent = object()
+            for virtual in (absent, True, '68719476736', 68719476736.0, 0, 4294967296, 68719476735, 68719476737):
+                with self.subTest(address_space=virtual):
+                    forged = copy.deepcopy(base)
+                    scope = forged['module_records'][0]['native']['resource_scope']
+                    if virtual is absent:
+                        scope.pop('address_space_bytes')
+                    else:
+                        scope['address_space_bytes'] = virtual
+                    with self.assertRaisesRegex(ContractError, 'Mathematical isolated worker resource scope differs'):
+                        qualification._validate_mathematical_worker_receipts(forged, output, worker)
+            forged = copy.deepcopy(base)
+            forged['module_records'][0]['native']['resource_scope']['memory_bytes'] = 4294967297
+            with self.assertRaisesRegex(ContractError, 'Mathematical isolated worker resource scope differs'):
+                qualification._validate_mathematical_worker_receipts(forged, output, worker)
             for update in ({'recipe': 'OPICA_LEAN_ISOLATED_V1'}, {'capability': 'NATIVE_DEVELOPMENT_ONLY'},
                            {'command': command + ['--extra']}, {'resource_status': 'RESOURCE_EXHAUSTED'},
                            {'exit_code': 1}, {'log_sha256': '0' * 64},

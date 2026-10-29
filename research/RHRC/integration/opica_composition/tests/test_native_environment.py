@@ -93,6 +93,62 @@ class NativeEnvironmentTests(unittest.TestCase):
         self.assertEqual(version.call_args.args[0], [str(self.lean), "--version"])
         return result
 
+    def assert_production_memory_policy(self):
+        """Exercise real cgroup admission/receipt code with no compiler dispatch."""
+        resident = 4294967296
+        virtual = 68719476736
+        worker = replace(self.worker, production=True)
+        cases = ((SearchBudget(), resident, 64, resident, "tmpfs", True),
+                 (SearchBudget(memory_bytes=resident * 2), resident, 64, resident, "tmpfs", True),
+                 (SearchBudget(memory_bytes=987654321), 987654321, 64, resident, "tmpfs", True),
+                 (SearchBudget(memory_bytes=resident * 2), resident + 1, 64, resident, "tmpfs", False),
+                 (SearchBudget(memory_bytes=987654321), 987654322, 64, resident, "tmpfs", False),
+                 (SearchBudget(), "max", 64, resident, "tmpfs", False),
+                 (SearchBudget(), resident, 65, resident, "tmpfs", False),
+                 (SearchBudget(), resident, 64, resident + 1, "tmpfs", False),
+                 (SearchBudget(), resident, 64, resident, "ext4", False))
+        real_read_text = Path.read_text
+        for index, (budget, memory, processes, disk, filesystem, accepted) in enumerate(cases):
+            for mathematical in ((False, True) if accepted else (False,)):
+                with self.subTest(resident_case=index, mathematical=mathematical):
+                    output = self.evidence / ("resource-" + str(index) + "-" + str(mathematical))
+                    output.mkdir()
+                    source = "Zeta23/ResourceFixture.lean" if mathematical else "ResourceFixture.lean"
+                    obj = source[:-5] + ".olean"
+                    (output / source).parent.mkdir(parents=True, exist_ok=True)
+                    (output / source).write_bytes(b"fixture only: no compiler invoked")
+                    values = {"/proc/self/cgroup": "0::/fixture\n",
+                              "/sys/fs/cgroup/fixture/memory.max": str(memory),
+                              "/sys/fs/cgroup/fixture/pids.max": str(processes),
+                              "/proc/self/mountinfo": "1 0 0:1 / " + str(output.resolve()) + " rw - " + filesystem + " tmpfs rw\n"}
+
+                    def read_text(path, *args, **kwargs):
+                        key = path.as_posix()
+                        return values[key] if key in values else real_read_text(path, *args, **kwargs)
+
+                    def dispatch(command, **kwargs):
+                        self.assertEqual([arg for arg in command if arg.startswith("--as=")], ["--as=" + str(virtual)])
+                        self.assertEqual(kwargs["env"], {})
+                        kwargs["stdout"].write(b"mock process only; not compiler evidence\n")
+                        return SimpleNamespace(poll=lambda: 0, wait=lambda: 0)
+
+                    with patch.object(executor, "worker_capability", return_value="LINUX_ISOLATED"), \
+                            patch.object(Path, "read_text", new=read_text), \
+                            patch.object(executor.os, "statvfs", return_value=SimpleNamespace(f_blocks=disk, f_frsize=1), create=True), \
+                            patch.object(executor.subprocess, "Popen", side_effect=dispatch) as popen:
+                        if accepted:
+                            receipt = executor.run_worker(worker, output, source, obj, budget, mathematical_support=mathematical)
+                            self.assertEqual(receipt["resource_scope"], {"mode": "LINUX_CGROUP_V2_TMPFS",
+                                "memory_bytes": memory, "address_space_bytes": virtual, "processes": 64,
+                                "disk_bytes": resident, "cgroup": "/fixture"})
+                            self.assertIs(type(receipt["resource_scope"]["address_space_bytes"]), int)
+                            self.assertEqual(receipt["recipe"], executor.MATH_SUPPORT_RECIPE if mathematical else "OPICA_LEAN_ISOLATED_V1")
+                            popen.assert_called_once()
+                        else:
+                            with self.assertRaises(ContractError):
+                                executor.run_worker(worker, output, source, obj, budget)
+                            popen.assert_not_called()
+
     def test_regular_toolchain_file_uses_actual_bytes(self):
         target = self.write(self.toolchain / "lib" / "libLLVM.so", b"regular library bytes")
         self.assertEqual(executor._toolchain_file_record(target, self.toolchain),
@@ -172,6 +228,9 @@ class NativeEnvironmentTests(unittest.TestCase):
                 executor._toolchain_file_record(alias, self.toolchain)
 
     def test_environment_binds_target_bytes_raw_chain_and_exact_manifest(self):
+        self.assertIs(type(executor.LEAN_ADDRESS_SPACE_BYTES), int)
+        self.assertEqual(executor.LEAN_ADDRESS_SPACE_BYTES, 68719476736)
+        self.assertEqual(SearchBudget().memory_bytes, 4294967296)
         alias = self.write(self.toolchain / "lib" / "libLLVM.so")
         target = self.write(self.toolchain / "lib" / "payload.bin", b"actual pinned library bytes")
         manifest = self.evidence / "objects.json"
@@ -226,7 +285,7 @@ class NativeEnvironmentTests(unittest.TestCase):
                             "PATH": str(self.lean.parent), "LEAN_NUM_THREADS": "2",
                             "LEAN_PATH": os.pathsep.join([str(self.evidence), str(self.imports)])})
                     else:
-                        prefix = [worker.prlimit, "--as=" + str(budget.memory_bytes),
+                        prefix = [worker.prlimit, "--as=68719476736",
                             "--cpu=" + str(budget.wall_seconds),
                             "--fsize=" + str(budget.output_bytes), "--", worker.bubblewrap,
                             "--unshare-all", "--die-with-parent", "--new-session", "--clearenv",
@@ -258,9 +317,11 @@ class NativeEnvironmentTests(unittest.TestCase):
                     self.assertEqual(math_command.count("-s262144"), 1)
                     self.assertNotIn("-s262144", math_command[:math_lean_index])
                     if production:
+                        self.assertEqual([arg for arg in math_command if arg.startswith("--as=")], ["--as=68719476736"])
                         self.assertNotIn("--nproc=64", math_command[:math_command.index(worker.bubblewrap)])
                         self.assertEqual(math_command[math_lean_index - 3:math_lean_index],
                                          [worker.prlimit, "--nproc=64", "--"])
+        self.assert_production_memory_policy()
 
     def test_target_byte_change_changes_environment_identity(self):
         alias = self.write(self.toolchain / "lib" / "libLLVM.so")
@@ -799,6 +860,8 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
                     "-e", "status=failed", "-o", "/out/syscalls.trace", "--"] + original[position:]
                 self.assertEqual(popen.call_args.args[0], expected)
                 self.assertEqual(report["command"], expected)
+                self.assertEqual([arg for arg in expected if arg.startswith("--as=")], ["--as=68719476736"])
+                self.assertEqual(report["same_worker_budget"]["memory_bytes"], 4294967296)
                 self.assertEqual((output / "diagnostic-only" / source.name).read_bytes(), source.read_bytes())
                 self.assertEqual(report["source_sha256"], sha256(self.PROBE_SOURCES[probe].encode("utf-8")))
                 self.assertEqual(report["same_worker_budget"], budget.to_dict())

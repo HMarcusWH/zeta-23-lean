@@ -28,7 +28,13 @@ plan reconstructs the same source-bound bounded menu before dispatch.
 Linux production workers require read-only project/package/toolchain mounts,
 an empty environment, isolated network/process namespaces, bounded process
 resources, a hard 4 GiB cgroup memory ceiling and a hard 4 GiB tmpfs output
-volume. Windows execution is development evidence only. Missing native setup
+volume. Virtual address space has a separate fixed 64 GiB ceiling, bound into
+the worker command and resource receipt. Lean's allocator reservations, thread
+stacks and mapped import objects consume virtual addresses without using the
+same amount of physical memory. This allowance does not raise the cgroup memory
+ceiling or change imports, isolation or proof checks; its adequacy still requires
+the actual production probes and complete native workload to pass.
+Windows execution is development evidence only. Missing native setup
 fails its lane; native tests do not skip.
 
 `Journal` maintains a transactionally verified event chain, durable attempt
