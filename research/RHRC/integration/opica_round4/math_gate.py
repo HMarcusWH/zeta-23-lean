@@ -139,7 +139,7 @@ BASELINE_MODULES = [
   "Zeta23.OPICARound4.Validation.Support",
   "Zeta23.OPICARound4.WitnessNorms"
 ]
-EXPECTED_DECLARATIONS = BASELINE_EXPECTED_DECLARATIONS + [
+INTEGRATION_EXPECTED_DECLARATIONS = BASELINE_EXPECTED_DECLARATIONS + [
   "Zeta23.OPICARound4.EvenNegativeGroundRestriction",
   "Zeta23.OPICARound4.EventualActualRayClosure",
   "Zeta23.OPICARound4.EventualNativeJointNegativeIndexCap",
@@ -440,7 +440,7 @@ EXPECTED_DECLARATIONS = BASELINE_EXPECTED_DECLARATIONS + [
   "Zeta23.OPICARound4.upper_sub_conj_ne_zero",
   "Zeta23.OPICARound4.zero_residue_does_not_remove_eigenspace"
 ]
-MODULES = BASELINE_MODULES + [
+INTEGRATION_MODULES = BASELINE_MODULES + [
   "Zeta23.OPICARound4.AdaptiveBudget",
   "Zeta23.OPICARound4.ClosureConsumers",
   "Zeta23.OPICARound4.IntegrationTargets",
@@ -466,12 +466,139 @@ MODULES = BASELINE_MODULES + [
   "Zeta23.OPICARound4.Validation.IntegrationVisibilityRigidity",
   "Zeta23.OPICARound4.VisibilityRigidity"
 ]
-EXPECTED_DECLARATION_COUNT = 397
-EXPECTED_MODULE_COUNT = 40
+INTEGRATION_DECLARATION_COUNT = 397
+INTEGRATION_MODULE_COUNT = 40
+# SOURCE_CONSTRAINT_INVENTORY_BEGIN
+SOURCE_CONSTRAINT_DECLARATIONS = [
+  "Zeta23.OPICARound4.nativeSignedPrimeDiscrepancy",
+  "Zeta23.OPICARound4.nativeGroundArchPairing",
+  "Zeta23.OPICARound4.nativeGroundPrimePairing",
+  "Zeta23.OPICARound4.native_signed_source_decomposition",
+  "Zeta23.OPICARound4.native_signed_discrepancy_integral",
+  "Zeta23.OPICARound4.actual_even_ground_ray_facts",
+  "Zeta23.OPICARound4.actual_odd_ground_ray_facts",
+  "Zeta23.OPICARound4.actual_even_ground_signed_discrepancy",
+  "Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy",
+  "Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility",
+  "Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility",
+  "Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility",
+  "Zeta23.OPICARound4.native_even_eigen_absolute_energy",
+  "Zeta23.OPICARound4.native_odd_eigen_absolute_energy",
+  "Zeta23.OPICARound4.NativeStrictEvenGroundConstraints",
+  "Zeta23.OPICARound4.NativeStrictEvenGroundConstraints.mk",
+  "Zeta23.OPICARound4.NativeStrictOddGroundConstraints",
+  "Zeta23.OPICARound4.NativeStrictOddGroundConstraints.mk",
+  "Zeta23.OPICARound4.NativeTiedGroundConstraints",
+  "Zeta23.OPICARound4.NativeTiedGroundConstraints.mk",
+  "Zeta23.OPICARound4.NativeJointGroundConstraints",
+  "Zeta23.OPICARound4.native_tied_ground_constraints",
+  "Zeta23.OPICARound4.joint_ground_constraints_of_both_negative",
+  "Zeta23.OPICARound4.cofinally_joint_ground_constraints_of_off_line_zero",
+  "Zeta23.OPICARound4.sourceImageErrorBudget",
+  "Zeta23.OPICARound4.sourceFiniteModeCost",
+  "Zeta23.OPICARound4.sourceForcingErrorBudget",
+  "Zeta23.OPICARound4.sourceWeilBoundConstant",
+  "Zeta23.OPICARound4.sourceWeilBoundConstant_pos",
+  "Zeta23.OPICARound4.finiteForcingBudget",
+  "Zeta23.OPICARound4.sourceImageErrorBudget_nonneg",
+  "Zeta23.OPICARound4.source_eta_nonneg",
+  "Zeta23.OPICARound4.sourceForcingErrorBudget_nonneg",
+  "Zeta23.OPICARound4.finiteForcingBudget_nonneg",
+  "Zeta23.OPICARound4.smoothSourceL2",
+  "Zeta23.OPICARound4.smoothSourceL2_ae",
+  "Zeta23.OPICARound4.smoothSourceResponseL2",
+  "Zeta23.OPICARound4.smoothSourceResponseL2_ae",
+  "Zeta23.OPICARound4.smoothSourceForcing",
+  "Zeta23.OPICARound4.smoothSourceForcing_pairing",
+  "Zeta23.OPICARound4.smoothSourceForcing_error_pairing",
+  "Zeta23.OPICARound4.smoothSourceForcing_channels",
+  "Zeta23.OPICARound4.norm_le_of_all_inner_bound",
+  "Zeta23.OPICARound4.smoothSourceForcing_error_bound",
+  "Zeta23.OPICARound4.finiteForcing_norm_bound",
+  "Zeta23.OPICARound4.smoothSourceForcing_norm_bound",
+  "Zeta23.OPICARound4.sourcePhysicalL2_norm_eq",
+  "Zeta23.OPICARound4.smoothSourceL2_error_bound",
+  "Zeta23.OPICARound4.smoothSourceL2_norm_bound",
+  "Zeta23.OPICARound4.detectorInverse",
+  "Zeta23.OPICARound4.sourceInverseBudget",
+  "Zeta23.OPICARound4.detectorSchurLoss",
+  "Zeta23.OPICARound4.finiteSourceEnergy",
+  "Zeta23.OPICARound4.smoothSourceMain",
+  "Zeta23.OPICARound4.sourceEnergyErrorBudget",
+  "Zeta23.OPICARound4.sourceSchurErrorBudget",
+  "Zeta23.OPICARound4.detectorInverse_norm_bound",
+  "Zeta23.OPICARound4.sourceInverseBudget_nonneg",
+  "Zeta23.OPICARound4.detectorSchurLoss_lower",
+  "Zeta23.OPICARound4.detectorSchurLoss_eq_forcing_energy",
+  "Zeta23.OPICARound4.sourceQuadratic_perturbation_bound",
+  "Zeta23.OPICARound4.smoothSourceL2_mass_error_bound",
+  "Zeta23.OPICARound4.detectorSchurLoss_sub_smoothSourceMain_bound",
+  "Zeta23.OPICARound4.detectorForcing_zero_at_first",
+  "Zeta23.OPICARound4.detectorSchurLoss_at_first",
+  "Zeta23.OPICARound4.quartic_polynomial_exp_tendsto_zero",
+  "Zeta23.OPICARound4.quarticImageError",
+  "Zeta23.OPICARound4.quarticImageError_nonneg",
+  "Zeta23.OPICARound4.quarticImageError_mul_exp_tendsto_zero",
+  "Zeta23.OPICARound4.pow_mul_exp_mul_quarticImageError_tendsto_zero",
+  "Zeta23.OPICARound4.quarticCutoff_le_two_pow_four",
+  "Zeta23.OPICARound4.quartic_mode_cost_le",
+  "Zeta23.OPICARound4.quarticErrorEnvelope",
+  "Zeta23.OPICARound4.quarticErrorEnvelope_nonneg",
+  "Zeta23.OPICARound4.quarticErrorEnvelope_mul_exp_tendsto_zero",
+  "Zeta23.OPICARound4.quarticErrorEnvelope_eventually_lt_exp",
+  "Zeta23.OPICARound4.sourceEtaGrowthConstant",
+  "Zeta23.OPICARound4.sourceEtaGrowthConstant_pos",
+  "Zeta23.OPICARound4.source_eta_polynomial_bound",
+  "Zeta23.OPICARound4.detector_inverse_polynomial_bound",
+  "Zeta23.OPICARound4.sourceForcingGrowthConstant",
+  "Zeta23.OPICARound4.sourceForcingErrorGrowthConstant",
+  "Zeta23.OPICARound4.sourceForcingGrowthConstant_pos",
+  "Zeta23.OPICARound4.sourceForcingErrorGrowthConstant_pos",
+  "Zeta23.OPICARound4.finiteForcingBudget_polynomial_bound",
+  "Zeta23.OPICARound4.sourceForcingErrorBudget_polynomial_bound",
+  "Zeta23.OPICARound4.sourceSchurUniformEnvelope",
+  "Zeta23.OPICARound4.sourceSchurErrorBudget_le_uniformEnvelope",
+  "Zeta23.OPICARound4.sourceSchurUniformEnvelope_mul_exp_tendsto_zero",
+  "Zeta23.OPICARound4.exists_uniform_source_schur_error_threshold",
+  "Zeta23.OPICARound4.exists_uniform_smooth_source_main_lower_threshold",
+  "Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold",
+  "Zeta23.OPICARound4.validation_smooth_source_forcing",
+  "Zeta23.OPICARound4.validation_detector_schur_error",
+  "Zeta23.OPICARound4.validation_detector_first_cutoff",
+  "Zeta23.OPICARound4.Validation.quartic_rate_consumer",
+  "Zeta23.OPICARound4.Validation.source_shift_consumer",
+  "Zeta23.OPICARound4.Validation.same_detector_inverse_consumer",
+  "Zeta23.OPICARound4.Validation.complete_error_envelope_consumer",
+  "Zeta23.OPICARound4.Validation.all_exponential_rates_consumer",
+  "Zeta23.OPICARound4.Validation.threshold_before_packet_consumer",
+  "Zeta23.OPICARound4.Validation.native_packet_lower_consumer",
+  "Zeta23.OPICARound4.Validation.generated_packet_lower_consumer"
+]
+SOURCE_CONSTRAINT_MODULES = [
+  "Zeta23.OPICARound4.GroundArithmetic",
+  "Zeta23.OPICARound4.JointGroundConstraints",
+  "Zeta23.OPICARound4.SmoothForcing",
+  "Zeta23.OPICARound4.SchurErrorTransport",
+  "Zeta23.OPICARound4.QuarticErrorReduction",
+  "Zeta23.OPICARound4.Validation.GroundConstraints",
+  "Zeta23.OPICARound4.Validation.DetectorErrors",
+  "Zeta23.OPICARound4.Validation.ErrorReduction"
+]
+EXPECTED_DECLARATIONS = INTEGRATION_EXPECTED_DECLARATIONS + SOURCE_CONSTRAINT_DECLARATIONS
+MODULES = INTEGRATION_MODULES + SOURCE_CONSTRAINT_MODULES
+EXPECTED_DECLARATION_COUNT = 500
+EXPECTED_MODULE_COUNT = 48
+# SOURCE_CONSTRAINT_INVENTORY_END
 BASELINE_DECLARATION_COUNT = 98
 BASELINE_MODULE_COUNT = 16
-SEMANTIC_MUTATIONS = 'import Zeta23.OPICARound4.Validation.Support\nimport Zeta23.OPICARound4.OddReciprocalSource\nimport Zeta23.OPICARound4.Validation.IntegrationSpectral\nimport Zeta23.OPICARound4.VisibilityRigidity\n\nnoncomputable section\nnamespace Zeta23.OPICARound4.RejectedSemanticMutations\nopen CCM OPICARound3\nopen scoped BigOperators\n\nvariable {E F : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E]\n  [FiniteDimensional ℂ E] [NormedAddCommGroup F] [InnerProductSpace ℂ F]\n  [FiniteDimensional ℂ F]\n\n-- Removing the witness-response norm cost must be rejected.\nexample (J : E →ₗᵢ[ℂ] F) (T : F →ₗ[ℂ] F)\n    (e : isometricDetectorComplement J)\n    (hb : J.toLinearMap.adjoint (T e.val) ∈ (predecessorBlock J T).range) :\n    ‖regularSchurWitness J T e hb‖ ^ 2 = ‖(e : F)‖ ^ 2 :=\n  regular_witness_norm_sq J T e hb\n\n-- PSD predecessor plus a one-dimensional shell does not assert successor negativity.\nexample (J : E →ₗᵢ[ℂ] F) (T : F →ₗ[ℂ] F)\n    (hP : ∀ x : E, 0 ≤ (inner ℂ (predecessorBlock J T x) x).re)\n    (hshell : Module.finrank ℂ (isometricDetectorComplement J) = 1) (w : F) :\n    (∀ N : Submodule ℂ F,\n      (∀ u : N, u ≠ 0 → (inner ℂ (T u) (u : F)).re < 0) → Module.finrank ℂ N ≤ 1) ∧\n    ∃ N : Submodule ℂ F, Module.finrank ℂ N = 1 ∧\n      ∀ u : N, u ≠ 0 → (inner ℂ (T u) (u : F)).re < 0 :=\n  one_shell_negative_index_exact J T hP hshell w\n\n-- Omitting the removed canonical output changes the source functional.\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)\n    (u : poleNeutralEvenSubspace L K) :\n    cubicDefectFunctional L K u.val =\n      inner ℂ (correctedSourceRow L K) ((canonicalSourceMatrix L K).toEuclideanLin u.val.val) :=\n  correctedSourceRow_native hL K hK u\n\n-- A source equality at K cannot be silently transported to a different M.\nexample {L : ℝ} (hL : 0 < L) (K M : ℕ) (hK : 3 ≤ K) (hM : 3 ≤ M)\n    (lam : ℝ) (hlamK : lam < poleNeutralOddRayleighBottom L K hL hK)\n    (hlamM : lam < poleNeutralOddRayleighBottom L M hL hM)\n    (u : poleNeutralEvenSubspace L K) (hu0 : u ≠ 0)\n    (hu : poleNeutralEvenCompressedCanonical L K u = (lam : ℂ) • u) :\n    poleNeutralCorrectedCubicSource L M (poleNeutralEvenShiftedRay hL M hM lam hlamM) = 1 :=\n  poleNeutral_even_eigen_shiftedRay_source_eq_one hL K hK lam hlamK u hu0 hu\n\n-- The response-facing odd test uses the reciprocal input, not the Riesz input.\n-- Scalar aliases retain exact native values while avoiding huge inverse reduction.\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (lam : ℝ)\n    (hlam : lam < poleNeutralEvenRayleighBottom L K hL hK)\n    (sourceRiesz sourceReciprocal : ℂ)\n    (_hRiesz : sourceRiesz = poleNeutralCorrectedCubicSource L K\n      ((poleNeutralEvenShiftedCanonicalEquiv hL K hK lam hlam).symm\n        (poleNeutralCorrectedCubicRieszVector L K)))\n    (hReciprocal : sourceReciprocal = poleNeutralCorrectedCubicSource L K\n      (nativeOddReciprocalInput hL K hK lam hlam)) :\n    poleNeutralCubicPairingFunctional L K (poleNeutralOddAdjointShiftedRay hL K hK lam hlam) =\n      -star sourceRiesz := by\n  have htrue : poleNeutralCubicPairingFunctional L K\n      (poleNeutralOddAdjointShiftedRay hL K hK lam hlam) = -star sourceReciprocal := by\n    rw [hReciprocal]\n    exact native_odd_response_eq_reciprocal_source hL K hK lam hlam\n  exact htrue\n\n-- Omitting the material odd-response minus sign changes the statement.\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (lam : ℝ)\n    (hlam : lam < poleNeutralEvenRayleighBottom L K hL hK)\n    (sourceReciprocal : ℂ)\n    (hReciprocal : sourceReciprocal = poleNeutralCorrectedCubicSource L K\n      (nativeOddReciprocalInput hL K hK lam hlam)) :\n    poleNeutralCubicPairingFunctional L K (poleNeutralOddAdjointShiftedRay hL K hK lam hlam) =\n      star sourceReciprocal := by\n  have htrue : poleNeutralCubicPairingFunctional L K\n      (poleNeutralOddAdjointShiftedRay hL K hK lam hlam) = -star sourceReciprocal := by\n    rw [hReciprocal]\n    exact native_odd_response_eq_reciprocal_source hL K hK lam hlam\n  exact htrue\n\n-- Reality of the grouped residue does not give reality of basis-coordinate terms.\nexample :\n    (Validation.repeatedSpectrumCoordinateCoefficient Validation.repeatedSpectrumP₁).im = 0 :=\n  Validation.repeated_spectrum_nonreal_coordinates.2.2.1\n\n-- Full input/output visibility gives nonzero mass, not nonnegative mass.\nexample (A : E →ₗ[ℂ] E) (B : F →ₗ[ℂ] F) (hA : A.IsSymmetric) (hB : B.IsSymmetric)\n    (D : E ≃ₗ[ℂ] F) (g : F) (f : E →ₗ[ℂ] ℂ)\n    (hrank : RankOneIntertwining A B D g f) (β : GroupedSpectrum B)\n    (hin : ¬ GroupedInputInvisible hB g β) (hout : ¬ GroupedOutputInvisible hB D f β) :\n    0 ≤ groupedSignedResidue hB D g f β := by\n  have hnonzero : groupedSignedResidue hB D g f β ≠ 0 := by\n    intro hz\n    rcases (grouped_residue_zero_iff_input_or_output_invisible hA hB D g f hrank β).mp hz with h | h\n    · exact hin h\n    · exact hout h\n  exact hnonzero\n\n-- The signed Pick index is bounded by the negative atom count, not by one.\nexample {ι κ : Type*} [Fintype ι] [Fintype κ]\n    (eigenvalue residue : ι → ℝ) (points : κ → ℂ) (N : Submodule ℂ (κ → ℂ))\n    (hN : ∀ a : N, a ≠ 0 →\n      (∑ j, ∑ k, (a : κ → ℂ) j * signedPickKernel eigenvalue residue\n        (points j) (points k) * star ((a : κ → ℂ) k)).re < 0) :\n    Module.finrank ℂ N ≤ 1 :=\n  finite_signed_pick_negative_subspace_bound eigenvalue residue points N hN\n\n\nend Zeta23.OPICARound4.RejectedSemanticMutations\n'
-SEMANTIC_MUTATION_COUNT = 9
+# SOURCE_CONSTRAINT_MUTATIONS_BEGIN
+INTEGRATION_SEMANTIC_MUTATIONS = 'import Zeta23.OPICARound4.Validation.Support\nimport Zeta23.OPICARound4.OddReciprocalSource\nimport Zeta23.OPICARound4.Validation.IntegrationSpectral\nimport Zeta23.OPICARound4.VisibilityRigidity\n\nnoncomputable section\nnamespace Zeta23.OPICARound4.RejectedSemanticMutations\nopen CCM OPICARound3\nopen scoped BigOperators\n\nvariable {E F : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E]\n  [FiniteDimensional ℂ E] [NormedAddCommGroup F] [InnerProductSpace ℂ F]\n  [FiniteDimensional ℂ F]\n\n-- Removing the witness-response norm cost must be rejected.\nexample (J : E →ₗᵢ[ℂ] F) (T : F →ₗ[ℂ] F)\n    (e : isometricDetectorComplement J)\n    (hb : J.toLinearMap.adjoint (T e.val) ∈ (predecessorBlock J T).range) :\n    ‖regularSchurWitness J T e hb‖ ^ 2 = ‖(e : F)‖ ^ 2 :=\n  regular_witness_norm_sq J T e hb\n\n-- PSD predecessor plus a one-dimensional shell does not assert successor negativity.\nexample (J : E →ₗᵢ[ℂ] F) (T : F →ₗ[ℂ] F)\n    (hP : ∀ x : E, 0 ≤ (inner ℂ (predecessorBlock J T x) x).re)\n    (hshell : Module.finrank ℂ (isometricDetectorComplement J) = 1) (w : F) :\n    (∀ N : Submodule ℂ F,\n      (∀ u : N, u ≠ 0 → (inner ℂ (T u) (u : F)).re < 0) → Module.finrank ℂ N ≤ 1) ∧\n    ∃ N : Submodule ℂ F, Module.finrank ℂ N = 1 ∧\n      ∀ u : N, u ≠ 0 → (inner ℂ (T u) (u : F)).re < 0 :=\n  one_shell_negative_index_exact J T hP hshell w\n\n-- Omitting the removed canonical output changes the source functional.\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)\n    (u : poleNeutralEvenSubspace L K) :\n    cubicDefectFunctional L K u.val =\n      inner ℂ (correctedSourceRow L K) ((canonicalSourceMatrix L K).toEuclideanLin u.val.val) :=\n  correctedSourceRow_native hL K hK u\n\n-- A source equality at K cannot be silently transported to a different M.\nexample {L : ℝ} (hL : 0 < L) (K M : ℕ) (hK : 3 ≤ K) (hM : 3 ≤ M)\n    (lam : ℝ) (hlamK : lam < poleNeutralOddRayleighBottom L K hL hK)\n    (hlamM : lam < poleNeutralOddRayleighBottom L M hL hM)\n    (u : poleNeutralEvenSubspace L K) (hu0 : u ≠ 0)\n    (hu : poleNeutralEvenCompressedCanonical L K u = (lam : ℂ) • u) :\n    poleNeutralCorrectedCubicSource L M (poleNeutralEvenShiftedRay hL M hM lam hlamM) = 1 :=\n  poleNeutral_even_eigen_shiftedRay_source_eq_one hL K hK lam hlamK u hu0 hu\n\n-- The response-facing odd test uses the reciprocal input, not the Riesz input.\n-- Scalar aliases retain exact native values while avoiding huge inverse reduction.\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (lam : ℝ)\n    (hlam : lam < poleNeutralEvenRayleighBottom L K hL hK)\n    (sourceRiesz sourceReciprocal : ℂ)\n    (_hRiesz : sourceRiesz = poleNeutralCorrectedCubicSource L K\n      ((poleNeutralEvenShiftedCanonicalEquiv hL K hK lam hlam).symm\n        (poleNeutralCorrectedCubicRieszVector L K)))\n    (hReciprocal : sourceReciprocal = poleNeutralCorrectedCubicSource L K\n      (nativeOddReciprocalInput hL K hK lam hlam)) :\n    poleNeutralCubicPairingFunctional L K (poleNeutralOddAdjointShiftedRay hL K hK lam hlam) =\n      -star sourceRiesz := by\n  have htrue : poleNeutralCubicPairingFunctional L K\n      (poleNeutralOddAdjointShiftedRay hL K hK lam hlam) = -star sourceReciprocal := by\n    rw [hReciprocal]\n    exact native_odd_response_eq_reciprocal_source hL K hK lam hlam\n  exact htrue\n\n-- Omitting the material odd-response minus sign changes the statement.\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (lam : ℝ)\n    (hlam : lam < poleNeutralEvenRayleighBottom L K hL hK)\n    (sourceReciprocal : ℂ)\n    (hReciprocal : sourceReciprocal = poleNeutralCorrectedCubicSource L K\n      (nativeOddReciprocalInput hL K hK lam hlam)) :\n    poleNeutralCubicPairingFunctional L K (poleNeutralOddAdjointShiftedRay hL K hK lam hlam) =\n      star sourceReciprocal := by\n  have htrue : poleNeutralCubicPairingFunctional L K\n      (poleNeutralOddAdjointShiftedRay hL K hK lam hlam) = -star sourceReciprocal := by\n    rw [hReciprocal]\n    exact native_odd_response_eq_reciprocal_source hL K hK lam hlam\n  exact htrue\n\n-- Reality of the grouped residue does not give reality of basis-coordinate terms.\nexample :\n    (Validation.repeatedSpectrumCoordinateCoefficient Validation.repeatedSpectrumP₁).im = 0 :=\n  Validation.repeated_spectrum_nonreal_coordinates.2.2.1\n\n-- Full input/output visibility gives nonzero mass, not nonnegative mass.\nexample (A : E →ₗ[ℂ] E) (B : F →ₗ[ℂ] F) (hA : A.IsSymmetric) (hB : B.IsSymmetric)\n    (D : E ≃ₗ[ℂ] F) (g : F) (f : E →ₗ[ℂ] ℂ)\n    (hrank : RankOneIntertwining A B D g f) (β : GroupedSpectrum B)\n    (hin : ¬ GroupedInputInvisible hB g β) (hout : ¬ GroupedOutputInvisible hB D f β) :\n    0 ≤ groupedSignedResidue hB D g f β := by\n  have hnonzero : groupedSignedResidue hB D g f β ≠ 0 := by\n    intro hz\n    rcases (grouped_residue_zero_iff_input_or_output_invisible hA hB D g f hrank β).mp hz with h | h\n    · exact hin h\n    · exact hout h\n  exact hnonzero\n\n-- The signed Pick index is bounded by the negative atom count, not by one.\nexample {ι κ : Type*} [Fintype ι] [Fintype κ]\n    (eigenvalue residue : ι → ℝ) (points : κ → ℂ) (N : Submodule ℂ (κ → ℂ))\n    (hN : ∀ a : N, a ≠ 0 →\n      (∑ j, ∑ k, (a : κ → ℂ) j * signedPickKernel eigenvalue residue\n        (points j) (points k) * star ((a : κ → ℂ) k)).re < 0) :\n    Module.finrank ℂ N ≤ 1 :=\n  finite_signed_pick_negative_subspace_bound eigenvalue residue points N hN\n\n\nend Zeta23.OPICARound4.RejectedSemanticMutations\n'
+INTEGRATION_SEMANTIC_MUTATION_COUNT = 9
+SOURCE_CONSTRAINT_MUTATIONS = '-- Source constraint mutation: geometry_wrong_even_sign.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4.GeometryMutation\nopen CCM OPICARound3\n\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K)\n    (hs : poleNeutralEvenRayleighBottom L K hL hK < poleNeutralOddRayleighBottom L K hL hK) :\n    let r := poleNeutralEvenShiftedRay hL K hK (poleNeutralEvenRayleighBottom L K hL hK) hs\n    nativeSignedPrimeDiscrepancy L K r = nativeArchContinuumRow L K r + 1 :=\n  (actual_even_ground_signed_discrepancy hL K hK hs).2.1\n\nend Zeta23.OPICARound4.GeometryMutation\n\n\n-- Source constraint mutation: geometry_wrong_odd_input.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4.GeometryMutation\nopen CCM OPICARound3\n\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K)\n    (hs : poleNeutralOddRayleighBottom L K hL hK < poleNeutralEvenRayleighBottom L K hL hK) :\n    poleNeutralCorrectedCubicSource L K\n      ((poleNeutralEvenShiftedCanonicalEquiv hL K hK\n        (poleNeutralOddRayleighBottom L K hL hK) hs).symm (poleNeutralCorrectedCubicRieszVector L K)) = -1 :=\n  (actual_odd_ground_reciprocal_discrepancy hL K hK hs).1\n\nend Zeta23.OPICARound4.GeometryMutation\n\n\n-- Source constraint mutation: geometry_omitted_tie.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4.GeometryMutation\nopen CCM OPICARound3\n\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (hboth : BothNeutralNegative L K) :\n    NativeStrictEvenGroundConstraints hL K hK ∨ NativeStrictOddGroundConstraints hL K hK :=\n  joint_ground_constraints_of_both_negative hL K hK hboth\n\nend Zeta23.OPICARound4.GeometryMutation\n\n\n-- Source constraint mutation: arithmetic/semantic-controls/WrongSmoothShift.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4\nopen CCM ExceptionalZero\nexample {β a : ℝ} {σ : ReversalParity} (out : Step123NativeOutput β σ a)\n    (v : nativePoleNeutralParitySpace σ (fixedOriginalSincTrialAperture a)\n      (out.retained.state.selection.cutoff - 1)) :\n    inner ℂ v (smoothSourceForcing out) =\n      zetaZeroConfig.W out.originalTrial (out.forcingTest v) -\n        (out.retained.state.selection.eta : ℂ) * EF.weilTest out.originalTrial (out.forcingTest v) 0 :=\n  validation_smooth_source_forcing out v\nend Zeta23.OPICARound4\n\n\n-- Source constraint mutation: arithmetic/semantic-controls/DroppedSchurMassError.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4\nopen CCM ExceptionalZero\nexample {β a : ℝ} {σ : ReversalParity} (out : Step123NativeOutput β σ a) :\n    |detectorSchurLoss out - smoothSourceMain out| ≤\n      sourceInverseBudget out * sourceForcingErrorBudget out *\n        (2 * finiteForcingBudget out + sourceForcingErrorBudget out) +\n      sourceEnergyErrorBudget (fixedOriginalSincTrialAperture a) :=\n  detectorSchurLoss_sub_smoothSourceMain_bound out\nend Zeta23.OPICARound4\n\n\n-- Source constraint mutation: arithmetic/semantic-controls/DroppedFirstCutoffEnergy.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4\nopen CCM ExceptionalZero\nexample {β a : ℝ} {σ : ReversalParity} (out : Step123NativeOutput β σ a)\n    (hK : out.retained.state.selection.cutoff = 3) :\n    detectorSchurLoss out = -out.retained.state.selection.eta :=\n  detectorSchurLoss_at_first out hK\nend Zeta23.OPICARound4\n\n\n-- Source constraint mutation: quartic/mutations/SourceErrorWrongQuantifier.lean\nnoncomputable section\nopen Zeta23 Zeta23.CCM Zeta23.ExceptionalZero Zeta23.OPICARound4\n\n-- Incorrect strengthening: one threshold is required to pay every M\n-- simultaneously. The proved threshold is selected after each fixed M.\nexample (δ : ℝ) (hδ : 0 < δ) :\n    ∃ L₀ : ℝ, ∀ (M β : ℝ) (σ : ReversalParity) (a : ℝ)\n      (out : Step123NativeOutput β σ a), 0 < β → L₀ ≤ fixedOriginalSincTrialAperture a →\n      |detectorSchurLoss out - smoothSourceMain out| <\n        δ * Real.exp (-M * fixedOriginalSincTrialAperture a) := by\n  exact exists_uniform_source_schur_error_threshold 0 δ hδ\n\n\n-- Source constraint mutation: quartic/mutations/SourceMainWrongSign.lean\nnoncomputable section\nopen Zeta23 Zeta23.CCM Zeta23.ExceptionalZero Zeta23.OPICARound4\n\n-- The surviving source requirement is a lower bound. Treating it as an\n-- independently proved upper bound would manufacture the missing Step4 law.\nexample :\n    ∃ L₀ : ℝ, ∀ (ρ : zetaZeroConfig.carrier) (β : ℝ)\n      (σ : ReversalParity) (R : ℝ)\n      (g : GeneratedStep123CompleteOutput ρ β σ R), L₀ ≤ R →\n        smoothSourceMain g.generated.native <\n          Real.exp (β * fixedOriginalSincTrialAperture g.generated.sourceData.separation) / 4 := by\n  exact exists_generated_smooth_source_main_lower_threshold\n'
+SOURCE_CONSTRAINT_MUTATION_IMPORTS = 'import Zeta23.OPICARound4.JointGroundConstraints\nimport Zeta23.OPICARound4.QuarticErrorReduction\nimport Zeta23.OPICARound4.Validation.DetectorErrors\n'
+SEMANTIC_MUTATIONS = SOURCE_CONSTRAINT_MUTATION_IMPORTS + INTEGRATION_SEMANTIC_MUTATIONS + SOURCE_CONSTRAINT_MUTATIONS
+SEMANTIC_MUTATION_COUNT = 17
+# SOURCE_CONSTRAINT_MUTATIONS_END
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 def sha(path: Path) -> str:
@@ -499,6 +626,45 @@ def relative(module: str, suffix: str = ".lean") -> Path:
 
 def imports(path: Path) -> list[str]:
     return re.findall(r"(?m)^import\s+(Zeta23(?:\.[A-Za-z0-9_]+)+)", path.read_text(encoding="utf-8"))
+
+def public_declarations(text: str) -> list[str]:
+    """Closed module census, including the full field telescope of structures.
+
+    The audited modules each use one public namespace and default constructor
+    names. A structure's type alone is only Prop; auditing its constructor is
+    necessary to expose every source-dependent hypothesis and field.
+    """
+    namespace = re.search(r"(?m)^namespace (\S+)", text)
+    if namespace is None:
+        return []
+    declarations = re.findall(
+        r"(?m)^(?:@\[[^\n]*\]\s*)?(theorem|def|abbrev|structure)\s+(\w+)", text)
+    result = []
+    for kind, short in declarations:
+        name = namespace.group(1) + "." + short
+        result.append(name)
+        if kind == "structure":
+            result.append(name + ".mk")
+    return result
+
+def retained_support_scope() -> dict:
+    """The integration checkpoint remains an exact subset of the larger gate."""
+    require(len(INTEGRATION_EXPECTED_DECLARATIONS) == INTEGRATION_DECLARATION_COUNT == 397 and
+            len(set(INTEGRATION_EXPECTED_DECLARATIONS)) == 397 and
+            len(INTEGRATION_MODULES) == INTEGRATION_MODULE_COUNT == 40 and
+            len(set(INTEGRATION_MODULES)) == 40 and
+            set(INTEGRATION_EXPECTED_DECLARATIONS) <= set(EXPECTED_DECLARATIONS) and
+            set(INTEGRATION_MODULES) <= set(MODULES), "Retained 397/40 integration scope changed")
+    require(INTEGRATION_SEMANTIC_MUTATION_COUNT == 9 and
+            len(re.findall(r"(?m)^example\b", INTEGRATION_SEMANTIC_MUTATIONS)) == 9 and
+            SEMANTIC_MUTATIONS == SOURCE_CONSTRAINT_MUTATION_IMPORTS +
+                INTEGRATION_SEMANTIC_MUTATIONS + SOURCE_CONSTRAINT_MUTATIONS and
+            len(re.findall(r"(?m)^example\b", SEMANTIC_MUTATIONS)) == SEMANTIC_MUTATION_COUNT,
+            "Retained or complete semantic mutation scope changed")
+    return {"declarations": INTEGRATION_EXPECTED_DECLARATIONS,
+            "modules": INTEGRATION_MODULES, "declaration_count": 397, "module_count": 40,
+            "semantic_mutation_count": 9,
+            "semantic_mutations_sha256": hashlib.sha256(INTEGRATION_SEMANTIC_MUTATIONS.encode("utf-8")).hexdigest()}
 
 def root_names(path: Path) -> tuple[list[str], list[dict]]:
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -660,15 +826,13 @@ def run_gate(args: argparse.Namespace, *, worker=None) -> dict:
             text = p.read_text(encoding="utf-8")
             require(not re.search(r"(?m)^\s*(?:private\s+)?(?:axiom|constant)\s|\b(?:sorry|admit|sorryAx)\b", text),
                     "Project axiom or placeholder token in " + m)
-            match = re.search(r"(?m)^namespace (\S+)", text)
-            if match:
-                discovered += [match.group(1) + "." + n for n in re.findall(
-                    r"(?m)^(?:@\[[^\n]*\]\s*)?(?:theorem|def|abbrev)\s+(\w+)", text)]
+            discovered += public_declarations(text)
         require(set(discovered) == set(EXPECTED_DECLARATIONS) and len(discovered) == EXPECTED_DECLARATION_COUNT,
                 "Public mathematical declaration inventory changed")
         require(len(BASELINE_EXPECTED_DECLARATIONS) == BASELINE_DECLARATION_COUNT and
                 len(BASELINE_MODULES) == BASELINE_MODULE_COUNT and
                 set(BASELINE_EXPECTED_DECLARATIONS) <= set(discovered), "Historical 98/16 support subset changed")
+        retained_support_scope()
         pending, dependencies = list(MODULES), {}
         while pending:
             m = pending.pop()
@@ -799,6 +963,8 @@ def run_gate(args: argparse.Namespace, *, worker=None) -> dict:
         state.update(status="PASS", module_count=len(order), declaration_count=len(types),
                      baseline_module_count=BASELINE_MODULE_COUNT, baseline_declaration_count=BASELINE_DECLARATION_COUNT,
                      semantic_mutation_count=SEMANTIC_MUTATION_COUNT, roots_count=len(names), open_root_rows=open_rows,
+                     integration_declaration_count=INTEGRATION_DECLARATION_COUNT,
+                     integration_module_count=INTEGRATION_MODULE_COUNT,
                      roots_sha256=sha(roots), roots_path=str(roots), source_hashes=source_hashes,
                      parent_objects=parent_objects, lean=str(lean), lean_sha256=sha(lean), lean_version=version,
                      toolchain_sha256=sha(repo / "lean-toolchain"), manifest_sha256=sha(repo / "lake-manifest.json"),

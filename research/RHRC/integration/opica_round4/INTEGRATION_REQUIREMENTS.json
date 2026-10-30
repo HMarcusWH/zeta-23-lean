@@ -86,6 +86,46 @@
         "source_research.py"
       ],
       "scope": "Closed inventories, semantic mutations, independent replay, sealed source and canonical outputs"
+    },
+    {
+      "id": "SC1",
+      "implementation": [
+        "GroundArithmetic"
+      ],
+      "scope": "Complex discrepancy, opposite odd sign and distinct reciprocal input, full prime pairing and necessary budget/moment inequalities.",
+      "open_boundary": "No arithmetic sign or response exclusion follows from an identity alone."
+    },
+    {
+      "id": "SC2",
+      "implementation": [
+        "JointGroundConstraints"
+      ],
+      "scope": "Strict-even, strict-odd and arbitrary-multiplicity tied cases at the same L,K, absolute eigenmode energy, kernels/ranges/complement responses and cofinal producer.",
+      "open_boundary": "No tie exclusion or automatic identification with the quartic deep-detector packet."
+    },
+    {
+      "id": "SC3",
+      "implementation": [
+        "SmoothForcing"
+      ],
+      "scope": "The full original source pairing plus actual eta shift, physical error norm and actual finite forcing norm budgets.",
+      "open_boundary": "No independent upper bound on the inverse-weighted smooth quadratic."
+    },
+    {
+      "id": "SC4",
+      "implementation": [
+        "SchurErrorTransport"
+      ],
+      "scope": "Same P.inverse, full forcing error, direct quadratic error, shifted mass error and non-dropped cutoff-three energy.",
+      "open_boundary": "No replacement of the entire complement by one shell and no unproved sign estimate."
+    },
+    {
+      "id": "SC5",
+      "implementation": [
+        "QuarticErrorReduction"
+      ],
+      "scope": "Actual quartic cutoff gives full error smaller than any fixed exponential; late generated smooth loss retains an exponential lower margin with the threshold chosen first.",
+      "open_boundary": "The independent arithmetic bound incompatible with that surviving margin remains OPEN."
     }
   ]
 }

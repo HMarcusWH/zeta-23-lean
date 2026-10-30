@@ -1,3 +1,6 @@
+import Zeta23.OPICARound4.Validation.GroundConstraints
+import Zeta23.OPICARound4.Validation.DetectorErrors
+import Zeta23.OPICARound4.Validation.ErrorReduction
 import Zeta23.OPICARound4
 import Zeta23.OPICARound4.Validation.IntegrationClosure
 import Zeta23.OPICARound4.Validation.IntegrationDictionary
@@ -1697,3 +1700,518 @@ end Zeta23.OPICARound4.Validation
 #check @Zeta23.OPICARound4.zero_residue_does_not_remove_eigenspace
 #eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.zero_residue_does_not_remove_eigenspace"
 #print axioms Zeta23.OPICARound4.zero_residue_does_not_remove_eigenspace
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.nativeSignedPrimeDiscrepancy"
+#check @Zeta23.OPICARound4.nativeSignedPrimeDiscrepancy
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.nativeSignedPrimeDiscrepancy"
+#print axioms Zeta23.OPICARound4.nativeSignedPrimeDiscrepancy
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.nativeGroundArchPairing"
+#check @Zeta23.OPICARound4.nativeGroundArchPairing
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.nativeGroundArchPairing"
+#print axioms Zeta23.OPICARound4.nativeGroundArchPairing
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.nativeGroundPrimePairing"
+#check @Zeta23.OPICARound4.nativeGroundPrimePairing
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.nativeGroundPrimePairing"
+#print axioms Zeta23.OPICARound4.nativeGroundPrimePairing
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.native_signed_source_decomposition"
+#check @Zeta23.OPICARound4.native_signed_source_decomposition
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.native_signed_source_decomposition"
+#print axioms Zeta23.OPICARound4.native_signed_source_decomposition
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.native_signed_discrepancy_integral"
+#check @Zeta23.OPICARound4.native_signed_discrepancy_integral
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.native_signed_discrepancy_integral"
+#print axioms Zeta23.OPICARound4.native_signed_discrepancy_integral
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_even_ground_ray_facts"
+#check @Zeta23.OPICARound4.actual_even_ground_ray_facts
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_even_ground_ray_facts"
+#print axioms Zeta23.OPICARound4.actual_even_ground_ray_facts
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_ground_ray_facts"
+#check @Zeta23.OPICARound4.actual_odd_ground_ray_facts
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_ground_ray_facts"
+#print axioms Zeta23.OPICARound4.actual_odd_ground_ray_facts
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_even_ground_signed_discrepancy"
+#check @Zeta23.OPICARound4.actual_even_ground_signed_discrepancy
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_even_ground_signed_discrepancy"
+#print axioms Zeta23.OPICARound4.actual_even_ground_signed_discrepancy
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy"
+#check @Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy"
+#print axioms Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility"
+#check @Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility"
+#print axioms Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility"
+#check @Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility"
+#print axioms Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility"
+#check @Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility"
+#print axioms Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.native_even_eigen_absolute_energy"
+#check @Zeta23.OPICARound4.native_even_eigen_absolute_energy
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.native_even_eigen_absolute_energy"
+#print axioms Zeta23.OPICARound4.native_even_eigen_absolute_energy
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.native_odd_eigen_absolute_energy"
+#check @Zeta23.OPICARound4.native_odd_eigen_absolute_energy
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.native_odd_eigen_absolute_energy"
+#print axioms Zeta23.OPICARound4.native_odd_eigen_absolute_energy
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.NativeStrictEvenGroundConstraints"
+#check @Zeta23.OPICARound4.NativeStrictEvenGroundConstraints
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.NativeStrictEvenGroundConstraints"
+#print axioms Zeta23.OPICARound4.NativeStrictEvenGroundConstraints
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.NativeStrictEvenGroundConstraints.mk"
+#check @Zeta23.OPICARound4.NativeStrictEvenGroundConstraints.mk
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.NativeStrictEvenGroundConstraints.mk"
+#print axioms Zeta23.OPICARound4.NativeStrictEvenGroundConstraints.mk
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.NativeStrictOddGroundConstraints"
+#check @Zeta23.OPICARound4.NativeStrictOddGroundConstraints
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.NativeStrictOddGroundConstraints"
+#print axioms Zeta23.OPICARound4.NativeStrictOddGroundConstraints
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.NativeStrictOddGroundConstraints.mk"
+#check @Zeta23.OPICARound4.NativeStrictOddGroundConstraints.mk
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.NativeStrictOddGroundConstraints.mk"
+#print axioms Zeta23.OPICARound4.NativeStrictOddGroundConstraints.mk
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.NativeTiedGroundConstraints"
+#check @Zeta23.OPICARound4.NativeTiedGroundConstraints
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.NativeTiedGroundConstraints"
+#print axioms Zeta23.OPICARound4.NativeTiedGroundConstraints
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.NativeTiedGroundConstraints.mk"
+#check @Zeta23.OPICARound4.NativeTiedGroundConstraints.mk
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.NativeTiedGroundConstraints.mk"
+#print axioms Zeta23.OPICARound4.NativeTiedGroundConstraints.mk
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.NativeJointGroundConstraints"
+#check @Zeta23.OPICARound4.NativeJointGroundConstraints
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.NativeJointGroundConstraints"
+#print axioms Zeta23.OPICARound4.NativeJointGroundConstraints
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.native_tied_ground_constraints"
+#check @Zeta23.OPICARound4.native_tied_ground_constraints
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.native_tied_ground_constraints"
+#print axioms Zeta23.OPICARound4.native_tied_ground_constraints
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.joint_ground_constraints_of_both_negative"
+#check @Zeta23.OPICARound4.joint_ground_constraints_of_both_negative
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.joint_ground_constraints_of_both_negative"
+#print axioms Zeta23.OPICARound4.joint_ground_constraints_of_both_negative
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.cofinally_joint_ground_constraints_of_off_line_zero"
+#check @Zeta23.OPICARound4.cofinally_joint_ground_constraints_of_off_line_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.cofinally_joint_ground_constraints_of_off_line_zero"
+#print axioms Zeta23.OPICARound4.cofinally_joint_ground_constraints_of_off_line_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceImageErrorBudget"
+#check @Zeta23.OPICARound4.sourceImageErrorBudget
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceImageErrorBudget"
+#print axioms Zeta23.OPICARound4.sourceImageErrorBudget
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceFiniteModeCost"
+#check @Zeta23.OPICARound4.sourceFiniteModeCost
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceFiniteModeCost"
+#print axioms Zeta23.OPICARound4.sourceFiniteModeCost
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceForcingErrorBudget"
+#check @Zeta23.OPICARound4.sourceForcingErrorBudget
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceForcingErrorBudget"
+#print axioms Zeta23.OPICARound4.sourceForcingErrorBudget
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceWeilBoundConstant"
+#check @Zeta23.OPICARound4.sourceWeilBoundConstant
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceWeilBoundConstant"
+#print axioms Zeta23.OPICARound4.sourceWeilBoundConstant
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceWeilBoundConstant_pos"
+#check @Zeta23.OPICARound4.sourceWeilBoundConstant_pos
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceWeilBoundConstant_pos"
+#print axioms Zeta23.OPICARound4.sourceWeilBoundConstant_pos
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.finiteForcingBudget"
+#check @Zeta23.OPICARound4.finiteForcingBudget
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.finiteForcingBudget"
+#print axioms Zeta23.OPICARound4.finiteForcingBudget
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceImageErrorBudget_nonneg"
+#check @Zeta23.OPICARound4.sourceImageErrorBudget_nonneg
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceImageErrorBudget_nonneg"
+#print axioms Zeta23.OPICARound4.sourceImageErrorBudget_nonneg
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.source_eta_nonneg"
+#check @Zeta23.OPICARound4.source_eta_nonneg
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.source_eta_nonneg"
+#print axioms Zeta23.OPICARound4.source_eta_nonneg
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceForcingErrorBudget_nonneg"
+#check @Zeta23.OPICARound4.sourceForcingErrorBudget_nonneg
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceForcingErrorBudget_nonneg"
+#print axioms Zeta23.OPICARound4.sourceForcingErrorBudget_nonneg
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.finiteForcingBudget_nonneg"
+#check @Zeta23.OPICARound4.finiteForcingBudget_nonneg
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.finiteForcingBudget_nonneg"
+#print axioms Zeta23.OPICARound4.finiteForcingBudget_nonneg
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceL2"
+#check @Zeta23.OPICARound4.smoothSourceL2
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceL2"
+#print axioms Zeta23.OPICARound4.smoothSourceL2
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceL2_ae"
+#check @Zeta23.OPICARound4.smoothSourceL2_ae
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceL2_ae"
+#print axioms Zeta23.OPICARound4.smoothSourceL2_ae
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceResponseL2"
+#check @Zeta23.OPICARound4.smoothSourceResponseL2
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceResponseL2"
+#print axioms Zeta23.OPICARound4.smoothSourceResponseL2
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceResponseL2_ae"
+#check @Zeta23.OPICARound4.smoothSourceResponseL2_ae
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceResponseL2_ae"
+#print axioms Zeta23.OPICARound4.smoothSourceResponseL2_ae
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceForcing"
+#check @Zeta23.OPICARound4.smoothSourceForcing
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceForcing"
+#print axioms Zeta23.OPICARound4.smoothSourceForcing
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceForcing_pairing"
+#check @Zeta23.OPICARound4.smoothSourceForcing_pairing
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceForcing_pairing"
+#print axioms Zeta23.OPICARound4.smoothSourceForcing_pairing
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceForcing_error_pairing"
+#check @Zeta23.OPICARound4.smoothSourceForcing_error_pairing
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceForcing_error_pairing"
+#print axioms Zeta23.OPICARound4.smoothSourceForcing_error_pairing
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceForcing_channels"
+#check @Zeta23.OPICARound4.smoothSourceForcing_channels
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceForcing_channels"
+#print axioms Zeta23.OPICARound4.smoothSourceForcing_channels
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.norm_le_of_all_inner_bound"
+#check @Zeta23.OPICARound4.norm_le_of_all_inner_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.norm_le_of_all_inner_bound"
+#print axioms Zeta23.OPICARound4.norm_le_of_all_inner_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceForcing_error_bound"
+#check @Zeta23.OPICARound4.smoothSourceForcing_error_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceForcing_error_bound"
+#print axioms Zeta23.OPICARound4.smoothSourceForcing_error_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.finiteForcing_norm_bound"
+#check @Zeta23.OPICARound4.finiteForcing_norm_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.finiteForcing_norm_bound"
+#print axioms Zeta23.OPICARound4.finiteForcing_norm_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceForcing_norm_bound"
+#check @Zeta23.OPICARound4.smoothSourceForcing_norm_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceForcing_norm_bound"
+#print axioms Zeta23.OPICARound4.smoothSourceForcing_norm_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourcePhysicalL2_norm_eq"
+#check @Zeta23.OPICARound4.sourcePhysicalL2_norm_eq
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourcePhysicalL2_norm_eq"
+#print axioms Zeta23.OPICARound4.sourcePhysicalL2_norm_eq
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceL2_error_bound"
+#check @Zeta23.OPICARound4.smoothSourceL2_error_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceL2_error_bound"
+#print axioms Zeta23.OPICARound4.smoothSourceL2_error_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceL2_norm_bound"
+#check @Zeta23.OPICARound4.smoothSourceL2_norm_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceL2_norm_bound"
+#print axioms Zeta23.OPICARound4.smoothSourceL2_norm_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.detectorInverse"
+#check @Zeta23.OPICARound4.detectorInverse
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.detectorInverse"
+#print axioms Zeta23.OPICARound4.detectorInverse
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceInverseBudget"
+#check @Zeta23.OPICARound4.sourceInverseBudget
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceInverseBudget"
+#print axioms Zeta23.OPICARound4.sourceInverseBudget
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.detectorSchurLoss"
+#check @Zeta23.OPICARound4.detectorSchurLoss
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.detectorSchurLoss"
+#print axioms Zeta23.OPICARound4.detectorSchurLoss
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.finiteSourceEnergy"
+#check @Zeta23.OPICARound4.finiteSourceEnergy
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.finiteSourceEnergy"
+#print axioms Zeta23.OPICARound4.finiteSourceEnergy
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceMain"
+#check @Zeta23.OPICARound4.smoothSourceMain
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceMain"
+#print axioms Zeta23.OPICARound4.smoothSourceMain
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceEnergyErrorBudget"
+#check @Zeta23.OPICARound4.sourceEnergyErrorBudget
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceEnergyErrorBudget"
+#print axioms Zeta23.OPICARound4.sourceEnergyErrorBudget
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceSchurErrorBudget"
+#check @Zeta23.OPICARound4.sourceSchurErrorBudget
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceSchurErrorBudget"
+#print axioms Zeta23.OPICARound4.sourceSchurErrorBudget
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.detectorInverse_norm_bound"
+#check @Zeta23.OPICARound4.detectorInverse_norm_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.detectorInverse_norm_bound"
+#print axioms Zeta23.OPICARound4.detectorInverse_norm_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceInverseBudget_nonneg"
+#check @Zeta23.OPICARound4.sourceInverseBudget_nonneg
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceInverseBudget_nonneg"
+#print axioms Zeta23.OPICARound4.sourceInverseBudget_nonneg
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.detectorSchurLoss_lower"
+#check @Zeta23.OPICARound4.detectorSchurLoss_lower
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.detectorSchurLoss_lower"
+#print axioms Zeta23.OPICARound4.detectorSchurLoss_lower
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.detectorSchurLoss_eq_forcing_energy"
+#check @Zeta23.OPICARound4.detectorSchurLoss_eq_forcing_energy
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.detectorSchurLoss_eq_forcing_energy"
+#print axioms Zeta23.OPICARound4.detectorSchurLoss_eq_forcing_energy
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceQuadratic_perturbation_bound"
+#check @Zeta23.OPICARound4.sourceQuadratic_perturbation_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceQuadratic_perturbation_bound"
+#print axioms Zeta23.OPICARound4.sourceQuadratic_perturbation_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.smoothSourceL2_mass_error_bound"
+#check @Zeta23.OPICARound4.smoothSourceL2_mass_error_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.smoothSourceL2_mass_error_bound"
+#print axioms Zeta23.OPICARound4.smoothSourceL2_mass_error_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.detectorSchurLoss_sub_smoothSourceMain_bound"
+#check @Zeta23.OPICARound4.detectorSchurLoss_sub_smoothSourceMain_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.detectorSchurLoss_sub_smoothSourceMain_bound"
+#print axioms Zeta23.OPICARound4.detectorSchurLoss_sub_smoothSourceMain_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.detectorForcing_zero_at_first"
+#check @Zeta23.OPICARound4.detectorForcing_zero_at_first
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.detectorForcing_zero_at_first"
+#print axioms Zeta23.OPICARound4.detectorForcing_zero_at_first
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.detectorSchurLoss_at_first"
+#check @Zeta23.OPICARound4.detectorSchurLoss_at_first
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.detectorSchurLoss_at_first"
+#print axioms Zeta23.OPICARound4.detectorSchurLoss_at_first
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.quartic_polynomial_exp_tendsto_zero"
+#check @Zeta23.OPICARound4.quartic_polynomial_exp_tendsto_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.quartic_polynomial_exp_tendsto_zero"
+#print axioms Zeta23.OPICARound4.quartic_polynomial_exp_tendsto_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.quarticImageError"
+#check @Zeta23.OPICARound4.quarticImageError
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.quarticImageError"
+#print axioms Zeta23.OPICARound4.quarticImageError
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.quarticImageError_nonneg"
+#check @Zeta23.OPICARound4.quarticImageError_nonneg
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.quarticImageError_nonneg"
+#print axioms Zeta23.OPICARound4.quarticImageError_nonneg
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.quarticImageError_mul_exp_tendsto_zero"
+#check @Zeta23.OPICARound4.quarticImageError_mul_exp_tendsto_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.quarticImageError_mul_exp_tendsto_zero"
+#print axioms Zeta23.OPICARound4.quarticImageError_mul_exp_tendsto_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.pow_mul_exp_mul_quarticImageError_tendsto_zero"
+#check @Zeta23.OPICARound4.pow_mul_exp_mul_quarticImageError_tendsto_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.pow_mul_exp_mul_quarticImageError_tendsto_zero"
+#print axioms Zeta23.OPICARound4.pow_mul_exp_mul_quarticImageError_tendsto_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.quarticCutoff_le_two_pow_four"
+#check @Zeta23.OPICARound4.quarticCutoff_le_two_pow_four
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.quarticCutoff_le_two_pow_four"
+#print axioms Zeta23.OPICARound4.quarticCutoff_le_two_pow_four
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.quartic_mode_cost_le"
+#check @Zeta23.OPICARound4.quartic_mode_cost_le
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.quartic_mode_cost_le"
+#print axioms Zeta23.OPICARound4.quartic_mode_cost_le
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.quarticErrorEnvelope"
+#check @Zeta23.OPICARound4.quarticErrorEnvelope
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.quarticErrorEnvelope"
+#print axioms Zeta23.OPICARound4.quarticErrorEnvelope
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.quarticErrorEnvelope_nonneg"
+#check @Zeta23.OPICARound4.quarticErrorEnvelope_nonneg
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.quarticErrorEnvelope_nonneg"
+#print axioms Zeta23.OPICARound4.quarticErrorEnvelope_nonneg
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.quarticErrorEnvelope_mul_exp_tendsto_zero"
+#check @Zeta23.OPICARound4.quarticErrorEnvelope_mul_exp_tendsto_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.quarticErrorEnvelope_mul_exp_tendsto_zero"
+#print axioms Zeta23.OPICARound4.quarticErrorEnvelope_mul_exp_tendsto_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.quarticErrorEnvelope_eventually_lt_exp"
+#check @Zeta23.OPICARound4.quarticErrorEnvelope_eventually_lt_exp
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.quarticErrorEnvelope_eventually_lt_exp"
+#print axioms Zeta23.OPICARound4.quarticErrorEnvelope_eventually_lt_exp
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceEtaGrowthConstant"
+#check @Zeta23.OPICARound4.sourceEtaGrowthConstant
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceEtaGrowthConstant"
+#print axioms Zeta23.OPICARound4.sourceEtaGrowthConstant
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceEtaGrowthConstant_pos"
+#check @Zeta23.OPICARound4.sourceEtaGrowthConstant_pos
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceEtaGrowthConstant_pos"
+#print axioms Zeta23.OPICARound4.sourceEtaGrowthConstant_pos
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.source_eta_polynomial_bound"
+#check @Zeta23.OPICARound4.source_eta_polynomial_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.source_eta_polynomial_bound"
+#print axioms Zeta23.OPICARound4.source_eta_polynomial_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.detector_inverse_polynomial_bound"
+#check @Zeta23.OPICARound4.detector_inverse_polynomial_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.detector_inverse_polynomial_bound"
+#print axioms Zeta23.OPICARound4.detector_inverse_polynomial_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceForcingGrowthConstant"
+#check @Zeta23.OPICARound4.sourceForcingGrowthConstant
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceForcingGrowthConstant"
+#print axioms Zeta23.OPICARound4.sourceForcingGrowthConstant
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceForcingErrorGrowthConstant"
+#check @Zeta23.OPICARound4.sourceForcingErrorGrowthConstant
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceForcingErrorGrowthConstant"
+#print axioms Zeta23.OPICARound4.sourceForcingErrorGrowthConstant
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceForcingGrowthConstant_pos"
+#check @Zeta23.OPICARound4.sourceForcingGrowthConstant_pos
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceForcingGrowthConstant_pos"
+#print axioms Zeta23.OPICARound4.sourceForcingGrowthConstant_pos
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceForcingErrorGrowthConstant_pos"
+#check @Zeta23.OPICARound4.sourceForcingErrorGrowthConstant_pos
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceForcingErrorGrowthConstant_pos"
+#print axioms Zeta23.OPICARound4.sourceForcingErrorGrowthConstant_pos
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.finiteForcingBudget_polynomial_bound"
+#check @Zeta23.OPICARound4.finiteForcingBudget_polynomial_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.finiteForcingBudget_polynomial_bound"
+#print axioms Zeta23.OPICARound4.finiteForcingBudget_polynomial_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceForcingErrorBudget_polynomial_bound"
+#check @Zeta23.OPICARound4.sourceForcingErrorBudget_polynomial_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceForcingErrorBudget_polynomial_bound"
+#print axioms Zeta23.OPICARound4.sourceForcingErrorBudget_polynomial_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceSchurUniformEnvelope"
+#check @Zeta23.OPICARound4.sourceSchurUniformEnvelope
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceSchurUniformEnvelope"
+#print axioms Zeta23.OPICARound4.sourceSchurUniformEnvelope
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceSchurErrorBudget_le_uniformEnvelope"
+#check @Zeta23.OPICARound4.sourceSchurErrorBudget_le_uniformEnvelope
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceSchurErrorBudget_le_uniformEnvelope"
+#print axioms Zeta23.OPICARound4.sourceSchurErrorBudget_le_uniformEnvelope
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.sourceSchurUniformEnvelope_mul_exp_tendsto_zero"
+#check @Zeta23.OPICARound4.sourceSchurUniformEnvelope_mul_exp_tendsto_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.sourceSchurUniformEnvelope_mul_exp_tendsto_zero"
+#print axioms Zeta23.OPICARound4.sourceSchurUniformEnvelope_mul_exp_tendsto_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.exists_uniform_source_schur_error_threshold"
+#check @Zeta23.OPICARound4.exists_uniform_source_schur_error_threshold
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.exists_uniform_source_schur_error_threshold"
+#print axioms Zeta23.OPICARound4.exists_uniform_source_schur_error_threshold
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.exists_uniform_smooth_source_main_lower_threshold"
+#check @Zeta23.OPICARound4.exists_uniform_smooth_source_main_lower_threshold
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.exists_uniform_smooth_source_main_lower_threshold"
+#print axioms Zeta23.OPICARound4.exists_uniform_smooth_source_main_lower_threshold
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold"
+#check @Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold"
+#print axioms Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_smooth_source_forcing"
+#check @Zeta23.OPICARound4.validation_smooth_source_forcing
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_smooth_source_forcing"
+#print axioms Zeta23.OPICARound4.validation_smooth_source_forcing
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_detector_schur_error"
+#check @Zeta23.OPICARound4.validation_detector_schur_error
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_detector_schur_error"
+#print axioms Zeta23.OPICARound4.validation_detector_schur_error
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_detector_first_cutoff"
+#check @Zeta23.OPICARound4.validation_detector_first_cutoff
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_detector_first_cutoff"
+#print axioms Zeta23.OPICARound4.validation_detector_first_cutoff
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.quartic_rate_consumer"
+#check @Zeta23.OPICARound4.Validation.quartic_rate_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.quartic_rate_consumer"
+#print axioms Zeta23.OPICARound4.Validation.quartic_rate_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.source_shift_consumer"
+#check @Zeta23.OPICARound4.Validation.source_shift_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.source_shift_consumer"
+#print axioms Zeta23.OPICARound4.Validation.source_shift_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.same_detector_inverse_consumer"
+#check @Zeta23.OPICARound4.Validation.same_detector_inverse_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.same_detector_inverse_consumer"
+#print axioms Zeta23.OPICARound4.Validation.same_detector_inverse_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.complete_error_envelope_consumer"
+#check @Zeta23.OPICARound4.Validation.complete_error_envelope_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.complete_error_envelope_consumer"
+#print axioms Zeta23.OPICARound4.Validation.complete_error_envelope_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.all_exponential_rates_consumer"
+#check @Zeta23.OPICARound4.Validation.all_exponential_rates_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.all_exponential_rates_consumer"
+#print axioms Zeta23.OPICARound4.Validation.all_exponential_rates_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.threshold_before_packet_consumer"
+#check @Zeta23.OPICARound4.Validation.threshold_before_packet_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.threshold_before_packet_consumer"
+#print axioms Zeta23.OPICARound4.Validation.threshold_before_packet_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.native_packet_lower_consumer"
+#check @Zeta23.OPICARound4.Validation.native_packet_lower_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.native_packet_lower_consumer"
+#print axioms Zeta23.OPICARound4.Validation.native_packet_lower_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.generated_packet_lower_consumer"
+#check @Zeta23.OPICARound4.Validation.generated_packet_lower_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.generated_packet_lower_consumer"
+#print axioms Zeta23.OPICARound4.Validation.generated_packet_lower_consumer

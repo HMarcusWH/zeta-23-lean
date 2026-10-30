@@ -449,6 +449,208 @@
       ],
       "RH": "OPEN",
       "Step4": "OPEN"
+    },
+    {
+      "id": "SC1",
+      "title": "Exact signed arithmetic at actual strict parity grounds",
+      "status": "SOURCE_BOUND_SUPPORT_NATIVE_CHECK_REQUIRED",
+      "authority": "EXACT_DECLARATION_REGISTER_NOT_PROOF_RECEIPT",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.GroundArithmetic",
+          "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+          "sha256": "5880f1bbc7df57224d1c261cb60f7d006e66b4aa7b54e1501a949ec12c4199e8"
+        }
+      ],
+      "exact_support": "Complex discrepancy, opposite odd sign and distinct reciprocal input, full prime pairing and necessary budget/moment inequalities.",
+      "hypotheses_and_scope": "Read the complete independently audited Lean types and SOURCE_CONSTRAINTS.json; no assumed closing inequality.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.nativeSignedPrimeDiscrepancy",
+        "Zeta23.OPICARound4.nativeGroundArchPairing",
+        "Zeta23.OPICARound4.nativeGroundPrimePairing",
+        "Zeta23.OPICARound4.native_signed_source_decomposition",
+        "Zeta23.OPICARound4.native_signed_discrepancy_integral",
+        "Zeta23.OPICARound4.actual_even_ground_ray_facts",
+        "Zeta23.OPICARound4.actual_odd_ground_ray_facts",
+        "Zeta23.OPICARound4.actual_even_ground_signed_discrepancy",
+        "Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy",
+        "Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility",
+        "Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility",
+        "Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility"
+      ],
+      "open_leaves": [
+        "No arithmetic sign or response exclusion follows from an identity alone."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "SC2",
+      "title": "Same-source exhaustive negative-ground alternatives",
+      "status": "SOURCE_BOUND_SUPPORT_NATIVE_CHECK_REQUIRED",
+      "authority": "EXACT_DECLARATION_REGISTER_NOT_PROOF_RECEIPT",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.JointGroundConstraints",
+          "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+          "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7"
+        }
+      ],
+      "exact_support": "Strict-even, strict-odd and arbitrary-multiplicity tied cases at the same L,K, absolute eigenmode energy, kernels/ranges/complement responses and cofinal producer.",
+      "hypotheses_and_scope": "Read the complete independently audited Lean types and SOURCE_CONSTRAINTS.json; no assumed closing inequality.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.native_even_eigen_absolute_energy",
+        "Zeta23.OPICARound4.native_odd_eigen_absolute_energy",
+        "Zeta23.OPICARound4.NativeStrictEvenGroundConstraints",
+        "Zeta23.OPICARound4.NativeStrictEvenGroundConstraints.mk",
+        "Zeta23.OPICARound4.NativeStrictOddGroundConstraints",
+        "Zeta23.OPICARound4.NativeStrictOddGroundConstraints.mk",
+        "Zeta23.OPICARound4.NativeTiedGroundConstraints",
+        "Zeta23.OPICARound4.NativeTiedGroundConstraints.mk",
+        "Zeta23.OPICARound4.NativeJointGroundConstraints",
+        "Zeta23.OPICARound4.native_tied_ground_constraints",
+        "Zeta23.OPICARound4.joint_ground_constraints_of_both_negative",
+        "Zeta23.OPICARound4.cofinally_joint_ground_constraints_of_off_line_zero"
+      ],
+      "open_leaves": [
+        "No tie exclusion or automatic identification with the quartic deep-detector packet."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "SC3",
+      "title": "Smooth Riesz forcing on the actual predecessor",
+      "status": "SOURCE_BOUND_SUPPORT_NATIVE_CHECK_REQUIRED",
+      "authority": "EXACT_DECLARATION_REGISTER_NOT_PROOF_RECEIPT",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.SmoothForcing",
+          "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+          "sha256": "1fd38f486eb19066b118b96d95a1aa23e22daec6c361cbf1cdec72ee20badcb3"
+        }
+      ],
+      "exact_support": "The full original source pairing plus actual eta shift, physical error norm and actual finite forcing norm budgets.",
+      "hypotheses_and_scope": "Read the complete independently audited Lean types and SOURCE_CONSTRAINTS.json; no assumed closing inequality.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.sourceImageErrorBudget",
+        "Zeta23.OPICARound4.sourceFiniteModeCost",
+        "Zeta23.OPICARound4.sourceForcingErrorBudget",
+        "Zeta23.OPICARound4.sourceWeilBoundConstant",
+        "Zeta23.OPICARound4.sourceWeilBoundConstant_pos",
+        "Zeta23.OPICARound4.finiteForcingBudget",
+        "Zeta23.OPICARound4.sourceImageErrorBudget_nonneg",
+        "Zeta23.OPICARound4.source_eta_nonneg",
+        "Zeta23.OPICARound4.sourceForcingErrorBudget_nonneg",
+        "Zeta23.OPICARound4.finiteForcingBudget_nonneg",
+        "Zeta23.OPICARound4.smoothSourceL2",
+        "Zeta23.OPICARound4.smoothSourceL2_ae",
+        "Zeta23.OPICARound4.smoothSourceResponseL2",
+        "Zeta23.OPICARound4.smoothSourceResponseL2_ae",
+        "Zeta23.OPICARound4.smoothSourceForcing",
+        "Zeta23.OPICARound4.smoothSourceForcing_pairing",
+        "Zeta23.OPICARound4.smoothSourceForcing_error_pairing",
+        "Zeta23.OPICARound4.smoothSourceForcing_channels",
+        "Zeta23.OPICARound4.norm_le_of_all_inner_bound",
+        "Zeta23.OPICARound4.smoothSourceForcing_error_bound",
+        "Zeta23.OPICARound4.finiteForcing_norm_bound",
+        "Zeta23.OPICARound4.smoothSourceForcing_norm_bound",
+        "Zeta23.OPICARound4.sourcePhysicalL2_norm_eq",
+        "Zeta23.OPICARound4.smoothSourceL2_error_bound",
+        "Zeta23.OPICARound4.smoothSourceL2_norm_bound"
+      ],
+      "open_leaves": [
+        "No independent upper bound on the inverse-weighted smooth quadratic."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "SC4",
+      "title": "Full finite-to-smooth loss comparison",
+      "status": "SOURCE_BOUND_SUPPORT_NATIVE_CHECK_REQUIRED",
+      "authority": "EXACT_DECLARATION_REGISTER_NOT_PROOF_RECEIPT",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.SchurErrorTransport",
+          "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+          "sha256": "1f41a890585a99d16f6a0f2dce4bb1b4bfec42daa8db9da337dd215b72d69f53"
+        }
+      ],
+      "exact_support": "Same P.inverse, full forcing error, direct quadratic error, shifted mass error and non-dropped cutoff-three energy.",
+      "hypotheses_and_scope": "Read the complete independently audited Lean types and SOURCE_CONSTRAINTS.json; no assumed closing inequality.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.detectorInverse",
+        "Zeta23.OPICARound4.sourceInverseBudget",
+        "Zeta23.OPICARound4.detectorSchurLoss",
+        "Zeta23.OPICARound4.finiteSourceEnergy",
+        "Zeta23.OPICARound4.smoothSourceMain",
+        "Zeta23.OPICARound4.sourceEnergyErrorBudget",
+        "Zeta23.OPICARound4.sourceSchurErrorBudget",
+        "Zeta23.OPICARound4.detectorInverse_norm_bound",
+        "Zeta23.OPICARound4.sourceInverseBudget_nonneg",
+        "Zeta23.OPICARound4.detectorSchurLoss_lower",
+        "Zeta23.OPICARound4.detectorSchurLoss_eq_forcing_energy",
+        "Zeta23.OPICARound4.sourceQuadratic_perturbation_bound",
+        "Zeta23.OPICARound4.smoothSourceL2_mass_error_bound",
+        "Zeta23.OPICARound4.detectorSchurLoss_sub_smoothSourceMain_bound",
+        "Zeta23.OPICARound4.detectorForcing_zero_at_first",
+        "Zeta23.OPICARound4.detectorSchurLoss_at_first"
+      ],
+      "open_leaves": [
+        "No replacement of the entire complement by one shell and no unproved sign estimate."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "SC5",
+      "title": "Source-only vanishing error and surviving smooth loss",
+      "status": "SOURCE_BOUND_SUPPORT_NATIVE_CHECK_REQUIRED",
+      "authority": "EXACT_DECLARATION_REGISTER_NOT_PROOF_RECEIPT",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+          "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+          "sha256": "3a176235c26faba6534a32cbea684e84dd81c36c22c9e8ac472cbea36d82dc2a"
+        }
+      ],
+      "exact_support": "Actual quartic cutoff gives full error smaller than any fixed exponential; late generated smooth loss retains an exponential lower margin with the threshold chosen first.",
+      "hypotheses_and_scope": "Read the complete independently audited Lean types and SOURCE_CONSTRAINTS.json; no assumed closing inequality.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.quartic_polynomial_exp_tendsto_zero",
+        "Zeta23.OPICARound4.quarticImageError",
+        "Zeta23.OPICARound4.quarticImageError_nonneg",
+        "Zeta23.OPICARound4.quarticImageError_mul_exp_tendsto_zero",
+        "Zeta23.OPICARound4.pow_mul_exp_mul_quarticImageError_tendsto_zero",
+        "Zeta23.OPICARound4.quarticCutoff_le_two_pow_four",
+        "Zeta23.OPICARound4.quartic_mode_cost_le",
+        "Zeta23.OPICARound4.quarticErrorEnvelope",
+        "Zeta23.OPICARound4.quarticErrorEnvelope_nonneg",
+        "Zeta23.OPICARound4.quarticErrorEnvelope_mul_exp_tendsto_zero",
+        "Zeta23.OPICARound4.quarticErrorEnvelope_eventually_lt_exp",
+        "Zeta23.OPICARound4.sourceEtaGrowthConstant",
+        "Zeta23.OPICARound4.sourceEtaGrowthConstant_pos",
+        "Zeta23.OPICARound4.source_eta_polynomial_bound",
+        "Zeta23.OPICARound4.detector_inverse_polynomial_bound",
+        "Zeta23.OPICARound4.sourceForcingGrowthConstant",
+        "Zeta23.OPICARound4.sourceForcingErrorGrowthConstant",
+        "Zeta23.OPICARound4.sourceForcingGrowthConstant_pos",
+        "Zeta23.OPICARound4.sourceForcingErrorGrowthConstant_pos",
+        "Zeta23.OPICARound4.finiteForcingBudget_polynomial_bound",
+        "Zeta23.OPICARound4.sourceForcingErrorBudget_polynomial_bound",
+        "Zeta23.OPICARound4.sourceSchurUniformEnvelope",
+        "Zeta23.OPICARound4.sourceSchurErrorBudget_le_uniformEnvelope",
+        "Zeta23.OPICARound4.sourceSchurUniformEnvelope_mul_exp_tendsto_zero",
+        "Zeta23.OPICARound4.exists_uniform_source_schur_error_threshold",
+        "Zeta23.OPICARound4.exists_uniform_smooth_source_main_lower_threshold",
+        "Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold"
+      ],
+      "open_leaves": [
+        "The independent arithmetic bound incompatible with that surviving margin remains OPEN."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
     }
   ],
   "semantic_controls": [
@@ -488,5 +690,15 @@
       "work/opica-round4-integration-evidence/closure"
     ],
     "global_inventory_and_acceptance": "ROOT_E10_PENDING_NOT_CLAIMED_BY_LOCAL_MODULE_GATES"
+  },
+  "source_constraint_extension": {
+    "modules": 8,
+    "gate_total_modules": 48,
+    "gate_total_declarations": 500,
+    "retained_modules": 40,
+    "retained_declarations": 397,
+    "semantic_mutations": 17,
+    "register": "SOURCE_CONSTRAINTS.json",
+    "production_qualification": "CURRENT_HEAD_FULL_NATIVE_SUPPORT_AND_INDEPENDENT_ACCEPTANCE_REQUIRED"
   }
 }

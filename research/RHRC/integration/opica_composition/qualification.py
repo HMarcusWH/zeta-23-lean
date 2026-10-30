@@ -26,7 +26,7 @@ from .executor import (run_worker,worker_environment,lean_name,lean_string,_reci
                        LEAN_ADDRESS_SPACE_BYTES,native_resource_failure)
 from .inventory import expression_hash,validate_telescope
 from ..opica_round4.math_gate import (MODULES as MATHEMATICAL_MODULES,
-    EXPECTED_MODULE_COUNT, EXPECTED_DECLARATION_COUNT,
+    EXPECTED_MODULE_COUNT, EXPECTED_DECLARATION_COUNT, SEMANTIC_MUTATION_COUNT,
     BASELINE_MODULE_COUNT, BASELINE_DECLARATION_COUNT)
 
 ATLAS='research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS.jsonl'
@@ -653,7 +653,7 @@ def _validate_mathematical_worker_receipts(result,output,worker):
     mutation=result.get('mutation',{});source='RejectedSemanticMutations.lean';folder=output/'workers'/'semantic-mutations'
     require(mutation.get('source_sha256')==hashlib.sha256(SEMANTIC_MUTATIONS.encode('utf-8')).hexdigest()==
             file_hash(output/source)==file_hash(folder/source) and mutation.get('exit_code')==1 and
-            mutation.get('error_count')==9 and mutation.get('log_sha256')==file_hash(output/'semantic-mutations.log'),
+            mutation.get('error_count')==SEMANTIC_MUTATION_COUNT and mutation.get('log_sha256')==file_hash(output/'semantic-mutations.log'),
             'Mathematical semantic mutation binding differs')
     check(mutation.get('native'),folder,source,1,output/'semantic-mutations.log')
 
@@ -684,7 +684,9 @@ def check_mathematical_support(repo,output,worker):
                 result.get('declaration_count')==EXPECTED_DECLARATION_COUNT and
                 result.get('baseline_module_count')==BASELINE_MODULE_COUNT==16 and
                 result.get('baseline_declaration_count')==BASELINE_DECLARATION_COUNT==98 and
-                result.get('semantic_mutation_count')==9,
+                result.get('integration_module_count')==40 and
+                result.get('integration_declaration_count')==397 and
+                result.get('semantic_mutation_count')==SEMANTIC_MUTATION_COUNT,
                 'Mathematical support gate incomplete or not actual native evidence')
         _validate_mathematical_worker_receipts(result,output/'native',worker)
         if worker.production:

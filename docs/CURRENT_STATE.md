@@ -1,4 +1,4 @@
-# Dated source and navigation snapshot — 28 October 2026
+# Dated source and navigation snapshot — 30 October 2026
 
 This page is the repository-wide orientation snapshot for the Round 4 branch.
 It is **not a live CI receipt**. Use [PR #298](https://github.com/HMarcusWH/zeta-23-lean/pull/298)
@@ -26,9 +26,12 @@ records; they do not route the active Round 4 branch.
 
 - Governed, bounded composition with independently reconstructed target types,
   full kernel/axiom checking, source-bound journals and eleven acceptance lanes.
-- A support inventory of **397 named declarations in 40 owned Lean modules**,
-  retaining the original 98-declaration subset. These are supporting results
-  and conditional consumers, not 397 independent constraints or RH proofs.
+- A support inventory extending the retained **397 named declarations in 40
+  owned Lean modules**, including the original 98-declaration subset. Eight
+  [source-constraint and error-reduction modules](../research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.md)
+  extend that scope; `ROOTS.json` records the exact current total. These are
+  supporting results and conditional consumers, not a count of independent
+  arithmetic restrictions or RH proofs.
 - Three non-calibration composition targets: eventual closure, the actual
   signed source budget and the physical joint negative index. Their complete
   answer wrappers are withheld from the approved search menu.

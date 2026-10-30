@@ -11,6 +11,11 @@ The [dated current-state page](docs/CURRENT_STATE.md) identifies the active pack
 and evidence boundary. Check [PR #298](https://github.com/HMarcusWH/zeta-23-lean/pull/298)
 for its live head and CI; this README is not a live acceptance receipt.
 
+The latest [source-constraint extension](research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.md)
+compares the genuine source with the consequences of an off-line zero and
+prices the complete finite-to-smooth approximation error. It identifies the
+remaining arithmetic estimate; it does not establish that estimate or close RH.
+
 <details>
 <summary>Historical Control-v2 snapshot: frozen PR #287 scope</summary>
 

@@ -288,5 +288,15 @@
       ]
     }
   ],
-  "interpretation": "D1-D4 are alternative typed sufficient routes; D1 does not require the whole regular-cell programme. A/B/C remain independent OPEN research routes. Graph reachability never supplies theorem authority."
+  "interpretation": "D1-D4 are alternative typed sufficient routes; D1 does not require the whole regular-cell programme. A/B/C remain independent OPEN research routes. Graph reachability never supplies theorem authority.",
+  "source_constraint_frontier": {
+    "register": "SOURCE_CONSTRAINTS.json",
+    "status": "OPEN",
+    "ground_join": "Zeta23.OPICARound4.NativeJointGroundConstraints",
+    "complete_smooth_expression": "Zeta23.OPICARound4.smoothSourceMain",
+    "state_rule": "The cofinal same-cutoff parity packet and quartic deep-detector packet are distinct unless a theorem identifies them.",
+    "direct_route": "The original smooth trial already has its negative depth. A source-specific contrary lower estimate can bypass ground/tie and full regular-cell closure.",
+    "error_reduction": "Vanishing finite-to-smooth error preserves the hypothetical loss; it does not supply the missing arithmetic sign.",
+    "metadata_can_discharge_leaf": false
+  }
 }

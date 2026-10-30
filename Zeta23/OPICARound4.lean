@@ -29,3 +29,9 @@ import Zeta23.OPICARound4.SourceRow
 import Zeta23.OPICARound4.TraceMetric
 import Zeta23.OPICARound4.VisibilityRigidity
 import Zeta23.OPICARound4.WitnessNorms
+
+import Zeta23.OPICARound4.GroundArithmetic
+import Zeta23.OPICARound4.JointGroundConstraints
+import Zeta23.OPICARound4.SmoothForcing
+import Zeta23.OPICARound4.SchurErrorTransport
+import Zeta23.OPICARound4.QuarticErrorReduction

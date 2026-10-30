@@ -8,11 +8,11 @@
     "RESOLVED_PRIVATE_OR_INTERNAL": 617,
     "RESOLVED_UNIQUE": 4928
   },
-  "rhkg_subject_digest_sha256": "07d49c3e05a92381ba00a570a905afecd6ce26bbae50da3ae12fa834d3e25178",
+  "rhkg_subject_digest_sha256": "2345530c9ec7601e4600e8cdca4e2ef326e0951a39d2a7db2ab38e734fdca744",
   "schema_version": "RHRC-source-candidate-summary-1.0",
   "scope": "RH_FORMAL_CORE_THEOREM_AND_LEMMA_SOURCE_SURFACE",
   "source_only_public_theorem_count": 1744,
-  "source_surface_sha256": "78565305b3a3ca04bb2e6a5474d51dce320ee1b0be95b2a88e3121a887691301",
+  "source_surface_sha256": "c9437951c1bfbf9de46520e41d2df4fdf1954e011393c948ae08813c5232757a",
   "terminal_claim": "RH_OPEN",
   "theorem_promotion": false,
   "visibility_counts": {

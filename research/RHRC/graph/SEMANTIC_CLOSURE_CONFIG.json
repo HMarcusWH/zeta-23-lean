@@ -481,7 +481,15 @@
     "Zeta23.RHRC.OpicaComposition.Protocol": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
     "Zeta23.RHRC.OpicaComposition.ResearchTargets": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
     "Zeta23.RHRC.OpicaComposition.SearchExamples": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
-    "Zeta23.RHRC.OpicaComposition.Validation": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET"
+    "Zeta23.RHRC.OpicaComposition.Validation": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.GroundArithmetic": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.JointGroundConstraints": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SmoothForcing": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SchurErrorTransport": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.QuarticErrorReduction": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.Validation.GroundConstraints": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.DetectorErrors": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.ErrorReduction": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET"
   },
   "reachable_module_roles": {
     "Zeta23.CCM.CanonicalCompressedApertureC2": "CONTACT_CALCULUS_FORMAL_SUPPORT",

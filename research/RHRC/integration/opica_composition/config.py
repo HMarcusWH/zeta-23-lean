@@ -6,7 +6,32 @@ from .snapshot import file_hash
 from .accept import ROUND4_LANES
 from .testing import checked_inventory
 from ..opica_round4.math_gate import (EXPECTED_DECLARATIONS, BASELINE_EXPECTED_DECLARATIONS,
-    BASELINE_MODULES, BASELINE_DECLARATION_COUNT, BASELINE_MODULE_COUNT)
+    BASELINE_MODULES, BASELINE_DECLARATION_COUNT, BASELINE_MODULE_COUNT,
+    retained_support_scope, SOURCE_CONSTRAINT_MODULES, public_declarations)
+
+def check_source_constraints(repo):
+    repo=Path(repo);r4=repo/'research/RHRC/integration/opica_round4'
+    ledger=load_bytes((r4/'SOURCE_CONSTRAINTS.json').read_bytes())
+    require(ledger['schema']=='OPICA4_SOURCE_CONSTRAINTS_V1' and
+            ledger['authority']=='SOURCE_BOUND_RESEARCH_REGISTER_NOT_PROOF_RECEIPT' and
+            ledger['RH']=='OPEN' and ledger['Step4']=='OPEN','Source-constraint claim authority differs')
+    require(set(ledger['current_modules'])==set(SOURCE_CONSTRAINT_MODULES),
+            'Exact source-constraint module inventory differs')
+    for module,row in ledger['current_modules'].items():
+        path=module.replace('.','/')+'.lean'
+        require(row['path']==path and file_hash(repo/path)==row['sha256'] and
+                row['declarations']==public_declarations((repo/path).read_text(encoding='utf-8')),
+                'Source-constraint definition or declaration binding differs')
+    require(len(ledger['reference_source_sha256'])==42,'Exact mathematical source-reference census differs')
+    for path,expected in ledger['reference_source_sha256'].items():
+        require(path.startswith('Zeta23/') and path.endswith('.lean') and '..' not in Path(path).parts and
+                file_hash(repo/path)==expected,'Source-constraint reference binding differs')
+    require([row['id'] for row in ledger['property_comparison']]==['F'+str(i).zfill(2) for i in range(1,17)],
+            'Exact sixteen-family property inventory differs')
+    require({row['id'] for row in ledger['open_arithmetic_targets']}==
+            {'C_DIRECT','C_SMOOTH_SCHUR','D_STRICT_EVEN','D_STRICT_ODD','D_SHARED'},
+            'Arithmetic frontier alternatives changed')
+    return {'status':'PASS_SOURCE_BINDINGS_ONLY','RH':'OPEN','Step4':'OPEN'}
 
 def check_configuration(repo):
     repo=Path(repo);here=repo/'research/RHRC/integration/opica_composition';r4=here.parent/'opica_round4'
@@ -38,6 +63,10 @@ def check_configuration(repo):
             baseline['module_count']==BASELINE_MODULE_COUNT==16 and
             baseline['declarations']==BASELINE_EXPECTED_DECLARATIONS and
             baseline['modules']==BASELINE_MODULES,'Original 98/16 support subset changed')
+    integration=retained_support_scope()
+    require(all(root_doc['integration_subset'].get(key)==value for key,value in integration.items()),
+            'Retained 397/40 integration register differs')
+    check_source_constraints(repo)
     for row in roots:require(row['module'].replace('.','/')+'.lean'==row['path'] and (repo/row['path']).is_file(),'Root origin differs')
     targets=load_bytes((here/'PUBLIC_TARGETS.json').read_bytes())
     require([r['id'] for r in targets['calibration']]==['D02_D05','D02_D04'],'Both full calibration targets required')

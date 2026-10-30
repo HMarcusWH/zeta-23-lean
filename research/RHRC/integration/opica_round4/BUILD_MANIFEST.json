@@ -64,13 +64,13 @@
     },
     {
       "id": "opica_round4_configuration",
-      "pattern": "\\A(?:research/RHRC/integration/opica_composition/BUILD_CONTRACT\\.json|research/RHRC/integration/opica_composition/EXPECTED_TESTS\\.json|research/RHRC/integration/opica_composition/FRAMEWORK_PROVIDERS\\.json|research/RHRC/integration/opica_composition/PROFILE\\.json|research/RHRC/integration/opica_composition/PUBLIC_TARGETS\\.json|research/RHRC/integration/opica_composition/SEARCH_CONTRACTS\\.json|research/RHRC/integration/opica_composition/providers/permansson/selected_exports\\.json|research/RHRC/integration/opica_composition/schemas/contracts\\.schema\\.json|research/RHRC/integration/opica_round4/ACCEPTANCE_MATRIX\\.json|research/RHRC/integration/opica_round4/BASELINE_ACCEPTANCE_MATRIX\\.json|research/RHRC/integration/opica_round4/BASELINE_CI_LANES\\.json|research/RHRC/integration/opica_round4/BASELINE_FILE_PLAN\\.json|research/RHRC/integration/opica_round4/BASELINE_REQUIREMENTS\\.json|research/RHRC/integration/opica_round4/BUILD_MANIFEST\\.json|research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS\\.json|research/RHRC/integration/opica_round4/COUNTERMODEL_REGISTER\\.json|research/RHRC/integration/opica_round4/EXACT_RATIONAL_CONTROLS\\.json|research/RHRC/integration/opica_round4/INPUT_REGISTER\\.json|research/RHRC/integration/opica_round4/INTEGRATION_REQUIREMENTS\\.json|research/RHRC/integration/opica_round4/MATH_CONTRACTS\\.json|research/RHRC/integration/opica_round4/POST_GREEN_RESEARCH\\.json|research/RHRC/integration/opica_round4/REGULAR_CELL_AUDIT\\.json|research/RHRC/integration/opica_round4/RESEARCH_DISPOSITIONS\\.json|research/RHRC/integration/opica_round4/ROOTS\\.json|research/RHRC/integration/opica_round4/WORKFLOW_CONTRACT\\.json|research/RHRC/integration/opica_round4/WORK_PACKAGES\\.json|research/RHRC/integration/opica_round4/schemas/source_evaluator\\.schema\\.json|research/RHRC/integration/opica_round4_support/EXPECTED_TEST_IDS\\.json|research/RHRC/integration/opica_round4_support/OPEN_OBLIGATIONS\\.json|research/RHRC/integration/opica_round4_support/PACKAGE_MANIFEST\\.json|research/RHRC/integration/opica_round4_support/PACKAGE_STATUS\\.json|research/RHRC/integration/opica_round4_support/SOURCE_REFERENCES\\.json)\\Z",
+      "pattern": "\\A(?:research/RHRC/integration/opica_composition/BUILD_CONTRACT\\.json|research/RHRC/integration/opica_composition/EXPECTED_TESTS\\.json|research/RHRC/integration/opica_composition/FRAMEWORK_PROVIDERS\\.json|research/RHRC/integration/opica_composition/PROFILE\\.json|research/RHRC/integration/opica_composition/PUBLIC_TARGETS\\.json|research/RHRC/integration/opica_composition/SEARCH_CONTRACTS\\.json|research/RHRC/integration/opica_composition/providers/permansson/selected_exports\\.json|research/RHRC/integration/opica_composition/schemas/contracts\\.schema\\.json|research/RHRC/integration/opica_round4/ACCEPTANCE_MATRIX\\.json|research/RHRC/integration/opica_round4/BASELINE_ACCEPTANCE_MATRIX\\.json|research/RHRC/integration/opica_round4/BASELINE_CI_LANES\\.json|research/RHRC/integration/opica_round4/BASELINE_FILE_PLAN\\.json|research/RHRC/integration/opica_round4/BASELINE_REQUIREMENTS\\.json|research/RHRC/integration/opica_round4/BUILD_MANIFEST\\.json|research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS\\.json|research/RHRC/integration/opica_round4/COUNTERMODEL_REGISTER\\.json|research/RHRC/integration/opica_round4/EXACT_RATIONAL_CONTROLS\\.json|research/RHRC/integration/opica_round4/INPUT_REGISTER\\.json|research/RHRC/integration/opica_round4/INTEGRATION_REQUIREMENTS\\.json|research/RHRC/integration/opica_round4/MATH_CONTRACTS\\.json|research/RHRC/integration/opica_round4/POST_GREEN_RESEARCH\\.json|research/RHRC/integration/opica_round4/REGULAR_CELL_AUDIT\\.json|research/RHRC/integration/opica_round4/RESEARCH_DISPOSITIONS\\.json|research/RHRC/integration/opica_round4/ROOTS\\.json|research/RHRC/integration/opica_round4/WORKFLOW_CONTRACT\\.json|research/RHRC/integration/opica_round4/WORK_PACKAGES\\.json|research/RHRC/integration/opica_round4/schemas/source_evaluator\\.schema\\.json|research/RHRC/integration/opica_round4_support/EXPECTED_TEST_IDS\\.json|research/RHRC/integration/opica_round4_support/OPEN_OBLIGATIONS\\.json|research/RHRC/integration/opica_round4_support/PACKAGE_MANIFEST\\.json|research/RHRC/integration/opica_round4_support/PACKAGE_STATUS\\.json|research/RHRC/integration/opica_round4_support/SOURCE_REFERENCES\\.json|research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS\\.json)\\Z",
       "file_class": "BUILD_CONFIGURATION",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "opica_round4_documentation",
-      "pattern": "\\A(?:docs/AGENT_GUIDE\\.md|docs/CURRENT_STATE\\.md|docs/FRAMEWORKS\\.md|docs/MATHEMATICAL_GLOSSARY\\.md|docs/PROJECT_GUIDE\\.md|docs/REPOSITORY_MAP\\.md|research/RHRC/ffbbp/README\\.md|research/RHRC/integration/opica_composition/README\\.md|research/RHRC/integration/opica_round4/CI_REPAIR_2026\\-10\\-28\\.md|research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER\\.md|research/RHRC/integration/opica_round4/README\\.md|research/RHRC/integration/opica_round4_support/README\\.md|research/RHRC/permansson/README\\.md)\\Z",
+      "pattern": "\\A(?:docs/AGENT_GUIDE\\.md|docs/CURRENT_STATE\\.md|docs/FRAMEWORKS\\.md|docs/MATHEMATICAL_GLOSSARY\\.md|docs/PROJECT_GUIDE\\.md|docs/REPOSITORY_MAP\\.md|research/RHRC/ffbbp/README\\.md|research/RHRC/integration/opica_composition/README\\.md|research/RHRC/integration/opica_round4/CI_REPAIR_2026\\-10\\-28\\.md|research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER\\.md|research/RHRC/integration/opica_round4/README\\.md|research/RHRC/integration/opica_round4_support/README\\.md|research/RHRC/permansson/README\\.md|research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS\\.md)\\Z",
       "file_class": "DOCUMENTATION",
       "trust_zone": "AUDIT_ONLY"
     },
@@ -88,13 +88,13 @@
     },
     {
       "id": "opica_round4_lean_audit",
-      "pattern": "\\A(?:Zeta23/OPICAComposition/Calibration\\.lean|Zeta23/OPICARound4/Validation\\.lean|Zeta23/OPICARound4/Validation/IntegrationClosure\\.lean|Zeta23/OPICARound4/Validation/IntegrationDictionary\\.lean|Zeta23/OPICARound4/Validation/IntegrationObservation\\.lean|Zeta23/OPICARound4/Validation/IntegrationSource\\.lean|Zeta23/OPICARound4/Validation/IntegrationSpectral\\.lean|Zeta23/OPICARound4/Validation/IntegrationVisibilityRigidity\\.lean|Zeta23/OPICARound4/Validation/Support\\.lean|Zeta23/RHRC/OpicaComposition/Audit\\.lean|Zeta23/RHRC/OpicaComposition/Elaborate\\.lean|Zeta23/RHRC/OpicaComposition/Export\\.lean|Zeta23/RHRC/OpicaComposition/FiniteWorlds\\.lean|Zeta23/RHRC/OpicaComposition/Protocol\\.lean|Zeta23/RHRC/OpicaComposition/ResearchTargets\\.lean|Zeta23/RHRC/OpicaComposition/SearchExamples\\.lean|Zeta23/RHRC/OpicaComposition/Validation\\.lean)\\Z",
+      "pattern": "\\A(?:Zeta23/OPICAComposition/Calibration\\.lean|Zeta23/OPICARound4/Validation\\.lean|Zeta23/OPICARound4/Validation/IntegrationClosure\\.lean|Zeta23/OPICARound4/Validation/IntegrationDictionary\\.lean|Zeta23/OPICARound4/Validation/IntegrationObservation\\.lean|Zeta23/OPICARound4/Validation/IntegrationSource\\.lean|Zeta23/OPICARound4/Validation/IntegrationSpectral\\.lean|Zeta23/OPICARound4/Validation/IntegrationVisibilityRigidity\\.lean|Zeta23/OPICARound4/Validation/Support\\.lean|Zeta23/RHRC/OpicaComposition/Audit\\.lean|Zeta23/RHRC/OpicaComposition/Elaborate\\.lean|Zeta23/RHRC/OpicaComposition/Export\\.lean|Zeta23/RHRC/OpicaComposition/FiniteWorlds\\.lean|Zeta23/RHRC/OpicaComposition/Protocol\\.lean|Zeta23/RHRC/OpicaComposition/ResearchTargets\\.lean|Zeta23/RHRC/OpicaComposition/SearchExamples\\.lean|Zeta23/RHRC/OpicaComposition/Validation\\.lean|Zeta23/OPICARound4/Validation/GroundConstraints\\.lean|Zeta23/OPICARound4/Validation/DetectorErrors\\.lean|Zeta23/OPICARound4/Validation/ErrorReduction\\.lean)\\Z",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "opica_round4_lean_math",
-      "pattern": "\\A(?:Zeta23/OPICARound4\\.lean|Zeta23/OPICARound4/AbsoluteAnchor\\.lean|Zeta23/OPICARound4/AdaptiveBudget\\.lean|Zeta23/OPICARound4/ClosureConsumers\\.lean|Zeta23/OPICARound4/IntegrationTargets\\.lean|Zeta23/OPICARound4/NativeConcentrationBudget\\.lean|Zeta23/OPICARound4/NativeJointIndex\\.lean|Zeta23/OPICARound4/NativeObservation\\.lean|Zeta23/OPICARound4/NativeRayConsumer\\.lean|Zeta23/OPICARound4/NativeSourceBudget\\.lean|Zeta23/OPICARound4/NativeSpectralMeasure\\.lean|Zeta23/OPICARound4/NativeVisibility\\.lean|Zeta23/OPICARound4/NativeWitnessCosts\\.lean|Zeta23/OPICARound4/NegativeIndex\\.lean|Zeta23/OPICARound4/NeutralContactPencil\\.lean|Zeta23/OPICARound4/OddReciprocalSource\\.lean|Zeta23/OPICARound4/OperatorSignedBound\\.lean|Zeta23/OPICARound4/PrimeDiscrepancyIntegral\\.lean|Zeta23/OPICARound4/RegularCells/FixedSeed\\.lean|Zeta23/OPICARound4/RegularCells/SourceSupport\\.lean|Zeta23/OPICARound4/ScalarShift\\.lean|Zeta23/OPICARound4/SearchSupport\\.lean|Zeta23/OPICARound4/SignedNormBound\\.lean|Zeta23/OPICARound4/SignedPickKernel\\.lean|Zeta23/OPICARound4/SignedSpectral\\.lean|Zeta23/OPICARound4/SourceDictionaryCrosswalk\\.lean|Zeta23/OPICARound4/SourceDiscrepancy\\.lean|Zeta23/OPICARound4/SourceExchangeConcentration\\.lean|Zeta23/OPICARound4/SourceRow\\.lean|Zeta23/OPICARound4/TraceMetric\\.lean|Zeta23/OPICARound4/VisibilityRigidity\\.lean|Zeta23/OPICARound4/WitnessNorms\\.lean)\\Z",
+      "pattern": "\\A(?:Zeta23/OPICARound4\\.lean|Zeta23/OPICARound4/AbsoluteAnchor\\.lean|Zeta23/OPICARound4/AdaptiveBudget\\.lean|Zeta23/OPICARound4/ClosureConsumers\\.lean|Zeta23/OPICARound4/IntegrationTargets\\.lean|Zeta23/OPICARound4/NativeConcentrationBudget\\.lean|Zeta23/OPICARound4/NativeJointIndex\\.lean|Zeta23/OPICARound4/NativeObservation\\.lean|Zeta23/OPICARound4/NativeRayConsumer\\.lean|Zeta23/OPICARound4/NativeSourceBudget\\.lean|Zeta23/OPICARound4/NativeSpectralMeasure\\.lean|Zeta23/OPICARound4/NativeVisibility\\.lean|Zeta23/OPICARound4/NativeWitnessCosts\\.lean|Zeta23/OPICARound4/NegativeIndex\\.lean|Zeta23/OPICARound4/NeutralContactPencil\\.lean|Zeta23/OPICARound4/OddReciprocalSource\\.lean|Zeta23/OPICARound4/OperatorSignedBound\\.lean|Zeta23/OPICARound4/PrimeDiscrepancyIntegral\\.lean|Zeta23/OPICARound4/RegularCells/FixedSeed\\.lean|Zeta23/OPICARound4/RegularCells/SourceSupport\\.lean|Zeta23/OPICARound4/ScalarShift\\.lean|Zeta23/OPICARound4/SearchSupport\\.lean|Zeta23/OPICARound4/SignedNormBound\\.lean|Zeta23/OPICARound4/SignedPickKernel\\.lean|Zeta23/OPICARound4/SignedSpectral\\.lean|Zeta23/OPICARound4/SourceDictionaryCrosswalk\\.lean|Zeta23/OPICARound4/SourceDiscrepancy\\.lean|Zeta23/OPICARound4/SourceExchangeConcentration\\.lean|Zeta23/OPICARound4/SourceRow\\.lean|Zeta23/OPICARound4/TraceMetric\\.lean|Zeta23/OPICARound4/VisibilityRigidity\\.lean|Zeta23/OPICARound4/WitnessNorms\\.lean|Zeta23/OPICARound4/GroundArithmetic\\.lean|Zeta23/OPICARound4/JointGroundConstraints\\.lean|Zeta23/OPICARound4/SmoothForcing\\.lean|Zeta23/OPICARound4/SchurErrorTransport\\.lean|Zeta23/OPICARound4/QuarticErrorReduction\\.lean)\\Z",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
@@ -148,7 +148,15 @@
     "Zeta23.RHRC.OpicaComposition.Protocol": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
     "Zeta23.RHRC.OpicaComposition.ResearchTargets": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
     "Zeta23.RHRC.OpicaComposition.SearchExamples": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
-    "Zeta23.RHRC.OpicaComposition.Validation": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET"
+    "Zeta23.RHRC.OpicaComposition.Validation": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.GroundArithmetic": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.JointGroundConstraints": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SmoothForcing": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SchurErrorTransport": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.QuarticErrorReduction": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.Validation.GroundConstraints": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.DetectorErrors": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.ErrorReduction": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET"
   },
   "add": [
     {
@@ -165,7 +173,7 @@
     },
     {
       "path": "Zeta23/OPICARound4.lean",
-      "sha256": "07b4716c95ab196b7ef3e730a7790508b017d64358367b04b53ffd94071157bd"
+      "sha256": "f8e5c2716444b30dd00f48cb8dc31fb3a96a3198015fd64be52d1645a627a206"
     },
     {
       "path": "Zeta23/OPICARound4/AbsoluteAnchor.lean",
@@ -180,8 +188,16 @@
       "sha256": "f88b0a4dfc43f9e3103705ca14b46022602bde566e87d2cb2f9d1dd3eac56717"
     },
     {
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "sha256": "5880f1bbc7df57224d1c261cb60f7d006e66b4aa7b54e1501a949ec12c4199e8"
+    },
+    {
       "path": "Zeta23/OPICARound4/IntegrationTargets.lean",
       "sha256": "7ae6b92e6fa2e6d872e03750b222770acf47f334553652cab306070281849ed9"
+    },
+    {
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7"
     },
     {
       "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
@@ -236,6 +252,10 @@
       "sha256": "5df3b8309f6144a22da5ba8d318c5c91fba181911cf15b1f0d50d49f4d9365c1"
     },
     {
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "sha256": "3a176235c26faba6534a32cbea684e84dd81c36c22c9e8ac472cbea36d82dc2a"
+    },
+    {
       "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
       "sha256": "262922e4d62d5749eb5580328242a4fae709c405a04d2a054452d6d5258422ef"
     },
@@ -246,6 +266,10 @@
     {
       "path": "Zeta23/OPICARound4/ScalarShift.lean",
       "sha256": "a7b02fa624a07d13aea5580cb7d4be14a919af3f33aa16b4acdd21a2e84781e6"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "sha256": "1f41a890585a99d16f6a0f2dce4bb1b4bfec42daa8db9da337dd215b72d69f53"
     },
     {
       "path": "Zeta23/OPICARound4/SearchSupport.lean",
@@ -262,6 +286,10 @@
     {
       "path": "Zeta23/OPICARound4/SignedSpectral.lean",
       "sha256": "481dad27a636ba9274a758029c881979404b2871c178756958efa30c6e7b598c"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "sha256": "1fd38f486eb19066b118b96d95a1aa23e22daec6c361cbf1cdec72ee20badcb3"
     },
     {
       "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
@@ -285,7 +313,19 @@
     },
     {
       "path": "Zeta23/OPICARound4/Validation.lean",
-      "sha256": "b1cd3b27c09bfcbfc09ac16e7c7962e6559d37d62f5832350b810b40e7ec28cd"
+      "sha256": "cb3397b470eea9932be9396463abf7b28ae6249eea8022e31ac34c7696616ca1"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/DetectorErrors.lean",
+      "sha256": "fb8a2d0a30b777907cb1997aa2eec61d8dc537eb6a074201c373eeb68420073b"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "sha256": "8df15b1a7ad20393e41c63444bd1bc45f59d1a7a8dbd2b36960857ec8a50d336"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/GroundConstraints.lean",
+      "sha256": "9ed89d080e1da1da924e5d5df8986d0993c8c95afe64c3a4a252fa588725606d"
     },
     {
       "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
@@ -361,7 +401,7 @@
     },
     {
       "path": "docs/CURRENT_STATE.md",
-      "sha256": "39adc57d95ac65cf7596e7a8973a5c2d63049cf0267311b462ffa0530d1292c7"
+      "sha256": "9781aac5356bc83973fa9cf12bddef7c9b16a798c5b3e0c20632d59095b70f29"
     },
     {
       "path": "docs/FRAMEWORKS.md",
@@ -393,7 +433,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/EXPECTED_TESTS.json",
-      "sha256": "2bc4cb23fe188cccd7dda878a55e0ae29389bf8d2a73edc5eeca4c8766c5a718"
+      "sha256": "890d71d590e31fe064d12aee8e7c2855496b377ff5c2b81507195ecbf8e08001"
     },
     {
       "path": "research/RHRC/integration/opica_composition/FRAMEWORK_PROVIDERS.json",
@@ -457,7 +497,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/config.py",
-      "sha256": "ad7f50daa0d3055965066f5a85a145ed3814257c8585b70ee30fa7d5b04854e6"
+      "sha256": "365fc97c427e5fed77b20d9d83b8ba7801c3763df59dfa41cfdabaca92e26280"
     },
     {
       "path": "research/RHRC/integration/opica_composition/contracts.py",
@@ -469,7 +509,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/descendant.py",
-      "sha256": "40deeb68f41203bc2965de60976a786796faab64fc0e4e644f31120a0c68a749"
+      "sha256": "ba5366686239c1ad41f861664e76b79b4ad09a202e13bf65f49ae8a0f742bc63"
     },
     {
       "path": "research/RHRC/integration/opica_composition/evidence.py",
@@ -521,7 +561,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/qualification.py",
-      "sha256": "ce0c5ce6cb810608f88ee23077da18ad35956058aa281e09c0c87adb9e8417c6"
+      "sha256": "9d9a052e0161d9304c6ec39541cf8a9c4eee7a45393edd5e44d49282bc2dc9f4"
     },
     {
       "path": "research/RHRC/integration/opica_composition/research_contracts.py",
@@ -553,7 +593,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_cli.py",
-      "sha256": "ed4e73d3a356399902d42b1fa6906c3fe99f2a2b874adc84fe3bb565a4a6f0a1"
+      "sha256": "20fc0d323d41b37839883be84a1e9d9bc2db38fbda175dbc814558b053da159f"
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_closure.py",
@@ -629,7 +669,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/ACCEPTANCE_MATRIX.json",
-      "sha256": "9604f7b584b2406406a04a9c4625403b9e558db475a4cb395f40f29fd7cd077a"
+      "sha256": "2d67c84ce11baddc0eda187b8d538e4b9c8e24a47822d3283ea6a835c17bf6b9"
     },
     {
       "path": "research/RHRC/integration/opica_round4/BASELINE_ACCEPTANCE_MATRIX.json",
@@ -657,7 +697,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json",
-      "sha256": "fadf549d0f4db569570342c3d0cdfe3a3c8ff435e51c77f40fb2d2372446f05f"
+      "sha256": "b8da5acc7690dbbf0fa5fb138a238d3df0fed0b86a3c9b7a281d6ac7e4faf3d9"
     },
     {
       "path": "research/RHRC/integration/opica_round4/COUNTERMODEL_REGISTER.json",
@@ -673,15 +713,15 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md",
-      "sha256": "74cc2f8b14847b3bb65f1cffc0839fcc388ff0c7c3255ea528e76cb8658ed12a"
+      "sha256": "91af0a3b0beb553a184463a2d12faecff4d3fc66e9b39b2e5dfe5e0ed251a40e"
     },
     {
       "path": "research/RHRC/integration/opica_round4/INTEGRATION_REQUIREMENTS.json",
-      "sha256": "7d93c1986ab4a9f0f7e22a58628ebcfdd898db651f113fb3aed3af7149d8396b"
+      "sha256": "3335e224969a17a067e9eed60f7ea19fbc17dcc2cd43fd50a904b54f1756b6b6"
     },
     {
       "path": "research/RHRC/integration/opica_round4/MATH_CONTRACTS.json",
-      "sha256": "7b6a443c8dd9e2a11edf42cf819080d917644fcf210f64cb74b7c00140be9f09"
+      "sha256": "f44cba6c14184121e0d32ba9fd780789a00aee52c4e8a19bdefd07342886fe61"
     },
     {
       "path": "research/RHRC/integration/opica_round4/POST_GREEN_RESEARCH.json",
@@ -701,7 +741,15 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/ROOTS.json",
-      "sha256": "358c7b57b60c19c443eddec5401e1bcad3c5388875ccc4ae19fd0505aed82cc7"
+      "sha256": "f4d0dab33f62b5f0a9523a77c29ed19db62bf39d51a75c3b6d8c3459b8d6cd27"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.json",
+      "sha256": "98e942c679344799f748fddb5d0ad6f812527359611d4242a03023e42174101e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.md",
+      "sha256": "e40e035adfa118cca1d2911e0da6b77f2ec4d0e8791317576b8ebea68ad46d5c"
     },
     {
       "path": "research/RHRC/integration/opica_round4/WORKFLOW_CONTRACT.json",
@@ -721,7 +769,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/math_gate.py",
-      "sha256": "36ba64142eb3d57521736985dba2fdeb09acf0b101486cf85e6a0c22432defcd"
+      "sha256": "c9466b5204e4dc02d48f068204f55fc22648b930ed9a50fdc03ef3b45a46c42c"
     },
     {
       "path": "research/RHRC/integration/opica_round4/schemas/source_evaluator.schema.json",
@@ -867,7 +915,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "91ee02b3842480b9d068156ca57d3daec2e3257fd50de4b1c2317532646c73be"
+      "sha256": "45500759b48c124ddee43fc6d3dd6bbdea99a4ec13e92b4e5d96df91ae4af87e"
     },
     {
       "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
@@ -883,7 +931,7 @@
     },
     {
       "path": "research/RHRC/graph/FILE_CLASSES.json",
-      "sha256": "01316858a1956bf90b6bb552a690ea7f35c2635cae70d814dd5bc0349fc97758"
+      "sha256": "cf0e0d3a9deaf8b099ce3cdb85bc07ca5bc93a947ffcc68db3b02ed90302a0e4"
     },
     {
       "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
@@ -895,7 +943,7 @@
     },
     {
       "path": "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json",
-      "sha256": "079e0d0431a32a20fa37b5f39ab2d77f9801e44a1d4b86b98141b1a26a9bef8c"
+      "sha256": "ea13a6dbafe3dbc525634f406acf31acce51aeee0b1e492f9cf9ed807a2ae1f0"
     },
     {
       "path": "research/RHRC/integration/README.md",
@@ -1342,8 +1390,28 @@
       "authority": "UNCHANGED_PARENT_BYTES"
     }
   ],
-  "path_policy_sha256": "76aa1cb88930f2c4d501d15c3097702a20580eaea8fde9f4a51b788a7f23dc60",
+  "path_policy_sha256": "15619d3e9d2e29ef877a32d3fdc1cc7870ecfd642652de4b667a360f13a48728",
   "current_compiler_accepted": false,
   "RH": "OPEN",
-  "Step4": "OPEN"
+  "Step4": "OPEN",
+  "source_constraint_extension": {
+    "scope": "SAME_PR298",
+    "new_paths": [
+      "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "Zeta23/OPICARound4/SmoothForcing.lean",
+      "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "Zeta23/OPICARound4/Validation/GroundConstraints.lean",
+      "Zeta23/OPICARound4/Validation/DetectorErrors.lean",
+      "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.json",
+      "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.md"
+    ],
+    "new_modules": 8,
+    "retained_support_declarations": 397,
+    "retained_support_modules": 40,
+    "claim": "SUPPORT_ONLY_RH_AND_STEP4_OPEN",
+    "production_qualification": "PENDING_CURRENT_HEAD_CI"
+  }
 }

@@ -6,6 +6,14 @@ eleven-lane qualification contracts. The original117 cases,42 requirements,
 listed in `INTEGRATION_REQUIREMENTS.json`; reference files and hashes are in
 `INPUT_REGISTER.json`. Documents were reviewed as proposals, not instructions.
 
+The 30 October [source-constraint extension](SOURCE_CONSTRAINTS.md), originally
+scoped as PR #299, is now part of this same PR. Its eight modules extend the
+existing support gate. The exact retained 397/40 scope and complete new inventory
+are in `ROOTS.json`; `SOURCE_CONSTRAINTS.json` binds the comparison, mathematical
+contracts and open arithmetic targets to the actual source files. No independent
+closing arithmetic estimate is claimed. Current-head production acceptance is
+required even when local module proofs and historical structural replay pass.
+
 ## What becomes formally true
 
 Conditional closure consumers now retain every aperture/cutoff quantifier and

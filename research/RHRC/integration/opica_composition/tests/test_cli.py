@@ -40,6 +40,46 @@ REQUIRED_LANES = (
 
 
 class CliOrchestrationTests(unittest.TestCase):
+    def test_source_constraint_structure_requires_full_constructor_audit(self):
+        source = ('namespace Fixture\nstructure Packet : Prop where\n  source : True\n'
+                  'def statement : Prop := True\nprivate theorem hidden : True := True.intro\n')
+        self.assertEqual(math_gate.public_declarations(source),
+                         ['Fixture.Packet', 'Fixture.Packet.mk', 'Fixture.statement'])
+        # A Prop-only type record cannot substitute for the field telescope.
+        name='Fixture.Packet.mk'
+        with patch.object(math_gate, 'EXPECTED_DECLARATIONS', [name]):
+            with self.assertRaisesRegex(RuntimeError, 'Incomplete or substituted axiom inventory'):
+                math_gate.audit_validation("'Fixture.Packet' does not depend on any axioms\n")
+            with self.assertRaisesRegex(RuntimeError, 'Missing or duplicate full-type record'):
+                math_gate.audit_validation("'Fixture.Packet.mk' does not depend on any axioms\n")
+
+    def test_source_constraint_extension_retains_exact_previous_support(self):
+        from research.RHRC.integration.opica_composition import config
+        scope=math_gate.retained_support_scope()
+        self.assertEqual((len(scope['declarations']),len(scope['modules'])),(397,40))
+        self.assertEqual(len(math_gate.SOURCE_CONSTRAINT_MODULES),8)
+        with patch.object(math_gate,'EXPECTED_DECLARATIONS',math_gate.EXPECTED_DECLARATIONS[1:]):
+            with self.assertRaisesRegex(RuntimeError,'Retained 397/40'):
+                math_gate.retained_support_scope()
+        self.assertEqual(config.check_source_constraints(REPO)['status'],'PASS_SOURCE_BINDINGS_ONLY')
+
+    def test_source_constraint_register_rejects_wrong_source_and_claim_promotion(self):
+        from research.RHRC.integration.opica_composition import config
+        original=load_bytes((R4/'SOURCE_CONSTRAINTS.json').read_bytes())
+        module=math_gate.SOURCE_CONSTRAINT_MODULES[0]
+        for alteration in ('hash','path','declarations','module','claim','tie'):
+            changed=copy.deepcopy(original)
+            if alteration=='hash': changed['current_modules'][module]['sha256']='0'*64
+            elif alteration=='path': changed['current_modules'][module]['path']='Zeta23/Wrong.lean'
+            elif alteration=='declarations': changed['current_modules'][module]['declarations']=[]
+            elif alteration=='module': changed['current_modules'].pop(module)
+            elif alteration=='claim': changed['Step4']='CLOSED'
+            else: changed['open_arithmetic_targets']=[r for r in changed['open_arithmetic_targets'] if r['id']!='D_SHARED']
+            # Only the reviewed register is substituted; no native evidence or
+            # successful proof result is fabricated by this negative guard.
+            with self.subTest(alteration=alteration), patch.object(config,'load_bytes',return_value=changed):
+                with self.assertRaises(ContractError):config.check_source_constraints(REPO)
+
     def test_native_evidence_copy_preserves_complete_inventory(self):
         # Actual filesystem bytes only; this does not manufacture native proof.
         with tempfile.TemporaryDirectory() as tmp:

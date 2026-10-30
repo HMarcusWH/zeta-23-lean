@@ -1,0 +1,828 @@
+{
+  "schema": "OPICA4_SOURCE_CONSTRAINTS_V1",
+  "authority": "SOURCE_BOUND_RESEARCH_REGISTER_NOT_PROOF_RECEIPT",
+  "integration": "Same PR298; supersedes separate PR299 packaging only.",
+  "objective": "Make the surviving off-line-zero obligations explicit on the genuine construction and formalize the finite/error deductions already justified by the source. Identify the exact missing arithmetic restriction without asserting it.",
+  "claim_boundary": "The two sides are unconditional properties of the actual zeta source and additional obligations of that SAME source under an off-line-zero assumption. No contradiction between them is currently proved. This extension is not promised to separate those full sets; if it proves such separation, that would already be the decisive mathematics.",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "state_binding_rules": [
+    "COMMON-CUTOFF track: one L,K, actual canonical even/odd matrices, physical metric, two actual bottoms, ground rays and exact reciprocal map. It has simultaneous negativity but no automatic quartic cutoff, exponential depth or selected simplicity.",
+    "DEEP-DETECTOR track: one GeneratedStep123CompleteOutput, rho,beta,phase,separation,L,N=ceil(L^4), selected K,eta, original smooth trial, finite padded unit, predecessor P, forcing F and full complement. It has quantitative depth/inverse/error bounds. Its two phases are separately cofinal, not automatically at one common aperture.",
+    "CROSS-TRACK rule: require an explicit theorem identifying construction, source, L,K,metric,shift and state before transporting a conclusion. Similar names or shared ancestry do not suffice. This extension does not assume or promise a common-packet bridge that has not been proved.",
+    "ABSOLUTE ANCHOR rule: retain canonical equation-(4.4) normalization and absolute energy. Relative source/intertwining identities can survive a common scalar shift; that synthetic freedom is not a permitted modification of the genuine source.",
+    "No new actual-source restriction is established by definitions, property flags, positive finite probes, an empty negative subspace or a green replay. An inconsistency must be proved from correctly scoped hypotheses."
+  ],
+  "property_comparison": [
+    {
+      "id": "F01",
+      "title": "Prime coefficients cannot be tuned independently",
+      "status": "EXISTING LEAN",
+      "removed": "The complete divisor law fixes the entire von Mangoldt arithmetic function. Changing a prime coefficient while retaining the old integer drive violates the packet.",
+      "remaining": "Uniqueness fixes the source; it does not estimate the sign of its complete weighted quadratic.",
+      "sources": [
+        [
+          "Zeta23/CCM/NativeIntegerPrimeSource.lean",
+          29
+        ],
+        [
+          "Zeta23/CCM/NativeCompletionEquation.lean",
+          109
+        ]
+      ]
+    },
+    {
+      "id": "F02",
+      "title": "The absolute energy level is fixed, although relative identities cannot see it",
+      "status": "EXISTING LEAN + DERIVED LIMITATION",
+      "removed": "Canonical normalization fixes the scalar identity correction. One cannot move both parity energies downward while claiming the same genuine canonical source.",
+      "remaining": "Rank-one/displacement coupling and corrected source observations alone are invariant under a common scalar shift. A relative-only argument loses absolute sign information; the full source formula must supply that anchor. This is not a genuine-zeta countermodel.",
+      "sources": [
+        [
+          "Zeta23/CCM/SourceNormalizationRepair.lean",
+          150
+        ],
+        [
+          "Zeta23/CCM/SourceNormalizationRepair.lean",
+          170
+        ],
+        [
+          "Zeta23/OPICARound4/SourceRow.lean",
+          100
+        ]
+      ]
+    },
+    {
+      "id": "F03",
+      "title": "The strict lower ground cannot be source-invisible",
+      "status": "EXISTING LEAN + DERIVED CASE RESTRICTION",
+      "removed": "Source invisibility transfers an eigenmode into the opposite parity at the identical eigenvalue. A ground strictly below the opposite bottom cannot satisfy that.",
+      "remaining": "For the lower bottom, invisibility requires a shared-bottom tie. Ties still need a separate exclusion. A higher parity ground can share an opposite nonground eigenvalue; not every blind ground forces a bottom tie. The statement is about the native source functional, not every possible observer.",
+      "sources": [
+        [
+          "Zeta23/OPICARound4/NativeVisibility.lean",
+          70
+        ],
+        [
+          "Zeta23/OPICARound4/NativeVisibility.lean",
+          91
+        ],
+        [
+          "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+          135
+        ]
+      ]
+    },
+    {
+      "id": "F04",
+      "title": "Ground gap, trace and source budget are linked",
+      "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING",
+      "removed": "With a,b the actual parity bottoms, R the complete row budget, c the compression-vector norm, and tau=Re(tr odd-tr even), a<b forces b-a<=R*c+tau/2; b<a forces a-b<=R*c-tau/2. These local bounds do not require a negative bottom.",
+      "remaining": "These are necessary feasibility inequalities, not the opposing strict bounds. They are alternative branches and cannot be added as though both strict orderings held at once.",
+      "sources": [
+        [
+          "Zeta23/OPICARound4/NativeSourceBudget.lean",
+          172
+        ],
+        [
+          "Zeta23/OPICARound4/NativeSourceBudget.lean",
+          189
+        ],
+        [
+          "Zeta23/OPICARound4/ClosureConsumers.lean",
+          143
+        ]
+      ],
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility",
+        "Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility"
+      ]
+    },
+    {
+      "id": "F05",
+      "title": "The prime and Archimedean phases cannot be selected separately",
+      "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING",
+      "removed": "The corrected source is f(u)=\u2212A(u)\u2212P(u). On the actual even ground ray f(r)=1, hence P(r)=\u22121\u2212A(r). On the odd reciprocal input f(v)=\u22121, hence P(v)=1\u2212A(v). Therefore |1+A(r)|\u2264Cprime(r) or |1\u2212A(v)|\u2264Cprime(v), respectively.",
+      "remaining": "A closing estimate must exclude these requirements on the actual inputs. Separate unsigned bounds lose the phase information. The two inputs are different and need their stated adapters.",
+      "sources": [
+        [
+          "Zeta23/OPICARound4/SourceRow.lean",
+          80
+        ],
+        [
+          "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+          163
+        ],
+        [
+          "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+          187
+        ]
+      ],
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.actual_even_ground_signed_discrepancy",
+        "Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy"
+      ]
+    },
+    {
+      "id": "F06",
+      "title": "Actual ground moment and source phases are coupled",
+      "status": "EXISTING LEAN; NORMALIZED COROLLARY FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING",
+      "removed": "At an actual strict-even lower ground the source\u2013fourth-moment product has a positive lower bound. On the normalized source-response ray, the real fourth moment is positive.",
+      "remaining": "Generic stationary residuals, tied grounds and arbitrary Schur witnesses cannot inherit this eigenmode statement without an adapter. Genuine finite controls falsifying unrestricted alignment do not falsify the restricted hypothetical-ground assertion.",
+      "sources": [
+        [
+          "Zeta23/CCM/Step123SameStateN21.lean",
+          188
+        ],
+        [
+          "Zeta23/CCM/Step123SameStateN21.lean",
+          263
+        ]
+      ],
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility"
+      ]
+    },
+    {
+      "id": "F07",
+      "title": "The original deep-selector inverse cannot have an arbitrary tiny gap",
+      "status": "EXISTING LEAN",
+      "removed": "For D=exp(beta L), N=ceil(L^4), the constructed bottom separator has gamma=D/[12(N\u22121)]. The detector predecessor inverse is at most 12(N\u22121)/D; the ground-relative inverse has constant6.",
+      "remaining": "This is not the opposite-parity gap or a newborn tau\u21920 resolvent. Those other branches retain their own resonance cases. Small inverse alone does not control the full Schur loss, which includes direct detector energy.",
+      "sources": [
+        [
+          "Zeta23/CCM/CanonicalDeepThresholdGap.lean",
+          19
+        ],
+        [
+          "Zeta23/CCM/NativeDeepThresholdInverseBudgets.lean",
+          164
+        ]
+      ]
+    },
+    {
+      "id": "F08",
+      "title": "Quartic image errors cannot carry the deep exponential obstruction",
+      "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING",
+      "removed": "The complete finite-to-smooth Schur error is bounded by the source-only sourceSchurUniformEnvelope(L). For every fixed real M this envelope times exp(M*L) tends to zero. For every M and delta>0, one threshold is chosen before beta, phase, separation and native packet; for beta>0 and L at least that threshold, |Loss-smoothSourceMain|<delta*exp(-M*L). This includes forcing, direct energy and shifted physical mass errors.",
+      "remaining": "The surviving smoothSourceMain is Re<G,P^-1 G>-[Re W(g,g)+eta*||g||^2], with the same actual P and complete source channels in G. Its necessary positive exponential lower bound is now formalized on sufficiently late actual packets with beta>0. No independent source-specific upper bound incompatible with that lower bound is established.",
+      "sources": [
+        [
+          "Zeta23/ExceptionalZero/Step123CompleteOutput.lean",
+          124
+        ],
+        [
+          "Zeta23/CCM/OriginalDetectorFourierPrerequisites.lean",
+          77
+        ],
+        [
+          "Zeta23/CCM/OriginalDetectorPaddedFourierQuantitativeRates.lean",
+          12
+        ],
+        [
+          "Zeta23/CCM/Step123SameStateN36.lean",
+          606
+        ]
+      ],
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.detectorSchurLoss_sub_smoothSourceMain_bound",
+        "Zeta23.OPICARound4.sourceSchurErrorBudget_le_uniformEnvelope",
+        "Zeta23.OPICARound4.sourceSchurUniformEnvelope_mul_exp_tendsto_zero",
+        "Zeta23.OPICARound4.exists_uniform_source_schur_error_threshold",
+        "Zeta23.OPICARound4.exists_uniform_smooth_source_main_lower_threshold",
+        "Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold"
+      ]
+    },
+    {
+      "id": "F09",
+      "title": "Two parity births cannot both be treated as new at the later cutoff",
+      "status": "EXISTING LEAN",
+      "removed": "The first simultaneous cutoff is max(Ke,Ko). If Ke<Ko, the even predecessor at Ko\u22121 is already negative. Only each parity's own birth predecessor is positive semidefinite.",
+      "remaining": "A one-shell index-one theorem cannot be applied twice to infer a common joint index cap. The required common-predecessor positivity is absent.",
+      "sources": [
+        [
+          "Zeta23/OPICARound3/FirstNeutralCutoff.lean",
+          105
+        ],
+        [
+          "Zeta23/OPICARound3/FirstSimultaneousNegative.lean",
+          60
+        ]
+      ]
+    },
+    {
+      "id": "F10",
+      "title": "Discarded normal output and metric costs remain observable",
+      "status": "EXISTING LEAN",
+      "removed": "The corrected row is orthogonal to legal inputs but observes the uncompressed operator output. Whole shifted-output kernel compatibility cannot be assigned to the source term alone. Moving coordinates retain the positive Gram metric and H'\u2212lambda G'\u2212lambda'G.",
+      "remaining": "A compressed eigenvector is not an eigenvector of the full uncompressed action. Source, vector, output and metric cannot be swapped without exact transports.",
+      "sources": [
+        [
+          "Zeta23/OPICARound4/SourceRow.lean",
+          41
+        ],
+        [
+          "Zeta23/OPICARound4/SourceRow.lean",
+          58
+        ],
+        [
+          "Zeta23/OPICARound3/NewbornSource.lean",
+          95
+        ],
+        [
+          "Zeta23/OPICARound4/NeutralContactPencil.lean",
+          63
+        ]
+      ]
+    },
+    {
+      "id": "F11",
+      "title": "Adjacent source normals and corners are locked",
+      "status": "DERIVED / PAPER IDENTITIES",
+      "removed": "The mixed-jet report derives I r_(K\u22121)=r_K+kappa_K e_K, the exact square-corner total (35t\u00b2+40t+32)/288, and complete source transport. Corners cannot be independently set to zero or replaced with a diagonal index map.",
+      "remaining": "Fixed-input Bessel control cannot be applied while changing selected inputs at every cutoff. A coarse conditional geometric bound of order L^16 along N=ceil(L^4) shows fixed-L cutoff divergence alone does not defeat the original detector route; arithmetic outputs and selected-input variation still need control.",
+      "sources": [],
+      "paper": "C:/Users/macka/Downloads/RESEARCH (2).md"
+    },
+    {
+      "id": "F12",
+      "title": "Scheduling, source order and damping cannot independently erase Theta",
+      "status": "EXISTING LEAN",
+      "removed": "Every fixed cofinal complete-mask quietness condition is equivalent to Theta=0. Every licensed fixed differential order has critical positive damping threshold Theta. Allowed slow moving orders retain the same rate.",
+      "remaining": "Heavy damping only proves integrability above Theta. It does not give all-positive-damping integrability. Arbitrary source schedules outside the proved class need their own adapters and costs.",
+      "sources": [
+        [
+          "Zeta23/OPICARound2/NativeCuts.lean",
+          132
+        ],
+        [
+          "Zeta23/OPICARound2/NativeCuts.lean",
+          225
+        ],
+        [
+          "Zeta23/OPICARound2/NativeCuts.lean",
+          256
+        ],
+        [
+          "Zeta23/OPICARound2/NativeCuts.lean",
+          270
+        ]
+      ]
+    },
+    {
+      "id": "F13",
+      "title": "A legal range addition cannot change the fixed causal obstruction",
+      "status": "DERIVED / NOT NEWLY COMPILED",
+      "removed": "For fixed genuine completion T and input Y, Ytilde=Y+Th has the same pairings with ker(T*) and the same distance to closure Ran(T), for every admissible causal Hilbert input h. This includes finite source surgery and adaptive legal h_L.",
+      "remaining": "Keeping Y fixed while changing only the prime field violates the completion equation. Changing T or the source changes the comparison and requires a new adapter. Removing an entire non-L2 obstruction by an inadmissible h is not allowed.",
+      "sources": [
+        [
+          "Zeta23/CCM/NativeCompletionEquation.lean",
+          109
+        ],
+        [
+          "Zeta23/CCM/NativeCausalAdjointZeroJets.lean",
+          179
+        ]
+      ]
+    },
+    {
+      "id": "F14",
+      "title": "Successful raw dictionary coefficients cannot stay arbitrary on fixed prefixes",
+      "status": "EXISTING LEAN + DERIVED CONSEQUENCE",
+      "removed": "Positive fixed-prefix residual constants force every fixed initial coefficient block toward the M\u00f6bius values if raw residuals tend to zero.",
+      "remaining": "The fixed-prefix constants are not uniform for growing prefix length. Full tail cancellation remains open; filtered residuals require their own authority.",
+      "sources": [
+        [
+          "Zeta23/OPICARound2/TruncationControls.lean",
+          5118
+        ]
+      ]
+    },
+    {
+      "id": "F15",
+      "title": "The licensed fixed-filter route already avoids inversion",
+      "status": "EXISTING LEAN",
+      "removed": "The fixed physical filter is nonzero at every admissible right zero, so every corresponding finite residual retains a positive lower norm. Its own approximation consumer implies RH directly, without inverse filtering.",
+      "remaining": "A genuine upper/approximation sequence remains missing. The raw-to-filtered norm-separation counterexample forbids a different inference; it does not refute the registered direct filtered route. Adaptive changes of filter forfeit the fixed-filter theorem.",
+      "sources": [
+        [
+          "Zeta23/OPICARound2/FixedFilter.lean",
+          879
+        ],
+        [
+          "Zeta23/OPICARound2/FixedFilter.lean",
+          908
+        ]
+      ]
+    },
+    {
+      "id": "F16",
+      "title": "Stationarity fixes the predecessor equations but not the remaining shell sign",
+      "status": "EXISTING SCHUR IDENTITIES + DERIVED LIMITATION",
+      "removed": "For actual P,b,d, v_tau=(P+tau I)^\u22121b and w_tau=e\u2212Jv_tau, predecessor stationarity fixes J*T w_tau=tau v_tau. The source observations must match this same state.",
+      "remaining": "The shell equation s_tau=d\u2212<b,(P+tau I)^\u22121b> still needs its actual arithmetic sign. d is fixed by the genuine source, not a physical knob; it is absent from the predecessor equations. The eigenmode specialization needs the full eigenmode condition, not merely stationarity.",
+      "sources": [],
+      "paper": "C:/Users/macka/Downloads/RESEARCH (2).md"
+    }
+  ],
+  "contracts": {
+    "geometry": [
+      {
+        "id": "G01",
+        "name": "native_signed_source_decomposition",
+        "assumptions": "0<L, 2<=K, u in actual pole-neutral even carrier",
+        "conclusion": "f(u)=C(u)-Delta(u), and Delta(u) equals the existing complete Chebyshev discrepancy integral.",
+        "dependencies": [
+          "AdaptiveBudget.nativeArchContinuumRow",
+          "SourceDiscrepancy.correctedSourceTest_complete_arithmetic",
+          "PrimeDiscrepancyIntegral.native_prime_discrepancy_integral"
+        ],
+        "novelty": "Publishes the previously local algebraic decomposition with its exact signed source state and the complete Chebyshev discrepancy integral. No independent analytic estimate is asserted.",
+        "delivery": "GroundArithmetic",
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.native_signed_source_decomposition",
+          "Zeta23.OPICARound4.native_signed_discrepancy_integral"
+        ],
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING"
+      },
+      {
+        "id": "G02E",
+        "name": "actual_even_ground_signed_discrepancy",
+        "assumptions": "0<L, 3<=K, hab:a<b; r is the exact actual even shifted ray at a",
+        "conclusion": "f(r)=1; Delta(r)=C(r)-1; P(r)=-1-A(r); norm(1+A(r))<=nativePrimeConcentrationBudget(L,K,correctedSourceRow,r).",
+        "dependencies": [
+          "exists_poleNeutral_strictEven_ground_shifted_normalization",
+          "native_prime_concentration_budget",
+          "correctedSourceRow_pole_cancelled",
+          "G01"
+        ],
+        "novelty": "Formalizes the actual-ground specialization as a standalone complex identity before taking norms. Negativity of a is not required.",
+        "delivery": "GroundArithmetic",
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.actual_even_ground_ray_facts",
+          "Zeta23.OPICARound4.actual_even_ground_signed_discrepancy"
+        ],
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING"
+      },
+      {
+        "id": "G02O",
+        "name": "actual_odd_ground_reciprocal_discrepancy",
+        "assumptions": "0<L, 3<=K, hba:b<a; w exact odd adjoint ground ray and v exact nativeOddReciprocalInput at b",
+        "conclusion": "oddPairing(w)=1; f(v)=-1; Delta(v)=C(v)+1; P(v)=1-A(v); norm(1-A(v))<=nativePrimeConcentrationBudget(L,K,correctedSourceRow,v).",
+        "dependencies": [
+          "exists_poleNeutral_strictOdd_ground_adjoint_normalization",
+          "native_odd_response_eq_reciprocal_source",
+          "native_prime_concentration_budget",
+          "G01"
+        ],
+        "novelty": "Exact odd sign/conjugation is essential. The arithmetic input v is not the odd eigenvector w. No odd ground-energy identity may be attached to v.",
+        "delivery": "GroundArithmetic",
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.actual_odd_ground_ray_facts",
+          "Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy"
+        ],
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING"
+      },
+      {
+        "id": "G03",
+        "assumptions": "0<L, 3<=K and actual strict ordering; source-normalized ray at corresponding bottom",
+        "conclusion": "Even lower: b-a<=R*c+tau/2. Odd lower: a-b<=R*c-tau/2.",
+        "dependencies": [
+          "native_even_complete_signed_budget",
+          "native_odd_complete_signed_budget",
+          "actual ground response-one"
+        ],
+        "novelty": "Necessary gap-versus-complete-budget inequalities, not opposing upper margins. Branches are alternatives and cannot be added as though they apply at the same strict ordering.",
+        "delivery": "GroundArithmetic",
+        "names": [
+          "actual_even_ground_signed_budget_feasibility",
+          "actual_odd_ground_signed_budget_feasibility"
+        ],
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility",
+          "Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility"
+        ],
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING"
+      },
+      {
+        "id": "G04",
+        "name": "actual_even_ground_ray_moment_feasibility",
+        "assumptions": "0<L, 3<=K, a<b; exact r at a",
+        "conclusion": "(b-a)*norm(D r)^2<=Re(M4(r)) and 0<Re(M4(r)), retaining f(r)=1 and the actual eigenmode proof.",
+        "dependencies": [
+          "poleNeutral_source_moment_gap_le",
+          "poleNeutral_even_eigen_source_moment_pos_of_lt_odd_bottom",
+          "actual ground normalization"
+        ],
+        "novelty": "Included normalization corollary, not an independent arithmetic restriction. The existing unnormalized statements apply to actual even eigenmodes; they are not all-vector or stationary-residual bounds.",
+        "delivery": "GroundArithmetic",
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility"
+        ],
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING"
+      }
+    ],
+    "joint_ground": {
+      "scope": "One actual same-L,K case join; no unconstrained source/operator parameters.",
+      "construction": "Use existing canonical definitions directly. At BothNeutralNegative L K, produce exactly one exhaustive strict-even / strict-odd / tie disjunction carrying negative actual bottoms and the module-1 feasibility consequences. Attach existing absolute energy anchors to actual eigenvectors. Keep the original hboth and actual construction references, rather than accepting arbitrary user-supplied fields labelled genuine.",
+      "strict_even": "Carry actual r, ground eigenvalue a, f(r)=1, negative absolute energy a*norm(r)^2, exact signed discrepancy equation, budget-gap feasibility and native moment positivity.",
+      "strict_odd": "Carry two distinct objects: odd ground ray w for eigenmode/absolute energy and reciprocal even input v for corrected-row arithmetic. Carry exact relation oddPairing(w)=-conj(f(v)) and the signed discrepancy equation. Never identify v with w.",
+      "tie": "Reuse the existing arbitrary-multiplicity singular-safe package: negative common bottom, nonzero actual modes, kernel compatibility, source range membership, retained kernel-plus-complement decomposition, absolute energy. Source-invisible even mode transfers to odd eigenspace; source-visible even mode forces projection of compression source onto opposite shifted kernel to vanish. Both are compatible alternatives, not a tie exclusion. No strict resolvent is available at equality.",
+      "off_line_producer": "For every actual zeta zero rho with Re rho != 1/2 and every R, compose OPICARound3.cofinally_both_neutral_negative_of_off_line_zero with this branch join to obtain L>R and common K>=3 satisfying the joint feasibility record. This producer does not grant K=ceil(L^4), common exponential detector depth, simplicity, deep-selected M4!=0, or a source-independent gap.",
+      "optional_deep_packet_adapter": "Only if needed by the separate detector error work, create a separate theorem whose input is the actual Step123NativeOutput/NativeDeepThresholdGroundData, reusing N21 groundBranchFacts. Do not merge its cutoff with the cofinal simultaneous-negativity packet without proving an explicit adapter.",
+      "no_new_closure_consumer": "Keep existing ClosureConsumers.lean. The build result is a better necessary-condition intersection, not a proved separator. An independent signed discrepancy/absolute-energy restriction or shared-negative-ground exclusion remains OPEN.",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.native_tied_ground_constraints",
+        "Zeta23.OPICARound4.joint_ground_constraints_of_both_negative",
+        "Zeta23.OPICARound4.cofinally_joint_ground_constraints_of_off_line_zero"
+      ],
+      "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING"
+    },
+    "arithmetic": [
+      {
+        "id": "A299-01",
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING",
+        "priority": "INCLUDED supporting deduction; not a prerequisite for the direct-energy arithmetic route",
+        "contract": "Construct the canonical G in the same actual predecessor space with inner(v,G)=W(g,forcingTest(v))+eta*weilTest(g,forcingTest(v),0). Prove inner(v,F-G)=approximationChannel(v), ||F-G||<=E, ||F||<=B, and ||G||<=B+E. Uniqueness from these pairings is a standard consequence of inner-product extensionality, not a separate exported theorem here.",
+        "construction": "Uses the actual physical response restricted to the aperture, proves its local L2 membership, and projects it together with the actual eta shift onto the native predecessor. The exact pairing retains the complete Archimedean and signed prime channels. No supplied matching vector, global response L2 hypothesis or independent upper bound is used.",
+        "existing_dependencies": [
+          "n36_forcing_coordinate",
+          "storedFiniteDetector_eq_originalTrial_add_error",
+          "n36_forcing_source_channels_eq",
+          "Step123ForcingErrorRates",
+          "nativeWeilResponse_bilinear_bound",
+          "canonicalNativePhysicalSynthesis_H1_bound"
+        ],
+        "quantifiers": "For each beta,sigma,a and out:Step123NativeOutput beta sigma a; no independent/second selection, detector, source or inverse inputs. The native packet itself is conditional on generation, not an unconditional existence assertion.",
+        "delivery": "SmoothForcing",
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.smoothSourceForcing",
+          "Zeta23.OPICARound4.smoothSourceForcing_pairing",
+          "Zeta23.OPICARound4.smoothSourceForcing_channels",
+          "Zeta23.OPICARound4.smoothSourceForcing_error_pairing",
+          "Zeta23.OPICARound4.smoothSourceForcing_error_bound",
+          "Zeta23.OPICARound4.finiteForcing_norm_bound",
+          "Zeta23.OPICARound4.smoothSourceForcing_norm_bound"
+        ]
+      },
+      {
+        "id": "A299-02",
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING",
+        "priority": "INCLUDED supporting deduction; not a prerequisite for the direct-energy arithmetic route",
+        "contract": "Exact identity Loss(out)=Re<F,P^-1 F>-finiteSourceEnergy(out)-eta, where finiteSourceEnergy is the actual canonical energy of the stored unit detector. Define smoothSourceMain=Re<G,P^-1 G>-Re W(g,g)-eta*||g||_L2^2. Then |Loss-smoothSourceMain|<=A*E*(2*B+E)+DeltaQ+eta*epsilon*(2+epsilon).",
+        "proof": "The finite loss identity follows from existing isometricDetectorSchur_completedSquare and F=Px+By; the generic continuous-operator quadratic perturbation bound uses ||F-G||*(||F||+||G||). The mass term uses ||f||=1, ||f-g||_L2<=epsilon and ||g||<=1+epsilon. No new inverse, positivity, eigenvector or source upper assumption is allowed.",
+        "source_sign": "Loss is MINUS Schur quadratic. T is shifted by +eta. SmoothMain subtracts BOTH complete smooth energy and eta mass. The original detector complement is full dimension N-K+1, not one shell.",
+        "edge_cases": "K=3 must reduce to zero-dimensional predecessor: F=G=0 and quadratic term zero; full direct energy/mass remains.",
+        "delivery": "SchurErrorTransport",
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.detectorSchurLoss_eq_forcing_energy",
+          "Zeta23.OPICARound4.smoothSourceMain",
+          "Zeta23.OPICARound4.detectorSchurLoss_sub_smoothSourceMain_bound",
+          "Zeta23.OPICARound4.detectorForcing_zero_at_first",
+          "Zeta23.OPICARound4.detectorSchurLoss_at_first"
+        ]
+      },
+      {
+        "id": "A299-03",
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING",
+        "priority": "INCLUDED supporting deduction; not a prerequisite for the direct-energy arithmetic route",
+        "contract": "The source-only envelope H(L)=sourceSchurUniformEnvelope(L) dominates the entire finite bound for beta>0 on the actual native packet. For every fixed real M, H(L)*exp(M*L) tends to zero. For every M and delta>0 there exists L0 before beta, phase, separation and out:Step123NativeOutput such that beta>0 and L0<=L imply |Loss-smoothSourceMain|<delta*exp(-M*L).",
+        "proof": "Replace K<=N, eta by N37 source upper, A<=12(N-1) for beta>0,L>0. E<=C L^(31/2)exp(L/2-c R), B<=C L^7 exp(L/2), with R>=sqrt(L^3/2). Any polynomial-times-exp(linear L-c L^(3/2)/sqrt2) tends to zero. Reuse existing quartic-tail asymptotic lemmas rather than duplicate their proof architecture.",
+        "scope": "Controls the complete approximation error in the same-predecessor comparison. The independent arithmetic upper bound on smoothSourceMain remains open. No inverse estimate is transferred to an opposite-parity ground gap or newborn tau limit.",
+        "delivery": "QuarticErrorReduction",
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.sourceSchurUniformEnvelope",
+          "Zeta23.OPICARound4.sourceSchurErrorBudget_le_uniformEnvelope",
+          "Zeta23.OPICARound4.sourceSchurUniformEnvelope_mul_exp_tendsto_zero",
+          "Zeta23.OPICARound4.exists_uniform_source_schur_error_threshold"
+        ]
+      },
+      {
+        "id": "A299-04",
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING",
+        "priority": "INCLUDED short corollary in QuarticErrorReduction; no new RH consumer",
+        "contract": "For every actual native packet with beta>0 past one universal source-only aperture threshold, smoothSourceMain>exp(beta*L)/4. The generated-output adapter requires its lateness parameter R to be at least that threshold. This is a necessary surviving lower bound; a separately established contrary arithmetic upper bound remains missing.",
+        "quantifiers": "There exists L0 before all beta, phase, separation and native packet parameters. The generated version also chooses L0 before rho,beta,phase,R and g:GeneratedStep123CompleteOutput; L0<=R then yields the lower bound on g.generated.native at its actual aperture. This universal lower-bound threshold does not assert an unconditional existence of such a packet.",
+        "warning": "Do not register a second copy of NativeOriginalDetectorSchurSubexponential or its existing RH consumer as research progress.",
+        "delivery": "QuarticErrorReduction",
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.exists_uniform_smooth_source_main_lower_threshold",
+          "Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold"
+        ]
+      }
+    ],
+    "arithmetic_notation": {
+      "L": "fixedOriginalSincTrialAperture a",
+      "N": "originalDetectorQuarticCutoff L = ceil(L^4)",
+      "K": "out.retained.state.selection.cutoff",
+      "eta": "out.retained.state.selection.eta > 0",
+      "P": "nativeDetectorPredecessorEquiv sigma out.retained.state.inverses, actual compression at shift -eta; physical operator is T+eta I",
+      "F": "out.retained.predecessorForcing",
+      "g": "out.originalTrial",
+      "f": "out.storedFiniteDetector, physical L2 norm 1",
+      "epsilon": "L^(17/2) exp(-c R(L)), c=originalDetectorRetainedDecayRate fixedScale>0, R=sqrt((N-4)/L)",
+      "s_j": "sqrt(1+(2*pi*j/L)^2)",
+      "A": "12*(N-1)*exp(-beta L)",
+      "E": "[C_F*(1+L)*exp(L/2)*s_(K-1)+eta]*epsilon",
+      "B": "C_Q*(1+L)*exp(L/2)*s_N*s_(K-1)+eta; C_Q obtained from complete native Weil bilinear bound",
+      "DeltaQ": "(1+L)*L^(17/2)*exp(L/2-c R(L))"
+    },
+    "ground_notation": {
+      "domain": "L real with 0<L; K natural with 3<=K; all objects are existing actual canonical source constructions at this same L,K.",
+      "a_b": "a=poleNeutralEvenRayleighBottom L K hL hK; b=poleNeutralOddRayleighBottom L K hL hK",
+      "f": "poleNeutralCorrectedCubicSource L K",
+      "A_u": "inner(correctedSourceRow L K, canonicalArchMatrix L K applied to ambient u)",
+      "P_u": "inner(correctedSourceRow L K, canonicalPrimeMatrix L K applied to ambient u), including all prime powers",
+      "C_u": "nativeArchContinuumRow L K u = -A_u - integral_0^L exp(y/2)*correctedSourceTest(L,K,u,y) dy",
+      "Delta_u": "sum_{q in Icc 2 floor(exp L)} primeSourceWeight(q)*correctedSourceTest(L,K,u,log q) minus integral_0^L exp(y/2)*correctedSourceTest(L,K,u,y) dy",
+      "r": "poleNeutralEvenShiftedRay hL K hK a hab, defined only with hab:a<b",
+      "w": "poleNeutralOddAdjointShiftedRay hL K hK b hba, defined only with hba:b<a",
+      "v": "nativeOddReciprocalInput hL K hK b hba; this is an EVEN input representing the odd response and is not w or the even resolvent applied to the corrected Riesz vector",
+      "R_c_tau": "R=nativeCompleteRowBudget L K, c=norm(poleNeutralCubicCompressionVector L K), tau=Re(trace odd operator - trace even operator)"
+    }
+  },
+  "open_arithmetic_targets": [
+    {
+      "id": "C_DIRECT",
+      "priority": "FIRST arithmetic question; no new framework required",
+      "forced": "The exact stored original smooth trial has Re W(g,g) <= -4 exp(beta L).",
+      "missing": "A legitimate source-specific lower bound incompatible with that value on an available late packet. For example, an eventual lower bound -C exp(epsilon L), epsilon<beta, would suffice.",
+      "quantifiers": "Fix rho and 0<beta<|Re rho-1/2|, then a permitted phase. A bound with constants depending on fixed rho/beta is allowed if derived without circularity and its threshold is fixed before choosing the sufficiently late generated packet. Mere existence of unrelated quiet scales is insufficient.",
+      "benefit": "This bypasses Schur transport, common-ground tie exclusion and the full regular-cell programme if the direct estimate can be proved."
+    },
+    {
+      "id": "C_SMOOTH_SCHUR",
+      "priority": "SECOND arithmetic formulation if the inverse-weighted expression reveals useful cancellation",
+      "forced": "exists_generated_smooth_source_main_lower_threshold gives one source-only L0 before all generated-packet parameters. Every actual generated packet with lateness R>=L0 has smoothSourceMain>exp(beta*L)/4 at its own aperture. The complete finite-to-smooth difference has a proved vanishing bound.",
+      "missing": "An independent bound on that complete SmoothMain, retaining all signed histories, full Archimedean term, exact P and eta mass. Conditioning alone does not provide it.",
+      "quantifiers": "The existing all-selector subexponential consumer is sufficient, not necessary. A weaker actual-generated-family bound must come with its own correct quantified route to the same late packet.",
+      "benefit": "Removes approximation error as an explanation of the obstruction and identifies the precise surviving source arithmetic.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold"
+      ]
+    },
+    {
+      "id": "D_STRICT_EVEN",
+      "priority": "Alternative actual-ground route",
+      "forced": "Delta(r)=C(r)-1 at the actual even lower ground.",
+      "missing": "A source-specific restriction inconsistent with this equality. To use the existing response<1 consumer, Re Delta(r)>Re C(r)-1 on the relevant hypothetical negative-ground family suffices.",
+      "quantifiers": "Do not assert this on every positive strict ground, where the equality is valid too. To use eventual ground closure, retain its uniform L,K threshold; otherwise prove the narrower packet-matched sufficiency directly.",
+      "benefit": "Preserves the signed joint arithmetic rather than replacing it with separate absolute-value estimates."
+    },
+    {
+      "id": "D_STRICT_ODD",
+      "priority": "Alternative actual-ground route",
+      "forced": "Delta(v)=C(v)+1 on nativeOddReciprocalInput at the actual odd lower ground.",
+      "missing": "For the existing odd response<1 consumer, Re Delta(v)<Re C(v)+1 would suffice on the relevant negative-ground family.",
+      "quantifiers": "v is an even arithmetic input. The actual odd eigenray w carries the negative energy. Neither can be replaced by the corrected Riesz test.",
+      "benefit": "Eliminates the previously tempting wrong-input and wrong-sign shortcut."
+    },
+    {
+      "id": "D_SHARED",
+      "priority": "Required only for closing via all three ground alternatives",
+      "forced": "Negative common bottom with exact eigenmode, kernel/range and complement constraints.",
+      "missing": "A genuine-source obstruction to that entire shared-negative-ground alternative. Invisibility or a zero grouped residue alone does not exclude it.",
+      "quantifiers": "Generic arbitrary-multiplicity tie machinery is available; extra deep-selected simplicity/M4 facts require their own packet. Never assume spectral genericity to delete the case.",
+      "benefit": "Keeps the hard equality case visible and prevents a strict-gap proof from claiming global closure."
+    }
+  ],
+  "alternatives": "Ground-route closure needs its strict-even, strict-odd and shared branches covered. A successful direct-detector or causal proof need not solve every ground/regular-cell obligation. The routes form alternatives, not an all-of checklist.",
+  "deferred": [
+    {
+      "item": "Mixed endpoint jets and exact adjacent normal/corner identity from RESEARCH (2).md",
+      "disposition": "OPTIONAL separate newborn track, not prerequisite to A299-01..04 or direct smooth-energy estimate",
+      "reason": "Paper-only identities could sharpen selected-input variation, but exact full-corner arithmetic multiplier remains uncontrolled. K=3, tau resonance, actual shared inputs and -2 lower-endpoint correction must remain."
+    },
+    {
+      "item": "Polynomial finite cutoff corner bound <=4000 L^16",
+      "disposition": "OPTIONAL lemma only if a chosen arithmetic estimate consumes it",
+      "reason": "Geometric polynomial cost is useful but does not bound arithmetic outputs or changing residuals. Do not make infinite fixed-L summed divergence a blocker for actual N=ceil L4 route."
+    },
+    {
+      "item": "Finite prime perturbation robustness and prefix rigidity",
+      "disposition": "DOCUMENT existing rigidity; defer new Lean finite-surgery theorems unless used by a closing proof",
+      "reason": "Changing source cannot construct genuine counterexample; raw fixed-prefix constants lack growing-prefix uniformity. Tail estimate is still missing."
+    },
+    {
+      "item": "Causal range-addition invariance and fixed-filter route",
+      "disposition": "KEEP as independent fallback references, not MVP new code",
+      "reason": "Existing licensed fixed-filter route already closes conditionally without inversion. No new approximation supplier is present."
+    },
+    {
+      "item": "All regular-cell derivatives, global source positivity, all-ray/all-aperture upper bounds",
+      "disposition": "NOT necessary for the minimal packet-restricted route",
+      "reason": "These are stronger route-specific sufficient hypotheses, not compulsory foundations for any contradiction."
+    }
+  ],
+  "current_modules": {
+    "Zeta23.OPICARound4.GroundArithmetic": {
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "sha256": "5880f1bbc7df57224d1c261cb60f7d006e66b4aa7b54e1501a949ec12c4199e8",
+      "declarations": [
+        "Zeta23.OPICARound4.nativeSignedPrimeDiscrepancy",
+        "Zeta23.OPICARound4.nativeGroundArchPairing",
+        "Zeta23.OPICARound4.nativeGroundPrimePairing",
+        "Zeta23.OPICARound4.native_signed_source_decomposition",
+        "Zeta23.OPICARound4.native_signed_discrepancy_integral",
+        "Zeta23.OPICARound4.actual_even_ground_ray_facts",
+        "Zeta23.OPICARound4.actual_odd_ground_ray_facts",
+        "Zeta23.OPICARound4.actual_even_ground_signed_discrepancy",
+        "Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy",
+        "Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility",
+        "Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility",
+        "Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility"
+      ]
+    },
+    "Zeta23.OPICARound4.JointGroundConstraints": {
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7",
+      "declarations": [
+        "Zeta23.OPICARound4.native_even_eigen_absolute_energy",
+        "Zeta23.OPICARound4.native_odd_eigen_absolute_energy",
+        "Zeta23.OPICARound4.NativeStrictEvenGroundConstraints",
+        "Zeta23.OPICARound4.NativeStrictEvenGroundConstraints.mk",
+        "Zeta23.OPICARound4.NativeStrictOddGroundConstraints",
+        "Zeta23.OPICARound4.NativeStrictOddGroundConstraints.mk",
+        "Zeta23.OPICARound4.NativeTiedGroundConstraints",
+        "Zeta23.OPICARound4.NativeTiedGroundConstraints.mk",
+        "Zeta23.OPICARound4.NativeJointGroundConstraints",
+        "Zeta23.OPICARound4.native_tied_ground_constraints",
+        "Zeta23.OPICARound4.joint_ground_constraints_of_both_negative",
+        "Zeta23.OPICARound4.cofinally_joint_ground_constraints_of_off_line_zero"
+      ]
+    },
+    "Zeta23.OPICARound4.SmoothForcing": {
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "sha256": "1fd38f486eb19066b118b96d95a1aa23e22daec6c361cbf1cdec72ee20badcb3",
+      "declarations": [
+        "Zeta23.OPICARound4.sourceImageErrorBudget",
+        "Zeta23.OPICARound4.sourceFiniteModeCost",
+        "Zeta23.OPICARound4.sourceForcingErrorBudget",
+        "Zeta23.OPICARound4.sourceWeilBoundConstant",
+        "Zeta23.OPICARound4.sourceWeilBoundConstant_pos",
+        "Zeta23.OPICARound4.finiteForcingBudget",
+        "Zeta23.OPICARound4.sourceImageErrorBudget_nonneg",
+        "Zeta23.OPICARound4.source_eta_nonneg",
+        "Zeta23.OPICARound4.sourceForcingErrorBudget_nonneg",
+        "Zeta23.OPICARound4.finiteForcingBudget_nonneg",
+        "Zeta23.OPICARound4.smoothSourceL2",
+        "Zeta23.OPICARound4.smoothSourceL2_ae",
+        "Zeta23.OPICARound4.smoothSourceResponseL2",
+        "Zeta23.OPICARound4.smoothSourceResponseL2_ae",
+        "Zeta23.OPICARound4.smoothSourceForcing",
+        "Zeta23.OPICARound4.smoothSourceForcing_pairing",
+        "Zeta23.OPICARound4.smoothSourceForcing_error_pairing",
+        "Zeta23.OPICARound4.smoothSourceForcing_channels",
+        "Zeta23.OPICARound4.norm_le_of_all_inner_bound",
+        "Zeta23.OPICARound4.smoothSourceForcing_error_bound",
+        "Zeta23.OPICARound4.finiteForcing_norm_bound",
+        "Zeta23.OPICARound4.smoothSourceForcing_norm_bound",
+        "Zeta23.OPICARound4.sourcePhysicalL2_norm_eq",
+        "Zeta23.OPICARound4.smoothSourceL2_error_bound",
+        "Zeta23.OPICARound4.smoothSourceL2_norm_bound"
+      ]
+    },
+    "Zeta23.OPICARound4.SchurErrorTransport": {
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "sha256": "1f41a890585a99d16f6a0f2dce4bb1b4bfec42daa8db9da337dd215b72d69f53",
+      "declarations": [
+        "Zeta23.OPICARound4.detectorInverse",
+        "Zeta23.OPICARound4.sourceInverseBudget",
+        "Zeta23.OPICARound4.detectorSchurLoss",
+        "Zeta23.OPICARound4.finiteSourceEnergy",
+        "Zeta23.OPICARound4.smoothSourceMain",
+        "Zeta23.OPICARound4.sourceEnergyErrorBudget",
+        "Zeta23.OPICARound4.sourceSchurErrorBudget",
+        "Zeta23.OPICARound4.detectorInverse_norm_bound",
+        "Zeta23.OPICARound4.sourceInverseBudget_nonneg",
+        "Zeta23.OPICARound4.detectorSchurLoss_lower",
+        "Zeta23.OPICARound4.detectorSchurLoss_eq_forcing_energy",
+        "Zeta23.OPICARound4.sourceQuadratic_perturbation_bound",
+        "Zeta23.OPICARound4.smoothSourceL2_mass_error_bound",
+        "Zeta23.OPICARound4.detectorSchurLoss_sub_smoothSourceMain_bound",
+        "Zeta23.OPICARound4.detectorForcing_zero_at_first",
+        "Zeta23.OPICARound4.detectorSchurLoss_at_first"
+      ]
+    },
+    "Zeta23.OPICARound4.QuarticErrorReduction": {
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "sha256": "3a176235c26faba6534a32cbea684e84dd81c36c22c9e8ac472cbea36d82dc2a",
+      "declarations": [
+        "Zeta23.OPICARound4.quartic_polynomial_exp_tendsto_zero",
+        "Zeta23.OPICARound4.quarticImageError",
+        "Zeta23.OPICARound4.quarticImageError_nonneg",
+        "Zeta23.OPICARound4.quarticImageError_mul_exp_tendsto_zero",
+        "Zeta23.OPICARound4.pow_mul_exp_mul_quarticImageError_tendsto_zero",
+        "Zeta23.OPICARound4.quarticCutoff_le_two_pow_four",
+        "Zeta23.OPICARound4.quartic_mode_cost_le",
+        "Zeta23.OPICARound4.quarticErrorEnvelope",
+        "Zeta23.OPICARound4.quarticErrorEnvelope_nonneg",
+        "Zeta23.OPICARound4.quarticErrorEnvelope_mul_exp_tendsto_zero",
+        "Zeta23.OPICARound4.quarticErrorEnvelope_eventually_lt_exp",
+        "Zeta23.OPICARound4.sourceEtaGrowthConstant",
+        "Zeta23.OPICARound4.sourceEtaGrowthConstant_pos",
+        "Zeta23.OPICARound4.source_eta_polynomial_bound",
+        "Zeta23.OPICARound4.detector_inverse_polynomial_bound",
+        "Zeta23.OPICARound4.sourceForcingGrowthConstant",
+        "Zeta23.OPICARound4.sourceForcingErrorGrowthConstant",
+        "Zeta23.OPICARound4.sourceForcingGrowthConstant_pos",
+        "Zeta23.OPICARound4.sourceForcingErrorGrowthConstant_pos",
+        "Zeta23.OPICARound4.finiteForcingBudget_polynomial_bound",
+        "Zeta23.OPICARound4.sourceForcingErrorBudget_polynomial_bound",
+        "Zeta23.OPICARound4.sourceSchurUniformEnvelope",
+        "Zeta23.OPICARound4.sourceSchurErrorBudget_le_uniformEnvelope",
+        "Zeta23.OPICARound4.sourceSchurUniformEnvelope_mul_exp_tendsto_zero",
+        "Zeta23.OPICARound4.exists_uniform_source_schur_error_threshold",
+        "Zeta23.OPICARound4.exists_uniform_smooth_source_main_lower_threshold",
+        "Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold"
+      ]
+    },
+    "Zeta23.OPICARound4.Validation.GroundConstraints": {
+      "path": "Zeta23/OPICARound4/Validation/GroundConstraints.lean",
+      "sha256": "9ed89d080e1da1da924e5d5df8986d0993c8c95afe64c3a4a252fa588725606d",
+      "declarations": []
+    },
+    "Zeta23.OPICARound4.Validation.DetectorErrors": {
+      "path": "Zeta23/OPICARound4/Validation/DetectorErrors.lean",
+      "sha256": "fb8a2d0a30b777907cb1997aa2eec61d8dc537eb6a074201c373eeb68420073b",
+      "declarations": [
+        "Zeta23.OPICARound4.validation_smooth_source_forcing",
+        "Zeta23.OPICARound4.validation_detector_schur_error",
+        "Zeta23.OPICARound4.validation_detector_first_cutoff"
+      ]
+    },
+    "Zeta23.OPICARound4.Validation.ErrorReduction": {
+      "path": "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "sha256": "8df15b1a7ad20393e41c63444bd1bc45f59d1a7a8dbd2b36960857ec8a50d336",
+      "declarations": [
+        "Zeta23.OPICARound4.Validation.quartic_rate_consumer",
+        "Zeta23.OPICARound4.Validation.source_shift_consumer",
+        "Zeta23.OPICARound4.Validation.same_detector_inverse_consumer",
+        "Zeta23.OPICARound4.Validation.complete_error_envelope_consumer",
+        "Zeta23.OPICARound4.Validation.all_exponential_rates_consumer",
+        "Zeta23.OPICARound4.Validation.threshold_before_packet_consumer",
+        "Zeta23.OPICARound4.Validation.native_packet_lower_consumer",
+        "Zeta23.OPICARound4.Validation.generated_packet_lower_consumer"
+      ]
+    }
+  },
+  "reference_source_sha256": {
+    "Zeta23/CCM/CanonicalDeepThresholdGap.lean": "4a96755f4cb91088d38116f75945654385c2db0013f0d3bf138ef1e6af537a6f",
+    "Zeta23/CCM/CanonicalPoleNeutralPublicAPI.lean": "8cbc264589d13a25d9fad21fe4aaab42310d49acf87f7337e60a9c7af482a55f",
+    "Zeta23/CCM/CanonicalPoleNeutralShiftedSecular.lean": "f210682858a328216e916fd9a103dfa62dc2e790029dd3ef4e5fb11c8111353f",
+    "Zeta23/CCM/CanonicalPoleNeutralSourceMoment.lean": "d56526e02d2bcbdceabe08373049c32796546057c54ab911c0363cdf0473bf02",
+    "Zeta23/CCM/CanonicalPoleNeutralTiePackage.lean": "72c71fac7cf7171840871ab310303fdd1a507c043d5f43e58dde88d60cb4ddbd",
+    "Zeta23/CCM/IsometricDetectorSchur.lean": "e60b5643c626bfec5027d3d3a0f4721e202287eb3c128bca2b213d9ec1f77875",
+    "Zeta23/CCM/NativeCausalAdjointZeroJets.lean": "cc8fabcc64b5083e23c5663df5516860b0f1455e847d7317f186549a9ededf6e",
+    "Zeta23/CCM/NativeCompletionEquation.lean": "455f705f4f6e352e1b9fff7867b101e14afc1da30c79e7cf54697c1418969224",
+    "Zeta23/CCM/NativeDeepThresholdInverseBudgets.lean": "dec6c0acb312d2c4e8ffec412025abad459879f161f652afa0ebcceeb7c2cb67",
+    "Zeta23/CCM/NativeIntegerPrimeSource.lean": "c98e58682a18bc073cd794200dfd351edef65e9a0ac3bfe0f7d522216f651b31",
+    "Zeta23/CCM/OriginalDetectorFourierPrerequisites.lean": "cb28a2d9f17864a5c470e8c4f6cd158e15d4a3064f0127653cedb7baa0c76131",
+    "Zeta23/CCM/OriginalDetectorNativeForcing.lean": "d7d79aa75357b782b2e3f78d1e9fc60e97755c13296f05efb30b3077550bf72b",
+    "Zeta23/CCM/OriginalDetectorPaddedFourierQuantitativeRates.lean": "9076a924d1924b6b9708f5d1dc5b3eed377ee90417afca9e75ee274117e7d73f",
+    "Zeta23/CCM/OriginalDetectorSchurLoss.lean": "3bdd457031d30d05185b593e0996ae66e87f91795c91c4da1ec2660e4b46bfa9",
+    "Zeta23/CCM/SourceNormalizationRepair.lean": "e92fb4a67284ba4b47c185056b9a3e6de6c675990d05078ffb4ace90243628d7",
+    "Zeta23/CCM/Step123NativeResidualOutput.lean": "3c965b4d8346f54fa7b095f04ff603dfc874d0af82929ba562ec0c66b0f230bd",
+    "Zeta23/CCM/Step123OutputData.lean": "1f6b1c1568ba2df9b8b5c33e8f7b3f2d63e5042ce807ea82c5b7bafc95e2ee21",
+    "Zeta23/CCM/Step123SameStateN21.lean": "8991078012730c63c5da747f6c089278e038ac16d5df6059c3857ca3446b8d77",
+    "Zeta23/CCM/Step123SameStateN36.lean": "1036db8418747ee0fb90e2717e520c0ffd9a5af100b0eba1edd7031a868773b5",
+    "Zeta23/CCM/Step123SameStateN38.lean": "f4391ee848e41c67ff3133b088d2c8295115c685f6bdab5f109131eb66ddd475",
+    "Zeta23/ExceptionalZero/Step123CompleteOutput.lean": "56a55c6810bd93e4692510da18f31e43c11864bd7bee97a1999f807b800d8166",
+    "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean": "ff745c1db8c360a44db7c821628f7d29d7246c51da7cc3ea437a188f873f41e7",
+    "Zeta23/OPICARound2/FixedFilter.lean": "5a07984846333f374b9b4631978881db7e3f4105880d998b3ec9671d10a2cd3e",
+    "Zeta23/OPICARound2/NativeCuts.lean": "59dc6fb83390ae7abd1109719371d5fb002be2850730e0685587fea4de33bdf0",
+    "Zeta23/OPICARound2/TruncationControls.lean": "1837ca3a1fd3c813613fd7e545e80b7452cb797f07a6af5595fdf19184ab3548",
+    "Zeta23/OPICARound3/FirstNeutralCutoff.lean": "956c947ab039b3109b3f73ed9659424004d99a50fb31e86cab904b5b56f0ba94",
+    "Zeta23/OPICARound3/FirstSimultaneousNegative.lean": "8d2ac1040a3679d2b732c6c3a32757cab7f38de91158bff6df40317dd0ce76b5",
+    "Zeta23/OPICARound3/NewbornSource.lean": "551e814e37e2346246479ac225e1de309a67919e861c9ef36da34d7b20b7ac85",
+    "Zeta23/OPICARound4/AbsoluteAnchor.lean": "78593711b82a02827282010cb5ff23bded51c0579004b5230ab927f53dd10c77",
+    "Zeta23/OPICARound4/AdaptiveBudget.lean": "ed2890bedcf365ff174564e37d58c63f9ac5f5f39e134cc48faaf2ffb285caab",
+    "Zeta23/OPICARound4/ClosureConsumers.lean": "f88b0a4dfc43f9e3103705ca14b46022602bde566e87d2cb2f9d1dd3eac56717",
+    "Zeta23/OPICARound4/IntegrationTargets.lean": "7ae6b92e6fa2e6d872e03750b222770acf47f334553652cab306070281849ed9",
+    "Zeta23/OPICARound4/NativeConcentrationBudget.lean": "601b170880c05df913903d2b3c6151592a14cb8e66eb80742eda75baf586c687",
+    "Zeta23/OPICARound4/NativeSourceBudget.lean": "75856cd9ae5790b9bd4afa2ca86014671a845c11f1346c20b13afbb93562b62e",
+    "Zeta23/OPICARound4/NativeVisibility.lean": "6907aab5a9005b287c0db6df5645729bb10e82fbb45d6cc8a4802c3c5f34b2b5",
+    "Zeta23/OPICARound4/NativeWitnessCosts.lean": "d72b2714a37f1b81c94e04d19fa7ddabe2b8eec9bf274ecb3fd2bfbc118b4429",
+    "Zeta23/OPICARound4/NeutralContactPencil.lean": "e637c75692a04ecdb71ed93aeb28e4e6520a80e6eb9744a6b43020d45ff9f81d",
+    "Zeta23/OPICARound4/OddReciprocalSource.lean": "87957e4a350eb385563588c5ba7f288b5d7438b4a130f91819d51fd6fe15e716",
+    "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean": "5df3b8309f6144a22da5ba8d318c5c91fba181911cf15b1f0d50d49f4d9365c1",
+    "Zeta23/OPICARound4/ScalarShift.lean": "a7b02fa624a07d13aea5580cb7d4be14a919af3f33aa16b4acdd21a2e84781e6",
+    "Zeta23/OPICARound4/SourceDiscrepancy.lean": "0b0a856d30aa821699a2b3cd5890a5ec274cfda8f8cef7c42b337aa734da7012",
+    "Zeta23/OPICARound4/SourceRow.lean": "2419595a7c5944a7a8f46cbae66387dbbf180ffe7878f973a5c6dad5b88054cd"
+  },
+  "planning_governance_checkpoint": {
+    "commit": "03f438a7508d9c4b5b840c5558aa73a144bebacc",
+    "authority": "HISTORICAL_PLANNING_CONTEXT_NOT_CURRENT_PROOF",
+    "sha256": {
+      "research/RHRC/integration/opica_composition/descendant.py": "40deeb68f41203bc2965de60976a786796faab64fc0e4e644f31120a0c68a749",
+      "research/RHRC/integration/opica_composition/qualification.py": "ce0c5ce6cb810608f88ee23077da18ad35956058aa281e09c0c87adb9e8417c6",
+      "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json": "fadf549d0f4db569570342c3d0cdfe3a3c8ff435e51c77f40fb2d2372446f05f",
+      "research/RHRC/integration/opica_round4/COUNTERMODEL_REGISTER.json": "988b8310eab25e7acbef2e43c0523cc4769fddc03597dbc316968943ba79f76c",
+      "research/RHRC/integration/opica_round4/MATH_CONTRACTS.json": "7b6a443c8dd9e2a11edf42cf819080d917644fcf210f64cb74b7c00140be9f09",
+      "research/RHRC/integration/opica_round4/math_gate.py": "36ba64142eb3d57521736985dba2fdeb09acf0b101486cf85e6a0c22432defcd"
+    }
+  },
+  "production_qualification": "CURRENT_HEAD_MATHEMATICAL_SUPPORT_AND_INDEPENDENT_ACCEPTANCE_REQUIRED"
+}

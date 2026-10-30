@@ -3164,6 +3164,24 @@
       "case": null,
       "lane": "CONTRACT",
       "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_source_constraint_structure_requires_full_constructor_audit",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_source_constraint_extension_retains_exact_previous_support",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_source_constraint_register_rejects_wrong_source_and_claim_promotion",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
     }
   ],
   "migrations": [
@@ -3298,5 +3316,28 @@
     "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
     "RH": "OPEN",
     "Step4": "OPEN"
+  },
+  "source_constraint_extension": {
+    "register": "SOURCE_CONSTRAINTS.json",
+    "modules": [
+      "Zeta23.OPICARound4.GroundArithmetic",
+      "Zeta23.OPICARound4.JointGroundConstraints",
+      "Zeta23.OPICARound4.SmoothForcing",
+      "Zeta23.OPICARound4.SchurErrorTransport",
+      "Zeta23.OPICARound4.QuarticErrorReduction",
+      "Zeta23.OPICARound4.Validation.GroundConstraints",
+      "Zeta23.OPICARound4.Validation.DetectorErrors",
+      "Zeta23.OPICARound4.Validation.ErrorReduction"
+    ],
+    "native_gate": "MATHEMATICAL_SUPPORT",
+    "native_proofs_and_type_errors_required": true,
+    "retained_semantic_mutations": 9,
+    "exact_semantic_mutations": 17,
+    "portable_additions": [
+      "test_source_constraint_structure_requires_full_constructor_audit",
+      "test_source_constraint_extension_retains_exact_previous_support",
+      "test_source_constraint_register_rejects_wrong_source_and_claim_promotion"
+    ],
+    "production_qualification": "PENDING_CURRENT_HEAD_CI"
   }
 }
