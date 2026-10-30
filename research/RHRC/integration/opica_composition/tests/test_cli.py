@@ -20,11 +20,11 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from research.RHRC.integration.opica_composition import cli, executor, qualification, snapshot, testing
+from research.RHRC.integration.opica_composition import cli, executor, qualification, snapshot, testing, accept
 from research.RHRC.integration.opica_composition.contracts import WorkerConfig, SearchBudget
 from research.RHRC.integration.opica_round4 import math_gate
 from research.RHRC.integration.opica_composition.accept import ROUND4_LANES
-from research.RHRC.integration.opica_composition.canonical import ContractError, canonical_bytes, load_bytes
+from research.RHRC.integration.opica_composition.canonical import ContractError, canonical_bytes, load_bytes, digest
 from research.RHRC.integration.opica_composition.descendant import BASE, BASE_TREE
 from research.RHRC.integration.opica_composition.provider import configuration
 from research.RHRC.integration.opica_composition.testing import discover_methods
@@ -40,6 +40,19 @@ REQUIRED_LANES = (
 
 
 class CliOrchestrationTests(unittest.TestCase):
+    def test_replay_partition_register_cannot_drop_math_canonical_or_independent_jobs(self):
+        from research.RHRC.integration.opica_composition import config
+        matrix=load_bytes((R4/'ACCEPTANCE_MATRIX.json').read_bytes())
+        self.assertEqual(config.check_replay_partition(matrix)['original_lanes'],list(ROUND4_LANES))
+        for change in ('mathematics','canonical','independent','summary-authority'):
+            changed=copy.deepcopy(matrix);partition=changed['independent_replay_partition']
+            if change=='mathematics':partition['groups']['AUXILIARY'].remove('MATHEMATICAL_SUPPORT')
+            elif change=='canonical':partition['groups']['CANONICAL']=[]
+            elif change=='independent':partition['final_requires']=['lanes']
+            else:partition['authority']='STANDALONE_PASS_REPORT'
+            with self.subTest(change=change),self.assertRaises(ContractError):
+                config.check_replay_partition(changed)
+
     def test_source_constraint_structure_requires_full_constructor_audit(self):
         source = ('namespace Fixture\nstructure Packet : Prop where\n  source : True\n'
                   'def statement : Prop := True\nprivate theorem hidden : True := True.intro\n')
@@ -704,3 +717,177 @@ run_tests(['opica_failed_test_fixture.Failing.test_failure'], sys.argv[1])
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class IndependentGroupTransportTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
+        self.exp={'run_id':'123456','attempt':2,'requested_commit':'a'*40,'requested_tree':'b'*40,'profile_digest':'c'*64}
+        self.current={'fixture':'source-bound portable transport, not native evidence'}
+        self.clean=patch.object(cli,'validate_descendant',return_value=self.current);self.clean.start()
+        self.methods=patch.object(testing,'checked_inventory',return_value={'tests':[]});self.methods.start()
+        self.cap=patch.object(snapshot,'TRANSPORT_MAX_FILE_BYTES',32768);self.cap.start()
+        self.originals={}
+        self.producers=self.root/'producers';self.producers.mkdir()
+        for lane in accept.ROUND4_LANES:
+            output=self.producers/lane;output.mkdir()
+            cli.write(output/'source.json',self.current);cli.write(output/'source-after.json',self.current)
+            cli.write(output/'results.json',{'scope':'FIXTURE_ONLY'})
+            if lane in cli.NATIVE_EVIDENCE_LANES:
+                raw=output/'native-evidence';raw.mkdir();(raw/'raw.log').write_bytes(b'FIXTURE_ONLY')
+                cli.write(output/'native-evidence-inventory.json',snapshot.seal_evidence_tree(raw)[0])
+            expected=cli.lane_expected(lane,self.exp)
+            record={'schema':'OPICA4_LANE_BUNDLE_V1','lane_id':lane,'scope':expected['scope'],
+                    'checked':expected['checked'],'experiment':self.exp,'conclusion':'success',
+                    'artifacts':snapshot.seal_evidence_tree(output)[0]['files'],
+                    'records':['source.json','source-after.json','results.json']}
+            cli.write(output/'lane.json',record);self.originals[lane]=record
+
+    def tearDown(self):
+        self.cap.stop();self.methods.stop();self.clean.stop();self.tmp.cleanup()
+
+    def bundle(self,group='CORE',suffix=''):
+        root=self.root/('bundle-'+group+suffix);root.mkdir()
+        cli.write(root/'source.json',self.current);cli.write(root/'source-after.json',self.current)
+        rows=[]
+        for lane in accept.group_lanes(group):
+            out=root/lane;out.mkdir();(out/'empty/nested').mkdir(parents=True)
+            (out/'.hidden').mkdir();(out/'.hidden/.receipt').write_bytes(b'ALL_ENTRIES_RETAINED')
+            (out/'command.log').write_bytes(b'FIXTURE_ONLY')
+            if lane in cli.NATIVE_EVIDENCE_LANES:
+                archive=self.root/('raw-'+lane+suffix);archive.mkdir();(archive/'empty').mkdir()
+                (archive/'.hidden').mkdir();(archive/'.hidden/.raw').write_bytes(b'DOT_RAW')
+                for n in range(3):(archive/('raw'+str(n)+'.log')).write_bytes(bytes([65+n])*20000)
+                envelope=snapshot.pack_evidence_bundle(archive,out/'independent-native-transport',
+                                                       {'lane_id':lane,'experiment':self.exp})
+                cli.write(out/'independent-native-archive.json',{
+                    'schema':'OPICA_INDEPENDENT_NATIVE_ARCHIVE_V1','lane':lane,'experiment':self.exp,
+                    'complete_inventory':envelope['manifest'],'transport':envelope,'scratch_retired':True})
+            expected=cli.lane_expected(lane,self.exp)
+            rows.append({'id':lane,'scope':expected['scope'],
+                         'evidence_digest':digest(self.originals[lane],domain='OPICA_LANE_EVIDENCE_V1')})
+        record={'schema':'OPICA4_INDEPENDENT_REPLAY_GROUP_V1','group_id':group,'experiment':self.exp,
+                'checked':{'commit':self.exp['requested_commit'],'tree':self.exp['requested_tree']},
+                'conclusion':'success','independently_reconstructed_lanes':rows}
+        self.reseal(root,group,record)
+        return root
+
+    def reseal(self,root,group,record=None):
+        wrapper=root/'group.json'
+        if record is None:record=json.loads(wrapper.read_bytes())['record']
+        manifest=snapshot.seal_evidence_tree(root)[0]
+        cli.write(wrapper,{'schema':'OPICA4_INDEPENDENT_GROUP_BUNDLE_V1','group_id':group,'record':record,
+                  'artifacts':[r for r in manifest['files'] if r['path']!='group.json'],
+                  'directories':manifest['directories'],'records':['source.json','source-after.json'],
+                  'source_refs':{'before':'source.json','after':'source-after.json'}})
+
+    def test_native_container_above_ordinary_limit_preserves_complete_tree(self):
+        bundle=self.bundle();staging=self.root/'transport';output=self.root/'restored'
+        before=snapshot.seal_evidence_tree(bundle)[0]
+        self.assertTrue(all((bundle/lane/'independent-native-transport/bundle.zip').stat().st_size>32768
+                            for lane in cli._group_native_lanes('CORE')))
+        descriptor=cli.pack_group_bundle(REPO,bundle,staging,'CORE',self.exp)
+        self.assertEqual(cli._unpack_group_bundle(REPO,staging,output,'CORE',self.exp),descriptor)
+        self.assertEqual(snapshot.seal_evidence_tree(output)[0],before)
+        self.assertTrue((output/'CONTRACT/empty/nested').is_dir())
+        self.assertEqual((output/'CONTRACT/.hidden/.receipt').read_bytes(),b'ALL_ENTRIES_RETAINED')
+
+    def test_ordinary_oversized_member_rejected(self):
+        bundle=self.bundle();(bundle/'CONTRACT/oversize.log').write_bytes(b'x'*32769);self.reseal(bundle,'CORE')
+        with self.assertRaises(ContractError):cli.pack_group_bundle(REPO,bundle,self.root/'transport','CORE',self.exp)
+
+    def test_wrong_attempt_group_and_extra_component_rejected(self):
+        bundle=self.bundle();staging=self.root/'transport';cli.pack_group_bundle(REPO,bundle,staging,'CORE',self.exp)
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'wrong-attempt','CORE',{**self.exp,'attempt':3})
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'wrong-group','AUXILIARY',self.exp)
+        (staging/'unlisted').write_bytes(b'not permitted')
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'extra','CORE',self.exp)
+
+    def test_missing_component_and_tampered_zip_rejected(self):
+        bundle=self.bundle();staging=self.root/'transport';cli.pack_group_bundle(REPO,bundle,staging,'CORE',self.exp)
+        component=staging/'native-COMPOSITION_FORMAL';renamed=staging/'wrong-name';component.rename(renamed)
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'missing','CORE',self.exp)
+        renamed.rename(component)
+        with (component/'bundle.zip').open('r+b') as stream:stream.seek(40);stream.write(b'BAD!')
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'tampered','CORE',self.exp)
+
+    def test_empty_directory_substitution_and_copy_race_rejected(self):
+        bundle=self.bundle();staging=self.root/'transport';cli.pack_group_bundle(REPO,bundle,staging,'CORE',self.exp)
+        path=staging/'group-transport.json';descriptor=json.loads(path.read_bytes())
+        descriptor['complete_inventory']['directories'].remove('CONTRACT/empty/nested');cli.write(path,descriptor)
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'bad-empty','CORE',self.exp)
+        original=cli._group_copy_file;changed=False
+        def race(source,relative,*args):
+            nonlocal changed
+            if not changed:
+                changed=True;(bundle/'CONTRACT/command.log').write_bytes(b'CHANGED_DURING_COPY')
+            return original(source,relative,*args)
+        with patch.object(cli,'_group_copy_file',side_effect=race):
+            with self.assertRaises(ContractError):cli.pack_group_bundle(REPO,bundle,self.root/'race','CORE',self.exp)
+        self.assertFalse((self.root/'race/group-transport.json').exists())
+
+    def test_resealed_skipped_or_missing_independent_mode_is_rejected(self):
+        bundle=self.bundle();folder=bundle/'CONTRACT/tests';folder.mkdir()
+        method='protocol_fixture.IndependentCase.test_required'
+        inventory={'tests':[{'lane':'CONTRACT','method':method}]}
+        receipts={}
+        for optimized,name in ((False,'normal'),(True,'optimized')):
+            raw=('actual protocol log '+name).encode();(folder/(name+'.log')).write_bytes(raw)
+            (folder/(name+'.driver.log')).write_bytes(b'protocol fixture only')
+            receipts[name]={'schema':'OPICA_EXACT_TEST_RECEIPT_V1','status':'PASS','optimized':optimized,
+                'test_ids':[method],'executed':1,'expected':1,'skips':0,'errors':0,'failures':0,
+                'expected_failures':0,'unexpected_successes':0,'log_sha256':hashlib.sha256(raw).hexdigest()}
+            cli.write(folder/(name+'.json'),receipts[name])
+        self.reseal(bundle,'CORE')
+        with patch.object(testing,'checked_inventory',return_value=inventory):
+            cli._checked_group_bundle(REPO,bundle,'CORE',self.exp)
+            for key,value in [('skips',1),('errors',1),('optimized',True),
+                              ('test_ids',['foreign']),('log_sha256','d'*64),('missing',None)]:
+                bad=copy.deepcopy(receipts['normal'])
+                if key=='missing':(folder/'normal.json').unlink()
+                else:bad[key]=value;cli.write(folder/'normal.json',bad)
+                self.reseal(bundle,'CORE')
+                # All wrapper hashes are recomputed. The raw semantic guard,
+                # rather than the transport hash check, must reject the claim.
+                with self.subTest(key=key),self.assertRaises((ContractError,FileNotFoundError)):
+                    cli._checked_group_bundle(REPO,bundle,'CORE',self.exp)
+                cli.write(folder/'normal.json',receipts['normal']);self.reseal(bundle,'CORE')
+
+    def test_resealed_failed_canonical_command_or_missing_product_is_rejected(self):
+        bundle=self.bundle('CANONICAL');folder=bundle/'GENERATED_STATE'
+        products=load_bytes((R4/'BUILD_MANIFEST.json').read_bytes())['generated']
+        recipes=[([sys.executable,'-B','research/RHRC/tools/materialize_derived_state.py','--check'],'canonical-current.log'),
+                 ([sys.executable,'-B','-m','unittest','research.RHRC.integration.opica_round2.tests.test_file_classes'],'classification.log')]
+        commands=[]
+        for argv,name in recipes:
+            raw=b'protocol command log only';(folder/name).write_bytes(raw)
+            commands.append({'argv':argv,'exit_code':0,'log':name,'sha256':hashlib.sha256(raw).hexdigest()})
+        views={'EVENTS.jsonl':b'','APPLICATIONS.jsonl':b'',
+               'CURRENT_STATE.json':canonical_bytes({'generation':None,'source':None,'revision':0,
+                                    'applications':0,'RH':'OPEN','Step4':'OPEN'})+b'\n'}
+        for name,raw in views.items():(folder/name).write_bytes(raw)
+        (folder/'determinism.db').write_bytes(b'codec fixture; not executable SQLite evidence')
+        good={'status':'PASS_GENERATED_STATE','canonical_products':{r['path']:snapshot.file_hash(REPO/r['path']) for r in products},
+              'commands':commands,'view_hashes':{name:hashlib.sha256(raw).hexdigest() for name,raw in views.items()},
+              'RH':'OPEN','Step4':'OPEN'}
+        cli.write(folder/'generated-state.json',good);self.reseal(bundle,'CANONICAL')
+        cli._checked_group_bundle(REPO,bundle,'CANONICAL',self.exp)
+        for change in ('failed-command','missing-product','wrong-product','wrong-recipe','claim'):
+            bad=copy.deepcopy(good)
+            if change=='failed-command':bad['commands'][0]['exit_code']=1
+            elif change=='missing-product':bad['canonical_products'].pop(products[0]['path'])
+            elif change=='wrong-product':bad['canonical_products'][products[0]['path']]='d'*64
+            elif change=='wrong-recipe':bad['commands'][0]['argv'][-1]='--write'
+            else:bad['Step4']='CLOSED'
+            cli.write(folder/'generated-state.json',bad);self.reseal(bundle,'CANONICAL')
+            with self.subTest(change=change),self.assertRaises(ContractError):
+                cli._checked_group_bundle(REPO,bundle,'CANONICAL',self.exp)
+
+    def test_raw_log_mutation_and_posix_alias_rejected(self):
+        bundle=self.bundle();(bundle/'CONTRACT/command.log').write_bytes(b'REPLACED_AFTER_WRAPPER')
+        with self.assertRaises(ContractError):cli.pack_group_bundle(REPO,bundle,self.root/'raw-change','CORE',self.exp)
+        if os.name!='nt':
+            other=self.bundle(suffix='-alias');target=self.root/'outside.log';target.write_bytes(b'OUTSIDE')
+            (other/'CONTRACT/command.log').unlink();os.symlink(target,other/'CONTRACT/command.log')
+            with self.assertRaises(ContractError):cli.pack_group_bundle(REPO,other,self.root/'alias','CORE',self.exp)
+            self.assertFalse((self.root/'alias/group-transport.json').exists())

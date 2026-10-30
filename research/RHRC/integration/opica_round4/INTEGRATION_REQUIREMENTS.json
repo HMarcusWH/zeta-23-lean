@@ -127,5 +127,51 @@
       "scope": "Actual quartic cutoff gives full error smaller than any fixed exponential; late generated smooth loss retains an exponential lower margin with the threshold chosen first.",
       "open_boundary": "The independent arithmetic bound incompatible with that surviving margin remains OPEN."
     }
-  ]
+  ],
+  "acceptance_coordination": {
+    "schema": "OPICA4_BOUNDED_REPLAY_COORDINATION_V1",
+    "producer_lanes": [
+      "CONTRACT",
+      "PARENT_REGRESSION",
+      "CURRENT_COMPATIBILITY",
+      "COMPOSITION_FORMAL",
+      "SEMANTIC_NEGATIVES",
+      "FRAMEWORK_ADAPTERS",
+      "PROVIDER_SELECTED",
+      "REPLAY_CAMPAIGN",
+      "GENERATED_STATE",
+      "MATHEMATICAL_SUPPORT",
+      "SOURCE_NUMERICS"
+    ],
+    "independent_groups": {
+      "CORE": [
+        "CONTRACT",
+        "PARENT_REGRESSION",
+        "CURRENT_COMPATIBILITY",
+        "COMPOSITION_FORMAL"
+      ],
+      "AUXILIARY": [
+        "SEMANTIC_NEGATIVES",
+        "FRAMEWORK_ADAPTERS",
+        "PROVIDER_SELECTED",
+        "REPLAY_CAMPAIGN",
+        "MATHEMATICAL_SUPPORT",
+        "SOURCE_NUMERICS"
+      ],
+      "CANONICAL": [
+        "GENERATED_STATE"
+      ]
+    },
+    "final_acceptance": "REQUIRES_ALL_PRODUCER_AND_INDEPENDENT_JOBS_AND_COMPLETE_EVIDENCE",
+    "complete_original_replays": true,
+    "normal_and_optimized": true,
+    "canonical_products": 81,
+    "unchanged_worker_resource_caps": true,
+    "group_service_seconds_max": 16200,
+    "whole_job_cleanup_margin_seconds": 900,
+    "final_service_seconds_max": 7200,
+    "qualification": "PENDING_CURRENT_HEAD_CI",
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  }
 }

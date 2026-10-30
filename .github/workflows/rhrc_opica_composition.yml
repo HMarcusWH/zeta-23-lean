@@ -126,22 +126,37 @@ jobs:
             ${{ runner.temp }}/opica4-source-before.json
             ${{ runner.temp }}/opica4-lanes/${{ matrix.lane }}/failure-diagnostics
           if-no-files-found: warn
-  acceptance:
-    name: Round4 / ACCEPTANCE
+  independent:
+    name: Round4 / INDEPENDENT_${{ matrix.group }}
     needs: lanes
     if: ${{ always() }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - {group: CORE, provider: false}
+          - {group: AUXILIARY, provider: true}
+          - {group: CANONICAL, provider: false}
     steps:
+      - name: Record independent group deadline with diagnostic upload margin
+        shell: bash
+        run: |
+          set -euo pipefail
+          job_deadline=$(( $(date +%s) + (360 - 15) * 60 ))
+          printf '%s\n' "OPICA_INDEPENDENT_DEADLINE=$job_deadline" >> "$GITHUB_ENV"
       - name: Record upstream matrix disposition
         if: ${{ always() }}
         continue-on-error: true
         shell: bash
         env:
           UPSTREAM_JSON: ${{ toJSON(needs) }}
+          GROUP: ${{ matrix.group }}
         run: |
-          mkdir -p "$RUNNER_TEMP/opica4-diagnostics/ACCEPTANCE"
-          printf '%s\n' "$UPSTREAM_JSON" > "$RUNNER_TEMP/opica4-diagnostics/ACCEPTANCE/upstream.json"
+          mkdir -p "$RUNNER_TEMP/opica4-diagnostics/$GROUP"
+          printf '%s\n' "$UPSTREAM_JSON" > "$RUNNER_TEMP/opica4-diagnostics/$GROUP/upstream.json"
       - name: Require every matrix job to succeed
         id: upstream
         env:
@@ -160,17 +175,18 @@ jobs:
         id: runtime
         with:
           native: 'true'
-          provider: 'true'
+          provider: ${{ matrix.provider }}
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           pattern: opica4-${{ github.run_id }}-${{ github.run_attempt }}-lane-*
           path: ${{ runner.temp }}/opica4-input
-      - name: Reconstruct eleven complete bundles and run independent checkers
-        id: acceptance
+      - name: Reconstruct eleven complete bundles and run the fixed independent group
+        id: independent
         working-directory: host
         shell: bash
         env:
           REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          GROUP: ${{ matrix.group }}
         run: |
           set -euo pipefail
           python -B -m research.RHRC.integration.opica_composition.cli transport-unpack \
@@ -258,11 +274,12 @@ jobs:
 
           def observe():
               unit = sys.argv[1]
-              if re.fullmatch(r'opica4-accept-[0-9]+-[0-9]+\.service', unit) is None:
-                  raise ValueError('Authored acceptance unit required')
+              match = re.fullmatch(r'opica4-accept-(CORE|AUXILIARY|CANONICAL)-[0-9]+-[0-9]+\.service', unit)
+              if match is None or match.group(1) != os.environ['GROUP']:
+                  raise ValueError('Authored independent group unit required')
               temporary = pathlib.Path(os.environ['RUNNER_TEMP'])
               expected_group = '/system.slice/' + unit
-              destination = directory(temporary / 'opica4-diagnostics' / 'ACCEPTANCE')
+              destination = directory(temporary / 'opica4-diagnostics' / match.group(1))
               try:
                   fd = os.open('resource-observer.jsonl', os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
                                0o600, dir_fd=destination)
@@ -345,18 +362,183 @@ jobs:
           PY
           then
             python -B "$RUNNER_TEMP/opica4-accept-observer.py" \
-              "opica4-accept-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT.service" &
+              "opica4-accept-$GROUP-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT.service" &
             observer_pid=$!
           fi
-          sudo systemd-run --wait --pipe --collect --unit="opica4-accept-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
+          [[ "$OPICA_INDEPENDENT_DEADLINE" =~ ^[0-9]+$ ]]
+          remaining_seconds=$(( OPICA_INDEPENDENT_DEADLINE - $(date +%s) ))
+          test "$remaining_seconds" -gt 0
+          runtime_seconds="$remaining_seconds"
+          if [ "$runtime_seconds" -gt 16200 ]; then
+            runtime_seconds=16200
+          fi
+          sudo systemd-run --wait --pipe --collect --unit="opica4-accept-$GROUP-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
             --uid="$(id -u)" --gid="$(id -g)" \
             -p MemoryMax=4294967296 -p MemorySwapMax=0 -p TasksMax=64 -p CPUQuota=200% \
+            -p "RuntimeMaxSec=$runtime_seconds" \
             -p "WorkingDirectory=$PWD" /usr/bin/env \
             "PATH=$PATH" "HOME=$HOME" PYTHONUTF8=1 PYTHONDONTWRITEBYTECODE=1 LEAN_NUM_THREADS=2 \
             "OPICA_NATIVE_OUTPUT=$OPICA_NATIVE_OUTPUT" "OPICA_NATIVE_CONFIG=$OPICA_NATIVE_CONFIG" \
-            python -B -m research.RHRC.integration.opica_composition.cli accept \
-            --bundles "$RUNNER_TEMP/opica4-bundles" --output "$RUNNER_TEMP/opica4-acceptance" \
+            python -B -m research.RHRC.integration.opica_composition.cli accept-group \
+            --group "$GROUP" --bundles "$RUNNER_TEMP/opica4-bundles" \
+            --output "$RUNNER_TEMP/opica4-independent/$GROUP" \
             --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" --provider-root "$GITHUB_WORKSPACE/provider"
+      - name: Seal the complete independent group transport
+        id: transport
+        working-directory: host
+        shell: bash
+        env:
+          GROUP: ${{ matrix.group }}
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          python -B -m research.RHRC.integration.opica_composition.cli group-transport-pack \
+            --group "$GROUP" --input "$RUNNER_TEMP/opica4-independent/$GROUP" \
+            --output "$RUNNER_TEMP/opica4-independent-transports/$GROUP" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --requested-commit "$REQUESTED_COMMIT" --requested-tree "$(git rev-parse "$REQUESTED_COMMIT^{tree}")"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ success() && steps.independent.outcome == 'success' && steps.transport.outcome == 'success' }}
+        with:
+          name: opica4-${{ github.run_id }}-${{ github.run_attempt }}-independent-${{ matrix.group }}
+          path: ${{ runner.temp }}/opica4-independent-transports/${{ matrix.group }}
+          include-hidden-files: true
+          compression-level: 0
+          if-no-files-found: error
+      - name: Collect bounded diagnostics after an interrupted independent group
+        if: ${{ always() && steps.independent.outcome != 'success' }}
+        continue-on-error: true
+        working-directory: host
+        shell: bash
+        env:
+          GROUP: ${{ matrix.group }}
+        run: |
+          python -B - <<'PY'
+          import json, os
+          from pathlib import Path
+          from research.RHRC.integration.opica_composition import cli
+          for lane in cli.group_lanes(os.environ['GROUP']):
+              output = Path(os.environ['RUNNER_TEMP']) / 'opica4-independent' / os.environ['GROUP'] / lane
+              try:
+                  if cli.unlinked(output).is_dir():
+                      cli._collect_failed_native_diagnostics(lane, cli.REPO, output)
+              except Exception as error:
+                  print(json.dumps({'authority': 'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE',
+                                    'lane': lane, 'error': type(error).__name__}), flush=True)
+          PY
+      - name: Record independent group diagnostic disposition
+        if: ${{ always() }}
+        continue-on-error: true
+        shell: bash
+        env:
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          GROUP: ${{ matrix.group }}
+          STEPS_JSON: ${{ toJSON(steps) }}
+        run: |
+          python3 -B - <<'PY'
+          import json, os, pathlib, subprocess
+          output = pathlib.Path(os.environ['RUNNER_TEMP']) / 'opica4-diagnostics' / os.environ['GROUP']
+          output.mkdir(parents=True, exist_ok=True)
+          host = pathlib.Path(os.environ['GITHUB_WORKSPACE']) / 'host'
+          def checked(revision):
+              result = subprocess.run(['git', '-C', str(host), 'rev-parse', revision], capture_output=True, text=True)
+              return result.stdout.strip() if result.returncode == 0 else None
+          report = {'schema': 'OPICA_CI_DIAGNOSTICS_V1', 'authority': 'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE',
+                    'lane': 'INDEPENDENT_' + os.environ['GROUP'], 'run_id': os.environ['GITHUB_RUN_ID'],
+                    'attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'requested_commit': os.environ['REQUESTED_COMMIT'],
+                    'checked_commit': checked('HEAD'), 'checked_tree': checked('HEAD^{tree}'),
+                    'steps': json.loads(os.environ['STEPS_JSON'])}
+          (output / 'disposition.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Preserve optional independent group bootstrap diagnostics
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        continue-on-error: true
+        with:
+          name: opica4-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}-independent-${{ matrix.group }}
+          path: |
+            ${{ runner.temp }}/opica4-diagnostics/${{ matrix.group }}
+            ${{ runner.temp }}/opica4-native/bootstrap
+            ${{ runner.temp }}/opica4-source-before.json
+            ${{ runner.temp }}/opica4-independent/${{ matrix.group }}/failure-diagnostics
+            ${{ runner.temp }}/opica4-independent/${{ matrix.group }}/*/failure-diagnostics
+          if-no-files-found: warn
+  acceptance:
+    name: Round4 / ACCEPTANCE
+    needs: [lanes, independent]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - name: Record both upstream matrix dispositions
+        if: ${{ always() }}
+        continue-on-error: true
+        shell: bash
+        env:
+          UPSTREAM_JSON: ${{ toJSON(needs) }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/opica4-diagnostics/ACCEPTANCE"
+          printf '%s\n' "$UPSTREAM_JSON" > "$RUNNER_TEMP/opica4-diagnostics/ACCEPTANCE/upstream.json"
+      - name: Require every producer and independent group to succeed
+        id: upstream
+        shell: bash
+        env:
+          PRODUCERS: ${{ needs.lanes.result }}
+          INDEPENDENT: ${{ needs.independent.result }}
+        run: |
+          set -euo pipefail
+          test "$PRODUCERS" = success
+          test "$INDEPENDENT" = success
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          path: host
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: 3.13.5
+      - uses: ./host/.github/actions/opica4-runtime
+        id: runtime
+        with:
+          native: 'false'
+          provider: 'false'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: opica4-${{ github.run_id }}-${{ github.run_attempt }}-lane-*
+          path: ${{ runner.temp }}/opica4-input
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: opica4-${{ github.run_id }}-${{ github.run_attempt }}-independent-*
+          path: ${{ runner.temp }}/opica4-independent-input
+      - name: Reconstruct and bind every producer and independent group
+        id: acceptance
+        working-directory: host
+        shell: bash
+        env:
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          UPSTREAM_JSON: ${{ toJSON(needs) }}
+        run: |
+          set -euo pipefail
+          requested_tree="$(git rev-parse "$REQUESTED_COMMIT^{tree}")"
+          python -B -m research.RHRC.integration.opica_composition.cli transport-unpack \
+            --input "$RUNNER_TEMP/opica4-input" --output "$RUNNER_TEMP/opica4-bundles" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --requested-commit "$REQUESTED_COMMIT" --requested-tree "$requested_tree"
+          python -B -m research.RHRC.integration.opica_composition.cli group-transport-unpack \
+            --input "$RUNNER_TEMP/opica4-independent-input" --output "$RUNNER_TEMP/opica4-groups" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --requested-commit "$REQUESTED_COMMIT" --requested-tree "$requested_tree"
+          sudo systemd-run --wait --pipe --collect --unit="opica4-accept-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
+            --uid="$(id -u)" --gid="$(id -g)" \
+            -p MemoryMax=4294967296 -p MemorySwapMax=0 -p TasksMax=64 -p CPUQuota=200% \
+            -p RuntimeMaxSec=7200 \
+            -p "WorkingDirectory=$PWD" /usr/bin/env \
+            "PATH=$PATH" "HOME=$HOME" PYTHONUTF8=1 PYTHONDONTWRITEBYTECODE=1 LEAN_NUM_THREADS=2 \
+            python -B -m research.RHRC.integration.opica_composition.cli accept-groups \
+            --bundles "$RUNNER_TEMP/opica4-bundles" --groups "$RUNNER_TEMP/opica4-groups" \
+            --output "$RUNNER_TEMP/opica4-acceptance" --needs-json "$UPSTREAM_JSON" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: ${{ success() && steps.acceptance.outcome == 'success' }}
         with:
@@ -386,7 +568,7 @@ jobs:
                     'steps': json.loads(os.environ['STEPS_JSON'])}
           (output / 'disposition.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
           PY
-      - name: Preserve optional acceptance bootstrap diagnostics
+      - name: Preserve optional acceptance diagnostics
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: ${{ always() }}
         continue-on-error: true
@@ -394,6 +576,5 @@ jobs:
           name: opica4-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}-ACCEPTANCE
           path: |
             ${{ runner.temp }}/opica4-diagnostics/ACCEPTANCE
-            ${{ runner.temp }}/opica4-native/bootstrap
-            ${{ runner.temp }}/opica4-source-before.json
+            ${{ runner.temp }}/opica4-acceptance/failure-diagnostics
           if-no-files-found: warn

@@ -165,7 +165,7 @@
     },
     {
       "path": ".github/workflows/rhrc_opica_composition.yml",
-      "sha256": "22b0ca48621efb5776294997c1556f2982a3752e311ec6adb51306dbe5359631"
+      "sha256": "631228b864b3d1422efa6350062ed62131f7e009f7f4e6b71cb1813632e4b331"
     },
     {
       "path": "Zeta23/OPICAComposition/Calibration.lean",
@@ -433,7 +433,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/EXPECTED_TESTS.json",
-      "sha256": "890d71d590e31fe064d12aee8e7c2855496b377ff5c2b81507195ecbf8e08001"
+      "sha256": "9adba0f3c29765b4feeb14bb1be9fa910e54f6555be591991fc53d2456718d57"
     },
     {
       "path": "research/RHRC/integration/opica_composition/FRAMEWORK_PROVIDERS.json",
@@ -461,7 +461,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/accept.py",
-      "sha256": "97ed8812d1539f4d07864bc9f6ca9e77bdb24fe962c6756d84469602c57b342e"
+      "sha256": "bd36a1828ec1c41aabccb297fd7d3f14c75704f7b38d19ab3a262a0739bdb96e"
     },
     {
       "path": "research/RHRC/integration/opica_composition/applications.py",
@@ -485,7 +485,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/cli.py",
-      "sha256": "26d54bfb4b12108609c3ef20c8aa9a569d6dabfa7ad2d62c82b4df72c9170b56"
+      "sha256": "f696d164a762faa591ceec645632db3031c12cd077050979cb23ba0dfd383b1f"
     },
     {
       "path": "research/RHRC/integration/opica_composition/closure.py",
@@ -497,7 +497,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/config.py",
-      "sha256": "365fc97c427e5fed77b20d9d83b8ba7801c3763df59dfa41cfdabaca92e26280"
+      "sha256": "f4bb8c17d5b4de0b270def75dbf16ee4a337248c4f4c3f05ddeaea444167ebe4"
     },
     {
       "path": "research/RHRC/integration/opica_composition/contracts.py",
@@ -585,7 +585,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_acceptance.py",
-      "sha256": "d0e15de8c590745d0b29e289ace20c8069c6f918676fa6eec8982282e57fea06"
+      "sha256": "359791231e41c0b7d1ab833121f942a9aa32e8b08f9c85b8e92a7a3a5c3fd15c"
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_applications.py",
@@ -593,7 +593,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_cli.py",
-      "sha256": "20fc0d323d41b37839883be84a1e9d9bc2db38fbda175dbc814558b053da159f"
+      "sha256": "5ce8c519118799eb19a81b334ae230db0cf1c2daf34a056928ea91ffea08c907"
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_closure.py",
@@ -669,7 +669,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/ACCEPTANCE_MATRIX.json",
-      "sha256": "2d67c84ce11baddc0eda187b8d538e4b9c8e24a47822d3283ea6a835c17bf6b9"
+      "sha256": "1e70800aed685a51744fa5083868f9e996a523780fc44102fc701aa0de4ead67"
     },
     {
       "path": "research/RHRC/integration/opica_round4/BASELINE_ACCEPTANCE_MATRIX.json",
@@ -713,11 +713,11 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md",
-      "sha256": "91af0a3b0beb553a184463a2d12faecff4d3fc66e9b39b2e5dfe5e0ed251a40e"
+      "sha256": "d48b59795cb514603e04de7a9a632bdf5677301c64f41696b884ff161dbb2b0e"
     },
     {
       "path": "research/RHRC/integration/opica_round4/INTEGRATION_REQUIREMENTS.json",
-      "sha256": "3335e224969a17a067e9eed60f7ea19fbc17dcc2cd43fd50a904b54f1756b6b6"
+      "sha256": "e2140baff20600bf0f5ca557b02dc59ca68c6b2b1c139c4dc0bf7fb6c451c2dc"
     },
     {
       "path": "research/RHRC/integration/opica_round4/MATH_CONTRACTS.json",

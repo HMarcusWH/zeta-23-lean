@@ -90,6 +90,107 @@ class AcceptanceTests(unittest.TestCase):
         e,x,r=self.lane();(self.root/'raw.json').write_bytes(b'forged')
         with self.assertRaises(ContractError):verify_lane_bundle(e,self.root,experiment=x,replay=self.replay)
 
+    def _group_fixture(self):
+        from research.RHRC.integration.opica_composition.accept import REPLAY_GROUP_IDS,group_lanes,verify_independent_group
+        exp={'run_id':'40992527737','attempt':1,'requested_commit':'a'*40,
+             'requested_tree':'b'*40,'profile_digest':'c'*64}
+        requirements=[];roots={};originals={};calls=[]
+        for lane in ROUND4_LANES:
+            expected={'id':lane,'scope':'PROTOCOL_FIXTURE_ONLY','checked':{'commit':'a'*40,'tree':'b'*40}}
+            requirements.append(expected);root=self.root/lane;root.mkdir();roots[lane]=root
+            raw=canonical_bytes({'protocol_fixture':lane});(root/'raw.json').write_bytes(raw)
+            row={'schema':'OPICA4_LANE_BUNDLE_V1','lane_id':lane,'scope':expected['scope'],
+                 'experiment':deepcopy(exp),'checked':expected['checked'],'conclusion':'success',
+                 'artifacts':[{'path':'raw.json','bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}],
+                 'records':['raw.json']}
+            (root/'lane.json').write_bytes(canonical_bytes(row));originals[lane]=row
+        def replay(expected,record,files):
+            calls.append(expected['id'])
+            return files['raw.json'].read_bytes()==canonical_bytes({'protocol_fixture':expected['id']})
+        groups=[verify_independent_group(group,requirements,{k:roots[k] for k in group_lanes(group)},
+                  experiment=exp,checkers={k:replay for k in group_lanes(group)},
+                  required_needs={'lanes':'success'}) for group in REPLAY_GROUP_IDS]
+        return requirements,roots,originals,exp,groups,replay,calls
+
+    def test_fixed_replay_groups_preserve_complete_original_lane_results(self):
+        from research.RHRC.integration.opica_composition.accept import REPLAY_GROUP_IDS,group_lanes,join_independent_groups
+        requirements,roots,originals,exp,groups,replay,calls=self._group_fixture()
+        self.assertEqual(len(calls),11);self.assertEqual(set(calls),set(ROUND4_LANES))
+        self.assertEqual(set().union(*(set(group_lanes(k)) for k in REPLAY_GROUP_IDS)),set(ROUND4_LANES))
+        result=join_independent_groups(requirements,originals,groups,experiment=exp,
+                                     required_needs={'lanes':'success','independent':'success'})
+        old=accept_application_scope(requirements,roots,experiment=exp,
+              checkers={k:replay for k in ROUND4_LANES},required_needs={k:'success' for k in ROUND4_LANES})
+        self.assertEqual(result['independently_reconstructed_lanes'],old['independently_reconstructed_lanes'])
+        self.assertEqual(len(result['independent_groups']),3)
+        self.assertEqual(result['RH'],result['Step4']);self.assertEqual(result['Step4'],'OPEN')
+
+    def test_replay_group_join_rejects_missing_duplicate_or_summary_only_evidence(self):
+        from research.RHRC.integration.opica_composition.accept import join_independent_groups
+        requirements,_,originals,exp,groups,_,_=self._group_fixture()
+        mutations=[lambda x:x.pop(),lambda x:x.append(deepcopy(x[0])),lambda x:x.reverse(),
+            lambda x:x.__setitem__(1,deepcopy(x[0])),lambda x:x[0].update({'status':'PASS'}),
+            lambda x:x[0].update({'conclusion':'skipped'}),
+            lambda x:x[0]['independently_reconstructed_lanes'].pop(),
+            lambda x:x[0].__setitem__('independently_reconstructed_lanes',[{'status':'PASS'}])]
+        for mutate in mutations:
+            bad=deepcopy(groups);mutate(bad)
+            with self.subTest(bad=bad[0].get('group_id') if bad else 'missing'),self.assertRaises(ContractError):
+                join_independent_groups(requirements,originals,bad,experiment=exp,
+                                        required_needs={'lanes':'success','independent':'success'})
+
+    def test_replay_group_join_rejects_every_stale_identity_and_changed_producer(self):
+        from research.RHRC.integration.opica_composition.accept import join_independent_groups
+        requirements,_,originals,exp,groups,_,_=self._group_fixture()
+        for key,value in [('run_id','OTHER'),('attempt',2),('requested_commit','d'*40),
+                          ('requested_tree','d'*40),('profile_digest','d'*64)]:
+            bad=deepcopy(groups);bad[0]['experiment'][key]=value
+            with self.subTest(identity=key),self.assertRaises(ContractError):
+                join_independent_groups(requirements,originals,bad,experiment=exp,
+                                        required_needs={'lanes':'success','independent':'success'})
+        for key,value in [('conclusion','skipped'),('scope','OTHER'),('checked',{'commit':'d'*40}),('records',[])]:
+            bad=deepcopy(originals);bad['CONTRACT'][key]=value
+            with self.subTest(producer=key),self.assertRaises(ContractError):
+                join_independent_groups(requirements,bad,groups,experiment=exp,
+                                        required_needs={'lanes':'success','independent':'success'})
+        bad=deepcopy(originals);bad['CONTRACT']['artifacts'][0]['sha256']='d'*64
+        with self.assertRaises(ContractError):
+            join_independent_groups(requirements,bad,groups,experiment=exp,
+                                    required_needs={'lanes':'success','independent':'success'})
+
+    def test_replay_group_join_requires_both_trusted_workflow_matrices(self):
+        from research.RHRC.integration.opica_composition.accept import join_independent_groups
+        requirements,_,originals,exp,groups,_,_=self._group_fixture()
+        for needs in ({'lanes':'success'},{'lanes':'success','independent':'in_progress'},
+                      {'lanes':'cancelled','independent':'success'},
+                      {'lanes':'success','independent':'success','extra':'success'}):
+            with self.subTest(needs=needs),self.assertRaises(ContractError):
+                join_independent_groups(requirements,originals,groups,experiment=exp,required_needs=needs)
+
+    def test_group_replay_runs_real_callbacks_and_preserves_primary_failure(self):
+        from research.RHRC.integration.opica_composition.accept import group_lanes,verify_independent_group
+        requirements,roots,_,exp,_,_,_=self._group_fixture();members=group_lanes('CORE')
+        primary=RuntimeError('actual independent protocol replay failed')
+        def failed(*_):raise primary
+        with self.assertRaises(RuntimeError) as observed:
+            verify_independent_group('CORE',requirements,{k:roots[k] for k in members},experiment=exp,
+                checkers={k:failed for k in members},required_needs={'lanes':'success'})
+        self.assertIs(observed.exception,primary)
+        with self.assertRaises(ContractError):
+            verify_independent_group('CORE',requirements,{k:roots[k] for k in members},experiment=exp,
+                checkers={k:lambda *_:False for k in members},required_needs={'lanes':'success'})
+
+    def test_group_replay_cannot_accept_mutated_raw_bytes_or_missing_lane(self):
+        from research.RHRC.integration.opica_composition.accept import group_lanes,verify_independent_group
+        requirements,roots,_,exp,_,replay,_=self._group_fixture();members=group_lanes('CORE')
+        (roots['CONTRACT']/'raw.json').write_bytes(b'mutated')
+        with self.assertRaises(ContractError):
+            verify_independent_group('CORE',requirements,{k:roots[k] for k in members},experiment=exp,
+                checkers={k:replay for k in members},required_needs={'lanes':'success'})
+        with self.assertRaises(ContractError):
+            verify_independent_group('CORE',requirements,{k:roots[k] for k in members[1:]},experiment=exp,
+                checkers={k:replay for k in members},required_needs={'lanes':'success'})
+
     def test_independent_native_scopes_retire_each_lane_and_keep_complete_transport(self):
         from research.RHRC.integration.opica_composition import cli,snapshot
         repo=Path(__file__).resolve().parents[5]

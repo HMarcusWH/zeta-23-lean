@@ -103,6 +103,17 @@ source numerics produces finite research dispositions. Other historical workflow
 retain their original scientific scope. Harvest every completed workflow on the
 exact final head before any further theorem PR; pending jobs remain pending.
 
+Independent replay is scheduled in three fixed groups: CORE retains the contract,
+parent, current compatibility and composition checks; AUXILIARY retains semantic
+negatives, framework/provider, replay, mathematical support and source numerics;
+CANONICAL runs the complete original 81-product materializer. Each group executes
+the unchanged independent checkers in a fresh bounded job. Final ACCEPTANCE
+requires both producer and independent matrices to succeed, verifies the complete
+original and independent evidence against one head, tree, run and attempt, and
+joins all eleven lane records. A group report alone has no acceptance authority.
+Complete native containers travel as fixed multipart components so the original
+member and container limits remain in force. RH and Step4 remain OPEN.
+
 ## Implications and next tests
 
 Upstream, grouped projectors remove a basis-choice ambiguity and the reciprocal

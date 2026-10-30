@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from .canonical import require,load_bytes
 from .snapshot import file_hash
-from .accept import ROUND4_LANES
+from .accept import ROUND4_LANES,REPLAY_GROUP_IDS,group_lanes
 from .testing import checked_inventory
 from ..opica_round4.math_gate import (EXPECTED_DECLARATIONS, BASELINE_EXPECTED_DECLARATIONS,
     BASELINE_MODULES, BASELINE_DECLARATION_COUNT, BASELINE_MODULE_COUNT,
@@ -33,6 +33,18 @@ def check_source_constraints(repo):
             'Arithmetic frontier alternatives changed')
     return {'status':'PASS_SOURCE_BINDINGS_ONLY','RH':'OPEN','Step4':'OPEN'}
 
+def check_replay_partition(matrix):
+    expected={'schema':'OPICA4_FIXED_REPLAY_PARTITION_V1',
+              'groups':{group:list(group_lanes(group)) for group in REPLAY_GROUP_IDS},
+              'original_lanes':list(ROUND4_LANES),'final_requires':['lanes','independent'],
+              'mode':'MANDATORY_FULL_REPLAY_GROUPS_THEN_COMPLETE_JOIN',
+              'authority':'CI_BOUND_NO_STANDALONE_REPORT_AUTHORITY',
+              'native_workers_unchanged':True}
+    require(matrix.get('independent_replay_partition')==expected,
+            'Exact complete independent replay partition differs')
+    return expected
+
+
 def check_configuration(repo):
     repo=Path(repo);here=repo/'research/RHRC/integration/opica_composition';r4=here.parent/'opica_round4'
     profile=load_bytes((here/'PROFILE.json').read_bytes())
@@ -50,6 +62,7 @@ def check_configuration(repo):
     matrix=load_bytes((r4/'ACCEPTANCE_MATRIX.json').read_bytes())
     require(matrix['original_cases']==original,'Original case meaning changed')
     require(matrix['implemented_methods']==inventory,'Exact test method-to-lane register differs')
+    check_replay_partition(matrix)
     requirements=load_bytes((r4/'BASELINE_REQUIREMENTS.json').read_bytes())['requirements']
     require(len(requirements)==42 and len({r['id'] for r in requirements})==42,'Exact42 requirement inventory differs')
     packages=load_bytes((r4/'WORK_PACKAGES.json').read_bytes())['packages']

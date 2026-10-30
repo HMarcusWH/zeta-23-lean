@@ -1561,6 +1561,96 @@
       "case": null,
       "lane": "CONTRACT",
       "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_fixed_replay_groups_preserve_complete_original_lane_results",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_group_replay_cannot_accept_mutated_raw_bytes_or_missing_lane",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_group_replay_runs_real_callbacks_and_preserves_primary_failure",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_replay_group_join_rejects_every_stale_identity_and_changed_producer",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_replay_group_join_rejects_missing_duplicate_or_summary_only_evidence",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_replay_group_join_requires_both_trusted_workflow_matrices",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_replay_partition_register_cannot_drop_math_canonical_or_independent_jobs",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.IndependentGroupTransportTests.test_empty_directory_substitution_and_copy_race_rejected",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.IndependentGroupTransportTests.test_missing_component_and_tampered_zip_rejected",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.IndependentGroupTransportTests.test_native_container_above_ordinary_limit_preserves_complete_tree",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.IndependentGroupTransportTests.test_ordinary_oversized_member_rejected",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.IndependentGroupTransportTests.test_raw_log_mutation_and_posix_alias_rejected",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.IndependentGroupTransportTests.test_resealed_failed_canonical_command_or_missing_product_is_rejected",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.IndependentGroupTransportTests.test_resealed_skipped_or_missing_independent_mode_is_rejected",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.IndependentGroupTransportTests.test_wrong_attempt_group_and_extra_component_rejected",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
     }
   ]
 }
