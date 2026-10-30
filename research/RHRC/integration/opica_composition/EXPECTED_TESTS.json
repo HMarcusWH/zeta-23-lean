@@ -1501,6 +1501,48 @@
       "case": null,
       "lane": "CONTRACT",
       "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_independent_native_scope_failure_preserves_primary_exception_and_evidence",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_independent_native_scopes_retire_each_lane_and_keep_complete_transport",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_independent_native_storage_admission_rejects_resident_archive_filesystems",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_acceptance.AcceptanceTests.test_missing_bundle_aggregate_restores_diagnostic_environment_without_acceptance",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_owned_native_retirement_preserves_complete_archive_and_bootstrap",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_owned_native_retirement_rechecks_identity_at_destructive_boundary",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_owned_native_retirement_refuses_tampering_and_wrong_scope",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
     }
   ]
 }

@@ -177,6 +177,177 @@ jobs:
             --input "$RUNNER_TEMP/opica4-input" --output "$RUNNER_TEMP/opica4-bundles" \
             --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
             --requested-commit "$REQUESTED_COMMIT" --requested-tree "$(git rev-parse "$REQUESTED_COMMIT^{tree}")"
+          # This observer stays in the Actions shell's cgroup so service OOM can
+          # leave diagnostic samples. It has no role in the acceptance result.
+          observer_pid=''
+          stop_observer() {
+            local primary_status=$?
+            trap - EXIT INT TERM
+            if [ -n "$observer_pid" ]; then
+              kill -TERM "$observer_pid" 2>/dev/null || true
+              wait "$observer_pid" || true
+            fi
+            exit "$primary_status"
+          }
+          trap stop_observer EXIT
+          trap 'exit 130' INT
+          trap 'exit 143' TERM
+          if cat > "$RUNNER_TEMP/opica4-accept-observer.py" <<'PY'
+          import json, os, pathlib, re, select, signal, stat, subprocess, sys, threading, time
+
+          MAX_BYTES = 4 * 1024 * 1024
+          MAX_ROW_BYTES = 32768
+          MAX_SECONDS = 6 * 60 * 60
+          STAT_KEYS = ('anon', 'file', 'shmem', 'kernel', 'kernel_stack', 'pagetables', 'slab',
+                       'inactive_file', 'active_file', 'file_mapped', 'file_dirty', 'file_writeback',
+                       'pgscan', 'pgsteal', 'workingset_refault_file', 'workingset_activate_file')
+          PROPERTIES = ('Id', 'LoadState', 'ActiveState', 'SubState', 'Result', 'ExecMainCode',
+                        'ExecMainStatus', 'ControlGroup', 'MemoryCurrent', 'MemoryPeak', 'OOMPolicy')
+
+          def directory(path):
+              path = pathlib.Path(path)
+              if not path.is_absolute() or '..' in path.parts:
+                  raise ValueError('Absolute authored directory required')
+              fd = os.open('/', os.O_RDONLY | os.O_DIRECTORY)
+              try:
+                  for part in path.parts[1:]:
+                      child = os.open(part, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=fd)
+                      os.close(fd)
+                      fd = child
+                  return fd
+              except BaseException:
+                  os.close(fd)
+                  raise
+
+          def read_at(folder, name, maximum=4096):
+              fd = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=folder)
+              with os.fdopen(fd, 'rb') as stream:
+                  if not stat.S_ISREG(os.fstat(stream.fileno()).st_mode):
+                      raise ValueError('Regular kernel file required')
+                  raw = stream.read(maximum + 1)
+              if len(raw) > maximum:
+                  raise ValueError('Kernel diagnostic exceeds bound')
+              return raw.decode('ascii').strip()
+
+          def unit_state(unit):
+              # No receipt or compiler output can supply a command or property.
+              command = ['/usr/bin/systemctl', 'show', unit, '--no-pager',
+                         '--property=' + ','.join(PROPERTIES)]
+              raw = bytearray()
+              process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+              try:
+                  deadline = time.monotonic() + 5
+                  while True:
+                      remaining = deadline - time.monotonic()
+                      if remaining <= 0 or not select.select([process.stdout], [], [], remaining)[0]:
+                          raise TimeoutError('Bounded unit query timed out')
+                      part = os.read(process.stdout.fileno(), min(4096, 8193 - len(raw)))
+                      if not part:
+                          break
+                      raw.extend(part)
+                      if len(raw) > 8192:
+                          raise ValueError('Unit query exceeds bound')
+                  code = process.wait(timeout=max(0.01, deadline - time.monotonic()))
+                  rows = dict(line.split('=', 1) for line in raw.decode('utf-8', errors='replace').splitlines() if '=' in line)
+                  return {'returncode': code, 'properties': {key: rows.get(key) for key in PROPERTIES}}
+              finally:
+                  if process.poll() is None:
+                      process.kill()
+                  process.wait()
+                  process.stdout.close()
+
+          def observe():
+              unit = sys.argv[1]
+              if re.fullmatch(r'opica4-accept-[0-9]+-[0-9]+\.service', unit) is None:
+                  raise ValueError('Authored acceptance unit required')
+              temporary = pathlib.Path(os.environ['RUNNER_TEMP'])
+              expected_group = '/system.slice/' + unit
+              destination = directory(temporary / 'opica4-diagnostics' / 'ACCEPTANCE')
+              try:
+                  fd = os.open('resource-observer.jsonl', os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
+                               0o600, dir_fd=destination)
+              finally:
+                  os.close(destination)
+              stop = threading.Event()
+              signal.signal(signal.SIGTERM, lambda *_: stop.set())
+              signal.signal(signal.SIGINT, lambda *_: stop.set())
+              started = time.monotonic()
+              written = 0
+              seen_group = False
+              with os.fdopen(fd, 'wb', buffering=0) as stream:
+                  for index in range(721):
+                      row = {'schema': 'OPICA_ACCEPTANCE_RESOURCE_DIAGNOSTIC_V1',
+                             'authority': 'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE', 'unit': unit,
+                             'sample': index, 'unix_seconds': int(time.time()),
+                             'elapsed_seconds': int(time.monotonic() - started),
+                             'final_requested': stop.is_set(), 'errors': []}
+                      try:
+                          row['systemd'] = unit_state(unit)
+                          actual = row['systemd']['properties']['ControlGroup']
+                          if actual not in (None, '', expected_group):
+                              raise ValueError('Unexpected unit cgroup refused')
+                          group = directory('/sys/fs/cgroup' + expected_group)
+                          seen_group = True
+                          try:
+                              row['cgroup'] = expected_group
+                              row['counters'] = {}
+                              for name in ('memory.current', 'memory.peak', 'memory.max', 'memory.events',
+                                           'memory.events.local', 'pids.current', 'pids.max', 'pids.events'):
+                                  try:
+                                      row['counters'][name] = read_at(group, name)
+                                  except (OSError, ValueError) as error:
+                                      row['errors'].append(name + ':' + type(error).__name__)
+                              try:
+                                  fields = dict(line.split() for line in read_at(group, 'memory.stat', 16384).splitlines())
+                                  row['memory_stat_bytes_or_counters'] = {key: fields.get(key) for key in STAT_KEYS}
+                              except (OSError, ValueError) as error:
+                                  row['errors'].append('memory.stat:' + type(error).__name__)
+                          finally:
+                              os.close(group)
+                      except (OSError, ValueError, TimeoutError, subprocess.SubprocessError) as error:
+                          row['cgroup_disposition'] = 'DISAPPEARED_OR_COLLECTED' if seen_group else 'NOT_YET_AVAILABLE'
+                          row['errors'].append('unit/cgroup:' + type(error).__name__)
+                      try:
+                          volume = directory(temporary / 'opica4-native')
+                          try:
+                              usage = os.fstatvfs(volume)
+                          finally:
+                              os.close(volume)
+                          row['native_volume'] = {'scope': 'SHARED_TMPFS_NOT_CGROUP_ATTRIBUTION',
+                                                  'total_bytes': usage.f_blocks * usage.f_frsize,
+                                                  'used_bytes': (usage.f_blocks - usage.f_bfree) * usage.f_frsize}
+                      except (OSError, ValueError) as error:
+                          row['errors'].append('native_volume:' + type(error).__name__)
+                      try:
+                          evidence = directory(temporary)
+                          try:
+                              usage = os.fstatvfs(evidence)
+                          finally:
+                              os.close(evidence)
+                          row['evidence_filesystem'] = {'total_bytes': usage.f_blocks * usage.f_frsize,
+                                                        'available_bytes': usage.f_bavail * usage.f_frsize}
+                      except (OSError, ValueError) as error:
+                          row['errors'].append('evidence_filesystem:' + type(error).__name__)
+                      raw = (json.dumps(row, ensure_ascii=True, separators=(',', ':')) + '\n').encode('ascii')
+                      if len(raw) > MAX_ROW_BYTES or written + len(raw) > MAX_BYTES:
+                          break
+                      stream.write(raw)
+                      written += len(raw)
+                      remaining = MAX_SECONDS - (time.monotonic() - started)
+                      if stop.is_set() or remaining <= 0:
+                          break
+                      stop.wait(min(30, remaining))
+
+          try:
+              observe()
+          except Exception as error:
+              print('OPICA_ACCEPT_OBSERVER_DIAGNOSTIC_ONLY_UNAVAILABLE ' + type(error).__name__, file=sys.stderr, flush=True)
+          PY
+          then
+            python -B "$RUNNER_TEMP/opica4-accept-observer.py" \
+              "opica4-accept-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT.service" &
+            observer_pid=$!
+          fi
           sudo systemd-run --wait --pipe --collect --unit="opica4-accept-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
             --uid="$(id -u)" --gid="$(id -g)" \
             -p MemoryMax=4294967296 -p MemorySwapMax=0 -p TasksMax=64 -p CPUQuota=200% \

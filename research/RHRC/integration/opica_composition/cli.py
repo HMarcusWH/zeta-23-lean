@@ -4,15 +4,18 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import stat
 import subprocess
 import sys
 import uuid
+from contextlib import contextmanager
 from .canonical import require,canonical_bytes,load_bytes,digest,MAX_BYTES,closed_keys
 from .snapshot import (file_hash,unlinked,seal_evidence_tree,copy_evidence_tree,verify_evidence_tree,evidence_bytes,
                        pack_evidence_bundle,unpack_evidence_bundle,_evidence_directory,_transport_new_directory,_transport_seal,
                        TRANSPORT_MAX_ENTRIES,TRANSPORT_MAX_DEPTH)
+from .snapshot import retire_copied_evidence_tree
 from .descendant import validate_descendant,BASE,BASE_TREE,git
 from .accept import ROUND4_LANES,verify_lane_bundle,require_test_receipt,accept_application_scope
 
@@ -233,6 +236,75 @@ def native_output(label):
     require(root.is_dir(),'Native volume absent')
     return root/(label+'-'+uuid.uuid4().hex)
 
+
+def _independent_native_parent(repo, output):
+    """Production admission: resident scratch and retained disk are distinct."""
+    worker_from_environment()
+    require(sys.platform == 'linux', 'Independent native replay requires Linux production storage')
+    original = os.environ.get('OPICA_NATIVE_OUTPUT')
+    require(original, 'Provisioned native replay root required')
+    parent = unlinked(original).resolve()
+    require(parent.is_dir() and not parent.is_relative_to(Path(repo).resolve()) and
+            not output.is_relative_to(parent) and not parent.is_relative_to(output),
+            'Native replay root, source and independent evidence must be disjoint')
+    require(os.stat(parent).st_dev != os.stat(output).st_dev and
+            os.stat(output.parent.parent).st_dev == os.stat(output).st_dev,
+            'Independent native archive must leave the provisioned native volume')
+    observed = subprocess.run(['/usr/bin/findmnt', '--noheadings', '--output', 'FSTYPE',
+                               '--target', str(output)], stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE, timeout=10)
+    require(observed.returncode == 0 and len(observed.stdout) <= 128 and
+            len(observed.stdout.splitlines()) == 1 and
+            re.fullmatch(rb'[A-Za-z0-9_+.-]+', observed.stdout.strip()) is not None and
+            observed.stdout.strip() not in {b'tmpfs', b'ramfs'},
+            'Ordinary evidence filesystem required for retained native archives')
+    return parent
+
+
+@contextmanager
+def _independent_native_scope(lane, repo, output, exp):
+    """Keep only the active native lane resident; preserve its complete bytes."""
+    if lane not in NATIVE_EVIDENCE_LANES:
+        yield
+        return
+    from .testing import emit_phase_diagnostic
+    original = os.environ.get('OPICA_NATIVE_OUTPUT')
+    parent = _independent_native_parent(repo, output)
+    scratch = parent / ('acceptance-' + lane + '-' + uuid.uuid4().hex)
+    owned = _transport_new_directory(scratch)
+    # The archive remains on the ordinary evidence filesystem, outside both
+    # this lane's tmpfs subtree and the volume shared with subsequent workers.
+    archive = output.parent.parent / ('opica4-independent-native-' + lane + '-' + uuid.uuid4().hex)
+    os.environ['OPICA_NATIVE_OUTPUT'] = str(scratch)
+    try:
+        emit_phase_diagnostic(lane, 'native.start')
+        try:
+            yield
+        except BaseException:
+            try:
+                _collect_failed_native_diagnostics(lane, repo, output)
+            except BaseException:
+                pass
+            raise
+        emit_phase_diagnostic(lane, 'native.archive.start')
+        sealed = _transport_seal(scratch)
+        require(sealed[0]['files'], 'Complete nonempty independent native evidence required')
+        require(sealed[1][''][:3] == owned[''], 'Owned native replay root changed')
+        manifest = copy_evidence_tree(scratch, archive, sealed)
+        # Explicit directory entries and hidden files survive the outer
+        # artifact upload as the existing closed stored transport container.
+        transport = pack_evidence_bundle(archive, output / 'independent-native-transport',
+                                         {'lane_id': lane, 'experiment': exp})
+        retire_copied_evidence_tree(scratch, archive, sealed,
+                                   approved_parent=parent, owned_identity=owned[''])
+        write(output / 'independent-native-archive.json',
+              {'schema': 'OPICA_INDEPENDENT_NATIVE_ARCHIVE_V1', 'lane': lane,
+               'experiment': exp, 'complete_inventory': manifest,
+               'transport': transport, 'scratch_retired': True})
+        emit_phase_diagnostic(lane, 'native.archive.end')
+    finally:
+        os.environ['OPICA_NATIVE_OUTPUT'] = original
+
 def run_command(repo,argv,output,label):
     output=Path(output);log=output/(label+'.log')
     with log.open('xb') as stream:result=subprocess.run(argv,cwd=repo,stdout=stream,stderr=subprocess.STDOUT,timeout=30000)
@@ -351,6 +423,16 @@ def verify_lane_raw(expected,record,files,repo,independent_output,provider_root=
                 {'native-evidence/'+row['path'] for row in manifest['files']},
                 'Bundle native evidence file inventory differs')
     independent_output=external(repo,independent_output);independent_output.mkdir(parents=True,exist_ok=False)
+    from .testing import emit_phase_diagnostic
+    emit_phase_diagnostic(lane, 'replay.start')
+    with _independent_native_scope(lane, repo, independent_output, record['experiment']):
+        _replay_lane_behavior(lane, results, record, files, repo, independent_output, provider_root)
+    emit_phase_diagnostic(lane, 'replay.end')
+    return True
+
+
+def _replay_lane_behavior(lane, results, record, files, repo, independent_output, provider_root):
+    from .testing import checked_inventory, run_modes, emit_phase_diagnostic
     methods=sorted(r['method'] for r in checked_inventory()['tests'] if r['lane']==lane)
     if methods:
         for optimized,name in ((False,'normal'),(True,'optimized')):
@@ -366,12 +448,16 @@ def verify_lane_raw(expected,record,files,repo,independent_output,provider_root=
         require((fresh['checked_commit'],fresh['checked_tree'],fresh['status'])==(old['checked_commit'],old['checked_tree'],old['status']),'Parent scope differs')
     elif lane=='CURRENT_COMPATIBILITY':
         from .qualification import check_current_compatibility
+        emit_phase_diagnostic(lane, 'compiler.atlas.start')
         fresh=check_current_compatibility(repo,native_output('current-native-independent'),worker_from_environment())
         require(fresh['compiler_rows']==results['current']['compiler_rows'],'Current complete compiler inventory differs')
+        emit_phase_diagnostic(lane, 'compiler.atlas.end')
     elif lane=='MATHEMATICAL_SUPPORT':
         from .qualification import check_mathematical_support
+        emit_phase_diagnostic(lane, 'compiler.mathematics.start')
         fresh=check_mathematical_support(repo,native_output('mathematics-native-independent'),worker_from_environment())
         require(fresh['status']=='PASS_MATHEMATICAL_SUPPORT','Mathematical native replay failed')
+        emit_phase_diagnostic(lane, 'compiler.mathematics.end')
     elif lane=='SOURCE_NUMERICS':
         from research.RHRC.integration.opica_round4.source_checker import verify_evaluator_evidence
         root=files['results.json'].parent
@@ -384,7 +470,10 @@ def verify_lane_raw(expected,record,files,repo,independent_output,provider_root=
         from .provider import verify
         require(provider_root is not None,'Independent pinned provider required')
         verify(Path(provider_root),files['results.json'].parent/'provider-producer',independent_output/'provider-independent')
-    elif lane=='GENERATED_STATE':generated_state(repo,independent_output)
+    elif lane=='GENERATED_STATE':
+        emit_phase_diagnostic(lane, 'canonical.start')
+        generated_state(repo,independent_output)
+        emit_phase_diagnostic(lane, 'canonical.end')
     elif lane=='FRAMEWORK_ADAPTERS':support_regressions(repo,independent_output)
     return True
 
@@ -393,8 +482,16 @@ def aggregate(repo,bundles,output,exp,*,provider_root=None):
     requirements=[lane_expected(lane,exp) for lane in ROUND4_LANES]
     roots={lane:Path(bundles)/lane for lane in ROUND4_LANES}
     checkers={lane:(lambda expected,record,files,lane=lane:verify_lane_raw(expected,record,files,repo,output/lane,provider_root)) for lane in ROUND4_LANES}
-    result=accept_application_scope(requirements,roots,experiment=exp,checkers=checkers,
-                                    required_needs={lane:'success' for lane in ROUND4_LANES})
+    original = os.environ.get('OPICA_ACCEPTANCE_DIAGNOSTICS')
+    os.environ['OPICA_ACCEPTANCE_DIAGNOSTICS'] = '1'
+    try:
+        result=accept_application_scope(requirements,roots,experiment=exp,checkers=checkers,
+                                        required_needs={lane:'success' for lane in ROUND4_LANES})
+    finally:
+        if original is None:
+            os.environ.pop('OPICA_ACCEPTANCE_DIAGNOSTICS', None)
+        else:
+            os.environ['OPICA_ACCEPTANCE_DIAGNOSTICS'] = original
     write(output/'acceptance.json',result);return result
 
 

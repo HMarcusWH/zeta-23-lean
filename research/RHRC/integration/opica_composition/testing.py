@@ -1,6 +1,7 @@
 """Exact, non-skipping unittest receipts for the reviewed lane inventory."""
 from __future__ import annotations
 import ast
+import datetime
 import json
 from pathlib import Path
 import re
@@ -14,6 +15,42 @@ PACKAGE = 'research.RHRC.integration.opica_composition.tests'
 TEST_ROOT = Path(__file__).parent/'tests'
 INVENTORY = Path(__file__).parent/'EXPECTED_TESTS.json'
 FAILURE_TAIL_BYTES = 8192
+
+
+def emit_phase_diagnostic(lane, phase):
+    """Fixed bounded observations only; neither outcomes nor proof authority."""
+    import os
+    if os.environ.get('OPICA_ACCEPTANCE_DIAGNOSTICS') != '1':
+        return
+    row = {'schema': 'OPICA_ACCEPTANCE_PHASE_DIAGNOSTIC_V1',
+           'authority': 'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE', 'lane': lane, 'phase': phase,
+           'utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}
+    try:
+        if sys.platform == 'linux':
+            with open('/proc/self/cgroup', 'rb') as stream:
+                lines = stream.read(4097)
+            require(len(lines) <= 4096, 'Bounded cgroup observation required')
+            entries = [line[3:].decode('utf-8') for line in lines.splitlines() if line.startswith(b'0::')]
+            require(len(entries) == 1 and entries[0].startswith('/') and
+                    '..' not in Path(entries[0]).parts, 'Unified cgroup observation unavailable')
+            root = Path('/sys/fs/cgroup') / entries[0].lstrip('/')
+            row['cgroup'] = entries[0]
+            for name in ('memory.current', 'memory.peak', 'memory.events', 'memory.stat', 'pids.current'):
+                with open(root / name, 'rb') as stream:
+                    raw = stream.read(16385)
+                require(len(raw) <= 16384, 'Bounded cgroup diagnostic required')
+                row[name] = raw.decode('utf-8', errors='replace')
+        native = os.environ.get('OPICA_NATIVE_OUTPUT')
+        if native and hasattr(os, 'statvfs'):
+            filesystem = os.statvfs(native)
+            row['native_filesystem'] = {'bytes': filesystem.f_blocks * filesystem.f_frsize,
+                                        'used_bytes': (filesystem.f_blocks - filesystem.f_bfree) * filesystem.f_frsize}
+    except Exception as error:
+        row['observation_error'] = type(error).__name__
+    try:
+        print('OPICA_ACCEPTANCE_DIAGNOSTIC_ONLY ' + json.dumps(row, ensure_ascii=True, sort_keys=True), flush=True)
+    except Exception:
+        pass
 
 
 def _emit_failed_test_diagnostics(output,mode):
@@ -88,6 +125,7 @@ def run_modes(lane,output,repo):
     output=Path(output);output.mkdir(parents=True,exist_ok=True);rows=[]
     for optimized in (False,True):
         mode='optimized' if optimized else 'normal'
+        emit_phase_diagnostic(lane, 'tests.' + mode + '.start')
         receipt=output/(mode+'.json')
         argv=[sys.executable,*(['-O'] if optimized else []),'-B','-m',__name__,
               '--lane',lane,'--receipt',str(receipt)]
@@ -96,6 +134,7 @@ def run_modes(lane,output,repo):
                 process=subprocess.run(argv,cwd=repo,stdout=stream,stderr=subprocess.STDOUT,timeout=30000)
             require(process.returncode==0,'Normal/optimized test process failed: '+str(receipt))
             rows.append(load_bytes(receipt.read_bytes()))
+            emit_phase_diagnostic(lane, 'tests.' + mode + '.end')
         except BaseException:
             try:_emit_failed_test_diagnostics(output,mode)
             except Exception:pass

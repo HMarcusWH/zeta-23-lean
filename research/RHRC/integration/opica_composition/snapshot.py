@@ -228,6 +228,97 @@ def copy_evidence_tree(root,destination,sealed,*,maximum_bytes=None):
     return manifest
 
 
+def _retire_evidence_entry(directory,path,name,expected,*,is_directory=False):
+    """Delete one authenticated leaf; never traverse the leaf being removed."""
+    if directory is not None:
+        info=os.stat(name,dir_fd=directory,follow_symlinks=False)
+        _evidence_regular(info,directory=is_directory);_require_evidence_identity(info,expected)
+        if is_directory:os.rmdir(name,dir_fd=directory)
+        else:os.unlink(name,dir_fd=directory)
+        return
+    # Windows denies other writers/deleters while checking the opened leaf and
+    # marks that very handle for deletion. Closing and then deleting by path
+    # would reopen a substitution race and cannot use the locked parent safely.
+    import ctypes
+    from ctypes import wintypes
+    kernel=ctypes.WinDLL('kernel32',use_last_error=True)
+    create=kernel.CreateFileW;create.restype=wintypes.HANDLE
+    create.argtypes=[wintypes.LPCWSTR,wintypes.DWORD,wintypes.DWORD,wintypes.LPVOID,
+                     wintypes.DWORD,wintypes.DWORD,wintypes.HANDLE]
+    close=kernel.CloseHandle;close.argtypes=[wintypes.HANDLE]
+    query=kernel.GetFileInformationByHandleEx
+    query.argtypes=[wintypes.HANDLE,ctypes.c_int,wintypes.LPVOID,wintypes.DWORD]
+    dispose=kernel.SetFileInformationByHandle
+    dispose.argtypes=[wintypes.HANDLE,ctypes.c_int,wintypes.LPVOID,wintypes.DWORD]
+    class AttributeTag(ctypes.Structure):
+        _fields_=[('attributes',wintypes.DWORD),('tag',wintypes.DWORD)]
+    class Disposition(ctypes.Structure):
+        _fields_=[('delete',ctypes.c_ubyte)]
+    leaf=path/name;flags=0x00200000|(0x02000000 if is_directory else 0x08000000)
+    handle=create(str(leaf),0x00010000|0x80,1,None,3,flags,None)
+    require(handle!=wintypes.HANDLE(-1).value,'Owned evidence delete handle unavailable')
+    try:
+        tags=AttributeTag()
+        require(query(handle,9,ctypes.byref(tags),ctypes.sizeof(tags)) and not(tags.attributes&1024) and
+                bool(tags.attributes&16)==is_directory,'Owned evidence delete handle is reparse or wrong kind')
+        info=os.lstat(leaf);_evidence_regular(info,directory=is_directory)
+        _require_evidence_identity(info,expected)
+        deletion=Disposition(1)
+        require(dispose(handle,4,ctypes.byref(deletion),ctypes.sizeof(deletion)),
+                'Owned evidence leaf could not be retired')
+    finally:close(handle)
+
+
+def retire_copied_evidence_tree(root,destination,sealed,*,approved_parent,owned_identity):
+    """Reclaim one owned native child only after its complete archive is verified.
+
+    The fresh-directory creator supplies its private physical identity. The
+    archive keeps every byte and empty directory. Any validation or cleanup
+    failure propagates; partial reclamation never authenticates acceptance.
+    """
+    require(all(Path(p).is_absolute() for p in (root,destination,approved_parent)),
+            'Absolute owned evidence and archive paths required')
+    root=unlinked(root);destination=unlinked(destination);approved_parent=unlinked(approved_parent)
+    require(root.parent==approved_parent and root.resolve().parent==approved_parent.resolve(),
+            'Owned evidence must be an immediate child of the approved native parent')
+    require(not destination.is_relative_to(approved_parent) and not root.is_relative_to(destination),
+            'Owned evidence archive must be disjoint from the native parent')
+    require(type(owned_identity)is tuple and len(owned_identity)==3 and
+            all(type(v)is int for v in owned_identity),'Private fresh evidence root identity required')
+    manifest,identities=sealed
+    require(identities[''][:3]==owned_identity,'Sealed evidence is not the caller-owned root')
+    with _evidence_directory(approved_parent) as (parent_fd,parent_path):
+        parent_identity=_evidence_identity(os.fstat(parent_fd) if parent_fd is not None else os.lstat(parent_path))[:3]
+        def check_owned_root():
+            unlinked(approved_parent)
+            _require_evidence_identity(os.lstat(approved_parent),parent_identity)
+            info=os.stat(root.name,dir_fd=parent_fd,follow_symlinks=False) if parent_fd is not None else os.lstat(root)
+            _evidence_regular(info,directory=True);_require_evidence_identity(info,owned_identity)
+        check_owned_root()
+        require(seal_evidence_tree(root)==sealed,'Owned evidence changed before retirement')
+        archived=seal_evidence_tree(destination)
+        require(archived[0]==manifest,'Complete archive differs before evidence retirement')
+        require(seal_evidence_tree(root)==sealed,'Owned evidence changed during archive verification')
+        # Removing children changes directory times/sizes; device, inode and
+        # mode still identify every directory that this operation owns.
+        directories={name:identities[name][:3] for name in ('',*manifest['directories'])}
+        for row in manifest['files']:
+            relative=row['path'];parent=Path(relative).parent.as_posix();check_owned_root()
+            with _evidence_directory(root,'' if parent=='.' else parent,directories) as (fd,path):
+                check_owned_root()
+                _retire_evidence_entry(fd,path,Path(relative).name,identities[relative])
+        for relative in sorted(manifest['directories'],key=lambda name:(len(Path(name).parts),name),reverse=True):
+            parent=Path(relative).parent.as_posix();check_owned_root()
+            with _evidence_directory(root,'' if parent=='.' else parent,directories) as (fd,path):
+                check_owned_root()
+                _retire_evidence_entry(fd,path,Path(relative).name,directories[relative],is_directory=True)
+        check_owned_root()
+        _retire_evidence_entry(parent_fd,parent_path,root.name,owned_identity,is_directory=True)
+    require(not os.path.lexists(root),'Owned evidence root reappeared during retirement')
+    require(seal_evidence_tree(destination)==archived,'Complete archive changed during evidence retirement')
+    return manifest
+
+
 # A transport is a closed additional envelope, never a replacement for lane or
 # scientific verification. Explicit directory members survive artifact services
 # which transport regular files only. ZIP metadata cannot grant permissions.

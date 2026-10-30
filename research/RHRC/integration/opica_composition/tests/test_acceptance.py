@@ -1,7 +1,9 @@
 from copy import deepcopy
 from pathlib import Path
 from dataclasses import replace
-import tempfile,hashlib,json,unittest
+import tempfile,hashlib,json,unittest,os,zipfile,subprocess
+from types import SimpleNamespace
+from unittest.mock import patch
 from research.RHRC.integration.opica_composition.accept import (
  ROUND4_LANES,verify_gate_inventory,verify_lane_bundle,accept_application_scope,require_native_receipt,
  preserve_scientific_disposition)
@@ -87,5 +89,142 @@ class AcceptanceTests(unittest.TestCase):
     def test_raw_file_mutation_rejected(self):
         e,x,r=self.lane();(self.root/'raw.json').write_bytes(b'forged')
         with self.assertRaises(ContractError):verify_lane_bundle(e,self.root,experiment=x,replay=self.replay)
+
+    def test_independent_native_scopes_retire_each_lane_and_keep_complete_transport(self):
+        from research.RHRC.integration.opica_composition import cli,snapshot
+        repo=Path(__file__).resolve().parents[5]
+        native=self.root/'native';native.mkdir();(native/'bootstrap').mkdir()
+        (native/'bootstrap/worker.json').write_bytes(b'bootstrap fixture remains resident')
+        exp={'run_id':'123456','attempt':1,'requested_commit':'a'*40,
+             'requested_tree':'b'*40,'profile_digest':'c'*64}
+        # This portable storage-lifecycle fixture replaces only Linux storage
+        # admission. Every seal, copy, ZIP, extraction and retirement is real;
+        # no mathematical checker executes or supplies a simulated PASS.
+        with patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':str(native),'OPICA_ACCEPTANCE_DIAGNOSTICS':'0'}), \
+                patch.object(cli,'_independent_native_parent',return_value=native):
+            for lane in ('CURRENT_COMPATIBILITY','COMPOSITION_FORMAL'):
+                with self.subTest(lane=lane):
+                    output=self.root/'acceptance'/lane;output.mkdir(parents=True)
+                    self.assertEqual({p.name for p in native.iterdir()},{'bootstrap'})
+                    with cli._independent_native_scope(lane,repo,output,exp):
+                        scratch=Path(os.environ['OPICA_NATIVE_OUTPUT'])
+                        self.assertEqual(scratch.parent,native)
+                        (scratch/'empty/nested').mkdir(parents=True);(scratch/'.hidden').mkdir()
+                        (scratch/'.hidden/.raw').write_bytes(b'COMPLETE_RAW_FIXTURE')
+                        (scratch/'object.bin').write_bytes(b'\x00\xffowned evidence')
+                        expected=snapshot.seal_evidence_tree(scratch)[0]
+                    self.assertEqual(os.environ['OPICA_NATIVE_OUTPUT'],str(native))
+                    self.assertFalse(scratch.exists())
+                    self.assertEqual({p.name for p in native.iterdir()},{'bootstrap'})
+                    record=json.loads((output/'independent-native-archive.json').read_bytes())
+                    self.assertEqual(record['complete_inventory'],expected)
+                    self.assertEqual(record['experiment'],exp);self.assertIs(record['scratch_retired'],True)
+                    transport=output/'independent-native-transport'
+                    with zipfile.ZipFile(transport/'bundle.zip') as archive:
+                        self.assertIn('empty/nested/',archive.namelist())
+                        self.assertEqual(archive.read('.hidden/.raw'),b'COMPLETE_RAW_FIXTURE')
+                        self.assertEqual(archive.read('object.bin'),b'\x00\xffowned evidence')
+                    restored=self.root/('restored-'+lane)
+                    envelope=snapshot.unpack_evidence_bundle(transport,restored,{'lane_id':lane,'experiment':exp})
+                    self.assertEqual(envelope,record['transport'])
+                    self.assertEqual(snapshot.seal_evidence_tree(restored)[0],expected)
+                    self.assertEqual((native/'bootstrap/worker.json').read_bytes(),b'bootstrap fixture remains resident')
+            self.assertFalse((self.root/'acceptance/acceptance.json').exists())
+
+    def test_independent_native_scope_failure_preserves_primary_exception_and_evidence(self):
+        from research.RHRC.integration.opica_composition import cli
+        repo=Path(__file__).resolve().parents[5]
+        native=self.root/'native';native.mkdir();(native/'bootstrap').mkdir()
+        (native/'bootstrap/worker.json').write_bytes(b'preserve bootstrap')
+        output=self.root/'acceptance/failed';output.mkdir(parents=True)
+        exp={'run_id':'123456','attempt':1,'requested_commit':'a'*40,
+             'requested_tree':'b'*40,'profile_digest':'c'*64}
+        primary=RuntimeError('primary native replay failure')
+        with patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':str(native),'OPICA_ACCEPTANCE_DIAGNOSTICS':'0'}), \
+                patch.object(cli,'_independent_native_parent',return_value=native), \
+                patch.object(cli,'_collect_failed_native_diagnostics',side_effect=KeyboardInterrupt('diagnostic failure')), \
+                patch.object(cli,'copy_evidence_tree',side_effect=AssertionError('failed replay must not archive')) as copied:
+            with self.assertRaises(RuntimeError) as observed:
+                with cli._independent_native_scope('COMPOSITION_FORMAL',repo,output,exp):
+                    scratch=Path(os.environ['OPICA_NATIVE_OUTPUT'])
+                    (scratch/'failure.log').write_bytes(b'preserve failed evidence')
+                    raise primary
+            self.assertIs(observed.exception,primary);copied.assert_not_called()
+            self.assertEqual(os.environ['OPICA_NATIVE_OUTPUT'],str(native))
+            self.assertEqual((scratch/'failure.log').read_bytes(),b'preserve failed evidence')
+        self.assertEqual((native/'bootstrap/worker.json').read_bytes(),b'preserve bootstrap')
+        self.assertFalse((output/'independent-native-archive.json').exists())
+        self.assertFalse((output/'independent-native-transport').exists())
+        self.assertFalse((self.root/'acceptance/acceptance.json').exists())
+
+        for phase in ('copy_evidence_tree', 'pack_evidence_bundle', 'retire_copied_evidence_tree'):
+            with self.subTest(phase=phase):
+                failed_output=self.root/'acceptance'/('failed-'+phase);failed_output.mkdir()
+                failure=RuntimeError('archive boundary failed: '+phase)
+                with patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':str(native)}), \
+                        patch.object(cli,'_independent_native_parent',return_value=native), \
+                        patch.object(cli,phase,side_effect=failure):
+                    with self.assertRaises(RuntimeError) as observed:
+                        with cli._independent_native_scope('COMPOSITION_FORMAL',repo,failed_output,exp):
+                            scratch=Path(os.environ['OPICA_NATIVE_OUTPUT'])
+                            (scratch/'retained.raw').write_bytes(b'archive failure must preserve source')
+                    self.assertIs(observed.exception,failure)
+                    self.assertEqual(os.environ['OPICA_NATIVE_OUTPUT'],str(native))
+                    self.assertEqual((scratch/'retained.raw').read_bytes(),b'archive failure must preserve source')
+                self.assertFalse((failed_output/'independent-native-archive.json').exists())
+                self.assertFalse((self.root/'acceptance/acceptance.json').exists())
+
+    def test_missing_bundle_aggregate_restores_diagnostic_environment_without_acceptance(self):
+        from research.RHRC.integration.opica_composition import cli
+        repo=Path(__file__).resolve().parents[5]
+        exp={'run_id':'123456','attempt':1,'requested_commit':'a'*40,
+             'requested_tree':'b'*40,'profile_digest':'c'*64}
+        for prior in (None,'prior-value'):
+            with self.subTest(prior=prior),patch.dict(os.environ):
+                if prior is None:os.environ.pop('OPICA_ACCEPTANCE_DIAGNOSTICS',None)
+                else:os.environ['OPICA_ACCEPTANCE_DIAGNOSTICS']=prior
+                output=self.root/('failed-aggregate-'+str(prior))
+                with self.assertRaises(FileNotFoundError):
+                    cli.aggregate(repo,self.root/'missing-bundles',output,exp)
+                self.assertEqual(os.environ.get('OPICA_ACCEPTANCE_DIAGNOSTICS'),prior)
+                self.assertFalse((output/'acceptance.json').exists())
+
+    def test_independent_native_storage_admission_rejects_resident_archive_filesystems(self):
+        from research.RHRC.integration.opica_composition import cli
+        repo=Path(__file__).resolve().parents[5]
+        native=self.root/'native';native.mkdir();(native/'bootstrap').mkdir()
+        (native/'bootstrap/worker.json').write_bytes(b'preserve bootstrap')
+        output=self.root/'acceptance/lane';output.mkdir(parents=True)
+        exp={'run_id':'123456','attempt':1,'requested_commit':'a'*40,
+             'requested_tree':'b'*40,'profile_digest':'c'*64}
+        original_stat=os.stat
+        for kind in ('same-device','archive-device','tmpfs','ramfs','empty','multiline','nonzero','malformed'):
+            with self.subTest(kind=kind):
+                devices={native:102 if kind=='same-device' else 101,output:102,
+                         output.parent.parent:103 if kind=='archive-device' else 102}
+                def observed_stat(path,*args,**kwargs):
+                    info=original_stat(path,*args,**kwargs)
+                    key=Path(os.path.abspath(path)) if not isinstance(path,int) else None
+                    if key not in devices:return info
+                    fields={name:getattr(info,name) for name in dir(info) if name.startswith('st_')}
+                    return SimpleNamespace(**{**fields,'st_dev':devices[key]})
+                raw={'tmpfs':b'tmpfs\n','ramfs':b'ramfs\n','empty':b'',
+                     'multiline':b'ext4\nxfs\n','malformed':b'ext4 unexpected\n'}.get(kind,b'ext4\n')
+                mount=subprocess.CompletedProcess([],1 if kind=='nonzero' else 0,stdout=raw,stderr=b'')
+                # Worker metadata admission is a trip through the storage guard,
+                # never an execution receipt or a substituted proof checker.
+                with patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':str(native)}), \
+                        patch.object(cli,'worker_from_environment',return_value=None), \
+                        patch.object(cli.sys,'platform','linux'),patch.object(os,'stat',side_effect=observed_stat), \
+                        patch.object(cli.subprocess,'run',return_value=mount), \
+                        patch.object(cli,'copy_evidence_tree',side_effect=AssertionError('storage admission must reject before copy')) as copied:
+                    with self.assertRaises(ContractError):
+                        with cli._independent_native_scope('COMPOSITION_FORMAL',repo,output,exp):
+                            self.fail('Rejected storage must not enter the replay body')
+                    copied.assert_not_called()
+                    self.assertEqual(os.environ['OPICA_NATIVE_OUTPUT'],str(native))
+                self.assertEqual({p.name for p in native.iterdir()},{'bootstrap'})
+                self.assertFalse((output/'independent-native-transport').exists())
+        self.assertEqual((native/'bootstrap/worker.json').read_bytes(),b'preserve bootstrap')
 
 if __name__=='__main__':unittest.main()

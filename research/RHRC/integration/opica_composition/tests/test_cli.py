@@ -201,6 +201,114 @@ class CliOrchestrationTests(unittest.TestCase):
                 self.assertFalse(any(p.is_file() and p.read_bytes()==secret for p in output.rglob('*')))
                 self.assertEqual((outside/'evidence.log').read_bytes(),secret)
 
+    def test_owned_native_retirement_preserves_complete_archive_and_bootstrap(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base=Path(tmp);native=base/'native';native.mkdir()
+            (native/'bootstrap').mkdir();(native/'bootstrap/worker.json').write_bytes(b'keep bootstrap')
+            root=native/'owned';owned=snapshot._transport_new_directory(root)
+            (root/'empty/deep').mkdir(parents=True);(root/'.hidden').mkdir()
+            payloads={'.hidden/.receipt':b'complete hidden bytes','object.olean':b'actual fixture bytes',
+                      '.root-note':b'root hidden bytes'}
+            for name,raw in payloads.items():(root/name).write_bytes(raw)
+            sealed=snapshot.seal_evidence_tree(root);archive=base/'archive'
+            snapshot.copy_evidence_tree(root,archive,sealed)
+            archived=snapshot.seal_evidence_tree(archive)
+            result=snapshot.retire_copied_evidence_tree(root,archive,sealed,
+                approved_parent=native,owned_identity=owned[''])
+            self.assertEqual(result,sealed[0]);self.assertFalse(root.exists())
+            self.assertEqual(snapshot.seal_evidence_tree(archive),archived)
+            self.assertTrue((archive/'empty/deep').is_dir())
+            for name,raw in payloads.items():self.assertEqual((archive/name).read_bytes(),raw)
+            self.assertEqual((native/'bootstrap/worker.json').read_bytes(),b'keep bootstrap')
+            self.assertEqual({p.name for p in native.iterdir()},{'bootstrap'})
+
+    def test_owned_native_retirement_refuses_tampering_and_wrong_scope(self):
+        for kind in ('archive-content','archive-missing','archive-extra','archive-empty-directory',
+                     'source-content','source-missing','source-extra','root-replacement','wrong-parent',
+                     'wrong-owned-identity','nested-archive','source-link','archive-link'):
+            with self.subTest(kind=kind),tempfile.TemporaryDirectory() as tmp:
+                base=Path(tmp);native=base/'native';native.mkdir()
+                (native/'bootstrap').mkdir();(native/'bootstrap/keep').write_bytes(b'bootstrap')
+                root=native/'owned';owned=snapshot._transport_new_directory(root)
+                (root/'parent').mkdir();(root/'empty').mkdir();source=root/'parent/evidence.log'
+                source.write_bytes(b'original');sealed=snapshot.seal_evidence_tree(root)
+                archive=base/'archive';snapshot.copy_evidence_tree(root,archive,sealed)
+                outside=base/'outside';outside.mkdir();secret=outside/'evidence.log';secret.write_bytes(b'EXTERNAL_BYTES')
+                parent=native;identity=owned[''];mock_lstat=None
+                if kind=='archive-content':(archive/'parent/evidence.log').write_bytes(b'tampered')
+                elif kind=='archive-missing':(archive/'parent/evidence.log').unlink()
+                elif kind=='archive-extra':(archive/'extra').write_bytes(b'extra')
+                elif kind=='archive-empty-directory':(archive/'empty').rmdir()
+                elif kind=='source-content':source.write_bytes(b'tampered')
+                elif kind=='source-missing':source.unlink()
+                elif kind=='source-extra':(root/'extra').write_bytes(b'extra')
+                elif kind=='root-replacement':
+                    root.rename(native/'retained-original');root.mkdir();(root/'replacement').write_bytes(b'KEEP_REPLACEMENT')
+                elif kind=='wrong-parent':parent=base
+                elif kind=='wrong-owned-identity':identity=(identity[0],identity[1]+1,identity[2])
+                elif kind=='nested-archive':archive=root/'archive'
+                elif kind in {'source-link','archive-link'}:
+                    leaf=source if kind=='source-link' else archive/'parent/evidence.log'
+                    if os.name!='nt':leaf.unlink();leaf.symlink_to(secret)
+                    else:
+                        original_lstat=os.lstat
+                        def linked(candidate,*args,**kwargs):
+                            info=original_lstat(candidate,*args,**kwargs)
+                            if Path(os.path.abspath(candidate))==leaf:
+                                fields={name:getattr(info,name) for name in dir(info) if name.startswith('st_')}
+                                fields['st_file_attributes']=getattr(info,'st_file_attributes',0)|1024
+                                return SimpleNamespace(**fields)
+                            return info
+                        mock_lstat=linked
+                @contextmanager
+                def metadata_guard():
+                    if mock_lstat is None:yield
+                    else:
+                        with patch.object(os,'lstat',side_effect=mock_lstat):yield
+                with metadata_guard(),self.assertRaises((ContractError,OSError)):
+                    snapshot.retire_copied_evidence_tree(root,archive,sealed,
+                        approved_parent=parent,owned_identity=identity)
+                self.assertTrue(root.exists());self.assertEqual(secret.read_bytes(),b'EXTERNAL_BYTES')
+                self.assertEqual((native/'bootstrap/keep').read_bytes(),b'bootstrap')
+                if kind=='root-replacement':
+                    self.assertEqual((root/'replacement').read_bytes(),b'KEEP_REPLACEMENT')
+                    self.assertEqual((native/'retained-original/parent/evidence.log').read_bytes(),b'original')
+
+    def test_owned_native_retirement_rechecks_identity_at_destructive_boundary(self):
+        for kind in ('source-race','root-race','cleanup-error'):
+            with self.subTest(kind=kind),tempfile.TemporaryDirectory() as tmp:
+                base=Path(tmp);native=base/'native';native.mkdir()
+                root=native/'owned';owned=snapshot._transport_new_directory(root)
+                (root/'parent').mkdir();source=root/'parent/evidence.log';source.write_bytes(b'original')
+                sealed=snapshot.seal_evidence_tree(root);archive=base/'archive'
+                snapshot.copy_evidence_tree(root,archive,sealed);archived=snapshot.seal_evidence_tree(archive)
+                outside=base/'outside';outside.mkdir();(outside/'keep').write_bytes(b'EXTERNAL_BYTES')
+                original_seal=snapshot.seal_evidence_tree;source_seals=0
+                def race_after_verification(path,*args,**kwargs):
+                    nonlocal source_seals
+                    result=original_seal(path,*args,**kwargs)
+                    if Path(path)==root:
+                        source_seals+=1
+                        if source_seals==2 and kind=='root-race':
+                            root.rename(native/'retained-original');root.mkdir();(root/'keep').write_bytes(b'KEEP_REPLACEMENT')
+                    return result
+                original_retire=snapshot._retire_evidence_entry
+                def race_at_unlink(directory,path,name,expected,**kwargs):
+                    if kind=='source-race':source.write_bytes(b'mutation after archive verification')
+                    elif kind=='cleanup-error':raise OSError('injected cleanup failure')
+                    return original_retire(directory,path,name,expected,**kwargs)
+                with patch.object(snapshot,'seal_evidence_tree',side_effect=race_after_verification), \
+                        patch.object(snapshot,'_retire_evidence_entry',side_effect=race_at_unlink), \
+                        self.assertRaises((ContractError,OSError)):
+                    snapshot.retire_copied_evidence_tree(root,archive,sealed,
+                        approved_parent=native,owned_identity=owned[''])
+                self.assertEqual(snapshot.seal_evidence_tree(archive),archived)
+                self.assertEqual((outside/'keep').read_bytes(),b'EXTERNAL_BYTES')
+                if kind=='root-race':
+                    self.assertEqual((root/'keep').read_bytes(),b'KEEP_REPLACEMENT')
+                    self.assertEqual((native/'retained-original/parent/evidence.log').read_bytes(),b'original')
+                elif kind=='cleanup-error':self.assertEqual(source.read_bytes(),b'original')
+
     def test_mathematical_support_uses_closed_worker_recipe_and_bounded_caps(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
