@@ -392,6 +392,7 @@ jobs:
           REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/opica4-independent-transports"
           python -B -m research.RHRC.integration.opica_composition.cli group-transport-pack \
             --group "$GROUP" --input "$RUNNER_TEMP/opica4-independent/$GROUP" \
             --output "$RUNNER_TEMP/opica4-independent-transports/$GROUP" \

@@ -165,7 +165,7 @@
     },
     {
       "path": ".github/workflows/rhrc_opica_composition.yml",
-      "sha256": "631228b864b3d1422efa6350062ed62131f7e009f7f4e6b71cb1813632e4b331"
+      "sha256": "60e24890db380e2d601b78616359985ae4996386b76b9b7b0ea822d14ace51dc"
     },
     {
       "path": "Zeta23/OPICAComposition/Calibration.lean",
@@ -593,7 +593,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_cli.py",
-      "sha256": "5ce8c519118799eb19a81b334ae230db0cf1c2daf34a056928ea91ffea08c907"
+      "sha256": "a195fe4584a8aab70ad55c87416379eafb98e6049f5f8cc861d4c6bf6f0400f7"
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_closure.py",

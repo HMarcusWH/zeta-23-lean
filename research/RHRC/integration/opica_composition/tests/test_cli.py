@@ -14,6 +14,7 @@ import subprocess
 import sys
 import os
 import stat
+import shutil
 from contextlib import contextmanager, redirect_stderr
 from types import SimpleNamespace
 import tempfile
@@ -52,6 +53,71 @@ class CliOrchestrationTests(unittest.TestCase):
             else:partition['authority']='STANDALONE_PASS_REPORT'
             with self.subTest(change=change),self.assertRaises(ContractError):
                 config.check_replay_partition(changed)
+
+        # Execute the authored shell setup from a clean runner directory. The
+        # fixture dispatches the real CLI parser and strict destination creator;
+        # it does not run or fabricate an independent scientific replay.
+        workflow=(REPO/'.github/workflows/rhrc_opica_composition.yml').read_text(encoding='utf-8').splitlines()
+        header='      - name: Seal the complete independent group transport'
+        self.assertEqual(workflow.count(header),1)
+        start=workflow.index(header)+1
+        end=next(i for i in range(start,len(workflow)) if workflow[i].startswith('      - '))
+        block=workflow[start:end];literal=block.index('        run: |')+1
+        self.assertTrue(all(not line or line.startswith('          ') for line in block[literal:]))
+        body='\n'.join(line[10:] for line in block[literal:])+'\n'
+        setup='mkdir -p "$RUNNER_TEMP/opica4-independent-transports"'
+        self.assertIn(setup,body)
+        bash=shutil.which('bash')
+        if os.name=='nt' and not bash:
+            candidate=Path(os.environ.get('ProgramFiles','C:/Program Files'))/'Git/bin/bash.exe'
+            if candidate.is_file():bash=str(candidate)
+        self.assertIsNotNone(bash,'Bash is required to execute the authored workflow setup')
+        commit=subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD'],text=True).strip()
+        tree=subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD^{tree}'],text=True).strip()
+        driver='''from pathlib import Path
+import json, os, sys
+from unittest.mock import patch
+sys.path.insert(0,os.environ['OPICA_FIXTURE_REPO'])
+from research.RHRC.integration.opica_composition import cli, snapshot
+prefix=['-B','-m','research.RHRC.integration.opica_composition.cli']
+if sys.argv[1:4]!=prefix:raise RuntimeError('Exact authored CLI invocation required')
+sys.argv=[prefix[-1],*sys.argv[4:]]
+root=Path(os.environ['RUNNER_TEMP'])
+expected={'run_id':os.environ['GITHUB_RUN_ID'],'attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),
+          'requested_commit':os.environ['REQUESTED_COMMIT'],'requested_tree':os.environ['OPICA_FIXTURE_TREE']}
+def pack(repo,bundle,output,group,exp):
+    if group!=os.environ['GROUP'] or exp!=expected:raise RuntimeError('Dispatch binding differs')
+    if bundle!=root/'opica4-independent'/group or not bundle.is_dir():raise RuntimeError('Input path differs')
+    if output!=root/'opica4-independent-transports'/group:raise RuntimeError('Output path differs')
+    snapshot._transport_new_directory(output)
+    (output/'dispatch-only.json').write_text(json.dumps({'group':group,'scope':'WORKFLOW_SETUP_ONLY'}))
+with patch.object(cli,'experiment',return_value=expected),patch.object(cli,'pack_group_bundle',side_effect=pack):
+    raise SystemExit(cli.main())
+'''
+        for group in accept.REPLAY_GROUP_IDS:
+            for missing_setup in (False,True):
+                with self.subTest(group=group,missing_setup=missing_setup),tempfile.TemporaryDirectory() as tmp:
+                    root=Path(tmp);(root/'opica4-independent'/group).mkdir(parents=True)
+                    path=root/'dispatch.py';path.write_text(driver,encoding='utf-8')
+                    env={**os.environ,'RUNNER_TEMP':root.as_posix(),'GROUP':group,
+                         'GITHUB_RUN_ID':'123456','GITHUB_RUN_ATTEMPT':'2','REQUESTED_COMMIT':commit,
+                         'OPICA_FIXTURE_TREE':tree,'OPICA_FIXTURE_REPO':REPO.as_posix(),
+                         'OPICA_FIXTURE_PYTHON':Path(sys.executable).as_posix(),'OPICA_FIXTURE_DRIVER':path.as_posix()}
+                    shell=('python() { "$OPICA_FIXTURE_PYTHON" "$OPICA_FIXTURE_DRIVER" "$@"; }\n'+
+                           (body.replace(setup,'') if missing_setup else body))
+                    result=subprocess.run([bash,'--noprofile','--norc','-c',shell],cwd=REPO,env=env,
+                                          capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=30)
+                    output=root/'opica4-independent-transports'/group
+                    if missing_setup:
+                        self.assertNotEqual(result.returncode,0)
+                        self.assertIn('No-follow evidence handle unavailable' if os.name=='nt'
+                                      else 'FileNotFoundError',result.stderr)
+                        self.assertFalse(output.parent.exists())
+                        self.assertFalse(output.exists())
+                    else:
+                        self.assertEqual(result.returncode,0,result.stderr)
+                        self.assertEqual(json.loads((output/'dispatch-only.json').read_text(encoding='utf-8')),
+                                         {'group':group,'scope':'WORKFLOW_SETUP_ONLY'})
 
     def test_source_constraint_structure_requires_full_constructor_audit(self):
         source = ('namespace Fixture\nstructure Packet : Prop where\n  source : True\n'
