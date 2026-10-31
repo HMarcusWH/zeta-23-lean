@@ -1,0 +1,19 @@
+{
+  "schema":"OPICA_PERMANSSON_SELECTED_EXPORTS_V1",
+  "repository":"HMarcusWH/PermanssonLean",
+  "commit":"17c315f7df7abf457eb94d393bd526d46da6f6f4",
+  "toolchain":"leanprover/lean4:v4.34.0",
+  "module":"PermanssonResearch.ReverseSolver.ComputableFiniteMonitor",
+  "source_path":"PermanssonResearch/ReverseSolver/ComputableFiniteMonitor.lean",
+  "source_sha256":"7b35a2d55c351350898f89860f4921964f2b0af655840df5f564b5ec1da328a3",
+  "lake_manifest_sha256":"974d255f7eced6a5f90a046ce6e5cdd5a49e86463caaca2453a6e40d9b26ea9a",
+  "template":"ProviderAudit.lean.in",
+  "allowed_axioms":["Classical.choice","Quot.sound","propext"],
+  "mode":"POLICY_ADAPTER_ONLY",
+  "model_optimality":"NOT_ESTABLISHED",
+  "apis":[
+    {"declaration":"PermanssonResearch.ReverseSolver.FiniteMonitor.computedValue_eq_value","consumer":"OPICAProviderAudit.value_eq_spec_consumer"},
+    {"declaration":"PermanssonResearch.ReverseSolver.FiniteMonitor.leastMaximizingControl_spec","consumer":"OPICAProviderAudit.least_choice_consumer"},
+    {"declaration":"PermanssonResearch.ReverseSolver.FiniteMonitor.computedMaximizer_attains","consumer":"OPICAProviderAudit.maximizer_attains_consumer"}
+  ]
+}

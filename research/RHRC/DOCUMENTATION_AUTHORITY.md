@@ -1,42 +1,32 @@
-<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
-## Current documentation precedence — 22 October 2026
+# Documentation authority and navigation
 
-The active OPICA work is draft PR #294, following accepted parent PR #293.
-Read the [continuation guide](integration/opica_followup/continuation/2026-10-22/README.md),
-[documentation and evidence index](integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md),
-[current root ledger](integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json) and [current module status](integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md).
-Use the current-stage handover and exact source/evidence links from those pages;
-check the live head and actual CI before asserting current acceptance.
+Use the [README](../../README.md) and [dated current snapshot](../../docs/CURRENT_STATE.md)
+for repository-wide routing. Read the [agent guide](../../docs/AGENT_GUIDE.md)
+before edits and the [repository map](../../docs/REPOSITORY_MAP.md) for graphs.
+RH, Step 4 and the independent closing premises remain OPEN.
 
-The target remains 100 roots / 28 acceptance units. The ledger separates
-historical source-bound results, narrow local gates, candidates and absent
-implementations; current aggregate/release acceptance remains OPEN.
-The generated Control-v2 block and dated current/next wording below retain their
-historical authority scope. They do not describe current PR routing or accept
-the child package. Frozen specifications define obligations; live exact-source
-compiler/CI evidence determines what is proved. Graph/framework views do not.
+When sources disagree, use this order:
 
-RH, Step 4 and the independent closing inequalities remain OPEN.
+1. Live exact source, Lean/compiler evidence and complete CI results for that object.
+2. The current execution/handover record, reconciled with its exact source scope.
+3. Detailed design documents and frozen contracts defining the obligations.
+4. Older plans, reviews, ZIP overlays and historical narrative.
 
----
+Registries and graph/framework records have only their declared authority.
+A source-only census, reviewed contact, numerical receipt or green replay does
+not promote an OPEN claim. Use PROVED / DERIVED / EXPERIMENTAL SIGNAL /
+LEAD or HYPOTHESIS / OPEN consistently; read conditional hypotheses in full.
+Missing, stale, skipped and pending evidence never count as passed gates.
 
-# RHRC documentation authority and update law
+The machine block and earlier update law below are preserved historical records.
+Their PR numbers and dated “current” statements are scoped to those checkpoints,
+not competing routing instructions. Keep renderer bytes and protected sources
+unchanged; update the named navigation documents through the closed manifest.
 
-This file defines which documentation is authoritative and how to prevent research-state drift after rapid theorem and discovery changes.
+<details>
+<summary>Historical Control-v2 snapshot: frozen PR #287 scope</summary>
 
-## Authority order
-
-When sources disagree:
-
-1. **Live GitHub head + Lean compiler + CI** — exact checked object wins.
-2. **Merged theorem declarations and machine registries** — theorem/claim surfaces.
-3. **Active route README**.
-4. **Living research-control SSOTs** — newest dated research delta plus `CURRENT_RESEARCH_PLAN.md` and current RHRC/root summaries.
-5. **Current external build-plan / handover SSOT**.
-6. **PR-specific settlement documents**.
-7. **Historical roadmaps, audits, numerical receipts, external reviews and old implementation plans**.
-
-Research certificates, exact-rational audits, Arb output and external reviews are routing evidence unless separately theoremized in Lean.
+This preserved machine block is a historical receipt, not current PR routing.
 
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
@@ -90,6 +80,56 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+</details>
+
+<details>
+<summary>Preserved historical account and checkpoint wording</summary>
+
+The dates, counts, active-PR labels and next steps below belong to their original checkpoints.
+Use the dated navigation above for the repository-wide reading path.
+
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+## Current documentation precedence — 22 October 2026
+
+The active OPICA work is draft PR #294, following accepted parent PR #293.
+Read the [continuation guide](integration/opica_followup/continuation/2026-10-22/README.md),
+[documentation and evidence index](integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md),
+[current root ledger](integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json) and [current module status](integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md).
+Use the current-stage handover and exact source/evidence links from those pages;
+check the live head and actual CI before asserting current acceptance.
+
+The target remains 100 roots / 28 acceptance units. The ledger separates
+historical source-bound results, narrow local gates, candidates and absent
+implementations; current aggregate/release acceptance remains OPEN.
+The generated Control-v2 block and dated current/next wording below retain their
+historical authority scope. They do not describe current PR routing or accept
+the child package. Frozen specifications define obligations; live exact-source
+compiler/CI evidence determines what is proved. Graph/framework views do not.
+
+RH, Step 4 and the independent closing inequalities remain OPEN.
+
+---
+
+# RHRC documentation authority and update law
+
+This file defines which documentation is authoritative and how to prevent research-state drift after rapid theorem and discovery changes.
+
+## Authority order
+
+When sources disagree:
+
+1. **Live GitHub head + Lean compiler + CI** — exact checked object wins.
+2. **Merged theorem declarations and machine registries** — theorem/claim surfaces.
+3. **Active route README**.
+4. **Living research-control SSOTs** — newest dated research delta plus `CURRENT_RESEARCH_PLAN.md` and current RHRC/root summaries.
+5. **Current external build-plan / handover SSOT**.
+6. **PR-specific settlement documents**.
+7. **Historical roadmaps, audits, numerical receipts, external reviews and old implementation plans**.
+
+Research certificates, exact-rational audits, Arb output and external reviews are routing evidence unless separately theoremized in Lean.
+
+
 
 ## Post-#285 documentation-authority override
 
@@ -643,3 +683,6 @@ RH                    = OPEN
 ```
 
 No claim IDs, action scores, first-break semantics, route digests, confirmation permissions or theorem declarations change in this synchronization.
+
+
+</details>

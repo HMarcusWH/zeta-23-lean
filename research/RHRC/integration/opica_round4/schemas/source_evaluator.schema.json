@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"OPICA4_FINITE_SOURCE_EVALUATOR_V1",
+  "title":"Round4 finite source production report",
+  "type":"object",
+  "required":["schema","status","source_identity","producer_root","runtime","checked_commit","checked_tree","precision_bits","seconds_per_case","case_manifest_sha256","cases","authority","is_zero_generated_detector","RH","Step4","full_core_accepted","full_release_accepted","human_review"],
+  "additionalProperties":false,
+  "properties":{
+    "schema":{"const":"OPICA4_FINITE_SOURCE_EVALUATOR_V1"},
+    "status":{"enum":["UNRESOLVED","PASS_FINITE_SOURCE_ENCLOSURES"]},
+    "producer_root":{"type":"string","minLength":1},
+    "source_identity":{"type":"object","required":["head","tree","clean","source_sha256"]},
+    "runtime":{"type":"object","required":["python_executable","python_executable_sha256","python_version","python_optimized","python_flint_version","python_flint_module_sha256","flint_version","native_library_sha256","platform"]},
+    "checked_commit":{"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "checked_tree":{"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "precision_bits":{"enum":[256,512]},
+    "seconds_per_case":{"type":"integer","minimum":1,"maximum":60},
+    "case_manifest_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "cases":{"type":"array","minItems":6,"maxItems":6,"items":{"type":"object","required":["id","request","outcome","file","sha256","command"]}},
+    "authority":{"const":"FINITE_INTERVAL_EVIDENCE_ONLY"},"is_zero_generated_detector":{"const":false},
+    "RH":{"const":"OPEN"},"Step4":{"const":"OPEN"},"full_core_accepted":{"const":false},"full_release_accepted":{"const":false},"human_review":{"const":"NOT_ESTABLISHED"}
+  }
+}

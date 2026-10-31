@@ -1,0 +1,263 @@
+{
+  "schema": "OPICA4_REGULAR_CELL_PROOF_AUDIT_V1",
+  "status": "G01_PROVED_G03_PARTIAL_G04_G08_OPEN_SOURCE_FAITHFUL_GENERICITY_NOT_ASSUMED",
+  "head": "5d4c1c56b2c568a9758ea6744446420b6d41c6a9",
+  "tree": "b5845f010bf68ce4c6a825fabc28d1d5450217d2",
+  "evidence_precedence": "Exact source and compiler; historical packet derivations are hypotheses until consumed.",
+  "proof_chain": [
+    {
+      "id": "G01",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "exact_leaf": "For every L>0 and K, the invertible diagonal multiplication a+n^2, a=(L/(4*pi))^2, identifies the fixed even seed M0=M2=M4=0 and fixed odd seed M1=M3=0 with the actual moving physical pole-neutral spaces. The induced Gram metrics must be retained.",
+      "known": "The invertible a+n^2 diagonal identifies the fixed even M0=M2=M4=0 and odd M1=M3=0 seeds with the actual moving pole-neutral carriers for every L>0 and cutoff. The exact positive physical Gram pullback and both actual exponential moments are proved.",
+      "missing": "No missing leaf for the exact fixed-seed linear equivalences, physical Gram identification, positivity or pole moment transport. G03 spectral analytic composition and G04-G08 are separate obligations.",
+      "next_test": "Use the now-proved fixed coordinates and exact positive Gram metrics for source-faithful analytic/asymptotic work; do not replace the physical D by a unitary.",
+      "prior_leaf_state": {
+        "status": "OPEN",
+        "known": "Native pole-neutral carriers, dimensions and nonunitary D equivalence are proved.",
+        "missing": "Explicit fixed-seed diagonal equivalences and their metric identification; no isometry may be inferred.",
+        "next_test": "Prove both diagonal directions on raw centered moments before transporting source matrices."
+      },
+      "declarations": [
+        "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonalEquiv",
+        "Zeta23.OPICARound4.RegularCells.fixedEvenSeedPhysicalEquiv",
+        "Zeta23.OPICARound4.RegularCells.fixedOddSeedPhysicalEquiv",
+        "Zeta23.OPICARound4.RegularCells.fixedSeedGram_eq_physical_inner",
+        "Zeta23.OPICARound4.RegularCells.fixedSeedGram_pos"
+      ]
+    },
+    {
+      "id": "G02",
+      "status": "EXISTING_PROVED_REUSE",
+      "declaration": "Zeta23.CCM.frozenCanonicalSourceMatrix_eq_canonicalSourceMatrix_fixedCell",
+      "source": "Zeta23/CCM/FrozenCanonicalSourceAnalytic.lean",
+      "exact_domain": "Q>=1 and log Q<L<log(Q+1)",
+      "boundary": "Equality to native source is restricted to that physical cell; fixed-Q continuation outside it is auxiliary."
+    },
+    {
+      "id": "G03",
+      "status": "PARTIAL_FIXED_CARRIERS_AND_GRAM_PROVED_SPECTRAL_ANALYTIC_COMPOSITION_OPEN",
+      "declarations": [
+        "Zeta23.CCM.analyticOnNhd_complexFrozenCanonicalSourceRemainder_apply_sourceDomain",
+        "Zeta23.CCM.continuousOn_canonicalSourceMatrix_apply_fixedCell"
+      ],
+      "missing": "G01 fixed carriers and positive physical Gram metrics are now proved. A formal analytic generalized spectral/determinant composition with the actual fixed-cell source still needs its domain and hypotheses; ambient entrywise holomorphy alone is insufficient.",
+      "prior_leaf_state": {
+        "status": "PARTIAL_EXISTING_PROVED_REUSE",
+        "missing": "Composition with the still-missing G01 fixed carriers and exact positive Gram metrics. Entrywise ambient holomorphy does not identify moving physical eigenvalues by itself."
+      }
+    },
+    {
+      "id": "G04",
+      "status": "OPEN",
+      "exact_leaf": "At each fixed K,Q prove the neutral compressed energy/metric expansion -c_Q I+kappa_Q X/L^2+O(L^-3) with positive constants in justified fixed coordinates.",
+      "known": "Exact neutral pole cancellation is proved. Ambient frozen -log L scalar decomposition is proved.",
+      "missing": "Complete Archimedean and finite-prime large-aperture remainders and their compression through the exact Gram metrics.",
+      "next_test": "Derive the fixed-Q diagonal and off-diagonal coefficients analytically and compare low-dimensional exact leading matrices. Never label fixed-Q limits as native growing-cutoff asymptotics."
+    },
+    {
+      "id": "G05",
+      "status": "OPEN",
+      "exact_leaf": "For every K, the limiting even and odd seed-compression spectra are simple and strictly disjoint via the Jacobi/cyclic rank-one comparison.",
+      "known": "Bounded historical rational checks K=3..7; these are not all-K proofs.",
+      "missing": "All-K Jacobi-tail cyclicity, strict rank-one interlacing and treatment of K=2 empty predecessor.",
+      "next_test": "Prove cyclicity of the exact limiting coordinate vector. The auxiliary polar unitary cannot change the physical D metric."
+    },
+    {
+      "id": "G06",
+      "status": "OPEN",
+      "exact_leaf": "The fixed-cell determinant and mutual spectral-resultant functions are not identically zero in the actual source family.",
+      "missing": "Needs source-faithful G04/G05 or another actual nonvanishing anchor. Ambient analyticity alone is insufficient.",
+      "countermodel": "CM_G06_CONSTANT_SHARED_GROUND",
+      "next_test": "Find an exact source-specific nonvanishing value or rigorous limiting coefficient for every relevant cutoff."
+    },
+    {
+      "id": "G07",
+      "status": "OPEN",
+      "exact_leaf": "Inside each forced negative interval choose an actual prime-cell subinterval avoiding the exceptional sets for all finitely many relevant K<=M.",
+      "missing": "Native nonidentity from G06, local discreteness, finite exceptional union and interval selection with exact quantifiers.",
+      "next_test": "After G06, prove the finite-union selection theorem without a uniform gap/width assertion."
+    },
+    {
+      "id": "G08",
+      "status": "OPEN",
+      "exact_leaf": "Compose D03 negativity persistence and D04/D05 first-cutoff witnesses with G07, preserving all first-cutoff predicates and same common K for paired parity sources.",
+      "known": "Round4 common-cutoff negative-ground alternatives explicitly retain the equal-ground branch; strict branches use their genuine source rays.",
+      "missing": "Cannot remove shared, singular or resonant branches until G07 is proved.",
+      "next_test": "Keep the D-direct and conditional exact-ground routes active. Use proved G01 while pursuing source-specific G04/G05/G06 and the G07 exceptional-set selection; retain shared/singular/resonant branches.",
+      "prior_leaf_state": {
+        "status": "OPEN",
+        "known": "Round4 common-cutoff negative-ground alternatives explicitly retain the equal-ground branch; strict branches use their genuine source rays.",
+        "missing": "Cannot remove shared, singular or resonant branches until G07 is proved.",
+        "next_test": "Keep the D-direct branch active while G01/G04/G05/G06 are pursued."
+      }
+    }
+  ],
+  "countermodels": [
+    {
+      "id": "CM_G06_CONSTANT_SHARED_GROUND",
+      "authority": "EXACT_RATIONAL_SYNTHETIC_CONTROL_NOT_A_ZETA_COUNTEREXAMPLE",
+      "domain": "constant real-analytic two-dimensional families on any real interval",
+      "A": [
+        [
+          -2,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "B": [
+        [
+          -2,
+          0
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "D": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "g": [
+        0,
+        1
+      ],
+      "f": [
+        0,
+        2
+      ],
+      "rank_one_identity": "B*D-D*A=g*f=[[0,0],[0,2]]",
+      "predecessor": "span e2 has energies 1 and 3, hence PSD and positive definite; shell span e1 has codimension one",
+      "preserves": [
+        "Hermitian A,B",
+        "invertible D",
+        "nonzero g,f",
+        "rank-one intertwining",
+        "real analyticity",
+        "negative successors with PSD codimension-one predecessors",
+        "common negative ground -2"
+      ],
+      "falsifies": "Analyticity plus rank-one transport and first-birth structure imply a subinterval with disjoint spectra or source-visible ground.",
+      "mechanism": "Shared eigenvector e1 is annihilated by f and paired orthogonally to g. The mutual resultant vanishes identically.",
+      "does_not_preserve": [
+        "canonical zeta arithmetic source",
+        "canonical diagonal normalization",
+        "native seed/frozen-source asymptotic conditions"
+      ]
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "prior_evidence_identity": {
+    "head": "fe16565b2a31fb8b68bef916ae8f04d535880e7a",
+    "tree": "5442650eb749576e4a82e2d57460a4b97e19b5a9"
+  },
+  "authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+  "production_qualification": "PENDING_ROOT_E10",
+  "extension_links": [
+    {
+      "id": "E1",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "math_contract": "MATH_CONTRACTS.json:E1",
+      "open_leaves": [
+        "Prove the actual even and odd source comparisons or exact-ground restrictions.",
+        "Exclude actual shared negative grounds.",
+        "Prove a common eventual threshold uniform in every relevant cutoff."
+      ]
+    },
+    {
+      "id": "E2",
+      "status": "ROOT_MAINTAINED_BOUNDED_TOOLING_NOT_COMPLETENESS",
+      "math_contract": "MATH_CONTRACTS.json:E2",
+      "open_leaves": [
+        "Actual open arithmetic target proofs.",
+        "Any search-completeness claim beyond the declared finite budget."
+      ]
+    },
+    {
+      "id": "E3",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "math_contract": "MATH_CONTRACTS.json:E3",
+      "open_leaves": [
+        "A physical Weil-form to spectral Pick-index bridge.",
+        "Any native at-most-one negative-atom/index claim.",
+        "Source-specific sign or smallness of the signed measure."
+      ]
+    },
+    {
+      "id": "E4",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "math_contract": "MATH_CONTRACTS.json:E4",
+      "open_leaves": [
+        "Source-specific exclusion of input-invisible negative modes.",
+        "Source-specific exclusion of output-invisible negative modes.",
+        "A quantitative observation lower bound for actual selected states."
+      ]
+    },
+    {
+      "id": "E5",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "math_contract": "MATH_CONTRACTS.json:E5",
+      "open_leaves": [
+        "A useful source-specific arithmetic gain uniform in the required aperture/cutoff regime.",
+        "A strict actual source budget beating the genuine spectral margin.",
+        "Any blanket improvement over the existing signed S05 bound."
+      ]
+    },
+    {
+      "id": "E6",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "math_contract": "MATH_CONTRACTS.json:E6",
+      "open_leaves": [
+        "Uniform arithmetic smallness over the declared class.",
+        "Uniform derivative-variation, inverse-gap and strict-margin budgets for the actual selected family.",
+        "No automatic nilsequence or other external number-theory test-class inclusion."
+      ]
+    },
+    {
+      "id": "E7",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "math_contract": "MATH_CONTRACTS.json:E7",
+      "open_leaves": [
+        "Prove the actual eventual native joint negative-index cap.",
+        "A source-specific index inequality on the full physical operator."
+      ]
+    },
+    {
+      "id": "E8",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "math_contract": "MATH_CONTRACTS.json:E8",
+      "open_leaves": [
+        "Actual contact crossing sign or barrier.",
+        "A canonical uniform ninth-order remainder instance.",
+        "Uniform moving-state/frame/aperture variation costs near seams.",
+        "G03 spectral analytic composition and G04-G08 source-specific asymptotic/nonidentity/selection leaves."
+      ]
+    },
+    {
+      "id": "E9",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "math_contract": "MATH_CONTRACTS.json:E9",
+      "open_leaves": [
+        "An independently proved external real-even or odd-complex dictionary representation with the required node and derivative matches.",
+        "Any full source/operator equivalence inferred from integer values alone."
+      ]
+    }
+  ],
+  "visibility_rigidity": {
+    "label": "PROVED",
+    "declaration": "Zeta23.OPICARound4.grouped_residue_zero_iff_input_or_output_invisible",
+    "scope": "Full finite Hermitian A/B, invertible D and rank-one transport only; exact zero classification gives no native invisibility exclusion or quantitative lower bound.",
+    "remaining_open": "Actual source-specific input/output invisible negative channels and any nonidentity/observability restriction."
+  }
+}

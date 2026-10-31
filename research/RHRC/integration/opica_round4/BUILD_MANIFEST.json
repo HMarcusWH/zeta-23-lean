@@ -1,0 +1,1417 @@
+{
+  "schema": "OPICA4_CLOSED_DESCENDANT_MANIFEST_V1",
+  "base": "fe16565b2a31fb8b68bef916ae8f04d535880e7a",
+  "base_tree": "5442650eb749576e4a82e2d57460a4b97e19b5a9",
+  "documentation_migration": {
+    "schema": "OPICA4_DOCUMENTATION_MIGRATION_V1",
+    "id": "DOC_NAV_2026_10_28_01",
+    "add": [
+      "docs/AGENT_GUIDE.md",
+      "docs/CURRENT_STATE.md",
+      "docs/FRAMEWORKS.md",
+      "docs/MATHEMATICAL_GLOSSARY.md",
+      "docs/PROJECT_GUIDE.md",
+      "docs/REPOSITORY_MAP.md",
+      "research/RHRC/ffbbp/README.md",
+      "research/RHRC/permansson/README.md"
+    ],
+    "edit": [
+      "AGENTS.md",
+      "AUDIT.md",
+      "FORK_NOTES.md",
+      "README.md",
+      "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+      "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "research/RHRC/README.md",
+      "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "research/RHRC/graph/README.md",
+      "research/RHRC/integration/README.md",
+      "research/RHRC/integration/opica/README.md",
+      "research/RHRC/integration/opica_followup/README.md",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md",
+      "research/RHRC/ool/README.md"
+    ],
+    "renderer_blocks": "UNCHANGED_ACCEPTED_PARENT_BYTES",
+    "claim_cap": "DOCUMENTATION_ONLY",
+    "agent_instructions": "UNCHANGED_ACCEPTED_PARENT_TAIL_FROM_LITERAL_ANCHOR",
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "reviewed_additional_scope_migrations": [
+    {
+      "path": ".github/workflows/rhrc.yml",
+      "job_templates": 1,
+      "reason": "Original closed Round3 inspection correctly rejected the Round4 child; inspect child independently then replay accepted parent without changing original predicates"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica.yml",
+      "job_templates": 4,
+      "reason": "Original closed Round3 inspection correctly rejected the Round4 child; inspect child independently then replay accepted parent without changing original predicates"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica_followup.yml",
+      "job_templates": 7,
+      "reason": "Original closed Round3 inspection correctly rejected the Round4 child; inspect child independently then replay accepted parent without changing original predicates"
+    }
+  ],
+  "classification_rules": [
+    {
+      "id": "opica_round4_ci",
+      "pattern": "\\A(?:\\.github/actions/opica4\\-runtime/action\\.yml|\\.github/workflows/rhrc_opica_composition\\.yml)\\Z",
+      "file_class": "CI_WORKFLOW",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round4_configuration",
+      "pattern": "\\A(?:research/RHRC/integration/opica_composition/BUILD_CONTRACT\\.json|research/RHRC/integration/opica_composition/EXPECTED_TESTS\\.json|research/RHRC/integration/opica_composition/FRAMEWORK_PROVIDERS\\.json|research/RHRC/integration/opica_composition/PROFILE\\.json|research/RHRC/integration/opica_composition/PUBLIC_TARGETS\\.json|research/RHRC/integration/opica_composition/SEARCH_CONTRACTS\\.json|research/RHRC/integration/opica_composition/providers/permansson/selected_exports\\.json|research/RHRC/integration/opica_composition/schemas/contracts\\.schema\\.json|research/RHRC/integration/opica_round4/ACCEPTANCE_MATRIX\\.json|research/RHRC/integration/opica_round4/BASELINE_ACCEPTANCE_MATRIX\\.json|research/RHRC/integration/opica_round4/BASELINE_CI_LANES\\.json|research/RHRC/integration/opica_round4/BASELINE_FILE_PLAN\\.json|research/RHRC/integration/opica_round4/BASELINE_REQUIREMENTS\\.json|research/RHRC/integration/opica_round4/BUILD_MANIFEST\\.json|research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS\\.json|research/RHRC/integration/opica_round4/COUNTERMODEL_REGISTER\\.json|research/RHRC/integration/opica_round4/EXACT_RATIONAL_CONTROLS\\.json|research/RHRC/integration/opica_round4/INPUT_REGISTER\\.json|research/RHRC/integration/opica_round4/INTEGRATION_REQUIREMENTS\\.json|research/RHRC/integration/opica_round4/MATH_CONTRACTS\\.json|research/RHRC/integration/opica_round4/POST_GREEN_RESEARCH\\.json|research/RHRC/integration/opica_round4/REGULAR_CELL_AUDIT\\.json|research/RHRC/integration/opica_round4/RESEARCH_DISPOSITIONS\\.json|research/RHRC/integration/opica_round4/ROOTS\\.json|research/RHRC/integration/opica_round4/WORKFLOW_CONTRACT\\.json|research/RHRC/integration/opica_round4/WORK_PACKAGES\\.json|research/RHRC/integration/opica_round4/schemas/source_evaluator\\.schema\\.json|research/RHRC/integration/opica_round4_support/EXPECTED_TEST_IDS\\.json|research/RHRC/integration/opica_round4_support/OPEN_OBLIGATIONS\\.json|research/RHRC/integration/opica_round4_support/PACKAGE_MANIFEST\\.json|research/RHRC/integration/opica_round4_support/PACKAGE_STATUS\\.json|research/RHRC/integration/opica_round4_support/SOURCE_REFERENCES\\.json|research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS\\.json)\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round4_documentation",
+      "pattern": "\\A(?:docs/AGENT_GUIDE\\.md|docs/CURRENT_STATE\\.md|docs/FRAMEWORKS\\.md|docs/MATHEMATICAL_GLOSSARY\\.md|docs/PROJECT_GUIDE\\.md|docs/REPOSITORY_MAP\\.md|research/RHRC/ffbbp/README\\.md|research/RHRC/integration/opica_composition/README\\.md|research/RHRC/integration/opica_round4/CI_REPAIR_2026\\-10\\-28\\.md|research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER\\.md|research/RHRC/integration/opica_round4/README\\.md|research/RHRC/integration/opica_round4_support/README\\.md|research/RHRC/permansson/README\\.md|research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS\\.md)\\Z",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round4_executables",
+      "pattern": "\\A(?:research/RHRC/ffbbp/opica_composition\\.py|research/RHRC/integration/opica_composition/__init__\\.py|research/RHRC/integration/opica_composition/accept\\.py|research/RHRC/integration/opica_composition/applications\\.py|research/RHRC/integration/opica_composition/baseline\\.py|research/RHRC/integration/opica_composition/cache_owner\\.py|research/RHRC/integration/opica_composition/campaign\\.py|research/RHRC/integration/opica_composition/canonical\\.py|research/RHRC/integration/opica_composition/cli\\.py|research/RHRC/integration/opica_composition/closure\\.py|research/RHRC/integration/opica_composition/composition_search\\.py|research/RHRC/integration/opica_composition/config\\.py|research/RHRC/integration/opica_composition/contracts\\.py|research/RHRC/integration/opica_composition/countermodels\\.py|research/RHRC/integration/opica_composition/descendant\\.py|research/RHRC/integration/opica_composition/evidence\\.py|research/RHRC/integration/opica_composition/executor\\.py|research/RHRC/integration/opica_composition/harvest\\.py|research/RHRC/integration/opica_composition/historical\\.py|research/RHRC/integration/opica_composition/inventory\\.py|research/RHRC/integration/opica_composition/journal\\.py|research/RHRC/integration/opica_composition/proposals\\.py|research/RHRC/integration/opica_composition/provider\\.py|research/RHRC/integration/opica_composition/qualification\\.py|research/RHRC/integration/opica_composition/research_contracts\\.py|research/RHRC/integration/opica_composition/service\\.py|research/RHRC/integration/opica_composition/snapshot\\.py|research/RHRC/integration/opica_composition/testing\\.py|research/RHRC/integration/opica_composition/tests/test_acceptance\\.py|research/RHRC/integration/opica_composition/tests/test_applications\\.py|research/RHRC/integration/opica_composition/tests/test_cli\\.py|research/RHRC/integration/opica_composition/tests/test_closure\\.py|research/RHRC/integration/opica_composition/tests/test_composition_search\\.py|research/RHRC/integration/opica_composition/tests/test_contracts\\.py|research/RHRC/integration/opica_composition/tests/test_countermodels\\.py|research/RHRC/integration/opica_composition/tests/test_descendant\\.py|research/RHRC/integration/opica_composition/tests/test_end_to_end\\.py|research/RHRC/integration/opica_composition/tests/test_evidence\\.py|research/RHRC/integration/opica_composition/tests/test_executor\\.py|research/RHRC/integration/opica_composition/tests/test_ffbbp\\.py|research/RHRC/integration/opica_composition/tests/test_harvest\\.py|research/RHRC/integration/opica_composition/tests/test_integration_search_native\\.py|research/RHRC/integration/opica_composition/tests/test_inventory\\.py|research/RHRC/integration/opica_composition/tests/test_journal\\.py|research/RHRC/integration/opica_composition/tests/test_native_environment\\.py|research/RHRC/integration/opica_composition/tests/test_ool\\.py|research/RHRC/integration/opica_composition/tests/test_permansson\\.py|research/RHRC/integration/opica_composition/tests/test_search_native\\.py|research/RHRC/integration/opica_composition/views\\.py|research/RHRC/integration/opica_round4/__init__\\.py|research/RHRC/integration/opica_round4/math_gate\\.py|research/RHRC/integration/opica_round4/source_backend\\.py|research/RHRC/integration/opica_round4/source_checker\\.py|research/RHRC/integration/opica_round4/source_evaluator\\.py|research/RHRC/integration/opica_round4/source_research\\.py|research/RHRC/integration/opica_round4/tests/test_source_evaluator\\.py|research/RHRC/integration/opica_round4/tests/test_source_research\\.py|research/RHRC/integration/opica_round4_support/__init__\\.py|research/RHRC/integration/opica_round4_support/run_python_tests\\.py|research/RHRC/integration/opica_round4_support/schedule\\.py|research/RHRC/integration/opica_round4_support/source_context\\.py|research/RHRC/integration/opica_round4_support/source_lock\\.py|research/RHRC/integration/opica_round4_support/tests/test_context\\.py|research/RHRC/integration/opica_round4_support/tests/test_scheduler\\.py|research/RHRC/integration/opica_round4_support/tests/test_source_lock\\.py|research/RHRC/integration/opica_round4_support/tests/test_verifier_guards\\.py|research/RHRC/integration/opica_round4_support/verify_support\\.py|research/RHRC/ool/opica_composition\\.py|research/RHRC/permansson/__init__\\.py|research/RHRC/permansson/opica_composition\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round4_fixtures",
+      "pattern": "\\A(?:research/RHRC/integration/opica_composition/fixtures/calibration_routes\\.json|research/RHRC/integration/opica_composition/fixtures/metadata_adversaries\\.json|research/RHRC/integration/opica_composition/providers/permansson/ProviderAudit\\.lean\\.in|research/RHRC/integration/opica_round4/fixtures/source_cases\\.json)\\Z",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "opica_round4_lean_audit",
+      "pattern": "\\A(?:Zeta23/OPICAComposition/Calibration\\.lean|Zeta23/OPICARound4/Validation\\.lean|Zeta23/OPICARound4/Validation/IntegrationClosure\\.lean|Zeta23/OPICARound4/Validation/IntegrationDictionary\\.lean|Zeta23/OPICARound4/Validation/IntegrationObservation\\.lean|Zeta23/OPICARound4/Validation/IntegrationSource\\.lean|Zeta23/OPICARound4/Validation/IntegrationSpectral\\.lean|Zeta23/OPICARound4/Validation/IntegrationVisibilityRigidity\\.lean|Zeta23/OPICARound4/Validation/Support\\.lean|Zeta23/RHRC/OpicaComposition/Audit\\.lean|Zeta23/RHRC/OpicaComposition/Elaborate\\.lean|Zeta23/RHRC/OpicaComposition/Export\\.lean|Zeta23/RHRC/OpicaComposition/FiniteWorlds\\.lean|Zeta23/RHRC/OpicaComposition/Protocol\\.lean|Zeta23/RHRC/OpicaComposition/ResearchTargets\\.lean|Zeta23/RHRC/OpicaComposition/SearchExamples\\.lean|Zeta23/RHRC/OpicaComposition/Validation\\.lean|Zeta23/OPICARound4/Validation/GroundConstraints\\.lean|Zeta23/OPICARound4/Validation/DetectorErrors\\.lean|Zeta23/OPICARound4/Validation/ErrorReduction\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_round4_lean_math",
+      "pattern": "\\A(?:Zeta23/OPICARound4\\.lean|Zeta23/OPICARound4/AbsoluteAnchor\\.lean|Zeta23/OPICARound4/AdaptiveBudget\\.lean|Zeta23/OPICARound4/ClosureConsumers\\.lean|Zeta23/OPICARound4/IntegrationTargets\\.lean|Zeta23/OPICARound4/NativeConcentrationBudget\\.lean|Zeta23/OPICARound4/NativeJointIndex\\.lean|Zeta23/OPICARound4/NativeObservation\\.lean|Zeta23/OPICARound4/NativeRayConsumer\\.lean|Zeta23/OPICARound4/NativeSourceBudget\\.lean|Zeta23/OPICARound4/NativeSpectralMeasure\\.lean|Zeta23/OPICARound4/NativeVisibility\\.lean|Zeta23/OPICARound4/NativeWitnessCosts\\.lean|Zeta23/OPICARound4/NegativeIndex\\.lean|Zeta23/OPICARound4/NeutralContactPencil\\.lean|Zeta23/OPICARound4/OddReciprocalSource\\.lean|Zeta23/OPICARound4/OperatorSignedBound\\.lean|Zeta23/OPICARound4/PrimeDiscrepancyIntegral\\.lean|Zeta23/OPICARound4/RegularCells/FixedSeed\\.lean|Zeta23/OPICARound4/RegularCells/SourceSupport\\.lean|Zeta23/OPICARound4/ScalarShift\\.lean|Zeta23/OPICARound4/SearchSupport\\.lean|Zeta23/OPICARound4/SignedNormBound\\.lean|Zeta23/OPICARound4/SignedPickKernel\\.lean|Zeta23/OPICARound4/SignedSpectral\\.lean|Zeta23/OPICARound4/SourceDictionaryCrosswalk\\.lean|Zeta23/OPICARound4/SourceDiscrepancy\\.lean|Zeta23/OPICARound4/SourceExchangeConcentration\\.lean|Zeta23/OPICARound4/SourceRow\\.lean|Zeta23/OPICARound4/TraceMetric\\.lean|Zeta23/OPICARound4/VisibilityRigidity\\.lean|Zeta23/OPICARound4/WitnessNorms\\.lean|Zeta23/OPICARound4/GroundArithmetic\\.lean|Zeta23/OPICARound4/JointGroundConstraints\\.lean|Zeta23/OPICARound4/SmoothForcing\\.lean|Zeta23/OPICARound4/SchurErrorTransport\\.lean|Zeta23/OPICARound4/QuarticErrorReduction\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    }
+  ],
+  "standalone_module_roles": {
+    "Zeta23.OPICAComposition.Calibration": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.AbsoluteAnchor": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.AdaptiveBudget": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.ClosureConsumers": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.IntegrationTargets": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.NativeConcentrationBudget": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.NativeJointIndex": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.NativeObservation": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.NativeRayConsumer": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.NativeSourceBudget": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.NativeSpectralMeasure": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.NativeVisibility": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.NativeWitnessCosts": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.NegativeIndex": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.NeutralContactPencil": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.OddReciprocalSource": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.OperatorSignedBound": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.PrimeDiscrepancyIntegral": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.RegularCells.FixedSeed": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.RegularCells.SourceSupport": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.ScalarShift": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SearchSupport": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SignedNormBound": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SignedPickKernel": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SignedSpectral": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SourceDictionaryCrosswalk": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SourceDiscrepancy": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SourceExchangeConcentration": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SourceRow": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.TraceMetric": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.Validation": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.IntegrationClosure": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.IntegrationDictionary": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.IntegrationObservation": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.IntegrationSource": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.IntegrationSpectral": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.IntegrationVisibilityRigidity": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.Support": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.VisibilityRigidity": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.WitnessNorms": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.RHRC.OpicaComposition.Audit": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.RHRC.OpicaComposition.Elaborate": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.RHRC.OpicaComposition.Export": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.RHRC.OpicaComposition.FiniteWorlds": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.RHRC.OpicaComposition.Protocol": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.RHRC.OpicaComposition.ResearchTargets": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.RHRC.OpicaComposition.SearchExamples": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.RHRC.OpicaComposition.Validation": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.GroundArithmetic": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.JointGroundConstraints": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SmoothForcing": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.SchurErrorTransport": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.QuarticErrorReduction": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.Validation.GroundConstraints": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.DetectorErrors": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.Validation.ErrorReduction": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET"
+  },
+  "add": [
+    {
+      "path": ".github/actions/opica4-runtime/action.yml",
+      "sha256": "3819b27177a738fbb548352184f24faa817418099bcf17e35463b51ab7798b62"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica_composition.yml",
+      "sha256": "60e24890db380e2d601b78616359985ae4996386b76b9b7b0ea822d14ace51dc"
+    },
+    {
+      "path": "Zeta23/OPICAComposition/Calibration.lean",
+      "sha256": "40697b7754b3e558c4283a79fea4ffc5d7116e14baf4fff4dd8522316381fb91"
+    },
+    {
+      "path": "Zeta23/OPICARound4.lean",
+      "sha256": "f8e5c2716444b30dd00f48cb8dc31fb3a96a3198015fd64be52d1645a627a206"
+    },
+    {
+      "path": "Zeta23/OPICARound4/AbsoluteAnchor.lean",
+      "sha256": "78593711b82a02827282010cb5ff23bded51c0579004b5230ab927f53dd10c77"
+    },
+    {
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "sha256": "ed2890bedcf365ff174564e37d58c63f9ac5f5f39e134cc48faaf2ffb285caab"
+    },
+    {
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "sha256": "f88b0a4dfc43f9e3103705ca14b46022602bde566e87d2cb2f9d1dd3eac56717"
+    },
+    {
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "sha256": "5880f1bbc7df57224d1c261cb60f7d006e66b4aa7b54e1501a949ec12c4199e8"
+    },
+    {
+      "path": "Zeta23/OPICARound4/IntegrationTargets.lean",
+      "sha256": "7ae6b92e6fa2e6d872e03750b222770acf47f334553652cab306070281849ed9"
+    },
+    {
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7"
+    },
+    {
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "sha256": "601b170880c05df913903d2b3c6151592a14cb8e66eb80742eda75baf586c687"
+    },
+    {
+      "path": "Zeta23/OPICARound4/NativeJointIndex.lean",
+      "sha256": "11cc95f5d1a400810e616f464c4e3b56d3c3e368c6cabb27dfd9cd9f56df7ef9"
+    },
+    {
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "sha256": "5de10c71c391269e530a816ed7c379a6c2bdc21e96960a917006841f58ec6867"
+    },
+    {
+      "path": "Zeta23/OPICARound4/NativeRayConsumer.lean",
+      "sha256": "71f7a5833d7397ab74051b4c753c80826a64c684572a3d5c1a42e560cc8a51c8"
+    },
+    {
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "sha256": "75856cd9ae5790b9bd4afa2ca86014671a845c11f1346c20b13afbb93562b62e"
+    },
+    {
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "sha256": "13efcfa7a21e980cbb59b22b319502e7ec3b7de664ab1c5039310f31fb5c0c5b"
+    },
+    {
+      "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+      "sha256": "6907aab5a9005b287c0db6df5645729bb10e82fbb45d6cc8a4802c3c5f34b2b5"
+    },
+    {
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "sha256": "d72b2714a37f1b81c94e04d19fa7ddabe2b8eec9bf274ecb3fd2bfbc118b4429"
+    },
+    {
+      "path": "Zeta23/OPICARound4/NegativeIndex.lean",
+      "sha256": "980817b885c9d6d2e205e965a73554f700f907a0a8d2503cfa063c193b29b843"
+    },
+    {
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "sha256": "e637c75692a04ecdb71ed93aeb28e4e6520a80e6eb9744a6b43020d45ff9f81d"
+    },
+    {
+      "path": "Zeta23/OPICARound4/OddReciprocalSource.lean",
+      "sha256": "87957e4a350eb385563588c5ba7f288b5d7438b4a130f91819d51fd6fe15e716"
+    },
+    {
+      "path": "Zeta23/OPICARound4/OperatorSignedBound.lean",
+      "sha256": "de54637d3bdf2f9849091ab6d2c69e9b0dd53eeb3666d749e31f15f07e999ee2"
+    },
+    {
+      "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "sha256": "5df3b8309f6144a22da5ba8d318c5c91fba181911cf15b1f0d50d49f4d9365c1"
+    },
+    {
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "sha256": "3a176235c26faba6534a32cbea684e84dd81c36c22c9e8ac472cbea36d82dc2a"
+    },
+    {
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "sha256": "262922e4d62d5749eb5580328242a4fae709c405a04d2a054452d6d5258422ef"
+    },
+    {
+      "path": "Zeta23/OPICARound4/RegularCells/SourceSupport.lean",
+      "sha256": "e6639d5367dc88785b0a8e9ab9507b010aceeb97c674a183d1e7b7e1ea7c716f"
+    },
+    {
+      "path": "Zeta23/OPICARound4/ScalarShift.lean",
+      "sha256": "a7b02fa624a07d13aea5580cb7d4be14a919af3f33aa16b4acdd21a2e84781e6"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "sha256": "1f41a890585a99d16f6a0f2dce4bb1b4bfec42daa8db9da337dd215b72d69f53"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SearchSupport.lean",
+      "sha256": "a74b9ba1c5991de537ce32d3ef7a75b8e11549992da673528b99789b18b77826"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SignedNormBound.lean",
+      "sha256": "203fbe7a4a028376bdb2a832e99f5af5352153f41f5906dd3a9b59ab986ccb0f"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "sha256": "158a35972a6c49a2e81b5fcefeb28b6dcabb05f6d06d359e7a2e919bba59ea61"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SignedSpectral.lean",
+      "sha256": "481dad27a636ba9274a758029c881979404b2871c178756958efa30c6e7b598c"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "sha256": "1fd38f486eb19066b118b96d95a1aa23e22daec6c361cbf1cdec72ee20badcb3"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "sha256": "a40e5c89dec93e98d95fd624734c30edf6faed34adee8c1ee961fc0d5f956df4"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "sha256": "0b0a856d30aa821699a2b3cd5890a5ec274cfda8f8cef7c42b337aa734da7012"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "sha256": "03fadc63d50d3947c362c750f7843a8301334c089e9b9b35ee08fe9ba44abf4a"
+    },
+    {
+      "path": "Zeta23/OPICARound4/SourceRow.lean",
+      "sha256": "2419595a7c5944a7a8f46cbae66387dbbf180ffe7878f973a5c6dad5b88054cd"
+    },
+    {
+      "path": "Zeta23/OPICARound4/TraceMetric.lean",
+      "sha256": "9b69981ffed1de26a33be4c230f0188db473336a86a6cde4a5eb1091d9970324"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation.lean",
+      "sha256": "cb3397b470eea9932be9396463abf7b28ae6249eea8022e31ac34c7696616ca1"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/DetectorErrors.lean",
+      "sha256": "fb8a2d0a30b777907cb1997aa2eec61d8dc537eb6a074201c373eeb68420073b"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "sha256": "8df15b1a7ad20393e41c63444bd1bc45f59d1a7a8dbd2b36960857ec8a50d336"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/GroundConstraints.lean",
+      "sha256": "9ed89d080e1da1da924e5d5df8986d0993c8c95afe64c3a4a252fa588725606d"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "sha256": "8a40b125b59ed5cad5559fe90ed0b33eb3e9acce931cbbe39b215280b193b014"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/IntegrationDictionary.lean",
+      "sha256": "f3c306e7cb1ca5ec6286fa888c2a8d24825e9e8bdedd8e4dce0ef950dcb84a1a"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/IntegrationObservation.lean",
+      "sha256": "1d12e8c0c34cc607b23225f42e908a239a9bbc0d0ec89ba014a7a830f8071f37"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSource.lean",
+      "sha256": "92d80630ef05faac12193e610cef9e675d719f4257560605f12808ea92eef4a1"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "sha256": "3c157c26eb4e09359a003e49952562e7b067274ec812940feb17fb4287fea299"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/IntegrationVisibilityRigidity.lean",
+      "sha256": "58419ab134cdbb6d2aa3520f9c6fbe0a11ff08294d186a20ccd29538748e6e22"
+    },
+    {
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "sha256": "1ed0528c227eefbaca74405c0bffbd95864777fb210eee37c7c1f9780879cc30"
+    },
+    {
+      "path": "Zeta23/OPICARound4/VisibilityRigidity.lean",
+      "sha256": "6a584812280cf5ef6203cb1d455ed15b1127616bfaf10e8639a778520c903029"
+    },
+    {
+      "path": "Zeta23/OPICARound4/WitnessNorms.lean",
+      "sha256": "76515d9dfed585bf28d601462cbab395211178fe60f1d9939d44f66c61ec0506"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaComposition/Audit.lean",
+      "sha256": "0ba22da680e98c2f02c455be32c6cb5be94954f950272bd6fdd5619b43a98657"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaComposition/Elaborate.lean",
+      "sha256": "3b46b698c2948b4d43d11d594777cd07b3c296e6cc130c961fb3e05bed91169a"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaComposition/Export.lean",
+      "sha256": "716ff95118624c62e7f570a6fd772617ee1961bc41fcd47d5fe2077bab4b73cd"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaComposition/FiniteWorlds.lean",
+      "sha256": "f470d3674c2a2b6fc65ec0b8813bbff81434ce0bca1aede8fe4db264cd61c906"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaComposition/Protocol.lean",
+      "sha256": "3616d83893a4f86ac86c06ea2f9cd1940b6cfde74f9de2a6baf0c607af6eb80b"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaComposition/ResearchTargets.lean",
+      "sha256": "e892ff666a8d52f41db4a46c4f8edb8a392f12f277186b5c972d3dd08d68863f"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaComposition/SearchExamples.lean",
+      "sha256": "df214a363f9acd86784b115f4d63f01ffb3cdb47eb3a27cd21dcc4192270d848"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaComposition/Validation.lean",
+      "sha256": "0458111d68ea702fbf3034d7daf295eb1acc693379c1bc64c0df1d4c8ec1eaee"
+    },
+    {
+      "path": "docs/AGENT_GUIDE.md",
+      "sha256": "0c1a5e084ae9811a7dfc5dcf0430071f50c1be40cd959f015aee3ba4ee450e40"
+    },
+    {
+      "path": "docs/CURRENT_STATE.md",
+      "sha256": "9781aac5356bc83973fa9cf12bddef7c9b16a798c5b3e0c20632d59095b70f29"
+    },
+    {
+      "path": "docs/FRAMEWORKS.md",
+      "sha256": "f67ed7f9a22a9dea3cd9e6a826e4fb513308bc452dfa3ba03d567a708bb5125d"
+    },
+    {
+      "path": "docs/MATHEMATICAL_GLOSSARY.md",
+      "sha256": "5307f3962afe9922d9e44d79ac996b186473bc30b1d7b561613eb5e7ba600a99"
+    },
+    {
+      "path": "docs/PROJECT_GUIDE.md",
+      "sha256": "d15b4a5368c179bb27214f3a9c5d0afeb03cb2d68bb24be577c4d4a6ba489ba6"
+    },
+    {
+      "path": "docs/REPOSITORY_MAP.md",
+      "sha256": "c580cb1463e82918fff8911876e699f976c119ca4ea4a7c0a6b1391fbfd988bd"
+    },
+    {
+      "path": "research/RHRC/ffbbp/README.md",
+      "sha256": "2d684d6f671e2348c63681f6a1cda0043fab3fd97bca24be1cc425ccdcc85478"
+    },
+    {
+      "path": "research/RHRC/ffbbp/opica_composition.py",
+      "sha256": "614e7333be86b0e78c00e702ddcc6ae6b0b9bab788dc348f3812dce052d84765"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/BUILD_CONTRACT.json",
+      "sha256": "33d9f5849111881a790ad3f93d843fb7d7c76df5a6737373234e4e0d1a9bdfd5"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/EXPECTED_TESTS.json",
+      "sha256": "9adba0f3c29765b4feeb14bb1be9fa910e54f6555be591991fc53d2456718d57"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/FRAMEWORK_PROVIDERS.json",
+      "sha256": "2ae6da4b881ace608b5e51d7f08ddbc5bfa72acb7d0a04be5b92482df7f8197e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/PROFILE.json",
+      "sha256": "fbbf97fcc910780d21db1aefa64f5b49746766e1488e20d040c8ad488867ac2c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/PUBLIC_TARGETS.json",
+      "sha256": "9ed6db0327ae993b9aa57559673f9c417a6d70e60ce1aa6ecc7c12e9f1eebee6"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/README.md",
+      "sha256": "80fc740a326ab497f0cc72022095032e8b1a3310494bc0b0823c9e3d634f6ac2"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/SEARCH_CONTRACTS.json",
+      "sha256": "6e925da944db348abd875a08c5cd3fc62ceb4ece9791806cf14b831b0a60434f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/__init__.py",
+      "sha256": "89f6481c5c4fea363013449803531323ff0e17cd765c7df914255213ce46efad"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/accept.py",
+      "sha256": "bd36a1828ec1c41aabccb297fd7d3f14c75704f7b38d19ab3a262a0739bdb96e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/applications.py",
+      "sha256": "67536a96c0f3d25163b231f10956a24bd9fe49a5afd0bbb8c3f9585e30ad3f01"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/baseline.py",
+      "sha256": "33792a1c2fff0c41b9620adcba53dd4f3d64a1d284dd641c727c976d28c3352e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/cache_owner.py",
+      "sha256": "7cd84be9b7eca4cb62335cf163f92a8f57fea80175661e3b713223c6c905bc2b"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/campaign.py",
+      "sha256": "0fcbcad7785ea6294bd6e678341591a7fae66af53be44aee4d5bb43849825955"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/canonical.py",
+      "sha256": "fe0e0063659d293ae4413062a310c15ec3e15c8a0c2330b3dde9d6d0228f1279"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/cli.py",
+      "sha256": "f696d164a762faa591ceec645632db3031c12cd077050979cb23ba0dfd383b1f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/closure.py",
+      "sha256": "c48ed1dc432805d9d1dad696ba51ba0538bc95374b1a0fb31e7fb1db34757234"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/composition_search.py",
+      "sha256": "9d752a12f6507656486c9ac8f9425f01b9f232799de024b85b2933ecee76af27"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/config.py",
+      "sha256": "f4bb8c17d5b4de0b270def75dbf16ee4a337248c4f4c3f05ddeaea444167ebe4"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/contracts.py",
+      "sha256": "e6a1fc874e27cc0cc67fc7c83adbc50ca308c6c22e36b4925e45b95849ba4e4f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/countermodels.py",
+      "sha256": "549bbb351673c76f652fecfb8138f45aa638c7b3957693961df5030f8a4ef1a1"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/descendant.py",
+      "sha256": "ba5366686239c1ad41f861664e76b79b4ad09a202e13bf65f49ae8a0f742bc63"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/evidence.py",
+      "sha256": "612261ee0ffcd01be6090b900083fed19a0a69124f8b77ea86548e1cec7d4057"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/executor.py",
+      "sha256": "226344af7e409fb8a89368a994b1b8fcf67414c72e28a6d583ab8560f3f4ca75"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/fixtures/calibration_routes.json",
+      "sha256": "5a39866bc5228f3dc961beac5896da7b76a54bcc25a8472059d8041c276f95c0"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/fixtures/metadata_adversaries.json",
+      "sha256": "09abfd9bbdb019d3beb8765ea3a8ba7bfb1f7654646fe515333c6a4ff436d1af"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/harvest.py",
+      "sha256": "d756429a10fdbb1649bfc3c8ff32ac79a5a38a6dab0648216acafa06a6370b0f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/historical.py",
+      "sha256": "660b2ac3ee0afa9fd20dbe1c70e3bb97374b83e87ca6fa03ba348d0c0797a57e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/inventory.py",
+      "sha256": "6d028b1aed0724d692a754df858f5bd0d1625b8ee348c4e0a715b5f185c91db5"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/journal.py",
+      "sha256": "5f90f270ce6706c25b420f8aaa2fd42d15007cbd834335ba2ed2633de04eae7e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/proposals.py",
+      "sha256": "b64f81f011c2af388fc712d661629b4f520e99f8dc32190c7eb260981396af91"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/provider.py",
+      "sha256": "876ff0bb3abb69ebd8dd80716594241e872a633508f9eb3b6ed5457fefc45853"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/providers/permansson/ProviderAudit.lean.in",
+      "sha256": "1bb0ecd41edf0090fe55acd1fd8249299834b7a5453ad48c39a20ab68786f647"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/providers/permansson/selected_exports.json",
+      "sha256": "d252fcbf4947d6c70c8eed191bb4e49cdfdb3827755d486e2c4c68f7c999fdbd"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/qualification.py",
+      "sha256": "9d9a052e0161d9304c6ec39541cf8a9c4eee7a45393edd5e44d49282bc2dc9f4"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/research_contracts.py",
+      "sha256": "22c751c42c78f7ab191359ae7e403a522b5ab9a5e4c6aa125ef45003a8997f6c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/schemas/contracts.schema.json",
+      "sha256": "a3bc76608e19680c437a986481780080ec91baba50df528911adf9cd47eedd3b"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/service.py",
+      "sha256": "666e9de6138749cbcd901f755b2480b9afb9920f28b3f001491b3863ee708458"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/snapshot.py",
+      "sha256": "2e47afce86fc4fe960a032161637188782336ae331b5138b4b179c2b383e1512"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/testing.py",
+      "sha256": "20c27bd8e020ca95b241074a45201618222a4197f505a247f91490545fcfe317"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_acceptance.py",
+      "sha256": "359791231e41c0b7d1ab833121f942a9aa32e8b08f9c85b8e92a7a3a5c3fd15c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_applications.py",
+      "sha256": "8a7bc0bf1f562f001abd0280354083bc59b6910771dfa37f9a13fee495a1f528"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_cli.py",
+      "sha256": "a195fe4584a8aab70ad55c87416379eafb98e6049f5f8cc861d4c6bf6f0400f7"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_closure.py",
+      "sha256": "1a510eb1454c358ff76e21ff42d17495997cc8011e7ae390f938fc14e2bbba57"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_composition_search.py",
+      "sha256": "5afb5decac4d381818ab99358044110f381d5627ebc92fce1b0f5e9e8aae983a"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_contracts.py",
+      "sha256": "73a49157b9686d8088cf35c82096226342056c881f9f0da83b3ea5249d121358"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_countermodels.py",
+      "sha256": "d4ee429a2f066e9d4f22d4b528f9d2abe35d77c795cf7f76b263945f80be9372"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_descendant.py",
+      "sha256": "e513761187df32791acd8d8121e957e5ac428cf7a893218bcbd47eeaa26c5017"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_end_to_end.py",
+      "sha256": "3049ba9d0424eec5a7a7e7f1bba041baaf1a1fe073cc4313cf898a5d55d211a4"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_evidence.py",
+      "sha256": "d0b7022b49ae6c5fde6f1322a060d758dce1d8ad152ea0e9796cc9851ddda9cd"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_executor.py",
+      "sha256": "4ec76016c83b35afe79db94eae2a1887d0e3f4723c308e244bd6664ab0d3d170"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_ffbbp.py",
+      "sha256": "1921728d381a5a2cf84ac35b12cd477a726f78709d8666368c4dac27c1cafeb8"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_harvest.py",
+      "sha256": "1642e8664a45bcbcd1ffaedb312ff0bb44e5bbdd1dffc53839a6416263289f83"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_integration_search_native.py",
+      "sha256": "3316e9ff8b8cec1e9d5898daab52e163c476cbb44951595a543f9e55c8928dad"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_inventory.py",
+      "sha256": "a4d09c9f39a47568be3191e4999ffb16c299ca35fb93519d6fcb67d90390ce30"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_journal.py",
+      "sha256": "49031abde6048b1f08320974671c231b8f1d544eaf77c962c6c541a209e138b3"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_native_environment.py",
+      "sha256": "4667c92606ab344aeec9735c02a4f0263d002868a8bca27683131e77d589e68f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_ool.py",
+      "sha256": "88075e1d0d2ed5252cdfceaca6f44772792640c5606017b07a25fb8d06c95877"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_permansson.py",
+      "sha256": "ad85dd67ac5f4be14093d928104081d2662258b0dff7c58bcab6b307a12de448"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/tests/test_search_native.py",
+      "sha256": "523c527184455f0f1e5c04415fa0384b85908d511b380281d4f1bc73ab1cf20a"
+    },
+    {
+      "path": "research/RHRC/integration/opica_composition/views.py",
+      "sha256": "15591607b36e3a89bf63f3476a6fb0381d7b740759be41201502d89d2a52de0b"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/ACCEPTANCE_MATRIX.json",
+      "sha256": "1e70800aed685a51744fa5083868f9e996a523780fc44102fc701aa0de4ead67"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/BASELINE_ACCEPTANCE_MATRIX.json",
+      "sha256": "6b0fcf90bee8cf8435ce3a6d9d3f674cda32bcb2ef6d17fc79d9bf64c30ebb40"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/BASELINE_CI_LANES.json",
+      "sha256": "5ab1bfecf1f5e6a77ea173eab07c5bc230e62d799c55867f5a93827b701e5bfe"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/BASELINE_FILE_PLAN.json",
+      "sha256": "d0744fd7679cff6b24f13d5b394e4d20b2880a528d9b8a296ebdbfca87b6e12f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/BASELINE_REQUIREMENTS.json",
+      "sha256": "94ab906887f936570dc747de3d8088a6beed72049b9fb715a587e81ded7f2f59"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/BUILD_MANIFEST.json",
+      "self_digest": "EXTERNAL_RECEIPT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/CI_REPAIR_2026-10-28.md",
+      "sha256": "50fb76384e127a176332897c88aa1f9b06a21b56303b38ad5af29858fc823301"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json",
+      "sha256": "b8da5acc7690dbbf0fa5fb138a238d3df0fed0b86a3c9b7a281d6ac7e4faf3d9"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/COUNTERMODEL_REGISTER.json",
+      "sha256": "988b8310eab25e7acbef2e43c0523cc4769fddc03597dbc316968943ba79f76c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/EXACT_RATIONAL_CONTROLS.json",
+      "sha256": "607f64306914c63ac8be2335566be7debeb03b8fadca61bedd8e22d430eaad65"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/INPUT_REGISTER.json",
+      "sha256": "4003e9125dd1c6b67f069d8d0d105096f516c6990d6b563f6d27245ef163c3de"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md",
+      "sha256": "d48b59795cb514603e04de7a9a632bdf5677301c64f41696b884ff161dbb2b0e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/INTEGRATION_REQUIREMENTS.json",
+      "sha256": "e2140baff20600bf0f5ca557b02dc59ca68c6b2b1c139c4dc0bf7fb6c451c2dc"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/MATH_CONTRACTS.json",
+      "sha256": "f44cba6c14184121e0d32ba9fd780789a00aee52c4e8a19bdefd07342886fe61"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/POST_GREEN_RESEARCH.json",
+      "sha256": "e9f67102565f7b4b646d78902665c4fc39a58820cd547a8f5832abd2f1d21ac4"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/README.md",
+      "sha256": "eb819e9d050d992ab053a8fa43108b3377c50ba29895986d078a3f8055a2ce7c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/REGULAR_CELL_AUDIT.json",
+      "sha256": "ffb0103836c1ca28537699e3357f4d7d03dfc842c74eacbd9d8271df3b5431c9"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/RESEARCH_DISPOSITIONS.json",
+      "sha256": "e0e54d8db664be646f1c6017bbf756469d545555f1c07d2839c2d286be9b1f60"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/ROOTS.json",
+      "sha256": "f4d0dab33f62b5f0a9523a77c29ed19db62bf39d51a75c3b6d8c3459b8d6cd27"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.json",
+      "sha256": "98e942c679344799f748fddb5d0ad6f812527359611d4242a03023e42174101e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.md",
+      "sha256": "e40e035adfa118cca1d2911e0da6b77f2ec4d0e8791317576b8ebea68ad46d5c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/WORKFLOW_CONTRACT.json",
+      "sha256": "4e876dd49b5b0b876064ec42db13ea2e915f2e54b88d7acf19c7b52a883ea9e9"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/WORK_PACKAGES.json",
+      "sha256": "6f561b9d10bbf14dc55c0d04911b1118e285462746d95fc8a30968393671de71"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/__init__.py",
+      "sha256": "f258528fc454ae349ab278a6791780c100cb7c90a0dd94618749e097f196ebe8"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/fixtures/source_cases.json",
+      "sha256": "a3eb1f9e759d766a84466c6be61a8d87172e45675e3a036c47eaaeb60efb88f6"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/math_gate.py",
+      "sha256": "c9466b5204e4dc02d48f068204f55fc22648b930ed9a50fdc03ef3b45a46c42c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/schemas/source_evaluator.schema.json",
+      "sha256": "801ff4f9af1c340432a7935e2f27b4360eabb5f1cdd93a9feb40c507a899e387"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/source_backend.py",
+      "sha256": "e2a600134c7c9fe42c5a91c8b75fe639405268c87e8462bede3b2290165b4a13"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/source_checker.py",
+      "sha256": "d4aa3006c7bc7a751833a73c3402540663bff5ff79f6a61c9e096ad47e9d58d4"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/source_evaluator.py",
+      "sha256": "38f5317e2af0e586aff06d12cf28bdc0ac36ac2dab3a97b4c449313da80adfb2"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/source_research.py",
+      "sha256": "e537971f395aabee2dd9e370d2cb6c96a7949ee346fcf8da41f1dbf65f075a63"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/tests/test_source_evaluator.py",
+      "sha256": "fea84e878c7e02a408b87359b29b1098aef2e2d0de36f115f1f927c55f77f067"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/tests/test_source_research.py",
+      "sha256": "dff4a4dd8258ec8a979a93f618400b8b7dbdbef4be6ae0e669d54c942efa82b4"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/EXPECTED_TEST_IDS.json",
+      "sha256": "eddd360b0ed46ceac49fc0d0ed119038232d49b9e870b4cdda275ea86065e964"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/OPEN_OBLIGATIONS.json",
+      "sha256": "70811cb310ead7e6f994b2f3f275d8380e15428ce32dc2a6c9e64897b0479bad"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/PACKAGE_MANIFEST.json",
+      "sha256": "aa1d470e35b1eb9faa0ec60d36aa483ced55a385d481a13c72a14ff1ad9d1705"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/PACKAGE_STATUS.json",
+      "sha256": "4f9871ea96568100cfd8e0ef3ebaab2d25fa52f8a42ad1f50ee8430a5c1ab940"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/README.md",
+      "sha256": "7aea15243ad73a2f2c08a2d3a03e54f0cce4c044947227966f08e4a95c82280f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/SOURCE_REFERENCES.json",
+      "sha256": "9c4777fecd12af3e8fd9c01c319e27e3ddc36a821d8c357de9ca3293f94cc08c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/__init__.py",
+      "sha256": "74cb792af839739ebadc82428b08002b89c2cf224f3e9e42af76ffec7cb625b3"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/run_python_tests.py",
+      "sha256": "0038a1b2959073fecb5aab75ec0a862a0330019bfe798b5300318b46fc222b84"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/schedule.py",
+      "sha256": "3b32e78c5b396818cf775d81ceae01ea5b4ee6859349cfe6f01d3f5407099e88"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/source_context.py",
+      "sha256": "b6db2f39b3f40e7b4fb4a5216dbea8be498fdb699b8670d1b8a13e2b9cb395c7"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/source_lock.py",
+      "sha256": "016e78f0e453cff1fb821d97c6ce0582744570116e8340b54e272bb71d6e3228"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/tests/test_context.py",
+      "sha256": "d8bb168b46379097aa06129ca066e5a810513084433997df8f715d86ff6d7a98"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/tests/test_scheduler.py",
+      "sha256": "6513179cffbfd8a902b4dcd3c884dd5fef9eb5efe076047529d410ed1325b961"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/tests/test_source_lock.py",
+      "sha256": "b30fafc832cc30675e5a2758e17797d02ebe503fc91881da3a376213954b06fe"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/tests/test_verifier_guards.py",
+      "sha256": "1f694f9542756217ef278ce65d8fc9b724a994ebbc08c78fbd1f41d1fc68899f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4_support/verify_support.py",
+      "sha256": "847d1ef821df2fe966e2d788b1eb3c391aaae1a02817d33db0787dc1f4da9416"
+    },
+    {
+      "path": "research/RHRC/ool/opica_composition.py",
+      "sha256": "27b50dea2ff9e7b0fd9f8d3840e084f5b04e5f3e67f98b6b26321dbaeefa4caa"
+    },
+    {
+      "path": "research/RHRC/permansson/README.md",
+      "sha256": "1c81005c67fa38a0ed810e1e79a6a937fff0060c7e99ccfe447ba7aa9d3b89d6"
+    },
+    {
+      "path": "research/RHRC/permansson/__init__.py",
+      "sha256": "5e5f03138fa167375ad2326c49c5659549e29b1ce6f495d6ae9d9523b986ce65"
+    },
+    {
+      "path": "research/RHRC/permansson/opica_composition.py",
+      "sha256": "e3e30bebae10c74aa79fefa36fe37163ba532d6cff6e465e57ab4d20da40aeec"
+    }
+  ],
+  "edit": [
+    {
+      "path": ".github/workflows/rhrc.yml",
+      "sha256": "3a19d3d72ae57949cadbc0c245978b00059a75400b3621c3ac47845690f9177e"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica.yml",
+      "sha256": "ae138b753b2720dcda18fe589236f19c8d3461b7c1a0f6deb96d7a6198f91e99"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica_followup.yml",
+      "sha256": "7aaa0af32316eaeaa5719f7f80ef3d0e67aff50f9bdeba9568746e185627a3db"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica_round2.yml",
+      "sha256": "5d631e3022d323bcfa4c882504b628703e076b75a5fd018171549635bcf0a1e0"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica_round3.yml",
+      "sha256": "f042a7342bb4e46dc621fc2d2d3a49d8d711cfbe9d1d629a43e758bc00aab5eb"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "b4803c9ff3837f9b6fdf80becafbafa66b7cadae6e9ab6a6db058768bba08bdb"
+    },
+    {
+      "path": "AUDIT.md",
+      "sha256": "4dd58299a211d7acaebbb3b7e615fc63ddba7eccd233aa479f5507fa2c0e0faa"
+    },
+    {
+      "path": "FORK_NOTES.md",
+      "sha256": "4d6ee59f866d2b18123ff62c15d2d89c2f708e79ace7fb1cf7f9d163cfa84e7f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "45500759b48c124ddee43fc6d3dd6bbdea99a4ec13e92b4e5d96df91ae4af87e"
+    },
+    {
+      "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+      "sha256": "b0ece1ad9b326dcde3a70f084b1cb4586616b751dc62afa1dba49dbc88b45b83"
+    },
+    {
+      "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "sha256": "aef1bdddc8dec3be1d46d3212150498e857deb4088f40e3b48be19f09a5c75a0"
+    },
+    {
+      "path": "research/RHRC/README.md",
+      "sha256": "1cb18a2dc95f8ace7ba4cfda11bd1e0ee3763fb1d094b75765a59d8308a95c08"
+    },
+    {
+      "path": "research/RHRC/graph/FILE_CLASSES.json",
+      "sha256": "cf0e0d3a9deaf8b099ce3cdb85bc07ca5bc93a947ffcc68db3b02ed90302a0e4"
+    },
+    {
+      "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "sha256": "cccc211aedf6ec3699abd0855d0d2d24ca4207dc60c0f932050c8bb27f6c6e93"
+    },
+    {
+      "path": "research/RHRC/graph/README.md",
+      "sha256": "10a27f3eb17c9866cf38730179716184a64fb956cb76b215cbf1b6579bf928b5"
+    },
+    {
+      "path": "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json",
+      "sha256": "ea13a6dbafe3dbc525634f406acf31acce51aeee0b1e492f9cf9ed807a2ae1f0"
+    },
+    {
+      "path": "research/RHRC/integration/README.md",
+      "sha256": "a7dc642e70f677b7a9f40f0830565da0aaa523c04008973b3ab2b6cc181181e6"
+    },
+    {
+      "path": "research/RHRC/integration/opica/README.md",
+      "sha256": "cbc064d49d6fcff7503b3efc40dff5b08ae441e146c1b1de273e33fb76816550"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/README.md",
+      "sha256": "53c4691b47f35522f181460e18208a2702c520e6a4210568b7e33be41adbb683"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md",
+      "sha256": "e2f7c5ed847c3d310656775e297219fd16299f1e88a4e2d057d12dc883c65804"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md",
+      "sha256": "c5cc68e95c86d2b0c5564c52c78a0ba711ff3c795ca79c01dcce7c85523877e5"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_file_classes.py",
+      "sha256": "7654ff4733a0fec0c4159e01b7ed4642ea44de31877afe0875a29a6ce34e3f88"
+    },
+    {
+      "path": "research/RHRC/ool/README.md",
+      "sha256": "9078c939290dc262f8b0bc5f69b99bbbfb87daea6b7e5a6eb4eed97c5979c50c"
+    }
+  ],
+  "generated": [
+    {
+      "path": "research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/ffbbp/generated/history/RHKG_CANDIDATE_REDUCTION_ASSURANCE_v1_PR265.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-0.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-1.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-2.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-3.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-4.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-5.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-6.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-7.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-8.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-9.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-a.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-b.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-c.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-d.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-e.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-f.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/CONTACT_QUOTIENT_DECLARATION_DEPENDENCIES.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/CONTACT_QUOTIENT_VIEW.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_BRIDGE_FRONTIERS.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_COHORT_ATOMS.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_COHORT_OVERLAP.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_KERNEL_ATLAS.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_KERNEL_QUOTIENT.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_FRONTIERS.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_QUOTIENTS.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_SUMMARY.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_SIGNATURE_CLASSES.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/MODULE_SEMANTIC_CLOSURE.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/lean_declarations.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/lean_modules.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/lean_source_declarations.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/registry_nodes.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-0.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-1.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-2.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-3.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-4.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-5.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-6.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-7.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-8.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-9.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-a.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-b.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-c.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-d.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-e.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-f.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/graph/generated/repository_files.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-0.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-1.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-2.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-3.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-4.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-5.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-6.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-7.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-8.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-9.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-a.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-b.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-c.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-d.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-e.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-f.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/ool/generated/RHKG_OOL_ROUTE_CONTACTS.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/ool/generated/history/RHKG_OOL_PHASE_ATLAS_v1_PR266.json",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    },
+    {
+      "path": "research/RHRC/ool/generated/history/RHKG_OOL_ROUTE_CONTACTS_v1_PR266.jsonl",
+      "authority": "UNCHANGED_CANONICAL_PRODUCER"
+    }
+  ],
+  "preserve": [
+    {
+      "path": "Zeta23.lean",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "lake-manifest.json",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "lean-toolchain",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/CLAIM_REGISTRY.json",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/control_v2/ACTION_REGISTRY.json",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/control_v2/CONTROL_STATE.json",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/control_v2/regime_monitor.py",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/control_v2/router.py",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/ffbbp/v17_contracts.py",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/ffbbp/v17_gates.py",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/graph/GRAPH_SCHEMA.json",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/graph/build.py",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/integration/FRAMEWORK_REGISTRY.json",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/integration/integration_lint.py",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round2/tests/test_receipt.py",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/DESCENDANT_EXTENSION.json",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS.jsonl",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/atlas/SEMANTIC_OVERLAY.json",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round3/validate_contract.py",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/ool/semantics.py",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    },
+    {
+      "path": "research/RHRC/tools/materialize_derived_state.py",
+      "authority": "UNCHANGED_PARENT_BYTES"
+    }
+  ],
+  "path_policy_sha256": "15619d3e9d2e29ef877a32d3fdc1cc7870ecfd642652de4b667a360f13a48728",
+  "current_compiler_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "source_constraint_extension": {
+    "scope": "SAME_PR298",
+    "new_paths": [
+      "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "Zeta23/OPICARound4/SmoothForcing.lean",
+      "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "Zeta23/OPICARound4/Validation/GroundConstraints.lean",
+      "Zeta23/OPICARound4/Validation/DetectorErrors.lean",
+      "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.json",
+      "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.md"
+    ],
+    "new_modules": 8,
+    "retained_support_declarations": 397,
+    "retained_support_modules": 40,
+    "claim": "SUPPORT_ONLY_RH_AND_STEP4_OPEN",
+    "production_qualification": "PENDING_CURRENT_HEAD_CI"
+  }
+}

@@ -1,4 +1,20 @@
-# Current execution plan — OPICA follow-up
+# Research plan: current routing and historical frontiers
+
+Use the [dated Round 4 snapshot](../../docs/CURRENT_STATE.md) and
+[current closure alternatives](integration/opica_round4/CLOSURE_OBLIGATIONS.json)
+for repository-wide orientation. The [project guide](../../docs/PROJECT_GUIDE.md)
+explains Steps 1–4, Paths A–D, combinations and failed-route lessons.
+The [live PR](https://github.com/HMarcusWH/zeta-23-lean/pull/298) controls the
+exact development head and validation state. RH and Step 4 remain OPEN.
+
+The plan below is a preserved sequence of earlier execution frontiers.
+Its dates, targets and pending-work labels retain their original source scope.
+Do not treat an old “next” target or frozen PR #287 block as the current build plan.
+
+<details>
+<summary>Historical Control-v2 snapshot: frozen PR #287 scope</summary>
+
+This preserved machine block is a historical receipt, not current PR routing.
 
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
@@ -52,6 +68,18 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+</details>
+
+<details>
+<summary>Preserved historical account and checkpoint wording</summary>
+
+The dates, counts, active-PR labels and next steps below belong to their original checkpoints.
+Use the dated navigation above for the repository-wide reading path.
+
+# Current execution plan — OPICA follow-up
+
+
 
 <!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
 **RH, Step 4 and the independent closing inequalities remain OPEN.**
@@ -1673,3 +1701,6 @@ Prioritize source-faithful mathematical information rather than theorem or workf
 Path B still needs genuine residual approximation (or its independently sufficient fixed-filter alternative). Paths A, C and D still need their independently proved, correctly matched arithmetic restriction. Test compositions among all four routes. Exact nonrange, a fixed input-budget barrier, or an all-order finite-family obstruction must not be promoted to a closure obstruction.
 
 Before the next theorem campaign, complete the current cold source/export checks, historical baseline and current compatibility replays, numerical/semantic controls, and complete post-run workflow harvest. Keep discovery leads separate from Lean theorems. All four terminal statements, RH and Step 4 remain OPEN.
+
+
+</details>

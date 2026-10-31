@@ -1,0 +1,20 @@
+{
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "full_round4_implemented": false,
+  "kit_integrated": false,
+  "lean_support_compile_status": "NOT_RUN_IN_AUTHORING_ENVIRONMENT",
+  "obligations": [
+    "Source-verified accepted PR297 merge and explicit descendant classification migration",
+    "Fresh native Lean/Mathlib compilation and independently checked axiom closure",
+    "Full original v1.1 source-bound production composition executor and provider",
+    "New root/consumer integration into the exact protected claim and graph state",
+    "Full independent current-child workflow acceptance and scientific harvest",
+    "Formal regular-cell proof or explicit retention of singular/tie branches",
+    "Complete signed arithmetic bound at a genuine native first birth",
+    "Independent source-matched A/B/C alternative branch assessments",
+    "Formal exact Step4 contradiction and RH statement verification"
+  ],
+  "schema": "OPICA4_SUPPORT_OPEN_OBLIGATIONS_V2",
+  "status": "REVIEW_CANDIDATE_V3"
+}

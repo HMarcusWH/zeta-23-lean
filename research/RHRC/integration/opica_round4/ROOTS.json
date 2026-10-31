@@ -1,0 +1,4078 @@
+{
+  "schema": "OPICA4_SUPPORT_ROOTS_V1",
+  "roots": [
+    {
+      "declaration": "Zeta23.OPICARound4.even_absolute_energy_anchor",
+      "module": "Zeta23.OPICARound4.AbsoluteAnchor",
+      "path": "Zeta23/OPICARound4/AbsoluteAnchor.lean",
+      "line": 17,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.odd_absolute_energy_anchor",
+      "module": "Zeta23.OPICARound4.AbsoluteAnchor",
+      "path": "Zeta23/OPICARound4/AbsoluteAnchor.lean",
+      "line": 23,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.real_scalar_shift_energy",
+      "module": "Zeta23.OPICARound4.AbsoluteAnchor",
+      "path": "Zeta23/OPICARound4/AbsoluteAnchor.lean",
+      "line": 30,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.scalar_shift_negative_control",
+      "module": "Zeta23.OPICARound4.AbsoluteAnchor",
+      "path": "Zeta23/OPICARound4/AbsoluteAnchor.lean",
+      "line": 40,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.no_even_eigen_from_independent_ray_bound",
+      "module": "Zeta23.OPICARound4.NativeRayConsumer",
+      "path": "Zeta23/OPICARound4/NativeRayConsumer.lean",
+      "line": 18,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.no_odd_eigen_from_independent_ray_bound",
+      "module": "Zeta23.OPICARound4.NativeRayConsumer",
+      "path": "Zeta23/OPICARound4/NativeRayConsumer.lean",
+      "line": 33,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_index_inverse_cost",
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "line": 19,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_even_bottom_le_quotient",
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "line": 25,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_bottom_le_quotient",
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "line": 32,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_bottom_le_quotient",
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "line": 40,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.newborn_bottom_le_normalized_energy",
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "line": 51,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.newborn_witness_norm_branches",
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "line": 65,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.even_negative_witness_ground",
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "line": 95,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.odd_negative_witness_ground",
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "line": 114,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.common_cutoff_negative_ground_alternatives",
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "line": 135,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.even_eigenvectors_source_collinear",
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "line": 163,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.odd_eigenvectors_source_collinear",
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "path": "Zeta23/OPICARound4/NativeWitnessCosts.lean",
+      "line": 183,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.negative_subspace_finrank_le_shell",
+      "module": "Zeta23.OPICARound4.NegativeIndex",
+      "path": "Zeta23/OPICARound4/NegativeIndex.lean",
+      "line": 15,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.one_shell_negative_index_at_most_one",
+      "module": "Zeta23.OPICARound4.NegativeIndex",
+      "path": "Zeta23/OPICARound4/NegativeIndex.lean",
+      "line": 43,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.negative_vector_spans_negative_line",
+      "module": "Zeta23.OPICARound4.NegativeIndex",
+      "path": "Zeta23/OPICARound4/NegativeIndex.lean",
+      "line": 53,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.one_shell_negative_index_exact",
+      "module": "Zeta23.OPICARound4.NegativeIndex",
+      "path": "Zeta23/OPICARound4/NegativeIndex.lean",
+      "line": 83,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeIndexInverseAdjoint",
+      "module": "Zeta23.OPICARound4.OperatorSignedBound",
+      "path": "Zeta23/OPICARound4/OperatorSignedBound.lean",
+      "line": 15,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeIndexAdjointInverseAdjoint",
+      "module": "Zeta23.OPICARound4.OperatorSignedBound",
+      "path": "Zeta23/OPICARound4/OperatorSignedBound.lean",
+      "line": 22,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.hermitian_resolvent_signed_upper",
+      "module": "Zeta23.OPICARound4.OperatorSignedBound",
+      "path": "Zeta23/OPICARound4/OperatorSignedBound.lean",
+      "line": 31,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_even_signed_upper",
+      "module": "Zeta23.OPICARound4.OperatorSignedBound",
+      "path": "Zeta23/OPICARound4/OperatorSignedBound.lean",
+      "line": 70,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_inverse_adjoint_eq_inverse",
+      "module": "Zeta23.OPICARound4.OperatorSignedBound",
+      "path": "Zeta23/OPICARound4/OperatorSignedBound.lean",
+      "line": 104,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_signed_upper",
+      "module": "Zeta23.OPICARound4.OperatorSignedBound",
+      "path": "Zeta23/OPICARound4/OperatorSignedBound.lean",
+      "line": 130,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.frozen_source_cell_consumer",
+      "module": "Zeta23.OPICARound4.RegularCells.SourceSupport",
+      "path": "Zeta23/OPICARound4/RegularCells/SourceSupport.lean",
+      "line": 11,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.frozen_source_neutral_action",
+      "module": "Zeta23.OPICARound4.RegularCells.SourceSupport",
+      "path": "Zeta23/OPICARound4/RegularCells/SourceSupport.lean",
+      "line": 18,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.common_scalar_shift_invariant",
+      "module": "Zeta23.OPICARound4.ScalarShift",
+      "path": "Zeta23/OPICARound4/ScalarShift.lean",
+      "line": 10,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.orthogonal_source_row_shift",
+      "module": "Zeta23.OPICARound4.ScalarShift",
+      "path": "Zeta23/OPICARound4/ScalarShift.lean",
+      "line": 24,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.realCrossResidue",
+      "module": "Zeta23.OPICARound4.SignedNormBound",
+      "path": "Zeta23/OPICARound4/SignedNormBound.lean",
+      "line": 11,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.realCrossResidue_sum",
+      "module": "Zeta23.OPICARound4.SignedNormBound",
+      "path": "Zeta23/OPICARound4/SignedNormBound.lean",
+      "line": 14,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.realCrossResidue_variation_le",
+      "module": "Zeta23.OPICARound4.SignedNormBound",
+      "path": "Zeta23/OPICARound4/SignedNormBound.lean",
+      "line": 22,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.diagonalSpectralResolvent",
+      "module": "Zeta23.OPICARound4.SignedNormBound",
+      "path": "Zeta23/OPICARound4/SignedNormBound.lean",
+      "line": 37,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.diagonal_resolvent_response",
+      "module": "Zeta23.OPICARound4.SignedNormBound",
+      "path": "Zeta23/OPICARound4/SignedNormBound.lean",
+      "line": 41,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.diagonal_signed_norm_upper",
+      "module": "Zeta23.OPICARound4.SignedNormBound",
+      "path": "Zeta23/OPICARound4/SignedNormBound.lean",
+      "line": 57,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.signedSpectralResponse",
+      "module": "Zeta23.OPICARound4.SignedSpectral",
+      "path": "Zeta23/OPICARound4/SignedSpectral.lean",
+      "line": 13,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.signed_response_hasDerivAt",
+      "module": "Zeta23.OPICARound4.SignedSpectral",
+      "path": "Zeta23/OPICARound4/SignedSpectral.lean",
+      "line": 19,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.resolvent_kernel_unit_interval",
+      "module": "Zeta23.OPICARound4.SignedSpectral",
+      "path": "Zeta23/OPICARound4/SignedSpectral.lean",
+      "line": 37,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.signed_kernel_upper",
+      "module": "Zeta23.OPICARound4.SignedSpectral",
+      "path": "Zeta23/OPICARound4/SignedSpectral.lean",
+      "line": 45,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.signed_resolvent_upper",
+      "module": "Zeta23.OPICARound4.SignedSpectral",
+      "path": "Zeta23/OPICARound4/SignedSpectral.lean",
+      "line": 63,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.signed_response_lt_one_of_budget",
+      "module": "Zeta23.OPICARound4.SignedSpectral",
+      "path": "Zeta23/OPICARound4/SignedSpectral.lean",
+      "line": 80,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.signedPrefix",
+      "module": "Zeta23.OPICARound4.SignedSpectral",
+      "path": "Zeta23/OPICARound4/SignedSpectral.lean",
+      "line": 91,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.signed_prefix_abel",
+      "module": "Zeta23.OPICARound4.SignedSpectral",
+      "path": "Zeta23/OPICARound4/SignedSpectral.lean",
+      "line": 95,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.signed_prefix_nonnegative",
+      "module": "Zeta23.OPICARound4.SignedSpectral",
+      "path": "Zeta23/OPICARound4/SignedSpectral.lean",
+      "line": 111,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceAtomPairing_eq_physical_inner",
+      "module": "Zeta23.OPICARound4.SourceDiscrepancy",
+      "path": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "line": 12,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceTest",
+      "module": "Zeta23.OPICARound4.SourceDiscrepancy",
+      "path": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "line": 31,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceTest_eq_inner",
+      "module": "Zeta23.OPICARound4.SourceDiscrepancy",
+      "path": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "line": 36,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceTest_lower_endpoint",
+      "module": "Zeta23.OPICARound4.SourceDiscrepancy",
+      "path": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "line": 43,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceTest_upper_endpoint",
+      "module": "Zeta23.OPICARound4.SourceDiscrepancy",
+      "path": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "line": 52,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceTest_hasDerivAt",
+      "module": "Zeta23.OPICARound4.SourceDiscrepancy",
+      "path": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "line": 59,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceTest_prime_pairing",
+      "module": "Zeta23.OPICARound4.SourceDiscrepancy",
+      "path": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "line": 70,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceTest_complete_arithmetic",
+      "module": "Zeta23.OPICARound4.SourceDiscrepancy",
+      "path": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "line": 83,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_even_ray_test_prerequisites",
+      "module": "Zeta23.OPICARound4.SourceDiscrepancy",
+      "path": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "line": 95,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_odd_resolvent_test_prerequisites",
+      "module": "Zeta23.OPICARound4.SourceDiscrepancy",
+      "path": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "line": 107,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceRow",
+      "module": "Zeta23.OPICARound4.SourceRow",
+      "path": "Zeta23/OPICARound4/SourceRow.lean",
+      "line": 18,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceRow_pairing",
+      "module": "Zeta23.OPICARound4.SourceRow",
+      "path": "Zeta23/OPICARound4/SourceRow.lean",
+      "line": 25,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceRow_orthogonal",
+      "module": "Zeta23.OPICARound4.SourceRow",
+      "path": "Zeta23/OPICARound4/SourceRow.lean",
+      "line": 36,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceRow_native",
+      "module": "Zeta23.OPICARound4.SourceRow",
+      "path": "Zeta23/OPICARound4/SourceRow.lean",
+      "line": 54,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceRow_pole_cancelled",
+      "module": "Zeta23.OPICARound4.SourceRow",
+      "path": "Zeta23/OPICARound4/SourceRow.lean",
+      "line": 77,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceRow_scalar_shift",
+      "module": "Zeta23.OPICARound4.SourceRow",
+      "path": "Zeta23/OPICARound4/SourceRow.lean",
+      "line": 100,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.rank_one_trace_displacement",
+      "module": "Zeta23.OPICARound4.TraceMetric",
+      "path": "Zeta23/OPICARound4/TraceMetric.lean",
+      "line": 22,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.rank_one_metric_identity",
+      "module": "Zeta23.OPICARound4.TraceMetric",
+      "path": "Zeta23/OPICARound4/TraceMetric.lean",
+      "line": 37,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_even_trace_displacement",
+      "module": "Zeta23.OPICARound4.TraceMetric",
+      "path": "Zeta23/OPICARound4/TraceMetric.lean",
+      "line": 51,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_trace_displacement",
+      "module": "Zeta23.OPICARound4.TraceMetric",
+      "path": "Zeta23/OPICARound4/TraceMetric.lean",
+      "line": 67,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_inverse_cost_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 23,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.even_physical_quotient_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 28,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.odd_physical_quotient_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 34,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_newborn_normalized_cost_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 40,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.common_cutoff_source_or_shared_ground_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 51,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.corrected_native_row_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 66,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.complete_arithmetic_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 72,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.source_test_endpoint_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 80,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.source_test_derivative_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 85,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.exact_negative_index_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 96,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.trace_displacement_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 106,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.nonunit_metric_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 112,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.signed_resolvent_budget_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 119,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.signed_prefix_comparison_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 126,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.frozen_source_cell_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 132,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.actual_even_signed_bound_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 137,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.actual_odd_signed_bound_consumer",
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "path": "Zeta23/OPICARound4/Validation/Support.lean",
+      "line": 148,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.physical_shell_norm_consumer",
+      "module": "Zeta23.OPICARound4.Validation",
+      "path": "Zeta23/OPICARound4/Validation.lean",
+      "line": 24,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.regular_witness_norm_consumer",
+      "module": "Zeta23.OPICARound4.Validation",
+      "path": "Zeta23/OPICARound4/Validation.lean",
+      "line": 30,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.resonant_witness_norm_consumer",
+      "module": "Zeta23.OPICARound4.Validation",
+      "path": "Zeta23/OPICARound4/Validation.lean",
+      "line": 40,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.regular_witness_rayleigh_consumer",
+      "module": "Zeta23.OPICARound4.Validation",
+      "path": "Zeta23/OPICARound4/Validation.lean",
+      "line": 51,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.resonant_witness_rayleigh_consumer",
+      "module": "Zeta23.OPICARound4.Validation",
+      "path": "Zeta23/OPICARound4/Validation.lean",
+      "line": 61,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.common_scalar_shift_consumer",
+      "module": "Zeta23.OPICARound4.Validation",
+      "path": "Zeta23/OPICARound4/Validation.lean",
+      "line": 73,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.orthogonal_source_row_consumer",
+      "module": "Zeta23.OPICARound4.Validation",
+      "path": "Zeta23/OPICARound4/Validation.lean",
+      "line": 83,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.even_source_bound_consumer",
+      "module": "Zeta23.OPICARound4.Validation",
+      "path": "Zeta23/OPICARound4/Validation.lean",
+      "line": 91,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.odd_source_bound_consumer",
+      "module": "Zeta23.OPICARound4.Validation",
+      "path": "Zeta23/OPICARound4/Validation.lean",
+      "line": 102,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.shell_sub_norm_sq",
+      "module": "Zeta23.OPICARound4.WitnessNorms",
+      "path": "Zeta23/OPICARound4/WitnessNorms.lean",
+      "line": 16,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.regular_witness_norm_sq",
+      "module": "Zeta23.OPICARound4.WitnessNorms",
+      "path": "Zeta23/OPICARound4/WitnessNorms.lean",
+      "line": 28,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.resonant_witness_norm_sq",
+      "module": "Zeta23.OPICARound4.WitnessNorms",
+      "path": "Zeta23/OPICARound4/WitnessNorms.lean",
+      "line": 39,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.rayleighEnergy",
+      "module": "Zeta23.OPICARound4.WitnessNorms",
+      "path": "Zeta23/OPICARound4/WitnessNorms.lean",
+      "line": 59,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.regular_witness_rayleigh",
+      "module": "Zeta23.OPICARound4.WitnessNorms",
+      "path": "Zeta23/OPICARound4/WitnessNorms.lean",
+      "line": 63,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.resonant_witness_rayleigh",
+      "module": "Zeta23.OPICARound4.WitnessNorms",
+      "path": "Zeta23/OPICARound4/WitnessNorms.lean",
+      "line": 76,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.EvenNegativeGroundRestriction",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 115,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.EventualActualRayClosure",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 49,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.EventualNativeJointNegativeIndexCap",
+      "module": "Zeta23.OPICARound4.NativeJointIndex",
+      "path": "Zeta23/OPICARound4/NativeJointIndex.lean",
+      "line": 128,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.EventualNegativeGroundClosure",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 175,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.GroupedInputInvisible",
+      "module": "Zeta23.OPICARound4.NativeVisibility",
+      "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+      "line": 13,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.GroupedOutputInvisible",
+      "module": "Zeta23.OPICARound4.NativeVisibility",
+      "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+      "line": 17,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.GroupedSpectrum",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 14,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.IntegrationClosureTarget",
+      "module": "Zeta23.OPICARound4.IntegrationTargets",
+      "path": "Zeta23/OPICARound4/IntegrationTargets.lean",
+      "line": 15,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.IntegrationJointIndexTarget",
+      "module": "Zeta23.OPICARound4.IntegrationTargets",
+      "path": "Zeta23/OPICARound4/IntegrationTargets.lean",
+      "line": 34,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.IntegrationSourceBudgetTarget",
+      "module": "Zeta23.OPICARound4.IntegrationTargets",
+      "path": "Zeta23/OPICARound4/IntegrationTargets.lean",
+      "line": 20,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.NativeJointNegativeIndexAtMostOne",
+      "module": "Zeta23.OPICARound4.NativeJointIndex",
+      "path": "Zeta23/OPICARound4/NativeJointIndex.lean",
+      "line": 24,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.NativeNegativeObservationBound",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 134,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.NativePhysicalNeutralSubspace",
+      "module": "Zeta23.OPICARound4.NativeJointIndex",
+      "path": "Zeta23/OPICARound4/NativeJointIndex.lean",
+      "line": 12,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.OddNegativeGroundRestriction",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 124,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.centeredMoment_fixedSeedDiagonal",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 53,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.even_pole_fixedSeedDiagonal",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 114,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedEvenSeed",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 128,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedEvenSeedPhysicalEquiv",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 212,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedEvenSeedPhysicalEquiv_exponentialMoments",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 297,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedEvenSeedPhysicalEquiv_gram",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 281,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedEvenSeedToPhysical",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 196,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedEvenSeed_diagonal_iff",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 145,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedOddSeed",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 132,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedOddSeedPhysicalEquiv",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 233,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedOddSeedPhysicalEquiv_exponentialMoments",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 304,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedOddSeedPhysicalEquiv_gram",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 289,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedOddSeedToPhysical",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 204,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedOddSeed_diagonal_iff",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 173,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonal",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 28,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonalEntry",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 19,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonalEntry_pos",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 22,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonalEquiv",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 38,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonal_apply",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 34,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonal_even_iff",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 72,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonal_odd_iff",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 78,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonal_reverse",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 65,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedGram",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 255,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedGram_eq_physical_inner",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 258,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedGram_pos",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 270,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.fixedSeedParameter",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 16,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.mem_fixedEvenSeed_iff",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 136,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.mem_fixedOddSeed_iff",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 140,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.odd_pole_fixedSeedDiagonal",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 121,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.poleEvenProfile_fixedSeedDiagonalEntry",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 84,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.RegularCells.poleOddProfile_fixedSeedDiagonalEntry",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "line": 99,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.SearchSupport.index_two_contradicts_cap",
+      "module": "Zeta23.OPICARound4.SearchSupport",
+      "path": "Zeta23/OPICARound4/SearchSupport.lean",
+      "line": 14,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.SearchSupport.strict_response_of_signed_upper",
+      "module": "Zeta23.OPICARound4.SearchSupport",
+      "path": "Zeta23/OPICARound4/SearchSupport.lean",
+      "line": 8,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.StrictlyNegativeNativeSubspace",
+      "module": "Zeta23.OPICARound4.NativeJointIndex",
+      "path": "Zeta23/OPICARound4/NativeJointIndex.lean",
+      "line": 18,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.UniformPrimeDiscrepancyBound",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 24,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.actual_ground_closure_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 62,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.actual_ray_closure_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 12,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.allNegativeFamilyA",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 103,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.allNegativeFamilyB",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 100,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.allNegativeSpectralValue",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 98,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.allNegativeSpectralValue_injective",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 131,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.all_negative_family_coordinate_coefficient",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 125,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.all_negative_family_hermitian",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 113,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.all_negative_family_rank_one",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 106,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.arbitrarily_many_negative_atoms",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 138,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.conditional_external_dictionary_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationDictionary",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationDictionary.lean",
+      "line": 30,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.declared_input_reachability_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationObservation",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationObservation.lean",
+      "line": 32,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.diagonal_safe_source_regression_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationDictionary",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationDictionary.lean",
+      "line": 9,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.eventual_actual_ray_no_off_line_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 34,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.eventual_ground_no_off_line_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 68,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.eventual_joint_index_no_off_line_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 49,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.eventual_noBothNeg_no_off_line_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 29,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.finite_observation_energy_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationObservation",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationObservation.lean",
+      "line": 14,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.finite_observation_kernel_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationObservation",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationObservation.lean",
+      "line": 20,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.fixed_even_seed_raw_moments_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 78,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.fixed_odd_seed_raw_moments_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 86,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.fixed_seed_metric_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 94,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.fixed_seed_native_equivalences_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 73,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.fixed_seed_physical_poles_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 102,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.general_cross_observation_cancellation",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationVisibilityRigidity",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationVisibilityRigidity.lean",
+      "line": 56,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.grouped_upper_away",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 147,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.hermitianUpperResponse",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 153,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.hermitian_rank_one_upper_pick_identity",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 168,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.hermitian_upper_response_expansion",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 157,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.integer_node_values_insufficient_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationDictionary",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationDictionary.lean",
+      "line": 21,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.invisible_eigenmode_all_prefixes_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationObservation",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationObservation.lean",
+      "line": 25,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.invisible_shared_mode_control",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 75,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.nativeEvenUpperResponse",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 189,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.nativeOddUpperResponse",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 199,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_even_invisible_eigen_shared",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 241,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_even_invisible_observation_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationObservation",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationObservation.lean",
+      "line": 44,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_even_upper_pick_identity",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 209,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_even_zero_residue_classification",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationVisibilityRigidity",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationVisibilityRigidity.lean",
+      "line": 17,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_fixed_seed_contact_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
+      "line": 111,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_odd_invisible_eigen_shared",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 252,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_odd_invisible_observation_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationObservation",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationObservation.lean",
+      "line": 52,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_odd_upper_pick_identity",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 225,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_odd_zero_residue_classification",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationVisibilityRigidity",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationVisibilityRigidity.lean",
+      "line": 36,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.node_jets_suffice_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationDictionary",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationDictionary.lean",
+      "line": 15,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.positive_native_observation_bound_consumer",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationObservation",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationObservation.lean",
+      "line": 60,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeatedSpectrumA",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 14,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeatedSpectrumB",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 15,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeatedSpectrumCoordinateCoefficient",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 55,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeatedSpectrumD",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 12,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeatedSpectrumDinv",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 13,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeatedSpectrumP\u2081",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 16,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeatedSpectrumP\u2082",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 18,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeated_spectrum_coordinate_projectors",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 37,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeated_spectrum_hermitian_controls",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 47,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeated_spectrum_nonreal_coordinates",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 60,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeated_spectrum_rank_one",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 27,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.repeated_spectrum_transport_inverse",
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "path": "Zeta23/OPICARound4/Validation/IntegrationSpectral.lean",
+      "line": 21,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_even_ray_adaptive_membership",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 97,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_even_ray_gap_norm",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 47,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_even_ray_priced_membership",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 118,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_odd_reciprocal_adaptive_membership",
+      "module": "Zeta23.OPICARound4.OddReciprocalSource",
+      "path": "Zeta23/OPICARound4/OddReciprocalSource.lean",
+      "line": 99,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_odd_reciprocal_gap_norm",
+      "module": "Zeta23.OPICARound4.OddReciprocalSource",
+      "path": "Zeta23/OPICARound4/OddReciprocalSource.lean",
+      "line": 107,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_odd_resolvent_adaptive_membership",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 107,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_odd_resolvent_gap_norm",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 64,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_odd_resolvent_priced_membership",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 131,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.blind_vector_in_every_finite_gram_kernel",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 67,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.complexSignedSpectralResponse",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 11,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceTestDerivative",
+      "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "line": 194,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.correctedSourceTestDerivative_continuous",
+      "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "line": 199,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.diagonal_safe_source_regression",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 113,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.eigenmode_invisible_at_all_powers",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 74,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.even_negative_ground_restriction_of_all_ray",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 131,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.eventual_actual_ray_closure_of_three_thresholds",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 72,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.eventual_ground_closure_of_three_thresholds",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 197,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.eventual_noBothNeg_of_actual_ray_closure",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 61,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.eventual_noBothNeg_of_ground_closure",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 188,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.exp_neg_log_half_eq_inv_sqrt",
+      "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "line": 114,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.external_dictionary_source_eq_of_node_jets",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 123,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finiteInputReachableSubspace",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 88,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finiteObservationGram",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 15,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finiteObservationGram_energy",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 18,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finiteObservationGram_kernel_iff",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 34,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finiteObservationGram_nonnegative",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 29,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finite_grouped_residue_star",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 151,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finite_signed_pick_gram",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 67,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finite_signed_pick_gram_re",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 92,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finite_signed_pick_identity",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 36,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finite_signed_pick_negative_subspace_bound",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 115,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finite_signed_pick_negative_subspace_exact",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 161,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.fixedSeedFrame",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 93,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.fixedSeedFrameDerivative",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 97,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.fixedSeedFrame_hasDerivAt",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 101,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.frameEnergyDerivative",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 22,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.frameEnergyEntry",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 14,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.frameEnergyEntry_hasDerivAt",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 30,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.frameGramDerivative",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 27,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.frameGramEntry",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 18,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.frameGramEntry_hasDerivAt",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 50,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.frame_contradicts_native_joint_index",
+      "module": "Zeta23.OPICARound4.NativeJointIndex",
+      "path": "Zeta23/OPICARound4/NativeJointIndex.lean",
+      "line": 118,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.frame_strictly_negative_native_plane",
+      "module": "Zeta23.OPICARound4.NativeJointIndex",
+      "path": "Zeta23/OPICARound4/NativeJointIndex.lean",
+      "line": 101,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.groupedEigenvalue",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 18,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.groupedEigenvalue_cast",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 21,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.groupedEigenvalue_injective",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 26,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.groupedShiftedEquiv",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 114,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.groupedSignedResidue",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 222,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.groupedSignedResidue_cast",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 226,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.groupedSpectralCoefficient",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 70,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.groupedSpectralCoefficient_star",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 206,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.groupedSpectralProjector",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 39,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.groupedSpectralProjector_eq_diagonalization",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 44,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.groupedSpectralProjector_eq_starProjection",
+      "module": "Zeta23.OPICARound4.VisibilityRigidity",
+      "path": "Zeta23/OPICARound4/VisibilityRigidity.lean",
+      "line": 74,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.grouped_input_invisible_coefficient_zero",
+      "module": "Zeta23.OPICARound4.NativeVisibility",
+      "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+      "line": 21,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.grouped_invisible_residue_zero",
+      "module": "Zeta23.OPICARound4.NativeVisibility",
+      "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+      "line": 34,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.grouped_output_invisible_coefficient_zero",
+      "module": "Zeta23.OPICARound4.NativeVisibility",
+      "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+      "line": 28,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.grouped_real_response",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 125,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.grouped_residue_zero_iff_input_or_output_invisible",
+      "module": "Zeta23.OPICARound4.VisibilityRigidity",
+      "path": "Zeta23/OPICARound4/VisibilityRigidity.lean",
+      "line": 119,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.grouped_residue_zero_iff_pairing_zero",
+      "module": "Zeta23.OPICARound4.NativeVisibility",
+      "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+      "line": 47,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.grouped_resolvent_expansion",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 74,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.grouped_shift_away_of_equiv",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 233,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.grouped_shift_injective",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 98,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.grouped_signed_resolvent_expansion",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 245,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.grouped_zero_coefficient_rigidity",
+      "module": "Zeta23.OPICARound4.VisibilityRigidity",
+      "path": "Zeta23/OPICARound4/VisibilityRigidity.lean",
+      "line": 82,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.hermitian_det_star",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 118,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.integerNodePerturb",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 36,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.integerNodePerturb_deriv",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 60,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.integerNodePerturb_hasDerivAt",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 46,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.integerNodePerturb_value",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 39,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.integer_node_values_same_matrix_ne",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 68,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.intervalIntegrable_psi_exp_mul",
+      "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "line": 91,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.moving_neutral_contact_pencil_hasDerivAt",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 77,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeAdaptiveTestClass",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 17,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeArchContinuumRow",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 145,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeCompleteRowBudget",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 105,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeCompleteRowBudget_nonneg",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 109,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeCorrectedVariation",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 29,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeCorrectedVariation_nonneg",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 77,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeEvenGroupedEigenvalue",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 281,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeEvenGroupedProjector",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 271,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeEvenGroupedResidue",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 286,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeEvenObservation",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 109,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeLatePrimePowers",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 54,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeOddGroupedEigenvalue",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 278,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeOddGroupedProjector",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 264,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeOddGroupedResidue",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 296,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeOddObservation",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 112,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeOddReciprocalInput",
+      "module": "Zeta23.OPICARound4.OddReciprocalSource",
+      "path": "Zeta23/OPICARound4/OddReciprocalSource.lean",
+      "line": 34,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeOldPrimePowers",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 57,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativePrimeConcentrationBudget",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 17,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativePrimeMass",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 77,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeSinePotential",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 85,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeSinePotential_deriv",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 98,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeSinePotential_hasDerivAt",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 88,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeSourceAtom",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 19,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeSourceAtom_apply_norm",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 47,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeSourceAtom_norm_le_two",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 33,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeSourceAtom_symmetric",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 22,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_adaptive_complete_budget",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 153,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_complete_concentration_budget",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 137,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_complete_row_budget",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 114,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_corrected_riesz_budget",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 131,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_corrected_source_concentration_real_interval",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 163,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_even_complete_signed_budget",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 172,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_even_grouped_residue_cast",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 318,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_even_grouped_resolvent_expansion",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 350,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_even_invisible_gram",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 115,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_even_visible_or_shared_mode",
+      "module": "Zeta23.OPICARound4.NativeVisibility",
+      "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+      "line": 91,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_fixedSeed_contact_pencil_hasDerivAt",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 113,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_frame_negative_physical_plane",
+      "module": "Zeta23.OPICARound4.NativeJointIndex",
+      "path": "Zeta23/OPICARound4/NativeJointIndex.lean",
+      "line": 31,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_inverse_adjoint_cost",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 148,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_inverse_gap_norm",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 34,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_late_mixed_concentration_cost",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 85,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_late_prime_concentration",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 68,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_observation_bound_excludes_invisible_even",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 143,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_adaptive_response_budget",
+      "module": "Zeta23.OPICARound4.OddReciprocalSource",
+      "path": "Zeta23/OPICARound4/OddReciprocalSource.lean",
+      "line": 123,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_complete_signed_budget",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 189,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_concentration_real_interval",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 187,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_grouped_residue_cast",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 335,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_grouped_resolvent_expansion",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 370,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_invisible_gram",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 124,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_rank_one_unshifted",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 305,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_response_complete_arithmetic",
+      "module": "Zeta23.OPICARound4.OddReciprocalSource",
+      "path": "Zeta23/OPICARound4/OddReciprocalSource.lean",
+      "line": 84,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_response_eq_reciprocal_source",
+      "module": "Zeta23.OPICARound4.OddReciprocalSource",
+      "path": "Zeta23/OPICARound4/OddReciprocalSource.lean",
+      "line": 43,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_response_lt_one_of_adaptive_budget",
+      "module": "Zeta23.OPICARound4.OddReciprocalSource",
+      "path": "Zeta23/OPICARound4/OddReciprocalSource.lean",
+      "line": 136,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_visible_or_invisible_competitor",
+      "module": "Zeta23.OPICARound4.NativeJointIndex",
+      "path": "Zeta23/OPICARound4/NativeJointIndex.lean",
+      "line": 145,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_visible_or_shared_mode",
+      "module": "Zeta23.OPICARound4.NativeVisibility",
+      "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+      "line": 104,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_old_mixed_concentration_cost",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 98,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_old_prime_concentration",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 76,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_prime_concentration_budget",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 24,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_prime_concentration_budget_regime_fallback",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 113,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_prime_discrepancy_integral",
+      "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "line": 211,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_prime_half_coordinate_iff",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 42,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_prime_power_regime_partition",
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+      "line": 62,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_prime_row_budget",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 80,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_real_shift_inverse_symmetric",
+      "module": "Zeta23.OPICARound4.OddReciprocalSource",
+      "path": "Zeta23/OPICARound4/OddReciprocalSource.lean",
+      "line": 16,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_sine_nodeJet_eq_sourceEntryReal",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 102,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_source_energy_eq_exchange_difference",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 141,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_source_mixed_concentration_bound",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 335,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_source_mixed_norm",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 54,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_source_selected_membership",
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+      "line": 82,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_source_square_concentration_full",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 366,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_source_square_concentration_half",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 374,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.negativeAtomEmbedding",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 145,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.negativeAtomEmbedding_injective",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 150,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.neutral_contact_pencil_hasDerivAt",
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+      "line": 63,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.noBothNeg_of_actual_ground_comparisons",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 143,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.noBothNeg_of_actual_ray_comparisons",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 13,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.noBothNeg_of_ground_restrictions",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 167,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.noBothNeg_of_research_targets",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 40,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.no_off_line_zero_of_eventual_actual_ray_closure",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 108,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.no_off_line_zero_of_eventual_ground_closure",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 221,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.no_off_line_zero_of_eventual_native_joint_index",
+      "module": "Zeta23.OPICARound4.NativeJointIndex",
+      "path": "Zeta23/OPICARound4/NativeJointIndex.lean",
+      "line": 132,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.no_off_line_zero_of_eventual_noBothNeg",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 98,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nodeJetMatrix",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 13,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nodeJetMatrix_diagonal",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 18,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nodeJetMatrix_eq_of_node_jets",
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+      "line": 25,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.observationBlindSubspace",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 53,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.observationBlindSubspace_invariant",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 60,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.observationBlindSubspace_mem",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 56,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.odd_negative_ground_restriction_of_all_ray",
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+      "line": 136,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.primeSourceCoordinate_mem_unit",
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+      "line": 62,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.prime_discrepancy_log_integral",
+      "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "line": 126,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.prime_log_abel",
+      "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "line": 54,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.prime_log_mem_interval",
+      "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "line": 22,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.psi_eq_sum_Icc_two",
+      "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "line": 9,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.psi_exp_eq_sum_steps",
+      "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "line": 31,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.rank_one_kernel_pairing_rigidity",
+      "module": "Zeta23.OPICARound4.VisibilityRigidity",
+      "path": "Zeta23/OPICARound4/VisibilityRigidity.lean",
+      "line": 14,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.rank_one_visible_or_shared_mode",
+      "module": "Zeta23.OPICARound4.NativeVisibility",
+      "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+      "line": 70,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.reachable_subspace_in_output_kernel",
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "path": "Zeta23/OPICARound4/NativeObservation.lean",
+      "line": 92,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.real_sub_upper_ne_zero",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 21,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.signedCauchyEvaluation",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 61,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.signedCauchyLinearMap",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 100,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.signedPickKernel",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 16,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceConcentration",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 30,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceConcentration_eq_plus_add_minus",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 41,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceConcentration_le_norm_sq_of_half",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 87,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceConcentration_le_two_norm_sq",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 74,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceConcentration_nonneg",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 67,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceExchangeMinus",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 25,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceExchangeMixed",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 35,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceExchangeMixed_eq_native",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 258,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceExchangeMixed_norm_sq_le",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 212,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceExchangeMixed_self_eq_native",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 115,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceExchangePlus",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 20,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceExchange_nonneg",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 60,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceFiniteFourier",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 10,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceFiniteFourier_continuous",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 13,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceFiniteFourier_eq_sum_exp",
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+      "line": 250,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sum_groupedSpectralProjector",
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+      "line": 64,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.upper_sub_conj_ne_zero",
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+      "line": 28,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.zero_residue_does_not_remove_eigenspace",
+      "module": "Zeta23.OPICARound4.NativeVisibility",
+      "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+      "line": 59,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeSignedPrimeDiscrepancy",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 18,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeGroundArchPairing",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 25,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.nativeGroundPrimePairing",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 30,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_signed_source_decomposition",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 34,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_signed_discrepancy_integral",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 42,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_even_ground_ray_facts",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 52,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_odd_ground_ray_facts",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 76,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_even_ground_signed_discrepancy",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 101,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 132,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 162,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 174,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility",
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+      "line": 186,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_even_eigen_absolute_energy",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 16,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_odd_eigen_absolute_energy",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 24,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.NativeStrictEvenGroundConstraints",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 34,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.NativeStrictEvenGroundConstraints.mk",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 34,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.NativeStrictOddGroundConstraints",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 67,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.NativeStrictOddGroundConstraints.mk",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 67,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.NativeTiedGroundConstraints",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 100,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.NativeTiedGroundConstraints.mk",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 100,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.NativeJointGroundConstraints",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 137,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.native_tied_ground_constraints",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 141,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.joint_ground_constraints_of_both_negative",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 157,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.cofinally_joint_ground_constraints_of_off_line_zero",
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "line": 183,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceImageErrorBudget",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 23,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceFiniteModeCost",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 27,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceForcingErrorBudget",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 30,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceWeilBoundConstant",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 36,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceWeilBoundConstant_pos",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 38,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finiteForcingBudget",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 41,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceImageErrorBudget_nonneg",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 48,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.source_eta_nonneg",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 52,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceForcingErrorBudget_nonneg",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 57,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finiteForcingBudget_nonneg",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 66,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceL2",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 74,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceL2_ae",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 79,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceResponseL2",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 82,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceResponseL2_ae",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 90,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceForcing",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 95,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceForcing_pairing",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 101,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceForcing_error_pairing",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 138,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceForcing_channels",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 186,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.norm_le_of_all_inner_bound",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 197,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceForcing_error_bound",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 205,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finiteForcing_norm_bound",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 212,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceForcing_norm_bound",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 267,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourcePhysicalL2_norm_eq",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 276,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceL2_error_bound",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 291,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceL2_norm_bound",
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+      "line": 314,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.detectorInverse",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 22,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceInverseBudget",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 29,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.detectorSchurLoss",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 33,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finiteSourceEnergy",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 36,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceMain",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 41,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceEnergyErrorBudget",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 46,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceSchurErrorBudget",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 50,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.detectorInverse_norm_bound",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 57,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceInverseBudget_nonneg",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 60,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.detectorSchurLoss_lower",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 63,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.detectorSchurLoss_eq_forcing_energy",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 68,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceQuadratic_perturbation_bound",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 114,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.smoothSourceL2_mass_error_bound",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 133,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.detectorSchurLoss_sub_smoothSourceMain_bound",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 155,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.detectorForcing_zero_at_first",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 195,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.detectorSchurLoss_at_first",
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+      "line": 206,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.quartic_polynomial_exp_tendsto_zero",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 21,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.quarticImageError",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 41,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.quarticImageError_nonneg",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 46,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.quarticImageError_mul_exp_tendsto_zero",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 52,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.pow_mul_exp_mul_quarticImageError_tendsto_zero",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 65,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.quarticCutoff_le_two_pow_four",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 84,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.quartic_mode_cost_le",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 92,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.quarticErrorEnvelope",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 118,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.quarticErrorEnvelope_nonneg",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 125,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.quarticErrorEnvelope_mul_exp_tendsto_zero",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 134,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.quarticErrorEnvelope_eventually_lt_exp",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 163,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceEtaGrowthConstant",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 174,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceEtaGrowthConstant_pos",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 177,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.source_eta_polynomial_bound",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 185,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.detector_inverse_polynomial_bound",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 216,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceForcingGrowthConstant",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 232,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceForcingErrorGrowthConstant",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 235,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceForcingGrowthConstant_pos",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 239,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceForcingErrorGrowthConstant_pos",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 246,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.finiteForcingBudget_polynomial_bound",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 255,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceForcingErrorBudget_polynomial_bound",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 288,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceSchurUniformEnvelope",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 326,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceSchurErrorBudget_le_uniformEnvelope",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 332,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.sourceSchurUniformEnvelope_mul_exp_tendsto_zero",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 376,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.exists_uniform_source_schur_error_threshold",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 382,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.exists_uniform_smooth_source_main_lower_threshold",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 398,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold",
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+      "line": 415,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.validation_smooth_source_forcing",
+      "module": "Zeta23.OPICARound4.Validation.DetectorErrors",
+      "path": "Zeta23/OPICARound4/Validation/DetectorErrors.lean",
+      "line": 16,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.validation_detector_schur_error",
+      "module": "Zeta23.OPICARound4.Validation.DetectorErrors",
+      "path": "Zeta23/OPICARound4/Validation/DetectorErrors.lean",
+      "line": 27,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.validation_detector_first_cutoff",
+      "module": "Zeta23.OPICARound4.Validation.DetectorErrors",
+      "path": "Zeta23/OPICARound4/Validation/DetectorErrors.lean",
+      "line": 42,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.quartic_rate_consumer",
+      "module": "Zeta23.OPICARound4.Validation.ErrorReduction",
+      "path": "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "line": 16,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.source_shift_consumer",
+      "module": "Zeta23.OPICARound4.Validation.ErrorReduction",
+      "path": "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "line": 21,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.same_detector_inverse_consumer",
+      "module": "Zeta23.OPICARound4.Validation.ErrorReduction",
+      "path": "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "line": 27,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.complete_error_envelope_consumer",
+      "module": "Zeta23.OPICARound4.Validation.ErrorReduction",
+      "path": "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "line": 33,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.all_exponential_rates_consumer",
+      "module": "Zeta23.OPICARound4.Validation.ErrorReduction",
+      "path": "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "line": 38,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.threshold_before_packet_consumer",
+      "module": "Zeta23.OPICARound4.Validation.ErrorReduction",
+      "path": "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "line": 42,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.native_packet_lower_consumer",
+      "module": "Zeta23.OPICARound4.Validation.ErrorReduction",
+      "path": "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "line": 49,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.generated_packet_lower_consumer",
+      "module": "Zeta23.OPICARound4.Validation.ErrorReduction",
+      "path": "Zeta23/OPICARound4/Validation/ErrorReduction.lean",
+      "line": 55,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    }
+  ],
+  "historical_subset": {
+    "declaration_count": 98,
+    "module_count": 16,
+    "declarations": [
+      "Zeta23.OPICARound4.even_absolute_energy_anchor",
+      "Zeta23.OPICARound4.odd_absolute_energy_anchor",
+      "Zeta23.OPICARound4.real_scalar_shift_energy",
+      "Zeta23.OPICARound4.scalar_shift_negative_control",
+      "Zeta23.OPICARound4.no_even_eigen_from_independent_ray_bound",
+      "Zeta23.OPICARound4.no_odd_eigen_from_independent_ray_bound",
+      "Zeta23.OPICARound4.native_index_inverse_cost",
+      "Zeta23.OPICARound4.native_even_bottom_le_quotient",
+      "Zeta23.OPICARound4.native_odd_bottom_le_quotient",
+      "Zeta23.OPICARound4.native_bottom_le_quotient",
+      "Zeta23.OPICARound4.newborn_bottom_le_normalized_energy",
+      "Zeta23.OPICARound4.newborn_witness_norm_branches",
+      "Zeta23.OPICARound4.even_negative_witness_ground",
+      "Zeta23.OPICARound4.odd_negative_witness_ground",
+      "Zeta23.OPICARound4.common_cutoff_negative_ground_alternatives",
+      "Zeta23.OPICARound4.even_eigenvectors_source_collinear",
+      "Zeta23.OPICARound4.odd_eigenvectors_source_collinear",
+      "Zeta23.OPICARound4.negative_subspace_finrank_le_shell",
+      "Zeta23.OPICARound4.one_shell_negative_index_at_most_one",
+      "Zeta23.OPICARound4.negative_vector_spans_negative_line",
+      "Zeta23.OPICARound4.one_shell_negative_index_exact",
+      "Zeta23.OPICARound4.nativeIndexInverseAdjoint",
+      "Zeta23.OPICARound4.nativeIndexAdjointInverseAdjoint",
+      "Zeta23.OPICARound4.hermitian_resolvent_signed_upper",
+      "Zeta23.OPICARound4.native_even_signed_upper",
+      "Zeta23.OPICARound4.native_odd_inverse_adjoint_eq_inverse",
+      "Zeta23.OPICARound4.native_odd_signed_upper",
+      "Zeta23.OPICARound4.RegularCells.frozen_source_cell_consumer",
+      "Zeta23.OPICARound4.RegularCells.frozen_source_neutral_action",
+      "Zeta23.OPICARound4.common_scalar_shift_invariant",
+      "Zeta23.OPICARound4.orthogonal_source_row_shift",
+      "Zeta23.OPICARound4.realCrossResidue",
+      "Zeta23.OPICARound4.realCrossResidue_sum",
+      "Zeta23.OPICARound4.realCrossResidue_variation_le",
+      "Zeta23.OPICARound4.diagonalSpectralResolvent",
+      "Zeta23.OPICARound4.diagonal_resolvent_response",
+      "Zeta23.OPICARound4.diagonal_signed_norm_upper",
+      "Zeta23.OPICARound4.signedSpectralResponse",
+      "Zeta23.OPICARound4.signed_response_hasDerivAt",
+      "Zeta23.OPICARound4.resolvent_kernel_unit_interval",
+      "Zeta23.OPICARound4.signed_kernel_upper",
+      "Zeta23.OPICARound4.signed_resolvent_upper",
+      "Zeta23.OPICARound4.signed_response_lt_one_of_budget",
+      "Zeta23.OPICARound4.signedPrefix",
+      "Zeta23.OPICARound4.signed_prefix_abel",
+      "Zeta23.OPICARound4.signed_prefix_nonnegative",
+      "Zeta23.OPICARound4.sourceAtomPairing_eq_physical_inner",
+      "Zeta23.OPICARound4.correctedSourceTest",
+      "Zeta23.OPICARound4.correctedSourceTest_eq_inner",
+      "Zeta23.OPICARound4.correctedSourceTest_lower_endpoint",
+      "Zeta23.OPICARound4.correctedSourceTest_upper_endpoint",
+      "Zeta23.OPICARound4.correctedSourceTest_hasDerivAt",
+      "Zeta23.OPICARound4.correctedSourceTest_prime_pairing",
+      "Zeta23.OPICARound4.correctedSourceTest_complete_arithmetic",
+      "Zeta23.OPICARound4.actual_even_ray_test_prerequisites",
+      "Zeta23.OPICARound4.actual_odd_resolvent_test_prerequisites",
+      "Zeta23.OPICARound4.correctedSourceRow",
+      "Zeta23.OPICARound4.correctedSourceRow_pairing",
+      "Zeta23.OPICARound4.correctedSourceRow_orthogonal",
+      "Zeta23.OPICARound4.correctedSourceRow_native",
+      "Zeta23.OPICARound4.correctedSourceRow_pole_cancelled",
+      "Zeta23.OPICARound4.correctedSourceRow_scalar_shift",
+      "Zeta23.OPICARound4.rank_one_trace_displacement",
+      "Zeta23.OPICARound4.rank_one_metric_identity",
+      "Zeta23.OPICARound4.native_even_trace_displacement",
+      "Zeta23.OPICARound4.native_odd_trace_displacement",
+      "Zeta23.OPICARound4.Validation.native_inverse_cost_consumer",
+      "Zeta23.OPICARound4.Validation.even_physical_quotient_consumer",
+      "Zeta23.OPICARound4.Validation.odd_physical_quotient_consumer",
+      "Zeta23.OPICARound4.Validation.native_newborn_normalized_cost_consumer",
+      "Zeta23.OPICARound4.Validation.common_cutoff_source_or_shared_ground_consumer",
+      "Zeta23.OPICARound4.Validation.corrected_native_row_consumer",
+      "Zeta23.OPICARound4.Validation.complete_arithmetic_consumer",
+      "Zeta23.OPICARound4.Validation.source_test_endpoint_consumer",
+      "Zeta23.OPICARound4.Validation.source_test_derivative_consumer",
+      "Zeta23.OPICARound4.Validation.exact_negative_index_consumer",
+      "Zeta23.OPICARound4.Validation.trace_displacement_consumer",
+      "Zeta23.OPICARound4.Validation.nonunit_metric_consumer",
+      "Zeta23.OPICARound4.Validation.signed_resolvent_budget_consumer",
+      "Zeta23.OPICARound4.Validation.signed_prefix_comparison_consumer",
+      "Zeta23.OPICARound4.Validation.frozen_source_cell_consumer",
+      "Zeta23.OPICARound4.Validation.actual_even_signed_bound_consumer",
+      "Zeta23.OPICARound4.Validation.actual_odd_signed_bound_consumer",
+      "Zeta23.OPICARound4.Validation.physical_shell_norm_consumer",
+      "Zeta23.OPICARound4.Validation.regular_witness_norm_consumer",
+      "Zeta23.OPICARound4.Validation.resonant_witness_norm_consumer",
+      "Zeta23.OPICARound4.Validation.regular_witness_rayleigh_consumer",
+      "Zeta23.OPICARound4.Validation.resonant_witness_rayleigh_consumer",
+      "Zeta23.OPICARound4.Validation.common_scalar_shift_consumer",
+      "Zeta23.OPICARound4.Validation.orthogonal_source_row_consumer",
+      "Zeta23.OPICARound4.Validation.even_source_bound_consumer",
+      "Zeta23.OPICARound4.Validation.odd_source_bound_consumer",
+      "Zeta23.OPICARound4.shell_sub_norm_sq",
+      "Zeta23.OPICARound4.regular_witness_norm_sq",
+      "Zeta23.OPICARound4.resonant_witness_norm_sq",
+      "Zeta23.OPICARound4.rayleighEnergy",
+      "Zeta23.OPICARound4.regular_witness_rayleigh",
+      "Zeta23.OPICARound4.resonant_witness_rayleigh"
+    ],
+    "modules": [
+      "Zeta23.OPICARound4",
+      "Zeta23.OPICARound4.AbsoluteAnchor",
+      "Zeta23.OPICARound4.NativeRayConsumer",
+      "Zeta23.OPICARound4.NativeWitnessCosts",
+      "Zeta23.OPICARound4.NegativeIndex",
+      "Zeta23.OPICARound4.OperatorSignedBound",
+      "Zeta23.OPICARound4.RegularCells.SourceSupport",
+      "Zeta23.OPICARound4.ScalarShift",
+      "Zeta23.OPICARound4.SignedNormBound",
+      "Zeta23.OPICARound4.SignedSpectral",
+      "Zeta23.OPICARound4.SourceDiscrepancy",
+      "Zeta23.OPICARound4.SourceRow",
+      "Zeta23.OPICARound4.TraceMetric",
+      "Zeta23.OPICARound4.Validation",
+      "Zeta23.OPICARound4.Validation.Support",
+      "Zeta23.OPICARound4.WitnessNorms"
+    ],
+    "status": "PRESERVED_INITIAL_SUPPORT_INVENTORY"
+  },
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "integration_subset": {
+    "declaration_count": 397,
+    "module_count": 40,
+    "declarations": [
+      "Zeta23.OPICARound4.even_absolute_energy_anchor",
+      "Zeta23.OPICARound4.odd_absolute_energy_anchor",
+      "Zeta23.OPICARound4.real_scalar_shift_energy",
+      "Zeta23.OPICARound4.scalar_shift_negative_control",
+      "Zeta23.OPICARound4.no_even_eigen_from_independent_ray_bound",
+      "Zeta23.OPICARound4.no_odd_eigen_from_independent_ray_bound",
+      "Zeta23.OPICARound4.native_index_inverse_cost",
+      "Zeta23.OPICARound4.native_even_bottom_le_quotient",
+      "Zeta23.OPICARound4.native_odd_bottom_le_quotient",
+      "Zeta23.OPICARound4.native_bottom_le_quotient",
+      "Zeta23.OPICARound4.newborn_bottom_le_normalized_energy",
+      "Zeta23.OPICARound4.newborn_witness_norm_branches",
+      "Zeta23.OPICARound4.even_negative_witness_ground",
+      "Zeta23.OPICARound4.odd_negative_witness_ground",
+      "Zeta23.OPICARound4.common_cutoff_negative_ground_alternatives",
+      "Zeta23.OPICARound4.even_eigenvectors_source_collinear",
+      "Zeta23.OPICARound4.odd_eigenvectors_source_collinear",
+      "Zeta23.OPICARound4.negative_subspace_finrank_le_shell",
+      "Zeta23.OPICARound4.one_shell_negative_index_at_most_one",
+      "Zeta23.OPICARound4.negative_vector_spans_negative_line",
+      "Zeta23.OPICARound4.one_shell_negative_index_exact",
+      "Zeta23.OPICARound4.nativeIndexInverseAdjoint",
+      "Zeta23.OPICARound4.nativeIndexAdjointInverseAdjoint",
+      "Zeta23.OPICARound4.hermitian_resolvent_signed_upper",
+      "Zeta23.OPICARound4.native_even_signed_upper",
+      "Zeta23.OPICARound4.native_odd_inverse_adjoint_eq_inverse",
+      "Zeta23.OPICARound4.native_odd_signed_upper",
+      "Zeta23.OPICARound4.RegularCells.frozen_source_cell_consumer",
+      "Zeta23.OPICARound4.RegularCells.frozen_source_neutral_action",
+      "Zeta23.OPICARound4.common_scalar_shift_invariant",
+      "Zeta23.OPICARound4.orthogonal_source_row_shift",
+      "Zeta23.OPICARound4.realCrossResidue",
+      "Zeta23.OPICARound4.realCrossResidue_sum",
+      "Zeta23.OPICARound4.realCrossResidue_variation_le",
+      "Zeta23.OPICARound4.diagonalSpectralResolvent",
+      "Zeta23.OPICARound4.diagonal_resolvent_response",
+      "Zeta23.OPICARound4.diagonal_signed_norm_upper",
+      "Zeta23.OPICARound4.signedSpectralResponse",
+      "Zeta23.OPICARound4.signed_response_hasDerivAt",
+      "Zeta23.OPICARound4.resolvent_kernel_unit_interval",
+      "Zeta23.OPICARound4.signed_kernel_upper",
+      "Zeta23.OPICARound4.signed_resolvent_upper",
+      "Zeta23.OPICARound4.signed_response_lt_one_of_budget",
+      "Zeta23.OPICARound4.signedPrefix",
+      "Zeta23.OPICARound4.signed_prefix_abel",
+      "Zeta23.OPICARound4.signed_prefix_nonnegative",
+      "Zeta23.OPICARound4.sourceAtomPairing_eq_physical_inner",
+      "Zeta23.OPICARound4.correctedSourceTest",
+      "Zeta23.OPICARound4.correctedSourceTest_eq_inner",
+      "Zeta23.OPICARound4.correctedSourceTest_lower_endpoint",
+      "Zeta23.OPICARound4.correctedSourceTest_upper_endpoint",
+      "Zeta23.OPICARound4.correctedSourceTest_hasDerivAt",
+      "Zeta23.OPICARound4.correctedSourceTest_prime_pairing",
+      "Zeta23.OPICARound4.correctedSourceTest_complete_arithmetic",
+      "Zeta23.OPICARound4.actual_even_ray_test_prerequisites",
+      "Zeta23.OPICARound4.actual_odd_resolvent_test_prerequisites",
+      "Zeta23.OPICARound4.correctedSourceRow",
+      "Zeta23.OPICARound4.correctedSourceRow_pairing",
+      "Zeta23.OPICARound4.correctedSourceRow_orthogonal",
+      "Zeta23.OPICARound4.correctedSourceRow_native",
+      "Zeta23.OPICARound4.correctedSourceRow_pole_cancelled",
+      "Zeta23.OPICARound4.correctedSourceRow_scalar_shift",
+      "Zeta23.OPICARound4.rank_one_trace_displacement",
+      "Zeta23.OPICARound4.rank_one_metric_identity",
+      "Zeta23.OPICARound4.native_even_trace_displacement",
+      "Zeta23.OPICARound4.native_odd_trace_displacement",
+      "Zeta23.OPICARound4.Validation.native_inverse_cost_consumer",
+      "Zeta23.OPICARound4.Validation.even_physical_quotient_consumer",
+      "Zeta23.OPICARound4.Validation.odd_physical_quotient_consumer",
+      "Zeta23.OPICARound4.Validation.native_newborn_normalized_cost_consumer",
+      "Zeta23.OPICARound4.Validation.common_cutoff_source_or_shared_ground_consumer",
+      "Zeta23.OPICARound4.Validation.corrected_native_row_consumer",
+      "Zeta23.OPICARound4.Validation.complete_arithmetic_consumer",
+      "Zeta23.OPICARound4.Validation.source_test_endpoint_consumer",
+      "Zeta23.OPICARound4.Validation.source_test_derivative_consumer",
+      "Zeta23.OPICARound4.Validation.exact_negative_index_consumer",
+      "Zeta23.OPICARound4.Validation.trace_displacement_consumer",
+      "Zeta23.OPICARound4.Validation.nonunit_metric_consumer",
+      "Zeta23.OPICARound4.Validation.signed_resolvent_budget_consumer",
+      "Zeta23.OPICARound4.Validation.signed_prefix_comparison_consumer",
+      "Zeta23.OPICARound4.Validation.frozen_source_cell_consumer",
+      "Zeta23.OPICARound4.Validation.actual_even_signed_bound_consumer",
+      "Zeta23.OPICARound4.Validation.actual_odd_signed_bound_consumer",
+      "Zeta23.OPICARound4.Validation.physical_shell_norm_consumer",
+      "Zeta23.OPICARound4.Validation.regular_witness_norm_consumer",
+      "Zeta23.OPICARound4.Validation.resonant_witness_norm_consumer",
+      "Zeta23.OPICARound4.Validation.regular_witness_rayleigh_consumer",
+      "Zeta23.OPICARound4.Validation.resonant_witness_rayleigh_consumer",
+      "Zeta23.OPICARound4.Validation.common_scalar_shift_consumer",
+      "Zeta23.OPICARound4.Validation.orthogonal_source_row_consumer",
+      "Zeta23.OPICARound4.Validation.even_source_bound_consumer",
+      "Zeta23.OPICARound4.Validation.odd_source_bound_consumer",
+      "Zeta23.OPICARound4.shell_sub_norm_sq",
+      "Zeta23.OPICARound4.regular_witness_norm_sq",
+      "Zeta23.OPICARound4.resonant_witness_norm_sq",
+      "Zeta23.OPICARound4.rayleighEnergy",
+      "Zeta23.OPICARound4.regular_witness_rayleigh",
+      "Zeta23.OPICARound4.resonant_witness_rayleigh",
+      "Zeta23.OPICARound4.EvenNegativeGroundRestriction",
+      "Zeta23.OPICARound4.EventualActualRayClosure",
+      "Zeta23.OPICARound4.EventualNativeJointNegativeIndexCap",
+      "Zeta23.OPICARound4.EventualNegativeGroundClosure",
+      "Zeta23.OPICARound4.GroupedInputInvisible",
+      "Zeta23.OPICARound4.GroupedOutputInvisible",
+      "Zeta23.OPICARound4.GroupedSpectrum",
+      "Zeta23.OPICARound4.IntegrationClosureTarget",
+      "Zeta23.OPICARound4.IntegrationJointIndexTarget",
+      "Zeta23.OPICARound4.IntegrationSourceBudgetTarget",
+      "Zeta23.OPICARound4.NativeJointNegativeIndexAtMostOne",
+      "Zeta23.OPICARound4.NativeNegativeObservationBound",
+      "Zeta23.OPICARound4.NativePhysicalNeutralSubspace",
+      "Zeta23.OPICARound4.OddNegativeGroundRestriction",
+      "Zeta23.OPICARound4.RegularCells.centeredMoment_fixedSeedDiagonal",
+      "Zeta23.OPICARound4.RegularCells.even_pole_fixedSeedDiagonal",
+      "Zeta23.OPICARound4.RegularCells.fixedEvenSeed",
+      "Zeta23.OPICARound4.RegularCells.fixedEvenSeedPhysicalEquiv",
+      "Zeta23.OPICARound4.RegularCells.fixedEvenSeedPhysicalEquiv_exponentialMoments",
+      "Zeta23.OPICARound4.RegularCells.fixedEvenSeedPhysicalEquiv_gram",
+      "Zeta23.OPICARound4.RegularCells.fixedEvenSeedToPhysical",
+      "Zeta23.OPICARound4.RegularCells.fixedEvenSeed_diagonal_iff",
+      "Zeta23.OPICARound4.RegularCells.fixedOddSeed",
+      "Zeta23.OPICARound4.RegularCells.fixedOddSeedPhysicalEquiv",
+      "Zeta23.OPICARound4.RegularCells.fixedOddSeedPhysicalEquiv_exponentialMoments",
+      "Zeta23.OPICARound4.RegularCells.fixedOddSeedPhysicalEquiv_gram",
+      "Zeta23.OPICARound4.RegularCells.fixedOddSeedToPhysical",
+      "Zeta23.OPICARound4.RegularCells.fixedOddSeed_diagonal_iff",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonal",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonalEntry",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonalEntry_pos",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonalEquiv",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonal_apply",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonal_even_iff",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonal_odd_iff",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonal_reverse",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedGram",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedGram_eq_physical_inner",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedGram_pos",
+      "Zeta23.OPICARound4.RegularCells.fixedSeedParameter",
+      "Zeta23.OPICARound4.RegularCells.mem_fixedEvenSeed_iff",
+      "Zeta23.OPICARound4.RegularCells.mem_fixedOddSeed_iff",
+      "Zeta23.OPICARound4.RegularCells.odd_pole_fixedSeedDiagonal",
+      "Zeta23.OPICARound4.RegularCells.poleEvenProfile_fixedSeedDiagonalEntry",
+      "Zeta23.OPICARound4.RegularCells.poleOddProfile_fixedSeedDiagonalEntry",
+      "Zeta23.OPICARound4.SearchSupport.index_two_contradicts_cap",
+      "Zeta23.OPICARound4.SearchSupport.strict_response_of_signed_upper",
+      "Zeta23.OPICARound4.StrictlyNegativeNativeSubspace",
+      "Zeta23.OPICARound4.UniformPrimeDiscrepancyBound",
+      "Zeta23.OPICARound4.Validation.actual_ground_closure_consumer",
+      "Zeta23.OPICARound4.Validation.actual_ray_closure_consumer",
+      "Zeta23.OPICARound4.Validation.allNegativeFamilyA",
+      "Zeta23.OPICARound4.Validation.allNegativeFamilyB",
+      "Zeta23.OPICARound4.Validation.allNegativeSpectralValue",
+      "Zeta23.OPICARound4.Validation.allNegativeSpectralValue_injective",
+      "Zeta23.OPICARound4.Validation.all_negative_family_coordinate_coefficient",
+      "Zeta23.OPICARound4.Validation.all_negative_family_hermitian",
+      "Zeta23.OPICARound4.Validation.all_negative_family_rank_one",
+      "Zeta23.OPICARound4.Validation.arbitrarily_many_negative_atoms",
+      "Zeta23.OPICARound4.Validation.conditional_external_dictionary_consumer",
+      "Zeta23.OPICARound4.Validation.declared_input_reachability_consumer",
+      "Zeta23.OPICARound4.Validation.diagonal_safe_source_regression_consumer",
+      "Zeta23.OPICARound4.Validation.eventual_actual_ray_no_off_line_consumer",
+      "Zeta23.OPICARound4.Validation.eventual_ground_no_off_line_consumer",
+      "Zeta23.OPICARound4.Validation.eventual_joint_index_no_off_line_consumer",
+      "Zeta23.OPICARound4.Validation.eventual_noBothNeg_no_off_line_consumer",
+      "Zeta23.OPICARound4.Validation.finite_observation_energy_consumer",
+      "Zeta23.OPICARound4.Validation.finite_observation_kernel_consumer",
+      "Zeta23.OPICARound4.Validation.fixed_even_seed_raw_moments_consumer",
+      "Zeta23.OPICARound4.Validation.fixed_odd_seed_raw_moments_consumer",
+      "Zeta23.OPICARound4.Validation.fixed_seed_metric_consumer",
+      "Zeta23.OPICARound4.Validation.fixed_seed_native_equivalences_consumer",
+      "Zeta23.OPICARound4.Validation.fixed_seed_physical_poles_consumer",
+      "Zeta23.OPICARound4.Validation.general_cross_observation_cancellation",
+      "Zeta23.OPICARound4.Validation.grouped_upper_away",
+      "Zeta23.OPICARound4.Validation.hermitianUpperResponse",
+      "Zeta23.OPICARound4.Validation.hermitian_rank_one_upper_pick_identity",
+      "Zeta23.OPICARound4.Validation.hermitian_upper_response_expansion",
+      "Zeta23.OPICARound4.Validation.integer_node_values_insufficient_consumer",
+      "Zeta23.OPICARound4.Validation.invisible_eigenmode_all_prefixes_consumer",
+      "Zeta23.OPICARound4.Validation.invisible_shared_mode_control",
+      "Zeta23.OPICARound4.Validation.nativeEvenUpperResponse",
+      "Zeta23.OPICARound4.Validation.nativeOddUpperResponse",
+      "Zeta23.OPICARound4.Validation.native_even_invisible_eigen_shared",
+      "Zeta23.OPICARound4.Validation.native_even_invisible_observation_consumer",
+      "Zeta23.OPICARound4.Validation.native_even_upper_pick_identity",
+      "Zeta23.OPICARound4.Validation.native_even_zero_residue_classification",
+      "Zeta23.OPICARound4.Validation.native_fixed_seed_contact_consumer",
+      "Zeta23.OPICARound4.Validation.native_odd_invisible_eigen_shared",
+      "Zeta23.OPICARound4.Validation.native_odd_invisible_observation_consumer",
+      "Zeta23.OPICARound4.Validation.native_odd_upper_pick_identity",
+      "Zeta23.OPICARound4.Validation.native_odd_zero_residue_classification",
+      "Zeta23.OPICARound4.Validation.node_jets_suffice_consumer",
+      "Zeta23.OPICARound4.Validation.positive_native_observation_bound_consumer",
+      "Zeta23.OPICARound4.Validation.repeatedSpectrumA",
+      "Zeta23.OPICARound4.Validation.repeatedSpectrumB",
+      "Zeta23.OPICARound4.Validation.repeatedSpectrumCoordinateCoefficient",
+      "Zeta23.OPICARound4.Validation.repeatedSpectrumD",
+      "Zeta23.OPICARound4.Validation.repeatedSpectrumDinv",
+      "Zeta23.OPICARound4.Validation.repeatedSpectrumP\u2081",
+      "Zeta23.OPICARound4.Validation.repeatedSpectrumP\u2082",
+      "Zeta23.OPICARound4.Validation.repeated_spectrum_coordinate_projectors",
+      "Zeta23.OPICARound4.Validation.repeated_spectrum_hermitian_controls",
+      "Zeta23.OPICARound4.Validation.repeated_spectrum_nonreal_coordinates",
+      "Zeta23.OPICARound4.Validation.repeated_spectrum_rank_one",
+      "Zeta23.OPICARound4.Validation.repeated_spectrum_transport_inverse",
+      "Zeta23.OPICARound4.actual_even_ray_adaptive_membership",
+      "Zeta23.OPICARound4.actual_even_ray_gap_norm",
+      "Zeta23.OPICARound4.actual_even_ray_priced_membership",
+      "Zeta23.OPICARound4.actual_odd_reciprocal_adaptive_membership",
+      "Zeta23.OPICARound4.actual_odd_reciprocal_gap_norm",
+      "Zeta23.OPICARound4.actual_odd_resolvent_adaptive_membership",
+      "Zeta23.OPICARound4.actual_odd_resolvent_gap_norm",
+      "Zeta23.OPICARound4.actual_odd_resolvent_priced_membership",
+      "Zeta23.OPICARound4.blind_vector_in_every_finite_gram_kernel",
+      "Zeta23.OPICARound4.complexSignedSpectralResponse",
+      "Zeta23.OPICARound4.correctedSourceTestDerivative",
+      "Zeta23.OPICARound4.correctedSourceTestDerivative_continuous",
+      "Zeta23.OPICARound4.diagonal_safe_source_regression",
+      "Zeta23.OPICARound4.eigenmode_invisible_at_all_powers",
+      "Zeta23.OPICARound4.even_negative_ground_restriction_of_all_ray",
+      "Zeta23.OPICARound4.eventual_actual_ray_closure_of_three_thresholds",
+      "Zeta23.OPICARound4.eventual_ground_closure_of_three_thresholds",
+      "Zeta23.OPICARound4.eventual_noBothNeg_of_actual_ray_closure",
+      "Zeta23.OPICARound4.eventual_noBothNeg_of_ground_closure",
+      "Zeta23.OPICARound4.exp_neg_log_half_eq_inv_sqrt",
+      "Zeta23.OPICARound4.external_dictionary_source_eq_of_node_jets",
+      "Zeta23.OPICARound4.finiteInputReachableSubspace",
+      "Zeta23.OPICARound4.finiteObservationGram",
+      "Zeta23.OPICARound4.finiteObservationGram_energy",
+      "Zeta23.OPICARound4.finiteObservationGram_kernel_iff",
+      "Zeta23.OPICARound4.finiteObservationGram_nonnegative",
+      "Zeta23.OPICARound4.finite_grouped_residue_star",
+      "Zeta23.OPICARound4.finite_signed_pick_gram",
+      "Zeta23.OPICARound4.finite_signed_pick_gram_re",
+      "Zeta23.OPICARound4.finite_signed_pick_identity",
+      "Zeta23.OPICARound4.finite_signed_pick_negative_subspace_bound",
+      "Zeta23.OPICARound4.finite_signed_pick_negative_subspace_exact",
+      "Zeta23.OPICARound4.fixedSeedFrame",
+      "Zeta23.OPICARound4.fixedSeedFrameDerivative",
+      "Zeta23.OPICARound4.fixedSeedFrame_hasDerivAt",
+      "Zeta23.OPICARound4.frameEnergyDerivative",
+      "Zeta23.OPICARound4.frameEnergyEntry",
+      "Zeta23.OPICARound4.frameEnergyEntry_hasDerivAt",
+      "Zeta23.OPICARound4.frameGramDerivative",
+      "Zeta23.OPICARound4.frameGramEntry",
+      "Zeta23.OPICARound4.frameGramEntry_hasDerivAt",
+      "Zeta23.OPICARound4.frame_contradicts_native_joint_index",
+      "Zeta23.OPICARound4.frame_strictly_negative_native_plane",
+      "Zeta23.OPICARound4.groupedEigenvalue",
+      "Zeta23.OPICARound4.groupedEigenvalue_cast",
+      "Zeta23.OPICARound4.groupedEigenvalue_injective",
+      "Zeta23.OPICARound4.groupedShiftedEquiv",
+      "Zeta23.OPICARound4.groupedSignedResidue",
+      "Zeta23.OPICARound4.groupedSignedResidue_cast",
+      "Zeta23.OPICARound4.groupedSpectralCoefficient",
+      "Zeta23.OPICARound4.groupedSpectralCoefficient_star",
+      "Zeta23.OPICARound4.groupedSpectralProjector",
+      "Zeta23.OPICARound4.groupedSpectralProjector_eq_diagonalization",
+      "Zeta23.OPICARound4.groupedSpectralProjector_eq_starProjection",
+      "Zeta23.OPICARound4.grouped_input_invisible_coefficient_zero",
+      "Zeta23.OPICARound4.grouped_invisible_residue_zero",
+      "Zeta23.OPICARound4.grouped_output_invisible_coefficient_zero",
+      "Zeta23.OPICARound4.grouped_real_response",
+      "Zeta23.OPICARound4.grouped_residue_zero_iff_input_or_output_invisible",
+      "Zeta23.OPICARound4.grouped_residue_zero_iff_pairing_zero",
+      "Zeta23.OPICARound4.grouped_resolvent_expansion",
+      "Zeta23.OPICARound4.grouped_shift_away_of_equiv",
+      "Zeta23.OPICARound4.grouped_shift_injective",
+      "Zeta23.OPICARound4.grouped_signed_resolvent_expansion",
+      "Zeta23.OPICARound4.grouped_zero_coefficient_rigidity",
+      "Zeta23.OPICARound4.hermitian_det_star",
+      "Zeta23.OPICARound4.integerNodePerturb",
+      "Zeta23.OPICARound4.integerNodePerturb_deriv",
+      "Zeta23.OPICARound4.integerNodePerturb_hasDerivAt",
+      "Zeta23.OPICARound4.integerNodePerturb_value",
+      "Zeta23.OPICARound4.integer_node_values_same_matrix_ne",
+      "Zeta23.OPICARound4.intervalIntegrable_psi_exp_mul",
+      "Zeta23.OPICARound4.moving_neutral_contact_pencil_hasDerivAt",
+      "Zeta23.OPICARound4.nativeAdaptiveTestClass",
+      "Zeta23.OPICARound4.nativeArchContinuumRow",
+      "Zeta23.OPICARound4.nativeCompleteRowBudget",
+      "Zeta23.OPICARound4.nativeCompleteRowBudget_nonneg",
+      "Zeta23.OPICARound4.nativeCorrectedVariation",
+      "Zeta23.OPICARound4.nativeCorrectedVariation_nonneg",
+      "Zeta23.OPICARound4.nativeEvenGroupedEigenvalue",
+      "Zeta23.OPICARound4.nativeEvenGroupedProjector",
+      "Zeta23.OPICARound4.nativeEvenGroupedResidue",
+      "Zeta23.OPICARound4.nativeEvenObservation",
+      "Zeta23.OPICARound4.nativeLatePrimePowers",
+      "Zeta23.OPICARound4.nativeOddGroupedEigenvalue",
+      "Zeta23.OPICARound4.nativeOddGroupedProjector",
+      "Zeta23.OPICARound4.nativeOddGroupedResidue",
+      "Zeta23.OPICARound4.nativeOddObservation",
+      "Zeta23.OPICARound4.nativeOddReciprocalInput",
+      "Zeta23.OPICARound4.nativeOldPrimePowers",
+      "Zeta23.OPICARound4.nativePrimeConcentrationBudget",
+      "Zeta23.OPICARound4.nativePrimeMass",
+      "Zeta23.OPICARound4.nativeSinePotential",
+      "Zeta23.OPICARound4.nativeSinePotential_deriv",
+      "Zeta23.OPICARound4.nativeSinePotential_hasDerivAt",
+      "Zeta23.OPICARound4.nativeSourceAtom",
+      "Zeta23.OPICARound4.nativeSourceAtom_apply_norm",
+      "Zeta23.OPICARound4.nativeSourceAtom_norm_le_two",
+      "Zeta23.OPICARound4.nativeSourceAtom_symmetric",
+      "Zeta23.OPICARound4.native_adaptive_complete_budget",
+      "Zeta23.OPICARound4.native_complete_concentration_budget",
+      "Zeta23.OPICARound4.native_complete_row_budget",
+      "Zeta23.OPICARound4.native_corrected_riesz_budget",
+      "Zeta23.OPICARound4.native_corrected_source_concentration_real_interval",
+      "Zeta23.OPICARound4.native_even_complete_signed_budget",
+      "Zeta23.OPICARound4.native_even_grouped_residue_cast",
+      "Zeta23.OPICARound4.native_even_grouped_resolvent_expansion",
+      "Zeta23.OPICARound4.native_even_invisible_gram",
+      "Zeta23.OPICARound4.native_even_visible_or_shared_mode",
+      "Zeta23.OPICARound4.native_fixedSeed_contact_pencil_hasDerivAt",
+      "Zeta23.OPICARound4.native_frame_negative_physical_plane",
+      "Zeta23.OPICARound4.native_inverse_adjoint_cost",
+      "Zeta23.OPICARound4.native_inverse_gap_norm",
+      "Zeta23.OPICARound4.native_late_mixed_concentration_cost",
+      "Zeta23.OPICARound4.native_late_prime_concentration",
+      "Zeta23.OPICARound4.native_observation_bound_excludes_invisible_even",
+      "Zeta23.OPICARound4.native_odd_adaptive_response_budget",
+      "Zeta23.OPICARound4.native_odd_complete_signed_budget",
+      "Zeta23.OPICARound4.native_odd_concentration_real_interval",
+      "Zeta23.OPICARound4.native_odd_grouped_residue_cast",
+      "Zeta23.OPICARound4.native_odd_grouped_resolvent_expansion",
+      "Zeta23.OPICARound4.native_odd_invisible_gram",
+      "Zeta23.OPICARound4.native_odd_rank_one_unshifted",
+      "Zeta23.OPICARound4.native_odd_response_complete_arithmetic",
+      "Zeta23.OPICARound4.native_odd_response_eq_reciprocal_source",
+      "Zeta23.OPICARound4.native_odd_response_lt_one_of_adaptive_budget",
+      "Zeta23.OPICARound4.native_odd_visible_or_invisible_competitor",
+      "Zeta23.OPICARound4.native_odd_visible_or_shared_mode",
+      "Zeta23.OPICARound4.native_old_mixed_concentration_cost",
+      "Zeta23.OPICARound4.native_old_prime_concentration",
+      "Zeta23.OPICARound4.native_prime_concentration_budget",
+      "Zeta23.OPICARound4.native_prime_concentration_budget_regime_fallback",
+      "Zeta23.OPICARound4.native_prime_discrepancy_integral",
+      "Zeta23.OPICARound4.native_prime_half_coordinate_iff",
+      "Zeta23.OPICARound4.native_prime_power_regime_partition",
+      "Zeta23.OPICARound4.native_prime_row_budget",
+      "Zeta23.OPICARound4.native_real_shift_inverse_symmetric",
+      "Zeta23.OPICARound4.native_sine_nodeJet_eq_sourceEntryReal",
+      "Zeta23.OPICARound4.native_source_energy_eq_exchange_difference",
+      "Zeta23.OPICARound4.native_source_mixed_concentration_bound",
+      "Zeta23.OPICARound4.native_source_mixed_norm",
+      "Zeta23.OPICARound4.native_source_selected_membership",
+      "Zeta23.OPICARound4.native_source_square_concentration_full",
+      "Zeta23.OPICARound4.native_source_square_concentration_half",
+      "Zeta23.OPICARound4.negativeAtomEmbedding",
+      "Zeta23.OPICARound4.negativeAtomEmbedding_injective",
+      "Zeta23.OPICARound4.neutral_contact_pencil_hasDerivAt",
+      "Zeta23.OPICARound4.noBothNeg_of_actual_ground_comparisons",
+      "Zeta23.OPICARound4.noBothNeg_of_actual_ray_comparisons",
+      "Zeta23.OPICARound4.noBothNeg_of_ground_restrictions",
+      "Zeta23.OPICARound4.noBothNeg_of_research_targets",
+      "Zeta23.OPICARound4.no_off_line_zero_of_eventual_actual_ray_closure",
+      "Zeta23.OPICARound4.no_off_line_zero_of_eventual_ground_closure",
+      "Zeta23.OPICARound4.no_off_line_zero_of_eventual_native_joint_index",
+      "Zeta23.OPICARound4.no_off_line_zero_of_eventual_noBothNeg",
+      "Zeta23.OPICARound4.nodeJetMatrix",
+      "Zeta23.OPICARound4.nodeJetMatrix_diagonal",
+      "Zeta23.OPICARound4.nodeJetMatrix_eq_of_node_jets",
+      "Zeta23.OPICARound4.observationBlindSubspace",
+      "Zeta23.OPICARound4.observationBlindSubspace_invariant",
+      "Zeta23.OPICARound4.observationBlindSubspace_mem",
+      "Zeta23.OPICARound4.odd_negative_ground_restriction_of_all_ray",
+      "Zeta23.OPICARound4.primeSourceCoordinate_mem_unit",
+      "Zeta23.OPICARound4.prime_discrepancy_log_integral",
+      "Zeta23.OPICARound4.prime_log_abel",
+      "Zeta23.OPICARound4.prime_log_mem_interval",
+      "Zeta23.OPICARound4.psi_eq_sum_Icc_two",
+      "Zeta23.OPICARound4.psi_exp_eq_sum_steps",
+      "Zeta23.OPICARound4.rank_one_kernel_pairing_rigidity",
+      "Zeta23.OPICARound4.rank_one_visible_or_shared_mode",
+      "Zeta23.OPICARound4.reachable_subspace_in_output_kernel",
+      "Zeta23.OPICARound4.real_sub_upper_ne_zero",
+      "Zeta23.OPICARound4.signedCauchyEvaluation",
+      "Zeta23.OPICARound4.signedCauchyLinearMap",
+      "Zeta23.OPICARound4.signedPickKernel",
+      "Zeta23.OPICARound4.sourceConcentration",
+      "Zeta23.OPICARound4.sourceConcentration_eq_plus_add_minus",
+      "Zeta23.OPICARound4.sourceConcentration_le_norm_sq_of_half",
+      "Zeta23.OPICARound4.sourceConcentration_le_two_norm_sq",
+      "Zeta23.OPICARound4.sourceConcentration_nonneg",
+      "Zeta23.OPICARound4.sourceExchangeMinus",
+      "Zeta23.OPICARound4.sourceExchangeMixed",
+      "Zeta23.OPICARound4.sourceExchangeMixed_eq_native",
+      "Zeta23.OPICARound4.sourceExchangeMixed_norm_sq_le",
+      "Zeta23.OPICARound4.sourceExchangeMixed_self_eq_native",
+      "Zeta23.OPICARound4.sourceExchangePlus",
+      "Zeta23.OPICARound4.sourceExchange_nonneg",
+      "Zeta23.OPICARound4.sourceFiniteFourier",
+      "Zeta23.OPICARound4.sourceFiniteFourier_continuous",
+      "Zeta23.OPICARound4.sourceFiniteFourier_eq_sum_exp",
+      "Zeta23.OPICARound4.sum_groupedSpectralProjector",
+      "Zeta23.OPICARound4.upper_sub_conj_ne_zero",
+      "Zeta23.OPICARound4.zero_residue_does_not_remove_eigenspace"
+    ],
+    "modules": [
+      "Zeta23.OPICARound4",
+      "Zeta23.OPICARound4.AbsoluteAnchor",
+      "Zeta23.OPICARound4.NativeRayConsumer",
+      "Zeta23.OPICARound4.NativeWitnessCosts",
+      "Zeta23.OPICARound4.NegativeIndex",
+      "Zeta23.OPICARound4.OperatorSignedBound",
+      "Zeta23.OPICARound4.RegularCells.SourceSupport",
+      "Zeta23.OPICARound4.ScalarShift",
+      "Zeta23.OPICARound4.SignedNormBound",
+      "Zeta23.OPICARound4.SignedSpectral",
+      "Zeta23.OPICARound4.SourceDiscrepancy",
+      "Zeta23.OPICARound4.SourceRow",
+      "Zeta23.OPICARound4.TraceMetric",
+      "Zeta23.OPICARound4.Validation",
+      "Zeta23.OPICARound4.Validation.Support",
+      "Zeta23.OPICARound4.WitnessNorms",
+      "Zeta23.OPICARound4.AdaptiveBudget",
+      "Zeta23.OPICARound4.ClosureConsumers",
+      "Zeta23.OPICARound4.IntegrationTargets",
+      "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "Zeta23.OPICARound4.NativeJointIndex",
+      "Zeta23.OPICARound4.NativeObservation",
+      "Zeta23.OPICARound4.NativeSourceBudget",
+      "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "Zeta23.OPICARound4.NativeVisibility",
+      "Zeta23.OPICARound4.NeutralContactPencil",
+      "Zeta23.OPICARound4.OddReciprocalSource",
+      "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "Zeta23.OPICARound4.SearchSupport",
+      "Zeta23.OPICARound4.SignedPickKernel",
+      "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "Zeta23.OPICARound4.Validation.IntegrationDictionary",
+      "Zeta23.OPICARound4.Validation.IntegrationObservation",
+      "Zeta23.OPICARound4.Validation.IntegrationSource",
+      "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "Zeta23.OPICARound4.Validation.IntegrationVisibilityRigidity",
+      "Zeta23.OPICARound4.VisibilityRigidity"
+    ],
+    "semantic_mutation_count": 9,
+    "semantic_mutations_sha256": "3c6cd70fbfb0a13189f9d5534c8ca2d6e5da63c488ee22655f2ef83b62da3c9a",
+    "authority": "RETAINED_EXACT_SOURCE_SCOPE_NOT_CURRENT_CI_ACCEPTANCE"
+  }
+}

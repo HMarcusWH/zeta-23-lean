@@ -1,0 +1,640 @@
+{
+  "schema": "OPICA_FINAL_BUILD_KIT_V1",
+  "status": "IMPLEMENTATION_SPECIFICATION_WITH_REFERENCE_UTILITIES",
+  "baseline": "BASELINES.json",
+  "file_plan": "FILE_PLAN.json",
+  "stages": [
+    {
+      "id": "S0",
+      "depends_on": [],
+      "goal": "After accepted-parent reanchor, review source/CI migration in a separate next descendant PR before copying implementation files",
+      "exit": "Every frozen parent source predicate retains original scope, and child current compatibility is mandatory."
+    },
+    {
+      "id": "S1",
+      "depends_on": [
+        "S0"
+      ],
+      "goal": "Shared schemas, source epoch, complete inventory",
+      "exit": "Exact cohort census and canonical source-bound protocol; no authority from metadata."
+    },
+    {
+      "id": "S2",
+      "depends_on": [
+        "S1"
+      ],
+      "goal": "Host elaboration, expected types and proof replay",
+      "exit": "D02->D05 and separate D02->D04 plus paired native negatives."
+    },
+    {
+      "id": "S3",
+      "depends_on": [
+        "S2"
+      ],
+      "goal": "FFBBP and OoL composition adapters",
+      "exit": "Complete evidence inventories, same-object/conditional-context preservation."
+    },
+    {
+      "id": "S4",
+      "depends_on": [
+        "S1"
+      ],
+      "goal": "Permansson selected-provider audit and deterministic host policy",
+      "exit": "Legal tagged SELECT/STOP proposals from complete host-owned menu and history, plus exact host/provider isolation."
+    },
+    {
+      "id": "S5",
+      "depends_on": [
+        "S3",
+        "S4"
+      ],
+      "goal": "Journal, integrated loop and external application views",
+      "exit": "One full iteration and deterministic replay survive source changes and stale workers."
+    },
+    {
+      "id": "S6",
+      "depends_on": [
+        "S5"
+      ],
+      "goal": "Held-out validation, current-source CI and post-green handover",
+      "exit": "Complete required lanes and scientific dispositions; no false proof promotion."
+    }
+  ],
+  "requirements": [
+    {
+      "id": "P01",
+      "owner": "Permansson",
+      "title": "Pin and qualify selected external research APIs",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Exact source/toolchain/type/axiom manifest",
+        "Independent selected consumers; no mutable-head trust"
+      ]
+    },
+    {
+      "id": "P02",
+      "owner": "Permansson",
+      "title": "Model policy/actions separately from mathematical world",
+      "depends_on": [
+        "W02"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Legal action grammar",
+        "Changing source/checker cannot masquerade as strategic intervention"
+      ]
+    },
+    {
+      "id": "P03",
+      "owner": "Permansson",
+      "title": "Separate compiler sidecar and closed exchange",
+      "depends_on": [
+        "P01",
+        "W02"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "No cross-version objects",
+        "Host validates every proposal"
+      ]
+    },
+    {
+      "id": "P04",
+      "owner": "Permansson",
+      "title": "Bounded deterministic action scheduler",
+      "depends_on": [
+        "P02",
+        "P03"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Finite budgets and stable order",
+        "Stop/abstain",
+        "No invented probability model"
+      ]
+    },
+    {
+      "id": "P05",
+      "owner": "Permansson",
+      "title": "Matched interventions and pathology metrics",
+      "depends_on": [
+        "P04",
+        "O05"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Fixed source/budget comparisons",
+        "No theorem-alias reward",
+        "No automatic GR/PR claim"
+      ]
+    },
+    {
+      "id": "P06",
+      "owner": "Permansson",
+      "title": "Narrow optional upstream formal adapters",
+      "depends_on": [
+        "P01",
+        "P02"
+      ],
+      "mandatory_for_integrated_v1": false,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Only demonstrably missing model bridges",
+        "Scoped formal consumers"
+      ]
+    },
+    {
+      "id": "F01",
+      "owner": "FFBBP",
+      "title": "New composition-domain assurance profile",
+      "depends_on": [
+        "W02"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Discovery/eligibility/validity separate",
+        "Old snapshot profile unchanged"
+      ]
+    },
+    {
+      "id": "F02",
+      "owner": "FFBBP",
+      "title": "Composition-sensitive reduction tests",
+      "depends_on": [
+        "F01",
+        "W03"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Witness/source/quantifier collision negatives",
+        "Return to full record before proof"
+      ]
+    },
+    {
+      "id": "F03",
+      "owner": "FFBBP",
+      "title": "Expected-gate completeness and identity",
+      "depends_on": [
+        "F01"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Exact required-ID equality",
+        "Empty/missing/stale/cross-run rejection"
+      ]
+    },
+    {
+      "id": "F04",
+      "owner": "FFBBP",
+      "title": "Same-source witness and residual budgets",
+      "depends_on": [
+        "F01",
+        "W02"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Norm/domain/scale explicit",
+        "Finite certificates never imply exact or asymptotic claims"
+      ]
+    },
+    {
+      "id": "F05",
+      "owner": "FFBBP",
+      "title": "Native/synthetic falsification corpus",
+      "depends_on": [
+        "F02",
+        "F04"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "All 17 old dispositions preserved",
+        "Countermodel satisfies candidate hypotheses"
+      ]
+    },
+    {
+      "id": "F06",
+      "owner": "FFBBP",
+      "title": "Origin-aware corrections and replay",
+      "depends_on": [
+        "F03",
+        "O05"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "No duplicate raw roots",
+        "Late generation rejection",
+        "Replay from raw origins"
+      ]
+    },
+    {
+      "id": "F07",
+      "owner": "FFBBP",
+      "title": "Held-out domain qualification",
+      "depends_on": [
+        "F05",
+        "F06"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Separate proposal and labels",
+        "No inherited RUN42C/N29 qualification"
+      ]
+    },
+    {
+      "id": "O01",
+      "owner": "OoL",
+      "title": "Typed route application hypergraph",
+      "depends_on": [
+        "W02"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Inputs/context/witness/output represented",
+        "Candidate versus checked edge separated"
+      ]
+    },
+    {
+      "id": "O02",
+      "owner": "OoL",
+      "title": "Proof-backed exact interface inventory",
+      "depends_on": [
+        "O01",
+        "W04"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "No omitted interfaces",
+        "Binding flags derived from host evidence"
+      ]
+    },
+    {
+      "id": "O03",
+      "owner": "OoL",
+      "title": "Conditional premise and branch tracking",
+      "depends_on": [
+        "O01"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Authorized contradiction context retained",
+        "No hidden RH-equivalent premise or branch erasure"
+      ]
+    },
+    {
+      "id": "O04",
+      "owner": "OoL",
+      "title": "Identity-complete evidence verifier",
+      "depends_on": [
+        "W01",
+        "W02"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Current source/run/checker identity",
+        "Independent receipt reconstruction"
+      ]
+    },
+    {
+      "id": "O05",
+      "owner": "OoL",
+      "title": "Append-only journal and derived current state",
+      "depends_on": [
+        "O04"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Deterministic restart",
+        "Affected-cone invalidation",
+        "Historical results preserved"
+      ]
+    },
+    {
+      "id": "O06",
+      "owner": "OoL",
+      "title": "Search completeness and outcome semantics",
+      "depends_on": [
+        "O03",
+        "O05"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Finite grammar exhaustion remains scoped",
+        "Unknown is not false; type failure not global refutation"
+      ]
+    },
+    {
+      "id": "O07",
+      "owner": "OoL",
+      "title": "Post-green workflow/scientific harvest",
+      "depends_on": [
+        "O05"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Formal/regression/research dispositions",
+        "Remaining jobs stay pending",
+        "Changed-premise revival"
+      ]
+    },
+    {
+      "id": "W01",
+      "owner": "OPICA host",
+      "title": "Freeze source epoch and provider envelope",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Exact #297/merge identity",
+        "No inferred full release acceptance"
+      ]
+    },
+    {
+      "id": "W02",
+      "owner": "OPICA host",
+      "title": "Shared theorem-typed schemas",
+      "depends_on": [
+        "W01"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Exact types/context/objects",
+        "Closed strict serialization"
+      ]
+    },
+    {
+      "id": "W03",
+      "owner": "OPICA host",
+      "title": "Coverage-checked combined inventory",
+      "depends_on": [
+        "W02"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "76+100+40+5 memberships",
+        "185 backlog preserved",
+        "No old source-only scope substitution"
+      ]
+    },
+    {
+      "id": "W04",
+      "owner": "OPICA host",
+      "title": "Bounded Lean application executor",
+      "depends_on": [
+        "W02",
+        "W03"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Real host elaboration/kernel replay",
+        "No unresolved metavariables",
+        "Independent intended-type check"
+      ]
+    },
+    {
+      "id": "W05",
+      "owner": "OPICA host",
+      "title": "D01-D05 source-faithful calibration",
+      "depends_on": [
+        "W04"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Positive known compositions",
+        "D05 full-output mutation refusal",
+        "No novelty claim from replay"
+      ]
+    },
+    {
+      "id": "W06",
+      "owner": "OPICA host",
+      "title": "Three framework service wiring",
+      "depends_on": [
+        "P04",
+        "F03",
+        "F04",
+        "O02",
+        "O03"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "One shared evidence envelope",
+        "No self-approval or multi-framework vote as truth"
+      ]
+    },
+    {
+      "id": "W07",
+      "owner": "OPICA host",
+      "title": "Proof-backed generated application views",
+      "depends_on": [
+        "W06",
+        "O05"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Explicit producers",
+        "No hash cycle",
+        "Historical RHKG contracts intact"
+      ]
+    },
+    {
+      "id": "W08",
+      "owner": "OPICA host",
+      "title": "Sandbox and resource isolation",
+      "depends_on": [
+        "W01"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "No credentials/network in worker",
+        "One writer per cache",
+        "Timeout classified unresolved"
+      ]
+    },
+    {
+      "id": "W09",
+      "owner": "OPICA host",
+      "title": "Independent acceptance aggregation",
+      "depends_on": [
+        "W05",
+        "W06",
+        "W07",
+        "W08",
+        "F05",
+        "O04"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "All exact source/run lane artifacts",
+        "Independent reparse",
+        "Old gates retained"
+      ]
+    },
+    {
+      "id": "W10",
+      "owner": "OPICA host",
+      "title": "Held-out integration qualification",
+      "depends_on": [
+        "W09",
+        "F07",
+        "P05",
+        "O06"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Known positives/negatives/unknowns",
+        "Fair baseline",
+        "Coverage/resource report"
+      ]
+    },
+    {
+      "id": "W11",
+      "owner": "OPICA host",
+      "title": "Ownership and staged compatibility migration",
+      "depends_on": [
+        "W01",
+        "W02"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "Frozen integration lint still passes",
+        "New versioned registry",
+        "No private source vendoring"
+      ]
+    },
+    {
+      "id": "W12",
+      "owner": "OPICA host",
+      "title": "Release and post-green research readiness",
+      "depends_on": [
+        "W10",
+        "W11",
+        "O07"
+      ],
+      "mandatory_for_integrated_v1": true,
+      "status": "RETAINED_REQUIREMENT_NOT_IMPLEMENTED",
+      "acceptance": [
+        "End-to-end reproducible loop",
+        "RH/Step4 remain OPEN absent exact proof"
+      ]
+    },
+    {
+      "id": "K01",
+      "title": "Closed descendant and inherited workflow migration",
+      "owner": "audit",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "AUDIT_ADDITION_TO_IMPLEMENT"
+    },
+    {
+      "id": "K02",
+      "title": "Actual D02/D04/D05 input signatures, not narrative edges",
+      "owner": "audit",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "AUDIT_ADDITION_TO_IMPLEMENT"
+    },
+    {
+      "id": "K03",
+      "title": "Independent expected gate/interface inventory",
+      "owner": "audit",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "AUDIT_ADDITION_TO_IMPLEMENT"
+    },
+    {
+      "id": "K04",
+      "title": "Content identity separated from execution identity and no self-hash cycle",
+      "owner": "audit",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "AUDIT_ADDITION_TO_IMPLEMENT"
+    },
+    {
+      "id": "K05",
+      "title": "Shared evidence origin and provider-specific source scope",
+      "owner": "audit",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "AUDIT_ADDITION_TO_IMPLEMENT"
+    },
+    {
+      "id": "K06",
+      "title": "Atomic journal generation and revision publication",
+      "owner": "audit",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "AUDIT_ADDITION_TO_IMPLEMENT"
+    },
+    {
+      "id": "K07",
+      "title": "Restricted expression grammar and answer-leakage exclusion",
+      "owner": "audit",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "AUDIT_ADDITION_TO_IMPLEMENT"
+    },
+    {
+      "id": "K08",
+      "title": "Inherited current-layout test migration without dropped assertions",
+      "owner": "audit",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "AUDIT_ADDITION_TO_IMPLEMENT"
+    },
+    {
+      "id": "K09",
+      "title": "Finite search outcomes are not proof impossibility",
+      "owner": "audit",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "AUDIT_ADDITION_TO_IMPLEMENT"
+    },
+    {
+      "id": "K10",
+      "title": "Uncompiled templates and tested reference utilities clearly separated",
+      "owner": "audit",
+      "depends_on": [],
+      "mandatory_for_integrated_v1": true,
+      "status": "AUDIT_ADDITION_TO_IMPLEMENT"
+    }
+  ],
+  "closed_world_changes_required": true,
+  "host_upgrade_required": false,
+  "private_ffbbp_runtime_required": false,
+  "external_policy_optimality_required": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "kit_version": "1.1",
+  "implementation_scope": "IMPLEMENTATION_SCOPE.json",
+  "release_status": "CORRECTED_BUILD_SPEC_NOT_IMPLEMENTED"
+}

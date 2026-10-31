@@ -1,0 +1,704 @@
+{
+  "schema": "OPICA4_MATHEMATICAL_SUPPORT_SCOPE_V1",
+  "authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+  "required_original_roots_unchanged": true,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "contracts": [
+    {
+      "id": "S01",
+      "status": "PROVED_NATIVE_GROUPED_SIGNED_MEASURE_SUPPORT",
+      "support": "Canonical whole-eigenspace orthogonal projectors sum to identity. The actual complex grouped coefficients f(D^-1 P_beta g) are real under the full Hermitian rank-one intertwining hypotheses, and both native parity resolvents have exact grouped signed expansions. The finite signed Pick identity has a Cauchy Gram representation; every strictly negative sample subspace has dimension at most the number of negative atoms. Equality is conditional on the explicit Cauchy evaluation equivalence.",
+      "open_leaf": "Source-specific visibility exclusions, signed smallness and physical Weil-to-Pick index bridges remain OPEN.",
+      "compression": "S05 can bound the real response directly using cross-coefficient real parts, so its proof does not require pretending complex cross residues are automatically real.",
+      "prior_contract_state": {
+        "status": "PARTIAL_SUPPORT_FULL_PROJECTOR_MEASURE_OPEN",
+        "support": "realCrossResidue, diagonal_resolvent_response retain arbitrary signed real parts and repeated spectral entries.",
+        "open_leaf": "Construct grouped native spectral projectors, establish exact complex residue reality from the native intertwining context, and export the grouped signed measure expansion."
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.groupedSpectralProjector",
+        "Zeta23.OPICARound4.sum_groupedSpectralProjector",
+        "Zeta23.OPICARound4.groupedSpectralCoefficient_star",
+        "Zeta23.OPICARound4.grouped_signed_resolvent_expansion",
+        "Zeta23.OPICARound4.native_even_grouped_resolvent_expansion",
+        "Zeta23.OPICARound4.native_odd_grouped_resolvent_expansion",
+        "Zeta23.OPICARound4.finite_signed_pick_identity",
+        "Zeta23.OPICARound4.finite_signed_pick_gram",
+        "Zeta23.OPICARound4.finite_signed_pick_negative_subspace_bound",
+        "Zeta23.OPICARound4.finite_signed_pick_negative_subspace_exact"
+      ]
+    },
+    {
+      "id": "S02",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "one_shell_negative_index_exact proves existence of a negative line and an upper bound one on every strictly negative subspace, requiring PSD predecessor, one-dimensional physical shell, and an actually negative successor.",
+      "open_leaf": "Export the eigenvalue-list counting formulation and a direct first-cutoff native specialization if that exact API is required. The invariant negative-index formulation is the proved supporting result."
+    },
+    {
+      "id": "S03",
+      "status": "PARTIAL_SUPPORT_GLOBAL_THRESHOLD_INTERVAL_OPEN",
+      "support": "signed_response_hasDerivAt computes the exact signed derivative on the resolvent set. Actual native eigenvalue threshold equality is reused unchanged in both orientations.",
+      "open_leaf": "Any global below/equal/above-one threshold interval theorem needs its precise inertia and spectrum hypotheses. Signed residues do not justify monotonicity.",
+      "countermodel": "EXACT_RATIONAL_CONTROLS:S03_SIGNED_DERIVATIVE"
+    },
+    {
+      "id": "S04",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "rank_one_trace_displacement, rank_one_metric_identity, native_even_trace_displacement and native_odd_trace_displacement retain D, D-adjoint and the reversed odd trace sign."
+    },
+    {
+      "id": "S05",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "hermitian_resolvent_signed_upper and native_even_signed_upper/native_odd_signed_upper prove the improved one-sided norm-and-trace formulas for the actual parity source, with repeated eigenvalues permitted and the genuine nonunitary inverse/adjoint orientations.",
+      "open_leaf": "Independently bound the complete actual-source norm/trace cost strongly enough to contradict source-equals-one below the opposite spectrum. No such arithmetic smallness or eventual bound is assumed or proved."
+    },
+    {
+      "id": "S06",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "Relative intertwining and the corrected orthogonal source row are shift-invariant, while real_scalar_shift_energy changes absolute energy by -c*norm(u)^2. scalar_shift_negative_control supplies the exact synthetic contrast.",
+      "native_anchor": "even_absolute_energy_anchor and odd_absolute_energy_anchor fix energies to the unchanged canonical equation-(4.4) matrix."
+    },
+    {
+      "id": "S07",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "signed_prefix_abel retains the endpoint term. signed_prefix_nonnegative requires nonnegative prefixes, final kernel and the exact decreasing-kernel order.",
+      "open_leaf": "Native arithmetic residues must independently satisfy the prefix hypotheses before a source-specific comparison can be claimed."
+    },
+    {
+      "id": "WITNESS_COSTS",
+      "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+      "support": "Actual D05 witnesses retain both resonant and regular costs. Physical bottom bounds divide the same witness energy by its complete norm. Ground selection creates a genuine eigenmode at the same L,K without relabelling the Schur vector.",
+      "branches": "common_cutoff_negative_ground_alternatives retains equal negative grounds, and uses the genuine even or odd-adjoint source equality only on the corresponding strict branch."
+    },
+    {
+      "id": "SOURCE_ROW_AND_ARITHMETIC",
+      "status": "PROVED_NATIVE_LOG_DISCREPANCY_AND_ADAPTIVE_SUPPORT",
+      "support": "The proved atom contraction implies actual operator norm<=2 without a Fourier dimension factor. Complete corrected-row/Riesz budgets retain the uncompressed arch action, every von-Mangoldt prime power, native index inverse cost two, and both signed trace displacements. Actual Fourier exchange gives C=Cplus+Cminus and native source energy=Cplus-Cminus, full complex mixed sqrt(C_h*C_u) control, C<=I and S^2<=C on [0,1/2], and C<=2I and S^2<=2C on [0,1]. Native log(q)>=L/2 is exactly the stronger late regime. Signed real upper/lower intervals retain Re(-Arch) for corrected source and Re(Arch(v)) for the actual reciprocal odd response. Finite discrete Abel summation against actual Chebyshev.psi and integration by parts prove sum Lambda(q)/sqrt(q)*F(log q)-integral exp(y/2)F = -integral (psi(exp y)-exp y) exp(-y/2)(Fprime-F/2) for the stated C1 endpoint-zero complex tests. The actual native F has proved endpoints and explicit derivative. The declared amplitude/variation class has actual source-selected membership and inverse-gap norm pricing. Uniform arithmetic bounds are explicit consumer hypotheses. Exact odd reciprocity is S_odd=-conj(f(v)) for v=(A-lambda)^-1(D^-1g), with full signed/conjugated arithmetic and adaptive response consumers.",
+      "open_leaf": "A useful independent uniform joint bound on actual psi(exp y)-exp y and the selected test, variation and inverse-gap costs remains OPEN. The exact log discrepancy identity itself is PROVED.",
+      "prior_contract_state": {
+        "status": "PROVED_ISOLATED_WARM_NATIVE_SUPPORT",
+        "support": "correctedSourceRow includes the removed output; correctedSourceTest_complete_arithmetic contains full Archimedean output and all prime powers. Both endpoint zeros and exact aperture-priced differentiation are proved for the same arithmetic-dependent even ray or odd resolvent/Riesz state.",
+        "open_leaf": "The complete log-coordinate Stieltjes discrepancy identity, together with a useful independent joint bound on E(exp y) and the resolvent-selected test, remains OPEN. No fixed-test estimate is imported as a uniform resolvent-family estimate."
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.prime_log_abel",
+        "Zeta23.OPICARound4.prime_discrepancy_log_integral",
+        "Zeta23.OPICARound4.native_prime_discrepancy_integral",
+        "Zeta23.OPICARound4.nativeAdaptiveTestClass",
+        "Zeta23.OPICARound4.UniformPrimeDiscrepancyBound",
+        "Zeta23.OPICARound4.native_source_selected_membership",
+        "Zeta23.OPICARound4.actual_even_ray_gap_norm",
+        "Zeta23.OPICARound4.actual_odd_resolvent_gap_norm",
+        "Zeta23.OPICARound4.native_adaptive_complete_budget",
+        "Zeta23.OPICARound4.nativeOddReciprocalInput",
+        "Zeta23.OPICARound4.native_odd_response_eq_reciprocal_source",
+        "Zeta23.OPICARound4.native_odd_response_complete_arithmetic",
+        "Zeta23.OPICARound4.actual_odd_reciprocal_gap_norm",
+        "Zeta23.OPICARound4.native_odd_adaptive_response_budget",
+        "Zeta23.OPICARound4.native_odd_response_lt_one_of_adaptive_budget"
+      ]
+    },
+    {
+      "id": "REGULAR_CELLS",
+      "status": "G01_PROVED_G03_PARTIAL_G04_G08_OPEN",
+      "audit": "REGULAR_CELL_AUDIT.json",
+      "support": "Exact physical fixed-cell source equality and actual neutral pole cancellation are retained. G01 fixed-seed diagonal equivalences and exact positive Gram metrics are now proved. G03 spectral analytic composition and G04-G08 remain OPEN; no genericity or shared-ground exclusion is assumed.",
+      "prior_contract_state": {
+        "status": "OPEN_WITH_EXACT_LEAF_AND_COUNTERMODEL_AUDIT",
+        "support": "Exact existing fixed-cell frozen-source equality is freshly consumed; actual neutral pole cancellation is applied to fixed-Q auxiliary source. G01 and G04-G08 remain open with all exceptional branches retained."
+      }
+    },
+    {
+      "id": "E1",
+      "title": "Conditional closure and exact negative-ground restrictions",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.ClosureConsumers",
+          "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+          "sha256": "f88b0a4dfc43f9e3103705ca14b46022602bde566e87d2cb2f9d1dd3eac56717"
+        }
+      ],
+      "exact_support": "Both actual all-ray comparisons, or the weaker two comparisons only at each actual negative ground strictly below the opposite ground, together with a separate shared-negative-ground exclusion, imply no simultaneous native parity negativity. Uniform common thresholds precede aperture and cutoff. D02 then gives a conditional no-off-line-zero consumer.",
+      "hypotheses_and_scope": "Actual L>0,K>=3 and genuine parity bottoms/rays; the odd source uses its own adjoint ray. No all-ray definition is narrowed and no shared branch is removed. All arithmetic restrictions remain explicit hypotheses.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.EvenNegativeGroundRestriction",
+        "Zeta23.OPICARound4.OddNegativeGroundRestriction",
+        "Zeta23.OPICARound4.even_negative_ground_restriction_of_all_ray",
+        "Zeta23.OPICARound4.odd_negative_ground_restriction_of_all_ray",
+        "Zeta23.OPICARound4.noBothNeg_of_actual_ground_comparisons",
+        "Zeta23.OPICARound4.EventualNegativeGroundClosure",
+        "Zeta23.OPICARound4.eventual_noBothNeg_of_ground_closure",
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_ground_closure"
+      ],
+      "open_leaves": [
+        "Prove the actual even and odd source comparisons or exact-ground restrictions.",
+        "Exclude actual shared negative grounds.",
+        "Prove a common eventual threshold uniform in every relevant cutoff."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E2",
+      "title": "Bounded composition search",
+      "status": "ROOT_MAINTAINED_BOUNDED_TOOLING_NOT_COMPLETENESS",
+      "label": "TOOLING_SUPPORT",
+      "authority": "ROOT_REGISTRY_AND_EXECUTION_GATES_SEPARATE_FROM_THEOREM_AUTHORITY",
+      "exact_support": "The root-owned registry/proposer searches bounded typed compositions and native elaboration validates accepted candidates; no mathematical completeness, target impossibility, or independent arithmetic restriction follows from budget exhaustion.",
+      "evidence_declarations": [],
+      "open_leaves": [
+        "Actual open arithmetic target proofs.",
+        "Any search-completeness claim beyond the declared finite budget."
+      ],
+      "owner": "root",
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E3",
+      "title": "Canonical grouped signed spectral measure and Pick kernel",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+          "path": "Zeta23/OPICARound4/NativeSpectralMeasure.lean",
+          "sha256": "13efcfa7a21e980cbb59b22b319502e7ec3b7de664ab1c5039310f31fb5c0c5b"
+        },
+        {
+          "module": "Zeta23.OPICARound4.SignedPickKernel",
+          "path": "Zeta23/OPICARound4/SignedPickKernel.lean",
+          "sha256": "158a35972a6c49a2e81b5fcefeb28b6dcabb05f6d06d359e7a2e919bba59ea61"
+        }
+      ],
+      "exact_support": "Canonical whole-eigenspace orthogonal projectors sum to identity. The actual complex grouped coefficients f(D^-1 P_beta g) are real under the full Hermitian rank-one intertwining hypotheses, and both native parity resolvents have exact grouped signed expansions. The finite signed Pick identity has a Cauchy Gram representation; every strictly negative sample subspace has dimension at most the number of negative atoms. Equality is conditional on the explicit Cauchy evaluation equivalence.",
+      "hypotheses_and_scope": "Finite complex Hilbert spaces, Hermitian A and B, invertible actual D, and the actual rank-one intertwining. Residues stay signed, repeated eigenvalues are grouped canonically, and each resolvent has its exact domain. Pick equality retains its Cauchy-map hypothesis.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.groupedSpectralProjector",
+        "Zeta23.OPICARound4.sum_groupedSpectralProjector",
+        "Zeta23.OPICARound4.groupedSpectralCoefficient_star",
+        "Zeta23.OPICARound4.grouped_signed_resolvent_expansion",
+        "Zeta23.OPICARound4.native_even_grouped_resolvent_expansion",
+        "Zeta23.OPICARound4.native_odd_grouped_resolvent_expansion",
+        "Zeta23.OPICARound4.finite_signed_pick_identity",
+        "Zeta23.OPICARound4.finite_signed_pick_gram",
+        "Zeta23.OPICARound4.finite_signed_pick_negative_subspace_bound",
+        "Zeta23.OPICARound4.finite_signed_pick_negative_subspace_exact"
+      ],
+      "open_leaves": [
+        "A physical Weil-form to spectral Pick-index bridge.",
+        "Any native at-most-one negative-atom/index claim.",
+        "Source-specific sign or smallness of the signed measure."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E4",
+      "title": "Visibility alternatives and full-model zero-residue rigidity",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.NativeVisibility",
+          "path": "Zeta23/OPICARound4/NativeVisibility.lean",
+          "sha256": "6907aab5a9005b287c0db6df5645729bb10e82fbb45d6cc8a4802c3c5f34b2b5"
+        },
+        {
+          "module": "Zeta23.OPICARound4.VisibilityRigidity",
+          "path": "Zeta23/OPICARound4/VisibilityRigidity.lean",
+          "sha256": "6a584812280cf5ef6203cb1d455ed15b1127616bfaf10e8639a778520c903029"
+        }
+      ],
+      "exact_support": "Input or output invisibility forces zero grouped mass, and invisible actual eigenmodes are retained as shared modes. Under the full finite Hermitian A/B, invertible D and rank-one model, zero grouped signed mass is equivalent to input invisibility or whole-eigenspace output invisibility. A third pure-cancellation mechanism with both sides visible is excluded in this full model.",
+      "hypotheses_and_scope": "Exact zero rigidity requires BOTH Hermitian operators, finite dimensions, invertible D and the full rank-one relation. It proves no uniform nonzero lower bound. Visible/visible cross-observation cancellation remains possible outside that full semisimple model; the nilpotent rank-one control is outside those hypotheses.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.GroupedInputInvisible",
+        "Zeta23.OPICARound4.GroupedOutputInvisible",
+        "Zeta23.OPICARound4.grouped_invisible_residue_zero",
+        "Zeta23.OPICARound4.zero_residue_does_not_remove_eigenspace",
+        "Zeta23.OPICARound4.native_even_visible_or_shared_mode",
+        "Zeta23.OPICARound4.native_odd_visible_or_shared_mode",
+        "Zeta23.OPICARound4.rank_one_kernel_pairing_rigidity",
+        "Zeta23.OPICARound4.grouped_zero_coefficient_rigidity",
+        "Zeta23.OPICARound4.grouped_residue_zero_iff_input_or_output_invisible"
+      ],
+      "open_leaves": [
+        "Source-specific exclusion of input-invisible negative modes.",
+        "Source-specific exclusion of output-invisible negative modes.",
+        "A quantitative observation lower bound for actual selected states."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E5",
+      "title": "Dimension-free native source and signed concentration budgets",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.NativeSourceBudget",
+          "path": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+          "sha256": "75856cd9ae5790b9bd4afa2ca86014671a845c11f1346c20b13afbb93562b62e"
+        },
+        {
+          "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+          "path": "Zeta23/OPICARound4/SourceExchangeConcentration.lean",
+          "sha256": "03fadc63d50d3947c362c750f7843a8301334c089e9b9b35ee08fe9ba44abf4a"
+        },
+        {
+          "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+          "path": "Zeta23/OPICARound4/NativeConcentrationBudget.lean",
+          "sha256": "601b170880c05df913903d2b3c6151592a14cb8e66eb80742eda75baf586c687"
+        },
+        {
+          "module": "Zeta23.OPICARound4.OddReciprocalSource",
+          "path": "Zeta23/OPICARound4/OddReciprocalSource.lean",
+          "sha256": "87957e4a350eb385563588c5ba7f288b5d7438b4a130f91819d51fd6fe15e716"
+        }
+      ],
+      "exact_support": "The proved atom contraction implies actual operator norm<=2 without a Fourier dimension factor. Complete corrected-row/Riesz budgets retain the uncompressed arch action, every von-Mangoldt prime power, native index inverse cost two, and both signed trace displacements. Actual Fourier exchange gives C=Cplus+Cminus and native source energy=Cplus-Cminus, full complex mixed sqrt(C_h*C_u) control, C<=I and S^2<=C on [0,1/2], and C<=2I and S^2<=2C on [0,1]. Native log(q)>=L/2 is exactly the stronger late regime. Signed real upper/lower intervals retain Re(-Arch) for corrected source and Re(Arch(v)) for the actual reciprocal odd response.",
+      "hypotheses_and_scope": "All mixed vectors are retained. The full interval counts overlap with multiplicity; finite Cplus/Cminus compressions are not generally projections. No full-range C<=I or S^2<=C claim is made. Absolute norm bounds are separate from primary signed real intervals.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.nativeSourceAtom_norm_le_two",
+        "Zeta23.OPICARound4.native_complete_row_budget",
+        "Zeta23.OPICARound4.native_corrected_riesz_budget",
+        "Zeta23.OPICARound4.native_inverse_adjoint_cost",
+        "Zeta23.OPICARound4.native_even_complete_signed_budget",
+        "Zeta23.OPICARound4.native_odd_complete_signed_budget",
+        "Zeta23.OPICARound4.native_source_mixed_concentration_bound",
+        "Zeta23.OPICARound4.native_source_square_concentration_full",
+        "Zeta23.OPICARound4.native_source_square_concentration_half",
+        "Zeta23.OPICARound4.native_prime_half_coordinate_iff",
+        "Zeta23.OPICARound4.native_prime_concentration_budget_regime_fallback",
+        "Zeta23.OPICARound4.native_corrected_source_concentration_real_interval",
+        "Zeta23.OPICARound4.native_odd_concentration_real_interval"
+      ],
+      "open_leaves": [
+        "A useful source-specific arithmetic gain uniform in the required aperture/cutoff regime.",
+        "A strict actual source budget beating the genuine spectral margin.",
+        "Any blanket improvement over the existing signed S05 bound."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E6",
+      "title": "Exact Chebyshev log discrepancy and adaptive native tests",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+          "path": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+          "sha256": "5df3b8309f6144a22da5ba8d318c5c91fba181911cf15b1f0d50d49f4d9365c1"
+        },
+        {
+          "module": "Zeta23.OPICARound4.AdaptiveBudget",
+          "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
+          "sha256": "ed2890bedcf365ff174564e37d58c63f9ac5f5f39e134cc48faaf2ffb285caab"
+        },
+        {
+          "module": "Zeta23.OPICARound4.OddReciprocalSource",
+          "path": "Zeta23/OPICARound4/OddReciprocalSource.lean",
+          "sha256": "87957e4a350eb385563588c5ba7f288b5d7438b4a130f91819d51fd6fe15e716"
+        }
+      ],
+      "exact_support": "Finite discrete Abel summation against actual Chebyshev.psi and integration by parts prove sum Lambda(q)/sqrt(q)*F(log q)-integral exp(y/2)F = -integral (psi(exp y)-exp y) exp(-y/2)(Fprime-F/2) for the stated C1 endpoint-zero complex tests. The actual native F has proved endpoints and explicit derivative. The declared amplitude/variation class has actual source-selected membership and inverse-gap norm pricing. Uniform arithmetic bounds are explicit consumer hypotheses. Exact odd reciprocity is S_odd=-conj(f(v)) for v=(A-lambda)^-1(D^-1g), with full signed/conjugated arithmetic and adaptive response consumers.",
+      "hypotheses_and_scope": "The generic identity exposes regularity/integrability rather than defining discrepancy to force equality. Actual source tests satisfy those prerequisites. The original even-resolvent/Riesz input remains distinct support and is not substituted for the odd response. Gap blow-up remains priced; shared-ground exclusion supplies no uniform gap.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.prime_log_abel",
+        "Zeta23.OPICARound4.prime_discrepancy_log_integral",
+        "Zeta23.OPICARound4.native_prime_discrepancy_integral",
+        "Zeta23.OPICARound4.nativeAdaptiveTestClass",
+        "Zeta23.OPICARound4.UniformPrimeDiscrepancyBound",
+        "Zeta23.OPICARound4.native_source_selected_membership",
+        "Zeta23.OPICARound4.actual_even_ray_gap_norm",
+        "Zeta23.OPICARound4.actual_odd_resolvent_gap_norm",
+        "Zeta23.OPICARound4.native_adaptive_complete_budget",
+        "Zeta23.OPICARound4.nativeOddReciprocalInput",
+        "Zeta23.OPICARound4.native_odd_response_eq_reciprocal_source",
+        "Zeta23.OPICARound4.native_odd_response_complete_arithmetic",
+        "Zeta23.OPICARound4.actual_odd_reciprocal_gap_norm",
+        "Zeta23.OPICARound4.native_odd_adaptive_response_budget",
+        "Zeta23.OPICARound4.native_odd_response_lt_one_of_adaptive_budget"
+      ],
+      "open_leaves": [
+        "Uniform arithmetic smallness over the declared class.",
+        "Uniform derivative-variation, inverse-gap and strict-margin budgets for the actual selected family.",
+        "No automatic nilsequence or other external number-theory test-class inclusion."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E7",
+      "title": "Actual negative plane and conditional joint-index restriction",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.NativeJointIndex",
+          "path": "Zeta23/OPICARound4/NativeJointIndex.lean",
+          "sha256": "11cc95f5d1a400810e616f464c4e3b56d3c3e368c6cabb27dfd9cd9f56df7ef9"
+        }
+      ],
+      "exact_support": "The actual D03 even/odd negative frame spans a complex physical plane of dimension two, strictly negative on every nonzero vector. A uniform eventual cap of one on the native joint negative index contradicts the D03 plane and, conditionally through D02, excludes off-line zeros.",
+      "hypotheses_and_scope": "Actual common aperture/cutoff and the D03 frame, not unrelated negative witnesses. Strict negativity is over the full complex span. The eventual index cap is an explicit OPEN hypothesis, not an axiom or proved arithmetic restriction.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.native_frame_negative_physical_plane",
+        "Zeta23.OPICARound4.frame_strictly_negative_native_plane",
+        "Zeta23.OPICARound4.frame_contradicts_native_joint_index",
+        "Zeta23.OPICARound4.EventualNativeJointNegativeIndexCap",
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_native_joint_index"
+      ],
+      "open_leaves": [
+        "Prove the actual eventual native joint negative-index cap.",
+        "A source-specific index inequality on the full physical operator."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E8",
+      "title": "Fixed seeds, moving contact pencil and retained seam jets",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+          "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+          "sha256": "262922e4d62d5749eb5580328242a4fae709c405a04d2a054452d6d5258422ef"
+        },
+        {
+          "module": "Zeta23.OPICARound4.NeutralContactPencil",
+          "path": "Zeta23/OPICARound4/NeutralContactPencil.lean",
+          "sha256": "e637c75692a04ecdb71ed93aeb28e4e6520a80e6eb9744a6b43020d45ff9f81d"
+        }
+      ],
+      "exact_support": "G01 is closed: invertible multiplication by a+n^2 for a=(L/(4*pi))^2 identifies fixed even M0=M2=M4=0 and fixed odd M1=M3=0 seeds with the actual moving physical pole-neutral carriers, retaining the exact positive pullback Gram form and both exponential moments. Contact differentiation retains both frame terms and the Gram derivative: Hprime-lambda*Gprime, plus -lambdaPrime*G for moving lambda. Existing canonical seam theorems retain rank-one first-jet annihilation, zero second jet, fixed-vector seventh/ninth source jets and the exact source coordinate h/(log(q)+h).",
+      "hypotheses_and_scope": "All L>0 and every cutoff for G01; no isometry is inferred. Native contact specialization keeps actual source HasDerivAt as an explicit premise. Seam jets are fixed-vector statements; no new PrimeSeamContact wrapper or uniform remainder proof was added.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonalEquiv",
+        "Zeta23.OPICARound4.RegularCells.fixedEvenSeedPhysicalEquiv",
+        "Zeta23.OPICARound4.RegularCells.fixedOddSeedPhysicalEquiv",
+        "Zeta23.OPICARound4.RegularCells.fixedSeedGram_eq_physical_inner",
+        "Zeta23.OPICARound4.RegularCells.fixedSeedGram_pos",
+        "Zeta23.OPICARound4.RegularCells.fixedEvenSeedPhysicalEquiv_exponentialMoments",
+        "Zeta23.OPICARound4.RegularCells.fixedOddSeedPhysicalEquiv_exponentialMoments",
+        "Zeta23.OPICARound4.neutral_contact_pencil_hasDerivAt",
+        "Zeta23.OPICARound4.moving_neutral_contact_pencil_hasDerivAt",
+        "Zeta23.OPICARound4.native_fixedSeed_contact_pencil_hasDerivAt"
+      ],
+      "open_leaves": [
+        "Actual contact crossing sign or barrier.",
+        "A canonical uniform ninth-order remainder instance.",
+        "Uniform moving-state/frame/aperture variation costs near seams.",
+        "G03 spectral analytic composition and G04-G08 source-specific asymptotic/nonidentity/selection leaves."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "retained_existing_seam_declarations": [
+        "Zeta23.CCM.sourceFirstJetMatrix_zero_mulVec_of_sum_zero",
+        "Zeta23.CCM.primeSourceMatrixFirstApertureJet_log_mulVec_zero",
+        "Zeta23.CCM.primeSourceMatrixSecondApertureJet_log_mulVec_zero",
+        "Zeta23.CCM.boundaryFlat_sourceAtom_seventh_jet_package",
+        "Zeta23.CCM.evenBoundaryFlat_sourceAtom_ninth_jet_package",
+        "Zeta23.CCM.primeSourceCoordinate_log_add"
+      ]
+    },
+    {
+      "id": "E9",
+      "title": "Diagonal-safe actual source dictionary crosswalk",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+          "path": "Zeta23/OPICARound4/SourceDictionaryCrosswalk.lean",
+          "sha256": "a40e5c89dec93e98d95fd624734c30edf6faed34adee8c1ee961fc0d5f956df4"
+        }
+      ],
+      "exact_support": "The confluent node-jet matrix uses actual derivatives at every repeated/equal node. Matching node values AND actual derivatives gives matrix equality. Perturbing by epsilon*sin(2*pi*x) preserves integer values but shifts derivatives by 2*pi*epsilon and changes every nonempty integer-node matrix for nonzero epsilon. The native sine potential has its actual derivative and reproduces the actual complex sourceMatrix for every omega,K. External dictionary equality is conditional on independently proved native value and derivative matches.",
+      "hypotheses_and_scope": "Repeated nodes are handled explicitly; differentiability at nodes is retained for the perturbation control. No external dictionary representation or positivity theorem is assumed.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.nodeJetMatrix",
+        "Zeta23.OPICARound4.nodeJetMatrix_eq_of_node_jets",
+        "Zeta23.OPICARound4.integerNodePerturb_value",
+        "Zeta23.OPICARound4.integerNodePerturb_deriv",
+        "Zeta23.OPICARound4.integer_node_values_same_matrix_ne",
+        "Zeta23.OPICARound4.nativeSinePotential_hasDerivAt",
+        "Zeta23.OPICARound4.diagonal_safe_source_regression",
+        "Zeta23.OPICARound4.external_dictionary_source_eq_of_node_jets"
+      ],
+      "open_leaves": [
+        "An independently proved external real-even or odd-complex dictionary representation with the required node and derivative matches.",
+        "Any full source/operator equivalence inferred from integer values alone."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "SC1",
+      "title": "Exact signed arithmetic at actual strict parity grounds",
+      "status": "SOURCE_BOUND_SUPPORT_NATIVE_CHECK_REQUIRED",
+      "authority": "EXACT_DECLARATION_REGISTER_NOT_PROOF_RECEIPT",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.GroundArithmetic",
+          "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+          "sha256": "5880f1bbc7df57224d1c261cb60f7d006e66b4aa7b54e1501a949ec12c4199e8"
+        }
+      ],
+      "exact_support": "Complex discrepancy, opposite odd sign and distinct reciprocal input, full prime pairing and necessary budget/moment inequalities.",
+      "hypotheses_and_scope": "Read the complete independently audited Lean types and SOURCE_CONSTRAINTS.json; no assumed closing inequality.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.nativeSignedPrimeDiscrepancy",
+        "Zeta23.OPICARound4.nativeGroundArchPairing",
+        "Zeta23.OPICARound4.nativeGroundPrimePairing",
+        "Zeta23.OPICARound4.native_signed_source_decomposition",
+        "Zeta23.OPICARound4.native_signed_discrepancy_integral",
+        "Zeta23.OPICARound4.actual_even_ground_ray_facts",
+        "Zeta23.OPICARound4.actual_odd_ground_ray_facts",
+        "Zeta23.OPICARound4.actual_even_ground_signed_discrepancy",
+        "Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy",
+        "Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility",
+        "Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility",
+        "Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility"
+      ],
+      "open_leaves": [
+        "No arithmetic sign or response exclusion follows from an identity alone."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "SC2",
+      "title": "Same-source exhaustive negative-ground alternatives",
+      "status": "SOURCE_BOUND_SUPPORT_NATIVE_CHECK_REQUIRED",
+      "authority": "EXACT_DECLARATION_REGISTER_NOT_PROOF_RECEIPT",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.JointGroundConstraints",
+          "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+          "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7"
+        }
+      ],
+      "exact_support": "Strict-even, strict-odd and arbitrary-multiplicity tied cases at the same L,K, absolute eigenmode energy, kernels/ranges/complement responses and cofinal producer.",
+      "hypotheses_and_scope": "Read the complete independently audited Lean types and SOURCE_CONSTRAINTS.json; no assumed closing inequality.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.native_even_eigen_absolute_energy",
+        "Zeta23.OPICARound4.native_odd_eigen_absolute_energy",
+        "Zeta23.OPICARound4.NativeStrictEvenGroundConstraints",
+        "Zeta23.OPICARound4.NativeStrictEvenGroundConstraints.mk",
+        "Zeta23.OPICARound4.NativeStrictOddGroundConstraints",
+        "Zeta23.OPICARound4.NativeStrictOddGroundConstraints.mk",
+        "Zeta23.OPICARound4.NativeTiedGroundConstraints",
+        "Zeta23.OPICARound4.NativeTiedGroundConstraints.mk",
+        "Zeta23.OPICARound4.NativeJointGroundConstraints",
+        "Zeta23.OPICARound4.native_tied_ground_constraints",
+        "Zeta23.OPICARound4.joint_ground_constraints_of_both_negative",
+        "Zeta23.OPICARound4.cofinally_joint_ground_constraints_of_off_line_zero"
+      ],
+      "open_leaves": [
+        "No tie exclusion or automatic identification with the quartic deep-detector packet."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "SC3",
+      "title": "Smooth Riesz forcing on the actual predecessor",
+      "status": "SOURCE_BOUND_SUPPORT_NATIVE_CHECK_REQUIRED",
+      "authority": "EXACT_DECLARATION_REGISTER_NOT_PROOF_RECEIPT",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.SmoothForcing",
+          "path": "Zeta23/OPICARound4/SmoothForcing.lean",
+          "sha256": "1fd38f486eb19066b118b96d95a1aa23e22daec6c361cbf1cdec72ee20badcb3"
+        }
+      ],
+      "exact_support": "The full original source pairing plus actual eta shift, physical error norm and actual finite forcing norm budgets.",
+      "hypotheses_and_scope": "Read the complete independently audited Lean types and SOURCE_CONSTRAINTS.json; no assumed closing inequality.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.sourceImageErrorBudget",
+        "Zeta23.OPICARound4.sourceFiniteModeCost",
+        "Zeta23.OPICARound4.sourceForcingErrorBudget",
+        "Zeta23.OPICARound4.sourceWeilBoundConstant",
+        "Zeta23.OPICARound4.sourceWeilBoundConstant_pos",
+        "Zeta23.OPICARound4.finiteForcingBudget",
+        "Zeta23.OPICARound4.sourceImageErrorBudget_nonneg",
+        "Zeta23.OPICARound4.source_eta_nonneg",
+        "Zeta23.OPICARound4.sourceForcingErrorBudget_nonneg",
+        "Zeta23.OPICARound4.finiteForcingBudget_nonneg",
+        "Zeta23.OPICARound4.smoothSourceL2",
+        "Zeta23.OPICARound4.smoothSourceL2_ae",
+        "Zeta23.OPICARound4.smoothSourceResponseL2",
+        "Zeta23.OPICARound4.smoothSourceResponseL2_ae",
+        "Zeta23.OPICARound4.smoothSourceForcing",
+        "Zeta23.OPICARound4.smoothSourceForcing_pairing",
+        "Zeta23.OPICARound4.smoothSourceForcing_error_pairing",
+        "Zeta23.OPICARound4.smoothSourceForcing_channels",
+        "Zeta23.OPICARound4.norm_le_of_all_inner_bound",
+        "Zeta23.OPICARound4.smoothSourceForcing_error_bound",
+        "Zeta23.OPICARound4.finiteForcing_norm_bound",
+        "Zeta23.OPICARound4.smoothSourceForcing_norm_bound",
+        "Zeta23.OPICARound4.sourcePhysicalL2_norm_eq",
+        "Zeta23.OPICARound4.smoothSourceL2_error_bound",
+        "Zeta23.OPICARound4.smoothSourceL2_norm_bound"
+      ],
+      "open_leaves": [
+        "No independent upper bound on the inverse-weighted smooth quadratic."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "SC4",
+      "title": "Full finite-to-smooth loss comparison",
+      "status": "SOURCE_BOUND_SUPPORT_NATIVE_CHECK_REQUIRED",
+      "authority": "EXACT_DECLARATION_REGISTER_NOT_PROOF_RECEIPT",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.SchurErrorTransport",
+          "path": "Zeta23/OPICARound4/SchurErrorTransport.lean",
+          "sha256": "1f41a890585a99d16f6a0f2dce4bb1b4bfec42daa8db9da337dd215b72d69f53"
+        }
+      ],
+      "exact_support": "Same P.inverse, full forcing error, direct quadratic error, shifted mass error and non-dropped cutoff-three energy.",
+      "hypotheses_and_scope": "Read the complete independently audited Lean types and SOURCE_CONSTRAINTS.json; no assumed closing inequality.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.detectorInverse",
+        "Zeta23.OPICARound4.sourceInverseBudget",
+        "Zeta23.OPICARound4.detectorSchurLoss",
+        "Zeta23.OPICARound4.finiteSourceEnergy",
+        "Zeta23.OPICARound4.smoothSourceMain",
+        "Zeta23.OPICARound4.sourceEnergyErrorBudget",
+        "Zeta23.OPICARound4.sourceSchurErrorBudget",
+        "Zeta23.OPICARound4.detectorInverse_norm_bound",
+        "Zeta23.OPICARound4.sourceInverseBudget_nonneg",
+        "Zeta23.OPICARound4.detectorSchurLoss_lower",
+        "Zeta23.OPICARound4.detectorSchurLoss_eq_forcing_energy",
+        "Zeta23.OPICARound4.sourceQuadratic_perturbation_bound",
+        "Zeta23.OPICARound4.smoothSourceL2_mass_error_bound",
+        "Zeta23.OPICARound4.detectorSchurLoss_sub_smoothSourceMain_bound",
+        "Zeta23.OPICARound4.detectorForcing_zero_at_first",
+        "Zeta23.OPICARound4.detectorSchurLoss_at_first"
+      ],
+      "open_leaves": [
+        "No replacement of the entire complement by one shell and no unproved sign estimate."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "SC5",
+      "title": "Source-only vanishing error and surviving smooth loss",
+      "status": "SOURCE_BOUND_SUPPORT_NATIVE_CHECK_REQUIRED",
+      "authority": "EXACT_DECLARATION_REGISTER_NOT_PROOF_RECEIPT",
+      "modules": [
+        {
+          "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+          "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+          "sha256": "3a176235c26faba6534a32cbea684e84dd81c36c22c9e8ac472cbea36d82dc2a"
+        }
+      ],
+      "exact_support": "Actual quartic cutoff gives full error smaller than any fixed exponential; late generated smooth loss retains an exponential lower margin with the threshold chosen first.",
+      "hypotheses_and_scope": "Read the complete independently audited Lean types and SOURCE_CONSTRAINTS.json; no assumed closing inequality.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.quartic_polynomial_exp_tendsto_zero",
+        "Zeta23.OPICARound4.quarticImageError",
+        "Zeta23.OPICARound4.quarticImageError_nonneg",
+        "Zeta23.OPICARound4.quarticImageError_mul_exp_tendsto_zero",
+        "Zeta23.OPICARound4.pow_mul_exp_mul_quarticImageError_tendsto_zero",
+        "Zeta23.OPICARound4.quarticCutoff_le_two_pow_four",
+        "Zeta23.OPICARound4.quartic_mode_cost_le",
+        "Zeta23.OPICARound4.quarticErrorEnvelope",
+        "Zeta23.OPICARound4.quarticErrorEnvelope_nonneg",
+        "Zeta23.OPICARound4.quarticErrorEnvelope_mul_exp_tendsto_zero",
+        "Zeta23.OPICARound4.quarticErrorEnvelope_eventually_lt_exp",
+        "Zeta23.OPICARound4.sourceEtaGrowthConstant",
+        "Zeta23.OPICARound4.sourceEtaGrowthConstant_pos",
+        "Zeta23.OPICARound4.source_eta_polynomial_bound",
+        "Zeta23.OPICARound4.detector_inverse_polynomial_bound",
+        "Zeta23.OPICARound4.sourceForcingGrowthConstant",
+        "Zeta23.OPICARound4.sourceForcingErrorGrowthConstant",
+        "Zeta23.OPICARound4.sourceForcingGrowthConstant_pos",
+        "Zeta23.OPICARound4.sourceForcingErrorGrowthConstant_pos",
+        "Zeta23.OPICARound4.finiteForcingBudget_polynomial_bound",
+        "Zeta23.OPICARound4.sourceForcingErrorBudget_polynomial_bound",
+        "Zeta23.OPICARound4.sourceSchurUniformEnvelope",
+        "Zeta23.OPICARound4.sourceSchurErrorBudget_le_uniformEnvelope",
+        "Zeta23.OPICARound4.sourceSchurUniformEnvelope_mul_exp_tendsto_zero",
+        "Zeta23.OPICARound4.exists_uniform_source_schur_error_threshold",
+        "Zeta23.OPICARound4.exists_uniform_smooth_source_main_lower_threshold",
+        "Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold"
+      ],
+      "open_leaves": [
+        "The independent arithmetic bound incompatible with that surviving margin remains OPEN."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    }
+  ],
+  "semantic_controls": [
+    "Omitted witness norm cost must fail exact type checking.",
+    "PSD predecessor must not supply the omitted negative-successor premise.",
+    "Uncorrected cubic source must not substitute for the corrected row functional.",
+    "A source equality at K must not supply an equality at a different M.",
+    "Exact shared-negative-ground controls preserve nonzero rank-one transport and PSD predecessors while falsifying source-blind generic selection.",
+    "Common scalar shifts preserve transport while moving all absolute eigenvalues through zero.",
+    "The odd reciprocal response input (A-lambda)^-1(D^-1g) must not be swapped for the distinct even-resolvent/Riesz support input.",
+    "Full aperture has concentration twice coefficient energy; half-range C<=I and S^2<=C must not be promoted to the full interval.",
+    "Integer-node values do not determine actual diagonal derivative jets; the sine perturbation must be rejected by dictionary equality adapters.",
+    "Zero grouped residue under the full Hermitian rank-one model means input or output invisibility; a shared negative eigenspace cannot be deleted."
+  ],
+  "native_gate": {
+    "result": "RESULT.json",
+    "modules": 16,
+    "complete_type_axiom_records": 98,
+    "semantic_mutations": 4,
+    "historical_scope": "Retained original16modules/98type-axiom records/4semantic controls; these historical counts are not the full extension total."
+  },
+  "production_qualification": "PENDING_ROOT_E10_INTEGRATION_ACCEPTANCE",
+  "extension_native_evidence": {
+    "authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+    "source_type_axiom_records": 80,
+    "spectral_type_axiom_records": 91,
+    "closure_type_axiom_records": 81,
+    "dictionary_type_axiom_records": 18,
+    "standard_axioms_only": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "evidence_roots": [
+      "work/opica-round4-integration-evidence/source",
+      "work/opica-round4-integration-evidence/spectral",
+      "work/opica-round4-integration-evidence/closure"
+    ],
+    "global_inventory_and_acceptance": "ROOT_E10_PENDING_NOT_CLAIMED_BY_LOCAL_MODULE_GATES"
+  },
+  "source_constraint_extension": {
+    "modules": 8,
+    "gate_total_modules": 48,
+    "gate_total_declarations": 500,
+    "retained_modules": 40,
+    "retained_declarations": 397,
+    "semantic_mutations": 17,
+    "register": "SOURCE_CONSTRAINTS.json",
+    "production_qualification": "CURRENT_HEAD_FULL_NATIVE_SUPPORT_AND_INDEPENDENT_ACCEPTANCE_REQUIRED"
+  }
+}

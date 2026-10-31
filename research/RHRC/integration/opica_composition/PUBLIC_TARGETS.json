@@ -1,0 +1,153 @@
+{
+  "schema": "OPICA4_PUBLIC_TARGETS_V1",
+  "calibration": [
+    {
+      "id": "D02_D05",
+      "declaration": "Zeta23.OPICAComposition.CofinalNewbornPacket",
+      "module": "Zeta23.OPICAComposition.Calibration",
+      "target_kind": "value",
+      "expected_type_sha256": "012431ee89958cffa20c70cf0e69767f1a6b727cbe4fd390837dff0821eed8ff",
+      "role": "KNOWN_CONDITIONAL_CALIBRATION_NOT_NEW_RESEARCH",
+      "forbidden_gold": [
+        "cofinal_newborn_packet_calibration",
+        "cofinal_schur_packet_calibration"
+      ]
+    },
+    {
+      "id": "D02_D04",
+      "declaration": "Zeta23.OPICAComposition.CofinalSchurPacket",
+      "module": "Zeta23.OPICAComposition.Calibration",
+      "target_kind": "value",
+      "expected_type_sha256": "7a1cb709c3e32e19c3cd0343b455afa479c918107c5642cc3406c1b49f055523",
+      "role": "KNOWN_CONDITIONAL_CALIBRATION_NOT_NEW_RESEARCH",
+      "forbidden_gold": [
+        "cofinal_newborn_packet_calibration",
+        "cofinal_schur_packet_calibration"
+      ]
+    }
+  ],
+  "open_research": [
+    {
+      "id": "EvenRayComparison",
+      "declaration": "Zeta23.OPICAComposition.EvenRayComparison",
+      "module": "Zeta23.RHRC.OpicaComposition.ResearchTargets",
+      "target_kind": "value",
+      "expected_type_sha256": "588692b797fb7adb32334719f70357b2301fb468bd90b444589ef62837e33c04",
+      "approved_constants": [],
+      "status": "OPEN",
+      "truth_established": false,
+      "search_scope": "NO_REVIEWED_PROOF_MENU_YET;DEFINITION_WELL_FORMED_ONLY"
+    },
+    {
+      "id": "OddAdjointRayComparison",
+      "declaration": "Zeta23.OPICAComposition.OddAdjointRayComparison",
+      "module": "Zeta23.RHRC.OpicaComposition.ResearchTargets",
+      "target_kind": "value",
+      "expected_type_sha256": "36ffdf490af1450c572b41333328f0a59a30ebdb5884280b4797cfdbc72da125",
+      "approved_constants": [],
+      "status": "OPEN",
+      "truth_established": false,
+      "search_scope": "NO_REVIEWED_PROOF_MENU_YET;DEFINITION_WELL_FORMED_ONLY"
+    },
+    {
+      "id": "SharedGroundExclusion",
+      "declaration": "Zeta23.OPICAComposition.SharedGroundExclusion",
+      "module": "Zeta23.RHRC.OpicaComposition.ResearchTargets",
+      "target_kind": "value",
+      "expected_type_sha256": "48c4af81a43e6463392e45fca461e3da014eb6265ab5cb59c1783a0edc75264f",
+      "approved_constants": [],
+      "status": "OPEN",
+      "truth_established": false,
+      "search_scope": "NO_REVIEWED_PROOF_MENU_YET;DEFINITION_WELL_FORMED_ONLY"
+    },
+    {
+      "id": "EventualNoSimultaneousNegativity",
+      "declaration": "Zeta23.OPICAComposition.EventualNoSimultaneousNegativity",
+      "module": "Zeta23.RHRC.OpicaComposition.ResearchTargets",
+      "target_kind": "value",
+      "expected_type_sha256": "c87ce44bc43a5e4ff1635678a092ed5749e8ffbde13aa2e462fd61ad246a5162",
+      "approved_constants": [],
+      "status": "OPEN",
+      "truth_established": false,
+      "search_scope": "NO_REVIEWED_PROOF_MENU_YET;DEFINITION_WELL_FORMED_ONLY"
+    }
+  ],
+  "open_research_targets_module": "Zeta23.RHRC.OpicaComposition.ResearchTargets",
+  "target_registration_grants_proof": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "intermediate": [
+    {
+      "id": "INTEGRATION_CLOSURE",
+      "declaration": "Zeta23.OPICARound4.IntegrationClosureTarget",
+      "module": "Zeta23.OPICARound4.IntegrationTargets",
+      "target_kind": "value",
+      "expected_type_sha256": "42fd225d709921b99ef53dd31813092581f2656666cdbf3139783f4369415533",
+      "approved_constants": [
+        {
+          "declaration": "Zeta23.OPICARound4.eventual_noBothNeg_of_actual_ray_closure",
+          "module": "Zeta23.OPICARound4.ClosureConsumers"
+        },
+        {
+          "declaration": "Zeta23.OPICARound4.no_off_line_zero_of_eventual_noBothNeg",
+          "module": "Zeta23.OPICARound4.ClosureConsumers"
+        }
+      ],
+      "forbidden_gold": [
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_actual_ray_closure",
+        "Zeta23.OPICARound4.frame_contradicts_native_joint_index"
+      ],
+      "role": "NONCALIBRATION_CONDITIONAL_INTERMEDIATE_TARGET",
+      "truth_established": false,
+      "search_scope": "REVIEWED_FINITE_TWO_LINK_MENU;FULL_NATIVE_ACCEPTANCE_REQUIRED"
+    },
+    {
+      "id": "INTEGRATION_SOURCE",
+      "declaration": "Zeta23.OPICARound4.IntegrationSourceBudgetTarget",
+      "module": "Zeta23.OPICARound4.IntegrationTargets",
+      "target_kind": "value",
+      "expected_type_sha256": "5ca1e61d25eed018a8d0e0b2783f48003162a719478b8ac17e10052341e8b274",
+      "approved_constants": [
+        {
+          "declaration": "Zeta23.OPICARound4.SearchSupport.strict_response_of_signed_upper",
+          "module": "Zeta23.OPICARound4.SearchSupport"
+        },
+        {
+          "declaration": "Zeta23.OPICARound4.native_even_complete_signed_budget",
+          "module": "Zeta23.OPICARound4.NativeSourceBudget"
+        }
+      ],
+      "forbidden_gold": [
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_actual_ray_closure",
+        "Zeta23.OPICARound4.frame_contradicts_native_joint_index"
+      ],
+      "role": "NONCALIBRATION_CONDITIONAL_INTERMEDIATE_TARGET",
+      "truth_established": false,
+      "search_scope": "REVIEWED_FINITE_TWO_LINK_MENU;FULL_NATIVE_ACCEPTANCE_REQUIRED"
+    },
+    {
+      "id": "INTEGRATION_INDEX",
+      "declaration": "Zeta23.OPICARound4.IntegrationJointIndexTarget",
+      "module": "Zeta23.OPICARound4.IntegrationTargets",
+      "target_kind": "value",
+      "expected_type_sha256": "14d33fe47571712d874cd7a7e38a28f70f97c700dfa70f343170d224696a8ba8",
+      "approved_constants": [
+        {
+          "declaration": "Zeta23.OPICARound4.frame_strictly_negative_native_plane",
+          "module": "Zeta23.OPICARound4.NativeJointIndex"
+        },
+        {
+          "declaration": "Zeta23.OPICARound4.SearchSupport.index_two_contradicts_cap",
+          "module": "Zeta23.OPICARound4.SearchSupport"
+        }
+      ],
+      "forbidden_gold": [
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_actual_ray_closure",
+        "Zeta23.OPICARound4.frame_contradicts_native_joint_index"
+      ],
+      "role": "NONCALIBRATION_CONDITIONAL_INTERMEDIATE_TARGET",
+      "truth_established": false,
+      "search_scope": "REVIEWED_FINITE_TWO_LINK_MENU;FULL_NATIVE_ACCEPTANCE_REQUIRED"
+    }
+  ]
+}

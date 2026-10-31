@@ -1,6 +1,18 @@
-# OPICA — accepted parent and current follow-up
+# Original OPICA package
+
+For repository-wide navigation as of 28 October 2026, start with the
+[root guide](../../../../README.md), [current state](../../../../docs/CURRENT_STATE.md),
+[project guide](../../../../docs/PROJECT_GUIDE.md) and
+[framework map](../../../../docs/FRAMEWORKS.md).
+This package preserves the original 76-root OPICA acceptance and its parent
+intake history. The follow-up's [Stage22 checkpoint](../opica_followup/continuation/2026-10-22/STAGE22_HANDOVER.md)
+and [100-root ledger](../opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json)
+describe that package's later evidence. Current qualification follows the exact
+source and required gates; a PR merge alone does not qualify another checkout.
 
 <!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+## Preserved parent intake and follow-up navigation — 22 October 2026
+
 The accepted parent is [merged PR #293](https://github.com/HMarcusWH/zeta-23-lean/pull/293),
 commit `d53dd70d38b0762af130b1d19b795af259f505f5`, tree
 `12691099f1a155a8bfa3ad4f6689146175b233b2`. The
@@ -8,7 +20,7 @@ commit `d53dd70d38b0762af130b1d19b795af259f505f5`, tree
 binds the merged tree to tested source and workflow evidence. The parent has
 76 primary roots; its acceptance is separate from the child draft.
 
-For current implementation, use the
+For the follow-up implementation described at this intake, use the
 [OPICA follow-up guide](../opica_followup/continuation/2026-10-22/README.md)
 and [100-root ledger](../opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json).
 Draft PR #294 extends the accepted parent; it has not completed child acceptance.

@@ -1,0 +1,676 @@
+{
+  "schema": "OPICA4_EXACT_CONTROL_REGISTER_V1",
+  "controls": [
+    {
+      "id": "COMMON_SHIFT_ZERO_LEVEL",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "Hermitian_A",
+        "Hermitian_B",
+        "invertible_D",
+        "nonzero_rank_one_intertwining"
+      ],
+      "matrices": {
+        "A": [
+          [
+            "-2"
+          ]
+        ],
+        "B": [
+          [
+            "-1"
+          ]
+        ],
+        "D": [
+          [
+            "1"
+          ]
+        ],
+        "g": [
+          [
+            "1"
+          ]
+        ],
+        "f": [
+          [
+            "1"
+          ]
+        ]
+      },
+      "refuted_inference": "relative source/transport identities establish absolute positivity",
+      "actual_zeta_counterexample": false,
+      "absolute_zero_level": "both negative after common shift4 from positive2,3",
+      "id_digest": "1cd1799ad66f7a2a15196e2fce23dd178f3f4f509511b25c7c4d89873f791b99"
+    },
+    {
+      "id": "NONUNITARY_PSD_RANKONE_FALSE",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "Hermitian_A",
+        "Hermitian_B",
+        "invertible_D",
+        "nonzero_rank_one_intertwining"
+      ],
+      "matrices": {
+        "A": [
+          [
+            "-2",
+            "0"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        "B": [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "2"
+          ]
+        ],
+        "D": [
+          [
+            "1/3",
+            "1/2"
+          ],
+          [
+            "1/4",
+            "1/3"
+          ]
+        ],
+        "g": [
+          [
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "f": [
+          [
+            "1",
+            "1"
+          ]
+        ]
+      },
+      "refuted_inference": "nonunitary intertwining is a Hermitian positive rank-one update",
+      "actual_zeta_counterexample": false,
+      "negative_indices": {
+        "A": 2,
+        "B": 0
+      },
+      "id_digest": "4e2b9cf926c8d7dbe488a95a2f104d7d86863a56d1f73b036f995080406a0b16"
+    },
+    {
+      "id": "SHARED_INVISIBLE_NEGATIVE_GROUND",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "Hermitian_A",
+        "Hermitian_B",
+        "invertible_D",
+        "nonzero_rank_one_intertwining"
+      ],
+      "matrices": {
+        "A": [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "2"
+          ]
+        ],
+        "B": [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "3"
+          ]
+        ],
+        "D": [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "g": [
+          [
+            "0"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "f": [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "refuted_inference": "rank-one transfer forces spectra disjoint or source sees every ground",
+      "actual_zeta_counterexample": false,
+      "own_predecessors": {
+        "A": "2>0",
+        "B": "3>0"
+      },
+      "common_negative_ground": "-1",
+      "id_digest": "b3ddbecaa948ca2c041ef350267d9a7fb3c92c5b4351b34c5f25216c25fa39c8"
+    },
+    {
+      "id": "EQUAL_CUTOFF_UNEQUAL_GROUNDS",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "Hermitian_A",
+        "Hermitian_B",
+        "invertible_D",
+        "nonzero_rank_one_intertwining"
+      ],
+      "matrices": {
+        "A": [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "B": [
+          [
+            "-2",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "D": [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "g": [
+          [
+            "1"
+          ],
+          [
+            "0"
+          ]
+        ],
+        "f": [
+          [
+            "-1",
+            "0"
+          ]
+        ]
+      },
+      "refuted_inference": "equal first cutoff indices force equal eigenvalues",
+      "actual_zeta_counterexample": false,
+      "same_birth_dimension": 2,
+      "grounds": [
+        "-1",
+        "-2"
+      ],
+      "id_digest": "df61b61216761265b06340b6a9adca257de859023933737d08910f7247fe2bee"
+    },
+    {
+      "id": "ENDPOINT_ZERO_MASKS_NEGATIVE",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "Hermitian_A",
+        "Hermitian_B",
+        "invertible_D",
+        "nonzero_rank_one_intertwining"
+      ],
+      "matrices": {
+        "A": [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "B": [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "2"
+          ]
+        ],
+        "D": [
+          [
+            "1/2",
+            "1"
+          ],
+          [
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "g": [
+          [
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "f": [
+          [
+            "1",
+            "1"
+          ]
+        ]
+      },
+      "refuted_inference": "endpoint response alone excludes negative zero-mode configurations",
+      "actual_zeta_counterexample": false,
+      "response_at_zero": "1",
+      "response_at_minus_half": "16/15",
+      "id_digest": "66f1719e86f3ce2094835a84d1184c7e143f429518c1aaead574a03e3917d5c4"
+    },
+    {
+      "id": "ABSOLUTE_SIGNED_BOUND_FALSE",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "Hermitian_A",
+        "Hermitian_B",
+        "invertible_D",
+        "nonzero_rank_one_intertwining"
+      ],
+      "matrices": {
+        "A": [
+          [
+            "2"
+          ]
+        ],
+        "B": [
+          [
+            "1"
+          ]
+        ],
+        "D": [
+          [
+            "1"
+          ]
+        ],
+        "g": [
+          [
+            "1"
+          ]
+        ],
+        "f": [
+          [
+            "-1"
+          ]
+        ]
+      },
+      "refuted_inference": "one-sided signed upper bound also bounds absolute response",
+      "actual_zeta_counterexample": false,
+      "id_digest": "0921570406eb9e24cc464402e6a4787c9c7aa815c57d782d4e1c14275cc89e79"
+    },
+    {
+      "id": "SINGULAR_PREDECESSOR_RANGE",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "PSD_predecessor",
+        "Hermitian_successor",
+        "one_shell"
+      ],
+      "matrix": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "range_compatible": false,
+      "refuted_inference": "pseudoinverse regular formula without kernel compatibility",
+      "actual_zeta_counterexample": false,
+      "id_digest": "4cd0996a8295c15b297d9a7d03008ab37f2211a53db6ff4c53de9886d5af8bc5"
+    },
+    {
+      "id": "NONUNIT_RESONANT_COST",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "unit_shell",
+        "nonzero_kernel_coupling",
+        "energy_minus_one"
+      ],
+      "kernel_coupling": "1/100",
+      "witness_norm_sq": "2501",
+      "normalized_energy": "-1/2501",
+      "refuted_inference": "energy minus1 is unit-vector spectral depth minus1",
+      "actual_zeta_counterexample": false,
+      "id_digest": "bf018dc33e4145600fe033a8ebdb02a4ffafce7ba93971c316d63bc9c8b207de"
+    },
+    {
+      "id": "STRONG_LIMIT_NONZERO",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "positive_Gram",
+        "optimal_residual",
+        "strong_convergence"
+      ],
+      "target": [
+        "0",
+        "1"
+      ],
+      "dictionary_span": [
+        "1",
+        "0"
+      ],
+      "all_optimal_residuals": [
+        "0",
+        "1"
+      ],
+      "residual_norm_sq": "1",
+      "refuted_inference": "strong optimal residual convergence implies zero",
+      "actual_zeta_counterexample": false,
+      "id_digest": "598ccb3b4ebd4ce383bd1a62dafc79472dd0b8f3d12bff0d9f3091406f8b8274"
+    },
+    {
+      "id": "VARYING_TEST_COST",
+      "status": "DERIVED_SEQUENCE_CONTROL",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "pointwise_error_tends_zero"
+      ],
+      "error": "1/n",
+      "test_norm": "n",
+      "paired_error": "1",
+      "asymptotic_authority": "DERIVED_FROM_EXACT_FORMULA_NOT_A_FINITE_LIMIT_CERTIFICATE",
+      "refuted_inference": "fixed-test estimate applies uniformly to uncontrolled moving tests",
+      "actual_zeta_counterexample": false,
+      "id_digest": "6744e389234d5b8b5fa7025b73329253d9f1e2998957f32fa52174190c6b384f"
+    },
+    {
+      "id": "UNRELATED_GRAM_WEIL",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "same_vector_space",
+        "positive_Gram"
+      ],
+      "Gram": [
+        [
+          "1"
+        ]
+      ],
+      "Weil": [
+        [
+          "-1"
+        ]
+      ],
+      "refuted_inference": "matching source-free names identify different quadratic forms",
+      "actual_zeta_counterexample": false,
+      "id_digest": "37acacb0577f4a42a2a2b0e707c918da66d28a4444a1393b38bac18b092e244c"
+    },
+    {
+      "id": "RANKONE_FIVE_NEGATIVE_PICK_SQUARES",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "positive_A",
+        "positive_B",
+        "invertible_D",
+        "rank_one_intertwining"
+      ],
+      "dimension": 5,
+      "A": "diag(1,...,5)+ones*ones.transpose",
+      "B": "diag(1,...,5)",
+      "D": "I",
+      "g": "ones",
+      "f": "-ones.transpose",
+      "grouped_residues": [
+        "-1",
+        "-1",
+        "-1",
+        "-1",
+        "-1"
+      ],
+      "cauchy_points": "k+i for k=1,...,5",
+      "evaluation_determinant": "1296*I/53125",
+      "pick_kernel": "-V*V.adjoint",
+      "negative_squares": 5,
+      "family": "Same algebra for every finite d>=1; exact executable certificate is d=5 only",
+      "refuted_inference": "rank-one defect bounds Pick negative squares by one",
+      "actual_zeta_counterexample": false,
+      "id_digest": "f3ee9bcb15b02e3b82faa43ad1fb9b315c9fba3c695fce78248097ae5197907a"
+    },
+    {
+      "id": "GROUPED_REAL_COORDINATES_COMPLEX",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "Hermitian_A",
+        "Hermitian_B",
+        "invertible_D",
+        "rank_one_intertwining",
+        "orthogonal_eigenprojections"
+      ],
+      "A": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "2"
+        ]
+      ],
+      "B": "2I",
+      "D": [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "coordinate_residues": [
+        "1/2 - I/2",
+        "1/2 + I/2"
+      ],
+      "grouped_residue": "1",
+      "refuted_inference": "grouped residue reality gives individual eigenbasis coefficient reality",
+      "actual_zeta_counterexample": false,
+      "id_digest": "93aa5912f945e145660dd71c9a91da43d7e308981952ac716a59f8e95ab42050"
+    },
+    {
+      "id": "CONCENTRATION_OVERLAP_MULTIPLICITY",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "actual_sine_atom_formula",
+        "constant_fourier_mode"
+      ],
+      "omega": "3/4",
+      "source_quadratic": "3/2",
+      "carrier_quadratic": "3/2",
+      "source_square_quadratic_lower_bound": "9/4",
+      "native_zeta_source": false,
+      "refuted_inference": "S^2<=C or source norm<=1 on the full source interval",
+      "actual_zeta_counterexample": false,
+      "id_digest": "3ad325b789fcb70342404a0af7a3242842ab6f2c8e4241d0237e328775139a4a"
+    },
+    {
+      "id": "HERGLOTZ_INVISIBLE_NEGATIVE_GROUND",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "Hermitian_B",
+        "positive_observation_measure",
+        "positive_rank_one_update"
+      ],
+      "B": [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "positive_update": "diag(-1,2)",
+      "observation_vector": [
+        "0",
+        "1"
+      ],
+      "positive_measure": "delta_1",
+      "scalar_response": "1/(1-z)",
+      "shared_invisible_ground": "-1",
+      "observation_is_native_corrected_source": false,
+      "refuted_inference": "positive transfer data sees or excludes every negative ground",
+      "actual_zeta_counterexample": false,
+      "id_digest": "609f937ab6c26561b7adf3fbf1978b940a5a3570a69700a74587a17ee1721e8c"
+    },
+    {
+      "id": "REGULAR_INTERIOR_DEGENERATE_FIRST_CONTACT",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "matrix": "diag(-t,-2t)",
+      "negative_interval": "t>0; distinct simple eigenvalues",
+      "first_contact": "t=0; double zero",
+      "high_order_scalar": "-t^7; first six derivatives zero at0",
+      "refuted_inference": "regular negative interior or nonnegative first derivative makes first contact safe",
+      "actual_zeta_counterexample": false,
+      "id_digest": "b15eaeeead3b05964f04e067a77be07065fb72253f0fa96159aeda5324fb659a"
+    },
+    {
+      "id": "GLOBAL_FINITE_RESOLVENT_POLE",
+      "status": "DERIVED_SEQUENCE_CONTROL",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "scalar": "1/(1-z)",
+      "points": "1+i/n",
+      "absolute_value": "n for all integers n>=1",
+      "grouped_residue": "1",
+      "asymptotic_authority": "EXACT_SEQUENCE_FORMULA_NOT_FINITE_SWEEP",
+      "refuted_inference": "nonzero finite residues admit a bounded scalar on the entire resolvent set",
+      "actual_zeta_counterexample": false,
+      "id_digest": "43b5494275d2167fd3cc332a415949a96511ef023815a416d620bc18f34176d9"
+    },
+    {
+      "id": "ODD_RECIPROCAL_INPUT_DISTINCT",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "Hermitian_A",
+        "Hermitian_B",
+        "invertible_D",
+        "rank_one_intertwining"
+      ],
+      "A": "2",
+      "B": "4",
+      "D": "1",
+      "g": "1",
+      "f": "2",
+      "lambda": "-1",
+      "riesz_input": "2/3",
+      "reciprocal_input": "1/3",
+      "odd_response": "-2/3",
+      "wrong_riesz_response": "-4/3",
+      "reciprocal_determinant_ratio": "5/3",
+      "refuted_inference": "odd response equals minus corrected source on the Riesz input",
+      "actual_zeta_counterexample": false,
+      "id_digest": "ce10f65b597674c32d8cd2b3f87da70df166798b65c84a831b8ce26fd4db9fba"
+    },
+    {
+      "id": "INSTANTANEOUS_KERNEL_NOT_INVARIANT",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "T": "swap",
+      "O": "first coordinate",
+      "u": [
+        "0",
+        "1"
+      ],
+      "preserved_premises": [
+        "Hermitian_T",
+        "O_u_zero"
+      ],
+      "next_observation": "1",
+      "u_is_eigenmode": false,
+      "refuted_inference": "every vector annihilated by O remains unseen under T",
+      "actual_zeta_counterexample": false,
+      "id_digest": "b82008716eaf0e96b32b9e7b0a8efd88abc450580e40837ba51a6d7577c75c62"
+    },
+    {
+      "id": "POSITIVE_MEASURE_NEGATIVE_SUPPORT",
+      "status": "COUNTERMODEL_VERIFIED",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "positive_spectral_measure",
+        "visible_negative_mode"
+      ],
+      "measure": "delta_minus1+delta_plus1",
+      "negative_atom_mass": "1",
+      "refuted_inference": "positive spectral measure implies nonnegative spectral support",
+      "actual_zeta_counterexample": false,
+      "id_digest": "4c45f9c24f3982b669de9bdec2110cffb5acf1d922b0eb830222bb0b47e7677d"
+    },
+    {
+      "id": "INTEGER_VALUES_MISS_DIAGONAL_JET",
+      "status": "DERIVED_SEQUENCE_CONTROL",
+      "source_kind": "SYNTHETIC_CONTROL",
+      "preserved_premises": [
+        "same_all_integer_node_values"
+      ],
+      "potentials": [
+        "0",
+        "sin(pi*x)"
+      ],
+      "integer_values": "0",
+      "derivative_at_zero": [
+        "0",
+        "pi"
+      ],
+      "asymptotic_authority": "EXACT_SYMBOLIC_IDENTITY_NOT_NUMERICAL_SWEEP",
+      "refuted_inference": "integer potential values determine diagonal divided differences",
+      "actual_zeta_counterexample": false,
+      "id_digest": "21c274e4c773ab08f7799ca1f17e0cde3ecfa3f9ed33fe7ef095d1a62871da74"
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

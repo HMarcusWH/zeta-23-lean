@@ -1,0 +1,327 @@
+{
+  "schema": "OPICA4_INPUT_REGISTER_V1",
+  "parent_commit": "fe16565b2a31fb8b68bef916ae8f04d535880e7a",
+  "parent_tree": "5442650eb749576e4a82e2d57460a4b97e19b5a9",
+  "frozen_atlas": {
+    "path": "research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS.jsonl",
+    "sha256": "c0becd027e18be98c29647b85e0d18aeb0748a66c2c6ab6690a4940b2945150e",
+    "declarations": 462,
+    "memberships": 696,
+    "mandatory_memberships": 221,
+    "historical_contacts": 185,
+    "source_only_census": 1744,
+    "source_only_semantically_admitted": false
+  },
+  "provider": {
+    "schema": "OPICA_PERMANSSON_SELECTED_EXPORTS_V1",
+    "repository": "HMarcusWH/PermanssonLean",
+    "commit": "17c315f7df7abf457eb94d393bd526d46da6f6f4",
+    "toolchain": "leanprover/lean4:v4.34.0",
+    "module": "PermanssonResearch.ReverseSolver.ComputableFiniteMonitor",
+    "source_path": "PermanssonResearch/ReverseSolver/ComputableFiniteMonitor.lean",
+    "source_sha256": "7b35a2d55c351350898f89860f4921964f2b0af655840df5f564b5ec1da328a3",
+    "lake_manifest_sha256": "974d255f7eced6a5f90a046ce6e5cdd5a49e86463caaca2453a6e40d9b26ea9a",
+    "template": "ProviderAudit.lean.in",
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "mode": "POLICY_ADAPTER_ONLY",
+    "model_optimality": "NOT_ESTABLISHED",
+    "apis": [
+      {
+        "declaration": "PermanssonResearch.ReverseSolver.FiniteMonitor.computedValue_eq_value",
+        "consumer": "OPICAProviderAudit.value_eq_spec_consumer"
+      },
+      {
+        "declaration": "PermanssonResearch.ReverseSolver.FiniteMonitor.leastMaximizingControl_spec",
+        "consumer": "OPICAProviderAudit.least_choice_consumer"
+      },
+      {
+        "declaration": "PermanssonResearch.ReverseSolver.FiniteMonitor.computedMaximizer_attains",
+        "consumer": "OPICAProviderAudit.maximizer_attains_consumer"
+      }
+    ]
+  },
+  "reference_authority": "Reference specifications are inputs; only user request authorizes the build.",
+  "kit_sha256": "e5c3c2808b929d0bb2120b806a278ca5c43fa7a64958f41707022c220660f11a",
+  "corrected_prepared_overlay_sha256": "b3f76bd992eb3087a0bd64773360dbf1b7b9912ff0a1aa3dad80277b892a46ea",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "research_integration": {
+    "schema": "OPICA4_RESEARCH_INPUTS_V1",
+    "inputs": [
+      {
+        "path": "C:\\Users\\macka\\Downloads\\arXiv-2607.02828v3.tar.gz",
+        "exists": true,
+        "bytes": 122313,
+        "sha256": "f741dbad271ba6d8e4970178666e10c9ad7bca1dea82efb42b48d3499f860857",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "paper-audit.md"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\Downloads\\arXiv-2605.20224v4.tar.gz",
+        "exists": true,
+        "bytes": 279941,
+        "sha256": "f35d5cb5101ff448ea6d1363142f01838d0f7b08b09f2c900fbffeba2640c23a",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "paper-audit.md"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\Downloads\\connes-cvs--main (2).zip",
+        "exists": true,
+        "bytes": 4798835,
+        "sha256": "770bc75fb4cc3f908ae48d89fdd4fbe132ea4a0aa7cdf83f623b8d09f9346199",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "connes-audit.md",
+          "connes-evidence.json"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\Downloads\\_RH_Step_4_Targeted_mathematical_investigation.pdf",
+        "exists": true,
+        "bytes": 446587,
+        "sha256": "e4258d642ec85405ecda6c5828d32ff740201f95fe047647c5bfad3aa0c4727e",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "survey-audit.md"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\Downloads\\Last_search_Since_you_know_what_problem_we_are_tr.pdf",
+        "exists": true,
+        "bytes": 499526,
+        "sha256": "9f4c329e1c284671bb4888cc52ff8215fe3810f70c96bff8fc91822d08877bcf",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "survey-audit.md"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\OneDrive\\Skrivbord\\1210.6005v1.pdf",
+        "exists": true,
+        "bytes": 254250,
+        "sha256": "04d45597fe021134890974da612a77f30bad80a7255476832a2ab88100adf5e9",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "paper-audit.md"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\Downloads\\paper_90602721d7b95f17bde55536c66d66d9.pdf",
+        "exists": true,
+        "bytes": 393810,
+        "sha256": "ec3ef74eac5d3b2dfd77cc2d39267ab9b995d70436becfb488024fe479abb8b3",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "paper-audit.md"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\Downloads\\OPICA_Round4_Adjacent_Method_PostSearch_Audit.md",
+        "exists": true,
+        "bytes": 15030,
+        "sha256": "15b762d8ba0ce5c739d4d1649ab0e9867546489c2006c55bee7fcb99f5fff320",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "RESEARCH_REVIEW.html",
+          "DECISIONS.json"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\Downloads\\_RH_literature_review_an_independent_arithmetic_.pdf",
+        "exists": true,
+        "bytes": 435011,
+        "sha256": "535ad8c61da3ce6d2cac9ba25c719a26f020eabe6aaa6e65e063a0f7c6832432",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "survey-audit.md"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\Downloads\\# RH literature review an independent arithmetic obstruction__OBJECTIVE__Review mathematics (foundational work–Oct 2026) for theorem-level tools to close OPICA’s missing RH step. Which INDEPENDENT unconditional ari.csv",
+        "exists": true,
+        "bytes": 43876,
+        "sha256": "d9ab07904c6e7f28fcd0508efc4ad5be68ed27e58814322a002d9b34b6988026",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "survey-audit.md"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\Downloads\\# RH literature review an independent arithmetic obstruction__OBJECTIVE__Review mathematics (foundational work–Oct 2026) for theorem-level tools to close OPICA’s missing RH step. Which INDEPENDENT unconditional ari.ris",
+        "exists": true,
+        "bytes": 9414,
+        "sha256": "3168acfe6da99a1c234b7104ebad599518ab2aaa5b9c411a75af651b417cde6a",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "survey-audit.md"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\Downloads\\# RH Step 4 — Targeted mathematical investigation Loewner rigidity, spectral contacts and adaptive arithmetic cancellation__FOLLOW-UP to our previous Consensus review of 100 papers.__Do NOT repeat the broad RH lite.csv",
+        "exists": true,
+        "bytes": 32345,
+        "sha256": "31d1afe5f5d488734c383bf9758bf2fdbf4147c705b36333a3477c0e390dcb9c",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "survey-audit.md"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\Downloads\\Last search. Since you know what problem we are trying to solve and with what math, please review all research with a similar problem shape and if someone solved the problem in an adjacent field.__(We are doing a t.csv",
+        "exists": true,
+        "bytes": 74392,
+        "sha256": "5dc8077047d180028d10605de2cdc1112b90341372b7ce7cd6aa545622d7ccb5",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "survey-audit.md"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\attachments\\23610ed2-6d1c-4019-89b3-8c9391f7156a\\Pasted text.txt",
+        "exists": true,
+        "bytes": 9655,
+        "sha256": "0bec46503493475c170d2b36a6ae05bd5d4f670534438166d4d60e6dc39c597b",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "RESEARCH_REVIEW.html",
+          "DECISIONS.json"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\attachments\\5cee0ca8-1d2f-40d3-aa23-0865db6dcf86\\Pasted text.txt",
+        "exists": true,
+        "bytes": 13789,
+        "sha256": "958ccc02037b4a5ea812e98f029ceb659b283148c5136adbed0f758fa1916f93",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "RESEARCH_REVIEW.html",
+          "DECISIONS.json"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\attachments\\65d29bdc-a078-41ec-a6f0-ac9eb76184cf\\Pasted text.txt",
+        "exists": true,
+        "bytes": 10031,
+        "sha256": "88cf0ecf29735673e1de736a2ad59af43d8f3955873579442665ff117cb40d8b",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "RESEARCH_REVIEW.html",
+          "DECISIONS.json"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\attachments\\6fffa2ab-3dd6-49aa-9d77-bec04652c63d\\Pasted text.txt",
+        "exists": true,
+        "bytes": 12337,
+        "sha256": "27da6d1c76ba34872763f3cc7cb9665b27b232f373850a93b971cae743b413bf",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "RESEARCH_REVIEW.html",
+          "DECISIONS.json"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\attachments\\fddcc4bb-9564-4afa-9982-49b58051ccd8\\Pasted text.txt",
+        "exists": true,
+        "bytes": 12527,
+        "sha256": "b95e7734457edd559b44048ea5aaa0758801181650f1e199b457da177a4be54e",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS",
+        "review_evidence": [
+          "RESEARCH_REVIEW.html",
+          "DECISIONS.json"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\attachments\\18918575-a882-434b-a454-19984ee9d694\\Pasted text.txt",
+        "exists": true,
+        "bytes": 31827,
+        "sha256": "f6c3f02d6eb10e9c7147088dfe196efea11ed7afa057d27e7c64019aa896029c",
+        "review_status": "READ_AND_AUDITED_AS_REFERENCE",
+        "authority": "PROPOSED_CHECKLIST_NOT_ASSUMED_CORRECT_OR_COMPLETE",
+        "review_evidence": [
+          "RESEARCH_REVIEW.html",
+          "DECISIONS.json"
+        ],
+        "full_external_bibliography_verified": false
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\attachments\\448f98c7-5749-46c1-8f0e-5a70b6ed8571\\Pasted text.txt",
+        "bytes": 30398,
+        "sha256": "4b885e40947f49d14750c8a168220152a851dc84884739b27d37b7b8695dc41e",
+        "review_status": "READ_AND_CHECKED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS"
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\attachments\\7965d504-6bde-464e-b3f6-68c042741e8d\\Pasted text.txt",
+        "bytes": 7144,
+        "sha256": "365f3748f90cc5f11a1825388d563c3ab72b2d3d6b19d802bc52dd6f2d902834",
+        "review_status": "READ_AND_CHECKED_AS_REFERENCE",
+        "authority": "REFERENCE_NOT_EXECUTABLE_INSTRUCTIONS"
+      }
+    ],
+    "review_files_sha256": {
+      "RESEARCH_REVIEW.html": "7c95b8ce9cd6b1be51b908b0efc18ebab9115f9859aec486279178b0558a621c",
+      "DECISIONS.json": "886ee1e4836f34de1b50a1638576c07a09edeaf45c689ab5f47c90ed7c5b07b9",
+      "INPUT_INVENTORY.json": "afffef3b88e837cee67a12a547f6ee9f8b8afb978cb404ea4be45a4ddd466fa5",
+      "EXTRACTION_INDEX.json": "c8cb715e823d4cc18277355c94ac3ae990a18e48327db38bd0cdf356cb8406ba",
+      "EXACT_RESEARCH_CONTROLS.json": "620d753b8f46a9a8f6cc4ea026eb8e5aee05fedf93ff0d6bfc3d618bd828e8a0",
+      "CI_SNAPSHOT.json": "12975793f8d45bf5d2030a92924c9ee0853f9acec08f27697e419df655d2e5f6",
+      "connes-audit.md": "2821ccc34ed01a3c3227196799f075ec89af9c67353e7938a4aad92ebbb69473",
+      "connes-evidence.json": "b747db471ef7a4b95755bc9f6cd8261e6d111c38d18e9e05552f7e932b5775dd",
+      "paper-audit.md": "12c08b15e717bd275aeb47b4f4ffd0a1b3c99a11c16cc9cc04eb4dad12b0e788",
+      "survey-audit.md": "dec1a0eaf8e9e80cd1c3da762854095c756f2029832022c33382366092c9699e"
+    },
+    "external_repository": {
+      "url": "https://github.com/akivag613/connes-cvs-",
+      "commit": "7e646d78bc480bcfeb3947bdc849c4d744cf7080",
+      "authority": "REFERENCE_ONLY_NO_LEAN_AUTHORITY"
+    },
+    "external_bibliography_fully_verified": false,
+    "silva_primary_text_status": "UNRETRIEVED_UNVERIFIED",
+    "review_boundary": "Supplied19 research inputs plus2 subsequent proposals. Survey bibliography is discovery material; only checked primary statements and source-native proofs inform implemented claims."
+  }
+}

@@ -1,3 +1,24 @@
+# Manual map: original OPICA follow-up scope
+
+For the whole current programme, read the [README](../../../README.md),
+[dated Round 4 snapshot](../../../docs/CURRENT_STATE.md),
+[project guide](../../../docs/PROJECT_GUIDE.md) and
+[repository/graph map](../../../docs/REPOSITORY_MAP.md).
+
+This file preserves a manual diagram for the original 100-root / 28-unit
+follow-up package. Use its [continuation guide](../integration/opica_followup/continuation/2026-10-22/README.md),
+[Stage 22 handover](../integration/opica_followup/continuation/2026-10-22/STAGE22_HANDOVER.md)
+and [root ledger](../integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json)
+for that scoped checkpoint. Historical/narrow receipts are not full-release acceptance.
+The old PR #294 routing below belongs to its date. Its arrows organize work;
+they are not compiler dependencies or mathematical implications. RH and Step 4 remain OPEN.
+
+<details>
+<summary>Preserved historical account and checkpoint wording</summary>
+
+The dates, counts, active-PR labels and next steps below belong to their original checkpoints.
+Use the dated navigation above for the repository-wide reading path.
+
 # OPICA follow-up: agent navigation and current scope
 
 This is a **manual navigation view**, dated 22 October 2026, for
@@ -78,3 +99,6 @@ generated registry/graph records to insert local results, and do not infer
 current compiler dependencies from this page's arrows or module imports.
 An exact current-head receipt and the full claim gates are required for any
 future aggregate or registration change. Frozen inputs and contracts remain unchanged.
+
+
+</details>

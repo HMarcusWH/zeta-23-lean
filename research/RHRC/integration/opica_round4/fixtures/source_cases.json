@@ -1,0 +1,11 @@
+{
+  "schema": "OPICA4_FINITE_SOURCE_CASES_V1",
+  "cases": [
+    {"id":"K4_Q3_FIVE_FOURTHS","K":4,"Q":3,"aperture":{"kind":"rational","value":"5/4"},"source":{"kind":"VON_MANGOLDT","prime2_multiplier":"1"},"entering_atom":null},
+    {"id":"K5_Q5_SEVEN_FOURTHS","K":5,"Q":5,"aperture":{"kind":"rational","value":"7/4"},"source":{"kind":"VON_MANGOLDT","prime2_multiplier":"1"},"entering_atom":null},
+    {"id":"K5_LOG4_SEAM","K":5,"Q":4,"aperture":{"kind":"log_integer","n":4},"source":{"kind":"VON_MANGOLDT","prime2_multiplier":"1"},"entering_atom":null},
+    {"id":"K5_Q4_MODIFIED_Q2_HALF","K":5,"Q":4,"aperture":{"kind":"rational","value":"3/2"},"source":{"kind":"MODIFIED_Q2_NOT_ZETA","prime2_multiplier":"1/2"},"entering_atom":null},
+    {"id":"K4_Q2_ENTERING_Q2","K":4,"Q":2,"aperture":{"kind":"scaled_log_integer","n":2,"scale":"10/9"},"source":{"kind":"VON_MANGOLDT","prime2_multiplier":"1"},"entering_atom":2},
+    {"id":"K4_Q4_ENTERING_Q4","K":4,"Q":4,"aperture":{"kind":"scaled_log_integer","n":4,"scale":"10/9"},"source":{"kind":"VON_MANGOLDT","prime2_multiplier":"1"},"entering_atom":4}
+  ]
+}

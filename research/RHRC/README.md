@@ -1,4 +1,23 @@
-# RHRC — current agent entry point
+# RHRC research programme
+
+**RH and Step 4 remain OPEN.** The repository-wide reading path is the
+[README](../../README.md), [project guide](../../docs/PROJECT_GUIDE.md),
+[dated current snapshot](../../docs/CURRENT_STATE.md) and
+[repository/graph map](../../docs/REPOSITORY_MAP.md).
+For exact proof scope use live source, compiler receipts and all workflow results.
+
+Start with the [integration packages](integration/README.md),
+[Round 4 handover](integration/opica_round4/INTEGRATION_HANDOVER.md),
+[closure obligations](integration/opica_round4/CLOSURE_OBLIGATIONS.json),
+[countermodels](countermodels/README.md) and
+[documentation authority policy](DOCUMENTATION_AUTHORITY.md).
+The historical account below preserves the route and control history;
+old “current” headings do not route the active Round 4 branch.
+
+<details>
+<summary>Historical Control-v2 snapshot: frozen PR #287 scope</summary>
+
+This preserved machine block is a historical receipt, not current PR routing.
 
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
@@ -52,6 +71,18 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+</details>
+
+<details>
+<summary>Preserved historical account and checkpoint wording</summary>
+
+The dates, counts, active-PR labels and next steps below belong to their original checkpoints.
+Use the dated navigation above for the repository-wide reading path.
+
+# RHRC — current agent entry point
+
+
 
 <!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
 **RH, Step 4 and the independent closing inequalities remain OPEN.**
@@ -549,3 +580,6 @@ independent mathematical review have separate authority.
 Round 2 now contains all forty mandatory mathematical families, their independent consumers, and source-faithful numerical tools. The inventory contains 143 clauses: 125 required clauses and 18 clauses in six disabled optional families. Individual native proof checks do not establish full release acceptance.
 
 See [the implementation guide](integration/opica_round2/README.md), [source register](integration/opica_round2/SOURCE_REGISTER.json), [clause/control crosswalk](integration/opica_round2/PAPER_CROSSWALK.json) and [research ledger](integration/opica_round2/POST_GREEN_RESEARCH.md). Original claim objects, the original 76/100 contracts, and all existing OPEN caps are preserved. New supporting claim registrations retain every antecedent in their exact Lean types. The four independent terminal targets remain OPEN in the Round 2 research register and have no invented theorem bindings.
+
+
+</details>

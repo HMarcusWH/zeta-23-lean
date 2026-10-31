@@ -1,0 +1,581 @@
+name: OPICA Round4 governed deduction and independent source gates
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: opica-round4-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+env:
+  PYTHONUTF8: '1'
+  PYTHONDONTWRITEBYTECODE: '1'
+  LEAN_NUM_THREADS: '2'
+jobs:
+  lanes:
+    name: Round4 / ${{ matrix.lane }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          - {lane: CONTRACT, native: false, provider: false}
+          - {lane: PARENT_REGRESSION, native: false, provider: false}
+          - {lane: CURRENT_COMPATIBILITY, native: true, provider: false}
+          - {lane: COMPOSITION_FORMAL, native: true, provider: false}
+          - {lane: SEMANTIC_NEGATIVES, native: true, provider: false}
+          - {lane: FRAMEWORK_ADAPTERS, native: false, provider: false}
+          - {lane: PROVIDER_SELECTED, native: false, provider: true}
+          - {lane: REPLAY_CAMPAIGN, native: true, provider: false}
+          - {lane: GENERATED_STATE, native: true, provider: false}
+          - {lane: MATHEMATICAL_SUPPORT, native: true, provider: false}
+          - {lane: SOURCE_NUMERICS, native: false, provider: false}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          path: host
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: 3.13.5
+      - uses: ./host/.github/actions/opica4-runtime
+        id: runtime
+        with:
+          native: ${{ matrix.native }}
+          provider: ${{ matrix.provider }}
+      - name: Execute exact source-bound lane in a bounded cgroup
+        id: lane
+        working-directory: host
+        shell: bash
+        env:
+          LANE: ${{ matrix.lane }}
+        run: |
+          set -euo pipefail
+          sudo systemd-run --wait --pipe --collect --unit="opica4-$LANE-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
+            --uid="$(id -u)" --gid="$(id -g)" \
+            -p MemoryMax=4294967296 -p MemorySwapMax=0 -p TasksMax=64 -p CPUQuota=200% \
+            -p "WorkingDirectory=$PWD" /usr/bin/env \
+            "PATH=$PATH" "HOME=$HOME" PYTHONUTF8=1 PYTHONDONTWRITEBYTECODE=1 LEAN_NUM_THREADS=2 \
+            "OPICA_NATIVE_OUTPUT=$OPICA_NATIVE_OUTPUT" "OPICA_NATIVE_CONFIG=$OPICA_NATIVE_CONFIG" \
+            python -B -m research.RHRC.integration.opica_composition.cli lane \
+            --lane "$LANE" --output "$RUNNER_TEMP/opica4-lanes/$LANE" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" --provider-root "$GITHUB_WORKSPACE/provider"
+      - name: Seal directory-preserving evidence transport
+        id: transport
+        working-directory: host
+        shell: bash
+        env:
+          LANE: ${{ matrix.lane }}
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/opica4-transports"
+          python -B -m research.RHRC.integration.opica_composition.cli transport-pack \
+            --lane "$LANE" --input "$RUNNER_TEMP/opica4-lanes/$LANE" \
+            --output "$RUNNER_TEMP/opica4-transports/$LANE" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --requested-commit "$REQUESTED_COMMIT" --requested-tree "$(git rev-parse "$REQUESTED_COMMIT^{tree}")"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ success() && steps.lane.outcome == 'success' && steps.transport.outcome == 'success' }}
+        with:
+          name: opica4-${{ github.run_id }}-${{ github.run_attempt }}-lane-${{ matrix.lane }}
+          path: |
+            ${{ runner.temp }}/opica4-transports/${{ matrix.lane }}/bundle.zip
+            ${{ runner.temp }}/opica4-transports/${{ matrix.lane }}/transport.json
+          compression-level: 0
+          if-no-files-found: error
+      - name: Record lane diagnostic disposition
+        if: ${{ always() }}
+        continue-on-error: true
+        shell: bash
+        env:
+          LANE: ${{ matrix.lane }}
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          STEPS_JSON: ${{ toJSON(steps) }}
+        run: |
+          python3 -B - <<'PY'
+          import json, os, pathlib, subprocess
+          output = pathlib.Path(os.environ['RUNNER_TEMP']) / 'opica4-diagnostics' / os.environ['LANE']
+          output.mkdir(parents=True, exist_ok=True)
+          host = pathlib.Path(os.environ['GITHUB_WORKSPACE']) / 'host'
+          def checked(revision):
+              result = subprocess.run(['git', '-C', str(host), 'rev-parse', revision], capture_output=True, text=True)
+              return result.stdout.strip() if result.returncode == 0 else None
+          report = {'schema': 'OPICA_CI_DIAGNOSTICS_V1', 'authority': 'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE',
+                    'lane': os.environ['LANE'], 'run_id': os.environ['GITHUB_RUN_ID'],
+                    'attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'requested_commit': os.environ['REQUESTED_COMMIT'],
+                    'checked_commit': checked('HEAD'), 'checked_tree': checked('HEAD^{tree}'),
+                    'steps': json.loads(os.environ['STEPS_JSON'])}
+          (output / 'disposition.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Preserve optional lane bootstrap diagnostics
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        continue-on-error: true
+        with:
+          name: opica4-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.lane }}
+          path: |
+            ${{ runner.temp }}/opica4-diagnostics/${{ matrix.lane }}
+            ${{ runner.temp }}/opica4-native/bootstrap
+            ${{ runner.temp }}/opica4-source-before.json
+            ${{ runner.temp }}/opica4-lanes/${{ matrix.lane }}/failure-diagnostics
+          if-no-files-found: warn
+  independent:
+    name: Round4 / INDEPENDENT_${{ matrix.group }}
+    needs: lanes
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - {group: CORE, provider: false}
+          - {group: AUXILIARY, provider: true}
+          - {group: CANONICAL, provider: false}
+    steps:
+      - name: Record independent group deadline with diagnostic upload margin
+        shell: bash
+        run: |
+          set -euo pipefail
+          job_deadline=$(( $(date +%s) + (360 - 15) * 60 ))
+          printf '%s\n' "OPICA_INDEPENDENT_DEADLINE=$job_deadline" >> "$GITHUB_ENV"
+      - name: Record upstream matrix disposition
+        if: ${{ always() }}
+        continue-on-error: true
+        shell: bash
+        env:
+          UPSTREAM_JSON: ${{ toJSON(needs) }}
+          GROUP: ${{ matrix.group }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/opica4-diagnostics/$GROUP"
+          printf '%s\n' "$UPSTREAM_JSON" > "$RUNNER_TEMP/opica4-diagnostics/$GROUP/upstream.json"
+      - name: Require every matrix job to succeed
+        id: upstream
+        env:
+          UPSTREAM: ${{ needs.lanes.result }}
+        run: test "$UPSTREAM" = success
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          path: host
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: 3.13.5
+      - uses: ./host/.github/actions/opica4-runtime
+        id: runtime
+        with:
+          native: 'true'
+          provider: ${{ matrix.provider }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: opica4-${{ github.run_id }}-${{ github.run_attempt }}-lane-*
+          path: ${{ runner.temp }}/opica4-input
+      - name: Reconstruct eleven complete bundles and run the fixed independent group
+        id: independent
+        working-directory: host
+        shell: bash
+        env:
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          GROUP: ${{ matrix.group }}
+        run: |
+          set -euo pipefail
+          python -B -m research.RHRC.integration.opica_composition.cli transport-unpack \
+            --input "$RUNNER_TEMP/opica4-input" --output "$RUNNER_TEMP/opica4-bundles" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --requested-commit "$REQUESTED_COMMIT" --requested-tree "$(git rev-parse "$REQUESTED_COMMIT^{tree}")"
+          # This observer stays in the Actions shell's cgroup so service OOM can
+          # leave diagnostic samples. It has no role in the acceptance result.
+          observer_pid=''
+          stop_observer() {
+            local primary_status=$?
+            trap - EXIT INT TERM
+            if [ -n "$observer_pid" ]; then
+              kill -TERM "$observer_pid" 2>/dev/null || true
+              wait "$observer_pid" || true
+            fi
+            exit "$primary_status"
+          }
+          trap stop_observer EXIT
+          trap 'exit 130' INT
+          trap 'exit 143' TERM
+          if cat > "$RUNNER_TEMP/opica4-accept-observer.py" <<'PY'
+          import json, os, pathlib, re, select, signal, stat, subprocess, sys, threading, time
+
+          MAX_BYTES = 4 * 1024 * 1024
+          MAX_ROW_BYTES = 32768
+          MAX_SECONDS = 6 * 60 * 60
+          STAT_KEYS = ('anon', 'file', 'shmem', 'kernel', 'kernel_stack', 'pagetables', 'slab',
+                       'inactive_file', 'active_file', 'file_mapped', 'file_dirty', 'file_writeback',
+                       'pgscan', 'pgsteal', 'workingset_refault_file', 'workingset_activate_file')
+          PROPERTIES = ('Id', 'LoadState', 'ActiveState', 'SubState', 'Result', 'ExecMainCode',
+                        'ExecMainStatus', 'ControlGroup', 'MemoryCurrent', 'MemoryPeak', 'OOMPolicy')
+
+          def directory(path):
+              path = pathlib.Path(path)
+              if not path.is_absolute() or '..' in path.parts:
+                  raise ValueError('Absolute authored directory required')
+              fd = os.open('/', os.O_RDONLY | os.O_DIRECTORY)
+              try:
+                  for part in path.parts[1:]:
+                      child = os.open(part, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=fd)
+                      os.close(fd)
+                      fd = child
+                  return fd
+              except BaseException:
+                  os.close(fd)
+                  raise
+
+          def read_at(folder, name, maximum=4096):
+              fd = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=folder)
+              with os.fdopen(fd, 'rb') as stream:
+                  if not stat.S_ISREG(os.fstat(stream.fileno()).st_mode):
+                      raise ValueError('Regular kernel file required')
+                  raw = stream.read(maximum + 1)
+              if len(raw) > maximum:
+                  raise ValueError('Kernel diagnostic exceeds bound')
+              return raw.decode('ascii').strip()
+
+          def unit_state(unit):
+              # No receipt or compiler output can supply a command or property.
+              command = ['/usr/bin/systemctl', 'show', unit, '--no-pager',
+                         '--property=' + ','.join(PROPERTIES)]
+              raw = bytearray()
+              process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+              try:
+                  deadline = time.monotonic() + 5
+                  while True:
+                      remaining = deadline - time.monotonic()
+                      if remaining <= 0 or not select.select([process.stdout], [], [], remaining)[0]:
+                          raise TimeoutError('Bounded unit query timed out')
+                      part = os.read(process.stdout.fileno(), min(4096, 8193 - len(raw)))
+                      if not part:
+                          break
+                      raw.extend(part)
+                      if len(raw) > 8192:
+                          raise ValueError('Unit query exceeds bound')
+                  code = process.wait(timeout=max(0.01, deadline - time.monotonic()))
+                  rows = dict(line.split('=', 1) for line in raw.decode('utf-8', errors='replace').splitlines() if '=' in line)
+                  return {'returncode': code, 'properties': {key: rows.get(key) for key in PROPERTIES}}
+              finally:
+                  if process.poll() is None:
+                      process.kill()
+                  process.wait()
+                  process.stdout.close()
+
+          def observe():
+              unit = sys.argv[1]
+              match = re.fullmatch(r'opica4-accept-(CORE|AUXILIARY|CANONICAL)-[0-9]+-[0-9]+\.service', unit)
+              if match is None or match.group(1) != os.environ['GROUP']:
+                  raise ValueError('Authored independent group unit required')
+              temporary = pathlib.Path(os.environ['RUNNER_TEMP'])
+              expected_group = '/system.slice/' + unit
+              destination = directory(temporary / 'opica4-diagnostics' / match.group(1))
+              try:
+                  fd = os.open('resource-observer.jsonl', os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
+                               0o600, dir_fd=destination)
+              finally:
+                  os.close(destination)
+              stop = threading.Event()
+              signal.signal(signal.SIGTERM, lambda *_: stop.set())
+              signal.signal(signal.SIGINT, lambda *_: stop.set())
+              started = time.monotonic()
+              written = 0
+              seen_group = False
+              with os.fdopen(fd, 'wb', buffering=0) as stream:
+                  for index in range(721):
+                      row = {'schema': 'OPICA_ACCEPTANCE_RESOURCE_DIAGNOSTIC_V1',
+                             'authority': 'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE', 'unit': unit,
+                             'sample': index, 'unix_seconds': int(time.time()),
+                             'elapsed_seconds': int(time.monotonic() - started),
+                             'final_requested': stop.is_set(), 'errors': []}
+                      try:
+                          row['systemd'] = unit_state(unit)
+                          actual = row['systemd']['properties']['ControlGroup']
+                          if actual not in (None, '', expected_group):
+                              raise ValueError('Unexpected unit cgroup refused')
+                          group = directory('/sys/fs/cgroup' + expected_group)
+                          seen_group = True
+                          try:
+                              row['cgroup'] = expected_group
+                              row['counters'] = {}
+                              for name in ('memory.current', 'memory.peak', 'memory.max', 'memory.events',
+                                           'memory.events.local', 'pids.current', 'pids.max', 'pids.events'):
+                                  try:
+                                      row['counters'][name] = read_at(group, name)
+                                  except (OSError, ValueError) as error:
+                                      row['errors'].append(name + ':' + type(error).__name__)
+                              try:
+                                  fields = dict(line.split() for line in read_at(group, 'memory.stat', 16384).splitlines())
+                                  row['memory_stat_bytes_or_counters'] = {key: fields.get(key) for key in STAT_KEYS}
+                              except (OSError, ValueError) as error:
+                                  row['errors'].append('memory.stat:' + type(error).__name__)
+                          finally:
+                              os.close(group)
+                      except (OSError, ValueError, TimeoutError, subprocess.SubprocessError) as error:
+                          row['cgroup_disposition'] = 'DISAPPEARED_OR_COLLECTED' if seen_group else 'NOT_YET_AVAILABLE'
+                          row['errors'].append('unit/cgroup:' + type(error).__name__)
+                      try:
+                          volume = directory(temporary / 'opica4-native')
+                          try:
+                              usage = os.fstatvfs(volume)
+                          finally:
+                              os.close(volume)
+                          row['native_volume'] = {'scope': 'SHARED_TMPFS_NOT_CGROUP_ATTRIBUTION',
+                                                  'total_bytes': usage.f_blocks * usage.f_frsize,
+                                                  'used_bytes': (usage.f_blocks - usage.f_bfree) * usage.f_frsize}
+                      except (OSError, ValueError) as error:
+                          row['errors'].append('native_volume:' + type(error).__name__)
+                      try:
+                          evidence = directory(temporary)
+                          try:
+                              usage = os.fstatvfs(evidence)
+                          finally:
+                              os.close(evidence)
+                          row['evidence_filesystem'] = {'total_bytes': usage.f_blocks * usage.f_frsize,
+                                                        'available_bytes': usage.f_bavail * usage.f_frsize}
+                      except (OSError, ValueError) as error:
+                          row['errors'].append('evidence_filesystem:' + type(error).__name__)
+                      raw = (json.dumps(row, ensure_ascii=True, separators=(',', ':')) + '\n').encode('ascii')
+                      if len(raw) > MAX_ROW_BYTES or written + len(raw) > MAX_BYTES:
+                          break
+                      stream.write(raw)
+                      written += len(raw)
+                      remaining = MAX_SECONDS - (time.monotonic() - started)
+                      if stop.is_set() or remaining <= 0:
+                          break
+                      stop.wait(min(30, remaining))
+
+          try:
+              observe()
+          except Exception as error:
+              print('OPICA_ACCEPT_OBSERVER_DIAGNOSTIC_ONLY_UNAVAILABLE ' + type(error).__name__, file=sys.stderr, flush=True)
+          PY
+          then
+            python -B "$RUNNER_TEMP/opica4-accept-observer.py" \
+              "opica4-accept-$GROUP-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT.service" &
+            observer_pid=$!
+          fi
+          [[ "$OPICA_INDEPENDENT_DEADLINE" =~ ^[0-9]+$ ]]
+          remaining_seconds=$(( OPICA_INDEPENDENT_DEADLINE - $(date +%s) ))
+          test "$remaining_seconds" -gt 0
+          runtime_seconds="$remaining_seconds"
+          if [ "$runtime_seconds" -gt 16200 ]; then
+            runtime_seconds=16200
+          fi
+          sudo systemd-run --wait --pipe --collect --unit="opica4-accept-$GROUP-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
+            --uid="$(id -u)" --gid="$(id -g)" \
+            -p MemoryMax=4294967296 -p MemorySwapMax=0 -p TasksMax=64 -p CPUQuota=200% \
+            -p "RuntimeMaxSec=$runtime_seconds" \
+            -p "WorkingDirectory=$PWD" /usr/bin/env \
+            "PATH=$PATH" "HOME=$HOME" PYTHONUTF8=1 PYTHONDONTWRITEBYTECODE=1 LEAN_NUM_THREADS=2 \
+            "OPICA_NATIVE_OUTPUT=$OPICA_NATIVE_OUTPUT" "OPICA_NATIVE_CONFIG=$OPICA_NATIVE_CONFIG" \
+            python -B -m research.RHRC.integration.opica_composition.cli accept-group \
+            --group "$GROUP" --bundles "$RUNNER_TEMP/opica4-bundles" \
+            --output "$RUNNER_TEMP/opica4-independent/$GROUP" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" --provider-root "$GITHUB_WORKSPACE/provider"
+      - name: Seal the complete independent group transport
+        id: transport
+        working-directory: host
+        shell: bash
+        env:
+          GROUP: ${{ matrix.group }}
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/opica4-independent-transports"
+          python -B -m research.RHRC.integration.opica_composition.cli group-transport-pack \
+            --group "$GROUP" --input "$RUNNER_TEMP/opica4-independent/$GROUP" \
+            --output "$RUNNER_TEMP/opica4-independent-transports/$GROUP" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --requested-commit "$REQUESTED_COMMIT" --requested-tree "$(git rev-parse "$REQUESTED_COMMIT^{tree}")"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ success() && steps.independent.outcome == 'success' && steps.transport.outcome == 'success' }}
+        with:
+          name: opica4-${{ github.run_id }}-${{ github.run_attempt }}-independent-${{ matrix.group }}
+          path: ${{ runner.temp }}/opica4-independent-transports/${{ matrix.group }}
+          include-hidden-files: true
+          compression-level: 0
+          if-no-files-found: error
+      - name: Collect bounded diagnostics after an interrupted independent group
+        if: ${{ always() && steps.independent.outcome != 'success' }}
+        continue-on-error: true
+        working-directory: host
+        shell: bash
+        env:
+          GROUP: ${{ matrix.group }}
+        run: |
+          python -B - <<'PY'
+          import json, os
+          from pathlib import Path
+          from research.RHRC.integration.opica_composition import cli
+          for lane in cli.group_lanes(os.environ['GROUP']):
+              output = Path(os.environ['RUNNER_TEMP']) / 'opica4-independent' / os.environ['GROUP'] / lane
+              try:
+                  if cli.unlinked(output).is_dir():
+                      cli._collect_failed_native_diagnostics(lane, cli.REPO, output)
+              except Exception as error:
+                  print(json.dumps({'authority': 'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE',
+                                    'lane': lane, 'error': type(error).__name__}), flush=True)
+          PY
+      - name: Record independent group diagnostic disposition
+        if: ${{ always() }}
+        continue-on-error: true
+        shell: bash
+        env:
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          GROUP: ${{ matrix.group }}
+          STEPS_JSON: ${{ toJSON(steps) }}
+        run: |
+          python3 -B - <<'PY'
+          import json, os, pathlib, subprocess
+          output = pathlib.Path(os.environ['RUNNER_TEMP']) / 'opica4-diagnostics' / os.environ['GROUP']
+          output.mkdir(parents=True, exist_ok=True)
+          host = pathlib.Path(os.environ['GITHUB_WORKSPACE']) / 'host'
+          def checked(revision):
+              result = subprocess.run(['git', '-C', str(host), 'rev-parse', revision], capture_output=True, text=True)
+              return result.stdout.strip() if result.returncode == 0 else None
+          report = {'schema': 'OPICA_CI_DIAGNOSTICS_V1', 'authority': 'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE',
+                    'lane': 'INDEPENDENT_' + os.environ['GROUP'], 'run_id': os.environ['GITHUB_RUN_ID'],
+                    'attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'requested_commit': os.environ['REQUESTED_COMMIT'],
+                    'checked_commit': checked('HEAD'), 'checked_tree': checked('HEAD^{tree}'),
+                    'steps': json.loads(os.environ['STEPS_JSON'])}
+          (output / 'disposition.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Preserve optional independent group bootstrap diagnostics
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        continue-on-error: true
+        with:
+          name: opica4-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}-independent-${{ matrix.group }}
+          path: |
+            ${{ runner.temp }}/opica4-diagnostics/${{ matrix.group }}
+            ${{ runner.temp }}/opica4-native/bootstrap
+            ${{ runner.temp }}/opica4-source-before.json
+            ${{ runner.temp }}/opica4-independent/${{ matrix.group }}/failure-diagnostics
+            ${{ runner.temp }}/opica4-independent/${{ matrix.group }}/*/failure-diagnostics
+          if-no-files-found: warn
+  acceptance:
+    name: Round4 / ACCEPTANCE
+    needs: [lanes, independent]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - name: Record both upstream matrix dispositions
+        if: ${{ always() }}
+        continue-on-error: true
+        shell: bash
+        env:
+          UPSTREAM_JSON: ${{ toJSON(needs) }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/opica4-diagnostics/ACCEPTANCE"
+          printf '%s\n' "$UPSTREAM_JSON" > "$RUNNER_TEMP/opica4-diagnostics/ACCEPTANCE/upstream.json"
+      - name: Require every producer and independent group to succeed
+        id: upstream
+        shell: bash
+        env:
+          PRODUCERS: ${{ needs.lanes.result }}
+          INDEPENDENT: ${{ needs.independent.result }}
+        run: |
+          set -euo pipefail
+          test "$PRODUCERS" = success
+          test "$INDEPENDENT" = success
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          path: host
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: 3.13.5
+      - uses: ./host/.github/actions/opica4-runtime
+        id: runtime
+        with:
+          native: 'false'
+          provider: 'false'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: opica4-${{ github.run_id }}-${{ github.run_attempt }}-lane-*
+          path: ${{ runner.temp }}/opica4-input
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: opica4-${{ github.run_id }}-${{ github.run_attempt }}-independent-*
+          path: ${{ runner.temp }}/opica4-independent-input
+      - name: Reconstruct and bind every producer and independent group
+        id: acceptance
+        working-directory: host
+        shell: bash
+        env:
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          UPSTREAM_JSON: ${{ toJSON(needs) }}
+        run: |
+          set -euo pipefail
+          requested_tree="$(git rev-parse "$REQUESTED_COMMIT^{tree}")"
+          python -B -m research.RHRC.integration.opica_composition.cli transport-unpack \
+            --input "$RUNNER_TEMP/opica4-input" --output "$RUNNER_TEMP/opica4-bundles" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --requested-commit "$REQUESTED_COMMIT" --requested-tree "$requested_tree"
+          python -B -m research.RHRC.integration.opica_composition.cli group-transport-unpack \
+            --input "$RUNNER_TEMP/opica4-independent-input" --output "$RUNNER_TEMP/opica4-groups" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --requested-commit "$REQUESTED_COMMIT" --requested-tree "$requested_tree"
+          sudo systemd-run --wait --pipe --collect --unit="opica4-accept-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
+            --uid="$(id -u)" --gid="$(id -g)" \
+            -p MemoryMax=4294967296 -p MemorySwapMax=0 -p TasksMax=64 -p CPUQuota=200% \
+            -p RuntimeMaxSec=7200 \
+            -p "WorkingDirectory=$PWD" /usr/bin/env \
+            "PATH=$PATH" "HOME=$HOME" PYTHONUTF8=1 PYTHONDONTWRITEBYTECODE=1 LEAN_NUM_THREADS=2 \
+            python -B -m research.RHRC.integration.opica_composition.cli accept-groups \
+            --bundles "$RUNNER_TEMP/opica4-bundles" --groups "$RUNNER_TEMP/opica4-groups" \
+            --output "$RUNNER_TEMP/opica4-acceptance" --needs-json "$UPSTREAM_JSON" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ success() && steps.acceptance.outcome == 'success' }}
+        with:
+          name: opica4-acceptance-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/opica4-acceptance
+          if-no-files-found: error
+      - name: Record acceptance diagnostic disposition
+        if: ${{ always() }}
+        continue-on-error: true
+        shell: bash
+        env:
+          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          STEPS_JSON: ${{ toJSON(steps) }}
+        run: |
+          python3 -B - <<'PY'
+          import json, os, pathlib, subprocess
+          output = pathlib.Path(os.environ['RUNNER_TEMP']) / 'opica4-diagnostics' / 'ACCEPTANCE'
+          output.mkdir(parents=True, exist_ok=True)
+          host = pathlib.Path(os.environ['GITHUB_WORKSPACE']) / 'host'
+          def checked(revision):
+              result = subprocess.run(['git', '-C', str(host), 'rev-parse', revision], capture_output=True, text=True)
+              return result.stdout.strip() if result.returncode == 0 else None
+          report = {'schema': 'OPICA_CI_DIAGNOSTICS_V1', 'authority': 'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE',
+                    'lane': 'ACCEPTANCE', 'run_id': os.environ['GITHUB_RUN_ID'],
+                    'attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'requested_commit': os.environ['REQUESTED_COMMIT'],
+                    'checked_commit': checked('HEAD'), 'checked_tree': checked('HEAD^{tree}'),
+                    'steps': json.loads(os.environ['STEPS_JSON'])}
+          (output / 'disposition.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Preserve optional acceptance diagnostics
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        continue-on-error: true
+        with:
+          name: opica4-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}-ACCEPTANCE
+          path: |
+            ${{ runner.temp }}/opica4-diagnostics/ACCEPTANCE
+            ${{ runner.temp }}/opica4-acceptance/failure-diagnostics
+          if-no-files-found: warn

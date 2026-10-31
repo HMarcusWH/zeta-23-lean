@@ -1,8 +1,32 @@
-> Current checkpoint: [Stage22](continuation/2026-10-22/STAGE22_HANDOVER.md), checked code `2440dcde7607baa7bcff2ce9626effa1ae9f3f07`, tree `dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99`. All100 original bodies have historical/narrow evidence. Physical/canonical and continuous-compact domain findings are mathematically closed; full export, registry, parent extension, canonical and release acceptance remain OPEN. Earlier statements retain their historical scope.
+# OPICA follow-up package
 
-> Current checkpoint: [Stage21](continuation/2026-10-22/STAGE21_HANDOVER.md), checked code `139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e`, tree `3e63b0c72fc04da7bab45388d6096e82e95c4acb`. Ledger:41 historical +59 narrow +0 absent bodies; this is not original-contract/aggregate acceptance. Fresh physical/interface findings and all release obligations remain OPEN. Earlier stage statements below retain their historical scope.
+For repository-wide navigation as of 28 October 2026, use the
+[root guide](../../../../README.md), [current state](../../../../docs/CURRENT_STATE.md),
+[project guide](../../../../docs/PROJECT_GUIDE.md) and
+[framework map](../../../../docs/FRAMEWORKS.md).
 
-# Current draft checkpoint — 24 October 2026
+## Package checkpoint: Stage22 — 24 October 2026
+
+> [Stage22](continuation/2026-10-22/STAGE22_HANDOVER.md), checked code `2440dcde7607baa7bcff2ce9626effa1ae9f3f07`, tree `dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99`. All100 original bodies have historical/narrow evidence. Physical/canonical and continuous-compact domain findings are mathematically closed; full export, registry, parent extension, canonical and release acceptance remain OPEN. Earlier statements retain their historical scope.
+
+The [100-root ledger](continuation/2026-10-22/ROOT_LEDGER_100.json) records
+41 historical source-bound roots and 59 additional narrow roots. Use the
+[continuation guide](continuation/2026-10-22/README.md),
+[module status](continuation/2026-10-22/MODULE_STATUS.md) and
+[evidence index](continuation/2026-10-22/DOCUMENTATION_INDEX.md) within that package
+scope. This retains all100 theorem-body evidence without claiming full aggregate
+or release acceptance. RH, Step4 and the independent closing inequalities remain OPEN.
+
+<details>
+<summary>Historical Stage21, Stage20 and earlier implementation notes</summary>
+
+The dated records below preserve their source-bound evidence and original
+instructions. Their current/next wording applies to their own checkpoints;
+Stage22 and the ledger above govern the follow-up package's later evidence.
+
+> Historical Stage21 checkpoint: [Stage21](continuation/2026-10-22/STAGE21_HANDOVER.md), checked code `139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e`, tree `3e63b0c72fc04da7bab45388d6096e82e95c4acb`. Ledger:41 historical +59 narrow +0 absent bodies; this is not original-contract/aggregate acceptance. Fresh physical/interface findings and all release obligations remain OPEN. Earlier stage statements below retain their historical scope.
+
+## Historical Stage20 draft checkpoint — 24 October 2026
 
 Start at [the continuation guide](continuation/2026-10-22/README.md), root AGENTS.md,
 [Stage 20](continuation/2026-10-22/STAGE20_HANDOVER.md) and the [current ledger](continuation/2026-10-22/ROOT_LEDGER_100.json).
@@ -195,3 +219,5 @@ replays were verified. Its 5,969 finite controls and 65 structural checks passed
 per Python mode. Lean elaboration corrections and the semantic convolution fix
 are recorded in `SOURCE_REGISTER.json`; the supplied paper text remains separately
 identified DERIVED/PAPER input. All 100 original roots and 28 units remain required.
+
+</details>

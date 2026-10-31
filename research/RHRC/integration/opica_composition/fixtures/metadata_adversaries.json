@@ -1,0 +1,28 @@
+{
+  "schema": "OPICA4_METADATA_ADVERSARIES_V1",
+  "cases": [
+    {
+      "id": "PASS_FLAG",
+      "input": {
+        "status": "PROVED_CONDITIONAL",
+        "publication_eligible": true
+      },
+      "expected": "REJECT_NO_NATIVE_ORIGIN"
+    },
+    {
+      "id": "MISSING_LANE",
+      "omitted": "PROVIDER_SELECTED",
+      "expected": "REJECT"
+    },
+    {
+      "id": "CROSS_SOURCE",
+      "expected": "REJECT"
+    },
+    {
+      "id": "NORMALIZATION_SWITCH",
+      "expected": "ADAPTER_REQUIRED"
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

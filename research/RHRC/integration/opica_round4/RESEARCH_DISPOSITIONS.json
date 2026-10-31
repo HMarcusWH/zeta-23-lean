@@ -1,0 +1,1643 @@
+{
+  "schema": "OPICA4_RESEARCH_DISPOSITIONS_V1",
+  "historical_connections": [
+    {
+      "id": "D_CHAIN_COVER_TO_COMMON",
+      "from": [
+        "Zeta23.OPICARound3.neutral_parity_cover_of_off_line_zero"
+      ],
+      "to": [
+        "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero"
+      ],
+      "status": "PROVED_TARGET_WITH_REVIEWED_COMPOSITION",
+      "description": "D02's proof explicitly adds actual parity cofinality, neutral openness, tail union cover/connectedness and centered nesting; D01 alone is not presented as sufficient.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero"
+      ],
+      "evidence_tests": [],
+      "scientific_scope": "Exact stated source/hypotheses only; no independent Step4 restriction.",
+      "terminal_progress": "SUPPORTING_ONLY"
+    },
+    {
+      "id": "D_CHAIN_COMMON_TO_LOCAL_MARGIN",
+      "from": [
+        "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero"
+      ],
+      "to": [
+        "Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero"
+      ],
+      "status": "PROVED_TARGET_WITH_REVIEWED_COMPOSITION",
+      "description": "Actual moving-neutral correction and continuity construct a local common-cutoff negative frame; margin is interval-specific.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero"
+      ],
+      "evidence_tests": [],
+      "scientific_scope": "Exact stated source/hypotheses only; no independent Step4 restriction.",
+      "terminal_progress": "SUPPORTING_ONLY"
+    },
+    {
+      "id": "D_CHAIN_COMMON_TO_FIRST",
+      "from": [
+        "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero"
+      ],
+      "to": [
+        "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff"
+      ],
+      "status": "PROVED_TARGET_WITH_REVIEWED_COMPOSITION",
+      "description": "D04 can be instantiated at the D02 common state; it keeps distinct least cutoffs and both regular/resonant possibilities.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff"
+      ],
+      "evidence_tests": [],
+      "scientific_scope": "Exact stated source/hypotheses only; no independent Step4 restriction.",
+      "terminal_progress": "SUPPORTING_ONLY"
+    },
+    {
+      "id": "D_CHAIN_FIRST_TO_SAME_SOURCE_NEWBORN",
+      "from": [
+        "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff"
+      ],
+      "to": [
+        "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses"
+      ],
+      "status": "PROVED_TARGET_WITH_REVIEWED_COMPOSITION",
+      "description": "The actual least-cutoff regular/resonant construction produces one w with complete negative physical source energy, both pole moments and the complete corrected source equations.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses",
+        "Zeta23.OPICARound3.regularSchurWitness_energy",
+        "Zeta23.OPICARound3.resonantSchurWitness_energy"
+      ],
+      "evidence_tests": [],
+      "scientific_scope": "Exact stated source/hypotheses only; no independent Step4 restriction.",
+      "terminal_progress": "SUPPORTING_ONLY"
+    },
+    {
+      "id": "D05_COMPLETE_OUTPUT_KERNEL_IDENTITY",
+      "from": [
+        "Zeta23.OPICARound3.nativeParitySource_whole_output_kernel"
+      ],
+      "to": [
+        "Zeta23.OPICARound3.Validation.newborn_source_full_output_projection_consumer"
+      ],
+      "status": "PROVED_IDENTITY_ADAPTER",
+      "description": "The same constructed w has its ENTIRE shifted transformed-output-plus-corrected-source expression in the actual opposite operator range, hence zero kernel projection.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.nativeParitySource_whole_output_kernel",
+        "Zeta23.OPICARound3.Validation.newborn_source_full_output_projection_consumer"
+      ],
+      "evidence_tests": [],
+      "scientific_scope": "Exact stated source/hypotheses only; no independent Step4 restriction.",
+      "terminal_progress": "SUPPORTING_ONLY"
+    },
+    {
+      "id": "INVALID_D05_DROP_TRANSFORMED_OUTPUT",
+      "from": [
+        "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses",
+        "Zeta23.OPICARound3.nativeParitySource_whole_output_kernel"
+      ],
+      "to": [
+        "UNSUPPORTED_SOURCE_ONLY_KERNEL_VANISHING"
+      ],
+      "status": "DERIVED_COUNTERMODEL_GENERAL_INFERENCE",
+      "description": "Kernel projection of D(T-lambda)w+source equal to zero does not imply kernel projection of source alone equal to zero; the transformed output can cancel it.",
+      "evidence_declarations": [],
+      "evidence_tests": [
+        {
+          "path": "research/RHRC/integration/opica_round3/tests/test_constraint_atlas.py",
+          "class": "AtlasCompilerProtocolTests",
+          "method": "test_whole_output_kernel_zero_does_not_remove_transformed_component",
+          "sha256": "66667d74b8ccbfa784c4ec50c783f1a6b5ceebee480df04a85dc54843a181eed"
+        }
+      ],
+      "scientific_scope": "Exact self-adjoint2x2 rank-one-defect countermodel with negative w; general linear algebra only, not a falsification of the canonical arithmetic source.",
+      "terminal_progress": "EXCLUDES_GENERAL_INFERENCE"
+    },
+    {
+      "id": "D05_TYPED_SOURCE_ALONE_STRENGTHENING_REJECTED",
+      "from": [
+        "Zeta23.OPICARound3.Validation.newborn_source_full_output_projection_consumer"
+      ],
+      "to": [
+        "UNSUPPORTED_SOURCE_ONLY_KERNEL_VANISHING"
+      ],
+      "status": "UNSUPPORTED_STRENGTHENING_TYPE_REJECTED",
+      "description": "The actual whole-output projection consumer does not have the strengthened source-alone target type. Dropping the transformed shifted output is not justified by this producer.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.Validation.newborn_source_full_output_projection_consumer"
+      ],
+      "evidence_tests": [
+        {
+          "path": "research/RHRC/integration/opica_round3/tests/test_contract.py",
+          "class": "NativeProtocolTests",
+          "method": "test_literal_native_pairs_are_changed_semantics_with_identical_imports",
+          "sha256": "47585fdb4a74c93c4a19691ae5cc8163af626f7fb01c1e639be48ab3712dfe11"
+        }
+      ],
+      "scientific_scope": "The literal fifth producer/mutant pair is source-bound by the formal gate's actual positive0/negative1 commands. This crosswalk/unit reference alone grants no native-control authority and does not prove a canonical source-alone assertion false.",
+      "terminal_progress": "EXCLUDES_GENERAL_INFERENCE"
+    },
+    {
+      "id": "K3_REGULAR_NOT_UNIFORM_K3_SIGN",
+      "from": [
+        "Zeta23.OPICARound3.Validation.newborn_source_K3_regular_consumer"
+      ],
+      "to": [
+        "OPEN_UNIFORM_NATIVE_K3_SOURCE_SIGN"
+      ],
+      "status": "NOT_APPLICABLE",
+      "description": "The zero-dimensional predecessor excludes resonance in an existing K3 packet. It supplies no continuum K3 positivity/no-exit theorem.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.Validation.newborn_source_K3_regular_consumer"
+      ],
+      "evidence_tests": [],
+      "scientific_scope": "Exact stated source/hypotheses only; no independent Step4 restriction.",
+      "terminal_progress": "OPEN"
+    },
+    {
+      "id": "INVALID_COFINAL_ONLY",
+      "from": [
+        "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero",
+        "Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero",
+        "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff"
+      ],
+      "to": [
+        "UNSUPPORTED_GENERAL_INFERENCE"
+      ],
+      "status": "DERIVED_COUNTERMODEL_GENERAL_INFERENCE",
+      "description": "Two individually cofinal open negative sets need not overlap without the actual eventual union cover/connectedness argument.",
+      "evidence_declarations": [],
+      "evidence_tests": [
+        {
+          "path": "research/RHRC/integration/opica_round3/tests/test_contract.py",
+          "class": "ExactFalsificationTests",
+          "method": "test_cofinality_without_union_cover_does_not_force_overlap",
+          "sha256": "3bf3a14ec3a45bce7c7ec276d00c171d475664d84c599282de6d1843aea3fff9"
+        }
+      ],
+      "scientific_scope": "Explicit rational synthetic control and mathematical countermodel description; not a theorem falsifying an actual zeta-source restriction.",
+      "terminal_progress": "EXCLUDES_GENERAL_INFERENCE"
+    },
+    {
+      "id": "INVALID_BOTH_PREDECESSORS_PSD",
+      "from": [
+        "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero",
+        "Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero",
+        "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff"
+      ],
+      "to": [
+        "UNSUPPORTED_GENERAL_INFERENCE"
+      ],
+      "status": "DERIVED_COUNTERMODEL_GENERAL_INFERENCE",
+      "description": "At max(Ke,Ko)-1 the earlier parity may already be negative; only each newborn's own predecessor is PSD.",
+      "evidence_declarations": [],
+      "evidence_tests": [
+        {
+          "path": "research/RHRC/integration/opica_round3/tests/test_contract.py",
+          "class": "ExactFalsificationTests",
+          "method": "test_only_newborn_predecessor_is_psd_with_unequal_arrivals",
+          "sha256": "543facf4fe0d91c72f7153908187bab75f196490f261dc8444fa3a544d7382c2"
+        }
+      ],
+      "scientific_scope": "Explicit rational synthetic control and mathematical countermodel description; not a theorem falsifying an actual zeta-source restriction.",
+      "terminal_progress": "EXCLUDES_GENERAL_INFERENCE"
+    },
+    {
+      "id": "INVALID_GLOBAL_MARGIN",
+      "from": [
+        "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero",
+        "Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero",
+        "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff"
+      ],
+      "to": [
+        "UNSUPPORTED_GENERAL_INFERENCE"
+      ],
+      "status": "DERIVED_COUNTERMODEL_GENERAL_INFERENCE",
+      "description": "A cofinal family of local strict margins need not supply one global eta.",
+      "evidence_declarations": [],
+      "evidence_tests": [
+        {
+          "path": "research/RHRC/integration/opica_round3/tests/test_contract.py",
+          "class": "ExactFalsificationTests",
+          "method": "test_local_negative_intervals_do_not_give_global_eta",
+          "sha256": "a377579f004c91b4cd394771b4441ef414066e140730582bf4c80714e260322c"
+        }
+      ],
+      "scientific_scope": "Explicit rational synthetic control and mathematical countermodel description; not a theorem falsifying an actual zeta-source restriction.",
+      "terminal_progress": "EXCLUDES_GENERAL_INFERENCE"
+    },
+    {
+      "id": "INVALID_UNPROJECTED_RESIDUAL",
+      "from": [
+        "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero",
+        "Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero",
+        "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff"
+      ],
+      "to": [
+        "UNSUPPORTED_GENERAL_INFERENCE"
+      ],
+      "status": "DERIVED_COUNTERMODEL_GENERAL_INFERENCE",
+      "description": "The compressed operator defect and complete projected physical output residual are different objects.",
+      "evidence_declarations": [],
+      "evidence_tests": [
+        {
+          "path": "research/RHRC/integration/opica_round3/tests/test_contract.py",
+          "class": "ExactFalsificationTests",
+          "method": "test_output_residual_requires_projection",
+          "sha256": "4e28241ff7f6686c04879f8f002c52afd94b2c8758bd67a1e7df6cb65579304c"
+        }
+      ],
+      "scientific_scope": "Explicit rational synthetic control and mathematical countermodel description; not a theorem falsifying an actual zeta-source restriction.",
+      "terminal_progress": "EXCLUDES_GENERAL_INFERENCE"
+    },
+    {
+      "id": "INVALID_TIE_FROM_EQUAL_CUTOFF",
+      "from": [
+        "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero",
+        "Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero",
+        "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff"
+      ],
+      "to": [
+        "UNSUPPORTED_GENERAL_INFERENCE"
+      ],
+      "status": "DERIVED_COUNTERMODEL_GENERAL_INFERENCE",
+      "description": "Equal integer first cutoffs do not imply equal negative eigenvalues.",
+      "evidence_declarations": [],
+      "evidence_tests": [
+        {
+          "path": "research/RHRC/integration/opica_round3/tests/test_contract.py",
+          "class": "ExactFalsificationTests",
+          "method": "test_equal_cutoffs_do_not_imply_spectral_tie",
+          "sha256": "7bbb2128f028d7ffecb7d4c1fe5e0f2fbadba48cf27241fe1095c516afb2cb2e"
+        }
+      ],
+      "scientific_scope": "Explicit rational synthetic control and mathematical countermodel description; not a theorem falsifying an actual zeta-source restriction.",
+      "terminal_progress": "EXCLUDES_GENERAL_INFERENCE"
+    },
+    {
+      "id": "A_POSITIVE_TEST_NOT_ARITHMETIC_SIGN",
+      "from": [
+        "Zeta23.OPICARound2.phase_complete_positive_test_observability"
+      ],
+      "to": [
+        "OPEN_NATIVE_ARITHMETIC_OBSERVATION_SIGN"
+      ],
+      "status": "NOT_APPLICABLE",
+      "description": "Positive physical test realization has no supplied adapter to nonnegative arithmetic observations; no such implication is claimed.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound2.phase_complete_positive_test_observability"
+      ],
+      "evidence_tests": [],
+      "scientific_scope": "Exact stated source/hypotheses only; no independent Step4 restriction.",
+      "terminal_progress": "OPEN"
+    },
+    {
+      "id": "B_OPEN_APPROXIMATION_ANTECEDENT",
+      "from": [
+        "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation"
+      ],
+      "to": [
+        "OPEN_FIXED_FILTERED_NATIVE_APPROXIMATION"
+      ],
+      "status": "OPEN_SOURCE_LEAF",
+      "description": "The actual approximation hypothesis is retained verbatim; Gram positivity, nonrange or a small finite residual do not discharge it.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation"
+      ],
+      "evidence_tests": [],
+      "scientific_scope": "Exact stated source/hypotheses only; no independent Step4 restriction.",
+      "terminal_progress": "OPEN"
+    },
+    {
+      "id": "C_FULL_LOSS_NEEDS_SOURCE_UPPER",
+      "from": [
+        "Zeta23.CCM.originalDetector_schur_loss_lower"
+      ],
+      "to": [
+        "OPEN_ORIGINAL_DETECTOR_COMPLETE_FORCING_UPPER"
+      ],
+      "status": "OPEN_SOURCE_LEAF",
+      "description": "The full original-detector negative Schur loss requires an independently matched full forcing/direct-term upper to contradict it.",
+      "evidence_declarations": [
+        "Zeta23.CCM.originalDetector_schur_loss_lower"
+      ],
+      "evidence_tests": [],
+      "scientific_scope": "Exact stated source/hypotheses only; no independent Step4 restriction.",
+      "terminal_progress": "OPEN"
+    },
+    {
+      "id": "D_NO_EXIT_NOT_FROM_NEWBORNS",
+      "from": [
+        "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff",
+        "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses"
+      ],
+      "to": [
+        "OPEN_NATIVE_SIGNED_SOURCE_NO_EXIT"
+      ],
+      "status": "OPEN_SOURCE_LEAF",
+      "description": "First negative source witnesses and exact correction identities preserve the obstruction; they do not prove its independently required exclusion.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff"
+      ],
+      "evidence_tests": [],
+      "scientific_scope": "Exact stated source/hypotheses only; no independent Step4 restriction.",
+      "terminal_progress": "OPEN"
+    }
+  ],
+  "historical_reviews": {
+    "Zeta23.OPICARound3.neutral_parity_cover_of_off_line_zero": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "Actual complete canonicalSourceMatrix on legal physical pole-neutral even/odd coefficient carriers at the same aperture; no one-copy probe substitution.",
+          "constants": [
+            "Zeta23.CCM.canonicalSourceMatrix"
+          ]
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "For an actual off-line zero rho: exists positive L0, for every L>L0 exists eligible K>=3. K and the negative parity may depend on L.",
+          "constants": []
+        },
+        "parity": {
+          "status": "REVIEWED",
+          "description": "Complex even and odd reversal parity carriers with both native pole constraints.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "REVIEWED",
+          "description": "The actual coefficient Hilbert norm and canonical full-form normalization are retained; arbitrary rescaling is not a new source sign.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "Centered finite cutoff extension preserves the actual neutral carrier; cutoff J is distinct from the even-to-odd compressed index map.",
+          "constants": [
+            "Zeta23.CCM.canonicalSourceMatrix"
+          ]
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Complex Euclidean coefficient/subspace Hilbert norms; Rayleigh signs use the real part of the Hermitian energy.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "REVIEWED",
+          "description": "Both native pole functionals remain zero; the finite cutoff and legal endpoint constraints are retained.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Strict negative full-form witness in even OR odd parity; no eventual-AND conclusion.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.neutral_parity_cover_of_off_line_zero"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound3/NeutralParityCover.lean",
+          "sha256": "b5ca98ad529c4d3c028f6a47b5cdf1acc398b734e2468c70aed84f880f05f0f6",
+          "contains": [
+            "neutral_parity_cover_of_off_line_zero"
+          ]
+        }
+      ]
+    },
+    "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "Actual complete canonicalSourceMatrix on legal physical pole-neutral even/odd coefficient carriers at the same aperture; no one-copy probe substitution.",
+          "constants": [
+            "Zeta23.CCM.canonicalSourceMatrix"
+          ]
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "For every real threshold R there exists one L>R, L>0 and one common K>=3 supporting both parity witnesses. No common L follows from cofinality alone.",
+          "constants": []
+        },
+        "parity": {
+          "status": "REVIEWED",
+          "description": "Complex even and odd reversal parity carriers with both native pole constraints.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "REVIEWED",
+          "description": "The actual coefficient Hilbert norm and canonical full-form normalization are retained; arbitrary rescaling is not a new source sign.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "Centered finite cutoff extension preserves the actual neutral carrier; cutoff J is distinct from the even-to-odd compressed index map.",
+          "constants": [
+            "Zeta23.CCM.canonicalSourceMatrix"
+          ]
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Complex Euclidean coefficient/subspace Hilbert norms; Rayleigh signs use the real part of the Hermitian energy.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "REVIEWED",
+          "description": "Both native pole functionals remain zero; the finite cutoff and legal endpoint constraints are retained.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Both full-form parity energies are strictly negative at the same (L,K), obtained using cover, openness, connectedness, each-parity cofinality and nesting.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound3/CofinalSimultaneousNegative.lean",
+          "sha256": "7107c167d1e760d2230d0f6e87ec222d0cfd2a5dbad8fc0a2aa49593eb310e2c",
+          "contains": [
+            "cofinally_both_neutral_negative_of_off_line_zero"
+          ]
+        }
+      ]
+    },
+    "Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "Actual complete canonicalSourceMatrix on legal physical pole-neutral even/odd coefficient carriers at the same aperture; no one-copy probe substitution.",
+          "constants": [
+            "Zeta23.CCM.canonicalSourceMatrix"
+          ]
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "For each R there exist R<a, 0<a<b, a common K>=3 and eta>0 on the chosen interval. Neither K nor eta is uniform across the cofinal family.",
+          "constants": []
+        },
+        "parity": {
+          "status": "REVIEWED",
+          "description": "Complex even and odd reversal parity carriers with both native pole constraints.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "REVIEWED",
+          "description": "The actual coefficient Hilbert norm and canonical full-form normalization are retained; arbitrary rescaling is not a new source sign.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "Centered finite cutoff extension preserves the actual neutral carrier; cutoff J is distinct from the even-to-odd compressed index map.",
+          "constants": [
+            "Zeta23.CCM.canonicalSourceMatrix"
+          ]
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Complex Euclidean coefficient/subspace Hilbert norms; Rayleigh signs use the real part of the Hermitian energy.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "REVIEWED",
+          "description": "Both native pole functionals remain zero; the finite cutoff and legal endpoint constraints are retained.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "A constructed complex two-parity frame has a locally uniform strictly negative Rayleigh margin on each chosen interval.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.cofinally_uniform_neutral_interval_of_off_line_zero"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound3/UniformNeutralInterval.lean",
+          "sha256": "998bb3fe850a7127427989c43cb99623e06d9c970a799115dae8cbf989111580",
+          "contains": [
+            "cofinally_uniform_neutral_interval_of_off_line_zero"
+          ]
+        }
+      ]
+    },
+    "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "Actual complete canonicalSourceMatrix on legal physical pole-neutral even/odd coefficient carriers at the same aperture; no one-copy probe substitution.",
+          "constants": [
+            "Zeta23.CCM.canonicalSourceMatrix"
+          ]
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "At fixed L>0, given both-negative at eligible K, the two genuine least cutoffs Ke,Ko exist and first common cutoff is max(Ke,Ko). Each parity has its own predecessor.",
+          "constants": []
+        },
+        "parity": {
+          "status": "REVIEWED",
+          "description": "Complex even and odd reversal parity carriers with both native pole constraints.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "REVIEWED",
+          "description": "The actual coefficient Hilbert norm and canonical full-form normalization are retained; arbitrary rescaling is not a new source sign.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "Centered finite cutoff extension preserves the actual neutral carrier; cutoff J is distinct from the even-to-odd compressed index map.",
+          "constants": [
+            "Zeta23.CCM.canonicalSourceMatrix"
+          ]
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Complex Euclidean coefficient/subspace Hilbert norms; Rayleigh signs use the real part of the Hermitian energy.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "REVIEWED",
+          "description": "Both native pole functionals remain zero; the finite cutoff and legal endpoint constraints are retained.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Only each newborn predecessor is PSD, including the K=3 zero-space boundary. A newborn has one complex shell and either resonant kernel coupling or negative regular Schur scalar; the earlier parity may already be negative.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.first_simultaneous_neutral_negative_cutoff"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound3/FirstSimultaneousNegative.lean",
+          "sha256": "8d2ac1040a3679d2b732c6c3a32757cab7f38de91158bff6df40317dd0ce76b5",
+          "contains": [
+            "first_simultaneous_neutral_negative_cutoff"
+          ]
+        }
+      ]
+    },
+    "Zeta23.OPICARound2.finite_pole_neutral_approximation": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "Original physical complete Weil negative test approximated by legal finite pole-neutral coefficient vectors, not a surrogate transform.",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "At every sufficiently large aperture a finite K(L) witness exists; no fixed K and no fixed parity is supplied.",
+          "constants": []
+        },
+        "parity": {
+          "status": "REVIEWED",
+          "description": "The finite witness splits into even OR odd native neutral negativity.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "maps": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "norms": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Strict negative witness is conditional on an actual off-line zero; no independent arithmetic upper is proved.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound2.finite_pole_neutral_approximation"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound2/FiniteNeutralApproximation.lean",
+          "sha256": "f7af3754ca3ffd1ada867661a302c2ea297d67888311de1e6278a62948706316",
+          "contains": [
+            "finite_pole_neutral_approximation"
+          ]
+        }
+      ]
+    },
+    "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "The fixed native source/filter B and discrete integer-delay dictionary are literal definitions; a generic causal range is not substituted.",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "An actual sequence of finite coefficient trials must have filtered residual tending to zero.",
+          "constants": []
+        },
+        "parity": {
+          "status": "NOT_APPLICABLE",
+          "description": "This causal L2 approximation implication is not a parity-sector sign assertion.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "Fixed physical filter on the original source; its actual approximation proposition remains an explicit theorem hypothesis.",
+          "constants": []
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Norm convergence in the actual causal L2 carrier; positive finite Gram identities do not discharge it.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Conditional implication from FixedFilteredNativeApproximation to RH; the approximation antecedent is OPEN.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound2/FixedFilter.lean",
+          "sha256": "5a07984846333f374b9b4631978881db7e3f4105880d998b3ec9671d10a2cd3e",
+          "contains": [
+            "rh_of_fixed_filtered_native_approximation"
+          ]
+        }
+      ]
+    },
+    "Zeta23.OPICARound2.phase_complete_positive_test_observability": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "Actual finite zero profiles and physical positive test realizations with phase-sensitive controls.",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "Finite adapted tests and explicit pointwise profile conditions, not uniform arithmetic recovery over a cofinal family.",
+          "constants": []
+        },
+        "parity": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "maps": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Phase/error margins and finite test dimensions remain explicit; no uniform recovery cost is asserted.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Nonnegative test functions and observation separation do not establish nonnegative true-source arithmetic observations.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound2.phase_complete_positive_test_observability"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound2/ProfileControls.lean",
+          "sha256": "550cf36a2a84e2b0a1269bbf5fb3bb917640b716ce1a72dce9ba39abd431eaed",
+          "contains": [
+            "phase_complete_positive_test_observability"
+          ]
+        }
+      ]
+    },
+    "Zeta23.CCM.originalDetector_schur_loss_lower": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "The retained original native detector and its full exterior/complement loss, not the separately stored selected ground.",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "For each explicitly supplied retained state with L>0, depth D>0 and its own selected scale/cutoff data.",
+          "constants": []
+        },
+        "parity": {
+          "status": "REVIEWED",
+          "description": "The state's actual reversal parity is retained.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "nativeDetectorPredecessorEmbedding and full isometricDetectorComplementCoordinate; these are not the new cutoff shell J.",
+          "constants": []
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Unit actual detector and its negative depth; full Schur loss retains eta and the actual inverse data.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Strict negative Schur-complement loss below -D/2 is a lower-obstruction theorem. No independent full forcing upper is manufactured.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.CCM.originalDetector_schur_loss_lower"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/CCM/DetectorRetainedSchurState.lean",
+          "sha256": "0a3a36aef9fa502dcc6664d07693d83d1996a1f543ef4616fb31bd045d21db89",
+          "contains": [
+            "originalDetector_schur_loss_lower"
+          ]
+        }
+      ]
+    },
+    "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "One actual Schur-created w is used simultaneously for native negative energy, complete physical canonicalSourceMatrix energy, both physical pole moments and every source/range/kernel equation.",
+          "constants": [
+            "Zeta23.OPICARound3.newbornCutoffInclusion",
+            "Zeta23.OPICARound3.nativeParityTransfer",
+            "Zeta23.OPICARound3.nativeParitySourceOutput",
+            "Zeta23.CCM.explicitCanonicalSourceMoment"
+          ]
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "Given L>0 and both-negative at eligible K, produce least Ke,Ko and source packets at their own births. At max(Ke,Ko) the later newborn packet is retained; equal arrivals retain both via the two non-strict inequalities.",
+          "constants": []
+        },
+        "parity": {
+          "status": "REVIEWED",
+          "description": "Both physical neutral parities, with even transfer D and odd transfer D-adjoint on the SAME state. No parity sign-preservation assumption is introduced.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "REVIEWED",
+          "description": "The shell e has norm1. Constructed w need not be unit: regular energy is the actual negative Schur scalar, resonant energy equals -1 exactly.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "newbornCutoffInclusion is the complex isometric same-parity cutoff J. nativeParityTransfer is the distinct same-cutoff parity D or D-adjoint. WHOLE shifted output is D(T-lambda)w plus the complete corrected source, and only its kernel projection is asserted zero.",
+          "constants": [
+            "Zeta23.OPICARound3.newbornCutoffInclusion",
+            "Zeta23.OPICARound3.nativeParityTransfer",
+            "Zeta23.OPICARound3.nativeParitySourceOutput",
+            "Zeta23.CCM.explicitCanonicalSourceMoment"
+          ]
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Actual native subspace Hilbert norm and its isometric ambient coefficient realization; no arbitrary map is substituted for an isometry.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "REVIEWED",
+          "description": "Literal +/-1 physical exponential pole moments vanish. The arithmetic scalar retains explicitCanonicalSourceMoment (pole, Archimedean diagonal/off-diagonal and finite prime sum) MINUS the removed-output correction.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "The same w is strictly negative for the COMPLETE source form. Source arithmetic equality/range/whole-output kernel identities impose no independent sign or Step4 closing inequality.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.first_simultaneous_newborn_source_witnesses"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound3/NewbornSource.lean",
+          "sha256": "551e814e37e2346246479ac225e1de309a67919e861c9ef36da34d7b20b7ac85",
+          "contains": [
+            "first_simultaneous_newborn_source_witnesses"
+          ]
+        }
+      ]
+    },
+    "Zeta23.OPICARound3.nativeParitySource_whole_output_kernel": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "Literal D05 native source/range identity at fixed eligible (L,K,w).",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "Every L>0, K>=3 and actual native w; the shifted equation retains every real lambda.",
+          "constants": []
+        },
+        "parity": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "Actual parity transfer D or D-adjoint, not cutoff J; source and transformed output remain separate summands.",
+          "constants": []
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Actual complex Hilbert projection/adjoint conventions; no norm bound or sign is inferred.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "The WHOLE shifted output projects to zero on the opposite shifted operator's kernel; the source-only projection is not asserted zero.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.nativeParitySource_whole_output_kernel"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound3/NewbornSource.lean",
+          "sha256": "551e814e37e2346246479ac225e1de309a67919e861c9ef36da34d7b20b7ac85",
+          "contains": [
+            "nativeParitySource_whole_output_kernel"
+          ]
+        }
+      ]
+    },
+    "Zeta23.OPICARound3.nativeParitySource_arithmetic_exposure": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "NativeSourceArithmeticExposure identifies the complete corrected source defect on the actual selected-parity vector w; this declaration is source exposure, not a range or shifted-output theorem.",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "Every parity p, positive aperture L, cutoff K>=3 and w in the native pole-neutral carrier of p. The odd branch additionally quantifies over every actual even native test vector x. There is no shifted lambda quantifier.",
+          "constants": []
+        },
+        "parity": {
+          "status": "REVIEWED",
+          "description": "Even w gives the corrected scalar times the neutral cubic vector. Odd w gives the negative cubic pairing times the corrected even Riesz source, exposed through every even x.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "The parity-dependent nativeParitySourceDefect is exposed directly. D, D-adjoint, cutoff J, and the shifted transformed operator output belong to separate identities and are not conclusions of this declaration.",
+          "constants": []
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "The odd pairing is conjugate-linear in the even test vector x, hence star(fullCorrectedSourceScalar L K x) and the required minus sign. No norm or sign bound is inferred.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Both parities expose the SAME complete corrected source functional, including the odd Riesz pairing with its required complex conjugation.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.nativeParitySource_arithmetic_exposure"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound3/NewbornSource.lean",
+          "sha256": "551e814e37e2346246479ac225e1de309a67919e861c9ef36da34d7b20b7ac85",
+          "contains": [
+            "nativeParitySource_arithmetic_exposure"
+          ]
+        }
+      ]
+    },
+    "Zeta23.OPICARound3.fullCorrectedSourceScalar_eq": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "The exact displayed scalar equality fullCorrectedSourceScalar L K u = poleNeutralCorrectedCubicSource L K u for an actual even native pole-neutral vector u.",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "Every positive aperture L, cutoff K>=3 and u in poleNeutralEvenSubspace L K. This theorem has no selected-parity parameter, shifted lambda or range conclusion.",
+          "constants": []
+        },
+        "parity": {
+          "status": "REVIEWED",
+          "description": "Even native pole-neutral input only; no odd transfer identity is asserted by this scalar adapter.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "REVIEWED",
+          "description": "Exactly the upstream quadratic-normal scalar normalization and the actual removed-output correction; no rescaling or correction deletion.",
+          "constants": []
+        },
+        "maps": {
+          "status": "NOT_APPLICABLE",
+          "description": "Scalar equality only. No cutoff inclusion, parity transfer D or D-adjoint, shifted output, range or kernel equation occurs in this declaration.",
+          "constants": []
+        },
+        "norms": {
+          "status": "NOT_APPLICABLE",
+          "description": "No norm estimate or projection/range theorem is asserted; coefficients retain their exact upstream definitions.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "The displayed complete arithmetic scalar equals the proved corrected cubic source, retaining the removed-output correction.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.fullCorrectedSourceScalar_eq"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound3/NewbornSource.lean",
+          "sha256": "551e814e37e2346246479ac225e1de309a67919e861c9ef36da34d7b20b7ac85",
+          "contains": [
+            "fullCorrectedSourceScalar_eq"
+          ]
+        }
+      ]
+    },
+    "Zeta23.OPICARound3.Validation.newborn_source_K3_regular_consumer": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "The same constructed NativeNewbornSourceWitness at K=3, not an unrelated negative vector.",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "Conditional on a newborn witness at K=3 and L>0, for either parity.",
+          "constants": []
+        },
+        "parity": {
+          "status": "REVIEWED",
+          "description": "Both even and odd predecessors at K=2 have dimension zero.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "The actual same-parity cutoff J has zero-dimensional domain, so its predecessor kernel projection cannot supply a resonant branch.",
+          "constants": []
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "The existing unit shell and Schur-created w are retained.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "The packet's regular negative Schur branch is forced at K=3. This proves neither global K3 positivity nor existence of a K3 negative packet.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.OPICARound3.Validation.newborn_source_K3_regular_consumer"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/OPICARound3/Validation/NewbornSource.lean",
+          "sha256": "55c5a6787a8a0f341420169ece109ecdb6a1490a48e346a043001ef9b5c166fb",
+          "contains": [
+            "newborn_source_K3_regular_consumer"
+          ]
+        }
+      ]
+    },
+    "Zeta23.CCM.poleNeutralEvenOutputResidual_eq_normal": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "Literal upstream actual-source identity. Its exact exported type determines all hypotheses; proof dependencies are not additional premises.",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "Fixed physical L,K with exactly the positivity/eligibility hypotheses in the exported statement.",
+          "constants": []
+        },
+        "parity": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "Native coefficient/physical source map or complete projected-output residual; compressed defect alone is not the full output residual.",
+          "constants": []
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Actual complex Hilbert inner product and orthogonal projection conventions; no generic isomorphism replaces an isometry.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Equality/identity only: it supplies no independent source sign.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.CCM.poleNeutralEvenOutputResidual_eq_normal"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/CCM/CanonicalPoleNeutralNormals.lean",
+          "sha256": "6ba64dc7ae340d2286d55d92a342fc180607a2cd7f79261418c0646650b2d289",
+          "contains": [
+            "poleNeutralEvenOutputResidual_eq_normal"
+          ]
+        }
+      ]
+    },
+    "Zeta23.CCM.poleNeutralCorrectedCubicSource_eq_explicitCanonicalSourceMoment": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "Literal upstream actual-source identity. Its exact exported type determines all hypotheses; proof dependencies are not additional premises.",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "Fixed physical L,K with exactly the positivity/eligibility hypotheses in the exported statement.",
+          "constants": []
+        },
+        "parity": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "Native coefficient/physical source map or complete projected-output residual; compressed defect alone is not the full output residual.",
+          "constants": []
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Actual complex Hilbert inner product and orthogonal projection conventions; no generic isomorphism replaces an isometry.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Equality/identity only: it supplies no independent source sign.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.CCM.poleNeutralCorrectedCubicSource_eq_explicitCanonicalSourceMoment"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/CCM/CanonicalPoleNeutralNormals.lean",
+          "sha256": "6ba64dc7ae340d2286d55d92a342fc180607a2cd7f79261418c0646650b2d289",
+          "contains": [
+            "poleNeutralCorrectedCubicSource_eq_explicitCanonicalSourceMoment"
+          ]
+        }
+      ]
+    },
+    "Zeta23.CCM.canonicalPoleNeutralRankOneIntertwining": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "Literal upstream actual-source identity. Its exact exported type determines all hypotheses; proof dependencies are not additional premises.",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "Fixed physical L,K with exactly the positivity/eligibility hypotheses in the exported statement.",
+          "constants": []
+        },
+        "parity": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "Native coefficient/physical source map or complete projected-output residual; compressed defect alone is not the full output residual.",
+          "constants": []
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Actual complex Hilbert inner product and orthogonal projection conventions; no generic isomorphism replaces an isometry.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Equality/identity only: it supplies no independent source sign.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.CCM.canonicalPoleNeutralRankOneIntertwining"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/CCM/CanonicalPoleNeutralNormals.lean",
+          "sha256": "6ba64dc7ae340d2286d55d92a342fc180607a2cd7f79261418c0646650b2d289",
+          "contains": [
+            "canonicalPoleNeutralRankOneIntertwining"
+          ]
+        }
+      ]
+    },
+    "Zeta23.CCM.nativePoleNeutralParityAmbient_energy": {
+      "status": "REVIEWED_SOURCE_CROSSWALK",
+      "axes": {
+        "object_identity": {
+          "status": "REVIEWED",
+          "description": "Literal upstream actual-source identity. Its exact exported type determines all hypotheses; proof dependencies are not additional premises.",
+          "constants": []
+        },
+        "aperture_cutoff_quantifiers": {
+          "status": "REVIEWED",
+          "description": "Fixed physical L,K with exactly the positivity/eligibility hypotheses in the exported statement.",
+          "constants": []
+        },
+        "parity": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "normalization": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "maps": {
+          "status": "REVIEWED",
+          "description": "Native coefficient/physical source map or complete projected-output residual; compressed defect alone is not the full output residual.",
+          "constants": []
+        },
+        "norms": {
+          "status": "REVIEWED",
+          "description": "Actual complex Hilbert inner product and orthogonal projection conventions; no generic isomorphism replaces an isometry.",
+          "constants": []
+        },
+        "derivative_moment_order": {
+          "status": "UNREVIEWED",
+          "description": "No semantic classification inferred from dependency use.",
+          "constants": []
+        },
+        "polarity": {
+          "status": "REVIEWED",
+          "description": "Equality/identity only: it supplies no independent source sign.",
+          "constants": []
+        }
+      },
+      "evidence_declarations": [
+        "Zeta23.CCM.nativePoleNeutralParityAmbient_energy"
+      ],
+      "source_anchors": [
+        {
+          "path": "Zeta23/CCM/DetectorRetainedSchurState.lean",
+          "sha256": "0a3a36aef9fa502dcc6664d07693d83d1996a1f543ef4616fb31bd045d21db89",
+          "contains": [
+            "nativePoleNeutralParityAmbient_energy"
+          ]
+        }
+      ]
+    }
+  },
+  "scope": "HISTORICAL_DISPOSITIONS_PRESERVED_WITH_EXACT_CURRENT_WARM_NATIVE_E1_E9_SUPPORT;NO_UNIFORM_ARITHMETIC_OR_RH_CLOSURE",
+  "source_only_review": {
+    "historical_source_only_count": 1761,
+    "targeted_search_terms": [
+      "index",
+      "rank",
+      "sign",
+      "moment",
+      "first contact",
+      "source symmetry"
+    ],
+    "status": "TARGETED_ROOT_AND_IDENTITY_CROSSWALK_NOT_EXHAUSTIVE_SOURCE_ONLY_OR185_CONTACT_REVIEW",
+    "all185_contacts_semantically_reviewed": false,
+    "priority_triple_contacts": 18,
+    "rule": "Compiler constant-use contacts are candidates, never mathematical implications. All unreviewed contact rows remain UNREVIEWED."
+  },
+  "new_arithmetic_estimate": "OPEN",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "extension_authority": "FRESH_ISOLATED_WARM_NATIVE_MODULE_AND_TYPE_AXIOM_CHECKS_PRODUCTION_QUALIFICATION_PENDING",
+  "production_qualification": "PENDING_ROOT_E10_INTEGRATION_ACCEPTANCE",
+  "extension_dispositions": [
+    {
+      "id": "E1",
+      "title": "Conditional closure and exact negative-ground restrictions",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "what_became_formally_true": "Both actual all-ray comparisons, or the weaker two comparisons only at each actual negative ground strictly below the opposite ground, together with a separate shared-negative-ground exclusion, imply no simultaneous native parity negativity. Uniform common thresholds precede aperture and cutoff. D02 then gives a conditional no-off-line-zero consumer.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.EvenNegativeGroundRestriction",
+        "Zeta23.OPICARound4.OddNegativeGroundRestriction",
+        "Zeta23.OPICARound4.even_negative_ground_restriction_of_all_ray",
+        "Zeta23.OPICARound4.odd_negative_ground_restriction_of_all_ray",
+        "Zeta23.OPICARound4.noBothNeg_of_actual_ground_comparisons",
+        "Zeta23.OPICARound4.EventualNegativeGroundClosure",
+        "Zeta23.OPICARound4.eventual_noBothNeg_of_ground_closure",
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_ground_closure"
+      ],
+      "hypotheses_and_scope": "Actual L>0,K>=3 and genuine parity bottoms/rays; the odd source uses its own adjoint ray. No all-ray definition is narrowed and no shared branch is removed. All arithmetic restrictions remain explicit hypotheses.",
+      "remaining_OPEN": [
+        "Prove the actual even and odd source comparisons or exact-ground restrictions.",
+        "Exclude actual shared negative grounds.",
+        "Prove a common eventual threshold uniform in every relevant cutoff."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E2",
+      "title": "Bounded composition search",
+      "status": "ROOT_MAINTAINED_BOUNDED_TOOLING_NOT_COMPLETENESS",
+      "label": "TOOLING_SUPPORT",
+      "what_became_formally_true": "The root-owned registry/proposer searches bounded typed compositions and native elaboration validates accepted candidates; no mathematical completeness, target impossibility, or independent arithmetic restriction follows from budget exhaustion.",
+      "evidence_declarations": [],
+      "hypotheses_and_scope": "ROOT_REGISTRY_AND_EXECUTION_GATES_SEPARATE_FROM_THEOREM_AUTHORITY",
+      "remaining_OPEN": [
+        "Actual open arithmetic target proofs.",
+        "Any search-completeness claim beyond the declared finite budget."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E3",
+      "title": "Canonical grouped signed spectral measure and Pick kernel",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "what_became_formally_true": "Canonical whole-eigenspace orthogonal projectors sum to identity. The actual complex grouped coefficients f(D^-1 P_beta g) are real under the full Hermitian rank-one intertwining hypotheses, and both native parity resolvents have exact grouped signed expansions. The finite signed Pick identity has a Cauchy Gram representation; every strictly negative sample subspace has dimension at most the number of negative atoms. Equality is conditional on the explicit Cauchy evaluation equivalence.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.groupedSpectralProjector",
+        "Zeta23.OPICARound4.sum_groupedSpectralProjector",
+        "Zeta23.OPICARound4.groupedSpectralCoefficient_star",
+        "Zeta23.OPICARound4.grouped_signed_resolvent_expansion",
+        "Zeta23.OPICARound4.native_even_grouped_resolvent_expansion",
+        "Zeta23.OPICARound4.native_odd_grouped_resolvent_expansion",
+        "Zeta23.OPICARound4.finite_signed_pick_identity",
+        "Zeta23.OPICARound4.finite_signed_pick_gram",
+        "Zeta23.OPICARound4.finite_signed_pick_negative_subspace_bound",
+        "Zeta23.OPICARound4.finite_signed_pick_negative_subspace_exact"
+      ],
+      "hypotheses_and_scope": "Finite complex Hilbert spaces, Hermitian A and B, invertible actual D, and the actual rank-one intertwining. Residues stay signed, repeated eigenvalues are grouped canonically, and each resolvent has its exact domain. Pick equality retains its Cauchy-map hypothesis.",
+      "remaining_OPEN": [
+        "A physical Weil-form to spectral Pick-index bridge.",
+        "Any native at-most-one negative-atom/index claim.",
+        "Source-specific sign or smallness of the signed measure."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E4",
+      "title": "Visibility alternatives and full-model zero-residue rigidity",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "what_became_formally_true": "Input or output invisibility forces zero grouped mass, and invisible actual eigenmodes are retained as shared modes. Under the full finite Hermitian A/B, invertible D and rank-one model, zero grouped signed mass is equivalent to input invisibility or whole-eigenspace output invisibility. A third pure-cancellation mechanism with both sides visible is excluded in this full model.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.GroupedInputInvisible",
+        "Zeta23.OPICARound4.GroupedOutputInvisible",
+        "Zeta23.OPICARound4.grouped_invisible_residue_zero",
+        "Zeta23.OPICARound4.zero_residue_does_not_remove_eigenspace",
+        "Zeta23.OPICARound4.native_even_visible_or_shared_mode",
+        "Zeta23.OPICARound4.native_odd_visible_or_shared_mode",
+        "Zeta23.OPICARound4.rank_one_kernel_pairing_rigidity",
+        "Zeta23.OPICARound4.grouped_zero_coefficient_rigidity",
+        "Zeta23.OPICARound4.grouped_residue_zero_iff_input_or_output_invisible"
+      ],
+      "hypotheses_and_scope": "Exact zero rigidity requires BOTH Hermitian operators, finite dimensions, invertible D and the full rank-one relation. It proves no uniform nonzero lower bound. Visible/visible cross-observation cancellation remains possible outside that full semisimple model; the nilpotent rank-one control is outside those hypotheses.",
+      "remaining_OPEN": [
+        "Source-specific exclusion of input-invisible negative modes.",
+        "Source-specific exclusion of output-invisible negative modes.",
+        "A quantitative observation lower bound for actual selected states."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E5",
+      "title": "Dimension-free native source and signed concentration budgets",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "what_became_formally_true": "The proved atom contraction implies actual operator norm<=2 without a Fourier dimension factor. Complete corrected-row/Riesz budgets retain the uncompressed arch action, every von-Mangoldt prime power, native index inverse cost two, and both signed trace displacements. Actual Fourier exchange gives C=Cplus+Cminus and native source energy=Cplus-Cminus, full complex mixed sqrt(C_h*C_u) control, C<=I and S^2<=C on [0,1/2], and C<=2I and S^2<=2C on [0,1]. Native log(q)>=L/2 is exactly the stronger late regime. Signed real upper/lower intervals retain Re(-Arch) for corrected source and Re(Arch(v)) for the actual reciprocal odd response.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.nativeSourceAtom_norm_le_two",
+        "Zeta23.OPICARound4.native_complete_row_budget",
+        "Zeta23.OPICARound4.native_corrected_riesz_budget",
+        "Zeta23.OPICARound4.native_inverse_adjoint_cost",
+        "Zeta23.OPICARound4.native_even_complete_signed_budget",
+        "Zeta23.OPICARound4.native_odd_complete_signed_budget",
+        "Zeta23.OPICARound4.native_source_mixed_concentration_bound",
+        "Zeta23.OPICARound4.native_source_square_concentration_full",
+        "Zeta23.OPICARound4.native_source_square_concentration_half",
+        "Zeta23.OPICARound4.native_prime_half_coordinate_iff",
+        "Zeta23.OPICARound4.native_prime_concentration_budget_regime_fallback",
+        "Zeta23.OPICARound4.native_corrected_source_concentration_real_interval",
+        "Zeta23.OPICARound4.native_odd_concentration_real_interval"
+      ],
+      "hypotheses_and_scope": "All mixed vectors are retained. The full interval counts overlap with multiplicity; finite Cplus/Cminus compressions are not generally projections. No full-range C<=I or S^2<=C claim is made. Absolute norm bounds are separate from primary signed real intervals.",
+      "remaining_OPEN": [
+        "A useful source-specific arithmetic gain uniform in the required aperture/cutoff regime.",
+        "A strict actual source budget beating the genuine spectral margin.",
+        "Any blanket improvement over the existing signed S05 bound."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E6",
+      "title": "Exact Chebyshev log discrepancy and adaptive native tests",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "what_became_formally_true": "Finite discrete Abel summation against actual Chebyshev.psi and integration by parts prove sum Lambda(q)/sqrt(q)*F(log q)-integral exp(y/2)F = -integral (psi(exp y)-exp y) exp(-y/2)(Fprime-F/2) for the stated C1 endpoint-zero complex tests. The actual native F has proved endpoints and explicit derivative. The declared amplitude/variation class has actual source-selected membership and inverse-gap norm pricing. Uniform arithmetic bounds are explicit consumer hypotheses. Exact odd reciprocity is S_odd=-conj(f(v)) for v=(A-lambda)^-1(D^-1g), with full signed/conjugated arithmetic and adaptive response consumers.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.prime_log_abel",
+        "Zeta23.OPICARound4.prime_discrepancy_log_integral",
+        "Zeta23.OPICARound4.native_prime_discrepancy_integral",
+        "Zeta23.OPICARound4.nativeAdaptiveTestClass",
+        "Zeta23.OPICARound4.UniformPrimeDiscrepancyBound",
+        "Zeta23.OPICARound4.native_source_selected_membership",
+        "Zeta23.OPICARound4.actual_even_ray_gap_norm",
+        "Zeta23.OPICARound4.actual_odd_resolvent_gap_norm",
+        "Zeta23.OPICARound4.native_adaptive_complete_budget",
+        "Zeta23.OPICARound4.nativeOddReciprocalInput",
+        "Zeta23.OPICARound4.native_odd_response_eq_reciprocal_source",
+        "Zeta23.OPICARound4.native_odd_response_complete_arithmetic",
+        "Zeta23.OPICARound4.actual_odd_reciprocal_gap_norm",
+        "Zeta23.OPICARound4.native_odd_adaptive_response_budget",
+        "Zeta23.OPICARound4.native_odd_response_lt_one_of_adaptive_budget"
+      ],
+      "hypotheses_and_scope": "The generic identity exposes regularity/integrability rather than defining discrepancy to force equality. Actual source tests satisfy those prerequisites. The original even-resolvent/Riesz input remains distinct support and is not substituted for the odd response. Gap blow-up remains priced; shared-ground exclusion supplies no uniform gap.",
+      "remaining_OPEN": [
+        "Uniform arithmetic smallness over the declared class.",
+        "Uniform derivative-variation, inverse-gap and strict-margin budgets for the actual selected family.",
+        "No automatic nilsequence or other external number-theory test-class inclusion."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E7",
+      "title": "Actual negative plane and conditional joint-index restriction",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "what_became_formally_true": "The actual D03 even/odd negative frame spans a complex physical plane of dimension two, strictly negative on every nonzero vector. A uniform eventual cap of one on the native joint negative index contradicts the D03 plane and, conditionally through D02, excludes off-line zeros.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.native_frame_negative_physical_plane",
+        "Zeta23.OPICARound4.frame_strictly_negative_native_plane",
+        "Zeta23.OPICARound4.frame_contradicts_native_joint_index",
+        "Zeta23.OPICARound4.EventualNativeJointNegativeIndexCap",
+        "Zeta23.OPICARound4.no_off_line_zero_of_eventual_native_joint_index"
+      ],
+      "hypotheses_and_scope": "Actual common aperture/cutoff and the D03 frame, not unrelated negative witnesses. Strict negativity is over the full complex span. The eventual index cap is an explicit OPEN hypothesis, not an axiom or proved arithmetic restriction.",
+      "remaining_OPEN": [
+        "Prove the actual eventual native joint negative-index cap.",
+        "A source-specific index inequality on the full physical operator."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E8",
+      "title": "Fixed seeds, moving contact pencil and retained seam jets",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "what_became_formally_true": "G01 is closed: invertible multiplication by a+n^2 for a=(L/(4*pi))^2 identifies fixed even M0=M2=M4=0 and fixed odd M1=M3=0 seeds with the actual moving physical pole-neutral carriers, retaining the exact positive pullback Gram form and both exponential moments. Contact differentiation retains both frame terms and the Gram derivative: Hprime-lambda*Gprime, plus -lambdaPrime*G for moving lambda. Existing canonical seam theorems retain rank-one first-jet annihilation, zero second jet, fixed-vector seventh/ninth source jets and the exact source coordinate h/(log(q)+h).",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.RegularCells.fixedSeedDiagonalEquiv",
+        "Zeta23.OPICARound4.RegularCells.fixedEvenSeedPhysicalEquiv",
+        "Zeta23.OPICARound4.RegularCells.fixedOddSeedPhysicalEquiv",
+        "Zeta23.OPICARound4.RegularCells.fixedSeedGram_eq_physical_inner",
+        "Zeta23.OPICARound4.RegularCells.fixedSeedGram_pos",
+        "Zeta23.OPICARound4.RegularCells.fixedEvenSeedPhysicalEquiv_exponentialMoments",
+        "Zeta23.OPICARound4.RegularCells.fixedOddSeedPhysicalEquiv_exponentialMoments",
+        "Zeta23.OPICARound4.neutral_contact_pencil_hasDerivAt",
+        "Zeta23.OPICARound4.moving_neutral_contact_pencil_hasDerivAt",
+        "Zeta23.OPICARound4.native_fixedSeed_contact_pencil_hasDerivAt"
+      ],
+      "hypotheses_and_scope": "All L>0 and every cutoff for G01; no isometry is inferred. Native contact specialization keeps actual source HasDerivAt as an explicit premise. Seam jets are fixed-vector statements; no new PrimeSeamContact wrapper or uniform remainder proof was added.",
+      "remaining_OPEN": [
+        "Actual contact crossing sign or barrier.",
+        "A canonical uniform ninth-order remainder instance.",
+        "Uniform moving-state/frame/aperture variation costs near seams.",
+        "G03 spectral analytic composition and G04-G08 source-specific asymptotic/nonidentity/selection leaves."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    {
+      "id": "E9",
+      "title": "Diagonal-safe actual source dictionary crosswalk",
+      "status": "PROVED_SUPPORT_WITH_EXPLICIT_OPEN_LEAVES",
+      "label": "PROVED",
+      "what_became_formally_true": "The confluent node-jet matrix uses actual derivatives at every repeated/equal node. Matching node values AND actual derivatives gives matrix equality. Perturbing by epsilon*sin(2*pi*x) preserves integer values but shifts derivatives by 2*pi*epsilon and changes every nonempty integer-node matrix for nonzero epsilon. The native sine potential has its actual derivative and reproduces the actual complex sourceMatrix for every omega,K. External dictionary equality is conditional on independently proved native value and derivative matches.",
+      "evidence_declarations": [
+        "Zeta23.OPICARound4.nodeJetMatrix",
+        "Zeta23.OPICARound4.nodeJetMatrix_eq_of_node_jets",
+        "Zeta23.OPICARound4.integerNodePerturb_value",
+        "Zeta23.OPICARound4.integerNodePerturb_deriv",
+        "Zeta23.OPICARound4.integer_node_values_same_matrix_ne",
+        "Zeta23.OPICARound4.nativeSinePotential_hasDerivAt",
+        "Zeta23.OPICARound4.diagonal_safe_source_regression",
+        "Zeta23.OPICARound4.external_dictionary_source_eq_of_node_jets"
+      ],
+      "hypotheses_and_scope": "Repeated nodes are handled explicitly; differentiability at nodes is retained for the perturbation control. No external dictionary representation or positivity theorem is assumed.",
+      "remaining_OPEN": [
+        "An independently proved external real-even or odd-complex dictionary representation with the required node and derivative matches.",
+        "Any full source/operator equivalence inferred from integer values alone."
+      ],
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    }
+  ],
+  "post_green_extension_pass": {
+    "workflow_harvest": "Source80, spectral91, closure81 and dictionary18 declaration type/transitive-axiom audits passed under exact-source native4.33.0-rc2 warmed dependency checks. Local formal gates are distinct from pending root production qualification and from finite numerical research replays.",
+    "what_changed": [
+      "Grouped native projector measure/reality and signed Pick support are PROVED.",
+      "The exact unweighted Chebyshev log discrepancy identity is PROVED for actual native tests.",
+      "G01 fixed-seed geometry and positive Gram identification are PROVED.",
+      "Exact negative-ground restrictions are a weaker sufficient closure target than all-ray restrictions.",
+      "Full-model zero mass has a proved input-or-output invisibility classification."
+    ],
+    "upstream_implications": [
+      "Remove Fourier dimension factors from prime action bounds when the native operator norm two suffices.",
+      "Reuse exact fixed seeds and Gram metrics instead of postulating a unitary neutral frame.",
+      "Retain actual diagonal derivative jets in every dictionary source identification."
+    ],
+    "downstream_implications": [
+      "Future arithmetic estimates may target the two actual lower negative grounds while retaining the shared-ground branch.",
+      "Uniform arithmetic estimates may be applied to adaptively selected native tests after the proved class membership and explicit norm/variation costs.",
+      "Visibility work can focus on source-specific input or output invisible negative modes; a third pure-zero mechanism is excluded only under the full model."
+    ],
+    "resurrected_routes": [
+      "Source-specific concentration size control and signed arch cancellation.",
+      "Exact moving-test Chebyshev discrepancy, with the correct odd reciprocal input.",
+      "G01-backed fixed-coordinate generalized contact analysis."
+    ],
+    "new_RH_relevant_clues": [
+      {
+        "label": "LEAD",
+        "claim": "Measure and then prove the signed actual-source budget at the exact lower parity ground, rather than asserting an all-shift estimate."
+      },
+      {
+        "label": "LEAD",
+        "claim": "Attack the two actual invisible negative-mode branches after full-model zero-residue rigidity."
+      }
+    ],
+    "falsification_checks": [
+      "Concentration is not uniformly superior to signed S05; preserve exact signed arch terms and actual-state comparisons.",
+      "Shared-ground exclusion gives no uniform spectral gap, and priced selected-state norms can blow up.",
+      "At omega=1 the concentration is twice coefficient energy, so full-range half-aperture promotion is false.",
+      "The odd Riesz-support test is not the odd response; the reciprocal source has the required minus conjugation.",
+      "Integer values alone miss the actual diagonal jets.",
+      "Finite interval campaigns and source-blind countermodels do not prove uniform actual arithmetic restrictions."
+    ],
+    "highest_leverage_next_moves": [
+      "Prove an independently priced actual-source arithmetic budget that beats its genuine strict spectral margin.",
+      "Establish source-specific input/output negative-mode invisibility exclusions or quantitative observability.",
+      "Derive source-faithful G04-G06 analytic/nonidentity anchors in the proved G01 geometry."
+    ],
+    "standing_answer": "New exact bridges compress the remaining source-specific obligations; none supplies their missing arithmetic sign, size, visibility or eventual uniformity. RH and Step4 remain OPEN."
+  }
+}

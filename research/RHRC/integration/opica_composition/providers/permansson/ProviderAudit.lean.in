@@ -1,0 +1,66 @@
+import PermanssonResearch.ReverseSolver.ComputableFiniteMonitor
+import Lean.Elab.Command
+import Lean.Util.CollectAxioms
+
+/-! Independently restated generic contracts, in the provider's Lean4.34 world.
+These are policy capability consumers, not a model of live theorem search. -/
+namespace OPICAProviderAudit
+open PermanssonResearch.ReverseSolver
+open ControlledKernel FiniteMonitor
+universe uC uS
+
+theorem value_eq_spec_consumer
+    {C : Type uC} [DecidableEq C] {n : ℕ} {S : Type uS}
+    (sys : FiniteControlSystem C n) (M : Monitor C n S)
+    (r t : ℕ) (y : Fin n) (s : S) :
+    computedValue sys M r t y s = value sys M r t y s := by
+  exact computedValue_eq_value sys M r t y s
+
+theorem least_choice_consumer
+    {C : Type uC} [DecidableEq C] {n : ℕ} {S : Type uS} [LinearOrder C]
+    (sys : FiniteControlSystem C n) (M : Monitor C n S)
+    (v : Fin n → S → ℚ) (t : ℕ) (y : Fin n) (s : S) :
+    leastMaximizingControl sys M v t y s ∈ sys.options y ∧
+      score sys M v t y s (leastMaximizingControl sys M v t y s) =
+        maximumScore sys M v t y s := by
+  exact leastMaximizingControl_spec sys M v t y s
+
+theorem maximizer_attains_consumer
+    {C : Type uC} [DecidableEq C] {n : ℕ} {S : Type uS} [LinearOrder C]
+    (sys : FiniteControlSystem C n) (M : Monitor C n S)
+    (N r t : ℕ) (y : Fin n) (s : S) (hr : t+r=N) :
+    deterministicValue sys M (computedMaximizer sys M N) r t y s =
+      computedValue sys M r t y s := by
+  exact computedMaximizer_attains sys M N r t y s hr
+
+open Lean Elab Command Meta
+private def audit (declaration consumer : Name) : CommandElabM Unit := do
+  let original ← getConstInfo declaration
+  let checked ← getConstInfo consumer
+  liftTermElabM do
+    check (mkConst consumer (checked.levelParams.map Level.param))
+    unless ← isDefEq original.type checked.type do
+      throwError "independent provider expected type differs"
+  let axioms ← Lean.collectAxioms declaration
+  let consumerAxioms ← Lean.collectAxioms consumer
+  for ax in axioms ++ consumerAxioms do
+    unless #[`propext, `Classical.choice, `Quot.sound].contains ax do
+      throwError "unapproved full transitive provider axiom {ax}"
+  let some proof := original.value? (allowOpaque := true)
+    | throwError "provider theorem has no proof value"
+  let row := Json.mkObj [
+    ("declaration", .str declaration.toString), ("consumer", .str consumer.toString),
+    ("type_expression", .str (reprStr original.type)),
+    ("consumer_type_expression", .str (reprStr checked.type)),
+    ("proof_value_expression", .str (reprStr proof)),
+    ("axioms", toJson (axioms.toList.map Name.toString |>.mergeSort (· < ·))),
+    ("consumer_axioms", toJson (consumerAxioms.toList.map Name.toString |>.mergeSort (· < ·)))]
+  liftIO <| IO.println ("OPICA_PROVIDER\t" ++ row.compress)
+
+run_cmd audit `PermanssonResearch.ReverseSolver.FiniteMonitor.computedValue_eq_value `OPICAProviderAudit.value_eq_spec_consumer
+run_cmd audit `PermanssonResearch.ReverseSolver.FiniteMonitor.leastMaximizingControl_spec `OPICAProviderAudit.least_choice_consumer
+run_cmd audit `PermanssonResearch.ReverseSolver.FiniteMonitor.computedMaximizer_attains `OPICAProviderAudit.maximizer_attains_consumer
+run_cmd do
+  let names := (← getEnv).header.moduleNames.toList.map Name.toString |>.mergeSort (· < ·)
+  liftIO <| IO.println ("OPICA_PROVIDER_MODULES\t" ++ (toJson names).compress)
+end OPICAProviderAudit

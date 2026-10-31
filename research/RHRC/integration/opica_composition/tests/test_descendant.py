@@ -1,0 +1,104 @@
+import json
+from pathlib import Path
+import tempfile
+import unittest
+from research.RHRC.integration.opica_composition.descendant import (
+ classification_delta,current_compatibility_scope,require_acyclic_fingerprint,policy_body,
+ validate_workflow_migration,validate_classification_extension,exact_rule,BASE,BASE_TREE,
+ DOCUMENTATION_ADDITIONS,DOCUMENTATION_EDITS,documentation_migration,preserve_documentation_renderer,
+ preserve_agent_instructions)
+from research.RHRC.integration.opica_composition.canonical import ContractError,canonical_bytes,digest
+from research.RHRC.permansson.opica_composition import qualify_provider,PROVIDER_REPO,PROVIDER_COMMIT,PROVIDER_LEAN,SELECTED_APIS
+
+class DescendantTests(unittest.TestCase):
+    def test_documentation_migration_is_closed_and_preserves_renderer_bytes(self):
+        manifest={'schema':'OPICA4_CLOSED_DESCENDANT_MANIFEST_V1','base':BASE,'base_tree':BASE_TREE,
+                  'add':[{'path':p} for p in DOCUMENTATION_ADDITIONS],
+                  'edit':[{'path':p} for p in DOCUMENTATION_EDITS], 'generated':[], 'preserve':[],
+                  'documentation_migration':documentation_migration()}
+        policy=policy_body(manifest)
+        for mutation in ('extra_authorization','missing_add','missing_edit','missing_migration'):
+            altered=json.loads(json.dumps(manifest))
+            if mutation=='extra_authorization':
+                altered['documentation_migration']['edit'].append('Zeta23/Final.lean')
+            elif mutation=='missing_add':altered['add'].pop()
+            elif mutation=='missing_edit':altered['edit'].pop()
+            else:altered.pop('documentation_migration')
+            with self.subTest(mutation=mutation),self.assertRaises(ContractError):policy_body(altered)
+        with self.assertRaises(ContractError):
+            classification_delta({'README.md'},{'README.md','docs/unreviewed.md'},policy)
+        block=b'<!-- RHRC_CURRENT_STATE_BEGIN -->\nRH = OPEN\n<!-- RHRC_CURRENT_STATE_END -->'
+        parent=b'old introduction\n'+block+b'\nold history\n'
+        preserve_documentation_renderer(b'new introduction\n'+block+b'\nnew navigation\n',parent,path='README.md')
+        for changed in (block.replace(b'RH = OPEN',b'RH = PROVED'),b'no markers',block+block,
+                        b'<!-- RHRC_CURRENT_STATE_END --><!-- RHRC_CURRENT_STATE_BEGIN -->'):
+            with self.subTest(changed=changed),self.assertRaises(ContractError):
+                preserve_documentation_renderer(changed,parent,path='README.md')
+        instructions=b'Keep the original Markdown/JSON contracts\nAll proof and post-green rules remain.\n'
+        preserve_agent_instructions(b'New navigation\n'+instructions,b'Old navigation\n'+instructions)
+        for changed in (b'no anchor',instructions+instructions,instructions.replace(b'All proof',b'No proof')):
+            with self.subTest(changed=changed),self.assertRaises(ContractError):
+                preserve_agent_instructions(changed,instructions)
+    def test_all_legacy_workflow_families_have_current_child_hops(self):
+        validate_workflow_migration(Path(__file__).resolve().parents[5])
+    def test_missing_original_contract_hop_rejects(self):
+        repo=Path(__file__).resolve().parents[5]
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);workflows=root/'.github/workflows';workflows.mkdir(parents=True)
+            for name in ('rhrc_opica.yml','rhrc_opica_followup.yml','rhrc_opica_round2.yml','rhrc_opica_round3.yml','rhrc.yml'):
+                text=(repo/'.github/workflows'/name).read_text(encoding='utf-8')
+                if name=='rhrc_opica_followup.yml':text=text.replace('# R4_PARENT_SCOPE_V1','# missing_scope_hop',1)
+                (workflows/name).write_text(text,encoding='utf-8')
+            with self.assertRaises(ContractError):validate_workflow_migration(root)
+    def test_t01(self):
+        with self.assertRaises(ContractError):current_compatibility_scope({'scope':'CURRENT_HOST','checked_commit':'old','checked_tree':'t'},'new','t')
+    def test_t02(self):
+        self.assertNotEqual(digest({'definition':'old'},domain='world'),digest({'definition':'new'},domain='world'))
+        with self.assertRaises(ContractError):current_compatibility_scope({'scope':'CURRENT_HOST','checked_commit':'same','checked_tree':'oldDefs'},'same','newDefs')
+    def test_t03(self):
+        record={'repository':PROVIDER_REPO,'commit':PROVIDER_COMMIT,'toolchain':'wrong','environment':{},
+                'apis':list(SELECTED_APIS),'raw_evidence':{x:{} for x in SELECTED_APIS},'mode':'POLICY_ADAPTER_ONLY'}
+        with self.assertRaises(ContractError):qualify_provider(record,expected_environment={},replay=lambda *_:True)
+    def test_t04(self):
+        from research.RHRC.integration.opica_composition.contracts import WorkerConfig
+        with self.assertRaises(ContractError):WorkerConfig.from_dict({'schema':'OPICA_WORKER_CONFIG_V1',
+            'lean':'/trusted/lean','toolchain_root':'/trusted','lean_paths':[],
+            'bubblewrap':'/usr/bin/bwrap','prlimit':'/usr/bin/prlimit','production':True,
+            'budget':None,'LEAN_PATH':'unapprovedCrossCompiler'})
+    def test_t74(self):
+        with self.assertRaises(ContractError):classification_delta({'old'},{'old','hidden.lean'},{'add':[]})
+    def test_t75(self):
+        with tempfile.TemporaryDirectory() as td:
+            p=Path(td);(p/'.github/workflows').mkdir(parents=True)
+            (p/'.github/workflows/rhrc_opica_round3.yml').write_text('R4_PARENT_SCOPE_V1 '+BASE+' persist-credentials: false')
+            (p/'.github/workflows/rhrc_opica_round2.yml').write_text('old selector')
+            with self.assertRaises(ContractError):validate_workflow_migration(p)
+    def test_t76(self):
+        base={'rules':[]};wanted=exact_rule('new',['one.py'],'RESEARCH_EXECUTABLE','AUDIT_ONLY')
+        with self.assertRaises(ContractError):validate_classification_extension({'rules':[{'id':'new','pattern':'^research/.*'}]},base,[wanted])
+    def test_t77(self):
+        with self.assertRaises(ContractError):current_compatibility_scope({'scope':'FROZEN_BASELINE','checked_commit':BASE,'checked_tree':BASE_TREE},BASE,BASE_TREE)
+    def test_t85(self):
+        with self.assertRaises(ContractError):require_acyclic_fingerprint({'source','view.json'},{'view.json'})
+    def test_t86(self):
+        # Orchestration IDs stay outside content-addressed semantic data.
+        from research.RHRC.integration.opica_composition.views import semantic_projection
+        a={'source':'a'*64,'claim':'x','run_id':'one'};b={**a,'run_id':'two'}
+        self.assertEqual(canonical_bytes(semantic_projection(a)),canonical_bytes(semantic_projection(b)))
+    def test_t103(self):
+        from research.RHRC.integration.opica_composition.snapshot import check_snapshot,freeze_source_epoch,file_hash
+        from research.RHRC.integration.opica_composition.contracts import ExperimentSpec
+        import subprocess
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);p=root/'checker.py';p.write_bytes(b'old')
+            for name in ('lean-toolchain','lakefile.toml','lake-manifest.json'):(root/name).write_bytes(b'fixture')
+            def git(*args):return subprocess.check_output(['git','-C',str(root),*args],stderr=subprocess.DEVNULL,text=True).strip()
+            git('init');git('add','.');git('-c','user.name=Fixture','-c','user.email=fixture@example.invalid','commit','-m','source fixture')
+            files={x.name:file_hash(x) for x in root.iterdir() if x.is_file()}
+            spec=ExperimentSpec('FIXTURE',git('rev-parse','HEAD'),files,{},'DRAFT')
+            snapshot=freeze_source_epoch(root,spec);p.write_bytes(b'changed')
+            with self.assertRaises(ContractError):check_snapshot(snapshot)
+    def test_t114(self):
+        with self.assertRaises(ContractError):policy_body({'schema':'OPICA4_CLOSED_DESCENDANT_MANIFEST_V1','base':'unmerged','base_tree':BASE_TREE})
+
+if __name__=='__main__':unittest.main()

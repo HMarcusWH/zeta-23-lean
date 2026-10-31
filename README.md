@@ -1,4 +1,25 @@
-# Zeta23 / RHRC — Lean-backed Riemann Hypothesis research
+# Zeta23 / RHRC: formal mathematics and the search for an RH obstruction
+
+**The Riemann Hypothesis (RH) and this programme's Step 4 remain OPEN.**
+This repository contains Lean proofs, conditional reductions, counterexamples,
+finite experiments and research infrastructure. Each answers a different question.
+
+Start with the [project guide](docs/PROJECT_GUIDE.md) for the mathematics,
+the [repository map](docs/REPOSITORY_MAP.md) for files and graphs, or the
+[agent guide](docs/AGENT_GUIDE.md) before contributing.
+The [dated current-state page](docs/CURRENT_STATE.md) identifies the active package
+and evidence boundary. Check [PR #298](https://github.com/HMarcusWH/zeta-23-lean/pull/298)
+for its live head and CI; this README is not a live acceptance receipt.
+
+The latest [source-constraint extension](research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.md)
+compares the genuine source with the consequences of an off-line zero and
+prices the complete finite-to-smooth approximation error. It identifies the
+remaining arithmetic estimate; it does not establish that estimate or close RH.
+
+<details>
+<summary>Historical Control-v2 snapshot: frozen PR #287 scope</summary>
+
+This preserved machine block is a historical receipt, not current PR routing.
 
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
@@ -53,796 +74,166 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
-<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
-**RH, Step 4 and the independent closing inequalities remain OPEN.**
-
-This repository preserves the upstream Zeta23 theorem package and develops
-formal mathematics and research under `Zeta23/CCM`, `Zeta23/ExceptionalZero`,
-`Zeta23/OPICA`, `Zeta23/OPICAFollowup` and `research/RHRC`.
-
-## Start here: current OPICA work
-
-The active OPICA follow-up is [draft PR #294](https://github.com/HMarcusWH/zeta-23-lean/pull/294)
-on `research/opica-native-followup`. The latest staged repairs and exact source
-hashes are recorded in the [Stage 2 handover](research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE2_HANDOVER.md).
-Check the live branch head and workflow evidence before starting work;
-documentation alone creates no proof authority.
-
-The accepted OPICA parent is [merged PR #293](https://github.com/HMarcusWH/zeta-23-lean/pull/293),
-commit `d53dd70d38b0762af130b1d19b795af259f505f5`. Its exact merged/tested-tree
-relationship is recorded in [PARENT_INTAKE.json](research/RHRC/integration/opica_followup/PARENT_INTAKE.json).
-
-Read [AGENTS.md](AGENTS.md), then the [continuation guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md).
-Use the current checkout; historical ZIP overlays and patches must be compared
-with newer work before applying them.
-
-## Current proof and acceptance state
-
-The required scope remains **100 original primary roots / 28 acceptance units**.
-
-| Roots | Evidence and outstanding work |
-| ---: | --- |
-| 41 | Historical exact-source cold subset evidence at `9b6a9a3`; a fresh whole-package receipt is still required. |
-| 15 | Additional original roots passed narrow local module, independent full-type/domain-consumer and standard-axiom checks. Stage 2 adds native moments, residual and memory, weighted mixture and the near-gap mass bound. Aggregate acceptance and the nonzero near-gap family witness remain OPEN. |
-| 1 | The supplied Step 1–3 word/jet consumer fails genuine compilation and remains unaccepted. |
-| 43 | Original roots still lack complete candidate implementations. |
-
-This is not aggregate acceptance of 56 roots or a completed release. The
-[100-root ledger](research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json) separates implementation, compilation,
-independent consumers, axioms, aggregate export and release gates for every root.
-The [remaining-work inventory](research/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md) lists the missing names.
-
-## Repository map for coding agents
-
-| Need | Start here |
-| --- | --- |
-| A complete continuation task | [Next-agent instructions](research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md) |
-| Which documents govern which claims | [Documentation and evidence index](research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md) |
-| Mathematical implementation | [Zeta23/OPICAFollowup](Zeta23/OPICAFollowup) |
-| Frozen theorem contracts | [BUILD_SPEC.md](research/RHRC/integration/opica_followup/BUILD_SPEC.md), [PUBLIC_ROOTS.json](research/RHRC/integration/opica_followup/PUBLIC_ROOTS.json), [PAPER_CROSSWALK.json](research/RHRC/integration/opica_followup/PAPER_CROSSWALK.json) |
-| Foundational PDFs, specification inputs and supporting amendment | [Preserved inputs](research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs) |
-| Current expected-type/domain consumers | [Independent Lean consumers](research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers) |
-| What is checked, failed or pending | [Evidence guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md#evidence-map) and [dated all-job CI harvest](research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/ci-harvest/CI_HARVEST.md) |
-| Proof-lane navigation | [OPICA progress map](research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md) |
-| Repository knowledge graph and its limits | [RHKG guide](research/RHRC/graph/README.md) |
-| Accepted parent APIs | [Zeta23/OPICA](Zeta23/OPICA) and [parent guide](research/RHRC/integration/opica/README.md) |
-| Mathematical consequences and next research | [Post-Green Research Pass](research/RHRC/integration/opica_followup/continuation/2026-10-22/POST_GREEN_RESEARCH.md) |
-| Original upstream package | [UPSTREAM_README.md](UPSTREAM_README.md) |
-
-## Continue and verify
-
-First capture the actual head, tree and working-tree changes. Keep the exact
-`lean-toolchain` and `lake-manifest.json` pins. Use the repository's normal Lake
-and Mathlib cache setup; the supplied source-only CORE archive omits its optional
-offline runtime and baseline Git pack.
-
-From the repository root, with evidence outside the checkout:
-
-```sh
-python -B research/RHRC/integration/opica_followup/validate_contract.py --phase preflight --output /tmp/opica-preparation.json
-python -B research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py --lake lake --output-dir /tmp/opica-current-candidates
-python -B -m unittest discover -s research/RHRC/integration/opica_followup/tests -p 'test_*.py'
-python -B -O -m unittest discover -s research/RHRC/integration/opica_followup/tests -p 'test_*.py'
-```
-
-Use equivalent external paths on Windows. The runner checks nine repaired
-modules and eight independent consumer files. Preparation checks only the static draft
-contract. Neither registers all roots nor accepts the full release. Full-release
-readiness remains closed; current CI also has a parent-extension rejection while
-the complete reviewed type/receipt linkage is absent. Read actual job results.
-
-Finish the one retained candidate and 43 absent implementations, full expected
-types and actual-domain controls, dependency and facade reconciliation,
-registration and canonical regeneration. The full child receipt protocol now
-exists with adversarial fixture tests; its independent full review, actual cold
-production/replay and remaining release companions still need completion. Preserve frozen
-statements and all original acceptance gates. Every meaningful green result must
-receive the complete Post-Green Research Pass in AGENTS.md.
-
-## Documentation precedence
-
-Live exact-head compiler/CI evidence comes first. The current ledger and guide
-describe the OPICA draft; frozen specifications define its obligations. Supplied
-historical documents remain evidence of their own checkpoints. The generated
-Control-v2 snapshot below still records its older PR #287 anchor and candidate
-NONE; it is preserved for historical/control validation, not current PR routing.
-Graph connectivity and framework output do not confer theorem authority.
-
-<details>
-<summary>Historical programme and generated control snapshot</summary>
-
-The material below preserves earlier checkpoints. Its dated current/next labels
-and renderer-owned state block describe those recorded states. They do not
-override the current OPICA guide and exact-source evidence linked above.
-
-# Zeta23 / RHRC — Lean-backed Riemann Hypothesis research fork
-
-> **RH remains OPEN.**
-
-This fork preserves the upstream Zeta23 theorem package while adding an opt-in RH-directed research programme under `Zeta23/CCM`, `Zeta23/ExceptionalZero` and `research/RHRC`.
-
-## Repository knowledge graph
-
-The repository is adopting a first-class RHRC knowledge graph so formal declarations, registered claims, research routes, experiments, dead ends, Git/PR provenance, and workflow evidence can be traversed as one auditable system instead of rediscovered file by file.
-
-The governing document is [research/RHRC/graph/CONSTITUTION.md](research/RHRC/graph/CONSTITUTION.md).
-
-Key rule: **the graph is a derived integration layer, not a new mathematical authority.** Lean/compiler/CI evidence and the existing RHRC registries/firewalls remain authoritative for the domains they govern. The graph may report, index, and connect those sources; it may not silently promote claims, resurrect dead routes, supersede historical evidence, or change RH_OPEN.
-
-Implementation is staged: repository census and module imports first, then declaration/claim bindings, authority resolution, Git/PR/workflow provenance, historical route memory, and finally operational research preflight.
-
-
-## Post-#247 programme override
-
-PR #246 and PR #247 supersede older "current", "next", and candidate labels below. Historical sections are retained as provenance unless this override explicitly reactivates them.
-
-The active research interpretation is **Riemann Wearing Glasses v2**: one canonical Weil object is viewed through exact spectral, carrier, source and arithmetic coordinates. Coordinate changes do not create information; they are used to expose a nonvacuous arithmetic/analytic law on unconditional objects. Residual-state-only compatibility laws cannot count as new closure information merely because they are renamed: #247 proves residual-state exclusion itself is RH-equivalent.
-
-Canonical post-#247 programme: research/RHRC/routes/R003_ccm_bridge/POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md. Frozen post-green deltas: RESEARCH_LEADS_POST_247_GLOBAL_BOTTOM_GLASSES_DELTA.md, OBSTRUCTION_LEDGER_POST_247_DELTA.md, and DEAD_ROUTES_POST_247_DELTA.md.
-
-**Claim firewall:** RH remains OPEN.
-
-## Post-#247 reduction in one view
-
-The theorem-backed chain is now:
-
-    hypothetical off-line zero
-      -> arbitrarily-large retained whole-cell bad states
-      -> globally aligned parity bottom
-      -> true residual-state ground eigenmode
-      -> branch-constrained source/transfer geometry
-      -> exact #246 prime-remainder failure on that same ground trial
-      -> GlobalBottomArithmeticResidual
-      -> OPEN: unconditional nonvacuous arithmetic/spectral exclusion
-      -> only then could RH close
-
-The next programme therefore moves outward from bad-state algebra to unconditional spectral dynamics. The main object is the canonical ground spectrum/eigenspace for every aperture and size; the intended closing geometry is a positive base plus a threshold-local first-crossing obstruction at the actual prime-power seams. The full finite Fourier space, the codimension-three boundary-flat carrier, and the two parity compressions are treated as different exact "glasses" on the same canonical matrix.
-
-
-## Post-#245 terminal reset
-
-PR #245 proves `NoRegularFirstBadCertificates ↔ RiemannHypothesis` and
-`NoArbitrarilyLargeWholeCellRetainedFamily ↔ RiemannHypothesis`. No sub-RH gate
-remains on this route: the earlier description of the generated-family gate as
-strictly weaker than certificate exclusion is superseded.
-
-The post-#245 arithmetic-criterion PR adds:
-
-- `Zeta23/CCM/CanonicalPrimeRemainder.lean` (unconditional, firewalled from the
-  terminal layer): the canonical prime staircase is the classical weighted
-  Chebyshev sum `∑_{n ≤ e^t} Λ(n)/√n`, the pole-prime discrepancy is
-  `-2e^{-t/2} - R(e^t)` with `R(x) = ∑_{n ≤ x} Λ(n)/√n - 2√x`, and the complete
-  canonical source energy is minus the energy of `R` minus an explicit
-  prime-free budget;
-- `Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean`: canonical finite
-  Weil positivity, order-six Riesz positivity, the proposed generated retained
-  Riesz-six target, and explicit prime-remainder dominance are each proved
-  equivalent to `RiemannHypothesis`, and the exact first failed inequality
-  forced by an off-line zero is compiled.
-
-These are equivalences, not a proof. Closing the route now requires
-RH-strength information about `R(x)`, i.e. about the zeros of ζ. Detailed pass:
-`research/RHRC/RESEARCH_LEADS_POST_245_ARITHMETIC_CRITERION_DELTA.md`.
-**RH remains OPEN.**
-
-## Post-#237 route reset
-
-PR #237 is the merged theorem authority. The selected-even / odd-good retained state has been scalarized to a real completed-source corridor. Composing #237 with the already-proved Gamma shell balance yields, as DERIVED consequences not yet exported as named Lean theorems, `Gamma ∈ ℝ`, `f = q*Gamma`, `alpha ∈ ℝ`, `s*Gamma > 0`, and `q^2*(1-Gamma)^2 <= Rsharp`.
-
-The next theoremization target is therefore not a naked radius inequality. It is the upstream conjugation theorem package needed to prove that the safe negative-shift predecessor resolvent and transfer coefficients are real generically. The retained sign problem `Gamma > 0` remains OPEN. `Rsharp <= q^2` is preserved as one sufficient route to Gamma orientation, not as the primary target.
-
-Historical route archaeology is reconciled in `research/RHRC/HISTORICAL_ROUTE_AUDIT_POST_237_RECONCILIATION.md`. Historical dated deltas remain immutable evidence. **RH remains OPEN.**
-
-
-## Post-#231 current-state override
-
-PR #231 proves the generic correction/source-coupling bridge, its production-channel
-rewrite, the exact Gamma shell balance, and the retained factor-preserving source
-balance. On the selected-even / odd-good retained branch, the existing source
-nonvanishing theorem cancels the source factor and gives the exact same-state
-balance
-`q - J = M4 - S*C`.
-
-PR #231 does **not** prove alpha reality/sign, a sign for the source coupling,
-canonical simultaneous odd-bad exclusion, odd-selected closure, parity-complete
-retained-state exclusion, negative-root exclusion, the terminal Mathlib RH seam,
-or RH.
-
-The #231 workflow harvest completed 11/11 attached workflows green on the exact
-validated head `f9623be705955bd98ef563aa75d3244712009cac`. Latest independent
-research evidence remains PR #223; Control-v2 semantic authority remains PR #117.
-
-The next theorem target is `RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK`: use
-good-sector Gram control only as an intermediate bridge, then compose it with
-the #231 same-state source balance. The required new information is
-`GOOD_SECTOR_GRAM_CONTROL_COMPOSED_WITH_RETAINED_SOURCE_BALANCE`.
-A proof of `canonicalOneStepDomination` obtained merely by restating successor
-positivity is not by itself independent FB-05 information.
-
-Detailed post-green pass:
-`RESEARCH_LEADS_POST_231_SOURCE_BALANCE_DELTA.md` and
-`OBSTRUCTION_LEDGER_POST_231_DELTA.md`.
-
-Any older "current", "next", or routing labels below this override are historical
-snapshots unless re-established above.
-
-```text
-ACTION_REGISTRY.current_frontier
-  = frozen PR #117 control-semantic frontier
-
-CONTROL_STATE.active_research_route.next_research_target
-  = current descriptive research operation
-  = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
-```
-
-## Post-#229 current-state override
-
-PR #229 proves the generic correction-functional Riesz representation
-`chi(y) = <R b,y>/<c,c>` and the exact alpha/Gamma mixed-resolvent corollaries.
-It does **not** prove that alpha is real, positive, or sign-controlled.
-
-The next theorem target is `CROSS_PARITY_CORRECTION_SOURCE_COUPLING`: formalize
-the derived bridge `star (1-alpha) * <c,c> = cubicShellCoupling (R d)`, rewrite
-it through the production canonical source channels, and then derive the
-retained source-balance identity under an explicit nonzero source moment.
-Those statements are **OPEN / NEXT**, not theorem authority yet.
-
-The #229 workflow harvest completed 13/13 green jobs. Latest independent
-research evidence remains PR #223; Control-v2 semantic authority remains PR #117.
-OBS-059I, simultaneous odd-bad exclusion, odd-selected closure,
-parity-complete retained-state exclusion, the terminal Mathlib RH seam, and RH
-remain OPEN.
-
-Detailed post-green pass:
-`RESEARCH_LEADS_POST_229_RIESZ_DELTA.md` and
-`OBSTRUCTION_LEDGER_POST_229_DELTA.md`.
-
-Any older "current", "next", or routing labels below this override are
-historical snapshots unless re-established above.
-
-## Historical post-#227 closure override
-
-PR #226 and PR #227 close the predecessor-correction and two-coefficient transfer stages that the historical section below still describes as open.
-
-**PROVED**
-- `oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul` (#226):
-  `a_N = -((2N-1)/6) d_N`.
-- #227 propagates that identity through the safe secular functional, direct zero-shift overlaps, predecessor-kernel transport, and the selected-even bi-regular retained state.
-- `Gamma_lambda = 1 + kappa_N * (1 - alpha_lambda)`, with denominator-free one-coefficient transfer.
-- The direct zero-shift selected-even normal form is theorem-backed.
-
-**NEXT / OPEN**
-- `CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION`: export the generic theorem
-  `chi(y) = <R b, y> / <c,c>` underlying both alpha and Gamma.
-- Alpha reality/sign is not proved; the natural numerator is a mixed resolvent pairing.
-- Odd-selected closure, simultaneous canonical odd-bad exclusion, parity-complete retained-state exclusion, the terminal Mathlib seam, and RH remain OPEN.
-
-Do not identify the safe negative-shift state with the zero-shift retained state without an explicit bridge, and do not treat selected-even as WLOG.
-
-
-## Historical post-#224 RH closure plan — predecessor-correction stage
-
-This is the current **research/proof plan**, not a claim that RH is closed. Compiler/CI evidence remains authoritative, and every step below must be proved without project axioms, `sorry`, hidden RH-equivalent assumptions, or promotion beyond the exact checked declaration.
-
-### Already established in the live theorem stack
-
-1. **Exceptional-zero seam — PROVED:** a hypothetical off-critical-line zero in the project's open-strip `zetaZeroConfig` feeds the finite exceptional-zero/CCM obstruction machinery and yields a canonical negative finite witness.
-2. **First-bad reduction — PROVED:** a negative finite witness reduces to a regular, cell-minimal first-bad certificate.
-3. **Bi-regularization (#222) — PROVED:** the retained cell-minimal first-bad state can be chosen with both predecessor parities regular at the same aperture and cutoff.
-4. **Zero-shift classification (#221/#222) — PROVED:** on the bi-regular retained state predecessor resonance is eliminated. In the selected-even branch,
-   ```text
-   Re sigmaPlus < 0
-   sigmaMinus = alpha0 * sigmaPlus + Gamma0 * mu0
-   odd badness <-> Re sigmaMinus < 0
-   ```
-5. **Exact odd cubic projection (#224) — PROVED:** Lean proves
-   ```text
-   d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d.
-   ```
-   Exact promoted declaration: `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`.
-
-### Immediate theorem target after #224
-
-The next theorem is **not** already proved by #224. Define the coefficient in the scalar field, not with natural-number subtraction/division:
-
-```lean
-def crossParityCubicCorrectionKappa (N : ℕ) : ℂ :=
-  (2 * (N : ℂ) - 1) / 6
-```
-
-Then prove, for the nontrivial range used by the shell machinery,
-
-```lean
-theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
-    (N : ℕ) (hN : 1 ≤ N) :
-    oddCubicGeneratorPredecessorPart N =
-      -(crossParityCubicCorrectionKappa N) •
-        oddIndexCubicShellPredecessorPart N := by
-  ...
-```
-
-Mathematically this is
-
-```text
-a_N = -((2N - 1)/6) d_N.
-```
-
-Status: **OPEN / NEXT**.
-
-### Conditional downstream collapse
-
-If the predecessor-correction proportionality is proved, then the existing definitions give the affine transfer-coefficient relation
-
-```text
-Gamma0 = 1 + ((2N - 1)/6) * (1 - alpha0)
-6*Gamma0 + (2N - 1)*alpha0 = 2N + 5
-```
-
-and the selected-even retained scalar becomes
-
-```text
-6*sigmaMinus
-  = alpha0 * (6*sigmaPlus - (2N - 1)*mu0)
-    + (2N + 5)*mu0.
-```
-
-These are currently **DERIVED CONDITIONAL / NOT YET FORMALIZED**, not theorem authority.
-
-### Parity-complete retained-state closure
-
-The selected-even normal form is not by itself a complete finite contradiction: the retained first-bad certificate may have selected parity `odd`, and the repo does not prove the centered-index map preserves canonical energy strongly enough to make the even case WLOG.
-
-The terminal finite argument therefore must do at least one of:
-
-1. prove the selected parity may be taken even;
-2. build the mirrored odd-to-even arithmetic squeeze; or
-3. prove one parity-symmetric retained-state contradiction covering both cases.
-
-A sufficient strong endpoint remains
-
-```lean
-theorem no_biRegular_cellMinimal_negativeEnergyCertificate
-    (Q : ℕ) :
-    IsEmpty (BiRegularCellMinimalNegativeEnergyCertificate Q) := by
-  ...
-```
-
-but this is **stronger than required**. A contradiction specialized to the off-line-zero-generated retained certificate also closes the route and may use extra canonical ancestry that arbitrary finite certificates do not possess.
-
-### Zeta-level contradiction direction
-
-The route does **not** require a new finite-to-infinite spectral convergence theorem. The proved direction already runs from a hypothetical off-line zeta zero down to the finite obstruction:
-
-```text
-hypothetical off-line strip zero
-    -> canonical finite negative witness
-    -> regular cell-minimal first-bad certificate
-    -> bi-regular retained negative-energy certificate
-    -> parity-complete retained-state contradiction
-    -> no off-line zero in zetaZeroConfig.
-```
-
-The final result is obtained by contradiction/contrapositive packaging.
-
-### Terminal Mathlib RH seam
-
-The project's `zetaZeroConfig` carrier already restricts to zeros in the open critical strip. Mathlib's exact `RiemannHypothesis` quantifies over every nontrivial zeta zero except the known trivial negative even zeros and the pole point.
-
-Therefore, after proving all `zetaZeroConfig` zeros lie on `Re = 1/2`, one final formal seam remains: show every Mathlib-nontrivial zero is either one of the excluded trivial zeros or lies in the open critical strip, using the available nonvanishing/functional-equation machinery.
-
-Status: **OPEN terminal seam**.
-
-### Claim firewall
-
-- PR #224 is theorem authority **only** for its exact compiled cubic-projection declaration; its PR title/body do not prove the stronger predecessor-correction proportionality.
-- PR #223 remains the latest rigorous bounded research evidence and did not reach the theorem-guaranteed retained state.
-- OBS-059I remains OPEN.
-- simultaneous canonical odd-bad exclusion remains OPEN.
-- odd-selected first-bad closure remains OPEN.
-- parity-complete retained-state exclusion remains OPEN.
-- negative-root exclusion remains OPEN as a stronger historical route, but a direct retained-certificate contradiction could bypass it.
-- the terminal Mathlib `RiemannHypothesis` seam remains OPEN.
-- **RH remains OPEN.**
-
-## Historical authority snapshot through PR #201
-
-Live GitHub head + exact compiler/CI evidence are authoritative dynamically.
-
-```text
-THEOREM AUTHORITY
-latest theorem-bearing PR = #184
-validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
-merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
-validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
-
-LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #201
-validated research head = be5b98dfce12777436bc40b39a37b04669ae4311
-merged research commit = 319db6f68f65bdcffc0657c03bea76502da59a57
-validated research tree = 840a2e8b0bf690507bc3385fbe122210e6d32c7a
-research disposition = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
-
-CONTROL SEMANTIC AUTHORITY
-PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
-selected first break = E4A4-SCHUR-FB-05
-terminal claim = RH_OPEN
-```
-
-Research green is not theorem promotion.
-
-## Historical theorem frontier through PR #184
-
-The compiler-validated theorem ladder remains through PR #184. Lean proves the complex-Hermitian 2x2 Schur calculus, the frozen production family on the logarithmic cover, the exact fixed-cell bridge to `parityCompressedCanonical`, N2 predecessor/canonical-shell reconstruction and orthogonality, and
-
-```text
-P_t' = -envelopeNormSq + remainderEnvelopeDerivative
-remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
-```
-
-PR #184 does **not** prove source-specific remainder domination, contact existence/uniqueness, an opposing first-bad orientation, negative-root exclusion or RH.
-
-## Completed research history
-
-```text
-#186  broad production-remainder domination
-      -> DOMINATION_SIGNAL_MIXED
-
-#188  frozen normalization-safe selector audit
-#189  every individual frozen selector ambiently separable from target sign
-
-#190  complete seven-dimensional strong selector vector
-      -> JOINT_EXACT_VECTOR_SEPARABLE
-      -> JOINT_THRESHOLD_SIGNATURE_SEPARABLE
-      -> all 127 nonempty subsets insufficient in ambient algebra
-
-#192  Layer 0 -> Layer 5 canonical production realizability audit
-      -> EXACT_TWIN_SURVIVES at ambient/source-coupling layers
-      -> specific negative-scalar witness EXACT_TWIN_EXCLUDED_BY_IDENTITY
-      -> general reflected-twin mechanism remains UNRESOLVED
-
-#193  fixed-Q Q14 parity-trajectory rigidity audit
-      -> J = o'e - e'o
-      -> 6/6 exact inherited centers: e>0, o>0, J>0, P2>0
-      -> TRAJECTORY_RIGIDITY_UNRESOLVED
-      -> Do **not** infer this from points
-
-#195  canonical second-order sharp parity-trajectory enclosure
-      -> complete M,M',M'' backend independently validated
-      -> exact identity J' = o''e - e''o
-      -> PARTIAL_TRAJECTORY_ORIENTATION / certified t-fraction = 63/64
-
-#197  unique post-#195 budget-leaf replay
-      -> GLOBAL_MONOTONE_ORIENTATION
-      -> uniform orientation = J_POSITIVE
-      -> certified t-fraction = 1
-      -> global_positive_hull = true
-      -> bounded_distinct_aperture_twin_exclusion = true
-
-#199  canonical source-mechanism audit on exact #197 cover
-      -> direct Method-C J remains J_POSITIVE on all 49 leaves
-      -> SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
-      -> no unique collapsed uniform lock
-
-#201  cancellation-preserving discrepancy-first audit
-      -> D = pole + prime_signed and A = direct_arch_signed
-         formed at M,M',M'' level before parity restriction/transport
-      -> paired M/M'/M'' reconstruction PASS
-      -> direct #197 J_POSITIVE replay remains intact
-      -> paired_source_sum_positive_leaf_count = 0
-      -> paired_source_sum_unresolved_leaf_count = 49
-      -> DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
-      -> selected_uniform_lock_group = null
-      -> NO_UNIQUE_PRIMARY_LOCK
-```
-
-PR #201 advances the research-evidence anchor because it consumes the theorem-motivated paired-channel escape left open by #199. It does **not** weaken the bounded #197 sign certificate. Instead it shows that even upstream pole-prime pairing does not preserve enough interval correlation to expose the already-certified direct sign.
-
-## Historical active path after PR #201 — FB-05 / full-composite parity mechanism
-
-Do not resume selector mining, threshold refits, the #192 replay, blind precision/depth escalation, the consumed #199 independent source split, or nearby linear source regroupings merely to search for a sign.
-
-Source chopping has now been tested in three materially different representations:
-
-```text
-four-way source split                         -> dependency unresolved
-collapsed pole/direct-arch/prime split       -> dependency unresolved
-upstream pole-prime discrepancy/direct-arch  -> dependency unresolved
-```
-
-The next research action is therefore a **higher-level exact correlated parity identity** of the assembled canonical object. The first candidate family is a normalized parity-gap/full-composite formulation built from the same canonical even/odd predecessor levels, with a cheap exact-center falsification gate before any full 49-leaf run.
-
-`(o/e)' = J/e^2` and `(log(o/e))' = J/(oe)` remain DERIVED equivalent reformulations under `e,o>0`; merely reproving ratio monotonicity would not count as a new mechanism.
-
-## Current open obligations
-
-```text
-OBS-056 residual frozen-Q14 orientation span                           CLOSED in exact frozen Q14 research scope
-OBS-057 bounded-to-structural parity-ordering mechanism gap            OPEN / FURTHER NARROWED
-OBS-058 cancellation-preserving source representation gap              OPEN / NARROWED THROUGH #201
-higher-level full-composite parity mechanism audit                     OPEN / ACTIVE
-arbitrary-state source/parity law implying the ordering                OPEN
-actual N2 production remainder scalar derivative witnesses             OPEN
-actual production HasDerivAt Schur identity                            OPEN
-same-state first-bad opposing contact orientation                      OPEN
-sourceMoment <-> M4 canonical-state rigidity                           OPEN
-simultaneous even/odd bad exclusion                                    OPEN
-odd-selected first-bad branch closure                                  OPEN
-negative-root exclusion                                                 OPEN
-outside-strip/trivial-zero terminal seam                               OPEN
-RiemannHypothesis                                                       OPEN
-```
-
-## Permanent firewalls
-
-- compiler/CI evidence outranks prose;
-- theorem authority remains #184 until a later Lean-bearing PR passes theorem gates;
-- `M~(t)=-tI+R~(t)` remains the production/log-cover theorem interface;
-- **Do not count them as two independent** when two proposed constraints instantiate the same mechanism;
-- #190 closes the frozen selector surface only in its declared ambient normalized algebra;
-- #192 excludes the specific #190 witness but not the general reflected class;
-- #193 exact-center positivity is not finite-width monotonicity;
-- historical #195 `PARTIAL_TRAJECTORY_ORIENTATION` and `63/64` remain preserved;
-- #197 complete frozen-Q14 coverage is rigorous bounded research, not arbitrary-Q or FB-05 theorem authority;
-- #199 source-decomposition nonresolution does not downgrade #197 direct `J_POSITIVE`;
-- #201 discrepancy-representation nonresolution also does not downgrade #197 direct `J_POSITIVE`;
-- negative-root exclusion remains OPEN;
-- **RH remains OPEN.**
-
-## Post-#203 authoritative synchronization
-
-This section supersedes the older "latest research" and "next experiment" wording above while preserving it as auditable history.
-
-```text
-LATEST RESEARCH EVIDENCE
-PR #203
-head  = c8196830a8b49e657b28d36b364e1cff68c568d6
-merge = ab660e812a78d482145eadc3e42d186a63fa812b
-tree  = 7360e366fe8d623ef63ca902c23522bb72935848
-research disposition = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
-
-center_kill_switch_survives = false
-full_cover_executed = false
-completed_leaf_count = 0
-control_transfer_status = PATTERN_FALSIFIED_BEFORE_FULL_COVER
-```
-
-PR #203 faithfully executes the preregistered full-composite Pair-A falsifier after repairing an implementation-only exact-rational conversion bug. The repaired parity contrast independently reconstructs `G = O-E`, `G' = O'-E'`, and `G'' = O''-E''`; the frozen sign pattern `E > 0`, `G > 0`, `G' >= 0`, `E' <= 0` then fails the six-center kill-switch. The expensive 49-leaf audit is therefore correctly not run.
-
-This does **not** weaken PR #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE`, and it does not prove all Pair-A mathematics impossible. It consumes the planned simple Pair-A representation-engineering sequence. The next highest-information research route is **Pair D — same-state two-parity squeeze**. **Pair B — negative-index separation versus localized critical-line sampling rigidity** is secondary.
-
-Theorem authority remains PR #184, the selected formal first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, negative-root exclusion remains OPEN, and **RH remains OPEN.**
-
-See `research/RHRC/RESEARCH_LEADS_POST_203_Q14_COMPOSITE_PARITY_GAP_DELTA.md` for the current post-green state.
-
-## Post-#205 authoritative synchronization
-
-This section is the current research-state override.
-
-```text
-THEOREM AUTHORITY
-PR #184
-
-LATEST RESEARCH EVIDENCE
-PR #205
-head  = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
-merge = deaa69ae190ada511cf8228f174846184673ff3a
-tree  = 3d715612eabf25a9056ab84b0c5e968f71354666
-research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
-
-CONTROL SEMANTIC AUTHORITY
-PR #117
-selected first break = E4A4-SCHUR-FB-05
-terminal claim = RH_OPEN
-```
-
-PR #205 promotes the historical C1 radius-3 structural fixture to `EXACT EXECUTABLE RESEARCH / RIGOROUS FINITE SYNTHETIC COUNTERMODEL`. Exact values are
-
-```text
-N = 2
-K = 3
-even predecessor form = 70
-odd predecessor form  = 10
-even negative witness energy = -130
-odd negative witness energy  = -410
-selected even compressed root = -13/42
-reversal symmetric = true
-centered-index commutator = 0
-canonical_realizability = false
-```
-
-Therefore generic predecessor positivity, actual parity/boundary-flat/shell geometry, reversal symmetry and centered-index displacement structure do not exclude simultaneous even/odd successor badness. The **generic structural Pair-D lane is consumed**. Pair D itself remains active only as a **canonical-arithmetic same-state squeeze**: any successful exclusion must spend a property of the actual `canonicalSourceMatrix` absent from C1.
-
-`OBS-059` remains OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY. The canonical simultaneous-parity exclusion, `sourceMoment <-> M4` rigidity, same-state canonical composition, and odd-selected first-bad closure remain open. The next research falsifier should attack the generic quadratic-normal-defect-versus-`M4` implication before any new Lean theorem investment. Pair B remains secondary.
-
-No Lean theorem, claim registry, promoted binding, `ACTION_REGISTRY` score, first-break semantics or confirmatory status changes here. R003 remains `DISCOVERY`; negative-root exclusion remains OPEN; **RH remains OPEN.**
-
-## Post-#207 theorem-authority synchronization
-
-This section supersedes the earlier theorem/frontier wording while preserving it as history.
-
-```text
-THEOREM AUTHORITY = PR #207
-validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
-merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
-validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
-
-LATEST RESEARCH EVIDENCE = PR #205
-research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
-
-CONTROL SEMANTIC AUTHORITY = PR #117
-selected first break = E4A4-SCHUR-FB-05
-terminal claim = RH_OPEN
-```
-
-PR #207 proves the exact canonical Pair-D self-energy identity and, on an even negative compressed eigenmode with the odd sector good,
-
-```text
-0 < re(star(explicitCanonicalSourceMoment) * M4).
-```
-
-On the retained even-selected first-bad state the theorem package includes
-
-```text
-evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
-evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
-evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
-oddBad_or_sourceMomentMomentFour_re_pos_of_even
-```
-
-Thus the even-selected + odd-good retained branch is **PROVED THROUGH #207**. The canonical simultaneous odd-bad branch remains OPEN, the odd-selected first-bad branch remains OPEN, and no unconditional `sourceMoment -> M4` implication is proved.
-
-The planned neutral `genericQuadraticNormalPairing != 0 ?-> M4 != 0` falsifier is **SUPERSEDED / UNNECESSARY** as the next gate; it was not executed and is not a dead route. The highest-information next theorem extraction is the quantitative coercive bound
-
-```text
--lam * ||Dv||^2 <= re(star(sourceMoment) * M4)
-```
-
-first generically and then on the retained shifted trial, followed by composition with the #163 mixed seventh-jet/Riesz boundary package.
-
-R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
-
-## Post-#209 theorem-authority synchronization
-
-This section supersedes the post-#207 current-frontier wording while preserving all earlier sections as historical ancestry.
-
-```text
-THEOREM AUTHORITY = PR #209
-validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
-merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
-validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
-
-LATEST RESEARCH EVIDENCE = PR #205
-research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
-
-CONTROL SEMANTIC AUTHORITY = PR #117
-selected first break = E4A4-SCHUR-FB-05
-terminal claim = RH_OPEN
-```
-
-PR #209 proves the quantitative Pair-D coercive law and its exact mixed-source reformulation:
-
-```text
--lam * ||Dv||^2 <= re(star(sourceMoment) * M4)
-re(star(sourceMoment) * h^(7)(0))
-  <= 2*(2*pi)^6*lam*||Dv||^2
-```
-
-and on a genuine negative eigenmode with odd successor good,
-
-```text
-re(star(sourceMoment) * h^(7)(0)) < 0.
-```
-
-The retained theorem package includes
-
-```text
-evenShiftedSourceMomentMomentFour_coercive_of_even_of_not_oddBad
-evenShiftedSourceMomentMixedJet_re_le_of_even_of_not_oddBad
-evenShiftedSourceMomentMixedJet_re_neg_of_even_of_not_oddBad
-oddBad_or_sourceMomentMixedJet_re_neg_of_even
-evenShiftedRieszEight_eq_nine_iff_endpointScalar_eq_zero_of_even_of_not_oddBad
-```
-
-Hence the even-selected + odd-good retained branch is **PROVED THROUGH #209**. `OBS-059Q` is CLOSED / PROVED BY #209. The simultaneous odd-bad branch, odd-selected first-bad branch, endpoint-scalar sign, terminal FB-05 incompatibility and negative-root exclusion remain OPEN.
-
-The active information gate is `OBS-059I`: find an **independent complete canonical functional incompatibility** with the #209 anti-alignment or compulsory magnitude budget on the same retained state. Do not count a rearrangement of the same odd-sector self-energy identity as independent information, and do not return to source-component interval chopping without a theorem preserving cancellation.
-
-The Riesz lane is reactivated/nondegenerate on the even-selected odd-good branch because #209 removes the `J7 = 0` escape hatch, but no endpoint-scalar sign or high-order Riesz limit theorem is claimed.
-
-R003 remains `DISCOVERY`; confirmatory execution is not authorized. `ACTION_REGISTRY.json`, claim IDs, route digests, action scores and first-break semantics remain unchanged. **RH remains OPEN.**
-
-## Post-#211 theorem-authority synchronization
-
-This section is the current authority override and preserves earlier post-green sections as historical ancestry.
-
-```text
-THEOREM AUTHORITY = PR #211
-validated theorem head = 704a69e41871269814ba091e9476fe76b2d09844
-merged theorem commit = dd42e6368e48957c9922a9e917e10f60a2582b9f
-validated theorem tree = a735f6149aeaa9f8358394c33fd6dcee8062f68e
-
-LATEST RESEARCH EVIDENCE = PR #205
-research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
-
-CONTROL SEMANTIC AUTHORITY = PR #117
-selected first break = E4A4-SCHUR-FB-05
-terminal claim = RH_OPEN
-```
-
-PR #209 remains the provenance of quantitative Pair-D coercivity, strict sourceMoment/seventh-jet anti-alignment and Riesz-8/Riesz-9 nondegeneracy. PR #211 proves the mixed dictionary bridge and the exact complete-functional representation
-
-```text
-explicitCanonicalSourceMoment L K v
-  = canonicalQuadraticNormalSourceFunctional L (quadraticNormalSourceAtom K v).
-```
-
-On the retained state the fork can now be stated as
-
-```text
-odd successor bad
-OR
-re(star(Λ_L(h_v)) * h_v^(7)(0)) < 0.
-```
-
-This is a representation/interface rewrite of the #209 obstruction, not an independent opposing sign theorem.
-
-`OBS-059I` remains **OPEN / ACTIVE**. Its representation prerequisite is CLOSED / PROVED BY #211. The next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`: derive the exact source-coordinate integral-plus-prime representation from the theorem-authoritative `literatureRHS` and the proved endpoint identities, without prerecording guessed constants or signs.
-
-The required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`. The simultaneous odd-bad branch, odd-selected first-bad branch, endpoint-scalar sign, negative-root exclusion and **RH remain OPEN.**
-
-## Post-#213 theorem-authority synchronization
-
-```text
-THEOREM AUTHORITY = PR #213
-validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
-merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
-validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
-
-LATEST RESEARCH EVIDENCE = PR #205
-CONTROL SEMANTIC AUTHORITY = PR #117
-terminal claim = RH_OPEN
-```
-
-PR #209 remains the provenance of quantitative Pair-D coercivity and strict anti-alignment. PR #211 remains the complete-functional interface milestone. PR #213 proves the exact complete physical/source-coordinate kernel and the retained source-kernel anti-alignment rewrite.
-
-```text
-SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL
-  = CLOSED / PROVED #213
-
-OBS-059I
-  = OPEN / ACTIVE
-
-next research operation
-  = EXACT_KERNEL_ADVERSARIAL_FALSIFICATION
-```
-
-The next research lanes are SIGN, MAGNITUDE, and DUAL / GRAM / EXTREMAL GEOMETRY.
-
-Same-observable firewall: existing `CanonicalPolePrimeRiesz` results act on `sourceAtomRealEnergy`; #213 acts on `quadraticNormalSourceAtom`. Direct composition is not established.
-
-No claim IDs, action scores, first-break semantics, route digests, or confirmation permissions change. **RH remains OPEN.**
-
-## Historical RH/CCM frontier after PR #215
-
-Theorem authority remains merged-green **PR #213**. Latest research evidence is merged-green **PR #215**, which rigorously certifies on the frozen K=3 even carrier that the complete source functional and M4 are independent duals and that their full-carrier pairing is sign-indefinite. This kills the universal arbitrary-vector sign/proportionality version of Pair D, not the retained first-bad route.
-
-At that stage, the next target was **RETAINED_CROSS_PARITY_SECULAR_COMPLETION** on the exact forced negative root. Contact-locus ideas are explicitly demoted until a same-state contact bridge exists. The exact zero-shift response and resonant `1/(-lambda)` branch are resurrected secondary routes.
-
-**RH remains OPEN.**
-
-## OPICA obstruction preservation package
-
-The additional mathematical library is imported directly with `import Zeta23.OPICA`.
-Its [scope, paper inputs and validation commands](research/RHRC/integration/opica/README.md)
-target the full 25-family construction and its source-bound native adapters.
-The library retains explicit arithmetic, accumulated-budget and source hypotheses;
-RH and the existing closing obligations remain OPEN.
-
-
 </details>
 
-## Round 2 implementation checkpoint — 2026-10-26
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+## What this project is
 
-OPICA Round 2 adds forty supporting theorem families for the fixed delayed single-copy source, with independent native consumers and explicit negative controls. The original 76/100 contracts and mathematical sources are preserved. RH, Step 4 and the four terminal restrictions remain OPEN.
+RH says that every nontrivial zero of the Riemann zeta function lies on the
+critical line, with real part `1/2`. Our research starts by supposing there is
+an actual zero away from that line and asking what it would force.
+The goal is to prove an independent property of the actual zeta construction
+that contradicts those forced consequences.
 
-The implementation and exact validation scope are described in [the Round 2 guide](research/RHRC/integration/opica_round2/README.md). The PR remains a development checkpoint until the complete cold, historical, generated-state and workflow evidence gates are harvested. Six optional families remain disabled.
+The repository builds on [Anthropic's Zeta23](https://github.com/anthropics/zeta-23-lean).
+Its upstream project formalizes the paper *More than two thirds of the zeros of
+the Riemann zeta function are simple and on the critical line*.
+That result and the fork's RH programme have different scopes. Read the retained
+[upstream README](UPSTREAM_README.md), [upstream audit](UPSTREAM_AUDIT.md),
+[license](LICENSE) and [notice](NOTICE) for attribution and original provenance.
+The fork's development is recorded in [FORK_NOTES.md](FORK_NOTES.md),
+[AUDIT.md](AUDIT.md) and the guide's [history](docs/PROJECT_GUIDE.md#how-the-opica-layers-fit-together).
+
+## The four mathematical steps
+
+| Step | Purpose | What the result does not supply |
+| --- | --- | --- |
+| **1. Fingerprint** | Turn a hypothetical off-line zero into a sign-sensitive obstruction, retaining its source and multiplicity. | A restriction excluding that zero. |
+| **2. No-hide** | Produce canonical witnesses at suitable scales; the obstruction cannot escape every detector. | Positivity of every detector. |
+| **3. Synchronized tracking** | Preserve the same source lineage through states, transforms, jets, fields and observations. | An independent bound on those objects. |
+| **4. Independent contradiction** | Prove a source-matched restriction incompatible with the obstruction. | This closing mathematics is still OPEN. |
+
+```mermaid
+flowchart LR
+    Z[Hypothetical off-line zero] --> W[1 and 2: detectable obstruction]
+    W --> T[3: source-preserving transport]
+    T --> R[A, B, C and D: restrictions to test]
+    R -. independent theorem still OPEN .-> X[4: contradiction]
+```
+
+A negative quadratic form, a pole, a nonzero jet and a failed approximation can
+encode the same obstruction. Moving between them does not by itself exclude it.
+An RH-equivalent criterion is useful, but proving the equivalence does not prove
+its positivity or convergence premise. The [worked example](docs/PROJECT_GUIDE.md)
+traces the actual source, common aperture and cutoff through the even/odd contact
+case split and identifies the missing opposing inequality.
+
+## Four paths to Step 4
+
+These are the **modern Paths A–D**. Historical CI tracks, Pair A–D, old route
+letters and continuation stages use different numbering; use the
+[terminology crosswalk](docs/MATHEMATICAL_GLOSSARY.md).
+
+| Path | Mathematical route | Missing independent information |
+| --- | --- | --- |
+| **A — complete signed observation** | Recover the obstruction through arithmetic observations without losing its sign. | A bound or recovery-cost comparison retaining masks, collisions, mixed terms and repeated prime products. |
+| **B — causal approximation** | Approximate the actual causal target `v` by completed-source dictionary outputs, with the required coefficients and whole-line residual control. | Prove the source-specific residual tends to zero; approximating the source `jPlus` itself or proving finite Gram identities does not establish this limit. |
+| **C — contact / detector energy** | Use continuous contact geometry or the original detector's quantitative energy. | A matching bound on the full source and complementary energy, with correct growth and normalization. |
+| **D — pole-neutral parity geometry** | Force simultaneous even/odd negativity and study the first bad contact. | Exclude it using actual source arithmetic, the physical metric, full complement and singular/shared-ground cases. |
+
+The paths can interact. Geometry can select a ray for an arithmetic estimate;
+an observation theorem can price what a projection lost; an approximation
+theorem can constrain the same source in another representation. A composition
+must retain the same source, quantifiers, carriers and costs. The
+[guide](docs/PROJECT_GUIDE.md) distinguishes useful combinations from merely
+restating RH in another form.
+
+## OPICA and its rounds
+
+**OPICA** means **Obstruction-Preservation and Independent-Constraint
+Architecture**. It records what survives a transformation, what becomes
+invisible, and which independently justified constraints can be combined.
+
+| Package | Contribution | Where to read |
+| --- | --- | --- |
+| Original OPICA | Local residues, jets, transformations, energy, source adapters and counterexamples. | [Original package](research/RHRC/integration/opica/README.md) |
+| Native follow-up | A source-bound theorem programme with 100 original roots and 28 acceptance units; historical and narrow receipts remain distinct from full release acceptance. | [Follow-up and Stage 22 ledger](research/RHRC/integration/opica_followup/README.md) |
+| Round 2 | Research contracts, obstruction transport, source-faithful causal/observation interfaces and countermodels. | [Round 2](research/RHRC/integration/opica_round2/README.md) |
+| Round 3 | Pole-neutral overlap and first-bad structure, D01–D05, finite arithmetic probes, atlas and falsification gates. | [Round 3](research/RHRC/integration/opica_round3/README.md) |
+| Round 4 | Governed theorem composition, independent checking, additional signed-source/spectral support and finite research probes. | [Round 4](research/RHRC/integration/opica_round4/README.md) and [integration handover](research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md) |
+
+These package rounds are different from the four mathematical steps above.
+Round 4 supplies checked support and tools for investigating Step 4; it does
+not supply an independent closing estimate or a proof of RH. Its current
+[closure obligations](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json)
+retain the alternative routes and unresolved regular-cell/shared-ground cases.
+
+## What the frameworks do
+
+| Framework | Role here | Boundary |
+| --- | --- | --- |
+| **RHKG** | Map files, imports, declarations, claims, dependencies and research contacts. | A graph contact or common dependency is not a mathematical implication. |
+| **FFBBP** | Typed assurance and separate source, kernel, axiom and independently reconstructed type checks. | Passing infrastructure checks cannot promote an OPEN mathematical claim. |
+| **OoL-MVS** | Exact context/witness ports, compatibility checks and governed composition records. | A valid certificate is not an RH proof. |
+| **Permansson** | Formal trajectory-law machinery plus a separately pinned finite control provider for the runtime. | Host and provider Lean objects stay separate; finite-menu fairness is not global proof-search optimality. |
+
+The [framework guide](docs/FRAMEWORKS.md) explains these distinct surfaces,
+versions, pipelines and exact boundaries. The
+[governed runner](research/RHRC/integration/opica_composition/README.md) proposes
+bounded compositions; Lean and an independent consumer must accept the full
+statement. A resource stop says that a budget ended, not that no proof exists.
+
+## How to read a result
+
+| Label | Meaning |
+| --- | --- |
+| **PROVED** | The exact Lean statement passed its stated compiler and validation gates. Read its hypotheses and source scope. |
+| **DERIVED** | A straightforward mathematical consequence not yet separately formalized. |
+| **EXPERIMENTAL SIGNAL** | A numerical, finite-search or discovery observation within its recorded domain. |
+| **LEAD / HYPOTHESIS** | A proposed route requiring proof and falsification. |
+| **OPEN** | Not established, including the independent Step 4 premises. |
+
+A green regression preserves its historical result. It does not turn an old
+numerical signal into a theorem. Missing, skipped, stale or pending evidence
+does not count as a passed gate. Source-only declaration counts are discovery
+inventory, not theorem authority. See the [evidence policy](research/RHRC/DOCUMENTATION_AUTHORITY.md).
+
+Failed approaches are part of the mathematical record. Generic rank-one
+positivity, a source-only kernel cancellation and finite Grams implying a zero
+limiting residual all have recorded countercontrols. Reopening a route requires
+identifying which missing source-specific premise changed. A green replay may
+preserve a falsification; read the [failure lessons](docs/PROJECT_GUIDE.md#what-failed-and-what-would-justify-reopening-it).
+
+## Choose a reading path
+
+- **New reader or mathematician:** [project guide](docs/PROJECT_GUIDE.md),
+  [glossary](docs/MATHEMATICAL_GLOSSARY.md), then the relevant package's exact
+  declarations, contracts and open obligations.
+- **Developer:** [repository map](docs/REPOSITORY_MAP.md),
+  [current-state snapshot](docs/CURRENT_STATE.md),
+  [runner guide](research/RHRC/integration/opica_composition/README.md), then the
+  relevant workflow and acceptance inventory.
+- **AI agent or contributor:** [AGENTS.md](AGENTS.md),
+  [agent guide](docs/AGENT_GUIDE.md), the live PR head, and the source-bound
+  receipts before changing any code or claims.
+- **Research reviewer:** the guide's failure lessons,
+  [countermodels](research/RHRC/countermodels/README.md),
+  [Round 4 contracts](research/RHRC/integration/opica_round4/MATH_CONTRACTS.json)
+  and [remaining closure alternatives](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json).
+
+## Files, graphs and reproducibility
+
+The [repository map](docs/REPOSITORY_MAP.md) connects the Lean tree, research
+records, theorem inventories, graph exports, assurance products and workflows.
+The [graph guide](research/RHRC/graph/README.md) explains each view and its edge
+semantics; read it before treating a diagram as an implication chain.
+The same canonical machine records support both human navigation and agents.
+
+Compiler pins live in [lean-toolchain](lean-toolchain) and
+[lake-manifest.json](lake-manifest.json). Use compatible caches and the exact
+workflow for the package being tested. The
+[agent guide](docs/AGENT_GUIDE.md) explains narrow checks, generated-state
+refresh, historical replay and the stricter production acceptance boundary.
+The Round 4 aggregate independently requires all eleven lane bundles.
+Older workflows retain their own historical scopes and remain separate.
+
+When a result becomes green, inspect its proof, assumptions and every workflow's
+scientific disposition. Ask which open obligation became smaller and try to
+falsify promising deductions before extending the theorem programme.
+The [open research records](research/RHRC/integration/opica_round3/OPEN_RESEARCH.json)
+and Round 4 closure register identify what still needs new mathematics.
+
+Historical documents remain available with explicit checkpoint labels. The
+[pre-polish README](https://github.com/HMarcusWH/zeta-23-lean/blob/bd95b5b5c2448c4da042702adcb6ba221c03415a/README.md)
+preserves the earlier chronological landing page. Its old “current” headings
+must be read at their original dates, not as the live status of this branch.

@@ -1,3 +1,32 @@
+# Integration packages and authority boundaries
+
+Start with the [repository README](../../../README.md),
+[dated snapshot](../../../docs/CURRENT_STATE.md),
+[project guide](../../../docs/PROJECT_GUIDE.md) and
+[framework guide](../../../docs/FRAMEWORKS.md). RH and Step 4 remain OPEN.
+
+| Package | Read first |
+| --- | --- |
+| Original OPICA | [Architecture and original theorem programme](opica/README.md) |
+| Native follow-up | [100-root programme and scoped continuation receipts](opica_followup/README.md) |
+| Round 2 | [Obstruction research, contracts and open estimates](opica_round2/README.md) |
+| Round 3 | [D01–D05, first-bad structure and finite probes](opica_round3/README.md) |
+| Round 4 | [Programme](opica_round4/README.md), [handover](opica_round4/INTEGRATION_HANDOVER.md), [contracts](opica_round4/MATH_CONTRACTS.json), [OPEN closures](opica_round4/CLOSURE_OBLIGATIONS.json) |
+| Governed composition | [Runtime, bounded search, production checks and aggregate](opica_composition/README.md) |
+
+The [integration boundary](INTEGRATION_BOUNDARY.json) separates mathematical
+authority, source-discovery evidence and framework outputs. The historical
+[framework registry](FRAMEWORK_REGISTRY.json) and active
+[provider selection](opica_composition/FRAMEWORK_PROVIDERS.json) are distinct.
+The older foundation account below explains the original extraction and authority
+design; its three anchor PRs are historical checkpoints, not the current head.
+
+<details>
+<summary>Preserved historical account and checkpoint wording</summary>
+
+The dates, counts, active-PR labels and next steps below belong to their original checkpoints.
+Use the dated navigation above for the repository-wide reading path.
+
 # RHRC Integration Foundation
 
 This directory is the governed integration boundary between the exact RHKG
@@ -120,3 +149,13 @@ and against the exact #261 21-edge arithmetic frontier.
 A contact means only that an exact declaration survives the declared support
 filter. It is not theorem composition, implication, independence, usefulness,
 or RH evidence. Surviving contacts must return to exact Lean theorem work.
+
+
+OPICA Round 4 adds governed deduction, independently checked source probes and
+new supporting mathematics. See [the Round 4 state](opica_round4/README.md) and
+[the governed runner](opica_composition/README.md). The new aggregate retains
+all historical scopes and requires fresh current-child compatibility.
+RH and Step 4 remain OPEN.
+
+
+</details>

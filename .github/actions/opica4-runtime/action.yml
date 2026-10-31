@@ -1,0 +1,90 @@
+name: Prepare bounded OPICA Round4 runtime
+description: Trusted dependency installation and hard native execution boundaries
+inputs:
+  native:
+    required: true
+    description: Whether this job compiles current host Lean objects
+  provider:
+    required: true
+    description: Whether this job needs the separate pinned provider
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      working-directory: host
+      run: |
+        set -euo pipefail
+        python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_round2/python-checks.lock
+        python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+        python -m pip install -r research/RHRC/requirements.txt
+        sudo apt-get update -qq
+        sudo apt-get install -y bubblewrap util-linux
+        # Ubuntu's unprivileged user-namespace AppArmor policy is runner-wide;
+        # candidate processes still have their own isolated namespaces.
+        sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+        native="$RUNNER_TEMP/opica4-native"
+        mkdir -p "$native"
+        sudo mount -t tmpfs -o size=4G,nosuid,nodev tmpfs "$native"
+        sudo chown "$(id -u):$(id -g)" "$native"
+        printf '%s\n' "OPICA_NATIVE_OUTPUT=$native" "OPICA_NATIVE_CONFIG=$native/bootstrap/worker.json" >> "$GITHUB_ENV"
+    - if: ${{ inputs.native == 'true' || inputs.provider == 'true' }}
+      uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+      with:
+        lake-package-directory: host
+        auto-config: false
+        build: false
+        test: false
+        lint: false
+        use-github-cache: false
+        use-mathlib-cache: true
+    - if: ${{ inputs.native == 'true' }}
+      name: Install native failure diagnostic tracer
+      shell: bash
+      run: |
+        set -euo pipefail
+        install_exit=0
+        if sudo apt-get install -y strace; then
+          install_disposition=INSTALL_SUCCEEDED
+        else
+          install_exit=$?
+          install_disposition=INSTALL_FAILED_DIAGNOSTIC_ONLY
+        fi
+        tracer_available=false
+        if test -f /usr/bin/strace && test -x /usr/bin/strace && ! test -L /usr/bin/strace; then
+          tracer_available=true
+        fi
+        printf '%s\n' "OPICA_DIAGNOSTIC_STRACE_INSTALL_EXIT=$install_exit" \
+          "OPICA_DIAGNOSTIC_STRACE_INSTALL_DISPOSITION=$install_disposition" \
+          "OPICA_DIAGNOSTIC_STRACE_AVAILABLE=$tracer_available" >> "$GITHUB_ENV"
+        printf 'Native failure diagnostic tracer: install_exit=%s disposition=%s available=%s\n' \
+          "$install_exit" "$install_disposition" "$tracer_available"
+    - if: ${{ inputs.provider == 'true' }}
+      uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        repository: HMarcusWH/PermanssonLean
+        ref: 17c315f7df7abf457eb94d393bd526d46da6f6f4
+        path: provider
+        persist-credentials: false
+    - if: ${{ inputs.provider == 'true' }}
+      shell: bash
+      working-directory: provider
+      run: |
+        set -euo pipefail
+        test "$(git rev-parse HEAD)" = 17c315f7df7abf457eb94d393bd526d46da6f6f4
+        test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.0
+        elan toolchain install leanprover/lean4:v4.34.0
+        ELAN_TOOLCHAIN=leanprover/lean4:v4.34.0 lake exe cache get
+        test -z "$(git status --porcelain --untracked-files=all)"
+    - if: ${{ inputs.native == 'true' }}
+      shell: bash
+      working-directory: host
+      run: |
+        set -euo pipefail
+        python -B -m research.RHRC.integration.opica_composition.cli inspect --output "$RUNNER_TEMP/opica4-source-before.json"
+        sudo systemd-run --wait --pipe --collect --unit="opica4-prepare-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
+          --uid="$(id -u)" --gid="$(id -g)" \
+          -p MemoryMax=4294967296 -p MemorySwapMax=0 -p TasksMax=64 -p CPUQuota=200% \
+          -p "WorkingDirectory=$PWD" /usr/bin/env \
+          "PATH=$PATH" "HOME=$HOME" PYTHONUTF8=1 PYTHONDONTWRITEBYTECODE=1 LEAN_NUM_THREADS=2 \
+          "OPICA_NATIVE_OUTPUT=$OPICA_NATIVE_OUTPUT" \
+          python -B -m research.RHRC.integration.opica_composition.cli prepare --output "$OPICA_NATIVE_OUTPUT/bootstrap"

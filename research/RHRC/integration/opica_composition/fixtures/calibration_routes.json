@@ -1,0 +1,33 @@
+{
+  "schema": "OPICA4_FROZEN_CALIBRATION_ROUTES_V1",
+  "routes": [
+    {
+      "id": "D02_D05",
+      "declaration": "Zeta23.OPICAComposition.CofinalNewbornPacket",
+      "module": "Zeta23.OPICAComposition.Calibration",
+      "target_kind": "value",
+      "expected_type_sha256": "012431ee89958cffa20c70cf0e69767f1a6b727cbe4fd390837dff0821eed8ff",
+      "role": "KNOWN_CONDITIONAL_CALIBRATION_NOT_NEW_RESEARCH",
+      "forbidden_gold": [
+        "cofinal_newborn_packet_calibration",
+        "cofinal_schur_packet_calibration"
+      ]
+    },
+    {
+      "id": "D02_D04",
+      "declaration": "Zeta23.OPICAComposition.CofinalSchurPacket",
+      "module": "Zeta23.OPICAComposition.Calibration",
+      "target_kind": "value",
+      "expected_type_sha256": "7a1cb709c3e32e19c3cd0343b455afa479c918107c5642cc3406c1b49f055523",
+      "role": "KNOWN_CONDITIONAL_CALIBRATION_NOT_NEW_RESEARCH",
+      "forbidden_gold": [
+        "cofinal_newborn_packet_calibration",
+        "cofinal_schur_packet_calibration"
+      ]
+    }
+  ],
+  "phase": "CONSTRUCTION",
+  "confirmatory_gold_hidden": true,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

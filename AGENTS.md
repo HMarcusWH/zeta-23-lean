@@ -1,24 +1,24 @@
-# Riemann project: OPICA continuation
+# Riemann project: contributor and agent entry point
 
-Read `research/RHRC/integration/opica_followup/README.md` and then
-`research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md`.
-Use the current checkout and that continuation's ledger; reconcile newer work
-before applying any historical overlay or patch.
+Read [README.md](README.md), [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md),
+[docs/AGENT_GUIDE.md](docs/AGENT_GUIDE.md) and the relevant package contract.
+The live PR head and exact compiler/CI receipts determine validation scope.
+RH, Step 4 and independent source restrictions remain OPEN.
 
-For a repository-wide entry point, read root README.md and the continuation's
-DOCUMENTATION_INDEX.md and MODULE_STATUS.md. The manual OPICA progress map is
-`research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md`; its arrows organize work,
-not compiler uses or mathematical implications. Older renderer-owned Control-v2
-blocks retain their historical anchor and do not route the active PR #294.
+The active Round 4 work is [PR #298](https://github.com/HMarcusWH/zeta-23-lean/pull/298)
+on `research/opica-round4`, descended from merged Round 3 PR #297.
+Read [the Round 4 handover](research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md)
+and [closure obligations](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json).
+Use the current checkout; reconcile historical overlays before applying them.
 
-The original follow-up requires **100 primary roots in 28 acceptance units**.
-The historical exact-source subset contains 41 roots. New local candidate gates
-remain separate from aggregate registration and full release acceptance.
-Fifty-nine additional roots passed narrow gates; all100 original bodies now have
-historical or narrow evidence. Full original-contract acceptance remains OPEN.
-Read the continuation STAGE22_HANDOVER.md (and the
-earlier stage handovers) for exact proof and infrastructure evidence. Read each
-ledger gate rather than adding root names or supporting lemmas to a completion count.
+The original native follow-up remains a separate 100-root / 28-unit scope.
+Its [continuation guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md)
+and Stage 22 ledger distinguish 41 historical source-bound roots from 59 narrow
+local gates; this is not full original-contract release acceptance.
+Frozen renderer blocks and older checkpoint instructions retain their historical
+scope. The preserved instructions below continue to govern source integrity,
+build discipline and Post-Green research. The newer documentation migration is
+an exact named set, not permission for arbitrary parent changes.
 
 Keep the original Markdown/JSON contracts and both foundational PDFs unchanged.
 Read their full statements and physical/domain requirements. Record necessary

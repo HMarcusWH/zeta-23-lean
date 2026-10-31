@@ -1,0 +1,959 @@
+"""Portable orchestration guards; native proof lanes remain independently required.
+
+Only the failing source-report tests replace a lightweight source inspector.
+Their heavy checkers are tripwires and never return a simulated proof success.
+The positive support-receipt test executes the real authored49-test runner.
+"""
+from collections import Counter
+from pathlib import Path
+import json
+import io
+import copy
+import hashlib
+import subprocess
+import sys
+import os
+import stat
+import shutil
+from contextlib import contextmanager, redirect_stderr
+from types import SimpleNamespace
+import tempfile
+import unittest
+from unittest.mock import patch
+
+from research.RHRC.integration.opica_composition import cli, executor, qualification, snapshot, testing, accept
+from research.RHRC.integration.opica_composition.contracts import WorkerConfig, SearchBudget
+from research.RHRC.integration.opica_round4 import math_gate
+from research.RHRC.integration.opica_composition.accept import ROUND4_LANES
+from research.RHRC.integration.opica_composition.canonical import ContractError, canonical_bytes, load_bytes, digest
+from research.RHRC.integration.opica_composition.descendant import BASE, BASE_TREE
+from research.RHRC.integration.opica_composition.provider import configuration
+from research.RHRC.integration.opica_composition.testing import discover_methods
+
+REPO = Path(__file__).resolve().parents[5]
+R4 = REPO / "research/RHRC/integration/opica_round4"
+SUPPORT = REPO / "research/RHRC/integration/opica_round4_support"
+REQUIRED_LANES = (
+    "CONTRACT", "PARENT_REGRESSION", "CURRENT_COMPATIBILITY", "COMPOSITION_FORMAL",
+    "SEMANTIC_NEGATIVES", "REPLAY_CAMPAIGN", "FRAMEWORK_ADAPTERS", "PROVIDER_SELECTED",
+    "GENERATED_STATE", "MATHEMATICAL_SUPPORT", "SOURCE_NUMERICS",
+)
+
+
+class CliOrchestrationTests(unittest.TestCase):
+    def test_replay_partition_register_cannot_drop_math_canonical_or_independent_jobs(self):
+        from research.RHRC.integration.opica_composition import config
+        matrix=load_bytes((R4/'ACCEPTANCE_MATRIX.json').read_bytes())
+        self.assertEqual(config.check_replay_partition(matrix)['original_lanes'],list(ROUND4_LANES))
+        for change in ('mathematics','canonical','independent','summary-authority'):
+            changed=copy.deepcopy(matrix);partition=changed['independent_replay_partition']
+            if change=='mathematics':partition['groups']['AUXILIARY'].remove('MATHEMATICAL_SUPPORT')
+            elif change=='canonical':partition['groups']['CANONICAL']=[]
+            elif change=='independent':partition['final_requires']=['lanes']
+            else:partition['authority']='STANDALONE_PASS_REPORT'
+            with self.subTest(change=change),self.assertRaises(ContractError):
+                config.check_replay_partition(changed)
+
+        # Execute the authored shell setup from a clean runner directory. The
+        # fixture dispatches the real CLI parser and strict destination creator;
+        # it does not run or fabricate an independent scientific replay.
+        workflow=(REPO/'.github/workflows/rhrc_opica_composition.yml').read_text(encoding='utf-8').splitlines()
+        header='      - name: Seal the complete independent group transport'
+        self.assertEqual(workflow.count(header),1)
+        start=workflow.index(header)+1
+        end=next(i for i in range(start,len(workflow)) if workflow[i].startswith('      - '))
+        block=workflow[start:end];literal=block.index('        run: |')+1
+        self.assertTrue(all(not line or line.startswith('          ') for line in block[literal:]))
+        body='\n'.join(line[10:] for line in block[literal:])+'\n'
+        setup='mkdir -p "$RUNNER_TEMP/opica4-independent-transports"'
+        self.assertIn(setup,body)
+        bash=shutil.which('bash')
+        if os.name=='nt' and not bash:
+            candidate=Path(os.environ.get('ProgramFiles','C:/Program Files'))/'Git/bin/bash.exe'
+            if candidate.is_file():bash=str(candidate)
+        self.assertIsNotNone(bash,'Bash is required to execute the authored workflow setup')
+        commit=subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD'],text=True).strip()
+        tree=subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD^{tree}'],text=True).strip()
+        driver='''from pathlib import Path
+import json, os, sys
+from unittest.mock import patch
+sys.path.insert(0,os.environ['OPICA_FIXTURE_REPO'])
+from research.RHRC.integration.opica_composition import cli, snapshot
+prefix=['-B','-m','research.RHRC.integration.opica_composition.cli']
+if sys.argv[1:4]!=prefix:raise RuntimeError('Exact authored CLI invocation required')
+sys.argv=[prefix[-1],*sys.argv[4:]]
+root=Path(os.environ['RUNNER_TEMP'])
+expected={'run_id':os.environ['GITHUB_RUN_ID'],'attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),
+          'requested_commit':os.environ['REQUESTED_COMMIT'],'requested_tree':os.environ['OPICA_FIXTURE_TREE']}
+def pack(repo,bundle,output,group,exp):
+    if group!=os.environ['GROUP'] or exp!=expected:raise RuntimeError('Dispatch binding differs')
+    if bundle!=root/'opica4-independent'/group or not bundle.is_dir():raise RuntimeError('Input path differs')
+    if output!=root/'opica4-independent-transports'/group:raise RuntimeError('Output path differs')
+    snapshot._transport_new_directory(output)
+    (output/'dispatch-only.json').write_text(json.dumps({'group':group,'scope':'WORKFLOW_SETUP_ONLY'}))
+with patch.object(cli,'experiment',return_value=expected),patch.object(cli,'pack_group_bundle',side_effect=pack):
+    raise SystemExit(cli.main())
+'''
+        for group in accept.REPLAY_GROUP_IDS:
+            for missing_setup in (False,True):
+                with self.subTest(group=group,missing_setup=missing_setup),tempfile.TemporaryDirectory() as tmp:
+                    root=Path(tmp);(root/'opica4-independent'/group).mkdir(parents=True)
+                    path=root/'dispatch.py';path.write_text(driver,encoding='utf-8')
+                    env={**os.environ,'RUNNER_TEMP':root.as_posix(),'GROUP':group,
+                         'GITHUB_RUN_ID':'123456','GITHUB_RUN_ATTEMPT':'2','REQUESTED_COMMIT':commit,
+                         'OPICA_FIXTURE_TREE':tree,'OPICA_FIXTURE_REPO':REPO.as_posix(),
+                         'OPICA_FIXTURE_PYTHON':Path(sys.executable).as_posix(),'OPICA_FIXTURE_DRIVER':path.as_posix()}
+                    shell=('python() { "$OPICA_FIXTURE_PYTHON" "$OPICA_FIXTURE_DRIVER" "$@"; }\n'+
+                           (body.replace(setup,'') if missing_setup else body))
+                    result=subprocess.run([bash,'--noprofile','--norc','-c',shell],cwd=REPO,env=env,
+                                          capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=30)
+                    output=root/'opica4-independent-transports'/group
+                    if missing_setup:
+                        self.assertNotEqual(result.returncode,0)
+                        self.assertIn('No-follow evidence handle unavailable' if os.name=='nt'
+                                      else 'FileNotFoundError',result.stderr)
+                        self.assertFalse(output.parent.exists())
+                        self.assertFalse(output.exists())
+                    else:
+                        self.assertEqual(result.returncode,0,result.stderr)
+                        self.assertEqual(json.loads((output/'dispatch-only.json').read_text(encoding='utf-8')),
+                                         {'group':group,'scope':'WORKFLOW_SETUP_ONLY'})
+
+    def test_source_constraint_structure_requires_full_constructor_audit(self):
+        source = ('namespace Fixture\nstructure Packet : Prop where\n  source : True\n'
+                  'def statement : Prop := True\nprivate theorem hidden : True := True.intro\n')
+        self.assertEqual(math_gate.public_declarations(source),
+                         ['Fixture.Packet', 'Fixture.Packet.mk', 'Fixture.statement'])
+        # A Prop-only type record cannot substitute for the field telescope.
+        name='Fixture.Packet.mk'
+        with patch.object(math_gate, 'EXPECTED_DECLARATIONS', [name]):
+            with self.assertRaisesRegex(RuntimeError, 'Incomplete or substituted axiom inventory'):
+                math_gate.audit_validation("'Fixture.Packet' does not depend on any axioms\n")
+            with self.assertRaisesRegex(RuntimeError, 'Missing or duplicate full-type record'):
+                math_gate.audit_validation("'Fixture.Packet.mk' does not depend on any axioms\n")
+
+    def test_source_constraint_extension_retains_exact_previous_support(self):
+        from research.RHRC.integration.opica_composition import config
+        scope=math_gate.retained_support_scope()
+        self.assertEqual((len(scope['declarations']),len(scope['modules'])),(397,40))
+        self.assertEqual(len(math_gate.SOURCE_CONSTRAINT_MODULES),8)
+        with patch.object(math_gate,'EXPECTED_DECLARATIONS',math_gate.EXPECTED_DECLARATIONS[1:]):
+            with self.assertRaisesRegex(RuntimeError,'Retained 397/40'):
+                math_gate.retained_support_scope()
+        self.assertEqual(config.check_source_constraints(REPO)['status'],'PASS_SOURCE_BINDINGS_ONLY')
+
+    def test_source_constraint_register_rejects_wrong_source_and_claim_promotion(self):
+        from research.RHRC.integration.opica_composition import config
+        original=load_bytes((R4/'SOURCE_CONSTRAINTS.json').read_bytes())
+        module=math_gate.SOURCE_CONSTRAINT_MODULES[0]
+        for alteration in ('hash','path','declarations','module','claim','tie'):
+            changed=copy.deepcopy(original)
+            if alteration=='hash': changed['current_modules'][module]['sha256']='0'*64
+            elif alteration=='path': changed['current_modules'][module]['path']='Zeta23/Wrong.lean'
+            elif alteration=='declarations': changed['current_modules'][module]['declarations']=[]
+            elif alteration=='module': changed['current_modules'].pop(module)
+            elif alteration=='claim': changed['Step4']='CLOSED'
+            else: changed['open_arithmetic_targets']=[r for r in changed['open_arithmetic_targets'] if r['id']!='D_SHARED']
+            # Only the reviewed register is substituted; no native evidence or
+            # successful proof result is fabricated by this negative guard.
+            with self.subTest(alteration=alteration), patch.object(config,'load_bytes',return_value=changed):
+                with self.assertRaises(ContractError):config.check_source_constraints(REPO)
+
+    def test_native_evidence_copy_preserves_complete_inventory(self):
+        # Actual filesystem bytes only; this does not manufacture native proof.
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);native=root/'native';native.mkdir();(native/'empty').mkdir()
+            payloads={'bootstrap/result.json':b'{}\n','attempt/OpicaAttempt.olean':b'object bytes',
+                      'attempt/OpicaAttempt.olean.server':b'server bytes','journal.db':b'database bytes',
+                      'unfiltered.bin':b'\0\xffcomplete bytes'}
+            for name,raw in payloads.items():
+                path=native/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(raw)
+            sealed=snapshot.seal_evidence_tree(native);output=root/'lane';output.mkdir()
+            manifest=cli._publish_native_evidence(native,output)
+            self.assertEqual(manifest,sealed[0])
+            self.assertEqual({r['path'] for r in manifest['files']},set(payloads))
+            self.assertEqual(manifest['total_bytes'],sum(map(len,payloads.values())))
+            self.assertIn('empty',manifest['directories'])
+            self.assertEqual(load_bytes((output/'native-evidence-inventory.json').read_bytes()),manifest)
+            for name,raw in payloads.items():self.assertEqual((output/'native-evidence'/name).read_bytes(),raw)
+            self.assertTrue(snapshot.verify_evidence_tree(output/'native-evidence',manifest))
+            with self.assertRaisesRegex(ContractError,'logical bytes'):
+                snapshot.seal_evidence_tree(native,maximum_bytes=1)
+            # Missing, extra and changed files and empty directories all matter.
+            for change in ('missing','extra','changed','empty-directory'):
+                destination=root/change;snapshot.copy_evidence_tree(native,destination,sealed)
+                if change=='missing':(destination/'unfiltered.bin').unlink()
+                elif change=='extra':(destination/'extra.bin').write_bytes(b'extra')
+                elif change=='changed':(destination/'unfiltered.bin').write_bytes(b'changed')
+                else:(destination/'empty').rmdir()
+                with self.subTest(change=change),self.assertRaises(ContractError):
+                    snapshot.verify_evidence_tree(destination,manifest)
+            for name,row in (('results.json',{}),('source.json',{'fixture':'not proof'}),
+                             ('source-after.json',{'fixture':'not proof'})):
+                (output/name).write_bytes(canonical_bytes(row))
+            (output/'native-evidence/unfiltered.bin').unlink()
+            files={name:output/name for name in ('results.json','source.json','source-after.json','native-evidence-inventory.json')}
+            with patch.object(cli,'validate_descendant',return_value={'fixture':'not proof'}), \
+                    patch('research.RHRC.integration.opica_composition.testing.checked_inventory',
+                          side_effect=AssertionError('heavy replay must not run')) as replay:
+                with self.assertRaisesRegex(ContractError,'inventory/content'):
+                    cli.verify_lane_raw({'id':'MATHEMATICAL_SUPPORT'},{},files,REPO,root/'independent')
+                replay.assert_not_called()
+            self.assertFalse((root/'independent').exists())
+
+    def test_native_evidence_rejects_links_and_nonregular_entries(self):
+        @contextmanager
+        def bad_entry(path,kind,outside):
+            if os.name!='nt':
+                if kind=='fifo':os.mkfifo(path)
+                else:path.symlink_to(outside if kind!='dangling' else outside/'absent',target_is_directory=kind=='directory')
+                yield
+            else:
+                # Windows needs no symlink privilege: only the exact leaf's
+                # metadata changes; outside bytes and all parent reads are real.
+                path.write_bytes(b'placeholder')
+                original=os.lstat
+                def lstat(candidate,*args,**kwargs):
+                    info=original(candidate,*args,**kwargs)
+                    if Path(os.path.abspath(candidate))==path:
+                        fields={name:getattr(info,name) for name in dir(info) if name.startswith('st_')}
+                        fields['st_mode']=(stat.S_IFIFO if kind=='fifo' else stat.S_IFLNK)|0o600
+                        fields['st_file_attributes']=1024 if kind=='reparse' else 0
+                        return SimpleNamespace(**fields)
+                    return info
+                with patch.object(os,'lstat',side_effect=lstat):yield
+        for kind in ('file','directory','dangling','reparse','fifo'):
+            with self.subTest(kind=kind),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp);native=root/'native';native.mkdir();outside=root/'outside';outside.mkdir()
+                secret=b'EXTERNAL_BYTES_MUST_NEVER_BE_COPIED';(outside/'secret.log').write_bytes(secret)
+                path=native/'alias.log';target=outside if kind=='directory' else outside/'secret.log'
+                with bad_entry(path,kind,target),patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':str(native)}), \
+                        patch.object(cli,'validate_descendant',return_value={'fixture':'not proof'}), \
+                        patch('research.RHRC.integration.opica_composition.testing.checked_inventory',
+                              return_value={'tests':[{'lane':'COMPOSITION_FORMAL','method':'boundary fixture only'}]}), \
+                        patch('research.RHRC.integration.opica_composition.testing.run_modes',return_value=[]), \
+                        patch.object(cli,'_collect_failed_native_diagnostics'):
+                    with self.assertRaises((ContractError,OSError)):
+                        cli.run_lane('COMPOSITION_FORMAL',REPO,root/'lane',{})
+                self.assertFalse((root/'lane/lane.json').exists())
+                self.assertFalse((root/'lane/native-evidence-inventory.json').exists())
+                self.assertFalse(any(p.is_file() and p.read_bytes()==secret for p in (root/'lane').rglob('*')))
+                self.assertEqual((outside/'secret.log').read_bytes(),secret)
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);native=root/'native';native.mkdir();(native/'ok').write_bytes(b'original')
+            if os.name!='nt':
+                alias=root/'root-alias';alias.symlink_to(native,target_is_directory=True)
+                with self.assertRaises(ContractError):snapshot.seal_evidence_tree(alias)
+                repo_alias=root/'repo-alias';repo_alias.symlink_to(REPO,target_is_directory=True)
+                with self.assertRaises(ContractError):cli.run_lane('CONTRACT',repo_alias,root/'aliased-output',{})
+            else:
+                with bad_entry(root/'root-alias','reparse',native),self.assertRaises(ContractError):
+                    snapshot.seal_evidence_tree(root/'root-alias')
+                with bad_entry(root/'repo-alias','reparse',REPO),self.assertRaises(ContractError):
+                    cli.run_lane('CONTRACT',root/'repo-alias',root/'aliased-output',{})
+            self.assertFalse((root/'aliased-output').exists())
+
+    def test_native_evidence_copy_races_never_publish_success(self):
+        # Inject changes after sealing, at the actual copy boundary. No native
+        # checker or successful lane receipt is substituted or accepted here.
+        for kind in ('content','file-to-directory','directory-to-link','dangling-link','root-swap','during-copy',
+                     'open-boundary-link','open-boundary-directory'):
+            with self.subTest(kind=kind),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp);native=root/'native';(native/'parent').mkdir(parents=True)
+                source=native/'parent/evidence.log';source.write_bytes(b'original')
+                outside=root/'outside';outside.mkdir();secret=b'EXTERNAL_RACE_BYTES';(outside/'evidence.log').write_bytes(secret)
+                output=root/'lane';original=cli.copy_evidence_tree
+                def changed(tree,destination,sealed):
+                    if kind.startswith('open-boundary-'):
+                        original_file=snapshot._evidence_file;calls=0
+                        @contextmanager
+                        def swap_before_open(base,relative,identities=None):
+                            nonlocal calls
+                            if Path(base)==tree and relative=='parent/evidence.log':
+                                calls+=1
+                                # First read is copy's pre-seal; second is the
+                                # actual source open after the destination exists.
+                                if calls==2:
+                                    if kind=='open-boundary-link':
+                                        source.unlink()
+                                        if os.name!='nt':source.symlink_to(outside/'evidence.log')
+                                        else:source.write_bytes(secret)
+                                    else:
+                                        (tree/'parent').rename(tree/'old-parent')
+                                        if os.name!='nt':(tree/'parent').symlink_to(outside,target_is_directory=True)
+                                        else:(tree/'parent').mkdir();(tree/'parent/evidence.log').write_bytes(secret)
+                            with original_file(base,relative,identities) as value:yield value
+                        with patch.object(snapshot,'_evidence_file',side_effect=swap_before_open):
+                            return original(tree,destination,sealed)
+                    if kind=='during-copy':
+                        original_directory=snapshot._evidence_directory
+                        @contextmanager
+                        def mutate_after_open(base,relative='',identities=None):
+                            with original_directory(base,relative,identities) as value:
+                                if Path(base)==destination and relative=='parent':source.write_bytes(b'changed during copy')
+                                yield value
+                        with patch.object(snapshot,'_evidence_directory',side_effect=mutate_after_open):
+                            return original(tree,destination,sealed)
+                    if kind=='content':source.write_bytes(b'changed')
+                    elif kind=='file-to-directory':source.unlink();source.mkdir()
+                    elif kind=='root-swap':
+                        tree.rename(root/'old-root');tree.mkdir();(tree/'parent').mkdir();(tree/'parent/evidence.log').write_bytes(b'original')
+                    elif os.name!='nt':
+                        source.unlink();(tree/'parent').rmdir()
+                        (tree/'parent').symlink_to(outside if kind=='directory-to-link' else root/'absent',target_is_directory=True)
+                    else:
+                        # Real replacement-directory identity guards remain
+                        # active without requiring Windows symlink privileges.
+                        (tree/'parent').rename(tree/'old-parent');(tree/'parent').mkdir()
+                        (tree/'parent/evidence.log').write_bytes(b'original')
+                    return original(tree,destination,sealed)
+                with patch.object(cli,'copy_evidence_tree',side_effect=changed), \
+                        patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':str(native)}), \
+                        patch.object(cli,'validate_descendant',return_value={'fixture':'not proof'}), \
+                        patch('research.RHRC.integration.opica_composition.testing.checked_inventory',
+                              return_value={'tests':[{'lane':'COMPOSITION_FORMAL','method':'boundary fixture only'}]}), \
+                        patch('research.RHRC.integration.opica_composition.testing.run_modes',return_value=[]), \
+                        patch.object(cli,'_collect_failed_native_diagnostics'):
+                    with self.assertRaises((ContractError,OSError)):cli.run_lane('COMPOSITION_FORMAL',REPO,output,{})
+                self.assertFalse((output/'lane.json').exists())
+                self.assertFalse((output/'native-evidence-inventory.json').exists())
+                self.assertFalse(any(p.is_file() and p.read_bytes()==secret for p in output.rglob('*')))
+                self.assertEqual((outside/'evidence.log').read_bytes(),secret)
+
+    def test_owned_native_retirement_preserves_complete_archive_and_bootstrap(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base=Path(tmp);native=base/'native';native.mkdir()
+            (native/'bootstrap').mkdir();(native/'bootstrap/worker.json').write_bytes(b'keep bootstrap')
+            root=native/'owned';owned=snapshot._transport_new_directory(root)
+            (root/'empty/deep').mkdir(parents=True);(root/'.hidden').mkdir()
+            payloads={'.hidden/.receipt':b'complete hidden bytes','object.olean':b'actual fixture bytes',
+                      '.root-note':b'root hidden bytes'}
+            for name,raw in payloads.items():(root/name).write_bytes(raw)
+            sealed=snapshot.seal_evidence_tree(root);archive=base/'archive'
+            snapshot.copy_evidence_tree(root,archive,sealed)
+            archived=snapshot.seal_evidence_tree(archive)
+            result=snapshot.retire_copied_evidence_tree(root,archive,sealed,
+                approved_parent=native,owned_identity=owned[''])
+            self.assertEqual(result,sealed[0]);self.assertFalse(root.exists())
+            self.assertEqual(snapshot.seal_evidence_tree(archive),archived)
+            self.assertTrue((archive/'empty/deep').is_dir())
+            for name,raw in payloads.items():self.assertEqual((archive/name).read_bytes(),raw)
+            self.assertEqual((native/'bootstrap/worker.json').read_bytes(),b'keep bootstrap')
+            self.assertEqual({p.name for p in native.iterdir()},{'bootstrap'})
+
+    def test_owned_native_retirement_refuses_tampering_and_wrong_scope(self):
+        for kind in ('archive-content','archive-missing','archive-extra','archive-empty-directory',
+                     'source-content','source-missing','source-extra','root-replacement','wrong-parent',
+                     'wrong-owned-identity','nested-archive','source-link','archive-link'):
+            with self.subTest(kind=kind),tempfile.TemporaryDirectory() as tmp:
+                base=Path(tmp);native=base/'native';native.mkdir()
+                (native/'bootstrap').mkdir();(native/'bootstrap/keep').write_bytes(b'bootstrap')
+                root=native/'owned';owned=snapshot._transport_new_directory(root)
+                (root/'parent').mkdir();(root/'empty').mkdir();source=root/'parent/evidence.log'
+                source.write_bytes(b'original');sealed=snapshot.seal_evidence_tree(root)
+                archive=base/'archive';snapshot.copy_evidence_tree(root,archive,sealed)
+                outside=base/'outside';outside.mkdir();secret=outside/'evidence.log';secret.write_bytes(b'EXTERNAL_BYTES')
+                parent=native;identity=owned[''];mock_lstat=None
+                if kind=='archive-content':(archive/'parent/evidence.log').write_bytes(b'tampered')
+                elif kind=='archive-missing':(archive/'parent/evidence.log').unlink()
+                elif kind=='archive-extra':(archive/'extra').write_bytes(b'extra')
+                elif kind=='archive-empty-directory':(archive/'empty').rmdir()
+                elif kind=='source-content':source.write_bytes(b'tampered')
+                elif kind=='source-missing':source.unlink()
+                elif kind=='source-extra':(root/'extra').write_bytes(b'extra')
+                elif kind=='root-replacement':
+                    root.rename(native/'retained-original');root.mkdir();(root/'replacement').write_bytes(b'KEEP_REPLACEMENT')
+                elif kind=='wrong-parent':parent=base
+                elif kind=='wrong-owned-identity':identity=(identity[0],identity[1]+1,identity[2])
+                elif kind=='nested-archive':archive=root/'archive'
+                elif kind in {'source-link','archive-link'}:
+                    leaf=source if kind=='source-link' else archive/'parent/evidence.log'
+                    if os.name!='nt':leaf.unlink();leaf.symlink_to(secret)
+                    else:
+                        original_lstat=os.lstat
+                        def linked(candidate,*args,**kwargs):
+                            info=original_lstat(candidate,*args,**kwargs)
+                            if Path(os.path.abspath(candidate))==leaf:
+                                fields={name:getattr(info,name) for name in dir(info) if name.startswith('st_')}
+                                fields['st_file_attributes']=getattr(info,'st_file_attributes',0)|1024
+                                return SimpleNamespace(**fields)
+                            return info
+                        mock_lstat=linked
+                @contextmanager
+                def metadata_guard():
+                    if mock_lstat is None:yield
+                    else:
+                        with patch.object(os,'lstat',side_effect=mock_lstat):yield
+                with metadata_guard(),self.assertRaises((ContractError,OSError)):
+                    snapshot.retire_copied_evidence_tree(root,archive,sealed,
+                        approved_parent=parent,owned_identity=identity)
+                self.assertTrue(root.exists());self.assertEqual(secret.read_bytes(),b'EXTERNAL_BYTES')
+                self.assertEqual((native/'bootstrap/keep').read_bytes(),b'bootstrap')
+                if kind=='root-replacement':
+                    self.assertEqual((root/'replacement').read_bytes(),b'KEEP_REPLACEMENT')
+                    self.assertEqual((native/'retained-original/parent/evidence.log').read_bytes(),b'original')
+
+    def test_owned_native_retirement_rechecks_identity_at_destructive_boundary(self):
+        for kind in ('source-race','root-race','cleanup-error'):
+            with self.subTest(kind=kind),tempfile.TemporaryDirectory() as tmp:
+                base=Path(tmp);native=base/'native';native.mkdir()
+                root=native/'owned';owned=snapshot._transport_new_directory(root)
+                (root/'parent').mkdir();source=root/'parent/evidence.log';source.write_bytes(b'original')
+                sealed=snapshot.seal_evidence_tree(root);archive=base/'archive'
+                snapshot.copy_evidence_tree(root,archive,sealed);archived=snapshot.seal_evidence_tree(archive)
+                outside=base/'outside';outside.mkdir();(outside/'keep').write_bytes(b'EXTERNAL_BYTES')
+                original_seal=snapshot.seal_evidence_tree;source_seals=0
+                def race_after_verification(path,*args,**kwargs):
+                    nonlocal source_seals
+                    result=original_seal(path,*args,**kwargs)
+                    if Path(path)==root:
+                        source_seals+=1
+                        if source_seals==2 and kind=='root-race':
+                            root.rename(native/'retained-original');root.mkdir();(root/'keep').write_bytes(b'KEEP_REPLACEMENT')
+                    return result
+                original_retire=snapshot._retire_evidence_entry
+                def race_at_unlink(directory,path,name,expected,**kwargs):
+                    if kind=='source-race':source.write_bytes(b'mutation after archive verification')
+                    elif kind=='cleanup-error':raise OSError('injected cleanup failure')
+                    return original_retire(directory,path,name,expected,**kwargs)
+                with patch.object(snapshot,'seal_evidence_tree',side_effect=race_after_verification), \
+                        patch.object(snapshot,'_retire_evidence_entry',side_effect=race_at_unlink), \
+                        self.assertRaises((ContractError,OSError)):
+                    snapshot.retire_copied_evidence_tree(root,archive,sealed,
+                        approved_parent=native,owned_identity=owned[''])
+                self.assertEqual(snapshot.seal_evidence_tree(archive),archived)
+                self.assertEqual((outside/'keep').read_bytes(),b'EXTERNAL_BYTES')
+                if kind=='root-race':
+                    self.assertEqual((root/'keep').read_bytes(),b'KEEP_REPLACEMENT')
+                    self.assertEqual((native/'retained-original/parent/evidence.log').read_bytes(),b'original')
+                elif kind=='cleanup-error':self.assertEqual(source.read_bytes(),b'original')
+
+    def test_mathematical_support_uses_closed_worker_recipe_and_bounded_caps(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            worker = WorkerConfig(str(root / 'toolchain/bin/lean'), str(root / 'toolchain'),
+                                  [str(root / 'imports')], production=True,
+                                  budget={'wall_seconds': 900, 'memory_bytes': 8589934592, 'disk_bytes': 8589934592})
+            budget = math_gate.mathematical_budget(worker, 900)
+            self.assertEqual(budget.heartbeats, 1200000)
+            self.assertEqual((budget.wall_seconds, budget.memory_bytes, budget.disk_bytes),
+                             (600, 4294967296, 4294967296))
+            short = math_gate.mathematical_budget(worker, 10)
+            self.assertEqual((short.wall_seconds, short.cpu_seconds), (10, 10))
+            source = 'Zeta23/OPICARound4/Validation.lean'
+            command, env = executor._recipe(worker, root / 'output', source, source[:-5] + '.olean',
+                                            budget, mathematical_support=True)
+            self.assertEqual(env, {})
+            self.assertIn('--unshare-all', command)
+            self.assertIn('--clearenv', command)
+            self.assertIn('--nproc=64', command)
+            self.assertIs(type(executor.LEAN_ADDRESS_SPACE_BYTES), int)
+            self.assertEqual(executor.LEAN_ADDRESS_SPACE_BYTES, 68719476736)
+            self.assertEqual([arg for arg in command if arg.startswith('--as=')], ['--as=68719476736'])
+            self.assertEqual(command[command.index('--bind') + 1:command.index('--bind') + 3],
+                             [str(root / 'output'), '/out'])
+            self.assertEqual(command[-1], '/out/' + source)
+            self.assertEqual(command[command.index('-i') + 1], '/out/' + source[:-5] + '.ilean')
+            self.assertIn('-DrelaxedAutoImplicit=false', command)
+            self.assertIn('-j2', command)
+            lean_path = command[command.index('LEAN_PATH') + 1]
+            self.assertEqual(lean_path, str(root / 'imports'))
+            self.assertNotIn('/out', lean_path.split(':'))
+            default, _ = executor._recipe(worker, root / 'output', 'OpicaAttempt.lean', 'OpicaAttempt.olean', SearchBudget())
+            self.assertNotIn('-i', default)
+            self.assertNotIn('-DrelaxedAutoImplicit=false', default)
+            config = root / 'worker-config.json'; config.write_bytes(worker.to_bytes() + b'\n')
+            parsed, config_hash = math_gate.load_worker_config(config)
+            self.assertEqual(parsed, worker)
+            self.assertEqual(config_hash, hashlib.sha256(config.read_bytes()).hexdigest())
+            # Exercise direct-script package loading, stopping at the missing
+            # compiler before any native work or successful proof is possible.
+            entry = subprocess.run([sys.executable, '-B', str(Path(math_gate.__file__)), '--repo', str(REPO),
+                                    '--output-dir', str(root / 'unused'), '--lean', worker.lean,
+                                    '--lean-paths', worker.lean_paths[0], '--worker-config', str(config)],
+                                   capture_output=True, text=True, timeout=30)
+            self.assertNotEqual(entry.returncode, 0)
+            self.assertIn('Missing checkout or native compiler', entry.stderr)
+            config.write_bytes(canonical_bytes({**worker.to_dict(), 'extra': 'forbidden'}))
+            with self.assertRaises(ContractError):
+                math_gate.load_worker_config(config)
+            for name, obj, selector in (('../Escape.lean', '../Escape.olean', True),
+                                       ('Source.lean', 'Source.olean', True),
+                                       (source, 'Other.olean', True), (source, source[:-5] + '.olean', 'yes')):
+                with self.subTest(source=name, object=obj, selector=selector), self.assertRaises(ContractError):
+                    executor._recipe(worker, root / 'output', name, obj, budget, mathematical_support=selector)
+
+    def test_mathematical_support_copies_exact_module_before_dispatch(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); lib = root / 'lib'; lib.mkdir()
+            source = root / 'original.lean'; raw = b'import Init\n-- exact input bytes\r\n'
+            source.write_bytes(raw)
+            worker = WorkerConfig(str(root / 'lean'), str(root / 'toolchain'), [str(root / 'imports')], production=False)
+            relative = 'Zeta23/OPICARound4/Validation.lean'; output = root / 'worker'
+            def tripwire(config, folder, source_name, obj_name, budget, **options):
+                self.assertEqual((source_name, obj_name), (relative, relative[:-5] + '.olean'))
+                self.assertEqual((folder / relative).read_bytes(), raw)
+                self.assertEqual(config.lean_paths, [str(lib), *worker.lean_paths])
+                self.assertEqual(options, {'mathematical_support': True})
+                raise RuntimeError('dispatch tripwire; no proof executed')
+            with patch.object(executor, 'run_worker', side_effect=tripwire) as dispatch, \
+                    patch.object(math_gate.subprocess, 'run', side_effect=AssertionError('direct compiler forbidden')):
+                with self.assertRaisesRegex(RuntimeError, 'dispatch tripwire'):
+                    math_gate._isolated_compile(worker, output, lib, source, relative, SearchBudget())
+                dispatch.assert_called_once()
+            self.assertEqual(source.read_bytes(), raw)
+            self.assertEqual(list(lib.iterdir()), [])
+            def coordinator_tripwire(command, repo, env, folder, label, seconds):
+                self.assertEqual(seconds, 7200)
+                self.assertEqual(command[command.index('--timeout') + 1], '600')
+                config = Path(command[command.index('--worker-config') + 1])
+                self.assertEqual(math_gate.load_worker_config(config)[0], worker)
+                raise RuntimeError('bounded coordinator tripwire; no proof executed')
+            with patch.object(qualification, '_worker_version', return_value={}), \
+                    patch.object(qualification, '_command', side_effect=coordinator_tripwire) as coordinator:
+                with self.assertRaisesRegex(RuntimeError, 'bounded coordinator tripwire'):
+                    qualification.check_mathematical_support(REPO, root / 'coordinator', worker)
+                coordinator.assert_called_once()
+            self.assertEqual(load_bytes((root / 'coordinator/result.json').read_bytes())['status'], 'ENVIRONMENT_ERROR')
+
+    def test_mathematical_support_rejects_unisolated_and_forged_worker_receipts(self):
+        # These records only exercise rejection paths; none can authorize proof.
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp); worker = WorkerConfig(str(output / 'lean'), str(output / 'toolchain'),
+                                                     [str(output / 'imports')], production=True)
+            with self.assertRaisesRegex(ContractError, 'execution authority'):
+                qualification._validate_mathematical_worker_receipts({'execution_mode': 'DEVELOPMENT_ONLY'}, output, worker)
+            module = math_gate.MODULES[0]; source = math_gate.relative(module).as_posix()
+            folder = output / 'workers' / module; (folder / source).parent.mkdir(parents=True)
+            (folder / source).write_bytes(b'fixture, not a theorem')
+            log = output / (module + '.log'); log.write_bytes(b'fixture, not compiler evidence')
+            (folder / (source + '.log')).write_bytes(log.read_bytes())
+            sha = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+            budget = math_gate.mathematical_budget(worker, 600)
+            isolated = WorkerConfig(worker.lean, worker.toolchain_root, [str(output / 'lib'), *worker.lean_paths])
+            command, _ = executor._recipe(isolated, folder, source, source[:-5] + '.olean', budget, mathematical_support=True)
+            native = {'recipe': executor.MATH_SUPPORT_RECIPE, 'capability': 'LINUX_ISOLATED', 'exit_code': 0,
+                      'resource_status': None, 'command': command, 'log_sha256': sha(log),
+                      'resource_scope': {'mode': 'LINUX_CGROUP_V2_TMPFS', 'memory_bytes': 4294967296,
+                                         'address_space_bytes': 68719476736,
+                                         'processes': 64, 'disk_bytes': 4294967296, 'cgroup': '/fixture'}}
+            native.update(resource_reason=None,failure_reason=None,
+              resource_caps={'wall_seconds':budget.wall_seconds,'cpu_seconds_soft':budget.cpu_seconds,
+                'cpu_seconds_hard':budget.cpu_seconds,'log_bytes':budget.log_bytes,'max_file_bytes':budget.max_file_bytes,
+                'memory_bytes':budget.memory_bytes,'disk_bytes':budget.disk_bytes,
+                'address_space_bytes':executor.LEAN_ADDRESS_SPACE_BYTES,'os_limits_enforced':True},
+              child_status={'schema':'OPICA_WORKER_WAIT_STATUS_V1','return_code':0,'signal':None,
+                'observation':'PYTHON_SUBPROCESS_WAIT','scope':'COMMAND_PROCESS_ONLY_WRAPPED_CHILD_UNKNOWN'})
+            first = {'module': module, 'worker_output': str(folder), 'argv': command, 'native': native,
+                     'exit_code': 0, 'source_sha256': sha(folder / source), 'log_sha256': sha(log)}
+            base = {'execution_mode': 'PRODUCTION_ISOLATED', 'authority': 'CURRENT_SOURCE_ISOLATED_NATIVE_SUPPORT',
+                    'worker': worker.to_dict(), 'worker_budget': budget.to_dict(),
+                    'module_records': [first] + [{'module': m} for m in math_gate.MODULES[1:]]}
+            for patch_value, message in (
+                    ({'resource_caps': {}}, 'resource caps differ'),
+                    ({'resource_caps': {**native['resource_caps'], 'os_limits_enforced': 1}}, 'resource caps differ'),
+                    ({'resource_caps': {**native['resource_caps'], 'max_file_bytes': 1}}, 'resource caps differ'),
+                    ({'child_status': {}}, 'wait status differs'),
+                    ({'child_status': {**native['child_status'], 'return_code': False}}, 'wait status differs'),
+                    ({'failure_reason': 'UNCLASSIFIED_WORKER_FAILURE'}, 'failure reason differs'),
+                    ({'failure_reason': 'KILLED_UNATTRIBUTED'}, 'receipt missing or invalid'),
+                    ({'resource_reason': 'CPU_TIME'}, 'receipt missing or invalid')):
+                with self.subTest(resource_evidence=patch_value):
+                    forged = copy.deepcopy(base); forged['module_records'][0]['native'].update(patch_value)
+                    with self.assertRaisesRegex(ContractError, message):
+                        qualification._validate_mathematical_worker_receipts(forged, output, worker)
+            # Correct resource fields must pass their guard and reach the
+            # deliberately incomplete products, never qualify this fixture.
+            with self.assertRaisesRegex(ContractError, 'Mathematical module product binding differs'):
+                qualification._validate_mathematical_worker_receipts(base, output, worker)
+            absent = object()
+            for virtual in (absent, True, '68719476736', 68719476736.0, 0, 4294967296, 68719476735, 68719476737):
+                with self.subTest(address_space=virtual):
+                    forged = copy.deepcopy(base)
+                    scope = forged['module_records'][0]['native']['resource_scope']
+                    if virtual is absent:
+                        scope.pop('address_space_bytes')
+                    else:
+                        scope['address_space_bytes'] = virtual
+                    with self.assertRaisesRegex(ContractError, 'Mathematical isolated worker resource scope differs'):
+                        qualification._validate_mathematical_worker_receipts(forged, output, worker)
+            forged = copy.deepcopy(base)
+            forged['module_records'][0]['native']['resource_scope']['memory_bytes'] = 4294967297
+            with self.assertRaisesRegex(ContractError, 'Mathematical isolated worker resource scope differs'):
+                qualification._validate_mathematical_worker_receipts(forged, output, worker)
+            for update in ({'recipe': 'OPICA_LEAN_ISOLATED_V1'}, {'capability': 'NATIVE_DEVELOPMENT_ONLY'},
+                           {'command': command + ['--extra']}, {'resource_status': 'RESOURCE_EXHAUSTED'},
+                           {'exit_code': 1}, {'log_sha256': '0' * 64},
+                           {'resource_scope': {'mode': 'NATIVE_DEVELOPMENT_ONLY'}}):
+                with self.subTest(update=update):
+                    forged = copy.deepcopy(base); forged['module_records'][0]['native'].update(update)
+                    forged['module_records'][0]['argv'] = forged['module_records'][0]['native']['command']
+                    with self.assertRaises(ContractError):
+                        qualification._validate_mathematical_worker_receipts(forged, output, worker)
+
+    def test_original_acceptance_census_has_every_numbered_method_once(self):
+        original = load_bytes((R4 / "BASELINE_ACCEPTANCE_MATRIX.json").read_bytes())["tests"]
+        methods = [row for row in discover_methods() if row["case"] is not None]
+        self.assertEqual(len(original), 117)
+        self.assertEqual(len(methods), 117)
+        self.assertEqual(Counter(row["case"] for row in methods), Counter(row["id"] for row in original))
+        self.assertEqual(len({row["method"] for row in methods}), 117)
+
+    def test_all_thirteen_work_packages_remain_explicit(self):
+        packages = load_bytes((R4 / "WORK_PACKAGES.json").read_bytes())["packages"]
+        self.assertEqual([row["id"] for row in packages], ["R4-" + str(i).zfill(2) for i in range(13)])
+        self.assertTrue(all(row.get("name") and row.get("implementation") and row.get("acceptance_authority")
+                            for row in packages))
+
+    def test_every_lane_uses_its_own_source_identity(self):
+        profile = load_bytes(cli.PROFILE.read_bytes())
+        self.assertEqual(set(ROUND4_LANES), set(REQUIRED_LANES))
+        self.assertEqual(len(ROUND4_LANES), 11)
+        self.assertEqual(profile["required_input_lanes"], list(ROUND4_LANES))
+        requested = {"requested_commit": "a" * 40, "requested_tree": "b" * 40}
+        provider = configuration()
+        for lane in REQUIRED_LANES:
+            with self.subTest(lane=lane):
+                row = cli.lane_expected(lane, requested)
+                self.assertEqual(row["id"], lane)
+                if lane == "PARENT_REGRESSION":
+                    self.assertEqual(row, {"id": lane, "scope": "FROZEN_BASELINE",
+                                           "checked": {"commit": BASE, "tree": BASE_TREE}})
+                elif lane == "PROVIDER_SELECTED":
+                    self.assertEqual(row, {"id": lane, "scope": "SELECTED_PROVIDER", "checked": {
+                        "repository": provider["repository"], "commit": provider["commit"],
+                        "toolchain": provider["toolchain"]}})
+                else:
+                    self.assertEqual(row, {"id": lane, "scope": "CURRENT_HOST", "checked": {
+                        "commit": requested["requested_commit"], "tree": requested["requested_tree"]}})
+        with self.assertRaises(ContractError):
+            cli.lane_expected("ACCEPTANCE", requested)
+
+    def test_source_report_mismatch_stops_before_any_heavy_checker(self):
+        current = {"schema": "SOURCE_IDENTITY_FIXTURE_ONLY_NOT_PROOF", "commit": "c" * 40}
+        changed = {**current, "commit": "d" * 40}
+        for source, after in ((current, changed), (changed, changed)):
+            with self.subTest(source=source, after=after), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                files = {}
+                for name, row in (("results.json", {}), ("source.json", source), ("source-after.json", after)):
+                    path = root / name
+                    path.write_bytes(canonical_bytes(row))
+                    files[name] = path
+                with patch.object(cli, "validate_descendant", return_value=current) as inspector, \
+                     patch.object(cli, "worker_from_environment", side_effect=AssertionError("native worker must not run")) as worker, \
+                     patch("research.RHRC.integration.opica_composition.qualification.check_current_compatibility",
+                           side_effect=AssertionError("heavy native checker must not run")) as heavy:
+                    with self.assertRaisesRegex(ContractError, "Lane source differs"):
+                        cli.verify_lane_raw({"id": "CURRENT_COMPATIBILITY"}, {}, files, REPO, root / "independent")
+                    inspector.assert_called_once_with(REPO, require_clean=True)
+                    worker.assert_not_called()
+                    heavy.assert_not_called()
+                    self.assertFalse((root / "independent").exists())
+
+    def test_real_support_runner_yields_all_forty_nine_tests_in_both_modes(self):
+        expected = load_bytes((SUPPORT / "EXPECTED_TEST_IDS.json").read_bytes())
+        self.assertEqual(len(expected), 49)
+        with tempfile.TemporaryDirectory() as tmp:
+            rows = cli.support_regressions(REPO, Path(tmp))
+            self.assertEqual(len(rows), 2)
+            for row, optimized in zip(rows, (False, True)):
+                receipt = row["receipt"]
+                self.assertEqual(row["command"]["exit_code"], 0)
+                self.assertEqual(receipt["test_ids"], sorted(expected))
+                self.assertEqual(receipt["executed"], 49)
+                self.assertIs(receipt["optimized"], optimized)
+
+    def test_support_receipt_rejects_empty_skipped_or_wrong_mode_wrappers(self):
+        # Synthetic failures test parsing only; no synthetic success is accepted.
+        base = {"status": "PASS", "executed": 49, "expected": 49, "skips": 0, "errors": 0,
+                "failures": 0, "expected_failures": 0, "unexpected_successes": 0, "optimized": False}
+        for update in ({"executed": 0}, {"skips": 1}, {"optimized": True}):
+            with self.subTest(update=update), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                def rejected_wrapper(repo, argv, output, label):
+                    path = output / (label + ".log")
+                    path.write_text(json.dumps({**base, **update}) + "\n", encoding="utf-8")
+                    return {"log": path.name, "exit_code": 0}
+                with patch.object(cli, "run_command", side_effect=rejected_wrapper):
+                    with self.assertRaises(ContractError):
+                        cli.support_regressions(REPO, root)
+
+        # Exercise an actual failing unittest child and its real receipt/log,
+        # including the CONTRACT lane's optional diagnostic transport. This
+        # fixture supplies no successful test or native-proof authority.
+        emitter = '''import sys, types
+from research.RHRC.integration.opica_composition.testing import run_tests
+fixture = types.ModuleType('opica_failed_test_fixture')
+exec("import unittest\\nclass Failing(unittest.TestCase):\\n def test_failure(self):\\n  self.fail('x'*20000+' FAILURE_TAIL_MARKER\\\\n::error::child output\\\\x1b[31m')\\n", fixture.__dict__)
+sys.modules[fixture.__name__] = fixture
+run_tests(['opica_failed_test_fixture.Failing.test_failure'], sys.argv[1])
+'''
+        actual_run = subprocess.run
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);output=root/'failed-contract';stderr=io.StringIO()
+            def failed_child(command,**options):
+                receipt=command[command.index('--receipt')+1]
+                return actual_run([sys.executable,*(['-O'] if '-O' in command else []),'-B','-c',emitter,receipt],**options)
+            def failed_lane(lane,repo,folder,experiment,**options):
+                return testing.run_modes(lane,folder/'tests',repo)
+            with patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':''}), \
+                    patch.object(testing,'checked_inventory',return_value={'tests':[
+                        {'lane':'CONTRACT','method':'opica_failed_test_fixture.Failing.test_failure'}]}), \
+                    patch.object(testing.subprocess,'run',side_effect=failed_child) as child, \
+                    patch.object(cli,'_run_lane_impl',side_effect=failed_lane),redirect_stderr(stderr), \
+                    self.assertRaisesRegex(ContractError,'Normal/optimized test process failed'):
+                cli.run_lane('CONTRACT',REPO,output,{})
+            self.assertEqual(child.call_count,1)
+            receipt=load_bytes((output/'tests/normal.json').read_bytes())
+            self.assertEqual((receipt['status'],receipt['failures'],receipt['errors']),('FAIL',1,0))
+            self.assertEqual(receipt['test_ids'],['opica_failed_test_fixture.Failing.test_failure'])
+            self.assertFalse((output/'tests/optimized.json').exists())
+            records=[json.loads(line.removeprefix('OPICA_TEST_DIAGNOSTIC_ONLY '))
+                     for line in stderr.getvalue().splitlines()]
+            self.assertEqual({row['file'] for row in records},{'normal.json','normal.log','normal.driver.log'})
+            self.assertTrue(all(row['tail_bytes']<=testing.FAILURE_TAIL_BYTES for row in records))
+            self.assertTrue(all(row['authority']=='DIAGNOSTIC_ONLY_NOT_ACCEPTANCE' for row in records))
+            log=next(row for row in records if row['file']=='normal.log')
+            self.assertTrue(log['truncated']);self.assertIn('FAILURE_TAIL_MARKER',log['tail'])
+            self.assertNotIn('\x1b',stderr.getvalue())
+            self.assertNotIn('\n::error::',stderr.getvalue())
+            report=load_bytes((output/'failure-diagnostics/index.json').read_bytes())
+            self.assertEqual(report['authority'],'DIAGNOSTIC_ONLY_NOT_ACCEPTANCE')
+            self.assertIsNone(report['native_root'])
+            self.assertEqual({row['path'] for row in report['files']},
+                             {'tests/normal.json','tests/normal.log','tests/normal.driver.log'})
+            for row in report['files']:
+                self.assertEqual((output/'failure-diagnostics'/row['path']).read_bytes(),(output/row['path']).read_bytes())
+            self.assertFalse((output/'lane.json').exists())
+            self.assertFalse((output/'results.json').exists())
+
+            primary=ContractError('original child launch failure')
+            with patch.object(testing,'checked_inventory',return_value={'tests':[{'lane':'CONTRACT','method':'fixture'}]}), \
+                    patch.object(testing.subprocess,'run',side_effect=primary), \
+                    patch.object(testing,'_emit_failed_test_diagnostics',side_effect=RuntimeError('optional tail failed')), \
+                    self.assertRaises(ContractError) as caught:
+                testing.run_modes('CONTRACT',root/'reporter-failed',REPO)
+            self.assertIs(caught.exception,primary)
+
+            # Linked logs and receipt-supplied paths never redirect either the
+            # bounded tail reporter or the optional fixed-path artifact copy.
+            hostile=root/'hostile';(hostile/'tests').mkdir(parents=True)
+            outside=root/'external.log';secret=b'EXTERNAL_TEST_LOG_BYTES_MUST_NEVER_BE_READ';outside.write_bytes(secret)
+            (hostile/'tests/normal.json').write_bytes(canonical_bytes({'log':str(outside)}))
+            (hostile/'tests/normal.driver.log').write_bytes(b'x'*1000+b'BOUNDED_DRIVER_END')
+            (hostile/'tests/optimized.json').write_bytes(b'{}')
+            alias=hostile/'tests/normal.log'
+            @contextmanager
+            def linked_log():
+                if os.name!='nt':
+                    alias.symlink_to(outside);yield
+                else:
+                    alias.write_bytes(b'placeholder')
+                    original=os.lstat
+                    def lstat(path,*args,**kwargs):
+                        info=original(path,*args,**kwargs)
+                        if Path(os.path.abspath(path))==alias:
+                            fields={name:getattr(info,name) for name in dir(info) if name.startswith('st_')}
+                            fields['st_file_attributes']=1024
+                            return SimpleNamespace(**fields)
+                        return info
+                    with patch.object(os,'lstat',side_effect=lstat):yield
+            stderr=io.StringIO()
+            with linked_log(),patch.dict(os.environ,{'OPICA_NATIVE_OUTPUT':''}), \
+                    patch.object(testing,'FAILURE_TAIL_BYTES',32), \
+                    patch.object(cli,'FAILURE_DIAGNOSTIC_MAX_FILE_BYTES',128), \
+                    patch.object(cli,'FAILURE_DIAGNOSTIC_MAX_TOTAL_BYTES',128),redirect_stderr(stderr):
+                testing._emit_failed_test_diagnostics(hostile/'tests','normal')
+                report=cli._collect_failed_native_diagnostics('CONTRACT',REPO,hostile)
+            records=[json.loads(line.removeprefix('OPICA_TEST_DIAGNOSTIC_ONLY '))
+                     for line in stderr.getvalue().splitlines() if line.startswith('OPICA_TEST_DIAGNOSTIC_ONLY ')]
+            self.assertTrue(all(row['tail_bytes']<=32 for row in records))
+            self.assertTrue(any(row['file']=='normal.driver.log' and row['truncated'] and
+                                row['tail'].endswith('BOUNDED_DRIVER_END') for row in records))
+            self.assertNotIn(secret.decode(),stderr.getvalue())
+            self.assertNotIn('tests/normal.log',{row['path'] for row in report['files']})
+            self.assertLessEqual(report['retained_bytes'],128)
+            self.assertTrue(any(row['path']=='tests/normal.driver.log' and row['reason']=='PER_FILE_LIMIT'
+                                for row in report['omissions']))
+            for row in report['files']:
+                self.assertNotIn(secret,(hostile/'failure-diagnostics'/row['path']).read_bytes())
+            self.assertEqual(outside.read_bytes(),secret)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+class IndependentGroupTransportTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
+        self.exp={'run_id':'123456','attempt':2,'requested_commit':'a'*40,'requested_tree':'b'*40,'profile_digest':'c'*64}
+        self.current={'fixture':'source-bound portable transport, not native evidence'}
+        self.clean=patch.object(cli,'validate_descendant',return_value=self.current);self.clean.start()
+        self.methods=patch.object(testing,'checked_inventory',return_value={'tests':[]});self.methods.start()
+        self.cap=patch.object(snapshot,'TRANSPORT_MAX_FILE_BYTES',32768);self.cap.start()
+        self.originals={}
+        self.producers=self.root/'producers';self.producers.mkdir()
+        for lane in accept.ROUND4_LANES:
+            output=self.producers/lane;output.mkdir()
+            cli.write(output/'source.json',self.current);cli.write(output/'source-after.json',self.current)
+            cli.write(output/'results.json',{'scope':'FIXTURE_ONLY'})
+            if lane in cli.NATIVE_EVIDENCE_LANES:
+                raw=output/'native-evidence';raw.mkdir();(raw/'raw.log').write_bytes(b'FIXTURE_ONLY')
+                cli.write(output/'native-evidence-inventory.json',snapshot.seal_evidence_tree(raw)[0])
+            expected=cli.lane_expected(lane,self.exp)
+            record={'schema':'OPICA4_LANE_BUNDLE_V1','lane_id':lane,'scope':expected['scope'],
+                    'checked':expected['checked'],'experiment':self.exp,'conclusion':'success',
+                    'artifacts':snapshot.seal_evidence_tree(output)[0]['files'],
+                    'records':['source.json','source-after.json','results.json']}
+            cli.write(output/'lane.json',record);self.originals[lane]=record
+
+    def tearDown(self):
+        self.cap.stop();self.methods.stop();self.clean.stop();self.tmp.cleanup()
+
+    def bundle(self,group='CORE',suffix=''):
+        root=self.root/('bundle-'+group+suffix);root.mkdir()
+        cli.write(root/'source.json',self.current);cli.write(root/'source-after.json',self.current)
+        rows=[]
+        for lane in accept.group_lanes(group):
+            out=root/lane;out.mkdir();(out/'empty/nested').mkdir(parents=True)
+            (out/'.hidden').mkdir();(out/'.hidden/.receipt').write_bytes(b'ALL_ENTRIES_RETAINED')
+            (out/'command.log').write_bytes(b'FIXTURE_ONLY')
+            if lane in cli.NATIVE_EVIDENCE_LANES:
+                archive=self.root/('raw-'+lane+suffix);archive.mkdir();(archive/'empty').mkdir()
+                (archive/'.hidden').mkdir();(archive/'.hidden/.raw').write_bytes(b'DOT_RAW')
+                for n in range(3):(archive/('raw'+str(n)+'.log')).write_bytes(bytes([65+n])*20000)
+                envelope=snapshot.pack_evidence_bundle(archive,out/'independent-native-transport',
+                                                       {'lane_id':lane,'experiment':self.exp})
+                cli.write(out/'independent-native-archive.json',{
+                    'schema':'OPICA_INDEPENDENT_NATIVE_ARCHIVE_V1','lane':lane,'experiment':self.exp,
+                    'complete_inventory':envelope['manifest'],'transport':envelope,'scratch_retired':True})
+            expected=cli.lane_expected(lane,self.exp)
+            rows.append({'id':lane,'scope':expected['scope'],
+                         'evidence_digest':digest(self.originals[lane],domain='OPICA_LANE_EVIDENCE_V1')})
+        record={'schema':'OPICA4_INDEPENDENT_REPLAY_GROUP_V1','group_id':group,'experiment':self.exp,
+                'checked':{'commit':self.exp['requested_commit'],'tree':self.exp['requested_tree']},
+                'conclusion':'success','independently_reconstructed_lanes':rows}
+        self.reseal(root,group,record)
+        return root
+
+    def reseal(self,root,group,record=None):
+        wrapper=root/'group.json'
+        if record is None:record=json.loads(wrapper.read_bytes())['record']
+        manifest=snapshot.seal_evidence_tree(root)[0]
+        cli.write(wrapper,{'schema':'OPICA4_INDEPENDENT_GROUP_BUNDLE_V1','group_id':group,'record':record,
+                  'artifacts':[r for r in manifest['files'] if r['path']!='group.json'],
+                  'directories':manifest['directories'],'records':['source.json','source-after.json'],
+                  'source_refs':{'before':'source.json','after':'source-after.json'}})
+
+    def test_native_container_above_ordinary_limit_preserves_complete_tree(self):
+        bundle=self.bundle();staging=self.root/'transport';output=self.root/'restored'
+        before=snapshot.seal_evidence_tree(bundle)[0]
+        self.assertTrue(all((bundle/lane/'independent-native-transport/bundle.zip').stat().st_size>32768
+                            for lane in cli._group_native_lanes('CORE')))
+        descriptor=cli.pack_group_bundle(REPO,bundle,staging,'CORE',self.exp)
+        self.assertEqual(cli._unpack_group_bundle(REPO,staging,output,'CORE',self.exp),descriptor)
+        self.assertEqual(snapshot.seal_evidence_tree(output)[0],before)
+        self.assertTrue((output/'CONTRACT/empty/nested').is_dir())
+        self.assertEqual((output/'CONTRACT/.hidden/.receipt').read_bytes(),b'ALL_ENTRIES_RETAINED')
+
+    def test_ordinary_oversized_member_rejected(self):
+        bundle=self.bundle();(bundle/'CONTRACT/oversize.log').write_bytes(b'x'*32769);self.reseal(bundle,'CORE')
+        with self.assertRaises(ContractError):cli.pack_group_bundle(REPO,bundle,self.root/'transport','CORE',self.exp)
+
+    def test_wrong_attempt_group_and_extra_component_rejected(self):
+        bundle=self.bundle();staging=self.root/'transport';cli.pack_group_bundle(REPO,bundle,staging,'CORE',self.exp)
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'wrong-attempt','CORE',{**self.exp,'attempt':3})
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'wrong-group','AUXILIARY',self.exp)
+        (staging/'unlisted').write_bytes(b'not permitted')
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'extra','CORE',self.exp)
+
+    def test_missing_component_and_tampered_zip_rejected(self):
+        bundle=self.bundle();staging=self.root/'transport';cli.pack_group_bundle(REPO,bundle,staging,'CORE',self.exp)
+        component=staging/'native-COMPOSITION_FORMAL';renamed=staging/'wrong-name';component.rename(renamed)
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'missing','CORE',self.exp)
+        renamed.rename(component)
+        with (component/'bundle.zip').open('r+b') as stream:stream.seek(40);stream.write(b'BAD!')
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'tampered','CORE',self.exp)
+
+    def test_empty_directory_substitution_and_copy_race_rejected(self):
+        bundle=self.bundle();staging=self.root/'transport';cli.pack_group_bundle(REPO,bundle,staging,'CORE',self.exp)
+        path=staging/'group-transport.json';descriptor=json.loads(path.read_bytes())
+        descriptor['complete_inventory']['directories'].remove('CONTRACT/empty/nested');cli.write(path,descriptor)
+        with self.assertRaises(ContractError):cli._unpack_group_bundle(REPO,staging,self.root/'bad-empty','CORE',self.exp)
+        original=cli._group_copy_file;changed=False
+        def race(source,relative,*args):
+            nonlocal changed
+            if not changed:
+                changed=True;(bundle/'CONTRACT/command.log').write_bytes(b'CHANGED_DURING_COPY')
+            return original(source,relative,*args)
+        with patch.object(cli,'_group_copy_file',side_effect=race):
+            with self.assertRaises(ContractError):cli.pack_group_bundle(REPO,bundle,self.root/'race','CORE',self.exp)
+        self.assertFalse((self.root/'race/group-transport.json').exists())
+
+    def test_resealed_skipped_or_missing_independent_mode_is_rejected(self):
+        bundle=self.bundle();folder=bundle/'CONTRACT/tests';folder.mkdir()
+        method='protocol_fixture.IndependentCase.test_required'
+        inventory={'tests':[{'lane':'CONTRACT','method':method}]}
+        receipts={}
+        for optimized,name in ((False,'normal'),(True,'optimized')):
+            raw=('actual protocol log '+name).encode();(folder/(name+'.log')).write_bytes(raw)
+            (folder/(name+'.driver.log')).write_bytes(b'protocol fixture only')
+            receipts[name]={'schema':'OPICA_EXACT_TEST_RECEIPT_V1','status':'PASS','optimized':optimized,
+                'test_ids':[method],'executed':1,'expected':1,'skips':0,'errors':0,'failures':0,
+                'expected_failures':0,'unexpected_successes':0,'log_sha256':hashlib.sha256(raw).hexdigest()}
+            cli.write(folder/(name+'.json'),receipts[name])
+        self.reseal(bundle,'CORE')
+        with patch.object(testing,'checked_inventory',return_value=inventory):
+            cli._checked_group_bundle(REPO,bundle,'CORE',self.exp)
+            for key,value in [('skips',1),('errors',1),('optimized',True),
+                              ('test_ids',['foreign']),('log_sha256','d'*64),('missing',None)]:
+                bad=copy.deepcopy(receipts['normal'])
+                if key=='missing':(folder/'normal.json').unlink()
+                else:bad[key]=value;cli.write(folder/'normal.json',bad)
+                self.reseal(bundle,'CORE')
+                # All wrapper hashes are recomputed. The raw semantic guard,
+                # rather than the transport hash check, must reject the claim.
+                with self.subTest(key=key),self.assertRaises((ContractError,FileNotFoundError)):
+                    cli._checked_group_bundle(REPO,bundle,'CORE',self.exp)
+                cli.write(folder/'normal.json',receipts['normal']);self.reseal(bundle,'CORE')
+
+    def test_resealed_failed_canonical_command_or_missing_product_is_rejected(self):
+        bundle=self.bundle('CANONICAL');folder=bundle/'GENERATED_STATE'
+        products=load_bytes((R4/'BUILD_MANIFEST.json').read_bytes())['generated']
+        recipes=[([sys.executable,'-B','research/RHRC/tools/materialize_derived_state.py','--check'],'canonical-current.log'),
+                 ([sys.executable,'-B','-m','unittest','research.RHRC.integration.opica_round2.tests.test_file_classes'],'classification.log')]
+        commands=[]
+        for argv,name in recipes:
+            raw=b'protocol command log only';(folder/name).write_bytes(raw)
+            commands.append({'argv':argv,'exit_code':0,'log':name,'sha256':hashlib.sha256(raw).hexdigest()})
+        views={'EVENTS.jsonl':b'','APPLICATIONS.jsonl':b'',
+               'CURRENT_STATE.json':canonical_bytes({'generation':None,'source':None,'revision':0,
+                                    'applications':0,'RH':'OPEN','Step4':'OPEN'})+b'\n'}
+        for name,raw in views.items():(folder/name).write_bytes(raw)
+        (folder/'determinism.db').write_bytes(b'codec fixture; not executable SQLite evidence')
+        good={'status':'PASS_GENERATED_STATE','canonical_products':{r['path']:snapshot.file_hash(REPO/r['path']) for r in products},
+              'commands':commands,'view_hashes':{name:hashlib.sha256(raw).hexdigest() for name,raw in views.items()},
+              'RH':'OPEN','Step4':'OPEN'}
+        cli.write(folder/'generated-state.json',good);self.reseal(bundle,'CANONICAL')
+        cli._checked_group_bundle(REPO,bundle,'CANONICAL',self.exp)
+        for change in ('failed-command','missing-product','wrong-product','wrong-recipe','claim'):
+            bad=copy.deepcopy(good)
+            if change=='failed-command':bad['commands'][0]['exit_code']=1
+            elif change=='missing-product':bad['canonical_products'].pop(products[0]['path'])
+            elif change=='wrong-product':bad['canonical_products'][products[0]['path']]='d'*64
+            elif change=='wrong-recipe':bad['commands'][0]['argv'][-1]='--write'
+            else:bad['Step4']='CLOSED'
+            cli.write(folder/'generated-state.json',bad);self.reseal(bundle,'CANONICAL')
+            with self.subTest(change=change),self.assertRaises(ContractError):
+                cli._checked_group_bundle(REPO,bundle,'CANONICAL',self.exp)
+
+    def test_raw_log_mutation_and_posix_alias_rejected(self):
+        bundle=self.bundle();(bundle/'CONTRACT/command.log').write_bytes(b'REPLACED_AFTER_WRAPPER')
+        with self.assertRaises(ContractError):cli.pack_group_bundle(REPO,bundle,self.root/'raw-change','CORE',self.exp)
+        if os.name!='nt':
+            other=self.bundle(suffix='-alias');target=self.root/'outside.log';target.write_bytes(b'OUTSIDE')
+            (other/'CONTRACT/command.log').unlink();os.symlink(target,other/'CONTRACT/command.log')
+            with self.assertRaises(ContractError):cli.pack_group_bundle(REPO,other,self.root/'alias','CORE',self.exp)
+            self.assertFalse((self.root/'alias/group-transport.json').exists())

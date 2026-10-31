@@ -1,0 +1,177 @@
+{
+  "schema": "OPICA4_RESEARCH_INTEGRATION_REQUIREMENTS_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "REVIEWED_BUILD_SCOPE_NOT_PROOF_EVIDENCE",
+  "packages": [
+    {
+      "id": "E1",
+      "implementation": [
+        "ClosureConsumers"
+      ],
+      "scope": "Conditional eventual and negative-ground restrictions; all-ray obligations retained separately"
+    },
+    {
+      "id": "E2",
+      "implementation": [
+        "composition_search.py",
+        "SEARCH_CONTRACTS.json",
+        "IntegrationTargets"
+      ],
+      "scope": "Bounded untemplated retrieval;3 actual noncalibration chains require fresh native acceptance"
+    },
+    {
+      "id": "E3",
+      "implementation": [
+        "NativeSpectralMeasure",
+        "SignedPickKernel"
+      ],
+      "scope": "Grouped real residues and signed measure/Pick identity; no rank-one negative-square cap"
+    },
+    {
+      "id": "E4",
+      "implementation": [
+        "NativeVisibility",
+        "VisibilityRigidity",
+        "NativeObservation"
+      ],
+      "scope": "Full-structure zero-residue classification; finite Gram and infinite blind invariant space distinct; quantitative negative observation OPEN"
+    },
+    {
+      "id": "E5",
+      "implementation": [
+        "NativeSourceBudget",
+        "SourceExchangeConcentration",
+        "NativeConcentrationBudget"
+      ],
+      "scope": "Actual full prime-power and Arch costs, full-range overlap multiplicity, signed intervals; no uniform contraction inferred"
+    },
+    {
+      "id": "E6",
+      "implementation": [
+        "PrimeDiscrepancyIntegral",
+        "AdaptiveBudget",
+        "OddReciprocalSource"
+      ],
+      "scope": "Exact discrepancy integral and priced adaptive test classes; reciprocal input and sign; independent uniform estimate OPEN"
+    },
+    {
+      "id": "E7",
+      "implementation": [
+        "NativeJointIndex"
+      ],
+      "scope": "Actual physical D03 two-plane and conditional joint cap; Pick index remains separate"
+    },
+    {
+      "id": "E8",
+      "implementation": [
+        "RegularCells.FixedSeed",
+        "NeutralContactPencil"
+      ],
+      "scope": "All L>0,K diagonal fixed-seed equivalence with Gram cost, moving Hprime-lambda Gprime; exact existing seam jets retained; uniform moving contact/remainder estimates OPEN"
+    },
+    {
+      "id": "E9",
+      "implementation": [
+        "SourceDictionaryCrosswalk"
+      ],
+      "scope": "Native sine and divided differences; diagonal requires actual derivatives; external full dictionary OPEN"
+    },
+    {
+      "id": "E10",
+      "implementation": [
+        "EXPECTED_TESTS.json",
+        "ROOTS.json",
+        "math_gate.py",
+        "source_research.py"
+      ],
+      "scope": "Closed inventories, semantic mutations, independent replay, sealed source and canonical outputs"
+    },
+    {
+      "id": "SC1",
+      "implementation": [
+        "GroundArithmetic"
+      ],
+      "scope": "Complex discrepancy, opposite odd sign and distinct reciprocal input, full prime pairing and necessary budget/moment inequalities.",
+      "open_boundary": "No arithmetic sign or response exclusion follows from an identity alone."
+    },
+    {
+      "id": "SC2",
+      "implementation": [
+        "JointGroundConstraints"
+      ],
+      "scope": "Strict-even, strict-odd and arbitrary-multiplicity tied cases at the same L,K, absolute eigenmode energy, kernels/ranges/complement responses and cofinal producer.",
+      "open_boundary": "No tie exclusion or automatic identification with the quartic deep-detector packet."
+    },
+    {
+      "id": "SC3",
+      "implementation": [
+        "SmoothForcing"
+      ],
+      "scope": "The full original source pairing plus actual eta shift, physical error norm and actual finite forcing norm budgets.",
+      "open_boundary": "No independent upper bound on the inverse-weighted smooth quadratic."
+    },
+    {
+      "id": "SC4",
+      "implementation": [
+        "SchurErrorTransport"
+      ],
+      "scope": "Same P.inverse, full forcing error, direct quadratic error, shifted mass error and non-dropped cutoff-three energy.",
+      "open_boundary": "No replacement of the entire complement by one shell and no unproved sign estimate."
+    },
+    {
+      "id": "SC5",
+      "implementation": [
+        "QuarticErrorReduction"
+      ],
+      "scope": "Actual quartic cutoff gives full error smaller than any fixed exponential; late generated smooth loss retains an exponential lower margin with the threshold chosen first.",
+      "open_boundary": "The independent arithmetic bound incompatible with that surviving margin remains OPEN."
+    }
+  ],
+  "acceptance_coordination": {
+    "schema": "OPICA4_BOUNDED_REPLAY_COORDINATION_V1",
+    "producer_lanes": [
+      "CONTRACT",
+      "PARENT_REGRESSION",
+      "CURRENT_COMPATIBILITY",
+      "COMPOSITION_FORMAL",
+      "SEMANTIC_NEGATIVES",
+      "FRAMEWORK_ADAPTERS",
+      "PROVIDER_SELECTED",
+      "REPLAY_CAMPAIGN",
+      "GENERATED_STATE",
+      "MATHEMATICAL_SUPPORT",
+      "SOURCE_NUMERICS"
+    ],
+    "independent_groups": {
+      "CORE": [
+        "CONTRACT",
+        "PARENT_REGRESSION",
+        "CURRENT_COMPATIBILITY",
+        "COMPOSITION_FORMAL"
+      ],
+      "AUXILIARY": [
+        "SEMANTIC_NEGATIVES",
+        "FRAMEWORK_ADAPTERS",
+        "PROVIDER_SELECTED",
+        "REPLAY_CAMPAIGN",
+        "MATHEMATICAL_SUPPORT",
+        "SOURCE_NUMERICS"
+      ],
+      "CANONICAL": [
+        "GENERATED_STATE"
+      ]
+    },
+    "final_acceptance": "REQUIRES_ALL_PRODUCER_AND_INDEPENDENT_JOBS_AND_COMPLETE_EVIDENCE",
+    "complete_original_replays": true,
+    "normal_and_optimized": true,
+    "canonical_products": 81,
+    "unchanged_worker_resource_caps": true,
+    "group_service_seconds_max": 16200,
+    "whole_job_cleanup_margin_seconds": 900,
+    "final_service_seconds_max": 7200,
+    "qualification": "PENDING_CURRENT_HEAD_CI",
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  }
+}
