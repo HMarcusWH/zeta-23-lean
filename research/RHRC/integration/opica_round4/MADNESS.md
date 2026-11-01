@@ -149,7 +149,7 @@ into this pinned project, and its exponent remains above `1/2`.
 
 ## Validation and post-green meaning
 
-The [contract register](MADNESS_CONTRACTS.json) binds the exact seven Madness modules.
+The [contract register](MADNESS_CONTRACTS.json) binds the exact fifteen Madness modules.
 The [source audit](MADNESS_SOURCE_AUDIT.json) records corpus coverage, attempted
 compositions and limitations. The original 500 declarations, 48 modules and 17
 semantic controls remain independently mandatory. New complete-type consumers
@@ -235,3 +235,45 @@ The full support gate now contains 687 declarations in 55 owned modules and
 sets remain mandatory. Eight new independent consumers and seven new
 negative controls check the cutoff, threshold, source, carrier and complement
 distinctions. Source registration does not itself grant compiler authority.
+
+
+## Actual regular apertures and full tied-source constraints
+
+The older logarithmic-cover and first-birth results now compose on the actual
+native carrier. `RegularCells/NativeZeroRegularity.lean` transports the full
+prime-cell source through its moving seed frame, retaining the nonunitary
+Gram/congruence factors. Its complex determinant is not identically zero.
+For every finite list of parity/cutoff pairs, one can choose a common regular
+aperture in any positive open interval. Physical source identification uses
+the exact prime cutoff cell; it is not extrapolated across a seam.
+
+`RegularCells/NativeRegularBirthSelection.lean` combines this with the earlier
+eventual two-parity negativity at Kd. Under an off-line zero, arbitrarily late
+apertures have both parities negative at Kd and every native matrix through Kd
+invertible. The finite bound is fixed before selecting the aperture. Each
+own first birth therefore has an invertible predecessor, and its same-witness
+Schur realization is regular. Negative shared grounds can still occur;
+invertibility at zero does not separate equal negative eigenvalues. The new
+selection also does not retain a previously selected exponential detector or
+create aperture stationarity.
+
+`TiedNewbornResponse.lean`, `NewbornSpectralVisibility.lean`,
+`TiedCubicEnergy.lean` and `TiedSilentMoment.lean` retain the full source and
+complement. At an odd own-newborn tie, an active even source forces
+nonnegative cubic source energy and bounds its fourth moment. Strict negative
+cubic energy instead forces source silence, whole odd-ground visibility and
+even-ground simplicity, with a quantitative fourth-moment depth inequality.
+Opposite nonshared negative modes are source-visible and simple. These are
+different branches on the same actual object, not interchangeable assumptions.
+
+The support gate now requires 741 declarations in 63 owned modules, preserving
+all 687 preceding complete types and axiom sets. Seven new consumers and twelve
+additional source-type controls bring the control total to 52. The controls
+reject specific invalid API applications; they are not mathematical
+countermodels. In particular the positive-aperture selector now proves the
+broader existential conclusion without requiring a prechosen prime cell.
+
+The remaining closing obligation is an independent restriction on the complete
+signed arithmetic value that contradicts the surviving actual negative-ground
+branches. These constraints remove the resonant own-predecessor alternative
+at selected apertures; they do not prove that arithmetic restriction or RH.

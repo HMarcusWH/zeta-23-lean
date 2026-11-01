@@ -49,6 +49,54 @@
       "module": "Zeta23.OPICARound4.Validation.JointGround",
       "claim": "Eight independently stated complete-type consumers; seven additional intended source-type rejections for thresholds, selected-cutoff substitution, exponential promotion, own-newborn transfer, omitted orthogonality, omitted source activity and parity-carrier substitution.",
       "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M8",
+      "module": "Zeta23.OPICARound4.TiedNewbornResponse",
+      "claim": "At an actual odd own-newborn tie the full index-complement response is bounded by the negative depth. Source-active and source-one forms retain the actual corrected source, fourth moment and whole ground kernel.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M9",
+      "module": "Zeta23.OPICARound4.NewbornSpectralVisibility",
+      "claim": "Own-newborn negative eigenvalues equal the bottom. Every opposite nonshared negative eigenspace is source-visible and at most one dimensional; the shared eigenvalue remains excepted and reciprocal inputs retain their orientation.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M10",
+      "module": "Zeta23.OPICARound4.TiedCubicEnergy",
+      "claim": "An active even mode at an actual odd-newborn tie forces nonnegative cubic source energy. Negative cubic energy forces even source silence and whole odd-kernel visibility. The normalized moment inequality uses the exact source-one premise.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M11",
+      "module": "Zeta23.OPICARound4.TiedSilentMoment",
+      "claim": "At the same odd-newborn tie, a silent even mode satisfies a fourth-moment depth inequality. Strict negative cubic energy forces even ground simplicity. Equality to zero does not supply that conclusion.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M12",
+      "module": "Zeta23.OPICARound4.RegularCells.AnalyticFiniteSelector",
+      "claim": "A finite family of analytic functions, each nonzero somewhere on the connected log corridor, is simultaneously nonzero at log L in any positive open aperture set. No countably infinite family or universal aperture claim is made.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M13",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeZeroRegularity",
+      "claim": "The actual native moving frame has a nonidentically zero determinant on the log corridor. Physical equality holds on the exact fixed prime cutoff cell, with full nonunitary congruence retained. Every prescribed finite family of actual native operators is simultaneously invertible somewhere in an open subset of that cell.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M14",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeRegularBirthSelection",
+      "claim": "An off-line zero yields arbitrarily late apertures with both parities negative at Kd and every native operator through Kd invertible. Each own first birth retains its own PSD predecessor, and predecessor invertibility rules out its resonant Schur branch for the same witness. This does not exclude shared negative grounds, imply stationarity, or preserve a previously selected deep packet.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M15",
+      "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
+      "claim": "Seven independently stated complete-type consumers and twelve intended source-type rejection controls protect source activity, parity, separation, normalization, silence, strict energy, exact cell, predecessor cutoff and quantifiers. Rejection is an API guard, not a counterexample to every possible proof of its conclusion.",
+      "arithmetic_estimate_supplied": false
     }
   ],
   "closing_arithmetic": {
@@ -294,6 +342,108 @@
         "Zeta23.OPICARound4.Validation.actual_newborn_even_ground_simple_consumer",
         "Zeta23.OPICARound4.Validation.tied_ground_not_both_silent_consumer",
         "Zeta23.OPICARound4.Validation.tied_ground_whole_kernel_visibility_consumer"
+      ]
+    },
+    "Zeta23.OPICARound4.TiedNewbornResponse": {
+      "path": "Zeta23/OPICARound4/TiedNewbornResponse.lean",
+      "sha256": "44ba0ed48fb0cc43755ac2565fc2e4f14d2f5d41411d6c9c33d7fc6de122029d",
+      "declarations": [
+        "Zeta23.OPICARound4.actual_odd_newborn_tied_indexComplement_norm_le",
+        "Zeta23.OPICARound4.actual_odd_newborn_tied_active_source_moment_bounds",
+        "Zeta23.OPICARound4.actual_odd_newborn_tied_normalized_moment_bounds"
+      ]
+    },
+    "Zeta23.OPICARound4.NewbornSpectralVisibility": {
+      "path": "Zeta23/OPICARound4/NewbornSpectralVisibility.lean",
+      "sha256": "119d1d768aeaff2d32e92c37a917fe41e3254c110f4904eadb9d4fd35bd32740",
+      "declarations": [
+        "Zeta23.OPICARound4.nativeNewborn_negative_eigenvalue_eq_ground",
+        "Zeta23.OPICARound4.evenNewborn_odd_negative_eigen_channels_visible",
+        "Zeta23.OPICARound4.oddNewborn_even_negative_eigen_channels_visible",
+        "Zeta23.OPICARound4.evenNewborn_odd_negative_eigenspace_finrank_le_one",
+        "Zeta23.OPICARound4.oddNewborn_even_negative_eigenspace_finrank_le_one"
+      ]
+    },
+    "Zeta23.OPICARound4.TiedCubicEnergy": {
+      "path": "Zeta23/OPICARound4/TiedCubicEnergy.lean",
+      "sha256": "9afeff203daa7590c2a1498a43be653fe37c167257aa73330efb8cd184e1ea1b",
+      "declarations": [
+        "Zeta23.OPICARound4.actual_odd_newborn_tied_active_cubic_energy_nonneg",
+        "Zeta23.OPICARound4.actual_odd_newborn_tied_active_cubic_channel_nonneg",
+        "Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_forces_kernel_visibility",
+        "Zeta23.OPICARound4.actual_normalized_even_moment_cubic_energy_lower"
+      ]
+    },
+    "Zeta23.OPICARound4.TiedSilentMoment": {
+      "path": "Zeta23/OPICARound4/TiedSilentMoment.lean",
+      "sha256": "92099e5f590fcf902979394ee32c3eab4286254b6b109be8c7cb25d06ece2623",
+      "declarations": [
+        "Zeta23.OPICARound4.actual_odd_newborn_tied_silent_moment_depth_lower",
+        "Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_moment_norm_lower",
+        "Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_even_ground_simple"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.AnalyticFiniteSelector": {
+      "path": "Zeta23/OPICARound4/RegularCells/AnalyticFiniteSelector.lean",
+      "sha256": "d6658d587f31e41760bafeb63807a1ffcfebc698e1ab38af2e9f6088dc59eaca",
+      "declarations": [
+        "Zeta23.OPICARound4.exists_log_nonzero_in_open_positive",
+        "Zeta23.OPICARound4.exists_finite_log_nonzero_in_open_positive"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeZeroRegularity": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeZeroRegularity.lean",
+      "sha256": "2027f6068f8b869e99787c88547d4026d2d8e9b6234a0f96ec57363046f8736c",
+      "declarations": [
+        "Zeta23.OPICARound4.RegularCells.normalizedSeedEntry",
+        "Zeta23.OPICARound4.RegularCells.normalizedSeedEntry_ofReal",
+        "Zeta23.OPICARound4.RegularCells.normalizedSeedEntry_one",
+        "Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix",
+        "Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_one",
+        "Zeta23.OPICARound4.RegularCells.liftedFullSource",
+        "Zeta23.OPICARound4.RegularCells.normalizedFrameSource",
+        "Zeta23.OPICARound4.RegularCells.normalizedFrameSource_apply",
+        "Zeta23.OPICARound4.RegularCells.analyticOnNhd_normalizedFrameSource_apply",
+        "Zeta23.OPICARound4.RegularCells.liftedNativeFrame",
+        "Zeta23.OPICARound4.RegularCells.analyticOnNhd_liftedNativeFrame_coord",
+        "Zeta23.OPICARound4.RegularCells.liftedNativeFrame_deck_base",
+        "Zeta23.OPICARound4.RegularCells.liftedNativeFrameDet",
+        "Zeta23.OPICARound4.RegularCells.analyticOnNhd_liftedNativeFrameDet",
+        "Zeta23.OPICARound4.RegularCells.exists_mem_corridor_liftedNativeFrameDet_ne_zero",
+        "Zeta23.OPICARound4.RegularCells.nativeSeedAmbientIsometry",
+        "Zeta23.OPICARound4.RegularCells.nativeSeedPhysicalTransport",
+        "Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_physical_transport",
+        "Zeta23.OPICARound4.RegularCells.nativeSeedAmbientIsometry_inner_canonical",
+        "Zeta23.OPICARound4.RegularCells.liftedFullSource_log_fixedCell",
+        "Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_real_isSymmetric",
+        "Zeta23.OPICARound4.RegularCells.liftedNativeFrame_log_fixedCell",
+        "Zeta23.OPICARound4.RegularCells.nativeCanonical_bijective_of_frameDet_ne_zero",
+        "Zeta23.OPICARound4.RegularCells.exists_finite_native_regular_in_open_fixedCell"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeRegularBirthSelection": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeRegularBirthSelection.lean",
+      "sha256": "0cf1f3205faee3025202652d7181933ead72a1c5588ea4f7457d0da065f7b58a",
+      "declarations": [
+        "Zeta23.OPICARound4.RegularCells.exists_open_fixedCell_subset_positive",
+        "Zeta23.OPICARound4.RegularCells.exists_finite_native_regular_in_open_positive",
+        "Zeta23.OPICARound4.RegularCells.exists_bounded_native_regular_in_open_positive",
+        "Zeta23.OPICARound4.RegularCells.cofinally_both_negative_and_native_regular",
+        "Zeta23.OPICARound4.RegularCells.cofinally_regular_first_common_births",
+        "Zeta23.OPICARound4.RegularCells.native_newborn_realization_regular_of_bijective"
+      ]
+    },
+    "Zeta23.OPICARound4.Validation.NativeGroundRegularity": {
+      "path": "Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean",
+      "sha256": "183c766b0894c0cad771d539e4d7b8fb393fddd08fb4d34a23bf5069eac5d622",
+      "declarations": [
+        "Zeta23.OPICARound4.Validation.tied_newborn_active_response_consumer",
+        "Zeta23.OPICARound4.Validation.newborn_opposite_source_channels_consumer",
+        "Zeta23.OPICARound4.Validation.normalized_cubic_energy_lower_consumer",
+        "Zeta23.OPICARound4.Validation.negative_cubic_energy_ground_simple_consumer",
+        "Zeta23.OPICARound4.Validation.native_fixed_cell_regular_selection_consumer",
+        "Zeta23.OPICARound4.Validation.cofinal_native_regular_births_consumer",
+        "Zeta23.OPICARound4.Validation.same_newborn_regular_realization_consumer"
       ]
     }
   },
@@ -856,7 +1006,7 @@
     "semantic_mutations_sha256": "a95ef16e4fdfa6276e1b44b7e3d197fbf63994a17c6e0189f83d746ae11032bd"
   },
   "source_audit_path": "research/RHRC/integration/opica_round4/MADNESS_SOURCE_AUDIT.json",
-  "source_audit_sha256": "84811a22030709659ba700b2b4cabac59d754ea735a0a384606678a40180ff70",
+  "source_audit_sha256": "1a4a836a3716df176d457a584b3029f9eabc6fe1820b4e5fe359d37f3e4b1860",
   "source_constraints_sha256": "98e942c679344799f748fddb5d0ad6f812527359611d4242a03023e42174101e",
   "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
   "conditional_rh": {

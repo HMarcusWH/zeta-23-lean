@@ -496,7 +496,15 @@
     "Zeta23.OPICARound4.Validation.Hyperbola": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
     "Zeta23.OPICARound4.CommonQuarticGround": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
     "Zeta23.OPICARound4.JointGroundBirth": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
-    "Zeta23.OPICARound4.Validation.JointGround": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET"
+    "Zeta23.OPICARound4.Validation.JointGround": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.TiedNewbornResponse": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.NewbornSpectralVisibility": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.TiedCubicEnergy": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.TiedSilentMoment": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.RegularCells.AnalyticFiniteSelector": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.RegularCells.NativeZeroRegularity": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.RegularCells.NativeRegularBirthSelection": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.Validation.NativeGroundRegularity": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET"
   },
   "reachable_module_roles": {
     "Zeta23.CCM.CanonicalCompressedApertureC2": "CONTACT_CALCULUS_FORMAL_SUPPORT",

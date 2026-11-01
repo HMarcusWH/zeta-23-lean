@@ -2616,5 +2616,37 @@
     },
     "RH": "OPEN",
     "Step4": "OPEN"
+  },
+  "native_regular_ground_composition": {
+    "status": "EXACT_SOURCE_SUPPORT_THEOREMS_REQUIRE_CURRENT_HEAD_NATIVE_QUALIFICATION",
+    "historical_inputs": [
+      "Zeta23.CCM.LiftedPredecessorDeterminantRigidity",
+      "Zeta23.CCM.LiftedPredecessorRegularity",
+      "Zeta23.CCM.CanonicalPoleNeutralTiePackage",
+      "Zeta23.CCM.CanonicalPoleNeutralCubicWitness",
+      "Zeta23.OPICARound3.NewbornSource",
+      "Zeta23.OPICARound4.CommonQuarticGround",
+      "Zeta23.OPICARound4.JointGroundBirth"
+    ],
+    "result": "Actual moving-frame regularity composes with eventual common-quartic negativity. The selected own births have regular Schur realizations; the separate shared-negative-ground source branches gain exact full-complement, cubic-energy and moment constraints.",
+    "not_supplied": [
+      "No negative tie exclusion follows from zero invertibility.",
+      "No aperture stationarity follows from integer-cutoff first birth or dense regular selection.",
+      "No existing exponentially deep packet is silently retained at the newly selected aperture.",
+      "No sign or sufficiently small size is proved for the complete signed arithmetic source value.",
+      "Source-specific arithmetic opposition and RH remain OPEN."
+    ],
+    "new_modules_sha256": {
+      "Zeta23.OPICARound4.TiedNewbornResponse": "44ba0ed48fb0cc43755ac2565fc2e4f14d2f5d41411d6c9c33d7fc6de122029d",
+      "Zeta23.OPICARound4.NewbornSpectralVisibility": "119d1d768aeaff2d32e92c37a917fe41e3254c110f4904eadb9d4fd35bd32740",
+      "Zeta23.OPICARound4.TiedCubicEnergy": "9afeff203daa7590c2a1498a43be653fe37c167257aa73330efb8cd184e1ea1b",
+      "Zeta23.OPICARound4.TiedSilentMoment": "92099e5f590fcf902979394ee32c3eab4286254b6b109be8c7cb25d06ece2623",
+      "Zeta23.OPICARound4.RegularCells.AnalyticFiniteSelector": "d6658d587f31e41760bafeb63807a1ffcfebc698e1ab38af2e9f6088dc59eaca",
+      "Zeta23.OPICARound4.RegularCells.NativeZeroRegularity": "2027f6068f8b869e99787c88547d4026d2d8e9b6234a0f96ec57363046f8736c",
+      "Zeta23.OPICARound4.RegularCells.NativeRegularBirthSelection": "0cf1f3205faee3025202652d7181933ead72a1c5588ea4f7457d0da065f7b58a",
+      "Zeta23.OPICARound4.Validation.NativeGroundRegularity": "183c766b0894c0cad771d539e4d7b8fb393fddd08fb4d34a23bf5069eac5d622"
+    },
+    "RH": "OPEN",
+    "Step4": "OPEN"
   }
 }

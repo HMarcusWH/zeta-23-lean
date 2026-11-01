@@ -3516,19 +3516,28 @@
       "Zeta23.OPICARound4.Validation.Hyperbola",
       "Zeta23.OPICARound4.CommonQuarticGround",
       "Zeta23.OPICARound4.JointGroundBirth",
-      "Zeta23.OPICARound4.Validation.JointGround"
+      "Zeta23.OPICARound4.Validation.JointGround",
+      "Zeta23.OPICARound4.TiedNewbornResponse",
+      "Zeta23.OPICARound4.NewbornSpectralVisibility",
+      "Zeta23.OPICARound4.TiedCubicEnergy",
+      "Zeta23.OPICARound4.TiedSilentMoment",
+      "Zeta23.OPICARound4.RegularCells.AnalyticFiniteSelector",
+      "Zeta23.OPICARound4.RegularCells.NativeZeroRegularity",
+      "Zeta23.OPICARound4.RegularCells.NativeRegularBirthSelection",
+      "Zeta23.OPICARound4.Validation.NativeGroundRegularity"
     ],
     "native_gate": "MATHEMATICAL_SUPPORT",
     "retained_declarations": 500,
     "retained_modules": 48,
     "retained_semantic_mutations": 17,
-    "added_declarations": 187,
-    "added_semantic_mutations": 23,
-    "current_semantic_mutations": 40,
+    "added_declarations": 241,
+    "added_semantic_mutations": 35,
+    "current_semantic_mutations": 52,
     "full_types_and_axioms_required": true,
     "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
     "RH": "OPEN",
     "Step4": "OPEN",
-    "joint_ground_extension": "Exact common-quartic eventual negativity and same-packet joint ground; own-newborn simplicity and full-complement gap; tied-source moment sign and whole odd-kernel visibility. No independent closing bound."
+    "joint_ground_extension": "Exact common-quartic eventual negativity and same-packet joint ground; own-newborn simplicity and full-complement gap; tied-source moment sign and whole odd-kernel visibility. No independent closing bound.",
+    "native_regular_ground_extension": "Same-source tied response and cubic/silent moment restrictions; actual native determinant regularity on selected cofinal apertures; regular own-newborn realization. Negative ties and independent signed arithmetic opposition remain OPEN."
   }
 }

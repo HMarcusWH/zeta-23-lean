@@ -1,3 +1,4 @@
+import Zeta23.OPICARound4.Validation.NativeGroundRegularity
 import Zeta23.OPICARound4.Validation.JointGround
 import Zeta23.OPICARound4.Validation.Hyperbola
 import Zeta23.OPICARound4.Validation.GroundConstraints
@@ -3152,3 +3153,273 @@ end Zeta23.OPICARound4.Validation
 #check @Zeta23.OPICARound4.Validation.tied_ground_whole_kernel_visibility_consumer
 #eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.tied_ground_whole_kernel_visibility_consumer"
 #print axioms Zeta23.OPICARound4.Validation.tied_ground_whole_kernel_visibility_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_newborn_tied_indexComplement_norm_le"
+#check @Zeta23.OPICARound4.actual_odd_newborn_tied_indexComplement_norm_le
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_newborn_tied_indexComplement_norm_le"
+#print axioms Zeta23.OPICARound4.actual_odd_newborn_tied_indexComplement_norm_le
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_newborn_tied_active_source_moment_bounds"
+#check @Zeta23.OPICARound4.actual_odd_newborn_tied_active_source_moment_bounds
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_newborn_tied_active_source_moment_bounds"
+#print axioms Zeta23.OPICARound4.actual_odd_newborn_tied_active_source_moment_bounds
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_newborn_tied_normalized_moment_bounds"
+#check @Zeta23.OPICARound4.actual_odd_newborn_tied_normalized_moment_bounds
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_newborn_tied_normalized_moment_bounds"
+#print axioms Zeta23.OPICARound4.actual_odd_newborn_tied_normalized_moment_bounds
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.nativeNewborn_negative_eigenvalue_eq_ground"
+#check @Zeta23.OPICARound4.nativeNewborn_negative_eigenvalue_eq_ground
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.nativeNewborn_negative_eigenvalue_eq_ground"
+#print axioms Zeta23.OPICARound4.nativeNewborn_negative_eigenvalue_eq_ground
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.evenNewborn_odd_negative_eigen_channels_visible"
+#check @Zeta23.OPICARound4.evenNewborn_odd_negative_eigen_channels_visible
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.evenNewborn_odd_negative_eigen_channels_visible"
+#print axioms Zeta23.OPICARound4.evenNewborn_odd_negative_eigen_channels_visible
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.oddNewborn_even_negative_eigen_channels_visible"
+#check @Zeta23.OPICARound4.oddNewborn_even_negative_eigen_channels_visible
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.oddNewborn_even_negative_eigen_channels_visible"
+#print axioms Zeta23.OPICARound4.oddNewborn_even_negative_eigen_channels_visible
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.evenNewborn_odd_negative_eigenspace_finrank_le_one"
+#check @Zeta23.OPICARound4.evenNewborn_odd_negative_eigenspace_finrank_le_one
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.evenNewborn_odd_negative_eigenspace_finrank_le_one"
+#print axioms Zeta23.OPICARound4.evenNewborn_odd_negative_eigenspace_finrank_le_one
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.oddNewborn_even_negative_eigenspace_finrank_le_one"
+#check @Zeta23.OPICARound4.oddNewborn_even_negative_eigenspace_finrank_le_one
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.oddNewborn_even_negative_eigenspace_finrank_le_one"
+#print axioms Zeta23.OPICARound4.oddNewborn_even_negative_eigenspace_finrank_le_one
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_newborn_tied_active_cubic_energy_nonneg"
+#check @Zeta23.OPICARound4.actual_odd_newborn_tied_active_cubic_energy_nonneg
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_newborn_tied_active_cubic_energy_nonneg"
+#print axioms Zeta23.OPICARound4.actual_odd_newborn_tied_active_cubic_energy_nonneg
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_newborn_tied_active_cubic_channel_nonneg"
+#check @Zeta23.OPICARound4.actual_odd_newborn_tied_active_cubic_channel_nonneg
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_newborn_tied_active_cubic_channel_nonneg"
+#print axioms Zeta23.OPICARound4.actual_odd_newborn_tied_active_cubic_channel_nonneg
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_forces_kernel_visibility"
+#check @Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_forces_kernel_visibility
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_forces_kernel_visibility"
+#print axioms Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_forces_kernel_visibility
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_normalized_even_moment_cubic_energy_lower"
+#check @Zeta23.OPICARound4.actual_normalized_even_moment_cubic_energy_lower
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_normalized_even_moment_cubic_energy_lower"
+#print axioms Zeta23.OPICARound4.actual_normalized_even_moment_cubic_energy_lower
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_newborn_tied_silent_moment_depth_lower"
+#check @Zeta23.OPICARound4.actual_odd_newborn_tied_silent_moment_depth_lower
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_newborn_tied_silent_moment_depth_lower"
+#print axioms Zeta23.OPICARound4.actual_odd_newborn_tied_silent_moment_depth_lower
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_moment_norm_lower"
+#check @Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_moment_norm_lower
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_moment_norm_lower"
+#print axioms Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_moment_norm_lower
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_even_ground_simple"
+#check @Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_even_ground_simple
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_even_ground_simple"
+#print axioms Zeta23.OPICARound4.actual_odd_newborn_tied_negative_cubic_energy_even_ground_simple
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.exists_log_nonzero_in_open_positive"
+#check @Zeta23.OPICARound4.exists_log_nonzero_in_open_positive
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.exists_log_nonzero_in_open_positive"
+#print axioms Zeta23.OPICARound4.exists_log_nonzero_in_open_positive
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.exists_finite_log_nonzero_in_open_positive"
+#check @Zeta23.OPICARound4.exists_finite_log_nonzero_in_open_positive
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.exists_finite_log_nonzero_in_open_positive"
+#print axioms Zeta23.OPICARound4.exists_finite_log_nonzero_in_open_positive
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.normalizedSeedEntry"
+#check @Zeta23.OPICARound4.RegularCells.normalizedSeedEntry
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.normalizedSeedEntry"
+#print axioms Zeta23.OPICARound4.RegularCells.normalizedSeedEntry
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.normalizedSeedEntry_ofReal"
+#check @Zeta23.OPICARound4.RegularCells.normalizedSeedEntry_ofReal
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.normalizedSeedEntry_ofReal"
+#print axioms Zeta23.OPICARound4.RegularCells.normalizedSeedEntry_ofReal
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.normalizedSeedEntry_one"
+#check @Zeta23.OPICARound4.RegularCells.normalizedSeedEntry_one
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.normalizedSeedEntry_one"
+#print axioms Zeta23.OPICARound4.RegularCells.normalizedSeedEntry_one
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix"
+#check @Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix"
+#print axioms Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_one"
+#check @Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_one
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_one"
+#print axioms Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_one
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.liftedFullSource"
+#check @Zeta23.OPICARound4.RegularCells.liftedFullSource
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.liftedFullSource"
+#print axioms Zeta23.OPICARound4.RegularCells.liftedFullSource
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.normalizedFrameSource"
+#check @Zeta23.OPICARound4.RegularCells.normalizedFrameSource
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.normalizedFrameSource"
+#print axioms Zeta23.OPICARound4.RegularCells.normalizedFrameSource
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.normalizedFrameSource_apply"
+#check @Zeta23.OPICARound4.RegularCells.normalizedFrameSource_apply
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.normalizedFrameSource_apply"
+#print axioms Zeta23.OPICARound4.RegularCells.normalizedFrameSource_apply
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.analyticOnNhd_normalizedFrameSource_apply"
+#check @Zeta23.OPICARound4.RegularCells.analyticOnNhd_normalizedFrameSource_apply
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.analyticOnNhd_normalizedFrameSource_apply"
+#print axioms Zeta23.OPICARound4.RegularCells.analyticOnNhd_normalizedFrameSource_apply
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.liftedNativeFrame"
+#check @Zeta23.OPICARound4.RegularCells.liftedNativeFrame
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.liftedNativeFrame"
+#print axioms Zeta23.OPICARound4.RegularCells.liftedNativeFrame
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.analyticOnNhd_liftedNativeFrame_coord"
+#check @Zeta23.OPICARound4.RegularCells.analyticOnNhd_liftedNativeFrame_coord
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.analyticOnNhd_liftedNativeFrame_coord"
+#print axioms Zeta23.OPICARound4.RegularCells.analyticOnNhd_liftedNativeFrame_coord
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.liftedNativeFrame_deck_base"
+#check @Zeta23.OPICARound4.RegularCells.liftedNativeFrame_deck_base
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.liftedNativeFrame_deck_base"
+#print axioms Zeta23.OPICARound4.RegularCells.liftedNativeFrame_deck_base
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.liftedNativeFrameDet"
+#check @Zeta23.OPICARound4.RegularCells.liftedNativeFrameDet
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.liftedNativeFrameDet"
+#print axioms Zeta23.OPICARound4.RegularCells.liftedNativeFrameDet
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.analyticOnNhd_liftedNativeFrameDet"
+#check @Zeta23.OPICARound4.RegularCells.analyticOnNhd_liftedNativeFrameDet
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.analyticOnNhd_liftedNativeFrameDet"
+#print axioms Zeta23.OPICARound4.RegularCells.analyticOnNhd_liftedNativeFrameDet
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.exists_mem_corridor_liftedNativeFrameDet_ne_zero"
+#check @Zeta23.OPICARound4.RegularCells.exists_mem_corridor_liftedNativeFrameDet_ne_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.exists_mem_corridor_liftedNativeFrameDet_ne_zero"
+#print axioms Zeta23.OPICARound4.RegularCells.exists_mem_corridor_liftedNativeFrameDet_ne_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.nativeSeedAmbientIsometry"
+#check @Zeta23.OPICARound4.RegularCells.nativeSeedAmbientIsometry
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.nativeSeedAmbientIsometry"
+#print axioms Zeta23.OPICARound4.RegularCells.nativeSeedAmbientIsometry
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.nativeSeedPhysicalTransport"
+#check @Zeta23.OPICARound4.RegularCells.nativeSeedPhysicalTransport
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.nativeSeedPhysicalTransport"
+#print axioms Zeta23.OPICARound4.RegularCells.nativeSeedPhysicalTransport
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_physical_transport"
+#check @Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_physical_transport
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_physical_transport"
+#print axioms Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_physical_transport
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.nativeSeedAmbientIsometry_inner_canonical"
+#check @Zeta23.OPICARound4.RegularCells.nativeSeedAmbientIsometry_inner_canonical
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.nativeSeedAmbientIsometry_inner_canonical"
+#print axioms Zeta23.OPICARound4.RegularCells.nativeSeedAmbientIsometry_inner_canonical
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.liftedFullSource_log_fixedCell"
+#check @Zeta23.OPICARound4.RegularCells.liftedFullSource_log_fixedCell
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.liftedFullSource_log_fixedCell"
+#print axioms Zeta23.OPICARound4.RegularCells.liftedFullSource_log_fixedCell
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_real_isSymmetric"
+#check @Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_real_isSymmetric
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_real_isSymmetric"
+#print axioms Zeta23.OPICARound4.RegularCells.normalizedSeedMatrix_real_isSymmetric
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.liftedNativeFrame_log_fixedCell"
+#check @Zeta23.OPICARound4.RegularCells.liftedNativeFrame_log_fixedCell
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.liftedNativeFrame_log_fixedCell"
+#print axioms Zeta23.OPICARound4.RegularCells.liftedNativeFrame_log_fixedCell
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.nativeCanonical_bijective_of_frameDet_ne_zero"
+#check @Zeta23.OPICARound4.RegularCells.nativeCanonical_bijective_of_frameDet_ne_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.nativeCanonical_bijective_of_frameDet_ne_zero"
+#print axioms Zeta23.OPICARound4.RegularCells.nativeCanonical_bijective_of_frameDet_ne_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.exists_finite_native_regular_in_open_fixedCell"
+#check @Zeta23.OPICARound4.RegularCells.exists_finite_native_regular_in_open_fixedCell
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.exists_finite_native_regular_in_open_fixedCell"
+#print axioms Zeta23.OPICARound4.RegularCells.exists_finite_native_regular_in_open_fixedCell
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.exists_open_fixedCell_subset_positive"
+#check @Zeta23.OPICARound4.RegularCells.exists_open_fixedCell_subset_positive
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.exists_open_fixedCell_subset_positive"
+#print axioms Zeta23.OPICARound4.RegularCells.exists_open_fixedCell_subset_positive
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.exists_finite_native_regular_in_open_positive"
+#check @Zeta23.OPICARound4.RegularCells.exists_finite_native_regular_in_open_positive
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.exists_finite_native_regular_in_open_positive"
+#print axioms Zeta23.OPICARound4.RegularCells.exists_finite_native_regular_in_open_positive
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.exists_bounded_native_regular_in_open_positive"
+#check @Zeta23.OPICARound4.RegularCells.exists_bounded_native_regular_in_open_positive
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.exists_bounded_native_regular_in_open_positive"
+#print axioms Zeta23.OPICARound4.RegularCells.exists_bounded_native_regular_in_open_positive
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.cofinally_both_negative_and_native_regular"
+#check @Zeta23.OPICARound4.RegularCells.cofinally_both_negative_and_native_regular
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.cofinally_both_negative_and_native_regular"
+#print axioms Zeta23.OPICARound4.RegularCells.cofinally_both_negative_and_native_regular
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.cofinally_regular_first_common_births"
+#check @Zeta23.OPICARound4.RegularCells.cofinally_regular_first_common_births
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.cofinally_regular_first_common_births"
+#print axioms Zeta23.OPICARound4.RegularCells.cofinally_regular_first_common_births
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.RegularCells.native_newborn_realization_regular_of_bijective"
+#check @Zeta23.OPICARound4.RegularCells.native_newborn_realization_regular_of_bijective
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.RegularCells.native_newborn_realization_regular_of_bijective"
+#print axioms Zeta23.OPICARound4.RegularCells.native_newborn_realization_regular_of_bijective
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.tied_newborn_active_response_consumer"
+#check @Zeta23.OPICARound4.Validation.tied_newborn_active_response_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.tied_newborn_active_response_consumer"
+#print axioms Zeta23.OPICARound4.Validation.tied_newborn_active_response_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.newborn_opposite_source_channels_consumer"
+#check @Zeta23.OPICARound4.Validation.newborn_opposite_source_channels_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.newborn_opposite_source_channels_consumer"
+#print axioms Zeta23.OPICARound4.Validation.newborn_opposite_source_channels_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.normalized_cubic_energy_lower_consumer"
+#check @Zeta23.OPICARound4.Validation.normalized_cubic_energy_lower_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.normalized_cubic_energy_lower_consumer"
+#print axioms Zeta23.OPICARound4.Validation.normalized_cubic_energy_lower_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.negative_cubic_energy_ground_simple_consumer"
+#check @Zeta23.OPICARound4.Validation.negative_cubic_energy_ground_simple_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.negative_cubic_energy_ground_simple_consumer"
+#print axioms Zeta23.OPICARound4.Validation.negative_cubic_energy_ground_simple_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.native_fixed_cell_regular_selection_consumer"
+#check @Zeta23.OPICARound4.Validation.native_fixed_cell_regular_selection_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.native_fixed_cell_regular_selection_consumer"
+#print axioms Zeta23.OPICARound4.Validation.native_fixed_cell_regular_selection_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.cofinal_native_regular_births_consumer"
+#check @Zeta23.OPICARound4.Validation.cofinal_native_regular_births_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.cofinal_native_regular_births_consumer"
+#print axioms Zeta23.OPICARound4.Validation.cofinal_native_regular_births_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.same_newborn_regular_realization_consumer"
+#check @Zeta23.OPICARound4.Validation.same_newborn_regular_realization_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.same_newborn_regular_realization_consumer"
+#print axioms Zeta23.OPICARound4.Validation.same_newborn_regular_realization_consumer
