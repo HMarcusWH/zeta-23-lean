@@ -1651,6 +1651,18 @@
       "case": null,
       "lane": "CONTRACT",
       "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_madness_extension_retains_merged_500_scope",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_madness_register_rejects_source_substitution_and_bound_promotion",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
     }
   ]
 }

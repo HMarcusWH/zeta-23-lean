@@ -700,5 +700,22 @@
     "semantic_mutations": 17,
     "register": "SOURCE_CONSTRAINTS.json",
     "production_qualification": "CURRENT_HEAD_FULL_NATIVE_SUPPORT_AND_INDEPENDENT_ACCEPTANCE_REQUIRED"
+  },
+  "madness_extension": {
+    "register": "MADNESS_CONTRACTS.json",
+    "source_audit": "MADNESS_SOURCE_AUDIT.json",
+    "modules": 4,
+    "added_declarations": 76,
+    "gate_total_modules": 52,
+    "gate_total_declarations": 576,
+    "retained_modules": 48,
+    "retained_declarations": 500,
+    "retained_semantic_mutations": 17,
+    "semantic_mutations": 21,
+    "new_unconditional_estimate": "The normalized short hyperbola term and the prime-field plus long-term remainder have every fixed exponential decay rate.",
+    "closing_arithmetic_estimate": "OPEN",
+    "production_qualification": "CURRENT_HEAD_FULL_NATIVE_SUPPORT_AND_INDEPENDENT_ACCEPTANCE_REQUIRED",
+    "RH": "OPEN",
+    "Step4": "OPEN"
   }
 }

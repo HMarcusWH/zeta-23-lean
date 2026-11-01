@@ -584,10 +584,100 @@ SOURCE_CONSTRAINT_MODULES = [
   "Zeta23.OPICARound4.Validation.DetectorErrors",
   "Zeta23.OPICARound4.Validation.ErrorReduction"
 ]
-EXPECTED_DECLARATIONS = INTEGRATION_EXPECTED_DECLARATIONS + SOURCE_CONSTRAINT_DECLARATIONS
-MODULES = INTEGRATION_MODULES + SOURCE_CONSTRAINT_MODULES
-EXPECTED_DECLARATION_COUNT = 500
-EXPECTED_MODULE_COUNT = 48
+PRE_MADNESS_DECLARATIONS = INTEGRATION_EXPECTED_DECLARATIONS + SOURCE_CONSTRAINT_DECLARATIONS
+PRE_MADNESS_MODULES = INTEGRATION_MODULES + SOURCE_CONSTRAINT_MODULES
+PRE_MADNESS_DECLARATION_COUNT = 500
+PRE_MADNESS_MODULE_COUNT = 48
+# MADNESS_INVENTORY_BEGIN
+MADNESS_DECLARATIONS = [
+  "Zeta23.OPICARound4.mobiusR",
+  "Zeta23.OPICARound4.arithmetic_sub_apply",
+  "Zeta23.OPICARound4.weighted_convolution",
+  "Zeta23.OPICARound4.weighted_mobius_inverse",
+  "Zeta23.OPICARound4.arithmeticTruncation",
+  "Zeta23.OPICARound4.arithmeticTruncation_apply",
+  "Zeta23.OPICARound4.arithmeticTruncation_sum",
+  "Zeta23.OPICARound4.tail_square_vanishes",
+  "Zeta23.OPICARound4.tail_square_convolution_vanishes",
+  "Zeta23.OPICARound4.mobius_hyperbola_coefficient",
+  "Zeta23.OPICARound4.weighted_triple_convolution",
+  "Zeta23.OPICARound4.hyperbolaU",
+  "Zeta23.OPICARound4.hyperbolaE",
+  "Zeta23.OPICARound4.hyperbolaT",
+  "Zeta23.OPICARound4.truncated_convolution_is_hyperbolaT",
+  "Zeta23.OPICARound4.finite_mobius_hyperbola",
+  "Zeta23.OPICARound4.finiteLogarithmicTest",
+  "Zeta23.OPICARound4.finiteLogarithmicTest_support",
+  "Zeta23.OPICARound4.vonMangoldt_weighted_is_hyperbolaU",
+  "Zeta23.OPICARound4.finite_vonMangoldt_hyperbola",
+  "Zeta23.OPICARound4.hyperbolaT_one",
+  "Zeta23.OPICARound4.hyperbolaT_negative_test",
+  "Zeta23.OPICARound4.finiteLogarithmicTest_half_support",
+  "Zeta23.OPICARound4.hyperbolaU_shrink",
+  "Zeta23.OPICARound4.finite_vonMangoldt_hyperbola_half",
+  "Zeta23.OPICARound4.actualCorrelationKernel",
+  "Zeta23.OPICARound4.actualCorrelationSource",
+  "Zeta23.OPICARound4.actualCorrelationCutoff",
+  "Zeta23.OPICARound4.actualCorrelationWeight",
+  "Zeta23.OPICARound4.actualCorrelationPrimeField",
+  "Zeta23.OPICARound4.actualCorrelationIntegerDrive",
+  "Zeta23.OPICARound4.actualCorrelationIntegerDrive_eq_sourceConvolution",
+  "Zeta23.OPICARound4.actualCorrelationIntegerDrive_bound_of_native_bound",
+  "Zeta23.OPICARound4.actualCorrelationIntegerDrive_rapid_bound",
+  "Zeta23.OPICARound4.actualCorrelationKernel_supported",
+  "Zeta23.OPICARound4.actualCorrelationCutoff_exact",
+  "Zeta23.OPICARound4.actualCorrelationWeight_zero_above",
+  "Zeta23.OPICARound4.actualCorrelationPrimeField_eq_weighted_vonMangoldt",
+  "Zeta23.OPICARound4.actualCorrelationPrimeField_eq_nativeSourceConvolution",
+  "Zeta23.OPICARound4.actualCorrelationLogarithmicTest",
+  "Zeta23.OPICARound4.actualCorrelationLogarithmicTest_eq_integerDrive",
+  "Zeta23.OPICARound4.actualFlatMobiusTest",
+  "Zeta23.OPICARound4.actualFlatMobiusTest_normalization",
+  "Zeta23.OPICARound4.actualCorrelationPrimeField_eq_mobius",
+  "Zeta23.OPICARound4.actualCorrelationPrimeField_hyperbola",
+  "Zeta23.OPICARound4.actualCorrelationLogarithmicTest_half_support",
+  "Zeta23.OPICARound4.actualCorrelationPrimeField_hyperbola_half",
+  "Zeta23.OPICARound4.actualNativeSourceConvolution_hyperbola_half",
+  "Zeta23.OPICARound4.actualCorrelationShortTerm_rapid_bound",
+  "Zeta23.OPICARound4.actualCorrelationPrimeField_add_longTerm_rapid_bound",
+  "Zeta23.OPICARound4.aliasDiagonal",
+  "Zeta23.OPICARound4.abs_aliasDiagonal_le_count",
+  "Zeta23.OPICARound4.abs_aliasDiagonal_le_sqrt",
+  "Zeta23.OPICARound4.lower_bound_remove_bounded_diagonal",
+  "Zeta23.OPICARound4.lower_bound_restore_bounded_diagonal",
+  "Zeta23.OPICARound4.mobiusPoissonRemainder",
+  "Zeta23.OPICARound4.mobiusPoissonOffDiagonal",
+  "Zeta23.OPICARound4.mobiusReciprocalSum",
+  "Zeta23.OPICARound4.mobiusPoissonRankOne",
+  "Zeta23.OPICARound4.mobiusPoissonQuadratic",
+  "Zeta23.OPICARound4.mobiusPoissonRemainder_eq_diagonal_add_offDiagonal",
+  "Zeta23.OPICARound4.mobiusPoissonRankOne_nonneg",
+  "Zeta23.OPICARound4.mobiusPoissonQuadratic_eq_rankOne_add_remainder",
+  "Zeta23.OPICARound4.mobiusPoissonQuadratic_eq_rankOne_offDiagonal_add_diagonal",
+  "Zeta23.OPICARound4.HasEventualSqrtLower",
+  "Zeta23.OPICARound4.eventual_sqrt_lower_poisson_iff_rankOne_offDiagonal",
+  "Zeta23.OPICARound4.validation_madness_actual_hyperbola",
+  "Zeta23.OPICARound4.validation_madness_actual_drive",
+  "Zeta23.OPICARound4.validation_madness_actual_normalization",
+  "Zeta23.OPICARound4.validation_madness_drive_rapid_decay",
+  "Zeta23.OPICARound4.validation_madness_short_term_rapid_decay",
+  "Zeta23.OPICARound4.validation_madness_observable_remainder",
+  "Zeta23.OPICARound4.validation_madness_complete_split",
+  "Zeta23.OPICARound4.validation_madness_diagonal_budget",
+  "Zeta23.OPICARound4.validation_madness_lower_equivalence",
+  "Zeta23.OPICARound4.validation_madness_signed_test"
+]
+MADNESS_MODULES = [
+  "Zeta23.OPICARound4.MobiusHyperbola",
+  "Zeta23.OPICARound4.ActualSourceHyperbola",
+  "Zeta23.OPICARound4.HyperbolaDiagonal",
+  "Zeta23.OPICARound4.Validation.Hyperbola"
+]
+EXPECTED_DECLARATIONS = PRE_MADNESS_DECLARATIONS + MADNESS_DECLARATIONS
+MODULES = PRE_MADNESS_MODULES + MADNESS_MODULES
+EXPECTED_DECLARATION_COUNT = 576
+EXPECTED_MODULE_COUNT = 52
+# MADNESS_INVENTORY_END
 # SOURCE_CONSTRAINT_INVENTORY_END
 BASELINE_DECLARATION_COUNT = 98
 BASELINE_MODULE_COUNT = 16
@@ -596,8 +686,12 @@ INTEGRATION_SEMANTIC_MUTATIONS = 'import Zeta23.OPICARound4.Validation.Support\n
 INTEGRATION_SEMANTIC_MUTATION_COUNT = 9
 SOURCE_CONSTRAINT_MUTATIONS = '-- Source constraint mutation: geometry_wrong_even_sign.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4.GeometryMutation\nopen CCM OPICARound3\n\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K)\n    (hs : poleNeutralEvenRayleighBottom L K hL hK < poleNeutralOddRayleighBottom L K hL hK) :\n    let r := poleNeutralEvenShiftedRay hL K hK (poleNeutralEvenRayleighBottom L K hL hK) hs\n    nativeSignedPrimeDiscrepancy L K r = nativeArchContinuumRow L K r + 1 :=\n  (actual_even_ground_signed_discrepancy hL K hK hs).2.1\n\nend Zeta23.OPICARound4.GeometryMutation\n\n\n-- Source constraint mutation: geometry_wrong_odd_input.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4.GeometryMutation\nopen CCM OPICARound3\n\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K)\n    (hs : poleNeutralOddRayleighBottom L K hL hK < poleNeutralEvenRayleighBottom L K hL hK) :\n    poleNeutralCorrectedCubicSource L K\n      ((poleNeutralEvenShiftedCanonicalEquiv hL K hK\n        (poleNeutralOddRayleighBottom L K hL hK) hs).symm (poleNeutralCorrectedCubicRieszVector L K)) = -1 :=\n  (actual_odd_ground_reciprocal_discrepancy hL K hK hs).1\n\nend Zeta23.OPICARound4.GeometryMutation\n\n\n-- Source constraint mutation: geometry_omitted_tie.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4.GeometryMutation\nopen CCM OPICARound3\n\nexample {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (hboth : BothNeutralNegative L K) :\n    NativeStrictEvenGroundConstraints hL K hK ∨ NativeStrictOddGroundConstraints hL K hK :=\n  joint_ground_constraints_of_both_negative hL K hK hboth\n\nend Zeta23.OPICARound4.GeometryMutation\n\n\n-- Source constraint mutation: arithmetic/semantic-controls/WrongSmoothShift.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4\nopen CCM ExceptionalZero\nexample {β a : ℝ} {σ : ReversalParity} (out : Step123NativeOutput β σ a)\n    (v : nativePoleNeutralParitySpace σ (fixedOriginalSincTrialAperture a)\n      (out.retained.state.selection.cutoff - 1)) :\n    inner ℂ v (smoothSourceForcing out) =\n      zetaZeroConfig.W out.originalTrial (out.forcingTest v) -\n        (out.retained.state.selection.eta : ℂ) * EF.weilTest out.originalTrial (out.forcingTest v) 0 :=\n  validation_smooth_source_forcing out v\nend Zeta23.OPICARound4\n\n\n-- Source constraint mutation: arithmetic/semantic-controls/DroppedSchurMassError.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4\nopen CCM ExceptionalZero\nexample {β a : ℝ} {σ : ReversalParity} (out : Step123NativeOutput β σ a) :\n    |detectorSchurLoss out - smoothSourceMain out| ≤\n      sourceInverseBudget out * sourceForcingErrorBudget out *\n        (2 * finiteForcingBudget out + sourceForcingErrorBudget out) +\n      sourceEnergyErrorBudget (fixedOriginalSincTrialAperture a) :=\n  detectorSchurLoss_sub_smoothSourceMain_bound out\nend Zeta23.OPICARound4\n\n\n-- Source constraint mutation: arithmetic/semantic-controls/DroppedFirstCutoffEnergy.lean\nnoncomputable section\nnamespace Zeta23.OPICARound4\nopen CCM ExceptionalZero\nexample {β a : ℝ} {σ : ReversalParity} (out : Step123NativeOutput β σ a)\n    (hK : out.retained.state.selection.cutoff = 3) :\n    detectorSchurLoss out = -out.retained.state.selection.eta :=\n  detectorSchurLoss_at_first out hK\nend Zeta23.OPICARound4\n\n\n-- Source constraint mutation: quartic/mutations/SourceErrorWrongQuantifier.lean\nnoncomputable section\nopen Zeta23 Zeta23.CCM Zeta23.ExceptionalZero Zeta23.OPICARound4\n\n-- Incorrect strengthening: one threshold is required to pay every M\n-- simultaneously. The proved threshold is selected after each fixed M.\nexample (δ : ℝ) (hδ : 0 < δ) :\n    ∃ L₀ : ℝ, ∀ (M β : ℝ) (σ : ReversalParity) (a : ℝ)\n      (out : Step123NativeOutput β σ a), 0 < β → L₀ ≤ fixedOriginalSincTrialAperture a →\n      |detectorSchurLoss out - smoothSourceMain out| <\n        δ * Real.exp (-M * fixedOriginalSincTrialAperture a) := by\n  exact exists_uniform_source_schur_error_threshold 0 δ hδ\n\n\n-- Source constraint mutation: quartic/mutations/SourceMainWrongSign.lean\nnoncomputable section\nopen Zeta23 Zeta23.CCM Zeta23.ExceptionalZero Zeta23.OPICARound4\n\n-- The surviving source requirement is a lower bound. Treating it as an\n-- independently proved upper bound would manufacture the missing Step4 law.\nexample :\n    ∃ L₀ : ℝ, ∀ (ρ : zetaZeroConfig.carrier) (β : ℝ)\n      (σ : ReversalParity) (R : ℝ)\n      (g : GeneratedStep123CompleteOutput ρ β σ R), L₀ ≤ R →\n        smoothSourceMain g.generated.native <\n          Real.exp (β * fixedOriginalSincTrialAperture g.generated.sourceData.separation) / 4 := by\n  exact exists_generated_smooth_source_main_lower_threshold\n'
 SOURCE_CONSTRAINT_MUTATION_IMPORTS = 'import Zeta23.OPICARound4.JointGroundConstraints\nimport Zeta23.OPICARound4.QuarticErrorReduction\nimport Zeta23.OPICARound4.Validation.DetectorErrors\n'
-SEMANTIC_MUTATIONS = SOURCE_CONSTRAINT_MUTATION_IMPORTS + INTEGRATION_SEMANTIC_MUTATIONS + SOURCE_CONSTRAINT_MUTATIONS
-SEMANTIC_MUTATION_COUNT = 17
+PRE_MADNESS_SEMANTIC_MUTATIONS = SOURCE_CONSTRAINT_MUTATION_IMPORTS + INTEGRATION_SEMANTIC_MUTATIONS + SOURCE_CONSTRAINT_MUTATIONS
+PRE_MADNESS_SEMANTIC_MUTATION_COUNT = 17
+MADNESS_SEMANTIC_MUTATION_IMPORTS = 'import Zeta23.OPICARound4.Validation.Hyperbola\n'
+MADNESS_SEMANTIC_MUTATIONS = 'noncomputable section\nnamespace Zeta23.OPICARound4.MadnessRejectedMutations\nopen Finset\n\n-- The hyperbola boundary has a minus sign.\nexample (t : ℝ) :\n    actualCorrelationPrimeField t =\n      2 * hyperbolaE (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2) +\n        hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2) :=\n  actualCorrelationPrimeField_hyperbola_half t\n\n-- Removing the square-root normalization changes the actual integer-drive identity.\nexample (t : ℝ) (a : ℕ) (ha : 0 < a) :\n    actualCorrelationLogarithmicTest t a = actualCorrelationIntegerDrive (t - Real.log a) :=\n  actualCorrelationLogarithmicTest_eq_integerDrive t a ha\n\n-- The exact total cannot discard the diagonal contribution.\nexample (P R : ℝ → ℝ) (I x : ℝ) (Y : ℕ)\n    (hP : ∀ y : ℝ, P y = I * y + R y) :\n    mobiusPoissonQuadratic P x Y =\n      mobiusPoissonRankOne I x Y + mobiusPoissonOffDiagonal R x Y :=\n  mobiusPoissonQuadratic_eq_rankOne_offDiagonal_add_diagonal P R I x Y hP\n\n-- An equivalence between two lower bounds does not prove either lower bound.\nexample (P R : ℝ → ℝ) (I : ℝ) {T M : ℝ} (hT : 0 < T) (hM : 0 ≤ M)\n    (hP : ∀ y : ℝ, P y = I * y + R y)\n    (hR : ∀ y : ℝ, 1 / T ≤ y → |R y| ≤ M) :\n    HasEventualSqrtLower (fun x => mobiusPoissonQuadratic P x ⌊Real.sqrt (T*x)⌋₊) :=\n  eventual_sqrt_lower_poisson_iff_rankOne_offDiagonal P R I hT hM hP hR\n\nend Zeta23.OPICARound4.MadnessRejectedMutations\n'
+SEMANTIC_MUTATIONS = MADNESS_SEMANTIC_MUTATION_IMPORTS + PRE_MADNESS_SEMANTIC_MUTATIONS + MADNESS_SEMANTIC_MUTATIONS
+SEMANTIC_MUTATION_COUNT = 21
 # SOURCE_CONSTRAINT_MUTATIONS_END
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
@@ -657,14 +751,33 @@ def retained_support_scope() -> dict:
             set(INTEGRATION_MODULES) <= set(MODULES), "Retained 397/40 integration scope changed")
     require(INTEGRATION_SEMANTIC_MUTATION_COUNT == 9 and
             len(re.findall(r"(?m)^example\b", INTEGRATION_SEMANTIC_MUTATIONS)) == 9 and
-            SEMANTIC_MUTATIONS == SOURCE_CONSTRAINT_MUTATION_IMPORTS +
+            PRE_MADNESS_SEMANTIC_MUTATIONS == SOURCE_CONSTRAINT_MUTATION_IMPORTS +
                 INTEGRATION_SEMANTIC_MUTATIONS + SOURCE_CONSTRAINT_MUTATIONS and
+            SEMANTIC_MUTATIONS == MADNESS_SEMANTIC_MUTATION_IMPORTS +
+                PRE_MADNESS_SEMANTIC_MUTATIONS + MADNESS_SEMANTIC_MUTATIONS and
             len(re.findall(r"(?m)^example\b", SEMANTIC_MUTATIONS)) == SEMANTIC_MUTATION_COUNT,
             "Retained or complete semantic mutation scope changed")
     return {"declarations": INTEGRATION_EXPECTED_DECLARATIONS,
             "modules": INTEGRATION_MODULES, "declaration_count": 397, "module_count": 40,
             "semantic_mutation_count": 9,
             "semantic_mutations_sha256": hashlib.sha256(INTEGRATION_SEMANTIC_MUTATIONS.encode("utf-8")).hexdigest()}
+
+def retained_pre_madness_scope() -> dict:
+    """The exact merged Round4 500/48/17 scope remains independently mandatory."""
+    require(len(PRE_MADNESS_DECLARATIONS) == PRE_MADNESS_DECLARATION_COUNT == 500 and
+            len(PRE_MADNESS_MODULES) == PRE_MADNESS_MODULE_COUNT == 48 and
+            hashlib.sha256(json.dumps(PRE_MADNESS_DECLARATIONS, separators=(",", ":")).encode()).hexdigest() == '0e1a0057bd52dc579492214c28bdcd15386ec05fa709c6270faec877d2e84975' and
+            hashlib.sha256(json.dumps(PRE_MADNESS_MODULES, separators=(",", ":")).encode()).hexdigest() == 'e54ec086b6c93296406ae4cda5c14d9dfba69ccd029c7fd16eeb4262319c6fd8' and
+            set(PRE_MADNESS_DECLARATIONS) <= set(EXPECTED_DECLARATIONS) and
+            set(PRE_MADNESS_MODULES) <= set(MODULES), "Retained 500/48 scope changed")
+    require(PRE_MADNESS_SEMANTIC_MUTATION_COUNT == 17 and
+            len(re.findall(r"(?m)^example\b", PRE_MADNESS_SEMANTIC_MUTATIONS)) == 17 and
+            hashlib.sha256(PRE_MADNESS_SEMANTIC_MUTATIONS.encode()).hexdigest() == 'a95ef16e4fdfa6276e1b44b7e3d197fbf63994a17c6e0189f83d746ae11032bd',
+            "Retained 17 semantic controls changed")
+    return {"declarations": PRE_MADNESS_DECLARATIONS, "modules": PRE_MADNESS_MODULES,
+            "declaration_count": 500, "module_count": 48, "semantic_mutation_count": 17,
+            "semantic_mutations_sha256": 'a95ef16e4fdfa6276e1b44b7e3d197fbf63994a17c6e0189f83d746ae11032bd'}
+
 
 def root_names(path: Path) -> tuple[list[str], list[dict]]:
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -833,6 +946,7 @@ def run_gate(args: argparse.Namespace, *, worker=None) -> dict:
                 len(BASELINE_MODULES) == BASELINE_MODULE_COUNT and
                 set(BASELINE_EXPECTED_DECLARATIONS) <= set(discovered), "Historical 98/16 support subset changed")
         retained_support_scope()
+        retained_pre_madness_scope()
         pending, dependencies = list(MODULES), {}
         while pending:
             m = pending.pop()

@@ -12516,6 +12516,19 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
+      "module_id": "rh:module:Zeta23.OPICARound4.ActualSourceHyperbola",
+      "named_source_declaration_count": 27,
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/OPICARound4/AdaptiveBudget.lean",
       "module": "Zeta23.OPICARound4.AdaptiveBudget",
       "module_id": "rh:module:Zeta23.OPICARound4.AdaptiveBudget",
@@ -12555,6 +12568,19 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/HyperbolaDiagonal.lean",
+      "module": "Zeta23.OPICARound4.HyperbolaDiagonal",
+      "module_id": "rh:module:Zeta23.OPICARound4.HyperbolaDiagonal",
+      "named_source_declaration_count": 16,
+      "path": "Zeta23/OPICARound4/HyperbolaDiagonal.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/OPICARound4/IntegrationTargets.lean",
       "module": "Zeta23.OPICARound4.IntegrationTargets",
       "module_id": "rh:module:Zeta23.OPICARound4.IntegrationTargets",
@@ -12573,6 +12599,19 @@
       "module_id": "rh:module:Zeta23.OPICARound4.JointGroundConstraints",
       "named_source_declaration_count": 9,
       "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/MobiusHyperbola.lean",
+      "module": "Zeta23.OPICARound4.MobiusHyperbola",
+      "module_id": "rh:module:Zeta23.OPICARound4.MobiusHyperbola",
+      "named_source_declaration_count": 25,
+      "path": "Zeta23/OPICARound4/MobiusHyperbola.lean",
       "reachability": "STANDALONE_OR_AUXILIARY",
       "reachable_from": [],
       "registered_root_count": 0,
@@ -12989,6 +13028,19 @@
       "module_id": "rh:module:Zeta23.OPICARound4.Validation.GroundConstraints",
       "named_source_declaration_count": 0,
       "path": "Zeta23/OPICARound4/Validation/GroundConstraints.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/Validation/Hyperbola.lean",
+      "module": "Zeta23.OPICARound4.Validation.Hyperbola",
+      "module_id": "rh:module:Zeta23.OPICARound4.Validation.Hyperbola",
+      "named_source_declaration_count": 10,
+      "path": "Zeta23/OPICARound4/Validation/Hyperbola.lean",
       "reachability": "STANDALONE_OR_AUXILIARY",
       "reachable_from": [],
       "registered_root_count": 0,
@@ -17694,7 +17746,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1200,
+  "entry_count": 1204,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

@@ -2001,6 +2001,16 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/MADNESS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/MADNESS.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_round4/MADNESS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:research/RHRC/integration/opica_round4/README.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
@@ -3331,7 +3341,7 @@
       ]
     }
   ],
-  "entry_count": 311,
+  "entry_count": 312,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

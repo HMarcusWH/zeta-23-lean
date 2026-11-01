@@ -7,7 +7,8 @@ from .accept import ROUND4_LANES,REPLAY_GROUP_IDS,group_lanes
 from .testing import checked_inventory
 from ..opica_round4.math_gate import (EXPECTED_DECLARATIONS, BASELINE_EXPECTED_DECLARATIONS,
     BASELINE_MODULES, BASELINE_DECLARATION_COUNT, BASELINE_MODULE_COUNT,
-    retained_support_scope, SOURCE_CONSTRAINT_MODULES, public_declarations)
+    retained_support_scope, SOURCE_CONSTRAINT_MODULES, public_declarations,
+    retained_pre_madness_scope, MADNESS_MODULES, MADNESS_DECLARATIONS)
 
 def check_source_constraints(repo):
     repo=Path(repo);r4=repo/'research/RHRC/integration/opica_round4'
@@ -32,6 +33,39 @@ def check_source_constraints(repo):
             {'C_DIRECT','C_SMOOTH_SCHUR','D_STRICT_EVEN','D_STRICT_ODD','D_SHARED'},
             'Arithmetic frontier alternatives changed')
     return {'status':'PASS_SOURCE_BINDINGS_ONLY','RH':'OPEN','Step4':'OPEN'}
+
+def check_madness_contracts(repo):
+    repo=Path(repo);r4=repo/'research/RHRC/integration/opica_round4'
+    ledger=load_bytes((r4/'MADNESS_CONTRACTS.json').read_bytes())
+    require(ledger['schema']=='OPICA4_MADNESS_CONTRACTS_V1' and
+            ledger['authority']=='SOURCE_BOUND_RESEARCH_REGISTER_NOT_PROOF_RECEIPT' and
+            ledger['claim_cap']=='SUPPORT_ONLY_RH_AND_STEP4_OPEN' and
+            ledger['RH']==ledger['Step4']=='OPEN' and
+            ledger['closing_arithmetic']['status']=='OPEN' and
+            [r['id'] for r in ledger['contracts']]==['M1','M2','M3','M4'] and
+            all(r['arithmetic_estimate_supplied'] is False for r in ledger['contracts']),
+            'Madness claim authority differs')
+    require(set(ledger['current_modules'])==set(MADNESS_MODULES), 'Exact Madness module inventory differs')
+    declarations=[]
+    for module,row in ledger['current_modules'].items():
+        path=module.replace('.','/')+'.lean'
+        require(row['path']==path and file_hash(repo/path)==row['sha256'] and
+                row['declarations']==public_declarations((repo/path).read_text(encoding='utf-8')),
+                'Madness source or declaration binding differs')
+        declarations.extend(row['declarations'])
+    require(len(declarations)==len(MADNESS_DECLARATIONS) and set(declarations)==set(MADNESS_DECLARATIONS),
+            'Exact Madness declaration inventory differs')
+    require(ledger['source_audit_path']=='research/RHRC/integration/opica_round4/MADNESS_SOURCE_AUDIT.json' and
+            file_hash(repo/ledger['source_audit_path'])==ledger['source_audit_sha256'], 'Madness source audit binding differs')
+    source_audit=load_bytes((repo/ledger['source_audit_path']).read_bytes())
+    require(source_audit['RH']==source_audit['Step4']=='OPEN', 'Source audit claim escalation')
+    require(file_hash(r4/'SOURCE_CONSTRAINTS.json')==ledger['source_constraints_sha256'], 'Historical source constraints changed')
+    scope=retained_pre_madness_scope()
+    require(ledger['retained_support_subset']==scope, 'Madness retained support differs')
+    root_doc=load_bytes((r4/'ROOTS.json').read_bytes())
+    require(all(root_doc['pre_madness_subset'].get(k)==v for k,v in scope.items()), 'Retained 500/48 ROOTS register differs')
+    return {'status':'PASS_SOURCE_BINDINGS_ONLY','RH':'OPEN','Step4':'OPEN'}
+
 
 def check_replay_partition(matrix):
     expected={'schema':'OPICA4_FIXED_REPLAY_PARTITION_V1',
@@ -80,6 +114,7 @@ def check_configuration(repo):
     require(all(root_doc['integration_subset'].get(key)==value for key,value in integration.items()),
             'Retained 397/40 integration register differs')
     check_source_constraints(repo)
+    check_madness_contracts(repo)
     for row in roots:require(row['module'].replace('.','/')+'.lean'==row['path'] and (repo/row['path']).is_file(),'Root origin differs')
     targets=load_bytes((here/'PUBLIC_TARGETS.json').read_bytes())
     require([r['id'] for r in targets['calibration']]==['D02_D05','D02_D04'],'Both full calibration targets required')

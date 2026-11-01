@@ -41,6 +41,41 @@ REQUIRED_LANES = (
 
 
 class CliOrchestrationTests(unittest.TestCase):
+    def test_madness_extension_retains_merged_500_scope(self):
+        from research.RHRC.integration.opica_composition import config
+        scope=math_gate.retained_pre_madness_scope()
+        self.assertEqual((len(scope['declarations']),len(scope['modules']),
+                          scope['semantic_mutation_count']),(500,48,17))
+        self.assertEqual(config.check_madness_contracts(REPO)['status'],'PASS_SOURCE_BINDINGS_ONLY')
+        with patch.object(math_gate,'EXPECTED_DECLARATIONS',math_gate.EXPECTED_DECLARATIONS[1:]):
+            with self.assertRaisesRegex(RuntimeError,'Retained 500/48'):
+                math_gate.retained_pre_madness_scope()
+        with patch.object(math_gate,'PRE_MADNESS_SEMANTIC_MUTATIONS',
+                          math_gate.PRE_MADNESS_SEMANTIC_MUTATIONS.replace('example','example ',1)):
+            with self.assertRaisesRegex(RuntimeError,'Retained 17'):
+                math_gate.retained_pre_madness_scope()
+
+    def test_madness_register_rejects_source_substitution_and_bound_promotion(self):
+        from research.RHRC.integration.opica_composition import config
+        raw=(R4/'MADNESS_CONTRACTS.json').read_bytes();original=load_bytes(raw)
+        module=math_gate.MADNESS_MODULES[0]
+        for alteration in ('hash','path','module','declarations','audit','retained',
+                           'claim','bound','supplier','old-ledger'):
+            changed=copy.deepcopy(original)
+            if alteration=='hash':changed['current_modules'][module]['sha256']='0'*64
+            elif alteration=='path':changed['current_modules'][module]['path']='Zeta23/Wrong.lean'
+            elif alteration=='module':changed['current_modules'].pop(module)
+            elif alteration=='declarations':changed['current_modules'][module]['declarations']=[]
+            elif alteration=='audit':changed['source_audit_path']='../../outside.json'
+            elif alteration=='retained':changed['retained_support_subset']['declaration_count']=0
+            elif alteration=='claim':changed['Step4']='CLOSED'
+            elif alteration=='bound':changed['closing_arithmetic']['status']='PROVED'
+            elif alteration=='supplier':changed['contracts'][0]['arithmetic_estimate_supplied']=True
+            else:changed['source_constraints_sha256']='0'*64
+            def read(data):return changed if data==raw else load_bytes(data)
+            with self.subTest(alteration=alteration),patch.object(config,'load_bytes',side_effect=read):
+                with self.assertRaises(ContractError):config.check_madness_contracts(REPO)
+
     def test_replay_partition_register_cannot_drop_math_canonical_or_independent_jobs(self):
         from research.RHRC.integration.opica_composition import config
         matrix=load_bytes((R4/'ACCEPTANCE_MATRIX.json').read_bytes())

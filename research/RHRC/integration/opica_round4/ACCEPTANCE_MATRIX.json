@@ -3272,6 +3272,18 @@
       "case": null,
       "lane": "CONTRACT",
       "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_madness_extension_retains_merged_500_scope",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_madness_register_rejects_source_substitution_and_bound_promotion",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
     }
   ],
   "migrations": [
@@ -3494,5 +3506,25 @@
       "research.RHRC.integration.opica_composition.tests.test_cli.IndependentGroupTransportTests.test_wrong_attempt_group_and_extra_component_rejected"
     ],
     "meaning": "PROTOCOL_AND_TRANSPORT_REGRESSIONS_NOT_NATIVE_PROOF_AUTHORITY"
+  },
+  "madness_extension": {
+    "register": "MADNESS_CONTRACTS.json",
+    "modules": [
+      "Zeta23.OPICARound4.MobiusHyperbola",
+      "Zeta23.OPICARound4.ActualSourceHyperbola",
+      "Zeta23.OPICARound4.HyperbolaDiagonal",
+      "Zeta23.OPICARound4.Validation.Hyperbola"
+    ],
+    "native_gate": "MATHEMATICAL_SUPPORT",
+    "retained_declarations": 500,
+    "retained_modules": 48,
+    "retained_semantic_mutations": 17,
+    "added_declarations": 76,
+    "added_semantic_mutations": 4,
+    "current_semantic_mutations": 21,
+    "full_types_and_axioms_required": true,
+    "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
+    "RH": "OPEN",
+    "Step4": "OPEN"
   }
 }

@@ -489,7 +489,11 @@
     "Zeta23.OPICARound4.QuarticErrorReduction": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
     "Zeta23.OPICARound4.Validation.GroundConstraints": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
     "Zeta23.OPICARound4.Validation.DetectorErrors": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
-    "Zeta23.OPICARound4.Validation.ErrorReduction": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET"
+    "Zeta23.OPICARound4.Validation.ErrorReduction": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.MobiusHyperbola": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.ActualSourceHyperbola": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.HyperbolaDiagonal": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.Validation.Hyperbola": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET"
   },
   "reachable_module_roles": {
     "Zeta23.CCM.CanonicalCompressedApertureC2": "CONTACT_CALCULUS_FORMAL_SUPPORT",
