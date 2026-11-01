@@ -640,6 +640,51 @@ MADNESS_DECLARATIONS = [
   "Zeta23.OPICARound4.actualNativeSourceConvolution_hyperbola_half",
   "Zeta23.OPICARound4.actualCorrelationShortTerm_rapid_bound",
   "Zeta23.OPICARound4.actualCorrelationPrimeField_add_longTerm_rapid_bound",
+  "Zeta23.OPICARound4.higherPrimePowerCoefficient",
+  "Zeta23.OPICARound4.higherPrimePowerCoefficient_nonneg",
+  "Zeta23.OPICARound4.higherPrimePowerCoefficient_sum",
+  "Zeta23.OPICARound4.actualCorrelationKernel_continuous",
+  "Zeta23.OPICARound4.actualCorrelationSource_bounded",
+  "Zeta23.OPICARound4.actualCorrelationWeight_uniform_bound",
+  "Zeta23.OPICARound4.actualCorrelationHigherPrimePowers",
+  "Zeta23.OPICARound4.actualCorrelationHigherPrimePowers_uniform_bound",
+  "Zeta23.OPICARound4.actualCorrelationPrimeField_split_prime_powers",
+  "Zeta23.OPICARound4.actualCorrelationIntegerDrive_hasDerivAt",
+  "Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv",
+  "Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv_rapid_bound",
+  "Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt",
+  "Zeta23.OPICARound4.actualFlatMobiusTest_zero_of_nonpos",
+  "Zeta23.OPICARound4.actualCorrelationIntegerDrive_contDiff_one",
+  "Zeta23.OPICARound4.actualFlatMobiusTest_origin_bounds",
+  "Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt_zero",
+  "Zeta23.OPICARound4.actualFlatMobiusTest_contDiff_one",
+  "Zeta23.OPICARound4.actualFlatMobiusTest_zero_above",
+  "Zeta23.OPICARound4.actualFlatMobiusTest_at_upper_collar",
+  "Zeta23.OPICARound4.actualFlatMobiusTest_hasCompactSupport",
+  "Zeta23.OPICARound4.actualFlatSamplingMass",
+  "Zeta23.OPICARound4.actualFlatSamplingSum",
+  "Zeta23.OPICARound4.actualFlatSamplingRemainder",
+  "Zeta23.OPICARound4.actualFlatSamplingRemainder_bounded",
+  "Zeta23.OPICARound4.actualFlatSamplingSum_eq_mass_add_remainder",
+  "Zeta23.OPICARound4.actualFlatSamplingDiagonal_sqrt_bound",
+  "Zeta23.OPICARound4.actualFlatSamplingSum_eq_tsum",
+  "Zeta23.OPICARound4.actualFlatSampling_eventual_lower_iff",
+  "Zeta23.OPICARound4.actualFlatSamplingSum_eq_hyperbola_history",
+  "Zeta23.OPICARound4.actualCorrelationLongTerm_eq_sampling_quadratic",
+  "Zeta23.OPICARound4.actualCorrelationNativeCutoff_sqrt_bound",
+  "Zeta23.OPICARound4.actualCorrelationNativeDiagonal_bound",
+  "Zeta23.OPICARound4.actualCorrelationLongTerm_eq_normalized_combined",
+  "Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined",
+  "Zeta23.OPICARound4.nativeOriginalIntegerDriveLaplace_half",
+  "Zeta23.OPICARound4.actualSourceHalfMass",
+  "Zeta23.OPICARound4.actualSourceHalfMass_integrable",
+  "Zeta23.OPICARound4.actualSourceHalfMass_eq_product",
+  "Zeta23.OPICARound4.actualSourceHalfMass_pos",
+  "Zeta23.OPICARound4.nativeOriginalIntegerDrive_half_integral",
+  "Zeta23.OPICARound4.actualFlatSamplingMass_eq_dampedDrive",
+  "Zeta23.OPICARound4.actualCorrelationIntegerDrive_half_integral",
+  "Zeta23.OPICARound4.actualFlatSamplingMass_eq_sourceHalfMass_sq",
+  "Zeta23.OPICARound4.actualFlatSamplingMass_pos",
   "Zeta23.OPICARound4.aliasDiagonal",
   "Zeta23.OPICARound4.abs_aliasDiagonal_le_count",
   "Zeta23.OPICARound4.abs_aliasDiagonal_le_sqrt",
@@ -665,7 +710,22 @@ MADNESS_DECLARATIONS = [
   "Zeta23.OPICARound4.validation_madness_complete_split",
   "Zeta23.OPICARound4.validation_madness_diagonal_budget",
   "Zeta23.OPICARound4.validation_madness_lower_equivalence",
-  "Zeta23.OPICARound4.validation_madness_signed_test"
+  "Zeta23.OPICARound4.validation_madness_signed_test",
+  "Zeta23.OPICARound4.validation_madness_higher_prime_powers_bounded",
+  "Zeta23.OPICARound4.validation_madness_prime_power_split",
+  "Zeta23.OPICARound4.validation_madness_drive_derivative_rapid",
+  "Zeta23.OPICARound4.validation_madness_flat_test_derivative",
+  "Zeta23.OPICARound4.validation_madness_flat_test_c1",
+  "Zeta23.OPICARound4.validation_madness_flat_test_compact",
+  "Zeta23.OPICARound4.validation_madness_actual_remainder_bounded",
+  "Zeta23.OPICARound4.validation_madness_actual_diagonal",
+  "Zeta23.OPICARound4.validation_madness_all_sampling_terms",
+  "Zeta23.OPICARound4.validation_madness_actual_lower_equivalence",
+  "Zeta23.OPICARound4.validation_madness_actualCorrelationNativeDiagonal_bound",
+  "Zeta23.OPICARound4.validation_madness_actualCorrelationLongTerm_eventual_lower_iff_combined",
+  "Zeta23.OPICARound4.validation_madness_exact_sampling_bridge",
+  "Zeta23.OPICARound4.validation_madness_actual_mass_positive",
+  "Zeta23.OPICARound4.validation_madness_actual_rank_one_nonnegative"
 ]
 MADNESS_MODULES = [
   "Zeta23.OPICARound4.MobiusHyperbola",
@@ -675,7 +735,7 @@ MADNESS_MODULES = [
 ]
 EXPECTED_DECLARATIONS = PRE_MADNESS_DECLARATIONS + MADNESS_DECLARATIONS
 MODULES = PRE_MADNESS_MODULES + MADNESS_MODULES
-EXPECTED_DECLARATION_COUNT = 576
+EXPECTED_DECLARATION_COUNT = 636
 EXPECTED_MODULE_COUNT = 52
 # MADNESS_INVENTORY_END
 # SOURCE_CONSTRAINT_INVENTORY_END
@@ -689,9 +749,9 @@ SOURCE_CONSTRAINT_MUTATION_IMPORTS = 'import Zeta23.OPICARound4.JointGroundConst
 PRE_MADNESS_SEMANTIC_MUTATIONS = SOURCE_CONSTRAINT_MUTATION_IMPORTS + INTEGRATION_SEMANTIC_MUTATIONS + SOURCE_CONSTRAINT_MUTATIONS
 PRE_MADNESS_SEMANTIC_MUTATION_COUNT = 17
 MADNESS_SEMANTIC_MUTATION_IMPORTS = 'import Zeta23.OPICARound4.Validation.Hyperbola\n'
-MADNESS_SEMANTIC_MUTATIONS = 'noncomputable section\nnamespace Zeta23.OPICARound4.MadnessRejectedMutations\nopen Finset\n\n-- The hyperbola boundary has a minus sign.\nexample (t : ℝ) :\n    actualCorrelationPrimeField t =\n      2 * hyperbolaE (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2) +\n        hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2) :=\n  actualCorrelationPrimeField_hyperbola_half t\n\n-- Removing the square-root normalization changes the actual integer-drive identity.\nexample (t : ℝ) (a : ℕ) (ha : 0 < a) :\n    actualCorrelationLogarithmicTest t a = actualCorrelationIntegerDrive (t - Real.log a) :=\n  actualCorrelationLogarithmicTest_eq_integerDrive t a ha\n\n-- The exact total cannot discard the diagonal contribution.\nexample (P R : ℝ → ℝ) (I x : ℝ) (Y : ℕ)\n    (hP : ∀ y : ℝ, P y = I * y + R y) :\n    mobiusPoissonQuadratic P x Y =\n      mobiusPoissonRankOne I x Y + mobiusPoissonOffDiagonal R x Y :=\n  mobiusPoissonQuadratic_eq_rankOne_offDiagonal_add_diagonal P R I x Y hP\n\n-- An equivalence between two lower bounds does not prove either lower bound.\nexample (P R : ℝ → ℝ) (I : ℝ) {T M : ℝ} (hT : 0 < T) (hM : 0 ≤ M)\n    (hP : ∀ y : ℝ, P y = I * y + R y)\n    (hR : ∀ y : ℝ, 1 / T ≤ y → |R y| ≤ M) :\n    HasEventualSqrtLower (fun x => mobiusPoissonQuadratic P x ⌊Real.sqrt (T*x)⌋₊) :=\n  eventual_sqrt_lower_poisson_iff_rankOne_offDiagonal P R I hT hM hP hR\n\nend Zeta23.OPICARound4.MadnessRejectedMutations\n'
+MADNESS_SEMANTIC_MUTATIONS = 'noncomputable section\nnamespace Zeta23.OPICARound4.MadnessRejectedMutations\nopen Finset\n\n-- The hyperbola boundary has a minus sign.\nexample (t : ℝ) :\n    actualCorrelationPrimeField t =\n      2 * hyperbolaE (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2) +\n        hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2) :=\n  actualCorrelationPrimeField_hyperbola_half t\n\n-- Removing the square-root normalization changes the actual integer-drive identity.\nexample (t : ℝ) (a : ℕ) (ha : 0 < a) :\n    actualCorrelationLogarithmicTest t a = actualCorrelationIntegerDrive (t - Real.log a) :=\n  actualCorrelationLogarithmicTest_eq_integerDrive t a ha\n\n-- The exact total cannot discard the diagonal contribution.\nexample (P R : ℝ → ℝ) (I x : ℝ) (Y : ℕ)\n    (hP : ∀ y : ℝ, P y = I * y + R y) :\n    mobiusPoissonQuadratic P x Y =\n      mobiusPoissonRankOne I x Y + mobiusPoissonOffDiagonal R x Y :=\n  mobiusPoissonQuadratic_eq_rankOne_offDiagonal_add_diagonal P R I x Y hP\n\n-- An equivalence between two lower bounds does not prove either lower bound.\nexample (P R : ℝ → ℝ) (I : ℝ) {T M : ℝ} (hT : 0 < T) (hM : 0 ≤ M)\n    (hP : ∀ y : ℝ, P y = I * y + R y)\n    (hR : ∀ y : ℝ, 1 / T ≤ y → |R y| ≤ M) :\n    HasEventualSqrtLower (fun x => mobiusPoissonQuadratic P x ⌊Real.sqrt (T*x)⌋₊) :=\n  eventual_sqrt_lower_poisson_iff_rankOne_offDiagonal P R I hT hM hP hR\n\n\n-- A bounded higher-power part does not bound the complete prime field.\nexample : ∃ C : ℝ, 0 < C ∧ ∀ t : ℝ, |actualCorrelationPrimeField t| ≤ C :=\n  actualCorrelationHigherPrimePowers_uniform_bound\n\n-- The complete prime field must retain the higher-power contribution.\nexample (t : ℝ) : actualCorrelationPrimeField t =\n    (∑ n ∈ Finset.Ioc 0 (actualCorrelationCutoff t) with n.Prime,\n      Real.log n * actualCorrelationWeight t n) :=\n  actualCorrelationPrimeField_split_prime_powers t\n\n-- Rapid decay of the integer-drive derivative is not decay of its Mobius inverse.\nexample (A : ℝ) (hA : 0 < A) :\n    ∃ C : ℝ, 0 < C ∧ ∃ T : ℝ, 0 ≤ T ∧ ∀ t : ℝ, T ≤ t →\n      |actualCorrelationPrimeField t| ≤ C * Real.exp (-A * t) :=\n  actualCorrelationIntegerDrive_deriv_rapid_bound A hA\n\n-- The derivative must include the derivative of the square-root normalization.\nexample {r : ℝ} (hr : 0 < r) :\n    HasDerivAt actualFlatMobiusTest\n      (-(deriv actualCorrelationIntegerDrive (-Real.log r)) / (r * Real.sqrt r)) r :=\n  actualFlatMobiusTest_hasDerivAt hr\n\n\n-- The actual diagonal sqrt bound is not a uniform constant bound.\nexample (T : ℝ) (hT : 0 < T) :\n    ∃ D : ℝ, 0 < D ∧ ∀ x : ℝ, 0 < x →\n      |aliasDiagonal actualFlatSamplingRemainder x ⌊Real.sqrt (T*x)⌋₊| ≤ D :=\n  actualFlatSamplingDiagonal_sqrt_bound T hT\n\n-- An equivalence of the two remaining targets proves neither lower bound.\nexample (T : ℝ) (hT : 0 < T) :\n    HasEventualSqrtLower (fun x =>\n      mobiusPoissonQuadratic actualFlatSamplingSum x ⌊Real.sqrt (T*x)⌋₊) :=\n  actualFlatSampling_eventual_lower_iff T hT\n\n\n-- The literal diagonal cannot be discarded as zero.\nexample (t : ℝ) :\n    |aliasDiagonal actualFlatSamplingRemainder (Real.exp t)\n      (Nat.sqrt (actualCorrelationCutoff t / 2))| ≤ 0 := by\n  exact (Classical.choose_spec actualCorrelationNativeDiagonal_bound).2 t\n\n-- A conversion still requires a proof of its input bound.\nexample : ∃ C : ℝ, 0 < C ∧ ∃ T0 : ℝ, ∀ t : ℝ, T0 ≤ t →\n    -C ≤ hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2) := by\n  exact actualCorrelationLongTerm_eventual_lower_iff_combined.mpr\n\n\n-- Positive actual mass controls the rank-one term, not the complete quadratic.\nexample {x : ℝ} (hx : 0 ≤ x) (Y : ℕ) :\n    0 ≤ mobiusPoissonQuadratic actualFlatSamplingSum x Y :=\n  mobiusPoissonRankOne_nonneg actualFlatSamplingMass_pos.le hx Y\n\nend Zeta23.OPICARound4.MadnessRejectedMutations\n'
 SEMANTIC_MUTATIONS = MADNESS_SEMANTIC_MUTATION_IMPORTS + PRE_MADNESS_SEMANTIC_MUTATIONS + MADNESS_SEMANTIC_MUTATIONS
-SEMANTIC_MUTATION_COUNT = 21
+SEMANTIC_MUTATION_COUNT = 30
 # SOURCE_CONSTRAINT_MUTATIONS_END
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 

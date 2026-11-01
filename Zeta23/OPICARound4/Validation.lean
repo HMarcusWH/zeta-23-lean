@@ -2596,3 +2596,303 @@ end Zeta23.OPICARound4.Validation
 #check @Zeta23.OPICARound4.validation_madness_signed_test
 #eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_signed_test"
 #print axioms Zeta23.OPICARound4.validation_madness_signed_test
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.higherPrimePowerCoefficient"
+#check @Zeta23.OPICARound4.higherPrimePowerCoefficient
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.higherPrimePowerCoefficient"
+#print axioms Zeta23.OPICARound4.higherPrimePowerCoefficient
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.higherPrimePowerCoefficient_nonneg"
+#check @Zeta23.OPICARound4.higherPrimePowerCoefficient_nonneg
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.higherPrimePowerCoefficient_nonneg"
+#print axioms Zeta23.OPICARound4.higherPrimePowerCoefficient_nonneg
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.higherPrimePowerCoefficient_sum"
+#check @Zeta23.OPICARound4.higherPrimePowerCoefficient_sum
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.higherPrimePowerCoefficient_sum"
+#print axioms Zeta23.OPICARound4.higherPrimePowerCoefficient_sum
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationKernel_continuous"
+#check @Zeta23.OPICARound4.actualCorrelationKernel_continuous
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationKernel_continuous"
+#print axioms Zeta23.OPICARound4.actualCorrelationKernel_continuous
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationSource_bounded"
+#check @Zeta23.OPICARound4.actualCorrelationSource_bounded
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationSource_bounded"
+#print axioms Zeta23.OPICARound4.actualCorrelationSource_bounded
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationWeight_uniform_bound"
+#check @Zeta23.OPICARound4.actualCorrelationWeight_uniform_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationWeight_uniform_bound"
+#print axioms Zeta23.OPICARound4.actualCorrelationWeight_uniform_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationHigherPrimePowers"
+#check @Zeta23.OPICARound4.actualCorrelationHigherPrimePowers
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationHigherPrimePowers"
+#print axioms Zeta23.OPICARound4.actualCorrelationHigherPrimePowers
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationHigherPrimePowers_uniform_bound"
+#check @Zeta23.OPICARound4.actualCorrelationHigherPrimePowers_uniform_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationHigherPrimePowers_uniform_bound"
+#print axioms Zeta23.OPICARound4.actualCorrelationHigherPrimePowers_uniform_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationPrimeField_split_prime_powers"
+#check @Zeta23.OPICARound4.actualCorrelationPrimeField_split_prime_powers
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationPrimeField_split_prime_powers"
+#print axioms Zeta23.OPICARound4.actualCorrelationPrimeField_split_prime_powers
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationIntegerDrive_hasDerivAt"
+#check @Zeta23.OPICARound4.actualCorrelationIntegerDrive_hasDerivAt
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationIntegerDrive_hasDerivAt"
+#print axioms Zeta23.OPICARound4.actualCorrelationIntegerDrive_hasDerivAt
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv"
+#check @Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv"
+#print axioms Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv_rapid_bound"
+#check @Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv_rapid_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv_rapid_bound"
+#print axioms Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv_rapid_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt"
+#check @Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt"
+#print axioms Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatMobiusTest_zero_of_nonpos"
+#check @Zeta23.OPICARound4.actualFlatMobiusTest_zero_of_nonpos
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatMobiusTest_zero_of_nonpos"
+#print axioms Zeta23.OPICARound4.actualFlatMobiusTest_zero_of_nonpos
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_higher_prime_powers_bounded"
+#check @Zeta23.OPICARound4.validation_madness_higher_prime_powers_bounded
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_higher_prime_powers_bounded"
+#print axioms Zeta23.OPICARound4.validation_madness_higher_prime_powers_bounded
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_prime_power_split"
+#check @Zeta23.OPICARound4.validation_madness_prime_power_split
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_prime_power_split"
+#print axioms Zeta23.OPICARound4.validation_madness_prime_power_split
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_drive_derivative_rapid"
+#check @Zeta23.OPICARound4.validation_madness_drive_derivative_rapid
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_drive_derivative_rapid"
+#print axioms Zeta23.OPICARound4.validation_madness_drive_derivative_rapid
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_flat_test_derivative"
+#check @Zeta23.OPICARound4.validation_madness_flat_test_derivative
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_flat_test_derivative"
+#print axioms Zeta23.OPICARound4.validation_madness_flat_test_derivative
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationIntegerDrive_contDiff_one"
+#check @Zeta23.OPICARound4.actualCorrelationIntegerDrive_contDiff_one
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationIntegerDrive_contDiff_one"
+#print axioms Zeta23.OPICARound4.actualCorrelationIntegerDrive_contDiff_one
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatMobiusTest_origin_bounds"
+#check @Zeta23.OPICARound4.actualFlatMobiusTest_origin_bounds
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatMobiusTest_origin_bounds"
+#print axioms Zeta23.OPICARound4.actualFlatMobiusTest_origin_bounds
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt_zero"
+#check @Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt_zero"
+#print axioms Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatMobiusTest_contDiff_one"
+#check @Zeta23.OPICARound4.actualFlatMobiusTest_contDiff_one
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatMobiusTest_contDiff_one"
+#print axioms Zeta23.OPICARound4.actualFlatMobiusTest_contDiff_one
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatMobiusTest_zero_above"
+#check @Zeta23.OPICARound4.actualFlatMobiusTest_zero_above
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatMobiusTest_zero_above"
+#print axioms Zeta23.OPICARound4.actualFlatMobiusTest_zero_above
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatMobiusTest_at_upper_collar"
+#check @Zeta23.OPICARound4.actualFlatMobiusTest_at_upper_collar
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatMobiusTest_at_upper_collar"
+#print axioms Zeta23.OPICARound4.actualFlatMobiusTest_at_upper_collar
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatMobiusTest_hasCompactSupport"
+#check @Zeta23.OPICARound4.actualFlatMobiusTest_hasCompactSupport
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatMobiusTest_hasCompactSupport"
+#print axioms Zeta23.OPICARound4.actualFlatMobiusTest_hasCompactSupport
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSamplingMass"
+#check @Zeta23.OPICARound4.actualFlatSamplingMass
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSamplingMass"
+#print axioms Zeta23.OPICARound4.actualFlatSamplingMass
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSamplingSum"
+#check @Zeta23.OPICARound4.actualFlatSamplingSum
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSamplingSum"
+#print axioms Zeta23.OPICARound4.actualFlatSamplingSum
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSamplingRemainder"
+#check @Zeta23.OPICARound4.actualFlatSamplingRemainder
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSamplingRemainder"
+#print axioms Zeta23.OPICARound4.actualFlatSamplingRemainder
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSamplingRemainder_bounded"
+#check @Zeta23.OPICARound4.actualFlatSamplingRemainder_bounded
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSamplingRemainder_bounded"
+#print axioms Zeta23.OPICARound4.actualFlatSamplingRemainder_bounded
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSamplingSum_eq_mass_add_remainder"
+#check @Zeta23.OPICARound4.actualFlatSamplingSum_eq_mass_add_remainder
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSamplingSum_eq_mass_add_remainder"
+#print axioms Zeta23.OPICARound4.actualFlatSamplingSum_eq_mass_add_remainder
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSamplingDiagonal_sqrt_bound"
+#check @Zeta23.OPICARound4.actualFlatSamplingDiagonal_sqrt_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSamplingDiagonal_sqrt_bound"
+#print axioms Zeta23.OPICARound4.actualFlatSamplingDiagonal_sqrt_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSamplingSum_eq_tsum"
+#check @Zeta23.OPICARound4.actualFlatSamplingSum_eq_tsum
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSamplingSum_eq_tsum"
+#print axioms Zeta23.OPICARound4.actualFlatSamplingSum_eq_tsum
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSampling_eventual_lower_iff"
+#check @Zeta23.OPICARound4.actualFlatSampling_eventual_lower_iff
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSampling_eventual_lower_iff"
+#print axioms Zeta23.OPICARound4.actualFlatSampling_eventual_lower_iff
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_flat_test_c1"
+#check @Zeta23.OPICARound4.validation_madness_flat_test_c1
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_flat_test_c1"
+#print axioms Zeta23.OPICARound4.validation_madness_flat_test_c1
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_flat_test_compact"
+#check @Zeta23.OPICARound4.validation_madness_flat_test_compact
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_flat_test_compact"
+#print axioms Zeta23.OPICARound4.validation_madness_flat_test_compact
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_actual_remainder_bounded"
+#check @Zeta23.OPICARound4.validation_madness_actual_remainder_bounded
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actual_remainder_bounded"
+#print axioms Zeta23.OPICARound4.validation_madness_actual_remainder_bounded
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_actual_diagonal"
+#check @Zeta23.OPICARound4.validation_madness_actual_diagonal
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actual_diagonal"
+#print axioms Zeta23.OPICARound4.validation_madness_actual_diagonal
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_all_sampling_terms"
+#check @Zeta23.OPICARound4.validation_madness_all_sampling_terms
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_all_sampling_terms"
+#print axioms Zeta23.OPICARound4.validation_madness_all_sampling_terms
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_actual_lower_equivalence"
+#check @Zeta23.OPICARound4.validation_madness_actual_lower_equivalence
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actual_lower_equivalence"
+#print axioms Zeta23.OPICARound4.validation_madness_actual_lower_equivalence
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSamplingSum_eq_hyperbola_history"
+#check @Zeta23.OPICARound4.actualFlatSamplingSum_eq_hyperbola_history
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSamplingSum_eq_hyperbola_history"
+#print axioms Zeta23.OPICARound4.actualFlatSamplingSum_eq_hyperbola_history
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationLongTerm_eq_sampling_quadratic"
+#check @Zeta23.OPICARound4.actualCorrelationLongTerm_eq_sampling_quadratic
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationLongTerm_eq_sampling_quadratic"
+#print axioms Zeta23.OPICARound4.actualCorrelationLongTerm_eq_sampling_quadratic
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationNativeCutoff_sqrt_bound"
+#check @Zeta23.OPICARound4.actualCorrelationNativeCutoff_sqrt_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationNativeCutoff_sqrt_bound"
+#print axioms Zeta23.OPICARound4.actualCorrelationNativeCutoff_sqrt_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationNativeDiagonal_bound"
+#check @Zeta23.OPICARound4.actualCorrelationNativeDiagonal_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationNativeDiagonal_bound"
+#print axioms Zeta23.OPICARound4.actualCorrelationNativeDiagonal_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationLongTerm_eq_normalized_combined"
+#check @Zeta23.OPICARound4.actualCorrelationLongTerm_eq_normalized_combined
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationLongTerm_eq_normalized_combined"
+#print axioms Zeta23.OPICARound4.actualCorrelationLongTerm_eq_normalized_combined
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined"
+#check @Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined"
+#print axioms Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_actualCorrelationNativeDiagonal_bound"
+#check @Zeta23.OPICARound4.validation_madness_actualCorrelationNativeDiagonal_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actualCorrelationNativeDiagonal_bound"
+#print axioms Zeta23.OPICARound4.validation_madness_actualCorrelationNativeDiagonal_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_actualCorrelationLongTerm_eventual_lower_iff_combined"
+#check @Zeta23.OPICARound4.validation_madness_actualCorrelationLongTerm_eventual_lower_iff_combined
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actualCorrelationLongTerm_eventual_lower_iff_combined"
+#print axioms Zeta23.OPICARound4.validation_madness_actualCorrelationLongTerm_eventual_lower_iff_combined
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_exact_sampling_bridge"
+#check @Zeta23.OPICARound4.validation_madness_exact_sampling_bridge
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_exact_sampling_bridge"
+#print axioms Zeta23.OPICARound4.validation_madness_exact_sampling_bridge
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.nativeOriginalIntegerDriveLaplace_half"
+#check @Zeta23.OPICARound4.nativeOriginalIntegerDriveLaplace_half
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.nativeOriginalIntegerDriveLaplace_half"
+#print axioms Zeta23.OPICARound4.nativeOriginalIntegerDriveLaplace_half
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualSourceHalfMass"
+#check @Zeta23.OPICARound4.actualSourceHalfMass
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualSourceHalfMass"
+#print axioms Zeta23.OPICARound4.actualSourceHalfMass
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualSourceHalfMass_integrable"
+#check @Zeta23.OPICARound4.actualSourceHalfMass_integrable
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualSourceHalfMass_integrable"
+#print axioms Zeta23.OPICARound4.actualSourceHalfMass_integrable
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualSourceHalfMass_eq_product"
+#check @Zeta23.OPICARound4.actualSourceHalfMass_eq_product
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualSourceHalfMass_eq_product"
+#print axioms Zeta23.OPICARound4.actualSourceHalfMass_eq_product
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualSourceHalfMass_pos"
+#check @Zeta23.OPICARound4.actualSourceHalfMass_pos
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualSourceHalfMass_pos"
+#print axioms Zeta23.OPICARound4.actualSourceHalfMass_pos
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.nativeOriginalIntegerDrive_half_integral"
+#check @Zeta23.OPICARound4.nativeOriginalIntegerDrive_half_integral
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.nativeOriginalIntegerDrive_half_integral"
+#print axioms Zeta23.OPICARound4.nativeOriginalIntegerDrive_half_integral
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSamplingMass_eq_dampedDrive"
+#check @Zeta23.OPICARound4.actualFlatSamplingMass_eq_dampedDrive
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSamplingMass_eq_dampedDrive"
+#print axioms Zeta23.OPICARound4.actualFlatSamplingMass_eq_dampedDrive
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationIntegerDrive_half_integral"
+#check @Zeta23.OPICARound4.actualCorrelationIntegerDrive_half_integral
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationIntegerDrive_half_integral"
+#print axioms Zeta23.OPICARound4.actualCorrelationIntegerDrive_half_integral
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSamplingMass_eq_sourceHalfMass_sq"
+#check @Zeta23.OPICARound4.actualFlatSamplingMass_eq_sourceHalfMass_sq
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSamplingMass_eq_sourceHalfMass_sq"
+#print axioms Zeta23.OPICARound4.actualFlatSamplingMass_eq_sourceHalfMass_sq
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualFlatSamplingMass_pos"
+#check @Zeta23.OPICARound4.actualFlatSamplingMass_pos
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualFlatSamplingMass_pos"
+#print axioms Zeta23.OPICARound4.actualFlatSamplingMass_pos
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_actual_mass_positive"
+#check @Zeta23.OPICARound4.validation_madness_actual_mass_positive
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actual_mass_positive"
+#print axioms Zeta23.OPICARound4.validation_madness_actual_mass_positive
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_actual_rank_one_nonnegative"
+#check @Zeta23.OPICARound4.validation_madness_actual_rank_one_nonnegative
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actual_rank_one_nonnegative"
+#print axioms Zeta23.OPICARound4.validation_madness_actual_rank_one_nonnegative

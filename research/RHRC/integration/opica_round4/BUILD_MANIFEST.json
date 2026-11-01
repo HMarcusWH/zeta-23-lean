@@ -185,7 +185,7 @@
     },
     {
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "sha256": "1c623376900724d46464af322491d2854c228f4544ec007dc396d039d733788c"
+      "sha256": "34bce2e78a2d0dbc61f70e00691a0a71a9d70aa439c533e42b082bac3536cf0c"
     },
     {
       "path": "Zeta23/OPICARound4/AdaptiveBudget.lean",
@@ -329,7 +329,7 @@
     },
     {
       "path": "Zeta23/OPICARound4/Validation.lean",
-      "sha256": "3c40125d66c2a2c09891be133b353c88d10da4abc5406a8ef7ee72a4e60b9c11"
+      "sha256": "f0b70b0266d9ef4d57ab1a079a01c1988f812f975adc214dac8ca682315fa929"
     },
     {
       "path": "Zeta23/OPICARound4/Validation/DetectorErrors.lean",
@@ -345,7 +345,7 @@
     },
     {
       "path": "Zeta23/OPICARound4/Validation/Hyperbola.lean",
-      "sha256": "9759516d124da50f17f9e8a1d5017921ddff83203c9a8f7c7718e1e553ba61e0"
+      "sha256": "1310641f91707d7fe4a0f713474d999ec03a5c338c170962ae816750922c2aff"
     },
     {
       "path": "Zeta23/OPICARound4/Validation/IntegrationClosure.lean",
@@ -689,7 +689,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/ACCEPTANCE_MATRIX.json",
-      "sha256": "e27d8e918ab17d16e746ca7a7d428144bc30247d4b1c56c221d091862d626f2e"
+      "sha256": "e29e212ef9c9d6d5ee6ee285f723d163d66cc805e2c8584c1517e1501119dd25"
     },
     {
       "path": "research/RHRC/integration/opica_round4/BASELINE_ACCEPTANCE_MATRIX.json",
@@ -741,19 +741,19 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/MADNESS.md",
-      "sha256": "d3f1da34fc18f88955aaeff905015ecf07a4d1f27a711db806c7ecf40101fb17"
+      "sha256": "da218a2047ebe1e3695eb9d24b92b7d0d4565c8797acae55adbd37a22db307d1"
     },
     {
       "path": "research/RHRC/integration/opica_round4/MADNESS_CONTRACTS.json",
-      "sha256": "649fd6443159353cc4ac7f2c4d6482af212d353fd3da7406ccb1d05978d8fc0f"
+      "sha256": "1f1be466c0adb5e163a5e430e7e5f6fc258736e2a7d1bf608b8d8381649bc5a3"
     },
     {
       "path": "research/RHRC/integration/opica_round4/MADNESS_SOURCE_AUDIT.json",
-      "sha256": "74a01b4647ca358324aa202bcc3604b8d9b005d2cebef51dead9a5592a7ca33a"
+      "sha256": "1f128ccf9f629df202e545e42b9df36fe74162d30658fee41383ff20bdc5605e"
     },
     {
       "path": "research/RHRC/integration/opica_round4/MATH_CONTRACTS.json",
-      "sha256": "42959f46d4659e79f06ae676a42835093e472125a6e2cc75e7594d58c7df57d0"
+      "sha256": "6579fe50a142e9cf343392be353a8144d1cc9cb68101436147c9c52fa746c826"
     },
     {
       "path": "research/RHRC/integration/opica_round4/POST_GREEN_RESEARCH.json",
@@ -773,7 +773,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/ROOTS.json",
-      "sha256": "427da2e3fcf04db251f79fab94474a1430dd86a4c552c57eaef9f14111204aca"
+      "sha256": "7f121b069698236bf66ee1396c2d41c11fe2c7a06247961771018ba864890702"
     },
     {
       "path": "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.json",
@@ -801,7 +801,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/math_gate.py",
-      "sha256": "200a593ac5a2479a8066380e40da8714140e741d7405a369e196885eab5e9407"
+      "sha256": "1650635b58c171ca6de97674fd1924246c1b08be48822f1954b23758a050347c"
     },
     {
       "path": "research/RHRC/integration/opica_round4/schemas/source_evaluator.schema.json",

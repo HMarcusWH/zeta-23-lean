@@ -1,3 +1,13 @@
+import Zeta23.CCM.NativeCompletedInputZetaLaplace
+import Zeta23.OPICAFollowup.NativeSourceTransforms
+import Mathlib.MeasureTheory.Function.JacobianOneDim
+import Zeta23.OPICARound4.HyperbolaDiagonal
+import Zeta23.CCM.NativeAbelDiscrepancy
+import Mathlib.Analysis.Calculus.Deriv.Slope
+import Mathlib.MeasureTheory.Measure.Haar.NormedSpace
+import Mathlib.NumberTheory.Chebyshev
+import Mathlib.Analysis.Calculus.ContDiff.Convolution
+import Mathlib.Analysis.Calculus.Deriv.Support
 import Zeta23.OPICARound4.MobiusHyperbola
 import Zeta23.CCM.OriginalSincNativeConvolution
 import Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds
@@ -432,6 +442,949 @@ theorem actualCorrelationPrimeField_add_longTerm_rapid_bound (A : ℝ) (hA : 0 <
     _ ≤ 2 * (C * Real.exp (-A * t)) := mul_le_mul_of_nonneg_left (hE t ht) (by norm_num)
     _ = _ := by ring
 
+
+
+/-! Source-only bounds: every higher prime power is retained; the ordinary-prime
+contribution and the complete signed long-term estimate remain open. -/
+section ActualSourceBounds
+open Set Filter
+open scoped Convolution
+
+open CCM
+
+def higherPrimePowerCoefficient (n : ℕ) : ℝ :=
+  if n.Prime then 0 else ArithmeticFunction.vonMangoldt n
+
+theorem higherPrimePowerCoefficient_nonneg (n : ℕ) :
+    0 ≤ higherPrimePowerCoefficient n := by
+  unfold higherPrimePowerCoefficient
+  split_ifs <;> positivity
+
+theorem higherPrimePowerCoefficient_sum (x : ℝ) :
+    (∑ n ∈ Finset.Ioc 0 ⌊x⌋₊, higherPrimePowerCoefficient n) =
+      Chebyshev.psi x - Chebyshev.theta x := by
+  unfold Chebyshev.psi Chebyshev.theta
+  rw [Finset.sum_filter, ← Finset.sum_sub_distrib]
+  apply Finset.sum_congr rfl
+  intro n hn
+  by_cases hp : n.Prime
+  · simp [higherPrimePowerCoefficient, hp, ArithmeticFunction.vonMangoldt_apply_prime hp]
+  · simp [higherPrimePowerCoefficient, hp]
+
+theorem actualCorrelationKernel_continuous : Continuous actualCorrelationKernel := by
+  have hc := (universalSincKernel_contDiff UniversalSinc.fixedScale_pos).continuous
+  have hs0 : NativeComplexSourceSupported UniversalSinc.fixedScale
+      (universalSincKernel UniversalSinc.fixedScale) :=
+    universalSincKernel_support UniversalSinc.fixedScale_pos
+  have hs := hs0.hasCompactSupport
+  have h := hs.continuous_convolution_right (μ := volume) (ContinuousLinearMap.mul ℝ ℂ)
+    hc.locallyIntegrable hc
+  have heq : actualCorrelationKernel =
+      MeasureTheory.convolution (universalSincKernel UniversalSinc.fixedScale)
+        (universalSincKernel UniversalSinc.fixedScale) (ContinuousLinearMap.mul ℝ ℂ) volume := by
+    funext u
+    rfl
+  rw [heq]
+  exact h
+
+theorem actualCorrelationSource_bounded :
+    ∃ M : ℝ, 0 < M ∧ ∀ u, |actualCorrelationSource u| ≤ M := by
+  obtain ⟨M, hM⟩ := actualCorrelationKernel_continuous.norm.bddAbove_range_of_hasCompactSupport
+    actualCorrelationKernel_supported.hasCompactSupport.norm
+  refine ⟨|M| + 1, by positivity, fun u => ?_⟩
+  have hMu : ‖actualCorrelationKernel u‖ ≤ M := hM (Set.mem_range_self u)
+  exact (Complex.abs_re_le_norm _).trans (hMu.trans (by linarith [le_abs_self M]))
+
+theorem actualCorrelationWeight_uniform_bound (M t : ℝ) (hM : 0 ≤ M)
+    (hb : ∀ u, |actualCorrelationSource u| ≤ M) (n : ℕ) (hn : 0 < n) :
+    |actualCorrelationWeight t n| ≤
+      M * Real.exp ((2 * UniversalSinc.fixedScale - t) / 2) := by
+  have hnR : (0 : ℝ) < n := by exact_mod_cast hn
+  by_cases hz : actualCorrelationSource (t - Real.log n) = 0
+  · simp only [actualCorrelationWeight, hz, zero_div, abs_zero]
+    positivity
+  have hkernel : actualCorrelationKernel (t - Real.log n) ≠ 0 := by
+    intro h
+    apply hz
+    simp [actualCorrelationSource, h]
+  have hs := actualCorrelationKernel_supported
+    (subset_closure (show t - Real.log n ∈ Function.support actualCorrelationKernel from hkernel))
+  have hlog : t - 2 * UniversalSinc.fixedScale ≤ Real.log n := by linarith [hs.2]
+  have hsqrt : Real.sqrt (n : ℝ) = Real.exp (Real.log n / 2) := by
+    rw [← Real.log_sqrt hnR.le, Real.exp_log (Real.sqrt_pos.2 hnR)]
+  have hexp : Real.exp ((t - 2 * UniversalSinc.fixedScale) / 2) ≤ Real.sqrt n := by
+    rw [hsqrt]
+    exact Real.exp_le_exp.mpr (by linarith)
+  calc
+    |actualCorrelationWeight t n| = |actualCorrelationSource (t - Real.log n)| / Real.sqrt n := by
+      rw [actualCorrelationWeight, abs_div, abs_of_nonneg (Real.sqrt_nonneg _)]
+    _ ≤ M / Real.sqrt n := div_le_div_of_nonneg_right (hb _) (Real.sqrt_nonneg _)
+    _ ≤ M / Real.exp ((t - 2 * UniversalSinc.fixedScale) / 2) :=
+      div_le_div_of_nonneg_left hM (Real.exp_pos _) hexp
+    _ = M * Real.exp ((2 * UniversalSinc.fixedScale - t) / 2) := by
+      rw [div_eq_mul_inv, ← Real.exp_neg]
+      congr 2
+      ring
+
+def actualCorrelationHigherPrimePowers (t : ℝ) : ℝ :=
+  ∑ n ∈ Finset.Ioc 0 (actualCorrelationCutoff t),
+    higherPrimePowerCoefficient n * actualCorrelationWeight t n
+
+theorem actualCorrelationHigherPrimePowers_uniform_bound :
+    ∃ C : ℝ, 0 < C ∧ ∀ t, |actualCorrelationHigherPrimePowers t| ≤ C := by
+  obtain ⟨M, hM, hbound⟩ := actualCorrelationSource_bounded
+  obtain ⟨K, hK⟩ := Chebyshev.psi_sub_theta_le_mul_sqrt
+  let K' := |K| + 1
+  have hK' : 0 < K' := by dsimp [K']; positivity
+  have hcheb (x : ℝ) : Chebyshev.psi x - Chebyshev.theta x ≤ K' * Real.sqrt x :=
+    (hK x).trans (mul_le_mul_of_nonneg_right (by dsimp [K']; linarith [le_abs_self K])
+      (Real.sqrt_nonneg x))
+  refine ⟨M * K' * Real.exp (2 * UniversalSinc.fixedScale), by positivity, fun t => ?_⟩
+  let A := M * Real.exp ((2 * UniversalSinc.fixedScale - t) / 2)
+  have hA : 0 ≤ A := by dsimp [A]; positivity
+  calc
+    |actualCorrelationHigherPrimePowers t| ≤
+        ∑ n ∈ Finset.Ioc 0 (actualCorrelationCutoff t),
+          |higherPrimePowerCoefficient n * actualCorrelationWeight t n| :=
+      Finset.abs_sum_le_sum_abs _ _
+    _ ≤ ∑ n ∈ Finset.Ioc 0 (actualCorrelationCutoff t), higherPrimePowerCoefficient n * A := by
+      apply Finset.sum_le_sum
+      intro n hn
+      rw [abs_mul, abs_of_nonneg (higherPrimePowerCoefficient_nonneg n)]
+      exact mul_le_mul_of_nonneg_left
+        (actualCorrelationWeight_uniform_bound M t hM.le hbound n (Finset.mem_Ioc.mp hn).1)
+        (higherPrimePowerCoefficient_nonneg n)
+    _ = A * (Chebyshev.psi (Real.exp (t + 2 * UniversalSinc.fixedScale)) -
+        Chebyshev.theta (Real.exp (t + 2 * UniversalSinc.fixedScale))) := by
+      rw [← Finset.sum_mul, actualCorrelationCutoff_exact, higherPrimePowerCoefficient_sum]
+      ring
+    _ ≤ A * (K' * Real.sqrt (Real.exp (t + 2 * UniversalSinc.fixedScale))) :=
+      mul_le_mul_of_nonneg_left (hcheb _) hA
+    _ = M * K' * Real.exp (2 * UniversalSinc.fixedScale) := by
+      have hsqrt : Real.sqrt (Real.exp (t + 2 * UniversalSinc.fixedScale)) =
+          Real.exp ((t + 2 * UniversalSinc.fixedScale) / 2) := by
+        calc
+          _ = Real.exp (Real.log (Real.sqrt (Real.exp (t + 2 * UniversalSinc.fixedScale)))) :=
+            (Real.exp_log (Real.sqrt_pos.2 (Real.exp_pos _))).symm
+          _ = _ := by rw [Real.log_sqrt (Real.exp_pos _).le, Real.log_exp]
+      rw [hsqrt]
+      dsimp [A]
+      calc
+        _ = M * K' * (Real.exp ((2 * UniversalSinc.fixedScale - t) / 2) *
+            Real.exp ((t + 2 * UniversalSinc.fixedScale) / 2)) := by ring
+        _ = _ := by rw [← Real.exp_add]; congr 2; ring
+
+theorem actualCorrelationPrimeField_split_prime_powers (t : ℝ) :
+    actualCorrelationPrimeField t =
+      (∑ n ∈ Finset.Ioc 0 (actualCorrelationCutoff t) with n.Prime,
+        Real.log n * actualCorrelationWeight t n) + actualCorrelationHigherPrimePowers t := by
+  rw [actualCorrelationPrimeField_eq_weighted_vonMangoldt]
+  unfold actualCorrelationHigherPrimePowers
+  rw [Finset.sum_filter, ← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro n hn
+  by_cases hp : n.Prime
+  · simp [higherPrimePowerCoefficient, hp, ArithmeticFunction.vonMangoldt_apply_prime hp]
+  · simp [higherPrimePowerCoefficient, hp]
+
+open CCM
+
+private theorem actualDensity_compact :
+    HasCompactSupport (universalSincSource UniversalSinc.fixedScale) := by
+  apply HasCompactSupport.intro (K := Icc (-UniversalSinc.fixedScale) UniversalSinc.fixedScale)
+    isCompact_Icc
+  intro x hx
+  exact image_eq_zero_of_notMem_tsupport (fun h =>
+    hx (universalSincSource_support UniversalSinc.fixedScale_pos h))
+
+theorem actualCorrelationIntegerDrive_hasDerivAt (t : ℝ) :
+    HasDerivAt actualCorrelationIntegerDrive
+      (∫ x : ℝ, deriv (universalSincSource UniversalSinc.fixedScale) x *
+        nativeOriginalIntegerDrive (t - x)) t := by
+  have hconv : actualCorrelationIntegerDrive =
+      universalSincSource UniversalSinc.fixedScale ⋆[ContinuousLinearMap.mul ℝ ℝ]
+        nativeOriginalIntegerDrive := by
+    funext u
+    exact actualCorrelationIntegerDrive_eq_sourceConvolution u
+  rw [hconv]
+  exact actualDensity_compact.hasDerivAt_convolution_left _
+    ((universalSincSource_contDiff UniversalSinc.fixedScale_pos).of_le (by norm_num))
+    nativeOriginalIntegerDrive_continuous.locallyIntegrable t
+
+theorem actualCorrelationIntegerDrive_deriv (t : ℝ) :
+    deriv actualCorrelationIntegerDrive t =
+      ∫ x : ℝ, deriv (universalSincSource UniversalSinc.fixedScale) x *
+        nativeOriginalIntegerDrive (t - x) :=
+  (actualCorrelationIntegerDrive_hasDerivAt t).deriv
+
+private theorem actualCompactConvolution_rapid_bound
+    (g : ℝ → ℝ) (hg : Continuous g)
+    (hsupp : tsupport g ⊆ Icc (-UniversalSinc.fixedScale) UniversalSinc.fixedScale)
+    (A : ℝ) (hA : 0 < A) :
+    ∃ C : ℝ, 0 < C ∧ ∃ T : ℝ, 0 ≤ T ∧ ∀ t : ℝ, T ≤ t →
+      |∫ x : ℝ, g x * nativeOriginalIntegerDrive (t - x)| ≤
+        C * Real.exp (-A * t) := by
+  have hgc : HasCompactSupport g :=
+    HasCompactSupport.intro isCompact_Icc
+      (fun x hx => image_eq_zero_of_notMem_tsupport (fun h => hx (hsupp h)))
+  have hgi : Integrable g := hg.integrable_of_hasCompactSupport hgc
+  let V := ∫ x : ℝ, |g x|
+  have hV : 0 ≤ V := integral_nonneg (fun _ => abs_nonneg _)
+  obtain ⟨C,hC,T,hT,hU⟩ := nativeOriginalIntegerDrive_rapid_bound A hA
+  refine ⟨(V + 1) * C * Real.exp (A * UniversalSinc.fixedScale), by positivity,
+    T + UniversalSinc.fixedScale, add_nonneg hT UniversalSinc.fixedScale_pos.le, ?_⟩
+  intro t ht
+  let B := C * Real.exp (A * UniversalSinc.fixedScale) * Real.exp (-A * t)
+  have hB : 0 ≤ B := by dsimp [B]; positivity
+  have hpoint : ∀ x : ℝ, |g x * nativeOriginalIntegerDrive (t - x)| ≤ |g x| * B := by
+    intro x
+    by_cases hx : x ∈ Icc (-UniversalSinc.fixedScale) UniversalSinc.fixedScale
+    · have htx : T ≤ t - x := by linarith [hx.2]
+      have he : Real.exp (-A * (t - x)) ≤
+          Real.exp (A * UniversalSinc.fixedScale) * Real.exp (-A * t) := by
+        rw [← Real.exp_add]
+        apply Real.exp_le_exp.mpr
+        nlinarith [hx.2]
+      rw [abs_mul]
+      apply mul_le_mul_of_nonneg_left _ (abs_nonneg _)
+      calc
+        |nativeOriginalIntegerDrive (t - x)| ≤ C * Real.exp (-A * (t - x)) := hU _ htx
+        _ ≤ B := by
+          dsimp [B]
+          simpa only [mul_assoc] using mul_le_mul_of_nonneg_left he hC.le
+    · have hz : g x = 0 :=
+        image_eq_zero_of_notMem_tsupport (fun h => hx (hsupp h))
+      simp only [hz, zero_mul, abs_zero, le_refl]
+  calc
+    |∫ x : ℝ, g x * nativeOriginalIntegerDrive (t - x)| ≤
+        ∫ x : ℝ, |g x * nativeOriginalIntegerDrive (t - x)| := abs_integral_le_integral_abs
+    _ ≤ ∫ x : ℝ, |g x| * B := by
+      apply integral_mono_of_nonneg (ae_of_all _ (fun x => abs_nonneg _))
+        (hgi.abs.mul_const B) (ae_of_all _ hpoint)
+    _ = V * B := by rw [integral_mul_const]
+    _ ≤ (V + 1) * B := mul_le_mul_of_nonneg_right (by linarith) hB
+    _ = ((V + 1) * C * Real.exp (A * UniversalSinc.fixedScale)) *
+        Real.exp (-A * t) := by dsimp [B]; ring
+
+/-- The first derivative of the literal drive has every fixed exponential decay rate.
+    Differentiation falls on the fixed compact density; no inverse estimate is used. -/
+theorem actualCorrelationIntegerDrive_deriv_rapid_bound (A : ℝ) (hA : 0 < A) :
+    ∃ C : ℝ, 0 < C ∧ ∃ T : ℝ, 0 ≤ T ∧ ∀ t : ℝ, T ≤ t →
+      |deriv actualCorrelationIntegerDrive t| ≤ C * Real.exp (-A * t) := by
+  have hq : ContDiff ℝ 1 (universalSincSource UniversalSinc.fixedScale) :=
+    (universalSincSource_contDiff UniversalSinc.fixedScale_pos).of_le (by norm_num)
+  obtain ⟨C,hC,T,hT,hbound⟩ := actualCompactConvolution_rapid_bound
+    (deriv (universalSincSource UniversalSinc.fixedScale))
+    (hq.continuous_deriv le_rfl)
+    (tsupport_deriv_subset.trans (universalSincSource_support UniversalSinc.fixedScale_pos))
+    A hA
+  refine ⟨C,hC,T,hT,?_⟩
+  intro t ht
+  rw [actualCorrelationIntegerDrive_deriv]
+  exact hbound t ht
+
+theorem actualFlatMobiusTest_hasDerivAt {r : ℝ} (hr : 0 < r) :
+    HasDerivAt actualFlatMobiusTest
+      (-(deriv actualCorrelationIntegerDrive (-Real.log r) +
+          actualCorrelationIntegerDrive (-Real.log r) / 2) /
+        (r * Real.sqrt r)) r := by
+  have hU := (actualCorrelationIntegerDrive_hasDerivAt (-Real.log r)).comp r
+    (Real.hasDerivAt_log hr.ne').neg
+  have hs := Real.hasDerivAt_sqrt hr.ne'
+  have h := hU.div hs (Real.sqrt_pos.mpr hr).ne'
+  have hformula :
+      ((∫ x : ℝ, deriv (universalSincSource UniversalSinc.fixedScale) x *
+          nativeOriginalIntegerDrive (-Real.log r - x)) * -(r⁻¹) * Real.sqrt r -
+          actualCorrelationIntegerDrive (-Real.log r) * (1 / (2 * Real.sqrt r))) /
+        Real.sqrt r ^ 2 =
+      -(deriv actualCorrelationIntegerDrive (-Real.log r) +
+          actualCorrelationIntegerDrive (-Real.log r) / 2) / (r * Real.sqrt r) := by
+    rw [← actualCorrelationIntegerDrive_deriv]
+    have hs2 := Real.sq_sqrt hr.le
+    field_simp [hr.ne', (Real.sqrt_pos.mpr hr).ne']
+    simp only [Real.sq_sqrt hr.le]
+    ring
+  exact h.congr_deriv hformula
+
+theorem actualFlatMobiusTest_zero_of_nonpos {r : ℝ} (hr : r ≤ 0) :
+    actualFlatMobiusTest r = 0 := by
+  simp [actualFlatMobiusTest, Real.sqrt_eq_zero_of_nonpos hr]
+
+end ActualSourceBounds
+
+
+section LiteralSampling
+open Set Filter
+open scoped Convolution
+
+open CCM
+
+theorem actualCorrelationIntegerDrive_contDiff_one :
+    ContDiff ℝ 1 actualCorrelationIntegerDrive := by
+  have hq : HasCompactSupport (universalSincSource UniversalSinc.fixedScale) :=
+    HasCompactSupport.intro isCompact_Icc (fun x hx =>
+      image_eq_zero_of_notMem_tsupport (fun h =>
+        hx (universalSincSource_support UniversalSinc.fixedScale_pos h)))
+  have he : actualCorrelationIntegerDrive =
+      universalSincSource UniversalSinc.fixedScale ⋆[ContinuousLinearMap.mul ℝ ℝ]
+        nativeOriginalIntegerDrive := by
+    funext t
+    exact actualCorrelationIntegerDrive_eq_sourceConvolution t
+  rw [he]
+  exact hq.contDiff_convolution_left _
+    ((universalSincSource_contDiff UniversalSinc.fixedScale_pos).of_le (by norm_num))
+    nativeOriginalIntegerDrive_continuous.locallyIntegrable
+
+private theorem rapid_at_neg_log {g : ℝ → ℝ} {C T r : ℝ}
+    (h : ∀ t, T ≤ t → |g t| ≤ C * Real.exp (-(3:ℝ) * t))
+    (hr : 0 < r) (hsmall : r ≤ Real.exp (-T)) :
+    |g (-Real.log r)| ≤ C * r ^ 3 := by
+  have ht : T ≤ -Real.log r := by
+    have := Real.log_le_log hr hsmall
+    rw [Real.log_exp] at this
+    linarith
+  have he : Real.exp (-(3:ℝ) * (-Real.log r)) = r ^ 3 := by
+    rw [show -(3:ℝ) * (-Real.log r) = (3:ℕ) * Real.log r by ring,
+      Real.exp_nat_mul, Real.exp_log hr]
+  simpa only [he] using h _ ht
+
+/-- Literal source estimates imply quadratic vanishing and a linearly vanishing
+    derivative near the origin. These are fixed-source regularity estimates. -/
+theorem actualFlatMobiusTest_origin_bounds :
+    ∃ C δ : ℝ, 0 < C ∧ 0 < δ ∧ ∀ r : ℝ, 0 < r → r ≤ δ →
+      |actualFlatMobiusTest r| ≤ C * r ^ 2 ∧
+      |deriv actualFlatMobiusTest r| ≤ C * r := by
+  obtain ⟨C0,hC0,T0,hT0,h0⟩ := actualCorrelationIntegerDrive_rapid_bound 3 (by norm_num)
+  obtain ⟨C1,hC1,T1,hT1,h1⟩ := actualCorrelationIntegerDrive_deriv_rapid_bound 3 (by norm_num)
+  refine ⟨C0+C1, min 1 (min (Real.exp (-T0)) (Real.exp (-T1))), by positivity,
+    lt_min (by norm_num) (lt_min (Real.exp_pos _) (Real.exp_pos _)), ?_⟩
+  intro r hr hδ
+  have hr1 : r ≤ 1 := hδ.trans (min_le_left _ _)
+  have hr0 : r ≤ Real.exp (-T0) := hδ.trans ((min_le_right _ _).trans (min_le_left _ _))
+  have hr2 : r ≤ Real.exp (-T1) := hδ.trans ((min_le_right _ _).trans (min_le_right _ _))
+  have hu := rapid_at_neg_log h0 hr hr0
+  have hd := rapid_at_neg_log h1 hr hr2
+  have hs : 0 < Real.sqrt r := Real.sqrt_pos.mpr hr
+  have hrs : r ≤ Real.sqrt r := by
+    have hsq := Real.sq_sqrt hr.le
+    nlinarith [Real.sqrt_nonneg r]
+  constructor
+  · rw [actualFlatMobiusTest, abs_div, abs_of_pos hs]
+    apply (div_le_iff₀ hs).mpr
+    calc
+      |actualCorrelationIntegerDrive (-Real.log r)| ≤ C0*r^3 := hu
+      _ = C0*r^2*r := by ring
+      _ ≤ (C0+C1)*r^2*r := mul_le_mul_of_nonneg_right
+        (mul_le_mul_of_nonneg_right (by linarith) (sq_nonneg r)) hr.le
+      _ ≤ (C0+C1)*r^2*Real.sqrt r := mul_le_mul_of_nonneg_left hrs (by positivity)
+  · rw [(actualFlatMobiusTest_hasDerivAt hr).deriv, abs_div, abs_neg,
+      abs_of_pos (mul_pos hr hs)]
+    apply (div_le_iff₀ (mul_pos hr hs)).mpr
+    calc
+      |deriv actualCorrelationIntegerDrive (-Real.log r) +
+          actualCorrelationIntegerDrive (-Real.log r)/2| ≤
+          |deriv actualCorrelationIntegerDrive (-Real.log r)| +
+            |actualCorrelationIntegerDrive (-Real.log r)|/2 := by
+              simpa only [abs_div, abs_of_pos (by norm_num : (0:ℝ)<2)] using
+                abs_add_le (deriv actualCorrelationIntegerDrive (-Real.log r))
+                  (actualCorrelationIntegerDrive (-Real.log r)/2)
+      _ ≤ C1*r^3 + C0*r^3/2 := by linarith
+      _ ≤ (C0+C1)*r^3 := by nlinarith [mul_nonneg hC0.le (pow_nonneg hr.le 3)]
+      _ = (C0+C1)*r^2*r := by ring
+      _ ≤ (C0+C1)*r^2*Real.sqrt r := mul_le_mul_of_nonneg_left hrs (by positivity)
+      _ = (C0+C1)*r*(r*Real.sqrt r) := by ring
+
+
+private theorem actualFlatMobiusTest_hasDerivAt_negative {r : ℝ} (hr : r < 0) :
+    HasDerivAt actualFlatMobiusTest 0 r := by
+  apply (hasDerivAt_const r (0:ℝ)).congr_of_eventuallyEq
+  filter_upwards [eventually_lt_nhds hr] with u hu
+  exact actualFlatMobiusTest_zero_of_nonpos hu.le
+
+theorem actualFlatMobiusTest_hasDerivAt_zero :
+    HasDerivAt actualFlatMobiusTest 0 0 := by
+  obtain ⟨C,δ,hC,hδ,hb⟩ := actualFlatMobiusTest_origin_bounds
+  have hz := actualFlatMobiusTest_zero_of_nonpos (le_refl (0:ℝ))
+  have hn : ∀ᶠ r : ℝ in 𝓝 0, |r| < δ := by
+    simpa only [Metric.mem_ball, Real.dist_eq, sub_zero] using
+      (show ∀ᶠ r : ℝ in 𝓝 0, r ∈ Metric.ball (0:ℝ) δ from Metric.ball_mem_nhds 0 hδ)
+  have hl : Tendsto (fun r : ℝ => actualFlatMobiusTest r / r) (𝓝 0) (𝓝 0) := by
+    apply squeeze_zero_norm' (hn.mono (fun r hr => ?_))
+      (show Tendsto (fun r : ℝ => C * |r|) (𝓝 0) (𝓝 0) from by
+        simpa using tendsto_const_nhds.mul (continuous_abs.tendsto (0:ℝ)))
+    rw [Real.norm_eq_abs]
+    by_cases hp : 0 < r
+    · have hb0 := (hb r hp (by simpa [abs_of_pos hp] using hr.le)).1
+      rw [abs_div, abs_of_pos hp]
+      apply (div_le_iff₀ hp).mpr
+      nlinarith
+    · rw [actualFlatMobiusTest_zero_of_nonpos (le_of_not_gt hp), zero_div, abs_zero]
+      positivity
+  rw [hasDerivAt_iff_tendsto_slope_zero]
+  simpa only [zero_add, hz, sub_zero, smul_eq_mul, div_eq_mul_inv, mul_comm] using
+    hl.mono_left nhdsWithin_le_nhds
+
+theorem actualFlatMobiusTest_contDiff_one : ContDiff ℝ 1 actualFlatMobiusTest := by
+  have hdiff : Differentiable ℝ actualFlatMobiusTest := by
+    intro r
+    rcases lt_trichotomy r 0 with hn | hz | hp
+    · exact (actualFlatMobiusTest_hasDerivAt_negative hn).differentiableAt
+    · subst r; exact actualFlatMobiusTest_hasDerivAt_zero.differentiableAt
+    · exact (actualFlatMobiusTest_hasDerivAt hp).differentiableAt
+  apply contDiff_one_iff_deriv.mpr
+  refine ⟨hdiff, continuous_iff_continuousAt.mpr ?_⟩
+  intro r
+  rcases lt_trichotomy r 0 with hn | hz | hp
+  · apply continuousAt_const.congr_of_eventuallyEq
+    filter_upwards [eventually_lt_nhds hn] with u hu
+    exact (actualFlatMobiusTest_hasDerivAt_negative hu).deriv
+  · subst r
+    rw [ContinuousAt, actualFlatMobiusTest_hasDerivAt_zero.deriv]
+    obtain ⟨C,δ,hC,hδ,hb⟩ := actualFlatMobiusTest_origin_bounds
+    have he : ∀ᶠ r : ℝ in 𝓝 0, |r| < δ := by
+      simpa only [Metric.mem_ball, Real.dist_eq, sub_zero] using
+      (show ∀ᶠ r : ℝ in 𝓝 0, r ∈ Metric.ball (0:ℝ) δ from Metric.ball_mem_nhds 0 hδ)
+    apply squeeze_zero_norm' (he.mono (fun r hr => ?_))
+      (show Tendsto (fun r : ℝ => C * |r|) (𝓝 0) (𝓝 0) from by
+        simpa using tendsto_const_nhds.mul (continuous_abs.tendsto (0:ℝ)))
+    rw [Real.norm_eq_abs]
+    rcases lt_trichotomy r 0 with hn | hz | hp
+    · rw [(actualFlatMobiusTest_hasDerivAt_negative hn).deriv, abs_zero]
+      positivity
+    · subst r
+      simp only [actualFlatMobiusTest_hasDerivAt_zero.deriv, abs_zero, mul_zero, le_refl]
+    · simpa only [abs_of_pos hp] using (hb r hp (by simpa [abs_of_pos hp] using hr.le)).2
+  · have hl : ContinuousAt (fun u : ℝ => -Real.log u) r := (Real.continuousAt_log hp.ne').neg
+    have hc := actualCorrelationIntegerDrive_contDiff_one.continuous
+    have hd := actualCorrelationIntegerDrive_contDiff_one.continuous_deriv le_rfl
+    have he : ContinuousAt (fun u : ℝ =>
+        -(deriv actualCorrelationIntegerDrive (-Real.log u) +
+          actualCorrelationIntegerDrive (-Real.log u)/2) / (u * Real.sqrt u)) r :=
+      ((hd.continuousAt.comp hl).add ((hc.continuousAt.comp hl).div_const 2)).neg.div
+        (continuousAt_id.mul Real.continuous_sqrt.continuousAt) (by positivity)
+    apply he.congr_of_eventuallyEq
+    filter_upwards [eventually_gt_nhds hp] with u hu
+    exact (actualFlatMobiusTest_hasDerivAt hu).deriv
+
+
+/-- A fixed upper collar sufficient for bounded variation; the exact half-history
+    cutoff used elsewhere remains unchanged. -/
+theorem actualFlatMobiusTest_zero_above {r : ℝ}
+    (hr : Real.exp (2 * UniversalSinc.fixedScale) < r) : actualFlatMobiusTest r = 0 := by
+  have ht : -Real.log r + 2 * UniversalSinc.fixedScale < 0 := by
+    have h := Real.log_lt_log (Real.exp_pos _) hr
+    rw [Real.log_exp] at h
+    linarith
+  have hf : nativeHistoryCutoff (2 * UniversalSinc.fixedScale) (-Real.log r) = 0 := by
+    unfold nativeHistoryCutoff
+    exact Nat.floor_eq_zero.mpr (Real.exp_lt_one_iff.mpr ht)
+  unfold actualFlatMobiusTest actualCorrelationIntegerDrive
+  rw [nativeComplexIntegerDrive_eq_history_sum actualCorrelationKernel_supported le_rfl, hf]
+  simp [nativeIntegerDriveCoefficient]
+
+theorem actualFlatMobiusTest_at_upper_collar :
+    actualFlatMobiusTest (Real.exp (2 * UniversalSinc.fixedScale)) = 0 := by
+  have hf : nativeHistoryCutoff (2 * UniversalSinc.fixedScale)
+      (-Real.log (Real.exp (2 * UniversalSinc.fixedScale))) = 1 := by
+    simp [nativeHistoryCutoff]
+  unfold actualFlatMobiusTest actualCorrelationIntegerDrive
+  rw [nativeComplexIntegerDrive_eq_history_sum actualCorrelationKernel_supported le_rfl, hf]
+  simp [nativeIntegerDriveCoefficient, Finset.sum_range_succ]
+
+theorem actualFlatMobiusTest_hasCompactSupport : HasCompactSupport actualFlatMobiusTest := by
+  apply HasCompactSupport.intro (K := Icc 0 (Real.exp (2 * UniversalSinc.fixedScale))) isCompact_Icc
+  intro r hr
+  by_cases hn : r ≤ 0
+  · exact actualFlatMobiusTest_zero_of_nonpos hn
+  · apply actualFlatMobiusTest_zero_above
+    by_contra hb
+    exact hr ⟨(lt_of_not_ge hn).le, le_of_not_gt hb⟩
+
+open CCM
+
+def actualFlatSamplingMass : ℝ := ∫ r : ℝ, actualFlatMobiusTest r
+
+def actualFlatSamplingSum (y : ℝ) : ℝ :=
+  ∑ n ∈ Finset.Icc 0 ⌊Real.exp (2 * UniversalSinc.fixedScale) * y⌋₊,
+    actualFlatMobiusTest ((n:ℝ)/y)
+
+def actualFlatSamplingRemainder (y : ℝ) : ℝ :=
+  actualFlatSamplingSum y - actualFlatSamplingMass * y
+
+private theorem actualFlatMobiusTest_deriv_bounded :
+    ∃ M : ℝ, 0 < M ∧ ∀ r : ℝ, |deriv actualFlatMobiusTest r| ≤ M := by
+  have hc := actualFlatMobiusTest_contDiff_one.continuous_deriv le_rfl
+  obtain ⟨M,hM⟩ := actualFlatMobiusTest_hasCompactSupport.deriv.isCompact.bddAbove_image
+    hc.abs.continuousOn
+  refine ⟨|M|+1, by positivity, ?_⟩
+  intro r
+  by_cases hr : r ∈ tsupport (deriv actualFlatMobiusTest)
+  · exact (hM (mem_image_of_mem _ hr)).trans ((le_abs_self M).trans (by linarith))
+  · rw [image_eq_zero_of_notMem_tsupport hr, abs_zero]
+    positivity
+
+/-- Uniform source-only bound for the literal integer sampling remainder.
+    The mass and scale factors are explicit; no Mobius cancellation is assumed. -/
+theorem actualFlatSamplingRemainder_bounded :
+    ∃ C : ℝ, 0 < C ∧ ∀ y : ℝ, 0 < y → |actualFlatSamplingRemainder y| ≤ C := by
+  obtain ⟨M,hM,hbound⟩ := actualFlatMobiusTest_deriv_bounded
+  let B := Real.exp (2 * UniversalSinc.fixedScale)
+  have hB : 0 < B := Real.exp_pos _
+  refine ⟨M*B, mul_pos hM hB, ?_⟩
+  intro y hy
+  let f : ℝ → ℝ := fun z => actualFlatMobiusTest (z/y)
+  have hf : ContDiff ℝ 1 f :=
+    actualFlatMobiusTest_contDiff_one.comp (contDiff_id.div_const y)
+  have hb : 0 ≤ B*y := (mul_pos hB hy).le
+  have hfb : f (B*y) = 0 := by
+    dsimp [f]
+    rw [mul_div_cancel_right₀ B hy.ne']
+    exact actualFlatMobiusTest_at_upper_collar
+  have houtside : ∀ z : ℝ, z ∉ Ioc 0 (B*y) → f z = 0 := by
+    intro z hz
+    by_cases hn : z ≤ 0
+    · exact actualFlatMobiusTest_zero_of_nonpos (div_nonpos_of_nonpos_of_nonneg hn hy.le)
+    · apply actualFlatMobiusTest_zero_above
+      apply (lt_div_iff₀ hy).mpr
+      by_contra h
+      exact hz ⟨lt_of_not_ge hn,le_of_not_gt h⟩
+  have he : (∫ z : ℝ in Ioc 0 (B*y), f z) = actualFlatSamplingMass*y := by
+    rw [setIntegral_eq_integral_of_forall_compl_eq_zero houtside]
+    dsimp [f]
+    rw [Measure.integral_comp_div, abs_of_pos hy, smul_eq_mul]
+    unfold actualFlatSamplingMass
+    ring
+  have hd : ∀ z : ℝ, deriv f z = deriv actualFlatMobiusTest (z/y) / y := by
+    intro z
+    have h := ((actualFlatMobiusTest_contDiff_one.differentiable (by norm_num) (z/y)).hasDerivAt).comp z
+      ((hasDerivAt_id z).div_const y)
+    simpa only [f, Function.comp_def, id_eq, one_div, mul_one, one_mul, div_eq_mul_inv] using h.deriv
+  have hdb : ∀ z : ℝ, |deriv f z| ≤ M/y := by
+    intro z
+    rw [hd, abs_div, abs_of_pos hy]
+    exact div_le_div_of_nonneg_right (hbound _) hy.le
+  have hdi : IntegrableOn (fun z => |deriv f z|) (Ioc 0 (B*y)) :=
+    ((hf.continuous_deriv le_rfl).abs.continuousOn.integrableOn_Icc).mono_set Ioc_subset_Icc_self
+  have hci : IntegrableOn (fun _ : ℝ => M/y) (Ioc 0 (B*y)) :=
+    (continuous_const.continuousOn.integrableOn_Icc).mono_set Ioc_subset_Icc_self
+  have ha := nativeIntegerAbel_discrepancy_bound hb hf hfb
+  rw [he] at ha
+  change |actualFlatSamplingRemainder y| ≤ M*B
+  calc
+    _ ≤ ∫ z : ℝ in Ioc 0 (B*y), |deriv f z| := ha
+    _ ≤ ∫ z : ℝ in Ioc 0 (B*y), M/y := integral_mono hdi hci hdb
+    _ = M*B := by
+      rw [← intervalIntegral.integral_of_le hb, intervalIntegral.integral_const]
+      simp only [sub_zero, smul_eq_mul]
+      field_simp
+
+theorem actualFlatSamplingSum_eq_mass_add_remainder (y : ℝ) :
+    actualFlatSamplingSum y = actualFlatSamplingMass*y + actualFlatSamplingRemainder y := by
+  unfold actualFlatSamplingRemainder
+  ring
+
+/-- The diagonal of the genuine-Mobius product kernel is unconditionally O(sqrt x).
+    The remaining rank-one plus off-diagonal lower bound is still not supplied. -/
+theorem actualFlatSamplingDiagonal_sqrt_bound (T : ℝ) (hT : 0 < T) :
+    ∃ D : ℝ, 0 < D ∧ ∀ x : ℝ, 0 < x →
+      |aliasDiagonal actualFlatSamplingRemainder x ⌊Real.sqrt (T*x)⌋₊| ≤ D*Real.sqrt x := by
+  obtain ⟨C,hC,hR⟩ := actualFlatSamplingRemainder_bounded
+  refine ⟨C*Real.sqrt T, by positivity, ?_⟩
+  intro x hx
+  exact abs_aliasDiagonal_le_sqrt _ hT hx hC.le (fun y hy => hR y ((by positivity : 0 < 1/T).trans_le hy))
+
+
+/-- The source-coded finite collar retains every nonzero natural-number sample.
+    The included zero sample is zero by the literal definition. -/
+theorem actualFlatSamplingSum_eq_tsum (y : ℝ) (hy : 0 < y) :
+    actualFlatSamplingSum y = ∑' n : ℕ, actualFlatMobiusTest ((n:ℝ)/y) := by
+  unfold actualFlatSamplingSum
+  symm
+  apply tsum_eq_sum
+  intro n hn
+  have hf : ⌊Real.exp (2 * UniversalSinc.fixedScale)*y⌋₊ < n := by
+    simp only [Finset.mem_Icc] at hn
+    omega
+  exact actualFlatMobiusTest_zero_above ((lt_div_iff₀ hy).mpr (Nat.lt_of_floor_lt hf))
+
+/-- The formerly abstract bounded-remainder premise is discharged for the literal
+    fixed source. Neither one-sided lower bound in this equivalence is asserted. -/
+theorem actualFlatSampling_eventual_lower_iff (T : ℝ) (hT : 0 < T) :
+    HasEventualSqrtLower (fun x =>
+      mobiusPoissonQuadratic actualFlatSamplingSum x ⌊Real.sqrt (T*x)⌋₊) ↔
+    HasEventualSqrtLower (fun x =>
+      mobiusPoissonRankOne actualFlatSamplingMass x ⌊Real.sqrt (T*x)⌋₊ +
+      mobiusPoissonOffDiagonal actualFlatSamplingRemainder x ⌊Real.sqrt (T*x)⌋₊) := by
+  obtain ⟨C,hC,hR⟩ := actualFlatSamplingRemainder_bounded
+  exact eventual_sqrt_lower_poisson_iff_rankOne_offDiagonal
+    actualFlatSamplingSum actualFlatSamplingRemainder actualFlatSamplingMass hT hC.le
+    actualFlatSamplingSum_eq_mass_add_remainder
+    (fun y hy => hR y ((by positivity : 0 < 1/T).trans_le hy))
+
+end LiteralSampling
+
+
+private theorem sum_eq_of_common_finite_support
+    (s u : Finset ℕ) (f : ℕ → ℝ)
+    (hs : ∀ n, n ∉ s → f n = 0) (hu : ∀ n, n ∉ u → f n = 0) :
+    ∑ n ∈ s, f n = ∑ n ∈ u, f n := by
+  have hleft : (∑ n ∈ s, f n) = ∑ n ∈ s ∪ u, f n :=
+    Finset.sum_subset Finset.subset_union_left (fun n _ hn => hs n hn)
+  have hright : (∑ n ∈ u, f n) = ∑ n ∈ s ∪ u, f n :=
+    Finset.sum_subset Finset.subset_union_right (fun n _ hn => hu n hn)
+  exact hleft.trans hright.symm
+
+/-- The complete ordinary-integer sampling sum is exactly the finite history
+sum. Its zero term and both outer tails vanish for the actual fixed source. -/
+theorem actualFlatSamplingSum_eq_hyperbola_history
+    (t : ℝ) (a b : ℕ) (ha : 0 < a) (hb : 0 < b) :
+    actualFlatSamplingSum (Real.exp t / ((a : ℝ) * (b : ℝ))) =
+      Real.sqrt (Real.exp t) *
+        ∑ c ∈ Ioc 0 (actualCorrelationCutoff t / 2),
+          actualCorrelationLogarithmicTest t (a * b * c) := by
+  let x : ℝ := Real.exp t
+  let y : ℝ := x / ((a : ℝ) * (b : ℝ))
+  let B : ℝ := Real.exp (2 * CCM.UniversalSinc.fixedScale)
+  let M : ℕ := actualCorrelationCutoff t / 2
+  have haR : (0 : ℝ) < a := Nat.cast_pos.mpr ha
+  have hbR : (0 : ℝ) < b := Nat.cast_pos.mpr hb
+  have hx : 0 < x := Real.exp_pos t
+  have hy : 0 < y := div_pos hx (mul_pos haR hbR)
+  have hB : 0 < B := Real.exp_pos _
+  have harg (c : ℕ) : (c : ℝ) / y = ((a * b * c : ℕ) : ℝ) / Real.exp t := by
+    dsimp [y, x]
+    simp only [div_div_eq_mul_div, Nat.cast_mul]
+    ring
+  let f : ℕ → ℝ := fun c => actualFlatMobiusTest ((c : ℝ) / y)
+  have hs : ∀ c, c ∉ Icc 0 ⌊B * y⌋₊ → f c = 0 := by
+    intro c hc
+    have hcN : ⌊B*y⌋₊ < c := by
+      simp only [mem_Icc, Nat.zero_le, true_and, not_le] at hc
+      exact hc
+    have hcR : B*y < (c : ℝ) := (Nat.floor_lt (mul_pos hB hy).le).mp hcN
+    apply actualFlatMobiusTest_zero_above
+    change B < (c : ℝ) / y
+    exact (lt_div_iff₀ hy).mpr hcR
+  have hu : ∀ c, c ∉ Ioc 0 M → f c = 0 := by
+    intro c hc
+    by_cases hc0 : c = 0
+    · subst c
+      simpa only [f, Nat.cast_zero, zero_div] using
+        (actualFlatMobiusTest_zero_of_nonpos (le_refl (0 : ℝ)))
+    have hcpos : 0 < c := Nat.pos_of_ne_zero hc0
+    have hcM : M < c := by
+      simp only [mem_Ioc, hcpos, true_and, not_le] at hc
+      exact hc
+    have hab : 0 < a*b := Nat.mul_pos ha hb
+    have hprod : 0 < a*b*c := Nat.mul_pos hab hcpos
+    have hlarge : actualCorrelationCutoff t / 2 < a*b*c :=
+      hcM.trans_le (Nat.le_mul_of_pos_left c hab)
+    dsimp [f]
+    rw [harg, ← actualFlatMobiusTest_normalization t (a*b*c) hprod,
+      actualCorrelationLogarithmicTest_half_support t _ hlarge, mul_zero]
+  have he := sum_eq_of_common_finite_support (Icc 0 ⌊B*y⌋₊) (Ioc 0 M) f hs hu
+  change (∑ c ∈ Icc 0 ⌊B*y⌋₊, f c) = _
+  rw [he, Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro c hc
+  have hprod : 0 < a*b*c := Nat.mul_pos (Nat.mul_pos ha hb) (mem_Ioc.mp hc).1
+  dsimp [f]
+  rw [harg, actualFlatMobiusTest_normalization t (a*b*c) hprod]
+
+/-- Exact source-and-normalization adapter. The natural square-root cutoff is
+retained literally; no real-floor cutoff identity or arithmetic bound is assumed. -/
+theorem actualCorrelationLongTerm_eq_sampling_quadratic (t : ℝ) :
+    Real.sqrt (Real.exp t) *
+        hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2) =
+      mobiusPoissonQuadratic actualFlatSamplingSum (Real.exp t)
+        (Nat.sqrt (actualCorrelationCutoff t / 2)) := by
+  have hsets (N : ℕ) : Ioc 0 N = Icc 1 N := by
+    ext n
+    simp only [mem_Ioc, mem_Icc]
+    omega
+  unfold hyperbolaT mobiusPoissonQuadratic
+  simp only [hsets (Nat.sqrt (actualCorrelationCutoff t / 2))]
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro a ha
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro b hb
+  have hap : 0 < a := (Finset.mem_Icc.mp ha).1
+  have hbp : 0 < b := (Finset.mem_Icc.mp hb).1
+  rw [actualFlatSamplingSum_eq_hyperbola_history t a b hap hbp]
+  unfold mobiusR
+  simp only [ArithmeticFunction.intCoe_apply]
+  ring
+
+/-- The literal natural cutoff is bounded directly. No equality between natural
+    square roots and a real-floor detector cutoff is assumed. -/
+theorem actualCorrelationNativeCutoff_sqrt_bound (t : ℝ) :
+    ((Nat.sqrt (actualCorrelationCutoff t / 2) : ℕ) : ℝ) ≤
+      Real.sqrt (Real.exp (2 * CCM.UniversalSinc.fixedScale)/2) * Real.sqrt (Real.exp t) := by
+  have hsq : (((Nat.sqrt (actualCorrelationCutoff t / 2) : ℕ) : ℝ))^2 ≤
+      (((actualCorrelationCutoff t / 2 : ℕ)) : ℝ) := by
+    exact_mod_cast Nat.sqrt_le' (actualCorrelationCutoff t / 2)
+  have hdiv : (((actualCorrelationCutoff t / 2 : ℕ)) : ℝ) ≤
+      (actualCorrelationCutoff t : ℝ)/2 := by
+    simpa only [Nat.cast_ofNat] using (Nat.cast_div_le (m := actualCorrelationCutoff t) (n := 2) :
+      (((actualCorrelationCutoff t / 2 : ℕ)) : ℝ) ≤ (actualCorrelationCutoff t : ℝ)/(2:ℕ))
+  have hcut : (actualCorrelationCutoff t : ℝ) ≤ Real.exp (t + 2*CCM.UniversalSinc.fixedScale) :=
+    Nat.floor_le (Real.exp_pos _).le
+  have htotal : (((Nat.sqrt (actualCorrelationCutoff t / 2) : ℕ) : ℝ))^2 ≤
+      (Real.exp (2*CCM.UniversalSinc.fixedScale)/2)*Real.exp t := by
+    calc
+      _ ≤ (((actualCorrelationCutoff t / 2 : ℕ)) : ℝ) := hsq
+      _ ≤ (actualCorrelationCutoff t : ℝ)/2 := hdiv
+      _ ≤ Real.exp (t + 2*CCM.UniversalSinc.fixedScale)/2 := by linarith
+      _ = _ := by rw [Real.exp_add]; ring
+  have hroot := Real.sqrt_le_sqrt htotal
+  rw [Real.sqrt_sq (Nat.cast_nonneg _), Real.sqrt_mul (by positivity)] at hroot
+  exact hroot
+
+/-- Uniform all-time diagonal control at the literal sharpened native cutoff. -/
+theorem actualCorrelationNativeDiagonal_bound :
+    ∃ D : ℝ, 0 < D ∧ ∀ t : ℝ,
+      |aliasDiagonal actualFlatSamplingRemainder (Real.exp t)
+        (Nat.sqrt (actualCorrelationCutoff t / 2))| ≤ D*Real.sqrt (Real.exp t) := by
+  obtain ⟨C,hC,hR⟩ := actualFlatSamplingRemainder_bounded
+  refine ⟨C*Real.sqrt (Real.exp (2*CCM.UniversalSinc.fixedScale)/2), by positivity, ?_⟩
+  intro t
+  have hcount := abs_aliasDiagonal_le_count actualFlatSamplingRemainder (Real.exp t) C
+    (Nat.sqrt (actualCorrelationCutoff t / 2)) hC.le (by
+      intro a ha
+      have ha0 : (0:ℝ)<a := by exact_mod_cast (mem_Icc.mp ha).1
+      exact hR _ (div_pos (Real.exp_pos t) (sq_pos_of_pos ha0)))
+  exact hcount.trans (by
+    have h := mul_le_mul_of_nonneg_left (actualCorrelationNativeCutoff_sqrt_bound t) hC.le
+    simpa only [mul_assoc] using h)
+
+/-- The exact native long term is the normalized complete rank-one/off-diagonal
+    expression plus its separately controlled literal diagonal. -/
+theorem actualCorrelationLongTerm_eq_normalized_combined (t : ℝ) :
+    hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2) =
+      (mobiusPoissonRankOne actualFlatSamplingMass (Real.exp t)
+          (Nat.sqrt (actualCorrelationCutoff t / 2)) +
+        mobiusPoissonOffDiagonal actualFlatSamplingRemainder (Real.exp t)
+          (Nat.sqrt (actualCorrelationCutoff t / 2))) / Real.sqrt (Real.exp t) +
+      aliasDiagonal actualFlatSamplingRemainder (Real.exp t)
+          (Nat.sqrt (actualCorrelationCutoff t / 2)) / Real.sqrt (Real.exp t) := by
+  have h := actualCorrelationLongTerm_eq_sampling_quadratic t
+  rw [mobiusPoissonQuadratic_eq_rankOne_offDiagonal_add_diagonal
+    actualFlatSamplingSum actualFlatSamplingRemainder actualFlatSamplingMass
+    (Real.exp t) _ actualFlatSamplingSum_eq_mass_add_remainder] at h
+  rw [← add_div]
+  apply (eq_div_iff (Real.sqrt_pos.mpr (Real.exp_pos t)).ne').mpr
+  simpa only [mul_comm] using h
+
+/-- Exact eventual lower-bound equivalence at the unchanged natural native cutoff.
+    Constants precede observation time. Both lower-bound propositions remain OPEN;
+    the only discarded term has an unconditional fixed normalized bound. -/
+theorem actualCorrelationLongTerm_eventual_lower_iff_combined :
+    (∃ C : ℝ, 0 < C ∧ ∃ T0 : ℝ, ∀ t : ℝ, T0 ≤ t →
+      -C ≤ hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2)) ↔
+    (∃ C : ℝ, 0 < C ∧ ∃ T0 : ℝ, ∀ t : ℝ, T0 ≤ t →
+      -C ≤ (mobiusPoissonRankOne actualFlatSamplingMass (Real.exp t)
+          (Nat.sqrt (actualCorrelationCutoff t / 2)) +
+        mobiusPoissonOffDiagonal actualFlatSamplingRemainder (Real.exp t)
+          (Nat.sqrt (actualCorrelationCutoff t / 2))) / Real.sqrt (Real.exp t)) := by
+  obtain ⟨D,hD,hdiag⟩ := actualCorrelationNativeDiagonal_bound
+  have hd (t : ℝ) :
+      |aliasDiagonal actualFlatSamplingRemainder (Real.exp t)
+          (Nat.sqrt (actualCorrelationCutoff t / 2)) / Real.sqrt (Real.exp t)| ≤ D := by
+    rw [abs_div, abs_of_pos (Real.sqrt_pos.mpr (Real.exp_pos t))]
+    exact (div_le_iff₀ (Real.sqrt_pos.mpr (Real.exp_pos t))).mpr (hdiag t)
+  constructor
+  · rintro ⟨C,hC,T0,hbound⟩
+    refine ⟨C+D, add_pos hC hD, T0, ?_⟩
+    intro t ht
+    have h := hbound t ht
+    rw [actualCorrelationLongTerm_eq_normalized_combined] at h
+    have hu := (abs_le.mp (hd t)).2
+    linarith
+  · rintro ⟨C,hC,T0,hbound⟩
+    refine ⟨C+D, add_pos hC hD, T0, ?_⟩
+    intro t ht
+    have h := hbound t ht
+    rw [actualCorrelationLongTerm_eq_normalized_combined]
+    have hl := (abs_le.mp (hd t)).1
+    linarith
+
+
+section ActualPositiveMass
+open Set Filter Complex OPICAFollowup
+open scoped Convolution
+
+open CCM OPICAFollowup
+
+/-- The actual integer drive's exceptional damping value is its removable
+    continuation, not the totalized zeta-prime product at the pole. -/
+theorem nativeOriginalIntegerDriveLaplace_half :
+    nativeOriginalIntegerDriveLaplace (1/2:ℂ) =
+      UniversalSinc.product UniversalSinc.fixedScale (I*(1/2)) := by
+  have hevent : nativeOriginalIntegerDriveLaplace =ᶠ[𝓝[≠] (1/2:ℂ)]
+      forwardKernelEntireContinuation 0 0 := by
+    filter_upwards [self_mem_nhdsWithin,
+      nhdsWithin_le_nhds ((isOpen_lt continuous_const Complex.continuous_re).mem_nhds
+        (by norm_num : (0:ℝ) < (1/2:ℂ).re))] with z hz hpos
+    have hz' : z ≠ (1/2:ℂ) := by simpa using hz
+    rw [nativeOriginalIntegerDriveLaplace,
+      nativeOriginalIntegerDrive_complexLaplace hpos hz',
+      forwardKernelEntireContinuation_agrees 0 0 (by simp) hz']
+    simp only [forwardKernelTransformGerm, pow_zero, mul_one,
+      sourceFamilyLaplace, sourceOrderFamily, nativeOriginalSourceLaplace]
+    ring
+  have hleft := (nativeOriginalIntegerDriveLaplace_analyticAt
+    (by norm_num : (0:ℝ) < (1/2:ℂ).re)).continuousAt.tendsto.mono_left
+      (nhdsWithin_le_nhds : 𝓝[≠] (1/2:ℂ) ≤ 𝓝 (1/2:ℂ))
+  have hright := (forwardKernelEntireContinuation_analyticAt 0 0 (1/2)).continuousAt.tendsto.mono_left
+      (nhdsWithin_le_nhds : 𝓝[≠] (1/2:ℂ) ≤ 𝓝 (1/2:ℂ))
+  exact (tendsto_nhds_unique hleft (hright.congr' hevent.symm)).trans
+    (forwardKernelEntireContinuation_diagonal_half 0)
+
+open CCM
+
+def actualSourceHalfMass : ℝ :=
+  ∫ x : ℝ, Real.exp (-x/2) * universalSincSource UniversalSinc.fixedScale x
+
+theorem actualSourceHalfMass_integrable :
+    Integrable (fun x : ℝ => Real.exp (-x/2) *
+      universalSincSource UniversalSinc.fixedScale x) := by
+  exact ((by fun_prop : Continuous (fun x : ℝ => Real.exp (-x/2))).mul
+    (universalSincSource_contDiff UniversalSinc.fixedScale_pos).continuous).integrable_of_hasCompactSupport
+      (UniversalSinc.originalDensityCandidate_hasCompactSupport UniversalSinc.fixedScale_pos).mul_left
+
+theorem actualSourceHalfMass_eq_product :
+    (actualSourceHalfMass : ℂ) =
+      UniversalSinc.product UniversalSinc.fixedScale (I*(1/2)) := by
+  rw [← paperFT_universalSincSource UniversalSinc.fixedScale_pos]
+  unfold actualSourceHalfMass Zeta23.paperFT
+  rw [← integral_complex_ofReal]
+  apply integral_congr_ae
+  filter_upwards with x
+  rw [Complex.ofReal_mul, Complex.ofReal_exp]
+  have he : I*(I*(1/2))*(x:ℂ) = ((-x/2:ℝ):ℂ) := by
+    push_cast
+    calc
+      _ = (I*I)*(x:ℂ)/2 := by ring
+      _ = _ := by rw [I_mul_I]; ring
+  rw [he]
+  ring
+
+theorem actualSourceHalfMass_pos : 0 < actualSourceHalfMass := by
+  let q := universalSincSource UniversalSinc.fixedScale
+  let c := Real.exp (-UniversalSinc.fixedScale/2)
+  have hq : Integrable q :=
+    UniversalSinc.integrable_originalDensityCandidate UniversalSinc.fixedScale_pos
+  have hpoint (x : ℝ) : c * q x ≤ Real.exp (-x/2)*q x := by
+    by_cases hx : x ∈ Set.Icc (-UniversalSinc.fixedScale) UniversalSinc.fixedScale
+    · apply mul_le_mul_of_nonneg_right _ (universalSincSource_nonneg UniversalSinc.fixedScale_pos x)
+      exact Real.exp_le_exp.mpr (by linarith [hx.2])
+    · have hz : q x = 0 := image_eq_zero_of_notMem_tsupport
+        (fun h => hx (universalSincSource_support UniversalSinc.fixedScale_pos h))
+      simp [hz]
+  have hbound := integral_mono (hq.const_mul c) actualSourceHalfMass_integrable hpoint
+  rw [integral_const_mul, universalSincSource_integral_one UniversalSinc.fixedScale_pos,
+    mul_one] at hbound
+  exact (Real.exp_pos _).trans_le hbound
+
+theorem nativeOriginalIntegerDrive_half_integral :
+    (∫ t : ℝ, Real.exp (-t/2)*nativeOriginalIntegerDrive t) = actualSourceHalfMass := by
+  have hc : (∫ t : ℝ, Real.exp (-t/2)*nativeOriginalIntegerDrive t : ℝ) =
+      nativeOriginalIntegerDriveLaplace (1/2) := by
+    rw [← integral_complex_ofReal]
+    unfold nativeOriginalIntegerDriveLaplace
+    apply integral_congr_ae
+    filter_upwards with t
+    rw [Complex.ofReal_mul, Complex.ofReal_exp]
+    congr 2
+    push_cast
+    ring
+  apply Complex.ofReal_injective
+  rw [hc, nativeOriginalIntegerDriveLaplace_half, actualSourceHalfMass_eq_product]
+
+open CCM
+
+theorem actualFlatSamplingMass_eq_dampedDrive :
+    actualFlatSamplingMass =
+      ∫ t : ℝ, Real.exp (-t/2)*actualCorrelationIntegerDrive t := by
+  have himg : (fun t : ℝ => Real.exp (-t)) '' Set.univ = Set.Ioi 0 := by
+    ext r
+    constructor
+    · rintro ⟨t, _, rfl⟩
+      exact Real.exp_pos _
+    · intro hr
+      refine ⟨-Real.log r, Set.mem_univ _, ?_⟩
+      simpa using Real.exp_log hr
+  have hsub := integral_image_eq_integral_abs_deriv_smul
+    (f := fun t : ℝ => Real.exp (-t)) (f' := fun t => -Real.exp (-t))
+    MeasurableSet.univ
+    (fun t _ => (by simpa using ((hasDerivAt_id t).neg.exp)))
+    (fun x _ y _ h => neg_injective (Real.exp_injective h)) actualFlatMobiusTest
+  rw [himg, Measure.restrict_univ] at hsub
+  have hall : (∫ r : ℝ in Set.Ioi 0, actualFlatMobiusTest r) = actualFlatSamplingMass := by
+    apply setIntegral_eq_integral_of_forall_compl_eq_zero
+    intro r hr
+    exact actualFlatMobiusTest_zero_of_nonpos (le_of_not_gt hr)
+  rw [hall] at hsub
+  rw [hsub]
+  apply integral_congr_ae
+  filter_upwards with t
+  have he : Real.exp (-t) = Real.exp (-t/2)*Real.exp (-t/2) := by
+    rw [← Real.exp_add]
+    congr 1
+    ring
+  have hroot : Real.sqrt (Real.exp (-t)) = Real.exp (-t/2) := by
+    rw [he, Real.sqrt_mul_self (Real.exp_pos _).le]
+  simp only [abs_neg, abs_of_pos (Real.exp_pos _), smul_eq_mul,
+    actualFlatMobiusTest, Real.log_exp, neg_neg, hroot]
+  rw [he]
+  field_simp
+
+theorem actualCorrelationIntegerDrive_half_integral :
+    (∫ t : ℝ, Real.exp (-t/2)*actualCorrelationIntegerDrive t) = actualSourceHalfMass^2 := by
+  let q : ℝ → ℝ := fun x => Real.exp (-x/2)*universalSincSource UniversalSinc.fixedScale x
+  let u : ℝ → ℝ := fun t => Real.exp (-t/2)*nativeOriginalIntegerDrive t
+  have huC := nativeCausalComplexDamping_integrable
+    (w := (1/2:ℂ)) (by norm_num) nativeOriginalIntegerDrive_integrable
+    (fun t ht => nativeOriginalIntegerDrive_zero_of_neg ht)
+  have heC : nativeCausalComplexDamping (1/2:ℂ) nativeOriginalIntegerDrive =
+      fun t : ℝ => (u t:ℂ) := by
+    funext t
+    dsimp [nativeCausalComplexDamping,u]
+    rw [Complex.ofReal_mul, Complex.ofReal_exp]
+    congr 2
+    push_cast
+    ring
+  rw [heC] at huC
+  have hu : Integrable u := by simpa using huC.re
+  have hpoint (t : ℝ) : Real.exp (-t/2)*actualCorrelationIntegerDrive t =
+      (q ⋆[ContinuousLinearMap.mul ℝ ℝ] u) t := by
+    rw [actualCorrelationIntegerDrive_eq_sourceConvolution, ← integral_const_mul,
+      convolution_def]
+    apply integral_congr_ae
+    filter_upwards with x
+    simp only [ContinuousLinearMap.mul_apply',q,u]
+    have he : Real.exp (-t/2) = Real.exp (-x/2)*Real.exp (-(t-x)/2) := by
+      rw [← Real.exp_add]
+      congr 1
+      ring
+    rw [he]
+    ring
+  simp_rw [hpoint]
+  rw [integral_convolution (ContinuousLinearMap.mul ℝ ℝ) actualSourceHalfMass_integrable hu]
+  change actualSourceHalfMass * (∫ t : ℝ, Real.exp (-t/2)*nativeOriginalIntegerDrive t) = _
+  rw [nativeOriginalIntegerDrive_half_integral, pow_two]
+
+theorem actualFlatSamplingMass_eq_sourceHalfMass_sq :
+    actualFlatSamplingMass = actualSourceHalfMass^2 := by
+  rw [actualFlatSamplingMass_eq_dampedDrive, actualCorrelationIntegerDrive_half_integral]
+
+theorem actualFlatSamplingMass_pos : 0 < actualFlatSamplingMass := by
+  rw [actualFlatSamplingMass_eq_sourceHalfMass_sq]
+  exact sq_pos_of_pos actualSourceHalfMass_pos
+
+end ActualPositiveMass
 
 end Zeta23.OPICARound4
 

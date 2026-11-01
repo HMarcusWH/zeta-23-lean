@@ -43,8 +43,45 @@ the rank-one term (nonnegative when `I >= 0` and `x >= 0`), the signed
 off-diagonal and the diagonal, and proves
 equivalence of the two eventual square-root lower-bound targets. Constants and
 thresholds precede the observation scale. This proves neither lower bound.
-The literal analytic remainder and its regularity still require their own
-formal adapter; a generic bounded function is not substituted for that source.
+The literal analytic adapter is now proved in `ActualSourceHyperbola.lean`: the
+actual flat test is globally C1, including zero, and compactly supported. Its
+full natural-number sampling remainder is uniformly bounded at every positive
+scale. Thus the diagonal estimate and lower-bound equivalence now apply to the
+actual source without an assumed bounded remainder. Neither lower bound follows.
+
+## Further actual-source bounds
+
+The next deduction uses the pinned Mathlib estimate for Chebyshev `psi - theta`.
+For the literal compact correlation kernel, every higher prime power together
+contributes a uniformly bounded amount at every real observation time. The exact
+split retains all these terms. Any unbounded excursion must therefore survive
+in the ordinary-prime contribution; the latter has not been bounded.
+
+Differentiating the fixed compact density, rather than the arithmetic inverse,
+also proves rapid decay of the literal integer-drive derivative. The flat-test
+derivative includes both the drive derivative and half the original drive,
+divided by `r * sqrt(r)`, with the negative sign retained. Source decay gives
+quadratic vanishing of the flat test and linear vanishing of its derivative at
+zero. Global C1 regularity and compact support then give a uniform bound on the
+literal Abel sampling remainder. This removes the diagonal's abstract premise;
+it does not bound the signed off-diagonal together with the rank-one term. The
+coarse support collar used for variation estimates does not replace the exact
+half-history cutoff in the hyperbola identity.
+
+The complete Drive metadata inventory covers 1,725 files in 164 folders; this
+does not mean every document was read. The focused historical review recovers
+fixed-palette covariance bounds but also their uncontrolled moving complement.
+Finite Euler filters preserve the same closed native dictionary space. Positive
+sieve bounds lose order when passed through the signed detector kernel. None of
+these observations supplies the missing bound on the complete signed term.
+
+The actual mass is also proved positive: `actualFlatSamplingMass` equals the
+square of the strictly positive half-Laplace integral of the fixed source
+density. The original drive at the exceptional damping value is identified by
+its analytic continuation before applying the literal convolution and
+exponential change of variables. No termwise interchange at the zeta pole is
+used. This supplies positivity of the retained rank-one term; it supplies no
+sign or lower bound for the complete signed quadratic.
 
 ## The remaining arithmetic statement
 
@@ -66,11 +103,14 @@ alone is a stronger task. At Pass 8's exact samples `x = N^2/T`, the paper-level
 condition is `H_N >= -C N`. This is a useful discrete target, not a proven bound.
 
 Normalization matters: the repository proves that its finite logarithmic test
-at `t`, with `x = exp(t)`, is `actualFlatMobiusTest(a/x)/sqrt(x)`. Identification
-with the paper's `F` still needs the even-source orientation and periodization
-adapters. At paper level, its normalized `hyperbolaT` therefore needs an
-eventual **constant** lower bound. One cannot apply an unnormalized
-`sqrt(x)` estimate to it without transporting that factor.
+at `t`, with `x = exp(t)`, is `actualFlatMobiusTest(a/x)/sqrt(x)`. The full
+natural-number sampling sum is now formally identified with the exact finite
+history sum. Consequently `sqrt(exp(t)) * hyperbolaT` equals the complete
+sampling quadratic at `Nat.sqrt(actualCorrelationCutoff(t)/2)`. Its diagonal is
+bounded at this same natural cutoff, without assuming equality to a real-floor
+cutoff. Removing that controlled diagonal gives an exact equivalence between
+the two eventual **constant** lower bounds after division by `sqrt(exp(t))`.
+Both lower bounds remain open; the normalization is part of the theorem.
 
 ## What the accumulated constraints do and do not supply
 

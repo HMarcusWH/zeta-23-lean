@@ -705,17 +705,25 @@
     "register": "MADNESS_CONTRACTS.json",
     "source_audit": "MADNESS_SOURCE_AUDIT.json",
     "modules": 4,
-    "added_declarations": 76,
+    "added_declarations": 136,
     "gate_total_modules": 52,
-    "gate_total_declarations": 576,
+    "gate_total_declarations": 636,
     "retained_modules": 48,
     "retained_declarations": 500,
     "retained_semantic_mutations": 17,
-    "semantic_mutations": 21,
+    "semantic_mutations": 30,
     "new_unconditional_estimate": "The normalized short hyperbola term and the prime-field plus long-term remainder have every fixed exponential decay rate.",
     "closing_arithmetic_estimate": "OPEN",
     "production_qualification": "CURRENT_HEAD_FULL_NATIVE_SUPPORT_AND_INDEPENDENT_ACCEPTANCE_REQUIRED",
     "RH": "OPEN",
-    "Step4": "OPEN"
+    "Step4": "OPEN",
+    "partial_source_bounds": [
+      "All higher prime powers in the literal field are uniformly bounded at every real time.",
+      "The literal integer drive and first derivative have every fixed exponential decay rate.",
+      "The actual flat test is globally C1 and compactly supported; its complete sampling remainder is uniformly bounded for every positive scale.",
+      "The literal sampling mass equals the square of a positive source half-Laplace integral.",
+      "The complete sampling quadratic equals sqrt(exp(t)) times the exact native long term, with the natural half-history cutoff retained.",
+      "The actual diagonal is O(sqrt(exp(t))) at the exact native cutoff; the two normalized constant lower-bound targets are equivalent, but both remain OPEN."
+    ]
   }
 }
