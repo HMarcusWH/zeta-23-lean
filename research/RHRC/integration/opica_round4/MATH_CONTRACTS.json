@@ -704,14 +704,14 @@
   "madness_extension": {
     "register": "MADNESS_CONTRACTS.json",
     "source_audit": "MADNESS_SOURCE_AUDIT.json",
-    "modules": 15,
-    "added_declarations": 241,
-    "gate_total_modules": 63,
-    "gate_total_declarations": 741,
+    "modules": 42,
+    "added_declarations": 566,
+    "gate_total_modules": 90,
+    "gate_total_declarations": 1066,
     "retained_modules": 48,
     "retained_declarations": 500,
     "retained_semantic_mutations": 17,
-    "semantic_mutations": 52,
+    "semantic_mutations": 80,
     "new_unconditional_estimate": "The normalized short hyperbola term and the prime-field plus long-term remainder have every fixed exponential decay rate.",
     "closing_arithmetic_estimate": "OPEN",
     "production_qualification": "CURRENT_HEAD_FULL_NATIVE_SUPPORT_AND_INDEPENDENT_ACCEPTANCE_REQUIRED",
@@ -726,6 +726,7 @@
       "The actual diagonal is O(sqrt(exp(t))) at the exact native cutoff; the two normalized constant lower-bound targets are equivalent, but both remain OPEN."
     ],
     "joint_ground_extension": "Exact common-quartic eventual negativity and same-packet joint ground; own-newborn simplicity and full-complement gap; tied-source moment sign and whole odd-kernel visibility. No independent closing bound.",
-    "native_regular_ground_extension": "Same-source tied response and cubic/silent moment restrictions; actual native determinant regularity on selected cofinal apertures; regular own-newborn realization. Negative ties and independent signed arithmetic opposition remain OPEN."
+    "native_regular_ground_extension": "Same-source tied response and cubic/silent moment restrictions; actual native determinant regularity on selected cofinal apertures; regular own-newborn realization. Negative ties and independent signed arithmetic opposition remain OPEN.",
+    "native_full_spectrum_extension": "Actual-prime full source separation; a genuine deep packet with the same detector cutoff and regular disjoint full spectra; complete source visibility. Independent quantitative arithmetic opposition remains OPEN."
   }
 }

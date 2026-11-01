@@ -277,3 +277,57 @@ The remaining closing obligation is an independent restriction on the complete
 signed arithmetic value that contradicts the surviving actual negative-ground
 branches. These constraints remove the resonant own-predecessor alternative
 at selected apertures; they do not prove that arithmetic restriction or RH.
+
+
+## Actual-prime separation on the same deep packet
+
+The atlas identified a real composition gap: choosing a regular aperture did
+not automatically retain the previously chosen exponentially deep packet.
+`RegularCells/PacketRegularSelection.lean` now reconstructs the genuine packet
+after aperture selection, using a strict depth margin on an open interval.
+Its finite bound is fixed before selecting the aperture. Under an off-line zero, the final theorem
+`cofinally_actual_packet_joint_regular_disjoint_spectra` keeps the literal same
+packet, source data, unit detector, exponential depth and quartic cutoff.
+Every native matrix through that detector is invertible, and the complete
+even and odd spectra are disjoint at each cutoff from three through it.
+
+The separation argument uses the actual arithmetic source. It starts with
+the full squared-index compressions on the limiting moment carriers, passes
+to a small nonzero cosine phase, and isolates an actual prime in the frozen
+prime-power sum. Unique prime factorization and meromorphic-frequency
+independence turn the formal nonzero anchor into nonidentity on the genuine
+prime-phase path. Analytic continuation and finite open-set selection then
+give the required real aperture. The full nonunitary frames, both Gram
+matrices, positive source scaling, common scalar shift, all prime powers and
+the exact `floor(exp L)` cell remain in the argument.
+
+The full-spectrum bridge removes equal even/odd eigenvalues at these selected
+apertures, including negative ties. `SeparatedSourceVisibility.lean` then
+forces the two correctly oriented genuine source channels to be nonzero on
+every nonzero eigenvector and makes each whole eigenspace at most one
+dimensional. This is qualitative: no lower bound on the gap or on source
+overlap follows from nonvanishing alone. The reciprocal odd input is still
+distinct from the odd eigenray.
+
+The support register has 1066 declarations in 90 owned modules, retaining
+all preceding 741 declarations and their types and axiom sets. Eight new
+independently stated consumers and 28 source-type controls extend the exact
+control inventory from 52 to 80. The declaration parser retains dotted names
+such as `HasPrimeLaurentExpansion.constant` instead of truncating them. The
+closed mathematical addition is 27 source paths; parent mathematics, pins,
+historical registries and all original control bodies are unchanged.
+
+The next arithmetic question is stronger than noncollision. The historical
+actual-source examples already have simple separated spectra with signed
+residues, so separation cannot by itself establish positive response or
+positive residues on the full complement. The complete arithmetic value
+must still be bounded in a way that conflicts with the same hypothetical
+zero's deep packet. The literal long-term lower bound in
+`riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower` remains an
+OPEN premise. Step4 and RH remain OPEN.
+
+Local proof receipts qualify the exact freshly compiled Windows roots with
+authenticated unchanged parent objects. Fresh current-head Linux production
+qualification, all independent replays, semantic controls and the full
+canonical materializer remain mandatory. Historical compiler facts are used
+only for their explicitly unchanged historical scope.

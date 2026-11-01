@@ -42,6 +42,12 @@ REQUIRED_LANES = (
 
 class CliOrchestrationTests(unittest.TestCase):
     def test_madness_extension_retains_merged_500_scope(self):
+        # Qualified declaration names must remain distinct in the closed census.
+        fixture = ("namespace Test\nstructure Family where\n  value : Nat\n"
+                   "def Family.constant : Nat := 0\ntheorem Family.mul : True := True.intro\n"
+                   "private theorem hidden : True := True.intro\n")
+        self.assertEqual(math_gate.public_declarations(fixture),
+                         ["Test.Family", "Test.Family.mk", "Test.Family.constant", "Test.Family.mul"])
         from research.RHRC.integration.opica_composition import config
         scope=math_gate.retained_pre_madness_scope()
         self.assertEqual((len(scope['declarations']),len(scope['modules']),

@@ -2648,5 +2648,50 @@
     },
     "RH": "OPEN",
     "Step4": "OPEN"
+  },
+  "actual_prime_full_spectrum_packet": {
+    "status": "EXACT_SOURCE_SUPPORT_THEOREMS_REQUIRE_CURRENT_HEAD_NATIVE_QUALIFICATION",
+    "atlas_sha256": "b80311902901971191173ffe876f8d0a8b5d58545aec9365fdbc118a9bf912d3",
+    "result": "Full source and Gram pencils have a nonzero actual-prime separation determinant. Finite regular disjoint selection is composed with strict detector-depth margins by reconstructing the genuine packet at the selected aperture. The same packet retains its exponential depth, normalization, source data and quartic cutoff. All complete source eigenchannels are visible and eigenspaces are at most one dimensional when the full spectra are disjoint.",
+    "previous_boundary_now_paid": [
+      "Aperture selection previously did not preserve a deep packet automatically; the packet is now rebuilt with a strict depth margin.",
+      "Zero invertibility alone did not separate shared negative eigenvalues; a distinct actual full-source spectral determinant now supplies separation at selected apertures."
+    ],
+    "remaining": [
+      "No uniform spectral gap or lower source-overlap magnitude follows from nonzero determinants.",
+      "Full signed response residues are not all positive; historical actual-source mixed-sign controls remain relevant.",
+      "The complete signed arithmetic lower bound remains unproved; RH and Step4 remain OPEN."
+    ],
+    "new_modules_sha256": {
+      "Zeta23.OPICARound4.RegularCells.NativeDiagonalSeparation": "7957f3d5b13ba384b483e5aed269e6ff64bbe2f435fdb64536334b7c124c2e0d",
+      "Zeta23.OPICARound4.RegularCells.NativeCompressionSeparation": "ee958f74d339e768ede6112b64cc0fa74fe9193e3d9fc6e70cb8e4e97d02c86d",
+      "Zeta23.OPICARound4.RegularCells.SylvesterSeparation": "690abdb1f393a8c5c90d928382b4e1575558c60df41c961dbf4971c06267c232",
+      "Zeta23.OPICARound4.RegularCells.MeromorphicFrequencyIndependence": "0b48059f8334327e7fda9048258c765758f5071595b7e6deab600da7bd9722cc",
+      "Zeta23.OPICARound4.RegularCells.PrimeLaurentNonidentity": "ba1ba95caae0930504836d37373f215e650ab0db81ca9bb85cf37656523f119d",
+      "Zeta23.OPICARound4.RegularCells.FinitePrimeLaurentAlgebra": "0a78cd30147225a43808f8f2f0efcc177dd81c110eca05b954f79d9fa82d48f6",
+      "Zeta23.OPICARound4.RegularCells.PrimeSourceLaurent": "8c51247b111e8d1137bedf9dac47aaf905424ae74474cfe3dde5d5882477b9e4",
+      "Zeta23.OPICARound4.RegularCells.NativeZeroFrame": "a1a597740c22ab85c091f023218101bf61ff7040c8b8e6b268db69b158235372",
+      "Zeta23.OPICARound4.RegularCells.NativeCosineSeparation": "05296d4b3260863d4bb01beec18bc7d6718b7a63faf5dab726d9eda6453d3dc7",
+      "Zeta23.OPICARound4.RegularCells.FrozenSourceContinuation": "0a4d2e9d63d53e710c5e86472c046b51732eed78bb7db1361aac3bfe4e8801d6",
+      "Zeta23.OPICARound4.NewbornCubicEnergyBound": "ec9e4f5a65806194d5506fc76c1838b60273865f77afc83a7d77f2f2fe7675f7",
+      "Zeta23.OPICARound4.RegularCells.NativePrimeIsolation": "9dc6c402ca2d5383cedc69ccbce888d5f5f8fd3c511b511094f7b0629efb91a8",
+      "Zeta23.OPICARound4.RegularCells.NativePrimeExpansion": "47b01ca95c0b30901ee6145bee32a01d97bf2cc0d68aaa2bc0a56b99d2eb992e",
+      "Zeta23.OPICARound4.RegularCells.NativePrimeGerms": "004ecbc275b40faeaa1e4cb6aff0a80e430e0f0910177a2b9c5344c95666700a",
+      "Zeta23.OPICARound4.RegularCells.NativeParityPencils": "0d183d38b751c4d90d76564815406abf101dbb5a50329ae8e68e7e4057a844fe",
+      "Zeta23.OPICARound4.RegularCells.NativeParityZeroPencils": "f8b8942a261a41095f34241259baf7e998d829bdaaf12a4a3c2f1654aa3df53e",
+      "Zeta23.OPICARound4.RegularCells.MatrixSylvesterCoordinates": "1929e67c38447945f93b9008f790185ffec8bd9c3772440fbc06dcef9d0d054b",
+      "Zeta23.OPICARound4.RegularCells.NativeParityMatrixPencils": "0e8d03e4a284eef0430afd8c871132008861f7c885579db96be8549117162800",
+      "Zeta23.OPICARound4.RegularCells.NativeParityPhysicalSeparation": "bdc8cd9f07b7195b91340d13e4088e956012b5d7d772b336a40349e1f10d50d2",
+      "Zeta23.OPICARound4.RegularCells.NativeParityPrimeAnchor": "2c0d31ace7a750b4c9c4ab7e372910b07a1a8baa7019c135ba4e10057a6cae90",
+      "Zeta23.OPICARound4.RegularCells.NativeParityNonidentity": "2c9ce939b1ea84071c0289d68433d88698fdd3d52834419ed3e5e16b8e66286b",
+      "Zeta23.OPICARound4.RegularCells.NativeParityRegularSelection": "b9d6e1194864725f250ce05f863da35beada9133a94abf5ff71602cb0adf3b2c",
+      "Zeta23.OPICARound4.SeparatedSourceVisibility": "cc46ff5be622db2a9052a5d08b86c7eeded480daf46a804c304dc5ed863f6a2b",
+      "Zeta23.OPICARound4.RegularCells.PacketRegularSelection": "142c5c4e9d143bdb436e462c03dceca3be0265b9b902758a6061148c050ff66d",
+      "Zeta23.OPICARound4.RegularCells.PacketNoncollisionSelection": "a6ecebce57b5c560a610991a713c3e8c76475678fbab971191c39208a951cb44",
+      "Zeta23.OPICARound4.RegularCells.PacketSpectralSelection": "d86fe4a10cb14228f88a58756d1f612c5e71fdbbdf9938ba209021524d293464",
+      "Zeta23.OPICARound4.Validation.NativeNoncollision": "3c3a0c3613062c24644928e4caf37128b26cacacbddbc06c3104c798755dcfa8"
+    },
+    "RH": "OPEN",
+    "Step4": "OPEN"
   }
 }

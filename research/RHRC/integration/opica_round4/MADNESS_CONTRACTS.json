@@ -97,6 +97,168 @@
       "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
       "claim": "Seven independently stated complete-type consumers and twelve intended source-type rejection controls protect source activity, parity, separation, normalization, silence, strict energy, exact cell, predecessor cutoff and quantifiers. Rejection is an API guard, not a counterexample to every possible proof of its conclusion.",
       "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M16",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeDiagonalSeparation",
+      "claim": "The diagonal squared-index operator compressed to the two actual limiting moment carriers has disjoint spectra, with the positive Gram structure and distinct coordinate squares retained.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M17",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeCompressionSeparation",
+      "claim": "The full native zero-limit even and odd carriers have no common squared-index compressed eigenvalue for K at least three; the entire carriers, not a chosen two-dimensional slice, are used.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M18",
+      "module": "Zeta23.OPICARound4.RegularCells.SylvesterSeparation",
+      "claim": "Finite-dimensional spectral disjointness is equivalent to injectivity of the full Sylvester operator. Arbitrary invertible frames retain both Gram factors; common scalar shifts and nonzero scaling are handled exactly.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M19",
+      "module": "Zeta23.OPICARound4.RegularCells.MeromorphicFrequencyIndependence",
+      "claim": "Distinct real exponential frequencies with coefficients meromorphic at zero are independent as punctured germs; an extreme-frequency ray dominates every meromorphic polynomial growth bound.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M20",
+      "module": "Zeta23.OPICARound4.RegularCells.PrimeLaurentNonidentity",
+      "claim": "Unique prime factorization separates genuine prime-log frequencies. Equal exponent vectors are grouped before the meromorphic-frequency theorem is applied; cancellation within a group remains explicit.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M21",
+      "module": "Zeta23.OPICARound4.RegularCells.FinitePrimeLaurentAlgebra",
+      "claim": "Finite Laurent expansions with meromorphic coefficients are preserved by the registered algebraic operations. A nonzero coefficient germ yields a nonzero actual prime-phase germ.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M22",
+      "module": "Zeta23.OPICARound4.RegularCells.PrimeSourceLaurent",
+      "claim": "The complete frozen prime-power source has an exact finite Laurent form and a scalar-subtracted polynomial continuation at zero; no prime-power term or source component is omitted.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M23",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeZeroFrame",
+      "claim": "The actual full parity carriers have exact zero-limit frames and reconstruction maps, retaining both moment constraints, the central coordinate and the factor-two Gram normalization.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M24",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeCosineSeparation",
+      "claim": "The full cosine compressions have a spectrally separating sufficiently small nonzero phase, obtained from the separated squared-index limit. No uniform physical spectral-gap estimate is asserted.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M25",
+      "module": "Zeta23.OPICARound4.RegularCells.FrozenSourceContinuation",
+      "claim": "The actual continued source is analytic on the connected punctured safe strip. Nonidentity gives nonzero points in every positive real open interval and permits prescribed finite simultaneous selections.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M26",
+      "module": "Zeta23.OPICARound4.NewbornCubicEnergyBound",
+      "claim": "At the actual odd own-newborn branch, cubic energy is bounded by the exact negative depth, opposite ground gap and source-normalized fourth moment. The resulting moment bounds retain their sign and normalization premises.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M27",
+      "module": "Zeta23.OPICARound4.RegularCells.NativePrimeIsolation",
+      "claim": "For an actual prime p at most Q below p squared, a formal phase specialization isolates that prime's nonscalar cosine contribution while retaining all other prime powers and the positive Mangoldt coefficient.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M28",
+      "module": "Zeta23.OPICARound4.RegularCells.NativePrimeExpansion",
+      "claim": "The actual finite prime cutoff source, moving frame, full Gram and Sylvester determinant admit exact finite prime-Laurent expansions. Physical identification retains the literal floor of exp L.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M29",
+      "module": "Zeta23.OPICARound4.RegularCells.NativePrimeGerms",
+      "claim": "A nonzero fixed formal-phase anchor makes a coefficient germ nonzero; genuine prime-frequency independence then proves nonidentity along the actual variable prime phases. Formal and actual paths remain distinct.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M30",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityPencils",
+      "claim": "Full zero-carrier frame energies and Grams identify the actual physical parity operators, with the nonunitary adjoints, source scaling and common scalar shift retained.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M31",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityZeroPencils",
+      "claim": "At zero, the complete parity pencil reduces to the full cosine Sylvester pencil with its exact common normalization; no Gram factor is silently replaced by an identity.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M32",
+      "module": "Zeta23.OPICARound4.RegularCells.MatrixSylvesterCoordinates",
+      "claim": "An exact coordinate matrix represents the complete generalized Sylvester map, so its nonzero determinant is equivalent to injectivity with both Gram matrices present.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M33",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityMatrixPencils",
+      "claim": "Fixed orthonormal coordinates on the zero carriers give the full actual prime-source determinant and its exact injectivity criterion, preserving the full finite carrier dimensions.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M34",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityPhysicalSeparation",
+      "claim": "At a positive aperture in its exact prime cutoff cell, nonzero full-source determinant is equivalent to disjointness of the entire physical even and odd complex spectra.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M35",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityPrimeAnchor",
+      "claim": "The actual isolated prime and separated full cosine compressions provide a nonzero formal source-pencil anchor without assuming a physical spectral separation premise.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M36",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityNonidentity",
+      "claim": "For Q at least two and K at least three the full actual prime-source separation determinant is not the zero punctured germ. Every positive open interval contains simultaneous nonzeros for a prescribed finite family.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M37",
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityRegularSelection",
+      "claim": "The actual zero-regular and full-spectrum separation determinants can be nonzero simultaneously in an open positive aperture set, with the finite cutoff bound fixed before aperture selection.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M38",
+      "module": "Zeta23.OPICARound4.SeparatedSourceVisibility",
+      "claim": "Disjoint full spectra force both correctly oriented genuine source channels to be nonzero on every nonzero eigenvector and make every full eigenspace at most one dimensional. No source-overlap magnitude or residue positivity is inferred.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M39",
+      "module": "Zeta23.OPICARound4.RegularCells.PacketRegularSelection",
+      "claim": "A strict detector-depth margin permits reconstruction of the genuine generated packet after choosing an aperture satisfying any monotone finite predicate available in every open interval; all source data, normalization and cutoff relationships are retained.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M40",
+      "module": "Zeta23.OPICARound4.RegularCells.PacketNoncollisionSelection",
+      "claim": "Under an off-line zero, the same genuine exponentially deep packet satisfies joint-ground constraints and regularity plus nonzero full-source determinants through its own quartic detector cutoff.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M41",
+      "module": "Zeta23.OPICARound4.RegularCells.PacketSpectralSelection",
+      "claim": "Under an off-line zero, arbitrarily late genuine deep packets retain the same source, norm, depth and detector cutoff while the full physical even and odd spectra are disjoint at every cutoff from three through that detector.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M42",
+      "module": "Zeta23.OPICARound4.Validation.NativeNoncollision",
+      "claim": "Eight separately stated expected-type consumers check the limiting compression, genuine prime grouping, actual nonidentity, finite regular selection, same-packet depth and cutoff, both complete source orientations, and the final physical spectral packet. They supply no independent arithmetic estimate.",
+      "arithmetic_estimate_supplied": false
     }
   ],
   "closing_arithmetic": {
@@ -444,6 +606,493 @@
         "Zeta23.OPICARound4.Validation.native_fixed_cell_regular_selection_consumer",
         "Zeta23.OPICARound4.Validation.cofinal_native_regular_births_consumer",
         "Zeta23.OPICARound4.Validation.same_newborn_regular_realization_consumer"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeDiagonalSeparation": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeDiagonalSeparation.lean",
+      "sha256": "7957f3d5b13ba384b483e5aed269e6ff64bbe2f435fdb64536334b7c124c2e0d",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParitySeparation.diagonal_two_moment_compressions_disjoint",
+        "Zeta23.OPICARound4.NativeParitySeparation.native_squared_index_compressions_disjoint"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeCompressionSeparation": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeCompressionSeparation.lean",
+      "sha256": "ee958f74d339e768ede6112b64cc0fa74fe9193e3d9fc6e70cb8e4e97d02c86d",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeConstantVector",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeIndexVector",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeSquareVector",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeReciprocalVector",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeLimitingEvenCarrier",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeLimitingOddCarrier",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeSquaredIndexDiagonal",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeSquaredIndexCompression",
+        "Zeta23.OPICARound4.NativeParitySeparation.native_limiting_compressed_squared_index_no_common_eigenvalue"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.SylvesterSeparation": {
+      "path": "Zeta23/OPICARound4/RegularCells/SylvesterSeparation.lean",
+      "sha256": "690abdb1f393a8c5c90d928382b4e1575558c60df41c961dbf4971c06267c232",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeSylvester",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeSylvester_injective_of_disjoint",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeSylvester_not_injective_of_common",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeSylvester_injective_iff_disjoint",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeSylvester_det_ne_zero_iff_disjoint",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativePencilSylvester",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativePencilSylvester_common_scalar",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativePencilSylvester_scale",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativePencilSylvester_identity_gram",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativePencilSylvester_frame_factor",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativePencilSylvester_frame_injective_of_disjoint",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativePencilSylvester_frame_disjoint_of_injective",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativePencilSylvester_frame_det_ne_zero_iff_disjoint"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.MeromorphicFrequencyIndependence": {
+      "path": "Zeta23/OPICARound4/RegularCells/MeromorphicFrequencyIndependence.lean",
+      "sha256": "0b48059f8334327e7fda9048258c765758f5071595b7e6deab600da7bd9722cc",
+      "declarations": [
+        "Zeta23.OPICARound4.RegularCells.imaginaryReciprocal",
+        "Zeta23.OPICARound4.RegularCells.imaginaryReciprocal_tendsto",
+        "Zeta23.OPICARound4.RegularCells.imaginaryReciprocal_tendsto_punctured",
+        "Zeta23.OPICARound4.RegularCells.meromorphic_imaginaryReciprocal_isBigO_pow",
+        "Zeta23.OPICARound4.RegularCells.meromorphic_imaginaryReciprocal_div_exp_tendsto_zero",
+        "Zeta23.OPICARound4.RegularCells.frequencyRayTerm",
+        "Zeta23.OPICARound4.RegularCells.frequencyRayTerm_div",
+        "Zeta23.OPICARound4.RegularCells.meromorphic_frequency_ray_max_nonzero",
+        "Zeta23.OPICARound4.RegularCells.meromorphic_frequency_ray_nonzero",
+        "Zeta23.OPICARound4.RegularCells.exp_frequency_imaginaryReciprocal",
+        "Zeta23.OPICARound4.RegularCells.meromorphic_frequency_germ_nonzero"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.PrimeLaurentNonidentity": {
+      "path": "Zeta23/OPICARound4/RegularCells/PrimeLaurentNonidentity.lean",
+      "sha256": "ba1ba95caae0930504836d37373f215e650ab0db81ca9bb85cf37656523f119d",
+      "declarations": [
+        "Zeta23.OPICARound4.RegularCells.primeLogFrequency",
+        "Zeta23.OPICARound4.RegularCells.finite_prime_product_factorization",
+        "Zeta23.OPICARound4.RegularCells.natural_prime_log_sum_injective",
+        "Zeta23.OPICARound4.RegularCells.primeLogFrequency_injective",
+        "Zeta23.OPICARound4.RegularCells.primeLaurentFrequency",
+        "Zeta23.OPICARound4.RegularCells.primeLaurentFrequency_injective",
+        "Zeta23.OPICARound4.RegularCells.primePhase",
+        "Zeta23.OPICARound4.RegularCells.primeLaurentMonomial",
+        "Zeta23.OPICARound4.RegularCells.primeLaurentMonomial_eq_exp",
+        "Zeta23.OPICARound4.RegularCells.groupedPrimeLaurentCoefficient",
+        "Zeta23.OPICARound4.RegularCells.primeLaurent_sum_grouped",
+        "Zeta23.OPICARound4.RegularCells.groupedPrimeLaurentCoefficient_meromorphic",
+        "Zeta23.OPICARound4.RegularCells.primeLaurent_sum_germ_nonzero",
+        "Zeta23.OPICARound4.RegularCells.primeLogFrequency_factorization",
+        "Zeta23.OPICARound4.RegularCells.primePhase_eq_factorization_monomial"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.FinitePrimeLaurentAlgebra": {
+      "path": "Zeta23/OPICARound4/RegularCells/FinitePrimeLaurentAlgebra.lean",
+      "sha256": "0a78cd30147225a43808f8f2f0efcc177dd81c110eca05b954f79d9fa82d48f6",
+      "declarations": [
+        "Zeta23.OPICARound4.RegularCells.formalPrimeMonomial",
+        "Zeta23.OPICARound4.RegularCells.formalPrimeMonomial_zero",
+        "Zeta23.OPICARound4.RegularCells.formalPrimeMonomial_add",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.congr",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.constant",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.monomial",
+        "Zeta23.OPICARound4.RegularCells.formalPrimeMonomial_single",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.coordinate_zpow",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.add",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.neg",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.sub",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.mul",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.sum",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.prod",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.det",
+        "Zeta23.OPICARound4.RegularCells.primePhaseUnits",
+        "Zeta23.OPICARound4.RegularCells.formalPrimeMonomial_actual",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.exists_nonzero_coefficient",
+        "Zeta23.OPICARound4.RegularCells.HasPrimeLaurentExpansion.actual_germ_nonzero"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.PrimeSourceLaurent": {
+      "path": "Zeta23/OPICARound4/RegularCells/PrimeSourceLaurent.lean",
+      "sha256": "8c51247b111e8d1137bedf9dac47aaf905424ae74474cfe3dde5d5882477b9e4",
+      "declarations": [
+        "Zeta23.OPICARound4.PrimeSourceLaurent.integerPhase",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.integerPhase_ne_zero",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.exp_source_angle",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.exp_neg_source_angle",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.potential_laurent",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.diagonal_laurent",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalPrimePotential",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalPrimeDiagonal",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalPrimeMatrix",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalPrimeMatrix_actual",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalPrimeMatrix_one",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.frozenPrimeMatrix_laurent",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.scaledPrimeMatrix",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.scaledPrimeMatrix_eq",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.scaledPrimeMatrix_zero",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.analyticAt_scaledPrimeMatrix",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.tendsto_scaledPrimeMatrix",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.meromorphicAt_formalPrimeMatrix",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalFrozenPrimeMatrix",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.primeCommonScalar",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.scaledFrozenPrimeMatrix",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalFrozenPrimeMatrix_actual",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.scaledFrozenPrimeMatrix_eq",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.analyticAt_scaledFrozenPrimeMatrix"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeZeroFrame": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeZeroFrame.lean",
+      "sha256": "a1a597740c22ab85c091f023218101bf61ff7040c8b8e6b268db69b158235372",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeZeroFrame.center",
+        "Zeta23.OPICARound4.NativeZeroFrame.pos",
+        "Zeta23.OPICARound4.NativeZeroFrame.neg",
+        "Zeta23.OPICARound4.NativeZeroFrame.centered_center",
+        "Zeta23.OPICARound4.NativeZeroFrame.centered_pos",
+        "Zeta23.OPICARound4.NativeZeroFrame.centered_neg",
+        "Zeta23.OPICARound4.NativeZeroFrame.foldIndex",
+        "Zeta23.OPICARound4.NativeZeroFrame.foldIndex_bijective",
+        "Zeta23.OPICARound4.NativeZeroFrame.foldEquiv",
+        "Zeta23.OPICARound4.NativeZeroFrame.sum_fold",
+        "Zeta23.OPICARound4.NativeZeroFrame.rev_pos",
+        "Zeta23.OPICARound4.NativeZeroFrame.rev_center",
+        "Zeta23.OPICARound4.NativeZeroFrame.rev_neg",
+        "Zeta23.OPICARound4.NativeZeroFrame.foldLift",
+        "Zeta23.OPICARound4.NativeZeroFrame.foldLift_center",
+        "Zeta23.OPICARound4.NativeZeroFrame.foldLift_pos",
+        "Zeta23.OPICARound4.NativeZeroFrame.foldLift_neg",
+        "Zeta23.OPICARound4.NativeZeroFrame.fold_ext",
+        "Zeta23.OPICARound4.NativeZeroFrame.foldLift_even",
+        "Zeta23.OPICARound4.NativeZeroFrame.foldLift_odd",
+        "Zeta23.OPICARound4.NativeZeroFrame.moment_foldLift",
+        "Zeta23.OPICARound4.NativeZeroFrame.rawEvenLift",
+        "Zeta23.OPICARound4.NativeZeroFrame.rawOddLift",
+        "Zeta23.OPICARound4.NativeZeroFrame.index_ne_zero",
+        "Zeta23.OPICARound4.NativeZeroFrame.zero_diagonal_rawEvenLift",
+        "Zeta23.OPICARound4.NativeZeroFrame.zero_diagonal_rawOddLift",
+        "Zeta23.OPICARound4.NativeZeroFrame.rawEvenLift_moment_zero",
+        "Zeta23.OPICARound4.NativeZeroFrame.rawEvenLift_moment_two",
+        "Zeta23.OPICARound4.NativeZeroFrame.rawEvenLift_moment_four",
+        "Zeta23.OPICARound4.NativeZeroFrame.rawOddLift_moment_one",
+        "Zeta23.OPICARound4.NativeZeroFrame.rawOddLift_moment_three",
+        "Zeta23.OPICARound4.NativeZeroFrame.rawEvenLift_mem_iff",
+        "Zeta23.OPICARound4.NativeZeroFrame.rawOddLift_mem_iff",
+        "Zeta23.OPICARound4.NativeZeroFrame.even_eq_fold",
+        "Zeta23.OPICARound4.NativeZeroFrame.odd_eq_fold",
+        "Zeta23.OPICARound4.NativeZeroFrame.positiveCoordinates",
+        "Zeta23.OPICARound4.NativeZeroFrame.positiveCoordinates_rawEvenLift",
+        "Zeta23.OPICARound4.NativeZeroFrame.positiveCoordinates_rawOddLift",
+        "Zeta23.OPICARound4.NativeZeroFrame.rawEvenLift_positiveCoordinates",
+        "Zeta23.OPICARound4.NativeZeroFrame.rawOddLift_positiveCoordinates",
+        "Zeta23.OPICARound4.NativeZeroFrame.mem_nativeLimitingEvenCarrier_iff",
+        "Zeta23.OPICARound4.NativeZeroFrame.mem_nativeLimitingOddCarrier_iff",
+        "Zeta23.OPICARound4.NativeZeroFrame.evenZeroEquiv",
+        "Zeta23.OPICARound4.NativeZeroFrame.oddZeroEquiv",
+        "Zeta23.OPICARound4.NativeZeroFrame.inner_even_fold",
+        "Zeta23.OPICARound4.NativeZeroFrame.inner_odd_fold",
+        "Zeta23.OPICARound4.NativeZeroFrame.zero_diagonal_even_seed",
+        "Zeta23.OPICARound4.NativeZeroFrame.zero_diagonal_odd_seed",
+        "Zeta23.OPICARound4.NativeZeroFrame.zero_even_gram",
+        "Zeta23.OPICARound4.NativeZeroFrame.zero_odd_gram"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeCosineSeparation": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeCosineSeparation.lean",
+      "sha256": "05296d4b3260863d4bb01beec18bc7d6718b7a63faf5dab726d9eda6453d3dc7",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeWeightedCompression",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeWeightedCompression_isSymmetric",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeWeightedSylvester",
+        "Zeta23.OPICARound4.NativeParitySeparation.continuous_nativeWeightedSylvester",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeWeightedSeparationDet",
+        "Zeta23.OPICARound4.NativeParitySeparation.continuous_nativeWeightedSeparationDet",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeWeightedSeparationDet_squared_ne_zero",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeScaledCosineWeights",
+        "Zeta23.OPICARound4.NativeParitySeparation.continuous_nativeScaledCosineWeights",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeScaledCosineWeights_zero",
+        "Zeta23.OPICARound4.NativeParitySeparation.eventually_nativeScaledCosine_separation",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeCosineWeights",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeCosineWeights_affine",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeWeightedSylvester_const",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeWeightedSylvester_cosine",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeWeightedSeparationDet_cosine",
+        "Zeta23.OPICARound4.NativeParitySeparation.eventually_nativeCosine_separation",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativeWeightedSeparationDet_injective",
+        "Zeta23.OPICARound4.NativeParitySeparation.exists_nativeCosine_separation",
+        "Zeta23.OPICARound4.NativeParitySeparation.exists_nativeCosine_sylvester_injective"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.FrozenSourceContinuation": {
+      "path": "Zeta23/OPICARound4/RegularCells/FrozenSourceContinuation.lean",
+      "sha256": "0a4d2e9d63d53e710c5e86472c046b51732eed78bb7db1361aac3bfe4e8801d6",
+      "declarations": [
+        "Zeta23.OPICARound4.RegularCells.isPreconnected_complexFrozenSourceDomain",
+        "Zeta23.OPICARound4.RegularCells.isConnected_complexFrozenSourceDomain",
+        "Zeta23.OPICARound4.RegularCells.eventually_mem_complexFrozenSourceDomain_at_zero",
+        "Zeta23.OPICARound4.RegularCells.exists_nonzero_in_sourceDomain_of_germ",
+        "Zeta23.OPICARound4.RegularCells.exists_source_nonzero_in_open_positive",
+        "Zeta23.OPICARound4.RegularCells.exists_source_nonzero_in_open_positive_of_germ",
+        "Zeta23.OPICARound4.RegularCells.exists_finite_source_nonzero_in_open_positive_of_germ"
+      ]
+    },
+    "Zeta23.OPICARound4.NewbornCubicEnergyBound": {
+      "path": "Zeta23/OPICARound4/NewbornCubicEnergyBound.lean",
+      "sha256": "ec9e4f5a65806194d5506fc76c1838b60273865f77afc83a7d77f2f2fe7675f7",
+      "declarations": [
+        "Zeta23.OPICARound4.oddNewborn_normalized_even_moment_cubic_energy_bound",
+        "Zeta23.OPICARound4.evenNewborn_normalized_odd_corrected_energy_bound"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativePrimeIsolation": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativePrimeIsolation.lean",
+      "sha256": "9dc6c402ca2d5383cedc69ccbce888d5f5f8fd3c511b511094f7b0629efb91a8",
+      "declarations": [
+        "Zeta23.OPICARound4.PrimeIsolation.exists_prime_below_cutoff_square_above",
+        "Zeta23.OPICARound4.PrimeIsolation.prime_pow_below_square_eq",
+        "Zeta23.OPICARound4.PrimeIsolation.primeSourceWeight_nonzero_isPrimePow",
+        "Zeta23.OPICARound4.PrimeIsolation.weight_factorization_zero",
+        "Zeta23.OPICARound4.PrimeIsolation.singlePrimePhase",
+        "Zeta23.OPICARound4.PrimeIsolation.monomial_singlePrimePhase",
+        "Zeta23.OPICARound4.PrimeIsolation.weighted_single_prime_sum",
+        "Zeta23.OPICARound4.PrimeIsolation.scaledPrimeMatrix_one",
+        "Zeta23.OPICARound4.PrimeIsolation.scaledFrozenPrimeMatrix_single",
+        "Zeta23.OPICARound4.PrimeIsolation.circlePhase",
+        "Zeta23.OPICARound4.PrimeIsolation.circlePhase_zpow",
+        "Zeta23.OPICARound4.PrimeIsolation.circlePhase_symmetric",
+        "Zeta23.OPICARound4.PrimeIsolation.isolatedPrimeCoefficient",
+        "Zeta23.OPICARound4.PrimeIsolation.isolatedPrimeCoefficient_pos",
+        "Zeta23.OPICARound4.PrimeIsolation.isolatedPrimeCoefficient_eq",
+        "Zeta23.OPICARound4.PrimeIsolation.neg_scaledFrozen_single_zero"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativePrimeExpansion": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativePrimeExpansion.lean",
+      "sha256": "47b01ca95c0b30901ee6145bee32a01d97bf2cc0d68aaa2bc0a56b99d2eb992e",
+      "declarations": [
+        "Zeta23.OPICARound4.PrimeSourceLaurent.boundedPrimeSet",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.boundedPrimeSet_prime",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.primeFactors_subset_boundedPrimeSet",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.integerFormalExponent",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.integerFormalPhase",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.integerPhase_eq_primePhase",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.integerFormalPhase_actual",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalPrimeMonomial_zpow",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.integerFormalPhase_zpow_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalPrimePotential_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalPrimeDiagonal_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalPrimeMatrix_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.factoredFrozenPrimeMatrix",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.factoredFrozenPrimeMatrix_actual",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.factoredFrozenPrimeMatrix_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalWFreeSourceMatrix",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalWFreeSourceMatrix_actual",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalWFreeSourceMatrix_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.scaledPrimeMatrix_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.factoredScaledPrimeMatrix",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.factoredScaledPrimeMatrix_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.factoredScaledPrimeMatrix_actual",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalScaledSourceMatrix",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalScaledSourceMatrix_eq",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalScaledSourceMatrix_actual",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalScaledSourceMatrix_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.rawPhysicalDiagonal",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.rawPhysicalDiagonal_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalRawFrameEnergy",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalRawFrameGram",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalRawFrameEnergy_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalRawFrameGram_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalRawFrameEnergy_actual",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalRawFrameSylvester",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalRawFrameSylvester_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalRawFrameSylvester_det_expansion",
+        "Zeta23.OPICARound4.PrimeSourceLaurent.formalRawFrameSylvester_mulVec"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativePrimeGerms": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativePrimeGerms.lean",
+      "sha256": "004ecbc275b40faeaa1e4cb6aff0a80e430e0f0910177a2b9c5344c95666700a",
+      "declarations": [
+        "Zeta23.OPICARound4.PrimeSourceGerms.analyticAt_formalScaledSourceMatrix",
+        "Zeta23.OPICARound4.PrimeSourceGerms.analyticAt_rawPhysicalDiagonal",
+        "Zeta23.OPICARound4.PrimeSourceGerms.analyticAt_formalRawFrameGram",
+        "Zeta23.OPICARound4.PrimeSourceGerms.analyticAt_formalRawFrameSylvesterDet",
+        "Zeta23.OPICARound4.PrimeSourceGerms.actual_sylvester_germ_nonzero_of_formal_anchor",
+        "Zeta23.OPICARound4.PrimeSourceGerms.formalScaledSourceMatrix_single_zero",
+        "Zeta23.OPICARound4.PrimeSourceGerms.analyticAt_primeCommonScalar",
+        "Zeta23.OPICARound4.PrimeSourceGerms.analyticOnNhd_actualScaledSourceMatrix",
+        "Zeta23.OPICARound4.PrimeSourceGerms.analyticOnNhd_actualRawFrameSylvesterDet",
+        "Zeta23.OPICARound4.PrimeSourceGerms.exists_actual_sylvester_nonzero_in_open_positive_of_anchor"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeParityPencils": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeParityPencils.lean",
+      "sha256": "0d183d38b751c4d90d76564815406abf101dbb5a50329ae8e68e7e4057a844fe",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParityPencils.zeroCarrier",
+        "Zeta23.OPICARound4.NativeParityPencils.rawFrame",
+        "Zeta23.OPICARound4.NativeParityPencils.physicalEquiv",
+        "Zeta23.OPICARound4.NativeParityPencils.physicalDiagonal",
+        "Zeta23.OPICARound4.NativeParityPencils.physicalDiagonal_ofReal",
+        "Zeta23.OPICARound4.NativeParityPencils.physicalDiagonal_real_isSymmetric",
+        "Zeta23.OPICARound4.NativeParityPencils.physicalDiagonal_apply",
+        "Zeta23.OPICARound4.NativeParityPencils.diagonal_rawFrame_physical",
+        "Zeta23.OPICARound4.NativeParityPencils.frameGram",
+        "Zeta23.OPICARound4.NativeParityPencils.frameEnergy",
+        "Zeta23.OPICARound4.NativeParityPencils.frameGram_physical",
+        "Zeta23.OPICARound4.NativeParityPencils.frameEnergy_canonical_physical",
+        "Zeta23.OPICARound4.NativeParityPencils.frameGram_zero",
+        "Zeta23.OPICARound4.NativeParityPencils.scaledPhysicalSource",
+        "Zeta23.OPICARound4.NativeParityPencils.physicalCommonShift",
+        "Zeta23.OPICARound4.NativeParityPencils.scaledPhysicalSource_eq",
+        "Zeta23.OPICARound4.NativeParityPencils.diagonal_rawFrame_profiles",
+        "Zeta23.OPICARound4.NativeParityPencils.frameEnergy_pole_zero",
+        "Zeta23.OPICARound4.NativeParityPencils.frameEnergy_add",
+        "Zeta23.OPICARound4.NativeParityPencils.frameEnergy_smul",
+        "Zeta23.OPICARound4.NativeParityPencils.frameEnergy_identity",
+        "Zeta23.OPICARound4.NativeParityPencils.frameEnergy_sub",
+        "Zeta23.OPICARound4.NativeParityPencils.frameEnergy_scaledPhysicalSource",
+        "Zeta23.OPICARound4.NativeParityPencils.physicalAdjoint_injective",
+        "Zeta23.OPICARound4.NativeParityPencils.physical_pencil_eigen_iff",
+        "Zeta23.OPICARound4.NativeParityPencils.physical_pencil_nonzero_eigen_iff"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeParityZeroPencils": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeParityZeroPencils.lean",
+      "sha256": "f8b8942a261a41095f34241259baf7e998d829bdaaf12a4a3c2f1654aa3df53e",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParityPencils.diagonal_rawFrame_zero_even",
+        "Zeta23.OPICARound4.NativeParityPencils.diagonal_rawFrame_zero_odd",
+        "Zeta23.OPICARound4.NativeParityPencils.diagonal_fold_even",
+        "Zeta23.OPICARound4.NativeParityPencils.diagonal_fold_odd",
+        "Zeta23.OPICARound4.NativeParityPencils.frameEnergy_zero_weighted",
+        "Zeta23.OPICARound4.NativeParityPencils.centered_cosine_eq_fold",
+        "Zeta23.OPICARound4.NativeParityPencils.frameEnergy_zero_cosine"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.MatrixSylvesterCoordinates": {
+      "path": "Zeta23/OPICARound4/RegularCells/MatrixSylvesterCoordinates.lean",
+      "sha256": "1929e67c38447945f93b9008f790185ffec8bd9c3772440fbc06dcef9d0d054b",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParitySeparation.formalRawFrameSylvester_det_iff_matrix_injective",
+        "Zeta23.OPICARound4.NativeParitySeparation.matrix_pencil_toEuclideanLin",
+        "Zeta23.OPICARound4.NativeParitySeparation.matrix_pencil_injective_iff",
+        "Zeta23.OPICARound4.NativeParitySeparation.formalRawFrameSylvester_det_iff_coordinate_injective",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativePencilSylvester_isometry_intertwining",
+        "Zeta23.OPICARound4.NativeParitySeparation.nativePencilSylvester_isometry_injective_iff"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeParityMatrixPencils": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeParityMatrixPencils.lean",
+      "sha256": "0e8d03e4a284eef0430afd8c871132008861f7c885579db96be8549117162800",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParityPencils.coordinateIndex",
+        "Zeta23.OPICARound4.NativeParityPencils.coordinateIsometry",
+        "Zeta23.OPICARound4.NativeParityPencils.coordinateFrame",
+        "Zeta23.OPICARound4.NativeParityPencils.coordinateFrame_toEuclideanLin",
+        "Zeta23.OPICARound4.NativeParityPencils.rawPhysicalDiagonal_eq",
+        "Zeta23.OPICARound4.NativeParityPencils.formalScaledSourceMatrix_actual_eq",
+        "Zeta23.OPICARound4.NativeParityPencils.coordinateFrame_gram",
+        "Zeta23.OPICARound4.NativeParityPencils.coordinateFrame_energy",
+        "Zeta23.OPICARound4.NativeParityPencils.coordinatePhysicalEquiv",
+        "Zeta23.OPICARound4.NativeParityPencils.coordinateFrame_gram_physical",
+        "Zeta23.OPICARound4.NativeParityPencils.coordinateFrame_energy_physical",
+        "Zeta23.OPICARound4.NativeParityPencils.coordinateFrame_sylvester_det_iff"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeParityPhysicalSeparation": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeParityPhysicalSeparation.lean",
+      "sha256": "bdc8cd9f07b7195b91340d13e4088e956012b5d7d772b336a40349e1f10d50d2",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParityPencils.physicalAdjointEquiv",
+        "Zeta23.OPICARound4.NativeParityPencils.physicalFullPencil_injective_iff_disjoint",
+        "Zeta23.OPICARound4.NativeParityPencils.coordinateFrame_physical_det_iff_disjoint"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeParityPrimeAnchor": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeParityPrimeAnchor.lean",
+      "sha256": "2c0d31ace7a750b4c9c4ab7e372910b07a1a8baa7019c135ba4e10057a6cae90",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParityPencils.native_zero_single_prime_pencil",
+        "Zeta23.OPICARound4.NativeParityPencils.exists_native_formal_pencil_injective"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeParityNonidentity": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeParityNonidentity.lean",
+      "sha256": "2c9ce939b1ea84071c0289d68433d88698fdd3d52834419ed3e5e16b8e66286b",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParityPencils.nativeFormalSeparationDet",
+        "Zeta23.OPICARound4.NativeParityPencils.nativeActualSeparationDet",
+        "Zeta23.OPICARound4.NativeParityPencils.exists_native_formal_separation_anchor",
+        "Zeta23.OPICARound4.NativeParityPencils.nativeActualSeparationDet_germ_nonzero",
+        "Zeta23.OPICARound4.NativeParityPencils.analyticOnNhd_nativeActualSeparationDet",
+        "Zeta23.OPICARound4.NativeParityPencils.exists_nativeActualSeparationDet_nonzero_in_open_positive",
+        "Zeta23.OPICARound4.NativeParityPencils.exists_finite_nativeActualSeparationDet_nonzero"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.NativeParityRegularSelection": {
+      "path": "Zeta23/OPICARound4/RegularCells/NativeParityRegularSelection.lean",
+      "sha256": "b9d6e1194864725f250ce05f863da35beada9133a94abf5ff71602cb0adf3b2c",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParityPencils.isOpen_positive_nativeActualSeparationDet_nonzero",
+        "Zeta23.OPICARound4.NativeParityPencils.exists_regular_and_separationDet_in_open_fixedCell",
+        "Zeta23.OPICARound4.NativeParityPencils.exists_bounded_regular_and_separationDet_in_open_above_one",
+        "Zeta23.OPICARound4.NativeParityPencils.cofinally_both_negative_regular_and_separationDet"
+      ]
+    },
+    "Zeta23.OPICARound4.SeparatedSourceVisibility": {
+      "path": "Zeta23/OPICARound4/SeparatedSourceVisibility.lean",
+      "sha256": "cc46ff5be622db2a9052a5d08b86c7eeded480daf46a804c304dc5ed863f6a2b",
+      "declarations": [
+        "Zeta23.OPICARound4.separated_native_even_eigen_channels_visible",
+        "Zeta23.OPICARound4.separated_native_odd_eigen_channels_visible",
+        "Zeta23.OPICARound4.separated_native_even_eigenspace_finrank_le_one",
+        "Zeta23.OPICARound4.separated_native_odd_eigenspace_finrank_le_one"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.PacketRegularSelection": {
+      "path": "Zeta23/OPICARound4/RegularCells/PacketRegularSelection.lean",
+      "sha256": "142c5c4e9d143bdb436e462c03dceca3be0265b9b902758a6061148c050ff66d",
+      "declarations": [
+        "Zeta23.OPICARound4.RegularCells.continuousAt_actual_original_phase_energy",
+        "Zeta23.OPICARound4.RegularCells.exists_actual_original_depth_transport_threshold",
+        "Zeta23.OPICARound4.RegularCells.exists_actual_generated_packet_with_open_selection",
+        "Zeta23.OPICARound4.RegularCells.exists_actual_generated_packet_native_regular",
+        "Zeta23.OPICARound4.RegularCells.exists_actual_composed_packet_native_regular",
+        "Zeta23.OPICARound4.RegularCells.cofinally_actual_regular_packet_joint_detector_ground"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.PacketNoncollisionSelection": {
+      "path": "Zeta23/OPICARound4/RegularCells/PacketNoncollisionSelection.lean",
+      "sha256": "a6ecebce57b5c560a610991a713c3e8c76475678fbab971191c39208a951cb44",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParityPencils.exists_actual_generated_packet_regular_separationDet",
+        "Zeta23.OPICARound4.NativeParityPencils.exists_actual_composed_packet_regular_separationDet",
+        "Zeta23.OPICARound4.NativeParityPencils.cofinally_actual_packet_joint_regular_separationDet"
+      ]
+    },
+    "Zeta23.OPICARound4.RegularCells.PacketSpectralSelection": {
+      "path": "Zeta23/OPICARound4/RegularCells/PacketSpectralSelection.lean",
+      "sha256": "d86fe4a10cb14228f88a58756d1f612c5e71fdbbdf9938ba209021524d293464",
+      "declarations": [
+        "Zeta23.OPICARound4.NativeParityPencils.cofinally_actual_packet_joint_regular_disjoint_spectra"
+      ]
+    },
+    "Zeta23.OPICARound4.Validation.NativeNoncollision": {
+      "path": "Zeta23/OPICARound4/Validation/NativeNoncollision.lean",
+      "sha256": "3c3a0c3613062c24644928e4caf37128b26cacacbddbc06c3104c798755dcfa8",
+      "declarations": [
+        "Zeta23.OPICARound4.Validation.NativeNoncollision.limiting_full_compressions_check",
+        "Zeta23.OPICARound4.Validation.NativeNoncollision.grouped_genuine_prime_laurent_check",
+        "Zeta23.OPICARound4.Validation.NativeNoncollision.actual_full_source_nonidentity_check",
+        "Zeta23.OPICARound4.Validation.NativeNoncollision.bounded_actual_regular_separation_selection_check",
+        "Zeta23.OPICARound4.Validation.NativeNoncollision.genuine_packet_same_detector_check",
+        "Zeta23.OPICARound4.Validation.NativeNoncollision.complete_even_source_and_eigenspace_check",
+        "Zeta23.OPICARound4.Validation.NativeNoncollision.complete_odd_source_and_eigenspace_check",
+        "Zeta23.OPICARound4.Validation.NativeNoncollision.genuine_packet_same_detector_spectral_check"
       ]
     }
   },
@@ -1006,7 +1655,7 @@
     "semantic_mutations_sha256": "a95ef16e4fdfa6276e1b44b7e3d197fbf63994a17c6e0189f83d746ae11032bd"
   },
   "source_audit_path": "research/RHRC/integration/opica_round4/MADNESS_SOURCE_AUDIT.json",
-  "source_audit_sha256": "1a4a836a3716df176d457a584b3029f9eabc6fe1820b4e5fe359d37f3e4b1860",
+  "source_audit_sha256": "0e4796da5bb48a394339708d25bfe98744b1aacdc294200de2f70c685f2d2c53",
   "source_constraints_sha256": "98e942c679344799f748fddb5d0ad6f812527359611d4242a03023e42174101e",
   "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
   "conditional_rh": {
