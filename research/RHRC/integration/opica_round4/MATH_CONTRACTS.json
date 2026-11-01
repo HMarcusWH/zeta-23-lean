@@ -704,14 +704,14 @@
   "madness_extension": {
     "register": "MADNESS_CONTRACTS.json",
     "source_audit": "MADNESS_SOURCE_AUDIT.json",
-    "modules": 4,
-    "added_declarations": 147,
-    "gate_total_modules": 52,
-    "gate_total_declarations": 647,
+    "modules": 7,
+    "added_declarations": 187,
+    "gate_total_modules": 55,
+    "gate_total_declarations": 687,
     "retained_modules": 48,
     "retained_declarations": 500,
     "retained_semantic_mutations": 17,
-    "semantic_mutations": 33,
+    "semantic_mutations": 40,
     "new_unconditional_estimate": "The normalized short hyperbola term and the prime-field plus long-term remainder have every fixed exponential decay rate.",
     "closing_arithmetic_estimate": "OPEN",
     "production_qualification": "CURRENT_HEAD_FULL_NATIVE_SUPPORT_AND_INDEPENDENT_ACCEPTANCE_REQUIRED",
@@ -724,6 +724,7 @@
       "The literal sampling mass equals the square of a positive source half-Laplace integral.",
       "The complete sampling quadratic equals sqrt(exp(t)) times the exact native long term, with the natural half-history cutoff retained.",
       "The actual diagonal is O(sqrt(exp(t))) at the exact native cutoff; the two normalized constant lower-bound targets are equivalent, but both remain OPEN."
-    ]
+    ],
+    "joint_ground_extension": "Exact common-quartic eventual negativity and same-packet joint ground; own-newborn simplicity and full-complement gap; tied-source moment sign and whole odd-kernel visibility. No independent closing bound."
   }
 }

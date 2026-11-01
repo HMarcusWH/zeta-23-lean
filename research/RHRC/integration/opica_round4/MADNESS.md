@@ -129,8 +129,9 @@ Several concrete compositions were tested:
   order `sqrt(x)` and can be removed at that cost.
 * GCD regrouping retains signed, cutoff-dependent restricted divisor sums.
   Complete Möbius inversion cannot collapse those weighted truncated sums.
-* The existing Schur inverse and forcing bounds lose too much exponent. They
-  also do not permit dropping the direct source-energy term.
+* The attempted absolute forcing estimates lose too much exponent. The compact
+  inverse cost was already controlled; the direct source-energy term must
+  still be retained.
 * Moment compression represents the actual signed expression with a priced
   error; it does not bound the changing arithmetic moments or their combined
   coefficient cost. The full two-dimensional Abel estimate reduces an absolute
@@ -148,7 +149,7 @@ into this pinned project, and its exponent remains above `1/2`.
 
 ## Validation and post-green meaning
 
-The [contract register](MADNESS_CONTRACTS.json) binds the exact four new modules.
+The [contract register](MADNESS_CONTRACTS.json) binds the exact seven Madness modules.
 The [source audit](MADNESS_SOURCE_AUDIT.json) records corpus coverage, attempted
 compositions and limitations. The original 500 declarations, 48 modules and 17
 semantic controls remain independently mandatory. New complete-type consumers
@@ -185,3 +186,52 @@ even and odd energies with all divisor-log weights. It does not compare them:
 replacing convolution's complex square by an absolute square would discard
 the entire odd-reflection contribution. This is a falsified shortcut, not a
 closing estimate.
+
+
+## Composing the earlier OPICA constraints on the same object
+
+[CommonQuarticGround.lean](../../../../Zeta23/OPICARound4/CommonQuarticGround.lean)
+uses the original finite-phase approximation, the Round3 parity cover and
+first-simultaneous-negative theorem, and the Round4 joint-ground package.
+Fix one actual negative original phase in each parity, then recenter those
+fixed functions in a growing aperture. Translation preserves the complete
+Weil energy and the existing uniform approximation errors vanish at the
+prescribed cutoff `Kd = ceil(L^4)`. Thus both native parities are negative at
+that same cutoff for every sufficiently large aperture. This is constant
+negative form depth, not a newly established common exponential Rayleigh rate.
+
+The threshold precedes every generated packet. Every sufficiently late actual
+packet therefore retains its original exponentially negative unit detector
+and also satisfies the joint-ground constraints at its detector cutoff. The
+selected Schur cutoff can be smaller. The even and odd first-birth cutoffs
+also remain distinct; their maximum is bounded above by Kd, and each keeps
+its own PSD predecessor and its regular-or-resonant Schur alternative.
+
+[JointGroundBirth.lean](../../../../Zeta23/OPICARound4/JointGroundBirth.lean)
+uses the actual Round3 newborn witness. Its one-dimensional shell and PSD
+predecessor imply simplicity of a negative ground and nonnegativity of the
+entire orthogonal complement. The shifted complement has gap at least the
+negative depth, giving a response norm bound without inverting on the ground
+kernel. This theorem applies at an own first birth; it is not silently moved
+to the larger detector cutoff.
+
+The earlier corrected-cubic-source and tied-ground identities now give two
+further constraints. An active even source at or below the odd floor has
+positive source/fourth-moment energy. At a simple even tie, exactly one of the
+corrected even source and the whole odd ground projection is active. The
+whole projection preserves every odd multiplicity; no selected odd vector or
+odd simplicity is substituted for it. These statements constrain ties but do
+not rule them out.
+
+The compact inverse and four-history norm bounds were already available.
+The remaining problem is to constrain the complete signed arithmetic value,
+including its direct source energy and shifted mass, strongly enough to
+contradict the actual negative packet. Neither source visibility nor the new
+complement bound supplies that conclusion alone. The exact conditional RH
+theorem above and its unproved arithmetic premise remain unchanged.
+
+The full support gate now contains 687 declarations in 55 owned modules and
+40 intended semantic controls. All 647 preceding complete types and axiom
+sets remain mandatory. Eight new independent consumers and seven new
+negative controls check the cutoff, threshold, source, carrier and complement
+distinctions. Source registration does not itself grant compiler authority.

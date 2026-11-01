@@ -42,7 +42,7 @@ def check_madness_contracts(repo):
             ledger['claim_cap']=='SUPPORT_ONLY_RH_AND_STEP4_OPEN' and
             ledger['RH']==ledger['Step4']=='OPEN' and
             ledger['closing_arithmetic']['status']=='OPEN' and
-            [r['id'] for r in ledger['contracts']]==['M1','M2','M3','M4'] and
+            [r['id'] for r in ledger['contracts']]==['M1','M2','M3','M4','M5','M6','M7'] and
             all(r['arithmetic_estimate_supplied'] is False for r in ledger['contracts']),
             'Madness claim authority differs')
     require(set(ledger['current_modules'])==set(MADNESS_MODULES), 'Exact Madness module inventory differs')

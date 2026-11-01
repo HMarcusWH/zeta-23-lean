@@ -3513,18 +3513,22 @@
       "Zeta23.OPICARound4.MobiusHyperbola",
       "Zeta23.OPICARound4.ActualSourceHyperbola",
       "Zeta23.OPICARound4.HyperbolaDiagonal",
-      "Zeta23.OPICARound4.Validation.Hyperbola"
+      "Zeta23.OPICARound4.Validation.Hyperbola",
+      "Zeta23.OPICARound4.CommonQuarticGround",
+      "Zeta23.OPICARound4.JointGroundBirth",
+      "Zeta23.OPICARound4.Validation.JointGround"
     ],
     "native_gate": "MATHEMATICAL_SUPPORT",
     "retained_declarations": 500,
     "retained_modules": 48,
     "retained_semantic_mutations": 17,
-    "added_declarations": 147,
-    "added_semantic_mutations": 16,
-    "current_semantic_mutations": 33,
+    "added_declarations": 187,
+    "added_semantic_mutations": 23,
+    "current_semantic_mutations": 40,
     "full_types_and_axioms_required": true,
     "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
     "RH": "OPEN",
-    "Step4": "OPEN"
+    "Step4": "OPEN",
+    "joint_ground_extension": "Exact common-quartic eventual negativity and same-packet joint ground; own-newborn simplicity and full-complement gap; tied-source moment sign and whole odd-kernel visibility. No independent closing bound."
   }
 }

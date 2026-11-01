@@ -2586,5 +2586,35 @@
     "reflection_energy_insight": "Derived actual Q/sqrt(x)=Eplus-Eminus with divisor-log weights and genuine Mobius profile. A complex convolution square cannot be changed to an absolute-square Gram energy; no uniform odd-excess bound established.",
     "RH": "OPEN",
     "Step4": "OPEN"
+  },
+  "joint_ground_composition": {
+    "status": "EXACT_SOURCE_SUPPORT_THEOREMS_REQUIRE_CURRENT_HEAD_NATIVE_QUALIFICATION",
+    "historical_inputs": [
+      "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer",
+      "Zeta23.OPICARound3.NeutralParityCover",
+      "Zeta23.OPICARound3.FirstSimultaneousNegative",
+      "Zeta23.OPICARound3.NewbornSource",
+      "Zeta23.OPICARound4.JointGroundConstraints",
+      "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie",
+      "Zeta23.CCM.CanonicalPoleNeutralCubicWitness",
+      "Zeta23.CCM.CanonicalPoleNeutralTiePackage"
+    ],
+    "result": "The same actual quartic detector is eventually jointly negative; its first births retain their own predecessors; a newborn negative mode controls its full complement; tied source visibility is a statement about the entire odd ground kernel.",
+    "prior_compact_inverse_cost": "Already supplied: the original compact inverse and all four local histories have source-bound norm controls. This is not a missing inverse premise.",
+    "cutoff_distinctions": "The prescribed Kd=ceil(L^4), selected Schur cutoff, even first cutoff and odd first cutoff remain distinct; only proved inequalities relate them.",
+    "not_supplied": [
+      "No common exponential Rayleigh depth is inferred from constant negative fixed-phase form depths.",
+      "No newborn predecessor property is transplanted to the larger common cutoff.",
+      "No aperture local minimum or stationarity is inferred from integer-cutoff minimality.",
+      "No tied-ground exclusion follows from exclusive source visibility.",
+      "The complete signed smoothSourceMain retains inverse-response, direct source energy and shifted mass. Its opposing arithmetic bound is OPEN."
+    ],
+    "new_modules_sha256": {
+      "Zeta23.OPICARound4.CommonQuarticGround": "84ab7f0fc9fdc2a0d8ac7c4ac013c2bfa50e58c25540c1ca6bc7fdda58ccd488",
+      "Zeta23.OPICARound4.JointGroundBirth": "8b5ad94e720b95a41931d7b3246dc606b9f3d322153a9946475ca83f4d130335",
+      "Zeta23.OPICARound4.Validation.JointGround": "3830ce211dc99a6836accef85f42fe180c307e8c7360427038ed97ec3a254bf5"
+    },
+    "RH": "OPEN",
+    "Step4": "OPEN"
   }
 }
