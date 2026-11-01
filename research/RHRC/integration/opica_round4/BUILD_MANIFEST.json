@@ -923,7 +923,7 @@
     },
     {
       "path": ".github/workflows/rhrc_opica_followup.yml",
-      "sha256": "7aaa0af32316eaeaa5719f7f80ef3d0e67aff50f9bdeba9568746e185627a3db"
+      "sha256": "b545da8536cfb89a2152b1507f920350af089e92ea3d9534c56b7dc59b97234e"
     },
     {
       "path": ".github/workflows/rhrc_opica_round2.yml",
