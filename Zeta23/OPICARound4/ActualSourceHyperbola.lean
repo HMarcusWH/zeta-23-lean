@@ -1,3 +1,6 @@
+import Zeta23.CCM.NativeWeilResponse
+import Zeta23.ExceptionalZero.UniversalSincSignedExcursions
+import Zeta23.ExceptionalZero.RHTerminalConfigAttempt
 import Zeta23.CCM.NativeCompletedInputZetaLaplace
 import Zeta23.OPICAFollowup.NativeSourceTransforms
 import Mathlib.MeasureTheory.Function.JacobianOneDim
@@ -18,7 +21,8 @@ import Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds
 The source is the unchanged fixed-scale kernel self-convolution. All prime
 powers are retained, and its actual compact support supplies the finite cutoff.
 This module proves exact source identities and inherited integer-drive bounds.
-It supplies no signed inverse estimate and assumes no RH premise.
+It supplies no signed inverse estimate. Its final conditional theorem derives the
+exact RH statement only from the explicit eventual native long-term lower bound.
 -/
 
 noncomputable section
@@ -1385,6 +1389,209 @@ theorem actualFlatSamplingMass_pos : 0 < actualFlatSamplingMass := by
   exact sq_pos_of_pos actualSourceHalfMass_pos
 
 end ActualPositiveMass
+
+/-! Exact conditional RH consequence. The arithmetic premise remains OPEN. -/
+section ConditionalRH
+open MeasureTheory Complex Set Filter
+open scoped Topology Convolution ComplexConjugate
+open CCM ExceptionalZero
+
+private abbrev k : ℝ → ℂ := universalSincKernel UniversalSinc.fixedScale
+private theorem k_eq : k = originalSincTest UniversalSinc.fixedScale := rfl
+private theorem kc : ContDiff ℝ 2 k :=
+  (contDiff_originalSincTest UniversalSinc.fixedScale_pos).of_le
+    (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2)
+private theorem ks : HasCompactSupport k :=
+  hasCompactSupport_originalSincTest UniversalSinc.fixedScale_pos
+private theorem ke (x : ℝ) : k (-x) = k x :=
+  originalSincTest_even UniversalSinc.fixedScale_pos x
+private theorem kr (x : ℝ) : conj (k x) = k x := by
+  change conj (universalSincKernel UniversalSinc.fixedScale x) = universalSincKernel UniversalSinc.fixedScale x
+  rw [universalSincKernel_eq_real _ UniversalSinc.fixedScale_pos]
+  exact Complex.conj_ofReal _
+
+/-- Literal original pair test, including its exact translation. -/
+theorem actualCorrelationKernel_weilTest_translate (t u : ℝ) :
+    EF.weilTest (translateRight (universalSincKernel UniversalSinc.fixedScale) t)
+      (universalSincKernel UniversalSinc.fixedScale) u = actualCorrelationKernel (u-t) := by
+  change EF.weilTest (translateRight k t) k u = actualCorrelationKernel (u-t)
+  unfold EF.weilTest EF.tilde translateRight
+  rw [convolution_def]
+  simp only [ContinuousLinearMap.mul_apply']
+  rw [← integral_add_right_eq_self
+    (fun x : ℝ => k (x-t) * conj (k (-(u-x)))) t]
+  unfold actualCorrelationKernel
+  apply integral_congr_ae
+  filter_upwards with x
+  rw [add_sub_cancel_right, kr, ke]
+  congr 1
+  congr 1
+  ring
+
+private theorem Hc : ContDiff ℝ 2 actualCorrelationKernel := by
+  have h := EF.weilTest_contDiff kc kc.continuous ks
+  have he : EF.weilTest k k = actualCorrelationKernel := by
+    funext u
+    have htr : translateRight (universalSincKernel UniversalSinc.fixedScale) 0 =
+        universalSincKernel UniversalSinc.fixedScale := by
+      funext x
+      simp [ExceptionalZero.translateRight]
+    simpa only [htr,sub_zero] using actualCorrelationKernel_weilTest_translate 0 u
+  rwa [he] at h
+private theorem He (x : ℝ) : actualCorrelationKernel (-x) = actualCorrelationKernel x := by
+  exact convolution_neg_of_neg_eq (L:=ContinuousLinearMap.mul ℝ ℂ)
+    (Filter.Eventually.of_forall ke) (Filter.Eventually.of_forall ke)
+
+private theorem Hp : paperFT actualCorrelationKernel (I/2)=0 ∧
+    paperFT actualCorrelationKernel (-I/2)=0 := by
+  have he : EF.weilTest k k = actualCorrelationKernel := by
+    funext u
+    have htr : translateRight (universalSincKernel UniversalSinc.fixedScale) 0 =
+        universalSincKernel UniversalSinc.fixedScale := by
+      funext x
+      simp [ExceptionalZero.translateRight]
+    simpa only [htr,sub_zero] using actualCorrelationKernel_weilTest_translate 0 u
+  rw [← he]
+  rw [EF.paperFT_weilTest kc.continuous kc.continuous ks ks,
+      EF.paperFT_weilTest kc.continuous kc.continuous ks ks]
+  have h := paperFT_originalSincTest_elementary_pair UniversalSinc.fixedScale_pos
+  change paperFT k (I/2)=0 ∧ paperFT k (-I/2)=0 at h
+  simp only [h.1,h.2,zero_mul,and_self]
+
+def actualCorrelationArch (t : ℝ) : ℝ :=
+  ((1/(2*Real.pi):ℂ) * ∫ r : ℝ,
+    Complex.exp (I*(r:ℂ)*(t:ℂ)) * paperFT actualCorrelationKernel (r:ℂ) *
+      (EF.gammaBracket r:ℂ)).re
+
+/-- The complete original correlation equals its actual archimedean term
+    minus both literal prime histories. Neither history is silently dropped. -/
+theorem actualCorrelation_explicit_formula (a : ℝ) :
+    fixedOriginalSincCorrelationReal a = actualCorrelationArch (2*a) -
+      actualCorrelationPrimeField (2*a) - actualCorrelationPrimeField (-(2*a)) := by
+  have h := zeta_W_eq_literatureRHS_weilTest
+    (contDiff_translateRight kc (2*a)) kc.continuous
+    (hasCompactSupport_translateRight ks (2*a)) ks
+  have he : EF.weilTest (translateRight k (2*a)) k =
+      translateRight actualCorrelationKernel (2*a) := by
+    funext u
+    exact actualCorrelationKernel_weilTest_translate (2*a) u
+  change zetaZeroConfig.W (translateRight k (2*a)) k = _ at h
+  rw [he,EF.literatureRHS] at h
+  simp only [paperFT_translateRight,Hp.1,Hp.2,mul_zero,zero_add,zero_sub] at h
+  have hp : (∑' n : ℕ, ((ArithmeticFunction.vonMangoldt n / Real.sqrt n:ℝ):ℂ) *
+      (translateRight actualCorrelationKernel (2*a) (Real.log n) +
+       translateRight actualCorrelationKernel (2*a) (-Real.log n))) =
+      nativeComplexPrimeField actualCorrelationKernel (2*a) +
+        nativeComplexPrimeField actualCorrelationKernel (-(2*a)) := by
+    unfold nativeComplexPrimeField
+    rw [← (nativeComplexPrimeField_summable actualCorrelationKernel_supported (t:=2*a)).tsum_add
+      (nativeComplexPrimeField_summable actualCorrelationKernel_supported (t:=-(2*a)))]
+    apply tsum_congr
+    intro n
+    unfold translateRight nativePrimeCoefficient
+    have he1 : Real.log n - 2*a = -(2*a-Real.log n) := by ring
+    have he2 : -Real.log n - 2*a = -(2*a)-Real.log n := by ring
+    rw [he1,He,he2,mul_add]
+  rw [hp] at h
+  have hr := congrArg Complex.re h
+  change fixedOriginalSincCorrelationReal a = _ at hr
+  simp only [Complex.add_re,Complex.neg_re] at hr
+  unfold actualCorrelationArch actualCorrelationPrimeField
+  linarith
+
+/-- The fixed-source archimedean correction has one uniform constant,
+    independent of every physical translation. -/
+theorem actualCorrelationArch_uniform_bound :
+    ∃ C : ℝ, 0<C ∧ ∀ t : ℝ, |actualCorrelationArch t| ≤ C := by
+  let g : ℝ → ℂ := fun r => paperFT actualCorrelationKernel (r:ℂ)*(EF.gammaBracket r:ℂ)
+  have hi : Integrable g := nativeWeilArch_fourier_integrable Hc
+    actualCorrelationKernel_supported.hasCompactSupport
+  let C : ℝ := ‖(1/(2*Real.pi):ℂ)‖ * ∫ r : ℝ, ‖g r‖
+  have hC : 0≤C := mul_nonneg (norm_nonneg _) (integral_nonneg (fun _ => norm_nonneg _))
+  refine ⟨C+1,by linarith,?_⟩
+  intro t
+  have hphase (r : ℝ) : ‖Complex.exp (I*(r:ℂ)*(t:ℂ))‖=1 := by
+    rw [Complex.norm_exp]
+    simp
+  have hb : |actualCorrelationArch t|≤C := by
+    unfold actualCorrelationArch
+    apply (Complex.abs_re_le_norm _).trans
+    rw [norm_mul]
+    apply mul_le_mul_of_nonneg_left _ (norm_nonneg _)
+    calc
+      ‖∫ r : ℝ, Complex.exp (I*(r:ℂ)*(t:ℂ))*paperFT actualCorrelationKernel (r:ℂ)*
+          (EF.gammaBracket r:ℂ)‖ ≤
+        ∫ r : ℝ, ‖Complex.exp (I*(r:ℂ)*(t:ℂ))*paperFT actualCorrelationKernel (r:ℂ)*
+          (EF.gammaBracket r:ℂ)‖ := norm_integral_le_integral_norm _
+      _ = ∫ r : ℝ, ‖g r‖ := by
+        apply integral_congr_ae
+        filter_upwards with r
+        rw [mul_assoc,norm_mul,hphase,one_mul]
+  linarith
+
+/-- The reflected history vanishes once its complete source support is past. -/
+theorem actualCorrelationPrimeField_reflected_zero (t : ℝ)
+    (ht : 2*UniversalSinc.fixedScale < t) : actualCorrelationPrimeField (-t)=0 := by
+  unfold actualCorrelationPrimeField nativeComplexPrimeField
+  have hz : (∑' n : ℕ, (nativePrimeCoefficient n:ℂ)*actualCorrelationKernel (-t-Real.log n))=0 := by
+    suffices hh : ∀ n : ℕ, (nativePrimeCoefficient n:ℂ)*actualCorrelationKernel (-t-Real.log n)=0 by
+      simp_rw [hh]
+      exact tsum_zero
+    intro n
+    by_cases hn : n=0
+    · simp [hn,nativePrimeCoefficient]
+    · have hn1 : 1≤n := Nat.one_le_iff_ne_zero.mpr hn
+      have hl : 0 ≤ Real.log (n : ℝ) := Real.log_nonneg (Nat.one_le_cast.mpr hn1)
+      have hs : actualCorrelationKernel (-t-Real.log n)=0 :=
+        image_eq_zero_of_notMem_tsupport (by
+          intro hm
+          have hh := (actualCorrelationKernel_supported hm).1
+          linarith)
+      rw [hs,mul_zero]
+  rw [hz]
+  rfl
+
+/-- The only unproved premise is the exact eventual arithmetic lower bound. -/
+theorem riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower
+    (hbound : ∃ C : ℝ, 0<C ∧ ∃ T : ℝ, ∀ t : ℝ, T≤t →
+      -C ≤ hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t/2)) :
+    RiemannHypothesis := by
+  obtain ⟨C,hC,T,hT⟩ := hbound
+  obtain ⟨D,hD,S,hS,hsmall⟩ := actualCorrelationPrimeField_add_longTerm_rapid_bound 1 (by norm_num)
+  obtain ⟨B,hB,harch⟩ := actualCorrelationArch_uniform_bound
+  have hlow (a : ℝ) (ha : max (max T S) (2*UniversalSinc.fixedScale+1)≤2*a) :
+      -(B+D+C)≤fixedOriginalSincCorrelationReal a := by
+    have ht := (le_max_left T S).trans ((le_max_left (max T S) _).trans ha)
+    have hs := (le_max_right T S).trans ((le_max_left (max T S) _).trans ha)
+    have hpos : 0≤2*a := hS.trans hs
+    have he : Real.exp (-(1:ℝ)*(2*a))≤1 := Real.exp_le_one_iff.mpr (by linarith)
+    have he' := mul_le_mul_of_nonneg_left he hD.le
+    have hp := (abs_le.mp (hsmall (2*a) hs)).2
+    have hb := hT (2*a) ht
+    have ha' : 2*UniversalSinc.fixedScale<2*a := by
+      have hx := (le_max_right (max T S) _).trans ha
+      linarith
+    rw [actualCorrelation_explicit_formula,actualCorrelationPrimeField_reflected_zero (2*a) ha']
+    have har := (abs_le.mp (harch (2*a))).1
+    linarith
+  have hline : ∀ ρ : zetaZeroConfig.carrier, (ρ:ℂ).re=1/2 := by
+    intro ρ
+    by_contra hoff
+    have hd : 0 < |(ρ:ℂ).re-1/2| := abs_pos.mpr (sub_ne_zero.mpr hoff)
+    obtain ⟨a,ha,hvalue⟩ :=
+      (fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero
+        ρ hoff hd (max (max T S) (2*UniversalSinc.fixedScale+1)) (B+D+C)).2
+    have hApos : 0≤max (max T S) (2*UniversalSinc.fixedScale+1) :=
+      (by linarith [UniversalSinc.fixedScale_pos] : 0≤2*UniversalSinc.fixedScale+1).trans (le_max_right _ _)
+    have hlo := hlow a (by linarith)
+    norm_num at hvalue
+    linarith
+  intro s hz htriv hs1
+  have hm : s∈zetaZeroConfig.carrier :=
+    isNontrivialZero_of_mathlib_nontrivialZero hz htriv hs1
+  exact hline ⟨s,hm⟩
+
+end ConditionalRH
 
 end Zeta23.OPICARound4
 

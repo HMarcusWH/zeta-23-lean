@@ -162,3 +162,26 @@ its normalization fixed. The most useful next theorem would constrain the
 actual Möbius signs in the balanced interior. Rewriting the same expression,
 checking more finite samples, or counting supporting declarations does not
 supply that theorem. No impossibility of a future proof is asserted.
+
+
+## Exact conditional RH consequence
+
+`riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower` connects the
+literal remaining native bound directly to Mathlib's `RiemannHypothesis`.
+It retains the complete actual source, all prime powers, the factor-two
+translation, the reflected history until its support threshold, and the
+uniform archimedean correction. The contradiction uses the existing two-signed
+late-excursion theorem at exponent zero. No separate rightmost zero, visibility,
+ground-ray identification or explicit-formula premise is assumed.
+
+The remaining premise is exactly: there exist `C > 0` and a time `T`, chosen
+before every `t >= T`, with the actual `hyperbolaT` at
+`actualCorrelationCutoff t / 2` at least `-C`. This commit does not prove that
+premise. Positive sampling mass, a bounded diagonal, and equivalence of the
+two lower-bound formulations do not supply it. Step 4 and RH remain OPEN.
+
+The actual reflection-energy derivation isolates a difference of positive
+even and odd energies with all divisor-log weights. It does not compare them:
+replacing convolution's complex square by an absolute square would discard
+the entire odd-reflection contribution. This is a falsified shortcut, not a
+closing estimate.

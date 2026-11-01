@@ -14,7 +14,7 @@
     {
       "id": "M2",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
-      "claim": "Literal fixed kappa*kappa prime field, all prime powers, actual history cutoff, native-source convolution and integer-drive identities. Exact normalization and late-drive transfer remain distinct from a stable global inverse. The entire normalized short term has every fixed exponential decay rate using only abs(mu)<=1, with a uniform source-only threshold. Consequently actualCorrelationPrimeField plus the complete normalized long term has every fixed exponential decay rate; neither summand is independently bounded. The entire higher-prime-power part is uniformly bounded for all real times, with an exact ordinary-prime/higher-power split. The actual integer-drive first derivative has every fixed exponential decay rate; the positive flat-test derivative includes the derivative of its square-root normalization. These partial estimates do not bound the ordinary-prime part or signed long term. The literal flat test is globally C1 and compactly supported, its all-natural sampling remainder is uniformly bounded, and its genuine-Mobius diagonal has an unconditional square-root bound. The eventual lower-bound equivalence removes the formerly abstract bounded-remainder premise but proves neither lower bound. The complete sampling quadratic equals sqrt(exp(t)) times the exact native long term, retaining Nat.sqrt(N(t)/2). The actual diagonal has an all-time square-root bound at this same cutoff, giving an exact equivalence of the two normalized eventual constant lower bounds. The literal sampling mass equals the square of the strictly positive source half-Laplace integral. The actual transform endpoint is obtained by analytic continuation before the convolution/substitution steps; no termwise interchange at the critical pole is used. Hence the retained rank-one is nonnegative, but the complete signed term is still unbounded by these results.",
+      "claim": "Literal fixed kappa*kappa prime field, all prime powers, actual history cutoff, native-source convolution and integer-drive identities. Exact normalization and late-drive transfer remain distinct from a stable global inverse. The entire normalized short term has every fixed exponential decay rate using only abs(mu)<=1, with a uniform source-only threshold. Consequently actualCorrelationPrimeField plus the complete normalized long term has every fixed exponential decay rate; neither summand is independently bounded. The entire higher-prime-power part is uniformly bounded for all real times, with an exact ordinary-prime/higher-power split. The actual integer-drive first derivative has every fixed exponential decay rate; the positive flat-test derivative includes the derivative of its square-root normalization. These partial estimates do not bound the ordinary-prime part or signed long term. The literal flat test is globally C1 and compactly supported, its all-natural sampling remainder is uniformly bounded, and its genuine-Mobius diagonal has an unconditional square-root bound. The eventual lower-bound equivalence removes the formerly abstract bounded-remainder premise but proves neither lower bound. The complete sampling quadratic equals sqrt(exp(t)) times the exact native long term, retaining Nat.sqrt(N(t)/2). The actual diagonal has an all-time square-root bound at this same cutoff, giving an exact equivalence of the two normalized eventual constant lower bounds. The literal sampling mass equals the square of the strictly positive source half-Laplace integral. The actual transform endpoint is obtained by analytic continuation before the convolution/substitution steps; no termwise interchange at the critical pole is used. Hence the retained rank-one is nonnegative, but the complete signed term is still unbounded by these results. The exact eventual native lower bound now implies Mathlib RiemannHypothesis; that bound remains unproved.",
       "arithmetic_estimate_supplied": false,
       "partial_source_estimates_supplied": true,
       "arithmetic_estimate_field_scope": "The existing arithmetic_estimate_supplied=false records the independent closing estimate, not absence of partial unconditional source estimates."
@@ -29,7 +29,7 @@
     {
       "id": "M4",
       "module": "Zeta23.OPICARound4.Validation.Hyperbola",
-      "claim": "Independent complete expected-type consumers. Negative controls reject changed sign, missing normalization, omitted diagonal and promotion of an equivalence to an estimate.",
+      "claim": "Independent complete expected-type consumers. Negative controls reject changed sign, missing normalization, omitted diagonal and promotion of an equivalence to an estimate. Controls also reject the wrong translation, premature reflected-history removal, and unconditional promotion of the conditional RH theorem.",
       "arithmetic_estimate_supplied": false
     }
   ],
@@ -40,7 +40,8 @@
     "not_equivalent_without_adapters": "The literal regularity/sampling/normalization/diagonal adapters are now proved at the exact natural cutoff. The separate paper real-floor cutoff is not identified by assumption. Neither lower-bound proposition is asserted.",
     "pass8": "At x=N^2/T the paper-level target is H_N >= -C*N. The moment/spectral representation and negative-spectrum controls do not provide it.",
     "native_formula": "There exist C>0 and T0 before every t>=T0 such that (actualFlatSamplingMass*exp(t)*mobiusReciprocalSum(Y)^2 + mobiusPoissonOffDiagonal(actualFlatSamplingRemainder,exp(t),Y))/sqrt(exp(t)) >= -C, where Y=Nat.sqrt(actualCorrelationCutoff(t)/2).",
-    "actual_mass_status": "PROVED_POSITIVE_AS_SQUARE_OF_LITERAL_POSITIVE_SOURCE_HALF_MASS"
+    "actual_mass_status": "PROVED_POSITIVE_AS_SQUARE_OF_LITERAL_POSITIVE_SOURCE_HALF_MASS",
+    "conditional_rh_adapter": "SUPPLIED_WITH_EXACT_NATIVE_BOUND_PREMISE_RETAINED"
   },
   "validation": "Exact current-head full types, transitive axioms, source bindings, retained scope, semantic controls and independent production acceptance required.",
   "authority": "SOURCE_BOUND_RESEARCH_REGISTER_NOT_PROOF_RECEIPT",
@@ -81,7 +82,7 @@
     },
     "Zeta23.OPICARound4.ActualSourceHyperbola": {
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "sha256": "34bce2e78a2d0dbc61f70e00691a0a71a9d70aa439c533e42b082bac3536cf0c",
+      "sha256": "568292f2b9008892772550b544a48fdaa5730be44d87e453fd8008f9bbb1a350",
       "declarations": [
         "Zeta23.OPICARound4.actualCorrelationKernel",
         "Zeta23.OPICARound4.actualCorrelationSource",
@@ -152,7 +153,13 @@
         "Zeta23.OPICARound4.actualFlatSamplingMass_eq_dampedDrive",
         "Zeta23.OPICARound4.actualCorrelationIntegerDrive_half_integral",
         "Zeta23.OPICARound4.actualFlatSamplingMass_eq_sourceHalfMass_sq",
-        "Zeta23.OPICARound4.actualFlatSamplingMass_pos"
+        "Zeta23.OPICARound4.actualFlatSamplingMass_pos",
+        "Zeta23.OPICARound4.actualCorrelationKernel_weilTest_translate",
+        "Zeta23.OPICARound4.actualCorrelationArch",
+        "Zeta23.OPICARound4.actualCorrelation_explicit_formula",
+        "Zeta23.OPICARound4.actualCorrelationArch_uniform_bound",
+        "Zeta23.OPICARound4.actualCorrelationPrimeField_reflected_zero",
+        "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower"
       ]
     },
     "Zeta23.OPICARound4.HyperbolaDiagonal": {
@@ -179,7 +186,7 @@
     },
     "Zeta23.OPICARound4.Validation.Hyperbola": {
       "path": "Zeta23/OPICARound4/Validation/Hyperbola.lean",
-      "sha256": "1310641f91707d7fe4a0f713474d999ec03a5c338c170962ae816750922c2aff",
+      "sha256": "17dad44363dbd3eccfbfc49aca496e6e9d40a38aec209ffe9f3864560814b9ef",
       "declarations": [
         "Zeta23.OPICARound4.validation_madness_actual_hyperbola",
         "Zeta23.OPICARound4.validation_madness_actual_drive",
@@ -205,7 +212,12 @@
         "Zeta23.OPICARound4.validation_madness_actualCorrelationLongTerm_eventual_lower_iff_combined",
         "Zeta23.OPICARound4.validation_madness_exact_sampling_bridge",
         "Zeta23.OPICARound4.validation_madness_actual_mass_positive",
-        "Zeta23.OPICARound4.validation_madness_actual_rank_one_nonnegative"
+        "Zeta23.OPICARound4.validation_madness_actual_rank_one_nonnegative",
+        "Zeta23.OPICARound4.validation_madness_actual_weil_translation",
+        "Zeta23.OPICARound4.validation_madness_actual_explicit_formula",
+        "Zeta23.OPICARound4.validation_madness_actual_arch_bound",
+        "Zeta23.OPICARound4.validation_madness_actual_reflected_history",
+        "Zeta23.OPICARound4.validation_madness_rh_of_actual_lower"
       ]
     }
   },
@@ -768,7 +780,16 @@
     "semantic_mutations_sha256": "a95ef16e4fdfa6276e1b44b7e3d197fbf63994a17c6e0189f83d746ae11032bd"
   },
   "source_audit_path": "research/RHRC/integration/opica_round4/MADNESS_SOURCE_AUDIT.json",
-  "source_audit_sha256": "1f128ccf9f629df202e545e42b9df36fe74162d30658fee41383ff20bdc5605e",
+  "source_audit_sha256": "b21849081467ecf25fc2b9b0057688dd2f3b3ebdb2ce7da29fcfc35eed5ea05c",
   "source_constraints_sha256": "98e942c679344799f748fddb5d0ad6f812527359611d4242a03023e42174101e",
-  "production_qualification": "REQUIRED_ON_CURRENT_HEAD"
+  "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
+  "conditional_rh": {
+    "status": "EXACT_CONDITIONAL_THEOREM_NATIVE_CHECK_REQUIRED",
+    "declaration": "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower",
+    "premise": "There exist C>0 and T before all real t>=T, such that hyperbolaT(actualCorrelationLogarithmicTest(t),actualCorrelationCutoff(t)/2)>=-C.",
+    "conclusion": "Mathlib RiemannHypothesis",
+    "premise_proved": false,
+    "adapters": "Exact translated actual Weil test and full explicit formula; uniform archimedean correction; reflected prime history vanishes only after support threshold; actual P+T rapid bound; beta=0 two-signed late excursions and nontrivial-zero seam.",
+    "source_sha256": "a1c8293c98fd9fe8ad607b264711708f716e877adf36a9f5868d615140a10c56"
+  }
 }

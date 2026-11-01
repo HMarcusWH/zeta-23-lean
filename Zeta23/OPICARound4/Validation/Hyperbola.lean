@@ -157,4 +157,32 @@ theorem validation_madness_actual_rank_one_nonnegative {x : ℝ} (hx : 0 ≤ x) 
     0 ≤ mobiusPoissonRankOne actualFlatSamplingMass x Y :=
   mobiusPoissonRankOne_nonneg actualFlatSamplingMass_pos.le hx Y
 
+
+theorem validation_madness_actual_weil_translation (t u : ℝ) :
+    EF.weilTest (ExceptionalZero.translateRight
+      (CCM.universalSincKernel CCM.UniversalSinc.fixedScale) t)
+      (CCM.universalSincKernel CCM.UniversalSinc.fixedScale) u =
+        actualCorrelationKernel (u-t) :=
+  actualCorrelationKernel_weilTest_translate t u
+
+theorem validation_madness_actual_explicit_formula (a : ℝ) :
+    ExceptionalZero.fixedOriginalSincCorrelationReal a = actualCorrelationArch (2*a) -
+      actualCorrelationPrimeField (2*a) - actualCorrelationPrimeField (-(2*a)) :=
+  actualCorrelation_explicit_formula a
+
+theorem validation_madness_actual_arch_bound :
+    ∃ C : ℝ, 0 < C ∧ ∀ t : ℝ, |actualCorrelationArch t| ≤ C :=
+  actualCorrelationArch_uniform_bound
+
+theorem validation_madness_actual_reflected_history (t : ℝ)
+    (ht : 2*CCM.UniversalSinc.fixedScale < t) :
+    actualCorrelationPrimeField (-t) = 0 :=
+  actualCorrelationPrimeField_reflected_zero t ht
+
+theorem validation_madness_rh_of_actual_lower
+    (hbound : ∃ C : ℝ, 0 < C ∧ ∃ T : ℝ, ∀ t : ℝ, T ≤ t →
+      -C ≤ hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t/2)) :
+    RiemannHypothesis :=
+  riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower hbound
+
 end Zeta23.OPICARound4

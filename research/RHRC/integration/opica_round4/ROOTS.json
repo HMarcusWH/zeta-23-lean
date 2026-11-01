@@ -3680,490 +3680,532 @@
       "declaration": "Zeta23.OPICARound4.actualCorrelationKernel",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 31,
+      "line": 35,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationSource",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 35,
+      "line": 39,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationCutoff",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 37,
+      "line": 41,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationWeight",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 40,
+      "line": 44,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationPrimeField",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 43,
+      "line": 47,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationIntegerDrive",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 46,
+      "line": 50,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationIntegerDrive_eq_sourceConvolution",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 86,
+      "line": 90,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationIntegerDrive_bound_of_native_bound",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 121,
+      "line": 125,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationIntegerDrive_rapid_bound",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 174,
+      "line": 178,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationKernel_supported",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 183,
+      "line": 187,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationCutoff_exact",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 193,
+      "line": 197,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationWeight_zero_above",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 196,
+      "line": 200,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationPrimeField_eq_weighted_vonMangoldt",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 203,
+      "line": 207,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationPrimeField_eq_nativeSourceConvolution",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 233,
+      "line": 237,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationLogarithmicTest",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 239,
+      "line": 243,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationLogarithmicTest_eq_integerDrive",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 244,
+      "line": 248,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatMobiusTest",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 285,
+      "line": 289,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatMobiusTest_normalization",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 290,
+      "line": 294,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationPrimeField_eq_mobius",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 301,
+      "line": 305,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationPrimeField_hyperbola",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 307,
+      "line": 311,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationLogarithmicTest_half_support",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 316,
+      "line": 320,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationPrimeField_hyperbola_half",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 322,
+      "line": 326,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualNativeSourceConvolution_hyperbola_half",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 331,
+      "line": 335,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationShortTerm_rapid_bound",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 360,
+      "line": 364,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationPrimeField_add_longTerm_rapid_bound",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 427,
+      "line": 431,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.higherPrimePowerCoefficient",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 455,
+      "line": 459,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.higherPrimePowerCoefficient_nonneg",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 458,
+      "line": 462,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.higherPrimePowerCoefficient_sum",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 463,
+      "line": 467,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationKernel_continuous",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 474,
+      "line": 478,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationSource_bounded",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 490,
+      "line": 494,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationWeight_uniform_bound",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 498,
+      "line": 502,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationHigherPrimePowers",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 529,
+      "line": 533,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationHigherPrimePowers_uniform_bound",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 533,
+      "line": 537,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationPrimeField_split_prime_powers",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 577,
+      "line": 581,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationIntegerDrive_hasDerivAt",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 600,
+      "line": 604,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 614,
+      "line": 618,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv_rapid_bound",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 671,
+      "line": 675,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 686,
+      "line": 690,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatMobiusTest_zero_of_nonpos",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 709,
+      "line": 713,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationIntegerDrive_contDiff_one",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 722,
+      "line": 726,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatMobiusTest_origin_bounds",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 753,
+      "line": 757,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatMobiusTest_hasDerivAt_zero",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 804,
+      "line": 808,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatMobiusTest_contDiff_one",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 827,
+      "line": 831,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatMobiusTest_zero_above",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 872,
+      "line": 876,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatMobiusTest_at_upper_collar",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 885,
+      "line": 889,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatMobiusTest_hasCompactSupport",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 894,
+      "line": 898,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSamplingMass",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 905,
+      "line": 909,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSamplingSum",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 907,
+      "line": 911,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSamplingRemainder",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 911,
+      "line": 915,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSamplingRemainder_bounded",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 928,
+      "line": 932,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSamplingSum_eq_mass_add_remainder",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 981,
+      "line": 985,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSamplingDiagonal_sqrt_bound",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 988,
+      "line": 992,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSamplingSum_eq_tsum",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 999,
+      "line": 1003,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSampling_eventual_lower_iff",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1012,
+      "line": 1016,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSamplingSum_eq_hyperbola_history",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1039,
+      "line": 1043,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationLongTerm_eq_sampling_quadratic",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1096,
+      "line": 1100,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationNativeCutoff_sqrt_bound",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1122,
+      "line": 1126,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationNativeDiagonal_bound",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1146,
+      "line": 1150,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationLongTerm_eq_normalized_combined",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1164,
+      "line": 1168,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1183,
+      "line": 1187,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.nativeOriginalIntegerDriveLaplace_half",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1222,
+      "line": 1226,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualSourceHalfMass",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1247,
+      "line": 1251,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualSourceHalfMass_integrable",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1250,
+      "line": 1254,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualSourceHalfMass_eq_product",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1257,
+      "line": 1261,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualSourceHalfMass_pos",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1274,
+      "line": 1278,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.nativeOriginalIntegerDrive_half_integral",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1291,
+      "line": 1295,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSamplingMass_eq_dampedDrive",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1308,
+      "line": 1312,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualCorrelationIntegerDrive_half_integral",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1344,
+      "line": 1348,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSamplingMass_eq_sourceHalfMass_sq",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1379,
+      "line": 1383,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.actualFlatSamplingMass_pos",
       "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
       "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
-      "line": 1383,
+      "line": 1387,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actualCorrelationKernel_weilTest_translate",
+      "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 1414,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actualCorrelationArch",
+      "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 1461,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actualCorrelation_explicit_formula",
+      "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 1468,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actualCorrelationArch_uniform_bound",
+      "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 1504,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actualCorrelationPrimeField_reflected_zero",
+      "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 1533,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower",
+      "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 1555,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
@@ -4451,6 +4493,41 @@
       "module": "Zeta23.OPICARound4.Validation.Hyperbola",
       "path": "Zeta23/OPICARound4/Validation/Hyperbola.lean",
       "line": 156,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.validation_madness_actual_weil_translation",
+      "module": "Zeta23.OPICARound4.Validation.Hyperbola",
+      "path": "Zeta23/OPICARound4/Validation/Hyperbola.lean",
+      "line": 161,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.validation_madness_actual_explicit_formula",
+      "module": "Zeta23.OPICARound4.Validation.Hyperbola",
+      "path": "Zeta23/OPICARound4/Validation/Hyperbola.lean",
+      "line": 168,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.validation_madness_actual_arch_bound",
+      "module": "Zeta23.OPICARound4.Validation.Hyperbola",
+      "path": "Zeta23/OPICARound4/Validation/Hyperbola.lean",
+      "line": 173,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.validation_madness_actual_reflected_history",
+      "module": "Zeta23.OPICARound4.Validation.Hyperbola",
+      "path": "Zeta23/OPICARound4/Validation/Hyperbola.lean",
+      "line": 177,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.validation_madness_rh_of_actual_lower",
+      "module": "Zeta23.OPICARound4.Validation.Hyperbola",
+      "path": "Zeta23/OPICARound4/Validation/Hyperbola.lean",
+      "line": 182,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     }
   ],

@@ -2576,5 +2576,15 @@
       "INDEPENDENT_NATIVE_DIAGONAL_REVIEW.json": "766e9aab9ff9179fcb136abcdfb7c6b3b73360740841fc607e5f58fdfffa665e",
       "INDEPENDENT_NORMALIZED_LOWER_REVIEW.json": "c626dd75264c79c8209e5365d3cf687061d8bf1f51e8d303cf8d908578dcdedb"
     }
+  },
+  "conditional_rh": {
+    "source_sha256": "a1c8293c98fd9fe8ad607b264711708f716e877adf36a9f5868d615140a10c56",
+    "independent_review_sha256": "113443f9f8a3ba2880ba0e3a5c386ecac30b55ba9bd33452b705566d1c21aea2",
+    "statement": "Eventual constant lower bound of the literal native long term implies exact Mathlib RH.",
+    "remaining": "Independent arithmetic lower bound remains OPEN; positivity of the mass or equivalence of two bounds proves neither.",
+    "proof_status": "External exact-source pinned Windows compilation passed; integrated compilation and current-head Linux qualification separately required.",
+    "reflection_energy_insight": "Derived actual Q/sqrt(x)=Eplus-Eminus with divisor-log weights and genuine Mobius profile. A complex convolution square cannot be changed to an absolute-square Gram energy; no uniform odd-excess bound established.",
+    "RH": "OPEN",
+    "Step4": "OPEN"
   }
 }

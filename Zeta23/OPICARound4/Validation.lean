@@ -2896,3 +2896,58 @@ end Zeta23.OPICARound4.Validation
 #check @Zeta23.OPICARound4.validation_madness_actual_rank_one_nonnegative
 #eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actual_rank_one_nonnegative"
 #print axioms Zeta23.OPICARound4.validation_madness_actual_rank_one_nonnegative
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationKernel_weilTest_translate"
+#check @Zeta23.OPICARound4.actualCorrelationKernel_weilTest_translate
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationKernel_weilTest_translate"
+#print axioms Zeta23.OPICARound4.actualCorrelationKernel_weilTest_translate
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationArch"
+#check @Zeta23.OPICARound4.actualCorrelationArch
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationArch"
+#print axioms Zeta23.OPICARound4.actualCorrelationArch
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelation_explicit_formula"
+#check @Zeta23.OPICARound4.actualCorrelation_explicit_formula
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelation_explicit_formula"
+#print axioms Zeta23.OPICARound4.actualCorrelation_explicit_formula
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationArch_uniform_bound"
+#check @Zeta23.OPICARound4.actualCorrelationArch_uniform_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationArch_uniform_bound"
+#print axioms Zeta23.OPICARound4.actualCorrelationArch_uniform_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.actualCorrelationPrimeField_reflected_zero"
+#check @Zeta23.OPICARound4.actualCorrelationPrimeField_reflected_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.actualCorrelationPrimeField_reflected_zero"
+#print axioms Zeta23.OPICARound4.actualCorrelationPrimeField_reflected_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower"
+#check @Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower"
+#print axioms Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_actual_weil_translation"
+#check @Zeta23.OPICARound4.validation_madness_actual_weil_translation
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actual_weil_translation"
+#print axioms Zeta23.OPICARound4.validation_madness_actual_weil_translation
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_actual_explicit_formula"
+#check @Zeta23.OPICARound4.validation_madness_actual_explicit_formula
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actual_explicit_formula"
+#print axioms Zeta23.OPICARound4.validation_madness_actual_explicit_formula
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_actual_arch_bound"
+#check @Zeta23.OPICARound4.validation_madness_actual_arch_bound
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actual_arch_bound"
+#print axioms Zeta23.OPICARound4.validation_madness_actual_arch_bound
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_actual_reflected_history"
+#check @Zeta23.OPICARound4.validation_madness_actual_reflected_history
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_actual_reflected_history"
+#print axioms Zeta23.OPICARound4.validation_madness_actual_reflected_history
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.validation_madness_rh_of_actual_lower"
+#check @Zeta23.OPICARound4.validation_madness_rh_of_actual_lower
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.validation_madness_rh_of_actual_lower"
+#print axioms Zeta23.OPICARound4.validation_madness_rh_of_actual_lower
