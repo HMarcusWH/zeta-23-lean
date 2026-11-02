@@ -1,0 +1,122 @@
+{
+  "status": "DERIVED_ACTUAL_MEAN_TWO_SIDED_OSCILLATION_NOT_CLOSURE",
+  "created_utc": "2026-11-02T07:57:19.378749+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "setup": "The SAME actual source q,H and full pole-neutral response mean M(L,c) from the bound reports. Fix c=1/2, which is in (B,log2-B), B=1/2048. Retain the full prime powers, regularized Arch history and BOTH continuous pole rows. This does not assert a sign for the original Mobius quadratic or for a finite-K zero row.",
+  "sections": [
+    {
+      "id": "C1",
+      "title": "Critical-boundary Abel limits require continuity, not holomorphic extension",
+      "proof": "Use M=M0+R0, M0=J-2(X+Y). The prior exact coefficient error R0=(2-k_L)(X+Y) is O((1+L) exp(-c sqrt(L))) by the paid quantitative PNT, hence integrable on every late half-line. For transform purposes define a bounded extension of M on the omitted initial interval; every such choice changes transforms by an entire function and does not change the Abel limits below. On Re z>1/2, M0hat(z)=[1/z-2/(z+1/2)]What(z)-2What(z+1/2)/z. R0hat is holomorphic only on Re z>0 and bounded as z=a+i*t approaches ANY fixed point i*t with a>=0, by its absolute integral. No holomorphy across the critical boundary is assumed. At the actual critical zero p=i*gamma,14<gamma<15, Phat has residue -m K_H(p) with m>=1. What=-exp(-c*z)Phat-A_c and A_c is analytic there. The shifted What term is bounded there by the PNT-paid half-weighted absolute integral. Therefore a*Mhat(a+i*gamma) tends to R_gamma=m exp(-i*c*gamma)K_H(i*gamma)(1/2-i*gamma)/(i*gamma*(1/2+i*gamma)); its modulus is exactly m K_H(i*gamma)/gamma."
+    },
+    {
+      "id": "C2",
+      "title": "The complete zero-frequency Abel coefficient",
+      "proof": "The same formula gives a*Mhat(a)->c_M=What(0)-2What(1/2) as a->0+. What(1/2)=B_-(c): the weighted prime mass vanishes by its safe Laplace limit and PNT absolute integrability, not by interchanging a divergent sum at s=1. What(0)=-Phat(0)-integral_(-c)^infinity a_arch. Thus c_M=-Phat(0)+C_arch(c), with exactly the earlier C_arch and both pole corrections. Phat(0) means its meromorphic continuation, not an asserted convergent unweighted prime integral. The zeta value at1/2 is nonzero by the alternating eta representation, so this continuation is regular at0."
+    },
+    {
+      "id": "C3",
+      "title": "A one-sided constant bound must pay the actual oscillatory residue",
+      "proof": "For sign epsilon=+1 or -1, suppose epsilon*M(L,c)<=C eventually, where C may be any real constant. Cut off a finite prefix and put u=1_[L0,infinity)(C-epsilon*M)>=0. Its actual Laplace domain is nonempty by the source exponential envelope. Initially U(z)=C/z-epsilon*Mhat(z)-E(z), with E entire retaining the prefix. Mhat has no singularity at any positive REAL z: the source cancels the zeta pole at z=1/2, zeta has no positive real nontrivial zero, and the coefficient remainder is analytic on Re z>0. The positive Laplace boundary theorem forces the true abscissa to be nonpositive (or the domain is unbounded below). Thus U is its actual integral for all Re z>0. Any candidate nonreal poles in that half-plane would already contradict this assumed one-sided bound; none is assumed absent beforehand. Positivity gives |U(a+i*gamma)|<=U(a). Multiplication by a and the C1/C2 Abel limits force |R_gamma|<=C-epsilon*c_M. It follows that limsup M(L,c)>=c_M+|R_gamma| and liminf M(L,c)<=c_M-|R_gamma|, allowing infinite limits. This is a lower bound on actual oscillation, not a boundedness or asymptotic assertion."
+    },
+    {
+      "id": "C4",
+      "title": "Bound the actual Arch offset without numerical fitting",
+      "proof": "Set L0const=gamma_Euler+log(8*pi)+pi/2. Logarithmic differentiation of the zeta reflection identity at1/2 gives zeta'/zeta(1/2)=L0const/2, hence Phat(0)=-L0const/32. Integrating the intact regularized Arch action against1 gives A_bilateral(0)=K_H(0)[2w_inf+2 integral_0^infinity rho(y)(1-exp(-y/2))dy]=L0const/16=-2Phat(0). Here K_H(0)=1/16, and the finite integral equals half of pi/2+log2, from the digamma reflection/duplication identities. The regularized bracket is integrated as one expression; no divergent pieces are separated. Therefore, with B_0(c)=sum_(n>=1)K_n exp(-alpha_n*c)/alpha_n, c_M=Phat(0)+B_0(c)-2B_-(c). All K_n are positive and alpha_n=2n+1/2, so 0<B_0<B_- and c_M<0. At c=1/2, the probability source bound Q_Lap(alpha)<=exp(s*alpha), s=1/4096, yields B_-<=sum_(n>=1)(8n^3+8n^2+2n) exp(-(2n+1/2)(1/2-B))<260. Indeed exp(-2(1/2-B))<1/2 and the geometric first/second/third moments at1/2 are2,6,26. Elementary 0<gamma_Euler<1, pi<4 and log(8pi)<4 give |Phat(0)|<1. Consequently -521<c_M<0. These loose bounds suffice; no fitted value or finite-tail truncation is used."
+    },
+    {
+      "id": "C5",
+      "title": "Actual-source sign falsification and its limited role",
+      "proof": "The already independently checked actual zero certificate has14<gamma<15 and K_H(i*gamma)>=693804568535583360025/18014398509481984. Thus |R_gamma|>2500. With C3/C4 this proves limsup_(L->infinity) M(L,1/2)>1979 and liminf_(L->infinity) M(L,1/2)<-1979. In particular the actual corrected mean has both signs cofinally, despite its positive drift along partial_L+partial_c. This rules out promoting that characteristic drift to eventual positivity/negativity of the mean. The constants are in the unchanged source/physical normalization; they are not estimates for the full Mobius quadratic, source f, finite-K row, or RH error. An all-positive-rate growth bound remains OPEN. No density, bounded gaps, simplicity, first-zero status or off-line zero is asserted."
+    }
+  ],
+  "rational_checks": {
+    "H_lower_div15": "138760913707116672005/54043195528445952",
+    "greater_than_2500": true,
+    "geometric_polynomial_sum_at_half": "260"
+  },
+  "sources": [
+    {
+      "url": "https://dlmf.nist.gov/25.4",
+      "scope": "Zeta reflection identity; freshly consulted. Its logarithmic derivative at1/2 is derived here."
+    },
+    {
+      "url": "https://dlmf.nist.gov/5.4",
+      "scope": "Digamma half-argument value; freshly consulted. Combined with reflection/duplication for the finite Arch integral."
+    }
+  ],
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-endpoint-transport\\ACTUAL_MEAN_ENDPOINT_TRANSPORT.json",
+      "sha256": "d357231d199f48efc2502f1fc33acc25dc319399921493236770de1ff57edabe",
+      "bytes": 11968
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-endpoint-transport\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "02ede03fc7454e5a6e54b4cffe85dbc1ff2915001dfbf99a2bec8dbbdb3fc15e",
+      "bytes": 17542
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\zero-mode-arithmetic\\ACTUAL_ZERO_MODE_HISTORY_AND_MEAN.json",
+      "sha256": "4b514dee23b0635395d32e0e01be98abae98686b0279d69aa76c06b6f91d7ea9",
+      "bytes": 13840
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-arch-response\\ACTUAL_ARCH_RESPONSE.json",
+      "sha256": "b1a23776de6f31f8d173110864210cbe0243cecf0f5986e247a0fe984dc78b44",
+      "bytes": 9401
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\ACTUAL_BOUNDARY_CENTERING.json",
+      "sha256": "91b5848737f71244959c11d98a1d0011dbf06ea256a61537ac92128299a9440a",
+      "bytes": 11256
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\critical-source-visibility\\VISIBLE_CRITICAL_ZERO.json",
+      "sha256": "9c4e42f2aaf34f0f145577c4d561fcfaaf78c049eef67949824804082eb75f13",
+      "bytes": 5537
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\critical-source-visibility\\VISIBLE_CRITICAL_ZERO_OPTIMIZED.json",
+      "sha256": "40a518216992d95cb1cfeaf9d493a1107642d114c7592cbd4004a6a7ecda7451",
+      "bytes": 5536
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\critical-source-visibility\\INDEPENDENT_CRITICAL_SOURCE_VISIBILITY_REVIEW.json",
+      "sha256": "9ba1206f6bf95520d5dd1bdbeb840d3392d2b9203534f2206fab56af9addd3a0",
+      "bytes": 11158
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\PositiveLaplaceBoundary.lean",
+      "sha256": "00c16b2b069c6cc8585979e43851e225df0cd15aa4de1917d56f853de4559b53",
+      "bytes": 9156,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\UniversalSincDetector.lean",
+      "sha256": "a383785569a65c36424cd8d273c822792df1b8041dc859b91f51ed5827ddb552",
+      "bytes": 12724,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\UniversalSincSourceFacade.lean",
+      "sha256": "99602adbc72ba8097fc20167da33f489932616055180b2aec33c45857dbbbf7b",
+      "bytes": 10093,
+      "current_git_blob_equal": true
+    }
+  ],
+  "script": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-critical-sign\\seal_critical_mean.py",
+    "sha256": "057530f102433ba86cb9251b90df2a5d5f2b7f6e61dc697d72a5819c227a0365",
+    "bytes": 9303
+  },
+  "new_interval_runs": 0,
+  "external_interval_authority": "Reuses the exact previously verified Arb/acb critical-zero sign certificate and its independent same-library repeat. No new compiler authority follows.",
+  "new_lean_declarations": 0,
+  "new_compiler_runs": 0,
+  "repository_edits": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE"
+}

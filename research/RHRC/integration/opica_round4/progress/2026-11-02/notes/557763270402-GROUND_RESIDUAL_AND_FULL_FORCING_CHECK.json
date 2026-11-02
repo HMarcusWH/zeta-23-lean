@@ -1,0 +1,79 @@
+{
+  "status": "COMPLETE_BOUNDED_GROUND_RESIDUAL_AND_FULL_FORCING_CHECK_NOT_CLOSURE",
+  "created_utc": "2026-11-02T10:04:32.821841+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "clean": true
+  },
+  "previous_goal_turn": "PROGRESS: common real input synthesis, genuine physical error lower bound and actual terminal-memory falsification changed the next question to the true eigenstate and fully compensated forcing.",
+  "records": {
+    "previous_pass": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\COMMON_INPUT_AND_TERMINAL_STORAGE_COMPLETION.json",
+      "sha256": "89e2a289ff308b2347bd1221de4e45ed7103a4c010ca806e0d69b467f6e60e4d",
+      "bytes": 10961
+    },
+    "ground": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\ground-residual-compensation\\ACTUAL_EIGENSTATE_RESIDUAL_AND_COMPENSATION.json",
+      "sha256": "a20a68167b08b5014c6dbc6fe23242448690b84f211d811907e520f4b523cfa5",
+      "bytes": 17036
+    },
+    "forcing": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-storage\\COMPLETE_FORCING_SAME_DISCREPANCY_CROSSCHECK.json",
+      "sha256": "33fdba0580046cc9656a472a2a9893cb1a0787dae5eeda66612686897c170373",
+      "bytes": 7293
+    },
+    "peer_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\ground-residual-compensation\\INDEPENDENT_EIGENSTATE_RESIDUAL_REVIEW.json",
+      "sha256": "a4fd5a5688affa91a3c4a292a26d2c81fb688904c238b5a7f63adae1cc0abb3b",
+      "bytes": 13981
+    },
+    "ci": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\CHECKPOINT.json",
+      "sha256": "f31386abcaa755086ab9999d0365dddec34c82d8a0f3372b4672668c14d5e642",
+      "bytes": 18084
+    }
+  },
+  "verification": {
+    "unique_bound_files_rehashed": 72,
+    "current_source_blobs_equal": true,
+    "root_read_both_subjects_in_full": true
+  },
+  "root_review": [
+    "For an actual finite eigenstate z, r=(I-P)Cz and e=h-z give the exact full identity W(h,h)=lambda||z||^2+2Re<r,e>+W(e,e). The outside energy remains even if the cross residual were controlled. Membership of z in the actual H span remains explicit at resonance.",
+    "The corrected row is m/eta: its three defining pairings are zero with1,rho and one with n^2. Orthogonal decomposition of the full finite output therefore gives ||r_even||^2=||n_U||^2+eta|f(z)|^2+||outer||^2. Source normalization f=1 does not imply unit norm. The odd f=-1 belongs to the reciprocal even input, not the odd eigenstate.",
+    "The exact current source-moment gap, Cauchy and native index lower bound give |f(z)|>=delta/(2||g||) on a unit strict-even ray and ||Dz||<=Brow||g||/delta. The Fourier tail follows from literal index multiplication. All constants depend on the actual gap and complete arithmetic budget; no favorable uniform ratio or H overlap is inferred.",
+    "Root independently checked the logarithmic Arch refinement: for a=2piK/L, the shift bracket is bounded by min((2a+1)y,4)||z||; rho<=3/(2y) on(0,1). Splitting at1/(1+a) costs3+6log(1+a)+8. The fixed scalar and all-prime-power allowance remain. This improves a polynomial Arch price, not the prime exponential.",
+    "Self-adjointness gives <r,H_c>=<z,C(H_c-PH_c)>; the full existing column error makes this small, but common synthesis retains TV(mu). No inference from tiny observations to small ambient residual is valid.",
+    "Root independently expanded nu=De+1_+-gamma delta and eta=v nu+nu*nu. The complete noncompact source tails give exactly the constants in the forcing note. The E*E term cancels; adding U_K reconstructs (t-gamma)g+j+exp(-t/2)/4. The entire energy equation then reduces to jprime=g integration by parts. This supplies no independently bounded forcing."
+  ],
+  "what_became_formally_true": "No new Lean declaration or compiler execution. New statements are external DERIVED consequences and estimates on current source. No claim of completed Step4/RH gates.",
+  "workflow_harvest": {
+    "snapshot_utc": "2026-11-02T09:52:15Z",
+    "classification": "VERIFIED_WAIT",
+    "runs": 24,
+    "attempts": 24,
+    "jobs": 94,
+    "success": 89,
+    "running": 3,
+    "optional_skipped": 2,
+    "failed": 0,
+    "comparison": "Unchanged from next13; no new artifact downloads or qualification. CORE,AUXILIARY and Round2 generated confirmed live; final acceptance not established."
+  },
+  "what_changed": "The true eigenstate residual is tied explicitly to the corrected source row. A useful logarithmic Arch bound is obtained. The full forcing cancellation is verified to be an identity rather than a missing arithmetic estimate.",
+  "upstream_implications": "Retain both native normal and outer Fourier components. Compact inverse regularity belongs to the inverse image, not automatically the ground vector. Source normalization and unit normalization carry different prices.",
+  "downstream_implications": "A ground-based argument must control the complete outside energy or obtain a favorable gap/source ratio and an independently paid reconstruction budget. Existing qualitative source visibility and own-birth complement positivity do not supply these.",
+  "resurrected_routes": "The source-moment identity can price ground tails if an independent actual parity-gap/budget estimate is later established. No such estimate was found in the bounded current-source audit.",
+  "new_clue": "The selected source-normalized strict-even ray has a forced finite normal residual. Any proposed full-response eigenvector substitution must account for it; it cannot be removed as a harmless projection error.",
+  "falsification": "Small H observations of r already follow from the source smoothing, while the full W(e,e) remains. Canceling the repeated quadratic discrepancy removes duplicate terms but returns the original unknown. Neither operation gives closure.",
+  "highest_leverage_next": "Investigate an independent estimate on the exact ground-specific arithmetic source/gap or the complete signed source response. Do not add a conditional wrapper around the same energy identity or infer uniform stability from visibility.",
+  "implementation": "No repository edit, new PR commit, test rerun, compiler run, changed cutoff or weakened gate. Compact external records only.",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal_status": "ACTIVE",
+  "helper": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\seal_ground_forcing_check.py",
+    "sha256": "84a4466e22f9bb7d105af30b50068bb1babe8bcebb08a47d014f304d0a645be4",
+    "bytes": 8128
+  }
+}

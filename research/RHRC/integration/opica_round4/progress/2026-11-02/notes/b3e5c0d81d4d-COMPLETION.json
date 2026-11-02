@@ -1,0 +1,62 @@
+{
+  "status": "COMPLETE_EXTERNAL_NATIVE_K3_ADAPTER_WITH_INDEPENDENT_REVIEW",
+  "created_utc": "2026-11-02T11:59:33.722490+00:00",
+  "proof_freeze": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-k3\\PROOF_FREEZE.json",
+    "sha256": "cb4b9a3b7624339279b97dd8d55130fcf1431e50a800e3beeb7f3e4769e273e9",
+    "bytes": 62149
+  },
+  "independent_review": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-k3\\INDEPENDENT_ACTUAL_K3_VECTORS_REVIEW.json",
+    "sha256": "7066d26011dc432d9189d430fb57eecb14a345960dfaa3ab669a791cc61ecd93",
+    "bytes": 9618
+  },
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "formal_authority": "Pinned local Windows Lean proof only; exact external source and owned authenticated warm import view. Not integrated into the production1079 declarations and not a new Linux CI result.",
+  "exact_new_public_scope": {
+    "definitions": 4,
+    "theorems": 9,
+    "declarations": [
+      "Zeta23.OPICARound4.ActualK3.evenSeed",
+      "Zeta23.OPICARound4.ActualK3.oddSeed",
+      "Zeta23.OPICARound4.ActualK3.evenVector",
+      "Zeta23.OPICARound4.ActualK3.oddVector",
+      "Zeta23.OPICARound4.ActualK3.evenVector_coordinates",
+      "Zeta23.OPICARound4.ActualK3.oddVector_coordinates",
+      "Zeta23.OPICARound4.ActualK3.evenVector_pole",
+      "Zeta23.OPICARound4.ActualK3.oddVector_pole",
+      "Zeta23.OPICARound4.ActualK3.index_evenVector",
+      "Zeta23.OPICARound4.ActualK3.evenVector_norm_sq",
+      "Zeta23.OPICARound4.ActualK3.oddVector_norm_sq",
+      "Zeta23.OPICARound4.ActualK3.evenVector_norm_pos",
+      "Zeta23.OPICARound4.ActualK3.oddVector_norm_pos"
+    ]
+  },
+  "what_became_formally_true": [
+    "For every L>0, the actual existing integer stencils multiplied by beta+n^2 inhabit the current native even and odd pole-neutral K=3 carriers.",
+    "The genuine native centered-index map sends evenVector to3 times oddVector.",
+    "The full inherited Euclidean squared norms are924 beta^2+1512 beta+1764 and84 beta^2+392 beta+724, and both norms are strictly positive."
+  ],
+  "workflow_harvest": {
+    "formal_validity": "attempt3 PASS stable42.641s; expanded fulltypes1 PASS stable55.5s,13 complete public types and standard3 axioms only.",
+    "semantic_regression": "The exact native3-to1 index-factor mutation is rejected by one intended type mismatch.",
+    "preserved_failures": "attempt1 import companion startup failure; attempt2 ordinary simplification/metric API errors; neither credited.",
+    "research_producing_checks": "No numerical/asymptotic/RH discovery experiment in this task."
+  },
+  "post_green": {
+    "what_changed": "Replaces the seed/native-metric part of the earlier DERIVED K3 argument by an exact externally compiled adapter using existing FixedSeed and source stencils.",
+    "upstream": "No source/carrier definition changed. The full nonunitary diagonal Gram weights remain explicit.",
+    "downstream": "Supplies actual vectors and normalizations for the independently compiled strict gamma order and generic weighted covariance theorem. Physical Fourier regularity/integrability and the exact Arch bridge must still be composed.",
+    "derived_consequence": "0<No/Ne<1 for L>0 since Ne-No=840 beta^2+1120 beta+1040>0; not separately compiled here.",
+    "falsification": "Factor3 is essential and cannot be replaced by1; no unit-vector, eigenstate, ground, first-birth or source-energy-sign premise was inserted.",
+    "highest_leverage_next": "Connect the literal physical K3 Fourier density to the generic covariance theorem with all integrability and normalization obligations; do not substitute supporting lemmas for the full Arch statement or signed arithmetic bound."
+  },
+  "limits": [
+    "No repository or synced sources mutation.",
+    "No asymptotic, Landau, off-line-zero or RH wrapper was implemented.",
+    "No claim that positive Arch covariance controls the complete prime-minus-Arch response.",
+    "RH and the closing signed arithmetic restriction remain OPEN."
+  ]
+}

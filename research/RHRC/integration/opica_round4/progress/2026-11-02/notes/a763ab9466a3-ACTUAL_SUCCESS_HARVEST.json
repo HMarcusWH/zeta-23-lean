@@ -1,0 +1,591 @@
+{
+  "status": "CURRENT_HEAD_AUXILIARY_INDEPENDENT_ACCEPTANCE_HARVESTED",
+  "job": {
+    "id": 125141213445,
+    "run_id": 41378780656,
+    "run_attempt": 1,
+    "head_sha": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "name": "Round4 / INDEPENDENT_AUXILIARY",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-11-02T07:03:25Z",
+    "completed_at": "2026-11-02T09:56:32Z",
+    "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780656/job/125141213445",
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-02T07:03:25Z",
+        "completed_at": "2026-11-02T07:03:27Z"
+      },
+      {
+        "name": "Record independent group deadline with diagnostic upload margin",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-02T07:03:27Z",
+        "completed_at": "2026-11-02T07:03:27Z"
+      },
+      {
+        "name": "Record upstream matrix disposition",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-02T07:03:27Z",
+        "completed_at": "2026-11-02T07:03:27Z"
+      },
+      {
+        "name": "Require every matrix job to succeed",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-02T07:03:27Z",
+        "completed_at": "2026-11-02T07:03:27Z"
+      },
+      {
+        "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-02T07:03:27Z",
+        "completed_at": "2026-11-02T07:04:55Z"
+      },
+      {
+        "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6,
+        "started_at": "2026-11-02T07:04:55Z",
+        "completed_at": "2026-11-02T07:05:04Z"
+      },
+      {
+        "name": "Run ./host/.github/actions/opica4-runtime",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7,
+        "started_at": "2026-11-02T07:05:04Z",
+        "completed_at": "2026-11-02T08:29:09Z"
+      },
+      {
+        "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 8,
+        "started_at": "2026-11-02T08:29:09Z",
+        "completed_at": "2026-11-02T08:29:24Z"
+      },
+      {
+        "name": "Reconstruct eleven complete bundles and run the fixed independent group",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 9,
+        "started_at": "2026-11-02T08:29:24Z",
+        "completed_at": "2026-11-02T09:56:11Z"
+      },
+      {
+        "name": "Seal the complete independent group transport",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 10,
+        "started_at": "2026-11-02T09:56:11Z",
+        "completed_at": "2026-11-02T09:56:22Z"
+      },
+      {
+        "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 11,
+        "started_at": "2026-11-02T09:56:22Z",
+        "completed_at": "2026-11-02T09:56:27Z"
+      },
+      {
+        "name": "Collect bounded diagnostics after an interrupted independent group",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 12,
+        "started_at": "2026-11-02T09:56:27Z",
+        "completed_at": "2026-11-02T09:56:27Z"
+      },
+      {
+        "name": "Record independent group diagnostic disposition",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 13,
+        "started_at": "2026-11-02T09:56:27Z",
+        "completed_at": "2026-11-02T09:56:28Z"
+      },
+      {
+        "name": "Preserve optional independent group bootstrap diagnostics",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 14,
+        "started_at": "2026-11-02T09:56:28Z",
+        "completed_at": "2026-11-02T09:56:29Z"
+      },
+      {
+        "name": "Post Run ./host/.github/actions/opica4-runtime",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 26,
+        "started_at": "2026-11-02T09:56:29Z",
+        "completed_at": "2026-11-02T09:56:29Z"
+      },
+      {
+        "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 27,
+        "started_at": "2026-11-02T09:56:29Z",
+        "completed_at": "2026-11-02T09:56:29Z"
+      },
+      {
+        "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 28,
+        "started_at": "2026-11-02T09:56:29Z",
+        "completed_at": "2026-11-02T09:56:30Z"
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 29,
+        "started_at": "2026-11-02T09:56:30Z",
+        "completed_at": "2026-11-02T09:56:30Z"
+      }
+    ],
+    "requested_attempt": 1,
+    "latest_attempt": true
+  },
+  "group_record": {
+    "checked": {
+      "commit": "7bae463361264a0694b4fb2e9107dc4314163b33",
+      "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784"
+    },
+    "conclusion": "success",
+    "experiment": {
+      "attempt": 1,
+      "profile_digest": "fbbf97fcc910780d21db1aefa64f5b49746766e1488e20d040c8ad488867ac2c",
+      "requested_commit": "7bae463361264a0694b4fb2e9107dc4314163b33",
+      "requested_tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+      "run_id": "41378780656"
+    },
+    "group_id": "AUXILIARY",
+    "independently_reconstructed_lanes": [
+      {
+        "evidence_digest": "865533af9b0ebecdaf8946ec4f9bfb5535378a94b232fac6631a49cc321f041e",
+        "id": "SEMANTIC_NEGATIVES",
+        "scope": "CURRENT_HOST"
+      },
+      {
+        "evidence_digest": "6a468691c9072c9899dc15b438e66ca411b48253d53bad94d83cc79ddb1a1f44",
+        "id": "FRAMEWORK_ADAPTERS",
+        "scope": "CURRENT_HOST"
+      },
+      {
+        "evidence_digest": "128e9fb3e9f3f4bdc4f7818f11494ca5ab2a78448eec42779ea8b0f23b3313ea",
+        "id": "PROVIDER_SELECTED",
+        "scope": "SELECTED_PROVIDER"
+      },
+      {
+        "evidence_digest": "5ec136547229d50d033812a383aa978a49e18e0cb44b742444a5f4298cf281de",
+        "id": "REPLAY_CAMPAIGN",
+        "scope": "CURRENT_HOST"
+      },
+      {
+        "evidence_digest": "d046a7e7ad97fdf21c5d466111681c9b77f2819c6fc200e0b23fe71b9330ea15",
+        "id": "MATHEMATICAL_SUPPORT",
+        "scope": "CURRENT_HOST"
+      },
+      {
+        "evidence_digest": "044072f355c5e08cb28e3a53c429d69b5208c8a55437af36444c4b59c3ba22cd",
+        "id": "SOURCE_NUMERICS",
+        "scope": "CURRENT_HOST"
+      }
+    ],
+    "schema": "OPICA4_INDEPENDENT_REPLAY_GROUP_V1"
+  },
+  "classification": "FORMAL_VALIDITY_GATE plus REGRESSION_GATE plus independent RESEARCH_PRODUCING_CHECK re-evaluation",
+  "mathematical_support": {
+    "status": "PASS",
+    "authority": "CURRENT_SOURCE_ISOLATED_NATIVE_SUPPORT",
+    "modules": 90,
+    "declarations": 1079,
+    "semantic_mutations": 84,
+    "mutation_errors": 84,
+    "same_producer_fields": [
+      "head",
+      "committed_tree",
+      "module_count",
+      "declaration_count",
+      "roots_count",
+      "semantic_mutation_count",
+      "roots_sha256",
+      "types_and_axioms_sha256",
+      "checker_sha256",
+      "toolchain_sha256",
+      "manifest_sha256",
+      "lean_sha256"
+    ],
+    "same_full_types_axioms_sha256": "0073ff38d9e76ce1eb830f3d855354638a7003760b2cda4900109ec2fb2fb837",
+    "comparison": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next8\\MATHEMATICAL_SUPPORT_SCIENTIFIC_HARVEST.json",
+      "bytes": 47241,
+      "sha256": "fec23934a986e13a8d50ed8d3e075e26c57abc50ce88c0d97988cb61e14d68f6"
+    },
+    "limits": "Independent exact-head isolated recompile of existing statements; no new statement or independent arithmetic estimate."
+  },
+  "source_numerics": {
+    "status": "PASS_RECOMPUTED_FINITE_SOURCE_EVALUATOR",
+    "authority": "FINITE_INTERVAL_EVIDENCE_ONLY",
+    "cases": 6,
+    "interval_comparisons": 10012,
+    "unchanged_fields": [
+      "status",
+      "authority",
+      "checked_commit",
+      "checked_tree",
+      "case_ids",
+      "contained_interval_comparisons",
+      "dispositions",
+      "RH",
+      "Step4"
+    ],
+    "dispositions": {
+      "K4_Q2_ENTERING_Q2": {
+        "scientific_result": "ENTERING_ATOM_INDEFINITE_BOTH_PARITIES",
+        "actual_source": {
+          "formula": "POLE_MINUS_DIRECT_ARCH_MINUS_COMPLETE_PRIME_POWERS",
+          "kind": "VON_MANGOLDT",
+          "modified_q2_does_not_modify_q4": true,
+          "prime2_multiplier": "1"
+        },
+        "both_parity_forms_strictly_positive": true,
+        "positive_reciprocal_mass_exceeds_one": false,
+        "scope": "FINITE_POINT_ONLY;NO_REGULAR_CELL_OR_UNIVERSAL_ARITHMETIC_RESTRICTION;RH_AND_STEP4_OPEN"
+      },
+      "K4_Q3_FIVE_FOURTHS": {
+        "scientific_result": "MIXED_SIGNED_RESIDUES_WITH_POSITIVE_PARITY_FORMS",
+        "actual_source": {
+          "formula": "POLE_MINUS_DIRECT_ARCH_MINUS_COMPLETE_PRIME_POWERS",
+          "kind": "VON_MANGOLDT",
+          "modified_q2_does_not_modify_q4": true,
+          "prime2_multiplier": "1"
+        },
+        "both_parity_forms_strictly_positive": true,
+        "positive_reciprocal_mass_exceeds_one": false,
+        "scope": "FINITE_POINT_ONLY;NO_REGULAR_CELL_OR_UNIVERSAL_ARITHMETIC_RESTRICTION;RH_AND_STEP4_OPEN"
+      },
+      "K4_Q4_ENTERING_Q4": {
+        "scientific_result": "NEW_PRIME_POWER_Q4_ENTERING_ATOM_CONTROL",
+        "actual_source": {
+          "formula": "POLE_MINUS_DIRECT_ARCH_MINUS_COMPLETE_PRIME_POWERS",
+          "kind": "VON_MANGOLDT",
+          "modified_q2_does_not_modify_q4": true,
+          "prime2_multiplier": "1"
+        },
+        "both_parity_forms_strictly_positive": true,
+        "positive_reciprocal_mass_exceeds_one": false,
+        "scope": "FINITE_POINT_ONLY;NO_REGULAR_CELL_OR_UNIVERSAL_ARITHMETIC_RESTRICTION;RH_AND_STEP4_OPEN"
+      },
+      "K5_LOG4_SEAM": {
+        "scientific_result": "POSITIVE_PARITY_FORMS_AND_POSITIVE_RESIDUES_AT_EXACT_SEAM",
+        "actual_source": {
+          "formula": "POLE_MINUS_DIRECT_ARCH_MINUS_COMPLETE_PRIME_POWERS",
+          "kind": "VON_MANGOLDT",
+          "modified_q2_does_not_modify_q4": true,
+          "prime2_multiplier": "1"
+        },
+        "both_parity_forms_strictly_positive": true,
+        "positive_reciprocal_mass_exceeds_one": false,
+        "scope": "FINITE_POINT_ONLY;NO_REGULAR_CELL_OR_UNIVERSAL_ARITHMETIC_RESTRICTION;RH_AND_STEP4_OPEN"
+      },
+      "K5_Q4_MODIFIED_Q2_HALF": {
+        "scientific_result": "SOURCE_BLIND_POSITIVE_COEFFICIENT_INFERENCE_FALSIFIED",
+        "actual_source": {
+          "formula": "POLE_MINUS_DIRECT_ARCH_MINUS_COMPLETE_PRIME_POWERS",
+          "kind": "MODIFIED_Q2_NOT_ZETA",
+          "modified_q2_does_not_modify_q4": true,
+          "prime2_multiplier": "1/2"
+        },
+        "both_parity_forms_strictly_positive": false,
+        "positive_reciprocal_mass_exceeds_one": true,
+        "scope": "FINITE_POINT_ONLY;NO_REGULAR_CELL_OR_UNIVERSAL_ARITHMETIC_RESTRICTION;RH_AND_STEP4_OPEN"
+      },
+      "K5_Q5_SEVEN_FOURTHS": {
+        "scientific_result": "SIGNED_CANCELLATION_POSITIVE_MASS_OVERFLOW_AND_DERIVATIVE_SWITCH",
+        "actual_source": {
+          "formula": "POLE_MINUS_DIRECT_ARCH_MINUS_COMPLETE_PRIME_POWERS",
+          "kind": "VON_MANGOLDT",
+          "modified_q2_does_not_modify_q4": true,
+          "prime2_multiplier": "1"
+        },
+        "both_parity_forms_strictly_positive": true,
+        "positive_reciprocal_mass_exceeds_one": true,
+        "scope": "FINITE_POINT_ONLY;NO_REGULAR_CELL_OR_UNIVERSAL_ARITHMETIC_RESTRICTION;RH_AND_STEP4_OPEN"
+      }
+    },
+    "comparison": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next6\\SOURCE_NUMERICS_RESULTS.json",
+      "bytes": 15365,
+      "sha256": "c36c0cd58ce836a3eddf2cd92ebe7926f7d6f77cb3d1ec6d6380ba261af77614"
+    },
+    "research_modes": [
+      {
+        "optimized": false,
+        "status": "PASS_INDEPENDENT_SOURCE_RESEARCH",
+        "case_containments": [
+          {
+            "id": "K4_Q3_FIVE_FOURTHS",
+            "intervals_independently_contained": 64
+          },
+          {
+            "id": "K5_Q5_SEVEN_FOURTHS",
+            "intervals_independently_contained": 89
+          },
+          {
+            "id": "K5_LOG4_SEAM",
+            "intervals_independently_contained": 65
+          },
+          {
+            "id": "K5_Q4_MODIFIED_Q2_HALF",
+            "intervals_independently_contained": 79
+          },
+          {
+            "id": "K4_Q2_ENTERING_Q2",
+            "intervals_independently_contained": 52
+          },
+          {
+            "id": "K4_Q4_ENTERING_Q4",
+            "intervals_independently_contained": 76
+          }
+        ]
+      },
+      {
+        "optimized": true,
+        "status": "PASS_INDEPENDENT_SOURCE_RESEARCH",
+        "case_containments": [
+          {
+            "id": "K4_Q3_FIVE_FOURTHS",
+            "intervals_independently_contained": 64
+          },
+          {
+            "id": "K5_Q5_SEVEN_FOURTHS",
+            "intervals_independently_contained": 89
+          },
+          {
+            "id": "K5_LOG4_SEAM",
+            "intervals_independently_contained": 65
+          },
+          {
+            "id": "K5_Q4_MODIFIED_Q2_HALF",
+            "intervals_independently_contained": 79
+          },
+          {
+            "id": "K4_Q2_ENTERING_Q2",
+            "intervals_independently_contained": 52
+          },
+          {
+            "id": "K4_Q4_ENTERING_Q4",
+            "intervals_independently_contained": 76
+          }
+        ]
+      }
+    ]
+  },
+  "provider": {
+    "mode": "POLICY_ADAPTER_ONLY",
+    "compiled_source_modules": 47,
+    "imported_object_modules": 5233,
+    "selected_apis": [
+      "PermanssonResearch.ReverseSolver.FiniteMonitor.computedValue_eq_value",
+      "PermanssonResearch.ReverseSolver.FiniteMonitor.leastMaximizingControl_spec",
+      "PermanssonResearch.ReverseSolver.FiniteMonitor.computedMaximizer_attains"
+    ],
+    "host_theorem_authority": false,
+    "model_optimality": "NOT_ESTABLISHED",
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "portable_regression_tests": [
+    {
+      "member": "metadata/FRAMEWORK_ADAPTERS/tests/normal.json",
+      "executed": 51,
+      "optimized": false,
+      "status": "PASS"
+    },
+    {
+      "member": "metadata/FRAMEWORK_ADAPTERS/tests/optimized.json",
+      "executed": 51,
+      "optimized": true,
+      "status": "PASS"
+    },
+    {
+      "member": "metadata/PROVIDER_SELECTED/tests/normal.json",
+      "executed": 10,
+      "optimized": false,
+      "status": "PASS"
+    },
+    {
+      "member": "metadata/PROVIDER_SELECTED/tests/optimized.json",
+      "executed": 10,
+      "optimized": true,
+      "status": "PASS"
+    },
+    {
+      "member": "metadata/REPLAY_CAMPAIGN/tests/normal.json",
+      "executed": 17,
+      "optimized": false,
+      "status": "PASS"
+    },
+    {
+      "member": "metadata/REPLAY_CAMPAIGN/tests/optimized.json",
+      "executed": 17,
+      "optimized": true,
+      "status": "PASS"
+    },
+    {
+      "member": "metadata/SEMANTIC_NEGATIVES/tests/normal.json",
+      "executed": 19,
+      "optimized": false,
+      "status": "PASS"
+    },
+    {
+      "member": "metadata/SEMANTIC_NEGATIVES/tests/optimized.json",
+      "executed": 19,
+      "optimized": true,
+      "status": "PASS"
+    }
+  ],
+  "independent_conditional_replay_receipts": [
+    {
+      "member": "native-REPLAY_CAMPAIGN/independent-4bda367dcc1242668f31715236770558/receipt.json",
+      "status": "PROVED_CONDITIONAL",
+      "exit_code": 0,
+      "target_digest": "afa3a94a5784d7cd83c09287807c7ae4128560e3f9f8279c528a24f89bc3fd9d",
+      "proposal_digest": "3e87e8da2a7e95c938c4c512ef3e496153c8775152db21bb1eba52b79e6a081b"
+    },
+    {
+      "member": "native-REPLAY_CAMPAIGN/independent-b557892a5994499ca2990ab7f89cca50/receipt.json",
+      "status": "PROVED_CONDITIONAL",
+      "exit_code": 0,
+      "target_digest": "afa3a94a5784d7cd83c09287807c7ae4128560e3f9f8279c528a24f89bc3fd9d",
+      "proposal_digest": "1807add35ea4f48b0cd82b9a1ca2331e74774786fb9440f51feb3ad386fbd756"
+    },
+    {
+      "member": "native-SEMANTIC_NEGATIVES/independent-1ea15bf8364843708573557c9ab15ea3/receipt.json",
+      "status": "PROVED_CONDITIONAL",
+      "exit_code": 0,
+      "target_digest": "afa3a94a5784d7cd83c09287807c7ae4128560e3f9f8279c528a24f89bc3fd9d",
+      "proposal_digest": "fb4f0f396ab18e618081cfabe6e3ed43bd1c85716d5e627928ca9d654e3e3d1a"
+    },
+    {
+      "member": "native-SEMANTIC_NEGATIVES/independent-1f401ba71f134be6a6c2287056e897d6/receipt.json",
+      "status": "PROVED_CONDITIONAL",
+      "exit_code": 0,
+      "target_digest": "afa3a94a5784d7cd83c09287807c7ae4128560e3f9f8279c528a24f89bc3fd9d",
+      "proposal_digest": "0daf6d2ced4372cd71259372ab54a8b1bd62c520f627a7f6972358d36de72aa7"
+    },
+    {
+      "member": "native-SEMANTIC_NEGATIVES/independent-2a235edac0ac4c4fa0b30fdf1b2b7852/receipt.json",
+      "status": "PROVED_CONDITIONAL",
+      "exit_code": 0,
+      "target_digest": "1323cc638d2b31e73204b3f8476bc2708a4a5d3342d7bb336442574b21d15e04",
+      "proposal_digest": "06a3e37792d0822270ebd56682598503bac18985f32bd99e0efa5d781d9b5b3b"
+    },
+    {
+      "member": "native-SEMANTIC_NEGATIVES/independent-adc6f81bddd64454948034ebdfa150ce/receipt.json",
+      "status": "PROVED_CONDITIONAL",
+      "exit_code": 0,
+      "target_digest": "1323cc638d2b31e73204b3f8476bc2708a4a5d3342d7bb336442574b21d15e04",
+      "proposal_digest": "e39f93ab1838bc1a4a0127e3285f516d46e978ffdec8b6f1282a749f0816db7c"
+    }
+  ],
+  "repair_execution": {
+    "job": 125141213445,
+    "before_available_bytes": 89107730432,
+    "after_available_bytes": 107113754624,
+    "increase_bytes": 18006024192,
+    "step": "Reclaim unused hosted SDK space before Lean setup",
+    "source": ".github/actions/opica4-runtime/action.yml",
+    "scope": "Observed exact current job only; no general capacity guarantee."
+  },
+  "raw_artifact": {
+    "id": 13131216939,
+    "bytes": 819094066,
+    "server_digest": "b215d4d3c99bab7bd0c0b0296b711335d98add15cc14754ae2c393716f1cc363",
+    "full_zip_sha256_verified_locally": false,
+    "full_inner_payload_verified_locally": false,
+    "selected_completed_reads_bytes": 15042760,
+    "scope": "Authenticated GitHub redirect; bounded HTTP ranges; each selected inner member checked against exact transport SHA; complete declared inventories read. Initial outer-layout probe and retry retained. No wholesale archive download."
+  },
+  "evidence": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\AUXILIARY_JOB_LOG.txt",
+      "bytes": 264355,
+      "sha256": "3135397e34f1dc4f8a1181a65de2fa2f098c2ebb012d7d1723afa7bdf7233889"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\ROUND4_ARTIFACTS_CONNECTOR.json",
+      "bytes": 21911,
+      "sha256": "8f59c04140c36d77e3ed1643dd53a78bc4fba3351877f5c914ba1852577bc912"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\AUXILIARY_GROUP_TRANSPORT.json",
+      "bytes": 650150,
+      "sha256": "466f80b0eb71abe86ca0cecb7ecb6fb30abaec83b17c9b85476f8e0a1ac43fc1"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\AUXILIARY_RANGE_DOCUMENTS.json",
+      "bytes": 109052,
+      "sha256": "7d5c62c45dd554ebc5c56846b177e93604cdf007a10e510bce8aeb54a8a2212c"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\AUXILIARY_EXTRA_DOCUMENTS.json",
+      "bytes": 1118917,
+      "sha256": "2e650d0f483a55013626a920f7e58dacf0bdbe8569b608ef1072707a7fecbeaf"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\AUXILIARY_NATIVE_DOCUMENTS.json",
+      "bytes": 7636124,
+      "sha256": "7cf4b220a11f9a1f83d6775d61361f0ce4646b3a4da48aeb6346461c50c81662"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\AUXILIARY_RANGE_READ_RECEIPT.json",
+      "bytes": 4144,
+      "sha256": "14d9f667b093af277571ea00434e07c25a0b18ab08bc07b1b5d685fe6f03dcdb"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\AUXILIARY_EXTRA_READ_RECEIPT.json",
+      "bytes": 4588,
+      "sha256": "b9b29c5836fd56a74b9bd468e58b5e274591d831f854ec642a121ee7a2b53e9b"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\AUXILIARY_NATIVE_READ_RECEIPT.json",
+      "bytes": 12396,
+      "sha256": "d70d45776b45856f5a39ea3c6a162f775916a7b7aaed7ead51d27a8d5dab2d2a"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\CURRENT_SOURCE_BINDINGS.json",
+      "bytes": 53498,
+      "sha256": "04d9bace2e4e4f32e3ce17c7bb28e2a346238b858a013266d7056bafd528dc85"
+    }
+  ],
+  "numeric_file_delta": {
+    "receipt": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\NUMERIC_CASE_DELTA.json",
+      "bytes": 6876,
+      "sha256": "4dcc7baf4fff9918e20883d6edeafe01e1a1fb214c6e107ea44628da626d9966"
+    },
+    "result": "All six decoded mathematical/numerical/source payloads identical. Exactly four execution metadata fields changed per case: output path, started/finished timestamps and execution UUID. Hence full file hashes differ; no certificate endpoint or scientific disposition changed."
+  },
+  "remaining": "Independent CORE and Round2 generated are still running in the authoritative snapshot. Round4 aggregate and full release acceptance are not inferred.",
+  "postgreen": "Independent acceptance preserves the current 1079-support/90-module/84-control state and the finite signed-residue falsifiers. The global-minimum-over-apertures research route must retain exact native carriers and fresh-shell crossing branch; this acceptance provides no stationary successor or arithmetic opposition.",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "repository_mutations": false,
+  "reruns_or_local_compiles": false
+}

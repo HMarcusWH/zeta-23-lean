@@ -1,0 +1,584 @@
+{
+  "status": "BOUNDED_SOURCE_READ_INTERFACES_VERIFIED_NO_NEW_CLOSING_ESTIMATE",
+  "created_utc": "2026-11-02T05:51:28.256991+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "clean": true,
+  "scope": "Fresh read of the exact current closure registers and the named proof/definition interfaces. No exhaustive claim about all historical results or all usages; no new compiler, CI or theorem promotion.",
+  "inventory": {
+    "registered_declarations": 1079,
+    "registered_modules": 90,
+    "registered_semantic_controls": 84,
+    "authority": "Current MATH_CONTRACTS madness_extension registration, not current-head full native acceptance."
+  },
+  "finding": "No named independently proved closing sign or smallness bound was found in this bounded set. The strongest directly applicable extra finite-input inequalities are actual atom square/concentration bounds and the exact corrected-source discrepancy integral. Ground moments/visibility impose genuine additional constraints only on their selected eigenstates. A new source-specific relation to those states or a paid signed covariance bound remains necessary.",
+  "interfaces": [
+    {
+      "id": "ACTUAL_ATOM_SQUARE_CONCENTRATION",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\SourceExchangeConcentration.lean",
+        "bytes": 20833,
+        "sha256": "03fadc63d50d3947c362c750f7843a8301334c089e9b9b35ee08fe9ba44abf4a"
+      },
+      "anchors": [
+        {
+          "declaration": "sourceConcentration_eq_plus_add_minus",
+          "line": 41
+        },
+        {
+          "declaration": "sourceExchangeMixed_self_eq_native",
+          "line": 115
+        },
+        {
+          "declaration": "native_source_mixed_concentration_bound",
+          "line": 335
+        },
+        {
+          "declaration": "native_source_square_concentration_full",
+          "line": 366
+        },
+        {
+          "declaration": "native_source_square_concentration_half",
+          "line": 374
+        }
+      ],
+      "exact_prerequisites": "Any actual Euclidean finite vector, fixed K, real 0<=omega<=1; stronger square bound requires omega<=1/2. No eigenvector, stationarity or RH premise.",
+      "existing_result": "The actual source-atom energy is the signed exchange channel; concentration is the SUM of both nonnegative exchange energies. ||S_omega u||^2<=2C_omega(u), improved to <=C_omega(u) on the half interval; full complex mixed pairing is bounded by sqrt(C(h)C(u)).",
+      "application_to_current_echo": "This is an available input-specific inequality for the actual finite echo coefficients, not just a generic operator norm. It can price atomwise positive response costs in the current fixed-input analysis without a ground adapter.",
+      "unpaid_or_invalid_transfer": "It bounds a positive SUM, not the parity response difference or signed echo. Squaring the full prime sum retains all cross-prime terms. A weighted Cauchy upper must charge the full prime mass; the old overlap is not discardable."
+    },
+    {
+      "id": "EXACT_LATE_OLD_PRIME_SPLIT",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\NativeConcentrationBudget.lean",
+        "bytes": 11195,
+        "sha256": "601b170880c05df913903d2b3c6151592a14cb8e66eb80742eda75baf586c687"
+      },
+      "anchors": [
+        {
+          "declaration": "native_prime_half_coordinate_iff",
+          "line": 42
+        },
+        {
+          "declaration": "native_prime_power_regime_partition",
+          "line": 62
+        },
+        {
+          "declaration": "native_prime_concentration_budget_regime_fallback",
+          "line": 113
+        },
+        {
+          "declaration": "native_complete_concentration_budget",
+          "line": 137
+        }
+      ],
+      "exact_prerequisites": "L>0; all q in Icc 2 floor(exp L), including every prime power. Corrected-row application requires K>=2 and actual pole-neutral even u.",
+      "existing_result": "omega=1-log(q)/L<=1/2 iff log(q)>=L/2. Late atoms have mixed cost1 and old atoms cost2. Complete row cost retains the exact Arch pairing plus the actual concentration sum.",
+      "application_to_current_echo": "An actual finer majorant available before replacing concentration by a global norm. DERIVED: with w_q=Lambda(q)/sqrt(q), c_q=1 late/2 old, ||Prime u||^2 <= (sum w_q)(sum w_q c_q C_q(u)). Weighted Cauchy plus the cited actual atom theorem proves this finite bound.",
+      "unpaid_or_invalid_transfer": "The unconditional fallback still costs O(exp L)||u||^2 after Chebyshev on sum w_q; it does not supply a subexponential squared-response bound or source-matched signed cancellation. No claim that this family has never been considered elsewhere in the project."
+    },
+    {
+      "id": "EXACT_ADAPTIVE_SOURCE_COVARIANCE",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\PrimeDiscrepancyIntegral.lean",
+        "bytes": 10263,
+        "sha256": "5df3b8309f6144a22da5ba8d318c5c91fba181911cf15b1f0d50d49f4d9365c1"
+      },
+      "anchors": [
+        {
+          "declaration": "prime_discrepancy_log_integral",
+          "line": 126
+        },
+        {
+          "declaration": "native_prime_discrepancy_integral",
+          "line": 211
+        }
+      ],
+      "exact_prerequisites": "General identity: C1 complex test with both endpoint values zero and continuous derivative; native specialization: L>0 and actual pole-neutral even u.",
+      "existing_result": "Actual complete weighted prime sum minus continuum equals -integral_0^L (psi(exp y)-exp y)exp(-y/2)(Fprime-F/2)dy.",
+      "application_to_current_echo": "Applies directly to the corrected-source test of any constructed finite even input, including a fixed-input echo projection if its precise coefficient vector is supplied. No ground premise is needed.",
+      "unpaid_or_invalid_transfer": "The test depends on the actual input. This exact identity does not supply an upper bound on the joint psi-error/test covariance. No exchange of the corrected row with the raw fixed H function is licensed."
+    },
+    {
+      "id": "ADAPTIVE_CLASS_IS_MEMBERSHIP_NOT_SMALLNESS",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\AdaptiveBudget.lean",
+        "bytes": 9283,
+        "sha256": "ed2890bedcf365ff174564e37d58c63f9ac5f5f39e134cc48faaf2ffb285caab"
+      },
+      "anchors": [
+        {
+          "declaration": "UniformPrimeDiscrepancyBound",
+          "line": 24
+        },
+        {
+          "declaration": "native_source_selected_membership",
+          "line": 82
+        },
+        {
+          "declaration": "actual_even_ray_gap_norm",
+          "line": 47
+        },
+        {
+          "declaration": "native_adaptive_complete_budget",
+          "line": 153
+        }
+      ],
+      "exact_prerequisites": "Membership needs a genuine norm budget U and actual derivative variation V. The response consumer additionally assumes UniformPrimeDiscrepancyBound and an Arch-continuum budget B. Ground-ray norm pricing requires a strict opposite-ground gap.",
+      "existing_result": "The test amplitude is 2||correctedRow||U; the complete source norm is <=B+epsilon when both independent arithmetic and continuum hypotheses are supplied.",
+      "application_to_current_echo": "This gives a ready exact consumer for a new estimate on the fixed echo input, but does not itself produce that estimate.",
+      "unpaid_or_invalid_transfer": "Do not promote the proposition UniformPrimeDiscrepancyBound into a theorem stored in a ground packet. No missing inverse cost is alleged; strict-gap norm pricing is already proved."
+    },
+    {
+      "id": "ACTUAL_GROUND_SIGN_AND_MOMENT",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\GroundArithmetic.lean",
+        "bytes": 10956,
+        "sha256": "5880f1bbc7df57224d1c261cb60f7d006e66b4aa7b54e1501a949ec12c4199e8"
+      },
+      "anchors": [
+        {
+          "declaration": "actual_even_ground_signed_discrepancy",
+          "line": 101
+        },
+        {
+          "declaration": "actual_odd_ground_reciprocal_discrepancy",
+          "line": 132
+        },
+        {
+          "declaration": "actual_even_ground_signed_budget_feasibility",
+          "line": 162
+        },
+        {
+          "declaration": "actual_odd_ground_signed_budget_feasibility",
+          "line": 174
+        },
+        {
+          "declaration": "actual_even_ground_ray_moment_feasibility",
+          "line": 186
+        }
+      ],
+      "exact_prerequisites": "Same L>0,K>=3 and the corresponding actual bottom strictly below the opposite bottom; the theorem chooses its actual normalized eigenray/reciprocal input.",
+      "existing_result": "Strict even: f(r)=1, Prime(r)=-1-Arch(r), positive real M4 and gap*||Dr||^2<=Re M4. Strict odd: distinct reciprocal EVEN v has f(v)=-1 and Prime(v)=1-Arch(v). Gap budgets keep opposite trace signs.",
+      "application_to_current_echo": "These are actual source constraints beyond the fixed-input echo calculation. They become directly relevant only after an eigenray identity or a fully priced spectral decomposition relating the fixed echo inputs to these selected rays.",
+      "unpaid_or_invalid_transfer": "The constructed H-translate, its primitive and its repaired projection are not identified with these rays. Source activity alone does not establish an eigen-equation, moment positivity, or response estimate."
+    },
+    {
+      "id": "WHOLE_SAME_STATE_BRANCHES",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\JointGroundConstraints.lean",
+        "bytes": 11983,
+        "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7"
+      },
+      "anchors": [
+        {
+          "declaration": "NativeStrictEvenGroundConstraints",
+          "line": 34
+        },
+        {
+          "declaration": "NativeStrictOddGroundConstraints",
+          "line": 67
+        },
+        {
+          "declaration": "NativeTiedGroundConstraints",
+          "line": 100
+        },
+        {
+          "declaration": "joint_ground_constraints_of_both_negative",
+          "line": 157
+        }
+      ],
+      "exact_prerequisites": "Actual BothNeutralNegative at the identical L,K, with positive aperture and K>=3.",
+      "existing_result": "Exhaustive strict-even, strict-odd or shared-bottom package retains absolute energies, full reciprocal inputs, whole kernels and source-forced complement responses.",
+      "application_to_current_echo": "The fixed echo analysis must remain compatible with this package when a common negative state is separately supplied. It is not free-source data.",
+      "unpaid_or_invalid_transfer": "None of the fields is an independently proved contrary arithmetic sign. A fixed-input squared response cannot inherit a selected eigenmode equation or an own-predecessor PSD property."
+    },
+    {
+      "id": "UNIFORM_QUARTIC_GROUND_AND_MOMENT_SUPPLIER",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\CommonQuarticGround.lean",
+        "bytes": 45005,
+        "sha256": "46b6de489ae488df1450b2586cc7b2a6eb98e0ce2dfa969b2ba7a7f8ea5b3bfd"
+      },
+      "anchors": [
+        {
+          "declaration": "eventually_both_ground_margins_at_original_quartic",
+          "line": 666
+        },
+        {
+          "declaration": "eventually_both_moment_slice_margins_at_original_quartic",
+          "line": 783
+        }
+      ],
+      "exact_prerequisites": "One actual nontrivial zero rho with Re rho!=1/2. A positive constant margin and eventual threshold are chosen before all later apertures.",
+      "existing_result": "At exact Kd=ceil(L^4), both actual parity bottoms are <=-d; actual even M4-zero and odd M3/M5-zero nonzero trials have a fixed relative negative margin.",
+      "application_to_current_echo": "This is stronger than merely cofinal negativity and is not inferred from a fixed input response. It supplies the correct same-aperture negative spectrum on the whole late tail.",
+      "unpaid_or_invalid_transfer": "It does not say the echo input overlaps a negative eigenspace by any quantitative amount, nor that either negative trial is the H-translate. Constant negative Rayleigh depth is not a growing exponential depth."
+    },
+    {
+      "id": "SAME_PACKET_FULL_SPECTRAL_SELECTION",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\RegularCells\\PacketSpectralSelection.lean",
+        "bytes": 2370,
+        "sha256": "d86fe4a10cb14228f88a58756d1f612c5e71fdbbdf9938ba209021524d293464"
+      },
+      "anchors": [
+        {
+          "declaration": "cofinally_actual_packet_joint_regular_disjoint_spectra",
+          "line": 13
+        }
+      ],
+      "exact_prerequisites": "Actual off-line rho; first R0, then any 0<beta<|Re rho-1/2|, parity and R>=R0; reconstruct the genuine composed output packet.",
+      "existing_result": "The same packet keeps a unit detector with energy<=-exp(beta L), both negative grounds at Kd, all-cutoff zero regularity, and complete even/odd spectral disjointness for every 3<=K<=Kd.",
+      "application_to_current_echo": "This pays the historical source-audit seam that regular selection alone did not preserve an existing deep packet. No external equality of unrelated packets is needed.",
+      "unpaid_or_invalid_transfer": "This selected-aperture conclusion is not universal separation at every L,K. No determinant lower bound, gap size or source-overlap lower magnitude is supplied."
+    },
+    {
+      "id": "GENUINE_SOURCE_VISIBLE_EIGENCHANNELS",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\SeparatedSourceVisibility.lean",
+        "bytes": 6179,
+        "sha256": "cc46ff5be622db2a9052a5d08b86c7eeded480daf46a804c304dc5ed863f6a2b"
+      },
+      "anchors": [
+        {
+          "declaration": "separated_native_even_eigen_channels_visible",
+          "line": 62
+        },
+        {
+          "declaration": "separated_native_odd_eigen_channels_visible",
+          "line": 79
+        },
+        {
+          "declaration": "separated_native_even_eigenspace_finrank_le_one",
+          "line": 98
+        },
+        {
+          "declaration": "separated_native_odd_eigenspace_finrank_le_one",
+          "line": 107
+        }
+      ],
+      "exact_prerequisites": "Actual full cross-parity spectral disjointness at the same L,K and a nonzero actual eigenvector; arbitrary complex eigenvalue retained.",
+      "existing_result": "Every even eigenvector is visible to corrected f and the inverse-adjoint cubic channel; every odd eigenvector is visible to cubic g and f composed with D^-1. All eigenspaces have dimension<=1.",
+      "application_to_current_echo": "This is a real kernel exclusion beyond generic finite injectivity, but for these exact source functionals. It can exclude a source-silent eigenray at a selected separated state.",
+      "unpaid_or_invalid_transfer": "It does not identify translates of H with either source functional. An H-translate observation kernel is not proved contained in ker f or ker g. Neither qualitative visibility nor simplicity bounds recovery conditioning."
+    },
+    {
+      "id": "JOINT_RECOVERY_EXACT_COST",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICAFollowup\\JointObservation.lean",
+        "bytes": 17082,
+        "sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162"
+      },
+      "anchors": [
+        {
+          "declaration": "joint_recovery_iff",
+          "line": 38
+        },
+        {
+          "declaration": "joint_recovery_optimal_norm",
+          "line": 96
+        }
+      ],
+      "exact_prerequisites": "Finite-dimensional Hilbert input and actual bounded observation maps P,C; kernel inclusion ker P intersect ker C <= ker ell must be supplied.",
+      "existing_result": "Recovery exists exactly under that kernel inclusion. Its optimal norm is sup ||ell x||/||(Px,Cx)|| on the nonzero complete observation, using the Hilbert product norm.",
+      "application_to_current_echo": "If a joint echo/history observation is explicitly instantiated, this theorem gives the correct test for exact recovery and the exact remaining norm quantity.",
+      "unpaid_or_invalid_transfer": "No blanket kernel inclusion or uniformly bounded inverse is proved for arbitrary chosen observations. A full source cyclicity theorem for f,g does not automatically prove H-translate observation recovery."
+    },
+    {
+      "id": "PAID_NATIVE_FOUR_HISTORY_BOUND",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\OriginalDetectorFourHistoryLocalXBound.lean",
+        "bytes": 29203,
+        "sha256": "21c20893cccd3f3a3ebda21a03e614f10e4bec335a11d59413f014b17a4ee862"
+      },
+      "anchors": [
+        {
+          "declaration": "originalDetector_nativeTest_primeForcing_le_sixteenKappa",
+          "line": 498
+        }
+      ],
+      "exact_prerequisites": "|phase|<=1, separation a>=0, and an actual native pole-neutral vector v at the original aperture; arbitrary finite cutoff.",
+      "existing_result": "Full original prime forcing against exact physical synthesis is <=16*fixedOriginalSincTrialNormalization*||v||*sqrt(integral_0^L nativeOriginalPrimeField^2). The compact differential inverse and physical isometry are paid.",
+      "application_to_current_echo": "Already a valid full-history forcing estimate on genuine native test vectors. It could consume an independently improved L2 estimate, not merely a primitive head or signed mean.",
+      "unpaid_or_invalid_transfer": "The RHS is the one-copy original field and its full positive L2 energy. It is not the signed H-field self-echo; no rate-zero bound is supplied or inferred by discarding histories."
+    },
+    {
+      "id": "RATE_IDENTITY_NOT_RATE_ZERO",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICAFollowup\\NativeWindowRate.lean",
+        "bytes": 60108,
+        "sha256": "1b388ffd7828390307605cc4804d7d9e1400343a3bafa0858a9d76aa0f369b33"
+      },
+      "anchors": [
+        {
+          "declaration": "native_fixed_source_window_rate",
+          "line": 1154
+        }
+      ],
+      "exact_prerequisites": "Every fixed native source order d and every C>1, continuous real horizons; complete multiplicity-bearing source.",
+      "existing_result": "log(1+integral_[T-C log T,T]|primeFieldFamily d|^2)/(2T) tends to nativeZeroDisplacementSup.",
+      "application_to_current_echo": "This quantifies the exact growth that any proposed L2 supplier must beat and preserves the actual source.",
+      "unpaid_or_invalid_transfer": "It proves the rate Theta, not Theta=0. The source H=q*j adapter is separate from silently replacing one-copy j by H."
+    },
+    {
+      "id": "DIRECT_SMOOTH_ROUTE_FULL_RESIDUAL",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\QuarticErrorReduction.lean",
+        "bytes": 21338,
+        "sha256": "3a176235c26faba6534a32cbea684e84dd81c36c22c9e8ac472cbea36d82dc2a"
+      },
+      "anchors": [
+        {
+          "declaration": "exists_uniform_source_schur_error_threshold",
+          "line": 382
+        },
+        {
+          "declaration": "exists_uniform_smooth_source_main_lower_threshold",
+          "line": 398
+        }
+      ],
+      "exact_prerequisites": "Actual Step123NativeOutput beta parity separation, beta>0, universal lateness before packet parameters.",
+      "existing_result": "Full detector loss differs from smoothSourceMain by every fixed exponential smallness; late smoothSourceMain>exp(beta L)/4.",
+      "application_to_current_echo": "A contrary bound can bypass ground selection, but must target the actual inverse-weighted forcing minus direct Weil energy minus eta mass.",
+      "unpaid_or_invalid_transfer": "Current fixed-input echo is not this expression. The direct energy and complete predecessor forcing cannot be discarded; paid compact inverse does not pay the response comparison."
+    },
+    {
+      "id": "FIXED_FILTER_ROUTE_WITHOUT_INVERSION",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound2\\FixedFilter.lean",
+        "bytes": 81757,
+        "sha256": "5a07984846333f374b9b4631978881db7e3f4105880d998b3ec9671d10a2cd3e"
+      },
+      "anchors": [
+        {
+          "declaration": "fixed_filtered_native_zero_separation",
+          "line": 879
+        },
+        {
+          "declaration": "FixedFilteredNativeApproximation",
+          "line": 901
+        },
+        {
+          "declaration": "rh_of_fixed_filtered_native_approximation",
+          "line": 908
+        }
+      ],
+      "exact_prerequisites": "Right actual zero for the separation theorem; an explicit finite-trial approximation sequence for the RH consumer.",
+      "existing_result": "Every finite residual has a positive source-dependent lower norm at the actual zero. A fixed physical filter is nonzero there; no inverse filtering is used.",
+      "application_to_current_echo": "This route remains available independently of eigenray projection and could consume a genuine small residual construction.",
+      "unpaid_or_invalid_transfer": "The approximation sequence is OPEN. Recovering coefficients or exact source echo identities supplies no such convergence or normal-family control."
+    },
+    {
+      "id": "EQUIVALENT_GATE_AUDIT",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\GlobalParityBottomArithmeticEquivalenceAudit.lean",
+        "bytes": 4296,
+        "sha256": "da64801c1d0af82780af7c2d83d798e00ef9ea7511af7fc72c46e1f7e3c995bb"
+      },
+      "anchors": [
+        {
+          "declaration": "legacyGlobalBottomArithmeticClosure_iff_residualExclusion",
+          "line": 47
+        },
+        {
+          "declaration": "globalBottomResidualExclusion_iff_riemannHypothesis",
+          "line": 90
+        },
+        {
+          "declaration": "legacyGlobalBottomArithmeticClosure_iff_riemannHypothesis",
+          "line": 97
+        }
+      ],
+      "exact_prerequisites": "Definitions quantify over the exact historical globally aligned residual states, including their source and negative certificate.",
+      "existing_result": "The universal old prime-dominance gate is equivalent to residual-state exclusion and exact Mathlib RH.",
+      "application_to_current_echo": "An equivalent formulation is a usable consumer but not an independent arithmetic supplier. Its actual carrier and global alignment cannot be transferred from an arbitrary fixed echo input.",
+      "unpaid_or_invalid_transfer": "This does not establish impossibility of a new source argument; it prevents counting a renamed universal dominance premise as paid information."
+    }
+  ],
+  "metadata_interpretation": "Older SOURCE_CONSTRAINTS state rules and REGULAR_CELLS entries describe their historical seams. Current PacketSpectralSelection and the newer source-audit full-spectrum extension pay same-packet disjoint selection; they do not pay all-aperture spectral separation or quantitative overlap. Current source types take precedence over old prose.",
+  "highest_leverage_exact_remaining": "For fixed-input echo coefficients, retain complete concentration, full Arch action, both output-normal costs and cross-prime covariance. For eigenray closure, prove an actual-source bound on the normalized selected corrected test or a quantitative observation link to that selected state. Generic recovery and RH-equivalent gate formulations provide neither bound.",
+  "source_bindings": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round4\\CLOSURE_OBLIGATIONS.json",
+      "bytes": 12398,
+      "sha256": "b8da5acc7690dbbf0fa5fb138a238d3df0fed0b86a3c9b7a281d6ac7e4faf3d9",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round4\\MADNESS_CONTRACTS.json",
+      "bytes": 109080,
+      "sha256": "9269db295f39adce56f9574059c872261a6cd0a2bd2bc9b92b8c689f102bd871",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round4\\MADNESS_SOURCE_AUDIT.json",
+      "bytes": 172604,
+      "sha256": "915e5ea3e667529a72e8b1e4591bcbe9d2fac17774a1d6e5d522138562da43ce",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round4\\MATH_CONTRACTS.json",
+      "bytes": 47609,
+      "sha256": "5970a5dfc7e92df01a68b9223d40084131c0b7156d5a509a66ab2b80ed288d92",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round4\\ROOTS.json",
+      "bytes": 403207,
+      "sha256": "a2c200dbe2d1c9d811562c9c8148dbf60bf91d0e6f15db8ed901e34257e87a16",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round4\\SOURCE_CONSTRAINTS.json",
+      "bytes": 55120,
+      "sha256": "98e942c679344799f748fddb5d0ad6f812527359611d4242a03023e42174101e",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalSourceMomentAtoms.lean",
+      "bytes": 11531,
+      "sha256": "5b0aeb95bf24e5d9b43b648ef6d331c9293ec25d97fe3e69da5b46a2386b9fb2",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\OriginalDetectorFourHistoryLocalXBound.lean",
+      "bytes": 29203,
+      "sha256": "21c20893cccd3f3a3ebda21a03e614f10e4bec335a11d59413f014b17a4ee862",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\GeneratedFamilyFinalGateEquivalence.lean",
+      "bytes": 8832,
+      "sha256": "b5ceca0e305690d22a8876ccca1d82d2f87cb6f1f6524b3cb51d29521118aec3",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\GlobalParityBottomArithmeticEquivalenceAudit.lean",
+      "bytes": 4296,
+      "sha256": "da64801c1d0af82780af7c2d83d798e00ef9ea7511af7fc72c46e1f7e3c995bb",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICAFollowup\\JointObservation.lean",
+      "bytes": 17082,
+      "sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICAFollowup\\NativeWindowRate.lean",
+      "bytes": 60108,
+      "sha256": "1b388ffd7828390307605cc4804d7d9e1400343a3bafa0858a9d76aa0f369b33",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound2\\FixedFilter.lean",
+      "bytes": 81757,
+      "sha256": "5a07984846333f374b9b4631978881db7e3f4105880d998b3ec9671d10a2cd3e",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\ActualSourceHyperbola.lean",
+      "bytes": 80457,
+      "sha256": "568292f2b9008892772550b544a48fdaa5730be44d87e453fd8008f9bbb1a350",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\AdaptiveBudget.lean",
+      "bytes": 9283,
+      "sha256": "ed2890bedcf365ff174564e37d58c63f9ac5f5f39e134cc48faaf2ffb285caab",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\CommonQuarticGround.lean",
+      "bytes": 45005,
+      "sha256": "46b6de489ae488df1450b2586cc7b2a6eb98e0ce2dfa969b2ba7a7f8ea5b3bfd",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\GroundArithmetic.lean",
+      "bytes": 10956,
+      "sha256": "5880f1bbc7df57224d1c261cb60f7d006e66b4aa7b54e1501a949ec12c4199e8",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\JointGroundConstraints.lean",
+      "bytes": 11983,
+      "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\NativeConcentrationBudget.lean",
+      "bytes": 11195,
+      "sha256": "601b170880c05df913903d2b3c6151592a14cb8e66eb80742eda75baf586c687",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\NativeSourceBudget.lean",
+      "bytes": 10162,
+      "sha256": "75856cd9ae5790b9bd4afa2ca86014671a845c11f1346c20b13afbb93562b62e",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\PrimeDiscrepancyIntegral.lean",
+      "bytes": 10263,
+      "sha256": "5df3b8309f6144a22da5ba8d318c5c91fba181911cf15b1f0d50d49f4d9365c1",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\QuarticErrorReduction.lean",
+      "bytes": 21338,
+      "sha256": "3a176235c26faba6534a32cbea684e84dd81c36c22c9e8ac472cbea36d82dc2a",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\RegularCells\\PacketSpectralSelection.lean",
+      "bytes": 2370,
+      "sha256": "d86fe4a10cb14228f88a58756d1f612c5e71fdbbdf9938ba209021524d293464",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\SchurErrorTransport.lean",
+      "bytes": 11499,
+      "sha256": "1f41a890585a99d16f6a0f2dce4bb1b4bfec42daa8db9da337dd215b72d69f53",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\SeparatedSourceVisibility.lean",
+      "bytes": 6179,
+      "sha256": "cc46ff5be622db2a9052a5d08b86c7eeded480daf46a804c304dc5ed863f6a2b",
+      "same_current_HEAD": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\SourceExchangeConcentration.lean",
+      "bytes": 20833,
+      "sha256": "03fadc63d50d3947c362c750f7843a8301334c089e9b9b35ee08fe9ba44abf4a",
+      "same_current_HEAD": true
+    }
+  ],
+  "prior_echo_bindings": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_SELF_ECHO_NATIVE_CARRIER_ADAPTER.json",
+      "bytes": 16358,
+      "sha256": "53a02515b8a2e73a7867ff7d4cb06cf00cf2fc9562c6cf07003053132f5bb439"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_INVERSE_INDEX_PRIMITIVE_AND_COVARIANCE.json",
+      "bytes": 12920,
+      "sha256": "54d56430516265f41e6779ef8877af53dc63894827a66ee2c85c7afa15dda7e8"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\UNIFORM_NATIVE_QUARTIC_ENDPOINT_COST.json",
+      "bytes": 14908,
+      "sha256": "b74264d1df89bdd0fbbf2bc2a29e7f2c68ad1a24ef57c219a97d9a24e0ebfb6c"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\INDEPENDENT_UNIFORM_NATIVE_COST_REVIEW.json",
+      "bytes": 12412,
+      "sha256": "cb0caf0d174cae51847b5445cf3aadce5ab01db9638f3960f5d2d8cf1ecc22d7"
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "repo_edits": false
+}

@@ -1,0 +1,62 @@
+{
+  "status": "COMPLETE_REVIEWED_DERIVED_RESEARCH_RH_OPEN",
+  "created_utc": "2026-11-02T09:48:12.386503+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "worktree_clean": true
+  },
+  "subject": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\common-real-source-synthesis\\ACTUAL_COMMON_REAL_SOURCE_SYNTHESIS.json",
+    "sha256": "e894d6f9a32329c0a7a1a2f0a11f4ac23a9a08f7a3fe30ab73f9d7acc7562dab",
+    "bytes": 26723
+  },
+  "independent_reviews": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\common-real-source-synthesis\\INDEPENDENT_ROOT_COMMON_REAL_SYNTHESIS_REVIEW.json",
+      "sha256": "70bd3bab85c46d84ab254eff8d5b293d1aa2d5acbb6416310ba60b840f52294f",
+      "bytes": 13553
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\common-real-source-synthesis\\INDEPENDENT_COMMON_REAL_SYNTHESIS_REVIEW.json",
+      "sha256": "2adc860f044bae9b18651e466c40100238fad9798b081f890b34bb3b8b68c72c",
+      "bytes": 15280
+    }
+  ],
+  "fresh_reverification": {
+    "author_records": 26,
+    "current_source_blobs": 16,
+    "author_helper": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\common-real-source-synthesis\\seal_research.py",
+      "sha256": "1c9ec1519645cbffac67600d5efd274a321bb7a43acb5bcbb87ec6beeee18d90"
+    }
+  },
+  "mathematical_result": [
+    "Any pair in the actual physical-real original H parity spans has one common finite REAL signed center measure, including at resonances. Full active preimages have an explicit polynomial geometric bound; explicit distinct-center interpolation retains Hmin and the factorial Vandermonde coefficient price.",
+    "On I=(2B,3B), the complete smooth input has W(h,h)>=(2-3B)||h||^2. A common input whose same-cutoff native projection z has Q(z)<=-||z||^2 necessarily satisfies ||C_L(h-z)||>=||z||, including all Fourier and native-normal errors.",
+    "Thus every common measure realizing those negative targets satisfies TV(mu)>=||z||/(2Eout_H). This is a target-specific conditional lower bound even for the corrected zero-moment witnesses; it is neither a generic inverse-cost/error multiplication nor a new signed full-echo upper bound."
+  ],
+  "post_review_pass": {
+    "what_became_formally_true": "No new Lean declaration or gate. Current source definitions/theorems are used at clean 7bae; new synthesis and error-obstruction conclusions are DERIVED, independently reviewed analytic mathematics.",
+    "workflow_harvest": "No compiler, CI, numerical source test or workflow run was initiated for this bounded external pass. The parent owns current CI harvest. This completion does not assert uninspected workflows passed.",
+    "what_changed": "The former two-independent-measure caveat is removed qualitatively. A previously unpaid actual-negative-target cost is now forced by literal tiny-support positivity, including when all additional moment rows vanish.",
+    "upstream": "Separate polynomial active-preimage geometry from actual source-multiplier and center-interpolation conditioning. Preserve full physical output error rather than its native compression.",
+    "downstream": "Common-real-input existence is now usable without an extra hypothesis. Any attempt to apply tiny-support positivity after finite synthesis must pay the nonvanishing full projection error.",
+    "resurrected_routes": "The common-input compatibility question is answered; it does not revive a direct small-error contradiction. No new ground/gap/overlap estimate follows.",
+    "rh_relevant_clue": "A future signed-kernel estimate must retain the target-dependent coefficient and full tail/normal compensation. Qualitative shared input and extra moments alone do not pay this requirement.",
+    "falsification": "The tiny-support positive smooth input and conditional negative native projection give an actual-source falsification of uniformly accurate synthesis for those targets. No arbitrary model or unproved off-line zero is substituted.",
+    "next_action": "Use the complete two-center kernel with actual coefficient/error compensation if pursuing a new bound; do not repeat span, inverse or endpoint-row wrappers. No additional research branch is claimed completed here."
+  },
+  "authority_limits": [
+    "DERIVED external mathematics only; no new formal validity, no repository mutations, no changes to source/normalization/cutoffs.",
+    "Negative targets remain conditional on the actual off-line-zero premise. No actual off-line zero, ground identification or rightmost-zero assumption is asserted.",
+    "The measure is a signed test-input coefficient measure, not arithmetic Mobius or von Mangoldt weights and not a uniformly fixed source.",
+    "The error lower bound is for the complete interval-restricted physical response, not its finite native compression.",
+    "The alternative cubic cutoff remains distinct from original Kd and from current gate authority. RH, Step4 and the full signed upper bound remain OPEN."
+  ],
+  "completion_helper": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\common-real-source-synthesis\\seal_completion.py",
+    "sha256": "b91d76562fe2f8a71fc7abfb8d6a60bece46a77a39229b6e2371f31c409a1e20",
+    "bytes": 6532
+  }
+}

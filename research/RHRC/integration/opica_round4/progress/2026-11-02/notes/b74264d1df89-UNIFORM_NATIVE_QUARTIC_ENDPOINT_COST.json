@@ -1,0 +1,102 @@
+{
+  "status": "DERIVED_UNIFORM_NATIVE_QUARTIC_ENDPOINT_COST_WITH_EXPLICIT_CONSTANTS",
+  "created_utc": "2026-11-02T05:28:44.514138+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "sections": [
+    {
+      "title": "U1. Exact object and uniform statement",
+      "proof": "Keep the actual W=C_L H(.-c), its continuous two-pole projection V=(I-Ppole)W, and the EXACT native cost C_K(V) from frozen5893968d P2/P5. No function or normal is replaced. V is real and smooth on [0,L], and both physical exponential moments vanish. Let\n kappa=L/(4pi), A=(V(0)+V(L))/2, B=(V(0)-V(L))/2,\n M1=sup_(0<=t<=L)|V'(t)|.\nHere kappa is the geometric scale, distinct from the earlier differential source also traditionally denoted kappa. Assume kappa>=1 and integer K>=4096 kappa. Then the following genuinely UNIFORM inequality holds:\n\n |C_K(V)-(L/K)(9A^2/8-8B^2/pi^2)|\n <=2^20 [kappa L(A^2+B^2)/K^2\n          +L^2(|A|+|B|)M1/K^(3/2)+L^3 M1^2/K^2].       (U1)\n\nAll powers of L,K and the geometric scale are explicit. The numerical constant is deliberately generous. It is independent of L,K,V,Theta and the zeros. This is a DERIVED paper inequality, not a new compiled declaration. Only C1 regularity is needed for the estimates below; the actual V is smooth."
+    },
+    {
+      "title": "U2. Exact finite endpoint Grams and Fourier seminorms",
+      "proof": "Use the unchanged normalized Fourier basis e_n=L^(-1/2)exp(2pi i n t/L), summing BOTH signs of n. Let f_e=(V+J_LV)/2, f_o=(V-J_LV)/2. Their endpoint values are A,A and B,-B. Write c_e,c_o for their Fourier coefficients. Set lambda=L/(2pi) and q=lambda*sqrt(L)*M1<=L^(3/2)M1/6.\n\nSince f_e has matching endpoint values, its periodic H1 Parseval identity gives sum n^2|c_e,n|^2<=q^2. Cauchy-Schwarz therefore yields\n |sum_(|n|<=K)c_e,n-sqrt(L)A|<=2q/sqrt(K),\n |sum_(|n|<=K)n^2 c_e,n|<=2K^(3/2)q,\n sum_(|n|>K)|c_e,n|^2<=q^2/K^2.\nThe endpoint Fourier value is justified by the absolutely convergent H1 Fourier series, not by differentiating a generic L2 error.\n\nFor the odd part subtract the exact linear jump profile:\n f_o(t)=B(1-2t/L)+w(t), w(0)=w(L)=0.\nBy the fundamental theorem, |B|<=LM1/2, hence ||w'||_infinity<=2M1. Let q_w=lambda*sqrt(L)*2M1<=L^(3/2)M1/3. The nonzero Fourier coefficients of the jump profile are exactly -i B sqrt(L)/(pi n), while sum n^2|w_n|^2<=q_w^2. This keeps the actual odd endpoint jump explicitly.\n\nThe even endpoint Gram has entries N=2K+1, S2=K(K+1)(2K+1)/3, S4=K(K+1)(2K+1)(3K^2+3K-1)/15. Its inverse entries obey, for K>=1,\n |(G_e^-1)00-9/(8K)|<=2/K^2,\n (G_e^-1)00<=4/K, |(G_e^-1)02|<=2/K^3,\n (G_e^-1)22<=6/K^5.\nFor inspection, the exact inverse00 is 3(3K^2+3K-1)/[(2K+1)(4K^2+4K-3)], inverse02 is -15/[(2K+1)(4K^2+4K-3)], and inverse22 is 45/[(2K+1)K(K+1)(4K^2+4K-3)]. These formulas directly prove the bounds. The odd endpoint Gram is S2, with S2^-1<=3/(2K^3) and |S2^-1-3/(2K^3)|<=3/K^4."
+    },
+    {
+      "title": "U3. Uniform endpoint-plus-tail error before the pole row",
+      "proof": "Let E_end,O_end denote each parity's Fourier tail norm PLUS the norm removed by its endpoint rows, before re-enforcing the pole row. Substitute the U2 bounds into the exact finite Gram quadratic forms. Expanding around sqrt(L)A on the even side gives\n |E_end-9LA^2/(8K)|\n <=2LA^2/K^2+24sqrt(L)|A|q/K^(3/2)+57q^2/K^2\n <=2LA^2/K^2+4L^2|A|M1/K^(3/2)+2L^3M1^2/K^2.        (U2)\nThe last 57 includes the complete even Fourier tail.\n\nFor the odd jump profile the tail is 2LB^2/pi^2 times sum_(n>K)n^-2, whose difference from 2LB^2/(pi^2 K) is at most LB^2/K^2. The odd endpoint datum is -2iB sqrt(L)K/pi plus an error of absolute value at most 2sqrt(K)q_w. Its leading removed norm is 6LB^2/(pi^2 K). Cross terms with w and its entire tail give\n |O_end-8LB^2/(pi^2 K)|\n <=3LB^2/K^2+5sqrt(L)|B|q_w/K^(3/2)+7q_w^2/K^2\n <=3LB^2/K^2+2L^2|B|M1/K^(3/2)+L^3M1^2/K^2.        (U3)\n\nThus the signed endpoint-plus-tail error is bounded by\n 3L(A^2+B^2)/K^2+4L^2(|A|+|B|)M1/K^(3/2)\n                    +3L^3M1^2/K^2.                 (U4)\nEvery estimate follows from full coefficient norms and finite Gram inverses; no sign of the error is assumed."
+    },
+    {
+      "title": "U4. Uniform lower bounds for BOTH actual pole Schur complements",
+      "proof": "The unchanged pole rows are p_e(n)=1/(kappa^2+n^2) and p_o(n)=n/(kappa^2+n^2), with the full -K,...,K metric. Write P_e,end and P_o,end for projection onto their respective endpoint-row spans. The actual final scalar Schur complements are\n H_e=||(I-P_e,end)p_e||^2,\n H_o=||(I-P_o,end)p_o||^2.\n\nFor kappa>=1 and K>=2kappa, summing |n|<=floor(kappa) gives ||p_e||^2>=1/(4kappa^3). Elementary integral comparison gives sum|p_e|<=5/kappa and |<n^2,p_e>|<=2K. From the endpoint inverse bounds,\n ||P_e,end p_e||^2<=8[(5/kappa)^2/K+(2K)^2/K^5]\n                         <=232/(kappa^2 K).\nConsequently K>=4096kappa gives H_e>=1/(8kappa^3).\n\nFor the odd row, the integers with kappa<=|n|<=2kappa number at least kappa. Each contributes at least1/(25kappa^2) to ||p_o||^2; hence ||p_o||^2>=1/(25kappa). Also |<n,p_o>|<=2K and S2^-1<=3/(2K^3), so ||P_o,end p_o||^2<=6/K. The same cutoff condition gives H_o>=1/(50kappa).\n\nThese are uniform, explicit bounds on the ACTUAL projected pole rows, not the unprojected profile norms. The relative endpoint loss is O(kappa/K) in both parities. No exponential or unspecified L-dependent inverse constant is hidden here."
+    },
+    {
+      "title": "U5. Cost of re-enforcing exact pole neutrality",
+      "proof": "Full exponential neutrality of V is exactly the infinite Fourier pole-row equation, by the current physical/profile theorem and L2 convergence. Thus the truncated pole datum is the negative omitted tail. This is where the actual source's moment condition is used.\n\nOn the even side the pole-row tail norm is <=K^-3/2. Its raw datum has absolute value <=q/K^(5/2). The endpoint projection estimates give\n ||P_e,end p_e||<=16/(kappa sqrt(K)),\n ||P_e,end c_e||<=4sqrt(L)|A|/sqrt(K)+10q/K.\nThe residual pole datum after endpoint projection is therefore at most\n 64sqrt(L)|A|/(kappa K)+161q/(kappa K^(3/2)).\nDividing its squared absolute value by H_e, using U4, bounds the added removed norm by\n 2^16 kappa LA^2/K^2+2^14 kappa L^3M1^2/K^3.\n\nOn the odd side the pole-row tail norm is <=2/sqrt(K). The jump-plus-w decomposition gives a raw datum at most sqrt(L)|B|/K+2q_w/K^(3/2). The endpoint projection estimates are\n ||P_o,end p_o||<=3/sqrt(K),\n ||P_o,end c_o||<=sqrt(L)|B|/sqrt(K)+3q_w/K.\nThe residual pole datum is at most 4sqrt(L)|B|/K+11q_w/K^(3/2). Its added removed norm is at most\n 1600 kappa LB^2/K^2+2^11 kappa L^3M1^2/K^3.\n\nThus the SUM of both additional pole costs is bounded by\n 2^16 kappa L(A^2+B^2)/K^2\n                  +2^15 kappa L^3M1^2/K^3.           (U5)\nBoth costs are nonnegative individually, but their signed difference is kept; the sum bounds its absolute value. Adding U4 and using kappa/K<=1/4096 proves U1 with the advertised safe constant2^20. This accounts for every native row, Fourier tail and endpoint term."
+    },
+    {
+      "title": "U6. Actual source derivative envelope and the prescribed quartic cutoff",
+      "proof": "The source seminorm is independently controlled as follows, with every constant fixed before L. The literal derivative H' is fixed smooth compact and has both half moments zero by integration by parts. The same reflected WeilFilter supplier used for R_+,R_- gives\n |[Lambda;H'](t)|<=C_(H') exp(Theta t), t>=0,\n C_(H')=C_arch(H')+sum_rho multiplicity(rho)|K_(H')(rho-1/2)|,\nafter enlarging for the fixed initial interval. This is finite by the current C2 compact filter/Arch integrability results; it does not require an attained supremum or Theta<1/2. Differentiating the locally finite prime history gives P'=[Lambda;H'] exactly.\n\nThe fixed a'=A_infinity H' is bounded on the real line. Its outer tails are obtained by differentiating the absolutely locally uniformly convergent Arch series and remain bounded by a source-fixed constant times exp(-5|t|/2). On the compact middle its smoothness supplies a finite constant. Hence sup_[0,L]|W'|<=C_W exp(Theta L).\n\nThe pole projection is c_r r+c_s s with the exact coefficients from5893 P7. For L>=16, its Gram inverse has operator norm at most2. The already proved X=O(exp(Theta L)),Y=O(1) therefore give |c_r|+|c_s|<=C_p exp(Theta L). Since |r'|,|s'|<=1/2, this proves\n M1<=C1 exp(Theta L), and similarly sup_[0,L]|V|<=C0 exp(Theta L). (U6)\nThe constants C0,C1 are fixed literal-source seminorm/filter sums, not uniform over replacement sources. Theta=1/2 is included. The endpoint estimates V(0)=W(0)-B_-+O((1+L)exp((Theta-1/2)L)) and the exact visible H-R_+ formula for V(L) remain unchanged.\n\nFor L>=16, kappa>=1 and Kd=ceil(L^4)>=4096kappa automatically. Applying U1 at EXACTLY that cutoff gives\n |C_Kd(V)-(L/Kd)(9A^2/8-8B^2/pi^2)|\n <=2^20[(A^2+B^2)L^-6+(|A|+|B|)M1 L^-4+M1^2 L^-5]. (U7)\nIn particular its error is bounded by C_* exp(2Theta L)/L^4, with an explicit admissible source constant C_*=2^20(2C0^2+2C0 C1+C1^2). No fixed-L asymptotic constant has been substituted into a growing aperture."
+    },
+    {
+      "title": "U7. What is decided, and what remains unpaid",
+      "proof": "The leading term in U7 is exactly\n L/(4Kd)*[(9/8-8/pi^2)(V(0)^2+V(L)^2)\n                        +(9/4+16/pi^2)V(0)V(L)].\nIts V(L)^2 coefficient is positive and is now accompanied by a genuinely uniform native-cutoff error. The complete finite normal constraints therefore leave this coefficient; it is not an artifact of exchanging fixed-L and Kd limits.\n\nDominance on actual excursions is a DIFFERENT assertion. When Theta>0, the early endpoint is at most polynomial and the late endpoint has limsup rateTheta. Along an exponential late-endpoint excursion, the early cross term is negligible. But the remaining error relative to (L/Kd)|V(L)|^2 involves M1/(L|V(L)|) and its square, as well as O(L^-3). The global bound M1<=C1 exp(Theta L) and a subsequence |V(L)|>=exp((Theta-delta)L) do NOT make that ratio small. No polynomial-height excursion bound, rightmost zero or relative Bernstein estimate has been supplied.\n\nThus U7 validates the actual positive endpoint-square coefficient and prices the exact residual, but does not yet prove C_Kd(V)>0 cofinally or give its exponential rate. Gevrey decay of high zero-frequency coefficients could motivate a sharper relative estimate, but componentwise coefficient bounds alone do not control cancellation in the complete field. That is a LEAD, not used in this proof.\n\nThe full corrected covariance remains equation(6) of5893, with Dpole, C_Kd, all Arch terms, same fixed inputs and all eigenmodes. No eigenray, ground, predecessor-PSD or stationarity premise has appeared. This result is not a signed bound on the complete echo or an RH contradiction."
+    }
+  ],
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_SIGNED_POLE_PROJECTION_AND_NATIVE_ENDPOINT_COST.json",
+      "sha256": "5893968d1258189eb15d2dda4e915599171fc18a28153ff6daf0ed5cc37030a8",
+      "bytes": 21157
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\INDEPENDENT_SIGNED_POLE_NATIVE_COST_REVIEW.json",
+      "sha256": "9f721ebaac6503642e9c3427d91277e4119dc5090db23fb649914dec47743c20",
+      "bytes": 14352
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\ACTUAL_COMPACT_HALF_MOMENT_SUPPLIERS.json",
+      "sha256": "da13935fd8f587be005b295e2b9a4228610004b351aa2f84616f2b2dfb83f55a",
+      "bytes": 9134
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-arch-response\\ACTUAL_ARCH_RESPONSE.json",
+      "sha256": "b1a23776de6f31f8d173110864210cbe0243cecf0f5986e247a0fe984dc78b44",
+      "bytes": 9401
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleExponentialMoments.lean",
+      "sha256": "6ecebf9af0805411cd5e6add3485d3a87a28719b6a17b4cc08d0fd0ce90c5289",
+      "bytes": 9876,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralGeometry.lean",
+      "sha256": "4e6ec5473c2072570890563219c0e6fc170160865945b343f1cb4d8029df878a",
+      "bytes": 13446,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\ConstrainedParity.lean",
+      "sha256": "940b702ae5082b360c662790f6cbab368757888a8a5457dd505b6c9d9dc78807",
+      "bytes": 16696,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\ConstrainedParityGeometry.lean",
+      "sha256": "78577f99b5eddaf6010f1887c645de571b63b258e4c44e8618478ac6cfe3ea68",
+      "bytes": 21622,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\FinitePhysicalNormalization.lean",
+      "sha256": "c2dff9b13fb2f909615aebaf0fc40c7571faef7f1c4416535073ac378ec84f39",
+      "bytes": 4176,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\WeilFilter.lean",
+      "sha256": "80504bcc54e7ae8afc2ac9d241dd32bca3c3657d16e4588661ad5eac2e3a8fa1",
+      "bytes": 15601,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeWeilResponse.lean",
+      "sha256": "0ebc3954a20596f32b92f1a9f6b96f959ea5e9758d639b3eaea298cb072ff377",
+      "bytes": 27709,
+      "current_git_blob_equal": true
+    }
+  ],
+  "authority": "External paper derivation only. No new Lean declaration, compiler, numerical source test, CI claim or repository edit. Prior fixed-L note is preserved. RH and Step4 remain OPEN."
+}

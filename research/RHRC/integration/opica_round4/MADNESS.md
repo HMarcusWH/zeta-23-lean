@@ -1,5 +1,8 @@
 # Madness? — the exact arithmetic boundary
 
+**Publication and research break, 2 November 2026:** [Handover](progress/2026-11-02/HANDOVER.md), [reading map](progress/2026-11-02/READING_MAP.md) and [outcomes](progress/2026-11-02/OUTCOME_REGISTER.json) preserve the accumulated positive and negative work. External prototypes remain separate from the production proof inventory.
+
+
 This closing attempt starts from merged PR #298, commit
 `09ac22e48bb0683437572509abdf2ddec520b7ac`, tree
 `f9e19310c2281af1609ae005a76cab40c913380f`.

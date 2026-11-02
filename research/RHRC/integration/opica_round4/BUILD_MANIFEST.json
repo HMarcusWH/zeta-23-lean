@@ -57,6 +57,30 @@
   ],
   "classification_rules": [
     {
+      "id": "madness_research_publication_2026_11_02_documents",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/CHECKPOINT\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/EXTERNAL_FORMAL_INVENTORY\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/HANDOVER\\.md|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/OUTCOME_REGISTER\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/READING_MAP\\.md|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/RESEARCH_DEPENDENCIES\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/01e1c68af76a\\-SOURCE_FAMILY_AND_SIGNED_FORCING_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/0a2b4808e303\\-FINITE_POLAR_INPUT_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/0ae876159b0a\\-ACTUAL_K3_PRIME_COUNTING_COMPENSATION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/0baa58c9d067\\-ZERO_FREQUENCY_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/0eb54355764d\\-E4_REVIEW_AND_POST_GREEN_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/1ee904cb3735\\-JOINT_CUBIC_RECOVERY_AND_SOURCE_FLOW_COST\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/20a1a095985f\\-INDEPENDENT_FINITE_POLAR_INPUT_REVIEW\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/21c103bc33e3\\-ACTUAL_SUCCESS_HARVEST\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/25acd6f559dd\\-CURRENT_CLOSURE_INTERFACE_AUDIT\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/2b12360005bf\\-ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/2b3ec90e2c38\\-INDEPENDENT_K3_GENERATED_PRIME_ENERGY_REVIEW\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/2f19a21fadc7\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/2f568e29c770\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/30425384e98c\\-ACTUAL_COMPACT_SUPPLIER_AND_TAPER_VISIBILITY\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/30887f7124b3\\-ALL_APERTURE_JOINT_CUBIC_RECOVERY_COST\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/3129e82ccc5f\\-ACTUAL_GLOBAL_K3_FORCING_SEAMS_AND_CONTACT\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/31f4f317baa6\\-COMPLETE_K3_COUPLING_AND_GROWTH_CHECKPOINT\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/328a3bc9fd8d\\-MERTENS_COUNTING_AND_APERTURE_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/37b29eeaa88e\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/3bd6bd645bbd\\-INDEPENDENT_NEGATIVE_WELL_SOURCE_STORAGE_REVIEW\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/3f240d6e9c24\\-ACTUAL_CRITICAL_MEAN_OSCILLATION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/41b1bb00eace\\-RESEARCH_ROUND_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/422b2bc5ed6a\\-ACTUAL_CANONICAL_OUTPUT_RECOVERY\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/489f1ed34526\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/491245f86c95\\-ACTUAL_FIXED_INPUT_FIRST_AND_SECOND_SPECTRAL_MOMENTS\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/496bfaef30c3\\-ACTUAL_SUCCESS_HARVEST\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/4e6e7899bcdc\\-ACTUAL_NEGATIVE_WELL_SOURCE_STORAGE\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/50fdf9d8b898\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/54b763bcb53a\\-SIGNED_TARGET_AND_CRITICAL_VISIBILITY_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/557763270402\\-GROUND_RESIDUAL_AND_FULL_FORCING_CHECK\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/5893968d1258\\-ACTUAL_SIGNED_POLE_PROJECTION_AND_NATIVE_ENDPOINT_COST\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/59529a54c3d5\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/67853634d082\\-S4E3_COMPLETE_ECHO_RESEARCH_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/77bcad73ee16\\-EXACT_BOUNDARY_TRANSPORT_AND_SIGN_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/79e5f72e1715\\-NATIVE_QUARTIC_AND_SOURCE_FLUX_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/7b04cce157bc\\-NATIVE_ECHO_SOURCE_COST_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/7e4af81147ed\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/8074e8791499\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/817c5bb0efce\\-JOINT_DECONVOLUTION_SELF_ECHO_REVIEW\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/82052a5c74c4\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/867bf7093698\\-MERTENS_ONLY_HIGHER_POWER_POSITIVITY\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/868c7f6f86dc\\-GAMMA_PRIME_REVIEW_AND_COMPARISON_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/87a297d4d8f8\\-CHECKPOINT\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/88eea773c665\\-JOINT_ECHO_RESEARCH_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/89e2a289ff30\\-COMMON_INPUT_AND_TERMINAL_STORAGE_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/8f7290528812\\-EXACT_NORMALIZED_SEAM_AND_INTERIOR_TELESCOPE\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/94a315d1b4b8\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/963466fb5b80\\-ACTUAL_TWO_HISTORY_BLOCK_COMPENSATION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/98c6bc8da20c\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/9d14e2860524\\-INDEPENDENT_ACTUAL_COMPLETION_NONACCRETIVITY_REVIEW\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/a40669738e43\\-K3_OLDER_CONTACT_AND_RECENT_SOURCE_AUDIT\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/a4809ff2182f\\-ACTUAL_SELF_ECHO_NATIVE_GRID_SIGN_BLOCKS\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/a763ab9466a3\\-ACTUAL_SUCCESS_HARVEST\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/a7a5b1d000cf\\-ACTUAL_K3_GENERATED_PRIME_ENERGY\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/ab4f65ae14b5\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/afd3fb495041\\-ACTUAL_COPRIME_NEGATIVE_EXCURSIONS\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/b086b2cae885\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/b3e5c0d81d4d\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/b64a59fcd1a1\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/b74264d1df89\\-UNIFORM_NATIVE_QUARTIC_ENDPOINT_COST\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/bd03f33c6926\\-OUTPUT_RECOVERY_AND_SIGNED_BULK_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/bf1e4310b187\\-ACTUAL_K3_CENTRAL_BAND_AND_DIVISOR_FOLLOWTHROUGH\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/c01e8f2ba047\\-EXPANDED_AUDIT_FREEZE\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/ce9458718281\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/cf0b2f2a6cd4\\-K3_SIGNED_COMPENSATION_CHECKPOINT\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/d4461dab4a0c\\-ACTUAL_FIXED_INPUT_SOURCE_FLUX\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/d4a09a7d0e8e\\-COMPLETE_ECHO_CENTERED_RESEARCH_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/dffded754535\\-FIXED_K3_REDUCTION_AND_SOURCE_SCALARS\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/e7aae06be902\\-ACTUAL_SUCCESS_HARVEST\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/ec9112e1ffec\\-ACTUAL_CRITICAL_LINEAR_OSCILLATION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/edf3af17db89\\-SIGNED_ECHO_RESEARCH_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/f10703b5db0f\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/f231a0e6f858\\-MOMENT_CORRECTION_AND_CAUSAL_FEEDBACK_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/f31386abcaa7\\-CHECKPOINT\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/f4240a49f1f4\\-COUPLED_NORMAL_MEAN_AND_BOUNDARY_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/f4acac795dd8\\-LOCAL_REPAIR_COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/f7fd116f7212\\-CURRENT_STATE_AND_DRIVE\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/fc603414211d\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/fc836767c543\\-COMPLETION\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/notes/fca20633bb10\\-JOINT_RECOVERY_AND_NATIVE_GRID_COMPLETION\\.json)\\Z",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "madness_research_publication_2026_11_02_archive",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/EXCLUDED_ENVIRONMENT_INVENTORY\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/PORTABLE_ARCHIVE_MANIFEST\\.json|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0001|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0002|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0003|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0004|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0005|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0006|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0007|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0008|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0009|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0010|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0011|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0012|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0013|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0014|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0015|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0016|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0017|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0018|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0019|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0020|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0021|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0022|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0023|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0024|research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/authored\\-research\\.zip\\.part0025)\\Z",
+      "file_class": "RESEARCH_RECEIPT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "madness_research_publication_2026_11_02_reader",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/read_archive\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "madness_research_publication_2026_11_02_attributes",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round4/progress/2026\\-11\\-02/\\.gitattributes)\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "opica_round4_ci",
       "pattern": "\\A(?:\\.github/actions/opica4\\-runtime/action\\.yml|\\.github/workflows/rhrc_opica_composition\\.yml)\\Z",
       "file_class": "CI_WORKFLOW",
@@ -611,7 +635,7 @@
     },
     {
       "path": "docs/CURRENT_STATE.md",
-      "sha256": "9781aac5356bc83973fa9cf12bddef7c9b16a798c5b3e0c20632d59095b70f29"
+      "sha256": "6fea299c72811d21c919a13069a1425d45b55f3bd3b826019d260f6603c70939"
     },
     {
       "path": "docs/FRAMEWORKS.md",
@@ -719,7 +743,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/descendant.py",
-      "sha256": "f1dd946da65a0aefb197be086cba54641d6a596202e03796c15a62afe03daebd"
+      "sha256": "976bace44d1ad3852f27deaf6c2cdb8bd9c17caef0d693aa93eea98d842c1988"
     },
     {
       "path": "research/RHRC/integration/opica_composition/evidence.py",
@@ -931,15 +955,15 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/MADNESS.md",
-      "sha256": "ef5e34be2cc2134366a6267a97d896db06e4fbf8fd6670dbdc7c953aafff133c"
+      "sha256": "ab2f84ecc13f494ba58b660bce0a6248421b65ea72ddeb67b26f3624cf0ce1df"
     },
     {
       "path": "research/RHRC/integration/opica_round4/MADNESS_CONTRACTS.json",
-      "sha256": "9269db295f39adce56f9574059c872261a6cd0a2bd2bc9b92b8c689f102bd871"
+      "sha256": "5e9a4c5b2965fd6ca0dc62b760fb4f498c2a08caf8a058493f28517b79223a31"
     },
     {
       "path": "research/RHRC/integration/opica_round4/MADNESS_SOURCE_AUDIT.json",
-      "sha256": "915e5ea3e667529a72e8b1e4591bcbe9d2fac17774a1d6e5d522138562da43ce"
+      "sha256": "b73ea3b09d5db9026def13567391327bdae0c83e2a337fd929644bca2927a67b"
     },
     {
       "path": "research/RHRC/integration/opica_round4/MATH_CONTRACTS.json",
@@ -959,7 +983,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/RESEARCH_DISPOSITIONS.json",
-      "sha256": "e0e54d8db664be646f1c6017bbf756469d545555f1c07d2839c2d286be9b1f60"
+      "sha256": "56d1d1ad55f72b993f0955f1795e98a4e6c2808bd1314629e72cb6aec72b085c"
     },
     {
       "path": "research/RHRC/integration/opica_round4/ROOTS.json",
@@ -1100,6 +1124,466 @@
     {
       "path": "research/RHRC/permansson/opica_composition.py",
       "sha256": "e3e30bebae10c74aa79fefa36fe37163ba532d6cff6e465e57ab4d20da40aeec"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/.gitattributes",
+      "sha256": "243109acb33d51142c09ad3f1c9fd223a8a106aa082f93a59f7912f5128ce89a"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/CHECKPOINT.json",
+      "sha256": "9d4761a998e09a62f5fb3d66c9b48da0332e115101f010eb15ca1d295752619a"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/EXCLUDED_ENVIRONMENT_INVENTORY.json",
+      "sha256": "e77ea4cbcc93a6949b73accff6c00d786c8908f6497eaab0c0636102eaa36828"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/EXTERNAL_FORMAL_INVENTORY.json",
+      "sha256": "d0b53efc6c6d0338b848f89eacab4493918fcf7b5e7149e33bf3a7f2e2a731da"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md",
+      "sha256": "33c5aca90e02f15a42678f72855154571367a040bdc521ee273705f2efdf04e0"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/OUTCOME_REGISTER.json",
+      "sha256": "f813c1133c21e433097735a473d2d7dc36890e14152969607f2c040aa7e39019"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/PORTABLE_ARCHIVE_MANIFEST.json",
+      "sha256": "0c284c8d65bb4a4e95a71844670bca72e1b97599e4e5518f600e9dcc909d39f9"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/READING_MAP.md",
+      "sha256": "0581626b97d70b5692ef3f86a66c3fe6d20e176941e81f2ea97affdb77969677"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/RESEARCH_DEPENDENCIES.json",
+      "sha256": "cb8245d010e6b59633927fb9cef34949e088dbd4b8d16d7e15f7d5c4fe9f4954"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0001",
+      "sha256": "e4108743804e04341fe69eeace2e312c4b9bc22f9728fd2e9a4cc4e17e8f7832"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0002",
+      "sha256": "8152a8da0f2639040bf3699e4ddb6054f8eefb8abdb75233287ac6261face833"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0003",
+      "sha256": "4907075999d58f661a6a88b05ff57ec01bf5eb0da95d4d1886b4ab454f72eeef"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0004",
+      "sha256": "0b306ca4673df9a3ea73f11a0d721519487109ba5d34c13f04d289d5a89f889b"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0005",
+      "sha256": "034949fd69d8f8759a2b310ffc637e0cf8bbd758189f10e61ed70ccaf5235132"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0006",
+      "sha256": "0f71acb081cb64d7ad85ffa324200a32aa7674729c061605a221c9845f55dbcf"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0007",
+      "sha256": "9217a545435f167d7fccbd1556d8fd20a4842f03ca45371aaee6ba0fdbfea5f2"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0008",
+      "sha256": "d3e5fac5d722aa8869d05de26124876ee7ee4dc9dd490ca298afa7d1f2cd60b0"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0009",
+      "sha256": "5df3d8ce0e2f0c65cb8166990504c84bb075a8d00135c72f57e543e9e0c17a79"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0010",
+      "sha256": "675b9865f1b771d0e7caaa6ae8c6f8170cb0dda94d9a9ecd815def1d46912aac"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0011",
+      "sha256": "5ab0b77bde7344f8b8b6f11c54d27ee96ddc03b68ead5a6dd2697d2330c9b01d"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0012",
+      "sha256": "d0adfb933850603b3d62db2b0b4e6148b09358b66f134ac773f69e44b77003e3"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0013",
+      "sha256": "939b750924a48b5f1a1ed8a4db3ae6cd7b6d702f14d82b3a06393faf3e83fabb"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0014",
+      "sha256": "62e4df404aea4ef2ff5ed570fdb1cfd343a177184edde4d3035a192fbc966df9"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0015",
+      "sha256": "c0deb97e546314a3d891766c31e1af367c6af3d3f863b73ffd562327bfeaa0c5"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0016",
+      "sha256": "a9c6fb42a42698b133805101b909d6e6538ed33287b76281c9877224dc5a1908"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0017",
+      "sha256": "e7239b23faa41a33fbc95b86466b10be269defa761e6c7fd523607f62a381d72"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0018",
+      "sha256": "5b9549f6815edbe185885a4f4d0ae782ddbaa3d3c0ed18911072ffc4c546f9b6"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0019",
+      "sha256": "7d338e453c55204e9549696bc9cbe4291f334c583404b55a3b7f119d5382dbb0"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0020",
+      "sha256": "2c066b0e3c0019aebf34bbe4391e5991ee79483055321d86988356f708abc6e4"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0021",
+      "sha256": "5db0d1685b539a83716fe70f35648878d25298b3659d6fe0e2c83e3b9a7fb5a3"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0022",
+      "sha256": "01c18af37103cce940b44b123fbd74206fe9c29dd3be164268f31dd93d0ef270"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0023",
+      "sha256": "3850afca84dac98066d2b64941111038b280ff4a24bdff1c2dddaf3527220757"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0024",
+      "sha256": "5e156dcae5fd0341324d283b3584c5115c78f90e439fbdf2a8d65c86bc1a11ed"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0025",
+      "sha256": "332156c46c7faa25b7ed2329fb9e204fb93eef3e6a2af68d0e28746cd876a111"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/01e1c68af76a-SOURCE_FAMILY_AND_SIGNED_FORCING_COMPLETION.json",
+      "sha256": "01e1c68af76a7d649fda2b58fc6f5e6330ad47d17c0572222a3965f73727c6a5"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/0a2b4808e303-FINITE_POLAR_INPUT_COMPLETION.json",
+      "sha256": "0a2b4808e303e11ca865b177a9732ba2aef295f30e24c039c9252689f20306ef"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/0ae876159b0a-ACTUAL_K3_PRIME_COUNTING_COMPENSATION.json",
+      "sha256": "0ae876159b0aee943295eecf53415ac3a82216c00430b9bcdd8d09656e44f855"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/0baa58c9d067-ZERO_FREQUENCY_COMPLETION.json",
+      "sha256": "0baa58c9d067fd487c32c7cf6bc405ef90db6a6f94973c58fa65d047167a484e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/0eb54355764d-E4_REVIEW_AND_POST_GREEN_COMPLETION.json",
+      "sha256": "0eb54355764dd6f436fb565bef96396bae9493ef475563c423e9e7a48611924e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/1ee904cb3735-JOINT_CUBIC_RECOVERY_AND_SOURCE_FLOW_COST.json",
+      "sha256": "1ee904cb37355c9df31412d54422b630d2b209e656cc77ec09d6519d745095a4"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/20a1a095985f-INDEPENDENT_FINITE_POLAR_INPUT_REVIEW.json",
+      "sha256": "20a1a095985f35dafa0fcb7ec1e3b36eb86f3d7a0349d19098c9d5fc7d36895a"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/21c103bc33e3-ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "21c103bc33e370ba8092fa76543ce5d690e928304f761bb8a7d3e17a5aad38e6"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/25acd6f559dd-CURRENT_CLOSURE_INTERFACE_AUDIT.json",
+      "sha256": "25acd6f559dde8fe589ed1d5be835f6d20bca0ca84767d6c4aa048c1173ea171"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/2b12360005bf-ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET.json",
+      "sha256": "2b12360005bf6e57c7b6bb1bd8a2f55d572f41ce7c6fe8b45dfbce65df75b3ee"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/2b3ec90e2c38-INDEPENDENT_K3_GENERATED_PRIME_ENERGY_REVIEW.json",
+      "sha256": "2b3ec90e2c3886d41fe824d214e4b8ec0e53901a62dfaf7890fbe8f2a20f3ef8"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/2f19a21fadc7-COMPLETION.json",
+      "sha256": "2f19a21fadc77c45f5341166af2a1e74fc8dc0f5a5826c5f773229b6f356852f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/2f568e29c770-COMPLETION.json",
+      "sha256": "2f568e29c7704fe9c36a615c906dcb8177fa1ca1890b9314122a166524dc1f83"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/30425384e98c-ACTUAL_COMPACT_SUPPLIER_AND_TAPER_VISIBILITY.json",
+      "sha256": "30425384e98cb7506df0d2749ba0a79eedd87a5bb318469d8e784974b9c28cad"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/30887f7124b3-ALL_APERTURE_JOINT_CUBIC_RECOVERY_COST.json",
+      "sha256": "30887f7124b3788ec6c2880245068f13ec7c8fe1cbbf0754f36085b1c3905784"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/3129e82ccc5f-ACTUAL_GLOBAL_K3_FORCING_SEAMS_AND_CONTACT.json",
+      "sha256": "3129e82ccc5f787d2aaf0fda82aaac407f0866c66092e0bc9233edee83845c0f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/31f4f317baa6-COMPLETE_K3_COUPLING_AND_GROWTH_CHECKPOINT.json",
+      "sha256": "31f4f317baa64c80eede204fe3a1869809dae84b5e1f5be787b0816bbfdea119"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/328a3bc9fd8d-MERTENS_COUNTING_AND_APERTURE_COMPLETION.json",
+      "sha256": "328a3bc9fd8d6b79b636477f13c1f3c3eb99e19bbd72aa6dcf4a2ee7797766f2"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/37b29eeaa88e-COMPLETION.json",
+      "sha256": "37b29eeaa88e9332caecb3dd0f1bdc45d4f6971f41ae88cd85e456ce200e2c9d"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/3bd6bd645bbd-INDEPENDENT_NEGATIVE_WELL_SOURCE_STORAGE_REVIEW.json",
+      "sha256": "3bd6bd645bbda2211a2804e0413560f2502178aed0f63067f621eb1ad3fb295f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/3f240d6e9c24-ACTUAL_CRITICAL_MEAN_OSCILLATION.json",
+      "sha256": "3f240d6e9c241015d00a348e98c90b670f011b2296f76e3a2caf5a9e729877ff"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/41b1bb00eace-RESEARCH_ROUND_COMPLETION.json",
+      "sha256": "41b1bb00eacef33f840bcf4553dbf4c662b4f6cf53920ec058016f490c9866ca"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/422b2bc5ed6a-ACTUAL_CANONICAL_OUTPUT_RECOVERY.json",
+      "sha256": "422b2bc5ed6a2daeced715dcaf95eefef2f4493c5ab31737a9a356aeb30ce4de"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/489f1ed34526-COMPLETION.json",
+      "sha256": "489f1ed345269d3d6b4a88762fe86039e6dfa5be3b089c699c6d14ce49926978"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/491245f86c95-ACTUAL_FIXED_INPUT_FIRST_AND_SECOND_SPECTRAL_MOMENTS.json",
+      "sha256": "491245f86c954d78e1619faa454bccb0e4ec0397e3edd9370efb500d42374f89"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/496bfaef30c3-ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "496bfaef30c304200ad0798edefeb6e92cf9c2a9ef644cea407593aab70c74df"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/4e6e7899bcdc-ACTUAL_NEGATIVE_WELL_SOURCE_STORAGE.json",
+      "sha256": "4e6e7899bcdc53d53e27b89ce44c83cdfb084394d8208267aa2eb15d561e5e0a"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/50fdf9d8b898-COMPLETION.json",
+      "sha256": "50fdf9d8b898b5d268a5faf690c4b6645b07ccad4c969164e3bf20702851a987"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/54b763bcb53a-SIGNED_TARGET_AND_CRITICAL_VISIBILITY_COMPLETION.json",
+      "sha256": "54b763bcb53a2e01c47295bd8506bb7dffb090a25d31e6203169c1761ccc0cf1"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/557763270402-GROUND_RESIDUAL_AND_FULL_FORCING_CHECK.json",
+      "sha256": "557763270402f4b647b06982125e9eb495bc916a46c48c20c23d69903dc71e44"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/5893968d1258-ACTUAL_SIGNED_POLE_PROJECTION_AND_NATIVE_ENDPOINT_COST.json",
+      "sha256": "5893968d1258189eb15d2dda4e915599171fc18a28153ff6daf0ed5cc37030a8"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/59529a54c3d5-COMPLETION.json",
+      "sha256": "59529a54c3d5475d215d6e4ebd2c2ea31d979237cc8865714bf1913b638a2aa3"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/67853634d082-S4E3_COMPLETE_ECHO_RESEARCH_COMPLETION.json",
+      "sha256": "67853634d082e9384a308fbb3a7dc6b5bc6a5edfcbea6c778fe2eb1fefa7f011"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/77bcad73ee16-EXACT_BOUNDARY_TRANSPORT_AND_SIGN_COMPLETION.json",
+      "sha256": "77bcad73ee1637904b0b82870883c7478dd3bebb2eff7dc11ae26410c5e0a564"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/79e5f72e1715-NATIVE_QUARTIC_AND_SOURCE_FLUX_COMPLETION.json",
+      "sha256": "79e5f72e171597737e418bc3146aa6014b9f6154877f3fc821db8d2093063a1e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/7b04cce157bc-NATIVE_ECHO_SOURCE_COST_COMPLETION.json",
+      "sha256": "7b04cce157bc5e72e4c7d4c2c48f9e10d902eea0ce41b82a78e3229de1ca924c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/7e4af81147ed-COMPLETION.json",
+      "sha256": "7e4af81147edd314b459919d453e1e3cdb04c24d72aa440e0d744aa5efb28c45"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/8074e8791499-COMPLETION.json",
+      "sha256": "8074e8791499d9ea345f8c7874613f2f90e762dde7475b47b67d5d792c8b7a33"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/817c5bb0efce-JOINT_DECONVOLUTION_SELF_ECHO_REVIEW.json",
+      "sha256": "817c5bb0efceda6e31300e836709216e17c6d37c649c3dbc5beb6cd7ec17d85f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/82052a5c74c4-COMPLETION.json",
+      "sha256": "82052a5c74c4956c8ce4ad828ad088496fe1fb2ffb5740aa5490e9252db5e456"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/867bf7093698-MERTENS_ONLY_HIGHER_POWER_POSITIVITY.json",
+      "sha256": "867bf70936985d7a919a2fec43dc3b9980b4695dccc28d858a6c407199ccd3d0"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/868c7f6f86dc-GAMMA_PRIME_REVIEW_AND_COMPARISON_COMPLETION.json",
+      "sha256": "868c7f6f86dca483d9f3ff5eb861eaf2d62402de06c14cf34635b91a5f993199"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/87a297d4d8f8-CHECKPOINT.json",
+      "sha256": "87a297d4d8f8b984f3fabe91e5878b5bce859865ad3c7474c5db7a4e507da0cd"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/88eea773c665-JOINT_ECHO_RESEARCH_COMPLETION.json",
+      "sha256": "88eea773c6652a8e77c57e0554214731b7915ad7c4b77df02cae47874e31d483"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/89e2a289ff30-COMMON_INPUT_AND_TERMINAL_STORAGE_COMPLETION.json",
+      "sha256": "89e2a289ff308b2347bd1221de4e45ed7103a4c010ca806e0d69b467f6e60e4d"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/8f7290528812-EXACT_NORMALIZED_SEAM_AND_INTERIOR_TELESCOPE.json",
+      "sha256": "8f7290528812baf6a47c646168402f6c22bee7622d94fcb5b849f3193d9e51cd"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/94a315d1b4b8-COMPLETION.json",
+      "sha256": "94a315d1b4b82ece58e64cc4f2cf56fc37fdf2181496342736a011ceb1fe3502"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/963466fb5b80-ACTUAL_TWO_HISTORY_BLOCK_COMPENSATION.json",
+      "sha256": "963466fb5b80c7747243373ab76f44a2cf77257b91d8d5420ce3a05007f37273"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/98c6bc8da20c-COMPLETION.json",
+      "sha256": "98c6bc8da20c1f014bffc27acafa3cf5ea0edffa7598785ead292fe3587d7553"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/9d14e2860524-INDEPENDENT_ACTUAL_COMPLETION_NONACCRETIVITY_REVIEW.json",
+      "sha256": "9d14e286052441c53fa00842d39407d5f5e1f3c93377b2ae460bd4bf18270422"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/a40669738e43-K3_OLDER_CONTACT_AND_RECENT_SOURCE_AUDIT.json",
+      "sha256": "a40669738e43c8de525ada157344f4434012d002e6884c373cbdfe369e31dfea"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/a4809ff2182f-ACTUAL_SELF_ECHO_NATIVE_GRID_SIGN_BLOCKS.json",
+      "sha256": "a4809ff2182f8cfec64af588b776ae325346285ff7a6805b0dc02204431299cd"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/a763ab9466a3-ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "a763ab9466a34fbe134f5fbac87292a77c94226998d44f90b5ce9cc4f19e1b44"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/a7a5b1d000cf-ACTUAL_K3_GENERATED_PRIME_ENERGY.json",
+      "sha256": "a7a5b1d000cf79eca33f209785c0b583792aaf03a2d792fdbe2a2f0215a2a17e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/ab4f65ae14b5-COMPLETION.json",
+      "sha256": "ab4f65ae14b5f8bc839d7ac189b34e61140c1d4cc496ece1a668b4c4b8a6430b"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/afd3fb495041-ACTUAL_COPRIME_NEGATIVE_EXCURSIONS.json",
+      "sha256": "afd3fb4950413fc6e660c514adb8f2fa03752e94ca50037cc525db452505697d"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/b086b2cae885-COMPLETION.json",
+      "sha256": "b086b2cae88575a94b59f4c4c61678ee122d6ef367f439548d848375a22eb7b5"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/b3e5c0d81d4d-COMPLETION.json",
+      "sha256": "b3e5c0d81d4d53d2afcbfa89bc3889267f15009c979230ecdfbab17c2770d191"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/b64a59fcd1a1-COMPLETION.json",
+      "sha256": "b64a59fcd1a1ce25152ce86d115e369e0c9c0937ebf37f8ee39bf1b47e8ecf42"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/b74264d1df89-UNIFORM_NATIVE_QUARTIC_ENDPOINT_COST.json",
+      "sha256": "b74264d1df89bdd0fbbf2bc2a29e7f2c68ad1a24ef57c219a97d9a24e0ebfb6c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/bd03f33c6926-OUTPUT_RECOVERY_AND_SIGNED_BULK_COMPLETION.json",
+      "sha256": "bd03f33c692661e0ae58fd4e66bdffbcce169a201afddce758f4c4e72d5fb55c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/bf1e4310b187-ACTUAL_K3_CENTRAL_BAND_AND_DIVISOR_FOLLOWTHROUGH.json",
+      "sha256": "bf1e4310b1871d4c05e2af83a95995891e3507b677c56ded5671e41e0feba40e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/c01e8f2ba047-EXPANDED_AUDIT_FREEZE.json",
+      "sha256": "c01e8f2ba047adb0ffd903ce94735c3b9d128354e415fb4ecef1781b2bba1522"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/ce9458718281-COMPLETION.json",
+      "sha256": "ce9458718281751b359e34d99327b1d86d8f04532b73c7348267e2299af2d511"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/cf0b2f2a6cd4-K3_SIGNED_COMPENSATION_CHECKPOINT.json",
+      "sha256": "cf0b2f2a6cd46255c3ad903951674e91324d186acddf28e946df6da7145c52f1"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/d4461dab4a0c-ACTUAL_FIXED_INPUT_SOURCE_FLUX.json",
+      "sha256": "d4461dab4a0ce76634a5ed4acb4cc4ba8a04f169c9cbc09649e5a3725e64f451"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/d4a09a7d0e8e-COMPLETE_ECHO_CENTERED_RESEARCH_COMPLETION.json",
+      "sha256": "d4a09a7d0e8e400aad6f785afd701ce4d966c22cb393bf40817216be519a9501"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/dffded754535-FIXED_K3_REDUCTION_AND_SOURCE_SCALARS.json",
+      "sha256": "dffded7545358b9a9a3e722bcb0a454a192a0759fe44c79612cd189d02ade9e4"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/e7aae06be902-ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "e7aae06be90254661e11dfc6f556484c30524f310f3e811127827e2137bae36b"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/ec9112e1ffec-ACTUAL_CRITICAL_LINEAR_OSCILLATION.json",
+      "sha256": "ec9112e1ffecd9a11e5a92413b8a4c054e2be7b567a435fab0f05630fe6bf79c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/edf3af17db89-SIGNED_ECHO_RESEARCH_COMPLETION.json",
+      "sha256": "edf3af17db89102b9e3f7a0c1afc6ed0b40a56fbf50e8f1a9f218cbb5d7c0eb1"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f10703b5db0f-COMPLETION.json",
+      "sha256": "f10703b5db0f8c0cc3d0d730736340d940da85c5784693682d78fb50c56ed5ad"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f231a0e6f858-MOMENT_CORRECTION_AND_CAUSAL_FEEDBACK_COMPLETION.json",
+      "sha256": "f231a0e6f8581b84eef5621cb883d43b75a1b0ae2b290b5ae4e0709f7d39b73a"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f31386abcaa7-CHECKPOINT.json",
+      "sha256": "f31386abcaa755086ab9999d0365dddec34c82d8a0f3372b4672668c14d5e642"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f4240a49f1f4-COUPLED_NORMAL_MEAN_AND_BOUNDARY_COMPLETION.json",
+      "sha256": "f4240a49f1f4bcdfe65ced7db83144afc6944a2439d1e6e274178551bdf5cbb6"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f4acac795dd8-LOCAL_REPAIR_COMPLETION.json",
+      "sha256": "f4acac795dd8dc13667b30da4734d0096bdc4342834431a01ffd2fff558d52d5"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f7fd116f7212-CURRENT_STATE_AND_DRIVE.json",
+      "sha256": "f7fd116f72125592165ee6b1e3cb8c8effd697eaef1e2b86cfd8cf9264e9591f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/fc603414211d-COMPLETION.json",
+      "sha256": "fc603414211dd99bea3694de4efffe5b0af9675e6cd1ab0cc1acd3a4ea08be62"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/fc836767c543-COMPLETION.json",
+      "sha256": "fc836767c543bf5d3acc712c9ec4eab15df710c040ef2601f05e93f1ce0885e6"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/fca20633bb10-JOINT_RECOVERY_AND_NATIVE_GRID_COMPLETION.json",
+      "sha256": "fca20633bb101661a6a24e43f30f70ad7f42f2d4c2122f197ae340d40e0cfe4f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/read_archive.py",
+      "sha256": "de921529581870911e9a22a8f6778730cd47e5faf849476ca10d3b49b7aa568e"
     }
   ],
   "edit": [
@@ -1125,7 +1609,7 @@
     },
     {
       "path": "AGENTS.md",
-      "sha256": "b4803c9ff3837f9b6fdf80becafbafa66b7cadae6e9ab6a6db058768bba08bdb"
+      "sha256": "e95c11830ccc47d7985775138e21c554938f746ca2c5865c3ffb7b8929ff7227"
     },
     {
       "path": "AUDIT.md",
@@ -1137,7 +1621,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "45500759b48c124ddee43fc6d3dd6bbdea99a4ec13e92b4e5d96df91ae4af87e"
+      "sha256": "34ea7671b283aebfd3738125b20c594ecbc86cc6ebeb7c670a1fdca3ff17cad1"
     },
     {
       "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
@@ -1153,7 +1637,7 @@
     },
     {
       "path": "research/RHRC/graph/FILE_CLASSES.json",
-      "sha256": "ac0d5ea7b2a55bcae7dc8f5c0edff465538b754ed738051853f4fd8a18b44de3"
+      "sha256": "d918f9749d7bf365bd3cce3aba4ba6738c9f51d8fff9503594766dc946337307"
     },
     {
       "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
@@ -1693,5 +2177,167 @@
     "retained_semantic_controls": 17,
     "claim": "SUPPORT_ONLY_RH_AND_STEP4_OPEN",
     "production_qualification": "REQUIRED_ON_CURRENT_HEAD"
+  },
+  "research_publication_2026_11_02": {
+    "schema": "OPICA4_PUBLISHED_RESEARCH_V1",
+    "source_head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "source_tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "authority": "RESEARCH_PROVENANCE_AND_DISCOVERY_DOCUMENTS_NOT_PRODUCTION_THEOREM_PROMOTION",
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "handover": "research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md",
+    "files": {
+      "HANDOVER.md": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md",
+        "sha256": "33c5aca90e02f15a42678f72855154571367a040bdc521ee273705f2efdf04e0"
+      },
+      "CHECKPOINT.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/CHECKPOINT.json",
+        "sha256": "9d4761a998e09a62f5fb3d66c9b48da0332e115101f010eb15ca1d295752619a"
+      },
+      "OUTCOME_REGISTER.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/OUTCOME_REGISTER.json",
+        "sha256": "f813c1133c21e433097735a473d2d7dc36890e14152969607f2c040aa7e39019"
+      },
+      "RESEARCH_DEPENDENCIES.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/RESEARCH_DEPENDENCIES.json",
+        "sha256": "cb8245d010e6b59633927fb9cef34949e088dbd4b8d16d7e15f7d5c4fe9f4954"
+      },
+      "PORTABLE_ARCHIVE_MANIFEST.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/PORTABLE_ARCHIVE_MANIFEST.json",
+        "sha256": "0c284c8d65bb4a4e95a71844670bca72e1b97599e4e5518f600e9dcc909d39f9"
+      },
+      "EXTERNAL_FORMAL_INVENTORY.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/EXTERNAL_FORMAL_INVENTORY.json",
+        "sha256": "d0b53efc6c6d0338b848f89eacab4493918fcf7b5e7149e33bf3a7f2e2a731da"
+      }
+    },
+    "production_counts_unchanged": {
+      "declarations": 1079,
+      "modules": 90,
+      "semantic_controls": 84,
+      "portable_per_mode": 231,
+      "native_methods": 46
+    },
+    "graph_scope": "New research/document discovery nodes and explicit evidence references; no new formal proof edges.",
+    "new_paths": [
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/.gitattributes",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/CHECKPOINT.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/EXCLUDED_ENVIRONMENT_INVENTORY.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/EXTERNAL_FORMAL_INVENTORY.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/OUTCOME_REGISTER.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/PORTABLE_ARCHIVE_MANIFEST.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/READING_MAP.md",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/RESEARCH_DEPENDENCIES.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0001",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0002",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0003",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0004",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0005",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0006",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0007",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0008",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0009",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0010",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0011",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0012",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0013",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0014",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0015",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0016",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0017",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0018",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0019",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0020",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0021",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0022",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0023",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0024",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/authored-research.zip.part0025",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/01e1c68af76a-SOURCE_FAMILY_AND_SIGNED_FORCING_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/0a2b4808e303-FINITE_POLAR_INPUT_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/0ae876159b0a-ACTUAL_K3_PRIME_COUNTING_COMPENSATION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/0baa58c9d067-ZERO_FREQUENCY_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/0eb54355764d-E4_REVIEW_AND_POST_GREEN_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/1ee904cb3735-JOINT_CUBIC_RECOVERY_AND_SOURCE_FLOW_COST.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/20a1a095985f-INDEPENDENT_FINITE_POLAR_INPUT_REVIEW.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/21c103bc33e3-ACTUAL_SUCCESS_HARVEST.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/25acd6f559dd-CURRENT_CLOSURE_INTERFACE_AUDIT.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/2b12360005bf-ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/2b3ec90e2c38-INDEPENDENT_K3_GENERATED_PRIME_ENERGY_REVIEW.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/2f19a21fadc7-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/2f568e29c770-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/30425384e98c-ACTUAL_COMPACT_SUPPLIER_AND_TAPER_VISIBILITY.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/30887f7124b3-ALL_APERTURE_JOINT_CUBIC_RECOVERY_COST.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/3129e82ccc5f-ACTUAL_GLOBAL_K3_FORCING_SEAMS_AND_CONTACT.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/31f4f317baa6-COMPLETE_K3_COUPLING_AND_GROWTH_CHECKPOINT.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/328a3bc9fd8d-MERTENS_COUNTING_AND_APERTURE_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/37b29eeaa88e-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/3bd6bd645bbd-INDEPENDENT_NEGATIVE_WELL_SOURCE_STORAGE_REVIEW.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/3f240d6e9c24-ACTUAL_CRITICAL_MEAN_OSCILLATION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/41b1bb00eace-RESEARCH_ROUND_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/422b2bc5ed6a-ACTUAL_CANONICAL_OUTPUT_RECOVERY.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/489f1ed34526-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/491245f86c95-ACTUAL_FIXED_INPUT_FIRST_AND_SECOND_SPECTRAL_MOMENTS.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/496bfaef30c3-ACTUAL_SUCCESS_HARVEST.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/4e6e7899bcdc-ACTUAL_NEGATIVE_WELL_SOURCE_STORAGE.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/50fdf9d8b898-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/54b763bcb53a-SIGNED_TARGET_AND_CRITICAL_VISIBILITY_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/557763270402-GROUND_RESIDUAL_AND_FULL_FORCING_CHECK.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/5893968d1258-ACTUAL_SIGNED_POLE_PROJECTION_AND_NATIVE_ENDPOINT_COST.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/59529a54c3d5-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/67853634d082-S4E3_COMPLETE_ECHO_RESEARCH_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/77bcad73ee16-EXACT_BOUNDARY_TRANSPORT_AND_SIGN_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/79e5f72e1715-NATIVE_QUARTIC_AND_SOURCE_FLUX_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/7b04cce157bc-NATIVE_ECHO_SOURCE_COST_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/7e4af81147ed-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/8074e8791499-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/817c5bb0efce-JOINT_DECONVOLUTION_SELF_ECHO_REVIEW.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/82052a5c74c4-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/867bf7093698-MERTENS_ONLY_HIGHER_POWER_POSITIVITY.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/868c7f6f86dc-GAMMA_PRIME_REVIEW_AND_COMPARISON_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/87a297d4d8f8-CHECKPOINT.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/88eea773c665-JOINT_ECHO_RESEARCH_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/89e2a289ff30-COMMON_INPUT_AND_TERMINAL_STORAGE_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/8f7290528812-EXACT_NORMALIZED_SEAM_AND_INTERIOR_TELESCOPE.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/94a315d1b4b8-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/963466fb5b80-ACTUAL_TWO_HISTORY_BLOCK_COMPENSATION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/98c6bc8da20c-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/9d14e2860524-INDEPENDENT_ACTUAL_COMPLETION_NONACCRETIVITY_REVIEW.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/a40669738e43-K3_OLDER_CONTACT_AND_RECENT_SOURCE_AUDIT.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/a4809ff2182f-ACTUAL_SELF_ECHO_NATIVE_GRID_SIGN_BLOCKS.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/a763ab9466a3-ACTUAL_SUCCESS_HARVEST.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/a7a5b1d000cf-ACTUAL_K3_GENERATED_PRIME_ENERGY.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/ab4f65ae14b5-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/afd3fb495041-ACTUAL_COPRIME_NEGATIVE_EXCURSIONS.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/b086b2cae885-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/b3e5c0d81d4d-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/b64a59fcd1a1-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/b74264d1df89-UNIFORM_NATIVE_QUARTIC_ENDPOINT_COST.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/bd03f33c6926-OUTPUT_RECOVERY_AND_SIGNED_BULK_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/bf1e4310b187-ACTUAL_K3_CENTRAL_BAND_AND_DIVISOR_FOLLOWTHROUGH.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/c01e8f2ba047-EXPANDED_AUDIT_FREEZE.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/ce9458718281-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/cf0b2f2a6cd4-K3_SIGNED_COMPENSATION_CHECKPOINT.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/d4461dab4a0c-ACTUAL_FIXED_INPUT_SOURCE_FLUX.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/d4a09a7d0e8e-COMPLETE_ECHO_CENTERED_RESEARCH_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/dffded754535-FIXED_K3_REDUCTION_AND_SOURCE_SCALARS.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/e7aae06be902-ACTUAL_SUCCESS_HARVEST.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/ec9112e1ffec-ACTUAL_CRITICAL_LINEAR_OSCILLATION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/edf3af17db89-SIGNED_ECHO_RESEARCH_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f10703b5db0f-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f231a0e6f858-MOMENT_CORRECTION_AND_CAUSAL_FEEDBACK_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f31386abcaa7-CHECKPOINT.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f4240a49f1f4-COUPLED_NORMAL_MEAN_AND_BOUNDARY_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f4acac795dd8-LOCAL_REPAIR_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/f7fd116f7212-CURRENT_STATE_AND_DRIVE.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/fc603414211d-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/fc836767c543-COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/notes/fca20633bb10-JOINT_RECOVERY_AND_NATIVE_GRID_COMPLETION.json",
+      "research/RHRC/integration/opica_round4/progress/2026-11-02/read_archive.py"
+    ],
+    "claim_cap": "PROVENANCE_ONLY_RH_AND_STEP4_OPEN",
+    "production_qualification": "PENDING_NEW_HEAD_CI"
   }
 }

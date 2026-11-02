@@ -232,7 +232,7 @@
     },
     {
       "id": "1NKjxv6Vzi7hRNAz7o3AqBf8b33dTpi3iQsWYubNeTyE",
-      "name": "Quasi-RH complete DirichletL Lean tree \u00e2\u20ac\u201d source file inventory (2026-10-30)",
+      "name": "Quasi-RH complete DirichletL Lean tree â€” source file inventory (2026-10-30)",
       "url": "https://docs.google.com/document/d/1NKjxv6Vzi7hRNAz7o3AqBf8b33dTpi3iQsWYubNeTyE/edit?usp=drivesdk",
       "mime": "application/vnd.google-apps.document",
       "bytes": 474236,
@@ -241,7 +241,7 @@
     },
     {
       "id": "1mcGO2sJ8S_phKHKRbCo1qNHeq6njHm5J-ThqqiNGQD0",
-      "name": "OPICA Round 4 \u00e2\u20ac\u201d Step 4 source audit and next tests (30 Oct 2026)",
+      "name": "OPICA Round 4 â€” Step 4 source audit and next tests (30 Oct 2026)",
       "url": "https://docs.google.com/document/d/1mcGO2sJ8S_phKHKRbCo1qNHeq6njHm5J-ThqqiNGQD0/edit?usp=drivesdk",
       "mime": "application/vnd.google-apps.document",
       "bytes": 5963,
@@ -1105,7 +1105,7 @@
         ],
         "authority": "Independent paper audit against source declarations. No new Lean compiler run. No theorem closure or new unconditional arithmetic cancellation proved.",
         "verdict": {
-          "algebra": "No confirmed mathematical error found in the stated finite M\u00f6bius rearrangements, transform scalings, diagonal asymptotic, hyperbola identity, source sign certificates or multiplicity computation.",
+          "algebra": "No confirmed mathematical error found in the stated finite Möbius rearrangements, transform scalings, diagonal asymptotic, hyperbola identity, source sign certificates or multiplicity computation.",
           "closure": "The precise actual-vector eventual lower bound is not supplied by either manuscript or by the checked source constraints. The manuscripts themselves retain it as OPEN. A new PR can formalize the reductions and falsifiers, but those do not logically close Step 4.",
           "new_deduction": "The Poisson-remainder diagonal is already O(sqrt(x)); the remaining lower-bound problem may be expressed using the full nonnegative rank-one term plus the off-diagonal remainder. This is a narrower exact target but not an estimate on it."
         },
@@ -1120,31 +1120,31 @@
             "id": "P6-B1",
             "status": "DERIVED_PAPER_VALID_NEEDS_ANALYSIS_FORMALIZATION",
             "claim": "F extends smoothly by zero, flat to every order at0, support[0,T].",
-            "audit": "For g_y(v)=v^-1/2 log(v) H(log(v)-y), its continuum integral vanishes by two killed weighted moments. L1 bounds of the Nth derivative have scale (1+y)exp((1/2-N)y), so Euler\u2013Maclaurin/Poisson gives F derivative j bounded by C_Nj(1+|log t|)t^(N-1-j). Arbitrary fixed N gives flatness. These uniform derivative bounds and source moment derivative are not exposed as ready-made current Lean declarations."
+            "audit": "For g_y(v)=v^-1/2 log(v) H(log(v)-y), its continuum integral vanishes by two killed weighted moments. L1 bounds of the Nth derivative have scale (1+y)exp((1/2-N)y), so Euler–Maclaurin/Poisson gives F derivative j bounded by C_Nj(1+|log t|)t^(N-1-j). Arbitrary fixed N gives flatness. These uniform derivative bounds and source moment derivative are not exposed as ready-made current Lean declarations."
           },
           {
             "id": "P6-B2",
             "status": "DERIVED_PAPER_VALID",
             "claim": "MF(s)=-zeta'(s)s^2(s-1)^2Q(s-1/2)^2, integral F=Q(1/2)^2>0, two inverse moments0.",
-            "audit": "For Re s>1, change of variables u=log(kt) yields k^-s. Analytic continuation after proven flatness yields entire transform. At s=1, -zeta' has positive double-pole coefficient and the factor cancels it to +Q(1/2)^2. At s=0 the s\u00b2 factor produces the two inverse moments."
+            "audit": "For Re s>1, change of variables u=log(kt) yields k^-s. Analytic continuation after proven flatness yields entire transform. At s=1, -zeta' has positive double-pole coefficient and the factor cancels it to +Q(1/2)^2. At s=0 the s² factor produces the two inverse moments."
           },
           {
             "id": "P6-C",
             "status": "DERIVED_PAPER_VALID",
-            "claim": "D_m^mu=(6/pi\u00b2)||F||\u00b2+O(exp(-m)).",
-            "audit": "Squarefree counting cy+O(sqrt y) and Abel summation with compact smooth F\u00b2 give cx integral F\u00b2+O(sqrt x). The shell measure is (1/2)x^-2 dx over[X,e\u00b2X], X=e^(2m), giving the stated coefficient and error."
+            "claim": "D_m^mu=(6/pi²)||F||²+O(exp(-m)).",
+            "audit": "Squarefree counting cy+O(sqrt y) and Abel summation with compact smooth F² give cx integral F²+O(sqrt x). The shell measure is (1/2)x^-2 dx over[X,e²X], X=e^(2m), giving the stated coefficient and error."
           },
           {
             "id": "P6-D",
             "status": "DERIVED_PAPER_VALID_COUNTERMODEL",
-            "claim": "mu\u00b2 preserves the diagonal and has exponential shell energy.",
-            "audit": "mu^4=mu\u00b2 yields literally identical diagonal. Positive mass integral F gives U_+(x)=cI_F x+O(sqrt x); integrating its squared energy yields (c\u00b2I_F\u00b2/2)(e\u00b2-1)e^(2m)+O(e^m). This falsifies inference from diagonal/PSD/support alone, not any claim about actual mu."
+            "claim": "mu² preserves the diagonal and has exponential shell energy.",
+            "audit": "mu^4=mu² yields literally identical diagonal. Positive mass integral F gives U_+(x)=cI_F x+O(sqrt x); integrating its squared energy yields (c²I_F²/2)(e²-1)e^(2m)+O(e^m). This falsifies inference from diagonal/PSD/support alone, not any claim about actual mu."
           },
           {
             "id": "P6-E",
             "status": "DERIVED_MODEL_EXPECTATION_ONLY",
             "claim": "Independent mean-zero signs have expected energy equal to diagonal.",
-            "audit": "Finite sum on each shell justifies exchange. Independence kills unequal-index expectations. Actual M\u00f6bius signs are neither independent nor random, so this is not an arithmetic estimate."
+            "audit": "Finite sum on each shell justifies exchange. Independence kills unequal-index expectations. Actual Möbius signs are neither independent nor random, so this is not an arithmetic estimate."
           },
           {
             "id": "P6-CLOSURE",
@@ -1162,7 +1162,7 @@
             "id": "P7-B",
             "status": "DERIVED_PAPER_VALID",
             "claim": "E_Y=O_A(x^-A) for every fixed A>0.",
-            "audit": "For fixed integer N, |E|<=C_N x^-N sum_{n<=Y} n^N<=C_N x^-N Y^(N+1)=O(x^((1-N)/2)); choose N>2A+1. No M\u00f6bius cancellation is used."
+            "audit": "For fixed integer N, |E|<=C_N x^-N sum_{n<=Y} n^N<=C_N x^-N Y^(N+1)=O(x^((1-N)/2)); choose N>2A+1. No Möbius cancellation is used."
           },
           {
             "id": "P7-C",
@@ -1174,12 +1174,12 @@
             "id": "P7-D",
             "status": "DERIVED_PAPER_VALID",
             "claim": "Actual periodization and continuum-subtracted remainder change sign.",
-            "audit": "At y=2e^-u, |u|<=B, n=2 is the sole supported integer. H(0)=||kappa||\u00b2>0 and killed positive weighted moment force an interior negative point. At y=5/2 there is no supported integer. Integral kappa=-1/4 and support length2s0 yield H(0)>=128, hence R_F(2)>60, R_F(5/2)<0. Need explicit real-part/convolution bindings in Lean."
+            "audit": "At y=2e^-u, |u|<=B, n=2 is the sole supported integer. H(0)=||kappa||²>0 and killed positive weighted moment force an interior negative point. At y=5/2 there is no supported integer. Integral kappa=-1/4 and support length2s0 yield H(0)>=128, hence R_F(2)>60, R_F(5/2)<0. Need explicit real-part/convolution bindings in Lean."
           },
           {
             "id": "P7-POISSON",
             "status": "DERIVED_PAPER_VALID",
-            "claim": "T=I_F x L_Y\u00b2+B_Y; R(y) decays faster than any fixed power at infinity.",
+            "claim": "T=I_F x L_Y²+B_Y; R(y) decays faster than any fixed power at infinity.",
             "audit": "F extended by zero is smooth compact after flatness; Poisson is valid with exp(-i xi t) convention. All y=x/(ab) satisfy y>=1/T, and boundary y~1/T stays fixed as x grows. Large-y estimates cannot be applied as a uniformly vanishing family."
           },
           {
@@ -1192,13 +1192,13 @@
             "id": "P7-MULTIPLICITY",
             "status": "DERIVED_PAPER_VALID",
             "claim": "MF/zeta retains simple pole at any off-line zero of any multiplicity.",
-            "audit": "At rho of multiplicity m, -zeta'/zeta has residue -m. Multiplier rho\u00b2(rho-1)\u00b2Q(rho-1/2)\u00b2 is nonzero. Numerator MF can vanish to order m-1, so generic MF(rho) !=0 would be false for m>1. Current squared filter's nonvanishing provides compatible visibility but is a distinct expression needing identification."
+            "audit": "At rho of multiplicity m, -zeta'/zeta has residue -m. Multiplier rho²(rho-1)²Q(rho-1/2)² is nonzero. Numerator MF can vanish to order m-1, so generic MF(rho) !=0 would be false for m>1. Current squared filter's nonvanishing provides compatible visibility but is a distinct expression needing identification."
           },
           {
             "id": "P7-PSD",
             "status": "DERIVED_PAPER_VALID_COUNTERMODEL",
             "claim": "Auxiliary hyperbola matrix is not PSD at arbitrarily large scales.",
-            "audit": "For any integer a>=1, x=a\u00b2y_- places index a within Y because Ty_->1; diagonal equals P_F(y_-)<0. Letting a grow also rules out an eventual all-vector PSD claim. It does not rule out the desired bound for the full actual mu vector."
+            "audit": "For any integer a>=1, x=a²y_- places index a within Y because Ty_->1; diagonal equals P_F(y_-)<0. Letting a grow also rules out an eventual all-vector PSD claim. It does not rule out the desired bound for the full actual mu vector."
           },
           {
             "id": "P7-I",
@@ -1310,17 +1310,17 @@
           },
           {
             "attempt": "Discard rank-one continuum term because it is harmless",
-            "calculation": "T=I_F x L_Y\u00b2+B, I_F>0. To establish a lower bound, rank-one is nonnegative and may be dropped in a sufficient stronger estimate; however that may destroy true compensating cancellation.",
-            "outcome": "Safe sufficient target B>=-C sqrt x is stronger than necessary. Exact missing target retains B+I_F xL_Y\u00b2. Never ask to bound |B| when only a lower bound is needed."
+            "calculation": "T=I_F x L_Y²+B, I_F>0. To establish a lower bound, rank-one is nonnegative and may be dropped in a sufficient stronger estimate; however that may destroy true compensating cancellation.",
+            "outcome": "Safe sufficient target B>=-C sqrt x is stronger than necessary. Exact missing target retains B+I_F xL_Y². Never ask to bound |B| when only a lower bound is needed."
           },
           {
             "attempt": "Separate alias diagonal from off-diagonal",
-            "calculation": "R continuous on[1/T,infinity), decays at infinity, so M=sup_{y>=1/T}|R(y)|<infinity. D_R=sum_{a<=Y}mu(a)^2R(x/a\u00b2) satisfies |D_R|<=M Y<=M sqrt(Tx). Thus T=I_F xL_Y\u00b2+D_R+O_R.",
-            "outcome": "DERIVED_UNCONDITIONAL_SUPPORTING_CONSEQUENCE: diagonal already at closing scale. Desired eventual lower bound on T is equivalent up to constants to eventual I_F xL_Y\u00b2+O_R>=-C sqrt x. This identifies the actual signed off-diagonal arithmetic leaf but does not prove it."
+            "calculation": "R continuous on[1/T,infinity), decays at infinity, so M=sup_{y>=1/T}|R(y)|<infinity. D_R=sum_{a<=Y}mu(a)^2R(x/a²) satisfies |D_R|<=M Y<=M sqrt(Tx). Thus T=I_F xL_Y²+D_R+O_R.",
+            "outcome": "DERIVED_UNCONDITIONAL_SUPPORTING_CONSEQUENCE: diagonal already at closing scale. Desired eventual lower bound on T is equivalent up to constants to eventual I_F xL_Y²+O_R>=-C sqrt x. This identifies the actual signed off-diagonal arithmetic leaf but does not prove it."
           },
           {
             "attempt": "Use operator norm of signed boundary kernel",
-            "calculation": "Y~sqrt x and bounded entries give ||A_R||op<=M Y. ||mu||\u00b2<=Y, so |mu^T A_R mu|<=M Y\u00b2=O(x).",
+            "calculation": "Y~sqrt x and bounded entries give ||A_R||op<=M Y. ||mu||²<=Y, so |mu^T A_R mu|<=M Y²=O(x).",
             "outcome": "FAILS_TO_CLOSE without actual-vector cancellation; ambient kernel norm is not enough."
           },
           {
@@ -1336,13 +1336,13 @@
         ],
         "corrections_or_cautions": [
           "P6 prose says prime representation requires negative cancellation of linearly growing diagonal. That is true for bounded total energy, but RH sufficiency via polynomial shell upper does not require cancellation of a linear diagonal itself; an O(m) diagonal is already polynomial.",
-          "H=kappa*kappa is not the existing universalSincSecondSource=P\u00b2q. Their transforms respectively contain Q\u00b2 versus Q. Never reuse the latter's source field without a convolution adapter.",
+          "H=kappa*kappa is not the existing universalSincSecondSource=P²q. Their transforms respectively contain Q² versus Q. Never reuse the latter's source field without a convolution adapter.",
           "A finite toy exact check verifies algebra, not literal universal-sinc source identities; no script was run in this review.",
           "Source-support/flatness properties are valid paper arguments but formal APIs and bound constants need proof, not a SourcePacket field asserting conclusions.",
           "7/8 result may motivate a benchmark but should be kept external unless exact source/assumptions/axioms are imported and checked."
         ],
         "proposed_minimal_formalization": [
-          "Define literal real H from fixed originalSincTest convolution; prove compact support, smoothness, transform and two weighted moments, not identifying it withP\u00b2q.",
+          "Define literal real H from fixed originalSincTest convolution; prove compact support, smoothness, transform and two weighted moments, not identifying it withP²q.",
           "Prove finite arithmetic mu*log source identity for general supported H and instantiate literal H.",
           "Define actual finite hyperbola sum; prove U=2E-T from mu*mu*1 and support before any asymptotics.",
           "Prove algebraic rank-one/remainder decomposition and the bounded-diagonal square-root estimate, preserving actual mu and all off-diagonal terms.",
@@ -1357,10 +1357,10 @@
           }
         ],
         "source_bridge_addendum_2026_11_01": {
-          "discovery": "The current repository ALREADY proves the literal H=\u03ba*\u03ba prime-field to q*nativeOriginalPrimeField convolution bridge in OriginalSincNativeConvolution.lean:122. Earlier language requiring a convolution adapter means reuse/instantiate this existing theorem, not invent the bridge anew.",
+          "discovery": "The current repository ALREADY proves the literal H=κ*κ prime-field to q*nativeOriginalPrimeField convolution bridge in OriginalSincNativeConvolution.lean:122. Earlier language requiring a convolution adapter means reuse/instantiate this existing theorem, not invent the bridge anew.",
           "declaration": "Zeta23.CCM.originalDetector_correlationField_eq_sourceConvolution",
           "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/CCM/OriginalSincNativeConvolution.lean#L122",
-          "remaining": "Pass6 F definition, Mellin/hyperbola representation and exact V aliases still need formal source bindings. NativeOriginalIntegerDrive_rapid_bound exists for P\u00b2q; compact q convolution can transport rapid decay after the analogous finite exchange. No bound on the actual prime-field value follows just from this forward relation.",
+          "remaining": "Pass6 F definition, Mellin/hyperbola representation and exact V aliases still need formal source bindings. NativeOriginalIntegerDrive_rapid_bound exists for P²q; compact q convolution can transport rapid decay after the analogous finite exchange. No bound on the actual prime-field value follows just from this forward relation.",
           "historical_audit": "HISTORICAL_COMPOSITION_AUDIT.json"
         }
       }
@@ -1955,7 +1955,7 @@
         "recovered_facts": [
           {
             "id": "H01",
-            "fact": "Literal source bridge already exists: prime field for H=\u03ba*\u03ba equals q convolved with the actual one-copy nativePrimeField for j=P\u00b2q.",
+            "fact": "Literal source bridge already exists: prime field for H=κ*κ equals q convolved with the actual one-copy nativePrimeField for j=P²q.",
             "source": "literal_convolution",
             "consequence": "Do not list this as missing. Integer-drive rapid decay can be transported by the analogous compact convolution exchange and bounded support. This supplies source flatness, not a bounded inverse or prime-field upper.",
             "paper_ids": [
@@ -1985,7 +1985,7 @@
               "low_masks",
               "low_masks_subexp"
             ],
-            "consequence": "The remaining complete high observation retains the whole \u0398 rate; having killed the easy regions does not estimate the balanced signed region. Pass7 scalar hyperbola and the older energy masks are related arithmetic representations, not identical quantities.",
+            "consequence": "The remaining complete high observation retains the whole Θ rate; having killed the easy regions does not estimate the balanced signed region. Pass7 scalar hyperbola and the older energy masks are related arithmetic representations, not identical quantities.",
             "paper_ids": [
               16,
               21,
@@ -1995,7 +1995,7 @@
           },
           {
             "id": "H04",
-            "fact": "Complete native high-mask logarithmic rates have an actual continuous limit \u0398. Original detector negative depths are only cofinal at selected apertures.",
+            "fact": "Complete native high-mask logarithmic rates have an actual continuous limit Θ. Original detector negative depths are only cofinal at selected apertures.",
             "sources": [
               "exact_mask_rate",
               "quiet_consumer"
@@ -2014,11 +2014,11 @@
               22,
               23
             ],
-            "consequence": "Their unknown nonzero limit, not existence/tightness, is the obstacle. Locally exact raw M\u00f6bius trials can have large tails and do not prove local vanishing of the optimum."
+            "consequence": "Their unknown nonzero limit, not existence/tightness, is the obstacle. Locally exact raw Möbius trials can have large tails and do not prove local vanishing of the optimum."
           },
           {
             "id": "H06",
-            "fact": "The first derivative convolution views are opposite copies of the same field: M*(DN)=\u03a0 and N*(DM)=\u2212\u03a0.",
+            "fact": "The first derivative convolution views are opposite copies of the same field: M*(DN)=Π and N*(DM)=−Π.",
             "paper_ids": [
               7
             ],
@@ -2038,12 +2038,12 @@
           },
           {
             "id": "H08",
-            "fact": "The adjacent corrected-row squared increments have exact fixed-L total (35t\u00b2+40t+32)/288, t=(L/(4\u03c0))\u00b2.",
+            "fact": "The adjacent corrected-row squared increments have exact fixed-L total (35t²+40t+32)/288, t=(L/(4π))².",
             "paper_ids": [
               11,
               12
             ],
-            "consequence": "Bare row summability does not control canonical arithmetic output: full adjoint corner squared norm is asymptotic (9/7)K at fixed L; cumulative cost grows as (9/14)N\u00b2. No uniform-in-growing-L asymptotic is asserted."
+            "consequence": "Bare row summability does not control canonical arithmetic output: full adjoint corner squared norm is asymptotic (9/7)K at fixed L; cumulative cost grows as (9/14)N². No uniform-in-growing-L asymptotic is asserted."
           },
           {
             "id": "H09",
@@ -2066,45 +2066,45 @@
         "attempted_supplier_compositions": [
           {
             "id": "C01",
-            "candidate": "Pass6 flatness + exact M\u00f6bius inverse + short hyperbola",
-            "calculation": "For fixed N, |R(y)|\u2264C_N y^(\u2212N) gives |sum \u03bc(a)\u03bc(b)R(x/(ab))|\u2264C_N x^(\u2212N)(sum a^N)\u00b2=O_N(x), because Y\u2248sqrt(Tx).",
-            "failure": "a,b\u2248Y place y=x/(ab)\u22481/T, outside large-y decay. Fixed N never improves the exponent. Growing N needs constants and still cannot suppress this boundary strip.",
+            "candidate": "Pass6 flatness + exact Möbius inverse + short hyperbola",
+            "calculation": "For fixed N, |R(y)|≤C_N y^(−N) gives |sum μ(a)μ(b)R(x/(ab))|≤C_N x^(−N)(sum a^N)²=O_N(x), because Y≈sqrt(Tx).",
+            "failure": "a,b≈Y place y=x/(ab)≈1/T, outside large-y decay. Fixed N never improves the exponent. Growing N needs constants and still cannot suppress this boundary strip.",
             "status": "ATTEMPTED_NOT_CLOSING"
           },
           {
             "id": "C02",
             "candidate": "Diagonal removal + retain nonnegative rank-one term",
-            "calculation": "Bounded literal R on [1/T,\u221e) gives |D_R|\u2264M floor(sqrt(Tx))\u2264M sqrt(T)sqrt x. Consequently T_Y\u2265\u2212C sqrt x iff I_F xL_Y\u00b2+O_R\u2265\u2212Cprime sqrt x, up to changing constants.",
+            "calculation": "Bounded literal R on [1/T,∞) gives |D_R|≤M floor(sqrt(Tx))≤M sqrt(T)sqrt x. Consequently T_Y≥−C sqrt x iff I_F xL_Y²+O_R≥−Cprime sqrt x, up to changing constants.",
             "gain": "This is a rigorous useful reduction and is represented by the fresh standalone Lean prototype.",
-            "remaining": "Prove the latter inequality on the actual \u03bc vector, eventual in every real x; do not demand O_R alone or all-vector positivity.",
+            "remaining": "Prove the latter inequality on the actual μ vector, eventual in every real x; do not demand O_R alone or all-vector positivity.",
             "status": "DERIVED_DIAGONAL_REDUCTION; OFF_DIAGONAL_OPEN"
           },
           {
             "id": "C03",
             "candidate": "Gcd multiplicativity to collapse actual off-diagonal",
-            "calculation": "a=dr,b=ds,(r,s)=1 gives \u03bc(a)\u03bc(b)=\u03bc(d)\u00b2\u03bc(rs) when (d,rs)=1, zero otherwise. O_R=sum_(r\u2260s,coprime) \u03bc(rs) sum_(d\u2264Y/max(r,s),(d,rs)=1) \u03bc(d)\u00b2 R(x/(d\u00b2rs)).",
-            "failure": "Inner signed R weight and truncated outer coprime sum do not form the complete divisor sum \u03bc*1. Absolute estimates still cost O(Y\u00b2)=O(x); dropping the coprimality or signed R would change the actual source.",
+            "calculation": "a=dr,b=ds,(r,s)=1 gives μ(a)μ(b)=μ(d)²μ(rs) when (d,rs)=1, zero otherwise. O_R=sum_(r≠s,coprime) μ(rs) sum_(d≤Y/max(r,s),(d,rs)=1) μ(d)² R(x/(d²rs)).",
+            "failure": "Inner signed R weight and truncated outer coprime sum do not form the complete divisor sum μ*1. Absolute estimates still cost O(Y²)=O(x); dropping the coprimality or signed R would change the actual source.",
             "status": "EXACT_REWRITE_NO_SAVING"
           },
           {
             "id": "C04",
             "candidate": "Earlier low-mask and Type I savings + new diagonal bound",
             "calculation": "Earlier low primitive masks and Type I errors can remove already controlled portions of their own complete energy representation.",
-            "failure": "They leave the high primitive/balanced correlations whose exact rate is \u0398. Their weights and energy integration are not the scalar R(x/(ab)) form. An adapter cannot itself turn a retained complete high rate into an upper.",
+            "failure": "They leave the high primitive/balanced correlations whose exact rate is Θ. Their weights and energy integration are not the scalar R(x/(ab)) form. An adapter cannot itself turn a retained complete high rate into an upper.",
             "status": "REUSABLE_PREPARATION_NOT_SUPPLIER"
           },
           {
             "id": "C05",
             "candidate": "Positive q and native completion + all derivative/divisor identities",
-            "calculation": "q convolution contracts forward norms; N*\u03a0=tN and M*N=\u03b4 identify the actual source uniquely.",
+            "calculation": "q convolution contracts forward norms; N*Π=tN and M*N=δ identify the actual source uniquely.",
             "failure": "Uniqueness supplies no size bound, and contraction has no bounded reverse on the relevant native inputs. First derivatives give opposite copies, not independent observations. Positive raw prime measure convolved with sign-changing pole-killed H is not a positive value.",
             "status": "FAILS_AS_PROPOSED_INFERENCE"
           },
           {
             "id": "C06",
             "candidate": "Optimal tightness + causal local inversion",
-            "calculation": "Best residuals have uniform global cap and strong limit; raw M\u00f6bius trials fit every fixed prefix eventually.",
-            "failure": "Different approximants. No local norm comparison transfers raw accuracy to globally optimal residuals without pricing their tail cost. Exact ell\u00b2 model with g_n=e_n\u22122e_(n+1) preserves local exactness and a positive global residual limit.",
+            "calculation": "Best residuals have uniform global cap and strong limit; raw Möbius trials fit every fixed prefix eventually.",
+            "failure": "Different approximants. No local norm comparison transfers raw accuracy to globally optimal residuals without pricing their tail cost. Exact ell² model with g_n=e_n−2e_(n+1) preserves local exactness and a positive global residual limit.",
             "status": "LOGICAL_SHORTCUT_FALSIFIED"
           },
           {
@@ -2117,42 +2117,42 @@
           {
             "id": "C08",
             "candidate": "High endpoint jets + stationarity",
-            "calculation": "Even/odd shell pairings gain ninth/seventh local order, with coefficient cost O(K^9||w\u03c4||) or O(K^7||w\u03c4||).",
+            "calculation": "Even/odd shell pairings gain ninth/seventh local order, with coefficient cost O(K^9||wτ||) or O(K^7||wτ||).",
             "failure": "Shrinking endpoint layer to 1/K erases the formal small power; large complement remains. Actual positive canonical examples reverse mixed moment signs, so stationarity does not enforce the desired sign.",
             "status": "NO_BULK_BOUND"
           },
           {
             "id": "C09",
             "candidate": "Ground signed-resolvent deficit + actual source arithmetic",
-            "calculation": "Improved paper comparator \u03b3 ReH\u2264Bplus\u2212\u03b1 Bminus\u2212(1\u2212\u03b1)D0 retains endpoint and energy mismatch.",
-            "failure": "No uniform actual-ground lower bound on deficit relative to Bplus\u2212\u03b3. Finite positive examples improve comparator but can remain over 20000 times gap; they neither prove nor disprove the negative-ground restriction. Tie branch separately remains.",
+            "calculation": "Improved paper comparator γ ReH≤Bplus−α Bminus−(1−α)D0 retains endpoint and energy mismatch.",
+            "failure": "No uniform actual-ground lower bound on deficit relative to Bplus−γ. Finite positive examples improve comparator but can remain over 20000 times gap; they neither prove nor disprove the negative-ground restriction. Tie branch separately remains.",
             "status": "GENUINE_GEOMETRIC_IMPROVEMENT_NOT_CLOSURE"
           },
           {
             "id": "C10",
             "candidate": "All-multiplicity and conjugate-zero constraints",
-            "calculation": "Full jet Grams sharpen delayed residual lower bounds, including extra 2m\u22121 preserved jets on restricted original-input trials.",
+            "calculation": "Full jet Grams sharpen delayed residual lower bounds, including extra 2m−1 preserved jets on restricted original-input trials.",
             "failure": "They increase the obstruction but do not decrease actual source upper; properly correlated primal/dual projections obey one common positive energy budget.",
             "status": "LOWER_INFORMATION_ONLY"
           },
           {
             "id": "C11",
             "candidate": "External half-plane bound + source discrepancy",
-            "calculation": "If independently imported zero-free half-plane Re\u03c1\u2264b<1, the actual discrepancy has exponent b\u22121/2 and Pass7 T at most exponent b, with log/norm costs retained.",
+            "calculation": "If independently imported zero-free half-plane Reρ≤b<1, the actual discrepancy has exponent b−1/2 and Pass7 T at most exponent b, with log/norm costs retained.",
             "failure": "Any b>1/2 remains above the sqrt-x target. External proof is not current OPICA compiler authority, and cannot be identified with a finite ground eigenvalue gap.",
             "status": "PARTIAL_RESTRICTION_ONLY"
           },
           {
             "id": "C12",
             "candidate": "Replace actual-vector lower bound by positivity or Mertens square-root estimate",
-            "failure": "P_F has negative diagonals at arbitrarily late scales, so all-vector PSD is false. A raw |M(y)|\u2264C sqrt y bound is a different, stronger target than needed. Preserve the smoothed actual \u03bc vector and the helpful rank-one term.",
+            "failure": "P_F has negative diagonals at arbitrarily late scales, so all-vector PSD is false. A raw |M(y)|≤C sqrt y bound is a different, stronger target than needed. Preserve the smoothed actual μ vector and the helpful rank-one term.",
             "status": "AVOID_UNNECESSARILY_STRONG_OR_FALSE_SUPPLIERS"
           }
         ],
         "minimum_remaining_statement": {
-          "objects": "Literal fixed q, \u03ba=Pq, H=\u03ba*\u03ba, F of Pass6, I_F=integral F>0, R(y)=sum_n F(n/y)\u2212I_F y, Y=floor sqrt(Tx), L_Y=sum_(a\u2264Y) \u03bc(a)/a.",
-          "bound": "There exist C,X0>0 such that for every real x\u2265X0: I_F*x*L_Y^2 + sum_(1\u2264a,b\u2264Y,a\u2260b) \u03bc(a)\u03bc(b)R(x/(ab)) \u2265 \u2212C*sqrt(x).",
-          "quantifiers": "C and X0 before x; actual vector \u03bc and fixed source; all retained off-diagonal terms and rank-one term together; no zero-dependent source replacement.",
+          "objects": "Literal fixed q, κ=Pq, H=κ*κ, F of Pass6, I_F=integral F>0, R(y)=sum_n F(n/y)−I_F y, Y=floor sqrt(Tx), L_Y=sum_(a≤Y) μ(a)/a.",
+          "bound": "There exist C,X0>0 such that for every real x≥X0: I_F*x*L_Y^2 + sum_(1≤a,b≤Y,a≠b) μ(a)μ(b)R(x/(ab)) ≥ −C*sqrt(x).",
+          "quantifiers": "C and X0 before x; actual vector μ and fixed source; all retained off-diagonal terms and rank-one term together; no zero-dependent source replacement.",
           "why_sufficient": "Add bounded diagonal to recover Pass7 one-sided T lower; hyperbola identity and flat E give an eventual upper on actual V; exact source zero-visibility/signed-excursion consumer contradicts any off-line zero after formal adapters. The final arithmetic inequality itself has not been proved.",
           "scope": "This route need not simultaneously solve every ground, tie, regular-cell or causal-approximation route. They remain useful constraints and falsifiers, not compulsory extra closing premises."
         },
@@ -2163,7 +2163,7 @@
           "No old finite checker promoted to an all-scale theorem.",
           "No new raw archive scripts executed."
         ],
-        "next_information_gain": "Prove a genuine signed off-diagonal estimate on the exact smoothed \u03bc vector, or discover a source-native structure that forces it. Reuse current convolution/rapid-drive/low-mask machinery rather than rebuild it. Additional finite identities are valuable only if they reduce this actual signed arithmetic burden."
+        "next_information_gain": "Prove a genuine signed off-diagonal estimate on the exact smoothed μ vector, or discover a source-native structure that forces it. Reuse current convolution/rapid-drive/low-mask machinery rather than rebuild it. Additional finite identities are valuable only if they reduce this actual signed arithmetic burden."
       }
     },
     "BOUNDARY_CLOSURE_ATTEMPTS.json": {
@@ -2183,20 +2183,20 @@
         },
         "diagonal_proof": [
           "Fix T>0. Suppose R is continuous on[1/T,infinity) and R(y)->0 as y->infinity. Then choose Y0>=1/T with |R(y)|<=1 for y>=Y0; compactness bounds |R| on[1/T,Y0]. Taking M=max(1,Mcompact) yields |R(y)|<=M for every y>=1/T. Literal Pass6 flatness plus Pass7 Poisson establishes the hypotheses on paper, independently of mu.",
-          "For x>0 and a<=floor sqrt(Tx), a\u00b2<=Tx, hence x/a\u00b2>=1/T. Since mu(a)\u00b2<=1, |D(x)|<=sum_{a<=Y}|R(x/a\u00b2)|<=M Y<=M sqrt(T)*sqrt(x). If Y=0 the sum is0. This is an all-scale bound, not just a tail bound.",
+          "For x>0 and a<=floor sqrt(Tx), a²<=Tx, hence x/a²>=1/T. Since mu(a)²<=1, |D(x)|<=sum_{a<=Y}|R(x/a²)|<=M Y<=M sqrt(T)*sqrt(x). If Y=0 the sum is0. This is an all-scale bound, not just a tail bound.",
           "Therefore, for any fixed C, Tform(x)>=-C sqrt(x) implies A(x)>=-(C+M sqrt(T))sqrt(x); and conversely A(x)>=-C sqrt(x) implies Tform(x)>=-(C+M sqrt(T))sqrt(x). Eventual lower-boundedness at square-root scale is exactly equivalent, with a changed constant.",
-          "The rank-one term I_F*x*L\u00b2 is nonnegative because I_F>0, but deleting it imposes a stronger supplier O>=-C sqrt(x). Exact necessary-and-sufficient target is A=rank-one+off-diagonal, retaining cancellation."
+          "The rank-one term I_F*x*L² is nonnegative because I_F>0, but deleting it imposes a stronger supplier O>=-C sqrt(x). Exact necessary-and-sufficient target is A=rank-one+off-diagonal, retaining cancellation."
         ],
         "gcd_attempt": {
           "identity": "O=sum_{r,s>=1,r!=s,gcd(r,s)=1} mu(rs) sum_{1<=d<=Y/max(r,s),gcd(d,rs)=1} mu(d)^2 R(x/(d^2*r*s)).",
           "proof": "Set d=gcd(a,b),a=dr,b=ds. If d,r,s fail squarefreeness or coprimality with d, mu(dr)mu(ds)=0. Otherwise multiplicativity gives mu(dr)mu(ds)=mu(d)^2mu(r)mu(s)=mu(d)^2mu(rs). Zero mu terms permit extending to all r,s with gcd1 under the indicated d coprimality.",
-          "obstruction": "The inner d weight is not nonnegative because R changes sign. Absolute-value control counts all admissible off-diagonal pairs and is O(Y\u00b2)=O(x). Grouping n=rs yields a mu(n)-weighted restricted-divisor sum, where divisor bounds and d cutoffs depend onY. The complete divisor inversion mu*1=epsilon cannot collapse this truncated weighted expression; substituting it recovers U rather than bounding U.",
+          "obstruction": "The inner d weight is not nonnegative because R changes sign. Absolute-value control counts all admissible off-diagonal pairs and is O(Y²)=O(x). Grouping n=rs yields a mu(n)-weighted restricted-divisor sum, where divisor bounds and d cutoffs depend onY. The complete divisor inversion mu*1=epsilon cannot collapse this truncated weighted expression; substituting it recovers U rather than bounding U.",
           "conclusion": "No sqrt cancellation follows from exact multiplicativity alone in this calculation. Claiming it does would conceal the unresolved actual-vector arithmetic estimate."
         },
         "poisson_attempt": {
           "valid_fixed_order_bound": "For any fixed N>=0 with |R(y)|<=C_N y^-N on y>=1/T, |B|<=C_N x^-N(sum_{a<=Y}a^N)^2<=C_N T^(N+1)x.",
           "barrier": "Near a,b~Y, x/(ab)~1/T, so the source sees its fixed nonzero remainder rather than y->infinity. For fixed N the exponent ofx stays1, however small T is. Varying N withx requires quantified derivative/Fourier constants and cannot eliminate the actual fixed-y boundary.",
-          "model_check": "The auxiliary matrix has negative diagonals at x=a\u00b2y_- for arbitrarily largea, so even an eventual PSD claim fails. This does not falsify the full actual-mu lower bound; it falsifies the all-vector shortcut."
+          "model_check": "The auxiliary matrix has negative diagonals at x=a²y_- for arbitrarily largea, so even an eventual PSD claim fails. This does not falsify the full actual-mu lower bound; it falsifies the all-vector shortcut."
         },
         "mathlib": {
           "root": "work/pr290/.lake/packages/mathlib/Mathlib/NumberTheory/ArithmeticFunction",
@@ -2391,7 +2391,7 @@
         "additional_sources": [
           {
             "path": "lean/OAI/NumberTheory/DirichletL/Nonvanishing.lean",
-            "content": "import OAI.NumberTheory.DirichletL.Foundation\nimport OAI.NumberTheory.DirichletL.Detector.FinalAssemblyUnconditional\n\nnamespace OAI\n\n/-!\n# Nonvanishing of Dirichlet L-functions to the right of seven eighths\n\nThe main result excludes zeros of Dirichlet L-functions in the half-plane\n`7 / 8 < re s`, apart from the principal character's pole at `s = 1`.\nThe corresponding nonvanishing statement for the Riemann zeta function follows.\n-/\n\nnamespace DirichletCharacter\nopen scoped _root_.DirichletCharacter\n\n/-- Dirichlet L-functions do not vanish to the right of `7 / 8`, away from the\nprincipal character's pole at `1`. -/\ntheorem LFunction_ne_zero_of_seven_eighths_lt_re\n    {q : \u2115} [NeZero q] (\u03c7 : DirichletCharacter \u2102 q) {s : \u2102}\n    (hs : (7 / 8 : \u211d) < s.re) (hpole : \u00ac (\u03c7 = 1 \u2227 s = 1)) :\n    _root_.DirichletCharacter.LFunction \u03c7 s \u2260 0 :=\n  SevenEighths.ProbeFinalAssemblyUnconditional.dirichlet_nonzero\n    q (NeZero.ne q) \u03c7 s hs hpole\n\nend DirichletCharacter\n\n/-- The Riemann zeta function does not vanish to the right of `7 / 8`. -/\ntheorem riemannZeta_ne_zero_of_seven_eighths_lt_re\n    {s : \u2102} (hs : (7 / 8 : \u211d) < s.re) : riemannZeta s \u2260 0 :=\n  SevenEighths.ProbeFinalAssemblyUnconditional.zeta_nonzero s hs\n\nend OAI\n",
+            "content": "import OAI.NumberTheory.DirichletL.Foundation\nimport OAI.NumberTheory.DirichletL.Detector.FinalAssemblyUnconditional\n\nnamespace OAI\n\n/-!\n# Nonvanishing of Dirichlet L-functions to the right of seven eighths\n\nThe main result excludes zeros of Dirichlet L-functions in the half-plane\n`7 / 8 < re s`, apart from the principal character's pole at `s = 1`.\nThe corresponding nonvanishing statement for the Riemann zeta function follows.\n-/\n\nnamespace DirichletCharacter\nopen scoped _root_.DirichletCharacter\n\n/-- Dirichlet L-functions do not vanish to the right of `7 / 8`, away from the\nprincipal character's pole at `1`. -/\ntheorem LFunction_ne_zero_of_seven_eighths_lt_re\n    {q : ℕ} [NeZero q] (χ : DirichletCharacter ℂ q) {s : ℂ}\n    (hs : (7 / 8 : ℝ) < s.re) (hpole : ¬ (χ = 1 ∧ s = 1)) :\n    _root_.DirichletCharacter.LFunction χ s ≠ 0 :=\n  SevenEighths.ProbeFinalAssemblyUnconditional.dirichlet_nonzero\n    q (NeZero.ne q) χ s hs hpole\n\nend DirichletCharacter\n\n/-- The Riemann zeta function does not vanish to the right of `7 / 8`. -/\ntheorem riemannZeta_ne_zero_of_seven_eighths_lt_re\n    {s : ℂ} (hs : (7 / 8 : ℝ) < s.re) : riemannZeta s ≠ 0 :=\n  SevenEighths.ProbeFinalAssemblyUnconditional.zeta_nonzero s hs\n\nend OAI\n",
             "encoding": "utf-8",
             "sha": "46c67f4000906b1391a471d6e6396ac0da3c16a5",
             "display_url": "https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/lean/OAI/NumberTheory/DirichletL/Nonvanishing.lean",
@@ -2399,7 +2399,7 @@
           },
           {
             "path": "lean/OAI/NumberTheory/DirichletL/ParametersHighData.lean",
-            "content": "import OAI.NumberTheory.DirichletL.ParametersCentralBudget\n\nnamespace OAI\n\nnoncomputable section\nopen scoped BigOperators\nnamespace SevenEighths.Parameters\n\nstructure HighData (\u0394 : \u211d) where\n  t : \u211d\n  N : \u2115\n  ell : Fin N\u2192\u211d\n  rmin : \u211d\n  \u03b5 : \u211d\n  e : \u211d\n  \u03ba : \u211d\n  cost : \u211d\n  eps : \u211d\n  sigma : \u211d\n  t_pos : 0<t\n  t_delta : t<\u0394/4\n  t_small : t\u22641/100000000\n  slots_pos : 0<N\n  slots_injective : Function.Injective ell\n  slots_sum : (\u2211j,ell j)=1/6\n  slots_bounds : \u2200j,0<ell j \u2227 (7/8)*rmin\u2264ell j \u2227 ell j\u2264(1/200)*t\n  rmin_pos : 0<rmin\n  epsilon_pos : 0<\u03b5\n  epsilon_small : \u03b5\u22641/1000\n  epsilon_gap : \u03b5<rmin*t\n  e_pos : 0<e\n  e_small : e<1/1000\n  kappa_pos : 0<\u03ba\n  kappa_small : \u03ba\u22641\n  cost_pos : 0<cost\n  eps_pos : 0<eps\n  eps_small : eps\u22641\n  sigma_pos : 0<sigma\n  detector_budget : 288*e+8*\u03ba+2*cost\u2264\u03b5/2\n  phase_budget : 8*e*t+\u03ba\u2264\u03b5\n  count_budget : 159*\u03b5+t+t+7*t\u22641/32\n  central_budget : (13/16)*(159*\u03b5+t+t+7*t)+2*t+(3/2)*(2*t)+\n    (26*e+(N+8)*eps+t+t/6)+(t+t+t)+t\u226449/440640\n  geometric_budget : sigma+8*e+t/8\u226463/800\n  principal_budget : sigma+t/8\u226417/48000\n  window_budget : sigma+e\u2264(7/8)*((7/8)*rmin)\n  floor_budget : 2*t+26*e+(N+8)*eps+t+t/6+t/8+sigma\u22647/1200\n  high_saving : sigma+t/8+t/8\u2264t\n  height_choice : \u2200J : \u211d,0\u2264J \u2192 \u2203\u03c4 : \u211d,0<\u03c4 \u2227 \u03c4<(1/200)/2 \u2227\n    4*\u03c4<(1/200)*cost \u2227 \u03c4<t \u2227 2*\u03c4*(1+J)\u2264t \u2227 \u03c4*(2+4*eps)<t\n\ntheorem exists_high_data (\u0394 : \u211d) (h\u0394 : 0<\u0394) : Nonempty (HighData \u0394) := by\n  obtain \u27e8t,ht,ht\u0394,ht1,_,_,hgeo,hdtop,ht3,h\u03c9,h\u03c9\u0394,hhigh,hallow\u27e9 := exists_central_budget \u0394 h\u0394\n  obtain \u27e8N,hN,ell,rmin,hr,hell,hsum,hbounds,_\u27e9 :=\n    exists_physical_slot_lengths (1/200) (7/8) t t (by norm_num) (by norm_num) ht ht\n  obtain \u27e8allowance,ha,hbud\u27e9 := hallow N\n  let small := min allowance (t/((N:\u211d)+2000))\n  have hsmall : 0<small := lt_min ha (div_pos ht (by positivity))\n  have hsa : small\u2264allowance := min_le_left _ _\n  have hst : small\u2264t/((N:\u211d)+2000) := min_le_right _ _\n  have hst0 : small\u2264t/2000 := hst.trans\n    (div_le_div_of_nonneg_left ht.le (by norm_num) (by linarith [Nat.cast_nonneg (\u03b1:=\u211d) N]))\n  let ellMin := (7/8:\u211d)*rmin\n  have hmin : 0<ellMin := mul_pos (by norm_num) hr\n  obtain \u27e8\u03b5,e,\u03ba,cost,\u03c4\u2080,h\u03b5,h\u03b51,h\u03b5gap,h\u03b5a,he,he1,heell,hea,h\u03ba,h\u03ba1,hcost,\n    hdet,hphase,_,_,_,_,_\u27e9 :=\n    exists_detector_scales t rmin t (1/200) t ellMin small 0\n      ht.le hr ht (by norm_num) ht hmin hsmall (by norm_num)\n  let eps := small/2\n  have heps : 0<eps := by dsimp [eps];positivity\n  have hepss : eps\u2264small := by dsimp [eps];linarith only [hsmall]\n  have heps1 : eps\u22641 := by linarith only [hepss, hst0, ht1]\n  have hbud' := hbud \u03b5 e eps h\u03b5.le (h\u03b5a.trans hsa) he.le (hea.trans hsa)\n    heps.le (hepss.trans hsa)\n  have heN : ((N:\u211d)+2000)*eps\u2264t := by\n    have h := (le_div_iff\u2080 (show 0<(N:\u211d)+2000 by positivity)).mp (hepss.trans hst)\n    simpa only [mul_comm] using h\n  have he8 : ((N:\u211d)+8)*eps\u2264t := by nlinarith only [heN, heps.le]\n  have het : 2000*e\u2264t := by linarith only [hea, hst0]\n  let sigma := min (t/2) (ellMin/4)\n  have hs : 0<sigma := lt_min (by positivity) (by positivity)\n  have hst2 : sigma\u2264t/2 := min_le_left _ _\n  have hsell : sigma\u2264ellMin/4 := min_le_right _ _\n  refine \u27e8{\n    t:=t,N:=N,ell:=ell,rmin:=rmin,\u03b5:=\u03b5,e:=e,\u03ba:=\u03ba,cost:=cost,eps:=eps,sigma:=sigma\n    t_pos:=ht,t_delta:=ht\u0394,t_small:=ht1,slots_pos:=hN,slots_injective:=hell,slots_sum:=hsum\n    slots_bounds:=fun j=>\u27e8(hbounds j).1,(hbounds j).2.1,(hbounds j).2.2.1\u27e9\n    rmin_pos:=hr,epsilon_pos:=h\u03b5,epsilon_small:=h\u03b51,epsilon_gap:=h\u03b5gap\n    e_pos:=he,e_small:=he1,kappa_pos:=h\u03ba,kappa_small:=h\u03ba1,cost_pos:=hcost\n    eps_pos:=heps,eps_small:=heps1,sigma_pos:=hs,detector_budget:=by linarith only [hdet]\n    phase_budget:=hphase,count_budget:=hbud'.1,central_budget:=hbud'.2\n    geometric_budget:=by linarith only [hst2, het, ht1]\n    principal_budget:=by linarith only [hst2, ht1]\n    window_budget:=by change sigma+e\u2264(7/8)*ellMin;linarith only [hsell, heell, hmin]\n    floor_budget:=by linarith only [hst2, het, he8, ht1]\n    high_saving:=by linarith only [hst2, ht]\n    height_choice:=?_ }\u27e9\n  intro J hJ\n  let \u03c4 := min ((1/200:\u211d)*cost/16) (min (1/800) (t/(4*(J+7))))\n  have htau : 0<\u03c4 := lt_min (by positivity) (lt_min (by norm_num) (by positivity))\n  have h\u03c4c : \u03c4\u2264(1/200:\u211d)*cost/16 := min_le_left _ _\n  have h\u03c4d : \u03c4\u22641/800 := (min_le_right _ _).trans (min_le_left _ _)\n  have h\u03c4t : \u03c4\u2264t/(4*(J+7)) := (min_le_right _ _).trans (min_le_right _ _)\n  have h\u03c4J : \u03c4*(4*(J+7))\u2264t := (le_div_iff\u2080 (by positivity)).mp h\u03c4t\n  have hprod : 0\u2264\u03c4*J := mul_nonneg htau.le hJ\n  have hprodeps := mul_le_mul_of_nonneg_left heps1 htau.le\n  refine \u27e8\u03c4,htau,by linarith only [h\u03c4d],by linarith only [h\u03c4c, hcost],\n      by nlinarith only [h\u03c4J, hprod, htau],by nlinarith only [h\u03c4J, hprod, htau],\n      by nlinarith only [h\u03c4J, hprod, hprodeps, htau]\u27e9\nend SevenEighths.Parameters\n\nend\n\nend OAI\n",
+            "content": "import OAI.NumberTheory.DirichletL.ParametersCentralBudget\n\nnamespace OAI\n\nnoncomputable section\nopen scoped BigOperators\nnamespace SevenEighths.Parameters\n\nstructure HighData (Δ : ℝ) where\n  t : ℝ\n  N : ℕ\n  ell : Fin N→ℝ\n  rmin : ℝ\n  ε : ℝ\n  e : ℝ\n  κ : ℝ\n  cost : ℝ\n  eps : ℝ\n  sigma : ℝ\n  t_pos : 0<t\n  t_delta : t<Δ/4\n  t_small : t≤1/100000000\n  slots_pos : 0<N\n  slots_injective : Function.Injective ell\n  slots_sum : (∑j,ell j)=1/6\n  slots_bounds : ∀j,0<ell j ∧ (7/8)*rmin≤ell j ∧ ell j≤(1/200)*t\n  rmin_pos : 0<rmin\n  epsilon_pos : 0<ε\n  epsilon_small : ε≤1/1000\n  epsilon_gap : ε<rmin*t\n  e_pos : 0<e\n  e_small : e<1/1000\n  kappa_pos : 0<κ\n  kappa_small : κ≤1\n  cost_pos : 0<cost\n  eps_pos : 0<eps\n  eps_small : eps≤1\n  sigma_pos : 0<sigma\n  detector_budget : 288*e+8*κ+2*cost≤ε/2\n  phase_budget : 8*e*t+κ≤ε\n  count_budget : 159*ε+t+t+7*t≤1/32\n  central_budget : (13/16)*(159*ε+t+t+7*t)+2*t+(3/2)*(2*t)+\n    (26*e+(N+8)*eps+t+t/6)+(t+t+t)+t≤49/440640\n  geometric_budget : sigma+8*e+t/8≤63/800\n  principal_budget : sigma+t/8≤17/48000\n  window_budget : sigma+e≤(7/8)*((7/8)*rmin)\n  floor_budget : 2*t+26*e+(N+8)*eps+t+t/6+t/8+sigma≤7/1200\n  high_saving : sigma+t/8+t/8≤t\n  height_choice : ∀J : ℝ,0≤J → ∃τ : ℝ,0<τ ∧ τ<(1/200)/2 ∧\n    4*τ<(1/200)*cost ∧ τ<t ∧ 2*τ*(1+J)≤t ∧ τ*(2+4*eps)<t\n\ntheorem exists_high_data (Δ : ℝ) (hΔ : 0<Δ) : Nonempty (HighData Δ) := by\n  obtain ⟨t,ht,htΔ,ht1,_,_,hgeo,hdtop,ht3,hω,hωΔ,hhigh,hallow⟩ := exists_central_budget Δ hΔ\n  obtain ⟨N,hN,ell,rmin,hr,hell,hsum,hbounds,_⟩ :=\n    exists_physical_slot_lengths (1/200) (7/8) t t (by norm_num) (by norm_num) ht ht\n  obtain ⟨allowance,ha,hbud⟩ := hallow N\n  let small := min allowance (t/((N:ℝ)+2000))\n  have hsmall : 0<small := lt_min ha (div_pos ht (by positivity))\n  have hsa : small≤allowance := min_le_left _ _\n  have hst : small≤t/((N:ℝ)+2000) := min_le_right _ _\n  have hst0 : small≤t/2000 := hst.trans\n    (div_le_div_of_nonneg_left ht.le (by norm_num) (by linarith [Nat.cast_nonneg (α:=ℝ) N]))\n  let ellMin := (7/8:ℝ)*rmin\n  have hmin : 0<ellMin := mul_pos (by norm_num) hr\n  obtain ⟨ε,e,κ,cost,τ₀,hε,hε1,hεgap,hεa,he,he1,heell,hea,hκ,hκ1,hcost,\n    hdet,hphase,_,_,_,_,_⟩ :=\n    exists_detector_scales t rmin t (1/200) t ellMin small 0\n      ht.le hr ht (by norm_num) ht hmin hsmall (by norm_num)\n  let eps := small/2\n  have heps : 0<eps := by dsimp [eps];positivity\n  have hepss : eps≤small := by dsimp [eps];linarith only [hsmall]\n  have heps1 : eps≤1 := by linarith only [hepss, hst0, ht1]\n  have hbud' := hbud ε e eps hε.le (hεa.trans hsa) he.le (hea.trans hsa)\n    heps.le (hepss.trans hsa)\n  have heN : ((N:ℝ)+2000)*eps≤t := by\n    have h := (le_div_iff₀ (show 0<(N:ℝ)+2000 by positivity)).mp (hepss.trans hst)\n    simpa only [mul_comm] using h\n  have he8 : ((N:ℝ)+8)*eps≤t := by nlinarith only [heN, heps.le]\n  have het : 2000*e≤t := by linarith only [hea, hst0]\n  let sigma := min (t/2) (ellMin/4)\n  have hs : 0<sigma := lt_min (by positivity) (by positivity)\n  have hst2 : sigma≤t/2 := min_le_left _ _\n  have hsell : sigma≤ellMin/4 := min_le_right _ _\n  refine ⟨{\n    t:=t,N:=N,ell:=ell,rmin:=rmin,ε:=ε,e:=e,κ:=κ,cost:=cost,eps:=eps,sigma:=sigma\n    t_pos:=ht,t_delta:=htΔ,t_small:=ht1,slots_pos:=hN,slots_injective:=hell,slots_sum:=hsum\n    slots_bounds:=fun j=>⟨(hbounds j).1,(hbounds j).2.1,(hbounds j).2.2.1⟩\n    rmin_pos:=hr,epsilon_pos:=hε,epsilon_small:=hε1,epsilon_gap:=hεgap\n    e_pos:=he,e_small:=he1,kappa_pos:=hκ,kappa_small:=hκ1,cost_pos:=hcost\n    eps_pos:=heps,eps_small:=heps1,sigma_pos:=hs,detector_budget:=by linarith only [hdet]\n    phase_budget:=hphase,count_budget:=hbud'.1,central_budget:=hbud'.2\n    geometric_budget:=by linarith only [hst2, het, ht1]\n    principal_budget:=by linarith only [hst2, ht1]\n    window_budget:=by change sigma+e≤(7/8)*ellMin;linarith only [hsell, heell, hmin]\n    floor_budget:=by linarith only [hst2, het, he8, ht1]\n    high_saving:=by linarith only [hst2, ht]\n    height_choice:=?_ }⟩\n  intro J hJ\n  let τ := min ((1/200:ℝ)*cost/16) (min (1/800) (t/(4*(J+7))))\n  have htau : 0<τ := lt_min (by positivity) (lt_min (by norm_num) (by positivity))\n  have hτc : τ≤(1/200:ℝ)*cost/16 := min_le_left _ _\n  have hτd : τ≤1/800 := (min_le_right _ _).trans (min_le_left _ _)\n  have hτt : τ≤t/(4*(J+7)) := (min_le_right _ _).trans (min_le_right _ _)\n  have hτJ : τ*(4*(J+7))≤t := (le_div_iff₀ (by positivity)).mp hτt\n  have hprod : 0≤τ*J := mul_nonneg htau.le hJ\n  have hprodeps := mul_le_mul_of_nonneg_left heps1 htau.le\n  refine ⟨τ,htau,by linarith only [hτd],by linarith only [hτc, hcost],\n      by nlinarith only [hτJ, hprod, htau],by nlinarith only [hτJ, hprod, htau],\n      by nlinarith only [hτJ, hprod, hprodeps, htau]⟩\nend SevenEighths.Parameters\n\nend\n\nend OAI\n",
             "encoding": "utf-8",
             "sha": "c565dc0a72c7da9a2706cdd835e69a39e8c0dc14",
             "display_url": "https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/lean/OAI/NumberTheory/DirichletL/ParametersHighData.lean",
@@ -2407,7 +2407,7 @@
           },
           {
             "path": "lean/OAI/NumberTheory/DirichletL/ParametersCentralBudget.lean",
-            "content": "import OAI.NumberTheory.DirichletL.ParametersDetectorScales\n\nnamespace OAI\n\nnoncomputable section\nnamespace SevenEighths.Parameters\n\ntheorem exists_central_budget (\u0394 : \u211d) (h\u0394 : 0<\u0394) :\n    \u2203 t : \u211d,0<t \u2227 t<\u0394/4 \u2227 t\u22641/100000000 \u2227\n      (0:\u211d)<1/200 \u2227 (1/200:\u211d)<1/100 \u2227\n      (13/16:\u211d)+t+2*t\u22647/8 \u2227 (7/8:\u211d)\u226437/42 \u2227 t\u22643/16 \u2227\n      0<\u0394-t/4 \u2227 \u0394-t/4<\u0394 \u2227\n      (3/16+\u0394-t+t/8+t/8 : \u211d)\u22643/16+(\u0394-t/4) \u2227\n      \u2200N : \u2115,\u2203allowance : \u211d,0<allowance \u2227\n      \u2200\u03b5 e eps : \u211d,0\u2264\u03b5 \u2192 \u03b5\u2264allowance \u2192 0\u2264e \u2192 e\u2264allowance \u2192\n        0\u2264eps \u2192 eps\u2264allowance \u2192\n        159*\u03b5+t+t+7*t\u22641/32 \u2227\n        (13/16)*(159*\u03b5+t+t+7*t)+2*t+(3/2)*(2*t)+\n          (26*e+(N+8)*eps+t+t/6)+(t+t+t)+t\u226449/440640 := by\n  let t := min (\u0394/8) (1/100000000)\n  have ht : 0<t := lt_min (by positivity) (by norm_num)\n  have ht\u0394 : t\u2264\u0394/8 := min_le_left _ _\n  have ht1 : t\u22641/100000000 := min_le_right _ _\n  refine \u27e8t,ht,by linarith,ht1,by norm_num,by norm_num,by linarith,\n    by norm_num,by linarith,by linarith,by linarith,by linarith,?_\u27e9\n  intro N\n  let allowance := t/((N:\u211d)+2000)\n  have hden : 0<(N:\u211d)+2000 := by positivity\n  have ha : 0<allowance := div_pos ht hden\n  have ha0 : allowance\u2264t/2000 := div_le_div_of_nonneg_left ht.le (by norm_num) (by linarith [Nat.cast_nonneg (\u03b1:=\u211d) N])\n  have hap : allowance*((N:\u211d)+2000)=t := by dsimp [allowance];field_simp\n  refine \u27e8allowance,ha,?_\u27e9\n  intro \u03b5 e eps h\u03b5 h\u03b5a he hea heps hepsa\n  have h\u03b5t : 2000*\u03b5\u2264t := by linarith\n  have het : 2000*e\u2264t := by linarith\n  have hepsN : ((N:\u211d)+2000)*eps\u2264t := by\n    have h := mul_le_mul_of_nonneg_left hepsa hden.le\n    nlinarith\n  have heps8 : ((N:\u211d)+8)*eps\u2264t := by nlinarith\n  constructor <;> nlinarith\nend SevenEighths.Parameters\n\nend\n\nend OAI\n",
+            "content": "import OAI.NumberTheory.DirichletL.ParametersDetectorScales\n\nnamespace OAI\n\nnoncomputable section\nnamespace SevenEighths.Parameters\n\ntheorem exists_central_budget (Δ : ℝ) (hΔ : 0<Δ) :\n    ∃ t : ℝ,0<t ∧ t<Δ/4 ∧ t≤1/100000000 ∧\n      (0:ℝ)<1/200 ∧ (1/200:ℝ)<1/100 ∧\n      (13/16:ℝ)+t+2*t≤7/8 ∧ (7/8:ℝ)≤37/42 ∧ t≤3/16 ∧\n      0<Δ-t/4 ∧ Δ-t/4<Δ ∧\n      (3/16+Δ-t+t/8+t/8 : ℝ)≤3/16+(Δ-t/4) ∧\n      ∀N : ℕ,∃allowance : ℝ,0<allowance ∧\n      ∀ε e eps : ℝ,0≤ε → ε≤allowance → 0≤e → e≤allowance →\n        0≤eps → eps≤allowance →\n        159*ε+t+t+7*t≤1/32 ∧\n        (13/16)*(159*ε+t+t+7*t)+2*t+(3/2)*(2*t)+\n          (26*e+(N+8)*eps+t+t/6)+(t+t+t)+t≤49/440640 := by\n  let t := min (Δ/8) (1/100000000)\n  have ht : 0<t := lt_min (by positivity) (by norm_num)\n  have htΔ : t≤Δ/8 := min_le_left _ _\n  have ht1 : t≤1/100000000 := min_le_right _ _\n  refine ⟨t,ht,by linarith,ht1,by norm_num,by norm_num,by linarith,\n    by norm_num,by linarith,by linarith,by linarith,by linarith,?_⟩\n  intro N\n  let allowance := t/((N:ℝ)+2000)\n  have hden : 0<(N:ℝ)+2000 := by positivity\n  have ha : 0<allowance := div_pos ht hden\n  have ha0 : allowance≤t/2000 := div_le_div_of_nonneg_left ht.le (by norm_num) (by linarith [Nat.cast_nonneg (α:=ℝ) N])\n  have hap : allowance*((N:ℝ)+2000)=t := by dsimp [allowance];field_simp\n  refine ⟨allowance,ha,?_⟩\n  intro ε e eps hε hεa he hea heps hepsa\n  have hεt : 2000*ε≤t := by linarith\n  have het : 2000*e≤t := by linarith\n  have hepsN : ((N:ℝ)+2000)*eps≤t := by\n    have h := mul_le_mul_of_nonneg_left hepsa hden.le\n    nlinarith\n  have heps8 : ((N:ℝ)+8)*eps≤t := by nlinarith\n  constructor <;> nlinarith\nend SevenEighths.Parameters\n\nend\n\nend OAI\n",
             "encoding": "utf-8",
             "sha": "afc4c8515e0fa223ce7d6ce74bb4893cf359d292",
             "display_url": "https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/lean/OAI/NumberTheory/DirichletL/ParametersCentralBudget.lean",
@@ -2760,5 +2760,48 @@
     ],
     "RH": "OPEN",
     "Step4": "OPEN"
+  },
+  "published_research_2026_11_02": {
+    "schema": "OPICA4_PUBLISHED_RESEARCH_V1",
+    "source_head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "source_tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "authority": "RESEARCH_PROVENANCE_AND_DISCOVERY_DOCUMENTS_NOT_PRODUCTION_THEOREM_PROMOTION",
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "handover": "research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md",
+    "files": {
+      "HANDOVER.md": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md",
+        "sha256": "33c5aca90e02f15a42678f72855154571367a040bdc521ee273705f2efdf04e0"
+      },
+      "CHECKPOINT.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/CHECKPOINT.json",
+        "sha256": "9d4761a998e09a62f5fb3d66c9b48da0332e115101f010eb15ca1d295752619a"
+      },
+      "OUTCOME_REGISTER.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/OUTCOME_REGISTER.json",
+        "sha256": "f813c1133c21e433097735a473d2d7dc36890e14152969607f2c040aa7e39019"
+      },
+      "RESEARCH_DEPENDENCIES.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/RESEARCH_DEPENDENCIES.json",
+        "sha256": "cb8245d010e6b59633927fb9cef34949e088dbd4b8d16d7e15f7d5c4fe9f4954"
+      },
+      "PORTABLE_ARCHIVE_MANIFEST.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/PORTABLE_ARCHIVE_MANIFEST.json",
+        "sha256": "0c284c8d65bb4a4e95a71844670bca72e1b97599e4e5518f600e9dcc909d39f9"
+      },
+      "EXTERNAL_FORMAL_INVENTORY.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/EXTERNAL_FORMAL_INVENTORY.json",
+        "sha256": "d0b53efc6c6d0338b848f89eacab4493918fcf7b5e7149e33bf3a7f2e2a731da"
+      }
+    },
+    "production_counts_unchanged": {
+      "declarations": 1079,
+      "modules": 90,
+      "semantic_controls": 84,
+      "portable_per_mode": 231,
+      "native_methods": 46
+    },
+    "graph_scope": "New research/document discovery nodes and explicit evidence references; no new formal proof edges."
   }
 }

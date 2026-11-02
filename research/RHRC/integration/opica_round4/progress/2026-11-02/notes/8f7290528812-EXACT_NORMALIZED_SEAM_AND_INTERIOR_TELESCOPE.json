@@ -1,0 +1,33 @@
+{
+  "status": "DERIVED_EXACT_NORMALIZED_TELESCOPE_WITH_ABSOLUTELY_SUMMABLE_SEAMS",
+  "created_utc": "2026-11-02T06:24:46.812720+00:00",
+  "setup": "Use the literal F, P_F, Q_i and tau from the frozen block report. Let x_i=i^2/tau, t_i=log(x_i), G_i(x)=x^(-1/2)Q_i(x), and e_i(x)=x^(-1/2)sum_(a<=i)mu(a)F(a/x). Here e_i is the normalized SHORT prefix; E_i^raw in the parent is unnormalized. The exact complete prime field is P(log x)=2e_i(x)-G_i(x) on x_i<=x<x_(i+1). Values and all derivative jets match at each seam, as proved in the parent B5a. All derivatives below are ordinary x derivatives with i fixed.",
+  "one_cell": "For every integer i>=2, define d_i=2sqrt(tau)mu(i)F(tau/i)/i. The exact value-jump law gives\n G_i(x_i)-G_(i-1)(x_(i-1))\n =d_i+integral_[x_(i-1),x_i] G_(i-1)-prime(x)dx.\nLikewise\n e_i(x_i)-e_(i-1)(x_(i-1))\n =d_i/2+integral_[x_(i-1),x_i] e_(i-1)-prime(x)dx.\nThe upper-end derivatives refer to the smooth fixed-cutoff branch, not the derivative of a floor function. Subtracting these two laws in 2e-G cancels the seam term exactly, leaving the integral of the complete physical prime derivative. No interior integral has been set to zero.",
+  "seam_series": "For each fixed A>0 the actual rapid integer drive gives a fixed C_A with |F(r)|<=C_A r^A for0<r<=tau/2. Therefore\n |d_i|<=2C_A tau^(A+1/2) i^(-A-1), i>=2.\nThe series D_infinity=sum_(i>=2)d_i converges ABSOLUTELY, and\n |D_infinity-sum_(i=2)^N d_i|\n <=[2C_A tau^(A+1/2)/A]N^(-A).\nAll rate constants are chosen before N. This uses source flatness through the actual drive and does not assert global C-infinity regularity of F at0. No sign or zero value of D_infinity is inferred.",
+  "initial_value_and_global_drift": "Because F(tau)=0 and P_F(1/tau)=0, G_1(x_1)=e_1(x_1)=P(t_1)=0. Consequently the exact finite relations are\n G_N(x_N)=sum_(i=2)^N d_i+sum_(i=2)^N integral_[x_(i-1),x_i]G_(i-1)-prime,\n 2e_N(x_N)=sum_(i=2)^N d_i+2sum_(i=2)^N integral_[x_(i-1),x_i]e_(i-1)-prime,\n P(t_N)=2sum_(i=2)^N integral e_(i-1)-prime-sum_(i=2)^N integral G_(i-1)-prime.\nThe committed short-prefix rapid theorem gives e_N(x_N)=O_A(N^-A), after rescaling its exponent in t_N=2logN-logtau. Thus the short-prefix INTERIOR series converges to -D_infinity/2, by this exact telescope; no separate claim of absolute convergence of that interior series is needed. The complete remaining drift is\n P(t_N)=-sum_(i=2)^N integral_[x_(i-1),x_i]G_(i-1)-prime(x)dx\n          -D_infinity+O_A(N^-A).\nThis answers whether the E terms cancel: they cancel the seam contribution in the exact P step and aggregate to a fixed finite constant plus a rapid error. They do not eliminate the signed G interior drift.",
+  "rank_one_and_normalization_cost": "Let ell_Y=sum_(a<=Y)mu(a)/a, I=actualFlatSamplingMass>0, and R_Y(x)=sum_(a,b<=Y)mu(a)mu(b)R_F(x/(ab)), including the diagonal. Then Q_Y(x)=I*x*ell_Y^2+R_Y(x), and\n G_Y-prime(x)=(I/2)x^(-1/2)ell_Y^2\n                 +x^(-1/2)R_Y-prime(x)-(1/2)x^(-3/2)R_Y(x).\nThe last normalization term cannot be omitted. Since sqrt(x_i)-sqrt(x_(i-1))=1/sqrt(tau), the positive rank-one part on the i-th native cell integrates EXACTLY to\n (I/sqrt(tau))*ell_(i-1)^2.\nThus the remaining complete drift has a nonnegative actual rank-one contribution (I/sqrt(tau))sum_(j=1)^(N-1)ell_j^2 and the full signed alias-derivative and alias-normalization integrals. No bound on that signed remainder or on the harmonic Mobius squares is supplied. Tiny or all-jet-flat seams do not control this bulk.",
+  "two_history_scope": "In the full S=P*P block formula, this normalization must be used separately at each internal source time with its own native index. It does not identify the two cutoffs, discard early mixed E*T history, or turn S into a square of one Q_N. The parent actual Lambda*Lambda compensation calculation remains intact.",
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-block-arithmetic\\ACTUAL_TWO_HISTORY_BLOCK_COMPENSATION.json",
+      "sha256": "963466fb5b80c7747243373ab76f44a2cf77257b91d8d5420ce3a05007f37273",
+      "bytes": 21407
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-native-grid\\ACTUAL_SELF_ECHO_NATIVE_GRID_SIGN_BLOCKS.json",
+      "sha256": "a4809ff2182f8cfec64af588b776ae325346285ff7a6805b0dc02204431299cd",
+      "bytes": 18368
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\ActualSourceHyperbola.lean",
+      "sha256": "568292f2b9008892772550b544a48fdaa5730be44d87e453fd8008f9bbb1a350",
+      "bytes": 80457
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\MobiusHyperbola.lean",
+      "sha256": "f30abf704e538063e5e7e4dc3fd1c159c6bccdeeb3cc2d78e232c548d920635f",
+      "bytes": 13634
+    }
+  ],
+  "authority": "External DERIVED addendum requested by root. No new Lean statement, compiler, numerical test, repository edit, or closing bound. The frozen parent is preserved. RH and Step4 OPEN."
+}

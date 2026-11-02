@@ -1,0 +1,46 @@
+{
+  "status": "ALL_CURRENT_HEAD_WORKFLOWS_SUCCESS_EXACT_SCOPE_HARVESTED",
+  "created_utc": "2026-11-02T11:47:19.003853+00:00",
+  "head_sha": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "remote_tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "pr_state": "open",
+  "draft": true,
+  "merged": false,
+  "workflow_runs": 24,
+  "attempts": 24,
+  "jobs": 97,
+  "success": 95,
+  "optional_skipped": 2,
+  "failures": 0,
+  "running": 0,
+  "queued": 0,
+  "comments": {
+    "review": 0,
+    "reviews": 0,
+    "issue": 0
+  },
+  "live_summary": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next18\\20261102T114711Z\\summary.json",
+    "sha256": "650f2c12444880ca32086a2bf249b7c2157552e8def21fe24e5e50e65f3740d7",
+    "bytes": 13249
+  },
+  "new_job_harvest": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next18\\ROUND2_FINAL_HARVEST.json",
+    "sha256": "24ad2be68320f9c959018a2d22d3c76040115659ed93a7b388b75dc8e99be60e",
+    "bytes": 165702
+  },
+  "prior_complete_snapshot": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next17\\CHECKPOINT.json",
+    "sha256": "0b5dcbecc8c5d0f4afdeb7b85bd4e2a6389e6fee7e96d3d39762f07446c57cad",
+    "bytes": 14566
+  },
+  "bounded_trigger": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next18-bounded\\CHECKPOINT.json",
+    "sha256": "b5e6a1139eb6521976b08eb7f5aef12e6a32eaaa56475d7ecfe2b214292cf0ef",
+    "bytes": 6868
+  },
+  "no_repo_mutations": true,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "scope": "All runs/attempts/jobs and comment pages refreshed with exact run.head_sha; new final Round2 outputs fully inspected. Earlier current-head successful outputs retain their prior source-bound harvest authority, not fresh artifact re-download."
+}

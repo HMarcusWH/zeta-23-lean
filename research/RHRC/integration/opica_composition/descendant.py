@@ -18,7 +18,7 @@ BASE_TREE = "5442650eb749576e4a82e2d57460a4b97e19b5a9"
 LEGACY_SCOPE_TEMPLATES = {"rhrc_opica.yml": 4, "rhrc_opica_followup.yml": 7}
 LEGACY_SUITE_TEMPLATES = {"rhrc.yml": 1}
 MANIFEST = "research/RHRC/integration/opica_round4/BUILD_MANIFEST.json"
-AUDITED_PATH_POLICY = "57422c73fa0a1703ddc87461ac1e9340ce5d2d43929c36c21a839d42e4ddb99e"
+AUDITED_PATH_POLICY = "dd234fb5d8952b5c0c465af269c3d8786d927c4d175ce28768d6ee02e57ad8d1"
 REPO = Path(__file__).resolve().parents[4]
 DOCUMENTATION_ADDITIONS = (
     "docs/AGENT_GUIDE.md",

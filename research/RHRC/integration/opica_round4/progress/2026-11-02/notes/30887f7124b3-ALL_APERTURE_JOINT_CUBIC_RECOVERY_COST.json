@@ -1,0 +1,26 @@
+{
+  "status": "DERIVED_ALL_APERTURE_ACTUAL_FINITE_JOINT_RECOVERY_LOWER_BOUND",
+  "origin": "Root proposed this strengthening after the source-flow addendum; prime_math and repo_map independently checked its exact actual-carrier algebra. No frozen prior note is replaced.",
+  "setup": "Use exactly the finite Hilbert observation from section3a of JOINT_CUBIC_RECOVERY_AND_SOURCE_FLOW_COST.json: m=2K+1 distinct phases in the fixed open center interval, each channel scaled by1/sqrt(m), P_s(w)_j=<v_K(c_j),w>/sqrt(m), C_s(w)_j=<D u_K(c_j),w>/sqrt(m), ell(w)=<g,w>=M3(w). The finite kernel condition and optimal recovery existence are already paid at paper level. Now take every real L>=4pi and K=ceil(L^4), with beta=(L/(4pi))^2 and G=||g||^2.",
+  "1_literal_source_test": {
+    "identity": "The actual index sends a native even u to ambient N u, and the current theorem poleNeutral_cubic_pairing_eq_momentFour proves <g,Du>=M4(u). Therefore the actual native input w=g/G has M3(w)=1 and, in conjugate-first notation, <w,v_K(c)>=M3(v_K(c))/G and <w,D u_K(c)>=M4(u_K(c))/G. The linear sampled observations are their conjugates. This uses the genuine cubic compression vector, not an arbitrary test direction.",
+    "norm": "For this w the RMS-normalized finite joint observation obeys ||jointObservation(P_s,C_s)w||<=sqrt(eps3(L)^2+eps4(L)^2)/G. It is nonzero by the finite kernel condition. Thus EVERY cubic recovery has norm at least G/sqrt(eps3^2+eps4^2), and so does the existing optimal recovery. For the max/sup continuous norm the denominator can instead be max(eps3,eps4); the displayed square-root denominator is specifically the two-channel Hilbert instance."
+  },
+  "2_actual_nonvanishing_and_norm_budget": {
+    "witness": "On positive nodes n=1,2,3 define z_n=((beta+1)/24, -(beta+4)/30, (beta+9)/120), with z_-n=-z_n and every other coordinate0. Direct full plus/minus summation gives M1(z)=0, sum n z_n/(beta+n^2)=0, and M3(z)=2. Hence z is in the genuine odd native carrier for all beta>0 and K>=3.",
+    "full_norm": "Its full inherited squared norm is2[(beta+1)^2/576+(beta+4)^2/900+(beta+9)^2/14400]. For beta>=1, each (beta+a)/beta<=1+a, so this is at most beta^2/12, with equality at beta=1. No parity factor is dropped.",
+    "cubic_norm": "Since <g,z>=M3(z)=2, Cauchy-Schwarz gives4<=G||z||^2 and therefore G>=48/beta^2>=48/L^4. In particular g is nonzero without invoking a spectral or off-line-zero premise."
+  },
+  "3_quantified_all_aperture_result": {
+    "constants": "Use the already explicit fixed-source constants lambda0, C_j from QUANTIFIED_MOMENT_COST_AND_JOINT_SCOPE.json and set C_E=C4+384000C2, C_O=C3+16000C1. The actual projected moments satisfy eps4<=C_E L^(93/2)e^(-lambda0 L^(3/2)) and eps3<=C_O L^(67/2)e^(-lambda0 L^(3/2)).",
+    "bound": "For EVERY real L>=4pi at exactly Kd=ceil(L^4), and EVERY choice of the2K+1 distinct-phase centers with the stated RMS weights, the optimal cubic recovery norm is at least48 exp(lambda0 L^(3/2))/[(C_E+C_O)L^(101/2)]. Indeed sqrt(eps3^2+eps4^2)<=eps3+eps4<=(C_E+C_O)L^(93/2)e^(-lambda0 L^(3/2)), and G>=48/L^4. All constants precede L, centers and later target choices.",
+    "relation_to_resonance": "This bound needs no resonance or ground premise. The previous explicit hidden-vector argument at integer L>=26 gives the sharper polynomial denominator L^(37/2) there; both statements are retained. The all-aperture result prices the full-carrier functional recovery problem, not a restricted unknown unit-ground problem."
+  },
+  "source_interface": "Current CanonicalPoleNeutralNormals.lean325-336 supplies the exact cubic/index/moment-four pairing; JointObservation.lean38-60 and96-104 supplies kernel recovery and optimal ratio norm. These generic compiled results are instantiated here analytically, not by a newly checked Lean consumer.",
+  "limits": [
+    "DERIVED only; no new compilation, numerical source computation, CI result or repo edit.",
+    "The test g/G is an actual source-selected carrier vector, but is not claimed to be a canonical eigenvector or ground.",
+    "This does not prove an error lower bound for special ground-specific coefficients; cancellation or extra observations can change that separate question.",
+    "No signed full interior covariance estimate or arithmetic closure follows. RH and Step4 OPEN."
+  ]
+}

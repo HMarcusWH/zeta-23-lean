@@ -1,0 +1,229 @@
+{
+  "status": "DERIVED_FULL_SELF_ECHO_SIGN_BLOCKS_ON_THE_EXACT_NATIVE_GRID",
+  "created_utc": "2026-11-02T05:53:39.228023+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "source": "Fix the literal q at s=1/4096, kappa=(D^2-1/4)q, H=kappa*kappa, B=2s, tau=exp(B)/2, P(t)=sum Lambda(n)/sqrt(n) H(t-log n), and S=P*P. Here Lambda includes every prime power. P vanishes for t<t_c=log2-B=-log(tau)>0. Theta is the supremum of the actual zero displacements, with 0<=Theta<=1/2; no rightmost zero or strict upper gap is assumed. The present result concerns this FULL causal self-echo, not the one-prime P field or one selected finite eigenmode.",
+  "sections": [
+    {
+      "id": "G1",
+      "title": "Actual signed excursions of the full echo",
+      "statement": "If Theta>0, then for every fixed 0<beta<Theta, every M>0 and every T, there are times t_plus,t_minus>T with S(t_plus)>M exp(beta*t_plus) and S(t_minus)<-M exp(beta*t_minus). These times need not coincide.",
+      "proof": "The bound source below gives |S(t)|<=C(1+t)exp(Theta*t), hence a nonempty genuine Laplace domain. The exact safe transform on Re z>1/2 is Shat(z)=K_H(z)^2 (zeta_prime(z+1/2)/zeta(z+1/2))^2. At every actual right off-line zero p=rho-1/2 it has a nonzero DOUBLE pole, since K_H(p)!=0; multiplicity m contributes m^2 K_H(p)^2. It is analytic at every positive REAL z, including z=1/2 after the literal source cancellation. Choose a zero with Re p>beta; this uses only the supremum definition. If one signed excursion failed, the exact tail u(t)=1_[T0,infinity)(M exp(beta*t)-sigma*S(t)), for sigma=+1 or -1, would be nonnegative. Its continuation is M/(z-beta)-sigma*Shat(z)-E(z), with E the ENTIRE finite-prefix integral of the same expression over [0,T0]. The pole at p forces the actual positive-Laplace abscissa sigma0>=Re p>beta: otherwise the holomorphic integral on Re z>sigma0 and meromorphic identity continuation would make that pole removable. The domain is nonempty and its abscissa is finite. At the real sigma0 the displayed continuation is analytic, and the same meromorphic propagation as UniversalSincSignedExcursions gives agreement with the actual integral on the right. PositiveLaplaceBoundary contradicts that analytic continuation. Both signs follow. The finite prefix and the M/(z-beta) pole are retained throughout.",
+      "authority": "DERIVED reuse of the current actual-abscissa proof with the separately audited full self-echo transform. The current signed-excursion Lean declarations concern the one-source correlation; this is not claimed to be an already compiled full-S theorem."
+    },
+    {
+      "id": "G2",
+      "title": "A source-paid interval around every large excursion",
+      "proof": "The fixed compact H and H-prime both have zero exponential moments at +/-1/2: integration by parts gives K_(H-prime)(z)=z K_H(z). The exact reflected WeilFilter supplier therefore gives source-fixed C0,C1>=1 with |P(t)|<=C0 exp(Theta*t) and |P-prime(t)|<=C1 exp(Theta*t), for every t>=0. Local finite-history differentiation is the current NativeCompactTranslateCalculus identity, not differentiation of a floor cutoff. Since P(0)=0, S-prime=P-prime*P and |S-prime(t)|<=C0 C1 t exp(Theta*t). Fix C>=max(1,C0 C1). For any t0>=1 with sigma*S(t0)>2 exp(beta*t0), define r(t0)=exp(-Theta) exp(-(Theta-beta)t0)/(C(t0+2)). Then 0<r<1. On the SYMMETRIC interval I=[t0-r,t0+r], the derivative is bounded by C(t0+2)exp(Theta(t0+1)). Multiplication by r is exactly exp(beta*t0). Hence sigma*S(t)>exp(beta*t0) for every t in I. No relative derivative bound, attained spectral maximum or fixed-width interval is inferred.",
+      "quantifiers": "The source constants C0,C1,C are fixed before beta and t0. Beta is fixed before the cofinal peak choice. Choosing beta closer to Theta changes the eventual thresholds; it is not a time-dependent beta."
+    },
+    {
+      "id": "G3",
+      "title": "Many consecutive exact native samples, not a generic mesh argument",
+      "proof": "Let x_N=N^2/tau and t_N=2log N-log tau, N>=1. From nativeHistoryCutoff, M(t)=floor(exp(t+B))/2=floor(tau exp(t)) (natural division), so Y(t)=isqrt(M(t))=floor(sqrt(tau)exp(t/2)). Thus M(t_N)=N^2 and Y(t_N)=N EXACTLY. The t_N in I correspond exactly to integers in [sqrt(tau)exp((t0-r)/2),sqrt(tau)exp((t0+r)/2)]. For all sufficiently late t0 the lower endpoint exceeds1. The number of consecutive integers is at least sqrt(tau)exp(t0/2)*2sinh(r/2)-1, hence at least\n sqrt(tau)exp(-Theta) exp((1/2-Theta+beta)t0)/(C(t0+2))-1.\nBecause 1/2-Theta+beta>=beta>0, this number tends to infinity. At EVERY one of these samples, sigma*S(t_N)>exp(beta*t0)>=exp(-beta) exp(beta*t_N)=exp(-beta)tau^(-beta)N^(2beta). Both signs have cofinally such blocks by G1. This is a conditional consequence of an actual off-line zero, not a presently measured numerical excursion.",
+      "near_linear_form": "Equivalently, for any fixed 0<eta<2Theta choose beta=Theta-eta/2. Writing N_center=sqrt(tau)exp(t0/2), the guaranteed block length is at least c_eta N_center^(1-eta)/(1+log N_center)-1, and its magnitude is at least c_eta_prime N^(2Theta-eta). The source-dependent constants are positive and fixed. The blocks can be sparse in location; neither positive asymptotic density nor a return-time bound is asserted."
+    },
+    {
+      "id": "G4",
+      "title": "Full-echo interpolation costs a logarithm, unlike the previous one-prime bound",
+      "proof": "The exact mesh is t_(N+1)-t_N=2log(1+1/N)<=2/N. For t_N<=t<=t_(N+1) and late N, Theta<=1/2 gives exp(Theta*t_(N+1))<=(N+1)/sqrt(tau). Integrating G2 gives\n |S(t)-S(t_N)|<=4C(1+t_(N+1))/sqrt(tau).\nThis is O(1+t), not the O(1) loss previously derived for P. Consequently exponential full-echo excursions cannot be hidden between native samples. This establishes a concrete necessary test for any proposed sample estimate, but supplies no such estimate. The earlier MADNESS audit and constant-grid note controlled the one-prime field; they did not already prove G1-G3 for the convolution."
+    },
+    {
+      "id": "G5",
+      "title": "Exact two-history native arithmetic at a grid point",
+      "proof": "Put E_i(u)=sum_(1<=a<=i) mu(a)*actualCorrelationLogarithmicTest(u,a), and Q_i(x)=mobiusPoissonQuadratic actualFlatSamplingSum x i. The committed half-hyperbola and normalization identities give P(u)=2E_i(u)-exp(-u/2)Q_i(exp u) whenever Y(u)=i. At the OUTER point t_N, the two inner cutoffs are\n i=Y(u)=floor(sqrt(tau)exp(u/2)),\n j=Y(t_N-u)=floor(N exp(-u/2)).\nThus ij<=sqrt(tau)N. They are not both N. The causal integral is over u in [t_c,t_N-t_c], so i,j>=1 on its interior. Partition it into finitely many cells\n I_ij=[t_i,t_(i+1)) intersect (t_N-t_(j+1),t_N-t_j].\nEndpoints are immaterial for integration. A cell has positive length exactly when ij<sqrt(tau)N<(i+1)(j+1). On that cell the exact integrand is\n 4 E_i(u)E_j(t_N-u)\n -2 exp(-(t_N-u)/2) E_i(u)Q_j(exp(t_N-u))\n -2 exp(-u/2) Q_i(exp u)E_j(t_N-u)\n +exp(-t_N/2) Q_i(exp u)Q_j(exp(t_N-u)).\nSumming the integrals is exactly S(t_N). Every Q retains its positive rank-one, diagonal and all off-diagonal terms. All four histories remain; late smallness of E does not remove its early-time convolution against a late response. Those mixed terms can have the same exponential rate as P.",
+      "direct_product_check": "The independent direct finite expansion is S(t_N)=sum_(4<=m<=floor(2N^2 exp B)) (Lambda*Lambda)(m)/sqrt(m) * (H*H)(t_N-log m). This cutoff uses the doubled source support [-2B,2B], and its coefficients are the full arithmetic convolution Lambda*Lambda, not Lambda. It cannot be replaced by the existing one-prime hyperbola at a common cutoff N. The positive coefficients do not sign the sign-changing actual kernel H*H.",
+      "gain_and_limit": "The exact native floors are now resolved into a finite hyperbolic band of cell pairs, so the test is concrete and source-preserving. This provides no new cancellation inequality for the four-term cell integrand, no reduction to Q_N(x_N)^2, and no bound on the high-primitive bulk."
+    },
+    {
+      "id": "G6",
+      "title": "The same shifted aperture and all canonical costs",
+      "proof": "For the fixed boundary input centered at c, the carrier aperture is L_N=t_N+2c and the canonical cutoff is Kd_N=ceil(L_N^4). It is not ceil(t_N^4), and the canonical prime horizon floor(exp L_N) is not the arithmetic cutoff N. The previously audited identity at this exact L_N is\n S(t_N)=||A_K u_K||^2-||B_K v_K||^2 + Dpole(L_N)+C_K(V)\n           -2(P_c*a_c)(L_N)-(a_c*a_c)(L_N)+rapid.\nTherefore G3 constrains this COMPLETE combination at many arithmetic grid points. The exact endpoint Gram costs, pole-normal term, early mixed Arch history and finite approximation error are not removed. The separately proved uniform Kd endpoint estimate does not yet bound them relative to S(t_N). Fixed inputs are not eigenrays, and their sums of squared spectral responses keep the whole spectrum. Dense/cofinal regular-aperture selection alone says nothing about any prescribed countable grid. The actual generated-packet theorem selects a genuine packet and its own source/cutoff after thresholds; these full-S grid points have not been identified with its selected eigenstate or with own-birth PSD predecessors."
+    },
+    {
+      "id": "G7",
+      "title": "What this rules out and what still needs an independent estimate",
+      "proof": "The cofinal-centering statements S<eta and S>-eta are separate one-sided statements, not a dense set of near-zero points. Continuity together with G1 does give arbitrarily late zeros by choosing successive opposite-sign excursions, but does not bound the gaps between them. Even if an independent balancing point within distance h<=1 of t were supplied, the available derivative estimate yields only |S(t)|<=eta+C(t+2)exp(Theta(t+1))h. To obtain an exp(epsilon*t) bound from THIS estimate when epsilon<Theta would require an exponentially fine bound on h, of order exp(-(Theta-epsilon)t)/(t+2); mere cofinality or bounded spacing is insufficient. G2 exhibits actual-source intervals avoiding |S|<=1, while G3 proves each such interval contains many exact native samples. This rules out a sampling-escape explanation and makes the full arithmetic obstruction testable on growing consecutive blocks. It does not prove a forbidden gap law: no presently proved arithmetic theorem bounds these full-S sample values or limits such sign blocks. The independent next input must constrain the complete two-history native cell sum or give an actually paid balancing-time density, not merely reuse one-prime identities or qualitative regularity."
+    }
+  ],
+  "bounded_peer_check": "madness_prime_math checked the symmetric-radius slack, exact 2*sinh(r/2) count, minus-one integer loss, both internal floors and product bound by message. This was an algebra challenge only, not a second source-byte review; a one-sided interval of length r would have a different factor.",
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeIntegerPrimeField.lean",
+      "sha256": "5e33af26755dc29d578d1e29cd53341d8130bdb62bae67231364060520008247",
+      "bytes": 9900,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "def nativeHistoryCutoff",
+          "lines": [
+            39
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeCompactTranslateCalculus.lean",
+      "sha256": "6152803d0b6447dccc2c3900660982f4ab26cb69f34a980de8be6f3eb22b647b",
+      "bytes": 9379,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "nativeComplexPrimeField_hasDerivAt",
+          "lines": [
+            95,
+            135,
+            195
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\PositiveLaplaceBoundary.lean",
+      "sha256": "00c16b2b069c6cc8585979e43851e225df0cd15aa4de1917d56f853de4559b53",
+      "bytes": 9156,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "theorem not_analyticAt_positiveLaplace_continuation_at_abscissa",
+          "lines": [
+            139
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\UniversalSincSignedExcursions.lean",
+      "sha256": "1f5e424e248cf555cd982c208bacbf237a7002617b1b0cc2a02c24fdbfb55655",
+      "bytes": 8104,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "theorem not_fixedOriginalSincCorrelation_oneSidedTailBound",
+          "lines": [
+            32
+          ]
+        },
+        {
+          "token": "theorem fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero",
+          "lines": [
+            131
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\ActualSourceHyperbola.lean",
+      "sha256": "568292f2b9008892772550b544a48fdaa5730be44d87e453fd8008f9bbb1a350",
+      "bytes": 80457,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "def actualCorrelationCutoff",
+          "lines": [
+            41
+          ]
+        },
+        {
+          "token": "theorem actualCorrelationPrimeField_hyperbola_half",
+          "lines": [
+            326
+          ]
+        },
+        {
+          "token": "theorem actualCorrelationPrimeField_add_longTerm_rapid_bound",
+          "lines": [
+            431
+          ]
+        },
+        {
+          "token": "theorem actualCorrelationLongTerm_eq_sampling_quadratic",
+          "lines": [
+            1100
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\MobiusHyperbola.lean",
+      "sha256": "f30abf704e538063e5e7e4dc3fd1c159c6bccdeeb3cc2d78e232c548d920635f",
+      "bytes": 13634,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "def hyperbolaE",
+          "lines": [
+            159
+          ]
+        },
+        {
+          "token": "def hyperbolaT",
+          "lines": [
+            162
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\RegularCells\\PacketRegularSelection.lean",
+      "sha256": "142c5c4e9d143bdb436e462c03dceca3be0265b9b902758a6061148c050ff66d",
+      "bytes": 14989,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "theorem cofinally_actual_regular_packet_joint_detector_ground",
+          "lines": [
+            238
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round4\\MADNESS_SOURCE_AUDIT.json",
+      "sha256": "915e5ea3e667529a72e8b1e4591bcbe9d2fac17774a1d6e5d522138562da43ce",
+      "bytes": 172604,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "PASS8_MOMENT_SPECTRAL_AUDIT.json",
+          "lines": [
+            2216
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-criterion\\SECTION5_ACTUAL_SELF_ECHO_CRITERION_REVIEW.json",
+      "sha256": "0d4046f169e6c2acaefbe05731cb3bde9b3a0f42d28b1c37b0f31049613a5507",
+      "bytes": 18951
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\ACTUAL_COMPACT_HALF_MOMENT_SUPPLIERS.json",
+      "sha256": "da13935fd8f587be005b295e2b9a4228610004b351aa2f84616f2b2dfb83f55a",
+      "bytes": 9134
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\coprime-signed-excursion\\COFINAL_CENTERING_AND_COMPLETE_COVARIANCE_ADDENDUM.json",
+      "sha256": "b531d50f0058dbedd6fd33106e162cb2e8a5baa9e661086b61f0b99db38c1c2c",
+      "bytes": 6284
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\chebyshev-grid\\ACTUAL_CONSTANT_GRID_INTERPOLATION_AUDIT.json",
+      "sha256": "9365a49784b93fc3e6fbd314ceb69bf961ceac56db9b340824bb01a33534f269",
+      "bytes": 7628
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_SIGNED_POLE_PROJECTION_AND_NATIVE_ENDPOINT_COST.json",
+      "sha256": "5893968d1258189eb15d2dda4e915599171fc18a28153ff6daf0ed5cc37030a8",
+      "bytes": 21157
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\UNIFORM_NATIVE_QUARTIC_ENDPOINT_COST.json",
+      "sha256": "b74264d1df89bdd0fbbf2bc2a29e7f2c68ad1a24ef57c219a97d9a24e0ebfb6c",
+      "bytes": 14908
+    }
+  ],
+  "authority": "External DERIVED research only; no new Lean declarations, compiler run, tests, CI claim, or repository edit. All eight current repository files were freshly hashed and compared with clean HEAD. Earlier paper-level source/transform proofs retain their stated authority. RH and Step4 remain OPEN."
+}

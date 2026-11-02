@@ -1,0 +1,65 @@
+{
+  "status": "COMPLETE_DERIVED_ACTUAL_F_TERMINAL_STORAGE_REVIEWED_CLEAR",
+  "created_utc": "2026-11-02T09:48:18.204073+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "worktree_clean": true
+  },
+  "bindings": [
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-storage/ACTUAL_F_CAUSAL_TERMINAL_STORAGE.json",
+      "sha256": "c1c6c8ebb4adc2f7314dd8928529066736e105656713b42bdfcb2ad56b73ac88",
+      "bytes": 13219
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-storage/SOURCE_BOUND_RESEARCH.json",
+      "sha256": "9c892ba8dfefeb84de506e07370099d30c921fea3bbb54e1a0ef731a98e95e64",
+      "bytes": 9142
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-storage/NOTATION_QUALIFICATION.json",
+      "sha256": "8e78153eee8e4f1e1be42b0b8bee3820d96a660bcae28bc5e4277a28768a02e0",
+      "bytes": 972
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-storage/INDEPENDENT_ROOT_F_TERMINAL_STORAGE_REVIEW.json",
+      "sha256": "00ca4cbc31f59069192971e82658e8e73cae2fbe46834d3898a93cb88f899dd3",
+      "bytes": 9964
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-storage/INDEPENDENT_F_TERMINAL_STORAGE_REVIEW.json",
+      "sha256": "d59bc59311656f109a48947b12aef98ea3f8df38257fe59f6111d5f4e204bf64",
+      "bytes": 10211
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-storage/complete_research.py",
+      "sha256": "46e724ec164f9b89c63912824def08cccf46aa453ca6f91bde56517a4b0ed56e",
+      "bytes": 4880
+    }
+  ],
+  "fresh_rechecks": {
+    "author_records": 18,
+    "current_git_blobs": 6
+  },
+  "unconditional_source_specific_result": "For every fixed 0<=a<1/2 there are explicit c_a>0 and a finite threshold T_a such that the particular nonnegative terminal memory Z_a^prime(T) in the exact causal prime-power square completion is >=c_a exp((1/2-a)T) for all T>=T_a. It uses the literal n2 plateau and a genuine prime band, all source/prime-power histories retained. No off-line-zero or negative-witness premise is used.",
+  "exact_identity": "D_a+A_sigma N_a=Q_a^prime+Z_a^prime. The complete energy is E_a+Q_a^prime+Z_a^prime=the full Selberg forcing+A_sigma N_a. The input charge is not bounded either; no sign of the compensated total is inferred.",
+  "actual_primitive_supplier": "R1=phi second derivative-phi prime/2-phi/4+Jphi/8 and R2=phi prime-Jphi/4 provide exact finite histories j=e^(-t/2)[Lambda;R1] and integral j=e^(-t/2)[Lambda;R2], with one-sided support and retained right plateaux.",
+  "full_centered_energy_kept": "E_a-gamma N_a+P_a-(1/2-a)V_a+Q_a^disc=-(1/4) integral weight*F + integral weight*F*mathcalR_K + integral weight*F*U_K. The actual discrepancy pairing, source-coordinate tail, lower endpoint and original Arch/pole/native dictionary remain.",
+  "notation_qualification": "C4 upper decay rate is an independent kappa_a>0, not the explicit C2 lower prefactor c_a. The frozen original proof and reviews remain unchanged; the separately hashed qualification records this interpretation.",
+  "precise_failed_candidate": "Uniform boundedness in T of this particular natural terminal memory at damping a<1/2.",
+  "not_established_or_falsified": [
+    "The sign or boundedness of the net compensated storage",
+    "The sign of E_a+D_a",
+    "Eventual nonnegativity or bounded lower estimates for D_a",
+    "A differently centered storage with independently paid signed costs",
+    "Any independent exponent gain or RH/Step4 closing estimate"
+  ],
+  "authority": "External DERIVED analytic work, reviewed by root and repo_map. No Lean/compiler/CI or canonical numerical-source authority. Root review disclosed its requested scope; peer review disclosures retained.",
+  "new_Lean_declarations": 0,
+  "new_compiler_runs": 0,
+  "new_numerical_source_tests": 0,
+  "repository_edits": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

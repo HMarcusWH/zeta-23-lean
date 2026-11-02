@@ -1,0 +1,313 @@
+{
+  "status": "LIVE_PR299_COMPLETE_PAGINATED_QUIET_CHECKPOINT_NO_NEW_DISPOSITION",
+  "created_utc": "2026-11-02T09:52:15.110115+00:00",
+  "head_sha": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "remote_tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "pr_state": "open",
+  "draft": true,
+  "merged": false,
+  "stable_head": true,
+  "counts": {
+    "workflow_run_count": 24,
+    "unique_workflow_count": 24,
+    "attempt_count": 24,
+    "latest_job_count": 94,
+    "all_attempt_job_count": 94,
+    "latest_job_conclusions": {
+      "success": 89,
+      "skipped": 2,
+      "in_progress": 3
+    },
+    "review_comment_count": 0,
+    "review_count": 0,
+    "issue_comment_count": 0
+  },
+  "previous_snapshot": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\20261102T092037Z\\summary.json",
+    "sha256": "d7a94a8c54eba7190996f066fa1a271cf7fe04c552f11b709a5678d13ab05163",
+    "bytes": 14094
+  },
+  "previous_checkpoint": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\CHECKPOINT.json",
+    "sha256": "b5c13686b182c15b287e4fb18c6b8597fba4656a84cdfa9a47390ec68d1dbf81",
+    "bytes": 17127
+  },
+  "current_snapshot": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\summary.json",
+    "sha256": "787c0dee406a3743379853632110815483135a90130008d1a3aa4fe49ecf25ab",
+    "bytes": 14094
+  },
+  "current_raw_records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\check-runs.json",
+      "sha256": "f8ac452a382c937411441d5326ab8576b96a84a99aacde0f632c96227b127fe7",
+      "bytes": 450450
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\issue-comments.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780636-1.json",
+      "sha256": "b37ba446cedec7013245eafad0eb235d58bf8469582654c6b62b4a52b3bce79e",
+      "bytes": 47464
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780639-1.json",
+      "sha256": "1d4a17ced0ba4daae78c64f3d95706ef8782d935d237f906a9f58eac59b9f6de",
+      "bytes": 3784
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780640-1.json",
+      "sha256": "e701112a9a5afe8ab43eb1f0813ae3c804325bbc4b8aadacd7706dad1cde811d",
+      "bytes": 18751
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780642-1.json",
+      "sha256": "3a4337124ea17232f4ceca785df217e624d4ede5d13a26fa20045039ff3b0594",
+      "bytes": 3258
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780643-1.json",
+      "sha256": "d4ed9a9394208a269b419da8f0400b4373ad9d217ddddcaa67571251678b54f1",
+      "bytes": 10136
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780650-1.json",
+      "sha256": "c4bcfb3897209f3b494f3df2474dc0ab5fe78cfd2afd7ef1d0b9ca7fd0569106",
+      "bytes": 3230
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780652-1.json",
+      "sha256": "f6b64c6234654bc0fdac491ae6641f1d5419394131187076b4aa40e6ba88ce8e",
+      "bytes": 2973
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780656-1.json",
+      "sha256": "481be5b4da7f6fdf982c9f4ab7b1e2f82b880275cc464f5bfdf851b15799e0bc",
+      "bytes": 57786
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780665-1.json",
+      "sha256": "c1b8c0a5918d11bdd7a90ad996ea12f051d2254b7809ced3028fb1d9a42daa66",
+      "bytes": 26416
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780672-1.json",
+      "sha256": "501a21dd6fb4db35ad0dee9dcf7896be5ff360c8a355c3ea542300af5297778c",
+      "bytes": 2977
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780673-1.json",
+      "sha256": "52edb187da8be93e7de573d4480ac665de9ca19174cdccf2ca48368b3a433716",
+      "bytes": 10038
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780675-1.json",
+      "sha256": "019401353f2c00044d8f3b71ca6639b1c3c964c46bec7a07410876657a77fdee",
+      "bytes": 2967
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780678-1.json",
+      "sha256": "30f5308ed43e758d1dfe42f80ef64616db29a7d61c49df5aa2b05b6380e27fba",
+      "bytes": 13139
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780679-1.json",
+      "sha256": "f342e1b10be28a4065db73958ae8dda1bbf3b6f13c3d2f0d1b56212ff785f386",
+      "bytes": 14154
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780684-1.json",
+      "sha256": "239c7fb5a69c0af03c4d5cb3da9d12cc6aef84226cea73a0748e9b4ee906ac79",
+      "bytes": 36647
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780689-1.json",
+      "sha256": "4dec6fdc2d99bad536c299bc9cf39ca9e9150f270a14b2e97c276c028737efb5",
+      "bytes": 5464
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780693-1.json",
+      "sha256": "a0956703a251ba30ed3121590e4284047c005a1ffc2a0ac5cdd0349ca62e9c55",
+      "bytes": 19449
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780699-1.json",
+      "sha256": "e2ab352c6a577dd2cac30e44f0c1fcc67b93f12da4f91a7099a57f0fac074ee8",
+      "bytes": 21139
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780700-1.json",
+      "sha256": "9e01f29ae6d3bb1cd994da6a9cc6db28f38cfc75d7b99abf61834a8d0579a3e7",
+      "bytes": 2201
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780705-1.json",
+      "sha256": "f2dbd2196431b25cb658b9dbf10f3e4a7687b354559c6713cd0855dcbe59c618",
+      "bytes": 2701
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780752-1.json",
+      "sha256": "31687e55be457e7c1c3c7e98ef24ecc1a53b6efa97f709824cccdb9172695063",
+      "bytes": 30866
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780754-1.json",
+      "sha256": "0148d2bec5ea5ef38e1f23aaba00f6e6b94da4043789daa17d848605beadef38",
+      "bytes": 3782
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780794-1.json",
+      "sha256": "dba55bf2e150ded87d1558cde170af658ea71c92041c284bbb97bb14422d1da4",
+      "bytes": 3506
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\jobs-41378780900-1.json",
+      "sha256": "d6de8ff08fdf81ce538d926e7e6f46868a9b9e73163df936118689e8c6fc27d4",
+      "bytes": 3474
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\pr.json",
+      "sha256": "fef7829b23d6d2e4c0170ae00586012f4d82aca167923fbbc95dfe8139df8553",
+      "bytes": 25820
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\remote-git-commit.json",
+      "sha256": "3bb0dcccf46a5749dedb732b53261c3477945d31f0dbfd0871b72854136e0d82",
+      "bytes": 1307
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\review-comments.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\reviews.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\runs.json",
+      "sha256": "b1ba6322b26f8282eb284b5a4b94ef17cd6639a698f580b16b699eb6eff7777f",
+      "bytes": 362703
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\statuses.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\summary.json",
+      "sha256": "787c0dee406a3743379853632110815483135a90130008d1a3aa4fe49ecf25ab",
+      "bytes": 14094
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\20261102T095207Z\\workflows.json",
+      "sha256": "8b4af1bfe6806f261df594fd13cc807d963e7db14f5db5c6feb886a78ce1c180",
+      "bytes": 43405
+    }
+  ],
+  "new_or_changed_job_dispositions": [],
+  "changed_step_dispositions": [],
+  "failures_including_steps_inside_running_jobs": [],
+  "pending_and_optional": [
+    {
+      "id": 125076428800,
+      "run_id": 41378780673,
+      "name": "wp4-k3-fourth-order-alternative",
+      "status": "completed",
+      "conclusion": "skipped",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780673/job/125076428800"
+    },
+    {
+      "id": 125064840907,
+      "run_id": 41378780679,
+      "name": "post287-full-k3",
+      "status": "completed",
+      "conclusion": "skipped",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780679/job/125064840907"
+    },
+    {
+      "id": 125159484505,
+      "run_id": 41378780684,
+      "name": "generated",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780684/job/125159484505"
+    },
+    {
+      "id": 125141213444,
+      "run_id": 41378780656,
+      "name": "Round4 / INDEPENDENT_CORE",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780656/job/125141213444"
+    },
+    {
+      "id": 125141213445,
+      "run_id": 41378780656,
+      "name": "Round4 / INDEPENDENT_AUXILIARY",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780656/job/125141213445"
+    }
+  ],
+  "reused_harvest": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\ACTUAL_SUCCESS_HARVEST.json",
+    "sha256": "21c103bc33e370ba8092fa76543ce5d690e928304f761bb8a7d3e17a5aad38e6",
+    "bytes": 31598
+  },
+  "harvest_disposition": "No newly successful job, failed step, new workflow attempt, or review/issue comment. Prior exact-head scientific harvests remain current; no artifact or log redownload was needed.",
+  "pagination": "All workflow run pages; every attempt 1..run_attempt and all job pages; all review, review-comment, issue-comment, check-run and status pages. Exact run.head_sha and job.head_sha checked; raw pagination counts preserved in summary.",
+  "local": {
+    "created_utc": "2026-11-02T09:53:39.181567+00:00",
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "porcelain": "",
+    "active_marker_check_paths": [
+      "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\ACTIVE_BUILD",
+      "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\ACTIVE_BUILD.json",
+      "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\ACTIVE_BUILD",
+      "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\ACTIVE_BUILD.json",
+      "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ACTIVE_BUILD",
+      "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ACTIVE_BUILD.json",
+      "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\ACTIVE_BUILD",
+      "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\ACTIVE_BUILD.json"
+    ],
+    "present_active_markers": []
+  },
+  "supporting_records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\LOCAL_BEFORE.json",
+      "sha256": "e73306aedbae4549260a19b1ed6f14672e3114df5ae7f876f2e3f35272a658ed",
+      "bytes": 302
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\LOCAL_AFTER.json",
+      "sha256": "3728a6a08789df0eba039a9f8cfc72d288716cbd54aed71d28998c834c995d3f",
+      "bytes": 1255
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\LOCAL_NETWORK_STARTUP.json",
+      "sha256": "6ef3eadbd5e8dab68d346c2e3e7281696a3f5e86be2d42610a182e697b9aae78",
+      "bytes": 518
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\sweep.py",
+      "sha256": "733b7808556644aa96f0bb943dacbaa46d254878d7941a192a56a61dbf260b10",
+      "bytes": 6114
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next14\\seal_checkpoint.py",
+      "sha256": "cf4b753157825d428e990eca094ac3d2574f3635a65b7df4ae0fb38e9b8c7df3",
+      "bytes": 5192
+    }
+  ],
+  "qualification_limit": "Round4 independent CORE/AUXILIARY and Round2 generated remain in progress. No final aggregate acceptance, fresh mathematical estimate, Step4 closure or RH proof is inferred. Existing repair execution evidence is reused only for its exact prior job; no new repair-capacity claim.",
+  "no_repository_mutation": true,
+  "no_tests_or_workflow_reruns": true,
+  "new_artifact_downloads": 0,
+  "new_drive_requests": 0
+}

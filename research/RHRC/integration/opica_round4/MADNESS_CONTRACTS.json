@@ -1308,8 +1308,8 @@
       "Zeta23.OPICARound4.Validation.repeatedSpectrumCoordinateCoefficient",
       "Zeta23.OPICARound4.Validation.repeatedSpectrumD",
       "Zeta23.OPICARound4.Validation.repeatedSpectrumDinv",
-      "Zeta23.OPICARound4.Validation.repeatedSpectrumP\u2081",
-      "Zeta23.OPICARound4.Validation.repeatedSpectrumP\u2082",
+      "Zeta23.OPICARound4.Validation.repeatedSpectrumP₁",
+      "Zeta23.OPICARound4.Validation.repeatedSpectrumP₂",
       "Zeta23.OPICARound4.Validation.repeated_spectrum_coordinate_projectors",
       "Zeta23.OPICARound4.Validation.repeated_spectrum_hermitian_controls",
       "Zeta23.OPICARound4.Validation.repeated_spectrum_nonreal_coordinates",
@@ -1668,7 +1668,7 @@
     "semantic_mutations_sha256": "a95ef16e4fdfa6276e1b44b7e3d197fbf63994a17c6e0189f83d746ae11032bd"
   },
   "source_audit_path": "research/RHRC/integration/opica_round4/MADNESS_SOURCE_AUDIT.json",
-  "source_audit_sha256": "915e5ea3e667529a72e8b1e4591bcbe9d2fac17774a1d6e5d522138562da43ce",
+  "source_audit_sha256": "b73ea3b09d5db9026def13567391327bdae0c83e2a337fd929644bca2927a67b",
   "source_constraints_sha256": "98e942c679344799f748fddb5d0ad6f812527359611d4242a03023e42174101e",
   "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
   "conditional_rh": {
