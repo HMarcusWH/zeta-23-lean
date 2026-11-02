@@ -2693,5 +2693,72 @@
     },
     "RH": "OPEN",
     "Step4": "OPEN"
+  },
+  "uniform_moment_restricted_quartic_margin": {
+    "status": "EXACT_SOURCE_SUPPORT_THEOREMS_REQUIRE_CURRENT_HEAD_NATIVE_QUALIFICATION",
+    "result": "Assuming an actual off-line zeta zero, one fixed positive relative margin holds on the entire sufficiently late aperture tail at the prescribed original quartic cutoff. The literal even trial has M4=0; the literal odd trial has M3=M5=0. No trial is projected or replaced by a ground eigenvector. The exact normalization and source placement are retained. No margin is transferred to a first-birth or selected Schur cutoff, and no independent arithmetic lower bound is supplied.",
+    "proof_sources": [
+      {
+        "path": "work/opica-madness-closure-2026-11-01/ground/common-quartic-margin/CommonQuarticMargin.lean",
+        "sha256": "a757921dc47cb1e6ad0661c7c25e8875214b9bfc1cab6c723ac6c93dcbb8789f",
+        "bytes": 10639,
+        "declarations": [
+          "Zeta23.OPICARound4.recenteredFiniteApprox_interval_energy",
+          "Zeta23.OPICARound4.recenteredSmoothPhase_interval_energy_eq_one",
+          "Zeta23.OPICARound4.recenteredFinitePhase_mass_error_le",
+          "Zeta23.OPICARound4.exists_recentered_mass_control_threshold",
+          "Zeta23.OPICARound4.recentered_negative_phase_eventually_relative_margin",
+          "Zeta23.OPICARound4.eventually_both_ground_margins_at_original_quartic"
+        ],
+        "body_lf_sha256": "4b6a371871ce40d2b97f71479986d55b737d52880c597495f63de1b164fad0b5",
+        "transformation": "KEEP_ALL_DECLARATION_BODIES_REMOVE_EXTERNAL_IMPORTS_NAMESPACE_WRAPPER_AND_TRAILING_PRINTS"
+      },
+      {
+        "path": "work/opica-madness-closure-2026-11-01/ground/common-quartic-moments/CommonQuarticMoments.lean",
+        "sha256": "42dd894aec83ad400caf6e45dbfed3a2736cfbd88a095316af5131141f81e992",
+        "bytes": 4679,
+        "declarations": [
+          "Zeta23.OPICARound4.originalDetectorFiniteEvenPhase_moment_four",
+          "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_three",
+          "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_five",
+          "Zeta23.OPICARound4.eventually_both_negative_moment_slices_at_original_quartic"
+        ],
+        "body_lf_sha256": "2feec82a38a6e188fcdbefa523d9d5a0389361226730c0614970b7d15e6db764",
+        "transformation": "KEEP_ALL_DECLARATION_BODIES_REMOVE_EXTERNAL_IMPORTS_NAMESPACE_WRAPPER_AND_TRAILING_PRINTS"
+      },
+      {
+        "path": "work/opica-madness-closure-2026-11-01/ground/common-quartic-moments/CommonQuarticMomentMargins.lean",
+        "sha256": "19846091ad5eb70a2e1faaed6766f4a99cc1ccd473f555c5441d30622f8e6729",
+        "bytes": 3386,
+        "declarations": [
+          "Zeta23.OPICARound4.eventually_both_moment_slice_margins_at_original_quartic"
+        ],
+        "body_lf_sha256": "af37b222f2a524d8cc5ab269fa686bdd83126823b5238c7b84d9208924f0ccbb",
+        "transformation": "KEEP_ALL_DECLARATION_BODIES_REMOVE_EXTERNAL_IMPORTS_NAMESPACE_WRAPPER_AND_TRAILING_PRINTS"
+      }
+    ],
+    "declarations": [
+      "Zeta23.OPICARound4.recenteredFiniteApprox_interval_energy",
+      "Zeta23.OPICARound4.recenteredSmoothPhase_interval_energy_eq_one",
+      "Zeta23.OPICARound4.recenteredFinitePhase_mass_error_le",
+      "Zeta23.OPICARound4.exists_recentered_mass_control_threshold",
+      "Zeta23.OPICARound4.recentered_negative_phase_eventually_relative_margin",
+      "Zeta23.OPICARound4.eventually_both_ground_margins_at_original_quartic",
+      "Zeta23.OPICARound4.originalDetectorFiniteEvenPhase_moment_four",
+      "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_three",
+      "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_five",
+      "Zeta23.OPICARound4.eventually_both_negative_moment_slices_at_original_quartic",
+      "Zeta23.OPICARound4.eventually_both_moment_slice_margins_at_original_quartic",
+      "Zeta23.OPICARound4.Validation.actual_recentered_mass_error_consumer",
+      "Zeta23.OPICARound4.Validation.actual_both_moment_slice_margins_consumer"
+    ],
+    "previous_boundary_now_paid": "Fixed unnormalized phase negativity now has a source-uniform mass bound, giving a fixed normalized negative margin on both literal moment-zero trial families at the same Kd.",
+    "not_asserted": [
+      "A fixed margin at the selected Schur cutoff or either first-birth cutoff.",
+      "Two parity depths growing exponentially with aperture.",
+      "A signed arithmetic opposition bound, an RH theorem, or closure of Step 4."
+    ],
+    "RH": "OPEN",
+    "Step4": "OPEN"
   }
 }

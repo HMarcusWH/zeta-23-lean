@@ -331,3 +331,11 @@ authenticated unchanged parent objects. Fresh current-head Linux production
 qualification, all independent replays, semantic controls and the full
 canonical materializer remain mandatory. Historical compiler facts are used
 only for their explicitly unchanged historical scope.
+
+
+
+The fixed original phases now have a uniform finite-mass comparison with the exact squared normalization. Given an actual off-line zero, there is one positive margin chosen before all sufficiently late apertures: at the literal quartic detector cutoff, both parity Rayleigh bottoms lie below its negative. The witnessing even trial has fourth moment zero, and the odd trial has third and fifth moments zero. The moment-restricted trial inequalities keep that same margin without projection or source replacement.
+
+This strengthens the earlier unnormalized two-parity negativity. It does not transfer the margin to a first-birth cutoff or to the packet's selected Schur cutoff. It also does not supply the independent signed arithmetic estimate. RH and Step 4 remain OPEN.
+
+The extension adds eleven mathematical declarations and two complete-type consumers in existing modules, plus four intended source-type controls. The complete gate is 1079 declarations in 90 modules with 84 controls; the 277-method register remains 231 portable and 46 mandatory native methods. Current-head independent native and final acceptance evidence is still required.

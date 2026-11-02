@@ -4534,133 +4534,133 @@
       "declaration": "Zeta23.OPICARound4.recenteredSmoothPhase",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 19,
+      "line": 20,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredFiniteApprox",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 23,
+      "line": 24,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredFiniteHard",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 29,
+      "line": 30,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredSmoothPhase_eq_translate",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 35,
+      "line": 36,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredSmoothPhase_contDiff",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 43,
+      "line": 44,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredSmoothPhase_L1_bound",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 49,
+      "line": 50,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredSmoothPhase_zero_outside",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 64,
+      "line": 65,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredFiniteHard_contDiff",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 82,
+      "line": 83,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredFiniteApprox_jet_error",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 109,
+      "line": 110,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredFiniteHard_L1_error",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 173,
+      "line": 174,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredFinitePhase_Weil_error",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 235,
+      "line": 236,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredFiniteHard_Weil_eq_native",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 324,
+      "line": 325,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recenteredSmoothPhase_fixed_energy",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 360,
+      "line": 361,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.recentered_negative_phase_eventually_quartic",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 372,
+      "line": 373,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.exists_fixed_negative_original_phase",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 415,
+      "line": 416,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.eventually_both_negative_at_original_quartic",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 436,
+      "line": 437,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.cofinally_both_negative_at_original_quartic",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 461,
+      "line": 462,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.every_late_generated_packet_has_joint_detector_ground",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 477,
+      "line": 478,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.first_common_cutoff_le_original_quartic",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "line": 509,
+      "line": 510,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
@@ -5143,49 +5143,49 @@
       "declaration": "Zeta23.OPICARound4.Validation.tied_newborn_active_response_consumer",
       "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
       "path": "Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean",
-      "line": 16,
+      "line": 17,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.Validation.newborn_opposite_source_channels_consumer",
       "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
       "path": "Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean",
-      "line": 34,
+      "line": 35,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.Validation.normalized_cubic_energy_lower_consumer",
       "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
       "path": "Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean",
-      "line": 46,
+      "line": 47,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.Validation.negative_cubic_energy_ground_simple_consumer",
       "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
       "path": "Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean",
-      "line": 60,
+      "line": 61,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.Validation.native_fixed_cell_regular_selection_consumer",
       "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
       "path": "Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean",
-      "line": 72,
+      "line": 73,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.Validation.cofinal_native_regular_births_consumer",
       "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
       "path": "Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean",
-      "line": 80,
+      "line": 81,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
       "declaration": "Zeta23.OPICARound4.Validation.same_newborn_regular_realization_consumer",
       "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
       "path": "Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean",
-      "line": 92,
+      "line": 93,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     },
     {
@@ -7461,6 +7461,97 @@
       "module": "Zeta23.OPICARound4.Validation.NativeNoncollision",
       "path": "Zeta23/OPICARound4/Validation/NativeNoncollision.lean",
       "line": 92,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.recenteredFiniteApprox_interval_energy",
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
+      "line": 532,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.recenteredSmoothPhase_interval_energy_eq_one",
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
+      "line": 540,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.recenteredFinitePhase_mass_error_le",
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
+      "line": 564,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.exists_recentered_mass_control_threshold",
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
+      "line": 602,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.recentered_negative_phase_eventually_relative_margin",
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
+      "line": 625,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.eventually_both_ground_margins_at_original_quartic",
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
+      "line": 666,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.originalDetectorFiniteEvenPhase_moment_four",
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
+      "line": 714,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_three",
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
+      "line": 725,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_five",
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
+      "line": 736,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.eventually_both_negative_moment_slices_at_original_quartic",
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
+      "line": 748,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.eventually_both_moment_slice_margins_at_original_quartic",
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
+      "line": 783,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.actual_recentered_mass_error_consumer",
+      "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
+      "path": "Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean",
+      "line": 109,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.Validation.actual_both_moment_slice_margins_consumer",
+      "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
+      "path": "Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean",
+      "line": 120,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     }
   ],

@@ -1,3 +1,4 @@
+import Zeta23.OPICARound4.CommonQuarticGround
 import Zeta23.OPICARound4.TiedNewbornResponse
 import Zeta23.OPICARound4.NewbornSpectralVisibility
 import Zeta23.OPICARound4.TiedCubicEnergy
@@ -100,5 +101,37 @@ theorem same_newborn_regular_realization_consumer
       s.w = regularSchurWitness J T s.e hb ∧
       (inner ℂ (T s.w) s.w).re = oneShellSchurScalar J T s.e hb :=
   native_newborn_realization_regular_of_bijective s hreg
+
+
+open Filter ExceptionalZero
+
+/-- The literal recentered finite phase keeps the exact Parseval normalization. -/
+theorem actual_recentered_mass_error_consumer {σ L c : ℝ}
+    (hL : 2 ≤ L) (hσ : σ = 1 ∨ σ = -1)
+    (ha : UniversalSinc.fixedScale < L/2-c)
+    (hleft : 1+UniversalSinc.fixedScale ≤ c)
+    (hright : c+UniversalSinc.fixedScale ≤ L-1) :
+    |fixedOriginalSincTrialNormalization^2 *
+      ‖originalDetectorFinitePhaseVector σ L c (by linarith)‖^2 - 1| ≤
+      originalDetectorFinitePhaseMassErrorBudget σ L := by
+  exact recenteredFinitePhase_mass_error_le hL hσ ha hleft hright
+
+/-- One fixed margin applies to both actual moment-zero trial families at their common Kd. -/
+theorem actual_both_moment_slice_margins_consumer
+    (ρ : zetaZeroConfig.carrier) (hoff : (ρ : ℂ).re ≠ 1/2) :
+    ∃ d : ℝ, 0 < d ∧ ∀ᶠ L : ℝ in atTop, ∃ hL : 2 ≤ L,
+      (∃ u : poleNeutralEvenSubspace L (originalDetectorQuarticCutoff L),
+        u ≠ 0 ∧ centeredMoment (originalDetectorQuarticCutoff L) 4
+          ((EuclideanSpace.equiv _ ℂ) u.val.val) = 0 ∧
+        (inner ℂ (poleNeutralEvenCompressedCanonical L
+          (originalDetectorQuarticCutoff L) u) u).re < -d * ‖u‖^2) ∧
+      (∃ v : poleNeutralOddSubspace L (originalDetectorQuarticCutoff L),
+        v ≠ 0 ∧ centeredMoment (originalDetectorQuarticCutoff L) 3
+          ((EuclideanSpace.equiv _ ℂ) v.val.val) = 0 ∧
+        centeredMoment (originalDetectorQuarticCutoff L) 5
+          ((EuclideanSpace.equiv _ ℂ) v.val.val) = 0 ∧
+        (inner ℂ (poleNeutralOddCompressedCanonical L
+          (originalDetectorQuarticCutoff L) v) v).re < -d * ‖v‖^2) := by
+  exact eventually_both_moment_slice_margins_at_original_quartic ρ hoff
 
 end Zeta23.OPICARound4.Validation

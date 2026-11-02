@@ -5054,3 +5054,73 @@ set_option pp.maxSteps 2000000
 #check @Zeta23.OPICARound4.Validation.NativeNoncollision.genuine_packet_same_detector_spectral_check
 #eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.NativeNoncollision.genuine_packet_same_detector_spectral_check"
 #print axioms Zeta23.OPICARound4.Validation.NativeNoncollision.genuine_packet_same_detector_spectral_check
+
+-- Exact fixed-margin and moment-slice extension; prior audit bytes are retained.
+set_option pp.proofs true
+set_option pp.deepTerms true
+set_option pp.maxSteps 2000000
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.recenteredFiniteApprox_interval_energy"
+#check @Zeta23.OPICARound4.recenteredFiniteApprox_interval_energy
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.recenteredFiniteApprox_interval_energy"
+#print axioms Zeta23.OPICARound4.recenteredFiniteApprox_interval_energy
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.recenteredSmoothPhase_interval_energy_eq_one"
+#check @Zeta23.OPICARound4.recenteredSmoothPhase_interval_energy_eq_one
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.recenteredSmoothPhase_interval_energy_eq_one"
+#print axioms Zeta23.OPICARound4.recenteredSmoothPhase_interval_energy_eq_one
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.recenteredFinitePhase_mass_error_le"
+#check @Zeta23.OPICARound4.recenteredFinitePhase_mass_error_le
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.recenteredFinitePhase_mass_error_le"
+#print axioms Zeta23.OPICARound4.recenteredFinitePhase_mass_error_le
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.exists_recentered_mass_control_threshold"
+#check @Zeta23.OPICARound4.exists_recentered_mass_control_threshold
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.exists_recentered_mass_control_threshold"
+#print axioms Zeta23.OPICARound4.exists_recentered_mass_control_threshold
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.recentered_negative_phase_eventually_relative_margin"
+#check @Zeta23.OPICARound4.recentered_negative_phase_eventually_relative_margin
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.recentered_negative_phase_eventually_relative_margin"
+#print axioms Zeta23.OPICARound4.recentered_negative_phase_eventually_relative_margin
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.eventually_both_ground_margins_at_original_quartic"
+#check @Zeta23.OPICARound4.eventually_both_ground_margins_at_original_quartic
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.eventually_both_ground_margins_at_original_quartic"
+#print axioms Zeta23.OPICARound4.eventually_both_ground_margins_at_original_quartic
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.originalDetectorFiniteEvenPhase_moment_four"
+#check @Zeta23.OPICARound4.originalDetectorFiniteEvenPhase_moment_four
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.originalDetectorFiniteEvenPhase_moment_four"
+#print axioms Zeta23.OPICARound4.originalDetectorFiniteEvenPhase_moment_four
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_three"
+#check @Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_three
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_three"
+#print axioms Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_three
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_five"
+#check @Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_five
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_five"
+#print axioms Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_five
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.eventually_both_negative_moment_slices_at_original_quartic"
+#check @Zeta23.OPICARound4.eventually_both_negative_moment_slices_at_original_quartic
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.eventually_both_negative_moment_slices_at_original_quartic"
+#print axioms Zeta23.OPICARound4.eventually_both_negative_moment_slices_at_original_quartic
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.eventually_both_moment_slice_margins_at_original_quartic"
+#check @Zeta23.OPICARound4.eventually_both_moment_slice_margins_at_original_quartic
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.eventually_both_moment_slice_margins_at_original_quartic"
+#print axioms Zeta23.OPICARound4.eventually_both_moment_slice_margins_at_original_quartic
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.actual_recentered_mass_error_consumer"
+#check @Zeta23.OPICARound4.Validation.actual_recentered_mass_error_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.actual_recentered_mass_error_consumer"
+#print axioms Zeta23.OPICARound4.Validation.actual_recentered_mass_error_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.Validation.actual_both_moment_slice_margins_consumer"
+#check @Zeta23.OPICARound4.Validation.actual_both_moment_slice_margins_consumer
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.Validation.actual_both_moment_slice_margins_consumer"
+#print axioms Zeta23.OPICARound4.Validation.actual_both_moment_slice_margins_consumer

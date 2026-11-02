@@ -35,7 +35,7 @@
     {
       "id": "M5",
       "module": "Zeta23.OPICARound4.CommonQuarticGround",
-      "claim": "Fixed negative original phases recentered into the actual quartic detector give both parities negative at all sufficiently late apertures. A threshold fixed before packet selection puts every late generated packet in the actual joint-ground constraint space at Kd. Own first cutoffs have common maximum at most Kd; no equality with the selected Schur cutoff or common exponential depth is asserted.",
+      "claim": "Fixed negative original phases recentered into the actual quartic detector give both parities negative at all sufficiently late apertures. A threshold fixed before packet selection puts every late generated packet in the actual joint-ground constraint space at Kd. Own first cutoffs have common maximum at most Kd; no equality with the selected Schur cutoff or common exponential depth is asserted. Assuming an actual off-line zeta zero, one fixed positive relative margin holds on the entire sufficiently late aperture tail at the prescribed original quartic cutoff. The literal even trial has M4=0; the literal odd trial has M3=M5=0. No trial is projected or replaced by a ground eigenvector. The exact normalization and source placement are retained. No margin is transferred to a first-birth or selected Schur cutoff, and no independent arithmetic lower bound is supplied.",
       "arithmetic_estimate_supplied": false
     },
     {
@@ -95,7 +95,7 @@
     {
       "id": "M15",
       "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
-      "claim": "Seven independently stated complete-type consumers and twelve intended source-type rejection controls protect source activity, parity, separation, normalization, silence, strict energy, exact cell, predecessor cutoff and quantifiers. Rejection is an API guard, not a counterexample to every possible proof of its conclusion.",
+      "claim": "Seven independently stated complete-type consumers and twelve intended source-type rejection controls protect source activity, parity, separation, normalization, silence, strict energy, exact cell, predecessor cutoff and quantifiers. Rejection is an API guard, not a counterexample to every possible proof of its conclusion. Two further complete-type consumers and four intended source-type rejection controls retain exact mass normalization, lobe separation, the off-line premise and the fourth-versus-sixth moment boundary.",
       "arithmetic_estimate_supplied": false
     },
     {
@@ -450,7 +450,7 @@
     },
     "Zeta23.OPICARound4.CommonQuarticGround": {
       "path": "Zeta23/OPICARound4/CommonQuarticGround.lean",
-      "sha256": "84ab7f0fc9fdc2a0d8ac7c4ac013c2bfa50e58c25540c1ca6bc7fdda58ccd488",
+      "sha256": "46b6de489ae488df1450b2586cc7b2a6eb98e0ce2dfa969b2ba7a7f8ea5b3bfd",
       "declarations": [
         "Zeta23.OPICARound4.recenteredSmoothPhase",
         "Zeta23.OPICARound4.recenteredFiniteApprox",
@@ -470,7 +470,18 @@
         "Zeta23.OPICARound4.eventually_both_negative_at_original_quartic",
         "Zeta23.OPICARound4.cofinally_both_negative_at_original_quartic",
         "Zeta23.OPICARound4.every_late_generated_packet_has_joint_detector_ground",
-        "Zeta23.OPICARound4.first_common_cutoff_le_original_quartic"
+        "Zeta23.OPICARound4.first_common_cutoff_le_original_quartic",
+        "Zeta23.OPICARound4.recenteredFiniteApprox_interval_energy",
+        "Zeta23.OPICARound4.recenteredSmoothPhase_interval_energy_eq_one",
+        "Zeta23.OPICARound4.recenteredFinitePhase_mass_error_le",
+        "Zeta23.OPICARound4.exists_recentered_mass_control_threshold",
+        "Zeta23.OPICARound4.recentered_negative_phase_eventually_relative_margin",
+        "Zeta23.OPICARound4.eventually_both_ground_margins_at_original_quartic",
+        "Zeta23.OPICARound4.originalDetectorFiniteEvenPhase_moment_four",
+        "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_three",
+        "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_five",
+        "Zeta23.OPICARound4.eventually_both_negative_moment_slices_at_original_quartic",
+        "Zeta23.OPICARound4.eventually_both_moment_slice_margins_at_original_quartic"
       ]
     },
     "Zeta23.OPICARound4.JointGroundBirth": {
@@ -597,7 +608,7 @@
     },
     "Zeta23.OPICARound4.Validation.NativeGroundRegularity": {
       "path": "Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean",
-      "sha256": "183c766b0894c0cad771d539e4d7b8fb393fddd08fb4d34a23bf5069eac5d622",
+      "sha256": "7ed282a2a6df5666653efd3d8947058fd072a822abd4673416e5be5ad422d4c2",
       "declarations": [
         "Zeta23.OPICARound4.Validation.tied_newborn_active_response_consumer",
         "Zeta23.OPICARound4.Validation.newborn_opposite_source_channels_consumer",
@@ -605,7 +616,9 @@
         "Zeta23.OPICARound4.Validation.negative_cubic_energy_ground_simple_consumer",
         "Zeta23.OPICARound4.Validation.native_fixed_cell_regular_selection_consumer",
         "Zeta23.OPICARound4.Validation.cofinal_native_regular_births_consumer",
-        "Zeta23.OPICARound4.Validation.same_newborn_regular_realization_consumer"
+        "Zeta23.OPICARound4.Validation.same_newborn_regular_realization_consumer",
+        "Zeta23.OPICARound4.Validation.actual_recentered_mass_error_consumer",
+        "Zeta23.OPICARound4.Validation.actual_both_moment_slice_margins_consumer"
       ]
     },
     "Zeta23.OPICARound4.RegularCells.NativeDiagonalSeparation": {
@@ -1655,7 +1668,7 @@
     "semantic_mutations_sha256": "a95ef16e4fdfa6276e1b44b7e3d197fbf63994a17c6e0189f83d746ae11032bd"
   },
   "source_audit_path": "research/RHRC/integration/opica_round4/MADNESS_SOURCE_AUDIT.json",
-  "source_audit_sha256": "0e4796da5bb48a394339708d25bfe98744b1aacdc294200de2f70c685f2d2c53",
+  "source_audit_sha256": "915e5ea3e667529a72e8b1e4591bcbe9d2fac17774a1d6e5d522138562da43ce",
   "source_constraints_sha256": "98e942c679344799f748fddb5d0ad6f812527359611d4242a03023e42174101e",
   "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
   "conditional_rh": {

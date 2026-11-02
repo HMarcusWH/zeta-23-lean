@@ -1,3 +1,4 @@
+import Zeta23.CCM.OriginalDetectorFinitePhaseNormControl
 import Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer
 import Zeta23.OPICARound3.NeutralParityCover
 import Zeta23.OPICARound4.JointGroundConstraints
@@ -521,5 +522,308 @@ theorem first_common_cutoff_le_original_quartic {L : ℝ} (hL : 2 ≤ L)
     first_simultaneous_neutral_negative_cutoff hLp hKd hboth
   exact ⟨Ke,Ko,hKe,hKo,he,ho,hc,hmin _ hKd hboth,hpe,hpo,hse,hso⟩
 
+
+
+/-! Fixed source mass and moment-restricted relative margins.
+The margin is fixed before all sufficiently late apertures.
+The literal detector cutoff and trial vectors are preserved; no birth-cutoff
+transfer or independent arithmetic opposition is asserted. -/
+
+theorem recenteredFiniteApprox_interval_energy (σ L c : ℝ) (hLp : 0<L) :
+    (∫ x in (0:ℝ)..L, ‖recenteredFiniteApprox σ L c hLp x‖^2) =
+      fixedOriginalSincTrialNormalization^2 * ‖originalDetectorFinitePhaseVector σ L c hLp‖^2 := by
+  unfold recenteredFiniteApprox
+  simp only [norm_mul,Complex.norm_real,Real.norm_eq_abs,
+    abs_of_pos fixedOriginalSincTrialNormalization_pos,mul_pow]
+  rw [intervalIntegral.integral_const_mul,localizedFiniteFunction_energy_eq_norm_sq hLp]
+
+theorem recenteredSmoothPhase_interval_energy_eq_one {σ L c : ℝ}
+    (hσ : σ=1 ∨ σ= -1) (hL : 0<L) (ha : UniversalSinc.fixedScale < L/2-c)
+    (hleft : 1+UniversalSinc.fixedScale≤c)
+    (hright : c+UniversalSinc.fixedScale≤L-1) :
+    (∫ x in (0:ℝ)..L, ‖recenteredSmoothPhase σ L c x‖^2)=1 := by
+  have hmass : (∫ x:ℝ, ‖recenteredSmoothPhase σ L c x‖^2)=1 := by
+    rw [recenteredSmoothPhase_eq_translate]
+    change (∫ x:ℝ, (fun y => ‖fixedOriginalSincPhaseTrial σ (L/2-c) y‖^2)
+      (x-(c-fixedOriginalSincLobeCenter)))=1
+    exact (integral_sub_right_eq_self
+      (fun y:ℝ => ‖fixedOriginalSincPhaseTrial σ (L/2-c) y‖^2)
+      (c-fixedOriginalSincLobeCenter)).trans
+        (fixedOriginalSincPhaseTrial_integral_norm_sq hσ ha)
+  have heq : (fun x:ℝ => ‖recenteredSmoothPhase σ L c x‖^2) =
+      (Icc (0:ℝ) L).indicator (fun x => ‖recenteredSmoothPhase σ L c x‖^2) := by
+    funext x
+    by_cases hx : x∈Icc (0:ℝ) L
+    · simp [hx]
+    · have hz := recenteredSmoothPhase_zero_outside hleft hright σ hx
+      simp [hx,hz]
+  rw [heq,integral_indicator measurableSet_Icc,integral_Icc_eq_integral_Ioc,
+    ← intervalIntegral.integral_of_le hL.le] at hmass
+  exact hmass
+
+theorem recenteredFinitePhase_mass_error_le {σ L c : ℝ}
+    (hL : 2≤L) (hσ : σ=1 ∨ σ= -1) (ha : UniversalSinc.fixedScale < L/2-c)
+    (hleft : 1+UniversalSinc.fixedScale≤c)
+    (hright : c+UniversalSinc.fixedScale≤L-1) :
+    |fixedOriginalSincTrialNormalization^2 *
+      ‖originalDetectorFinitePhaseVector σ L c (by linarith)‖^2-1| ≤
+      originalDetectorFinitePhaseMassErrorBudget σ L := by
+  have hLp : 0<L := by linarith
+  let C := fixedOriginalSincTrialNormalization*(1+|σ|)
+  let ε := C*originalDetectorFinitePoleImageJetBudget UniversalSinc.fixedScale L 0
+  let M := C*originalDetectorKernelSupBudget UniversalSinc.fixedScale
+  let f := recenteredFiniteApprox σ L c hLp
+  let g := recenteredSmoothPhase σ L c
+  have hC : 0≤C := mul_nonneg fixedOriginalSincTrialNormalization_pos.le (by positivity)
+  have hM : 0≤M := mul_nonneg hC (originalDetectorKernelSupBudget_nonneg _)
+  have herr (x:ℝ) (hx:x∈Icc (0:ℝ) L) : ‖f x-g x‖≤ε := by
+    have he := recenteredFiniteApprox_jet_error hL hleft hright σ 0 hx
+    simp only [iteratedDeriv_zero] at he
+    rw [norm_sub_rev]
+    exact he
+  have hε : 0≤ε := (norm_nonneg _).trans (herr 0 ⟨le_rfl,hLp.le⟩)
+  have hf : Continuous f := by
+    dsimp only [f]
+    unfold recenteredFiniteApprox
+    apply continuous_const.mul
+    unfold localizedFiniteFunction
+    fun_prop
+  have hg : Continuous g := (recenteredSmoothPhase_contDiff σ L c).continuous
+  have hbound (x:ℝ) (_hx:x∈Icc (0:ℝ) L) : ‖g x‖≤M := by
+    dsimp [g]
+    rw [recenteredSmoothPhase_eq_translate]
+    exact norm_fixedOriginalSincPhaseTrial_le_source_budget σ (L/2-c) (x-(c-fixedOriginalSincLobeCenter))
+  have hm := interval_energy_error_le_of_uniform_error hLp.le hM hε hf hg hbound herr
+  dsimp only [f,g] at hm
+  rw [recenteredFiniteApprox_interval_energy,recenteredSmoothPhase_interval_energy_eq_one hσ hLp ha hleft hright] at hm
+  exact hm
+
+
+theorem exists_recentered_mass_control_threshold :
+    ∃ T:ℝ, 2≤T ∧ ∀ (L c σ:ℝ) (hL:2≤L), T≤L → (σ=1 ∨ σ= -1) →
+      UniversalSinc.fixedScale<L/2-c →
+      1+UniversalSinc.fixedScale≤c → c+UniversalSinc.fixedScale≤L-1 →
+      (1/2:ℝ)<fixedOriginalSincTrialNormalization^2 *
+        ‖originalDetectorFinitePhaseVector σ L c (by linarith)‖^2 ∧
+      fixedOriginalSincTrialNormalization^2 *
+        ‖originalDetectorFinitePhaseVector σ L c (by linarith)‖^2 < 3/2 := by
+  have hlim := originalDetectorFinitePhaseMassErrorBudget_mul_exp_tendsto_zero 1 0
+  simp only [zero_mul,Real.exp_zero,mul_one] at hlim
+  obtain ⟨T0,hsmall⟩ := eventually_atTop.mp
+    (hlim.eventually (gt_mem_nhds (by norm_num : (0:ℝ)<1/2)))
+  refine ⟨max 2 T0,le_max_left _ _,?_⟩
+  intro L c σ hL hT hσ ha hleft hright
+  have he := recenteredFinitePhase_mass_error_le hL hσ ha hleft hright
+  have hs : |σ|=1 := by rcases hσ with rfl|rfl <;> norm_num
+  have hb : originalDetectorFinitePhaseMassErrorBudget σ L =
+      originalDetectorFinitePhaseMassErrorBudget 1 L := by
+    simp only [originalDetectorFinitePhaseMassErrorBudget,hs,abs_one]
+  rw [hb] at he
+  have hh := (abs_lt.mp (he.trans_lt (hsmall L ((le_max_right _ _).trans hT))))
+  constructor <;> linarith
+
+theorem recentered_negative_phase_eventually_relative_margin {σ a:ℝ}
+    (hσ:σ=1 ∨ σ= -1) (ha:UniversalSinc.fixedScale<a)
+    (hneg:(zetaZeroConfig.W (fixedOriginalSincPhaseTrial σ a)
+      (fixedOriginalSincPhaseTrial σ a)).re<0) :
+    ∃ d:ℝ, 0<d ∧ ∀ᶠ L:ℝ in atTop, ∃ hL:2≤L,
+      originalDetectorFinitePhaseVector σ L (L/2-a) (by linarith) ≠ 0 ∧
+      (inner ℂ ((canonicalSourceMatrix L (originalDetectorQuarticCutoff L)).toEuclideanLin
+        (originalDetectorFinitePhaseVector σ L (L/2-a) (by linarith)))
+        (originalDetectorFinitePhaseVector σ L (L/2-a) (by linarith))).re <
+        -d*‖originalDetectorFinitePhaseVector σ L (L/2-a) (by linarith)‖^2 := by
+  obtain ⟨e,he,henergy⟩ := recentered_negative_phase_eventually_quartic hσ ha hneg
+  obtain ⟨T,hT,hmass⟩ := exists_recentered_mass_control_threshold
+  let d := e*fixedOriginalSincTrialNormalization^2/2
+  have hd:0<d := by
+    have hη := fixedOriginalSincTrialNormalization_pos
+    dsimp [d]
+    positivity
+  refine ⟨d,hd,?_⟩
+  filter_upwards [henergy,eventually_ge_atTop T,
+    eventually_ge_atTop (fixedOriginalSincTrialAperture a)] with L henergy hLT hLa
+  obtain ⟨hL,henergy⟩ := henergy
+  have hleft:1+UniversalSinc.fixedScale≤L/2-a := by
+    dsimp [fixedOriginalSincTrialAperture,fixedOriginalSincLobeCenter] at hLa
+    linarith
+  have hright:L/2-a+UniversalSinc.fixedScale≤L-1 := by
+    have ha0 := UniversalSinc.fixedScale_pos.trans ha
+    linarith
+  have hasep:UniversalSinc.fixedScale<L/2-(L/2-a) := by convert ha using 1 <;> ring
+  have hm := (hmass L (L/2-a) σ hL hLT hσ hasep hleft hright).2
+  have hv : originalDetectorFinitePhaseVector σ L (L/2-a) (by linarith) ≠ 0 := by
+    intro hz
+    rw [hz,map_zero,inner_zero_right] at henergy
+    norm_num at henergy
+    linarith
+  refine ⟨hL,hv,?_⟩
+  have hm2:fixedOriginalSincTrialNormalization^2 *
+      ‖originalDetectorFinitePhaseVector σ L (L/2-a) (by linarith)‖^2<2 := by linarith
+  have hp := mul_lt_mul_of_pos_left hm2 he
+  dsimp [d]
+  nlinarith
+
+theorem eventually_both_ground_margins_at_original_quartic (ρ:zetaZeroConfig.carrier)
+    (hoff:(ρ:ℂ).re≠1/2) :
+    ∃ d:ℝ, 0<d ∧ ∀ᶠ L:ℝ in atTop, ∃ hL:2≤L,
+      poleNeutralEvenRayleighBottom L (originalDetectorQuarticCutoff L) (by linarith)
+        (by have h:=originalDetectorQuarticCutoff_ge_sixteen hL; omega) ≤ -d ∧
+      poleNeutralOddRayleighBottom L (originalDetectorQuarticCutoff L) (by linarith)
+        (by have h:=originalDetectorQuarticCutoff_ge_sixteen hL; omega) ≤ -d := by
+  obtain ⟨ae,hae,he⟩ := exists_fixed_negative_original_phase ρ hoff (Or.inl rfl)
+  obtain ⟨ao,hao,ho⟩ := exists_fixed_negative_original_phase ρ hoff (Or.inr rfl)
+  obtain ⟨de,hde,he⟩ := recentered_negative_phase_eventually_relative_margin (Or.inl rfl) hae he
+  obtain ⟨do',hdo,ho⟩ := recentered_negative_phase_eventually_relative_margin (Or.inr rfl) hao ho
+  refine ⟨min de do',lt_min hde hdo,?_⟩
+  filter_upwards [he,ho] with L he ho
+  obtain ⟨hL,hve,he⟩ := he
+  obtain ⟨_,hvo,ho⟩ := ho
+  have hLp:0<L := by linarith
+  have hK:3≤originalDetectorQuarticCutoff L := by
+    have h:=originalDetectorQuarticCutoff_ge_sixteen hL
+    omega
+  refine ⟨hL,?_,?_⟩
+  · have hb := poleNeutralEvenRayleighBottom_mul_norm_sq_le hLp _ hK
+      (originalDetectorFiniteEvenPhase (L/2-ae) hL)
+    rw [inner_poleNeutralEvenCompressedCanonical_self] at hb
+    change poleNeutralEvenRayleighBottom L (originalDetectorQuarticCutoff L) hLp hK *
+      ‖originalDetectorFinitePhaseVector 1 L (L/2-ae) hLp‖^2 ≤
+      (inner ℂ ((canonicalSourceMatrix L (originalDetectorQuarticCutoff L)).toEuclideanLin
+        (originalDetectorFinitePhaseVector 1 L (L/2-ae) hLp))
+        (originalDetectorFinitePhaseVector 1 L (L/2-ae) hLp)).re at hb
+    have hn:0<‖originalDetectorFinitePhaseVector 1 L (L/2-ae) hLp‖^2 :=
+      sq_pos_of_pos (norm_pos_iff.mpr hve)
+    have hh : poleNeutralEvenRayleighBottom L (originalDetectorQuarticCutoff L) hLp hK < -de :=
+      (mul_lt_mul_iff_left₀ hn).mp (hb.trans_lt he)
+    exact hh.le.trans (neg_le_neg (min_le_left de do'))
+  · have hb := poleNeutralOddRayleighBottom_mul_norm_sq_le hLp _ hK
+      (originalDetectorFiniteOddPhase (L/2-ao) hL)
+    rw [inner_poleNeutralOddCompressedCanonical_self] at hb
+    change poleNeutralOddRayleighBottom L (originalDetectorQuarticCutoff L) hLp hK *
+      ‖originalDetectorFinitePhaseVector (-1) L (L/2-ao) hLp‖^2 ≤
+      (inner ℂ ((canonicalSourceMatrix L (originalDetectorQuarticCutoff L)).toEuclideanLin
+        (originalDetectorFinitePhaseVector (-1) L (L/2-ao) hLp))
+        (originalDetectorFinitePhaseVector (-1) L (L/2-ao) hLp)).re at hb
+    have hn:0<‖originalDetectorFinitePhaseVector (-1) L (L/2-ao) hLp‖^2 :=
+      sq_pos_of_pos (norm_pos_iff.mpr hvo)
+    have hh : poleNeutralOddRayleighBottom L (originalDetectorQuarticCutoff L) hLp hK < -do' :=
+      (mul_lt_mul_iff_left₀ hn).mp (hb.trans_lt ho)
+    exact hh.le.trans (neg_le_neg (min_le_right de do'))
+
+/-- The actual even quartic phase is in the fourth-moment slice. -/
+theorem originalDetectorFiniteEvenPhase_moment_four
+    (c : ℝ) {L : ℝ} (hL : 2 ≤ L) :
+    centeredMoment (originalDetectorQuarticCutoff L) 4
+      ((EuclideanSpace.equiv _ ℂ)
+        ((originalDetectorFiniteEvenPhase c hL).val.val)) = 0 := by
+  change centeredMoment _ 4 ((EuclideanSpace.equiv _ ℂ)
+    (originalDetectorFinitePhaseVector 1 L c (by linarith))) = 0
+  rw [originalDetectorFinitePhaseVector_raw]
+  exact originalDetectorFinitePhaseRaw_moment_zero_lt_six 1 c hL (by norm_num)
+
+/-- The actual odd quartic phase is in the cubic-moment slice. -/
+theorem originalDetectorFiniteOddPhase_moment_three
+    (c : ℝ) {L : ℝ} (hL : 2 ≤ L) :
+    centeredMoment (originalDetectorQuarticCutoff L) 3
+      ((EuclideanSpace.equiv _ ℂ)
+        ((originalDetectorFiniteOddPhase c hL).val.val)) = 0 := by
+  change centeredMoment _ 3 ((EuclideanSpace.equiv _ ℂ)
+    (originalDetectorFinitePhaseVector (-1) L c (by linarith))) = 0
+  rw [originalDetectorFinitePhaseVector_raw]
+  exact originalDetectorFinitePhaseRaw_moment_zero_lt_six (-1) c hL (by norm_num)
+
+/-- The same odd phase also annihilates the next literal fifth moment. -/
+theorem originalDetectorFiniteOddPhase_moment_five
+    (c : ℝ) {L : ℝ} (hL : 2 ≤ L) :
+    centeredMoment (originalDetectorQuarticCutoff L) 5
+      ((EuclideanSpace.equiv _ ℂ)
+        ((originalDetectorFiniteOddPhase c hL).val.val)) = 0 := by
+  change centeredMoment _ 5 ((EuclideanSpace.equiv _ ℂ)
+    (originalDetectorFinitePhaseVector (-1) L c (by linarith))) = 0
+  rw [originalDetectorFinitePhaseVector_raw]
+  exact originalDetectorFinitePhaseRaw_moment_zero_lt_six (-1) c hL (by norm_num)
+
+/-- The unchanged literal quartic phases already give negative vectors in
+the moment-deflated carriers. These are trials, not selected eigenvectors. -/
+theorem eventually_both_negative_moment_slices_at_original_quartic
+    (ρ : zetaZeroConfig.carrier) (hoff : (ρ : ℂ).re ≠ 1/2) :
+    ∀ᶠ L : ℝ in atTop, ∃ hL : 2 ≤ L,
+      (∃ u : poleNeutralEvenSubspace L (originalDetectorQuarticCutoff L),
+        centeredMoment (originalDetectorQuarticCutoff L) 4
+          ((EuclideanSpace.equiv _ ℂ) u.val.val) = 0 ∧
+        (inner ℂ (poleNeutralEvenCompressedCanonical L
+          (originalDetectorQuarticCutoff L) u) u).re < 0) ∧
+      (∃ v : poleNeutralOddSubspace L (originalDetectorQuarticCutoff L),
+        centeredMoment (originalDetectorQuarticCutoff L) 3
+          ((EuclideanSpace.equiv _ ℂ) v.val.val) = 0 ∧
+        centeredMoment (originalDetectorQuarticCutoff L) 5
+          ((EuclideanSpace.equiv _ ℂ) v.val.val) = 0 ∧
+        (inner ℂ (poleNeutralOddCompressedCanonical L
+          (originalDetectorQuarticCutoff L) v) v).re < 0) := by
+  obtain ⟨ae, hae, he⟩ := exists_fixed_negative_original_phase ρ hoff (Or.inl rfl)
+  obtain ⟨ao, hao, ho⟩ := exists_fixed_negative_original_phase ρ hoff (Or.inr rfl)
+  obtain ⟨de, hde, he⟩ := recentered_negative_phase_eventually_quartic (Or.inl rfl) hae he
+  obtain ⟨do', hdo, ho⟩ := recentered_negative_phase_eventually_quartic (Or.inr rfl) hao ho
+  filter_upwards [he, ho] with L he ho
+  obtain ⟨hL, he⟩ := he
+  obtain ⟨_, ho⟩ := ho
+  refine ⟨hL, ?_, ?_⟩
+  · refine ⟨originalDetectorFiniteEvenPhase (L/2-ae) hL,
+      originalDetectorFiniteEvenPhase_moment_four _ hL, ?_⟩
+    rw [inner_poleNeutralEvenCompressedCanonical_self]
+    exact he.trans (neg_neg_of_pos hde)
+  · refine ⟨originalDetectorFiniteOddPhase (L/2-ao) hL,
+      originalDetectorFiniteOddPhase_moment_three _ hL,
+      originalDetectorFiniteOddPhase_moment_five _ hL, ?_⟩
+    rw [inner_poleNeutralOddCompressedCanonical_self]
+    exact ho.trans (neg_neg_of_pos hdo)
+
+/-- A fixed relative margin survives on the exact literal moment-zero trial
+vectors at the unchanged common quartic cutoff. No ground is substituted. -/
+theorem eventually_both_moment_slice_margins_at_original_quartic
+    (ρ : zetaZeroConfig.carrier) (hoff : (ρ : ℂ).re ≠ 1/2) :
+    ∃ d : ℝ, 0 < d ∧ ∀ᶠ L : ℝ in atTop, ∃ hL : 2 ≤ L,
+      (∃ u : poleNeutralEvenSubspace L (originalDetectorQuarticCutoff L),
+        u ≠ 0 ∧ centeredMoment (originalDetectorQuarticCutoff L) 4
+          ((EuclideanSpace.equiv _ ℂ) u.val.val) = 0 ∧
+        (inner ℂ (poleNeutralEvenCompressedCanonical L
+          (originalDetectorQuarticCutoff L) u) u).re < -d * ‖u‖^2) ∧
+      (∃ v : poleNeutralOddSubspace L (originalDetectorQuarticCutoff L),
+        v ≠ 0 ∧ centeredMoment (originalDetectorQuarticCutoff L) 3
+          ((EuclideanSpace.equiv _ ℂ) v.val.val) = 0 ∧
+        centeredMoment (originalDetectorQuarticCutoff L) 5
+          ((EuclideanSpace.equiv _ ℂ) v.val.val) = 0 ∧
+        (inner ℂ (poleNeutralOddCompressedCanonical L
+          (originalDetectorQuarticCutoff L) v) v).re < -d * ‖v‖^2) := by
+  obtain ⟨ae, hae, he⟩ := exists_fixed_negative_original_phase ρ hoff (Or.inl rfl)
+  obtain ⟨ao, hao, ho⟩ := exists_fixed_negative_original_phase ρ hoff (Or.inr rfl)
+  obtain ⟨de, hde, he⟩ := recentered_negative_phase_eventually_relative_margin (Or.inl rfl) hae he
+  obtain ⟨do', hdo, ho⟩ := recentered_negative_phase_eventually_relative_margin (Or.inr rfl) hao ho
+  refine ⟨min de do', lt_min hde hdo, ?_⟩
+  filter_upwards [he, ho] with L he ho
+  obtain ⟨hL, hve, he⟩ := he
+  obtain ⟨_, hvo, ho⟩ := ho
+  refine ⟨hL, ?_, ?_⟩
+  · refine ⟨originalDetectorFiniteEvenPhase (L/2-ae) hL, ?_,
+      originalDetectorFiniteEvenPhase_moment_four _ hL, ?_⟩
+    · intro hz
+      apply hve
+      exact congrArg (fun w : poleNeutralEvenSubspace L (originalDetectorQuarticCutoff L) =>
+        w.val.val) hz
+    · rw [inner_poleNeutralEvenCompressedCanonical_self]
+      change _ < -min de do' * ‖originalDetectorFinitePhaseVector 1 L (L/2-ae) (by linarith)‖^2
+      exact he.trans_le (mul_le_mul_of_nonneg_right (neg_le_neg (min_le_left de do'))
+        (sq_nonneg _))
+  · refine ⟨originalDetectorFiniteOddPhase (L/2-ao) hL, ?_,
+      originalDetectorFiniteOddPhase_moment_three _ hL,
+      originalDetectorFiniteOddPhase_moment_five _ hL, ?_⟩
+    · intro hz
+      apply hvo
+      exact congrArg (fun w : poleNeutralOddSubspace L (originalDetectorQuarticCutoff L) =>
+        w.val.val) hz
+    · rw [inner_poleNeutralOddCompressedCanonical_self]
+      change _ < -min de do' * ‖originalDetectorFinitePhaseVector (-1) L (L/2-ao) (by linarith)‖^2
+      exact ho.trans_le (mul_le_mul_of_nonneg_right (neg_le_neg (min_le_right de do'))
+        (sq_nonneg _))
 
 end Zeta23.OPICARound4
