@@ -203,7 +203,7 @@
   "add": [
     {
       "path": ".github/actions/opica4-runtime/action.yml",
-      "sha256": "3819b27177a738fbb548352184f24faa817418099bcf17e35463b51ab7798b62"
+      "sha256": "f4d7e7a7793f5b19d6c798cc2da8520985920e809ee605f65b082512f1abb640"
     },
     {
       "path": ".github/workflows/rhrc_opica_composition.yml",
