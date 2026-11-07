@@ -140,6 +140,34 @@ class Increment2HistoryTests(unittest.TestCase):
                 self.assertTrue((ROOT.parents[4] / path).is_file(), path)
 
 
+class CorrectionsAddendumTests(unittest.TestCase):
+    def test_addendum_scopes_high_support_and_records_the_genuine_failure(self):
+        add = json.loads((ROOT / 'evidence' / 'increment3c' / 'CORRECTIONS_ADDENDUM.json').read_bytes())
+        self.assertEqual((add['RH'], add['Step4']), ('OPEN', 'OPEN'))
+        by_id = {c['id']: c for c in add['corrections']}
+        self.assertEqual(set(by_id), {'R10', 'R11', 'R12'})
+        self.assertIn('|n| > split', by_id['R10']['finding'])
+        self.assertIn('does not falsify a historical certificate', by_id['R10']['repair'])
+        self.assertIn('rhkg-compiler-receipt at 94cb6d8', by_id['R11']['finding'])
+        # the increment2b corrections ledger stays bound to its summary hash
+        summary = json.loads((EV2B / 'SUMMARY.json').read_bytes())
+        self.assertEqual(sha(EV2B / 'CORRECTIONS.json'), summary['corrections']['sha256'])
+        for node in self._high_support_nodes(summary):
+            self.assertEqual(node['quarter_gap_law'], 'FALSIFIED_BOUND')
+
+    @staticmethod
+    def _high_support_nodes(summary):
+        return [t['high_support_unshifted'] for t in summary['table'] if 'high_support_unshifted' in t]
+
+    def test_high_support_records_name_their_exact_support(self):
+        summary = json.loads((EV2B / 'SUMMARY.json').read_bytes())
+        for e in summary['records']:
+            rec = json.loads((EV2B / e['file']).read_bytes())
+            hs = rec.get('high_support_unshifted')
+            if hs is not None:
+                self.assertIn('|n| > split', hs['support'])
+
+
 class Increment2BEvidenceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

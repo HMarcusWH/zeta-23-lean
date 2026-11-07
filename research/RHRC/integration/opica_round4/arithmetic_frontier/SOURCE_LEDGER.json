@@ -2673,7 +2673,8 @@
     "newly_ledgered_discovered": 92,
     "ledger_entries_outside_folder": 0,
     "coverage_statement": "Every item the connector returned for this folder is now ledgered. Review depth stays DISCOVERED unless an exact action was performed on exact bytes. Subfolders, trashed items and files outside this folder are not claimed.",
-    "title_query_shortfall": "The earlier title-filtered query missed 92 of 206 folder items; a title filter is not folder membership."
+    "title_query_shortfall": "The earlier title-filtered query missed 92 of 206 folder items; a title filter is not folder membership.",
+    "coverage_caveat": "Folder coverage is listing coverage only: 204 of 206 entries remain DISCOVERED, one is FETCHED and one REPLAYED. DISCOVERED is not text review, proof audit or replay (CORRECTIONS addendum, limitations_restated)."
   },
   "coverage_by_review_depth": {
     "FETCHED": 1,

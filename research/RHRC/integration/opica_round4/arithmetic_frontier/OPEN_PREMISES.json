@@ -52,7 +52,8 @@
       "id": "S-CHECKER",
       "statement": "FiniteCertificateSoundness: accepted data imply the stated native finite inequality.",
       "status": "OPEN",
-      "finite_progress": "Independent floating-point-free checker for small states (independent_check.py); no soundness theorem."
+      "finite_progress": "Independent floating-point-free checker for small states (independent_check.py); no soundness theorem.",
+      "assurance_note": "Level-3 reconstructions (independent_check.py) use their own elimination basis and blocked Schur certificate but share native_source.py, the equation-(4.4) backend and the Arb primitives with the engine; they are not level 4. FiniteCertificateSoundness and the native enclosure bridge remain OPEN (CORRECTIONS addendum, limitations_restated)."
     },
     {
       "id": "S-ENCLOSURE",

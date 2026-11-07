@@ -358,7 +358,7 @@
         "evidence/increment2"
       ],
       "budget_improved": "The unshifted complement block has rigorous Rayleigh upper bounds 3.9e-7/6.8e-7 (L = 4), 5.0e-17/1.0e-16 (L = 5) and 8.3e-18/1.4e-17 (L = 6), so no fixed high gap survives as eps decreases; the cap b = 9 fails at L = 5, 6 and is not a hypothesis of the Lean consumer.",
-      "correction": "CORRECTIONS R2/R6: version 1 conflated the shifted Fourier-prefix complement with the historical high-support unshifted law and used float-only falsifications. Increment 2B tests SHIFTED_PREFIX_QUARTER_GAP_COORDINATE and HIGH_SUPPORT_UNSHIFTED_SLICE separately with exact witnesses; the historical constant is still not imported."
+      "correction": "CORRECTIONS R2/R6: version 1 conflated the shifted Fourier-prefix complement with the historical high-support unshifted law and used float-only falsifications. Increment 2B tests SHIFTED_PREFIX_QUARTER_GAP_COORDINATE and HIGH_SUPPORT_UNSHIFTED_SLICE separately with exact witnesses; the historical constant is still not imported. CORRECTIONS R10 (evidence/increment3c/CORRECTIONS_ADDENDUM.json): the HIGH_SUPPORT_UNSHIFTED_SLICE falsification holds only on the support |n| > split at splits 128, 312 and 648 with the constant 1/4; it does not falsify a historical certificate on a narrower support, a higher threshold or another constant. The unshifted Rayleigh bounds in budget_improved are for the Fourier-prefix complement block, not for high support."
     },
     {
       "id": "CR21",

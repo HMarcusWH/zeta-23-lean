@@ -177,9 +177,12 @@ original records stay bound to their preserved producer bytes.
     and at L=6 (`1/4`). P4 is scored on that family, as its `q^m/a` heuristic
     requires, and is therefore **confirmed**, not refuted (R5). The
     INVERSE_RESIDUAL family passes at degree 64 at every checkpoint;
-  * the exact high-support unshifted legal subspace (dimension 124 at L=4) has
-    physical Rayleigh values of about `2·10⁻⁶`, so a fixed high-support gap
-    fails there too. The historical constant is still not imported.
+  * the exact high-support unshifted legal subspace with support `|n| > split`
+    (dimension 124 at L=4, split 128) has physical Rayleigh values of about
+    `2·10⁻⁶`, so the quarter law fails on that support at the named splits.
+    This does not falsify a historical certificate on a narrower support, a
+    higher support threshold or a different constant (CORRECTIONS R10); the
+    historical support and constant are still not imported.
 * **Level 3.** The numpy-free
   [independent_check.py](independent_check.py) reconstructs the checkpoints
   with its own exact elimination basis and a blocked interval Schur
