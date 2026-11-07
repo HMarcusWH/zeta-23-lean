@@ -138,10 +138,11 @@
     },
     {
       "id": "E-D1",
-      "status": "PARTIAL_RUN",
+      "status": "RUN_THREE_CHECKPOINTS_BOTH_PARITIES",
       "goal": "At the same states compare CA^{-1}C*, a^{-1}CC* and the coupling-resolved certificate; record M(s)=C 1_(0,s](A) C*.",
       "acceptance": "Information lost by each estimate identified on the same matrix, carrier and metric.",
-      "result": "Scalar gap, degree-64 coupled certificate and the direct native certificate compared on the same matrix, carrier and metric at 9 (state, tolerance, parity) points; M(s) = C 1_(0,s](A) C* not yet recorded."
+      "result": "Same pencils, three families: INVERSE_RESIDUAL smallest successful tested degree 4, 8, 16 at n = 2, 3, 4; GEOMETRIC_TAIL certified only at L=4 (degree 64); scalar gap refuted everywhere; full Schur certified everywhere; the near band of the complement (1, 22, 90 directions) receives coupling mass about 1e-6. Bands use floating projectors (EXPERIMENTAL SIGNAL); every status is a kernel decision.",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/SUMMARY.json"
     },
     {
       "id": "E-D2",
@@ -290,6 +291,21 @@
         "timing": "post-hoc robustness check, not a prediction"
       },
       "correction": "CORRECTIONS R8: version 1 compared #(|lambda|<delta) with #(lambda<delta); increment2b records both and N_main(T). The P8 timing caveat stands; no prospective rule without fixed constants is asserted."
+    },
+    {
+      "id": "E-H7",
+      "status": "PREDECLARED_NOT_RUN",
+      "goal": "n = 5 checkpoint of (C1) and test of the frozen degree/near-band law",
+      "state": {
+        "L": "7",
+        "K": 2401,
+        "Q": 1096,
+        "even_dimension": 2398,
+        "odd_dimension": 2397,
+        "tolerance": "1/5"
+      },
+      "predeclaration": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/E-H7_PREDICTIONS.json",
+      "acceptance": "Fixed numerical rules P9-P13 with hashed tools; one parity suffices for the checkpoint, both for the law."
     }
   ],
   "corrections": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/CORRECTIONS.json"

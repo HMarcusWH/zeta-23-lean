@@ -206,6 +206,40 @@ likewise for odd. The channels are the unchanged production `canonicalArchMatrix
 prime power). No sign is asserted. This compresses the signed budget of every
 (C1) checkpoint to the joint prime–Archimedean expression of work package F.
 
+The development math gate PASSES at 94cb6d8, on the pinned Linux compile.
+It reports 98 modules and 1186 complete types and axiom sets, with only
+`propext`, `Classical.choice` and `Quot.sound`, and 98 intended rejections.
+The first run failed because control 13 lacked `open Matrix`; that failure is
+recorded in commit 94cb6d8.
+
+## Increment 3B — coupled-response comparison (E-D1)
+
+[evidence/increment3b](evidence/increment3b/SUMMARY.json) compares three
+sufficient inequalities on the same shifted pencils. All three use the
+`certificates.py` kernel and are tested on a degree ladder 1…256:
+
+* scalar gap;
+* geometric tail (exact `P_m(A)`, with a certified upper bound `b`);
+* inverse residual (any exact `X`; the Lean consumer).
+
+| Checkpoint | Inverse residual, smallest tested degree | Geometric tail | Near band: directions / coupling mass | Scalar-gap charge |
+| --- | --- | --- | --- | --- |
+| L=4, `ε=1/2` | 4 | 64 | 1 / `1.3e-6` | 12.4 |
+| L=5, `ε=1/3` | 8 | none ≤ 64 (128 unresolved) | 22 / `1–2e-6` | 30–31 |
+| L=6, `ε=1/4` | 16 | none ≤ 64 | 90–91 / `0.6–2.7e-6` | 58–62 |
+
+The full Schur form with `X = A⁻¹Cᵀ` is certified at every state, including
+L=4 at `ε=1/1024`, where every tested degree of both polynomial families
+fails. **Signal:** the scalar-gap failure is an overcharge of a near band
+that receives almost no coupling mass. The doubling inverse-residual degree is
+frozen, with fixed numerical rules and hashed tools, as the E-H7 law for n=5
+([E-H7_PREDICTIONS.json](evidence/increment3b/E-H7_PREDICTIONS.json)). It has
+**not been run**.
+
+Neither observation is a sign bound. A convergent inverse approximation
+represents a negative Schur complement just as faithfully. The bands use
+floating projectors.
+
 ## Not built yet
 
 The leakage modules, checker soundness, the enclosure bridge, the universal
@@ -214,13 +248,15 @@ and [EXPERIMENTS.json](EXPERIMENTS.json).
 
 ## Next increments
 
-1. E-D1 completion: record `M(s)=C1_(0,s](A)C*` and the minimal coupled degree
-   `m(n,L)` at the checkpoints n=2,3,4, then freeze a degree law before n=5.
-2. Test the near-null count law at a new aperture with a predeclared, threshold-
-   stable count (E-NULLCOUNT), and relate the near-null space to the zero
-   ordinates without assuming RH.
-3. Formalize only the reductions a frozen law needs (CR17 is the first
-   candidate). Then seek the independent supplier.
+1. **Work package F (critical).** On the compressed carriers `Q = -arch - prime`
+   exactly (M50). Seek a decomposition of the joint signed budget into
+   independently controlled native terms plus an explicit remainder.
+2. Run E-H7 under the frozen rules (P9–P13). A failed prediction is recorded
+   as failed.
+3. Certified spectral projectors (or a projector-free bound) for the near-band
+   coupling mass, which would turn CR23 into a certificate input.
+4. `FiniteCertificateSoundness` and the native enclosure bridge, but only if
+   the chosen proof consumes numerical certificates.
 
 Only a proved supplier composed with these consumers, validated on the final head,
 could support a Step 4 claim.

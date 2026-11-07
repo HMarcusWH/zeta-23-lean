@@ -1,0 +1,761 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_ED1_SUMMARY_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "experiment": "E-D1",
+  "scope": "FINITE_RESEARCH_COMPARISONS_AT_NAMED_STATES_NOT_AN_RH_OR_STEP4_CLAIM",
+  "tool_sha256": "00b85575ef76c9adfc66f2cc3647b77d8fb8e592bb4199be720bf71acb5b1cdf",
+  "engine_sha256": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+  "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+  "families": {
+    "SCALAR_GAP": "D - a^-1 C C^T",
+    "GEOMETRIC_TAIL": "D - C P_m(A) C^T - (q^m/a) C C^T, exact P_m(A), certified a <= A <= b",
+    "INVERSE_RESIDUAL": "D - CX - X^T C^T + X^T A X - a^-1 R^T R, X = P_m(A) C^T floating proposal, certified A >= aI",
+    "SCHUR_FULL_INVERSE_ACTION": "INVERSE_RESIDUAL with X = A^-1 C^T (floating solve)"
+  },
+  "degree_semantics": "smallest successful TESTED degree on the ladder 1, 2, 4, ..., 256; every lower ladder degree was tested and failed with an exact witness or stayed unresolved; monotonicity is not assumed",
+  "band_semantics": "RESPONSE_BANDS use floating eigenvectors of A: EXPERIMENTAL SIGNAL, not certified projectors",
+  "records": [
+    {
+      "file": "ed1_L4_even_half.json",
+      "sha256": "a58d25dd4b09fa979ea25bb264eec9d4c2d5d9b04c881cd550226c3bbb1fcc29"
+    },
+    {
+      "file": "ed1_L4_odd_half.json",
+      "sha256": "276b9e25d4811ce9eb275edc0ea9910153cac2a922e48e9ee64b912513bb4fbc"
+    },
+    {
+      "file": "ed1_L4_even_1024.json",
+      "sha256": "2121b8c3593bdb16aa702d12d372ffa53bc493df9a0e3d9027063007648cec96"
+    },
+    {
+      "file": "ed1_L5_even_third.json",
+      "sha256": "07a6c9684acf5f12caea29510e889066025e312b19d865ffacf8662e244a4605"
+    },
+    {
+      "file": "ed1_L5_odd_third.json",
+      "sha256": "45a592a0486dc063b64bd3baa069eb0820711c2201069ce0d25ae3f70270704c"
+    },
+    {
+      "file": "ed1_L6_even_quarter.json",
+      "sha256": "c786c55371fb8764e8a8de94bceaa7d0e370291b2bc5f9276c03c49ff74919fd"
+    },
+    {
+      "file": "ed1_L6_odd_quarter.json",
+      "sha256": "fcaea747a3b737d0164cc079b4eba21e5973763e043e945e498b70e1fb9bc4e2"
+    }
+  ],
+  "table": [
+    {
+      "state": "L4_even_half",
+      "L": "4",
+      "parity": "even",
+      "tolerance": "1/2",
+      "low": 125,
+      "high": 128,
+      "a": "49/100",
+      "b": "4503/500",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "schur_full_inverse_action": "CERTIFIED",
+      "scalar_gap": "FALSIFIED_BOUND",
+      "inverse_residual_smallest_tested_degree": 4,
+      "inverse_residual_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          4,
+          "CERTIFIED"
+        ],
+        [
+          8,
+          "CERTIFIED"
+        ],
+        [
+          16,
+          "CERTIFIED"
+        ],
+        [
+          32,
+          "CERTIFIED"
+        ],
+        [
+          64,
+          "CERTIFIED"
+        ],
+        [
+          128,
+          "CERTIFIED"
+        ],
+        [
+          256,
+          "CERTIFIED"
+        ]
+      ],
+      "geometric_tail_smallest_tested_degree": 64,
+      "geometric_tail_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND",
+          1.9298
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND",
+          1.8248
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND",
+          1.6316
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND",
+          1.3045
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND",
+          0.8338
+        ],
+        [
+          32,
+          "FALSIFIED_BOUND",
+          0.3407
+        ],
+        [
+          64,
+          "CERTIFIED",
+          0.0569
+        ],
+        [
+          128,
+          "UNKNOWN_PRECISION",
+          0.0016
+        ]
+      ],
+      "near_band_count": 1,
+      "near_band_coupling_trace": 1.2544767348099688e-06,
+      "near_band_response_trace": 2.5089514981991384e-06,
+      "scalar_gap_worst_charge": 12.41434770750954,
+      "min_eig_D": 0.4999999999999947,
+      "min_eig_schur": 0.4999999999999957
+    },
+    {
+      "state": "L4_odd_half",
+      "L": "4",
+      "parity": "odd",
+      "tolerance": "1/2",
+      "low": 124,
+      "high": 128,
+      "a": "49/100",
+      "b": "8989/1000",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "schur_full_inverse_action": "CERTIFIED",
+      "scalar_gap": "FALSIFIED_BOUND",
+      "inverse_residual_smallest_tested_degree": 4,
+      "inverse_residual_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          4,
+          "CERTIFIED"
+        ],
+        [
+          8,
+          "CERTIFIED"
+        ],
+        [
+          16,
+          "CERTIFIED"
+        ],
+        [
+          32,
+          "CERTIFIED"
+        ],
+        [
+          64,
+          "CERTIFIED"
+        ],
+        [
+          128,
+          "CERTIFIED"
+        ],
+        [
+          256,
+          "CERTIFIED"
+        ]
+      ],
+      "geometric_tail_smallest_tested_degree": 64,
+      "geometric_tail_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND",
+          1.9296
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND",
+          1.8244
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND",
+          1.6309
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND",
+          1.3033
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND",
+          0.8324
+        ],
+        [
+          32,
+          "FALSIFIED_BOUND",
+          0.3395
+        ],
+        [
+          64,
+          "CERTIFIED",
+          0.0565
+        ],
+        [
+          128,
+          "UNKNOWN_PRECISION",
+          0.0016
+        ]
+      ],
+      "near_band_count": 1,
+      "near_band_coupling_trace": 1.4851944398229093e-06,
+      "near_band_response_trace": 2.9703848445152976e-06,
+      "scalar_gap_worst_charge": 12.499577353926071,
+      "min_eig_D": 0.4999999999999958,
+      "min_eig_schur": 0.49999999999999506
+    },
+    {
+      "state": "L4_even_1024",
+      "L": "4",
+      "parity": "even",
+      "tolerance": "1/1024",
+      "low": 125,
+      "high": 128,
+      "a": "957/1000000",
+      "b": "8497/1000",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "schur_full_inverse_action": "CERTIFIED",
+      "scalar_gap": "FALSIFIED_BOUND",
+      "inverse_residual_smallest_tested_degree": null,
+      "inverse_residual_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          32,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          64,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          128,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          256,
+          "FALSIFIED_BOUND"
+        ]
+      ],
+      "geometric_tail_smallest_tested_degree": null,
+      "geometric_tail_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND",
+          1044.8144
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND",
+          1044.6967
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND",
+          1044.4614
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND",
+          1043.9909
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND",
+          1043.0507
+        ],
+        [
+          32,
+          "FALSIFIED_BOUND",
+          1041.1726
+        ],
+        [
+          64,
+          "FALSIFIED_BOUND",
+          1037.4267
+        ],
+        [
+          128,
+          "FALSIFIED_BOUND",
+          1029.9752
+        ]
+      ],
+      "near_band_count": 1,
+      "near_band_coupling_trace": 1.2544767350218903e-06,
+      "near_band_response_trace": 0.0012840675879516442,
+      "scalar_gap_worst_charge": 6353.594928209584,
+      "min_eig_D": 0.0009765624999975212,
+      "min_eig_schur": 0.0009765624999969459
+    },
+    {
+      "state": "L5_even_third",
+      "L": "5",
+      "parity": "even",
+      "tolerance": "1/3",
+      "low": 309,
+      "high": 313,
+      "a": "163333/500000",
+      "b": "11091/1000",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "schur_full_inverse_action": "CERTIFIED",
+      "scalar_gap": "FALSIFIED_BOUND",
+      "inverse_residual_smallest_tested_degree": 8,
+      "inverse_residual_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          8,
+          "CERTIFIED"
+        ],
+        [
+          16,
+          "CERTIFIED"
+        ],
+        [
+          32,
+          "CERTIFIED"
+        ],
+        [
+          64,
+          "CERTIFIED"
+        ],
+        [
+          128,
+          "CERTIFIED"
+        ],
+        [
+          256,
+          "CERTIFIED"
+        ]
+      ],
+      "geometric_tail_smallest_tested_degree": null,
+      "geometric_tail_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND",
+          2.9711
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND",
+          2.8836
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND",
+          2.7162
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND",
+          2.4101
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND",
+          1.8974
+        ],
+        [
+          32,
+          "FALSIFIED_BOUND",
+          1.176
+        ],
+        [
+          64,
+          "FALSIFIED_BOUND",
+          0.4518
+        ],
+        [
+          128,
+          "UNKNOWN_PRECISION",
+          0.0667
+        ]
+      ],
+      "near_band_count": 22,
+      "near_band_coupling_trace": 1.0769593146853937e-06,
+      "near_band_response_trace": 3.230875326592192e-06,
+      "scalar_gap_worst_charge": 30.291836193623322,
+      "min_eig_D": 0.3333333333333284,
+      "min_eig_schur": 0.33333333333332854
+    },
+    {
+      "state": "L5_odd_third",
+      "L": "5",
+      "parity": "odd",
+      "tolerance": "1/3",
+      "low": 308,
+      "high": 313,
+      "a": "163333/500000",
+      "b": "2773/250",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "schur_full_inverse_action": "CERTIFIED",
+      "scalar_gap": "FALSIFIED_BOUND",
+      "inverse_residual_smallest_tested_degree": 8,
+      "inverse_residual_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          8,
+          "CERTIFIED"
+        ],
+        [
+          16,
+          "CERTIFIED"
+        ],
+        [
+          32,
+          "CERTIFIED"
+        ],
+        [
+          64,
+          "CERTIFIED"
+        ],
+        [
+          128,
+          "CERTIFIED"
+        ],
+        [
+          256,
+          "CERTIFIED"
+        ]
+      ],
+      "geometric_tail_smallest_tested_degree": null,
+      "geometric_tail_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND",
+          2.9711
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND",
+          2.8836
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND",
+          2.7162
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND",
+          2.4101
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND",
+          1.8975
+        ],
+        [
+          32,
+          "FALSIFIED_BOUND",
+          1.1761
+        ],
+        [
+          64,
+          "FALSIFIED_BOUND",
+          0.4519
+        ],
+        [
+          128,
+          "UNKNOWN_PRECISION",
+          0.0667
+        ]
+      ],
+      "near_band_count": 22,
+      "near_band_coupling_trace": 1.8634876814242347e-06,
+      "near_band_response_trace": 5.590453077076454e-06,
+      "scalar_gap_worst_charge": 31.293474772803563,
+      "min_eig_D": 0.33333333333332876,
+      "min_eig_schur": 0.3333333333333285
+    },
+    {
+      "state": "L6_even_quarter",
+      "L": "6",
+      "parity": "even",
+      "tolerance": "1/4",
+      "low": 645,
+      "high": 648,
+      "a": "244999/1000000",
+      "b": "1371/100",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "schur_full_inverse_action": "CERTIFIED",
+      "scalar_gap": "FALSIFIED_BOUND",
+      "inverse_residual_smallest_tested_degree": 16,
+      "inverse_residual_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          16,
+          "CERTIFIED"
+        ],
+        [
+          32,
+          "CERTIFIED"
+        ],
+        [
+          64,
+          "CERTIFIED"
+        ],
+        [
+          128,
+          "CERTIFIED"
+        ],
+        [
+          256,
+          "CERTIFIED"
+        ]
+      ],
+      "geometric_tail_smallest_tested_degree": null,
+      "geometric_tail_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND",
+          4.0087
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND",
+          3.9371
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND",
+          3.7976
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND",
+          3.5334
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND",
+          3.0587
+        ],
+        [
+          32,
+          "FALSIFIED_BOUND",
+          2.2921
+        ],
+        [
+          64,
+          "FALSIFIED_BOUND",
+          1.2872
+        ]
+      ],
+      "near_band_count": 90,
+      "near_band_coupling_trace": 6.276018354355263e-07,
+      "near_band_response_trace": 2.5104062207957517e-06,
+      "scalar_gap_worst_charge": 57.79078396739839,
+      "min_eig_D": 0.24999999999999267,
+      "min_eig_schur": 0.24999999999999212
+    },
+    {
+      "state": "L6_odd_quarter",
+      "L": "6",
+      "parity": "odd",
+      "tolerance": "1/4",
+      "low": 644,
+      "high": 648,
+      "a": "244999/1000000",
+      "b": "1371/100",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "schur_full_inverse_action": "CERTIFIED",
+      "scalar_gap": "FALSIFIED_BOUND",
+      "inverse_residual_smallest_tested_degree": 16,
+      "inverse_residual_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          16,
+          "CERTIFIED"
+        ],
+        [
+          32,
+          "CERTIFIED"
+        ],
+        [
+          64,
+          "CERTIFIED"
+        ],
+        [
+          128,
+          "CERTIFIED"
+        ],
+        [
+          256,
+          "CERTIFIED"
+        ]
+      ],
+      "geometric_tail_smallest_tested_degree": null,
+      "geometric_tail_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND",
+          4.0087
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND",
+          3.9371
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND",
+          3.7976
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND",
+          3.5334
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND",
+          3.0587
+        ],
+        [
+          32,
+          "FALSIFIED_BOUND",
+          2.2921
+        ],
+        [
+          64,
+          "FALSIFIED_BOUND",
+          1.2872
+        ]
+      ],
+      "near_band_count": 91,
+      "near_band_coupling_trace": 2.6992860166051464e-06,
+      "near_band_response_trace": 1.0797114900704411e-05,
+      "scalar_gap_worst_charge": 61.580846047321906,
+      "min_eig_D": 0.24999999999999192,
+      "min_eig_schur": 0.2499999999999943
+    }
+  ],
+  "findings": {
+    "degree_law_signal": "INVERSE_RESIDUAL smallest successful tested degree 4, 8, 16 at the (C1) checkpoints n = 2, 3, 4 (L = 4, 5, 6), identical in both parities",
+    "geometric_tail": "certified only at L=4, eps=1/2 (degree 64); falsified at every tested degree up to 64 at L=5 and L=6; degree 128 unresolved at L=4 and L=5 (arb power accumulation)",
+    "near_band_mechanism": "the complement block carries 1, 22 and 90-91 directions within 1e-6 of eps; the coupling C puts total mass only about 1e-6 into them (response trace <= 1.1e-5), while the scalar gap charges lambda_max(C C^T)/lambda_min(A) = 12.4, 30-31 and 58-62: the scalar-gap failure is an overcharge of the near band, not a sign defect",
+    "full_schur": "the exact Schur form with the full inverse action is certified at every tested state, including L=4, eps=1/1024, where every finite tested degree of both polynomial families fails",
+    "authority": "EXPERIMENTAL_SIGNAL for the laws; each CERTIFIED/FALSIFIED entry is a kernel decision on an exact proposal"
+  }
+}

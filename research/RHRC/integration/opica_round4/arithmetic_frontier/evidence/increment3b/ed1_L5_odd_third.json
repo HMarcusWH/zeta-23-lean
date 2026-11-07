@@ -1,0 +1,245 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_ED1_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "L": "5",
+  "K": 625,
+  "parity": "odd",
+  "tolerance": "1/3",
+  "split": 312,
+  "low_dimension": 308,
+  "high_dimension": 313,
+  "bits": 192,
+  "coordinates": "corrected Fourier-prefix flag (orthonormal proposal; the pencil carries the full Gram)",
+  "a": "163333/500000",
+  "b": "2773/250",
+  "A_ge_aI": "CERTIFIED",
+  "A_le_bI": "CERTIFIED",
+  "engine_sha256": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+  "tool_sha256": "00b85575ef76c9adfc66f2cc3647b77d8fb8e592bb4199be720bf71acb5b1cdf",
+  "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+  "SCHUR_FULL_INVERSE_ACTION": {
+    "family": "INVERSE_RESIDUAL",
+    "proposal": "X = A^-1 C^T (floating solve)",
+    "status": "CERTIFIED",
+    "tau": "1/8",
+    "dimension": 308,
+    "residual_frobenius_sq_upper": "5127236066431695184716324291186464966038695184852665107057*2^-285",
+    "certified_lower_eigenvalue_coordinates": "55213970774320498804593945986598695008407689274428195127076074139831075*2^-238",
+    "certified_lower_eigenvalue_display": "1.25e-1",
+    "statement": "S_X >= 0 with X = A^-1 C^T",
+    "floating_minimum": 0.33333333333332876
+  },
+  "SCALAR_GAP": {
+    "family": "SCALAR_GAP",
+    "quantifier": "every a with 0 < a <= lambda_min(A)",
+    "rho_upper_exact": "8369468980515573974148699330802044649823567853054956999329*2^-194",
+    "rho_upper_display": "3.33333333333e-1",
+    "witness_value": {
+      "lower_exact": "-1354868205628075418540297588559075567367155325021101084264557*2^-195",
+      "upper_exact": "-1354868205628075418540297588559075567367155325021099890486163*2^-195",
+      "display": "[-26.98036974 +/- 2.05e-9]"
+    },
+    "status": "FALSIFIED_BOUND"
+  },
+  "INVERSE_RESIDUAL_LADDER": {
+    "rows": [
+      {
+        "degree": 1,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -12.548675790189986
+      },
+      {
+        "degree": 2,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -5.55208697929281
+      },
+      {
+        "degree": 4,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -0.7591753176066894
+      },
+      {
+        "degree": 8,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.3333333163147969
+      },
+      {
+        "degree": 16,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.333333333333329
+      },
+      {
+        "degree": 32,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.3333333333333276
+      },
+      {
+        "degree": 64,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.3333333333333288
+      },
+      {
+        "degree": 128,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.3333333333333285
+      },
+      {
+        "degree": 256,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.3333333333333286
+      }
+    ],
+    "smallest_successful_tested_degree": 8,
+    "all_tested_degrees_below_it_failed_or_unresolved": true,
+    "monotonicity": "not assumed; every listed degree was tested"
+  },
+  "GEOMETRIC_TAIL_LADDER": {
+    "rows": [
+      {
+        "degree": 1,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 2.971075670490837,
+        "floating_minimum": -27.617460385807714
+      },
+      {
+        "degree": 2,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 2.883575724135215,
+        "floating_minimum": -27.352255194321994
+      },
+      {
+        "degree": 4,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 2.716230715889192,
+        "floating_minimum": -26.366818588599347
+      },
+      {
+        "degree": 8,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 2.4101121200275033,
+        "floating_minimum": -23.727416300220103
+      },
+      {
+        "degree": 16,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 1.897485335066845,
+        "floating_minimum": -18.567936832439962
+      },
+      {
+        "degree": 32,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 1.176144794652223,
+        "floating_minimum": -11.109946081485532
+      },
+      {
+        "degree": 64,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 0.45188249326487107,
+        "floating_minimum": -3.6967526611962933
+      },
+      {
+        "degree": 128,
+        "status": "UNKNOWN_PRECISION",
+        "q_power_over_a": 0.06670447452310509,
+        "floating_minimum": 0.03869404037712538
+      }
+    ],
+    "smallest_successful_tested_degree": null,
+    "all_tested_degrees_below_it_failed_or_unresolved": null,
+    "monotonicity": "not assumed; every listed degree was tested",
+    "tested_up_to": 128
+  },
+  "RESPONSE_BANDS": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+    "min_eig_D": 0.33333333333332876,
+    "min_eig_schur_D_minus_CAinvCT": 0.3333333333333285,
+    "trace_full_response": 7.073050682768533,
+    "max_eig_full_response": 3.0892536266981234,
+    "near_band": {
+      "definition": "eigenvalues of A within 1e-6 of eps (the shifted near-null directions)",
+      "count": 22,
+      "trace_coupling_mass": 1.8634876814242347e-06,
+      "max_column_coupling": 0.0013348136712423356,
+      "response_trace": 5.590453077076454e-06,
+      "scalar_gap_worst_charge": 31.293474772803563
+    },
+    "bands": [
+      {
+        "s": 0.3333333333343333,
+        "count": 17,
+        "trace_M_s": 1.2028632297973953e-12,
+        "max_eig_M_s": 1.1432756225200152e-12,
+        "trace_low_response": 3.608589689387503e-12,
+        "max_eig_low_response": 3.4298268675553704e-12,
+        "min_eig_D_minus_high_response": 0.33333333333332815
+      },
+      {
+        "s": 0.33333333433333334,
+        "count": 19,
+        "trace_M_s": 7.091741884072175e-10,
+        "max_eig_M_s": 6.9759766611568e-10,
+        "trace_low_response": 2.1275225641620676e-09,
+        "max_eig_low_response": 2.092792997287821e-09,
+        "min_eig_D_minus_high_response": 0.33333333333332743
+      },
+      {
+        "s": 0.3333343333333333,
+        "count": 22,
+        "trace_M_s": 1.8634876814242349e-06,
+        "max_eig_M_s": 1.7852415340025584e-06,
+        "trace_low_response": 5.590453077076453e-06,
+        "max_eig_low_response": 5.355714649972912e-06,
+        "min_eig_D_minus_high_response": 0.3333333333333282
+      },
+      {
+        "s": 0.3343333333333333,
+        "count": 24,
+        "trace_M_s": 0.00019134866713437147,
+        "max_eig_M_s": 0.00018449987739609834,
+        "trace_low_response": 0.0005739673775745554,
+        "max_eig_low_response": 0.0005534211729484154,
+        "min_eig_D_minus_high_response": 0.3333333333333287
+      },
+      {
+        "s": 0.6666666666666666,
+        "count": 30,
+        "trace_M_s": 0.16781731002379813,
+        "max_eig_M_s": 0.11061263641710205,
+        "trace_low_response": 0.400322950481668,
+        "max_eig_low_response": 0.2947011858279995,
+        "min_eig_D_minus_high_response": 0.3333333333333283
+      },
+      {
+        "s": 1.3333333333333333,
+        "count": 50,
+        "trace_M_s": 0.976256093608423,
+        "max_eig_M_s": 0.8066331907001607,
+        "trace_low_response": 1.3719592096232809,
+        "max_eig_low_response": 1.0026046763167322,
+        "min_eig_D_minus_high_response": 0.33333333333332815
+      },
+      {
+        "s": 1.0,
+        "count": 38,
+        "trace_M_s": 0.8650743473598397,
+        "max_eig_M_s": 0.7325946069578976,
+        "trace_low_response": 1.2790780990884456,
+        "max_eig_low_response": 0.9420720976519079,
+        "min_eig_D_minus_high_response": 0.3333333333333279
+      },
+      {
+        "s": 11.874127425447993,
+        "count": 313,
+        "trace_M_s": 22.200509214359215,
+        "max_eig_M_s": 10.431158257601105,
+        "trace_low_response": 7.073050682768533,
+        "max_eig_low_response": 3.0892536266981234,
+        "min_eig_D_minus_high_response": 0.33333333333332876
+      }
+    ]
+  },
+  "seconds": 248.5,
+  "state_id": "L5_odd_third"
+}
