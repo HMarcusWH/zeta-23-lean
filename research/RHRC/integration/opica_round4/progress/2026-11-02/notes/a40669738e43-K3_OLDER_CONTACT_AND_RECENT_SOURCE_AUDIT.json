@@ -1,0 +1,143 @@
+{
+  "status": "DERIVED_K3_SPECIALIZATION_OF_CURRENT_CONTACT_AND_RECENT_SOURCE_SUPPLIERS",
+  "scope": "Bounded source/history check. Current contact antecedents are preserved; no new Lean compilation or independent whole-curve inequality is asserted.",
+  "findings": [
+    {
+      "id": "C1",
+      "title": "The first-contact derivative implication is already proved without a stationarity premise",
+      "proof": "CCM.firstVariation_nonpos_of_leftPrefix (FirstCrossingProductionFirstVariation.lean:370) is generic scalar calculus: f(L*)=0, f>=0 on [Lsmall,L*], Lsmall<L*, and HasDerivAt f J L* imply J<=0. It can be applied to the complete actual native K3 scalar once its own differentiability and prefix are supplied; it does not require identifying a native compressed kernel with the larger boundary-flat kernel. The named GeneratedGlobalFirstCrossing.firstVariation_nonpos_of_kernel (:411) uses the historical boundary-flat carrier. The actual fixed-vector derivative is proved in canonicalParity_fixedEnergy_hasDerivAt (:433), and GeneratedStrictEvenContact.firstVariation_nonpos_production (FirstCrossingGeneratedStrictEvenFrontier.lean:409) removes a separately supplied derivative-realization witness. production_frontier (:450) explicitly retains either strictly negative first variation or the stationary response equation. Thus the strictly negative first-order branch is a proved part of the current frontier, not a missing implementation.",
+      "limits": "For the moving native vector u(L), one must use the derivative of its complete scalar curve, including moving-frame terms. A positive Arch-gap value and a positive complete higher-power value do not imply a sign for that derivative. The earliest negative contact need not exceed the threshold of a late higher-power asymptotic."
+    },
+    {
+      "id": "C2",
+      "title": "One older quantitative lemma applies directly to the exact K3 source without contact or ground hypotheses",
+      "proof": "CCM.re_quadraticForm_index_le_of_mem_evenBoundaryFlat (CanonicalRecentPrimeSecondVariation.lean:65) assumes only z in evenBoundaryFlatSubspace K, omega>=0, and (2*pi*omega)^2 B(Dz)<=5|M4(z)|, where B(u)=sum |n|^5|u_n| (CanonicalSourceOddEndpointQuantitative.lean:145). It concludes e_Dz(omega)<=-(pi^6/90)|M4(z)|^2 omega^7. For the literal native K3 vectors, beta=L^2/(16*pi^2), M4(ue)=720, D ue=3uo, and B(D ue)=2[15(beta+1)+384(beta+4)+729(beta+9)]=2256beta+16224. Therefore Eo(L,omega)<=-640*pi^6*omega^7 whenever (2*pi*omega)^2(2256beta+16224)<=3600. This retains the full seven-slot Euclidean coefficients and does not unit-normalize them.",
+      "exact_physical_window": "With d=L*omega, the sufficient condition is (564+64896*pi^2/L^2)d^2<=3600. For any fixed 0<D<sqrt(300/47), it holds throughout 0<=d<=D once L>=max(D, sqrt(64896*pi^2*D^2/(3600-564*D^2))). The strict inequality on D is necessary for this finite threshold; the limiting endpoint itself is not paid for finite L.",
+      "authority": "The generic M45 inequality is current source-proved and appears in cached same-head successful Linux compilation. This explicit K3 specialization and threshold are DERIVED here, not newly compiled."
+    },
+    {
+      "id": "C3",
+      "title": "The same-source recent-prime budget is positive, but the complete PNT continuum cancels its scale",
+      "proof": "The actual canonical scalar is Q_o=-Arch_o-sum_(2<=q<=floor(exp L)) Lambda(q)/sqrt(q) E_o(L,1-log(q)/L). For the literal recent set 0<=d_q=L-log(q)<=D, C2 therefore proves -sum_recent Lambda(q)/sqrt(q) E_o(L,d_q/L) >= 640*pi^6/L^7 sum_recent Lambda(q)/sqrt(q) d_q^7 >=0. No prime power or floor endpoint is dropped; at d=0 the atom vanishes. Reusing the already-paid PNT measure scaling from ACTUAL_K3_UNSIGNED_PRIME_CHARGE_AUDIT P3, the right-hand side is asymptotic to 640*pi^6 exp(L/2)L^-7 integral_0^D exp(-d/2)d^7 dd. This is an explicit positive recent-sector lower budget, rather than an estimate for the complete signed scalar.",
+      "comparison": "The same prior note proves BOTH complete nonnegative source charges have the equal leading constant C_o J_7 exp(L/2)L^-7, C_o=2(2*pi)^6*240^2, because integral exp(-d/2)G_7(d)dd=0 and the first weighted moment also vanishes. The negative source atoms in this recent window supply the positive canonical contribution; adverse source atoms elsewhere have the matching complete leading charge. The new bound is consistent with that full cancellation and cannot dominate the adverse sector. The positive polynomial Arch/higher-power budgets do not remove this ordinary-prime signed comparison.",
+      "new_usable_interface": "If an implementation is desired, a single specialization of the existing generic M45 theorem to ActualK3.evenVector/index_evenVector and the exact finite coefficient mass would be a substantive nonstationary source estimate. No proposed RH wrapper is added."
+    },
+    {
+      "id": "C4",
+      "title": "Other named contact budgets require their precise different test and carrier",
+      "proof": "GeneratedStrictEvenContact requires a unit kernel vector of the larger euclideanEvenBoundaryFlatSubspace and a strictly positive bottom on the corresponding larger odd boundary-flat carrier. Inherited stationarity uses hinh:g.shell.n<g.shell.k and an inherited kernel direction (FirstCrossingInheritedStationarity.lean:123,344). Native K3 has one-dimensional parity carriers and no nonzero native predecessor; a zero native energy is not automatically a kernel vector for the larger historical compression. CanonicalContactOlderPrimeBudget.olderPrimeBudget (:175) and olderPrimeBudget_finite (:253) additionally require zero first variation and their explicit angle inequality. Their pole/Arch test is t^2 e_Dz(1-t/L), with prime weight Lambda(q)(log q)^2/sqrt(q), not the corrected K3 gap test E_o-aE_e. The new positive Arch-gap theorem cannot be substituted for that different pole/Arch functional.",
+      "scope": "These antecedents were checked to identify an executable supplier, not reclassified as new obstructions. CanonicalLocalBirdfishie.lean:97,122 controls the fixed-vector Euler curvature only in its explicit prime-free/small-aperture range; it does not extend to the late moving K3 curve."
+    },
+    {
+      "id": "C5",
+      "title": "The current joint-ground supplier does not add a hidden same-K3 inequality",
+      "proof": "OPICARound4.joint_ground_constraints_of_both_negative (JointGroundConstraints.lean:157) assumes both native parities negative at the same L,K. Its off-line-zero consumer (:183) supplies cofinal L with an existential K>=3, not fixed K=3. The separate fixed-K3 aperture sign-excursion deduction supplies each parity individually cofinally; it cannot be turned into this same-aperture premise. At K3 the exact raw relation is G=Q_o-(N_o/N_e)Q_e=80 Re f(ue), with scalar gap delta=G/N_o and D ue=3uo. The corresponding moment-gap inequality is saturated by the one-dimensional carrier, not an additional sign on G. In the strict-odd package the f=-1 statement concerns the distinct reciprocal even input, not the cubic-normalized odd state."
+    }
+  ],
+  "compiler_scope": {
+    "kind": "Cached same-head Linux execution only, no fresh compilation this turn",
+    "job": 125064835019,
+    "run": 41378780752,
+    "attempt": 1,
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "merge": "e7fdeda0cf89a9eff0627b6e2fed19eb81179c57",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "log_lines": {
+      "FirstCrossingProductionFirstVariation": 5356,
+      "FirstCrossingInheritedStationarity": 5481,
+      "FirstCrossingGeneratedStrictEvenFrontier": 5746,
+      "CanonicalRecentPrimeSecondVariation": 7570,
+      "CanonicalContactOlderPrimeBudget": 7600
+    },
+    "limits": "Exact merge-tree equality and cached log authority are bound through MERTENS_CURRENT_COMPILER_COVERAGE; no repeated compiler/import census or new gate claim."
+  },
+  "conclusion": "The concrete newly usable specialization is the nonstationary recent-source bound C2-C3. The current first-contact derivative sign is already paid but allows strict crossing. No inspected supplier establishes an adverse-older-prime upper bound, a complete gap sign, or a quantitative independent opposition to the actual K3 signed curve. RH and Step4 remain OPEN.",
+  "contributions": "Repo_map read the bounded current interfaces and specialized the generic M45 coefficient bound. Root emphasized the already-paid production first-order branch, checked the limiting d-threshold and required comparison with the full PNT continuum. Prior K3 arithmetic and complete charge notes are reused explicitly.",
+  "created_utc": "2026-11-02T13:42:09.079318+00:00",
+  "source_head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\FirstCrossingProductionFirstVariation.lean",
+      "sha256": "b38e4b511931919041e635f8c46ebaed65f1a75214640dab2a7dece690da2364",
+      "bytes": 28548,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\FirstCrossingGeneratedStrictEvenFrontier.lean",
+      "sha256": "17a2391020d25cfdaafe613adfb316fc4eb96e34cb99c821ed70c1f7a14fc3c6",
+      "bytes": 47827,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\FirstCrossingInheritedStationarity.lean",
+      "sha256": "a8a80c8eedddc933be4651b218b3c77be1a0d0d36c7b88b736bbdd34104c955a",
+      "bytes": 17612,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalRecentPrimeSecondVariation.lean",
+      "sha256": "fe306580138e660d4b97d109f977dfa740c3ae088e6ad2b5938e313c0abe9998",
+      "bytes": 14939,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalSourceOddEndpointQuantitative.lean",
+      "sha256": "20d4fe10d6d9579fff694fcc14b42803c5b1aea0142348e8fd705207c155a2ca",
+      "bytes": 23665,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalContactOlderPrimeBudget.lean",
+      "sha256": "949d96276fa4038c0f67d2794a15c5f575a9ca7c50998df4cb67b4113c39fbeb",
+      "bytes": 15519,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalLocalBirdfishie.lean",
+      "sha256": "aad065e5bb9de0eba911a2e594c973a409d94b2fd96d3e00a9b500f0bf3a1bf7",
+      "bytes": 19353,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\JointGroundConstraints.lean",
+      "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7",
+      "bytes": 11983,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_FIXED_K3_ARITHMETIC_SCALARS.json",
+      "sha256": "204b26b07fb3109f010af2c1ca49b72a7c1a4e0a3082eca9ff2366ade9c96899",
+      "bytes": 13261
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_UNSIGNED_PRIME_CHARGE_AUDIT.json",
+      "sha256": "e32ab81dbf76931775fa1d6f220bb7f1313440905a677398a6855d63c975c87f",
+      "bytes": 13388
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-k3\\ActualK3Vectors.lean",
+      "sha256": "430dfcadb8cd53cf86da9d2575728d5d25b92e1fab51b05bf265d4ce5b144758",
+      "bytes": 5883
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-k3\\PROOF_FREEZE.json",
+      "sha256": "cb4b9a3b7624339279b97dd8d55130fcf1431e50a800e3beeb7f3e4769e273e9",
+      "bytes": 62149
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\k3-higher-prime-powers\\MERTENS_CURRENT_COMPILER_COVERAGE.json",
+      "sha256": "c491ace66eda833f9ec6494fd88afd500ee8adf8b3ec09c3a5fd7dcf59f7c109",
+      "bytes": 8080
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next3\\job-125064835019.log",
+      "sha256": "e85dd8cd155b2c1d8347bcac44739cac63f6a331f79ed5b4a3af387d654f3215",
+      "bytes": 4663416
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\drive\\k3-contact-refresh-2026-11-02\\CURRENT_STATE_AND_DRIVE.json",
+      "sha256": "6c20681ce93d33402da00a4d1010effaf8f797646cee5b428d4d591323936de9",
+      "bytes": 4895
+    }
+  ]
+}

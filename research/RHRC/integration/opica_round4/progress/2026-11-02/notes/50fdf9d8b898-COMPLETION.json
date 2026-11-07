@@ -1,0 +1,73 @@
+{
+  "status": "COMPLETE_DERIVED_ORIGINAL_H_SPAN_MOMENT_CORRECTION_WITH_TWO_CLEAR_REVIEWS",
+  "created_utc": "2026-11-02T09:16:29.224381+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "worktree_clean": true
+  },
+  "artifacts": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\ACTUAL_ORIGINAL_H_SPAN_MOMENT_CORRECTIONS.json",
+      "sha256": "fc9e572132b248fef8fd984a02b6d755d06b9073e90674a3529e1c8143d07779",
+      "bytes": 23472
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\INDEPENDENT_ROOT_MOMENT_CORRECTION_REVIEW.json",
+      "sha256": "d1ed46586ea3387cd44b30164b2ab15661e201d92623357376eef4db2192ad57",
+      "bytes": 12446
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\INDEPENDENT_ORIGINAL_H_MOMENT_CORRECTION_REVIEW.json",
+      "sha256": "b5b587dc366889559135d67b0433dfa856fb64e91b34b10657cc9108d49a751e",
+      "bytes": 18709
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\ROOT_EXACT_CORRECTION_IDENTITIES.json",
+      "sha256": "5130127fc5a82f7f96f833fa4834f40b0b519da27d65851a50ff5d77d3b246ca",
+      "bytes": 5547
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\UPPER_BOUND_WORDING_CORRECTION.json",
+      "sha256": "f276547efe0aace69669f8d4931920c96991d5e931572fbf4ad01593e34cfab9",
+      "bytes": 855
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\before-upper-bound-wording\\ACTUAL_ORIGINAL_H_SPAN_MOMENT_CORRECTIONS.json",
+      "sha256": "e9fd5bf8aa8b447f550d006d8eca4b02333f8df7eb136849fbeec5869f1f2595",
+      "bytes": 23465
+    }
+  ],
+  "author_records_freshly_reverified": 21,
+  "current_source_blobs_freshly_reverified": 12,
+  "new_derived_result": [
+    "Explicit fixed low-frequency native corrections impose M4=0 even and M3=M5=0 odd while remaining in the ORIGINAL projected H-translate spans, including resonant apertures. Their full-slot norms and restricted moment-Gram inverses are polynomial in beta.",
+    "The complete source error at the alternate K=ceil(C L^3) is O_C(L^30 exp[(1/2-lambda1 sqrt(C))L]). For fixed C with lambda1 sqrt(C)>1/2 it preserves arbitrary prescribed fixed negative margins under the genuine off-line-zero premise.",
+    "A quantified Vandermonde construction also pays all parity moments through order2 floor(sqrt L), and order2 floor(sqrt L)+1 on the odd side. Its extra overhead exp(O_C(sqrt L log L)) is absorbed by the same fixed negative exponential slack.",
+    "Naive whole-carrier projection onto the extra rows can leave the original H span at actual resonant apertures. The explicit corrections or orthogonal correction WITHIN that span avoid this failure."
+  ],
+  "explicit_fixed_row_constants": {
+    "definitions": "Using the parent kappa-tail constants C_j, set A0=2eta(C0+40C2), A1=4pi eta[C1+40(C+1)C2], Rtot=R3+R4+R5, D0=A0+Rtot, D1=A1+8pi Rtot. These are the sums of coefficients displayed in M4, not new estimates.",
+    "source_allowance": "[10D1+(2w_*+17)D0] L^30 exp[(1/2-lambda1 sqrt(C))L]."
+  },
+  "review_scope": "Root and repo_map independently read all final M1-M6 and verified the source bindings, exact finite norms, Gram direction, physical H1/source transfer, and uniform growing-order proof. Root contributed to the derivation and supplied the exact-symbolic check; this is disclosed in its review and the subject. No new compiler authority is claimed.",
+  "validation_scope": "Root exact-symbolic receipt records268 identities and35 finite generalized cases. The growing-order statement is justified by the reviewed analytic Lagrange/factorial bounds, not inferred from those finite checks. Completion rehashes the21 subject records and12 current Git source blobs; no object closure or CI replay was performed.",
+  "limits": [
+    "DERIVED only: no new Lean declarations, compiler runs, repository edits or canonical numerical-source evaluations.",
+    "Current1079 and the separate external arbitrary-margin prototype3 are not conflated with the new analytic claims.",
+    "C is source-fixed before the prescribed D and selected phase separations; the eventual L threshold follows. The growing order is precisely floor(sqrt L), not arbitrary or terminal order.",
+    "The alternate cubic cutoff is distinct from the original prescribed Kd; only an eventual upper bound on true first-birth cutoffs is supplied. No depth, moment-zero witness or predecessor condition is moved to a different cutoff.",
+    "No stable H-column synthesis norm, ground eigenstate identification, quantitative overlap/gap, signed complete echo bound or RH closure follows. An independent positivity theorem on these slices would remain a possible closing result, not a theorem refuted by this conditional construction.",
+    "The earlier lower/upper cutoff wording error is corrected in finalfc9e, with the original note/helper and exact correction record preserved."
+  ],
+  "next_pass_lead": {
+    "label": "LEAD_NOT_PART_OF_REVIEWED_M1_M6",
+    "question": "Check whether the paired map from one finite signed coefficient measure to the even and odd projected H families is onto the product of their physical-real spans, by independent cosine/sine annihilators.",
+    "scope": "Root authorized preserving this as a follow-up only. It needs an explicit common-input/source-domain and real-measure proof. Qualitative synthesis would not supply a uniform coefficient/source-error budget or preserve the original fixed-phase parameters automatically. No bound or new theorem is claimed here."
+  },
+  "rh_status": "OPEN",
+  "helper": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\seal_completion.py",
+    "sha256": "f95d5a97646980d6d9bd16baf6fce0cac1c460816d7478f3cd2e42f2c4ab8dd7"
+  }
+}

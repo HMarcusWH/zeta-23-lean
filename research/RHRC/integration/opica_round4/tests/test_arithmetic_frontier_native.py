@@ -1,0 +1,135 @@
+"""Arithmetic-frontier native slices: independent checks and evidence binding (CI).
+
+Floating-point free and without optional skips. It uses the shared numpy-free
+source assembly ``native_source.py``, the acceptance kernel ``certificates.py``
+and the independent checker ``independent_check.py``. It re-certifies the
+archived small-aperture statements, reconstructs a small checkpoint on the
+large-state path, and binds every recorded result to the exact producer bytes:
+
+* Increment 2 records to the preserved version-1 producer in
+  ``evidence/increment2/producer/`` (history, superseded acceptance logic);
+* Increment 2B records to the current engine, source module and kernel;
+* level-3 reconstructions to the checker, source module and kernel.
+
+A hash check certifies byte identity only; the decisive inequalities are
+recomputed only where a test says so. Numpy discovery controls live in
+``test_arithmetic_frontier_discovery.py`` and are not acceptance tests.
+RH and Step 4 remain OPEN.
+"""
+from fractions import Fraction
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import unittest
+
+ROOT = Path(__file__).resolve().parents[1] / 'arithmetic_frontier'
+EV2 = ROOT / 'evidence' / 'increment2'
+EV2B = ROOT / 'evidence' / 'increment2b'
+
+
+def load(name: str, path: Path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+IC = load('_frontier_independent_check_ci', ROOT / 'independent_check.py')
+SRC = load('_frontier_native_source_ci', ROOT / 'native_source.py')
+K = load('_frontier_certificates_ci', ROOT / 'certificates.py')
+
+
+def sha(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def exact_from_str(s: str) -> Fraction:
+    if '*2^' in s:
+        m, e = s.split('*2^')
+        e = int(e)
+        return Fraction(int(m)) * (Fraction(2) ** e if e >= 0 else Fraction(1, 2 ** (-e)))
+    return Fraction(s)
+
+
+class SourceAssemblyTests(unittest.TestCase):
+    def test_vectorized_entries_match_the_direct_backend(self):
+        st = SRC.NativeState(Fraction(5, 2), K=4, bits=128)
+        ref = st.backend.canonical_source_matrix(st.L, 4, st.Q)
+        for r, n in enumerate(range(-4, 5)):
+            for c, m in enumerate(range(-4, 5)):
+                self.assertTrue(st.entry(n, m).overlaps(ref[r, c]), (n, m))
+
+    def test_parity_reduction_is_exact_with_physical_weights(self):
+        st = SRC.NativeState(Fraction(5, 2), K=4, bits=128)
+        ref = st.backend.canonical_source_matrix(st.L, 4, st.Q)
+        z = [Fraction(3, 8), Fraction(-1, 4), Fraction(5, 16), Fraction(1, 8), Fraction(-3, 4)]  # exact dyadic witnesses
+        for parity in ('even', 'odd'):
+            E, w = st.reduced(parity)
+            zz = z[:E.nrows()]
+            x = [zz[abs(n)] if parity == 'even' else (Fraction(1 if n > 0 else -1) * zz[abs(n) - 1] if n else Fraction(0))
+                 for n in range(-4, 5)]
+            Z, X = K.exact_vector(zz), K.exact_vector(x)
+            self.assertTrue(K.quadratic(E, Z).overlaps(K.quadratic(ref, X)))
+            self.assertEqual(sum(v * v for v in x), sum(w[i] * zz[i] ** 2 for i in range(len(zz))))
+
+    def test_slice_equations_are_the_lean_moments(self):
+        st = SRC.NativeState(Fraction(2), K=6, bits=128)
+        for parity, k in (('even', [0, 2, 4]), ('odd', [1, 3, 5])):
+            C = st.constraints(parity)
+            Y = IC.elimination_basis_on(C, IC.spread_pivots(C.ncols(), C.nrows()))
+            self.assertEqual(Y.ncols(), 6 - 3 if parity == 'even' else 6 - 4)
+            self.assertTrue(K.in_kernel(C, Y))
+
+    def test_quartic_cutoff_prime_cell_and_precision_floor(self):
+        self.assertEqual([SRC.quartic_cutoff(Fraction(x)) for x in (2, Fraction(9, 4), Fraction(5, 2), 4, 5, 6, 7)],
+                         [16, 26, 40, 256, 625, 1296, 2401])
+        self.assertEqual([p for p, _ in SRC.prime_atoms(12)], [2, 3, 4, 5, 7, 8, 9, 11])
+        with self.assertRaises(ValueError):
+            SRC.NativeState(Fraction(2), K=4, bits=64)
+
+
+class IndependentCheckerTests(unittest.TestCase):
+    def test_archived_point_statements_reproduced_independently(self):
+        for L, margin, bits in ((Fraction(2), 2 ** 64, 192), (Fraction(9, 4), 2 ** 100, 256), (Fraction(5, 2), 2 ** 146, 512)):
+            for parity in ('even', 'odd'):
+                out = IC.check_margin(L, parity, Fraction(1, margin), bits)
+                self.assertEqual(out['status'], 'CERTIFIED', (str(L), parity))
+                self.assertEqual(out['dimension'], out['K'] - (3 if parity == 'even' else 4))
+
+    def test_margin_above_the_bottom_is_falsified(self):
+        self.assertEqual(IC.check_margin(Fraction(2), 'even', Fraction(1, 2 ** 50), 192)['status'], 'FALSIFIED_BOUND')
+
+    def test_large_state_path_on_a_small_checkpoint(self):
+        for parity in ('even', 'odd'):
+            out = IC.reconstruct_checkpoint(Fraction(2), parity, Fraction(1, 2), bits=192, block=4)
+            self.assertEqual(out['status'], 'CERTIFIED')
+            self.assertEqual(out['assurance_level'], 'LEVEL_3_INDEPENDENT_BASIS_AND_CERTIFICATE_SHARED_SOURCE_ASSEMBLY')
+
+    def test_large_state_path_refuses_a_negative_tolerance_claim(self):
+        # tolerance -1/2 asks for a positive margin of 1/2, false at L = 2
+        out = IC.reconstruct_checkpoint(Fraction(2), 'even', Fraction(-1, 2), bits=192, block=4)
+        self.assertNotEqual(out['status'], 'CERTIFIED')
+
+
+class Increment2HistoryTests(unittest.TestCase):
+    """Version-1 records stay bound to the preserved version-1 producer bytes."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.summary = json.loads((EV2 / 'SUMMARY.json').read_bytes())
+
+    def test_records_are_bound_to_the_preserved_producer(self):
+        producer = EV2 / 'producer' / 'native_slice.py'
+        self.assertEqual(sha(producer), self.summary['engine_sha256'])
+        for e in self.summary['records']:
+            self.assertEqual(sha(EV2 / e['file']), e['sha256'])
+            rec = json.loads((EV2 / e['file']).read_bytes())
+            self.assertEqual(rec['source']['replay_module_sha256'], self.summary['engine_sha256'])
+            self.assertEqual((rec['RH'], rec['Step4']), ('OPEN', 'OPEN'))
+        for e in self.summary.get('supplementary', []):
+            self.assertEqual(sha(EV2 / e['file']), e['sha256'])
+
+
+if __name__ == '__main__':
+    unittest.main()

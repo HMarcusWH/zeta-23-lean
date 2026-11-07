@@ -1,0 +1,107 @@
+{
+  "status": "COMPLETE_BOUNDED_COMMON_INPUT_AND_TERMINAL_STORAGE_PASS_NOT_STEP4_CLOSURE",
+  "created_utc": "2026-11-02T09:49:38.726550+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "clean": true
+  },
+  "goal": "Close the independent arithmetic restriction required by the exact Step4/RH implication. This remains unachieved and ACTIVE.",
+  "records": {
+    "prior_pass": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\MOMENT_CORRECTION_AND_CAUSAL_FEEDBACK_COMPLETION.json",
+      "sha256": "f231a0e6f8581b84eef5621cb883d43b75a1b0ae2b290b5ae4e0709f7d39b73a",
+      "bytes": 11179
+    },
+    "common_input_note": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\common-real-source-synthesis\\ACTUAL_COMMON_REAL_SOURCE_SYNTHESIS.json",
+      "sha256": "e894d6f9a32329c0a7a1a2f0a11f4ac23a9a08f7a3fe30ab73f9d7acc7562dab",
+      "bytes": 26723
+    },
+    "common_input_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\common-real-source-synthesis\\COMPLETION.json",
+      "sha256": "fc836767c543bf5d3acc712c9ec4eab15df710c040ef2601f05e93f1ce0885e6",
+      "bytes": 5799
+    },
+    "common_input_root_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\common-real-source-synthesis\\INDEPENDENT_ROOT_COMMON_REAL_SYNTHESIS_REVIEW.json",
+      "sha256": "70bd3bab85c46d84ab254eff8d5b293d1aa2d5acbb6416310ba60b840f52294f",
+      "bytes": 13553
+    },
+    "storage_note": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-storage\\ACTUAL_F_CAUSAL_TERMINAL_STORAGE.json",
+      "sha256": "c1c6c8ebb4adc2f7314dd8928529066736e105656713b42bdfcb2ad56b73ac88",
+      "bytes": 13219
+    },
+    "storage_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-storage\\COMPLETION.json",
+      "sha256": "fc603414211dd99bea3694de4efffe5b0af9675e6cd1ab0cc1acd3a4ea08be62",
+      "bytes": 4140
+    },
+    "storage_root_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-storage\\INDEPENDENT_ROOT_F_TERMINAL_STORAGE_REVIEW.json",
+      "sha256": "00ca4cbc31f59069192971e82658e8e73cae2fbe46834d3898a93cb88f899dd3",
+      "bytes": 9964
+    },
+    "storage_notation_qualification": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-storage\\NOTATION_QUALIFICATION.json",
+      "sha256": "8e78153eee8e4f1e1be42b0b8bee3820d96a660bcae28bc5e4277a28768a02e0",
+      "bytes": 972
+    },
+    "ci_snapshot": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\CHECKPOINT.json",
+      "sha256": "b5c13686b182c15b287e4fb18c6b8597fba4656a84cdfa9a47390ec68d1dbf81",
+      "bytes": 17127
+    },
+    "canonical_harvest": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "21c103bc33e370ba8092fa76543ce5d690e928304f761bb8a7d3e17a5aad38e6",
+      "bytes": 31598
+    }
+  },
+  "verification": {
+    "embedded_bindings_rehashed": 147,
+    "unique_paths": 110,
+    "root_read_all_new_mathematical_sections": true,
+    "scope": "Both final source-bound notes independently reviewed; their completions retain separate peer receipts. CI local artifact bytes, evidence, source and comparison bindings rehashed; archive-internal inventories retain the independent actual harvest authority rather than being mistaken for local paths. No new compiler authority is claimed.",
+    "sealer_corrections": "Two initial external sealing attempts stopped before writing completion or latest pointer: a document-relative note path was initially treated as workspace-relative, then an archive-member path was treated as a local file. Resolution is now explicit by record context; the actual ZIP/evidence/source bindings remain verified."
+  },
+  "what_became_formally_true": "No new Lean declaration this pass. The source identities and small-aperture scalar margin already exist in the repository; the new compositions are DERIVED analytic results. Current1079 declaration scope remains unchanged.",
+  "new_results": [
+    "Every pair in the actual real-even and imaginary-odd H spans has a common finite REAL signed translate input, including resonant apertures. An explicit active-preimage construction costs at most a polynomial in beta,K. A full consecutive-frequency Vandermonde gives a finite synthesis upper bound with the exact remaining Hmin factor; no aperture-uniform inverse estimate follows.",
+    "On the explicit center interval (2B,3B), every such smooth input has full Weil energy at least (2-3B)||h||^2, by the existing generic Arch formula, small-aperture margin and the actual source half-moment zeros. No prime term survives its tiny autocorrelation support.",
+    "If its native projection z has Q(z)<=-||z||^2, its COMPLETE physical canonical-response error obeys ||C_L(h-z)||>=||z||. This is an actual quadratic-sign lower bound, not an inference from a large worst-case inverse estimate. Therefore every such common input synthesizing the conditional negative target has TV(mu)>=||z||/(2Eout_H). The bound also applies when its extra endpoint moments vanish.",
+    "The exact causal prime-power square completion includes a nonnegative terminal-memory term. On the actual n=2 source plateau, a real prime band proves that this particular term grows at least c_a exp((1/2-a)T) for every fixed0<=a<1/2. The input charge and bulk can cancel it; no contradiction or full-energy sign follows.",
+    "The extra half-zero has literal finite-history primitive suppliers R1 and R2, with their noncompact plateaux retained. The centered full energy keeps its negative primitive bulk below critical damping, endpoint square, actual discrepancy pairing and complete Selberg forcing. Known stretched-exponential estimates supply no improved exponential rate."
+  ],
+  "workflow_harvest": {
+    "snapshot_utc": "2026-11-02T09:20:44Z",
+    "runs": 24,
+    "attempts": 24,
+    "jobs": 94,
+    "success": 89,
+    "running": 3,
+    "optional_skipped": 2,
+    "failed": 0,
+    "new_result": "Round4 INDEPENDENT_CANONICAL job125141213440, run41378780656 attempt1, current7bae, completed successfully. Actual transport and full generated-state materializer/classification receipts checked; all81 product hashes and all3 deterministic views equal the same-head producer. Fresh command logs are distinct.",
+    "classification": "Regression and canonical generation/compiler-dependency consistency. Terminal scientific disposition RH_OPEN; no new sign or closing estimate.",
+    "limits": "CORE,AUXILIARY and Round2 generated remained running. Final ACCEPTANCE has not passed. The canonical group is not a substitute for the separate full support/semantic-control replay.",
+    "artifact": "Artifact13129421111 entire108936-byte ZIP and nested transport were hashed; sha256 d9fc3eebfe2d77c3ad2668f1933c6dcd0fd8bfde248f521df4ec352d94645791."
+  },
+  "what_changed": "The previously unresolved common-real-input issue is settled constructively. It does not separate the conditional negative targets from the source spans. A genuine source-specific lower bound now identifies the compensating physical response and coefficient price for those targets. A specific bounded terminal-storage proposal is falsified on the actual source.",
+  "upstream_implications": "Keep common-input existence, active native preimages and stable reconstruction distinct. Fixed-source uniformity cannot be inferred from per-column approximation. The real arithmetic history admits canceled primitive suppliers, but squares of those histories do not inherit canceled linear moments.",
+  "downstream_implications": "A fixed total-variation budget on the tiny-support input cannot realize normalized negative targets along a sequence with Eout_H tending tozero. No existing theorem forces the hypothetical zero-generated targets to obey such a budget. Ground-specific overlap/gap and the complete signed output remain the unresolved quantitative obligations.",
+  "resurrected_routes": "Joint synthesis can now be used constructively even at source resonances and after the reviewed extra moment corrections. A compensated energy method may still be useful, but must keep its actual counterterms and discrepancy pairing.",
+  "new_RH_relevant_lead": "Test an independent estimate on the full target-dependent two-center source-response kernel or the exact eigenstate, retaining the demonstrated error/coefficient compensation. Neither qualitative injectivity nor boundedness of the isolated prime terminal storage can supply it.",
+  "falsification_checks": "The smooth-input positivity and negative finite projection coexist through a mandatory large physical response error. The actual terminal-memory lower uses the early n=2 plateau and genuine prime asymptotics; it does not replace Lambda or assert a sign for the full energy. C4 decay notation kappa_a is independent of C2 explicit c_a, as bound in the qualification.",
+  "highest_leverage_next": "Study the complete signed eigenstate or target-conditioned response estimate at its actual source budget. Do not repeat endpoint moment additions, finite common-input surjectivity or an isolated unbounded-storage estimate as if they supplied a new arithmetic restriction. The independent estimate needed for Step4 is still unproved.",
+  "implementation_scope": "External research notes and review receipts only. No repository change, new PR commit, compiler run, mandatory gate change, or replacement of the prescribed quartic target.",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal_status": "ACTIVE",
+  "helper": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\seal_common_input_storage_pass.py",
+    "sha256": "9cfd4d6358db06f0a66dc289a018f816ed93063bcff0977918071acf7d2e67d7",
+    "bytes": 10921
+  }
+}

@@ -116,6 +116,58 @@
       "typed_declaration": null
     },
     {
+      "id": "C1_COFINAL_MOMENT_SLICES",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_L_K_PARITY_CARRIER_AND_PHYSICAL_NORM",
+      "proposition": "CofinalMomentSliceVanishingErrorBounds",
+      "typed_declaration": "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentSliceVanishingErrorBounds",
+      "quantifiers": [
+        "for every n>=1 an aperture L>=n+2 and one parity covering its entire moment slice at the literal quartic cutoff with tolerance 1/n",
+        "Read full compiler-exported Lean type; metadata is not a substitute"
+      ],
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds"
+      ],
+      "next_test": "Predeclared E-H6 horizon and a source-specific supplier; finite certificates do not discharge the quantifier"
+    },
+    {
+      "id": "P1_SELECTED_PACKET_GROUND_RESPONSE",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "SAME_SELECTED_PACKET_STATE",
+      "proposition": "EventualDisjointQuarticGroundRestriction",
+      "typed_declaration": "Zeta23.OPICARound4.ArithmeticFrontier.EventualDisjointQuarticGroundRestriction",
+      "quantifiers": [
+        "exists R before every late disjoint quartic state; both exact ground responses below one; no shared-ground premise",
+        "Read full compiler-exported Lean type; metadata is not a substitute"
+      ],
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_eventual_disjoint_quartic_ground_restriction",
+        "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_selected_packet_ground_restriction"
+      ],
+      "next_test": "Uniform over eligible outputs or one output carrying both properties"
+    },
+    {
+      "id": "C2_ACTUAL_LONG_TERM_LOWER",
+      "kind": "LEAF",
+      "status": "OPEN",
+      "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+      "witness": "LITERAL_CORRELATION_SOURCE",
+      "proposition": "Eventual constant lower bound on the literal native long term",
+      "typed_declaration": null,
+      "quantifiers": [
+        "exists C>0 and T before every t>=T",
+        "Premise is stated inline in its consumer"
+      ],
+      "consumers": [
+        "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower"
+      ],
+      "next_test": "Complete signed off-diagonal with the rank-one term retained"
+    },
+    {
       "id": "STEP4_ALTERNATIVES",
       "kind": "OR",
       "children": [
@@ -125,7 +177,10 @@
         "D4_DIRECT",
         "B_CAUSAL",
         "A_SIGNED_OBSERVATION",
-        "C_DIRECT_COMPLEMENT"
+        "C_DIRECT_COMPLEMENT",
+        "C1_COFINAL_MOMENT_SLICES",
+        "P1_SELECTED_PACKET_GROUND_RESPONSE",
+        "C2_ACTUAL_LONG_TERM_LOWER"
       ]
     }
   ],
@@ -298,5 +353,15 @@
     "direct_route": "The original smooth trial already has its negative depth. A source-specific contrary lower estimate can bypass ground/tie and full regular-cell closure.",
     "error_reduction": "Vanishing finite-to-smooth error preserves the hypothetical loss; it does not supply the missing arithmetic sign.",
     "metadata_can_discharge_leaf": false
+  },
+  "arithmetic_frontier_extension": {
+    "status": "OPEN",
+    "added_leaves": [
+      "C1_COFINAL_MOMENT_SLICES",
+      "P1_SELECTED_PACKET_GROUND_RESPONSE",
+      "C2_ACTUAL_LONG_TERM_LOWER"
+    ],
+    "register": "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+    "rule": "Added OR alternatives only; retained_research_nodes keep their historical scope."
   }
 }

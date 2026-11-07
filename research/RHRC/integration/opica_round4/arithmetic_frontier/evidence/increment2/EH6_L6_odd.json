@@ -1,0 +1,334 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_NATIVE_SLICE_RUN_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "hashes": {
+    "gram_sha256": "6253d308d0989e32b6dade7d1cfe53c46e0888d0fcb9c89ef12d61e4be8a65b6",
+    "prime_power_list_sha256": "7097cb944513b70e69d6a23abe7f45b5971677d265ede54c42e4f02dc44cc0cf",
+    "basis_proposal_sha256": "be931ecc7ea763521932dd03ad64682cfee703e1d3565bb977a79e810f343c27"
+  },
+  "state": {
+    "L_exact": "6",
+    "cutoff_expression": "originalDetectorQuarticCutoff(L)=ceil(L^4)",
+    "K": 1296,
+    "Q": 403,
+    "prime_powers": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      11,
+      13,
+      16,
+      17,
+      19,
+      23,
+      25,
+      27,
+      29,
+      31,
+      32,
+      37,
+      41,
+      43,
+      47,
+      49,
+      53,
+      59,
+      61,
+      64,
+      67,
+      71,
+      73,
+      79,
+      81,
+      83,
+      89,
+      97,
+      101,
+      103,
+      107,
+      109,
+      113,
+      121,
+      125,
+      127,
+      128,
+      131,
+      137,
+      139,
+      149,
+      151,
+      157,
+      163,
+      167,
+      169,
+      173,
+      179,
+      181,
+      191,
+      193,
+      197,
+      199,
+      211,
+      223,
+      227,
+      229,
+      233,
+      239,
+      241,
+      243,
+      251,
+      256,
+      257,
+      263,
+      269,
+      271,
+      277,
+      281,
+      283,
+      289,
+      293,
+      307,
+      311,
+      313,
+      317,
+      331,
+      337,
+      343,
+      347,
+      349,
+      353,
+      359,
+      361,
+      367,
+      373,
+      379,
+      383,
+      389,
+      397,
+      401
+    ],
+    "parity": "odd",
+    "carrier": "oddMomentSlice",
+    "dimension": 1292,
+    "metric": "PHYSICAL_INHERITED_EUCLIDEAN",
+    "state_kind": "ACTUAL_STATE"
+  },
+  "precision_bits": 192,
+  "source": {
+    "backend": "research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py",
+    "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+    "replay_module_sha256": "633bec1ecd4d6bfb8ba68077515be7880380b7b001e069d4efd67b2c38f4f203"
+  },
+  "basis": {
+    "kind": "FLOAT_W_ORTHONORMAL_PROPOSAL_EXACTLY_CORRECTED_ON_FOUR_PIVOTS",
+    "gram_certificate": {
+      "status": "CERTIFIED",
+      "tau": "1/4",
+      "residual_frobenius_upper": 3.066041584389503e-15,
+      "certified_lower_eigenvalue": 0.24999999999999692
+    },
+    "flag_split_index": 648,
+    "low_dimension": 644
+  },
+  "endpoint_certificates": [
+    {
+      "status": "CERTIFIED",
+      "tau": "1/8",
+      "residual_frobenius_upper": 3.6920261081302036e-14,
+      "certified_lower_eigenvalue": 0.12499999999996307,
+      "tolerance": "1/4",
+      "statement": "Q_p(L,x) >= -1/4 ||x||^2 for every x in the slice"
+    }
+  ],
+  "diagnostics": {
+    "floating_generalized_eigenvalues_lowest": [
+      -6.413692162640254e-15,
+      -6.054687614175343e-15,
+      -5.880661507071628e-15,
+      -5.837515094901626e-15,
+      -5.836002266231568e-15,
+      -5.720317141428628e-15
+    ],
+    "floating_generalized_eigenvalue_highest": 13.191021491256175,
+    "near_null_count_below_1e-8": 341,
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING_ONLY"
+  },
+  "channel_extremes_on_slice": {
+    "pole": {
+      "floating_min": -4.380454637841803e-58,
+      "floating_max": 8.593872142221395e-58,
+      "rigorous_rayleigh_at_min_vector": "[+/- 1.63e-55]"
+    },
+    "minus_arch": {
+      "floating_min": -1.4237293779827036,
+      "floating_max": 5.375094179781968,
+      "rigorous_rayleigh_at_min_vector": "[-1.423729378 +/- 1.74e-11]"
+    },
+    "minus_prime": {
+      "floating_min": -5.365742771788125,
+      "floating_max": 7.834607770250043,
+      "rigorous_rayleigh_at_min_vector": "[-5.365742772 +/- 2.12e-10]"
+    },
+    "meaning": "each channel alone on the same slice and metric; the native form is pole - arch - prime",
+    "authority": "FLOATING_SPECTRA_WITH_ONE_RIGOROUS_RAYLEIGH_VALUE_PER_CHANNEL"
+  },
+  "bottom_vector_budget": {
+    "rayleigh_upper_bound": "[1.95697778581e-18 +/- 2.43e-30]",
+    "pole": "[+/- 1.09e-56]",
+    "arch": "[-3.16182341753 +/- 5.46e-13]",
+    "prime": "[3.16182341753 +/- 5.46e-13]",
+    "energy": "[1.95697778581e-18 +/- 2.43e-30]",
+    "physical_norm_sq": "[1.00000000000 +/- 2e-16]",
+    "relation": "energy = pole - arch - prime on this exact slice vector; the Rayleigh value bounds the slice bottom from above",
+    "authority": "RIGOROUS_ENCLOSURES_FOR_ONE_EXACT_SLICE_VECTOR"
+  },
+  "block_tests": [
+    {
+      "target_tolerance": "1/4",
+      "low_dimension": 644,
+      "high_dimension": 648,
+      "coordinates": "FOURIER_PREFIX_FLAG_W_ORTHONORMAL_PROPOSAL",
+      "high_block_floating_extremes": [
+        0.249999999999994,
+        13.440999316751395
+      ],
+      "high_block_min_rayleigh_upper": 0.25000000000000006,
+      "unshifted_high_block_rayleigh": "[1.4334259e-17 +/- 2.56e-25]",
+      "fixed_quarter_high_gap": {
+        "law": "lambda_min(A_eps) >= 1/4 persists at this state (reconstructed reading of the continued 1/4 high-gap law)",
+        "status": "NOT_REFUTED_BY_THIS_WITNESS",
+        "witness_rayleigh_upper": 0.25000000000000006
+      },
+      "high_block_bounds": [
+        {
+          "label": "REPORTED_L4_HALF_CONSTANTS",
+          "a": "49/100",
+          "b": "9",
+          "a_le_A": "FALSIFIED_BOUND",
+          "A_le_b": "FALSIFIED_BOUND"
+        },
+        {
+          "label": "SUGGESTED",
+          "a": "244999/1000000",
+          "b": "1371/100",
+          "a_le_A": "CERTIFIED",
+          "A_le_b": "CERTIFIED"
+        }
+      ],
+      "scalar_gap": {
+        "witness_rayleigh_value": "[-56.56092386 +/- 4.45e-9]",
+        "status": "FALSIFIED_BOUND",
+        "statement": "for every scalar a with 0 < a <= lambda_min(A): D - a^-1 C C^T is not PSD",
+        "reason": "a <= lambda_min(A) <= rho gives D - CC^T/a <= D - CC^T/rho; the witness is negative for the latter"
+      },
+      "polynomial": {
+        "bounds_used": "SUGGESTED",
+        "a": "244999/1000000",
+        "b": "1371/100",
+        "degree": 64,
+        "X_sha256": "b380bbc9dd52c2a8b763da8529e2dc23bf3c6faae1aff621bd76b887be16d49a",
+        "R_sha256": "7774c604fc0440fc46571569a702f76fa719086b8d1af786d92d9879aff76382",
+        "upper_cap_status": "CERTIFIED",
+        "upper_cap_role": "parameter of X only; blockEnergy_nonneg_of_inverse_residual_certificate assumes no upper bound on A",
+        "q_power_over_a": 1.287204477614581,
+        "certificate_floating_min": 0.24999999999999303,
+        "status": "CERTIFIED",
+        "tau": "124999999/1000000000",
+        "residual_frobenius_upper": 1.6915317172852396e-14,
+        "certified_lower_eigenvalue": 0.12499999899998307,
+        "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.blockEnergy_nonneg_of_inverse_residual_certificate"
+      },
+      "native_form": {
+        "status": "CERTIFIED",
+        "tau": "1/8",
+        "residual_frobenius_upper": 3.6920261081302036e-14,
+        "certified_lower_eigenvalue": 0.12499999999996307
+      },
+      "interpretation": "A refuted surrogate is a failure of that sufficient estimate. It is a failure of the native form only if the direct certificate of B also fails with a rigorous negative vector."
+    }
+  ],
+  "budget_records": [
+    {
+      "state": {
+        "source": {
+          "definition": "canonicalSourceMatrix",
+          "version_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+          "prime_power_list_sha256": "7097cb944513b70e69d6a23abe7f45b5971677d265ede54c42e4f02dc44cc0cf"
+        },
+        "aperture": {
+          "L_exact": "6"
+        },
+        "cutoff": {
+          "expression": "originalDetectorQuarticCutoff(L)=ceil(L^4)",
+          "value": 1296
+        },
+        "parity": "odd",
+        "carrier": {
+          "name": "oddMomentSlice",
+          "dimension": 1292,
+          "constraints": [
+            "physical M1 = 0 (M0 = M2 = 0 by parity)",
+            "odd pole functional = 0",
+            "physical M3 = 0",
+            "physical M5 = 0"
+          ]
+        },
+        "metric": {
+          "kind": "PHYSICAL_INHERITED_EUCLIDEAN",
+          "gram_sha256": "6253d308d0989e32b6dade7d1cfe53c46e0888d0fcb9c89ef12d61e4be8a65b6"
+        },
+        "state_kind": "ACTUAL_STATE"
+      },
+      "partition": {
+        "blocks": [
+          {
+            "name": "D",
+            "kind": "Fourier-prefix moment slice through the split",
+            "dimension": 644
+          },
+          {
+            "name": "A",
+            "kind": "W-orthogonal complement inside the slice",
+            "dimension": 648
+          }
+        ],
+        "coupling_blocks": [
+          {
+            "name": "C",
+            "rows": "D",
+            "columns": "A",
+            "retained": "COMPLETE"
+          }
+        ],
+        "inverse_domain": "A >= a I certified; X = P_m(A) C^T, P_m(A) = b^-1 sum_{j<m} (I - A/b)^j",
+        "trial_inverse_X_sha256": "b380bbc9dd52c2a8b763da8529e2dc23bf3c6faae1aff621bd76b887be16d49a",
+        "residual_R_sha256": "7774c604fc0440fc46571569a702f76fa719086b8d1af786d92d9879aff76382"
+      },
+      "enclosure": {
+        "representation": "OUTWARD_ROUNDED_INTERVALS_WITH_PROOF",
+        "entry_error": "Arb balls at 192 bits from the repository equation-(4.4) backend",
+        "coordinate_error": "exact: floating proposal corrected in Arb on four pivots; C Y = 0 enclosed",
+        "inverse_response_error": "exact X (floating proposal); residual R = C^T - A X enclosed in Arb"
+      },
+      "budget": {
+        "retained_diagonal": "D (complete low block of F + eps G)",
+        "full_inverse_response": "C X + X^T C^T - X^T A X",
+        "residual_allowance": "a^-1 R^T R with a = 244999/1000000",
+        "E_err": "shifted factorization residual, Frobenius bound 1.6915317172852396e-14",
+        "physical_margin": "Q_p >= -1/4 ||x||^2 on the slice",
+        "certificate_form_lower_eigenvalue_coordinates": 0.12499999899998307,
+        "tolerance": "1/4"
+      },
+      "disposition": "CERTIFIED"
+    }
+  ],
+  "seconds": 307.7,
+  "build_seconds": 122.3,
+  "campaign_entry": "EH6_L6_odd"
+}

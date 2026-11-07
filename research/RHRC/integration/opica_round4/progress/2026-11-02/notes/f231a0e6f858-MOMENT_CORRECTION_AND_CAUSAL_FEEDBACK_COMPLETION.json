@@ -1,0 +1,112 @@
+{
+  "status": "COMPLETE_BOUNDED_MOMENT_AND_CAUSAL_FEEDBACK_PASS_NOT_STEP4_CLOSURE",
+  "created_utc": "2026-11-02T09:17:32.746210+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "clean": true
+  },
+  "previous_goal_turn": "PROGRESS: the reviewed source-family/cubic-cutoff bridge and complete signed forcing changed the next investigation. This continuation tests the previously missing extra moment rows and a specific feedback-energy sign.",
+  "goal": "Close the independent arithmetic restriction required by the exact Step4/RH implication. This remains unachieved and ACTIVE.",
+  "records": {
+    "prior_pass": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\SOURCE_FAMILY_AND_SIGNED_FORCING_COMPLETION.json",
+      "sha256": "01e1c68af76a7d649fda2b58fc6f5e6330ad47d17c0572222a3965f73727c6a5",
+      "bytes": 12716
+    },
+    "moment_note": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\ACTUAL_ORIGINAL_H_SPAN_MOMENT_CORRECTIONS.json",
+      "sha256": "fc9e572132b248fef8fd984a02b6d755d06b9073e90674a3529e1c8143d07779",
+      "bytes": 23472
+    },
+    "moment_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\COMPLETION.json",
+      "sha256": "50fdf9d8b898b5d268a5faf690c4b6645b07ccad4c969164e3bf20702851a987",
+      "bytes": 6747
+    },
+    "moment_root_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\INDEPENDENT_ROOT_MOMENT_CORRECTION_REVIEW.json",
+      "sha256": "d1ed46586ea3387cd44b30164b2ab15661e201d92623357376eef4db2192ad57",
+      "bytes": 12446
+    },
+    "moment_peer_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\INDEPENDENT_ORIGINAL_H_MOMENT_CORRECTION_REVIEW.json",
+      "sha256": "b5b587dc366889559135d67b0433dfa856fb64e91b34b10657cc9108d49a751e",
+      "bytes": 18709
+    },
+    "moment_exact_algebra": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-moment-correction\\ROOT_EXACT_CORRECTION_IDENTITIES.json",
+      "sha256": "5130127fc5a82f7f96f833fa4834f40b0b519da27d65851a50ff5d77d3b246ca",
+      "bytes": 5547
+    },
+    "energy_note": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-energy\\ACTUAL_F_CAUSAL_ENERGY_COUNTERCHECK.json",
+      "sha256": "d3831ca36cb6f7250efe4adb4ba1e7e8befa8e66a9eb47e8a64038f5058712a6",
+      "bytes": 9832
+    },
+    "energy_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-energy\\COMPLETION.json",
+      "sha256": "2f568e29c7704fe9c36a615c906dcb8177fa1ca1890b9314122a166524dc1f83",
+      "bytes": 3280
+    },
+    "energy_root_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-energy\\INDEPENDENT_ROOT_F_CAUSAL_ENERGY_REVIEW.json",
+      "sha256": "5b3cddf5396abb25442a88a1e64adc2d7cf25f549935727dad4f07fc98616541",
+      "bytes": 10380
+    },
+    "energy_peer_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-energy\\INDEPENDENT_F_CAUSAL_ENERGY_REVIEW.json",
+      "sha256": "22da346a29d8d393d2200f9b9560b746db7ebfe5121258ce06eac7b5424689e1",
+      "bytes": 15331
+    },
+    "ci_snapshot": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next12\\CHECKPOINT.json",
+      "sha256": "259a29e6873a718fefd5b65200dc4e3a30e9ff0e8fde9be40ee5e531a4b4735b",
+      "bytes": 17436
+    }
+  },
+  "verification": {
+    "embedded_bindings_rehashed": 171,
+    "unique_paths": 97,
+    "root_read_all_new_mathematical_sections": true,
+    "review_scope": "Both notes have separately authored peer checks as bound by their completions. New algebra has268 exact symbolic identities/35 generalized finite cases. Growing-order and actual-source energy arguments are analytic, not consequences of those finite checks."
+  },
+  "what_became_formally_true": "No new Lean declaration. No compiler run or source edit. All new deductions below are DERIVED analytic mathematics; current1079 declarations and existing CI authority are unchanged.",
+  "new_results": [
+    "Explicit fixed low-frequency native vectors correct M4 even and M3/M5 odd while remaining in the ORIGINAL H-translate span, including resonances. Their moment right-inverse norms have polynomial beta bounds. This does not bound the inverse synthesis coefficients for individual H columns.",
+    "With complete moment residuals and physical H1/source costs, the corrected witnesses retain any prescribed fixed negative margin at K=ceil(C L^3), conditional on an actual off-line zero. The full error is bounded by a source/C constant times L30 exp[(1/2-lambda1 sqrt(C))L]. No ground identification or first-birth margin transfer is inferred.",
+    "A fully priced Vandermonde construction extends this to r(L)=floor(sqrt L): every even moment through2r and every odd moment through2r+1 can be set tozero, with opposite-parity moments automatic and both exact pole rows retained. Explicit factorial and matrix bounds cost exp[O_C(sqrt L log L)], leaving the same negative exponential slack. These vectors remain in the original H span. This is not an arbitrary growing-order or terminal Vandermonde claim.",
+    "The literal source kernel has a strictly positive first lobe: K(-B+x)>=(1-x-x4/384)phi triple derivative(-B+x)>0 for0<x<s/3. The proof uses the actual four uniform boxes and the original positive residual tail law, including its positive mass near the lower support edge.",
+    "The complete weighted feedback energy D_a(T)=integral_0^T exp(-2at)F(t)[Lambda;F](t)dt is strictly negative for everya>=0 and everyT in one source-fixed interval immediately after log4-B. The exact actual source then consists of old n2/n3 plateaux and the newborn n4 prime-power channel; the feedback is exactly the ordered(2,2) channel and was zero before that interval.",
+    "The complete Selberg energy identity still retains -1/4 integral(weight F), the signed remainder pairing and the noncompact source-coordinate pairing. The early negative feedback falsifies unconditional all-horizon accretivity, not eventual or compensated estimates."
+  ],
+  "workflow_harvest": {
+    "snapshot_utc": "2026-11-02T08:47:09Z",
+    "status": "UNCHANGED_FROM_NEXT11",
+    "runs": 24,
+    "attempts": 24,
+    "jobs": 94,
+    "success": 88,
+    "running": 4,
+    "optional_skipped": 2,
+    "failed": 0,
+    "authority": "Live PR299 head/tree and complete run/attempt/job/comment sweep by delegated auditor. No new green result, artifact download, compiler execution or final acceptance. Prior exact scientific harvest remains bound in next12."
+  },
+  "what_changed": "The exact extra-moment limitation of the prior cubic construction is removed without changing the source family. Even a controlled increasing number of moment rows can be retained. A specific tempting positive-feedback estimate is now falsified on the actual arithmetic source.",
+  "upstream_implications": "Use explicit low active Fourier slots to correct moment constraints inside the actual span. Naive whole-carrier orthogonal moment projection can leave that span at resonant apertures. Keep moment-map conditioning separate from H-column synthesis conditioning.",
+  "downstream_implications": "Any candidate positivity theorem can now be tested against source-preserving negative trial vectors satisfying these additional moment constraints. The signed full output, ground-specific overlap/gap and compensated delay terms remain to be controlled.",
+  "resurrected_routes": "The cubic source-family construction can be used with moment-slice statements that previously required the missing rows. It still cannot be substituted for an eigenstate or the prescribed quartic acceptance target.",
+  "new_RH_relevant_lead": "A useful energy theorem must control the same-source combination or include an explicitly bounded delay-storage term. Positive arithmetic coefficients alone do not make the actual delayed pairing nonnegative.",
+  "next_pass_source_domain_check": "LEAD retained for a source-bound audit: a common finite real signed translate measure may synthesize both physical parity vectors because joint cosine/sine annihilators separate. A delegate has checked the literal coefficient and real-projection conventions, but no separate completed source-bound receipt is claimed here. Such a measure is a freely chosen test combination, neither the original fixed detector nor the prime weights; no synthesis norm, derivative or physical error budget follows from qualitative surjectivity.",
+  "falsification_scope": "The conditional negative-witness construction does not refute a separately proved positivity theorem on the slice; such a theorem would provide the missing contradiction. The unconditional early-energy countercheck does not refute eventual bounds or the complete compensated energy.",
+  "highest_leverage_next": "Investigate the complete signed arithmetic output or a fully compensated source-specific energy inequality. Current CommonQuarticGround.recenteredSmoothPhase_fixed_energy explicitly removes the outer translation: after selecting separation a, increasing aperture L preserves the same smooth Weil energy. Do not confuse larger observation windows or more endpoint moment rows with a new bound in the arithmetic separation variable. A genuine arithmetic estimate still needs an independent proof.",
+  "implementation_scope": "No repository files, manifests, mandatory cutoffs, pins or proof registries changed. The new notes and review receipts are external research evidence only. No new PR commit.",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal_status": "ACTIVE",
+  "helper": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\seal_moment_feedback_pass.py",
+    "sha256": "f4b528a935155cca633d63f3f2aef43076b46c3c18fd3a21ff6acc3d6c64f493",
+    "bytes": 10043
+  }
+}

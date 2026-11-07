@@ -1,0 +1,58 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_PREDICTION_OUTCOMES_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "experiment": "E-H6",
+  "predictions": {
+    "E-H6_PREDICTIONS.json": "1701537ef8b54e1d474c296a93ae1a7fcac3f943e1e5b08c4d86354bb685f45b",
+    "E-H6_PREDICTIONS_ADDENDUM.json": "6dfdc01e72b767a001992a8b554e69a695646b0cfe05362959f63ee063e15c0a"
+  },
+  "records": {
+    "EH6_L6_even.json": "07e0e4b2ac595b7ec9ac74a5c46d024eb692d968f9f3c50afff240add77fec6d",
+    "EH6_L6_odd.json": "921c2ecce56c26fc3faa8166f78037340c6ddbf6ae107c09d753ff309d4458d7"
+  },
+  "outcomes": [
+    {
+      "id": "P1",
+      "result": "CONFIRMED",
+      "evidence": "direct shifted certificate of F + G/4: CERTIFIED in both parities (dimensions 1293, 1292), coordinate lower eigenvalue 0.125"
+    },
+    {
+      "id": "P2",
+      "result": "PARTLY_REFUTED",
+      "evidence": "the scalar gap fails as predicted (witness [-52.74456005 +/- 2.95e-9] even, [-56.56092386 +/- 4.45e-9] odd), but c = |w| eps = 13.19 and 14.14 lie outside the predicted [4, 12]; c grows with L (about 4.6, 8.7, 13.2 at the checkpoints n = 2, 3, 4)"
+    },
+    {
+      "id": "P3",
+      "result": "CONFIRMED",
+      "evidence": "unshifted complementary block Rayleigh values [8.2760892e-18 +/- 3.70e-26] and [1.4334259e-17 +/- 2.56e-25]"
+    },
+    {
+      "id": "P4",
+      "result": "REFUTED",
+      "evidence": "the degree-64 polynomial certificate with a = 244999/1000000, b = 1371/100 is CERTIFIED in both parities although q^64/a = 1.287; q^m/a is not the failure threshold"
+    },
+    {
+      "id": "P5",
+      "result": "CONFIRMED",
+      "evidence": "near-null counts 342 (even) and 341 (odd)"
+    },
+    {
+      "id": "P6",
+      "result": "CONFIRMED",
+      "evidence": "bottom-vector pole [+/- 4.04e-57] / [+/- 1.09e-56]; arch [-2.97387721969 +/- 3.29e-12] / [-3.16182341753 +/- 5.46e-13]; prime [2.97387721969 +/- 3.29e-12] / [3.16182341753 +/- 5.46e-13]"
+    },
+    {
+      "id": "P7",
+      "result": "CONFIRMED",
+      "evidence": "-arch minimum [-2.083802041 +/- 4.58e-10] / [-1.423729378 +/- 1.74e-11]; -prime minimum [-5.365876284 +/- 4.57e-11] / [-5.365742772 +/- 2.12e-10]"
+    },
+    {
+      "id": "P8",
+      "result": "CONFIRMED_WITH_TIMING_CAVEAT",
+      "evidence": "342 vs predicted 347 and 341 vs 346 (both -1.4 percent); see the addendum's integrity note"
+    }
+  ],
+  "disposition": "E-H6 ACCEPTED as a complete finite certificate in both parities at the predeclared state; it is the n = 4 checkpoint of (C1) only, not (C1)",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY"
+}

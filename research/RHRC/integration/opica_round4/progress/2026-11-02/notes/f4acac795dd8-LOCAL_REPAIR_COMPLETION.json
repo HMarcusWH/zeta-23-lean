@@ -1,0 +1,151 @@
+{
+  "status": "PASS_CLEAN_COMMITTED_PUSHED_LOCAL_REPAIR",
+  "recorded_utc": "2026-11-02T02:42:36.470902+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "base": "95bf424c4c4f94c6701c3210c81bfa58a4b50609",
+  "pr": 299,
+  "url": "https://github.com/HMarcusWH/zeta-23-lean/pull/299",
+  "repair": "Guarded unused hosted SDK reclamation before shared native/provider setup",
+  "failure": "CURRENT_COMPATIBILITY setup disk exhaustion on old95bf/run41370207486/job125050913194; bounded science never started; exact disk allocation unknown",
+  "counts": {
+    "authored": 2,
+    "generated_metadata_changed": 8,
+    "new_paths": 0,
+    "source_inputs": 5063,
+    "canonical_products": 81,
+    "writers": 4,
+    "original_full_structural_commands": 4,
+    "portable_each_mode": 231,
+    "registered_methods": 277,
+    "mandatory_native_methods": 46,
+    "retained_declarations": 1079,
+    "retained_modules": 90,
+    "retained_semantic_controls": 84,
+    "policy": [
+      225,
+      23,
+      81,
+      22
+    ]
+  },
+  "mathematics_pins_historical_registries_worker_recipes_unchanged": true,
+  "fresh_compiler_runs": 0,
+  "canonical_authority": "AUTHENTICATED_UNCHANGED_HISTORICAL_NATIVE_FACTS_WITH_FRESH_ORIGINAL_RENDER_AND_STRUCTURAL_CHECKS",
+  "linux_capacity_and_full_current_head_acceptance": "PENDING",
+  "retained_failures": [
+    {
+      "name": "portable-normal-restricted-failed",
+      "reason": "Six Bash fixture cases failed before Bash could start under restricted process permissions."
+    },
+    {
+      "name": "portable-normal-concurrent-writer-failed",
+      "reason": "One canonical fixture saw changing product hashes during overlapping canonical writer; repeated only after all writers completed."
+    }
+  ],
+  "initial_ci": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-initial\\CHECKPOINT.json",
+    "sha256": "a2eecb545ee2741e50481fcc4cc9936bc3f1833e357113b1419cb71fb6320150",
+    "bytes": 1225
+  },
+  "bindings": {
+    "INTEGRATION.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\INTEGRATION.json",
+      "sha256": "2bf60a385556c642aab9d2aaa1af0fc133d2fe9c0433575dd9567b1f3d526a92",
+      "bytes": 1001
+    },
+    "SOURCE_FREEZE.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\SOURCE_FREEZE.json",
+      "sha256": "82b378034eaf13d716f98e0fc42bf40554c1abb28634e9ca27311a65e9070e0a",
+      "bytes": 459
+    },
+    "HELPER_PREPARATION.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\HELPER_PREPARATION.json",
+      "sha256": "f4fc2a32512ff4df34ae34f655541b36cd17f2465b9c02e189ce8e19715bc347",
+      "bytes": 2595
+    },
+    "RUNTIME_CHECK.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\RUNTIME_CHECK.json",
+      "sha256": "544848e15d56547de1b4a63947b2b7303039c104d3c90e9e10ad2aac3fe3e813",
+      "bytes": 1446
+    },
+    "SDK_RECLAMATION_ACTUAL_STEP_TEST.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\SDK_RECLAMATION_ACTUAL_STEP_TEST.json",
+      "sha256": "3336badd70bb9a8700e133ea71e53d5eb7711597dc93b23f217a8f4a422d75b9",
+      "bytes": 3929
+    },
+    "INDEPENDENT_RUNTIME_REPAIR_REVIEW.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\INDEPENDENT_RUNTIME_REPAIR_REVIEW.json",
+      "sha256": "580ae33c882a1ac4d060b9b30a21fef5ba25b47d9b0826e973eeb8bca9aa1ae2",
+      "bytes": 13263
+    },
+    "FINAL_REPAIR_REVIEW.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\FINAL_REPAIR_REVIEW.json",
+      "sha256": "8eca2bcacc79eefb8a133fc9ee917d6f851f952426a66e105d72a20e5a78d4e3",
+      "bytes": 13649
+    },
+    "portable-publication-normal.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\portable-publication-normal.json",
+      "sha256": "f47fdcae977054e9b33ed09d4db73a24d4ed984b4e3acb629d8a71b2762e89ab",
+      "bytes": 29022
+    },
+    "portable-publication-optimized.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\portable-publication-optimized.json",
+      "sha256": "5e4cb5b8c85afd58ae296b2c4c57ab111e59f8f75822843f3d12ee86105d0378",
+      "bytes": 29021
+    },
+    "portable-normal-restricted-failed.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\portable-normal-restricted-failed.json",
+      "sha256": "e3200ef4892dfdddb3c748c883414c006804205c26eafbc8368d509ced8aa940",
+      "bytes": 29022
+    },
+    "portable-normal-restricted-failed.log": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\portable-normal-restricted-failed.log",
+      "sha256": "f04f19088bb0523a83f68db1938b03948be5483c4d2ec8f733f33440731882ac",
+      "bytes": 62168
+    },
+    "portable-normal-concurrent-writer-failed.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\portable-normal-concurrent-writer-failed.json",
+      "sha256": "2c33a9b97a776468141de041a141acfa6a3819e2526ea5761f730db9c7040ed2",
+      "bytes": 29022
+    },
+    "portable-normal-concurrent-writer-failed.log": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\portable-normal-concurrent-writer-failed.log",
+      "sha256": "e47a680353d26bccd7a6c3dbe51b9313d823bc5a5dd9c5d201e2a72ef6376670",
+      "bytes": 41172
+    },
+    "canonical-writer/result.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\canonical-writer\\result.json",
+      "sha256": "8888a99b43d52e805bf43bfe1812cd5728c337e1a550795d0822a9be742a4c46",
+      "bytes": 1240242
+    },
+    "canonical-verified/result.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\canonical-verified\\result.json",
+      "sha256": "50579db1a351be0130c751cf48e1c58733699b4f1afc50fff813550127eb3c07",
+      "bytes": 21738
+    },
+    "PRECOMMIT.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\PRECOMMIT.json",
+      "sha256": "816a3269dfe8b2422f1ba900d18a6c351660709d56d9e9731ef4a9bc964187db",
+      "bytes": 19070
+    },
+    "REMOTE_PR_VERIFIED.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\REMOTE_PR_VERIFIED.json",
+      "sha256": "4e8bc0d3c7342fa3034daf958500a47dc8fb6a940c8c642ae0bbaa79f5ca4d9e",
+      "bytes": 7569
+    },
+    "REMOTE_GIT_COMMIT.json": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\REMOTE_GIT_COMMIT.json",
+      "sha256": "3bb0dcccf46a5749dedb732b53261c3477945d31f0dbfd0871b72854136e0d82",
+      "bytes": 1307
+    },
+    "PR_BODY.md": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-runtime-disk-repair-2026-11-02\\PR_BODY.md",
+      "sha256": "e06870ec9786eb64e34fb0c353b48b0ecccf47aec8cb1d3771969c994c66819e",
+      "bytes": 6454
+    }
+  },
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE"
+}

@@ -1,0 +1,349 @@
+{
+  "status": "CLEAR_BOUNDED_INDEPENDENT_ACTUAL_FINITE_POLAR_INPUT_REVIEW",
+  "created_utc": "2026-11-02T04:45:09.708058+00:00",
+  "reviewer": "/root/madness_repo_map",
+  "reviewed_report": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_FINITE_POLAR_INPUT_MISMATCH.json",
+    "sha256": "4cd9b5e235ff4b8c3ac94b552e86aa65d14fc4b33317836b3cdee5aa8c709d6e",
+    "bytes": 12941
+  },
+  "observed_source_state": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "worktree_clean": true
+  },
+  "scope": {
+    "read": "All six report sections, quoted actual source/norm/index definitions and earlier sealed approximation/primitive reviews.",
+    "fresh_binding_checks": "All 17 report records and 3 additional normalization/carrier sources rehashed. All 15 current Lean sources byte-identical to current Git blobs.",
+    "no_new_execution_authority": "No Lean compilation, type/axiom audit, numerical quadrature, CI polling, repository mutation, or integration. All new finite-polar conclusions remain DERIVED."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "result": "CLEAR",
+      "detail": "The source is the literal real kappa=(d^2-1/4)q at s=1/4096 and H=kappa*kappa. It is not the one-copy second kernel P^2 q. H has mass (integral kappa)^2=(-1/4)^2=1/16. Actual D maps pole-neutral even to odd at the same L,K, is a genuine finite-dimensional equivalence, and has inverse norm at most 2. The finite polar S is positive definite. No infinite derivative inverse or deletion of the center mode is used."
+    },
+    {
+      "id": "F2",
+      "result": "CLEAR",
+      "detail": "Angular derivative normalization is D_phys=L/(2*pi*i) d/dt. Disjoint-support factors 1/sqrt(2) and inverse pairing pi*i*m^2/(2L) are correct for a conjugate-linear first inner-product slot. The finite transfer retains q=1 Fourier-tail control and differentiated low-mode boundary/pole repairs; D norm at most K is applied only to finite corrections. The same-K inverse bound 2 transfers an approximant of the endpoint-normalized primitive to D^-1 v. Source/c-dependent constants precede L, and K=ceil L^4 absorbs polynomial losses into all-order rapid errors. This uses the prior reviewed DERIVED approximation chain, not a newly compiled theorem."
+    },
+    {
+      "id": "F3_F4",
+      "result": "CLEAR",
+      "detail": "The repository paperFT has exp(+i*xi*t), so Plancherel has 1/(2*pi). Evenness doubles the half-line. Q>=1/2 on [0,1/s] gives ||H||^2>=s^-9/(144*pi)>2^-10*s^-9. The proved sinc decay gives |Q|^4<=16 exp(-sqrt(s*xi)); convexity bounds the fourth polynomial power by 8*(xi^8+1/256). The Gamma substitution contributes the required factor 2. Thus ||Hprime||^2<2^74*s^-11 and ||H||^3/||Hprime||>2^-52*s^-8=2^44, while m^2/2=2^-9. Hprime is nonzero since H is smooth, compactly supported and nonzero. No floating estimate or sign replacement of H is used."
+    },
+    {
+      "id": "F5",
+      "result": "CLEAR",
+      "detail": "For S>0, inverse Cauchy-Schwarz followed by Cauchy-Schwarz gives <u,S^-1u>>=||u||^3/||Su||. A unit-phase polar identification gives absolute inverse pairing equal to that positive quantity. The finite leading coefficients are respectively pi*m^2/(2L) and pi*||H||^3/(L*||Hprime||), with a strict positive difference. It follows that every sufficiently large L at the literal common cutoff excludes every unit-phase identification of these particular inputs. No ground, noncollision, off-line zero or RH hypothesis is introduced."
+    },
+    {
+      "id": "F6",
+      "result": "CLEAR",
+      "detail": "For e_zeta=U* v-zeta u, the exact pairing with S^-1u and reverse triangle inequality give the claimed norm estimate. For large L its numerator is at least pi*Delta_H/(2L) and ||S^-1u||<=2||H||, yielding pi*Delta_H/(4||H||L). The whole unit-phase circle is handled uniformly. The lower bound decays like 1/L and concerns INPUT mismatch only."
+    },
+    {
+      "id": "response_firewall",
+      "result": "CLEAR",
+      "detail": "With R=U*BU-A and e=U*v-u, unitarity gives U*Bv=(A+R)(u+e), hence exactly the displayed complete squared-response identity. A positive lower bound on ||e|| does not bound ||(A+R)e|| below or sign its covariance with Au. The note retains the corrected source, full complements, Arch, endpoint repairs and output-normal corrections. It supplies no opposing bound for the full self-echo or signed Mobius tail, and no RH closure."
+    }
+  ],
+  "exact_arithmetic_checks": {
+    "factorial_21_plus_one": 51090942171709440001,
+    "less_than_2_pow_66": true,
+    "scale_ratio_lower_at_s_2_pow_minus12": "2^(-52)*(2^12)^8=2^44",
+    "mass_square_half": "(1/16)^2/2=2^-9"
+  },
+  "source_anchors": [
+    {
+      "path": "Zeta23/CCM/UniversalSincDetector.lean",
+      "lines": [
+        29,
+        31
+      ],
+      "declarations": [
+        "UniversalSinc.fixedScale",
+        "UniversalSinc.fixedScale_pos"
+      ]
+    },
+    {
+      "path": "Zeta23/Defs.lean",
+      "lines": [
+        38,
+        44
+      ],
+      "declarations": [
+        "paperFT"
+      ],
+      "purpose": "Angular positive Fourier sign and Mathlib 2*pi conversion."
+    },
+    {
+      "path": "Zeta23/CCM/UniversalSincSourceFacade.lean",
+      "lines": [
+        22,
+        25,
+        28,
+        32,
+        41,
+        45,
+        48,
+        53,
+        57,
+        174,
+        183
+      ],
+      "purpose": "Literal q, positivity/mass/support/regularity/evenness, differential kernel and its Fourier factor; distinguishes second kernel."
+    },
+    {
+      "path": "Zeta23/CCM/UniversalSincPhysicalBounds.lean",
+      "lines": [
+        111,
+        209
+      ],
+      "declarations": [
+        "universalSincKernel_eq_real",
+        "universalSincProduct_decay"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/UniversalSincDetectorBounds.lean",
+      "lines": [
+        115
+      ],
+      "declarations": [
+        "UniversalSinc.product_norm_ofReal_le_gevrey"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/UniversalSincProductMoments.lean",
+      "lines": [
+        30,
+        54,
+        65
+      ],
+      "purpose": "Gamma/factorial moment normalization."
+    },
+    {
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "lines": [
+        35,
+        39
+      ],
+      "declarations": [
+        "actualCorrelationKernel",
+        "actualCorrelationSource"
+      ],
+      "purpose": "Exact self-convolution and real extraction."
+    },
+    {
+      "path": "Zeta23/CCM/BoundaryFlatFiniteSpace.lean",
+      "lines": [
+        29,
+        33
+      ],
+      "declarations": [
+        "localizedBaseFrequency",
+        "localizedFrequency"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPhysicalTrialRealization.lean",
+      "lines": [
+        223,
+        227,
+        237
+      ],
+      "purpose": "Finite physical derivative coefficients and norm control."
+    },
+    {
+      "path": "Zeta23/CCM/FinitePhysicalNormalization.lean",
+      "lines": [
+        31
+      ],
+      "declarations": [
+        "finitePhysicalSynthesis_energy"
+      ],
+      "purpose": "Actual Hilbert normalization, not Pi sup norm."
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPoleNeutralGeometry.lean",
+      "lines": [
+        132,
+        139,
+        146,
+        163
+      ],
+      "declarations": [
+        "poleNeutralIndexLinearMap",
+        "poleNeutralIndexLinearMap_injective",
+        "poleNeutralIndexLinearMap_surjective",
+        "poleNeutralIndexEquiv"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/ConstrainedParityGeometry.lean",
+      "lines": [
+        309,
+        338
+      ],
+      "purpose": "Inverse index primitive retains the necessary central coefficient."
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPoleNeutralSourceMoment.lean",
+      "lines": [
+        28
+      ],
+      "declarations": [
+        "poleNeutralIndexInverse_norm_le_two"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPoleNeutralTrialResidualBounds.lean",
+      "lines": [
+        40
+      ],
+      "declarations": [
+        "poleNeutralIndex_norm_le"
+      ]
+    }
+  ],
+  "reviewed_report_bindings": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\UniversalSincSourceFacade.lean",
+      "sha256": "99602adbc72ba8097fc20167da33f489932616055180b2aec33c45857dbbbf7b",
+      "bytes": 10093,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/CCM/UniversalSincSourceFacade.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\UniversalSincDetector.lean",
+      "sha256": "a383785569a65c36424cd8d273c822792df1b8041dc859b91f51ed5827ddb552",
+      "bytes": 12724,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/CCM/UniversalSincDetector.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\UniversalSincDetectorBounds.lean",
+      "sha256": "1d17ea7cfca55b16f767dd95ecf08406d0b411f0219075d6e344902050e7589e",
+      "bytes": 7265,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/CCM/UniversalSincDetectorBounds.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\UniversalSincProductMoments.lean",
+      "sha256": "50de885dbb65101ca693d5b53dca7f68684938f0ac2ad8af950e8002bef50112",
+      "bytes": 6342,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/CCM/UniversalSincProductMoments.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\UniversalSincPhysicalBounds.lean",
+      "sha256": "a95a81960a2e6b50bd743bfcd262cfba72a88f5322061308f1983e0a442860d5",
+      "bytes": 11070,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/CCM/UniversalSincPhysicalBounds.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralSourceMoment.lean",
+      "sha256": "d56526e02d2bcbdceabe08373049c32796546057c54ab911c0363cdf0473bf02",
+      "bytes": 11959,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/CCM/CanonicalPoleNeutralSourceMoment.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralTrialResidualBounds.lean",
+      "sha256": "50392a9838678c4d274957297e30ab4a30ec0ffdcb139f8e2e0332bbefdc9938",
+      "bytes": 6637,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/CCM/CanonicalPoleNeutralTrialResidualBounds.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralNormals.lean",
+      "sha256": "6ba64dc7ae340d2286d55d92a342fc180607a2cd7f79261418c0646650b2d289",
+      "bytes": 18093,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/CCM/CanonicalPoleNeutralNormals.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\ConstrainedParityGeometry.lean",
+      "sha256": "78577f99b5eddaf6010f1887c645de571b63b258e4c44e8618478ac6cfe3ea68",
+      "bytes": 21622,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/CCM/ConstrainedParityGeometry.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\FinitePhysicalNormalization.lean",
+      "sha256": "c2dff9b13fb2f909615aebaf0fc40c7571faef7f1c4416535073ac378ec84f39",
+      "bytes": 4176,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/CCM/FinitePhysicalNormalization.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPhysicalTrialRealization.lean",
+      "sha256": "519b2b39e380595af2e9ff4172a320fcb59e7990bd3dd84df11c3d0bded45a21",
+      "bytes": 24434,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/CCM/CanonicalPhysicalTrialRealization.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\ActualSourceHyperbola.lean",
+      "sha256": "568292f2b9008892772550b544a48fdaa5730be44d87e453fd8008f9bbb1a350",
+      "bytes": 80457,
+      "matches_current_git_blob": true,
+      "repository_relative_path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_SELF_ECHO_NATIVE_CARRIER_ADAPTER.json",
+      "sha256": "53a02515b8a2e73a7867ff7d4cb06cf00cf2fc9562c6cf07003053132f5bb439",
+      "bytes": 16358
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_FIXED_INPUT_DERIVATIVE_DEFECT.json",
+      "sha256": "7696ec1b1c51d06c2812eeca90e9a1927aae6afa5586f5607b97685d42dd8c14",
+      "bytes": 2489
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_INVERSE_INDEX_PRIMITIVE_AND_COVARIANCE.json",
+      "sha256": "54d56430516265f41e6779ef8877af53dc63894827a66ee2c85c7afa15dda7e8",
+      "bytes": 12920
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\INDEPENDENT_SELF_ECHO_NATIVE_CARRIER_REVIEW.json",
+      "sha256": "9849183f98d507fdd9821f64f155550d8ec1db75e10743d613ab6a69fe053ebb",
+      "bytes": 16422
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\INDEPENDENT_INVERSE_INDEX_PRIMITIVE_REVIEW.json",
+      "sha256": "3cbbcf8ad7ea7e8a69fb8f2551fa455b8fc982013c1897ef3861ce6b1544fe7d",
+      "bytes": 11153
+    }
+  ],
+  "additional_current_source_bindings": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\Defs.lean",
+      "sha256": "216b34de76394522aea610c57d342f3dfe8aa1c3d9d6b2ec11509de92f1c6bb0",
+      "bytes": 16255,
+      "repository_relative_path": "Zeta23/Defs.lean",
+      "matches_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\BoundaryFlatFiniteSpace.lean",
+      "sha256": "4db4411d64b0c97370db263efd3b64f8e2bfc3f90cd7e694e13fb69bc4b83f56",
+      "bytes": 19101,
+      "repository_relative_path": "Zeta23/CCM/BoundaryFlatFiniteSpace.lean",
+      "matches_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralGeometry.lean",
+      "sha256": "4e6ec5473c2072570890563219c0e6fc170160865945b343f1cb4d8029df878a",
+      "bytes": 13446,
+      "repository_relative_path": "Zeta23/CCM/CanonicalPoleNeutralGeometry.lean",
+      "matches_current_git_blob": true
+    }
+  ],
+  "independence_and_reuse": "Reviewer authored the earlier sealed native-carrier and primitive peer reviews; did not author the new finite-polar report. Prior smooth-to-finite approximation and primitive-source reviews are reused explicitly. This pass independently recomputed the new Fourier constants, finite-polar inequalities and input-versus-response distinction and refreshed their direct source hashes. It does not repeat any compiler/import-object qualification.",
+  "issues": [],
+  "changes_requested": [],
+  "claim_status": "DERIVED supporting source-specific obstruction to a cost-free input identification; current 1079 declaration inventory unchanged; RH and Step 4 remain OPEN."
+}

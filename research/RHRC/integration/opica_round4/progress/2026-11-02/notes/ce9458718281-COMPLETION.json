@@ -1,0 +1,59 @@
+{
+  "status": "COMPLETE_BOUNDED_FINAL_MANUSCRIPT_SOURCE_AUDIT",
+  "bindings": [
+    {
+      "file": "FINAL_SOURCE_FINDINGS.json",
+      "bytes": 11376,
+      "sha256": "fe6a7130e4157488c49dabff9c136603986acc387d3b8fc817ce8c7f0537a3bd"
+    },
+    {
+      "file": "SOURCE_BINDINGS.json",
+      "bytes": 20115,
+      "sha256": "f3b4f644b6e337a130802e435ea119c1792017cdebbcf9a98f153d62d619e5b8"
+    },
+    {
+      "file": "DRIVE_METADATA.json",
+      "bytes": 752,
+      "sha256": "962ecf61b2bed71826d33a21b28998ce383037fab80cb4775355b712e18e7aad"
+    },
+    {
+      "file": "PDF_BYTE_COMPARISON.json",
+      "bytes": 418,
+      "sha256": "b5bdb557e22c6b63c65b5a33a75d051bbfdc25cb751c489f9d2c91c54f63443a"
+    },
+    {
+      "file": "PACKAGE_BINDINGS.json",
+      "bytes": 2251,
+      "sha256": "53c198c7ca54093bf41cb2d0ba5b26504bc11690fb6aa598c3438155f476e83e"
+    },
+    {
+      "file": "DRAFT_TO_FINAL.diff",
+      "bytes": 22221,
+      "sha256": "68ed4b1402d7d55c97fc1921cbf5368d1a1c8a768ddec0d0f107990fa9e76ea5"
+    },
+    {
+      "file": "FINAL_DRIVE.pdf",
+      "bytes": 680209,
+      "sha256": "9041c6992164612a317a184d7c15944aa6d7fb19fb4a786a333292e8df2f0023"
+    },
+    {
+      "file": "FINAL_DRIVE_EXTRACTED.txt",
+      "bytes": 97836,
+      "sha256": "cefa1a272461e99224f56bb5ef06dc29de5e7a5359bae8340443256414986bd6"
+    },
+    {
+      "file": "page-24.png",
+      "bytes": 243928,
+      "sha256": "16833428d0fe07655362cf2df7b713429b3dc7ea2db9fcd0ca24fed3a4b02400"
+    },
+    {
+      "file": "seal_source_audit.py",
+      "bytes": 3520,
+      "sha256": "e4cf82570b0402fcfb70ad0717c34a84ccb8493d6c2b4f024832a4ba23f5c2be"
+    }
+  ],
+  "no_repository_changes": true,
+  "no_tests_or_included_scripts_executed": true,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_ENTRY_CROSSCHECK_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "external_sha256": "560a9cf42e8e672dc51e71b2a139d7fb46d5e4a1d8c66a37d13aa60a85f27462",
+  "L": "4",
+  "K": 256,
+  "Q": 54,
+  "entries": 81,
+  "overlapping": 81,
+  "max_midpoint_difference": 2.4687819555281723e-23,
+  "status": "ALL_OVERLAP",
+  "scope": "Two independent constructions of the same even-reduced canonical entries; overlap is consistency evidence, not a proof of either backend."
+}

@@ -1,0 +1,109 @@
+{
+  "status": "CLEAR_BOUNDED_INDEPENDENT_NEGATIVE_WELL_SOURCE_STORAGE_REVIEW",
+  "recorded_utc": "2026-11-02T13:53:09.131781+00:00",
+  "subject": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\negative-well-source-storage\\ACTUAL_NEGATIVE_WELL_SOURCE_STORAGE.json",
+    "sha256": "4e6e7899bcdc53d53e27b89ce44c83cdfb084394d8208267aa2eb15d561e5e0a",
+    "bytes": 16568
+  },
+  "read_scope": "Entire W1-W6 read. Reused the previously read complete all-zero/scalar/parity prerequisites; freshly inspected the actual inverse-square summability interface and same-state JointGroundConstraints antecedents. All listed bytes checked, but no claim of rereading every line in every historical/source file.",
+  "findings": [
+    "W1: P starts at one fixed L0, so the primitive comparison retains entry history. Actual Theta>0 is explicit for the quantitative primitive bound; constants may depend on Theta and precede every well. No global rightmost zero or zero truncation is introduced.",
+    "W2 Cauchy bounds: on |z|=1/(2a*) each of the three squared reciprocal factors costs at most4, hence64. The coefficient bound64(2a*)^j and q<=1/2 give epsilon<=512a*²|p|^-4L^-4. Differentiation contributes2j/L and2j(2j+1)/L²; the displayed geometric estimates give4096 and32768. L0>12pi/eta pays a*|z|<1/4 uniformly over the genuine zero family.",
+    "W2 full source: expanding p²r-rsecond gives the constant C2 and the stated A/L² allowance. Expanding2p rprime+rsecond gives4c/(pL³), with remainder bounded by the stated B exp(Theta L)/L⁴. The definitions of D,A,B overestimate every term with L>=1. Multiplicity and the reflected subtraction remain in the complete sums.",
+    "W2 primitive: integration of delta from L0 to T and then T to L is paid by E,D/T and (2D/Theta)exp(Theta L)/L². The exact constant V1(L0)-C0L0 is retained. Substitution gives A*=A+4c|C0|+4cV* and B*=B+8cD/Theta as safe constants. No relative error estimate against a smaller exponent alpha is inferred.",
+    "W3: w=-Pprime gives the exact storage boundary H(A)-H(B) and negative bulk -672pi² integral L^-4P². Since Xe=-w, Xo=F+wsecond and integral wXo=integral wF-integral|wprime|². The necessary inequality under no simultaneous negativity therefore has exactly the stated sides and retains C2 and entry storage.",
+    "W4: the finite telescoping identity correctly leaves replenishment across intervening positive intervals. The mixed product P Xe has no supplied sign; the whole-history primitive cannot be reset separately on each well. No infinite-well convergence is assumed.",
+    "W5: the actual nonnegative compact well weight has strictly positive Fourier value at0 and therefore nonzero nearby low-frequency content. This directly rejects a Fourier-support-gap premise, without claiming that every possible eta-Poincare inequality fails. The damped identity is correct: integral weight*w*wsecond=-integral|yprime|²+a² integral y². Endpoint w=0 pays all boundary terms, and the valid automatic interval constant is pi²/(B-A)².",
+    "W6: this is a new exact signed storage relation with a smaller but still exponential residual. It does not establish simultaneous negative parity or bound the entering storage. The current finite same-state ground assertions cannot be substituted for an aperture-Fourier support theorem."
+  ],
+  "defects": [],
+  "checked_records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\Defs.lean",
+      "sha256": "216b34de76394522aea610c57d342f3dfe8aa1c3d9d6b2ec11509de92f1c6bb0",
+      "bytes": 16255,
+      "same_as_head_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\WeilContinuity.lean",
+      "sha256": "e41ff5a56fbaeb90caaf779486272129661e25795dc8cc8e2260b13756eddeb4",
+      "bytes": 12852,
+      "same_as_head_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceMatrix.lean",
+      "sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "bytes": 7204,
+      "same_as_head_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalGlobalF04.lean",
+      "sha256": "f1538bb374dc04f6a3ffcbcf9b6cdb6f4d27a584f07eb545d8e32aeab14f2ec8",
+      "bytes": 20666,
+      "same_as_head_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPrimeFreeF04.lean",
+      "sha256": "f02785ed02e6601d4703d387f5502d3524ab222980936f671fdb80c845d57291",
+      "bytes": 45969,
+      "same_as_head_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\JointGroundConstraints.lean",
+      "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7",
+      "bytes": 11983,
+      "same_as_head_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\global-aperture-seams\\ACTUAL_GLOBAL_K3_FORCING_SEAMS_AND_CONTACT.json",
+      "sha256": "3129e82ccc5f787d2aaf0fda82aaac407f0866c66092e0bc9233edee83845c0f",
+      "bytes": 20630
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_FIXED_K3_APERTURE_LANDAU_DERIVATION.json",
+      "sha256": "493530834a96fe6f19d4876a253044249a27a9afa25cda84fcfdc1e74ea888ca",
+      "bytes": 20564
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\INDEPENDENT_FIXED_K3_APERTURE_REVIEW.json",
+      "sha256": "c2e85a34a11833af9a024093be9e61f13b7e1f882d06873a9e56eeb8c88b2f68",
+      "bytes": 11240
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_PARITY_COUPLING_AND_FORCING.json",
+      "sha256": "5f02b1c91ea797b6db761e143fb86fd275af6202b1cbc5bb515e16ba6e23b1a2",
+      "bytes": 17288
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-pair-covariance\\ACTUAL_PIECEWISE_GREEN_IDENTITY.md",
+      "sha256": "8d5ce78ccecc58d532488aa302e3d0a668f3287ca12a1c724ea1b5c099c95e3b",
+      "bytes": 10634
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\long-tail-selberg-energy\\ACTUAL_CAUSAL_SELBerg_ENERGY.md",
+      "sha256": "1a2bb6ccfbe456a4d6d4ea7eff14b5a157abae8b4e8ce835266198fc10adb945",
+      "bytes": 14797
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\negative-well-source-storage\\write_audit.py",
+      "sha256": "db1115b41a9674e13efc3877d958343f30559a4685205bfcb578048f007e1c1e",
+      "bytes": 13800
+    }
+  ],
+  "binding_summary": {
+    "records": 13,
+    "current_git_blobs": 6,
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "clean": true
+  },
+  "contribution_disclosure": "Reviewer previously derived some K3 scalar/source prerequisites and supplied the bounded storage-sign check. The full primitive extraction, explicit Cauchy allowances and well-window analysis are late_math authored. This review independently rederived the formulas and constants in the final file; prerequisite overlap is disclosed.",
+  "authority": {
+    "new_tests": 0,
+    "compiler_runs": 0,
+    "repo_edits": false,
+    "scope": "External mathematical peer review only. Existing compiled source scope is unchanged; the new composition remains DERIVED.",
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  }
+}

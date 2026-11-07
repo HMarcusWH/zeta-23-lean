@@ -1,0 +1,580 @@
+{
+  "status": "DERIVED_SOURCE_PRESERVING_JOINT_DECONVOLUTION_AND_SELF_ECHO_REVIEW",
+  "recorded_utc": "2026-11-02T03:22:19.403416+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "checkout_clean": true,
+  "attachment": {
+    "path": "C:\\Users\\macka\\.codex\\attachments\\49bb5ff3-b221-428f-a6c4-414587e9a8a8\\Pasted text.txt",
+    "sha256": "448f0496eb9743eaf30ab98ffd109a83c43362e0bde1257f2c5f88613d2459f6",
+    "bytes": 9536
+  },
+  "full_attachment_read": true,
+  "scope": "Full new attachment, the two preceding screenshots and the accumulated cutoff/echo/source-generator work. Paper derivations only; no new Lean declaration, compiler run or CI claim.",
+  "claims_checked": {
+    "cut_inverse": "Exact mixed cutoff/cut differences recover every edge at fixed time. The full ambient inverse edge cost is sqrt(m)*(Y-k), with m<=4; the complete total instead costs sqrt(Y-1). Source-restricted optimal cost is not identified with the arbitrary-edge cost.",
+    "kernel_convolution": "C=g*nu is an exact finite signed convolution. Using only the public bounded remainder and its early branch, employ g_c(t)=exp(-c*t)g(t), 0<c<1, and nu_c with each impulse weight multiplied by (ab)^(-c). Then g_c belongs to L1 and L2 and C_c=g_c*nu_c has an ordinary Fourier factorization. Unweighted Fourier statements require an independently paid ordinary transform domain or tempered distributions. Fourier division is not used in the cut inverse.",
+    "prime_self_echo": "For the literal fixed H=kappa*kappa, P(t)=sum Lambda(n)/sqrt(n) H(t-log n) has positive causal gap log(2)-1/2048. For L>=0 the full convolution equals integral_0^L and equals the difference of the physical reflection-even and reflection-odd squared L2 norms.",
+    "arithmetic_coefficients": "The same self-echo equals sum_(n>=4) (Lambda*Lambda)(n)/sqrt(n) (H*H)(L-log n). Dirichlet associativity yields Lambda*Lambda=(mu*mu)*(log*log), with all ordered multiplicities and prime powers retained.",
+    "operator_domain": "The proved ||A_epsilon||<605/621 supplies a Neumann inverse for I-A_epsilon, not for A_epsilon. The original equation is A_epsilon X=Y after actual L2 membership has been established. For H=q*j, the exact forcing changes from Y_j to q*Y_j; compact smoothing is not inverted without a bound.",
+    "RH_strength": "The all-positive-rate eventual absolute bound for P*P is DERIVED equivalent to RH for this exact fixed source. Initial Laplace identity holds on Re z>1/2. A right off-line zero of any multiplicity m yields a double pole with nonzero leading coefficient m^2*K_H(rho-1/2)^2. Under RH the full absolutely summable zero family and bounded Arch term bound P, giving P*P=O(L). The all-rate bound is not proved here."
+  },
+  "explicit_section6_bridge": {
+    "native_cutoff": "N(t)=Nat.sqrt(actualCorrelationCutoff(t)/2), exactly the current natural cutoff; do not replace it by the separate quartic detector cutoff.",
+    "complete_observation": "B(t)=I*exp(t)*L_N(t)^2 + D_N(t)(t) + sum_(1<=k<N(t)) C(N(t),k,t), where L_N=sum_(a<=N)mu(a)/a and D_N=sum_(a<=N)mu(a)^2*R(exp(t)/a^2). Empty sums are zero.",
+    "short_and_long": "E(t)=hyperbolaE(actualCorrelationLogarithmicTest t)(actualCorrelationCutoff(t)/2); T(t)=exp(-t/2)*B(t). Existing exact source identities give P(t)=2E(t)-T(t).",
+    "full_self_echo": "For L>=0: (P*P)(L)=integral_0^L [2E(u)-exp(-u/2)B(u)]*[2E(L-u)-exp(-(L-u)/2)B(L-u)]du =4(E*E)(L)-4(E*T)(L)+(T*T)(L).",
+    "source_identification_status": "The requested mathematical bridge is now DERIVED by composition of current source identities and the exact cut telescoping formula. A combined Lean wrapper would be new formal work; no extra unproved mathematical source-identification premise is needed for this scalar identity.",
+    "retained_terms": "N(u) and N(L-u) stay separate inside the integral. The positive rank-one contribution, diagonal, full cuts, all source normalization and every early E value remain. P,E,T are causal; isolated R-cut responses are not. Rapid late E does not make the complete mixed convolution E*T rapid.",
+    "physical_parity_limit": "Finite-window reflection projections are not automatically the canonical CCM parity eigenspaces, native stationary states, smooth pole-neutral trials or first-birth resolvents. Their boundary and projection errors need their own exact adapter before using those theorems.",
+    "independent_algebra_checks": [
+      "Root direct substitution into current source identities",
+      "madness_prime_math full Section6 comparison",
+      "madness_repo_map Sections3-4 review"
+    ]
+  },
+  "actual_source_falsification": {
+    "signed_first_echo": "Let J=H*H. J(0)=integral H^2>0, while its exp(-u/2) moment is zero, so J has a negative lobe. Near L=log4+u, |u|<=1/1024, the complete actual self-echo is ((log2)^2/2)*J(u). It has both signs even though Lambda*Lambda is nonnegative.",
+    "scope": "This rules out automatic pointwise positivity, not an eventual all-rate bound. It is an actual-source check, not an arbitrary-edge or fabricated-coefficient countermodel."
+  },
+  "additional_constraints_harvested": {
+    "joint_echo": "Actual prime scaling, divisor cancellation, locked Mellin zero jets, compensated cutoff insertion and complete moving-time transport are paid in the joint-cut report. The complete PF inverse retains the source-visible zero pole; horizontal echo equations transport it consistently rather than contradict it.",
+    "actual_Hermite_generator": "One explicit source Phi_L supplies the Hermite data across K and its Taylor coefficient differences form a positive Hausdorff moment sequence. The contour-derived F_(L,K) still changes with K. Actual Hermite kernels change sign; no covariance or energy upper bound follows merely from the positive coefficient-difference measure.",
+    "positive_primitive": "The exact divisor tensor comparison proves 1*(sigma_Y^2-A_Y)>=0 and hence log*(sigma_Y^2-A_Y)>=0. The source differentiation, continuum subtraction and native-boundary terms do not preserve that positivity. The actual first-window differentiated comparison has both signs. See the source-bound report for full retained compensation."
+  },
+  "remaining_exact_problem": "Prove an unconditional source-specific all-rate growth bound for the complete signed self-echo, or the original sufficient one-sided native bound, from actual arithmetic. Alternatively establish inward-strip normal-family control of the genuine locked-residual sequence. None is supplied by recovery, forward contraction, reflection or the new algebraic identities alone.",
+  "no_inference": [
+    "No assertion that the complete OPICA constraint system is insufficient",
+    "No claim of a new compiled theorem or green proof of RH",
+    "No transfer of finite-window reflection parity to canonical ground parity without an adapter",
+    "No free use of damped L2 membership",
+    "No discarded early history or moving-cutoff correction"
+  ],
+  "research_records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\CUT_RECOVERY_ADAPTER.json",
+      "sha256": "d4778b93685ba35f78ffd099b243cafebdc02a668e56360f38c141c73eed16d8",
+      "bytes": 5741
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\HORIZONTAL_ECHO_COMPATIBILITY.json",
+      "sha256": "58841e69d526fa4b1415867f7f8f82b7ca6f36d1e2b00faaf3b919828db4ecf1",
+      "bytes": 8385
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\INDEPENDENT_HORIZONTAL_ECHO_REVIEW.json",
+      "sha256": "0edca2d3a008266f187646ac5cbc8738e5e44a50ad3b2aefc556751b5ca30eee",
+      "bytes": 3259
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\response-injectivity\\JOINT_ECHO_LAW_AUDIT.json",
+      "sha256": "7e31e1b7aeabe5aa4a6ab46dbedb44b1bc64f8fe5849f07fa6722e4cb6bea41a",
+      "bytes": 19629
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\SELF_ECHO_SECTIONS_3_4_AUDIT.json",
+      "sha256": "d9a08f121292315ed89eb6f3c93264573779569fa6489743979c9f0b4b3998e8",
+      "bytes": 12788
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-criterion\\SECTION5_ACTUAL_SELF_ECHO_CRITERION_REVIEW.json",
+      "sha256": "0d4046f169e6c2acaefbe05731cb3bde9b3a0f42d28b1c37b0f31049613a5507",
+      "bytes": 18951
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\COMPLETION.json",
+      "sha256": "b2ea7567c873e91dc874bb3f642633751e8f0e88b3cf2d5e491b475998ec3ac7",
+      "bytes": 4039
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\ACTUAL_SOURCE_GENERATOR_AND_HERMITE.json",
+      "sha256": "d0960d731533909d3909199e503259c04ee72b0551bc2e0764b5d8d7624db7ad",
+      "bytes": 11735
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\INDEPENDENT_SOURCE_GENERATOR_REVIEW.json",
+      "sha256": "f11a32ace650993e980e7e700bab4271d5aefc9bab0c1e1657eb40d3bf50eebe",
+      "bytes": 13872
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\EXACT_REFLECTED_ATOM_ECHO_ADDENDUM.json",
+      "sha256": "bdc8704c35469451d663f410deb40fa104de8f7c8fcc4f02c55b40a32f4fd33a",
+      "bytes": 16347
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\INDEPENDENT_REFLECTED_ATOM_REVIEW.json",
+      "sha256": "f1ff0e46fc656cbf673812c94f972badc4bb2e4d8ff00aafaca1cfb69078615c",
+      "bytes": 1783
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\joint-cut-response\\ACTUAL_JOINT_CUTOFF_CUT_TIME.md",
+      "sha256": "75e9b953fa437504bf59d2c9ef35370a215f8953707c659afd8e236978d4c382",
+      "bytes": 14644
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\joint-cut-response\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "520cdac0fc9f6de5d4fc5f7f0042b7e5b7271a9a15263e7fe6fb66c959d75067",
+      "bytes": 7701
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\joint-cut-response\\EXACT_JOINT_CONTROLS.json",
+      "sha256": "3a50e430800cbdaa89572fa3a3436b4f4d48405713552b43b2f2c93db865f7bc",
+      "bytes": 1049
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\high-primitive-compensation\\ACTUAL_COMPENSATED_PRIMITIVE_COMPARISON.md",
+      "sha256": "2a8f3cd021571fd7e18b54f2a5938ef0c81ffa3774f4bc8a6fac1ca18c7c4f7d",
+      "bytes": 10173
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\high-primitive-compensation\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "515d3bb54d0fb27dc8e62e635f24db45c2cde4ca8c645e63fa083c783fa727b3",
+      "bytes": 7690
+    }
+  ],
+  "direct_embedded_hash_records_verified": 85,
+  "verified_unique_records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICAFollowup\\JointObservation.lean",
+      "sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
+      "bytes": 17082
+    },
+    {
+      "path": "C:\\Users\\macka\\AppData\\Local\\Temp\\codex-clipboard-4cc7c809-e2b8-4428-9519-599504ece330.png",
+      "sha256": "57bb7ace36a885c92a601639e13466a25908a7c32016d7e0f1b8865b819b1085",
+      "bytes": 42033
+    },
+    {
+      "path": "C:\\Users\\macka\\AppData\\Local\\Temp\\codex-clipboard-792dcb40-d2ec-49b8-b2e2-051ec3eb328a.png",
+      "sha256": "7ac739a264a376773933c3e9b7f2daf5f3c54acdb40944937fbcc39b89817761",
+      "bytes": 86141
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\papers\\Step4_Original_Detector_Research_Package_2026-10-13(1)\\step4_constraint_campaign_2026-10-13\\source_transport\\02_EXACT_PHASE_ECHO_AND_UNIFORM_HISTORY.md",
+      "sha256": "2e443a83d7f920320a64d0453a73239fc871fe8731e3129557ca501e0ed65069",
+      "bytes": 10576
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-joint-freedom-audit-2026-10-30\\TRANSFORM_QUANTIFIER_FINDINGS.json",
+      "sha256": "c3aa1e5faf8b585734e75d7cece4c09c21d478f94804c0ec61ab4708cf345e63",
+      "bytes": 8310
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round4\\SOURCE_CONSTRAINTS.md",
+      "sha256": "e40e035adfa118cca1d2911e0da6b77f2ec4d0e8791317576b8ebea68ad46d5c",
+      "bytes": 5715
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeIntegerPrimeSource.lean",
+      "sha256": "c98e58682a18bc073cd794200dfd351edef65e9a0ac3bfe0f7d522216f651b31",
+      "bytes": 3212
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeCausalRangeObstruction.lean",
+      "sha256": "56f4800e925ecc284a58870986a75294a96d7e7f9a1f03d9b82275e4c0ecfbc5",
+      "bytes": 3667
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeCompletedInputRangeOfPrimeLp.lean",
+      "sha256": "dc51c4b5a8da542d28e4a455078004d51c921e9bd7a6c77eefc7e8ceeeda31a6",
+      "bytes": 5823
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound2\\NativeCuts.lean",
+      "sha256": "59dc6fb83390ae7abd1109719371d5fb002be2850730e0685587fea4de33bdf0",
+      "bytes": 16715
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\ActualSourceHyperbola.lean",
+      "sha256": "568292f2b9008892772550b544a48fdaa5730be44d87e453fd8008f9bbb1a350",
+      "bytes": 80457
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\HyperbolaDiagonal.lean",
+      "sha256": "6e221743e9f77405626868d95624140ff107cbc530680052f09dbcc23af31260",
+      "bytes": 7884
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\drive\\refresh-2339\\Paper_XXV_Signed_Mobius_Mellin_Moment_Compression_FINAL_v1_0.txt",
+      "sha256": "a7bf91c218d15781e33d95e69d44fa0f88fab883dadcb62fdd18d0270b63b36c",
+      "bytes": 86993
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\HORIZONTAL_ECHO_COMPATIBILITY.json",
+      "sha256": "58841e69d526fa4b1415867f7f8f82b7ca6f36d1e2b00faaf3b919828db4ecf1",
+      "bytes": 8385
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\response-injectivity\\JOINT_ECHO_LAW_AUDIT.json",
+      "sha256": "7e31e1b7aeabe5aa4a6ab46dbedb44b1bc64f8fe5849f07fa6722e4cb6bea41a",
+      "bytes": 19629
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\response-injectivity\\BRIDGE_AUDIT.json",
+      "sha256": "da456430f4244a5528680f7cfccfb0e12a2d338ee6c0db62fffe67136c3193e2",
+      "bytes": 23814
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound2\\CausalProbe.lean",
+      "sha256": "3d126c355060b94f13db6143260daf35f3251d23fa7f4694e4eb04d529f83502",
+      "bytes": 49142
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound2\\TruncationControls.lean",
+      "sha256": "1837ca3a1fd3c813613fd7e545e80b7452cb797f07a6af5595fdf19184ab3548",
+      "bytes": 273345
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound2\\FixedFilter.lean",
+      "sha256": "5a07984846333f374b9b4631978881db7e3f4105880d998b3ec9671d10a2cd3e",
+      "bytes": 81757
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeCausalAdjointZeroJets.lean",
+      "sha256": "cc8fabcc64b5083e23c5663df5516860b0f1455e847d7317f186549a9ededf6e",
+      "bytes": 10780
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeCausalLaplaceDerivatives.lean",
+      "sha256": "6429c9a0e52ee6728a77ab771cb79444eaf5d2a466deb54bf0cf1ff404f647e7",
+      "bytes": 7353
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICAFollowup\\LogSlackBalance.lean",
+      "sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
+      "bytes": 50666
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\Step123SameStateN36.lean",
+      "sha256": "1036db8418747ee0fb90e2717e520c0ffd9a5af100b0eba1edd7031a868773b5",
+      "bytes": 46741
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\FirstBadShiftedSchur.lean",
+      "sha256": "ac8b723c006739051918d24260a8497c75b84cd53f782696ec73ed0a6b57c468",
+      "bytes": 31537
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound3\\NewbornSource.lean",
+      "sha256": "551e814e37e2346246479ac225e1de309a67919e861c9ef36da34d7b20b7ac85",
+      "bytes": 14781
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-2026-11-01\\raw\\OPICA_Step4_Strip_Echo_Test_Packet_2026-10-30.zip",
+      "sha256": "10ff4fb685738db509e29ad5671d253234ce26b28c4e9695cfd108b70f88b01f",
+      "bytes": 15562
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-joint-freedom-audit-2026-10-30\\joint_arithmetic_constraints.json",
+      "sha256": "ae342379ae1539c4c13ecb6f378970027950f18eaf6f7ef056342c36dccf9b2d",
+      "bytes": 8036
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\attachments\\49bb5ff3-b221-428f-a6c4-414587e9a8a8\\Pasted text.txt",
+      "sha256": "448f0496eb9743eaf30ab98ffd109a83c43362e0bde1257f2c5f88613d2459f6",
+      "bytes": 9536
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeCompletionEquation.lean",
+      "sha256": "455f705f4f6e352e1b9fff7867b101e14afc1da30c79e7cf54697c1418969224",
+      "bytes": 6342
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeCompletedInput.lean",
+      "sha256": "2bb3e73dd4a5fff7ac264f1f026d131fbe18483c41ae39510dd7703d9d6c9558",
+      "bytes": 9939
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeDampedCompletionOperator.lean",
+      "sha256": "e0921f97810403c3d7f488905c93ac4426a09cd93d0d5fb5ccaa85c563452367",
+      "bytes": 12248
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeDampedCompletionPrerequisites.lean",
+      "sha256": "e3a9742b2353159ae02715666f1610bf9ec54b999434d874ef7852d7e5d36d87",
+      "bytes": 6357
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeOriginalExteriorHistory.lean",
+      "sha256": "1d11fac369f5b1c73acc6ff73fafc2eacb4c6babe06ddf95ec577bb7cbf3adc0",
+      "bytes": 12402
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICAFollowup\\NativeTransformationWords.lean",
+      "sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
+      "bytes": 54652
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\UniversalSincOriginalPhaseDepth.lean",
+      "sha256": "5f78810dc8e78b93b4609ab526c1441c4914ed7b6ae4ef863b2c778c21ea6726",
+      "bytes": 17659
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\Defs.lean",
+      "sha256": "216b34de76394522aea610c57d342f3dfe8aa1c3d9d6b2ec11509de92f1c6bb0",
+      "bytes": 16255
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\FilteredZeroFamily.lean",
+      "sha256": "ac5f88139e27f8d8c5ba85d6bf36623a52c555cda6ff3adb85a2497a860ad766",
+      "bytes": 2791
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\TwoTranslateCorrelation.lean",
+      "sha256": "faa6e0c5b206d8dd7bbb75e51399b4325f9980c8af95afb1e7d97fb36688d624",
+      "bytes": 7719
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\UniversalSincDetectorVisibility.lean",
+      "sha256": "d642f61a22a64f5209846025ceb921d0a2419f408b084088cd1e40167970e599",
+      "bytes": 6624
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\UniversalSincPhysicalDetector.lean",
+      "sha256": "ddbcc8592a572e1f137f9c324b0dd89dd654664ea079abdd38779f01e20869f2",
+      "bytes": 9871
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\UniversalSincCorrelationReal.lean",
+      "sha256": "22287a2fe0d63647579448a490f49f6ef77c9925f1202114d876325f75d2d702",
+      "bytes": 3991
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\UniversalSincSignedLaplace.lean",
+      "sha256": "870226d2e324f8251c8a2552922f620e9f91799eff19d6293f9b30fd24fdd3f0",
+      "bytes": 11061
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\UniversalSincSignedExcursions.lean",
+      "sha256": "1f5e424e248cf555cd982c208bacbf237a7002617b1b0cc2a02c24fdbfb55655",
+      "bytes": 8104
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\pr290\\.lake\\packages\\mathlib\\Mathlib\\NumberTheory\\LSeries\\Dirichlet.lean",
+      "sha256": "be39d41041f510e2eb7f6784e402cc36d9d91376c4717e6fd26a27d65f182239",
+      "bytes": 20413
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\lean-toolchain",
+      "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+      "bytes": 29
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\lake-manifest.json",
+      "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+      "bytes": 3200
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\long-tail-selberg-energy\\ACTUAL_CAUSAL_SELBerg_ENERGY.md",
+      "sha256": "1a2bb6ccfbe456a4d6d4ea7eff14b5a157abae8b4e8ce835266198fc10adb945",
+      "bytes": 14797
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\long-tail-selberg-energy\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "673ef085c89942c59008239b97a193c479c7099204fe2270a4a572573986ff4b",
+      "bytes": 7771
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\same-discrepancy-source-composition\\SAME_E_COMPACT_SOURCE_AND_SQUARE.md",
+      "sha256": "1d7ecf7b8280829a0eb1b923623a4d4020a32e6a44dad9a5c59ac7a860e83423",
+      "bytes": 10576
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\same-discrepancy-source-composition\\INDEPENDENT_SAME_DISCREPANCY_REVIEW.json",
+      "sha256": "849477f84db785922cf84866771e8b52d9603d2ac792fa83f218cf4a9b90f289",
+      "bytes": 9932
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-criterion\\seal_section5.py",
+      "sha256": "f523ae9cecf5bde3c9d6ecb339bc5719dcabb1ccc8d192bd136c9579b187b540",
+      "bytes": 13860
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\ACTUAL_SOURCE_GENERATOR_AND_HERMITE.json",
+      "sha256": "d0960d731533909d3909199e503259c04ee72b0551bc2e0764b5d8d7624db7ad",
+      "bytes": 11735
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "44222bc54457d336e522a171186ed8c22ebc8d4e8ea4ab1f0caf54a43b784fce",
+      "bytes": 14359
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\INDEPENDENT_SOURCE_GENERATOR_REVIEW.json",
+      "sha256": "f11a32ace650993e980e7e700bab4271d5aefc9bab0c1e1657eb40d3bf50eebe",
+      "bytes": 13872
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\EXACT_REFLECTED_ATOM_ECHO_ADDENDUM.json",
+      "sha256": "bdc8704c35469451d663f410deb40fa104de8f7c8fcc4f02c55b40a32f4fd33a",
+      "bytes": 16347
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\INDEPENDENT_REFLECTED_ATOM_REVIEW.json",
+      "sha256": "f1ff0e46fc656cbf673812c94f972badc4bb2e4d8ff00aafaca1cfb69078615c",
+      "bytes": 1783
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\seal_completion.py",
+      "sha256": "ec1bc5401e5526a9139bad8958aa271f01d3fdfc02dc6a9b0eb65b240c551ce6",
+      "bytes": 4091
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceMatrix.lean",
+      "sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "bytes": 7204
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\Components.lean",
+      "sha256": "015e04bad2f7c74e1bef8c456f44e758b164ba08ac1aaa80d2a861e6ab9ae158",
+      "bytes": 3144
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceWeilMatrixReconciliation.lean",
+      "sha256": "a16f2c72086017536ec645572360fe999c170ba16eb39a6c450144b42bc59c95",
+      "bytes": 11504
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceNormalizationRepair.lean",
+      "sha256": "e92fb4a67284ba4b47c185056b9a3e6de6c675990d05078ffb4ace90243628d7",
+      "bytes": 10573
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalSourceChannels.lean",
+      "sha256": "f2e43a63b569ce1f755b01babbe9fd419ff6bb44b09a960515196d99d7fdb720",
+      "bytes": 7604
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralCarrier.lean",
+      "sha256": "c105da764725316e6d256e342cfed7a5db2f857ed5f1a332199de22a1617927d",
+      "bytes": 10022
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralGeometry.lean",
+      "sha256": "4e6ec5473c2072570890563219c0e6fc170160865945b343f1cb4d8029df878a",
+      "bytes": 13446
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralNormals.lean",
+      "sha256": "6ba64dc7ae340d2286d55d92a342fc180607a2cd7f79261418c0646650b2d289",
+      "bytes": 18093
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalSourceMomentAtoms.lean",
+      "sha256": "5b0aeb95bf24e5d9b43b648ef6d331c9293ec25d97fe3e69da5b46a2386b9fb2",
+      "bytes": 11531
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPrimeSeamTaylor.lean",
+      "sha256": "4800d308d6bb5beb699c390bb38eabebab6a20f49fdbe3108d1be57e5a1039bf",
+      "bytes": 3276
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalQuadraticNormalSourceFunctional.lean",
+      "sha256": "4c71eb0dae6445b28780c16c3b28f5d8711e8e5c47e9b523300f6e501f35661d",
+      "bytes": 8869
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalQuadraticNormalSourceKernel.lean",
+      "sha256": "bdf8f399e753e0e6539b99e3411832f925b09eee3fb6ec38461e20de60af18bc",
+      "bytes": 5832
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\DictionaryCompletePhysicalRHS.lean",
+      "sha256": "5e1e936e61a58abdd3de6699c233cc24ff8914ceec6e4bde325b7ffd838ee98b",
+      "bytes": 16561
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\DictionaryPole.lean",
+      "sha256": "55cec0f2122abf9c33a8f01df339ec3e26fca463c90f9ba85c1c555c394e7083",
+      "bytes": 6695
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\DictionaryDeterministicRHS.lean",
+      "sha256": "0c012a1c1fbf2c680660d461c63dae7e2fb1ff16a59e262a2b4752a5746b9ecd",
+      "bytes": 7232
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceFourierConvolution.lean",
+      "sha256": "adffeccda05d680635efc84d01fff624b648cdda7f58be14f65b34c196cd7141",
+      "bytes": 7014
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\ACTUAL_JACOBI_LOEWNER_AND_NEGATIVE_ENERGY.md",
+      "sha256": "315c02df57c77ae0ba64b2fa8f4d7a57671742b9ea73d39020b5689ee0e83ea9",
+      "bytes": 10688
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "d6bed03f16f32fc70ef341a18c6b448ead29c11a51adb5f9393acbe64076f8d6",
+      "bytes": 10279
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\EXACT_GEOMETRIC_CONTROLS.json",
+      "sha256": "c3063d98c3ed7f1c147898cb3ad44e93b7c9ed2d1334ee2e5235d1cf432dc7b5",
+      "bytes": 11781
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\INDEPENDENT_JACOBI_LOEWNER_REVIEW.json",
+      "sha256": "1127e01bb860c855a5d992a5bf6795900c9bc2d7a6b490a38edaaadec6afef1e",
+      "bytes": 8504
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\COMPLETION.json",
+      "sha256": "3246b9d56c129c4abfe2b767b99b28799e4025b6c3896b96786cd0cb2c9b103f",
+      "bytes": 1973
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalSourceEnergy.lean",
+      "sha256": "507f0caa0daab1a15ea6b29f5c8f3ff75606b8deb9e77e12817a6e5fff6b7191",
+      "bytes": 16017
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalSourcePairing.lean",
+      "sha256": "2618d385aefef35cc4ce9efe0eb1647f287096e6afb3d694eee9ae8532c3daff",
+      "bytes": 5868
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalSourceWeightedIntegral.lean",
+      "sha256": "8a21fd3e5ffffc4b4edc36f622a1c52bb879185bcd0f98b27b3f0ced1ab61e60",
+      "bytes": 27827
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\TwoTranslateWeil.lean",
+      "sha256": "38eb0ff7df6564731378ef7be7eb65cc1214cd689786e3085cf782c810f1f931",
+      "bytes": 5713
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\OriginalDetectorPhaseDepth.lean",
+      "sha256": "f9b276f2a7af30ebef9a6f010175d48dd5f7438ebc0a4eb38da552eae966be5c",
+      "bytes": 2289
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\seal_reflection.py",
+      "sha256": "5eb275e5b74836b28c45247c8ab505a98215299cd700c3b881da1484d8a5609d",
+      "bytes": 11042
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\SELF_ECHO_SECTIONS_3_4_AUDIT.json",
+      "sha256": "d9a08f121292315ed89eb6f3c93264573779569fa6489743979c9f0b4b3998e8",
+      "bytes": 12788
+    }
+  ],
+  "previous_review": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\CUT_FIBER_RESPONSE_REVIEW.json",
+    "sha256": "3ced375378dde0244adc2ee4aef58f45ffb3f9d8568f6c13e8791d9c23c5d441",
+    "bytes": 11407
+  },
+  "github_primary_read": "https://github.com/HMarcusWH/zeta-23-lean/blob/7bae463361264a0694b4fb2e9107dc4314163b33/Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+  "new_lean_declarations": 0,
+  "new_compiler_runs": 0,
+  "repository_edits": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE",
+  "seal_script": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\seal_joint_self_echo_review.py",
+    "sha256": "56ad4c4006c595080b1b15c3a3523c1303ed6e453aaabab09b2ddd63aaca73ca",
+    "bytes": 10729
+  }
+}

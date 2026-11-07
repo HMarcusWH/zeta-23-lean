@@ -1,0 +1,139 @@
+{
+  "status": "COMPLETE_BOUNDED_COUPLED_NORMAL_MEAN_AND_BOUNDARY_PASS_NOT_STEP4_CLOSURE",
+  "created_utc": "2026-11-02T07:36:02.791047+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "PR": 299,
+  "previous_turn_classification": "PROGRESS: exact one-output target, scalar-square reduction and actual critical-source falsifications changed the next mathematical action. This turn tested their joint source/normal/boundary composition.",
+  "current_state_revalidation": "Local7bae/ceffa clean, no ACTIVE_BUILD. Live PR299 and every run/attempt/job page/review checked in next9; no PR state or source was changed.",
+  "what_became_formally_true": "Current composition producer passed45 registered tests in each mode, preserving the same conditional search-chain conclusions and premises. The generated-state producer verified all81 current canonical product hashes and original checks. No new Lean theorem was added by this research pass. The preceding current1079/90/84 Linux support qualification retains its stated scope.",
+  "workflow_harvest": {
+    "snapshot_utc": "2026-11-02T07:08:26.617191+00:00",
+    "runs": 24,
+    "attempts": 24,
+    "jobs": {
+      "success": 85,
+      "skipped": 2,
+      "in_progress": 5
+    },
+    "total_jobs": 92,
+    "composition": "FORMAL VALIDITY / REGRESSION:45 tests in normal and optimized modes, unchanged identities/statuses versus prior451. All three actual two-link searches remain PROVED_CONDITIONAL; no open premise was supplied.",
+    "generated": "REGRESSION:81 byte-exact canonical products,13 classification tests, original materializer/check,339-root compiler and1744 source-only extraction with their separate authorities. Empty journal views remain unchanged, RH/Step4 OPEN.",
+    "ancestry": "FORMAL VALIDITY / REGRESSION on historical416aec/775692:76/100 roots preserve613/3793 public declarations and15339/27567 dependency channels. Current7bae is source-inspected in this historical lane, not silently compiled as1079 current declarations.",
+    "dependency_delta": "RESEARCH-PRODUCING / REGRESSION:613 parent declarations/types/axioms/dependencies and all100 child uses preserved. Only fresh receipt bindings change. No mathematical inequality or new proof was found.",
+    "pending": "Five jobs live at snapshot, including all three independent Round4 groups. Final independent acceptance and full PR qualification are PENDING.",
+    "limits": "Small complete archive bytes and selected members of large archives verified with explicit transport limits. No claim of full large-archive hash verification. No unchanged artifact was downloaded again."
+  },
+  "new_derived_information": [
+    "The negative corrected-source square cancels EXACTLY with the full even quadratic-normal removal before estimating. The next even endpoint-square coefficient is negative, not the previously separate positive allowance.",
+    "The genuine zero output row is an integral of the actual finite source synthesis. Its complete prime-power and regularized Arch histories and both output-normal rows are now explicit.",
+    "An explicit H1-to-output estimate pays the coherent source-approximation error at every fixed exponential rate at SAME Kd. This does not bound the output itself or make the separate finite Fourier/normal remainder rapid.",
+    "The actual pole-corrected mean retains every right off-critical source pole, with nonzero multiplier(1/2-p)/(p(p+1/2)). The proof retains both pole rows and the early Arch history and assumes no rightmost zero.",
+    "The literal center-boundary term contains -1/2 times the integral of the complete self-echo. Its c derivative returns +S(L-2c) with unit coefficient. This locates exactly why boundary substitution alone is not an opposing arithmetic estimate."
+  ],
+  "root_checks": [
+    "Read complete frozen mean4b514dee and finitee7ebe29b proofs. Independently verified the source-atom primitive normalization, regularized Arch10/13 constants, full prime4L exp(L/2) allowance, input normal/derivative Tj bounds and continuous pole removal.",
+    "Independently derived the exact mean coefficient and transform: M=J-kL(X+Y), M0hat=[1/z-2/(z+1/2)]What(z)-2What(z+1/2)/z. The remainder is O((1+L)exp(-c sqrt L)); its Laplace transform is analytic only in Re z>0. This is not critical-boundary analyticity and is not a finite-K pole assertion.",
+    "Checked actual Gram constants for kappa>=1,K>=4096kappa, positivity of m0, exact complex mixed polynomial, source transport2^11/2^10 and the sign of the physical inverse-index primitive. No unitary-index substitution.",
+    "Independently computed -<V+,JV->=M^2/4-(V*JV)(L)/2 and its complete prime-prime term. Kept all finite removed modes/normals, two pole coefficients, mixed Arch terms and center derivatives. The +S return is exact; no assertion that the full boundary consists only of that term.",
+    "Reread current SOURCE_CONSTRAINTS and MADNESS_SOURCE_AUDIT. Their exact independent arithmetic suppliers remain OPEN. Reread the prior actual Selberg calculation: it supplies a same-source combination at exponent1/2, not a new bound for this mean/covariance. No previously proved closing supplier was bypassed."
+  ],
+  "what_changed": "A genuine source/projection cancellation removes an artificial positive burden. The remaining mean is proven visible to right off-line zeros and the boundary is shown to retain the full echo. This strengthens exact accounting while exposing, rather than satisfying, the independent estimate.",
+  "upstream_implications": "Keep the corrected source square and even removed norm together. Avoid the earlier separate positive scalar-square allowance when composing the full energy. The new mean formulas provide literal finite arithmetic objects rather than free coefficients.",
+  "downstream_implications": "Any future claimed bound can be audited against an explicit complete mean/endpoint/boundary identity. Its error must be small at the off-line growth scale and its hypotheses must come from arithmetic, not from a renamed bound on the echo.",
+  "resurrected_routes": "Joint estimation improves the separate-loss route by exact cancellation. Pure compatibility/deconvolution remains a reduction, and substituting its complete boundary returns the unknown echo. The new mean visibility does not establish a growth restriction.",
+  "new_RH_relevant_clues": "DERIVED negative endpoint and odd-removal terms could help a genuinely joint arithmetic estimate. LEAD only: preserve those signed terms while estimating the complete mean/endpoint covariance and boundary from prime-factor relationships. No favorable source phase or bound is assumed.",
+  "falsification_checks": "At Kd the proven finite remainder may be O(exp(2Theta L)/L), larger than an echo of rateTheta for everyTheta>0. It cannot be relabeled rapid. Mean visibility is only in the open right half-plane; neither critical-boundary continuation nor a discontinuous-Kd pole statement follows. The center-boundary identity contains S itself and cannot be used as an independent upper bound.",
+  "highest_leverage_next_moves": [
+    "Seek an independent signed arithmetic estimate for the exact combined covariance; do not replace it by the still-uncontrolled mean or echo itself.",
+    "Preserve the newly found normal-square cancellation and all negative terms in any candidate. If using finite Fourier estimates, improve the actual retained remainder rather than declaring a polynomial factor sufficient against exponential growth.",
+    "Continue current-head independent CI qualification, harvesting new dispositions once completed. No new source patch is warranted by the current successful results."
+  ],
+  "review_gap_resolved": "The older full block B1-B4 now has an independent complete source/PNT review, separate from its earlier seam-only review. Its old pending snapshot remains unchanged as historical evidence.",
+  "external_primary_input": {
+    "url": "https://people.math.harvard.edu/~elkies/M229.09/pnt.pdf",
+    "scope": "Root freshly read theorem(1) and its proof. The classical quantitative PNT is used for the mean coefficient remainder; it is not current Lean authority or an RH-strength bound."
+  },
+  "verification": {
+    "embedded_bindings_rehashed": 136,
+    "unique_bound_files": 69,
+    "new_lean_declarations": 0,
+    "new_compiler_runs": 0,
+    "repository_edits": false
+  },
+  "records": {
+    "previous_pass": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\SIGNED_TARGET_AND_CRITICAL_VISIBILITY_COMPLETION.json",
+      "sha256": "54b763bcb53a2e01c47295bd8506bb7dffb090a25d31e6203169c1761ccc0cf1",
+      "bytes": 12865
+    },
+    "mean": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\zero-mode-arithmetic\\ACTUAL_ZERO_MODE_HISTORY_AND_MEAN.json",
+      "sha256": "4b514dee23b0635395d32e0e01be98abae98686b0279d69aa76c06b6f91d7ea9",
+      "bytes": 13840
+    },
+    "mean_sources": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\zero-mode-arithmetic\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "f35c7c96f5885d14bc6b73d889b608224944fbcf1752cdffe6e86645522499db",
+      "bytes": 17200
+    },
+    "mean_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\zero-mode-arithmetic\\COMPLETION.json",
+      "sha256": "b64a59fcd1a1ce25152ce86d115e369e0c9c0937ebf37f8ee39bf1b47e8ecf42",
+      "bytes": 5260
+    },
+    "finite_cancellation": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\zero-mode-growth\\ACTUAL_ZERO_MODE_NORMAL_CANCELLATION.json",
+      "sha256": "e7ebe29bc696859d6fcb8835a33b687b9649564528f1d6c1e6b2250c176c7a04",
+      "bytes": 17541
+    },
+    "finite_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\zero-mode-growth\\COMPLETION.json",
+      "sha256": "94a315d1b4b82ece58e64cc4f2cf56fc37fdf2181496342736a011ceb1fe3502",
+      "bytes": 18443
+    },
+    "whole_block_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-block-arithmetic\\INDEPENDENT_WHOLE_BLOCK_PNT_REVIEW.json",
+      "sha256": "800816ad28c8b352596a6090cf0dd4e158ca67236c9cf33a1f682c321472a25f",
+      "bytes": 19185
+    },
+    "whole_block_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-block-arithmetic\\COMPLETION.json",
+      "sha256": "59529a54c3d5475d215d6e4ebd2c2ea31d979237cc8865714bf1913b638a2aa3",
+      "bytes": 3695
+    },
+    "ci": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next9\\CHECKPOINT.json",
+      "sha256": "80211c5deb39cc7583afdb524bb68fc10faa1b592c4da5d7c20989e11e3c4002",
+      "bytes": 18784
+    },
+    "ci_harvest": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next9\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "eb09713a7f49f36186aa5fd48bc59bcd620700e0836d4245b96b7de9a0bc8e48",
+      "bytes": 21443
+    },
+    "source_constraints": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round4\\SOURCE_CONSTRAINTS.md",
+      "sha256": "e40e035adfa118cca1d2911e0da6b77f2ec4d0e8791317576b8ebea68ad46d5c",
+      "bytes": 5715
+    },
+    "source_audit": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round4\\MADNESS_SOURCE_AUDIT.json",
+      "sha256": "915e5ea3e667529a72e8b1e4591bcbe9d2fac17774a1d6e5d522138562da43ce",
+      "bytes": 172604
+    },
+    "selberg_history": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\selberg-symmetry\\ACTUAL_SELBERG_SYMMETRY.md",
+      "sha256": "f2c72ef1a883e64bfbc5f8ae2c3205c3df76a48062d80c62824fe7b397aad1f8",
+      "bytes": 15069
+    }
+  },
+  "script": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\seal_coupled_normal_mean_pass.py",
+    "sha256": "8b4beaa9f7d729c894b50b94d83794fdc838b2c0ed15d9101770baa94b537d74",
+    "bytes": 12566
+  },
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE"
+}

@@ -1,0 +1,304 @@
+{
+  "schema": "BOUNDED_CURRENT_HEAD_NEW_SUCCESS_HARVEST_V1",
+  "status": "COMPLETE_ONE_NEW_JOB",
+  "snapshot_utc": "2026-11-02T08:04:14.081792+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "job": {
+    "id": 125139063624,
+    "run_id": 41378780684,
+    "run_attempt": 1,
+    "head_sha": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "name": "aggregate",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-11-02T06:56:59Z",
+    "completed_at": "2026-11-02T07:57:35Z",
+    "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780684/job/125139063624",
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-02T06:57:00Z",
+        "completed_at": "2026-11-02T06:57:02Z"
+      },
+      {
+        "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-02T06:57:02Z",
+        "completed_at": "2026-11-02T06:58:36Z"
+      },
+      {
+        "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-02T06:58:36Z",
+        "completed_at": "2026-11-02T06:58:45Z"
+      },
+      {
+        "name": "Select explicit historical Round2 scope for a reviewed Round3 extension",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-02T06:58:45Z",
+        "completed_at": "2026-11-02T06:58:54Z"
+      },
+      {
+        "name": "Capture immutable requested source before all checks",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-02T06:58:54Z",
+        "completed_at": "2026-11-02T06:58:57Z"
+      },
+      {
+        "name": "Run leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6,
+        "started_at": "2026-11-02T06:58:57Z",
+        "completed_at": "2026-11-02T07:00:53Z"
+      },
+      {
+        "name": "Install declared hash-locked audit and framework dependencies",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7,
+        "started_at": "2026-11-02T07:00:53Z",
+        "completed_at": "2026-11-02T07:01:05Z"
+      },
+      {
+        "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 8,
+        "started_at": "2026-11-02T07:01:05Z",
+        "completed_at": "2026-11-02T07:01:06Z"
+      },
+      {
+        "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 9,
+        "started_at": "2026-11-02T07:01:06Z",
+        "completed_at": "2026-11-02T07:01:13Z"
+      },
+      {
+        "name": "Capture the source-reviewed exact compiler query inventory",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 10,
+        "started_at": "2026-11-02T07:01:13Z",
+        "completed_at": "2026-11-02T07:01:14Z"
+      },
+      {
+        "name": "Require genuinely absent project build objects before cold aggregate",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 11,
+        "started_at": "2026-11-02T07:01:14Z",
+        "completed_at": "2026-11-02T07:57:22Z"
+      },
+      {
+        "name": "Compile all required full facade and binding targets after the cold core export",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 12,
+        "started_at": "2026-11-02T07:57:22Z",
+        "completed_at": "2026-11-02T07:57:27Z"
+      },
+      {
+        "name": "Verify exact source unchanged after all commands",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 13,
+        "started_at": "2026-11-02T07:57:27Z",
+        "completed_at": "2026-11-02T07:57:29Z"
+      },
+      {
+        "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 14,
+        "started_at": "2026-11-02T07:57:29Z",
+        "completed_at": "2026-11-02T07:57:32Z"
+      },
+      {
+        "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 27,
+        "started_at": "2026-11-02T07:57:32Z",
+        "completed_at": "2026-11-02T07:57:32Z"
+      },
+      {
+        "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 28,
+        "started_at": "2026-11-02T07:57:32Z",
+        "completed_at": "2026-11-02T07:57:32Z"
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 29,
+        "started_at": "2026-11-02T07:57:32Z",
+        "completed_at": "2026-11-02T07:57:32Z"
+      }
+    ],
+    "requested_attempt": 1,
+    "latest_attempt": true
+  },
+  "classification": [
+    "FORMAL VALIDITY GATE (frozen 775 Round2)",
+    "REGRESSION GATE (preserved historical controls)"
+  ],
+  "actual_disposition": "PASS_FULL_CORE_COMPILER_COMPOSITION_HUMAN_REVIEW_PENDING",
+  "formal_subject": {
+    "head": "775692f2e72d76b6a97cf66926a86cc96342c109",
+    "tree": "acd548eb97ddaee68eb6c9df73f82756ee10d13f",
+    "covered_required_clauses": 125,
+    "families": 40,
+    "disabled_optional_clauses": 18,
+    "control_dispositions": 75,
+    "registered_compiler_uses": 40,
+    "registered_binding_universe": 334,
+    "toolchain": "leanprover/lean4:v4.33.0-rc2",
+    "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "project_cold_start": true,
+    "pinned_package_objects_allowed": true,
+    "full_package_rebuild_claimed": false
+  },
+  "comparison": {
+    "prior": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next10\\CHECKPOINT.json",
+      "sha256": "009b3c98a58383da3640987e4c81e7f2a53b6fa9844d6aa1ace5f8315e59c84b",
+      "bytes": 17384
+    },
+    "change": "Previously running Round2 aggregate completed successfully; its generated successor is now running. No new current-head failure or review.",
+    "cached_child_inputs": "Exact normal/optimized controls and ancestry hashes equal already harvested current-run inputs. All scientific scopes match the source-frozen control crosswalk.",
+    "old_aggregate_limit": "No cached previous complete aggregate artifact was located in the bounded targeted search; no claim of byte equality to an unavailable old aggregate and no historical redownload."
+  },
+  "authority": {
+    "current_7bae": "Run/head/attempt and source inspection only in this job; compiler subject is explicitly frozen775.",
+    "full_core_accepted": false,
+    "full_release_accepted": false,
+    "human_review": "NOT_ESTABLISHED",
+    "new_current_1079_90_84_acceptance": false,
+    "shared_runtime_repair_execution_newly_qualified_here": false,
+    "remaining_running": [
+      {
+        "id": 125159484505,
+        "run_id": 41378780684,
+        "name": "generated",
+        "status": "in_progress",
+        "conclusion": null,
+        "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780684/job/125159484505"
+      },
+      {
+        "id": 125141213440,
+        "run_id": 41378780656,
+        "name": "Round4 / INDEPENDENT_CANONICAL",
+        "status": "in_progress",
+        "conclusion": null,
+        "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780656/job/125141213440"
+      },
+      {
+        "id": 125141213444,
+        "run_id": 41378780656,
+        "name": "Round4 / INDEPENDENT_CORE",
+        "status": "in_progress",
+        "conclusion": null,
+        "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780656/job/125141213444"
+      },
+      {
+        "id": 125141213445,
+        "run_id": 41378780656,
+        "name": "Round4 / INDEPENDENT_AUXILIARY",
+        "status": "in_progress",
+        "conclusion": null,
+        "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780656/job/125141213445"
+      }
+    ],
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "artifact": {
+    "artifact_id": 13124931637,
+    "bytes": 9451508,
+    "sha256": "e60deb6fcad88977d303ef17226efe484c1665662ad656d386df654e6f5e06bf",
+    "all_member_crc_pass": true,
+    "members": 22,
+    "expanded_bytes": 86139624,
+    "extraction": "None; selected JSON members read later in memory."
+  },
+  "evidence": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\20261102T080407Z\\summary.json",
+      "sha256": "f22f95ef398cfe99fe1448aaac18ba97ba0ebd490778656d2514c26a18db34d5",
+      "bytes": 14371
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\NEW_SUCCESS_JOBS.json",
+      "sha256": "98b98fe7ba9e6b6e1d295b71ee04931b42c241cc98f8d1e9d6c5e355367efddc",
+      "bytes": 5304
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\job-125139063624.connector.log",
+      "sha256": "d5bced14234b106aa4c311fc33d30fae8d0d0e5ba79b9a091a36748b64f3f3ff",
+      "bytes": 1026960
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\AGGREGATE_SELECTED_DOCUMENTS.json",
+      "sha256": "38065357099f856946f4d7adc4152695eb9d0d5b7d6e2880bb821d6a830ef66d",
+      "bytes": 662133
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\AGGREGATE_SCIENTIFIC_DISPOSITIONS.json",
+      "sha256": "48678b8d765bdbc0befb6fc56569266d3e4662745767643c56be1664baffd75c",
+      "bytes": 39088
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\AGGREGATE_LOG_ANCHORS.json",
+      "sha256": "3185850e09d2418f3f8f49570de1256213be1a2c59f4890f29cb3f1061dd9391",
+      "bytes": 1559
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\AGGREGATE_ZIP_VERIFIED.json",
+      "sha256": "d76f99ccda77e4d7db3cee364501994be2b93f2f123709fd7af74053be7d359c",
+      "bytes": 289
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\AGGREGATE_ZIP_INVENTORY.json",
+      "sha256": "351cde3237aaa249e56d8b6c9a3d2aec150b7f35ec803ab89bc9b790bfe634f6",
+      "bytes": 2346
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\ROUND2_ARTIFACTS.json",
+      "sha256": "345f4de45d85f5cd54b38674f51e306989e5df76a45315456dbf1c7b0b4020e0",
+      "bytes": 6534
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\SOURCE_BINDINGS.json",
+      "sha256": "d9f1e4b798e2e3945043f43bb66c2cf18d6db9f61b92a0f1c5b04b1bc796e8bb",
+      "bytes": 5086
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\LOCAL_AFTER.json",
+      "sha256": "c209786c2fdd6108ee740b8b6546ed7bd7bd34745442a2ee2316ba7c817712e2",
+      "bytes": 329
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "status": "COMPLETE_DERIVED_F_SOURCE_SELBerg_CANDIDATE_REVIEWED_CLEAR",
+  "created_utc": "2026-11-02T08:26:09.769991+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "worktree_clean": true
+  },
+  "bindings": [
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-candidate/ACTUAL_F_SOURCE_AND_SELBerg_CANDIDATE.json",
+      "sha256": "368cf6488ffd7e8ad825f5156c456b6b54b45789093ffd71fff6ebe286e7c260",
+      "bytes": 13535
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-candidate/SOURCE_BOUND_RESEARCH.json",
+      "sha256": "59f332e1af49e755d5bf233d6c5403524004f5b34f52b571c7d215b8c6539a15",
+      "bytes": 10071
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-candidate/INDEPENDENT_ROOT_F_SELBerg_REVIEW.json",
+      "sha256": "ee279cb9005a6993de99b3960a91c86b1c833b836b00f3eee403bda7038ee631",
+      "bytes": 9744
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-candidate/INDEPENDENT_F_SOURCE_SELBerg_REVIEW.json",
+      "sha256": "dbcd24716e1f35e7e1c3038d146a3b361f0452be6f2da24c5267a8298a5955b0",
+      "bytes": 24108
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-candidate/complete_research.py",
+      "sha256": "1bad2d44929a55ab6eab013a7b90f556057e59fea4d6d8bcf5773449eb45537d",
+      "bytes": 5290
+    }
+  ],
+  "fresh_rechecks": {
+    "source_receipt_records": 20,
+    "current_source_git_blobs_in_author_receipt": 6,
+    "distinct_current_source_blobs_including_peer_additional_anchors": 11
+  },
+  "result": "The actual remaining F has a one-sided noncompact source with plateau -1/16. Its local signed prime shell is eventually positive with main exp((t-B)/2)/8, exactly canceled by the old-prime prefix. Coefficientwise nonnegative source majorants incur a genuine exp(t/2) cost with coefficient at least exp(-B/2)/8. The full multiplicative Selberg relation retains uK and all delayed prime powers; its independent classical bound leaves the explicit signed R_c-pairing at exponent1/2, including lower-end constant -1/4.",
+  "additional_root_checked_laurent_detail": "At an actual right-zero shift, all simple-pole coefficients in S_K+U_K-W_K cancel: [m(m-1)K1-2m a0 K0]+mK1-[m^2K1-2m a0 K0]=0. The remaining double coefficient is -mK0, exactly Laplace(tF). This supplementary algebra is in the separately bound root review; the immutable main note is unchanged.",
+  "qualifications": [
+    "K has one-sided support, not compact support. Its bilateral Laplace integral is initially Re z>0 and actual prime-transform Fubini Re z>1/2. A continued zero at -1/2 is not a convergent negative-half weighted moment.",
+    "The physical cutoff statement is floor(exp(L-c+B))<=floor(exp L) for c>B. Strict floor inequality requires sufficiently large L, already available in the mean application; none of the finite identities requires strictness.",
+    "The large nonnegative histories are [Lambda;K_+] and [Lambda;K_-], not F_+ and F_- and not the complete signed F.",
+    "The source-sector majorant candidate is falsified below exponent1/2; no general impossibility claim about source-specific signed cancellation follows.",
+    "The exact mean, Arch, pole, finite normal and boundary dictionaries remain unchanged. No unknown complete term is omitted or recast as positive.",
+    "All moments/limits use the cited quantitative PNT and safe-domain continuation with absolute integrability first. No RH or attained/rightmost zero hypothesis is used."
+  ],
+  "new_Lean_declarations": 0,
+  "new_compiler_runs": 0,
+  "new_tests": 0,
+  "repository_edits": false,
+  "formal_state": "Unchanged; no new formal authority or CI harvest claimed in this bounded external pass.",
+  "remaining_target": "An independent signed bound on the complete actual forcing, rather than the nonnegative source-majorant comparison. No such improved bound was established here.",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

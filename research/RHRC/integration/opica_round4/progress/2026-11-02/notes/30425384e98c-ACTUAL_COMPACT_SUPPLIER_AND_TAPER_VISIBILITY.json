@@ -1,0 +1,101 @@
+{
+  "status": "CLEAR_ROOT_SUPPLIER_REVIEW_AND_DERIVED_SPECIFIED_TAPER_VISIBILITY",
+  "created_utc": "2026-11-02T04:47:08.746115+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "review_scope": "Independent proof/source review of compact primitives, finite prefixes and general compact-source envelope; independent DERIVED analysis of explicit taper visibility and admissible-class limitation. Not a complete independent review of all boundary-centering formulas.",
+  "sections": [
+    {
+      "title": "S1: Independent check of the compact differential primitives",
+      "proof": "Let phi=q*q and H=(D^2-1/4)^2 phi, for the unchanged source q at s0=1/4096. With B=2s0, all these smooth functions are compactly supported in [-B,B]. Direct factorization and the zero past boundary give\n R_+(u)=exp(-u/2) integral_(-infinity)^u exp(v/2)H(v)dv\n       =(D+1/2)(D-1/2)^2 phi(u),\n R_-(u)=exp(u/2) integral_(-infinity)^u exp(-v/2)H(v)dv\n       =(D-1/2)(D+1/2)^2 phi(u).\nThus (D+1/2)R_+=H and (D-1/2)R_-=H, with no added homogeneous tail. Both exponential moments of BOTH primitives vanish: the double zeros of K_H at +/-1/2 lose only one order at one endpoint. In the bilateral Laplace convention K_G(z)=integral exp(-zu)G(u)du,\n K_R+(z)=K_H(z)/(z+1/2), K_R-(z)=K_H(z)/(z-1/2),\n with their removable points filled by the compact-source definition.\n\nFor P=[Lambda;H], c>B, and every nonnegative aperture where the displayed integrals are used, finite-sum substitution gives\n exp(-L/2) integral_0^L exp(t/2)P(t-c)dt=[Lambda;R_+](L-c),\n exp(L/2) integral_0^L exp(-t/2)P(t-c)dt=[Lambda;R_-](L-c).\nThe lower endpoint corresponds to -c-log n<-B and contributes zero. The factors n^(-1/2), exp(+/-L/2) and c are all retained. In particular neither identity divides by 1/2-Theta. This independently verifies the root supplier's compact-primitive and prefix part."
+    },
+    {
+      "title": "S2: Independent check of the full compact-source growth supplier",
+      "proof": "For any FIXED C2 compactly supported complex G with K_G(1/2)=K_G(-1/2)=0, set k(u)=G(-u). The current WeilFilter.lean theorem absolutelySummableZeroFilter_weil gives\n A_G=sum_rho m_rho |K_G(rho-1/2)|<infinity,\n because paperFT(k)(gammaOf rho)=K_G(rho-1/2). The current exact translated Weil identity applied at translation t (aperture t/2) gives, for sufficiently large t,\n [Lambda;G](t)=Arch_G(t)-sum_rho m_rho K_G(rho-1/2) exp((rho-1/2)t).\nBoth pole terms vanish; the advanced prime samples G(t+log n) vanish beyond the fixed support. No prime power or multiplicity is discarded.\n\nThe literal Arch term is (1/(2pi)) integral exp(i r t) paperFT(k)(r) gammaBracket(r)dr. Current digamma_growth_strip gives |gammaBracket(r)|<=C(1+log(2+|r|)); two integrations by parts for the compact C2 test give integrability of |paperFT(k)| times this weight. Hence |Arch_G(t)|<=B_G uniformly in real t. The translation factor has modulus one on this REAL integration line.\n\nWith the actual full-zero displacement supremum 0<=Theta<=1/2, every Re(rho-1/2)<=Theta. Therefore\n |[Lambda;G](t)| <= (A_G+B_G) exp(Theta t)\n for late t>=0. This argument is valid at Theta=1/2, assumes no attained supremum or rightmost zero, and uses no denominator 1/2-Theta. Constants depend on the FIXED complete G before t. This is a DERIVED application of current named Weil/gamma theorems, not a newly compiled theorem and not an independent small-rate bound."
+    },
+    {
+      "title": "S3: What the inherited cutoff does and does not specify",
+      "proof": "The frozen ACTUAL_COMPLETE_RESPONSE_NATIVE_REPAIR.md, section2, prescribes delta=(c-B)/8 and a fixed real Gevrey-2 step chi with 0<=chi<=1, chi=0 below delta/2 and chi=1 above delta. It says that chi CAN be obtained by integrating a fixed positive rescaling of the same q; it does not bind a particular formula. The later centering calculation uses a monotone such step, so chi'>=0 and integral chi'=1.\n\nAll compact-source upper bounds above apply to every such fixed admissible choice. All-off-line-zero visibility is a stronger property and cannot be silently attributed to the whole class. The explicit q-derived choice in S4 is an allowed specialization of that construction, chosen before L and independently of any zero, not a change to q,H,c,delta,M or Kd. The fixed matrix M in the repair depends on the early W and right bumps, not on which admissible chi is used."
+    },
+    {
+      "title": "S4: An explicit actual-q taper preserves every off-line zero",
+      "proof": "Specify one permissible instance now:\n a0=4s0/delta>0, m0=3delta/4,\n chi_q'(t)=a0 q(a0(t-m0)),\n chi_q(t)=integral_(-infinity)^t chi_q'(s)ds.\nIts support is exactly contained in [delta/2,delta], it is nonnegative of mass one and Gevrey-2, and it has the required endpoint values. Write Q(z)=integral exp(-zu)q(u)du. The current facade identifies Q(z)=UniversalSinc.product(s0,i z); product_ne_zero_of_im_ne_zero therefore proves Q(z)!=0 whenever Re z!=0.\n\nFor the centered suppliers\n S_+=R_+*(chi_q'(s)exp(-s/2)),\n S_-=R_-*(chi_q'(s)exp(s/2)),\n their EXACT transforms are\n K_S+(z)=K_H(z)/(z+1/2) * exp[-m0(z+1/2)] * Q((z+1/2)/a0),\n K_S-(z)=K_H(z)/(z-1/2) * exp[-m0(z-1/2)] * Q((z-1/2)/a0).\nEvery factor is nonzero at an off-critical spectral point p=rho-1/2 in the open strip: -1/2<Re p<1/2 and Re p!=0. Indeed K_H(p)=(p^2-1/4)^2 Q(p)^2!=0, p+/-1/2!=0, and Re(p+1/2)>0 while Re(p-1/2)<0. Thus BOTH S_+ and S_- preserve EVERY off-line-zero contribution, not merely some selected one. No uniform lower bound on these nonzero coefficients is claimed; their sizes can be very small."
+    },
+    {
+      "title": "S5: Exact consequence for the centered correction vector",
+      "proof": "For the explicit choice S4, the centering note's exact formula is\n z_new(L)=M^-1 ([Lambda;S_+](L-c),[Lambda;S_-](L-c),[Lambda;S3](L-c))^T\n          +M^-1 a(L),\n where M is fixed invertible and the displayed Arch remainder vector decays. The safe Laplace transform of a compact response is\n Laplace([Lambda;G])(z)=-K_G(z) zeta'(z+1/2)/zeta(z+1/2), Re z>1/2.\nAll relevant sources have support lower endpoint at least -B, so the response is causal (log2>B). At a right off-line zero p of multiplicity m, the residue of the vector before M^-1 is\n -m (K_S+(p),K_S-(p),K_S3(p))^T,\n whose first two components are nonzero. Fixed invertible M and the delay factor exp(-cp) cannot annihilate this vector. The decaying Arch remainder cannot cancel its pole.\n\nThe supplier upper bound and this actual nonzero residue vector imply\n limsup_(L->infinity) log(1+||z_new(L)||)/L=Theta.\nNo single component is asserted to see every zero after mixing by M^-1. For Theta>0 at least the vector cannot become subexponential merely through centering. For Theta=0, the log(1+norm) convention and the bounded upper estimate give rate zero. No attained supremum is needed.\n\nThe actual three right bumps have fixed disjoint supports, so their repair component r_new=sum_i z_new,i b_i(L-.) satisfies ||r_new||^2=sum_i |z_new,i|^2 ||b_i||^2 and has squared-norm limsup rate 2Theta. This is a statement about the correction COMPONENT. It does not transfer that rate to the full centered f_new without paying cross terms, does not sign the reflection echo, and does not undo the genuine removal of the old deterministic exp(L/2) Arch artifact."
+    },
+    {
+      "title": "S6: Falsification of visibility from smoothness/monotonicity alone",
+      "proof": "Even the monotone cutoff class does not force the conclusion of S4. Fix a complex p=x+i gamma in the open strip with x!=0 and |gamma|>4pi/delta. Put d0=pi/|gamma|, so 2d0<delta/2. Set w_+=p+1/2, w_-=p-1/2 and x_+=x+1/2, x_-=x-1/2. For each sign use the positive probability measure\n nu_sigma=A_sigma delta_0+B_sigma delta_d0,\n A_sigma=1/(1+exp(x_sigma d0)),\n B_sigma=exp(x_sigma d0)/(1+exp(x_sigma d0)).\nSince exp(-i gamma d0)=-1, its Laplace transform vanishes EXACTLY at w_sigma.\n\nChoose a sufficiently narrow normalized rescaling q_eta of the SAME actual q and a fixed translation t1 so that\n chi_bad'=translate_(t1)(q_eta*nu_+*nu_-)\n has support strictly inside (delta/2,delta). This is an ordinary sum of four translates of q_eta: smooth, Gevrey-2, nonnegative and mass one. Its cumulative is an admissible monotone cutoff. Its transform vanishes at both p+1/2 and p-1/2. Thus BOTH associated S_+ and S_- vanish at p despite the actual H and R_+/- being visible there.\n\nThis is an exact falsifier of a purported implication from the stated cutoff regularity to all-height visibility, constructed from the same q rather than a replacement arithmetic source. It does not assert the existence of an off-line zeta zero at p, does not alter the explicit choice S4, and says nothing about simultaneous invisibility of S3 or the entire correction vector for this adversarial cutoff.\n\nConversely every admissible monotone cutoff sees p through these cutoff factors whenever |gamma| delta/2<pi: after rotating by the midpoint phase, the tilted positive density has strictly positive real part throughout an arc of length less than pi. This bounded-height fact is not an all-height substitute for S4."
+    },
+    {
+      "title": "S7: Mathematical disposition and provenance",
+      "proof": "The root compact-primitive/Weil supplier argument is independently CLEAR within its stated fixed compact-source hypotheses. It genuinely removes any need to divide by the critical-strip gap and applies to the actual centered suppliers and their finite linear combinations.\n\nThe additional all-zero visibility result is DERIVED for the explicitly specified admissible q taper only. It shows that the centered correction vector retains the genuine displacement rate Theta even after its deterministic Arch mass is removed. The inherited unspecified class alone has only the upper envelope; S6 explains the exact logical gap.\n\nNo signed closing estimate follows. The whole echo, all early Arch history, every prime power, fixed cutoff/fourier correction and reciprocal orientation stay as in the parent construction. This note supplies no PSD premise, ground identification, uniform source-overlap lower bound, new conditional RH wrapper, Lean build or repository edit. RH remains OPEN."
+    }
+  ],
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-supplier\\REVIEWED_BOUNDARY_CENTERING_DRAFT.json",
+      "sha256": "91b5848737f71244959c11d98a1d0011dbf06ea256a61537ac92128299a9440a",
+      "bytes": 11256
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-complete-carrier\\ACTUAL_COMPLETE_RESPONSE_NATIVE_REPAIR.md",
+      "sha256": "77a182a0ba02c4fd6a67df5ca014295b88cb41abccf8eac6754ef3a7f1add600",
+      "bytes": 12299
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-arch-response\\ACTUAL_ARCH_RESPONSE.json",
+      "sha256": "b1a23776de6f31f8d173110864210cbe0243cecf0f5986e247a0fe984dc78b44",
+      "bytes": 9401
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\WeilFilter.lean",
+      "sha256": "80504bcc54e7ae8afc2ac9d241dd32bca3c3657d16e4588661ad5eac2e3a8fa1",
+      "bytes": 15601
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExplicitFormula.lean",
+      "sha256": "f602f5ffe70f42eb5397b5128fc681f89cce7094a19b66e4de69ad4ed0cb8ae4",
+      "bytes": 38989
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\WeilEF\\VerticalLine.lean",
+      "sha256": "2df131b682e2a2bcee51de18059c4e336a94fa5900f9e47399031a195bdcbfcf",
+      "bytes": 44283
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\UniversalSincSourceFacade.lean",
+      "sha256": "99602adbc72ba8097fc20167da33f489932616055180b2aec33c45857dbbbf7b",
+      "bytes": 10093
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\UniversalSincDetector.lean",
+      "sha256": "a383785569a65c36424cd8d273c822792df1b8041dc859b91f51ed5827ddb552",
+      "bytes": 12724
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\UniversalSincPhysicalBounds.lean",
+      "sha256": "a95a81960a2e6b50bd743bfcd262cfba72a88f5322061308f1983e0a442860d5",
+      "bytes": 11070
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\UniversalSincSignedLaplace.lean",
+      "sha256": "870226d2e324f8251c8a2552922f620e9f91799eff19d6293f9b30fd24fdd3f0",
+      "bytes": 11061
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\ActualSourceHyperbola.lean",
+      "sha256": "568292f2b9008892772550b544a48fdaa5730be44d87e453fd8008f9bbb1a350",
+      "bytes": 80457
+    }
+  ],
+  "draft_snapshot_provenance": {
+    "original_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\ACTUAL_BOUNDARY_CENTERING.json",
+    "snapshot_sha256": "91b5848737f71244959c11d98a1d0011dbf06ea256a61537ac92128299a9440a",
+    "scope": "Snapshot of the current centering draft read for supplier interfaces; does not claim that draft is the later final freeze."
+  },
+  "authority": "DERIVED external analysis; no compiler, tests, current repo mutation or new Lean declaration. No all-height visibility attributed to an unspecified cutoff."
+}

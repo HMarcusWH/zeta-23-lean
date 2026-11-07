@@ -1,0 +1,206 @@
+{
+  "status": "DERIVED_ACTUAL_BLOCK_COMPENSATION_AND_EXACT_MOBIUS_SEAM_CANCELLATION",
+  "created_utc": "2026-11-02T06:21:37.086849+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "question_tested": "Does averaging the complete actual self-echo over the forced consecutive native-index blocks produce a stronger signed estimate, or suppress the unresolved arithmetic contribution?",
+  "source_and_notation": "Keep s=1/4096, B=2s, tau=exp(B)/2, H=kappa*kappa, J=H*H, P=[Lambda;H], S=P*P=[Lambda*Lambda;J]. All prime powers and ordered pairs remain. Write a(n)=(Lambda*Lambda)(n)>=0, A(X)=sum_(n<=X)a(n). The native samples are x_N=N^2/tau and t_N=2log N-log tau. F=actualFlatMobiusTest, P_F=actualFlatSamplingSum, Q_Y(x)=mobiusPoissonQuadratic P_F x Y, I=integral F. P_F is NOT P; the two objects have different arguments and weights.",
+  "sections": [
+    {
+      "id": "B1",
+      "title": "The actual average is a shrinking source translate, not a long physical-time average",
+      "proof": "Take consecutive indices N=N0,...,N0+m-1, m>=1, and let t*=t_(N0), delta_N=2log(N/N0), h=2log(1+(m-1)/N0). Define J_block(v)=m^-1 sum_N J(v+delta_N). Finite-history interchange gives the exact identity\n S_block=m^-1 sum_N S(t_N)=sum_n a(n)/sqrt(n) J_block(t*-log n).\nIts full support lies in [-2B-h,2B]; the arithmetic sum runs through n<=exp(t*+2B+h), with no missing endpoint atoms. For the forced blocks from the prior grid note, m/N0 tends to0 although m tends to infinity. Thus h tends to0 and ||J_block-J||_(C^r)<=h ||J-prime||_(C^r) for every fixed derivative order r. In particular the source seminorms do not improve by a factor1/m. The number of arithmetic indices averaged is large, but the physical-time window shrinks. This is an exact fact about this sampling geometry.",
+      "source_moments": "The literal transform is K_J(z)=K_H(z)^2=(z^2-1/4)^4 Q(z)^4. Therefore K_(J_block)(z)=K_J(z) M_block(z), where M_block(z)=m^-1 sum_N exp(z delta_N). All four source zeros at +/-1/2 remain. Also integral J_block=integral J=(integral H)^2=1/256. Hence J_block has both signs: its exponentially weighted integral at1/2 is zero but it is nonzero. The averaging has not turned the literal source into a nonnegative kernel."
+    },
+    {
+      "id": "B2",
+      "title": "An explicit unconditional leading law for the actual Lambda*Lambda coefficients",
+      "proof": "Ordinary PNT gives A(X)~X log X. Here is a direct proof retaining the coefficients. Use A(X)=sum_(a<=X/2) Lambda(a) psi(X/a). Fix epsilon in(0,1). For a<=X^(1-epsilon), X/a>=X^epsilon, so PNT applies uniformly and this part equals (1+o(1))X sum_(a<=X^(1-epsilon))Lambda(a)/a=(1-epsilon+o(1))X log X. Positivity gives that lower bound. For the remaining a, Chebyshev psi(y)<=C_psi y and partial summation give an upper bound (C_psi epsilon+o(1))X log X. Thus liminf A(X)/(XlogX)>=1-epsilon and limsup<=1-epsilon+C_psi epsilon. Let epsilon tend to0 AFTER X tends to infinity. This proves the leading coefficient1 with no RH premise, no ordinary-prime-only restriction and no uniformity assertion at epsilon depending on X.",
+      "weighted_consequence": "For every fixed continuous compact f, supported on a finite real interval,\n sum_n a(n)/sqrt(n) f(t-log n) / [t exp(t/2)] -> integral exp(-v/2) f(v)dv.\nIndeed, with x=exp t the positive measures (x log x)^-1 sum_n a(n) delta_(n/x) converge vaguely on(0,infinity) to dy. Apply this to y^-1/2 f(-log y). Substitution y=exp(-v) gives exactly the weight exp(-v/2). The same conclusion holds for a sequence of such f converging uniformly on one common compact support: the measures have uniformly bounded mass there, so the additional error tends to zero."
+    },
+    {
+      "id": "B3",
+      "title": "Two genuine large source-band contributions survive averaging",
+      "proof": "Let c_J=integral exp(-v/2)|J(v)|dv>0. The exact half-moment zero gives integral exp(-v/2)J_+(v)dv=integral exp(-v/2)J_-(v)dv=c_J/2. Since J_block tends uniformly to J, its positive and negative parts do too. Define the ACTUAL retained charges\n A_block,+ = sum_n a(n)/sqrt(n) (J_block)_+(t*-log n),\n A_block,- = sum_n a(n)/sqrt(n) (J_block)_-(t*-log n).\nThen along every block sequence with N0 tending to infinity and m/N0 tending to0,\n A_block,+ ~ A_block,- ~ (c_J/2) t* exp(t*/2)\n                         ~ (c_J/sqrt(tau)) N0 log N0.\nThe signed mean is exactly S_block=A_block,+-A_block,-. This is a source-preserving obstruction to bounding either contribution separately: each is genuinely of order N log N even if the block contains an unbounded number of consecutive samples. It is NOT a lower bound on the signed difference, and it is not an assertion that the physical even/odd energy pieces equal these source-band charges.",
+      "priced_cancellation": "A desired all-rate bound |S_block|<=C_epsilon exp(epsilon t*) would require cancellation of these two complete charges to relative accuracy of order exp(-(1/2-epsilon)t*)/t*. PNT pays equality of their leading terms but does not pay this exponential relative precision. The previous cofinal C-sector centering is a different signed statement and supplies no uniform block estimate."
+    },
+    {
+      "id": "B4",
+      "title": "Quantitative PNT gives a real gain, but its remaining exponent is explicit",
+      "proof": "The consulted unconditional quantitative PNT gives psi(x)-x=O(x exp(-c sqrt(log x))). Partial summation against the literal H gives |P(t)|<=C exp(t/2-c1 sqrt t), for some source-fixed C,c1>0, enlarged on the finite initial interval. The continuum term is exactly zero because integral exp(-v/2)H(v)dv=0. In the remainder, differentiating x^-1/2 H(t-log x) gives -x^-3/2[H-prime(t-log x)+(1/2)H(t-log x)]; its compact source support and fixed seminorms pay the bound. No unsigned prime source is substituted. Put g(t)=exp(-t/2)P(t), extended by zero before0. Then g is absolutely integrable and |g(t)|<=C exp(-c1 sqrt t). Splitting the convolution at t/2 gives\n |S(t)|<=2C ||g||_1 exp(t/2-(c1/sqrt2)sqrt t).\nThe same bound, with a fixed enlarged constant, holds for S_block whenever h<=1. This is a genuine unconditional bound on the complete S, including its mixed histories. It improves the raw Chebyshev cost O((1+t)exp(t/2)) by a stretched-exponential factor but leaves exponential rate1/2. For each fixed beta<Theta<=1/2, it remains compatible with the forced exp(beta*t) blocks, since (1/2-beta)t-c2 sqrt t tends to infinity. Taking beta to1/2 with t would violate the fixed-beta excursion quantifiers.",
+      "authority": "The PNT input is classical paper-level authority from the primary reference below; the same source partial-summation bound was already used in the sealed causal-Selberg note. The convolution bound and its explicit block consequence are derived here, not newly compiled."
+    },
+    {
+      "id": "B5",
+      "title": "A genuine exact Mobius cancellation at every cutoff seam",
+      "proof": "The actual sharp support is F(r)=0 for r>=tau. For r>tau the logarithmic integer drive is before its causal onset. At r=tau only integer2 could survive, but H(-B)=0 by continuity and compact support; the integer1 logarithmic coefficient is zero. Thus P_F(1/tau)=0. At x_i=i^2/tau, finite Mobius inversion gives\n sum_(b<i) mu(b) P_F(i/(tau*b))=F(tau/i):\nincluding b=i adds zero, all larger b are outside support, and grouping n=b*c uses sum_(b|n)mu(b)=1_(n=1). The committed weighted_mobius_inverse is exactly this finite coefficient identity. Expanding the new row and column of Q gives\n Q_i(x_i)-Q_(i-1)(x_i)\n =2mu(i) sum_(b<i)mu(b)P_F(i/(tau*b))+mu(i)^2 P_F(1/tau)\n =2mu(i)F(tau/i).\nThe raw short prefix E_i^raw(x)=sum_(a<=i)mu(a)F(a/x) has jump mu(i)F(tau/i), so 2E^raw-Q has exactly ZERO jump. Normalizing by sqrt(x_i) preserves that cancellation. The actual integer drive is rapidly decaying, so F(tau/i)=O_A(i^-A) for every fixed A, with constants fixed before i. This prices the seam terms without estimating the interior derivative.",
+      "complete_telescope": "For integers n1>n0>=1, the complete path identity is\n Q_(n1)(x_(n1))-Q_(n0)(x_(n0))\n =sum_(i=n0)^(n1-1) integral_(x_i)^(x_(i+1)) partial_x Q_i(x)dx\n   +2sum_(i=n0+1)^(n1)mu(i)F(tau/i).\nThe last sum is rapidly small on a short relative block. The first sum is NOT removed: writing P_F(y)=I*y+R_F(y) gives\n partial_x Q_i(x)=I(sum_(a<=i)mu(a)/a)^2\n       +sum_(a,b<=i)mu(a)mu(b)/(ab) R_F-prime(x/(ab)).\nThis retains the positive rank-one derivative and the full signed alias derivative, including diagonal terms. Inferring a small full block from the tiny seam jumps would omit precisely this interior contribution."
+    },
+    {
+      "id": "B5a",
+      "title": "The exact seam compatibility holds to every derivative order",
+      "proof": "This strengthens B5 without assuming global C-infinity regularity of F at0. The actual logarithmic integer history is locally a finite sum of translates of the smooth H; consequently F(r)=J_integer(-log r)/sqrt(r) is smooth at every POSITIVE r. At tau>0 it vanishes on the right and hence all of its derivatives vanish there. Put b_i(m)=sum_(a|m,a<=i)mu(a). Finite divisor regrouping gives\n Q_i(x)-Q_(i-1)(x)-2mu(i)F(i/x)\n =2mu(i) sum_(m>i)b_i(m)F(i*m/x)-mu(i)^2 P_F(x/i^2).\nHere b_i(m)=1_(m=1) for m<=i; every larger m is retained. If 0<x<i(i+1)/tau, then all m>i terms vanish by sharp support. Also tau*x/i^2<(i+1)/i<=2, so the only possible positive-integer sample in P_F(x/i^2) is its n=1 term. Therefore on this explicit open interval\n Q_i(x)-Q_(i-1)(x)-2mu(i)F(i/x)=-mu(i)^2 F(i^2/x).\nThe seam x_i=i^2/tau lies strictly inside this interval. The right side and all its x derivatives vanish at x_i, because i^2/x_i=tau and every derivative of F at tau is zero. Thus all derivative jets of the two cutoff representations 2E_i^raw-Q_i and 2E_(i-1)^raw-Q_(i-1) agree at x_i; multiplying by x^-1/2 preserves the statement. The next possible new incomplete-divisor term begins at the explicitly retained threshold i(i+1)/tau. The local defect need not vanish to the right of the seam away from the endpoint, so this is not a bound on the interior derivative. Sharp tau support and positive-point all-order smoothness are DERIVED here from the actual local finite history; the current global formal F-support theorem alone states the weaker e^B support and is not relabeled."
+    },
+    {
+      "id": "B6",
+      "title": "Full two-history cell costs remain after averaging",
+      "proof": "For each outer t_N, the prior exact cells use i=Y(u), j=Y(t_N-u), with ij<sqrt(tau)N<(i+1)(j+1) for a positive-length cell. On it the full integrand remains\n 4E_i(u)E_j(t_N-u) -2 exp(-(t_N-u)/2) E_i(u)Q_j(exp(t_N-u))\n -2 exp(-u/2)Q_i(exp u)E_j(t_N-u)\n +exp(-t_N/2)Q_i(exp u)Q_j(exp(t_N-u)).\nAveraging over N is a finite sum of these exact integrals; changing cell boundaries is not ignored. B5a cancels every derivative jet in the WHOLE P factor, so the four-term product patches smoothly across each internal cutoff seam. It does not supply a small signed integral. Write T for the normalized hyperbola long term, so P=2E-T. Then the exact convolution identity is S=T*T-4E*T+4E*E. Although E has every fixed exponential decay at late time, E*T retains the fixed early history against a late T response and can have the same exponential rate as that response. Replacing it by a rapid error is unjustified. The arithmetic averaging does not produce a common cutoff N in the two factors, and does not turn the integrand into Q_N(x_N)^2."
+    },
+    {
+      "id": "B7",
+      "title": "The small block filter cannot annihilate a fixed visible zero",
+      "proof": "For each fixed block shape, |M_block(p)-1|<=exp(|p|h)-1. Hence for every fixed actual visible zero p, |M_block(p)|>=1/2 for all sufficiently small h. For late blocks h is also smaller than the causal gap of S; translating S left by delta_N introduces no nonzero initial correction. Thus the safe Laplace transform of the fixed-shape translated average is exactly M_block(z)*Shat(z), and its actual double pole at p persists. This is a source-specific filter check, not an identification of one pole with the full field. The shape changes with N0, so it does not assert a single stationary transform for the entire moving-block sequence. It does show why averaging many increasingly close native samples does not provide a fixed-frequency cancellation mechanism. High frequencies whose phase varies across the block remain part of the complete sum."
+    },
+    {
+      "id": "B8",
+      "title": "Relation to the original Q target and the all-aperture recovery cost",
+      "proof": "The original native Q_N(x_N) is a ONE-history quantity: P(t_N)=2E(t_N)-sqrt(tau)Q_N(x_N)/N. The full echo average studied here is its two-history convolution with all earlier times and changing cutoffs. The bounds in B3-B4 do not yield a new one-sided Q_N lower bound. Conversely, no uniform signed S bound has been obtained from the exact Q representation alone. At the canonical interface the aperture is still L_N=t_N+2c with Kd=ceil(L_N^4), and all pole, Arch and endpoint costs remain. Averaging N changes L_N and the carrier dimension; these data are not many measurements in one fixed native Hilbert space. The reviewed ALL_APERTURE_JOINT_CUBIC_RECOVERY_COST gives an actual lower conditioning cost proportional to exp(lambda0 L^(3/2))/L^(101/2) for RMS-normalized fixed-L observations. Its test g/G uses uniformly tiny actual M3/M4 observations; adding more such RMS-normalized center samples does not improve that test estimate. Neither finite span nor the number of arithmetic samples pays a uniformly bounded recovery inverse. This is an additional reason not to insert sampled averages into a ground-normalized source identity, but it is not used to claim the direct arithmetic estimate impossible."
+    }
+  ],
+  "primary_reference": {
+    "url": "https://people.math.harvard.edu/~elkies/M229.09/pnt.pdf",
+    "author": "Noam Elkies",
+    "title": "Math 229: Proof of the Prime Number Theorem; the Riemann Hypothesis",
+    "consultation": "Fresh web-tool open in this turn; theorem(1), page1, and conclusion of its proof page2 verified. It states the unconditional psi error x exp(-c sqrt(log x)). No new local PDF download or byte-hash claim.",
+    "limits": "Imported classical analytical fact only; no project Lean/CI authority for this external PNT derivation."
+  },
+  "peer_algebra_check": "madness_prime_math checked the A(X)~XlogX split and positive-measure transfer for the moving compact kernels, including the exp(-v/2) weight and the equal c_J/2 leading charges. This was a bounded algebra check, not a new full source-byte review.",
+  "next_action_changed": "The block test now has a quantified actual arithmetic cost: two genuine opposite source-band charges of equal size N log N survive the averaging, while the genuine seam jumps cancel rapidly and therefore cannot supply the missing bulk cancellation. The remaining signed interior derivative/two-history cancellation must be controlled at exponentially finer relative scale than classical PNT gives. This directs the next arithmetic attempt to the complete interior covariance, rather than to sample counting, cutoff jumps, positive coefficient signs, or finite recovery alone.",
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\ActualSourceHyperbola.lean",
+      "sha256": "568292f2b9008892772550b544a48fdaa5730be44d87e453fd8008f9bbb1a350",
+      "bytes": 80457,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "def actualFlatMobiusTest",
+          "lines": [
+            289
+          ]
+        },
+        {
+          "token": "theorem actualFlatSamplingSum_eq_tsum",
+          "lines": [
+            1003
+          ]
+        },
+        {
+          "token": "theorem actualCorrelationLongTerm_eq_sampling_quadratic",
+          "lines": [
+            1100
+          ]
+        },
+        {
+          "token": "theorem actualCorrelationPrimeField_hyperbola_half",
+          "lines": [
+            326
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\MobiusHyperbola.lean",
+      "sha256": "f30abf704e538063e5e7e4dc3fd1c159c6bccdeeb3cc2d78e232c548d920635f",
+      "bytes": 13634,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "theorem weighted_mobius_inverse",
+          "lines": [
+            41
+          ]
+        },
+        {
+          "token": "def hyperbolaE",
+          "lines": [
+            159
+          ]
+        },
+        {
+          "token": "def hyperbolaT",
+          "lines": [
+            162
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeIntegerPrimeField.lean",
+      "sha256": "5e33af26755dc29d578d1e29cd53341d8130bdb62bae67231364060520008247",
+      "bytes": 9900,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "def nativeHistoryCutoff",
+          "lines": [
+            39
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeCompactTranslateCalculus.lean",
+      "sha256": "6152803d0b6447dccc2c3900660982f4ab26cb69f34a980de8be6f3eb22b647b",
+      "bytes": 9379,
+      "current_git_blob_equal": true,
+      "anchors": [
+        {
+          "token": "nativeComplexPrimeField_hasDerivAt",
+          "lines": [
+            95,
+            135,
+            195
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-native-grid\\ACTUAL_SELF_ECHO_NATIVE_GRID_SIGN_BLOCKS.json",
+      "sha256": "a4809ff2182f8cfec64af588b776ae325346285ff7a6805b0dc02204431299cd",
+      "bytes": 18368
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-native-grid\\COMPLETION.json",
+      "sha256": "f122a363b483ab2e1f62aba22caee3a5230a8f5c8088d278f8b6419359957884",
+      "bytes": 3163
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-criterion\\SECTION5_ACTUAL_SELF_ECHO_CRITERION_REVIEW.json",
+      "sha256": "0d4046f169e6c2acaefbe05731cb3bde9b3a0f42d28b1c37b0f31049613a5507",
+      "bytes": 18951
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\actual-translate-reconstruction\\ALL_APERTURE_JOINT_CUBIC_RECOVERY_COST.json",
+      "sha256": "30887f7124b3788ec6c2880245068f13ec7c8fe1cbbf0754f36085b1c3905784",
+      "bytes": 4324
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\actual-translate-reconstruction\\INDEPENDENT_JOINT_RECOVERY_COST_REVIEW.json",
+      "sha256": "b472a1a7e17b0b64b05cbebccebf2c470188dfac0dc3b4b3f93930a8569d9c25",
+      "bytes": 14534
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\long-tail-selberg-energy\\ACTUAL_CAUSAL_SELBerg_ENERGY.md",
+      "sha256": "1a2bb6ccfbe456a4d6d4ea7eff14b5a157abae8b4e8ce835266198fc10adb945",
+      "bytes": 14797
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\long-tail-selberg-energy\\PRIMARY_PNT_REFERENCE.json",
+      "sha256": "394ee9531fb03cda6a8ecc129c1ebfaa9a945e9f1d4ffa0cf0bdf68a51883cbe",
+      "bytes": 928
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\inspiration-route-b-c\\WIDENED_CUTOFF_AND_GEVREY_AUDIT.md",
+      "sha256": "135eb03f3e6e017b713e96319c8016078e6b44efa5f377171341933adf81305b",
+      "bytes": 15532
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-positive-functionals\\ACTUAL_SELF_ECHO_POSITIVE_FUNCTIONALS.md",
+      "sha256": "afee4bc1fcc617621841709148ee784760e5ddd9a849e7f4f8f2dc10be7799f2",
+      "bytes": 17321
+    }
+  ],
+  "authority": "External DERIVED mathematical research. Four current source files freshly hashed and compared to clean7bae. No new Lean statement, compiler run, numerical test, repository edit, conditional RH wrapper or claimed closing estimate. RH and Step4 OPEN."
+}

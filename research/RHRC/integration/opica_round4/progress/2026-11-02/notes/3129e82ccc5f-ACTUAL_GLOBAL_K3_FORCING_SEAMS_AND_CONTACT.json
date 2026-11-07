@@ -1,0 +1,172 @@
+{
+  "status": "DERIVED_SOURCE_BOUND_GLOBAL_K3_FORCING_AUDIT_RH_OPEN",
+  "created_utc": "2026-11-02T13:25:51.345408+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "clean": true
+  },
+  "correction_history": {
+    "discovered_by": "root independent full-file review",
+    "defect": "A3 transcribed the beta E_beta coefficient as34. It is38: 8H contributes16beta E_beta and2beta H_beta contributes22beta E_beta.",
+    "repair": "Only the expanded identity coefficient is corrected. The half-source polynomial and counterexample computations already used K=8H+2beta H_beta+(2-theta)H_theta and are unchanged. A new exact symbolic comparison of the full expanded identity is now executed. Seam, fixed-offset expansion and negative-well formulas are unchanged.",
+    "superseded_note": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\global-aperture-seams\\before-expanded-k-coefficient-correction\\ACTUAL_GLOBAL_K3_FORCING_SEAMS_AND_CONTACT.json",
+      "sha256": "e976257b0e74f3fbeb65dfb6988a06dca4902dd0006636a496370d3c23c0a3b7",
+      "bytes": 18438,
+      "role": "Preserved incorrect transcription; superseded, not current authority"
+    },
+    "preserved_helper": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\global-aperture-seams\\before-expanded-k-coefficient-correction\\write_audit.py",
+      "sha256": "5584d500266498070bd59e3940a92cdc7a28edb26853937c663c9dcd2b70bf21",
+      "bytes": 16543,
+      "role": "Prior authored helper before coefficient correction"
+    },
+    "preserved_exact_checks": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\global-aperture-seams\\before-expanded-k-coefficient-correction\\EXACT_SOURCE_ALGEBRA.json",
+      "sha256": "9c6b9dfaa0e282d31a9c1da8c189e9f8a7a3d9193dce32405e493a6e33c43d50",
+      "bytes": 970,
+      "role": "Prior exact half-point/offset computations; no full expanded identity check then"
+    }
+  },
+  "sections": [
+    {
+      "id": "A1",
+      "title": "The same actual pair, source and contact scope",
+      "proof": "Keep the literal native K3 vectors u_p,n=(beta+n^2)s_p,n, beta=L^2/(16pi^2), s_e=(1,-6,15,-20,15,-6,1), s_o=(-1,4,-5,0,5,-4,1). All seven signed slots and their inherited metric remain. Ne=924beta^2+1512beta+1764, No=84beta^2+392beta+724, a=No/Ne. Write E_p(L,theta)=Re<u_p,S_theta u_p>, Q_p=Re<u_p,C_3(L)u_p>, G=Qo-aQe. Both native pole energies vanish by their genuine profiles; their cancellation is already included in the complete regularized source formula, not an omitted channel. n*u_e=3u_o and E_e,theta,theta=-36pi^2 E_o are exact.\n\nThe newly compiled actual canonical Arch comparison gives A_Gamma(L)>0 for every L>0, with the source's minus-canonicalArchMatrix convention. The independent higher-power result keeps G=A_Gamma+B1+B>=2, B>=2=200a beta^2 L+d0 H2 L^2+O(1), and B>=2~25L^5/(352pi^4)>0. It does not bound B1 or any aperture derivative of G. For 0<L<=log2 every prime entry is absent or has theta=0, so G=A_Gamma>0. This gives an initial positive interval for the actual gap.\n\nBoth actual carriers have dimension1: lambda_p=Q_p/Np and G=No(lambda_o-lambda_e)=80 Re f_corrected(u_e). At a gap contact G=0, its normalized derivative is G'/No; at an individual zero Q_p=0, lambda_p'=Q_p'/Np. Away from zero the full Np' quotient term remains. A first contact supplies the appropriate one-sided sign, not a vanishing derivative. The K2 native predecessor is zero, so inherited predecessor stationarity is vacuous. Current joint negative-ground constraints require both parities negative at the same L; separate cofinal excursions do not discharge that premise. Regular-aperture disjointness selectors do not assert all-L disjointness. No ground normalization or contact stationarity is inserted into the fixed-input derivatives below."
+    },
+    {
+      "id": "A2",
+      "title": "Exact prime seams and the first surviving correction jet",
+      "proof": "Set Ce=720^2(2pi)^8, Co=240^2(2pi)^6, so Ce=36pi^2 Co, Xe=L^9 Qe/Ce and Xo=L^7 Qo/Co. At a genuine prime power q let t_q=log q>0 and a_q=Lambda(q)/sqrt(q)>0. In a neighborhood of L=t_q write d=L-t_q. Define the two-variable analytic bracket\n B(L,d)=L^9 E_e(L,d/L)/Ce,\nwhere partial_L holds d fixed. The q-th prime entries, with their literal cutoff, are\n Xe,q=-a_q 1_(d>=0) B(L,d),   Xo,q=a_q 1_(d>=0) B_dd(L,d).\nThe latter follows from the exact parity theta derivative and the factor Ce/Co; it is not an aperture derivative of E with frozen beta.\n\nThe full source Taylor formula is E_e= sum_r 2(-1)^r(2pi)^(2r)theta^(2r+1)/(2r+1)! * sum_(k=0)^(2r) M_k(u_e)M_(2r-k)(u_e). Actual moments are M4=720, M6=720(beta+14), M8=10080beta+105840. Consequently\n E_e/Ce=2theta^9/9!-(L^2+224pi^2)theta^11/11!+O_L(theta^13),\n B=2d^9/9!-(1+224pi^2/L^2)d^11/11!+O_L(d^13).\nAll coefficients and remainders are analytic near the positive seam. Applying the TOTAL L derivative (d'=1) twice gives the exact prime part of F:=Xe''+Xo:\n F_q=-a_q 1_(d>=0)(B_LL+2B_Ld).\nThere is no Dirac term at this derivative order because B and its first derivative vanish at d=0. The d^7 and d^9 terms cancel, including the coefficient's full L dependence. But\n B_Ld=448pi^2 L^-3 d^10/10!+O_L(d^12),\n B_LL=-1344pi^2 L^-4 d^11/11!+O_L(d^13),\n F_q=-896pi^2 a_q L^-3 d^10/10!+O_L(d^11).\nThus the one-sided derivative jumps at L=t_q are\n [Xe^(9)]=-2a_q,  [Xo^(7)]=2a_q,\n [F^(10)]=-896pi^2 a_q/(log q)^3.\nAll other prime entries are analytic in this neighborhood. The full regularized Arch part is smooth there: each aperture derivative of its numerator remains O(t) at the lower integration endpoint, uniformly on a compact positive aperture interval, against rho(t)=O(1/t); its moving upper endpoint is smooth. The native pole part is identically zero. Therefore the complete Xe is C8 but not C9 at every prime-power seam, Xo is C6 but not C7 there, and F is C9 but not C10 there. At non-prime-power integer seams the coefficient is zero. These are exact finite-source differentiability limits, not an inference from a truncated zero sum."
+    },
+    {
+      "id": "A3",
+      "title": "A literal prime-power counterexample to favorable forcing sign",
+      "proof": "The negative sign of F_q just after entry does not persist through its full delay kernel. Put theta=d/L and H=9E+2beta E_beta-theta E_theta, with E=E_e. Direct differentiation gives\n B_LL+2B_Ld=(L^7/Ce) K,\n K=8H+2beta H_beta+(2-theta)H_theta\n  =72E+38beta E_beta+4beta^2 E_betabeta+16(1-theta)E_theta\n    +4beta(1-theta)E_betatheta-theta(2-theta)E_thetatheta.\nThe last terms are precisely the moving-profile terms; omitting them would change the question.\n\nAt theta=1/2, the literal source gives\n E=20beta^2-360beta+540,\n E_theta=(2048beta^2-24576beta-3072)/5,\n E_thetatheta=pi^2(720beta^2-4320beta-10800).\nSubstitution yields\n K=(40176/5-540pi^2)beta^2+(-88752+3240pi^2)beta+169824/5+8100pi^2.\nFor beta=9 it equals -113952-6480pi^2<0. More decisively this occurs at an actual included prime-power delay, without inventing its weight. Choose q=2^27 and L=2log q=54log2, so theta=1/2 and beta=(27log2/(2pi))^2. Elementary 2/3<log2<7/10 and 3<pi<22/7 give 8<beta<10 and 9<pi^2<10. (The log lower bound follows from the atanh series, and exp(7/10)>2 follows already from its first five nonnegative Taylor terms.) Coefficientwise,\n K <= (15876/5)*100-56352*8+574824/5=-91656/5<0.\nHence the actual term F_q=-(log2)/2^(27/2) * L^7 K/Ce is strictly POSITIVE at this L, while the same q has F_q<0 immediately after its entry. All remaining primes and the complete Arch forcing remain in F. This is a counterexample to termwise sign, not a positive value of the full F and not by itself an eventual counterexample."
+    },
+    {
+      "id": "A4",
+      "title": "The actual endpoint layer also disproves eventual termwise sign",
+      "proof": "There is a short uniform fixed-offset continuation of the same calculation. For m>=0 put\n G_m(d)=d^(2m+1)/(2m+1)!-d^(2m+3)/(2(2m+3)!)+d^(2m+5)/(16(2m+5)!).\nFor every FIXED V, uniformly 0<=d<=V as L tends to infinity,\n B(L,d)=2G4(d)-224pi^2 L^-2 G5(d)+L^-4 R(L^-2,d),\nwhere R and its needed w,d derivatives are bounded on one fixed compact neighborhood of w=0, d in[0,V]. This is not merely an undifferentiated big-O. Indeed the finite trig source is odd entire in theta and quadratic in beta; after the moment vanishings, its convergent series grouped by w=L^-2 has only nonnegative integer powers of w. Normal convergence on compact w,d sets pays both L and d differentiation.\n\nThe L^-2 coefficients are exactly -224pi^2 d^11/11!, +112pi^2 d^13/13!, -14pi^2 d^15/15!. The middle value uses (2M4M8+M6^2)/720^2=beta^2+56beta+490, and the last uses the coefficient28beta^2 in the degree14 moment sum. Therefore\n F_q/a_q=-896pi^2 L^-3 G5'(d)+1344pi^2 L^-4 G5(d)+O_V(L^-5).\nExact rational evaluations are\n G5'(20)=-(9/91)*20^10/10!<0,\n G5'(1)=(127643/128128)/10!>0.\nFor the genuine prime powers q_j=2^j, choose L_j=jlog2+20. Then F_(q_j)(L_j)>0 for all sufficiently large j. Choosing L_j=jlog2+1 instead gives F_(q_j)(L_j)<0 for all sufficiently large j. In each case the same literal finite source and actual Lambda(q_j)=log2 are used; the entry is inside the native cutoff. The term's positive scale a_q decays, so this establishes neither a lower bound nor a sign for the COMPLETE forcing.\n\nThis settles the proposed eventual TERMWISE nonpositive forcing shortcut, even if a pure beta^2 leading kernel were proved nonnegative at each fixed theta>0. Here theta=d/L tends to0, and all three beta powers contribute at the same endpoint scale. No sign theorem on the entire pure-leading theta kernel is claimed or needed."
+    },
+    {
+      "id": "A5",
+      "title": "The exact remaining cost in a same-L negative-well argument",
+      "proof": "Use the complete F=Xe''+Xo, retaining all source terms. Let [A,B] be a bounded negative well of Xe: Xe(A)=Xe(B)=0 and Xe<0 inside. Put w=-Xe. Integration by parts is legitimate with the actual C8/C6 regularity and gives exactly\n integral_A^B w Xo = integral_A^B w F - integral_A^B |w'|^2.\nIf there is no simultaneous negative pair on this well, then Xo>=0 inside, hence the ACTUAL weighted forcing must pay\n integral w F >= integral |w'|^2.\nAlso, with M=max(0,sup_[A,B] F), the elementary convex comparison w''>=-M and w(A)=w(B)=0 gives\n max_[A,B](-Xe) <= M(B-A)^2/8.\nThese identities isolate the exact necessary forcing cost. They do not assume that a minimum makes the forcing small or gives Xo=-Xe''.\n\nThe prior complete all-zero derivation gives F=B0+Rexp with bounded B0 and |Rexp|<=C exp(Theta L)/L^3 beyond its fixed threshold, without a rightmost zero or Theta<1/2 premise. This allowance is not relatively small against the separately known e^(alpha L) negative excursions for fixed alpha<Theta: exp((Theta-alpha)L)/L^3 grows. Nor does cofinality provide a bound on the well widths or on the signed integral wF. The newly priced whole higher-prime-power GAP is not a bound on this derivative forcing. A favorable termwise bound is now falsified even cofinally by A4. Thus the same-L simultaneous-negativity deduction still needs an independent signed bound on the COMPLETE well pairing, not the unsupported removal of a correction."
+    },
+    {
+      "id": "A6",
+      "title": "What this changes, and what remains open",
+      "proof": "The new unconditional information is the exact prime-seam jet of the full correction, an exact actual finite atom with opposite forcing sign, and a cofinal actual endpoint-layer family with both forcing signs. The paired individual zero expression may be entire after removable resonances, but the complete zero sum cannot be Taylor-differentiated without a uniform summability argument: the explicit finite prime seams prove that higher derivatives really fail at the orders in A2. A nondegenerate finite-order smooth local ODE with smooth coefficients/forcing and no retained arithmetic seams would incorrectly bootstrap these actual solutions to smoothness. An exact closure may instead keep nonsmooth prime forcing or nonlocal terms, but it then must pay their full signed effect.\n\nThe complete Arch strict comparison is now formally available externally, and the complete higher-power polynomial budget is an independently reviewed DERIVED arithmetic result. They give a positive component and a paid subsource; they do not discharge the ordinary-prime comparison, the first-contact derivative sign, or the full negative-well forcing cost. No scalar eigenstate is replaced by a trial from another cutoff; no reciprocal sign or moving norm is dropped. No full sign, simultaneous negative pair, global comparison, Step4 or RH closure is asserted. No new conditional RH wrapper or Lean build is introduced."
+    }
+  ],
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceMatrix.lean",
+      "sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "bytes": 7204,
+      "role": "Literal divided difference, diagonal and source derivatives",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceSignCountermodels.lean",
+      "sha256": "628497f4f6e5911f12ab6486601acd2e1ee6bdce6700e21f19be92626fb771d5",
+      "bytes": 10221,
+      "role": "Actual seven-slot stencils and moments",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\RegularCells\\FixedSeed.lean",
+      "sha256": "262922e4d62d5749eb5580328242a4fae709c405a04d2a054452d6d5258422ef",
+      "bytes": 14509,
+      "role": "Moving native diagonal beta+n^2 and actual moment recurrence",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPrimeFreeF04.lean",
+      "sha256": "f02785ed02e6601d4703d387f5502d3524ab222980936f671fdb80c845d57291",
+      "bytes": 45969,
+      "role": "Complete regularized Arch source and aperture derivative",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalGlobalF04.lean",
+      "sha256": "f1538bb374dc04f6a3ffcbcf9b6cdb6f4d27a584f07eb545d8e32aeab14f2ec8",
+      "bytes": 20666,
+      "role": "Literal finite prime cutoff and source seams",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralSourceMoment.lean",
+      "sha256": "d56526e02d2bcbdceabe08373049c32796546057c54ab911c0363cdf0473bf02",
+      "bytes": 11959,
+      "role": "Actual source moment and eigenstate relation",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\JointGroundConstraints.lean",
+      "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7",
+      "bytes": 11983,
+      "role": "Exact same-state strict/tied/full complement prerequisites",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\FirstCrossingInheritedStationarity.lean",
+      "sha256": "a8a80c8eedddc933be4651b218b3c77be1a0d0d36c7b88b736bbdd34104c955a",
+      "bytes": 17612,
+      "role": "Inherited contact hypothesis; no fresh stationary inference",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_FIXED_K3_ARITHMETIC_SCALARS.json",
+      "sha256": "204b26b07fb3109f010af2c1ca49b72a7c1a4e0a3082eca9ff2366ade9c96899",
+      "bytes": 13261,
+      "role": "Exact actual scalar source and physical normalization"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_PARITY_COUPLING_AND_FORCING.json",
+      "sha256": "5f02b1c91ea797b6db761e143fb86fd275af6202b1cbc5bb515e16ba6e23b1a2",
+      "bytes": 17288,
+      "role": "Prior complete all-zero derivative forcing; unchanged prerequisites"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\K3_CONSTRAINT_DEPENDENCY_AUDIT.json",
+      "sha256": "e1ebd2ed01af2339b8222bea361922b5cd3cebc3c290676560787dd36beecbda",
+      "bytes": 10330,
+      "role": "Existing source/contact scope; inspected to avoid repeating a supplier"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\COMPLETION.json",
+      "sha256": "f10703b5db0f8c0cc3d0d730736340d940da85c5784693682d78fb50c56ed5ad",
+      "bytes": 2359,
+      "role": "New complete actual Arch formal specialization; external authority only"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\PROOF_FREEZE.json",
+      "sha256": "41569c5023f41a01d28a1d47348f6a28a24034eac28d1125fbd27390abb06aa6",
+      "bytes": 106527,
+      "role": "Exact formal sources/types/axioms/controls"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\k3-higher-prime-powers\\ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET.json",
+      "sha256": "2b12360005bf6e57c7b6bb1bd8a2f55d572f41ce7c6fe8b45dfbce65df75b3ee",
+      "bytes": 15470,
+      "role": "Complete higher-power signed budget; no derivative bound imported"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\global-aperture-seams\\EXACT_SOURCE_ALGEBRA.json",
+      "sha256": "e5356295b62c367d3e8ba33d0d19df3b78a2f42cdc3345e7ec44837c62c472d4",
+      "bytes": 1183,
+      "role": "Exact finite algebra checks only"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\global-aperture-seams\\write_audit.py",
+      "sha256": "bb9a7a8b90552ca5a5f2956a5a7bf5030596b16bcd36a911280d669407bca3b3",
+      "bytes": 18390,
+      "role": "Authored source-binding and exact-algebra helper"
+    }
+  ],
+  "verification": "Current source interfaces and prior full forcing/contact notes read. Eight current source bytes matched Git HEAD. Exact symbolic/rational seven-slot checks executed, including the corrected complete expanded K identity; no Lean compilation, native prime-sum enumeration, source quadrature, new CI or repo edit. No numerical exploratory values are used as proof.",
+  "contributions": "late_math derived the exact seam, full aperture forcing kernel, literal atom counterexample, differentiated fixed-offset expansion and negative-well price. Root proposed the simultaneous-negative and forcing-sign tests, independently checked half-point and fixed-offset constants, and caught the expanded-identity transcription defect now explicitly corrected. Prime_math independently checked those constants and the analytic remainder argument by message; full frozen-file review is separate."
+}

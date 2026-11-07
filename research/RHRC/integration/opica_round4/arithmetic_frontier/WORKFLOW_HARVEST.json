@@ -1,0 +1,216 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_WORKFLOW_HARVEST_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "head_sha": "9c517db0befa1131bb60d37cfef2888ed69447a9",
+  "attempt": 1,
+  "runs_total": 24,
+  "jobs_total": 97,
+  "jobs_success": 95,
+  "jobs_skipped": 2,
+  "skipped_jobs": [
+    {
+      "name": "wp4-k3-fourth-order-alternative",
+      "run_id": 41465883786,
+      "disposition": "DECLARED_OPTIONAL_SKIP_NOT_A_PASS"
+    },
+    {
+      "name": "post287-full-k3",
+      "run_id": 41465883809,
+      "disposition": "DECLARED_OPTIONAL_SKIP_NOT_A_PASS"
+    }
+  ],
+  "runs": [
+    {
+      "run_id": 41465884039,
+      "workflow": "OPICA Round4 governed deduction and independent source gates",
+      "path": ".github/workflows/rhrc_opica_composition.yml",
+      "conclusion": "success",
+      "role": "FORMAL_CURRENT_ROUND4"
+    },
+    {
+      "run_id": 41465883813,
+      "workflow": "OPICA Round3 scoped current-source proof and falsification gates",
+      "path": ".github/workflows/rhrc_opica_round3.yml",
+      "conclusion": "success",
+      "role": "FORMAL_HISTORICAL_PARENT"
+    },
+    {
+      "run_id": 41465883978,
+      "workflow": "OPICA Round2 exact-source core and research controls",
+      "path": ".github/workflows/rhrc_opica_round2.yml",
+      "conclusion": "success",
+      "role": "FORMAL_HISTORICAL_PARENT"
+    },
+    {
+      "run_id": 41465884052,
+      "workflow": "OPICA follow-up original-contract validation",
+      "path": ".github/workflows/rhrc_opica_followup.yml",
+      "conclusion": "success",
+      "role": "FORMAL_ORIGINAL_CONTRACT_NARROW"
+    },
+    {
+      "run_id": 41465883787,
+      "workflow": "RHRC OPICA full paper components",
+      "path": ".github/workflows/rhrc_opica.yml",
+      "conclusion": "success",
+      "role": "FORMAL_HISTORICAL_PARENT"
+    },
+    {
+      "run_id": 41465883903,
+      "workflow": "RHRC research and Lean checks",
+      "path": ".github/workflows/rhrc.yml",
+      "conclusion": "success",
+      "role": "FORMAL_AND_REGRESSION"
+    },
+    {
+      "run_id": 41465883866,
+      "workflow": "Permansson v0.1.6 formal verification",
+      "path": ".github/workflows/permansson-formal.yml",
+      "conclusion": "success",
+      "role": "FORMAL_FRAMEWORK"
+    },
+    {
+      "run_id": 41465883716,
+      "workflow": "RHRC post290 source and output proof components",
+      "path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "conclusion": "success",
+      "role": "FORMAL_COMPONENTS"
+    },
+    {
+      "run_id": 41465883691,
+      "workflow": "RHRC post287 focused Step3 checks",
+      "path": ".github/workflows/rhrc_post287_focused.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465884006,
+      "workflow": "RHRC parallel closure campaign",
+      "path": ".github/workflows/rhrc_closure_campaign.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465883949,
+      "workflow": "RHRC post268 complete audit replay",
+      "path": ".github/workflows/rhrc_post268_audit.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465883735,
+      "workflow": "RHRC post-282 contact calculus",
+      "path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465883809,
+      "workflow": "RHRC post-284 source inertia campaign",
+      "path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "conclusion": "success",
+      "role": "REGRESSION_WITH_DECLARED_OPTIONAL_SKIP"
+    },
+    {
+      "run_id": 41465883786,
+      "workflow": "RHRC post287 WP2 and WP4 interval research",
+      "path": ".github/workflows/rhrc_post287_numerical.yml",
+      "conclusion": "success",
+      "role": "RESEARCH_NUMERICS_WITH_DECLARED_OPTIONAL_SKIP"
+    },
+    {
+      "run_id": 41465883991,
+      "workflow": "RHRC post287 bounded signed-ray probe",
+      "path": ".github/workflows/rhrc_post287_wp6.yml",
+      "conclusion": "success",
+      "role": "RESEARCH_NUMERICS"
+    },
+    {
+      "run_id": 41465883793,
+      "workflow": "RHRC post-190 canonical realizability audit",
+      "path": ".github/workflows/rhrc_post190_canonical_realizability.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465883795,
+      "workflow": "RHRC post-192 parity trajectory rigidity",
+      "path": ".github/workflows/rhrc_post192_parity_trajectory_rigidity.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465883980,
+      "workflow": "RHRC post-194 parity trajectory sharp enclosure",
+      "path": ".github/workflows/rhrc_post194_parity_trajectory_sharp_enclosure.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465883856,
+      "workflow": "RHRC post-196 Q14 residual cell replay",
+      "path": ".github/workflows/rhrc_post196_q14_residual_cell_replay.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465883796,
+      "workflow": "RHRC post-198 Q14 parity source mechanism",
+      "path": ".github/workflows/rhrc_post198_q14_parity_source_mechanism.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465883808,
+      "workflow": "RHRC post-200 Q14 discrepancy mechanism",
+      "path": ".github/workflows/rhrc_post200_q14_discrepancy_mechanism.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465883849,
+      "workflow": "RHRC post-202 Q14 composite parity gap",
+      "path": ".github/workflows/rhrc_post202_q14_composite_parity_gap.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465884010,
+      "workflow": "RHRC post-214 kernel dual geometry",
+      "path": ".github/workflows/rhrc_post214_kernel_dual_geometry.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    },
+    {
+      "run_id": 41465883715,
+      "workflow": "RHRC post-222 bi-regular zero-shift scalar",
+      "path": ".github/workflows/rhrc_post222_biregular_zero_shift_scalar.yml",
+      "conclusion": "success",
+      "role": "REGRESSION"
+    }
+  ],
+  "round4_acceptance": "All eleven Round4 lane producers, the three independent replay groups and final ACCEPTANCE succeeded in run 41465884039 attempt 1.",
+  "scientific_disposition": "Conclusions only: job logs and artifacts were not re-read in this pass. Research-numerics successes preserve their recorded finite outputs, failures or falsifications; they are not positivity proofs.",
+  "scope": "Qualifies only the parent head. The arithmetic-frontier successor must receive its own complete same-run harvest.",
+  "increment1_head_snapshot": {
+    "head_sha": "ee274643563604d56c53ffbed0252513435a647d",
+    "recorded_utc": "2026-11-07 about 12:50 UTC (snapshot via the GitHub API)",
+    "runs_total": 24,
+    "completed_success": 17,
+    "in_progress": 6,
+    "queued": 1,
+    "failed": 0,
+    "pending_runs": [
+      "OPICA Round4 governed deduction and independent source gates (queued)",
+      "OPICA follow-up original-contract validation",
+      "OPICA Round2 exact-source core and research controls",
+      "OPICA Round3 scoped current-source proof and falsification gates",
+      "RHRC OPICA full paper components",
+      "RHRC post-284 source inertia campaign",
+      "RHRC research and Lean checks"
+    ],
+    "disposition": "INCOMPLETE_AT_RECORDING: Increment 1 is not CI-qualified until the Round4 governed gate completes on the current head",
+    "scope": "Partial harvest; the Increment 2 head needs its own harvest."
+  }
+}

@@ -5,11 +5,15 @@ Read [README.md](README.md), [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md),
 The live PR head and exact compiler/CI receipts determine validation scope.
 RH, Step 4 and independent source restrictions remain OPEN.
 
-The active Round 4 work is [PR #298](https://github.com/HMarcusWH/zeta-23-lean/pull/298)
-on `research/opica-round4`, descended from merged Round 3 PR #297.
-Read [the Round 4 handover](research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md)
-and [closure obligations](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json).
-Use the current checkout; reconcile historical overlays before applying them.
+The current closing-attempt work is [PR #299, Madness?](https://github.com/HMarcusWH/zeta-23-lean/pull/299)
+on `research/madness`, descended from merged Round 4 PR #298. Read the
+[2 November research handover](research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md) and its portable evidence inventory before continuing.
+Research resumed on 7 November 2026 at the maintainer's explicit instruction with
+the [arithmetic-frontier build](research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md);
+archived documents still authorize no automatic continuation or theorem promotion. The
+[original Round 4 contract](research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md)
+and [closure obligations](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json)
+retain their exact scopes. Use the current checkout and reconcile historical overlays.
 
 The original native follow-up remains a separate 100-root / 28-unit scope.
 Its [continuation guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md)

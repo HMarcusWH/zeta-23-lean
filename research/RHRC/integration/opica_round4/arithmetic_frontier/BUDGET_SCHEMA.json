@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "OPICA4_ARITHMETIC_FRONTIER_BUDGET_V1",
+  "title": "Complete signed physical budget",
+  "type": "object",
+  "required": [
+    "state",
+    "partition",
+    "enclosure",
+    "budget",
+    "disposition"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "state": {
+      "$ref": "OPICA4_ARITHMETIC_FRONTIER_STATE_V1"
+    },
+    "partition": {
+      "type": "object",
+      "required": [
+        "blocks",
+        "coupling_blocks",
+        "inverse_domain",
+        "trial_inverse_X_sha256",
+        "residual_R_sha256"
+      ],
+      "properties": {
+        "blocks": {
+          "type": "array"
+        },
+        "coupling_blocks": {
+          "type": "array"
+        },
+        "inverse_domain": {
+          "type": "string"
+        },
+        "trial_inverse_X_sha256": {
+          "type": "string"
+        },
+        "residual_R_sha256": {
+          "type": "string"
+        }
+      }
+    },
+    "enclosure": {
+      "type": "object",
+      "required": [
+        "representation",
+        "entry_error",
+        "coordinate_error",
+        "inverse_response_error"
+      ],
+      "properties": {
+        "representation": {
+          "enum": [
+            "EXACT_RATIONAL_ENDPOINTS",
+            "OUTWARD_ROUNDED_INTERVALS_WITH_PROOF"
+          ]
+        },
+        "entry_error": {
+          "type": "string"
+        },
+        "coordinate_error": {
+          "type": "string"
+        },
+        "inverse_response_error": {
+          "type": "string"
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "required": [
+        "retained_diagonal",
+        "full_inverse_response",
+        "residual_allowance",
+        "E_err",
+        "physical_margin",
+        "tolerance"
+      ],
+      "description": "Certificate (C3): D - CX - X*C* + X*AX - a^{-1}R*R - E_err >= 0 in the same coordinates, with tolerance measured against the physical Gram."
+    },
+    "disposition": {
+      "enum": [
+        "CERTIFIED",
+        "FALSIFIED_BOUND",
+        "UNKNOWN_PRECISION",
+        "RESOURCE_STOP",
+        "NOT_ELIGIBLE"
+      ]
+    }
+  },
+  "rules": [
+    "A failed factorization is not a negative native witness.",
+    "A negative witness for a sufficient surrogate is not a negative witness for the original form.",
+    "A Python verdict is research certification only; Lean certification needs a proved checker and enclosure bridge."
+  ]
+}

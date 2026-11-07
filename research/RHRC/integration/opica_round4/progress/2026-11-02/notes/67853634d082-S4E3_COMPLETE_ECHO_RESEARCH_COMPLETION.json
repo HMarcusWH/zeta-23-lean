@@ -1,0 +1,131 @@
+{
+  "status": "COMPLETE_BOUNDED_S4E3_AND_COMPLETE_ECHO_RESEARCH_PASS_NOT_STEP4_CLOSURE",
+  "recorded_utc": "2026-11-02T04:30:59.426623+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "user_request": "Read the supplied S4-E3 PDF and ZIP, reuse valid mathematics, and continue the Step4 closure work.",
+  "records": {
+    "prior_native_echo_pass": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\NATIVE_ECHO_SOURCE_COST_COMPLETION.json",
+      "sha256": "7b04cce157bc5e72e4c7d4c2c48f9e10d902eea0ce41b82a78e3229de1ca924c",
+      "bytes": 12231
+    },
+    "attachment_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e3-attachment\\LOCAL_ATTACHMENT_REVIEW.json",
+      "sha256": "7851e2ee4ddd09c5e33096737aaa9f70d403675f4ce3db01fcfae7777aa11443",
+      "bytes": 11119
+    },
+    "attachment_cross_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e3-attachment\\INDEPENDENT_S4E3_ATTACHMENT_AND_SPECTRAL_REVIEW.json",
+      "sha256": "ee21a89ae78c85e6a552bf1c39f5a4c676129c7c5e7bbea17036bf875c3dc781",
+      "bytes": 8157
+    },
+    "actual_arch_response": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-arch-response\\ACTUAL_ARCH_RESPONSE.json",
+      "sha256": "b1a23776de6f31f8d173110864210cbe0243cecf0f5986e247a0fe984dc78b44",
+      "bytes": 9401
+    },
+    "independent_arch_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-arch-response\\INDEPENDENT_ARCH_RESPONSE_REVIEW.json",
+      "sha256": "bdd37ebf47d265a891cc5cee2219bfa9bb5588ae7a5248766fc2d25b45e523c1",
+      "bytes": 7819
+    },
+    "complete_native_repair": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-complete-carrier\\ACTUAL_COMPLETE_RESPONSE_NATIVE_REPAIR.md",
+      "sha256": "77a182a0ba02c4fd6a67df5ca014295b88cb41abccf8eac6754ef3a7f1add600",
+      "bytes": 12299
+    },
+    "complete_native_repair_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-complete-carrier\\COMPLETION.json",
+      "sha256": "b086b2cae88575a94b59f4c4c61678ee122d6ef367f439548d848375a22eb7b5",
+      "bytes": 1479
+    },
+    "adjoint_weight_note": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-adjoint-weights\\ACTUAL_ADJOINT_WEIGHT_BOUNDARY.md",
+      "sha256": "2d0055802389fef1fef2a11b92e92d742b5651b4f2d54f4818a7fcad52aa3f7d",
+      "bytes": 10420
+    },
+    "adjoint_weight_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-adjoint-weights\\COMPLETION.json",
+      "sha256": "49574a7ffbb33ce9aa0f7cee9992ebb322c47e2799b92418923c13d9e9838628",
+      "bytes": 1886
+    },
+    "actual_finite_polar_restriction": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_FINITE_POLAR_INPUT_MISMATCH.json",
+      "sha256": "4cd9b5e235ff4b8c3ac94b552e86aa65d14fc4b33317836b3cdee5aa8c709d6e",
+      "bytes": 12941
+    },
+    "finite_polar_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\FINITE_POLAR_INPUT_COMPLETION.json",
+      "sha256": "0a2b4808e303e11ca865b177a9732ba2aef295f30e24c039c9252689f20306ef",
+      "bytes": 2096
+    },
+    "current_CI_snapshot": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next2\\CHECKPOINT.json",
+      "sha256": "d1e8dd560c02269867890260313ae837a637e44b448fd66bf8eb2163a2adbdc6",
+      "bytes": 24526
+    },
+    "current_CI_harvest": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next2\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "cb609bb620f9ea1648bc4d3d272ac5bd0ac405ede701d66ad3a3968edc5b482c",
+      "bytes": 142134
+    }
+  },
+  "read_and_execution": {
+    "paper": "Entire15-page paper read through full49002-byte TEX; five relevant rendered PDF pages visually inspected. All nine supplied source blob IDs match current checkout. Attached instructions were treated as reference material.",
+    "checks": "Actual inspected finite script reproduced23259 checks in normal and optimized modes, matching supplied outputs. These are finite algebra/lattice checks only.",
+    "review": "Root reviewed all new mathematical derivations, the independent Arch review, the two agent cross-reviews and every one of22 new job dispositions. Named source definitions were read directly; prior reviewed source-bound prerequisites are explicit.",
+    "direct_embedded_hash_records_rehashed": 195,
+    "unique_paths": 154
+  },
+  "what_became_formally_true": "No new Lean declaration. Existing named current closure-campaign targets survived their recorded compiler/axiom gates; historical replay targets retain only their pinned authority. All new mathematical results below are DERIVED and cross-reviewed.",
+  "new_derived_results": [
+    "The attached actual low-primitive cut bound is6*C_F*B, uniformly in scale and cut. It removes the prior logarithmic cap loss; the already sharper total-sector bound is unchanged.",
+    "Normalized cut-total recovery has exact sup-norm cost(Y-1)/Y. This prices recovery, not the size of the actual observations.",
+    "The actual finite Arch action on a fixed translated H is exactly the restriction of one aperture-independent response. Its outer tails are positive, with leading exponent5/2; the full causal-prefix subtraction is explicit.",
+    "The complete canonical response echo retains the hypothetical zero-induced double pole. The Arch mixed term has at most a simple pole. Its rate remains the unresolved Theta, so no RH bound follows.",
+    "A two-sided taper and three fixed right bumps preserve the COMPLETE response echo while enforcing both source pole moments. The actual Arch tail yields an explicit positive determinant lower bound, and all repair coefficients costO(exp(L/2)).",
+    "At exactK=ceil(L^4), the complete repaired echo is represented by an ordinary native even/odd norm difference up toC*L^16*exp(L-c*L^(3/2)). Full early history, Arch terms and prime cutoff remain. This is neither a ground-state nor canonical-energy identity.",
+    "The actual eighth cumulative of the half-weighted self-echo has a positive degree5 upper bound. Below half-weight, every tested positive causal kernel with the required finite weighted moment retains both signs somewhere; no eventual-sign claim follows.",
+    "The literal finite even/odd inputs cannot coincide under unit-phase polar transport at late quartic cutoffs. Their input mismatch is at least a source-dependent constant/L, proved using actual Fourier source bounds. No signed response bound is inferred from input mismatch."
+  ],
+  "workflow_harvest": {
+    "snapshot_utc": "2026-11-02T04:00:58.229424+00:00",
+    "counts": {
+      "runs": 24,
+      "attempts": 24,
+      "jobs": 81,
+      "successful_jobs": 53,
+      "running": 17,
+      "queued": 9,
+      "optional_skipped": 2,
+      "failed": 0,
+      "newly_successful_jobs": 22,
+      "completed_workflows": 15
+    },
+    "coverage": "All22 new successful jobs harvested, together with31 prior successes covering all53 at this snapshot. Fourteen new small artifact ZIPs fully hash/CRC verified by the delegated harvest; actual detailed receipts bound.",
+    "research": "All15 WP2 interval cells and complete contact calibration unchanged. Small uncertified post169 floating residuals changed without changing exact checks or scientific disposition. No closing estimate appeared.",
+    "formal": "Current registered-root log has339 bound roots,4 OPEN unbound claims,37 current products and two mutation rejections. This is separate from full Round4 qualification. Large116MB derived ZIP not downloaded.",
+    "pending": "17 running,9 queued and2 optional skipped at snapshot. The sole completed Round4 parent lane skipped cleanup and qualifies only the historical source contract. Runtime repair and full current-head acceptance remain pending."
+  },
+  "what_changed": "The low-cut constant improves and the full canonical echo now has an explicit source-preserving native carrier construction. The polar/adjoint tests additionally expose concrete source-specific costs that cannot be silently set to zero.",
+  "upstream_implications": "Use the exact fixed Arch response instead of an aperture-dependent error. Keep one-sided history distinct from bilateral transforms. Target recovery does not require a uniformly conditioned full edge inverse.",
+  "downstream_implications": "The whole response, including its background and boundary corrections, can be compared with the existing finite OPICA machinery at the prescribed cutoff. Any resulting inequality must concern the ordinary norm difference actually represented, or supply a separate canonical-energy/ground adapter.",
+  "resurrected_route": "Full-response native comparison is now constructible despite its nonzero early Arch history. The positive tail supplies an invertible third repair condition; right-end-only repair was insufficient.",
+  "new_lead": "Seek a source-specific signed estimate for the complete response covariance or compensated high-primitive total. The new complete carrier allows that test without discarding background terms; it does not supply the estimate itself.",
+  "falsification_checks": "Both-endpoint defects, wrong third correction RHS, overlapping reflected bumps, dropped pole scales, cost-free polar pairing and positivity after centering were explicitly checked. The actual-source tests reject these shortcuts; they do not establish the desired contradiction.",
+  "highest_leverage_next": "Price the full signed canonical-response comparison using the actual correction coefficients and complete spectral/source covariances. Alternatively establish the exact compensated high-primitive lower bound with the rank-one term retained. Do not replace this missing estimate with another reconstruction or RH-equivalent wrapper.",
+  "remaining_missing_piece": "An independent arithmetic bound strong enough to contradict the response forced by an off-line zero. It has not been proved in this pass.",
+  "repository_edits": false,
+  "new_Lean_declarations": 0,
+  "new_compiler_runs": 0,
+  "new_commits": 0,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE",
+  "script": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\seal_s4e3_research_pass.py",
+    "sha256": "45eed5c0f26070ef5978ccd6d259532ed283b8c64a76660a49abbf8536698e58",
+    "bytes": 10457
+  }
+}

@@ -1,0 +1,16 @@
+{"entry": "archive_L2_even", "certificates": ["CERTIFIED"], "seconds": 0.3}
+{"entry": "archive_L2_odd", "certificates": ["CERTIFIED"], "seconds": 0.2}
+{"entry": "archive_L9_4_even", "certificates": ["CERTIFIED"], "seconds": 0.4}
+{"entry": "archive_L9_4_odd", "certificates": ["CERTIFIED"], "seconds": 0.4}
+{"entry": "archive_L5_2_even", "certificates": ["CERTIFIED"], "seconds": 0.9}
+{"entry": "archive_L5_2_odd", "certificates": ["CERTIFIED"], "seconds": 0.9}
+{"entry": "L4_even", "certificates": ["CERTIFIED", "CERTIFIED"], "seconds": 15.3}
+{"entry": "L4_odd", "certificates": ["CERTIFIED", "CERTIFIED"], "seconds": 14.5}
+{"entry": "L5_even", "certificates": ["CERTIFIED", "CERTIFIED"], "seconds": 71.5}
+{"entry": "L5_odd", "certificates": ["CERTIFIED", "CERTIFIED"], "seconds": 78.3}
+{"entry": "L4_even_bracket", "certificates": [], "seconds": 124.1}
+{"entry": "L4_odd_bracket", "certificates": [], "seconds": 116.6}
+
+real	7m3.947s
+user	7m57.157s
+sys	0m1.304s

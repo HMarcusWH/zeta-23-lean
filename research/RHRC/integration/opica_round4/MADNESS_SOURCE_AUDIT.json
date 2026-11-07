@@ -1,0 +1,2832 @@
+{
+  "schema": "OPICA4_MADNESS_SOURCE_AUDIT_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "date": "2026-11-01",
+  "base_commit": "09ac22e48bb0683437572509abdf2ddec520b7ac",
+  "base_tree": "f9e19310c2281af1609ae005a76cab40c913380f",
+  "objective": "Attempt the independent source arithmetic estimate needed for Step4 using the complete supplied corpus and merged OPICA constraints.",
+  "outcome": "Exact source-coupled finite hyperbola and diagonal reduction; no independent closing estimate obtained.",
+  "source_folder": "https://drive.google.com/drive/folders/1howQ2e7wiynZef8GNlYkVd5Mc0B3Hta1",
+  "coverage": {
+    "folder_count": 77,
+    "raw_byte_files": 66,
+    "connector_text_files": 11,
+    "archive_indexes": 54,
+    "indexed_member_rows": 30973,
+    "unique_objects": 11617,
+    "missing": [],
+    "document_extractions_completed": 177,
+    "document_pages_extracted": 21296
+  },
+  "coverage_limit": "Complete folder inventory and downloaded byte/text coverage are not a claim that every historical page was scrutinized. Mathematical review included all eight current passes, the 36 original-paper abstracts and relevant full proofs/narratives, literal current Lean sources, and independent audits. PDF text extraction has imperfect math glyphs; live Lean source controls formal claims.",
+  "package_manifest_sha256": "2af32231b8fca76d09978e135c48f38b4308cc9cb05da246b6164ef2047acc30",
+  "package_manifest_all_digests_match": true,
+  "files": [
+    {
+      "id": "1LqbYNGz7qYkVUh2c-8qIkYm0JbsRHDLT",
+      "name": "STEP4_PASS8_LEAN_CONTRACTS_2026-11-01.json",
+      "url": "https://drive.google.com/file/d/1LqbYNGz7qYkVUh2c-8qIkYm0JbsRHDLT/view?usp=drivesdk",
+      "mime": "application/json",
+      "bytes": 3483,
+      "sha256": "0e1034db5285b057e7fafd2dac67c2c6e3327188ab776dc2c129ad5893d2bddc",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1DfkYObCWS_S8p_FEdyQ5WrveaIMjoogs",
+      "name": "STEP4_PASS8_DISCRETE_HANKEL_AND_MOMENT_COMPRESSION_2026-11-01.md",
+      "url": "https://drive.google.com/file/d/1DfkYObCWS_S8p_FEdyQ5WrveaIMjoogs/view?usp=drivesdk",
+      "mime": "text/markdown",
+      "bytes": 18106,
+      "sha256": "a3ee3cb37d459da047368a719d721ec3ac0c9432338a16fa84a54fa487b259d8",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1Ha5kGBSC6K-2KdBqxVYwbH3nk8bDrjkL",
+      "name": "OPICA_STEP4_PASS8_DISCRETE_HANKEL_AND_MOMENT_COMPRESSION_2026-11-01.zip",
+      "url": "https://drive.google.com/file/d/1Ha5kGBSC6K-2KdBqxVYwbH3nk8bDrjkL/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 17226,
+      "sha256": "635fbf5672ff59fd8580ef47a3805e041c6872980ca962e873c236b1f58bd7eb",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1BKWd4qneutMKvr2FinKhccHtZX-IJsUg",
+      "name": "STEP4_PASS7_LEAN_CONTRACTS_2026-11-01.json",
+      "url": "https://drive.google.com/file/d/1BKWd4qneutMKvr2FinKhccHtZX-IJsUg/view?usp=drivesdk",
+      "mime": "application/json",
+      "bytes": 4129,
+      "sha256": "4d0cbd61421c496a6a06d77c0f11f97b8cfe7b01972623013fb2fabbc4a552d3",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1OrWbYwMezs8gx7evAS7s4a2ZPvbgm1A7",
+      "name": "STEP4_PASS7_HYPERBOLA_BOUNDARY_ALIAS_AND_ONE_SIDED_CRITERION_2026-11-01.md",
+      "url": "https://drive.google.com/file/d/1OrWbYwMezs8gx7evAS7s4a2ZPvbgm1A7/view?usp=drivesdk",
+      "mime": "text/markdown",
+      "bytes": 17825,
+      "sha256": "72082edbf2e5d98266521dde440db4597aa19bf65f470a0c2586858de0a5eeb7",
+      "status": "CONNECTOR_TEXT"
+    },
+    {
+      "id": "1LSRIVMjD4hIpMA84S7Ka-0ENbiDdAKSG",
+      "name": "OPICA_STEP4_PASS7_HYPERBOLA_BOUNDARY_ALIAS_2026-11-01.zip",
+      "url": "https://drive.google.com/file/d/1LSRIVMjD4hIpMA84S7Ka-0ENbiDdAKSG/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 14951,
+      "sha256": "12be547eb31e3bac7efdb23fa18476003685723e5cec78af746bfad37d2031b0",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1p_GNiAwF2pdhS5x_mdpy7fqbB5femux8",
+      "name": "STEP4_PASS6_LEAN_CONTRACTS_2026-11-01.json",
+      "url": "https://drive.google.com/file/d/1p_GNiAwF2pdhS5x_mdpy7fqbB5femux8/view?usp=drivesdk",
+      "mime": "application/json",
+      "bytes": 2920,
+      "sha256": "1ba5e5fb68dd892161dc7cd41958c3e8bcbd5c3cf22967e56600455c8493e96c",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1OksOPHWKUFRW8L_vIaHQbXHxzObDaoa6",
+      "name": "STEP4_PASS6_FLAT_MOBIUS_REDUCTION_2026-11-01.md",
+      "url": "https://drive.google.com/file/d/1OksOPHWKUFRW8L_vIaHQbXHxzObDaoa6/view?usp=drivesdk",
+      "mime": "text/markdown",
+      "bytes": 20736,
+      "sha256": "6e54822a23d5a4a53cd2160b4006af0caf05e97d50a6d4cc350dd771886c5d43",
+      "status": "CONNECTOR_TEXT"
+    },
+    {
+      "id": "1vIWYVnwjV3AD45P1cAxrU5dslpX9YPsw",
+      "name": "OPICA_STEP4_PASS6_FLAT_MOBIUS_COVARIANCE_2026-11-01.zip",
+      "url": "https://drive.google.com/file/d/1vIWYVnwjV3AD45P1cAxrU5dslpX9YPsw/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 15247,
+      "sha256": "4e66c759827d81cee18c8106082fda8c932b49d2de0eb335b0b12bb713443378",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1NZ9y0K1irruu95z4F14BeLmmiilYww57",
+      "name": "STEP4_PASS5_LEAN_CONTRACTS.json",
+      "url": "https://drive.google.com/file/d/1NZ9y0K1irruu95z4F14BeLmmiilYww57/view?usp=drivesdk",
+      "mime": "application/json",
+      "bytes": 3176,
+      "sha256": "9330e6eeb73efc17821c805a943b8417ab285443511bbd98a8436183bfebd83b",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1Dk0V38imK2k_AvenXpLYDAlC5UwxDP9L",
+      "name": "STEP4_PASS5_SOURCE_EXACT_EULER_PERTURBATION_AND_STABILITY_2026-10-31.md",
+      "url": "https://drive.google.com/file/d/1Dk0V38imK2k_AvenXpLYDAlC5UwxDP9L/view?usp=drivesdk",
+      "mime": "text/markdown",
+      "bytes": 21567,
+      "sha256": "391a9abbe42a1a6e9560368799aead9903a89fa3159604d45b2cad89d9fb99f3",
+      "status": "CONNECTOR_TEXT"
+    },
+    {
+      "id": "1eNaR496xs_Y8Jm3bpoci3CMcktcKqtd1",
+      "name": "OPICA_STEP4_PASS5_EXACT_PRIME_SITE_EULER_EXPONENT_THRESHOLD_2026-10-31.zip",
+      "url": "https://drive.google.com/file/d/1eNaR496xs_Y8Jm3bpoci3CMcktcKqtd1/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 16005,
+      "sha256": "cbddc885dfdae3ab7b6f96a52b49b58fa9e3a906430461ef40f03a45ef444f2b",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1JZAoX9l4O8aS6dy395E8odLdLySJPu7G",
+      "name": "STEP4_CLOSURE_PASS4_FINITE_SIGN_CERTIFICATE_2026-10-31.md",
+      "url": "https://drive.google.com/file/d/1JZAoX9l4O8aS6dy395E8odLdLySJPu7G/view?usp=drivesdk",
+      "mime": "text/markdown",
+      "bytes": 14539,
+      "sha256": "de2ddd8e188284e4a80aa98cc9bdf14f3c82187e34971f007dbb633f17ce5a24",
+      "status": "CONNECTOR_TEXT"
+    },
+    {
+      "id": "1wW-1u9Ha5EtMUdYWPY9IjnGu3Zyl_W3m",
+      "name": "OPICA_STEP4_PASS4_FINITE_SOURCE_SIGN_CERTIFICATE_2026-10-31.zip",
+      "url": "https://drive.google.com/file/d/1wW-1u9Ha5EtMUdYWPY9IjnGu3Zyl_W3m/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 14522,
+      "sha256": "edb01726d4cf6bfdcf9fc0f0a80de5af18ba709573f9ca06785e8f82f6c1e770",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1h-w-inKJNTqke94AwH2VFVcmoTpygBsB",
+      "name": "STEP4_CLOSURE_PASS3_INDEPENDENT_ARITHMETIC_ATTACK_2026-10-31.md",
+      "url": "https://drive.google.com/file/d/1h-w-inKJNTqke94AwH2VFVcmoTpygBsB/view?usp=drivesdk",
+      "mime": "text/markdown",
+      "bytes": 14922,
+      "sha256": "c54e127310ce4f701442b1ac64920052014ddfb13eddcff33d610c6a3c3eb714",
+      "status": "CONNECTOR_TEXT"
+    },
+    {
+      "id": "1WmT8P8zyDlWIwHOM5o-FyH3Q63nV14gX",
+      "name": "OPICA_STEP4_PASS3_INDEPENDENT_ARITHMETIC_ATTACK_2026-10-31.zip",
+      "url": "https://drive.google.com/file/d/1WmT8P8zyDlWIwHOM5o-FyH3Q63nV14gX/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 12544,
+      "sha256": "1118051c462a80925c16b537d1ee278ad4e36888c8f5057afec63a562c2af1e5",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1PXQNMp_beGBiJlz26iXEaVyHM1AnTi91",
+      "name": "STEP4_PASS2_FINITE_SCAN_DISCOVERY_ONLY_2026-10-31.json",
+      "url": "https://drive.google.com/file/d/1PXQNMp_beGBiJlz26iXEaVyHM1AnTi91/view?usp=drivesdk",
+      "mime": "application/json",
+      "bytes": 5351,
+      "sha256": "20781db30bf228184ed79d216e9920125006fb84d5e26fde489eeb338d3d8f29",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "16fhYGtG2Z9f7hf6cf3PIVFlQCZKbffsi",
+      "name": "STEP4_PASS2_LEAN_THEOREM_CONTRACTS_2026-10-31.json",
+      "url": "https://drive.google.com/file/d/16fhYGtG2Z9f7hf6cf3PIVFlQCZKbffsi/view?usp=drivesdk",
+      "mime": "application/json",
+      "bytes": 4391,
+      "sha256": "3146684eade97b9c7d3bfcd665fac9b04ab371f1a4b8f3e3a5571540bd883f8b",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1R3R-uHwoGZ_45tU5fuQPE7Wwa_fVlMiH",
+      "name": "STEP4_CLOSURE_RESEARCH_PASS2_OFFDIAGONAL_SIGN_AND_BEURLING_FALSIFICATION_2026-10-31.md",
+      "url": "https://drive.google.com/file/d/1R3R-uHwoGZ_45tU5fuQPE7Wwa_fVlMiH/view?usp=drivesdk",
+      "mime": "text/markdown",
+      "bytes": 22159,
+      "sha256": "d17b073e7bc148b3dbdf0db78e17a6cce988b49b37f560b23b5e294685c3b38b",
+      "status": "CONNECTOR_TEXT"
+    },
+    {
+      "id": "1E_PlPHNUPD0HtEZgg7ZDPKMmXw-zoWfH",
+      "name": "OPICA_STEP4_PASS2_OFFDIAGONAL_SIGN_BEURLING_FALSIFICATION_2026-10-31.zip",
+      "url": "https://drive.google.com/file/d/1E_PlPHNUPD0HtEZgg7ZDPKMmXw-zoWfH/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 20972,
+      "sha256": "c3a28ae10b07a2c989c2acb92850f40db38f457933d362356ea1252b3948a57d",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1GabcTw-5wPUvF_GuCLlCBunwqFXsiu6-",
+      "name": "STEP4_PRIME_PAIR_LEAN_CONTRACTS_2026-10-31.json",
+      "url": "https://drive.google.com/file/d/1GabcTw-5wPUvF_GuCLlCBunwqFXsiu6-/view?usp=drivesdk",
+      "mime": "application/json",
+      "bytes": 4462,
+      "sha256": "a26c3c2053e78e6ed14dbff37bf2b919acaefbcdd4aabc793ce464d4012ae5fe",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1xEQIO5sbxrvZ8B1WBd44UxRLmrGX1jR8",
+      "name": "STEP4_CLOSURE_RESEARCH_PASS1_PRIME_PAIR_ENERGY_2026-10-31.md",
+      "url": "https://drive.google.com/file/d/1xEQIO5sbxrvZ8B1WBd44UxRLmrGX1jR8/view?usp=drivesdk",
+      "mime": "text/markdown",
+      "bytes": 26990,
+      "sha256": "008d3a6f7e8cf01503952319e31763d4bfcc5aa812b0620b0fad959a1bd17d7b",
+      "status": "CONNECTOR_TEXT"
+    },
+    {
+      "id": "1aBsmphCP5HA-3Y_XaRwhPWo0sa6DSx5U",
+      "name": "OPICA_STEP4_PRIME_PAIR_ENERGY_RESEARCH_PACKET_2026-10-31.zip",
+      "url": "https://drive.google.com/file/d/1aBsmphCP5HA-3Y_XaRwhPWo0sa6DSx5U/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 19976,
+      "sha256": "01538ecfacbce922dfa4d61e80d89ef26865f79291e63dd4914efa87be317d76",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1NKjxv6Vzi7hRNAz7o3AqBf8b33dTpi3iQsWYubNeTyE",
+      "name": "Quasi-RH complete DirichletL Lean tree â€” source file inventory (2026-10-30)",
+      "url": "https://docs.google.com/document/d/1NKjxv6Vzi7hRNAz7o3AqBf8b33dTpi3iQsWYubNeTyE/edit?usp=drivesdk",
+      "mime": "application/vnd.google-apps.document",
+      "bytes": 474236,
+      "sha256": "6ec3ece1c7b4f67401b91da42f0befe1154955a4dc5e681ea0a7cbd9893b64a3",
+      "status": "CONNECTOR_TEXT"
+    },
+    {
+      "id": "1mcGO2sJ8S_phKHKRbCo1qNHeq6njHm5J-ThqqiNGQD0",
+      "name": "OPICA Round 4 â€” Step 4 source audit and next tests (30 Oct 2026)",
+      "url": "https://docs.google.com/document/d/1mcGO2sJ8S_phKHKRbCo1qNHeq6njHm5J-ThqqiNGQD0/edit?usp=drivesdk",
+      "mime": "application/vnd.google-apps.document",
+      "bytes": 5963,
+      "sha256": "beec003776aa6b935834fd3278d6e6471d064736ad3e6d383220a113399828ea",
+      "status": "CONNECTOR_TEXT"
+    },
+    {
+      "id": "1zS-JZGDI_h2mFiAs9u5xA1ugttqMzBxA",
+      "name": "OPICA_Step4_Promising_Strategies_Deep_Dive_2026-10-30.md",
+      "url": "https://drive.google.com/file/d/1zS-JZGDI_h2mFiAs9u5xA1ugttqMzBxA/view?usp=drivesdk",
+      "mime": "text/markdown",
+      "bytes": 24304,
+      "sha256": "2636d1efa998306a4d9f182b99a71d11f8c682a4c4863470e99719e812d43441",
+      "status": "CONNECTOR_TEXT"
+    },
+    {
+      "id": "1kUk2j5hL1gTSNuLXqvPldJXYzLATb-s-",
+      "name": "OPICA_Step4_Strip_Echo_Test_Packet_2026-10-30.zip",
+      "url": "https://drive.google.com/file/d/1kUk2j5hL1gTSNuLXqvPldJXYzLATb-s-/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 15562,
+      "sha256": "10ff4fb685738db509e29ad5671d253234ce26b28c4e9695cfd108b70f88b01f",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1u5cr2vKXD1MzqfSdbutjVa1N6yx7WwdZ",
+      "name": "OPICA_Step4_Strip_Echo_Phase_Research_Note_2026-10-30.md",
+      "url": "https://drive.google.com/file/d/1u5cr2vKXD1MzqfSdbutjVa1N6yx7WwdZ/view?usp=drivesdk",
+      "mime": "text/markdown",
+      "bytes": 22558,
+      "sha256": "cd6157b312a22a16f766a180aa4dde5a87495933feb1affb8dd09dadbe702407",
+      "status": "CONNECTOR_TEXT"
+    },
+    {
+      "id": "1vR20wd7Ktv2ynq9bTA5FaJmwVfTb6xFa",
+      "name": "01_OPICA_36_Paper_Step4_Research_2026-10-30.zip",
+      "url": "https://drive.google.com/file/d/1vR20wd7Ktv2ynq9bTA5FaJmwVfTb6xFa/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 108761,
+      "sha256": "98bbb7c073d606f3aadbbd7eb9dfe9a91ce380e48f548acb8e541a32da257167",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1Te4gSZ_cR0o4zG3EEr3588qSc4qmCt5h",
+      "name": "00_Original_Paper_Audit_Index.json",
+      "url": "https://drive.google.com/file/d/1Te4gSZ_cR0o4zG3EEr3588qSc4qmCt5h/view?usp=drivesdk",
+      "mime": "application/json",
+      "bytes": 33099,
+      "sha256": "5794230462ac3d2f79142bd7f1f9bb6fc5d187cd639f0028bc5c93dc2956a803",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1snjPhsiwqojUfEz1lpbVIHLpeRKUJ2MX",
+      "name": "00_PACKAGE_MANIFEST.json",
+      "url": "https://drive.google.com/file/d/1snjPhsiwqojUfEz1lpbVIHLpeRKUJ2MX/view?usp=drivesdk",
+      "mime": "application/json",
+      "bytes": 15930,
+      "sha256": "2af32231b8fca76d09978e135c48f38b4308cc9cb05da246b6164ef2047acc30",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1dKfjx4SXS5CXrJRpOahh4jivd8kHbUd1",
+      "name": "00_START_HERE.md",
+      "url": "https://drive.google.com/file/d/1dKfjx4SXS5CXrJRpOahh4jivd8kHbUd1/view?usp=drivesdk",
+      "mime": "text/markdown",
+      "bytes": 3359,
+      "sha256": "8aacc622fc1c43e7d7bf2763de1fbcc532254aef008612e6c750265ddf8de65c",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1EqV46EHxGLRZXd0T9ON-TfS7FTL-SSje",
+      "name": "19_Historical_Handover_Original_Indexes_And_Restore_Tools.zip",
+      "url": "https://drive.google.com/file/d/1EqV46EHxGLRZXd0T9ON-TfS7FTL-SSje/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 3077148,
+      "sha256": "f7a4a59fb009ac626e9ebfc12bdb6da99b77ebd5f1c2f64959cbabe27aaa267a",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1Od_qa_8xPCcb_eTOyDAWqPDnIJAnqdOO",
+      "name": "EMBEDDED_SOURCE_CAPSULE_CATALOGUE.json",
+      "url": "https://drive.google.com/file/d/1Od_qa_8xPCcb_eTOyDAWqPDnIJAnqdOO/view?usp=drivesdk",
+      "mime": "application/json",
+      "bytes": 12331,
+      "sha256": "bded2e8f55072d1e0ef229a99d91f11fdc2c7c33fdbf31fe3b4dfff522851a05",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1gsZv5yeDhf4CImDQhQDK25BH166nNt3D",
+      "name": "18_Embedded_Historical_Corpus_Repository_Graph_and_Relations_Data_02.zip",
+      "url": "https://drive.google.com/file/d/1gsZv5yeDhf4CImDQhQDK25BH166nNt3D/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 16124407,
+      "sha256": "65b7567da7a1ee5b18aec7b47c6c63c5c173d11f5036fdee433746f1047289dd",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1tJ8UvO-5Ctg7aMwGgmenf5KveoDCfiZN",
+      "name": "18_Embedded_Historical_Corpus_Repository_Graph_and_Relations_Data_01.zip",
+      "url": "https://drive.google.com/file/d/1tJ8UvO-5Ctg7aMwGgmenf5KveoDCfiZN/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 62013110,
+      "sha256": "85264305f4761cf2ee560d75746555ff84e410d158513f93eae0593b186c861f",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1TpeSsG_inH110kOd8xqlAgwI3lpoUvvm",
+      "name": "18_Embedded_Historical_Corpus_Formal_Source_and_Executable_Code_01.zip",
+      "url": "https://drive.google.com/file/d/1TpeSsG_inH110kOd8xqlAgwI3lpoUvvm/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 9802507,
+      "sha256": "53fd9af923fc53f70d424d3b0036c1dba2c22cbd925adfcf104b893b6ef6c0da",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1zjivtLYlL1K2ttIKWyfoiIxQsP0kRbBn",
+      "name": "18_Embedded_Historical_Corpus_CI_and_Execution_Logs_01.zip",
+      "url": "https://drive.google.com/file/d/1zjivtLYlL1K2ttIKWyfoiIxQsP0kRbBn/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 17970599,
+      "sha256": "b3fae1c7156d7989e6bd758e3f3c323061f2b8180821e6e5307d09db7f82c5c6",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1-uv-WXcICj6_gqfqsiJC-aG7i_zd-E5x",
+      "name": "18_Embedded_Historical_Corpus_Structured_Data_and_Certificates_02.zip",
+      "url": "https://drive.google.com/file/d/1-uv-WXcICj6_gqfqsiJC-aG7i_zd-E5x/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 4420788,
+      "sha256": "789d6b10e1d426400671f83967300296a673f7fe9be3f665902e56e712073d2c",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1PXmRycY_DFjpRXdUYyIiz3OW_BrweVmN",
+      "name": "18_Embedded_Historical_Corpus_Structured_Data_and_Certificates_01.zip",
+      "url": "https://drive.google.com/file/d/1PXmRycY_DFjpRXdUYyIiz3OW_BrweVmN/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 60579436,
+      "sha256": "ef30d3e8483b5121b9782ede5be65807f566dd3ebacd479dc0d36ba7cf55bb8c",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1Cv4djw-EFN3VgkY8Y6QEF2338Ctn_M1Z",
+      "name": "18_Embedded_Historical_Corpus_Historical_Research_Documents_02.zip",
+      "url": "https://drive.google.com/file/d/1Cv4djw-EFN3VgkY8Y6QEF2338Ctn_M1Z/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 4377531,
+      "sha256": "1dd63a4020fcda174ae28e35793bb5aaea17be85ae89169574f069084a85e73c",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1_6SuNT4dQSFdb-tqjfeu8wQK-IB5VyXf",
+      "name": "18_Embedded_Historical_Corpus_Historical_Research_Documents_01.zip",
+      "url": "https://drive.google.com/file/d/1_6SuNT4dQSFdb-tqjfeu8wQK-IB5VyXf/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 61119409,
+      "sha256": "599ae4438d2959329a3422d236d1164e05d871eaf1a61e4069481ab8b8c2ffdb",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1abuPbR1PZ22GzjOZtbDSmwyaeFzqVsul",
+      "name": "17_ThirdParty_Handover_C_Historical_Markdown_and_Lean.zip",
+      "url": "https://drive.google.com/file/d/1abuPbR1PZ22GzjOZtbDSmwyaeFzqVsul/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 26102101,
+      "sha256": "0554cf91b149b59862a16e67e31835d7bab4e78c60ad4e645f5f1891afce02f5",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1b_a6W19tfCfTDue_Bb5BjRzWd3Y2XCLK",
+      "name": "17_ThirdParty_Handover_B_Papers_and_Word_Documents.zip",
+      "url": "https://drive.google.com/file/d/1b_a6W19tfCfTDue_Bb5BjRzWd3Y2XCLK/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 51522065,
+      "sha256": "2ebd48f2df56417b3c9613914f47fef23edcdb0128b939288151e779b619fbca",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1VmoIwjO7pakj554RcWDeZ9LKHQ2-DSmH",
+      "name": "17_ThirdParty_Handover_A_Guide_Catalogue_Atlas.zip",
+      "url": "https://drive.google.com/file/d/1VmoIwjO7pakj554RcWDeZ9LKHQ2-DSmH/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 1771108,
+      "sha256": "d49c3ce510377576814bdd1fee481f7805334fcc8da0afcfae1dd6ef1e4fe02c",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1kxenOMhHUN88YtDR4FrGD5QNMrdBbMKM",
+      "name": "16_Audited_OPICA_Snapshot_OPICA_Followup_Research_Data.zip",
+      "url": "https://drive.google.com/file/d/1kxenOMhHUN88YtDR4FrGD5QNMrdBbMKM/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 69968914,
+      "sha256": "d6f1338786dd1dddca164879bb566df5df6624dfa40fded5c0ef6921369d9416",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1hPUGZaD6PtG1lgjpI9Ompv4mUuIrFrEA",
+      "name": "16_Audited_OPICA_Snapshot_Lean_Source_And_Build_Interfaces.zip",
+      "url": "https://drive.google.com/file/d/1hPUGZaD6PtG1lgjpI9Ompv4mUuIrFrEA/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 4712757,
+      "sha256": "10310d33ce50ccbeecc870bcd32fac186d07eb533b083f8d64841f18c57de7bb",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1HytauiwelW8INffRYP9ze90PZmQC9xnk",
+      "name": "16_Audited_OPICA_Snapshot_Integration_Round2_3_4_Contracts.zip",
+      "url": "https://drive.google.com/file/d/1HytauiwelW8INffRYP9ze90PZmQC9xnk/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 13602225,
+      "sha256": "42c862840d28af5bfa450b7b6b5e566de6d528289d6afff9ab962d0e8b2b5c1e",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1Epru7m13T8jFliyeCX1SeLEhgUsJfK64",
+      "name": "16_Audited_OPICA_Snapshot_Historical_Research_Ledgers_Routes.zip",
+      "url": "https://drive.google.com/file/d/1Epru7m13T8jFliyeCX1SeLEhgUsJfK64/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 3370318,
+      "sha256": "7b5bec75dc12b55682b00a1b327b2fdc946fdfce881cb52a0958c7190e7e3ccd",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "185Fimys6aEezlRDTzK0B7NUyMctABwRe",
+      "name": "16_Audited_OPICA_Snapshot_Graph_Relations_c-f.zip",
+      "url": "https://drive.google.com/file/d/185Fimys6aEezlRDTzK0B7NUyMctABwRe/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 23922616,
+      "sha256": "851973e2a70ea26478aa4c095c86902a008a1b3bc0279c50cde0ec3a8599904b",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1FvZ-0fpqdm1w54__fi-N02iRwYa3M5ms",
+      "name": "16_Audited_OPICA_Snapshot_Graph_Relations_8-b.zip",
+      "url": "https://drive.google.com/file/d/1FvZ-0fpqdm1w54__fi-N02iRwYa3M5ms/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 23939260,
+      "sha256": "80c7f39cca85aa7061f0af71762305e287bcd263eef13c0c0a3f774a0b157ce1",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "14ema1CmAVKLm9G4RfMX5qocIwCSLlOxU",
+      "name": "16_Audited_OPICA_Snapshot_Graph_Relations_4-7.zip",
+      "url": "https://drive.google.com/file/d/14ema1CmAVKLm9G4RfMX5qocIwCSLlOxU/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 23952994,
+      "sha256": "1085644c2ea92c56adcdfff4ae35fae151540f711c4ed2772826610703bc2480",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1gcI_ZA5IrfSEMKhb5Q1TZNxdtKnM8RPj",
+      "name": "16_Audited_OPICA_Snapshot_Graph_Relations_0-3.zip",
+      "url": "https://drive.google.com/file/d/1gcI_ZA5IrfSEMKhb5Q1TZNxdtKnM8RPj/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 23914808,
+      "sha256": "ca2056a3aa77a5f578ae2d86bae481bfbd8d080bfdbaffb9ef7a418da5697b89",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1sbslPL5Qm4Hq8me7vRERJfx-zveZ3FdK",
+      "name": "16_Audited_OPICA_Snapshot_Graph_Metadata_Theorem_Atlas.zip",
+      "url": "https://drive.google.com/file/d/1sbslPL5Qm4Hq8me7vRERJfx-zveZ3FdK/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 20136947,
+      "sha256": "a4122145e0039d91466e9681fcbefe93052da56f09fbfa6746a47c65e0eb3567",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1OOnDZBY2G-ur6GMsgRG0WnFCHE5JUf8Y",
+      "name": "15_Historical_OPICA_Snapshot_OPICA_Followup_Research_Data.zip",
+      "url": "https://drive.google.com/file/d/1OOnDZBY2G-ur6GMsgRG0WnFCHE5JUf8Y/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 69968922,
+      "sha256": "89275b69b04a844a6d7b305781d3f773dae85443bf784e37a039b2a16418369f",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1n2RxkEK3x-qItE9nGgGCVFomFxEohegD",
+      "name": "15_Historical_OPICA_Snapshot_Lean_Source_And_Build_Interfaces.zip",
+      "url": "https://drive.google.com/file/d/1n2RxkEK3x-qItE9nGgGCVFomFxEohegD/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 4712604,
+      "sha256": "8c03d9b8cae2cdd1951c2c9b774b5c948e43383c4a20838fa9642f36c7134878",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1-Q1MgWE1rB7uH_dDaf_frXtwKZii3Cx0",
+      "name": "15_Historical_OPICA_Snapshot_Integration_Round2_3_4_Contracts.zip",
+      "url": "https://drive.google.com/file/d/1-Q1MgWE1rB7uH_dDaf_frXtwKZii3Cx0/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 13575112,
+      "sha256": "e3073b146e9041a342f125767a7e31baed0291f8684df53ca13620fc24aa41b6",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1-Qv_NrdaoVzqFK_foRvzWNyw8fLYSufO",
+      "name": "15_Historical_OPICA_Snapshot_Historical_Research_Ledgers_Routes.zip",
+      "url": "https://drive.google.com/file/d/1-Qv_NrdaoVzqFK_foRvzWNyw8fLYSufO/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 3370310,
+      "sha256": "1478eff4f955c5342b8984d9ece29bf32691dbef2e33de67eafe737b78faaebc",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1kEYGinS05Bd0lC_YmlqyMRlwAZFtO9bA",
+      "name": "15_Historical_OPICA_Snapshot_Graph_Relations_c-f.zip",
+      "url": "https://drive.google.com/file/d/1kEYGinS05Bd0lC_YmlqyMRlwAZFtO9bA/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 23922623,
+      "sha256": "ae173b9c36b6f330aa1eaf0fe5c6c035cc797aa3c207e794229d5836f61a80a9",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1zHPVDLtse8YlFHH86z6l43n0zXswDbRa",
+      "name": "15_Historical_OPICA_Snapshot_Graph_Relations_8-b.zip",
+      "url": "https://drive.google.com/file/d/1zHPVDLtse8YlFHH86z6l43n0zXswDbRa/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 23939268,
+      "sha256": "4b642149ccfc3fd607781cb66b66d33b33b4708a928ddf3402ba142774a04907",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "10CNhRP8HSSHQeQ0POcqEpf9OkqZVA5au",
+      "name": "15_Historical_OPICA_Snapshot_Graph_Relations_4-7.zip",
+      "url": "https://drive.google.com/file/d/10CNhRP8HSSHQeQ0POcqEpf9OkqZVA5au/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 23953001,
+      "sha256": "5fe560aa91cd6eed1400e521b2aec0cf98ffd910638294f7690fcb04832f03c0",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1qGw72p1BLwU4ZwXe6XjxSwSgkR2TvAzf",
+      "name": "15_Historical_OPICA_Snapshot_Graph_Relations_0-3.zip",
+      "url": "https://drive.google.com/file/d/1qGw72p1BLwU4ZwXe6XjxSwSgkR2TvAzf/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 23914815,
+      "sha256": "3a8370a377bc158df096fe5fb9be13526a1ad27911c5784c4a4237a4c5edc01f",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1ViwVhLbMyXsoHnVu4BCgNq3wUki4YGze",
+      "name": "15_Historical_OPICA_Snapshot_Graph_Metadata_Theorem_Atlas.zip",
+      "url": "https://drive.google.com/file/d/1ViwVhLbMyXsoHnVu4BCgNq3wUki4YGze/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 20136986,
+      "sha256": "be652648d4a3fac6fe33af07c68cef24de7d2db4656964e587eabe31cae34b42",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1O6R87FXHEyhrHHG9RcUK1p5_pQHWRljw",
+      "name": "14_RH_Research_Master_v29_and_Round1_Round2.zip",
+      "url": "https://drive.google.com/file/d/1O6R87FXHEyhrHHG9RcUK1p5_pQHWRljw/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 61417659,
+      "sha256": "399e6d40e8b3fac3a9b92e45e147646bc96f3c59cf22cdcdcaf939cd368b4488",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1Y3WcPJNNwOdyddZDCFjXWooGjoU_l6bR",
+      "name": "13_RH_Research_Master_ThreePath_v25_v26_v28.zip",
+      "url": "https://drive.google.com/file/d/1Y3WcPJNNwOdyddZDCFjXWooGjoU_l6bR/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 59870137,
+      "sha256": "90e158465a07028d7e73bff9bc742d15e2342906d883d513fca051880d9c829e",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "18DHteSx78TbgRqDurNUck2tW6Hz0tyKI",
+      "name": "12_RH_Historical_PR292_Preparation_and_Handoffs.zip",
+      "url": "https://drive.google.com/file/d/18DHteSx78TbgRqDurNUck2tW6Hz0tyKI/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 70803448,
+      "sha256": "909d27380a544341eed395a7d7d6a37fb2471b49d2542145539457b3e7b0212c",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1L91AVkKGVNUbq5uGp4q7qfTArHX7U8Lh",
+      "name": "11_RH_Project_Baselines_and_Path_ABCD_Context.zip",
+      "url": "https://drive.google.com/file/d/1L91AVkKGVNUbq5uGp4q7qfTArHX7U8Lh/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 2331441,
+      "sha256": "52573460d481786bc036b91c998883414b74a1e824d789685d0b9d9b8a5cd941",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1piMBp6hIXws5IY11ic22p9vHu2mErCny",
+      "name": "10_External_Recent_RH_Preprints_and_Research_Search.zip",
+      "url": "https://drive.google.com/file/d/1piMBp6hIXws5IY11ic22p9vHu2mErCny/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 1900540,
+      "sha256": "cf3bb09f2e50a3ccdc0d30c7cf577c8ac47db3a3353472fa432738452ed10d6c",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1a_DFJrdThtMa344zZR2kdsBwAGqm0Nys",
+      "name": "09_Papers_OPICA_Causal_ZeroJets_and_Fourier_Gaps.zip",
+      "url": "https://drive.google.com/file/d/1a_DFJrdThtMa344zZR2kdsBwAGqm0Nys/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 8570726,
+      "sha256": "f9186a0c744febfcd5ad8a5535cc761c9d16eedf48bb13bd8b536a89aa14b2ad",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "14ppe3aSASNzIzJxxpZ3jkf_1GaI1c8Hk",
+      "name": "08_Papers_CCM_Parity_FirstContact_and_Source.zip",
+      "url": "https://drive.google.com/file/d/14ppe3aSASNzIzJxxpZ3jkf_1GaI1c8Hk/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 6292016,
+      "sha256": "4fcb1a5e412daa55594cfc47589812ecb1f35c8b61557be555c6610135391d66",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1I61ktG-3dEDHjIK9-e6AFCfnYsotG3R2",
+      "name": "07_Papers_Foundations_Normalization_and_Detection.zip",
+      "url": "https://drive.google.com/file/d/1I61ktG-3dEDHjIK9-e6AFCfnYsotG3R2/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 2729824,
+      "sha256": "0fe3ff695e5bdd0e548802686bcaf2295828856f3c0d124e200bc86450cf15ae",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1S4oPdshnlR1Jcgu4WODb2vwvBuKcgza0",
+      "name": "06_Round2_Contracts_Manifests_and_Compatibility.zip",
+      "url": "https://drive.google.com/file/d/1S4oPdshnlR1Jcgu4WODb2vwvBuKcgza0/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 55917486,
+      "sha256": "c4c2be9650c4636dc924298ee0273b7b724cace56e2fb1989acfade698ae2132",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1u6xJ3jsbbVdIg-ucTvliqkkPcvrCsW4m",
+      "name": "05_Round2_Round3_Round4_Formal_and_CI_Evidence.zip",
+      "url": "https://drive.google.com/file/d/1u6xJ3jsbbVdIg-ucTvliqkkPcvrCsW4m/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 11452390,
+      "sha256": "5743fe248b4229dd760629a93c5358f7fca05d23f77292e9ada7f598134bb9f0",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1Rzm4wigDd6BPi3sg7Cf5dlGCb2kAV-_3",
+      "name": "04_FirstBirth_Schur_MixedJets_and_Literature_Evidence.zip",
+      "url": "https://drive.google.com/file/d/1Rzm4wigDd6BPi3sg7Cf5dlGCb2kAV-_3/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 1839800,
+      "sha256": "41a739873022130e7897aaa92d8d0c4e70b556023464a6a0caccdd0445efc716",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1DCy8q_cEPr8INJ9Gaio-tvLboRyOt3T7",
+      "name": "03_Causal_Impulse_and_Dual_Geometry_Evidence.zip",
+      "url": "https://drive.google.com/file/d/1DCy8q_cEPr8INJ9Gaio-tvLboRyOt3T7/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 44932793,
+      "sha256": "f0118a1097b9f7536bd7ef1ddbf6d8542a5c8f2ab190d70997b59afb8c2e9ee8",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1DQIHRPPb3sI9DZYhumvKw8da90Ks-its",
+      "name": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.zip",
+      "url": "https://drive.google.com/file/d/1DQIHRPPb3sI9DZYhumvKw8da90Ks-its/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 12972486,
+      "sha256": "93d0f52fbf1ce09a177b35a2aa3087c1139f387b79f05aa1516c2cc8bb38b6a0",
+      "status": "DOWNLOADED_BYTES"
+    },
+    {
+      "id": "1mkh4JkcVtjdcCOtAHPlj8eXsx9bXN-eu",
+      "name": "01_Thread_Research_Reports_and_Audit_Index.zip",
+      "url": "https://drive.google.com/file/d/1mkh4JkcVtjdcCOtAHPlj8eXsx9bXN-eu/view?usp=drivesdk",
+      "mime": "application/zip",
+      "bytes": 247024,
+      "sha256": "35de9c91c0c3a000c95852d014f6fa87491ab9563761e7afb335b3ed30694e7b",
+      "status": "DOWNLOADED_BYTES"
+    }
+  ],
+  "research_audits": {
+    "PRIME_MATH_AUDIT.json": {
+      "sha256": "612791800f96ae6ed470eab7239ed60e0c54b028234788469481f58290f47230",
+      "content": {
+        "schema": "OPICA_PRIME_MATH_AUDIT_V1",
+        "date": "2026-11-01",
+        "auditor": "madness_prime_math",
+        "repo": {
+          "path": "work/opica-round3-repo",
+          "head": "09ac22e48bb0683437572509abdf2ddec520b7ac",
+          "tree": "f9e19310c2281af1609ae005a76cab40c913380f",
+          "read_only": true
+        },
+        "objective": "Actively seek an independent arithmetic closing estimate for Step4 by composing the literal source constraints and reports; reject any proof that merely assumes the desired bound.",
+        "outcome": {
+          "step4": "OPEN",
+          "rh": "OPEN",
+          "closing_proof_found": false,
+          "reason": "The audited identities and available bounds do not supply signed cancellation of the complete actual arithmetic quantity at the required scale. This is a failed bounded proof attempt, not a theorem of impossibility."
+        },
+        "reports": [
+          {
+            "file": "STEP4_CLOSURE_RESEARCH_PASS1_PRIME_PAIR_ENERGY_2026-10-31.md",
+            "status": "PAPER_DERIVATIONS_AUDITED_NOT_LEAN",
+            "findings": [
+              "Original source H=kappa*kappa and Mellin transform (z^2-1/4)^2 Q(z)^2 retain pole-killing moments.",
+              "Shell energy J_m is a Gram quadratic form and nonnegative; its exponential limsup measures the actual zero displacement. Gram positivity supplies a lower bound, not the missing upper.",
+              "Near-coincident prime columns destroy any aperture-uniform lower Riesz constant. Actual prime-pair kernel has both signs."
+            ]
+          },
+          {
+            "file": "STEP4_CLOSURE_RESEARCH_PASS2_OFFDIAGONAL_SIGN_AND_BEURLING_FALSIFICATION_2026-10-31.md",
+            "status": "PAPER_DERIVATIONS_AUDITED_NOT_LEAN",
+            "findings": [
+              "Unconditional diagonal size D_m=(2m+1)||H||_2^2+o(m), while closure needs offdiagonal cancellation O_m=-D_m+subexponential error.",
+              "Eventual O_m<=0 would suffice but is an RH-equivalent strengthening in this exact source.",
+              "Chebyshev-error comparison is valid but bounds the missing signed prime quantity by another RH-strength mean-square estimate.",
+              "Positive Euler weights, PNT and the pole-killed source alone admit Beurling examples with growing energy; these are not countermodels to all exact integer coefficient laws."
+            ]
+          },
+          {
+            "file": "STEP4_CLOSURE_PASS3_INDEPENDENT_ARITHMETIC_ATTACK_2026-10-31.md",
+            "status": "PAPER_DERIVATIONS_AUDITED_NOT_LEAN",
+            "findings": [
+              "The external floor-block lower bound is false: N=10,m=4 has no k with floor(N/k)=4; reproduced independently.",
+              "The zero floor-discrepancy observation is correct, but restricting to nonempty blocks loses needed coverage.",
+              "Independent Bernoulli prime-density controls reproduce diagonal growth rather than the actual negative covariance needed for bounded J."
+            ]
+          },
+          {
+            "file": "STEP4_CLOSURE_PASS4_FINITE_SIGN_CERTIFICATE_2026-10-31.md",
+            "status": "MATHEMATICAL_SCALING_AND_FINITE_ENUMERATION_AUDITED_INTERVAL_SCRIPT_NOT_EXECUTED",
+            "findings": [
+              "All-shell O_m<=0 is refuted by the report's O_3 positive interval certificate; this does not refute eventual sign.",
+              "Independent elementary sieve reproduced exactly 19 candidate prime pairs and the rational ratio cut. Source and frequency tail scaling is dimensionally consistent.",
+              "No source code from the downloaded reports was executed. Full interval certificate should remain external until independent parser/library/rounding verification or formal reconstruction."
+            ]
+          },
+          {
+            "file": "STEP4_PASS5_SOURCE_EXACT_EULER_PERTURBATION_AND_STABILITY_2026-10-31.md",
+            "status": "PAPER_DERIVATIONS_AUDITED_NOT_LEAN",
+            "findings": [
+              "The exact source response to a 1/log p Euler perturbation is positive and completely monotone by a Laplace transform of M_H(1/2-t)>=0.",
+              "Lambda_p=1+epsilon/log p preserves actual prime locations and PNT but yields S_lambda~epsilon Q(1/2)^2 exp(a)/(4a^3).",
+              "The p^-1/2 perturbation threshold is stable for bounded shell-energy differences; slower perturbations can create exponential energy.",
+              "These perturbed coefficients violate the actual divisor identity and are already rejected by native_primeCoefficients_unique. They establish the inadequacy of relaxed controls, not the insufficiency of all exact source relations."
+            ]
+          }
+        ],
+        "exact_constraints_used": [
+          {
+            "file": "Zeta23/CCM/NativeIntegerPrimeSource.lean",
+            "facts": [
+              "native_divisor_coefficient_identity",
+              "native_primeCoefficients_unique",
+              "native_modifiedCoefficient_breaks_divisor_identity"
+            ],
+            "role": "Uniquely fixes actual von Mangoldt coefficients, rejecting all modified Euler-exponent controls. Uniqueness itself gives no quantitative covariance estimate."
+          },
+          {
+            "file": "Zeta23/CCM/NativeIntegerPrimeConvolution.lean",
+            "facts": [
+              "nativeIntegerTranslateAction_primeField_eq_integerDriveField"
+            ],
+            "role": "Literal locally finite integer convolution N*X=U, with complete source and no infinite-integrability upgrade."
+          },
+          {
+            "file": "Zeta23/CCM/NativeIntegerDriveFiniteOrderBounds.lean",
+            "line": 594,
+            "facts": [
+              "nativeOriginalIntegerDrive_rapid_bound"
+            ],
+            "role": "Actual U decays faster than every fixed exponential. This important stronger prior theorem is already in the repo."
+          },
+          {
+            "file": "Zeta23/CCM/OriginalDetectorOriginalPhaseL1Bounds.lean",
+            "line": 99,
+            "facts": [
+              "fixedOriginalSincPhaseTrial_iteratedDeriv_L1_bound"
+            ],
+            "role": "Every original-phase L1 derivative jet has an aperture-independent source-only bound."
+          },
+          {
+            "file": "Zeta23/CCM/OriginalDetectorFourHistoryLocalXBound.lean",
+            "line": 496,
+            "facts": [
+              "originalDetector_nativeTest_primeForcing_le_sixteenKappa"
+            ],
+            "role": "Actual projected prime response bounded by 16 times fixed normalization times test norm times local L2 norm of X. This removes unnecessary source-jet costs but leaves the actual X energy."
+          },
+          {
+            "file": "Zeta23/CCM/NativeWeilResponseBounds.lean",
+            "line": 256,
+            "facts": [
+              "nativePrimeMass_finite_bound",
+              "nativeWeilArchResponse_bilinear_bound"
+            ],
+            "role": "Unconditional absolute prime-mass estimate grows at exp(L/2); archimedean channel has stronger source norm control."
+          },
+          {
+            "file": "Zeta23/OPICARound4/NativeSourceBudget.lean",
+            "facts": [
+              "complete even/odd/tied source budget statements"
+            ],
+            "role": "Keeps full multiplicities, complements, signed trace and actual opposite-ground gap; none is discarded."
+          },
+          {
+            "file": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+            "facts": [
+              "finiteForcingBudget_polynomial_bound",
+              "detector_inverse_polynomial_bound",
+              "source-only error envelope and generated smoothSourceMain lower bound"
+            ],
+            "role": "Makes approximation errors negligible, but leaves the exact smooth arithmetic main term."
+          },
+          {
+            "file": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+            "role": "Finite canonical positivity, retained Riesz-six sign and prime remainder dominance are equivalences with RH; importing them as arithmetic premises is circular."
+          },
+          {
+            "file": "Zeta23/OPICARound2/NativeCuts.lean",
+            "role": "Zero displacement equals native thresholds; all-damped L2/range conditions are equivalent to RH, not independently supplied."
+          },
+          {
+            "file": "Zeta23/OPICARound2/TruncationControls.lean",
+            "line": 716,
+            "facts": [
+              "native_mobius_residual_norm_tendsto_atTop"
+            ],
+            "role": "Raw Mobius truncations can agree on every finite past while residual norm diverges under an off-line zero. Pointwise finite-history identity cannot be upgraded to global range convergence."
+          }
+        ],
+        "closure_attempts": [
+          {
+            "id": "A_norm_schur",
+            "attempt": "Compose current genuine forcing bound with full actual detector inverse budget and quartic error reduction.",
+            "hypotheses": "out:Step123NativeOutput(beta,parity,a); 0<beta; L=fixedOriginalSincTrialAperture(a)>4; original cutoff N<=2L^4.",
+            "derivation": [
+              "||F||<=C L^7 exp(L/2)+superexponentially small source error.",
+              "||A_detector^-1||<=12(N-1)exp(-beta L)<=24L^4exp(-beta L).",
+              "|<F,A_detector^-1 F>|<=C' L^18 exp((1-beta)L), up to smaller errors.",
+              "Actual generated lower bound is smoothSourceMain>exp(beta L)/4."
+            ],
+            "deficit": "Using this upper bound to dominate the lower would require 1-beta<beta, hence beta>1/2. Actual depth theorem permits beta<delta=|Re rho-1/2|<1/2.",
+            "hidden_term": "smoothSourceMain=<F,A_detector^-1F>.re-W(originalTrial,originalTrial).re-eta*||smoothL2||^2. A forcing-only bound omits minus the original trial energy, which is precisely exponentially negative under the hypothesis. No closing upper bound on smoothSourceMain follows.",
+            "beta_audit": {
+              "file": "Zeta23/ExceptionalZero/UniversalSincOriginalPhaseDepth.lean",
+              "line": 267,
+              "exact": "0<beta<|Re rho-1/2|; depth exp(beta L). Correlation variable a has exp(2 beta a), with L=2a+constant.",
+              "half_choice": "Step4OutputSufficiency chooses beta=delta/2 for convenience; that does not redefine beta."
+            },
+            "status": "FAILED_WITH_EXACT_EXPONENT_DEFICIT"
+          },
+          {
+            "id": "B_rapid_integer_drive",
+            "attempt": "Use all exact divisor relations plus the already superexponentially decaying U to control X.",
+            "derivation": [
+              "Locally finite Mobius inversion gives X(t)=sum_{m>=1} mu(m)/sqrt(m) U(t-log m), with a finite support-dependent range at every t.",
+              "Rapid U decay controls m much smaller than exp(t), but m near exp(t) samples fixed early U and comprises order exp(t) terms, each weighted at exp(-t/2).",
+              "Absolute values therefore allow exp(t/2), despite arbitrarily rapid decay of U at +infinity."
+            ],
+            "missing": "Signed cancellation of the actual Mobius weights against the fixed drive near the moving terminal window. No stable inverse norm follows from the algebraic identity.",
+            "status": "FAILED_STABILITY_STEP_NOT_SUPPLIED"
+          },
+          {
+            "id": "C_uniform_original_jets",
+            "attempt": "Exploit fixed original source L1 jets and exact four-history pairing, rather than broad finite-dimensional mode estimates.",
+            "gain": "Existing aperture-independent original-phase derivative bounds and 16-normalization local-X bound eliminate polynomial losses and identify the precise arithmetic field to estimate.",
+            "missing": "The local L2 energy integral of actual X has no independent subexponential upper bound in the audited source. Assuming it is the already-known native cut/RH route.",
+            "status": "SHARPENS_TARGET_DOES_NOT_CLOSE"
+          },
+          {
+            "id": "D_unconditional_PNT",
+            "attempt": "Insert classical prime-number error bounds into the exact compact shifted source after both continuum pole moments cancel.",
+            "available": "S(a)=O(poly(a) exp(a-c sqrt(a))) under a classical zero-free-region estimate; consequently J_m=O(poly(m) exp(2m-c' sqrt(m))).",
+            "deficit": "log-shell growth rate is still 2, whereas closure requires every positive exponential rate to be excluded. A tiny coefficient or logarithmic improvement cannot supply this.",
+            "status": "FAILED_EXPONENT_GAP"
+          },
+          {
+            "id": "E_external_correlations",
+            "attempt": "Use actual multiplicative-function correlation theorems for the growing source-dependent prime pair sum.",
+            "sources": [
+              "https://arxiv.org/abs/1509.05422",
+              "https://github.com/openai/math/blob/main/lean/docs/007.md"
+            ],
+            "scope": "The inspected external ordinary correlation statement covers fixed nonproportional affine forms with logarithmic savings or qualitative cancellation. The constants depend on the forms. OPICA has order-X moving offsets in a complete source-weighted quadratic sum.",
+            "missing": "Uniformity across the growing offset range and a power saving strong enough for the normalized complete energy. No such implication was derived.",
+            "status": "FAILED_HYPOTHESIS_AND_RATE_MATCH"
+          },
+          {
+            "id": "F_external_quasi_RH_bootstrap",
+            "attempt": "Use the supplied external seven-eighths machinery as an arithmetic input and try to bootstrap with OPICA source constraints.",
+            "audit_file": "EXTERNAL_QUASI_RH_SOURCE_AUDIT.json",
+            "available": "Actual external solution source exports unconditional Re(s)>7/8 nonvanishing, with intermediate certified-band premise discharged. Not locally compiled, and no current-head CI/check-runs exist.",
+            "direct_gain": "If separately qualified and transported, delta<=3/8. This gives positive exponential rate bounds rather than delta=0.",
+            "terminal_inequality": "External J=O(x^(3/16+omega)) and J-Signal_(c=-11/16)=O(x^(B-11/16-sigma)) yield only boundary7/8. Boundary1/2 would require J=O(x^(-3/16+omega)), a genuine3/8-power improvement, with matching signal error for the same source.",
+            "floor": "Certified bands require kappa>=3/4; current kappaPlain=2B-1. This selection fails below B7/8, and simply retaining floor3/4 preserves the obstruction. Independent conductor row threshold13/16 appears in final assembly as well.",
+            "opica_transfer": "Rapid U cannot replace external J without a proved equality and exact error transport for the external Hecke-amplified probe.",
+            "status": "NO_VALID_BOOTSTRAP_FOUND"
+          }
+        ],
+        "strongest_new_derived_observations": [
+          {
+            "status": "DERIVED_NOT_NEW_LEAN_THEOREM",
+            "claim": "Norm-only closing compositions have a precise unattainable beta>1/2 threshold; this remains a real exponent deficit after removing all quartic approximation error."
+          },
+          {
+            "status": "DERIVED_NOT_NEW_LEAN_THEOREM",
+            "claim": "The already-proved rapid integer drive places the missing arithmetic in stability/cancellation of its genuine Mobius inverse, not in decay or regularity of the input."
+          },
+          {
+            "status": "PAPER_LEVEL_CANDIDATE",
+            "claim": "Pass5 complete monotonicity of the source response to a1/log p perturbation can be independently formalized from positivity of the exact real Mellin transform. It rigorously tests relaxed source controls but does not close RH."
+          }
+        ],
+        "terminal_research_task": {
+          "target": "A source-specific signed bound on the complete literal integer-prime or Mobius quantity, uniform before packet selection and strong enough to beat every hypothetical positive zero displacement.",
+          "requirements": [
+            "Use exact von Mangoldt/Mobius divisor relations, not merely positivity, Euler products, PNT or arbitrary allowed coefficients.",
+            "Keep both pole moments, all prime powers, complete complements and terminal window contributions.",
+            "Prove a quantitative strict gain; do not substitute an RH-equivalent positivity/range/mean-square property as a premise.",
+            "If using external quasi-RH, first qualify actual dependency closure under its pins, then prove a source-identical bridge that lowers its fixed exponent floor."
+          ],
+          "no_shortcut": [
+            "Tiny quartic truncation error is not tiny arithmetic main term.",
+            "One-sided all-shell covariance sign is false.",
+            "Exact coefficient uniqueness is not an upper bound.",
+            "A finite integer convolution inverse is not a bounded global Hilbert inverse.",
+            "Identifying two independently chosen parity or quartic cutoffs is not allowed."
+          ]
+        },
+        "independent_finite_checks": {
+          "floor_N10_m4_block_size": 0,
+          "prime_pair_count": 19,
+          "prime_pairs": [
+            [
+              2081,
+              2083
+            ],
+            [
+              2087,
+              2089
+            ],
+            [
+              2111,
+              2113
+            ],
+            [
+              2129,
+              2131
+            ],
+            [
+              2141,
+              2143
+            ],
+            [
+              2237,
+              2239
+            ],
+            [
+              2267,
+              2269
+            ],
+            [
+              2309,
+              2311
+            ],
+            [
+              2339,
+              2341
+            ],
+            [
+              2381,
+              2383
+            ],
+            [
+              2549,
+              2551
+            ],
+            [
+              2591,
+              2593
+            ],
+            [
+              2657,
+              2659
+            ],
+            [
+              2687,
+              2689
+            ],
+            [
+              2711,
+              2713
+            ],
+            [
+              2729,
+              2731
+            ],
+            [
+              2789,
+              2791
+            ],
+            [
+              2801,
+              2803
+            ],
+            [
+              2969,
+              2971
+            ]
+          ],
+          "method": "Fresh short elementary PowerShell trial-division enumeration with exact rational pair cut1023*q<=1024*p; no downloaded script execution."
+        },
+        "validation_limits": [
+          "No repository source edits by this agent.",
+          "No new Lean compiler run by this agent.",
+          "No full independent finite interval certificate execution.",
+          "No full external2926-module or transitive dependency audit.",
+          "All paper-level identities retain their status; a correct reformulation does not establish its missing estimate."
+        ],
+        "input_hashes": [
+          {
+            "path": "work\\opica-madness-2026-11-01\\corpus\\STEP4_CLOSURE_RESEARCH_PASS1_PRIME_PAIR_ENERGY_2026-10-31.md",
+            "sha256": "008d3a6f7e8cf01503952319e31763d4bfcc5aa812b0620b0fad959a1bd17d7b"
+          },
+          {
+            "path": "work\\opica-madness-2026-11-01\\corpus\\STEP4_CLOSURE_RESEARCH_PASS2_OFFDIAGONAL_SIGN_AND_BEURLING_FALSIFICATION_2026-10-31.md",
+            "sha256": "d17b073e7bc148b3dbdf0db78e17a6cce988b49b37f560b23b5e294685c3b38b"
+          },
+          {
+            "path": "work\\opica-madness-2026-11-01\\corpus\\STEP4_CLOSURE_PASS3_INDEPENDENT_ARITHMETIC_ATTACK_2026-10-31.md",
+            "sha256": "c54e127310ce4f701442b1ac64920052014ddfb13eddcff33d610c6a3c3eb714"
+          },
+          {
+            "path": "work\\opica-madness-2026-11-01\\corpus\\STEP4_CLOSURE_PASS4_FINITE_SIGN_CERTIFICATE_2026-10-31.md",
+            "sha256": "de2ddd8e188284e4a80aa98cc9bdf14f3c82187e34971f007dbb633f17ce5a24"
+          },
+          {
+            "path": "work\\opica-madness-2026-11-01\\corpus\\STEP4_PASS5_SOURCE_EXACT_EULER_PERTURBATION_AND_STABILITY_2026-10-31.md",
+            "sha256": "391a9abbe42a1a6e9560368799aead9903a89fa3159604d45b2cad89d9fb99f3"
+          }
+        ],
+        "forgotten_actual_source_adapter": {
+          "status": "PROVED_EXISTING_SOURCE_ADAPTER_PLUS_DERIVED_RAPID_DRIVE",
+          "file": "Zeta23/CCM/OriginalSincNativeConvolution.lean",
+          "line": 121,
+          "declaration": "originalDetector_correlationField_eq_sourceConvolution",
+          "identity": "P_H(t) = integral q(x) X(t-x) dx, H=kappa*kappa=q*(P^2 q). This is already in the repository and was omitted from reports claiming a source adapter was missing.",
+          "new_drive_derivation": "Using locally finite integer convolution, U_H=q*U. For every A>0, once t>=T_A+s0, |U_H(t)|<=C_A*exp(A*s0)*exp(-A*t), since q>=0, integral q=1, support q in[-s0,s0].",
+          "not_closure": "The positive compact smoothing has a nonzero transform at every off-line visible zero displacement; it preserves the offending pole. It does not impose a one-sided bound on a signed X without a corresponding arithmetic input estimate."
+        }
+      }
+    },
+    "LATE_MATH_AUDIT.json": {
+      "sha256": "e59d9dbdc74b976fb24ab73812d279a50ec0dee7269e9f0d00eb14151f19ec67",
+      "content": {
+        "schema": "OPICA_MADNESS_LATE_MATH_AUDIT_V1",
+        "date": "2026-11-01",
+        "audited_repo_head": "7647d4f13c4fa71f5be97e5dde3818a2d4b31063",
+        "audited_repo_tree": "f9e19310c2281af1609ae005a76cab40c913380f",
+        "merged_main": "09ac22e48bb0683437572509abdf2ddec520b7ac",
+        "scope": [
+          "STEP4_PASS6_FLAT_MOBIUS_REDUCTION_2026-11-01.md",
+          "STEP4_PASS7_HYPERBOLA_BOUNDARY_ALIAS_AND_ONE_SIDED_CRITERION_2026-11-01.md"
+        ],
+        "authority": "Independent paper audit against source declarations. No new Lean compiler run. No theorem closure or new unconditional arithmetic cancellation proved.",
+        "verdict": {
+          "algebra": "No confirmed mathematical error found in the stated finite Möbius rearrangements, transform scalings, diagonal asymptotic, hyperbola identity, source sign certificates or multiplicity computation.",
+          "closure": "The precise actual-vector eventual lower bound is not supplied by either manuscript or by the checked source constraints. The manuscripts themselves retain it as OPEN. A new PR can formalize the reductions and falsifiers, but those do not logically close Step 4.",
+          "new_deduction": "The Poisson-remainder diagonal is already O(sqrt(x)); the remaining lower-bound problem may be expressed using the full nonnegative rank-one term plus the off-diagonal remainder. This is a narrower exact target but not an estimate on it."
+        },
+        "claims": [
+          {
+            "id": "P6-A",
+            "status": "DERIVED_PAPER_VALID",
+            "claim": "V(x)=x^-1/2 sum_d mu(d) F(d/x)",
+            "audit": "The substitution cancels sqrt factors exactly and finite divisor grouping gives Lambda=mu*log. Support F(t)=0 for t>exp(B)/2 makes both nested sums finite at fixed x. Indices must start at 1; k=1 contributes log1=0."
+          },
+          {
+            "id": "P6-B1",
+            "status": "DERIVED_PAPER_VALID_NEEDS_ANALYSIS_FORMALIZATION",
+            "claim": "F extends smoothly by zero, flat to every order at0, support[0,T].",
+            "audit": "For g_y(v)=v^-1/2 log(v) H(log(v)-y), its continuum integral vanishes by two killed weighted moments. L1 bounds of the Nth derivative have scale (1+y)exp((1/2-N)y), so Euler–Maclaurin/Poisson gives F derivative j bounded by C_Nj(1+|log t|)t^(N-1-j). Arbitrary fixed N gives flatness. These uniform derivative bounds and source moment derivative are not exposed as ready-made current Lean declarations."
+          },
+          {
+            "id": "P6-B2",
+            "status": "DERIVED_PAPER_VALID",
+            "claim": "MF(s)=-zeta'(s)s^2(s-1)^2Q(s-1/2)^2, integral F=Q(1/2)^2>0, two inverse moments0.",
+            "audit": "For Re s>1, change of variables u=log(kt) yields k^-s. Analytic continuation after proven flatness yields entire transform. At s=1, -zeta' has positive double-pole coefficient and the factor cancels it to +Q(1/2)^2. At s=0 the s² factor produces the two inverse moments."
+          },
+          {
+            "id": "P6-C",
+            "status": "DERIVED_PAPER_VALID",
+            "claim": "D_m^mu=(6/pi²)||F||²+O(exp(-m)).",
+            "audit": "Squarefree counting cy+O(sqrt y) and Abel summation with compact smooth F² give cx integral F²+O(sqrt x). The shell measure is (1/2)x^-2 dx over[X,e²X], X=e^(2m), giving the stated coefficient and error."
+          },
+          {
+            "id": "P6-D",
+            "status": "DERIVED_PAPER_VALID_COUNTERMODEL",
+            "claim": "mu² preserves the diagonal and has exponential shell energy.",
+            "audit": "mu^4=mu² yields literally identical diagonal. Positive mass integral F gives U_+(x)=cI_F x+O(sqrt x); integrating its squared energy yields (c²I_F²/2)(e²-1)e^(2m)+O(e^m). This falsifies inference from diagonal/PSD/support alone, not any claim about actual mu."
+          },
+          {
+            "id": "P6-E",
+            "status": "DERIVED_MODEL_EXPECTATION_ONLY",
+            "claim": "Independent mean-zero signs have expected energy equal to diagonal.",
+            "audit": "Finite sum on each shell justifies exchange. Independence kills unequal-index expectations. Actual Möbius signs are neither independent nor random, so this is not an arithmetic estimate."
+          },
+          {
+            "id": "P6-CLOSURE",
+            "status": "CONDITIONAL_PAPER_REDUCTION_OPEN_PREMISE",
+            "claim": "Polynomial upper on complete signed covariance implies RH.",
+            "audit": "Diagonal bounded plus upper on covariance controls nonnegative full shell energy. The source/explicit-formula and visible-pole adapters must be retained. Direct comparison of formal source functions and shell L2-to-pole exclusion remains to formalize."
+          },
+          {
+            "id": "P7-A",
+            "status": "DERIVED_PAPER_VALID",
+            "claim": "U=2E_Y-T_Y, Y=floor sqrt(Tx).",
+            "audit": "mu=mu*mu*1, support abc<=Tx, and impossibility a,b>floor sqrt(Tx) partition all contributing triples. Each single short region collapses by mu*1=epsilon; intersection gives T. At Tx<1 all terms vanish."
+          },
+          {
+            "id": "P7-B",
+            "status": "DERIVED_PAPER_VALID",
+            "claim": "E_Y=O_A(x^-A) for every fixed A>0.",
+            "audit": "For fixed integer N, |E|<=C_N x^-N sum_{n<=Y} n^N<=C_N x^-N Y^(N+1)=O(x^((1-N)/2)); choose N>2A+1. No Möbius cancellation is used."
+          },
+          {
+            "id": "P7-C",
+            "status": "DERIVED_PAPER_VALID",
+            "claim": "P_F(y)=(sqrt y/2)sum_n tau(n)log(n)/sqrt(n) H(log(n/y)).",
+            "audit": "Divisor grouping of literal F gives sum_{k|n} log k=(tau(n)/2)log n. Entire source and all divisors retained."
+          },
+          {
+            "id": "P7-D",
+            "status": "DERIVED_PAPER_VALID",
+            "claim": "Actual periodization and continuum-subtracted remainder change sign.",
+            "audit": "At y=2e^-u, |u|<=B, n=2 is the sole supported integer. H(0)=||kappa||²>0 and killed positive weighted moment force an interior negative point. At y=5/2 there is no supported integer. Integral kappa=-1/4 and support length2s0 yield H(0)>=128, hence R_F(2)>60, R_F(5/2)<0. Need explicit real-part/convolution bindings in Lean."
+          },
+          {
+            "id": "P7-POISSON",
+            "status": "DERIVED_PAPER_VALID",
+            "claim": "T=I_F x L_Y²+B_Y; R(y) decays faster than any fixed power at infinity.",
+            "audit": "F extended by zero is smooth compact after flatness; Poisson is valid with exp(-i xi t) convention. All y=x/(ab) satisfy y>=1/T, and boundary y~1/T stays fixed as x grows. Large-y estimates cannot be applied as a uniformly vanishing family."
+          },
+          {
+            "id": "P7-E",
+            "status": "CONDITIONAL_PAPER_EQUIVALENCE_OPEN_PREMISE",
+            "claim": "RH iff eventual T_Y(x)>=-C sqrt x.",
+            "audit": "Lower T plus negligible E bounds V above. Existing source signed excursions rule out this upper bound only after actual V-to-correlation with bounded archimedean correction is proved. Converse uses actual absolutely summable zero filter under RH. An equivalence is not an independent supplier."
+          },
+          {
+            "id": "P7-MULTIPLICITY",
+            "status": "DERIVED_PAPER_VALID",
+            "claim": "MF/zeta retains simple pole at any off-line zero of any multiplicity.",
+            "audit": "At rho of multiplicity m, -zeta'/zeta has residue -m. Multiplier rho²(rho-1)²Q(rho-1/2)² is nonzero. Numerator MF can vanish to order m-1, so generic MF(rho) !=0 would be false for m>1. Current squared filter's nonvanishing provides compatible visibility but is a distinct expression needing identification."
+          },
+          {
+            "id": "P7-PSD",
+            "status": "DERIVED_PAPER_VALID_COUNTERMODEL",
+            "claim": "Auxiliary hyperbola matrix is not PSD at arbitrarily large scales.",
+            "audit": "For any integer a>=1, x=a²y_- places index a within Y because Ty_->1; diagonal equals P_F(y_-)<0. Letting a grow also rules out an eventual all-vector PSD claim. It does not rule out the desired bound for the full actual mu vector."
+          },
+          {
+            "id": "P7-I",
+            "status": "DERIVED_PAPER_VALID_COUNTERMODEL",
+            "claim": "True-mu all-scale positivity false at source-exact Y=1.",
+            "audit": "At x=y_-, 1<Tx<e^(2B)<4 so Y=1, mu1=1 and T=P_F(y_-)<0. This is compatible with eventual -C sqrt x lower bound."
+          },
+          {
+            "id": "P7-7_8",
+            "status": "EXTERNAL_CONDITIONAL_BENCHMARK_NOT_LOCAL_PROOF",
+            "claim": "Admitted external7/8 zero-free theorem yields |T|=O(x^(7/8)).",
+            "audit": "Primary OpenAI math lean/docs/003.md was checked; it states zeta and Dirichlet7/8 zero-free scope and links comparator Lean. The local repository has not imported/audited this external tree here. Given that theorem, absolute summability of actual filter and source bridge give the exponent correctly. It is not a new arithmetic gain."
+          }
+        ],
+        "source_bindings": [
+          {
+            "path": "Zeta23/CCM/UniversalSincDetector.lean",
+            "line": 29,
+            "names": [
+              "UniversalSinc.fixedScale"
+            ],
+            "fact": "exact1/4096"
+          },
+          {
+            "path": "Zeta23/CCM/UniversalSincSourceFacade.lean",
+            "line": 22,
+            "names": [
+              "universalSincSource",
+              "universalSincSource_nonneg",
+              "universalSincSource_integral_one",
+              "universalSincSource_support",
+              "universalSincSource_contDiff",
+              "universalSincSource_even",
+              "paperFT_universalSincSource"
+            ],
+            "fact": "actual density source properties; complex Fourier convention must be converted to bilateral Laplace Q"
+          },
+          {
+            "path": "Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean",
+            "line": 26,
+            "names": [
+              "originalSincTest",
+              "paperFT_originalSincTest_self_convolution",
+              "fixed_originalSincTest_square_ne_zero_at_off_line_zero",
+              "absolutelySummable_originalSincSquaredFilter"
+            ],
+            "fact": "actual kappa, square filter, complete off-line visibility"
+          },
+          {
+            "path": "Zeta23/ExceptionalZero/UniversalSincOriginalPhaseDepth.lean",
+            "line": 55,
+            "names": [
+              "fixedOriginalSincKernel_integral",
+              "fixedOriginalSincKernelL2Mass_pos"
+            ],
+            "fact": "integral kappa=-1/4, positive L2 mass"
+          },
+          {
+            "path": "Zeta23/ExceptionalZero/UniversalSincSignedExcursions.lean",
+            "line": 32,
+            "names": [
+              "not_fixedOriginalSincCorrelation_oneSidedTailBound",
+              "fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero"
+            ],
+            "fact": "actual correlation one-sided tail obstruction, not directly the new arithmetic U/T interface"
+          },
+          {
+            "path": "Zeta23/ExceptionalZero/WeilFilter.lean",
+            "line": 212,
+            "names": [
+              "literatureRHS_translateRight_poleKilled_eq"
+            ],
+            "fact": "explicit negative complete prime sum plus archimedean integral after exact pole cancellation"
+          },
+          {
+            "path": "Zeta23/CCM/NativeCompactTranslateCalculus.lean",
+            "line": 22,
+            "names": [
+              "nativeComplexPrimeField",
+              "nativeComplexPrimeField_eq_history_sum"
+            ],
+            "fact": "existing complete prime field and exact finite history cutoff; can help construct V adapter"
+          },
+          {
+            "path": "Zeta23/OPICARound2/FixedFilter.lean",
+            "line": 28,
+            "names": [
+              "qPlus",
+              "qPlusOperator_contracts",
+              "QPlus_one_copy_formula"
+            ],
+            "fact": "delayed causal source is distinct; smoothing contraction controls output by input, cannot bound unknown original input"
+          },
+          {
+            "path": "Zeta23/OPICARound2/TruncationControls.lean",
+            "line": 288,
+            "names": [
+              "native_mobius_delayed_barrier",
+              "native_mobius_residual_norm_tendsto_atTop"
+            ],
+            "fact": "conditional zero forces growing causal residual; no unconditional upper or same-source norm transport"
+          }
+        ],
+        "active_closure_attempts": [
+          {
+            "attempt": "Exploit superpolynomial Poisson decay directly",
+            "calculation": "For fixed N, |B_Y(x)|<=C_N x^-N (sum_{a<=Y} a^N)^2<=C_N x^-N Y^(2N+2)<=C_N T^(N+1)x.",
+            "outcome": "FAILS_TO_CLOSE: exponent1, not1/2. Fixed small support makes constants small but never changes exponent. N=N(x) is unjustified without derivative constant control and does not remove the genuine fringe."
+          },
+          {
+            "attempt": "Discard rank-one continuum term because it is harmless",
+            "calculation": "T=I_F x L_Y²+B, I_F>0. To establish a lower bound, rank-one is nonnegative and may be dropped in a sufficient stronger estimate; however that may destroy true compensating cancellation.",
+            "outcome": "Safe sufficient target B>=-C sqrt x is stronger than necessary. Exact missing target retains B+I_F xL_Y². Never ask to bound |B| when only a lower bound is needed."
+          },
+          {
+            "attempt": "Separate alias diagonal from off-diagonal",
+            "calculation": "R continuous on[1/T,infinity), decays at infinity, so M=sup_{y>=1/T}|R(y)|<infinity. D_R=sum_{a<=Y}mu(a)^2R(x/a²) satisfies |D_R|<=M Y<=M sqrt(Tx). Thus T=I_F xL_Y²+D_R+O_R.",
+            "outcome": "DERIVED_UNCONDITIONAL_SUPPORTING_CONSEQUENCE: diagonal already at closing scale. Desired eventual lower bound on T is equivalent up to constants to eventual I_F xL_Y²+O_R>=-C sqrt x. This identifies the actual signed off-diagonal arithmetic leaf but does not prove it."
+          },
+          {
+            "attempt": "Use operator norm of signed boundary kernel",
+            "calculation": "Y~sqrt x and bounded entries give ||A_R||op<=M Y. ||mu||²<=Y, so |mu^T A_R mu|<=M Y²=O(x).",
+            "outcome": "FAILS_TO_CLOSE without actual-vector cancellation; ambient kernel norm is not enough."
+          },
+          {
+            "attempt": "Use gcd decomposition/multiplicativity",
+            "calculation": "Write a=dr,b=ds with gcd(r,s)=1. On squarefree admissible d,r,s with pairwise gcd restrictions, mu(a)mu(b)=mu(r)mu(s)=mu(rs).",
+            "outcome": "Identity changes indexing but supplies no sign of the remaining weighted coprime product sum. The divisor/factor restrictions depend on Y and retain the same boundary correlations. No unconditional saving derived."
+          },
+          {
+            "attempt": "Use existing causal smoothing contractions",
+            "calculation": "qPlusOperator_contracts bounds ||Qf||<=||f||. Applying it to unknown arithmetic input cannot bound that input or inverse response. Zero-conditioned delayed residual lower bounds are compatible with unknown growing upper.",
+            "outcome": "FAILS_TO_CLOSE: requires a new norm/source/history adapter and independent upper; shared mu coefficients are insufficient."
+          }
+        ],
+        "corrections_or_cautions": [
+          "P6 prose says prime representation requires negative cancellation of linearly growing diagonal. That is true for bounded total energy, but RH sufficiency via polynomial shell upper does not require cancellation of a linear diagonal itself; an O(m) diagonal is already polynomial.",
+          "H=kappa*kappa is not the existing universalSincSecondSource=P²q. Their transforms respectively contain Q² versus Q. Never reuse the latter's source field without a convolution adapter.",
+          "A finite toy exact check verifies algebra, not literal universal-sinc source identities; no script was run in this review.",
+          "Source-support/flatness properties are valid paper arguments but formal APIs and bound constants need proof, not a SourcePacket field asserting conclusions.",
+          "7/8 result may motivate a benchmark but should be kept external unless exact source/assumptions/axioms are imported and checked."
+        ],
+        "proposed_minimal_formalization": [
+          "Define literal real H from fixed originalSincTest convolution; prove compact support, smoothness, transform and two weighted moments, not identifying it withP²q.",
+          "Prove finite arithmetic mu*log source identity for general supported H and instantiate literal H.",
+          "Define actual finite hyperbola sum; prove U=2E-T from mu*mu*1 and support before any asymptotics.",
+          "Prove algebraic rank-one/remainder decomposition and the bounded-diagonal square-root estimate, preserving actual mu and all off-diagonal terms.",
+          "Prove actual-source negative-lobe and negative-diagonal/all-scale-mu falsifiers; this prevents future false PSD shortcuts.",
+          "Prove actual V/correlation/archimedean adapter and exact conditional one-sided criterion. Leave independent eventual lower bound as an explicit OPEN proposition unless separately proved.",
+          "Do not claim this formalization is Step4 closure: the arithmetic cancellation supplier remains absent."
+        ],
+        "references": [
+          {
+            "url": "https://github.com/openai/math/blob/main/lean/docs/003.md",
+            "scope": "Primary external formalization scope read on2026-11-01; no local import/build performed."
+          }
+        ],
+        "source_bridge_addendum_2026_11_01": {
+          "discovery": "The current repository ALREADY proves the literal H=κ*κ prime-field to q*nativeOriginalPrimeField convolution bridge in OriginalSincNativeConvolution.lean:122. Earlier language requiring a convolution adapter means reuse/instantiate this existing theorem, not invent the bridge anew.",
+          "declaration": "Zeta23.CCM.originalDetector_correlationField_eq_sourceConvolution",
+          "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/CCM/OriginalSincNativeConvolution.lean#L122",
+          "remaining": "Pass6 F definition, Mellin/hyperbola representation and exact V aliases still need formal source bindings. NativeOriginalIntegerDrive_rapid_bound exists for P²q; compact q convolution can transport rapid decay after the analogous finite exchange. No bound on the actual prime-field value follows just from this forward relation.",
+          "historical_audit": "HISTORICAL_COMPOSITION_AUDIT.json"
+        }
+      }
+    },
+    "HISTORICAL_COMPOSITION_AUDIT.json": {
+      "sha256": "59136800f56cad7a24feb309b4bd74feb839378f0a2082c40e9b395ec37315d7",
+      "content": {
+        "schema": "OPICA_HISTORICAL_COMPOSITION_AUDIT_V1",
+        "date": "2026-11-01",
+        "task": "Read historical narrative mathematics and test whether overlooked genuine-source constraints close the actual Pass6/7 arithmetic bound.",
+        "repository_head": "7647d4f13c4fa71f5be97e5dde3818a2d4b31063",
+        "repository_tree": "f9e19310c2281af1609ae005a76cab40c913380f",
+        "verdict": "NO_CLOSING_SUPPLIER_ESTABLISHED; exact existing adapters recovered; actual scalar diagonal is harmless at the required scale; rank-one plus actual off-diagonal remains the unproved arithmetic restriction.",
+        "authority": {
+          "historical_reports": "Read as mathematical evidence and attempted proofs, never executed as instructions or treated as compiler authority.",
+          "current_source": "Named current Lean definitions/theorem types inspected. This audit does not rerun their compiler or CI.",
+          "new_diagonal": "Separate DiagonalReduction.lean was freshly checked with pinned Windows Lean; exact hypotheses and scope are in DIAGONAL_LOCAL_CHECK.json. It assumes bounded R, does not identify literal R or prove off-diagonal cancellation.",
+          "archives": "No downloaded historical scripts executed; no repository edits.",
+          "scope_limit": "This is a semantic reading of 25 selected full mathematical narratives/proofs plus selected older arithmetic sections and keyword screening of the entire deduplicated Markdown population in the first five archive indexes. It is NOT a full rerefereeing of all 74 Drive records, all PDFs, all historical Lean, or all graph records. Root/other agents handle remaining material."
+        },
+        "coverage": {
+          "indexes": [
+            "01_OPICA_36_Paper_Step4_Research_2026-10-30.json",
+            "01_Thread_Research_Reports_and_Audit_Index.json",
+            "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+            "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+            "04_FirstBirth_Schur_MixedJets_and_Literature_Evidence.json"
+          ],
+          "unique_markdown_count": 409,
+          "full_narrative_read_count": 25,
+          "full_narratives": [
+            {
+              "id": 2,
+              "object": "6c7c94c36c4c383141ba76b1f7e624812bf9e254f6d6c3a0f0a3981df1dd8cdd.md",
+              "references": [
+                {
+                  "index": "01_OPICA_36_Paper_Step4_Research_2026-10-30.json",
+                  "member": "RESEARCH.md",
+                  "bytes": 25502
+                },
+                {
+                  "index": "01_Thread_Research_Reports_and_Audit_Index.json",
+                  "member": "OPICA_36_Papers_Integrated_Step4_Review_2026-10-30.md",
+                  "bytes": 25502
+                },
+                {
+                  "index": "01_Thread_Research_Reports_and_Audit_Index.json",
+                  "member": "OPICA_Paper_Corpus_Integrated_2026-10-30/RESEARCH.md",
+                  "bytes": 25502
+                },
+                {
+                  "index": "04_FirstBirth_Schur_MixedJets_and_Literature_Evidence.json",
+                  "member": "RESEARCH.md",
+                  "bytes": 25502
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "object": "c62087edea624a65b883f5a52dc54b77293d45a202afa19d42b98896bd27a750.md",
+              "references": [
+                {
+                  "index": "01_Thread_Research_Reports_and_Audit_Index.json",
+                  "member": "OPICA_Step123_Joint_Coupling_Reconciliation_2026-10-29.md",
+                  "bytes": 37113
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Step123_Joint_Coupling_Reconciliation_2026-10-29.md",
+                  "bytes": 37113
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "object": "6ab22e8582e821f63bdf21055f80e4dcc90bbd93d8ca4a2d1144ffb015aee458.md",
+              "references": [
+                {
+                  "index": "01_Thread_Research_Reports_and_Audit_Index.json",
+                  "member": "OPICA_Step4_What_Was_Missed_2026-10-29.md",
+                  "bytes": 19044
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Step4_What_Was_Missed_2026-10-29.md",
+                  "bytes": 19044
+                }
+              ]
+            },
+            {
+              "id": 9,
+              "object": "fbbde3c880c4d1bdc43d95789ef42fcdab3ab0262dda6a4e76fd9efc0fdc9e2a.md",
+              "references": [
+                {
+                  "index": "01_Thread_Research_Reports_and_Audit_Index.json",
+                  "member": "OPICA_Impulse_Dual_Step4_2026-10-29/RESEARCH.md",
+                  "bytes": 13561
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Impulse_Dual_Step4_2026-10-29/RESEARCH.md",
+                  "bytes": 13561
+                }
+              ]
+            },
+            {
+              "id": 10,
+              "object": "1cfc02409a60b15ee56981ebe73a3b06eb8b9b0854490110022388b5c67fe457.md",
+              "references": [
+                {
+                  "index": "01_Thread_Research_Reports_and_Audit_Index.json",
+                  "member": "OPICA_Joint_FirstBirth_Test_2026-10-29/RESEARCH.md",
+                  "bytes": 36695
+                },
+                {
+                  "index": "04_FirstBirth_Schur_MixedJets_and_Literature_Evidence.json",
+                  "member": "OPICA_Joint_FirstBirth_Test_2026-10-29/RESEARCH.md",
+                  "bytes": 36695
+                },
+                {
+                  "index": "04_FirstBirth_Schur_MixedJets_and_Literature_Evidence.json",
+                  "member": "OPICA_Mixed_Jets_Stationarity_2026-10-29/evidence/inherited_first_birth_RESEARCH.md",
+                  "bytes": 36695
+                },
+                {
+                  "index": "04_FirstBirth_Schur_MixedJets_and_Literature_Evidence.json",
+                  "member": "inherited/evidence/inherited_first_birth_RESEARCH.md",
+                  "bytes": 36695
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "object": "e4c834647034d25e8bdbf5b97aae338520481d0e8245b6c7221e03540fde29be.md",
+              "references": [
+                {
+                  "index": "01_Thread_Research_Reports_and_Audit_Index.json",
+                  "member": "OPICA_Mixed_Jets_Stationarity_2026-10-29/RESEARCH.md",
+                  "bytes": 39427
+                },
+                {
+                  "index": "04_FirstBirth_Schur_MixedJets_and_Literature_Evidence.json",
+                  "member": "OPICA_Mixed_Jets_Stationarity_2026-10-29/RESEARCH.md",
+                  "bytes": 39427
+                },
+                {
+                  "index": "04_FirstBirth_Schur_MixedJets_and_Literature_Evidence.json",
+                  "member": "inherited/RESEARCH.md",
+                  "bytes": 39427
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "object": "daf2bbaa2c1325d67fb0399c4e7a107c047055b34f8adf27b90bc0922a9ac1d8.md",
+              "references": [
+                {
+                  "index": "01_Thread_Research_Reports_and_Audit_Index.json",
+                  "member": "OPICA_Literature_Deficit_Audit_2026-10-29/RESEARCH.md",
+                  "bytes": 34342
+                },
+                {
+                  "index": "04_FirstBirth_Schur_MixedJets_and_Literature_Evidence.json",
+                  "member": "RESEARCH.md",
+                  "bytes": 34342
+                }
+              ]
+            },
+            {
+              "id": 16,
+              "object": "5aada8f626c962d5e3e47f5ccc26dc44bee54a50d5960546c6dc4044c7efaf26.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_continuation/OPICA2_Closure_Continuation_2026-10-26/RESEARCH_REPORT.md",
+                  "bytes": 19004
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA2_Closure_Continuation_2026-10-26/RESEARCH_REPORT.md",
+                  "bytes": 19004
+                }
+              ]
+            },
+            {
+              "id": 17,
+              "object": "a33db2f78b0c42c227b75d821df19ec1e4eed8dcef98534296818e262ccbbefb.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_continuation/OPICA2_Closure_Continuation_2026-10-26/proofs/01_Joint_Primal_Dual_and_Prefix_Tail.md",
+                  "bytes": 4850
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA2_Closure_Continuation_2026-10-26/proofs/01_Joint_Primal_Dual_and_Prefix_Tail.md",
+                  "bytes": 4850
+                }
+              ]
+            },
+            {
+              "id": 18,
+              "object": "1410b92394952a311d3ee8c218d94730ba41b131ff13d443947fc767cd45117f.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_continuation/OPICA2_Closure_Continuation_2026-10-26/proofs/02_Native_Logarithmic_Gram_Collisions.md",
+                  "bytes": 4572
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA2_Closure_Continuation_2026-10-26/proofs/02_Native_Logarithmic_Gram_Collisions.md",
+                  "bytes": 4572
+                }
+              ]
+            },
+            {
+              "id": 19,
+              "object": "a5d07b3de71792f52320e0af0b086fbb20cb1021149c62de301334495ea61d94.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_continuation/OPICA2_Closure_Continuation_2026-10-26/proofs/03_Positive_Profile_Mass_Escape.md",
+                  "bytes": 3501
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA2_Closure_Continuation_2026-10-26/proofs/03_Positive_Profile_Mass_Escape.md",
+                  "bytes": 3501
+                }
+              ]
+            },
+            {
+              "id": 20,
+              "object": "b8233505e3f3c5678a723b4e637fbf38d10043ab5dc66b5ac62b428c38630b0a.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_continuation/OPICA2_Closure_Continuation_2026-10-26/proofs/04_Uniform_Source_Refinement_Margin.md",
+                  "bytes": 1607
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA2_Closure_Continuation_2026-10-26/proofs/04_Uniform_Source_Refinement_Margin.md",
+                  "bytes": 1607
+                }
+              ]
+            },
+            {
+              "id": 21,
+              "object": "c961baa6bc7a05349c6e141ba1eb09f7a0650e4700d7e618d69bc702ea0a2e19.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_continuation/OPICA2_Closure_Continuation_2026-10-26/proofs/05_Path_A_C_D_and_Closure_Dispositions.md",
+                  "bytes": 4437
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA2_Closure_Continuation_2026-10-26/proofs/05_Path_A_C_D_and_Closure_Dispositions.md",
+                  "bytes": 4437
+                }
+              ]
+            },
+            {
+              "id": 22,
+              "object": "5647282f5e2b04fde5897601f13316e2731b5edc25bb65b86e320a57c947b070.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_continuation/OPICA2_Closure_Continuation_2026-10-26/proofs/06_Optimal_Residual_Limit_and_Tightness.md",
+                  "bytes": 4712
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA2_Closure_Continuation_2026-10-26/proofs/06_Optimal_Residual_Limit_and_Tightness.md",
+                  "bytes": 4712
+                }
+              ]
+            },
+            {
+              "id": 23,
+              "object": "d5f505c7a84bdee0a441125cd43aa437638bcfd7e55b82c5ec9b481b192d0c55.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_continuation/OPICA2_Closure_Continuation_2026-10-26/proofs/07_Bounded_Energy_Local_Criterion.md",
+                  "bytes": 3487
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA2_Closure_Continuation_2026-10-26/proofs/07_Bounded_Energy_Local_Criterion.md",
+                  "bytes": 3487
+                }
+              ]
+            },
+            {
+              "id": 24,
+              "object": "8e6f097826a0c82047000a4d9f144b868f2db72641b083a95a7ced606b48b620.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_continuation/OPICA2_Closure_Continuation_2026-10-26/proofs/08_Directional_Gain_Certificates.md",
+                  "bytes": 3184
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA2_Closure_Continuation_2026-10-26/proofs/08_Directional_Gain_Certificates.md",
+                  "bytes": 3184
+                }
+              ]
+            },
+            {
+              "id": 25,
+              "object": "1326abcc9a1bf6034bd3c219e2faa2652c5031828bb7d4d4d8987fe2e8e51ec2.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_harvest/OPICA_Unified_Constraint_Deduction_2026-10-27/RESEARCH_REPORT.md",
+                  "bytes": 31094
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Unified_Constraint_Deduction_2026-10-27/RESEARCH_REPORT.md",
+                  "bytes": 31094
+                }
+              ]
+            },
+            {
+              "id": 26,
+              "object": "2345a2b5101a5ecc8a9300d2d2b72bd30703b32fce55d7686763056193bf5e49.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_harvest/OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/01_PairD_Corridor_Constraint_Compression.md",
+                  "bytes": 3480
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/01_PairD_Corridor_Constraint_Compression.md",
+                  "bytes": 3480
+                }
+              ]
+            },
+            {
+              "id": 27,
+              "object": "1b2e7988eddaa9c67bc44bcf9737a5fff755b1e113149fa4ebec8154cce7baa2.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_harvest/OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/02_S17_Positive_Test_Dimension_Threshold.md",
+                  "bytes": 3087
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/02_S17_Positive_Test_Dimension_Threshold.md",
+                  "bytes": 3087
+                }
+              ]
+            },
+            {
+              "id": 28,
+              "object": "83315be90fc12eac8ce197838d5c60160f450d3bf52631e583dc5bfdcdaf5905.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_harvest/OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/03_PoleNeutral_Parity_Inertia_Bridge.md",
+                  "bytes": 3975
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/03_PoleNeutral_Parity_Inertia_Bridge.md",
+                  "bytes": 3975
+                }
+              ]
+            },
+            {
+              "id": 29,
+              "object": "4392c78973223acc547baaf471d417e42284cc249eacd47a82afdb6c9d3936a1.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_harvest/OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/04_Neutral_vs_Global_FirstBad_Quantifiers.md",
+                  "bytes": 2649
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/04_Neutral_vs_Global_FirstBad_Quantifiers.md",
+                  "bytes": 2649
+                }
+              ]
+            },
+            {
+              "id": 31,
+              "object": "8dd20c2f8284aa2f844ae868861b02105b453879eb4bb14c4194f38e8a90df70.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_harvest/OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/06_Triple_Interface_Contact_Audit.md",
+                  "bytes": 3188
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/06_Triple_Interface_Contact_Audit.md",
+                  "bytes": 3188
+                }
+              ]
+            },
+            {
+              "id": 32,
+              "object": "8ceacad627d30db313c1a60ce8105123c1a66a092725d5cfc3df08d0e8302c4f.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_harvest/OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/07_Neutral_FirstBad_Inertia_Plateau.md",
+                  "bytes": 4237
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/07_Neutral_FirstBad_Inertia_Plateau.md",
+                  "bytes": 4237
+                }
+              ]
+            },
+            {
+              "id": 34,
+              "object": "47bd16a1bd544379f78bd1942f3e575513a66d6c687a01d64f91131dc2dae087.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_harvest/OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/09_First_Neutral_Bad_One_Shell_Schur.md",
+                  "bytes": 4977
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/09_First_Neutral_Bad_One_Shell_Schur.md",
+                  "bytes": 4977
+                }
+              ]
+            },
+            {
+              "id": 35,
+              "object": "b6fe4a8848f5938a2107812fc0506814bc9b880b08c91850b48068667b364a82.md",
+              "references": [
+                {
+                  "index": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.json",
+                  "member": "OPICA_Landscape_2026-10-29/source_notes/drive/drive_harvest/OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/10_Selected_Neutral_Negative_Line_vs_S17.md",
+                  "bytes": 3334
+                },
+                {
+                  "index": "03_Causal_Impulse_and_Dual_Geometry_Evidence.json",
+                  "member": "OPICA_Unified_Constraint_Deduction_2026-10-27/proofs/10_Selected_Neutral_Negative_Line_vs_S17.md",
+                  "bytes": 3334
+                }
+              ]
+            }
+          ],
+          "selected_sections": [
+            {
+              "id": 315,
+              "lines": [
+                540,
+                815
+              ],
+              "subject": "NB1 native transform preservation; Type I/balanced field rate transfer; actual gcd-low-mask bound"
+            }
+          ],
+          "keyword_screen": "HISTORICAL_TEXT_SCREEN.json records every Markdown object and matching lines; no giant JSONL graph scanned."
+        },
+        "exact_current_source": [
+          {
+            "id": "literal_convolution",
+            "path": "Zeta23/CCM/OriginalSincNativeConvolution.lean",
+            "line": 122,
+            "declaration": "originalDetector_correlationField_eq_sourceConvolution",
+            "sha256": "7bbc06b9483820db2059add35ae71474629f225aa6e54a71942c1849daecb0a6",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/CCM/OriginalSincNativeConvolution.lean#L122"
+          },
+          {
+            "id": "integer_rapid",
+            "path": "Zeta23/CCM/NativeIntegerDriveFiniteOrderBounds.lean",
+            "line": 594,
+            "declaration": "nativeOriginalIntegerDrive_rapid_bound",
+            "sha256": "b4e2280a103c293d86deafa847d974e5f78f983f5ab8c4b86a66e66c1d9af1e4",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/CCM/NativeIntegerDriveFiniteOrderBounds.lean#L594"
+          },
+          {
+            "id": "arithmetic_inverse",
+            "path": "Zeta23/CCM/NativeIntegerPrimeConvolution.lean",
+            "line": 144,
+            "declaration": "nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+            "sha256": "12773a269785022413552e6382cc1f99882d08b507215d4cea69a9ef47960406",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/CCM/NativeIntegerPrimeConvolution.lean#L144"
+          },
+          {
+            "id": "balanced_identity",
+            "path": "Zeta23/OPICAFollowup/LogSlackBalance.lean",
+            "line": 334,
+            "declaration": "native_balanced_physical_identity",
+            "sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICAFollowup/LogSlackBalance.lean#L334"
+          },
+          {
+            "id": "balanced_log_width",
+            "path": "Zeta23/OPICAFollowup/LogSlackBalance.lean",
+            "line": 578,
+            "declaration": "log_slack_native_decomposition",
+            "sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICAFollowup/LogSlackBalance.lean#L578"
+          },
+          {
+            "id": "typeI_error",
+            "path": "Zeta23/OPICAFollowup/LogSlackBalance.lean",
+            "line": 871,
+            "declaration": "log_slack_typeI_error",
+            "sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICAFollowup/LogSlackBalance.lean#L871"
+          },
+          {
+            "id": "low_masks",
+            "path": "Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+            "line": 171,
+            "declaration": "native_balanced_low_masks_explicit",
+            "sha256": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICAFollowup/MaskedNativeRate.lean#L171"
+          },
+          {
+            "id": "low_masks_subexp",
+            "path": "Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+            "line": 394,
+            "declaration": "log_slack_both_low_masks_subexp",
+            "sha256": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICAFollowup/MaskedNativeRate.lean#L394"
+          },
+          {
+            "id": "exact_mask_rate",
+            "path": "Zeta23/OPICAFollowup/Consumers.lean",
+            "line": 270,
+            "declaration": "fixed_two_factor_mask_rate_theta",
+            "sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICAFollowup/Consumers.lean#L270"
+          },
+          {
+            "id": "quiet_consumer",
+            "path": "Zeta23/OPICAFollowup/Consumers.lean",
+            "line": 326,
+            "declaration": "quiet_balanced_observation_implies_native_cut",
+            "sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICAFollowup/Consumers.lean#L326"
+          },
+          {
+            "id": "ground_discrepancy_even",
+            "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+            "line": 101,
+            "declaration": "actual_even_ground_signed_discrepancy",
+            "sha256": "5880f1bbc7df57224d1c261cb60f7d006e66b4aa7b54e1501a949ec12c4199e8",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICARound4/GroundArithmetic.lean#L101"
+          },
+          {
+            "id": "ground_discrepancy_odd",
+            "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+            "line": 132,
+            "declaration": "actual_odd_ground_reciprocal_discrepancy",
+            "sha256": "5880f1bbc7df57224d1c261cb60f7d006e66b4aa7b54e1501a949ec12c4199e8",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICARound4/GroundArithmetic.lean#L132"
+          },
+          {
+            "id": "joint_ground",
+            "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+            "line": 183,
+            "declaration": "cofinally_joint_ground_constraints_of_off_line_zero",
+            "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICARound4/JointGroundConstraints.lean#L183"
+          },
+          {
+            "id": "quartic_error",
+            "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+            "line": 382,
+            "declaration": "exists_uniform_source_schur_error_threshold",
+            "sha256": "3a176235c26faba6534a32cbea684e84dd81c36c22c9e8ac472cbea36d82dc2a",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICARound4/QuarticErrorReduction.lean#L382"
+          },
+          {
+            "id": "smooth_lower",
+            "path": "Zeta23/OPICARound4/QuarticErrorReduction.lean",
+            "line": 415,
+            "declaration": "exists_generated_smooth_source_main_lower_threshold",
+            "sha256": "3a176235c26faba6534a32cbea684e84dd81c36c22c9e8ac472cbea36d82dc2a",
+            "link": "https://github.com/HMarcusWH/zeta-23-lean/blob/7647d4f13c4fa71f5be97e5dde3818a2d4b31063/Zeta23/OPICARound4/QuarticErrorReduction.lean#L415"
+          }
+        ],
+        "recovered_facts": [
+          {
+            "id": "H01",
+            "fact": "Literal source bridge already exists: prime field for H=κ*κ equals q convolved with the actual one-copy nativePrimeField for j=P²q.",
+            "source": "literal_convolution",
+            "consequence": "Do not list this as missing. Integer-drive rapid decay can be transported by the analogous compact convolution exchange and bounded support. This supplies source flatness, not a bounded inverse or prime-field upper.",
+            "paper_ids": [
+              2,
+              6,
+              25
+            ]
+          },
+          {
+            "id": "H02",
+            "fact": "The actual integer drive decays at every fixed exponential rate, with constants depending only on the prescribed rate and fixed source.",
+            "source": "integer_rapid",
+            "consequence": "New Pass6 flatness is connected to established source mathematics; optimizing derivative order requires quantitative constants, but fixed-order flatness needs no RH input.",
+            "paper_ids": [
+              21,
+              25,
+              315
+            ]
+          },
+          {
+            "id": "H03",
+            "fact": "The old arithmetic preparation already prices Type I terms and low gcd masks, including diagonal, and narrows two factors to a powers-of-log corridor around sqrt X.",
+            "sources": [
+              "balanced_identity",
+              "balanced_log_width",
+              "typeI_error",
+              "low_masks",
+              "low_masks_subexp"
+            ],
+            "consequence": "The remaining complete high observation retains the whole Θ rate; having killed the easy regions does not estimate the balanced signed region. Pass7 scalar hyperbola and the older energy masks are related arithmetic representations, not identical quantities.",
+            "paper_ids": [
+              16,
+              21,
+              25,
+              315
+            ]
+          },
+          {
+            "id": "H04",
+            "fact": "Complete native high-mask logarithmic rates have an actual continuous limit Θ. Original detector negative depths are only cofinal at selected apertures.",
+            "sources": [
+              "exact_mask_rate",
+              "quiet_consumer"
+            ],
+            "consequence": "A quiet cofinal high-mask subsequence suffices; a separately chosen quiet detector subsequence need not intersect bad detector apertures. Do not exchange these quantifiers.",
+            "paper_ids": [
+              2,
+              25
+            ]
+          },
+          {
+            "id": "H05",
+            "fact": "Optimal native projection residuals converge strongly and are uniformly tight by the exact nested energy identity.",
+            "paper_ids": [
+              16,
+              22,
+              23
+            ],
+            "consequence": "Their unknown nonzero limit, not existence/tightness, is the obstacle. Locally exact raw Möbius trials can have large tails and do not prove local vanishing of the optimum."
+          },
+          {
+            "id": "H06",
+            "fact": "The first derivative convolution views are opposite copies of the same field: M*(DN)=Π and N*(DM)=−Π.",
+            "paper_ids": [
+              7
+            ],
+            "consequence": "Two apparent observations have rank one, so no independent cancellation constraint is added by naming both."
+          },
+          {
+            "id": "H07",
+            "fact": "The finite geometry now binds even/odd/tied actual grounds, the reciprocal even input on the odd branch, full complements and smooth forcing; quartic source-only approximation errors are smaller than every fixed exponential.",
+            "sources": [
+              "ground_discrepancy_even",
+              "ground_discrepancy_odd",
+              "joint_ground",
+              "quartic_error",
+              "smooth_lower"
+            ],
+            "consequence": "Approximation error is not a viable explanation of a surviving exponential loss. The complete smooth arithmetic value still has no independent opposing upper."
+          },
+          {
+            "id": "H08",
+            "fact": "The adjacent corrected-row squared increments have exact fixed-L total (35t²+40t+32)/288, t=(L/(4π))².",
+            "paper_ids": [
+              11,
+              12
+            ],
+            "consequence": "Bare row summability does not control canonical arithmetic output: full adjoint corner squared norm is asymptotic (9/7)K at fixed L; cumulative cost grows as (9/14)N². No uniform-in-growing-L asymptotic is asserted."
+          },
+          {
+            "id": "H09",
+            "fact": "A canonical cyclicity argument rules out doubly invisible shared eigenspaces, while an actual-D/g synthetic matrix realizes singly visible common negative ground.",
+            "paper_ids": [
+              12
+            ],
+            "consequence": "This narrows a branch on paper but does not exclude ties using arithmetic. It does not control the scalar hyperbola off-diagonal."
+          },
+          {
+            "id": "H10",
+            "fact": "Finite weighted prime surgery has a uniform canonical norm cost and disappears exactly from late raw source windows; modified divisor coefficients can still affect infinitely many derived composites.",
+            "paper_ids": [
+              2,
+              12
+            ],
+            "consequence": "Finitely many positive finite controls or a q2 mutation cannot decide asymptotic cancellation. Do not infer unchanged balanced dictionaries from unchanged raw tail fields."
+          }
+        ],
+        "attempted_supplier_compositions": [
+          {
+            "id": "C01",
+            "candidate": "Pass6 flatness + exact Möbius inverse + short hyperbola",
+            "calculation": "For fixed N, |R(y)|≤C_N y^(−N) gives |sum μ(a)μ(b)R(x/(ab))|≤C_N x^(−N)(sum a^N)²=O_N(x), because Y≈sqrt(Tx).",
+            "failure": "a,b≈Y place y=x/(ab)≈1/T, outside large-y decay. Fixed N never improves the exponent. Growing N needs constants and still cannot suppress this boundary strip.",
+            "status": "ATTEMPTED_NOT_CLOSING"
+          },
+          {
+            "id": "C02",
+            "candidate": "Diagonal removal + retain nonnegative rank-one term",
+            "calculation": "Bounded literal R on [1/T,∞) gives |D_R|≤M floor(sqrt(Tx))≤M sqrt(T)sqrt x. Consequently T_Y≥−C sqrt x iff I_F xL_Y²+O_R≥−Cprime sqrt x, up to changing constants.",
+            "gain": "This is a rigorous useful reduction and is represented by the fresh standalone Lean prototype.",
+            "remaining": "Prove the latter inequality on the actual μ vector, eventual in every real x; do not demand O_R alone or all-vector positivity.",
+            "status": "DERIVED_DIAGONAL_REDUCTION; OFF_DIAGONAL_OPEN"
+          },
+          {
+            "id": "C03",
+            "candidate": "Gcd multiplicativity to collapse actual off-diagonal",
+            "calculation": "a=dr,b=ds,(r,s)=1 gives μ(a)μ(b)=μ(d)²μ(rs) when (d,rs)=1, zero otherwise. O_R=sum_(r≠s,coprime) μ(rs) sum_(d≤Y/max(r,s),(d,rs)=1) μ(d)² R(x/(d²rs)).",
+            "failure": "Inner signed R weight and truncated outer coprime sum do not form the complete divisor sum μ*1. Absolute estimates still cost O(Y²)=O(x); dropping the coprimality or signed R would change the actual source.",
+            "status": "EXACT_REWRITE_NO_SAVING"
+          },
+          {
+            "id": "C04",
+            "candidate": "Earlier low-mask and Type I savings + new diagonal bound",
+            "calculation": "Earlier low primitive masks and Type I errors can remove already controlled portions of their own complete energy representation.",
+            "failure": "They leave the high primitive/balanced correlations whose exact rate is Θ. Their weights and energy integration are not the scalar R(x/(ab)) form. An adapter cannot itself turn a retained complete high rate into an upper.",
+            "status": "REUSABLE_PREPARATION_NOT_SUPPLIER"
+          },
+          {
+            "id": "C05",
+            "candidate": "Positive q and native completion + all derivative/divisor identities",
+            "calculation": "q convolution contracts forward norms; N*Π=tN and M*N=δ identify the actual source uniquely.",
+            "failure": "Uniqueness supplies no size bound, and contraction has no bounded reverse on the relevant native inputs. First derivatives give opposite copies, not independent observations. Positive raw prime measure convolved with sign-changing pole-killed H is not a positive value.",
+            "status": "FAILS_AS_PROPOSED_INFERENCE"
+          },
+          {
+            "id": "C06",
+            "candidate": "Optimal tightness + causal local inversion",
+            "calculation": "Best residuals have uniform global cap and strong limit; raw Möbius trials fit every fixed prefix eventually.",
+            "failure": "Different approximants. No local norm comparison transfers raw accuracy to globally optimal residuals without pricing their tail cost. Exact ell² model with g_n=e_n−2e_(n+1) preserves local exactness and a positive global residual limit.",
+            "status": "LOGICAL_SHORTCUT_FALSIFIED"
+          },
+          {
+            "id": "C07",
+            "candidate": "Bare source-row square summability + source transport",
+            "calculation": "Fixed-input Bessel control prices source variation by sqrt(norm-drop) times full canonical output norm.",
+            "failure": "Output norm is unbounded by this argument; moving source/projector inputs add a second variation term. Full corner norm itself grows. No sqrt-x arithmetic gain results.",
+            "status": "INCOMPLETE_WITH_EXPLICIT_MISSING_OUTPUT_BOUND"
+          },
+          {
+            "id": "C08",
+            "candidate": "High endpoint jets + stationarity",
+            "calculation": "Even/odd shell pairings gain ninth/seventh local order, with coefficient cost O(K^9||wτ||) or O(K^7||wτ||).",
+            "failure": "Shrinking endpoint layer to 1/K erases the formal small power; large complement remains. Actual positive canonical examples reverse mixed moment signs, so stationarity does not enforce the desired sign.",
+            "status": "NO_BULK_BOUND"
+          },
+          {
+            "id": "C09",
+            "candidate": "Ground signed-resolvent deficit + actual source arithmetic",
+            "calculation": "Improved paper comparator γ ReH≤Bplus−α Bminus−(1−α)D0 retains endpoint and energy mismatch.",
+            "failure": "No uniform actual-ground lower bound on deficit relative to Bplus−γ. Finite positive examples improve comparator but can remain over 20000 times gap; they neither prove nor disprove the negative-ground restriction. Tie branch separately remains.",
+            "status": "GENUINE_GEOMETRIC_IMPROVEMENT_NOT_CLOSURE"
+          },
+          {
+            "id": "C10",
+            "candidate": "All-multiplicity and conjugate-zero constraints",
+            "calculation": "Full jet Grams sharpen delayed residual lower bounds, including extra 2m−1 preserved jets on restricted original-input trials.",
+            "failure": "They increase the obstruction but do not decrease actual source upper; properly correlated primal/dual projections obey one common positive energy budget.",
+            "status": "LOWER_INFORMATION_ONLY"
+          },
+          {
+            "id": "C11",
+            "candidate": "External half-plane bound + source discrepancy",
+            "calculation": "If independently imported zero-free half-plane Reρ≤b<1, the actual discrepancy has exponent b−1/2 and Pass7 T at most exponent b, with log/norm costs retained.",
+            "failure": "Any b>1/2 remains above the sqrt-x target. External proof is not current OPICA compiler authority, and cannot be identified with a finite ground eigenvalue gap.",
+            "status": "PARTIAL_RESTRICTION_ONLY"
+          },
+          {
+            "id": "C12",
+            "candidate": "Replace actual-vector lower bound by positivity or Mertens square-root estimate",
+            "failure": "P_F has negative diagonals at arbitrarily late scales, so all-vector PSD is false. A raw |M(y)|≤C sqrt y bound is a different, stronger target than needed. Preserve the smoothed actual μ vector and the helpful rank-one term.",
+            "status": "AVOID_UNNECESSARILY_STRONG_OR_FALSE_SUPPLIERS"
+          }
+        ],
+        "minimum_remaining_statement": {
+          "objects": "Literal fixed q, κ=Pq, H=κ*κ, F of Pass6, I_F=integral F>0, R(y)=sum_n F(n/y)−I_F y, Y=floor sqrt(Tx), L_Y=sum_(a≤Y) μ(a)/a.",
+          "bound": "There exist C,X0>0 such that for every real x≥X0: I_F*x*L_Y^2 + sum_(1≤a,b≤Y,a≠b) μ(a)μ(b)R(x/(ab)) ≥ −C*sqrt(x).",
+          "quantifiers": "C and X0 before x; actual vector μ and fixed source; all retained off-diagonal terms and rank-one term together; no zero-dependent source replacement.",
+          "why_sufficient": "Add bounded diagonal to recover Pass7 one-sided T lower; hyperbola identity and flat E give an eventual upper on actual V; exact source zero-visibility/signed-excursion consumer contradicts any off-line zero after formal adapters. The final arithmetic inequality itself has not been proved.",
+          "scope": "This route need not simultaneously solve every ground, tie, regular-cell or causal-approximation route. They remain useful constraints and falsifiers, not compulsory extra closing premises."
+        },
+        "no_hidden_claims": [
+          "No RH theorem produced.",
+          "No proof that all source constraints are jointly satisfiable with an off-line zero.",
+          "No claim that absence of a found supplier proves impossibility.",
+          "No old finite checker promoted to an all-scale theorem.",
+          "No new raw archive scripts executed."
+        ],
+        "next_information_gain": "Prove a genuine signed off-diagonal estimate on the exact smoothed μ vector, or discover a source-native structure that forces it. Reuse current convolution/rapid-drive/low-mask machinery rather than rebuild it. Additional finite identities are valuable only if they reduce this actual signed arithmetic burden."
+      }
+    },
+    "BOUNDARY_CLOSURE_ATTEMPTS.json": {
+      "sha256": "06585190c8cb515e8094b9d93dc88f06ecca763ad1f2c4a0099f988f5e396b3d",
+      "content": {
+        "schema": "OPICA_MADNESS_BOUNDARY_CLOSURE_ATTEMPTS_V1",
+        "date": "2026-11-01",
+        "scope": "Rigorous mathematical derivations on literal Pass6/7 expressions; supporting finite Lean check compiled separately. No independent closing cancellation estimate obtained.",
+        "notations": {
+          "Y": "floor(sqrt(T*x))",
+          "L": "sum_{a=1}^Y mu(a)/a",
+          "B": "sum_{a,b=1}^Y mu(a)mu(b) R(x/(ab))",
+          "D": "sum_{a=1}^Y mu(a)^2 R(x/a^2)",
+          "O": "sum_{1<=a,b<=Y,a!=b} mu(a)mu(b) R(x/(ab))",
+          "A": "I_F*x*L^2+O",
+          "Tform": "I_F*x*L^2+D+O"
+        },
+        "diagonal_proof": [
+          "Fix T>0. Suppose R is continuous on[1/T,infinity) and R(y)->0 as y->infinity. Then choose Y0>=1/T with |R(y)|<=1 for y>=Y0; compactness bounds |R| on[1/T,Y0]. Taking M=max(1,Mcompact) yields |R(y)|<=M for every y>=1/T. Literal Pass6 flatness plus Pass7 Poisson establishes the hypotheses on paper, independently of mu.",
+          "For x>0 and a<=floor sqrt(Tx), a²<=Tx, hence x/a²>=1/T. Since mu(a)²<=1, |D(x)|<=sum_{a<=Y}|R(x/a²)|<=M Y<=M sqrt(T)*sqrt(x). If Y=0 the sum is0. This is an all-scale bound, not just a tail bound.",
+          "Therefore, for any fixed C, Tform(x)>=-C sqrt(x) implies A(x)>=-(C+M sqrt(T))sqrt(x); and conversely A(x)>=-C sqrt(x) implies Tform(x)>=-(C+M sqrt(T))sqrt(x). Eventual lower-boundedness at square-root scale is exactly equivalent, with a changed constant.",
+          "The rank-one term I_F*x*L² is nonnegative because I_F>0, but deleting it imposes a stronger supplier O>=-C sqrt(x). Exact necessary-and-sufficient target is A=rank-one+off-diagonal, retaining cancellation."
+        ],
+        "gcd_attempt": {
+          "identity": "O=sum_{r,s>=1,r!=s,gcd(r,s)=1} mu(rs) sum_{1<=d<=Y/max(r,s),gcd(d,rs)=1} mu(d)^2 R(x/(d^2*r*s)).",
+          "proof": "Set d=gcd(a,b),a=dr,b=ds. If d,r,s fail squarefreeness or coprimality with d, mu(dr)mu(ds)=0. Otherwise multiplicativity gives mu(dr)mu(ds)=mu(d)^2mu(r)mu(s)=mu(d)^2mu(rs). Zero mu terms permit extending to all r,s with gcd1 under the indicated d coprimality.",
+          "obstruction": "The inner d weight is not nonnegative because R changes sign. Absolute-value control counts all admissible off-diagonal pairs and is O(Y²)=O(x). Grouping n=rs yields a mu(n)-weighted restricted-divisor sum, where divisor bounds and d cutoffs depend onY. The complete divisor inversion mu*1=epsilon cannot collapse this truncated weighted expression; substituting it recovers U rather than bounding U.",
+          "conclusion": "No sqrt cancellation follows from exact multiplicativity alone in this calculation. Claiming it does would conceal the unresolved actual-vector arithmetic estimate."
+        },
+        "poisson_attempt": {
+          "valid_fixed_order_bound": "For any fixed N>=0 with |R(y)|<=C_N y^-N on y>=1/T, |B|<=C_N x^-N(sum_{a<=Y}a^N)^2<=C_N T^(N+1)x.",
+          "barrier": "Near a,b~Y, x/(ab)~1/T, so the source sees its fixed nonzero remainder rather than y->infinity. For fixed N the exponent ofx stays1, however small T is. Varying N withx requires quantified derivative/Fourier constants and cannot eliminate the actual fixed-y boundary.",
+          "model_check": "The auxiliary matrix has negative diagonals at x=a²y_- for arbitrarily largea, so even an eventual PSD claim fails. This does not falsify the full actual-mu lower bound; it falsifies the all-vector shortcut."
+        },
+        "mathlib": {
+          "root": "work/pr290/.lake/packages/mathlib/Mathlib/NumberTheory/ArithmeticFunction",
+          "no_ready_hyperbola": "Misc.lean:427 explicitly contains TODO: Dirichlet hyperbola method to get sums of length sqrt N.",
+          "available": [
+            "Misc.lean:393 ArithmeticFunction.sum_Ioc_mul_eq_sum_prod_filter",
+            "Misc.lean:404 ArithmeticFunction.sum_Ioc_mul_eq_sum_sum",
+            "Moebius.lean:128 ArithmeticFunction.isMultiplicative_moebius",
+            "Moebius.lean:176 ArithmeticFunction.coe_moebius_mul_coe_zeta",
+            "Moebius.lean:180 ArithmeticFunction.coe_zeta_mul_coe_moebius",
+            "VonMangoldt.lean:130 ArithmeticFunction.moebius_mul_log_eq_vonMangoldt"
+          ]
+        },
+        "terminal": "RH OPEN; Step4 OPEN. No actual-vector square-root lower bound or new exponent improvement is established."
+      }
+    },
+    "PASS8_MOMENT_SPECTRAL_AUDIT.json": {
+      "sha256": "664bc4a721515d1a217ccbe049d0c940a4e37f483c24a31ff781947c6ad6028d",
+      "content": {
+        "schema": "OPICA_MADNESS_PASS8_INDEPENDENT_AUDIT_V1",
+        "paper": "STEP4_PASS8_DISCRETE_HANKEL_AND_MOMENT_COMPRESSION_2026-11-01.md",
+        "paper_sha256": "a3ee3cb37d459da047368a719d721ec3ac0c9432338a16fa84a54fa487b259d8",
+        "source_head": "7647d4f13c4fa71f5be97e5dde3818a2d4b31063",
+        "source_tree": "f9e19310c2281af1609ae005a76cab40c913380f",
+        "scope": "Full Pass8 narrative read; listed current source theorem bodies/interfaces checked. No downloaded program executed; toy controls were not rerun. External QRH claim delegated to root independent verification.",
+        "result": "No confirmed mathematical error in checked source-exact sampling, negative-spectrum, polynomial-compression or Mellin-square reductions. No independent arithmetic lower-bound supplier found. New representations retain an RH-strength actual-vector estimate.",
+        "sections": [
+          {
+            "id": "P8-A",
+            "status": "DERIVED_ON_PAPER_CONDITIONAL_ON_LITERAL_BRIDGES",
+            "finding": "At x_N=N^2/T the cutoff is exactly N, P_F(1/T)=0, and flat prefix E_N is negligible. The elementary derivative bound gives O(log N) variation between samples, which is harmless against a positive exponential excursion. At sigma=1/2 it gives O(a), not a uniformly bounded continuum prime field, but the weaker subexponential bound still excludes an off-line zero. Correct distinction retained.",
+            "quantifier": "C,N0 fixed before every integer N; every epsilon has its own fixed constants. A single exponent 1+epsilon only excludes zeros beyond (1+epsilon)/2."
+          },
+          {
+            "id": "P8-B",
+            "status": "DERIVED_ON_PAPER",
+            "finding": "A genuine negative-lobe block with cN squarefree indices yields lambda_min <= -cN; nonnegative rank-one plus bounded alias yields >=-CN. Actual mu has norm squared Theta(N), so spectral-only estimates give -O(N^2), not -O(N). Squarefree support alone cannot fix this. Matrix A_N is a new multiplicative Hankel matrix, not the canonical physical parity operator."
+          },
+          {
+            "id": "P8-C",
+            "status": "DERIVED_ON_PAPER",
+            "finding": "Entrywise approximation 1/N costs at most N because (sum |mu|)^2<=N^2. Smooth Chebyshev approximation allows degree O_epsilon(N^epsilon), but monomial coefficients may grow sharply and change sign. An exact sum of signed squares is not positivity. Fixed finite jets cannot approximate a nonpolynomial flat Psi to errors tending to zero."
+          },
+          {
+            "id": "P8-D",
+            "status": "DERIVED_ON_PAPER",
+            "finding": "Mellin change of variables verifies T^(-i*tau), zeta(i*tau)*MF(i*tau), and D_N(tau)^2 rather than |D_N(tau)|^2. The reality follows by conjugation under tau -> -tau. The double source notch at zero imposes two constraints on the fixed kernel, not on the arithmetic D_N. Weighted positive mean square O_epsilon(N^(1+epsilon)) would suffice, but is a stronger requirement than the signed combination with its helpful rank-one term.",
+            "falsifier_scope": "Replacing mu by mu^2 preserves squarefree support, size and source notch but violates genuine Mobius inversion. Its N^2 weighted energy only falsifies using those shared weaker properties as a supplier; it is not a counterexample for genuine mu."
+          },
+          {
+            "id": "P8-E",
+            "status": "DERIVED_ON_PAPER",
+            "finding": "Rapid alias decay suppresses ab<=x^(1-delta), leaving balanced interior products. Endpoint flatness suppresses an asymptotically narrow top-right corner, not a fixed negative-lobe interval. The actual negative-lobe block remains inside those difficult interior bands."
+          },
+          {
+            "id": "TOY_CONTROLS",
+            "status": "NO_NEW_AUTHORITY",
+            "finding": "Exact algebra controls on a polynomial C^5 toy are correctly distinguished from the original C-infinity sinc source. They cannot certify genuine source analytic bounds or an all-N arithmetic estimate."
+          },
+          {
+            "id": "EXTERNAL_QRH",
+            "status": "ROOT_AUDIT_REQUIRED",
+            "finding": "No use of the new decimal 0.8733819666133 as current verified authority in this child audit; root owns primary-source/commit/theorem verification. An exponent strictly above 1/2 remains insufficient for closure regardless."
+          }
+        ],
+        "supplier_attempts": [
+          {
+            "candidate": "Compose existing fixed-vector moment jets with P8 evolving moment vector",
+            "status": "FAILED_AS_SUPPLIER",
+            "reason": "The source theorem inputs are centered coefficients in a fixed physical Fourier carrier with prescribed vanished moments. The P8 vector consists of arithmetic moments sum_{a<=N}mu(a)(a/N)^j with N and degree growing. No current theorem identifies those objects or bounds the resulting signed coefficient combination. Even such an adapter alone would not supply the required bound."
+          },
+          {
+            "candidate": "Use finite filtration to eliminate bad directions",
+            "status": "FALSIFIED_AS_UNIFORM_POSITIVITY_ARGUMENT",
+            "reason": "Current SourceMomentFilteredInertia proves remaining dimension>=2 indefinite even after every finite filtration level. Vandermonde completeness says all sufficiently many moments identify a fixed vector; it does not bound a moving vector from a short moment prefix."
+          },
+          {
+            "candidate": "Use good-opposite-parity source/M4 constraint",
+            "status": "MISSING_ACTUAL_OBJECT_AND_HYPOTHESES",
+            "reason": "That theorem requires actual canonical even eigenmode and good odd branch, and gives a necessary positive source pairing. The P8 auxiliary Hankel matrix and raw mu vector are not those data; all-vector spectral bounds for A_N already miss by N. Cannot insert the raw mu vector as the physical eigenray."
+          },
+          {
+            "candidate": "Replace complex square by modulus square",
+            "status": "INVALID_IDENTITY",
+            "reason": "D(tau)^2 is the sum-product Hankel transform, whereas |D(tau)|^2 pairs ratios and is a Toeplitz-type transform. Triangle inequality gives an upper bound by positive energy only at the cost of a strictly stronger independent supplier."
+          },
+          {
+            "candidate": "Exploit double spectral notch to force weighted energy O(N)",
+            "status": "FAILED",
+            "reason": "The notch removes fixed Taylor orders of the kernel at zero frequency. It neither forces D_N(0)=M(N) nor its derivatives to vanish. The mu^2 control exhibits order N^2 away from zero; the genuine mu cancellation remains the entire arithmetic issue."
+          },
+          {
+            "candidate": "Two-dimensional Abel plus smoothness of actual Psi",
+            "status": "RIGOROUS_PAPER_REDUCTION_WITH_EXPLICIT_RATE_BARRIER",
+            "identity": "With M(k)=sum_{a<=k}mu(a), K(u,v)=Psi(uv), S_N=sum_{a,b<=N}mu(a)mu(b)K(a/N,b/N): S_N=M(N)^2 K(1,1)-2 M(N) sum_{a<N}M(a)[K((a+1)/N,1)-K(a/N,1)]+sum_{a,b<N}M(a)M(b) Delta_a Delta_b K.",
+            "bound": "|S_N| <= C_Psi [max_{1<=k<=N}|M(k)|]^2, where C_Psi=|Psi(1)|+2 int_0^1 |Psi_prime(u)|du+int_0^1 |Psi_prime(w)+w Psi_second(w)|(-log w)dw < infinity.",
+            "justification": "Mixed derivative is Psi_prime(uv)+uv Psi_second(uv); integrate it over each mesh rectangle. Summed absolute finite differences are bounded by the full double integral, transformed using w=uv. Boundary strips are bounded by total variation. Smoothness on [0,1] is already enough for finiteness since -log w is integrable.",
+            "rate": "A genuine partial-sum bound max|M|=O(N^theta) supplies |alias|=O(N^(2theta)). A merely sublinear max|M|=o(N) gives only o(N^2). Any N*exp(-c log(N)^alpha) bound with alpha<1 squares to N^(2-o(1)), still above the target N. A square-root-plus-epsilon bound is sufficient but cannot be assumed. This attempt actively prices all boundary terms; it does not remove the arithmetic barrier.",
+            "scope": "The signed total retaining nonnegative rank-one can be much smaller than this absolute bound, so this sufficient route must not replace the minimal remaining target."
+          }
+        ],
+        "literal_target": "For literal P_F and actual mu, H_N >= -C*N for every sufficiently large integer N; or the signed near-subpower family for every epsilon>0. After the newly checked diagonal theorem, retain I_F*N^2/T*(sum_{a<=N}mu(a)/a)^2 together with the complete off-diagonal alias and require their lower bound -O(N).",
+        "do_not_add": "No more representation-only modules for Pass8 are needed to claim progress on closure. The next missing input is a proved cancellation estimate for the actual vector and fixed signed kernel, with full scale quantifiers and coefficient budget.",
+        "repo_anchors": [
+          {
+            "path": "Zeta23/CCM/BoundaryFlatFiniteSpace.lean",
+            "line": 51,
+            "sha256": "4db4411d64b0c97370db263efd3b64f8e2bfc3f90cd7e694e13fb69bc4b83f56",
+            "scope": "centeredMoment: Fourier-centered coefficient moments, not normalized arithmetic Mobius power moments."
+          },
+          {
+            "path": "Zeta23/CCM/CanonicalSourceMomentJets.lean",
+            "line": 56,
+            "sha256": "5592365bb5510b09bb5c60f48373268e1653c0cbcef7a9fc384911236adf807d",
+            "scope": "Exact local endpoint jet under prefix-vanishing premises; norm square, not a bound on changing moment vectors."
+          },
+          {
+            "path": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+            "line": 12,
+            "sha256": "d65e4256a3916913f56f9889df22011b74e4bcee62d0dcba94cdd4db0d1fb98e",
+            "scope": "Explicitly states vectorwise endpoint scope and excludes uniform aperture-dependent-vector positivity."
+          },
+          {
+            "path": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+            "line": 194,
+            "sha256": "d65e4256a3916913f56f9889df22011b74e4bcee62d0dcba94cdd4db0d1fb98e",
+            "scope": "Endpoint jet on a fixed moment filtration."
+          },
+          {
+            "path": "Zeta23/CCM/SourceMomentFilteredInertia.lean",
+            "line": 852,
+            "sha256": "cbfc614e1f0938f0a6e4e74139cd863d527e658d4b88cb303d4975b55cdb9b1a",
+            "scope": "Every filtered parity carrier with dimension >=2 remains indefinite at the half aperture."
+          },
+          {
+            "path": "Zeta23/CCM/SourceParityPolynomialCoordinates.lean",
+            "line": 11,
+            "sha256": "25d8dde5c4ceb2e754132c07b24788fe18077c35bfa6f0edbfb9c8904e9bfe1f",
+            "scope": "Coordinates for parity Fourier carriers and lattice operators, not a Mobius cancellation supplier."
+          },
+          {
+            "path": "Zeta23/CCM/ParitySourceMomentFourRigidity.lean",
+            "line": 219,
+            "sha256": "c89765b9ec6e2a47ba3082eaebd5123a2210af552af5649edf1dd1b1da70b55e",
+            "scope": "Source/M4 positivity requires an actual negative even eigenmode and good odd successor."
+          },
+          {
+            "path": "Zeta23/OPICARound4/GroundArithmetic.lean",
+            "line": 186,
+            "sha256": "5880f1bbc7df57224d1c261cb60f7d006e66b4aa7b54e1501a949ec12c4199e8",
+            "scope": "Actual normalized ground-ray moment feasibility; no identification with Pass8 Hankel vector."
+          },
+          {
+            "path": "Zeta23/OPICARound4/JointGroundConstraints.lean",
+            "line": 58,
+            "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7",
+            "scope": "Actual same-ground moment constraint, source/ray bound kept typed."
+          },
+          {
+            "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+            "line": 109,
+            "sha256": "df17b7dbab0bc21e59eab3366df0925e33be66d70ce98d7016757aaaf762da4c",
+            "scope": "Actual completed-input obstruction order keeps zero multiplicity; no truncation-size Mobius bound."
+          },
+          {
+            "path": "Zeta23/CCM/OriginalSincNativeConvolution.lean",
+            "line": 122,
+            "sha256": "7bbc06b9483820db2059add35ae71474629f225aa6e54a71942c1849daecb0a6",
+            "scope": "Already proved correlation-field H= kappa*kappa equals q convolved with actual native prime field."
+          },
+          {
+            "path": "Zeta23/CCM/NativeIntegerDriveFiniteOrderBounds.lean",
+            "line": 594,
+            "sha256": "b4e2280a103c293d86deafa847d974e5f78f983f5ab8c4b86a66e66c1d9af1e4",
+            "scope": "Existing actual integer-drive rapid decay usable upstream of flat F adapter."
+          },
+          {
+            "path": "Zeta23/ExceptionalZero/UniversalSincSignedExcursions.lean",
+            "line": 131,
+            "sha256": "1f5e424e248cf555cd982c208bacbf237a7002617b1b0cc2a02c24fdbfb55655",
+            "scope": "Existing signed late excursion theorem supplies contradiction side only."
+          }
+        ],
+        "local_formal_progress": "GENUINE_MOBIUS_POISSON_LOCAL_CHECK.json proves exact diagonal extraction and target equivalence only. It neither establishes the literal analytic remainder premises nor the surviving lower bound.",
+        "RH": "OPEN",
+        "Step4": "OPEN"
+      }
+    },
+    "EXTERNAL_QUASI_RH_BUDGET_ADDENDUM.json": {
+      "sha256": "6fd82b20a3fb349fa3e597ff8b8443552ea0e59a2ed7c98f887dc034a9040b7a",
+      "content": {
+        "additional_sources": [
+          {
+            "path": "lean/OAI/NumberTheory/DirichletL/Nonvanishing.lean",
+            "content": "import OAI.NumberTheory.DirichletL.Foundation\nimport OAI.NumberTheory.DirichletL.Detector.FinalAssemblyUnconditional\n\nnamespace OAI\n\n/-!\n# Nonvanishing of Dirichlet L-functions to the right of seven eighths\n\nThe main result excludes zeros of Dirichlet L-functions in the half-plane\n`7 / 8 < re s`, apart from the principal character's pole at `s = 1`.\nThe corresponding nonvanishing statement for the Riemann zeta function follows.\n-/\n\nnamespace DirichletCharacter\nopen scoped _root_.DirichletCharacter\n\n/-- Dirichlet L-functions do not vanish to the right of `7 / 8`, away from the\nprincipal character's pole at `1`. -/\ntheorem LFunction_ne_zero_of_seven_eighths_lt_re\n    {q : ℕ} [NeZero q] (χ : DirichletCharacter ℂ q) {s : ℂ}\n    (hs : (7 / 8 : ℝ) < s.re) (hpole : ¬ (χ = 1 ∧ s = 1)) :\n    _root_.DirichletCharacter.LFunction χ s ≠ 0 :=\n  SevenEighths.ProbeFinalAssemblyUnconditional.dirichlet_nonzero\n    q (NeZero.ne q) χ s hs hpole\n\nend DirichletCharacter\n\n/-- The Riemann zeta function does not vanish to the right of `7 / 8`. -/\ntheorem riemannZeta_ne_zero_of_seven_eighths_lt_re\n    {s : ℂ} (hs : (7 / 8 : ℝ) < s.re) : riemannZeta s ≠ 0 :=\n  SevenEighths.ProbeFinalAssemblyUnconditional.zeta_nonzero s hs\n\nend OAI\n",
+            "encoding": "utf-8",
+            "sha": "46c67f4000906b1391a471d6e6396ac0da3c16a5",
+            "display_url": "https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/lean/OAI/NumberTheory/DirichletL/Nonvanishing.lean",
+            "display_title": "Nonvanishing.lean"
+          },
+          {
+            "path": "lean/OAI/NumberTheory/DirichletL/ParametersHighData.lean",
+            "content": "import OAI.NumberTheory.DirichletL.ParametersCentralBudget\n\nnamespace OAI\n\nnoncomputable section\nopen scoped BigOperators\nnamespace SevenEighths.Parameters\n\nstructure HighData (Δ : ℝ) where\n  t : ℝ\n  N : ℕ\n  ell : Fin N→ℝ\n  rmin : ℝ\n  ε : ℝ\n  e : ℝ\n  κ : ℝ\n  cost : ℝ\n  eps : ℝ\n  sigma : ℝ\n  t_pos : 0<t\n  t_delta : t<Δ/4\n  t_small : t≤1/100000000\n  slots_pos : 0<N\n  slots_injective : Function.Injective ell\n  slots_sum : (∑j,ell j)=1/6\n  slots_bounds : ∀j,0<ell j ∧ (7/8)*rmin≤ell j ∧ ell j≤(1/200)*t\n  rmin_pos : 0<rmin\n  epsilon_pos : 0<ε\n  epsilon_small : ε≤1/1000\n  epsilon_gap : ε<rmin*t\n  e_pos : 0<e\n  e_small : e<1/1000\n  kappa_pos : 0<κ\n  kappa_small : κ≤1\n  cost_pos : 0<cost\n  eps_pos : 0<eps\n  eps_small : eps≤1\n  sigma_pos : 0<sigma\n  detector_budget : 288*e+8*κ+2*cost≤ε/2\n  phase_budget : 8*e*t+κ≤ε\n  count_budget : 159*ε+t+t+7*t≤1/32\n  central_budget : (13/16)*(159*ε+t+t+7*t)+2*t+(3/2)*(2*t)+\n    (26*e+(N+8)*eps+t+t/6)+(t+t+t)+t≤49/440640\n  geometric_budget : sigma+8*e+t/8≤63/800\n  principal_budget : sigma+t/8≤17/48000\n  window_budget : sigma+e≤(7/8)*((7/8)*rmin)\n  floor_budget : 2*t+26*e+(N+8)*eps+t+t/6+t/8+sigma≤7/1200\n  high_saving : sigma+t/8+t/8≤t\n  height_choice : ∀J : ℝ,0≤J → ∃τ : ℝ,0<τ ∧ τ<(1/200)/2 ∧\n    4*τ<(1/200)*cost ∧ τ<t ∧ 2*τ*(1+J)≤t ∧ τ*(2+4*eps)<t\n\ntheorem exists_high_data (Δ : ℝ) (hΔ : 0<Δ) : Nonempty (HighData Δ) := by\n  obtain ⟨t,ht,htΔ,ht1,_,_,hgeo,hdtop,ht3,hω,hωΔ,hhigh,hallow⟩ := exists_central_budget Δ hΔ\n  obtain ⟨N,hN,ell,rmin,hr,hell,hsum,hbounds,_⟩ :=\n    exists_physical_slot_lengths (1/200) (7/8) t t (by norm_num) (by norm_num) ht ht\n  obtain ⟨allowance,ha,hbud⟩ := hallow N\n  let small := min allowance (t/((N:ℝ)+2000))\n  have hsmall : 0<small := lt_min ha (div_pos ht (by positivity))\n  have hsa : small≤allowance := min_le_left _ _\n  have hst : small≤t/((N:ℝ)+2000) := min_le_right _ _\n  have hst0 : small≤t/2000 := hst.trans\n    (div_le_div_of_nonneg_left ht.le (by norm_num) (by linarith [Nat.cast_nonneg (α:=ℝ) N]))\n  let ellMin := (7/8:ℝ)*rmin\n  have hmin : 0<ellMin := mul_pos (by norm_num) hr\n  obtain ⟨ε,e,κ,cost,τ₀,hε,hε1,hεgap,hεa,he,he1,heell,hea,hκ,hκ1,hcost,\n    hdet,hphase,_,_,_,_,_⟩ :=\n    exists_detector_scales t rmin t (1/200) t ellMin small 0\n      ht.le hr ht (by norm_num) ht hmin hsmall (by norm_num)\n  let eps := small/2\n  have heps : 0<eps := by dsimp [eps];positivity\n  have hepss : eps≤small := by dsimp [eps];linarith only [hsmall]\n  have heps1 : eps≤1 := by linarith only [hepss, hst0, ht1]\n  have hbud' := hbud ε e eps hε.le (hεa.trans hsa) he.le (hea.trans hsa)\n    heps.le (hepss.trans hsa)\n  have heN : ((N:ℝ)+2000)*eps≤t := by\n    have h := (le_div_iff₀ (show 0<(N:ℝ)+2000 by positivity)).mp (hepss.trans hst)\n    simpa only [mul_comm] using h\n  have he8 : ((N:ℝ)+8)*eps≤t := by nlinarith only [heN, heps.le]\n  have het : 2000*e≤t := by linarith only [hea, hst0]\n  let sigma := min (t/2) (ellMin/4)\n  have hs : 0<sigma := lt_min (by positivity) (by positivity)\n  have hst2 : sigma≤t/2 := min_le_left _ _\n  have hsell : sigma≤ellMin/4 := min_le_right _ _\n  refine ⟨{\n    t:=t,N:=N,ell:=ell,rmin:=rmin,ε:=ε,e:=e,κ:=κ,cost:=cost,eps:=eps,sigma:=sigma\n    t_pos:=ht,t_delta:=htΔ,t_small:=ht1,slots_pos:=hN,slots_injective:=hell,slots_sum:=hsum\n    slots_bounds:=fun j=>⟨(hbounds j).1,(hbounds j).2.1,(hbounds j).2.2.1⟩\n    rmin_pos:=hr,epsilon_pos:=hε,epsilon_small:=hε1,epsilon_gap:=hεgap\n    e_pos:=he,e_small:=he1,kappa_pos:=hκ,kappa_small:=hκ1,cost_pos:=hcost\n    eps_pos:=heps,eps_small:=heps1,sigma_pos:=hs,detector_budget:=by linarith only [hdet]\n    phase_budget:=hphase,count_budget:=hbud'.1,central_budget:=hbud'.2\n    geometric_budget:=by linarith only [hst2, het, ht1]\n    principal_budget:=by linarith only [hst2, ht1]\n    window_budget:=by change sigma+e≤(7/8)*ellMin;linarith only [hsell, heell, hmin]\n    floor_budget:=by linarith only [hst2, het, he8, ht1]\n    high_saving:=by linarith only [hst2, ht]\n    height_choice:=?_ }⟩\n  intro J hJ\n  let τ := min ((1/200:ℝ)*cost/16) (min (1/800) (t/(4*(J+7))))\n  have htau : 0<τ := lt_min (by positivity) (lt_min (by norm_num) (by positivity))\n  have hτc : τ≤(1/200:ℝ)*cost/16 := min_le_left _ _\n  have hτd : τ≤1/800 := (min_le_right _ _).trans (min_le_left _ _)\n  have hτt : τ≤t/(4*(J+7)) := (min_le_right _ _).trans (min_le_right _ _)\n  have hτJ : τ*(4*(J+7))≤t := (le_div_iff₀ (by positivity)).mp hτt\n  have hprod : 0≤τ*J := mul_nonneg htau.le hJ\n  have hprodeps := mul_le_mul_of_nonneg_left heps1 htau.le\n  refine ⟨τ,htau,by linarith only [hτd],by linarith only [hτc, hcost],\n      by nlinarith only [hτJ, hprod, htau],by nlinarith only [hτJ, hprod, htau],\n      by nlinarith only [hτJ, hprod, hprodeps, htau]⟩\nend SevenEighths.Parameters\n\nend\n\nend OAI\n",
+            "encoding": "utf-8",
+            "sha": "c565dc0a72c7da9a2706cdd835e69a39e8c0dc14",
+            "display_url": "https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/lean/OAI/NumberTheory/DirichletL/ParametersHighData.lean",
+            "display_title": "ParametersHighData.lean"
+          },
+          {
+            "path": "lean/OAI/NumberTheory/DirichletL/ParametersCentralBudget.lean",
+            "content": "import OAI.NumberTheory.DirichletL.ParametersDetectorScales\n\nnamespace OAI\n\nnoncomputable section\nnamespace SevenEighths.Parameters\n\ntheorem exists_central_budget (Δ : ℝ) (hΔ : 0<Δ) :\n    ∃ t : ℝ,0<t ∧ t<Δ/4 ∧ t≤1/100000000 ∧\n      (0:ℝ)<1/200 ∧ (1/200:ℝ)<1/100 ∧\n      (13/16:ℝ)+t+2*t≤7/8 ∧ (7/8:ℝ)≤37/42 ∧ t≤3/16 ∧\n      0<Δ-t/4 ∧ Δ-t/4<Δ ∧\n      (3/16+Δ-t+t/8+t/8 : ℝ)≤3/16+(Δ-t/4) ∧\n      ∀N : ℕ,∃allowance : ℝ,0<allowance ∧\n      ∀ε e eps : ℝ,0≤ε → ε≤allowance → 0≤e → e≤allowance →\n        0≤eps → eps≤allowance →\n        159*ε+t+t+7*t≤1/32 ∧\n        (13/16)*(159*ε+t+t+7*t)+2*t+(3/2)*(2*t)+\n          (26*e+(N+8)*eps+t+t/6)+(t+t+t)+t≤49/440640 := by\n  let t := min (Δ/8) (1/100000000)\n  have ht : 0<t := lt_min (by positivity) (by norm_num)\n  have htΔ : t≤Δ/8 := min_le_left _ _\n  have ht1 : t≤1/100000000 := min_le_right _ _\n  refine ⟨t,ht,by linarith,ht1,by norm_num,by norm_num,by linarith,\n    by norm_num,by linarith,by linarith,by linarith,by linarith,?_⟩\n  intro N\n  let allowance := t/((N:ℝ)+2000)\n  have hden : 0<(N:ℝ)+2000 := by positivity\n  have ha : 0<allowance := div_pos ht hden\n  have ha0 : allowance≤t/2000 := div_le_div_of_nonneg_left ht.le (by norm_num) (by linarith [Nat.cast_nonneg (α:=ℝ) N])\n  have hap : allowance*((N:ℝ)+2000)=t := by dsimp [allowance];field_simp\n  refine ⟨allowance,ha,?_⟩\n  intro ε e eps hε hεa he hea heps hepsa\n  have hεt : 2000*ε≤t := by linarith\n  have het : 2000*e≤t := by linarith\n  have hepsN : ((N:ℝ)+2000)*eps≤t := by\n    have h := mul_le_mul_of_nonneg_left hepsa hden.le\n    nlinarith\n  have heps8 : ((N:ℝ)+8)*eps≤t := by nlinarith\n  constructor <;> nlinarith\nend SevenEighths.Parameters\n\nend\n\nend OAI\n",
+            "encoding": "utf-8",
+            "sha": "afc4c8515e0fa223ce7d6ce74bb4893cf359d292",
+            "display_url": "https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/lean/OAI/NumberTheory/DirichletL/ParametersCentralBudget.lean",
+            "display_title": "ParametersCentralBudget.lean"
+          }
+        ],
+        "terminal_budget": "HighData(B-7/8) requires 0<t<(B-7/8)/4. There can be no such t for B<=7/8. This is an explicit admissibility failure, not merely a final numerical comparison.",
+        "limitation": "These are exact requirements of the currently inspected construction, not proven optimal mathematical barriers."
+      }
+    }
+  },
+  "reused_source_constraints": [
+    {
+      "path": "Zeta23/CCM/NativeIntegerPrimeSource.lean",
+      "use": "Exact divisor identities fix genuine von Mangoldt coefficients; not a cancellation bound.",
+      "sha256": "c98e58682a18bc073cd794200dfd351edef65e9a0ac3bfe0f7d522216f651b31"
+    },
+    {
+      "path": "Zeta23/CCM/NativeIntegerPrimeConvolution.lean",
+      "use": "Finite source-identical integer/prime convolution; no unbounded inverse-norm assertion.",
+      "sha256": "12773a269785022413552e6382cc1f99882d08b507215d4cea69a9ef47960406"
+    },
+    {
+      "path": "Zeta23/CCM/NativeIntegerDriveFiniteOrderBounds.lean",
+      "use": "Actual original integer-drive decay faster than every fixed exponential; early-history boundary remains in inversion.",
+      "sha256": "b4e2280a103c293d86deafa847d974e5f78f983f5ab8c4b86a66e66c1d9af1e4"
+    },
+    {
+      "path": "Zeta23/CCM/OriginalSincNativeConvolution.lean",
+      "use": "Already formal literal kappa*kappa = q*P^2q source bridge; reused instead of replacing the source.",
+      "sha256": "7bbc06b9483820db2059add35ae71474629f225aa6e54a71942c1849daecb0a6"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean",
+      "use": "Existing closing consumers still require their independent source bound.",
+      "sha256": "ff745c1db8c360a44db7c821628f7d29d7246c51da7cc3ea437a188f873f41e7"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/UniversalSincSignedExcursions.lean",
+      "use": "Off-line-zero late signed excursions provide obstruction, not independent arithmetic upper.",
+      "sha256": "1f5e424e248cf555cd982c208bacbf237a7002617b1b0cc2a02c24fdbfb55655"
+    }
+  ],
+  "external_qrh": {
+    "repository": "GTimG/QuasiRiemannTracker",
+    "pr": 99,
+    "head": "9e17ac75d786905195f5f87aa8e15496c8a9bfc0",
+    "merge": "fc2f46afbfda62351055d3c12fcacd4f6916cc63",
+    "bound": "8733819666133/10000000000000",
+    "exact_head_checks": {
+      "admission": "success",
+      "verify (positive-reserve-selected-gap)": "success",
+      "qrh/pr-admission": "success",
+      "test": "success",
+      "prepare": "success",
+      "deploy": "skipped"
+    },
+    "primary_url": "https://github.com/GTimG/QuasiRiemannTracker/pull/99",
+    "source_statement": "Candidate.bound for every positive modulus/character, excluding principal pole, has no analytic-provider hypothesis in its exported type. Source and exact-head check statuses inspected; no independent local rebuild of its full closure.",
+    "use": "External benchmark only; no import or change to OPICA pins. Its exponent remains above the required one-half; decimal improvement is not an RH proof."
+  },
+  "remaining_target": {
+    "status": "OPEN",
+    "formula": "I_F*x*(sum_(a<=floor sqrt(T*x)) mu(a)/a)^2 + sum_(a!=b<=floor sqrt(T*x)) mu(a)*mu(b)*R_F(x/(a*b)) >= -C*sqrt(x)",
+    "quantifiers": "There exist C,X0>0 before choosing real x>=X0; fixed genuine source, actual mu, all signed pairs, helpful rank-one retained.",
+    "not_equivalent_without_adapters": "The generic diagonal module does not itself construct the analytic P_F/R_F or prove their paper regularity. The actual source finite logarithmic test is normalized by 1/sqrt(x), x=exp(t); normalized hyperbolaT needs a constant-scale lower bound, not the same sqrt(x) bound.",
+    "pass8": "At x=N^2/T the paper-level target is H_N >= -C*N. The moment/spectral representation and negative-spectrum controls do not provide it.",
+    "normalization_status": "The formal actualFlatMobiusTest normalization is proved. Its identification with the paper F and analytic periodization remains DERIVED and requires separate exact adapters."
+  },
+  "claim_boundary": "No RH or Step4 theorem. No impossibility claim about future arithmetic estimates. No finite/toy computation promoted to all-scale authority.",
+  "new_unconditional_deductions": [
+    {
+      "declaration": "Zeta23.OPICARound4.actualCorrelationShortTerm_rapid_bound",
+      "claim": "The complete normalized short hyperbola term decays faster than every fixed exponential, using the existing actual-source drive bound and abs(mu)<=1.",
+      "closing_estimate": false
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.actualCorrelationPrimeField_add_longTerm_rapid_bound",
+      "claim": "The actual prime observable plus the complete normalized long term decays faster than every fixed exponential. This controls their sum only.",
+      "closing_estimate": false
+    }
+  ],
+  "continuation_2026_11_01": {
+    "base": "b1320c9bc12ace41e567a4c150d378bdf40992ad",
+    "previous_mathematical_head": "8fff1c9b36c9ec6d659e97bc0ee05146a7288328",
+    "complete_drive_metadata": {
+      "url": "https://drive.google.com/drive/folders/13qP5kTyhJUjhdpda88-ADrScRXjsYwtk",
+      "folders": 164,
+      "files": 1725,
+      "all_content_read": false,
+      "inventory_sha256": "db5e3949d8b55bcb7868459cb813c0022122a122dd1ec1d073ec53a4720b947e"
+    },
+    "workflow_harvest": {
+      "head": "8fff1c9b36c9ec6d659e97bc0ee05146a7288328",
+      "workflows": 24,
+      "jobs": 97,
+      "successful_jobs": 93,
+      "skipped_jobs": 2,
+      "failed_jobs": 2,
+      "verified_artifacts": 58,
+      "receipt_sha256": "023c72d028da991600123dd0b2fba91baaa8b3b93cc22e4069c07174d278c1ce",
+      "meaning": "Round4 complete; followup generated-state disk exhaustion separately repaired. No independent closing estimate."
+    },
+    "independent_proof_review_sha256": "b18b69f9438c28cf3288506d64073367b81df2f03be3bbfdad00f05e1c3fdf72",
+    "arithmetic_audit_sha256": "f0dbbd6442b7dca1aafefa86ee8f735cef854c03827d2eeca46bc1e8a042e9b6",
+    "optimal_coefficient_audit_sha256": "6edad8b843b8dfb5b80442d97dc245cac9f4f3d3033c25b98b102533fdb9e250",
+    "deductions": [
+      {
+        "declaration": "Zeta23.OPICARound4.actualCorrelationHigherPrimePowers_uniform_bound",
+        "claim": "All higher powers contribute a uniformly bounded term; any unbounded native prime excursion must survive in the ordinary-prime part.",
+        "closing_estimate": false
+      },
+      {
+        "declaration": "Zeta23.OPICARound4.actualCorrelationIntegerDrive_deriv_rapid_bound",
+        "claim": "Actual-source derivative rapid decay, without any inverse estimate.",
+        "closing_estimate": false
+      },
+      {
+        "declaration": "Zeta23.OPICARound4.actualFlatSamplingRemainder_bounded",
+        "claim": "The literal test has a source-only bounded remainder for every positive sampling scale; no signed Mobius estimate is assumed.",
+        "closing_estimate": false
+      },
+      {
+        "declaration": "Zeta23.OPICARound4.actualFlatSamplingDiagonal_sqrt_bound",
+        "claim": "The generic diagonal estimate is now unconditional for the literal remainder, with fixed constants before the positive observation scale.",
+        "closing_estimate": false
+      },
+      {
+        "declaration": "Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined",
+        "claim": "The exact native long-term constant lower-bound target is equivalent to its normalized complete rank-one/off-diagonal target at the unchanged natural cutoff. Both remain OPEN.",
+        "closing_estimate": false
+      },
+      {
+        "declaration": "Zeta23.OPICARound4.actualFlatSamplingMass_eq_sourceHalfMass_sq",
+        "claim": "The literal mass equals the square of a strictly positive source half-Laplace integral. The removable endpoint is obtained from the already analytic actual transform, without critical termwise interchange. This makes the retained rank-one nonnegative, not the full quadratic.",
+        "closing_estimate": false
+      }
+    ],
+    "patterns": [
+      "Finite Euler palettes preserve the closed dictionary space and visible poles; their coprime cross-block and infinite-palette costs remain.",
+      "Pointwise sieve majorants do not preserve order after the signed pole-killing kernel.",
+      "Fixed-palette covariance bounds control only a primitive head; its full moving complement remains.",
+      "The positive continuum rank-one cannot be dropped or treated as controlling other signed projections."
+    ],
+    "remaining_analytic_adapter": "Literal regularity, complete sampling/normalization, bounded remainder, native-cutoff diagonal removal and actual mass positivity are supplied. The complete signed lower bound remains OPEN.",
+    "Step4": "OPEN",
+    "RH": "OPEN",
+    "literal_sampling_proofs": {
+      "ActualFlatRegularity.lean": "d18a54d2a964c14e2bc088c20aa29ecb67e228de7816a0cee39ecee8bf20c3f0",
+      "ActualSamplingBound.lean": "dfc71bceb4fc53d78d1080bcbc4afbb38ad0ffe984b8b491321770d0d658ed84"
+    },
+    "literal_sampling_independent_review_sha256": "dc80bebb5cffe824c2f5fb45b392d830ae2a12bbcc3bf72d16ee05d217d5d56b",
+    "native_sampling_proofs": {
+      "ActualSamplingHyperbolaBridge.lean": "b1692e5105927eddc6053dd4b5b4e8352b8815d0f9e075d57e4e140fbc111be5",
+      "ActualNativeDiagonal.lean": "d81e15ba1c2f5dd47e078e814e1b1f446cc63119d18a41f25ed4770e070c1091",
+      "ActualNormalizedLower.lean": "54c9184246f22d96429baa06a4d2b08517a878502808dff635078c421c36ebbe"
+    },
+    "sampling_bridge_independent_review_sha256": "9f7e64c52975776b7b36f82a255b4960468de53d0dffdf163af9122f9c8840be",
+    "positive_mass_proofs": {
+      "NativeMassEndpoint.lean": "c69d39325e5f56d65024749b16032f817ba9e2cd85117a08c5890f49c974fee8",
+      "NativeSourceHalfMass.lean": "6a2003f26e0095373ecfe854af7b1eb3c4ae288e2d608e502053650d5890f931",
+      "ActualMassPositive.lean": "e703e6ee1d2f21141feb9b8375c40acc02f433a19ed3d36e150bb8b389dac4ad"
+    },
+    "final_independent_reviews": {
+      "INDEPENDENT_ACTUAL_MASS_REVIEW.json": "e47558b1ba6928ea1d391f39fd5c04600da797911c73b4ce901a30b321201e31",
+      "INDEPENDENT_NATIVE_DIAGONAL_REVIEW.json": "766e9aab9ff9179fcb136abcdfb7c6b3b73360740841fc607e5f58fdfffa665e",
+      "INDEPENDENT_NORMALIZED_LOWER_REVIEW.json": "c626dd75264c79c8209e5365d3cf687061d8bf1f51e8d303cf8d908578dcdedb"
+    }
+  },
+  "conditional_rh": {
+    "source_sha256": "a1c8293c98fd9fe8ad607b264711708f716e877adf36a9f5868d615140a10c56",
+    "independent_review_sha256": "113443f9f8a3ba2880ba0e3a5c386ecac30b55ba9bd33452b705566d1c21aea2",
+    "statement": "Eventual constant lower bound of the literal native long term implies exact Mathlib RH.",
+    "remaining": "Independent arithmetic lower bound remains OPEN; positivity of the mass or equivalence of two bounds proves neither.",
+    "proof_status": "External exact-source pinned Windows compilation passed; integrated compilation and current-head Linux qualification separately required.",
+    "reflection_energy_insight": "Derived actual Q/sqrt(x)=Eplus-Eminus with divisor-log weights and genuine Mobius profile. A complex convolution square cannot be changed to an absolute-square Gram energy; no uniform odd-excess bound established.",
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "joint_ground_composition": {
+    "status": "EXACT_SOURCE_SUPPORT_THEOREMS_REQUIRE_CURRENT_HEAD_NATIVE_QUALIFICATION",
+    "historical_inputs": [
+      "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer",
+      "Zeta23.OPICARound3.NeutralParityCover",
+      "Zeta23.OPICARound3.FirstSimultaneousNegative",
+      "Zeta23.OPICARound3.NewbornSource",
+      "Zeta23.OPICARound4.JointGroundConstraints",
+      "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie",
+      "Zeta23.CCM.CanonicalPoleNeutralCubicWitness",
+      "Zeta23.CCM.CanonicalPoleNeutralTiePackage"
+    ],
+    "result": "The same actual quartic detector is eventually jointly negative; its first births retain their own predecessors; a newborn negative mode controls its full complement; tied source visibility is a statement about the entire odd ground kernel.",
+    "prior_compact_inverse_cost": "Already supplied: the original compact inverse and all four local histories have source-bound norm controls. This is not a missing inverse premise.",
+    "cutoff_distinctions": "The prescribed Kd=ceil(L^4), selected Schur cutoff, even first cutoff and odd first cutoff remain distinct; only proved inequalities relate them.",
+    "not_supplied": [
+      "No common exponential Rayleigh depth is inferred from constant negative fixed-phase form depths.",
+      "No newborn predecessor property is transplanted to the larger common cutoff.",
+      "No aperture local minimum or stationarity is inferred from integer-cutoff minimality.",
+      "No tied-ground exclusion follows from exclusive source visibility.",
+      "The complete signed smoothSourceMain retains inverse-response, direct source energy and shifted mass. Its opposing arithmetic bound is OPEN."
+    ],
+    "new_modules_sha256": {
+      "Zeta23.OPICARound4.CommonQuarticGround": "84ab7f0fc9fdc2a0d8ac7c4ac013c2bfa50e58c25540c1ca6bc7fdda58ccd488",
+      "Zeta23.OPICARound4.JointGroundBirth": "8b5ad94e720b95a41931d7b3246dc606b9f3d322153a9946475ca83f4d130335",
+      "Zeta23.OPICARound4.Validation.JointGround": "3830ce211dc99a6836accef85f42fe180c307e8c7360427038ed97ec3a254bf5"
+    },
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "native_regular_ground_composition": {
+    "status": "EXACT_SOURCE_SUPPORT_THEOREMS_REQUIRE_CURRENT_HEAD_NATIVE_QUALIFICATION",
+    "historical_inputs": [
+      "Zeta23.CCM.LiftedPredecessorDeterminantRigidity",
+      "Zeta23.CCM.LiftedPredecessorRegularity",
+      "Zeta23.CCM.CanonicalPoleNeutralTiePackage",
+      "Zeta23.CCM.CanonicalPoleNeutralCubicWitness",
+      "Zeta23.OPICARound3.NewbornSource",
+      "Zeta23.OPICARound4.CommonQuarticGround",
+      "Zeta23.OPICARound4.JointGroundBirth"
+    ],
+    "result": "Actual moving-frame regularity composes with eventual common-quartic negativity. The selected own births have regular Schur realizations; the separate shared-negative-ground source branches gain exact full-complement, cubic-energy and moment constraints.",
+    "not_supplied": [
+      "No negative tie exclusion follows from zero invertibility.",
+      "No aperture stationarity follows from integer-cutoff first birth or dense regular selection.",
+      "No existing exponentially deep packet is silently retained at the newly selected aperture.",
+      "No sign or sufficiently small size is proved for the complete signed arithmetic source value.",
+      "Source-specific arithmetic opposition and RH remain OPEN."
+    ],
+    "new_modules_sha256": {
+      "Zeta23.OPICARound4.TiedNewbornResponse": "44ba0ed48fb0cc43755ac2565fc2e4f14d2f5d41411d6c9c33d7fc6de122029d",
+      "Zeta23.OPICARound4.NewbornSpectralVisibility": "119d1d768aeaff2d32e92c37a917fe41e3254c110f4904eadb9d4fd35bd32740",
+      "Zeta23.OPICARound4.TiedCubicEnergy": "9afeff203daa7590c2a1498a43be653fe37c167257aa73330efb8cd184e1ea1b",
+      "Zeta23.OPICARound4.TiedSilentMoment": "92099e5f590fcf902979394ee32c3eab4286254b6b109be8c7cb25d06ece2623",
+      "Zeta23.OPICARound4.RegularCells.AnalyticFiniteSelector": "d6658d587f31e41760bafeb63807a1ffcfebc698e1ab38af2e9f6088dc59eaca",
+      "Zeta23.OPICARound4.RegularCells.NativeZeroRegularity": "2027f6068f8b869e99787c88547d4026d2d8e9b6234a0f96ec57363046f8736c",
+      "Zeta23.OPICARound4.RegularCells.NativeRegularBirthSelection": "0cf1f3205faee3025202652d7181933ead72a1c5588ea4f7457d0da065f7b58a",
+      "Zeta23.OPICARound4.Validation.NativeGroundRegularity": "183c766b0894c0cad771d539e4d7b8fb393fddd08fb4d34a23bf5069eac5d622"
+    },
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "actual_prime_full_spectrum_packet": {
+    "status": "EXACT_SOURCE_SUPPORT_THEOREMS_REQUIRE_CURRENT_HEAD_NATIVE_QUALIFICATION",
+    "atlas_sha256": "b80311902901971191173ffe876f8d0a8b5d58545aec9365fdbc118a9bf912d3",
+    "result": "Full source and Gram pencils have a nonzero actual-prime separation determinant. Finite regular disjoint selection is composed with strict detector-depth margins by reconstructing the genuine packet at the selected aperture. The same packet retains its exponential depth, normalization, source data and quartic cutoff. All complete source eigenchannels are visible and eigenspaces are at most one dimensional when the full spectra are disjoint.",
+    "previous_boundary_now_paid": [
+      "Aperture selection previously did not preserve a deep packet automatically; the packet is now rebuilt with a strict depth margin.",
+      "Zero invertibility alone did not separate shared negative eigenvalues; a distinct actual full-source spectral determinant now supplies separation at selected apertures."
+    ],
+    "remaining": [
+      "No uniform spectral gap or lower source-overlap magnitude follows from nonzero determinants.",
+      "Full signed response residues are not all positive; historical actual-source mixed-sign controls remain relevant.",
+      "The complete signed arithmetic lower bound remains unproved; RH and Step4 remain OPEN."
+    ],
+    "new_modules_sha256": {
+      "Zeta23.OPICARound4.RegularCells.NativeDiagonalSeparation": "7957f3d5b13ba384b483e5aed269e6ff64bbe2f435fdb64536334b7c124c2e0d",
+      "Zeta23.OPICARound4.RegularCells.NativeCompressionSeparation": "ee958f74d339e768ede6112b64cc0fa74fe9193e3d9fc6e70cb8e4e97d02c86d",
+      "Zeta23.OPICARound4.RegularCells.SylvesterSeparation": "690abdb1f393a8c5c90d928382b4e1575558c60df41c961dbf4971c06267c232",
+      "Zeta23.OPICARound4.RegularCells.MeromorphicFrequencyIndependence": "0b48059f8334327e7fda9048258c765758f5071595b7e6deab600da7bd9722cc",
+      "Zeta23.OPICARound4.RegularCells.PrimeLaurentNonidentity": "ba1ba95caae0930504836d37373f215e650ab0db81ca9bb85cf37656523f119d",
+      "Zeta23.OPICARound4.RegularCells.FinitePrimeLaurentAlgebra": "0a78cd30147225a43808f8f2f0efcc177dd81c110eca05b954f79d9fa82d48f6",
+      "Zeta23.OPICARound4.RegularCells.PrimeSourceLaurent": "8c51247b111e8d1137bedf9dac47aaf905424ae74474cfe3dde5d5882477b9e4",
+      "Zeta23.OPICARound4.RegularCells.NativeZeroFrame": "a1a597740c22ab85c091f023218101bf61ff7040c8b8e6b268db69b158235372",
+      "Zeta23.OPICARound4.RegularCells.NativeCosineSeparation": "05296d4b3260863d4bb01beec18bc7d6718b7a63faf5dab726d9eda6453d3dc7",
+      "Zeta23.OPICARound4.RegularCells.FrozenSourceContinuation": "0a4d2e9d63d53e710c5e86472c046b51732eed78bb7db1361aac3bfe4e8801d6",
+      "Zeta23.OPICARound4.NewbornCubicEnergyBound": "ec9e4f5a65806194d5506fc76c1838b60273865f77afc83a7d77f2f2fe7675f7",
+      "Zeta23.OPICARound4.RegularCells.NativePrimeIsolation": "9dc6c402ca2d5383cedc69ccbce888d5f5f8fd3c511b511094f7b0629efb91a8",
+      "Zeta23.OPICARound4.RegularCells.NativePrimeExpansion": "47b01ca95c0b30901ee6145bee32a01d97bf2cc0d68aaa2bc0a56b99d2eb992e",
+      "Zeta23.OPICARound4.RegularCells.NativePrimeGerms": "004ecbc275b40faeaa1e4cb6aff0a80e430e0f0910177a2b9c5344c95666700a",
+      "Zeta23.OPICARound4.RegularCells.NativeParityPencils": "0d183d38b751c4d90d76564815406abf101dbb5a50329ae8e68e7e4057a844fe",
+      "Zeta23.OPICARound4.RegularCells.NativeParityZeroPencils": "f8b8942a261a41095f34241259baf7e998d829bdaaf12a4a3c2f1654aa3df53e",
+      "Zeta23.OPICARound4.RegularCells.MatrixSylvesterCoordinates": "1929e67c38447945f93b9008f790185ffec8bd9c3772440fbc06dcef9d0d054b",
+      "Zeta23.OPICARound4.RegularCells.NativeParityMatrixPencils": "0e8d03e4a284eef0430afd8c871132008861f7c885579db96be8549117162800",
+      "Zeta23.OPICARound4.RegularCells.NativeParityPhysicalSeparation": "bdc8cd9f07b7195b91340d13e4088e956012b5d7d772b336a40349e1f10d50d2",
+      "Zeta23.OPICARound4.RegularCells.NativeParityPrimeAnchor": "2c0d31ace7a750b4c9c4ab7e372910b07a1a8baa7019c135ba4e10057a6cae90",
+      "Zeta23.OPICARound4.RegularCells.NativeParityNonidentity": "2c9ce939b1ea84071c0289d68433d88698fdd3d52834419ed3e5e16b8e66286b",
+      "Zeta23.OPICARound4.RegularCells.NativeParityRegularSelection": "b9d6e1194864725f250ce05f863da35beada9133a94abf5ff71602cb0adf3b2c",
+      "Zeta23.OPICARound4.SeparatedSourceVisibility": "cc46ff5be622db2a9052a5d08b86c7eeded480daf46a804c304dc5ed863f6a2b",
+      "Zeta23.OPICARound4.RegularCells.PacketRegularSelection": "142c5c4e9d143bdb436e462c03dceca3be0265b9b902758a6061148c050ff66d",
+      "Zeta23.OPICARound4.RegularCells.PacketNoncollisionSelection": "a6ecebce57b5c560a610991a713c3e8c76475678fbab971191c39208a951cb44",
+      "Zeta23.OPICARound4.RegularCells.PacketSpectralSelection": "d86fe4a10cb14228f88a58756d1f612c5e71fdbbdf9938ba209021524d293464",
+      "Zeta23.OPICARound4.Validation.NativeNoncollision": "3c3a0c3613062c24644928e4caf37128b26cacacbddbc06c3104c798755dcfa8"
+    },
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "uniform_moment_restricted_quartic_margin": {
+    "status": "EXACT_SOURCE_SUPPORT_THEOREMS_REQUIRE_CURRENT_HEAD_NATIVE_QUALIFICATION",
+    "result": "Assuming an actual off-line zeta zero, one fixed positive relative margin holds on the entire sufficiently late aperture tail at the prescribed original quartic cutoff. The literal even trial has M4=0; the literal odd trial has M3=M5=0. No trial is projected or replaced by a ground eigenvector. The exact normalization and source placement are retained. No margin is transferred to a first-birth or selected Schur cutoff, and no independent arithmetic lower bound is supplied.",
+    "proof_sources": [
+      {
+        "path": "work/opica-madness-closure-2026-11-01/ground/common-quartic-margin/CommonQuarticMargin.lean",
+        "sha256": "a757921dc47cb1e6ad0661c7c25e8875214b9bfc1cab6c723ac6c93dcbb8789f",
+        "bytes": 10639,
+        "declarations": [
+          "Zeta23.OPICARound4.recenteredFiniteApprox_interval_energy",
+          "Zeta23.OPICARound4.recenteredSmoothPhase_interval_energy_eq_one",
+          "Zeta23.OPICARound4.recenteredFinitePhase_mass_error_le",
+          "Zeta23.OPICARound4.exists_recentered_mass_control_threshold",
+          "Zeta23.OPICARound4.recentered_negative_phase_eventually_relative_margin",
+          "Zeta23.OPICARound4.eventually_both_ground_margins_at_original_quartic"
+        ],
+        "body_lf_sha256": "4b6a371871ce40d2b97f71479986d55b737d52880c597495f63de1b164fad0b5",
+        "transformation": "KEEP_ALL_DECLARATION_BODIES_REMOVE_EXTERNAL_IMPORTS_NAMESPACE_WRAPPER_AND_TRAILING_PRINTS"
+      },
+      {
+        "path": "work/opica-madness-closure-2026-11-01/ground/common-quartic-moments/CommonQuarticMoments.lean",
+        "sha256": "42dd894aec83ad400caf6e45dbfed3a2736cfbd88a095316af5131141f81e992",
+        "bytes": 4679,
+        "declarations": [
+          "Zeta23.OPICARound4.originalDetectorFiniteEvenPhase_moment_four",
+          "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_three",
+          "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_five",
+          "Zeta23.OPICARound4.eventually_both_negative_moment_slices_at_original_quartic"
+        ],
+        "body_lf_sha256": "2feec82a38a6e188fcdbefa523d9d5a0389361226730c0614970b7d15e6db764",
+        "transformation": "KEEP_ALL_DECLARATION_BODIES_REMOVE_EXTERNAL_IMPORTS_NAMESPACE_WRAPPER_AND_TRAILING_PRINTS"
+      },
+      {
+        "path": "work/opica-madness-closure-2026-11-01/ground/common-quartic-moments/CommonQuarticMomentMargins.lean",
+        "sha256": "19846091ad5eb70a2e1faaed6766f4a99cc1ccd473f555c5441d30622f8e6729",
+        "bytes": 3386,
+        "declarations": [
+          "Zeta23.OPICARound4.eventually_both_moment_slice_margins_at_original_quartic"
+        ],
+        "body_lf_sha256": "af37b222f2a524d8cc5ab269fa686bdd83126823b5238c7b84d9208924f0ccbb",
+        "transformation": "KEEP_ALL_DECLARATION_BODIES_REMOVE_EXTERNAL_IMPORTS_NAMESPACE_WRAPPER_AND_TRAILING_PRINTS"
+      }
+    ],
+    "declarations": [
+      "Zeta23.OPICARound4.recenteredFiniteApprox_interval_energy",
+      "Zeta23.OPICARound4.recenteredSmoothPhase_interval_energy_eq_one",
+      "Zeta23.OPICARound4.recenteredFinitePhase_mass_error_le",
+      "Zeta23.OPICARound4.exists_recentered_mass_control_threshold",
+      "Zeta23.OPICARound4.recentered_negative_phase_eventually_relative_margin",
+      "Zeta23.OPICARound4.eventually_both_ground_margins_at_original_quartic",
+      "Zeta23.OPICARound4.originalDetectorFiniteEvenPhase_moment_four",
+      "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_three",
+      "Zeta23.OPICARound4.originalDetectorFiniteOddPhase_moment_five",
+      "Zeta23.OPICARound4.eventually_both_negative_moment_slices_at_original_quartic",
+      "Zeta23.OPICARound4.eventually_both_moment_slice_margins_at_original_quartic",
+      "Zeta23.OPICARound4.Validation.actual_recentered_mass_error_consumer",
+      "Zeta23.OPICARound4.Validation.actual_both_moment_slice_margins_consumer"
+    ],
+    "previous_boundary_now_paid": "Fixed unnormalized phase negativity now has a source-uniform mass bound, giving a fixed normalized negative margin on both literal moment-zero trial families at the same Kd.",
+    "not_asserted": [
+      "A fixed margin at the selected Schur cutoff or either first-birth cutoff.",
+      "Two parity depths growing exponentially with aperture.",
+      "A signed arithmetic opposition bound, an RH theorem, or closure of Step 4."
+    ],
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "published_research_2026_11_02": {
+    "schema": "OPICA4_PUBLISHED_RESEARCH_V1",
+    "source_head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "source_tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "authority": "RESEARCH_PROVENANCE_AND_DISCOVERY_DOCUMENTS_NOT_PRODUCTION_THEOREM_PROMOTION",
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "handover": "research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md",
+    "files": {
+      "HANDOVER.md": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md",
+        "sha256": "33c5aca90e02f15a42678f72855154571367a040bdc521ee273705f2efdf04e0"
+      },
+      "CHECKPOINT.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/CHECKPOINT.json",
+        "sha256": "9d4761a998e09a62f5fb3d66c9b48da0332e115101f010eb15ca1d295752619a"
+      },
+      "OUTCOME_REGISTER.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/OUTCOME_REGISTER.json",
+        "sha256": "f813c1133c21e433097735a473d2d7dc36890e14152969607f2c040aa7e39019"
+      },
+      "RESEARCH_DEPENDENCIES.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/RESEARCH_DEPENDENCIES.json",
+        "sha256": "cb8245d010e6b59633927fb9cef34949e088dbd4b8d16d7e15f7d5c4fe9f4954"
+      },
+      "PORTABLE_ARCHIVE_MANIFEST.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/PORTABLE_ARCHIVE_MANIFEST.json",
+        "sha256": "0c284c8d65bb4a4e95a71844670bca72e1b97599e4e5518f600e9dcc909d39f9"
+      },
+      "EXTERNAL_FORMAL_INVENTORY.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/EXTERNAL_FORMAL_INVENTORY.json",
+        "sha256": "d0b53efc6c6d0338b848f89eacab4493918fcf7b5e7149e33bf3a7f2e2a731da"
+      }
+    },
+    "production_counts_unchanged": {
+      "declarations": 1079,
+      "modules": 90,
+      "semantic_controls": 84,
+      "portable_per_mode": 231,
+      "native_methods": 46
+    },
+    "graph_scope": "New research/document discovery nodes and explicit evidence references; no new formal proof edges."
+  },
+  "arithmetic_frontier_2026_11_07": {
+    "input": "Maintainer build specification \"Native Arithmetic Constraint Discovery and Closure Build Specification\" (2026-11-07), pinned to 9c517db0befa1131bb60d37cfef2888ed69447a9.",
+    "research_resumed_by": "Explicit maintainer instruction in this session; no archived document authorized it.",
+    "built": [
+      "Exact moment slices, seed charts, Gram transport, frame comparisons and exact dimensions",
+      "(C1) conditional consumer to Mathlib RiemannHypothesis",
+      "Narrow selected-packet consumer without a global shared-ground premise",
+      "Complete inverse-residual block certificate (C3)",
+      "Finite source-core consumer (C4) and negative-witness transport (E2)",
+      "Seven expanded consumers and twelve semantic controls",
+      "Arithmetic-frontier registers, schemas and experiments"
+    ],
+    "not_built": [
+      "L=4/L=5 evidence import and replay",
+      "L=6 horizon experiment",
+      "leakage modules",
+      "checker soundness and enclosure bridge",
+      "universal approximate kernel",
+      "any independent arithmetic supplier"
+    ],
+    "drive_coverage": "114 files discovered by an exact title/date query; none hashed or proof-audited in this pass.",
+    "local_evidence": "Pinned Lean v4.33.0-rc2 Linux build of the complete Round4 validation closure; all 1176 complete types audited with only propext, Classical.choice and Quot.sound; 96 controls rejected by type mismatch.",
+    "registers": "research/RHRC/integration/opica_round4/arithmetic_frontier/",
+    "claim_boundary": "Support only. No new arithmetic sign. RH and Step4 OPEN."
+  }
+}

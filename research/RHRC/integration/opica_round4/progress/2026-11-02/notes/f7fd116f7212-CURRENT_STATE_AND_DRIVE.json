@@ -1,0 +1,94 @@
+{
+  "created_utc": "2026-11-02T13:01:23.776406+00:00",
+  "status": "CURRENT_HEAD_UNCHANGED_BOUNDED_METADATA_REFRESH",
+  "live_pr": {
+    "number": 299,
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/pull/299",
+    "state": "open",
+    "draft": true,
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "updated_at": "2026-11-02T02:38:28Z"
+  },
+  "remote_git_commit": {
+    "sha": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "authority": "Fresh GitHub GET /repos/HMarcusWH/zeta-23-lean/git/commits/<head> via gh api; first restricted-network attempt failed to connect, subsequent read-only network-authorized request returned these exact values."
+  },
+  "local": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "clean": true,
+    "active_build_marker": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round4-integration-evidence\\ACTIVE_BUILD.json",
+    "marker_exists": false
+  },
+  "drive_comparison": [
+    {
+      "folder": "FINALGATE_METADATA.json",
+      "previous_count": 80,
+      "current_count": 80,
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "metadata_fields": [
+        "title",
+        "mime_type",
+        "size",
+        "modified_time"
+      ],
+      "previous": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\FINALGATE_METADATA.json",
+        "sha256": "a91a66e421080f641e7a2f56d18a9f68f66be4f81279268e1ff3022c807df435",
+        "bytes": 66394
+      },
+      "current": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\drive\\k3-component-refresh-2026-11-02\\FINALGATE_METADATA.json",
+        "sha256": "ff83cf0ff7b13deda4f56f87861845acb93afd92feb83e8ae69d5d886d210ded",
+        "bytes": 135383
+      },
+      "scope": "Direct folder children; returned count below the tool limit100. Metadata equality only, no fresh document-content hash assertion."
+    },
+    {
+      "folder": "PAPERS_METADATA.json",
+      "previous_count": 43,
+      "current_count": 43,
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "metadata_fields": [
+        "title",
+        "mime_type",
+        "size",
+        "modified_time"
+      ],
+      "previous": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\PAPERS_METADATA.json",
+        "sha256": "b5f9a2367d744580c51ee65461a2606a358686f2d598df6407f33cce2eb0e013",
+        "bytes": 36551
+      },
+      "current": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\drive\\k3-component-refresh-2026-11-02\\PAPERS_METADATA.json",
+        "sha256": "ef9a3532a735d06a7dbac76822d95eae70064708ae08635e20c34d7f98d3d87f",
+        "bytes": 75102
+      },
+      "scope": "Direct folder children; returned count below the tool limit100. Metadata equality only, no fresh document-content hash assertion."
+    }
+  ],
+  "prior_complete_ci": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next18\\COMPLETION.json",
+    "sha256": "2f19a21fadc77c45f5341166af2a1e74fc8dc0f5a5826c5f773229b6f356852f",
+    "bytes": 2540
+  },
+  "ci_scope": "No new CI polling or artifact download. Reuse completed same-head exact scientific harvest:24 runs,97 jobs,95success,2 optional skips. External new mathematics is not covered by that production CI.",
+  "fresh_pr_metadata": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\drive\\k3-component-refresh-2026-11-02\\PR299_METADATA.json",
+    "sha256": "b8a712636e37e9ab99b8da06fa5dc4667632b7c7d3e9464be1ed5de5d815a68f",
+    "bytes": 7778
+  },
+  "handover_read": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\GAMMA_PRIME_REVIEW_AND_COMPARISON_COMPLETION.json",
+    "sha256": "868c7f6f86dca483d9f3ff5eb861eaf2d62402de06c14cf34635b91a5f993199",
+    "bytes": 14451
+  },
+  "no_repository_edits": true,
+  "no_file_content_downloads": true
+}

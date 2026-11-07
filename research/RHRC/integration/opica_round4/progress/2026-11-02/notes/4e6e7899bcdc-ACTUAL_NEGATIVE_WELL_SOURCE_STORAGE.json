@@ -1,0 +1,129 @@
+{
+  "status": "DERIVED_FULL_SOURCE_NEGATIVE_WELL_STORAGE_RH_OPEN",
+  "created_utc": "2026-11-02T13:46:12.737589+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "clean": true
+  },
+  "sections": [
+    {
+      "id": "W1",
+      "title": "Exact actual source and the fixed-history convention",
+      "proof": "Keep the actual native K=3 even/odd family, full norms, physical normalization and every prime-power/Arch/pole channel of the corrected seam audit. Set Xe=L^9 Qe/Ce, Xo=L^7 Qo/Co, Ce=720^2(2pi)^8=36pi^2 Co, and F=Xe''+Xo. This report does not replace the source by arbitrary exponential coefficients. Its input is the independently reviewed COMPLETE actual all-zero equality, with multiplicities and both reflected halves:\n Xe(L)=2 sum_p m_p b(p)(exp(pL)-1)r_p(L),\n b(p)=(1/4-p^2)^2/p^14,\n r_p(L)=product_(n=1)^3(1+(2pi n/(pL))^2)^(-2).\nHere p=rho-1/2 runs over all actual shifted zeros. The current strip, conjugation/one-sub symmetry, nonreal-zero theorem and inverse-square summability give a fixed eta>0 with |Im p|>=eta, 0<=Theta=sup Re p<=1/2, and all coefficient masses used below finite. No maximum of Re p is assumed. Choose ONCE L0>max(1,12pi/eta). Define the actual history\n P(L)=integral_(L0)^L Xe(t)dt.\nThis lower endpoint is never reset at a well. Thus P'=Xe exactly, and all pre-well history after L0 is retained. Choosing a different fixed L0 changes a fixed source constant, not the argument or the original response.\n\nThe principal quantitative estimate below is stated under an actual off-line zero, hence Theta>0. This premise is already necessary for the proposed late negative-well route. Constants may depend on this actual Theta and the fixed source, but are fixed BEFORE the choice of any well. No estimate uniform as Theta decreases to0 is claimed. The exact integration identities themselves need no off-line premise."
+    },
+    {
+      "id": "W2",
+      "title": "Uniform full-source primitive reduction with one further aperture power",
+      "proof": "Put a*=36pi^2 and c=112pi^2. As a function of z=1/(p^2 L^2), r=product_n(1+(2pi n)^2 z)^(-2) is holomorphic in |z|<1/a*. On |z|=1/(2a*) its absolute value is at most64. Cauchy's coefficient bound therefore gives, uniformly for |a*z|<=1/4,\n r=1-c/(p^2 L^2)+epsilon_p,\n |epsilon_p|<=512 a*^2 |p|^-4 L^-4,\n |epsilon_p'|<=4096 a*^2 |p|^-4 L^-5,\n |epsilon_p''|<=32768 a*^2 |p|^-4 L^-6.\nThe derivatives are in real L. For completeness, if q=2a*|z|<=1/2, the last two estimates use sum_(j>=2)j q^j<=8q^2 and sum_(j>=2)j(2j+1)q^j<=64q^2. These estimates cover the ENTIRE zero family; the small denominator condition is paid by L0 and eta.\n\nDefine real source quantities\n C0=2 sum_p m_p b(p),    C2=2 sum_p m_p p^2 b(p),\n V1(L)=2 sum_p m_p b(p)exp(pL)/p,\n Bj=2 sum_p m_p |b(p)| |p|^(-j), j=-2,0,1,2,3,4.\nConjugation makes C0,C2,V1 real. C0 and C2 are retained with their actual signs, which are not assumed here. Normal convergence and the uniform remainder give\n Xe=V1'-C0+delta,\n |delta(L)|<=D(exp(Theta L)+1)/L^2,\n F=C2+4c L^-3 V1+R0,\n |R0(L)|<=A/L^2+B exp(Theta L)/L^4.                       (W2.1)\nExplicit safe choices are Cr=32768 a*^2,\n D=c B2+Cr B4,\n A=c B0+(Cr+6c)B2+Cr B4,\n B=6c B2+2Cr B3+Cr B4.\nIndeed the exact identity is\n F=2 sum_p m_p b(p)[p^2 r_p-r_p''+exp(pL)(2p r_p'+r_p'')].\nThe first part differs from C2 by O(L^-2). In the exponential part, 2p r_p' has leading4c/(p L^3), while r_p'' contributes -6c/(p^2 L^4). These are source terms, not discarded remainders justified by cancellation.\n\nThe primitive comparison is exact:\n V1(L)-P(L)=C0(L-L0)+V1(L0)-integral_(L0)^L delta(t)dt.\nLet T=max(L0,4/Theta), E=integral_(L0)^T |delta| and\n V*=|V1(L0)-C0 L0|+E+D/T.\nFor L>=T, derivative[exp(Theta t)/t^2]>=(Theta/2)exp(Theta t)/t^2 on t>=T, hence\n |V1-P|<=|C0|L+V*+(2D/Theta)exp(Theta L)/L^2.\nIt follows that the SAME complete source obeys\n F(L)=C2+448pi^2 L^-3 P(L)+R(L),\n |R(L)|<=A*/L^2+B*exp(Theta L)/L^4,                      (W2.2)\nwhere A*=A+4c|C0|+4cV*, B*=B+8cD/Theta are safe. Here R is DEFINED by the exact displayed equality; the bound is proved, not an assumed source budget. All constants are fixed before the well. No early source interval, constant channel, negative square, normal, or prime power is dropped. This improves the remaining exponential allowance by one aperture power after the actual primitive has been extracted; it does not make the remainder relatively small against arbitrary cofinal exp(alpha L) excursions with alpha<Theta."
+    },
+    {
+      "id": "W3",
+      "title": "Actual negative-well storage and the entry-history cost",
+      "proof": "Let [A,B] lie beyond T and be a bounded negative well of Xe: Xe(A)=Xe(B)=0 and Xe<0 on (A,B). Write w=-Xe=-P'>0 and define the nonnegative storage\n H(L)=224pi^2 L^-3 P(L)^2.\nThe actual seam regularity already paid in the companion report is more than enough for the following ordinary integration by parts, including across prime-power seams:\n integral_A^B w F\n   =C2 integral_A^B w +H(A)-H(B)\n      -672pi^2 integral_A^B L^-4 P(L)^2 dL\n      +integral_A^B w R.                                  (W3.1)\nThus SAME arithmetic generation does yield a signed favorable bulk. It is accompanied by the exact entry storage H(A); setting P(A)=0 would change F and erase a real history term.\n\nCombining the exact well identity integral w Xo=integral wF-integral|w'|^2 yields, if there is no simultaneous negative parity on this well (so Xo>=0),\n integral |w'|^2+H(B)+672pi^2 integral L^-4 P^2\n <=H(A)+C2 integral w+integral wR.                         (W3.2)\nThe residual in this expression has the explicit source-fixed bound (W2.2). This is a necessary cost on the actual complete response, not an independently supplied upper bound or a new conditional RH criterion. In particular C2 integral w and H(A) cannot be omitted, nor may the bound exp(Theta L)/L^4 be called rapid or small compared with exp(alpha L)."
+    },
+    {
+      "id": "W4",
+      "title": "Why summing actual wells does not telescope away history",
+      "proof": "For any finite ordered disjoint collection of bounded actual negative wells [Aj,Bj],\n sum_j[H(Aj)-H(Bj)]\n =H(A1)-H(Bm)+sum_(j<m)[H(A_(j+1))-H(Bj)].\nEvery intervening term is exactly\n integral_(Bj)^(A_(j+1)) [448pi^2 L^-3 P(L)Xe(L)-672pi^2 L^-4 P(L)^2]dL.\nFor consecutive wells the intervening response is nonnegative apart from possible zeros. Its product with the complete earlier primitive P still has no established sign. These terms are the replenishment of history; they are not absent boundary terms. Passing to infinitely many wells would additionally require convergence of the displayed endpoint/interval sums. No such convergence is inserted here.\n\nThe older source-pair Green identity already shows the analogous danger: removing true homogeneous pieces pays internal seams but leaves a full source forcing and outer boundary. Its positive bulk/integrability damping gap is not repaired merely by this different primitive. The complete causal Selberg energy similarly retains finite-history terms. The present new extraction gives the precise actual scalar entry cost and one extra inverse-aperture power, rather than claiming that those older full forcing terms have vanished."
+    },
+    {
+      "id": "W5",
+      "title": "The precise failure of a Fourier-gap shortcut for this well weight",
+      "proof": "The actual zero ordinate gap |Im p|>=eta is used correctly in W2 to expand the rational multiplier. It does NOT give a Fourier spectral gap for a restricted actual negative-well weight. For any a>=0 let y(L)=1_[A,B](L)exp(-aL)w(L). This is a nonzero nonnegative compactly supported function, so its ordinary Fourier transform satisfies\n yhat(0)=integral_A^B exp(-aL)w(L)dL>0.\nBy continuity it has nonzero low-frequency content on a neighborhood of0. This is a direct fact about the hypothesized ACTUAL well, not an arbitrary exponential model. Therefore a Parseval argument asserting Fourier support outside (-eta,eta) for y is false. Multiplication by a window and taking a negative part do not preserve the zero-family frequency restriction; off-line exponential factors already prevent the naive whole-line L2 interpretation.\n\nThe exact damped identity is instead\n integral_A^B exp(-2aL)w Xo\n =integral_A^B exp(-2aL)wF -integral_A^B |y'|^2+a^2 integral_A^B y^2.\nThe only automatic interval bound here is integral|y'|^2>=(pi/(B-A))^2 integral y^2, not eta^2 times that norm. A useful upper bound on the actual well width, or another independently proved source-dependent inequality, would be needed to turn this damped identity into the proposed coercivity. Whole-half-line damping a>Theta can make the actual complete source integrable and bound a causal primitive, but it neither removes these well boundaries nor supplies that width estimate. The countercheck above refutes the spectral-support premise; it does not assert that every numerical eta-Poincare inequality fails for the actual wells."
+    },
+    {
+      "id": "W6",
+      "title": "Bounded research outcome and exact authority",
+      "proof": "The new source-specific deduction is W2.2-W3.2: a nonnegative complete-history storage, a favorable signed bulk, and a quantitatively smaller residual derived from the full shared zero source. This goes beyond the prior termwise sign tests and uses no arbitrary coefficient replacement. The remaining costs are the actual history entering each well, its replenishment across intervening intervals, the full constant channel and the still-exponential residual. No current ground, contact, first-birth or source-normalization identity independently bounds these costs for this varying-aperture response. Fixed-K native ground constraints cannot be relabelled as a Fourier support theorem for w.\n\nNo simultaneous negative pair, independent signed upper bound, all-L positivity, Step4 or RH closure follows. Existing formal statements and production inventories are unchanged. This is DERIVED external analysis from the reviewed complete K3 equality and current source interfaces, not a new Lean theorem or compiler/CI result. No source quadrature, zero truncation, numerical fit, new proof build or repository edit was performed. The next informative mathematical comparison is an independently paid control of the actual storage/replenishment or the signed residual on these same wells, rather than a repeated termwise sign assumption."
+    }
+  ],
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\Defs.lean",
+      "sha256": "216b34de76394522aea610c57d342f3dfe8aa1c3d9d6b2ec11509de92f1c6bb0",
+      "bytes": 16255,
+      "role": "Actual all-distinct-zero convention and multiplicity",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\WeilContinuity.lean",
+      "sha256": "e41ff5a56fbaeb90caaf779486272129661e25795dc8cc8e2260b13756eddeb4",
+      "bytes": 12852,
+      "role": "Current complete inverse-square zero mass",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceMatrix.lean",
+      "sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "bytes": 7204,
+      "role": "Literal finite source atom and endpoint normalization",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalGlobalF04.lean",
+      "sha256": "f1538bb374dc04f6a3ffcbcf9b6cdb6f4d27a584f07eb545d8e32aeab14f2ec8",
+      "bytes": 20666,
+      "role": "Complete source and actual prime-cutoff derivatives",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPrimeFreeF04.lean",
+      "sha256": "f02785ed02e6601d4703d387f5502d3524ab222980936f671fdb80c845d57291",
+      "bytes": 45969,
+      "role": "Complete regularized Arch/source derivatives",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\JointGroundConstraints.lean",
+      "sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7",
+      "bytes": 11983,
+      "role": "Same-state ground assumptions, not aperture-window spectral support",
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\global-aperture-seams\\ACTUAL_GLOBAL_K3_FORCING_SEAMS_AND_CONTACT.json",
+      "sha256": "3129e82ccc5f787d2aaf0fda82aaac407f0866c66092e0bc9233edee83845c0f",
+      "bytes": 20630,
+      "role": "Corrected38 full seam/negative-well prerequisite, immutable3129"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_FIXED_K3_APERTURE_LANDAU_DERIVATION.json",
+      "sha256": "493530834a96fe6f19d4876a253044249a27a9afa25cda84fcfdc1e74ea888ca",
+      "bytes": 20564,
+      "role": "Complete actual all-zero equality, gap and uniform convergence"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\INDEPENDENT_FIXED_K3_APERTURE_REVIEW.json",
+      "sha256": "c2e85a34a11833af9a024093be9e61f13b7e1f882d06873a9e56eeb8c88b2f68",
+      "bytes": 11240,
+      "role": "Prior independent source/continuation review; authority retained"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_PARITY_COUPLING_AND_FORCING.json",
+      "sha256": "5f02b1c91ea797b6db761e143fb86fd275af6202b1cbc5bb515e16ba6e23b1a2",
+      "bytes": 17288,
+      "role": "Exact full F and earlier inverse-aperture bound"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-pair-covariance\\ACTUAL_PIECEWISE_GREEN_IDENTITY.md",
+      "sha256": "8d5ce78ccecc58d532488aa302e3d0a668f3287ca12a1c724ea1b5c099c95e3b",
+      "bytes": 10634,
+      "role": "Older actual full-history Green/boundary obstruction, historical source scope"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\long-tail-selberg-energy\\ACTUAL_CAUSAL_SELBerg_ENERGY.md",
+      "sha256": "1a2bb6ccfbe456a4d6d4ea7eff14b5a157abae8b4e8ce835266198fc10adb945",
+      "bytes": 14797,
+      "role": "Older actual causal complete-history energy cost, not a new supplier"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\negative-well-source-storage\\write_audit.py",
+      "sha256": "db1115b41a9674e13efc3877d958343f30559a4685205bfcb578048f007e1c1e",
+      "bytes": 13800,
+      "role": "Authored binding helper; no symbolic or compiler claim"
+    }
+  ],
+  "verification": "Fresh current source reads and exact byte-to-Git checks. Analytical coefficient bounds and integrations derived explicitly. Hash/preflight only; no compiler, zero-sum truncation, prime enumeration, source quadrature or new CI.",
+  "contributions": "late_math derived the full-source primitive extraction, explicit uniform remainder, well storage and restricted-weight gap countercheck. Root proposed the same-source relative-energy route and required fixed-L0 history rather than restarting each well. Prime_math provided a bounded algebra challenge separately; no pending peer receipt is implied by this authorship statement."
+}

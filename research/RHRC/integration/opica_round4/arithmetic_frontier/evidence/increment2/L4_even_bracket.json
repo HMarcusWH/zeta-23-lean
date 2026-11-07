@@ -1,0 +1,124 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_NATIVE_SLICE_RUN_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "hashes": {
+    "gram_sha256": "c02e2f1e9397f8f1a760aed067b927462dc2a6b7f2bb260c286fd3eeaee7f744",
+    "prime_power_list_sha256": "223283a97feab1dfe75e4b527b272a6ba6bc6ac6137de900e3904bfaa57d3bc2",
+    "basis_proposal_sha256": "5fb82cb311fea88ccbb6a24601bf044f4af816b4e2bb7dbb7e281facb1db0f2f"
+  },
+  "state": {
+    "L_exact": "4",
+    "cutoff_expression": "originalDetectorQuarticCutoff(L)=ceil(L^4)",
+    "K": 256,
+    "Q": 54,
+    "prime_powers": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      11,
+      13,
+      16,
+      17,
+      19,
+      23,
+      25,
+      27,
+      29,
+      31,
+      32,
+      37,
+      41,
+      43,
+      47,
+      49,
+      53
+    ],
+    "parity": "even",
+    "carrier": "evenMomentSlice",
+    "dimension": 253,
+    "metric": "PHYSICAL_INHERITED_EUCLIDEAN",
+    "state_kind": "ACTUAL_STATE"
+  },
+  "precision_bits": 1024,
+  "source": {
+    "backend": "research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py",
+    "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+    "replay_module_sha256": "633bec1ecd4d6bfb8ba68077515be7880380b7b001e069d4efd67b2c38f4f203"
+  },
+  "basis": {
+    "kind": "FLOAT_W_ORTHONORMAL_PROPOSAL_EXACTLY_CORRECTED_ON_FOUR_PIVOTS",
+    "gram_certificate": {
+      "status": "CERTIFIED",
+      "tau": "1/4",
+      "residual_frobenius_upper": 1.3299013925779948e-15,
+      "certified_lower_eigenvalue": 0.24999999999999864
+    },
+    "flag_split_index": null,
+    "low_dimension": 0
+  },
+  "endpoint_certificates": [],
+  "diagnostics": {
+    "floating_generalized_eigenvalues_lowest": [
+      -3.416266741291725e-15,
+      -3.274592957566959e-15,
+      -3.0364429942806298e-15,
+      -2.6545610482163055e-15,
+      -2.5171080868115764e-15,
+      -2.3701213285799294e-15
+    ],
+    "floating_generalized_eigenvalue_highest": 8.329426808480278,
+    "near_null_count_below_1e-8": 49,
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING_ONLY"
+  },
+  "channel_extremes_on_slice": {
+    "pole": {
+      "floating_min": -3.689147322051666e-309,
+      "floating_max": 7.18554732114776e-309,
+      "rigorous_rayleigh_at_min_vector": "[+/- 9.28e-307]"
+    },
+    "minus_arch": {
+      "floating_min": -1.354148064336766,
+      "floating_max": 4.157624080190732,
+      "rigorous_rayleigh_at_min_vector": "[-1.354148064 +/- 3.37e-10]"
+    },
+    "minus_prime": {
+      "floating_min": -3.7876557375871043,
+      "floating_max": 4.241931905964832,
+      "rigorous_rayleigh_at_min_vector": "[-3.787655738 +/- 4.13e-10]"
+    },
+    "meaning": "each channel alone on the same slice and metric; the native form is pole - arch - prime",
+    "authority": "FLOATING_SPECTRA_WITH_ONE_RIGOROUS_RAYLEIGH_VALUE_PER_CHANNEL"
+  },
+  "bottom_vector_budget": {
+    "rayleigh_upper_bound": "[2.49736664514e-17 +/- 7.26e-30]",
+    "pole": "[+/- 3.74e-308]",
+    "arch": "[-2.08066331011 +/- 4.96e-12]",
+    "prime": "[2.08066331011 +/- 4.96e-12]",
+    "energy": "[2.49736664514e-17 +/- 7.27e-30]",
+    "physical_norm_sq": "[1.00000000000 +/- 8e-16]",
+    "relation": "energy = pole - arch - prime on this exact slice vector; the Rayleigh value bounds the slice bottom from above",
+    "authority": "RIGOROUS_ENCLOSURES_FOR_ONE_EXACT_SLICE_VECTOR"
+  },
+  "bottom_bracket": {
+    "rayleigh_upper": "[1.3110128e-245 +/- 3.36e-255]",
+    "rayleigh_upper_log10": -244.88239306796862,
+    "margin_lower": "2^-816",
+    "margin_certificate": {
+      "status": "CERTIFIED",
+      "tau": "1/436994993873214129706097166956708350993678881411295357199729151951767944417616335439228580716318181998128654620651240845861768505204366709906692902245553277900892247131030458103436298545516643924637451297481464347472084863384057367177715867713536",
+      "residual_frobenius_sq_ball": "[+/- 5.63e-605]"
+    },
+    "status": "BRACKETED",
+    "statement": "m ||x||^2 <= Q_p(L,x) for all x in the slice, and the exact vector attains <= rho ||x||^2"
+  },
+  "budget_records": [],
+  "seconds": 124.1,
+  "build_seconds": 103.7,
+  "campaign_entry": "L4_even_bracket"
+}
