@@ -1035,7 +1035,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/math_gate.py",
-      "sha256": "1dd56cbebada9513cce22c0036e28bac902a61085cd74d351a1b4f1cf2daf01f"
+      "sha256": "b04626f42dd05da9406d0b89bfccf843bf5764aa131f601a1b2abb61f5f57954"
     },
     {
       "path": "research/RHRC/integration/opica_round4/schemas/source_evaluator.schema.json",
