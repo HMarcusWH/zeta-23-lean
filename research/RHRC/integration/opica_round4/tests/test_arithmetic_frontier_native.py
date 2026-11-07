@@ -466,6 +466,25 @@ class Increment3EEvidenceTests(unittest.TestCase):
                 self.assertIn('residual_frobenius_sq_upper', rec['SCHUR_FULL_INVERSE_ACTION'])
 
 
+    def test_level3_reconstructions_of_the_n5_checkpoint(self):
+        rows = self.summary.get('independent_reconstructions', [])
+        self.assertTrue(rows)
+        certified = set()
+        for e in rows:
+            rec = json.loads((self.ev / e['file']).read_bytes())
+            self.assertEqual(sha(self.ev / e['file']), e['sha256'])
+            self.assertEqual(rec['hashes']['checker_sha256'], sha(ROOT / 'independent_check.py'))
+            self.assertEqual(rec['hashes']['native_source_sha256'], sha(ROOT / 'native_source.py'))
+            self.assertEqual(rec['hashes']['kernel_sha256'], sha(ROOT / 'certificates.py'))
+            self.assertEqual((rec['L'], rec['tolerance'], rec['dimension']), ('7', '1/5', rec['dimension_expected']))
+            self.assertEqual(rec['status'], e['status'])
+            if rec['status'] == 'CERTIFIED':
+                certified.add(rec['parity'])
+            else:
+                self.assertEqual(e['role'], 'PRESERVED_FAILED_ATTEMPT')
+        self.assertTrue(certified)
+
+
 class Increment3BEvidenceTests(unittest.TestCase):
     """E-D1 records stay bound to their summary and to the frozen tools."""
 

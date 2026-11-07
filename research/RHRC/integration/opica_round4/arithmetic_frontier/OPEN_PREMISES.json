@@ -79,7 +79,7 @@
       "id": "S-REACH",
       "statement": "Constructive certificate production with apertures escaping every bounded interval and physical errors tending to zero; cofinal_moment_slice_bounds_of_tendsto is its consumer.",
       "status": "OPEN",
-      "finite_progress": "Checkpoints n = 2, 3, 4 certified at L = 4, 5, 6 (evidence/increment2); a constructive all-n production remains OPEN. E-H7: checkpoint n = 5 at L = 7, eps = 1/5 certified in even and odd (kernel decision of the frozen tools via the inverse-residual consumer; no level-3 reconstruction at L = 7)."
+      "finite_progress": "Checkpoints n = 2, 3, 4 certified at L = 4, 5, 6 (evidence/increment2); a constructive all-n production remains OPEN. E-H7: checkpoint n = 5 at L = 7, eps = 1/5 certified in even and odd (kernel decision of the frozen tools via the inverse-residual consumer; no level-3 reconstruction at L = 7). Level 3: independent_check.py reconstructs the L = 7 checkpoint at 512 bits in both parities (CERTIFIED; evidence/increment3e)."
     },
     {
       "id": "S-POLE",

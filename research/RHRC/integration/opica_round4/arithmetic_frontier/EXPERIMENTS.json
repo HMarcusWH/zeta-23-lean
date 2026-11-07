@@ -308,7 +308,8 @@
       "acceptance": "Fixed numerical rules P9-P13 with hashed tools; one parity suffices for the checkpoint, both for the law.",
       "result": "Confirmed: P9, P11, P12, P13. Failed: P10. even: checkpoint 1/5 CERTIFIED via the consumer; inverse residual smallest tested degree 32; tail 1 F, 2 F, 4 F, 8 F, 16 F, 32 F, 64 U; near band 240, coupling 1.05e-06, response 5.27e-06; scalar gap FALSIFIED_BOUND, charge 97.2. odd: checkpoint 1/5 CERTIFIED via the consumer; inverse residual smallest tested degree 32; tail 1 F, 2 F, 4 F, 8 F, 16 F, 32 F, 64 U; near band 240, coupling 2.06e-06, response 1.03e-05; scalar gap FALSIFIED_BOUND, charge 106.1. Statuses are kernel decisions of the hashed tools (level 2); ladder witnesses are not retained in the records (receipt limitation recorded).",
       "outcomes": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3e/E-H7_OUTCOMES.json",
-      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3e/SUMMARY.json"
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3e/SUMMARY.json",
+      "level3": "Supplementary to the scoring: the n = 5 checkpoint is independently reconstructed (level 3, 512 bits) in both parities."
     },
     {
       "id": "E-NEARBAND-CERT",

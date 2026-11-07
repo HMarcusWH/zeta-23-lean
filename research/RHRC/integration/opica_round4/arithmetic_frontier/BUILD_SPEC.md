@@ -351,8 +351,10 @@ through the stated consumer implication: a certified full Schur form together
 with `A ⪰ aI` gives the hypotheses of
 `blockEnergy_nonneg_of_inverse_residual_certificate`. The statuses are kernel
 decisions of the frozen tools (level 2). The frozen tool does not retain
-ladder witnesses in its records (receipt limitation, recorded). There is no
-level-3 reconstruction at L=7.
+ladder witnesses in its records (receipt limitation, recorded). Separately
+from the scoring, `independent_check.py` reconstructs the n = 5 checkpoint
+`Q_p ≥ −⅕‖x‖²` at L=7 in both parities at 512 bits (level 3, CERTIFIED,
+about 23 minutes each).
 
 ## Not built yet
 
@@ -362,15 +364,18 @@ and [EXPERIMENTS.json](EXPERIMENTS.json).
 
 ## Next increments
 
-1. **Work package F (critical).** On the compressed carriers `Q = -arch - prime`
-   exactly (M50). Seek a decomposition of the joint signed budget into
-   independently controlled native terms plus an explicit remainder.
-2. Run E-H7 under the frozen rules (P9–P13). A failed prediction is recorded
-   as failed.
-3. Certified spectral projectors (or a projector-free bound) for the near-band
-   coupling mass, which would turn CR23 into a certificate input.
-4. `FiniteCertificateSoundness` and the native enclosure bridge, but only if
-   the chosen proof consumes numerical certificates.
+1. **A source-specific inequality at unbounded apertures (OPEN).**
+   Channel-separable and prime-truncated suppliers are blocked (CR25, CR26).
+   A supplier must control the exact explicit-formula cancellation of
+   `-arch - prime` across the whole prime cell on the near-null subspace.
+2. Quantify, in Lean, the off-line detection margin `d(ρ, L)` of
+   `eventually_no_moment_slice_lower_bound_below_margin` in δ and L (CR24
+   signal `ε* ≈ c(L)δ²`). This sharpens the interface and closes nothing.
+3. A witness-retaining successor of the frozen E-D1 tool for future
+   predeclarations, and the next checkpoint (n = 6, L=8) once its cost is
+   budgeted.
+4. Formalize CR27 and build `FiniteCertificateSoundness` and the native
+   enclosure bridge, but only if a chosen proof consumes them.
 
 Only a proved supplier composed with these consumers, validated on the final head,
 could support a Step 4 claim.

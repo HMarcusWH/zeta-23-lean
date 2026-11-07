@@ -37,7 +37,7 @@
   "scorer_sha256": "8fd461f599e828a18785f580a52ec111766d72f28d3a542e40505a7f5a1face6",
   "execution": "Driver producer/driver.py.txt called the frozen ed1_response.run(Fraction(7), parity, Fraction(1, 5), 1200, tail_max=64) after asserting every hashed tool. The even parity started first; the odd parity was started separately about 55 minutes later and ran concurrently (producer/RUN_NOTES.txt). No tool, parameter or rule was changed; BLAS threading was left at its default.",
   "receipt_limitation": "The frozen E-D1 tool keeps only status and floating minimum in its ladder rows: the kernel decided each status with an exact witness or factor certificate, but neither is retained in the record. SCALAR_GAP keeps its exact witness and SCHUR_FULL_INVERSE_ACTION its certificate data. Re-verifying a ladder status requires re-running the frozen tool. This applies equally to E-D1 (increment3b).",
-  "assurance": "Level 2 kernel decisions by the hashed tools; no level-3 reconstruction at L = 7; level 4 OPEN.",
+  "assurance": "E-H7 statuses: level-2 kernel decisions by the hashed tools. The checkpoint itself: level 3 where independent_reconstructions records CERTIFIED. Level 4 OPEN.",
   "table": [
     {
       "parity": "even",
@@ -213,5 +213,28 @@
       "scalar_gap_worst_charge": 106.05780194259339,
       "seconds": 3604.3
     }
-  ]
+  ],
+  "independent_reconstructions": [
+    {
+      "file": "independent_L7_even_512.json",
+      "sha256": "9f2dcf911d0a238cb166e78c610fe373ebbbbfdb3d08665e5003fb9e1d9371d9",
+      "parity": "even",
+      "status": "CERTIFIED",
+      "bits": 512,
+      "dimension": 2398,
+      "seconds": 1391.8,
+      "role": "CHECKPOINT_RECONSTRUCTION"
+    },
+    {
+      "file": "independent_L7_odd_512.json",
+      "sha256": "ce215856dcfb4f3f4e930f74eb5f2c501d50e6b2e6328e09d2fc8c3e7e9b1655",
+      "parity": "odd",
+      "status": "CERTIFIED",
+      "bits": 512,
+      "dimension": 2397,
+      "seconds": 1389.4,
+      "role": "CHECKPOINT_RECONSTRUCTION"
+    }
+  ],
+  "independent_scope": "Supplementary to the frozen-rule scoring (not part of E-H7): independent_check.py reconstructs the n = 5 checkpoint Q_p >= -(1/5)||x||^2 at L = 7 with its own exact elimination basis and a blocked interval Schur certificate (level 3); shared trust boundary: native_source.py and the equation-(4.4) backend; level 4 OPEN."
 }
