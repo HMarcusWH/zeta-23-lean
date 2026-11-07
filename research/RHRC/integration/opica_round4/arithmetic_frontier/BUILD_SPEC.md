@@ -243,6 +243,53 @@ Neither observation is a sign bound. A convergent inverse approximation
 represents a negative Schur complement just as faithfully. The bands use
 floating projectors.
 
+## Increment 3C — certified near-band coupling and synthetic off-line controls
+
+[nearband_bound.py](nearband_bound.py) replaces the floating projectors of
+E-D1 by a projector-free certificate. For `b > s` the even power
+`φ_k(λ) = ((b − λ)/(b − s))^(2^k)` dominates the indicator of `(−∞, s]` on the
+whole real line. Hence, for the same exact `A` (DERIVED),
+
+`M(s) = C·1_(−∞,s](A)·Cᵀ ⪯ C·φ_k(A)·Cᵀ`,
+
+and the right side is computed by `k` Arb squarings of the enclosed native
+`A`. Trace and `λ_max` upper bounds are certified at L=4, 5 and 6 in both
+parities, at cutoffs `s = ε + 10⁻⁸, 10⁻⁶, 10⁻⁴, 10⁻²`
+([evidence/increment3c](evidence/increment3c/SUMMARY.json)). At
+`s = ε + 10⁻⁶` the certified traces are about `1.7–2.0e-6` (L=4),
+`3.6–4.9e-6` (L=5) and `5.9–9.2e-6` (L=6). The bound is resolution-limited
+(recorded per row), so it controls `M(s + resolution)` rather than `M(s)`
+sharply.
+
+**Synthetic falsification controls** (SYNTHETIC objects, certified statuses):
+
+* **S1.** A rank-one negative term on the first low coordinate leaves `C`
+  and `A` byte-identical, and the pencil is certified negative. Small
+  coupling cannot be a sign criterion.
+* **S2.** Two adjacent actual zeros are merged into an off-line quartet
+  `½ ± δ ± iγ` in the explicit-formula representation of the native form.
+  The mode transform reproduces the native pole channel to rounding, and the
+  truncated zero sum reproduces `pole − arch − prime` at L=2 (odd error
+  `1.7e-5` with 400 zeros).
+  * At a common tolerance below threshold, the native pencil is certified
+    positive and the low-band synthetic pencil certified negative. Their
+    certified coupling bounds agree within 5% at every state (0.004–4.3%).
+  * A high-band quartet makes `A` itself indefinite.
+  * At the split, coupling responds only at L=6 (`1.2e-2` against `9e-6`).
+* **Detection threshold (EXPERIMENTAL).** `ε*(δ) ≈ c(L)·δ²`, with
+  `c ≈ 9.4, 17.9, 28.2` in the low band at L=4, 5, 6.
+  * The `ε=1/2` and `1/3` checkpoints are certified blind to `δ=1/10`
+    quartets.
+  * The `ε=1/4` checkpoint at L=6 detects them. This was predicted in the
+    session before the L=6 run ([L6_PREDICTION.json](evidence/increment3c/L6_PREDICTION.json)),
+    but it was not preregistered.
+  * Fixed-margin detection of an actual off-line zero is already proved in
+    Lean. This signal adds only the dependence on δ and L.
+
+Near-band smallness explains why the scalar-gap estimate fails. It is not a
+positivity mechanism: the sign lives in the coupled Schur complement (CR23,
+CR24).
+
 ## Not built yet
 
 The leakage modules, checker soundness, the enclosure bridge, the universal

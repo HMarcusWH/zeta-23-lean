@@ -26,6 +26,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1] / 'arithmetic_frontier'
 EV2 = ROOT / 'evidence' / 'increment2'
 EV2B = ROOT / 'evidence' / 'increment2b'
+EV3C = ROOT / 'evidence' / 'increment3c'
 
 
 def load(name: str, path: Path):
@@ -140,6 +141,28 @@ class Increment2HistoryTests(unittest.TestCase):
                 self.assertTrue((ROOT.parents[4] / path).is_file(), path)
 
 
+class Increment3CDerivedTests(unittest.TestCase):
+    """DERIVED statements of Increment 3C, recomputed exactly without floating point."""
+
+    def test_even_power_majorant_of_the_spectral_indicator(self):
+        lam = [Fraction(1, 8), Fraction(251, 1000), Fraction(3, 4), Fraction(3), Fraction(5)]
+        A = K.identity(5, 0)
+        for i, x in enumerate(lam):
+            A[i, i] = K.q(x)
+        Cm = K.exact_matrix([[Fraction(1, 2), Fraction(-3, 4), Fraction(1, 8), Fraction(5, 16), Fraction(1)],
+                             [Fraction(1, 4), Fraction(1, 2), Fraction(-1), Fraction(3, 8), Fraction(-1, 2)]])
+        b = Fraction(6)
+        for s in (Fraction(1, 4), Fraction(1, 2), Fraction(4)):
+            for k in (0, 3, 6):
+                T = (K.identity(5, K.q(b)) - A) * (1 / K.q(b - s))
+                for _ in range(k):
+                    T = T * T
+                tr = Cm * T * Cm.transpose()
+                bound = tr[0, 0] + tr[1, 1]
+                ind = sum(K.exact_value(Cm[r, i]) ** 2 for i, x0 in enumerate(lam) if x0 <= s for r in (0, 1))
+                self.assertGreaterEqual(K.lower(bound), ind, (s, k))
+
+
 class CorrectionsAddendumTests(unittest.TestCase):
     def test_addendum_scopes_high_support_and_records_the_genuine_failure(self):
         add = json.loads((ROOT / 'evidence' / 'increment3c' / 'CORRECTIONS_ADDENDUM.json').read_bytes())
@@ -245,6 +268,65 @@ class Increment2BEvidenceTests(unittest.TestCase):
             for parity in ('even', 'odd'):
                 self.assertIn((L, parity), certified)
         self.assertIn('NOT_AN_RH_OR_STEP4_CLAIM', self.summary['scope'])
+
+
+def _walk_falsifications(test, node):
+    if isinstance(node, dict):
+        if node.get('status') == 'FALSIFIED_BOUND' or node.get('pencil') == 'FALSIFIED_BOUND':
+            wv = node.get('witness_value')
+            test.assertIsNotNone(wv, node)
+            test.assertLess(exact_from_str(wv['upper_exact']), 0, node)
+        for v in node.values():
+            _walk_falsifications(test, v)
+    elif isinstance(node, list):
+        for v in node:
+            _walk_falsifications(test, v)
+
+
+class Increment3CEvidenceTests(unittest.TestCase):
+    """Projector-free near-band bounds and synthetic off-line controls (evidence/increment3c)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.summary = json.loads((EV3C / 'SUMMARY.json').read_bytes())
+        cls.records = {e['entry']: json.loads((EV3C / e['file']).read_bytes()) for e in cls.summary['records']}
+
+    def test_records_bind_tool_engine_source_kernel_and_backend(self):
+        self.assertEqual((self.summary['RH'], self.summary['Step4']), ('OPEN', 'OPEN'))
+        for e in self.summary['records']:
+            self.assertEqual(sha(EV3C / e['file']), e['sha256'])
+            h = self.records[e['entry']]['hashes']
+            self.assertEqual(h['tool_sha256'], sha(ROOT / 'nearband_bound.py'))
+            self.assertEqual(h['engine_sha256'], sha(ROOT / 'native_slice.py'))
+            self.assertEqual(h['source_module_sha256'], sha(ROOT / 'native_source.py'))
+            self.assertEqual(h['kernel_sha256'], sha(ROOT / 'certificates.py'))
+            self.assertEqual(h['backend_sha256'], sha(SRC.BACKEND_PATH))
+        cal = json.loads((EV3C / 'pole_calibration.json').read_bytes())
+        self.assertEqual(cal['tool_sha256'], sha(ROOT / 'nearband_bound.py'))
+        self.assertLess(max(cal['relative_max_error'].values()), 1e-12)
+
+    def test_every_falsification_carries_a_negative_exact_witness(self):
+        for rec in self.records.values():
+            _walk_falsifications(self, rec)
+
+    def test_projector_free_bounds_are_certified(self):
+        for name, rec in self.records.items():
+            for row in rec['nearband']['rows']:
+                self.assertTrue(row['trace_ball']['upper_exact'], name)
+                self.assertEqual(row['certified_lambda_max_upper']['status'], 'CERTIFIED', (name, row['s']))
+                self.assertGreaterEqual(float(row['certified_trace_upper']), row['experimental_floating']['trace_M_s'] * (1 - 1e-9))
+
+    def test_small_coupling_is_not_a_sign_criterion(self):
+        for name, rec in self.records.items():
+            controls = {c['control']: c for c in rec['synthetic']['controls']}
+            s1 = controls['S1_low_block_rank_one']
+            self.assertEqual((s1['pencil'], s1['C_and_A_blocks_identical']), ('FALSIFIED_BOUND', True), name)
+            for c in controls.values():
+                d = c.get('discrimination')
+                if d is None:
+                    continue
+                self.assertEqual(d['native']['pencil']['status'], 'CERTIFIED', (name, c['control']))
+                self.assertEqual(d['synthetic']['pencil']['status'], 'FALSIFIED_BOUND', (name, c['control']))
 
 
 if __name__ == '__main__':

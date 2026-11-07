@@ -64,7 +64,7 @@
     },
     {
       "id": "opica_round4_arithmetic_frontier_receipts",
-      "pattern": "\\A(?:research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E\\-H6_OUTCOMES\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E\\-H6_PREDICTIONS\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E\\-H6_PREDICTIONS_ADDENDUM\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/EH6_L6_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/EH6_L6_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_entry_crosscheck\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_even_bracket\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_odd_bracket\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L5_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L5_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/SUMMARY\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L2_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L2_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L5_2_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L5_2_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L9_4_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L9_4_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/campaign_run_L6_even\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/campaign_run_L6_odd\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/campaign_run_rest\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/nullcount_scan_L4_L5\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/nullcount_scan_L6\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/producer/README\\.md|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/producer/native_slice\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/producer/nullcount_scan\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/CORRECTIONS\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/E\\-H6_OUTCOMES_CORRECTED\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/EH6_L6_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/EH6_L6_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_even_bracket\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_odd_bracket\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L5_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L5_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/SUMMARY\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L2_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L2_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L5_2_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L5_2_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L9_4_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L9_4_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_L6_even\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_L6_odd\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_independent\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_independent_L6_even_384\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_independent_L6_odd_384\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_small\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L4_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L4_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L5_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L5_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L6_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L6_even_384\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L6_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L6_odd_384\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/E\\-H7_PREDICTIONS\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/SUMMARY\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/campaign_run_L5\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/campaign_run_L6_even\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/campaign_run_L6_odd\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L4_even_1024\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L4_even_half\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L4_odd_half\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L5_even_third\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L5_odd_third\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L6_even_quarter\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L6_odd_quarter\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/CORRECTIONS_ADDENDUM\\.json)\\Z",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E\\-H6_OUTCOMES\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E\\-H6_PREDICTIONS\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E\\-H6_PREDICTIONS_ADDENDUM\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/EH6_L6_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/EH6_L6_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_entry_crosscheck\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_even_bracket\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_odd_bracket\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L5_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L5_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/SUMMARY\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L2_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L2_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L5_2_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L5_2_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L9_4_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L9_4_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/campaign_run_L6_even\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/campaign_run_L6_odd\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/campaign_run_rest\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/nullcount_scan_L4_L5\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/nullcount_scan_L6\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/producer/README\\.md|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/producer/native_slice\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/producer/nullcount_scan\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/CORRECTIONS\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/E\\-H6_OUTCOMES_CORRECTED\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/EH6_L6_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/EH6_L6_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_even_bracket\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_odd_bracket\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L5_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L5_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/SUMMARY\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L2_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L2_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L5_2_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L5_2_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L9_4_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/archive_L9_4_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_L6_even\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_L6_odd\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_independent\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_independent_L6_even_384\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_independent_L6_odd_384\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/campaign_run_small\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L4_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L4_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L5_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L5_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L6_even\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L6_even_384\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L6_odd\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/independent_L6_odd_384\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/E\\-H7_PREDICTIONS\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/SUMMARY\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/campaign_run_L5\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/campaign_run_L6_even\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/campaign_run_L6_odd\\.log|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L4_even_1024\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L4_even_half\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L4_odd_half\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L5_even_third\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L5_odd_third\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L6_even_quarter\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L6_odd_quarter\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/CORRECTIONS_ADDENDUM\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/L6_PREDICTION\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/SUMMARY\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/logs/nearband_log_L45\\.txt|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/logs/nearband_log_L6e\\.txt|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/logs/nearband_log_L6o\\.txt|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L4_even_half\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L4_odd_half\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L5_even_third\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L5_odd_third\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L6_even_quarter\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L6_odd_quarter\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/pole_calibration\\.json)\\Z",
       "file_class": "RESEARCH_RECEIPT",
       "trust_zone": "AUDIT_ONLY"
     },
@@ -112,7 +112,7 @@
     },
     {
       "id": "opica_round4_executables",
-      "pattern": "\\A(?:research/RHRC/ffbbp/opica_composition\\.py|research/RHRC/integration/opica_composition/__init__\\.py|research/RHRC/integration/opica_composition/accept\\.py|research/RHRC/integration/opica_composition/applications\\.py|research/RHRC/integration/opica_composition/baseline\\.py|research/RHRC/integration/opica_composition/cache_owner\\.py|research/RHRC/integration/opica_composition/campaign\\.py|research/RHRC/integration/opica_composition/canonical\\.py|research/RHRC/integration/opica_composition/cli\\.py|research/RHRC/integration/opica_composition/closure\\.py|research/RHRC/integration/opica_composition/composition_search\\.py|research/RHRC/integration/opica_composition/config\\.py|research/RHRC/integration/opica_composition/contracts\\.py|research/RHRC/integration/opica_composition/countermodels\\.py|research/RHRC/integration/opica_composition/descendant\\.py|research/RHRC/integration/opica_composition/evidence\\.py|research/RHRC/integration/opica_composition/executor\\.py|research/RHRC/integration/opica_composition/harvest\\.py|research/RHRC/integration/opica_composition/historical\\.py|research/RHRC/integration/opica_composition/inventory\\.py|research/RHRC/integration/opica_composition/journal\\.py|research/RHRC/integration/opica_composition/proposals\\.py|research/RHRC/integration/opica_composition/provider\\.py|research/RHRC/integration/opica_composition/qualification\\.py|research/RHRC/integration/opica_composition/research_contracts\\.py|research/RHRC/integration/opica_composition/service\\.py|research/RHRC/integration/opica_composition/snapshot\\.py|research/RHRC/integration/opica_composition/testing\\.py|research/RHRC/integration/opica_composition/tests/test_acceptance\\.py|research/RHRC/integration/opica_composition/tests/test_applications\\.py|research/RHRC/integration/opica_composition/tests/test_cli\\.py|research/RHRC/integration/opica_composition/tests/test_closure\\.py|research/RHRC/integration/opica_composition/tests/test_composition_search\\.py|research/RHRC/integration/opica_composition/tests/test_contracts\\.py|research/RHRC/integration/opica_composition/tests/test_countermodels\\.py|research/RHRC/integration/opica_composition/tests/test_descendant\\.py|research/RHRC/integration/opica_composition/tests/test_end_to_end\\.py|research/RHRC/integration/opica_composition/tests/test_evidence\\.py|research/RHRC/integration/opica_composition/tests/test_executor\\.py|research/RHRC/integration/opica_composition/tests/test_ffbbp\\.py|research/RHRC/integration/opica_composition/tests/test_harvest\\.py|research/RHRC/integration/opica_composition/tests/test_integration_search_native\\.py|research/RHRC/integration/opica_composition/tests/test_inventory\\.py|research/RHRC/integration/opica_composition/tests/test_journal\\.py|research/RHRC/integration/opica_composition/tests/test_native_environment\\.py|research/RHRC/integration/opica_composition/tests/test_ool\\.py|research/RHRC/integration/opica_composition/tests/test_permansson\\.py|research/RHRC/integration/opica_composition/tests/test_search_native\\.py|research/RHRC/integration/opica_composition/views\\.py|research/RHRC/integration/opica_round4/__init__\\.py|research/RHRC/integration/opica_round4/math_gate\\.py|research/RHRC/integration/opica_round4/source_backend\\.py|research/RHRC/integration/opica_round4/source_checker\\.py|research/RHRC/integration/opica_round4/source_evaluator\\.py|research/RHRC/integration/opica_round4/source_research\\.py|research/RHRC/integration/opica_round4/tests/test_source_evaluator\\.py|research/RHRC/integration/opica_round4/tests/test_source_research\\.py|research/RHRC/integration/opica_round4_support/__init__\\.py|research/RHRC/integration/opica_round4_support/run_python_tests\\.py|research/RHRC/integration/opica_round4_support/schedule\\.py|research/RHRC/integration/opica_round4_support/source_context\\.py|research/RHRC/integration/opica_round4_support/source_lock\\.py|research/RHRC/integration/opica_round4_support/tests/test_context\\.py|research/RHRC/integration/opica_round4_support/tests/test_scheduler\\.py|research/RHRC/integration/opica_round4_support/tests/test_source_lock\\.py|research/RHRC/integration/opica_round4_support/tests/test_verifier_guards\\.py|research/RHRC/integration/opica_round4_support/verify_support\\.py|research/RHRC/ool/opica_composition\\.py|research/RHRC/permansson/__init__\\.py|research/RHRC/permansson/opica_composition\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/native_slice\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/independent_check\\.py|research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_native\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/nullcount_scan\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/certificates\\.py|research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_acceptance\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/native_source\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/ed1_response\\.py|research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_discovery\\.py)\\Z",
+      "pattern": "\\A(?:research/RHRC/ffbbp/opica_composition\\.py|research/RHRC/integration/opica_composition/__init__\\.py|research/RHRC/integration/opica_composition/accept\\.py|research/RHRC/integration/opica_composition/applications\\.py|research/RHRC/integration/opica_composition/baseline\\.py|research/RHRC/integration/opica_composition/cache_owner\\.py|research/RHRC/integration/opica_composition/campaign\\.py|research/RHRC/integration/opica_composition/canonical\\.py|research/RHRC/integration/opica_composition/cli\\.py|research/RHRC/integration/opica_composition/closure\\.py|research/RHRC/integration/opica_composition/composition_search\\.py|research/RHRC/integration/opica_composition/config\\.py|research/RHRC/integration/opica_composition/contracts\\.py|research/RHRC/integration/opica_composition/countermodels\\.py|research/RHRC/integration/opica_composition/descendant\\.py|research/RHRC/integration/opica_composition/evidence\\.py|research/RHRC/integration/opica_composition/executor\\.py|research/RHRC/integration/opica_composition/harvest\\.py|research/RHRC/integration/opica_composition/historical\\.py|research/RHRC/integration/opica_composition/inventory\\.py|research/RHRC/integration/opica_composition/journal\\.py|research/RHRC/integration/opica_composition/proposals\\.py|research/RHRC/integration/opica_composition/provider\\.py|research/RHRC/integration/opica_composition/qualification\\.py|research/RHRC/integration/opica_composition/research_contracts\\.py|research/RHRC/integration/opica_composition/service\\.py|research/RHRC/integration/opica_composition/snapshot\\.py|research/RHRC/integration/opica_composition/testing\\.py|research/RHRC/integration/opica_composition/tests/test_acceptance\\.py|research/RHRC/integration/opica_composition/tests/test_applications\\.py|research/RHRC/integration/opica_composition/tests/test_cli\\.py|research/RHRC/integration/opica_composition/tests/test_closure\\.py|research/RHRC/integration/opica_composition/tests/test_composition_search\\.py|research/RHRC/integration/opica_composition/tests/test_contracts\\.py|research/RHRC/integration/opica_composition/tests/test_countermodels\\.py|research/RHRC/integration/opica_composition/tests/test_descendant\\.py|research/RHRC/integration/opica_composition/tests/test_end_to_end\\.py|research/RHRC/integration/opica_composition/tests/test_evidence\\.py|research/RHRC/integration/opica_composition/tests/test_executor\\.py|research/RHRC/integration/opica_composition/tests/test_ffbbp\\.py|research/RHRC/integration/opica_composition/tests/test_harvest\\.py|research/RHRC/integration/opica_composition/tests/test_integration_search_native\\.py|research/RHRC/integration/opica_composition/tests/test_inventory\\.py|research/RHRC/integration/opica_composition/tests/test_journal\\.py|research/RHRC/integration/opica_composition/tests/test_native_environment\\.py|research/RHRC/integration/opica_composition/tests/test_ool\\.py|research/RHRC/integration/opica_composition/tests/test_permansson\\.py|research/RHRC/integration/opica_composition/tests/test_search_native\\.py|research/RHRC/integration/opica_composition/views\\.py|research/RHRC/integration/opica_round4/__init__\\.py|research/RHRC/integration/opica_round4/math_gate\\.py|research/RHRC/integration/opica_round4/source_backend\\.py|research/RHRC/integration/opica_round4/source_checker\\.py|research/RHRC/integration/opica_round4/source_evaluator\\.py|research/RHRC/integration/opica_round4/source_research\\.py|research/RHRC/integration/opica_round4/tests/test_source_evaluator\\.py|research/RHRC/integration/opica_round4/tests/test_source_research\\.py|research/RHRC/integration/opica_round4_support/__init__\\.py|research/RHRC/integration/opica_round4_support/run_python_tests\\.py|research/RHRC/integration/opica_round4_support/schedule\\.py|research/RHRC/integration/opica_round4_support/source_context\\.py|research/RHRC/integration/opica_round4_support/source_lock\\.py|research/RHRC/integration/opica_round4_support/tests/test_context\\.py|research/RHRC/integration/opica_round4_support/tests/test_scheduler\\.py|research/RHRC/integration/opica_round4_support/tests/test_source_lock\\.py|research/RHRC/integration/opica_round4_support/tests/test_verifier_guards\\.py|research/RHRC/integration/opica_round4_support/verify_support\\.py|research/RHRC/ool/opica_composition\\.py|research/RHRC/permansson/__init__\\.py|research/RHRC/permansson/opica_composition\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/native_slice\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/independent_check\\.py|research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_native\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/nullcount_scan\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/certificates\\.py|research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_acceptance\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/native_source\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/ed1_response\\.py|research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_discovery\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/nearband_bound\\.py)\\Z",
       "file_class": "RESEARCH_EXECUTABLE",
       "trust_zone": "AUDIT_ONLY"
     },
@@ -763,7 +763,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/descendant.py",
-      "sha256": "55d9092fd30f45334cf052d36028a4944a0313799d382c7aa82035aa79464262"
+      "sha256": "b9174d2b9fe9111f2752526b6d01e391f696b05dba74757a9195d4e60af36a9a"
     },
     {
       "path": "research/RHRC/integration/opica_composition/evidence.py",
@@ -1639,19 +1639,19 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md",
-      "sha256": "e447a517f6c28cb0f172c3333738fc4e6aff68a4853fe384f9feddf11d4a02de"
+      "sha256": "ff5eb9352ef0dbf8873ec1f1889396f190b9b689c15448b67d7d4a7bb9e801e7"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/CANDIDATE_RESULTS.jsonl",
-      "sha256": "ed0567470ced1172dd7cbe7a9c594f543ff659273ceebc5f93e7fb657a5de109"
+      "sha256": "0bbb0344f42bd00a36264f84bb8f0df5fe051168e154528d2d6a4100652f390f"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
-      "sha256": "2031e4779d7782883c26ed1c8b88b4171b185f87f4dd90025fa2cd07b3f21f3e"
+      "sha256": "59b1950e33d3795a98c630642a19ecd0cc265b290f264818bed4941b373f61cf"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/EXPERIMENTS.json",
-      "sha256": "92f13d912de4c3d2d438b2fe0eb1352378172d7cd518f65992942ea8d4b5c0ae"
+      "sha256": "f70c6e906f2777c13e61e050030c3e53498e5b12e7294ce0bfbc29a6cf8cb3f1"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/MODEL_PRESERVATION.json",
@@ -1683,7 +1683,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_native.py",
-      "sha256": "c48cafa75d06c3bc4cc889fcdc921b6c643fb1bfde9e9909ba7752c9acceb06a"
+      "sha256": "4bf7c1f1633891f94051ca7c1b373501f0c4c43c41e8277a6f8f385770848dde"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E-H6_OUTCOMES.json",
@@ -1803,7 +1803,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_discovery.py",
-      "sha256": "0c877727d479d8ce5df70596d7c321ee9109f6fadfa2f683237b9fbcb8acced8"
+      "sha256": "2ed432c64755a1fe6201815e03bbeced9cec5a246c8a40a9435a65465dde1945"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/producer/README.md",
@@ -2000,6 +2000,58 @@
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/CORRECTIONS_ADDENDUM.json",
       "sha256": "5f2e29aeea68b5048e2892c687009445a586811d4eed0e1f64a185239f913941"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/nearband_bound.py",
+      "sha256": "0dce48ca3ca03fb1cfe4928fee0b348fd08cbed25c0a8c5549d0c88346f5169b"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/L6_PREDICTION.json",
+      "sha256": "bd87fade24172c42e72cecf6838b164b6067e462ce1bc08c82e462aaae5a91f1"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/SUMMARY.json",
+      "sha256": "7c0eb9ebb81d5a2c8fecf64be31c2ca3d7e0b27568cbc8755803242390134234"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/logs/nearband_log_L45.txt",
+      "sha256": "c9650245ca72852fdf5416e17af878e9ae95c47cfa2b021598c66673248b0707"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/logs/nearband_log_L6e.txt",
+      "sha256": "ee3c35b85c43f2fafb80094dc9112dafa36fc40a2d1cdae4e551c987db9a43cd"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/logs/nearband_log_L6o.txt",
+      "sha256": "fbb24dca12ecffdc9624338dfa093e46a536692f8f23c86d916f1528414bce58"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L4_even_half.json",
+      "sha256": "839ad202403fc45e970fed231580a8b6ee97ea40028b03237dd0e6465c7800db"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L4_odd_half.json",
+      "sha256": "a6d84ef2488ca8829415f63aa9f385a331603b7613b3f9d2b5c02985e66ce82e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L5_even_third.json",
+      "sha256": "75f2cdc79dfa1fda925f1d0a878553ca8e2c3478824ca93ef42b6e7a4ee5ba04"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L5_odd_third.json",
+      "sha256": "0604ddccf47122a2df780629f72df1a82ca84c5f0f2eeced5ff496365f0ab8c4"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L6_even_quarter.json",
+      "sha256": "8f41799bd697e6d42ee19229c5d74a4ff115a774310c9281f9b14040db7af1dc"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/nearband_L6_odd_quarter.json",
+      "sha256": "020ae5d24fd9c0bcbeb3725179238e432755f8837c13280bd635cb85208d91e2"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/pole_calibration.json",
+      "sha256": "c96f47c902ea7d3e04bb1c80aa6d9b86c118d1cfa2295e9d59fb499108d37558"
     }
   ],
   "edit": [
@@ -2053,7 +2105,7 @@
     },
     {
       "path": "research/RHRC/graph/FILE_CLASSES.json",
-      "sha256": "185441d6abc50e952469ada08854ec737c0403b63e865ea6ebc90618c5f6f88f"
+      "sha256": "68b643170b61a7b5469b533ffc6a87c266ed95c49ffd5d1135436e358c63f5fe"
     },
     {
       "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
@@ -2512,7 +2564,7 @@
       "authority": "UNCHANGED_PARENT_BYTES"
     }
   ],
-  "path_policy_sha256": "2355c4597883746913bee271684ceea31c7e8265a5bb259a45e90845b36fe829",
+  "path_policy_sha256": "16af0d7ff1e3d16d606fcb5f5b8fcb7610a72985df5110c76522aa6e61b21f2f",
   "current_compiler_accepted": false,
   "RH": "OPEN",
   "Step4": "OPEN",
@@ -2858,6 +2910,7 @@
         "research/RHRC/integration/opica_round4/arithmetic_frontier/certificates.py",
         "research/RHRC/integration/opica_round4/arithmetic_frontier/native_source.py",
         "research/RHRC/integration/opica_round4/arithmetic_frontier/ed1_response.py",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/nearband_bound.py",
         "research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_acceptance.py",
         "research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_discovery.py"
       ],
@@ -2869,7 +2922,8 @@
         "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b",
         "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b",
         "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c",
-        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3d"
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3d",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3e"
       ],
       "claim": "ACCEPTANCE_REPAIR_AND_FINITE_RESEARCH_CERTIFICATES_ONLY_RH_AND_STEP4_OPEN",
       "ci_lane": "SOURCE_NUMERICS runs test_arithmetic_frontier_acceptance and test_arithmetic_frontier_native in normal and optimized mode without optional skips",
@@ -2883,7 +2937,9 @@
     "increment3c": {
       "schema": "OPICA4_ARITHMETIC_FRONTIER_INCREMENT3C_V1",
       "parent_head": "02847b5",
-      "executables": [],
+      "executables": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/nearband_bound.py"
+      ],
       "receipt_dirs": [
         "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c"
       ],

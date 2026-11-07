@@ -404,9 +404,26 @@
       "consumers": [],
       "countermodel_tests": [
         "E-D1",
-        "E-H7"
+        "E-H7",
+        "E-NEARBAND-CERT",
+        "E-OFFLINE-SYN"
       ],
-      "budget_improved": "EXPERIMENTAL SIGNAL: coupling mass about 1e-6 against charges 12, 30 and 60. It explains why scalar-gap suppliers fail while coupled certificates pass. It is not a sign bound: a coupled certificate approximates a negative Schur complement just as faithfully."
+      "budget_improved": "EXPERIMENTAL SIGNAL: coupling mass about 1e-6 against charges 12, 30 and 60. It explains why scalar-gap suppliers fail while coupled certificates pass. It is not a sign bound: a coupled certificate approximates a negative Schur complement just as faithfully. Increment 3C: certified projector-free upper bounds (trace and lambda_max of C Phi_k C^T) at L = 4, 5, 6 replace the floating projectors as the recorded quantity; e.g. tr M(eps + 1e-6) <= 9.2e-6 at L = 6 even. Synthetic controls show that small coupling is not a sign criterion: a low-band off-line world is certified negative with the same coupling bound (E-OFFLINE-SYN)."
+    },
+    {
+      "id": "CR24",
+      "name": "Detection threshold of off-line quartets at finite checkpoints",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_cofinal_moment_slice_bounds (fixed-margin detection, via eventually_no_moment_slice_lower_bound_below_margin)",
+      "statement": "A checkpoint at tolerance eps and aperture L detects an off-line quartet of depth delta iff c(L) delta^2 >~ eps, with c(L) increasing in L.",
+      "scope": "Synthetic explicit-formula worlds at L = 4, 5, 6, three ordinate bands, delta in [1/1000, 1/4].",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "OPEN",
+      "closing_relevance": "NONVACUITY_GUARD",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-OFFLINE-SYN"
+      ],
+      "budget_improved": "EXPERIMENTAL SIGNAL: eps*/delta^2 = 9.4, 17.9, 28.2 (low band, delta = 1/1000). Finite checkpoints with c(L) delta^2 < eps are blind (certified: the synthetic delta = 1/10 worlds pass the eps = 1/2 and 1/3 checkpoints). The Lean consumer already proves fixed-margin detection for each actual off-line zero; this records the delta- and L-dependence only. Not RH evidence."
     }
   ],
   "strength_rule": "An RH-sufficient contract that is also RH-necessary is a sharp interface, not independent sub-RH progress. Only an independent supplier changes the state."

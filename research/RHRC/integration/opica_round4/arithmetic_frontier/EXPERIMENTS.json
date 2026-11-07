@@ -306,6 +306,23 @@
       },
       "predeclaration": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/E-H7_PREDICTIONS.json",
       "acceptance": "Fixed numerical rules P9-P13 with hashed tools; one parity suffices for the checkpoint, both for the law."
+    },
+    {
+      "id": "E-NEARBAND-CERT",
+      "status": "RUN_SIX_STATES",
+      "goal": "Certified projector-free bound for the near-band coupling M(s) = C 1_(-inf,s](A) C^T at varying spectral cutoff s (review revision-2 move 3).",
+      "method": "DERIVED majorant M(s) <= C Phi_k C^T with Phi_k = ((bI - A)/(b - s))^(2^k), k exact Arb squarings of the enclosed native A; certified trace and lambda_max upper bounds; response bound C A^-1 Phi_k C^T where A >= aI is certified.",
+      "result": "Certified at L = 4, 5, 6 (both parities) for s = eps + 1e-8, 1e-6, 1e-4, 1e-2. At s = eps + 1e-6 the certified trace bounds are 1.7e-6 / 2.0e-6 (L=4), 3.6e-6 / 4.9e-6 (L=5) and 9.2e-6 / 5.9e-6 (L=6); they grow with s (to 1.4e-2 - 6.2e-2 at s = eps + 1e-2). The bound is resolution-limited (recorded per row), so it bounds M(s + resolution) rather than M(s) sharply.",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/SUMMARY.json"
+    },
+    {
+      "id": "E-OFFLINE-SYN",
+      "status": "RUN_SIX_STATES_SYNTHETIC",
+      "goal": "Does small near-band coupling discriminate positive from negative pencils (review move 3, falsification)?",
+      "method": "S1: rank-one negative term in the low block (C, A unchanged). S2: two adjacent actual zeros merged into an off-line quartet 1/2 +- delta +- i gamma_mid in the explicit-formula representation of the native form (mode transform calibrated on the pole channel; zero sum reproduces the native form at L=2). Native and synthetic pencils compared at one common tolerance below the detection threshold.",
+      "result": "Not discriminating. S1 is certified negative with identical C and A. In the low band at every state the synthetic pencil is certified negative while its certified coupling bound agrees with the native one within 5% (0.004-4.3%). A high-band quartet makes A itself indefinite; at the split, coupling responds only at L=6 (1.2e-2 against 9e-6). The detection threshold eps*(delta) is quadratic in delta for small delta with c(L) = 9.4, 17.9, 28.2 (low band); the eps = 1/2 and 1/3 checkpoints are blind to delta = 1/10 quartets, the eps = 1/4 checkpoint at L=6 detects them (as predicted in session before the L6 run).",
+      "authority": "SYNTHETIC objects; pencil statuses certified; thresholds EXPERIMENTAL",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/SUMMARY.json"
     }
   ],
   "corrections": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/CORRECTIONS.json"

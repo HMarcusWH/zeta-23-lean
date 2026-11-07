@@ -18,8 +18,10 @@ try:
     _spec = importlib.util.spec_from_file_location('_frontier_native_slice_discovery', ROOT / 'native_slice.py')
     NS = importlib.util.module_from_spec(_spec)
     _spec.loader.exec_module(NS)
+    NB = importlib.util.module_from_spec(importlib.util.spec_from_file_location('_frontier_nearband_discovery', ROOT / 'nearband_bound.py'))
+    NB.__spec__.loader.exec_module(NB)
 except ImportError:
-    NS = None
+    NS = NB = None
 
 
 @unittest.skipIf(NS is None, 'DISCOVERY_LAYER_ONLY: numpy is not installed')
@@ -48,3 +50,26 @@ class DiscoveryEngineTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+@unittest.skipIf(NB is None, 'DISCOVERY_LAYER_ONLY: numpy is not installed')
+class NearBandDiscoveryTests(unittest.TestCase):
+    def test_projector_free_bound_dominates_the_exact_projection(self):
+        rng = np.random.default_rng(7)
+        Q, _ = np.linalg.qr(rng.standard_normal((6, 6)))
+        lam = np.array([0.5 + 1e-7, 0.5 + 3e-7, 0.9, 2.0, 4.0, 6.0])
+        A = NS.sym(Q @ np.diag(lam) @ Q.T)
+        C = rng.standard_normal((2, 6)) * 1e-3
+        D = np.eye(2)
+        B = NS.exact(np.block([[D, C], [C.T, A]]))
+        out = NB.nearband_bounds(B, 2, Fraction(1, 2), offsets=(Fraction(1, 10 ** 6), Fraction(1, 10 ** 4)))
+        for row in out['rows']:
+            s = float(Fraction(row['s']))
+            CU = NS.to_float(NS.blocks(B, 2)[1]) @ Q
+            exact = float((CU[:, lam <= s] ** 2).sum())
+            self.assertGreaterEqual(float(row['certified_trace_upper']), exact)
+            self.assertEqual(row['certified_lambda_max_upper']['status'], 'CERTIFIED')
+
+    def test_mode_transform_reproduces_the_native_pole_channel(self):
+        cal = NB.pole_calibration()
+        self.assertLess(max(cal['relative_max_error'].values()), 1e-12)

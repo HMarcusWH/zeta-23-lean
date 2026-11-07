@@ -1,0 +1,1027 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_INCREMENT3C_SUMMARY_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "scope": "FINITE_RESEARCH_CERTIFICATES_AND_SYNTHETIC_CONTROLS_AT_NAMED_STATES_NOT_AN_RH_OR_STEP4_CLAIM",
+  "tool_sha256": "0dce48ca3ca03fb1cfe4928fee0b348fd08cbed25c0a8c5549d0c88346f5169b",
+  "records": [
+    {
+      "entry": "L4_even_half",
+      "file": "nearband_L4_even_half.json",
+      "sha256": "839ad202403fc45e970fed231580a8b6ee97ea40028b03237dd0e6465c7800db"
+    },
+    {
+      "entry": "L4_odd_half",
+      "file": "nearband_L4_odd_half.json",
+      "sha256": "a6d84ef2488ca8829415f63aa9f385a331603b7613b3f9d2b5c02985e66ce82e"
+    },
+    {
+      "entry": "L5_even_third",
+      "file": "nearband_L5_even_third.json",
+      "sha256": "75f2cdc79dfa1fda925f1d0a878553ca8e2c3478824ca93ef42b6e7a4ee5ba04"
+    },
+    {
+      "entry": "L5_odd_third",
+      "file": "nearband_L5_odd_third.json",
+      "sha256": "0604ddccf47122a2df780629f72df1a82ca84c5f0f2eeced5ff496365f0ab8c4"
+    },
+    {
+      "entry": "L6_even_quarter",
+      "file": "nearband_L6_even_quarter.json",
+      "sha256": "8f41799bd697e6d42ee19229c5d74a4ff115a774310c9281f9b14040db7af1dc"
+    },
+    {
+      "entry": "L6_odd_quarter",
+      "file": "nearband_L6_odd_quarter.json",
+      "sha256": "020ae5d24fd9c0bcbeb3725179238e432755f8837c13280bd635cb85208d91e2"
+    }
+  ],
+  "pole_calibration": {
+    "file": "pole_calibration.json",
+    "sha256": "c96f47c902ea7d3e04bb1c80aa6d9b86c118d1cfa2295e9d59fb499108d37558"
+  },
+  "corrections_addendum": {
+    "file": "CORRECTIONS_ADDENDUM.json",
+    "sha256": "5f2e29aeea68b5048e2892c687009445a586811d4eed0e1f64a185239f913941"
+  },
+  "l6_prediction": {
+    "file": "L6_PREDICTION.json",
+    "sha256": "bd87fade24172c42e72cecf6838b164b6067e462ce1bc08c82e462aaae5a91f1",
+    "status": "stated in session after the L4/L5 results and before any L6 output; not a frozen preregistration"
+  },
+  "authority": {
+    "certified": "trace and lambda_max upper bounds of C Phi_k C^T (projector-free, DERIVED majorant); pencil statuses",
+    "synthetic": "S1 and S2 perturbed pencils are SYNTHETIC objects, not native",
+    "experimental": "floating projections, detection thresholds eps*(delta)"
+  },
+  "table": [
+    {
+      "entry": "L4_even_half",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "cutoffs": [
+        {
+          "offset": "1/100000000",
+          "k": 24,
+          "trace_upper": "5.89507360507e-7",
+          "lambda_max_upper": 5.954024341137468e-07,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "1.1790137946e-6",
+          "resolution": 1.1676143394094705e-05,
+          "floating_count": 0,
+          "floating_trace_M_s": 0.0
+        },
+        {
+          "offset": "1/1000000",
+          "k": 22,
+          "trace_upper": "1.69230366407e-6",
+          "lambda_max_upper": 1.7092261496536032e-06,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "3.38460466859e-6",
+          "resolution": 4.670456814050675e-05,
+          "floating_count": 1,
+          "floating_trace_M_s": 1.2544767348404122e-06
+        },
+        {
+          "offset": "1/10000",
+          "k": 15,
+          "trace_upper": "1.75326753419e-4",
+          "lambda_max_upper": 0.00016088124005930737,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "3.50386823676e-4",
+          "resolution": 0.005978115142822266,
+          "floating_count": 2,
+          "floating_trace_M_s": 7.678994319945048e-05
+        },
+        {
+          "offset": "1/100",
+          "k": 8,
+          "trace_upper": "3.50928238019e-2",
+          "lambda_max_upper": 0.03394573632414222,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "6.56590254234e-2",
+          "resolution": 0.7643081250000001,
+          "floating_count": 3,
+          "floating_trace_M_s": 0.0012740590069495442
+        }
+      ],
+      "scalar_gap_charge_float": 12.414347707509615,
+      "synthetic_controls": [
+        {
+          "control": "S1_low_block_rank_one",
+          "pencil": "FALSIFIED_BOUND",
+          "C_and_A_identical": true
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_low_band",
+          "quartet_ordinate": 100.07452261196254,
+          "mode_index": 63.71,
+          "eps_star_by_delta": {
+            "1/4": 0.6294656189220206,
+            "1/10": 0.09559537043200507,
+            "1/100": 0.0009453155177097942,
+            "1/1000": 9.448973189686193e-06
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.03125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "1.69285528383e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "1.7038430817e-6",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.031250388938609784
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_at_split",
+          "quartet_ordinate": 201.87917322892218,
+          "mode_index": 128.52,
+          "eps_star_by_delta": {
+            "1/4": 0.5430132598325518,
+            "1/10": 0.07699928356433013,
+            "1/100": 0.0007301625844715553,
+            "1/1000": 7.267694266520546e-06
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.03125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "1.69285528383e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "1.46048262082e-6",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.03125005569164735
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_high_band",
+          "quartet_ordinate": 302.17303752590055,
+          "mode_index": 192.37,
+          "eps_star_by_delta": {
+            "1/4": 0.5750670277237462,
+            "1/10": 0.08468676161993209,
+            "1/100": 0.0007800268614932362,
+            "1/1000": 7.167404258426291e-06
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.03125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "1.69285528383e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "1.25038051686e-1",
+            "A_ge_aI": "NOT_ELIGIBLE_FLOATING_LAMBDA_MIN_NONPOSITIVE",
+            "floating_lambda_min_A": -0.05291748058429335
+          }
+        }
+      ]
+    },
+    {
+      "entry": "L4_odd_half",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "cutoffs": [
+        {
+          "offset": "1/100000000",
+          "k": 24,
+          "trace_upper": "3.95707725194e-7",
+          "lambda_max_upper": 3.996648024464852e-07,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "7.91414375288e-7",
+          "resolution": 1.1652807579618693e-05,
+          "floating_count": 0,
+          "floating_trace_M_s": 0.0
+        },
+        {
+          "offset": "1/1000000",
+          "k": 23,
+          "trace_upper": "2.03913426422e-6",
+          "lambda_max_upper": 2.0595256068657586e-06,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "4.07826298831e-6",
+          "resolution": 2.3305612441301352e-05,
+          "floating_count": 1,
+          "floating_trace_M_s": 1.485194440239659e-06
+        },
+        {
+          "offset": "1/10000",
+          "k": 15,
+          "trace_upper": "7.98275843054e-5",
+          "lambda_max_upper": 6.253330009808877e-05,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "1.59505848439e-4",
+          "resolution": 0.005966167205810548,
+          "floating_count": 2,
+          "floating_trace_M_s": 4.170563822957923e-05
+        },
+        {
+          "offset": "1/100",
+          "k": 8,
+          "trace_upper": "1.42460802559e-2",
+          "lambda_max_upper": 0.009340403397359864,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "2.58167252235e-2",
+          "resolution": 0.7627787890625001,
+          "floating_count": 3,
+          "floating_trace_M_s": 0.003949405228262889
+        }
+      ],
+      "scalar_gap_charge_float": 12.499577353926119,
+      "synthetic_controls": [
+        {
+          "control": "S1_low_block_rank_one",
+          "pencil": "FALSIFIED_BOUND",
+          "C_and_A_identical": true
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_low_band",
+          "quartet_ordinate": 100.07452261196254,
+          "mode_index": 63.71,
+          "eps_star_by_delta": {
+            "1/4": 0.6361325158161601,
+            "1/10": 0.09625030034415485,
+            "1/100": 0.0009423147810067195,
+            "1/1000": 9.343087965985958e-06
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.03125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "2.0398394621e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "2.12781613832e-6",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.03125068589764305
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_at_split",
+          "quartet_ordinate": 201.87917322892218,
+          "mode_index": 128.52,
+          "eps_star_by_delta": {
+            "1/4": 0.5420603691010255,
+            "1/10": 0.0771897884337135,
+            "1/100": 0.0007332568997476994,
+            "1/1000": 7.205496717646763e-06
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.03125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "2.0398394621e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "2.33605171428e-6",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.03125026917518586
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_high_band",
+          "quartet_ordinate": 302.17303752590055,
+          "mode_index": 192.37,
+          "eps_star_by_delta": {
+            "1/4": 0.5682750778448857,
+            "1/10": 0.08404526119529106,
+            "1/100": 0.0007634937571249986,
+            "1/1000": 7.049768611023508e-06
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.03125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "2.0398394621e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "1.22124990623e-1",
+            "A_ge_aI": "NOT_ELIGIBLE_FLOATING_LAMBDA_MIN_NONPOSITIVE",
+            "floating_lambda_min_A": -0.05158833405784201
+          }
+        }
+      ]
+    },
+    {
+      "entry": "L5_even_third",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "cutoffs": [
+        {
+          "offset": "1/100000000",
+          "k": 24,
+          "trace_upper": "7.36647767655e-7",
+          "lambda_max_upper": 6.996633260154816e-07,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "2.2099410106e-6",
+          "resolution": 1.4766994899692138e-05,
+          "floating_count": 20,
+          "floating_trace_M_s": 7.063659365196598e-09
+        },
+        {
+          "offset": "1/1000000",
+          "k": 22,
+          "trace_upper": "3.61989107296e-6",
+          "lambda_max_upper": 2.728707113767298e-06,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "1.08595859811e-5",
+          "resolution": 5.906797416289648e-05,
+          "floating_count": 22,
+          "floating_trace_M_s": 1.0769593148418923e-06
+        },
+        {
+          "offset": "1/10000",
+          "k": 15,
+          "trace_upper": "5.02491504141e-4",
+          "lambda_max_upper": 0.0004200802260356795,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "1.50512291627e-3",
+          "resolution": 0.007560631113688151,
+          "floating_count": 24,
+          "floating_trace_M_s": 6.921217313644992e-05
+        },
+        {
+          "offset": "1/100",
+          "k": 9,
+          "trace_upper": "4.21113406362e-2",
+          "lambda_max_upper": 0.03711822332365955,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "1.21967281291e-1",
+          "resolution": 0.4834350846354166,
+          "floating_count": 26,
+          "floating_trace_M_s": 0.006128490738287758
+        }
+      ],
+      "scalar_gap_charge_float": 30.291836193623368,
+      "synthetic_controls": [
+        {
+          "control": "S1_low_block_rank_one",
+          "pencil": "FALSIFIED_BOUND",
+          "C_and_A_identical": true
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_low_band",
+          "quartet_ordinate": 196.0709392602438,
+          "mode_index": 156.03,
+          "eps_star_by_delta": {
+            "1/4": 1.2616199123817033,
+            "1/10": 0.18358749428222218,
+            "1/100": 0.0017955390792791532,
+            "1/1000": 1.7879355318660727e-05
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.0625,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "3.61875391097e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "3.63680964228e-6",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.06249999999999643
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_at_split",
+          "quartet_ordinate": 391.8505834515786,
+          "mode_index": 311.82,
+          "eps_star_by_delta": {
+            "1/4": 1.1581357780161696,
+            "1/10": 0.1613542518967202,
+            "1/100": 0.0015604073951090967,
+            "1/1000": 1.5519234968447116e-05
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.0625,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "3.61875391097e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "4.18229667525e-6",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.06249999999999675
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_high_band",
+          "quartet_ordinate": 587.441217578749,
+          "mode_index": 467.47,
+          "eps_star_by_delta": {
+            "1/4": 1.0298222860385753,
+            "1/10": 0.1322788425243846,
+            "1/100": 0.0012445467126996216,
+            "1/1000": 1.2149984834158072e-05
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.0625,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "3.61875391097e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "3.88223119686e-1",
+            "A_ge_aI": "NOT_ELIGIBLE_FLOATING_LAMBDA_MIN_NONPOSITIVE",
+            "floating_lambda_min_A": -0.06785367685380116
+          }
+        }
+      ]
+    },
+    {
+      "entry": "L5_odd_third",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "cutoffs": [
+        {
+          "offset": "1/100000000",
+          "k": 24,
+          "trace_upper": "8.1909789893e-7",
+          "lambda_max_upper": 7.41199381352857e-07,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "2.45728842173e-6",
+          "resolution": 1.4768367594661317e-05,
+          "floating_count": 20,
+          "floating_trace_M_s": 3.6198395944940162e-09
+        },
+        {
+          "offset": "1/1000000",
+          "k": 22,
+          "trace_upper": "4.93245782559e-6",
+          "lambda_max_upper": 4.653117243222371e-06,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "1.47972856102e-5",
+          "resolution": 5.907346494277319e-05,
+          "floating_count": 22,
+          "floating_trace_M_s": 1.8634876790336712e-06
+        },
+        {
+          "offset": "1/10000",
+          "k": 15,
+          "trace_upper": "3.04816455731e-4",
+          "lambda_max_upper": 0.0002226378522862671,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "9.13481124838e-4",
+          "resolution": 0.007561333933512371,
+          "floating_count": 24,
+          "floating_trace_M_s": 0.0001913486671344767
+        },
+        {
+          "offset": "1/100",
+          "k": 9,
+          "trace_upper": "5.06646145239e-2",
+          "lambda_max_upper": 0.03832701690527074,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "1.41956057952e-1",
+          "resolution": 0.4834800651041667,
+          "floating_count": 26,
+          "floating_trace_M_s": 0.009516541805741987
+        }
+      ],
+      "scalar_gap_charge_float": 31.293474772804263,
+      "synthetic_controls": [
+        {
+          "control": "S1_low_block_rank_one",
+          "pencil": "FALSIFIED_BOUND",
+          "C_and_A_identical": true
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_low_band",
+          "quartet_ordinate": 196.0709392602438,
+          "mode_index": 156.03,
+          "eps_star_by_delta": {
+            "1/4": 1.2569933848515946,
+            "1/10": 0.18300686018718365,
+            "1/100": 0.0017940979030412526,
+            "1/1000": 1.793158827796433e-05
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.0625,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "4.93155322409e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "4.93831150046e-6",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.062499999999990626
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_at_split",
+          "quartet_ordinate": 391.8505834515786,
+          "mode_index": 311.82,
+          "eps_star_by_delta": {
+            "1/4": 1.1503108990338238,
+            "1/10": 0.1603907352588833,
+            "1/100": 0.0015552312996245888,
+            "1/1000": 1.55345026854415e-05
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.0625,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "4.93155322409e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "5.00100491749e-6",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.06249999999999547
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_high_band",
+          "quartet_ordinate": 587.441217578749,
+          "mode_index": 467.47,
+          "eps_star_by_delta": {
+            "1/4": 1.016885388302105,
+            "1/10": 0.13000892132600453,
+            "1/100": 0.0012261260985001997,
+            "1/1000": 1.2166065652769606e-05
+          },
+          "checkpoint_delta_1_10": "CERTIFIED",
+          "checkpoint_reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint",
+          "common_tolerance": 0.0625,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "4.93155322409e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "3.42312708001e-1",
+            "A_ge_aI": "NOT_ELIGIBLE_FLOATING_LAMBDA_MIN_NONPOSITIVE",
+            "floating_lambda_min_A": -0.06636773090236642
+          }
+        }
+      ]
+    },
+    {
+      "entry": "L6_even_quarter",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "cutoffs": [
+        {
+          "offset": "1/100000000",
+          "k": 24,
+          "trace_upper": "9.70938732419e-7",
+          "lambda_max_upper": 7.030654805076364e-07,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "3.88374241304e-6",
+          "resolution": 1.8476474271398783e-05,
+          "floating_count": 88,
+          "floating_trace_M_s": 1.7232732886320546e-08
+        },
+        {
+          "offset": "1/1000000",
+          "k": 22,
+          "trace_upper": "9.17538696604e-6",
+          "lambda_max_upper": 8.145404495230046e-06,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "3.67010060684e-5",
+          "resolution": 7.390589164972307e-05,
+          "floating_count": 90,
+          "floating_trace_M_s": 6.276018344662117e-07
+        },
+        {
+          "offset": "1/10000",
+          "k": 16,
+          "trace_upper": "5.991150855e-4",
+          "lambda_max_upper": 0.000553720186278639,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "2.39542000759e-3",
+          "resolution": 0.004729942276000977,
+          "floating_count": 93,
+          "floating_trace_M_s": 0.00021457716157549287
+        },
+        {
+          "offset": "1/100",
+          "k": 9,
+          "trace_upper": "6.24243617589e-2",
+          "lambda_max_upper": 0.04358670283880883,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "2.28480857138e-1",
+          "resolution": 0.6049873046875001,
+          "floating_count": 96,
+          "floating_trace_M_s": 0.015396486560608342
+        }
+      ],
+      "scalar_gap_charge_float": 57.79078396739818,
+      "synthetic_controls": [
+        {
+          "control": "S1_low_block_rank_one",
+          "pencil": "FALSIFIED_BOUND",
+          "C_and_A_identical": true
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_low_band",
+          "quartet_ordinate": 339.09910478808507,
+          "mode_index": 323.82,
+          "eps_star_by_delta": {
+            "1/4": 2.0901544036793087,
+            "1/10": 0.29020417883428457,
+            "1/100": 0.002820370930679703,
+            "1/1000": 2.818912513717107e-05
+          },
+          "checkpoint_delta_1_10": "FALSIFIED_BOUND",
+          "checkpoint_reading": "CHECKPOINT_DETECTS",
+          "common_tolerance": 0.125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "9.1742438159e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "9.19590356482e-6",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.12499999999999341
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_at_split",
+          "quartet_ordinate": 678.7713213143747,
+          "mode_index": 648.18,
+          "eps_star_by_delta": {
+            "1/4": 2.230105786180723,
+            "1/10": 0.31010602360813727,
+            "1/100": 0.0030049446000044804,
+            "1/1000": 3.0037662955481447e-05
+          },
+          "checkpoint_delta_1_10": "FALSIFIED_BOUND",
+          "checkpoint_reading": "CHECKPOINT_DETECTS",
+          "common_tolerance": 0.125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "9.1742438159e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "1.24492149956e-2",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.12489236110294055
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_high_band",
+          "quartet_ordinate": 1017.9359874414878,
+          "mode_index": 972.06,
+          "eps_star_by_delta": {
+            "1/4": 1.989635356583,
+            "1/10": 0.27482282057158935,
+            "1/100": 0.00266568664419814,
+            "1/1000": 2.6637930031389557e-05
+          },
+          "checkpoint_delta_1_10": "FALSIFIED_BOUND",
+          "checkpoint_reading": "CHECKPOINT_DETECTS",
+          "common_tolerance": 0.125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "9.1742438159e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "1.12275123375e0",
+            "A_ge_aI": "NOT_ELIGIBLE_FLOATING_LAMBDA_MIN_NONPOSITIVE",
+            "floating_lambda_min_A": -0.14979135497650292
+          }
+        }
+      ]
+    },
+    {
+      "entry": "L6_odd_quarter",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "cutoffs": [
+        {
+          "offset": "1/100000000",
+          "k": 24,
+          "trace_upper": "1.31667296079e-6",
+          "lambda_max_upper": 1.2012629170901623e-06,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "5.26668133934e-6",
+          "resolution": 1.8476474271398783e-05,
+          "floating_count": 88,
+          "floating_trace_M_s": 1.554803452894341e-08
+        },
+        {
+          "offset": "1/1000000",
+          "k": 22,
+          "trace_upper": "5.93707264654e-6",
+          "lambda_max_upper": 3.744431520034952e-06,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "2.3747778575e-5",
+          "resolution": 7.390589164972307e-05,
+          "floating_count": 91,
+          "floating_trace_M_s": 2.6992860165782442e-06
+        },
+        {
+          "offset": "1/10000",
+          "k": 16,
+          "trace_upper": "7.36923901376e-4",
+          "lambda_max_upper": 0.0006280695095108868,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "2.945027396e-3",
+          "resolution": 0.004729942276000977,
+          "floating_count": 93,
+          "floating_trace_M_s": 0.0001235083094049907
+        },
+        {
+          "offset": "1/100",
+          "k": 9,
+          "trace_upper": "6.07457028089e-2",
+          "lambda_max_upper": 0.03694794303345361,
+          "lambda_max_status": "CERTIFIED",
+          "response_trace_upper": "2.20557109559e-1",
+          "resolution": 0.6049873046875001,
+          "floating_count": 96,
+          "floating_trace_M_s": 0.03368940989936926
+        }
+      ],
+      "scalar_gap_charge_float": 61.58084604732182,
+      "synthetic_controls": [
+        {
+          "control": "S1_low_block_rank_one",
+          "pencil": "FALSIFIED_BOUND",
+          "C_and_A_identical": true
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_low_band",
+          "quartet_ordinate": 339.09910478808507,
+          "mode_index": 323.82,
+          "eps_star_by_delta": {
+            "1/4": 2.095391035153276,
+            "1/10": 0.2908094597372198,
+            "1/100": 0.00282522638386107,
+            "1/1000": 2.8222324889617066e-05
+          },
+          "checkpoint_delta_1_10": "FALSIFIED_BOUND",
+          "checkpoint_reading": "CHECKPOINT_DETECTS",
+          "common_tolerance": 0.125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "5.93586588161e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "5.93610700992e-6",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.12499999999999466
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_at_split",
+          "quartet_ordinate": 678.7713213143747,
+          "mode_index": 648.18,
+          "eps_star_by_delta": {
+            "1/4": 2.2308294251536083,
+            "1/10": 0.3101045813307175,
+            "1/100": 0.0030028256740498734,
+            "1/1000": 2.998493058559314e-05
+          },
+          "checkpoint_delta_1_10": "FALSIFIED_BOUND",
+          "checkpoint_reading": "CHECKPOINT_DETECTS",
+          "common_tolerance": 0.125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "5.93586588161e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "1.35494925894e-2",
+            "A_ge_aI": "CERTIFIED",
+            "floating_lambda_min_A": 0.12486526033475955
+          }
+        },
+        {
+          "control": "S2_merged_pair_offline_quartet_high_band",
+          "quartet_ordinate": 1017.9359874414878,
+          "mode_index": 972.06,
+          "eps_star_by_delta": {
+            "1/4": 1.9896146811973843,
+            "1/10": 0.274872411594701,
+            "1/100": 0.002665971363121739,
+            "1/1000": 2.662422968953669e-05
+          },
+          "checkpoint_delta_1_10": "FALSIFIED_BOUND",
+          "checkpoint_reading": "CHECKPOINT_DETECTS",
+          "common_tolerance": 0.125,
+          "native": {
+            "pencil": "CERTIFIED",
+            "nearband_trace_upper": "5.93586588161e-6",
+            "A_ge_aI": "CERTIFIED"
+          },
+          "synthetic": {
+            "pencil": "FALSIFIED_BOUND",
+            "nearband_trace_upper": "1.28112138917e0",
+            "A_ge_aI": "NOT_ELIGIBLE_FLOATING_LAMBDA_MIN_NONPOSITIVE",
+            "floating_lambda_min_A": -0.14973984060916146
+          }
+        }
+      ]
+    }
+  ],
+  "detection_threshold_law": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SYNTHETIC",
+    "statement": "eps*(delta) = -lambda_min(F + N(delta), G) behaves as c(L) delta^2 for small delta: eps*/delta^2 at delta = 1/100 and 1/1000 agree within 8.8% in every row (0.9% in the low band); at delta = 1/10 it is at most 19% higher. c(L) at delta = 1/1000 is about 9.4, 17.9 and 28.2 in the low band at L = 4, 5, 6 (7.0-30.0 across bands).",
+    "rows": [
+      {
+        "entry": "L4_even_half",
+        "band": "low_band",
+        "c_at_delta_1_1000": 9.448973189686193,
+        "c_at_delta_1_100": 9.453155177097942,
+        "c_at_delta_1_10": 9.559537043200507,
+        "c_at_delta_1_4": 10.07144990275233
+      },
+      {
+        "entry": "L4_even_half",
+        "band": "at_split",
+        "c_at_delta_1_1000": 7.267694266520546,
+        "c_at_delta_1_100": 7.301625844715553,
+        "c_at_delta_1_10": 7.699928356433013,
+        "c_at_delta_1_4": 8.688212157320828
+      },
+      {
+        "entry": "L4_even_half",
+        "band": "high_band",
+        "c_at_delta_1_1000": 7.1674042584262905,
+        "c_at_delta_1_100": 7.800268614932362,
+        "c_at_delta_1_10": 8.468676161993208,
+        "c_at_delta_1_4": 9.201072443579939
+      },
+      {
+        "entry": "L4_odd_half",
+        "band": "low_band",
+        "c_at_delta_1_1000": 9.343087965985958,
+        "c_at_delta_1_100": 9.423147810067194,
+        "c_at_delta_1_10": 9.625030034415486,
+        "c_at_delta_1_4": 10.178120253058562
+      },
+      {
+        "entry": "L4_odd_half",
+        "band": "at_split",
+        "c_at_delta_1_1000": 7.205496717646763,
+        "c_at_delta_1_100": 7.332568997476994,
+        "c_at_delta_1_10": 7.71897884337135,
+        "c_at_delta_1_4": 8.672965905616408
+      },
+      {
+        "entry": "L4_odd_half",
+        "band": "high_band",
+        "c_at_delta_1_1000": 7.0497686110235085,
+        "c_at_delta_1_100": 7.634937571249986,
+        "c_at_delta_1_10": 8.404526119529105,
+        "c_at_delta_1_4": 9.092401245518172
+      },
+      {
+        "entry": "L5_even_third",
+        "band": "low_band",
+        "c_at_delta_1_1000": 17.87935531866073,
+        "c_at_delta_1_100": 17.955390792791533,
+        "c_at_delta_1_10": 18.358749428222218,
+        "c_at_delta_1_4": 20.185918598107254
+      },
+      {
+        "entry": "L5_even_third",
+        "band": "at_split",
+        "c_at_delta_1_1000": 15.519234968447115,
+        "c_at_delta_1_100": 15.604073951090967,
+        "c_at_delta_1_10": 16.13542518967202,
+        "c_at_delta_1_4": 18.530172448258714
+      },
+      {
+        "entry": "L5_even_third",
+        "band": "high_band",
+        "c_at_delta_1_1000": 12.149984834158072,
+        "c_at_delta_1_100": 12.445467126996215,
+        "c_at_delta_1_10": 13.22788425243846,
+        "c_at_delta_1_4": 16.477156576617205
+      },
+      {
+        "entry": "L5_odd_third",
+        "band": "low_band",
+        "c_at_delta_1_1000": 17.93158827796433,
+        "c_at_delta_1_100": 17.940979030412525,
+        "c_at_delta_1_10": 18.300686018718366,
+        "c_at_delta_1_4": 20.111894157625514
+      },
+      {
+        "entry": "L5_odd_third",
+        "band": "at_split",
+        "c_at_delta_1_1000": 15.5345026854415,
+        "c_at_delta_1_100": 15.552312996245888,
+        "c_at_delta_1_10": 16.03907352588833,
+        "c_at_delta_1_4": 18.40497438454118
+      },
+      {
+        "entry": "L5_odd_third",
+        "band": "high_band",
+        "c_at_delta_1_1000": 12.166065652769607,
+        "c_at_delta_1_100": 12.261260985001996,
+        "c_at_delta_1_10": 13.000892132600454,
+        "c_at_delta_1_4": 16.27016621283368
+      },
+      {
+        "entry": "L6_even_quarter",
+        "band": "low_band",
+        "c_at_delta_1_1000": 28.189125137171068,
+        "c_at_delta_1_100": 28.20370930679703,
+        "c_at_delta_1_10": 29.020417883428458,
+        "c_at_delta_1_4": 33.44247045886894
+      },
+      {
+        "entry": "L6_even_quarter",
+        "band": "at_split",
+        "c_at_delta_1_1000": 30.037662955481448,
+        "c_at_delta_1_100": 30.049446000044803,
+        "c_at_delta_1_10": 31.010602360813728,
+        "c_at_delta_1_4": 35.68169257889157
+      },
+      {
+        "entry": "L6_even_quarter",
+        "band": "high_band",
+        "c_at_delta_1_1000": 26.63793003138956,
+        "c_at_delta_1_100": 26.6568664419814,
+        "c_at_delta_1_10": 27.482282057158937,
+        "c_at_delta_1_4": 31.834165705328
+      },
+      {
+        "entry": "L6_odd_quarter",
+        "band": "low_band",
+        "c_at_delta_1_1000": 28.222324889617067,
+        "c_at_delta_1_100": 28.2522638386107,
+        "c_at_delta_1_10": 29.080945973721978,
+        "c_at_delta_1_4": 33.52625656245242
+      },
+      {
+        "entry": "L6_odd_quarter",
+        "band": "at_split",
+        "c_at_delta_1_1000": 29.984930585593137,
+        "c_at_delta_1_100": 30.028256740498733,
+        "c_at_delta_1_10": 31.01045813307175,
+        "c_at_delta_1_4": 35.69327080245773
+      },
+      {
+        "entry": "L6_odd_quarter",
+        "band": "high_band",
+        "c_at_delta_1_1000": 26.62422968953669,
+        "c_at_delta_1_100": 26.65971363121739,
+        "c_at_delta_1_10": 27.4872411594701,
+        "c_at_delta_1_4": 31.83383489915815
+      }
+    ],
+    "reading": "A finite checkpoint at tolerance eps is blind to a synthetic off-line quartet with c(L) delta^2 < eps and detects it otherwise. Fixed-margin detection of a given off-line zero is already PROVED in Lean (eventually_no_moment_slice_lower_bound_below_margin); the signal adds its dependence on delta and L. Heuristic: the synthetic world is the native form with two zero pairs replaced, not a consistent arithmetic object."
+  },
+  "l6_prediction_outcome": {
+    "prediction_file": "L6_PREDICTION.json",
+    "observed_eps_star_delta_1_10_low_band": {
+      "L6_even_quarter": 0.29020417883428457,
+      "L6_odd_quarter": 0.2908094597372198
+    },
+    "observed_checkpoint_1_4_delta_1_10_low_band": {
+      "L6_even_quarter": "FALSIFIED_BOUND",
+      "L6_odd_quarter": "FALSIFIED_BOUND"
+    },
+    "outcome": "CONFIRMED",
+    "status": "session prediction stated before any L6 output existed; not a frozen preregistration (no hashed tool rule)"
+  }
+}

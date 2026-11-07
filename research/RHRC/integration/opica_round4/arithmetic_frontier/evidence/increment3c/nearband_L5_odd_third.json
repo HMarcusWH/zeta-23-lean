@@ -1,0 +1,545 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_NEARBAND_BOUND_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "state_id": "L5_odd_third",
+  "L": "5",
+  "parity": "odd",
+  "tolerance": "1/3",
+  "split": 312,
+  "K": 625,
+  "low_dimension": 308,
+  "high_dimension": 313,
+  "pencil_bits": 192,
+  "working_bits": 512,
+  "coordinates": "corrected Fourier-prefix flag of E-D1 (coordinate statement; the pencil carries the full Gram)",
+  "hashes": {
+    "tool_sha256": "0dce48ca3ca03fb1cfe4928fee0b348fd08cbed25c0a8c5549d0c88346f5169b",
+    "engine_sha256": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+    "source_module_sha256": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6",
+    "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+    "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54"
+  },
+  "nearband": {
+    "b": "2773/250",
+    "A_le_bI": "CERTIFIED",
+    "floating_lambda_min_A": 0.33333333333332243,
+    "floating_lambda_max_A": 10.874127425447996,
+    "rows": [
+      {
+        "s": "100000003/300000000",
+        "offset_above_eps": "1/100000000",
+        "k": 24,
+        "power": 16777216,
+        "certified_trace_upper": "8.1909789893e-7",
+        "trace_ball": {
+          "lower_exact": "2878945966077181209486055156896539036611806572237956313256366690932333849608704140906060591460274756629813105062613255138310076719985936858626460055469107*2^-530",
+          "upper_exact": "2878945966077181209486497058185150952347165427211298115163399952219613456336109670733562287490213693869872406321655734617090298907421507707986029351500851*2^-530",
+          "display": "[8.190978989e-7 +/- 3.03e-17]"
+        },
+        "certified_lambda_max_upper": {
+          "beta": "854544705963*2^-60",
+          "beta_float": 7.41199381352857e-07,
+          "status": "CERTIFIED"
+        },
+        "statement": "tr M(s) <= tr(C Phi_k C^T) and lambda_max M(s) <= beta (each CERTIFIED where stated; DERIVED pointwise majorant)",
+        "resolution_1e-10": 1.4768367594661317e-05,
+        "weight_at_floating_lambda_min": 1.0157163779144311,
+        "experimental_floating": {
+          "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+          "count_at_or_below_s": 20,
+          "trace_M_s": 3.6198395944940162e-09,
+          "trace_M_s_plus_resolution": 8.059559584989672e-06,
+          "trace_C_phi_CT": 8.190978982495152e-07
+        },
+        "certified_response_trace_upper": "2.45728842173e-6",
+        "response_statement": "tr(C A^-1 1_(0,s](A) C^T) <= tr(C A^-1 Phi_k C^T) (A >= aI > 0 certified)"
+      },
+      {
+        "s": "1000003/3000000",
+        "offset_above_eps": "1/1000000",
+        "k": 22,
+        "power": 4194304,
+        "certified_trace_upper": "4.93245782559e-6",
+        "trace_ball": {
+          "lower_exact": "2167060796148040829807346401277337602084613691485368508416045668479008224444211891000388087086748836139633640275902170928562296278794108788910362806669289*2^-527",
+          "upper_exact": "2167060796148040829807347940916057896214913658854015060436155347869545542772645946624048513727655339154026827994896858081569687696798694828208361702903785*2^-527",
+          "display": "[4.932457826e-6 +/- 4.09e-16]"
+        },
+        "certified_lambda_max_upper": {
+          "beta": "335292433323*2^-56",
+          "beta_float": 4.653117243222371e-06,
+          "status": "CERTIFIED"
+        },
+        "statement": "tr M(s) <= tr(C Phi_k C^T) and lambda_max M(s) <= beta (each CERTIFIED where stated; DERIVED pointwise majorant)",
+        "resolution_1e-10": 5.907346494277319e-05,
+        "weight_at_floating_lambda_min": 1.4767644848076042,
+        "experimental_floating": {
+          "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+          "count_at_or_below_s": 22,
+          "trace_M_s": 1.8634876790336712e-06,
+          "trace_M_s_plus_resolution": 0.0001913486671344767,
+          "trace_C_phi_CT": 4.93245782111758e-06
+        },
+        "certified_response_trace_upper": "1.47972856102e-5",
+        "response_statement": "tr(C A^-1 1_(0,s](A) C^T) <= tr(C A^-1 Phi_k C^T) (A >= aI > 0 certified)"
+      },
+      {
+        "s": "10003/30000",
+        "offset_above_eps": "1/10000",
+        "k": 15,
+        "power": 32768,
+        "certified_trace_upper": "3.04816455731e-4",
+        "trace_ball": {
+          "lower_exact": "8370013168291164442433433811217903488692179195102772010782750724189515819519986081146363654899131965010319518876020273925483270477862900697182464451362885*2^-523",
+          "upper_exact": "8370013168291164442433433811217973736893150876279217699068861763580848586314904796975048252761878189836471960907670524641818288817223246833002766868234309*2^-523",
+          "display": "[0.0003048164557 +/- 3.12e-14]"
+        },
+        "certified_lambda_max_upper": {
+          "beta": "1002671748595*2^-52",
+          "beta_float": 0.0002226378522862671,
+          "status": "CERTIFIED"
+        },
+        "statement": "tr M(s) <= tr(C Phi_k C^T) and lambda_max M(s) <= beta (each CERTIFIED where stated; DERIVED pointwise majorant)",
+        "resolution_1e-10": 0.007561333933512371,
+        "weight_at_floating_lambda_min": 1.3560478451112754,
+        "experimental_floating": {
+          "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+          "count_at_or_below_s": 24,
+          "trace_M_s": 0.0001913486671344767,
+          "trace_M_s_plus_resolution": 0.009516541805741987,
+          "trace_C_phi_CT": 0.00030481645573231914
+        },
+        "certified_response_trace_upper": "9.13481124838e-4",
+        "response_statement": "tr(C A^-1 1_(0,s](A) C^T) <= tr(C A^-1 Phi_k C^T) (A >= aI > 0 certified)"
+      },
+      {
+        "s": "103/300",
+        "offset_above_eps": "1/100",
+        "k": 9,
+        "power": 512,
+        "certified_trace_upper": "5.06646145239e-2",
+        "trace_ball": {
+          "lower_exact": "10868822726086452495567149018342251288259130459370316334633915207365680002936220828094090269921827862954133590166411950739749695290401800046617727150570753*2^-516",
+          "upper_exact": "10868822726086452495567149018342251288262363972801482208320900749767277618014512089201113785792977021394763672138898548380062538428641552943764320111279361*2^-516",
+          "display": "[0.05066461452 +/- 3.86e-12]"
+        },
+        "certified_lambda_max_upper": {
+          "beta": "674256011925*2^-44",
+          "beta_float": 0.03832701690527074,
+          "status": "CERTIFIED"
+        },
+        "statement": "tr M(s) <= tr(C Phi_k C^T) and lambda_max M(s) <= beta (each CERTIFIED where stated; DERIVED pointwise majorant)",
+        "resolution_1e-10": 0.4834800651041667,
+        "weight_at_floating_lambda_min": 1.609810882309912,
+        "experimental_floating": {
+          "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+          "count_at_or_below_s": 26,
+          "trace_M_s": 0.009516541805741987,
+          "trace_M_s_plus_resolution": 0.5522573152679142,
+          "trace_C_phi_CT": 0.05066461452385629
+        },
+        "certified_response_trace_upper": "1.41956057952e-1",
+        "response_statement": "tr(C A^-1 1_(0,s](A) C^T) <= tr(C A^-1 Phi_k C^T) (A >= aI > 0 certified)"
+      }
+    ],
+    "a": "163333/500000",
+    "A_ge_aI": "CERTIFIED",
+    "trace_CCT_upper": "2.22005092144e1",
+    "scalar_gap_charge_float": 31.293474772804263
+  },
+  "synthetic": {
+    "kind": "SYNTHETIC_NOT_NATIVE",
+    "controls": [
+      {
+        "control": "S1_low_block_rank_one",
+        "perturbation": "B - 2 mid(B_00) e_1 e_1^T at the checkpoint tolerance",
+        "pencil": "FALSIFIED_BOUND",
+        "witness_value": {
+          "lower_exact": "-137992644879737845823501430341605916756589694851474584912353691*2^-208",
+          "upper_exact": "-137992644879737845823501430341605916756589694851474584632731237*2^-208",
+          "display": "[-0.3354415380 +/- 1.53e-11]"
+        },
+        "C_and_A_blocks_identical": true,
+        "nearband": "IDENTICAL_TO_NATIVE_BY_CONSTRUCTION"
+      },
+      {
+        "control": "S2_merged_pair_offline_quartet_low_band",
+        "zero_indices": [
+          77,
+          78
+        ],
+        "gammas": [
+          195.26539667952923,
+          196.87648184095832
+        ],
+        "quartet_ordinate": 196.0709392602438,
+        "mode_index_of_ordinate": 156.02829589969284,
+        "split": 312,
+        "perturbation": "N(delta) = quartet(1/2 +- delta +- i gamma_mid) - pair(gamma_n) - pair(gamma_n+1); unscaled",
+        "threshold_by_delta": [
+          {
+            "delta": "1/4",
+            "N_floating_min": -7.266920354816663,
+            "floating_min_generalized_F_plus_N": -1.2569933848515946,
+            "detection_threshold_eps_star": 1.2569933848515946,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          },
+          {
+            "delta": "1/10",
+            "N_floating_min": -6.132614056975241,
+            "floating_min_generalized_F_plus_N": -0.18300686018718365,
+            "detection_threshold_eps_star": 0.18300686018718365,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          },
+          {
+            "delta": "1/100",
+            "N_floating_min": -5.935012141123338,
+            "floating_min_generalized_F_plus_N": -0.0017940979030412526,
+            "detection_threshold_eps_star": 0.0017940979030412526,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          },
+          {
+            "delta": "1/1000",
+            "N_floating_min": -5.933061221557879,
+            "floating_min_generalized_F_plus_N": -1.793158827796433e-05,
+            "detection_threshold_eps_star": 1.793158827796433e-05,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          }
+        ],
+        "delta_main": "1/10",
+        "checkpoint": {
+          "tolerance": "1/3",
+          "floating_minimum": 0.15032647314614547,
+          "status": "CERTIFIED",
+          "tau": "1/16",
+          "dimension": 621,
+          "residual_frobenius_sq_upper": "16424616611611663598344509527104402629474289135735271754982902037330841796080286265783764299099724427315*2^-434",
+          "certified_lower_eigenvalue_coordinates": "14742040721954607367369812317733176785066878690109575312412131648134854274115850614891751138868485373667801653417999939550493545563365758508684682046704745151898643707*2^-556",
+          "certified_lower_eigenvalue_display": "6.25e-2",
+          "reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint"
+        },
+        "discrimination": {
+          "tolerance": "1*2^-4",
+          "tolerance_float": 0.0625,
+          "native": {
+            "pencil": {
+              "floating_minimum": 0.06249999999999444,
+              "status": "CERTIFIED",
+              "tau": "1/64",
+              "dimension": 621,
+              "residual_frobenius_sq_upper": "82534400282711995336524991598292988825848708420877573794080952973523848748305823513127452924134517371346703016562750724423792063581193*2^-536",
+              "certified_lower_eigenvalue_coordinates": "7371020360970536745020781624606444367341247335209463505530249461262604999382110174001710278284832445398683787426551412107896514443518602349428749965851286107397557359*2^-557",
+              "certified_lower_eigenvalue_display": "1.5625e-2"
+            },
+            "nearband": {
+              "A_ge_aI": "CERTIFIED",
+              "A_le_bI": "CERTIFIED",
+              "floating_lambda_min_A": 0.06249999999999113,
+              "k": 22,
+              "certified_trace_upper": "4.93155322409e-6",
+              "certified_lambda_max_upper": {
+                "beta": "670453845509*2^-57",
+                "beta_float": 4.652208101453559e-06,
+                "status": "CERTIFIED"
+              },
+              "resolution_1e-10": 5.90450959134102e-05,
+              "experimental_floating": {
+                "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+                "count_at_or_below_s": 22,
+                "trace_M_s": 1.8634876801534328e-06,
+                "trace_M_s_plus_resolution": 0.00019134866713445476,
+                "trace_C_phi_CT": 4.931553222111958e-06
+              }
+            }
+          },
+          "synthetic": {
+            "pencil": {
+              "floating_minimum": -0.12050686018718842,
+              "status": "FALSIFIED_BOUND",
+              "witness_value": {
+                "lower_exact": "-1549176465831940379430766646483601071051840135220844651818747*2^-203",
+                "upper_exact": "-1549176465831940379430766646483601071051840135220840038018795*2^-203",
+                "display": "[-0.1205068602 +/- 1.29e-11]"
+              },
+              "witness_kind": "EXACT_DYADIC_FLOATING_EIGENVECTOR"
+            },
+            "nearband": {
+              "A_ge_aI": "CERTIFIED",
+              "A_le_bI": "CERTIFIED",
+              "floating_lambda_min_A": 0.062499999999990626,
+              "k": 22,
+              "certified_trace_upper": "4.93831150046e-6",
+              "certified_lambda_max_upper": {
+                "beta": "670870909609*2^-57",
+                "beta_float": 4.655102064994587e-06,
+                "status": "CERTIFIED"
+              },
+              "resolution_1e-10": 5.90450959134102e-05,
+              "experimental_floating": {
+                "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+                "count_at_or_below_s": 22,
+                "trace_M_s": 1.8709274416511893e-06,
+                "trace_M_s_plus_resolution": 0.00019214168302729038,
+                "trace_C_phi_CT": 4.938311500204466e-06
+              }
+            }
+          },
+          "question": "Is near-band coupling at the same tolerance different for a certified-positive native pencil and a certified-negative synthetic one?"
+        }
+      },
+      {
+        "control": "S2_merged_pair_offline_quartet_at_split",
+        "zero_indices": [
+          196,
+          197
+        ],
+        "gammas": [
+          391.45608356363806,
+          392.2450833395191
+        ],
+        "quartet_ordinate": 391.8505834515786,
+        "mode_index_of_ordinate": 311.82478654880987,
+        "split": 312,
+        "perturbation": "N(delta) = quartet(1/2 +- delta +- i gamma_mid) - pair(gamma_n) - pair(gamma_n+1); unscaled",
+        "threshold_by_delta": [
+          {
+            "delta": "1/4",
+            "N_floating_min": -4.020037436016502,
+            "floating_min_generalized_F_plus_N": -1.1503108990338238,
+            "detection_threshold_eps_star": 1.1503108990338238,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          },
+          {
+            "delta": "1/10",
+            "N_floating_min": -2.8433040575537802,
+            "floating_min_generalized_F_plus_N": -0.1603907352588833,
+            "detection_threshold_eps_star": 0.1603907352588833,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          },
+          {
+            "delta": "1/100",
+            "N_floating_min": -2.637688142299312,
+            "floating_min_generalized_F_plus_N": -0.0015552312996245888,
+            "detection_threshold_eps_star": 0.0015552312996245888,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          },
+          {
+            "delta": "1/1000",
+            "N_floating_min": -2.6356571118193752,
+            "floating_min_generalized_F_plus_N": -1.55345026854415e-05,
+            "detection_threshold_eps_star": 1.55345026854415e-05,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          }
+        ],
+        "delta_main": "1/10",
+        "checkpoint": {
+          "tolerance": "1/3",
+          "floating_minimum": 0.17294259807445558,
+          "status": "CERTIFIED",
+          "tau": "1/16",
+          "dimension": 621,
+          "residual_frobenius_sq_upper": "17108310529332440257354441020311131543391856645873990161846111604183258907173802005251185284291067490355*2^-434",
+          "certified_lower_eigenvalue_coordinates": "14742040721954513869420305115015798235864818766503487579235135253389672042857325346613153935858218357454820781581309150320811194404409714234261596576243930865876312949*2^-556",
+          "certified_lower_eigenvalue_display": "6.25e-2",
+          "reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint"
+        },
+        "discrimination": {
+          "tolerance": "1*2^-4",
+          "tolerance_float": 0.0625,
+          "native": {
+            "pencil": {
+              "floating_minimum": 0.06249999999999444,
+              "status": "CERTIFIED",
+              "tau": "1/64",
+              "dimension": 621,
+              "residual_frobenius_sq_upper": "82534400282711995336524991598292988825848708420877573794080952973523848748305823513127452924134517371346703016562750724423792063581193*2^-536",
+              "certified_lower_eigenvalue_coordinates": "7371020360970536745020781624606444367341247335209463505530249461262604999382110174001710278284832445398683787426551412107896514443518602349428749965851286107397557359*2^-557",
+              "certified_lower_eigenvalue_display": "1.5625e-2"
+            },
+            "nearband": {
+              "A_ge_aI": "CERTIFIED",
+              "A_le_bI": "CERTIFIED",
+              "floating_lambda_min_A": 0.06249999999999113,
+              "k": 22,
+              "certified_trace_upper": "4.93155322409e-6",
+              "certified_lambda_max_upper": {
+                "beta": "670453845509*2^-57",
+                "beta_float": 4.652208101453559e-06,
+                "status": "CERTIFIED"
+              },
+              "resolution_1e-10": 5.90450959134102e-05,
+              "experimental_floating": {
+                "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+                "count_at_or_below_s": 22,
+                "trace_M_s": 1.8634876801534328e-06,
+                "trace_M_s_plus_resolution": 0.00019134866713445476,
+                "trace_C_phi_CT": 4.931553222111958e-06
+              }
+            }
+          },
+          "synthetic": {
+            "pencil": {
+              "floating_minimum": -0.09789073525887822,
+              "status": "FALSIFIED_BOUND",
+              "witness_value": {
+                "lower_exact": "-314608693335955535309420406853450108355098534145289669526719*2^-201",
+                "upper_exact": "-314608693335955535309420406853450108355098534145223320802175*2^-201",
+                "display": "[-0.09789073526 +/- 1.13e-12]"
+              },
+              "witness_kind": "EXACT_DYADIC_FLOATING_EIGENVECTOR"
+            },
+            "nearband": {
+              "A_ge_aI": "CERTIFIED",
+              "A_le_bI": "CERTIFIED",
+              "floating_lambda_min_A": 0.06249999999999547,
+              "k": 22,
+              "certified_trace_upper": "5.00100491749e-6",
+              "certified_lambda_max_upper": {
+                "beta": "672059551969*2^-57",
+                "beta_float": 4.663349928220317e-06,
+                "status": "CERTIFIED"
+              },
+              "resolution_1e-10": 5.90450959134102e-05,
+              "experimental_floating": {
+                "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+                "count_at_or_below_s": 22,
+                "trace_M_s": 1.924477061662734e-06,
+                "trace_M_s_plus_resolution": 0.000142487916055562,
+                "trace_C_phi_CT": 5.001004916168986e-06
+              }
+            }
+          },
+          "question": "Is near-band coupling at the same tolerance different for a certified-positive native pencil and a certified-negative synthetic one?"
+        }
+      },
+      {
+        "control": "S2_merged_pair_offline_quartet_high_band",
+        "zero_indices": [
+          332,
+          333
+        ],
+        "gammas": [
+          586.7427718912502,
+          588.1396632662479
+        ],
+        "quartet_ordinate": 587.441217578749,
+        "mode_index_of_ordinate": 467.47086776789763,
+        "split": 312,
+        "perturbation": "N(delta) = quartet(1/2 +- delta +- i gamma_mid) - pair(gamma_n) - pair(gamma_n+1); unscaled",
+        "threshold_by_delta": [
+          {
+            "delta": "1/4",
+            "N_floating_min": -6.7872146037922185,
+            "floating_min_generalized_F_plus_N": -1.016885388302105,
+            "detection_threshold_eps_star": 1.016885388302105,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          },
+          {
+            "delta": "1/10",
+            "N_floating_min": -5.63841749450035,
+            "floating_min_generalized_F_plus_N": -0.13000892132600453,
+            "detection_threshold_eps_star": 0.13000892132600453,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          },
+          {
+            "delta": "1/100",
+            "N_floating_min": -5.437813224645942,
+            "floating_min_generalized_F_plus_N": -0.0012261260985001997,
+            "detection_threshold_eps_star": 0.0012261260985001997,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          },
+          {
+            "delta": "1/1000",
+            "N_floating_min": -5.435831879752344,
+            "floating_min_generalized_F_plus_N": -1.2166065652769606e-05,
+            "detection_threshold_eps_star": 1.2166065652769606e-05,
+            "authority": "EXPERIMENTAL_SIGNAL_FLOATING"
+          }
+        ],
+        "delta_main": "1/10",
+        "checkpoint": {
+          "tolerance": "1/3",
+          "floating_minimum": 0.2033244120073366,
+          "status": "CERTIFIED",
+          "tau": "1/16",
+          "dimension": 621,
+          "residual_frobenius_sq_upper": "16323118709841115636530489378988825348925947404552239225139458910183918087170429330194080281256783097907*2^-434",
+          "certified_lower_eigenvalue_coordinates": "3685510180488655353082255822149676784981173017349225881562293883184798747066729842075654731785178505779923891461854895627346042287580825569300534327473714005378639559*2^-554",
+          "certified_lower_eigenvalue_display": "6.25e-2",
+          "reading": "CHECKPOINT_BLIND: the synthetic off-line world passes the finite checkpoint"
+        },
+        "discrimination": {
+          "tolerance": "1*2^-4",
+          "tolerance_float": 0.0625,
+          "native": {
+            "pencil": {
+              "floating_minimum": 0.06249999999999444,
+              "status": "CERTIFIED",
+              "tau": "1/64",
+              "dimension": 621,
+              "residual_frobenius_sq_upper": "82534400282711995336524991598292988825848708420877573794080952973523848748305823513127452924134517371346703016562750724423792063581193*2^-536",
+              "certified_lower_eigenvalue_coordinates": "7371020360970536745020781624606444367341247335209463505530249461262604999382110174001710278284832445398683787426551412107896514443518602349428749965851286107397557359*2^-557",
+              "certified_lower_eigenvalue_display": "1.5625e-2"
+            },
+            "nearband": {
+              "A_ge_aI": "CERTIFIED",
+              "A_le_bI": "CERTIFIED",
+              "floating_lambda_min_A": 0.06249999999999113,
+              "k": 22,
+              "certified_trace_upper": "4.93155322409e-6",
+              "certified_lambda_max_upper": {
+                "beta": "670453845509*2^-57",
+                "beta_float": 4.652208101453559e-06,
+                "status": "CERTIFIED"
+              },
+              "resolution_1e-10": 5.90450959134102e-05,
+              "experimental_floating": {
+                "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+                "count_at_or_below_s": 22,
+                "trace_M_s": 1.8634876801534328e-06,
+                "trace_M_s_plus_resolution": 0.00019134866713445476,
+                "trace_C_phi_CT": 4.931553222111958e-06
+              }
+            }
+          },
+          "synthetic": {
+            "pencil": {
+              "floating_minimum": -0.06750892132600388,
+              "status": "FALSIFIED_BOUND",
+              "witness_value": {
+                "lower_exact": "-3390082937676123426252984847104014800506109988377978802729*2^-195",
+                "upper_exact": "-3390082937676123426252984847104014800506109988375900469047*2^-195",
+                "display": "[-0.06750892133 +/- 4.01e-12]"
+              },
+              "witness_kind": "EXACT_DYADIC_FLOATING_EIGENVECTOR"
+            },
+            "nearband": {
+              "A_ge_aI": "NOT_ELIGIBLE_FLOATING_LAMBDA_MIN_NONPOSITIVE",
+              "A_le_bI": "CERTIFIED",
+              "floating_lambda_min_A": -0.06636773090236642,
+              "k": 5,
+              "certified_trace_upper": "3.42312708001e-1",
+              "certified_lambda_max_upper": {
+                "beta": "241106741043*2^-40",
+                "beta_float": 0.21928530354034592,
+                "status": "CERTIFIED"
+              },
+              "resolution_1e-10": 8.1652138115625,
+              "experimental_floating": {
+                "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+                "count_at_or_below_s": 23,
+                "trace_M_s": 0.0009654738290613888,
+                "trace_M_s_plus_resolution": 22.081806504242564,
+                "trace_C_phi_CT": 0.342312708001219
+              }
+            }
+          },
+          "question": "Is near-band coupling at the same tolerance different for a certified-positive native pencil and a certified-negative synthetic one?"
+        }
+      }
+    ]
+  },
+  "seconds": 332.8
+}
