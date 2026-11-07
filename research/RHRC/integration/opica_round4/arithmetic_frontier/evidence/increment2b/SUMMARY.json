@@ -1,0 +1,1053 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_INCREMENT2B_SUMMARY_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "scope": "FINITE_RESEARCH_CERTIFICATES_AT_NAMED_STATES_NOT_AN_RH_OR_STEP4_CLAIM",
+  "engine_sha256": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+  "source_module_sha256": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6",
+  "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+  "checker_sha256": "d66ff2d948bfd13bfd8209f370b4d0a58e6fbbe9e5f602a2674cb69b6c4227db",
+  "assurance_levels": {
+    "1_integrity": "record hashes (this file); byte identity only",
+    "2_certificate_replay": "not provided for large states: proposal payloads are not exported; replaced by level 3",
+    "3_independent_reconstruction": "independent_L*.json: own exact elimination basis and blocked interval Schur certificate; shared source assembly native_source.py and the equation-(4.4) backend",
+    "4_lean_bridge": "OPEN (FiniteCertificateSoundness, native enclosure bridge)"
+  },
+  "records": [
+    {
+      "entry": "archive_L2_even",
+      "file": "archive_L2_even.json",
+      "sha256": "78a8a148952a8763d94099ae51bc1a2482ed782822ab568cff570da76ed2f011"
+    },
+    {
+      "entry": "archive_L2_odd",
+      "file": "archive_L2_odd.json",
+      "sha256": "c7076f0a29b0cd2c95a7f51454656c31d7e7ff528b72830b5eecad5a1047c002"
+    },
+    {
+      "entry": "archive_L9_4_even",
+      "file": "archive_L9_4_even.json",
+      "sha256": "7650cc0d77c92ed9f8716f8b1583f59f33c0eb49be8d27f5385144dfbf672b28"
+    },
+    {
+      "entry": "archive_L9_4_odd",
+      "file": "archive_L9_4_odd.json",
+      "sha256": "f4a663624abe2833fff49b317e7f3de79961bc590b2c87b2dc9259dd0624deb7"
+    },
+    {
+      "entry": "archive_L5_2_even",
+      "file": "archive_L5_2_even.json",
+      "sha256": "2d251e6fe47feae75cd3f6484c4479f5fce1f98f6994e0532083ca9de7e91f8b"
+    },
+    {
+      "entry": "archive_L5_2_odd",
+      "file": "archive_L5_2_odd.json",
+      "sha256": "4cdf9b4beb96bdeae375f77b70a6ec311edcd5c6ed7f826f09a0091348e10b06"
+    },
+    {
+      "entry": "L4_even",
+      "file": "L4_even.json",
+      "sha256": "3074a3d108cb7a8b7d70c2dba95d33a6e04cacf08f07735ee127a6e67d1230d0"
+    },
+    {
+      "entry": "L4_odd",
+      "file": "L4_odd.json",
+      "sha256": "f8496057742a81e2b4e89dff27f7455de41c0896b4baf09fff4ad57eb5cd5d17"
+    },
+    {
+      "entry": "L4_even_bracket",
+      "file": "L4_even_bracket.json",
+      "sha256": "0cad301a670e50277ab7004e5189992f427bd7f73cdc8b75c156d1dd26677450"
+    },
+    {
+      "entry": "L4_odd_bracket",
+      "file": "L4_odd_bracket.json",
+      "sha256": "7906dd66334d6356a39d0f5983d32ef8b3312583d1f002787ffedd0c1eaedec7"
+    },
+    {
+      "entry": "L5_even",
+      "file": "L5_even.json",
+      "sha256": "ae691d8e46f32ddc996c8c31af2b5679fb4e7e6d953f184b6058ff78041b2b71"
+    },
+    {
+      "entry": "L5_odd",
+      "file": "L5_odd.json",
+      "sha256": "ff27ca87959e8530cce289ebf3783712563d59287fdb27a7d980974558dec8b9"
+    },
+    {
+      "entry": "EH6_L6_even",
+      "file": "EH6_L6_even.json",
+      "sha256": "3daabb9c05c89351ed302408a147ae0c2d3d867fa0a0424831ebbbc485aad77b"
+    },
+    {
+      "entry": "EH6_L6_odd",
+      "file": "EH6_L6_odd.json",
+      "sha256": "7b15a641c8cbded3ab74a71d8a59bcdbdc9a488bfc21548d94fa8c87860730a1"
+    }
+  ],
+  "independent_reconstructions": [
+    {
+      "file": "independent_L4_even.json",
+      "sha256": "1dba25fcef925477337246cb22aa5d9c786af883f996400575c85813b47349ce",
+      "L": "4",
+      "parity": "even",
+      "tolerance": "1/2",
+      "bits": 192,
+      "status": "CERTIFIED",
+      "assurance_level": "LEVEL_3_INDEPENDENT_BASIS_AND_CERTIFICATE_SHARED_SOURCE_ASSEMBLY",
+      "seconds": 7.1,
+      "role": "ACCEPTED_RECONSTRUCTION",
+      "note": null
+    },
+    {
+      "file": "independent_L4_odd.json",
+      "sha256": "77a8b46ec8631d6e17333f329d7f0ff63614cbe3dce7beb0ef25b9465df452cf",
+      "L": "4",
+      "parity": "odd",
+      "tolerance": "1/2",
+      "bits": 192,
+      "status": "CERTIFIED",
+      "assurance_level": "LEVEL_3_INDEPENDENT_BASIS_AND_CERTIFICATE_SHARED_SOURCE_ASSEMBLY",
+      "seconds": 6.4,
+      "role": "ACCEPTED_RECONSTRUCTION",
+      "note": null
+    },
+    {
+      "file": "independent_L5_even.json",
+      "sha256": "57c670a8d0c85ccc70fd489350720af893d7b47652a2b15205a33b91b4791fa5",
+      "L": "5",
+      "parity": "even",
+      "tolerance": "1/3",
+      "bits": 192,
+      "status": "CERTIFIED",
+      "assurance_level": "LEVEL_3_INDEPENDENT_BASIS_AND_CERTIFICATE_SHARED_SOURCE_ASSEMBLY",
+      "seconds": 40.4,
+      "role": "ACCEPTED_RECONSTRUCTION",
+      "note": null
+    },
+    {
+      "file": "independent_L5_odd.json",
+      "sha256": "1fbf927a5d4b59c831599d65e03a31ff803501d300b59ddbd6013513e8ed2dd3",
+      "L": "5",
+      "parity": "odd",
+      "tolerance": "1/3",
+      "bits": 192,
+      "status": "CERTIFIED",
+      "assurance_level": "LEVEL_3_INDEPENDENT_BASIS_AND_CERTIFICATE_SHARED_SOURCE_ASSEMBLY",
+      "seconds": 40.5,
+      "role": "ACCEPTED_RECONSTRUCTION",
+      "note": null
+    },
+    {
+      "file": "independent_L6_even.json",
+      "sha256": "c22dd233a6908336e05794b503dcc2180f4c42dbbd2fca6222f0e6c547c2ca08",
+      "L": "6",
+      "parity": "even",
+      "tolerance": "1/4",
+      "bits": 192,
+      "status": "UNKNOWN_PRECISION",
+      "assurance_level": "LEVEL_3_INDEPENDENT_BASIS_AND_CERTIFICATE_SHARED_SOURCE_ASSEMBLY",
+      "seconds": 380.8,
+      "role": "PRESERVED_FAILED_ATTEMPT",
+      "note": "interval Schur radius growth at 192 bits; rerun at higher precision recorded separately"
+    },
+    {
+      "file": "independent_L6_even_384.json",
+      "sha256": "73ed1040dac7b4df7fdad64c94531b539051eb2869fdaef78048601adffae050",
+      "L": "6",
+      "parity": "even",
+      "tolerance": "1/4",
+      "bits": 384,
+      "status": "CERTIFIED",
+      "assurance_level": "LEVEL_3_INDEPENDENT_BASIS_AND_CERTIFICATE_SHARED_SOURCE_ASSEMBLY",
+      "seconds": 473.9,
+      "role": "ACCEPTED_RECONSTRUCTION",
+      "note": null
+    },
+    {
+      "file": "independent_L6_odd.json",
+      "sha256": "a958b071f8dc3611a81520ca8874b5890d3a9c68a5612c1907b293da5f5a91eb",
+      "L": "6",
+      "parity": "odd",
+      "tolerance": "1/4",
+      "bits": 192,
+      "status": "UNKNOWN_PRECISION",
+      "assurance_level": "LEVEL_3_INDEPENDENT_BASIS_AND_CERTIFICATE_SHARED_SOURCE_ASSEMBLY",
+      "seconds": 489.4,
+      "role": "PRESERVED_FAILED_ATTEMPT",
+      "note": "interval Schur radius growth at 192 bits; rerun at higher precision recorded separately"
+    },
+    {
+      "file": "independent_L6_odd_384.json",
+      "sha256": "93095e0497b6ffae8c212359b06ff653c6fbdc5491b1cce8abeb626bfcde94eb",
+      "L": "6",
+      "parity": "odd",
+      "tolerance": "1/4",
+      "bits": 384,
+      "status": "CERTIFIED",
+      "assurance_level": "LEVEL_3_INDEPENDENT_BASIS_AND_CERTIFICATE_SHARED_SOURCE_ASSEMBLY",
+      "seconds": 475.2,
+      "role": "ACCEPTED_RECONSTRUCTION",
+      "note": null
+    }
+  ],
+  "corrections": {
+    "file": "CORRECTIONS.json",
+    "sha256": "682f52d10b575713715fbc9c6e16272875094280b15edf6fd7592ec225dfc9b1"
+  },
+  "outcomes_corrected": {
+    "file": "E-H6_OUTCOMES_CORRECTED.json",
+    "sha256": "538b875d2a0f1846938073bf00d23aeca4fc43497af7bfb219487d35ade856c3"
+  },
+  "revalidation": {
+    "archive_margins_L2_9_4_5_2": "REVALIDATED (engine v2 and checker)",
+    "L4_checkpoints_1_2_and_1_1024": "REVALIDATED (engine v2) and L4 1/2 level 3",
+    "L4_brackets": "REVALIDATED (engine v2, exact endpoints)",
+    "L5_checkpoints": "REVALIDATED (engine v2) and 1/3 level 3",
+    "L6_quarter_checkpoint": "REVALIDATED (engine v2) and level 3 in both parities at 384 bits; the 192-bit level-3 attempts are preserved as UNKNOWN_PRECISION (block Schur radius growth)",
+    "block_surrogate_statuses": "REGENERATED with vector-witnessed falsifications",
+    "near_null_statistics": "REGENERATED with absolute and signed counts"
+  },
+  "table": [
+    {
+      "entry": "archive_L2_even",
+      "L": "2",
+      "K": 16,
+      "parity": "even",
+      "dimension": 13,
+      "certificates": [
+        {
+          "target_id": "SLICE_POSITIVE_MARGIN",
+          "tolerance": null,
+          "margin": "1/18446744073709551616",
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "1*2^-65",
+        "upper": "[1.753971084e-19 +/- 4.44e-29]"
+      }
+    },
+    {
+      "entry": "archive_L2_odd",
+      "L": "2",
+      "K": 16,
+      "parity": "odd",
+      "dimension": 12,
+      "certificates": [
+        {
+          "target_id": "SLICE_POSITIVE_MARGIN",
+          "tolerance": null,
+          "margin": "1/18446744073709551616",
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "1*2^-54",
+        "upper": "[3.508480461e-16 +/- 2.09e-26]"
+      }
+    },
+    {
+      "entry": "archive_L9_4_even",
+      "L": "9/4",
+      "K": 26,
+      "parity": "even",
+      "dimension": 23,
+      "certificates": [
+        {
+          "target_id": "SLICE_POSITIVE_MARGIN",
+          "tolerance": null,
+          "margin": "1/1267650600228229401496703205376",
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "1*2^-100",
+        "upper": "[3.158904497e-30 +/- 2.33e-40]"
+      }
+    },
+    {
+      "entry": "archive_L9_4_odd",
+      "L": "9/4",
+      "K": 26,
+      "parity": "odd",
+      "dimension": 22,
+      "certificates": [
+        {
+          "target_id": "SLICE_POSITIVE_MARGIN",
+          "tolerance": null,
+          "margin": "1/1267650600228229401496703205376",
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "1*2^-90",
+        "upper": "[4.152231047e-27 +/- 1.97e-37]"
+      }
+    },
+    {
+      "entry": "archive_L5_2_even",
+      "L": "5/2",
+      "K": 40,
+      "parity": "even",
+      "dimension": 37,
+      "certificates": [
+        {
+          "target_id": "SLICE_POSITIVE_MARGIN",
+          "tolerance": null,
+          "margin": "1/89202980794122492566142873090593446023921664",
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "1*2^-146",
+        "upper": "[6.561889541e-44 +/- 3.79e-54]"
+      }
+    },
+    {
+      "entry": "archive_L5_2_odd",
+      "L": "5/2",
+      "K": 40,
+      "parity": "odd",
+      "dimension": 36,
+      "certificates": [
+        {
+          "target_id": "SLICE_POSITIVE_MARGIN",
+          "tolerance": null,
+          "margin": "1/89202980794122492566142873090593446023921664",
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "1*2^-135",
+        "upper": "[1.175276227e-40 +/- 3.05e-50]"
+      }
+    },
+    {
+      "entry": "L4_even",
+      "L": "4",
+      "K": 256,
+      "parity": "even",
+      "dimension": 253,
+      "certificates": [
+        {
+          "target_id": "C1_CHECKPOINT_TOLERANCE",
+          "tolerance": "1/2",
+          "margin": null,
+          "status": "CERTIFIED"
+        },
+        {
+          "target_id": "C1_CHECKPOINT_TOLERANCE",
+          "tolerance": "1/1024",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "block_tests": [
+        {
+          "tolerance": "1/2",
+          "SCALAR_GAP": "FALSIFIED_BOUND",
+          "INVERSE_RESIDUAL": [
+            [
+              64,
+              "CERTIFIED"
+            ]
+          ],
+          "GEOMETRIC_TAIL": [
+            [
+              64,
+              "CERTIFIED"
+            ]
+          ],
+          "bounds": [
+            [
+              "REPORTED_L4_HALF_CONSTANTS_COORDINATE",
+              "49/100",
+              "9",
+              "CERTIFIED",
+              "CERTIFIED"
+            ],
+            [
+              "SUGGESTED_COORDINATE",
+              "49/100",
+              "4503/500",
+              "CERTIFIED",
+              "CERTIFIED"
+            ]
+          ],
+          "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE": "CERTIFIED",
+          "unshifted_prefix_complement_physical": "[3.928774208e-7 +/- 1.98e-17]",
+          "native_form": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "SCALAR_GAP": "FALSIFIED_BOUND",
+          "INVERSE_RESIDUAL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "GEOMETRIC_TAIL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "bounds": [
+            [
+              "REPORTED_L4_HALF_CONSTANTS_COORDINATE",
+              "49/100",
+              "9",
+              "FALSIFIED_BOUND",
+              "CERTIFIED"
+            ],
+            [
+              "SUGGESTED_COORDINATE",
+              "957/1000000",
+              "8497/1000",
+              "CERTIFIED",
+              "CERTIFIED"
+            ]
+          ],
+          "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE": "FALSIFIED_BOUND",
+          "unshifted_prefix_complement_physical": "[3.928774208e-7 +/- 1.98e-17]",
+          "native_form": "CERTIFIED"
+        }
+      ],
+      "high_support_unshifted": {
+        "dimension": 124,
+        "physical_rayleigh_upper": "[2.136025772e-6 +/- 4.37e-16]",
+        "quarter_gap_law": "FALSIFIED_BOUND"
+      },
+      "spectral": {
+        "abs_below_10^-t": {
+          "2": 51,
+          "4": 50,
+          "6": 49,
+          "8": 49,
+          "10": 48,
+          "12": 48,
+          "13": 47
+        },
+        "signed_below_10^-t": {
+          "2": 51,
+          "4": 50,
+          "6": 49,
+          "8": 49,
+          "10": 48,
+          "12": 48,
+          "13": 47
+        },
+        "floating_negative_below_-1e-12": 0,
+        "N_main_T": 203.04351733501898,
+        "dim_minus_N_main_T": 49.956482664981024
+      },
+      "bottom_vector": {
+        "rayleigh_upper": "[1.162391805e-18 +/- 3.95e-28]",
+        "pole": "[+/- 1.67e-57]",
+        "arch": "[-1.558624944 +/- 3.93e-11]",
+        "prime": "[1.558624944 +/- 3.93e-11]"
+      }
+    },
+    {
+      "entry": "L4_odd",
+      "L": "4",
+      "K": 256,
+      "parity": "odd",
+      "dimension": 252,
+      "certificates": [
+        {
+          "target_id": "C1_CHECKPOINT_TOLERANCE",
+          "tolerance": "1/2",
+          "margin": null,
+          "status": "CERTIFIED"
+        },
+        {
+          "target_id": "C1_CHECKPOINT_TOLERANCE",
+          "tolerance": "1/1024",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "block_tests": [
+        {
+          "tolerance": "1/2",
+          "SCALAR_GAP": "FALSIFIED_BOUND",
+          "INVERSE_RESIDUAL": [
+            [
+              64,
+              "CERTIFIED"
+            ]
+          ],
+          "GEOMETRIC_TAIL": [
+            [
+              64,
+              "CERTIFIED"
+            ]
+          ],
+          "bounds": [
+            [
+              "REPORTED_L4_HALF_CONSTANTS_COORDINATE",
+              "49/100",
+              "9",
+              "CERTIFIED",
+              "CERTIFIED"
+            ],
+            [
+              "SUGGESTED_COORDINATE",
+              "49/100",
+              "8989/1000",
+              "CERTIFIED",
+              "CERTIFIED"
+            ]
+          ],
+          "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE": "CERTIFIED",
+          "unshifted_prefix_complement_physical": "[6.792268899e-7 +/- 4.94e-17]",
+          "native_form": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "SCALAR_GAP": "FALSIFIED_BOUND",
+          "INVERSE_RESIDUAL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "GEOMETRIC_TAIL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "bounds": [
+            [
+              "REPORTED_L4_HALF_CONSTANTS_COORDINATE",
+              "49/100",
+              "9",
+              "FALSIFIED_BOUND",
+              "CERTIFIED"
+            ],
+            [
+              "SUGGESTED_COORDINATE",
+              "957/1000000",
+              "212/25",
+              "CERTIFIED",
+              "CERTIFIED"
+            ]
+          ],
+          "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE": "FALSIFIED_BOUND",
+          "unshifted_prefix_complement_physical": "[6.792268899e-7 +/- 4.94e-17]",
+          "native_form": "CERTIFIED"
+        }
+      ],
+      "high_support_unshifted": {
+        "dimension": 124,
+        "physical_rayleigh_upper": "[1.236235969e-6 +/- 2.24e-16]",
+        "quarter_gap_law": "FALSIFIED_BOUND"
+      },
+      "spectral": {
+        "abs_below_10^-t": {
+          "2": 50,
+          "4": 49,
+          "6": 49,
+          "8": 48,
+          "10": 48,
+          "12": 47,
+          "13": 47
+        },
+        "signed_below_10^-t": {
+          "2": 50,
+          "4": 49,
+          "6": 49,
+          "8": 48,
+          "10": 48,
+          "12": 47,
+          "13": 47
+        },
+        "floating_negative_below_-1e-12": 0,
+        "N_main_T": 203.04351733501898,
+        "dim_minus_N_main_T": 48.956482664981024
+      },
+      "bottom_vector": {
+        "rayleigh_upper": "[1.167206793e-18 +/- 2.09e-28]",
+        "pole": "[+/- 5.63e-57]",
+        "arch": "[-1.958988400 +/- 3.96e-10]",
+        "prime": "[1.958988400 +/- 3.96e-10]"
+      }
+    },
+    {
+      "entry": "L4_even_bracket",
+      "L": "4",
+      "K": 256,
+      "parity": "even",
+      "dimension": 253,
+      "certificates": [],
+      "gram": "CERTIFIED",
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "1*2^-816",
+        "upper": "[1.311012800e-245 +/- 3.35e-255]"
+      }
+    },
+    {
+      "entry": "L4_odd_bracket",
+      "L": "4",
+      "K": 256,
+      "parity": "odd",
+      "dimension": 252,
+      "certificates": [],
+      "gram": "CERTIFIED",
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "1*2^-802",
+        "upper": "[2.174056530e-241 +/- 3.92e-251]"
+      }
+    },
+    {
+      "entry": "L5_even",
+      "L": "5",
+      "K": 625,
+      "parity": "even",
+      "dimension": 622,
+      "certificates": [
+        {
+          "target_id": "C1_CHECKPOINT_TOLERANCE",
+          "tolerance": "1/3",
+          "margin": null,
+          "status": "CERTIFIED"
+        },
+        {
+          "target_id": "C1_CHECKPOINT_TOLERANCE",
+          "tolerance": "1/1024",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "block_tests": [
+        {
+          "tolerance": "1/3",
+          "SCALAR_GAP": "FALSIFIED_BOUND",
+          "INVERSE_RESIDUAL": [
+            [
+              64,
+              "CERTIFIED"
+            ]
+          ],
+          "GEOMETRIC_TAIL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "bounds": [
+            [
+              "REPORTED_L4_HALF_CONSTANTS_COORDINATE",
+              "49/100",
+              "9",
+              "FALSIFIED_BOUND",
+              "FALSIFIED_BOUND"
+            ],
+            [
+              "SUGGESTED_COORDINATE",
+              "163333/500000",
+              "11091/1000",
+              "CERTIFIED",
+              "CERTIFIED"
+            ]
+          ],
+          "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE": "CERTIFIED",
+          "unshifted_prefix_complement_physical": "[2.692917418e-17 +/- 5.74e-28]",
+          "native_form": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "SCALAR_GAP": "FALSIFIED_BOUND",
+          "INVERSE_RESIDUAL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "GEOMETRIC_TAIL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "bounds": [
+            [
+              "REPORTED_L4_HALF_CONSTANTS_COORDINATE",
+              "49/100",
+              "9",
+              "FALSIFIED_BOUND",
+              "FALSIFIED_BOUND"
+            ],
+            [
+              "SUGGESTED_COORDINATE",
+              "957/1000000",
+              "1344/125",
+              "CERTIFIED",
+              "CERTIFIED"
+            ]
+          ],
+          "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE": "FALSIFIED_BOUND",
+          "unshifted_prefix_complement_physical": "[2.692917418e-17 +/- 5.74e-28]",
+          "native_form": "CERTIFIED"
+        }
+      ],
+      "high_support_unshifted": {
+        "dimension": 309,
+        "physical_rayleigh_upper": "[9.505105582e-19 +/- 4.65e-29]",
+        "quarter_gap_law": "FALSIFIED_BOUND"
+      },
+      "spectral": {
+        "abs_below_10^-t": {
+          "2": 142,
+          "4": 141,
+          "6": 140,
+          "8": 139,
+          "10": 138,
+          "12": 137,
+          "13": 136
+        },
+        "signed_below_10^-t": {
+          "2": 142,
+          "4": 141,
+          "6": 140,
+          "8": 139,
+          "10": 138,
+          "12": 137,
+          "13": 136
+        },
+        "floating_negative_below_-1e-12": 0,
+        "N_main_T": 479.41421716278774,
+        "dim_minus_N_main_T": 142.58578283721226
+      },
+      "bottom_vector": {
+        "rayleigh_upper": "[3.026644340e-16 +/- 2.35e-26]",
+        "pole": "[+/- 3.26e-57]",
+        "arch": "[-1.074258741 +/- 7.41e-11]",
+        "prime": "[1.074258741 +/- 7.41e-11]"
+      }
+    },
+    {
+      "entry": "L5_odd",
+      "L": "5",
+      "K": 625,
+      "parity": "odd",
+      "dimension": 621,
+      "certificates": [
+        {
+          "target_id": "C1_CHECKPOINT_TOLERANCE",
+          "tolerance": "1/3",
+          "margin": null,
+          "status": "CERTIFIED"
+        },
+        {
+          "target_id": "C1_CHECKPOINT_TOLERANCE",
+          "tolerance": "1/1024",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "block_tests": [
+        {
+          "tolerance": "1/3",
+          "SCALAR_GAP": "FALSIFIED_BOUND",
+          "INVERSE_RESIDUAL": [
+            [
+              64,
+              "CERTIFIED"
+            ]
+          ],
+          "GEOMETRIC_TAIL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "bounds": [
+            [
+              "REPORTED_L4_HALF_CONSTANTS_COORDINATE",
+              "49/100",
+              "9",
+              "FALSIFIED_BOUND",
+              "FALSIFIED_BOUND"
+            ],
+            [
+              "SUGGESTED_COORDINATE",
+              "163333/500000",
+              "2773/250",
+              "CERTIFIED",
+              "CERTIFIED"
+            ]
+          ],
+          "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE": "CERTIFIED",
+          "unshifted_prefix_complement_physical": "[1.922082371e-17 +/- 4.23e-27]",
+          "native_form": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "SCALAR_GAP": "FALSIFIED_BOUND",
+          "INVERSE_RESIDUAL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "GEOMETRIC_TAIL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "bounds": [
+            [
+              "REPORTED_L4_HALF_CONSTANTS_COORDINATE",
+              "49/100",
+              "9",
+              "FALSIFIED_BOUND",
+              "FALSIFIED_BOUND"
+            ],
+            [
+              "SUGGESTED_COORDINATE",
+              "957/1000000",
+              "10753/1000",
+              "CERTIFIED",
+              "CERTIFIED"
+            ]
+          ],
+          "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE": "FALSIFIED_BOUND",
+          "unshifted_prefix_complement_physical": "[1.922082371e-17 +/- 4.23e-27]",
+          "native_form": "CERTIFIED"
+        }
+      ],
+      "high_support_unshifted": {
+        "dimension": 309,
+        "physical_rayleigh_upper": "[4.033249016e-18 +/- 1.11e-28]",
+        "quarter_gap_law": "FALSIFIED_BOUND"
+      },
+      "spectral": {
+        "abs_below_10^-t": {
+          "2": 141,
+          "4": 140,
+          "6": 139,
+          "8": 138,
+          "10": 137,
+          "12": 136,
+          "13": 136
+        },
+        "signed_below_10^-t": {
+          "2": 141,
+          "4": 140,
+          "6": 139,
+          "8": 138,
+          "10": 137,
+          "12": 136,
+          "13": 136
+        },
+        "floating_negative_below_-1e-12": 0,
+        "N_main_T": 479.41421716278774,
+        "dim_minus_N_main_T": 141.58578283721226
+      },
+      "bottom_vector": {
+        "rayleigh_upper": "[4.157802252e-18 +/- 1.41e-29]",
+        "pole": "[+/- 6.23e-57]",
+        "arch": "[-2.916625569 +/- 1.94e-10]",
+        "prime": "[2.916625569 +/- 1.94e-10]"
+      }
+    },
+    {
+      "entry": "EH6_L6_even",
+      "L": "6",
+      "K": 1296,
+      "parity": "even",
+      "dimension": 1293,
+      "certificates": [
+        {
+          "target_id": "C1_CHECKPOINT_TOLERANCE",
+          "tolerance": "1/4",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "block_tests": [
+        {
+          "tolerance": "1/4",
+          "SCALAR_GAP": "FALSIFIED_BOUND",
+          "INVERSE_RESIDUAL": [
+            [
+              64,
+              "CERTIFIED"
+            ]
+          ],
+          "GEOMETRIC_TAIL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "bounds": [
+            [
+              "REPORTED_L4_HALF_CONSTANTS_COORDINATE",
+              "49/100",
+              "9",
+              "FALSIFIED_BOUND",
+              "FALSIFIED_BOUND"
+            ],
+            [
+              "SUGGESTED_COORDINATE",
+              "244999/1000000",
+              "1371/100",
+              "CERTIFIED",
+              "CERTIFIED"
+            ]
+          ],
+          "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE": "FALSIFIED_BOUND",
+          "unshifted_prefix_complement_physical": "[1.189097349e-17 +/- 6.27e-28]",
+          "native_form": "CERTIFIED"
+        }
+      ],
+      "high_support_unshifted": {
+        "dimension": 644,
+        "physical_rayleigh_upper": "[1.343173469e-17 +/- 2.15e-27]",
+        "quarter_gap_law": "FALSIFIED_BOUND"
+      },
+      "spectral": {
+        "abs_below_10^-t": {
+          "2": 346,
+          "4": 344,
+          "6": 343,
+          "8": 342,
+          "10": 340,
+          "12": 339,
+          "13": 338
+        },
+        "signed_below_10^-t": {
+          "2": 346,
+          "4": 344,
+          "6": 343,
+          "8": 342,
+          "10": 340,
+          "12": 339,
+          "13": 338
+        },
+        "floating_negative_below_-1e-12": 0,
+        "N_main_T": 945.9351360597798,
+        "dim_minus_N_main_T": 347.0648639402202
+      },
+      "bottom_vector": {
+        "rayleigh_upper": "[4.771915134e-17 +/- 5.59e-28]",
+        "pole": "[+/- 4.04e-57]",
+        "arch": "[-2.973877220 +/- 3.14e-10]",
+        "prime": "[2.973877220 +/- 3.14e-10]"
+      }
+    },
+    {
+      "entry": "EH6_L6_odd",
+      "L": "6",
+      "K": 1296,
+      "parity": "odd",
+      "dimension": 1292,
+      "certificates": [
+        {
+          "target_id": "C1_CHECKPOINT_TOLERANCE",
+          "tolerance": "1/4",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "gram": "CERTIFIED",
+      "block_tests": [
+        {
+          "tolerance": "1/4",
+          "SCALAR_GAP": "FALSIFIED_BOUND",
+          "INVERSE_RESIDUAL": [
+            [
+              64,
+              "CERTIFIED"
+            ]
+          ],
+          "GEOMETRIC_TAIL": [
+            [
+              64,
+              "FALSIFIED_BOUND"
+            ]
+          ],
+          "bounds": [
+            [
+              "REPORTED_L4_HALF_CONSTANTS_COORDINATE",
+              "49/100",
+              "9",
+              "FALSIFIED_BOUND",
+              "FALSIFIED_BOUND"
+            ],
+            [
+              "SUGGESTED_COORDINATE",
+              "244999/1000000",
+              "1371/100",
+              "CERTIFIED",
+              "CERTIFIED"
+            ]
+          ],
+          "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE": "FALSIFIED_BOUND",
+          "unshifted_prefix_complement_physical": "[5.134037433e-18 +/- 7.89e-30]",
+          "native_form": "CERTIFIED"
+        }
+      ],
+      "high_support_unshifted": {
+        "dimension": 644,
+        "physical_rayleigh_upper": "[1.728926602e-17 +/- 8.51e-28]",
+        "quarter_gap_law": "FALSIFIED_BOUND"
+      },
+      "spectral": {
+        "abs_below_10^-t": {
+          "2": 345,
+          "4": 343,
+          "6": 342,
+          "8": 341,
+          "10": 339,
+          "12": 338,
+          "13": 338
+        },
+        "signed_below_10^-t": {
+          "2": 345,
+          "4": 343,
+          "6": 342,
+          "8": 341,
+          "10": 339,
+          "12": 338,
+          "13": 338
+        },
+        "floating_negative_below_-1e-12": 0,
+        "N_main_T": 945.9351360597798,
+        "dim_minus_N_main_T": 346.0648639402202
+      },
+      "bottom_vector": {
+        "rayleigh_upper": "[1.956977786e-18 +/- 1.93e-28]",
+        "pole": "[+/- 1.09e-56]",
+        "arch": "[-3.161823418 +/- 4.71e-10]",
+        "prime": "[3.161823418 +/- 4.71e-10]"
+      }
+    }
+  ]
+}

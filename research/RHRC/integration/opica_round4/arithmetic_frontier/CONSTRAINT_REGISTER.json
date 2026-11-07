@@ -346,7 +346,7 @@
     },
     {
       "id": "CR20",
-      "name": "Fixed high-gap law and upper cap",
+      "name": "Shifted-prefix quarter gap, high-support unshifted gap and upper cap (separate identities)",
       "proposition": null,
       "statement": "lambda_min(A_eps) >= 1/4 persists; A <= 9 persists.",
       "scope": "Replayed L = 4, 5, 6.",
@@ -357,7 +357,8 @@
       "countermodel_tests": [
         "evidence/increment2"
       ],
-      "budget_improved": "The unshifted complement block has rigorous Rayleigh upper bounds 3.9e-7/6.8e-7 (L = 4), 5.0e-17/1.0e-16 (L = 5) and 8.3e-18/1.4e-17 (L = 6), so no fixed high gap survives as eps decreases; the cap b = 9 fails at L = 5, 6 and is not a hypothesis of the Lean consumer."
+      "budget_improved": "The unshifted complement block has rigorous Rayleigh upper bounds 3.9e-7/6.8e-7 (L = 4), 5.0e-17/1.0e-16 (L = 5) and 8.3e-18/1.4e-17 (L = 6), so no fixed high gap survives as eps decreases; the cap b = 9 fails at L = 5, 6 and is not a hypothesis of the Lean consumer.",
+      "correction": "CORRECTIONS R2/R6: version 1 conflated the shifted Fourier-prefix complement with the historical high-support unshifted law and used float-only falsifications. Increment 2B tests SHIFTED_PREFIX_QUARTER_GAP_COORDINATE and HIGH_SUPPORT_UNSHIFTED_SLICE separately with exact witnesses; the historical constant is still not imported."
     },
     {
       "id": "CR21",
@@ -372,7 +373,8 @@
       "countermodel_tests": [
         "evidence/increment2"
       ],
-      "budget_improved": "Finite certificates at n = 2, 3, 4 with fixed degree; fails at eps = 1/1024. A degree law m(n, L) is OPEN."
+      "budget_improved": "Finite certificates at n = 2, 3, 4 with fixed degree; fails at eps = 1/1024. A degree law m(n, L) is OPEN.",
+      "correction": "CORRECTIONS R5: INVERSE_RESIDUAL and GEOMETRIC_TAIL are distinct families; both are recorded per degree in increment2b and E-D1."
     },
     {
       "id": "CR22",
@@ -387,7 +389,8 @@
       "countermodel_tests": [
         "E-NULLCOUNT"
       ],
-      "budget_improved": "EXPERIMENTAL SIGNAL: below 1e-2 the count equals round(dim - N(T)) within 1 at L = 4, 5, 6 in both parities, with about one extra eigenvalue leaving per two decades down to 1e-13. Heuristic origin: the explicit-formula picture. Not a theorem and not RH evidence."
+      "budget_improved": "EXPERIMENTAL SIGNAL: below 1e-2 the count equals round(dim - N(T)) within 1 at L = 4, 5, 6 in both parities, with about one extra eigenvalue leaving per two decades down to 1e-13. Heuristic origin: the explicit-formula picture. Not a theorem and not RH evidence.",
+      "correction": "CORRECTIONS R8: absolute and signed counts recorded separately; comparison is with N_main(T), not a certified zero count."
     }
   ],
   "strength_rule": "An RH-sufficient contract that is also RH-necessary is a sharp interface, not independent sub-RH progress. Only an independent supplier changes the state."

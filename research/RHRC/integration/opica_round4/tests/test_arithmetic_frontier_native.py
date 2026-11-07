@@ -130,6 +130,94 @@ class Increment2HistoryTests(unittest.TestCase):
         for e in self.summary.get('supplementary', []):
             self.assertEqual(sha(EV2 / e['file']), e['sha256'])
 
+    def test_corrections_cover_the_superseded_claims(self):
+        corr = json.loads((EV2B / 'CORRECTIONS.json').read_bytes())
+        ids = {c['id'] for c in corr['corrections']}
+        for needed in ('R1', 'R2', 'R3', 'R4', 'R5', 'R6', 'R7', 'R8', 'R9'):
+            self.assertIn(needed, ids)
+        for c in corr['corrections']:
+            for path in c.get('original_records', []):
+                self.assertTrue((ROOT.parents[4] / path).is_file(), path)
+
+
+class Increment2BEvidenceTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.summary = json.loads((EV2B / 'SUMMARY.json').read_bytes())
+        cls.records = {e['entry']: json.loads((EV2B / e['file']).read_bytes()) for e in cls.summary['records']}
+
+    def test_records_bind_engine_source_kernel_and_backend(self):
+        for e in self.summary['records']:
+            self.assertEqual(sha(EV2B / e['file']), e['sha256'])
+            src = self.records[e['entry']]['source']
+            self.assertEqual(src['engine_sha256'], sha(ROOT / 'native_slice.py'))
+            self.assertEqual(src['source_module_sha256'], sha(ROOT / 'native_source.py'))
+            self.assertEqual(src['kernel_sha256'], sha(ROOT / 'certificates.py'))
+            self.assertEqual(src['backend_sha256'], sha(SRC.BACKEND_PATH))
+
+    def test_every_falsification_carries_a_negative_exact_witness(self):
+        def walk(node):
+            if isinstance(node, dict):
+                if node.get('target_id') == 'HIGH_SUPPORT_UNSHIFTED_SLICE':
+                    # The quarter-gap falsification is witnessed by the enclosed Rayleigh quotient of
+                    # an exact vector (certainly positive Gram denominator): rho_hi < 1/4 is
+                    # equivalent to a certified negative value of F - G/4 at that vector.
+                    law = node['quarter_gap_law']
+                    if law['status'] == 'FALSIFIED_BOUND':
+                        self.assertLess(exact_from_str(node['physical_rayleigh_upper']['upper_exact']), Fraction(1, 4))
+                    node = {k: v for k, v in node.items() if k != 'quarter_gap_law'}
+                elif node.get('status') == 'FALSIFIED_BOUND':
+                    wv = node.get('witness_value')
+                    self.assertIsNotNone(wv, node)
+                    self.assertLess(exact_from_str(wv['upper_exact']), 0, node)
+                for v in node.values():
+                    walk(v)
+            elif isinstance(node, list):
+                for v in node:
+                    walk(v)
+        for rec in self.records.values():
+            walk(rec)
+
+    def test_checkpoints_and_preserved_estimate_failures(self):
+        for key, eps in (('L4', '1/2'), ('L5', '1/3'), ('EH6_L6', '1/4')):
+            for parity in ('even', 'odd'):
+                cert = self.records['%s_%s' % (key, parity)]['endpoint_certificates'][0]
+                self.assertEqual((cert['tolerance'], cert['status']), (eps, 'CERTIFIED'))
+        for parity in ('even', 'odd'):
+            half, tiny = self.records['L4_' + parity]['block_tests']
+            self.assertEqual(half['SCALAR_GAP']['status'], 'FALSIFIED_BOUND')
+            self.assertEqual(tiny['SCALAR_GAP']['status'], 'FALSIFIED_BOUND')
+            self.assertEqual(half['native_form']['status'], 'CERTIFIED')
+            self.assertEqual(tiny['native_form']['status'], 'CERTIFIED')
+
+    def test_positive_brackets_only_where_certified(self):
+        for name, rec in self.records.items():
+            br = rec.get('bottom_bracket')
+            if br is not None and br['status'] == 'BRACKETED':
+                self.assertEqual(br['margin_certificate']['status'], 'CERTIFIED')
+            if name.startswith(('L5', 'EH6')):
+                self.assertNotIn('bottom_bracket', rec)
+
+    def test_independent_reconstructions(self):
+        certified = set()
+        for e in self.summary['independent_reconstructions']:
+            rec = json.loads((EV2B / e['file']).read_bytes())
+            self.assertEqual(sha(EV2B / e['file']), e['sha256'])
+            self.assertEqual(rec['hashes']['checker_sha256'], sha(ROOT / 'independent_check.py'))
+            self.assertEqual(rec['hashes']['native_source_sha256'], sha(ROOT / 'native_source.py'))
+            self.assertEqual(rec['hashes']['kernel_sha256'], sha(ROOT / 'certificates.py'))
+            self.assertEqual(rec['dimension'], rec['dimension_expected'])
+            self.assertIn(rec['status'], ('CERTIFIED', 'UNKNOWN_PRECISION'))
+            self.assertEqual(e['status'], rec['status'])
+            if rec['status'] == 'CERTIFIED':
+                certified.add((rec['L'], rec['parity']))
+            else:
+                self.assertEqual(e['role'], 'PRESERVED_FAILED_ATTEMPT')
+        for L in ('4', '5', '6'):
+            for parity in ('even', 'odd'):
+                self.assertIn((L, parity), certified)
+        self.assertIn('NOT_AN_RH_OR_STEP4_CLAIM', self.summary['scope'])
+
 
 if __name__ == '__main__':
     unittest.main()

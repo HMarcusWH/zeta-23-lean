@@ -45,6 +45,19 @@
         "failed scalar-gap surrogates": "PRESERVED (test_failed_surrogates_are_preserved)",
         "failed continued 1/4 high-gap law": "PRESERVED as fixed_quarter_high_gap; reconstructed reading",
         "unnecessary upper-cap failure": "PRESERVED: b = 9 holds at L=4 and fails at L=5 and L=6; the Lean consumer blockEnergy_nonneg_of_inverse_residual_certificate has no upper-cap hypothesis"
+      },
+      "increment2b": {
+        "records": [
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_even.json",
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_odd.json",
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_even_bracket.json",
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L4_odd_bracket.json"
+        ],
+        "level3": {
+          "even": "CERTIFIED at 192 bits",
+          "odd": "CERTIFIED at 192 bits"
+        },
+        "note": "Regenerated through the guarded kernel; falsifications now carry exact witnesses; the old fixed_quarter_high_gap is split into SHIFTED_PREFIX_QUARTER_GAP_COORDINATE and HIGH_SUPPORT_UNSHIFTED_SLICE (CORRECTIONS R6)."
       }
     },
     {
@@ -66,7 +79,17 @@
         "coupled_degree64": "CERTIFIED at 1/3; FALSIFIED at 1/1024 (-37.1/-71.4)",
         "L4_constants_continued": "a = 49/100 and b = 9 both FALSIFIED (lambda_max(A) about 10.87)"
       },
-      "note": "The L=5 report archives exceed the connector download limit; this is a new replay at the same state, not an import."
+      "note": "The L=5 report archives exceed the connector download limit; this is a new replay at the same state, not an import.",
+      "increment2b": {
+        "records": [
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L5_even.json",
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/L5_odd.json"
+        ],
+        "level3": {
+          "even": "CERTIFIED at 192 bits",
+          "odd": "CERTIFIED at 192 bits"
+        }
+      }
     },
     {
       "id": "E-H6",
@@ -99,7 +122,19 @@
         "checkpoint": "Q_p(6,x) >= -(1/4)||x||^2 CERTIFIED on the full even (1293) and odd (1292) slices at K = 1296, Q = 403, 98 prime powers, physical metric directly",
         "predictions": "P1 P3 P5 P6 P7 confirmed; P2 partly refuted (c = 13.2, 14.1 outside [4,12]); P4 refuted (degree-64 certificate passed); P8 confirmed with a timing caveat"
       },
-      "note": "This is the n = 4 checkpoint of (C1) only. (C1) needs every n."
+      "note": "This is the n = 4 checkpoint of (C1) only. (C1) needs every n.",
+      "increment2b": {
+        "records": [
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/EH6_L6_even.json",
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/EH6_L6_odd.json"
+        ],
+        "level3": {
+          "even": "CERTIFIED at 384 bits",
+          "odd": "CERTIFIED at 384 bits"
+        },
+        "outcomes_corrected": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/E-H6_OUTCOMES_CORRECTED.json",
+        "note": "The n = 4 checkpoint is revalidated by the repaired engine and independently reconstructed (level 3) in both parities."
+      }
     },
     {
       "id": "E-D1",
@@ -130,7 +165,7 @@
     },
     {
       "id": "E-NULLCOUNT",
-      "status": "LEAD_THREE_STATES",
+      "status": "EXPERIMENTAL_SIGNAL_THREE_STATES_POST_HOC",
       "goal": "Test near-null count = dim - N(2 pi K/L) beyond L = 6 and against the threshold.",
       "observed": {
         "L4": [
@@ -253,7 +288,9 @@
           }
         ],
         "timing": "post-hoc robustness check, not a prediction"
-      }
+      },
+      "correction": "CORRECTIONS R8: version 1 compared #(|lambda|<delta) with #(lambda<delta); increment2b records both and N_main(T). The P8 timing caveat stands; no prospective rule without fixed constants is asserted."
     }
-  ]
+  ],
+  "corrections": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/CORRECTIONS.json"
 }

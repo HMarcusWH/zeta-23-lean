@@ -124,8 +124,10 @@ fails at L=5 and L=6. No Lean consumer needs that cap.
 * **Signal: channel cancellation.** The two remaining channels cancel at the
   bottom vectors. Bounding them separately is refuted: on the even slice the
   separated loss is `−5.14`, `−6.49` and `−7.45` at L=4, 5, 6.
-* **Signal: tiny positive bottoms.** The slice bottoms are positive but
-  super-exponentially small: `ln λ_min / K ≈ −2.7 → −2.2`.
+* **Signal: tiny positive bottoms** (*corrected in 2B, R1*). Positive brackets
+  exist only at L=2, 9/4, 5/2 and L=4. At L=5 and L=6 only shifted lower bounds
+  and positive Rayleigh *upper* bounds exist. The earlier "super-exponentially
+  small" law is withdrawn: finite brackets establish no asymptotic law.
 * **Signal: near-null count.** The number of near-null directions follows
   `dim − N(2πK/L)`, where N is the zero count. The deficits are 1, 4 and 5
   at L=4, 5, 6. The L=6 instance was frozen with a timing caveat; see
@@ -145,6 +147,45 @@ fails at L=5 and L=6. No Lean consumer needs that cap.
 `tests/test_arithmetic_frontier_native.py` in both modes. Its CI part is
 floating-point free. The engine's planted controls need numpy, which is not in
 the hash-locked CI environment, so they are reported as skipped there.
+
+## Increment 2B — acceptance repair, corrections and level-3 replay
+
+The revision-2 review found nine scoped defects (R1–R9) in Increment 2's
+evidence semantics. None is a negative vector for the native form. Each has a
+scoped entry in [CORRECTIONS.json](evidence/increment2b/CORRECTIONS.json), and the
+original records stay bound to their preserved producer bytes.
+
+* **Kernel.** [certificates.py](certificates.py) is floating-point free:
+  * a shift `τ > 0` is required, and the input must be symmetric;
+  * endpoints are exact, and norms are enclosed in the declared Gram;
+  * `FALSIFIED_BOUND` requires an exact witness with a certainly negative value;
+  * the three certificate families are distinct.
+
+  Its 24 countercontrols run in the locked CI lane without skips.
+* **Engine v2.** [native_slice.py](native_slice.py) only proposes; the kernel
+  decides. The basis is the exact `Y_* = Z − E_P(C E_P)⁻¹C Z`, and the full
+  physical Gram is carried. Block statements are labelled COORDINATE or
+  PHYSICAL. Near-null statistics record absolute and signed counts against
+  `N_main(T)`.
+* **Revalidation.** All Increment 2 states were regenerated in
+  [evidence/increment2b](evidence/increment2b/SUMMARY.json):
+  * the archive margins, the L=4 checkpoints and brackets, L=5 and the E-H6 L=6
+    quarter bound;
+  * the scalar-gap witnesses and brackets reproduce the version-1 values;
+  * the historical GEOMETRIC_TAIL degree-64 certificate is certified at L=4,
+    `ε=1/2`, and falsified with an exact witness at `1/1024`, at L=5 (`1/3`)
+    and at L=6 (`1/4`). P4 is scored on that family, as its `q^m/a` heuristic
+    requires, and is therefore **confirmed**, not refuted (R5). The
+    INVERSE_RESIDUAL family passes at degree 64 at every checkpoint;
+  * the exact high-support unshifted legal subspace (dimension 124 at L=4) has
+    physical Rayleigh values of about `2·10⁻⁶`, so a fixed high-support gap
+    fails there too. The historical constant is still not imported.
+* **Level 3.** The numpy-free
+  [independent_check.py](independent_check.py) reconstructs the checkpoints
+  with its own exact elimination basis and a blocked interval Schur
+  certificate. It covers L=4 at `1/2`, L=5 at `1/3` and L=6 at `1/4`, in both
+  parities. The source assembly is shared and disclosed; level 4 (Lean bridge)
+  remains OPEN.
 
 ## Increment 3A — pole-channel annihilation (Lean)
 
