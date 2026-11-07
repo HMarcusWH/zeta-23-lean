@@ -1,0 +1,859 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_INCREMENT2_SUMMARY_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "scope": "FINITE_RESEARCH_CERTIFICATES_AT_NAMED_STATES_NOT_AN_RH_OR_STEP4_CLAIM",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "engine": "research/RHRC/integration/opica_round4/arithmetic_frontier/native_slice.py",
+  "engine_sha256": "633bec1ecd4d6bfb8ba68077515be7880380b7b001e069d4efd67b2c38f4f203",
+  "independent_checker": "research/RHRC/integration/opica_round4/arithmetic_frontier/independent_check.py",
+  "independent_checker_sha256": "0976442bb57e16bdc9449b4aa66945dd03ab1ee748acb39e5221a3f60a28206d",
+  "backend": "research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py",
+  "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+  "command": "python3 native_slice.py --campaign <entries> --out-dir <dir> (entries in CAMPAIGN); crosscheck: python3 -I native_slice.py --crosscheck <data> --bits 320",
+  "environment": {
+    "python": "3.13",
+    "python_flint": "0.9.0",
+    "numpy": "2.5.3 (local only; not in the CI locks)",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0"
+  },
+  "records": [
+    {
+      "entry": "archive_L2_even",
+      "file": "archive_L2_even.json",
+      "sha256": "c12c6abc0cfde05d0944f79300c5e37d077b49232eec2a92ff117cf29d484268"
+    },
+    {
+      "entry": "archive_L2_odd",
+      "file": "archive_L2_odd.json",
+      "sha256": "923e3a8d0c1b43f3525b17d78e5597d57c69fed0ad38550d2ed1f5c16acd0322"
+    },
+    {
+      "entry": "archive_L9_4_even",
+      "file": "archive_L9_4_even.json",
+      "sha256": "3f057cd93a0f13335741c9a24cd469def7a92d12bfbbf669d0896fcd0dab820e"
+    },
+    {
+      "entry": "archive_L9_4_odd",
+      "file": "archive_L9_4_odd.json",
+      "sha256": "06add294c97c8fd27de5249f112cf9e1eee9f50913959c6b7988bc959e8fdc3f"
+    },
+    {
+      "entry": "archive_L5_2_even",
+      "file": "archive_L5_2_even.json",
+      "sha256": "3482113aed4f19e4f003ca705d441259cec541d0bb4e3b5f67aaf83c926da463"
+    },
+    {
+      "entry": "archive_L5_2_odd",
+      "file": "archive_L5_2_odd.json",
+      "sha256": "cfd54ff43c5bd9c13421a84ea9a35b9cf59cd423468f144e0a5b787713f09c9b"
+    },
+    {
+      "entry": "L4_even",
+      "file": "L4_even.json",
+      "sha256": "37393c5cd295408159654f76ae6a0761ae0210e95b26f021fd70d476fa4a2e40"
+    },
+    {
+      "entry": "L4_odd",
+      "file": "L4_odd.json",
+      "sha256": "0cf9142b097d7d889a6b1b5abfd2be27a357f233f711b0b14f6ce861bdc85ae0"
+    },
+    {
+      "entry": "L4_even_bracket",
+      "file": "L4_even_bracket.json",
+      "sha256": "fa98978a1f0a3735c81c5193bb8eda7f418e635eff73b348b70b5c568693692f"
+    },
+    {
+      "entry": "L4_odd_bracket",
+      "file": "L4_odd_bracket.json",
+      "sha256": "7eae94e444118a27754c71c1461258e78e3885ef8fa007e2e46c098c9909ecbb"
+    },
+    {
+      "entry": "L5_even",
+      "file": "L5_even.json",
+      "sha256": "a3d1344ac9fbd541dafceefc4940898bedf0190d9b27acd5ee88697553fc993e"
+    },
+    {
+      "entry": "L5_odd",
+      "file": "L5_odd.json",
+      "sha256": "5293784cb94802d8278e560d20245519ff53a0154bceab9303e3f01d1909c6fa"
+    },
+    {
+      "entry": "EH6_L6_even",
+      "file": "EH6_L6_even.json",
+      "sha256": "07e0e4b2ac595b7ec9ac74a5c46d024eb692d968f9f3c50afff240add77fec6d"
+    },
+    {
+      "entry": "EH6_L6_odd",
+      "file": "EH6_L6_odd.json",
+      "sha256": "921c2ecce56c26fc3faa8166f78037340c6ddbf6ae107c09d753ff309d4458d7"
+    }
+  ],
+  "entry_crosscheck": {
+    "file": "L4_entry_crosscheck.json",
+    "sha256": "1880b134f983ffcb3b84b49c71d5af16b2f203eb59e4f59031a2ccdffcb1fe46",
+    "status": "ALL_OVERLAP",
+    "entries": 81,
+    "external_sha256": "560a9cf42e8e672dc51e71b2a139d7fb46d5e4a1d8c66a37d13aa60a85f27462",
+    "max_midpoint_difference": 2.4687819555281723e-23
+  },
+  "predeclarations": [
+    {
+      "file": "E-H6_PREDICTIONS.json",
+      "sha256": "1701537ef8b54e1d474c296a93ae1a7fcac3f943e1e5b08c4d86354bb685f45b"
+    },
+    {
+      "file": "E-H6_PREDICTIONS_ADDENDUM.json",
+      "sha256": "6dfdc01e72b767a001992a8b554e69a695646b0cfe05362959f63ee063e15c0a"
+    }
+  ],
+  "table": [
+    {
+      "entry": "archive_L2_even",
+      "L": "2",
+      "K": 16,
+      "Q": 7,
+      "prime_powers": 5,
+      "parity": "even",
+      "dimension": 13,
+      "bits": 192,
+      "seconds": 0.3,
+      "certificates": [
+        {
+          "tolerance": null,
+          "margin": "1/18446744073709551616",
+          "status": "CERTIFIED"
+        }
+      ],
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "2^-65",
+        "rayleigh_upper": "[1.7539711e-19 +/- 1.65e-27]"
+      }
+    },
+    {
+      "entry": "archive_L2_odd",
+      "L": "2",
+      "K": 16,
+      "Q": 7,
+      "prime_powers": 5,
+      "parity": "odd",
+      "dimension": 12,
+      "bits": 192,
+      "seconds": 0.2,
+      "certificates": [
+        {
+          "tolerance": null,
+          "margin": "1/18446744073709551616",
+          "status": "CERTIFIED"
+        }
+      ],
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "2^-54",
+        "rayleigh_upper": "[3.5084805e-16 +/- 3.93e-24]"
+      }
+    },
+    {
+      "entry": "archive_L9_4_even",
+      "L": "9/4",
+      "K": 26,
+      "Q": 9,
+      "prime_powers": 7,
+      "parity": "even",
+      "dimension": 23,
+      "bits": 256,
+      "seconds": 0.4,
+      "certificates": [
+        {
+          "tolerance": null,
+          "margin": "1/1267650600228229401496703205376",
+          "status": "CERTIFIED"
+        }
+      ],
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "2^-100",
+        "rayleigh_upper": "[3.1589045e-30 +/- 2.77e-39]"
+      }
+    },
+    {
+      "entry": "archive_L9_4_odd",
+      "L": "9/4",
+      "K": 26,
+      "Q": 9,
+      "prime_powers": 7,
+      "parity": "odd",
+      "dimension": 22,
+      "bits": 256,
+      "seconds": 0.4,
+      "certificates": [
+        {
+          "tolerance": null,
+          "margin": "1/1267650600228229401496703205376",
+          "status": "CERTIFIED"
+        }
+      ],
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "2^-90",
+        "rayleigh_upper": "[4.1522310e-27 +/- 4.72e-35]"
+      }
+    },
+    {
+      "entry": "archive_L5_2_even",
+      "L": "5/2",
+      "K": 40,
+      "Q": 12,
+      "prime_powers": 8,
+      "parity": "even",
+      "dimension": 37,
+      "bits": 320,
+      "seconds": 0.9,
+      "certificates": [
+        {
+          "tolerance": null,
+          "margin": "1/89202980794122492566142873090593446023921664",
+          "status": "CERTIFIED"
+        }
+      ],
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "2^-146",
+        "rayleigh_upper": "[6.5618895e-44 +/- 4.14e-52]"
+      }
+    },
+    {
+      "entry": "archive_L5_2_odd",
+      "L": "5/2",
+      "K": 40,
+      "Q": 12,
+      "prime_powers": 8,
+      "parity": "odd",
+      "dimension": 36,
+      "bits": 320,
+      "seconds": 0.9,
+      "certificates": [
+        {
+          "tolerance": null,
+          "margin": "1/89202980794122492566142873090593446023921664",
+          "status": "CERTIFIED"
+        }
+      ],
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "2^-135",
+        "rayleigh_upper": "[1.1752762e-40 +/- 2.67e-48]"
+      }
+    },
+    {
+      "entry": "L4_even",
+      "L": "4",
+      "K": 256,
+      "Q": 54,
+      "prime_powers": 24,
+      "parity": "even",
+      "dimension": 253,
+      "bits": 192,
+      "seconds": 15.3,
+      "certificates": [
+        {
+          "tolerance": "1/2",
+          "margin": null,
+          "status": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "near_null_count_below_1e-8": 49,
+      "dim_minus_N_of_T": 50.0,
+      "channel_minima": {
+        "minus_arch": "[-1.354148064 +/- 3.37e-10]",
+        "minus_prime": "[-3.787655738 +/- 4.13e-10]",
+        "pole": "[+/- 1.88e-56]"
+      },
+      "bottom_vector": {
+        "rayleigh_upper_bound": "[1.16239180539e-18 +/- 4.95e-30]",
+        "pole": "[+/- 1.67e-57]",
+        "arch": "[-1.55862494396 +/- 7.95e-13]",
+        "prime": "[1.55862494396 +/- 7.95e-13]"
+      },
+      "block_tests": [
+        {
+          "tolerance": "1/2",
+          "low": 125,
+          "high": 128,
+          "high_block_bounds": [
+            {
+              "label": "REPORTED_L4_HALF_CONSTANTS",
+              "a": "49/100",
+              "b": "9",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            },
+            {
+              "label": "SUGGESTED",
+              "a": "49/100",
+              "b": "4503/500",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            }
+          ],
+          "unshifted_high_block_rayleigh": "[3.9287742e-7 +/- 8.20e-16]",
+          "fixed_quarter_high_gap": "NOT_REFUTED_BY_THIS_WITNESS",
+          "scalar_gap": [
+            "FALSIFIED_BOUND",
+            "[-9.255028606 +/- 1.20e-10]"
+          ],
+          "polynomial_degree64": [
+            "CERTIFIED",
+            "49/100",
+            0.05672508577585214,
+            null
+          ],
+          "native_form": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "low": 125,
+          "high": 128,
+          "high_block_bounds": [
+            {
+              "label": "REPORTED_L4_HALF_CONSTANTS",
+              "a": "49/100",
+              "b": "9",
+              "a_le_A": "FALSIFIED_BOUND",
+              "A_le_b": "CERTIFIED"
+            },
+            {
+              "label": "SUGGESTED",
+              "a": "957/1000000",
+              "b": "8497/1000",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            }
+          ],
+          "unshifted_high_block_rayleigh": "[3.9287742e-7 +/- 8.20e-16]",
+          "fixed_quarter_high_gap": "FALSIFIED_BOUND",
+          "scalar_gap": [
+            "FALSIFIED_BOUND",
+            "[-6350.783718 +/- 2.51e-7]"
+          ],
+          "polynomial_degree64": [
+            "FALSIFIED_BOUND",
+            "957/1000000",
+            1037.4266693191007,
+            "[-42.21723450 +/- 4.24e-9]"
+          ],
+          "native_form": "CERTIFIED"
+        }
+      ]
+    },
+    {
+      "entry": "L4_odd",
+      "L": "4",
+      "K": 256,
+      "Q": 54,
+      "prime_powers": 24,
+      "parity": "odd",
+      "dimension": 252,
+      "bits": 192,
+      "seconds": 14.5,
+      "certificates": [
+        {
+          "tolerance": "1/2",
+          "margin": null,
+          "status": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "near_null_count_below_1e-8": 48,
+      "dim_minus_N_of_T": 49.0,
+      "channel_minima": {
+        "minus_arch": "[-0.9356301693 +/- 9.12e-13]",
+        "minus_prime": "[-3.776984429 +/- 2.54e-10]",
+        "pole": "[+/- 4.34e-56]"
+      },
+      "bottom_vector": {
+        "rayleigh_upper_bound": "[1.16720679321e-18 +/- 1.11e-30]",
+        "pole": "[+/- 5.63e-57]",
+        "arch": "[-1.95898839960 +/- 4.32e-12]",
+        "prime": "[1.95898839960 +/- 4.32e-12]"
+      },
+      "block_tests": [
+        {
+          "tolerance": "1/2",
+          "low": 124,
+          "high": 128,
+          "high_block_bounds": [
+            {
+              "label": "REPORTED_L4_HALF_CONSTANTS",
+              "a": "49/100",
+              "b": "9",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            },
+            {
+              "label": "SUGGESTED",
+              "a": "49/100",
+              "b": "8989/1000",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            }
+          ],
+          "unshifted_high_block_rayleigh": "[6.7922689e-7 +/- 1.50e-16]",
+          "fixed_quarter_high_gap": "NOT_REFUTED_BY_THIS_WITNESS",
+          "scalar_gap": [
+            "FALSIFIED_BOUND",
+            "[-8.958234654 +/- 2.35e-10]"
+          ],
+          "polynomial_degree64": [
+            "CERTIFIED",
+            "49/100",
+            0.05672508577585214,
+            null
+          ],
+          "native_form": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "low": 124,
+          "high": 128,
+          "high_block_bounds": [
+            {
+              "label": "REPORTED_L4_HALF_CONSTANTS",
+              "a": "49/100",
+              "b": "9",
+              "a_le_A": "FALSIFIED_BOUND",
+              "A_le_b": "CERTIFIED"
+            },
+            {
+              "label": "SUGGESTED",
+              "a": "957/1000000",
+              "b": "212/25",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            }
+          ],
+          "unshifted_high_block_rayleigh": "[6.7922689e-7 +/- 1.50e-16]",
+          "fixed_quarter_high_gap": "FALSIFIED_BOUND",
+          "scalar_gap": [
+            "FALSIFIED_BOUND",
+            "[-6392.119511 +/- 4.59e-7]"
+          ],
+          "polynomial_degree64": [
+            "FALSIFIED_BOUND",
+            "957/1000000",
+            1037.411676524259,
+            "[-24.60334631 +/- 1.41e-9]"
+          ],
+          "native_form": "CERTIFIED"
+        }
+      ]
+    },
+    {
+      "entry": "L4_even_bracket",
+      "L": "4",
+      "K": 256,
+      "Q": 54,
+      "prime_powers": 24,
+      "parity": "even",
+      "dimension": 253,
+      "bits": 1024,
+      "seconds": 124.1,
+      "certificates": [],
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "2^-816",
+        "rayleigh_upper": "[1.3110128e-245 +/- 3.36e-255]"
+      }
+    },
+    {
+      "entry": "L4_odd_bracket",
+      "L": "4",
+      "K": 256,
+      "Q": 54,
+      "prime_powers": 24,
+      "parity": "odd",
+      "dimension": 252,
+      "bits": 1024,
+      "seconds": 116.6,
+      "certificates": [],
+      "bottom_bracket": {
+        "status": "BRACKETED",
+        "lower": "2^-802",
+        "rayleigh_upper": "[2.1740565e-241 +/- 2.97e-249]"
+      }
+    },
+    {
+      "entry": "L5_even",
+      "L": "5",
+      "K": 625,
+      "Q": 148,
+      "prime_powers": 47,
+      "parity": "even",
+      "dimension": 622,
+      "bits": 192,
+      "seconds": 71.5,
+      "certificates": [
+        {
+          "tolerance": "1/3",
+          "margin": null,
+          "status": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "near_null_count_below_1e-8": 139,
+      "dim_minus_N_of_T": 142.6,
+      "channel_minima": {
+        "minus_arch": "[-1.719062655 +/- 2.99e-10]",
+        "minus_prime": "[-4.773572068 +/- 3.12e-10]",
+        "pole": "[+/- 6.57e-56]"
+      },
+      "bottom_vector": {
+        "rayleigh_upper_bound": "[3.02664433977e-16 +/- 4.24e-28]",
+        "pole": "[+/- 3.26e-57]",
+        "arch": "[-1.07425874093 +/- 4.02e-12]",
+        "prime": "[1.07425874093 +/- 4.02e-12]"
+      },
+      "block_tests": [
+        {
+          "tolerance": "1/3",
+          "low": 309,
+          "high": 313,
+          "high_block_bounds": [
+            {
+              "label": "REPORTED_L4_HALF_CONSTANTS",
+              "a": "49/100",
+              "b": "9",
+              "a_le_A": "FALSIFIED_BOUND",
+              "A_le_b": "FALSIFIED_BOUND"
+            },
+            {
+              "label": "SUGGESTED",
+              "a": "163333/500000",
+              "b": "11091/1000",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            }
+          ],
+          "unshifted_high_block_rayleigh": "[4.9758529e-17 +/- 2.21e-25]",
+          "fixed_quarter_high_gap": "NOT_REFUTED_BY_THIS_WITNESS",
+          "scalar_gap": [
+            "FALSIFIED_BOUND",
+            "[-26.21377537 +/- 2.54e-9]"
+          ],
+          "polynomial_degree64": [
+            "CERTIFIED",
+            "163333/500000",
+            0.4518033755412469,
+            null
+          ],
+          "native_form": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "low": 309,
+          "high": 313,
+          "high_block_bounds": [
+            {
+              "label": "REPORTED_L4_HALF_CONSTANTS",
+              "a": "49/100",
+              "b": "9",
+              "a_le_A": "FALSIFIED_BOUND",
+              "A_le_b": "FALSIFIED_BOUND"
+            },
+            {
+              "label": "SUGGESTED",
+              "a": "957/1000000",
+              "b": "1344/125",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            }
+          ],
+          "unshifted_high_block_rayleigh": "[4.9758529e-17 +/- 2.21e-25]",
+          "fixed_quarter_high_gap": "FALSIFIED_BOUND",
+          "scalar_gap": [
+            "FALSIFIED_BOUND",
+            "[-10335.79830 +/- 2.61e-6]"
+          ],
+          "polynomial_degree64": [
+            "FALSIFIED_BOUND",
+            "957/1000000",
+            1038.9963565611704,
+            "[-37.13298635 +/- 1.76e-9]"
+          ],
+          "native_form": "CERTIFIED"
+        }
+      ]
+    },
+    {
+      "entry": "L5_odd",
+      "L": "5",
+      "K": 625,
+      "Q": 148,
+      "prime_powers": 47,
+      "parity": "odd",
+      "dimension": 621,
+      "bits": 192,
+      "seconds": 78.3,
+      "certificates": [
+        {
+          "tolerance": "1/3",
+          "margin": null,
+          "status": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "near_null_count_below_1e-8": 138,
+      "dim_minus_N_of_T": 141.6,
+      "channel_minima": {
+        "minus_arch": "[-1.194187519 +/- 9.08e-11]",
+        "minus_prime": "[-4.769924494 +/- 4.19e-10]",
+        "pole": "[+/- 9.05e-56]"
+      },
+      "bottom_vector": {
+        "rayleigh_upper_bound": "[4.15780225199e-18 +/- 3.96e-30]",
+        "pole": "[+/- 6.23e-57]",
+        "arch": "[-2.91662556919 +/- 3.64e-12]",
+        "prime": "[2.91662556919 +/- 3.64e-12]"
+      },
+      "block_tests": [
+        {
+          "tolerance": "1/3",
+          "low": 308,
+          "high": 313,
+          "high_block_bounds": [
+            {
+              "label": "REPORTED_L4_HALF_CONSTANTS",
+              "a": "49/100",
+              "b": "9",
+              "a_le_A": "FALSIFIED_BOUND",
+              "A_le_b": "FALSIFIED_BOUND"
+            },
+            {
+              "label": "SUGGESTED",
+              "a": "163333/500000",
+              "b": "2773/250",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            }
+          ],
+          "unshifted_high_block_rayleigh": "[1.0408703e-16 +/- 2.54e-25]",
+          "fixed_quarter_high_gap": "NOT_REFUTED_BY_THIS_WITNESS",
+          "scalar_gap": [
+            "FALSIFIED_BOUND",
+            "[-26.98036974 +/- 2.05e-9]"
+          ],
+          "polynomial_degree64": [
+            "CERTIFIED",
+            "163333/500000",
+            0.4518824932648724,
+            null
+          ],
+          "native_form": "CERTIFIED"
+        },
+        {
+          "tolerance": "1/1024",
+          "low": 308,
+          "high": 313,
+          "high_block_bounds": [
+            {
+              "label": "REPORTED_L4_HALF_CONSTANTS",
+              "a": "49/100",
+              "b": "9",
+              "a_le_A": "FALSIFIED_BOUND",
+              "A_le_b": "FALSIFIED_BOUND"
+            },
+            {
+              "label": "SUGGESTED",
+              "a": "957/1000000",
+              "b": "10753/1000",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            }
+          ],
+          "unshifted_high_block_rayleigh": "[1.0408703e-16 +/- 2.54e-25]",
+          "fixed_quarter_high_gap": "FALSIFIED_BOUND",
+          "scalar_gap": [
+            "FALSIFIED_BOUND",
+            "[-10677.44179 +/- 5.39e-7]"
+          ],
+          "polynomial_degree64": [
+            "FALSIFIED_BOUND",
+            "957/1000000",
+            1038.9969070212164,
+            "[-71.43270705 +/- 4.92e-9]"
+          ],
+          "native_form": "CERTIFIED"
+        }
+      ]
+    },
+    {
+      "entry": "EH6_L6_even",
+      "L": "6",
+      "K": 1296,
+      "Q": 403,
+      "prime_powers": 98,
+      "parity": "even",
+      "dimension": 1293,
+      "bits": 192,
+      "seconds": 325.4,
+      "certificates": [
+        {
+          "tolerance": "1/4",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "near_null_count_below_1e-8": 342,
+      "dim_minus_N_of_T": 347.1,
+      "channel_minima": {
+        "minus_arch": "[-2.083802041 +/- 4.58e-10]",
+        "minus_prime": "[-5.365876284 +/- 4.57e-11]",
+        "pole": "[+/- 1.19e-55]"
+      },
+      "bottom_vector": {
+        "rayleigh_upper_bound": "[4.77191513394e-17 +/- 4.21e-29]",
+        "pole": "[+/- 4.04e-57]",
+        "arch": "[-2.97387721969 +/- 3.29e-12]",
+        "prime": "[2.97387721969 +/- 3.29e-12]"
+      },
+      "block_tests": [
+        {
+          "tolerance": "1/4",
+          "low": 645,
+          "high": 648,
+          "high_block_bounds": [
+            {
+              "label": "REPORTED_L4_HALF_CONSTANTS",
+              "a": "49/100",
+              "b": "9",
+              "a_le_A": "FALSIFIED_BOUND",
+              "A_le_b": "FALSIFIED_BOUND"
+            },
+            {
+              "label": "SUGGESTED",
+              "a": "244999/1000000",
+              "b": "1371/100",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            }
+          ],
+          "unshifted_high_block_rayleigh": "[8.2760892e-18 +/- 3.70e-26]",
+          "fixed_quarter_high_gap": "NOT_REFUTED_BY_THIS_WITNESS",
+          "scalar_gap": [
+            "FALSIFIED_BOUND",
+            "[-52.74456005 +/- 2.95e-9]"
+          ],
+          "polynomial_degree64": [
+            "CERTIFIED",
+            "244999/1000000",
+            1.287204477614581,
+            null
+          ],
+          "native_form": "CERTIFIED"
+        }
+      ]
+    },
+    {
+      "entry": "EH6_L6_odd",
+      "L": "6",
+      "K": 1296,
+      "Q": 403,
+      "prime_powers": 98,
+      "parity": "odd",
+      "dimension": 1292,
+      "bits": 192,
+      "seconds": 307.7,
+      "certificates": [
+        {
+          "tolerance": "1/4",
+          "margin": null,
+          "status": "CERTIFIED"
+        }
+      ],
+      "near_null_count_below_1e-8": 341,
+      "dim_minus_N_of_T": 346.1,
+      "channel_minima": {
+        "minus_arch": "[-1.423729378 +/- 1.74e-11]",
+        "minus_prime": "[-5.365742772 +/- 2.12e-10]",
+        "pole": "[+/- 1.63e-55]"
+      },
+      "bottom_vector": {
+        "rayleigh_upper_bound": "[1.95697778581e-18 +/- 2.43e-30]",
+        "pole": "[+/- 1.09e-56]",
+        "arch": "[-3.16182341753 +/- 5.46e-13]",
+        "prime": "[3.16182341753 +/- 5.46e-13]"
+      },
+      "block_tests": [
+        {
+          "tolerance": "1/4",
+          "low": 644,
+          "high": 648,
+          "high_block_bounds": [
+            {
+              "label": "REPORTED_L4_HALF_CONSTANTS",
+              "a": "49/100",
+              "b": "9",
+              "a_le_A": "FALSIFIED_BOUND",
+              "A_le_b": "FALSIFIED_BOUND"
+            },
+            {
+              "label": "SUGGESTED",
+              "a": "244999/1000000",
+              "b": "1371/100",
+              "a_le_A": "CERTIFIED",
+              "A_le_b": "CERTIFIED"
+            }
+          ],
+          "unshifted_high_block_rayleigh": "[1.4334259e-17 +/- 2.56e-25]",
+          "fixed_quarter_high_gap": "NOT_REFUTED_BY_THIS_WITNESS",
+          "scalar_gap": [
+            "FALSIFIED_BOUND",
+            "[-56.56092386 +/- 4.45e-9]"
+          ],
+          "polynomial_degree64": [
+            "CERTIFIED",
+            "244999/1000000",
+            1.287204477614581,
+            null
+          ],
+          "native_form": "CERTIFIED"
+        }
+      ]
+    }
+  ],
+  "supplementary": [
+    {
+      "file": "nullcount_scan_L4_L5.json",
+      "sha256": "4a31b079e40c1425b7fdde75a63b495c7b915b52bbbbc1355ba9a6ac1a0e1c6d",
+      "tool": "arithmetic_frontier/nullcount_scan.py",
+      "authority": "EXPERIMENTAL_SIGNAL_FLOATING_ONLY",
+      "timing": "post-hoc: run after the L=6 records were read"
+    },
+    {
+      "file": "nullcount_scan_L6.json",
+      "sha256": "29b9ae2821b85773ea3bdc4b82474067fac53350a7748a0019e68ce3dd7ec837",
+      "tool": "arithmetic_frontier/nullcount_scan.py",
+      "authority": "EXPERIMENTAL_SIGNAL_FLOATING_ONLY",
+      "timing": "post-hoc: run after the L=6 records were read"
+    }
+  ]
+}

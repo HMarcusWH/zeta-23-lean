@@ -1,0 +1,51 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_NULLCOUNT_SCAN_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "EXPERIMENTAL_SIGNAL_FLOATING_ONLY",
+  "engine_sha256": "633bec1ecd4d6bfb8ba68077515be7880380b7b001e069d4efd67b2c38f4f203",
+  "scan_sha256": "036013ae2dbd01b13360b1de7ed888010a2d39150bf0e540f561531d9f4886f7",
+  "rows": [
+    {
+      "L": "6",
+      "K": 1296,
+      "Q": 403,
+      "parity": "even",
+      "dimension": 1293,
+      "T": 1357.1680263507906,
+      "dim_minus_main_term_N_T": 347.0648639402202,
+      "counts_below_10^-t": {
+        "2": 346,
+        "4": 344,
+        "6": 343,
+        "8": 342,
+        "10": 340,
+        "12": 339,
+        "13": 338
+      },
+      "count_between_1e-2_and_1": 17,
+      "smallest_eigenvalue_above_1e-2": 0.15157623690514493
+    },
+    {
+      "L": "6",
+      "K": 1296,
+      "Q": 403,
+      "parity": "odd",
+      "dimension": 1292,
+      "T": 1357.1680263507906,
+      "dim_minus_main_term_N_T": 346.0648639402202,
+      "counts_below_10^-t": {
+        "2": 345,
+        "4": 343,
+        "6": 342,
+        "8": 341,
+        "10": 339,
+        "12": 338,
+        "13": 338
+      },
+      "count_between_1e-2_and_1": 17,
+      "smallest_eigenvalue_above_1e-2": 0.151589650546723
+    }
+  ],
+  "timing_note": "Scan run after the L=6 records were read; this is a post-hoc robustness check of P8, not a prediction."
+}

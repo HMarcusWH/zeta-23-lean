@@ -1,4 +1,4 @@
-# Arithmetic frontier — build specification and Increment 1 record
+# Arithmetic frontier — build specification and increment record
 
 **RH and Step 4 remain OPEN.** This directory turns the PR #299 research into a
 source-bound search for an independent signed inequality. Increment 1 narrows
@@ -76,22 +76,91 @@ counterexamples. The retained 1079/90/84 scope is hash-bound and mandatory.
 * Drive reports are DISCOVERED only: their bytes were not persisted, so no hash is
   recorded ([SOURCE_LEDGER.json](SOURCE_LEDGER.json)).
 
-## Not built in this increment
+## Increment 2 — finite evidence replay and the E-H6 horizon
 
-Finite-evidence import and replay (L=4, L=5), the predeclared L=6 horizon, the
-leakage modules, checker soundness, the enclosure bridge, the universal kernel
-and any arithmetic supplier. See [OPEN_PREMISES.json](OPEN_PREMISES.json) and
-[EXPERIMENTS.json](EXPERIMENTS.json).
+**Scope.** Research certification of finite inequalities at named states. These
+results are not Lean theorems. They supply no arithmetic sign for any
+unbounded family, and RH and Step 4 remain OPEN. Records are in
+[evidence/increment2/](evidence/increment2/SUMMARY.json). Each record is
+hash-bound to the engine
+[native_slice.py](native_slice.py) and to the repository backend
+`research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py`.
+
+**Engine.** The engine works on the exact Lean carriers: the even slice is
+pole-neutral with `M0=M2=M4=0`; the odd slice is pole-neutral with
+`M1=M3=M5=0`. It uses `K=⌈L⁴⌉`, `Q=⌊e^L⌋` (prime cell certified) and the
+physical inherited norm directly. A floating basis proposal is corrected in
+Arb so that every column lies exactly in the slice. Its Gram matrix is
+certified `≥ 1/4`, so the basis spans the slice of the proved dimension.
+
+A tolerance holds when a shifted Cholesky certificate passes: `F+εG−τI−RRᵀ`
+has its Frobenius norm enclosed below `τ`. A bottom is bracketed by two
+bounds: an exact inverse-iteration Rayleigh vector from above, and a certified
+margin from below. The floating-point-free checker
+[independent_check.py](independent_check.py) re-derives the small states on its
+own path: the backend's direct full matrix, an exact elimination basis and
+interval LDLᵀ.
+
+| State | Result |
+| --- | --- |
+| L=2, 9/4, 5/2 (archive) | margins `2⁻⁶⁴, 2⁻¹⁰⁰, 2⁻¹⁴⁶` certified in both parities by both constructions; bottoms match the archive to every printed digit |
+| L=4, K=256 (dims 253/252) | 81/81 external principal entries overlap; `ε=1/2, 1/1024` certified; bottoms bracketed in `[2⁻⁸¹⁶, 1.311·10⁻²⁴⁵]` (even) and `[2⁻⁸⁰², 2.174·10⁻²⁴¹]` (odd) |
+| L=5, K=625 (dims 622/621) | `ε=1/3` (n=3) and `1/1024` certified |
+| **E-H6** L=6, K=1296, Q=403 (dims 1293/1292) | `Q_p ≥ −¼‖x‖²` certified on both full slices, the n=4 checkpoint of (C1) |
+
+**Failures preserved (estimates, never the native form).** At every tested
+point the scalar inverse-gap surrogate is refuted, because the complement
+block carries near-null directions. The reported `49/100 ≤ A ≤ 9` and the
+degree-64 coupled certificate are reproduced at `ε=1/2`, and that certificate
+also passes at n=3 and n=4. It fails at `ε=1/1024`, where the native form is
+still certified. The fixed `1/4` high-gap law fails, and the upper cap `A ≤ 9`
+fails at L=5 and L=6. No Lean consumer needs that cap.
+
+**Structure found.**
+
+* **DERIVED.** The pole kernel is `S(uuᵀ−vvᵀ)`, so the pole energy is
+  identically zero on both carriers. The native energy there is exactly
+  `−arch−prime`.
+* **Signal: channel cancellation.** The two remaining channels cancel at the
+  bottom vectors. Bounding them separately is refuted: on the even slice the
+  separated loss is `−5.14`, `−6.49` and `−7.45` at L=4, 5, 6.
+* **Signal: tiny positive bottoms.** The slice bottoms are positive but
+  super-exponentially small: `ln λ_min / K ≈ −2.7 → −2.2`.
+* **Signal: near-null count.** The number of near-null directions follows
+  `dim − N(2πK/L)`, where N is the zero count. The deficits are 1, 4 and 5
+  at L=4, 5, 6. The L=6 instance was frozen with a timing caveat; see
+  [E-H6_PREDICTIONS_ADDENDUM.json](evidence/increment2/E-H6_PREDICTIONS_ADDENDUM.json).
+  A later scan ([nullcount_scan.py](nullcount_scan.py)) shows the law does not
+  depend on the threshold. Below `10⁻²` the count equals `round(dim − N(T))`
+  within 1 at all six points, and about one more eigenvalue drops out per two
+  decades down to `10⁻¹³`.
+
+**Predeclared E-H6 predictions** ([outcomes](evidence/increment2/E-H6_OUTCOMES.json)):
+
+* P1, P3, P5, P6 and P7 were confirmed.
+* P2 was partly refuted: the scalar-gap constant grows with L.
+* P4 was refuted: the degree-64 certificate passed at `q⁶⁴/a = 1.29`.
+
+**CI.** The source-numerics lane now runs
+`tests/test_arithmetic_frontier_native.py` in both modes. Its CI part is
+floating-point free. The engine's planted controls need numpy, which is not in
+the hash-locked CI environment, so they are reported as skipped there.
+
+## Not built yet
+
+The leakage modules, checker soundness, the enclosure bridge, the universal
+kernel and any arithmetic supplier. See [OPEN_PREMISES.json](OPEN_PREMISES.json)
+and [EXPERIMENTS.json](EXPERIMENTS.json).
 
 ## Next increments
 
-1. Import the L=4/L=5 evidence with hashes and replay it into `BUDGET_SCHEMA`
-   records, preserving every failed surrogate.
-2. Run `E-H6` (`n=4`, `L=6`, `K=1296`, dimensions 1293/1292, `ε ≤ 1/4`). In
-   unweighted seed coordinates the physical `1/4` needs tolerance `β²/4 ≈ 0.0130`.
-3. Compare complete signed budgets at the same states and freeze a candidate law
-   before any new scale.
-4. Formalize only the reductions that law needs; then seek the independent supplier.
+1. E-D1 completion: record `M(s)=C1_(0,s](A)C*` and the minimal coupled degree
+   `m(n,L)` at the checkpoints n=2,3,4, then freeze a degree law before n=5.
+2. Test the near-null count law at a new aperture with a predeclared, threshold-
+   stable count (E-NULLCOUNT), and relate the near-null space to the zero
+   ordinates without assuming RH.
+3. Formalize only the reductions a frozen law needs (CR17 is the first
+   candidate). Then seek the independent supplier.
 
 Only a proved supplier composed with these consumers, validated on the final head,
 could support a Step 4 claim.

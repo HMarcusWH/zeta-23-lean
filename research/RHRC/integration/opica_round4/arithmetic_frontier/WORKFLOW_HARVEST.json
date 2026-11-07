@@ -192,5 +192,25 @@
   ],
   "round4_acceptance": "All eleven Round4 lane producers, the three independent replay groups and final ACCEPTANCE succeeded in run 41465884039 attempt 1.",
   "scientific_disposition": "Conclusions only: job logs and artifacts were not re-read in this pass. Research-numerics successes preserve their recorded finite outputs, failures or falsifications; they are not positivity proofs.",
-  "scope": "Qualifies only the parent head. The arithmetic-frontier successor must receive its own complete same-run harvest."
+  "scope": "Qualifies only the parent head. The arithmetic-frontier successor must receive its own complete same-run harvest.",
+  "increment1_head_snapshot": {
+    "head_sha": "ee274643563604d56c53ffbed0252513435a647d",
+    "recorded_utc": "2026-11-07 about 12:50 UTC (snapshot via the GitHub API)",
+    "runs_total": 24,
+    "completed_success": 17,
+    "in_progress": 6,
+    "queued": 1,
+    "failed": 0,
+    "pending_runs": [
+      "OPICA Round4 governed deduction and independent source gates (queued)",
+      "OPICA follow-up original-contract validation",
+      "OPICA Round2 exact-source core and research controls",
+      "OPICA Round3 scoped current-source proof and falsification gates",
+      "RHRC OPICA full paper components",
+      "RHRC post-284 source inertia campaign",
+      "RHRC research and Lean checks"
+    ],
+    "disposition": "INCOMPLETE_AT_RECORDING: Increment 1 is not CI-qualified until the Round4 governed gate completes on the current head",
+    "scope": "Partial harvest; the Increment 2 head needs its own harvest."
+  }
 }

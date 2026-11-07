@@ -12,7 +12,7 @@
   "experiments": [
     {
       "id": "E-BASE-L4",
-      "status": "NOT_RUN_EVIDENCE_NOT_IMPORTED",
+      "status": "RUN_REPRODUCED_BOTH_PARITIES",
       "goal": "Reproduce the reported L=4 endpoint with its exact source, carrier, metric and budget.",
       "candidate_evidence_drive_ids": [
         "1f0M1EmM2OQ0P7-aBtgBmKdNn-z578vdz",
@@ -24,21 +24,53 @@
         "failed continued 1/4 high-gap law",
         "unnecessary upper-cap failure"
       ],
-      "acceptance": "BUDGET_SCHEMA record with disposition and independent replay."
+      "acceptance": "BUDGET_SCHEMA record with disposition and independent replay.",
+      "evidence": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_even.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_odd.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_entry_crosscheck.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_even_bracket.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_odd_bracket.json"
+      ],
+      "result": {
+        "endpoints": "eps = 1/2 and 1/1024 CERTIFIED on the full slices (dimensions 253, 252)",
+        "reported_blocks": "49/100 <= A <= 9 at eps = 1/2 CERTIFIED (Fourier-prefix flag 125/128, W-orthonormal coordinates)",
+        "coupled_degree64": "CERTIFIED at eps = 1/2; FALSIFIED at eps = 1/1024 (rigorous negative values -42.2 even, -24.6 odd) while the native form is CERTIFIED",
+        "scalar_gap": "FALSIFIED at both tolerances (witnesses -9.26/-8.96 and -6350.8/-6392.1)",
+        "unshifted_complement": "Rayleigh value 3.93e-7 < 2^-20 (reproduces the reported rational vector bound)",
+        "fixed_quarter_high_gap": "FALSIFIED at eps = 1/1024 (reconstructed reading; original definition not imported)",
+        "slice_bottom_brackets": "even [2^-816, 1.3110e-245], odd [2^-802, 2.1741e-241] at 1024 bits"
+      },
+      "regression_disposition": {
+        "failed scalar-gap surrogates": "PRESERVED (test_failed_surrogates_are_preserved)",
+        "failed continued 1/4 high-gap law": "PRESERVED as fixed_quarter_high_gap; reconstructed reading",
+        "unnecessary upper-cap failure": "PRESERVED: b = 9 holds at L=4 and fails at L=5 and L=6; the Lean consumer blockEnergy_nonneg_of_inverse_residual_certificate has no upper-cap hypothesis"
+      }
     },
     {
       "id": "E-BASE-L5",
-      "status": "NOT_RUN_EVIDENCE_NOT_IMPORTED",
+      "status": "RUN_NEW_REPLAY_REPORT_EVIDENCE_NOT_IMPORTED",
       "goal": "Same as E-BASE-L4 at L=5 (K=625; even dim 622, odd dim 621).",
       "candidate_evidence_drive_ids": [
         "1OjZ8Og9jrSGglXOkyVkwUtl9ZbQOBaHf",
         "1B3fC7wg0xj6c-QOe7MNcHaEbXuoowF5d"
       ],
-      "acceptance": "As E-BASE-L4."
+      "acceptance": "As E-BASE-L4.",
+      "evidence": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L5_even.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L5_odd.json"
+      ],
+      "result": {
+        "checkpoint": "eps = 1/3 (n = 3, L >= n + 2) and eps = 1/1024 CERTIFIED (dimensions 622, 621)",
+        "scalar_gap": "FALSIFIED (-26.2/-27.0 at 1/3; -10336/-10677 at 1/1024)",
+        "coupled_degree64": "CERTIFIED at 1/3; FALSIFIED at 1/1024 (-37.1/-71.4)",
+        "L4_constants_continued": "a = 49/100 and b = 9 both FALSIFIED (lambda_max(A) about 10.87)"
+      },
+      "note": "The L=5 report archives exceed the connector download limit; this is a new replay at the same state, not an import."
     },
     {
       "id": "E-H6",
-      "status": "PREDECLARED_NOT_RUN",
+      "status": "RUN_ACCEPTED_FINITE_BOTH_PARITIES",
       "goal": "First new horizon of (C1): n=4, L>=6, eps<=1/4, physical metric.",
       "state": {
         "L": "6",
@@ -55,19 +87,173 @@
         "authority": "DERIVED_FROM_PROVED_LEMMAS evenMomentSliceLowerBound_of_coordinate_tolerance and fixedSeedGram_re_ge; arithmetic of constants only"
       },
       "acceptance": "A complete BUDGET_SCHEMA certificate or a precisely classified failure; a favorable floating eigenvalue is not acceptance.",
-      "resource_note": "Dense 1293x1293 enclosed matrices; single-owner cache-writing build discipline applies."
+      "resource_note": "Dense 1293x1293 enclosed matrices; single-owner cache-writing build discipline applies.",
+      "evidence": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/EH6_L6_even.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/EH6_L6_odd.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E-H6_PREDICTIONS.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E-H6_PREDICTIONS_ADDENDUM.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E-H6_OUTCOMES.json"
+      ],
+      "result": {
+        "checkpoint": "Q_p(6,x) >= -(1/4)||x||^2 CERTIFIED on the full even (1293) and odd (1292) slices at K = 1296, Q = 403, 98 prime powers, physical metric directly",
+        "predictions": "P1 P3 P5 P6 P7 confirmed; P2 partly refuted (c = 13.2, 14.1 outside [4,12]); P4 refuted (degree-64 certificate passed); P8 confirmed with a timing caveat"
+      },
+      "note": "This is the n = 4 checkpoint of (C1) only. (C1) needs every n."
     },
     {
       "id": "E-D1",
-      "status": "PREDECLARED_NOT_RUN",
+      "status": "PARTIAL_RUN",
       "goal": "At the same states compare CA^{-1}C*, a^{-1}CC* and the coupling-resolved certificate; record M(s)=C 1_(0,s](A) C*.",
-      "acceptance": "Information lost by each estimate identified on the same matrix, carrier and metric."
+      "acceptance": "Information lost by each estimate identified on the same matrix, carrier and metric.",
+      "result": "Scalar gap, degree-64 coupled certificate and the direct native certificate compared on the same matrix, carrier and metric at 9 (state, tolerance, parity) points; M(s) = C 1_(0,s](A) C* not yet recorded."
     },
     {
       "id": "E-D2",
       "status": "BLOCKED_ON_OPEN_MODULE",
       "goal": "Signed leakage numerator z_i conj(l_j) - l_i conj(z_j) after the actual four-normal leakage factorization.",
       "blocker": "MomentLeakage and NativeLeakageArithmetic are not built."
+    },
+    {
+      "id": "E-ARCH-SMALL",
+      "status": "RUN_REPRODUCED_INDEPENDENTLY",
+      "goal": "Replay the archived point statements at L = 2, 9/4, 5/2.",
+      "evidence": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L2_even.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L2_odd.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L9_4_even.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L9_4_odd.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L5_2_even.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L5_2_odd.json"
+      ],
+      "result": "Margins 2^-64, 2^-100, 2^-146 CERTIFIED in both parities by the engine and by the floating-point-free checker; the bottoms agree with the archive diagnostics to every printed digit (e.g. 6.5618895e-44 at L = 5/2 even)."
+    },
+    {
+      "id": "E-NULLCOUNT",
+      "status": "LEAD_THREE_STATES",
+      "goal": "Test near-null count = dim - N(2 pi K/L) beyond L = 6 and against the threshold.",
+      "observed": {
+        "L4": [
+          49,
+          48,
+          50,
+          49
+        ],
+        "L5": [
+          139,
+          138,
+          143,
+          142
+        ],
+        "L6": [
+          342,
+          341,
+          347,
+          346
+        ]
+      },
+      "observed_format": "[even, odd, predicted even, predicted odd]",
+      "acceptance": "A threshold-stable count at a new aperture, predeclared before the run; a deviation larger than O(log T) refutes the law.",
+      "threshold_scan": {
+        "evidence": [
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/nullcount_scan_L4_L5.json",
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/nullcount_scan_L6.json"
+        ],
+        "result": "count below 1e-2 equals round(dim - N(T)) within 1 at all six (state, parity) points; the count falls by about one per two decades down to 1e-13; 15-23 eigenvalues lie in [1e-2, 1)",
+        "rows": [
+          {
+            "L": "4",
+            "parity": "even",
+            "dimension": 253,
+            "dim_minus_main_term_N_T": 49.956482664981024,
+            "counts_below_10^-t": {
+              "2": 51,
+              "4": 50,
+              "6": 49,
+              "8": 49,
+              "10": 48,
+              "12": 48,
+              "13": 47
+            }
+          },
+          {
+            "L": "4",
+            "parity": "odd",
+            "dimension": 252,
+            "dim_minus_main_term_N_T": 48.956482664981024,
+            "counts_below_10^-t": {
+              "2": 50,
+              "4": 49,
+              "6": 49,
+              "8": 48,
+              "10": 48,
+              "12": 47,
+              "13": 47
+            }
+          },
+          {
+            "L": "5",
+            "parity": "even",
+            "dimension": 622,
+            "dim_minus_main_term_N_T": 142.58578283721226,
+            "counts_below_10^-t": {
+              "2": 142,
+              "4": 141,
+              "6": 140,
+              "8": 139,
+              "10": 138,
+              "12": 137,
+              "13": 136
+            }
+          },
+          {
+            "L": "5",
+            "parity": "odd",
+            "dimension": 621,
+            "dim_minus_main_term_N_T": 141.58578283721226,
+            "counts_below_10^-t": {
+              "2": 141,
+              "4": 140,
+              "6": 139,
+              "8": 138,
+              "10": 137,
+              "12": 136,
+              "13": 136
+            }
+          },
+          {
+            "L": "6",
+            "parity": "even",
+            "dimension": 1293,
+            "dim_minus_main_term_N_T": 347.0648639402202,
+            "counts_below_10^-t": {
+              "2": 346,
+              "4": 344,
+              "6": 343,
+              "8": 342,
+              "10": 340,
+              "12": 339,
+              "13": 338
+            }
+          },
+          {
+            "L": "6",
+            "parity": "odd",
+            "dimension": 1292,
+            "dim_minus_main_term_N_T": 346.0648639402202,
+            "counts_below_10^-t": {
+              "2": 345,
+              "4": 343,
+              "6": 342,
+              "8": 341,
+              "10": 339,
+              "12": 338,
+              "13": 338
+            }
+          }
+        ],
+        "timing": "post-hoc robustness check, not a prediction"
+      }
     }
   ]
 }

@@ -1,0 +1,58 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_PREDECLARATION_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "experiment": "E-H6",
+  "frozen_at_utc": "2026-11-07T12:35:20+00:00",
+  "frozen_before": "any L=6 matrix was assembled in this session",
+  "state": {
+    "L": "6",
+    "K": 1296,
+    "Q": 403,
+    "even_dimension": 1293,
+    "odd_dimension": 1292,
+    "tolerance": "1/4",
+    "metric": "PHYSICAL_INHERITED_EUCLIDEAN (direct; no seed-coordinate conversion)",
+    "flag_split": "Fourier prefix through 648 (low dims 645 even / 644 odd)"
+  },
+  "basis_of_predictions": "Replays at L=2, 9/4, 5/2, 4, 5 in this increment (same engine, same carriers).",
+  "predictions": [
+    {
+      "id": "P1",
+      "claim": "The direct shifted certificate of F + G/4 succeeds in both parities.",
+      "confidence": "high"
+    },
+    {
+      "id": "P2",
+      "claim": "The scalar inverse-gap surrogate fails at the split with a rigorous witness value <= -10 (law: about -c/eps with c in [4,12]).",
+      "confidence": "high"
+    },
+    {
+      "id": "P3",
+      "claim": "The unshifted complementary block contains near-null directions: floating lambda_min(A) - eps < 1e-6.",
+      "confidence": "high"
+    },
+    {
+      "id": "P4",
+      "claim": "The degree-64 polynomial certificate with a = 0.98 lambda_min(A) fails (predicted q^64/a about 1.2).",
+      "confidence": "low (about 55 percent)"
+    },
+    {
+      "id": "P5",
+      "claim": "The floating near-null count (|lambda| < 1e-8) lies in [250, 450] in each parity.",
+      "confidence": "medium"
+    },
+    {
+      "id": "P6",
+      "claim": "At the floating bottom vector the pole channel vanishes to enclosure precision and arch = -prime with |arch| in [0.5, 5].",
+      "confidence": "high"
+    },
+    {
+      "id": "P7",
+      "claim": "Each channel alone (-arch, -prime) has slice minimum below -1/4, so no channel-separated supplier reaches the E-H6 tolerance.",
+      "confidence": "medium"
+    }
+  ],
+  "law_freeze_note": "No constant is refit after the run. A failed prediction is recorded as failed.",
+  "authority": "PREDECLARATION_ONLY"
+}

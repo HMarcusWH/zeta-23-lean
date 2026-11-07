@@ -20,7 +20,7 @@
     "listed_files": 114,
     "completeness": "Exactly the files returned by this query; other folder items, renamed files and Google-native documents without that title fragment are not claimed."
   },
-  "hash_limitation": "The session connector returned file bytes only into conversation context, never to disk, so no content hash is recorded. A later importer must fetch, hash and store each report before raising its review depth.",
+  "hash_limitation": "The session connector returned file bytes only into conversation context, never to disk, so no content hash is recorded. A later importer must fetch, hash and store each report before raising its review depth. Increment 2 (2026-11-07): two archives were downloaded to isolated scratch directories and hashed; their bytes are not committed. Archives above 10 MB could not be downloaded and remain DISCOVERED.",
   "repository_pin": {
     "pr": "HMarcusWH/zeta-23-lean#299",
     "parent_head": "9c517db0befa1131bb60d37cfef2888ed69447a9",
@@ -36,9 +36,19 @@
       "modified_utc": "2026-11-07T06:47:52.050Z",
       "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
       "relationship": "EVIDENCE_ARCHIVE",
-      "review_depth": "DISCOVERED",
-      "content_sha256": null,
-      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT"
+      "review_depth": "FETCHED",
+      "content_sha256": "59454766032a16cdf07a466c5cbe787ef185074953a5ace4f38c41fa91e3f9dc",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "increment2": {
+        "action": "fetched to an isolated directory and hashed; one member used as data",
+        "member": {
+          "path": "RH_Step4_Birds_Eye_2026-11-07/fresh_L4_entries.json",
+          "sha256": "560a9cf42e8e672dc51e71b2a139d7fb46d5e4a1d8c66a37d13aa60a85f27462",
+          "replay": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_entry_crosscheck.json",
+          "result": "81/81 even principal entries overlap the repository Arb source"
+        },
+        "archive_bytes_committed": false
+      }
     },
     {
       "drive_id": "1ye_TuZMue7TSxCyYqdXA55BapFO8QutF",
@@ -62,7 +72,11 @@
       "relationship": "EVIDENCE_ARCHIVE",
       "review_depth": "DISCOVERED",
       "content_sha256": null,
-      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT"
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "increment2": {
+        "action": "NOT_IMPORTED",
+        "reason": "archive exceeds the 10 MB download limit of the session connector; review depth unchanged"
+      }
     },
     {
       "drive_id": "1Td-y0Gm1BqfmIGlz4phCMF176V6HZi0d",
@@ -86,7 +100,11 @@
       "relationship": "EVIDENCE_ARCHIVE",
       "review_depth": "DISCOVERED",
       "content_sha256": null,
-      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT"
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "increment2": {
+        "action": "NOT_IMPORTED",
+        "reason": "archive exceeds the 10 MB download limit of the session connector; review depth unchanged"
+      }
     },
     {
       "drive_id": "1KdVI5pfPy3R3qCuZMGrDg9P6Xk9vjF3m",
@@ -122,7 +140,11 @@
       "relationship": "EVIDENCE_ARCHIVE",
       "review_depth": "DISCOVERED",
       "content_sha256": null,
-      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT"
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "increment2": {
+        "action": "NOT_IMPORTED",
+        "reason": "archive exceeds the 10 MB download limit of the session connector; review depth unchanged"
+      }
     },
     {
       "drive_id": "128QOyIajk99Y63tOinPXU_PQVL50GGwK",
@@ -158,7 +180,11 @@
       "relationship": "EVIDENCE_ARCHIVE",
       "review_depth": "DISCOVERED",
       "content_sha256": null,
-      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT"
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "increment2": {
+        "action": "NOT_IMPORTED",
+        "reason": "archive exceeds the 10 MB download limit of the session connector; review depth unchanged"
+      }
     },
     {
       "drive_id": "11ueSaTDZZ7LBo6wWFzxma_CuoJYjL2MF",
@@ -228,9 +254,19 @@
       "modified_utc": "2026-11-06T13:11:51.736Z",
       "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
       "relationship": "EVIDENCE_ARCHIVE",
-      "review_depth": "DISCOVERED",
-      "content_sha256": null,
-      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT"
+      "review_depth": "REPLAYED",
+      "content_sha256": "342c4cc410720197164ad8cc2b0f84d6fafbd8bae9ee3f16484292b199a2cd23",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "increment2": {
+        "action": "fetched to an isolated directory, hashed, members read as data only; no archived code executed",
+        "replayed_claims": "six point statements of THEOREM_CONTRACTS.json (L=2, 9/4, 5/2; both parities; margins 2^-64, 2^-100, 2^-146)",
+        "replay": [
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L2_even.json",
+          "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/archive_L5_2_odd.json",
+          "tests: IndependentCheckerTests"
+        ],
+        "archive_bytes_committed": false
+      }
     },
     {
       "drive_id": "1DpqnHiVS9G0KGKM1B_GoQQhlwQX4bzJr",

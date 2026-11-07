@@ -51,7 +51,8 @@
     {
       "id": "S-CHECKER",
       "statement": "FiniteCertificateSoundness: accepted data imply the stated native finite inequality.",
-      "status": "OPEN"
+      "status": "OPEN",
+      "finite_progress": "Independent floating-point-free checker for small states (independent_check.py); no soundness theorem."
     },
     {
       "id": "S-ENCLOSURE",
@@ -76,7 +77,8 @@
     {
       "id": "S-REACH",
       "statement": "Constructive certificate production with apertures escaping every bounded interval and physical errors tending to zero; cofinal_moment_slice_bounds_of_tendsto is its consumer.",
-      "status": "OPEN"
+      "status": "OPEN",
+      "finite_progress": "Checkpoints n = 2, 3, 4 certified at L = 4, 5, 6 (evidence/increment2); a constructive all-n production remains OPEN."
     }
   ],
   "rule": "A leaf moves only when an exact theorem with no undispatched RH-strength premise passes current-head formal and claim gates."

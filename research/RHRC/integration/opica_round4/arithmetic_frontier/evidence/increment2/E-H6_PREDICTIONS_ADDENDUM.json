@@ -1,0 +1,44 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_PREDECLARATION_ADDENDUM_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "experiment": "E-H6",
+  "addendum_to": "E-H6_PREDICTIONS.json",
+  "frozen_at_utc": "2026-11-07T12:44:02+00:00",
+  "frozen_before": "no L=6 output had been opened or read. Correction recorded after freezing: the two L=6 output files had already been written at 12:43:38Z (odd) and 12:43:55Z (even), 7 to 24 seconds before this addendum; the earlier text \"the L=6 runs were still executing\" was wrong. The ordering rests on session process discipline, not on a cryptographic commitment, so P8 is weaker evidence than P1-P7, which were frozen at 12:35:20Z before the L=6 runs started.",
+  "observation_that_motivated_it": "L=4: 253-49=204 and 252-48=204 non-near-null directions; L=5: 622-139=483 and 621-138=483; N(2 pi K/L) main terms give 203.0 and 479.4.",
+  "heuristic": "Under the explicit-formula picture the slice energy is controlled by the values of the test transform at the zeros up to the top frequency T = 2 pi K / L; a direction is near-null when the transform nearly vanishes at all of them, so near-null count ~ dim - N(T).",
+  "table": [
+    {
+      "L": 4,
+      "K": 256,
+      "T": 402.124,
+      "N_T_riemann_von_mangoldt_main_terms": 203.0,
+      "predicted_near_null_even": 50,
+      "predicted_near_null_odd": 49
+    },
+    {
+      "L": 5,
+      "K": 625,
+      "T": 785.398,
+      "N_T_riemann_von_mangoldt_main_terms": 479.4,
+      "predicted_near_null_even": 143,
+      "predicted_near_null_odd": 142
+    },
+    {
+      "L": 6,
+      "K": 1296,
+      "T": 1357.168,
+      "N_T_riemann_von_mangoldt_main_terms": 945.9,
+      "predicted_near_null_even": 347,
+      "predicted_near_null_odd": 346
+    }
+  ],
+  "prediction": {
+    "id": "P8",
+    "claim": "Floating near-null count (|lambda| < 1e-8) at L=6 equals dim - N(2 pi K/L) within 5 percent: even in [330, 364], odd in [329, 363].",
+    "confidence": "medium"
+  },
+  "authority": "PREDECLARATION_ONLY; EXPERIMENTAL_SIGNAL heuristic, not a theorem",
+  "integrity_note": "Treat P8 as a post-hoc-risk prediction when weighing it."
+}
