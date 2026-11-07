@@ -95,8 +95,8 @@ theorem core_shift_certificate_of_columns [FiniteDimensional ℂ E] {V : Type*}
   exact hcols c
 
 /-- **Negative-witness transport (E2).** Paid compression keeps a fixed negative
-margin on the projected component of the same trial, with the conservative
-constant `3η`. The projection is not identified with a ground eigenvector. -/
+margin on the projected component of the same trial, with the conservative loss
+`3η`. The projection is not identified with a ground eigenvector. -/
 theorem core_witness_transport (H : E →ₗ[ℂ] E) (S : Submodule ℂ E) [S.HasOrthogonalProjection]
     (hH : ∀ x y : E, inner ℂ (H x) y = inner ℂ x (H y)) {η d : ℝ}
     (hη : 0 ≤ η) (hηd : 3 * η < d) (hleak : CoreLeakageBound H S η) (x : E)

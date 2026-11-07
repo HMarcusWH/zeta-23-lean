@@ -972,7 +972,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/MADNESS_CONTRACTS.json",
-      "sha256": "aee319cc8a9d43a4f91362527c32c9f9ff53957e5dfb2285df467ad7325dc8f0"
+      "sha256": "6c7947c1e3ab9f5f1a32192d693a5434246bb67fa490414edbb2e9767d770d25"
     },
     {
       "path": "research/RHRC/integration/opica_round4/MADNESS_SOURCE_AUDIT.json",
@@ -1620,7 +1620,7 @@
     },
     {
       "path": "Zeta23/OPICARound4/ArithmeticFrontier/SourceColumnCore.lean",
-      "sha256": "8281d11cf915a28272f4300b23b122c5490d55273d22984ea80fe2ee11e0af18"
+      "sha256": "a6080cfedf18d990de122bd88c7f47be2f3848096d94ee2e538e6358e8612edf"
     },
     {
       "path": "Zeta23/OPICARound4/ArithmeticFrontier/Validation/Carriers.lean",

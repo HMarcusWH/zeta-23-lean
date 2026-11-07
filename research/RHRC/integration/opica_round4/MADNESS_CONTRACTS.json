@@ -1267,7 +1267,7 @@
     },
     "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore": {
       "path": "Zeta23/OPICARound4/ArithmeticFrontier/SourceColumnCore.lean",
-      "sha256": "8281d11cf915a28272f4300b23b122c5490d55273d22984ea80fe2ee11e0af18",
+      "sha256": "a6080cfedf18d990de122bd88c7f47be2f3848096d94ee2e538e6358e8612edf",
       "declarations": [
         "Zeta23.OPICARound4.ArithmeticFrontier.CoreLeakageBound",
         "Zeta23.OPICARound4.ArithmeticFrontier.selfAdjoint_energy_split",
