@@ -112,7 +112,7 @@
     },
     {
       "id": "opica_round4_executables",
-      "pattern": "\\A(?:research/RHRC/ffbbp/opica_composition\\.py|research/RHRC/integration/opica_composition/__init__\\.py|research/RHRC/integration/opica_composition/accept\\.py|research/RHRC/integration/opica_composition/applications\\.py|research/RHRC/integration/opica_composition/baseline\\.py|research/RHRC/integration/opica_composition/cache_owner\\.py|research/RHRC/integration/opica_composition/campaign\\.py|research/RHRC/integration/opica_composition/canonical\\.py|research/RHRC/integration/opica_composition/cli\\.py|research/RHRC/integration/opica_composition/closure\\.py|research/RHRC/integration/opica_composition/composition_search\\.py|research/RHRC/integration/opica_composition/config\\.py|research/RHRC/integration/opica_composition/contracts\\.py|research/RHRC/integration/opica_composition/countermodels\\.py|research/RHRC/integration/opica_composition/descendant\\.py|research/RHRC/integration/opica_composition/evidence\\.py|research/RHRC/integration/opica_composition/executor\\.py|research/RHRC/integration/opica_composition/harvest\\.py|research/RHRC/integration/opica_composition/historical\\.py|research/RHRC/integration/opica_composition/inventory\\.py|research/RHRC/integration/opica_composition/journal\\.py|research/RHRC/integration/opica_composition/proposals\\.py|research/RHRC/integration/opica_composition/provider\\.py|research/RHRC/integration/opica_composition/qualification\\.py|research/RHRC/integration/opica_composition/research_contracts\\.py|research/RHRC/integration/opica_composition/service\\.py|research/RHRC/integration/opica_composition/snapshot\\.py|research/RHRC/integration/opica_composition/testing\\.py|research/RHRC/integration/opica_composition/tests/test_acceptance\\.py|research/RHRC/integration/opica_composition/tests/test_applications\\.py|research/RHRC/integration/opica_composition/tests/test_cli\\.py|research/RHRC/integration/opica_composition/tests/test_closure\\.py|research/RHRC/integration/opica_composition/tests/test_composition_search\\.py|research/RHRC/integration/opica_composition/tests/test_contracts\\.py|research/RHRC/integration/opica_composition/tests/test_countermodels\\.py|research/RHRC/integration/opica_composition/tests/test_descendant\\.py|research/RHRC/integration/opica_composition/tests/test_end_to_end\\.py|research/RHRC/integration/opica_composition/tests/test_evidence\\.py|research/RHRC/integration/opica_composition/tests/test_executor\\.py|research/RHRC/integration/opica_composition/tests/test_ffbbp\\.py|research/RHRC/integration/opica_composition/tests/test_harvest\\.py|research/RHRC/integration/opica_composition/tests/test_integration_search_native\\.py|research/RHRC/integration/opica_composition/tests/test_inventory\\.py|research/RHRC/integration/opica_composition/tests/test_journal\\.py|research/RHRC/integration/opica_composition/tests/test_native_environment\\.py|research/RHRC/integration/opica_composition/tests/test_ool\\.py|research/RHRC/integration/opica_composition/tests/test_permansson\\.py|research/RHRC/integration/opica_composition/tests/test_search_native\\.py|research/RHRC/integration/opica_composition/views\\.py|research/RHRC/integration/opica_round4/__init__\\.py|research/RHRC/integration/opica_round4/math_gate\\.py|research/RHRC/integration/opica_round4/source_backend\\.py|research/RHRC/integration/opica_round4/source_checker\\.py|research/RHRC/integration/opica_round4/source_evaluator\\.py|research/RHRC/integration/opica_round4/source_research\\.py|research/RHRC/integration/opica_round4/tests/test_source_evaluator\\.py|research/RHRC/integration/opica_round4/tests/test_source_research\\.py|research/RHRC/integration/opica_round4_support/__init__\\.py|research/RHRC/integration/opica_round4_support/run_python_tests\\.py|research/RHRC/integration/opica_round4_support/schedule\\.py|research/RHRC/integration/opica_round4_support/source_context\\.py|research/RHRC/integration/opica_round4_support/source_lock\\.py|research/RHRC/integration/opica_round4_support/tests/test_context\\.py|research/RHRC/integration/opica_round4_support/tests/test_scheduler\\.py|research/RHRC/integration/opica_round4_support/tests/test_source_lock\\.py|research/RHRC/integration/opica_round4_support/tests/test_verifier_guards\\.py|research/RHRC/integration/opica_round4_support/verify_support\\.py|research/RHRC/ool/opica_composition\\.py|research/RHRC/permansson/__init__\\.py|research/RHRC/permansson/opica_composition\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/native_slice\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/independent_check\\.py|research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_native\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/nullcount_scan\\.py)\\Z",
+      "pattern": "\\A(?:research/RHRC/ffbbp/opica_composition\\.py|research/RHRC/integration/opica_composition/__init__\\.py|research/RHRC/integration/opica_composition/accept\\.py|research/RHRC/integration/opica_composition/applications\\.py|research/RHRC/integration/opica_composition/baseline\\.py|research/RHRC/integration/opica_composition/cache_owner\\.py|research/RHRC/integration/opica_composition/campaign\\.py|research/RHRC/integration/opica_composition/canonical\\.py|research/RHRC/integration/opica_composition/cli\\.py|research/RHRC/integration/opica_composition/closure\\.py|research/RHRC/integration/opica_composition/composition_search\\.py|research/RHRC/integration/opica_composition/config\\.py|research/RHRC/integration/opica_composition/contracts\\.py|research/RHRC/integration/opica_composition/countermodels\\.py|research/RHRC/integration/opica_composition/descendant\\.py|research/RHRC/integration/opica_composition/evidence\\.py|research/RHRC/integration/opica_composition/executor\\.py|research/RHRC/integration/opica_composition/harvest\\.py|research/RHRC/integration/opica_composition/historical\\.py|research/RHRC/integration/opica_composition/inventory\\.py|research/RHRC/integration/opica_composition/journal\\.py|research/RHRC/integration/opica_composition/proposals\\.py|research/RHRC/integration/opica_composition/provider\\.py|research/RHRC/integration/opica_composition/qualification\\.py|research/RHRC/integration/opica_composition/research_contracts\\.py|research/RHRC/integration/opica_composition/service\\.py|research/RHRC/integration/opica_composition/snapshot\\.py|research/RHRC/integration/opica_composition/testing\\.py|research/RHRC/integration/opica_composition/tests/test_acceptance\\.py|research/RHRC/integration/opica_composition/tests/test_applications\\.py|research/RHRC/integration/opica_composition/tests/test_cli\\.py|research/RHRC/integration/opica_composition/tests/test_closure\\.py|research/RHRC/integration/opica_composition/tests/test_composition_search\\.py|research/RHRC/integration/opica_composition/tests/test_contracts\\.py|research/RHRC/integration/opica_composition/tests/test_countermodels\\.py|research/RHRC/integration/opica_composition/tests/test_descendant\\.py|research/RHRC/integration/opica_composition/tests/test_end_to_end\\.py|research/RHRC/integration/opica_composition/tests/test_evidence\\.py|research/RHRC/integration/opica_composition/tests/test_executor\\.py|research/RHRC/integration/opica_composition/tests/test_ffbbp\\.py|research/RHRC/integration/opica_composition/tests/test_harvest\\.py|research/RHRC/integration/opica_composition/tests/test_integration_search_native\\.py|research/RHRC/integration/opica_composition/tests/test_inventory\\.py|research/RHRC/integration/opica_composition/tests/test_journal\\.py|research/RHRC/integration/opica_composition/tests/test_native_environment\\.py|research/RHRC/integration/opica_composition/tests/test_ool\\.py|research/RHRC/integration/opica_composition/tests/test_permansson\\.py|research/RHRC/integration/opica_composition/tests/test_search_native\\.py|research/RHRC/integration/opica_composition/views\\.py|research/RHRC/integration/opica_round4/__init__\\.py|research/RHRC/integration/opica_round4/math_gate\\.py|research/RHRC/integration/opica_round4/source_backend\\.py|research/RHRC/integration/opica_round4/source_checker\\.py|research/RHRC/integration/opica_round4/source_evaluator\\.py|research/RHRC/integration/opica_round4/source_research\\.py|research/RHRC/integration/opica_round4/tests/test_source_evaluator\\.py|research/RHRC/integration/opica_round4/tests/test_source_research\\.py|research/RHRC/integration/opica_round4_support/__init__\\.py|research/RHRC/integration/opica_round4_support/run_python_tests\\.py|research/RHRC/integration/opica_round4_support/schedule\\.py|research/RHRC/integration/opica_round4_support/source_context\\.py|research/RHRC/integration/opica_round4_support/source_lock\\.py|research/RHRC/integration/opica_round4_support/tests/test_context\\.py|research/RHRC/integration/opica_round4_support/tests/test_scheduler\\.py|research/RHRC/integration/opica_round4_support/tests/test_source_lock\\.py|research/RHRC/integration/opica_round4_support/tests/test_verifier_guards\\.py|research/RHRC/integration/opica_round4_support/verify_support\\.py|research/RHRC/ool/opica_composition\\.py|research/RHRC/permansson/__init__\\.py|research/RHRC/permansson/opica_composition\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/native_slice\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/independent_check\\.py|research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_native\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/nullcount_scan\\.py|research/RHRC/integration/opica_round4/arithmetic_frontier/certificates\\.py|research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_acceptance\\.py)\\Z",
       "file_class": "RESEARCH_EXECUTABLE",
       "trust_zone": "AUDIT_ONLY"
     },
@@ -738,7 +738,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/cli.py",
-      "sha256": "82746255cc6413dddebd3c587e1f85e18164043a6bcdde8923c5ab9d387b0250"
+      "sha256": "500a0c7abd74ad0a2bc1d36c68235662d9091a6e38d635c898f7a8c106d96b2d"
     },
     {
       "path": "research/RHRC/integration/opica_composition/closure.py",
@@ -762,7 +762,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/descendant.py",
-      "sha256": "ceff8484497172d031dca7374f7ce1c92e367c6202eccf4fcdb77e7047cfa258"
+      "sha256": "fbc3203022f049604d2b051c552f523162bad357a3893f7901ba60b4a217a8ab"
     },
     {
       "path": "research/RHRC/integration/opica_composition/evidence.py",
@@ -1783,6 +1783,14 @@
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/nullcount_scan_L6.json",
       "sha256": "29b9ae2821b85773ea3bdc4b82474067fac53350a7748a0019e68ce3dd7ec837"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/certificates.py",
+      "sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_acceptance.py",
+      "sha256": "0fcefebdaa89e98d75e2ea8d25876429c9f51a55fa423dac117981c9957a1f69"
     }
   ],
   "edit": [
@@ -1836,7 +1844,7 @@
     },
     {
       "path": "research/RHRC/graph/FILE_CLASSES.json",
-      "sha256": "412698d1be24ba3a0d2674ef8b78e0ac031e30448f97caa3fe16a59ad5c41bb3"
+      "sha256": "7e18305027e0fcb472b6eec8c4121ea473f16a11df5d41d500b08be36dd92895"
     },
     {
       "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
@@ -2295,7 +2303,7 @@
       "authority": "UNCHANGED_PARENT_BYTES"
     }
   ],
-  "path_policy_sha256": "ad35637dacae1ad0ee26a441fae872edc7742a62f230466fba07eab4806b696e",
+  "path_policy_sha256": "1eb00d0cb5d1a24792df133ebefa794f48a0d7dd32a96036d8999ba3a1afbbce",
   "current_compiler_accepted": false,
   "RH": "OPEN",
   "Step4": "OPEN",
@@ -2632,6 +2640,28 @@
         "research/RHRC/integration/opica_round2/python-checks.lock",
         "research/RHRC/integration/opica_followup/python-checks.lock",
         "research/RHRC/requirements.txt"
+      ]
+    },
+    "increment2b": {
+      "schema": "OPICA4_ARITHMETIC_FRONTIER_INCREMENT2B_V1",
+      "parent_head": "54ef598",
+      "executables": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/certificates.py",
+        "research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_acceptance.py"
+      ],
+      "lean_modules": [],
+      "receipt_dirs": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b"
+      ],
+      "claim": "ACCEPTANCE_REPAIR_AND_FINITE_RESEARCH_CERTIFICATES_ONLY_RH_AND_STEP4_OPEN",
+      "ci_lane": "SOURCE_NUMERICS runs test_arithmetic_frontier_acceptance and test_arithmetic_frontier_native in normal and optimized mode without optional skips",
+      "protected_unchanged": [
+        "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.json",
+        "research/RHRC/integration/opica_composition/EXPECTED_TESTS.json",
+        "lean-toolchain",
+        "lake-manifest.json"
       ]
     }
   }

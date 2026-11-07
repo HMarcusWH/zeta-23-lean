@@ -379,6 +379,7 @@ def _run_lane_impl(lane,repo,output,exp,*,provider_root=None):
             run_command(repo,[sys.executable,*mode,'-B','-m','research.RHRC.integration.opica_round4.source_research',
                 '--output-dir',str(output/('source-research-'+name))],output,'source-research-'+name)
             run_command(repo,[sys.executable,*mode,'-B','-m','unittest','research.RHRC.integration.opica_round4.tests.test_source_research'],output,'source-research-tests-'+name)
+            run_command(repo,[sys.executable,*mode,'-B','-m','unittest','research.RHRC.integration.opica_round4.tests.test_arithmetic_frontier_acceptance'],output,'frontier-acceptance-tests-'+name)
             run_command(repo,[sys.executable,*mode,'-B','-m','unittest','research.RHRC.integration.opica_round4.tests.test_arithmetic_frontier_native'],output,'frontier-native-tests-'+name)
     elif lane=='PROVIDER_SELECTED':
         from .provider import produce,verify
