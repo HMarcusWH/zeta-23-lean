@@ -60,13 +60,31 @@ class CliOrchestrationTests(unittest.TestCase):
                           math_gate.PRE_MADNESS_SEMANTIC_MUTATIONS.replace('example','example ',1)):
             with self.assertRaisesRegex(RuntimeError,'Retained 17'):
                 math_gate.retained_pre_madness_scope()
+        # The exact 1079/90/84 scope preceding the arithmetic frontier stays mandatory.
+        frontier=math_gate.retained_pre_frontier_scope()
+        self.assertEqual((frontier['declaration_count'],frontier['module_count'],
+                          frontier['semantic_mutation_count']),(1079,90,84))
+        self.assertEqual((len(math_gate.EXPECTED_DECLARATIONS),len(math_gate.MODULES),
+                          math_gate.SEMANTIC_MUTATION_COUNT),(1176,97,96))
+        with patch.object(math_gate,'EXPECTED_DECLARATIONS',math_gate.EXPECTED_DECLARATIONS[1:]):
+            with self.assertRaisesRegex(RuntimeError,'Retained 1079/90/84'):
+                math_gate.retained_pre_frontier_scope()
+        with patch.object(math_gate,'MADNESS_SEMANTIC_MUTATIONS',
+                          math_gate.MADNESS_SEMANTIC_MUTATIONS.replace('example','example ',1)):
+            with self.assertRaisesRegex(RuntimeError,'Retained 1079/90/84'):
+                math_gate.retained_pre_frontier_scope()
+        with patch.object(math_gate,'FRONTIER_SEMANTIC_MUTATIONS',
+                          math_gate.FRONTIER_SEMANTIC_MUTATIONS.replace('\nexample','\n-- removed',1)):
+            with self.assertRaisesRegex(RuntimeError,'Retained 1079/90/84'):
+                math_gate.retained_pre_frontier_scope()
 
     def test_madness_register_rejects_source_substitution_and_bound_promotion(self):
         from research.RHRC.integration.opica_composition import config
         raw=(R4/'MADNESS_CONTRACTS.json').read_bytes();original=load_bytes(raw)
         module=math_gate.MADNESS_MODULES[0]
         for alteration in ('hash','path','module','declarations','audit','retained',
-                           'claim','bound','supplier','old-ledger'):
+                           'claim','bound','supplier','old-ledger','frontier-scope',
+                           'frontier-proved','frontier-branch'):
             changed=copy.deepcopy(original)
             if alteration=='hash':changed['current_modules'][module]['sha256']='0'*64
             elif alteration=='path':changed['current_modules'][module]['path']='Zeta23/Wrong.lean'
@@ -77,7 +95,10 @@ class CliOrchestrationTests(unittest.TestCase):
             elif alteration=='claim':changed['Step4']='CLOSED'
             elif alteration=='bound':changed['closing_arithmetic']['status']='PROVED'
             elif alteration=='supplier':changed['contracts'][0]['arithmetic_estimate_supplied']=True
-            else:changed['source_constraints_sha256']='0'*64
+            elif alteration=='old-ledger':changed['source_constraints_sha256']='0'*64
+            elif alteration=='frontier-scope':changed['retained_pre_frontier_subset']['declaration_count']=1078
+            elif alteration=='frontier-proved':changed['arithmetic_frontier']['branches'][0]['premise_proved']=True
+            else:changed['arithmetic_frontier']['branches'].pop()
             def read(data):return changed if data==raw else load_bytes(data)
             with self.subTest(alteration=alteration),patch.object(config,'load_bytes',side_effect=read):
                 with self.assertRaises(ContractError):config.check_madness_contracts(REPO)

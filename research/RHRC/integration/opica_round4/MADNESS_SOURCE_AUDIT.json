@@ -2803,5 +2803,30 @@
       "native_methods": 46
     },
     "graph_scope": "New research/document discovery nodes and explicit evidence references; no new formal proof edges."
+  },
+  "arithmetic_frontier_2026_11_07": {
+    "input": "Maintainer build specification \"Native Arithmetic Constraint Discovery and Closure Build Specification\" (2026-11-07), pinned to 9c517db0befa1131bb60d37cfef2888ed69447a9.",
+    "research_resumed_by": "Explicit maintainer instruction in this session; no archived document authorized it.",
+    "built": [
+      "Exact moment slices, seed charts, Gram transport, frame comparisons and exact dimensions",
+      "(C1) conditional consumer to Mathlib RiemannHypothesis",
+      "Narrow selected-packet consumer without a global shared-ground premise",
+      "Complete inverse-residual block certificate (C3)",
+      "Finite source-core consumer (C4) and negative-witness transport (E2)",
+      "Seven expanded consumers and twelve semantic controls",
+      "Arithmetic-frontier registers, schemas and experiments"
+    ],
+    "not_built": [
+      "L=4/L=5 evidence import and replay",
+      "L=6 horizon experiment",
+      "leakage modules",
+      "checker soundness and enclosure bridge",
+      "universal approximate kernel",
+      "any independent arithmetic supplier"
+    ],
+    "drive_coverage": "114 files discovered by an exact title/date query; none hashed or proof-audited in this pass.",
+    "local_evidence": "Pinned Lean v4.33.0-rc2 Linux build of the complete Round4 validation closure; all 1176 complete types audited with only propext, Classical.choice and Quot.sound; 96 controls rejected by type mismatch.",
+    "registers": "research/RHRC/integration/opica_round4/arithmetic_frontier/",
+    "claim_boundary": "Support only. No new arithmetic sign. RH and Step4 OPEN."
   }
 }

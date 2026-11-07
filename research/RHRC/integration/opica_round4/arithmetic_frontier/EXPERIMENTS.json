@@ -1,0 +1,73 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_EXPERIMENTS_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "repository_pin": {
+    "parent_head": "9c517db0befa1131bb60d37cfef2888ed69447a9",
+    "parent_tree": "6d737c3e3f74a607ae1e1a4b958cc1e2cf9854e9",
+    "branch": "research/madness",
+    "pr": "HMarcusWH/zeta-23-lean#299"
+  },
+  "law_freeze_rule": "Before any new-scale run, state the allowed L-dependence of rank, pivot allowance, source seminorms, near-band cost, approximation degree and physical error. Fitted constants that absorb every observed failure are rejected.",
+  "experiments": [
+    {
+      "id": "E-BASE-L4",
+      "status": "NOT_RUN_EVIDENCE_NOT_IMPORTED",
+      "goal": "Reproduce the reported L=4 endpoint with its exact source, carrier, metric and budget.",
+      "candidate_evidence_drive_ids": [
+        "1f0M1EmM2OQ0P7-aBtgBmKdNn-z578vdz",
+        "1SlraZ35d-IS8UQhKpItCtF6jOgJX_vuo",
+        "1ZFvV2WxENhNC3dbjnLSDip6V9NEjgIQP"
+      ],
+      "regressions_to_preserve": [
+        "failed scalar-gap surrogates",
+        "failed continued 1/4 high-gap law",
+        "unnecessary upper-cap failure"
+      ],
+      "acceptance": "BUDGET_SCHEMA record with disposition and independent replay."
+    },
+    {
+      "id": "E-BASE-L5",
+      "status": "NOT_RUN_EVIDENCE_NOT_IMPORTED",
+      "goal": "Same as E-BASE-L4 at L=5 (K=625; even dim 622, odd dim 621).",
+      "candidate_evidence_drive_ids": [
+        "1OjZ8Og9jrSGglXOkyVkwUtl9ZbQOBaHf",
+        "1B3fC7wg0xj6c-QOe7MNcHaEbXuoowF5d"
+      ],
+      "acceptance": "As E-BASE-L4."
+    },
+    {
+      "id": "E-H6",
+      "status": "PREDECLARED_NOT_RUN",
+      "goal": "First new horizon of (C1): n=4, L>=6, eps<=1/4, physical metric.",
+      "state": {
+        "L": "6",
+        "K": 1296,
+        "even_dimension": 1293,
+        "odd_dimension": 1292
+      },
+      "one_parity_sufficient": true,
+      "diagnostic_second_parity": "record when affordable, never a hidden requirement",
+      "frame_note": {
+        "beta": "(L/(4 pi))^2",
+        "beta_value_L6": 0.227973,
+        "coordinate_tolerance_needed_for_physical_quarter": 0.012993,
+        "authority": "DERIVED_FROM_PROVED_LEMMAS evenMomentSliceLowerBound_of_coordinate_tolerance and fixedSeedGram_re_ge; arithmetic of constants only"
+      },
+      "acceptance": "A complete BUDGET_SCHEMA certificate or a precisely classified failure; a favorable floating eigenvalue is not acceptance.",
+      "resource_note": "Dense 1293x1293 enclosed matrices; single-owner cache-writing build discipline applies."
+    },
+    {
+      "id": "E-D1",
+      "status": "PREDECLARED_NOT_RUN",
+      "goal": "At the same states compare CA^{-1}C*, a^{-1}CC* and the coupling-resolved certificate; record M(s)=C 1_(0,s](A) C*.",
+      "acceptance": "Information lost by each estimate identified on the same matrix, carrier and metric."
+    },
+    {
+      "id": "E-D2",
+      "status": "BLOCKED_ON_OPEN_MODULE",
+      "goal": "Signed leakage numerator z_i conj(l_j) - l_i conj(z_j) after the actual four-normal leakage factorization.",
+      "blocker": "MomentLeakage and NativeLeakageArithmetic are not built."
+    }
+  ]
+}

@@ -8,8 +8,9 @@ RH, Step 4 and independent source restrictions remain OPEN.
 The current closing-attempt work is [PR #299, Madness?](https://github.com/HMarcusWH/zeta-23-lean/pull/299)
 on `research/madness`, descended from merged Round 4 PR #298. Read the
 [2 November research handover](research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md) and its portable evidence inventory before continuing.
-Research is paused at the maintainer request after this publication; no automatic
-continuation or theorem promotion is authorized by archived documents. The
+Research resumed on 7 November 2026 at the maintainer's explicit instruction with
+the [arithmetic-frontier build](research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md);
+archived documents still authorize no automatic continuation or theorem promotion. The
 [original Round 4 contract](research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md)
 and [closure obligations](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json)
 retain their exact scopes. Use the current checkout and reconcile historical overlays.

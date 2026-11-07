@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "OPICA4_ARITHMETIC_FRONTIER_STATE_V1",
+  "title": "Native arithmetic-frontier state",
+  "type": "object",
+  "required": [
+    "source",
+    "aperture",
+    "cutoff",
+    "parity",
+    "carrier",
+    "metric",
+    "state_kind"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "source": {
+      "type": "object",
+      "required": [
+        "definition",
+        "version_sha256",
+        "prime_power_list_sha256"
+      ],
+      "properties": {
+        "definition": {
+          "const": "canonicalSourceMatrix"
+        },
+        "version_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "prime_power_list_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "aperture": {
+      "type": "object",
+      "required": [
+        "L_exact"
+      ],
+      "properties": {
+        "L_exact": {
+          "type": "string",
+          "description": "Exact rational or algebraic description; never a float."
+        }
+      }
+    },
+    "cutoff": {
+      "type": "object",
+      "required": [
+        "expression",
+        "value"
+      ],
+      "properties": {
+        "expression": {
+          "const": "originalDetectorQuarticCutoff(L)=ceil(L^4)"
+        },
+        "value": {
+          "type": "integer",
+          "minimum": 16
+        }
+      }
+    },
+    "parity": {
+      "enum": [
+        "even",
+        "odd"
+      ]
+    },
+    "carrier": {
+      "type": "object",
+      "required": [
+        "name",
+        "dimension",
+        "constraints"
+      ],
+      "properties": {
+        "name": {
+          "enum": [
+            "evenMomentSlice",
+            "oddMomentSlice"
+          ]
+        },
+        "dimension": {
+          "type": "integer",
+          "description": "Must equal K-3 (even) or K-4 (odd)."
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "required": [
+        "kind",
+        "gram_sha256"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "PHYSICAL_INHERITED_EUCLIDEAN",
+            "SEED_GRAM_D2"
+          ]
+        },
+        "gram_sha256": {
+          "type": "string"
+        }
+      }
+    },
+    "state_kind": {
+      "enum": [
+        "ACTUAL_STATE",
+        "ACTUAL_SELECTED_PACKET_STATE",
+        "CONDITIONAL_SYMBOLIC_OFF_LINE_STATE"
+      ],
+      "description": "A hypothetical off-line packet exists only through the Lean construction, never through a fitted matrix."
+    }
+  }
+}

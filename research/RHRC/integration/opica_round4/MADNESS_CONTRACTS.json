@@ -259,6 +259,48 @@
       "module": "Zeta23.OPICARound4.Validation.NativeNoncollision",
       "claim": "Eight separately stated expected-type consumers check the limiting compression, genuine prime grouping, actual nonidentity, finite regular selection, same-packet depth and cutoff, both complete source orientations, and the final physical spectral packet. They supply no independent arithmetic estimate.",
       "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M43",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.MomentSlices",
+      "claim": "Exact even/odd moment slices of the actual pole-neutral carriers (physical M4; M3 and M5), literal compressed energies and inherited norm; all-vector slice bounds, the (C1) proposition, the existing fixed margin restated on the slices and its margin-below exclusion. The (C1) premise is OPEN.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M44",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates",
+      "claim": "Fixed seed charts with M0=M2=M4=M6=0 and M1=M3=M5=M7=0, exact linear equivalences, full Gram transport, frame comparisons with factors beta^2 and (beta+K^2)^2, exact dimensions K-3 and K-4, vanishing at small cutoffs and nonvacuity at the quartic cutoff.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M45",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentClosure",
+      "claim": "(C1) implies Mathlib RiemannHypothesis at the same aperture, cutoff, parity, carrier and norm; contrapositive; fixed-parity and vanishing-tolerance suppliers. The premise is OPEN.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M46",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure",
+      "claim": "Disjoint native spectra exclude every Rayleigh-bottom tie; the two exact ground tests suffice at disjoint states; packet-uniform, one-output and state-uniform suppliers are consumed; the older all-cutoff ground wrapper implies the narrow one. The ground-response restriction is OPEN.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M47",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PhysicalBlockCertificate",
+      "claim": "Exact inverse-residual form identity and certificate soundness for arbitrary Hermitian blocks, with the scalar inverse-gap surrogate as the X=0 case and tolerance monotonicity. No native data are certified.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M48",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore",
+      "claim": "Finite source-core consumer with complete-complement leakage and nonorthogonal column Gram, and negative-witness transport with conservative constant 3 eta. The signed core premise is OPEN.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M49",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers",
+      "claim": "Seven expanded complete-type consumers for the frontier carriers, consumers and certificates. They check meaning, not arithmetic.",
+      "arithmetic_estimate_supplied": false
     }
   ],
   "closing_arithmetic": {
@@ -1107,6 +1149,145 @@
         "Zeta23.OPICARound4.Validation.NativeNoncollision.complete_odd_source_and_eigenspace_check",
         "Zeta23.OPICARound4.Validation.NativeNoncollision.genuine_packet_same_detector_spectral_check"
       ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.MomentSlices": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/MomentSlices.lean",
+      "sha256": "7945c4792e5422cfaf8adadf832c9fa554e20be9e1b35a3a33da995bcf988356",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenPhysicalMoment",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddPhysicalMoment",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenPhysicalMoment_apply",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddPhysicalMoment_apply",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSlice",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSlice",
+        "Zeta23.OPICARound4.ArithmeticFrontier.mem_evenMomentSlice_iff",
+        "Zeta23.OPICARound4.ArithmeticFrontier.mem_oddMomentSlice_iff",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenNativeEnergy",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddNativeEnergy",
+        "Zeta23.OPICARound4.ArithmeticFrontier.EvenMomentSliceLowerBound",
+        "Zeta23.OPICARound4.ArithmeticFrontier.OddMomentSliceLowerBound",
+        "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceLowerBound",
+        "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentSliceVanishingErrorBounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.EvenMomentSliceLowerBound.mono",
+        "Zeta23.OPICARound4.ArithmeticFrontier.OddMomentSliceLowerBound.mono",
+        "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceLowerBound.mono",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_of_bottom",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_of_bottom",
+        "Zeta23.OPICARound4.ArithmeticFrontier.eventually_both_moment_slice_witnesses",
+        "Zeta23.OPICARound4.ArithmeticFrontier.eventually_no_moment_slice_lower_bound_below_margin"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/MomentSliceCoordinates.lean",
+      "sha256": "6dedec49866970f447ca9267dcc6b910c993efad04b258f4204215372d7424fd",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.spec_chart_eq_fixedSeedDiagonalEntry",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedEvenMomentSeed",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedOddMomentSeed",
+        "Zeta23.OPICARound4.ArithmeticFrontier.mem_fixedEvenMomentSeed_iff",
+        "Zeta23.OPICARound4.ArithmeticFrontier.mem_fixedOddMomentSeed_iff",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenPhysicalMoment_four_of_seed",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddPhysicalMoment_three_of_seed",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddPhysicalMoment_five_of_seed",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedEvenSeedPhysicalEquiv_mem_slice_iff",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedOddSeedPhysicalEquiv_mem_slice_iff",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceSeedEquiv",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceSeedEquiv",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceSeedEquiv_inner",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceSeedEquiv_inner",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceSeedEquiv_norm_sq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceSeedEquiv_norm_sq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_seed_gram",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_seed_gram",
+        "Zeta23.OPICARound4.ArithmeticFrontier.seedCoordinateNormSq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedSeedGram_re_eq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedSeedGram_re_ge",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedSeedGram_re_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_of_coordinate_tolerance",
+        "Zeta23.OPICARound4.ArithmeticFrontier.coordinate_tolerance_of_evenMomentSliceLowerBound",
+        "Zeta23.OPICARound4.ArithmeticFrontier.exists_fixedEvenSeed_sixth_moment_one",
+        "Zeta23.OPICARound4.ArithmeticFrontier.exists_fixedOddSeed_fifth_moment_one",
+        "Zeta23.OPICARound4.ArithmeticFrontier.exists_fixedOddSeed_seventh_moment_one",
+        "Zeta23.OPICARound4.ArithmeticFrontier.finrank_evenMomentSlice",
+        "Zeta23.OPICARound4.ArithmeticFrontier.finrank_oddMomentSlice",
+        "Zeta23.OPICARound4.ArithmeticFrontier.quartic_moment_slices_nontrivial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSlice_eq_bot_of_le_three",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSlice_eq_bot_of_le_four",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_three",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_of_le_four"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentClosure": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/CofinalMomentClosure.lean",
+      "sha256": "b35d134d2034ab94817d6c99ada27cb6aada2c26ac8eaaafef0aad801f6610ae",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_cofinal_moment_slice_bounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.not_cofinal_moment_slice_bounds_of_off_line_zero",
+        "Zeta23.OPICARound4.ArithmeticFrontier.cofinal_moment_slice_bounds_of_even",
+        "Zeta23.OPICARound4.ArithmeticFrontier.cofinal_moment_slice_bounds_of_odd",
+        "Zeta23.OPICARound4.ArithmeticFrontier.cofinal_moment_slice_bounds_of_tendsto"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/SelectedPacketClosure.lean",
+      "sha256": "c07de4d1192ea6cc40bc2df5632302ad04308a6cdec78624fe968d743238a946",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.NativeGroundResponseRestriction",
+        "Zeta23.OPICARound4.ArithmeticFrontier.NativeSpectraDisjoint",
+        "Zeta23.OPICARound4.ArithmeticFrontier.rayleighBottoms_ne_of_spectra_disjoint",
+        "Zeta23.OPICARound4.ArithmeticFrontier.noBothNeg_of_ground_response_and_disjoint_spectra",
+        "Zeta23.OPICARound4.ArithmeticFrontier.packetAperture",
+        "Zeta23.OPICARound4.ArithmeticFrontier.packetAperture_pos",
+        "Zeta23.OPICARound4.ArithmeticFrontier.packetAperture_gt",
+        "Zeta23.OPICARound4.ArithmeticFrontier.packetDetectorCutoff_three_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketGroundRestriction",
+        "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_selected_packet_ground_restriction",
+        "Zeta23.OPICARound4.ArithmeticFrontier.EventualDisjointQuarticGroundRestriction",
+        "Zeta23.OPICARound4.ArithmeticFrontier.selected_packet_ground_restriction_of_eventual_disjoint",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_eventual_disjoint_quartic_ground_restriction",
+        "Zeta23.OPICARound4.ArithmeticFrontier.eventual_disjoint_quartic_ground_restriction_of_ground_closure",
+        "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketWithGroundRestriction",
+        "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_selected_packet_with_ground_restriction"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.PhysicalBlockCertificate": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PhysicalBlockCertificate.lean",
+      "sha256": "d0f06a93976af3e4917150540e2db01a51d5d336a26821cc01d2b2e2494a53fd",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.blockEnergy",
+        "Zeta23.OPICARound4.ArithmeticFrontier.correctedSchurForm",
+        "Zeta23.OPICARound4.ArithmeticFrontier.inverseResidual",
+        "Zeta23.OPICARound4.ArithmeticFrontier.blockEnergy_eq_residual_form",
+        "Zeta23.OPICARound4.ArithmeticFrontier.blockEnergy_nonneg_of_inverse_residual_certificate",
+        "Zeta23.OPICARound4.ArithmeticFrontier.schur_inverse_residual_identity",
+        "Zeta23.OPICARound4.ArithmeticFrontier.blockEnergy_nonneg_of_scalar_gap",
+        "Zeta23.OPICARound4.ArithmeticFrontier.shifted_form_mono"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/SourceColumnCore.lean",
+      "sha256": "8281d11cf915a28272f4300b23b122c5490d55273d22984ea80fe2ee11e0af18",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.CoreLeakageBound",
+        "Zeta23.OPICARound4.ArithmeticFrontier.selfAdjoint_energy_split",
+        "Zeta23.OPICARound4.ArithmeticFrontier.core_shift_certificate",
+        "Zeta23.OPICARound4.ArithmeticFrontier.core_shift_certificate_of_columns",
+        "Zeta23.OPICARound4.ArithmeticFrontier.core_witness_transport"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/Validation/Carriers.lean",
+      "sha256": "370339b028268bc5a4542674cbf292cb29bea1b7e664763770c64bbeead010f1",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.cofinal_moment_closure_consumer",
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.moment_slice_witness_consumer",
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.quartic_slice_dimension_consumer",
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.seed_gram_transport_consumer",
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.disjoint_quartic_ground_consumer",
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.inverse_residual_certificate_consumer",
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.core_shift_consumer"
+      ]
     }
   },
   "retained_support_subset": {
@@ -1668,7 +1849,7 @@
     "semantic_mutations_sha256": "a95ef16e4fdfa6276e1b44b7e3d197fbf63994a17c6e0189f83d746ae11032bd"
   },
   "source_audit_path": "research/RHRC/integration/opica_round4/MADNESS_SOURCE_AUDIT.json",
-  "source_audit_sha256": "b73ea3b09d5db9026def13567391327bdae0c83e2a337fd929644bca2927a67b",
+  "source_audit_sha256": "43da036c9df0497cc6516f22fc740242d5287697afa30213067da8666bcfa328",
   "source_constraints_sha256": "98e942c679344799f748fddb5d0ad6f812527359611d4242a03023e42174101e",
   "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
   "conditional_rh": {
@@ -1679,5 +1860,50 @@
     "premise_proved": false,
     "adapters": "Exact translated actual Weil test and full explicit formula; uniform archimedean correction; reflected prime history vanishes only after support threshold; actual P+T rapid bound; beta=0 two-signed late excursions and nontrivial-zero seam.",
     "source_sha256": "a1c8293c98fd9fe8ad607b264711708f716e877adf36a9f5868d615140a10c56"
+  },
+  "retained_pre_frontier_subset": {
+    "declaration_count": 1079,
+    "module_count": 90,
+    "semantic_mutation_count": 84,
+    "declarations_sha256": "b4b77c8135ec01660329f03c246ca89592871b4ccd30a39926c4e33ed9276779",
+    "modules_sha256": "e11179414a48aa1b0124040c2d67efa38aa8c3bdcd59fe8e195d50fe09cca881",
+    "semantic_mutations_sha256": "5370614cfdc17c2a0c8ea56dafd0ae170a5797b27f4500bca31fa4a9676e78b0"
+  },
+  "arithmetic_frontier": {
+    "status": "OPEN",
+    "combination": "OR",
+    "spec": "research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md",
+    "branches": [
+      {
+        "id": "C1",
+        "premise": "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentSliceVanishingErrorBounds",
+        "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds",
+        "premise_proved": false
+      },
+      {
+        "id": "PACKET",
+        "premise": "Zeta23.OPICARound4.ArithmeticFrontier.EventualDisjointQuarticGroundRestriction",
+        "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_eventual_disjoint_quartic_ground_restriction",
+        "premise_proved": false
+      },
+      {
+        "id": "C2",
+        "premise": "see conditional_rh",
+        "consumer": "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower",
+        "premise_proved": false
+      },
+      {
+        "id": "K3",
+        "premise": "native K3 ordinary-prime remainder bound",
+        "consumer": null,
+        "premise_proved": false
+      },
+      {
+        "id": "CAUSAL",
+        "premise": "source-preserving causal residual tends to zero",
+        "consumer": null,
+        "premise_proved": false
+      }
+    ]
   }
 }

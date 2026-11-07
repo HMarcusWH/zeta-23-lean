@@ -1,0 +1,197 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_MODEL_PRESERVATION_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "repository_pin": {
+    "parent_head": "9c517db0befa1131bb60d37cfef2888ed69447a9",
+    "parent_tree": "6d737c3e3f74a607ae1e1a4b958cc1e2cf9854e9",
+    "branch": "research/madness",
+    "pr": "HMarcusWH/zeta-23-lean#299"
+  },
+  "authority": "FALSIFICATION_REGISTER_NOT_THEOREM_AUTHORITY",
+  "models": [
+    {
+      "id": "MP01",
+      "model": "Scalar shifts preserving relative displacement",
+      "blocked_inference": "Displacement geometry alone fixes the absolute sign",
+      "preserves": [
+        "relative displacement",
+        "eigenvector geometry"
+      ],
+      "changes": [
+        "absolute energy level"
+      ],
+      "preservation_status": "AS_STATED_BY_BUILD_SPEC_AND_CITED_REPORTS_NOT_REAUDITED",
+      "formal_repository_control": null,
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model."
+    },
+    {
+      "id": "MP02",
+      "model": "Low-rank indefinite perturbation preserving a large approximate kernel",
+      "blocked_inference": "Near-nullity or small retained dimension forces positivity",
+      "preserves": [
+        "approximate kernel dimension",
+        "small residual on the kept sector"
+      ],
+      "changes": [
+        "sign on a low-rank complement"
+      ],
+      "preservation_status": "AS_STATED_BY_BUILD_SPEC_AND_CITED_REPORTS_NOT_REAUDITED",
+      "formal_repository_control": null,
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model."
+    },
+    {
+      "id": "MP03",
+      "model": "Off-line quartet versus on-line control",
+      "blocked_inference": "Complex squares can be replaced by absolute squares",
+      "preserves": [
+        "modulus profile"
+      ],
+      "changes": [
+        "phase of the complex square; odd reflection term"
+      ],
+      "preservation_status": "AS_STATED_BY_BUILD_SPEC_AND_CITED_REPORTS_NOT_REAUDITED",
+      "formal_repository_control": null,
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model."
+    },
+    {
+      "id": "MP04",
+      "model": "Positive generalized arithmetic and positive completion",
+      "blocked_inference": "Forward positivity, divisor identities and coarse counting ensure stable inversion",
+      "preserves": [
+        "positivity of forward weights",
+        "divisor-type identities",
+        "coarse counts"
+      ],
+      "changes": [
+        "actual prime distribution; signed cancellation"
+      ],
+      "preservation_status": "AS_STATED_BY_BUILD_SPEC_AND_CITED_REPORTS_NOT_REAUDITED",
+      "formal_repository_control": null,
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model."
+    },
+    {
+      "id": "MP05",
+      "model": "Actual finite staircase truncation with a spurious unstable zero",
+      "blocked_inference": "Finite native cells are automatically stable; the tail may be omitted",
+      "preserves": [
+        "first three exact integer cells"
+      ],
+      "changes": [
+        "complete tail"
+      ],
+      "preservation_status": "AS_STATED_BY_BUILD_SPEC_AND_CITED_REPORTS_NOT_REAUDITED",
+      "formal_repository_control": null,
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model.",
+      "source": "Drive 1_HWmM6rPoVREANL6_dBn7fx87rO7BRuR (Exact Staircase Attack, 2026-11-05)"
+    },
+    {
+      "id": "MP06",
+      "model": "Stationary covariance versus the fixed origin",
+      "blocked_inference": "A phase average is an equality-preserving view of the canonical origin",
+      "preserves": [
+        "averaged covariance"
+      ],
+      "changes": [
+        "fixed integer origin"
+      ],
+      "preservation_status": "AS_STATED_BY_BUILD_SPEC_AND_CITED_REPORTS_NOT_REAUDITED",
+      "formal_repository_control": null,
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model.",
+      "source": "Drive 1B_U8r4iW6KcyvWhCNRGpfgx5zuzDKx92 (Stationary Covariance, 2026-11-06)"
+    },
+    {
+      "id": "MP07",
+      "model": "Native large positive/negative arithmetic sectors",
+      "blocked_inference": "Separate sector control bounds the cancellation-sensitive total",
+      "preserves": [
+        "each sector magnitude"
+      ],
+      "changes": [
+        "their signed recombination"
+      ],
+      "preservation_status": "AS_STATED_BY_BUILD_SPEC_AND_CITED_REPORTS_NOT_REAUDITED",
+      "formal_repository_control": null,
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model."
+    },
+    {
+      "id": "MP08",
+      "model": "Contact and local-extension examples",
+      "blocked_inference": "Finite jets or always-available local steps establish unbounded reach",
+      "preserves": [
+        "contact values and finitely many jets",
+        "local step existence"
+      ],
+      "changes": [
+        "accumulated step size; divergence of total advance"
+      ],
+      "preservation_status": "AS_STATED_BY_BUILD_SPEC_AND_CITED_REPORTS_NOT_REAUDITED",
+      "formal_repository_control": null,
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model."
+    }
+  ],
+  "semantic_controls": [
+    {
+      "id": "FrontierMutation1",
+      "blocks": "Positive trial substituted for an all-vector slice bound",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation2",
+      "blocks": "Smaller cutoff substituted for the literal quartic cutoff",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation3",
+      "blocks": "Vacuous K=3 bound substituted for the nonzero quartic slice",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation4",
+      "blocks": "Slice membership of a trial treated as a ground eigenvector equation",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation5",
+      "blocks": "Even slice bound used for the odd slice",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation6",
+      "blocks": "Coordinate tolerance reported as the same physical tolerance",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation7",
+      "blocks": "Fixed tolerance substituted for vanishing error",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation8",
+      "blocks": "Bounded apertures substituted for apertures escaping to infinity",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation9",
+      "blocks": "Tie exclusion without spectral disjointness",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation10",
+      "blocks": "Packet closure without the ground-response restriction",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation11",
+      "blocks": "Coupled certificate with the inverse residual dropped",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation12",
+      "blocks": "Core margin not strictly better than the physical shift",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    }
+  ],
+  "distinction": "Mathematical countermodels test an inference in a stated scope. Semantic controls only show that one API substitution is rejected by the type checker; they are not counterexamples to every theorem connecting the objects.",
+  "mandatory_use": "Every candidate supplier in EXPERIMENTS.json must state which models it survives before formalization begins."
+}

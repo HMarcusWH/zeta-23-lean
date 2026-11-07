@@ -704,14 +704,14 @@
   "madness_extension": {
     "register": "MADNESS_CONTRACTS.json",
     "source_audit": "MADNESS_SOURCE_AUDIT.json",
-    "modules": 42,
-    "added_declarations": 579,
-    "gate_total_modules": 90,
-    "gate_total_declarations": 1079,
+    "modules": 49,
+    "added_declarations": 676,
+    "gate_total_modules": 97,
+    "gate_total_declarations": 1176,
     "retained_modules": 48,
     "retained_declarations": 500,
     "retained_semantic_mutations": 17,
-    "semantic_mutations": 84,
+    "semantic_mutations": 96,
     "new_unconditional_estimate": "The normalized short hyperbola term and the prime-field plus long-term remainder have every fixed exponential decay rate.",
     "closing_arithmetic_estimate": "OPEN",
     "production_qualification": "CURRENT_HEAD_FULL_NATIVE_SUPPORT_AND_INDEPENDENT_ACCEPTANCE_REQUIRED",
@@ -728,6 +728,12 @@
     "joint_ground_extension": "Exact common-quartic eventual negativity and same-packet joint ground; own-newborn simplicity and full-complement gap; tied-source moment sign and whole odd-kernel visibility. No independent closing bound.",
     "native_regular_ground_extension": "Same-source tied response and cubic/silent moment restrictions; actual native determinant regularity on selected cofinal apertures; regular own-newborn realization. Negative ties and independent signed arithmetic opposition remain OPEN.",
     "native_full_spectrum_extension": "Actual-prime full source separation; a genuine deep packet with the same detector cutoff and regular disjoint full spectra; complete source visibility. Independent quantitative arithmetic opposition remains OPEN.",
-    "uniform_moment_margin_extension": "Assuming an actual off-line zeta zero, one fixed positive relative margin holds on the entire sufficiently late aperture tail at the prescribed original quartic cutoff. The literal even trial has M4=0; the literal odd trial has M3=M5=0. No trial is projected or replaced by a ground eigenvector. The exact normalization and source placement are retained. No margin is transferred to a first-birth or selected Schur cutoff, and no independent arithmetic lower bound is supplied."
+    "uniform_moment_margin_extension": "Assuming an actual off-line zeta zero, one fixed positive relative margin holds on the entire sufficiently late aperture tail at the prescribed original quartic cutoff. The literal even trial has M4=0; the literal odd trial has M3=M5=0. No trial is projected or replaced by a ground eigenvector. The exact normalization and source placement are retained. No margin is transferred to a first-birth or selected Schur cutoff, and no independent arithmetic lower bound is supplied.",
+    "retained_pre_frontier": {
+      "declarations": 1079,
+      "modules": 90,
+      "semantic_mutations": 84
+    },
+    "arithmetic_frontier_extension": "Exact moment slices with Gram transport and dimensions; (C1) and narrow selected-packet consumers to Mathlib RiemannHypothesis; inverse-residual block and source-core finite consumers with witness transport. Every closing premise remains OPEN; no arithmetic sign is supplied."
   }
 }

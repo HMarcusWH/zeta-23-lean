@@ -74,3 +74,10 @@ import Zeta23.OPICARound4.SeparatedSourceVisibility
 import Zeta23.OPICARound4.RegularCells.PacketRegularSelection
 import Zeta23.OPICARound4.RegularCells.PacketNoncollisionSelection
 import Zeta23.OPICARound4.RegularCells.PacketSpectralSelection
+
+import Zeta23.OPICARound4.ArithmeticFrontier.MomentSlices
+import Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates
+import Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentClosure
+import Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure
+import Zeta23.OPICARound4.ArithmeticFrontier.PhysicalBlockCertificate
+import Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore

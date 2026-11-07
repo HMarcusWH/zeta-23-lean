@@ -342,3 +342,32 @@ The fixed original phases now have a uniform finite-mass comparison with the exa
 This strengthens the earlier unnormalized two-parity negativity. It does not transfer the margin to a first-birth cutoff or to the packet's selected Schur cutoff. It also does not supply the independent signed arithmetic estimate. RH and Step 4 remain OPEN.
 
 The extension adds eleven mathematical declarations and two complete-type consumers in existing modules, plus four intended source-type controls. The complete gate is 1079 declarations in 90 modules with 84 controls; the 277-method register remains 231 portable and 46 mandatory native methods. Current-head independent native and final acceptance evidence is still required.
+
+
+## Arithmetic frontier, Increment 1 (7 November 2026)
+
+At the maintainer's explicit instruction, research resumed from the published
+handover. The [build specification](arithmetic_frontier/BUILD_SPEC.md) narrows the
+closing targets and binds them to the exact native objects. Seven modules under
+`Zeta23/OPICARound4/ArithmeticFrontier/` (contracts M43–M49) add 97 declarations.
+
+The even moment slice is the actual even pole-neutral carrier with physical
+`M4 = 0`; the odd slice has `M3 = M5 = 0`. The existing seed chart identifies
+them with `{M0=M2=M4=M6=0}` and `{M1=M3=M5=M7=0}`, with the full Gram `D²` as the
+only admissible metric. Their dimensions are exactly `K-3` and `K-4`; both vanish
+at `K = 3`, where a slice bound holds for every tolerance, and are at least 13 and
+12 at the literal quartic cutoff.
+
+`riemannHypothesis_of_cofinal_moment_slice_bounds` proves that cofinal
+vanishing-error bounds on one parity's whole slice (C1) contradict the fixed
+off-line-zero margin at the same state. The selected-packet consumer uses the
+packet's full spectral disjointness to exclude every Rayleigh-bottom tie, so only
+the two exact ground-response tests remain. Finite consumers prove soundness of
+the complete inverse-residual block certificate and of the source-core reduction,
+and transport a negative witness to its projected core with margin `d - 3η`.
+
+These are reductions and sound consumers. **No arithmetic sign is supplied; every
+closing premise, RH and Step 4 remain OPEN.** The gate is now 1176 declarations
+in 97 modules with 96 controls; the preceding 1079/90/84 scope is hash-bound and
+mandatory. Local evidence is a pinned Linux compile and audit; current-head
+production qualification is still required.

@@ -2005,7 +2005,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_round4/MADNESS.md",
-      "heading_count": 10,
+      "heading_count": 11,
       "path": "research/RHRC/integration/opica_round4/MADNESS.md",
       "route_mentions": []
     },
@@ -2027,6 +2027,106 @@
       "file_id": "rh:file:research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.md",
       "heading_count": 4,
       "path": "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/BUDGET_SCHEMA.json",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/BUDGET_SCHEMA.json",
+      "heading_count": 0,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/BUDGET_SCHEMA.json",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/CANDIDATE_RESULTS.jsonl",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CANDIDATE_RESULTS.jsonl",
+      "heading_count": 0,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/CANDIDATE_RESULTS.jsonl",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+      "heading_count": 0,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/EXPERIMENTS.json",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/EXPERIMENTS.json",
+      "heading_count": 0,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/EXPERIMENTS.json",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/MODEL_PRESERVATION.json",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/MODEL_PRESERVATION.json",
+      "heading_count": 0,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/MODEL_PRESERVATION.json",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+      "heading_count": 0,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/SOURCE_LEDGER.json",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/SOURCE_LEDGER.json",
+      "heading_count": 0,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/SOURCE_LEDGER.json",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/STATE_SCHEMA.json",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/STATE_SCHEMA.json",
+      "heading_count": 0,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/STATE_SCHEMA.json",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/WORKFLOW_HARVEST.json",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/WORKFLOW_HARVEST.json",
+      "heading_count": 0,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/WORKFLOW_HARVEST.json",
       "route_mentions": []
     },
     {
@@ -4201,7 +4301,7 @@
       ]
     }
   ],
-  "entry_count": 398,
+  "entry_count": 408,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

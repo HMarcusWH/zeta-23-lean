@@ -3,6 +3,8 @@
 **2 November 2026 — PR #299 research handover:** [Start here](research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md). The complete archived progress, negative results, external proof sources and reading map are published for the requested research break. RH and Step 4 remain OPEN. Older snapshots below retain their historical scope.
 
 
+**7 November 2026 — arithmetic frontier, Increment 1:** [build specification](research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md). Exact moment-slice carriers and conditional consumers; no arithmetic sign is supplied.
+
 **The Riemann Hypothesis (RH) and this programme's Step 4 remain OPEN.**
 This repository contains Lean proofs, conditional reductions, counterexamples,
 finite experiments and research infrastructure. Each answers a different question.

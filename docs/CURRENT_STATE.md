@@ -1,5 +1,7 @@
 # Dated source and navigation snapshot — 30 October 2026
 
+**Arithmetic frontier — 7 November 2026:** Increment 1 on PR #299 adds exact moment-slice carriers, conditional (C1) and selected-packet consumers and finite certificate consumers; see the [build specification](../research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md). RH and Step 4 remain OPEN.
+
 **Superseding research handover — 2 November 2026:** current work is [PR #299, Madness?](https://github.com/HMarcusWH/zeta-23-lean/pull/299). See the [published handover](../research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md). The 30 October snapshot below is preserved as history.
 
 

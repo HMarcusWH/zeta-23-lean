@@ -3551,15 +3551,22 @@
       "Zeta23.OPICARound4.RegularCells.PacketRegularSelection",
       "Zeta23.OPICARound4.RegularCells.PacketNoncollisionSelection",
       "Zeta23.OPICARound4.RegularCells.PacketSpectralSelection",
-      "Zeta23.OPICARound4.Validation.NativeNoncollision"
+      "Zeta23.OPICARound4.Validation.NativeNoncollision",
+      "Zeta23.OPICARound4.ArithmeticFrontier.MomentSlices",
+      "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates",
+      "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentClosure",
+      "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure",
+      "Zeta23.OPICARound4.ArithmeticFrontier.PhysicalBlockCertificate",
+      "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore",
+      "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers"
     ],
     "native_gate": "MATHEMATICAL_SUPPORT",
     "retained_declarations": 500,
     "retained_modules": 48,
     "retained_semantic_mutations": 17,
-    "added_declarations": 579,
-    "added_semantic_mutations": 67,
-    "current_semantic_mutations": 84,
+    "added_declarations": 676,
+    "added_semantic_mutations": 79,
+    "current_semantic_mutations": 96,
     "full_types_and_axioms_required": true,
     "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
     "RH": "OPEN",
@@ -3567,6 +3574,12 @@
     "joint_ground_extension": "Exact common-quartic eventual negativity and same-packet joint ground; own-newborn simplicity and full-complement gap; tied-source moment sign and whole odd-kernel visibility. No independent closing bound.",
     "native_regular_ground_extension": "Same-source tied response and cubic/silent moment restrictions; actual native determinant regularity on selected cofinal apertures; regular own-newborn realization. Negative ties and independent signed arithmetic opposition remain OPEN.",
     "native_full_spectrum_extension": "Actual-prime full source separation; a genuine deep packet with the same detector cutoff and regular disjoint full spectra; complete source visibility. Independent quantitative arithmetic opposition remains OPEN.",
-    "uniform_moment_margin_extension": "Assuming an actual off-line zeta zero, one fixed positive relative margin holds on the entire sufficiently late aperture tail at the prescribed original quartic cutoff. The literal even trial has M4=0; the literal odd trial has M3=M5=0. No trial is projected or replaced by a ground eigenvector. The exact normalization and source placement are retained. No margin is transferred to a first-birth or selected Schur cutoff, and no independent arithmetic lower bound is supplied."
+    "uniform_moment_margin_extension": "Assuming an actual off-line zeta zero, one fixed positive relative margin holds on the entire sufficiently late aperture tail at the prescribed original quartic cutoff. The literal even trial has M4=0; the literal odd trial has M3=M5=0. No trial is projected or replaced by a ground eigenvector. The exact normalization and source placement are retained. No margin is transferred to a first-birth or selected Schur cutoff, and no independent arithmetic lower bound is supplied.",
+    "retained_pre_frontier": {
+      "declarations": 1079,
+      "modules": 90,
+      "semantic_mutations": 84
+    },
+    "arithmetic_frontier_extension": "Exact moment slices with Gram transport and dimensions; (C1) and narrow selected-packet consumers to Mathlib RiemannHypothesis; inverse-residual block and source-core finite consumers with witness transport. Every closing premise remains OPEN; no arithmetic sign is supplied."
   }
 }

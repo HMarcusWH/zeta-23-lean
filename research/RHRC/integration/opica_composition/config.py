@@ -8,7 +8,8 @@ from .testing import checked_inventory
 from ..opica_round4.math_gate import (EXPECTED_DECLARATIONS, BASELINE_EXPECTED_DECLARATIONS,
     BASELINE_MODULES, BASELINE_DECLARATION_COUNT, BASELINE_MODULE_COUNT,
     retained_support_scope, SOURCE_CONSTRAINT_MODULES, public_declarations,
-    retained_pre_madness_scope, MADNESS_MODULES, MADNESS_DECLARATIONS)
+    retained_pre_madness_scope, MADNESS_MODULES, MADNESS_DECLARATIONS,
+    retained_pre_frontier_scope)
 
 def check_source_constraints(repo):
     repo=Path(repo);r4=repo/'research/RHRC/integration/opica_round4'
@@ -42,7 +43,7 @@ def check_madness_contracts(repo):
             ledger['claim_cap']=='SUPPORT_ONLY_RH_AND_STEP4_OPEN' and
             ledger['RH']==ledger['Step4']=='OPEN' and
             ledger['closing_arithmetic']['status']=='OPEN' and
-            [r['id'] for r in ledger['contracts']]==['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12','M13','M14','M15','M16','M17','M18','M19','M20','M21','M22','M23','M24','M25','M26','M27','M28','M29','M30','M31','M32','M33','M34','M35','M36','M37','M38','M39','M40','M41','M42'] and
+            [r['id'] for r in ledger['contracts']]==['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12','M13','M14','M15','M16','M17','M18','M19','M20','M21','M22','M23','M24','M25','M26','M27','M28','M29','M30','M31','M32','M33','M34','M35','M36','M37','M38','M39','M40','M41','M42','M43','M44','M45','M46','M47','M48','M49'] and
             all(r['arithmetic_estimate_supplied'] is False for r in ledger['contracts']),
             'Madness claim authority differs')
     require(set(ledger['current_modules'])==set(MADNESS_MODULES), 'Exact Madness module inventory differs')
@@ -64,6 +65,15 @@ def check_madness_contracts(repo):
     require(ledger['retained_support_subset']==scope, 'Madness retained support differs')
     root_doc=load_bytes((r4/'ROOTS.json').read_bytes())
     require(all(root_doc['pre_madness_subset'].get(k)==v for k,v in scope.items()), 'Retained 500/48 ROOTS register differs')
+    frontier_scope=retained_pre_frontier_scope()
+    require(ledger.get('retained_pre_frontier_subset')==frontier_scope and
+            all(root_doc['pre_frontier_subset'].get(k)==v for k,v in frontier_scope.items()),
+            'Retained 1079/90/84 pre-frontier register differs')
+    frontier=ledger['arithmetic_frontier']
+    require(frontier['status']=='OPEN' and frontier['combination']=='OR' and
+            [b['id'] for b in frontier['branches']]==['C1','PACKET','C2','K3','CAUSAL'] and
+            all(b['premise_proved'] is False for b in frontier['branches']),
+            'Arithmetic-frontier branch escalated or changed')
     return {'status':'PASS_SOURCE_BINDINGS_ONLY','RH':'OPEN','Step4':'OPEN'}
 
 
