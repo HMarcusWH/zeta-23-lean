@@ -79,6 +79,12 @@
       "statement": "Constructive certificate production with apertures escaping every bounded interval and physical errors tending to zero; cofinal_moment_slice_bounds_of_tendsto is its consumer.",
       "status": "OPEN",
       "finite_progress": "Checkpoints n = 2, 3, 4 certified at L = 4, 5, 6 (evidence/increment2); a constructive all-n production remains OPEN."
+    },
+    {
+      "id": "S-POLE",
+      "statement": "Pole-channel annihilation and Q = -arch - prime on both pole-neutral carriers and moment slices (CR17, M50).",
+      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "note": "Dependency compression only; the sign of -arch - prime is the OPEN closing content."
     }
   ],
   "rule": "A leaf moves only when an exact theorem with no undispatched RH-strength premise passes current-head formal and claim gates."

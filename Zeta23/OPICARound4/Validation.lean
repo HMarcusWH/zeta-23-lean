@@ -5610,3 +5610,53 @@ set_option pp.maxSteps 2000000
 #check @Zeta23.OPICARound4.ArithmeticFrontier.Validation.core_shift_consumer
 #eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.Validation.core_shift_consumer"
 #print axioms Zeta23.OPICARound4.ArithmeticFrontier.Validation.core_shift_consumer
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.poleEvenProfile_dot_oddBoundaryFlat_eq_zero"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.poleEvenProfile_dot_oddBoundaryFlat_eq_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.poleEvenProfile_dot_oddBoundaryFlat_eq_zero"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.poleEvenProfile_dot_oddBoundaryFlat_eq_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.canonicalPoleMatrix_mulVec_poleNeutralOdd_eq_zero"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.canonicalPoleMatrix_mulVec_poleNeutralOdd_eq_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.canonicalPoleMatrix_mulVec_poleNeutralOdd_eq_zero"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.canonicalPoleMatrix_mulVec_poleNeutralOdd_eq_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_toEuclideanLin_even_eq_zero"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_toEuclideanLin_even_eq_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_toEuclideanLin_even_eq_zero"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_toEuclideanLin_even_eq_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_toEuclideanLin_odd_eq_zero"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_toEuclideanLin_odd_eq_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_toEuclideanLin_odd_eq_zero"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_toEuclideanLin_odd_eq_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_inner_even_eq_zero"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_inner_even_eq_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_inner_even_eq_zero"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_inner_even_eq_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_inner_odd_eq_zero"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_inner_odd_eq_zero
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_inner_odd_eq_zero"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_inner_odd_eq_zero
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.evenNativeEnergy_eq_neg_arch_sub_prime"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.evenNativeEnergy_eq_neg_arch_sub_prime
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.evenNativeEnergy_eq_neg_arch_sub_prime"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.evenNativeEnergy_eq_neg_arch_sub_prime
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.oddNativeEnergy_eq_neg_arch_sub_prime"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.oddNativeEnergy_eq_neg_arch_sub_prime
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.oddNativeEnergy_eq_neg_arch_sub_prime"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.oddNativeEnergy_eq_neg_arch_sub_prime
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_arch_prime"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_arch_prime
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_arch_prime"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_arch_prime
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime

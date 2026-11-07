@@ -707,7 +707,7 @@
     "modules": 49,
     "added_declarations": 676,
     "gate_total_modules": 97,
-    "gate_total_declarations": 1176,
+    "gate_total_declarations": 1186,
     "retained_modules": 48,
     "retained_declarations": 500,
     "retained_semantic_mutations": 17,

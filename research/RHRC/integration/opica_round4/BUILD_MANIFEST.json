@@ -130,7 +130,7 @@
     },
     {
       "id": "opica_round4_lean_math",
-      "pattern": "\\A(?:Zeta23/OPICARound4\\.lean|Zeta23/OPICARound4/AbsoluteAnchor\\.lean|Zeta23/OPICARound4/AdaptiveBudget\\.lean|Zeta23/OPICARound4/ClosureConsumers\\.lean|Zeta23/OPICARound4/IntegrationTargets\\.lean|Zeta23/OPICARound4/NativeConcentrationBudget\\.lean|Zeta23/OPICARound4/NativeJointIndex\\.lean|Zeta23/OPICARound4/NativeObservation\\.lean|Zeta23/OPICARound4/NativeRayConsumer\\.lean|Zeta23/OPICARound4/NativeSourceBudget\\.lean|Zeta23/OPICARound4/NativeSpectralMeasure\\.lean|Zeta23/OPICARound4/NativeVisibility\\.lean|Zeta23/OPICARound4/NativeWitnessCosts\\.lean|Zeta23/OPICARound4/NegativeIndex\\.lean|Zeta23/OPICARound4/NeutralContactPencil\\.lean|Zeta23/OPICARound4/OddReciprocalSource\\.lean|Zeta23/OPICARound4/OperatorSignedBound\\.lean|Zeta23/OPICARound4/PrimeDiscrepancyIntegral\\.lean|Zeta23/OPICARound4/RegularCells/FixedSeed\\.lean|Zeta23/OPICARound4/RegularCells/SourceSupport\\.lean|Zeta23/OPICARound4/ScalarShift\\.lean|Zeta23/OPICARound4/SearchSupport\\.lean|Zeta23/OPICARound4/SignedNormBound\\.lean|Zeta23/OPICARound4/SignedPickKernel\\.lean|Zeta23/OPICARound4/SignedSpectral\\.lean|Zeta23/OPICARound4/SourceDictionaryCrosswalk\\.lean|Zeta23/OPICARound4/SourceDiscrepancy\\.lean|Zeta23/OPICARound4/SourceExchangeConcentration\\.lean|Zeta23/OPICARound4/SourceRow\\.lean|Zeta23/OPICARound4/TraceMetric\\.lean|Zeta23/OPICARound4/VisibilityRigidity\\.lean|Zeta23/OPICARound4/WitnessNorms\\.lean|Zeta23/OPICARound4/GroundArithmetic\\.lean|Zeta23/OPICARound4/JointGroundConstraints\\.lean|Zeta23/OPICARound4/SmoothForcing\\.lean|Zeta23/OPICARound4/SchurErrorTransport\\.lean|Zeta23/OPICARound4/QuarticErrorReduction\\.lean|Zeta23/OPICARound4/MobiusHyperbola\\.lean|Zeta23/OPICARound4/ActualSourceHyperbola\\.lean|Zeta23/OPICARound4/HyperbolaDiagonal\\.lean|Zeta23/OPICARound4/CommonQuarticGround\\.lean|Zeta23/OPICARound4/JointGroundBirth\\.lean|Zeta23/OPICARound4/TiedNewbornResponse\\.lean|Zeta23/OPICARound4/NewbornSpectralVisibility\\.lean|Zeta23/OPICARound4/TiedCubicEnergy\\.lean|Zeta23/OPICARound4/TiedSilentMoment\\.lean|Zeta23/OPICARound4/RegularCells/AnalyticFiniteSelector\\.lean|Zeta23/OPICARound4/RegularCells/NativeZeroRegularity\\.lean|Zeta23/OPICARound4/RegularCells/NativeRegularBirthSelection\\.lean|Zeta23/OPICARound4/RegularCells/NativeDiagonalSeparation\\.lean|Zeta23/OPICARound4/RegularCells/NativeCompressionSeparation\\.lean|Zeta23/OPICARound4/RegularCells/SylvesterSeparation\\.lean|Zeta23/OPICARound4/RegularCells/MeromorphicFrequencyIndependence\\.lean|Zeta23/OPICARound4/RegularCells/PrimeLaurentNonidentity\\.lean|Zeta23/OPICARound4/RegularCells/FinitePrimeLaurentAlgebra\\.lean|Zeta23/OPICARound4/RegularCells/PrimeSourceLaurent\\.lean|Zeta23/OPICARound4/RegularCells/NativeZeroFrame\\.lean|Zeta23/OPICARound4/RegularCells/NativeCosineSeparation\\.lean|Zeta23/OPICARound4/RegularCells/FrozenSourceContinuation\\.lean|Zeta23/OPICARound4/NewbornCubicEnergyBound\\.lean|Zeta23/OPICARound4/RegularCells/NativePrimeIsolation\\.lean|Zeta23/OPICARound4/RegularCells/NativePrimeExpansion\\.lean|Zeta23/OPICARound4/RegularCells/NativePrimeGerms\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityPencils\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityZeroPencils\\.lean|Zeta23/OPICARound4/RegularCells/MatrixSylvesterCoordinates\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityMatrixPencils\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityPhysicalSeparation\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityPrimeAnchor\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityNonidentity\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityRegularSelection\\.lean|Zeta23/OPICARound4/SeparatedSourceVisibility\\.lean|Zeta23/OPICARound4/RegularCells/PacketRegularSelection\\.lean|Zeta23/OPICARound4/RegularCells/PacketNoncollisionSelection\\.lean|Zeta23/OPICARound4/RegularCells/PacketSpectralSelection\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/MomentSlices\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/MomentSliceCoordinates\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/CofinalMomentClosure\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/SelectedPacketClosure\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/PhysicalBlockCertificate\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/SourceColumnCore\\.lean)\\Z",
+      "pattern": "\\A(?:Zeta23/OPICARound4\\.lean|Zeta23/OPICARound4/AbsoluteAnchor\\.lean|Zeta23/OPICARound4/AdaptiveBudget\\.lean|Zeta23/OPICARound4/ClosureConsumers\\.lean|Zeta23/OPICARound4/IntegrationTargets\\.lean|Zeta23/OPICARound4/NativeConcentrationBudget\\.lean|Zeta23/OPICARound4/NativeJointIndex\\.lean|Zeta23/OPICARound4/NativeObservation\\.lean|Zeta23/OPICARound4/NativeRayConsumer\\.lean|Zeta23/OPICARound4/NativeSourceBudget\\.lean|Zeta23/OPICARound4/NativeSpectralMeasure\\.lean|Zeta23/OPICARound4/NativeVisibility\\.lean|Zeta23/OPICARound4/NativeWitnessCosts\\.lean|Zeta23/OPICARound4/NegativeIndex\\.lean|Zeta23/OPICARound4/NeutralContactPencil\\.lean|Zeta23/OPICARound4/OddReciprocalSource\\.lean|Zeta23/OPICARound4/OperatorSignedBound\\.lean|Zeta23/OPICARound4/PrimeDiscrepancyIntegral\\.lean|Zeta23/OPICARound4/RegularCells/FixedSeed\\.lean|Zeta23/OPICARound4/RegularCells/SourceSupport\\.lean|Zeta23/OPICARound4/ScalarShift\\.lean|Zeta23/OPICARound4/SearchSupport\\.lean|Zeta23/OPICARound4/SignedNormBound\\.lean|Zeta23/OPICARound4/SignedPickKernel\\.lean|Zeta23/OPICARound4/SignedSpectral\\.lean|Zeta23/OPICARound4/SourceDictionaryCrosswalk\\.lean|Zeta23/OPICARound4/SourceDiscrepancy\\.lean|Zeta23/OPICARound4/SourceExchangeConcentration\\.lean|Zeta23/OPICARound4/SourceRow\\.lean|Zeta23/OPICARound4/TraceMetric\\.lean|Zeta23/OPICARound4/VisibilityRigidity\\.lean|Zeta23/OPICARound4/WitnessNorms\\.lean|Zeta23/OPICARound4/GroundArithmetic\\.lean|Zeta23/OPICARound4/JointGroundConstraints\\.lean|Zeta23/OPICARound4/SmoothForcing\\.lean|Zeta23/OPICARound4/SchurErrorTransport\\.lean|Zeta23/OPICARound4/QuarticErrorReduction\\.lean|Zeta23/OPICARound4/MobiusHyperbola\\.lean|Zeta23/OPICARound4/ActualSourceHyperbola\\.lean|Zeta23/OPICARound4/HyperbolaDiagonal\\.lean|Zeta23/OPICARound4/CommonQuarticGround\\.lean|Zeta23/OPICARound4/JointGroundBirth\\.lean|Zeta23/OPICARound4/TiedNewbornResponse\\.lean|Zeta23/OPICARound4/NewbornSpectralVisibility\\.lean|Zeta23/OPICARound4/TiedCubicEnergy\\.lean|Zeta23/OPICARound4/TiedSilentMoment\\.lean|Zeta23/OPICARound4/RegularCells/AnalyticFiniteSelector\\.lean|Zeta23/OPICARound4/RegularCells/NativeZeroRegularity\\.lean|Zeta23/OPICARound4/RegularCells/NativeRegularBirthSelection\\.lean|Zeta23/OPICARound4/RegularCells/NativeDiagonalSeparation\\.lean|Zeta23/OPICARound4/RegularCells/NativeCompressionSeparation\\.lean|Zeta23/OPICARound4/RegularCells/SylvesterSeparation\\.lean|Zeta23/OPICARound4/RegularCells/MeromorphicFrequencyIndependence\\.lean|Zeta23/OPICARound4/RegularCells/PrimeLaurentNonidentity\\.lean|Zeta23/OPICARound4/RegularCells/FinitePrimeLaurentAlgebra\\.lean|Zeta23/OPICARound4/RegularCells/PrimeSourceLaurent\\.lean|Zeta23/OPICARound4/RegularCells/NativeZeroFrame\\.lean|Zeta23/OPICARound4/RegularCells/NativeCosineSeparation\\.lean|Zeta23/OPICARound4/RegularCells/FrozenSourceContinuation\\.lean|Zeta23/OPICARound4/NewbornCubicEnergyBound\\.lean|Zeta23/OPICARound4/RegularCells/NativePrimeIsolation\\.lean|Zeta23/OPICARound4/RegularCells/NativePrimeExpansion\\.lean|Zeta23/OPICARound4/RegularCells/NativePrimeGerms\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityPencils\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityZeroPencils\\.lean|Zeta23/OPICARound4/RegularCells/MatrixSylvesterCoordinates\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityMatrixPencils\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityPhysicalSeparation\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityPrimeAnchor\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityNonidentity\\.lean|Zeta23/OPICARound4/RegularCells/NativeParityRegularSelection\\.lean|Zeta23/OPICARound4/SeparatedSourceVisibility\\.lean|Zeta23/OPICARound4/RegularCells/PacketRegularSelection\\.lean|Zeta23/OPICARound4/RegularCells/PacketNoncollisionSelection\\.lean|Zeta23/OPICARound4/RegularCells/PacketSpectralSelection\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/MomentSlices\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/MomentSliceCoordinates\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/CofinalMomentClosure\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/SelectedPacketClosure\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/PhysicalBlockCertificate\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/SourceColumnCore\\.lean|Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel\\.lean)\\Z",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
@@ -241,7 +241,8 @@
     "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
     "Zeta23.OPICARound4.ArithmeticFrontier.PhysicalBlockCertificate": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
     "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
-    "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET"
+    "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel": "OPICA4_SOURCE_FAITHFUL_SUPPORT"
   },
   "add": [
     {
@@ -258,7 +259,7 @@
     },
     {
       "path": "Zeta23/OPICARound4.lean",
-      "sha256": "998585e8840070aed907663b0b09ee6753aaca6a62c805abbae1fdef67895914"
+      "sha256": "fc3448052643089ac23e05fa2b02e4de5ca85f4d9a8232bcd4a7bc713e00729c"
     },
     {
       "path": "Zeta23/OPICARound4/AbsoluteAnchor.lean",
@@ -550,7 +551,7 @@
     },
     {
       "path": "Zeta23/OPICARound4/Validation.lean",
-      "sha256": "a631e8e9c08a075edce96a853dccde5480105ac152bf137922d96c215ddcbb09"
+      "sha256": "f46f4254e60c054e4232d676f3e4d295576e1accc6b7b95caec051a3e1820337"
     },
     {
       "path": "Zeta23/OPICARound4/Validation/DetectorErrors.lean",
@@ -750,7 +751,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/config.py",
-      "sha256": "f3d059a200d95a7b985783d5c6997f4b4a2c0ac63c2cfa8e8407b6762aebc1ff"
+      "sha256": "b171add6cc9a7a4dd6f713647d6e5e281f2ed55f341dc7e7267316d7e1d0d729"
     },
     {
       "path": "research/RHRC/integration/opica_composition/contracts.py",
@@ -762,7 +763,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/descendant.py",
-      "sha256": "090e89ac399eb2b7c9d0241be27c2713442c45d4b57c161e3c964778e028d2d1"
+      "sha256": "3e2afd31ccdb95a06ae5be7955fa992b22345870185264083270b90be22f0117"
     },
     {
       "path": "research/RHRC/integration/opica_composition/evidence.py",
@@ -846,7 +847,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_cli.py",
-      "sha256": "ce183ac570c2cbbbed01b3a75213a63ee489a6180c4b3de7fe948fa783d7e0f5"
+      "sha256": "b60dac80223bc228f1d6fcbbbaff913e860e7b0a4541ee34365c07ada1c78d6d"
     },
     {
       "path": "research/RHRC/integration/opica_composition/tests/test_closure.py",
@@ -922,7 +923,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/ACCEPTANCE_MATRIX.json",
-      "sha256": "8c85cc1e14f831ec6ecf1981ed76abd4ab16bac46e178dd1fd620c1d918deaa0"
+      "sha256": "d98cbde2ee88e2ef931dbeb1261075c95e87c82b3ee8fd93afdf63014dce1239"
     },
     {
       "path": "research/RHRC/integration/opica_round4/BASELINE_ACCEPTANCE_MATRIX.json",
@@ -974,11 +975,11 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/MADNESS.md",
-      "sha256": "6fa0dc821fae94ea3e8b335f7bfb2b04725f7e4421c6759381d9b9cca70bcf92"
+      "sha256": "e3ecdef00be34421f2b2d5a2a3de7e4260b01d3258c2aa4f3f15470f60aadfd7"
     },
     {
       "path": "research/RHRC/integration/opica_round4/MADNESS_CONTRACTS.json",
-      "sha256": "6c7947c1e3ab9f5f1a32192d693a5434246bb67fa490414edbb2e9767d770d25"
+      "sha256": "2e1f62b68844dc9a03b8bfc2dd592cc03ee31b0395fa437a67be1a7487421ae9"
     },
     {
       "path": "research/RHRC/integration/opica_round4/MADNESS_SOURCE_AUDIT.json",
@@ -986,7 +987,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/MATH_CONTRACTS.json",
-      "sha256": "a80fc0b0ee97b432e059a93e692d97be5ba478197b44629a019c700fa17a9980"
+      "sha256": "9023639397a29b999546a7294000ad80f555e38b0acb9b67286503c0200f870d"
     },
     {
       "path": "research/RHRC/integration/opica_round4/POST_GREEN_RESEARCH.json",
@@ -1006,7 +1007,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/ROOTS.json",
-      "sha256": "317c057e402b14e9932fd05664bea25fa7abf5d42735d1d2e1818a63414d59cd"
+      "sha256": "6b27cfddfe8730d05b3a56ff51dfc535ff10f84a351f8f5c79d4309800c81c69"
     },
     {
       "path": "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.json",
@@ -1034,7 +1035,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/math_gate.py",
-      "sha256": "6975d5392d8395dc4b102e01be8c49f357894f5a07035d28b56d649301bd490a"
+      "sha256": "1dd56cbebada9513cce22c0036e28bac902a61085cd74d351a1b4f1cf2daf01f"
     },
     {
       "path": "research/RHRC/integration/opica_round4/schemas/source_evaluator.schema.json",
@@ -1638,15 +1639,15 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md",
-      "sha256": "6a758fd4be472e157f258682f2594d35bd13616dbad1e1e795fb6a75e740246e"
+      "sha256": "db538e21405bb1c28e3d167bbb0440cbd89cf2b3b704408dc8a578b189966e04"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/CANDIDATE_RESULTS.jsonl",
-      "sha256": "cabae86bca766a286f37e7be94a379138d3017f3e6588caa2d7eab5ca6d43c2a"
+      "sha256": "35241420e04a3c60c588c8b3caa9bc9ecd90fa28035660dbb61953b242f5040e"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
-      "sha256": "274b87ebd603c20ece87973308b8cdb25129e83ba51f2d077a71cff73e5c8c58"
+      "sha256": "70074824d7528a55eb3036db7b41202455ec7d51228432ec9bd312903762d9f3"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/EXPERIMENTS.json",
@@ -1658,7 +1659,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
-      "sha256": "9a60c645fb5648c8d7ae15fceea245e921d02f1c84f5871bd25bacdaf43ee0ae"
+      "sha256": "279fd72b7ec82f2ee13dd002a3f0e458ef5d0bf148116f28d10ae38dc7b77659"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/SOURCE_LEDGER.json",
@@ -1815,6 +1816,10 @@
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/producer/nullcount_scan.py",
       "sha256": "036013ae2dbd01b13360b1de7ed888010a2d39150bf0e540f561531d9f4886f7"
+    },
+    {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "sha256": "4f602dabceb5e3abb32ae2e49e99b0102b17290731160aefce9ab73b4ef79927"
     }
   ],
   "edit": [
@@ -1868,7 +1873,7 @@
     },
     {
       "path": "research/RHRC/graph/FILE_CLASSES.json",
-      "sha256": "9bfd0c7883df4eef46f879da476c4eaffa376b6bf0b0b3a9791177359c77a55e"
+      "sha256": "16e33b2cc598af325f1fe63c641102b6c371ec459e54e5fdf0dcd191688946f3"
     },
     {
       "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
@@ -1880,7 +1885,7 @@
     },
     {
       "path": "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json",
-      "sha256": "c2da4878cf1cdfac4a2c8b6838b74a0bddd671ee01f28c9baf15806c66a057ae"
+      "sha256": "ff21f77ff7e7bbf69d71cf5a95d228fa789b9f6a5507ab3666ede79d13cbae2a"
     },
     {
       "path": "research/RHRC/integration/README.md",
@@ -2327,7 +2332,7 @@
       "authority": "UNCHANGED_PARENT_BYTES"
     }
   ],
-  "path_policy_sha256": "fc663318a11e2f7221985606d3999bc065e8ac3f8f145135e5f62a9d35478cfa",
+  "path_policy_sha256": "f48d891d414d8afac19c697ecba72e9e434758ce52e9b402ad7ee3f46d6743a0",
   "current_compiler_accepted": false,
   "RH": "OPEN",
   "Step4": "OPEN",
@@ -2676,7 +2681,9 @@
         "research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_acceptance.py",
         "research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_discovery.py"
       ],
-      "lean_modules": [],
+      "lean_modules": [
+        "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean"
+      ],
       "receipt_dirs": [
         "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2",
         "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b",

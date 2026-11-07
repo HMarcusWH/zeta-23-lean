@@ -146,6 +146,25 @@ fails at L=5 and L=6. No Lean consumer needs that cap.
 floating-point free. The engine's planted controls need numpy, which is not in
 the hash-locked CI environment, so they are reported as skipped there.
 
+## Increment 3A — pole-channel annihilation (Lean)
+
+**PROVED in a local pinned compile; current-head CI is still required.**
+[PoleChannel.lean](../../../../../Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean)
+(M50) reuses the production two-profile annihilation theorem and the even
+corollary. On both actual pole-neutral carriers, and hence on both moment
+slices, it proves three statements:
+
+* the full pole output vector is zero;
+* the pole sesquilinear form vanishes;
+* `evenNativeEnergy = -Re⟨arch u,u⟩ - Re⟨prime u,u⟩`, and likewise for odd.
+
+`EvenMomentSliceLowerBound L K ε` is therefore equivalent to a lower bound on
+`-arch - prime` over the slice (`evenMomentSliceLowerBound_iff_arch_prime`), and
+likewise for odd. The channels are the unchanged production `canonicalArchMatrix`
+(direct equation (4.4), scalar terms included) and `canonicalPrimeMatrix` (every
+prime power). No sign is asserted. This compresses the signed budget of every
+(C1) checkpoint to the joint prime–Archimedean expression of work package F.
+
 ## Not built yet
 
 The leakage modules, checker soundness, the enclosure bridge, the universal

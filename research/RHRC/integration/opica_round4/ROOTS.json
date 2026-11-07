@@ -8232,6 +8232,76 @@
       "path": "Zeta23/OPICARound4/ArithmeticFrontier/Validation/Carriers.lean",
       "line": 115,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.poleEvenProfile_dot_oddBoundaryFlat_eq_zero",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "line": 27,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.canonicalPoleMatrix_mulVec_poleNeutralOdd_eq_zero",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "line": 41,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_toEuclideanLin_even_eq_zero",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "line": 50,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_toEuclideanLin_odd_eq_zero",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "line": 56,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_inner_even_eq_zero",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "line": 62,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.canonicalPole_inner_odd_eq_zero",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "line": 69,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.evenNativeEnergy_eq_neg_arch_sub_prime",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "line": 93,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.oddNativeEnergy_eq_neg_arch_sub_prime",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "line": 105,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_arch_prime",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "line": 117,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "line": 128,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     }
   ],
   "historical_subset": {
@@ -9376,8 +9446,8 @@
     "authority": "RETAINED_EXACT_SCOPE_NOT_CURRENT_CI_ACCEPTANCE"
   },
   "arithmetic_frontier_subset": {
-    "declaration_count": 97,
-    "module_count": 7,
+    "declaration_count": 107,
+    "module_count": 8,
     "modules": [
       "Zeta23.OPICARound4.ArithmeticFrontier.MomentSlices",
       "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates",
@@ -9385,9 +9455,10 @@
       "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure",
       "Zeta23.OPICARound4.ArithmeticFrontier.PhysicalBlockCertificate",
       "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore",
-      "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers"
+      "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers",
+      "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel"
     ],
-    "semantic_mutation_count": 12,
+    "semantic_mutation_count": 14,
     "authority": "LOCAL_PINNED_LINUX_COMPILE_AND_AUDIT_CURRENT_HEAD_CI_REQUIRED",
     "closing_premises": "OPEN"
   }

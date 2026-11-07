@@ -538,7 +538,8 @@
     "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
     "Zeta23.OPICARound4.ArithmeticFrontier.PhysicalBlockCertificate": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
     "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
-    "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET"
+    "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
+    "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel": "OPICA4_SOURCE_FAITHFUL_SUPPORT"
   },
   "reachable_module_roles": {
     "Zeta23.CCM.CanonicalCompressedApertureC2": "CONTACT_CALCULUS_FORMAL_SUPPORT",

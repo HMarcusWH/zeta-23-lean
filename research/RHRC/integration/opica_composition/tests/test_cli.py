@@ -65,7 +65,7 @@ class CliOrchestrationTests(unittest.TestCase):
         self.assertEqual((frontier['declaration_count'],frontier['module_count'],
                           frontier['semantic_mutation_count']),(1079,90,84))
         self.assertEqual((len(math_gate.EXPECTED_DECLARATIONS),len(math_gate.MODULES),
-                          math_gate.SEMANTIC_MUTATION_COUNT),(1176,97,96))
+                          math_gate.SEMANTIC_MUTATION_COUNT),(1186,98,98))
         with patch.object(math_gate,'EXPECTED_DECLARATIONS',math_gate.EXPECTED_DECLARATIONS[1:]):
             with self.assertRaisesRegex(RuntimeError,'Retained 1079/90/84'):
                 math_gate.retained_pre_frontier_scope()

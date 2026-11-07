@@ -371,3 +371,24 @@ closing premise, RH and Step 4 remain OPEN.** The gate is now 1176 declarations
 in 97 modules with 96 controls; the preceding 1079/90/84 scope is hash-bound and
 mandatory. Local evidence is a pinned Linux compile and audit; current-head
 production qualification is still required.
+
+## Arithmetic frontier, Increment 3A: pole-channel annihilation (7 November 2026)
+
+`Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean` (contract M50) adds ten
+declarations. It reuses the production theorems
+`canonicalPoleMatrix_mulVec_eq_zero_of_profiles` and
+`canonicalPoleMatrix_mulVec_poleNeutralEven_eq_zero`, and adds:
+
+* the odd profile orthogonality;
+* odd-carrier annihilation of the pole operator;
+* vanishing of the pole sesquilinear form on both carriers;
+* the exact identity `Q = -arch - prime` for the native energy on both
+  pole-neutral carriers.
+
+Both moment-slice lower bounds, and hence (C1), are therefore literally lower
+bounds on `-arch - prime`, with the unchanged production channels. This is
+dependency compression, not positivity. **The sign remains the OPEN closing
+content; RH and Step 4 remain OPEN.** The gate is now 1186 declarations in 98
+modules with 98 controls. The two new controls reject pole annihilation without
+pole neutrality and the energy identity at a nonpositive aperture.
+

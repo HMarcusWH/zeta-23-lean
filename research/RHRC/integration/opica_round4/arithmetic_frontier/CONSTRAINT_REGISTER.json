@@ -291,15 +291,28 @@
     {
       "id": "CR17",
       "name": "Pole channel vanishes on both carriers",
-      "proposition": null,
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.evenNativeEnergy_eq_neg_arch_sub_prime",
       "statement": "The pole kernel is S(u u^T - v v^T) with u_n = L/d_n and v_n = 4 pi n/d_n; parity kills one profile and pole neutrality the other, so the pole energy is identically zero on both pole-neutral carriers. The native energy there is exactly -arch - prime.",
       "scope": "Every L, K; both parities.",
       "parameter_order": "Fixed named states.",
-      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
       "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
-      "consumers": [],
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_arch_prime",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime"
+      ],
       "countermodel_tests": [],
-      "budget_improved": "Removes the pole channel from every signed budget on the carriers; enclosures [+/- 1e-55] at every replayed state."
+      "budget_improved": "Removes the pole channel from every signed budget on the carriers; enclosures [+/- 1e-55] at every replayed state.",
+      "formalization": {
+        "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+        "contract": "M50",
+        "reused": [
+          "Zeta23.CCM.canonicalPoleMatrix_mulVec_eq_zero_of_profiles",
+          "Zeta23.CCM.canonicalPoleMatrix_mulVec_poleNeutralEven_eq_zero",
+          "Zeta23.CCM.canonicalSourceMatrix_eq_pole_sub_arch_sub_prime"
+        ],
+        "added": "odd profile orthogonality, odd-carrier operator annihilation, sesquilinear vanishing on both carriers, exact native energy identities and slice-bound equivalences"
+      }
     },
     {
       "id": "CR18",
