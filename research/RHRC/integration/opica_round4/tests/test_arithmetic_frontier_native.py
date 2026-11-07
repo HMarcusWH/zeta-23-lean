@@ -426,5 +426,62 @@ class Increment3DEvidenceTests(unittest.TestCase):
         self.assertGreater(seen, 0)
 
 
+class Increment3EEvidenceTests(unittest.TestCase):
+    """E-H7 run under its frozen rules; the scoring is recomputed in CI (evidence/increment3e)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.ev = ROOT / 'evidence' / 'increment3e'
+        cls.summary = json.loads((cls.ev / 'SUMMARY.json').read_bytes())
+        cls.score = load('_frontier_eh7_score_ci', ROOT / 'eh7_score.py')
+
+    def test_records_are_bound_and_the_frozen_rules_are_intact(self):
+        self.assertEqual((self.summary['RH'], self.summary['Step4']), ('OPEN', 'OPEN'))
+        for e in self.summary['records']:
+            self.assertEqual(sha(self.ev / e['file']), e['sha256'])
+        pred = json.loads((ROOT / 'evidence' / 'increment3b' / 'E-H7_PREDICTIONS.json').read_bytes())
+        for f in ('ed1_response.py', 'native_slice.py', 'certificates.py', 'native_source.py'):
+            self.assertEqual(sha(ROOT / f), pred['rule_hashes'][f], f)
+        self.assertEqual(sha(ROOT / 'evidence' / 'increment3b' / 'SUMMARY.json'), pred['rule_hashes']['basis_ed1_summary'])
+
+    def test_outcomes_are_recomputed_exactly_from_the_records(self):
+        recs = {p: json.loads((self.ev / ('ed1_L7_%s_fifth.json' % p)).read_bytes()) for p in ('even', 'odd')}
+        fresh = json.loads(json.dumps(self.score.score(recs)))
+        stored = json.loads((self.ev / 'E-H7_OUTCOMES.json').read_bytes())
+        self.assertEqual(fresh, stored)
+        self.assertTrue(stored['rules_intact'])
+        self.assertEqual(sorted(stored['confirmed'] + stored['failed']), ['P10', 'P11', 'P12', 'P13', 'P9'])
+
+    def test_witness_carrying_fields_and_the_recorded_receipt_limitation(self):
+        # The frozen E-D1 tool keeps only status and floating minimum in its ladder rows (kernel
+        # decisions without retained witnesses or factors); SCALAR_GAP keeps its exact witness and
+        # SCHUR_FULL_INVERSE_ACTION its certificate data. The summary must say so.
+        self.assertIn('ladder', self.summary['receipt_limitation'])
+        for p in ('even', 'odd'):
+            rec = json.loads((self.ev / ('ed1_L7_%s_fifth.json' % p)).read_bytes())
+            if rec['SCALAR_GAP']['status'] == 'FALSIFIED_BOUND':
+                self.assertLess(exact_from_str(rec['SCALAR_GAP']['witness_value']['upper_exact']), 0)
+            if rec['SCHUR_FULL_INVERSE_ACTION']['status'] == 'CERTIFIED':
+                self.assertGreater(Fraction(rec['SCHUR_FULL_INVERSE_ACTION']['tau']), 0)
+                self.assertIn('residual_frobenius_sq_upper', rec['SCHUR_FULL_INVERSE_ACTION'])
+
+
+class Increment3BEvidenceTests(unittest.TestCase):
+    """E-D1 records stay bound to their summary and to the frozen tools."""
+
+    def test_records_and_tools_are_bound(self):
+        ev = ROOT / 'evidence' / 'increment3b'
+        summary = json.loads((ev / 'SUMMARY.json').read_bytes())
+        for e in summary['records']:
+            self.assertEqual(sha(ev / e['file']), e['sha256'], e['file'])
+            rec = json.loads((ev / e['file']).read_bytes())
+            self.assertEqual(rec['tool_sha256'], sha(ROOT / 'ed1_response.py'))
+            self.assertEqual(rec['engine_sha256'], sha(ROOT / 'native_slice.py'))
+            self.assertEqual(rec['kernel_sha256'], sha(ROOT / 'certificates.py'))
+            self.assertEqual((rec['RH'], rec['Step4']), ('OPEN', 'OPEN'))
+            if rec['SCALAR_GAP']['status'] == 'FALSIFIED_BOUND':
+                self.assertLess(exact_from_str(rec['SCALAR_GAP']['witness_value']['upper_exact']), 0)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,217 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_INCREMENT3E_SUMMARY_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "experiment": "E-H7",
+  "scope": "FROZEN_RULE_RUN_AT_L7_TOLERANCE_1_5_NOT_AN_RH_OR_STEP4_CLAIM",
+  "records": [
+    {
+      "entry": "L7_even_fifth",
+      "file": "ed1_L7_even_fifth.json",
+      "sha256": "5335450b4900d7e39cae4790723b273c3537e3868d696d8233bb546764bf5a4d"
+    },
+    {
+      "entry": "L7_odd_fifth",
+      "file": "ed1_L7_odd_fifth.json",
+      "sha256": "eb2decba1c0c0e26d81a9f9e7713efb188642f981465b4f3f91c017bcbe7f531"
+    }
+  ],
+  "outcomes": {
+    "file": "E-H7_OUTCOMES.json",
+    "sha256": "9f86e1733932b17ad05df118cf3a8f36eed356e87422997c56f6a69414eea128",
+    "confirmed": [
+      "P9",
+      "P11",
+      "P12",
+      "P13"
+    ],
+    "failed": [
+      "P10"
+    ],
+    "rules_intact": true
+  },
+  "predictions": {
+    "file": "evidence/increment3b/E-H7_PREDICTIONS.json",
+    "sha256": "6fcea72c740e503a0f0e544cb02de9e75adf4a06426d218def4357f533604bce"
+  },
+  "scorer_sha256": "8fd461f599e828a18785f580a52ec111766d72f28d3a542e40505a7f5a1face6",
+  "execution": "Driver producer/driver.py.txt called the frozen ed1_response.run(Fraction(7), parity, Fraction(1, 5), 1200, tail_max=64) after asserting every hashed tool. The even parity started first; the odd parity was started separately about 55 minutes later and ran concurrently (producer/RUN_NOTES.txt). No tool, parameter or rule was changed; BLAS threading was left at its default.",
+  "receipt_limitation": "The frozen E-D1 tool keeps only status and floating minimum in its ladder rows: the kernel decided each status with an exact witness or factor certificate, but neither is retained in the record. SCALAR_GAP keeps its exact witness and SCHUR_FULL_INVERSE_ACTION its certificate data. Re-verifying a ladder status requires re-running the frozen tool. This applies equally to E-D1 (increment3b).",
+  "assurance": "Level 2 kernel decisions by the hashed tools; no level-3 reconstruction at L = 7; level 4 OPEN.",
+  "table": [
+    {
+      "parity": "even",
+      "low": 1197,
+      "high": 1201,
+      "a": "195999/1000000",
+      "b": "7687/500",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "schur_full_inverse_action": "CERTIFIED",
+      "native_checkpoint_1_5_via_consumer": "CERTIFIED",
+      "scalar_gap": "FALSIFIED_BOUND",
+      "scalar_gap_witness": "[-91.58104230 +/- 3.95e-9]",
+      "inverse_residual_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          32,
+          "CERTIFIED"
+        ],
+        [
+          64,
+          "CERTIFIED"
+        ],
+        [
+          128,
+          "CERTIFIED"
+        ],
+        [
+          256,
+          "CERTIFIED"
+        ]
+      ],
+      "inverse_residual_smallest_tested_degree": 32,
+      "geometric_tail_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          32,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          64,
+          "UNKNOWN_PRECISION"
+        ]
+      ],
+      "near_band_count": 240,
+      "near_band_coupling_trace": 1.0548063953260449e-06,
+      "near_band_response_trace": 5.2740275176495985e-06,
+      "scalar_gap_worst_charge": 97.1968716123118,
+      "seconds": 4046.5
+    },
+    {
+      "parity": "odd",
+      "low": 1196,
+      "high": 1201,
+      "a": "195999/1000000",
+      "b": "7687/500",
+      "A_ge_aI": "CERTIFIED",
+      "A_le_bI": "CERTIFIED",
+      "schur_full_inverse_action": "CERTIFIED",
+      "native_checkpoint_1_5_via_consumer": "CERTIFIED",
+      "scalar_gap": "FALSIFIED_BOUND",
+      "scalar_gap_witness": "[-100.2569256 +/- 4.97e-8]",
+      "inverse_residual_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          32,
+          "CERTIFIED"
+        ],
+        [
+          64,
+          "CERTIFIED"
+        ],
+        [
+          128,
+          "CERTIFIED"
+        ],
+        [
+          256,
+          "CERTIFIED"
+        ]
+      ],
+      "inverse_residual_smallest_tested_degree": 32,
+      "geometric_tail_ladder": [
+        [
+          1,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          2,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          4,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          8,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          16,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          32,
+          "FALSIFIED_BOUND"
+        ],
+        [
+          64,
+          "UNKNOWN_PRECISION"
+        ]
+      ],
+      "near_band_count": 240,
+      "near_band_coupling_trace": 2.061394929317602e-06,
+      "near_band_response_trace": 1.0306958758616382e-05,
+      "scalar_gap_worst_charge": 106.05780194259339,
+      "seconds": 3604.3
+    }
+  ]
+}

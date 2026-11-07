@@ -1,0 +1,240 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_ED1_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "L": "7",
+  "K": 2401,
+  "parity": "even",
+  "tolerance": "1/5",
+  "split": 1200,
+  "low_dimension": 1197,
+  "high_dimension": 1201,
+  "bits": 192,
+  "coordinates": "corrected Fourier-prefix flag (orthonormal proposal; the pencil carries the full Gram)",
+  "a": "195999/1000000",
+  "b": "7687/500",
+  "A_ge_aI": "CERTIFIED",
+  "A_le_bI": "CERTIFIED",
+  "engine_sha256": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+  "tool_sha256": "00b85575ef76c9adfc66f2cc3647b77d8fb8e592bb4199be720bf71acb5b1cdf",
+  "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+  "SCHUR_FULL_INVERSE_ACTION": {
+    "family": "INVERSE_RESIDUAL",
+    "proposal": "X = A^-1 C^T (floating solve)",
+    "status": "CERTIFIED",
+    "tau": "1/16",
+    "dimension": 1197,
+    "residual_frobenius_sq_upper": "79532403000743287827845809852804280743701332766976146219*2^-276",
+    "certified_lower_eigenvalue_coordinates": "3450873173393868765294487161385871758012660929462991771291743303735381*2^-235",
+    "certified_lower_eigenvalue_display": "6.25e-2",
+    "statement": "S_X >= 0 with X = A^-1 C^T",
+    "floating_minimum": 0.1999999999999927
+  },
+  "SCALAR_GAP": {
+    "family": "SCALAR_GAP",
+    "quantifier": "every a with 0 < a <= lambda_min(A)",
+    "rho_upper_exact": "5021681388309344733916386541233447830558285994028916350259*2^-194",
+    "rho_upper_display": "2e-1",
+    "witness_value": {
+      "lower_exact": "-71857939940640871420937872523726843518349732093295042083413*2^-189",
+      "upper_exact": "-71857939940640871420937872523726843518349732093294326251979*2^-189",
+      "display": "[-91.58104230 +/- 3.95e-9]"
+    },
+    "status": "FALSIFIED_BOUND"
+  },
+  "INVERSE_RESIDUAL_LADDER": {
+    "rows": [
+      {
+        "degree": 1,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -46.467385811263334
+      },
+      {
+        "degree": 2,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -24.206218186494308
+      },
+      {
+        "degree": 4,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -11.428289394956517
+      },
+      {
+        "degree": 8,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -3.2850921673689886
+      },
+      {
+        "degree": 16,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -0.050738538115839275
+      },
+      {
+        "degree": 32,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.19999999999999304
+      },
+      {
+        "degree": 64,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.19999999999999277
+      },
+      {
+        "degree": 128,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.1999999999999927
+      },
+      {
+        "degree": 256,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.19999999999999254
+      }
+    ],
+    "smallest_successful_tested_degree": 32,
+    "all_tested_degrees_below_it_failed_or_unresolved": true,
+    "monotonicity": "not assumed; every listed degree was tested"
+  },
+  "GEOMETRIC_TAIL_LADDER": {
+    "rows": [
+      {
+        "degree": 1,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 5.037021966311965,
+        "floating_minimum": -93.56417925705242
+      },
+      {
+        "degree": 2,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 4.972806325075125,
+        "floating_minimum": -93.2089924667467
+      },
+      {
+        "degree": 4,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 4.846820609551859,
+        "floating_minimum": -91.8477766025631
+      },
+      {
+        "degree": 8,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 4.604343832480603,
+        "floating_minimum": -87.98499756288348
+      },
+      {
+        "degree": 16,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 4.155175297047497,
+        "floating_minimum": -79.5665173148961
+      },
+      {
+        "degree": 32,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 3.3840171573602267,
+        "floating_minimum": -64.62725015146817
+      },
+      {
+        "degree": 64,
+        "status": "UNKNOWN_PRECISION",
+        "q_power_over_a": 2.244496684204323,
+        "floating_minimum": -42.51035603081373
+      }
+    ],
+    "smallest_successful_tested_degree": null,
+    "all_tested_degrees_below_it_failed_or_unresolved": null,
+    "monotonicity": "not assumed; every listed degree was tested",
+    "tested_up_to": 64
+  },
+  "RESPONSE_BANDS": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+    "min_eig_D": 0.19999999999998905,
+    "min_eig_schur_D_minus_CAinvCT": 0.1999999999999903,
+    "trace_full_response": 16.561384686840068,
+    "max_eig_full_response": 5.564018460882507,
+    "near_band": {
+      "definition": "eigenvalues of A within 1e-6 of eps (the shifted near-null directions)",
+      "count": 240,
+      "trace_coupling_mass": 1.0548063953260449e-06,
+      "max_column_coupling": 0.0008716889458826015,
+      "response_trace": 5.2740275176495985e-06,
+      "scalar_gap_worst_charge": 97.1968716123118
+    },
+    "bands": [
+      {
+        "s": 0.20000000000100002,
+        "count": 232,
+        "trace_M_s": 1.3306391573176763e-12,
+        "max_eig_M_s": 1.2463285310276334e-12,
+        "trace_low_response": 6.653195786582639e-12,
+        "max_eig_low_response": 6.231642655132461e-12,
+        "min_eig_D_minus_high_response": 0.19999999999999063
+      },
+      {
+        "s": 0.200000001,
+        "count": 236,
+        "trace_M_s": 8.796122189531926e-10,
+        "max_eig_M_s": 8.192024584205366e-10,
+        "trace_low_response": 4.3980610915584915e-09,
+        "max_eig_low_response": 4.096012288937561e-09,
+        "min_eig_D_minus_high_response": 0.19999999999998985
+      },
+      {
+        "s": 0.200001,
+        "count": 240,
+        "trace_M_s": 1.054806395326045e-06,
+        "max_eig_M_s": 9.907349614660024e-07,
+        "trace_low_response": 5.2740275176495985e-06,
+        "max_eig_low_response": 4.953670437848664e-06,
+        "min_eig_D_minus_high_response": 0.1999999999999767
+      },
+      {
+        "s": 0.201,
+        "count": 245,
+        "trace_M_s": 0.0043952754852040555,
+        "max_eig_M_s": 0.004014691997877463,
+        "trace_low_response": 0.021902364593543937,
+        "max_eig_low_response": 0.020000122985599604,
+        "min_eig_D_minus_high_response": 0.1999999999999914
+      },
+      {
+        "s": 0.4,
+        "count": 250,
+        "trace_M_s": 0.7263165767706363,
+        "max_eig_M_s": 0.6611412460376712,
+        "trace_low_response": 2.4042641977347725,
+        "max_eig_low_response": 2.108477796716303,
+        "min_eig_D_minus_high_response": 0.19999999999998608
+      },
+      {
+        "s": 0.8,
+        "count": 253,
+        "trace_M_s": 2.6808470620862828,
+        "max_eig_M_s": 1.9873005786261992,
+        "trace_low_response": 5.644791069755781,
+        "max_eig_low_response": 3.408167838668655,
+        "min_eig_D_minus_high_response": 0.1999999999999877
+      },
+      {
+        "s": 1.0,
+        "count": 258,
+        "trace_M_s": 2.7023249989849245,
+        "max_eig_M_s": 2.0010742185344643,
+        "trace_low_response": 5.669312645141715,
+        "max_eig_low_response": 3.4215053035147966,
+        "min_eig_D_minus_high_response": 0.1999999999999916
+      },
+      {
+        "s": 16.071744029111333,
+        "count": 1201,
+        "trace_M_s": 43.93931455991624,
+        "max_eig_M_s": 19.439374322461617,
+        "trace_low_response": 16.561384686840068,
+        "max_eig_low_response": 5.564018460882507,
+        "min_eig_D_minus_high_response": 0.19999999999998905
+      }
+    ]
+  },
+  "seconds": 4046.5,
+  "state_id": "L7_even_fifth",
+  "driver": "E-H7 driver: ED1.run(Fraction(7), parity, Fraction(1,5), 1200, tail_max=64) with hashed tools asserted"
+}

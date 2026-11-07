@@ -327,6 +327,33 @@ evidence that a (C1) supplier has the strength of Weil positivity on these
 slices (a sharp interface), not a sub-RH step. A source-specific inequality
 at unbounded apertures remains **OPEN**.
 
+## E-H7 — the frozen n = 5 law, run and scored
+
+E-H7 ran exactly under its hashed rules at L=7 (K=2401, Q=1096), tolerance
+`1/5`, split 1200, ladder 1…256 and tail up to 64
+([evidence/increment3e](evidence/increment3e/SUMMARY.json)). The committed
+numpy-free scorer [eh7_score.py](eh7_score.py) applies each acceptance rule
+literally, and CI recomputes the scoring from the records. The two parities
+ran concurrently, with no change to any tool or parameter.
+
+| Prediction | Outcome | Rule | Observed | Record |
+| --- | --- | --- | --- | --- |
+| P9 | CONFIRMED | degree 32 in both parities | even 32, odd 32 | see E-H7_OUTCOMES.json |
+| P10 | FAILED | tail FALSIFIED_BOUND at every degree 1–64 | even: 1 F, 2 F, 4 F, 8 F, 16 F, 32 F, 64 U; odd: 1 F, 2 F, 4 F, 8 F, 16 F, 32 F, 64 U | see E-H7_OUTCOMES.json |
+| P11 | CONFIRMED | near-band count in [200, 500] | even 240, odd 240 | see E-H7_OUTCOMES.json |
+| P12 | CONFIRMED | coupling ≤ 1e-4, response ≤ 1e-3 | coupling 1.05e-06 / 2.06e-06, response 5.27e-06 / 1.03e-05 | see E-H7_OUTCOMES.json |
+| P13 | CONFIRMED | checkpoint and full Schur certified, scalar gap falsified with charge ≥ 80 | checkpoint CERTIFIED / CERTIFIED, charge 97.2 / 106.1 | see E-H7_OUTCOMES.json |
+
+F = FALSIFIED_BOUND, U = UNKNOWN_PRECISION. At degree 64 the tail witness is not certainly negative in either parity, so P10 fails as written.
+
+**Confirmed: P9, P11, P12, P13. Failed: P10.** A failed prediction stays failed. P13's "native checkpoint" is scored
+through the stated consumer implication: a certified full Schur form together
+with `A ⪰ aI` gives the hypotheses of
+`blockEnergy_nonneg_of_inverse_residual_certificate`. The statuses are kernel
+decisions of the frozen tools (level 2). The frozen tool does not retain
+ladder witnesses in its records (receipt limitation, recorded). There is no
+level-3 reconstruction at L=7.
+
 ## Not built yet
 
 The leakage modules, checker soundness, the enclosure bridge, the universal
