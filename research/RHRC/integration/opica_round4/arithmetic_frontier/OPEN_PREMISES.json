@@ -88,5 +88,6 @@
       "note": "Dependency compression only; the sign of -arch - prime is the OPEN closing content."
     }
   ],
-  "rule": "A leaf moves only when an exact theorem with no undispatched RH-strength premise passes current-head formal and claim gates."
+  "rule": "A leaf moves only when an exact theorem with no undispatched RH-strength premise passes current-head formal and claim gates.",
+  "increment3d_note": "E-SIGNED (evidence/increment3d): on the near-null slice subspace the closing inequality is the exact cancellation of two O(1) indefinite channels; no premise is weakened and no supplier is proposed. A source-specific inequality at unbounded apertures remains OPEN."
 }

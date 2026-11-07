@@ -1,0 +1,383 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_SIGNED_SOURCE_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "state_id": "L4_odd",
+  "L": "4",
+  "parity": "odd",
+  "K": 256,
+  "Q": 54,
+  "atoms": 24,
+  "split": 128,
+  "bits": 192,
+  "dimension": 252,
+  "hashes": {
+    "tool_sha256": "8af3884b0cc681e7d8c282b7b842c463970e92d8c18e4edc0ac7871133b3102f",
+    "engine_sha256": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+    "source_module_sha256": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6",
+    "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+    "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54"
+  },
+  "pole_on_slice_max_abs_float": 1.5860726356649976e-59,
+  "pole_statement": "M50 (Lean): the pole channel vanishes on the slice; the floating restriction is at rounding size",
+  "floating_prime_calibration_relative_error": 9.580440470672525e-14,
+  "energy_identity_float_error": 1.379669173535723e-16,
+  "spectrum_channels": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING",
+    "threshold": 0.01,
+    "near_null_count": 50,
+    "dimension": 252,
+    "bottom_eigenvalues": [
+      -3.445579254293127e-15,
+      -3.412570721433602e-15,
+      -3.064974403060347e-15,
+      -2.874048329105849e-15,
+      -2.6458402129397852e-15
+    ],
+    "samples": [
+      {
+        "index": 0,
+        "rho": -3.445579254293127e-15,
+        "minus_arch": 2.2343822685194406,
+        "minus_prime": -2.234382268519494
+      },
+      {
+        "index": 1,
+        "rho": -3.412570721433602e-15,
+        "minus_arch": 2.1686617574316744,
+        "minus_prime": -2.1686617574316345
+      },
+      {
+        "index": 2,
+        "rho": -3.064974403060347e-15,
+        "minus_arch": 1.9972786130832407,
+        "minus_prime": -1.9972786130832456
+      },
+      {
+        "index": 3,
+        "rho": -2.874048329105849e-15,
+        "minus_arch": 2.044101574600451,
+        "minus_prime": -2.0441015746004942
+      },
+      {
+        "index": 4,
+        "rho": -2.6458402129397852e-15,
+        "minus_arch": 1.7738316467753634,
+        "minus_prime": -1.7738316467753754
+      },
+      {
+        "index": 49,
+        "rho": 0.001081767536625328,
+        "minus_arch": 3.333997738828529,
+        "minus_prime": -3.332915971291938
+      },
+      {
+        "index": 50,
+        "rho": 0.2735251670456289,
+        "minus_arch": 3.7655372469892714,
+        "minus_prime": -3.4920120799436716
+      },
+      {
+        "index": 251,
+        "rho": 8.313153601401462,
+        "minus_arch": 4.086683853826446,
+        "minus_prime": 4.226469747574949
+      }
+    ],
+    "near_null_cancellation": {
+      "max_ratio_Q_over_channel_sizes": 0.0001622591177358708,
+      "median_channel_size": 2.1377619125668854,
+      "minus_arch_energy_range": [
+        0.17469090199478746,
+        3.333997738828529
+      ]
+    },
+    "restriction_to_near_null_subspace": {
+      "minus_arch_extremes": [
+        -0.9275181327365519,
+        3.757241593247958
+      ],
+      "minus_prime_extremes": [
+        -3.756968089151987,
+        0.9275187759979693
+      ],
+      "minus_arch_negative_count": 3,
+      "minus_prime_negative_count": 47,
+      "joint_Q_restricted_extremes": [
+        -2.892072413825898e-15,
+        0.0010817675366254775
+      ],
+      "reading": "on V the two channels cancel to the size of the joint energy; each channel alone is controlled only through the other"
+    }
+  },
+  "prime_cutoff_sweep": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING",
+    "form": "-arch - prime_{q <= P} on the native slice (P < Q is not native)",
+    "top_atoms": [
+      43,
+      47,
+      49,
+      53
+    ],
+    "cutoffs_dropping_only_the_top_atoms": [
+      49,
+      47,
+      43
+    ],
+    "rows": [
+      {
+        "prime_cutoff": 0,
+        "atoms_included": 0,
+        "slice_min": -0.9356301692990915,
+        "negative_count": 3,
+        "slice_max": 4.157487504753795
+      },
+      {
+        "prime_cutoff": 2,
+        "atoms_included": 1,
+        "slice_min": -0.8394383477726771,
+        "negative_count": 3,
+        "slice_max": 5.009604661563384
+      },
+      {
+        "prime_cutoff": 3,
+        "atoms_included": 2,
+        "slice_min": -0.7004035572469552,
+        "negative_count": 6,
+        "slice_max": 5.862698404681383
+      },
+      {
+        "prime_cutoff": 5,
+        "atoms_included": 4,
+        "slice_min": -0.9879896330928742,
+        "negative_count": 10,
+        "slice_max": 6.575900676708849
+      },
+      {
+        "prime_cutoff": 10,
+        "atoms_included": 7,
+        "slice_min": -0.9507864833362397,
+        "negative_count": 16,
+        "slice_max": 6.899709951744274
+      },
+      {
+        "prime_cutoff": 20,
+        "atoms_included": 12,
+        "slice_min": -0.7990536165903813,
+        "negative_count": 21,
+        "slice_max": 7.738755711858655
+      },
+      {
+        "prime_cutoff": 43,
+        "atoms_included": 21,
+        "slice_min": -0.5018725931671557,
+        "negative_count": 8,
+        "slice_max": 8.29739446811885
+      },
+      {
+        "prime_cutoff": 47,
+        "atoms_included": 22,
+        "slice_min": -0.17801607102078465,
+        "negative_count": 6,
+        "slice_max": 8.317338539741252
+      },
+      {
+        "prime_cutoff": 49,
+        "atoms_included": 23,
+        "slice_min": -0.0027195796795514617,
+        "negative_count": 2,
+        "slice_max": 8.312833362391746
+      },
+      {
+        "prime_cutoff": 50,
+        "atoms_included": 23,
+        "slice_min": -0.0027195796795514617,
+        "negative_count": 2,
+        "slice_max": 8.312833362391746
+      },
+      {
+        "prime_cutoff": 54,
+        "atoms_included": 24,
+        "slice_min": -4.220666283530457e-14,
+        "negative_count": 0,
+        "slice_max": 8.313153601401424
+      }
+    ]
+  },
+  "bottom_vector_atoms": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING",
+    "vector": "bottom generalized eigenvector of (F, G), G-normalized",
+    "minus_arch": 2.2343822685195125,
+    "minus_prime_total": -2.234382268519509,
+    "joint": 3.552713678800501e-15,
+    "largest_atoms": [
+      {
+        "q": 3,
+        "p": 3,
+        "minus_prime_a": -0.5379579621921091
+      },
+      {
+        "q": 5,
+        "p": 5,
+        "minus_prime_a": -0.4029931692416294
+      },
+      {
+        "q": 7,
+        "p": 7,
+        "minus_prime_a": -0.3460541348237697
+      },
+      {
+        "q": 2,
+        "p": 2,
+        "minus_prime_a": -0.1756937694208742
+      },
+      {
+        "q": 23,
+        "p": 23,
+        "minus_prime_a": -0.13878740040491283
+      },
+      {
+        "q": 4,
+        "p": 2,
+        "minus_prime_a": -0.11432739071443662
+      },
+      {
+        "q": 9,
+        "p": 3,
+        "minus_prime_a": -0.1004872188467263
+      },
+      {
+        "q": 13,
+        "p": 13,
+        "minus_prime_a": -0.09374771634835306
+      },
+      {
+        "q": 25,
+        "p": 5,
+        "minus_prime_a": -0.08465842835349699
+      },
+      {
+        "q": 19,
+        "p": 19,
+        "minus_prime_a": -0.07639527351197224
+      },
+      {
+        "q": 31,
+        "p": 31,
+        "minus_prime_a": -0.05954558334084613
+      },
+      {
+        "q": 37,
+        "p": 37,
+        "minus_prime_a": 0.05759887078140044
+      }
+    ],
+    "partial_sums_by_q": [
+      {
+        "q_max": 2,
+        "minus_arch_plus_partial": 2.0586884990986385
+      },
+      {
+        "q_max": 3,
+        "minus_arch_plus_partial": 1.5207305369065292
+      },
+      {
+        "q_max": 4,
+        "minus_arch_plus_partial": 1.4064031461920925
+      },
+      {
+        "q_max": 7,
+        "minus_arch_plus_partial": 0.6573558421266936
+      },
+      {
+        "q_max": 9,
+        "minus_arch_plus_partial": 0.5275314225493377
+      },
+      {
+        "q_max": 16,
+        "minus_arch_plus_partial": 0.441931373170964
+      },
+      {
+        "q_max": 23,
+        "minus_arch_plus_partial": 0.17978052884353435
+      },
+      {
+        "q_max": 41,
+        "minus_arch_plus_partial": -0.0156959156303631
+      },
+      {
+        "q_max": 53,
+        "minus_arch_plus_partial": 3.552713678800501e-15
+      }
+    ],
+    "positive_atoms": 7,
+    "negative_atoms": 17,
+    "sum_abs_over_abs_sum": 1.088670889884526,
+    "minus_prime_from_slice_matrix": -2.234382268519513
+  },
+  "certified_truncations": [
+    {
+      "prime_cutoff": 0,
+      "atoms_included": 0,
+      "floating_min": -0.9356301692990899,
+      "kind": "TRUNCATED_PRIME_CELL_NOT_NATIVE",
+      "status": "FALSIFIED_BOUND",
+      "witness_value": {
+        "lower_exact": "-24055995430451039846029142967410142877667171211380538967149429*2^-204",
+        "upper_exact": "-24055995430451039846029142967410142877667171211380538410546315*2^-204",
+        "display": "[-0.9356301693 +/- 9.11e-13]"
+      },
+      "statement": "the truncated form takes a certainly negative value at an exact slice vector"
+    },
+    {
+      "prime_cutoff": 49,
+      "atoms_included": 23,
+      "floating_min": -0.002719579679544285,
+      "kind": "TRUNCATED_PRIME_CELL_NOT_NATIVE",
+      "status": "FALSIFIED_BOUND",
+      "witness_value": {
+        "lower_exact": "-4370196051453978457335976419654530257129631369087349363681*2^-200",
+        "upper_exact": "-4370196051453978457335976419654530257129631369084344909485*2^-200",
+        "display": "[-0.002719579680 +/- 4.56e-13]"
+      },
+      "statement": "the truncated form takes a certainly negative value at an exact slice vector"
+    }
+  ],
+  "derived_family_comparison": {
+    "tolerance": "1/2",
+    "rows": [
+      {
+        "degree": 8,
+        "a": "49/100",
+        "b": "8989/1000",
+        "floating_min_eig": -1.551043412657721e-15,
+        "floating_max_eig": 7.993882857264931,
+        "closed_form_relative_error": 1.1498374766080691e-15,
+        "identity": "S_IR(X = P_m(A) C^T) - S_tail = C[(q^m I - T^m)/a + (a^-1 I - A^-1)(T^m - T^2m)]C^T (DERIVED, exact P_m, aI <= A <= bI)",
+        "middle_floating_min": 0.02170508217718201,
+        "middle_certificate": "CERTIFIED",
+        "factorization_enclosure_contains_zero": true,
+        "certificate": "CERTIFIED_PSD_VIA_FACTORIZATION",
+        "certificate_statement": "S_IR - S_tail = C Mid C^T (enclosure identity) and Mid > 0 (kernel certificate), hence S_IR - S_tail >= 0",
+        "reading": "at the same exact degree the inverse-residual Schur form dominates the geometric-tail form"
+      },
+      {
+        "degree": 64,
+        "a": "49/100",
+        "b": "8989/1000",
+        "floating_min_eig": -6.499690293156656e-17,
+        "floating_max_eig": 0.3528340830113552,
+        "closed_form_relative_error": 3.814468109109261e-15,
+        "identity": "S_IR(X = P_m(A) C^T) - S_tail = C[(q^m I - T^m)/a + (a^-1 I - A^-1)(T^m - T^2m)]C^T (DERIVED, exact P_m, aI <= A <= bI)",
+        "middle_floating_min": 0.005119385858803128,
+        "middle_certificate": "CERTIFIED",
+        "factorization_enclosure_contains_zero": true,
+        "certificate": "CERTIFIED_PSD_VIA_FACTORIZATION",
+        "certificate_statement": "S_IR - S_tail = C Mid C^T (enclosure identity) and Mid > 0 (kernel certificate), hence S_IR - S_tail >= 0",
+        "reading": "at the same exact degree the inverse-residual Schur form dominates the geometric-tail form"
+      }
+    ]
+  },
+  "seconds": 40.2
+}

@@ -424,6 +424,52 @@
         "E-OFFLINE-SYN"
       ],
       "budget_improved": "EXPERIMENTAL SIGNAL: eps*/delta^2 = 9.4, 17.9, 28.2 (low band, delta = 1/1000). Finite checkpoints with c(L) delta^2 < eps are blind (certified: the synthetic delta = 1/10 worlds pass the eps = 1/2 and 1/3 checkpoints). The Lean consumer already proves fixed-margin detection for each actual off-line zero; this records the delta- and L-dependence only. Not RH evidence."
+    },
+    {
+      "id": "CR25",
+      "name": "Channel-separable control of -arch and -prime on the near-null subspace",
+      "proposition": null,
+      "statement": "Bounds -arch >= -kappa_A and -prime >= -kappa_P on V with kappa_A + kappa_P smaller than the required tolerance.",
+      "scope": "Native slices at L = 4, 5, 6, both parities.",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-SIGNED"
+      ],
+      "budget_improved": "EXPERIMENTAL SIGNAL with certified entries: on V each channel has O(1) negative eigenvalues (-arch down to -2.1, -prime down to -5.4) while the joint form is at most 7.5e-3; any channel-separable estimate loses O(1). -arch alone is certified not positive at L = 4, 5."
+    },
+    {
+      "id": "CR26",
+      "name": "Stability of slice positivity under prime-cell truncation",
+      "proposition": null,
+      "statement": "The slice form -arch - prime_{q <= P} stays above -eps for some P < Q.",
+      "scope": "L = 4, 5 (certified) and L = 6 (floating).",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-SIGNED"
+      ],
+      "budget_improved": "Dropping only the largest prime power gives certified negative values (-1.06e-5 / -2.7e-3 at L = 4, -0.216 / -0.271 at L = 5); truncated forms are not native. A supplier must use the whole prime cell; truncation or monotone-in-P arguments are blocked."
+    },
+    {
+      "id": "CR27",
+      "name": "Inverse residual dominates the geometric tail at the same exact degree",
+      "proposition": "S_IR(X = P_m(A) C^T) - S_tail = C[(q^m I - T^m)/a + (a^-1 I - A^-1)(T^m - T^2m)]C^T",
+      "statement": "For 0 < aI <= A <= bI, T = I - A/b, q = 1 - a/b and the exact polynomial action, S_IR - S_tail >= 0.",
+      "scope": "Any exact symmetric block pencil; numerically certified at L = 4, 5 (m = 8, 64) and at L = 2 in CI.",
+      "parameter_order": "Algebraic identity.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-SIGNED",
+        "test_the_identity_needs_the_exact_polynomial_action"
+      ],
+      "budget_improved": "Family ordering only: the inverse-residual certificate is at least as strong as the geometric tail at equal exact degree. It needs the exact P_m(A) (a perturbed X breaks the identity). Lean formalization deferred behind the signed-source work, as the review advised."
     }
   ],
   "strength_rule": "An RH-sufficient contract that is also RH-necessary is a sharp interface, not independent sub-RH progress. Only an independent supplier changes the state."

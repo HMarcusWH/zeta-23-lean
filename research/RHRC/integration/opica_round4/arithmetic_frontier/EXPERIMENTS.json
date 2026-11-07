@@ -323,6 +323,14 @@
       "result": "Not discriminating. S1 is certified negative with identical C and A. In the low band at every state the synthetic pencil is certified negative while its certified coupling bound agrees with the native one within 5% (0.004-4.3%). A high-band quartet makes A itself indefinite; at the split, coupling responds only at L=6 (1.2e-2 against 9e-6). The detection threshold eps*(delta) is quadratic in delta for small delta with c(L) = 9.4, 17.9, 28.2 (low band); the eps = 1/2 and 1/3 checkpoints are blind to delta = 1/10 quartets, the eps = 1/4 checkpoint at L=6 detects them (as predicted in session before the L6 run).",
       "authority": "SYNTHETIC objects; pencil statuses certified; thresholds EXPERIMENTAL",
       "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/SUMMARY.json"
+    },
+    {
+      "id": "E-SIGNED",
+      "status": "RUN_SIX_STATES",
+      "goal": "Investigate the full signed source -arch - prime jointly at the native checkpoint states (review revision-2 move 4; work package F).",
+      "method": "signed_source.py on the E-D1 slices (full Gram): channel energies along the slice spectrum, restrictions to the near-null subspace V, a prime-cutoff sweep up to Q = floor(e^L), per-prime-power contributions at the bottom vector, certified truncated-prime witnesses (L = 4, 5) and the DERIVED family comparison.",
+      "result": "On V (dimension 51/50, 142/141, 346/345) the two channels are each indefinite with O(1) eigenvalues (-arch in [-2.1, 5.4]) and cancel to a joint form in [-5e-15, 7.5e-3]. -arch alone is certified not positive at L = 4, 5. Positivity appears only at the full prime cell: dropping only the largest prime power is certified negative at L = 4, 5 and floating-negative at L = 6. At the bottom vector the archimedean budget 2.0-3.0 is consumed by the prime atoms with little internal cancellation. No decomposition into independently controlled native terms was found.",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3d/SUMMARY.json"
     }
   ],
   "corrections": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/CORRECTIONS.json"

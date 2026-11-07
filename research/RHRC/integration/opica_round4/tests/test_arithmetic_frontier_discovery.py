@@ -20,8 +20,10 @@ try:
     _spec.loader.exec_module(NS)
     NB = importlib.util.module_from_spec(importlib.util.spec_from_file_location('_frontier_nearband_discovery', ROOT / 'nearband_bound.py'))
     NB.__spec__.loader.exec_module(NB)
+    SS = importlib.util.module_from_spec(importlib.util.spec_from_file_location('_frontier_signed_discovery', ROOT / 'signed_source.py'))
+    SS.__spec__.loader.exec_module(SS)
 except ImportError:
-    NS = NB = None
+    NS = NB = SS = None
 
 
 @unittest.skipIf(NS is None, 'DISCOVERY_LAYER_ONLY: numpy is not installed')
@@ -73,3 +75,15 @@ class NearBandDiscoveryTests(unittest.TestCase):
     def test_mode_transform_reproduces_the_native_pole_channel(self):
         cal = NB.pole_calibration()
         self.assertLess(max(cal['relative_max_error'].values()), 1e-12)
+
+
+@unittest.skipIf(SS is None, 'DISCOVERY_LAYER_ONLY: numpy is not installed')
+class SignedSourceDiscoveryTests(unittest.TestCase):
+    def test_floating_prime_channel_matches_the_arb_channel(self):
+        st = NS.SRC.NativeState(Fraction(5, 2), K=12, bits=128)
+        for parity in ('even', 'odd'):
+            _, _, ch = st.reduced(parity, with_channels=True)
+            S, Cc = SS.atom_vectors(2.5, 12, st.atoms)
+            P, _ = SS.reduce_signed(SS.signed_prime(S.sum(axis=0), Cc.sum(axis=0)), parity)
+            ref = NS.to_float(ch['prime'])
+            self.assertLess(np.abs(P - ref).max() / np.abs(ref).max(), 1e-12, parity)

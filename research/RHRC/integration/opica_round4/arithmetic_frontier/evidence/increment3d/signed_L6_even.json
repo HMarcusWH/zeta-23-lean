@@ -1,0 +1,334 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_SIGNED_SOURCE_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "state_id": "L6_even",
+  "L": "6",
+  "parity": "even",
+  "K": 1296,
+  "Q": 403,
+  "atoms": 98,
+  "split": 648,
+  "bits": 192,
+  "dimension": 1293,
+  "hashes": {
+    "tool_sha256": "8af3884b0cc681e7d8c282b7b842c463970e92d8c18e4edc0ac7871133b3102f",
+    "engine_sha256": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+    "source_module_sha256": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6",
+    "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+    "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54"
+  },
+  "pole_on_slice_max_abs_float": 9.856818773590715e-59,
+  "pole_statement": "M50 (Lean): the pole channel vanishes on the slice; the floating restriction is at rounding size",
+  "floating_prime_calibration_relative_error": 2.3972390731913023e-13,
+  "energy_identity_float_error": 1.6459481998993847e-16,
+  "spectrum_channels": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING",
+    "threshold": 0.01,
+    "near_null_count": 346,
+    "dimension": 1293,
+    "bottom_eigenvalues": [
+      -8.248937189565098e-15,
+      -6.9678335873125335e-15,
+      -6.5259690656623505e-15,
+      -6.4308291790553885e-15,
+      -6.354183728180349e-15
+    ],
+    "samples": [
+      {
+        "index": 0,
+        "rho": -8.248937189565098e-15,
+        "minus_arch": 3.090440254808952,
+        "minus_prime": -3.090440254808412
+      },
+      {
+        "index": 1,
+        "rho": -6.9678335873125335e-15,
+        "minus_arch": 3.1143327318503697,
+        "minus_prime": -3.1143327318504386
+      },
+      {
+        "index": 2,
+        "rho": -6.5259690656623505e-15,
+        "minus_arch": 3.281927692678228,
+        "minus_prime": -3.2819276926779777
+      },
+      {
+        "index": 3,
+        "rho": -6.4308291790553885e-15,
+        "minus_arch": 3.4829301963165786,
+        "minus_prime": -3.48293019631701
+      },
+      {
+        "index": 4,
+        "rho": -6.354183728180349e-15,
+        "minus_arch": 3.4886682257382247,
+        "minus_prime": -3.488668225738287
+      },
+      {
+        "index": 345,
+        "rho": 0.006840797771301032,
+        "minus_arch": 5.221466790665242,
+        "minus_prime": -5.2146259928936045
+      },
+      {
+        "index": 346,
+        "rho": 0.15157623690513936,
+        "minus_arch": 5.356007298083422,
+        "minus_prime": -5.20443106117845
+      },
+      {
+        "index": 1292,
+        "rho": 13.190767043676232,
+        "minus_arch": 5.3564444119185355,
+        "minus_prime": 7.834322631757608
+      }
+    ],
+    "near_null_cancellation": {
+      "max_ratio_Q_over_channel_sizes": 0.0006554941502703111,
+      "median_channel_size": 3.849025579295798,
+      "minus_arch_energy_range": [
+        -0.3554896062148391,
+        5.221466790665242
+      ]
+    },
+    "restriction_to_near_null_subspace": {
+      "minus_arch_extremes": [
+        -2.0775464231288256,
+        5.367055705714961
+      ],
+      "minus_prime_extremes": [
+        -5.365840614147921,
+        2.077546602240884
+      ],
+      "minus_arch_negative_count": 5,
+      "minus_prime_negative_count": 341,
+      "joint_Q_restricted_extremes": [
+        -4.9478343114875445e-15,
+        0.006840797771300977
+      ],
+      "reading": "on V the two channels cancel to the size of the joint energy; each channel alone is controlled only through the other"
+    }
+  },
+  "prime_cutoff_sweep": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING",
+    "form": "-arch - prime_{q <= P} on the native slice (P < Q is not native)",
+    "top_atoms": [
+      383,
+      389,
+      397,
+      401
+    ],
+    "cutoffs_dropping_only_the_top_atoms": [
+      397,
+      389,
+      383
+    ],
+    "rows": [
+      {
+        "prime_cutoff": 0,
+        "atoms_included": 0,
+        "slice_min": -2.083802041457272,
+        "negative_count": 5,
+        "slice_max": 5.375107769589232
+      },
+      {
+        "prime_cutoff": 2,
+        "atoms_included": 1,
+        "slice_min": -2.7276964907374466,
+        "negative_count": 6,
+        "slice_max": 6.302235631428976
+      },
+      {
+        "prime_cutoff": 3,
+        "atoms_included": 2,
+        "slice_min": -3.140330627524929,
+        "negative_count": 10,
+        "slice_max": 7.359374157293134
+      },
+      {
+        "prime_cutoff": 5,
+        "atoms_included": 4,
+        "slice_min": -3.139339502715747,
+        "negative_count": 17,
+        "slice_max": 8.253819468904819
+      },
+      {
+        "prime_cutoff": 10,
+        "atoms_included": 7,
+        "slice_min": -2.5729362879501037,
+        "negative_count": 33,
+        "slice_max": 8.720490343275786
+      },
+      {
+        "prime_cutoff": 20,
+        "atoms_included": 12,
+        "slice_min": -2.283398399304355,
+        "negative_count": 77,
+        "slice_max": 10.388848254122633
+      },
+      {
+        "prime_cutoff": 50,
+        "atoms_included": 23,
+        "slice_min": -2.846352899240209,
+        "negative_count": 119,
+        "slice_max": 12.002850503714285
+      },
+      {
+        "prime_cutoff": 100,
+        "atoms_included": 35,
+        "slice_min": -2.7651098814528163,
+        "negative_count": 137,
+        "slice_max": 12.085418618794952
+      },
+      {
+        "prime_cutoff": 200,
+        "atoms_included": 60,
+        "slice_min": -2.087474515960698,
+        "negative_count": 122,
+        "slice_max": 12.976499120570619
+      },
+      {
+        "prime_cutoff": 383,
+        "atoms_included": 95,
+        "slice_min": -0.17936762469431072,
+        "negative_count": 13,
+        "slice_max": 13.190104902905471
+      },
+      {
+        "prime_cutoff": 389,
+        "atoms_included": 96,
+        "slice_min": -0.1064655108288476,
+        "negative_count": 9,
+        "slice_max": 13.190719430884995
+      },
+      {
+        "prime_cutoff": 397,
+        "atoms_included": 97,
+        "slice_min": -5.780885934002164e-08,
+        "negative_count": 8,
+        "slice_max": 13.190767108231645
+      },
+      {
+        "prime_cutoff": 403,
+        "atoms_included": 98,
+        "slice_min": -1.2008227680279482e-12,
+        "negative_count": 7,
+        "slice_max": 13.190767043676008
+      }
+    ]
+  },
+  "bottom_vector_atoms": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING",
+    "vector": "bottom generalized eigenvector of (F, G), G-normalized",
+    "minus_arch": 3.090440254808539,
+    "minus_prime_total": -3.0904402548085375,
+    "joint": 1.3322676295501878e-15,
+    "largest_atoms": [
+      {
+        "q": 5,
+        "p": 5,
+        "minus_prime_a": -0.3290409973729683
+      },
+      {
+        "q": 7,
+        "p": 7,
+        "minus_prime_a": -0.20276799251488864
+      },
+      {
+        "q": 11,
+        "p": 11,
+        "minus_prime_a": -0.17909395963744057
+      },
+      {
+        "q": 19,
+        "p": 19,
+        "minus_prime_a": -0.1734743497863484
+      },
+      {
+        "q": 31,
+        "p": 31,
+        "minus_prime_a": -0.15846082214892
+      },
+      {
+        "q": 29,
+        "p": 29,
+        "minus_prime_a": -0.15627020541615533
+      },
+      {
+        "q": 13,
+        "p": 13,
+        "minus_prime_a": -0.15534011709488654
+      },
+      {
+        "q": 37,
+        "p": 37,
+        "minus_prime_a": -0.13924234142802833
+      },
+      {
+        "q": 23,
+        "p": 23,
+        "minus_prime_a": -0.13645637496018076
+      },
+      {
+        "q": 2,
+        "p": 2,
+        "minus_prime_a": -0.13483140598920176
+      },
+      {
+        "q": 4,
+        "p": 2,
+        "minus_prime_a": -0.12135036631974862
+      },
+      {
+        "q": 25,
+        "p": 5,
+        "minus_prime_a": -0.10112875277375319
+      }
+    ],
+    "partial_sums_by_q": [
+      {
+        "q_max": 2,
+        "minus_arch_plus_partial": 2.955608848819337
+      },
+      {
+        "q_max": 3,
+        "minus_arch_plus_partial": 2.8739821354623305
+      },
+      {
+        "q_max": 4,
+        "minus_arch_plus_partial": 2.752631769142582
+      },
+      {
+        "q_max": 7,
+        "minus_arch_plus_partial": 2.220822779254725
+      },
+      {
+        "q_max": 16,
+        "minus_arch_plus_partial": 1.7959205310650888
+      },
+      {
+        "q_max": 41,
+        "minus_arch_plus_partial": 0.9149594819575109
+      },
+      {
+        "q_max": 59,
+        "minus_arch_plus_partial": 0.6981155746181478
+      },
+      {
+        "q_max": 157,
+        "minus_arch_plus_partial": 0.15781182098823487
+      },
+      {
+        "q_max": 401,
+        "minus_arch_plus_partial": 0.0
+      }
+    ],
+    "positive_atoms": 26,
+    "negative_atoms": 72,
+    "sum_abs_over_abs_sum": 1.1360484299376632,
+    "minus_prime_from_slice_matrix": -3.0904402548085397
+  },
+  "seconds": 456.9
+}

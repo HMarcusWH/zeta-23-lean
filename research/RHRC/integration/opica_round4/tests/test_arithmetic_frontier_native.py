@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1] / 'arithmetic_frontier'
 EV2 = ROOT / 'evidence' / 'increment2'
 EV2B = ROOT / 'evidence' / 'increment2b'
 EV3C = ROOT / 'evidence' / 'increment3c'
+EV3D = ROOT / 'evidence' / 'increment3d'
 
 
 def load(name: str, path: Path):
@@ -141,8 +142,63 @@ class Increment2HistoryTests(unittest.TestCase):
                 self.assertTrue((ROOT.parents[4] / path).is_file(), path)
 
 
+def _slice_blocks(L, parity, k, eps):
+    """Numpy-free native slice pencil at a small state (independent elimination basis)."""
+    st = SRC.NativeState(L, K=16, bits=256)
+    M, w = st.reduced(parity)
+    C = st.constraints(parity)
+    Y = IC.elimination_basis_on(C, IC.spread_pivots(C.ncols(), C.nrows()))
+    W = K.identity(len(w))
+    for i, wi in enumerate(w):
+        W[i, i] = wi
+    B = Y.transpose() * M * Y + K.q(eps) * (Y.transpose() * W * Y)
+    rows = B.tolist()
+    from flint import arb_mat
+    return B, arb_mat([r[:k] for r in rows[:k]]), arb_mat([r[k:] for r in rows[:k]]), arb_mat([r[k:] for r in rows[k:]])
+
+
+def _certified_interval(A):
+    n = A.nrows()
+    a = next(Fraction(1, 2 ** j) for j in range(1, 60) if K.certify_ldl(A - K.identity(n, K.q(Fraction(1, 2 ** j))))['status'] == 'CERTIFIED')
+    tr = A[0, 0]
+    for i in range(1, n):
+        tr = tr + A[i, i]
+    b = Fraction(int(K.upper(tr)) + 1)
+    assert K.certify_ldl(K.identity(n, K.q(b)) - A)['status'] == 'CERTIFIED'
+    return a, b
+
+
 class Increment3CDerivedTests(unittest.TestCase):
-    """DERIVED statements of Increment 3C, recomputed exactly without floating point."""
+    """DERIVED statements of Increment 3C/3D, recomputed exactly without floating point."""
+
+    def _families(self, m, perturb=None):
+        B, D, C, A = _slice_blocks(Fraction(2), 'even', 6, Fraction(1, 2))
+        a, b = _certified_interval(A)
+        n = A.nrows()
+        P = K.polynomial_action(A, b, m)
+        X = P * C.transpose()
+        if perturb is not None:
+            X = X + K.identity(n, K.q(perturb)) * C.transpose()
+        S_ir = K.inverse_residual_form(B, 6, a, X)
+        S_tail = K.geometric_tail_form(B, 6, a, b, m)
+        T = K.identity(n) - A * (1 / K.q(b))
+        Tm = K.identity(n)
+        for _ in range(m):
+            Tm = Tm * T
+        Mid = K.symmetrized((K.identity(n, K.q((1 - a / b) ** m)) - Tm) * (1 / K.q(a))
+                            + (K.identity(n, 1 / K.q(a)) - A.inv()) * (Tm - Tm * Tm))
+        E = S_ir - S_tail - C * Mid * C.transpose()
+        return E, Mid
+
+    def test_inverse_residual_dominates_geometric_tail_at_the_same_exact_degree(self):
+        for m in (4, 16):
+            E, Mid = self._families(m)
+            self.assertTrue(all(x.contains(0) for row in E.tolist() for x in row), m)
+            self.assertEqual(K.certify_ldl(Mid)['status'], 'CERTIFIED', m)
+
+    def test_the_identity_needs_the_exact_polynomial_action(self):
+        E, _ = self._families(4, perturb=Fraction(1, 64))
+        self.assertFalse(all(x.contains(0) for row in E.tolist() for x in row))
 
     def test_even_power_majorant_of_the_spectral_indicator(self):
         lam = [Fraction(1, 8), Fraction(251, 1000), Fraction(3, 4), Fraction(3), Fraction(5)]
@@ -327,6 +383,47 @@ class Increment3CEvidenceTests(unittest.TestCase):
                     continue
                 self.assertEqual(d['native']['pencil']['status'], 'CERTIFIED', (name, c['control']))
                 self.assertEqual(d['synthetic']['pencil']['status'], 'FALSIFIED_BOUND', (name, c['control']))
+
+
+class Increment3DEvidenceTests(unittest.TestCase):
+    """The joint signed source -arch - prime at the native states (evidence/increment3d)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.summary = json.loads((EV3D / 'SUMMARY.json').read_bytes())
+        cls.records = {e['entry']: json.loads((EV3D / e['file']).read_bytes()) for e in cls.summary['records']}
+
+    def test_records_bind_tool_engine_source_kernel_and_backend(self):
+        self.assertEqual((self.summary['RH'], self.summary['Step4']), ('OPEN', 'OPEN'))
+        for e in self.summary['records']:
+            self.assertEqual(sha(EV3D / e['file']), e['sha256'])
+            h = self.records[e['entry']]['hashes']
+            self.assertEqual(h['tool_sha256'], sha(ROOT / 'signed_source.py'))
+            self.assertEqual(h['engine_sha256'], sha(ROOT / 'native_slice.py'))
+            self.assertEqual(h['source_module_sha256'], sha(ROOT / 'native_source.py'))
+            self.assertEqual(h['kernel_sha256'], sha(ROOT / 'certificates.py'))
+            self.assertEqual(h['backend_sha256'], sha(SRC.BACKEND_PATH))
+
+    def test_pole_vanishes_and_the_floating_channels_are_calibrated(self):
+        for name, rec in self.records.items():
+            self.assertLess(rec['pole_on_slice_max_abs_float'], 1e-20, name)
+            self.assertLess(rec['floating_prime_calibration_relative_error'], 1e-10, name)
+            self.assertLess(rec['energy_identity_float_error'], 1e-10, name)
+
+    def test_truncated_prime_falsifications_are_witnessed_and_labelled(self):
+        for rec in self.records.values():
+            _walk_falsifications(self, rec)
+            for row in rec.get('certified_truncations', []):
+                self.assertEqual(row['kind'], 'TRUNCATED_PRIME_CELL_NOT_NATIVE')
+
+    def test_derived_family_comparison_is_certified_through_its_factorization(self):
+        seen = 0
+        for rec in self.records.values():
+            for row in rec.get('derived_family_comparison', {}).get('rows', []):
+                self.assertEqual(row['certificate'], 'CERTIFIED_PSD_VIA_FACTORIZATION', row['degree'])
+                self.assertTrue(row['factorization_enclosure_contains_zero'])
+                seen += 1
+        self.assertGreater(seen, 0)
 
 
 if __name__ == '__main__':

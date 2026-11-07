@@ -290,6 +290,43 @@ Near-band smallness explains why the scalar-gap estimate fails. It is not a
 positivity mechanism: the sign lives in the coupled Schur complement (CR23,
 CR24).
 
+## Increment 3D — the joint signed source `−arch − prime`
+
+M50 makes every slice energy exactly `−Re⟨arch u,u⟩ − Re⟨prime u,u⟩`.
+[signed_source.py](signed_source.py) studies that expression on the E-D1
+slices ([evidence/increment3d](evidence/increment3d/SUMMARY.json)). The
+floating prime channel matches the Arb channel to `2.5e-13`, and the pole
+restriction is `1e-58`.
+
+* **Cancellation on the near-null subspace** V (threshold `10⁻²`; dimension
+  51/50, 142/141 and 346/345 at L=4, 5, 6). Each channel alone is indefinite
+  with O(1) eigenvalues (`−arch` in about `[−2.1, 5.4]`, `−prime` mirrored).
+  The joint form lies in `[−5e-15, 7.5e-3]`. Any channel-separable estimate
+  loses O(1) (CR25).
+* **The archimedean channel alone is not positive.** This is certified with
+  exact witnesses at L=4 and 5.
+* **The whole prime cell is needed.** Dropping only the largest prime power
+  gives certified negative values: q=53 at L=4 (`−1.06e-5` even, `−2.7e-3`
+  odd) and q=139 at L=5 (`−0.22`, `−0.27`). At L=6 (q=401) the values are
+  floating-negative. The truncated forms are not native objects (CR26).
+* **Bottom vector.** `−arch` is an O(1) positive budget (2.0–3.0) consumed by
+  the prime atoms with little internal cancellation
+  (`Σ|atom|/|Σ atom| = 1.04–1.29`). The partial sums reach zero only at the
+  end of the cell.
+* **DERIVED family ordering (CR27).** At equal exact degree,
+  `S_IR − S_tail = C[(qᵐI − Tᵐ)/a + (a⁻¹I − A⁻¹)(Tᵐ − T²ᵐ)]Cᵀ ⪰ 0`. It is
+  certified through the factorization with `Mid ≻ 0` at L=4 and 5 (m = 8, 64)
+  and at L=2 in CI, where a perturbed `X` breaks the identity. It is not
+  formalized in Lean.
+
+**Reading.** On V the closing inequality is the exact cancellation of two
+indefinite O(1) channels across the full prime cell: the explicit-formula
+picture, consistent with the zero-sum calibration of Increment 3C. No
+decomposition into independently controlled native terms was found. This is
+evidence that a (C1) supplier has the strength of Weil positivity on these
+slices (a sharp interface), not a sub-RH step. A source-specific inequality
+at unbounded apertures remains **OPEN**.
+
 ## Not built yet
 
 The leakage modules, checker soundness, the enclosure bridge, the universal
