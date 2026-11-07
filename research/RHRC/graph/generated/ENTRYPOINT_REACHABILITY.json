@@ -1795,6 +1795,7 @@
     "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates",
     "Zeta23.OPICARound4.ArithmeticFrontier.MomentSlices",
     "Zeta23.OPICARound4.ArithmeticFrontier.PhysicalBlockCertificate",
+    "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
     "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure",
     "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore",
     "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers",

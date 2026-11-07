@@ -12594,6 +12594,19 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "named_source_declaration_count": 12,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/PoleChannel.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/SelectedPacketClosure.lean",
       "module": "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure",
       "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure",
@@ -18331,7 +18344,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1249,
+  "entry_count": 1250,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",
