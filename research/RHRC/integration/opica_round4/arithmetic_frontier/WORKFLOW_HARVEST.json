@@ -212,5 +212,67 @@
     ],
     "disposition": "INCOMPLETE_AT_RECORDING: Increment 1 is not CI-qualified until the Round4 governed gate completes on the current head",
     "scope": "Partial harvest; the Increment 2 head needs its own harvest."
+  },
+  "revision2_build_snapshot": {
+    "recorded_utc": "2026-11-07 about 17:00 UTC",
+    "heads": [
+      "c27abd8",
+      "54ef598",
+      "1b2ddb3",
+      "8ea462a",
+      "39285f9",
+      "41eb596",
+      "94cb6d8"
+    ],
+    "observed_failures": [
+      {
+        "head": "c27abd8",
+        "checks": [
+          "Round4 / INDEPENDENT_CANONICAL",
+          "INDEPENDENT_AUXILIARY",
+          "INDEPENDENT_CORE",
+          "ACCEPTANCE",
+          "opica-component-summary",
+          "followup-summary"
+        ],
+        "cause": "CANCELLATION_CASCADE: upstream lanes and followup-aggregate were cancelled by later pushes; the completed follow-up contract, regression and four formal lanes passed"
+      },
+      {
+        "head": "8ea462a",
+        "checks": [
+          "opica-component-summary",
+          "followup-summary",
+          "contact-calculus-complete"
+        ],
+        "cause": "CANCELLATION_CASCADE: children cancelled by later pushes"
+      },
+      {
+        "head": "41eb596",
+        "checks": [
+          "opica-component-summary",
+          "Complete 44-check execution harvest",
+          "followup-summary",
+          "contact-calculus-complete",
+          "Round4 / INDEPENDENT_CORE",
+          "INDEPENDENT_CANONICAL",
+          "INDEPENDENT_AUXILIARY",
+          "ACCEPTANCE"
+        ],
+        "cause": "CANCELLATION_CASCADE after the push of 94cb6d8"
+      },
+      {
+        "head": "94cb6d8",
+        "checks": [
+          "rhkg-compiler-receipt"
+        ],
+        "cause": "GENUINE_STALE_GENERATED_PRODUCTS: materialize_derived_state --check reported stale graph outputs; the canonical products had not been regenerated since 54ef598. Fixed by the final regenerated-products commit of this build."
+      }
+    ],
+    "local_gates": {
+      "development_math_gate_39285f9_tree": "FAIL: control 13 produced an extra notation error",
+      "development_math_gate_94cb6d8": "PASS 98 modules, 1186 declarations, 98 controls"
+    },
+    "disposition": "No CI result qualifies this build yet; the final head needs its own complete run.",
+    "scope": "Partial harvest from PR activity notifications and job logs."
   }
 }

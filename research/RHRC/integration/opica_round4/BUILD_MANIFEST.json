@@ -58,7 +58,7 @@
   "classification_rules": [
     {
       "id": "opica_round4_arithmetic_frontier_research",
-      "pattern": "\\A(?:research/RHRC/integration/opica_round4/arithmetic_frontier/BUDGET_SCHEMA\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC\\.md|research/RHRC/integration/opica_round4/arithmetic_frontier/CANDIDATE_RESULTS\\.jsonl|research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/EXPERIMENTS\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/MODEL_PRESERVATION\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/SOURCE_LEDGER\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/STATE_SCHEMA\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/WORKFLOW_HARVEST\\.json)\\Z",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round4/arithmetic_frontier/BUDGET_SCHEMA\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC\\.md|research/RHRC/integration/opica_round4/arithmetic_frontier/CANDIDATE_RESULTS\\.jsonl|research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/EXPERIMENTS\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/MODEL_PRESERVATION\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/SOURCE_LEDGER\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/STATE_SCHEMA\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/WORKFLOW_HARVEST\\.json|research/RHRC/integration/opica_round4/arithmetic_frontier/HANDOVER_2026\\-11\\-07\\.md)\\Z",
       "file_class": "DOCUMENTATION",
       "trust_zone": "RESEARCH_ONLY"
     },
@@ -763,7 +763,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_composition/descendant.py",
-      "sha256": "321c453435d3e0acc7945abd7c83a9b12f98e7ddcfc9f81a86dfea18ade99bde"
+      "sha256": "035a8047e5a1686096c4a3c264fe215ee65f8e4d89d26d14dbcc5f184ab22bf1"
     },
     {
       "path": "research/RHRC/integration/opica_composition/evidence.py",
@@ -1671,7 +1671,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/WORKFLOW_HARVEST.json",
-      "sha256": "46a4c3e735d032f9856641e19b178aa008a7bb5950cc2c2a39f162d23e8333b5"
+      "sha256": "1efccc920a360ee6a4f68ed2a8c2c9134f32820d8c77a8c92187375a77c097aa"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/native_slice.py",
@@ -1992,6 +1992,10 @@
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3b/ed1_L6_odd_quarter.json",
       "sha256": "fcaea747a3b737d0164cc079b4eba21e5973763e043e945e498b70e1fb9bc4e2"
+    },
+    {
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/HANDOVER_2026-11-07.md",
+      "sha256": "1d861ead6c0ed93ec9a1f4431752f7839862fe3d3a69e5c3e414d928749d7f3d"
     }
   ],
   "edit": [
@@ -2045,7 +2049,7 @@
     },
     {
       "path": "research/RHRC/graph/FILE_CLASSES.json",
-      "sha256": "1145aaa202d7430b71e0ace2d8a455a632f7d8d206bd7eb2bfcf8c7f61415b47"
+      "sha256": "81efa0102de7d5f715743ca6e771b326e830d175342a5c9754a39b0b1580655a"
     },
     {
       "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
@@ -2504,7 +2508,7 @@
       "authority": "UNCHANGED_PARENT_BYTES"
     }
   ],
-  "path_policy_sha256": "f3fb52ec8a1ee432d1c1a7b40d298a2ef1efdb1841d1b6504accc92880e608f7",
+  "path_policy_sha256": "fc3fb5b6d4298631a9bec3cf7c6f1745cd12cd055eb9b3e35d84d52a4d64d2bc",
   "current_compiler_accepted": false,
   "RH": "OPEN",
   "Step4": "OPEN",
