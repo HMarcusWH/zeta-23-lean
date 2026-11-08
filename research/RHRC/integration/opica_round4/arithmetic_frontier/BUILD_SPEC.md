@@ -356,6 +356,71 @@ from the scoring, `independent_check.py` reconstructs the n = 5 checkpoint
 `Q_p ≥ −⅕‖x‖²` at L=7 in both parities at 512 bits (level 3, CERTIFIED,
 about 23 minutes each).
 
+## Increment 3F — formal supports, witness receipts and the record of what cannot be built
+
+**Lean (local pinned Linux compile; gate PASS at 101 modules, 1213 complete
+types and axiom sets, 100 controls; only `propext`, `Classical.choice` and
+`Quot.sound`).**
+
+* `MomentLeakage` (M51, CR28) proves the compressed commutator with every term
+  retained: `[Vᴴ D₀ V, Vᴴ E V] = Vᴴ [D₀, E] V + Z Lᴴ - L Zᴴ`, for leakage
+  `(1 - V Vᴴ) D₀ V = W Lᴴ` of any finite rank. The one-normal and no-leakage
+  cases are included. The native instantiation (actual carrier basis and
+  canonical source) is not formalized, and `Vᴴ [D₀, E] V` is not shown to
+  vanish.
+* `FiniteCertificateSoundness` (M52, CR29) proves, for exact real data:
+  * the kernel's shifted-factor rule is sound;
+  * `τ > 0` is necessary;
+  * an exact negative witness refutes `A ⪰ 0`;
+  * a positive pencil `F + εG` gives the checkpoint inequality.
+
+  The native enclosure bridge is not proved, so numerical certificates are not
+  Lean facts about the actual source.
+* `SourceColumnTrace` (M53, CR30) proves, for `C = H S`:
+  * `G = Sᴴ H² S` and `Cᴴ H C = Sᴴ H³ S`;
+  * the column projection is a self-adjoint idempotent;
+  * `tr(((1 - P) H)ᴴ ((1 - P) H)) = tr(H²) - tr(G⁻¹ Sᴴ H⁴ S)`.
+* Two new semantic controls reject the commutator without its leakage terms
+  and the certificate with `0 ≤ τ`. The suite stays at 100 because the pinned
+  isolated-worker recipe uses Lean's default `maxErrors = 100`. Raising it is
+  a recipe-version change.
+
+**Witness receipts.** [ed1_receipts.py](ed1_receipts.py) reruns the E-D1 and
+E-H7 pencils and keeps a receipt for every decision:
+
+* for CERTIFIED rows: `τ`, the certified residual bound and the factor
+  enclosure hash (consumer `posDef_of_shifted_factor`);
+* for FALSIFIED rows: the exact dyadic witness vector and its value enclosure
+  ([evidence/increment3f](evidence/increment3f/SUMMARY.json)).
+
+Every status shared with the frozen records agrees, at L=4, 5 and 6 in both
+parities, and at L=7 (E-H7) in both parities, with no difference at all. The only differences are tail rows that the
+frozen L=6 records never tested (degree 128, beyond their limit 64). CI
+rechecks `τ > 0`, the residual bound `< τ²` and every witness sign from the
+recorded data.
+
+**Model map and harvest.**
+
+* `MODEL_PRESERVATION.json` adds MP09–MP12:
+  * the low-block and off-line synthetic controls;
+  * the truncated prime cell;
+  * the archimedean-only form.
+* `WORKFLOW_HARVEST.json` records 02847b5: 23 of 24 workflows passed and none
+  failed. Round4 passed with ACCEPTANCE. Round2's `generated` job was
+  cancelled by the 2fc6eee push.
+
+**Not buildable by engineering (recorded in `OPEN_PREMISES.json`).**
+
+* The independent arithmetic supplier (Increment 5 and the acceptance of work
+  package F). It is the open closing estimate, a sharp interface with Weil
+  positivity.
+* `Step4Terminal` and Increment 6.
+* The direct C2 alternative.
+* The native enclosure bridge.
+* The universal approximate-kernel paper audit.
+
+**RH, Step 4 and the closing inequalities remain OPEN.**
+
 ## Not built yet
 
 The leakage modules, checker soundness, the enclosure bridge, the universal
@@ -368,14 +433,15 @@ and [EXPERIMENTS.json](EXPERIMENTS.json).
    Channel-separable and prime-truncated suppliers are blocked (CR25, CR26).
    A supplier must control the exact explicit-formula cancellation of
    `-arch - prime` across the whole prime cell on the near-null subspace.
-2. Quantify, in Lean, the off-line detection margin `d(ρ, L)` of
-   `eventually_no_moment_slice_lower_bound_below_margin` in δ and L (CR24
-   signal `ε* ≈ c(L)δ²`). This sharpens the interface and closes nothing.
-3. A witness-retaining successor of the frozen E-D1 tool for future
-   predeclarations, and the next checkpoint (n = 6, L=8) once its cost is
-   budgeted.
-4. Formalize CR27 and build `FiniteCertificateSoundness` and the native
-   enclosure bridge, but only if a chosen proof consumes them.
+2. Instantiate `MomentLeakage` on the actual carrier: a basis of the moment
+   slice, `D₀ = diag(n²)` and the canonical source. Then decide whether
+   `Vᴴ [D₀, E] V` and the leakage numerator carry usable sign information.
+3. The native enclosure bridge: Arb balls contain the true native entries. It
+   is needed only if the chosen proof consumes the numerical certificates, and
+   it is what would make the receipts of Increment 3F Lean facts.
+4. Quantify the off-line detection margin `d(ρ, L)` in Lean (CR24), formalize
+   CR27, and add the nonorthogonal-metric version of the source-column trace
+   identity, each only if a chosen proof consumes it.
 
 Only a proved supplier composed with these consumers, validated on the final head,
 could support a Step 4 claim.

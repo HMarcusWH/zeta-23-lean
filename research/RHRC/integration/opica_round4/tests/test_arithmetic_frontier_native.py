@@ -502,5 +502,61 @@ class Increment3BEvidenceTests(unittest.TestCase):
                 self.assertLess(exact_from_str(rec['SCALAR_GAP']['witness_value']['upper_exact']), 0)
 
 
+class Increment3FReceiptTests(unittest.TestCase):
+    """Witness-retaining reruns of E-D1 and E-H7 (evidence/increment3f)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.ev = ROOT / 'evidence' / 'increment3f'
+        cls.summary = json.loads((cls.ev / 'SUMMARY.json').read_bytes())
+        cls.records = {e['entry']: json.loads((cls.ev / e['file']).read_bytes()) for e in cls.summary['records']}
+
+    def test_records_bind_the_tool_and_the_frozen_inputs(self):
+        self.assertEqual((self.summary['RH'], self.summary['Step4']), ('OPEN', 'OPEN'))
+        for e in self.summary['records']:
+            self.assertEqual(sha(self.ev / e['file']), e['sha256'])
+            h = self.records[e['entry']]['hashes']
+            self.assertEqual(h['tool_sha256'], sha(ROOT / 'ed1_receipts.py'))
+            self.assertEqual(h['ed1_sha256'], sha(ROOT / 'ed1_response.py'))
+            self.assertEqual(h['engine_sha256'], sha(ROOT / 'native_slice.py'))
+            self.assertEqual(h['kernel_sha256'], sha(ROOT / 'certificates.py'))
+
+    def test_every_shared_status_agrees_with_the_frozen_record(self):
+        # A difference is allowed only for a ladder row the frozen record never tested
+        # (frozen status None, degree above its tested_up_to); every shared row must agree.
+        for name, rec in self.records.items():
+            agr = rec['agreement_with_frozen_record']
+            self.assertEqual(sha(ROOT / agr['file']), agr['sha256'], name)
+            frozen = json.loads((ROOT / agr['file']).read_bytes())
+            limit = frozen['GEOMETRIC_TAIL_LADDER'].get('tested_up_to')
+            for label, ours, theirs in agr['mismatches']:
+                self.assertIsNone(theirs, (name, label))
+                fam, degree = label.split('/')
+                self.assertEqual(fam, 'GEOMETRIC_TAIL_LADDER', (name, label))
+                self.assertGreater(int(degree), limit, (name, label))
+
+    def _rows(self, rec):
+        yield rec['SCHUR_FULL_INVERSE_ACTION']
+        for fam in ('INVERSE_RESIDUAL_LADDER', 'GEOMETRIC_TAIL_LADDER'):
+            yield from rec[fam]['rows']
+
+    def test_receipts_recheck_from_the_recorded_data(self):
+        checked = 0
+        for name, rec in self.records.items():
+            for row in self._rows(rec):
+                if row['status'] == 'CERTIFIED':
+                    tau = exact_from_str(row['receipt']['tau'])
+                    self.assertGreater(tau, 0, name)
+                    self.assertLess(exact_from_str(row['residual_frobenius_sq_upper']), tau * tau, name)
+                    self.assertEqual(len(row['receipt']['factor_enclosure_sha256']), 64)
+                    checked += 1
+                elif row['status'] == 'FALSIFIED_BOUND':
+                    self.assertLess(exact_from_str(row['witness_value']['upper_exact']), 0, name)
+                    vec = [float.fromhex(x) for x in row['receipt']['vector_hex']]
+                    self.assertTrue(vec and any(v != 0 for v in vec), name)
+                    checked += 1
+        self.assertGreater(checked, 0)
+
+
 if __name__ == '__main__':
     unittest.main()

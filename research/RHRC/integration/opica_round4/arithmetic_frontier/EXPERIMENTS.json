@@ -335,6 +335,13 @@
       "method": "signed_source.py on the E-D1 slices (full Gram): channel energies along the slice spectrum, restrictions to the near-null subspace V, a prime-cutoff sweep up to Q = floor(e^L), per-prime-power contributions at the bottom vector, certified truncated-prime witnesses (L = 4, 5) and the DERIVED family comparison.",
       "result": "On V (dimension 51/50, 142/141, 346/345) the two channels are each indefinite with O(1) eigenvalues (-arch in [-2.1, 5.4]) and cancel to a joint form in [-5e-15, 7.5e-3]. -arch alone is certified not positive at L = 4, 5. Positivity appears only at the full prime cell: dropping only the largest prime power is certified negative at L = 4, 5 and floating-negative at L = 6. At the bottom vector the archimedean budget 2.0-3.0 is consumed by the prime atoms with little internal cancellation. No decomposition into independently controlled native terms was found.",
       "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3d/SUMMARY.json"
+    },
+    {
+      "id": "E-RECEIPTS",
+      "status": "RUN_NINE_STATES",
+      "goal": "Witness-retaining reruns of the frozen E-D1 and E-H7 decisions (plan \u00a75.4 proof-carrying outputs).",
+      "result": "At L = 4, 5, 6 (both parities, plus L = 4 at 1/1024) and L = 7 (both parities) every status shared with the frozen records agrees; the frozen L = 6 records never tested tail degree 128 (listed separately). Every CERTIFIED row carries tau, the residual bound and a factor enclosure hash; every FALSIFIED row carries its exact witness vector and value enclosure.",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3f/SUMMARY.json"
     }
   ],
   "corrections": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/CORRECTIONS.json"
