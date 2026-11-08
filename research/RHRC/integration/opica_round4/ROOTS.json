@@ -8925,6 +8925,328 @@
       "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeMomentDisplacement.lean",
       "line": 339,
       "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 48,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.rieszVec",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 51,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.rieszCoeff",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 54,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.mem_rieszSlice_iff",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 57,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.rieszVec_mem",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 60,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.inner_rieszVec",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 62,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.inner_rieszVec_of_mem_slice",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 67,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.sub_rieszCoeff_mem",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 72,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.starProjection_rieszSlice",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 87,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.sub_starProjection_rieszSlice",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 94,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice_compressed_commutator",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 102,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.centeredPowerVec",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 127,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.inner_centeredPowerVec",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 130,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.evenFlatPoleAmb",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 136,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.oddFlatPoleM3Amb",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 140,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.evenSliceAmb",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 145,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.oddSliceAmb",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 148,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.evenLeakageVec",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 151,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.oddLeakageVec",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 154,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.mem_evenSliceAmb_iff",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 157,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.mem_oddSliceAmb_iff",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 168,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexOp",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 186,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.canonicalSourceOp",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 189,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexOp_isSymmetric",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 191,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.canonicalSourceOp_isSymmetric",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 194,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexOp_source_commute_form",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 198,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexOp_mem_evenFlatPole",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 209,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexOp_mem_oddFlatPoleM3",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 223,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.inner_evenLeakageVec_squaredIndexOp",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 237,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.inner_oddLeakageVec_squaredIndexOp",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 244,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.even_slice_rank_one_leakage",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 252,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.odd_slice_rank_one_leakage",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 262,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.even_native_rank_two_commutator",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 274,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.odd_native_rank_two_commutator",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "line": 296,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.reconstruction_offdiag_entry_le",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 33,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.sum_norm_mul_le",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 52,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.reconstruction_lower_bound",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 62,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice_eigen_commutator",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 157,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice_form_lower_of_geometry_basis",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 185,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.EvenGeometryResponseCertificate",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 238,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.OddGeometryResponseCertificate",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 251,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_of_certificate",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 265,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_of_certificate",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 289,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.FixedParityGeometryResponsePolynomial",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 318,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_polynomial_of_geometry_response",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 325,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
+    },
+    {
+      "declaration": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "line": 336,
+      "status": "SUPPORT_DECLARATION_NATIVE_CHECK_REQUIRED"
     }
   ],
   "historical_subset": {
@@ -10069,8 +10391,8 @@
     "authority": "RETAINED_EXACT_SCOPE_NOT_CURRENT_CI_ACCEPTANCE"
   },
   "arithmetic_frontier_subset": {
-    "declaration_count": 196,
-    "module_count": 15,
+    "declaration_count": 242,
+    "module_count": 17,
     "modules": [
       "Zeta23.OPICARound4.ArithmeticFrontier.MomentSlices",
       "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates",
@@ -10086,9 +10408,11 @@
       "Zeta23.OPICARound4.ArithmeticFrontier.GrowthClosure",
       "Zeta23.OPICARound4.ArithmeticFrontier.CofinalSemiboundedClosure",
       "Zeta23.OPICARound4.ArithmeticFrontier.C2GrowthClosure",
-      "Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement"
+      "Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement",
+      "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction"
     ],
-    "semantic_mutation_count": 25,
+    "semantic_mutation_count": 29,
     "authority": "LOCAL_PINNED_LINUX_COMPILE_AND_AUDIT_CURRENT_HEAD_CI_REQUIRED",
     "closing_premises": "OPEN"
   }

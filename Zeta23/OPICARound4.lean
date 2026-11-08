@@ -89,3 +89,5 @@ import Zeta23.OPICARound4.ArithmeticFrontier.GrowthClosure
 import Zeta23.OPICARound4.ArithmeticFrontier.CofinalSemiboundedClosure
 import Zeta23.OPICARound4.ArithmeticFrontier.C2GrowthClosure
 import Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement
+import Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor
+import Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction

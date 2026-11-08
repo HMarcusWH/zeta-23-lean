@@ -460,3 +460,23 @@ identities.
 The gate is now 1275 declarations in 105 modules with 109 controls, run in two
 shards (84 + 25). Each control must own exactly one type-mismatch error. The
 control omitted in 3F is restored.
+
+## Arithmetic frontier, revision 3 stage 4D: the leakage factor and the (SG) consumer (8 November 2026)
+
+Two modules add 46 declarations (contracts M58–M59).
+
+* `NativeLeakageFactor` (M58) constructs the leakage factor explicitly.
+  * On each actual moment slice, `D₀ u − P_S D₀ u` is a multiple of one vector
+    orthogonal to the slice. The coefficient is `M₆(u)` (even) or `M₇(u)` (odd)
+    divided by that vector's squared norm.
+  * With NC, the compressed commutator of `D₀` and the full canonical source is
+    exactly rank two.
+* `GeometryReconstruction` (M59) proves the reconstruction bound in a geometry
+  eigenbasis.
+  * A geometry-response certificate gives the slice lower bound at its floor.
+  * Polynomial certificates in one parity at every late aperture imply (PG) and
+    Mathlib `RiemannHypothesis`.
+
+These are identities and consumers. **The certificate premise, every source
+estimate, RH and Step 4 remain OPEN.** The gate is now 1321 declarations in 107
+modules with 113 controls (shards 84 + 29).

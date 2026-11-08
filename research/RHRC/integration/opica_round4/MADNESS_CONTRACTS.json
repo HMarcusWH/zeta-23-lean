@@ -349,6 +349,18 @@
       "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement",
       "claim": "Squared-index commutator of the full canonical source: [D0, A] = (n_i + n_j)(d_i - d_j) has a rank-four vecMulVec form whose form vanishes on boundary-flat columns (NC, from the existing displacement theorem; no pole split). Compressed commutator [Vh D0 V, Vh A V] = (Vh A W) Lh - L (Vh A W)h under a supplied leakage factorization, and the exact parity leakage D0 u with M_k(D0 u) = M_{k+2}(u). The native pole profiles satisfy (D0 + beta) r = c 1 (even) and c' n (odd), so D0 u stays pole-neutral and leaving the slice is the single functional M6 (even) or M7 (odd): rank-one leakage in functional form. The explicit orthonormal leakage factorization and every sign remain OPEN.",
       "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M58",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "claim": "Explicit rank-one leakage factor on the actual slices: for a Riesz slice S = F meet ker <q,.>, x in F decomposes as P_S x + c(x) r with r = P_F q orthogonal to S and c(x) = <r,x>/||r||^2. Natively (F the pole-neutral boundary-flat sector, q = n^4 even, n^5 with M3 = 0 odd) D0 u - P_S D0 u = (M6(u)/||r_e||^2) r_e and (M7(u)/||r_o||^2) r_o; the ambient slices equal the existing moment slices. With NC for the full canonical source the compressed commutator is exactly rank two: <u, P D0 P A v - P A P D0 v> = c(v) conj<r, A u> - conj(c(u)) <r, A v>. Identities only; no sign.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M59",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "claim": "Abstract reconstruction bound: under (theta_i - theta_j) H_ij = z_i conj(l_j) - l_i conj(z_j) with gaps >= g > 0 and Re H_ii >= h0, Re x*Hx >= (h0 - 2 n_z n_l / g) ||x||^2 (entrywise Cauchy-Schwarz, no dimension factor). In a geometry eigenbasis of P D0 on a Riesz slice the native M58 identity supplies the relation; a geometry-response certificate gives the existing Even/OddMomentSliceLowerBound at its floor; FixedParityGeometryResponsePolynomial (SG with explicit geometry) implies PG and RiemannHypothesis. The certificate premise is OPEN.",
+      "arithmetic_estimate_supplied": false
     }
   ],
   "closing_arithmetic": {
@@ -1483,6 +1495,64 @@
         "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_even_slice_leakage",
         "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_odd_slice_leakage"
       ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "sha256": "8d6d35ec5ba9ce8bc0fdcafc1f8416d7f96266d1718d827263569009d61c05f4",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice",
+        "Zeta23.OPICARound4.ArithmeticFrontier.rieszVec",
+        "Zeta23.OPICARound4.ArithmeticFrontier.rieszCoeff",
+        "Zeta23.OPICARound4.ArithmeticFrontier.mem_rieszSlice_iff",
+        "Zeta23.OPICARound4.ArithmeticFrontier.rieszVec_mem",
+        "Zeta23.OPICARound4.ArithmeticFrontier.inner_rieszVec",
+        "Zeta23.OPICARound4.ArithmeticFrontier.inner_rieszVec_of_mem_slice",
+        "Zeta23.OPICARound4.ArithmeticFrontier.sub_rieszCoeff_mem",
+        "Zeta23.OPICARound4.ArithmeticFrontier.starProjection_rieszSlice",
+        "Zeta23.OPICARound4.ArithmeticFrontier.sub_starProjection_rieszSlice",
+        "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice_compressed_commutator",
+        "Zeta23.OPICARound4.ArithmeticFrontier.centeredPowerVec",
+        "Zeta23.OPICARound4.ArithmeticFrontier.inner_centeredPowerVec",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenFlatPoleAmb",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddFlatPoleM3Amb",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenSliceAmb",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddSliceAmb",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenLeakageVec",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddLeakageVec",
+        "Zeta23.OPICARound4.ArithmeticFrontier.mem_evenSliceAmb_iff",
+        "Zeta23.OPICARound4.ArithmeticFrontier.mem_oddSliceAmb_iff",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexOp",
+        "Zeta23.OPICARound4.ArithmeticFrontier.canonicalSourceOp",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexOp_isSymmetric",
+        "Zeta23.OPICARound4.ArithmeticFrontier.canonicalSourceOp_isSymmetric",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexOp_source_commute_form",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexOp_mem_evenFlatPole",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexOp_mem_oddFlatPoleM3",
+        "Zeta23.OPICARound4.ArithmeticFrontier.inner_evenLeakageVec_squaredIndexOp",
+        "Zeta23.OPICARound4.ArithmeticFrontier.inner_oddLeakageVec_squaredIndexOp",
+        "Zeta23.OPICARound4.ArithmeticFrontier.even_slice_rank_one_leakage",
+        "Zeta23.OPICARound4.ArithmeticFrontier.odd_slice_rank_one_leakage",
+        "Zeta23.OPICARound4.ArithmeticFrontier.even_native_rank_two_commutator",
+        "Zeta23.OPICARound4.ArithmeticFrontier.odd_native_rank_two_commutator"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "sha256": "22581705faca916ca1733b1796f46215dfe20c7f963dd42bb526b3a698d86d62",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.reconstruction_offdiag_entry_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.sum_norm_mul_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.reconstruction_lower_bound",
+        "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice_eigen_commutator",
+        "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice_form_lower_of_geometry_basis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.EvenGeometryResponseCertificate",
+        "Zeta23.OPICARound4.ArithmeticFrontier.OddGeometryResponseCertificate",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_of_certificate",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_of_certificate",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FixedParityGeometryResponsePolynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_polynomial_of_geometry_response",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial"
+      ]
     }
   },
   "retained_support_subset": {
@@ -2138,6 +2208,17 @@
         "parity": "fixed literal scalar source",
         "allowed_loss": "C_alpha exp(alpha t) for every alpha > 0 (correlation rate 2 alpha in a)",
         "polynomial_adapter": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_polynomial"
+      },
+      {
+        "id": "SG",
+        "premise": "Zeta23.OPICARound4.ArithmeticFrontier.FixedParityGeometryResponsePolynomial",
+        "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
+        "premise_proved": false,
+        "coverage": "every sufficiently large aperture",
+        "parity": "fixed before the aperture",
+        "allowed_loss": "certificate floor C (1 + L)^d",
+        "implies": "PG",
+        "certificate": "Zeta23.OPICARound4.ArithmeticFrontier.EvenGeometryResponseCertificate"
       }
     ],
     "revision3_note": "Revision 3 adds coarse OR-alternatives PG, SE, SB and C2-SE with proved consumers. They relax the quantitative estimate, not the requirement of an independent RH-strength supplier; every premise remains OPEN. A cofinal polynomial-bound set is not PG, and a per-aperture constant is not SB."

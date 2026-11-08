@@ -65,7 +65,7 @@ class CliOrchestrationTests(unittest.TestCase):
         self.assertEqual((frontier['declaration_count'],frontier['module_count'],
                           frontier['semantic_mutation_count']),(1079,90,84))
         self.assertEqual((len(math_gate.EXPECTED_DECLARATIONS),len(math_gate.MODULES),
-                          math_gate.SEMANTIC_MUTATION_COUNT),(1275,105,109))
+                          math_gate.SEMANTIC_MUTATION_COUNT),(1321,107,113))
         with patch.object(math_gate,'EXPECTED_DECLARATIONS',math_gate.EXPECTED_DECLARATIONS[1:]):
             with self.assertRaisesRegex(RuntimeError,'Retained 1079/90/84'):
                 math_gate.retained_pre_frontier_scope()
@@ -77,11 +77,11 @@ class CliOrchestrationTests(unittest.TestCase):
                           math_gate.FRONTIER_SEMANTIC_MUTATIONS.replace('\nexample','\n-- removed',1)):
             with self.assertRaisesRegex(RuntimeError,'Retained 1079/90/84'):
                 math_gate.retained_pre_frontier_scope()
-        # The 109 controls are sharded below Lean's 100-error cap; no control is dropped, and
+        # The 113 controls are sharded below Lean's 100-error cap; no control is dropped, and
         # every control must own exactly one type-mismatch error in its own shard source.
         self.assertEqual([text.count('\nexample') + text.startswith('example')
-                          for _,text in math_gate.SEMANTIC_MUTATION_SHARDS],[84,25])
-        self.assertEqual(math_gate.semantic_mutation_shard_scope(),109)
+                          for _,text in math_gate.SEMANTIC_MUTATION_SHARDS],[84,29])
+        self.assertEqual(math_gate.semantic_mutation_shard_scope(),113)
         with patch.object(math_gate,'SEMANTIC_MUTATION_SHARDS',(('01',math_gate.SEMANTIC_MUTATIONS),)):
             with self.assertRaisesRegex(RuntimeError,'shard scope'):
                 math_gate.semantic_mutation_shard_scope()
