@@ -43,7 +43,7 @@ def check_madness_contracts(repo):
             ledger['claim_cap']=='SUPPORT_ONLY_RH_AND_STEP4_OPEN' and
             ledger['RH']==ledger['Step4']=='OPEN' and
             ledger['closing_arithmetic']['status']=='OPEN' and
-            [r['id'] for r in ledger['contracts']]==['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12','M13','M14','M15','M16','M17','M18','M19','M20','M21','M22','M23','M24','M25','M26','M27','M28','M29','M30','M31','M32','M33','M34','M35','M36','M37','M38','M39','M40','M41','M42','M43','M44','M45','M46','M47','M48','M49','M50','M51','M52','M53'] and
+            [r['id'] for r in ledger['contracts']]==['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12','M13','M14','M15','M16','M17','M18','M19','M20','M21','M22','M23','M24','M25','M26','M27','M28','M29','M30','M31','M32','M33','M34','M35','M36','M37','M38','M39','M40','M41','M42','M43','M44','M45','M46','M47','M48','M49','M50','M51','M52','M53','M54','M55','M56','M57'] and
             all(r['arithmetic_estimate_supplied'] is False for r in ledger['contracts']),
             'Madness claim authority differs')
     require(set(ledger['current_modules'])==set(MADNESS_MODULES), 'Exact Madness module inventory differs')
@@ -71,8 +71,10 @@ def check_madness_contracts(repo):
             'Retained 1079/90/84 pre-frontier register differs')
     frontier=ledger['arithmetic_frontier']
     require(frontier['status']=='OPEN' and frontier['combination']=='OR' and
-            [b['id'] for b in frontier['branches']]==['C1','PACKET','C2','K3','CAUSAL'] and
-            all(b['premise_proved'] is False for b in frontier['branches']),
+            [b['id'] for b in frontier['branches']]==['C1','PACKET','C2','K3','CAUSAL','PG','SE','SB','C2-SE'] and
+            all(b['premise_proved'] is False for b in frontier['branches']) and
+            all(b['premise'] in EXPECTED_DECLARATIONS and b['consumer'] in EXPECTED_DECLARATIONS
+                for b in frontier['branches'][5:]),
             'Arithmetic-frontier branch escalated or changed')
     return {'status':'PASS_SOURCE_BINDINGS_ONLY','RH':'OPEN','Step4':'OPEN'}
 

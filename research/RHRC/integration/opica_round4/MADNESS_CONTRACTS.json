@@ -325,6 +325,30 @@
       "module": "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnTrace",
       "claim": "Source-column identities for C = H S: G = Sᴴ H² S, Cᴴ H C = Sᴴ H³ S, the column projection is self-adjoint and idempotent, and tr(((1-P)H)ᴴ((1-P)H)) = tr(H²) - tr(G⁻¹ Sᴴ H⁴ S). They make the C4 leakage computable; no signed-core premise or source estimate is proved.",
       "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M54",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GrowthClosure",
+      "claim": "Membership of the actual finite-phase native witnesses in the exact moment slices with depth -exp(beta L) at arbitrarily late apertures; fixed-rate exclusion |Re rho - 1/2| <= alpha from a fixed-parity bound -C exp(alpha L) at every late aperture; (SE) and the polynomial specialization (PG, natural-exponent adapter) to Mathlib RiemannHypothesis. Consumers only; the growth premises are OPEN.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M55",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.CofinalSemiboundedClosure",
+      "claim": "Explicit-margin reproof of the recentred phase energy, the all-late fixed-depth witness lemma (AD: every M, every late aperture, both parities, depth below -M on the exact slices) and the cofinal one-constant consumer (SB) to Mathlib RiemannHypothesis; (C1) implies (SB). No exponential depth at every aperture is asserted. The SB premise is OPEN.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M56",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.C2GrowthClosure",
+      "claim": "The literal long term with a fixed-rate lower bound -C exp(alpha t) at every late t gives a correlation lower bound of rate 2 alpha in a = t/2 with every explicit-formula term retained; it excludes displacements above alpha. (C2-SE) and the polynomial adapter imply Mathlib RiemannHypothesis; the constant floor is the rate-zero case. The premise is OPEN.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M57",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement",
+      "claim": "Squared-index commutator of the full canonical source: [D0, A] = (n_i + n_j)(d_i - d_j) has a rank-four vecMulVec form whose form vanishes on boundary-flat columns (NC, from the existing displacement theorem; no pole split). Compressed commutator [Vh D0 V, Vh A V] = (Vh A W) Lh - L (Vh A W)h under a supplied leakage factorization, and the exact parity leakage D0 u with M_k(D0 u) = M_{k+2}(u). The native pole profiles satisfy (D0 + beta) r = c 1 (even) and c' n (odd), so D0 u stays pole-neutral and leaving the slice is the single functional M6 (even) or M7 (odd): rank-one leakage in functional form. The explicit orthonormal leakage factorization and every sign remain OPEN.",
+      "arithmetic_estimate_supplied": false
     }
   ],
   "closing_arithmetic": {
@@ -1373,6 +1397,92 @@
         "Zeta23.OPICARound4.ArithmeticFrontier.complementProjection_sq",
         "Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_residual_trace"
       ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.GrowthClosure": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GrowthClosure.lean",
+      "sha256": "ff9699687672c1a5672256aebb4d9af5109b24fdb016c83a922a4f6126c14d76",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.originalDetectorFiniteEvenPhaseUnit_mem_evenMomentSlice",
+        "Zeta23.OPICARound4.ArithmeticFrontier.originalDetectorFiniteOddPhaseUnit_mem_oddMomentSlice",
+        "Zeta23.OPICARound4.ArithmeticFrontier.exists_evenMomentSlice_exp_depth",
+        "Zeta23.OPICARound4.ArithmeticFrontier.exists_oddMomentSlice_exp_depth",
+        "Zeta23.OPICARound4.ArithmeticFrontier.EvenFixedRateMomentSliceBound",
+        "Zeta23.OPICARound4.ArithmeticFrontier.OddFixedRateMomentSliceBound",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FixedParitySubexponentialMomentSliceBounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FixedParityPolynomialMomentSliceBounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.mul_exp_lt_exp_of_log_div_lt",
+        "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_even_fixed_rate",
+        "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_odd_fixed_rate",
+        "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_fixed_parity_subexponential",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_subexponential",
+        "Zeta23.OPICARound4.ArithmeticFrontier.one_add_pow_le_mul_exp",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_subexponential_of_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.not_fixed_parity_polynomial_of_off_line_zero"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.CofinalSemiboundedClosure": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/CofinalSemiboundedClosure.lean",
+      "sha256": "9b3abc19297ecdf11505a1dd2fdc6599a2ba1b6ad7edc5c501377f6866f1ec6a",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.recentered_phase_energy_lt_explicit",
+        "Zeta23.OPICARound4.ArithmeticFrontier.recentered_phase_relative_margin_explicit",
+        "Zeta23.OPICARound4.ArithmeticFrontier.exists_fixed_phase_below",
+        "Zeta23.OPICARound4.ArithmeticFrontier.eventually_both_moment_slices_below",
+        "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentSliceSemibounded",
+        "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_cofinal_semibounded",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_semibounded",
+        "Zeta23.OPICARound4.ArithmeticFrontier.cofinal_semibounded_of_cofinal_moment_slice_bounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.not_cofinal_moment_slice_semibounded_of_off_line_zero"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.C2GrowthClosure": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean",
+      "sha256": "29a7639dff0f29d0b5f8f684bf4296ec01cc5b204725861fc130816ad9310b8d",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.ActualLongTermFixedRateLowerBound",
+        "Zeta23.OPICARound4.ArithmeticFrontier.ActualLongTermSubexponentialLowerBound",
+        "Zeta23.OPICARound4.ArithmeticFrontier.ActualLongTermPolynomialLowerBound",
+        "Zeta23.OPICARound4.ArithmeticFrontier.correlation_lower_of_longTerm_fixed_rate",
+        "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_longTerm_fixed_rate",
+        "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_longTerm_subexponential",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential",
+        "Zeta23.OPICARound4.ArithmeticFrontier.longTerm_subexponential_of_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.longTerm_fixed_rate_zero_of_constant"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeMomentDisplacement.lean",
+      "sha256": "d472cfab6d8fa9f5835518201505df3449e41fd943c1c6f160d5c0bb194840bd",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexMatrix",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexMatrix_eq_diagonal",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndexMatrix_conjTranspose",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_commutator_apply",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_commutator_eq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.star_dotProduct_vecMulVec_mulVec",
+        "Zeta23.OPICARound4.ArithmeticFrontier.one_dotProduct_eq_centeredMoment_zero",
+        "Zeta23.OPICARound4.ArithmeticFrontier.index_dotProduct_eq_centeredMoment_one",
+        "Zeta23.OPICARound4.ArithmeticFrontier.star_dotProduct_one",
+        "Zeta23.OPICARound4.ArithmeticFrontier.star_dotProduct_index",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_commutator_form_eq_zero",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_commutator_form_eq_zero_of_boundaryFlat",
+        "Zeta23.OPICARound4.ArithmeticFrontier.conjTranspose_mul_mul_apply",
+        "Zeta23.OPICARound4.ArithmeticFrontier.compressed_squaredIndex_commutator_eq_zero",
+        "Zeta23.OPICARound4.ArithmeticFrontier.native_compressed_commutator_eq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.centeredMoment_squaredIndex_mulVec",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_mem_even",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_mem_odd",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_even_leakage",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_odd_leakage",
+        "Zeta23.OPICARound4.ArithmeticFrontier.poleEvenProfile_mul_centeredIndex_sq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.poleOddProfile_mul_centeredIndex_sq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.poleEven_sum_squaredIndex_mulVec",
+        "Zeta23.OPICARound4.ArithmeticFrontier.poleOdd_sum_squaredIndex_mulVec",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_even_slice_leakage",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_odd_slice_leakage"
+      ]
     }
   },
   "retained_support_subset": {
@@ -1988,7 +2098,48 @@
         "premise": "source-preserving causal residual tends to zero",
         "consumer": null,
         "premise_proved": false
+      },
+      {
+        "id": "PG",
+        "premise": "Zeta23.OPICARound4.ArithmeticFrontier.FixedParityPolynomialMomentSliceBounds",
+        "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_polynomial",
+        "premise_proved": false,
+        "coverage": "every sufficiently large aperture",
+        "parity": "fixed before the aperture",
+        "allowed_loss": "C (1 + L)^d with d a natural number (rounded-up real exponent adapter)",
+        "implies": "SE"
+      },
+      {
+        "id": "SE",
+        "premise": "Zeta23.OPICARound4.ArithmeticFrontier.FixedParitySubexponentialMomentSliceBounds",
+        "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_subexponential",
+        "premise_proved": false,
+        "coverage": "every sufficiently large aperture",
+        "parity": "fixed before the aperture and before alpha",
+        "allowed_loss": "C_alpha exp(alpha L) for every alpha > 0",
+        "fixed_rate_partial": "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_even_fixed_rate"
+      },
+      {
+        "id": "SB",
+        "premise": "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentSliceSemibounded",
+        "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_semibounded",
+        "premise_proved": false,
+        "coverage": "cofinal checkpoints",
+        "parity": "may switch per aperture, never per vector",
+        "allowed_loss": "one constant C >= 0 chosen before every horizon",
+        "witness_lemma": "Zeta23.OPICARound4.ArithmeticFrontier.eventually_both_moment_slices_below"
+      },
+      {
+        "id": "C2-SE",
+        "premise": "Zeta23.OPICARound4.ArithmeticFrontier.ActualLongTermSubexponentialLowerBound",
+        "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential",
+        "premise_proved": false,
+        "coverage": "every sufficiently late time t = 2a",
+        "parity": "fixed literal scalar source",
+        "allowed_loss": "C_alpha exp(alpha t) for every alpha > 0 (correlation rate 2 alpha in a)",
+        "polynomial_adapter": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_polynomial"
       }
-    ]
+    ],
+    "revision3_note": "Revision 3 adds coarse OR-alternatives PG, SE, SB and C2-SE with proved consumers. They relax the quantitative estimate, not the requirement of an independent RH-strength supplier; every premise remains OPEN. A cofinal polynomial-bound set is not PG, and a per-aperture constant is not SB."
   }
 }

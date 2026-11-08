@@ -427,3 +427,36 @@ mutation file with Lean's default `maxErrors = 100`, so a 101st control is
 reported as the error limit, not as a type rejection. Raising the limit needs a
 recipe-version change.
 
+
+## Arithmetic frontier, revision 3: coarse growth, semiboundedness and native displacement (8 November 2026)
+
+Four modules add 62 declarations (contracts M54–M57). Every premise remains
+OPEN.
+
+* `GrowthClosure` (M54):
+  * the actual finite-phase witnesses lie in the exact moment slices;
+  * a fixed-parity bound `-C e^{αL}` at every late aperture gives
+    `|Re ρ - 1/2| ≤ α`;
+  * (SE) and its polynomial specialization (PG) imply Mathlib
+    `RiemannHypothesis`.
+* `CofinalSemiboundedClosure` (M55):
+  * all-late witnesses of fixed depth `-M` in both parities (AD);
+  * the cofinal one-constant floor (SB) implies RH;
+  * (C1) implies (SB).
+* `C2GrowthClosure` (M56): a subexponential lower bound on the literal long
+  term (C2-SE), or a polynomial one, implies RH. Its rate in `t = 2a` is a
+  correlation rate `2α`.
+* `NativeMomentDisplacement` (M57):
+  * the full canonical source satisfies `Vᴴ [D₀, A] V = 0` on boundary-flat
+    columns (NC);
+  * composed with M51, the compressed commutator is rank two;
+  * `D₀` leaves each slice through the single functional `M₆` (even) or `M₇`
+    (odd).
+
+These are consumers and exact identities. They relax the quantitative target
+and supply no sign. Arbitrary non-zeta prime weights satisfy the same
+identities.
+
+The gate is now 1275 declarations in 105 modules with 109 controls, run in two
+shards (84 + 25). Each control must own exactly one type-mismatch error. The
+control omitted in 3F is restored.

@@ -11,7 +11,7 @@ import subprocess
 import sys
 import uuid
 from contextlib import contextmanager
-from .canonical import require,canonical_bytes,load_bytes,digest,MAX_BYTES,closed_keys
+from .canonical import require,canonical_bytes,load_bytes,digest,MAX_BYTES,closed_keys,ContractError
 from .snapshot import (file_hash,unlinked,seal_evidence_tree,copy_evidence_tree,verify_evidence_tree,evidence_bytes,
                        pack_evidence_bundle,unpack_evidence_bundle,_evidence_directory,_transport_new_directory,_transport_seal,
                        _evidence_file,_evidence_identity,_evidence_regular,_transport_new_file,
@@ -1048,27 +1048,35 @@ def _verify_archived_native_receipts(repo,lane,root,manifest,exp,producer_result
         require(type(products) is dict and required<=set(products)<=allowed and
                 all(value==hashed(folder+name)==hashed(prefix+'native/lib/'+name) for name,value in products.items()) and
                 row.get('object_sha256')==products[base+'.olean'],'Independent mathematical objects differ')
-    from ..opica_round4.math_gate import SEMANTIC_MUTATIONS,audit_validation
+    from ..opica_round4.math_gate import (SEMANTIC_MUTATIONS,SEMANTIC_MUTATION_SHARDS,SEMANTIC_MUTATION_SHARD_LIMIT,
+      SEMANTIC_MUTATION_SOURCE,audit_validation,semantic_shard_binding)
     validation=evidence_bytes(root,prefix+'native/Zeta23.OPICARound4.Validation.log',MAX_BYTES).decode('utf-8')
     types=read(prefix+'native/types-and-axioms.json')
     require(native_result.get('types_and_axioms_sha256')==hashed(prefix+'native/types-and-axioms.json') and
             audit_validation(validation)==types,'Independent full-type/transitive-axiom audit differs')
-    mutation=native_result.get('mutation',{});native=mutation.get('native',{});folder=prefix+'native/workers/semantic-mutations/'
-    require(mutation.get('exit_code')==native.get('exit_code')==1 and native.get('capability')=='LINUX_ISOLATED' and
-            not native_resource_failure(native) and
-            mutation.get('error_count')==q.SEMANTIC_MUTATION_COUNT and
-            mutation.get('source_sha256')==hashlib.sha256(SEMANTIC_MUTATIONS.encode('utf-8')).hexdigest()==
-            hashed(folder+'RejectedSemanticMutations.lean')==hashed(prefix+'native/RejectedSemanticMutations.lean') and
-            mutation.get('log_sha256')==native.get('log_sha256')==hashed(folder+'RejectedSemanticMutations.lean.log')==
-            hashed(prefix+'native/semantic-mutations.log'),'All intended semantic controls and logs required')
-    text=evidence_bytes(root,prefix+'native/semantic-mutations.log',MAX_BYTES).decode('utf-8',errors='replace')
-    errors=[line for line in text.splitlines() if 'error:' in line or 'error(' in line]
-    require(len(errors)==q.SEMANTIC_MUTATION_COUNT and all('type mismatch' in line.casefold() for line in errors) and
-            not any(term in text.casefold() for term in ('unknown module','unknown identifier','unknown constant',
-                        'file not found','maximum number of heartbeats','maximum recursion','out of memory','panic')),
-            'Independent semantic controls were not the intended type errors')
-    require(not any(name.startswith(folder) and name.endswith(('.olean','.olean.private','.olean.server','.ilean'))
-                    for name in hashes),'Rejected semantic controls emitted compiler products')
+    mutation=native_result.get('mutation',{});shards=mutation.get('shards')
+    require(mutation.get('exit_code')==1 and mutation.get('error_count')==q.SEMANTIC_MUTATION_COUNT and
+            mutation.get('source_sha256')==hashlib.sha256(SEMANTIC_MUTATIONS.encode('utf-8')).hexdigest() and
+            mutation.get('shard_limit')==SEMANTIC_MUTATION_SHARD_LIMIT and type(shards) is list and
+            [row.get('id') for row in shards]==[shard_id for shard_id,_ in SEMANTIC_MUTATION_SHARDS] and
+            sum(row.get('error_count',0) for row in shards)==q.SEMANTIC_MUTATION_COUNT,
+            'All intended semantic controls and logs required')
+    for row,(shard_id,shard_text) in zip(shards,SEMANTIC_MUTATION_SHARDS):
+        native=row.get('native',{});folder=prefix+'native/workers/semantic-mutations-'+shard_id+'/'
+        log=prefix+'native/semantic-mutations-'+shard_id+'.log';source=folder+SEMANTIC_MUTATION_SOURCE
+        require(row.get('exit_code')==native.get('exit_code')==1 and native.get('capability')=='LINUX_ISOLATED' and
+                not native_resource_failure(native) and
+                row.get('source_sha256')==hashlib.sha256(shard_text.encode('utf-8')).hexdigest()==hashed(source)==
+                hashed(prefix+'native/RejectedSemanticMutations-'+shard_id+'.lean') and
+                row.get('log_sha256')==native.get('log_sha256')==hashed(source+'.log')==hashed(log),
+                'All intended semantic controls and logs required')
+        text=evidence_bytes(root,log,MAX_BYTES).decode('utf-8',errors='replace')
+        try:binding=semantic_shard_binding(shard_text,text,SEMANTIC_MUTATION_SOURCE)
+        except RuntimeError as exc:raise ContractError('Independent semantic controls were not the intended type errors') from exc
+        require(row.get('control_count')==binding['control_count']==row.get('error_count')==binding['error_count'],
+                'Independent semantic controls were not the intended type errors')
+        require(not any(name.startswith(folder) and name.endswith(('.olean','.olean.private','.olean.server','.ilean'))
+                        for name in hashes),'Rejected semantic controls emitted compiler products')
 
 
 def _verify_research_raw_pairing(producer,group_root,original):

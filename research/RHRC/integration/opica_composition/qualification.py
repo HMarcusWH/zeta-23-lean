@@ -590,7 +590,8 @@ def check_current_compatibility(repo,output,worker):
 
 def _validate_mathematical_worker_receipts(result,output,worker):
     """A PASS label cannot substitute for the fixed isolated compiler recipe."""
-    from ..opica_round4.math_gate import mathematical_budget,relative,SEMANTIC_MUTATIONS
+    from ..opica_round4.math_gate import (mathematical_budget,relative,SEMANTIC_MUTATIONS,SEMANTIC_MUTATION_SHARDS,
+      SEMANTIC_MUTATION_SHARD_LIMIT,SEMANTIC_MUTATION_SOURCE,semantic_shard_binding)
     require(result.get('execution_mode')==('PRODUCTION_ISOLATED' if worker.production else 'DEVELOPMENT_ONLY') and
             result.get('authority')==('CURRENT_SOURCE_ISOLATED_NATIVE_SUPPORT' if worker.production else 'DEVELOPMENT_NATIVE_SUPPORT_ONLY'),
             'Mathematical support execution authority differs')
@@ -650,12 +651,27 @@ def _validate_mathematical_worker_receipts(result,output,worker):
                 all(file_hash(folder/name)==expected==file_hash(output/'lib'/name) for name,expected in products.items()) and
                 row.get('object_sha256')==products[relative(module,'.olean').as_posix()],
                 'Mathematical module product binding differs')
-    mutation=result.get('mutation',{});source='RejectedSemanticMutations.lean';folder=output/'workers'/'semantic-mutations'
-    require(mutation.get('source_sha256')==hashlib.sha256(SEMANTIC_MUTATIONS.encode('utf-8')).hexdigest()==
-            file_hash(output/source)==file_hash(folder/source) and mutation.get('exit_code')==1 and
-            mutation.get('error_count')==SEMANTIC_MUTATION_COUNT and mutation.get('log_sha256')==file_hash(output/'semantic-mutations.log'),
+    mutation=result.get('mutation',{});source=SEMANTIC_MUTATION_SOURCE;shards=mutation.get('shards')
+    require(mutation.get('source_sha256')==hashlib.sha256(SEMANTIC_MUTATIONS.encode('utf-8')).hexdigest() and
+            mutation.get('exit_code')==1 and mutation.get('error_count')==SEMANTIC_MUTATION_COUNT and
+            mutation.get('shard_limit')==SEMANTIC_MUTATION_SHARD_LIMIT and type(shards)is list and
+            [row.get('id') for row in shards]==[shard_id for shard_id,_ in SEMANTIC_MUTATION_SHARDS] and
+            sum(row.get('error_count',0) for row in shards)==SEMANTIC_MUTATION_COUNT,
             'Mathematical semantic mutation binding differs')
-    check(mutation.get('native'),folder,source,1,output/'semantic-mutations.log')
+    for row,(shard_id,text) in zip(shards,SEMANTIC_MUTATION_SHARDS):
+        folder=output/'workers'/('semantic-mutations-'+shard_id);log=output/('semantic-mutations-'+shard_id+'.log')
+        coordinator=output/('RejectedSemanticMutations-'+shard_id+'.lean')
+        try:binding=semantic_shard_binding(text,log.read_text(encoding='utf-8',errors='replace'),source)
+        except RuntimeError as exc:raise ContractError('Mathematical semantic controls were not the intended type errors') from exc
+        require(row.get('source')==coordinator.name and row.get('log')==log.name and
+                row.get('source_sha256')==hashlib.sha256(text.encode('utf-8')).hexdigest()==
+                file_hash(coordinator)==file_hash(folder/source) and row.get('exit_code')==1 and
+                row.get('log_sha256')==file_hash(log) and
+                row.get('control_count')==binding['control_count']==row.get('error_count')==binding['error_count'],
+                'Mathematical semantic mutation shard binding differs')
+        require(not any(path.name.endswith(('.olean','.olean.private','.olean.server','.ilean'))
+                        for path in folder.rglob('*')),'Rejected semantic controls emitted compiler products')
+        check(row.get('native'),folder,source,1,log)
 
 
 def check_mathematical_support(repo,output,worker):

@@ -85,3 +85,7 @@ import Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel
 import Zeta23.OPICARound4.ArithmeticFrontier.MomentLeakage
 import Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness
 import Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnTrace
+import Zeta23.OPICARound4.ArithmeticFrontier.GrowthClosure
+import Zeta23.OPICARound4.ArithmeticFrontier.CofinalSemiboundedClosure
+import Zeta23.OPICARound4.ArithmeticFrontier.C2GrowthClosure
+import Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement

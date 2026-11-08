@@ -704,14 +704,14 @@
   "madness_extension": {
     "register": "MADNESS_CONTRACTS.json",
     "source_audit": "MADNESS_SOURCE_AUDIT.json",
-    "modules": 53,
-    "added_declarations": 713,
-    "gate_total_modules": 101,
-    "gate_total_declarations": 1213,
+    "modules": 57,
+    "added_declarations": 775,
+    "gate_total_modules": 105,
+    "gate_total_declarations": 1275,
     "retained_modules": 48,
     "retained_declarations": 500,
     "retained_semantic_mutations": 17,
-    "semantic_mutations": 100,
+    "semantic_mutations": 109,
     "new_unconditional_estimate": "The normalized short hyperbola term and the prime-field plus long-term remainder have every fixed exponential decay rate.",
     "closing_arithmetic_estimate": "OPEN",
     "production_qualification": "CURRENT_HEAD_FULL_NATIVE_SUPPORT_AND_INDEPENDENT_ACCEPTANCE_REQUIRED",
@@ -734,6 +734,11 @@
       "modules": 90,
       "semantic_mutations": 84
     },
-    "arithmetic_frontier_extension": "Exact moment slices with Gram transport and dimensions; (C1) and narrow selected-packet consumers to Mathlib RiemannHypothesis; inverse-residual block and source-core finite consumers with witness transport. Every closing premise remains OPEN; no arithmetic sign is supplied."
+    "arithmetic_frontier_extension": "Exact moment slices with Gram transport and dimensions; (C1) and narrow selected-packet consumers to Mathlib RiemannHypothesis; inverse-residual block and source-core finite consumers with witness transport. Every closing premise remains OPEN; no arithmetic sign is supplied.",
+    "semantic_mutation_shards": [
+      84,
+      25
+    ],
+    "coarse_growth_extension": "PG/SE, fixed-rate, AD/SB and C2-SE consumers and the native NC identity. No growth premise, semibounded floor or leakage factorization is supplied; all remain OPEN."
   }
 }

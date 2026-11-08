@@ -3562,15 +3562,19 @@
       "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
       "Zeta23.OPICARound4.ArithmeticFrontier.MomentLeakage",
       "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness",
-      "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnTrace"
+      "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnTrace",
+      "Zeta23.OPICARound4.ArithmeticFrontier.GrowthClosure",
+      "Zeta23.OPICARound4.ArithmeticFrontier.CofinalSemiboundedClosure",
+      "Zeta23.OPICARound4.ArithmeticFrontier.C2GrowthClosure",
+      "Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement"
     ],
     "native_gate": "MATHEMATICAL_SUPPORT",
     "retained_declarations": 500,
     "retained_modules": 48,
     "retained_semantic_mutations": 17,
-    "added_declarations": 713,
-    "added_semantic_mutations": 83,
-    "current_semantic_mutations": 100,
+    "added_declarations": 775,
+    "added_semantic_mutations": 92,
+    "current_semantic_mutations": 109,
     "full_types_and_axioms_required": true,
     "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
     "RH": "OPEN",
@@ -3586,6 +3590,21 @@
     },
     "arithmetic_frontier_extension": "Exact moment slices with Gram transport and dimensions; (C1) and narrow selected-packet consumers to Mathlib RiemannHypothesis; inverse-residual block and source-core finite consumers with witness transport. Every closing premise remains OPEN; no arithmetic sign is supplied.",
     "pole_channel_extension": "Pole annihilation on both actual pole-neutral carriers and the exact energy identity Q = -arch - prime on both moment slices; reuses canonicalPoleMatrix_mulVec_eq_zero_of_profiles. No sign is supplied.",
-    "finite_soundness_extension": "Compressed commutator with all leakage terms (M51), exact-data shifted-factor and witness soundness with the necessity of tau > 0 (M52), and source-column Gram/trace identities (M53). The native enclosure bridge and every closing premise remain OPEN. Two new semantic controls; the suite is held at 100 because the pinned isolated-worker recipe uses the Lean default maxErrors = 100."
+    "finite_soundness_extension": "Compressed commutator with all leakage terms (M51), exact-data shifted-factor and witness soundness with the necessity of tau > 0 (M52), and source-column Gram/trace identities (M53). The native enclosure bridge and every closing premise remain OPEN. Two new semantic controls were admitted while the single-file suite was held at 100 by the Lean default maxErrors = 100; Increment 4A shards the suite and restores the third control (FM17).",
+    "coarse_growth_extension": "Fixed-parity PG/SE and fixed-rate consumers with slice membership of the native witnesses (M54); explicit-margin all-late witnesses AD and the cofinal one-constant consumer SB (M55); literal long-term C2-SE with the t = 2a rate audit (M56); native squared-index commutator cancellation on boundary-flat columns and the parity leakage of D0 (M57). Consumers and identities only; every premise and the leakage factorization remain OPEN.",
+    "semantic_control_shards": {
+      "limit": 90,
+      "shards": [
+        {
+          "id": "01",
+          "controls": 84
+        },
+        {
+          "id": "02",
+          "controls": 25
+        }
+      ],
+      "binding": "each control owns exactly one type-mismatch error"
+    }
   }
 }

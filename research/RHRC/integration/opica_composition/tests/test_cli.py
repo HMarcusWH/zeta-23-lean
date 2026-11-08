@@ -65,7 +65,7 @@ class CliOrchestrationTests(unittest.TestCase):
         self.assertEqual((frontier['declaration_count'],frontier['module_count'],
                           frontier['semantic_mutation_count']),(1079,90,84))
         self.assertEqual((len(math_gate.EXPECTED_DECLARATIONS),len(math_gate.MODULES),
-                          math_gate.SEMANTIC_MUTATION_COUNT),(1213,101,100))
+                          math_gate.SEMANTIC_MUTATION_COUNT),(1275,105,109))
         with patch.object(math_gate,'EXPECTED_DECLARATIONS',math_gate.EXPECTED_DECLARATIONS[1:]):
             with self.assertRaisesRegex(RuntimeError,'Retained 1079/90/84'):
                 math_gate.retained_pre_frontier_scope()
@@ -77,6 +77,26 @@ class CliOrchestrationTests(unittest.TestCase):
                           math_gate.FRONTIER_SEMANTIC_MUTATIONS.replace('\nexample','\n-- removed',1)):
             with self.assertRaisesRegex(RuntimeError,'Retained 1079/90/84'):
                 math_gate.retained_pre_frontier_scope()
+        # The 109 controls are sharded below Lean's 100-error cap; no control is dropped, and
+        # every control must own exactly one type-mismatch error in its own shard source.
+        self.assertEqual([text.count('\nexample') + text.startswith('example')
+                          for _,text in math_gate.SEMANTIC_MUTATION_SHARDS],[84,25])
+        self.assertEqual(math_gate.semantic_mutation_shard_scope(),109)
+        with patch.object(math_gate,'SEMANTIC_MUTATION_SHARDS',(('01',math_gate.SEMANTIC_MUTATIONS),)):
+            with self.assertRaisesRegex(RuntimeError,'shard scope'):
+                math_gate.semantic_mutation_shard_scope()
+        text='import X\nexample : True := by\n  exact 1\nend\nexample : False := trivial\n'
+        good='R.lean:3:2: error: Type mismatch\nR.lean:5:19: error: type mismatch\n'
+        self.assertEqual(math_gate.semantic_shard_binding(text,good,'R.lean'),{'control_count':2,'error_count':2})
+        for bad in ('R.lean:3:2: error: Type mismatch\nR.lean:2:3: error: Type mismatch\n',
+                    good+'R.lean:4:0: error: Type mismatch\n',good.replace('R.lean:5','Other.lean:5'),
+                    'R.lean:3:2: error: Type mismatch\nR.lean:5:19: error: unknown identifier x\n',
+                    good+'PANIC at Lean.Elab\n',good.split('\n',1)[1]):
+            with self.subTest(bad=bad),self.assertRaises(RuntimeError):
+                math_gate.semantic_shard_binding(text,bad,'R.lean')
+        with patch.object(math_gate,'SEMANTIC_MUTATION_SHARD_LIMIT',1):
+            with self.assertRaises(RuntimeError):
+                math_gate.semantic_shard_binding(text,good,'R.lean')
 
     def test_madness_register_rejects_source_substitution_and_bound_promotion(self):
         from research.RHRC.integration.opica_composition import config
