@@ -12594,6 +12594,19 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "named_source_declaration_count": 12,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/GeometryReconstruction.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/GrowthClosure.lean",
       "module": "Zeta23.OPICARound4.ArithmeticFrontier.GrowthClosure",
       "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.GrowthClosure",
@@ -12638,6 +12651,19 @@
       "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.MomentSlices",
       "named_source_declaration_count": 21,
       "path": "Zeta23/OPICARound4/ArithmeticFrontier/MomentSlices.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "named_source_declaration_count": 34,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/NativeLeakageFactor.lean",
       "reachability": "STANDALONE_OR_AUXILIARY",
       "reachable_from": [],
       "registered_root_count": 0,
@@ -18435,7 +18461,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1257,
+  "entry_count": 1259,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",
