@@ -207,7 +207,7 @@
       "changes": [
         "nothing in the source; the obstruction is to the budget mechanism"
       ],
-      "preservation_status": "EXTERNAL_CERTIFICATE_FETCHED_NOT_REPLAYED",
+      "preservation_status": "PARTIAL_REPLAY: slice claim coincides with the repository level-3 L5 record; core and pencil BLOCKED",
       "formal_repository_control": null,
       "evidence": "SOURCE_LEDGER drive_id 18rqv9ugRQYn2XYUcH_ZjxZMfF18RyEDd (sha256 75d43304...)",
       "scope_limit": "Excludes that fine-budget mechanism on that state only; not all groupings, coarser allowances or PG."
@@ -223,7 +223,7 @@
       "changes": [
         "actual translations and projection"
       ],
-      "preservation_status": "AS_STATED_BY_COARSE_GROWTH_AND_POLYNOMIAL_GEOMETRY_REPORTS_NOT_REAUDITED",
+      "preservation_status": "REPLAYED_EXACT (evidence/increment4d)",
       "formal_repository_control": null,
       "quantitative_form": "If s = -lambda_min(sum B_i) > a + 2b, N has a negative real eigenvalue of size at least (s + a + sqrt((s-a)^2 - 4b^2))/2 (DERIVED in the 8 November report)."
     },
@@ -237,7 +237,7 @@
       "changes": [
         "kernel"
       ],
-      "preservation_status": "AS_STATED_BY_COARSE_GROWTH_REPORT_NOT_REAUDITED (product -1, lcm Gram 4)",
+      "preservation_status": "REPLAYED_EXACT (evidence/increment4d)",
       "formal_repository_control": null,
       "scope_limit": "A substitution counterexample, not one to the actual smoothed target."
     },
@@ -278,7 +278,7 @@
       "changes": [
         "everything else"
       ],
-      "preservation_status": "EXACT (J = diag(0,1), l = (1,1), z = (0,M), H = [[0,M],[M,0]]: h = 0, lambda_min = -M)",
+      "preservation_status": "EXACT; REPLAYED_EXACT in evidence/increment4d as well",
       "formal_repository_control": null
     },
     {
@@ -296,6 +296,52 @@
       "preservation_status": "MEASURED_AT_L4_L5_L6 (evidence/increment5a)",
       "formal_repository_control": null,
       "label": "NOT_ZETA"
+    },
+    {
+      "id": "MP20",
+      "model": "Positive reflection-symmetric comparison density with a PNT-strength envelope (NOT zeta)",
+      "blocked_inference": "Positive density, a PNT-strength error envelope and the moment/commutator geometry imply PG",
+      "preserves": [
+        "physical intervals",
+        "Archimedean form",
+        "pole functionals",
+        "parity",
+        "quartic cutoff",
+        "finite moment constraints",
+        "convolution geometry"
+      ],
+      "changes": [
+        "the arithmetic distribution: no prime atoms, Euler product or divisor identity"
+      ],
+      "preservation_status": "DERIVED in the Centered Prime report (exponentially negative exact vectors in both slices); seed and partial-fraction algebra REPLAYED_EXACT",
+      "formal_repository_control": null,
+      "label": "NOT_ZETA"
+    },
+    {
+      "id": "MP21",
+      "model": "Rational causal model E(z) = -lam (1 + delta)/((z + 1)^2 (z + lam - delta)) (NOT native)",
+      "blocked_inference": "L2 differentiability at zero damping is necessary for membership, or local convergence implies global membership",
+      "preserves": [
+        "the shifted-ratio structure of the Abel output"
+      ],
+      "changes": [
+        "the arithmetic"
+      ],
+      "preservation_status": "REPLAYED_EXACT (delta = 0: ||E||^2 = lam (lam + 2)/(4 (lam + 1)^2) while the first variation is not L2; delta > 0: nonzero growing residue)",
+      "formal_repository_control": null
+    },
+    {
+      "id": "MP22",
+      "model": "Critical-zero boundary layer of order m",
+      "blocked_inference": "A globally O(lambda^2) squared error for the Abel family",
+      "preserves": [
+        "a genuine critical-line zero of multiplicity m"
+      ],
+      "changes": [
+        "all other zeros (local model)"
+      ],
+      "preservation_status": "Constants REPLAYED_EXACT (1/2, 5/4, ... through m = 12); the lower bound liminf E(lambda)/lambda > 0 is DERIVED in the Abel report",
+      "formal_repository_control": null
     }
   ],
   "semantic_controls": [
@@ -423,9 +469,29 @@
       "id": "FrontierMutation25",
       "blocks": "D0 presented as preserving the even slice",
       "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation26",
+      "blocks": "Even leakage coefficient read as M4 instead of M6",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation27",
+      "blocks": "Reconstruction floor without the factor 2",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation28",
+      "blocks": "Certificate floor replaced by zero",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation29",
+      "blocks": "Cofinal geometry certificates presented as SG",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
     }
   ],
   "distinction": "Mathematical countermodels test an inference in a stated scope. Semantic controls only show that one API substitution is rejected by the type checker; they are not counterexamples to every theorem connecting the objects.",
   "mandatory_use": "Every candidate supplier in EXPERIMENTS.json must state which models it survives before formalization begins.",
-  "sharding": "Controls run in two shards (84 pinned pre-frontier, 25 frontier) under the fixed worker source name; each control must own exactly one type-mismatch error."
+  "sharding": "Controls run in two shards (84 pinned pre-frontier, 29 frontier) under the fixed worker source name; each control must own exactly one type-mismatch error."
 }

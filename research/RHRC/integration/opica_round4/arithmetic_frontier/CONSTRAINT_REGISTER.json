@@ -649,16 +649,122 @@
       "statement": "In one fixed parity, for all late L: ||V* E w|| <= C_z (1+L)^a and min_i <v_i, H v_i> >= -C_h (1+L)^b, with v_i the geometry eigenbasis of J = V* D0 V and w the unit leakage normal.",
       "scope": "Paper candidate from RH_Step4_Polynomial_Geometry_and_Source_Response_2026-11-08.md (TEXT_REVIEWED).",
       "parameter_order": "parity and constants before L.",
-      "native_validity": "OPEN (paper reduction SG -> PG DERIVED, not formalized)",
+      "native_validity": "CONSUMER PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED (M59); PREMISE OPEN",
       "closing_relevance": "CLOSING_IF_SUPPLIED_VIA_PG",
-      "consumers": [],
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_of_certificate"
+      ],
       "countermodel_tests": [
         "MP17 (scalar shift: z unchanged)",
         "MP18 (two-by-two off-diagonal)",
         "MP19 (arbitrary prime weights)"
       ],
       "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment5a",
-      "budget_improved": "Reduces the all-vector bound to a geometry-diagonal family and one mixed response; the reduction loss 2 ||l|| ||z|| / g_J is polynomial but large (about 2e4 at L=4)."
+      "budget_improved": "Reduces the all-vector bound to a geometry-diagonal family and one mixed response; the reduction loss 2 ||l|| ||z|| / g_J is polynomial but large (about 2e4 at L=4).",
+      "refinement": "Real-gauge tightening (Centered Prime report): z may be replaced by z - t l for real t without changing z l* - l z*; the Lean bound accepts any z with the commutator relation."
+    },
+    {
+      "id": "CR38",
+      "name": "(CP) centered ordinary-prime discrepancy lower bound",
+      "proposition": null,
+      "statement": "In one fixed parity, for all late L and every slice vector f: D_theta(L, f) >= -C (1+L)^d ||f||^2, where Q_L = R_0 + D_theta - P_pp exactly, R_0 >= c_* ||f||^2 (c_* about -1.3722) and ||P_pp|| <= 2 L^2.",
+      "scope": "Paper reduction (Centered Prime Continuation, 8 November, TEXT_REVIEWED).",
+      "parameter_order": "parity and constants before L.",
+      "native_validity": "OPEN (reduction CP -> PG DERIVED, not formalized)",
+      "closing_relevance": "CLOSING_IF_SUPPLIED_VIA_PG",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP20 (positive PNT-envelope comparison density fails PG on the exact carrier)"
+      ],
+      "budget_improved": "Isolates the centered ordinary-prime tail; proper prime powers paid at 2 L^2."
+    },
+    {
+      "id": "CR39",
+      "name": "CAUSAL: Abel-output membership at a damping sequence",
+      "proposition": null,
+      "statement": "Distinct lambda_j > 0, lambda_j -> 0, with H_lambda_j in L2(0, infinity) for every j.",
+      "scope": "Paper criterion (Abel Closure Attempt and Methodology Postmortem, 8 November).",
+      "parameter_order": "a sequence; no uniform bound or rate.",
+      "native_validity": "OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED (paper sequence criterion)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP21 (rational causal model)",
+        "MP22 (critical-zero boundary layer)"
+      ],
+      "falsified_shortcut": "The global L2 first variation V = d/dlambda H at 0+ is not in L2 for the genuine source (critical-line zeros; DERIVED). This refutes the shortcut, not the membership target.",
+      "budget_improved": "None; the dyadic covariance target of the 6 November reports remains the arithmetic gate."
+    },
+    {
+      "id": "CR40",
+      "name": "Native rank-one leakage factor and rank-two compressed commutator",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.even_native_rank_two_commutator",
+      "statement": "D0 u - P_S D0 u = (M6(u)/||r_e||^2) r_e (even), (M7(u)/||r_o||^2) r_o (odd); <u, P D0 P A v - P A P D0 v> = c(v) conj<r, A u> - conj(c(u)) <r, A v> for the full canonical source.",
+      "scope": "Both actual slices; ambient slices proved equal to the existing moment slices.",
+      "parameter_order": "Exact identity.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "STRUCTURAL_ADAPTER",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.odd_native_rank_two_commutator",
+        "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice_form_lower_of_geometry_basis"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation26 (leakage is M6, not M4)",
+        "MP19 (holds for arbitrary real prime weights)"
+      ],
+      "budget_improved": "Completes the native application of M51 (U4); no sign."
+    },
+    {
+      "id": "CR41",
+      "name": "Reconstruction bound and the (SG) certificate consumer",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
+      "statement": "Re x*Hx >= (h0 - 2 n_z n_l / g)||x||^2 under the rank-two relation; a geometry-response certificate gives the slice bound at its floor; polynomial certificates at every late aperture in one parity give PG and RH.",
+      "scope": "Native slices; the certificate includes an orthonormal geometry eigenbasis, gap, diagonal, response and leakage numbers.",
+      "parameter_order": "parity, C, d, L0 before L.",
+      "native_validity": "CONSUMER PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED; PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_polynomial_of_geometry_response"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation27 (floor pays 2 n_z n_l / g)",
+        "FrontierMutation28 (floor is the certificate floor)",
+        "FrontierMutation29 (cofinal certificates are not SG)",
+        "MP17",
+        "MP18"
+      ],
+      "budget_improved": "Entrywise Cauchy-Schwarz avoids a dimension factor; the K^2-scale loss of the leakage norm remains (5A)."
+    },
+    {
+      "id": "CR42",
+      "name": "Paid proper-prime-power adapter",
+      "proposition": null,
+      "statement": "||P_pp(L)|| <= 2 L^2 on either compressed slice; PG holds for the full source iff it holds for the primes-only source.",
+      "scope": "Paper (Centered Prime Continuation, section 4), DERIVED; elementary (no PNT or RH).",
+      "parameter_order": "All-vector, every L.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "COARSE_GROWTH_ADAPTER",
+      "consumers": [],
+      "countermodel_tests": [
+        "CR26 (uncharged truncation fails near-positivity; compatible because the charge is paid)"
+      ],
+      "budget_improved": "Polynomial charge acceptable for PG, not for C1."
+    },
+    {
+      "id": "CR43",
+      "name": "Unconditional explicit-PNT all-vector bound",
+      "proposition": null,
+      "statement": "Q_L(f) >= [c_* - (1 + 4 pi K/L)(3 + (939/40) L^(303/200) e^(L/2 - 0.8274 sqrt L))] ||f||^2 (Johnston-Yang input).",
+      "scope": "Paper (Centered Prime Continuation, section 7), DERIVED.",
+      "parameter_order": "Every L.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (exponential rate 1/2)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP20"
+      ],
+      "budget_improved": "Stretched-exponential saving inside an exponential allowance; an x^(1/2+eta) error input would give rate eta."
     }
   ],
   "strength_rule": "An RH-sufficient contract that is also RH-necessary is a sharp interface, not independent sub-RH progress. Only an independent supplier changes the state."

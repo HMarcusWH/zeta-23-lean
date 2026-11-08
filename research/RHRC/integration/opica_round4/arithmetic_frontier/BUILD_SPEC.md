@@ -531,19 +531,91 @@ from the repository Arb primitives. It measures the terms of the candidate
 
 **RH, Step 4 and every closing inequality remain OPEN.**
 
+## Revision 3 — stage 4D (8 November 2026)
+
+**Lean (local pinned compile; current-head CI required).**
+
+* `NativeLeakageFactor` (M58, CR40) works with a **Riesz slice** `S = F ⊓ ker⟪q, ·⟫`.
+  For `x ∈ F` it gives `x = P_S x + c(x) r` with `r = P_F q ⟂ S` and
+  `c(x) = ⟪r, x⟫ / ‖r‖²`.
+  * Natively, `D₀ u − P_S D₀ u = (M₆(u)/‖r_e‖²) r_e` (even) and
+    `(M₇(u)/‖r_o‖²) r_o` (odd). This is the explicit rank-one leakage factor.
+  * The ambient slices are proved equal to the existing `evenMomentSlice` and
+    `oddMomentSlice`.
+  * With NC for the full canonical source, the compressed commutator is exactly
+    rank two:
+    `⟪u, P D₀ P A v − P A P D₀ v⟫ = c(v) conj⟪r, A u⟫ − conj(c(u)) ⟪r, A v⟫`.
+* `GeometryReconstruction` (M59, CR41) proves the reconstruction bound
+  `Re x*Hx ≥ (h₀ − 2 n_z n_ℓ / g) ‖x‖²` under the rank-two relation. The
+  off-diagonal part is bounded entrywise by Cauchy–Schwarz, so no dimension
+  factor appears.
+  * Its geometry-eigenbasis form on a Riesz slice takes its relation from M58.
+  * A **geometry-response certificate** gives the existing slice bound at its
+    floor, on the native energy and physical norm.
+  * `FixedParityGeometryResponsePolynomial` (SG with explicit geometry) implies
+    PG and Mathlib `RiemannHypothesis`.
+  * The certificate premise is OPEN: the gap, diagonal and response numbers at
+    every late aperture.
+
+Four new controls bring the suite to 113 (84 + 29). They reject:
+
+* the leakage coefficient read as `M₄`;
+* the reconstruction floor without its factor 2;
+* the certificate floor replaced by zero;
+* cofinal certificates presented as SG.
+
+Local development gate: 107 modules, 1321 complete types and axiom sets, and 113
+controls. Only `propext`, `Classical.choice` and `Quot.sound` appear.
+
+**Exact replays** ([evidence/increment4d](evidence/increment4d/SUMMARY.json)).
+[exact_controls_r3.py](exact_controls_r3.py) uses exact integers and fractions,
+in both Python modes.
+
+* MP15: product kernel −1 against lcm Gram 4 at N = 10, and `Q_N = 2M(Y) − M(N)`
+  for N ≤ 100.
+* MP14: aligned scalars with `a = 2⁻ᵏ` and `b = 1` have nonbacktracking eigenvalue
+  `−(4ᵏ − 1)/2ᵏ`. The determinant identity and the reverse-instability bound are
+  also checked.
+* MP18: the two-by-two model.
+* MP20: the algebra of the comparison-density seeds.
+* MP21: the rational causal model.
+* MP22: the critical-zero boundary-layer constants.
+* MP13: the slice claim of the external L5 core certificate coincides with our
+  level-3 certified L5 record. Its core and pencil are BLOCKED (archive not
+  retrievable).
+
+**Sources.**
+
+* The folder membership is now complete: 239 items, none deleted.
+* Three reports posted this afternoon are TEXT_REVIEWED:
+  * *Centered Prime Continuation* (CR38, CR42, CR43, MP20):
+    * paid prime powers at most `2L²`;
+    * the exact decomposition `Q = R₀ + D_ψ` with `R₀ ≥ c*‖f‖²`;
+    * an unconditional explicit-PNT bound at exponential rate ½, which is not PG;
+    * a positive PNT-envelope comparison density that fails PG on the exact
+      carrier;
+    * the remaining supplier (CP) on the centered ordinary-prime discrepancy.
+  * *Abel Closure Attempt* (CR39): genuine critical zeros refute the L²
+    first-variation shortcut. The sequence-membership criterion stays OPEN.
+  * *Methodology Postmortem* (MP21, MP22).
+
+**RH, Step 4 and every closing inequality remain OPEN.**
+
 ## Next increments
 
-1. **The supplier (5B/6, OPEN).** Prove one branch with its exact
-   quantifiers: (SG) or (PG) in a fixed parity, (SE), (SB), (C1), C2-SE or the
-   packet restriction. The ordinary-prime expressions for `z` and the geometry
-   diagonal must carry a genuinely arithmetic restriction (MP19).
-2. Replace the Frobenius step in the (SG) reduction with a bound on the
-   Cauchy-structured off-diagonal `(zᵢℓⱼ - ℓᵢzⱼ)/(θᵢ - θⱼ)`. Observed norms
-   are `O(L)` while the current bound is `O(K²)`. This sharpens the reduction
-   but is not a sign.
-3. Build `w ℓᴴ` explicitly in Lean and compose (SG) → (PG) natively, only once
-   a supplier for (SG) is in sight.
-4. The native enclosure bridge, the detection margin (CR24), CR27 and the
+1. **The supplier (5B/6, OPEN).** One branch with exact quantifiers. The sharpest
+   current targets are:
+   * (CP), the centered ordinary-prime discrepancy;
+   * the (SG) certificate;
+   * (C2-SE);
+   * the CAUSAL dyadic covariance bound.
+
+   A proof must use a property of the actual primes that the comparison density
+   (MP20) lacks.
+2. Sharpen the (SG) reduction: bound the Cauchy-structured off-diagonal directly
+   (observed `O(L)` against a current `O(K²)` loss). Formalize the polynomial
+   geometry gap only when a certificate is in reach.
+3. The native enclosure bridge, the detection margin (CR24), CR27 and the
    nonorthogonal trace identity, each only if a chosen proof consumes it.
 
 Only a proved supplier composed with these consumers, validated on the final

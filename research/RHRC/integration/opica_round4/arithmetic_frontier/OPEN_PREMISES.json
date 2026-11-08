@@ -39,7 +39,8 @@
       "id": "CAUSAL",
       "register": "CR05",
       "consumer": null,
-      "status": "OPEN"
+      "status": "OPEN",
+      "note_4d": "Paper sequence criterion CR39 OPEN; the L2 first-variation shortcut is refuted by genuine critical zeros (DERIVED). The membership target itself is not refuted."
     },
     {
       "id": "PG",
@@ -65,6 +66,13 @@
       "register": "CR35",
       "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential",
       "status": "OPEN"
+    },
+    {
+      "id": "SG",
+      "register": "CR41",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
+      "status": "OPEN",
+      "implies": "PG"
     }
   ],
   "supporting_leaves": [
@@ -129,6 +137,18 @@
       "statement": "Candidate (SG) frozen and measured at L=4..6 (CR37, evidence/increment5a).",
       "status": "OPEN",
       "note": "EXPERIMENTAL_SIGNAL; both inequalities of (SG) unproved."
+    },
+    {
+      "id": "S-LEAK",
+      "statement": "Explicit rank-one leakage factor and the native rank-two commutator (CR40, M58).",
+      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "note": "Completes the M51 native application; identities only."
+    },
+    {
+      "id": "S-RECON",
+      "statement": "Reconstruction bound and the (SG) certificate consumer (CR41, M59).",
+      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "note": "The certificate (gap, diagonal, response) is the OPEN premise."
     }
   ],
   "rule": "A leaf moves only when an exact theorem with no undispatched RH-strength premise passes current-head formal and claim gates.",
@@ -146,14 +166,22 @@
       "M54-M57 compiled locally; current-head CI required"
     ],
     "pending_native_applications": [
-      "orthonormal leakage factor w l* in Lean",
-      "native SG -> PG composition in Lean",
-      "native enclosure bridge (only if a computational route consumes it)"
+      "native enclosure bridge (only if a computational route consumes it)",
+      "a Lean proof of the polynomial geometry gap (paper bound K^-241), needed to discharge part of a certificate"
     ],
     "optional_assurance": [
       "universal approximate-kernel audit",
       "physical metric adapter beyond the coefficient chart"
     ],
-    "open_supplier": "An actual-source inequality for one OR branch (C1, PG/SE, SB, PACKET, C2/C2-SE, K3, CAUSAL) with its exact quantifiers. OPEN. Engineering cannot supply it."
+    "open_supplier": "An actual-source inequality for one OR branch (C1, PG/SE, SB, PACKET, C2/C2-SE, K3, CAUSAL) with its exact quantifiers. OPEN. Engineering cannot supply it.",
+    "completed_in_4D": [
+      "orthonormal leakage factor (M58)",
+      "native (SG) -> (PG) composition with a certificate premise (M59)",
+      "exact replays of MP14, MP15, MP18, MP20 (algebra), MP21, MP22",
+      "complete Drive folder membership"
+    ],
+    "blocked": [
+      "MP13 core/pencil replay: the 28 MB evidence archive is not retrievable through the session connector"
+    ]
   }
 }

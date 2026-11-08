@@ -610,3 +610,44 @@ class Increment5ASGCandidateTests(unittest.TestCase):
             for parity in ('even', 'odd'):
                 got = outcomes['scores'][p['id']][parity]
                 self.assertEqual(got['hit'], self.SCORE.score_prediction(p, parity, results[('7', parity)]), (p['id'], parity))
+
+
+class Increment4DExactControlTests(unittest.TestCase):
+    """Exact replays of the revision-3 external countermodels (evidence/increment4d)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.EC = load('_frontier_exact_controls_r3_ci', ROOT / 'exact_controls_r3.py')
+        cls.ev = ROOT / 'evidence' / 'increment4d'
+        cls.record = cls.EC.run()
+
+    def test_rerun_matches_the_bound_records_in_both_modes(self):
+        normal = (self.ev / 'EXACT_CONTROLS_normal.json').read_bytes()
+        self.assertEqual(normal, (self.ev / 'EXACT_CONTROLS_optimized.json').read_bytes())
+        stored = json.loads(normal)
+        self.assertEqual(stored.pop('tool_sha256'), sha(ROOT / 'exact_controls_r3.py'))
+        self.assertEqual(json.loads(json.dumps(self.record)), stored)
+        summary = json.loads((self.ev / 'SUMMARY.json').read_bytes())
+        self.assertEqual((summary['RH'], summary['Step4']), ('OPEN', 'OPEN'))
+        for entry in summary['records']:
+            self.assertEqual(sha(self.ev / entry['file']), entry['sha256'], entry['file'])
+
+    def test_substitution_controls_reject_the_shortcuts(self):
+        n10 = self.record['MP15_product_vs_lcm']['N10']
+        self.assertEqual((n10['N'], n10['Y'], n10['product_kernel'], n10['lcm_kernel']), (10, 3, -1, 4))
+        last = self.record['MP14_aligned_scalar_nonbacktracking']['exponential_family'][-1]
+        self.assertEqual((Fraction(last['a']), Fraction(last['b_squared']), Fraction(last['eigenvalue'])),
+                         (Fraction(1, 1024), Fraction(1), -Fraction(4 ** 10 - 1, 1024)))
+        self.assertTrue(all(r['holds'] for r in self.record['MP14_aligned_scalar_nonbacktracking']['determinant_identity']))
+        self.assertEqual([self.record['MP22_boundary_layer_constants'][k] for k in ('1', '2')], ['1/2', '5/4'])
+        self.assertTrue(all(r['equal'] for r in self.record['MP21_causal_rational_model']['delta_zero']))
+        self.assertEqual(self.record['MP20_comparison_density_seeds']['even_seed_moments_M0_M2_M4_M6'], [0, 0, 0, 0])
+
+    def test_controls_fail_closed(self):
+        with self.assertRaises(self.EC.ControlFailure):
+            self.EC.check(False, 'deliberate')
+        with self.assertRaises(self.EC.ControlFailure):
+            self.EC.causal_rational_model(Fraction(1))
+        # a wrong kernel is detected: the product kernel is not the lcm Gram at N = 10
+        row = self.EC.product_vs_lcm(10, self.EC.mobius_table(20))
+        self.assertNotEqual(row['product_kernel'], row['lcm_kernel'])

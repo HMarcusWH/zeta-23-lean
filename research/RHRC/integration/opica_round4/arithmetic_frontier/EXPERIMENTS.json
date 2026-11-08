@@ -351,6 +351,13 @@
       "result": "Report table reproduced exactly at L = 4..6; NC, rank-one leakage and the commutator identity hold to about 1e-14; ||z|| is about 0.65 L; the reduction loss is 2e4 to 3e6 against an actual geometry off-diagonal norm of 3 to 8; L = 7 frozen predictions 15 of 18 hit (lambda_max and the even diagonal minimum missed). Non-zeta prime weights keep every identity while turning the slice negative, with growth that also looks polynomial at these L.",
       "disposition": "EXPERIMENTAL_SIGNAL; (SG) OPEN; no growth law promoted",
       "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment5a/SUMMARY.json"
+    },
+    {
+      "id": "E-REPLAY-R3",
+      "status": "RUN_EXACT_BOTH_MODES",
+      "goal": "Replay the revision-3 external countermodels exactly instead of citing them.",
+      "result": "MP14, MP15, MP18, MP21, MP22 replayed exactly; MP20 algebra replayed; MP13 partially (slice claim) with core/pencil BLOCKED.",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment4d/SUMMARY.json"
     }
   ],
   "corrections": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/CORRECTIONS.json"

@@ -1,0 +1,29 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_INCREMENT4D_SUMMARY_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "EXACT_FINITE_CONTROLS_AND_REPLAY_STATUS_NOT_PROOF_OF_ANY_CLOSING_PREMISE",
+  "tool": {
+    "exact_controls_r3.py": "58cb3ea6007ca2997be8dcde5e9f63e54c2cc610c3a1eca6b2e6a61d013dd4ed"
+  },
+  "records": [
+    {
+      "file": "EXACT_CONTROLS_normal.json",
+      "sha256": "f1022baa4cf868574e50a9df91c163164d9fbb7c2069f106afa87f4cd5bcee8d"
+    },
+    {
+      "file": "EXACT_CONTROLS_optimized.json",
+      "sha256": "f1022baa4cf868574e50a9df91c163164d9fbb7c2069f106afa87f4cd5bcee8d"
+    }
+  ],
+  "replays": {
+    "MP14": "REPLAYED_EXACT: aligned scalars have a = 2^-k, b = 1 and nonbacktracking eigenvalue -(4^k - 1)/2^k (k = 1..10); determinant identity and reverse-instability bound exact.",
+    "MP15": "REPLAYED_EXACT: Q_N = 2 M(Y) - M(N) for N = 1..100; at N = 10 the product kernel is -1 and the lcm Gram is 4.",
+    "MP18": "REPLAYED_EXACT: two-by-two commutator identity with zero diagonal and lambda_min = -M.",
+    "MP20": "REPLAYED_EXACT_ALGEBRA: comparison-density seeds lie in the seed moment slices; partial fractions hold. The asymptotic falsification itself is DERIVED in the source report, not replayed.",
+    "MP21": "REPLAYED_EXACT: rational causal model norm lam (lam + 2)/(4 (lam + 1)^2) for five rational dampings; growing residue nonzero for 0 < lam <= delta.",
+    "MP22": "REPLAYED_EXACT: boundary-layer constants 1/2, 5/4, ... through m = 12.",
+    "MP13": "PARTIAL: the slice statement of the external L5 core certificate (Q_even(5,x) >= -(1/3)||x||^2 on the 622-dimensional slice) coincides with the repository level-3 record evidence/increment2b/independent_L5_even.json (CERTIFIED). The rank-480 source-guided core, reference partition and cross-band pencil are BLOCKED: their construction is in a 28 MB evidence archive that the session connector returns only inline, so it was not fetched."
+  },
+  "scope": "Substitution and inference controls. They reject shortcuts; none is a counterexample to an actual native route."
+}
