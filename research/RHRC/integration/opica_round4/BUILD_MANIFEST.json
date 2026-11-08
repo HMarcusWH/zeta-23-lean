@@ -1648,7 +1648,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md",
-      "sha256": "0f0126d64ac83b8393e0ba6655cf36cece8ba78b97efde8d9a2ab59d193a3269"
+      "sha256": "fd45b7af231535fad7c9192e92f2f368bf48cd50f5a7be9d1be3950e31c30c80"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/CANDIDATE_RESULTS.jsonl",
@@ -1692,7 +1692,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_native.py",
-      "sha256": "bf2a594a26714f5ae96869ca7299736bcb650edad10117550d041ac2d2bfce39"
+      "sha256": "076e74c1a7d5d982bac43c6cbbe1ce4e467338d138ad7ae76831451cfb44e2b9"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E-H6_OUTCOMES.json",
@@ -1812,7 +1812,7 @@
     },
     {
       "path": "research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_discovery.py",
-      "sha256": "4f68ce2a58eb441b07d51c6ed8ab4ecab2c531c6aa9154fec9d2b8e5a1a26167"
+      "sha256": "8eb2af961101c681f254c34ac17aedf4a5db238cf68a3867a9718b7389991efc"
     },
     {
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/producer/README.md",

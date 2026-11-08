@@ -517,6 +517,12 @@ from the repository Arb primitives. It measures the terms of the candidate
 * With non-zeta prime weights every identity survives while the slice turns
   negative. Its growth also looks polynomial at these apertures, so finite
   tables cannot discriminate PG or (SG).
+* Tests. CI binds the 5A records by hash and re-scores the frozen L=7
+  predictions without numpy (`Increment5ASGRecordTests`). The identity and
+  matched-control checks run the numpy engine, so they are discovery controls
+  (`SGCandidateDiscoveryTests`) and skip in the hash-locked lane. The first
+  4D head, `7353c5d`, put them in the CI file; its SOURCE_NUMERICS lane failed
+  on the missing numpy import.
 
 **Status (U8).**
 
