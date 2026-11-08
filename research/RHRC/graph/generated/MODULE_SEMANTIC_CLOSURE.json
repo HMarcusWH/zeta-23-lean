@@ -12555,6 +12555,32 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/FiniteCertificateSoundness.lean",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness",
+      "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness",
+      "named_source_declaration_count": 15,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/FiniteCertificateSoundness.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/MomentLeakage.lean",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.MomentLeakage",
+      "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.MomentLeakage",
+      "named_source_declaration_count": 6,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/MomentLeakage.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/MomentSliceCoordinates.lean",
       "module": "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates",
       "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates",
@@ -12625,6 +12651,19 @@
       "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore",
       "named_source_declaration_count": 8,
       "path": "Zeta23/OPICARound4/ArithmeticFrontier/SourceColumnCore.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/SourceColumnTrace.lean",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnTrace",
+      "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnTrace",
+      "named_source_declaration_count": 9,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/SourceColumnTrace.lean",
       "reachability": "STANDALONE_OR_AUXILIARY",
       "reachable_from": [],
       "registered_root_count": 0,
@@ -18344,7 +18383,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1250,
+  "entry_count": 1253,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",
