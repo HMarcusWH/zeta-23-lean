@@ -1,0 +1,392 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_SG_CANDIDATE_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "EXPERIMENTAL_SIGNAL_FLOAT64_MIDPOINTS_NOT_CERTIFIED",
+  "candidate_status": "OPEN",
+  "tool_sha256": "63081ceb52cd01882da47fba034bc3baa1044ce09b34b324c14143d116802b8e",
+  "native_source_sha256": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6",
+  "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+  "numpy": "2.5.3",
+  "offdiagonal_countermodel": {
+    "J": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "ell": [
+      1.0,
+      1.0
+    ],
+    "z": [
+      0.0,
+      10.0
+    ],
+    "H": [
+      [
+        0.0,
+        10.0
+      ],
+      [
+        10.0,
+        0.0
+      ]
+    ],
+    "commutator_residual": 0.0,
+    "diagonal": [
+      0.0,
+      0.0
+    ],
+    "lambda_min": -10.0,
+    "conclusion": "Every h_i = 0 yet lambda_min = -M: diagonal lower bounds alone do not suffice."
+  },
+  "states": [
+    {
+      "L": "4",
+      "parity": "even",
+      "K": 256,
+      "Q": 54,
+      "prime_powers": 24,
+      "bits": 128,
+      "slice_dimension": 253,
+      "nc_relative_residual": 2.3657010153321645e-15,
+      "nc_absolute_frobenius": 6.12630752331398e-11,
+      "ambient_commutator_frobenius": 69902.02401472008,
+      "commutator_identity_relative_residual": 1.710027688742987e-14,
+      "offdiagonal_reconstruction_relative_residual": 1.1750708697969676e-13,
+      "leak_singular_values": [
+        16586.578356519418,
+        1.1785472762340574e-10,
+        1.1785472762340574e-10,
+        1.1785472762340574e-10
+      ],
+      "leak_rank_one_residual": 1.9120162086587797e-14,
+      "geometry_min_gap": 4.047388132670473,
+      "geometry_spectrum_range": [
+        1.9271325504293797,
+        65378.51126538444
+      ],
+      "norm_z": 2.663412864850667,
+      "norm_l": 16586.578356519425,
+      "min_geometry_diagonal": 0.0006539029948264175,
+      "argmin_geometry_diagonal_theta": 1.9271325504293797,
+      "max_geometry_diagonal": 7.178324372920451,
+      "lambda_min_H": -4.658291611436335e-15,
+      "lambda_max_H": 8.329426808480292,
+      "sg_lower_bound": -21829.833664190675,
+      "sg_bound_slack": 21829.833664190675,
+      "trace_H2": 3841.9336801824234,
+      "trace_identity_72": 3841.9336801824247,
+      "trace_identity_relative_residual": 3.5509255656766443e-16,
+      "offdiagonal_operator_norm_bound_2lz_over_g": 21829.83431809367,
+      "offdiagonal_actual_operator_norm": 3.335129991443004,
+      "scalar_shift_control": {
+        "shift": 1000.0,
+        "z_change": 1.4940190019287535e-12,
+        "diagonal_change": 2.9558577807620168e-12,
+        "lambda_min_change": -1000.000000000004,
+        "conclusion": "A response bound alone cannot control absolute energy (matched algebraic control)."
+      },
+      "modified_prime_weights_control": {
+        "label": "NOT_ZETA: arbitrary real prime-power weights, seed 20261108, scale 3",
+        "nc_relative_residual": 2.330510459206261e-15,
+        "commutator_identity_relative_residual": 1.4182822992289904e-14,
+        "lambda_min_H": -13.589498597608525,
+        "norm_z": 9.479311736652688,
+        "min_geometry_diagonal": -6.689890368246135,
+        "conclusion": "NC and the rank-two commutator survive arbitrary real weights; they carry no arithmetic."
+      },
+      "seconds": 10.536
+    },
+    {
+      "L": "4",
+      "parity": "odd",
+      "K": 256,
+      "Q": 54,
+      "prime_powers": 24,
+      "bits": 128,
+      "slice_dimension": 252,
+      "nc_relative_residual": 2.5786528015600814e-15,
+      "nc_absolute_frobenius": 6.754674041555299e-11,
+      "ambient_commutator_frobenius": 64006.73255939579,
+      "commutator_identity_relative_residual": 1.6173752150770828e-14,
+      "offdiagonal_reconstruction_relative_residual": 9.920950196385739e-14,
+      "leak_singular_values": [
+        16544.80040017259,
+        1.1755787738943432e-10,
+        1.1755787738943432e-10,
+        1.1755787738943432e-10
+      ],
+      "leak_rank_one_residual": 1.878983940322836e-14,
+      "geometry_min_gap": 5.084912883482754,
+      "geometry_spectrum_range": [
+        3.3323076277320824,
+        65360.56215754898
+      ],
+      "norm_z": 2.5955743259408717,
+      "norm_l": 16544.800400172575,
+      "min_geometry_diagonal": 0.00023346615123612583,
+      "argmin_geometry_diagonal_theta": 3.3323076277320824,
+      "max_geometry_diagonal": 7.195462702261797,
+      "lambda_min_H": -4.263251889169791e-15,
+      "lambda_max_H": 8.313153601401453,
+      "sg_lower_bound": -16890.459890637896,
+      "sg_bound_slack": 16890.459890637896,
+      "trace_H2": 3829.076434364809,
+      "trace_identity_72": 3829.076434364806,
+      "trace_identity_relative_residual": 7.125697676942306e-16,
+      "offdiagonal_operator_norm_bound_2lz_over_g": 16890.460124104047,
+      "offdiagonal_actual_operator_norm": 3.433467690837591,
+      "scalar_shift_control": {
+        "shift": 1000.0,
+        "z_change": 1.3930239615382332e-12,
+        "diagonal_change": 1.8189894035458565e-12,
+        "lambda_min_change": -1000.0000000000023,
+        "conclusion": "A response bound alone cannot control absolute energy (matched algebraic control)."
+      },
+      "modified_prime_weights_control": {
+        "label": "NOT_ZETA: arbitrary real prime-power weights, seed 20261108, scale 3",
+        "nc_relative_residual": 2.6854869700089413e-15,
+        "commutator_identity_relative_residual": 1.3877623303041696e-14,
+        "lambda_min_H": -13.328365320942982,
+        "norm_z": 9.417447857146149,
+        "min_geometry_diagonal": -6.439655536024619,
+        "conclusion": "NC and the rank-two commutator survive arbitrary real weights; they carry no arithmetic."
+      },
+      "seconds": 7.531
+    },
+    {
+      "L": "5",
+      "parity": "even",
+      "K": 625,
+      "Q": 148,
+      "prime_powers": 47,
+      "bits": 128,
+      "slice_dimension": 622,
+      "nc_relative_residual": 4.379660151879189e-15,
+      "nc_absolute_frobenius": 8.093014566970704e-10,
+      "ambient_commutator_frobenius": 493089.85418193403,
+      "commutator_identity_relative_residual": 3.3283020384304164e-14,
+      "offdiagonal_reconstruction_relative_residual": 2.918111204708583e-13,
+      "leak_singular_values": [
+        98646.20935678283,
+        7.009234746873206e-10,
+        7.009234746873206e-10,
+        7.009234746873206e-10
+      ],
+      "leak_rank_one_residual": 3.8439847537943544e-14,
+      "geometry_min_gap": 4.022096793706616,
+      "geometry_spectrum_range": [
+        1.8315283850328845,
+        390314.28645647265
+      ],
+      "norm_z": 3.2714979722330524,
+      "norm_l": 98646.2093567828,
+      "min_geometry_diagonal": 0.0002121245394912401,
+      "argmin_geometry_diagonal_theta": 1.8315283850328845,
+      "max_geometry_diagonal": 9.859242871357573,
+      "lambda_min_H": -6.07369380787837e-15,
+      "lambda_max_H": 10.539744933536358,
+      "sg_lower_bound": -160473.9468018579,
+      "sg_bound_slack": 160473.9468018579,
+      "trace_H2": 14052.032864043555,
+      "trace_identity_72": 14052.032864043527,
+      "trace_identity_relative_residual": 1.941700629166937e-15,
+      "offdiagonal_operator_norm_bound_2lz_over_g": 160473.94701398246,
+      "offdiagonal_actual_operator_norm": 5.3314763202522375,
+      "scalar_shift_control": {
+        "shift": 1000.0,
+        "z_change": 1.9627694593000488e-12,
+        "diagonal_change": 2.8421709430404007e-12,
+        "lambda_min_change": -1000.000000000003,
+        "conclusion": "A response bound alone cannot control absolute energy (matched algebraic control)."
+      },
+      "modified_prime_weights_control": {
+        "label": "NOT_ZETA: arbitrary real prime-power weights, seed 20261108, scale 3",
+        "nc_relative_residual": 3.73346315913145e-15,
+        "commutator_identity_relative_residual": 2.552971047162452e-14,
+        "lambda_min_H": -29.09355771378553,
+        "norm_z": 18.898455957255518,
+        "min_geometry_diagonal": -14.46983430997433,
+        "conclusion": "NC and the rank-two commutator survive arbitrary real weights; they carry no arithmetic."
+      },
+      "seconds": 31.702
+    },
+    {
+      "L": "5",
+      "parity": "odd",
+      "K": 625,
+      "Q": 148,
+      "prime_powers": 47,
+      "bits": 128,
+      "slice_dimension": 621,
+      "nc_relative_residual": 3.652262345003232e-15,
+      "nc_absolute_frobenius": 6.781585971592373e-10,
+      "ambient_commutator_frobenius": 479329.0450115576,
+      "commutator_identity_relative_residual": 3.248499604279245e-14,
+      "offdiagonal_reconstruction_relative_residual": 3.7336655908166424e-13,
+      "leak_singular_values": [
+        98402.19166480507,
+        6.991896247030032e-10,
+        6.991896247030032e-10,
+        6.991896247030032e-10
+      ],
+      "leak_rank_one_residual": 3.916346935366148e-14,
+      "geometry_min_gap": 5.043503857185096,
+      "geometry_spectrum_range": [
+        3.2608239915776402,
+        390284.5240032748
+      ],
+      "norm_z": 3.265149002391766,
+      "norm_l": 98402.19166480505,
+      "min_geometry_diagonal": 0.00031984580698149126,
+      "argmin_geometry_diagonal_theta": 3.2608239915776402,
+      "max_geometry_diagonal": 9.37167361365628,
+      "lambda_min_H": -6.032179881590416e-15,
+      "lambda_max_H": 10.540918535690341,
+      "sg_lower_bound": -127410.55672365602,
+      "sg_bound_slack": 127410.55672365602,
+      "trace_H2": 14029.358901700183,
+      "trace_identity_72": 14029.358901700238,
+      "trace_identity_relative_residual": 3.88967753186231e-15,
+      "offdiagonal_operator_norm_bound_2lz_over_g": 127410.55704350182,
+      "offdiagonal_actual_operator_norm": 5.227591885274685,
+      "scalar_shift_control": {
+        "shift": 1000.0,
+        "z_change": 1.8365357174055887e-12,
+        "diagonal_change": 2.7284841053187847e-12,
+        "lambda_min_change": -1000.0000000000032,
+        "conclusion": "A response bound alone cannot control absolute energy (matched algebraic control)."
+      },
+      "modified_prime_weights_control": {
+        "label": "NOT_ZETA: arbitrary real prime-power weights, seed 20261108, scale 3",
+        "nc_relative_residual": 3.359836973274103e-15,
+        "commutator_identity_relative_residual": 2.4946405917601365e-14,
+        "lambda_min_H": -28.826001490111388,
+        "norm_z": 18.947367324756833,
+        "min_geometry_diagonal": -15.874420167444637,
+        "conclusion": "NC and the rank-two commutator survive arbitrary real weights; they carry no arithmetic."
+      },
+      "seconds": 33.08
+    },
+    {
+      "L": "6",
+      "parity": "even",
+      "K": 1296,
+      "Q": 403,
+      "prime_powers": 98,
+      "bits": 128,
+      "slice_dimension": 1293,
+      "nc_relative_residual": 5.2412745489608864e-15,
+      "nc_absolute_frobenius": 5.041870859461718e-09,
+      "ambient_commutator_frobenius": 2529156.589280601,
+      "commutator_identity_relative_residual": 6.054121358796595e-14,
+      "offdiagonal_reconstruction_relative_residual": 1.0001647149994306e-12,
+      "leak_singular_values": [
+        423816.53658099624,
+        4.015122499399848e-09,
+        3.895745308026786e-09,
+        3.4245834629566966e-09
+      ],
+      "leak_rank_one_residual": 7.144088868869736e-14,
+      "geometry_min_gap": 4.0151413222463335,
+      "geometry_spectrum_range": [
+        1.7285828953648794,
+        1679062.1116524516
+      ],
+      "norm_z": 3.9261921119656664,
+      "norm_l": 423816.5365809962,
+      "min_geometry_diagonal": 5.816467819518176e-05,
+      "argmin_geometry_diagonal_theta": 1.7285828953648794,
+      "max_geometry_diagonal": 11.591503874499711,
+      "lambda_min_H": -8.765592517181865e-15,
+      "lambda_max_H": 13.190767043676239,
+      "sg_lower_bound": -828855.0808952366,
+      "sg_bound_slack": 828855.0808952366,
+      "trace_H2": 39411.86318089532,
+      "trace_identity_72": 39411.86318089512,
+      "trace_identity_relative_residual": 5.169174881736912e-15,
+      "offdiagonal_operator_norm_bound_2lz_over_g": 828855.0809534013,
+      "offdiagonal_actual_operator_norm": 6.6576283238083,
+      "scalar_shift_control": {
+        "shift": 1000.0,
+        "z_change": 2.2548924592531587e-12,
+        "diagonal_change": 3.410605131648481e-12,
+        "lambda_min_change": -1000.0000000000036,
+        "conclusion": "A response bound alone cannot control absolute energy (matched algebraic control)."
+      },
+      "modified_prime_weights_control": {
+        "label": "NOT_ZETA: arbitrary real prime-power weights, seed 20261108, scale 3",
+        "nc_relative_residual": 5.010405019352764e-15,
+        "commutator_identity_relative_residual": 4.813000501452818e-14,
+        "lambda_min_H": -43.54465792578022,
+        "norm_z": 25.936458682204943,
+        "min_geometry_diagonal": -26.644430478390277,
+        "conclusion": "NC and the rank-two commutator survive arbitrary real weights; they carry no arithmetic."
+      },
+      "seconds": 125.708
+    },
+    {
+      "L": "6",
+      "parity": "odd",
+      "K": 1296,
+      "Q": 403,
+      "prime_powers": 98,
+      "bits": 128,
+      "slice_dimension": 1292,
+      "nc_relative_residual": 5.061068239268532e-15,
+      "nc_absolute_frobenius": 4.8655346691447695e-09,
+      "ambient_commutator_frobenius": 2446120.962113524,
+      "commutator_identity_relative_residual": 5.976662063160236e-14,
+      "offdiagonal_reconstruction_relative_residual": 1.037129801545282e-12,
+      "leak_singular_values": [
+        422771.18978884,
+        4.339970118635306e-09,
+        4.243839879285812e-09,
+        3.7361520520766e-09
+      ],
+      "leak_rank_one_residual": 7.346011396057993e-14,
+      "geometry_min_gap": 5.028365805104748,
+      "geometry_spectrum_range": [
+        3.1985913241092994,
+        1679015.5538828268
+      ],
+      "norm_z": 3.9557891283342133,
+      "norm_l": 422771.18978884,
+      "min_geometry_diagonal": 0.0002807124337771803,
+      "argmin_geometry_diagonal_theta": 3.1985913241092994,
+      "max_geometry_diagonal": 11.320425551949432,
+      "lambda_min_H": -7.95832620639996e-15,
+      "lambda_max_H": 13.191021491256173,
+      "sg_lower_bound": -665183.7755861173,
+      "sg_bound_slack": 665183.7755861173,
+      "trace_H2": 39384.6550104501,
+      "trace_identity_72": 39384.65501045017,
+      "trace_identity_relative_residual": 1.847409254252161e-15,
+      "offdiagonal_operator_norm_bound_2lz_over_g": 665183.7758668297,
+      "offdiagonal_actual_operator_norm": 6.3567297040103625,
+      "scalar_shift_control": {
+        "shift": 1000.0,
+        "z_change": 2.389495134177988e-12,
+        "diagonal_change": 3.183231456205249e-12,
+        "lambda_min_change": -1000.0000000000033,
+        "conclusion": "A response bound alone cannot control absolute energy (matched algebraic control)."
+      },
+      "modified_prime_weights_control": {
+        "label": "NOT_ZETA: arbitrary real prime-power weights, seed 20261108, scale 3",
+        "nc_relative_residual": 5.046672087780237e-15,
+        "commutator_identity_relative_residual": 4.7511440200568084e-14,
+        "lambda_min_H": -43.490654772402344,
+        "norm_z": 26.293297171893478,
+        "min_geometry_diagonal": -28.230852255142555,
+        "conclusion": "NC and the rank-two commutator survive arbitrary real weights; they carry no arithmetic."
+      },
+      "seconds": 123.384
+    }
+  ]
+}

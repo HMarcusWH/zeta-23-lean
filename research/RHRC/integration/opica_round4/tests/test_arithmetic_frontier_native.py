@@ -560,3 +560,53 @@ class Increment3FReceiptTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class Increment5ASGCandidateTests(unittest.TestCase):
+    """The frozen (SG) candidate: identities, matched controls and records (evidence/increment5a)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.SG = load('_frontier_sg_candidate_ci', ROOT / 'sg_candidate.py')
+        cls.SCORE = load('_frontier_sg_score_ci', ROOT / 'sg_score.py')
+        cls.ev = ROOT / 'evidence' / 'increment5a'
+
+    def test_native_identities_on_a_small_actual_state(self):
+        # L = 2 has K = 16; both slices are nonzero and every identity is exact up to rounding.
+        for parity, dim in (('even', 13), ('odd', 12)):
+            row = self.SG.run_state(Fraction(2), parity, 128, controls=False)
+            self.assertEqual((row['K'], row['slice_dimension']), (16, dim))
+            self.assertLess(row['nc_relative_residual'], 1e-12, parity)
+            self.assertLess(row['leak_rank_one_residual'], 1e-10, parity)
+            self.assertLess(row['commutator_identity_relative_residual'], 1e-10, parity)
+            self.assertLess(row['trace_identity_relative_residual'], 1e-12, parity)
+            # The reduction bound is a lower bound, never above the actual bottom.
+            self.assertLessEqual(row['sg_lower_bound'], row['lambda_min_H'] + 1e-9, parity)
+
+    def test_matched_controls_reject_free_improvements(self):
+        data = self.SG.native_inputs(Fraction(2), 'even', 128)
+        geo = self.SG.geometry(data)
+        shift = self.SG.scalar_shift_control(data, geo, 50.0)
+        self.assertLess(shift['z_change'], 1e-10)
+        self.assertLess(shift['diagonal_change'], 1e-10)
+        self.assertAlmostEqual(shift['lambda_min_change'], -50.0, places=8)
+        two = self.SG.offdiagonal_countermodel(7.0)
+        self.assertEqual((two['commutator_residual'], two['diagonal'], two['lambda_min']), (0.0, [0.0, 0.0], -7.0))
+
+    def test_records_bind_the_tool_and_the_frozen_predictions(self):
+        summary = json.loads((self.ev / 'SUMMARY.json').read_bytes())
+        self.assertEqual((summary['RH'], summary['Step4']), ('OPEN', 'OPEN'))
+        for entry in summary['records']:
+            self.assertEqual(sha(self.ev / entry['file']), entry['sha256'], entry['file'])
+        tool = sha(ROOT / 'sg_candidate.py')
+        for name in ('SG_L4_L6.json', 'SG_L7.json'):
+            self.assertEqual(json.loads((self.ev / name).read_bytes())['tool_sha256'], tool, name)
+        outcomes = json.loads((self.ev / 'SG_L7_OUTCOMES.json').read_bytes())
+        self.assertEqual(outcomes['predictions_sha256'], sha(self.ev / 'SG_L7_PREDICTIONS.json'))
+        self.assertLess(outcomes['predictions_frozen_utc'], outcomes['results_recorded_utc'])
+        results = {(s['L'], s['parity']): s for s in json.loads((self.ev / 'SG_L7.json').read_bytes())['states']}
+        preds = json.loads((self.ev / 'SG_L7_PREDICTIONS.json').read_bytes())['predictions']
+        for p in preds:
+            for parity in ('even', 'odd'):
+                got = outcomes['scores'][p['id']][parity]
+                self.assertEqual(got['hit'], self.SCORE.score_prediction(p, parity, results[('7', parity)]), (p['id'], parity))

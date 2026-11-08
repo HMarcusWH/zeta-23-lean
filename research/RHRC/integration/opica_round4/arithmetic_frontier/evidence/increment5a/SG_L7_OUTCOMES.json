@@ -1,0 +1,184 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_SG_OUTCOMES_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "MECHANICAL_SCORE_OF_FROZEN_OPERATIONAL_PREDICTIONS",
+  "predictions_file": "SG_L7_PREDICTIONS.json",
+  "predictions_sha256": "7363e0bcca19e98b079fac085b16bb5e9bd60ac7e3b0e095a762372e60a6c26b",
+  "predictions_frozen_utc": "2026-11-08T15:26:30Z",
+  "record_file": "SG_L7.json",
+  "record_sha256": "0eccf78f1e785716cbaf5687b52a73b984865c0fb74b3a9ab4c65afee90cc072",
+  "results_recorded_utc": "2026-11-08T15:33:34Z",
+  "scorer_sha256": "6890cc075f0e0fc81cfb01efff005cffd8cf744d3850d755ee44727a1afeabf8",
+  "scores": {
+    "P1": {
+      "even": {
+        "hit": true,
+        "value": 4.520315723934261,
+        "interval": [
+          4.3,
+          4.9
+        ]
+      },
+      "odd": {
+        "hit": true,
+        "value": 4.591060598465817,
+        "interval": [
+          4.3,
+          4.9
+        ]
+      }
+    },
+    "P2": {
+      "even": {
+        "hit": true,
+        "value": 4.014503075915025,
+        "interval": [
+          4.0,
+          4.0151413
+        ]
+      },
+      "odd": {
+        "hit": true,
+        "value": 5.021293533340614,
+        "interval": [
+          5.0,
+          5.0283658
+        ]
+      }
+    },
+    "P3": {
+      "even": {
+        "hit": true,
+        "value": 0.2522408347343333,
+        "interval": [
+          0.2515,
+          0.2525
+        ]
+      },
+      "odd": {
+        "hit": true,
+        "value": 0.25161907047381327,
+        "interval": [
+          0.251,
+          0.2525
+        ]
+      }
+    },
+    "P4": {
+      "even": {
+        "hit": false,
+        "value": 14.872741972574099,
+        "interval": [
+          15.0,
+          17.0
+        ]
+      },
+      "odd": {
+        "hit": false,
+        "value": 14.872235605037067,
+        "interval": [
+          15.0,
+          17.0
+        ]
+      }
+    },
+    "P5": {
+      "even": {
+        "hit": true,
+        "value": 7.791366186485627,
+        "interval": [
+          7.0,
+          9.5
+        ]
+      },
+      "odd": {
+        "hit": true,
+        "value": 8.291928543890236,
+        "interval": [
+          6.6,
+          9.5
+        ]
+      }
+    },
+    "P6": {
+      "even": {
+        "hit": false,
+        "value": 6.711174275188075e-05,
+        "interval": [
+          0.0,
+          5.8165e-05
+        ]
+      },
+      "odd": {
+        "hit": true,
+        "value": 0.00011927567128229532,
+        "interval": [
+          0.0,
+          0.001
+        ]
+      }
+    },
+    "P7": {
+      "even": {
+        "hit": true,
+        "value": 92809.33116011566,
+        "interval": [
+          80000.0,
+          110000.0
+        ]
+      },
+      "odd": {
+        "hit": true,
+        "value": 92776.64530747393,
+        "interval": [
+          80000.0,
+          110000.0
+        ]
+      }
+    },
+    "P8": {
+      "even": {
+        "hit": true,
+        "value": 3274663.545273538,
+        "interval": [
+          2000000.0,
+          5000000.0
+        ]
+      },
+      "odd": {
+        "hit": true,
+        "value": 2652499.3404929657,
+        "interval": [
+          1500000.0,
+          5000000.0
+        ]
+      }
+    },
+    "P9": {
+      "even": {
+        "hit": true,
+        "values": {
+          "nc_relative_residual": 6.449311609300069e-15,
+          "leak_rank_one_residual": 1.1229295210218799e-13,
+          "commutator_identity_relative_residual": 9.648571335829218e-14,
+          "offdiagonal_reconstruction_relative_residual": 2.51431513407121e-12,
+          "trace_identity_relative_residual": 3.449460641751184e-15
+        }
+      },
+      "odd": {
+        "hit": true,
+        "values": {
+          "nc_relative_residual": 6.396656371604313e-15,
+          "leak_rank_one_residual": 1.1401545645252612e-13,
+          "commutator_identity_relative_residual": 9.794446312202742e-14,
+          "offdiagonal_reconstruction_relative_residual": 2.350429876173252e-12,
+          "trace_identity_relative_residual": 3.450675910549232e-15
+        }
+      }
+    }
+  },
+  "hits": 15,
+  "total": 18,
+  "reading": "A miss is an operational prediction failure, not a falsification of (SG). Hits prove nothing about all L."
+}

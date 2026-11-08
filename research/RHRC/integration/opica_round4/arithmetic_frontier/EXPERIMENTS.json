@@ -342,6 +342,15 @@
       "goal": "Witness-retaining reruns of the frozen E-D1 and E-H7 decisions (plan \u00a75.4 proof-carrying outputs).",
       "result": "At L = 4, 5, 6 (both parities, plus L = 4 at 1/1024) and L = 7 (both parities) every status shared with the frozen records agrees; the frozen L = 6 records never tested tail degree 128 (listed separately). Every CERTIFIED row carries tau, the residual bound and a factor enclosure hash; every FALSIFIED row carries its exact witness vector and value enclosure.",
       "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3f/SUMMARY.json"
+    },
+    {
+      "id": "E-SG",
+      "status": "RUN_L4_TO_L7_PREDICTIONS_FROZEN_FOR_L7",
+      "goal": "Revision 3 stage 5A: freeze the coarse signed candidate (SG) and test its terms on the actual slices.",
+      "candidate": "CR37: ||V* E w|| <= C_z (1+L)^a and min_i <v_i, H v_i> >= -C_h (1+L)^b in one fixed parity.",
+      "result": "Report table reproduced exactly at L = 4..6; NC, rank-one leakage and the commutator identity hold to about 1e-14; ||z|| is about 0.65 L; the reduction loss is 2e4 to 3e6 against an actual geometry off-diagonal norm of 3 to 8; L = 7 frozen predictions 15 of 18 hit (lambda_max and the even diagonal minimum missed). Non-zeta prime weights keep every identity while turning the slice negative, with growth that also looks polynomial at these L.",
+      "disposition": "EXPERIMENTAL_SIGNAL; (SG) OPEN; no growth law promoted",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment5a/SUMMARY.json"
     }
   ],
   "corrections": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/CORRECTIONS.json"
