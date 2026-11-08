@@ -196,6 +196,106 @@
       "formal_repository_control": null,
       "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3d/SUMMARY.json",
       "combination_rule": "Never combine preserved properties of two different models into one imaginary model."
+    },
+    {
+      "id": "MP13",
+      "model": "Cross-band partial-pencil witness at the frozen L=5 core/reference (native data, external certificate)",
+      "blocked_inference": "Independent PSD per-group allowances N_j with D_j + N_j >= 0 and sum N_j <= A certify the fixed partition",
+      "preserves": [
+        "actual L=5 source, cutoff 625, 622-dimensional slice, rank-480 core, eps = 1/3"
+      ],
+      "changes": [
+        "nothing in the source; the obstruction is to the budget mechanism"
+      ],
+      "preservation_status": "EXTERNAL_CERTIFICATE_FETCHED_NOT_REPLAYED",
+      "formal_repository_control": null,
+      "evidence": "SOURCE_LEDGER drive_id 18rqv9ugRQYn2XYUcH_ZjxZMfF18RyEDd (sha256 75d43304...)",
+      "scope_limit": "Excludes that fine-budget mechanism on that state only; not all groupings, coarser allowances or PG."
+    },
+    {
+      "id": "MP14",
+      "model": "Aligned scalar operators for the nonbacktracking transfer (NOT native)",
+      "blocked_inference": "Small individual norms and square-function cost bound the real negative spectrum of N (NB)",
+      "preserves": [
+        "individual operator norms",
+        "square-function constant"
+      ],
+      "changes": [
+        "actual translations and projection"
+      ],
+      "preservation_status": "AS_STATED_BY_COARSE_GROWTH_AND_POLYNOMIAL_GEOMETRY_REPORTS_NOT_REAUDITED",
+      "formal_repository_control": null,
+      "quantitative_form": "If s = -lambda_min(sum B_i) > a + 2b, N has a negative real eigenvalue of size at least (s + a + sqrt((s-a)^2 - 4b^2))/2 (DERIVED in the 8 November report)."
+    },
+    {
+      "id": "MP15",
+      "model": "Product kernel versus positive lcm-divisor Gram at N = 10",
+      "blocked_inference": "The C2 product kernel may be replaced by a positive lcm Gram",
+      "preserves": [
+        "support and Moebius coefficients"
+      ],
+      "changes": [
+        "kernel"
+      ],
+      "preservation_status": "AS_STATED_BY_COARSE_GROWTH_REPORT_NOT_REAUDITED (product -1, lcm Gram 4)",
+      "formal_repository_control": null,
+      "scope_limit": "A substitution counterexample, not one to the actual smoothed target."
+    },
+    {
+      "id": "MP16",
+      "model": "Coarse-target quantifier controls",
+      "blocked_inference": "Per-aperture constants, cofinal coverage, vector-dependent parity or exponential depth at every aperture supply PG/SE/SB",
+      "preserves": [
+        "the exact native types"
+      ],
+      "changes": [
+        "quantifier order only"
+      ],
+      "preservation_status": "SEMANTIC_API_REJECTIONS",
+      "formal_repository_control": "FrontierMutation18-FrontierMutation22"
+    },
+    {
+      "id": "MP17",
+      "model": "Scalar shift E - M I on the slice geometry",
+      "blocked_inference": "A bound on the source response z controls the absolute energy",
+      "preserves": [
+        "z = V* E w (w is orthogonal to the slice)",
+        "the commutator"
+      ],
+      "changes": [
+        "every h_i by -M"
+      ],
+      "preservation_status": "MEASURED_AT_L4_L5_L6 (evidence/increment5a, z change about 0, diagonal change exactly -M)",
+      "formal_repository_control": null
+    },
+    {
+      "id": "MP18",
+      "model": "Two-by-two off-diagonal response countermodel",
+      "blocked_inference": "Geometry-diagonal lower bounds alone bound lambda_min",
+      "preserves": [
+        "[J, H] = z l* - l z*"
+      ],
+      "changes": [
+        "everything else"
+      ],
+      "preservation_status": "EXACT (J = diag(0,1), l = (1,1), z = (0,M), H = [[0,M],[M,0]]: h = 0, lambda_min = -M)",
+      "formal_repository_control": null
+    },
+    {
+      "id": "MP19",
+      "model": "Arbitrary real prime-power weights (NOT zeta)",
+      "blocked_inference": "NC or the rank-two commutator carries arithmetic information",
+      "preserves": [
+        "NC",
+        "rank-one leakage",
+        "the commutator identity"
+      ],
+      "changes": [
+        "prime weights (seed 20261108, scale 3)"
+      ],
+      "preservation_status": "MEASURED_AT_L4_L5_L6 (evidence/increment5a)",
+      "formal_repository_control": null,
+      "label": "NOT_ZETA"
     }
   ],
   "semantic_controls": [
@@ -258,8 +358,74 @@
       "id": "FrontierMutation12",
       "blocks": "Core margin not strictly better than the physical shift",
       "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation13",
+      "blocks": "Pole annihilation on a boundary-flat vector that is not pole-neutral",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation14",
+      "blocks": "Energy identity at a nonpositive aperture",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation15",
+      "blocks": "Leakage terms dropped from the compressed commutator",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation16",
+      "blocks": "Shifted-factor certificate with a nonpositive shift",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation17",
+      "blocks": "Trace identity with a symmetric instead of a self-adjoint source",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation18",
+      "blocks": "Per-aperture constant presented as PG",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation19",
+      "blocks": "Cofinal coverage presented as SE",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation20",
+      "blocks": "One positive rate presented as Re rho = 1/2",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation21",
+      "blocks": "Parity chosen per vector presented as SB",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation22",
+      "blocks": "Fixed-depth AD presented as exponential depth at every aperture",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation23",
+      "blocks": "Long-term rate alpha in t read as rate alpha in a",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation24",
+      "blocks": "Ambient commutator cancellation without boundary flatness",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation25",
+      "blocks": "D0 presented as preserving the even slice",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
     }
   ],
   "distinction": "Mathematical countermodels test an inference in a stated scope. Semantic controls only show that one API substitution is rejected by the type checker; they are not counterexamples to every theorem connecting the objects.",
-  "mandatory_use": "Every candidate supplier in EXPERIMENTS.json must state which models it survives before formalization begins."
+  "mandatory_use": "Every candidate supplier in EXPERIMENTS.json must state which models it survives before formalization begins.",
+  "sharding": "Controls run in two shards (84 pinned pre-frontier, 25 frontier) under the fixed worker source name; each control must own exactly one type-mismatch error."
 }

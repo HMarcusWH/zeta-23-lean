@@ -40,6 +40,31 @@
       "register": "CR05",
       "consumer": null,
       "status": "OPEN"
+    },
+    {
+      "id": "PG",
+      "register": "CR31",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_polynomial",
+      "status": "OPEN",
+      "implies": "SE"
+    },
+    {
+      "id": "SE",
+      "register": "CR32",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_subexponential",
+      "status": "OPEN"
+    },
+    {
+      "id": "SB",
+      "register": "CR34",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_semibounded",
+      "status": "OPEN"
+    },
+    {
+      "id": "C2-SE",
+      "register": "CR35",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential",
+      "status": "OPEN"
     }
   ],
   "supporting_leaves": [
@@ -86,6 +111,24 @@
       "statement": "Pole-channel annihilation and Q = -arch - prime on both pole-neutral carriers and moment slices (CR17, M50).",
       "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
       "note": "Dependency compression only; the sign of -arch - prime is the OPEN closing content."
+    },
+    {
+      "id": "S-COARSE",
+      "statement": "Coarse-growth, fixed-rate, AD/SB and C2-SE consumers (CR31-CR35, M54-M56).",
+      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "note": "Consumers only; each premise is OPEN and sharp with Weil positivity (LEAD)."
+    },
+    {
+      "id": "S-NC",
+      "statement": "Native NC and rank-one leakage in functional form (CR36, M57).",
+      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "note": "Exact identities; carry no arithmetic (MP19). The orthonormal factor w l* is a mechanical OPEN Lean step."
+    },
+    {
+      "id": "S-SG",
+      "statement": "Candidate (SG) frozen and measured at L=4..6 (CR37, evidence/increment5a).",
+      "status": "OPEN",
+      "note": "EXPERIMENTAL_SIGNAL; both inequalities of (SG) unproved."
     }
   ],
   "rule": "A leaf moves only when an exact theorem with no undispatched RH-strength premise passes current-head formal and claim gates.",
@@ -96,5 +139,21 @@
     "c2_direct_alternative": "Section 11.4 (literal long-term lower bound): research, no candidate estimate. OPEN.",
     "native_enclosure_bridge": "Lean proof that the Arb enclosures contain the true native entries (digamma-type archimedean terms, all prime powers): not attempted in this increment. OPEN.",
     "universal_approximate_kernel_audit": "Section 10 paper audit: requires the paper and a full audit; optional by the plan. OPEN."
+  },
+  "revision3_status": {
+    "completed_generic_supports": [
+      "M51-M53 qualified at dab9fbe",
+      "M54-M57 compiled locally; current-head CI required"
+    ],
+    "pending_native_applications": [
+      "orthonormal leakage factor w l* in Lean",
+      "native SG -> PG composition in Lean",
+      "native enclosure bridge (only if a computational route consumes it)"
+    ],
+    "optional_assurance": [
+      "universal approximate-kernel audit",
+      "physical metric adapter beyond the coefficient chart"
+    ],
+    "open_supplier": "An actual-source inequality for one OR branch (C1, PG/SE, SB, PACKET, C2/C2-SE, K3, CAUSAL) with its exact quantifiers. OPEN. Engineering cannot supply it."
   }
 }

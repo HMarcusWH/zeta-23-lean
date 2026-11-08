@@ -1,0 +1,530 @@
+{
+  "schema": "OPICA4_CURRENT_SOURCE_MATH_GATE_V1",
+  "status": "PASS",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "execution_mode": "PRODUCTION_ISOLATED",
+  "module_count": 101,
+  "declaration_count": 1213,
+  "semantic_mutation_count": 100,
+  "roots_count": 1213,
+  "open_root_rows": [],
+  "lean_version": "Lean (version 4.33.0-rc2, x86_64-unknown-linux-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "toolchain_sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+  "manifest_sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+  "checker_sha256": "a799aa1c1945d536aad063ba472327805b3e40246365de7bdf6be00861a9da9b",
+  "types_and_axioms_sha256": "1856a1feeb10174ce50d851bcb2e6d1df6bbd9ec771e8974e84319a2f73fbf7f",
+  "head": "dab9fbea4d17a3ab5977318a55ce71b55fe7cfa9",
+  "committed_tree": "22d12e5e75327155f471b53e839ac0d5037e7c6c",
+  "authority": "CURRENT_SOURCE_ISOLATED_NATIVE_SUPPORT",
+  "source_result_sha256": "799e70fe81ab03de229a7a43c95ed5126ea2ef0bc05ed7ea47346dd6d7203b2f",
+  "module_exit_codes": [
+    {
+      "module": "Zeta23.OPICARound4.WitnessNorms",
+      "source_sha256": "76515d9dfed585bf28d601462cbab395211178fe60f1d9939d44f66c61ec0506",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.AbsoluteAnchor",
+      "source_sha256": "78593711b82a02827282010cb5ff23bded51c0579004b5230ab927f53dd10c77",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.SourceRow",
+      "source_sha256": "2419595a7c5944a7a8f46cbae66387dbbf180ffe7878f973a5c6dad5b88054cd",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.SourceDiscrepancy",
+      "source_sha256": "0b0a856d30aa821699a2b3cd5890a5ec274cfda8f8cef7c42b337aa734da7012",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NativeWitnessCosts",
+      "source_sha256": "d72b2714a37f1b81c94e04d19fa7ddabe2b8eec9bf274ecb3fd2bfbc118b4429",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.SignedSpectral",
+      "source_sha256": "481dad27a636ba9274a758029c881979404b2871c178756958efa30c6e7b598c",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.SignedNormBound",
+      "source_sha256": "203fbe7a4a028376bdb2a832e99f5af5352153f41f5906dd3a9b59ab986ccb0f",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.TraceMetric",
+      "source_sha256": "9b69981ffed1de26a33be4c230f0188db473336a86a6cde4a5eb1091d9970324",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.OperatorSignedBound",
+      "source_sha256": "de54637d3bdf2f9849091ab6d2c69e9b0dd53eeb3666d749e31f15f07e999ee2",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NativeSourceBudget",
+      "source_sha256": "75856cd9ae5790b9bd4afa2ca86014671a845c11f1346c20b13afbb93562b62e",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.PrimeDiscrepancyIntegral",
+      "source_sha256": "5df3b8309f6144a22da5ba8d318c5c91fba181911cf15b1f0d50d49f4d9365c1",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.AdaptiveBudget",
+      "source_sha256": "ed2890bedcf365ff174564e37d58c63f9ac5f5f39e134cc48faaf2ffb285caab",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ClosureConsumers",
+      "source_sha256": "f88b0a4dfc43f9e3103705ca14b46022602bde566e87d2cb2f9d1dd3eac56717",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NativeJointIndex",
+      "source_sha256": "11cc95f5d1a400810e616f464c4e3b56d3c3e368c6cabb27dfd9cd9f56df7ef9",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.SearchSupport",
+      "source_sha256": "a74b9ba1c5991de537ce32d3ef7a75b8e11549992da673528b99789b18b77826",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.IntegrationTargets",
+      "source_sha256": "7ae6b92e6fa2e6d872e03750b222770acf47f334553652cab306070281849ed9",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.SourceExchangeConcentration",
+      "source_sha256": "03fadc63d50d3947c362c750f7843a8301334c089e9b9b35ee08fe9ba44abf4a",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.OddReciprocalSource",
+      "source_sha256": "87957e4a350eb385563588c5ba7f288b5d7438b4a130f91819d51fd6fe15e716",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NativeConcentrationBudget",
+      "source_sha256": "601b170880c05df913903d2b3c6151592a14cb8e66eb80742eda75baf586c687",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NativeObservation",
+      "source_sha256": "5de10c71c391269e530a816ed7c379a6c2bdc21e96960a917006841f58ec6867",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NativeRayConsumer",
+      "source_sha256": "71f7a5833d7397ab74051b4c753c80826a64c684572a3d5c1a42e560cc8a51c8",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NativeSpectralMeasure",
+      "source_sha256": "13efcfa7a21e980cbb59b22b319502e7ec3b7de664ab1c5039310f31fb5c0c5b",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NativeVisibility",
+      "source_sha256": "6907aab5a9005b287c0db6df5645729bb10e82fbb45d6cc8a4802c3c5f34b2b5",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NegativeIndex",
+      "source_sha256": "980817b885c9d6d2e205e965a73554f700f907a0a8d2503cfa063c193b29b843",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "source_sha256": "262922e4d62d5749eb5580328242a4fae709c405a04d2a054452d6d5258422ef",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NeutralContactPencil",
+      "source_sha256": "e637c75692a04ecdb71ed93aeb28e4e6520a80e6eb9744a6b43020d45ff9f81d",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.SourceSupport",
+      "source_sha256": "e6639d5367dc88785b0a8e9ab9507b010aceeb97c674a183d1e7b7e1ea7c716f",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ScalarShift",
+      "source_sha256": "a7b02fa624a07d13aea5580cb7d4be14a919af3f33aa16b4acdd21a2e84781e6",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.SignedPickKernel",
+      "source_sha256": "158a35972a6c49a2e81b5fcefeb28b6dcabb05f6d06d359e7a2e919bba59ea61",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.SourceDictionaryCrosswalk",
+      "source_sha256": "a40e5c89dec93e98d95fd624734c30edf6faed34adee8c1ee961fc0d5f956df4",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.VisibilityRigidity",
+      "source_sha256": "6a584812280cf5ef6203cb1d455ed15b1127616bfaf10e8639a778520c903029",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.GroundArithmetic",
+      "source_sha256": "5880f1bbc7df57224d1c261cb60f7d006e66b4aa7b54e1501a949ec12c4199e8",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.JointGroundConstraints",
+      "source_sha256": "a9b153ccbfbc8e70b30cbd4ae73818df0ed228df073a9d65de4a706a44be6aa7",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.SmoothForcing",
+      "source_sha256": "1fd38f486eb19066b118b96d95a1aa23e22daec6c361cbf1cdec72ee20badcb3",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.SchurErrorTransport",
+      "source_sha256": "1f41a890585a99d16f6a0f2dce4bb1b4bfec42daa8db9da337dd215b72d69f53",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.QuarticErrorReduction",
+      "source_sha256": "3a176235c26faba6534a32cbea684e84dd81c36c22c9e8ac472cbea36d82dc2a",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.MobiusHyperbola",
+      "source_sha256": "f30abf704e538063e5e7e4dc3fd1c159c6bccdeeb3cc2d78e232c548d920635f",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.HyperbolaDiagonal",
+      "source_sha256": "6e221743e9f77405626868d95624140ff107cbc530680052f09dbcc23af31260",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ActualSourceHyperbola",
+      "source_sha256": "568292f2b9008892772550b544a48fdaa5730be44d87e453fd8008f9bbb1a350",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.CommonQuarticGround",
+      "source_sha256": "46b6de489ae488df1450b2586cc7b2a6eb98e0ce2dfa969b2ba7a7f8ea5b3bfd",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.JointGroundBirth",
+      "source_sha256": "8b5ad94e720b95a41931d7b3246dc606b9f3d322153a9946475ca83f4d130335",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.TiedNewbornResponse",
+      "source_sha256": "44ba0ed48fb0cc43755ac2565fc2e4f14d2f5d41411d6c9c33d7fc6de122029d",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NewbornSpectralVisibility",
+      "source_sha256": "119d1d768aeaff2d32e92c37a917fe41e3254c110f4904eadb9d4fd35bd32740",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.TiedCubicEnergy",
+      "source_sha256": "9afeff203daa7590c2a1498a43be653fe37c167257aa73330efb8cd184e1ea1b",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.TiedSilentMoment",
+      "source_sha256": "92099e5f590fcf902979394ee32c3eab4286254b6b109be8c7cb25d06ece2623",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.AnalyticFiniteSelector",
+      "source_sha256": "d6658d587f31e41760bafeb63807a1ffcfebc698e1ab38af2e9f6088dc59eaca",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeZeroRegularity",
+      "source_sha256": "2027f6068f8b869e99787c88547d4026d2d8e9b6234a0f96ec57363046f8736c",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeRegularBirthSelection",
+      "source_sha256": "0cf1f3205faee3025202652d7181933ead72a1c5588ea4f7457d0da065f7b58a",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeDiagonalSeparation",
+      "source_sha256": "7957f3d5b13ba384b483e5aed269e6ff64bbe2f435fdb64536334b7c124c2e0d",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeCompressionSeparation",
+      "source_sha256": "ee958f74d339e768ede6112b64cc0fa74fe9193e3d9fc6e70cb8e4e97d02c86d",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.SylvesterSeparation",
+      "source_sha256": "690abdb1f393a8c5c90d928382b4e1575558c60df41c961dbf4971c06267c232",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.MeromorphicFrequencyIndependence",
+      "source_sha256": "0b48059f8334327e7fda9048258c765758f5071595b7e6deab600da7bd9722cc",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.PrimeLaurentNonidentity",
+      "source_sha256": "ba1ba95caae0930504836d37373f215e650ab0db81ca9bb85cf37656523f119d",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.FinitePrimeLaurentAlgebra",
+      "source_sha256": "0a78cd30147225a43808f8f2f0efcc177dd81c110eca05b954f79d9fa82d48f6",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.PrimeSourceLaurent",
+      "source_sha256": "8c51247b111e8d1137bedf9dac47aaf905424ae74474cfe3dde5d5882477b9e4",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeZeroFrame",
+      "source_sha256": "a1a597740c22ab85c091f023218101bf61ff7040c8b8e6b268db69b158235372",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeCosineSeparation",
+      "source_sha256": "05296d4b3260863d4bb01beec18bc7d6718b7a63faf5dab726d9eda6453d3dc7",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.FrozenSourceContinuation",
+      "source_sha256": "0a4d2e9d63d53e710c5e86472c046b51732eed78bb7db1361aac3bfe4e8801d6",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.NewbornCubicEnergyBound",
+      "source_sha256": "ec9e4f5a65806194d5506fc76c1838b60273865f77afc83a7d77f2f2fe7675f7",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativePrimeIsolation",
+      "source_sha256": "9dc6c402ca2d5383cedc69ccbce888d5f5f8fd3c511b511094f7b0629efb91a8",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativePrimeExpansion",
+      "source_sha256": "47b01ca95c0b30901ee6145bee32a01d97bf2cc0d68aaa2bc0a56b99d2eb992e",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativePrimeGerms",
+      "source_sha256": "004ecbc275b40faeaa1e4cb6aff0a80e430e0f0910177a2b9c5344c95666700a",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityPencils",
+      "source_sha256": "0d183d38b751c4d90d76564815406abf101dbb5a50329ae8e68e7e4057a844fe",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityZeroPencils",
+      "source_sha256": "f8b8942a261a41095f34241259baf7e998d829bdaaf12a4a3c2f1654aa3df53e",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.MatrixSylvesterCoordinates",
+      "source_sha256": "1929e67c38447945f93b9008f790185ffec8bd9c3772440fbc06dcef9d0d054b",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityMatrixPencils",
+      "source_sha256": "0e8d03e4a284eef0430afd8c871132008861f7c885579db96be8549117162800",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityPhysicalSeparation",
+      "source_sha256": "bdc8cd9f07b7195b91340d13e4088e956012b5d7d772b336a40349e1f10d50d2",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityPrimeAnchor",
+      "source_sha256": "2c0d31ace7a750b4c9c4ab7e372910b07a1a8baa7019c135ba4e10057a6cae90",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityNonidentity",
+      "source_sha256": "2c9ce939b1ea84071c0289d68433d88698fdd3d52834419ed3e5e16b8e66286b",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.NativeParityRegularSelection",
+      "source_sha256": "b9d6e1194864725f250ce05f863da35beada9133a94abf5ff71602cb0adf3b2c",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.SeparatedSourceVisibility",
+      "source_sha256": "cc46ff5be622db2a9052a5d08b86c7eeded480daf46a804c304dc5ed863f6a2b",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.PacketRegularSelection",
+      "source_sha256": "142c5c4e9d143bdb436e462c03dceca3be0265b9b902758a6061148c050ff66d",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.PacketNoncollisionSelection",
+      "source_sha256": "a6ecebce57b5c560a610991a713c3e8c76475678fbab971191c39208a951cb44",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.RegularCells.PacketSpectralSelection",
+      "source_sha256": "d86fe4a10cb14228f88a58756d1f612c5e71fdbbdf9938ba209021524d293464",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.MomentSlices",
+      "source_sha256": "7945c4792e5422cfaf8adadf832c9fa554e20be9e1b35a3a33da995bcf988356",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates",
+      "source_sha256": "6dedec49866970f447ca9267dcc6b910c993efad04b258f4204215372d7424fd",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentClosure",
+      "source_sha256": "b35d134d2034ab94817d6c99ada27cb6aada2c26ac8eaaafef0aad801f6610ae",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure",
+      "source_sha256": "c07de4d1192ea6cc40bc2df5632302ad04308a6cdec78624fe968d743238a946",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PhysicalBlockCertificate",
+      "source_sha256": "d0f06a93976af3e4917150540e2db01a51d5d336a26821cc01d2b2e2494a53fd",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore",
+      "source_sha256": "a6080cfedf18d990de122bd88c7f47be2f3848096d94ee2e538e6358e8612edf",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "source_sha256": "4f602dabceb5e3abb32ae2e49e99b0102b17290731160aefce9ab73b4ef79927",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.MomentLeakage",
+      "source_sha256": "e6bffd8b04246a4ace66c4d09bb585169b75e8855007553e6bddf81f0a0b01e7",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness",
+      "source_sha256": "a9c7eb9c215e27b3ac7bca73bacc4efc4b6d7c50cd6789cc16594dd6b8a68c6a",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnTrace",
+      "source_sha256": "df606fbf438da8ccb6e0a99ae922acf37a246c82de60120d801b59fd41b6141e",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4",
+      "source_sha256": "0c45fe296b20befd605db336f45bd937617e7bba260d17482cc45c999cbaba83",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers",
+      "source_sha256": "370339b028268bc5a4542674cbf292cb29bea1b7e664763770c64bbeead010f1",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.NativeNoncollision",
+      "source_sha256": "3c3a0c3613062c24644928e4caf37128b26cacacbddbc06c3104c798755dcfa8",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
+      "source_sha256": "7ed282a2a6df5666653efd3d8947058fd072a822abd4673416e5be5ad422d4c2",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.JointGround",
+      "source_sha256": "3830ce211dc99a6836accef85f42fe180c307e8c7360427038ed97ec3a254bf5",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.Hyperbola",
+      "source_sha256": "17dad44363dbd3eccfbfc49aca496e6e9d40a38aec209ffe9f3864560814b9ef",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.GroundConstraints",
+      "source_sha256": "9ed89d080e1da1da924e5d5df8986d0993c8c95afe64c3a4a252fa588725606d",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.DetectorErrors",
+      "source_sha256": "fb8a2d0a30b777907cb1997aa2eec61d8dc537eb6a074201c373eeb68420073b",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.ErrorReduction",
+      "source_sha256": "8df15b1a7ad20393e41c63444bd1bc45f59d1a7a8dbd2b36960857ec8a50d336",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.IntegrationClosure",
+      "source_sha256": "8a40b125b59ed5cad5559fe90ed0b33eb3e9acce931cbbe39b215280b193b014",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.IntegrationDictionary",
+      "source_sha256": "f3c306e7cb1ca5ec6286fa888c2a8d24825e9e8bdedd8e4dce0ef950dcb84a1a",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.IntegrationObservation",
+      "source_sha256": "1d12e8c0c34cc607b23225f42e908a239a9bbc0d0ec89ba014a7a830f8071f37",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSource",
+      "source_sha256": "92d80630ef05faac12193e610cef9e675d719f4257560605f12808ea92eef4a1",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.IntegrationSpectral",
+      "source_sha256": "3c157c26eb4e09359a003e49952562e7b067274ec812940feb17fb4287fea299",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.IntegrationVisibilityRigidity",
+      "source_sha256": "58419ab134cdbb6d2aa3520f9c6fbe0a11ff08294d186a20ccd29538748e6e22",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation.Support",
+      "source_sha256": "1ed0528c227eefbaca74405c0bffbd95864777fb210eee37c7c1f9780879cc30",
+      "exit_code": 0
+    },
+    {
+      "module": "Zeta23.OPICARound4.Validation",
+      "source_sha256": "f843ac9e1c091b9f32dda554775dfb81f81c9e6e93da7781cecc74696a504994",
+      "exit_code": 0
+    }
+  ],
+  "extraction_scope": "Selected fields of an existing CI result; not a new compiler run."
+}

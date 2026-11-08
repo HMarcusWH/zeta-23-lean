@@ -1,0 +1,61 @@
+{
+  "algorithm": "SHA-256",
+  "scope": "File integrity only, not mathematical correctness",
+  "files": [
+    {
+      "path": "ARTIFACT_VALIDATION.json",
+      "bytes": 352,
+      "sha256": "f7c4ca083cca0d600f65d02cee43c895628eefb1c05fbd97dc8ac61d89f11ccd"
+    },
+    {
+      "path": "PR299_Full_Build_Instructions_v3_2026-11-08.md",
+      "bytes": 63868,
+      "sha256": "f716d99825d62850f694729517c48332e35ef2388f1dcae287b581874e334f7c"
+    },
+    {
+      "path": "README.md",
+      "bytes": 741,
+      "sha256": "cc4340320e327fd9448b2c98573430d71e9f8084a3e8bf036ca321d146825aed"
+    },
+    {
+      "path": "implementation_tasks_v3.json",
+      "bytes": 5838,
+      "sha256": "d9ad15d6b2985eee82929abdba9259504d8ccd5962ee277207cea05800e137c8"
+    },
+    {
+      "path": "prior_specification/PR299_Full_Build_Instructions_v2_2026-11-07.md",
+      "bytes": 50842,
+      "sha256": "7c94bfcb200e40ba9a98626e135359494305b08dbd863626825aa985f2346ba4"
+    },
+    {
+      "path": "receipts/acceptance.original.json",
+      "bytes": 2604,
+      "sha256": "21d90e64c120a17aa88daed3a4f6d6fe64e2ba648425d69c11fd79e3208d3a33"
+    },
+    {
+      "path": "receipts/mathematical_support.extract.json",
+      "bytes": 20445,
+      "sha256": "0c4c4d287324a487307b5a9abb27f90ee92a9bf97f98b39307fda6518c21151d"
+    },
+    {
+      "path": "receipts/qualified_baseline_receipt_review.json",
+      "bytes": 3387,
+      "sha256": "60d6299c7534775a8345aa50e0de145ac8d82d9a43b260bf6db2831716bffa69"
+    },
+    {
+      "path": "receipts/types_and_axioms.original.json",
+      "bytes": 808984,
+      "sha256": "1856a1feeb10174ce50d851bcb2e6d1df6bbd9ec771e8974e84319a2f73fbf7f"
+    },
+    {
+      "path": "revision2_to_revision3_crosswalk.json",
+      "bytes": 6259,
+      "sha256": "fac9b6dbaf2efaf70c11a34dc063927faf423f0f42774db8b30a7d626a18ebcf"
+    },
+    {
+      "path": "source_coverage.json",
+      "bytes": 1744,
+      "sha256": "a1805311bb63add9d53e6f58e7e5be8ed7aa87b632529a0e9cc1f331c09e10da"
+    }
+  ]
+}

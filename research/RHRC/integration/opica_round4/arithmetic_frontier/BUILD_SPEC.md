@@ -421,27 +421,130 @@ recorded data.
 
 **RH, Step 4 and the closing inequalities remain OPEN.**
 
-## Not built yet
+## Revision 3 — Increments 4A–4C and 5A (8 November 2026)
 
-The leakage modules, checker soundness, the enclosure bridge, the universal
-kernel and any arithmetic supplier. See [OPEN_PREMISES.json](OPEN_PREMISES.json)
-and [EXPERIMENTS.json](EXPERIMENTS.json).
+The supplied revision-3 plan is imported byte for byte in
+[revision3/](revision3/IMPORT_RECORD.json). It was reviewed against the
+repository; seven implementation refinements are recorded in
+[REVIEW_OF_REVISION3.json](revision3/REVIEW_OF_REVISION3.json). None narrows a
+required domain.
+
+**Qualified baseline (U1).** `dab9fbe` is qualified in Round4 run
+42438907841, attempt 1. All 24 workflows passed; 95 of 97 checks passed and 2
+optional checks were skipped. The gate covered 101 modules, 1213 declarations
+and 100 controls. M51–M53 are therefore current-head-qualified in their
+general algebraic scope. Human release review is NOT_ESTABLISHED. The compact
+index is [QUALIFIED_BASELINE.json](QUALIFIED_BASELINE.json); the full evidence
+stays in the CI artifacts.
+
+**4A — sources and registers.**
+
+* [SOURCE_LEDGER.json](SOURCE_LEDGER.json) gains 27 items from a delta
+  refresh of the folder:
+  * seven reports TEXT_REVIEWED, four with hashes reported by the revision-3
+    package;
+  * the two L=5 certificates FETCHED with content hashes;
+  * the rest DISCOVERED.
+* The refresh is a delta, not a full re-listing.
+* [WORKFLOW_HARVEST.json](WORKFLOW_HARVEST.json) records the qualified
+  `dab9fbe` harvest. The 2fc6eee cancellations were a cascade, not failures.
+* New entries:
+  * CR31–CR37 (PG, SE, the fixed-rate exclusion, SB/AD, C2-SE, NC and the
+    candidate SG);
+  * MP13–MP19;
+  * the closing leaves PG, SE, SB and C2-SE.
+
+**4A-G — sharded controls.** Lean stops after 100 errors, so the controls run
+in two shards. Each shard compiles under the fixed worker source name
+`RejectedSemanticMutations.lean`.
+
+* Shard 01 is byte-identical to the pinned 84-control pre-frontier text.
+* Shard 02 holds all 25 frontier controls.
+* Every control must own exactly one type-mismatch error. Missing, duplicate,
+  stray or environmental errors fail closed in the gate, in qualification and
+  in the independent verifier.
+* The control omitted in 3F is restored (FM17). Eight new controls cover the
+  new contracts (FM18–FM25).
+* The dab9fbe CI log also satisfies the stricter per-control binding
+  (100/100).
+
+**4B — coarse-growth consumers (Lean, local pinned compile).**
+
+* `GrowthClosure` (M54):
+  * the finite-phase native witnesses lie in the exact moment slices, with
+    depth `-exp(βL)` at arbitrarily late apertures;
+  * a fixed-parity bound `-C exp(αL)` at every late aperture excludes
+    displacements above `α`;
+  * (SE) and (PG) imply Mathlib `RiemannHypothesis`.
+* `CofinalSemiboundedClosure` (M55):
+  * an explicit-margin reproof of the recentred phase energy;
+  * (AD): every `M`, every late aperture, both parities, depth `-M`;
+  * (SB) implies RH, and (C1) implies (SB).
+* `C2GrowthClosure` (M56): (C2-SE) and its polynomial adapter imply RH. The
+  bound in `t = 2a` becomes rate `2α` in `a`, with every explicit-formula term
+  retained.
+
+**4C — native displacement (Lean, local pinned compile).**
+`NativeMomentDisplacement` (M57) works with the full canonical source.
+
+* NC: `[D₀, A]ᵢⱼ = (nᵢ + nⱼ)(dᵢ - dⱼ)` is rank four, and
+  `Vᴴ [D₀, A] V = 0` for boundary-flat columns. This follows from the existing
+  displacement theorem, with no pole split.
+* Composed with M51: `[Vᴴ D₀ V, Vᴴ A V] = (Vᴴ A W) Λᴴ - Λ (Vᴴ A W)ᴴ`.
+* `(D₀ + β) r` is proportional to `1` (even) or to `n` (odd), so `D₀ u`
+  stays pole-neutral on the slice. It leaves the slice exactly through `M₆`
+  (even) or `M₇` (odd): rank-one leakage in functional form.
+* The orthonormal factor `w ℓᴴ` is not built in Lean.
+
+Local evidence: development gate PASS at 105 modules, 1275 complete types and
+axiom sets, and 109 controls (84 + 25). Only `propext`, `Classical.choice` and
+`Quot.sound` appear. Current-head CI is required.
+
+**5A — the frozen candidate (SG), EXPERIMENTAL SIGNAL.**
+[sg_candidate.py](sg_candidate.py) rebuilds the actual parity-reduced source
+from the repository Arb primitives. It measures the terms of the candidate
+(SG) from the 8 November geometry report (CR37) at L = 4–7
+([evidence/increment5a](evidence/increment5a/SUMMARY.json)).
+
+* The report's six-state table is reproduced to every printed digit.
+* NC, rank-one leakage and `[J, H] = zℓᴴ - ℓzᴴ` hold to about `1e-14`.
+* `‖z‖ ≈ 0.65 L`.
+* The reduction loss `2‖ℓ‖‖z‖/g_J` is between `2·10⁴` and `3·10⁶`. The actual
+  geometry off-diagonal norm is between 3 and 8, so the Frobenius step
+  discards about `K²`.
+* Frozen L=7 predictions hit 15 of 18. The misses are operational:
+  `λ_max(H)` growth slowed, and the even diagonal minimum rose.
+* With non-zeta prime weights every identity survives while the slice turns
+  negative. Its growth also looks polynomial at these apertures, so finite
+  tables cannot discriminate PG or (SG).
+
+**Status (U8).**
+
+* Completed generic supports: M51–M53 (qualified) and M54–M57 (local).
+* Pending native applications:
+  * the orthonormal leakage factor;
+  * a Lean (SG) → (PG) composition;
+  * the enclosure bridge, only if a computational route consumes it.
+* Optional assurance: the universal-kernel audit and the metric adapter.
+* Open supplier: an actual-source inequality for one OR branch with its exact
+  quantifiers.
+
+**RH, Step 4 and every closing inequality remain OPEN.**
 
 ## Next increments
 
-1. **A source-specific inequality at unbounded apertures (OPEN).**
-   Channel-separable and prime-truncated suppliers are blocked (CR25, CR26).
-   A supplier must control the exact explicit-formula cancellation of
-   `-arch - prime` across the whole prime cell on the near-null subspace.
-2. Instantiate `MomentLeakage` on the actual carrier: a basis of the moment
-   slice, `D₀ = diag(n²)` and the canonical source. Then decide whether
-   `Vᴴ [D₀, E] V` and the leakage numerator carry usable sign information.
-3. The native enclosure bridge: Arb balls contain the true native entries. It
-   is needed only if the chosen proof consumes the numerical certificates, and
-   it is what would make the receipts of Increment 3F Lean facts.
-4. Quantify the off-line detection margin `d(ρ, L)` in Lean (CR24), formalize
-   CR27, and add the nonorthogonal-metric version of the source-column trace
-   identity, each only if a chosen proof consumes it.
+1. **The supplier (5B/6, OPEN).** Prove one branch with its exact
+   quantifiers: (SG) or (PG) in a fixed parity, (SE), (SB), (C1), C2-SE or the
+   packet restriction. The ordinary-prime expressions for `z` and the geometry
+   diagonal must carry a genuinely arithmetic restriction (MP19).
+2. Replace the Frobenius step in the (SG) reduction with a bound on the
+   Cauchy-structured off-diagonal `(zᵢℓⱼ - ℓᵢzⱼ)/(θᵢ - θⱼ)`. Observed norms
+   are `O(L)` while the current bound is `O(K²)`. This sharpens the reduction
+   but is not a sign.
+3. Build `w ℓᴴ` explicitly in Lean and compose (SG) → (PG) natively, only once
+   a supplier for (SG) is in sight.
+4. The native enclosure bridge, the detection margin (CR24), CR27 and the
+   nonorthogonal trace identity, each only if a chosen proof consumes it.
 
-Only a proved supplier composed with these consumers, validated on the final head,
-could support a Step 4 claim.
+Only a proved supplier composed with these consumers, validated on the final
+head, could support a Step 4 claim.

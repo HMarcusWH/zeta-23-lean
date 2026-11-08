@@ -445,5 +445,29 @@
       "2fc6eee": "Pushed while Round2 was running; its own runs are superseded by the Increment 3F push and are recorded in the next harvest."
     },
     "scope": "Qualifies 02847b5 only; later heads need their own complete run."
-  }
+  },
+  "qualified_baseline_dab9fbe": {
+    "head_sha": "dab9fbea4d17a3ab5977318a55ce71b55fe7cfa9",
+    "tree": "22d12e5e75327155f471b53e839ac0d5037e7c6c",
+    "recorded_utc": "2026-11-08",
+    "runs_total": 24,
+    "runs_success": 24,
+    "check_runs": 97,
+    "check_runs_success": 95,
+    "check_runs_skipped": [
+      "wp4-k3-fourth-order-alternative",
+      "post287-full-k3"
+    ],
+    "round4_run": 42438907841,
+    "attempt": 1,
+    "receipt_index": "QUALIFIED_BASELINE.json",
+    "scientific_disposition": "Artifacts of Round4 (acceptance, mathematical support, contract, semantic negatives, source numerics, generated state, current compatibility, composition and replay campaigns), Round2, follow-up and source-inertia research were opened and read. SOURCE_NUMERICS remains finite interval evidence; the source-inertia K3 q14 gate is UNRESOLVED (6 of 7 tested boxes pass, 5 subboxes unresolved) and the WP6 signed ray is FALSIFIED_AT_BOUNDED_TRUE_SOURCE_APERTURES (EXPERIMENTAL_SIGNAL). No positivity or closing estimate follows.",
+    "scope": "Qualifies dab9fbe only. The revision-3 successor needs its own complete same-run harvest."
+  },
+  "superseded_2fc6eee": {
+    "head_sha": "2fc6eee",
+    "disposition": "21/24 success; Round4, follow-up and Round2 cancelled by the dab9fbe push (cancellation cascade only)",
+    "note": "Cancellations are the concurrency cascade from the dab9fbe push, not failures."
+  },
+  "current_qualified_baseline": "dab9fbea4d17a3ab5977318a55ce71b55fe7cfa9"
 }

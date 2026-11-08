@@ -2660,6 +2660,415 @@
       "content_sha256": null,
       "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
       "discovered_by": "FOLDER_MEMBERSHIP_2026-11-07"
+    },
+    {
+      "drive_id": "1YvwPH5vEu5xTI56Poluc5lxNMhvyZDye",
+      "title": "RH_Step4_Closure_Investigation_Coarse_Growth_2026-11-08.md",
+      "mime_type": "text/markdown",
+      "bytes": 33746,
+      "modified_utc": "2026-11-08T13:13:42.643Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "increment4a": {
+        "action": "full text read through the connector on 2026-11-08; bytes not stored, so no content hash was computed by this importer",
+        "hash_basis": "REPORTED_BY_REVISION3_PACKAGE_SOURCE_COVERAGE_NOT_RECOMPUTED"
+      },
+      "reported_sha256": "d556b3059a34661ed88baec36055a00883374d529719980aa3bc83e7a5d0323b"
+    },
+    {
+      "drive_id": "13bIzGevGIADFmxGCKv6t-agoG23i9mJN",
+      "title": "RH_Step4_Closure_Investigation_Coarse_Growth_2026-11-08.zip",
+      "mime_type": "application/zip",
+      "bytes": 136360,
+      "modified_utc": "2026-11-08T13:13:39.334Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "18rqv9ugRQYn2XYUcH_ZjxZMfF18RyEDd",
+      "title": "RH_Step4_Cross_Band_Obstruction_Certificate_2026-11-07.json",
+      "mime_type": "application/json",
+      "bytes": 1721,
+      "modified_utc": "2026-11-08T00:15:32.774Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "DATA_RECORD",
+      "review_depth": "FETCHED",
+      "content_sha256": "75d433045678e8dec6a461f4b8290443e9bef0a26b8cb03b87c5fad3d8e6188d",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "increment4a": {
+        "action": "downloaded through the connector as base64, decoded in an isolated directory, size matched the Drive byte count, hashed; decoded JSON read in full as data",
+        "content": "ACCEPTED: at the same L=5 core/reference no independent PSD per-group allowances N_j with D_j + N_j >= 0 and sum N_j <= A exist (selected partial pencil about -0.0704, full pencil about +0.3333). Not replayed here; recorded as model MP13."
+      }
+    },
+    {
+      "drive_id": "1PTNHhEN3dQR_eyE0-Ld_hmDHDPHXdJ1O",
+      "title": "RH_Step4_Native_Core_Certificate_L5_2026-11-07.json",
+      "mime_type": "application/json",
+      "bytes": 1633,
+      "modified_utc": "2026-11-08T00:15:30.409Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "DATA_RECORD",
+      "review_depth": "FETCHED",
+      "content_sha256": "d9bf0522955c54f6d98c27def6c6a3c07b314dbaa08e9a61f6ef87d4f377696a",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "increment4a": {
+        "action": "downloaded through the connector as base64, decoded in an isolated directory, size matched the Drive byte count, hashed; decoded JSON read in full as data",
+        "content": "ACCEPTED: Q_even(5,x) >= -(1/3)||x||^2 on the whole 622-dimensional even slice at L=5, reference >= 1/2 on a rank-480 source-guided core; authority EXACT FINITE CONSEQUENCES CONDITIONAL ON INHERITED SOURCE ENCLOSURES; NOT LEAN. Not replayed here."
+      }
+    },
+    {
+      "drive_id": "1M0R_zPWQePWFdNgcF9I7PS2SB6yDmOrI",
+      "title": "RH_Step4_Core_Certificate_and_Cross_Band_Obstruction_2026-11-07.md",
+      "mime_type": "text/markdown",
+      "bytes": 27308,
+      "modified_utc": "2026-11-08T00:15:27.772Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "increment4a": {
+        "action": "full text read through the connector on 2026-11-08; bytes not stored, so no content hash was computed by this importer",
+        "hash_basis": "REPORTED_BY_REVISION3_PACKAGE_SOURCE_COVERAGE_NOT_RECOMPUTED"
+      },
+      "reported_sha256": "301091b0f7bf9b3ef25e4cc35c3475dbc63ce1961dec39ed843793f98dad7b75"
+    },
+    {
+      "drive_id": "1dMjddePLJxqkunUaXUiZwcjwzZlD2OHB",
+      "title": "RH_Step4_Core_Certificate_and_Cross_Band_Obstruction_2026-11-07.zip",
+      "mime_type": "application/zip",
+      "bytes": 28458846,
+      "modified_utc": "2026-11-08T00:15:25.136Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1EDWF4O0UGAW8YCfqw-Sf9FMdmsI0OeTx",
+      "title": "RH_Step4_Birds_Eye_Closure_Investigation_2026-11-07.md",
+      "mime_type": "text/markdown",
+      "bytes": 38738,
+      "modified_utc": "2026-11-07T21:24:56.720Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "increment4a": {
+        "action": "full text read through the connector on 2026-11-08; bytes not stored, so no content hash was computed by this importer",
+        "hash_basis": "REPORTED_BY_REVISION3_PACKAGE_SOURCE_COVERAGE_NOT_RECOMPUTED"
+      },
+      "reported_sha256": "8c57317223df26549df5b42d35c933b00194224d33074a6706d3a78790b8a718"
+    },
+    {
+      "drive_id": "18Tmm2kzoqLx_bAF7gteBs9KPPwN6hY8D",
+      "title": "RH_Step4_Birds_Eye_Closure_Investigation_2026-11-07.zip",
+      "mime_type": "application/zip",
+      "bytes": 23246409,
+      "modified_utc": "2026-11-07T21:24:53.289Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1z7Pz6WLRQVom_d36wBWt2a-W3JmFtxqt",
+      "title": "step4_signed_compensation_exact_controls.py",
+      "mime_type": "text/x-python",
+      "bytes": 6654,
+      "modified_utc": "2026-11-07T19:37:56.490Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "SCRIPT_NOT_EXECUTED",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1Ur7EogOgLr8sN6kMn2Vb2XgvC1H4eHYB",
+      "title": "Step4_Paper_Attempt_Signed_Compensation_2026-11-07.md",
+      "mime_type": "text/markdown",
+      "bytes": 35456,
+      "modified_utc": "2026-11-07T19:37:53.707Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "increment4a": {
+        "action": "full text read through the connector on 2026-11-08; bytes not stored, so no content hash was computed by this importer"
+      }
+    },
+    {
+      "drive_id": "1rqzBBQZxeB1UBe_RQexgzGRg4xaMpR1j",
+      "title": "RH_Step4_Paper_Attempt_Signed_Compensation_2026-11-07.zip",
+      "mime_type": "application/zip",
+      "bytes": 30453,
+      "modified_utc": "2026-11-07T19:37:50.624Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1tvUat3Q9TBn-uvgNRhRs3eWHgF5X3fFv",
+      "title": "RUN_RECEIPT.json",
+      "mime_type": "application/json",
+      "bytes": 838,
+      "modified_utc": "2026-11-07T17:38:55.613Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "DATA_RECORD",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1aimLdEa_ITKq2RHtUVH8c1b4G2oZ0rQo",
+      "title": "exact_controls_normal.json",
+      "mime_type": "application/json",
+      "bytes": 5078,
+      "modified_utc": "2026-11-07T17:38:52.935Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "DATA_RECORD",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "17MuLIxTHVK6VOT5AZAQyj3vlwgB6OSVC",
+      "title": "exact_harvest_controls.py",
+      "mime_type": "text/x-python",
+      "bytes": 10733,
+      "modified_utc": "2026-11-07T17:38:50.062Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "SCRIPT_NOT_EXECUTED",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1mTBh7w9McE3nnKxvnlRhbH4iwjfXwo_n",
+      "title": "HARVEST_CONTRACTS.json",
+      "mime_type": "application/json",
+      "bytes": 7248,
+      "modified_utc": "2026-11-07T17:38:47.030Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "DATA_RECORD",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1iD6EuIw3sd9QhmM7aliGwHNQQ-yD1uLl",
+      "title": "PR299_OAI_Math_Source_Harvest_2026-11-07.md",
+      "mime_type": "text/markdown",
+      "bytes": 24810,
+      "modified_utc": "2026-11-07T17:38:43.312Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "increment4a": {
+        "action": "full text read through the connector on 2026-11-08; bytes not stored, so no content hash was computed by this importer"
+      }
+    },
+    {
+      "drive_id": "1Qrn5ayuorIeJN1r5eqgwu55md_d7085P",
+      "title": "PR299_OAI_Math_Harvest_2026-11-07.zip",
+      "mime_type": "application/zip",
+      "bytes": 24969,
+      "modified_utc": "2026-11-07T17:38:39.702Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1O1-mpdTg5Zb80sZPSnulfBoYEdfAHoLt",
+      "title": "grwtsk_pr299_odd_trace_probe.json",
+      "mime_type": "application/json",
+      "bytes": 5947,
+      "modified_utc": "2026-11-07T16:33:00.491Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "DATA_RECORD",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1-tZJlq3eAdB25t_0Rbfo80dnTbv4WRLO",
+      "title": "grwtsk_pr299_odd_trace_probe.csv",
+      "mime_type": "text/csv",
+      "bytes": 2022,
+      "modified_utc": "2026-11-07T16:32:57.555Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "DATA_RECORD",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1JuE2Tnlwzi8KpKYc8vS7e3kubZacpdU0",
+      "title": "grwtsk_pr299_odd_trace_probe.py",
+      "mime_type": "text/x-python",
+      "bytes": 6223,
+      "modified_utc": "2026-11-07T16:32:54.033Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "SCRIPT_NOT_EXECUTED",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1NK8yf_O2GSV2HC02qpzx9Rjjed4ch4Qx",
+      "title": "PR299_GRWTSK_Source_Harvest_and_Mathematical_Crosswalk_2026-11-07.md",
+      "mime_type": "text/markdown",
+      "bytes": 14808,
+      "modified_utc": "2026-11-07T16:32:46.304Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "increment4a": {
+        "action": "full text read through the connector on 2026-11-08; bytes not stored, so no content hash was computed by this importer"
+      }
+    },
+    {
+      "drive_id": "1v0zoPBtET9UIlejGUMqu1MvyeDSxbvBy",
+      "title": "PR299_Build_Update_v2_2026-11-07.zip",
+      "mime_type": "application/zip",
+      "bytes": 25567,
+      "modified_utc": "2026-11-07T15:41:29.138Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "BUILD_INSTRUCTIONS",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1KAh58Scs1Y4l-tRd1O6Eu2KiAFLbRUe1",
+      "title": "PR299_Full_Build_Instructions_v2_2026-11-07.md",
+      "mime_type": "text/markdown",
+      "bytes": 50842,
+      "modified_utc": "2026-11-07T15:41:25.692Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "BUILD_INSTRUCTIONS",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "session_upload": {
+        "bytes": 50842,
+        "sha256": "7c94bfcb200e40ba9a98626e135359494305b08dbd863626825aa985f2346ba4",
+        "identity_with_drive_copy": "same title and byte count; Drive bytes not fetched"
+      },
+      "increment4a": {
+        "action": "session upload read in full and built from; Drive copy not fetched"
+      },
+      "reported_sha256": "7c94bfcb200e40ba9a98626e135359494305b08dbd863626825aa985f2346ba4"
+    },
+    {
+      "drive_id": "1WEhv2yO1eAr9Z8P-ndygp_GnstWn7KFI",
+      "title": "RH_Step4_Polynomial_Geometry_and_Source_Response_2026-11-08.md",
+      "mime_type": "text/markdown",
+      "bytes": 35186,
+      "modified_utc": "2026-11-08T14:34:43.264Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "increment4a": {
+        "action": "full text read through the connector on 2026-11-08; bytes not stored, so no content hash was computed by this importer",
+        "use": "Frozen 5A candidate (SG); its six-state float table (L=4,5,6, both parities) is independently reproduced by sg_candidate.py from the repository Arb source (evidence/increment5a)."
+      }
+    },
+    {
+      "drive_id": "15_Covty64mQfnWESDq-xfY_1JOnww1DI",
+      "title": "RH_Step4_Polynomial_Geometry_and_Source_Response_2026-11-08.zip",
+      "mime_type": "application/zip",
+      "bytes": 459451,
+      "modified_utc": "2026-11-08T14:34:40.247Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08"
+    },
+    {
+      "drive_id": "1FkL1QemE1wYdSNrBHnTxZLvTRilPGT8x",
+      "title": "PR299_Build_Update_v3_2026-11-08.zip",
+      "mime_type": "application/zip",
+      "bytes": 124588,
+      "modified_utc": "2026-11-08T14:30:54.156Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "BUILD_INSTRUCTIONS",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "session_upload": {
+        "bytes": 124588,
+        "sha256": "26c2eb95f14168183ea50e9def7ace911c1efe9284203690c1ebc281016b6b37",
+        "identity_with_drive_copy": "same title and byte count; Drive bytes not fetched"
+      }
+    },
+    {
+      "drive_id": "1Ur7Lb6f4gBUYRMCfJN8-EdaD4vohji0l",
+      "title": "PR299_Full_Build_Instructions_v3_2026-11-08.md",
+      "mime_type": "text/markdown",
+      "bytes": 63868,
+      "modified_utc": "2026-11-08T14:30:51.366Z",
+      "parent_id": "1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks",
+      "relationship": "BUILD_INSTRUCTIONS",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "FOLDER_DELTA_2026-11-08",
+      "session_upload": {
+        "bytes": 63868,
+        "sha256": "f716d99825d62850f694729517c48332e35ef2388f1dcae287b581874e334f7c",
+        "identity_with_drive_copy": "same title and byte count; Drive bytes not fetched"
+      },
+      "increment4a": {
+        "action": "session upload read in full and built from; Drive copy not fetched"
+      }
     }
   ],
   "folder_membership": {
@@ -2677,8 +3086,28 @@
     "coverage_caveat": "Folder coverage is listing coverage only: 204 of 206 entries remain DISCOVERED, one is FETCHED and one REPLAYED. DISCOVERED is not text review, proof audit or replay (CORRECTIONS addendum, limitations_restated)."
   },
   "coverage_by_review_depth": {
-    "FETCHED": 1,
-    "DISCOVERED": 204,
-    "REPLAYED": 1
+    "DISCOVERED": 220,
+    "FETCHED": 3,
+    "REPLAYED": 1,
+    "TEXT_REVIEWED": 9
+  },
+  "folder_membership_refresh_2026_11_08": {
+    "queries": [
+      "parentId = '1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks' and modifiedTime > '2026-11-06T00:00:00Z'",
+      "parentId = '1bVc2CmPQ5yzukKbnp-fmW0UAe0y7GSks' and modifiedTime > '2026-11-08T13:14:00Z'"
+    ],
+    "performed_utc_date": "2026-11-08",
+    "newly_ledgered": 27,
+    "ledger_entries_total": 233,
+    "coverage_statement": "Delta refresh only: items modified after the earlier complete listing were compared with the ledger. A full re-listing was not repeated, so deletions, renames and older unmodified items are not re-verified by this refresh."
+  },
+  "current_pin_2026_11_08": {
+    "qualified_baseline_head": "dab9fbea4d17a3ab5977318a55ce71b55fe7cfa9",
+    "qualified_baseline_tree": "22d12e5e75327155f471b53e839ac0d5037e7c6c",
+    "base": "09ac22e48bb0683437572509abdf2ddec520b7ac",
+    "branch": "research/madness",
+    "pr": "HMarcusWH/zeta-23-lean#299",
+    "round4_run": 42438907841,
+    "attempt": 1
   }
 }
