@@ -5660,3 +5660,138 @@ set_option pp.maxSteps 2000000
 #check @Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime
 #eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime"
 #print axioms Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.leakage_adjoint"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.leakage_adjoint
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.leakage_adjoint"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.leakage_adjoint
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.compressed_geometry_mul_energy"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.compressed_geometry_mul_energy
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.compressed_geometry_mul_energy"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.compressed_geometry_mul_energy
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.compressed_energy_mul_geometry"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.compressed_energy_mul_geometry
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.compressed_energy_mul_geometry"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.compressed_energy_mul_geometry
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq_one_normal"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq_one_normal
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq_one_normal"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq_one_normal
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq_of_no_leakage"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq_of_no_leakage
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq_of_no_leakage"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq_of_no_leakage
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.froSq"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.froSq
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.froSq"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.froSq
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.normSq"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.normSq
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.normSq"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.normSq
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_add"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_add
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_add"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_add
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_sub"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_sub
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_sub"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_sub
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_smul"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_smul
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_smul"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_smul
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_one"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_one
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_one"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_one
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_mul_transpose_nonneg"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_mul_transpose_nonneg
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_mul_transpose_nonneg"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_mul_transpose_nonneg
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_sq_le"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_sq_le
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_sq_le"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_sq_le
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.normSq_pos"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.normSq_pos
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.normSq_pos"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.normSq_pos
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.posDef_of_shifted_factor"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.posDef_of_shifted_factor
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.posDef_of_shifted_factor"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.posDef_of_shifted_factor
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_near_shift"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_near_shift
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_near_shift"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_near_shift
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.not_nonneg_of_negative_witness"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.not_nonneg_of_negative_witness
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.not_nonneg_of_negative_witness"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.not_nonneg_of_negative_witness
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.pencil_checkpoint_of_posDef"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.pencil_checkpoint_of_posDef
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.pencil_checkpoint_of_posDef"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.pencil_checkpoint_of_posDef
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.shifted_factor_requires_positive_shift"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.shifted_factor_requires_positive_shift
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.shifted_factor_requires_positive_shift"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.shifted_factor_requires_positive_shift
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_gram_eq"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_gram_eq
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_gram_eq"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_gram_eq
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_energy_eq"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_energy_eq
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_energy_eq"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_energy_eq
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.columnProjection_conjTranspose"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.columnProjection_conjTranspose
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.columnProjection_conjTranspose"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.columnProjection_conjTranspose
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.columnProjection_idempotent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.columnProjection_idempotent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.columnProjection_idempotent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.columnProjection_idempotent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.complementProjection_sq"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.complementProjection_sq
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.complementProjection_sq"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.complementProjection_sq
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_residual_trace"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_residual_trace
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_residual_trace"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_residual_trace

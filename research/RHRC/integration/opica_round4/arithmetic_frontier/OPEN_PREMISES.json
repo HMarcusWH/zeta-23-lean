@@ -52,7 +52,7 @@
       "id": "S-CHECKER",
       "statement": "FiniteCertificateSoundness: accepted data imply the stated native finite inequality.",
       "status": "OPEN",
-      "finite_progress": "Independent floating-point-free checker for small states (independent_check.py); no soundness theorem.",
+      "finite_progress": "Independent floating-point-free checker for small states (independent_check.py); no soundness theorem. Increment 3F: FiniteCertificateSoundness (M52, local pinned compile) proves the shifted-factor rule, witness semantics and the pencil-to-checkpoint step for exact real data, and that tau > 0 is necessary. The native enclosure bridge (Arb balls contain the true transcendental source entries) remains OPEN, so certificates are not yet Lean facts about the actual source.",
       "assurance_note": "Level-3 reconstructions (independent_check.py) use their own elimination basis and blocked Schur certificate but share native_source.py, the equation-(4.4) backend and the Arb primitives with the engine; they are not level 4. FiniteCertificateSoundness and the native enclosure bridge remain OPEN (CORRECTIONS addendum, limitations_restated)."
     },
     {
@@ -89,5 +89,12 @@
     }
   ],
   "rule": "A leaf moves only when an exact theorem with no undispatched RH-strength premise passes current-head formal and claim gates.",
-  "increment3d_note": "E-SIGNED (evidence/increment3d): on the near-null slice subspace the closing inequality is the exact cancellation of two O(1) indefinite channels; no premise is weakened and no supplier is proposed. A source-specific inequality at unbounded apertures remains OPEN."
+  "increment3d_note": "E-SIGNED (evidence/increment3d): on the near-null slice subspace the closing inequality is the exact cancellation of two O(1) indefinite channels; no premise is weakened and no supplier is proposed. A source-specific inequality at unbounded apertures remains OPEN.",
+  "increment3f_not_buildable": {
+    "independent_arithmetic_supplier": "Increment 5 / work package F acceptance: an actual-source signed inequality at unbounded apertures. This is the open closing estimate (sharp interface with Weil positivity); it cannot be produced by engineering. OPEN.",
+    "terminal_composition": "Increment 6 / Step4Terminal: needs the supplier. OPEN.",
+    "c2_direct_alternative": "Section 11.4 (literal long-term lower bound): research, no candidate estimate. OPEN.",
+    "native_enclosure_bridge": "Lean proof that the Arb enclosures contain the true native entries (digamma-type archimedean terms, all prime powers): not attempted in this increment. OPEN.",
+    "universal_approximate_kernel_audit": "Section 10 paper audit: requires the paper and a full audit; optional by the plan. OPEN."
+  }
 }

@@ -82,3 +82,6 @@ import Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure
 import Zeta23.OPICARound4.ArithmeticFrontier.PhysicalBlockCertificate
 import Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore
 import Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel
+import Zeta23.OPICARound4.ArithmeticFrontier.MomentLeakage
+import Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness
+import Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnTrace

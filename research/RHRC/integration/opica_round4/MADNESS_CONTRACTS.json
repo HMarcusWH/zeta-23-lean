@@ -307,6 +307,24 @@
       "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
       "claim": "Pole-channel annihilation on both pole-neutral carriers (odd profile orthogonality, operator and sesquilinear forms) and the exact native energy identity Q = -arch - prime on both carriers and moment slices, reusing the production even-carrier and two-profile theorems. Dependency compression only; no sign of -arch - prime is asserted.",
       "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M51",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.MomentLeakage",
+      "claim": "Full compressed commutator identity [Vᴴ D0 V, Vᴴ E V] = Vᴴ[D0,E]V + Z Lᴴ - L Zᴴ for finite-rank leakage (1 - V Vᴴ) D0 V = W Lᴴ, with the one-normal and no-leakage cases. Every term retained; Vᴴ[D0,E]V is not discarded. No diagonal, absolute-energy or sign information follows.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M52",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness",
+      "claim": "Soundness of the shifted-factor certificate for exact real data (0 < τ and ‖A - τI - RRᵀ‖²_F < τ² imply xᵀAx > 0), necessity of τ > 0, FALSIFIED_BOUND witness semantics and the pencil-to-checkpoint step. Exact data only: the native enclosure bridge from Arb balls to the actual source remains OPEN.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M53",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnTrace",
+      "claim": "Source-column identities for C = H S: G = Sᴴ H² S, Cᴴ H C = Sᴴ H³ S, the column projection is self-adjoint and idempotent, and tr(((1-P)H)ᴴ((1-P)H)) = tr(H²) - tr(G⁻¹ Sᴴ H⁴ S). They make the C4 leakage computable; no signed-core premise or source estimate is proved.",
+      "arithmetic_estimate_supplied": false
     }
   ],
   "closing_arithmetic": {
@@ -1309,6 +1327,51 @@
         "Zeta23.OPICARound4.ArithmeticFrontier.oddNativeEnergy_eq_neg_arch_sub_prime",
         "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_arch_prime",
         "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.MomentLeakage": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/MomentLeakage.lean",
+      "sha256": "e6bffd8b04246a4ace66c4d09bb585169b75e8855007553e6bddf81f0a0b01e7",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.leakage_adjoint",
+        "Zeta23.OPICARound4.ArithmeticFrontier.compressed_geometry_mul_energy",
+        "Zeta23.OPICARound4.ArithmeticFrontier.compressed_energy_mul_geometry",
+        "Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq_one_normal",
+        "Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq_of_no_leakage"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/FiniteCertificateSoundness.lean",
+      "sha256": "a9c7eb9c215e27b3ac7bca73bacc4efc4b6d7c50cd6789cc16594dd6b8a68c6a",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.froSq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.normSq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_add",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_sub",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_smul",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_one",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_mul_transpose_nonneg",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_sq_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.normSq_pos",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.posDef_of_shifted_factor",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.quad_near_shift",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.not_nonneg_of_negative_witness",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.pencil_checkpoint_of_posDef",
+        "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.shifted_factor_requires_positive_shift"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnTrace": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/SourceColumnTrace.lean",
+      "sha256": "df606fbf438da8ccb6e0a99ae922acf37a246c82de60120d801b59fd41b6141e",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_gram_eq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_energy_eq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.columnProjection_conjTranspose",
+        "Zeta23.OPICARound4.ArithmeticFrontier.columnProjection_idempotent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.complementProjection_sq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_residual_trace"
       ]
     }
   },

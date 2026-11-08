@@ -392,3 +392,38 @@ content; RH and Step 4 remain OPEN.** The gate is now 1186 declarations in 98
 modules with 98 controls. The two new controls reject pole annihilation without
 pole neutrality and the energy identity at a nonpositive aperture.
 
+## Arithmetic frontier, Increment 3F: leakage commutator, certificate soundness and source columns (8 November 2026)
+
+Three modules add 27 declarations (contracts M51–M53).
+
+* `MomentLeakage` (M51) proves the compressed commutator with every term
+  retained:
+  `[Vᴴ D₀ V, Vᴴ E V] = Vᴴ [D₀, E] V + Z Lᴴ - L Zᴴ`, where the leakage is
+  `(1 - V Vᴴ) D₀ V = W Lᴴ` of any finite rank. The one-normal and no-leakage
+  cases are included. The term `Vᴴ [D₀, E] V` is not discarded.
+* `FiniteCertificateSoundness` (M52) proves, for exact real data:
+  * the kernel's shifted-factor rule is sound
+    (`0 < τ` and `‖A - τI - RRᵀ‖²_F < τ²` give `xᵀ A x > 0`);
+  * `τ > 0` cannot be dropped;
+  * an exact negative witness refutes `A ⪰ 0`;
+  * a positive pencil `F + εG` gives the checkpoint inequality.
+* `SourceColumnTrace` (M53) proves, for `C = H S`:
+  * `G = Sᴴ H² S` and `Cᴴ H C = Sᴴ H³ S`;
+  * the column projection is self-adjoint and idempotent;
+  * `tr(((1 - P) H)ᴴ ((1 - P) H)) = tr(H²) - tr(G⁻¹ Sᴴ H⁴ S)`.
+
+These are supporting identities and soundness results. The native enclosure
+bridge from Arb balls to the actual transcendental source is not proved, so no
+numerical certificate becomes a Lean fact about the actual source. **No sign of
+the source is supplied; every closing premise, RH and Step 4 remain OPEN.** The
+gate is now 1213 declarations in 101 modules with 100 controls. The two new
+controls reject:
+
+* the commutator without its leakage terms;
+* the certificate with `0 ≤ τ` in place of `0 < τ`.
+
+The suite is held at 100. The pinned isolated-worker recipe compiles the
+mutation file with Lean's default `maxErrors = 100`, so a 101st control is
+reported as the error limit, not as a type rejection. Raising the limit needs a
+recipe-version change.
+

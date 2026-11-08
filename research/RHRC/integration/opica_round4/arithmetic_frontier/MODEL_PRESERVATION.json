@@ -128,6 +128,74 @@
       "preservation_status": "AS_STATED_BY_BUILD_SPEC_AND_CITED_REPORTS_NOT_REAUDITED",
       "formal_repository_control": null,
       "combination_rule": "Never combine preserved properties of two different models into one imaginary model."
+    },
+    {
+      "id": "MP09",
+      "model": "Low-block rank-one negative perturbation of the native pencil (S1, SYNTHETIC)",
+      "blocked_inference": "Small near-band coupling of the complement block implies a nonnegative pencil",
+      "preserves": [
+        "complement block A (entrywise identical enclosures)",
+        "coupling block C",
+        "near-band coupling bound"
+      ],
+      "changes": [
+        "the low block D",
+        "the pencil sign (certified negative exact witness)"
+      ],
+      "preservation_status": "CERTIFIED_AT_L4_L5_L6_BOTH_PARITIES",
+      "formal_repository_control": null,
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/SUMMARY.json",
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model."
+    },
+    {
+      "id": "MP10",
+      "model": "Merged-pair off-line quartet in the explicit-formula representation (S2, SYNTHETIC)",
+      "blocked_inference": "Near-band coupling or a finite-tolerance checkpoint alone discriminates on-line from off-line zero configurations",
+      "preserves": [
+        "the native form minus two adjacent zero pairs",
+        "low-band near-band coupling within 5% (all six states)",
+        "the eps = 1/2 and 1/3 checkpoints for delta = 1/10 (certified blind)"
+      ],
+      "changes": [
+        "two adjacent zero pairs replaced by one quartet 1/2 +- delta +- i gamma_mid",
+        "pencil sign below the detection threshold eps*(delta) ~ c(L) delta^2"
+      ],
+      "preservation_status": "CERTIFIED_PENCIL_STATUSES_EXPERIMENTAL_THRESHOLDS",
+      "formal_repository_control": "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_cofinal_moment_slice_bounds (fixed-margin detection of an actual off-line zero)",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3c/SUMMARY.json",
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model. The synthetic world is not a consistent arithmetic object."
+    },
+    {
+      "id": "MP11",
+      "model": "Prime-cell truncation q <= P < Q of the native slice form (NOT native)",
+      "blocked_inference": "Slice positivity is stable under removing high prime powers, so a truncated or monotone-in-P argument suffices",
+      "preserves": [
+        "archimedean channel",
+        "all prime powers q <= P",
+        "carrier, slice and Gram"
+      ],
+      "changes": [
+        "the prime cell above P (dropping only the largest prime power suffices to break positivity)"
+      ],
+      "preservation_status": "CERTIFIED_NEGATIVE_WITNESSES_AT_L4_L5_FLOATING_AT_L6",
+      "formal_repository_control": null,
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3d/SUMMARY.json",
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model."
+    },
+    {
+      "id": "MP12",
+      "model": "Archimedean channel alone on the native slice (NOT native)",
+      "blocked_inference": "The archimedean channel is nonnegative on the moment slices and the prime channel is a small perturbation",
+      "preserves": [
+        "the exact archimedean matrix (equation (4.4)), carrier and slice"
+      ],
+      "changes": [
+        "the whole prime channel removed"
+      ],
+      "preservation_status": "CERTIFIED_NEGATIVE_WITNESSES_AT_L4_L5",
+      "formal_repository_control": null,
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment3d/SUMMARY.json",
+      "combination_rule": "Never combine preserved properties of two different models into one imaginary model."
     }
   ],
   "semantic_controls": [

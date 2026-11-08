@@ -470,6 +470,52 @@
         "test_the_identity_needs_the_exact_polynomial_action"
       ],
       "budget_improved": "Family ordering only: the inverse-residual certificate is at least as strong as the geometric tail at equal exact degree. It needs the exact P_m(A) (a perturbed X breaks the identity). Lean formalization deferred behind the signed-source work, as the review advised."
+    },
+    {
+      "id": "CR28",
+      "name": "Compressed commutator with all leakage terms",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq",
+      "statement": "[V\u1d34 D0 V, V\u1d34 E V] = V\u1d34[D0,E]V + Z L\u1d34 - L Z\u1d34 whenever (1 - V V\u1d34) D0 V = W L\u1d34 and D0, E are self-adjoint.",
+      "scope": "Any finite matrices; the native instantiation (actual carrier basis, D0 = diag(n\u00b2), E = canonical source) is not formalized.",
+      "parameter_order": "Algebraic identity.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
+      "consumers": [],
+      "countermodel_tests": [
+        "FrontierMutation15"
+      ],
+      "budget_improved": "Supplies the geometry-energy commutator with the signed leakage numerator retained (work package F \u00a711.3). It controls neither the diagonal nor the absolute energy; V\u1d34[D0,E]V is not shown to vanish on the actual carrier."
+    },
+    {
+      "id": "CR29",
+      "name": "Exact-data soundness of the shifted-factor certificate",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.posDef_of_shifted_factor",
+      "statement": "0 < tau and ||A - tau I - R R\u1d40||\u00b2_F < tau\u00b2 imply x\u1d40Ax > 0 for x \u2260 0; tau > 0 is necessary.",
+      "scope": "Exact real data; the Arb enclosure bridge to the native source is OPEN.",
+      "parameter_order": "Finite.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "consumers": [],
+      "countermodel_tests": [
+        "FrontierMutation16",
+        "shifted_factor_requires_positive_shift"
+      ],
+      "budget_improved": "Level-4 soundness for the kernel decision rule on exact data; the receipts of Increment 3F record tau and the residual bound for every CERTIFIED row."
+    },
+    {
+      "id": "CR30",
+      "name": "Source-column Gram and discarded-sector trace identities",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_residual_trace",
+      "statement": "For C = H S with invertible G = C\u1d34C: G = S\u1d34 H\u00b2 S, C\u1d34 H C = S\u1d34 H\u00b3 S, P = C G\u207b\u00b9 C\u1d34 is a self-adjoint idempotent and tr(((1-P)H)\u1d34((1-P)H)) = tr(H\u00b2) - tr(G\u207b\u00b9 S\u1d34 H\u2074 S).",
+      "scope": "Any finite self-adjoint H; the nonorthogonal-metric version is not formalized.",
+      "parameter_order": "Algebraic identity.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "METRIC_ADAPTER",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.core_shift_certificate_of_columns"
+      ],
+      "countermodel_tests": [],
+      "budget_improved": "Makes the C4 leakage computable from the source columns; no signed-core premise is proved."
     }
   ],
   "strength_rule": "An RH-sufficient contract that is also RH-necessary is a sharp interface, not independent sub-RH progress. Only an independent supplier changes the state."
