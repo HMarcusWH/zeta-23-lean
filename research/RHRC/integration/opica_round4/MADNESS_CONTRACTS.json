@@ -361,6 +361,18 @@
       "module": "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
       "claim": "Abstract reconstruction bound: under (theta_i - theta_j) H_ij = z_i conj(l_j) - l_i conj(z_j) with gaps >= g > 0 and Re H_ii >= h0, Re x*Hx >= (h0 - 2 n_z n_l / g) ||x||^2 (entrywise Cauchy-Schwarz, no dimension factor). In a geometry eigenbasis of P D0 on a Riesz slice the native M58 identity supplies the relation; a geometry-response certificate gives the existing Even/OddMomentSliceLowerBound at its floor; FixedParityGeometryResponsePolynomial (SG with explicit geometry) implies PG and RiemannHypothesis. The certificate premise is OPEN.",
       "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M60",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor",
+      "claim": "Floor adapter with explicit constants, converse to the fixed-rate exclusion. One-sided transform bounds for C^2 functions supported in [0,L] give the pair bound |h_f(g)| |h_f(conj g)| (1+|g|^2) <= exp(|Im g| L) (||f||_1+||f''||_1)^2. With the summable zero weight S = sum m_rho/(1+|gamma_rho|^2): if every nontrivial zero has |Re rho - 1/2| <= a then Re W(f,f) >= -S exp(a L) (||f||_1+||f''||_1)^2, and on every boundary-flat native vector the canonical self-energy is >= -S exp(a L) L (1+(2 pi K/L)^2)^2 (2K+1) ||x||^2. Hence Even/OddFixedRateMomentSliceBound alpha for every alpha > a at the quartic cutoff; with the existing exclusion, in each parity: all displacements <= a iff every rate above a is a fixed-rate bound. A half-plane Re rho <= theta gives the rates above theta - 1/2; the closed strip alone gives the unconditional rates above 1/2. Critical-line section: the existing critical-line positivity of the canonical form, read on the moment slices, gives both slice bounds with error zero at every aperture and cutoff; with the compiled consumers, Mathlib RiemannHypothesis is equivalent to each of (C1), (SB), (PG) and (SE). These contracts are sharp interfaces, neither weaker nor stronger than RH. No bound on the displacement is supplied; these are adapters.",
+      "arithmetic_estimate_supplied": false
+    },
+    {
+      "id": "M61",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.SelectedCutoff",
+      "claim": "Exact finite statement about NativeDeepThresholdGroundData: if the cutoff-3 global bottom is below -D/2, in particular if one unit vector of either cutoff-3 parity space has native energy below -D/2, the stored least-crossing cutoff is 3 and both predecessor spaces have finrank zero. Whether such a deep cutoff-3 vector exists at a given aperture is an analytic question that is not addressed.",
+      "arithmetic_estimate_supplied": false
     }
   ],
   "closing_arithmetic": {
@@ -1552,6 +1564,64 @@
         "Zeta23.OPICARound4.ArithmeticFrontier.FixedParityGeometryResponsePolynomial",
         "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_polynomial_of_geometry_response",
         "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean",
+      "sha256": "dec9467ed1ce21fbbcd0c91b9fc303949f32d8a225d83ec9a5e1158dee551c2c",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.norm_cexp_I_mul_le_of_mem_Icc",
+        "Zeta23.OPICARound4.ArithmeticFrontier.norm_paperFT_le_of_support_Icc",
+        "Zeta23.OPICARound4.ArithmeticFrontier.norm_paperFT_mul_sq_le_of_support_Icc",
+        "Zeta23.OPICARound4.ArithmeticFrontier.weilL1Budget",
+        "Zeta23.OPICARound4.ArithmeticFrontier.weilL1Budget_nonneg",
+        "Zeta23.OPICARound4.ArithmeticFrontier.norm_paperFT_mul_one_add_normSq_le_of_support_Icc",
+        "Zeta23.OPICARound4.ArithmeticFrontier.norm_paperFT_pair_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.zetaZeroInvSqWeight",
+        "Zeta23.OPICARound4.ArithmeticFrontier.summable_zetaZeroInvSqWeight",
+        "Zeta23.OPICARound4.ArithmeticFrontier.zetaZeroInvSqWeight_nonneg",
+        "Zeta23.OPICARound4.ArithmeticFrontier.zeta_W_self_re_ge_neg_of_zeroStrip",
+        "Zeta23.OPICARound4.ArithmeticFrontier.norm_localizedFrequency_centered_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.norm_localizedFiniteFunction_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.norm_localizedFiniteSecondJet_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.integral_norm_indicator_Icc_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.deriv_deriv_localizedFiniteVector_of_boundaryFlat",
+        "Zeta23.OPICARound4.ArithmeticFrontier.weilL1Budget_localizedFiniteVector_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.sq_sum_norm_equiv_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeFloorBudget",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeFloorBudget_nonneg",
+        "Zeta23.OPICARound4.ArithmeticFrontier.canonicalSource_re_inner_ge_neg_of_zeroStrip",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_of_zeroStrip",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_of_zeroStrip",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeFloorBudget_quartic_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenFixedRateMomentSliceBound_of_zeroStrip",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddFixedRateMomentSliceBound_of_zeroStrip",
+        "Zeta23.OPICARound4.ArithmeticFrontier.zeroStrip_iff_even_fixed_rates",
+        "Zeta23.OPICARound4.ArithmeticFrontier.zeroStrip_iff_odd_fixed_rates",
+        "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_re_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedRateMomentSliceBounds_of_re_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedRateMomentSliceBounds_of_half_lt",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_zero_of_critical_line",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_zero_of_critical_line",
+        "Zeta23.OPICARound4.ArithmeticFrontier.momentSliceLowerBounds_zero_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.cofinal_moment_slice_bounds_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.cofinal_moment_slice_semibounded_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_polynomial_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_bounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_semibounded",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_subexponential"
+      ]
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.SelectedCutoff": {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/SelectedCutoff.lean",
+      "sha256": "75c19b63fe41077b6aa02164408eb641405ad58d1d8a07a7b0c6900f0f244153",
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_depth_pos",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_bottom_three_lt",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_predecessor_empty_of_bottom_three_lt",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_even_trial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_odd_trial"
       ]
     }
   },

@@ -480,3 +480,37 @@ Two modules add 46 declarations (contracts M58–M59).
 These are identities and consumers. **The certificate premise, every source
 estimate, RH and Step 4 remain OPEN.** The gate is now 1321 declarations in 107
 modules with 113 controls (shards 84 + 29).
+
+## Arithmetic frontier, increment 6A: the floor adapter and the selected cutoff (11 November 2026)
+
+Two modules add 46 declarations (contracts M60–M61).
+
+* `ZeroFreeFloor` (M60) proves the converse of the fixed-rate exclusion, with
+  explicit constants.
+  * For a `C²` function supported in `[0, L]` the two transform values in one
+    Weil summand cost `exp (|Im γ| L)` together.
+  * If every nontrivial zero has displacement at most `a`, the canonical
+    self-energy of every boundary-flat native vector is at least
+    `-S exp (a L) L (1 + (2πK/L)²)² (2K + 1) ‖x‖²`, with `S` the convergent zero
+    weight `∑ m_ρ / (1 + |γ_ρ|²)`.
+  * Hence every rate above `a` is a fixed-rate bound at the quartic cutoff, in
+    both parities. With the existing exclusion this is an equivalence: all
+    displacements are at most `a` if and only if every rate above `a` is a
+    fixed-rate bound.
+  * The closed strip alone gives the unconditional rates above `1/2`.
+  * With every zero on the line, the repository's critical-line positivity
+    gives both slice bounds with error zero at every aperture and cutoff.
+    With the compiled consumers, Mathlib `RiemannHypothesis` is equivalent
+    to each of (C1), (SB), (PG) and (SE). These contracts are sharp
+    interfaces: proving any of them is proving RH.
+* `SelectedCutoff` (M61) records the exact least-crossing statement: a cutoff-3
+  global bottom below `-D/2` forces the stored cutoff to be `3`, and then both
+  predecessor spaces have dimension zero.
+
+These are adapters and a finite selector statement. **No bound on the
+displacement is supplied. Every closing premise, RH and Step 4 remain OPEN.**
+The gate is now 1367 declarations in 109 modules with 119 controls (shards
+84 + 35). Six new controls reject: the floor at half the rate; the rate `a`
+itself; the half-plane read with `θ - 1`; every positive rate presented as
+unconditional; a cutoff-3 bottom below only `-D/3`; and (PG) presented without
+its RH premise.

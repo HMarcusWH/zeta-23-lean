@@ -3568,15 +3568,17 @@
       "Zeta23.OPICARound4.ArithmeticFrontier.C2GrowthClosure",
       "Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement",
       "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
-      "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction"
+      "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor",
+      "Zeta23.OPICARound4.ArithmeticFrontier.SelectedCutoff"
     ],
     "native_gate": "MATHEMATICAL_SUPPORT",
     "retained_declarations": 500,
     "retained_modules": 48,
     "retained_semantic_mutations": 17,
-    "added_declarations": 821,
-    "added_semantic_mutations": 96,
-    "current_semantic_mutations": 113,
+    "added_declarations": 867,
+    "added_semantic_mutations": 102,
+    "current_semantic_mutations": 119,
     "full_types_and_axioms_required": true,
     "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
     "RH": "OPEN",
@@ -3603,11 +3605,12 @@
         },
         {
           "id": "02",
-          "controls": 29
+          "controls": 35
         }
       ],
       "binding": "each control owns exactly one type-mismatch error"
     },
-    "geometry_reconstruction_extension": "Explicit rank-one leakage factor and the native rank-two compressed commutator on both actual slices (M58); the entrywise reconstruction bound, its native geometry-eigenbasis form and the (SG) certificate consumer to PG and RiemannHypothesis (M59). The certificate premise and every source estimate remain OPEN."
+    "geometry_reconstruction_extension": "Explicit rank-one leakage factor and the native rank-two compressed commutator on both actual slices (M58); the entrywise reconstruction bound, its native geometry-eigenbasis form and the (SG) certificate consumer to PG and RiemannHypothesis (M59). The certificate premise and every source estimate remain OPEN.",
+    "zero_free_floor_extension": "Floor adapter converse to the fixed-rate exclusion: a zero strip of half-width a gives, with explicit constants, the canonical floor on every boundary-flat native vector and every fixed rate above a in both parities, hence the graded equivalence; the closed strip alone gives the unconditional rates above 1/2, and RiemannHypothesis is equivalent to each of (C1), (SB), (PG) and (SE) (M60). Exact least-crossing statement: a cutoff-3 bottom below -D/2 forces cutoff 3 and an empty predecessor (M61). No bound on the displacement and no arithmetic estimate is supplied; every closing premise remains OPEN."
   }
 }
