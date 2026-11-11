@@ -1,0 +1,281 @@
+{
+ "schema": "OPICA4_ARITHMETIC_FRONTIER_INCREMENT6A_SUMMARY_V1",
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "authority": "FINITE_CERTIFICATES_AT_TWO_APERTURES_AND_EXPERIMENTAL_SIGNAL_OTHERWISE",
+ "source": "round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md (repository edition of the Drive note; DERIVED, not independently reviewed)",
+ "registers": [
+  "CR44",
+  "CR45",
+  "CR46",
+  "CR47",
+  "CR49",
+  "MP23"
+ ],
+ "tools": {
+  "bottom_certificate.py": "32f916ea6dc87a4a4515f6ab2fac90bc0fa02026a53fad77ee79cb5b992d6366",
+  "spectral_lowdeg.py": "ca93028a38a7df8dd9a8a0b913b230d6383b5bc6410835205555081c5de310c9",
+  "selector_model.py": "9659bb5cad6690d1cc536b1c82afe73a41eefcc266fce39812d235ebe3e06b62",
+  "native_source.py": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6"
+ },
+ "records": [
+  {
+   "file": "ZETA_ZERO_ORDINATES_400.json",
+   "sha256": "81ea547ceb79cea3f57cdded3ab721b5d79a0448e075ce2a1b152c92c314fb07"
+  },
+  {
+   "file": "BOTTOM_L2_K16.json",
+   "sha256": "0908879e31cb233c7567278b5fc6ce513b740b458452f658cc0b135285298fcf"
+  },
+  {
+   "file": "BOTTOM_L3_K81.json",
+   "sha256": "3c66ff53a9aa6413d4392044279fd4bed79aee7d7d376e6b4db92b2c8e8929de"
+  },
+  {
+   "file": "SPECTRAL_K3.json",
+   "sha256": "43b448e48aa9ef5adf09d345988e32d978e34b09be4bb49319e2248d5953ea81"
+  },
+  {
+   "file": "SPECTRAL_K4.json",
+   "sha256": "98fe68183a4c3a9acff7f0e54a12026c65f3c62baebdc05979dd08bd29b37be8"
+  },
+  {
+   "file": "CUTOFF3_CLOSED_FORM.json",
+   "sha256": "35eb1b449202ca402230ae15fef14c9579b7f36c284ddadaf6def84224ff20ac"
+  },
+  {
+   "file": "SELECTOR_MODEL_A.json",
+   "sha256": "a248ca01231cb9c01ed80d5f159ea3f60c645a168752762de17d57518f761efc"
+  },
+  {
+   "file": "SELECTOR_MODEL_B.json",
+   "sha256": "b8e599ba81ada6a1ccdec3b87223d39c2e5ceac3600c4c41f83df5e63cce40b0"
+  }
+ ],
+ "statements": {
+  "bottom_certificates": {
+   "label": "FINITE_CERTIFICATE",
+   "method": "Sylvester inertia of G - mu N from a ball LDL^T whose pivots are all certified non-zero",
+   "claim": "On each listed space the bottom eigenvalue lies in [bottom_lower, bottom_upper) and exactly one eigenvalue lies below one_eigenvalue_below.",
+   "records": {
+    "BOTTOM_L2_K16.json": {
+     "L": "2",
+     "K": 16,
+     "bits": 1500,
+     "prime_cutoff": 7,
+     "spaces": {
+      "even/flat_pole_neutral": {
+       "dim": 14,
+       "bottom_lower": "2.234685765968e-20",
+       "bottom_upper": "2.234687981783e-20",
+       "one_eigenvalue_below": "5.858100462966e-15",
+       "stored_ground_vector": true
+      },
+      "even/full": {
+       "dim": 17,
+       "bottom_lower": "1.342266624240e-26",
+       "bottom_upper": "1.342267955171e-26",
+       "one_eigenvalue_below": "3.518674908405e-21",
+       "stored_ground_vector": true
+      },
+      "even/moment_slice": {
+       "dim": 13,
+       "bottom_lower": "1.753969885956e-19",
+       "bottom_upper": "1.753971625115e-19",
+       "one_eigenvalue_below": "4.597931376941e-14",
+       "stored_ground_vector": true
+      },
+      "odd/flat_pole_neutral": {
+       "dim": 14,
+       "bottom_lower": "3.247130157570e-18",
+       "bottom_upper": "3.247133377280e-18",
+       "one_eigenvalue_below": "2.128041330134e-13",
+       "stored_ground_vector": true
+      },
+      "odd/full": {
+       "dim": 16,
+       "bottom_lower": "1.628518513386e-23",
+       "bottom_upper": "1.628520128153e-23",
+       "one_eigenvalue_below": "4.269067804745e-18",
+       "stored_ground_vector": true
+      },
+      "odd/moment_slice": {
+       "dim": 12,
+       "bottom_lower": "3.508479833116e-16",
+       "bottom_upper": "3.508483311968e-16",
+       "one_eigenvalue_below": "9.197278493327e-11",
+       "stored_ground_vector": true
+      }
+     }
+    },
+    "BOTTOM_L3_K81.json": {
+     "L": "3",
+     "K": 81,
+     "bits": 3000,
+     "prime_cutoff": 20,
+     "spaces": {
+      "even/flat_pole_neutral": {
+       "dim": 79,
+       "bottom_lower": "2.305666974161e-83",
+       "bottom_upper": "2.305669260358e-83",
+       "one_eigenvalue_below": "9.670677801396e-77",
+       "stored_ground_vector": false
+      },
+      "even/full": {
+       "dim": 82,
+       "bottom_lower": "3.335441277853e-91",
+       "bottom_upper": "3.335444585128e-91",
+       "one_eigenvalue_below": "2.238378970429e-83",
+       "stored_ground_vector": false
+      },
+      "even/moment_slice": {
+       "dim": 78,
+       "bottom_lower": "3.907722819632e-83",
+       "bottom_upper": "3.907726694356e-83",
+       "one_eigenvalue_below": "1.639019370504e-76",
+       "stored_ground_vector": false
+      },
+      "odd/flat_pole_neutral": {
+       "dim": 79,
+       "bottom_lower": "4.716101061280e-80",
+       "bottom_upper": "4.716105737556e-80",
+       "one_eigenvalue_below": "1.978078115945e-73",
+       "stored_ground_vector": false
+      },
+      "odd/full": {
+       "dim": 81,
+       "bottom_lower": "4.084741835508e-87",
+       "bottom_upper": "4.084745885756e-87",
+       "one_eigenvalue_below": "6.853066403044e-80",
+       "stored_ground_vector": false
+      },
+      "odd/moment_slice": {
+       "dim": 77,
+       "bottom_lower": "1.342080024837e-79",
+       "bottom_upper": "1.342081355584e-79",
+       "one_eigenvalue_below": "5.629097198053e-73",
+       "stored_ground_vector": false
+      }
+     }
+    }
+   },
+   "reverified_in_ci": "BOTTOM_L2_K16.json is re-derived from its stored exact numbers; BOTTOM_L3_K81.json is hash-bound only (its matrix build takes several minutes).",
+   "limit": "One aperture, one cutoff, one space at a time. Implied by the known location of the low zeros together with the compiled explicit formula; no statement about another aperture, a limiting form or RH."
+  },
+  "prime_side_against_zero_sum": {
+   "label": "EXPERIMENTAL_SIGNAL",
+   "claim": "The prime-side enclosure of the bottom of each cutoff-3 and cutoff-4 pole-neutral boundary-flat parity space agrees with the truncated sum over stored zero ordinates.",
+   "cutoff_3": {
+    "apertures": [
+     "2",
+     "5/2",
+     "3",
+     "4",
+     "5",
+     "6",
+     "7",
+     "8",
+     "9",
+     "10",
+     "11",
+     "12"
+    ],
+    "bits": 320,
+    "zeros_used": 400,
+    "largest_relative_difference_even": "8.85e-14",
+    "largest_relative_difference_odd": "1.05e-10"
+   },
+   "cutoff_4": {
+    "apertures": [
+     "2",
+     "3",
+     "5",
+     "8"
+    ],
+    "bits": 320,
+    "zeros_used": 400,
+    "largest_relative_difference_even": "1.23e-12",
+    "largest_relative_difference_odd": "1.41e-09"
+   },
+   "limit": "The ordinates are numerical input and the sum is truncated; this is a consistency check of an identity already compiled (zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm), not a certificate and not evidence about off-line zeros."
+  },
+  "cutoff_3_closed_form": {
+   "label": "FINITE_CHECK",
+   "claim": "even: q(g) = c_e (g^2+1/4)/(g prod_{a<=3}(g^2-w_a^2)); odd: q(g) = c_o (g^2+1/4)/prod_{a<=3}(g^2-w_a^2); ball check at four sample points",
+   "apertures": [
+    "2",
+    "8",
+    "12"
+   ],
+   "largest_spread_upper": "2.61e-86",
+   "limit": "Ball check at four sample points per aperture; the algebraic identity itself is a paper derivation (round-7 note, section 2)."
+  },
+  "selector_model": {
+   "label": "EXPERIMENTAL_SIGNAL_ON_A_MODEL_THAT_IS_NOT_ZETA",
+   "claim": "With one off-line quadruple added to the on-line zero sum, the least-crossing rule selects cutoff 3 or 4 at every sampled aperture beyond a transient.",
+   "A": {
+    "parameters": {
+     "delta": "3/10",
+     "gamma0": "173/10",
+     "beta": "1/10",
+     "k_max": 10,
+     "bits": 1536,
+     "zeros_used": 400
+    },
+    "apertures": 100,
+    "first_aperture": "30",
+    "last_aperture": "75963/100",
+    "selected_cutoff_counts_at_eta_D_over_2": {
+     "10": 1,
+     "3": 33,
+     "4": 23,
+     "5": 3,
+     "6": 1,
+     "7": 2,
+     "8": 2,
+     "9": 1,
+     "None": 34
+    },
+    "thresholds_agree_at_every_aperture": true,
+    "last_aperture_with_cutoff_outside_3_4": "8707/20",
+    "apertures_after_it": 44,
+    "after_it_cutoff_3": 22,
+    "after_it_cutoff_4": 22
+   },
+   "B": {
+    "parameters": {
+     "delta": "9/20",
+     "gamma0": "28",
+     "beta": "1/5",
+     "k_max": 10,
+     "bits": 1536,
+     "zeros_used": 400
+    },
+    "apertures": 39,
+    "first_aperture": "60",
+    "last_aperture": "25667/50",
+    "selected_cutoff_counts_at_eta_D_over_2": {
+     "3": 12,
+     "4": 6,
+     "5": 2,
+     "6": 1,
+     "7": 2,
+     "9": 1,
+     "None": 15
+    },
+    "thresholds_agree_at_every_aperture": false,
+    "last_aperture_with_cutoff_outside_3_4": "18509/50",
+    "apertures_after_it": 12,
+    "after_it_cutoff_3": 6,
+    "after_it_cutoff_4": 6
+   },
+   "limit": "The model has no Euler product and no prime side. It shows what the selector would do if such a zero existed and refutes only arguments that do not use the divisor identities."
+  }
+ },
+ "not_established": [
+  "any bound at late apertures",
+  "any rate at or below 1/2 for the native floor",
+  "Step 4",
+  "RH"
+ ]
+}

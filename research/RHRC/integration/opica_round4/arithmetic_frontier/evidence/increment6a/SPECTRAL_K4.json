@@ -1,0 +1,95 @@
+{
+ "schema": "OPICA4_ARITHMETIC_FRONTIER_SPECTRAL_LOWDEG_V1",
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "tool_sha256": "ca93028a38a7df8dd9a8a0b913b230d6383b5bc6410835205555081c5de310c9",
+ "native_source_sha256": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6",
+ "zeros_sha256": "81ea547ceb79cea3f57cdded3ab721b5d79a0448e075ce2a1b152c92c314fb07",
+ "claim": "CONSISTENCY_CHECK_OF_A_LEAN_PROVED_IDENTITY_WITH_NUMERICAL_ZERO_INPUT_NOT_A_CERTIFICATE",
+ "rows": [
+  {
+   "L": "2",
+   "K": 4,
+   "bits": 320,
+   "prime_cutoff": 7,
+   "zeros_used": 400,
+   "even": {
+    "dim": 2,
+    "prime_side": "3.54792912285197321586864938361e-7",
+    "prime_side_radius": "1.21e-92",
+    "zero_side": "3.54792912285189216639086069450e-7",
+    "relative_difference_upper": "2.28e-14"
+   },
+   "odd": {
+    "dim": 2,
+    "prime_side": "4.21228214403053240551341160181e-6",
+    "prime_side_radius": "4.81e-93",
+    "zero_side": "4.21228214390622230673230149178e-6",
+    "relative_difference_upper": "2.95e-11"
+   }
+  },
+  {
+   "L": "3",
+   "K": 4,
+   "bits": 320,
+   "prime_cutoff": 20,
+   "zeros_used": 400,
+   "even": {
+    "dim": 2,
+    "prime_side": "5.16804195536243534329612270563e-11",
+    "prime_side_radius": "1.93e-92",
+    "zero_side": "5.16804195535943363194259760511e-11",
+    "relative_difference_upper": "5.81e-13"
+   },
+   "odd": {
+    "dim": 2,
+    "prime_side": "2.27856164561600023389140949012e-9",
+    "prime_side_radius": "8.05e-93",
+    "zero_side": "2.27856164470291554756065262074e-9",
+    "relative_difference_upper": "4.01e-10"
+   }
+  },
+  {
+   "L": "5",
+   "K": 4,
+   "bits": 320,
+   "prime_cutoff": 148,
+   "zeros_used": 400,
+   "even": {
+    "dim": 2,
+    "prime_side": "3.14238062309479932488855033754e-13",
+    "prime_side_radius": "4.25e-92",
+    "zero_side": "3.14238062309449788225508325158e-13",
+    "relative_difference_upper": "9.59e-14"
+   },
+   "odd": {
+    "dim": 2,
+    "prime_side": "2.04704698565010529669063513878e-11",
+    "prime_side_radius": "1.67e-92",
+    "zero_side": "2.04704698540979634712916283379e-11",
+    "relative_difference_upper": "1.17e-10"
+   }
+  },
+  {
+   "L": "8",
+   "K": 4,
+   "bits": 320,
+   "prime_cutoff": 2980,
+   "zeros_used": 400,
+   "even": {
+    "dim": 2,
+    "prime_side": "8.37868667365838321367212645571e-18",
+    "prime_side_radius": "6.91e-91",
+    "zero_side": "8.37868667364805503251884681802e-18",
+    "relative_difference_upper": "1.23e-12"
+   },
+   "odd": {
+    "dim": 2,
+    "prime_side": "1.52510952395355546280543696984e-15",
+    "prime_side_radius": "2.00e-91",
+    "zero_side": "1.52510952180574249755833835818e-15",
+    "relative_difference_upper": "1.41e-9"
+   }
+  }
+ ]
+}

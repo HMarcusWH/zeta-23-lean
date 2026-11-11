@@ -1,0 +1,43 @@
+{
+ "schema": "OPICA4_ARITHMETIC_FRONTIER_CUTOFF3_CLOSED_FORM_V1",
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "tool_sha256": "ca93028a38a7df8dd9a8a0b913b230d6383b5bc6410835205555081c5de310c9",
+ "statement": "even: q(g) = c_e (g^2+1/4)/(g prod_{a<=3}(g^2-w_a^2)); odd: q(g) = c_o (g^2+1/4)/prod_{a<=3}(g^2-w_a^2); ball check at four sample points",
+ "bits": 320,
+ "rows": [
+  {
+   "even": {
+    "constant_abs": "1651.76058705969489888162",
+    "spread_upper": "6.24e-87"
+   },
+   "odd": {
+    "constant_abs": "274.674124564020542892151",
+    "spread_upper": "3.73e-90"
+   },
+   "L": "2"
+  },
+  {
+   "even": {
+    "constant_abs": "5.44822644255321393852742",
+    "spread_upper": "8.50e-87"
+   },
+   "odd": {
+    "constant_abs": "3.88297670251841302155888",
+    "spread_upper": "9.82e-91"
+   },
+   "L": "8"
+  },
+  {
+   "even": {
+    "constant_abs": "0.865318703161017945641392",
+    "spread_upper": "2.61e-86"
+   },
+   "odd": {
+    "constant_abs": "1.01533838347073426642519",
+    "spread_upper": "7.60e-91"
+   },
+   "L": "12"
+  }
+ ]
+}

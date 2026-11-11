@@ -632,5 +632,113 @@ class Increment4DExactControlTests(unittest.TestCase):
         self.assertNotEqual(row['product_kernel'], row['lcm_kernel'])
 
 
+class Increment6ARound7Tests(unittest.TestCase):
+    """Round-7 records (evidence/increment6a), re-verified in ball arithmetic.
+
+    The bottom certificate at ``L = 2`` is re-derived from its stored exact numbers;
+    the prime side of the low-cutoff energies is recomputed and compared with the
+    sum over the stored zero ordinates; selected rows of the hypothetical-zero
+    selector model are recomputed. The zero ordinates are numerical input, and the
+    selector model is not the zeta function. Nothing here bounds an arithmetic
+    quantity at late apertures.
+    """
+
+    SPACE_NAMES = ['even/flat_pole_neutral', 'even/full', 'even/moment_slice',
+                   'odd/flat_pole_neutral', 'odd/full', 'odd/moment_slice']
+
+    @classmethod
+    def setUpClass(cls):
+        cls.BC = load('_frontier_bottom_certificate_ci', ROOT / 'bottom_certificate.py')
+        cls.SL = load('_frontier_spectral_lowdeg_ci', ROOT / 'spectral_lowdeg.py')
+        cls.SM = load('_frontier_selector_model_ci', ROOT / 'selector_model.py')
+        cls.ev = ROOT / 'evidence' / 'increment6a'
+        cls.zeros = json.loads((cls.ev / 'ZETA_ZERO_ORDINATES_400.json').read_bytes())['gamma']
+        cls.bottom2 = json.loads((cls.ev / 'BOTTOM_L2_K16.json').read_bytes())
+        cls.state2 = SRC.NativeState(Fraction(2), K=cls.bottom2['K'], bits=cls.bottom2['bits'])
+
+    def test_records_bind_the_tools_and_inputs(self):
+        summary = json.loads((self.ev / 'SUMMARY.json').read_bytes())
+        self.assertEqual((summary['RH'], summary['Step4']), ('OPEN', 'OPEN'))
+        for entry in summary['records']:
+            self.assertEqual(sha(self.ev / entry['file']), entry['sha256'], entry['file'])
+        tools = {'BOTTOM_L2_K16.json': 'bottom_certificate.py', 'BOTTOM_L3_K81.json': 'bottom_certificate.py',
+                 'SPECTRAL_K3.json': 'spectral_lowdeg.py', 'SPECTRAL_K4.json': 'spectral_lowdeg.py',
+                 'CUTOFF3_CLOSED_FORM.json': 'spectral_lowdeg.py',
+                 'SELECTOR_MODEL_A.json': 'selector_model.py', 'SELECTOR_MODEL_B.json': 'selector_model.py'}
+        native, zeros = sha(ROOT / 'native_source.py'), sha(self.ev / 'ZETA_ZERO_ORDINATES_400.json')
+        for name, tool in tools.items():
+            record = json.loads((self.ev / name).read_bytes())
+            self.assertEqual((record['RH'], record['Step4']), ('OPEN', 'OPEN'), name)
+            self.assertEqual(record['tool_sha256'], sha(ROOT / tool), name)
+            if 'native_source_sha256' in record:
+                self.assertEqual(record['native_source_sha256'], native, name)
+            if 'zeros_sha256' in record:
+                self.assertEqual(record['zeros_sha256'], zeros, name)
+        bottom3 = json.loads((self.ev / 'BOTTOM_L3_K81.json').read_bytes())
+        self.assertEqual((bottom3['L'], bottom3['K'], sorted(bottom3['spaces'])), ('3', 81, self.SPACE_NAMES))
+        self.assertTrue(all(row['simple'] and row['below_lo'] == 0 and row['below_hi'] == 1 and row['below_mu2'] == 1
+                            for row in bottom3['spaces'].values()))
+
+    def test_bottom_certificate_reverifies_at_L2(self):
+        seen = self.BC.verify_state(self.bottom2, self.state2)
+        self.assertEqual(sorted(seen), self.SPACE_NAMES)
+        self.assertTrue(all(row['simple'] for row in seen.values()))
+        self.assertEqual((self.bottom2['L'], self.bottom2['K']), ('2', 16))
+
+    def test_bottom_certificate_fails_closed(self):
+        row = self.bottom2['spaces']['even/full']
+        base = {k: v for k, v in self.bottom2.items() if k != 'spaces'}
+        # a lower bound placed above the bottom is rejected
+        too_high = dict(base, spaces={'even/full': dict(row, lo=row['hi'], hi=row['mu2'])})
+        with self.assertRaises(self.BC.CertificateFailure):
+            self.BC.verify_state(too_high, self.state2)
+        # a separation point above the second eigenvalue is rejected (the search stopped within a factor 4)
+        beyond = self.BC.exact(self.BC.arb(row['mu2']) * 16, 40)
+        not_simple = dict(base, spaces={'even/full': dict(row, mu2=beyond)})
+        with self.assertRaises(self.BC.CertificateFailure):
+            self.BC.verify_state(not_simple, self.state2)
+        with self.assertRaises(self.BC.CertificateFailure):
+            self.BC.verify_state(dict(self.bottom2, Step4='CLOSED'), self.state2)
+
+    def test_prime_side_matches_the_sum_over_zeros(self):
+        k3 = {r['L']: r for r in json.loads((self.ev / 'SPECTRAL_K3.json').read_bytes())['rows']}
+        k4 = {r['L']: r for r in json.loads((self.ev / 'SPECTRAL_K4.json').read_bytes())['rows']}
+        self.assertEqual(list(k3), ['2', '5/2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'])
+        self.SL.verify_row(k3['2'], self.zeros, Fraction(1, 10 ** 9))
+        self.SL.verify_row(k3['3'], self.zeros, Fraction(1, 10 ** 9))
+        self.SL.verify_row(k4['2'], self.zeros, Fraction(1, 10 ** 9))
+        # a foreign stored value is rejected
+        wrong = json.loads(json.dumps(k3['2']))
+        wrong['even']['prime_side'] = k3['3']['even']['prime_side']
+        with self.assertRaises(self.SL.SpectralFailure):
+            self.SL.verify_row(wrong, self.zeros, Fraction(1, 10 ** 9))
+        # the comparison depends on the zeros: without the first zero the two sides disagree
+        with self.assertRaises(self.SL.SpectralFailure):
+            self.SL.verify_row(k3['2'], self.zeros[1:], Fraction(1, 10 ** 9))
+
+    def test_cutoff3_vectors_have_the_closed_form(self):
+        stored = {r['L']: r for r in json.loads((self.ev / 'CUTOFF3_CLOSED_FORM.json').read_bytes())['rows']}
+        fresh = self.SL.cutoff3_closed_form(Fraction(2), 320)
+        for parity in ('even', 'odd'):
+            self.assertEqual(fresh[parity]['constant_abs'][:18], stored['2'][parity]['constant_abs'][:18])
+
+    def test_selector_model_rows_reproduce(self):
+        record = json.loads((self.ev / 'SELECTOR_MODEL_A.json').read_bytes())
+        params = record['parameters']
+        late = [r for r in record['rows'] if Fraction(r['L']) > 436]
+        self.assertEqual(len(late), 44)
+        self.assertTrue(all(r['selected_cutoff_eta_D_over_2'] in (3, 4) and r['selected_cutoff_eta_D_over_3'] in (3, 4)
+                            for r in late))
+        for row in (late[0], late[1], late[-1]):
+            self.SM.verify_row(row, params, self.zeros)
+        # with the added quadruple placed on the line the model form is positive: no crossing at any cutoff
+        on_line = self.SM.model_row(Fraction(late[0]['L']), 0, params['gamma0'], params['beta'], 5, params['bits'],
+                                    self.zeros)
+        self.assertIsNone(on_line['selected_cutoff_eta_D_over_2'])
+        self.assertIsNone(on_line['selected_cutoff_eta_D_over_3'])
+        with self.assertRaises(self.SM.ModelFailure):
+            self.SM.verify_row(dict(late[0], selected_cutoff_eta_D_over_2=7), params, self.zeros)
+
+
 if __name__ == '__main__':
     unittest.main()
