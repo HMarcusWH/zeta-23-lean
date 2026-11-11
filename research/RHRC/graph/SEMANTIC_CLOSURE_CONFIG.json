@@ -548,7 +548,9 @@
     "Zeta23.OPICARound4.ArithmeticFrontier.C2GrowthClosure": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
     "Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
     "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
-    "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction": "OPICA4_SOURCE_FAITHFUL_SUPPORT"
+    "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+    "Zeta23.OPICARound4.ArithmeticFrontier.SelectedCutoff": "OPICA4_SOURCE_FAITHFUL_SUPPORT"
   },
   "reachable_module_roles": {
     "Zeta23.CCM.CanonicalCompressedApertureC2": "CONTACT_CALCULUS_FORMAL_SUPPORT",

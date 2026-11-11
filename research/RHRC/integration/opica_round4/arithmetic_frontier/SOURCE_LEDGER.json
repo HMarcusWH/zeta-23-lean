@@ -3165,6 +3165,504 @@
       "content_sha256": null,
       "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
       "discovered_by": "FOLDER_FULL_LISTING_2026-11-08"
+    },
+    {
+      "drive_id": "1XiNGokBerfgpCWyDruW1mCHvE39fZeiW",
+      "title": "OPICA_Step4_Handover_and_ASSISTANT_Prompt_2026-11-11.md",
+      "mime_type": "text/markdown",
+      "bytes": 42066,
+      "modified_utc": "2026-11-11T00:50:46.664Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_HANDOVER",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "session_upload": {
+        "bytes": 42066,
+        "sha256": "58859e52e57428f191d60f3d6136f8a0c56330b7748839a1adc475a01465d0b3",
+        "identity_with_drive_copy": "same title and byte count; Drive bytes not fetched"
+      },
+      "increment6a": {
+        "action": "session upload read in full; its continuation prompt (sections A to G) was the task specification of round 7",
+        "use": "Targets (U), (F), (E); inequality (P); the externally claimed zero-free boundaries quoted in CR44."
+      },
+      "title_redaction": "One token of the Drive title, the name of the addressed assistant, is replaced by ASSISTANT. The drive_id identifies the file."
+    },
+    {
+      "drive_id": "1DaaYMljlBUdbQrmgGL1AwnGtC4ye2tBC",
+      "title": "OPICA_Step4_Research_Round6_2026-11-11.zip",
+      "mime_type": "application/zip",
+      "bytes": 234138,
+      "modified_utc": "2026-11-11T00:49:23.586Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "session_upload": {
+        "bytes": 234138,
+        "sha256": "b757302f0e06dc38bb200498307fe7c457023335c226139efec91efb3e0ba6c2",
+        "identity_with_drive_copy": "same title and byte count; Drive bytes not fetched"
+      },
+      "increment6a": {
+        "action": "session upload extracted into an isolated directory and read as data; no archived code executed",
+        "members_read_in_full": {
+          "ROUND6_CHECKPOINT.md": "0b0564deae5a2f61795d494fa4c8797aafecf8b40c9e30a8c7d18edceb19f2ef",
+          "MOMENT_HIERARCHY_ATTEMPT.md": "5b105900b87cfdab6e00310f036e69aab9c83db13de844116fd906eb71fce3b0",
+          "MOMENT_HIERARCHY_REVIEW.md": "ec2c53f10fa65cb0508cc2226f3070446050be6fc5eaba2c364762297aed7782",
+          "POSITIVE_SOURCE_ENERGY_ATTEMPT.md": "a11e30dd85a07f5c90d0a0cd4cc5fac627ea0397779d04db9b9f406538179112",
+          "POSITIVE_SOURCE_ENERGY_REVIEW.md": "2dc6d68b72240069f20860622279dbfb14bcc61b437b63a6a23640e61d564f45",
+          "ACTUAL_LOADING_OPICA_CONSTRAINTS.md": "1638101ef6605654b5cdc170791b89f1c0d2530d1725272475c7a73a5e3ac548",
+          "TWO_TRANSLATE_PREDECESSOR_REVIEW.md": "de953c85958f6d12b0cf4c7a735f6b19a1be692803ae21de6da6114e284276e7",
+          "PREDECESSOR_LOADING_TEST.md": "8129b5d32b38dcc6c6696cbf108e47c586e58f71ee744c4e7c7bc4a7ef164361",
+          "PREDECESSOR_LOADING_REVIEW.md": "0a9474e2e225eb8d5f0cbe10e515bd235765e83bfa4b2c9c0468921fe35cd170",
+          "PUBLICATION_SCOPE_REVIEW.md": "458a2175ab2f1a74120113e2e002ce9603f91ac87d17f1b23318125f9577dfcd",
+          "HANDOVER_FOUNDATIONS_MAP.md": "911bc4801628eca4b3e10f5ec58629a8ef060de23a64ab9b7f81f03e9d482365",
+          "PACKAGE_README.md": "b084ecee2070d0447deacd8f003f8c273187fdd15be8eed8e38b5fe69895a052"
+        },
+        "members_read_as_data": {
+          "CURRENT_STATE_FOLDER_INDEX.json": "cc901ef9da33fe7588fbad8310753419ea6d836ea4cf7ca5c56384adb419cd62",
+          "HANDOVER_PRIOR_ROUNDS_INDEX.json": "a5d3e3d3ee09641f441d514845613c13312e19b9c70af6d849e9f1bf61009c77",
+          "MANIFEST.json": "e1cbc3199fa127bb513841c336a7ea8d50af1a34bc8c474ae91f77b51c59d90a"
+        },
+        "use": "CR46 (the predecessor-loading test and inequality (P) are answered in round7/ sections 3 to 5)."
+      }
+    },
+    {
+      "drive_id": "1Auq2zpfnEijZh-eJ1itsGIPJdz009kP1",
+      "title": "103_STEP4_CURRENT_CLOSURE_TARGETS_AND_SOURCE_CROSSWALK_2026-11-11.md",
+      "mime_type": "text/markdown",
+      "bytes": 14158,
+      "modified_utc": "2026-11-11T01:11:44.275Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "REPORT_OR_NOTE",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "action": "full text read through the connector on 2026-11-11; bytes not stored, so no content hash",
+        "use": "Lists the three alternative sufficient tasks that round7/TARGET_CONSOLIDATION.md reduces to one. The Drive document is not editable through the session connector and was not changed."
+      }
+    },
+    {
+      "drive_id": "1q8yEv9eqtY_BDxX42bk_vY1oL1vZPbbc",
+      "title": "104_STEP4_RESEARCH_ROUNDS_AND_FALSIFICATION_STATUS_2026-11-11.md",
+      "mime_type": "text/markdown",
+      "bytes": 12590,
+      "modified_utc": "2026-11-11T01:11:47.888Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "REPORT_OR_NOTE",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "action": "full text read through the connector on 2026-11-11; bytes not stored, so no content hash",
+        "use": "Round history and falsification status; not changed."
+      }
+    },
+    {
+      "drive_id": "1LrWx5w2cws4lfqAe_iWACFY_fK35i0Gc",
+      "title": "66_Weighted_completion_and_large_prime_localization.md",
+      "mime_type": "text/markdown",
+      "bytes": 8135,
+      "modified_utc": "2026-11-10T17:51:26.452Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "action": "full text read through the connector on 2026-11-11; bytes not stored, so no content hash",
+        "use": "Centered weighted-response lower bound behind target (U)."
+      }
+    },
+    {
+      "drive_id": "1pMrCekQL76gFnyq9TobLqZDFP8lD5UF4",
+      "title": "OPICA_Round2_OUTPUT_RECOVERY.md",
+      "mime_type": "text/markdown",
+      "bytes": 19921,
+      "modified_utc": "2026-11-10T22:23:16.592Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "action": "full text read through the connector on 2026-11-11; bytes not stored, so no content hash",
+        "use": "Reconstructed vector v_L and the constant ||U||^2 used in CR46 for target (F)."
+      }
+    },
+    {
+      "drive_id": "1XdkERMvfXONkmLPdKp5IQ7jiNOgJl_ns",
+      "title": "OPICA_Actual_Source_Round6_ROUND6_CHECKPOINT.md",
+      "mime_type": "text/markdown",
+      "bytes": 3642,
+      "modified_utc": "2026-11-11T00:19:36.816Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "package_member": "ROUND6_CHECKPOINT.md",
+        "package_member_sha256": "0b0564deae5a2f61795d494fa4c8797aafecf8b40c9e30a8c7d18edceb19f2ef",
+        "identity_with_drive_copy": "same byte count as the package member that was read in full; Drive bytes not fetched, so the review depth of this item stays DISCOVERED"
+      }
+    },
+    {
+      "drive_id": "1-VlSvkthyMmbxmatuTqAAOKPu74Itnf7",
+      "title": "OPICA_Actual_Source_Round6_MOMENT_HIERARCHY_ATTEMPT.md",
+      "mime_type": "text/markdown",
+      "bytes": 19174,
+      "modified_utc": "2026-11-11T00:19:42.425Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "package_member": "MOMENT_HIERARCHY_ATTEMPT.md",
+        "package_member_sha256": "5b105900b87cfdab6e00310f036e69aab9c83db13de844116fd906eb71fce3b0",
+        "identity_with_drive_copy": "same byte count as the package member that was read in full; Drive bytes not fetched, so the review depth of this item stays DISCOVERED"
+      }
+    },
+    {
+      "drive_id": "1rSeGzVnuBZj-Oa4amcYSTdBWNMnZtySy",
+      "title": "OPICA_Actual_Source_Round6_MOMENT_HIERARCHY_REVIEW.md",
+      "mime_type": "text/markdown",
+      "bytes": 8105,
+      "modified_utc": "2026-11-11T00:23:34.225Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "package_member": "MOMENT_HIERARCHY_REVIEW.md",
+        "package_member_sha256": "ec2c53f10fa65cb0508cc2226f3070446050be6fc5eaba2c364762297aed7782",
+        "identity_with_drive_copy": "same byte count as the package member that was read in full; Drive bytes not fetched, so the review depth of this item stays DISCOVERED"
+      }
+    },
+    {
+      "drive_id": "1afbt7XT6awDfXv6P4wlWdP_pHJp30H8P",
+      "title": "OPICA_Actual_Source_Round6_POSITIVE_SOURCE_ENERGY_ATTEMPT.md",
+      "mime_type": "text/markdown",
+      "bytes": 14950,
+      "modified_utc": "2026-11-11T00:23:41.306Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "package_member": "POSITIVE_SOURCE_ENERGY_ATTEMPT.md",
+        "package_member_sha256": "a11e30dd85a07f5c90d0a0cd4cc5fac627ea0397779d04db9b9f406538179112",
+        "identity_with_drive_copy": "same byte count as the package member that was read in full; Drive bytes not fetched, so the review depth of this item stays DISCOVERED"
+      }
+    },
+    {
+      "drive_id": "1BaDNWRkP1BI-MtPKz_1mfs1zKXbPhPj_",
+      "title": "OPICA_Actual_Source_Round6_POSITIVE_SOURCE_ENERGY_REVIEW.md",
+      "mime_type": "text/markdown",
+      "bytes": 8296,
+      "modified_utc": "2026-11-11T00:23:53.612Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "package_member": "POSITIVE_SOURCE_ENERGY_REVIEW.md",
+        "package_member_sha256": "2dc6d68b72240069f20860622279dbfb14bcc61b437b63a6a23640e61d564f45",
+        "identity_with_drive_copy": "same byte count as the package member that was read in full; Drive bytes not fetched, so the review depth of this item stays DISCOVERED"
+      }
+    },
+    {
+      "drive_id": "1MTPvOv9k16uc6lXdWMGTmLpCjs6EpTlo",
+      "title": "OPICA_Actual_Source_Round6_ACTUAL_LOADING_OPICA_CONSTRAINTS.md",
+      "mime_type": "text/markdown",
+      "bytes": 19524,
+      "modified_utc": "2026-11-11T00:30:09.204Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "package_member": "ACTUAL_LOADING_OPICA_CONSTRAINTS.md",
+        "package_member_sha256": "1638101ef6605654b5cdc170791b89f1c0d2530d1725272475c7a73a5e3ac548",
+        "identity_with_drive_copy": "same byte count as the package member that was read in full; Drive bytes not fetched, so the review depth of this item stays DISCOVERED"
+      }
+    },
+    {
+      "drive_id": "1zHvHzVs2kcxgCxbDdVNzfs0uTwnzjEPx",
+      "title": "OPICA_Actual_Source_Round6_TWO_TRANSLATE_PREDECESSOR_REVIEW.md",
+      "mime_type": "text/markdown",
+      "bytes": 14953,
+      "modified_utc": "2026-11-11T00:30:17.775Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "package_member": "TWO_TRANSLATE_PREDECESSOR_REVIEW.md",
+        "package_member_sha256": "de953c85958f6d12b0cf4c7a735f6b19a1be692803ae21de6da6114e284276e7",
+        "identity_with_drive_copy": "same byte count as the package member that was read in full; Drive bytes not fetched, so the review depth of this item stays DISCOVERED"
+      }
+    },
+    {
+      "drive_id": "1PaiuawqUn8KirHKj0Kg5SL4nXB1YFuMp",
+      "title": "OPICA_Actual_Source_Round6_PREDECESSOR_LOADING_TEST.md",
+      "mime_type": "text/markdown",
+      "bytes": 19513,
+      "modified_utc": "2026-11-11T00:34:29.210Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "package_member": "PREDECESSOR_LOADING_TEST.md",
+        "package_member_sha256": "8129b5d32b38dcc6c6696cbf108e47c586e58f71ee744c4e7c7bc4a7ef164361",
+        "identity_with_drive_copy": "same byte count as the package member that was read in full; Drive bytes not fetched, so the review depth of this item stays DISCOVERED"
+      }
+    },
+    {
+      "drive_id": "1eeUdQ_771wDC0FrRManUN0VEyZwZ3wfI",
+      "title": "OPICA_Actual_Source_Round6_PREDECESSOR_LOADING_REVIEW.md",
+      "mime_type": "text/markdown",
+      "bytes": 9061,
+      "modified_utc": "2026-11-11T00:34:37.117Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "package_member": "PREDECESSOR_LOADING_REVIEW.md",
+        "package_member_sha256": "0a9474e2e225eb8d5f0cbe10e515bd235765e83bfa4b2c9c0468921fe35cd170",
+        "identity_with_drive_copy": "same byte count as the package member that was read in full; Drive bytes not fetched, so the review depth of this item stays DISCOVERED"
+      }
+    },
+    {
+      "drive_id": "11b3wOxKvUzvcPQ93G0VR8Tn51VPut4zo",
+      "title": "ASSISTANT_step4inv_bundle_2026-11-11.zip",
+      "mime_type": "application/zip",
+      "bytes": 23106,
+      "modified_utc": "2026-11-11T05:20:42.829Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "FETCHED",
+      "content_sha256": "6241097d02b2983914c1169b00acc71d21bb48971f511d3beaa77b30abf5f34e",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "note": "First experiment bundle (approximate numerics); superseded where round 7 certifies or corrects it."
+      },
+      "title_redaction": "One token of the Drive title, the name of the addressed assistant, is replaced by ASSISTANT. The drive_id identifies the file."
+    },
+    {
+      "drive_id": "1hIk50MrQYPHLwXCTrgS_qLCHN05JJMrr",
+      "title": "ASSISTANT_step4inv_EXPORT_LEDGER_2026-11-11.md",
+      "mime_type": "text/markdown",
+      "bytes": 7508,
+      "modified_utc": "2026-11-11T05:20:44.093Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "REPORT_OR_NOTE",
+      "review_depth": "FETCHED",
+      "content_sha256": "e03dba65db3a7abcfd3cf848c84237243488d032ebf9ea79aa5ab745cc8eae83",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "note": "Export ledger of the first bundle; read back through the connector after upload."
+      },
+      "title_redaction": "One token of the Drive title, the name of the addressed assistant, is replaced by ASSISTANT. The drive_id identifies the file."
+    },
+    {
+      "drive_id": "12j7WRTuWsySsmf90QZJmF1f5WOAEmrSp",
+      "title": "OPICA_Step4_Round7_ASSISTANT_SELECTED_PREDECESSOR_AND_SCALAR_TARGET_v3_FINAL_2026-11-11.md",
+      "mime_type": "text/markdown",
+      "bytes": 32995,
+      "modified_utc": "2026-11-11T12:39:07.836Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "FETCHED",
+      "content_sha256": "14071c2c3185db76d5b1228116ddfb865a4c28befc0a9a5f8041720c118de947",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "repository_edition": {
+          "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md",
+          "sha256": "a3c1c5dcd75ac4285ca668d78b9b98d5fb68e62d159c69385297e8af9b5d169e",
+          "difference": "author attribution line, two file titles in section 10 replaced by descriptions, and one added notice stating this"
+        },
+        "use": "CR45 to CR50, MP23; the compiled parts are M60 and M61."
+      },
+      "title_redaction": "One token of the Drive title, the name of the addressed assistant, is replaced by ASSISTANT. The drive_id identifies the file."
+    },
+    {
+      "drive_id": "12lbKBNr2aIBhtIcI7w9XEBqEg_wVQh2_",
+      "title": "ASSISTANT_step4_round7_bundle_v3_FINAL_2026-11-11.zip",
+      "mime_type": "application/zip",
+      "bytes": 503861,
+      "modified_utc": "2026-11-11T12:39:09.101Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "FETCHED",
+      "content_sha256": "88ba83605b29990fcc262fb38614e20051ab358bdc36f608d291f8d44703e029",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "note": "Scratch scripts and outputs of round 7. The repository tools bottom_certificate.py, spectral_lowdeg.py and selector_model.py are ball-arithmetic rewrites; evidence/increment6a was regenerated with them."
+      },
+      "title_redaction": "One token of the Drive title, the name of the addressed assistant, is replaced by ASSISTANT. The drive_id identifies the file."
+    },
+    {
+      "drive_id": "1MimcGRxR9UJDlzWp9Hy4Vh62lLEuG8nh",
+      "title": "SUPERSEDED_v1_ASSISTANT_step4_round7_bundle_2026-11-11.zip",
+      "mime_type": "application/zip",
+      "bytes": 502273,
+      "modified_utc": "2026-11-11T12:37:10Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "SUPERSEDED_SESSION_OUTPUT",
+      "review_depth": "FETCHED",
+      "content_sha256": "2a446819c699edc62306c56f845870cd82bbd290410091316dc4559bcfde27ca",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "superseded_by": "12lbKBNr2aIBhtIcI7w9XEBqEg_wVQh2_"
+      },
+      "title_redaction": "One token of the Drive title, the name of the addressed assistant, is replaced by ASSISTANT. The drive_id identifies the file."
+    },
+    {
+      "drive_id": "1fsbVOhkOgnsTeBBhn0L5_wQFaTz60OCW",
+      "title": "SUPERSEDED_v1_OPICA_Step4_Round7_ASSISTANT_SELECTED_PREDECESSOR_AND_SCALAR_TARGET_2026-11-11.md",
+      "mime_type": "text/markdown",
+      "bytes": 29723,
+      "modified_utc": "2026-11-11T12:37:05.173Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "SUPERSEDED_SESSION_OUTPUT",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "superseded_by": "12j7WRTuWsySsmf90QZJmF1f5WOAEmrSp",
+        "note": "The connector cannot replace content, so corrected versions were uploaded as new files and the old ones renamed."
+      },
+      "title_redaction": "One token of the Drive title, the name of the addressed assistant, is replaced by ASSISTANT. The drive_id identifies the file."
+    },
+    {
+      "drive_id": "1T5boIIpRyeN2W0t-yTllOvGjmg9n4aSR",
+      "title": "SUPERSEDED_v2_ASSISTANT_step4_round7_bundle_2026-11-11.zip",
+      "mime_type": "application/zip",
+      "bytes": 503350,
+      "modified_utc": "2026-11-11T12:52:07.578Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "SUPERSEDED_SESSION_OUTPUT",
+      "review_depth": "FETCHED",
+      "content_sha256": "3ffe5cfd87a022252bbe396a5c329a93c82f61090fc6b6dd4bda937a6105f893",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "superseded_by": "12lbKBNr2aIBhtIcI7w9XEBqEg_wVQh2_"
+      },
+      "title_redaction": "One token of the Drive title, the name of the addressed assistant, is replaced by ASSISTANT. The drive_id identifies the file."
+    },
+    {
+      "drive_id": "1g5ofqwsjLpDqYTUOKYvQCKTsmNp6EqtT",
+      "title": "SUPERSEDED_v2_OPICA_Step4_Round7_ASSISTANT_SELECTED_PREDECESSOR_AND_SCALAR_TARGET_2026-11-11.md",
+      "mime_type": "text/markdown",
+      "bytes": 31909,
+      "modified_utc": "2026-11-11T12:51:49.752Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "SUPERSEDED_SESSION_OUTPUT",
+      "review_depth": "DISCOVERED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "superseded_by": "12j7WRTuWsySsmf90QZJmF1f5WOAEmrSp"
+      },
+      "title_redaction": "One token of the Drive title, the name of the addressed assistant, is replaced by ASSISTANT. The drive_id identifies the file."
+    },
+    {
+      "drive_id": "1N6ODYSP6WVIrUR_oCYo7t_53egjl1RQP",
+      "title": "OPICA_Step4_Round7_TARGET_CONSOLIDATION_v3_2026-11-11.md",
+      "mime_type": "text/markdown",
+      "bytes": 7844,
+      "modified_utc": "2026-11-11T23:45:39.942Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "REPORT_OR_NOTE",
+      "review_depth": "FETCHED",
+      "content_sha256": "68fae9a08d3049521945a2bf770e25dacea7528d041d4fad09e10fb071b4401b",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "repository_copy": "research/RHRC/integration/opica_round4/arithmetic_frontier/round7/TARGET_CONSOLIDATION.md",
+        "note": "Byte copy of the repository consolidation record."
+      }
+    },
+    {
+      "drive_id": "18UAyTzfTiEY-1HwMFYr_2FuXoFuk313L",
+      "title": "SUPERSEDED_v1_OPICA_Step4_Round7_TARGET_CONSOLIDATION_2026-11-11.md",
+      "mime_type": "text/markdown",
+      "bytes": 7584,
+      "modified_utc": "2026-11-11T23:30:42.070Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "SUPERSEDED_SESSION_OUTPUT",
+      "review_depth": "FETCHED",
+      "content_sha256": "5064f440f6375467d9de243c96863ad4c563b8396262ee18e0a8251114d74d15",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "superseded_by": "1N6ODYSP6WVIrUR_oCYo7t_53egjl1RQP",
+        "note": "First upload, made before the critical-line section of M60 was rewritten. Its sentence about a degree-17 floor under RH is replaced by the error-zero statement and the four equivalences."
+      }
+    },
+    {
+      "drive_id": "16zhCG7Ul8NN1GlmLbRAiNybnDcg7kIek",
+      "title": "SUPERSEDED_v2_OPICA_Step4_Round7_TARGET_CONSOLIDATION_2026-11-11.md",
+      "mime_type": "text/markdown",
+      "bytes": 7772,
+      "modified_utc": "2026-11-11T23:45:45.933Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "SUPERSEDED_SESSION_OUTPUT",
+      "review_depth": "FETCHED",
+      "content_sha256": "353fa01f30ae2f485aba8fb30b5c88323bdd6245d816de7ed45caaf4c227f694",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "superseded_by": "1N6ODYSP6WVIrUR_oCYo7t_53egjl1RQP",
+        "note": "Second upload; it still described the repository note as a byte copy of the Drive file."
+      }
     }
   ],
   "folder_membership": {
@@ -3182,10 +3680,10 @@
     "coverage_caveat": "Folder coverage is listing coverage only: 204 of 206 entries remain DISCOVERED, one is FETCHED and one REPLAYED. DISCOVERED is not text review, proof audit or replay (CORRECTIONS addendum, limitations_restated)."
   },
   "coverage_by_review_depth": {
-    "DISCOVERED": 223,
-    "FETCHED": 3,
+    "DISCOVERED": 234,
+    "FETCHED": 12,
     "REPLAYED": 1,
-    "TEXT_REVIEWED": 12
+    "TEXT_REVIEWED": 18
   },
   "folder_membership_refresh_2026_11_08": {
     "queries": [
@@ -3222,5 +3720,23 @@
     "ledger_entries_not_listed": 0,
     "coverage_statement": "Complete listing of the folder as returned by the connector; every listed item is ledgered and every ledgered folder item is listed (no deletions). Review depth is unchanged except where an exact action was performed.",
     "transport": "Page 2 was persisted by the harness to a local file and parsed; pages 1 and 3 were read inline."
+  },
+  "current_state_folder_2026_11_11": {
+    "folder_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+    "performed_utc_date": "2026-11-11",
+    "listing": "The package index CURRENT_STATE_FOLDER_INDEX.json (a member of the Round 6 package) lists 206 entries by id, name and type and was read as data. One connector query for items modified after 2026-11-10 returned a first page of 100 entries with a continuation token; that page supplied the sizes and times of the rows added here.",
+    "coverage_statement": "Not a complete independent listing of this folder. Only the rows carrying an increment6a entry were acted on. Every other item of the folder is unledgered here and is not claimed as reviewed.",
+    "rows_added": 26,
+    "titles_with_one_token_replaced": 9,
+    "writes_by_this_session": "Uploads only (rows marked as produced by this build session) and renames of its own superseded uploads. No pre-existing Drive document was modified."
+  },
+  "current_pin_2026_11_11": {
+    "parent_head": "b3afa611d3181f38c2d3c8a69c64d318ee2ea6d7",
+    "parent_tree": "d0a6b1ad78523c23834eb01f57f4910a22e30d3b",
+    "base": "09ac22e48bb0683437572509abdf2ddec520b7ac",
+    "branch": "research/madness",
+    "pr": "HMarcusWH/zeta-23-lean#299",
+    "round4_run": 42539385910,
+    "attempt": 1
   }
 }

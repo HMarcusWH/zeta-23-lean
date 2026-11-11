@@ -469,5 +469,30 @@
     "disposition": "21/24 success; Round4, follow-up and Round2 cancelled by the dab9fbe push (cancellation cascade only)",
     "note": "Cancellations are the concurrency cascade from the dab9fbe push, not failures."
   },
-  "current_qualified_baseline": "dab9fbea4d17a3ab5977318a55ce71b55fe7cfa9"
+  "current_qualified_baseline": "dab9fbea4d17a3ab5977318a55ce71b55fe7cfa9",
+  "head_harvest_b3afa61": {
+    "head_sha": "b3afa611d3181f38c2d3c8a69c64d318ee2ea6d7",
+    "tree": "d0a6b1ad78523c23834eb01f57f4910a22e30d3b",
+    "recorded_utc": "2026-11-11",
+    "attempt": 1,
+    "runs_total": 24,
+    "runs_success": 24,
+    "check_runs": 97,
+    "check_runs_success": 96,
+    "check_runs_skipped": [
+      "post287-full-k3"
+    ],
+    "note": "wp4-k3-fourth-order-alternative ran and passed (it was skipped on dab9fbe)",
+    "round4_run": 42539385910,
+    "round2_run": 42539385964,
+    "followup_run": 42539385916,
+    "superseded_heads": {
+      "7353c5d": "SOURCE_NUMERICS genuine failure: numpy-backed 5A test class in the numpy-free CI file; INDEPENDENT_*/ACCEPTANCE/followup-summary failures were upstream-gate cascades",
+      "05d99aa": "fix commit; rhkg-compiler-receipt stale products (expected); cancelled by b3afa61; downstream gate cascades"
+    },
+    "receipt_index": "QUALIFIED_BASELINE.json successor_harvest_b3afa61",
+    "scientific_disposition": "The Round4 artifacts ACCEPTANCE, CONTRACT, GENERATED_STATE, MATHEMATICAL_SUPPORT and SOURCE_NUMERICS were opened and read. SOURCE_NUMERICS remains finite interval evidence. Round2 and the follow-up keep their historical scopes. No positivity or closing estimate follows.",
+    "scope": "Qualifies b3afa61 only, by a single-reader harvest. The independent receipt inspection recorded for dab9fbe was not repeated. The increment-6A successor needs its own complete same-run harvest."
+  },
+  "latest_fully_green_head": "b3afa611d3181f38c2d3c8a69c64d318ee2ea6d7"
 }

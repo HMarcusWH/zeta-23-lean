@@ -342,6 +342,23 @@
       ],
       "preservation_status": "Constants REPLAYED_EXACT (1/2, 5/4, ... through m = 12); the lower bound liminf E(lambda)/lambda > 0 is DERIVED in the Abel report",
       "formal_repository_control": null
+    },
+    {
+      "id": "MP23",
+      "model": "Canonical form of the retained on-line zeros plus one added off-line quadruple (NOT zeta; no Euler product)",
+      "blocked_inference": "The least-crossing predecessor stays large under a hypothetical zero, so positivity on it together with approximation of the source inside it bounds the response",
+      "preserves": [
+        "native pole-neutral boundary-flat parity spaces at each cutoff",
+        "the least-crossing rule at both extreme thresholds",
+        "the explicit-formula shape of the energy (sum over zeros of sinh^2 times the squared vector transform)",
+        "the first 400 on-line ordinates (numerical input)"
+      ],
+      "changes": [
+        "the zero set: one off-line quadruple is added; no prime side stands behind the form"
+      ],
+      "preservation_status": "RUN in ball arithmetic (evidence/increment6a/SELECTOR_MODEL_A.json and SELECTOR_MODEL_B.json): after a transient every sampled aperture has selected cutoff 3 or 4 at both thresholds; with the added quadruple placed on the line no cutoff crosses. The finite implication it illustrates is CR45.",
+      "formal_repository_control": null,
+      "label": "NOT_ZETA"
     }
   ],
   "semantic_controls": [
@@ -489,9 +506,39 @@
       "id": "FrontierMutation29",
       "blocks": "Cofinal geometry certificates presented as SG",
       "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation30",
+      "blocks": "Zero-strip floor with exp(aL/2) in place of exp(aL)",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation31",
+      "blocks": "Fixed-rate bound claimed at the strip half-width itself instead of every rate above it",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation32",
+      "blocks": "Half-plane Re <= theta read as rates above theta - 1 instead of theta - 1/2",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation33",
+      "blocks": "Unconditional fixed rates claimed above 0 instead of above 1/2",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation34",
+      "blocks": "Cutoff-3 least-crossing threshold read as -D/3 instead of -D/2",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation35",
+      "blocks": "(PG) presented as unconditional instead of as a consequence of RH",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
     }
   ],
   "distinction": "Mathematical countermodels test an inference in a stated scope. Semantic controls only show that one API substitution is rejected by the type checker; they are not counterexamples to every theorem connecting the objects.",
   "mandatory_use": "Every candidate supplier in EXPERIMENTS.json must state which models it survives before formalization begins.",
-  "sharding": "Controls run in two shards (84 pinned pre-frontier, 29 frontier) under the fixed worker source name; each control must own exactly one type-mismatch error."
+  "sharding": "Controls run in two shards (84 pinned pre-frontier, 35 frontier) under the fixed worker source name; each control must own exactly one type-mismatch error."
 }

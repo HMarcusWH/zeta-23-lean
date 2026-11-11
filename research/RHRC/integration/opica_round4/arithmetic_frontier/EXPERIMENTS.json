@@ -358,6 +358,30 @@
       "goal": "Replay the revision-3 external countermodels exactly instead of citing them.",
       "result": "MP14, MP15, MP18, MP21, MP22 replayed exactly; MP20 algebra replayed; MP13 partially (slice claim) with core/pencil BLOCKED.",
       "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment4d/SUMMARY.json"
+    },
+    {
+      "id": "E-BOTTOM-CERT",
+      "status": "RUN_CERTIFIED_L2_L3",
+      "goal": "Replace the approximate bottom-eigenvalue numerics of the first round-7 bundle by certified statements.",
+      "result": "Ball-arithmetic inertia certifies a positive simple bottom on six constrained spaces at L = 2 (K = 16, 1500 bits) and L = 3 (K = 81, 3000 bits). The L = 2 record is re-derived in CI from its stored exact numbers.",
+      "disposition": "FINITE_CERTIFICATE at two apertures; no statement about another aperture, a uniform margin or RH",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment6a/SUMMARY.json"
+    },
+    {
+      "id": "E-SPECTRAL-LOWDEG",
+      "status": "RUN_L2_TO_L12",
+      "goal": "Check the closed form of the native explicit formula at cutoffs 3 and 4 against the prime side.",
+      "result": "Prime-side enclosures and the sum over the first 400 zero ordinates agree to relative 1e-13 or better (even) and 2e-10 or better (odd) at cutoff 3 for twelve apertures from 2 to 12, and to 2e-9 or better at cutoff 4 for L = 2, 3, 5, 8. Both cutoff-3 vectors have the stated closed form (ball check at four sample points, spread below 3e-86).",
+      "disposition": "EXPERIMENTAL_SIGNAL (numerical zero input, truncated sum); a consistency check of a compiled identity",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment6a/SUMMARY.json"
+    },
+    {
+      "id": "E-SELECTOR-MODEL",
+      "status": "RUN_TWO_PARAMETER_SETS",
+      "goal": "Show where the least-crossing selector would stop if an off-line zero existed (CR46, MP23).",
+      "result": "Set A (displacement 3/10, ordinate 173/10, depth rate 1/10; 100 apertures from 30 to about 760): no crossing at 34 apertures (the last near 354), cutoffs between 5 and 10 at ten apertures (the last near 435), and cutoff 3 or 4 at all 44 apertures beyond 436, at both thresholds. Set B (displacement 9/20, ordinate 28, depth rate 1/5; 39 apertures from 60 to about 513): cutoff 3 or 4 at all 12 apertures beyond 371; the two thresholds differ at two transient apertures.",
+      "disposition": "EXPERIMENTAL_SIGNAL on a model that is not the zeta function; it refutes only arguments that do not use the divisor identities",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment6a/SUMMARY.json"
     }
   ],
   "corrections": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/CORRECTIONS.json"

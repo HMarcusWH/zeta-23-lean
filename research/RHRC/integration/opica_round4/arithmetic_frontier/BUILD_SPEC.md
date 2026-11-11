@@ -607,22 +607,129 @@ in both Python modes.
 
 **RH, Step 4 and every closing inequality remain OPEN.**
 
+## Increment 6A — round-7 consolidation, the floor adapter and the selected cutoff (11 November 2026)
+
+Parent head `b3afa61`: all 24 workflows green, harvest in
+[WORKFLOW_HARVEST.json](WORKFLOW_HARVEST.json). This increment answers the
+11 November handover. Start with
+[round7/TARGET_CONSOLIDATION.md](round7/TARGET_CONSOLIDATION.md). The paper note
+behind it is
+[round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md](round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md),
+which is DERIVED and not independently reviewed.
+
+**Lean (local pinned compile; current-head CI required).**
+
+* `ZeroFreeFloor` (M60, CR44) proves the direction that the fixed-rate consumers
+  lacked. If every nontrivial zero has `|Re ρ − 1/2| ≤ a`, then on every
+  boundary-flat native vector at aperture `L` and cutoff `K`
+
+      Re⟪Q x, x⟫ ≥ −S e^{aL} · L (1 + (2πK/L)²)² (2K + 1) · ‖x‖²,   S = ∑ m_ρ / (1 + |γ_ρ|²).
+
+  * Both moment slices inherit this floor. At the quartic cutoff the budget is
+    at most `128000 (1 + L)^17`, so every rate above `a` holds at every large
+    aperture.
+  * With the existing consumers this is an equivalence for every `a ≥ 0`, in
+    each parity: `zeroStrip_iff_even_fixed_rates` and
+    `zeroStrip_iff_odd_fixed_rates`.
+  * `fixedRateMomentSliceBounds_of_re_le` turns a half-plane `Re ρ ≤ θ` into both
+    parities at every rate above `θ − 1/2`.
+  * `fixedRateMomentSliceBounds_of_half_lt` is the unconditional case: every
+    rate above `1/2`.
+  * The floor is proved by bounding the Weil sum term by term. The proof uses a
+    one-sided transform bound on `[0, L]`, the second-derivative identity for
+    the transform, the summability of `m_ρ / (1 + |γ_ρ|²)` and the compiled
+    identity between the Weil sum and the canonical form.
+  * With every zero on the line, the existing critical-line positivity gives
+    both slice bounds with error zero, at every aperture and cutoff. Hence
+    four equivalences with Mathlib `RiemannHypothesis`:
+    `riemannHypothesis_iff_cofinal_moment_slice_bounds` (C1),
+    `riemannHypothesis_iff_cofinal_moment_slice_semibounded` (SB),
+    `riemannHypothesis_iff_fixed_parity_polynomial` (PG) and
+    `riemannHypothesis_iff_fixed_parity_subexponential` (SE). These
+    contracts are sharp interfaces, neither weaker nor stronger than RH.
+* `SelectedCutoff` (M61, CR45): if the cutoff-3 global bottom is below `−D/2`,
+  every `NativeDeepThresholdGroundData` packet has cutoff 3 and both predecessor
+  spaces have dimension zero. One deep unit vector in either cutoff-3 parity
+  space is enough.
+
+Nothing in M60 bounds `a`. The only value available without information on the
+zeros is the trivial `a = 1/2`.
+
+Six new controls bring the suite to 119 (84 + 35). They reject:
+
+* the floor with `e^{aL/2}` in place of `e^{aL}`;
+* the fixed-rate bound at the strip half-width itself;
+* a half-plane `Re ρ ≤ θ` read as rates above `θ − 1`;
+* unconditional rates above `0`;
+* the cutoff-3 threshold read as `−D/3`;
+* (PG) presented without its RH premise.
+
+Local development gate: 109 modules, 1367 complete types and axiom sets, and 119
+controls. Only `propext`, `Classical.choice` and `Quot.sound` appear.
+
+**Paper results of the round (CR46 to CR50; DERIVED unless marked).**
+
+* The three alternative tasks of the November handovers are one growth bound
+  for the complete prime field `Z`: (U) in weighted `L¹`, (F) in weighted `L²`,
+  (E) in plain `L²`. Under a hypothetical zero the least-crossing cutoff is 3 at
+  arbitrarily late apertures, so the positive predecessor that inequality (P)
+  relies on is empty there.
+* The weakest form of the remaining premise is a scalar: `sup Re ρ − 1/2` equals
+  the least exponential rate at which the even cutoff-3 energy `E_e(L)` is
+  bounded below.
+* An explicit floor from a verification height `H₀` covers a finite range of
+  apertures only.
+* Ground vectors with a simple bottom have real-rooted transforms. The same
+  holds for forms with hugely negative ground energy, so it cannot separate RH
+  from its failure.
+* The ground-state convergence lead consumes canonical positivity (LEAD).
+
+**Records** ([evidence/increment6a](evidence/increment6a/SUMMARY.json)). All
+three tools use ball arithmetic only.
+
+* [bottom_certificate.py](bottom_certificate.py): a positive simple bottom on
+  six constrained spaces at `L = 2` (cutoff 16) and at `L = 3` (cutoff 81).
+  FINITE CERTIFICATE. CI re-derives the `L = 2` record from its stored numbers.
+* [spectral_lowdeg.py](spectral_lowdeg.py): at cutoffs 3 and 4 the prime-side
+  enclosures agree with the sum over the first 400 zero ordinates for apertures
+  from 2 to 12. EXPERIMENTAL SIGNAL, because the ordinates are numerical input.
+* [selector_model.py](selector_model.py): the canonical form of the on-line
+  zeros plus one added off-line quadruple (MP23). After a transient the selector
+  stops at cutoff 3 or 4 at every sampled aperture. The model is not the zeta
+  function and has no Euler product.
+
+**Sources.** The current-state Drive folder is ledgered only for the items this
+increment acted on ([SOURCE_LEDGER.json](SOURCE_LEDGER.json),
+`current_state_folder_2026_11_11`). No pre-existing Drive document was changed.
+
+**Status refresh.** Rows that were waiting for current-head CI at `b3afa61`
+(M54 to M59) are now marked CI-green at that head, by a single-reader harvest.
+The `dab9fbe` qualified baseline keeps its own scope.
+
+**RH, Step 4 and every closing inequality remain OPEN.** M60 and M61 are
+adapters. No rate at or below `1/2` is supplied.
+
 ## Next increments
 
-1. **The supplier (5B/6, OPEN).** One branch with exact quantifiers. The sharpest
-   current targets are:
-   * (CP), the centered ordinary-prime discrepancy;
-   * the (SG) certificate;
-   * (C2-SE);
-   * the CAUSAL dyadic covariance bound.
-
-   A proof must use a property of the actual primes that the comparison density
-   (MP20) lacks.
-2. Sharpen the (SG) reduction: bound the Cauchy-structured off-diagonal directly
-   (observed `O(L)` against a current `O(K²)` loss). Formalize the polynomial
-   geometry gap only when a certificate is in reach.
-3. The native enclosure bridge, the detection margin (CR24), CR27 and the
-   nonorthogonal trace identity, each only if a chosen proof consumes it.
+1. **The supplier (OPEN).** After round 7 the open suppliers are one statement:
+   a lower bound `E_e(L) ≥ −C e^{αL}` (equivalently the energy rate of `Z`) at a
+   rate `α` below `1/2`, and for closure at every positive rate.
+   * (U), (F) and (E) are forms of it and are not separate targets (CR46).
+   * (CP), the (SG) certificate, (C2-SE) and the CAUSAL covariance bound remain
+     listed closing premises on other carriers. None has a supplier. By M60,
+     any of them that yields RH yields this floor with error zero.
+   * A proof must use a property of the actual primes that the comparison
+     density (MP20) and the added-zero model (MP23) lack.
+2. **An imported fixed rate (optional, not closure).** A zero-free half-plane
+   with its own complete proof and axiom audit enters through
+   `fixedRateMomentSliceBounds_of_re_le`. The boundaries quoted in the handover
+   would give a rate near `0.373`. Nothing of this kind is in the repository.
+3. **A formal scalar consumer (optional).** The Landau half of CR47 would make
+   the compiled closing premise a statement about one sequence. It is a
+   reformulation.
+4. The native enclosure bridge, the detection margin (CR24), CR27, the
+   nonorthogonal trace identity and the polynomial geometry gap, each only if a
+   chosen proof consumes it.
 
 Only a proved supplier composed with these consumers, validated on the final
 head, could support a Step 4 claim.

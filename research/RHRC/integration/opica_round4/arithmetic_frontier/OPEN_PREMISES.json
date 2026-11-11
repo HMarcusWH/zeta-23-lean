@@ -14,7 +14,8 @@
       "id": "C1",
       "register": "CR01",
       "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds",
-      "status": "OPEN"
+      "status": "OPEN",
+      "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_bounds (M60, local compile). A sharp interface: proving it is proving RH."
     },
     {
       "id": "PACKET",
@@ -47,19 +48,22 @@
       "register": "CR31",
       "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_polynomial",
       "status": "OPEN",
-      "implies": "SE"
+      "implies": "SE",
+      "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_polynomial (M60, local compile). A sharp interface: proving it is proving RH."
     },
     {
       "id": "SE",
       "register": "CR32",
       "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_subexponential",
-      "status": "OPEN"
+      "status": "OPEN",
+      "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_subexponential (M60, local compile). A sharp interface: proving it is proving RH."
     },
     {
       "id": "SB",
       "register": "CR34",
       "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_semibounded",
-      "status": "OPEN"
+      "status": "OPEN",
+      "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_semibounded (M60, local compile). A sharp interface: proving it is proving RH."
     },
     {
       "id": "C2-SE",
@@ -117,19 +121,19 @@
     {
       "id": "S-POLE",
       "statement": "Pole-channel annihilation and Q = -arch - prime on both pole-neutral carriers and moment slices (CR17, M50).",
-      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "status": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
       "note": "Dependency compression only; the sign of -arch - prime is the OPEN closing content."
     },
     {
       "id": "S-COARSE",
       "statement": "Coarse-growth, fixed-rate, AD/SB and C2-SE consumers (CR31-CR35, M54-M56).",
-      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "status": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
       "note": "Consumers only; each premise is OPEN and sharp with Weil positivity (LEAD)."
     },
     {
       "id": "S-NC",
       "statement": "Native NC and rank-one leakage in functional form (CR36, M57).",
-      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "status": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
       "note": "Exact identities; carry no arithmetic (MP19). The orthonormal factor w l* is a mechanical OPEN Lean step."
     },
     {
@@ -141,14 +145,38 @@
     {
       "id": "S-LEAK",
       "statement": "Explicit rank-one leakage factor and the native rank-two commutator (CR40, M58).",
-      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "status": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
       "note": "Completes the M51 native application; identities only."
     },
     {
       "id": "S-RECON",
       "statement": "Reconstruction bound and the (SG) certificate consumer (CR41, M59).",
-      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "status": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
       "note": "The certificate (gap, diagonal, response) is the OPEN premise."
+    },
+    {
+      "id": "S-FLOOR",
+      "statement": "Zero strip of half-width a if and only if fixed-rate native floors at every rate above a, with an explicit floor constant (CR44, M60).",
+      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "note": "Unconditional rates above 1/2 are compiled, and RiemannHypothesis is equivalent to each of (C1), (SB), (PG) and (SE). No rate at or below 1/2 is supplied; Step 4 is the statement that the rate can be taken to zero."
+    },
+    {
+      "id": "S-CUTOFF",
+      "statement": "A cutoff-3 bottom below -D/2 forces least-crossing cutoff 3 and an empty predecessor (CR45, M61).",
+      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "note": "Finite implication only."
+    },
+    {
+      "id": "S-SCALAR",
+      "statement": "Scalar criterion on the even cutoff-3 energy E_e(L) (CR47).",
+      "status": "DERIVED_NOT_FORMALIZED",
+      "note": "RH-equivalent interface on one sequence of smoothed prime sums; a reformulation, not a bound."
+    },
+    {
+      "id": "S-BOTTOM",
+      "statement": "Certified positive simple bottoms on six constrained spaces at L = 2 (K = 16) and L = 3 (K = 81) (evidence/increment6a).",
+      "status": "FINITE_CERTIFICATE",
+      "note": "Statements about those finite objects. They are implied by the known location of the low zeros together with the compiled explicit formula and say nothing about another aperture."
     }
   ],
   "rule": "A leaf moves only when an exact theorem with no undispatched RH-strength premise passes current-head formal and claim gates.",
@@ -183,5 +211,24 @@
     "blocked": [
       "MP13 core/pencil replay: the 28 MB evidence archive is not retrievable through the session connector"
     ]
+  },
+  "increment6a_status": {
+    "leaves_moved": [],
+    "consolidation": "The three alternative tasks (U), (F), (E) of the November handovers are one growth bound for the prime field Z (CR46). They are not separate leaves here and no leaf is added for them.",
+    "completed": [
+      "graded rate equivalence with explicit floor constants, and RiemannHypothesis <-> (C1), (SB), (PG), (SE) (M60)",
+      "least-crossing statement at the first native space (M61)",
+      "certified bottoms at L = 2 and L = 3, prime side against zero sum at cutoffs 3 and 4, hypothetical-zero selector model (evidence/increment6a)"
+    ],
+    "not_done": [
+      "import of an external zero-free half-plane: outside the repository, needs its own complete proof and axiom audit, and would give a fixed rate (about 0.373), not closure",
+      "formal scalar consumer (the Landau half of CR47)"
+    ],
+    "ruled_out_as_closing": [
+      "positivity on the selected predecessor together with approximation of the source inside it",
+      "a loading-ratio or angle law for (F) beyond the energy bound itself",
+      "ground-state convergence as an independent route (CR50)"
+    ],
+    "open_supplier": "A direct arithmetic bound that lowers the exponential rate alpha in E_e(L) >= -C e^(alpha L), equivalently the energy rate of Z, below 1/2. Closure needs every positive rate. OPEN. No mechanism is known here."
   }
 }

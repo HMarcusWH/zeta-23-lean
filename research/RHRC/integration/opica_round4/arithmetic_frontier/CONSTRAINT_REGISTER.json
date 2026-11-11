@@ -37,7 +37,8 @@
         "FrontierMutation8"
       ],
       "budget_improved": "Would discharge the closing premise directly.",
-      "logical_strength": "RH_SUFFICIENT_PROVED_LOCAL; RH_NECESSARY_DERIVED_BY_WEIL_POSITIVITY_ON_POLE_NEUTRAL_CARRIERS_NOT_FORMALIZED"
+      "logical_strength": "RH_SUFFICIENT_PROVED_LOCAL; RH_NECESSARY_DERIVED_BY_WEIL_POSITIVITY_ON_POLE_NEUTRAL_CARRIERS_NOT_FORMALIZED",
+      "necessity_6a": "RH-necessary as well as RH-sufficient (CR44, M60): under Mathlib RiemannHypothesis the slice bound holds with error zero at every aperture and cutoff. Sharp interface."
     },
     {
       "id": "CR02",
@@ -534,7 +535,7 @@
       "statement": "Exists a parity p, C > 0, d : Nat and L0 with Q_p(L,u) >= -C (1+L)^d ||u||^2 for every u in M_p(L,K(L)) and every L >= L0.",
       "scope": "Actual quartic cutoff, coefficient physical norm, exact slices.",
       "parameter_order": "parity, C, d, L0 before L and u.",
-      "native_validity": "CONSUMER PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED; PREMISE OPEN",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
       "closing_relevance": "CLOSING_IF_SUPPLIED",
       "consumers": [
         "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_polynomial"
@@ -543,7 +544,8 @@
         "FrontierMutation18 (per-aperture constant is not PG)"
       ],
       "strength": "If the native slice energy is the Weil form on the slice functions, RH implies Q >= 0 there, so this contract is also RH-necessary: a sharp interface (LEAD, not formalized). Only an independent supplier changes the state.",
-      "budget_improved": "Permits any fixed polynomial loss instead of a vanishing epsilon."
+      "budget_improved": "Permits any fixed polynomial loss instead of a vanishing epsilon.",
+      "necessity_6a": "RH-necessary as well as RH-sufficient (CR44, M60): under Mathlib RiemannHypothesis the slice bound holds with error zero at every aperture and cutoff. Sharp interface."
     },
     {
       "id": "CR32",
@@ -552,7 +554,7 @@
       "statement": "Exists p such that for every alpha > 0 there are C, L0 with Q_p(L,u) >= -C exp(alpha L) ||u||^2 for all L >= L0.",
       "scope": "As CR31.",
       "parameter_order": "parity before alpha; C and L0 after alpha; all late L.",
-      "native_validity": "CONSUMER PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED; PREMISE OPEN",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
       "closing_relevance": "CLOSING_IF_SUPPLIED",
       "consumers": [
         "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_subexponential",
@@ -562,7 +564,8 @@
         "FrontierMutation19 (cofinal coverage is not SE)"
       ],
       "strength": "If the native slice energy is the Weil form on the slice functions, RH implies Q >= 0 there, so this contract is also RH-necessary: a sharp interface (LEAD, not formalized). Only an independent supplier changes the state.",
-      "budget_improved": "Every positive exponential rate is affordable."
+      "budget_improved": "Every positive exponential rate is affordable.",
+      "necessity_6a": "RH-necessary as well as RH-sufficient (CR44, M60): under Mathlib RiemannHypothesis the slice bound holds with error zero at every aperture and cutoff. Sharp interface."
     },
     {
       "id": "CR33",
@@ -571,7 +574,7 @@
       "statement": "A fixed-parity bound -C exp(alpha L) at every late aperture, alpha >= 0, gives |Re rho - 1/2| <= alpha for every zero.",
       "scope": "Both parities.",
       "parameter_order": "alpha fixed.",
-      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "native_validity": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
       "closing_relevance": "NOT_CLOSING_FOR_POSITIVE_ALPHA",
       "consumers": [
         "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_odd_fixed_rate"
@@ -588,7 +591,7 @@
       "statement": "Exists C >= 0 such that for every R some L > max R 2 has a parity with Q_p >= -C ||u||^2 on the whole slice.",
       "scope": "Parity may switch per aperture, never per vector.",
       "parameter_order": "C before every horizon.",
-      "native_validity": "CONSUMER PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED; PREMISE OPEN",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
       "closing_relevance": "CLOSING_IF_SUPPLIED",
       "consumers": [
         "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_semibounded",
@@ -600,7 +603,8 @@
         "FrontierMutation22 (AD is fixed depth, not exp depth)"
       ],
       "strength": "If the native slice energy is the Weil form on the slice functions, RH implies Q >= 0 there, so this contract is also RH-necessary: a sharp interface (LEAD, not formalized). Only an independent supplier changes the state.",
-      "budget_improved": "One finite constant, chosen once."
+      "budget_improved": "One finite constant, chosen once.",
+      "necessity_6a": "RH-necessary as well as RH-sufficient (CR44, M60): under Mathlib RiemannHypothesis the slice bound holds with error zero at every aperture and cutoff. Sharp interface."
     },
     {
       "id": "CR35",
@@ -609,7 +613,7 @@
       "statement": "For every alpha > 0, T(t) >= -C exp(alpha t) at every late t, T the literal hyperbola long term.",
       "scope": "Literal scalar source; t = 2a.",
       "parameter_order": "alpha, then C and T; every late t.",
-      "native_validity": "CONSUMER PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED; PREMISE OPEN",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
       "closing_relevance": "CLOSING_IF_SUPPLIED",
       "consumers": [
         "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential",
@@ -628,7 +632,7 @@
       "statement": "V* [D0, A] V = 0 for boundary-flat columns (full canonical source); D0 maps each slice into pole-neutral boundary-flat vectors and leaves it exactly through M6 (even) or M7 (odd).",
       "scope": "Full canonical source, both carriers.",
       "parameter_order": "Exact identity.",
-      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "native_validity": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
       "closing_relevance": "STRUCTURAL_ADAPTER",
       "consumers": [
         "Zeta23.OPICARound4.ArithmeticFrontier.native_compressed_commutator_eq",
@@ -649,7 +653,7 @@
       "statement": "In one fixed parity, for all late L: ||V* E w|| <= C_z (1+L)^a and min_i <v_i, H v_i> >= -C_h (1+L)^b, with v_i the geometry eigenbasis of J = V* D0 V and w the unit leakage normal.",
       "scope": "Paper candidate from RH_Step4_Polynomial_Geometry_and_Source_Response_2026-11-08.md (TEXT_REVIEWED).",
       "parameter_order": "parity and constants before L.",
-      "native_validity": "CONSUMER PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED (M59); PREMISE OPEN",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910 (M59); PREMISE OPEN",
       "closing_relevance": "CLOSING_IF_SUPPLIED_VIA_PG",
       "consumers": [
         "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
@@ -703,7 +707,7 @@
       "statement": "D0 u - P_S D0 u = (M6(u)/||r_e||^2) r_e (even), (M7(u)/||r_o||^2) r_o (odd); <u, P D0 P A v - P A P D0 v> = c(v) conj<r, A u> - conj(c(u)) <r, A v> for the full canonical source.",
       "scope": "Both actual slices; ambient slices proved equal to the existing moment slices.",
       "parameter_order": "Exact identity.",
-      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "native_validity": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
       "closing_relevance": "STRUCTURAL_ADAPTER",
       "consumers": [
         "Zeta23.OPICARound4.ArithmeticFrontier.odd_native_rank_two_commutator",
@@ -722,7 +726,7 @@
       "statement": "Re x*Hx >= (h0 - 2 n_z n_l / g)||x||^2 under the rank-two relation; a geometry-response certificate gives the slice bound at its floor; polynomial certificates at every late aperture in one parity give PG and RH.",
       "scope": "Native slices; the certificate includes an orthonormal geometry eigenbasis, gap, diagonal, response and leakage numbers.",
       "parameter_order": "parity, C, d, L0 before L.",
-      "native_validity": "CONSUMER PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED; PREMISE OPEN",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
       "closing_relevance": "CLOSING_IF_SUPPLIED",
       "consumers": [
         "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_polynomial_of_geometry_response"
@@ -765,7 +769,149 @@
         "MP20"
       ],
       "budget_improved": "Stretched-exponential saving inside an exponential allowance; an x^(1/2+eta) error input would give rate eta."
+    },
+    {
+      "id": "CR44",
+      "name": "Graded rate equivalence: zero strip and fixed-rate native floor",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.zeroStrip_iff_even_fixed_rates",
+      "statement": "For a >= 0 and each parity: every nontrivial zero has |Re rho - 1/2| <= a if and only if, for every alpha > a, the fixed-rate moment-slice bound at rate alpha holds at every large aperture. The new direction has explicit constants: on every boundary-flat native vector x at aperture L and cutoff K, Re<Q x, x> >= -S e^(aL) L (1 + (2 pi K/L)^2)^2 (2K + 1) ||x||^2 with S = sum m_rho/(1 + |gamma_rho|^2).",
+      "scope": "Actual zeta zeros and the actual canonical source matrix, every L > 0 and every cutoff; boundary-flat coefficients, hence both moment slices at the quartic cutoff.",
+      "parameter_order": "a first; then alpha > a; then C and L0; all vectors.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "RATE_LADDER_ADAPTER (closing only at a = 0, which is RH itself)",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.zeroStrip_iff_odd_fixed_rates",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedRateMomentSliceBounds_of_re_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedRateMomentSliceBounds_of_half_lt",
+        "Zeta23.OPICARound4.ArithmeticFrontier.canonicalSource_re_inner_ge_neg_of_zeroStrip",
+        "Zeta23.OPICARound4.ArithmeticFrontier.momentSliceLowerBounds_zero_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_bounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_semibounded",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_subexponential"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation30 (the floor pays e^(aL), not e^(aL/2))",
+        "FrontierMutation31 (the rate is strictly above the strip half-width)",
+        "FrontierMutation32 (a half-plane Re <= theta gives rates above theta - 1/2, not theta - 1)",
+        "FrontierMutation33 (the unconditional rates are those above 1/2)",
+        "FrontierMutation35 ((PG) follows from RH, not unconditionally)"
+      ],
+      "sharpness": "The four slice contracts are RH-necessary as well as RH-sufficient. Under RH the slice bound holds with error zero at every aperture and cutoff (existing critical-line positivity, read on the slices).",
+      "budget_improved": "The fixed-rate consumer becomes an equivalence at every rate, and the unconditional rates above 1/2 are compiled. Reading the existing critical-line positivity on the slices gives error zero under RH, so RiemannHypothesis is equivalent to each of (C1), (SB), (PG) and (SE): those contracts are sharp interfaces. No rate at or below 1/2 is supplied. An externally proved half-plane would enter through fixedRateMomentSliceBounds_of_re_le with its own proof and axiom audit; the boundary 0.8733819666133 quoted in the handover would give rate about 0.373 (not imported, not audited here)."
+    },
+    {
+      "id": "CR45",
+      "name": "Least-crossing cutoff at the first native space",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_bottom_three_lt",
+      "statement": "If the cutoff-3 global pole-neutral bottom is below -D/2 (for instance one unit vector of either one-dimensional cutoff-3 parity space has energy below -D/2), every NativeDeepThresholdGroundData packet at that aperture has cutoff 3 and both predecessor spaces have dimension zero.",
+      "scope": "The compiled selector record of Zeta23/CCM/NativeDeepThresholdGround.lean at one aperture. A finite implication; whether a deep cutoff-3 vector exists is not addressed.",
+      "parameter_order": "One aperture and one depth D; any packet.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "STRUCTURAL_ADAPTER",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_predecessor_empty_of_bottom_three_lt",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_even_trial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_odd_trial"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation34 (the threshold is -D/2, not -D/3)",
+        "MP23"
+      ],
+      "budget_improved": "None. The collapse of the positive predecessor under a deep cutoff-3 vector is now a compiled statement."
+    },
+    {
+      "id": "CR46",
+      "name": "Target consolidation: (U), (F) and (E) are one growth bound for the prime field Z",
+      "proposition": null,
+      "statement": "Under a hypothetical off-line zero of displacement delta, for every beta < delta there are arbitrarily late apertures where a cutoff-3 unit vector has energy below -e^(beta L); there the least-crossing cutoff is 3, the predecessor is {0}, and (E) is the plain L2 growth bound for Z at horizon L - c0. (F) is the weighted L2 growth bound because ||N v_L||^2 tends to ||U||^2 > 0. (U) is the weighted L1 growth bound. At rate eta each excludes zeros of displacement above eta and is implied by their absence.",
+      "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, sections 3 to 5), DERIVED, not independently reviewed. Without a dominance assumption the note does not show that the late apertures it produces coincide with the cofinal apertures of the compiled production detector.",
+      "parameter_order": "delta and beta before L; cofinal in L.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (removes (E) and (F) as independent suppliers)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP23",
+        "CR45 (the finite implication is compiled)"
+      ],
+      "budget_improved": "None. Three listed suppliers reduce to one."
+    },
+    {
+      "id": "CR47",
+      "name": "Scalar criterion on the even cutoff-3 energy",
+      "proposition": null,
+      "statement": "Let E_e(L) be the canonical energy of the unit vector of the even cutoff-3 pole-neutral boundary-flat space; its transform is R(z) = c_e (z^2 - 1/4)/(z prod_{a<=3}(z^2 + (2 pi a/L)^2)). Then sup Re rho - 1/2 is the least exponential rate at which E_e is bounded below. RH holds iff E_e(L) >= 0 for all large L, and under RH 0 < E_e(L) <= 12.94/L^5. The same holds for the odd vector.",
+      "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, section 6), DERIVED. The energy and zero-sum identity is compiled (zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm); the Landau-type converse is not formalized.",
+      "parameter_order": "One explicit sequence of numbers indexed by L.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "CLOSING_IF_SUPPLIED (RH-equivalent scalar interface; a reformulation, not an independent supplier)",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-SPECTRAL-LOWDEG (prime side against the zero sum, L = 2 to 12)",
+        "MP23"
+      ],
+      "budget_improved": "States the remaining premise on one sequence of finite smoothed prime sums. No bound is supplied."
+    },
+    {
+      "id": "CR48",
+      "name": "Explicit floor with a verification height",
+      "proposition": null,
+      "statement": "If every zero below height H0 is on the line and theta0 = sup Re rho, then for every aperture, cutoff and boundary-flat vector c: E(c) >= -2 (2 pi)^6 S6(H0) (K^6/L^5) e^((theta0 - 1/2) L) |c|^2, S6(H0) = sum over gamma > H0 of gamma^-6. With the published height 3e12 the constant is about 4.4e-58, and with theta0 <= 1 the floor on the whole quartic carrier stays above -1 up to L about 86.",
+      "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, Proposition 6b), DERIVED. The verification height is an external published computation that the repository neither contains nor re-verifies.",
+      "parameter_order": "Every L; the bound degrades like e^(L/2).",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (finite range of apertures)",
+      "consumers": [],
+      "countermodel_tests": [],
+      "budget_improved": "Shows what a larger H0 or a smaller theta0 buys. It says nothing at late apertures."
+    },
+    {
+      "id": "CR49",
+      "name": "Native real-root lemma",
+      "proposition": null,
+      "statement": "If the bottom eigenvalue of the canonical form on a native space (full, boundary-flat, pole-neutral or moment slice) in one parity sector is simple, every zero z of the numerator of the ground transform has z^2 real.",
+      "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, Lemma 7), DERIVED. It uses nothing about zeta and holds verbatim for the hypothetical-zero model, whose ground energies are hugely negative.",
+      "parameter_order": "One aperture, one space.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (real-rootedness of finite ground states does not distinguish RH from its failure)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP23"
+      ],
+      "budget_improved": "None. With the certified simplicity at L = 2 and L = 3 it gives real roots there without root finding."
+    },
+    {
+      "id": "CR50",
+      "name": "Ground-state convergence candidate (CT)",
+      "proposition": null,
+      "statement": "For a sequence L_j tending to infinity with simple even bottoms: if the normalised ground transforms converge locally uniformly to xi(1/2 + z), then RH (by CR49 and Hurwitz).",
+      "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, section 8), LEAD.",
+      "parameter_order": "A sequence of apertures.",
+      "native_validity": "OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED (the natural proof consumes canonical positivity)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP23 (the near-radical vector still exists in the model, sits inside the spectrum and is not the ground vector)"
+      ],
+      "budget_improved": "None. Identifying the near-radical vector with the ground vector needs the absence of eigenvalues below it, which is the missing estimate."
     }
   ],
-  "strength_rule": "An RH-sufficient contract that is also RH-necessary is a sharp interface, not independent sub-RH progress. Only an independent supplier changes the state."
+  "strength_rule": "An RH-sufficient contract that is also RH-necessary is a sharp interface, not independent sub-RH progress. Only an independent supplier changes the state.",
+  "status_refresh_2026_11_11": {
+    "head": "b3afa611d3181f38c2d3c8a69c64d318ee2ea6d7",
+    "round4_run": 42539385910,
+    "moved_from_local_to_ci_green": [
+      "CR31",
+      "CR32",
+      "CR33",
+      "CR34",
+      "CR35",
+      "CR36",
+      "CR37",
+      "CR40",
+      "CR41"
+    ],
+    "basis": "WORKFLOW_HARVEST.json head_harvest_b3afa61: the mathematical-support lane compiled 107 modules and 1321 declarations with types and axioms identical to the local gate and 113 of 113 controls rejected.",
+    "limit": "Single-reader harvest; the independent receipt inspection that qualifies dab9fbe was not repeated. CR44 and CR45 are newer than that head and stay local until their own CI run."
+  }
 }

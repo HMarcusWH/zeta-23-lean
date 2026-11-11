@@ -128,5 +128,95 @@
   "superseded_2fc6eee": "21/24 success; Round4, follow-up and Round2 cancelled by the dab9fbe push (cancellation cascade only)",
   "qualified_scope": "Contracts M1-M53 and the 101-module / 1213-declaration / 100-control gate at this exact head. M51-M53 are qualified in their general algebraic scope; native instantiation, the enclosure bridge and every closing supplier remain OPEN.",
   "independent_inspection": "research/RHRC/integration/opica_round4/arithmetic_frontier/revision3/receipts/qualified_baseline_receipt_review.json",
-  "successor_rule": "A successor head obtains its own complete gates; this baseline is not borrowed."
+  "successor_rule": "A successor head obtains its own complete gates; this baseline is not borrowed.",
+  "successor_harvest_b3afa61": {
+    "head": "b3afa611d3181f38c2d3c8a69c64d318ee2ea6d7",
+    "tree": "d0a6b1ad78523c23834eb01f57f4910a22e30d3b",
+    "authority": "SINGLE_READER_HARVEST_NOT_AN_INDEPENDENT_RECEIPT_INSPECTION",
+    "workflows": {
+      "total": 24,
+      "success": 24,
+      "check_runs": 97,
+      "check_run_success": 96,
+      "check_run_skipped": [
+        "post287-full-k3"
+      ]
+    },
+    "round4": {
+      "run_id": 42539385910,
+      "acceptance": "PASS_DECLARED_INTEGRATED_SCOPE",
+      "full_release_human_review": "NOT_ESTABLISHED",
+      "independent_groups": {
+        "CORE": "success",
+        "AUXILIARY": "success",
+        "CANONICAL": "success"
+      },
+      "independently_reconstructed_lanes": 11,
+      "acceptance_artifact_sha256": "343a67094cdef7413899dbe11781201fd418389b0b64fc05a8606c2cb8bf2cc6",
+      "mathematical_support": {
+        "modules": 107,
+        "declarations": 1321,
+        "module_exit_nonzero": 0,
+        "source_hash_mismatches_vs_checkout": 0,
+        "types_and_axioms_identical_to_local_gate": true,
+        "axiom_sets": {
+          "propext,Classical.choice,Quot.sound": 1309,
+          "propext,Quot.sound": 12
+        },
+        "semantic_mutations": {
+          "total": 113,
+          "shard_limit": 90,
+          "shards": {
+            "01": [
+              84,
+              84,
+              "110 s"
+            ],
+            "02": [
+              29,
+              29,
+              "4.9 s"
+            ]
+          },
+          "error_kinds": {
+            "Type mismatch": 82,
+            "Application type mismatch": 31
+          },
+          "oom_or_pid_events": 0
+        },
+        "artifact_sha256": "51f5a96836fa1d1144698cc5a5c84005a8e072315849dd8110f470faeb323f5e"
+      },
+      "source_numerics": {
+        "status": "PASS_RECOMPUTED_FINITE_SOURCE_EVALUATOR",
+        "authority": "FINITE_INTERVAL_EVIDENCE_ONLY",
+        "contained_interval_comparisons": 10012,
+        "frontier_native_tests": "40 OK normal and optimized, 0 skips",
+        "frontier_acceptance_kernel_tests": "24 OK both modes",
+        "source_tests": 18,
+        "source_research_tests": 5,
+        "artifact_sha256": "77e4cc6c65063ca39e425bba4c686659329955ff8009a7e422f53fb2c5a63eab"
+      },
+      "contract": {
+        "status": "PASS_CONTRACT_ONLY",
+        "tests": "PASS both modes, 0 failures, 0 errors"
+      },
+      "generated_state": {
+        "status": "PASS_GENERATED_STATE",
+        "canonical_products": 81,
+        "mismatches_vs_committed_b3afa61": 0
+      }
+    },
+    "round2": {
+      "run_id": 42539385964,
+      "conclusion": "success",
+      "note": "generated job: 81 products inspected, independent regeneration passed; scope is the frozen historical Round2 baseline (not re-harvested)"
+    },
+    "followup": {
+      "run_id": 42539385916,
+      "conclusion": "success",
+      "note": "narrow 100-root / 28-unit scope, not full-release acceptance"
+    },
+    "qualified_scope": "Contracts M1 to M59 and the 107-module / 1321-declaration / 113-control gate at this exact head, in the sense of an all-green same-head CI run whose lane artifacts were read. Every closing supplier remains OPEN.",
+    "relation_to_this_baseline": "The dab9fbe baseline above is not rewritten and not borrowed; this block is an additional receipt index."
+  }
 }
