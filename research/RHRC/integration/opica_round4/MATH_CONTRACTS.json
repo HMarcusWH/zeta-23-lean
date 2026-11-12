@@ -704,9 +704,9 @@
   "madness_extension": {
     "register": "MADNESS_CONTRACTS.json",
     "source_audit": "MADNESS_SOURCE_AUDIT.json",
-    "modules": 61,
+    "modules": 60,
     "added_declarations": 867,
-    "gate_total_modules": 109,
+    "gate_total_modules": 108,
     "gate_total_declarations": 1367,
     "retained_modules": 48,
     "retained_declarations": 500,

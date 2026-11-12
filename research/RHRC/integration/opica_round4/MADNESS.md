@@ -483,7 +483,7 @@ modules with 113 controls (shards 84 + 29).
 
 ## Arithmetic frontier, increment 6A: the floor adapter and the selected cutoff (11 November 2026)
 
-Two modules add 46 declarations (contracts M60–M61).
+One module adds 46 declarations (contracts M60–M61).
 
 * `ZeroFreeFloor` (M60) proves the converse of the fixed-rate exclusion, with
   explicit constants.
@@ -503,13 +503,14 @@ Two modules add 46 declarations (contracts M60–M61).
     With the compiled consumers, Mathlib `RiemannHypothesis` is equivalent
     to each of (C1), (SB), (PG) and (SE). These contracts are sharp
     interfaces: proving any of them is proving RH.
-* `SelectedCutoff` (M61) records the exact least-crossing statement: a cutoff-3
-  global bottom below `-D/2` forces the stored cutoff to be `3`, and then both
-  predecessor spaces have dimension zero.
+* The last section of the same module (M61) records the exact least-crossing
+  statement: a cutoff-3 global bottom below `-D/2` forces the stored cutoff to be
+  `3`, and then both predecessor spaces have dimension zero. It shares the module
+  because the Round4 lane report admits 108 owned modules within its JSON budget.
 
 These are adapters and a finite selector statement. **No bound on the
 displacement is supplied. Every closing premise, RH and Step 4 remain OPEN.**
-The gate is now 1367 declarations in 109 modules with 119 controls (shards
+The gate is now 1367 declarations in 108 modules with 119 controls (shards
 84 + 35). Six new controls reject: the floor at half the rate; the rate `a`
 itself; the half-plane read with `θ - 1`; every positive rate presented as
 unconditional; a cutoff-3 bottom below only `-D/3`; and (PG) presented without

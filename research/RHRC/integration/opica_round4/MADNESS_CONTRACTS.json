@@ -370,8 +370,8 @@
     },
     {
       "id": "M61",
-      "module": "Zeta23.OPICARound4.ArithmeticFrontier.SelectedCutoff",
-      "claim": "Exact finite statement about NativeDeepThresholdGroundData: if the cutoff-3 global bottom is below -D/2, in particular if one unit vector of either cutoff-3 parity space has native energy below -D/2, the stored least-crossing cutoff is 3 and both predecessor spaces have finrank zero. Whether such a deep cutoff-3 vector exists at a given aperture is an analytic question that is not addressed.",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor",
+      "claim": "Exact finite statement about NativeDeepThresholdGroundData: if the cutoff-3 global bottom is below -D/2, in particular if one unit vector of either cutoff-3 parity space has native energy below -D/2, the stored least-crossing cutoff is 3 and both predecessor spaces have finrank zero. Whether such a deep cutoff-3 vector exists at a given aperture is an analytic question that is not addressed. These statements form the last section of the M60 module, so that the owned-module count stays within the Round4 lane report budget.",
       "arithmetic_estimate_supplied": false
     }
   ],
@@ -1568,7 +1568,7 @@
     },
     "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor": {
       "path": "Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean",
-      "sha256": "dec9467ed1ce21fbbcd0c91b9fc303949f32d8a225d83ec9a5e1158dee551c2c",
+      "sha256": "e3971b01d78bc14d25fe626dbd8662e66d794fe0f1fa6e432b985f34b74c4d77",
       "declarations": [
         "Zeta23.OPICARound4.ArithmeticFrontier.norm_cexp_I_mul_le_of_mem_Icc",
         "Zeta23.OPICARound4.ArithmeticFrontier.norm_paperFT_le_of_support_Icc",
@@ -1610,13 +1610,7 @@
         "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_bounds",
         "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_semibounded",
         "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_polynomial",
-        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_subexponential"
-      ]
-    },
-    "Zeta23.OPICARound4.ArithmeticFrontier.SelectedCutoff": {
-      "path": "Zeta23/OPICARound4/ArithmeticFrontier/SelectedCutoff.lean",
-      "sha256": "75c19b63fe41077b6aa02164408eb641405ad58d1d8a07a7b0c6900f0f244153",
-      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_subexponential",
         "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_depth_pos",
         "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_bottom_three_lt",
         "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_predecessor_empty_of_bottom_three_lt",

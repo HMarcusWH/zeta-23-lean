@@ -3569,8 +3569,7 @@
       "Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement",
       "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
       "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
-      "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor",
-      "Zeta23.OPICARound4.ArithmeticFrontier.SelectedCutoff"
+      "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor"
     ],
     "native_gate": "MATHEMATICAL_SUPPORT",
     "retained_declarations": 500,
