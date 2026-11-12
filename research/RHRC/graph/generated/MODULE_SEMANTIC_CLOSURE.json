@@ -12711,6 +12711,19 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/SelectedCutoff.lean",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.SelectedCutoff",
+      "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.SelectedCutoff",
+      "named_source_declaration_count": 5,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/SelectedCutoff.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/SelectedPacketClosure.lean",
       "module": "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure",
       "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure",
@@ -12760,6 +12773,19 @@
       "registered_root_count": 0,
       "standalone_role": "OPICA4_NATIVE_AUDIT_OR_OPEN_TARGET",
       "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor",
+      "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor",
+      "named_source_declaration_count": 41,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
@@ -18461,7 +18487,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1259,
+  "entry_count": 1261,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",
