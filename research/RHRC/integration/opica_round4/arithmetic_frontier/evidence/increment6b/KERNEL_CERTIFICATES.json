@@ -1,0 +1,133 @@
+{
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "authority": "FINITE_CERTIFICATE_EXACT_RATIONAL_AND_OUTWARD_DYADIC_INTERVALS",
+ "cutoff3": {
+  "boundary_flat": true,
+  "fourth_moment": "2880 x (non-zero for x > 0: the vector is not in the quartic moment slice)",
+  "norm": "924 + 6048 x + 28224 x^2",
+  "pole_neutral": true,
+  "transform": "v0/z + sum_{n<=3} 2 v_n z/(z^2+n^2 x) = 2880 x^3 (z^2-1/4)/(z prod_{n<=3} (z^2+n^2 x))",
+  "vector": [
+   "-20",
+   "15(1+4x)",
+   "-6(1+16x)",
+   "1+36x"
+  ],
+  "weights": [
+   1,
+   2,
+   2,
+   2
+  ]
+ },
+ "cutoff4_kernel": {
+  "A": [
+   "1/5308416",
+   "1/331776",
+   "289/33177600",
+   "1369/406425600",
+   "169/1040449536"
+  ],
+  "agrees_with_drive_constants": true,
+  "b": [
+   "0",
+   "-23/3317760",
+   "17/110592000",
+   "180967/28449792000",
+   "105313/145662935040"
+  ],
+  "checks": [
+   "q4 = g * g (Laplace domain, exact)",
+   "b_0 = 0",
+   "g(0) = 0 so q4(0) = q4'(0) = 0",
+   "L g(1/2) = 0 and (L g)'(1/2) = 512/204425: K = (L g)^2 has an exact double zero at 1/2"
+  ],
+  "constant_definitions": {
+   "C0": "|A0| + 2 sum (|A_k| + |b_k|): |q4(t)| <= C0 (1 + t) for t >= 0 (elementary)",
+   "C1": "|A0| + 2 sum |A_k - k b_k| + 2 sum k |A_k|: |q4'(t)| <= C1 (1 + t)",
+   "C2": "2 sum |k^2 b_k - 2 k A_k| + 2 sum k^2 |A_k|: |q4''(t)| <= C2 (1 + t)",
+   "C_H": "24 C0 + 4 C1 (the Drive notes' drive bound |H(t)| <= C_H (1 + t); paper derivation, DERIVED)",
+   "C_H_prime": "24 C1 + 4 C2 (the Drive notes' bound |H'(t)| <= C_H' (1 + t); paper derivation, DERIVED)"
+  },
+  "constants": {
+   "C0": "107498557/1820786688000",
+   "C1": "158107/1161216000",
+   "C2": "7522859/22759833600",
+   "C_H": "446451559/227598336000",
+   "C_H_prime": "130581211/28449792000"
+  },
+  "profile": "g(t) = r0 + 2 sum_{k=1..4} r_k cos(k t)",
+  "r": [
+   "-1/2304",
+   "1/576",
+   "-17/5760",
+   "37/20160",
+   "-13/32256"
+  ],
+  "volterra_square": "q4(t) = A0 t + 2 sum_{k=1..4} (A_k t cos kt - b_k sin kt), A_k = r_k^2, b_k = -2 r_k sum_{j != k, |j| <= 4} r_|j| / (k - j)"
+ },
+ "endpoint_kernel": {
+  "laplace_transform": "(s^2 - 1/4)^2 / s^14",
+  "q": "u^9/9! - u^11/(2*11!) + u^13/(16*13!)",
+  "reduced_quadratic": "q(u) = (u^9/9!) (1 - u^2/220 + u^4/274560); u^2 = 624 +- sqrt(114816)",
+  "sign_changes": [
+   [
+    "8443/500",
+    "16887/1000"
+   ],
+   [
+    "31029/1000",
+    "3103/100"
+   ]
+  ],
+  "sign_pattern": "+ on (0,u1), - on (u1,u2), + on (u2,oo)",
+  "vanishing_moments_at_one_half": [
+   "int q(u) e^{-u/2} du = 0",
+   "int u q(u) e^{-u/2} du = 0"
+  ]
+ },
+ "integer_drive_kernel": {
+  "J": "sum_{n <= e^t} (log n / sqrt n) (q4'(t - log n) + q4(t - log n)/2)",
+  "consequence": "J takes both signs, so S = m * J admits no nonnegative-kernel domination; signed information about the Mertens function is required.",
+  "intersects_drive_note_enclosure": {
+   "4": true,
+   "6": true
+  },
+  "values": [
+   {
+    "J_lower": "1669959941679272572139274516801537885433367681042981219929264575631594339/28948022309329048855892746252171976963317496166410141009864396001978282409984",
+    "J_lower_decimal": "0.0000576882221463915456955411",
+    "J_upper": "6679839766717090288557098067206151541733470724171924879717058302526378525/115792089237316195423570985008687907853269984665640564039457584007913129639936",
+    "J_upper_decimal": "0.0000576882221463915456955412",
+    "bits": 256,
+    "exp_t_bracket": [
+     54,
+     55
+    ],
+    "floor_exp_t": 54,
+    "sign": "positive",
+    "t": 4,
+    "terms": 53
+   },
+   {
+    "J_lower": "-14969611443164022676745963985148792126511345606763883913948380968705931711/115792089237316195423570985008687907853269984665640564039457584007913129639936",
+    "J_lower_decimal": "-0.0001292800876274351016931493",
+    "J_upper": "-14969611443164022676745963985148792126511345606763883913948380968705925771/115792089237316195423570985008687907853269984665640564039457584007913129639936",
+    "J_upper_decimal": "-0.0001292800876274351016931492",
+    "bits": 256,
+    "exp_t_bracket": [
+     403,
+     404
+    ],
+    "floor_exp_t": 403,
+    "sign": "negative",
+    "t": 6,
+    "terms": 402
+   }
+  ]
+ },
+ "limits": "Exact algebra of explicit finite objects and two interval values of one explicit function. No statement about late apertures, the Mertens function, any arithmetic pairing, Step 4 or RH.",
+ "schema": "OPICA4_ARITHMETIC_FRONTIER_KERNEL_CERTIFICATES_V1",
+ "tool_sha256": "a68f616a9ddeaad94c2b605f1359ca9c949a63d3d2d5c0f00bea3d6fb9b7f853"
+}

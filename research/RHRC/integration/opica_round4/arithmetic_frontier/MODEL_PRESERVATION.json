@@ -359,6 +359,85 @@
       "preservation_status": "RUN in ball arithmetic (evidence/increment6a/SELECTOR_MODEL_A.json and SELECTOR_MODEL_B.json): after a transient every sampled aperture has selected cutoff 3 or 4 at both thresholds; with the added quadruple placed on the line no cutoff crosses. The finite implication it illustrates is CR45.",
       "formal_repository_control": null,
       "label": "NOT_ZETA"
+    },
+    {
+      "id": "MP24",
+      "model": "Euler-exponent perturbation a_p = 1 + eps cos(log p)/log p for p > P0 (and the variant with e^(-tau sqrt(log p))) (NOT zeta)",
+      "blocked_inference": "Finite prefixes, prime support, positive Euler factors and a quantitative PNT imply the native floor",
+      "preserves": [
+        "finite prime prefixes",
+        "prime support",
+        "positive Euler factors",
+        "a quantitative prime number theorem"
+      ],
+      "changes": [
+        "the prime weights above P0, hence Lambda = mu * log with unit integer weights"
+      ],
+      "preservation_status": "DERIVED in the back-to-front audit: negative energies of size e^(L/2)/L on the true moment carriers (4,0) and (5,1). The constants 2^19/5^9 and 2^21/5^10 equal |G(1/2+i)|^2 (checked exactly), so the perturbation acts through a singularity at s = 1 +- i. It does not refute arguments that use the bridge CR53.",
+      "formal_repository_control": null,
+      "label": "NOT_ZETA",
+      "source": "Drive notes of 12 November (SOURCE_LEDGER increment6b rows); round8/MISSING_ARITHMETIC_SHAPE.md section 4"
+    },
+    {
+      "id": "MP25",
+      "model": "Rank-one native operator H_L = -e^(delta L) (NOT zeta)",
+      "blocked_inference": "Low rank or norm bounds alone give subexponential descent costs",
+      "preserves": [
+        "low rank",
+        "operator norms"
+      ],
+      "changes": [
+        "the source"
+      ],
+      "preservation_status": "DERIVED; a source-blind control.",
+      "formal_repository_control": "FrontierMutation36",
+      "label": "NOT_ZETA",
+      "source": "Drive notes of 12 November (SOURCE_LEDGER increment6b rows); round8/MISSING_ARITHMETIC_SHAPE.md section 4"
+    },
+    {
+      "id": "MP26",
+      "model": "Positive comparison density with PNT asymptotics (NOT zeta)",
+      "blocked_inference": "PNT asymptotics with positivity give a polynomial-loss descent",
+      "preserves": [
+        "prime number theorem asymptotics",
+        "positivity"
+      ],
+      "changes": [
+        "the actual primes"
+      ],
+      "preservation_status": "DERIVED in the endpoint audit: the positive and negative masses of the scale sum are each about (C*/2) e^(L/2) with C* = int |q| e^(-u/2) = 328.70976 (quadrature, not certified).",
+      "formal_repository_control": null,
+      "label": "NOT_ZETA",
+      "source": "Drive notes of 12 November (SOURCE_LEDGER increment6b rows); round8/MISSING_ARITHMETIC_SHAPE.md section 4"
+    },
+    {
+      "id": "MP27",
+      "model": "Certified signs of explicit kernels (actual objects)",
+      "blocked_inference": "Positive-kernel domination of S = m * J; all-time nonpositivity of the return R; zero-loss monotone descent of T",
+      "preserves": [
+        "the actual integer drive and field"
+      ],
+      "changes": [],
+      "preservation_status": "J(4) > 0 > J(6): FINITE_CERTIFICATE (evidence/increment6b, independent of the Drive script). R negative at N = 64, positive at N = 128: Drive certificate, not re-run. T(L) - T(L/2) of both signs at L = 4..12: EXPERIMENTAL_SIGNAL; the dips at L = 4, 8, 12 come from gamma_1 L / 2 pi = 9.00, 18.00, 27.00.",
+      "formal_repository_control": null,
+      "label": "ACTUAL_OBJECTS",
+      "source": "Drive notes of 12 November (SOURCE_LEDGER increment6b rows); round8/MISSING_ARITHMETIC_SHAPE.md section 4"
+    },
+    {
+      "id": "MP28",
+      "model": "Generalized integers with very regular counting and badly oscillating primes (Diamond, Montgomery and Vorhauer; summarized in arXiv:2004.11501) (NOT zeta)",
+      "blocked_inference": "Regular distribution of the integers is the only arithmetic input a supplier needs",
+      "preserves": [
+        "a multiplicative number system",
+        "very regular integer counting"
+      ],
+      "changes": [
+        "weight exactly one on every integer"
+      ],
+      "preservation_status": "LITERATURE (not re-derived here).",
+      "formal_repository_control": null,
+      "label": "NOT_ZETA",
+      "source": "Broucke, Debruyne, Vindas, Beurling integers with RH and large oscillation, arXiv:2004.11501 (background section)"
     }
   ],
   "semantic_controls": [
@@ -536,9 +615,39 @@
       "id": "FrontierMutation35",
       "blocks": "(PG) presented as unconditional instead of as a consequence of RH",
       "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation36",
+      "blocks": "Delay descent with a gain 2G <= e^h in place of e^(o(h))",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation37",
+      "blocks": "Delay descent with a nonnegative delay in place of a delay bounded below by h0 > 0",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation38",
+      "blocks": "Delay descent read as a bounded floor (rate zero) instead of every positive rate",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation39",
+      "blocks": "Scale descent at theta = 1 (a self-comparison) instead of theta < 1",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation40",
+      "blocks": "Delay descent without an a priori bound on the first apertures",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
+    },
+    {
+      "id": "FrontierMutation41",
+      "blocks": "RH giving the delay contract for arbitrary (possibly negative) costs",
+      "kind": "SEMANTIC_API_REJECTION_NOT_A_COUNTEREXAMPLE"
     }
   ],
   "distinction": "Mathematical countermodels test an inference in a stated scope. Semantic controls only show that one API substitution is rejected by the type checker; they are not counterexamples to every theorem connecting the objects.",
   "mandatory_use": "Every candidate supplier in EXPERIMENTS.json must state which models it survives before formalization begins.",
-  "sharding": "Controls run in two shards (84 pinned pre-frontier, 35 frontier) under the fixed worker source name; each control must own exactly one type-mismatch error."
+  "sharding": "Controls run in two shards (84 pinned pre-frontier, 41 frontier) under the fixed worker source name; each control must own exactly one type-mismatch error."
 }

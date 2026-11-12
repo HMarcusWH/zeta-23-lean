@@ -27,9 +27,15 @@ A further section reads the repository's critical-line positivity on the moment
 slices and records that the slice contracts (C1), (SB), (PG) and (SE) are each
 equivalent to Mathlib's `RiemannHypothesis`.
 
-The final section is a separate finite statement about the least-crossing
-selector (contract M61): a cutoff-3 bottom below `-D/2` forces the stored
-cutoff to be `3`, with an empty predecessor.
+A separate finite section concerns the least-crossing selector (contract M61):
+a cutoff-3 bottom below `-D/2` forces the stored cutoff to be `3`, with an empty
+predecessor.
+
+The last section (contract M62) is the receiving interface for loss-tolerant
+descent. A comparison of the slice bottom at `L` with the bottoms at earlier
+apertures, with polynomial or subexponential losses and a delay bounded below,
+gives (SE) and hence `RiemannHypothesis`; conversely RH gives every such
+comparison. The comparison itself is an OPEN arithmetic statement.
 
 Nothing here bounds the displacement `a`. With no information on the zeros the
 only available value is the trivial `a = 1/2`. The theorems are adapters: any
@@ -816,5 +822,457 @@ theorem nativeDeepThresholdGround_cutoff_eq_three_of_odd_trial
       poleNeutralOddRayleighBottom L 3 hL le_rfl := min_le_right _ _
   unfold oddNativeEnergy at he
   linarith
+
+/-! ## Loss-tolerant descent: the receiving interface (contract M62)
+
+A comparison between apertures that loses polynomial or subexponential factors is
+enough for the slice contract (SE), and hence for `RiemannHypothesis`. With `b(L)`
+the negative part of the slice bottom, the delay form of the premise reads, at
+every large aperture `L`,
+
+  `b(L) ≤ A(L) + G(L) · sup_{L₁ ≤ u ≤ L - h(L)} b(u)`.
+
+It is stated without a bottom function: a uniform slice bound `ε` on
+`[L₁, L - h(L)]` gives the slice bound `A(L) + G(L) ε` at `L`. The costs are
+admissible when the delay `h` is eventually at least a fixed `h₀ > 0`, the additive
+cost `A` lies below `exp (η L)` eventually for every `η > 0`, and the gain satisfies
+`2 G(L) ≤ exp (η h(L))` eventually for every `η > 0` (that is, `log G = o(h)`).
+Exact positivity, a contraction `G < 1` and a positive base interval are not
+required; the base interval is paid by the unconditional rate-one bound.
+
+The fractional-scale form compares `L` with `θ L` for a fixed `0 < θ < 1`, with
+polynomial costs `C (1 + L)^d` and `C (1 + L)^m`. In both forms the descent premise
+is equivalent to `RiemannHypothesis`, because under RH every slice bound holds with
+error zero. These are receiving interfaces: the descent inequality itself is an
+OPEN arithmetic statement and nothing here supplies it. Like the previous
+section, it lives in this module because of the Round4 lane-report budget. -/
+
+/-- **Abstract delay descent.** Let `P L ε` be monotone in `ε`, with an a priori
+bound `P L (C₀ e^{αL})` at every `L ≥ L₁`. Suppose that at every large `L`, a bound
+`ε ≥ 0` at all `u ∈ [L₁, L - h L]` gives `P L (A L + G L * ε)`, where `h` is
+eventually at least `h₀ > 0`, `A` is eventually below every positive exponential
+rate, and `2 G L ≤ exp (η h L)` eventually for every `η > 0`. Then `P` holds at
+every positive exponential rate from `L₁` on. -/
+theorem fixed_rate_of_delay_descent {P : ℝ → ℝ → Prop}
+    (hmono : ∀ L ε ε', ε ≤ ε' → P L ε → P L ε')
+    {L₁ C₀ α : ℝ} (hprior : ∀ L, L₁ ≤ L → P L (C₀ * Real.exp (α * L)))
+    {A G h : ℝ → ℝ}
+    (hdesc : ∀ᶠ L in Filter.atTop, ∀ ε, 0 ≤ ε →
+      (∀ u, L₁ ≤ u → u ≤ L - h L → P u ε) → P L (A L + G L * ε))
+    (hdelay : ∃ h₀ : ℝ, 0 < h₀ ∧ ∀ᶠ L in Filter.atTop, h₀ ≤ h L)
+    (hA : ∀ η : ℝ, 0 < η → ∀ᶠ L in Filter.atTop, A L ≤ Real.exp (η * L))
+    (hG : ∀ η : ℝ, 0 < η → ∀ᶠ L in Filter.atTop, 2 * G L ≤ Real.exp (η * h L))
+    {η : ℝ} (hη : 0 < η) :
+    ∃ C : ℝ, 0 < C ∧ ∀ L, L₁ ≤ L → P L (C * Real.exp (η * L)) := by
+  obtain ⟨h₀, hh₀, hdel⟩ := hdelay
+  obtain ⟨Ld, hLd⟩ := Filter.eventually_atTop.mp hdesc
+  obtain ⟨Lh, hLh⟩ := Filter.eventually_atTop.mp hdel
+  obtain ⟨La, hLa⟩ := Filter.eventually_atTop.mp (hA η hη)
+  obtain ⟨Lg, hLg⟩ := Filter.eventually_atTop.mp (hG η hη)
+  set L₂ : ℝ := max L₁ (max (max Ld Lh) (max La Lg)) with hL₂
+  set C : ℝ := max 2 (|C₀| * Real.exp (|α| * (|L₁| + |L₂|) + η * |L₁|)) with hCdef
+  have hC2 : 2 ≤ C := le_max_left _ _
+  have hCpos : 0 < C := by linarith
+  have hL₁₂ : L₁ ≤ L₂ := le_max_left _ _
+  have hbase : ∀ L, L₁ ≤ L → L ≤ L₂ → P L (C * Real.exp (η * L)) := by
+    intro L hL1 hL2
+    refine hmono L _ _ ?_ (hprior L hL1)
+    have habsL : |L| ≤ |L₁| + |L₂| := by
+      rw [abs_le]
+      constructor
+      · have := neg_abs_le L₁
+        have := abs_nonneg L₂
+        linarith
+      · have := le_abs_self L₂
+        have := abs_nonneg L₁
+        linarith
+    have hαL : α * L ≤ |α| * (|L₁| + |L₂|) :=
+      calc α * L ≤ |α * L| := le_abs_self _
+        _ = |α| * |L| := abs_mul _ _
+        _ ≤ |α| * (|L₁| + |L₂|) := mul_le_mul_of_nonneg_left habsL (abs_nonneg _)
+    have h1 : C₀ * Real.exp (α * L) ≤ |C₀| * Real.exp (|α| * (|L₁| + |L₂|)) :=
+      calc C₀ * Real.exp (α * L) ≤ |C₀| * Real.exp (α * L) :=
+            mul_le_mul_of_nonneg_right (le_abs_self _) (Real.exp_pos _).le
+        _ ≤ |C₀| * Real.exp (|α| * (|L₁| + |L₂|)) :=
+            mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr hαL) (abs_nonneg _)
+    have hηL : -(η * |L₁|) ≤ η * L := by
+      have : -|L₁| ≤ L := by
+        have := neg_abs_le L₁
+        linarith
+      nlinarith
+    have hC' : |C₀| * Real.exp (|α| * (|L₁| + |L₂|) + η * |L₁|) ≤ C := le_max_right _ _
+    have h2 : |C₀| * Real.exp (|α| * (|L₁| + |L₂|)) ≤ C * Real.exp (η * L) :=
+      calc |C₀| * Real.exp (|α| * (|L₁| + |L₂|))
+          = |C₀| * Real.exp (|α| * (|L₁| + |L₂|) + η * |L₁|) * Real.exp (-(η * |L₁|)) := by
+            rw [mul_assoc, ← Real.exp_add]
+            congr 2
+            ring
+        _ ≤ C * Real.exp (η * L) :=
+            mul_le_mul hC' (Real.exp_le_exp.mpr hηL) (Real.exp_pos _).le hCpos.le
+    linarith
+  have hstep : ∀ n : ℕ, ∀ L, L₁ ≤ L → L < L₂ + n * h₀ → P L (C * Real.exp (η * L)) := by
+    intro n
+    induction n with
+    | zero =>
+      intro L hL1 hL
+      simp only [Nat.cast_zero, zero_mul, add_zero] at hL
+      exact hbase L hL1 hL.le
+    | succ n ih =>
+      intro L hL1 hL
+      by_cases hlt : L < L₂ + n * h₀
+      · exact ih L hL1 hlt
+      · have hlt' : L₂ + n * h₀ ≤ L := not_lt.mp hlt
+        have hn0 : (0 : ℝ) ≤ n * h₀ := mul_nonneg (Nat.cast_nonneg n) hh₀.le
+        have hLL₂ : L₂ ≤ L := by linarith
+        have hge : ∀ x, x ≤ L₂ → x ≤ L := fun x hx => le_trans hx hLL₂
+        have hLd' : Ld ≤ L :=
+          hge Ld (le_trans (le_trans (le_max_left _ _) (le_max_left _ _)) (le_max_right _ _))
+        have hLh' : Lh ≤ L :=
+          hge Lh (le_trans (le_trans (le_max_right _ _) (le_max_left _ _)) (le_max_right _ _))
+        have hLa' : La ≤ L :=
+          hge La (le_trans (le_trans (le_max_left _ _) (le_max_right _ _)) (le_max_right _ _))
+        have hLg' : Lg ≤ L :=
+          hge Lg (le_trans (le_trans (le_max_right _ _) (le_max_right _ _)) (le_max_right _ _))
+        have hhL : h₀ ≤ h L := hLh L hLh'
+        have hcast : ((n + 1 : ℕ) : ℝ) * h₀ = n * h₀ + h₀ := by push_cast; ring
+        rw [hcast] at hL
+        have hεpos : 0 ≤ C * Real.exp (η * (L - h L)) := by positivity
+        have hant : ∀ u, L₁ ≤ u → u ≤ L - h L → P u (C * Real.exp (η * (L - h L))) := by
+          intro u hu1 hu2
+          have hu3 : u < L₂ + n * h₀ := by linarith
+          refine hmono u _ _ ?_ (ih u hu1 hu3)
+          have hηu : η * u ≤ η * (L - h L) := mul_le_mul_of_nonneg_left hu2 hη.le
+          exact mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr hηu) hCpos.le
+        have hP := hLd L hLd' _ hεpos hant
+        refine hmono L _ _ ?_ hP
+        have hAL := hLa L hLa'
+        have hGL := hLg L hLg'
+        have hsplit : Real.exp (η * h L) * Real.exp (η * (L - h L)) = Real.exp (η * L) := by
+          rw [← Real.exp_add]
+          congr 1
+          ring
+        have hGε : G L * (C * Real.exp (η * (L - h L))) ≤ C * Real.exp (η * L) / 2 := by
+          have hmul := mul_le_mul_of_nonneg_right hGL hεpos
+          have hrw : Real.exp (η * h L) * (C * Real.exp (η * (L - h L))) =
+              C * Real.exp (η * L) := by
+            rw [← hsplit]
+            ring
+          rw [hrw] at hmul
+          linarith
+        have hAhalf : A L ≤ C * Real.exp (η * L) / 2 := by
+          have hexp := Real.exp_pos (η * L)
+          nlinarith
+        linarith
+  refine ⟨C, hCpos, fun L hL1 => ?_⟩
+  obtain ⟨n, hn⟩ := exists_nat_gt ((L - L₂) / h₀)
+  refine hstep n L hL1 ?_
+  rw [div_lt_iff₀ hh₀] at hn
+  linarith
+
+/-- An explicit-start version of the zero-strip floor in the even parity: the
+bound holds at every aperture `L ≥ 1`, with one constant. -/
+theorem evenMomentSliceLowerBound_explicit_of_zeroStrip {a α : ℝ} (hα : a < α)
+    (hstrip : ∀ ρ ∈ zetaZeroConfig.carrier, |ρ.re - 1 / 2| ≤ a) :
+    ∃ C₀ : ℝ, 0 < C₀ ∧ ∀ L : ℝ, 1 ≤ L →
+      EvenMomentSliceLowerBound L (originalDetectorQuarticCutoff L) (C₀ * Real.exp (α * L)) := by
+  have hε : 0 < α - a := sub_pos.mpr hα
+  have hC₀ : 0 < ((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17 :=
+    div_pos (mul_pos (Nat.cast_pos.mpr (Nat.factorial_pos 17)) (Real.exp_pos _)) (pow_pos hε 17)
+  have hS := zetaZeroInvSqWeight_nonneg
+  refine ⟨(zetaZeroInvSqWeight + 1) * 128000 *
+    (((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17),
+    mul_pos (mul_pos (by linarith) (by norm_num)) hC₀, ?_⟩
+  intro L hL
+  have hL0 : 0 < L := by linarith
+  refine (evenMomentSliceLowerBound_of_zeroStrip hL0 hstrip _).mono ?_
+  have hbud := nativeFloorBudget_quartic_le hL
+  have hdom := one_add_pow_le_mul_exp hε 17 (show -1 ≤ L by linarith)
+  have hexp : Real.exp (a * L) * Real.exp ((α - a) * L) = Real.exp (α * L) := by
+    rw [← Real.exp_add]; congr 1; ring
+  have h1 : nativeFloorBudget L (originalDetectorQuarticCutoff L) ≤
+      128000 * ((((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17) *
+        Real.exp ((α - a) * L)) :=
+    hbud.trans (mul_le_mul_of_nonneg_left hdom (by norm_num))
+  calc zetaZeroInvSqWeight * Real.exp (a * L) *
+        nativeFloorBudget L (originalDetectorQuarticCutoff L)
+      ≤ (zetaZeroInvSqWeight + 1) * Real.exp (a * L) *
+          (128000 * ((((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17) *
+            Real.exp ((α - a) * L))) :=
+        mul_le_mul (mul_le_mul_of_nonneg_right (by linarith) (Real.exp_pos _).le) h1
+          (nativeFloorBudget_nonneg hL0.le _)
+          (mul_nonneg (by linarith) (Real.exp_pos _).le)
+    _ = (zetaZeroInvSqWeight + 1) * 128000 *
+          (((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17) *
+          (Real.exp (a * L) * Real.exp ((α - a) * L)) := by ring
+    _ = (zetaZeroInvSqWeight + 1) * 128000 *
+          (((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17) *
+          Real.exp (α * L) := by rw [hexp]
+
+/-- The explicit-start zero-strip floor in the odd parity. -/
+theorem oddMomentSliceLowerBound_explicit_of_zeroStrip {a α : ℝ} (hα : a < α)
+    (hstrip : ∀ ρ ∈ zetaZeroConfig.carrier, |ρ.re - 1 / 2| ≤ a) :
+    ∃ C₀ : ℝ, 0 < C₀ ∧ ∀ L : ℝ, 1 ≤ L →
+      OddMomentSliceLowerBound L (originalDetectorQuarticCutoff L) (C₀ * Real.exp (α * L)) := by
+  have hε : 0 < α - a := sub_pos.mpr hα
+  have hC₀ : 0 < ((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17 :=
+    div_pos (mul_pos (Nat.cast_pos.mpr (Nat.factorial_pos 17)) (Real.exp_pos _)) (pow_pos hε 17)
+  have hS := zetaZeroInvSqWeight_nonneg
+  refine ⟨(zetaZeroInvSqWeight + 1) * 128000 *
+    (((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17),
+    mul_pos (mul_pos (by linarith) (by norm_num)) hC₀, ?_⟩
+  intro L hL
+  have hL0 : 0 < L := by linarith
+  refine (oddMomentSliceLowerBound_of_zeroStrip hL0 hstrip _).mono ?_
+  have hbud := nativeFloorBudget_quartic_le hL
+  have hdom := one_add_pow_le_mul_exp hε 17 (show -1 ≤ L by linarith)
+  have hexp : Real.exp (a * L) * Real.exp ((α - a) * L) = Real.exp (α * L) := by
+    rw [← Real.exp_add]; congr 1; ring
+  have h1 : nativeFloorBudget L (originalDetectorQuarticCutoff L) ≤
+      128000 * ((((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17) *
+        Real.exp ((α - a) * L)) :=
+    hbud.trans (mul_le_mul_of_nonneg_left hdom (by norm_num))
+  calc zetaZeroInvSqWeight * Real.exp (a * L) *
+        nativeFloorBudget L (originalDetectorQuarticCutoff L)
+      ≤ (zetaZeroInvSqWeight + 1) * Real.exp (a * L) *
+          (128000 * ((((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17) *
+            Real.exp ((α - a) * L))) :=
+        mul_le_mul (mul_le_mul_of_nonneg_right (by linarith) (Real.exp_pos _).le) h1
+          (nativeFloorBudget_nonneg hL0.le _)
+          (mul_nonneg (by linarith) (Real.exp_pos _).le)
+    _ = (zetaZeroInvSqWeight + 1) * 128000 *
+          (((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17) *
+          (Real.exp (a * L) * Real.exp ((α - a) * L)) := by ring
+    _ = (zetaZeroInvSqWeight + 1) * 128000 *
+          (((17 : ℕ).factorial : ℝ) * Real.exp (α - a) / (α - a) ^ 17) *
+          Real.exp (α * L) := by rw [hexp]
+
+/-- The closed strip gives displacement at most `1/2`. -/
+theorem abs_re_sub_half_le_half :
+    ∀ ρ ∈ zetaZeroConfig.carrier, |ρ.re - 1 / 2| ≤ 1 / 2 := by
+  intro ρ hρ
+  have h := abs_re_sub_half_le_of_re_le (θ := 1)
+    (fun ρ hρ => (zetaZeroConfig.strip ρ hρ).2) ρ hρ
+  linarith
+
+/-- Admissible descent costs: a delay eventually at least a fixed `h₀ > 0`, an
+additive cost eventually below every positive exponential rate, and a gain with
+`2 G ≤ exp (η h)` eventually for every `η > 0`. -/
+def AdmissibleDescentCosts (A G h : ℝ → ℝ) : Prop :=
+  (∃ h₀ : ℝ, 0 < h₀ ∧ ∀ᶠ L in Filter.atTop, h₀ ≤ h L) ∧
+    (∀ η : ℝ, 0 < η → ∀ᶠ L in Filter.atTop, A L ≤ Real.exp (η * L)) ∧
+    (∀ η : ℝ, 0 < η → ∀ᶠ L in Filter.atTop, 2 * G L ≤ Real.exp (η * h L))
+
+/-- **Contract (DD), even parity.** From a start `L₁ ≥ 1`, at every large aperture
+`L`, a uniform even slice bound `ε` on `[L₁, L - h L]` gives the even slice bound
+`A L + G L * ε` at `L`. This proposition is OPEN. -/
+def EvenDelayDescent (A G h : ℝ → ℝ) : Prop :=
+  ∃ L₁ : ℝ, 1 ≤ L₁ ∧ ∀ᶠ L in Filter.atTop, ∀ ε : ℝ, 0 ≤ ε →
+    (∀ u : ℝ, L₁ ≤ u → u ≤ L - h L →
+      EvenMomentSliceLowerBound u (originalDetectorQuarticCutoff u) ε) →
+    EvenMomentSliceLowerBound L (originalDetectorQuarticCutoff L) (A L + G L * ε)
+
+/-- **Contract (DD), odd parity.** This proposition is OPEN. -/
+def OddDelayDescent (A G h : ℝ → ℝ) : Prop :=
+  ∃ L₁ : ℝ, 1 ≤ L₁ ∧ ∀ᶠ L in Filter.atTop, ∀ ε : ℝ, 0 ≤ ε →
+    (∀ u : ℝ, L₁ ≤ u → u ≤ L - h L →
+      OddMomentSliceLowerBound u (originalDetectorQuarticCutoff u) ε) →
+    OddMomentSliceLowerBound L (originalDetectorQuarticCutoff L) (A L + G L * ε)
+
+/-- Even delay descent with admissible costs gives every positive rate. -/
+theorem evenFixedRateMomentSliceBound_of_delayDescent {A G h : ℝ → ℝ}
+    (hcost : AdmissibleDescentCosts A G h) (hd : EvenDelayDescent A G h)
+    {η : ℝ} (hη : 0 < η) : EvenFixedRateMomentSliceBound η := by
+  obtain ⟨hdelay, hA, hG⟩ := hcost
+  obtain ⟨L₁, hL₁, hdesc⟩ := hd
+  obtain ⟨C₀, -, hprior⟩ :=
+    evenMomentSliceLowerBound_explicit_of_zeroStrip (a := 1 / 2) (α := 1) (by norm_num)
+      abs_re_sub_half_le_half
+  obtain ⟨C, hC, hb⟩ := fixed_rate_of_delay_descent
+    (P := fun L ε => EvenMomentSliceLowerBound L (originalDetectorQuarticCutoff L) ε)
+    (fun L ε ε' hle hP => hP.mono hle)
+    (fun L hL => hprior L (le_trans hL₁ hL)) hdesc hdelay hA hG hη
+  exact ⟨C, L₁, hC, hb⟩
+
+/-- Odd delay descent with admissible costs gives every positive rate. -/
+theorem oddFixedRateMomentSliceBound_of_delayDescent {A G h : ℝ → ℝ}
+    (hcost : AdmissibleDescentCosts A G h) (hd : OddDelayDescent A G h)
+    {η : ℝ} (hη : 0 < η) : OddFixedRateMomentSliceBound η := by
+  obtain ⟨hdelay, hA, hG⟩ := hcost
+  obtain ⟨L₁, hL₁, hdesc⟩ := hd
+  obtain ⟨C₀, -, hprior⟩ :=
+    oddMomentSliceLowerBound_explicit_of_zeroStrip (a := 1 / 2) (α := 1) (by norm_num)
+      abs_re_sub_half_le_half
+  obtain ⟨C, hC, hb⟩ := fixed_rate_of_delay_descent
+    (P := fun L ε => OddMomentSliceLowerBound L (originalDetectorQuarticCutoff L) ε)
+    (fun L ε ε' hle hP => hP.mono hle)
+    (fun L hL => hprior L (le_trans hL₁ hL)) hdesc hdelay hA hG hη
+  exact ⟨C, L₁, hC, hb⟩
+
+/-- **Conditional reduction (DD, even) → RH.** The descent premise remains OPEN. -/
+theorem riemannHypothesis_of_even_delay_descent {A G h : ℝ → ℝ}
+    (hcost : AdmissibleDescentCosts A G h) (hd : EvenDelayDescent A G h) :
+    RiemannHypothesis :=
+  riemannHypothesis_of_fixed_parity_subexponential
+    (Or.inl fun _ hη => evenFixedRateMomentSliceBound_of_delayDescent hcost hd hη)
+
+/-- **Conditional reduction (DD, odd) → RH.** The descent premise remains OPEN. -/
+theorem riemannHypothesis_of_odd_delay_descent {A G h : ℝ → ℝ}
+    (hcost : AdmissibleDescentCosts A G h) (hd : OddDelayDescent A G h) :
+    RiemannHypothesis :=
+  riemannHypothesis_of_fixed_parity_subexponential
+    (Or.inr fun _ hη => oddFixedRateMomentSliceBound_of_delayDescent hcost hd hη)
+
+/-- **RH gives (DD, even)** for every eventually nonnegative cost profile. -/
+theorem evenDelayDescent_of_riemannHypothesis (hRH : RiemannHypothesis) {A G h : ℝ → ℝ}
+    (hnn : ∀ᶠ L in Filter.atTop, 0 ≤ A L ∧ 0 ≤ G L) : EvenDelayDescent A G h := by
+  refine ⟨1, le_rfl, ?_⟩
+  filter_upwards [hnn, Filter.eventually_ge_atTop (1 : ℝ)] with L hL hL1
+  intro ε hε _
+  refine ((momentSliceLowerBounds_zero_of_riemannHypothesis hRH (by linarith) _).1).mono ?_
+  have := mul_nonneg hL.2 hε
+  linarith [hL.1]
+
+/-- **RH gives (DD, odd)** for every eventually nonnegative cost profile. -/
+theorem oddDelayDescent_of_riemannHypothesis (hRH : RiemannHypothesis) {A G h : ℝ → ℝ}
+    (hnn : ∀ᶠ L in Filter.atTop, 0 ≤ A L ∧ 0 ≤ G L) : OddDelayDescent A G h := by
+  refine ⟨1, le_rfl, ?_⟩
+  filter_upwards [hnn, Filter.eventually_ge_atTop (1 : ℝ)] with L hL hL1
+  intro ε hε _
+  refine ((momentSliceLowerBounds_zero_of_riemannHypothesis hRH (by linarith) _).2).mono ?_
+  have := mul_nonneg hL.2 hε
+  linarith [hL.1]
+
+/-- **(DD) is equivalent to RH** for every admissible, eventually nonnegative cost
+profile: the losses neither weaken nor strengthen the contract. -/
+theorem riemannHypothesis_iff_delay_descent {A G h : ℝ → ℝ}
+    (hcost : AdmissibleDescentCosts A G h)
+    (hnn : ∀ᶠ L in Filter.atTop, 0 ≤ A L ∧ 0 ≤ G L) :
+    RiemannHypothesis ↔ (EvenDelayDescent A G h ∨ OddDelayDescent A G h) :=
+  ⟨fun hRH => Or.inl (evenDelayDescent_of_riemannHypothesis hRH hnn),
+    fun h => h.elim (riemannHypothesis_of_even_delay_descent hcost)
+      (riemannHypothesis_of_odd_delay_descent hcost)⟩
+
+/-- A polynomial is eventually below every positive exponential rate. -/
+theorem eventually_mul_one_add_pow_le_exp (C : ℝ) (d : ℕ) {β : ℝ} (hβ : 0 < β) :
+    ∀ᶠ L in Filter.atTop, C * (1 + L) ^ d ≤ Real.exp (β * L) := by
+  have hβ2 : 0 < β / 2 := half_pos hβ
+  set K : ℝ := (d.factorial : ℝ) * Real.exp (β / 2) / (β / 2) ^ d with hK
+  have hK0 : 0 ≤ K := by positivity
+  have hlim : Filter.Tendsto (fun L : ℝ => Real.exp (β / 2 * L)) Filter.atTop Filter.atTop :=
+    Real.tendsto_exp_atTop.comp (Filter.tendsto_id.const_mul_atTop hβ2)
+  filter_upwards [hlim.eventually_ge_atTop (|C| * K), Filter.eventually_ge_atTop (0 : ℝ)]
+    with L hL hL0
+  have hdom := one_add_pow_le_mul_exp hβ2 d (show -1 ≤ L by linarith)
+  have hpow0 : 0 ≤ (1 + L) ^ d := pow_nonneg (by linarith) d
+  have hsplit : Real.exp (β / 2 * L) * Real.exp (β / 2 * L) = Real.exp (β * L) := by
+    rw [← Real.exp_add]
+    congr 1
+    ring
+  have he0 : 0 ≤ Real.exp (β / 2 * L) := (Real.exp_pos _).le
+  calc C * (1 + L) ^ d ≤ |C| * (1 + L) ^ d :=
+        mul_le_mul_of_nonneg_right (le_abs_self _) hpow0
+    _ ≤ |C| * (K * Real.exp (β / 2 * L)) :=
+        mul_le_mul_of_nonneg_left hdom (abs_nonneg _)
+    _ = (|C| * K) * Real.exp (β / 2 * L) := by ring
+    _ ≤ Real.exp (β / 2 * L) * Real.exp (β / 2 * L) :=
+        mul_le_mul_of_nonneg_right hL he0
+    _ = Real.exp (β * L) := hsplit
+
+/-- Polynomial costs with the fractional delay `(1 - θ) L` are admissible. -/
+theorem admissibleDescentCosts_polynomial {θ : ℝ} (hθ : θ < 1) (C : ℝ) (d m : ℕ) :
+    AdmissibleDescentCosts (fun L => C * (1 + L) ^ d) (fun L => C * (1 + L) ^ m)
+      (fun L => (1 - θ) * L) := by
+  have h1θ : 0 < 1 - θ := by linarith
+  refine ⟨⟨1 - θ, h1θ, ?_⟩, fun η hη => eventually_mul_one_add_pow_le_exp C d hη, ?_⟩
+  · filter_upwards [Filter.eventually_ge_atTop (1 : ℝ)] with L hL
+    nlinarith
+  · intro η hη
+    filter_upwards [eventually_mul_one_add_pow_le_exp (2 * C) m (mul_pos hη h1θ)] with L hL
+    have hrw : η * ((1 - θ) * L) = η * (1 - θ) * L := by ring
+    rw [hrw]
+    linarith
+
+/-- **Contract (ND), even parity.** At every large aperture `L`, the even slice bound
+`ε` at the smaller aperture `θ L` gives the even slice bound
+`C (1 + L)^d + C (1 + L)^m ε` at `L`. This proposition is OPEN. -/
+def EvenScaleDescent (θ C : ℝ) (d m : ℕ) : Prop :=
+  ∀ᶠ L in Filter.atTop, ∀ ε : ℝ, 0 ≤ ε →
+    EvenMomentSliceLowerBound (θ * L) (originalDetectorQuarticCutoff (θ * L)) ε →
+    EvenMomentSliceLowerBound L (originalDetectorQuarticCutoff L)
+      (C * (1 + L) ^ d + C * (1 + L) ^ m * ε)
+
+/-- **Contract (ND), odd parity.** This proposition is OPEN. -/
+def OddScaleDescent (θ C : ℝ) (d m : ℕ) : Prop :=
+  ∀ᶠ L in Filter.atTop, ∀ ε : ℝ, 0 ≤ ε →
+    OddMomentSliceLowerBound (θ * L) (originalDetectorQuarticCutoff (θ * L)) ε →
+    OddMomentSliceLowerBound L (originalDetectorQuarticCutoff L)
+      (C * (1 + L) ^ d + C * (1 + L) ^ m * ε)
+
+/-- The even scale form is an instance of the even delay form. -/
+theorem evenDelayDescent_of_scaleDescent {θ C : ℝ} {d m : ℕ} (hθ : 0 < θ)
+    (h : EvenScaleDescent θ C d m) :
+    EvenDelayDescent (fun L => C * (1 + L) ^ d) (fun L => C * (1 + L) ^ m)
+      (fun L => (1 - θ) * L) := by
+  refine ⟨1, le_rfl, ?_⟩
+  filter_upwards [h, Filter.eventually_ge_atTop (1 / θ)] with L hL hLθ
+  intro ε hε hant
+  have hθL : 1 ≤ θ * L := by
+    rw [div_le_iff₀ hθ] at hLθ
+    linarith
+  exact hL ε hε (hant (θ * L) hθL (by ring_nf; linarith))
+
+/-- The odd scale form is an instance of the odd delay form. -/
+theorem oddDelayDescent_of_scaleDescent {θ C : ℝ} {d m : ℕ} (hθ : 0 < θ)
+    (h : OddScaleDescent θ C d m) :
+    OddDelayDescent (fun L => C * (1 + L) ^ d) (fun L => C * (1 + L) ^ m)
+      (fun L => (1 - θ) * L) := by
+  refine ⟨1, le_rfl, ?_⟩
+  filter_upwards [h, Filter.eventually_ge_atTop (1 / θ)] with L hL hLθ
+  intro ε hε hant
+  have hθL : 1 ≤ θ * L := by
+    rw [div_le_iff₀ hθ] at hLθ
+    linarith
+  exact hL ε hε (hant (θ * L) hθL (by ring_nf; linarith))
+
+/-- **Conditional reduction (ND, even) → RH.** The descent premise remains OPEN. -/
+theorem riemannHypothesis_of_even_scale_descent {θ C : ℝ} {d m : ℕ} (hθ0 : 0 < θ)
+    (hθ1 : θ < 1) (h : EvenScaleDescent θ C d m) : RiemannHypothesis :=
+  riemannHypothesis_of_even_delay_descent (admissibleDescentCosts_polynomial hθ1 C d m)
+    (evenDelayDescent_of_scaleDescent hθ0 h)
+
+/-- **Conditional reduction (ND, odd) → RH.** The descent premise remains OPEN. -/
+theorem riemannHypothesis_of_odd_scale_descent {θ C : ℝ} {d m : ℕ} (hθ0 : 0 < θ)
+    (hθ1 : θ < 1) (h : OddScaleDescent θ C d m) : RiemannHypothesis :=
+  riemannHypothesis_of_odd_delay_descent (admissibleDescentCosts_polynomial hθ1 C d m)
+    (oddDelayDescent_of_scaleDescent hθ0 h)
+
+/-- **RH gives (ND, even)** for every nonnegative constant. -/
+theorem evenScaleDescent_of_riemannHypothesis (hRH : RiemannHypothesis) (θ : ℝ) {C : ℝ}
+    (hC : 0 ≤ C) (d m : ℕ) : EvenScaleDescent θ C d m := by
+  filter_upwards [Filter.eventually_ge_atTop (1 : ℝ)] with L hL
+  intro ε hε _
+  refine ((momentSliceLowerBounds_zero_of_riemannHypothesis hRH (by linarith) _).1).mono ?_
+  have h1 : 0 ≤ C * (1 + L) ^ d := mul_nonneg hC (pow_nonneg (by linarith) d)
+  have h2 : 0 ≤ C * (1 + L) ^ m * ε := mul_nonneg (mul_nonneg hC (pow_nonneg (by linarith) m)) hε
+  linarith
+
+/-- **RH gives (ND, odd)** for every nonnegative constant. -/
+theorem oddScaleDescent_of_riemannHypothesis (hRH : RiemannHypothesis) (θ : ℝ) {C : ℝ}
+    (hC : 0 ≤ C) (d m : ℕ) : OddScaleDescent θ C d m := by
+  filter_upwards [Filter.eventually_ge_atTop (1 : ℝ)] with L hL
+  intro ε hε _
+  refine ((momentSliceLowerBounds_zero_of_riemannHypothesis hRH (by linarith) _).2).mono ?_
+  have h1 : 0 ≤ C * (1 + L) ^ d := mul_nonneg hC (pow_nonneg (by linarith) d)
+  have h2 : 0 ≤ C * (1 + L) ^ m * ε := mul_nonneg (mul_nonneg hC (pow_nonneg (by linarith) m)) hε
+  linarith
+
+/-- **(ND) is equivalent to RH** for every `0 < θ < 1`, every nonnegative constant
+and all exponents. -/
+theorem riemannHypothesis_iff_scale_descent {θ C : ℝ} (hθ0 : 0 < θ) (hθ1 : θ < 1)
+    (hC : 0 ≤ C) (d m : ℕ) :
+    RiemannHypothesis ↔ (EvenScaleDescent θ C d m ∨ OddScaleDescent θ C d m) :=
+  ⟨fun hRH => Or.inl (evenScaleDescent_of_riemannHypothesis hRH θ hC d m),
+    fun h => h.elim (riemannHypothesis_of_even_scale_descent hθ0 hθ1)
+      (riemannHypothesis_of_odd_scale_descent hθ0 hθ1)⟩
 
 end Zeta23.OPICARound4.ArithmeticFrontier

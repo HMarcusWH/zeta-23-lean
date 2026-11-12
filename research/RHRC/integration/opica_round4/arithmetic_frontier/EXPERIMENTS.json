@@ -382,6 +382,22 @@
       "result": "Set A (displacement 3/10, ordinate 173/10, depth rate 1/10; 100 apertures from 30 to about 760): no crossing at 34 apertures (the last near 354), cutoffs between 5 and 10 at ten apertures (the last near 435), and cutoff 3 or 4 at all 44 apertures beyond 436, at both thresholds. Set B (displacement 9/20, ordinate 28, depth rate 1/5; 39 apertures from 60 to about 513): cutoff 3 or 4 at all 12 apertures beyond 371; the two thresholds differ at two transient apertures.",
       "disposition": "EXPERIMENTAL_SIGNAL on a model that is not the zeta function; it refutes only arguments that do not use the divisor identities",
       "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment6a/SUMMARY.json"
+    },
+    {
+      "id": "E-KERNEL-CERT",
+      "status": "RUN_EXACT",
+      "goal": "Check the explicit kernels of the 12 November Drive notes exactly and re-certify the sign change of J independently.",
+      "result": "All exact identities hold; the five constants agree with the Drive values; outward dyadic enclosures give J(4) in [5.768822214639154569554e-5, 5.768822214639154569555e-5] and J(6) in [-1.292800876274351016932e-4, -1.292800876274351016931e-4], intersecting the Drive enclosures.",
+      "disposition": "FINITE_CERTIFICATE (explicit finite objects only)",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment6b/KERNEL_CERTIFICATES.json"
+    },
+    {
+      "id": "E-DRIVE-SCALAR-XCHECK",
+      "status": "RUN",
+      "goal": "Compare the scalar table of the signed-aperture note with the ball-arithmetic prime side of SPECTRAL_K3.",
+      "result": "All eight values agree to a relative difference below 1e-15 (about 2^-51) at L = 2, 3, 4, 5, 6, 8, 10, 12.",
+      "disposition": "EXPERIMENTAL_SIGNAL (two implementations of one compiled identity)",
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment6b/SUMMARY.json"
     }
   ],
   "corrections": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2b/CORRECTIONS.json"

@@ -723,11 +723,58 @@ The `dab9fbe` qualified baseline keeps its own scope.
 **RH, Step 4 and every closing inequality remain OPEN.** M60 and M61 are
 adapters. No rate at or below `1/2` is supplied.
 
+## Increment 6B — loss-tolerant descent and the shape of the missing arithmetic (12 November 2026)
+
+Parent head `64a3dbd8e451b2d7eb94ceb394412abe8e2522e7`. Source: the six Drive
+notes of 12 November (SOURCE_LEDGER rows with an `increment6b` entry), read in full.
+
+**Lean (M62, last section of `ZeroFreeFloor.lean`, 25 declarations).**
+
+* `fixed_rate_of_delay_descent` is the abstract delay lemma.
+* `EvenDelayDescent` and `OddDelayDescent` are the contract (DD).
+* `EvenScaleDescent` and `OddScaleDescent` are the contract (ND).
+* The consumers go to (SE) and RH; the converses under RH are compiled.
+* `riemannHypothesis_iff_delay_descent` and `riemannHypothesis_iff_scale_descent` state the equivalences.
+* The a priori base is the unconditional rate-one bound with an explicit start
+  (`evenMomentSliceLowerBound_explicit_of_zeroStrip` and its odd version).
+
+The section lives in the M60 module because no further owned module fits the
+Round4 lane-report budget (see increment 6A). Controls FrontierMutation36 to 41
+were added. The gate stands at 1392 declarations in 108 modules with 125 controls.
+
+**Certificates (`kernel_certificates.py`, `evidence/increment6b`, recomputed in CI).**
+The checks are exact algebra:
+
+* the even cutoff-3 vector, including its non-zero fourth moment `2880x`;
+* the endpoint polynomial `q` and its transform `(s²-1/4)²/s¹⁴`;
+* the cutoff-4 profile with its exact double zero at `1/2`;
+* the constants `C0`, `C1`, `C2`, `C_H`, `C_H'` of the Drive notes.
+
+Outward dyadic enclosures give `J(4) > 0 > J(6)`, independently of the Drive
+script. A comparison of the Drive scalar table with SPECTRAL_K3 agrees to a
+relative difference below `1e-15`.
+
+**Registers.** The following were updated:
+
+* round8/MISSING_ARITHMETIC_SHAPE.md (new);
+* corrections 1 to 4 in round7/TARGET_CONSOLIDATION.md;
+* CR51 to CR53, with corrections on CR46 and CR47;
+* leaves S-DESCENT, S-KERNELS, DD and ND, and `increment6b_status`;
+* MP24 to MP28 and FM36 to FM41;
+* E-KERNEL-CERT and E-DRIVE-SCALAR-XCHECK;
+* AF-2026-11-12-40 to 45;
+* 22 source-ledger rows.
+
 ## Next increments
 
 1. **The supplier (OPEN).** After round 7 the open suppliers are one statement:
    a lower bound `E_e(L) ≥ −C e^{αL}` (equivalently the energy rate of `Z`) at a
    rate `α` below `1/2`, and for closure at every positive rate.
+   * Increment 6B fixes its shape (round8/MISSING_ARITHMETIC_SHAPE.md). Every
+     listed form asks for signed cancellation of the Möbius function against an
+     explicit, tame, sign-changing kernel.
+   * The bound may lose polynomial or subexponential factors and may compare an
+     aperture with earlier ones; (DD) and (ND) receive it (M62).
    * (U), (F) and (E) are forms of it and are not separate targets (CR46).
    * (CP), the (SG) certificate, (C2-SE) and the CAUSAL covariance bound remain
      listed closing premises on other carriers. None has a supplier. By M60,

@@ -1,0 +1,48 @@
+{
+ "schema": "OPICA4_ARITHMETIC_FRONTIER_INCREMENT6B_SUMMARY_V1",
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "authority": "FINITE_CERTIFICATES_AND_ONE_EXPERIMENTAL_CROSS_CHECK",
+ "shape_register": "round8/MISSING_ARITHMETIC_SHAPE.md",
+ "tools": {
+  "kernel_certificates.py": "a68f616a9ddeaad94c2b605f1359ca9c949a63d3d2d5c0f00bea3d6fb9b7f853"
+ },
+ "records": [
+  {
+   "file": "KERNEL_CERTIFICATES.json",
+   "sha256": "981e103a292d6e21a9e91a20b1c5d5a47c0174e14aa1b06ef9a6c5e041018bca"
+  }
+ ],
+ "statements": {
+  "kernel_certificates": {
+   "label": "FINITE_CERTIFICATE",
+   "claim": "Exact algebra of the even cutoff-3 vector (constraints, norm, non-zero fourth moment 2880x, transform closed form), of the endpoint polynomial q (transform (s^2-1/4)^2/s^14, two vanishing moments at 1/2, exactly two sign changes), and of the cutoff-4 profile g and its Volterra square q4 (closed form, g(0)=0, exact double zero of K=(Lg)^2 at 1/2, the constants C0, C1, C2 and the Drive values C_H = 24 C0 + 4 C1, C_H' = 24 C1 + 4 C2). Outward dyadic enclosures give J(4) > 0 and J(6) < 0 for the integer-drive kernel J = H' + H/2.",
+   "reverified_in_ci": "The whole record is recomputed and compared byte for byte (about three seconds).",
+   "independence": "The J enclosures come from an implementation written for this increment; they intersect the enclosures of the Drive note, whose script was not used.",
+   "limit": "Explicit finite objects and two values of one function. The bounds |H| <= C_H (1+t) and |H'| <= C_H' (1+t) are paper derivations of the Drive notes (DERIVED); only their constants are checked here."
+  },
+  "drive_scalar_table": {
+   "label": "EXPERIMENTAL_SIGNAL",
+   "claim": "The eight values of the even cutoff-3 energy E_e(L) printed in the signed-aperture note (mpmath quadrature of the complete prime-side formula) equal the ball-arithmetic prime-side values of evidence/increment6a/SPECTRAL_K3.json to a relative difference below 1e-15 at L = 2, 3, 4, 5, 6, 8, 10, 12.",
+   "drive_table": {
+    "2": "1.923991889063626e-4",
+    "3": "8.558612138289437e-7",
+    "4": "1.254310720517021e-9",
+    "5": "5.070945344741753e-9",
+    "6": "1.709857787235825e-9",
+    "8": "9.309436808451213e-13",
+    "10": "1.105984091718716e-11",
+    "12": "9.032227168061844e-15"
+   },
+   "source": "RH_STEP4_SIGNED_APERTURE_DESCENT_INVESTIGATION_2026-11-12.md (Drive id 1ADXy4guVgyF7OBFrZ6Gnuymf8sLEvH5Z), section 8",
+   "limit": "Two implementations of one compiled identity agree numerically; this is not a proof of the closed formula and says nothing about late apertures."
+  }
+ },
+ "not_established": [
+  "any signed bound on the Mertens or prime discrepancy pairing",
+  "any descent inequality (DD) or (ND)",
+  "any rate at or below 1/2",
+  "Step 4",
+  "RH"
+ ]
+}

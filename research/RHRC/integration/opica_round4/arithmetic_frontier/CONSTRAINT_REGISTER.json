@@ -834,7 +834,8 @@
         "MP23",
         "CR45 (the finite implication is compiled)"
       ],
-      "budget_improved": "None. Three listed suppliers reduce to one."
+      "budget_improved": "None. Three listed suppliers reduce to one.",
+      "correction_6b": "Rates: the quantities of (E) and (F) are squared norms, so at a fixed rate they grow at twice the rate of the field; the every-positive-rate equivalence stands, and no quantitative equivalence of the full (E) and (F) contracts is established. Without a dominance assumption the empty predecessor is shown only on a cofinal set not shown to meet the production family. See round7/TARGET_CONSOLIDATION.md, corrections."
     },
     {
       "id": "CR47",
@@ -850,7 +851,8 @@
         "E-SPECTRAL-LOWDEG (prime side against the zero sum, L = 2 to 12)",
         "MP23"
       ],
-      "budget_improved": "States the remaining premise on one sequence of finite smoothed prime sums. No bound is supplied."
+      "budget_improved": "States the remaining premise on one sequence of finite smoothed prime sums. No bound is supplied.",
+      "correction_6b": "Under RH the normalized scalar T = w E_e (w = L/c_e^2, degree 13) is uniformly bounded, so E_e(L) = O(L^-13); 12.94/L^5 remains true but is weaker. The scalar vector is not in the quartic moment slice (fourth moment 2880x, evidence/increment6b), so the scalar route needs its own formal adapter."
     },
     {
       "id": "CR48",
@@ -894,6 +896,72 @@
         "MP23 (the near-radical vector still exists in the model, sits inside the spectrum and is not the ground vector)"
       ],
       "budget_improved": "None. Identifying the near-radical vector with the ground vector needs the absence of eigenvalues below it, which is the missing estimate."
+    },
+    {
+      "id": "CR51",
+      "name": "Loss-tolerant delay descent is a sharp interface",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_delay_descent",
+      "statement": "Abstractly (fixed_rate_of_delay_descent): if P L eps is monotone in eps, holds with C0 e^(alpha L) from L1 on, and at every large L a bound eps on [L1, L - h(L)] gives P L (A(L) + G(L) eps), with h eventually >= h0 > 0, A eventually below every positive exponential rate and 2 G(L) <= e^(eta h(L)) eventually for every eta > 0, then P holds at every positive rate from L1 on. Natively (EvenDelayDescent, OddDelayDescent): with such costs the delay descent of the slice bottom in one parity gives (SE) and RH; under RH every eventually nonnegative cost profile satisfies it.",
+      "scope": "Actual quartic moment slices in one fixed parity; every admissible cost profile. The a priori base is the unconditional rate-one bound (explicit start L >= 1).",
+      "parameter_order": "Costs A, G, h first; then the start L1 >= 1; then every large L and every eps >= 0.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "SHARP_INTERFACE (closing iff the descent inequality is supplied)",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixed_rate_of_delay_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenFixedRateMomentSliceBound_of_delayDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddFixedRateMomentSliceBound_of_delayDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_delay_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_delay_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_riemannHypothesis"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation36 (the gain must be e^(o(h)); with 2G <= e^h, b(L) = e^(L/2) satisfies the premise)",
+        "FrontierMutation37 (the delay must stay above a fixed h0 > 0; h = 0 is a vacuous self-comparison)",
+        "FrontierMutation38 (every positive rate, not a bounded floor: b(L) = L satisfies the premise)",
+        "FrontierMutation40 (the first apertures must be paid by an a priori bound)",
+        "FrontierMutation41 (under RH the contract follows only for nonnegative costs)"
+      ],
+      "budget_improved": "The missing inequality may lose polynomial or subexponential factors and may compare an aperture with earlier ones; positivity at intermediate apertures and contraction are not needed. No descent inequality is supplied."
+    },
+    {
+      "id": "CR52",
+      "name": "Fractional-scale descent with polynomial costs is a sharp interface",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_scale_descent",
+      "statement": "For 0 < theta < 1, C >= 0 and exponents d, m: the slice bound eps at theta L giving the slice bound C(1+L)^d + C(1+L)^m eps at L, at every large L in one parity (EvenScaleDescent, OddScaleDescent), is equivalent to RH. It is an instance of CR51 with delay (1 - theta) L.",
+      "scope": "Actual quartic moment slices; the contract (ND) of the signed-aperture note in its lower-bound form.",
+      "parameter_order": "theta, C, d, m first; then every large L and every eps >= 0.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "SHARP_INTERFACE",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.admissibleDescentCosts_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_scaleDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_scaleDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_scale_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_scale_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenScaleDescent_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddScaleDescent_of_riemannHypothesis"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation39 (theta = 1 is a self-comparison that every source satisfies once C >= 1)"
+      ],
+      "budget_improved": "As CR51."
+    },
+    {
+      "id": "CR53",
+      "name": "Tame integer drive and wild Moebius part: the exact Abel-Mertens bridge",
+      "proposition": null,
+      "statement": "For the fixed cutoff-4 kernel q4 = g * g, S(T) = sum_{n <= e^T} Lambda(n) n^(-1/2) q4(T - log n) equals int_0^T m(v) J(T - v) dv with m(v) = e^(-v/2) M(e^v), J = H' + H/2 and H(t) = sum_{n <= e^t} (log n / sqrt n) q4(t - log n); |H| <= C_H (1+t) and |H'| <= C_H' (1+t) with explicit rationals. |M(x)| <= C x^theta gives fixed-field rate theta - 1/2. J takes both signs (J(4) > 0 > J(6)).",
+      "scope": "Paper level (cutoff-scale note of 12 November), DERIVED; the identity uses finite partial summation only. The constants, the double zero of K at 1/2 and the two signs of J are recomputed exactly in evidence/increment6b (FINITE_CERTIFICATE).",
+      "parameter_order": "One fixed kernel; every T.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (locates the unpaid term)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP27 (no positive-kernel domination)",
+        "MP24 (breaks Lambda = mu * log)"
+      ],
+      "budget_improved": "The whole integer drive (weight one on every integer) is paid unconditionally; the unpaid term is signed cancellation of mu against J. The classical Mertens criterion is the anchor, not a new input."
     }
   ],
   "strength_rule": "An RH-sufficient contract that is also RH-necessary is a sharp interface, not independent sub-RH progress. Only an independent supplier changes the state.",

@@ -6565,3 +6565,128 @@ set_option pp.maxSteps 2000000
 #check @Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_odd_trial
 #eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_odd_trial"
 #print axioms Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_odd_trial
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.fixed_rate_of_delay_descent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.fixed_rate_of_delay_descent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.fixed_rate_of_delay_descent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.fixed_rate_of_delay_descent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_explicit_of_zeroStrip"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_explicit_of_zeroStrip
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_explicit_of_zeroStrip"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_explicit_of_zeroStrip
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_explicit_of_zeroStrip"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_explicit_of_zeroStrip
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_explicit_of_zeroStrip"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_explicit_of_zeroStrip
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_half"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_half
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_half"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_half
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.AdmissibleDescentCosts"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.AdmissibleDescentCosts
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.AdmissibleDescentCosts"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.AdmissibleDescentCosts
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.EvenDelayDescent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.EvenDelayDescent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.EvenDelayDescent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.EvenDelayDescent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.OddDelayDescent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.OddDelayDescent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.OddDelayDescent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.OddDelayDescent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.evenFixedRateMomentSliceBound_of_delayDescent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.evenFixedRateMomentSliceBound_of_delayDescent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.evenFixedRateMomentSliceBound_of_delayDescent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.evenFixedRateMomentSliceBound_of_delayDescent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.oddFixedRateMomentSliceBound_of_delayDescent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.oddFixedRateMomentSliceBound_of_delayDescent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.oddFixedRateMomentSliceBound_of_delayDescent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.oddFixedRateMomentSliceBound_of_delayDescent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_delay_descent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_delay_descent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_delay_descent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_delay_descent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_delay_descent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_delay_descent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_delay_descent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_delay_descent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_riemannHypothesis"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_riemannHypothesis
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_riemannHypothesis"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_riemannHypothesis
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_riemannHypothesis"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_riemannHypothesis
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_riemannHypothesis"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_riemannHypothesis
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_delay_descent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_delay_descent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_delay_descent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_delay_descent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.eventually_mul_one_add_pow_le_exp"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.eventually_mul_one_add_pow_le_exp
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.eventually_mul_one_add_pow_le_exp"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.eventually_mul_one_add_pow_le_exp
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.admissibleDescentCosts_polynomial"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.admissibleDescentCosts_polynomial
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.admissibleDescentCosts_polynomial"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.admissibleDescentCosts_polynomial
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.EvenScaleDescent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.EvenScaleDescent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.EvenScaleDescent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.EvenScaleDescent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.OddScaleDescent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.OddScaleDescent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.OddScaleDescent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.OddScaleDescent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_scaleDescent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_scaleDescent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_scaleDescent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_scaleDescent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_scaleDescent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_scaleDescent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_scaleDescent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_scaleDescent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_scale_descent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_scale_descent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_scale_descent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_scale_descent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_scale_descent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_scale_descent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_scale_descent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_scale_descent
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.evenScaleDescent_of_riemannHypothesis"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.evenScaleDescent_of_riemannHypothesis
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.evenScaleDescent_of_riemannHypothesis"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.evenScaleDescent_of_riemannHypothesis
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.oddScaleDescent_of_riemannHypothesis"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.oddScaleDescent_of_riemannHypothesis
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.oddScaleDescent_of_riemannHypothesis"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.oddScaleDescent_of_riemannHypothesis
+
+#eval IO.println "OPICA4_TYPE_BEGIN Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_scale_descent"
+#check @Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_scale_descent
+#eval IO.println "OPICA4_TYPE_END Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_scale_descent"
+#print axioms Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_scale_descent

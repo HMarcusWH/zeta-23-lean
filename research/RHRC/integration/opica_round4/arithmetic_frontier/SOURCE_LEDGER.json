@@ -3699,6 +3699,380 @@
         "superseded_by": "1pf7L1Hxbucf7CaG6ykL7-Xf4iEbz9g3I",
         "note": "Fourth upload; it described an external zero-free half-plane as an available fixed rate near 0.373 without saying that any such half-plane is the quasi-Riemann hypothesis."
       }
+    },
+    {
+      "drive_id": "1ADXy4guVgyF7OBFrZ6Gnuymf8sLEvH5Z",
+      "title": "RH_STEP4_SIGNED_APERTURE_DESCENT_INVESTIGATION_2026-11-12.md",
+      "mime_type": "text/markdown",
+      "bytes": 30969,
+      "modified_utc": "2026-11-12T01:48:14.826Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "full text read through the connector on 2026-11-12; bytes not stored, so no content hash",
+        "use": "Loss-tolerant descent lemma (formalized as M62, CR51, CR52); normalized scalar T = w E_e and its Laplace consumer; complete prime-side formula of E_e; whole-slice transport target (ND). Its scalar table is compared with SPECTRAL_K3 in evidence/increment6b. Corrections 1 to 4 of round7/TARGET_CONSOLIDATION.md."
+      }
+    },
+    {
+      "drive_id": "1LWfHj97estOSOnQXb2PNIXC0nRLH1oLO",
+      "title": "RH_STEP4_SIGNED_APERTURE_DESCENT_EVIDENCE_2026-11-12.zip",
+      "mime_type": "application/zip",
+      "bytes": 603677,
+      "modified_utc": "2026-11-12T01:48:24.747Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Evidence of the note above; not used."
+      }
+    },
+    {
+      "drive_id": "1SBtrYTK4-HNxUI8TNUc4oOXFSNN3DBEg",
+      "title": "RH_STEP4_SIGNED_APERTURE_DESCENT_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "mime_type": "application/json",
+      "bytes": 1740,
+      "modified_utc": "2026-11-12T01:49:15.433Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "PUBLICATION_RECEIPT",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Delivery record; not a theorem certificate."
+      }
+    },
+    {
+      "drive_id": "1hxNpYuJwgxDVuN7eeAxNgLiA0eGSJDd0",
+      "title": "RH_DRIVE_REPO_RECHECK_SUMMARY_2026-11-12.md",
+      "mime_type": "text/markdown",
+      "bytes": 3037,
+      "modified_utc": "2026-11-12T11:42:41.915Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "REPORT_OR_NOTE",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "full text read through the connector on 2026-11-12; bytes not stored, so no content hash",
+        "use": "Independent diagnosis of the 9a88613 MATHEMATICAL_SUPPORT failure (report JSON over the 100,000-node budget), the same cause as WORKFLOW_HARVEST head_harvest_9a88613. Its two stale-state remarks (location of M61, PR body) were resolved by 64a3dbd."
+      }
+    },
+    {
+      "drive_id": "1uH_ErNpd22gjMvuEfTL93nf0Sz_HRKDB",
+      "title": "RH_DRIVE_REPO_RECHECK_VERIFICATION_2026-11-12.json",
+      "mime_type": "application/json",
+      "bytes": 29088,
+      "modified_utc": "2026-11-12T11:42:46.626Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "EVIDENCE_RECORD",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Not used."
+      }
+    },
+    {
+      "drive_id": "1MD6BZ-iTj-g24tw_P8rjnsISpR68IfW4",
+      "title": "RH_DRIVE_REPO_RECHECK_2026-11-12.zip",
+      "mime_type": "application/zip",
+      "bytes": 401644,
+      "modified_utc": "2026-11-12T11:42:51.469Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Not used."
+      }
+    },
+    {
+      "drive_id": "1f-WQSUSDn2M5iLbEJWceJrazyQJq114j",
+      "title": "PR299_9a88613_MATHEMATICAL_SUPPORT_diagnostics.zip",
+      "mime_type": "application/zip",
+      "bytes": 6672050,
+      "modified_utc": "2026-11-12T11:42:57.409Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "CI_ARTIFACT_COPY",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Copy of a CI diagnostic artifact; not used."
+      }
+    },
+    {
+      "drive_id": "12Yo0krpK6Mu2pcUmT10MiNq2N_MiLIt5",
+      "title": "RH_DRIVE_REPO_RECHECK_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "mime_type": "application/json",
+      "bytes": 4421,
+      "modified_utc": "2026-11-12T11:45:10.616Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "PUBLICATION_RECEIPT",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Delivery record."
+      }
+    },
+    {
+      "drive_id": "1r2FFBoKEnr1lzyHYXeFfa48Bhw7pnPGH",
+      "title": "RH_STEP4_ENDPOINT_KERNEL_AND_PRIME_POWER_AUDIT_2026-11-12.md",
+      "mime_type": "text/markdown",
+      "bytes": 26863,
+      "modified_utc": "2026-11-12T13:53:49.295Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "full text read through the connector on 2026-11-12; bytes not stored, so no content hash",
+        "use": "Proper-power bound L + L^2/2 + 128 (PG and SE may drop proper powers); exact endpoint kernel q with transform (s^2-1/4)^2/s^14 (checked exactly in evidence/increment6b); PNT-only obstruction with C* = 328.71; open line (7.1). It verified the increment-6A bundle and cautioned against reading the U/F/E consolidation as a quantitative equivalence (correction 1)."
+      }
+    },
+    {
+      "drive_id": "1yqwJMonT-3CEKurFte2a_2BDlJvBtVEx",
+      "title": "RH_STEP4_ENDPOINT_KERNEL_EVIDENCE_2026-11-12.zip",
+      "mime_type": "application/zip",
+      "bytes": 1205228,
+      "modified_utc": "2026-11-12T13:54:05.650Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Not used."
+      }
+    },
+    {
+      "drive_id": "1WboIHgfIEm2NhcitHmzyF8h08rn4yqF3",
+      "title": "RH_STEP4_ENDPOINT_KERNEL_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "mime_type": "application/json",
+      "bytes": 1850,
+      "modified_utc": "2026-11-12T13:55:38.943Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "PUBLICATION_RECEIPT",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Delivery record."
+      }
+    },
+    {
+      "drive_id": "1GDbvdKoyoSPbSTyCyns850giqx9qg5rw",
+      "title": "RH_STEP4_BACK_TO_FRONT_CLOSURE_AUDIT_2026-11-12.md",
+      "mime_type": "text/markdown",
+      "bytes": 33657,
+      "modified_utc": "2026-11-12T17:21:31.719Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "full text read through the connector on 2026-11-12; bytes not stored, so no content hash",
+        "use": "Reverse dependency table; probes in the true moment carriers (4,0) and (5,1); Euler-exponent perturbation control (MP24; its constants equal |G(1/2+i)|^2, checked exactly); Moebius completion with the unpaid long remainder (7.5); entry-chain reading of an external 7/8 half-plane claim (not a dependency or axiom audit; remains unverified)."
+      }
+    },
+    {
+      "drive_id": "1zRqD12SuspFpDux9UW-vyFCoPHiL-xAZ",
+      "title": "RH_STEP4_BACK_TO_FRONT_EVIDENCE_2026-11-12.zip",
+      "mime_type": "application/zip",
+      "bytes": 135254,
+      "modified_utc": "2026-11-12T17:21:44.704Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Not used."
+      }
+    },
+    {
+      "drive_id": "1s7uEqBTH9-AoIwQZ6JXgngQfZSDN_zxf",
+      "title": "RH_STEP4_BACK_TO_FRONT_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "mime_type": "application/json",
+      "bytes": 1566,
+      "modified_utc": "2026-11-12T17:22:28.964Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "PUBLICATION_RECEIPT",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Delivery record."
+      }
+    },
+    {
+      "drive_id": "1-ZcSqT4elVxvAIlyPMokln3PBSr8QdJL",
+      "title": "RH_STEP4_LOG_DELAY_AND_SIGNED_MOBIUS_RETURN_2026-11-12.md",
+      "mime_type": "text/markdown",
+      "bytes": 23571,
+      "modified_utc": "2026-11-12T17:58:50.578Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "full text read through the connector on 2026-11-12; bytes not stored, so no content hash",
+        "use": "Delay form of the descent lemma (formalized as M62, CR51); fixed cutoff-4 kernel (coefficients and C_H checked exactly); exact Moebius recurrence S = F_U + R_U at U = floor(T^2) and the open return bound (SR); fixed-field Laplace consumer; certified signs of R at N = 64 and 128."
+      }
+    },
+    {
+      "drive_id": "1LombN8YM6nuUIU51SimJDYKCUpSNn5CG",
+      "title": "RH_STEP4_LOG_DELAY_EVIDENCE_2026-11-12.zip",
+      "mime_type": "application/zip",
+      "bytes": 49861,
+      "modified_utc": "2026-11-12T17:59:00.668Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Not used."
+      }
+    },
+    {
+      "drive_id": "1bX8anZHNowcXlfXwWu_bCC5Y8iwiIN2x",
+      "title": "RH_STEP4_LOG_DELAY_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "mime_type": "application/json",
+      "bytes": 1921,
+      "modified_utc": "2026-11-12T18:00:03.898Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "PUBLICATION_RECEIPT",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Delivery record."
+      }
+    },
+    {
+      "drive_id": "1ODunszCR5ANMRtC1q8lIXfbf--L_P8QK",
+      "title": "RH_STEP4_CUTOFF_SCALE_AND_MERTENS_BRIDGE_2026-11-12.md",
+      "mime_type": "text/markdown",
+      "bytes": 22135,
+      "modified_utc": "2026-11-12T18:27:45.835Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "RESEARCH_REPORT",
+      "review_depth": "TEXT_REVIEWED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "full text read through the connector on 2026-11-12; bytes not stored, so no content hash",
+        "use": "Larger subexponential cutoffs (Propositions A and B); derivative bound for the integer drive; exact Abel-Mertens bridge S = m * J (CR53); Mertens rate transfer; J(4) > 0 > J(6), re-certified independently in evidence/increment6b. Basis of the tame/wild split of round8/MISSING_ARITHMETIC_SHAPE.md."
+      }
+    },
+    {
+      "drive_id": "1nL-we-e5CpXGlpZqucU4d9UGAtUrb362",
+      "title": "RH_STEP4_CUTOFF_SCALE_EVIDENCE_2026-11-12.zip",
+      "mime_type": "application/zip",
+      "bytes": 24613,
+      "modified_utc": "2026-11-12T18:27:49.808Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "EVIDENCE_ARCHIVE",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Not used; its sign certificate was re-implemented."
+      }
+    },
+    {
+      "drive_id": "1GOOCwGmzPc0bho7IC3iWutBGmiZ5mtRq",
+      "title": "RH_STEP4_CUTOFF_SCALE_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "mime_type": "application/json",
+      "bytes": 2090,
+      "modified_utc": "2026-11-12T18:28:58.091Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "PUBLICATION_RECEIPT",
+      "review_depth": "LISTED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "listed with metadata only; not downloaded and not opened",
+        "use": "Delivery record."
+      }
+    },
+    {
+      "drive_id": "1CjD08psHR2K9TAPzo7kFpcEJn9UfOa2g",
+      "title": "OPICA_Step4_Round7_Increment6A_HANDOVER_2026-11-12.md",
+      "mime_type": "text/markdown",
+      "bytes": 16364,
+      "modified_utc": "2026-11-12T13:13:00.354Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "PRODUCED_BY_THIS_BUILD_SESSION",
+      "review_depth": "AUTHORED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "uploaded by this session",
+        "use": "Drive copy of arithmetic_frontier/HANDOVER_2026-11-12.md at 64a3dbd."
+      }
+    },
+    {
+      "drive_id": "1NsUv0nhLn_ngwqyvArDZ5DTIOvoTaSn8",
+      "title": "OPICA_Step4_Round7_Increment6A_results_2026-11-12.zip",
+      "mime_type": "application/zip",
+      "bytes": 557299,
+      "modified_utc": "2026-11-12T13:13:01.646Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "PRODUCED_BY_THIS_BUILD_SESSION",
+      "review_depth": "AUTHORED",
+      "content_sha256": null,
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-12",
+      "increment6b": {
+        "action": "uploaded by this session",
+        "use": "Increment-6A results bundle (sha256 cf50fe67fedc23d239ce7267367353c7f42878fe1ad4d5bfd5dfd2fe44237475)."
+      }
     }
   ],
   "folder_membership": {
@@ -3716,10 +4090,12 @@
     "coverage_caveat": "Folder coverage is listing coverage only: 204 of 206 entries remain DISCOVERED, one is FETCHED and one REPLAYED. DISCOVERED is not text review, proof audit or replay (CORRECTIONS addendum, limitations_restated)."
   },
   "coverage_by_review_depth": {
+    "AUTHORED": 2,
     "DISCOVERED": 234,
     "FETCHED": 14,
+    "LISTED": 14,
     "REPLAYED": 1,
-    "TEXT_REVIEWED": 18
+    "TEXT_REVIEWED": 24
   },
   "folder_membership_refresh_2026_11_08": {
     "queries": [
@@ -3774,5 +4150,13 @@
     "pr": "HMarcusWH/zeta-23-lean#299",
     "round4_run": 42539385910,
     "attempt": 1
+  },
+  "current_state_folder_2026_11_12": {
+    "folder_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+    "performed_utc_date": "2026-11-12",
+    "listing": "Connector queries for items of the folder modified after the increment-6A uploads (2026-11-11T12:53Z) up to 18:29 UTC on 2026-11-12, plus one query outside the folder for matching titles (none found).",
+    "coverage_statement": "The six reports were read in full; the archives, receipts and CI copies were listed only. Other items of the folder are not claimed as reviewed.",
+    "rows_added": 22,
+    "writes_by_this_session": "Uploads only. No pre-existing Drive document was modified."
   }
 }

@@ -515,3 +515,47 @@ The gate is now 1367 declarations in 108 modules with 119 controls (shards
 itself; the half-plane read with `θ - 1`; every positive rate presented as
 unconditional; a cutoff-3 bottom below only `-D/3`; and (PG) presented without
 its RH premise.
+
+## Arithmetic frontier, increment 6B: loss-tolerant descent and the shape register (12 November 2026)
+
+The last section of `ZeroFreeFloor` (contract M62) adds 25 declarations. It is the
+receiving interface for loss-tolerant descent.
+
+* An abstract lemma (`fixed_rate_of_delay_descent`) needs a predicate monotone in
+  its error, with an a priori exponential bound and a delay descent: a bound `ε`
+  on `[L₁, L - h(L)]` gives the bound `A(L) + G(L) ε` at `L`. The admissible costs
+  are a delay eventually at least `h₀ > 0`, an additive cost below every positive
+  exponential rate, and `2G ≤ exp (η h)` eventually for every `η > 0`. The
+  predicate then holds at every positive rate.
+* Natively, with the unconditional rate-one bound as base, the delay contract (DD)
+  in one parity gives (SE) and Mathlib `RiemannHypothesis`. RH gives (DD) for every
+  eventually nonnegative cost profile, so each admissible profile gives a contract
+  equivalent to RH. The fractional-scale contract (ND), comparing `L` with `θ L`
+  (`0 < θ < 1`) at polynomial costs, is an instance and is also equivalent to RH.
+
+These are sharp interfaces. They show how much the missing inequality may lose:
+any polynomial or subexponential factor, relative to earlier apertures. They do
+not supply it. Six new controls reject the following:
+
+* a gain `2G ≤ exp h`;
+* a delay only nonnegative;
+* the conclusion at rate zero;
+* `θ = 1`;
+* the a priori base removed;
+* the converse for arbitrary costs.
+
+The gate is now 1392 declarations in 108 modules with 125 controls (shards 84 + 41).
+
+The new register [arithmetic_frontier/round8/MISSING_ARITHMETIC_SHAPE.md](arithmetic_frontier/round8/MISSING_ARITHMETIC_SHAPE.md)
+collects the 12 November Drive notes. Every listed form of the remaining premise
+asks for signed cancellation of the Möbius function against an explicit, tame,
+sign-changing kernel. The integer drive, the archimedean term, proper powers and
+the short Möbius part are paid; the signed Möbius part is not. The register lists
+the countermodels that any supplier must evade. Exact certificates in
+`arithmetic_frontier/evidence/increment6b` cover the following:
+
+* the kernels and constants;
+* an independent sign certificate for the integer-drive kernel (`J(4) > 0 > J(6)`);
+* the agreement of a Drive scalar table with the stored prime side.
+
+**Every closing premise, RH and Step 4 remain OPEN.**

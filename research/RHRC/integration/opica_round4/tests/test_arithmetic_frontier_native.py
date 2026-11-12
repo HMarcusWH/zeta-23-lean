@@ -740,5 +740,78 @@ class Increment6ARound7Tests(unittest.TestCase):
             self.SM.verify_row(dict(late[0], selected_cutoff_eta_D_over_2=7), params, self.zeros)
 
 
+class Increment6BKernelTests(unittest.TestCase):
+    """Shape-register certificates (evidence/increment6b), recomputed exactly.
+
+    The kernel record is regenerated from ``kernel_certificates.py`` and compared
+    in full: exact algebra of the cutoff-3 vector, the endpoint polynomial and the
+    cutoff-4 profile, and outward dyadic enclosures of the integer-drive kernel at
+    ``t = 4`` and ``t = 6``. The Drive scalar table is compared with the stored
+    prime-side values. Nothing here bounds an arithmetic pairing, and no descent
+    inequality is supplied.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.KC = load('_frontier_kernel_certificates_ci', ROOT / 'kernel_certificates.py')
+        cls.ev = ROOT / 'evidence' / 'increment6b'
+        cls.record = json.loads((cls.ev / 'KERNEL_CERTIFICATES.json').read_bytes())
+        cls.summary = json.loads((cls.ev / 'SUMMARY.json').read_bytes())
+
+    def test_record_binds_the_tool_and_reproduces(self):
+        self.assertEqual((self.record['RH'], self.record['Step4']), ('OPEN', 'OPEN'))
+        self.assertEqual((self.summary['RH'], self.summary['Step4']), ('OPEN', 'OPEN'))
+        self.assertEqual(self.record['tool_sha256'], sha(ROOT / 'kernel_certificates.py'))
+        self.assertEqual(self.summary['tools']['kernel_certificates.py'], sha(ROOT / 'kernel_certificates.py'))
+        for entry in self.summary['records']:
+            self.assertEqual(sha(self.ev / entry['file']), entry['sha256'], entry['file'])
+        self.assertEqual(self.KC.compute(), self.record)
+
+    def test_integer_drive_kernel_changes_sign(self):
+        rows = {row['t']: row for row in self.record['integer_drive_kernel']['values']}
+        self.assertEqual((rows[4]['floor_exp_t'], rows[6]['floor_exp_t']), (54, 403))
+        self.assertGreater(Fraction(rows[4]['J_lower']), 0)
+        self.assertLess(Fraction(rows[6]['J_upper']), 0)
+        self.assertEqual(self.record['integer_drive_kernel']['intersects_drive_note_enclosure'], {'4': True, '6': True})
+
+    def test_exact_checks_fail_closed(self):
+        KC = self.KC
+        saved = (KC.R4, KC.Q_COEFF, KC.BITS)
+        try:
+            # moving one profile coefficient destroys the double zero at 1/2
+            KC.R4 = saved[0][:4] + [saved[0][4] + Fraction(1, 10 ** 9)]
+            with self.assertRaises(KC.CertificateFailure):
+                KC.cutoff4_kernel()
+            KC.R4 = saved[0]
+            # a wrong top coefficient breaks the transform (s^2 - 1/4)^2 / s^14
+            KC.Q_COEFF = {**saved[1], 13: Fraction(1, 15 * 6227020800)}
+            with self.assertRaises(KC.CertificateFailure):
+                KC.endpoint_kernel()
+            KC.Q_COEFF = saved[1]
+            # an enclosure too coarse to separate J(4) from zero is refused, not reported as a sign
+            KC.BITS = 8
+            with self.assertRaises(KC.CertificateFailure):
+                KC.drive_kernel_interval(4)
+        finally:
+            KC.R4, KC.Q_COEFF, KC.BITS = saved
+        self.assertEqual(KC.cutoff4_kernel(), self.record['cutoff4_kernel'])
+
+    def test_cutoff3_vector_is_outside_the_moment_slice(self):
+        weights, n4 = [1, 2, 2, 2], [0, 1, 16, 81]
+        for x in (Fraction(1), Fraction(1, 7), Fraction(39, 4)):
+            v = [-20, 15 * (1 + 4 * x), -6 * (1 + 16 * x), 1 + 36 * x]
+            self.assertEqual(sum(w * c for w, c in zip(weights, v)), 0)
+            self.assertEqual(sum(w * k * c for w, k, c in zip(weights, (0, 1, 4, 9), v)), 0)
+            self.assertEqual(sum(w * k * c for w, k, c in zip(weights, n4, v)), 2880 * x)
+
+    def test_drive_scalar_table_matches_the_stored_prime_side(self):
+        table = self.summary['statements']['drive_scalar_table']['drive_table']
+        spectral = json.loads((ROOT / 'evidence' / 'increment6a' / 'SPECTRAL_K3.json').read_bytes())
+        mine = {row['L']: Fraction(row['even']['prime_side']) for row in spectral['rows']}
+        self.assertEqual(sorted(table, key=int), ['2', '3', '4', '5', '6', '8', '10', '12'])
+        for L, value in table.items():
+            self.assertLess(abs(Fraction(value) - mine[L]) / mine[L], Fraction(1, 10 ** 15), L)
+
+
 if __name__ == '__main__':
     unittest.main()

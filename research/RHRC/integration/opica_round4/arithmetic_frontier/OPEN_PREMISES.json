@@ -77,6 +77,22 @@
       "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
       "status": "OPEN",
       "implies": "PG"
+    },
+    {
+      "id": "DD",
+      "register": "CR51",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_delay_descent",
+      "status": "OPEN",
+      "implies": "SE",
+      "note_6b": "EvenDelayDescent or OddDelayDescent for one admissible cost profile. Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_delay_descent (M62, local compile)."
+    },
+    {
+      "id": "ND",
+      "register": "CR52",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_scale_descent",
+      "status": "OPEN",
+      "implies": "DD",
+      "note_6b": "EvenScaleDescent or OddScaleDescent for one 0 < theta < 1. Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_scale_descent (M62, local compile)."
     }
   ],
   "supporting_leaves": [
@@ -177,6 +193,18 @@
       "statement": "Certified positive simple bottoms on six constrained spaces at L = 2 (K = 16) and L = 3 (K = 81) (evidence/increment6a).",
       "status": "FINITE_CERTIFICATE",
       "note": "Statements about those finite objects. They are implied by the known location of the low zeros together with the compiled explicit formula and say nothing about another aperture."
+    },
+    {
+      "id": "S-DESCENT",
+      "statement": "Loss-tolerant delay and scale descent are equivalent to RH (CR51, CR52, M62).",
+      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "note": "Receiving interface: polynomial or subexponential losses and relative comparisons suffice."
+    },
+    {
+      "id": "S-KERNELS",
+      "statement": "Exact kernel certificates: cutoff-3 vector, endpoint polynomial, cutoff-4 profile and constants; J(4) > 0 > J(6) (evidence/increment6b).",
+      "status": "FINITE_CERTIFICATE",
+      "note": "Explicit finite objects only."
     }
   ],
   "rule": "A leaf moves only when an exact theorem with no undispatched RH-strength premise passes current-head formal and claim gates.",
@@ -230,5 +258,23 @@
       "ground-state convergence as an independent route (CR50)"
     ],
     "open_supplier": "A direct arithmetic bound that lowers the exponential rate alpha in E_e(L) >= -C e^(alpha L), equivalently the energy rate of Z, below 1/2. Closure needs every positive rate. OPEN. No mechanism is known here."
+  },
+  "increment6b_status": {
+    "shape_register": "research/RHRC/integration/opica_round4/arithmetic_frontier/round8/MISSING_ARITHMETIC_SHAPE.md",
+    "completed": [
+      "loss-tolerant delay and scale descent as sharp interfaces (M62)",
+      "exact kernel certificates and an independent sign certificate for J (evidence/increment6b)",
+      "corrections 1 to 4 of the round-7 consolidation"
+    ],
+    "paper_level_forms_recorded": [
+      "scalar E_e with the normalized Laplace consumer",
+      "fixed field S with -zeta'/zeta(s+1/2) K(s)",
+      "Moebius return (SR) at U = floor(T^2), (A1) at U = floor(e^sqrt(T)), (B) at U = floor(T^r)",
+      "Mertens rate theta - 1/2 through the bridge CR53",
+      "endpoint pairing (7.1)",
+      "long Moebius remainder (7.5)"
+    ],
+    "correction_6b_to_increment6a_status": "The items under ruled_out_as_closing are ruled out only in their circular forms (see round7/TARGET_CONSOLIDATION.md, corrections).",
+    "open_supplier": "Signed cancellation of mu (equivalently of the prime discrepancy) against an explicit tame kernel, at every positive rate, by an argument that uses Lambda = mu * log with weight one on every integer. OPEN."
   }
 }

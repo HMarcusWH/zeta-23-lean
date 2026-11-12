@@ -14,7 +14,8 @@ source `h` and its complete prime field `Z`:
 * (F): a lower bound for the loading ratio of the reconstructed vector `v_L`;
 * (E): a cofinal bound for the predecessor defect `E_L` under a hypothetical zero.
 
-Round 7 shows that they are the same growth bound for `Z`, in three norms.
+Round 7 shows that they are the same growth bound for `Z`, in three norms, at
+every positive rate (see the corrections at the end for fixed rates).
 
 | Target | What it is | Why |
 |---|---|---|
@@ -22,9 +23,12 @@ Round 7 shows that they are the same growth bound for `Z`, in three norms.
 | (F) | weighted `L²` growth of `Z` | the numerator `‖N v_L‖²` tends to the fixed positive constant `‖U‖²`, so the ratio is the reciprocal of the weighted energy |
 | (E) | plain `L²` growth of `Z` at horizon `L − c₀` | at arbitrarily late apertures the least-crossing cutoff is 3, the predecessor is `{0}`, and the defect is the complete source column |
 
-Each of them, at rate `η`, excludes zeros with displacement above `η` and is
-implied by their absence. None is a weaker intermediate of another. Work on (E)
-or (F) as separate suppliers should stop.
+At every positive rate each of them excludes every off-line zero and is implied
+by the absence of such zeros. The quantities of (E) and (F) are squared norms, so
+at a fixed rate they grow at twice the rate of the field and a fixed-rate statement
+must track the squaring. None is a weaker intermediate of another: (E) and (F) are
+not easier suppliers, and an independent proof of either would itself prove the
+energy bound.
 
 ## What the selector does under a hypothetical zero
 
@@ -41,9 +45,10 @@ or (F) as separate suppliers should stop.
   [evidence/increment6a](../evidence/increment6a/SUMMARY.json). In both parameter
   sets every sampled aperture beyond a transient has cutoff 3 or 4.
 
-Round 6's cubic ceiling is therefore a constant ceiling on those packets. The
-positive predecessor that inequality (P) relies on is empty or two-dimensional
-exactly where (P) is meant to be used.
+Round 6's cubic ceiling is therefore a constant ceiling on those packets. Under
+a dominant zero, the positive predecessor that inequality (P) relies on is empty or
+two-dimensional at every late aperture. Without that assumption this is shown only
+on a cofinal set, and that set is not shown to meet the production family.
 
 ## The weakest form of the remaining target
 
@@ -53,7 +58,8 @@ pole-neutral boundary-flat space. Its transform is explicit:
 
 * Derived: `sup Re ρ − 1/2` equals the least exponential rate at which `E_e` is
   bounded below. In particular RH holds if and only if `E_e(L) ≥ 0` for all large
-  `L`, and under RH `0 < E_e(L) ≤ 12.94 / L⁵`.
+  `L`, and under RH `0 < E_e(L) ≤ 12.94 / L⁵` (sharpened to `O(L⁻¹³)`; see the
+  corrections).
 * Checked: the prime side (Arb enclosures) and the sum over the first 400 zeros
   agree to a relative difference between `8e-17` and `9e-14` at twelve apertures
   from 2 to 12 (EXPERIMENTAL SIGNAL; the identity itself is compiled in
@@ -96,14 +102,17 @@ rate stays at `1/2`. No inspected statement lets the rate tend to zero.
 
 ## What is ruled out, and what is not
 
-Ruled out as closing mechanisms:
+Ruled out as closing mechanisms, in the forms stated:
 
-* any argument that derives the response bound from positivity on the selected
-  predecessor together with approximation of the source inside it;
-* a loading-ratio or angle law for (F) beyond the energy bound itself;
-* ground-state convergence as an independent route: identifying the near-radical
-  vector with the ground vector needs the absence of eigenvalues below it, which
-  is canonical positivity.
+* an argument that derives the response bound from positivity on the selected
+  predecessor together with approximation of the source inside it, wherever the
+  predecessor is empty (every late aperture under a dominant zero; otherwise only
+  where the production family meets the cofinal set above);
+* a loading-ratio or angle law for (F) as a weaker substitute for the energy
+  bound (an independent proof of the angle law would itself prove that bound);
+* ground-state convergence proved by assuming the absence of eigenvalues below
+  the near-radical vector, which is canonical positivity. That version is
+  circular; other proofs of convergence are not ruled out.
 
 Not ruled out: a direct arithmetic bound for the scalar `E_e(L)` or for the
 energy of `Z`. That is the original problem. The model used above has no Euler
@@ -153,3 +162,27 @@ verified in this round.
    quasi-Riemann hypothesis, so a claim of one stays unverified until that audit
    is done. It yields a fixed rate, not closure.
 3. Closure needs the rate to reach zero. No mechanism for that is known here.
+
+## Corrections (12 November, increment 6B)
+
+The signed-aperture investigation (Drive, 01:48 UTC) and the endpoint-kernel audit
+(Drive, 13:53 UTC) reviewed this document. Four corrections follow from them, and
+the text above now carries them.
+
+1. **Rates.** The quantities of (E) and (F) are squared norms. A field component
+   that grows at rate `δ` gives squared energy at rate `2δ`. The every-positive-rate
+   equivalence of (U), (F) and (E) is unaffected; fixed-rate correspondences must
+   track the squaring. No quantitative equivalence of the full (E) and (F)
+   contracts, with their horizons and packet choices, is established.
+2. **What is ruled out.** Only the circular forms are ruled out: positivity on a
+   predecessor where it is empty, an angle law used as a substitute for the energy
+   bound, and convergence proofs that assume the missing positivity. An
+   independent proof of an RH-equivalent target is not circular.
+3. **Where the predecessor is empty.** Under a dominant zero this holds at every
+   late aperture. Without one, it holds only on a cofinal set, which is not shown
+   to meet the cofinal production family; two cofinal sets need not meet.
+4. **Size under RH.** Under RH, the normalized scalar `T = w E_e` (with `w = L/c_e²`
+   of degree 13) is uniformly bounded, so `E_e(L) = O(L⁻¹³)`. The bound
+   `12.94 / L⁵` remains true but is weaker.
+
+The successor register is [round8/MISSING_ARITHMETIC_SHAPE.md](../round8/MISSING_ARITHMETIC_SHAPE.md).

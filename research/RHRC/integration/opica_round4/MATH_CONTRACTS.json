@@ -705,13 +705,13 @@
     "register": "MADNESS_CONTRACTS.json",
     "source_audit": "MADNESS_SOURCE_AUDIT.json",
     "modules": 60,
-    "added_declarations": 867,
+    "added_declarations": 892,
     "gate_total_modules": 108,
-    "gate_total_declarations": 1367,
+    "gate_total_declarations": 1392,
     "retained_modules": 48,
     "retained_declarations": 500,
     "retained_semantic_mutations": 17,
-    "semantic_mutations": 119,
+    "semantic_mutations": 125,
     "new_unconditional_estimate": "The normalized short hyperbola term and the prime-field plus long-term remainder have every fixed exponential decay rate.",
     "closing_arithmetic_estimate": "OPEN",
     "production_qualification": "CURRENT_HEAD_FULL_NATIVE_SUPPORT_AND_INDEPENDENT_ACCEPTANCE_REQUIRED",
@@ -737,10 +737,11 @@
     "arithmetic_frontier_extension": "Exact moment slices with Gram transport and dimensions; (C1) and narrow selected-packet consumers to Mathlib RiemannHypothesis; inverse-residual block and source-core finite consumers with witness transport. Every closing premise remains OPEN; no arithmetic sign is supplied.",
     "semantic_mutation_shards": [
       84,
-      35
+      41
     ],
     "coarse_growth_extension": "PG/SE, fixed-rate, AD/SB and C2-SE consumers and the native NC identity. No growth premise, semibounded floor or leakage factorization is supplied; all remain OPEN.",
     "geometry_reconstruction_extension": "Native rank-two commutator and the (SG) to PG consumer; premise OPEN.",
-    "zero_free_floor_extension": "Zero strip to fixed-rate floor adapter, graded equivalence and RH <-> (C1), (SB), (PG), (SE) (M60); least-crossing cutoff 3 from a deep cutoff-3 bottom (M61). Displacement bound and closing premises OPEN."
+    "zero_free_floor_extension": "Zero strip to fixed-rate floor adapter, graded equivalence and RH <-> (C1), (SB), (PG), (SE) (M60); least-crossing cutoff 3 from a deep cutoff-3 bottom (M61). Displacement bound and closing premises OPEN.",
+    "delay_descent_extension": "Delay and fractional-scale descent of the slice bottom with admissible losses, each equivalent to RiemannHypothesis (M62). Descent inequality and closing premises OPEN."
   }
 }
