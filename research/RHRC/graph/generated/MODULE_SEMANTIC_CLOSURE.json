@@ -12766,7 +12766,7 @@
       "file_id": "rh:file:Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean",
       "module": "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor",
       "module_id": "rh:module:Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor",
-      "named_source_declaration_count": 46,
+      "named_source_declaration_count": 71,
       "path": "Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean",
       "reachability": "STANDALONE_OR_AUXILIARY",
       "reachable_from": [],

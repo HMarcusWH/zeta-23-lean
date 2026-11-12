@@ -2005,7 +2005,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_round4/MADNESS.md",
-      "heading_count": 16,
+      "heading_count": 17,
       "path": "research/RHRC/integration/opica_round4/MADNESS.md",
       "route_mentions": []
     },
@@ -2045,7 +2045,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md",
-      "heading_count": 17,
+      "heading_count": 18,
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -2107,7 +2107,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/HANDOVER_2026-11-12.md",
-      "heading_count": 12,
+      "heading_count": 13,
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/HANDOVER_2026-11-12.md",
       "route_mentions": []
     },
@@ -2317,8 +2317,18 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/round7/TARGET_CONSOLIDATION.md",
-      "heading_count": 9,
+      "heading_count": 10,
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/round7/TARGET_CONSOLIDATION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/round8/MISSING_ARITHMETIC_SHAPE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/round8/MISSING_ARITHMETIC_SHAPE.md",
+      "heading_count": 9,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/round8/MISSING_ARITHMETIC_SHAPE.md",
       "route_mentions": []
     },
     {
@@ -4493,7 +4503,7 @@
       ]
     }
   ],
-  "entry_count": 427,
+  "entry_count": 428,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",
