@@ -647,7 +647,7 @@ which is DERIVED and not independently reviewed.
     `riemannHypothesis_iff_fixed_parity_polynomial` (PG) and
     `riemannHypothesis_iff_fixed_parity_subexponential` (SE). These
     contracts are sharp interfaces, neither weaker nor stronger than RH.
-* `SelectedCutoff` (M61, CR45): if the cutoff-3 global bottom is below `−D/2`,
+* The last section of the same module (M61, CR45): if the cutoff-3 global bottom is below `−D/2`,
   every `NativeDeepThresholdGroundData` packet has cutoff 3 and both predecessor
   spaces have dimension zero. One deep unit vector in either cutoff-3 parity
   space is enough.
@@ -664,8 +664,22 @@ Six new controls bring the suite to 119 (84 + 35). They reject:
 * the cutoff-3 threshold read as `−D/3`;
 * (PG) presented without its RH premise.
 
-Local development gate: 109 modules, 1367 complete types and axiom sets, and 119
+Local development gate: 108 modules, 1367 complete types and axiom sets, and 119
 controls. Only `propext`, `Classical.choice` and `Quot.sound` appear.
+
+**CI correction (head `9a88613`).** The first push of this increment used two
+new modules. In Round4 run 43131407808 the MATHEMATICAL_SUPPORT lane finished
+its gate run and receipt checks and then failed while writing its report.
+
+* The canonical JSON codec allows 100,000 nodes. Each owned module costs 851,
+  and 109 modules gave about 100,053.
+* The three independent groups and ACCEPTANCE failed as a cascade. Every other
+  lane passed.
+* The selected-cutoff statements were therefore moved into the floor module:
+  108 modules, about 99,200 nodes. No declaration changed.
+* No further owned module fits under the present budget. Raising it, or moving
+  this report to the existing native-evidence envelope, is a tooling decision
+  for the maintainer.
 
 **Paper results of the round (CR46 to CR50; DERIVED unless marked).**
 
@@ -720,10 +734,12 @@ adapters. No rate at or below `1/2` is supplied.
      any of them that yields RH yields this floor with error zero.
    * A proof must use a property of the actual primes that the comparison
      density (MP20) and the added-zero model (MP23) lack.
-2. **An imported fixed rate (optional, not closure).** A zero-free half-plane
-   with its own complete proof and axiom audit enters through
-   `fixedRateMomentSliceBounds_of_re_le`. The boundaries quoted in the handover
-   would give a rate near `0.373`. Nothing of this kind is in the repository.
+2. **An external fixed rate (optional, not closure).** A zero-free half-plane
+   `Re s > θ₀` with `θ₀ < 1` is the quasi-Riemann hypothesis, which is not an
+   established result. The external claims recorded in `MADNESS.md` (`7/8`,
+   `0.8733819666133`) are unverified here. If one survives a complete proof and
+   axiom audit, it enters through `fixedRateMomentSliceBounds_of_re_le` and gives
+   a rate near `0.375`. Nothing of this kind is in the repository.
 3. **A formal scalar consumer (optional).** The Landau half of CR47 would make
    the compiled closing premise a statement about one sequence. It is a
    reformulation.

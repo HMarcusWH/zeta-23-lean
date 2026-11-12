@@ -2,8 +2,8 @@
 
 11 November 2026. Parent head `b3afa611d3181f38c2d3c8a69c64d318ee2ea6d7`.
 **Register and navigation document. RH and Step 4 remain OPEN.** The paper
-derivations cited here are DERIVED and not independently reviewed; the two Lean
-modules are compiled locally on the pinned toolchain and need current-head CI.
+derivations cited here are DERIVED and not independently reviewed; the new Lean
+statements are compiled locally on the pinned toolchain and need current-head CI.
 
 ## The three open suppliers are one
 
@@ -31,10 +31,10 @@ or (F) as separate suppliers should stop.
 * Derived, no dominance assumption: for every `β < δ` there are arbitrarily late
   apertures where one of the two cutoff-3 unit vectors has energy below
   `−e^{βL}`. Any packet at such an aperture with depth `D ≤ 2e^{βL}` has stored
-  cutoff 3 and both predecessor spaces zero. That finite implication is
-  compiled: `SelectedCutoff.lean` (M61). Without a dominance assumption the note
-  does not show that these apertures are the ones the compiled production
-  detector selects.
+  cutoff 3 and both predecessor spaces zero. That finite implication is compiled
+  in the last section of `ZeroFreeFloor.lean` (M61). Without a dominance
+  assumption the note does not show that these apertures are the ones the
+  compiled production detector selects.
 * Derived, dominant zero: the cutoff is 3 or 4 at every late aperture, so the
   predecessor has dimension 0 or 2.
 * Model illustration (one added off-line quadruple; not the zeta function):
@@ -84,9 +84,15 @@ core are not needed to state it, and none of them currently helps to prove it.
   `…_fixed_parity_subexponential`. None is weaker or stronger than RH.
 
 Step 4 is the statement that the rate can be taken to zero. The trivial rate is
-`1/2`. An external zero-free half-plane, once imported and audited, would give a
-fixed rate below it (about `0.373` for the boundary `0.8733819666133` recorded in
-the handover). No inspected statement lets the rate tend to zero.
+`1/2`, and the established literature has no better one: a rate below `1/2` is a
+zero-free half-plane `Re s > θ₀` with `θ₀ < 1`, which is the quasi-Riemann
+hypothesis.
+
+The repository records external claims of such half-planes (`7/8` and
+`0.8733819666133`; see `MADNESS.md` and `MADNESS_SOURCE_AUDIT.json`). They are not
+imported, and this round did not verify them. If one of them is correct, it is a
+major theorem in its own right and gives a fixed rate near `0.375`. Otherwise the
+rate stays at `1/2`. No inspected statement lets the rate tend to zero.
 
 ## What is ruled out, and what is not
 
@@ -118,7 +124,7 @@ objects only.
 |---|---|
 | Round-7 note (repository edition; the Drive file has sha256 `14071c2c…de947`) | [ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md](ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md) |
 | Floor adapter and graded equivalence (M60) | `Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean` |
-| Least-crossing statement (M61) | `Zeta23/OPICARound4/ArithmeticFrontier/SelectedCutoff.lean` |
+| Least-crossing statement (M61) | last section of `Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean` |
 | Records | [evidence/increment6a](../evidence/increment6a/SUMMARY.json) |
 | Tools | [bottom_certificate.py](../bottom_certificate.py), [spectral_lowdeg.py](../spectral_lowdeg.py), [selector_model.py](../selector_model.py) |
 
@@ -132,12 +138,18 @@ agree "to 14-16 digits". The data, then and now, show relative differences from
 original sentence. It differs from the Drive file only in its author line and in
 two file titles.
 
+A second correction. Section 9, item 4 of the note says that the external family
+bootstrap "has moved alpha below 1/2". That holds only if the external half-plane
+claims are correct. They amount to the quasi-Riemann hypothesis and were not
+verified in this round.
+
 ## Decision rule for the next rounds
 
 1. A proposed supplier must lower the rate `α` in `E_e(L) ≥ −C e^{αL}`, or the
    equivalent energy rate for `Z`. A reformulation that leaves the rate at `1/2`
    is not progress on Step 4.
-2. An imported zero-free half-plane enters through
-   `fixedRateMomentSliceBounds_of_re_le`, with its own complete proof and axiom
-   audit. It yields a fixed rate, not closure.
+2. A zero-free half-plane enters through `fixedRateMomentSliceBounds_of_re_le`,
+   with its own complete proof and axiom audit. Any such half-plane is the
+   quasi-Riemann hypothesis, so a claim of one stays unverified until that audit
+   is done. It yields a fixed rate, not closure.
 3. Closure needs the rate to reach zero. No mechanism for that is known here.

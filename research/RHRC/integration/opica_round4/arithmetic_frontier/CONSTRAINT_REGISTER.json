@@ -798,7 +798,7 @@
         "FrontierMutation35 ((PG) follows from RH, not unconditionally)"
       ],
       "sharpness": "The four slice contracts are RH-necessary as well as RH-sufficient. Under RH the slice bound holds with error zero at every aperture and cutoff (existing critical-line positivity, read on the slices).",
-      "budget_improved": "The fixed-rate consumer becomes an equivalence at every rate, and the unconditional rates above 1/2 are compiled. Reading the existing critical-line positivity on the slices gives error zero under RH, so RiemannHypothesis is equivalent to each of (C1), (SB), (PG) and (SE): those contracts are sharp interfaces. No rate at or below 1/2 is supplied. An externally proved half-plane would enter through fixedRateMomentSliceBounds_of_re_le with its own proof and axiom audit; the boundary 0.8733819666133 quoted in the handover would give rate about 0.373 (not imported, not audited here)."
+      "budget_improved": "The fixed-rate consumer becomes an equivalence at every rate, and the unconditional rates above 1/2 are compiled. Reading the existing critical-line positivity on the slices gives error zero under RH, so RiemannHypothesis is equivalent to each of (C1), (SB), (PG) and (SE): those contracts are sharp interfaces. No rate at or below 1/2 is supplied. A rate below 1/2 is a zero-free half-plane Re s > theta0 with theta0 < 1, i.e. the quasi-Riemann hypothesis, which is not an established result. The external claims recorded in MADNESS.md (7/8, 0.8733819666133) are not imported and were not verified here; one that survived a complete proof and axiom audit would enter through fixedRateMomentSliceBounds_of_re_le with a rate near 0.375."
     },
     {
       "id": "CR45",

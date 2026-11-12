@@ -494,5 +494,45 @@
     "scientific_disposition": "The Round4 artifacts ACCEPTANCE, CONTRACT, GENERATED_STATE, MATHEMATICAL_SUPPORT and SOURCE_NUMERICS were opened and read. SOURCE_NUMERICS remains finite interval evidence. Round2 and the follow-up keep their historical scopes. No positivity or closing estimate follows.",
     "scope": "Qualifies b3afa61 only, by a single-reader harvest. The independent receipt inspection recorded for dab9fbe was not repeated. The increment-6A successor needs its own complete same-run harvest."
   },
+  "head_harvest_9a88613": {
+    "head_sha": "9a88613b667e243cf14b442149db6323bce52fc3",
+    "recorded_utc": "2026-11-12",
+    "attempt": 1,
+    "runs_total": 24,
+    "runs_success": 23,
+    "runs_failure": 1,
+    "round4_run": 43131407808,
+    "genuine_failure": {
+      "job": "Round4 / MATHEMATICAL_SUPPORT",
+      "job_id": 130896174580,
+      "cause": "The bounded math gate and the receipt checks finished; writing the lane report then raised ContractError \"JSON structural budget exceeded\" in canonical_bytes (MAX_NODES = 100000). Each owned module record costs 851 nodes; 109 owned modules gave about 100053 nodes (98267 at b3afa61 with 107).",
+      "fix": "The five selected-cutoff declarations were moved into ZeroFreeFloor.lean (108 owned modules, estimated 99200 nodes). No declaration, statement or proof changed; contract M61 now names that module.",
+      "remaining_capacity": "About 800 nodes: no further owned module fits, and each new parent object costs 10 more. Raising the budget or moving this report to the native-evidence envelope is a tooling decision for the maintainer."
+    },
+    "cascades": [
+      "Round4 / INDEPENDENT_CORE",
+      "Round4 / INDEPENDENT_CANONICAL",
+      "Round4 / INDEPENDENT_AUXILIARY",
+      "Round4 / ACCEPTANCE"
+    ],
+    "cascade_evidence": "Each stops at its step test \"$UPSTREAM\" = success with UPSTREAM = failure.",
+    "round4_lanes_passed": [
+      "CONTRACT",
+      "CURRENT_COMPATIBILITY",
+      "PARENT_REGRESSION",
+      "FRAMEWORK_ADAPTERS",
+      "SEMANTIC_NEGATIVES",
+      "PROVIDER_SELECTED",
+      "REPLAY_CAMPAIGN",
+      "COMPOSITION_FORMAL",
+      "SOURCE_NUMERICS",
+      "GENERATED_STATE"
+    ],
+    "skipped_jobs": [
+      "wp4-k3-fourth-order-alternative",
+      "post287-full-k3"
+    ],
+    "scope": "Failed head. It qualifies nothing; the lane results that passed are recorded, not borrowed. The corrected successor needs its own complete same-run harvest."
+  },
   "latest_fully_green_head": "b3afa611d3181f38c2d3c8a69c64d318ee2ea6d7"
 }

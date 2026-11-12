@@ -3611,15 +3611,15 @@
       "title_redaction": "One token of the Drive title, the name of the addressed assistant, is replaced by ASSISTANT. The drive_id identifies the file."
     },
     {
-      "drive_id": "1N6ODYSP6WVIrUR_oCYo7t_53egjl1RQP",
-      "title": "OPICA_Step4_Round7_TARGET_CONSOLIDATION_v3_2026-11-11.md",
+      "drive_id": "1pf7L1Hxbucf7CaG6ykL7-Xf4iEbz9g3I",
+      "title": "OPICA_Step4_Round7_TARGET_CONSOLIDATION_v5_2026-11-12.md",
       "mime_type": "text/markdown",
-      "bytes": 7844,
-      "modified_utc": "2026-11-11T23:45:39.942Z",
+      "bytes": 8589,
+      "modified_utc": "2026-11-12T11:33:11.353Z",
       "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
       "relationship": "REPORT_OR_NOTE",
       "review_depth": "FETCHED",
-      "content_sha256": "68fae9a08d3049521945a2bf770e25dacea7528d041d4fad09e10fb071b4401b",
+      "content_sha256": "91564edb3570ec973fdad39e157fd8c4d12fe4a796d46a8b4c3b95450645122b",
       "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
       "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
       "increment6a": {
@@ -3642,7 +3642,7 @@
       "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
       "increment6a": {
         "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
-        "superseded_by": "1N6ODYSP6WVIrUR_oCYo7t_53egjl1RQP",
+        "superseded_by": "1pf7L1Hxbucf7CaG6ykL7-Xf4iEbz9g3I",
         "note": "First upload, made before the critical-line section of M60 was rewritten. Its sentence about a degree-17 floor under RH is replaced by the error-zero statement and the four equivalences."
       }
     },
@@ -3660,8 +3660,44 @@
       "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
       "increment6a": {
         "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
-        "superseded_by": "1N6ODYSP6WVIrUR_oCYo7t_53egjl1RQP",
+        "superseded_by": "1pf7L1Hxbucf7CaG6ykL7-Xf4iEbz9g3I",
         "note": "Second upload; it still described the repository note as a byte copy of the Drive file."
+      }
+    },
+    {
+      "drive_id": "1N6ODYSP6WVIrUR_oCYo7t_53egjl1RQP",
+      "title": "SUPERSEDED_v3_OPICA_Step4_Round7_TARGET_CONSOLIDATION_2026-11-11.md",
+      "mime_type": "text/markdown",
+      "bytes": 7844,
+      "modified_utc": "2026-11-12T11:25:06.879Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "SUPERSEDED_SESSION_OUTPUT",
+      "review_depth": "FETCHED",
+      "content_sha256": "68fae9a08d3049521945a2bf770e25dacea7528d041d4fad09e10fb071b4401b",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "superseded_by": "1pf7L1Hxbucf7CaG6ykL7-Xf4iEbz9g3I",
+        "note": "Third upload; it still named SelectedCutoff.lean, which the CI correction merged into ZeroFreeFloor.lean."
+      }
+    },
+    {
+      "drive_id": "1ubDt9zk8kgpHw1qtdP49_ktg37Kol4SQ",
+      "title": "SUPERSEDED_v4_OPICA_Step4_Round7_TARGET_CONSOLIDATION_2026-11-12.md",
+      "mime_type": "text/markdown",
+      "bytes": 7883,
+      "modified_utc": "2026-11-12T11:33:43.380Z",
+      "parent_id": "1s_kGEC_BlH023ud1xJclQwUHYjq9M3ea",
+      "relationship": "SUPERSEDED_SESSION_OUTPUT",
+      "review_depth": "FETCHED",
+      "content_sha256": "20105b1eafc9460721db0aa74efbd7be0bd36e3be14f129324d00b465c95c236",
+      "authority": "PAPER_LEVEL_RESEARCH_INPUT_NOT_PROOF_RECEIPT",
+      "discovered_by": "CURRENT_STATE_FOLDER_2026-11-11",
+      "increment6a": {
+        "origin": "Produced by this build session and uploaded to the folder; DERIVED and EXPERIMENTAL_SIGNAL content, not independently reviewed.",
+        "superseded_by": "1pf7L1Hxbucf7CaG6ykL7-Xf4iEbz9g3I",
+        "note": "Fourth upload; it described an external zero-free half-plane as an available fixed rate near 0.373 without saying that any such half-plane is the quasi-Riemann hypothesis."
       }
     }
   ],
@@ -3681,7 +3717,7 @@
   },
   "coverage_by_review_depth": {
     "DISCOVERED": 234,
-    "FETCHED": 12,
+    "FETCHED": 14,
     "REPLAYED": 1,
     "TEXT_REVIEWED": 18
   },
@@ -3726,7 +3762,7 @@
     "performed_utc_date": "2026-11-11",
     "listing": "The package index CURRENT_STATE_FOLDER_INDEX.json (a member of the Round 6 package) lists 206 entries by id, name and type and was read as data. One connector query for items modified after 2026-11-10 returned a first page of 100 entries with a continuation token; that page supplied the sizes and times of the rows added here.",
     "coverage_statement": "Not a complete independent listing of this folder. Only the rows carrying an increment6a entry were acted on. Every other item of the folder is unledgered here and is not claimed as reviewed.",
-    "rows_added": 26,
+    "rows_added": 28,
     "titles_with_one_token_replaced": 9,
     "writes_by_this_session": "Uploads only (rows marked as produced by this build session) and renames of its own superseded uploads. No pre-existing Drive document was modified."
   },

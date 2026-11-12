@@ -221,7 +221,7 @@
       "certified bottoms at L = 2 and L = 3, prime side against zero sum at cutoffs 3 and 4, hypothetical-zero selector model (evidence/increment6a)"
     ],
     "not_done": [
-      "import of an external zero-free half-plane: outside the repository, needs its own complete proof and axiom audit, and would give a fixed rate (about 0.373), not closure",
+      "import of an external zero-free half-plane: outside the repository. Any such half-plane is the quasi-Riemann hypothesis, so the external claims (7/8, 0.8733819666133) stay unverified until a complete proof and axiom audit; one that survived would give a fixed rate near 0.375, not closure",
       "formal scalar consumer (the Landau half of CR47)"
     ],
     "ruled_out_as_closing": [
