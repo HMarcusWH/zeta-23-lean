@@ -339,7 +339,7 @@ def oddToEvenPhysicalMomentShift {L : ℝ} (hL : 0 < L) (K : ℕ) :
 end Zeta23.OPICARound4.ArithmeticFrontier
 
 
-/-! Exact-head theorem-specific axiom printouts for the candidate compiler gate. -/
+/-! Exact-head theorem-specific dependency printouts for the candidate compiler gate. -/
 #print axioms Zeta23.OPICARound4.ArithmeticFrontier.centeredMoment_shift
 #print axioms Zeta23.OPICARound4.ArithmeticFrontier.oddToEvenMomentShift_range_eq_center_ker
 #print axioms Zeta23.OPICARound4.ArithmeticFrontier.fixedMomentParityShortExact
