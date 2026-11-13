@@ -744,4 +744,78 @@ theorem centeredMomentShift_fixedSeedDiagonal (L : ℝ) (K : ℕ)
   ring
 
 
+
+/-- Exact dimension of the even quartic seed, transported through the existing
+nonunitary but bijective fixed-seed physical coordinate chart. -/
+theorem finrank_fixedEvenMomentSeed (K : ℕ) (hK : 2 ≤ K) :
+    finrank ℂ (fixedEvenMomentSeed K) = K - 3 := by
+  calc
+    finrank ℂ (fixedEvenMomentSeed K) =
+        finrank ℂ (evenMomentSlice (1 : ℝ) K) :=
+      (evenMomentSliceSeedEquiv (by norm_num : (0 : ℝ) < 1) K).finrank_eq
+    _ = K - 3 := finrank_evenMomentSlice (by norm_num) K hK
+
+/-- Exact dimension of the odd quartic seed. -/
+theorem finrank_fixedOddMomentSeed (K : ℕ) (hK : 2 ≤ K) :
+    finrank ℂ (fixedOddMomentSeed K) = K - 4 := by
+  calc
+    finrank ℂ (fixedOddMomentSeed K) =
+        finrank ℂ (oddMomentSlice (1 : ℝ) K) :=
+      (oddMomentSliceSeedEquiv (by norm_num : (0 : ℝ) < 1) K).finrank_eq
+    _ = K - 4 := finrank_oddMomentSlice (by norm_num) K hK
+
+/-- The center-coordinate quotient is nontrivial precisely in the range
+needed for the short exact sequence. This uses the preexisting Lean-proved
+slice dimensions and the new exact middle-kernel equivalence. -/
+theorem evenMomentCenterEval_surjective (K : ℕ) (hK : 4 ≤ K) :
+    Function.Surjective (evenMomentCenterEval K) := by
+  have heven := finrank_fixedEvenMomentSeed K (by omega)
+  have hodd := finrank_fixedOddMomentSeed K (by omega)
+  have hinj := oddToEvenMomentShift_injective K
+  have hkerT : LinearMap.ker (oddToEvenMomentShift K) = ⊥ :=
+    LinearMap.ker_eq_bot.mpr hinj
+  have hrange := (oddToEvenMomentShift K).finrank_range_add_finrank_ker
+  rw [hkerT, finrank_bot, add_zero, hodd] at hrange
+  have hcenter := (evenMomentCenterEval K).finrank_range_add_finrank_ker
+  rw [← oddToEvenMomentShift_range_eq_center_ker K, hrange, heven] at hcenter
+  have hrank : finrank ℂ (LinearMap.range (evenMomentCenterEval K)) = 1 := by
+    omega
+  have hnonzero : ∃ u : fixedEvenMomentSeed K, evenMomentCenterEval K u ≠ 0 := by
+    by_contra h
+    push_neg at h
+    have hz : evenMomentCenterEval K = 0 := by
+      ext u
+      exact h u
+    have hrank0 : finrank ℂ (LinearMap.range (evenMomentCenterEval K)) = 0 := by
+      rw [hz]
+      simp
+    omega
+  obtain ⟨u, hu⟩ := hnonzero
+  intro c
+  refine ⟨(c * (evenMomentCenterEval K u)⁻¹) • u, ?_⟩
+  rw [map_smul, smul_eq_mul]
+  field_simp [hu]
+
+/-- **Complete fixed-quartic parity short exact sequence.**
+There is one mean-bearing complex direction in the even seed beyond the
+derivative image of the odd seed. This is not a positivity theorem. -/
+theorem fixedMomentParityShortExact (K : ℕ) (hK : 4 ≤ K) :
+    Function.Injective (oddToEvenMomentShift K) ∧
+      LinearMap.range (oddToEvenMomentShift K) =
+        LinearMap.ker (evenMomentCenterEval K) ∧
+      Function.Surjective (evenMomentCenterEval K) :=
+  ⟨oddToEvenMomentShift_injective K,
+    oddToEvenMomentShift_range_eq_center_ker K,
+    evenMomentCenterEval_surjective K hK⟩
+
+/-- Transport of the parity shift to physical moment slices.
+The two coordinate charts are invertible but explicitly NONUNITARY.
+No energy-sign conclusion is made. -/
+def oddToEvenPhysicalMomentShift {L : ℝ} (hL : 0 < L) (K : ℕ) :
+    oddMomentSlice L K →ₗ[ℂ] evenMomentSlice L K :=
+  ((evenMomentSliceSeedEquiv hL K).toLinearMap.comp
+      (oddToEvenMomentShift K)).comp
+    ((oddMomentSliceSeedEquiv hL K).symm.toLinearMap)
+
+
 end Zeta23.OPICARound4.ArithmeticFrontier
