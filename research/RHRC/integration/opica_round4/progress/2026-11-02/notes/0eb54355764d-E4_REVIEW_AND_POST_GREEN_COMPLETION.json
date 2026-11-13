@@ -1,0 +1,285 @@
+{
+  "status": "COMPLETE_E4_REVIEW_AND_FRESH_FINITE_REPLAY",
+  "created_utc": "2026-11-02T12:06:32.622892+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "attachment": {
+    "path": "C:\\Users\\macka\\Downloads\\S4_E4_K3_Coupling_Audit_2026-11-02.pdf",
+    "sha256": "443e65e4755fd71223d8bddbdcb2b05cbaf7eae888bcc2cfd7bec5c3f531044f",
+    "bytes": 306829
+  },
+  "attachment_instructions": "Read as reference material; no attached instruction was treated as user authorization.",
+  "read_scope": "Root and independent reviewer read the complete mathematical TEX and contracts. Root inspected all nine rendered PDF pages. All eleven supplied manifest entries and seven repository blob pins matched. The fully read symbolic script was copied unchanged to two owned replay directories; its outputs did not overwrite supplied reports.",
+  "finite_replays": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-local-replay\\normal\\COMPLETION.json",
+      "sha256": "055831f04cfb87c20f1a337f93122a93964f5187e8b2f2c1dbb472681e5a8391",
+      "bytes": 6462
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-local-replay\\optimized\\COMPLETION.json",
+      "sha256": "a52ed251c081a4587a508d6261968e508e007d679c3281c4c96cd45f6edf8d49",
+      "bytes": 6490
+    }
+  ],
+  "visual_review": {
+    "pages_inspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "rendered": [
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-pdf-review\\page-1.png",
+        "sha256": "4d9121bf7ff065199e03936aa67f302f68ed3d2a411bfb95c890376638df73d5",
+        "bytes": 255977
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-pdf-review\\page-2.png",
+        "sha256": "35e53dc57a15e44494ff9d29a9c3c22301be5ec9f2f4d6067123aebb320d6ac6",
+        "bytes": 207917
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-pdf-review\\page-3.png",
+        "sha256": "f62bc8a2994cd9bf87c839efb13099c643cd87321b680c2e29d3166f79c55deb",
+        "bytes": 180477
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-pdf-review\\page-4.png",
+        "sha256": "48d9477db0ed5487f02bc451827f260ef3233719adac221abe13f36462f27853",
+        "bytes": 204887
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-pdf-review\\page-5.png",
+        "sha256": "27826fec65f9f326374cd2d8ab733736080b72b0c632a850d8b651ba51489d8f",
+        "bytes": 205552
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-pdf-review\\page-6.png",
+        "sha256": "8b7c03298e6bb2cba26825b4e95d3fd677ceab2f0c6bacc117049d0bde0723a3",
+        "bytes": 197079
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-pdf-review\\page-7.png",
+        "sha256": "793a4e7da1e369154912510e98c1746c242d65099d4bee462d93b42f21709fe0",
+        "bytes": 208944
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-pdf-review\\page-8.png",
+        "sha256": "1c7b8fb246e3abef3d01a64f4706611505a4d6d0095aba053d588ca7dfa879bf",
+        "bytes": 268919
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-pdf-review\\page-9.png",
+        "sha256": "e9748117da76f9e9c4a264490491b3c25436f2acc185df7184eedb62b51a816d",
+        "bytes": 120397
+      }
+    ]
+  },
+  "independent_comparison": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-attachment\\INDEPENDENT_E4_MATHEMATICAL_COMPARISON.json",
+    "sha256": "46c667b6dc25ada9f84f9a976c9bbbf2436ce5a1c4df7dd23e9d528144bcaff6",
+    "bytes": 18759
+  },
+  "verified_comparison_inputs": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-attachment\\S4_E4_K3_Coupling_Audit.tex",
+      "sha256": "d8206bc37e51ce6aadbe7c1c71440791682a1c40ab24920ec8a6465c5dd66433",
+      "bytes": 25276
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-attachment\\proof_contracts.json",
+      "sha256": "47ac843dd8e3a51de6ed3b674fd0beff7f90519d73a6dcf2ced663385e7344f0",
+      "bytes": 2408
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-attachment\\README.md",
+      "sha256": "a18b0305ea06b78a511e46c7504872e502475580231e3f313f39751729cf3080",
+      "bytes": 2580
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-attachment\\source_inventory.json",
+      "sha256": "c20ab565af3f8295ca7b4308b0df532dd0f31cbddd8cd659a96b23f8e07e491a",
+      "bytes": 4021
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-attachment\\check_k3.py",
+      "sha256": "e262074d4609d7b41d49a5d4951ef75b0cbb902f4dac66c9531ac1804cb39e1d",
+      "bytes": 6433
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-attachment\\checks_normal.json",
+      "sha256": "c772c03e8dfbb1f1abe6f44a6ee9408394eb8e08c5298d06eecf6a398fa2b21a",
+      "bytes": 15001
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-attachment\\checks_optimized.json",
+      "sha256": "a7939ec275402907fd40a40d4ebc0bdbdb6ff14046373008e218555a215ad686",
+      "bytes": 15000
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-attachment\\LOCAL_EXTRACTION.json",
+      "sha256": "3b876dd70a6f2a459c1a9de2d3aac418cda7e56a1af41f7f38658ba5e470b226",
+      "bytes": 4586
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-attachment\\inputs\\FIXED_K3_REDUCTION_AND_SOURCE_SCALARS.json",
+      "sha256": "dffded7545358b9a9a3e722bcb0a454a192a0759fe44c79612cd189d02ade9e4",
+      "bytes": 8885
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e4-attachment\\inputs\\COMPLETE_K3_COUPLING_AND_GROWTH_CHECKPOINT.json",
+      "sha256": "31f4f317baa64c80eede204fe3a1869809dae84b5e1f5be787b0816bbfdea119",
+      "bytes": 10725
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_FIXED_K3_ARITHMETIC_SCALARS.json",
+      "sha256": "204b26b07fb3109f010af2c1ca49b72a7c1a4e0a3082eca9ff2366ade9c96899",
+      "bytes": 13261
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_FIXED_K3_APERTURE_LANDAU_DERIVATION.json",
+      "sha256": "493530834a96fe6f19d4876a253044249a27a9afa25cda84fcfdc1e74ea888ca",
+      "bytes": 20564
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_UNSIGNED_PRIME_CHARGE_AUDIT.json",
+      "sha256": "e32ab81dbf76931775fa1d6f220bb7f1313440905a677398a6855d63c975c87f",
+      "bytes": 13388
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_PARITY_COUPLING_AND_FORCING.json",
+      "sha256": "5f02b1c91ea797b6db761e143fb86fd275af6202b1cbc5bb515e16ba6e23b1a2",
+      "bytes": 17288
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_SIGNED_PSI_BASELINE.json",
+      "sha256": "5772baadcb9a8cccfe3cde03d18da9c52442ed7ba81b71cba2f486ee253aaffe",
+      "bytes": 13146
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_CORRECTED_SOURCE_ARCH_COVARIANCE.json",
+      "sha256": "e5d8301633bae7437fbbf5032078ae18e1626e97858012c12caaff309d9afe1f",
+      "bytes": 16919
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_POSITIVE_PSI_COMPOSITION.json",
+      "sha256": "ab958766ea7fc053a9f41fb8787d07da86d00df7b8060da121b5fd40b256f309",
+      "bytes": 14103
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\PROOF_FREEZE.json",
+      "sha256": "99e947d015290a6b1d6898892d4372e6b9ec938f231c3a9213710d1d73184b4c",
+      "bytes": 11055
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\EXPANDED_AUDIT_FREEZE.json",
+      "sha256": "c01e8f2ba047adb0ffd903ce94735c3b9d128354e415fb4ecef1781b2bba1522",
+      "bytes": 5226
+    }
+  ],
+  "learnings": [
+    {
+      "label": "DERIVED",
+      "finding": "Every normalized real mixture of the scaled even/odd profiles retains exponentially large positive and negative genuine prime charges, uniformly even for aperture-dependent coefficients.",
+      "consequence": "Pointwise positivity or small unsigned mass cannot replace control of the full signed difference. The same result does not prohibit cancellation of complete scalar energies."
+    },
+    {
+      "label": "DERIVED",
+      "finding": "The K3 vectors have nonzero extra moments; the moment-zero quartic witness cannot be substituted into K3. The relevant even slice first becomes nonzero at K4; the odd M3/M5 slice at K5.",
+      "consequence": "If using those extra moments, retain the larger actual carrier, its normalization and the exact witness. No ground/eigenvector or energy-sign conclusion follows merely from existence."
+    },
+    {
+      "label": "DERIVED",
+      "finding": "The parity differential law holds before the arithmetic weights are inserted.",
+      "consequence": "It is a real compatibility identity, but alone cannot distinguish genuine prime weights from the supplied synthetic positive source."
+    },
+    {
+      "label": "DERIVED",
+      "finding": "The end-region has an explicit uniform two-power Taylor remainder, and the complete discrepancy identity retains the lower-end contribution.",
+      "consequence": "Small relative error compared with exponential charge is not a polynomial absolute error. Keep full remainder, all prime powers and endpoint compensation."
+    }
+  ],
+  "new_composition": {
+    "title": "The complete fixed-real mixture, not just its limiting profile, preserves every right-zero pole",
+    "statement": "Fix real a,b, not both zero, BEFORE L. Put T_ab(L)=a L^9 Q_e(L)+b L^7 Q_o(L). If an off-line zero exists and Theta is the actual supremum of positive shifted real parts, both signed logarithmic excursion rates of T_ab are Theta. Equivalently for each0<alpha<Theta,C>0,R0 there are separate L>=R0 with T_ab>C exp(alpha L) and T_ab<-C exp(alpha L).",
+    "proof": "Use the already reviewed COMPLETE all-zero formulas, not the limiting prime profile. Set C_o=240^2(2pi)^6, b0(p)=(1/4-p^2)^2/p^14 and r_p(L)=product_(n=1)^3(1+(2pi n/(pL))^2)^-2. Exactly T_ab=2C_o sum_ALL_p m_p b0(p)(36pi^2 a-b p^2)(exp(pL)-1)r_p(L). The constant -1 channel and multiplicities remain. At any actual right-zero p=delta+i gamma with delta>0 and gamma nonzero, Im(p^2)=2delta gamma is nonzero. If b is nonzero the real-coefficient factor cannot vanish; if b=0 then a is nonzero and it also cannot vanish. The high-zero majorant is a constant times |b0(p)|(1+|p|^2), which is summable. The same rational-aperture pole disk, vertical-ray continuation and locally normal high-zero tail from the fixedK3 proof therefore apply without any new moving coefficient or ratio poles. At the rightmost zero of one chosen finite height fiber the leading Laplace residue is2C_o m b0(p)(36pi^2 a-b p^2), nonzero. The same positive-tail Landau argument and strict exponent absorption yield each signed rate; the full coefficient sum gives the matching Theta upper envelope. No globally rightmost zero is needed.",
+    "limits": "This follow-through is DERIVED and not newly Lean-compiled. It applies to fixed real coefficients only. The attachment uniform unsigned statement also allows coefficients varying with L, but it does not justify a Landau transform for such varying coefficients. Nor does the fixed-mixture result give a signed bound: a freely chosen normalized coefficient pair may depend on the actual energies and cancel their scalar combination at each aperture. No full-state or arithmetic estimate follows from that choice."
+  },
+  "current_signed_target": {
+    "identity": "G(L)=Q_o(L)-(N_o(L)/N_e(L))*Q_e(L)=J(L)+C_psi(L).",
+    "known_at_paper_level": "J(L)>0 for every L>0 and J(L)=175*(I2-16)*L^2/(88*pi^2)+O(1), with I2=7*zeta(3)+pi^3/4>16.",
+    "missing": "An independent one-sided bound on the complete actual signed C_psi at the required scale. Eventual C_psi>=-J is a reviewed paper-level RH-equivalent target, not an available premise.",
+    "rejected_strengthening": "C_psi need not be nonnegative or negligible relative to J. The existing cofinal argument excludes every fixed fractional bound C_psi>=-kappa*J with kappa<1.",
+    "record": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\K3_SIGNED_COMPENSATION_CHECKPOINT.json",
+      "sha256": "cf0b2f2a6cd46255c3ad903951674e91324d186acddf28e946df6da7145c52f1",
+      "bytes": 11766
+    }
+  },
+  "external_reference_check": {
+    "url": "https://dlmf.nist.gov/27.12",
+    "equations": [
+      "27.12.5",
+      "27.12.6"
+    ],
+    "scope": "Classical prime-counting errors; transfer to psi uses partial summation. Neither is a closing bound for this signed source."
+  },
+  "what_became_formally_true": {
+    "receipts": [
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\strict-gamma-monotonicity\\COMPLETION.json",
+        "sha256": "37b29eeaa88e9332caecb3dd0f1bdc45d4f6971f41ae88cd85e456ce200e2c9d",
+        "bytes": 1541
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\EXPANDED_AUDIT_FREEZE.json",
+        "sha256": "c01e8f2ba047adb0ffd903ce94735c3b9d128354e415fb4ecef1781b2bba1522",
+        "bytes": 5226
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-k3\\COMPLETION.json",
+        "sha256": "b3e5c0d81d4d53d2afcbfa89bc3889267f15009c979230ecdfbab17c2770d191",
+        "bytes": 4365
+      }
+    ],
+    "scope": "Preceding local pinned Windows proof work established two public strict gamma results, one generic strict weighted covariance theorem, and thirteen actual K3 vector declarations (four definitions/nine theorems). Complete types and standard axiom sets were audited. These are external prototypes, not additions to the current 1079-declaration production inventory.",
+    "limits": "Warm authenticated imports, with explicitly recorded path/size/mtime reuse for package/toolchain companion hashes. No fresh cold Linux compilation or complete Arch specialization is claimed."
+  },
+  "workflow_harvest": {
+    "completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next18\\COMPLETION.json",
+      "sha256": "2f19a21fadc77c45f5341166af2a1e74fc8dc0f5a5826c5f773229b6f356852f",
+      "bytes": 2540
+    },
+    "snapshot": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next18\\CHECKPOINT.json",
+      "sha256": "87a297d4d8f8b984f3fabe91e5878b5bce859865ad3c7474c5db7a4e507da0cd"
+    },
+    "result": "24 current-head workflows successful: 95 successful jobs and two explicitly optional skipped jobs. No failed/running/queued jobs or new review findings.",
+    "new_dispositions": "Final Round2 generated81 bytes/125 clauses/all75 control dispositions match the historical775 replay. Acceptance is PASS_COMPILER_EVIDENCE_ONLY, with full release/human review NOT_ESTABLISHED. Earlier current1079 Round4 acceptance retains its separate checked authority.",
+    "local_download_limit": "Three new small Round2 ZIPs fully downloaded and hashed. Earlier bounded CORE/ACCEPTANCE member harvests were reused; complete large ZIP hashes were not recomputed locally."
+  },
+  "what_changed": "E4 strengthens uniform unsigned-charge exclusion and makes composition boundaries explicit. It supplies no missing actual-source inequality. Local helper proofs now make parts of the Arch argument formal, separately from E4.",
+  "upstream_implications": "Keep the genuine carrier, nonunitary norm weights, transform orientation and moment requirements together. The coupling identity itself remains general.",
+  "downstream_implications": "Fixed real parity recombinations retain each right-half-plane zero pole in the complete all-zero formula. Their signed oscillation argument is available at paper level; adaptive recombinations require a separate continuation argument.",
+  "resurrected_routes": "Moment-zero alternatives at K4/K5 are legitimate carriers if needed, but they do not revive a pointwise-positive-kernel argument or provide a closing energy sign.",
+  "new_RH_relevant_clues": "The favorable deterministic J budget identifies the exact compensation threshold. A source-specific signed comparison remains the decisive candidate; its truth is OPEN.",
+  "falsification_checks": "Synthetic positive density preserves the listed geometry/coupling but has negative exponential excursions; it does not satisfy the full genuine divisor law. Uniform real mixtures retain both unsigned charges. These tests exclude those weaker premises alone, not all accumulated OPICA constraints.",
+  "highest_leverage_next_moves": [
+    "Complete the physical Fourier/integrability/Arch specialization of the already compiled helpers without substituting it for a prime estimate.",
+    "Derive an independent signed arithmetic comparison for the same complete response, retaining endpoints, prime powers and compensating positive channels.",
+    "Reject candidate comparisons that use RH-equivalent sign assumptions, transfer moments to the wrong witness, or confuse fixed-coefficient continuation with adaptive mixing."
+  ],
+  "repo_mutations": false,
+  "Step4": "OPEN",
+  "RH": "OPEN",
+  "goal": "ACTIVE"
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_INDEPENDENT_RECONSTRUCTION_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "INDEPENDENT_RESEARCH_CHECK_NOT_LEAN_AUTHORITY",
+  "assurance_level": "LEVEL_3_INDEPENDENT_BASIS_AND_CERTIFICATE_SHARED_SOURCE_ASSEMBLY",
+  "shared_trust_boundary": [
+    "native_source.py vectorized assembly",
+    "canonical_source_arb.py equation-(4.4) primitives"
+  ],
+  "L": "7",
+  "K": 2401,
+  "Q": 1096,
+  "parity": "even",
+  "dimension": 2398,
+  "dimension_expected": 2398,
+  "tolerance": "1/5",
+  "bits": 512,
+  "pivots": [
+    600,
+    1200,
+    1801,
+    2401
+  ],
+  "statement": "Q_p(L,x) >= -1/5 ||x||^2 for every x in the slice (physical norm)",
+  "gram_rank_certificate": {
+    "status": "CERTIFIED",
+    "dimension": 2398,
+    "method": "BLOCK_INTERVAL_SCHUR",
+    "block": 96,
+    "levels": 25
+  },
+  "certificate": {
+    "status": "CERTIFIED",
+    "dimension": 2398,
+    "method": "BLOCK_INTERVAL_SCHUR",
+    "block": 96,
+    "levels": 25
+  },
+  "status": "CERTIFIED",
+  "hashes": {
+    "gram_enclosure_sha256": "047c14d8d8346e88d24c9af3cf843f076122ddefeebd4f36ccea611187fcbcce",
+    "native_source_sha256": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6",
+    "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+    "checker_sha256": "d66ff2d948bfd13bfd8209f370b4d0a58e6fbbe9e5f602a2674cb69b6c4227db",
+    "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54"
+  },
+  "seconds": 1391.8
+}

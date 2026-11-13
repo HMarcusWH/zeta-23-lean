@@ -1,0 +1,46 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_PREDICTION_OUTCOMES_V2",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "experiment": "E-H6",
+  "supersedes_scope_of": "evidence/increment2/E-H6_OUTCOMES.json (preserved)",
+  "correction": "R5",
+  "P4": {
+    "prediction": "The degree-64 polynomial certificate fails at q^64/a about 1.2",
+    "family_of_the_heuristic": "GEOMETRIC_TAIL",
+    "per_family": {
+      "even": {
+        "INVERSE_RESIDUAL_64": [
+          "CERTIFIED"
+        ],
+        "GEOMETRIC_TAIL_64": [
+          "FALSIFIED_BOUND"
+        ],
+        "q64_over_a": [
+          1.2872044776145801
+        ]
+      },
+      "odd": {
+        "INVERSE_RESIDUAL_64": [
+          "CERTIFIED"
+        ],
+        "GEOMETRIC_TAIL_64": [
+          "FALSIFIED_BOUND"
+        ],
+        "q64_over_a": [
+          1.2872044776145801
+        ]
+      }
+    },
+    "result_GEOMETRIC_TAIL": "CONFIRMED",
+    "corrected_disposition": "P4 is scored on GEOMETRIC_TAIL, the family of its q^m/a heuristic: CONFIRMED. Version 1 recorded REFUTED from the INVERSE_RESIDUAL family.",
+    "result_INVERSE_RESIDUAL": "not the family of the prediction; recorded for comparison",
+    "note": "Version 1 scored P4 on INVERSE_RESIDUAL; the q^m/a heuristic belongs to GEOMETRIC_TAIL."
+  },
+  "P2": "unchanged: PARTLY_REFUTED (scalar gap fails; constant outside the predicted range)",
+  "P8": "unchanged: CONFIRMED_WITH_TIMING_CAVEAT; statistic now recorded both as #(|lambda|<delta) and #(lambda<delta)",
+  "records": {
+    "even": "3daabb9c05c89351ed302408a147ae0c2d3d867fa0a0424831ebbbc485aad77b",
+    "odd": "7b15a641c8cbded3ab74a71d8a59bcdbdc9a488bfc21548d94fa8c87860730a1"
+  }
+}

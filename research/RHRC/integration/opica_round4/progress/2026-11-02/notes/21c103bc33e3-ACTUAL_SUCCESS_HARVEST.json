@@ -1,0 +1,535 @@
+{
+  "status": "PASS_BOUNDED_ACTUAL_INDEPENDENT_CANONICAL_HARVEST",
+  "classification": [
+    "REGRESSION GATE",
+    "CANONICAL GENERATION AND COMPILER-DEPENDENCY CONSISTENCY"
+  ],
+  "job": {
+    "id": 125141213440,
+    "run_id": 41378780656,
+    "run_attempt": 1,
+    "head_sha": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "name": "Round4 / INDEPENDENT_CANONICAL",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-11-02T07:03:25Z",
+    "completed_at": "2026-11-02T09:19:28Z",
+    "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780656/job/125141213440",
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-02T07:03:26Z",
+        "completed_at": "2026-11-02T07:03:27Z"
+      },
+      {
+        "name": "Record independent group deadline with diagnostic upload margin",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-02T07:03:27Z",
+        "completed_at": "2026-11-02T07:03:27Z"
+      },
+      {
+        "name": "Record upstream matrix disposition",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-02T07:03:27Z",
+        "completed_at": "2026-11-02T07:03:27Z"
+      },
+      {
+        "name": "Require every matrix job to succeed",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-02T07:03:27Z",
+        "completed_at": "2026-11-02T07:03:27Z"
+      },
+      {
+        "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-02T07:03:27Z",
+        "completed_at": "2026-11-02T07:04:58Z"
+      },
+      {
+        "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6,
+        "started_at": "2026-11-02T07:04:58Z",
+        "completed_at": "2026-11-02T07:05:08Z"
+      },
+      {
+        "name": "Run ./host/.github/actions/opica4-runtime",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7,
+        "started_at": "2026-11-02T07:05:08Z",
+        "completed_at": "2026-11-02T08:16:24Z"
+      },
+      {
+        "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 8,
+        "started_at": "2026-11-02T08:16:24Z",
+        "completed_at": "2026-11-02T08:16:39Z"
+      },
+      {
+        "name": "Reconstruct eleven complete bundles and run the fixed independent group",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 9,
+        "started_at": "2026-11-02T08:16:39Z",
+        "completed_at": "2026-11-02T09:19:21Z"
+      },
+      {
+        "name": "Seal the complete independent group transport",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 10,
+        "started_at": "2026-11-02T09:19:21Z",
+        "completed_at": "2026-11-02T09:19:24Z"
+      },
+      {
+        "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 11,
+        "started_at": "2026-11-02T09:19:24Z",
+        "completed_at": "2026-11-02T09:19:25Z"
+      },
+      {
+        "name": "Collect bounded diagnostics after an interrupted independent group",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 12,
+        "started_at": "2026-11-02T09:19:25Z",
+        "completed_at": "2026-11-02T09:19:25Z"
+      },
+      {
+        "name": "Record independent group diagnostic disposition",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 13,
+        "started_at": "2026-11-02T09:19:25Z",
+        "completed_at": "2026-11-02T09:19:25Z"
+      },
+      {
+        "name": "Preserve optional independent group bootstrap diagnostics",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 14,
+        "started_at": "2026-11-02T09:19:25Z",
+        "completed_at": "2026-11-02T09:19:26Z"
+      },
+      {
+        "name": "Post Run ./host/.github/actions/opica4-runtime",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 26,
+        "started_at": "2026-11-02T09:19:26Z",
+        "completed_at": "2026-11-02T09:19:26Z"
+      },
+      {
+        "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 27,
+        "started_at": "2026-11-02T09:19:26Z",
+        "completed_at": "2026-11-02T09:19:26Z"
+      },
+      {
+        "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 28,
+        "started_at": "2026-11-02T09:19:26Z",
+        "completed_at": "2026-11-02T09:19:26Z"
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 29,
+        "started_at": "2026-11-02T09:19:26Z",
+        "completed_at": "2026-11-02T09:19:26Z"
+      }
+    ],
+    "requested_attempt": 1,
+    "latest_attempt": true
+  },
+  "experiment": {
+    "attempt": 1,
+    "profile_digest": "fbbf97fcc910780d21db1aefa64f5b49746766e1488e20d040c8ad488867ac2c",
+    "requested_commit": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "requested_tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "run_id": "41378780656"
+  },
+  "checked": {
+    "commit": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784"
+  },
+  "actual_group_record": {
+    "checked": {
+      "commit": "7bae463361264a0694b4fb2e9107dc4314163b33",
+      "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784"
+    },
+    "conclusion": "success",
+    "experiment": {
+      "attempt": 1,
+      "profile_digest": "fbbf97fcc910780d21db1aefa64f5b49746766e1488e20d040c8ad488867ac2c",
+      "requested_commit": "7bae463361264a0694b4fb2e9107dc4314163b33",
+      "requested_tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+      "run_id": "41378780656"
+    },
+    "group_id": "CANONICAL",
+    "independently_reconstructed_lanes": [
+      {
+        "evidence_digest": "de7283706969b9b3f5fb14d559fe9ddc8747706a2971d193509065448853fba2",
+        "id": "GENERATED_STATE",
+        "scope": "CURRENT_HOST"
+      }
+    ],
+    "schema": "OPICA4_INDEPENDENT_REPLAY_GROUP_V1"
+  },
+  "actual_generated_result": {
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "canonical_products": {
+      "research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json": "9755d9e2682fa305de580213c66e7c2bd716ba5d125345c04e59bfc27c7fc531",
+      "research/RHRC/ffbbp/generated/history/RHKG_CANDIDATE_REDUCTION_ASSURANCE_v1_PR265.json": "226b2d12e6fa5551df31972591fbdce7d23187d9461e0ec01e6114591d903493",
+      "research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl": "12cc399f5c5b1154e95619f2da6d7f0df6e64b12d1292bafee67bbc335357917",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-0.jsonl": "d2e32781ce554f7720ec246ac76432f08928e2f844cde4b730bd7969b5167291",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-1.jsonl": "390107fbb2814a0d563c34a2984d1256d63ff9eb8686d42de22b74de6a8b8515",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-2.jsonl": "961af0ed081540590649ef0327c72b841e4201f6ca79429c25de3ae0d7889089",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-3.jsonl": "e4b83dd6f255e15e536419555704d0b4df5035c4c4151511df48dec1f9da35e7",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-4.jsonl": "150640cadd90718d815e589623134330a5a9c3306643beeae4e1bbaed6270214",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-5.jsonl": "b2e65a7f27381ddb2fd5c987c5422873de21eb7a9c608690eed101f182460c80",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-6.jsonl": "6aa9f8161c75198ec78ec57dea5faefd73562ec4f94614ab386bc4ab6caf8d76",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-7.jsonl": "bc08c25c7d4b3dc762bb147256ff8c0d3ab111e5ba4bd0034969613790d4a3cc",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-8.jsonl": "8876b2093ff8ef95b5f91dc122dbd310f33779db34b8b0be68a8d9caf12ebe70",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-9.jsonl": "15050edd7eb547f174d1beb9637429c6c77f31fc59e015ffe14bb3ba5d624b23",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-a.jsonl": "a148a9a099338a89f72bffafc33ef720b9354d657c6ced4a5cc975bd11e8431a",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-b.jsonl": "58e78b0a6c23303556aa49f787590072c3a4dcad3912364eeed117f74e2a29e0",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-c.jsonl": "ebd76511958409b39d4d71567d4b97a0951ea4cdefddec22f122327a07b97be7",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-d.jsonl": "8f0efa39f8adacab99ab081d2302991ed7af05dc895e7c42bb636586e4eca65b",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-e.jsonl": "fce94e5d15e73f0f25ffaa47a24412860910b549f36e8210b9ec97149c687e99",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-f.jsonl": "1b41764160bccc247930dc9f844cccea1a4c00d8d7de6c74915ff3da59d506f5",
+      "research/RHRC/graph/generated/CONTACT_QUOTIENT_DECLARATION_DEPENDENCIES.jsonl": "27debcecea86631b449a1d1fb33b00726af9de1fdb1a7050d8af0d9eb6bc9411",
+      "research/RHRC/graph/generated/CONTACT_QUOTIENT_VIEW.json": "eb865ae6a3224ffeb87ed2f867731b82bb48239dc2af6b533340539537942ce4",
+      "research/RHRC/graph/generated/DEPENDENCY_BRIDGE_FRONTIERS.json": "67ed95841ed64d6fd878c8b89b610e64bad63c5b8595928f1fb90ba3ac72781b",
+      "research/RHRC/graph/generated/DEPENDENCY_COHORT_ATOMS.json": "42528e89a20d3a513091f8de497e764db6f9a749c0a6dca5efa2a6d44fb336e5",
+      "research/RHRC/graph/generated/DEPENDENCY_COHORT_OVERLAP.json": "74cd8a806869bbf2aad82f079453c9a427d07ea4551d68b5cc8be2e27f813b90",
+      "research/RHRC/graph/generated/DEPENDENCY_KERNEL_ATLAS.json": "55a67bfb961889d2c5c83d40e711f79398f73c61bc5dd6c12ec5990c1be0f746",
+      "research/RHRC/graph/generated/DEPENDENCY_KERNEL_QUOTIENT.json": "9c0be32594b0fd64dd56a5b951dd1c05229f6f5a31fd641f52740b788cbf55eb",
+      "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_FRONTIERS.json": "9a05c8b8192f8d6ce8405b657d1f539b7116a48fb6466556c1a4a83342cf89ee",
+      "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_QUOTIENTS.json": "967d92a4edff8a2fefab69d1a037bb1da0c22c3c796bf580a959751b3ff17f1a",
+      "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_SUMMARY.json": "9ce6d490d1ecddbf0562faf7aed2cb70f230c40bbfe8817b0794a1b040dbf785",
+      "research/RHRC/graph/generated/DEPENDENCY_SIGNATURE_CLASSES.json": "96cfa51abff87108916367aa07bd788b9396ddb9cbfd765195eda952e32c3d61",
+      "research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json": "a25a0e50ecb66f91c17ae78b0d45f597ba5379dcd028b3cc427226e266ad7470",
+      "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json": "c9845f8269040b1deac9374c4938f914c0b13ff339dc1625fb1d5b167caef037",
+      "research/RHRC/graph/generated/MODULE_SEMANTIC_CLOSURE.json": "d4c30cf4d1756d88d8eaabbc317138b68017afe0378abb32fa00266bf567e270",
+      "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json": "34d2784c04421d88326658e409481993e00f844059441d4f635a84a9867db39d",
+      "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json": "4e4370185729d4fbf0ce2ebdaa72db80a28d74b3b035273bccaa8add422f3160",
+      "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json": "e796ca542e5ec06f00db12165d4054cd3a3341ce677b728f5676502bead8fbf4",
+      "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json": "85a73b8eabb03f695361326889eb283641840d2aa1be646b616f9840ab2ef53e",
+      "research/RHRC/graph/generated/lean_declarations.jsonl": "deed8d35e01c1894d398958ec9dff5dac179dee4be8f74161a036839f68ae5d5",
+      "research/RHRC/graph/generated/lean_modules.jsonl": "42e2d1dbd7b6dbaf412a91f23416def754ef96940f0af85659398dd8e661edfb",
+      "research/RHRC/graph/generated/lean_source_declarations.jsonl": "b62cf49974c8ee4909460c59680d0da6299e885e0025c942033ea2a3169f755b",
+      "research/RHRC/graph/generated/registry_nodes.jsonl": "4931ed0e20fa8946c38bfce5827e8dc54ead9f73b165fe58efc54ef4e0dd7062",
+      "research/RHRC/graph/generated/relations/relations-0.jsonl": "21e19cf13ec9f23f7a0e3070699f5ee6ce1d1181b3ca8af89de9a3629df7493c",
+      "research/RHRC/graph/generated/relations/relations-1.jsonl": "a4f0494f9098b340c22808cb7c9bd93bf79c6a3fc1d19672e9c4699d80661725",
+      "research/RHRC/graph/generated/relations/relations-2.jsonl": "8db2b67612bc3f63c07bd66b72ef3600410752d0bd4bfe9f7e2d3ab50a5dfcfe",
+      "research/RHRC/graph/generated/relations/relations-3.jsonl": "46c887a97656692efc44135d6435f0cdf102b0f34de8c58427d9d2ad07d3083b",
+      "research/RHRC/graph/generated/relations/relations-4.jsonl": "e7294112fa2eeabff10ccc6e2c85b6c84a3339780a645c52bfc746d0a665b86f",
+      "research/RHRC/graph/generated/relations/relations-5.jsonl": "598caa5fbd57d2055d2995d9beb93ed8526ff48c8f7bad5d08a5209f95102716",
+      "research/RHRC/graph/generated/relations/relations-6.jsonl": "32f39d3911e799a3891ce960db186db108561889edaba869287f601833ed960b",
+      "research/RHRC/graph/generated/relations/relations-7.jsonl": "a3184ddd8f10c71341556cbcbb02ebd63e23b3f69a5c9c6105c1c75c37a30b1d",
+      "research/RHRC/graph/generated/relations/relations-8.jsonl": "531970360135e95ecf533f15f35d05aa5c2a9cbb7a7e527835773a7439611a0d",
+      "research/RHRC/graph/generated/relations/relations-9.jsonl": "4cd0be0fa3db7c6c72cbe764351aa89d4e181de50da217256dabd48b1f722776",
+      "research/RHRC/graph/generated/relations/relations-a.jsonl": "c19ea3267c8741d4313d885fde3dcc988d48d840f8ebc629f5cbc2f4cd51cb41",
+      "research/RHRC/graph/generated/relations/relations-b.jsonl": "e85b68a593bc3188572af1ed4c2c819c0d9d6af0cc64927a2025ec80832b9b75",
+      "research/RHRC/graph/generated/relations/relations-c.jsonl": "7b0dbcc746f7df5ada122f698fd196adfe6aeec151e4cc40f061d81210bcc5e6",
+      "research/RHRC/graph/generated/relations/relations-d.jsonl": "d279264ea3cdba6754d26e1aa3407b039f90d0ba0aba2759901db5e73c51a77f",
+      "research/RHRC/graph/generated/relations/relations-e.jsonl": "583f1224d6198ccb1cf1f370bfd4096dc07cec0beb080ce7bde43aa582f91129",
+      "research/RHRC/graph/generated/relations/relations-f.jsonl": "5af81f29233da2d8fe94871992bfa0e03323b0757e9366169bb62e35e5e29f30",
+      "research/RHRC/graph/generated/repository_files.jsonl": "a11b2d89599f3d90eaf151a3b9e0206c0b2fae5e4d20ce25ce361ac072cbf6cc",
+      "research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl": "ad8eda383e73e76b2a8cbed7140b14a6ff4a930314b58af3782cee8cec4d2eaa",
+      "research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl": "ab56df126f85e58538e95af58d3f60da5b21ca488099c955d25ec9fbe0c8e44d",
+      "research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json": "64669feb8188e745fad7aba7cdc1c1c043c7b1f6a0121930b04af88ca797ff7e",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-0.jsonl": "2b95730f6e8aa3212c1f453cea3dffe61567f06a5a5f031e351fab07927f99b1",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-1.jsonl": "47bde64ef9fb1b9f0d0ef184e5d738f148f1b6435e805602d250ec74c65a78e5",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-2.jsonl": "448c6467e308c66c12f151d5077e9c883543a1281d27f20741c5c4174346718b",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-3.jsonl": "03ba4638bfc4f06ffb23d75b855f26c8c55cd2ffaa0283dd00c3417deb3be472",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-4.jsonl": "2624ee8766e6320f962ff0ff3d34db1ee30ad8fba91d4ddebe115aeb54bc4614",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-5.jsonl": "fb16f6a6783a4dd67191489991986e8877822dd05b6595a20e0bdacfba863fe1",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-6.jsonl": "62d54a7d6fe6cfd103d4df899de6ad3d3ff943bcbe655779c49e7ad6cc1b94f1",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-7.jsonl": "8fad97379fafebe2615a0a1c4f78434f56a495770846abda9151efcd1afe6585",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-8.jsonl": "b87c0f32831f4412982002d7bc45d1226d084d68e32512d0a413a8a382f9255f",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-9.jsonl": "b4d30b8b71aa3a90d238ef0aec3e9417dc1d0ec1249a41b0aec54beb25f8c375",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-a.jsonl": "b3e8bd0d00e4e2c02350a22031aba094bd1014cbd237d126f6b26ba4003896ae",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-b.jsonl": "bd2b8f58c34cb1339c5798849e37c886eedb77027c12030643deb59f664cdeb4",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-c.jsonl": "776130cdedcf127ba67de070031a71cb2eeb375bb61a982f063c401de5f538a7",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-d.jsonl": "5376b1113a279ebbbdb9b92eab042ad61d4c081ef210308a2c1a873a87a23311",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-e.jsonl": "b44595fbb232d6a5638abe9750a6100bb6ba0a08fae1334d29fc4ee5c62c2b96",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-f.jsonl": "955bb9c0ffa1385f53511ccc01074fc99da9b27d21acea38bb355af53a62e95e",
+      "research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json": "a9b78b9430c3176d18abf7a09be1e6f86a56172ee8d7ea1b9502e899011fa2df",
+      "research/RHRC/ool/generated/RHKG_OOL_ROUTE_CONTACTS.jsonl": "5f796ba17e372eca80c2b341b9064361cf42df19a78f2f93cef5393951cc76e8",
+      "research/RHRC/ool/generated/history/RHKG_OOL_PHASE_ATLAS_v1_PR266.json": "59905fcf4b8ae2e0219ddc006b0e4e39a1b70ad4205547d145312beea654e2ed",
+      "research/RHRC/ool/generated/history/RHKG_OOL_ROUTE_CONTACTS_v1_PR266.jsonl": "f00b39376c8db5cc85b52593cd9cd1ab31243eb650180426f475df01d85f6791"
+    },
+    "commands": [
+      {
+        "argv": [
+          "/opt/hostedtoolcache/Python/3.13.5/x64/bin/python",
+          "-B",
+          "research/RHRC/tools/materialize_derived_state.py",
+          "--check"
+        ],
+        "exit_code": 0,
+        "log": "canonical-current.log",
+        "sha256": "dfd1fd3b8bad39e9c1a5bd0e6661aac6b5c209042aff1ab5d836e921420a9e6c"
+      },
+      {
+        "argv": [
+          "/opt/hostedtoolcache/Python/3.13.5/x64/bin/python",
+          "-B",
+          "-m",
+          "unittest",
+          "research.RHRC.integration.opica_round2.tests.test_file_classes"
+        ],
+        "exit_code": 0,
+        "log": "classification.log",
+        "sha256": "75353a3823b8eb363169b0bd47917afb69a32d58c6a796dd2152b12711422d95"
+      }
+    ],
+    "status": "PASS_GENERATED_STATE",
+    "view_hashes": {
+      "APPLICATIONS.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CURRENT_STATE.json": "21a62af899a1da3e3f414e6c80a5df77224a53ec4a2050521a02e4b6af6661de",
+      "EVENTS.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "verified_transport": {
+    "outer": {
+      "artifact_id": 13129421111,
+      "bytes": 108936,
+      "sha256": "d9fc3eebfe2d77c3ad2668f1933c6dcd0fd8bfde248f521df4ec352d94645791",
+      "all_member_crc_pass": true,
+      "members": 3,
+      "expanded_bytes": 108514,
+      "extraction": "None; selected JSON members read later in memory."
+    },
+    "nested_sha256": "c9dada8efd97f00422d459abe7d7d1de43a7ec920794aa88d8028eea91d9ccba",
+    "nested_all_crc_pass": true,
+    "all_manifest_members_freshly_hashed": [
+      {
+        "bytes": 0,
+        "path": "GENERATED_STATE/APPLICATIONS.jsonl",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "bytes": 91,
+        "path": "GENERATED_STATE/CURRENT_STATE.json",
+        "sha256": "21a62af899a1da3e3f414e6c80a5df77224a53ec4a2050521a02e4b6af6661de"
+      },
+      {
+        "bytes": 0,
+        "path": "GENERATED_STATE/EVENTS.jsonl",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "bytes": 2418,
+        "path": "GENERATED_STATE/canonical-current.log",
+        "sha256": "dfd1fd3b8bad39e9c1a5bd0e6661aac6b5c209042aff1ab5d836e921420a9e6c"
+      },
+      {
+        "bytes": 112,
+        "path": "GENERATED_STATE/classification.log",
+        "sha256": "75353a3823b8eb363169b0bd47917afb69a32d58c6a796dd2152b12711422d95"
+      },
+      {
+        "bytes": 57344,
+        "path": "GENERATED_STATE/determinism.db",
+        "sha256": "9502e55bec6eb0f3da6b4affc51a0fb867e7847aeb227c2783dd8d88b2bfe79c"
+      },
+      {
+        "bytes": 12689,
+        "path": "GENERATED_STATE/generated-state.json",
+        "sha256": "3f4692d6f26c3feace74aab198d2b1c7648c9fd87b403775906a712e35e91f42"
+      },
+      {
+        "bytes": 2041,
+        "path": "group.json",
+        "sha256": "02b465724d61039ba65d100a14391096d207f6901deff345e52ba82605ac8901"
+      },
+      {
+        "bytes": 13478,
+        "path": "source-after.json",
+        "sha256": "ddf043bee0f65cf6f70ab2327f54f427007a9843f113379ec63f06407f710b98"
+      },
+      {
+        "bytes": 13478,
+        "path": "source.json",
+        "sha256": "ddf043bee0f65cf6f70ab2327f54f427007a9843f113379ec63f06407f710b98"
+      }
+    ]
+  },
+  "dispositions": {
+    "canonical": "Original materialize_derived_state.py --check freshly executed; complete derived state PASS and all81 product hashes exactly match the same-head original GENERATED_STATE producer.",
+    "registered_dependencies": {
+      "registered_roots": 339,
+      "declarations": 22198,
+      "dependencies": 1280018,
+      "export_protocol_lines": 63379,
+      "log_disposition": "PASS"
+    },
+    "graph": "37 products byte-current; validation 5140 files,1242 local Lean modules,1199 external module nodes,20088 named source declarations,312 document nodes,343 claim mirrors,4 route mirrors,1328736 relations; terminal RH_OPEN.",
+    "candidate_exactification": "5548 candidates;1744 source-only public theorem/lemma roots. Source-only dependency export16085 declarations; contact quotient and phase atlas PASS,1114 frontier contacts.",
+    "classification": "All13 original file-classification tests passed.",
+    "determinism": "Three empty-journal views equal original producer hashes. These are not new theorem/closure results.",
+    "full_acceptance": "NOT_ESTABLISHED: CORE and AUXILIARY still running at snapshot, final ACCEPTANCE not passed.",
+    "support_inventory": "This canonical group does not independently rerun the complete1079 support declaration/84 semantic-control audit; those remain separately bound producer/replay obligations."
+  },
+  "same_head_comparison": {
+    "previous_receipt": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next9\\GENERATED_STATE_SCIENTIFIC_HARVEST.json",
+      "sha256": "71e35036f98e851efac4953c0070bda0588a40cfa0613125e41cc21049c3f170",
+      "bytes": 37236
+    },
+    "all81_product_hashes_equal": true,
+    "all3_view_hashes_equal": true,
+    "command_recipes_equal": true,
+    "fresh_command_logs_distinct": true,
+    "old_bundles_not_redownloaded": true
+  },
+  "runtime_repair_actual_execution": {
+    "log_lines": [
+      637,
+      700
+    ],
+    "guarded_sdk_cleanup_success": true,
+    "android_du_bytes": 11838300160,
+    "dotnet_du_bytes": 6167728128,
+    "available_bytes_before": 88961056768,
+    "available_bytes_after": 106967089152,
+    "observed_available_delta": 18006032384,
+    "scope": "Actual disposable runner execution, not a universal capacity claim; cleanup and subsequent replay succeeded. No platform cause inference."
+  },
+  "source_scope_record": {
+    "status": "PASS_SOURCE_SCOPE_ONLY",
+    "current_compiler_accepted": false,
+    "full_round4_accepted": false,
+    "before_after_identical": true,
+    "meaning": "Source inspection flags remain source-only; independent canonical group result is distinct from aggregate acceptance."
+  },
+  "sources": [
+    {
+      "relative_path": ".github/workflows/rhrc_opica_composition.yml",
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\.github\\workflows\\rhrc_opica_composition.yml",
+      "sha256": "60e24890db380e2d601b78616359985ae4996386b76b9b7b0ea822d14ace51dc",
+      "bytes": 30483,
+      "equals_current_git_blob": true
+    },
+    {
+      "relative_path": ".github/actions/opica4-runtime/action.yml",
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\.github\\actions\\opica4-runtime\\action.yml",
+      "sha256": "f4d7e7a7793f5b19d6c798cc2da8520985920e809ee605f65b082512f1abb640",
+      "bytes": 6002,
+      "equals_current_git_blob": true
+    },
+    {
+      "relative_path": "research/RHRC/integration/opica_composition/cli.py",
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_composition\\cli.py",
+      "sha256": "f696d164a762faa591ceec645632db3031c12cd077050979cb23ba0dfd383b1f",
+      "bytes": 83781,
+      "equals_current_git_blob": true
+    },
+    {
+      "relative_path": "research/RHRC/integration/opica_composition/accept.py",
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_composition\\accept.py",
+      "sha256": "bd36a1828ec1c41aabccb297fd7d3f14c75704f7b38d19ab3a262a0739bdb96e",
+      "bytes": 13765,
+      "equals_current_git_blob": true
+    },
+    {
+      "relative_path": "research/RHRC/tools/materialize_derived_state.py",
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\tools\\materialize_derived_state.py",
+      "sha256": "ca92f826ceefca5e1f5cf3a681f2948d5989403c5a933262fd7d2721cdba5185",
+      "bytes": 4646,
+      "equals_current_git_blob": true
+    },
+    {
+      "relative_path": "research/RHRC/integration/opica_round2/tests/test_file_classes.py",
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round2\\tests\\test_file_classes.py",
+      "sha256": "7654ff4733a0fec0c4159e01b7ed4642ea44de31877afe0875a29a6ce34e3f88",
+      "bytes": 13996,
+      "equals_current_git_blob": true
+    },
+    {
+      "relative_path": "research/RHRC/integration/opica_round4/BUILD_MANIFEST.json",
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\research\\RHRC\\integration\\opica_round4\\BUILD_MANIFEST.json",
+      "sha256": "d9f9596e9fb441ceb393c2486a0f6885408878ff7214700adefa4f924c2b60ea",
+      "bytes": 87679,
+      "equals_current_git_blob": true
+    }
+  ],
+  "evidence": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\artifact-13129421111.zip",
+      "sha256": "d9fc3eebfe2d77c3ad2668f1933c6dcd0fd8bfde248f521df4ec352d94645791",
+      "bytes": 108936
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\CANONICAL_ZIP_VERIFIED.json",
+      "sha256": "12e231c807ceac70829923b366b6f423ec72971531de106f4d0b1d200957e9af",
+      "bytes": 285
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\CANONICAL_DOCUMENTS.json",
+      "sha256": "1590f5995db4a0ad2cb15b062841f354593e1dbbe885c2714ed16d05d111d6a0",
+      "bytes": 48578
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\CANONICAL_LOGS.json",
+      "sha256": "ca3693e4e719d97d24fa962ad229262fef3060bba2656cfca17089496e4dce99",
+      "bytes": 2623
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\CANONICAL_LOG_ANCHORS.json",
+      "sha256": "8356923b5e798f52c7504867c5c2c6124e165945275a595f23a87904e86c489a",
+      "bytes": 15320
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\job-125141213440.connector.log",
+      "sha256": "5f35dc4b293ce49468afd4bb5ecf2c02c691fb9069baf2eed7ab182a3bb65612",
+      "bytes": 165182
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\ROUND4_ARTIFACTS_CONNECTOR.json",
+      "sha256": "cae4261586d0ec04637f1c1f3010956750904c7384d5b58c42883172a3055687",
+      "bytes": 21275
+    }
+  ],
+  "new_downloads": {
+    "artifacts": 1,
+    "bytes": 108936,
+    "unchanged_downloads": 0
+  },
+  "limits": [
+    "No workflow rerun or local tests/compiler.",
+    "No new arithmetic sign or closing inequality; RH and Step4 remain OPEN.",
+    "No prior-head or pending group promoted to current acceptance."
+  ],
+  "helper": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\seal_harvest.py",
+    "sha256": "42f5ad09370a5b7aa8c47378bad3d62410a864f33c6b7c9d85c8d327cb640a39",
+    "bytes": 10122
+  }
+}

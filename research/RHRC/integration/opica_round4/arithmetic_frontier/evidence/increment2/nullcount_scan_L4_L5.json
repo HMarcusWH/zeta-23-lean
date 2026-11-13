@@ -1,0 +1,91 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_NULLCOUNT_SCAN_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "EXPERIMENTAL_SIGNAL_FLOATING_ONLY",
+  "engine_sha256": "633bec1ecd4d6bfb8ba68077515be7880380b7b001e069d4efd67b2c38f4f203",
+  "scan_sha256": "036013ae2dbd01b13360b1de7ed888010a2d39150bf0e540f561531d9f4886f7",
+  "rows": [
+    {
+      "L": "4",
+      "K": 256,
+      "Q": 54,
+      "parity": "even",
+      "dimension": 253,
+      "T": 402.1238596594935,
+      "dim_minus_main_term_N_T": 49.956482664981024,
+      "counts_below_10^-t": {
+        "2": 51,
+        "4": 50,
+        "6": 49,
+        "8": 49,
+        "10": 48,
+        "12": 48,
+        "13": 47
+      },
+      "count_between_1e-2_and_1": 15,
+      "smallest_eigenvalue_above_1e-2": 0.32645347147922854
+    },
+    {
+      "L": "4",
+      "K": 256,
+      "Q": 54,
+      "parity": "odd",
+      "dimension": 252,
+      "T": 402.1238596594935,
+      "dim_minus_main_term_N_T": 48.956482664981024,
+      "counts_below_10^-t": {
+        "2": 50,
+        "4": 49,
+        "6": 49,
+        "8": 48,
+        "10": 48,
+        "12": 47,
+        "13": 47
+      },
+      "count_between_1e-2_and_1": 16,
+      "smallest_eigenvalue_above_1e-2": 0.2735251670456298
+    },
+    {
+      "L": "5",
+      "K": 625,
+      "Q": 148,
+      "parity": "even",
+      "dimension": 622,
+      "T": 785.3981633974483,
+      "dim_minus_main_term_N_T": 142.58578283721226,
+      "counts_below_10^-t": {
+        "2": 142,
+        "4": 141,
+        "6": 140,
+        "8": 139,
+        "10": 138,
+        "12": 137,
+        "13": 136
+      },
+      "count_between_1e-2_and_1": 22,
+      "smallest_eigenvalue_above_1e-2": 0.2763550489179387
+    },
+    {
+      "L": "5",
+      "K": 625,
+      "Q": 148,
+      "parity": "odd",
+      "dimension": 621,
+      "T": 785.3981633974483,
+      "dim_minus_main_term_N_T": 141.58578283721226,
+      "counts_below_10^-t": {
+        "2": 141,
+        "4": 140,
+        "6": 139,
+        "8": 138,
+        "10": 137,
+        "12": 136,
+        "13": 136
+      },
+      "count_between_1e-2_and_1": 23,
+      "smallest_eigenvalue_above_1e-2": 0.27242019588275745
+    }
+  ],
+  "timing_note": "Scan run after the L=6 records were read; this is a post-hoc robustness check of P8, not a prediction."
+}

@@ -1,0 +1,132 @@
+{
+  "status": "DERIVED_ACTUAL_K3_POSITIVE_BUDGET_AND_SHARP_SIGNED_COMPENSATION_NO_CLOSURE",
+  "created_utc": "2026-11-02T11:39:44.685656+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "request_connection": "Continues the actual-source joint response/deconvolution investigation. The S4-E3 attachment is research evidence, not an instruction source. Exact recovery and a positive operator are kept distinct from an independent signed bound on the recovered native response.",
+  "exact_objects": {
+    "gap": "G(L)=Q_odd(L)-a(L)Q_even(L)=80 Re f(u_even), a=N_odd/N_even, for the literal minimal native K3 pair. Both carriers are one-dimensional; the corrected-source identity is exact, not a sign assumption.",
+    "profile": "D_L(theta)=E_odd(L,theta)-a(L)E_even(L,theta). It is negative near both endpoints and positive somewhere inside at each L>0. D(0)=D(1)=D_prime(1)=0; every prime power, norm, and pole channel is retained.",
+    "complete_decomposition": "G=A+B=J+C_psi. A=-integral D(1-t/L)rho(t)dt is the complete canonical Arch contribution; B is the negative complete weighted prime-power sum. J=-integral D(1-t/L)[rho(t)-exp(-t/2)]dt. C_psi is the exact integral of [psi(exp t)-exp t] against the derivative of exp(-t/2)D(1-t/L)."
+  },
+  "new_independent_information": [
+    "A(L)>0 and J(L)>0 for EVERY L>0. Each is the positive factor L^2 N_even/(36pi^2) times a strict covariance of xi^2 with the full gamma multiplier or its j>=1 tail under the actual even Fourier density. Nondegeneracy follows from the nonzero continuous Fourier density, not an assumed zero distribution.",
+    "A=175 I2 L^2/(88pi^2)+O(1), J=175(I2-16)L^2/(88pi^2)+O(1), where I2=integral t^2rho(t)dt=2 sum_(j>=0)(2j+1/2)^(-3)>16. The uniform fourth-order Taylor remainder and exact vanishing cubic coefficient make the additive errors bounded.",
+    "The paid classical quantitative PNT gives |C_psi|<=C L^-7 exp(L/2-c sqrt L) for L>=1. This is an unconditional signed-discrepancy baseline but remains exponential; it does not meet the polynomial lower-bound target.",
+    "Unconditionally, C_psi is negative at arbitrarily late apertures and liminf C_psi/L^2<=-175(I2-16)/(88pi^2). Thus favorable sign, o(L^2) negative allowance, and every fixed fraction kappa<1 in C_psi>=-kappa J are false eventual bounds. This conclusion uses exhaustive RH/off-line cases, without asserting either case as proved.",
+    "Boundary check: for0<L<log2 there are no prime atoms. The same C_psi equals the strictly positive j=0 single-exponential covariance A-J. Hence the cofinal negative conclusion is not a sign convention built into its definition.",
+    "The COMPLETE actual prime operator is a finite positive sum of squared translation differences. Its contribution to G is nevertheless cN Cov(xi^2,ell_prime), with ell_prime=2 sum Lambda(q)/sqrt(q)*(1-cos(xi log q)). The exact psi covariance uses ell_prime minus the complete finite continuous symbol. Physical derivatives commute with these translation operators, so no positive derivative commutator supplies the missing sign.",
+    "The proposed per-delay energy ordering fails on the actual source at actual prime powers2^j: aperture j log2+20 gives a negative individual prime-gap term for all sufficiently large j, while offset1 gives a positive one. The fixed-v profile checks are exact. No sign for the complete prime sum follows; the individual chosen atom has exponentially small weight. Separate positive forms cannot be extended to infinite horizon before their exact norm cancellation."
+  ],
+  "sharp_target_and_non_circularity": {
+    "root_deduction": "Physical integration by parts gives F_odd(p)=iLp F_even(p)/(6pi) as an entire transform identity. Under RH, use the ORIGINAL complete Weil contributions |F(i gamma)|^2 with multiplicities, not individual asymmetric exp(pL)-1 terms. The exact ratio is Q_even,rho=36pi^2 Q_odd,rho/(gamma^2L^2). A positive global ordinate gap eta yields G>=(1-36pi^2a/(eta^2L^2))Q_odd>=0 for L>6pi/eta. The entire identity avoids division at removable rational resonances.",
+    "criterion": "Together with the reviewed complete off-line negative excursions, eventual G>=0, eventual B>=-A, and eventual C_psi>=-J are each equivalent to RH at the external analytic level. An eventual polynomial lower bound for G also suffices and follows under RH.",
+    "boundary": "This equivalence is not an independent proof of any of those inequalities. The new positive budget does not pay the actual signed opposition. No arithmetic premise has been silently discharged."
+  },
+  "existing_OPICA_constraints_rechecked": [
+    "At K3 the full source-moment relation, source-gap inequality and trace displacement reduce to the same scalar parity gap; they do not supply a second sign constraint.",
+    "Strict-even source positivity requires the already ordered parity ground levels. Spectral separation supplies nonzero source, not an ordering. The odd reciprocal input is not the odd eigenray.",
+    "The nonzero K3 even generator has M4=720; the M4=0 moment slice contains no nonzero vector in this one-dimensional carrier. Its constraints cannot be transferred to this ground vector.",
+    "Full-row unsigned bounds retain the exponentially large correlated prime charges. Exact cutoff recovery, prime divisibility, Selberg identities and positive convolution machinery do not by themselves bound their signed compensated remainder."
+  ],
+  "root_review": {
+    "read_and_checked": "Full new baseline, A1-A6, P1-P5, C1-C4, independent Arch review, corrected source mapping, current PrimeDiscrepancyIntegral API, strictness route in GammaFacts/Mu, and exact physical derivative/Parseval/Arch bridges. Independently checked coefficient175/(88pi^2), removal16, lower/upper endpoints, the entire-transform ratio, full Weil versus asymmetric term positivity, prime-minus-continuum covariance signs, finite-horizon cancellation and G7(20)=-17*20^7/(33*7!).",
+    "source_files_rehashed_against_current_git": [
+      "Zeta23/CCM/BoundaryFlatFiniteSpace.lean",
+      "Zeta23/CCM/CanonicalPhysicalTrialRealization.lean",
+      "Zeta23/CCM/CanonicalPoleNeutralSourceMoment.lean",
+      "Zeta23/CCM/CanonicalPolePrimeDiscrepancy.lean",
+      "Zeta23/CCM/CanonicalPrimeFreeF04.lean",
+      "Zeta23/CCM/CanonicalPrimeSeamTaylor.lean",
+      "Zeta23/CCM/CanonicalSourceMomentAtoms.lean",
+      "Zeta23/CCM/Components.lean",
+      "Zeta23/CCM/DictionaryArchBridge.lean",
+      "Zeta23/CCM/DictionaryArchFiniteDensity.lean",
+      "Zeta23/CCM/DictionaryArchSourceBridge.lean",
+      "Zeta23/CCM/FinitePhysicalNormalization.lean",
+      "Zeta23/CCM/LocalizedFiniteSpace.lean",
+      "Zeta23/CCM/LocalizedWeilRestriction.lean",
+      "Zeta23/CCM/NativeWeilResponse.lean",
+      "Zeta23/CCM/SourceMatrix.lean",
+      "Zeta23/ExceptionalZero/BoundaryFlatFiniteWeil.lean",
+      "Zeta23/ExplicitFormula.lean",
+      "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "Zeta23/OPICARound4/RegularCells/FixedSeed.lean"
+    ],
+    "new_repository_changes": false,
+    "whole_covariance_compiled": false,
+    "authority": "New complete analytic statements remain DERIVED. An isolated compiler prototype, if later attached, cannot qualify the whole covariance, the arithmetic comparison, or RH."
+  },
+  "ci": {
+    "checkpoint_utc": "2026-11-02T11:06:56Z",
+    "runs": 24,
+    "attempts": 24,
+    "jobs": 95,
+    "success": 92,
+    "running": 1,
+    "optional_skipped": 2,
+    "failed_steps": 0,
+    "new_review_findings": 0,
+    "declared_round4_integrated_scope": "PASS",
+    "remaining": "Round2 generated job125159484505; all-PR qualification is still pending at this checkpoint.",
+    "artifact_authority_limit": "Current CI verified the complete retained payloads. Prior bounded local harvest inspected authenticated selected transport-bound members; whole CORE/ACCEPTANCE ZIP hashes were not recomputed locally.",
+    "drive": "Latest bounded80 FINAL plus43 paper metadata comparison unchanged; no repeated download.",
+    "new_tests_or_artifact_downloads_in_this_poll": false
+  },
+  "evidence": {
+    "signed_psi_baseline": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_SIGNED_PSI_BASELINE.json",
+      "sha256": "5772baadcb9a8cccfe3cde03d18da9c52442ed7ba81b71cba2f486ee253aaffe",
+      "bytes": 13146
+    },
+    "signed_psi_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\INDEPENDENT_K3_SIGNED_PSI_REVIEW.json",
+      "sha256": "a7b01c36470913496019dd2e38d2ce3e9bf2f948cb4ab7248f617464bece375d",
+      "bytes": 8822
+    },
+    "positive_arch_covariance": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_CORRECTED_SOURCE_ARCH_COVARIANCE.json",
+      "sha256": "e5d8301633bae7437fbbf5032078ae18e1626e97858012c12caaff309d9afe1f",
+      "bytes": 16919
+    },
+    "arch_covariance_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\INDEPENDENT_K3_ARCH_COVARIANCE_REVIEW.json",
+      "sha256": "f2940a87d5d7535299d315f57e87fe0e7feadeae9447bea899c18c255864de4c",
+      "bytes": 14008
+    },
+    "complete_psi_composition": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_POSITIVE_PSI_COMPOSITION.json",
+      "sha256": "ab958766ea7fc053a9f41fb8787d07da86d00df7b8060da121b5fd40b256f309",
+      "bytes": 14103
+    },
+    "complete_prime_operator": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_PRIME_DIFFERENCE_SQUARE_COVARIANCE.json",
+      "sha256": "625fc36f3edc70c4b884bfaed5e16a78e3790814c461ba40b8ee161f311cb3a3",
+      "bytes": 13668
+    },
+    "source_mapping": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next17\\K3_CORRECTED_SOURCE_MAPPING.json",
+      "sha256": "1d1c5e8986c283cf95f49f8ae07c14a65aa0849c7259ef589b6c165f21c27ffd",
+      "bytes": 8442
+    },
+    "ci_snapshot": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next17\\CHECKPOINT.json",
+      "sha256": "0b5dcbecc8c5d0f4afdeb7b85bd4e2a6389e6fee7e96d3d39762f07446c57cad",
+      "bytes": 14566
+    },
+    "current_integrated_harvest": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "e7aae06be90254661e11dfc6f556484c30524f310f3e811127827e2137bae36b",
+      "bytes": 26982
+    },
+    "positive_psi_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\INDEPENDENT_K3_POSITIVE_PSI_REVIEW.json",
+      "sha256": "2e2a4ec3ff26dccaa899ff34d8d844060835bc7a8d0e9ecedb3c36f7b13cabc8",
+      "bytes": 8983
+    }
+  },
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE"
+}

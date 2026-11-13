@@ -1,0 +1,170 @@
+{
+  "schema": "PR299_BUILD_UPDATE_EXECUTION_PLAN_V3",
+  "authority": "PROPOSED_TASKS_NOT_REPOSITORY_MANIFEST",
+  "date": "2026-11-08",
+  "baseline": {
+    "head": "dab9fbea4d17a3ab5977318a55ce71b55fe7cfa9",
+    "tree": "22d12e5e75327155f471b53e839ac0d5037e7c6c"
+  },
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "combination": "OR: one complete supplier branch suffices",
+  "tasks": [
+    {
+      "id": "R3-4A",
+      "title": "Qualified-state, source and control reconciliation",
+      "status": "READY_TO_IMPLEMENT",
+      "depends_on": [],
+      "packages": [
+        "A",
+        "G"
+      ],
+      "deliverables": [
+        "Exact dab9fbe harvest and compact hash-bound acceptance index",
+        "Stale build/handover corrections with historical content retained",
+        "New Drive research provenance and authority records",
+        "Sharded negative-control harness, omitted control restored"
+      ],
+      "acceptance": [
+        "All required control IDs have independent intended-rejection receipts",
+        "No prior-head acceptance transferred to a changed successor",
+        "No report snapshots overwrite exact current authority"
+      ]
+    },
+    {
+      "id": "R3-4B",
+      "title": "Coarse-growth and cofinal-semibounded consumers",
+      "status": "DERIVED_TARGETS_NOT_NEWLY_FORMALIZED",
+      "depends_on": [],
+      "packages": [
+        "B",
+        "H"
+      ],
+      "deliverables": [
+        "Normalized native phase membership in both moment slices",
+        "Fixed-parity subexponential/polynomial closure consumers",
+        "Fixed-rate zero-displacement exclusion",
+        "All-late arbitrary-fixed-depth lemma",
+        "Cofinal fixed-floor closure",
+        "Optional literal C2-SE adapter"
+      ],
+      "acceptance": [
+        "Actual source/cutoff/physical norm preserved",
+        "PG all-late and fixed parity; SB one fixed floor and cofinal L",
+        "M chosen before fixed phases and eventual threshold",
+        "Exact formal types/axioms/current-source independent consumers"
+      ]
+    },
+    {
+      "id": "R3-4C",
+      "title": "Native application of the complete commutator",
+      "status": "DERIVED_NATIVE_TARGET",
+      "depends_on": [],
+      "packages": [
+        "B",
+        "F"
+      ],
+      "deliverables": [
+        "Audit/reuse canonical divided-difference displacement",
+        "Prove or explicitly repair V*[D0,E]V=0 on actual carrier",
+        "Physical-isometry and actual normal/leakage factorization",
+        "Compose M51 with full source action"
+      ],
+      "acceptance": [
+        "No dropped ambient commutator without exact proof",
+        "No equality inferred merely from an interval containing zero",
+        "Diagonal/absolute-energy obstruction retained"
+      ]
+    },
+    {
+      "id": "R3-4D",
+      "title": "Only selected candidate prerequisites",
+      "status": "OPTIONAL_DEPENDENCY_DRIVEN",
+      "depends_on": [],
+      "packages": [
+        "C",
+        "E"
+      ],
+      "deliverables": [
+        "Needed weighted trace/isometry adapter",
+        "Needed reference/shifted-moment or kernel audit",
+        "Needed native enclosure/algorithm/data bridge"
+      ],
+      "acceptance": [
+        "Each task names a downstream candidate and unpaid obligation",
+        "M52 not treated as complete Python/Arb verification",
+        "No universal requirement to formalize all historical numerics"
+      ]
+    },
+    {
+      "id": "R3-5A",
+      "title": "Freeze and falsify one complete coarse arithmetic estimate",
+      "status": "RESEARCH_OPEN_START_IN_PARALLEL",
+      "depends_on": [],
+      "packages": [
+        "D",
+        "F",
+        "G"
+      ],
+      "deliverables": [
+        "Exact PG/TR2/SB/NB/C2-SE or alternative candidate contract",
+        "Source-sensitive signed decomposition with full remainder",
+        "Matched countermodel table and fixed experimental rules",
+        "Use existing L4–L7 and L5 band witness before new horizon"
+      ],
+      "acceptance": [
+        "Allowed loss and coverage explicit before fitting",
+        "No source/metric/cutoff/word-projection substitutions",
+        "Candidate survives tests or receives a scoped falsification"
+      ]
+    },
+    {
+      "id": "R3-5B",
+      "title": "Independent native arithmetic supplier",
+      "status": "OPEN_MATHEMATICAL_OBLIGATION",
+      "depends_on": [
+        "R3-5A"
+      ],
+      "packages": [
+        "F"
+      ],
+      "deliverables": [
+        "Complete independent paper proof",
+        "Adversarial proof audit",
+        "Actual-source Lean estimate with all parameter dependencies"
+      ],
+      "acceptance": [
+        "No closing premise hidden in a structure/import",
+        "All tails, mixed terms, source normalizations and quantifiers proved",
+        "Qualified proof reaches one selected consumer"
+      ]
+    },
+    {
+      "id": "R3-6",
+      "title": "Quantified reach, exact RH composition and claim validation",
+      "status": "BLOCKED_ON_INDEPENDENT_SUPPLIER",
+      "depends_on": [
+        "R3-5B"
+      ],
+      "packages": [
+        "H"
+      ],
+      "deliverables": [
+        "Selected branch coverage/reach/eligibility proof",
+        "Exact premise-free Mathlib RiemannHypothesis theorem",
+        "Final same-source/run/attempt proof and claim gates",
+        "Post-green mathematical research pass"
+      ],
+      "acceptance": [
+        "No undischarged RH-strength premise",
+        "Optional numerical bridge built exactly when consumed",
+        "Step4/RH status changed only after complete proof and claim validation"
+      ]
+    }
+  ],
+  "notes": [
+    "No repository, Drive, permissions, merge or draft mutation was performed.",
+    "Qualified baseline remains qualified; changed successors require their own gates.",
+    "Estimated running times in earlier handovers are not schedules or promises."
+  ]
+}

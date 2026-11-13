@@ -1,0 +1,128 @@
+{
+  "status": "CLEAR_BOUNDED_INDEPENDENT_MATHEMATICAL_AND_SOURCE_INTERFACE_REVIEW",
+  "created_utc": "2026-11-02T13:55:10.476374+00:00",
+  "subject": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\k3-generated-prime-energy\\ACTUAL_K3_GENERATED_PRIME_ENERGY.json",
+    "sha256": "a7a5b1d000cf79eca33f209785c0b583792aaf03a2d792fdbe2a2f0215a2a17e",
+    "bytes": 14997
+  },
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "clean": true
+  },
+  "checked_sections": [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5"
+  ],
+  "findings": [
+    "The actual even seven-slot synthesis, 1/sqrt(L) normalization and derivative partner -i L fprime/(6pi) retain c||fprime||^2=aN. The explicit sin profile vanishes to order4, so its zero extension is C3/H3 and the derivative moments used are legitimate.",
+    "The plus half-pole moment makes g=exp(-x/2) integral_-infinity^x exp(s/2)f(s)ds compact. For ADVANCE T_t h(x)=h(x+t), differentiating exp(t/2)T_t g gives the stated A0f=exp(L/2)T_Lg-g. The translated term is on[-L,0], with function and derivative orthogonal to g on[0,L].",
+    "The Fourier resolvent has squared modulus1/(xi^2+1/4). With the exact probability density, Q(g)=cN Cov(X,1/(X+1/4)) is strictly negative. Strictness uses actual nonzero continuous Fourier density, not a separate positivity premise.",
+    "The exact variance is cN Var(X)=4pi^2 Delta/L^2. The frozen Delta bound gives the stated 8192pi^2+512 remainder. The resolvent remainder uses the H3 moment globally, yielding64 times two 5443200pi^4 allowances. The limit constant -16d0=-350/(11pi^2) is correct.",
+    "Vector Abel summation retains BOTH endpoints. Etheta(1)=-1 gives +h, and the upper exp(-L/2)Etheta(exp L)T_Lh stays even at a prime endpoint. The translation derivative is T_t hprime, so the sign hprime-h/2 is correct.",
+    "The same-eta exponential bound follows from sqrt(L)<=sqrt(L-v)+sqrt(v). The minimum of L/2-eta sqrt(L) is -eta^2/2, which pays the lower endpoint. The displayed K_eta and C_err cover both squared norm expansions. L^4 exp(L-eta sqrt(L)) is o(L^2 exp L).",
+    "The actual finite ratios expansion has exactly one term per p<q. The diagonal vanishes by native norm balance; the ordered cross terms combine to k_L, with no missing factor2. This is A_L^*A_L, whereas Selberg A_L^2 uses product shifts and different support.",
+    "The exterior cutoff response is orthogonal to f in both components of B_L. Compact integration by parts gives2Re B_L(f,g)=Q_L(g). Thus B1=Q_L(g)-2Re B_L(f,r_L), preserving the linear residual despite the large negative generated square.",
+    "The last E_ord and G equations retain full Arch, both native pole cancellations, higher powers, reflected continuum and bounded r_hp/r_h. The generated output is not claimed native or an eigenstate. No lower/upper bound for the original signed closing target is inferred."
+  ],
+  "primary_reference": {
+    "url": "https://people.math.harvard.edu/~elkies/M229.09/pnt.pdf",
+    "title": "Noam Elkies, Math229: Proof of the Prime Number Theorem; the Riemann Hypothesis",
+    "consultation": "Independently reopened PDF pages1-2 with web tool during this review. The unconditional quantitative psi estimate was checked; ordinary-prime theta transfer follows by the retained elementary proper-power bound. No remote byte hash claimed."
+  },
+  "inspected_current_interfaces": [
+    "SourceMatrix: literal source atom, diagonal, one-sub convention (read earlier in the same active pass).",
+    "FinitePhysicalNormalization: finitePhysicalSynthesis and exact physical/coefficient energy equality.",
+    "CanonicalPhysicalTrialRealization: derivative coefficients, canonicalPhysicalSynthesis_deriv and spectral norm bound.",
+    "NativeWeilResponse: both actual shift histories and complete finite prime mixed pairing."
+  ],
+  "records_reverified": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_FIXED_K3_ARITHMETIC_SCALARS.json",
+      "sha256": "204b26b07fb3109f010af2c1ca49b72a7c1a4e0a3082eca9ff2366ade9c96899",
+      "bytes": 13261
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_PRIME_DIFFERENCE_SQUARE_COVARIANCE.json",
+      "sha256": "625fc36f3edc70c4b884bfaed5e16a78e3790814c461ba40b8ee161f311cb3a3",
+      "bytes": 13668
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_CORRECTED_SOURCE_ARCH_COVARIANCE.json",
+      "sha256": "e5d8301633bae7437fbbf5032078ae18e1626e97858012c12caaff309d9afe1f",
+      "bytes": 16919
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\k3-higher-prime-powers\\ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET.json",
+      "sha256": "2b12360005bf6e57c7b6bb1bd8a2f55d572f41ce7c6fe8b45dfbce65df75b3ee",
+      "bytes": 15470
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\k3-prime-counting-compensation\\ACTUAL_K3_PRIME_COUNTING_COMPENSATION.json",
+      "sha256": "0ae876159b0aee943295eecf53415ac3a82216c00430b9bcdd8d09656e44f855",
+      "bytes": 14416
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\selberg-symmetry\\ACTUAL_SELBERG_SYMMETRY.md",
+      "sha256": "f2c72ef1a883e64bfbc5f8ae2c3205c3df76a48062d80c62824fe7b397aad1f8",
+      "bytes": 15069
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-pair-covariance\\ACTUAL_PAIR_COVARIANCE.md",
+      "sha256": "330e3e0b6f5a7ee59916e429f71b1f4ad4431310d9a306bda82324c81f3f9b4f",
+      "bytes": 5213
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\long-tail-selberg-energy\\PRIMARY_PNT_REFERENCE.json",
+      "sha256": "394ee9531fb03cda6a8ecc129c1ebfaa9a945e9f1d4ffa0cf0bdf68a51883cbe",
+      "bytes": 928
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\PROOF_FREEZE.json",
+      "sha256": "99e947d015290a6b1d6898892d4372e6b9ec938f231c3a9213710d1d73184b4c",
+      "bytes": 11055
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceMatrix.lean",
+      "sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "bytes": 7204,
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPhysicalTrialRealization.lean",
+      "sha256": "519b2b39e380595af2e9ff4172a320fcb59e7990bd3dd84df11c3d0bded45a21",
+      "bytes": 24434,
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\FinitePhysicalNormalization.lean",
+      "sha256": "c2dff9b13fb2f909615aebaf0fc40c7571faef7f1c4416535073ac378ec84f39",
+      "bytes": 4176,
+      "same_as_current_git_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeWeilResponse.lean",
+      "sha256": "0ebc3954a20596f32b92f1a9f6b96f959ea5e9758d639b3eaea298cb072ff377",
+      "bytes": 27709,
+      "same_as_current_git_blob": true
+    }
+  ],
+  "scope_limits": "Full subject Q1-Q5 read and rederived. All13 direct bound files freshly hashed, four current source files checked against Git. Selected current theorem bodies/interfaces and relevant frozen variance, higher-power, original-prime compensation and previous difference-square notes read. No transitive formal import census, compiler, prime enumeration, numerical source experiment or new test suite; no full repeat of all historical source proofs.",
+  "contribution_disclosure": "Reviewer late_math authored prior actual K3 parity/difference-square and supporting normalization research and reviewed related formal specializations. Those prerequisite contributions are not represented as independent here. The present generated-square/Abel/exterior comparison was authored by prime_math; this is a separate full mathematical review of its final bytes.",
+  "corrections_requested": [],
+  "authority": {
+    "new_Lean_declarations": 0,
+    "new_compiler_runs": 0,
+    "repository_edits": false,
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "helper": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\k3-generated-prime-energy\\write_independent_review.py",
+    "sha256": "3af3c30d2847ec31f9f02b519f96d56223cb68bb4afc492212c6ffc9a346f1ee"
+  }
+}

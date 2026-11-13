@@ -1,0 +1,33 @@
+{
+  "status": "COMPLETE_NEW_ROUND2_SUCCESS_HARVEST_WITH_ALL_CURRENT_WORKFLOWS_GREEN",
+  "created_utc": "2026-11-02T11:54:56.855397+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "local_status_porcelain": "",
+  "snapshot": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next18\\CHECKPOINT.json",
+    "sha256": "87a297d4d8f8b984f3fabe91e5878b5bce859865ad3c7474c5db7a4e507da0cd"
+  },
+  "harvest": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next18\\ROUND2_FINAL_HARVEST.json",
+    "sha256": "24ad2be68320f9c959018a2d22d3c76040115659ed93a7b388b75dc8e99be60e"
+  },
+  "control_difference_audit": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next18\\CONTROL_DISPOSITION_DELTA.json",
+    "sha256": "2dd9485d77c8686be7baf18f1da6a52f0535401e378d837570fd73fdf7675510"
+  },
+  "artifacts": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next18\\ARTIFACTS_VERIFIED.json",
+    "sha256": "038220291a0d31bfae9c08e594ecc79665d0eef1608f9c63e5fb48564d7a2fe6"
+  },
+  "result": "24/24 current-head workflow runs succeeded;95 successful jobs and2 optional skips. Three newly completed Round2 jobs were inspected. Exact81 historical product hashes,125 covered clauses, compiler root/constructor/dependency records and all75 scientific control dispositions agree with the cached previous replay. Only32 control rows changed their two run-specific evidence-result hashes.",
+  "post_green": "This closes the pending workflow qualification, not the mathematics. The regenerated result is historical775 and source-only wrappers remain explicit. The useful same-source moment/Arch and fixedK3 research must consume current mathematical roots separately; no new arithmetic upper bound or RH closure was supplied by these jobs.",
+  "limits": [
+    "No current1079 theorem promotion from historical775 acceptance.",
+    "Earlier current-head job harvests were reused; no unchanged artifacts were downloaded.",
+    "No new tests/compiler runs or repository mutations in this CI subtask.",
+    "No further polling in this pass."
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

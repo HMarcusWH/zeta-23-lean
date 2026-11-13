@@ -1,0 +1,133 @@
+{
+  "status": "COMPLETE_BOUNDED_EXACT_BOUNDARY_TRANSPORT_PASS_NOT_STEP4_CLOSURE",
+  "created_utc": "2026-11-02T08:00:54.641329+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "PR": 299,
+  "previous_turn_classification": "PROGRESS: the exact source/normal cancellation and mean visibility changed the next action. This pass completed the full boundary summation instead of estimating its pieces independently.",
+  "what_became_formally_true": "No new Lean declaration or compilation in this research pass. Two further CI jobs succeeded on the current-run transport, replaying the frozen416aec canonical producer and required-child summary. Their compiler subject is historical, not a new current1079/90/84 theorem audit. The earlier current support producer keeps its exact scope; independent current full qualification is still pending.",
+  "workflow_harvest": {
+    "snapshot_utc": "2026-11-02T07:41:43.376572+00:00",
+    "runs": 24,
+    "attempts": 24,
+    "jobs": 93,
+    "success": 87,
+    "in_progress": 4,
+    "optional_skipped": 2,
+    "failed": 0,
+    "new_successes": "followup-generated125129362704 and followup-summary125148638626, run41378780636 attempt1. Frozen416aec producer294 roots/1775 source-only roots and seven test groups passed, with its original source-only/compiler distinctions retained.",
+    "disposition": "PASS_REQUIRED_CHILD_LANES_POST_COMPLETION_RELEASE_REVIEW_REQUIRED. Actual full_release_accepted=false, independent human review NOT_ESTABLISHED and RH/Step4 OPEN. Root inspected the real log disposition and final test/lint output.",
+    "artifact_scope": "Three newly downloaded small complete ZIPs hash/CRC checked. No unchanged archive redownloaded. All exact artifact evidence remains in next10.",
+    "pending": "Round4 independent CORE/AUXILIARY/CANONICAL and Round2 aggregate remain running at snapshot; final Round4 ACCEPTANCE is not passed. No source repair warranted by these successful results."
+  },
+  "new_derived_results": [
+    "At every fixed L and K>=3, full coherent projected outputs obey F_c=-i omega D*G and G_c=-i omega(D F+g fV). Every Fourier boundary row and pole derivative is paid by the actual native normals.",
+    "The exact identity partial_c X_K+qV+C_K(V)=-gamma_L M A_e cancels ALL discarded Fourier/normal terms against their full primitive-boundary contribution. It applies at the same Kd with no moving-cutoff derivative. The old separate e^(2Theta L)/polynomial error is not an intrinsic error of the combined target.",
+    "The continuous mean obeys M_L=-d V(L), M_c=d(V(L)-V(0)); the mean-endpoint product is a full two-direction derivative. Restoring all continuous poles and the early Arch term returns the original echo exactly, not a separate sign law.",
+    "M(L,c)=F(L-c)+C_arch(c)+R with explicit genuine prime history F=-JP_H+2[Lambda;R_+], known Arch C_arch, and C1 stretched-exponential error. The positive source drift along partial_L+partial_c leaves F(L-c) unchanged.",
+    "Every fixed nonnegative center weight positive on an interior neighborhood retains mean-energy growth rate2Theta. Averaging that positive energy cannot erase hypothetical off-line growth.",
+    "A new bounded actual-source falsification uses the existing certified critical zero, not a hypothetical off-line zero: at c=1/2, limsup M>1979 and liminf M<-1979. Thus the positive characteristic drift does not imply eventual positivity of the mean. These constants belong only to this unchanged mean normalization."
+  ],
+  "root_independent_checks": [
+    "Read full frozen finite8d98 and meand357 reports. Re-derived both continuous projection derivatives directly from their two orthogonality equations, including the moving upper endpoint.",
+    "Checked Fourier boundary term -(2B_o/sqrt L)1, its exact even-normal removal, n times odd-normal span mapping into span{1,n²,r}, and P_O n m=g. Differentiating the exact finite flow gives Delta_bar=Bbar_c+qV with the displayed conjugate-first signs.",
+    "Independently integrated the pole derivative defect: (Ppole V_t * JV)(L)=-2a M(aV0+bVL)/(a²-b²). This gives Bcont_c=Delta_V+gamma M A_e and verifies the factor1/d² in the mean-square direction.",
+    "Checked full pole restoration, Braw_c=Delta_W-Araw Jraw, and the nonzero early W0 Jraw term. No full-period center interval, endpoint flattening, odd-loss omission or unitary inverse was introduced.",
+    "Derived the positive-center-energy lower peak-width estimate e^((3sigma-Theta)L)/poly(L), which matches the upper2Theta rate without an attained rightmost zero.",
+    "Derived and recorded actual critical-mean Abel limits, exact Arch offset, and loose rational residue/offset bounds. Remainder L1 continuity suffices for these Abel limits; no critical-boundary holomorphy was asserted. The new argument received a separate file-bound review."
+  ],
+  "what_changed": "One apparent technical obstruction has been removed exactly: the finite output errors must be combined with their boundary rather than estimated independently. The remaining equation is now a complete continuum arithmetic response. The newly extracted genuine sign condition is tangent to constant L-c and therefore leaves the unresolved growing response visible.",
+  "upstream_implications": "Use the exact all-K projected-output flow as the common identity beneath the separate normal, endpoint and inverse-response calculations. Do not spend a new large endpoint-jet expansion merely to absorb the former separate remainder.",
+  "downstream_implications": "The relevant unknown is the genuine one-variable prime history and its complete signed covariance. Any new bound must control its change as L-c increases; a restriction along L-c constant cannot do that. No assumption that the same arithmetic function is arbitrary is made.",
+  "resurrected_routes": "Joint finite-to-continuum energy accounting is sharper after exact cancellation. Fixed-sign mean and positive-center-energy shortcuts are now specifically falsified or shown to preserve the full hypothetical rate. Historical Riesz recurrences remain usable with their complete next-order signed integral and their actual state hypotheses.",
+  "new_RH_relevant_clues": "DERIVED: exact coupling compresses the apparent finite and two-variable difficulties to the actual source response. LEAD only: an independent arithmetic inequality transverse to the source translation direction would be useful; its estimate remains unproved and is not inserted as an assumed packet.",
+  "falsification_checks": "Actual critical zeros already force both signs of this mean. Positive characteristic drift and finite total damping coexist with them. Full boundary substitution returns the same echo; center averaging preserves rate2Theta. None supplies an independent all-positive-rate estimate.",
+  "highest_leverage_next_moves": [
+    "Seek a genuinely independent signed arithmetic restriction on the actual history F or complete covariance; use the reduced source formulas to test candidate prime-factor estimates without dropping compensation or prefixes.",
+    "Reject candidates that merely restate the source response, rely on eventual mean positivity, or mistake characteristic drift for an aperture growth restriction.",
+    "Continue bounded latest-head CI qualification and repair actual failures if any. Do not promote partial producer successes or historical replay to final acceptance."
+  ],
+  "verification": {
+    "embedded_bindings_rehashed": 247,
+    "unique_bound_files": 88,
+    "current_git_blobs_checked": 32,
+    "new_lean_declarations": 0,
+    "new_compiler_runs": 0,
+    "repository_edits": false
+  },
+  "records": {
+    "previous": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\COUPLED_NORMAL_MEAN_AND_BOUNDARY_COMPLETION.json",
+      "sha256": "f4240a49f1f4bcdfe65ced7db83144afc6944a2439d1e6e274178551bdf5cbb6",
+      "bytes": 13292
+    },
+    "finite": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\finite-boundary-summation\\ACTUAL_COMPLETE_FINITE_BOUNDARY_SUMMATION.json",
+      "sha256": "8d98e7603d72de6dd830cf33b5807d5d5bd3d1c855f440488278d21b99b53dab",
+      "bytes": 19443
+    },
+    "finite_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\finite-boundary-summation\\INDEPENDENT_PRIME_MATH_FINITE_BOUNDARY_REVIEW.json",
+      "sha256": "6ca533effb08cc29bd7cfdc817b82b416ce1a9d01000b573c134fdf7f3ad14be",
+      "bytes": 8985
+    },
+    "finite_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\finite-boundary-summation\\COMPLETION.json",
+      "sha256": "ab4f65ae14b5f8bc839d7ac189b34e61140c1d4cc496ece1a668b4c4b8a6430b",
+      "bytes": 18963
+    },
+    "mean": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-endpoint-transport\\ACTUAL_MEAN_ENDPOINT_TRANSPORT.json",
+      "sha256": "d357231d199f48efc2502f1fc33acc25dc319399921493236770de1ff57edabe",
+      "bytes": 11968
+    },
+    "mean_sources": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-endpoint-transport\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "02ede03fc7454e5a6e54b4cffe85dbc1ff2915001dfbf99a2bec8dbbdb3fc15e",
+      "bytes": 17542
+    },
+    "mean_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-endpoint-transport\\INDEPENDENT_MEAN_ENDPOINT_TRANSPORT_REVIEW.json",
+      "sha256": "8f2315e74d62ad857c393644d3c0227fdc49c63faca440755945d84257b362e2",
+      "bytes": 13460
+    },
+    "mean_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-endpoint-transport\\COMPLETION.json",
+      "sha256": "8074e8791499d9ea345f8c7874613f2f90e762dde7475b47b67d5d792c8b7a33",
+      "bytes": 4957
+    },
+    "history": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-endpoint-history\\TARGETED_MEAN_ENDPOINT_HISTORY_AUDIT.json",
+      "sha256": "5e5b211b3bdf50d8d09728f1d1bfcf86fc48bded63f204b62ded00809147b623",
+      "bytes": 23900
+    },
+    "critical_mean": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-critical-sign\\ACTUAL_CRITICAL_MEAN_OSCILLATION.json",
+      "sha256": "3f240d6e9c241015d00a348e98c90b670f011b2296f76e3a2caf5a9e729877ff",
+      "bytes": 10703
+    },
+    "critical_mean_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-critical-sign\\INDEPENDENT_CRITICAL_MEAN_REVIEW.json",
+      "sha256": "05f2e1096f5c7fe07fc6168ddf6854c088857a50e5461a6984984eb0c71d718a",
+      "bytes": 9358
+    },
+    "ci": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next10\\CHECKPOINT.json",
+      "sha256": "009b3c98a58383da3640987e4c81e7f2a53b6fa9844d6aa1ace5f8315e59c84b",
+      "bytes": 17384
+    },
+    "ci_harvest": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next10\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "41f02c3615f0e89f16e1dcc436d21d62cf4091d314e83ca0b932216633ebe48a",
+      "bytes": 10247
+    }
+  },
+  "helper": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\seal_exact_boundary_transport_pass.py",
+    "sha256": "c4f808a6b30ff55ee4fb43145a6e5899a31bd9526c391bae36668f7c0e7405eb",
+    "bytes": 12624
+  },
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE"
+}

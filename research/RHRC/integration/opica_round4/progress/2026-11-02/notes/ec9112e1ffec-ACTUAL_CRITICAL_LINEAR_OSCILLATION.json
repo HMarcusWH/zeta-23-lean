@@ -1,0 +1,76 @@
+{
+  "status": "DERIVED_ACTUAL_TWO_SIDED_LINEAR_OSCILLATION_LOWER_BOUNDS",
+  "created_utc": "2026-11-02T06:53:56.750346+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "objects": "The unchanged causal P(t)=sum_n Lambda(n)/sqrt(n) H(t-log n), H=kappa*kappa, and the literal complete self-convolution S=P*P. Every prime power and both complete histories remain. S is not identified with the original Mobius quadratic or a single parity energy.",
+  "supplier": {
+    "gamma": "The separately reviewed external Arb sign certificate and xi reality/IVT give some actual critical zero 1/2+i gamma with14<gamma<15. No simplicity or first-zero claim.",
+    "pole": "For its finite multiplicity m>=1, Phat has simple residue -m K_H(i gamma), so Shat=Phat^2 has leading double-pole coefficient A=m^2 K_H(i gamma)^2>0.",
+    "certified_A_lower_exact": "481364779320846987747116723935668768000625/324518553658426726783156020576256",
+    "authority": "Source-exact analytic composition with a rigorous external interval supplier, not a new Lean theorem or compiler certificate."
+  },
+  "claim": "limsup_(t->infinity) S(t)/t >= A and liminf_(t->infinity) S(t)/t <= -A. Extended limits are allowed. Thus the same inequalities hold with the smaller positive explicit certified_A_lower_exact. These are LOWER bounds on the size of cofinal positive and negative excursions, not an O(t) upper bound, asymptotic, density or bounded-gap claim.",
+  "proof": [
+    "Fix epsilon in{+1,-1}. If epsilon S(t)<=C t eventually for some C>=0, choose T after that threshold and set u(t)=1_[T,infinity)(C t-epsilon S(t))>=0. The exact causal transform on the original safe half-plane is U(z)=C/z^2-epsilon Shat(z)-E(z), where E(z)=integral_0^T exp(-zt)(C t-epsilon S(t))dt is ENTIRE. No initial history is omitted.",
+    "The actual positive-tail Laplace domain is nonempty by the elementary source exponential bound. If its finite abscissa were positive, the positive-Laplace boundary theorem would contradict analyticity of the displayed meromorphic expression at that positive REAL point. Shat is analytic at every positive real point, with the zeta pole at z=1/2 canceled by the actual source. The identity with the actual transform on its integrability half-plane forces any candidate interior nonreal poles removable; this argument does not presuppose RH. If the domain is unbounded below, or the finite abscissa is nonpositive, convergence at every a>0 is immediate. Therefore U is the actual integral for every Re z>0.",
+    "Positivity gives |U(a+i gamma)|<=U(a) for every a>0. Since Shat is analytic at0, a^2 U(a)->C. At the certified nonzero critical frequency, C/z^2 and E are analytic, while Shat has leading coefficient A, so a^2 U(a+i gamma)->-epsilon A. Taking limits forces A<=C.",
+    "If limsup epsilon S(t)/t<A, select a nonnegative C strictly between that limsup and A (or C=0 if the limsup is negative). This supplies the forbidden eventual bound. Thus limsup epsilon S(t)/t>=A for both signs epsilon, proving the claim."
+  ],
+  "native_grid": {
+    "definition": "tau=exp(B)/2, B=1/2048, t_N=log(N^2/tau).",
+    "derivative_price": "The separately derived quantitative PNT bounds for P and P-prime can be enlarged on the finite initial interval to |P(r)|+|P-prime(r)|<=C exp(r/2-c sqrt(r)) for every r>=0. The source is identically zero near0, so S-prime=P-prime*P with no boundary atom. Since sqrt(u)+sqrt(t-u)>=sqrt(t), |S-prime(t)|<=C^2 t exp(t/2-c sqrt(t)).",
+    "interpolation": "The native mesh has width t_(N+1)-t_N<=2/N. Since exp(t_N/2)=N/sqrt(tau), its S variation is O((1+t_N)exp(-c sqrt(t_N)))=o(1). Consequently an eventual bound epsilon S(t_N)<=C t_N with C<A would extend to epsilon S(t)<C-prime t with some C<C-prime<A for all large real t, contradicting the real-scale result.",
+    "conclusion": "limsup_N S(t_N)/t_N>=A and liminf_N S(t_N)/t_N<=-A. Equivalently, with log N normalization the lower excursion constants are2A and-2A. No moving-cutoff response is replaced by an independent auxiliary source."
+  },
+  "target_implication": "A constant self-echo bound and an eventual one-sided linear bound with slope below this actual critical-source coefficient are false targets. An all-positive-rate subexponential bound remains compatible with these oscillations and remains OPEN. The estimate supplies no opposing bound at any off-line-zero growth rate and does not close Step4.",
+  "new_vs_prior": "The previous note excluded only eventual constant one-sided bounds after paying critical visibility. The new comparison retains C/z^2 and yields explicit two-sided linear Omega bounds, including the native grid. It does not infer an unconditional linear oscillation asymptotic from the existence of a critical zero.",
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\critical-source-visibility\\VISIBLE_CRITICAL_ZERO.json",
+      "sha256": "9c4e42f2aaf34f0f145577c4d561fcfaaf78c049eef67949824804082eb75f13",
+      "bytes": 5537
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\critical-source-visibility\\VISIBLE_CRITICAL_ZERO_OPTIMIZED.json",
+      "sha256": "40a518216992d95cb1cfeaf9d493a1107642d114c7592cbd4004a6a7ecda7451",
+      "bytes": 5536
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\critical-source-visibility\\INDEPENDENT_CRITICAL_SOURCE_VISIBILITY_REVIEW.json",
+      "sha256": "9ba1206f6bf95520d5dd1bdbeb840d3392d2b9203534f2206fab56af9addd3a0",
+      "bytes": 11158
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\interior-drift-source\\ACTUAL_INTERIOR_DRIFT_AND_MONOTONICITY_FALSIFICATION.json",
+      "sha256": "f803933d856f3e4df5205c182f19f5adc617daa9083fca33aefee2901f6930b5",
+      "bytes": 18258
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-native-grid\\CONSTANT_BOUND_TARGET_CLARIFICATION.json",
+      "sha256": "0f54392c79f6f7847db19b8e0c991b600b621a09573eeb27666d1a3df533096a",
+      "bytes": 4730
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-criterion\\SECTION5_ACTUAL_SELF_ECHO_CRITERION_REVIEW.json",
+      "sha256": "0d4046f169e6c2acaefbe05731cb3bde9b3a0f42d28b1c37b0f31049613a5507",
+      "bytes": 18951
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\PositiveLaplaceBoundary.lean",
+      "sha256": "00c16b2b069c6cc8585979e43851e225df0cd15aa4de1917d56f853de4559b53",
+      "bytes": 9156
+    }
+  ],
+  "script": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\critical-source-visibility\\seal_linear_oscillation.py",
+    "sha256": "9d186e9ddb03572fe80be648732d9587f22d3bc1df6b7bee8ea9dc39d4760f35",
+    "bytes": 6700
+  },
+  "repository_edits": false,
+  "new_lean_declarations": 0,
+  "new_compiler_runs": 0,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE"
+}

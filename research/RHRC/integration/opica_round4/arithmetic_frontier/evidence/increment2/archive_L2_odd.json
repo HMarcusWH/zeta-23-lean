@@ -1,0 +1,113 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_NATIVE_SLICE_RUN_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "hashes": {
+    "gram_sha256": "7d6b2b44afda7703bb071539daab5129713ea9cc028709a313ac84dc2ea64b0a",
+    "prime_power_list_sha256": "c6abc90fd55a79054a5d05c66ad6a918495fdbefdb2d4a5dc1516f8b65cf4a76",
+    "basis_proposal_sha256": "91b9c20f5d7703df911faeebd99d42b0cdf5b4818dbfc062b57b1199c45935bb"
+  },
+  "state": {
+    "L_exact": "2",
+    "cutoff_expression": "originalDetectorQuarticCutoff(L)=ceil(L^4)",
+    "K": 16,
+    "Q": 7,
+    "prime_powers": [
+      2,
+      3,
+      4,
+      5,
+      7
+    ],
+    "parity": "odd",
+    "carrier": "oddMomentSlice",
+    "dimension": 12,
+    "metric": "PHYSICAL_INHERITED_EUCLIDEAN",
+    "state_kind": "ACTUAL_STATE"
+  },
+  "precision_bits": 192,
+  "source": {
+    "backend": "research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py",
+    "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+    "replay_module_sha256": "633bec1ecd4d6bfb8ba68077515be7880380b7b001e069d4efd67b2c38f4f203"
+  },
+  "basis": {
+    "kind": "FLOAT_W_ORTHONORMAL_PROPOSAL_EXACTLY_CORRECTED_ON_FOUR_PIVOTS",
+    "gram_certificate": {
+      "status": "CERTIFIED",
+      "tau": "1/4",
+      "residual_frobenius_upper": 2.771007973048357e-16,
+      "certified_lower_eigenvalue": 0.2499999999999997
+    },
+    "flag_split_index": null,
+    "low_dimension": 0
+  },
+  "endpoint_certificates": [
+    {
+      "margin": "1/18446744073709551616",
+      "statement": "Q_p(L,x) >= 1/18446744073709551616 ||x||^2 for every x in the slice",
+      "status": "CERTIFIED",
+      "tau": "1/18014398509481984",
+      "residual_frobenius_sq_ball": "[+/- 4.11e-108]"
+    }
+  ],
+  "diagnostics": {
+    "floating_generalized_eigenvalues_lowest": [
+      1.1851813007869607e-16,
+      1.0543823913671202e-10,
+      9.83362266585683e-05,
+      0.3870662375333377,
+      0.8928144489104536,
+      1.453104236638615
+    ],
+    "floating_generalized_eigenvalue_highest": 2.81518989339997,
+    "near_null_count_below_1e-8": 2,
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING_ONLY"
+  },
+  "channel_extremes_on_slice": {
+    "pole": {
+      "floating_min": -9.179909625649519e-60,
+      "floating_max": 1.3272025412844023e-59,
+      "rigorous_rayleigh_at_min_vector": "[+/- 3.69e-57]"
+    },
+    "minus_arch": {
+      "floating_min": -0.08957839152102479,
+      "floating_max": 2.011376357611615,
+      "rigorous_rayleigh_at_min_vector": "[-0.08957839152 +/- 1.03e-12]"
+    },
+    "minus_prime": {
+      "floating_min": -1.2179656725214403,
+      "floating_max": 0.9905075732872339,
+      "rigorous_rayleigh_at_min_vector": "[-1.217965673 +/- 4.79e-10]"
+    },
+    "meaning": "each channel alone on the same slice and metric; the native form is pole - arch - prime",
+    "authority": "FLOATING_SPECTRA_WITH_ONE_RIGOROUS_RAYLEIGH_VALUE_PER_CHANNEL"
+  },
+  "bottom_vector_budget": {
+    "rayleigh_upper_bound": "[3.50849538386e-16 +/- 1.48e-28]",
+    "pole": "[+/- 1.09e-57]",
+    "arch": "[-0.215754473639 +/- 3.18e-13]",
+    "prime": "[0.215754473639 +/- 3.19e-13]",
+    "energy": "[3.50849538386e-16 +/- 1.48e-28]",
+    "physical_norm_sq": "[1.00000000000 +/- 5e-16]",
+    "relation": "energy = pole - arch - prime on this exact slice vector; the Rayleigh value bounds the slice bottom from above",
+    "authority": "RIGOROUS_ENCLOSURES_FOR_ONE_EXACT_SLICE_VECTOR"
+  },
+  "bottom_bracket": {
+    "rayleigh_upper": "[3.5084805e-16 +/- 3.93e-24]",
+    "rayleigh_upper_log10": -15.454880937773908,
+    "margin_lower": "2^-54",
+    "margin_certificate": {
+      "status": "CERTIFIED",
+      "tau": "1/18014398509481984",
+      "residual_frobenius_sq_ball": "[+/- 4.11e-108]"
+    },
+    "status": "BRACKETED",
+    "statement": "m ||x||^2 <= Q_p(L,x) for all x in the slice, and the exact vector attains <= rho ||x||^2"
+  },
+  "budget_records": [],
+  "seconds": 0.2,
+  "build_seconds": 0.2,
+  "campaign_entry": "archive_L2_odd"
+}

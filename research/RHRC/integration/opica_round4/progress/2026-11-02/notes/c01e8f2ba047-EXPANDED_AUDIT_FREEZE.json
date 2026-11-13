@@ -1,0 +1,83 @@
+{
+  "status": "PASS_SEPARATE_EXPANDED_TYPE_AXIOM_AND_IMPORT_AUDIT",
+  "created_utc": "2026-11-02T11:52:22.572158+00:00",
+  "original_proof_freeze": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\PROOF_FREEZE.json",
+    "sha256": "99e947d015290a6b1d6898892d4372e6b9ec938f231c3a9213710d1d73184b4c",
+    "bytes": 11055
+  },
+  "proof_source": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\StrictWeightedCovariance.lean",
+    "sha256": "02b41b07f0e5eff6c2d63dcce50bab402ab18f0241d21d2a8d608b34bf9e0158",
+    "bytes": 5616
+  },
+  "proof_object": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\StrictWeightedCovariance.olean",
+    "sha256": "3edcc0c30cc944579892e3b9d6386dee9cfc2dc71dbd28ebfc89462601caf751",
+    "bytes": 250040
+  },
+  "proof_receipt": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\attempt-4.json",
+    "sha256": "bfb9a66a29e9e2f4c304062b9d9eb626fea695afb03f27ea2e3ca6c9522e2508",
+    "bytes": 6016
+  },
+  "audit_source": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\FullTypes.lean",
+    "sha256": "36e9fcbb2ff60d5138581c72b61cbbd44aaa7ca2d44c8d8e2140a127b755b55b",
+    "bytes": 392
+  },
+  "audit_object": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\FullTypes.olean",
+    "sha256": "6b7b9b23906b1f9cf2dcfa4619f989bff9133b968b7a4b38cb5716665fa73132",
+    "bytes": 2168
+  },
+  "audit_receipt": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\fulltypes-1.json",
+    "sha256": "2461d5f8fe7d27374c5b6dd057ab487b7549f0b00c7cecef85454101159180db",
+    "bytes": 7111
+  },
+  "full_types_axioms": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\FULL_TYPES_AXIOMS.json",
+    "sha256": "db8ceb2538f810965638cadecb1870e9b7f8074c9fe357981bb267b4c9d48b34",
+    "bytes": 10088
+  },
+  "import_bindings": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\IMPORT_BINDINGS.json",
+    "sha256": "34a2817e1f34da620d3233e87c6d5dbe9d185732f62f95cfb48a54378ad698e2",
+    "bytes": 15119861
+  },
+  "helpers": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\audit_compile.py",
+      "sha256": "d55dd01ba74e2ccc1e7cd36e7ca9ab3b703d115b41303e8e27b95fb1011780c3",
+      "bytes": 2878
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-covariance\\seal_expanded_audit.py",
+      "sha256": "06917165e59d82e2e0ee5944a2fbbf5941236dc6a712c4a6243f5bad64bbdd52",
+      "bytes": 7493
+    }
+  ],
+  "compiler": {
+    "path": "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lean.exe",
+    "sha256": "bc137e6662c48eedf2cdf167fb176080e18a15f57e248d214df0cb3939248683",
+    "bytes": 83456
+  },
+  "toolchain": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\lean-toolchain",
+    "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+    "bytes": 29
+  },
+  "packages": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\lake-manifest.json",
+    "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+    "bytes": 3200
+  },
+  "observed_head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "limits": [
+    "Frozen positive source and object were imported, not recompiled or modified.",
+    "Only one public generic analytic covariance theorem is audited; no actual gamma/physical-weight specialization is newly compiled.",
+    "No repository edit, formal inventory mutation, new Linux CI, RH theorem or arithmetic lower bound.",
+    "Actual transitive inventory is explicit; reused package/toolchain companion hashes have the exact path/size/mtime limitation stated in that inventory."
+  ]
+}

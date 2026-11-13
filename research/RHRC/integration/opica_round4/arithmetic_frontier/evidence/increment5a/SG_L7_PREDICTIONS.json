@@ -1,0 +1,136 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_SG_PREDICTIONS_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "FROZEN_OPERATIONAL_PREDICTIONS_NOT_MATHEMATICAL_CLAIMS",
+  "frozen_utc": "2026-11-08T15:26:30Z",
+  "frozen_before_generation": true,
+  "state": {
+    "L": 7,
+    "K": 2401,
+    "parities": [
+      "even",
+      "odd"
+    ],
+    "bits": 128,
+    "prime_cell": "every prime power below e^7"
+  },
+  "rule": {
+    "tool": "research/RHRC/integration/opica_round4/arithmetic_frontier/sg_candidate.py",
+    "tool_sha256": "63081ceb52cd01882da47fba034bc3baa1044ce09b34b324c14143d116802b8e",
+    "command": "python3 -B sg_candidate.py --states 7:even,7:odd --bits 128 --output SG_L7.json",
+    "basis": "trends of evidence/increment5a/SG_L4_L6.json (sha256 097aaab66227e331d58f99aed5d2cf2e4ec1cd39164b0bd056d204c8cdc29e04); no fitted law",
+    "fallback": "none; a failed prediction is recorded as an operational prediction failure, not a falsification of (SG)"
+  },
+  "predictions": [
+    {
+      "id": "P1",
+      "quantity": "norm_z",
+      "even": [
+        4.3,
+        4.9
+      ],
+      "odd": [
+        4.3,
+        4.9
+      ]
+    },
+    {
+      "id": "P2",
+      "quantity": "geometry_min_gap",
+      "even": [
+        4.0,
+        4.0151413
+      ],
+      "odd": [
+        5.0,
+        5.0283658
+      ]
+    },
+    {
+      "id": "P3",
+      "quantity": "norm_l / K^2",
+      "even": [
+        0.2515,
+        0.2525
+      ],
+      "odd": [
+        0.251,
+        0.2525
+      ]
+    },
+    {
+      "id": "P4",
+      "quantity": "lambda_max_H",
+      "even": [
+        15.0,
+        17.0
+      ],
+      "odd": [
+        15.0,
+        17.0
+      ]
+    },
+    {
+      "id": "P5",
+      "quantity": "offdiagonal_actual_operator_norm",
+      "even": [
+        7.0,
+        9.5
+      ],
+      "odd": [
+        6.6,
+        9.5
+      ]
+    },
+    {
+      "id": "P6",
+      "quantity": "min_geometry_diagonal",
+      "even": [
+        0.0,
+        5.8165e-05
+      ],
+      "odd": [
+        0.0,
+        0.001
+      ],
+      "note": "open lower endpoint: strictly positive"
+    },
+    {
+      "id": "P7",
+      "quantity": "trace_H2",
+      "even": [
+        80000.0,
+        110000.0
+      ],
+      "odd": [
+        80000.0,
+        110000.0
+      ]
+    },
+    {
+      "id": "P8",
+      "quantity": "-sg_lower_bound",
+      "even": [
+        2000000.0,
+        5000000.0
+      ],
+      "odd": [
+        1500000.0,
+        5000000.0
+      ]
+    },
+    {
+      "id": "P9",
+      "quantity": "identity residuals",
+      "bounds": {
+        "nc_relative_residual": 1e-12,
+        "leak_rank_one_residual": 1e-11,
+        "commutator_identity_relative_residual": 1e-11,
+        "offdiagonal_reconstruction_relative_residual": 1e-10,
+        "trace_identity_relative_residual": 1e-12
+      }
+    }
+  ],
+  "scope": "Float64 midpoints; L = 7 only. Agreement would be EXPERIMENTAL_SIGNAL and proves nothing about all L."
+}

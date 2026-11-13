@@ -1,0 +1,215 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_NATIVE_SLICE_RUN_V2",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "state": {
+    "L_exact": "2",
+    "cutoff_expression": "originalDetectorQuarticCutoff(L)=ceil(L^4)",
+    "K": 16,
+    "Q": 7,
+    "prime_powers": [
+      2,
+      3,
+      4,
+      5,
+      7
+    ],
+    "parity": "even",
+    "carrier": "evenMomentSlice",
+    "dimension": 13,
+    "metric": "PHYSICAL_INHERITED_EUCLIDEAN",
+    "state_kind": "ACTUAL_STATE",
+    "state_validated": true
+  },
+  "precision_bits": 192,
+  "source": {
+    "backend": "research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py",
+    "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+    "source_module_sha256": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6",
+    "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+    "engine_sha256": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+    "versions": {
+      "python_flint": "0.9.0",
+      "numpy": "2.5.3",
+      "python": "3.13.18"
+    }
+  },
+  "basis": {
+    "definition": "Y_* = Z - E_P (C E_P)^-1 C Z per column group; C Y_* = 0 algebraically; pivot blocks certified invertible",
+    "proposal_kind": "FLOAT_W_ORTHONORMAL_PROPOSAL (not exactly orthonormal)",
+    "recipe": [
+      {
+        "columns": [
+          0,
+          13
+        ],
+        "prefix": 17,
+        "pivots": [
+          0,
+          16,
+          2,
+          11
+        ]
+      }
+    ],
+    "full_gram_certificate": {
+      "status": "CERTIFIED",
+      "tau": "1/4",
+      "dimension": 13,
+      "residual_frobenius_sq_upper": "5147823729685577498924153643762881360838220237205064683121*2^-295",
+      "certified_lower_eigenvalue_coordinates": "441711766194595579953249398685352829134420332499554024104325047104803519*2^-240",
+      "certified_lower_eigenvalue_display": "2.5e-1"
+    },
+    "flag_split_index": null,
+    "low_dimension": 0,
+    "realification": "Real constraints define a real slice whose complexification is the complex slice; for a real symmetric form, Q(u + i v) = Q(u) + Q(v) and ||u + i v||^2 = ||u||^2 + ||v||^2, so a real certificate of Q + eps ||.||^2 >= 0 is the complex statement."
+  },
+  "hashes": {
+    "proposal_Z_float64_sha256": "86082276fd95730f411e6e4cae61a5f272e4c556135b07c8e7d678d4c0e97ed1",
+    "gram_enclosure_sha256": "cd0d07f349748e44cfb239a2750f3a291e072f03b4113a7ba413353884bc8b30",
+    "form_enclosure_sha256": "e214f2848885da6b255fe7a05eca663567383b249ad6aeb7e74176e164d5ed95",
+    "prime_power_list_sha256": "c6abc90fd55a79054a5d05c66ad6a918495fdbefdb2d4a5dc1516f8b65cf4a76"
+  },
+  "assurance": {
+    "integrity": "record hashes",
+    "certificate": "PRODUCER_IN_PROCESS_VIA_KERNEL",
+    "independent_reconstruction": "see INDEPENDENT_RECONSTRUCTION records where present",
+    "lean_bridge": "OPEN (FiniteCertificateSoundness, native enclosure bridge)"
+  },
+  "endpoint_certificates": [
+    {
+      "target_id": "SLICE_POSITIVE_MARGIN",
+      "margin": "1/18446744073709551616",
+      "statement": "Q_p(L,x) >= 1/18446744073709551616 ||x||^2 for every x in the slice",
+      "status": "CERTIFIED",
+      "tau": "1/36893488147419103232",
+      "dimension": 13,
+      "residual_frobenius_sq_upper": "165035949350070309*2^-414",
+      "certified_lower_eigenvalue_coordinates": "65185151242703554760590262029100096403811466239761201853920432461354400044149953171796976153*2^-370",
+      "certified_lower_eigenvalue_display": "2.71050543121e-20"
+    }
+  ],
+  "spectral_statistics": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING_ONLY",
+    "abs_below_10^-t": {
+      "2": 4,
+      "4": 3,
+      "6": 3,
+      "8": 3,
+      "10": 2,
+      "12": 2,
+      "13": 2
+    },
+    "signed_below_10^-t": {
+      "2": 4,
+      "4": 3,
+      "6": 3,
+      "8": 3,
+      "10": 2,
+      "12": 2,
+      "13": 2
+    },
+    "floating_negative_count": 0,
+    "floating_negative_below_-1e-12": 0,
+    "undecided_note": "floating eigenvalues within about 1e-14 of zero are not sign-resolved",
+    "T": 50.26548245743669,
+    "N_main_T": 9.510532333438686,
+    "dim_minus_N_main_T": 3.489467666561314,
+    "N_main_definition": "(T/2pi) log(T/2pi) - T/2pi + 7/8; main terms only, not a certified zero count",
+    "lowest": [
+      4.6289551635731687e-17,
+      7.176760061286359e-14,
+      4.884653168781848e-09,
+      0.002137886715490543,
+      0.6523885946095275,
+      0.8845921632541758
+    ],
+    "highest": 2.90494548672699
+  },
+  "channel_extremes_on_slice": {
+    "pole": {
+      "floating_min": -7.918087063682635e-60,
+      "floating_max": 1.295557656525382e-59,
+      "rayleigh_at_min_vector": {
+        "lower_exact": "-963936873*2^-218",
+        "upper_exact": "957265899*2^-218",
+        "display": "[+/- 2.29e-57]"
+      }
+    },
+    "minus_arch": {
+      "floating_min": -0.42028758579573966,
+      "floating_max": 2.0234510623070694,
+      "rayleigh_at_min_vector": {
+        "lower_exact": "-43224071113276103815072593135712886785018736253810163801452777*2^-206",
+        "upper_exact": "-43224071113276103815072593135712886785018736253810163646058263*2^-206",
+        "display": "[-0.4202875858 +/- 4.27e-12]"
+      }
+    },
+    "minus_prime": {
+      "floating_min": -1.1963549381665155,
+      "floating_max": 1.2135402585465354,
+      "rayleigh_at_min_vector": {
+        "lower_exact": "-984303751463365139437666611145345155533140117634683015593025713*2^-209",
+        "upper_exact": "-984303751463365139437666611145345155533140117634683014752411471*2^-209",
+        "display": "[-1.196354938 +/- 1.67e-10]"
+      }
+    },
+    "meaning": "each channel alone on the same slice and physical metric",
+    "authority": "FLOATING_SPECTRA_WITH_ONE_ENCLOSED_RAYLEIGH_VALUE_PER_CHANNEL"
+  },
+  "bottom_vector_budget": {
+    "rayleigh_upper": {
+      "lower_exact": "22227735993291316665622891358963832116719907*2^-206",
+      "upper_exact": "2778466999161414583202861419870479057796099*2^-203",
+      "display": "[2.161305323e-19 +/- 1.02e-29]"
+    },
+    "pole": {
+      "lower_exact": "-1005337857*2^-220",
+      "upper_exact": "986695669*2^-220",
+      "display": "[+/- 5.97e-58]"
+    },
+    "arch": {
+      "lower_exact": "-210318672726079618032588727584844001959199047475253982107198441*2^-212",
+      "upper_exact": "-210318672726079618032588727584844001959199047475253980864519191*2^-212",
+      "display": "[-0.03195352328 +/- 1.11e-12]"
+    },
+    "prime": {
+      "lower_exact": "210318672726079616610013624014200618745678568802094845399108717*2^-212",
+      "upper_exact": "210318672726079616610013624014200618745678568802094845807195027*2^-212",
+      "display": "[0.03195352328 +/- 1.11e-12]"
+    },
+    "energy": {
+      "lower_exact": "364179226514084706102661242540328735954549447507*2^-220",
+      "upper_exact": "364179226514084706102661242540328741617574320979*2^-220",
+      "display": "[2.161305323e-19 +/- 1.02e-29]"
+    },
+    "physical_norm_sq": {
+      "lower_exact": "13164036458569640162676584379810022986528652634019976061900139707*2^-213",
+      "upper_exact": "13164036458569640162676584379810022986528652634019976061930328901*2^-213",
+      "display": "[1.000000000 +/- 3e-15]"
+    },
+    "scope": "one exact slice vector; an upper bound on the slice minimum, never a lower bound"
+  },
+  "bottom_bracket": {
+    "target_id": "SLICE_BOTTOM_BRACKET",
+    "rayleigh_upper": {
+      "lower_exact": "36077092642522324375146323954927633855613475*2^-207",
+      "upper_exact": "36077092642522324375146323954927634547070043*2^-207",
+      "display": "[1.753971084e-19 +/- 4.44e-29]"
+    },
+    "margin_lower": "1*2^-65",
+    "margin_certificate": {
+      "status": "CERTIFIED",
+      "tau": "1/36893488147419103232",
+      "dimension": 13,
+      "residual_frobenius_sq_upper": "165068746771669117*2^-414",
+      "certified_lower_eigenvalue_coordinates": "2037035976334486086268445688409378012604360148844269816328503687493011145354827235530775367*2^-365",
+      "certified_lower_eigenvalue_display": "2.71050543121e-20"
+    },
+    "status": "BRACKETED",
+    "statement": "m ||x||^2 <= Q_p(L,x) on the whole slice, and an exact vector attains <= rho ||x||^2"
+  },
+  "seconds": 0.3,
+  "campaign_entry": "archive_L2_even"
+}

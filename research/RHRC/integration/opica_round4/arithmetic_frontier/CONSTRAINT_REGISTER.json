@@ -1,0 +1,985 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_CONSTRAINT_REGISTER_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "repository_pin": {
+    "parent_head": "9c517db0befa1131bb60d37cfef2888ed69447a9",
+    "parent_tree": "6d737c3e3f74a607ae1e1a4b958cc1e2cf9854e9",
+    "branch": "research/madness",
+    "pr": "HMarcusWH/zeta-23-lean#299"
+  },
+  "authority": "TWO_AXIS_RESEARCH_REGISTER_NOT_THEOREM_AUTHORITY",
+  "axes": {
+    "native_validity": "Is the exact statement proved for the actual source and carrier?",
+    "closing_relevance": "Would it supply an opposing estimate strong enough to contradict the generated state?"
+  },
+  "rule": "Every proposed closing premise has a named record. A true identity can supply no restriction; a strong-looking bound can be false for the actual source. Local Linux compilation is development evidence until current-head CI accepts the source.",
+  "constraints": [
+    {
+      "id": "CR01",
+      "name": "(C1) cofinal vanishing-error moment-slice bounds",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentSliceVanishingErrorBounds",
+      "statement": "For every n>=1 there is an aperture L>=n+2 and one parity whose entire moment slice at K=originalDetectorQuarticCutoff(L) satisfies Q_p(L,x) >= -(1/n)||x||^2 in the inherited physical norm.",
+      "scope": "Actual canonical source; actual even/odd pole-neutral carriers with physical M4=0 (even) or M3=M5=0 (odd); literal quartic cutoff.",
+      "parameter_order": "n first; then L and the parity; then every slice vector. No fixed parity, rank, gap or bound between selected apertures.",
+      "native_validity": "OPEN",
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.cofinal_moment_closure_consumer"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation1",
+        "FrontierMutation2",
+        "FrontierMutation3",
+        "FrontierMutation5",
+        "FrontierMutation7",
+        "FrontierMutation8"
+      ],
+      "budget_improved": "Would discharge the closing premise directly.",
+      "logical_strength": "RH_SUFFICIENT_PROVED_LOCAL; RH_NECESSARY_DERIVED_BY_WEIL_POSITIVITY_ON_POLE_NEUTRAL_CARRIERS_NOT_FORMALIZED",
+      "necessity_6a": "RH-necessary as well as RH-sufficient (CR44, M60): under Mathlib RiemannHypothesis the slice bound holds with error zero at every aperture and cutoff. Sharp interface."
+    },
+    {
+      "id": "CR02",
+      "name": "Selected-packet ground-response restriction",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.EventualDisjointQuarticGroundRestriction",
+      "statement": "At late disjoint native states at the literal quartic cutoff, the corrected cubic source on the strictly lower negative even ground ray and the odd adjoint pairing on the strictly lower negative odd ground ray are both below one.",
+      "scope": "Same states as the actual generated packets; packet-uniform and one-output forms are also consumed.",
+      "parameter_order": "R before L; the restriction must hold on the eligible packet outputs themselves or one output must carry both packet properties and the restriction.",
+      "native_validity": "OPEN",
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_eventual_disjoint_quartic_ground_restriction",
+        "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_selected_packet_ground_restriction",
+        "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_selected_packet_with_ground_restriction"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation9",
+        "FrontierMutation10"
+      ],
+      "budget_improved": "Removes the separate global shared-ground exclusion and the all-cutoff uniformity of EventualNegativeGroundClosure.",
+      "logical_strength": "RH_SUFFICIENT_PROVED_LOCAL; UNDER_RH_ITS_NEGATIVE_GROUND_HYPOTHESES_FAIL_SO_IT_HOLDS_VACUOUSLY (DERIVED)"
+    },
+    {
+      "id": "CR03",
+      "name": "(C2) actual long-term eventual lower bound",
+      "proposition": "premise of Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower",
+      "statement": "There exist C>0 and T such that for all t>=T, hyperbolaT(actualCorrelationLogarithmicTest t)(actualCorrelationCutoff t/2) >= -C.",
+      "scope": "Literal correlation source H=kappa*kappa, genuine Mobius coefficients, natural half-history cutoff.",
+      "parameter_order": "C and T before every t.",
+      "native_validity": "OPEN",
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "consumers": [
+        "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower"
+      ],
+      "countermodel_tests": [
+        "existing Madness controls"
+      ],
+      "budget_improved": "Equivalent (proved) to the rank-one-plus-off-diagonal sqrt lower target after the controlled diagonal.",
+      "logical_strength": "RH_SUFFICIENT_PROVED_PRODUCTION; RH_EQUIVALENCE_PROVED_ONLY_IN_ARCHIVED_EXTERNAL_PROTOTYPE arithmetic/converse-rh/ActualNativeRHConverse.lean"
+    },
+    {
+      "id": "CR04",
+      "name": "Native K3 ordinary-prime remainder E_ord",
+      "proposition": null,
+      "statement": "An eventual polynomial lower bound on either literal K3 scalar energy, equivalently control of E_ord = B_1 + 200 a beta^2 L + d_0 (H_2+16) L^2.",
+      "scope": "Fixed K=3 native vectors; different carriers from the quartic slices.",
+      "parameter_order": "Eventual in L; constants independent of L.",
+      "native_validity": "OPEN",
+      "closing_relevance": "CLOSING_ONLY_WITH_UNFORMALIZED_DERIVED_K3_REDUCTION",
+      "consumers": [],
+      "countermodel_tests": [
+        "N03",
+        "N04",
+        "N05",
+        "N06"
+      ],
+      "budget_improved": "Would close via the DERIVED fixed-K3 Landau argument, which is not formalized."
+    },
+    {
+      "id": "CR05",
+      "name": "Qualified causal alternative",
+      "proposition": null,
+      "statement": "The actual source-preserving causal Gram residual tends to zero.",
+      "scope": "Actual dependent source packet.",
+      "parameter_order": "As in CLOSURE_OBLIGATIONS B_CAUSAL.",
+      "native_validity": "OPEN",
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "consumers": [],
+      "countermodel_tests": [
+        "finite Gram countercontrols"
+      ],
+      "budget_improved": "Independent OR branch."
+    },
+    {
+      "id": "CR06",
+      "name": "Fixed off-line-zero margin on both moment slices",
+      "proposition": "Zeta23.OPICARound4.eventually_both_moment_slice_margins_at_original_quartic",
+      "statement": "Under an actual off-line zero there is d>0 such that eventually both slices contain nonzero literal trials with Q_p < -d||x||^2.",
+      "scope": "Literal trial vectors, not ground eigenvectors.",
+      "parameter_order": "d before every late L.",
+      "native_validity": "PROVED_PRODUCTION_SCOPE_9C517DB",
+      "closing_relevance": "OPPOSING_OBSTRUCTION_INPUT",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.eventually_no_moment_slice_lower_bound_below_margin"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation4"
+      ],
+      "budget_improved": "Fixes the margin any supplier must beat."
+    },
+    {
+      "id": "CR07",
+      "name": "Exact slice dimensions and nonvacuity",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.finrank_evenMomentSlice",
+      "statement": "dim even slice = K-3 and dim odd slice = K-4 (natural subtraction) for K>=2; at K=ceil(L^4)>=16 the slices have dimension at least 13 and 12.",
+      "scope": "Actual carriers.",
+      "parameter_order": "Pointwise in L>0, K.",
+      "native_validity": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "NONVACUITY_GUARD",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.quartic_moment_slices_nontrivial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.quartic_slice_dimension_consumer"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation3"
+      ],
+      "budget_improved": "Prevents vacuous small-cutoff evidence; at K=3 the even slice bound holds for every tolerance.",
+      "qualification_note": "U1 (revision 3): the exact registered statement is qualified at dab9fbe; human release review NOT_ESTABLISHED."
+    },
+    {
+      "id": "CR08",
+      "name": "Physical congruence transport and frame comparisons",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_seed_gram",
+      "statement": "Slice bounds are exactly seed-coordinate bounds with the full Gram D^2; a coordinate tolerance eps gives physical eps/beta^2; a physical tolerance eps gives coordinate eps (beta+K^2)^2.",
+      "scope": "Fixed seed chart x=Dy, D=(L/(4pi))^2+n^2.",
+      "parameter_order": "Pointwise.",
+      "native_validity": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "METRIC_ADAPTER",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_of_coordinate_tolerance",
+        "Zeta23.OPICARound4.ArithmeticFrontier.coordinate_tolerance_of_evenMomentSliceLowerBound"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation6"
+      ],
+      "budget_improved": "Exact tolerance conversion for finite certificates.",
+      "qualification_note": "U1 (revision 3): the exact registered statement is qualified at dab9fbe; human release review NOT_ESTABLISHED."
+    },
+    {
+      "id": "CR09",
+      "name": "Disjoint spectra exclude every bottom tie",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.rayleighBottoms_ne_of_spectra_disjoint",
+      "statement": "Where the full even and odd native spectra are disjoint, the two Rayleigh bottoms differ.",
+      "scope": "Any native state; supplied at the actual packet detector cutoff by the production packet theorem.",
+      "parameter_order": "Pointwise.",
+      "native_validity": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "REMOVES_SHARED_GROUND_PREMISE_ON_PACKET_ROUTE",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.noBothNeg_of_ground_response_and_disjoint_spectra"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation9"
+      ],
+      "budget_improved": "The packet route needs only the two ground tests.",
+      "qualification_note": "U1 (revision 3): the exact registered statement is qualified at dab9fbe; human release review NOT_ESTABLISHED."
+    },
+    {
+      "id": "CR10",
+      "name": "Inverse-residual block certificate (C3)",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.blockEnergy_nonneg_of_inverse_residual_certificate",
+      "statement": "A >= a > 0 and D - CX - X*C* + X*AX - a^{-1} R*R >= 0 with R = C* - AX imply the complete block is PSD; the exact form identity with A^{-1} holds.",
+      "scope": "Arbitrary complex inner-product spaces; no native data.",
+      "parameter_order": "Any trial X.",
+      "native_validity": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "CONSUMER_ONLY",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.inverse_residual_certificate_consumer"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation11"
+      ],
+      "budget_improved": "Retains full coupling; the scalar inverse-gap surrogate is its X=0 case.",
+      "qualification_note": "U1 (revision 3): the exact registered statement is qualified at dab9fbe; human release review NOT_ESTABLISHED."
+    },
+    {
+      "id": "CR11",
+      "name": "Finite source-core consumer (C4)",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.core_shift_certificate",
+      "statement": "Leakage eta <= eps/4 against the full complement and core form >= -(11 eps/12) imply H + eps I >= 0; column form keeps the nonorthogonal Gram.",
+      "scope": "Arbitrary self-adjoint operator.",
+      "parameter_order": "Pointwise.",
+      "native_validity": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "CONSUMER_ONLY",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.core_shift_consumer"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation12"
+      ],
+      "budget_improved": "Sound reduction of a physical shift to a core certificate; the signed core premise is OPEN.",
+      "qualification_note": "U1 (revision 3): the exact registered statement is qualified at dab9fbe; human release review NOT_ESTABLISHED."
+    },
+    {
+      "id": "CR12",
+      "name": "Negative-witness transport (E2)",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.core_witness_transport",
+      "statement": "A trial with margin d and leakage eta < d/3 has a nonzero projected core component with margin d - 3 eta.",
+      "scope": "Arbitrary self-adjoint operator.",
+      "parameter_order": "Pointwise.",
+      "native_validity": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "CONSUMER_ONLY",
+      "consumers": [],
+      "countermodel_tests": [],
+      "budget_improved": "Paid compression keeps the obstruction visible on the core.",
+      "qualification_note": "U1 (revision 3): the exact registered statement is qualified at dab9fbe; human release review NOT_ESTABLISHED."
+    },
+    {
+      "id": "CR13",
+      "name": "K3 Archimedean gap",
+      "proposition": "Zeta23.OPICARound4.ActualK3.actual_canonical_arch_gap_pos (external)",
+      "statement": "A_Gamma(L) > 0 for every L > 0.",
+      "scope": "Six external Lean files; not in production ROOTS.",
+      "parameter_order": "Pointwise.",
+      "native_validity": "PROVED_WITHIN_EXTERNAL_LOCAL_RECEIPTS",
+      "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
+      "consumers": [],
+      "countermodel_tests": [
+        "N04"
+      ],
+      "budget_improved": "Positive sector only; the RH case forces near-cancellation by B_1."
+    },
+    {
+      "id": "CR14",
+      "name": "Trace formula for the core residual",
+      "proposition": null,
+      "statement": "eta^2 = ||(I-P)H||_F^2 = tr(H^2) - tr(G_I^{-1}(H^4)_{II}).",
+      "scope": "Finite Hermitian matrix with selected columns.",
+      "parameter_order": "Pointwise.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.core_shift_certificate (via Frobenius >= operator norm)"
+      ],
+      "countermodel_tests": [],
+      "budget_improved": "Numerical use needs a rigorous enclosure; near-cancelling floating traces are not acceptance."
+    },
+    {
+      "id": "CR15",
+      "name": "Universal approximate-kernel mixed estimate",
+      "proposition": null,
+      "statement": "Paper-level dimension and mixed-operator estimate behind the source-core reduction.",
+      "scope": "November 7 reports.",
+      "parameter_order": "See source.",
+      "native_validity": "PAPER_LEVEL_NOT_AUDITED",
+      "closing_relevance": "OPTIONAL_SUPPORT",
+      "consumers": [],
+      "countermodel_tests": [
+        "low-rank indefinite perturbation control"
+      ],
+      "budget_improved": "Not a prerequisite for the finite core investigation."
+    },
+    {
+      "id": "CR16",
+      "name": "Fixed fractional saving against the positive K3 sector",
+      "proposition": null,
+      "statement": "B_1 >= -kappa (A_Gamma + B_{>=2}) eventually with fixed kappa < 1.",
+      "scope": "Native K3.",
+      "parameter_order": "Eventual.",
+      "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "consumers": [],
+      "countermodel_tests": [
+        "N04"
+      ],
+      "budget_improved": "Too strong even under RH."
+    },
+    {
+      "id": "CR17",
+      "name": "Pole channel vanishes on both carriers",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.evenNativeEnergy_eq_neg_arch_sub_prime",
+      "statement": "The pole kernel is S(u u^T - v v^T) with u_n = L/d_n and v_n = 4 pi n/d_n; parity kills one profile and pole neutrality the other, so the pole energy is identically zero on both pole-neutral carriers. The native energy there is exactly -arch - prime.",
+      "scope": "Every L, K; both parities.",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_arch_prime",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime"
+      ],
+      "countermodel_tests": [],
+      "budget_improved": "Removes the pole channel from every signed budget on the carriers; enclosures [+/- 1e-55] at every replayed state.",
+      "formalization": {
+        "module": "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+        "contract": "M50",
+        "reused": [
+          "Zeta23.CCM.canonicalPoleMatrix_mulVec_eq_zero_of_profiles",
+          "Zeta23.CCM.canonicalPoleMatrix_mulVec_poleNeutralEven_eq_zero",
+          "Zeta23.CCM.canonicalSourceMatrix_eq_pole_sub_arch_sub_prime"
+        ],
+        "added": "odd profile orthogonality, odd-carrier operator annihilation, sesquilinear vanishing on both carriers, exact native energy identities and slice-bound equivalences"
+      },
+      "qualification_note": "U1 (revision 3): the exact registered statement is qualified at dab9fbe; human release review NOT_ESTABLISHED."
+    },
+    {
+      "id": "CR18",
+      "name": "Channel-separated supplier",
+      "proposition": null,
+      "statement": "lambda_min(-arch) + lambda_min(-prime) >= -1/n on the slice.",
+      "scope": "Replayed L = 4, 5, 6.",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "consumers": [],
+      "countermodel_tests": [
+        "evidence/increment2"
+      ],
+      "budget_improved": "Even-slice minima: -arch -1.354/-1.719/-2.084, -prime -3.788/-4.774/-5.366 at L = 4/5/6 (rigorous Rayleigh values); the separated loss grows about linearly in L while the tolerance shrinks."
+    },
+    {
+      "id": "CR19",
+      "name": "Scalar inverse-gap supplier on the Fourier-prefix split",
+      "proposition": null,
+      "statement": "D - a^-1 C C^T >= 0 for some a <= lambda_min(A).",
+      "scope": "Replayed L = 4, 5, 6 at the checkpoints and at 1/1024.",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "consumers": [],
+      "countermodel_tests": [
+        "evidence/increment2"
+      ],
+      "budget_improved": "Refuted at all 9 tested points; |witness| times eps = 4.6, 8.7, 13.2 at n = 2, 3, 4, because the complement block carries near-null directions."
+    },
+    {
+      "id": "CR20",
+      "name": "Shifted-prefix quarter gap, high-support unshifted gap and upper cap (separate identities)",
+      "proposition": null,
+      "statement": "lambda_min(A_eps) >= 1/4 persists; A <= 9 persists.",
+      "scope": "Replayed L = 4, 5, 6.",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "consumers": [],
+      "countermodel_tests": [
+        "evidence/increment2"
+      ],
+      "budget_improved": "The unshifted complement block has rigorous Rayleigh upper bounds 3.9e-7/6.8e-7 (L = 4), 5.0e-17/1.0e-16 (L = 5) and 8.3e-18/1.4e-17 (L = 6), so no fixed high gap survives as eps decreases; the cap b = 9 fails at L = 5, 6 and is not a hypothesis of the Lean consumer.",
+      "correction": "CORRECTIONS R2/R6: version 1 conflated the shifted Fourier-prefix complement with the historical high-support unshifted law and used float-only falsifications. Increment 2B tests SHIFTED_PREFIX_QUARTER_GAP_COORDINATE and HIGH_SUPPORT_UNSHIFTED_SLICE separately with exact witnesses; the historical constant is still not imported. CORRECTIONS R10 (evidence/increment3c/CORRECTIONS_ADDENDUM.json): the HIGH_SUPPORT_UNSHIFTED_SLICE falsification holds only on the support |n| > split at splits 128, 312 and 648 with the constant 1/4; it does not falsify a historical certificate on a narrower support, a higher threshold or another constant. The unshifted Rayleigh bounds in budget_improved are for the Fourier-prefix complement block, not for high support."
+    },
+    {
+      "id": "CR21",
+      "name": "Degree-m coupled polynomial certificate at the (C1) checkpoints",
+      "proposition": null,
+      "statement": "X = P_m(A) C^T in blockEnergy_nonneg_of_inverse_residual_certificate supplies the (C1) checkpoint at a tested degree m(n, L).",
+      "scope": "L = 4, 5, 6, 7 at eps = 1/2, 1/3, 1/4, 1/5.",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "PROVED_WITHIN_EXTERNAL_LOCAL_RECEIPTS",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "consumers": [],
+      "countermodel_tests": [
+        "evidence/increment2"
+      ],
+      "budget_improved": "Smallest successful tested degree 4, 8, 16 at n = 2, 3, 4 (L = 4, 5, 6), both parities; the degree law m doubling per checkpoint is an EXPERIMENTAL SIGNAL frozen as P9 for n = 5 (E-H7). E-H7 (n = 5, L = 7, eps = 1/5): P9 CONFIRMED; smallest successful tested degree 32 (even) and 32 (odd).",
+      "correction": "CORRECTIONS R5: INVERSE_RESIDUAL and GEOMETRIC_TAIL are distinct families; both are recorded per degree in increment2b and E-D1."
+    },
+    {
+      "id": "CR22",
+      "name": "Near-null count law",
+      "proposition": null,
+      "statement": "The number of slice eigenvalues below a fixed small threshold (1e-2 to 1e-13) equals dim - N(2 pi K/L) up to O(log T).",
+      "scope": "L = 4, 5, 6.",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "OPEN",
+      "closing_relevance": "OPTIONAL_SUPPORT",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-NULLCOUNT"
+      ],
+      "budget_improved": "EXPERIMENTAL SIGNAL: below 1e-2 the count equals round(dim - N(T)) within 1 at L = 4, 5, 6 in both parities, with about one extra eigenvalue leaving per two decades down to 1e-13. Heuristic origin: the explicit-formula picture. Not a theorem and not RH evidence.",
+      "correction": "CORRECTIONS R8: absolute and signed counts recorded separately; comparison is with N_main(T), not a certified zero count."
+    },
+    {
+      "id": "CR23",
+      "name": "Near-band coupling mass",
+      "proposition": null,
+      "statement": "The coupling C from the low slice block into the near-null directions of the complement block (eigenvalues of A within 1e-6 of eps) has total mass far below the scalar-gap charge.",
+      "scope": "Fourier-prefix flag at L = 4, 5, 6 checkpoints.",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "OPEN",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-D1",
+        "E-H7",
+        "E-NEARBAND-CERT",
+        "E-OFFLINE-SYN"
+      ],
+      "budget_improved": "EXPERIMENTAL SIGNAL: coupling mass about 1e-6 against charges 12, 30 and 60. It explains why scalar-gap suppliers fail while coupled certificates pass. It is not a sign bound: a coupled certificate approximates a negative Schur complement just as faithfully. Increment 3C: certified projector-free upper bounds (trace and lambda_max of C Phi_k C^T) at L = 4, 5, 6 replace the floating projectors as the recorded quantity; e.g. tr M(eps + 1e-6) <= 9.2e-6 at L = 6 even. Synthetic controls show that small coupling is not a sign criterion: a low-band off-line world is certified negative with the same coupling bound (E-OFFLINE-SYN). E-H7: near-band counts 240 / 240, coupling traces 1.05e-06 / 2.06e-06 (P11 CONFIRMED, P12 CONFIRMED; floating projectors)."
+    },
+    {
+      "id": "CR24",
+      "name": "Detection threshold of off-line quartets at finite checkpoints",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_cofinal_moment_slice_bounds (fixed-margin detection, via eventually_no_moment_slice_lower_bound_below_margin)",
+      "statement": "A checkpoint at tolerance eps and aperture L detects an off-line quartet of depth delta iff c(L) delta^2 >~ eps, with c(L) increasing in L.",
+      "scope": "Synthetic explicit-formula worlds at L = 4, 5, 6, three ordinate bands, delta in [1/1000, 1/4].",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "OPEN",
+      "closing_relevance": "NONVACUITY_GUARD",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-OFFLINE-SYN"
+      ],
+      "budget_improved": "EXPERIMENTAL SIGNAL: eps*/delta^2 = 9.4, 17.9, 28.2 (low band, delta = 1/1000). Finite checkpoints with c(L) delta^2 < eps are blind (certified: the synthetic delta = 1/10 worlds pass the eps = 1/2 and 1/3 checkpoints). The Lean consumer already proves fixed-margin detection for each actual off-line zero; this records the delta- and L-dependence only. Not RH evidence."
+    },
+    {
+      "id": "CR25",
+      "name": "Channel-separable control of -arch and -prime on the near-null subspace",
+      "proposition": null,
+      "statement": "Bounds -arch >= -kappa_A and -prime >= -kappa_P on V with kappa_A + kappa_P smaller than the required tolerance.",
+      "scope": "Native slices at L = 4, 5, 6, both parities.",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-SIGNED"
+      ],
+      "budget_improved": "EXPERIMENTAL SIGNAL with certified entries: on V each channel has O(1) negative eigenvalues (-arch down to -2.1, -prime down to -5.4) while the joint form is at most 7.5e-3; any channel-separable estimate loses O(1). -arch alone is certified not positive at L = 4, 5."
+    },
+    {
+      "id": "CR26",
+      "name": "Stability of slice positivity under prime-cell truncation",
+      "proposition": null,
+      "statement": "The slice form -arch - prime_{q <= P} stays above -eps for some P < Q.",
+      "scope": "L = 4, 5 (certified) and L = 6 (floating).",
+      "parameter_order": "Fixed named states.",
+      "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-SIGNED"
+      ],
+      "budget_improved": "Dropping only the largest prime power gives certified negative values (-1.06e-5 / -2.7e-3 at L = 4, -0.216 / -0.271 at L = 5); truncated forms are not native. A supplier must use the whole prime cell; truncation or monotone-in-P arguments are blocked."
+    },
+    {
+      "id": "CR27",
+      "name": "Inverse residual dominates the geometric tail at the same exact degree",
+      "proposition": "S_IR(X = P_m(A) C^T) - S_tail = C[(q^m I - T^m)/a + (a^-1 I - A^-1)(T^m - T^2m)]C^T",
+      "statement": "For 0 < aI <= A <= bI, T = I - A/b, q = 1 - a/b and the exact polynomial action, S_IR - S_tail >= 0.",
+      "scope": "Any exact symmetric block pencil; numerically certified at L = 4, 5 (m = 8, 64) and at L = 2 in CI.",
+      "parameter_order": "Algebraic identity.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-SIGNED",
+        "test_the_identity_needs_the_exact_polynomial_action"
+      ],
+      "budget_improved": "Family ordering only: the inverse-residual certificate is at least as strong as the geometric tail at equal exact degree. It needs the exact P_m(A) (a perturbed X breaks the identity). Lean formalization deferred behind the signed-source work, as the review advised."
+    },
+    {
+      "id": "CR28",
+      "name": "Compressed commutator with all leakage terms",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.compressed_commutator_eq",
+      "statement": "[V\u1d34 D0 V, V\u1d34 E V] = V\u1d34[D0,E]V + Z L\u1d34 - L Z\u1d34 whenever (1 - V V\u1d34) D0 V = W L\u1d34 and D0, E are self-adjoint.",
+      "scope": "Any finite matrices; the native instantiation (actual carrier basis, D0 = diag(n\u00b2), E = canonical source) is not formalized.",
+      "parameter_order": "Algebraic identity.",
+      "native_validity": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
+      "consumers": [],
+      "countermodel_tests": [
+        "FrontierMutation15"
+      ],
+      "budget_improved": "Supplies the geometry-energy commutator with the signed leakage numerator retained (work package F \u00a711.3). It controls neither the diagonal nor the absolute energy; V\u1d34[D0,E]V is not shown to vanish on the actual carrier.",
+      "qualification_note": "U1 (revision 3): the exact registered statement is qualified at dab9fbe; human release review NOT_ESTABLISHED."
+    },
+    {
+      "id": "CR29",
+      "name": "Exact-data soundness of the shifted-factor certificate",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness.posDef_of_shifted_factor",
+      "statement": "0 < tau and ||A - tau I - R R\u1d40||\u00b2_F < tau\u00b2 imply x\u1d40Ax > 0 for x \u2260 0; tau > 0 is necessary.",
+      "scope": "Exact real data; the Arb enclosure bridge to the native source is OPEN.",
+      "parameter_order": "Finite.",
+      "native_validity": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "consumers": [],
+      "countermodel_tests": [
+        "FrontierMutation16",
+        "shifted_factor_requires_positive_shift"
+      ],
+      "budget_improved": "Level-4 soundness for the kernel decision rule on exact data; the receipts of Increment 3F record tau and the residual bound for every CERTIFIED row.",
+      "qualification_note": "U1 (revision 3): the exact registered statement is qualified at dab9fbe; human release review NOT_ESTABLISHED."
+    },
+    {
+      "id": "CR30",
+      "name": "Source-column Gram and discarded-sector trace identities",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.sourceColumn_residual_trace",
+      "statement": "For C = H S with invertible G = C\u1d34C: G = S\u1d34 H\u00b2 S, C\u1d34 H C = S\u1d34 H\u00b3 S, P = C G\u207b\u00b9 C\u1d34 is a self-adjoint idempotent and tr(((1-P)H)\u1d34((1-P)H)) = tr(H\u00b2) - tr(G\u207b\u00b9 S\u1d34 H\u2074 S).",
+      "scope": "Any finite self-adjoint H; the nonorthogonal-metric version is not formalized.",
+      "parameter_order": "Algebraic identity.",
+      "native_validity": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "METRIC_ADAPTER",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.core_shift_certificate_of_columns"
+      ],
+      "countermodel_tests": [],
+      "budget_improved": "Makes the C4 leakage computable from the source columns; no signed-core premise is proved.",
+      "qualification_note": "U1 (revision 3): the exact registered statement is qualified at dab9fbe; human release review NOT_ESTABLISHED."
+    },
+    {
+      "id": "CR31",
+      "name": "(PG) fixed-parity polynomial lower bound on the moment slices",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.FixedParityPolynomialMomentSliceBounds",
+      "statement": "Exists a parity p, C > 0, d : Nat and L0 with Q_p(L,u) >= -C (1+L)^d ||u||^2 for every u in M_p(L,K(L)) and every L >= L0.",
+      "scope": "Actual quartic cutoff, coefficient physical norm, exact slices.",
+      "parameter_order": "parity, C, d, L0 before L and u.",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_polynomial"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation18 (per-aperture constant is not PG)"
+      ],
+      "strength": "If the native slice energy is the Weil form on the slice functions, RH implies Q >= 0 there, so this contract is also RH-necessary: a sharp interface (LEAD, not formalized). Only an independent supplier changes the state.",
+      "budget_improved": "Permits any fixed polynomial loss instead of a vanishing epsilon.",
+      "necessity_6a": "RH-necessary as well as RH-sufficient (CR44, M60): under Mathlib RiemannHypothesis the slice bound holds with error zero at every aperture and cutoff. Sharp interface."
+    },
+    {
+      "id": "CR32",
+      "name": "(SE) fixed-parity subexponential lower bound",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.FixedParitySubexponentialMomentSliceBounds",
+      "statement": "Exists p such that for every alpha > 0 there are C, L0 with Q_p(L,u) >= -C exp(alpha L) ||u||^2 for all L >= L0.",
+      "scope": "As CR31.",
+      "parameter_order": "parity before alpha; C and L0 after alpha; all late L.",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_subexponential",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_subexponential_of_polynomial"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation19 (cofinal coverage is not SE)"
+      ],
+      "strength": "If the native slice energy is the Weil form on the slice functions, RH implies Q >= 0 there, so this contract is also RH-necessary: a sharp interface (LEAD, not formalized). Only an independent supplier changes the state.",
+      "budget_improved": "Every positive exponential rate is affordable.",
+      "necessity_6a": "RH-necessary as well as RH-sufficient (CR44, M60): under Mathlib RiemannHypothesis the slice bound holds with error zero at every aperture and cutoff. Sharp interface."
+    },
+    {
+      "id": "CR33",
+      "name": "Fixed-rate partial exclusion",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_even_fixed_rate",
+      "statement": "A fixed-parity bound -C exp(alpha L) at every late aperture, alpha >= 0, gives |Re rho - 1/2| <= alpha for every zero.",
+      "scope": "Both parities.",
+      "parameter_order": "alpha fixed.",
+      "native_validity": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "closing_relevance": "NOT_CLOSING_FOR_POSITIVE_ALPHA",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_odd_fixed_rate"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation20 (rate 1 does not give Re rho = 1/2)"
+      ],
+      "budget_improved": "Records the exact zero-displacement implication of an exponential estimate."
+    },
+    {
+      "id": "CR34",
+      "name": "(SB) cofinal one-constant floor and the all-late fixed-depth witnesses (AD)",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentSliceSemibounded",
+      "statement": "Exists C >= 0 such that for every R some L > max R 2 has a parity with Q_p >= -C ||u||^2 on the whole slice.",
+      "scope": "Parity may switch per aperture, never per vector.",
+      "parameter_order": "C before every horizon.",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_semibounded",
+        "Zeta23.OPICARound4.ArithmeticFrontier.eventually_both_moment_slices_below",
+        "Zeta23.OPICARound4.ArithmeticFrontier.cofinal_semibounded_of_cofinal_moment_slice_bounds"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation21 (parity chosen per vector)",
+        "FrontierMutation22 (AD is fixed depth, not exp depth)"
+      ],
+      "strength": "If the native slice energy is the Weil form on the slice functions, RH implies Q >= 0 there, so this contract is also RH-necessary: a sharp interface (LEAD, not formalized). Only an independent supplier changes the state.",
+      "budget_improved": "One finite constant, chosen once.",
+      "necessity_6a": "RH-necessary as well as RH-sufficient (CR44, M60): under Mathlib RiemannHypothesis the slice bound holds with error zero at every aperture and cutoff. Sharp interface."
+    },
+    {
+      "id": "CR35",
+      "name": "(C2-SE) literal long-term subexponential lower bound",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.ActualLongTermSubexponentialLowerBound",
+      "statement": "For every alpha > 0, T(t) >= -C exp(alpha t) at every late t, T the literal hyperbola long term.",
+      "scope": "Literal scalar source; t = 2a.",
+      "parameter_order": "alpha, then C and T; every late t.",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_polynomial"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation23 (rate 2 alpha in a, not alpha)",
+        "MP15 (product kernel is not the lcm Gram)"
+      ],
+      "budget_improved": "Constant floor relaxed to every positive rate."
+    },
+    {
+      "id": "CR36",
+      "name": "(NC) native squared-index commutator cancellation and rank-one leakage",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.compressed_squaredIndex_commutator_eq_zero",
+      "statement": "V* [D0, A] V = 0 for boundary-flat columns (full canonical source); D0 maps each slice into pole-neutral boundary-flat vectors and leaves it exactly through M6 (even) or M7 (odd).",
+      "scope": "Full canonical source, both carriers.",
+      "parameter_order": "Exact identity.",
+      "native_validity": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "closing_relevance": "STRUCTURAL_ADAPTER",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.native_compressed_commutator_eq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_even_slice_leakage",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_odd_slice_leakage"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation24 (needs boundary flatness)",
+        "FrontierMutation25 (D0 does not preserve the slice)",
+        "MP19 (holds for arbitrary real prime weights)"
+      ],
+      "budget_improved": "Turns the compressed commutator into the rank-two z l* - l z*; supplies no sign."
+    },
+    {
+      "id": "CR37",
+      "name": "(SG) geometry-diagonal and source-response growth (5A candidate)",
+      "proposition": null,
+      "statement": "In one fixed parity, for all late L: ||V* E w|| <= C_z (1+L)^a and min_i <v_i, H v_i> >= -C_h (1+L)^b, with v_i the geometry eigenbasis of J = V* D0 V and w the unit leakage normal.",
+      "scope": "Paper candidate from RH_Step4_Polynomial_Geometry_and_Source_Response_2026-11-08.md (TEXT_REVIEWED).",
+      "parameter_order": "parity and constants before L.",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910 (M59); PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED_VIA_PG",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_of_certificate"
+      ],
+      "countermodel_tests": [
+        "MP17 (scalar shift: z unchanged)",
+        "MP18 (two-by-two off-diagonal)",
+        "MP19 (arbitrary prime weights)"
+      ],
+      "evidence": "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment5a",
+      "budget_improved": "Reduces the all-vector bound to a geometry-diagonal family and one mixed response; the reduction loss 2 ||l|| ||z|| / g_J is polynomial but large (about 2e4 at L=4).",
+      "refinement": "Real-gauge tightening (Centered Prime report): z may be replaced by z - t l for real t without changing z l* - l z*; the Lean bound accepts any z with the commutator relation."
+    },
+    {
+      "id": "CR38",
+      "name": "(CP) centered ordinary-prime discrepancy lower bound",
+      "proposition": null,
+      "statement": "In one fixed parity, for all late L and every slice vector f: D_theta(L, f) >= -C (1+L)^d ||f||^2, where Q_L = R_0 + D_theta - P_pp exactly, R_0 >= c_* ||f||^2 (c_* about -1.3722) and ||P_pp|| <= 2 L^2.",
+      "scope": "Paper reduction (Centered Prime Continuation, 8 November, TEXT_REVIEWED).",
+      "parameter_order": "parity and constants before L.",
+      "native_validity": "OPEN (reduction CP -> PG DERIVED, not formalized)",
+      "closing_relevance": "CLOSING_IF_SUPPLIED_VIA_PG",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP20 (positive PNT-envelope comparison density fails PG on the exact carrier)"
+      ],
+      "budget_improved": "Isolates the centered ordinary-prime tail; proper prime powers paid at 2 L^2."
+    },
+    {
+      "id": "CR39",
+      "name": "CAUSAL: Abel-output membership at a damping sequence",
+      "proposition": null,
+      "statement": "Distinct lambda_j > 0, lambda_j -> 0, with H_lambda_j in L2(0, infinity) for every j.",
+      "scope": "Paper criterion (Abel Closure Attempt and Methodology Postmortem, 8 November).",
+      "parameter_order": "a sequence; no uniform bound or rate.",
+      "native_validity": "OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED (paper sequence criterion)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP21 (rational causal model)",
+        "MP22 (critical-zero boundary layer)"
+      ],
+      "falsified_shortcut": "The global L2 first variation V = d/dlambda H at 0+ is not in L2 for the genuine source (critical-line zeros; DERIVED). This refutes the shortcut, not the membership target.",
+      "budget_improved": "None; the dyadic covariance target of the 6 November reports remains the arithmetic gate."
+    },
+    {
+      "id": "CR40",
+      "name": "Native rank-one leakage factor and rank-two compressed commutator",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.even_native_rank_two_commutator",
+      "statement": "D0 u - P_S D0 u = (M6(u)/||r_e||^2) r_e (even), (M7(u)/||r_o||^2) r_o (odd); <u, P D0 P A v - P A P D0 v> = c(v) conj<r, A u> - conj(c(u)) <r, A v> for the full canonical source.",
+      "scope": "Both actual slices; ambient slices proved equal to the existing moment slices.",
+      "parameter_order": "Exact identity.",
+      "native_validity": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "closing_relevance": "STRUCTURAL_ADAPTER",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.odd_native_rank_two_commutator",
+        "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice_form_lower_of_geometry_basis"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation26 (leakage is M6, not M4)",
+        "MP19 (holds for arbitrary real prime weights)"
+      ],
+      "budget_improved": "Completes the native application of M51 (U4); no sign."
+    },
+    {
+      "id": "CR41",
+      "name": "Reconstruction bound and the (SG) certificate consumer",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
+      "statement": "Re x*Hx >= (h0 - 2 n_z n_l / g)||x||^2 under the rank-two relation; a geometry-response certificate gives the slice bound at its floor; polynomial certificates at every late aperture in one parity give PG and RH.",
+      "scope": "Native slices; the certificate includes an orthonormal geometry eigenbasis, gap, diagonal, response and leakage numbers.",
+      "parameter_order": "parity, C, d, L0 before L.",
+      "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_polynomial_of_geometry_response"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation27 (floor pays 2 n_z n_l / g)",
+        "FrontierMutation28 (floor is the certificate floor)",
+        "FrontierMutation29 (cofinal certificates are not SG)",
+        "MP17",
+        "MP18"
+      ],
+      "budget_improved": "Entrywise Cauchy-Schwarz avoids a dimension factor; the K^2-scale loss of the leakage norm remains (5A)."
+    },
+    {
+      "id": "CR42",
+      "name": "Paid proper-prime-power adapter",
+      "proposition": null,
+      "statement": "||P_pp(L)|| <= 2 L^2 on either compressed slice; PG holds for the full source iff it holds for the primes-only source.",
+      "scope": "Paper (Centered Prime Continuation, section 4), DERIVED; elementary (no PNT or RH).",
+      "parameter_order": "All-vector, every L.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "COARSE_GROWTH_ADAPTER",
+      "consumers": [],
+      "countermodel_tests": [
+        "CR26 (uncharged truncation fails near-positivity; compatible because the charge is paid)"
+      ],
+      "budget_improved": "Polynomial charge acceptable for PG, not for C1."
+    },
+    {
+      "id": "CR43",
+      "name": "Unconditional explicit-PNT all-vector bound",
+      "proposition": null,
+      "statement": "Q_L(f) >= [c_* - (1 + 4 pi K/L)(3 + (939/40) L^(303/200) e^(L/2 - 0.8274 sqrt L))] ||f||^2 (Johnston-Yang input).",
+      "scope": "Paper (Centered Prime Continuation, section 7), DERIVED.",
+      "parameter_order": "Every L.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (exponential rate 1/2)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP20"
+      ],
+      "budget_improved": "Stretched-exponential saving inside an exponential allowance; an x^(1/2+eta) error input would give rate eta."
+    },
+    {
+      "id": "CR44",
+      "name": "Graded rate equivalence: zero strip and fixed-rate native floor",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.zeroStrip_iff_even_fixed_rates",
+      "statement": "For a >= 0 and each parity: every nontrivial zero has |Re rho - 1/2| <= a if and only if, for every alpha > a, the fixed-rate moment-slice bound at rate alpha holds at every large aperture. The new direction has explicit constants: on every boundary-flat native vector x at aperture L and cutoff K, Re<Q x, x> >= -S e^(aL) L (1 + (2 pi K/L)^2)^2 (2K + 1) ||x||^2 with S = sum m_rho/(1 + |gamma_rho|^2).",
+      "scope": "Actual zeta zeros and the actual canonical source matrix, every L > 0 and every cutoff; boundary-flat coefficients, hence both moment slices at the quartic cutoff.",
+      "parameter_order": "a first; then alpha > a; then C and L0; all vectors.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "RATE_LADDER_ADAPTER (closing only at a = 0, which is RH itself)",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.zeroStrip_iff_odd_fixed_rates",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedRateMomentSliceBounds_of_re_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedRateMomentSliceBounds_of_half_lt",
+        "Zeta23.OPICARound4.ArithmeticFrontier.canonicalSource_re_inner_ge_neg_of_zeroStrip",
+        "Zeta23.OPICARound4.ArithmeticFrontier.momentSliceLowerBounds_zero_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_bounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_semibounded",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_subexponential"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation30 (the floor pays e^(aL), not e^(aL/2))",
+        "FrontierMutation31 (the rate is strictly above the strip half-width)",
+        "FrontierMutation32 (a half-plane Re <= theta gives rates above theta - 1/2, not theta - 1)",
+        "FrontierMutation33 (the unconditional rates are those above 1/2)",
+        "FrontierMutation35 ((PG) follows from RH, not unconditionally)"
+      ],
+      "sharpness": "The four slice contracts are RH-necessary as well as RH-sufficient. Under RH the slice bound holds with error zero at every aperture and cutoff (existing critical-line positivity, read on the slices).",
+      "budget_improved": "The fixed-rate consumer becomes an equivalence at every rate, and the unconditional rates above 1/2 are compiled. Reading the existing critical-line positivity on the slices gives error zero under RH, so RiemannHypothesis is equivalent to each of (C1), (SB), (PG) and (SE): those contracts are sharp interfaces. No rate at or below 1/2 is supplied. A rate below 1/2 is a zero-free half-plane Re s > theta0 with theta0 < 1, i.e. the quasi-Riemann hypothesis, which is not an established result. The external claims recorded in MADNESS.md (7/8, 0.8733819666133) are not imported and were not verified here; one that survived a complete proof and axiom audit would enter through fixedRateMomentSliceBounds_of_re_le with a rate near 0.375."
+    },
+    {
+      "id": "CR45",
+      "name": "Least-crossing cutoff at the first native space",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_bottom_three_lt",
+      "statement": "If the cutoff-3 global pole-neutral bottom is below -D/2 (for instance one unit vector of either one-dimensional cutoff-3 parity space has energy below -D/2), every NativeDeepThresholdGroundData packet at that aperture has cutoff 3 and both predecessor spaces have dimension zero.",
+      "scope": "The compiled selector record of Zeta23/CCM/NativeDeepThresholdGround.lean at one aperture. A finite implication; whether a deep cutoff-3 vector exists is not addressed.",
+      "parameter_order": "One aperture and one depth D; any packet.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "STRUCTURAL_ADAPTER",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_predecessor_empty_of_bottom_three_lt",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_even_trial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_odd_trial"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation34 (the threshold is -D/2, not -D/3)",
+        "MP23"
+      ],
+      "budget_improved": "None. The collapse of the positive predecessor under a deep cutoff-3 vector is now a compiled statement."
+    },
+    {
+      "id": "CR46",
+      "name": "Target consolidation: (U), (F) and (E) are one growth bound for the prime field Z",
+      "proposition": null,
+      "statement": "Under a hypothetical off-line zero of displacement delta, for every beta < delta there are arbitrarily late apertures where a cutoff-3 unit vector has energy below -e^(beta L); there the least-crossing cutoff is 3, the predecessor is {0}, and (E) is the plain L2 growth bound for Z at horizon L - c0. (F) is the weighted L2 growth bound because ||N v_L||^2 tends to ||U||^2 > 0. (U) is the weighted L1 growth bound. At rate eta each excludes zeros of displacement above eta and is implied by their absence.",
+      "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, sections 3 to 5), DERIVED, not independently reviewed. Without a dominance assumption the note does not show that the late apertures it produces coincide with the cofinal apertures of the compiled production detector.",
+      "parameter_order": "delta and beta before L; cofinal in L.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (removes (E) and (F) as independent suppliers)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP23",
+        "CR45 (the finite implication is compiled)"
+      ],
+      "budget_improved": "None. Three listed suppliers reduce to one.",
+      "correction_6b": "Rates: the quantities of (E) and (F) are squared norms, so at a fixed rate they grow at twice the rate of the field; the every-positive-rate equivalence stands, and no quantitative equivalence of the full (E) and (F) contracts is established. Without a dominance assumption the empty predecessor is shown only on a cofinal set not shown to meet the production family. See round7/TARGET_CONSOLIDATION.md, corrections."
+    },
+    {
+      "id": "CR47",
+      "name": "Scalar criterion on the even cutoff-3 energy",
+      "proposition": null,
+      "statement": "Let E_e(L) be the canonical energy of the unit vector of the even cutoff-3 pole-neutral boundary-flat space; its transform is R(z) = c_e (z^2 - 1/4)/(z prod_{a<=3}(z^2 + (2 pi a/L)^2)). Then sup Re rho - 1/2 is the least exponential rate at which E_e is bounded below. RH holds iff E_e(L) >= 0 for all large L, and under RH 0 < E_e(L) <= 12.94/L^5. The same holds for the odd vector.",
+      "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, section 6), DERIVED. The energy and zero-sum identity is compiled (zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm); the Landau-type converse is not formalized.",
+      "parameter_order": "One explicit sequence of numbers indexed by L.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "CLOSING_IF_SUPPLIED (RH-equivalent scalar interface; a reformulation, not an independent supplier)",
+      "consumers": [],
+      "countermodel_tests": [
+        "E-SPECTRAL-LOWDEG (prime side against the zero sum, L = 2 to 12)",
+        "MP23"
+      ],
+      "budget_improved": "States the remaining premise on one sequence of finite smoothed prime sums. No bound is supplied.",
+      "correction_6b": "Under RH the normalized scalar T = w E_e (w = L/c_e^2, degree 13) is uniformly bounded, so E_e(L) = O(L^-13); 12.94/L^5 remains true but is weaker. The scalar vector is not in the quartic moment slice (fourth moment 2880x, evidence/increment6b), so the scalar route needs its own formal adapter."
+    },
+    {
+      "id": "CR48",
+      "name": "Explicit floor with a verification height",
+      "proposition": null,
+      "statement": "If every zero below height H0 is on the line and theta0 = sup Re rho, then for every aperture, cutoff and boundary-flat vector c: E(c) >= -2 (2 pi)^6 S6(H0) (K^6/L^5) e^((theta0 - 1/2) L) |c|^2, S6(H0) = sum over gamma > H0 of gamma^-6. With the published height 3e12 the constant is about 4.4e-58, and with theta0 <= 1 the floor on the whole quartic carrier stays above -1 up to L about 86.",
+      "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, Proposition 6b), DERIVED. The verification height is an external published computation that the repository neither contains nor re-verifies.",
+      "parameter_order": "Every L; the bound degrades like e^(L/2).",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (finite range of apertures)",
+      "consumers": [],
+      "countermodel_tests": [],
+      "budget_improved": "Shows what a larger H0 or a smaller theta0 buys. It says nothing at late apertures."
+    },
+    {
+      "id": "CR49",
+      "name": "Native real-root lemma",
+      "proposition": null,
+      "statement": "If the bottom eigenvalue of the canonical form on a native space (full, boundary-flat, pole-neutral or moment slice) in one parity sector is simple, every zero z of the numerator of the ground transform has z^2 real.",
+      "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, Lemma 7), DERIVED. It uses nothing about zeta and holds verbatim for the hypothetical-zero model, whose ground energies are hugely negative.",
+      "parameter_order": "One aperture, one space.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (real-rootedness of finite ground states does not distinguish RH from its failure)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP23"
+      ],
+      "budget_improved": "None. With the certified simplicity at L = 2 and L = 3 it gives real roots there without root finding."
+    },
+    {
+      "id": "CR50",
+      "name": "Ground-state convergence candidate (CT)",
+      "proposition": null,
+      "statement": "For a sequence L_j tending to infinity with simple even bottoms: if the normalised ground transforms converge locally uniformly to xi(1/2 + z), then RH (by CR49 and Hurwitz).",
+      "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, section 8), LEAD.",
+      "parameter_order": "A sequence of apertures.",
+      "native_validity": "OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED (the natural proof consumes canonical positivity)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP23 (the near-radical vector still exists in the model, sits inside the spectrum and is not the ground vector)"
+      ],
+      "budget_improved": "None. Identifying the near-radical vector with the ground vector needs the absence of eigenvalues below it, which is the missing estimate."
+    },
+    {
+      "id": "CR51",
+      "name": "Loss-tolerant delay descent is a sharp interface",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_delay_descent",
+      "statement": "Abstractly (fixed_rate_of_delay_descent): if P L eps is monotone in eps, holds with C0 e^(alpha L) from L1 on, and at every large L a bound eps on [L1, L - h(L)] gives P L (A(L) + G(L) eps), with h eventually >= h0 > 0, A eventually below every positive exponential rate and 2 G(L) <= e^(eta h(L)) eventually for every eta > 0, then P holds at every positive rate from L1 on. Natively (EvenDelayDescent, OddDelayDescent): with such costs the delay descent of the slice bottom in one parity gives (SE) and RH; under RH every eventually nonnegative cost profile satisfies it.",
+      "scope": "Actual quartic moment slices in one fixed parity; every admissible cost profile. The a priori base is the unconditional rate-one bound (explicit start L >= 1).",
+      "parameter_order": "Costs A, G, h first; then the start L1 >= 1; then every large L and every eps >= 0.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "SHARP_INTERFACE (closing iff the descent inequality is supplied)",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixed_rate_of_delay_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenFixedRateMomentSliceBound_of_delayDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddFixedRateMomentSliceBound_of_delayDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_delay_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_delay_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_riemannHypothesis"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation36 (the gain must be e^(o(h)); with 2G <= e^h, b(L) = e^(L/2) satisfies the premise)",
+        "FrontierMutation37 (the delay must stay above a fixed h0 > 0; h = 0 is a vacuous self-comparison)",
+        "FrontierMutation38 (every positive rate, not a bounded floor: b(L) = L satisfies the premise)",
+        "FrontierMutation40 (the first apertures must be paid by an a priori bound)",
+        "FrontierMutation41 (under RH the contract follows only for nonnegative costs)"
+      ],
+      "budget_improved": "The missing inequality may lose polynomial or subexponential factors and may compare an aperture with earlier ones; positivity at intermediate apertures and contraction are not needed. No descent inequality is supplied."
+    },
+    {
+      "id": "CR52",
+      "name": "Fractional-scale descent with polynomial costs is a sharp interface",
+      "proposition": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_scale_descent",
+      "statement": "For 0 < theta < 1, C >= 0 and exponents d, m: the slice bound eps at theta L giving the slice bound C(1+L)^d + C(1+L)^m eps at L, at every large L in one parity (EvenScaleDescent, OddScaleDescent), is equivalent to RH. It is an instance of CR51 with delay (1 - theta) L.",
+      "scope": "Actual quartic moment slices; the contract (ND) of the signed-aperture note in its lower-bound form.",
+      "parameter_order": "theta, C, d, m first; then every large L and every eps >= 0.",
+      "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "SHARP_INTERFACE",
+      "consumers": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.admissibleDescentCosts_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_scaleDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_scaleDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_scale_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_scale_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenScaleDescent_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddScaleDescent_of_riemannHypothesis"
+      ],
+      "countermodel_tests": [
+        "FrontierMutation39 (theta = 1 is a self-comparison that every source satisfies once C >= 1)"
+      ],
+      "budget_improved": "As CR51."
+    },
+    {
+      "id": "CR53",
+      "name": "Tame integer drive and wild Moebius part: the exact Abel-Mertens bridge",
+      "proposition": null,
+      "statement": "For the fixed cutoff-4 kernel q4 = g * g, S(T) = sum_{n <= e^T} Lambda(n) n^(-1/2) q4(T - log n) equals int_0^T m(v) J(T - v) dv with m(v) = e^(-v/2) M(e^v), J = H' + H/2 and H(t) = sum_{n <= e^t} (log n / sqrt n) q4(t - log n); |H| <= C_H (1+t) and |H'| <= C_H' (1+t) with explicit rationals. |M(x)| <= C x^theta gives fixed-field rate theta - 1/2. J takes both signs (J(4) > 0 > J(6)).",
+      "scope": "Paper level (cutoff-scale note of 12 November), DERIVED; the identity uses finite partial summation only. The constants, the double zero of K at 1/2 and the two signs of J are recomputed exactly in evidence/increment6b (FINITE_CERTIFICATE).",
+      "parameter_order": "One fixed kernel; every T.",
+      "native_validity": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (locates the unpaid term)",
+      "consumers": [],
+      "countermodel_tests": [
+        "MP27 (no positive-kernel domination)",
+        "MP24 (breaks Lambda = mu * log)"
+      ],
+      "budget_improved": "The whole integer drive (weight one on every integer) is paid unconditionally; the unpaid term is signed cancellation of mu against J. The classical Mertens criterion is the anchor, not a new input."
+    }
+  ],
+  "strength_rule": "An RH-sufficient contract that is also RH-necessary is a sharp interface, not independent sub-RH progress. Only an independent supplier changes the state.",
+  "status_refresh_2026_11_11": {
+    "head": "b3afa611d3181f38c2d3c8a69c64d318ee2ea6d7",
+    "round4_run": 42539385910,
+    "moved_from_local_to_ci_green": [
+      "CR31",
+      "CR32",
+      "CR33",
+      "CR34",
+      "CR35",
+      "CR36",
+      "CR37",
+      "CR40",
+      "CR41"
+    ],
+    "basis": "WORKFLOW_HARVEST.json head_harvest_b3afa61: the mathematical-support lane compiled 107 modules and 1321 declarations with types and axioms identical to the local gate and 113 of 113 controls rejected.",
+    "limit": "Single-reader harvest; the independent receipt inspection that qualifies dab9fbe was not repeated. CR44 and CR45 are newer than that head and stay local until their own CI run."
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_OPEN_PREMISES_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "repository_pin": {
+    "parent_head": "9c517db0befa1131bb60d37cfef2888ed69447a9",
+    "parent_tree": "6d737c3e3f74a607ae1e1a4b958cc1e2cf9854e9",
+    "branch": "research/madness",
+    "pr": "HMarcusWH/zeta-23-lean#299"
+  },
+  "combination": "OR: one complete branch suffices; no branch is a hidden prerequisite of another.",
+  "closing_leaves": [
+    {
+      "id": "C1",
+      "register": "CR01",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds",
+      "status": "OPEN",
+      "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_bounds (M60, local compile). A sharp interface: proving it is proving RH."
+    },
+    {
+      "id": "PACKET",
+      "register": "CR02",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_eventual_disjoint_quartic_ground_restriction",
+      "status": "OPEN"
+    },
+    {
+      "id": "C2",
+      "register": "CR03",
+      "consumer": "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower",
+      "status": "OPEN"
+    },
+    {
+      "id": "K3",
+      "register": "CR04",
+      "consumer": null,
+      "status": "OPEN",
+      "note": "Needs both the arithmetic bound and a formal end-to-end K3 reduction."
+    },
+    {
+      "id": "CAUSAL",
+      "register": "CR05",
+      "consumer": null,
+      "status": "OPEN",
+      "note_4d": "Paper sequence criterion CR39 OPEN; the L2 first-variation shortcut is refuted by genuine critical zeros (DERIVED). The membership target itself is not refuted."
+    },
+    {
+      "id": "PG",
+      "register": "CR31",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_polynomial",
+      "status": "OPEN",
+      "implies": "SE",
+      "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_polynomial (M60, local compile). A sharp interface: proving it is proving RH."
+    },
+    {
+      "id": "SE",
+      "register": "CR32",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_subexponential",
+      "status": "OPEN",
+      "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_subexponential (M60, local compile). A sharp interface: proving it is proving RH."
+    },
+    {
+      "id": "SB",
+      "register": "CR34",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_semibounded",
+      "status": "OPEN",
+      "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_semibounded (M60, local compile). A sharp interface: proving it is proving RH."
+    },
+    {
+      "id": "C2-SE",
+      "register": "CR35",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential",
+      "status": "OPEN"
+    },
+    {
+      "id": "SG",
+      "register": "CR41",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
+      "status": "OPEN",
+      "implies": "PG"
+    },
+    {
+      "id": "DD",
+      "register": "CR51",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_delay_descent",
+      "status": "OPEN",
+      "implies": "SE",
+      "note_6b": "EvenDelayDescent or OddDelayDescent for one admissible cost profile. Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_delay_descent (M62, local compile)."
+    },
+    {
+      "id": "ND",
+      "register": "CR52",
+      "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_scale_descent",
+      "status": "OPEN",
+      "implies": "DD",
+      "note_6b": "EvenScaleDescent or OddScaleDescent for one 0 < theta < 1. Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_scale_descent (M62, local compile)."
+    }
+  ],
+  "supporting_leaves": [
+    {
+      "id": "S-TRACE",
+      "statement": "Formal trace identity for the core residual (CR14) and a rigorous enclosure.",
+      "status": "OPEN"
+    },
+    {
+      "id": "S-CHECKER",
+      "statement": "FiniteCertificateSoundness: accepted data imply the stated native finite inequality.",
+      "status": "OPEN",
+      "finite_progress": "Independent floating-point-free checker for small states (independent_check.py); no soundness theorem. Increment 3F: FiniteCertificateSoundness (M52, local pinned compile) proves the shifted-factor rule, witness semantics and the pencil-to-checkpoint step for exact real data, and that tau > 0 is necessary. The native enclosure bridge (Arb balls contain the true transcendental source entries) remains OPEN, so certificates are not yet Lean facts about the actual source.",
+      "assurance_note": "Level-3 reconstructions (independent_check.py) use their own elimination basis and blocked Schur certificate but share native_source.py, the equation-(4.4) backend and the Arb primitives with the engine; they are not level 4. FiniteCertificateSoundness and the native enclosure bridge remain OPEN (CORRECTIONS addendum, limitations_restated)."
+    },
+    {
+      "id": "S-ENCLOSURE",
+      "statement": "Proved enclosure bridge from accepted data to canonicalSourceMatrix.",
+      "status": "OPEN"
+    },
+    {
+      "id": "S-APERTURE-METRIC",
+      "statement": "Frozen aperture-metric comparison G(a) <= G(L) <= (b/a)^4 G(a).",
+      "status": "OPEN"
+    },
+    {
+      "id": "S-LEAKAGE",
+      "statement": "MomentLeakage and NativeLeakageArithmetic for the one-normal programme.",
+      "status": "OPEN"
+    },
+    {
+      "id": "S-KERNEL",
+      "statement": "Audit and, if useful, formalize the universal approximate-kernel estimate (CR15).",
+      "status": "OPEN"
+    },
+    {
+      "id": "S-REACH",
+      "statement": "Constructive certificate production with apertures escaping every bounded interval and physical errors tending to zero; cofinal_moment_slice_bounds_of_tendsto is its consumer.",
+      "status": "OPEN",
+      "finite_progress": "Checkpoints n = 2, 3, 4 certified at L = 4, 5, 6 (evidence/increment2); a constructive all-n production remains OPEN. E-H7: checkpoint n = 5 at L = 7, eps = 1/5 certified in even and odd (kernel decision of the frozen tools via the inverse-residual consumer; no level-3 reconstruction at L = 7). Level 3: independent_check.py reconstructs the L = 7 checkpoint at 512 bits in both parities (CERTIFIED; evidence/increment3e)."
+    },
+    {
+      "id": "S-POLE",
+      "statement": "Pole-channel annihilation and Q = -arch - prime on both pole-neutral carriers and moment slices (CR17, M50).",
+      "status": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "note": "Dependency compression only; the sign of -arch - prime is the OPEN closing content."
+    },
+    {
+      "id": "S-COARSE",
+      "statement": "Coarse-growth, fixed-rate, AD/SB and C2-SE consumers (CR31-CR35, M54-M56).",
+      "status": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "note": "Consumers only; each premise is OPEN and sharp with Weil positivity (LEAD)."
+    },
+    {
+      "id": "S-NC",
+      "statement": "Native NC and rank-one leakage in functional form (CR36, M57).",
+      "status": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "note": "Exact identities; carry no arithmetic (MP19). The orthonormal factor w l* is a mechanical OPEN Lean step."
+    },
+    {
+      "id": "S-SG",
+      "statement": "Candidate (SG) frozen and measured at L=4..6 (CR37, evidence/increment5a).",
+      "status": "OPEN",
+      "note": "EXPERIMENTAL_SIGNAL; both inequalities of (SG) unproved."
+    },
+    {
+      "id": "S-LEAK",
+      "statement": "Explicit rank-one leakage factor and the native rank-two commutator (CR40, M58).",
+      "status": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "note": "Completes the M51 native application; identities only."
+    },
+    {
+      "id": "S-RECON",
+      "statement": "Reconstruction bound and the (SG) certificate consumer (CR41, M59).",
+      "status": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "note": "The certificate (gap, diagonal, response) is the OPEN premise."
+    },
+    {
+      "id": "S-FLOOR",
+      "statement": "Zero strip of half-width a if and only if fixed-rate native floors at every rate above a, with an explicit floor constant (CR44, M60).",
+      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "note": "Unconditional rates above 1/2 are compiled, and RiemannHypothesis is equivalent to each of (C1), (SB), (PG) and (SE). No rate at or below 1/2 is supplied; Step 4 is the statement that the rate can be taken to zero."
+    },
+    {
+      "id": "S-CUTOFF",
+      "statement": "A cutoff-3 bottom below -D/2 forces least-crossing cutoff 3 and an empty predecessor (CR45, M61).",
+      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "note": "Finite implication only."
+    },
+    {
+      "id": "S-SCALAR",
+      "statement": "Scalar criterion on the even cutoff-3 energy E_e(L) (CR47).",
+      "status": "DERIVED_NOT_FORMALIZED",
+      "note": "RH-equivalent interface on one sequence of smoothed prime sums; a reformulation, not a bound."
+    },
+    {
+      "id": "S-BOTTOM",
+      "statement": "Certified positive simple bottoms on six constrained spaces at L = 2 (K = 16) and L = 3 (K = 81) (evidence/increment6a).",
+      "status": "FINITE_CERTIFICATE",
+      "note": "Statements about those finite objects. They are implied by the known location of the low zeros together with the compiled explicit formula and say nothing about another aperture."
+    },
+    {
+      "id": "S-DESCENT",
+      "statement": "Loss-tolerant delay and scale descent are equivalent to RH (CR51, CR52, M62).",
+      "status": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "note": "Receiving interface: polynomial or subexponential losses and relative comparisons suffice."
+    },
+    {
+      "id": "S-KERNELS",
+      "statement": "Exact kernel certificates: cutoff-3 vector, endpoint polynomial, cutoff-4 profile and constants; J(4) > 0 > J(6) (evidence/increment6b).",
+      "status": "FINITE_CERTIFICATE",
+      "note": "Explicit finite objects only."
+    }
+  ],
+  "rule": "A leaf moves only when an exact theorem with no undispatched RH-strength premise passes current-head formal and claim gates.",
+  "increment3d_note": "E-SIGNED (evidence/increment3d): on the near-null slice subspace the closing inequality is the exact cancellation of two O(1) indefinite channels; no premise is weakened and no supplier is proposed. A source-specific inequality at unbounded apertures remains OPEN.",
+  "increment3f_not_buildable": {
+    "independent_arithmetic_supplier": "Increment 5 / work package F acceptance: an actual-source signed inequality at unbounded apertures. This is the open closing estimate (sharp interface with Weil positivity); it cannot be produced by engineering. OPEN.",
+    "terminal_composition": "Increment 6 / Step4Terminal: needs the supplier. OPEN.",
+    "c2_direct_alternative": "Section 11.4 (literal long-term lower bound): research, no candidate estimate. OPEN.",
+    "native_enclosure_bridge": "Lean proof that the Arb enclosures contain the true native entries (digamma-type archimedean terms, all prime powers): not attempted in this increment. OPEN.",
+    "universal_approximate_kernel_audit": "Section 10 paper audit: requires the paper and a full audit; optional by the plan. OPEN."
+  },
+  "revision3_status": {
+    "completed_generic_supports": [
+      "M51-M53 qualified at dab9fbe",
+      "M54-M57 compiled locally; current-head CI required"
+    ],
+    "pending_native_applications": [
+      "native enclosure bridge (only if a computational route consumes it)",
+      "a Lean proof of the polynomial geometry gap (paper bound K^-241), needed to discharge part of a certificate"
+    ],
+    "optional_assurance": [
+      "universal approximate-kernel audit",
+      "physical metric adapter beyond the coefficient chart"
+    ],
+    "open_supplier": "An actual-source inequality for one OR branch (C1, PG/SE, SB, PACKET, C2/C2-SE, K3, CAUSAL) with its exact quantifiers. OPEN. Engineering cannot supply it.",
+    "completed_in_4D": [
+      "orthonormal leakage factor (M58)",
+      "native (SG) -> (PG) composition with a certificate premise (M59)",
+      "exact replays of MP14, MP15, MP18, MP20 (algebra), MP21, MP22",
+      "complete Drive folder membership"
+    ],
+    "blocked": [
+      "MP13 core/pencil replay: the 28 MB evidence archive is not retrievable through the session connector"
+    ]
+  },
+  "increment6a_status": {
+    "leaves_moved": [],
+    "consolidation": "The three alternative tasks (U), (F), (E) of the November handovers are one growth bound for the prime field Z (CR46). They are not separate leaves here and no leaf is added for them.",
+    "completed": [
+      "graded rate equivalence with explicit floor constants, and RiemannHypothesis <-> (C1), (SB), (PG), (SE) (M60)",
+      "least-crossing statement at the first native space (M61)",
+      "certified bottoms at L = 2 and L = 3, prime side against zero sum at cutoffs 3 and 4, hypothetical-zero selector model (evidence/increment6a)"
+    ],
+    "not_done": [
+      "import of an external zero-free half-plane: outside the repository. Any such half-plane is the quasi-Riemann hypothesis, so the external claims (7/8, 0.8733819666133) stay unverified until a complete proof and axiom audit; one that survived would give a fixed rate near 0.375, not closure",
+      "formal scalar consumer (the Landau half of CR47)"
+    ],
+    "ruled_out_as_closing": [
+      "positivity on the selected predecessor together with approximation of the source inside it",
+      "a loading-ratio or angle law for (F) beyond the energy bound itself",
+      "ground-state convergence as an independent route (CR50)"
+    ],
+    "open_supplier": "A direct arithmetic bound that lowers the exponential rate alpha in E_e(L) >= -C e^(alpha L), equivalently the energy rate of Z, below 1/2. Closure needs every positive rate. OPEN. No mechanism is known here."
+  },
+  "increment6b_status": {
+    "shape_register": "research/RHRC/integration/opica_round4/arithmetic_frontier/round8/MISSING_ARITHMETIC_SHAPE.md",
+    "completed": [
+      "loss-tolerant delay and scale descent as sharp interfaces (M62)",
+      "exact kernel certificates and an independent sign certificate for J (evidence/increment6b)",
+      "corrections 1 to 4 of the round-7 consolidation"
+    ],
+    "paper_level_forms_recorded": [
+      "scalar E_e with the normalized Laplace consumer",
+      "fixed field S with -zeta'/zeta(s+1/2) K(s)",
+      "Moebius return (SR) at U = floor(T^2), (A1) at U = floor(e^sqrt(T)), (B) at U = floor(T^r)",
+      "Mertens rate theta - 1/2 through the bridge CR53",
+      "endpoint pairing (7.1)",
+      "long Moebius remainder (7.5)"
+    ],
+    "correction_6b_to_increment6a_status": "The items under ruled_out_as_closing are ruled out only in their circular forms (see round7/TARGET_CONSOLIDATION.md, corrections).",
+    "open_supplier": "Signed cancellation of mu (equivalently of the prime discrepancy) against an explicit tame kernel, at every positive rate, by an argument that uses Lambda = mu * log with weight one on every integer. OPEN."
+  }
+}

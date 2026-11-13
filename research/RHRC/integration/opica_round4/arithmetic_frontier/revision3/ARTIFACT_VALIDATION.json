@@ -1,0 +1,29 @@
+{
+  "status": "PASS_ARTIFACT_STRUCTURE_ONLY",
+  "main_sections": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "all_v2_sections_mapped": true,
+  "json_parse": "PASS",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "no_new_formal_or_numerical_proof": true
+}

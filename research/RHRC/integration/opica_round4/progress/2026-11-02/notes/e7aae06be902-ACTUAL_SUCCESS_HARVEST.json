@@ -1,0 +1,638 @@
+{
+  "status": "PASS_CURRENT_CORE_AND_DECLARED_INTEGRATED_ACCEPTANCE_HARVEST",
+  "snapshot_utc": "2026-11-02T10:40:25.235886+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "run": 41378780656,
+  "attempt": 1,
+  "new_jobs": [
+    {
+      "id": 125141213444,
+      "run_id": 41378780656,
+      "run_attempt": 1,
+      "head_sha": "7bae463361264a0694b4fb2e9107dc4314163b33",
+      "name": "Round4 / INDEPENDENT_CORE",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-02T07:03:25Z",
+      "completed_at": "2026-11-02T10:11:43Z",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780656/job/125141213444",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-02T07:03:26Z",
+          "completed_at": "2026-11-02T07:03:28Z"
+        },
+        {
+          "name": "Record independent group deadline with diagnostic upload margin",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-02T07:03:28Z",
+          "completed_at": "2026-11-02T07:03:28Z"
+        },
+        {
+          "name": "Record upstream matrix disposition",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-02T07:03:28Z",
+          "completed_at": "2026-11-02T07:03:28Z"
+        },
+        {
+          "name": "Require every matrix job to succeed",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-02T07:03:28Z",
+          "completed_at": "2026-11-02T07:03:28Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-02T07:03:28Z",
+          "completed_at": "2026-11-02T07:05:27Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-02T07:05:27Z",
+          "completed_at": "2026-11-02T07:05:37Z"
+        },
+        {
+          "name": "Run ./host/.github/actions/opica4-runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-02T07:05:37Z",
+          "completed_at": "2026-11-02T08:12:42Z"
+        },
+        {
+          "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-02T08:12:42Z",
+          "completed_at": "2026-11-02T08:13:34Z"
+        },
+        {
+          "name": "Reconstruct eleven complete bundles and run the fixed independent group",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-02T08:13:34Z",
+          "completed_at": "2026-11-02T10:11:09Z"
+        },
+        {
+          "name": "Seal the complete independent group transport",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-02T10:11:09Z",
+          "completed_at": "2026-11-02T10:11:23Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-02T10:11:23Z",
+          "completed_at": "2026-11-02T10:11:37Z"
+        },
+        {
+          "name": "Collect bounded diagnostics after an interrupted independent group",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12,
+          "started_at": "2026-11-02T10:11:37Z",
+          "completed_at": "2026-11-02T10:11:37Z"
+        },
+        {
+          "name": "Record independent group diagnostic disposition",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-02T10:11:37Z",
+          "completed_at": "2026-11-02T10:11:37Z"
+        },
+        {
+          "name": "Preserve optional independent group bootstrap diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-02T10:11:37Z",
+          "completed_at": "2026-11-02T10:11:39Z"
+        },
+        {
+          "name": "Post Run ./host/.github/actions/opica4-runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-11-02T10:11:39Z",
+          "completed_at": "2026-11-02T10:11:39Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-11-02T10:11:39Z",
+          "completed_at": "2026-11-02T10:11:39Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-11-02T10:11:39Z",
+          "completed_at": "2026-11-02T10:11:40Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-11-02T10:11:40Z",
+          "completed_at": "2026-11-02T10:11:40Z"
+        }
+      ],
+      "requested_attempt": 1,
+      "latest_attempt": true
+    },
+    {
+      "id": 125215273293,
+      "run_id": 41378780656,
+      "run_attempt": 1,
+      "head_sha": "7bae463361264a0694b4fb2e9107dc4314163b33",
+      "name": "Round4 / ACCEPTANCE",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-02T10:11:46Z",
+      "completed_at": "2026-11-02T10:17:11Z",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/41378780656/job/125215273293",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-02T10:11:47Z",
+          "completed_at": "2026-11-02T10:11:48Z"
+        },
+        {
+          "name": "Record both upstream matrix dispositions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-02T10:11:48Z",
+          "completed_at": "2026-11-02T10:11:48Z"
+        },
+        {
+          "name": "Require every producer and independent group to succeed",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-02T10:11:48Z",
+          "completed_at": "2026-11-02T10:11:48Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-02T10:11:48Z",
+          "completed_at": "2026-11-02T10:13:17Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-02T10:13:17Z",
+          "completed_at": "2026-11-02T10:13:26Z"
+        },
+        {
+          "name": "Run ./host/.github/actions/opica4-runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-02T10:13:26Z",
+          "completed_at": "2026-11-02T10:13:46Z"
+        },
+        {
+          "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-02T10:13:46Z",
+          "completed_at": "2026-11-02T10:14:29Z"
+        },
+        {
+          "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-02T10:14:29Z",
+          "completed_at": "2026-11-02T10:15:06Z"
+        },
+        {
+          "name": "Reconstruct and bind every producer and independent group",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-02T10:15:06Z",
+          "completed_at": "2026-11-02T10:16:29Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-02T10:16:29Z",
+          "completed_at": "2026-11-02T10:17:05Z"
+        },
+        {
+          "name": "Record acceptance diagnostic disposition",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-02T10:17:05Z",
+          "completed_at": "2026-11-02T10:17:05Z"
+        },
+        {
+          "name": "Preserve optional acceptance diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-02T10:17:05Z",
+          "completed_at": "2026-11-02T10:17:07Z"
+        },
+        {
+          "name": "Post Run ./host/.github/actions/opica4-runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-11-02T10:17:07Z",
+          "completed_at": "2026-11-02T10:17:07Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-02T10:17:07Z",
+          "completed_at": "2026-11-02T10:17:07Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-11-02T10:17:07Z",
+          "completed_at": "2026-11-02T10:17:07Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-11-02T10:17:07Z",
+          "completed_at": "2026-11-02T10:17:07Z"
+        }
+      ],
+      "requested_attempt": 1,
+      "latest_attempt": true
+    }
+  ],
+  "CORE": {
+    "classification": [
+      "FORMAL VALIDITY GATE",
+      "REGRESSION GATE"
+    ],
+    "tests": [
+      {
+        "lane": "CONTRACT",
+        "optimized": false,
+        "expected": 135,
+        "executed": 135,
+        "status": "PASS",
+        "producer_comparison_differences": [
+          "log_sha256"
+        ],
+        "exact_test_ids_and_dispositions_equal": true
+      },
+      {
+        "lane": "CONTRACT",
+        "optimized": true,
+        "expected": 135,
+        "executed": 135,
+        "status": "PASS",
+        "producer_comparison_differences": [
+          "log_sha256"
+        ],
+        "exact_test_ids_and_dispositions_equal": true
+      },
+      {
+        "lane": "COMPOSITION_FORMAL",
+        "optimized": false,
+        "expected": 45,
+        "executed": 45,
+        "status": "PASS",
+        "producer_comparison_differences": [
+          "log_sha256"
+        ],
+        "exact_test_ids_and_dispositions_equal": true
+      },
+      {
+        "lane": "COMPOSITION_FORMAL",
+        "optimized": true,
+        "expected": 45,
+        "executed": 45,
+        "status": "PASS",
+        "producer_comparison_differences": [
+          "log_sha256"
+        ],
+        "exact_test_ids_and_dispositions_equal": true
+      }
+    ],
+    "current_compatibility": {
+      "status": "PASS_CURRENT_COMPATIBILITY",
+      "declarations": 462,
+      "batches": 29,
+      "memberships": 696,
+      "historical_contacts": 185,
+      "required_root_memberships": 221,
+      "all_batch_exit0": true,
+      "all462_compiler_type_and_axiom_rows_equal_producer": true,
+      "source153_equal_producer_and_current_git": true,
+      "native_export_sha256": "080816cb227008057a4e67edecc91a396cd055a38966754dc7ea078630984b07",
+      "producer": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next5\\CURRENT_COMPATIBILITY_RANGE_DOCUMENTS.json",
+        "sha256": "951c8be6e652e90ce44b19492a261f95cbce64292ea322ee18b99c029b5fa8d0",
+        "bytes": 858268
+      },
+      "semantic_exhaustion": false,
+      "semantic_review_promotion": false
+    },
+    "composition": {
+      "status": "PASS_EXACT45_BOTH_MODES",
+      "receipt_audit": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\CORE_NATIVE_RECEIPT_AUDIT.json",
+        "sha256": "c62d45eeb608ef8701cfd0e855fd57f347f55428255fa37e629d1f07dcdaafe0",
+        "bytes": 39345
+      },
+      "scientific_disposition": "Actual eventual-closure, complete signed-source budget and physical joint-index composition searches remain PROVED_CONDITIONAL on their exact authorized premises. The declared test controls behave as intended. No missing arithmetic premise is supplied."
+    },
+    "parent_regression": {
+      "status": "PASS_SOURCE_SCOPE_ONLY",
+      "checked_commit": "fe16565b2a31fb8b68bef916ae8f04d535880e7a",
+      "checked_tree": "5442650eb749576e4a82e2d57460a4b97e19b5a9",
+      "authority": "STATIC_SOURCE_AND_PREMISE_DECLARATIONS_ONLY",
+      "scope": "Frozen historical parent contract replay; not current mathematics or fresh historical full-release authority."
+    }
+  },
+  "ACCEPTANCE": {
+    "classification": [
+      "INTEGRATED VALIDITY AND REGRESSION GATE",
+      "INTEGRATION OF PREVIOUSLY HARVESTED RESEARCH OUTPUTS"
+    ],
+    "result": {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "experiment": {
+        "attempt": 1,
+        "profile_digest": "fbbf97fcc910780d21db1aefa64f5b49746766e1488e20d040c8ad488867ac2c",
+        "requested_commit": "7bae463361264a0694b4fb2e9107dc4314163b33",
+        "requested_tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+        "run_id": "41378780656"
+      },
+      "full_release_human_review": "NOT_ESTABLISHED",
+      "independent_groups": [
+        {
+          "conclusion": "success",
+          "evidence_digest": "e72cbf01412c26c02a4980c4dbf959391c346768428a46ff7b013bad14c4b161",
+          "group_id": "CORE",
+          "lanes": [
+            "CONTRACT",
+            "PARENT_REGRESSION",
+            "CURRENT_COMPATIBILITY",
+            "COMPOSITION_FORMAL"
+          ]
+        },
+        {
+          "conclusion": "success",
+          "evidence_digest": "69c9420ca24081ce80beaa57fb5aad80cc662cc13780b2436548b2920932f590",
+          "group_id": "AUXILIARY",
+          "lanes": [
+            "SEMANTIC_NEGATIVES",
+            "FRAMEWORK_ADAPTERS",
+            "PROVIDER_SELECTED",
+            "REPLAY_CAMPAIGN",
+            "MATHEMATICAL_SUPPORT",
+            "SOURCE_NUMERICS"
+          ]
+        },
+        {
+          "conclusion": "success",
+          "evidence_digest": "2b1dd23247644068ad0687c9fdbb8fc4e158802aabac1333733842fb5103d680",
+          "group_id": "CANONICAL",
+          "lanes": [
+            "GENERATED_STATE"
+          ]
+        }
+      ],
+      "independently_reconstructed_lanes": [
+        {
+          "evidence_digest": "4b48b0e232acba78cb3f43b1b25c2a3ad58927e92993ea67ccb200a898861de4",
+          "id": "CONTRACT",
+          "scope": "CURRENT_HOST"
+        },
+        {
+          "evidence_digest": "af773806556d182a30d40aa97b450a01e5e1d4519a2639f9af0999c3d10c064a",
+          "id": "PARENT_REGRESSION",
+          "scope": "FROZEN_BASELINE"
+        },
+        {
+          "evidence_digest": "11d8c9eff941882ba17c443499a2ac480a6f7b3fac74690176de4fdcbcb571a5",
+          "id": "CURRENT_COMPATIBILITY",
+          "scope": "CURRENT_HOST"
+        },
+        {
+          "evidence_digest": "d3525cd8337c9649de62e7e4fd35c6e397c670d9fb13ec79c233c0a50f800319",
+          "id": "COMPOSITION_FORMAL",
+          "scope": "CURRENT_HOST"
+        },
+        {
+          "evidence_digest": "865533af9b0ebecdaf8946ec4f9bfb5535378a94b232fac6631a49cc321f041e",
+          "id": "SEMANTIC_NEGATIVES",
+          "scope": "CURRENT_HOST"
+        },
+        {
+          "evidence_digest": "6a468691c9072c9899dc15b438e66ca411b48253d53bad94d83cc79ddb1a1f44",
+          "id": "FRAMEWORK_ADAPTERS",
+          "scope": "CURRENT_HOST"
+        },
+        {
+          "evidence_digest": "128e9fb3e9f3f4bdc4f7818f11494ca5ab2a78448eec42779ea8b0f23b3313ea",
+          "id": "PROVIDER_SELECTED",
+          "scope": "SELECTED_PROVIDER"
+        },
+        {
+          "evidence_digest": "5ec136547229d50d033812a383aa978a49e18e0cb44b742444a5f4298cf281de",
+          "id": "REPLAY_CAMPAIGN",
+          "scope": "CURRENT_HOST"
+        },
+        {
+          "evidence_digest": "de7283706969b9b3f5fb14d559fe9ddc8747706a2971d193509065448853fba2",
+          "id": "GENERATED_STATE",
+          "scope": "CURRENT_HOST"
+        },
+        {
+          "evidence_digest": "d046a7e7ad97fdf21c5d466111681c9b77f2819c6fc200e0b23fe71b9330ea15",
+          "id": "MATHEMATICAL_SUPPORT",
+          "scope": "CURRENT_HOST"
+        },
+        {
+          "evidence_digest": "044072f355c5e08cb28e3a53c429d69b5208c8a55437af36444c4b59c3ba22cd",
+          "id": "SOURCE_NUMERICS",
+          "scope": "CURRENT_HOST"
+        }
+      ],
+      "schema": "OPICA4_INTEGRATED_ACCEPTANCE_V1",
+      "status": "PASS_DECLARED_INTEGRATED_SCOPE"
+    },
+    "interpretation": "New current Linux declared-scope integrated acceptance joins all11 producer lanes and all3 exact independent groups, with complete raw inventories and producer identities checked by current source. It preserves prior numerical falsifiers and conditional theorem interfaces; it does not establish full-release human review or RH.",
+    "current_math_scope": "1079 declarations,90 modules,84 intended semantic type-error controls were independently checked in AUXILIARY and matched the producer. Their existing next15 audit is reused; no rerun or new theorem claim.",
+    "source_inspection_flags": "source.json and source-after.json remain PASS_SOURCE_SCOPE_ONLY with current_compiler_accepted=false/full_round4_accepted=false by that inspector schema. The separate acceptance.json supplies the declared integrated acceptance; source-only flags are not rewritten.",
+    "exact_code_anchors": [
+      "research/RHRC/integration/opica_composition/accept.py:134-187",
+      "research/RHRC/integration/opica_composition/cli.py:954-1069",
+      "research/RHRC/integration/opica_composition/cli.py:1072-1161"
+    ]
+  },
+  "runtime_repair_execution": {
+    "job": 125141213444,
+    "step": "Reclaim unused hosted SDK space before Lean setup",
+    "actual_step_success": true,
+    "started_utc": "2026-11-02T07:05:38.0768725Z",
+    "completed_utc": "2026-11-02T07:07:08.8226566Z",
+    "available_bytes_before": 89034932224,
+    "available_bytes_after": 107040956416,
+    "observed_increase_bytes": 18006024192,
+    "scope": "Actual fixed Android/.NET cleanup completed before CORE Lean setup and the complete CORE job succeeded. This qualifies this execution, not a universal capacity guarantee."
+  },
+  "artifact_transport": {
+    "bytes_retrieved": 12817130,
+    "full_CORE_zip_verified": false,
+    "full_ACCEPTANCE_zip_verified": false,
+    "method": "Authenticated HTTP206 bounded ZIP member reads, selected CORE member SHA matches exact inner transport manifests; acceptance selected members checked by ZIP CRC and local hashes. Full payload verification is current CI authority, not a local full-ZIP hash claim. Small overlap among bounded range readers is retained and counted.",
+    "receipts": [
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\CORE_RANGE_READ_RECEIPT.json",
+        "sha256": "975a1be0ac603e1148157fff8c90d786285787f500cf9d6e5cec4d685f40048e",
+        "bytes": 2913
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\CORE_DETAIL_READ_RECEIPT.json",
+        "sha256": "392e4b126a42f96c40ee258ff1c77e67e997dbf1bbfeb8a2b01e80c23b961e07",
+        "bytes": 83924
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\ACCEPTANCE_READ_RECEIPT.json",
+        "sha256": "26f4411f060455d068fc69c61c90f18034e144d2ab43d156b9388f4dab2669a8",
+        "bytes": 1798
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\CORE_RANGE_DOCUMENTS.json",
+      "sha256": "e0fea7b4075002d31bb30bbb265016b29721a724d879c169167df2970fbc4f83",
+      "bytes": 803771
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\CORE_DETAIL_DOCUMENTS.json",
+      "sha256": "38d5621ec262245220bf0f0429010cad6b76fe0615b1ab109f3e420870880c96",
+      "bytes": 16248537
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\CORE_GROUP_TRANSPORT.json",
+      "sha256": "c51c6eb4bcedaf777ba612a97f9dde382c95037ff21d689a007754012b8c2582",
+      "bytes": 331763
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\ACCEPTANCE_DOCUMENTS.json",
+      "sha256": "4ee36a030225787109c464d3db915161d169ee648e0bc3d1a8753545bebdee73",
+      "bytes": 800871
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\ROUND4_ARTIFACTS_CONNECTOR.json",
+      "sha256": "e6c21a8f0080c63508109392a7a2f6d203161aa869ee6f61d99963f883b9a780",
+      "bytes": 25256
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\JOB_125141213444.log",
+      "sha256": "c814a007cd599d56e00df6a5416af58f70e2945323d8d43e5a39fd602d521520",
+      "bytes": 212504
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\JOB_125215273293.log",
+      "sha256": "77a9e280b45d4de1bbacc09bde05619dd8c1d2cb20017f90e89c54dddf63df50",
+      "bytes": 111296
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\SOURCE_BINDINGS.json",
+      "sha256": "3ff82d0e2a63f3492d2299d50ab1d698edd84b0dfa6bdb92fb6d46300befc682",
+      "bytes": 36250
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\ADDITIONAL_SOURCE_BINDINGS.json",
+      "sha256": "762f59bcf32d83ddab9d4331b12cb88143253e4446fa02929c51e2eb7ebd20b1",
+      "bytes": 548
+    }
+  ],
+  "previous_evidence_reused": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next3\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "f9b2c4c6ff7d9d7ce904c461e85e54699a4a7b4f0e2d7b3e9d19d1ffb58e29df",
+      "bytes": 144350
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next5\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "f41e5f988c3590f014cdc3df422826077ca9135987e3a4287da6957bdbb996fc",
+      "bytes": 19824
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next9\\COMPOSITION_FORMAL_SCIENTIFIC_HARVEST.json",
+      "sha256": "d6ec281c21e40579c2fc6db7da4a3235e4522018d3d1535e693c9f6eef3e6120",
+      "bytes": 5394
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next13\\CHECKPOINT.json",
+      "sha256": "b5c13686b182c15b287e4fb18c6b8597fba4656a84cdfa9a47390ec68d1dbf81",
+      "bytes": 17127
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "a763ab9466a34fbe134f5fbac87292a77c94226998d44f90b5ce9cc4f19e1b44",
+      "bytes": 24000
+    }
+  ],
+  "post_green": {
+    "formal_change": "Current independent CORE and final integrated acceptance now qualify the already committed1079-support inventory and associated exact declared application scope. No Lean sources changed.",
+    "preserved_research": "Current source-numerics mixed-residue/switch/cost falsifiers remain exactly those harvested in next15. No new independent signed arithmetic bound.",
+    "new_external_fixedK3_research": "The recent fixed-K3 aperture Landau deduction remains DERIVED external mathematics. This CI run does not compile or register it.",
+    "remaining_workflow": "Round2 generated125159484505 remains in progress; PR-wide all-green is not claimed."
+  },
+  "repository_edits": false,
+  "local_tests_or_compiles": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

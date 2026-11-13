@@ -1,0 +1,57 @@
+{
+  "status": "COMPLETE_DERIVED_ACTUAL_F_ENERGY_COUNTERCHECK_REVIEWED_CLEAR",
+  "created_utc": "2026-11-02T08:58:04.355081+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "worktree_clean": true
+  },
+  "bindings": [
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-energy/ACTUAL_F_CAUSAL_ENERGY_COUNTERCHECK.json",
+      "sha256": "d3831ca36cb6f7250efe4adb4ba1e7e8befa8e66a9eb47e8a64038f5058712a6",
+      "bytes": 9832
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-energy/SOURCE_BOUND_RESEARCH.json",
+      "sha256": "d3b5a34ef90d033fa5bc36d4124ebded0aa0897de3bf382b0e3d8c790bf329fe",
+      "bytes": 9094
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-energy/INDEPENDENT_ROOT_F_CAUSAL_ENERGY_REVIEW.json",
+      "sha256": "5b3cddf5396abb25442a88a1e64adc2d7cf25f549935727dad4f07fc98616541",
+      "bytes": 10380
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-energy/INDEPENDENT_F_CAUSAL_ENERGY_REVIEW.json",
+      "sha256": "22da346a29d8d393d2200f9b9560b746db7ebfe5121258ce06eac7b5424689e1",
+      "bytes": 15331
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-energy/complete_research.py",
+      "sha256": "8555e1823db6efb8aaf95b34c37f1bd2176090fc9d136f2d3eb1a79e41386fdc",
+      "bytes": 3988
+    }
+  ],
+  "fresh_rechecks": {
+    "author_records": 19,
+    "current_git_blobs": 9
+  },
+  "result": "There exists one source-fixed epsilon>0 such that, for every a>=0 and every log4-B<T<log4-B+epsilon, the full actual causal pairing integral_0^T exp(-2at)F(t)[Lambda;F](t)dt is strictly negative. All earlier feedback is exactly zero. The proof uses the actual four-box/tail source and the complete n2/n3/n4 arithmetic, not an isolated signed subcomponent or replacement model.",
+  "actual_source_gain": "The literal kernel K_F is strictly positive immediately inside its left support, with K>= (1-x-x^4/384) phi triple derivative>0 for0<x<s/3. Actual box-law lower-edge mass and atomlessness pay the pointwise derivatives.",
+  "energy_kept": "E_a+D_a=-(1/4) integral exp(-2at)F + integral exp(-2at)F mathcalR_K + integral exp(-2at)F U_K. Old prefixes, source-coordinate linear tail, Selberg endpoint and every prime power remain.",
+  "precise_falsified_candidate": "Global unconditional accretivity D_a(T)>=0 for the actual F. Triple half-moment cancellation and positive Lambda or positive Selberg coefficients do not imply that candidate.",
+  "not_established_or_falsified": [
+    "Eventual positivity or negativity of D_a",
+    "A lower bound on D_a with paid storage or constants",
+    "The sign of E_a+D_a or of the full compensated energy",
+    "Any independent exponent improvement or complete signed closing estimate"
+  ],
+  "authority": "DERIVED analytic argument only; no new Lean/compiler/CI authority. Both reviews disclose their prior bounded mathematical correspondence.",
+  "new_Lean_declarations": 0,
+  "new_compiler_runs": 0,
+  "new_tests": 0,
+  "repository_edits": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

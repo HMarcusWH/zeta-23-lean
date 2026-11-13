@@ -1,0 +1,249 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_INCREMENT5A_SUMMARY_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "EXPERIMENTAL_SIGNAL_FLOAT64_MIDPOINTS_NOT_CERTIFIED",
+  "candidate": "CR37 (SG)",
+  "candidate_status": "OPEN",
+  "source": "RH_Step4_Polynomial_Geometry_and_Source_Response_2026-11-08.md (SOURCE_LEDGER, TEXT_REVIEWED)",
+  "tools": {
+    "sg_candidate.py": "63081ceb52cd01882da47fba034bc3baa1044ce09b34b324c14143d116802b8e",
+    "sg_score.py": "6890cc075f0e0fc81cfb01efff005cffd8cf744d3850d755ee44727a1afeabf8",
+    "native_source.py": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6"
+  },
+  "records": [
+    {
+      "file": "SG_L4_L6.json",
+      "sha256": "097aaab66227e331d58f99aed5d2cf2e4ec1cd39164b0bd056d204c8cdc29e04"
+    },
+    {
+      "file": "SG_L7_PREDICTIONS.json",
+      "sha256": "7363e0bcca19e98b079fac085b16bb5e9bd60ac7e3b0e095a762372e60a6c26b"
+    },
+    {
+      "file": "SG_L7.json",
+      "sha256": "0eccf78f1e785716cbaf5687b52a73b984865c0fb74b3a9ab4c65afee90cc072"
+    },
+    {
+      "file": "SG_L7_OUTCOMES.json",
+      "sha256": "5b4b2c819f10839042f76069220232bb490fe2cffa7de730ae5c4cc01319877b"
+    }
+  ],
+  "table": [
+    {
+      "L": "4",
+      "parity": "even",
+      "K": 256,
+      "slice_dimension": 253,
+      "geometry_min_gap": 4.047388132670473,
+      "norm_z": 2.663412864850667,
+      "norm_l": 16586.578356519425,
+      "min_geometry_diagonal": 0.0006539029948264175,
+      "lambda_max_H": 8.329426808480292,
+      "offdiagonal_actual_operator_norm": 3.335129991443004,
+      "sg_lower_bound": -21829.833664190675,
+      "trace_H2": 3841.9336801824234,
+      "nc_relative_residual": 2.3657010153321645e-15,
+      "leak_rank_one_residual": 1.9120162086587797e-14,
+      "commutator_identity_relative_residual": 1.710027688742987e-14
+    },
+    {
+      "L": "4",
+      "parity": "odd",
+      "K": 256,
+      "slice_dimension": 252,
+      "geometry_min_gap": 5.084912883482754,
+      "norm_z": 2.5955743259408717,
+      "norm_l": 16544.800400172575,
+      "min_geometry_diagonal": 0.00023346615123612583,
+      "lambda_max_H": 8.313153601401453,
+      "offdiagonal_actual_operator_norm": 3.433467690837591,
+      "sg_lower_bound": -16890.459890637896,
+      "trace_H2": 3829.076434364809,
+      "nc_relative_residual": 2.5786528015600814e-15,
+      "leak_rank_one_residual": 1.878983940322836e-14,
+      "commutator_identity_relative_residual": 1.6173752150770828e-14
+    },
+    {
+      "L": "5",
+      "parity": "even",
+      "K": 625,
+      "slice_dimension": 622,
+      "geometry_min_gap": 4.022096793706616,
+      "norm_z": 3.2714979722330524,
+      "norm_l": 98646.2093567828,
+      "min_geometry_diagonal": 0.0002121245394912401,
+      "lambda_max_H": 10.539744933536358,
+      "offdiagonal_actual_operator_norm": 5.3314763202522375,
+      "sg_lower_bound": -160473.9468018579,
+      "trace_H2": 14052.032864043555,
+      "nc_relative_residual": 4.379660151879189e-15,
+      "leak_rank_one_residual": 3.8439847537943544e-14,
+      "commutator_identity_relative_residual": 3.3283020384304164e-14
+    },
+    {
+      "L": "5",
+      "parity": "odd",
+      "K": 625,
+      "slice_dimension": 621,
+      "geometry_min_gap": 5.043503857185096,
+      "norm_z": 3.265149002391766,
+      "norm_l": 98402.19166480505,
+      "min_geometry_diagonal": 0.00031984580698149126,
+      "lambda_max_H": 10.540918535690341,
+      "offdiagonal_actual_operator_norm": 5.227591885274685,
+      "sg_lower_bound": -127410.55672365602,
+      "trace_H2": 14029.358901700183,
+      "nc_relative_residual": 3.652262345003232e-15,
+      "leak_rank_one_residual": 3.916346935366148e-14,
+      "commutator_identity_relative_residual": 3.248499604279245e-14
+    },
+    {
+      "L": "6",
+      "parity": "even",
+      "K": 1296,
+      "slice_dimension": 1293,
+      "geometry_min_gap": 4.0151413222463335,
+      "norm_z": 3.9261921119656664,
+      "norm_l": 423816.5365809962,
+      "min_geometry_diagonal": 5.816467819518176e-05,
+      "lambda_max_H": 13.190767043676239,
+      "offdiagonal_actual_operator_norm": 6.6576283238083,
+      "sg_lower_bound": -828855.0808952366,
+      "trace_H2": 39411.86318089532,
+      "nc_relative_residual": 5.2412745489608864e-15,
+      "leak_rank_one_residual": 7.144088868869736e-14,
+      "commutator_identity_relative_residual": 6.054121358796595e-14
+    },
+    {
+      "L": "6",
+      "parity": "odd",
+      "K": 1296,
+      "slice_dimension": 1292,
+      "geometry_min_gap": 5.028365805104748,
+      "norm_z": 3.9557891283342133,
+      "norm_l": 422771.18978884,
+      "min_geometry_diagonal": 0.0002807124337771803,
+      "lambda_max_H": 13.191021491256173,
+      "offdiagonal_actual_operator_norm": 6.3567297040103625,
+      "sg_lower_bound": -665183.7755861173,
+      "trace_H2": 39384.6550104501,
+      "nc_relative_residual": 5.061068239268532e-15,
+      "leak_rank_one_residual": 7.346011396057993e-14,
+      "commutator_identity_relative_residual": 5.976662063160236e-14
+    },
+    {
+      "L": "7",
+      "parity": "even",
+      "K": 2401,
+      "slice_dimension": 2398,
+      "geometry_min_gap": 4.014503075915025,
+      "norm_z": 4.520315723934261,
+      "norm_l": 1454118.2163173193,
+      "min_geometry_diagonal": 6.711174275188075e-05,
+      "lambda_max_H": 14.872741972574099,
+      "offdiagonal_actual_operator_norm": 7.791366186485627,
+      "sg_lower_bound": -3274663.545273538,
+      "trace_H2": 92809.33116011566,
+      "nc_relative_residual": 6.449311609300069e-15,
+      "leak_rank_one_residual": 1.1229295210218799e-13,
+      "commutator_identity_relative_residual": 9.648571335829218e-14
+    },
+    {
+      "L": "7",
+      "parity": "odd",
+      "K": 2401,
+      "slice_dimension": 2397,
+      "geometry_min_gap": 5.021293533340614,
+      "norm_z": 4.591060598465817,
+      "norm_l": 1450533.8690865093,
+      "min_geometry_diagonal": 0.00011927567128229532,
+      "lambda_max_H": 14.872235605037067,
+      "offdiagonal_actual_operator_norm": 8.291928543890236,
+      "sg_lower_bound": -2652499.3404929657,
+      "trace_H2": 92776.64530747393,
+      "nc_relative_residual": 6.396656371604313e-15,
+      "leak_rank_one_residual": 1.1401545645252612e-13,
+      "commutator_identity_relative_residual": 9.794446312202742e-14
+    }
+  ],
+  "modified_prime_weights_NOT_ZETA": [
+    {
+      "L": "4",
+      "parity": "even",
+      "lambda_min_H": -13.589498597608525,
+      "norm_z": 9.479311736652688,
+      "min_geometry_diagonal": -6.689890368246135,
+      "nc_relative_residual": 2.330510459206261e-15
+    },
+    {
+      "L": "4",
+      "parity": "odd",
+      "lambda_min_H": -13.328365320942982,
+      "norm_z": 9.417447857146149,
+      "min_geometry_diagonal": -6.439655536024619,
+      "nc_relative_residual": 2.6854869700089413e-15
+    },
+    {
+      "L": "5",
+      "parity": "even",
+      "lambda_min_H": -29.09355771378553,
+      "norm_z": 18.898455957255518,
+      "min_geometry_diagonal": -14.46983430997433,
+      "nc_relative_residual": 3.73346315913145e-15
+    },
+    {
+      "L": "5",
+      "parity": "odd",
+      "lambda_min_H": -28.826001490111388,
+      "norm_z": 18.947367324756833,
+      "min_geometry_diagonal": -15.874420167444637,
+      "nc_relative_residual": 3.359836973274103e-15
+    },
+    {
+      "L": "6",
+      "parity": "even",
+      "lambda_min_H": -43.54465792578022,
+      "norm_z": 25.936458682204943,
+      "min_geometry_diagonal": -26.644430478390277,
+      "nc_relative_residual": 5.010405019352764e-15
+    },
+    {
+      "L": "6",
+      "parity": "odd",
+      "lambda_min_H": -43.490654772402344,
+      "norm_z": 26.293297171893478,
+      "min_geometry_diagonal": -28.230852255142555,
+      "nc_relative_residual": 5.046672087780237e-15
+    }
+  ],
+  "l7_predictions": {
+    "hits": 15,
+    "total": 18,
+    "misses": [
+      [
+        "P4",
+        "even"
+      ],
+      [
+        "P4",
+        "odd"
+      ],
+      [
+        "P6",
+        "even"
+      ]
+    ],
+    "reading": "Operational prediction failures (lambda_max growth slowed; the even geometry-diagonal minimum rose), not falsifications."
+  },
+  "findings": [
+    "REPRODUCED: the six-state table of the source report (L = 4, 5, 6; both parities) agrees to every printed digit, including tr(H^2), from the repository Arb source.",
+    "IDENTITY (consistent with Lean M57 and M51): V*[D0,E]V = 0, rank-one leakage (second singular value about 1e-14 of the first) and [J,H] = z l* - l z* hold to about 1e-14 relative at L = 4..7.",
+    "SIGNAL: ||z|| is about 0.65 L (2.66, 3.27, 3.93, 4.52 even); the geometry gap tends to 4 (even) and 5 (odd); ||l|| is about K^2 / 4.",
+    "SIGNAL: the reduction loss 2 ||l|| ||z|| / g_J is 2e4 to 3e6 while the actual geometry off-diagonal operator norm is 3.3 to 8.3. The crude Frobenius step discards about a factor K^2: a sharper Cauchy-structure bound on the off-diagonal is the natural next target, not a sign.",
+    "CONTROL: with arbitrary real prime weights (NOT zeta) NC and the commutator identity survive to 1e-15 while the slice is negative (lambda_min about -14, -29, -44) with min h about -7, -15, -27. Their growth also looks polynomial at L <= 6, so finite-L tables cannot discriminate PG or (SG).",
+    "CONTROL: E - M I leaves z unchanged to 1e-12 and moves every h_i by exactly -M.",
+    "FLOAT FLOOR: lambda_min(H) is about -1e-14, below float64 resolution; certified slice bottoms are in increments 2B, 3B and 3F."
+  ],
+  "scope": "Finite states L = 4..7 only. No constant, exponent or growth law is promoted. Both inequalities of (SG) remain OPEN."
+}

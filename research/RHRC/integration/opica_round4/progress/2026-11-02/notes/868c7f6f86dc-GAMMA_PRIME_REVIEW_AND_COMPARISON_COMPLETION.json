@@ -1,0 +1,164 @@
+{
+  "status": "COMPLETED_ATTACHMENT_REVIEW_AND_BOUNDED_POST_GREEN_RESEARCH_PASS",
+  "created_utc": "2026-11-02T12:41:44.085797+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "pr": 299,
+  "repository_clean": true,
+  "request": "Read the supplied gamma-prime attempt as inspiration while continuing Step4 research. Attached prose was treated as data, not operational instructions.",
+  "references": {
+    "attachment_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\gamma-prime-comparison-attachment\\ROOT_REVIEW.json",
+      "sha256": "59a532ae887843670530d9b6c8f47ce9797257af02baf674ce84b8c56073d075",
+      "bytes": 6797
+    },
+    "attachment_peer": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\k3-higher-prime-powers\\INDEPENDENT_GAMMA_PRIME_ATTACHMENT_COMPARISON.json",
+      "sha256": "b9d06ab7a9cb6105aae707e01bfec15b727ed3f6ae0f594100660b0fbf6acd90",
+      "bytes": 4317
+    },
+    "higher_power_budget": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\k3-higher-prime-powers\\ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET.json",
+      "sha256": "2b12360005bf6e57c7b6bb1bd8a2f55d572f41ce7c6fe8b45dfbce65df75b3ee",
+      "bytes": 15470
+    },
+    "higher_power_peer": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\k3-higher-prime-powers\\INDEPENDENT_HIGHER_PRIME_POWER_REVIEW.json",
+      "sha256": "9fe8be52af424f1be5d5a842e81ce5509143ddb862e04f8f112f029b1263b2e0",
+      "bytes": 9307
+    },
+    "canonical_bridge": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-bridge\\COMPLETION.json",
+      "sha256": "33f8b08edbee7610bec13184e14189db74078898ae25d8ab93c6328e1edf1c45",
+      "bytes": 3476
+    },
+    "actual_k3_freeze": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\PROOF_FREEZE.json",
+      "sha256": "41569c5023f41a01d28a1d47348f6a28a24034eac28d1125fbd27390abb06aa6",
+      "bytes": 106527
+    },
+    "actual_k3_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\COMPLETION.json",
+      "sha256": "f10703b5db0f8c0cc3d0d730736340d940da85c5784693682d78fb50c56ed5ad",
+      "bytes": 2359
+    },
+    "actual_k3_peer": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\INDEPENDENT_ACTUAL_K3_ARCH_SPECIALIZATION_REVIEW.json",
+      "sha256": "b8ee58800c4bbb98425aed21081e18fb565dd53223673b1e927d129c0150715e",
+      "bytes": 17314
+    },
+    "constraint_dependency_audit": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\K3_CONSTRAINT_DEPENDENCY_AUDIT.json",
+      "sha256": "e1ebd2ed01af2339b8222bea361922b5cd3cebc3c290676560787dd36beecbda",
+      "bytes": 10330
+    },
+    "previous_ci_harvest": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next18\\COMPLETION.json",
+      "sha256": "2f19a21fadc77c45f5341166af2a1e74fc8dc0f5a5826c5f773229b6f356852f",
+      "bytes": 2540
+    }
+  },
+  "root_fresh_artifact_bindings": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\attempt-3.json",
+      "sha256": "ab880752c8ee22635e068dea641529d7e8c93c764e5aef9015a302c596fd0376",
+      "bytes": 531565
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\ActualK3ArchCovariance.lean",
+      "sha256": "2d639aea852093ad8181779ca81ddc113bbec62a94415532fd29c96753643660",
+      "bytes": 10589
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\ActualK3ArchCovariance.olean",
+      "sha256": "a6d5246de7eac5a51794403e5a1644d1582f0740bb9600c27bab4651e8cd238c",
+      "bytes": 965800
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\attempt-3.log",
+      "sha256": "6df1c8842cd5b0efba970541e80eeca2269da9a3de06e44a8625b398d331313c",
+      "bytes": 308
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\actualk3canonicalarchgap-2.json",
+      "sha256": "35b7c0d048976d6b33868243e0e6e019cce63b5714fde725220bd91598322142",
+      "bytes": 2713823
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\ActualK3CanonicalArchGap.lean",
+      "sha256": "5c58317c7b3554e20fe48766b208b59281d9ecfdd9f982f93b82079048296929",
+      "bytes": 1778
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\ActualK3CanonicalArchGap.olean",
+      "sha256": "3eb99197fcd0ad3e11fc3964c12d8086995e0c3489e11bb9a34af568ef111138",
+      "bytes": 61776
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\actualk3canonicalarchgap-2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\FULL_TYPES_AXIOMS.json",
+      "sha256": "436cd4b497f2f8cd1ddc08d48cf330fe25af7722cfed3c83a0f00b51b610d546",
+      "bytes": 4379729
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\fulltypes-1.json",
+      "sha256": "0a34c6a358f57b88d53fa41622a377f9d71cab9bf1f1b9f7ca34de7ad4592c75",
+      "bytes": 464715
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\SEMANTIC_CONTROL.json",
+      "sha256": "766a2227a3c71122120f3b7ebda3fd3a6ddae322fb4e0584ed1bcbba893dc9b9",
+      "bytes": 1297
+    }
+  ],
+  "attachment_findings": [
+    "Full note and pasted summary read; archive exact members and supplied manifest checked; all18 exact finite checks freshly passed in ordinary and optimized Python. These finite checks are not an analytic or Lean proof.",
+    "The common Fourier probability, odd phase, full source signs, exact variance numerator and O(1) gamma remainder are consistent with the actual K3 source. The note c_gamma is the previously derived I2, not a new arithmetic premise.",
+    "For every fixed aperture containing a prime, the complete finite multiplier has recurrent negative derivative values at positive frequencies. Gamma monotonicity cannot be extended to that multiplier. This does not prove the covariance under the actual source measure negative.",
+    "Raw and unit-normalized gaps must stay distinct: their gamma contributions have orders L^2 and L^-2 respectively."
+  ],
+  "what_became_formally_true": {
+    "label": "PROVED_LOCAL_EXTERNAL_PINNED_WINDOWS_LEAN",
+    "declaration": "Zeta23.OPICARound4.ActualK3.actual_canonical_arch_gap_pos",
+    "statement": "For every L>0, minus the actual odd canonicalArchMatrix energy minus (No/Ne) times minus the actual even canonicalArchMatrix energy is strictly positive.",
+    "premises": "Only L>0. Literal native vectors, physical derivative, Fourier norm relation, compactness, integrability, Parseval normalization and gamma strictness are discharged inside the composed proof.",
+    "scope": "Two new physical/canonical modules have16 audited public declarations. The generic all-K Arch/Fourier bridge has3 public declarations. Earlier actual-vector, strict-covariance and gamma helpers remain separately bound. No production inventory or repository source changed.",
+    "validation": "Actual proof compilations exit0 with stable bound sources and warm objects. Combined unelided types/standard transitive axioms pass; deliberately reversed canonical sign rejects by the intended type mismatch. Root read all final physical, canonical and generic-bridge proof bodies and the actual rejection log. Agent complete-import audits are retained; root did not rehash the entire compiler installation.",
+    "limit": "No new Linux production qualification, full-source positivity or RH theorem follows."
+  },
+  "new_arithmetic_deduction": {
+    "label": "DERIVED_AND_INDEPENDENTLY_REVIEWED_NOT_LEAN_FORMALIZED",
+    "formula": "B_{>=2}(L)=200 a(L) beta^2 L+d0(T2-8M1)L^2+O(1), beta=L^2/(16pi^2), a=No/Ne, d0=175/(88pi^2).",
+    "content": "Every prime square and higher power in the original source is included. Uniform Taylor bounds, exact endpoint-zero partial summation and convergent higher-power moments pay all errors. The leading positive coefficient is25/(352pi^4) at L^5.",
+    "full_target": "G(L)=B_ordinary(L)+200 a(L) beta^2 L+d0(I2+T2-8M1)L^2+O(1). The remaining ordinary-prime sum is literal and signed. No compensation is discarded.",
+    "root_review": "Independently checked both Stieltjes endpoint terms, the factor200, the square correction -8d0M1, the complete r>=3 second moment, uniform t<=L Taylor scope and omitted-tail payment by fourth moments. Independent peer also found no defect.",
+    "primary_input": "Classical unconditional quantitative PNT. Root opened https://people.math.harvard.edu/~elkies/M229.09/pnt.pdf theorem(1) and proof; this external analytic input is not a new Lean theorem.",
+    "limit": "A positive polynomial higher-power contribution cannot rule out a larger negative ordinary-prime contribution. This is not the closing comparison."
+  },
+  "workflow_harvest": {
+    "source": "Reuse the completed exact-head ci-7bae-next18 harvest; no repeated poll or download in this completion.",
+    "disposition": "24 current-head workflow runs successful,97 jobs:95success and2 optional skips. Frozen scientific results preserved; complete current1079 integration scope separate from historical775. These new external prototypes are not covered by that CI.",
+    "limits": "Historical and current compiler evidence remain distinguished. Prior complete Linux artifact verification is not relabeled as local whole-ZIP hashing or human release review."
+  },
+  "what_changed": "The previously conditional physical/Fourier specialization is now an actual hL-only canonical Arch theorem. The complete higher-prime-power sector now has a signed polynomial expansion with a bounded error, rather than an unpriced remainder.",
+  "upstream_implications": "The generic Arch/Fourier bridge works for arbitrary boundary-flat dimension, while strict covariance works independently of the special K3 vectors. Preserve the actual source-minus-Arch convention in every consumer.",
+  "downstream_implications": "Closing work can use the exact gamma sign and the paid higher-power sector. It must prove a restriction on the remaining ordinary-prime compensation. The K3 source-moment inequality is an equality9G on both sides and cannot be counted as an additional inequality.",
+  "resurrected_routes": "Complete-source covariance remains a legitimate formulation after removal of the physical/Fourier bridge premises. Generic full-multiplier monotonicity is refuted; that proof route cannot be revived merely by positive prime coefficients.",
+  "new_RH_relevant_clue": "The actual prime-square zero mode contributes positive orderL^5 to the raw gap, larger than the gamma orderL^2. Any useful prime comparison must retain this arithmetic compensation with the exact rational a(L). This is a structural input, not an RH conclusion.",
+  "falsification_checks": [
+    "A fixed-width or isolated-prime sign argument does not control the complete sum.",
+    "Replacing a(L) by1/11 before the comparison loses an L^3 correction.",
+    "Taking a growing-domain Taylor expansion without uniform bounds would invalidate the square and higher-power budget; H2 supplies those bounds.",
+    "The full finite multiplier is nonmonotone even for genuine prime weights, so strict gamma covariance is not a full-source sign proof.",
+    "First-birth stationarity and separate cofinal parity cutoffs cannot supply a common-aperture sign automatically."
+  ],
+  "highest_leverage_next_move": "Investigate the complete ordinary-prime compensation using genuine arithmetic identities and the exact native measure; prove an independent eventual bound or identify a falsifiable quantitative restriction. Do not add an assumed covariance bound and call its consumer a closure.",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE",
+  "repository_edits": false
+}

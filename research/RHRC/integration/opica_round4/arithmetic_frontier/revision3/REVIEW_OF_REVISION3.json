@@ -1,0 +1,61 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_REVISION3_REVIEW_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "IMPLEMENTATION_REFINEMENTS_RECORDED_EXPLICITLY_NOT_NARROWING",
+  "reviewed_against": {
+    "head": "dab9fbea4d17a3ab5977318a55ce71b55fe7cfa9",
+    "tree": "22d12e5e75327155f471b53e839ac0d5037e7c6c"
+  },
+  "refinements": [
+    {
+      "id": "V3-R1",
+      "section": "11.1 (NC)",
+      "plan": "Prove NC from divided differences, boundary moment rows and pole annihilation; a pole split may be needed.",
+      "implemented": "NC holds for the full canonical source directly: canonicalSourceMatrix_displacement gives [D, A] = d 1* - 1 d*, hence [D0, A]_ij = (n_i + n_j)(d_i - d_j), a rank-four vecMulVec form annihilated by boundary-flat columns (M0 = M1 = 0). No pole split, diagonal rewrite or channel separation is used (M57).",
+      "scope_change": "none; the statement is the plan's NC on both actual carriers"
+    },
+    {
+      "id": "V3-R2",
+      "section": "11.2 (rank-one leakage)",
+      "plan": "Establish the finite-rank leakage equation from the real moment and pole normals.",
+      "implemented": "Functional form in Lean: the native pole profiles satisfy (D0 + beta) r = c 1 (even) and c' n (odd), so D0 u stays pole-neutral on the slice and leaves it exactly through M6 (even) or M7 (odd). The orthonormal factor w l* is not constructed in Lean (OPEN, mechanical); the 5A run confirms rank one numerically.",
+      "scope_change": "none"
+    },
+    {
+      "id": "V3-R3",
+      "section": "3.3 (AD)",
+      "plan": "Reuse recenteredSmoothPhase_fixed_energy, the finite approximation estimate and physical mass bounds.",
+      "implemented": "The existing statements do not expose the margin needed to fix M before the aperture; an explicit-margin reproof (recentered_phase_energy_lt_explicit, recentered_phase_relative_margin_explicit) is used. Depth is a fixed M at every late aperture, never exp(beta L) at every aperture.",
+      "scope_change": "none; stronger auxiliary statements only"
+    },
+    {
+      "id": "V3-R4",
+      "section": "12 (sharding)",
+      "plan": "Run bounded independent negative-control files or groups.",
+      "implemented": "The pinned isolated-worker recipe admits only Zeta23/... sources or exactly RejectedSemanticMutations.lean. Each shard therefore compiles under that fixed name in its own worker folder (semantic-mutations-01, -02). Shard 01 is byte-identical to the pinned 84-control pre-frontier text. Every control must own exactly one type-mismatch error; missing, duplicate or stray errors fail closed. The executor recipe is unchanged.",
+      "scope_change": "none; stricter per-control binding than the previous error count"
+    },
+    {
+      "id": "V3-R5",
+      "section": "1.2 / 1.4 (Round2 scope)",
+      "plan": "Record the scope actually selected by each workflow.",
+      "implemented": "Round2 at dab9fbe is PASS_COMPILER_EVIDENCE_ONLY for the frozen baseline 775692f2 (tree acd548eb); its `generated` job rebuilds 775692f2, not the current head. Current-head canonical products are verified by Round4 GENERATED_STATE (81 products, 0 mismatches).",
+      "scope_change": "corrects an earlier session statement"
+    },
+    {
+      "id": "V3-R6",
+      "section": "3.2 (PG exponent)",
+      "plan": "A natural-number exponent is a convenient sufficient implementation of a nonnegative real exponent.",
+      "implemented": "FixedParityPolynomialMomentSliceBounds uses d : Nat with an explicit domination lemma one_add_pow_le_mul_exp; the real-exponent statement follows by rounding up on L >= 0 (adapter recorded, not formalized separately).",
+      "scope_change": "none"
+    },
+    {
+      "id": "V3-R7",
+      "section": "19 (sources)",
+      "plan": "Import the November 8 coarse-growth report.",
+      "implemented": "A later report (RH_Step4_Polynomial_Geometry_and_Source_Response_2026-11-08.md, posted after the plan) supplies NC on paper, the rank-one leakage, a polynomial geometry gap and the candidate (SG). It is ledgered at TEXT_REVIEWED and used as the frozen 5A candidate; its numerical table is independently reproduced.",
+      "scope_change": "adds a source; no claim is upgraded"
+    }
+  ]
+}

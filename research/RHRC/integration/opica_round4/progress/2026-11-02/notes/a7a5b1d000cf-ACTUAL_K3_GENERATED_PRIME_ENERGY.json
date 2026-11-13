@@ -1,0 +1,132 @@
+{
+  "title": "Complete actual K3 ordinary-prime generated-square covariance and its exterior cutoff contribution",
+  "status": "DERIVED_SOURCE_BOUND_COMPLETE_QUADRATIC_FALSIFICATION_NOT_CLOSURE",
+  "created_utc": "2026-11-02T13:49:59.347958+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "clean": true
+  },
+  "sections": [
+    {
+      "id": "Q1",
+      "title": "Same actual source, fixed finite ordinary-prime operator",
+      "proof": "For each L>0 use exactly the native K3 even physical synthesis f=f_e,L, including its factor1/sqrt(L), zero-extended outside[0,L]. Put beta=L²/(16pi²), N=Ne=924beta²+1512beta+1764, No=84beta²+392beta+724, a=No/Ne, and c=L²/(36pi²). The exact odd partner is -i sqrt(c) f', so c||f'||²=aN. Both exponential pole moments of f vanish. The literal profile is\n sqrt(L)f(t)=480sin^4(pi t/L)-(64beta+576)sin^6(pi t/L), 0<=t<=L.\nIts positive endpoint caps are retained. The zero extension is C3 and belongs to H3; its first three derivatives have no endpoint delta. All calculations use the FULL inherited metric, not unit rescaling.\n\nFix ADVANCE translations T_t h(x)=h(x+t). Define the finite ordinary-prime operator\n A_L=sum_(p prime,p<=exp L)log(p)/sqrt(p) T_(log p),\nand the continuous comparison A0_L=integral_0^L exp(t/2)T_t dt. No prime is omitted from A_L's specified ordinary-prime sector. The higher prime powers remain separately in the exact full canonical decomposition below; they are not asserted small as an operator.\n\nLet B_L(u,v)=c<u',v'>-a<u,v> (conjugate-first) and Q_L(u)=B_L(u,u). Its arithmetic generated-square target is Q_L(A_L f), NOT the original canonical G and NOT a native K3 energy of A_Lf. The translated output need not remain supported in the original window or belong to its native carrier."
+    },
+    {
+      "id": "Q2",
+      "title": "Exact compact primitive, endpoint response and strictly negative continuum covariance",
+      "proof": "Set\n g(x)=exp(-x/2) integral_(-infinity)^x exp(s/2)f(s)ds.\nThe actual PLUS half-pole moment makes g supported in[0,L]; g'+g/2=f. Thus g and g' have the required endpoint regularity. There is no future-prime input. Differentiating exp(t/2)T_t g in t gives the exact operator identity\n A0_L f=exp(L/2)T_L g-g.                                    (1)\nThe first term is supported[-L,0], while g is supported[0,L]. Their functions and first derivatives are orthogonal. Consequently\n Q_L(A0_L f)=(exp L+1) Q_L(g).                              (2)\nFor the DELAY convention the inverse and endpoint signs change; (1) specifically uses the advance convention above.\n\nUnder the actual Fourier probability dP=|FT f(xi)|² dxi/(2pi N), put X=xi², m=E_P X=a/c. Plancherel and the multiplier1/(1/2+i xi) give\n Q_L(g)=cN Cov_P(X,1/(X+1/4))<0                            (3)\nfor EVERY L>0. Strictness follows because the continuous nonzero Fourier density cannot be concentrated at one value of xi², and the displayed function of X is strictly decreasing. All integrals are paid by f in H1 and the bounded resolvent. This is the negative counterpart of the previously compiled generic strict covariance lemma; this actual application has not been compiled.\n\nThe existing full native moments give cN Var_P(X)=(4pi²/L²)Delta_L=d0 L²+O(1), d0=175/(88pi²). More precisely for L>=1, 0<=cN Var(X)-d0L²<=8192pi²+512, using the frozen H2 Delta bound. The exact resolvent expansion\n 1/(X+1/4)=4-16X+64X²/(1+4X)\nand f in H3 imply\n Q_L(g)=-16d0 L²+r_g(L), |r_g|<=R_g,\n R_g=16(8192pi²+512)+696729600pi^4.                         (4)\nIndeed |Cov(X,64X²/(1+4X))|<=64(E X³+m E X²). The literal seven modes give N<=4200L^4, E X<=36pi²/L², cN E X³<=5443200pi^4, and cN m E X²<=5443200pi^4. These are uniform whole-line moment bounds, not a small-frequency Taylor substitution."
+    },
+    {
+      "id": "Q3",
+      "title": "Actual ordinary-prime transfer with every Abel endpoint retained",
+      "proof": "Let theta(x)=sum_(p<=x)log p and Etheta(x)=theta(x)-x. The previously consulted unconditional quantitative PNT, plus the elementary proper-power removal, supplies source-independent Ctheta>=1 and eta>0 such that |Etheta(exp t)|<=Ctheta exp(t-eta sqrt(t)) for ALL t>=0 after enlarging the constant on[0,log2]. In particular Etheta(1)=-1; this lower endpoint is not dropped.\n\nFinite Hilbert-valued Stieltjes integration, for any compact H1 test h, gives\n (A_L-A0_L)h=exp(-L/2)Etheta(exp L)T_Lh+h\n   -integral_0^L Etheta(exp t)exp(-t/2)T_t(h'-h/2)dt.        (5)\nThe upper boundary term generally does NOT vanish as an L2 vector, even if exp L is prime; it stays in(5). Translation is continuous in L2, its derivative on H1 is T_t h', so this finite Bochner integration by parts is legitimate. The same formula applies to h=f' because f is H2. No infinite Euler product or source-independent operator-norm estimate is invoked.\n\nPut Z(L)=exp(L/2-eta sqrt L), J_eta=integral_0^infinity exp(-v/2+eta sqrt v)dv, and K_eta=exp(eta²/2)+Ctheta(1+J_eta). The elementary inequality sqrt L<=sqrt(L-v)+sqrt v proves\n ||(A_L-A0_L)h||<=K_eta Z(L)(||h||+||h'||).                (6)\nThe exp(eta²/2) term pays the literal lower h in(5).\n\nFor L>=1 write n0=sqrt4200, n1=pi sqrt43200, n2=pi² sqrt5443200. Actual finite coefficients give ||f||<=n0L², ||f'||<=n1L, ||f''||<=n2. Also ||g||<=2||f|| and ||g'||<=2||f'||. Thus, with v0=n0+n1 and v1=n1+n2,\n |Q_L(A_Lf)-Q_L(A0_Lf)|<=C_err L^4 exp(L-eta sqrt L),      (7)\n C_err=[4sqrt2 n1 K_eta v1+K_eta²v1²]/(36pi²)\n             +4sqrt2 n0 K_eta v0+K_eta²v0².\nThis follows by expanding both squared norms and using sqrt(exp L+1)<=sqrt2 exp(L/2); a<1. All constants precede L. The term in(7) is o(L² exp L), despite its polynomial allowance. Equations(2),(4),(7) prove the full actual asymptotic\n Q_L(A_L f)/(L² exp L) -> -16d0=-350/(11pi²)<0.             (8)\nThis is unconditional external analysis using quantitative PNT; it is not a new Lean theorem."
+    },
+    {
+      "id": "Q4",
+      "title": "The complete arithmetic ratio sum and the exact Selberg distinction",
+      "proof": "Extend k_L(t)=D_L(1-t/L) for0<=t<=L evenly by k_L(-t)=k_L(t), and set it zero for |t|>L. This is exactly the norm-balanced physical autocorrelation\n k_L(t)=2c Re<f',T_t f'>-2a Re<f,T_t f>.\nThe diagonal k_L(0)=0 is exact. Expanding the finite squared output therefore yields\n Q_L(A_Lf)=sum_(p<q<=exp L) [log p log q/sqrt(pq)]\n                                      k_L(log(q/p)).       (9)\nAll distinct ordinary-prime pairs are retained, and all are coprime. There is no diagonal to discard or bound: it vanishes by c||f'||²=aN. No clipping endpoint is deleted; every ratio lies within the actual source range. Hence (8) is a signed asymptotic for this COMPLETE actual off-diagonal ratio pairing, not a single bad atom or a freely chosen coefficient model.\n\nThe exact divisor/Selberg convolution gives the different operator A_L² (or its full-Lambda completion), with product shifts log(pq). Its pairing with f automatically restricts pq to the source support; A_L* A_L produces the ratio kernel in(9). Reflection can relate those forms but is not an order relation. Unique semiprime factorization does not identify the ratio and product tests. Thus (8) falsifies the candidate full generated-history Rayleigh inequality c||A_Lf'||²>=a||A_Lf||² at all sufficiently large L. It does not sign the Selberg product pairing and is not an upper or lower estimate for the original linear ordinary-prime term."
+    },
+    {
+      "id": "Q5",
+      "title": "Full compensation and original-window scope",
+      "proof": "Let r_L=(A_L-A0_L)f, e_L=exp(L/2)T_Lg, and keep B_L from Q1. Formula(1) gives\n A_Lf=e_L-g+r_L,\n Q_L(A_Lf)=(exp L+1)Q_L(g)\n                 +2Re B_L(e_L-g,r_L)+Q_L(r_L).           (10)\nThe large cutoff response e_L is supported OUTSIDE the original window[0,L]. In particular P_[0,L]A0_Lf=-g, and both B_L(f,e_L) terms vanish exactly. No derivative of a sharply clipped response is taken: the orthogonality uses the actual supported smooth functions before clipping.\n\nThe original ordinary-prime source is, exactly,\n B1(L)=-2Re B_L(f,A_Lf)=Q_L(g)-2Re B_L(f,r_L).             (11)\nFor the last equality use f=g'+g/2 and integration by parts: 2Re B_L(f,g)=Q_L(g). The known reflected continuum satisfies Q_L(g)=integral_0^L exp(-t/2)k_L(t)dt, consistently with the existing native pole cancellation. Thus the new negative large square does not constrain the signed linear residual in(11); its dominant exterior contribution is orthogonal to the observed input.\n\nRetain the frozen complete higher-power expansion B>=2=P_L+d0H2 L²+r_hp, P_L=200a beta²L, with bounded r_hp. The actual compensated ordinary-prime expression and canonical gap are still\n E_ord=B1+P_L+d0(H2+16)L²\n      =-2Re B_L(f,r_L)+P_L+d0H2 L²+[Q_L(g)+16d0L²],\n G=A_Gamma+B1+B>=2=J_det+E_ord+r_hp-r_h,\n r_h=Q_L(g)+16d0L².\nAll Arch, pole, higher-power and continuum terms remain exactly as previously defined. Equations(10)-(11) make the specific remaining arithmetic cross term explicit, with no new assumed smallness. Removing the known exterior square also retains its two cross terms and the residual square. The PNT norm bound does not make the resulting interior signed target polynomially bounded.\n\nComparison with the read history: prior Selberg and reflection reports already distinguished product from ratio kernels, and the frozen K3 note already disproved per-delay Rayleigh ordering. New here is the full ordinary-prime generated-square asymptotic(8)-(9), including the actual native norm balance and its negative constant. It is a source-specific falsification of this quadratic comparison only. It neither proves a general impossibility result nor supplies the still-open signed closing bound."
+    }
+  ],
+  "records": [
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_FIXED_K3_ARITHMETIC_SCALARS.json",
+      "sha256": "204b26b07fb3109f010af2c1ca49b72a7c1a4e0a3082eca9ff2366ade9c96899",
+      "bytes": 13261,
+      "role": "Literal K3 seeds, moments, physical profile, full prime/Arch scalar"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_K3_PRIME_DIFFERENCE_SQUARE_COVARIANCE.json",
+      "sha256": "625fc36f3edc70c4b884bfaed5e16a78e3790814c461ba40b8ee161f311cb3a3",
+      "bytes": 13668,
+      "role": "Advance convention and exact physical ratio/source covariance"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_K3_CORRECTED_SOURCE_ARCH_COVARIANCE.json",
+      "sha256": "e5d8301633bae7437fbbf5032078ae18e1626e97858012c12caaff309d9afe1f",
+      "bytes": 16919,
+      "role": "Existing exact finite variance and strict covariance source"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/k3-higher-prime-powers/ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET.json",
+      "sha256": "2b12360005bf6e57c7b6bb1bd8a2f55d572f41ce7c6fe8b45dfbce65df75b3ee",
+      "bytes": 15470,
+      "role": "H2 Delta bound, full higher powers and exact constants"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/k3-prime-counting-compensation/ACTUAL_K3_PRIME_COUNTING_COMPENSATION.json",
+      "sha256": "0ae876159b0aee943295eecf53415ac3a82216c00430b9bcdd8d09656e44f855",
+      "bytes": 14416,
+      "role": "Full E_ord compensation and endpoints retained"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/selberg-symmetry/ACTUAL_SELBERG_SYMMETRY.md",
+      "sha256": "f2c72ef1a883e64bfbc5f8ae2c3205c3df76a48062d80c62824fe7b397aad1f8",
+      "bytes": 15069,
+      "role": "Full reread of prior positive coefficients/hierarchy, not relabeled as progress"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/source-pair-covariance/ACTUAL_PAIR_COVARIANCE.md",
+      "sha256": "330e3e0b6f5a7ee59916e429f71b1f4ad4431310d9a306bda82324c81f3f9b4f",
+      "bytes": 5213,
+      "role": "Full reread of prior actual quadratic Gram/source distinction"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/long-tail-selberg-energy/PRIMARY_PNT_REFERENCE.json",
+      "sha256": "394ee9531fb03cda6a8ecc129c1ebfaa9a945e9f1d4ffa0cf0bdf68a51883cbe",
+      "bytes": 928,
+      "role": "Previously consulted primary quantitative PNT; reused analytic input, not fresh remote byte claim"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/arch-formal-covariance/PROOF_FREEZE.json",
+      "sha256": "99e947d015290a6b1d6898892d4372e6b9ec938f231c3a9213710d1d73184b4c",
+      "bytes": 11055,
+      "role": "Existing generic strict covariance supporting application; no new compiler run"
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/CCM/SourceMatrix.lean",
+      "sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "bytes": 7204,
+      "same_as_head_blob": true,
+      "role": "Literal source freshly read in current bounded pass"
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/CCM/CanonicalPhysicalTrialRealization.lean",
+      "sha256": "519b2b39e380595af2e9ff4172a320fcb59e7990bd3dd84df11c3d0bded45a21",
+      "bytes": 24434,
+      "same_as_head_blob": true,
+      "role": "Physical isometry and derivative interfaces freshly read"
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/CCM/FinitePhysicalNormalization.lean",
+      "sha256": "c2dff9b13fb2f909615aebaf0fc40c7571faef7f1c4416535073ac378ec84f39",
+      "bytes": 4176,
+      "same_as_head_blob": true,
+      "role": "Exact coefficient/physical norm bridge"
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/CCM/NativeWeilResponse.lean",
+      "sha256": "0ebc3954a20596f32b92f1a9f6b96f959ea5e9758d639b3eaea298cb072ff377",
+      "bytes": 27709,
+      "same_as_head_blob": true,
+      "role": "Full finite two-history prime response; ordinary sector explicitly separated here"
+    }
+  ],
+  "contributions": "Prime_math derived the full generated-square asymptotic and exact linear compensation. Root independently checked the advance convention, resolvent sign and original-window qualification. Repo_map boundedly checked factor16 and norm power counting, with no full final-file review yet. Earlier source/scalar/covariance authorship is disclosed.",
+  "authority": {
+    "new_Lean_declarations": 0,
+    "new_compiler_runs": 0,
+    "new_tests": 0,
+    "repository_edits": false,
+    "new_result": "External analytic derivation using previously consulted unconditional quantitative PNT",
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "scope": "Complete finite ordinary-prime generated quadratic, not a canonical native energy of the output and not a bound for the original linear E_ord."
+  }
+}

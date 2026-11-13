@@ -1,0 +1,63 @@
+{
+  "status": "COMPLETE_EXTERNAL_DERIVED_ONE_OUTPUT_TARGET_AND_ACTUAL_FIXED_K3_SIGN_TEST",
+  "created_utc": "2026-11-02T06:55:01.762701+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "status_porcelain": ""
+  },
+  "artifacts": [
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/ACTUAL_ONE_OUTPUT_QUADRATIC_TARGET.json",
+      "sha256": "1eddb70a5514c09364529cf27d31a66dcb5343d85426822e3e9d6e0d3d49f4eb",
+      "bytes": 12957
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/SOURCE_BOUND_RESEARCH.json",
+      "sha256": "903823f3f210e323744060af7d530b52d0925d13d4776c29e7898cddecbb60c2",
+      "bytes": 13361
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/INDEPENDENT_ONE_OUTPUT_TARGET_REVIEW.json",
+      "sha256": "052ac782b9acff7967014516cc17eb0f4324e976193eb59eb5bc05b0d9c8ef39",
+      "bytes": 22599
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/EXACT_K3_COEFFICIENT_CONTROLS.json",
+      "sha256": "3b8f284839484a92bd3ed8e0201262bdc1f2318fe3f2bca7016b15e1946aa43b",
+      "bytes": 833
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/exact_k3_controls.py",
+      "sha256": "947f3e6939980dc39b53bc56b03c74f56695ff126e13adf7d21adb3e03052bd9",
+      "bytes": 1397
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/seal_research.py",
+      "sha256": "6db3145e865195f80a5dc65816e6dd06e546830a586c72593ee6526f09d8ee4b",
+      "bytes": 7228
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/complete_research.py",
+      "sha256": "ab0a44e798856cc8f90c30713a1f31687a87622fbc30a84089c7462c06e740d8",
+      "bytes": 4696
+    }
+  ],
+  "verification": "All31 source-receipt records and the additional peer-read canonical regularized-energy source were freshly rehashed. The independent review binds13 current Git-equal sources and the full derivation. Rational coefficient controls passed; no compiler, source quadrature, interval calculation or CI was run.",
+  "what_became_formally_true": "No new formal theorem or CI qualification. Existing exact native forward/adjoint rank-one laws, inverse-index cost, canonical source atom contraction and finite regular selector are prerequisites. New composition remains DERIVED.",
+  "workflow_harvest": "No new workflows were launched or reclassified in this bounded arithmetic task. The only executed check is exact Fraction arithmetic for the K3 barycentric rows and Taylor coefficient. It is not a source numerical experiment or Lean proof.",
+  "what_changed": "The signed finite covariance is expressed through one actual output curve and its derivative, with no division by f(u), and the retained cubic input correction is explicitly rapid at the original Kd after the complete source norm is paid.",
+  "upstream_implications": "The exact even projected-translation flow and adjoint rank-one law provide a smaller direct target interface than arbitrary-state or Vandermonde reconstruction. The full source Riesz vector remains corrected by the actual pole/normal geometry.",
+  "downstream_implications": "A proposed physical output approximation can be tested with the explicit derivative-sensitive quadratic bias, rather than a generic recovery norm. Full pole, finite normal/tail and mixed Arch terms still must be retained for the actual echo.",
+  "resurrected_route": "Direct target recovery avoids the tiny scalar-source denominator of the preceding linear recovery. It does not revive an automatic positivity claim: the actual low-cutoff test refutes that shortcut.",
+  "new_clue": "DERIVED exact fixed-I forced equation identifies the surviving signed term -Re(conj(<A D^-1 g,u>)f(u)) and its boundary. No favorable bound on that term is supplied.",
+  "falsification": "At fixed K=3, genuine H translates and genuine regular canonical operators give Q_T(Au)<0 at arbitrarily large apertures. The full corrected Delta and the Kd problem are explicitly outside this sign countercheck.",
+  "highest_leverage_next_question": "Any further useful inequality must constrain the same output/derivative balance with its retained source/boundary terms at Kd. The present formulas do not justify periodic integration, arbitrary eigenray substitution, or a sign inferred from inverse-index geometry.",
+  "authority_firewall": {
+    "new_lean_declarations": 0,
+    "new_compiler_runs": 0,
+    "repository_edits": false,
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  }
+}

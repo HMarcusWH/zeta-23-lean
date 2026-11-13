@@ -1,0 +1,19 @@
+"""E-H7 driver: calls the frozen ed1_response.run with the predeclared state; modifies no hashed file."""
+import hashlib, importlib.util, json, sys, time
+from fractions import Fraction
+from pathlib import Path
+AF = Path('research/RHRC/integration/opica_round4/arithmetic_frontier')
+pred = json.loads((AF / 'evidence/increment3b/E-H7_PREDICTIONS.json').read_bytes())
+for f, h in pred['rule_hashes'].items():
+    if f.endswith('.py'):
+        assert hashlib.sha256((AF / f).read_bytes()).hexdigest() == h, f
+spec = importlib.util.spec_from_file_location('_frontier_ed1_eh7', AF / 'ed1_response.py')
+ED1 = importlib.util.module_from_spec(spec); spec.loader.exec_module(ED1)
+parity, out = sys.argv[1], Path(sys.argv[2])
+t0 = time.time()
+rec = ED1.run(Fraction(7), parity, Fraction(1, 5), 1200, tail_max=64)
+rec['state_id'] = 'L7_%s_fifth' % parity
+rec['driver'] = 'E-H7 driver: ED1.run(Fraction(7), parity, Fraction(1,5), 1200, tail_max=64) with hashed tools asserted'
+out.write_text(json.dumps(rec, indent=2) + '\n', encoding='utf-8')
+print(json.dumps({'parity': parity, 'inverse_residual': rec['INVERSE_RESIDUAL_LADDER']['smallest_successful_tested_degree'],
+                  'tail': rec['GEOMETRIC_TAIL_LADDER']['smallest_successful_tested_degree'], 'seconds': round(time.time() - t0)}), flush=True)

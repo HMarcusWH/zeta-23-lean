@@ -1,0 +1,156 @@
+{
+  "title": "Complete higher-prime-power budget for the actual corrected K3 source",
+  "status": "DERIVED_UNCONDITIONAL_ANALYTIC_RESULT_NOT_NEW_LEAN_AUTHORITY",
+  "created_utc": "2026-11-02T12:30:24.988291+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "clean": true
+  },
+  "summary": "Every prime power p^r with r>=2 in the literal corrected gap is priced through its L^2 coefficient, with a bounded remainder. The complete higher-power contribution is eventually positive of order L^5. The ordinary-prime signed covariance remains unbounded by this argument; RH and Step4 remain OPEN.",
+  "sections": [
+    {
+      "id": "H1",
+      "title": "Exact source, compensation and the square bulk",
+      "proof": "Keep the actual K3 even/odd vectors, beta=L^2/(16pi^2), Ne=924beta^2+1512beta+1764, No=84beta^2+392beta+724, and a=No/Ne. Let D_L(theta)=E_o(L,theta)-a E_e(L,theta), k_L(t)=D_L(1-t/L) for 0<=t<=L. There is no arbitrary source, test coefficient, or cut-off substitution. The complete canonical gap is\n G(L)=Q_o-aQ_e=A_Gamma(L)+B_1(L)+B_{>=2}(L),\n B_1=-sum_(p<=exp L) log(p)/sqrt(p) k_L(log p),\n B_{>=2}=-sum_(p prime,r>=2,r log p<=L) log(p) p^(-r/2) k_L(r log p).\nPrime powers have weight log(p), not r log(p). Unique prime-power factorization makes this a disjoint exact partition of the finite original source, with the same endpoints and floor. The complete corrected rank-one scalar G=80 Re f_source(u_e), both native pole conditions, and the actual Arch channel remain unchanged.\n\nThe elementary source matrix integrates on theta in[0,1] to the central-coordinate projector: all off-diagonal sine integrals vanish; for n!=0 integral 2theta cos(2pi n theta)=0; for n=0 the integral is1. Consequently integral E_e=400beta^2 and integral E_o=0, with no central factor2. Hence\n integral_0^L k_L(t)dt=-400a beta^2 L.                    (1)\nAlso k_L(0)=k_L(L)=k_L'(0)=0. These exact endpoints, rather than an omitted Mertens constant or excluded final prime, pay the square transfer below."
+    },
+    {
+      "id": "H2",
+      "title": "A uniform native jet with a fixed error constant",
+      "proof": "Set d0=175/(88pi^2). The current source derivatives give E_p'(1)=2|M0(u_p)|^2=0, E_p''(1)=-8pi^2 sum n^2|u_p,n|^2, and E_p'''(1)=-8pi^2[2Re(conj M0 M2)+|M1|^2]=0 for both actual vectors. Let\n Delta=S2o-a S2e, S2o=196beta^2+1448beta+3556, S2e=9No.\nExact polynomial arithmetic gives\n Ne Delta=1555200+2822400beta+3343200beta^2+1041600beta^3+117600beta^4,\n 0<=Delta-(1400/11)beta^2<=2048(1+beta).                  (2)\n\nHere is a uniform bound, not a fixed-t asymptotic silently used on a growing interval. For |n|,|m|<=3 and 0<=theta<=1, the fourth theta derivative of each source entry is bounded by2^20. On the diagonal use 2(6pi)^4+8(6pi)^3; off the diagonal use16pi^3(n^4+m^4)/|n-m|, and pi<4. The full 7-by-7 Euclidean norm bound yields |D_L''''|<=14*2^20 No. For L>=1, beta<=L^2 and No<=1200L^4, so |D_L''''|<2^35L^4. Together with (2), pi<4 and Taylor's theorem, the fixed constant C_*=2^34 pays simultaneously, for EVERY L>=1 and 0<=t<=L,\n |k_L(t)+d0 L^2 t^2|<=C_*(t^2+t^4),\n |k_L'(t)+2d0 L^2 t|<=C_*(t+t^3).                       (3)\nIn particular |k_L(t)|<=(d0+2C_*)L^2t^2 on that same domain. All three estimates use the full moving native coefficients and a(L); no vector is frozen at another aperture."
+    },
+    {
+      "id": "H3",
+      "title": "Actual prime Mertens remainder, with every endpoint retained",
+      "proof": "Let theta(x)=sum_(p<=x)log p, E_theta(x)=theta(x)-x, and\n W(y)=sum_(p<=exp y) log(p)/p, y>=0.\nThe classical unconditional quantitative PNT gives |E_theta(x)|<=C x exp(-c sqrt(log x)) after possibly changing constants. To pass from psi to theta, the elementary bound for omitted powers is O(sqrt(x) log(x)^2), which is smaller than that error. The primary PNT input is external analytic authority, not newly formalized here.\n\nFinite Stieltjes summation starting at1, where theta(1)=0, gives\n W(y)=y+c_M+epsilon(y),\n c_M=1+integral_1^infinity E_theta(x)/x^2 dx,\n epsilon(y)=exp(-y)E_theta(exp y)-integral_(exp y)^infinity E_theta(x)/x^2 dx.  (4)\nThus epsilon is locally of bounded variation and has finite absolute polynomial moments; e.g. its late envelope is C(1+sqrt y)exp(-c sqrt y). Define\n M1=integral_0^infinity y epsilon(y)dy,\n J1=integral_0^infinity y|epsilon(y)|dy,\n J3=integral_0^infinity y^3|epsilon(y)|dy.\nAll are finite and independent of L; M1 is signed. No sign for M1 is assumed. The interval below log2 is retained: W=0 there and epsilon=-y-c_M, in particular epsilon(0)=-c_M. Jumps at actual primes cause no issue because the tested function is C1. This is a fixed arithmetic constant/remainder, not a cutoff-dependent or RH-strength premise."
+    },
+    {
+      "id": "H4",
+      "title": "All squares and all exponents at least three, through bounded error",
+      "proof": "For the prime-square channel, apply (4) to the exact finite sum:\n B_2(L)=-integral_[0,L/2] k_L(2y)dW(y)\n       =200a beta^2 L+2integral_0^(L/2)epsilon(y)k_L'(2y)dy.              (5)\nBoth endpoint terms vanish by H1, including when exp(L/2) is itself prime. The constant c_M has zero Stieltjes derivative and its integration-by-parts endpoints also vanish. Formula (5) retains the lower prime-free interval, rather than presuming epsilon starts at log2.\n\nBy (3), replacing k_L'(2y) by -4d0 L^2 y in (5) costs at most4C_*J1+16C_*J3. Extending the leading moment to infinity costs at most32d0 J3, because y>L/2 implies L^2<=4y^2. Therefore, for all L>=1,\n B_2(L)=200a beta^2 L-8d0 M1 L^2+R_2(L),\n |R_2|<=4C_*J1+(16C_*+32d0)J3.                         (6)\n\nFor the entire remaining higher-power channel put\n T_j=sum_(p prime,r>=3) log(p)p^(-r/2)(r log p)^j, j=2,4.\nBoth sums converge absolutely: summing r first is bounded by a fixed multiple of(log p)^(j+1)p^(-3/2), then compare primes with all integers. T2>0. Formula (3) now gives\n B_{>=3}(L)=d0 T2 L^2+R_3(L),\n |R_3|<=C_*(T2+T4)+d0 T4.                             (7)\nThe omitted region r log p>L is paid as well: L^2(r log p)^2<=(r log p)^4 there. No missing higher power or unseen cutoff term is hidden in (7). In particular this WHOLE r>=3 contribution is eventually positive, though individual finite terms need not all be positive."
+    },
+    {
+      "id": "H5",
+      "title": "An independent signed budget and its exact remaining arithmetic target",
+      "proof": "Combining (6)-(7), define the fixed real arithmetic constant H2=T2-8M1. Then\n B_{>=2}(L)=200a(L)beta^2 L+d0 H2 L^2+R_hp(L),           (8)\n |R_hp|<=4C_*J1+(16C_*+32d0)J3+C_*(T2+T4)+d0 T4.\nThis is a uniform bounded remainder, not O(L^2) left unpaid. The exact rational factor a(L) must stay in the first term: replacing it by1/11 creates an L^3 correction. Since a(L)->1/11,\n B_{>=2}(L) ~ [25/(352pi^4)] L^5 >0.                   (9)\nFor example B_{>=2}(L)>=[25/(704pi^4)]L^5 eventually for every sufficiently large real L, unconditionally. This signs the COMPLETE higher-prime-power sector using its actual arithmetic, not just one atom. Constants and the final threshold are source/arithmetic-fixed before L varies.\n\nThe already reviewed full Arch result is A_Gamma=d0 I2 L^2+O(1), I2=7zeta(3)+pi^3/4. Thus the exact complete target is compressed, with a bounded final error, to\n G(L)=B_1(L)+200a(L)beta^2 L+d0(I2+H2)L^2+O(1).        (10)\nNo native normal, pole, rank-one or Arch contribution has been discarded. The ordinary-prime sum B_1 is the explicit one in H1, at its original moving aperture and with every prime included. Its compensation of the displayed polynomial is NOT estimated by (10). In particular (9) cannot be applied to the ordinary primes, cannot sign G, and does not imply an eventual polynomial lower bound for G. The prior off-zero excursion and RH cases remain unchanged. This result removes a genuine unpriced subsource; it does not supply the remaining signed closing estimate.\n\nThe exact divisor law and Selberg identity were checked against the earlier complete-forcing notes before this calculation. Their generic convolution/positive-storage rewrites are not claimed anew. The new information here is the all-aperture signed polynomial budget (8) for the literal higher-power sector, obtained from exact source moments plus classical PNT. It also falsifies discarding higher powers as merely O(L^2) in this unnormalized K3 target: their actual leading order is positive L^5. No isolated cross-term counterexample, artificial prime sequence, numerical fit, or new RH-equivalent wrapper is used."
+    }
+  ],
+  "primary_reference": {
+    "url": "https://people.math.harvard.edu/~elkies/M229.09/pnt.pdf",
+    "title": "Noam Elkies, Math 229: Proof of the Prime Number Theorem; the Riemann Hypothesis",
+    "consulted": "Theorem (1), PDF page1 and proof through page2 independently reopened with web tool in this pass.",
+    "use": "Unconditional psi(x)=x+O(x exp(-c sqrt(log x))); theta transfer and Mertens remainder are derived explicitly in H3.",
+    "byte_hash_limit": "No local PDF downloaded; no remote PDF byte hash claimed."
+  },
+  "records": [
+    {
+      "path": "work/opica-round3-repo/Zeta23/CCM/SourceMatrix.lean",
+      "sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "bytes": 7204,
+      "role": "Fresh full atom/endpoint read: exact divided difference, full centered metric and derivatives.",
+      "same_as_head_blob": true
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/CCM/NativeIntegerPrimeSource.lean",
+      "sha256": "c98e58682a18bc073cd794200dfd351edef65e9a0ac3bfe0f7d522216f651b31",
+      "bytes": 3212,
+      "role": "Fresh full read: actual Lambda/sqrt(n), full divisor identity and uniqueness; no replacement coefficients.",
+      "same_as_head_blob": true
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/CCM/CanonicalPoleNeutralSourceMoment.lean",
+      "sha256": "d56526e02d2bcbdceabe08373049c32796546057c54ab911c0363cdf0473bf02",
+      "bytes": 11959,
+      "role": "Fresh exact source-moment identity read; K3 scalar gap is retained via frozen specialization.",
+      "same_as_head_blob": true
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "sha256": "5df3b8309f6144a22da5ba8d318c5c91fba181911cf15b1f0d50d49f4d9365c1",
+      "bytes": 10263,
+      "role": "Current byte binding of the exact endpoint-zero Stieltjes interface; no new proof-body audit or instantiation.",
+      "same_as_head_blob": true
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_FIXED_K3_ARITHMETIC_SCALARS.json",
+      "sha256": "204b26b07fb3109f010af2c1ca49b72a7c1a4e0a3082eca9ff2366ade9c96899",
+      "bytes": 13261,
+      "role": "Actual seeds, source kernel, norms and zero-mode normalization."
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_K3_CORRECTED_SOURCE_ARCH_COVARIANCE.json",
+      "sha256": "e5d8301633bae7437fbbf5032078ae18e1626e97858012c12caaff309d9afe1f",
+      "bytes": 16919,
+      "role": "Full corrected gap, exact Delta and Arch asymptotic; no discarded pole/normal term."
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_K3_POSITIVE_PSI_COMPOSITION.json",
+      "sha256": "ab958766ea7fc053a9f41fb8787d07da86d00df7b8060da121b5fd40b256f309",
+      "bytes": 14103,
+      "role": "Exact complete target and already-audited eventual-sign scope."
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_K3_PRIME_DIFFERENCE_SQUARE_COVARIANCE.json",
+      "sha256": "625fc36f3edc70c4b884bfaed5e16a78e3790814c461ba40b8ee161f311cb3a3",
+      "bytes": 13668,
+      "role": "Prior full translation covariance and cofinal per-atom test; distinct from the present complete higher-power budget."
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_K3_UNSIGNED_PRIME_CHARGE_AUDIT.json",
+      "sha256": "e32ab81dbf76931775fa1d6f220bb7f1313440905a677398a6855d63c975c87f",
+      "bytes": 13388,
+      "role": "Prior all-power unsigned exponential charges; not a previously paid signed higher-power polynomial expansion."
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-candidate/ACTUAL_F_SOURCE_AND_SELBerg_CANDIDATE.json",
+      "sha256": "368cf6488ffd7e8ad825f5156c456b6b54b45789093ffd71fff6ebe286e7c260",
+      "bytes": 13535,
+      "role": "Prior full Selberg and prefix calculation read before this derivation."
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-energy/ACTUAL_F_CAUSAL_ENERGY_COUNTERCHECK.json",
+      "sha256": "d3831ca36cb6f7250efe4adb4ba1e7e8befa8e66a9eb47e8a64038f5058712a6",
+      "bytes": 9832,
+      "role": "Prior actual early feedback sign falsification, not repeated as a new result."
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-storage/ACTUAL_F_CAUSAL_TERMINAL_STORAGE.json",
+      "sha256": "c1c6c8ebb4adc2f7314dd8928529066736e105656713b42bdfcb2ad56b73ac88",
+      "bytes": 13219,
+      "role": "Prior complete storage/forcing calculation; no bounded-storage assumption used."
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-storage/COMPLETE_FORCING_SAME_DISCREPANCY_CROSSCHECK.json",
+      "sha256": "33fdba0580046cc9656a472a2a9893cb1a0787dae5eeda66612686897c170373",
+      "bytes": 7293,
+      "role": "Prior complete same-E cancellation returns integration by parts; not reused as a new inequality."
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/long-tail-selberg-energy/PRIMARY_PNT_REFERENCE.json",
+      "sha256": "394ee9531fb03cda6a8ecc129c1ebfaa9a945e9f1d4ffa0cf0bdf68a51883cbe",
+      "bytes": 928,
+      "role": "Earlier consultation record; primary theorem (1) independently reopened during this derivation."
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/k3-higher-prime-powers/EXACT_RATIONAL_CONTROLS.json",
+      "sha256": "dcbff77cc8d3271e5021d69ad059522c90bfbc29cf51f555090dc0608c8818cd",
+      "bytes": 1157,
+      "role": "Actual executed exact rational checks, with limits stated."
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/k3-higher-prime-powers/seal_k3_higher_prime_power_budget.py",
+      "sha256": "97b5ead9087c55bbe642b93bfcbb01a8123695c9788b058b627be61be246b32f",
+      "bytes": 15794,
+      "role": "Authored hash/check serialization helper; no attached code executed."
+    }
+  ],
+  "contributions": "Prime_math derived the complete square zero-mode main term and higher-power isolation. Root independently checked the normalization and proposed sharpening the error through the fixed second moment; the present uniform proof pays that sharpening. No independent file review is embedded yet.",
+  "authority": {
+    "new_Lean_declarations": 0,
+    "new_compiler_runs": 0,
+    "exact_checks": "Authored Fraction/integer coefficient and uniform-majorant checks executed; not an asymptotic proof checker.",
+    "repository_edits": false,
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  }
+}

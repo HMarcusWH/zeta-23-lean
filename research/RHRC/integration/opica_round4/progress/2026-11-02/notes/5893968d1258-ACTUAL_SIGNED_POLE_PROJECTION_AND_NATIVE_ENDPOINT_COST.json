@@ -1,0 +1,163 @@
+{
+  "status": "DERIVED_EXACT_SIGNED_POLE_CANCELLATION_AND_FINITE_NATIVE_COST",
+  "created_utc": "2026-11-02T05:06:28.412043+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "sections": [
+    {
+      "title": "P1. Actual source, prior authority, and the remaining question",
+      "proof": "Use the same actual q, kappa, H=kappa*kappa, B=1/2048 and fixed B<c<log(2)-B as the reviewed complete-response adapter. Let P=[Lambda;H], a=A_infinity H and W(t)=-P(t-c)-a(t-c) for t>=0. The source cutoff of C_L h, h=H(t-c), is exactly floor(exp L). For every L>c+B, W restricted to [0,L] is the complete physical canonical response; no eigenray, ground or stationarity premise is imposed. Reflection is J_L f(t)=f(L-t).\n\nThe exact a, its positive outer tails, and its half-weighted masses are PRIOR results, not discoveries in this note. Write alpha_n=2n+1/2 and K_n=K_H(alpha_n)>0 for n>=1. The frozen boundary-centering calculation proves\n B_-=sum_(n>=1) K_n exp(-alpha_n c)/(alpha_n-1/2)>0,\n B_+=sum_(n>=1) K_n exp(-alpha_n c)/(alpha_n+1/2)>0,\n integral_0^infinity exp(-t/2)a(t-c)dt=-B_-,\n integral_0^infinity exp(t/2)a(t-c)dt=-B_+.\nThese include the early Arch history. Their proof uses the actual compact differential source and retains the regularization; splitting divergent half-line Arch integrals is not legitimate.\n\nThe new calculation below prices the SIGNED continuous pole-normal projection and then gives the exact finite endpoint/projection cost. It does not replace that finite cost by the continuous one."
+    },
+    {
+      "title": "P2. Exact two-pole Gram cancellation",
+      "proof": "Put epsilon=exp(-L/2), a0=1-exp(-L), b0=L exp(-L/2). In L2[0,L] let r(t)=exp((t-L)/2) and s(t)=exp(-t/2). Their Gram matrix is [[a0,b0],[b0,a0]]. It is positive definite for every L>0: a0/b0=2sinh(L/2)/L>1. Let Ppole be the orthogonal projection onto span{r,s}, V=(I-Ppole)W. Both exponential moments of V vanish exactly. Ppole commutes with J_L because J_L r=s.\n\nDefine the REAL complete moments\n X=integral_0^L W(t)r(t)dt, Y=integral_0^L W(t)s(t)dt.\nThe removed reflection energy is exactly\n Dpole(L)=<Ppole W,J_L Ppole W>\n  =(X+Y)^2/[2(a0+b0)]-(X-Y)^2/[2(a0-b0)]\n  =[2a0 X Y-b0(X^2+Y^2)]/(a0^2-b0^2).                  (1)\nThus (W*W)(L)=<V,J_L V>+Dpole(L). Cross terms vanish by orthogonality and reflection invariance. Inner products conjugate the first slot; W,X,Y are real, so the displayed squares are ordinary real squares. For complex inputs one must instead use modulus squares and Re(conj(X)Y).\n\nThis is a signed difference of two nonnegative projection costs. Neither is dropped. No lower bound on the denominator uniform down to L=0 is asserted; every estimate below is on a sufficiently late tail."
+    },
+    {
+      "title": "P3. Actual compact suppliers pay the complete signed cost",
+      "proof": "Keep the PRIOR compact differential primitives R_+,R_- satisfying (D+1/2)R_+=H and (D-1/2)R_-=H, with both half moments zero. Set Q_+(L)=[Lambda;R_+](L-c), Q_-(L)=[Lambda;R_-](L-c). The exact finite-prefix identities give\n X=-Q_+(L)+B_+ epsilon+O(exp(-5L/2)),\n Y=B_- -epsilon Q_-(L)+O(exp(-3L)).                    (2)\nEvery prime power is retained. Since c>B, all atoms in these compact suppliers lie below the original floor(exp L) horizon.\n\nLet Theta=sup_rho |Re(rho)-1/2|, 0<=Theta<=1/2, retaining every zero and multiplicity. The reviewed reflected WeilFilter supplier gives |Q_+|+|Q_-|<=C exp(Theta L), including Theta=1/2 and without a rightmost zero. Hence X=O(exp(Theta L)), Y=O(1). Substitution into the EXACT (1) gives\n |Dpole(L)| <= C(1+L) exp(Theta L).                    (3)\nThe key nonlinear cost is b0 X^2=O(L exp((2Theta-1/2)L)); 2Theta-1/2<=Theta. Estimating the two projection norms separately would discard this cancellation and leave an allowance of order exp(2Theta L).\n\nMore precisely, retaining the fixed positive B_-,\n Dpole(L)=-2B_- Q_+(L)+R(L),\n |R(L)|<=C(1+L)exp((2Theta-1/2)L)+C exp(-L/2).         (4)\nThe constants depend only on the fixed source and c and are selected before L. The identities and bound include the exact denominator, both half-moment suppliers, the common Arch term, and all early history. This is a genuine improvement to the projection cost, not an independent small-rate bound: Theta remains unresolved."
+    },
+    {
+      "title": "P4. Pole-order consequence and the endpoint Theta=1/2 limitation",
+      "proof": "The complete W echo has a nonzero double pole at every visible right off-line zero p=rho-1/2: its coefficient is multiplicity(rho)^2 exp(-2cp)K_H(p)^2. The linear term Q_+ in (4) has at most simple poles, since its Laplace transform contains K_H(z)/(z+1/2) times -zeta'/zeta(z+1/2). All statements concern the complete zero family, not one mode as the full field.\n\nIf 0<Theta<1/2, put gamma=2Theta-1/2<Theta. The remainder R has an analytic one-sided Laplace transform on Re z>max(gamma,-1/2). Therefore every right off-line zero with Re p>max(0,gamma) leaves the nonzero double pole intact after the continuous pole projection. Such zeros approach the supremum as closely as required; no attained maximum or uniform gap is used. Together with (3) and the complete W bound, this proves\n limsup_(L->infinity) log(1+|<V,J_L V>|)/L=Theta\nfor Theta<1/2 (Theta=0 follows directly from the polynomial upper bound and log(1+absolute value)>=0).\n\nAt Theta=1/2, (3) still holds, but (4) does NOT separate the nonlinear remainder from the supremal rate. Products of actual zero contributions and their exponential shifts remain. This note does not prove a double-pole noncancellation statement or a lower rate for V at that endpoint. The upper bound O((1+L)exp(L/2)) alone is retained. No strict global bound Theta<1/2 is assumed."
+    },
+    {
+      "title": "P5. Exact finite native Gram formula at the SAME cutoff",
+      "proof": "This section is exact for every L>0 and K>=3. Normalize Fourier modes by e_n(t)=L^(-1/2)exp(2pi i n t/L), -K<=n<=K. Let c^+,c^- be the Fourier coefficients of V_+=(V+J_LV)/2 and V_-=(V-J_LV)/2. Thus c^+ is even and real, and c^- is odd and purely imaginary. Use the full coefficient inner product sum_(n=-K)^K conj(x_n)y_n.\n\nSet beta=(L/(4pi))^2. The actual even native carrier is the common kernel of the three REAL rows\n r_E,0(n)=1, r_E,2(n)=n^2, r_E,p(n)=1/(beta+n^2).\nThe actual odd carrier is the common kernel of the two REAL rows\n r_O,1(n)=n, r_O,p(n)=n/(beta+n^2).\nNonzero scalar multiples in the repository pole profiles do not change these kernels. CanonicalPoleExponentialMoments proves that these are exactly the physical exponential moment constraints, with the unchanged L^(-1/2) normalization; the first rows are precisely the boundary-flat M0/M2 and M1 conditions. They are not physical mean constraints.\n\nLet G_E,G_O be the respective row Gram matrices, and d_E=(<r_E,j,c^+>)_j, d_O=(<r_O,j,c^->)_j. Their ranks are 3 and 2: multiply a proposed even row relation by beta+n^2 and use three distinct n^2 values; in the odd case divide by n and use two distinct positive n^2 values. They are invertible at K>=3. Orthogonal projection onto the two native carriers therefore removes exactly d_E^*G_E^-1 d_E and d_O^*G_O^-1 d_O from the finite Fourier coefficient norms.\n\nWith Pi_K the full native orthogonal projection, define the EXACT remaining cost\n C_K(V)=sum_(|n|>K)(|c_n^+|^2-|c_n^-|^2)\n             +d_E^*G_E^-1 d_E-d_O^*G_O^-1 d_O.         (5)\nThen\n <V,J_L V>=<Pi_K V,J_L Pi_K V>+C_K(V).\nSince Pi_K kills span{r,s}, Pi_KV=Pi_KW. In particular, (5) is valid at Kd=ceil(L^4), with no change of source, cutoff or metric and no unknown normal discarded.\n\nFor the already paid native approximants u_K,v_K to h_+,h_-, their canonical compressions satisfy Pi_+W=A_Ku_K+rapid and Pi_-W=B_Kv_K+rapid. The complete physical source therefore gives\n (P*P)(L-2c)=||A_Ku_K||^2-||B_Kv_K||^2\n        +Dpole(L)+C_K(V)-2(P_c*a_c)(L)-(a_c*a_c)(L)+rapid. (6)\nThis is the same complete corrected covariance as the earlier right/left-repair formulas. The repair terms have not been silently set to zero: (5) is an exact alternative accounting of all removed finite modes and normals, and the Arch terms are explicit. No claim here bounds the SIGNED C_K(V) independently of the unresolved arithmetic."
+    },
+    {
+      "title": "P6. Test of automatic endpoint cancellation: fixed-L asymptotic only",
+      "proof": "Fix L and the actual smooth pole-neutral V of P2; now let K tend to infinity. Put a=(V(0)+V(L))/2 and b=(V(0)-V(L))/2. Integration by parts gives c_n^+=O_L(n^-2), while\n c_n^-=-i b sqrt(L)/(pi n)+O_L(n^-3).\nThe latter error uses V_-'(L)=V_-'(0); enough derivatives exist for this actual source. Consequently the odd Fourier tail equals 2L b^2/(pi^2 K)+O_L(K^-2), while the even tail is O_L(K^-3).\n\nFor the even endpoint rows (1,n^2), the Gram matrix has leading entries 2K, 2K^3/3, 2K^5/5. Its inverse 00 entry is 9/(8K)+O(K^-2). The data are M0=sqrt(L)a+O_L(K^-1), M2=O_L(K). Thus their removed norm is 9L a^2/(8K)+O_L(K^-2). For the odd endpoint row n, the data are -2i b sqrt(L)K/pi+O_L(1) and the norm squared is 2K^3/3+O(K^2); its removal is 6L b^2/(pi^2 K)+O_L(K^-2).\n\nThe additional pole row does not alter these leading terms. After exact full exponential neutrality, its Fourier truncation residual is O_L(K^-3) on the even side and O_L(K^-1) on the odd side. The endpoint corrections change the pole row by O_L(K^-1). The residual pole-normal squared norm has a fixed positive limit as K grows, so re-enforcing that row costs O_L(K^-2), by the full block Gram Schur complement. This is a fixed-L statement, not a uniform condition-number assertion.\n\nCombining all costs yields the actual fixed-L expansion\n C_K(V)=L/(4K)*[(9/8-8/pi^2)(V(0)^2+V(L)^2)\n                       +(9/4+16/pi^2)V(0)V(L)]+O_L(K^-2). (7)\nThe coefficient 9/8-8/pi^2 is strictly positive (pi>3 suffices). Thus the exact native constraints do not algebraically cancel every quadratic late-endpoint term. This tests a specific proposed cancellation on the actual carrier; it is not a generic matrix example or a proof of an actual large-Kd lower bound.\n\nIn particular the O_L constants involve actual derivative norms and pole Gram inverses. Equation (7) must NOT be substituted into K=ceil(L^4) while treating those constants as fixed. No uniform Kd asymptotic, no dominance along a zero-excursion sequence, and no rate 2Theta for C_K(V) are asserted."
+    },
+    {
+      "title": "P7. The late endpoint is a literal visible supplier, not an arbitrary value",
+      "proof": "The exact coefficients of Ppole W in the basis r,s are\n c_r=(a0 X-b0 Y)/(a0^2-b0^2), c_s=(a0 Y-b0 X)/(a0^2-b0^2).\nTherefore V(0)=W(0)-epsilon c_r-c_s and V(L)=W(L)-c_r-epsilon c_s. Substituting (2) gives\n V(L)=-[Lambda;H-R_+](L-c)\n        +O(L exp(-L/2)+(1+L^2)exp((Theta-1)L)),         (8)\n V(0)=W(0)-B_-+O((1+L)exp((Theta-1/2)L)).              (9)\nHarmless faster decaying Arch terms are included in these errors. The late endpoint source has transform\n K_(H-R_+)(z)=K_H(z)*(z-1/2)/(z+1/2),\nwith removable values at the half points. It is compact, smooth and has both half moments zero. It is nonzero at every actual right off-line zero p in 0<Re p<1/2, by the fixed source visibility. Hence, if Theta>0, V(L) has limsup exponential rate Theta by the same complete-field Laplace argument; V(0) is at most polynomial also at Theta=1/2. This shows that the endpoint observable in (7) is genuinely coupled to the same source. It does not justify ignoring the nonuniform error in (7).\n\nThis is distinct from the prior polar-input mismatch. The latter concerns the actual input shapes; here the surviving data are endpoint values and derivatives of the COMPLETE canonical output after its continuous pole projection."
+    },
+    {
+      "title": "P8. Actual rank-one/ground scope and next action",
+      "proof": "The current exact source relation is B D-D A=g f, with f the corrected source including the pole-normal output coefficient. The full squared transport retains f(Au), M4(Au), the index metric and the input mismatch; the current fixed inputs are not eigenrays. Own-birth whole-complement positivity, tied-ground restrictions and noncollision do not supply those missing premises for these inputs. The single actual Phi_L/Hermite generator and its positive Taylor-difference measure have already been audited; its relevant kernels change sign and no signed covariance bound follows merely by inserting their representation.\n\nA checked but unpromoted trace-square identity is tr(B^2)-tr(A^2)=sum_ij w_i w_j (x F(x)^2)[xi_i,xi_j]=2f(D^-1 B g)-tau^2. It is consistent with the full rank-one source and complete metrics, but is unweighted trace information, not a bound on (6). No new theorem wrapper or sign assumption is built from it.\n\nWhat changed: the continuous two-pole normal cost is now bounded at the same rate Theta as the complete echo and is explicitly linear up to a lower-rate remainder when Theta<1/2. The full finite remainder is reduced to the inspectable exact Gram/tail expression (5), rather than an unspecified removed-output term. The genuine endpoint source (8) remains visible; the fixed-L expansion (7) rules out an automatic algebraic cancellation of its square. An independent signed estimate for (5) combined with the complete spectral expression is still missing. No RH-equivalent hypothesis is introduced, and RH and Step4 remain OPEN."
+    }
+  ],
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleExponentialMoments.lean",
+      "sha256": "6ecebf9af0805411cd5e6add3485d3a87a28719b6a17b4cc08d0fd0ce90c5289",
+      "bytes": 9876,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralGeometry.lean",
+      "sha256": "4e6ec5473c2072570890563219c0e6fc170160865945b343f1cb4d8029df878a",
+      "bytes": 13446,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralNormals.lean",
+      "sha256": "6ba64dc7ae340d2286d55d92a342fc180607a2cd7f79261418c0646650b2d289",
+      "bytes": 18093,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralIntertwining.lean",
+      "sha256": "e0ddedbcc5d9a0ebf3d2c278158c0358d7f2e9b827f1fddfb3e0da41568f1f2e",
+      "bytes": 7014,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\ConstrainedParity.lean",
+      "sha256": "940b702ae5082b360c662790f6cbab368757888a8a5457dd505b6c9d9dc78807",
+      "bytes": 16696,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\ConstrainedParityGeometry.lean",
+      "sha256": "78577f99b5eddaf6010f1887c645de571b63b258e4c44e8618478ac6cfe3ea68",
+      "bytes": 21622,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\FinitePhysicalNormalization.lean",
+      "sha256": "c2dff9b13fb2f909615aebaf0fc40c7571faef7f1c4416535073ac378ec84f39",
+      "bytes": 4176,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceMomentDecomposition.lean",
+      "sha256": "bd3a6d56c892dc1bc536ef7393069ec88c3451decbb7f3f7e265f2d6399ca92e",
+      "bytes": 4126,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\OperatorSignedBound.lean",
+      "sha256": "de54637d3bdf2f9849091ab6d2c69e9b0dd53eeb3666d749e31f15f07e999ee2",
+      "bytes": 9678,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\TraceMetric.lean",
+      "sha256": "9b69981ffed1de26a33be4c230f0188db473336a86a6cde4a5eb1091d9970324",
+      "bytes": 4722,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\WeilFilter.lean",
+      "sha256": "80504bcc54e7ae8afc2ac9d241dd32bca3c3657d16e4588661ad5eac2e3a8fa1",
+      "bytes": 15601,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\NativeWeilResponse.lean",
+      "sha256": "0ebc3954a20596f32b92f1a9f6b96f959ea5e9758d639b3eaea298cb072ff377",
+      "bytes": 27709,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\UniversalSincSignedLaplace.lean",
+      "sha256": "870226d2e324f8251c8a2552922f620e9f91799eff19d6293f9b30fd24fdd3f0",
+      "bytes": 11061,
+      "current_git_blob_equal": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-arch-response\\ACTUAL_ARCH_RESPONSE.json",
+      "sha256": "b1a23776de6f31f8d173110864210cbe0243cecf0f5986e247a0fe984dc78b44",
+      "bytes": 9401
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\ACTUAL_BOUNDARY_CENTERING.json",
+      "sha256": "91b5848737f71244959c11d98a1d0011dbf06ea256a61537ac92128299a9440a",
+      "bytes": 11256
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\ACTUAL_COMPACT_HALF_MOMENT_SUPPLIERS.json",
+      "sha256": "da13935fd8f587be005b295e2b9a4228610004b351aa2f84616f2b2dfb83f55a",
+      "bytes": 9134
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\COMPLETION.json",
+      "sha256": "98c6bc8da20c1f014bffc27acafa3cf5ea0edffa7598785ead292fe3587d7553",
+      "bytes": 2713
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_SELF_ECHO_NATIVE_CARRIER_ADAPTER.json",
+      "sha256": "53a02515b8a2e73a7867ff7d4cb06cf00cf2fc9562c6cf07003053132f5bb439",
+      "bytes": 16358
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_FIXED_INPUT_FIRST_AND_SECOND_SPECTRAL_MOMENTS.json",
+      "sha256": "491245f86c954d78e1619faa454bccb0e4ec0397e3edd9370efb500d42374f89",
+      "bytes": 16734
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\moment-chain-spectral\\source-generator\\ACTUAL_SOURCE_GENERATOR_AND_HERMITE.json",
+      "sha256": "d0960d731533909d3909199e503259c04ee72b0551bc2e0764b5d8d7624db7ad",
+      "bytes": 11735
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\quantitative-noncollision\\EXACT_QUARTIC_ERROR_AND_CELL_SCALE_ADDENDUM.json",
+      "sha256": "5a80d076e3d5a5671bfd8d83475717484876acc1e674ccf7b7386b05133c20be",
+      "bytes": 3600
+    }
+  ],
+  "bounded_algebra_checks": "prime_math independently checked (1), the Theta endpoint envelope, the fixed-L 9/8 and 8/pi^2 constants including pole-row order, and the unpromoted trace-square identity. These are bounded algebra checks, not a new source review or formal proof.",
+  "authority": "External DERIVED mathematics only. No new Lean declaration, compiler run, CI result, numerical source evaluation or repository edit. The fixed-L endpoint expansion is explicitly not a uniform Kd theorem. RH OPEN."
+}

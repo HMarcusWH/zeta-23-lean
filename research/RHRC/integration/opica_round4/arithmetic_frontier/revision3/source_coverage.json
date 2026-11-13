@@ -1,0 +1,43 @@
+{
+  "schema": "PR299_BUILD_UPDATE_COVERAGE_V1",
+  "requested_basis": "Drive 1KAh58Scs1Y4l-tRd1O6Eu2KiAFLbRUe1; complete revision-2 instructions",
+  "records": [
+    {
+      "file_name": "PR299_Full_Build_Instructions_v2_2026-11-07.md",
+      "bytes": 50842,
+      "sha256": "7c94bfcb200e40ba9a98626e135359494305b08dbd863626825aa985f2346ba4",
+      "scope": "SOURCE_TEXT_REVIEW_NOT_NEW_PROOF_REPLAY"
+    },
+    {
+      "file_name": "RH_Step4_Closure_Investigation_Coarse_Growth_2026-11-08.md",
+      "bytes": 33746,
+      "sha256": "d556b3059a34661ed88baec36055a00883374d529719980aa3bc83e7a5d0323b",
+      "scope": "SOURCE_TEXT_REVIEW_NOT_NEW_PROOF_REPLAY"
+    },
+    {
+      "file_name": "RH_Step4_Core_Certificate_and_Cross_Band_Obstruction_2026-11-07.md",
+      "bytes": 27308,
+      "sha256": "301091b0f7bf9b3ef25e4cc35c3475dbc63ce1961dec39ed843793f98dad7b75",
+      "scope": "SOURCE_TEXT_REVIEW_NOT_NEW_PROOF_REPLAY"
+    },
+    {
+      "file_name": "RH_Step4_Birds_Eye_Closure_Investigation_2026-11-07.md",
+      "bytes": 38738,
+      "sha256": "8c57317223df26549df5b42d35c933b00194224d33074a6706d3a78790b8a718",
+      "scope": "SOURCE_TEXT_REVIEW_NOT_NEW_PROOF_REPLAY"
+    }
+  ],
+  "live_refresh": [
+    "PR #299 metadata; head unchanged",
+    "24 workflow conclusions at dab9fbe",
+    "Pinned committed BUILD_SPEC and M52 scope"
+  ],
+  "existing_ci_artifact_inspection": "Archive hash matched; acceptance.json and independent math result read; all 1213 type/axiom records parsed. Not a fresh compiler or whole-producer replay.",
+  "not_performed": [
+    "New Lean compilation",
+    "Native large-matrix reruns",
+    "Full historical Drive/paper audit",
+    "Independent unbounded arithmetic proof",
+    "Repository or Drive writes"
+  ]
+}

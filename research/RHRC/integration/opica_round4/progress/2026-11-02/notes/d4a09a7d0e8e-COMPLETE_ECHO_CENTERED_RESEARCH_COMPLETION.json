@@ -1,0 +1,133 @@
+{
+  "status": "COMPLETE_BOUNDED_CENTERED_ECHO_RESEARCH_PASS_STEP4_NOT_CLOSED",
+  "recorded_utc": "2026-11-02T04:49:44.215504+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "records": {
+    "prior_complete_echo_pass": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\S4E3_COMPLETE_ECHO_RESEARCH_COMPLETION.json",
+      "sha256": "67853634d082e9384a308fbb3a7dc6b5bc6a5edfcbea6c778fe2eb1fefa7f011",
+      "bytes": 11869
+    },
+    "centered_carrier_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\COMPLETION.json",
+      "sha256": "98c6bc8da20c1f014bffc27acafa3cf5ea0edffa7598785ead292fe3587d7553",
+      "bytes": 2713
+    },
+    "compact_suppliers": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\ACTUAL_COMPACT_HALF_MOMENT_SUPPLIERS.json",
+      "sha256": "da13935fd8f587be005b295e2b9a4228610004b351aa2f84616f2b2dfb83f55a",
+      "bytes": 9134
+    },
+    "supplier_cross_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\INDEPENDENT_COMPACT_SUPPLIER_REVIEW.json",
+      "sha256": "8d1087b058262eca12822ddc195357d5ee9957e4b9d6c2d00fe7842fcfb94433",
+      "bytes": 4777
+    },
+    "boundary_source_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "cf5fb9e905dc6d6fa9875705ac14ecdd60b15ff4d4ee53f79ef9911d1cdb695c",
+      "bytes": 10747
+    },
+    "first_second_spectral_moments": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_FIXED_INPUT_FIRST_AND_SECOND_SPECTRAL_MOMENTS.json",
+      "sha256": "491245f86c954d78e1619faa454bccb0e4ec0397e3edd9370efb500d42374f89",
+      "bytes": 16734
+    },
+    "specified_taper_visibility": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-supplier\\ACTUAL_COMPACT_SUPPLIER_AND_TAPER_VISIBILITY.json",
+      "sha256": "30425384e98cb7506df0d2749ba0a79eedd87a5bb318469d8e784974b9c28cad",
+      "bytes": 14395
+    },
+    "independent_final_supplier_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-supplier\\INDEPENDENT_FINAL_COMPACT_SUPPLIER_REVIEW.json",
+      "sha256": "2d65e5699adc4053f00dfdfe828ac6b4680b29e76beaf5a271d5df0805241e42",
+      "bytes": 5559
+    },
+    "independent_polar_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\INDEPENDENT_FINITE_POLAR_INPUT_REVIEW.json",
+      "sha256": "20a1a095985f35dafa0fcb7ec1e3b36eb86f3d7a0349d19098c9d5fc7d36895a",
+      "bytes": 16830
+    },
+    "current_CI_snapshot": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next3\\CHECKPOINT.json",
+      "sha256": "6b458af89f0a19e883dd1125d272302d8c81ec6cddf8af8dd2b9e78dbf6ad79b",
+      "bytes": 20563
+    },
+    "current_CI_harvest": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next3\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "f9b2c4c6ff7d9d7ce904c461e85e54699a4a7b4f0e2d7b3e9d19d1ffb58e29df",
+      "bytes": 144350
+    },
+    "scientific_dispositions": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next3\\SCIENTIFIC_DISPOSITION_COMPARISON.json",
+      "sha256": "cacf48e6cb5d2569ce627682b413f4631987188e36af275fea89a749327889a1",
+      "bytes": 10040
+    },
+    "runtime_repair_execution": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next3\\ACTUAL_RUNTIME_REPAIR_EXECUTION.json",
+      "sha256": "08dee63e57376aaa387dba05e678edfe2469f61ea2a52541076af4aeaf2e35aa",
+      "bytes": 2671
+    },
+    "root_followthrough_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\ROOT_CENTERED_ECHO_FOLLOWTHROUGH_REVIEW.json",
+      "sha256": "16d77fa7ac3380a6900c688841ecf6c08b1e4b41ad0c657c8d45ec407076adb3",
+      "bytes": 3857
+    }
+  },
+  "direct_embedded_hashes_checked": 231,
+  "unique_paths_checked": 147,
+  "what_became_formally_true": "No new Lean declaration. Current main Lean/axiom and named closure-campaign jobs passed on unchanged mathematical source; current Round4 full independent acceptance remains pending. New conclusions below are DERIVED, not PROVED by a new compiler run.",
+  "new_derived_results": [
+    "The old complete-echo boundary correction has a genuinely forced exp(L/2) component even under RH. Its coefficient comes from an explicit early Arch half-mass.",
+    "One fixed early bump cancels precisely that artificial component without changing the complete echo, right-bump system, source history, prime horizon or prescribed quartic cutoff.",
+    "Every remaining correction coefficient is exactly a fixed compact pole-neutral prime response plus a known decreasing Arch correction. Compact differential primitives give finite prefix identities with no future primes.",
+    "The general actual-source Weil supplier bounds these coefficients by C exp(Theta L), including Theta=1/2, with no division by the strip gap. This uses the unresolved actual zero displacement and is not a closing estimate.",
+    "For an explicitly specified allowed same-q taper, both principal suppliers see every off-line zero. The whole centered correction vector therefore retains rateTheta. A smooth monotone cutoff alone would not guarantee that visibility.",
+    "The exact first spectral moments of the literal native inputs have a fixed sum and a one-prime difference. They force BOTH separate squared canonical responses to have rate2Theta. Their signed difference and complete echo still require all covariance, endpoint and normal corrections.",
+    "A separate source review confirms the prior actual finite polar-input mismatch. It remains an input restriction, not a response inequality."
+  ],
+  "workflow_harvest": {
+    "snapshot_utc": "2026-11-02T04:33:24.534137+00:00",
+    "counts": {
+      "runs": 24,
+      "attempts": 24,
+      "jobs": 84,
+      "success": 71,
+      "running": 8,
+      "queued": 3,
+      "optional_skipped": 2,
+      "failed": 0,
+      "new_successes": 18,
+      "complete_workflows": 19
+    },
+    "coverage": "18 new successes plus53 prior cover all71 at the recorded snapshot. All18 job purposes and scientific dispositions were read. No queued/running/skipped job counted as success.",
+    "artifact_scope": "17 new smallZIPs fully verified (9448701bytes). The selected-provider full download hit a local timeout;3143971bytes of bounded authenticated selected ranges were checked, with no fullZIP claim.",
+    "runtime_repair": "Actual current-head provider cleanup recovered18006048768bytes before its successful service. This qualifies that cleanup on that runner, not full current native/aggregate acceptance.",
+    "formal": "Main current Lean gate passed with the same9618 printed axiom-header multiset. CONTRACT checked1079 register declarations and135tests per mode; framework51tests plus49support tests per mode passed.",
+    "scientific": "All15 WP2 interval cells unchanged. WP4 bounded search reached31accepted/63nodes and2remaining boxes versus2/8/5 historically, but remainsUNRESOLVED. M49/M50 floating positive-gap counts107->108 are uncertified. Provider admission is selected-API policy only; no model optimality or host theorem authority.",
+    "pending": "8 running,3queued,2optional skipped; full Round4 independent acceptance remains pending."
+  },
+  "what_changed": "The complete carrier is now quantitatively centered using known source data. Its correction cost is governed by the actual arithmetic response rather than a deterministic artifact. The growth retained by the corrected representation is now explicitly identified.",
+  "upstream_implications": "Use compact half-moment primitives instead of integrating an unresolved exponential tail. Keep unspecified cutoff classes separate from a concretely chosen zero-visible taper.",
+  "downstream_implications": "Any signed estimate can now include the actual coupled correction vector. Separate energy estimates have a proved source-dependent exponential loss under the off-line-zero premise.",
+  "resurrected_routes": "A full-response native comparison survives the nonzero early Arch history after exact centering. Its remaining arithmetic content has not been replaced by a low-cost generic filter.",
+  "new_RH_relevant_clue": "The complete signed covariance, rather than either parity energy or inverse reconstruction norm alone, is the decisive quantity. Its leading pole order is unchanged by fixed first-moment centering.",
+  "falsification_checks": "Checked all prefix signs and exponential scales, endpoint disjointness, reflected-test orientation, Theta endpoints, explicit taper transform, and a positive same-q cutoff construction falsifying generic all-height visibility.",
+  "highest_leverage_next": "Prove an independent signed bound for the retained covariance/corrected response or the exact compensated high-primitive total. Do not infer such a bound from recovery, source coherence, moment centering, noncollision or separate energy positivity.",
+  "remaining_missing_piece": "No inequality has yet been established that forbids the actual signed arithmetic value forced by an off-line zero. The new coupled response still carries that mode consistently; Step4 is not closed.",
+  "repository_edits": false,
+  "new_commits": 0,
+  "new_tests": 0,
+  "new_compiler_runs": 0,
+  "new_Lean_declarations": 0,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE",
+  "script": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\seal_centered_echo_pass.py",
+    "sha256": "42df2b9b35ac11a7e5e34242a91e9c0c0dbb0a8e1b7fd9a85ddcd9aafbd9adb7",
+    "bytes": 12932
+  }
+}

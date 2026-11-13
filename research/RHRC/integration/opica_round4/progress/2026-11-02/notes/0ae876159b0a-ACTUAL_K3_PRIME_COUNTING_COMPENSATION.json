@@ -1,0 +1,130 @@
+{
+  "title": "Complete ordinary-prime counting compensation and the exact scale of its actual-source PNT envelope",
+  "status": "DERIVED_BOUNDED_ANALYTIC_METHOD_AUDIT_NOT_A_CLOSING_ESTIMATE",
+  "created_utc": "2026-11-02T13:00:10.013027+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "clean": true
+  },
+  "sections": [
+    {
+      "id": "P1",
+      "title": "Exact ordinary-prime summation with the lower endpoint at two",
+      "proof": "Keep the fixed source and all notation from the higher-power budget: D_L(theta)=E_o-aE_e, k_L(t)=D_L(1-t/L), h_L(t)=exp(-t/2)k_L(t), L>=1, a=No/Ne, beta=L^2/(16pi^2), d0=175/(88pi^2). In particular h_L(0)=h_L(L)=0. All t derivatives below hold L fixed. Let b=log2, Pi(t)=pi(exp t), and ell(t)=0 for t<b, ell(t)=integral_b^t exp(u)/u du for t>=b. Set Delta_pi=Pi-ell, extended by0 below b. Delta_pi(b)=1: the actual first-prime jump is included, not declared zero.\n\nThe COMPLETE ordinary-prime source is exactly\n B1(L)=-sum_(p<=exp L)log(p)p^(-1/2)k_L(log p)\n      =-integral_b^L exp(t)h_L(t)dt\n        +integral_b^L Delta_pi(t)[t h_L(t)]'dt.             (1)\nUse the left endpoint b-minus in Stieltjes summation: Delta_pi(b-minus)=0, while the jump at b remains inside the measure. The upper atom also remains included; its source value is zero because k_L(L)=0. No small-prime correction is silently omitted.\n\nNative pole neutrality gives integral_0^L exp(t)h_L(t)dt=-integral_0^L h_L(t)dt. Hence the deterministic term in(1) is\n integral_0^L h_L(t)dt + Prefix_L,\n Prefix_L=integral_0^b exp(t)h_L(t)dt.                    (2)\nThe lower prefix is generally nonzero and must stay. It is not an Arch term that may be set to zero."
+    },
+    {
+      "id": "P2",
+      "title": "Complete prime-power counting returns the precise psi pairing",
+      "proof": "Define the finite-at-every-t higher-power counting function H_J(t)=sum_(2<=r<=floor(t/b))pi(exp(t/r))/r and J(t)=Pi(t)+H_J(t). Thus J has an atom1/r at each actual p^r, retaining distinct powers and all their multiplicities. Put Delta_J=J-ell. Direct finite integration of its steps gives\n psi(exp t)=tJ(t)-integral_0^t J(u)du.\nSimilarly t ell(t)-integral_0^t ell(u)du=(exp(t)-2)1_(t>=b). Therefore the ACTUAL complete discrepancy is\n R_psi(t)=psi(exp t)-exp t\n         =t Delta_J(t)-integral_0^t Delta_J(u)du-min(exp t,2).       (3)\nMultiplying by h_L' and integrating, with both h endpoints zero, gives\n integral_0^L R_psi h_L'\n =Prefix_L+integral_b^L Delta_J(t)[t h_L(t)]'dt.          (4)\nThe term min(exp t,2) gives exactly Prefix_L. This verifies the lower correction without interchanging an unbounded prime series.\n\nThe extra counting term is exactly the unchanged higher-power contribution:\n integral_b^L H_J(t)[t h_L(t)]'dt\n =-sum_(p,r>=2,r log p<=L)log(p)p^(-r/2)k_L(r log p)\n =B_{>=2}(L).                                          (5)\nThe factor1/r in J is cancelled by t=r log p. Thus complete ordinary-prime partial summation plus the paid higher-power budget reconstructs the existing signed psi pairing. The original source, prime powers, native poles and full Arch compensation are all retained. Equations(3)-(5) add no new arithmetic assumption."
+    },
+    {
+      "id": "P3",
+      "title": "An explicitly bounded compensated ordinary-prime remainder",
+      "proof": "Use the frozen unconditional budget\n B_{>=2}=200a beta^2 L+d0 H2 L^2+r_hp, |r_hp|<=R_hp,\nwhere H2=T2-8M1 and R_hp is the explicit fixed constant in that note. Its uniform jet has C_*=2^34 and\n |k_L(t)+d0 L^2 t^2|<=C_*(t^2+t^4), 0<=t<=L.\nSince integral_0^infinity t^2 exp(-t/2)dt=16 and the fourth moment is768,\n integral_0^L h_L=-16d0L^2+r_h,\n |r_h|<=784C_*+768d0=:R_h.                              (6)\nThe truncated leading tail is paid by L^2t^2<=t^4 for t>L; no infinite tail is discarded.\n\nDefine the precisely compensated ORDINARY-PRIME expression\n E_ord(L)=B1(L)+200a(L)beta^2L+d0(H2+16)L^2.\nEquations(1)-(6), or the complete psi identity, give the exact relation\n E_ord=integral_0^L R_psi(t)h_L'(t)dt-r_hp+r_h.            (7)\nThe full canonical gap remains\n G=J_det+E_ord+r_hp-r_h,\nwhere the unchanged J_det=A_Gamma+integral_0^L h_L is the positive deterministic component from the companion note. Thus neither the Arch component nor its reflected continuum is omitted by the compensation.\n\nLet P_e,P_o be the explicit nonnegative source polynomials from S2 of the frozen signed-psi baseline, and P_D=P_o+P_e. Since0<a<1 and L>=1, its exact growing-interval estimate gives |q_L'(v)+q_L(v)/2|<=L^(-7)P_D(v), q_L(v)=D_L(v/L), for ALL0<=v<=L. Classical quantitative PNT |R_psi(t)|<=C_psi exp(t-c sqrt t) then proves the actual unconditional bound\n |E_ord(L)|<=R_hp+R_h+C_psi I_D(c)L^(-7)exp(L/2-c sqrt L),\n I_D(c)=integral_0^infinity exp(-v/2+c sqrt v)P_D(v)dv<infinity.     (8)\nThe same PNT constant c is kept via sqrt L<=sqrt(L-v)+sqrt v. This is a paid signed estimate, but its remaining scale is exponential. The exact rational factor a(L) in the L^5 term is retained; replacing it by1/11 would leave an unpaid L^3 term."
+    },
+    {
+      "id": "P4",
+      "title": "Why prime counting gives no extra logarithmic saving in this method",
+      "proof": "For completeness, the ordinary-prime PNT estimate can be used directly in(1), rather than presuming a stronger counting error. Let E_theta(x)=theta(x)-x and suppose the already paid quantitative PNT bound |E_theta(x)|<=C_theta x exp(-c sqrt(log x)) for x>=2. Finite partial summation gives, for t>=b,\n Delta_pi(t)=E_theta(exp t)/t+integral_b^t E_theta(exp u)/u^2 du+2/b.  (9)\nThe +2/b is the actual lower endpoint; in particular (9) gives Delta_pi(b)=1. Splitting the integral at t/2 yields\n |Delta_pi(t)|<=C_pi exp(t-c sqrt t)/t,\n C_pi=C_theta[1+4J_c/b+4exp(c^2)/b^2]+4exp(c^2/2)/b,\n J_c=integral_0^infinity exp(-v+c sqrt v)dv<infinity.     (10)\nFor the lower half use t exp(-t/2+c sqrt t)<=4exp(c^2); for the upper half use u^(-2)<=4/t^2 and sqrt t<=sqrt u+sqrt(t-u). The same c is retained after including fixed constants.\n\nBut [t h_L]'=exp(-t/2)[t(k_L'-k_L/2)+k_L]. The leading t cancels the1/t in(10). If Q_e,Q_o are the corresponding explicit source polynomials bounding |E_p(L,v/L)| by L^(-r_p)Q_p(v), put Q_D=Q_o+Q_e. Since t>=b, the remaining q_L/t term is bounded by L^(-7)Q_D(v)/b. Thus the direct counting error has upper bound C_pi I_pi(c)L^(-7)exp(L/2-c sqrt L), with\n I_pi=integral_0^infinity exp(-v/2+c sqrt v)[P_D(v)+Q_D(v)/b]dv<infinity.\nThe extra counting denominator therefore does not yield another factor1/L or a smaller exponential rate. After the complete higher-power counting correction is included, the exact formula returns(7), not a separate independently small remainder."
+    },
+    {
+      "id": "P5",
+      "title": "Positive matching asymptotic for the actual-source absolute envelopes",
+      "proof": "This last assertion is a sharpness result for a SPECIFIED absolute-value proof method, not a bound from below on an actual prime discrepancy. Fix the PNT exponent c>0 and define the two actual-kernel envelopes\n M_psi(L)=integral_0^L exp(t-c sqrt t)|h_L'(t)|dt,\n M_pi(L)=integral_b^L exp(t-c sqrt t)/t |[t h_L(t)]'|dt.\nThe frozen native source expansion and its differentiated form give, uniformly on each compact v interval,\n L^7 q_L(v)->-C_o G7(v),\n L^7[q_L'(v)+q_L(v)/2]->-C_o H7(v),\n C_o=2(2pi)^6*240^2,\n G7(v)=v^7/7!-v^9/(2*9!)+v^11/(16*11!), H7=G7'+G7/2.\nThe even contribution is O(L^-2) after this scaling and a(L) stays bounded. H7 is a nonzero polynomial (its first term is v^6/6!), so the constant below is finite and strictly positive.\n\nChange v=L-t. The tilted PNT ratio exp(c[sqrt L-sqrt(L-v)]) tends1 at fixed v and is at most exp(c sqrt v). The global polynomials P_D,Q_D already pay the ENTIRE growing range. In M_pi the extra q_L/(L-v) tends0 at fixed v and is globally bounded by Q_D(v)/b after scaling. Dominated convergence therefore gives BOTH exact limits\n M_psi(L)/(L^(-7)exp(L/2-c sqrt L))\n -> C_o integral_0^infinity exp(-v/2)|H7(v)|dv >0,\n M_pi(L)/(L^(-7)exp(L/2-c sqrt L))\n -> the SAME positive constant.                         (11)\nThe source half-moment cancellations do not annihilate this absolute integral. Equation(11) is actual-source evidence that the envelope bound used in(8)-(10) cannot itself be improved to a polynomial or to exp((1/2-delta)L) by relabeling prime counting. It does NOT show that the true discrepancy attains the envelope, that no other use of divisor/Selberg constraints helps, or that a signed cancellation estimate is impossible.\n\nComparison with history: the older signed-psi note already supplied the exponent1/2-c/sqrt L scale. New here are the exact PRIME-counting lower-prefix completion, its reconciliation with the explicit L^5/L^2 budget through a bounded remainder, and the matching positive majorant asymptotic for both counting methods. The previously checked divisor inversion and full Selberg identities transport the same source without a new lower bound. No independent noncircular closing supplier is obtained in this calculation; the remaining required information is signed cancellation of the actual discrepancy against this prescribed, aperture-dependent kernel."
+    }
+  ],
+  "records": [
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_K3_SIGNED_PSI_BASELINE.json",
+      "sha256": "5772baadcb9a8cccfe3cde03d18da9c52442ed7ba81b71cba2f486ee253aaffe",
+      "bytes": 13146,
+      "role": "Full reread: exact existing psi transfer and global derivative envelope"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_K3_POSITIVE_PSI_COMPOSITION.json",
+      "sha256": "ab958766ea7fc053a9f41fb8787d07da86d00df7b8060da121b5fd40b256f309",
+      "bytes": 14103,
+      "role": "Complete deterministic J_det and native-pole compensation"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_FIXED_K3_ARITHMETIC_SCALARS.json",
+      "sha256": "204b26b07fb3109f010af2c1ca49b72a7c1a4e0a3082eca9ff2366ade9c96899",
+      "bytes": 13261,
+      "role": "Literal source and compact endpoint expansion"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_K3_UNSIGNED_PRIME_CHARGE_AUDIT.json",
+      "sha256": "e32ab81dbf76931775fa1d6f220bb7f1313440905a677398a6855d63c975c87f",
+      "bytes": 13388,
+      "role": "Uniform differentiated source profile prerequisites"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/k3-higher-prime-powers/ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET.json",
+      "sha256": "2b12360005bf6e57c7b6bb1bd8a2f55d572f41ce7c6fe8b45dfbce65df75b3ee",
+      "bytes": 15470,
+      "role": "Complete signed higher-power expansion and explicit fixed R_hp"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/k3-higher-prime-powers/INDEPENDENT_HIGHER_PRIME_POWER_REVIEW.json",
+      "sha256": "9fe8be52af424f1be5d5a842e81ce5509143ddb862e04f8f112f029b1263b2e0",
+      "bytes": 9307,
+      "role": "Independent frozen higher-power review"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/k3-higher-prime-powers/ACTUAL_K3_CENTRAL_BAND_AND_DIVISOR_FOLLOWTHROUGH.json",
+      "sha256": "bf1e4310b1871d4c05e2af83a95995891e3507b677c56ded5671e41e0feba40e",
+      "bytes": 8635,
+      "role": "Prior exact prime-only divisor inversion, not relabeled as an estimate"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-candidate/ACTUAL_F_SOURCE_AND_SELBerg_CANDIDATE.json",
+      "sha256": "368cf6488ffd7e8ad825f5156c456b6b54b45789093ffd71fff6ebe286e7c260",
+      "bytes": 13535,
+      "role": "Prior complete Selberg signs and endpoint"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/mean-selberg-storage/COMPLETE_FORCING_SAME_DISCREPANCY_CROSSCHECK.json",
+      "sha256": "33fdba0580046cc9656a472a2a9893cb1a0787dae5eeda66612686897c170373",
+      "bytes": 7293,
+      "role": "Prior complete forcing returns integration by parts; avoids duplicate claim"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/long-tail-selberg-energy/PRIMARY_PNT_REFERENCE.json",
+      "sha256": "394ee9531fb03cda6a8ecc129c1ebfaa9a945e9f1d4ffa0cf0bdf68a51883cbe",
+      "bytes": 928,
+      "role": "Primary quantitative PNT consulted in preceding bounded pass; no new remote-byte claim"
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "sha256": "5df3b8309f6144a22da5ba8d318c5c91fba181911cf15b1f0d50d49f4d9365c1",
+      "bytes": 10263,
+      "same_as_head_blob": true,
+      "role": "Fresh exact finite right-continuous staircase and endpoint-zero Abel theorem read"
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/CCM/NativeIntegerPrimeSource.lean",
+      "sha256": "c98e58682a18bc073cd794200dfd351edef65e9a0ac3bfe0f7d522216f651b31",
+      "bytes": 3212,
+      "same_as_head_blob": true,
+      "role": "Full actual divisor/source coefficients read in preceding pass; current byte identity checked"
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/CCM/SourceMatrix.lean",
+      "sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "bytes": 7204,
+      "same_as_head_blob": true,
+      "role": "Literal source and full metric read in preceding pass; current byte identity checked"
+    }
+  ],
+  "contributions": "Prime_math derived the complete prime-counting/prefix transfer and matching actual-kernel envelope. Root independently checked the16 moment and integration sign; late_math independently checked the two dominated-convergence limits against the stated uniform source envelopes. A final file-bound review is separate.",
+  "authority": {
+    "new_Lean_declarations": 0,
+    "new_tests": 0,
+    "new_compiler_runs": 0,
+    "repository_edits": false,
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "primary_input": "The already consulted Elkies quantitative PNT theorem is an unconditional external analytic input. The paper-level growing-aperture compositions and envelope asymptotics are not newly compiled Lean statements."
+}

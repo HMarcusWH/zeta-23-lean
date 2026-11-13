@@ -3272,6 +3272,18 @@
       "case": null,
       "lane": "CONTRACT",
       "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_madness_extension_retains_merged_500_scope",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
+    },
+    {
+      "method": "research.RHRC.integration.opica_composition.tests.test_cli.CliOrchestrationTests.test_madness_register_rejects_source_substitution_and_bound_promotion",
+      "case": null,
+      "lane": "CONTRACT",
+      "native": false
     }
   ],
   "migrations": [
@@ -3494,5 +3506,111 @@
       "research.RHRC.integration.opica_composition.tests.test_cli.IndependentGroupTransportTests.test_wrong_attempt_group_and_extra_component_rejected"
     ],
     "meaning": "PROTOCOL_AND_TRANSPORT_REGRESSIONS_NOT_NATIVE_PROOF_AUTHORITY"
+  },
+  "madness_extension": {
+    "register": "MADNESS_CONTRACTS.json",
+    "modules": [
+      "Zeta23.OPICARound4.MobiusHyperbola",
+      "Zeta23.OPICARound4.ActualSourceHyperbola",
+      "Zeta23.OPICARound4.HyperbolaDiagonal",
+      "Zeta23.OPICARound4.Validation.Hyperbola",
+      "Zeta23.OPICARound4.CommonQuarticGround",
+      "Zeta23.OPICARound4.JointGroundBirth",
+      "Zeta23.OPICARound4.Validation.JointGround",
+      "Zeta23.OPICARound4.TiedNewbornResponse",
+      "Zeta23.OPICARound4.NewbornSpectralVisibility",
+      "Zeta23.OPICARound4.TiedCubicEnergy",
+      "Zeta23.OPICARound4.TiedSilentMoment",
+      "Zeta23.OPICARound4.RegularCells.AnalyticFiniteSelector",
+      "Zeta23.OPICARound4.RegularCells.NativeZeroRegularity",
+      "Zeta23.OPICARound4.RegularCells.NativeRegularBirthSelection",
+      "Zeta23.OPICARound4.Validation.NativeGroundRegularity",
+      "Zeta23.OPICARound4.RegularCells.NativeDiagonalSeparation",
+      "Zeta23.OPICARound4.RegularCells.NativeCompressionSeparation",
+      "Zeta23.OPICARound4.RegularCells.SylvesterSeparation",
+      "Zeta23.OPICARound4.RegularCells.MeromorphicFrequencyIndependence",
+      "Zeta23.OPICARound4.RegularCells.PrimeLaurentNonidentity",
+      "Zeta23.OPICARound4.RegularCells.FinitePrimeLaurentAlgebra",
+      "Zeta23.OPICARound4.RegularCells.PrimeSourceLaurent",
+      "Zeta23.OPICARound4.RegularCells.NativeZeroFrame",
+      "Zeta23.OPICARound4.RegularCells.NativeCosineSeparation",
+      "Zeta23.OPICARound4.RegularCells.FrozenSourceContinuation",
+      "Zeta23.OPICARound4.NewbornCubicEnergyBound",
+      "Zeta23.OPICARound4.RegularCells.NativePrimeIsolation",
+      "Zeta23.OPICARound4.RegularCells.NativePrimeExpansion",
+      "Zeta23.OPICARound4.RegularCells.NativePrimeGerms",
+      "Zeta23.OPICARound4.RegularCells.NativeParityPencils",
+      "Zeta23.OPICARound4.RegularCells.NativeParityZeroPencils",
+      "Zeta23.OPICARound4.RegularCells.MatrixSylvesterCoordinates",
+      "Zeta23.OPICARound4.RegularCells.NativeParityMatrixPencils",
+      "Zeta23.OPICARound4.RegularCells.NativeParityPhysicalSeparation",
+      "Zeta23.OPICARound4.RegularCells.NativeParityPrimeAnchor",
+      "Zeta23.OPICARound4.RegularCells.NativeParityNonidentity",
+      "Zeta23.OPICARound4.RegularCells.NativeParityRegularSelection",
+      "Zeta23.OPICARound4.SeparatedSourceVisibility",
+      "Zeta23.OPICARound4.RegularCells.PacketRegularSelection",
+      "Zeta23.OPICARound4.RegularCells.PacketNoncollisionSelection",
+      "Zeta23.OPICARound4.RegularCells.PacketSpectralSelection",
+      "Zeta23.OPICARound4.Validation.NativeNoncollision",
+      "Zeta23.OPICARound4.ArithmeticFrontier.MomentSlices",
+      "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates",
+      "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentClosure",
+      "Zeta23.OPICARound4.ArithmeticFrontier.SelectedPacketClosure",
+      "Zeta23.OPICARound4.ArithmeticFrontier.PhysicalBlockCertificate",
+      "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnCore",
+      "Zeta23.OPICARound4.ArithmeticFrontier.Validation.Carriers",
+      "Zeta23.OPICARound4.ArithmeticFrontier.PoleChannel",
+      "Zeta23.OPICARound4.ArithmeticFrontier.MomentLeakage",
+      "Zeta23.OPICARound4.ArithmeticFrontier.FiniteCertificateSoundness",
+      "Zeta23.OPICARound4.ArithmeticFrontier.SourceColumnTrace",
+      "Zeta23.OPICARound4.ArithmeticFrontier.GrowthClosure",
+      "Zeta23.OPICARound4.ArithmeticFrontier.CofinalSemiboundedClosure",
+      "Zeta23.OPICARound4.ArithmeticFrontier.C2GrowthClosure",
+      "Zeta23.OPICARound4.ArithmeticFrontier.NativeMomentDisplacement",
+      "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor",
+      "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction",
+      "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor"
+    ],
+    "native_gate": "MATHEMATICAL_SUPPORT",
+    "retained_declarations": 500,
+    "retained_modules": 48,
+    "retained_semantic_mutations": 17,
+    "added_declarations": 892,
+    "added_semantic_mutations": 108,
+    "current_semantic_mutations": 125,
+    "full_types_and_axioms_required": true,
+    "production_qualification": "REQUIRED_ON_CURRENT_HEAD",
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "joint_ground_extension": "Exact common-quartic eventual negativity and same-packet joint ground; own-newborn simplicity and full-complement gap; tied-source moment sign and whole odd-kernel visibility. No independent closing bound.",
+    "native_regular_ground_extension": "Same-source tied response and cubic/silent moment restrictions; actual native determinant regularity on selected cofinal apertures; regular own-newborn realization. Negative ties and independent signed arithmetic opposition remain OPEN.",
+    "native_full_spectrum_extension": "Actual-prime full source separation; a genuine deep packet with the same detector cutoff and regular disjoint full spectra; complete source visibility. Independent quantitative arithmetic opposition remains OPEN.",
+    "uniform_moment_margin_extension": "Assuming an actual off-line zeta zero, one fixed positive relative margin holds on the entire sufficiently late aperture tail at the prescribed original quartic cutoff. The literal even trial has M4=0; the literal odd trial has M3=M5=0. No trial is projected or replaced by a ground eigenvector. The exact normalization and source placement are retained. No margin is transferred to a first-birth or selected Schur cutoff, and no independent arithmetic lower bound is supplied.",
+    "retained_pre_frontier": {
+      "declarations": 1079,
+      "modules": 90,
+      "semantic_mutations": 84
+    },
+    "arithmetic_frontier_extension": "Exact moment slices with Gram transport and dimensions; (C1) and narrow selected-packet consumers to Mathlib RiemannHypothesis; inverse-residual block and source-core finite consumers with witness transport. Every closing premise remains OPEN; no arithmetic sign is supplied.",
+    "pole_channel_extension": "Pole annihilation on both actual pole-neutral carriers and the exact energy identity Q = -arch - prime on both moment slices; reuses canonicalPoleMatrix_mulVec_eq_zero_of_profiles. No sign is supplied.",
+    "finite_soundness_extension": "Compressed commutator with all leakage terms (M51), exact-data shifted-factor and witness soundness with the necessity of tau > 0 (M52), and source-column Gram/trace identities (M53). The native enclosure bridge and every closing premise remain OPEN. Two new semantic controls were admitted while the single-file suite was held at 100 by the Lean default maxErrors = 100; Increment 4A shards the suite and restores the third control (FM17).",
+    "coarse_growth_extension": "Fixed-parity PG/SE and fixed-rate consumers with slice membership of the native witnesses (M54); explicit-margin all-late witnesses AD and the cofinal one-constant consumer SB (M55); literal long-term C2-SE with the t = 2a rate audit (M56); native squared-index commutator cancellation on boundary-flat columns and the parity leakage of D0 (M57). Consumers and identities only; every premise and the leakage factorization remain OPEN.",
+    "semantic_control_shards": {
+      "limit": 90,
+      "shards": [
+        {
+          "id": "01",
+          "controls": 84
+        },
+        {
+          "id": "02",
+          "controls": 41
+        }
+      ],
+      "binding": "each control owns exactly one type-mismatch error"
+    },
+    "geometry_reconstruction_extension": "Explicit rank-one leakage factor and the native rank-two compressed commutator on both actual slices (M58); the entrywise reconstruction bound, its native geometry-eigenbasis form and the (SG) certificate consumer to PG and RiemannHypothesis (M59). The certificate premise and every source estimate remain OPEN.",
+    "zero_free_floor_extension": "Floor adapter converse to the fixed-rate exclusion: a zero strip of half-width a gives, with explicit constants, the canonical floor on every boundary-flat native vector and every fixed rate above a in both parities, hence the graded equivalence; the closed strip alone gives the unconditional rates above 1/2, and RiemannHypothesis is equivalent to each of (C1), (SB), (PG) and (SE) (M60). Exact least-crossing statement: a cutoff-3 bottom below -D/2 forces cutoff 3 and an empty predecessor (M61). No bound on the displacement and no arithmetic estimate is supplied; every closing premise remains OPEN.",
+    "delay_descent_extension": "Receiving interface for loss-tolerant descent (M62, last section of the M60 module): an abstract delay-descent lemma; with the unconditional rate-one bound as base, the delay contract (DD) with admissible costs and the fractional-scale contract (ND) with polynomial costs each give (SE) and RiemannHypothesis, and RH gives both for nonnegative costs. Sharp interfaces; no descent inequality and no arithmetic estimate is supplied."
   }
 }

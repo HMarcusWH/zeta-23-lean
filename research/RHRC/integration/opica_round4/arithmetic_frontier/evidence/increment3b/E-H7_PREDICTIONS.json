@@ -1,0 +1,56 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_PREDECLARATION_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "experiment": "E-H7",
+  "frozen_at_utc": "2026-11-07T16:56:35+00:00",
+  "frozen_before": "any L=7 matrix was assembled; no L=7 run exists in this repository or session",
+  "state": {
+    "L": "7",
+    "K": 2401,
+    "Q": 1096,
+    "even_dimension": 2398,
+    "odd_dimension": 2397,
+    "tolerance": "1/5",
+    "n": 5,
+    "split": "Fourier prefix through 1200",
+    "metric": "PHYSICAL_INHERITED_EUCLIDEAN"
+  },
+  "rule_hashes": {
+    "ed1_response.py": "00b85575ef76c9adfc66f2cc3647b77d8fb8e592bb4199be720bf71acb5b1cdf",
+    "native_slice.py": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+    "certificates.py": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+    "native_source.py": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6",
+    "basis_ed1_summary": "fe6e2f0fba39a38890807c30b67fb52d4e111eef13a9b95ca01e7f5ee16aee25"
+  },
+  "law": "Doubling law of the inverse-residual degree with a near band of tiny coupling mass.",
+  "predictions": [
+    {
+      "id": "P9",
+      "claim": "INVERSE_RESIDUAL smallest successful tested degree is exactly 32 in both parities (16 falsified, 32 certified)",
+      "acceptance": "value == 32 in both parities"
+    },
+    {
+      "id": "P10",
+      "claim": "GEOMETRIC_TAIL is FALSIFIED_BOUND at every tested degree 1..64",
+      "acceptance": "all statuses FALSIFIED_BOUND"
+    },
+    {
+      "id": "P11",
+      "claim": "near-band count (|lambda(A) - eps| < 1e-6) lies in [200, 500] in each parity",
+      "acceptance": "both counts in [200, 500]"
+    },
+    {
+      "id": "P12",
+      "claim": "near-band coupling trace <= 1e-4 and near-band response trace <= 1e-3 in each parity",
+      "acceptance": "both bounds in both parities"
+    },
+    {
+      "id": "P13",
+      "claim": "native checkpoint 1/5 and SCHUR_FULL_INVERSE_ACTION CERTIFIED; SCALAR_GAP FALSIFIED_BOUND with worst charge >= 80",
+      "acceptance": "all three in both parities"
+    }
+  ],
+  "run_status": "PREDECLARED_NOT_RUN: deferred to the next increment (about eight times the L=6 cost); a later run must use exactly the hashed rules above or record the deviation",
+  "authority": "PREDECLARATION_ONLY"
+}

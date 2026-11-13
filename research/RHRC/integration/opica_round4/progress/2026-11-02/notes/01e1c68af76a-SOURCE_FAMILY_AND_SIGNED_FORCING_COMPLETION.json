@@ -1,0 +1,127 @@
+{
+  "status": "COMPLETE_BOUNDED_SOURCE_FAMILY_AND_SIGNED_FORCING_PASS_NOT_STEP4_CLOSURE",
+  "created_utc": "2026-11-02T08:43:08.142313+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "user_goal": "Close Step4 using the complete OPICA constraints and supplied S4-E3 material. This pass does not achieve the independent closing theorem.",
+  "records": {
+    "prior_pass": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\EXACT_BOUNDARY_TRANSPORT_AND_SIGN_COMPLETION.json",
+      "sha256": "77bcad73ee1637904b0b82870883c7478dd3bebb2eff7dc11ae26410c5e0a564",
+      "bytes": 12628
+    },
+    "attachment_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\s4e3-attachment\\LOCAL_ATTACHMENT_REVIEW.json",
+      "sha256": "7851e2ee4ddd09c5e33096737aaa9f70d403675f4ce3db01fcfae7777aa11443",
+      "bytes": 11119
+    },
+    "mean_source_note": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-candidate\\ACTUAL_F_SOURCE_AND_SELBerg_CANDIDATE.json",
+      "sha256": "368cf6488ffd7e8ad825f5156c456b6b54b45789093ffd71fff6ebe286e7c260",
+      "bytes": 13535
+    },
+    "mean_source_bindings": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-candidate\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "59f332e1af49e755d5bf233d6c5403524004f5b34f52b571c7d215b8c6539a15",
+      "bytes": 10071
+    },
+    "mean_source_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-candidate\\COMPLETION.json",
+      "sha256": "7e4af81147edd314b459919d453e1e3cdb04c24d72aa440e0d744aa5efb28c45",
+      "bytes": 4153
+    },
+    "mean_root_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-candidate\\INDEPENDENT_ROOT_F_SELBerg_REVIEW.json",
+      "sha256": "ee279cb9005a6993de99b3960a91c86b1c833b836b00f3eee403bda7038ee631",
+      "bytes": 9744
+    },
+    "mean_peer_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\mean-selberg-candidate\\INDEPENDENT_F_SOURCE_SELBerg_REVIEW.json",
+      "sha256": "dbcd24716e1f35e7e1c3038d146a3b361f0452be6f2da24c5267a8298a5955b0",
+      "bytes": 24108
+    },
+    "ritz_note": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-ritz\\ACTUAL_KAPPA_PHASE_TRANSLATE_RITZ_AND_CUBIC_CUTOFF.json",
+      "sha256": "e6a7578c8338a8f9a7fc95235e018d8f0fcb7a230ce7218a35894bcd21e748da",
+      "bytes": 24655
+    },
+    "ritz_root_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-ritz\\INDEPENDENT_ROOT_KAPPA_RITZ_REVIEW.json",
+      "sha256": "607bd0e5f112188396fd45df3285218e2ad4ae11f6f86044b80a4e1ae521b626",
+      "bytes": 15027
+    },
+    "ritz_peer_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-ritz\\INDEPENDENT_KAPPA_RITZ_CUBIC_REVIEW.json",
+      "sha256": "83d85b14cabc344e6b081116300a7499060a16c5400bb705025748bfaaf174bb",
+      "bytes": 24999
+    },
+    "ritz_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\source-family-ritz\\COMPLETION.json",
+      "sha256": "489f1ed345269d3d6b4a88762fe86039e6dfa5be3b089c699c6d14ce49926978",
+      "bytes": 4346
+    },
+    "ci_snapshot": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\CHECKPOINT.json",
+      "sha256": "d3609c8c76a0fa975e920ec7e9542711303c4c5e8ec7d3b733a55d61993171df",
+      "bytes": 17706
+    },
+    "ci_harvest": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "496bfaef30c304200ad0798edefeb6e92cf9c2a9ef644cea407593aab70c74df",
+      "bytes": 12684
+    },
+    "drive_comparison": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next11\\DRIVE_METADATA_COMPARISON.json",
+      "sha256": "114958869e568c2f7497238c6e0246ef68aaabae8269ee134c67b8eab36f8041",
+      "bytes": 3086
+    }
+  },
+  "verification": {
+    "embedded_bindings_rehashed": 203,
+    "unique_bound_paths": 89,
+    "clean_worktree": true,
+    "all_new_math_read_by_root": true,
+    "independent_peer_reviews": "Both new mathematical notes have root and separately authored file-bound reviews; qualifications remain explicit."
+  },
+  "what_became_formally_true": "No new Lean declaration. Current source remains unchanged. New results are DERIVED analytic compositions, not newly compiled theorems. The current1079/90/84 support result retains its prior recorded authority; this pass does not upgrade external prototypes or final acceptance.",
+  "new_mathematical_results": [
+    "The literal unmodulated smooth kappa phase projects into the span of the fixed H=kappa*kappa translate family at every late aperture, including resonances. This follows from their identical real Fourier zero sets and the exact native annihilator. The original negative packet transfers to that span with the full forward approximation and energy costs retained.",
+    "The direct smooth-phase projection has explicit Fourier-tail and full normal/H1 error costs. A fixed source constant C with lambda1 sqrt(C)>1/2 makes K_C=ceil(C L^3) sufficient for any prescribed fixed negative Rayleigh margin under the existing off-line-zero hypothesis. The same-aperture first-negative cutoff is at most K_C. Margin, phase selection, and eventual aperture order remain explicit. No margin is moved to first birth.",
+    "The direct projection retains the native endpoint and pole constraints. It is not asserted to retain the original quartic packets additional exact M4=0 even or M3=M5=0 odd constraints, so no theorem needing those extra rows is invoked for the cubic witnesses.",
+    "The resulting negative Ritz direction sees a negative spectral subspace, but need not be the true ground. Its full source-zero residual, possible ground overlap, spectral gap and reciprocal/tied complements remain. At dimension1 no second-eigenvalue filter is needed; the vector is already the ground ray. In higher dimension the filter price includes1/|ground overlap| after normalization.",
+    "At the alternate cubic cutoff the existing moment-normalized inverse synthesis lower costs remain exponential. The forward projection is paid, while a stable ground reconstruction and a signed common-response bound are not supplied. This is not a new claim that actual physical errors attain a worst-case inverse bound.",
+    "The actual remaining mean response F has kernel K=phi triple derivative minus phi double derivative plus phi/4 minus Jphi/16. Its permanent old-prime plateau is -1/16. The complete local signed shell is eventually positive, but its exp(t/2) main term is exactly canceled by the retained old-prime prefix.",
+    "Actual nonnegative source-sector histories each have leading m_K exp(t/2), with m_K>=exp(-B/2)/8. Thus coefficientwise nonnegative majorants cannot provide the required smaller exponent. This does not assert that the signed F has exponent1/2 and does not exclude source-specific signed cancellation.",
+    "The complete F-Selberg relation retains all prime powers, the noncompact source-coordinate term and the delayed history. The independent classical remainder has exact lower-end correction -1/4. At a hypothetical actual right zero, the full Laurent calculation retains the same nonzero double pole of tF; its simple-pole terms cancel exactly. No exponent improvement follows from the extra half-zero alone."
+  ],
+  "workflow_harvest": {
+    "snapshot_utc": "2026-11-02T08:04:14.081792+00:00",
+    "runs": 24,
+    "attempts": 24,
+    "jobs": 94,
+    "successful": 88,
+    "running": 4,
+    "optional_skipped": 2,
+    "failed": 0,
+    "new_result": "Round2 aggregate125139063624/run41378780684 attempt1 passed frozen775 full core compiler composition:125 clauses,40 compiler-use edges and75 explicit control dispositions. Complete9.45MBZIP hash/CRC verified by the delegated harvest. Root read the actual harvest; this is historical subject authority, not a new current1079 or final production qualification.",
+    "actual_disposition": "PASS_FULL_CORE_COMPILER_COMPOSITION_HUMAN_REVIEW_PENDING",
+    "pending": "Round2 generated successor plus Round4 independent CORE/AUXILIARY/CANONICAL were running. Final current-head ACCEPTANCE remains pending. No new review or failed step warranted a source repair."
+  },
+  "drive": "Two complete direct inventories,80 closure files and43 papers, are metadata-unchanged against prior inventories. This is not a recursive whole-Drive census or a fresh content-byte proof; no unchanged paper was redownloaded.",
+  "what_changed": "The suspected disconnect between the fixed response family and genuine negative test directions is removed at finite cutoff. A smaller asymptotic witness cutoff is available on paper. The actual mean arithmetic is now an explicit signed shell-minus-prefix problem with the complete Selberg forcing and endpoint retained.",
+  "upstream_implications": "Use the shared Fourier zero set and native annihilator instead of assuming full-carrier span or unmodulated source equality. Retain noncompact source tails when deriving weighted moments and lower endpoints.",
+  "downstream_implications": "The new source-family adapter supports comparison with actual OPICA witnesses and gives a paper-level first-birth cutoff bound. It does not supply ground-specific frame constants or bound the signed echo.",
+  "resurrected_routes": "The fixed-H family can legitimately be composed with original kappa detectors even at resonant apertures. The former qualitative membership gap is removed; the quantitative signed arithmetic gap remains.",
+  "new_lead": "Any further ground-family comparison can use the paid source-family projection and actual Ritz residual. Its value now depends on obtaining genuine arithmetic overlap/gap or signed two-center information, not another generic recovery formula.",
+  "falsification_checks": "Frequency modulation, projection-filled Fourier slots, full parity metric, H1 derivative costs, exact pole neutrality, cutoff order, first-birth depth transfer, source-sector positivity, noncompact negative-half moments and Selberg lower endpoints were explicitly checked. No same-source coefficient or compensating term was removed.",
+  "highest_leverage_next": "Seek an independent bound on the complete signed arithmetic forcing or source-family kernel. The precise signed Selberg remainder, source-coordinate term and delayed history are exposed. Do not substitute positive source majorants, unpriced ground synthesis, generic injectivity or the off-line-zero consequence itself for that bound.",
+  "implementation_scope": "No repository edits, compiler pins, historical records, source manifests or mandatory workflow cutoffs changed. No new commit or compiler run. The source-only C L^3 witness is not a replacement for the existing Kd acceptance target; its smaller size applies only sufficiently late and gives no claimed practical runtime speedup.",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE",
+  "helper": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\seal_source_family_forcing_pass.py",
+    "sha256": "81d63d4ae5fb28c803a303b706551353f3dd6879576e4836502c871fc111c967",
+    "bytes": 11938
+  }
+}

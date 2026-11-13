@@ -1,0 +1,146 @@
+{
+  "status": "DERIVED_FIXED_K3_REDUCTION_AND_CURRENT_AUXILIARY_HARVEST",
+  "created_utc": "2026-11-02T10:37:00.401923+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "clean_worktree": true,
+  "result": "Under an actual off-line zero, each of the two actual native K=3 scalar energies has strict positive and negative values beyond every aperture threshold. This is new paper-derived mathematics with independent review, not a new Lean theorem. The all-aperture least negative cutoff is consequently3 under that hypothesis; its predecessor is zero-dimensional, so inherited stationarity does not close the problem.",
+  "stronger_corollary": {
+    "label": "DERIVED",
+    "statement": "An eventual polynomial lower bound for either actual raw K=3 energy, or either unit native K=3 ground eigenvalue, implies RH. Consequently any off-line zero rules out every such eventual lower bound.",
+    "proof": "Suppose Q_p(L)>=-C L^a eventually. Multiply by the exact positive L^9 or L^7 scale in the bound derivation and dominate the lower envelope by Cprime L^n on L>=1, with integer n>=0. For unit eigenvalues first multiply by the full positive norm polynomial N_p(L). The resulting scaled X_p plus that polynomial is an eventually nonnegative density. Its genuine safe Laplace transform differs from the complete transform in K4 only by a polynomial-tail transform, holomorphic on Re(s)>0, and an explicit finite-prefix entire function. The nonzero p0 singularity from K5 survives; the full positive-real continuation survives too. K6 therefore contradicts eventual nonnegativity using the existing positive-Laplace boundary theorem. This does not prove the lower bound itself.",
+    "peer_scope": "Repo_map checked this corollary in messages after freezing the main note. Root independently checked the full argument; the separate bound review concerns the frozen base derivation."
+  },
+  "root_review": {
+    "read": "All G1-G6, J1-J5 including J4b, fixed-K3 K1-K7, arithmetic K1-K6, and selected complete AUX harvest dispositions.",
+    "checks": "Actual native moving Gram and pole normal; full-contact versus predecessor inverse; literal source Taylor factor2; both Arch endpoint cancellations; exact finite K3 coefficients and norms; full all-zero summability and contour bound; multiplicity-preserving p/-p aggregation; finite same-height rightmost selection only; complete constant channel; genuine positive Laplace domain and finite-prefix correction.",
+    "algebra": {
+      "even": {
+        "b_beta_constant": [
+          [
+            "-35/4",
+            "85/4"
+          ],
+          [
+            "77/10",
+            "34/5"
+          ],
+          [
+            "-49/20",
+            "-321/20"
+          ]
+        ],
+        "norm_beta2_beta_constant": [
+          924,
+          1512,
+          1764
+        ],
+        "atom_half_beta2_beta_constant": [
+          20,
+          -360,
+          540
+        ]
+      },
+      "odd": {
+        "b_beta_constant": [
+          [
+            "25/12",
+            "145/12"
+          ],
+          [
+            "47/15",
+            "-52/15"
+          ],
+          [
+            "-127/60",
+            "-261/20"
+          ]
+        ],
+        "norm_beta2_beta_constant": [
+          84,
+          392,
+          724
+        ],
+        "atom_half_beta2_beta_constant": [
+          -20,
+          120,
+          300
+        ]
+      }
+    },
+    "calculation_scope": "Exact finite rational/integer coefficient checks only, not an all-aperture arithmetic positivity experiment.",
+    "external_reference": "Classical Landau boundary statement also independently checked in Chuji Tanaka, Note on Laplace-Transforms,1951,p43: https://www.jstage.jst.go.jp/article/jjm1924/21/0/21_0_43/_pdf/-char/en . The current repository PositiveLaplaceBoundary theorem supplies the formal general engine; new K3 continuation composition remains unformalized."
+  },
+  "ci": {
+    "snapshot_utc": "2026-11-02T10:09:19Z",
+    "runs": 24,
+    "attempts": 24,
+    "jobs": 94,
+    "success": 90,
+    "running": 2,
+    "optional_skipped": 2,
+    "failed": 0,
+    "new_completed_job": 125141213445,
+    "run": 41378780656,
+    "attempt": 1,
+    "disposition": "Current-source independent AUXILIARY replay PASS:1079 declarations/90 modules/84 intended semantic errors; exact type/axiom digest equals current producer. Six numerical certificates preserve mathematical dispositions and10012 interval comparisons. Provider remains policy-only; conditional replay claims remain conditional.",
+    "artifact_limit": "Selected transport-bound members were independently range-read and hash-checked. Whole819094066-byte archive was not locally downloaded or whole-ZIP hash-verified.",
+    "remaining": "Independent CORE125141213444 and Round2 generated125159484505 were still running. Full final acceptance not established."
+  },
+  "next_action": "Attack the complete explicit K3 scalar in ACTUAL_FIXED_K3_ARITHMETIC_SCALARS.json for an independent eventual polynomial lower bound, preserving full regularized Arch and all prime powers. Positive sin6 base, pointwise atom sign, a finite grid, or a generic contraction supplies no such bound. In parallel, scope the new fixed-K3 source-transform/continuation adapter against the existing PositiveLaplaceBoundary and actual zero-sum interfaces; no claim promotion before compilation and complete validation.",
+  "limits": [
+    "No same-aperture simultaneous parity negativity was proved.",
+    "No new independent arithmetic lower bound, stationary-crossing exclusion, or RH theorem.",
+    "No repository edits, compiler invocation, broad tests, commit or push in this research pass."
+  ],
+  "evidence": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\global-least-native-cutoff\\ACTUAL_GLOBAL_LEAST_NATIVE_CUTOFF.json",
+      "sha256": "a5a5b3fc9453c8204e255f110486a2f06494551f4ffeee893b523ceb5cdbe251",
+      "bytes": 18076
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\global-least-native-cutoff\\INDEPENDENT_PRIME_MATH_GLOBAL_CUTOFF_REVIEW.json",
+      "sha256": "a8232f57a942b0f30db04bd2f9befa53d1c50e6660d6c4e8fb8ad3eaf2868249",
+      "bytes": 9421
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\global-least-native-cutoff\\ACTUAL_FRESH_NATIVE_CONTACT_SOURCE_SCALAR.json",
+      "sha256": "1430cb3cbecad9064c89336a0ba61dc014f6d408c524caf90ee29c181f5ea249",
+      "bytes": 15485
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\global-least-native-cutoff\\INDEPENDENT_FRESH_NATIVE_SOURCE_SCALAR_REVIEW.json",
+      "sha256": "453551025a71f310401a4c5915ebd84069fec06bcfa0e7e433961f4d590ae4fe",
+      "bytes": 7420
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_FIXED_K3_APERTURE_LANDAU_DERIVATION.json",
+      "sha256": "493530834a96fe6f19d4876a253044249a27a9afa25cda84fcfdc1e74ea888ca",
+      "bytes": 20564
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\INDEPENDENT_FIXED_K3_APERTURE_REVIEW.json",
+      "sha256": "c2e85a34a11833af9a024093be9e61f13b7e1f882d06873a9e56eeb8c88b2f68",
+      "bytes": 11240
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_FIXED_K3_ARITHMETIC_SCALARS.json",
+      "sha256": "204b26b07fb3109f010af2c1ca49b72a7c1a4e0a3082eca9ff2366ade9c96899",
+      "bytes": 13261
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\CHECKPOINT.json",
+      "sha256": "24f0e2e23de23d13f52b4ef88e5b3fed42371a11f665de2fc8ac5c502d0eabd9",
+      "bytes": 27512
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next15\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "a763ab9466a34fbe134f5fbac87292a77c94226998d44f90b5ce9cc4f19e1b44",
+      "bytes": 24000
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE"
+}

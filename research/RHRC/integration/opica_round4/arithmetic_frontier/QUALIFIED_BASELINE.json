@@ -1,0 +1,222 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_QUALIFIED_BASELINE_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "COMPACT_RECEIPT_INDEX_REFERENCING_FULL_CI_ARTIFACTS_NOT_A_SUBSTITUTE",
+  "head": "dab9fbea4d17a3ab5977318a55ce71b55fe7cfa9",
+  "tree": "22d12e5e75327155f471b53e839ac0d5037e7c6c",
+  "base": "09ac22e48bb0683437572509abdf2ddec520b7ac",
+  "pr": "HMarcusWH/zeta-23-lean#299",
+  "pr_state": "open, draft, unmerged",
+  "full_release_human_review": "NOT_ESTABLISHED",
+  "workflows": {
+    "total": 24,
+    "success": 24,
+    "check_runs": 97,
+    "check_run_success": 95,
+    "check_run_skipped": [
+      "wp4-k3-fourth-order-alternative",
+      "post287-full-k3"
+    ]
+  },
+  "round4": {
+    "run_id": 42438907841,
+    "attempt": 1,
+    "acceptance": {
+      "status": "PASS_DECLARED_INTEGRATED_SCOPE",
+      "full_release_human_review": "NOT_ESTABLISHED",
+      "groups": {
+        "CORE": "success",
+        "AUXILIARY": "success",
+        "CANONICAL": "success"
+      },
+      "independently_reconstructed_lanes": 11,
+      "artifact_sha256": "91376e7369212b99bd8ffdd527f364a6696fa71ae661e7511aff5e01e2a58e19"
+    },
+    "mathematical_support": {
+      "status": "PASS_MATHEMATICAL_SUPPORT",
+      "native_status": "PASS",
+      "execution_mode": "PRODUCTION_ISOLATED",
+      "lean": "4.33.0-rc2 d8b18978322d",
+      "modules": 101,
+      "declarations": 1213,
+      "roots": 1213,
+      "semantic_mutations": 100,
+      "mutation_error_count": 100,
+      "every_control_exactly_one_error": true,
+      "error_kinds": {
+        "Type mismatch": 74,
+        "Application type mismatch": 26
+      },
+      "axiom_sets": {
+        "propext,Classical.choice,Quot.sound": 1201,
+        "propext,Quot.sound": 12
+      },
+      "types_and_axioms_sha256": "1856a1feeb10174ce50d851bcb2e6d1df6bbd9ec771e8974e84319a2f73fbf7f",
+      "new_3F_declarations_present": 27,
+      "gate_elapsed_ms": 697060,
+      "artifact_sha256": "f589e111c589c8de1c77726b5ac9152aadde6b97f743abb88126cc713fdc2cf5"
+    },
+    "contract": {
+      "tests": "135/135 normal and optimized, 0 skips",
+      "support_declarations": 1213,
+      "mandatory_requirements": 41
+    },
+    "semantic_negatives": {
+      "tests": "19/19 normal and optimized, 0 skips",
+      "native_receipts": "8 PROVED_CONDITIONAL on CofinalNewbornPacket/CofinalSchurPacket"
+    },
+    "source_numerics": {
+      "status": "PASS_RECOMPUTED_FINITE_SOURCE_EVALUATOR",
+      "authority": "FINITE_INTERVAL_EVIDENCE_ONLY",
+      "independent_cases": 6,
+      "contained_interval_comparisons": 10012,
+      "frontier_native_tests": "36 OK normal and optimized",
+      "frontier_acceptance_kernel_tests": "24 OK normal and optimized"
+    },
+    "generated_state": {
+      "status": "PASS_GENERATED_STATE",
+      "materializer_check_exit": 0,
+      "canonical_products": 81,
+      "mismatches_vs_committed_dab9fbe": 0
+    },
+    "current_compatibility": {
+      "status": "PASS_CURRENT_COMPATIBILITY",
+      "declarations": 462,
+      "required_root_memberships": 221
+    },
+    "composition_formal_attempts": {
+      "total": 82,
+      "PROVED_CONDITIONAL": 60,
+      "TYPE_REJECTED_THIS_APPLICATION": 14,
+      "UNRESOLVED": 4,
+      "RESOURCE_EXHAUSTED": 2,
+      "ENVIRONMENT_ERROR": 2,
+      "note": "every non-proved attempt is on a planted qualification fixture target (ForgedGoal, MismatchedWitness, SeparateWitness, ClassObligation, Identity with missing import, Empty with maxHeartbeats 1); all mathematical targets (CofinalNewbornPacket, CofinalSchurPacket, INTEGRATION_*) PROVED_CONDITIONAL"
+    },
+    "replay_campaign_attempts": {
+      "total": 14,
+      "PROVED_CONDITIONAL": 14
+    }
+  },
+  "round2": {
+    "run_id": 42438907806,
+    "acceptance": "PASS_COMPILER_EVIDENCE_ONLY",
+    "scope": "frozen Round2 baseline 775692f2e72d76b6a97cf66926a86cc96342c109 (tree acd548eb); current_tree_compiler_accepted false; dab9fbe enters only as REQUESTED_ROUND4_CHILD_HEAD",
+    "generated_job_scope": "REQUESTED_HEAD 775692f2 (historical); current-head products are verified by Round4 GENERATED_STATE, not by Round2"
+  },
+  "followup": {
+    "run_id": 42438908007,
+    "summary": "PASS_REQUIRED_CHILD_LANES_POST_COMPLETION_RELEASE_REVIEW_REQUIRED",
+    "scope": "REQUESTED_HEAD fe16565b (merged Round3 parent); dab9fbe as Round4 child source scope; narrow 28-unit gate, not 100-root release"
+  },
+  "source_inertia_research": {
+    "run_id": 42438907868,
+    "k3_q14_gate": "UNRESOLVED",
+    "frozen_boxes": 18,
+    "tested_boxes": 7,
+    "boxes_pass": 6,
+    "boxes_unresolved": 1,
+    "unresolved_subboxes": 5,
+    "precision_bits": 384,
+    "elapsed_s": 600.55,
+    "certified_negative_stop": false,
+    "all_aperture_positivity_certified": false,
+    "wp6_signed_ray": "FALSIFIED_AT_BOUNDED_TRUE_SOURCE_APERTURES (EXPERIMENTAL_SIGNAL)",
+    "artifact_sha256": "e2bd3711925a7eb23219c46fd703e2bdb85471d19136992427ed9e9ed705d98e"
+  },
+  "superseded_2fc6eee": "21/24 success; Round4, follow-up and Round2 cancelled by the dab9fbe push (cancellation cascade only)",
+  "qualified_scope": "Contracts M1-M53 and the 101-module / 1213-declaration / 100-control gate at this exact head. M51-M53 are qualified in their general algebraic scope; native instantiation, the enclosure bridge and every closing supplier remain OPEN.",
+  "independent_inspection": "research/RHRC/integration/opica_round4/arithmetic_frontier/revision3/receipts/qualified_baseline_receipt_review.json",
+  "successor_rule": "A successor head obtains its own complete gates; this baseline is not borrowed.",
+  "successor_harvest_b3afa61": {
+    "head": "b3afa611d3181f38c2d3c8a69c64d318ee2ea6d7",
+    "tree": "d0a6b1ad78523c23834eb01f57f4910a22e30d3b",
+    "authority": "SINGLE_READER_HARVEST_NOT_AN_INDEPENDENT_RECEIPT_INSPECTION",
+    "workflows": {
+      "total": 24,
+      "success": 24,
+      "check_runs": 97,
+      "check_run_success": 96,
+      "check_run_skipped": [
+        "post287-full-k3"
+      ]
+    },
+    "round4": {
+      "run_id": 42539385910,
+      "acceptance": "PASS_DECLARED_INTEGRATED_SCOPE",
+      "full_release_human_review": "NOT_ESTABLISHED",
+      "independent_groups": {
+        "CORE": "success",
+        "AUXILIARY": "success",
+        "CANONICAL": "success"
+      },
+      "independently_reconstructed_lanes": 11,
+      "acceptance_artifact_sha256": "343a67094cdef7413899dbe11781201fd418389b0b64fc05a8606c2cb8bf2cc6",
+      "mathematical_support": {
+        "modules": 107,
+        "declarations": 1321,
+        "module_exit_nonzero": 0,
+        "source_hash_mismatches_vs_checkout": 0,
+        "types_and_axioms_identical_to_local_gate": true,
+        "axiom_sets": {
+          "propext,Classical.choice,Quot.sound": 1309,
+          "propext,Quot.sound": 12
+        },
+        "semantic_mutations": {
+          "total": 113,
+          "shard_limit": 90,
+          "shards": {
+            "01": [
+              84,
+              84,
+              "110 s"
+            ],
+            "02": [
+              29,
+              29,
+              "4.9 s"
+            ]
+          },
+          "error_kinds": {
+            "Type mismatch": 82,
+            "Application type mismatch": 31
+          },
+          "oom_or_pid_events": 0
+        },
+        "artifact_sha256": "51f5a96836fa1d1144698cc5a5c84005a8e072315849dd8110f470faeb323f5e"
+      },
+      "source_numerics": {
+        "status": "PASS_RECOMPUTED_FINITE_SOURCE_EVALUATOR",
+        "authority": "FINITE_INTERVAL_EVIDENCE_ONLY",
+        "contained_interval_comparisons": 10012,
+        "frontier_native_tests": "40 OK normal and optimized, 0 skips",
+        "frontier_acceptance_kernel_tests": "24 OK both modes",
+        "source_tests": 18,
+        "source_research_tests": 5,
+        "artifact_sha256": "77e4cc6c65063ca39e425bba4c686659329955ff8009a7e422f53fb2c5a63eab"
+      },
+      "contract": {
+        "status": "PASS_CONTRACT_ONLY",
+        "tests": "PASS both modes, 0 failures, 0 errors"
+      },
+      "generated_state": {
+        "status": "PASS_GENERATED_STATE",
+        "canonical_products": 81,
+        "mismatches_vs_committed_b3afa61": 0
+      }
+    },
+    "round2": {
+      "run_id": 42539385964,
+      "conclusion": "success",
+      "note": "generated job: 81 products inspected, independent regeneration passed; scope is the frozen historical Round2 baseline (not re-harvested)"
+    },
+    "followup": {
+      "run_id": 42539385916,
+      "conclusion": "success",
+      "note": "narrow 100-root / 28-unit scope, not full-release acceptance"
+    },
+    "qualified_scope": "Contracts M1 to M59 and the 107-module / 1321-declaration / 113-control gate at this exact head, in the sense of an all-green same-head CI run whose lane artifacts were read. Every closing supplier remains OPEN.",
+    "relation_to_this_baseline": "The dab9fbe baseline above is not rewritten and not borrowed; this block is an additional receipt index."
+  }
+}

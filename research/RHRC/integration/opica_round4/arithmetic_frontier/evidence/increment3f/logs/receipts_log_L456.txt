@@ -1,0 +1,7 @@
+{"state": "L4_even_half", "inverse_residual": 4, "agree": true, "mismatches": [], "seconds": 12.5}
+{"state": "L4_odd_half", "inverse_residual": 4, "agree": true, "mismatches": [], "seconds": 13.1}
+{"state": "L4_even_1024", "inverse_residual": null, "agree": true, "mismatches": [], "seconds": 13.0}
+{"state": "L5_even_third", "inverse_residual": 8, "agree": true, "mismatches": [], "seconds": 102.1}
+{"state": "L5_odd_third", "inverse_residual": 8, "agree": true, "mismatches": [], "seconds": 109.2}
+{"state": "L6_even_quarter", "inverse_residual": 16, "agree": false, "mismatches": [["GEOMETRIC_TAIL_LADDER/128", "UNKNOWN_PRECISION", null]], "seconds": 758.1}
+{"state": "L6_odd_quarter", "inverse_residual": 16, "agree": false, "mismatches": [["GEOMETRIC_TAIL_LADDER/128", "UNKNOWN_PRECISION", null]], "seconds": 759.5}

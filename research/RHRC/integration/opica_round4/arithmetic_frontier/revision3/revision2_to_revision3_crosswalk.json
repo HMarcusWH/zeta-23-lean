@@ -1,0 +1,153 @@
+{
+  "schema": "PR299_BUILD_REVISION_CROSSWALK_V1",
+  "authority": "PLANNING_NOT_PROOF",
+  "from": "revision2_2026-11-07",
+  "to": "revision3_2026-11-08",
+  "qualified_head": "dab9fbea4d17a3ab5977318a55ce71b55fe7cfa9",
+  "sections": [
+    {
+      "revision2_section": 1,
+      "revision2_title": "Decision and changes from the original plan",
+      "revision3_section": 1,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Update baseline and completion status; preserve A–H; add U1–U8 and coarse-target priority."
+    },
+    {
+      "revision2_section": 2,
+      "revision2_title": "Standing mathematical and operational rules",
+      "revision3_section": 2,
+      "disposition": "RETAINED",
+      "change": "Retain exact-source, proof-state and mutation-safety requirements."
+    },
+    {
+      "revision2_section": 3,
+      "revision2_title": "Closing contracts — retain all OR branches",
+      "revision3_section": 3,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Preserve C1/packet/C2/K3/causal; add DERIVED PG/SE/AD/SB/C2-SE with separate quantifier orders."
+    },
+    {
+      "revision2_section": 4,
+      "revision2_title": "Preserve and qualify the implemented Lean layer",
+      "revision3_section": 4,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Preserve qualified M43–M53; distinguish generic statements from native applications."
+    },
+    {
+      "revision2_section": 5,
+      "revision2_title": "Increment 2B — repair numerical acceptance and evidence semantics",
+      "revision3_section": 5,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Treat repairs as completed invariants; preserve R1–R12, witnesses and unresolved outcomes."
+    },
+    {
+      "revision2_section": 6,
+      "revision2_title": "Work package A — source, constraint and history reconciliation",
+      "revision3_section": 6,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Refresh membership and new-source coverage; reconcile qualified status without editing historical proof claims."
+    },
+    {
+      "revision2_section": 7,
+      "revision2_title": "Work package B — exact carriers, metrics and consumers",
+      "revision3_section": 7,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Reuse carriers/metrics; specify new growth and semibounded consumer proof chain and controls."
+    },
+    {
+      "revision2_section": 8,
+      "revision2_title": "Work package C — independent finite certification",
+      "revision3_section": 8,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Retain four assurance levels; M52 qualifies exact rules, not all numerical/native bridges."
+    },
+    {
+      "revision2_section": 9,
+      "revision2_title": "Work package D — complete coupled-response experiments",
+      "revision3_section": 9,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Preserve certificate families; use E-D1/E-H7 as frozen baselines; target growth or source-bound laws."
+    },
+    {
+      "revision2_section": 10,
+      "revision2_title": "Work package E — source-core and mixed approximation support",
+      "revision3_section": 10,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Reuse M53/C4; add native physical adapter and source-guided L5 core/cross-band results; kernel audit optional."
+    },
+    {
+      "revision2_section": 11,
+      "revision2_title": "Work package F — independent native arithmetic information",
+      "revision3_section": 11,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Reuse pole identity; add derived native commutator cancellation; prioritize independent PG/TR2/SB/NB/C2-SE supplier."
+    },
+    {
+      "revision2_section": 12,
+      "revision2_title": "Work package G — adversarial models and experimental discipline",
+      "revision3_section": 12,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Shard rather than omit controls; add quantifier, cross-band, scalar-NB, and product/lcm countermodels."
+    },
+    {
+      "revision2_section": 13,
+      "revision2_title": "Work package H — unbounded availability and terminal composition",
+      "revision3_section": 13,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Prove coverage appropriate to selected branch, not automatically vanishing errors."
+    },
+    {
+      "revision2_section": 14,
+      "revision2_title": "Data and schema requirements",
+      "revision3_section": 14,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Extend existing registers with growth/quantifier and assurance fields; compact receipt index."
+    },
+    {
+      "revision2_section": 15,
+      "revision2_title": "Lean module roadmap",
+      "revision3_section": 15,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Separate qualified modules, new consumers, pending native adapters, optional bridges and open supplier."
+    },
+    {
+      "revision2_section": 16,
+      "revision2_title": "Integration, tests and workflow qualification",
+      "revision3_section": 16,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Preserve closed manifest/protections and same-attempt evidence; add sharded controls and compact summary."
+    },
+    {
+      "revision2_section": 17,
+      "revision2_title": "Revised execution order",
+      "revision3_section": 17,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "4A–4D bounded reconciliation/native applications alongside 5A research; 5B supplier; 6 closure."
+    },
+    {
+      "revision2_section": 18,
+      "revision2_title": "Post-Green Research Pass and delivery requirements",
+      "revision3_section": 18,
+      "disposition": "RETAINED",
+      "change": "Retain all nine post-green headings, and reclassify failed routes under coarse targets."
+    },
+    {
+      "revision2_section": 19,
+      "revision2_title": "Source register for this revision",
+      "revision3_section": 19,
+      "disposition": "RETAINED_AND_UPDATED",
+      "change": "Provide exact updated source map, review coverage and predecessor crosswalk."
+    }
+  ],
+  "all_original_packages_retained": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "no_silent_closure_claim": true
+}

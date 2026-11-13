@@ -1,0 +1,32 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_NEARBAND_BOUND_V1_POLE_CALIBRATION",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "state": "L=2, K=16",
+  "relative_max_error": {
+    "even": 6.388456390336807e-18,
+    "odd": 2.651448834963951e-16
+  },
+  "statement": "sum over w = +-1/2 of the calibrated mode-transform form reproduces the native pole channel",
+  "explicit_formula": {
+    "authority": "EXPERIMENTAL_SIGNAL",
+    "state": "L=2, K=16",
+    "zeros": 400,
+    "largest_ordinate": 679.7421978825282,
+    "rows": {
+      "even": {
+        "max_abs_native": 4.714767243998965,
+        "max_abs_error_all_zeros": 0.01068559211024489,
+        "max_abs_error_half_zeros": 0.016615700855287407
+      },
+      "odd": {
+        "max_abs_native": 4.678535314351303,
+        "max_abs_error_all_zeros": 1.7268693600414053e-05,
+        "max_abs_error_half_zeros": 7.742731092275079e-05
+      }
+    },
+    "statement": "pole - arch - prime agrees with the truncated zero sum in the calibrated convention; the error decreases as zeros are added (explicit-formula representation; tail not bounded)"
+  },
+  "tool_sha256": "0dce48ca3ca03fb1cfe4928fee0b348fd08cbed25c0a8c5549d0c88346f5169b"
+}

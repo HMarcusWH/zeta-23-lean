@@ -1,0 +1,128 @@
+{
+  "status": "COMPLETE_BOUNDED_NATIVE_QUARTIC_AND_SOURCE_FLUX_PASS_STEP4_NOT_CLOSED",
+  "created_utc": "2026-11-02T05:39:33.299986+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "previous_goal_turn": "PROGRESS: new actual signed sector restriction, certified completion counterexample and exact pole/native formula changed the next mathematical test. This turn investigated its unresolved growing-cutoff limit rather than restating the goal.",
+  "current_goal_turn": "PROGRESS: paid uniform quartic-cutoff error with explicit constants; established the exact projected source flow and identified sum-versus-difference interface; harvested two new current Linux lanes.",
+  "records": {
+    "prior_signed_echo_pass": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\SIGNED_ECHO_RESEARCH_COMPLETION.json",
+      "sha256": "edf3af17db89102b9e3f7a0c1afc6ed0b40a56fbf50e8f1a9f218cbb5d7c0eb1",
+      "bytes": 13376
+    },
+    "uniform_native_cost": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\UNIFORM_NATIVE_QUARTIC_ENDPOINT_COST.json",
+      "sha256": "b74264d1df89bdd0fbbf2bc2a29e7f2c68ad1a24ef57c219a97d9a24e0ebfb6c",
+      "bytes": 14908
+    },
+    "independent_uniform_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\INDEPENDENT_UNIFORM_NATIVE_COST_REVIEW.json",
+      "sha256": "cb0caf0d174cae51847b5445cf3aadce5ab01db9638f3960f5d2d8cf1ecc22d7",
+      "bytes": 12412
+    },
+    "exact_Gram_certificates": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\UNIFORM_GRAM_EXACT_POLYNOMIAL_CERTIFICATES.json",
+      "sha256": "a2fa8556d435e19c5007032f988f7775fa46157d35171d038381d90a6fbdce10",
+      "bytes": 5323
+    },
+    "exact_source_flux": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\fixed-input-source-flux\\ACTUAL_FIXED_INPUT_SOURCE_FLUX.json",
+      "sha256": "d4461dab4a0ce76634a5ed4acb4cc4ba8a04f169c9cbc09649e5a3725e64f451",
+      "bytes": 11020
+    },
+    "source_flux_completion": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\fixed-input-source-flux\\COMPLETION.json",
+      "sha256": "e1e5f6542f514741691f1e53043357aeb4fb20e5a98003fa30c095932c100975",
+      "bytes": 2363
+    },
+    "source_flux_bindings": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\fixed-input-source-flux\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "ad634b16e2db56c224912af3f4b5606819e208b022a275d5836b5079383b9e5a",
+      "bytes": 9962
+    },
+    "independent_source_flux_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\fixed-input-source-flux\\INDEPENDENT_LATE_MATH_SOURCE_FLUX_REVIEW.json",
+      "sha256": "11746c9e008610e864b26535ea0aa8fda19faada536391789e1e0a1f084c2d0d",
+      "bytes": 10029
+    },
+    "current_CI_snapshot": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next5\\CHECKPOINT.json",
+      "sha256": "57c2e75050f063293e3942efe3fc2e570b95f0e3ef2e626e8cc33f6bc8205323",
+      "bytes": 45469
+    },
+    "current_CI_harvest": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next5\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "f41e5f988c3590f014cdc3df422826077ca9135987e3a4287da6957bdbb996fc",
+      "bytes": 19824
+    },
+    "root_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\ROOT_UNIFORM_COST_AND_SOURCE_CURRENT_REVIEW.json",
+      "sha256": "31ce3977efbb5a77bff3280ffe2087ee2e16595c851bc419f95950d126dd45a4",
+      "bytes": 7334
+    }
+  },
+  "direct_embedded_hashes_checked": 158,
+  "unique_paths_checked": 110,
+  "what_became_formally_true": "No new Lean theorem in this pass. Two actual current-head Linux lanes passed their registered scopes. New mathematical conclusions are DERIVED and independently reviewed; eight exact rational certificates check the finite Gram arithmetic.",
+  "new_derived_results": [
+    "The complete finite signed cost now has a genuinely uniform endpoint expansion at L>=16,K=ceil(L^4), with constant2^20 and errors (A\u00b2+B\u00b2)/L6+(|A|+|B|)M1/L4+M1\u00b2/L5. All pole Schur complements and full Fourier tails are included.",
+    "The actual fixed-source derivative envelope pays M1<=C1 exp(Theta L), including Theta=1/2. This gives error O_source(exp(2Theta L)/L4), not an independent arithmetic closing bound.",
+    "Projecting actual source translations gives an exact one-normal correction in the odd input equation. It cannot be silently replaced by a cost-free transport between the parity spaces.",
+    "The squared rank-one source identity controls the energy SUM as endpoint flux minus the derivative of the full removed-norm SUM. The desired energy DIFFERENCE involves the squared anticommutator and retains an interior covariance.",
+    "Both leading source scalars are explicit complete-output Gram functionals. This retains their actual prime/Arch dependence and does not confer a favorable sign."
+  ],
+  "workflow_harvest": {
+    "snapshot_utc": "2026-11-02T05:19:58.961048+00:00",
+    "runs": 24,
+    "jobs": 86,
+    "success": 76,
+    "running": 7,
+    "queued": 1,
+    "optional_skipped": 2,
+    "failed": 0,
+    "newly_harvested": [
+      "REPLAY_CAMPAIGN",
+      "CURRENT_COMPATIBILITY"
+    ],
+    "replay": "17/17 ordinary and optimized tests;14 selected conditional native receipts exit0 for exact CofinalNewbornPacket target. The off-line-zero hypothesis remains.",
+    "compatibility": "462 declarations/696 memberships/29 actual Linux batches passed;153 source hashes match current7bae and mathematical95bf baseline; only allowed axiom sets. Not the pending1079-declaration mathematical-support gate.",
+    "comparison": "Replay semantic receipts match prior7483 apart from log binding. No cached prior raw462-row receipt found; no old compiler-row equality claimed.",
+    "artifact_limit": "9652770 bytes of authenticated selected ranges inspected and selected member hashes checked. Whole304752888/33389593-byte artifact ZIPs and full inner payloads were not locally hash-verified.",
+    "runtime_repair": "Actual guarded cleanup recovered18006028288 and18006024192 bytes before the successful services; this is execution evidence on these two runners only.",
+    "full_current_qualification": "PENDING"
+  },
+  "what_changed": "The previously fixed-L-only endpoint statement now has a uniform native-cutoff remainder. The source-transport calculation exposes exactly where the desired signed inequality is absent rather than assuming the parity coupling supplies it.",
+  "upstream_implications": "Keep projected input normals, the conjugate-first metric, and separate signed/unsigned removed norms. Finite pole neutrality and physical full neutrality are related by retained tails, not interchangeable data.",
+  "downstream_implications": "The uniform cost can now be composed at the prescribed cutoff without changing limits. Its dominance needs relative derivative control; even that would not by itself bound the entire signed canonical response.",
+  "resurrected_routes": "The endpoint expansion is now legitimate for growing apertures. The exact source-current route is also legitimate, but it supplies a sum/boundary-flux identity, not the missing difference inequality.",
+  "new_RH_relevant_clues": {
+    "label": "LEAD",
+    "statement": "A successful source-specific estimate must restrict the complete squared anticommutator/interior covariance together with the signed finite cost. Gevrey frequency localization may sharpen relative endpoint errors, but this auxiliary task is not the Step4 closing premise."
+  },
+  "falsification_checks": "No fixed-L constants are treated as uniform; no limsup rate is converted into polynomial-height excursions; no sum identity is applied to a difference; no input flatness is applied to output moments; no ground hypothesis is assigned to fixed translated inputs.",
+  "highest_leverage_next_moves": [
+    "Use the complete source and earlier arithmetic restrictions to test a specific signed inequality for the remaining interior covariance. Merely reexpressing it or controlling separate positive energies cannot close Step4.",
+    "If endpoint dominance is pursued, pay relative derivative or local-frequency control on actual excursions, without assuming an attained rightmost zero. Keep it labeled auxiliary unless it yields a bound for the full response.",
+    "Continue exact-head CI qualification and triage actual failures; preserve the distinction between checked infrastructure/support and the unproved closing theorem."
+  ],
+  "completion_audit": "The required independent arithmetic restriction and exact closing theorem are still unproved. Supporting derivations and new CI passes do not satisfy the objective. Goal remains ACTIVE; RH/Step4 remain OPEN.",
+  "repository_edits": false,
+  "commits": 0,
+  "new_Lean_declarations": 0,
+  "new_compiler_runs": 0,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE",
+  "seal_script": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\seal_uniform_covariance_pass.py",
+    "sha256": "98678079e37e3eb86f4567c95d75a1c256040c07356d13a1932095eb30fb7ab0",
+    "bytes": 13980
+  },
+  "exact_Gram_certificate_script": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\check_uniform_gram_polynomials.py",
+    "sha256": "57d3acda68c04620730a33ae3614224fc6b78b35c839b50c23e23ba165b95ef8",
+    "bytes": 2738
+  }
+}

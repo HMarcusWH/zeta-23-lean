@@ -1,0 +1,114 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_CORRECTIONS_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "scope": "Scoped corrections of Increment 2 claims after the revision-2 review (head c27abd86b2371b080e3b193ca359438ad008711c). Original records are preserved unchanged in evidence/increment2 with their producer bytes; regenerated records are in evidence/increment2b. A correction applies only to its named claim and scope; no valid native endpoint is assumed false.",
+  "review": "PR299_Full_Build_Instructions_v2_2026-11-07 (findings R1-R9)",
+  "corrections": [
+    {
+      "id": "R1",
+      "claim": "Bottoms are positive but super-exponentially small across the tested states; ln(lambda_min)/K law.",
+      "finding": "At L=5 and L=6 only shifted lower bounds and positive Rayleigh UPPER bounds exist; a positive Rayleigh value is not a positive lower bound on the slice. Finite brackets do not establish an asymptotic law.",
+      "disposition": "CORRECTED_WORDING",
+      "retained": "Positive brackets only at L=2, 9/4, 5/2 (archive) and L=4 (dedicated 1024-bit brackets), each a bounded claim.",
+      "original_records": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CANDIDATE_RESULTS.jsonl"
+      ],
+      "superseding": "CANDIDATE_RESULTS AF-2026-11-07-14; BUILD_SPEC Increment 2B section",
+      "rerun": "not required (wording); brackets regenerated in increment2b"
+    },
+    {
+      "id": "R2",
+      "claim": "FALSIFIED_BOUND statuses in block_test from floating comparisons (a_le_A, A_le_b).",
+      "finding": "Version 1 assigned FALSIFIED_BOUND from floating eigenvalue comparisons; equality A=[1], a=b=1 takes the falsification path.",
+      "disposition": "SUPERSEDED_BY_REGENERATED_RECORDS",
+      "repair": "certificates.py: FALSIFIED_BOUND only with an exact witness whose enclosed quadratic value is certainly negative; engine v2 bound_test; countercontrol test_equality_at_a_non_strict_bound_is_never_falsified",
+      "original_records": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_even.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L5_even.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/EH6_L6_even.json"
+      ],
+      "rerun": "all block tests regenerated in increment2b; every FALSIFIED_BOUND there carries a certified negative exact witness (CI test)"
+    },
+    {
+      "id": "R3",
+      "claim": "Shifted-factor certificates (certify_psd, certify_shifted).",
+      "finding": "No tau > 0 precondition; A=[-1], tau=-2, R=[1] passes the squared-residual test.",
+      "disposition": "REPAIRED_AND_REVALIDATED",
+      "repair": "certificates.certify_shifted requires finite tau > 0, square symmetric input and an exact factor; countercontrol test_review_negative_tau_control_is_rejected",
+      "note": "All Increment 2 calls used positive shifts; the defect was an unchecked API precondition, not a wrong recorded certificate.",
+      "original_records": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/producer/native_slice.py"
+      ],
+      "rerun": "every endpoint regenerated through the guarded kernel in increment2b"
+    },
+    {
+      "id": "R4",
+      "claim": "Enclosure endpoints and witness norms.",
+      "finding": "The float-based upper()/lower() helpers are not general enclosing endpoints (m=-1+2^-54, r=1-2^-55); some witness denominators used float(np.dot(v,v)).",
+      "disposition": "REPAIRED_AND_REVALIDATED",
+      "repair": "certificates.endpoints uses the exact dyadic midpoint and radius; rayleigh encloses its denominator in the declared Gram; countercontrols test_review_endpoint_control_is_enclosed and test_rayleigh_uses_the_enclosed_norm_of_the_given_gram",
+      "original_records": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/producer/native_slice.py"
+      ],
+      "rerun": "increment2b"
+    },
+    {
+      "id": "R5",
+      "claim": "P4 refuted: the degree-64 certificate passes at q^64/a = 1.29.",
+      "finding": "Version 1 checked the INVERSE_RESIDUAL family (proposed polynomial action, residual-square penalty); the historical certificate is the GEOMETRIC_TAIL family (scalar q^m/a penalty). P4's q^m/a heuristic concerns the latter.",
+      "disposition": "CORRECTED_SCOPE",
+      "retained": "INVERSE_RESIDUAL degree 64 passes at the n=2,3,4 checkpoints. GEOMETRIC_TAIL is now tested separately on the same pencils (increment2b block tests and E-D1); P4 is re-scored per family in E-H6_OUTCOMES_CORRECTED.json.",
+      "original_records": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E-H6_OUTCOMES.json"
+      ],
+      "rerun": "increment2b and E-D1"
+    },
+    {
+      "id": "R6",
+      "claim": "Reproduction of the continued 1/4 high-gap law (fixed_quarter_high_gap).",
+      "finding": "Version 1 tested a shifted block in a Fourier-prefix complement; the historical law concerned an unshifted, genuinely high-support legal subspace. The definition was never imported.",
+      "disposition": "SPLIT_INTO_SEPARATE_IDS",
+      "repair": "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE (new test, own ID) and HIGH_SUPPORT_UNSHIFTED_SLICE (measurement on the exact high-support legal subspace; historical constant still not imported, so no reproduction is claimed)",
+      "original_records": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/EXPERIMENTS.json"
+      ],
+      "rerun": "increment2b"
+    },
+    {
+      "id": "R7",
+      "claim": "Independent replay of the large states.",
+      "finding": "Locked tests reconstructed only the small archive states; large states were checked by hash, stored statements and statuses; the alternative assembly shares the Arb backend.",
+      "disposition": "ASSURANCE_LEVELS_SEPARATED_AND_EXTENDED",
+      "repair": "Level-3 reconstructions (independent exact elimination basis and blocked interval Schur certificate; shared source assembly disclosed) for the L=4 (1/2), L=5 (1/3) and L=6 (1/4) checkpoints in increment2b, both parities. At L=6 the 192-bit attempts ended UNKNOWN_PRECISION (interval radius growth) and are preserved; the 384-bit reruns are CERTIFIED. Level 4 (Lean bridge) remains OPEN; 81 overlapping entries remain corroboration only.",
+      "original_records": [
+        "research/RHRC/integration/opica_round4/tests/test_arithmetic_frontier_native.py"
+      ],
+      "rerun": "increment2b/independent_*.json"
+    },
+    {
+      "id": "R8",
+      "claim": "Near-null count law and its threshold scan.",
+      "finding": "The engine counted |lambda| < delta; the scan counted lambda < delta, which includes negative modes. The comparison is with N_main(T), not a certified zero count.",
+      "disposition": "CORRECTED_STATISTICS",
+      "repair": "engine v2 records abs, signed and negative counts per threshold and names N_main(T); P8 keeps its timing caveat; no prospective rule is restated without fixed constants.",
+      "original_records": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/nullcount_scan_L6.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/E-H6_PREDICTIONS_ADDENDUM.json"
+      ],
+      "rerun": "increment2b spectral_statistics"
+    },
+    {
+      "id": "R9",
+      "claim": "Corrected flag coordinates treated as physically orthonormal; coordinate gaps read as physical gaps.",
+      "finding": "The corrected basis carries its own full Gram with nonzero cross blocks.",
+      "disposition": "CORRECTED_LABELS",
+      "repair": "Endpoint statements use the full pencil F + eps G; block statements are labelled COORDINATE, with PHYSICAL generalized extremes relative to the block's own Gram reported separately; countercontrol test_dropping_gram_cross_blocks_changes_the_physical_claim",
+      "original_records": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/evidence/increment2/L4_even.json"
+      ],
+      "rerun": "increment2b"
+    }
+  ]
+}

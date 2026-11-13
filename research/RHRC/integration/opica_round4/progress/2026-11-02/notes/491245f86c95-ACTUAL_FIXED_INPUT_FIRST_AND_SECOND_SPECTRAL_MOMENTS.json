@@ -1,0 +1,130 @@
+{
+  "status": "DERIVED_ACTUAL_FIXED_INPUT_SPECTRAL_MOMENTS_AND_SQUARED_RESPONSE_COST",
+  "created_utc": "2026-11-02T04:39:45.254521+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "sections": [
+    {
+      "title": "M1: Same actual input and complete operator",
+      "proof": "Use exactly q, kappa, H, B, t0 and B<c<t0 from the reviewed adapter, with h(t)=H(t-c), reflection R_L h(t)=h(L-t), h_+=(h+R_Lh)/2 and h_-=(h-R_Lh)/2. Assume L>2c+2B. Put N=||H||_2^2>0, T=L-2c. Both physical input norms squared equal N/2. All input pole moments and endpoint jets vanish.\n\nLet C_L denote the complete canonical physical response, with the direct current equation-(4.4) Arch scalar. The reviewed root Arch calculation gives one fixed even whole-line function a=A_infinity H, with |a(t)|<=C exp(-5|t|/2), such that\n C_L h(t)=-P_H(t-c)-a(t-c)=W(t), 0<=t<=L.\nReflection commutes with this same finite-aperture operator; it is not index D. Thus C_L h_+=(W+R_LW)/2 and C_L h_-=(W-R_LW)/2. No input is assigned eigenray, ground, stationary or predecessor-PSD status."
+    },
+    {
+      "title": "M2: Exact first spectral moments; one prime versus two primes",
+      "proof": "Define the fixed REAL number d=-integral_R H(u)a(u)du and the fixed source J=H*H. Every prime self-overlap vanishes since H is supported in [-B,B] and log2>2B. Therefore\n <h,C_Lh>=d.\nThe complete cross term is\n b(L)=<h,C_L R_Lh>=-P_J(T)-(H*a)(T),\n P_J(T)=sum_(n>=2) Lambda(n)/sqrt(n) J(T-log n).\nFor example, self-adjointness gives <h,C_LR_Lh>=<C_Lh,R_Lh>; substituting the exact W and changing variable t-c gives the displayed full convolutions. The compact reflected H support lies strictly inside the interval because c>B. Every contributing prime power obeys log n<=T+2B<L, so the current floor(exp L) source horizon is retained without adding a later prime.\n\nConsequently the exact first moments are\n q_+(L)=<h_+,C_Lh_+>=(d+b(L))/2,\n q_-(L)=<h_-,C_Lh_->=(d-b(L))/2.\nTheir sum is fixed, but their difference is a ONE-prime history with test J. It is not (P_H*P_H)(T), whose arithmetic coefficients are Lambda*Lambda.\n\nFor T>2B the entire Arch cross term is explicit:\n (H*a)(T)=sum_(n>=1) K_H(2n+1/2)^2 exp(-(2n+1/2)T)>0,\n K_H(z)=integral_R H(u)exp(-zu)du.\nThe n=0 coefficient vanishes. Absolute domination precedes the signed H integration, exactly as in the Arch note. Its exponentially decreasing tail is retained; no sign for d is assumed."
+    },
+    {
+      "title": "M3: Exact finite spectral data and transfer",
+      "proof": "Take the same native finite inputs u_K,v_K approximating h_+,h_- at the EXACT K=ceil(L^4), and write A_K,B_K for the actual even and odd canonical compressions. The prior input/physical/Arch/prime estimates imply, for every fixed A>0,\n n_+=||u_K||^2=N/2+O_A(exp(-A L)),\n n_-=||v_K||^2=N/2+O_A(exp(-A L)),\n q_+^K=<u_K,A_Ku_K>=(d+b)/2+O_A(exp(-A L)),\n q_-^K=<v_K,B_Kv_K>=(d-b)/2+O_A(exp(-A L)).\nAll constants and thresholds are source/c-dependent and fixed before L. Prime operator amplification is at most C exp(L/2); the Gevrey quartic tail beats that factor. These are INPUT/form approximation statements, not an estimate that removed OUTPUT normals are small.\n\nFor complete orthonormal eigenbases A_K e_i=alpha_i e_i and B_K o_j=beta_j o_j, retain every term:\n n_+=sum_i |<e_i,u_K>|^2,  q_+^K=sum_i alpha_i |<e_i,u_K>|^2,\n E_+=||A_Ku_K||^2=sum_i alpha_i^2 |<e_i,u_K>|^2,\n and likewise n_-,q_-^K,E_- with beta_j,v_K.\nThere is no selected-ground truncation and no comparison of different cutoffs."
+    },
+    {
+      "title": "M4: A genuine quantitative cost of separate response estimates",
+      "proof": "Cauchy-Schwarz gives the exact finite inequalities E_+>=|q_+^K|^2/n_+ and E_->=|q_-^K|^2/n_- once the nonzero inputs are guaranteed by late L. Thus, for every fixed A>0 after enlarging its threshold,\n E_+ >= (d+b(L))^2/(2N)-C_A exp(-A L),\n E_- >= (d-b(L))^2/(2N)-C_A exp(-A L).\nThe source bound b=O(exp(L/2)) permits absorption of all products with the rapid input errors.\n\nLet Theta=sup_rho |Re(rho)-1/2|, with all nontrivial zeros and multiplicities retained. The existing absolutely summable zero expansion gives |P_H(t)|<=C exp(Theta t) and hence |P_J(t)|<=C exp(Theta t). The latter follows also by convolution with the fixed compact H. Its safe Laplace transform is\n Laplace(P_J)(z)=-K_H(z)^2 zeta'(z+1/2)/zeta(z+1/2), Re z>1/2.\nThe full convolution is causal since log2-2B>0. At a right off-line zero p=rho-1/2 of multiplicity m, its residue is -m K_H(p)^2, nonzero by the actual source visibility. The Arch cross term has an analytic transform on the right half-plane. Therefore\n limsup_(L->infinity) log(1+|b(L)|)/L=Theta.\nProof of the lower rate: a smaller eventual exponential bound would make the one-sided Laplace transform analytic across a visible pole with real part above that bound. This uses a local pole and full-field identity, not a rightmost zero or an attained supremum.\n\nThe exact W response and contractive native projection give E_+,E_-<=C(1+L)exp(2Theta L), with rapid input errors. Together with the lower inequalities,\n limsup log(1+E_+(L))/L = limsup log(1+E_-(L))/L = 2Theta.\nFor Theta>0, both lower bounds grow simultaneously along every chosen cofinal |b| excursion sequence of rate beta<Theta. For Theta=0, the upper bound is polynomial and the log(1+E) convention supplies the lower rate zero.\n\nThis is a source-specific statement about the actual full finite responses. It does NOT prove Theta>0, bound it above by zero, or promote these fixed inputs to the genuine deep packet or to grounds. Under the off-line-zero premise it falsifies a proposed subexponential upper estimate for either response separately. It does not falsify an independently proved signed estimate, which would be new arithmetic information."
+    },
+    {
+      "title": "M5: What exact first-moment centering eliminates",
+      "proof": "Put mu=d/N, a fixed real number. Define V_+=E_+-|q_+^K|^2/n_+ and V_-=E_--|q_-^K|^2/n_-. Both are nonnegative actual spectral variances, retaining all modes. Exact subtraction and M3 give\n E_+-E_-=V_+-V_-+2 mu b(L)+rapid.\nEquivalently the exact common-centering identity is\n E_+-E_-=|| (A_K-mu I)u_K ||^2-|| (B_K-mu I)v_K ||^2\n          +2mu(q_+^K-q_-^K)-mu^2(n_+-n_-).\nThus the known first moments remove only a one-prime term 2mu b and rapid mass errors. The two nonnegative variances still have a signed difference; nonnegativity of each supplies no upper bound for their difference.\n\nAt a hypothetical visible off-line pole, the one-prime term has at most a simple pole, while the complete prime self-echo has a nonzero double pole. Any fixed scalar centering changes only that simple-pole term. This does not exclude the pole; it precisely falsifies automatic elimination of the two-prime covariance by the known zero/first spectral moments."
+    },
+    {
+      "title": "M6: Exact endpoint, Arch and projection terms remain in the target",
+      "proof": "Let r_L be the exact right causal-gap repair of P_H(t-c), and let a_c(t)=a(t-c) on [0,L]. With Pi_+,Pi_- the same native projections put k_+=Pi_+(r_L-a_c), k_-=Pi_-(r_L-a_c). The reviewed complete response adapter gives repaired response vectors\n y_+=-A_K u_K+k_++epsilon_+,\n y_-=-B_K v_K+k_-+epsilon_-,\n with rapid epsilon and complete target\n S(T)=||y_+||^2-||y_-||^2+rapid, S=P_H*P_H.\nConsequently\n S(T)=E_+-E_- -2 Re[<A_Ku_K,k_+>-<B_Kv_K,k_->]\n             +||k_+||^2-||k_-||^2+rapid.\nAll mixed terms are retained. In particular the rate 2Theta of E_+ and E_- does NOT imply rate 2Theta for their difference or for S. Root's complete Arch response shows the full unprojected W echo has rate Theta; the repaired prime echo also has rate Theta. No assertion here identifies the bare compressed difference E_+-E_- with either echo.\n\nThe exact full projection formula separately retains\n ||Pi_+ C_Lh_+||^2-||Pi_- C_Lh_-||^2\n =||C_Lh_+||^2-||C_Lh_-||^2\n  -[||(I-Pi_+)C_Lh_+||^2-||(I-Pi_-)C_Lh_-||^2].\nInput approximation does not delete the bracket. Right repair and removed-output normals are different representations of costs and must not be counted as automatically negligible."
+    },
+    {
+      "title": "M7: Moment and rank-one constraints do not erase the surviving output source",
+      "proof": "The fixed physical inputs have every endpoint derivative zero; every fixed coefficient moment of their corrected finite approximants is rapidly small. This does not assert an exact all-order moment condition at growing order. The exact native identity is B_K D_K-D_K A_K=g_K f_K with the corrected source, including the pole-normal output coefficient. Moreover <g_K,D_Ku>=M4(u). Hence the first transported energy relation contains f_K(u) overline(M4(u)); input moment flatness is relevant there.\n\nThe squared response instead contains f_K(u) overline(M4(A_Ku)) and ||g_K||^2|f_K(u)|^2, in addition to the full index metric. No source theorem replaces M4(A_Ku) by M4(u), or replaces f_K(A_Ku) by an eigenvalue times f_K(u) for this input. SourceMomentDecomposition.lean gives the complete finite prime-power plus Arch source scalar; CanonicalPoleNeutralNormals.lean adds the output-normal correction. These are not geometric input moments.\n\nThe already reviewed finite polar mismatch also forbids using U_K^*v_K=zeta u_K to bypass these terms. Complete noncollision supplies dense Cauchy overlaps, not matching eigenrays; ground/own-birth/tied inequalities retain their actual hypotheses and cannot be assigned to u_K,v_K. The arbitrary quartic moment-slice trials are distinct vectors and use their own phase choices."
+    },
+    {
+      "title": "M8: Information gain and next action",
+      "proof": "New source-dependent information: the first finite spectral moments have an exact one-prime formula and a fixed sum, and they force BOTH separate squared canonical responses to have the same limsup rate 2Theta. This prices the exponential loss in a strategy estimating the two sides separately. Exact centering removes the common mean and a simple-pole one-prime history, but leaves the full signed variance/correction expression.\n\nThe earlier fixed-phase same-time sum is acknowledged: M2 is its analogous complete-response calculation for the literal H input, not a claimed new general principle. The rate statement applies it to the actual full spectral second moments at Kd.\n\nThe next useful target remains an independently proved bound on the complete signed covariance in M6 after all normal, Arch and endpoint terms are kept. There is no new such bound in this note. No conditional RH wrapper, PSD assumption, source replacement, new Lean declaration, compiler run or repository change is made. RH remains OPEN."
+    }
+  ],
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_SELF_ECHO_NATIVE_CARRIER_ADAPTER.json",
+      "sha256": "53a02515b8a2e73a7867ff7d4cb06cf00cf2fc9562c6cf07003053132f5bb439",
+      "bytes": 16358
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_INVERSE_INDEX_PRIMITIVE_AND_COVARIANCE.json",
+      "sha256": "54d56430516265f41e6779ef8877af53dc63894827a66ee2c85c7afa15dda7e8",
+      "bytes": 12920
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\ACTUAL_FINITE_POLAR_INPUT_MISMATCH.json",
+      "sha256": "4cd9b5e235ff4b8c3ac94b552e86aa65d14fc4b33317836b3cdee5aa8c709d6e",
+      "bytes": 12941
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-finite-carrier\\INDEPENDENT_SELF_ECHO_NATIVE_CARRIER_REVIEW.json",
+      "sha256": "9849183f98d507fdd9821f64f155550d8ec1db75e10743d613ab6a69fe053ebb",
+      "bytes": 16422
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-arch-response\\ACTUAL_ARCH_RESPONSE.json",
+      "sha256": "b1a23776de6f31f8d173110864210cbe0243cecf0f5986e247a0fe984dc78b44",
+      "bytes": 9401
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-arch-response\\INDEPENDENT_ARCH_RESPONSE_REVIEW.json",
+      "sha256": "bdd37ebf47d265a891cc5cee2219bfa9bb5588ae7a5248766fc2d25b45e523c1",
+      "bytes": 7819
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-criterion\\SECTION5_ACTUAL_SELF_ECHO_CRITERION_REVIEW.json",
+      "sha256": "0d4046f169e6c2acaefbe05731cb3bde9b3a0f42d28b1c37b0f31049613a5507",
+      "bytes": 18951
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\arbitrary-quartic-margin\\ACTUAL_MARGIN_HISTORY_AND_COMPLETE_BAND_AUDIT.md",
+      "sha256": "0444bcc4d56f9d90c9a506c79dcdf446f6ee7a97612bb24b09203e4d2e32e223",
+      "bytes": 10999
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalSourceChannels.lean",
+      "sha256": "f2e43a63b569ce1f755b01babbe9fd419ff6bb44b09a960515196d99d7fdb720",
+      "bytes": 7604
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceMatrix.lean",
+      "sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "bytes": 7204
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\FinitePhysicalNormalization.lean",
+      "sha256": "c2dff9b13fb2f909615aebaf0fc40c7571faef7f1c4416535073ac378ec84f39",
+      "bytes": 4176
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralNormals.lean",
+      "sha256": "6ba64dc7ae340d2286d55d92a342fc180607a2cd7f79261418c0646650b2d289",
+      "bytes": 18093
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalPoleNeutralTrialResidualBounds.lean",
+      "sha256": "50392a9838678c4d274957297e30ab4a30ec0ffdcb139f8e2e0332bbefdc9938",
+      "bytes": 6637
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceMomentDecomposition.lean",
+      "sha256": "bd3a6d56c892dc1bc536ef7393069ec88c3451decbb7f3f7e265f2d6399ca92e",
+      "bytes": 4126
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalSourceMomentJets.lean",
+      "sha256": "5592365bb5510b09bb5c60f48373268e1653c0cbcef7a9fc384911236adf807d",
+      "bytes": 6631
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\ActualSourceHyperbola.lean",
+      "sha256": "568292f2b9008892772550b544a48fdaa5730be44d87e453fd8008f9bbb1a350",
+      "bytes": 80457
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\ExceptionalZero\\UniversalSincSignedLaplace.lean",
+      "sha256": "870226d2e324f8251c8a2552922f620e9f91799eff19d6293f9b30fd24fdd3f0",
+      "bytes": 11061
+    }
+  ],
+  "bounded_algebra_check": "prime_math checked the q+/q- factors, Cauchy lower bounds, one-prime versus two-prime distinction and both rate 2Theta arguments conditional on the previously paid full C/reflection and rapid transfer. This is not a separate fresh source review.",
+  "authority": "External DERIVED research only; no new theorem/build/CI or repository change. Full fixed-source, cutoff, prime powers and normal corrections retained. RH OPEN."
+}

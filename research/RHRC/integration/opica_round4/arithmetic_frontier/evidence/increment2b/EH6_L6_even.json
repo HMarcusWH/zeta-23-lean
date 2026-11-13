@@ -1,0 +1,471 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_NATIVE_SLICE_RUN_V2",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "state": {
+    "L_exact": "6",
+    "cutoff_expression": "originalDetectorQuarticCutoff(L)=ceil(L^4)",
+    "K": 1296,
+    "Q": 403,
+    "prime_powers": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      11,
+      13,
+      16,
+      17,
+      19,
+      23,
+      25,
+      27,
+      29,
+      31,
+      32,
+      37,
+      41,
+      43,
+      47,
+      49,
+      53,
+      59,
+      61,
+      64,
+      67,
+      71,
+      73,
+      79,
+      81,
+      83,
+      89,
+      97,
+      101,
+      103,
+      107,
+      109,
+      113,
+      121,
+      125,
+      127,
+      128,
+      131,
+      137,
+      139,
+      149,
+      151,
+      157,
+      163,
+      167,
+      169,
+      173,
+      179,
+      181,
+      191,
+      193,
+      197,
+      199,
+      211,
+      223,
+      227,
+      229,
+      233,
+      239,
+      241,
+      243,
+      251,
+      256,
+      257,
+      263,
+      269,
+      271,
+      277,
+      281,
+      283,
+      289,
+      293,
+      307,
+      311,
+      313,
+      317,
+      331,
+      337,
+      343,
+      347,
+      349,
+      353,
+      359,
+      361,
+      367,
+      373,
+      379,
+      383,
+      389,
+      397,
+      401
+    ],
+    "parity": "even",
+    "carrier": "evenMomentSlice",
+    "dimension": 1293,
+    "metric": "PHYSICAL_INHERITED_EUCLIDEAN",
+    "state_kind": "ACTUAL_STATE",
+    "state_validated": true
+  },
+  "precision_bits": 192,
+  "source": {
+    "backend": "research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py",
+    "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+    "source_module_sha256": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6",
+    "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+    "engine_sha256": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+    "versions": {
+      "python_flint": "0.9.0",
+      "numpy": "2.5.3",
+      "python": "3.13.18"
+    }
+  },
+  "basis": {
+    "definition": "Y_* = Z - E_P (C E_P)^-1 C Z per column group; C Y_* = 0 algebraically; pivot blocks certified invertible",
+    "proposal_kind": "FLOAT_W_ORTHONORMAL_PROPOSAL (not exactly orthonormal)",
+    "recipe": [
+      {
+        "columns": [
+          0,
+          645
+        ],
+        "prefix": 649,
+        "pivots": [
+          0,
+          648,
+          23,
+          458
+        ]
+      },
+      {
+        "columns": [
+          645,
+          1293
+        ],
+        "prefix": 1297,
+        "pivots": [
+          0,
+          1296,
+          32,
+          917
+        ]
+      }
+    ],
+    "full_gram_certificate": {
+      "status": "CERTIFIED",
+      "tau": "1/4",
+      "dimension": 1293,
+      "residual_frobenius_sq_upper": "1072743702374474823203917724293127590167154178339029825797*2^-286",
+      "certified_lower_eigenvalue_coordinates": "441711766194590892512836946683450417388461193705483550621102276547567735*2^-240",
+      "certified_lower_eigenvalue_display": "2.5e-1"
+    },
+    "flag_split_index": 648,
+    "low_dimension": 645,
+    "realification": "Real constraints define a real slice whose complexification is the complex slice; for a real symmetric form, Q(u + i v) = Q(u) + Q(v) and ||u + i v||^2 = ||u||^2 + ||v||^2, so a real certificate of Q + eps ||.||^2 >= 0 is the complex statement."
+  },
+  "hashes": {
+    "proposal_Z_float64_sha256": "11c64d5390cdb698c9b3a64154ff0702d9486fc3333d256651350246a376865e",
+    "gram_enclosure_sha256": "117cce50f8434e7e356e4040264f18229a50a56dbb58ec2bf57e5b29fc63a988",
+    "form_enclosure_sha256": "f6d6373721947715dcb01011894fb816d9a9adf14214902b4fb6f8a2bfdade31",
+    "prime_power_list_sha256": "7097cb944513b70e69d6a23abe7f45b5971677d265ede54c42e4f02dc44cc0cf"
+  },
+  "assurance": {
+    "integrity": "record hashes",
+    "certificate": "PRODUCER_IN_PROCESS_VIA_KERNEL",
+    "independent_reconstruction": "see INDEPENDENT_RECONSTRUCTION records where present",
+    "lean_bridge": "OPEN (FiniteCertificateSoundness, native enclosure bridge)"
+  },
+  "endpoint_certificates": [
+    {
+      "target_id": "C1_CHECKPOINT_TOLERANCE",
+      "tolerance": "1/4",
+      "statement": "Q_p(L,x) >= -1/4 ||x||^2 for every x in the slice (physical norm)",
+      "status": "CERTIFIED",
+      "tau": "1/8",
+      "dimension": 1293,
+      "residual_frobenius_sq_upper": "5206402682777808972748803013480877534262159343131454794117*2^-281",
+      "certified_lower_eigenvalue_coordinates": "6901746346788542614529139347021323201650253391218996941878044782508447*2^-235",
+      "certified_lower_eigenvalue_display": "1.25e-1"
+    }
+  ],
+  "spectral_statistics": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING_ONLY",
+    "abs_below_10^-t": {
+      "2": 346,
+      "4": 344,
+      "6": 343,
+      "8": 342,
+      "10": 340,
+      "12": 339,
+      "13": 338
+    },
+    "signed_below_10^-t": {
+      "2": 346,
+      "4": 344,
+      "6": 343,
+      "8": 342,
+      "10": 340,
+      "12": 339,
+      "13": 338
+    },
+    "floating_negative_count": 175,
+    "floating_negative_below_-1e-12": 0,
+    "undecided_note": "floating eigenvalues within about 1e-14 of zero are not sign-resolved",
+    "T": 1357.1680263507906,
+    "N_main_T": 945.9351360597798,
+    "dim_minus_N_main_T": 347.0648639402202,
+    "N_main_definition": "(T/2pi) log(T/2pi) - T/2pi + 7/8; main terms only, not a certified zero count",
+    "lowest": [
+      -1.1249002716896463e-14,
+      -6.2922634444911985e-15,
+      -6.084262884823836e-15,
+      -6.06032891694424e-15,
+      -5.842947205718164e-15,
+      -5.777678828015871e-15
+    ],
+    "highest": 13.19076704367623
+  },
+  "channel_extremes_on_slice": {
+    "pole": {
+      "floating_min": -5.247725310395961e-58,
+      "floating_max": 3.510203510922619e-58,
+      "rayleigh_at_min_vector": {
+        "lower_exact": "-389715571*2^-211",
+        "upper_exact": "386261509*2^-211",
+        "display": "[+/- 1.19e-55]"
+      }
+    },
+    "minus_arch": {
+      "floating_min": -2.083802041457274,
+      "floating_max": 5.375107769589232,
+      "rayleigh_at_min_vector": {
+        "lower_exact": "-13394163108488954068631030344308923683697365364362784134003919*2^-202",
+        "upper_exact": "-13394163108488954068631030344308923683697365364362783475712817*2^-202",
+        "display": "[-2.083802041 +/- 4.58e-10]"
+      }
+    },
+    "minus_prime": {
+      "floating_min": -5.36587628404569,
+      "floating_max": 7.8343772216904535,
+      "rayleigh_at_min_vector": {
+        "lower_exact": "-8420537833613357714436530191717582755122675680132860923849*2^-190",
+        "upper_exact": "-8420537833613357714436530191717582755122675680132453210291*2^-190",
+        "display": "[-5.365876284 +/- 4.57e-11]"
+      }
+    },
+    "meaning": "each channel alone on the same slice and physical metric",
+    "authority": "FLOATING_SPECTRA_WITH_ONE_ENCLOSED_RAYLEIGH_VALUE_PER_CHANNEL"
+  },
+  "bottom_vector_budget": {
+    "rayleigh_upper": {
+      "lower_exact": "599075935367980170646210351666792853004153*2^-193",
+      "upper_exact": "599075935367980170646210351666793247388281*2^-193",
+      "display": "[4.771915134e-17 +/- 5.59e-28]"
+    },
+    "pole": {
+      "lower_exact": "-212232199*2^-215",
+      "upper_exact": "424947479*2^-216",
+      "display": "[+/- 4.04e-57]"
+    },
+    "arch": {
+      "lower_exact": "-76461383092315848552341164538121051283967756775402628983935365*2^-204",
+      "upper_exact": "-76461383092315848552341164538121051283967756775402628769295995*2^-204",
+      "display": "[-2.973877220 +/- 3.14e-10]"
+    },
+    "prime": {
+      "lower_exact": "19115345773078961831358412226124939866544657939803089734645869*2^-202",
+      "upper_exact": "19115345773078961831358412226124939866544657939803091289786259*2^-202",
+      "display": "[2.973877220 +/- 3.14e-10]"
+    },
+    "energy": {
+      "lower_exact": "153363439454202661477223640627023732873069843*2^-201",
+      "upper_exact": "153363439454202661477223640627023833833865491*2^-201",
+      "display": "[4.771915134e-17 +/- 5.59e-28]"
+    },
+    "physical_norm_sq": {
+      "lower_exact": "105312291668557006643615721432597927736565428628043933214380204145*2^-216",
+      "upper_exact": "105312291668557006643615721432597927736565428628043933214521614223*2^-216",
+      "display": "[1.000000000 +/- 4e-15]"
+    },
+    "scope": "one exact slice vector; an upper bound on the slice minimum, never a lower bound"
+  },
+  "block_tests": [
+    {
+      "target_tolerance": "1/4",
+      "low_dimension": 645,
+      "high_dimension": 648,
+      "decomposition": "FOURIER_PREFIX_FLAG: low = slice through the split; high = corrected complement proposal (not exactly G-orthogonal)",
+      "coordinate_high_extremes": [
+        0.24999999999999326,
+        13.440747530555981
+      ],
+      "physical_high_extremes_relative_to_G_hh": [
+        0.24999999999999342,
+        13.440747530555985
+      ],
+      "coordinate_high_rayleigh": {
+        "lower_exact": "3138550867693340426252116585545176330277273968335502376841*2^-193",
+        "upper_exact": "3138550867693340426252116585545176330277273968339242638605*2^-193",
+        "display": "[0.2500000000 +/- 2e-15]"
+      },
+      "unshifted_prefix_complement": {
+        "coordinate_rayleigh": {
+          "lower_exact": "3743381497882393475174292739780712551807789219212436702563*2^-248",
+          "upper_exact": "3743381497882393475174292739780854271315626955356133918051*2^-248",
+          "display": "[8.276089237e-18 +/- 7.63e-29]"
+        },
+        "physical_rayleigh": {
+          "lower_exact": "37320425166724375512967575608989584819181*2^-191",
+          "upper_exact": "37320425166724375512967575608990540726729*2^-191",
+          "display": "[1.189097349e-17 +/- 6.27e-28]"
+        },
+        "scope": "upper bounds on the minimum of the unshifted prefix-complement block; FOURIER_PREFIX_COMPLEMENT, not high support"
+      },
+      "SHIFTED_PREFIX_QUARTER_GAP_COORDINATE": {
+        "status": "FALSIFIED_BOUND",
+        "witness_value": {
+          "lower_exact": "-40054746338411468916220238100520007621973843*2^-201",
+          "upper_exact": "-40054746338411468916220238100519093135460179*2^-201",
+          "display": "[-1.246306492e-17 +/- 7.40e-28]"
+        },
+        "bound": "A >= 1/4 I"
+      },
+      "high_block_bounds": [
+        {
+          "label": "REPORTED_L4_HALF_CONSTANTS_COORDINATE",
+          "a": "49/100",
+          "b": "9",
+          "a_le_A": {
+            "status": "FALSIFIED_BOUND",
+            "witness_value": {
+              "lower_exact": "-3013008832985610823454606161013912692239547888922287350639*2^-193",
+              "upper_exact": "-3013008832985610823454606161013912692239547888918317296411*2^-193",
+              "display": "[-0.2400000000 +/- 2e-15]"
+            },
+            "bound": "A >= 49/100 I"
+          },
+          "A_le_b": {
+            "status": "FALSIFIED_BOUND",
+            "witness_value": {
+              "lower_exact": "-27875024030467072965686626525325627107051952110100217916785*2^-192",
+              "upper_exact": "-27875024030467072965686626525325627107051952110098481239151*2^-192",
+              "display": "[-4.440747531 +/- 4.45e-10]"
+            },
+            "bound": "A <= 9 I"
+          }
+        },
+        {
+          "label": "SUGGESTED_COORDINATE",
+          "a": "244999/1000000",
+          "b": "1371/100",
+          "a_le_A": {
+            "status": "CERTIFIED",
+            "tau": "1/512",
+            "dimension": 648,
+            "residual_frobenius_sq_upper": "4086557595019145189682315664495217463482831871172649831781*2^-281",
+            "certified_lower_eigenvalue_coordinates": "215679573333623796131436006521911504946288686609659409944622098964939*2^-236",
+            "certified_lower_eigenvalue_display": "1.95312499997e-3",
+            "bound": "A >= 244999/1000000 I"
+          },
+          "A_le_b": {
+            "status": "CERTIFIED",
+            "tau": "1/8",
+            "dimension": 648,
+            "residual_frobenius_sq_upper": "5978568212453451435731149730403481079365090775512469959077*2^-281",
+            "certified_lower_eigenvalue_coordinates": "862718293348549739181398679483280119438732769506437987100998528727741*2^-232",
+            "certified_lower_eigenvalue_display": "1.25e-1",
+            "bound": "A <= 1371/100 I"
+          }
+        }
+      ],
+      "SCALAR_GAP": {
+        "family": "SCALAR_GAP",
+        "quantifier": "every a with 0 < a <= lambda_min(A)",
+        "rho_upper_exact": "3138550867693340426252116585545176330277273968339242638605*2^-193",
+        "rho_upper_display": "2.5e-1",
+        "witness_value": {
+          "lower_exact": "-662165938807178923668938438534750574674104298352813996731633*2^-193",
+          "upper_exact": "-662165938807178923668938438534750574674104298352812037330959*2^-193",
+          "display": "[-52.74456005 +/- 2.95e-9]"
+        },
+        "status": "FALSIFIED_BOUND"
+      },
+      "INVERSE_RESIDUAL": [
+        {
+          "family": "INVERSE_RESIDUAL",
+          "proposal": "X = float P_m(A) C^T, P_m with parameter b (not a hypothesis)",
+          "a": "244999/1000000",
+          "b_parameter": "1371/100",
+          "degree": 64,
+          "X_proposal_sha256": "6e7b14e48c9f9ffc1a7e6058911e1dff9817714b2113308f40561d138bf75f46",
+          "precondition": "CERTIFIED",
+          "status": "CERTIFIED",
+          "tau": "1/16",
+          "dimension": 645,
+          "residual_frobenius_sq_upper": "2573612946347699700164303740593928795535211718413052809969*2^-282",
+          "certified_lower_eigenvalue_coordinates": "13803492693577108267678995829895498371056233378534028087577491529709547*2^-237",
+          "certified_lower_eigenvalue_display": "6.25e-2",
+          "statement": "S_X >= 0 (INVERSE_RESIDUAL)",
+          "floating_minimum": 0.2499999999999945,
+          "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.blockEnergy_nonneg_of_inverse_residual_certificate"
+        }
+      ],
+      "GEOMETRIC_TAIL": [
+        {
+          "family": "GEOMETRIC_TAIL",
+          "a": "244999/1000000",
+          "b": "1371/100",
+          "degree": 64,
+          "q_power_over_a": 1.2872044776145801,
+          "status": "FALSIFIED_BOUND",
+          "witness_value": {
+            "lower_exact": "-19152466389761*2^-40",
+            "upper_exact": "-9576217133195*2^-39",
+            "display": "[-17.4191 +/- 6.26e-5]"
+          },
+          "witness_kind": "EXACT_DYADIC_FLOATING_EIGENVECTOR",
+          "statement": "S_tail >= 0 (GEOMETRIC_TAIL, DERIVED sufficiency)",
+          "floating_minimum": -17.419052099354012
+        }
+      ],
+      "native_form": {
+        "target_id": "C1_CHECKPOINT_TOLERANCE",
+        "status": "CERTIFIED",
+        "tau": "1/8",
+        "dimension": 1293,
+        "residual_frobenius_sq_upper": "666591420811028527491423575899997825389102746018675337977*2^-278",
+        "certified_lower_eigenvalue_coordinates": "13803492693577036481047870973985224552654170130350246056107012133622169*2^-236",
+        "certified_lower_eigenvalue_display": "1.25e-1"
+      },
+      "interpretation": "A failed or falsified family is a failure of that sufficient estimate; the native form fails only with an exact negative vector of the full pencil."
+    }
+  ],
+  "high_support_unshifted": {
+    "target_id": "HIGH_SUPPORT_UNSHIFTED_SLICE",
+    "support": "reduced indices >= 649 (|n| > split)",
+    "dimension": 644,
+    "physical_rayleigh_upper": {
+      "lower_exact": "2697995684651061515126294830272657209598999*2^-197",
+      "upper_exact": "2697995684651061515126294830272657951591227*2^-197",
+      "display": "[1.343173469e-17 +/- 2.15e-27]"
+    },
+    "floating_physical_extremes": [
+      -5.694710312126242e-15,
+      13.18885425539746
+    ],
+    "quarter_gap_law": {
+      "statement": "Q_p >= (1/4)||x||^2 on the high-support legal subspace (reconstructed reading; historical constant and support not imported)",
+      "status": "FALSIFIED_BOUND"
+    }
+  },
+  "seconds": 1495.9,
+  "campaign_entry": "EH6_L6_even"
+}

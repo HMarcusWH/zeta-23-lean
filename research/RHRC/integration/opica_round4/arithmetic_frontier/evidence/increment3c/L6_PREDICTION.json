@@ -1,0 +1,5 @@
+{"recorded_utc": "2026-11-07T19:01:36Z",
+ "basis": "fit eps*(delta=1/10) ~ c L^3 delta^2 with c/L^3 = 0.149 (L4) and 0.147 (L5), low band, even",
+ "prediction": {"L6_even_low_band_eps_star_delta_1_10": [0.25, 0.40], "point": 0.32,
+                "L6_checkpoint_1_4_with_delta_1_10_low_band": "CHECKPOINT_DETECTS (FALSIFIED_BOUND)"},
+ "status": "stated before any L6 near-band output existed; not a frozen preregistration"}

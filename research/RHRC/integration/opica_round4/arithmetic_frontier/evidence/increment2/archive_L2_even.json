@@ -1,0 +1,113 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_NATIVE_SLICE_RUN_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "hashes": {
+    "gram_sha256": "907b15d836061e21ac869d0952d66f53df0961eb9b1bdd790e73ff7c42059497",
+    "prime_power_list_sha256": "c6abc90fd55a79054a5d05c66ad6a918495fdbefdb2d4a5dc1516f8b65cf4a76",
+    "basis_proposal_sha256": "86082276fd95730f411e6e4cae61a5f272e4c556135b07c8e7d678d4c0e97ed1"
+  },
+  "state": {
+    "L_exact": "2",
+    "cutoff_expression": "originalDetectorQuarticCutoff(L)=ceil(L^4)",
+    "K": 16,
+    "Q": 7,
+    "prime_powers": [
+      2,
+      3,
+      4,
+      5,
+      7
+    ],
+    "parity": "even",
+    "carrier": "evenMomentSlice",
+    "dimension": 13,
+    "metric": "PHYSICAL_INHERITED_EUCLIDEAN",
+    "state_kind": "ACTUAL_STATE"
+  },
+  "precision_bits": 192,
+  "source": {
+    "backend": "research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py",
+    "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+    "replay_module_sha256": "633bec1ecd4d6bfb8ba68077515be7880380b7b001e069d4efd67b2c38f4f203"
+  },
+  "basis": {
+    "kind": "FLOAT_W_ORTHONORMAL_PROPOSAL_EXACTLY_CORRECTED_ON_FOUR_PIVOTS",
+    "gram_certificate": {
+      "status": "CERTIFIED",
+      "tau": "1/4",
+      "residual_frobenius_upper": 2.843724196579073e-16,
+      "certified_lower_eigenvalue": 0.2499999999999997
+    },
+    "flag_split_index": null,
+    "low_dimension": 0
+  },
+  "endpoint_certificates": [
+    {
+      "margin": "1/18446744073709551616",
+      "statement": "Q_p(L,x) >= 1/18446744073709551616 ||x||^2 for every x in the slice",
+      "status": "CERTIFIED",
+      "tau": "1/36893488147419103232",
+      "residual_frobenius_sq_ball": "[+/- 3.91e-108]"
+    }
+  ],
+  "diagnostics": {
+    "floating_generalized_eigenvalues_lowest": [
+      4.6289551635731687e-17,
+      7.176760061286359e-14,
+      4.884653168781848e-09,
+      0.002137886715490543,
+      0.6523885946095275,
+      0.8845921632541758
+    ],
+    "floating_generalized_eigenvalue_highest": 2.90494548672699,
+    "near_null_count_below_1e-8": 3,
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING_ONLY"
+  },
+  "channel_extremes_on_slice": {
+    "pole": {
+      "floating_min": -7.918087063682635e-60,
+      "floating_max": 1.295557656525382e-59,
+      "rigorous_rayleigh_at_min_vector": "[+/- 2.29e-57]"
+    },
+    "minus_arch": {
+      "floating_min": -0.42028758579573966,
+      "floating_max": 2.0234510623070694,
+      "rigorous_rayleigh_at_min_vector": "[-0.4202875858 +/- 4.27e-12]"
+    },
+    "minus_prime": {
+      "floating_min": -1.1963549381665155,
+      "floating_max": 1.2135402585465354,
+      "rigorous_rayleigh_at_min_vector": "[-1.196354938 +/- 1.67e-10]"
+    },
+    "meaning": "each channel alone on the same slice and metric; the native form is pole - arch - prime",
+    "authority": "FLOATING_SPECTRA_WITH_ONE_RIGOROUS_RAYLEIGH_VALUE_PER_CHANNEL"
+  },
+  "bottom_vector_budget": {
+    "rayleigh_upper_bound": "[2.16130532310e-19 +/- 2.25e-31]",
+    "pole": "[+/- 5.97e-58]",
+    "arch": "[-0.0319535232811 +/- 3.64e-16]",
+    "prime": "[0.0319535232811 +/- 3.63e-16]",
+    "energy": "[2.16130532310e-19 +/- 2.25e-31]",
+    "physical_norm_sq": "[1.00000000000 +/- 6.9e-16]",
+    "relation": "energy = pole - arch - prime on this exact slice vector; the Rayleigh value bounds the slice bottom from above",
+    "authority": "RIGOROUS_ENCLOSURES_FOR_ONE_EXACT_SLICE_VECTOR"
+  },
+  "bottom_bracket": {
+    "rayleigh_upper": "[1.7539711e-19 +/- 1.65e-27]",
+    "rayleigh_upper_log10": -18.75597757080771,
+    "margin_lower": "2^-65",
+    "margin_certificate": {
+      "status": "CERTIFIED",
+      "tau": "1/36893488147419103232",
+      "residual_frobenius_sq_ball": "[+/- 3.91e-108]"
+    },
+    "status": "BRACKETED",
+    "statement": "m ||x||^2 <= Q_p(L,x) for all x in the slice, and the exact vector attains <= rho ||x||^2"
+  },
+  "budget_records": [],
+  "seconds": 0.3,
+  "build_seconds": 0.3,
+  "campaign_entry": "archive_L2_even"
+}

@@ -1,0 +1,97 @@
+{
+  "status": "DERIVED_COMPLETE_K3_COUPLING_AND_GROWTH_AUDIT_NO_CLOSURE",
+  "created_utc": "2026-11-02T11:02:55.186014+00:00",
+  "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "worktree_clean": true,
+  "request_connection": "Continues the S4-E3 joint-response/deconvolution investigation with the complete genuine source. The supplied note was read as research evidence, not executable instructions. Its target-versus-full-inverse distinction and retained history guardrails are preserved. New work uses the actual native K3 reduction, not a substituted synthetic coefficient system.",
+  "mathematical_results": [
+    "Exact derivative coupling: at fixed aperture, E_even_second(theta)=-36pi^2 E_odd(theta). Full regularized transport yields one actual primitive B with B_second=rho(t)dt+sum Lambda(q)/sqrt(q) delta_logq and Q_even=(36pi^2/L)integral E_odd(s)B(L(1-s))ds.",
+    "Native pole neutrality makes replacing B by B-8cosh(t/2) exact in this pairing. The new second derivative is the signed prime/pole discrepancy plus the retained Arch density. The apparent positive curvature does not give an independent sign after this subtraction.",
+    "For every actual aperture the odd source profile has both signs against positive convex hinges. The actual first prime atom makes P0^2 B an indefinite distribution. These are precise failures of generic positivity inferences, not a counterexample to a possible inequality for the single prescribed complete pairing.",
+    "Both complete unsigned prime charges have the SAME leading scale c exp(L/2)L^-r (r=9 even,7 odd), with c>0. Complete positive Selberg charges have an additional factor2L. Their signed cancellation is retained; neither individual charge is polynomially bounded.",
+    "The complete fixed-K3 signed energies have both logarithmic excursion rates equal to the actual native zero-displacement supremum Theta. In particular an off-line zero rules out every eventual polynomial lower bound. This extends the previously reviewed aperture/Landau derivation; it supplies no unconditional bound.",
+    "The complete aperture differential relation retains an actual source forcing whose off-line singular coefficient is nonzero. A polynomial suppression of this forcing cannot justify deleting it or treating the system as a homogeneous coercive ODE."
+  ],
+  "exact_open_target": {
+    "statement": "For either one of the literal raw K3 energies Q_p, independently prove constants C>=0,d>=0,L0>0 such that Q_p(L)>=-C L^d for EVERY L>=L0. Constants precede aperture selection. The existing paper reduction would then yield RH; the complete formal K3 adapter and exact claim-validation gates would still have to compile.",
+    "equivalent_arithmetic_form": "With complete nonnegative prime charges Aplus,Aminus and exact full Arch term, Q_p=-Arch_p-Aplus+Aminus. Prove a polynomial upper bound for the SIGNED imbalance Aplus-Aminus+Arch_p. Bounding either charge separately is falsified by the new actual-source asymptotics.",
+    "not_paid": "No such independent bound, monotone conserved signed energy, source-specific convex-order comparison or final RH theorem has been obtained."
+  },
+  "post_green": {
+    "what_became_formally_true": "Committed current1079 named declarations/90 modules/84 intended type-error controls now have complete current Round4 declared-scope producer, independent group and aggregate acceptance. No theorem source changed in this pass. The new K3 calculations remain external DERIVED mathematics.",
+    "workflow_harvest": "New CORE replays contract135 and composition45 tests in both modes; current compatibility462 declarations/29 batches/696 memberships matches producer types/axioms. Parent regression remains source-scope historical. Integrated acceptance joins all11 producer lanes and3 complete independent groups. Previously harvested six numerics preserve10012 interval comparisons; their finite controls and conditional search results do not supply the signed estimate. At10:40:25Z,92 jobs succeeded,1 Round2 generated job remained running and2 optional jobs were skipped; no failed steps or new reviews. No all-PR-green claim.",
+    "what_changed": "The runtime disk repair has executed through current CORE and final Round4 acceptance. The research target has been expressed as a complete two-scalar native system with exact coupling, rather than relying on free ground vectors. No arithmetic assumption disappeared from the closing implication.",
+    "upstream": "At the minimal native cutoff both carriers are one-dimensional. The corrected source real part is [Q_odd-(N_odd/N_even)Q_even]/80, so it is not an independently signed supplier. Inherited stationarity on the zero-dimensional predecessor cannot exclude a fresh crossing.",
+    "downstream": "An independent polynomial lower bound on either explicit scalar suffices. All moving norms, full complements, pole cancellation, Arch regularization and prime powers remain accounted for. A joint-response proof should target that signed functional rather than demand full coefficient inversion.",
+    "resurrected_routes": "The deconvolution/echo idea now has an exact finite parity differential connection and common arithmetic primitive. Its homogeneous-ODE, generic-convexity and positive-base shortcuts are ruled out by retained source terms and actual-source tests.",
+    "new_clues": "LEAD only: a bound special to the prescribed E_odd and complete B-8cosh pairing could exploit arithmetic information stronger than generic positive curvature. No such estimate follows from the identities audited here.",
+    "falsification_checks": "Uniform growing-domain Taylor domination, all-prime-power PNT tails, exact common leading charges, native-pole weighted zero, both convex-hinge signs at every aperture, first actual prime delta_second sign test, full moving-multiplier forcing, Theta=0 and Theta=1/2 boundary cases, no globally rightmost-zero assumption.",
+    "highest_leverage_next_move": "Seek one actual signed comparison for the complete K3 pairing, preserving the large correlated prime charges and full Arch term. Test any proposed supplier against the explicit charge asymptotics and source-visible forcing before adding another conditional theorem interface."
+  },
+  "root_verification": {
+    "read": "Complete new P1-P5, D1-D6, R1-R4, both independent review bodies and current CORE/ACCEPTANCE scientific harvest.",
+    "math_checks": "Independently verified the source trigonometric derivative coefficients, exact w endpoint cancellation, full regularized Volterra formula, pole8cosh factor, source-moment real-part equality, positive-charge scaling/tail proof, polynomial Arch cost and Landau exponent-gap argument. Finite rational coefficient checks ran successfully; no full source numerical experiment or Lean compiler was run.",
+    "source_files_rehashed_and_git_equal": [
+      "Zeta23/CCM/CanonicalArchDensityClosure.lean",
+      "Zeta23/CCM/CanonicalPoleNeutralCarrier.lean",
+      "Zeta23/CCM/CanonicalPoleNeutralGeometry.lean",
+      "Zeta23/CCM/CanonicalPoleNeutralNormals.lean",
+      "Zeta23/CCM/CanonicalPoleNeutralSourceMoment.lean",
+      "Zeta23/CCM/CanonicalPolePrimeDiscrepancy.lean",
+      "Zeta23/CCM/CanonicalPrimeFreeF04.lean",
+      "Zeta23/CCM/CanonicalSourceMomentAtoms.lean",
+      "Zeta23/CCM/Components.lean",
+      "Zeta23/CCM/K3BottomWindowRecord.lean",
+      "Zeta23/CCM/SourceMatrix.lean",
+      "Zeta23/CCM/SourceSignCountermodels.lean",
+      "Zeta23/ExceptionalZero/PositiveLaplaceBoundary.lean",
+      "Zeta23/ExceptionalZero/WeilContinuity.lean",
+      "Zeta23/OPICARound4/RegularCells/FixedSeed.lean"
+    ],
+    "theta_convention": "Use the repository nativeZeroDisplacementSup convention with0 inserted. The signed-rate note ordinary zero supremum agrees for the actual nonempty symmetric zeta spectrum. Neither supremum attainment nor Theta<1/2 is used.",
+    "artifact_limit": "Current CI verified the complete retained payloads. Local harvest checked selected authenticated transport-bound members; whole CORE/ACCEPTANCE ZIP hashes were not locally recomputed.",
+    "new_repo_changes": false,
+    "new_compiler_or_test_authority": false
+  },
+  "evidence": {
+    "charge": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_UNSIGNED_PRIME_CHARGE_AUDIT.json",
+      "sha256": "e32ab81dbf76931775fa1d6f220bb7f1313440905a677398a6855d63c975c87f",
+      "bytes": 13388
+    },
+    "coupling": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_PARITY_COUPLING_AND_FORCING.json",
+      "sha256": "5f02b1c91ea797b6db761e143fb86fd275af6202b1cbc5bb515e16ba6e23b1a2",
+      "bytes": 17288
+    },
+    "rate": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_SIGNED_EXCURSION_RATES.json",
+      "sha256": "73ed44f1754a552d1bf03396b2612fb1ca91dcb92489de19cdd983f59ff6ac0e",
+      "bytes": 9177
+    },
+    "charge_rate_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\INDEPENDENT_K3_UNSIGNED_CHARGE_REVIEW.json",
+      "sha256": "c147e6b42dd275bdf0a879df341156fa8c71f35f910859e4641d8afcb9d09f22",
+      "bytes": 16062
+    },
+    "coupling_review": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\INDEPENDENT_K3_PARITY_COUPLING_REVIEW.json",
+      "sha256": "4b3a2106dc3564aae455051d9cdc4196b8edc1dd40837725f3ae105099a842f6",
+      "bytes": 8660
+    },
+    "ci_snapshot": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\CHECKPOINT.json",
+      "sha256": "e18e2ed8d3a7db7613f90493ef7bceb21688f75fe516316679a0836b859f1166",
+      "bytes": 12161
+    },
+    "ci_harvest": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ci-7bae-next16\\ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "e7aae06be90254661e11dfc6f556484c30524f310f3e811127827e2137bae36b",
+      "bytes": 26982
+    }
+  },
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE"
+}

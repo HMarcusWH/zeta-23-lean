@@ -1,0 +1,5 @@
+while [ ! -f /tmp/claude-0/-home-user-zeta-23-lean/d78fe72b-0a13-5e8d-9415-9b2d4789ae03/scratchpad/run_eh7/ed1_L7_even_fifth.json ] || [ ! -f /tmp/claude-0/-home-user-zeta-23-lean/d78fe72b-0a13-5e8d-9415-9b2d4789ae03/scratchpad/run_eh7/odd_exit ]; do
+  if ! pgrep -f "driver.py even" > /dev/null && [ ! -f /tmp/claude-0/-home-user-zeta-23-lean/d78fe72b-0a13-5e8d-9415-9b2d4789ae03/scratchpad/run_eh7/ed1_L7_even_fifth.json ]; then echo even_died > /tmp/claude-0/-home-user-zeta-23-lean/d78fe72b-0a13-5e8d-9415-9b2d4789ae03/scratchpad/run_eh7/even_failed; break; fi
+  sleep 30
+done
+echo done > /tmp/claude-0/-home-user-zeta-23-lean/d78fe72b-0a13-5e8d-9415-9b2d4789ae03/scratchpad/run_eh7/finished

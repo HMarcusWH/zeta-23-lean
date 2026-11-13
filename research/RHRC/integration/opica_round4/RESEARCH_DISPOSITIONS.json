@@ -1639,5 +1639,62 @@
       "Derive source-faithful G04-G06 analytic/nonidentity anchors in the proved G01 geometry."
     ],
     "standing_answer": "New exact bridges compress the remaining source-specific obligations; none supplies their missing arithmetic sign, size, visibility or eventual uniformity. RH and Step4 remain OPEN."
+  },
+  "published_research_2026_11_02": {
+    "schema": "OPICA4_PUBLISHED_RESEARCH_V1",
+    "source_head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "source_tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "authority": "RESEARCH_PROVENANCE_AND_DISCOVERY_DOCUMENTS_NOT_PRODUCTION_THEOREM_PROMOTION",
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "handover": "research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md",
+    "files": {
+      "HANDOVER.md": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md",
+        "sha256": "33c5aca90e02f15a42678f72855154571367a040bdc521ee273705f2efdf04e0"
+      },
+      "CHECKPOINT.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/CHECKPOINT.json",
+        "sha256": "9d4761a998e09a62f5fb3d66c9b48da0332e115101f010eb15ca1d295752619a"
+      },
+      "OUTCOME_REGISTER.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/OUTCOME_REGISTER.json",
+        "sha256": "f813c1133c21e433097735a473d2d7dc36890e14152969607f2c040aa7e39019"
+      },
+      "RESEARCH_DEPENDENCIES.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/RESEARCH_DEPENDENCIES.json",
+        "sha256": "cb8245d010e6b59633927fb9cef34949e088dbd4b8d16d7e15f7d5c4fe9f4954"
+      },
+      "PORTABLE_ARCHIVE_MANIFEST.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/PORTABLE_ARCHIVE_MANIFEST.json",
+        "sha256": "0c284c8d65bb4a4e95a71844670bca72e1b97599e4e5518f600e9dcc909d39f9"
+      },
+      "EXTERNAL_FORMAL_INVENTORY.json": {
+        "path": "research/RHRC/integration/opica_round4/progress/2026-11-02/EXTERNAL_FORMAL_INVENTORY.json",
+        "sha256": "d0b53efc6c6d0338b848f89eacab4493918fcf7b5e7149e33bf3a7f2e2a731da"
+      }
+    },
+    "production_counts_unchanged": {
+      "declarations": 1079,
+      "modules": 90,
+      "semantic_controls": 84,
+      "portable_per_mode": 231,
+      "native_methods": 46
+    },
+    "graph_scope": "New research/document discovery nodes and explicit evidence references; no new formal proof edges."
+  },
+  "arithmetic_frontier_2026_11_07": {
+    "authority": "LOCAL_PINNED_LINUX_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+    "new_arithmetic_estimate": "OPEN",
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "what_became_formally_true": "Within local pinned compilation: exact moment-slice carriers, Gram transport and dimensions; (C1) and narrow packet reductions to Mathlib RiemannHypothesis; (C3), (C4) and witness-transport finite consumers.",
+    "what_changed": "The closing targets are narrowed to cofinal vanishing-error slice bounds and same-packet ground responses; the packet route no longer needs a separate global shared-ground exclusion.",
+    "upstream_implications": "Carrier, metric and quantifier order are explicit interfaces; the fixed-seed chart is the specification chart up to 16 pi^2.",
+    "downstream_implications": "A supplier may bypass all-aperture, all-cutoff, constant-gap and global tie requirements.",
+    "resurrected_routes": "Coupled Schur certificates and the source-core programme on the changed moment carrier; C2, K3 and causal remain separate alternatives.",
+    "new_RH_relevant_clues": "Frame conversion is lossy and L-dependent: at L=6 a physical tolerance 1/4 needs unweighted coordinate tolerance about 0.0130. LEAD only.",
+    "falsification_checks": "K=3 slice bounds are vacuous for every tolerance; twelve API controls reject trial, cutoff, parity, metric, quantifier, tie and residual substitutions.",
+    "highest_leverage_next_moves": "Import and replay L=4/L=5 evidence; run the predeclared E-H6 horizon; measure complete signed budgets before formalizing a candidate law."
   }
 }

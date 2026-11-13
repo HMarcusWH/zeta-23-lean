@@ -1,0 +1,883 @@
+{
+  "schema": "OPICA_PUBLICATION_CHECKPOINT_V1",
+  "source_head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "source_tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+  "pr": 299,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "research_state": "PAUSE_REQUESTED_AFTER_VERIFIED_PUSH",
+  "production_scope_unchanged": {
+    "declarations": 1079,
+    "modules": 90,
+    "intended_type_error_controls": 84,
+    "portable_each_mode": 231,
+    "mandatory_native_methods": 46
+  },
+  "baseline_ci": {
+    "runs_successful": 24,
+    "jobs_successful": 95,
+    "declared_optional_skips": 2,
+    "authority": "EXACT_7BAE_HEAD_ONLY",
+    "new_publication_head_qualification": "PENDING"
+  },
+  "primary_readable_notes": [
+    {
+      "path": "notes/01e1c68af76a-SOURCE_FAMILY_AND_SIGNED_FORCING_COMPLETION.json",
+      "sha256": "01e1c68af76a7d649fda2b58fc6f5e6330ad47d17c0572222a3965f73727c6a5",
+      "bytes": 12716,
+      "research_path": "new-energy-continuation/SOURCE_FAMILY_AND_SIGNED_FORCING_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_source_family_and_signed_forcing"
+      ]
+    },
+    {
+      "path": "notes/0a2b4808e303-FINITE_POLAR_INPUT_COMPLETION.json",
+      "sha256": "0a2b4808e303e11ca865b177a9732ba2aef295f30e24c039c9252689f20306ef",
+      "bytes": 2096,
+      "research_path": "arithmetic/self-echo-finite-carrier/FINITE_POLAR_INPUT_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_finite_polar_input_restriction"
+      ]
+    },
+    {
+      "path": "notes/0ae876159b0a-ACTUAL_K3_PRIME_COUNTING_COMPENSATION.json",
+      "sha256": "0ae876159b0aee943295eecf53415ac3a82216c00430b9bcdd8d09656e44f855",
+      "bytes": 14416,
+      "research_path": "arithmetic/k3-prime-counting-compensation/ACTUAL_K3_PRIME_COUNTING_COMPENSATION.json",
+      "checkpoint_labels": [
+        "latest_actual_prime_counting_compensation"
+      ]
+    },
+    {
+      "path": "notes/0baa58c9d067-ZERO_FREQUENCY_COMPLETION.json",
+      "sha256": "0baa58c9d067fd487c32c7cf6bc405ef90db6a6f94973c58fa65d047167a484e",
+      "bytes": 3515,
+      "research_path": "arithmetic/target-conditioned-echo/ZERO_FREQUENCY_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_zero_mode_source_pairing"
+      ]
+    },
+    {
+      "path": "notes/0eb54355764d-E4_REVIEW_AND_POST_GREEN_COMPLETION.json",
+      "sha256": "0eb54355764dd6f436fb565bef96396bae9493ef475563c423e9e7a48611924e",
+      "bytes": 21473,
+      "research_path": "new-energy-continuation/E4_REVIEW_AND_POST_GREEN_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_s4e4_review"
+      ]
+    },
+    {
+      "path": "notes/1ee904cb3735-JOINT_CUBIC_RECOVERY_AND_SOURCE_FLOW_COST.json",
+      "sha256": "1ee904cb37355c9df31412d54422b630d2b209e656cc77ec09d6519d745095a4",
+      "bytes": 7217,
+      "research_path": "arithmetic/actual-translate-reconstruction/JOINT_CUBIC_RECOVERY_AND_SOURCE_FLOW_COST.json",
+      "checkpoint_labels": [
+        "latest_finite_joint_cubic_recovery"
+      ]
+    },
+    {
+      "path": "notes/20a1a095985f-INDEPENDENT_FINITE_POLAR_INPUT_REVIEW.json",
+      "sha256": "20a1a095985f35dafa0fcb7ec1e3b36eb86f3d7a0349d19098c9d5fc7d36895a",
+      "bytes": 16830,
+      "research_path": "arithmetic/self-echo-finite-carrier/INDEPENDENT_FINITE_POLAR_INPUT_REVIEW.json",
+      "checkpoint_labels": [
+        "latest_independent_polar_review"
+      ]
+    },
+    {
+      "path": "notes/21c103bc33e3-ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "21c103bc33e370ba8092fa76543ce5d690e928304f761bb8a7d3e17a5aad38e6",
+      "bytes": 31598,
+      "research_path": "ci-7bae-next13/ACTUAL_SUCCESS_HARVEST.json",
+      "checkpoint_labels": [
+        "latest_ci_harvest/new_independent_canonical_harvest"
+      ]
+    },
+    {
+      "path": "notes/25acd6f559dd-CURRENT_CLOSURE_INTERFACE_AUDIT.json",
+      "sha256": "25acd6f559dde8fe589ed1d5be835f6d20bca0ca84767d6c4aa048c1173ea171",
+      "bytes": 35435,
+      "research_path": "arithmetic/self-echo-finite-carrier/CURRENT_CLOSURE_INTERFACE_AUDIT.json",
+      "checkpoint_labels": [
+        "latest_closure_interface_audit"
+      ]
+    },
+    {
+      "path": "notes/2b12360005bf-ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET.json",
+      "sha256": "2b12360005bf6e57c7b6bb1bd8a2f55d572f41ce7c6fe8b45dfbce65df75b3ee",
+      "bytes": 15470,
+      "research_path": "arithmetic/k3-higher-prime-powers/ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET.json",
+      "checkpoint_labels": [
+        "latest_actual_higher_prime_power_budget"
+      ]
+    },
+    {
+      "path": "notes/2b3ec90e2c38-INDEPENDENT_K3_GENERATED_PRIME_ENERGY_REVIEW.json",
+      "sha256": "2b3ec90e2c3886d41fe824d214e4b8ec0e53901a62dfaf7890fbe8f2a20f3ef8",
+      "bytes": 9751,
+      "research_path": "arithmetic/k3-generated-prime-energy/INDEPENDENT_K3_GENERATED_PRIME_ENERGY_REVIEW.json",
+      "checkpoint_labels": [
+        "current_round/quadratic_peer"
+      ]
+    },
+    {
+      "path": "notes/2f19a21fadc7-COMPLETION.json",
+      "sha256": "2f19a21fadc77c45f5341166af2a1e74fc8dc0f5a5826c5f773229b6f356852f",
+      "bytes": 2540,
+      "research_path": "ci-7bae-next18/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_ci_harvest/final_round2_harvest",
+        "latest_current_head_workflow_harvest"
+      ]
+    },
+    {
+      "path": "notes/2f568e29c770-COMPLETION.json",
+      "sha256": "2f568e29c7704fe9c36a615c906dcb8177fa1ca1890b9314122a166524dc1f83",
+      "bytes": 3280,
+      "research_path": "arithmetic/mean-selberg-energy/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_actual_mean_causal_energy"
+      ]
+    },
+    {
+      "path": "notes/30425384e98c-ACTUAL_COMPACT_SUPPLIER_AND_TAPER_VISIBILITY.json",
+      "sha256": "30425384e98cb7506df0d2749ba0a79eedd87a5bb318469d8e784974b9c28cad",
+      "bytes": 14395,
+      "research_path": "arithmetic/self-echo-boundary-supplier/ACTUAL_COMPACT_SUPPLIER_AND_TAPER_VISIBILITY.json",
+      "checkpoint_labels": [
+        "latest_specified_taper_visibility"
+      ]
+    },
+    {
+      "path": "notes/30887f7124b3-ALL_APERTURE_JOINT_CUBIC_RECOVERY_COST.json",
+      "sha256": "30887f7124b3788ec6c2880245068f13ec7c8fe1cbbf0754f36085b1c3905784",
+      "bytes": 4324,
+      "research_path": "arithmetic/actual-translate-reconstruction/ALL_APERTURE_JOINT_CUBIC_RECOVERY_COST.json",
+      "checkpoint_labels": [
+        "latest_all_aperture_joint_recovery_cost"
+      ]
+    },
+    {
+      "path": "notes/3129e82ccc5f-ACTUAL_GLOBAL_K3_FORCING_SEAMS_AND_CONTACT.json",
+      "sha256": "3129e82ccc5f787d2aaf0fda82aaac407f0866c66092e0bc9233edee83845c0f",
+      "bytes": 20630,
+      "research_path": "ground/fixed-k3-aperture/global-aperture-seams/ACTUAL_GLOBAL_K3_FORCING_SEAMS_AND_CONTACT.json",
+      "checkpoint_labels": [
+        "latest_actual_aperture_forcing_audit"
+      ]
+    },
+    {
+      "path": "notes/31f4f317baa6-COMPLETE_K3_COUPLING_AND_GROWTH_CHECKPOINT.json",
+      "sha256": "31f4f317baa64c80eede204fe3a1869809dae84b5e1f5be787b0816bbfdea119",
+      "bytes": 10725,
+      "research_path": "new-energy-continuation/COMPLETE_K3_COUPLING_AND_GROWTH_CHECKPOINT.json",
+      "checkpoint_labels": [
+        "latest_complete_k3_coupling"
+      ]
+    },
+    {
+      "path": "notes/328a3bc9fd8d-MERTENS_COUNTING_AND_APERTURE_COMPLETION.json",
+      "sha256": "328a3bc9fd8d6b79b636477f13c1f3c3eb99e19bbd72aa6dcf4a2ee7797766f2",
+      "bytes": 23932,
+      "research_path": "new-energy-continuation/MERTENS_COUNTING_AND_APERTURE_COMPLETION.json",
+      "checkpoint_labels": [
+        "current_round/prior",
+        "latest_mertens_counting_and_aperture"
+      ]
+    },
+    {
+      "path": "notes/37b29eeaa88e-COMPLETION.json",
+      "sha256": "37b29eeaa88e9332caecb3dd0f1bdc45d4f6971f41ae88cd85e456ce200e2c9d",
+      "bytes": 1541,
+      "research_path": "ground/strict-gamma-monotonicity/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_external_arch_formal_preparation/0"
+      ]
+    },
+    {
+      "path": "notes/3bd6bd645bbd-INDEPENDENT_NEGATIVE_WELL_SOURCE_STORAGE_REVIEW.json",
+      "sha256": "3bd6bd645bbda2211a2804e0413560f2502178aed0f63067f621eb1ad3fb295f",
+      "bytes": 8578,
+      "research_path": "ground/fixed-k3-aperture/negative-well-source-storage/INDEPENDENT_NEGATIVE_WELL_SOURCE_STORAGE_REVIEW.json",
+      "checkpoint_labels": [
+        "current_round/well_peer"
+      ]
+    },
+    {
+      "path": "notes/3f240d6e9c24-ACTUAL_CRITICAL_MEAN_OSCILLATION.json",
+      "sha256": "3f240d6e9c241015d00a348e98c90b670f011b2296f76e3a2caf5a9e729877ff",
+      "bytes": 10703,
+      "research_path": "arithmetic/mean-critical-sign/ACTUAL_CRITICAL_MEAN_OSCILLATION.json",
+      "checkpoint_labels": [
+        "latest_actual_critical_mean_sign"
+      ]
+    },
+    {
+      "path": "notes/41b1bb00eace-RESEARCH_ROUND_COMPLETION.json",
+      "sha256": "41b1bb00eacef33f840bcf4553dbf4c662b4f6cf53920ec058016f490c9866ca",
+      "bytes": 15513,
+      "research_path": "publication/RESEARCH_ROUND_COMPLETION.json",
+      "checkpoint_labels": [
+        "current_round/completion"
+      ]
+    },
+    {
+      "path": "notes/422b2bc5ed6a-ACTUAL_CANONICAL_OUTPUT_RECOVERY.json",
+      "sha256": "422b2bc5ed6a2daeced715dcaf95eefef2f4493c5ab31737a9a356aeb30ce4de",
+      "bytes": 15193,
+      "research_path": "arithmetic/canonical-output-recovery/ACTUAL_CANONICAL_OUTPUT_RECOVERY.json",
+      "checkpoint_labels": [
+        "latest_actual_output_recovery"
+      ]
+    },
+    {
+      "path": "notes/489f1ed34526-COMPLETION.json",
+      "sha256": "489f1ed345269d3d6b4a88762fe86039e6dfa5be3b089c699c6d14ce49926978",
+      "bytes": 4346,
+      "research_path": "arithmetic/source-family-ritz/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_actual_source_family_ritz"
+      ]
+    },
+    {
+      "path": "notes/491245f86c95-ACTUAL_FIXED_INPUT_FIRST_AND_SECOND_SPECTRAL_MOMENTS.json",
+      "sha256": "491245f86c954d78e1619faa454bccb0e4ec0397e3edd9370efb500d42374f89",
+      "bytes": 16734,
+      "research_path": "arithmetic/self-echo-finite-carrier/ACTUAL_FIXED_INPUT_FIRST_AND_SECOND_SPECTRAL_MOMENTS.json",
+      "checkpoint_labels": [
+        "latest_first_second_spectral_moments"
+      ]
+    },
+    {
+      "path": "notes/496bfaef30c3-ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "496bfaef30c304200ad0798edefeb6e92cf9c2a9ef644cea407593aab70c74df",
+      "bytes": 12684,
+      "research_path": "ci-7bae-next11/ACTUAL_SUCCESS_HARVEST.json",
+      "checkpoint_labels": [
+        "latest_ci_harvest/harvest"
+      ]
+    },
+    {
+      "path": "notes/4e6e7899bcdc-ACTUAL_NEGATIVE_WELL_SOURCE_STORAGE.json",
+      "sha256": "4e6e7899bcdc53d53e27b89ce44c83cdfb084394d8208267aa2eb15d561e5e0a",
+      "bytes": 16568,
+      "research_path": "ground/fixed-k3-aperture/negative-well-source-storage/ACTUAL_NEGATIVE_WELL_SOURCE_STORAGE.json",
+      "checkpoint_labels": [
+        "current_round/well"
+      ]
+    },
+    {
+      "path": "notes/50fdf9d8b898-COMPLETION.json",
+      "sha256": "50fdf9d8b898b5d268a5faf690c4b6645b07ccad4c969164e3bf20702851a987",
+      "bytes": 6747,
+      "research_path": "arithmetic/source-family-moment-correction/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_original_span_moment_correction"
+      ]
+    },
+    {
+      "path": "notes/54b763bcb53a-SIGNED_TARGET_AND_CRITICAL_VISIBILITY_COMPLETION.json",
+      "sha256": "54b763bcb53a2e01c47295bd8506bb7dffb090a25d31e6203169c1761ccc0cf1",
+      "bytes": 12865,
+      "research_path": "new-energy-continuation/SIGNED_TARGET_AND_CRITICAL_VISIBILITY_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_signed_target_and_critical_visibility"
+      ]
+    },
+    {
+      "path": "notes/557763270402-GROUND_RESIDUAL_AND_FULL_FORCING_CHECK.json",
+      "sha256": "557763270402f4b647b06982125e9eb495bc916a46c48c20c23d69903dc71e44",
+      "bytes": 7220,
+      "research_path": "new-energy-continuation/GROUND_RESIDUAL_AND_FULL_FORCING_CHECK.json",
+      "checkpoint_labels": [
+        "latest_ground_residual_and_full_forcing_check"
+      ]
+    },
+    {
+      "path": "notes/5893968d1258-ACTUAL_SIGNED_POLE_PROJECTION_AND_NATIVE_ENDPOINT_COST.json",
+      "sha256": "5893968d1258189eb15d2dda4e915599171fc18a28153ff6daf0ed5cc37030a8",
+      "bytes": 21157,
+      "research_path": "arithmetic/self-echo-finite-carrier/ACTUAL_SIGNED_POLE_PROJECTION_AND_NATIVE_ENDPOINT_COST.json",
+      "checkpoint_labels": [
+        "latest_exact_native_projection_cost"
+      ]
+    },
+    {
+      "path": "notes/59529a54c3d5-COMPLETION.json",
+      "sha256": "59529a54c3d5475d215d6e4ebd2c2ea31d979237cc8865714bf1913b638a2aa3",
+      "bytes": 3695,
+      "research_path": "arithmetic/self-echo-block-arithmetic/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_complete_block_review"
+      ]
+    },
+    {
+      "path": "notes/67853634d082-S4E3_COMPLETE_ECHO_RESEARCH_COMPLETION.json",
+      "sha256": "67853634d082e9384a308fbb3a7dc6b5bc6a5edfcbea6c778fe2eb1fefa7f011",
+      "bytes": 11869,
+      "research_path": "new-energy-continuation/S4E3_COMPLETE_ECHO_RESEARCH_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_s4e3_complete_echo_research"
+      ]
+    },
+    {
+      "path": "notes/77bcad73ee16-EXACT_BOUNDARY_TRANSPORT_AND_SIGN_COMPLETION.json",
+      "sha256": "77bcad73ee1637904b0b82870883c7478dd3bebb2eff7dc11ae26410c5e0a564",
+      "bytes": 12628,
+      "research_path": "new-energy-continuation/EXACT_BOUNDARY_TRANSPORT_AND_SIGN_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_exact_boundary_transport_and_sign"
+      ]
+    },
+    {
+      "path": "notes/79e5f72e1715-NATIVE_QUARTIC_AND_SOURCE_FLUX_COMPLETION.json",
+      "sha256": "79e5f72e171597737e418bc3146aa6014b9f6154877f3fc821db8d2093063a1e",
+      "bytes": 10820,
+      "research_path": "new-energy-continuation/NATIVE_QUARTIC_AND_SOURCE_FLUX_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_native_quartic_and_source_flux_research"
+      ]
+    },
+    {
+      "path": "notes/7b04cce157bc-NATIVE_ECHO_SOURCE_COST_COMPLETION.json",
+      "sha256": "7b04cce157bc5e72e4c7d4c2c48f9e10d902eea0ce41b82a78e3229de1ca924c",
+      "bytes": 12231,
+      "research_path": "new-energy-continuation/NATIVE_ECHO_SOURCE_COST_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_native_echo_source_cost_research"
+      ]
+    },
+    {
+      "path": "notes/7e4af81147ed-COMPLETION.json",
+      "sha256": "7e4af81147edd314b459919d453e1e3cdb04c24d72aa440e0d744aa5efb28c45",
+      "bytes": 4153,
+      "research_path": "arithmetic/mean-selberg-candidate/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_actual_mean_selberg_candidate"
+      ]
+    },
+    {
+      "path": "notes/8074e8791499-COMPLETION.json",
+      "sha256": "8074e8791499d9ea345f8c7874613f2f90e762dde7475b47b67d5d792c8b7a33",
+      "bytes": 4957,
+      "research_path": "arithmetic/mean-endpoint-transport/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_mean_endpoint_transport"
+      ]
+    },
+    {
+      "path": "notes/817c5bb0efce-JOINT_DECONVOLUTION_SELF_ECHO_REVIEW.json",
+      "sha256": "817c5bb0efceda6e31300e836709216e17c6d37c649c3dbc5beb6cd7ec17d85f",
+      "bytes": 39234,
+      "research_path": "new-energy-continuation/JOINT_DECONVOLUTION_SELF_ECHO_REVIEW.json",
+      "checkpoint_labels": [
+        "latest_inspiration_research",
+        "latest_joint_echo_research"
+      ]
+    },
+    {
+      "path": "notes/82052a5c74c4-COMPLETION.json",
+      "sha256": "82052a5c74c4956c8ce4ad828ad088496fe1fb2ffb5740aa5490e9252db5e456",
+      "bytes": 4816,
+      "research_path": "arithmetic/target-conditioned-echo/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_one_output_target"
+      ]
+    },
+    {
+      "path": "notes/867bf7093698-MERTENS_ONLY_HIGHER_POWER_POSITIVITY.json",
+      "sha256": "867bf70936985d7a919a2fec43dc3b9980b4695dccc28d858a6c407199ccd3d0",
+      "bytes": 13924,
+      "research_path": "arithmetic/k3-higher-prime-powers/MERTENS_ONLY_HIGHER_POWER_POSITIVITY.json",
+      "checkpoint_labels": [
+        "latest_actual_mertens_higher_power_positivity"
+      ]
+    },
+    {
+      "path": "notes/868c7f6f86dc-GAMMA_PRIME_REVIEW_AND_COMPARISON_COMPLETION.json",
+      "sha256": "868c7f6f86dca483d9f3ff5eb861eaf2d62402de06c14cf34635b91a5f993199",
+      "bytes": 14451,
+      "research_path": "new-energy-continuation/GAMMA_PRIME_REVIEW_AND_COMPARISON_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_gamma_prime_attachment_and_research"
+      ]
+    },
+    {
+      "path": "notes/87a297d4d8f8-CHECKPOINT.json",
+      "sha256": "87a297d4d8f8b984f3fabe91e5878b5bce859865ad3c7474c5db7a4e507da0cd",
+      "bytes": 2120,
+      "research_path": "ci-7bae-next18/CHECKPOINT.json",
+      "checkpoint_labels": [
+        "latest_current_head_ci"
+      ]
+    },
+    {
+      "path": "notes/88eea773c665-JOINT_ECHO_RESEARCH_COMPLETION.json",
+      "sha256": "88eea773c6652a8e77c57e0554214731b7915ad7c4b77df02cae47874e31d483",
+      "bytes": 2746,
+      "research_path": "new-energy-continuation/JOINT_ECHO_RESEARCH_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_joint_echo_completion"
+      ]
+    },
+    {
+      "path": "notes/89e2a289ff30-COMMON_INPUT_AND_TERMINAL_STORAGE_COMPLETION.json",
+      "sha256": "89e2a289ff308b2347bd1221de4e45ed7103a4c010ca806e0d69b467f6e60e4d",
+      "bytes": 10961,
+      "research_path": "new-energy-continuation/COMMON_INPUT_AND_TERMINAL_STORAGE_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_common_input_and_terminal_storage"
+      ]
+    },
+    {
+      "path": "notes/8f7290528812-EXACT_NORMALIZED_SEAM_AND_INTERIOR_TELESCOPE.json",
+      "sha256": "8f7290528812baf6a47c646168402f6c22bee7622d94fcb5b849f3193d9e51cd",
+      "bytes": 5339,
+      "research_path": "arithmetic/self-echo-block-arithmetic/EXACT_NORMALIZED_SEAM_AND_INTERIOR_TELESCOPE.json",
+      "checkpoint_labels": [
+        "latest_normalized_seam_drift"
+      ]
+    },
+    {
+      "path": "notes/94a315d1b4b8-COMPLETION.json",
+      "sha256": "94a315d1b4b82ece58e64cc4f2cf56fc37fdf2181496342736a011ceb1fe3502",
+      "bytes": 18443,
+      "research_path": "arithmetic/zero-mode-growth/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_zero_mode_normal_cancellation"
+      ]
+    },
+    {
+      "path": "notes/963466fb5b80-ACTUAL_TWO_HISTORY_BLOCK_COMPENSATION.json",
+      "sha256": "963466fb5b80c7747243373ab76f44a2cf77257b91d8d5420ce3a05007f37273",
+      "bytes": 21407,
+      "research_path": "arithmetic/self-echo-block-arithmetic/ACTUAL_TWO_HISTORY_BLOCK_COMPENSATION.json",
+      "checkpoint_labels": [
+        "latest_actual_block_compensation"
+      ]
+    },
+    {
+      "path": "notes/98c6bc8da20c-COMPLETION.json",
+      "sha256": "98c6bc8da20c1f014bffc27acafa3cf5ea0edffa7598785ead292fe3587d7553",
+      "bytes": 2713,
+      "research_path": "arithmetic/self-echo-boundary-centering/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_centered_complete_carrier"
+      ]
+    },
+    {
+      "path": "notes/9d14e2860524-INDEPENDENT_ACTUAL_COMPLETION_NONACCRETIVITY_REVIEW.json",
+      "sha256": "9d14e286052441c53fa00842d39407d5f5e1f3c93377b2ae460bd4bf18270422",
+      "bytes": 15517,
+      "research_path": "arithmetic/causal-symbol/INDEPENDENT_ACTUAL_COMPLETION_NONACCRETIVITY_REVIEW.json",
+      "checkpoint_labels": [
+        "latest_completion_operator_falsification"
+      ]
+    },
+    {
+      "path": "notes/a40669738e43-K3_OLDER_CONTACT_AND_RECENT_SOURCE_AUDIT.json",
+      "sha256": "a40669738e43c8de525ada157344f4434012d002e6884c373cbdfe369e31dfea",
+      "bytes": 13843,
+      "research_path": "ground/fixed-k3-aperture/K3_OLDER_CONTACT_AND_RECENT_SOURCE_AUDIT.json",
+      "checkpoint_labels": [
+        "current_round/contact"
+      ]
+    },
+    {
+      "path": "notes/a4809ff2182f-ACTUAL_SELF_ECHO_NATIVE_GRID_SIGN_BLOCKS.json",
+      "sha256": "a4809ff2182f8cfec64af588b776ae325346285ff7a6805b0dc02204431299cd",
+      "bytes": 18368,
+      "research_path": "arithmetic/self-echo-native-grid/ACTUAL_SELF_ECHO_NATIVE_GRID_SIGN_BLOCKS.json",
+      "checkpoint_labels": [
+        "latest_complete_self_echo_native_grid"
+      ]
+    },
+    {
+      "path": "notes/a763ab9466a3-ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "a763ab9466a34fbe134f5fbac87292a77c94226998d44f90b5ce9cc4f19e1b44",
+      "bytes": 24000,
+      "research_path": "ci-7bae-next15/ACTUAL_SUCCESS_HARVEST.json",
+      "checkpoint_labels": [
+        "latest_ci_harvest/new_independent_auxiliary_harvest"
+      ]
+    },
+    {
+      "path": "notes/a7a5b1d000cf-ACTUAL_K3_GENERATED_PRIME_ENERGY.json",
+      "sha256": "a7a5b1d000cf79eca33f209785c0b583792aaf03a2d792fdbe2a2f0215a2a17e",
+      "bytes": 14997,
+      "research_path": "arithmetic/k3-generated-prime-energy/ACTUAL_K3_GENERATED_PRIME_ENERGY.json",
+      "checkpoint_labels": [
+        "current_round/quadratic"
+      ]
+    },
+    {
+      "path": "notes/ab4f65ae14b5-COMPLETION.json",
+      "sha256": "ab4f65ae14b5f8bc839d7ac189b34e61140c1d4cc496ece1a668b4c4b8a6430b",
+      "bytes": 18963,
+      "research_path": "arithmetic/finite-boundary-summation/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_complete_finite_boundary_summation"
+      ]
+    },
+    {
+      "path": "notes/afd3fb495041-ACTUAL_COPRIME_NEGATIVE_EXCURSIONS.json",
+      "sha256": "afd3fb4950413fc6e660c514adb8f2fa03752e94ca50037cc525db452505697d",
+      "bytes": 8844,
+      "research_path": "arithmetic/coprime-signed-excursion/ACTUAL_COPRIME_NEGATIVE_EXCURSIONS.json",
+      "checkpoint_labels": [
+        "latest_coprime_signed_restriction"
+      ]
+    },
+    {
+      "path": "notes/b086b2cae885-COMPLETION.json",
+      "sha256": "b086b2cae88575a94b59f4c4c61678ee122d6ef367f439548d848375a22eb7b5",
+      "bytes": 1479,
+      "research_path": "arithmetic/self-echo-complete-carrier/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_complete_response_carrier"
+      ]
+    },
+    {
+      "path": "notes/b3e5c0d81d4d-COMPLETION.json",
+      "sha256": "b3e5c0d81d4d53d2afcbfa89bc3889267f15009c979230ecdfbab17c2770d191",
+      "bytes": 4365,
+      "research_path": "ground/fixed-k3-aperture/arch-formal-k3/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_external_arch_formal_preparation/2"
+      ]
+    },
+    {
+      "path": "notes/b64a59fcd1a1-COMPLETION.json",
+      "sha256": "b64a59fcd1a1ce25152ce86d115e369e0c9c0937ebf37f8ee39bf1b47e8ecf42",
+      "bytes": 5260,
+      "research_path": "arithmetic/zero-mode-arithmetic/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_zero_mode_arithmetic"
+      ]
+    },
+    {
+      "path": "notes/b74264d1df89-UNIFORM_NATIVE_QUARTIC_ENDPOINT_COST.json",
+      "sha256": "b74264d1df89bdd0fbbf2bc2a29e7f2c68ad1a24ef57c219a97d9a24e0ebfb6c",
+      "bytes": 14908,
+      "research_path": "arithmetic/self-echo-finite-carrier/UNIFORM_NATIVE_QUARTIC_ENDPOINT_COST.json",
+      "checkpoint_labels": [
+        "latest_uniform_native_cost"
+      ]
+    },
+    {
+      "path": "notes/bd03f33c6926-OUTPUT_RECOVERY_AND_SIGNED_BULK_COMPLETION.json",
+      "sha256": "bd03f33c692661e0ae58fd4e66bdffbcce169a201afddce758f4c4e72d5fb55c",
+      "bytes": 6246,
+      "research_path": "new-energy-continuation/OUTPUT_RECOVERY_AND_SIGNED_BULK_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_output_recovery_and_signed_bulk"
+      ]
+    },
+    {
+      "path": "notes/bf1e4310b187-ACTUAL_K3_CENTRAL_BAND_AND_DIVISOR_FOLLOWTHROUGH.json",
+      "sha256": "bf1e4310b1871d4c05e2af83a95995891e3507b677c56ded5671e41e0feba40e",
+      "bytes": 8635,
+      "research_path": "arithmetic/k3-higher-prime-powers/ACTUAL_K3_CENTRAL_BAND_AND_DIVISOR_FOLLOWTHROUGH.json",
+      "checkpoint_labels": [
+        "latest_actual_prime_only_followthrough"
+      ]
+    },
+    {
+      "path": "notes/c01e8f2ba047-EXPANDED_AUDIT_FREEZE.json",
+      "sha256": "c01e8f2ba047adb0ffd903ce94735c3b9d128354e415fb4ecef1781b2bba1522",
+      "bytes": 5226,
+      "research_path": "ground/fixed-k3-aperture/arch-formal-covariance/EXPANDED_AUDIT_FREEZE.json",
+      "checkpoint_labels": [
+        "latest_external_arch_formal_preparation/1"
+      ]
+    },
+    {
+      "path": "notes/ce9458718281-COMPLETION.json",
+      "sha256": "ce9458718281751b359e34d99327b1d86d8f04532b73c7348267e2299af2d511",
+      "bytes": 1817,
+      "research_path": "drive/paper-xxvii-final-audit/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_paper_xxvii_final_audit"
+      ]
+    },
+    {
+      "path": "notes/cf0b2f2a6cd4-K3_SIGNED_COMPENSATION_CHECKPOINT.json",
+      "sha256": "cf0b2f2a6cd46255c3ad903951674e91324d186acddf28e946df6da7145c52f1",
+      "bytes": 11766,
+      "research_path": "new-energy-continuation/K3_SIGNED_COMPENSATION_CHECKPOINT.json",
+      "checkpoint_labels": [
+        "latest_k3_signed_compensation"
+      ]
+    },
+    {
+      "path": "notes/d4461dab4a0c-ACTUAL_FIXED_INPUT_SOURCE_FLUX.json",
+      "sha256": "d4461dab4a0ce76634a5ed4acb4cc4ba8a04f169c9cbc09649e5a3725e64f451",
+      "bytes": 11020,
+      "research_path": "arithmetic/fixed-input-source-flux/ACTUAL_FIXED_INPUT_SOURCE_FLUX.json",
+      "checkpoint_labels": [
+        "latest_exact_source_current"
+      ]
+    },
+    {
+      "path": "notes/d4a09a7d0e8e-COMPLETE_ECHO_CENTERED_RESEARCH_COMPLETION.json",
+      "sha256": "d4a09a7d0e8e400aad6f785afd701ce4d966c22cb393bf40817216be519a9501",
+      "bytes": 11260,
+      "research_path": "new-energy-continuation/COMPLETE_ECHO_CENTERED_RESEARCH_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_centered_complete_echo_research"
+      ]
+    },
+    {
+      "path": "notes/dffded754535-FIXED_K3_REDUCTION_AND_SOURCE_SCALARS.json",
+      "sha256": "dffded7545358b9a9a3e722bcb0a454a192a0759fe44c79612cd189d02ade9e4",
+      "bytes": 8885,
+      "research_path": "new-energy-continuation/FIXED_K3_REDUCTION_AND_SOURCE_SCALARS.json",
+      "checkpoint_labels": [
+        "latest_fixed_k3_reduction"
+      ]
+    },
+    {
+      "path": "notes/e7aae06be902-ACTUAL_SUCCESS_HARVEST.json",
+      "sha256": "e7aae06be90254661e11dfc6f556484c30524f310f3e811127827e2137bae36b",
+      "bytes": 26982,
+      "research_path": "ci-7bae-next16/ACTUAL_SUCCESS_HARVEST.json",
+      "checkpoint_labels": [
+        "latest_ci_harvest/new_current_integrated_harvest"
+      ]
+    },
+    {
+      "path": "notes/ec9112e1ffec-ACTUAL_CRITICAL_LINEAR_OSCILLATION.json",
+      "sha256": "ec9112e1ffecd9a11e5a92413b8a4c054e2be7b567a435fab0f05630fe6bf79c",
+      "bytes": 7684,
+      "research_path": "arithmetic/critical-source-visibility/ACTUAL_CRITICAL_LINEAR_OSCILLATION.json",
+      "checkpoint_labels": [
+        "latest_critical_source_linear_oscillation"
+      ]
+    },
+    {
+      "path": "notes/edf3af17db89-SIGNED_ECHO_RESEARCH_COMPLETION.json",
+      "sha256": "edf3af17db89102b9e3f7a0c1afc6ed0b40a56fbf50e8f1a9f218cbb5d7c0eb1",
+      "bytes": 13376,
+      "research_path": "new-energy-continuation/SIGNED_ECHO_RESEARCH_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_signed_echo_research"
+      ]
+    },
+    {
+      "path": "notes/f10703b5db0f-COMPLETION.json",
+      "sha256": "f10703b5db0f8c0cc3d0d730736340d940da85c5784693682d78fb50c56ed5ad",
+      "bytes": 2359,
+      "research_path": "ground/fixed-k3-aperture/arch-formal-specialization/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_external_actual_k3_arch"
+      ]
+    },
+    {
+      "path": "notes/f231a0e6f858-MOMENT_CORRECTION_AND_CAUSAL_FEEDBACK_COMPLETION.json",
+      "sha256": "f231a0e6f8581b84eef5621cb883d43b75a1b0ae2b290b5ae4e0709f7d39b73a",
+      "bytes": 11179,
+      "research_path": "new-energy-continuation/MOMENT_CORRECTION_AND_CAUSAL_FEEDBACK_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_moment_and_causal_feedback"
+      ]
+    },
+    {
+      "path": "notes/f31386abcaa7-CHECKPOINT.json",
+      "sha256": "f31386abcaa755086ab9999d0365dddec34c82d8a0f3372b4672668c14d5e642",
+      "bytes": 18084,
+      "research_path": "ci-7bae-next14/CHECKPOINT.json",
+      "checkpoint_labels": [
+        "latest_ci_harvest/snapshot"
+      ]
+    },
+    {
+      "path": "notes/f4240a49f1f4-COUPLED_NORMAL_MEAN_AND_BOUNDARY_COMPLETION.json",
+      "sha256": "f4240a49f1f4bcdfe65ced7db83144afc6944a2439d1e6e274178551bdf5cbb6",
+      "bytes": 13292,
+      "research_path": "new-energy-continuation/COUPLED_NORMAL_MEAN_AND_BOUNDARY_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_coupled_normal_mean_boundary"
+      ]
+    },
+    {
+      "path": "notes/f4acac795dd8-LOCAL_REPAIR_COMPLETION.json",
+      "sha256": "f4acac795dd8dc13667b30da4734d0096bdc4342834431a01ffd2fff558d52d5",
+      "bytes": 8446,
+      "research_path": "external-work/opica-madness-runtime-disk-repair-2026-11-02/LOCAL_REPAIR_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_repair"
+      ]
+    },
+    {
+      "path": "notes/f7fd116f7212-CURRENT_STATE_AND_DRIVE.json",
+      "sha256": "f7fd116f72125592165ee6b1e3cb8c8effd697eaef1e2b86cfd8cf9264e9591f",
+      "bytes": 4632,
+      "research_path": "drive/k3-component-refresh-2026-11-02/CURRENT_STATE_AND_DRIVE.json",
+      "checkpoint_labels": [
+        "latest_drive_refresh"
+      ]
+    },
+    {
+      "path": "notes/fc603414211d-COMPLETION.json",
+      "sha256": "fc603414211dd99bea3694de4efffe5b0af9675e6cd1ab0cc1acd3a4ea08be62",
+      "bytes": 4140,
+      "research_path": "arithmetic/mean-selberg-storage/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_actual_causal_terminal_storage"
+      ]
+    },
+    {
+      "path": "notes/fc836767c543-COMPLETION.json",
+      "sha256": "fc836767c543bf5d3acc712c9ec4eab15df710c040ef2601f05e93f1ce0885e6",
+      "bytes": 5799,
+      "research_path": "arithmetic/common-real-source-synthesis/COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_actual_common_real_synthesis"
+      ]
+    },
+    {
+      "path": "notes/fca20633bb10-JOINT_RECOVERY_AND_NATIVE_GRID_COMPLETION.json",
+      "sha256": "fca20633bb101661a6a24e43f30f70ad7f42f2d4c2122f197ae340d40e0cfe4f",
+      "bytes": 14558,
+      "research_path": "new-energy-continuation/JOINT_RECOVERY_AND_NATIVE_GRID_COMPLETION.json",
+      "checkpoint_labels": [
+        "latest_joint_recovery_and_native_grid_research"
+      ]
+    }
+  ],
+  "archive": {
+    "format": "ZIP_DEFLATED_ORDERED_BYTE_PARTS_V1",
+    "sha256": "e677b7a0a6503f3a19fe47c74998af6cef276cf8321ad75f1a725ce8cf6b0209",
+    "bytes": 180886106,
+    "part_bytes": 7340032,
+    "parts": [
+      {
+        "path": "authored-research.zip.part0001",
+        "sha256": "e4108743804e04341fe69eeace2e312c4b9bc22f9728fd2e9a4cc4e17e8f7832",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0002",
+        "sha256": "8152a8da0f2639040bf3699e4ddb6054f8eefb8abdb75233287ac6261face833",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0003",
+        "sha256": "4907075999d58f661a6a88b05ff57ec01bf5eb0da95d4d1886b4ab454f72eeef",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0004",
+        "sha256": "0b306ca4673df9a3ea73f11a0d721519487109ba5d34c13f04d289d5a89f889b",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0005",
+        "sha256": "034949fd69d8f8759a2b310ffc637e0cf8bbd758189f10e61ed70ccaf5235132",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0006",
+        "sha256": "0f71acb081cb64d7ad85ffa324200a32aa7674729c061605a221c9845f55dbcf",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0007",
+        "sha256": "9217a545435f167d7fccbd1556d8fd20a4842f03ca45371aaee6ba0fdbfea5f2",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0008",
+        "sha256": "d3e5fac5d722aa8869d05de26124876ee7ee4dc9dd490ca298afa7d1f2cd60b0",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0009",
+        "sha256": "5df3d8ce0e2f0c65cb8166990504c84bb075a8d00135c72f57e543e9e0c17a79",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0010",
+        "sha256": "675b9865f1b771d0e7caaa6ae8c6f8170cb0dda94d9a9ecd815def1d46912aac",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0011",
+        "sha256": "5ab0b77bde7344f8b8b6f11c54d27ee96ddc03b68ead5a6dd2697d2330c9b01d",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0012",
+        "sha256": "d0adfb933850603b3d62db2b0b4e6148b09358b66f134ac773f69e44b77003e3",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0013",
+        "sha256": "939b750924a48b5f1a1ed8a4db3ae6cd7b6d702f14d82b3a06393faf3e83fabb",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0014",
+        "sha256": "62e4df404aea4ef2ff5ed570fdb1cfd343a177184edde4d3035a192fbc966df9",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0015",
+        "sha256": "c0deb97e546314a3d891766c31e1af367c6af3d3f863b73ffd562327bfeaa0c5",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0016",
+        "sha256": "a9c6fb42a42698b133805101b909d6e6538ed33287b76281c9877224dc5a1908",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0017",
+        "sha256": "e7239b23faa41a33fbc95b86466b10be269defa761e6c7fd523607f62a381d72",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0018",
+        "sha256": "5b9549f6815edbe185885a4f4d0ae782ddbaa3d3c0ed18911072ffc4c546f9b6",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0019",
+        "sha256": "7d338e453c55204e9549696bc9cbe4291f334c583404b55a3b7f119d5382dbb0",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0020",
+        "sha256": "2c066b0e3c0019aebf34bbe4391e5991ee79483055321d86988356f708abc6e4",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0021",
+        "sha256": "5db0d1685b539a83716fe70f35648878d25298b3659d6fe0e2c83e3b9a7fb5a3",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0022",
+        "sha256": "01c18af37103cce940b44b123fbd74206fe9c29dd3be164268f31dd93d0ef270",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0023",
+        "sha256": "3850afca84dac98066d2b64941111038b280ff4a24bdff1c2dddaf3527220757",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0024",
+        "sha256": "5e156dcae5fd0341324d283b3584c5115c78f90e439fbdf2a8d65c86bc1a11ed",
+        "bytes": 7340032
+      },
+      {
+        "path": "authored-research.zip.part0025",
+        "sha256": "332156c46c7faa25b7ed2329fb9e204fb93eef3e6a2af68d0e28746cd876a111",
+        "bytes": 4725338
+      }
+    ]
+  },
+  "original_checkpoint": "publication/RESEARCH_CHECKPOINT_ORIGINAL.json via PORTABLE_ARCHIVE_MANIFEST.json",
+  "qualification_limit": "No external prototype is promoted to ROOTS or production authority. Publication checks authenticate bytes, classifications and existing canonical products; derived analytic results are not newly Lean compiled."
+}

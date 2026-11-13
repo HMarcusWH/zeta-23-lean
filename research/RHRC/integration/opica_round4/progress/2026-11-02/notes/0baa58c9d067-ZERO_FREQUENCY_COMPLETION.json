@@ -1,0 +1,51 @@
+{
+  "status": "COMPLETE_BOUNDED_DERIVED_ZERO_FREQUENCY_SCALAR_SOURCE_ADDENDUM",
+  "created_utc": "2026-11-02T07:05:58.966083+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "status_porcelain": ""
+  },
+  "artifacts": [
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/ZERO_FREQUENCY_SOURCE_COMPLETION.json",
+      "sha256": "1540dfda93969c568592ea2d1d88efa3865bfbb9a7203522f3c2dfae2ca40230",
+      "bytes": 6087
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/ZERO_FREQUENCY_SOURCE_BINDINGS.json",
+      "sha256": "4400c20947532711cfc974794d85b6fdf7c9e56acfb1840b731d2e2213a6161c",
+      "bytes": 6280
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/INDEPENDENT_ZERO_FREQUENCY_SOURCE_REVIEW.json",
+      "sha256": "a95a0e9295263ccb9d450d69a5d430034f7a4f688147a43eb88e514b1fdb04b2",
+      "bytes": 3746
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/seal_zero_frequency.py",
+      "sha256": "2452675b9207f699185ca2646f01ef82958c8269cb5d94839e544b1f9ca2b8c1",
+      "bytes": 4004
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/complete_zero_frequency.py",
+      "sha256": "4c4cfd1c1234773eac34220c115463f3f86b75e830460086c8fd7165bd04cba3",
+      "bytes": 3348
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/target-conditioned-echo/COMPLETION.json",
+      "sha256": "82052a5c74c4956c8ce4ad828ad088496fe1fb2ffb5740aa5490e9252db5e456",
+      "bytes": 4816
+    }
+  ],
+  "exact_result": "D^-1 g=-(eta/m0)P_Ee0, with m0>0 and the actual full centered metric. The remaining source pairing is eta/m0 Re(conj(F0)f)=eta|Z0|^2/(4m0^2)-eta|f-Z0/(2m0)|^2, where F=Au and Z=(I-Proj_span{1,r})Cu.",
+  "new_information": "The vector-shaped inverse cubic coupling collapses to a native zero-Fourier-output scalar. Its exact square completion provides a scalar upper allowance while retaining the negative square and all actual output normal corrections.",
+  "not_an_endpoint": "F0 is a Fourier mean. The actual endpoint constraint is sum F_n=0, which does not set F0 to zero. Z0 is a partial normal-projected mean and is not presumed small or free of an off-line mode.",
+  "contribution_and_review": "Root proposed and cross-checked the exact geometry and supplied the m0 positivity identity. Prime_math independently derived these, the literal inverse completion, zero source row and scalar-square identity. Late_math provided the separate file-bound review. Prerequisite authorship is disclosed in the review.",
+  "formal_and_workflow_status": "No new formally proved declaration, compiler run, CI result, source quadrature or exact arithmetic test. All14 records including seven current project sources rehashed; unchanged clean checkout. This addendum does not alter any prior frozen note or completion.",
+  "downstream_scope": "The upper allowance may replace this one middle pairing in the fixed-I source identity. Its boundary and other source terms, and every full-echo pole/finite/Arch cost, remain. An independent useful bound for the same Z0 would be new arithmetic information; none is asserted.",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "DERIVED",
+  "repository_edits": false
+}

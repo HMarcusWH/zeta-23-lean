@@ -1,0 +1,156 @@
+{
+  "title": "Mertens-only eventual positivity of the complete actual K3 higher-prime-power sector",
+  "status": "DERIVED_SOURCE_BOUND_COMPOSITION_NOT_NEW_LEAN_AUTHORITY",
+  "created_utc": "2026-11-02T13:01:23.776406+00:00",
+  "subject_head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+  "summary": "Current unconditional Mertens supplies the leading positive L^5 sector and an explicit threshold. Quantitative PNT is unnecessary for this weaker conclusion; it remains used by the separately frozen sharper L^2 plus bounded-remainder expansion.",
+  "sections": [
+    {
+      "id": "M1",
+      "title": "Exact old proved input and ordinary-prime remainder",
+      "proof": "Mertens.sum_mangoldt_div_eq_log (FromPNTPlus/Mertens.lean195), with the separate lower and upper theorems at155/173, proves for every x>=1 that -2<=sum_(n<=x)Lambda(n)/n-log x<=log4+4. The file uses Euler-Maclaurin, the exact divisor identity, and Chebyshev.psi_le_const_mul_self; there is no PNT or RH hypothesis. Put W(y)=sum_(p<=exp y)log p/p for y>=0. The removed proper-power mass is nonnegative and <=sum_p log p/[p(p-1)]<=sum_(n>=2)log n/[n(n-1)]<=4. For the last bound use log n<=sqrt n for n>=1, n/(n-1)<=2 for n>=2 and sum_(n>=2)n^(-3/2)<=integral_1^infinity x^(-3/2)dx=2. Therefore -6<=W(y)-y<6 for all y>=0. In particular |W-y|<=6, including y=0 and every prime seam. Unique prime-power weights remain log p, never r log p."
+    },
+    {
+      "id": "M2",
+      "title": "Literal K3 source and paid total variation",
+      "proof": "Use exactly the frozen raw native vectors u_e,u_o, beta=L^2/(16pi^2), Ne=924beta^2+1512beta+1764, No=84beta^2+392beta+724, a=No/Ne, D_L(theta)=E_o(L,theta)-a E_e(L,theta), and k_L(t)=D_L(1-t/L). No vector is unit-renormalized. The previously reviewed exact source identities give k(0)=k(L)=0 and integral_0^L k=-400a beta^2 L. Direct SourceMatrix differentiation on centered n,m in{-3,...,3} gives |partial_theta S_nm|<=24pi on[0,1]; Cauchy gives sum|u_n|<=sqrt7 ||u||, hence |E_p'|<=168pi Np. Because a Ne=No, integral_0^L|k'(t)|dt<=336pi No for every L>0. This is a bound for the whole source, including off-diagonal entries, and does not use a contact/eigenray/stationarity premise."
+    },
+    {
+      "id": "M3",
+      "title": "Complete square channel from finite Abel summation",
+      "proof": "For B2(L)=-sum_(p<=exp(L/2))log p/p*k_L(2log p), finite Stieltjes integration gives B2=200a beta^2 L+2 integral_0^(L/2)(W(y)-y)k'(2y)dy. Both endpoint products vanish, including a prime at exp(L/2); the lower prime-free interval is retained. Thus |B2-200a beta^2 L|<=6 integral_0^L|k'|<=2016pi No. This formula uses W-y itself, not a convergent Mertens constant or any integrable decay of its remainder."
+    },
+    {
+      "id": "M4",
+      "title": "Complete r>=3 sector, without PNT",
+      "proof": "The frozen H2 global native jet has C*=2^34, d0=175/(88pi^2), and |k_L(t)+d0 L^2 t^2|<=C*(t^2+t^4) for L>=1 and EVERY0<=t<=L. Define Tj=sum_(p prime,r>=3)log p*p^(-r/2)*(rlog p)^j for j=2,4. These are genuine positive finite constants. Splitting the active t=rlog p<=L terms and paying the omitted tail by L^2t^2<=t^4 gives |B_{>=3}-d0T2L^2|<=E, E=C*(T2+T4)+d0T4. This step uses only absolute convergence and the global jet. It does not consume the PNT-dependent square remainder H3/H4 from the sharper note."
+    },
+    {
+      "id": "M5",
+      "title": "Explicit all-late threshold",
+      "proof": "Since No-Ne/11=(2800beta+6200)/11>0, 200a beta^2 L>=b L^5 where b=25/(352pi^4). For L>=1, beta<=L^2 implies No<=1200L^4. Set A=2419200pi. M3-M4 yield the unconditional complete bound B_{>=2}(L)>=bL^5-A L^4+d0T2L^2-E>=bL^5-A L^4-E. Consequently for every L>=L*=max(1,4A/b,(4E/b)^(1/5)), B_{>=2}(L)>=(b/2)L^5>0. All constants are chosen before L, with actual finite floor cutoff preserved. Also B_{>=2}/L^5 tends to b using a->1/11 and the same estimates. This is the previous leading asymptotic with weaker prerequisites and a newly explicit coarse threshold, not a stronger full-source sign."
+    },
+    {
+      "id": "M6",
+      "title": "Optional wholly elementary numerical upper allowance for the moments",
+      "proof": "No unproved finiteness is hidden in L*. One may replace Tj by Uj=3^j*j!*4^(j+2)*[4(j+1)]^(j+1), j=2,4. Indeed writing r=k+3, p^(-k/2)<=(3/4)^k, (k+3)^j<=3^j(k+1)^j<=3^j*j!*binom(k+j,j), and the geometric generating sum is4^(j+1). Further (log n)^(j+1)<=[4(j+1)]^(j+1)n^(1/4), and sum_(n>=2)n^(-5/4)<=4. Thus Tj<=Uj. Set Ebar=2^34(U2+U4)+d0U4 and replace E by Ebar in L*. This is a very coarse explicit real constant; no numerical fitting, prime computation or PNT is required."
+    },
+    {
+      "id": "M7",
+      "title": "Exact new use and remaining scope",
+      "proof": "The all-L actual canonical Arch gap is already locally externally Lean-proved with only L>0. Combining it with M5 makes the full Arch plus higher-power sector positive of order L^5 eventually. The remaining B1=-sum_(p<=exp L)log p/sqrt p*k_L(log p) is signed and unchanged. The current Mertens bound does not provide the needed lower comparison for B1; weighting W by exp(t/2) incurs the growing endpoint scale. Existing canonical older-prime budgets additionally require a generated stationary contact, and their source test t^2 e_Dz differs from k_L. K3 first integer birth and one-dimensional parity do not provide aperture stationarity. Hence neither those contact budgets nor the K3 source-moment equality supplies a missing sign here. No RH or Step4 closure, same-aperture negative pair or ground-stationarity conclusion is made."
+    },
+    {
+      "id": "M8",
+      "title": "Reuse of the prior signed-rate theorem: forced ordinary-prime compensation",
+      "proof": "Let H(L)=A_Gamma(L)+B_{>=2}(L). The already proved actual Arch positivity and its separately derived A_Gamma=O(L^2), together with M5, give H~bL^5>0. Since G=H+B1, the prior actual K3 signed-rate theorem implies unconditionally, by its RH/off-zero case split: for every fixed kappa<1 and every R there exists L>=R with B1(L)<-kappa H(L). Under RH, G=O(L^(-7)) and hence B1/H->-1. Under an actual off-line zero, the negative excursions of G exceed any fixed polynomial and imply liminf B1/H=-infinity. This is a new specialization/reuse of that prior theorem, not a new independent arithmetic bound. No assertion at kappa=1, all-late comparison, or simultaneous parity negativity is made. A proposed eventual strict fractional lower comparison B1>=-kappa H with kappa<1 is therefore false; the boundary comparison remains unpaid."
+    }
+  ],
+  "formalization_opportunity": "A useful finite unconditional next lemma is |B2-200a beta^2 L|<=2016pi No, instantiated at the actual K3 vectors; it consumes current Mertens and the explicit native source identities, not an assumed closing inequality. The complete positivity consumer then requires only the already derived absolute higher-power jet/moment estimate.",
+  "authority": {
+    "old_Mertens": "PROVED_CURRENT_SOURCE; this pass reads the complete proof and binds current Git bytes, without rerunning the compiler or attributing new CI authority",
+    "new_composition": "DERIVED_NOT_COMPILED",
+    "stronger_budget": "Retained unchanged; its L^2+O(1) square expansion still invokes classical quantitative PNT",
+    "no_repository_edits": true,
+    "no_new_tests_or_compiler_runs": true,
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  "independent_check": "Prime_math independently checked the Mertens remainder sharpening to6 and square coefficient2016pi in message; this is not a separate file-bound peer receipt.",
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\FromPNTPlus\\Mertens.lean",
+      "sha256": "8df79fab65cdc6b9f28c4f2e5f39e0d8d284ac17ac4e06b3cb1f5d4cb8ae3be4",
+      "bytes": 8726,
+      "role": "Complete proof read; E1Lambda lower155/upper173/absolute195; no PNT hypothesis",
+      "same_as_head_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\Chebyshev.lean",
+      "sha256": "daa9a056ca00730d6318fc12f6587cb420c31b8c0426b3b851c993731e47c270",
+      "bytes": 63245,
+      "role": "mertensFirst509; proper-power defect and finite prime-power partition proof740-994",
+      "same_as_head_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\SourceMatrix.lean",
+      "sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "bytes": 7204,
+      "role": "Actual centered7-slot source entries and elementary derivative bound",
+      "same_as_head_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\OPICARound4\\PrimeDiscrepancyIntegral.lean",
+      "sha256": "5df3b8309f6144a22da5ba8d318c5c91fba181911cf15b1f0d50d49f4d9365c1",
+      "bytes": 10263,
+      "role": "Exact finite Abel54 and endpoint-zero discrepancy126; no automatic sign",
+      "same_as_head_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-round3-repo\\Zeta23\\CCM\\CanonicalContactOlderPrimeBudget.lean",
+      "sha256": "949d96276fa4038c0f67d2794a15c5f575a9ca7c50998df4cb67b4113c39fbeb",
+      "bytes": 15519,
+      "role": "Older-prime bounds175/253 require stationary generated contact; wrong antecedent for arbitrary K3 gap",
+      "same_as_head_blob": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\k3-higher-prime-powers\\ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET.json",
+      "sha256": "2b12360005bf6e57c7b6bb1bd8a2f55d572f41ce7c6fe8b45dfbce65df75b3ee",
+      "bytes": 15470,
+      "role": "H1,H2 and r>=3 absolute-tail argument only are consumed without PNT; stronger square remainder remains separate"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_FIXED_K3_ARITHMETIC_SCALARS.json",
+      "sha256": "204b26b07fb3109f010af2c1ca49b72a7c1a4e0a3082eca9ff2366ade9c96899",
+      "bytes": 13261,
+      "role": "Literal raw vectors/norms and source scalar"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_SIGNED_PSI_BASELINE.json",
+      "sha256": "5772baadcb9a8cccfe3cde03d18da9c52442ed7ba81b71cba2f486ee253aaffe",
+      "bytes": 13146,
+      "role": "Previously paid source derivative bound and PNT scale; its PNT premise is not used in M1-M6"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_CORRECTED_SOURCE_ARCH_COVARIANCE.json",
+      "sha256": "e5d8301633bae7437fbbf5032078ae18e1626e97858012c12caaff309d9afe1f",
+      "bytes": 16919,
+      "role": "Arch asymptotic and complete-gap signed excursions for M8 only"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\ACTUAL_K3_POSITIVE_PSI_COMPOSITION.json",
+      "sha256": "ab958766ea7fc053a9f41fb8787d07da86d00df7b8060da121b5fd40b256f309",
+      "bytes": 14103,
+      "role": "Prior RH/off-zero fractional-compensation sharpness; reused not claimed new"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\arch-formal-specialization\\COMPLETION.json",
+      "sha256": "f10703b5db0f8c0cc3d0d730736340d940da85c5784693682d78fb50c56ed5ad",
+      "bytes": 2359,
+      "role": "Actual all-L Arch sign, local external Lean scope"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\ground\\fixed-k3-aperture\\K3_CONSTRAINT_DEPENDENCY_AUDIT.json",
+      "sha256": "e1ebd2ed01af2339b8222bea361922b5cd3cebc3c290676560787dd36beecbda",
+      "bytes": 10330,
+      "role": "Previously read exact source/ground/contact scope, no repeated whole history sweep"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\k3-higher-prime-powers\\ACTUAL_K3_CENTRAL_BAND_AND_DIVISOR_FOLLOWTHROUGH.json",
+      "sha256": "bf1e4310b1871d4c05e2af83a95995891e3507b677c56ded5671e41e0feba40e",
+      "bytes": 8635,
+      "role": "Freshly read ordinary-prime divisor law and unchanged off-zero residue; not duplicated"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\new-energy-continuation\\GAMMA_PRIME_REVIEW_AND_COMPARISON_COMPLETION.json",
+      "sha256": "868c7f6f86dca483d9f3ff5eb861eaf2d62402de06c14cf34635b91a5f993199",
+      "bytes": 14451,
+      "role": "Current authoritative research handover"
+    }
+  ],
+  "state_and_metadata_refresh": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\drive\\k3-component-refresh-2026-11-02\\CURRENT_STATE_AND_DRIVE.json",
+    "sha256": "f7fd116f72125592165ee6b1e3cb8c8effd697eaef1e2b86cfd8cf9264e9591f",
+    "bytes": 4632
+  }
+}

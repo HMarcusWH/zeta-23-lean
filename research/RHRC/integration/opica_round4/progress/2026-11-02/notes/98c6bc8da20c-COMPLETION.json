@@ -1,0 +1,40 @@
+{
+  "status": "COMPLETE_REVIEWED_ACTUAL_BOUNDARY_CENTERING_AND_COMPACT_SUPPLIER_PASS",
+  "recorded_utc": "2026-11-02T04:45:44.888223+00:00",
+  "records": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\ACTUAL_BOUNDARY_CENTERING.json",
+      "sha256": "91b5848737f71244959c11d98a1d0011dbf06ea256a61537ac92128299a9440a",
+      "bytes": 11256
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\ACTUAL_COMPACT_HALF_MOMENT_SUPPLIERS.json",
+      "sha256": "da13935fd8f587be005b295e2b9a4228610004b351aa2f84616f2b2dfb83f55a",
+      "bytes": 9134
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\INDEPENDENT_COMPACT_SUPPLIER_REVIEW.json",
+      "sha256": "8d1087b058262eca12822ddc195357d5ee9957e4b9d6c2d00fe7842fcfb94433",
+      "bytes": 4777
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\SOURCE_BOUND_RESEARCH.json",
+      "sha256": "cf5fb9e905dc6d6fa9875705ac14ecdd60b15ff4d4ee53f79ef9911d1cdb695c",
+      "bytes": 10747
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-madness-closure-2026-11-01\\arithmetic\\self-echo-boundary-centering\\ROOT_BOUNDARY_CENTERING_REVIEW.json",
+      "sha256": "fbcc698414c8b0d5316861d933c777edaf5ab083b457f72e480646a71ee0b804",
+      "bytes": 4577
+    }
+  ],
+  "draft_disposition": "The frozen main note retains its original DERIVED_DRAFT status string. This completed full root review plus the source and supplier cross-review finalize that exact91b58487 note; historical bytes are not relabeled or rewritten.",
+  "new_result": "One fixed Arch-only early correction removes the forced exp(L/2) repair mode while preserving the complete echo. All remaining repair coefficients are fixed compact source responses using the same prime cutoff, bounded by C exp(Theta L) without a strict Theta<1/2 gap.",
+  "limits": "No independent restriction forcing Theta=0 or signed closing bound. Exact native approximation retains its previously paid error and cutoff.",
+  "repository_edits": false,
+  "new_Lean_declarations": 0,
+  "new_compiler_runs": 0,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "goal": "ACTIVE"
+}

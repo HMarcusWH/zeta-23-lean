@@ -1,0 +1,92 @@
+{
+  "status": "DERIVED_BOUNDED_SOURCE_SPECIFIC_FOLLOWTHROUGH_NO_NEW_SIGNED_CLOSURE",
+  "created_utc": "2026-11-02T12:44:48.057020+00:00",
+  "repository": {
+    "head": "7bae463361264a0694b4fb2e9107dc4314163b33",
+    "tree": "ceffa523d3b9422a63512022cf62b5ec8ffb5784",
+    "clean": true
+  },
+  "sections": [
+    {
+      "id": "F1",
+      "title": "Exact finite-L density bound outside the automatically monotone band",
+      "proof": "For the same actual even K3 physical input, rescale eta=L xi and x=t/L. Its unnormalized profile on[0,1] is V_beta(x)=beta S(x)+T(x), where S=sum_n s_e,n exp(2pi i n x)=-64sin^6(pi x) and T=sum_n n^2 s_e,n exp(2pi i n x)=480sin^4(pi x)-576sin^6(pi x). The actual scaled Fourier probability is |FT(V_beta)(eta)|^2 d eta/(2pi Ne). Exact quantities are integral|S|=20, ||T||_2=42 (sum n^4 s_e,n^2=1764), and Ne=924beta^2+1512beta+1764. Cauchy on the unit interval gives ||T||_1<=42. Thus for EVERY beta>0 and the SAME physical source, |FT(V_beta)(eta)|<=20beta+42 and\n P_L(|eta|<=pi)<=min(1,C_beta), C_beta=(20beta+42)^2/Ne.\nNo numerical Fourier concentration estimate or truncation is used. Since C_beta->100/231, liminf_(L->infinity) P_L(|eta|>pi)>=131/231. These are bounds and limits of bounds, not asserted exact central/tail masses."
+    },
+    {
+      "id": "F2",
+      "title": "The actual covariance weight is mostly outside that band",
+      "proof": "The exact full moments are E eta^2=4pi^2 S2e/Ne=36pi^2 No/Ne and E eta^4=16pi^4 S4/Ne, where S4=1764beta^2+13032beta+32004. Central contributions are <=pi^2 C_beta and <=pi^4 C_beta. Hence the proportions of the second and fourth moments on |eta|>pi are, for every L>0, at least\n 1-(20beta+42)^2/(36No),\n 1-(20beta+42)^2/(16S4),\nrespectively (replace a negative lower bound by0 if desired). Their limiting lower bounds are164/189 and1739/1764. These constants are not claims of exact limiting proportions.\n\nMoreover a(L)=No/Ne>1/11 since No-Ne/11=(2800beta+6200)/11>0. Therefore E eta^2>36pi^2/11>pi^2 at EVERY L>0: the centered-threshold point used by the strict covariance lemma is outside the central monotonicity interval. For 0<=xi<=pi/L, each genuine finite prime sine derivative is nonnegative, and the gamma derivative is nonnegative, so the full multiplier really is increasing there. The present calculation shows why this local fact does not by itself instantiate the global centered-threshold proof for the actual measure. It does not sign the remaining tail covariance or rule out a stronger estimate using the full source."
+    },
+    {
+      "id": "F3",
+      "title": "The exact divisor law after isolating ordinary primes",
+      "proof": "For n>=1 define lambda_1(n)=log n when n is prime and0 otherwise. Unique factorization gives the exact identities\n (lambda_1*1)(n)=log rad(n),\n lambda_1=mu*(log rad),\n log n-log rad(n)=sum_(p^r|n,r>=2)log p>=0.\nHere * is Dirichlet convolution and rad(1)=1. Thus replacing the complete Lambda source by ordinary primes changes the integer drive from log n to log rad(n); it cannot reuse the unchanged native Lambda*1=log identity with prime powers simply deleted. The higher-power sector in the companion budget is exactly the missing coefficient set. This is an identity on genuine integer coefficients, not a modified-prime countermodel. The positive drive deficit does not remain manifestly positive after its required Mobius inversion or after the actual balanced, signed K3 source pairing. No new signed inequality for B_1 is inferred."
+    },
+    {
+      "id": "F4",
+      "title": "Safe transform compression and the precise remaining barrier",
+      "proof": "Let A(s)=-zeta prime(s)/zeta(s) and P(s)=sum_p log(p)p^(-s). In the absolutely convergent half-plane Re s>1, exponent-Mobius inversion gives\n P(s)=sum_(k>=1)mu(k)A(ks)=A(s)+R(s), R=sum_(k>=2)mu(k)A(ks).\nIndeed the coefficient of log(p)p^(-rs) is sum_(k|r)mu(k), equal to1 for r=1 and0 otherwise. No factor1/k is present in this derivative series. R is analytic and locally normally convergent for Re s>1/2: each k>=2 has Re(ks)>1, while the large-k tails decay geometrically on compact subsets. Consequently at every actual zeta zero rho with Re rho>1/2 and multiplicity m, the meromorphic continuation of P has exactly the unchanged residue -m. Equivalently, the safe divisor transform is zeta(s)P(s)=sum_n log rad(n)n^(-s)=-zeta prime(s)+zeta(s)R(s). At rho the first term has order m-1 and the second order at least m; the numerator does not acquire an extra cancellation.\n\nNear the real point s=1/2, where zeta is nonzero, the k=2 term is -A(2s)=-1/[2(s-1/2)]+analytic; the k>=3 sum is analytic in a neighborhood. Removing this real singular part is consistent with pricing the prime-square polynomial in the companion source calculation, but does not remove any right off-axis pole. This transform observation is not substituted for the variable-aperture PNT proof of that polynomial, and no convergence of the ordinary-prime series below its original half-plane is presumed.\n\nThus the checked divisor composition gives no further unconditional lower bound on the renormalized ordinary-prime covariance B_1+200a beta^2 L+d0(I2+T2-8M1)L^2. That quantity is still the full actual G up to the already bounded error. The explicit barrier in this attempted deconvolution is its unchanged right-zero residue, not an assertion that every possible use of arithmetic information fails. No new equivalent criterion is offered as a solved estimate."
+    }
+  ],
+  "records": [
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/k3-higher-prime-powers/ACTUAL_K3_HIGHER_PRIME_POWER_BUDGET.json",
+      "sha256": "2b12360005bf6e57c7b6bb1bd8a2f55d572f41ce7c6fe8b45dfbce65df75b3ee",
+      "bytes": 15470,
+      "role": "Complete higher-power signed budget, unchanged"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/k3-higher-prime-powers/INDEPENDENT_HIGHER_PRIME_POWER_REVIEW.json",
+      "sha256": "9fe8be52af424f1be5d5a842e81ce5509143ddb862e04f8f112f029b1263b2e0",
+      "bytes": 9307,
+      "role": "Independent full higher-power review, unchanged"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/arithmetic/k3-higher-prime-powers/INDEPENDENT_GAMMA_PRIME_ATTACHMENT_COMPARISON.json",
+      "sha256": "b9d06ab7a9cb6105aae707e01bfec15b727ed3f6ae0f594100660b0fbf6acd90",
+      "bytes": 4317,
+      "role": "Full multiplier monotonicity qualification"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_FIXED_K3_ARITHMETIC_SCALARS.json",
+      "sha256": "204b26b07fb3109f010af2c1ca49b72a7c1a4e0a3082eca9ff2366ade9c96899",
+      "bytes": 13261,
+      "role": "Exact native Fourier stencils and norms"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_K3_CORRECTED_SOURCE_ARCH_COVARIANCE.json",
+      "sha256": "e5d8301633bae7437fbbf5032078ae18e1626e97858012c12caaff309d9afe1f",
+      "bytes": 16919,
+      "role": "Exact actual Fourier probability and second/fourth moments"
+    },
+    {
+      "path": "work/opica-madness-closure-2026-11-01/ground/fixed-k3-aperture/ACTUAL_K3_PRIME_DIFFERENCE_SQUARE_COVARIANCE.json",
+      "sha256": "625fc36f3edc70c4b884bfaed5e16a78e3790814c461ba40b8ee161f311cb3a3",
+      "bytes": 13668,
+      "role": "Finite complete prime covariance; no independent tail sign"
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/CCM/NativeIntegerPrimeSource.lean",
+      "sha256": "c98e58682a18bc073cd794200dfd351edef65e9a0ac3bfe0f7d522216f651b31",
+      "bytes": 3212,
+      "role": "Actual full divisor identity and unique coefficients, full source read this pass",
+      "same_as_head_blob": true
+    },
+    {
+      "path": "work/opica-round3-repo/Zeta23/CCM/SourceMatrix.lean",
+      "sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "bytes": 7204,
+      "role": "Actual source and full centered indexing, read this pass",
+      "same_as_head_blob": true
+    }
+  ],
+  "contributions": "Root proposed the central monotone band test and independently checked the three limiting rational bounds. Prime_math derived the finite-L bounds and prime-only divisor/transform follow-through. This is external analytic reasoning, not new compiled authority.",
+  "limits": {
+    "new_tests": 0,
+    "new_compiler_runs": 0,
+    "repository_edits": false,
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "remaining_arithmetic": "Independent signed control of the full renormalized ordinary-prime covariance."
+  }
+}

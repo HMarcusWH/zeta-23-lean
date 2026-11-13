@@ -41,6 +41,88 @@ REQUIRED_LANES = (
 
 
 class CliOrchestrationTests(unittest.TestCase):
+    def test_madness_extension_retains_merged_500_scope(self):
+        # Qualified declaration names must remain distinct in the closed census.
+        fixture = ("namespace Test\nstructure Family where\n  value : Nat\n"
+                   "def Family.constant : Nat := 0\ntheorem Family.mul : True := True.intro\n"
+                   "private theorem hidden : True := True.intro\n")
+        self.assertEqual(math_gate.public_declarations(fixture),
+                         ["Test.Family", "Test.Family.mk", "Test.Family.constant", "Test.Family.mul"])
+        from research.RHRC.integration.opica_composition import config
+        scope=math_gate.retained_pre_madness_scope()
+        self.assertEqual((len(scope['declarations']),len(scope['modules']),
+                          scope['semantic_mutation_count']),(500,48,17))
+        self.assertEqual(config.check_madness_contracts(REPO)['status'],'PASS_SOURCE_BINDINGS_ONLY')
+        with patch.object(math_gate,'EXPECTED_DECLARATIONS',math_gate.EXPECTED_DECLARATIONS[1:]):
+            with self.assertRaisesRegex(RuntimeError,'Retained 500/48'):
+                math_gate.retained_pre_madness_scope()
+        with patch.object(math_gate,'PRE_MADNESS_SEMANTIC_MUTATIONS',
+                          math_gate.PRE_MADNESS_SEMANTIC_MUTATIONS.replace('example','example ',1)):
+            with self.assertRaisesRegex(RuntimeError,'Retained 17'):
+                math_gate.retained_pre_madness_scope()
+        # The exact 1079/90/84 scope preceding the arithmetic frontier stays mandatory.
+        frontier=math_gate.retained_pre_frontier_scope()
+        self.assertEqual((frontier['declaration_count'],frontier['module_count'],
+                          frontier['semantic_mutation_count']),(1079,90,84))
+        self.assertEqual((len(math_gate.EXPECTED_DECLARATIONS),len(math_gate.MODULES),
+                          math_gate.SEMANTIC_MUTATION_COUNT),(1392,108,125))
+        with patch.object(math_gate,'EXPECTED_DECLARATIONS',math_gate.EXPECTED_DECLARATIONS[1:]):
+            with self.assertRaisesRegex(RuntimeError,'Retained 1079/90/84'):
+                math_gate.retained_pre_frontier_scope()
+        with patch.object(math_gate,'MADNESS_SEMANTIC_MUTATIONS',
+                          math_gate.MADNESS_SEMANTIC_MUTATIONS.replace('example','example ',1)):
+            with self.assertRaisesRegex(RuntimeError,'Retained 1079/90/84'):
+                math_gate.retained_pre_frontier_scope()
+        with patch.object(math_gate,'FRONTIER_SEMANTIC_MUTATIONS',
+                          math_gate.FRONTIER_SEMANTIC_MUTATIONS.replace('\nexample','\n-- removed',1)):
+            with self.assertRaisesRegex(RuntimeError,'Retained 1079/90/84'):
+                math_gate.retained_pre_frontier_scope()
+        # The 125 controls are sharded below Lean's 100-error cap; no control is dropped, and
+        # every control must own exactly one type-mismatch error in its own shard source.
+        self.assertEqual([text.count('\nexample') + text.startswith('example')
+                          for _,text in math_gate.SEMANTIC_MUTATION_SHARDS],[84,41])
+        self.assertEqual(math_gate.semantic_mutation_shard_scope(),125)
+        with patch.object(math_gate,'SEMANTIC_MUTATION_SHARDS',(('01',math_gate.SEMANTIC_MUTATIONS),)):
+            with self.assertRaisesRegex(RuntimeError,'shard scope'):
+                math_gate.semantic_mutation_shard_scope()
+        text='import X\nexample : True := by\n  exact 1\nend\nexample : False := trivial\n'
+        good='R.lean:3:2: error: Type mismatch\nR.lean:5:19: error: type mismatch\n'
+        self.assertEqual(math_gate.semantic_shard_binding(text,good,'R.lean'),{'control_count':2,'error_count':2})
+        for bad in ('R.lean:3:2: error: Type mismatch\nR.lean:2:3: error: Type mismatch\n',
+                    good+'R.lean:4:0: error: Type mismatch\n',good.replace('R.lean:5','Other.lean:5'),
+                    'R.lean:3:2: error: Type mismatch\nR.lean:5:19: error: unknown identifier x\n',
+                    good+'PANIC at Lean.Elab\n',good.split('\n',1)[1]):
+            with self.subTest(bad=bad),self.assertRaises(RuntimeError):
+                math_gate.semantic_shard_binding(text,bad,'R.lean')
+        with patch.object(math_gate,'SEMANTIC_MUTATION_SHARD_LIMIT',1):
+            with self.assertRaises(RuntimeError):
+                math_gate.semantic_shard_binding(text,good,'R.lean')
+
+    def test_madness_register_rejects_source_substitution_and_bound_promotion(self):
+        from research.RHRC.integration.opica_composition import config
+        raw=(R4/'MADNESS_CONTRACTS.json').read_bytes();original=load_bytes(raw)
+        module=math_gate.MADNESS_MODULES[0]
+        for alteration in ('hash','path','module','declarations','audit','retained',
+                           'claim','bound','supplier','old-ledger','frontier-scope',
+                           'frontier-proved','frontier-branch'):
+            changed=copy.deepcopy(original)
+            if alteration=='hash':changed['current_modules'][module]['sha256']='0'*64
+            elif alteration=='path':changed['current_modules'][module]['path']='Zeta23/Wrong.lean'
+            elif alteration=='module':changed['current_modules'].pop(module)
+            elif alteration=='declarations':changed['current_modules'][module]['declarations']=[]
+            elif alteration=='audit':changed['source_audit_path']='../../outside.json'
+            elif alteration=='retained':changed['retained_support_subset']['declaration_count']=0
+            elif alteration=='claim':changed['Step4']='CLOSED'
+            elif alteration=='bound':changed['closing_arithmetic']['status']='PROVED'
+            elif alteration=='supplier':changed['contracts'][0]['arithmetic_estimate_supplied']=True
+            elif alteration=='old-ledger':changed['source_constraints_sha256']='0'*64
+            elif alteration=='frontier-scope':changed['retained_pre_frontier_subset']['declaration_count']=1078
+            elif alteration=='frontier-proved':changed['arithmetic_frontier']['branches'][0]['premise_proved']=True
+            else:changed['arithmetic_frontier']['branches'].pop()
+            def read(data):return changed if data==raw else load_bytes(data)
+            with self.subTest(alteration=alteration),patch.object(config,'load_bytes',side_effect=read):
+                with self.assertRaises(ContractError):config.check_madness_contracts(REPO)
+
     def test_replay_partition_register_cannot_drop_math_canonical_or_independent_jobs(self):
         from research.RHRC.integration.opica_composition import config
         matrix=load_bytes((R4/'ACCEPTANCE_MATRIX.json').read_bytes())

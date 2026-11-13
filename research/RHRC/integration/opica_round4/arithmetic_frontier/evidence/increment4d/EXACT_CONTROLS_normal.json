@@ -1,0 +1,439 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_EXACT_CONTROLS_R3_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "EXACT_FINITE_CONTROLS_OF_SUBSTITUTIONS_NOT_COUNTEREXAMPLES_TO_NATIVE_ROUTES",
+  "MP15_product_vs_lcm": {
+    "checked_N": [
+      1,
+      100
+    ],
+    "identity_9_1_holds": true,
+    "lcm_gram_nonnegative": true,
+    "N10": {
+      "N": 10,
+      "Y": 3,
+      "product_kernel": -1,
+      "identity_rhs": -1,
+      "lcm_kernel": 4,
+      "lcm_gram_sum_of_squares": 4
+    },
+    "negative_product_kernel_N": [
+      10,
+      15,
+      16,
+      22,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      33,
+      34,
+      35,
+      36,
+      38,
+      39,
+      40,
+      41,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      74,
+      75,
+      76,
+      77,
+      78,
+      82,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100
+    ]
+  },
+  "MP14_aligned_scalar_nonbacktracking": {
+    "cases": [
+      {
+        "m": 2,
+        "eps": "1/3",
+        "eigenvector_check": true,
+        "dense": true,
+        "eigenvalue": "-1/3",
+        "a": "1/3",
+        "b_squared": "2/9",
+        "s": "2/3",
+        "regime_s_gt_a_plus_2b": false,
+        "reverse_bound_r_plus_le_eigen_magnitude": true
+      },
+      {
+        "m": 5,
+        "eps": "1/3",
+        "eigenvector_check": true,
+        "dense": true,
+        "eigenvalue": "-4/3",
+        "a": "1/3",
+        "b_squared": "5/9",
+        "s": "5/3",
+        "regime_s_gt_a_plus_2b": false,
+        "reverse_bound_r_plus_le_eigen_magnitude": true
+      },
+      {
+        "m": 6,
+        "eps": "1/3",
+        "eigenvector_check": true,
+        "dense": true,
+        "eigenvalue": "-5/3",
+        "a": "1/3",
+        "b_squared": "2/3",
+        "s": "2",
+        "regime_s_gt_a_plus_2b": true,
+        "reverse_bound_r_plus_le_eigen_magnitude": true
+      },
+      {
+        "m": 7,
+        "eps": "1/3",
+        "eigenvector_check": true,
+        "dense": true,
+        "eigenvalue": "-2",
+        "a": "1/3",
+        "b_squared": "7/9",
+        "s": "7/3",
+        "regime_s_gt_a_plus_2b": true,
+        "reverse_bound_r_plus_le_eigen_magnitude": true
+      },
+      {
+        "m": 12,
+        "eps": "1/3",
+        "eigenvector_check": true,
+        "dense": true,
+        "eigenvalue": "-11/3",
+        "a": "1/3",
+        "b_squared": "4/3",
+        "s": "4",
+        "regime_s_gt_a_plus_2b": true,
+        "reverse_bound_r_plus_le_eigen_magnitude": true
+      },
+      {
+        "m": 40,
+        "eps": "1/3",
+        "eigenvector_check": true,
+        "dense": true,
+        "eigenvalue": "-13",
+        "a": "1/3",
+        "b_squared": "40/9",
+        "s": "40/3",
+        "regime_s_gt_a_plus_2b": true,
+        "reverse_bound_r_plus_le_eigen_magnitude": true
+      }
+    ],
+    "exponential_family": [
+      {
+        "k": 1,
+        "m": 4,
+        "a": "1/2",
+        "b_squared": "1",
+        "eigenvalue": "-3/2"
+      },
+      {
+        "k": 2,
+        "m": 16,
+        "a": "1/4",
+        "b_squared": "1",
+        "eigenvalue": "-15/4"
+      },
+      {
+        "k": 3,
+        "m": 64,
+        "a": "1/8",
+        "b_squared": "1",
+        "eigenvalue": "-63/8"
+      },
+      {
+        "k": 4,
+        "m": 256,
+        "a": "1/16",
+        "b_squared": "1",
+        "eigenvalue": "-255/16"
+      },
+      {
+        "k": 5,
+        "m": 1024,
+        "a": "1/32",
+        "b_squared": "1",
+        "eigenvalue": "-1023/32"
+      },
+      {
+        "k": 6,
+        "m": 4096,
+        "a": "1/64",
+        "b_squared": "1",
+        "eigenvalue": "-4095/64"
+      },
+      {
+        "k": 7,
+        "m": 16384,
+        "a": "1/128",
+        "b_squared": "1",
+        "eigenvalue": "-16383/128"
+      },
+      {
+        "k": 8,
+        "m": 65536,
+        "a": "1/256",
+        "b_squared": "1",
+        "eigenvalue": "-65535/256"
+      },
+      {
+        "k": 9,
+        "m": 262144,
+        "a": "1/512",
+        "b_squared": "1",
+        "eigenvalue": "-262143/512"
+      },
+      {
+        "k": 10,
+        "m": 1048576,
+        "a": "1/1024",
+        "b_squared": "1",
+        "eigenvalue": "-1048575/1024"
+      }
+    ],
+    "determinant_identity": [
+      {
+        "B": [
+          "1/2",
+          "-3/4",
+          "2/5"
+        ],
+        "u": "1/7",
+        "det_I_minus_uN": "2773/2744",
+        "product_times_F": "2773/2744",
+        "holds": true
+      },
+      {
+        "B": [
+          "-1",
+          "-1",
+          "-1",
+          "-1"
+        ],
+        "u": "-1/3",
+        "det_I_minus_uN": "0",
+        "product_times_F": "0",
+        "holds": true
+      },
+      {
+        "B": [
+          "5/3",
+          "-2/9",
+          "7/11",
+          "-4/5",
+          "1/6"
+        ],
+        "u": "2/13",
+        "det_I_minus_uN": "1699577107/1654110315",
+        "product_times_F": "1699577107/1654110315",
+        "holds": true
+      }
+    ]
+  },
+  "MP18_two_by_two": [
+    {
+      "M": "1",
+      "commutator_identity": true,
+      "diagonal": [
+        "0",
+        "0"
+      ],
+      "lambda_min": "-1"
+    },
+    {
+      "M": "7",
+      "commutator_identity": true,
+      "diagonal": [
+        "0",
+        "0"
+      ],
+      "lambda_min": "-7"
+    },
+    {
+      "M": "1000",
+      "commutator_identity": true,
+      "diagonal": [
+        "0",
+        "0"
+      ],
+      "lambda_min": "-1000"
+    }
+  ],
+  "MP20_comparison_density_seeds": {
+    "even_seed": [
+      70,
+      -56,
+      28,
+      -8,
+      1
+    ],
+    "odd_seed": [
+      42,
+      -48,
+      27,
+      -8,
+      1
+    ],
+    "even_seed_moments_M0_M2_M4_M6": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "odd_seed_moments_M1_M3_M5_M7": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "partial_fractions": [
+      {
+        "z": "1/3",
+        "even": true,
+        "odd": true
+      },
+      {
+        "z": "5/2",
+        "even": true,
+        "odd": true
+      },
+      {
+        "z": "7",
+        "even": true,
+        "odd": true
+      },
+      {
+        "z": "-1/2",
+        "even": true,
+        "odd": true
+      },
+      {
+        "z": "11/13",
+        "even": true,
+        "odd": true
+      }
+    ],
+    "label": "NOT_ZETA comparison-density seeds; exact algebra only"
+  },
+  "MP21_causal_rational_model": {
+    "delta_zero": [
+      {
+        "lambda": "1/1000",
+        "norm_sq": "2001/4008004",
+        "closed_form": "2001/4008004",
+        "equal": true,
+        "first_variation": "-1 + (1 + t) e^-t (tends to -1: not L2)"
+      },
+      {
+        "lambda": "1/10",
+        "norm_sq": "21/484",
+        "closed_form": "21/484",
+        "equal": true,
+        "first_variation": "-1 + (1 + t) e^-t (tends to -1: not L2)"
+      },
+      {
+        "lambda": "1/2",
+        "norm_sq": "5/36",
+        "closed_form": "5/36",
+        "equal": true,
+        "first_variation": "-1 + (1 + t) e^-t (tends to -1: not L2)"
+      },
+      {
+        "lambda": "3",
+        "norm_sq": "15/64",
+        "closed_form": "15/64",
+        "equal": true,
+        "first_variation": "-1 + (1 + t) e^-t (tends to -1: not L2)"
+      },
+      {
+        "lambda": "7/4",
+        "norm_sq": "105/484",
+        "closed_form": "105/484",
+        "equal": true,
+        "first_variation": "-1 + (1 + t) e^-t (tends to -1: not L2)"
+      }
+    ],
+    "delta_positive_growing": [
+      {
+        "lambda": "1/100",
+        "delta": "1/4",
+        "residue": "-125/15376",
+        "nonzero": true,
+        "pole_real_part": "6/25",
+        "nondecaying": true
+      },
+      {
+        "lambda": "1/8",
+        "delta": "1/4",
+        "residue": "-10/81",
+        "nonzero": true,
+        "pole_real_part": "1/8",
+        "nondecaying": true
+      },
+      {
+        "lambda": "1/4",
+        "delta": "1/4",
+        "residue": "-5/16",
+        "nonzero": true,
+        "pole_real_part": "0",
+        "nondecaying": true
+      }
+    ]
+  },
+  "MP22_boundary_layer_constants": {
+    "1": "1/2",
+    "2": "5/4",
+    "3": "33/16",
+    "4": "93/32",
+    "5": "965/256",
+    "6": "2379/512",
+    "7": "11333/2048",
+    "8": "26333/4096",
+    "9": "480429/65536",
+    "10": "1079775/131072",
+    "11": "4797199/524288",
+    "12": "10554795/1048576"
+  },
+  "tool_sha256": "58cb3ea6007ca2997be8dcde5e9f63e54c2cc610c3a1eca6b2e6a61d013dd4ed"
+}

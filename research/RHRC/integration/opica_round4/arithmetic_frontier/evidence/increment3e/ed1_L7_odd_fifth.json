@@ -1,0 +1,240 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_ED1_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "L": "7",
+  "K": 2401,
+  "parity": "odd",
+  "tolerance": "1/5",
+  "split": 1200,
+  "low_dimension": 1196,
+  "high_dimension": 1201,
+  "bits": 192,
+  "coordinates": "corrected Fourier-prefix flag (orthonormal proposal; the pencil carries the full Gram)",
+  "a": "195999/1000000",
+  "b": "7687/500",
+  "A_ge_aI": "CERTIFIED",
+  "A_le_bI": "CERTIFIED",
+  "engine_sha256": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+  "tool_sha256": "00b85575ef76c9adfc66f2cc3647b77d8fb8e592bb4199be720bf71acb5b1cdf",
+  "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+  "SCHUR_FULL_INVERSE_ACTION": {
+    "family": "INVERSE_RESIDUAL",
+    "proposal": "X = A^-1 C^T (floating solve)",
+    "status": "CERTIFIED",
+    "tau": "1/16",
+    "dimension": 1196,
+    "residual_frobenius_sq_upper": "1292994223921092488158464972618709645981872312626523198991*2^-280",
+    "certified_lower_eigenvalue_coordinates": "13803492693575429766067236925809185207796380510852728973608037827834699*2^-237",
+    "certified_lower_eigenvalue_display": "6.25e-2",
+    "statement": "S_X >= 0 with X = A^-1 C^T",
+    "floating_minimum": 0.1999999999999928
+  },
+  "SCALAR_GAP": {
+    "family": "SCALAR_GAP",
+    "quantifier": "every a with 0 < a <= lambda_min(A)",
+    "rho_upper_exact": "2510840694154672436594969801749511322822063056242632568725*2^-193",
+    "rho_upper_display": "2e-1",
+    "witness_value": {
+      "lower_exact": "-157330730494958467206773998958530436984875025139906073780169*2^-190",
+      "upper_exact": "-157330730494958467206773998958530436984875025139904423626039*2^-190",
+      "display": "[-100.2569256 +/- 4.97e-8]"
+    },
+    "status": "FALSIFIED_BOUND"
+  },
+  "INVERSE_RESIDUAL_LADDER": {
+    "rows": [
+      {
+        "degree": 1,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -50.40551921014793
+      },
+      {
+        "degree": 2,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -25.356975770835994
+      },
+      {
+        "degree": 4,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -10.868582735508745
+      },
+      {
+        "degree": 8,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -4.300967299746716
+      },
+      {
+        "degree": 16,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -0.45858324545920476
+      },
+      {
+        "degree": 32,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.19999999999999235
+      },
+      {
+        "degree": 64,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.19999999999999288
+      },
+      {
+        "degree": 128,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.19999999999999293
+      },
+      {
+        "degree": 256,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.19999999999999216
+      }
+    ],
+    "smallest_successful_tested_degree": 32,
+    "all_tested_degrees_below_it_failed_or_unresolved": true,
+    "monotonicity": "not assumed; every listed degree was tested"
+  },
+  "GEOMETRIC_TAIL_LADDER": {
+    "rows": [
+      {
+        "degree": 1,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 5.037021966311965,
+        "floating_minimum": -102.42101734381879
+      },
+      {
+        "degree": 2,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 4.972806325075125,
+        "floating_minimum": -102.02746248223798
+      },
+      {
+        "degree": 4,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 4.846820609551859,
+        "floating_minimum": -100.5190732294749
+      },
+      {
+        "degree": 8,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 4.604343832480603,
+        "floating_minimum": -96.25297699524793
+      },
+      {
+        "degree": 16,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 4.155175297047497,
+        "floating_minimum": -87.01632615152216
+      },
+      {
+        "degree": 32,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 3.3840171573602267,
+        "floating_minimum": -70.69578473503906
+      },
+      {
+        "degree": 64,
+        "status": "UNKNOWN_PRECISION",
+        "q_power_over_a": 2.244496684204323,
+        "floating_minimum": -46.553454951844
+      }
+    ],
+    "smallest_successful_tested_degree": null,
+    "all_tested_degrees_below_it_failed_or_unresolved": null,
+    "monotonicity": "not assumed; every listed degree was tested",
+    "tested_up_to": 64
+  },
+  "RESPONSE_BANDS": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+    "min_eig_D": 0.19999999999999146,
+    "min_eig_schur_D_minus_CAinvCT": 0.19999999999999155,
+    "trace_full_response": 17.957878795195946,
+    "max_eig_full_response": 5.600892296692807,
+    "near_band": {
+      "definition": "eigenvalues of A within 1e-6 of eps (the shifted near-null directions)",
+      "count": 240,
+      "trace_coupling_mass": 2.061394929317602e-06,
+      "max_column_coupling": 0.0013679680560944112,
+      "response_trace": 1.0306958758616382e-05,
+      "scalar_gap_worst_charge": 106.05780194259339
+    },
+    "bands": [
+      {
+        "s": 0.20000000000100002,
+        "count": 232,
+        "trace_M_s": 1.492809277601354e-12,
+        "max_eig_M_s": 1.2830257277558705e-12,
+        "trace_low_response": 7.464046387996167e-12,
+        "max_eig_low_response": 6.415128638768903e-12,
+        "min_eig_D_minus_high_response": 0.19999999999998888
+      },
+      {
+        "s": 0.200000001,
+        "count": 236,
+        "trace_M_s": 1.7178001595388802e-09,
+        "max_eig_M_s": 1.5690000005294924e-09,
+        "trace_low_response": 8.589000784375814e-09,
+        "max_eig_low_response": 7.844999989436761e-09,
+        "min_eig_D_minus_high_response": 0.19999999999999038
+      },
+      {
+        "s": 0.200001,
+        "count": 240,
+        "trace_M_s": 2.0613949293176018e-06,
+        "max_eig_M_s": 1.920732739092523e-06,
+        "trace_low_response": 1.0306958758616384e-05,
+        "max_eig_low_response": 9.603647948204705e-06,
+        "min_eig_D_minus_high_response": 0.19999999999999138
+      },
+      {
+        "s": 0.201,
+        "count": 244,
+        "trace_M_s": 0.000861197709230886,
+        "max_eig_M_s": 0.0007960268410525772,
+        "trace_low_response": 0.00430308241907466,
+        "max_eig_low_response": 0.003977264126216145,
+        "min_eig_D_minus_high_response": 0.19999999999999155
+      },
+      {
+        "s": 0.4,
+        "count": 250,
+        "trace_M_s": 1.1857591554923768,
+        "max_eig_M_s": 1.0419658470604647,
+        "trace_low_response": 3.356829103538744,
+        "max_eig_low_response": 2.724661765432785,
+        "min_eig_D_minus_high_response": 0.19999999999999196
+      },
+      {
+        "s": 0.8,
+        "count": 252,
+        "trace_M_s": 1.2090764285191389,
+        "max_eig_M_s": 1.0543194503446094,
+        "trace_low_response": 3.4000475071843943,
+        "max_eig_low_response": 2.7478829553652737,
+        "min_eig_D_minus_high_response": 0.19999999999999066
+      },
+      {
+        "s": 1.0,
+        "count": 258,
+        "trace_M_s": 3.5256838819955316,
+        "max_eig_M_s": 2.3590293987811535,
+        "trace_low_response": 6.197545305548239,
+        "max_eig_low_response": 3.1455155409179243,
+        "min_eig_D_minus_high_response": 0.19999999999999055
+      },
+      {
+        "s": 16.071848069980227,
+        "count": 1201,
+        "trace_M_s": 51.2660604198743,
+        "max_eig_M_s": 21.211560388517967,
+        "trace_low_response": 17.957878795195946,
+        "max_eig_low_response": 5.600892296692807,
+        "min_eig_D_minus_high_response": 0.19999999999999146
+      }
+    ]
+  },
+  "seconds": 3604.3,
+  "state_id": "L7_odd_fifth",
+  "driver": "E-H7 driver: ED1.run(Fraction(7), parity, Fraction(1,5), 1200, tail_max=64) with hashed tools asserted"
+}

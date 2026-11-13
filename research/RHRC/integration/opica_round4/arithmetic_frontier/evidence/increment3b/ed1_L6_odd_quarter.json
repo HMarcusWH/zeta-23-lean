@@ -1,0 +1,239 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_ED1_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "RESEARCH_CERTIFICATION_NOT_LEAN_AUTHORITY",
+  "L": "6",
+  "K": 1296,
+  "parity": "odd",
+  "tolerance": "1/4",
+  "split": 648,
+  "low_dimension": 644,
+  "high_dimension": 648,
+  "bits": 192,
+  "coordinates": "corrected Fourier-prefix flag (orthonormal proposal; the pencil carries the full Gram)",
+  "a": "244999/1000000",
+  "b": "1371/100",
+  "A_ge_aI": "CERTIFIED",
+  "A_le_bI": "CERTIFIED",
+  "engine_sha256": "01adee8e02626daf15d621ddb6c9c351946e3d2d20041f3c470774f58ca5ea22",
+  "tool_sha256": "00b85575ef76c9adfc66f2cc3647b77d8fb8e592bb4199be720bf71acb5b1cdf",
+  "kernel_sha256": "d28571057f3334c0fbd76694cde525bad6820d8aa262ac4861a4c921e1094149",
+  "SCHUR_FULL_INVERSE_ACTION": {
+    "family": "INVERSE_RESIDUAL",
+    "proposal": "X = A^-1 C^T (floating solve)",
+    "status": "CERTIFIED",
+    "tau": "1/16",
+    "dimension": 644,
+    "residual_frobenius_sq_upper": "4188651769664302076570611109070019134023364138314064225093*2^-283",
+    "certified_lower_eigenvalue_coordinates": "6901746346788750896328942751049336317121003991358184664825770881499207*2^-236",
+    "certified_lower_eigenvalue_display": "6.25e-2",
+    "statement": "S_X >= 0 with X = A^-1 C^T",
+    "floating_minimum": 0.2499999999999939
+  },
+  "SCALAR_GAP": {
+    "family": "SCALAR_GAP",
+    "quantifier": "every a with 0 < a <= lambda_min(A)",
+    "rho_upper_exact": "3138550867693340518201508927234596021509041343544526844963*2^-193",
+    "rho_upper_display": "2.5e-1",
+    "witness_value": {
+      "lower_exact": "-710077346577593064601817150219492373170888277713336330106185*2^-193",
+      "upper_exact": "-710077346577593064601817150219492373170888277713334230674615*2^-193",
+      "display": "[-56.56092386 +/- 4.45e-9]"
+    },
+    "status": "FALSIFIED_BOUND"
+  },
+  "INVERSE_RESIDUAL_LADDER": {
+    "rows": [
+      {
+        "degree": 1,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -27.579356073443833
+      },
+      {
+        "degree": 2,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -13.087397695316412
+      },
+      {
+        "degree": 4,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -2.857498753809069
+      },
+      {
+        "degree": 8,
+        "status": "FALSIFIED_BOUND",
+        "floating_minimum": -0.18501669477155533
+      },
+      {
+        "degree": 16,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.24999999999999437
+      },
+      {
+        "degree": 32,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.24999999999999428
+      },
+      {
+        "degree": 64,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.2499999999999942
+      },
+      {
+        "degree": 128,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.249999999999994
+      },
+      {
+        "degree": 256,
+        "status": "CERTIFIED",
+        "floating_minimum": 0.24999999999999403
+      }
+    ],
+    "smallest_successful_tested_degree": 16,
+    "all_tested_degrees_below_it_failed_or_unresolved": true,
+    "monotonicity": "not assumed; every listed degree was tested"
+  },
+  "GEOMETRIC_TAIL_LADDER": {
+    "rows": [
+      {
+        "degree": 1,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 4.008709852606344,
+        "floating_minimum": -57.816506853044984
+      },
+      {
+        "degree": 2,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 3.9370738274291956,
+        "floating_minimum": -57.49616971752675
+      },
+      {
+        "degree": 4,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 3.797619328493532,
+        "floating_minimum": -56.27999888094919
+      },
+      {
+        "degree": 8,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 3.5333541563036133,
+        "floating_minimum": -52.901268389070225
+      },
+      {
+        "degree": 16,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 3.058712455906071,
+        "floating_minimum": -45.82143156918175
+      },
+      {
+        "degree": 32,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 2.2921425068172745,
+        "floating_minimum": -34.0645977312056
+      },
+      {
+        "degree": 64,
+        "status": "FALSIFIED_BOUND",
+        "q_power_over_a": 1.2872044776145801,
+        "floating_minimum": -18.664429960212395
+      }
+    ],
+    "smallest_successful_tested_degree": null,
+    "all_tested_degrees_below_it_failed_or_unresolved": null,
+    "monotonicity": "not assumed; every listed degree was tested",
+    "tested_up_to": 64
+  },
+  "RESPONSE_BANDS": {
+    "authority": "EXPERIMENTAL_SIGNAL_FLOATING_SPECTRAL_PROJECTORS",
+    "min_eig_D": 0.24999999999999192,
+    "min_eig_schur_D_minus_CAinvCT": 0.2499999999999943,
+    "trace_full_response": 10.806872219858409,
+    "max_eig_full_response": 3.7738655890447075,
+    "near_band": {
+      "definition": "eigenvalues of A within 1e-6 of eps (the shifted near-null directions)",
+      "count": 91,
+      "trace_coupling_mass": 2.6992860166051464e-06,
+      "max_column_coupling": 0.0012607124666582825,
+      "response_trace": 1.0797114900704411e-05,
+      "scalar_gap_worst_charge": 61.580846047321906
+    },
+    "bands": [
+      {
+        "s": 0.250000000001,
+        "count": 83,
+        "trace_M_s": 5.20403717511149e-13,
+        "max_eig_M_s": 5.065547571072783e-13,
+        "trace_low_response": 2.0816148700440245e-12,
+        "max_eig_low_response": 2.0262190284285466e-12,
+        "min_eig_D_minus_high_response": 0.2499999999999939
+      },
+      {
+        "s": 0.250000001,
+        "count": 87,
+        "trace_M_s": 2.1965411893975793e-09,
+        "max_eig_M_s": 2.106366173442219e-09,
+        "trace_low_response": 8.78616474422636e-09,
+        "max_eig_low_response": 8.42546468048449e-09,
+        "min_eig_D_minus_high_response": 0.24999999999999292
+      },
+      {
+        "s": 0.250001,
+        "count": 91,
+        "trace_M_s": 2.699286016605146e-06,
+        "max_eig_M_s": 2.515950822438589e-06,
+        "trace_low_response": 1.0797114900704413e-05,
+        "max_eig_low_response": 1.0063775021332964e-05,
+        "min_eig_D_minus_high_response": 0.24999999999999367
+      },
+      {
+        "s": 0.251,
+        "count": 94,
+        "trace_M_s": 0.00151718065800132,
+        "max_eig_M_s": 0.001434480077265653,
+        "trace_low_response": 0.006062307147751458,
+        "max_eig_low_response": 0.005731544233907753,
+        "min_eig_D_minus_high_response": 0.24999999999999445
+      },
+      {
+        "s": 0.5,
+        "count": 98,
+        "trace_M_s": 0.20006658678602154,
+        "max_eig_M_s": 0.1674568356769061,
+        "trace_low_response": 0.6645995248018933,
+        "max_eig_low_response": 0.5382094036269579,
+        "min_eig_D_minus_high_response": 0.24999999999999328
+      },
+      {
+        "s": 1.0,
+        "count": 107,
+        "trace_M_s": 1.532256529136101,
+        "max_eig_M_s": 1.31815654534571,
+        "trace_low_response": 2.4374763852843446,
+        "max_eig_low_response": 1.7790429406936341,
+        "min_eig_D_minus_high_response": 0.24999999999999337
+      },
+      {
+        "s": 1.0,
+        "count": 107,
+        "trace_M_s": 1.532256529136101,
+        "max_eig_M_s": 1.31815654534571,
+        "trace_low_response": 2.4374763852843446,
+        "max_eig_low_response": 1.7790429406936341,
+        "min_eig_D_minus_high_response": 0.24999999999999337
+      },
+      {
+        "s": 14.440999316751395,
+        "count": 648,
+        "trace_M_s": 35.836796673044546,
+        "max_eig_M_s": 15.395211511830107,
+        "trace_low_response": 10.806872219858409,
+        "max_eig_low_response": 3.7738655890447075,
+        "min_eig_D_minus_high_response": 0.24999999999999192
+      }
+    ]
+  },
+  "seconds": 756.8,
+  "state_id": "L6_odd_quarter"
+}

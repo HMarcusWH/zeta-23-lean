@@ -1,0 +1,44 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_CORRECTIONS_ADDENDUM_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "extends": "evidence/increment2b/CORRECTIONS.json (R1-R9; that file is hash-bound in increment2b/SUMMARY.json and is left byte-identical)",
+  "scope": "Scoped corrections after the revision-2 inspection review of head 02847b575cd350abfd675720ed4d8d3f7d95ab24. A correction applies only to its named claim and scope.",
+  "corrections": [
+    {
+      "id": "R10",
+      "claim": "BUILD_SPEC Increment 2B revalidation bullet: 'a fixed high-support gap fails there too'.",
+      "finding": "The HIGH_SUPPORT_UNSHIFTED_SLICE measurement is on one exact support, reduced indices >= split + 1 for even parity and >= split for odd parity (|n| > split), at split 128 (L=4), 312 (L=5) and 648 (L=6), with the reconstructed constant 1/4. Its exact Rayleigh witnesses show only that Q_p >= (1/4)||x||^2 is false on that support at those states.",
+      "disposition": "SCOPE_NARROWED",
+      "repair": "The statement now reads: the quarter law is FALSIFIED_BOUND on the support |n| > split at the named splits. It does not falsify a historical certificate on a narrower support, a higher support threshold, a different constant or a different aperture; the historical support and constant are still not imported, so no historical certificate is reproduced or refuted.",
+      "affected": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json#CR20"
+      ],
+      "records_unchanged": "evidence/increment2b high_support_test records already state 'reduced indices >= %d (|n| > split)'; no record is regenerated."
+    },
+    {
+      "id": "R11",
+      "claim": "Increment 2B/3B workflow summary (chat and an earlier PR-body wording): every intermediate-head CI failure was a cancellation caused by a later push.",
+      "finding": "All intermediate-head failures but one were cancellations. The exception was genuine: rhkg-compiler-receipt at 94cb6d8 failed on stale generated products.",
+      "disposition": "RECORDED_SEPARATELY",
+      "repair": "WORKFLOW_HARVEST records the genuine failure separately from the cancellations; the regenerated-products commit 02847b5 addresses it, and its own exact-head run decides whether it did.",
+      "affected": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/WORKFLOW_HARVEST.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/HANDOVER_2026-11-07.md"
+      ]
+    },
+    {
+      "id": "R12",
+      "claim": "Bookkeeping: the revision-2 build was reported in chat as 11 commits.",
+      "finding": "The revision-2 build on research/madness consists of 10 commits, 54ef598 through 02847b5 inclusive (parent c27abd8). No committed file stated 11.",
+      "disposition": "RECORDED",
+      "repair": "No file change needed beyond this record."
+    }
+  ],
+  "limitations_restated": {
+    "level_3": "Level-3 reconstructions use their own elimination basis and Schur certificate but share native_source.py, the equation-(4.4) backend and the Arb primitives with the engine. They are not level 4; FiniteCertificateSoundness and the native enclosure bridge remain OPEN.",
+    "near_band": "E-D1 near-band counts and coupling masses use floating spectral projectors (EXPERIMENTAL SIGNAL). Increment 3C adds projector-free certified upper bounds; floating projections remain labelled as such.",
+    "source_ledger": "Folder coverage means every connector-returned item is listed; 204 of 206 entries remain DISCOVERED. Listing is not text review, proof audit or replay."
+  }
+}

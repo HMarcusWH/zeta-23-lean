@@ -10,6 +10,46 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Reclaim unused hosted SDK space before Lean setup
+      if: ${{ inputs.native == 'true' || inputs.provider == 'true' }}
+      shell: bash
+      run: |
+        set -euo pipefail
+        # These are unused preinstalled SDKs on the disposable Ubuntu runner, never
+        # project sources, Lean packages/toolchains, caches, or retained evidence.
+        test "${RUNNER_OS:-}" = Linux
+        test "${RUNNER_ENVIRONMENT:-}" = github-hosted
+        . /etc/os-release
+        test "$ID" = ubuntu
+        test "$VERSION_ID" = 24.04
+        report_disk() {
+          df -B1 -- "$GITHUB_WORKSPACE" "$RUNNER_TEMP"
+          df -Pi -- "$GITHUB_WORKSPACE" "$RUNNER_TEMP"
+        }
+        trap 'original_status=$?; report_disk || true; exit "$original_status"' EXIT
+        report_disk
+        for sdk in /usr/local/lib/android /usr/share/dotnet; do
+          if ! test -e "$sdk" && ! test -L "$sdk"; then
+            printf 'Unused SDK absent: %s\n' "$sdk"
+            continue
+          fi
+          test -d "$sdk"
+          test ! -L "$sdk"
+          test "$(realpath -e -- "$sdk")" = "$sdk"
+          for protected in "$GITHUB_WORKSPACE" "$RUNNER_TEMP" "$RUNNER_TOOL_CACHE" "$HOME"; do
+            protected=$(realpath -e -- "$protected")
+            case "$sdk/" in "$protected/"*) echo 'SDK overlaps protected path' >&2; exit 1;; esac
+            case "$protected/" in "$sdk/"*) echo 'Protected path overlaps SDK' >&2; exit 1;; esac
+          done
+          if mountpoint -q -- "$sdk"; then
+            echo 'Refusing SDK mount point' >&2
+            exit 1
+          fi
+          du -sx --block-size=1 -- "$sdk"
+          sudo rm -rf --one-file-system -- "$sdk"
+          test ! -e "$sdk"
+          test ! -L "$sdk"
+        done
     - shell: bash
       working-directory: host
       run: |

@@ -1,0 +1,156 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_INCREMENT3F_SUMMARY_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "scope": "WITNESS_RETAINING_RERUNS_OF_E-D1_AND_E-H7_NOT_A_RESCORING_NOT_AN_RH_OR_STEP4_CLAIM",
+  "tool_sha256": "ac058463893db8175b534fdb777ec6bb8d4511b5319ced3036e0a2f5c6aa9aa2",
+  "records": [
+    {
+      "entry": "L4_even_1024",
+      "file": "receipts_L4_even_1024.json",
+      "sha256": "fa9f294433ff1045ed96778bc15010ff16a8eccbfa536b81ab3f6bf14f9c03bc"
+    },
+    {
+      "entry": "L4_even_half",
+      "file": "receipts_L4_even_half.json",
+      "sha256": "7aa1ecd4290eb68b752d3f65949ea790b4452a50482b7bc706cce85d6e652174"
+    },
+    {
+      "entry": "L4_odd_half",
+      "file": "receipts_L4_odd_half.json",
+      "sha256": "8857e9f46c62eee961338bc8e4808cc1fc49927055a4d00b6a1cb080ac00c4f3"
+    },
+    {
+      "entry": "L5_even_third",
+      "file": "receipts_L5_even_third.json",
+      "sha256": "d637124112d83dea34d4a7c54c59d456fcb60bb0e248ebfcc92784f50b04667a"
+    },
+    {
+      "entry": "L5_odd_third",
+      "file": "receipts_L5_odd_third.json",
+      "sha256": "4d15b147b89c7addbc220c1bfe8b4daddb5ec7a9ea2499394731fc994046d1d4"
+    },
+    {
+      "entry": "L6_even_quarter",
+      "file": "receipts_L6_even_quarter.json",
+      "sha256": "a5ff6f080530da693b7a4127fab7c527f591b84a9a849a19ade3ab659ae6bb51"
+    },
+    {
+      "entry": "L6_odd_quarter",
+      "file": "receipts_L6_odd_quarter.json",
+      "sha256": "441fb8dcaef223216bd9df9ea282f4cffe31b1c2a8b431da8c6069f7dd8705b2"
+    },
+    {
+      "entry": "L7_even_fifth",
+      "file": "receipts_L7_even_fifth.json",
+      "sha256": "3611eef71064daa4a84da068fe109b3962e226fa23edc3c8a9867ae2add2842a"
+    },
+    {
+      "entry": "L7_odd_fifth",
+      "file": "receipts_L7_odd_fifth.json",
+      "sha256": "2476c81a4a65bd105d3fa597cc6c0c79c702d864524077e6ef56bde7f70582dc"
+    }
+  ],
+  "agreement_rule": "Every status of a row present in both records must agree. The frozen L = 6 records tested the tail only up to degree 64, so their degree-128 rows are absent (frozen value None) and are listed separately; this is not a disagreement.",
+  "receipts": {
+    "CERTIFIED": "tau, certified residual bound, certified lower eigenvalue and the factor enclosure hash (Lean: posDef_of_shifted_factor)",
+    "FALSIFIED_BOUND": "exact dyadic witness vector (hex floats), its sha256 and the enclosure of its quadratic value (Lean: not_nonneg_of_negative_witness)"
+  },
+  "limitation": "Receipts are verifiable from the record (tau > 0, residual < tau^2, witness sign); rebuilding the pencil to recompute a witness value needs the numpy discovery layer and the native source. The enclosure bridge to the actual source remains OPEN.",
+  "table": [
+    {
+      "entry": "L4_even_1024",
+      "inverse_residual_smallest_tested_degree": null,
+      "certified_rows_with_receipt": 1,
+      "falsified_rows_with_witness": 17,
+      "unknown_rows": 0,
+      "shared_rows_agree": true,
+      "rows_absent_from_frozen_record": [],
+      "seconds": 13.0
+    },
+    {
+      "entry": "L4_even_half",
+      "inverse_residual_smallest_tested_degree": 4,
+      "certified_rows_with_receipt": 9,
+      "falsified_rows_with_witness": 8,
+      "unknown_rows": 1,
+      "shared_rows_agree": true,
+      "rows_absent_from_frozen_record": [],
+      "seconds": 12.5
+    },
+    {
+      "entry": "L4_odd_half",
+      "inverse_residual_smallest_tested_degree": 4,
+      "certified_rows_with_receipt": 9,
+      "falsified_rows_with_witness": 8,
+      "unknown_rows": 1,
+      "shared_rows_agree": true,
+      "rows_absent_from_frozen_record": [],
+      "seconds": 13.1
+    },
+    {
+      "entry": "L5_even_third",
+      "inverse_residual_smallest_tested_degree": 8,
+      "certified_rows_with_receipt": 7,
+      "falsified_rows_with_witness": 10,
+      "unknown_rows": 1,
+      "shared_rows_agree": true,
+      "rows_absent_from_frozen_record": [],
+      "seconds": 102.1
+    },
+    {
+      "entry": "L5_odd_third",
+      "inverse_residual_smallest_tested_degree": 8,
+      "certified_rows_with_receipt": 7,
+      "falsified_rows_with_witness": 10,
+      "unknown_rows": 1,
+      "shared_rows_agree": true,
+      "rows_absent_from_frozen_record": [],
+      "seconds": 109.2
+    },
+    {
+      "entry": "L6_even_quarter",
+      "inverse_residual_smallest_tested_degree": 16,
+      "certified_rows_with_receipt": 6,
+      "falsified_rows_with_witness": 11,
+      "unknown_rows": 1,
+      "shared_rows_agree": true,
+      "rows_absent_from_frozen_record": [
+        "GEOMETRIC_TAIL_LADDER/128"
+      ],
+      "seconds": 758.1
+    },
+    {
+      "entry": "L6_odd_quarter",
+      "inverse_residual_smallest_tested_degree": 16,
+      "certified_rows_with_receipt": 6,
+      "falsified_rows_with_witness": 11,
+      "unknown_rows": 1,
+      "shared_rows_agree": true,
+      "rows_absent_from_frozen_record": [
+        "GEOMETRIC_TAIL_LADDER/128"
+      ],
+      "seconds": 759.5
+    },
+    {
+      "entry": "L7_even_fifth",
+      "inverse_residual_smallest_tested_degree": 32,
+      "certified_rows_with_receipt": 5,
+      "falsified_rows_with_witness": 11,
+      "unknown_rows": 1,
+      "shared_rows_agree": true,
+      "rows_absent_from_frozen_record": [],
+      "seconds": 3633.9
+    },
+    {
+      "entry": "L7_odd_fifth",
+      "inverse_residual_smallest_tested_degree": 32,
+      "certified_rows_with_receipt": 5,
+      "falsified_rows_with_witness": 11,
+      "unknown_rows": 1,
+      "shared_rows_agree": true,
+      "rows_absent_from_frozen_record": [],
+      "seconds": 3633.7
+    }
+  ]
+}

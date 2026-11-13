@@ -1,0 +1,132 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_SG_CANDIDATE_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "EXPERIMENTAL_SIGNAL_FLOAT64_MIDPOINTS_NOT_CERTIFIED",
+  "candidate_status": "OPEN",
+  "tool_sha256": "63081ceb52cd01882da47fba034bc3baa1044ce09b34b324c14143d116802b8e",
+  "native_source_sha256": "48089b67546d2645d7662ac503eb3becd2bdca827b8135a3ee645245d1b940e6",
+  "backend_sha256": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+  "numpy": "2.5.3",
+  "offdiagonal_countermodel": {
+    "J": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "ell": [
+      1.0,
+      1.0
+    ],
+    "z": [
+      0.0,
+      10.0
+    ],
+    "H": [
+      [
+        0.0,
+        10.0
+      ],
+      [
+        10.0,
+        0.0
+      ]
+    ],
+    "commutator_residual": 0.0,
+    "diagonal": [
+      0.0,
+      0.0
+    ],
+    "lambda_min": -10.0,
+    "conclusion": "Every h_i = 0 yet lambda_min = -M: diagonal lower bounds alone do not suffice."
+  },
+  "states": [
+    {
+      "L": "7",
+      "parity": "even",
+      "K": 2401,
+      "Q": 1096,
+      "prime_powers": 209,
+      "bits": 128,
+      "slice_dimension": 2398,
+      "nc_relative_residual": 6.449311609300069e-15,
+      "nc_absolute_frobenius": 2.543844170723942e-08,
+      "ambient_commutator_frobenius": 10219441.282839961,
+      "commutator_identity_relative_residual": 9.648571335829218e-14,
+      "offdiagonal_reconstruction_relative_residual": 2.51431513407121e-12,
+      "leak_singular_values": [
+        1454118.2163173188,
+        1.602905588809825e-08,
+        1.5491156599994094e-08,
+        1.4955845180202096e-08
+      ],
+      "leak_rank_one_residual": 1.1229295210218799e-13,
+      "geometry_min_gap": 4.014503075915025,
+      "geometry_spectrum_range": [
+        1.616628010224024,
+        5763885.975172752
+      ],
+      "norm_z": 4.520315723934261,
+      "norm_l": 1454118.2163173193,
+      "min_geometry_diagonal": 6.711174275188075e-05,
+      "argmin_geometry_diagonal_theta": 1.616628010224024,
+      "max_geometry_diagonal": 13.658434092549864,
+      "lambda_min_H": -1.4343495691652183e-14,
+      "lambda_max_H": 14.872741972574099,
+      "sg_lower_bound": -3274663.545273538,
+      "sg_bound_slack": 3274663.545273538,
+      "trace_H2": 92809.33116011566,
+      "trace_identity_72": 92809.33116011534,
+      "trace_identity_relative_residual": 3.449460641751184e-15,
+      "offdiagonal_operator_norm_bound_2lz_over_g": 3274663.54534065,
+      "offdiagonal_actual_operator_norm": 7.791366186485627,
+      "seconds": 210.738
+    },
+    {
+      "L": "7",
+      "parity": "odd",
+      "K": 2401,
+      "Q": 1096,
+      "prime_powers": 209,
+      "bits": 128,
+      "slice_dimension": 2397,
+      "nc_relative_residual": 6.396656371604313e-15,
+      "nc_absolute_frobenius": 2.5198178440789393e-08,
+      "ambient_commutator_frobenius": 9899186.510311631,
+      "commutator_identity_relative_residual": 9.794446312202742e-14,
+      "offdiagonal_reconstruction_relative_residual": 2.350429876173252e-12,
+      "leak_singular_values": [
+        1450533.8690865096,
+        2.3185387205259016e-08,
+        1.8874523796032702e-08,
+        1.8275366666127023e-08
+      ],
+      "leak_rank_one_residual": 1.1401545645252612e-13,
+      "geometry_min_gap": 5.021293533340614,
+      "geometry_spectrum_range": [
+        3.134334782372149,
+        5763816.570017631
+      ],
+      "norm_z": 4.591060598465817,
+      "norm_l": 1450533.8690865093,
+      "min_geometry_diagonal": 0.00011927567128229532,
+      "argmin_geometry_diagonal_theta": 3.134334782372149,
+      "max_geometry_diagonal": 13.749578064430517,
+      "lambda_min_H": -2.0461196784039515e-14,
+      "lambda_max_H": 14.872235605037067,
+      "sg_lower_bound": -2652499.3404929657,
+      "sg_bound_slack": 2652499.3404929657,
+      "trace_H2": 92776.64530747393,
+      "trace_identity_72": 92776.64530747425,
+      "trace_identity_relative_residual": 3.450675910549232e-15,
+      "offdiagonal_operator_norm_bound_2lz_over_g": 2652499.3406122415,
+      "offdiagonal_actual_operator_norm": 8.291928543890236,
+      "seconds": 213.372
+    }
+  ]
+}

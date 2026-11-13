@@ -1,0 +1,79 @@
+{
+  "schema": "OPICA4_ARITHMETIC_FRONTIER_REVISION3_IMPORT_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "authority": "BUILD_INSTRUCTIONS_AND_INSPECTION_RECORDS_NOT_PROOF_RECEIPTS",
+  "package": {
+    "title": "PR299_Build_Update_v3_2026-11-08.zip",
+    "bytes": 124588,
+    "sha256": "26c2eb95f14168183ea50e9def7ace911c1efe9284203690c1ebc281016b6b37",
+    "received": "session upload 2026-11-08; Drive copy 1FkL1QemE1wYdSNrBHnTxZLvTRilPGT8x has the same title and byte size (not fetched)",
+    "extraction": "isolated directory; members read as data; no member executed"
+  },
+  "imported_members": [
+    {
+      "path": "PR299_Full_Build_Instructions_v3_2026-11-08.md",
+      "sha256": "f716d99825d62850f694729517c48332e35ef2388f1dcae287b581874e334f7c",
+      "bytes": 63868
+    },
+    {
+      "path": "README.md",
+      "sha256": "cc4340320e327fd9448b2c98573430d71e9f8084a3e8bf036ca321d146825aed",
+      "bytes": 741
+    },
+    {
+      "path": "SHA256_MANIFEST.json",
+      "sha256": "4cd541018f4e1bc73b841e511724ba05f88dc3b1b3c0171ec45a1d9261bedb7f",
+      "bytes": 1989
+    },
+    {
+      "path": "ARTIFACT_VALIDATION.json",
+      "sha256": "f7c4ca083cca0d600f65d02cee43c895628eefb1c05fbd97dc8ac61d89f11ccd",
+      "bytes": 352
+    },
+    {
+      "path": "implementation_tasks_v3.json",
+      "sha256": "d9ad15d6b2985eee82929abdba9259504d8ccd5962ee277207cea05800e137c8",
+      "bytes": 5838
+    },
+    {
+      "path": "revision2_to_revision3_crosswalk.json",
+      "sha256": "fac9b6dbaf2efaf70c11a34dc063927faf423f0f42774db8b30a7d626a18ebcf",
+      "bytes": 6259
+    },
+    {
+      "path": "source_coverage.json",
+      "sha256": "a1805311bb63add9d53e6f58e7e5be8ed7aa87b632529a0e9cc1f331c09e10da",
+      "bytes": 1744
+    },
+    {
+      "path": "prior_specification/PR299_Full_Build_Instructions_v2_2026-11-07.md",
+      "sha256": "7c94bfcb200e40ba9a98626e135359494305b08dbd863626825aa985f2346ba4",
+      "bytes": 50842
+    },
+    {
+      "path": "receipts/acceptance.original.json",
+      "sha256": "21d90e64c120a17aa88daed3a4f6d6fe64e2ba648425d69c11fd79e3208d3a33",
+      "bytes": 2604
+    },
+    {
+      "path": "receipts/mathematical_support.extract.json",
+      "sha256": "0c4c4d287324a487307b5a9abb27f90ee92a9bf97f98b39307fda6518c21151d",
+      "bytes": 20445
+    },
+    {
+      "path": "receipts/qualified_baseline_receipt_review.json",
+      "sha256": "60d6299c7534775a8345aa50e0de145ac8d82d9a43b260bf6db2831716bffa69",
+      "bytes": 3387
+    }
+  ],
+  "not_imported": [
+    {
+      "path": "receipts/types_and_axioms.original.json",
+      "sha256": "1856a1feeb10174ce50d851bcb2e6d1df6bbd9ec771e8974e84319a2f73fbf7f",
+      "reason": "809 KB copy of the dab9fbe CI types-and-axioms record (sha256 1856a1fe...); the CI artifact is the full evidence"
+    }
+  ],
+  "package_manifest_verified": true,
+  "scope": "Exact bytes of the supplied plan. The plan is reviewed, not obeyed blindly; see REVIEW_OF_REVISION3.json."
+}
