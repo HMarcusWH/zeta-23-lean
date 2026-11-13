@@ -494,4 +494,36 @@ theorem oddMomentSliceLowerBound_of_le_four {L : ℝ} (hL : 0 < L) (K : ℕ)
   subst hv
   simp [oddNativeEnergy]
 
+/-! ## Parity moment-shift algebra (independent of the prime source) -/
+
+/-- Multiplication by the centered Fourier index, before the harmless derivative
+factor `2π i/L`. This is a fixed-seed coordinate map, not an isometry. -/
+def centeredMomentShift (K : ℕ) :
+    (Fin (2 * K + 1) → ℂ) →ₗ[ℂ] (Fin (2 * K + 1) → ℂ) where
+  toFun u i := (centeredIndex K i : ℂ) * u i
+  map_add' u v := by
+    ext i
+    simp [mul_add]
+  map_smul' c u := by
+    ext i
+    simp only [Pi.smul_apply, smul_eq_mul]
+    ring
+
+@[simp] theorem centeredMomentShift_apply (K : ℕ)
+    (u : Fin (2 * K + 1) → ℂ) (i : Fin (2 * K + 1)) :
+    centeredMomentShift K u i = (centeredIndex K i : ℂ) * u i := rfl
+
+/-- Multiplying frequencies by their index shifts every centered moment exactly. -/
+theorem centeredMoment_shift (K r : ℕ) (u : Fin (2 * K + 1) → ℂ) :
+    centeredMoment K r (centeredMomentShift K u) =
+      centeredMoment K (r + 1) u := by
+  unfold centeredMoment
+  apply Finset.sum_congr rfl
+  intro i _
+  change (centeredIndex K i : ℂ) ^ r *
+      ((centeredIndex K i : ℂ) * u i) =
+        (centeredIndex K i : ℂ) ^ (r + 1) * u i
+  rw [pow_succ]
+  ring
+
 end Zeta23.OPICARound4.ArithmeticFrontier
