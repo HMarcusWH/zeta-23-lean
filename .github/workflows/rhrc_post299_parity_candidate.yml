@@ -1,0 +1,60 @@
+name: Post299 parity bridge candidate compiler (not release)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Zeta23/OPICARound5/ParityMomentBridge.lean'
+      - '.github/workflows/rhrc_post299_parity_candidate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: post299-parity-candidate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  parity-candidate-compiler:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Authenticate current candidate tree
+        shell: bash
+        env:
+          REQUESTED: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$REQUESTED"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          printf 'Candidate-only, NOT full OPICA source acceptance: head=%s tree=%s\n' \
+            "$(git rev-parse HEAD)" "$(git rev-parse 'HEAD^{tree}')"
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Reject candidate axioms and proof placeholders
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -En '(^|[[:space:]])(axiom|sorry|admit)([[:space:]]|$)' \
+              Zeta23/OPICARound5/ParityMomentBridge.lean; then
+            echo 'Forbidden new axiom or proof placeholder in parity bridge'
+            exit 1
+          fi
+      - name: Compile exact candidate source and print transitive axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build Zeta23.OPICARound5.ParityMomentBridge
+          lake env lean Zeta23/OPICARound5/ParityMomentBridge.lean \
+            | tee "$RUNNER_TEMP/parity_axioms.log"
+          echo 'Compiler-only candidate evidence: successor governance and Round4 release gates remain separate.'
