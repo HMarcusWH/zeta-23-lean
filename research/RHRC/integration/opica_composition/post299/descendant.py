@@ -41,7 +41,7 @@ THIS_VALIDATOR = (
     "research/RHRC/integration/opica_composition/post299/descendant.py"
 )
 CHANGED_SOURCE = {
-    "research/RHRC/integration/opica_composition/cli.py": "__PIN_CLI_BLOB__",
+    "research/RHRC/integration/opica_composition/cli.py": "e587c38e32ecc416df403133e5eef1038c00b176",
     "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json":
         "8851d0a9cd5bc234af376cf35ca0c9894dcee0df",
 }
@@ -182,7 +182,7 @@ def validate_descendant(repo: Path = REPO, *, require_clean: bool = False) -> di
 
 
 def _selftest() -> None:
-    parent = {"old.lean", "old.json", "research/RHRC/graph/generated/nodes.json"}
+    parent = {"old.lean", "old.json", "research/RHRC/graph/generated/nodes.json", *EDITED}
     valid = [
         ("A", THIS_VALIDATOR),
         *(( "A", p) for p in ADDED_SOURCE),
