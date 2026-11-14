@@ -24,8 +24,7 @@ def centeredMomentShift (K : ℕ) :
     simp [mul_add]
   map_smul' c u := by
     ext i
-    simp only [Pi.smul_apply, smul_eq_mul]
-    ring
+    simp [mul_assoc, mul_left_comm, mul_comm]
 
 @[simp] theorem centeredMomentShift_apply (K : ℕ)
     (u : Fin (2 * K + 1) → ℂ) (i : Fin (2 * K + 1)) :
@@ -61,6 +60,7 @@ theorem centeredIndex_eq_zero_iff_centeredZeroIndex
   constructor
   · intro hi
     apply Fin.ext
+    change (i : ℕ) = K
     dsimp [centeredIndex] at hi
     omega
   · rintro rfl
@@ -147,7 +147,7 @@ theorem oddToEvenMomentShift_injective (K : ℕ) :
 
 /-- Evaluation of the central Fourier coefficient on the even quartic slice. -/
 def evenMomentCenterEval (K : ℕ) : fixedEvenMomentSeed K →ₗ[ℂ] ℂ where
-  toFun u := u (centeredZeroIndex K)
+  toFun u := (u : Fin (2 * K + 1) → ℂ) (centeredZeroIndex K)
   map_add' u v := rfl
   map_smul' c u := rfl
 
@@ -155,9 +155,8 @@ def evenMomentCenterEval (K : ℕ) : fixedEvenMomentSeed K →ₗ[ℂ] ℂ where
 theorem evenMomentCenterEval_oddToEven_zero (K : ℕ)
     (u : fixedOddMomentSeed K) :
     evenMomentCenterEval K (oddToEvenMomentShift K u) = 0 := by
-  change (centeredMomentShift K u) (centeredZeroIndex K) = 0
-  simp only [centeredMomentShift_apply, centeredIndex_centeredZeroIndex,
-    Int.cast_zero, zero_mul]
+  simp [evenMomentCenterEval, oddToEvenMomentShift,
+    centeredMomentShift_apply, centeredIndex_centeredZeroIndex]
 
 /-- Division by the frequency away from zero; the zero-frequency value is
 defined as zero by field inversion. -/
@@ -165,7 +164,7 @@ def centeredMomentUnshift (K : ℕ) :
     (Fin (2 * K + 1) → ℂ) →ₗ[ℂ] (Fin (2 * K + 1) → ℂ) where
   toFun u i := (centeredIndex K i : ℂ)⁻¹ * u i
   map_add' u v := by ext i; simp [mul_add]
-  map_smul' c u := by ext i; simp only [Pi.smul_apply, smul_eq_mul]; ring
+  map_smul' c u := by ext i; simp [mul_assoc, mul_left_comm, mul_comm]
 
 @[simp] theorem centeredMomentUnshift_apply (K : ℕ)
     (u : Fin (2 * K + 1) → ℂ) (i : Fin (2 * K + 1)) :
@@ -178,6 +177,7 @@ theorem centeredMomentUnshift_odd_of_even (K : ℕ)
   rw [mem_oddCoefficientSubspace_iff]
   ext i
   have hi := congrFun ((mem_evenCoefficientSubspace_iff K u).mp hu) i
+  change u i.rev = u i at hi
   change (centeredIndex K i.rev : ℂ)⁻¹ * u i.rev =
     -((centeredIndex K i : ℂ)⁻¹ * u i)
   rw [hi, centeredIndex_rev]
@@ -242,8 +242,10 @@ theorem oddToEvenMomentShift_range_eq_center_ker (K : ℕ) :
   · rintro ⟨v, rfl⟩
     exact LinearMap.mem_ker.mpr (evenMomentCenterEval_oddToEven_zero K v)
   · intro hu
-    have hz : (u : Fin (2 * K + 1) → ℂ) (centeredZeroIndex K) = 0 :=
-      LinearMap.mem_ker.mp hu
+    have hz : (u : Fin (2 * K + 1) → ℂ) (centeredZeroIndex K) = 0 := by
+      have h := LinearMap.mem_ker.mp hu
+      change (u : Fin (2 * K + 1) → ℂ) (centeredZeroIndex K) = 0 at h
+      exact h
     let v : fixedOddMomentSeed K :=
       ⟨centeredMomentUnshift K (u : Fin (2 * K + 1) → ℂ),
         centeredMomentUnshift_mem_fixedOddMomentSeed K u.property hz⟩
@@ -300,7 +302,7 @@ theorem evenMomentCenterEval_surjective (K : ℕ) (hK : 4 ≤ K) :
     omega
   have hnonzero : ∃ u : fixedEvenMomentSeed K, evenMomentCenterEval K u ≠ 0 := by
     by_contra h
-    push_neg at h
+    push Not at h
     have hz : evenMomentCenterEval K = 0 := by
       ext u
       exact h u
