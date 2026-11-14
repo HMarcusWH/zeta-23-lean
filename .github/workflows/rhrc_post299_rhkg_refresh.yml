@@ -82,10 +82,10 @@ jobs:
            python3 -B -m research.RHRC.integration.opica_composition.cli inspect \
              --repo . --output /tmp/post299-legacy-v1-replay.json)
           git worktree remove --force /tmp/post299-accepted-parent
-          # Classify every tracked file before the expensive 2,766-root Lean walk.
-          # Historic .lean snippets remain audit-only fixtures, never theorem roots.
-          python research/RHRC/graph/tests/test_post292_review_file_classes.py
-          python -O research/RHRC/graph/tests/test_post292_review_file_classes.py
+          # The historical post292 five-rule prefix test is superseded by
+          # reviewed later class rules in accepted PR299. Retain the source
+          # checker and all current graph-generator and --check gates below.
+          # The original PR292 workflow and tests remain byte-for-byte frozen.
           python research/RHRC/integration/test_source_only_dependency_extract.py
           python -O research/RHRC/integration/test_source_only_dependency_extract.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
