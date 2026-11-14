@@ -184,9 +184,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git worktree add --detach /tmp/pr292-clean-checkout HEAD
-          ln -s "$GITHUB_WORKSPACE/.lake" /tmp/pr292-clean-checkout/.lake
-          cd /tmp/pr292-clean-checkout
+          git worktree add --detach /tmp/pr300-clean-checkout HEAD
+          ln -s "$GITHUB_WORKSPACE/.lake" /tmp/pr300-clean-checkout/.lake
+          cd /tmp/pr300-clean-checkout
           # A directory-only /.lake/ ignore rule does not match this symlink.
           # Verify the exact cache path is ignored, then retain the full clean gate.
           git check-ignore -v .lake > /tmp/pr300-rhkg/CLEAN_CHECKOUT_CACHE_IGNORE.txt
