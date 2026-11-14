@@ -34,6 +34,25 @@ jobs:
           test -z "$(git status --porcelain --untracked-files=all)"
           printf 'Candidate-only, NOT full OPICA source acceptance: head=%s tree=%s\n' \
             "$(git rev-parse HEAD)" "$(git rev-parse 'HEAD^{tree}')"
+      - name: Validate reviewed successor scope and negative controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.descendant --selftest
+          python3 -B -m research.RHRC.integration.opica_composition.cli inspect \
+            --repo . --output "$RUNNER_TEMP/post299-current-source.json"
+          python3 -B - <<'PY'
+          import json, os
+          from pathlib import Path
+          d=json.loads((Path(os.environ["RUNNER_TEMP"])/"post299-current-source.json").read_text())
+          assert d["schema"]=="OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V1"
+          assert d["successor_human_review"]=="PENDING"
+          assert d["current_compiler_accepted"] is False
+          assert d["full_round4_accepted"] is False
+          assert d["RH"]=="OPEN" and d["Step4"]=="OPEN"
+          assert d["delta"]["deleted"]==[]
+          print("POST299 exact-head source scope: PASS (candidate only)")
+          PY
       - uses: leanprover/lean-action@v1
         with:
           auto-config: false
