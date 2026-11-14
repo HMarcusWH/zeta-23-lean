@@ -62,18 +62,33 @@ def fstr(x: F) -> str:
     return str(x.numerator) if x.denominator == 1 else f"{x.numerator}/{x.denominator}"
 
 
+def require(condition: bool, message: str) -> None:
+    if not condition:
+        raise ArithmeticError(message)
+
+
 def exact_geometry() -> dict:
-    assert all(moment(center, r) == 0 for r in (0,2,4,6))
-    assert all(moment(lambda n: F(0) if n == 0 else (ODD[abs(n)] if n > 0 else -ODD[abs(n)]), r) == 0 for r in (1,3,5,7))
-    assert all(moment(shift, r) == 0 for r in (0,2,4,6))
-    assert center(0) == 1 and shift(0) == 0
+    require(all(moment(center, r) == 0 for r in (0,2,4,6)),
+            "center lift escaped even quartic seed")
+    odd=lambda n: F(0) if n == 0 else (ODD[abs(n)] if n > 0 else -ODD[abs(n)])
+    require(all(moment(odd, r) == 0 for r in (1,3,5,7)),
+            "odd vector escaped odd quartic seed")
+    require(all(moment(shift, r) == 0 for r in (0,2,4,6)),
+            "odd-to-even moment shift failed")
+    require(center(0) == 1 and shift(0) == 0,
+            "center quotient frame degenerate")
     a, b, c = gram_poly(shift,shift), gram_poly(shift,center), gram_poly(center,center)
-    assert a == tuple(F(44)*x for x in (43565,10426,845))
-    assert b == tuple(-F(88,35)*x for x in (1205,442,65))
-    assert c == tuple(F(33,2450)*x for x in (640,416,195))
+    require(a == tuple(F(44)*x for x in (43565,10426,845)),
+            "odd-derived physical Gram polynomial mismatch")
+    require(b == tuple(-F(88,35)*x for x in (1205,442,65)),
+            "mixed physical Gram polynomial mismatch")
+    require(c == tuple(F(33,2450)*x for x in (640,416,195)),
+            "center lift physical Gram polynomial mismatch")
     det = poly_sub(poly_mul(a,c),poly_mul(b,b))
-    assert det == tuple(F(3146,49)*x for x in (114400,124000,88785,16354,1105))
-    assert all(v > 0 for v in det)
+    require(det == tuple(F(3146,49)*x for x in (114400,124000,88785,16354,1105)),
+            "physical Gram determinant polynomial mismatch")
+    require(all(v > 0 for v in det),
+            "physical Gram strict positivity failed")
     return {
         "K": K, "frame_order": ["T5_odd", "center_lift"],
         "moments": {"center_even_0_2_4_6": ["0"]*4, "odd_1_3_5_7": ["0"]*4},
@@ -86,7 +101,6 @@ def exact_geometry() -> dict:
         "center_eval": {"T5_odd": "0", "center_lift": "1"},
         "authority": "EXACT_RATIONAL_ALGEBRA_NOT_LEAN_PROOF",
     }
-
 
 def _arb_backend():
     from flint import arb, arb_mat, ctx

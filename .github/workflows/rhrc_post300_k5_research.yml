@@ -23,6 +23,7 @@ jobs:
         run: |
           python3 research/RHRC/integration/opica_round5/test_post300_k5_mixed_source.py
           python3 research/RHRC/integration/opica_round5/post300_k5_mixed_source.py --exact-only --output /tmp/k5-exact.json
+          python3 -O research/RHRC/integration/opica_round5/post300_k5_mixed_source.py --exact-only --output /tmp/k5-exact-optimized.json
           python3 - <<'PY'
           import json
           d=json.load(open('/tmp/k5-exact.json'))
