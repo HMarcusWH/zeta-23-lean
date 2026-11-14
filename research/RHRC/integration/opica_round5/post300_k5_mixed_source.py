@@ -126,8 +126,10 @@ def _block(A, x, y, arb):
     return result
 
 
-def probe(L_num:int=2,L_den:int=1,cutoff:int=7,prec:int=192) -> dict:
-    if L_num<=0 or L_den<=0 or cutoff<2 or prec<80:
+def probe(L_num:int=2,L_den:int=1,cutoff:int=7,prec:int=192,
+          gamma_num:int=5,gamma_den:int=1,delta_num:int=1,delta_den:int=4) -> dict:
+    if (L_num<=0 or L_den<=0 or cutoff<2 or prec<80 or
+            gamma_num<=0 or gamma_den<=0 or delta_num<0 or delta_den<=0):
         raise ValueError("positive aperture, cutoff>=2 and precision>=80 required")
     arb,arb_mat,ctx,ca,planted_increment = _arb_backend()
     ca.set_precision(prec)
@@ -140,16 +142,19 @@ def probe(L_num:int=2,L_den:int=1,cutoff:int=7,prec:int=192) -> dict:
     y=[ca.to_arb_rational(center(n).numerator,center(n).denominator)*(beta+n*n) for n in idx]
     M=ca.canonical_source_matrix(L,K,cutoff)
     G=arb_mat([[arb(1) if i==j else arb(0) for j in range(2*K+1)] for i in range(2*K+1)])
-    atom_q=cutoff
+    atom_q=next((q for q in range(cutoff,1,-1)
+                 if not ca.von_mangoldt(q).is_zero()),None)
+    if atom_q is None:
+        raise ValueError("no included prime-power atom available for control")
     weight=ca.von_mangoldt(atom_q)
-    if weight.is_zero():
-        raise ValueError("control requires prime-power cutoff Q (e.g. Q=7 at L=2)")
     weight=weight/arb(atom_q).sqrt()
     atom=arb_mat([[weight*ca.q_basis(n,m,arb(atom_q).log(),L) for m in idx] for n in idx])
     # Removing the entering prime-power atom from the negative prime channel
     # adds back that atom. Modified weight adds a further -1/4 of the atom.
-    plant_on=planted_increment(L,K,arb(5),arb(0))
-    plant_off=planted_increment(L,K,arb(5),arb(1)/4)
+    gamma=ca.to_arb_rational(gamma_num,gamma_den)
+    delta=ca.to_arb_rational(delta_num,delta_den)
+    plant_on=planted_increment(L,K,gamma,arb(0))
+    plant_off=planted_increment(L,K,gamma,delta)
     alternatives={
         "canonical":M,
         "entering_prime_removed":M+atom,
@@ -169,7 +174,10 @@ def probe(L_num:int=2,L_den:int=1,cutoff:int=7,prec:int=192) -> dict:
         "schema":SCHEMA, "claim_cap":CAP,"RH":"OPEN","Step4":"OPEN",
         "source_base_commit":BASE_COMMIT,
         "native_backend":"canonical_source_arb.canonical_source_matrix",
-        "aperture":f"{L_num}/{L_den}","cutoff_Q":cutoff,"K":K,"precision_bits":prec,
+        "aperture":f"{L_num}/{L_den}","cutoff_Q":cutoff,
+        "control_prime_power":atom_q,"gamma":f"{gamma_num}/{gamma_den}",
+        "off_line_delta":f"{delta_num}/{delta_den}",
+        "K":K,"precision_bits":prec,
         "physical_gram":gram,"controls":out,
         "synthetic_control_warning":"Planted zeros are not globally self-consistent alternate zeta functions.",
         "interpretation":"Finite Arb enclosures; absence of negative sign on this grid does not prove positivity or RH.",
@@ -183,12 +191,17 @@ def main() -> int:
     p.add_argument("--L-den",type=int,default=1)
     p.add_argument("--cutoff",type=int,default=7)
     p.add_argument("--precision",type=int,default=192)
+    p.add_argument("--gamma-num",type=int,default=5)
+    p.add_argument("--gamma-den",type=int,default=1)
+    p.add_argument("--delta-num",type=int,default=1)
+    p.add_argument("--delta-den",type=int,default=4)
     p.add_argument("--output",type=Path)
     args=p.parse_args()
     payload={"schema":SCHEMA, "claim_cap":CAP,"RH":"OPEN","Step4":"OPEN",
              "exact_geometry":exact_geometry()}
     if not args.exact_only:
-        payload["finite_probe"]=probe(args.L_num,args.L_den,args.cutoff,args.precision)
+        payload["finite_probe"]=probe(args.L_num,args.L_den,args.cutoff,args.precision,
+            args.gamma_num,args.gamma_den,args.delta_num,args.delta_den)
     content=json.dumps(payload,indent=2,sort_keys=True)+"\n"
     if args.output:
         args.output.parent.mkdir(parents=True,exist_ok=True)

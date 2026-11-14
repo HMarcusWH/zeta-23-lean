@@ -56,12 +56,18 @@ moment slice.
 
 ## Frozen probes and falsification
 
-Default test point `L=2`, `Q=7`, `K=5`, outward Arb at 192 bits.
-The backend verifies `log 7 < 2 < log 8`. Test precisely:
+Frozen points: `L=2,Q=7, gamma=5,delta=1/4` and
+`L=3,Q=20, gamma=5,delta=1/2`, both `K=5`, outward Arb at 192 bits.
+The backend verifies each cutoff cell. The ablation removes the most recent
+*included prime power* (7 at L=2, 19 at L=3), never a nonexistent atom at Q=20.
+An independent mpmath exploration suggested the second synthetic off-line case
+may have negative Schur residual, while the real canonical case remains
+positive. This is a **LEAD / NONCERTIFIED** and must be confirmed or rejected
+by the Arb workflow, not treated as established evidence. Test precisely:
 
 1. Actual canonical prime source.
-2. Same source with entering prime power 7 removed.
-3. Same source with weight of 7 increased by one quarter.
+2. Same source with the most recent included prime power removed.
+3. Same source with that prime-power weight increased by one quarter.
 4. Synthetic on-line zero-side increment (gamma=5, delta=0).
 5. Synthetic off-line zero-side increment (gamma=5, delta=1/4).
 

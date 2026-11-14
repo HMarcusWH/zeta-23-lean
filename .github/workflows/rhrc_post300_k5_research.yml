@@ -54,15 +54,21 @@ jobs:
         run: |
           python research/RHRC/integration/opica_round5/post300_k5_mixed_source.py \
             --L-num 2 --L-den 1 --cutoff 7 --precision 192 \
-            --output /tmp/k5-source.json
+            --output /tmp/k5-source-L2.json
+          python research/RHRC/integration/opica_round5/post300_k5_mixed_source.py \
+            --L-num 3 --L-den 1 --cutoff 20 --precision 192 \
+            --gamma-num 5 --gamma-den 1 --delta-num 1 --delta-den 2 \
+            --output /tmp/k5-source-L3.json
           python - <<'PY'
           import json
-          d=json.load(open('/tmp/k5-source.json'))
-          assert d["RH"]=="OPEN" and d["Step4"]=="OPEN"
-          c=d["finite_probe"]["controls"]
-          assert set(c)=={"canonical","entering_prime_removed",
-                         "entering_prime_weight_plus_quarter",
-                         "synthetic_on_line","synthetic_off_line"}
+          for name, atom in [("/tmp/k5-source-L2.json",7),("/tmp/k5-source-L3.json",19)]:
+              d=json.load(open(name))
+              assert d["RH"]=="OPEN" and d["Step4"]=="OPEN"
+              assert d["finite_probe"]["control_prime_power"]==atom
+              c=d["finite_probe"]["controls"]
+              assert set(c)=={"canonical","entering_prime_removed",
+                             "entering_prime_weight_plus_quarter",
+                             "synthetic_on_line","synthetic_off_line"}
           # UNRESOLVED numerical signs are legitimate research outcomes.
           print("K5 research probe completed; no theorem promotion.")
           PY
@@ -70,5 +76,5 @@ jobs:
         if: always()
         with:
           name: k5-arb-finite-source-probe
-          path: /tmp/k5-source.json
+          path: /tmp/k5-source-L*.json
           if-no-files-found: warn
