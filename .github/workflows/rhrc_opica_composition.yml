@@ -10,6 +10,11 @@ concurrency:
   group: opica-round4-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 env:
+  # V1 historical acceptance on PR300 replays the immutable accepted PR299
+  # checkout only. This is regression evidence, NEVER current-head acceptance.
+  # Post299 successor source, compiler, graph and negative-control gates
+  # independently validate the actual PR300 head.
+  OPICA4_REPLAY_REF: ${{ (github.event_name == 'pull_request' && github.event.pull_request.number == 300 && github.event.pull_request.head.ref == 'research/step4-parity-moment-shift-20261113') && 'df914f38f26bdc4109aeaa13f48b3896c3bc61b1' || (github.event.pull_request.head.sha || github.sha) }}
   PYTHONUTF8: '1'
   PYTHONDONTWRITEBYTECODE: '1'
   LEAN_NUM_THREADS: '2'
@@ -39,7 +44,7 @@ jobs:
         with:
           fetch-depth: 0
           path: host
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ env.OPICA4_REPLAY_REF }}
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
@@ -72,7 +77,7 @@ jobs:
         shell: bash
         env:
           LANE: ${{ matrix.lane }}
-          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          REQUESTED_COMMIT: ${{ env.OPICA4_REPLAY_REF }}
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/opica4-transports"
@@ -96,7 +101,7 @@ jobs:
         shell: bash
         env:
           LANE: ${{ matrix.lane }}
-          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          REQUESTED_COMMIT: ${{ env.OPICA4_REPLAY_REF }}
           STEPS_JSON: ${{ toJSON(steps) }}
         run: |
           python3 -B - <<'PY'
@@ -166,7 +171,7 @@ jobs:
         with:
           fetch-depth: 0
           path: host
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ env.OPICA4_REPLAY_REF }}
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
@@ -185,7 +190,7 @@ jobs:
         working-directory: host
         shell: bash
         env:
-          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          REQUESTED_COMMIT: ${{ env.OPICA4_REPLAY_REF }}
           GROUP: ${{ matrix.group }}
         run: |
           set -euo pipefail
@@ -389,7 +394,7 @@ jobs:
         shell: bash
         env:
           GROUP: ${{ matrix.group }}
-          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          REQUESTED_COMMIT: ${{ env.OPICA4_REPLAY_REF }}
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/opica4-independent-transports"
@@ -432,7 +437,7 @@ jobs:
         continue-on-error: true
         shell: bash
         env:
-          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          REQUESTED_COMMIT: ${{ env.OPICA4_REPLAY_REF }}
           GROUP: ${{ matrix.group }}
           STEPS_JSON: ${{ toJSON(steps) }}
         run: |
@@ -494,7 +499,7 @@ jobs:
         with:
           fetch-depth: 0
           path: host
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ env.OPICA4_REPLAY_REF }}
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
@@ -517,7 +522,7 @@ jobs:
         working-directory: host
         shell: bash
         env:
-          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          REQUESTED_COMMIT: ${{ env.OPICA4_REPLAY_REF }}
           UPSTREAM_JSON: ${{ toJSON(needs) }}
         run: |
           set -euo pipefail
@@ -551,7 +556,7 @@ jobs:
         continue-on-error: true
         shell: bash
         env:
-          REQUESTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          REQUESTED_COMMIT: ${{ env.OPICA4_REPLAY_REF }}
           STEPS_JSON: ${{ toJSON(steps) }}
         run: |
           python3 -B - <<'PY'

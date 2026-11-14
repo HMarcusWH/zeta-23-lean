@@ -1,0 +1,79 @@
+name: Post299 parity bridge candidate compiler (not release)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Zeta23/OPICARound5/ParityMomentBridge.lean'
+      - '.github/workflows/rhrc_post299_parity_candidate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: post299-parity-candidate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  parity-candidate-compiler:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Authenticate current candidate tree
+        shell: bash
+        env:
+          REQUESTED: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$REQUESTED"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          printf 'Candidate-only, NOT full OPICA source acceptance: head=%s tree=%s\n' \
+            "$(git rev-parse HEAD)" "$(git rev-parse 'HEAD^{tree}')"
+      - name: Validate reviewed successor scope and negative controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.descendant --selftest
+          python3 -B -m research.RHRC.integration.opica_composition.cli inspect \
+            --repo . --output "$RUNNER_TEMP/post299-current-source.json"
+          python3 -B - <<'PY'
+          import json, os
+          from pathlib import Path
+          d=json.loads((Path(os.environ["RUNNER_TEMP"])/"post299-current-source.json").read_text())
+          assert d["schema"]=="OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V1"
+          assert d["successor_human_review"]=="PENDING"
+          assert d["current_compiler_accepted"] is False
+          assert d["full_round4_accepted"] is False
+          assert d["RH"]=="OPEN" and d["Step4"]=="OPEN"
+          assert d["delta"]["deleted"]==[]
+          print("POST299 exact-head source scope: PASS (candidate only)")
+          PY
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Reject candidate axioms and proof placeholders
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -En '(^|[[:space:]])(axiom|sorry|admit)([[:space:]]|$)' \
+              Zeta23/OPICARound5/ParityMomentBridge.lean; then
+            echo 'Forbidden new axiom or proof placeholder in parity bridge'
+            exit 1
+          fi
+      - name: Compile exact candidate source and print transitive axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build Zeta23.OPICARound5.ParityMomentBridge
+          lake env lean Zeta23/OPICARound5/ParityMomentBridge.lean \
+            | tee "$RUNNER_TEMP/parity_axioms.log"
+          echo 'Compiler-only candidate evidence: successor governance and Round4 release gates remain separate.'
