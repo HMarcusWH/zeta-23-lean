@@ -24,7 +24,8 @@ REQUIRED=frozenset((
  "OPICA follow-up original-contract validation",
  "RHRC research and Lean checks",
  "Post299 parity bridge candidate compiler (not release)",
- "PR300 portable runtime V2 candidate - nonaccepting",
+ # The current workflow is excluded from the external workflow inventory;
+ # its complete mandatory internal jobs are checked by needs and composite receipt.
 ))
 HEX40=re.compile(r"[0-9a-f]{40}\Z")
 
