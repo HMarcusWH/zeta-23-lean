@@ -33,7 +33,7 @@ PARENT_TREE = "5fc2aa4793b658c58dd89c1d36b0ceee756d400d"
 # Changes require a new reviewed successor version and fresh compiler receipts.
 ADDED_SOURCE = {
     ".github/workflows/rhrc_post299_parity_candidate.yml":
-        "931f6b11340cf16446b3f60a84eb469aad2c306f",
+        "c8f1607e88c7fe0a6648fb56e66ad107b746a29e",
     "Zeta23/OPICARound5/ParityMomentBridge.lean":
         "acecc7d2cd78bf2178c67b03019de40fcb2eab79",
     ".github/workflows/rhrc_post299_rhkg_refresh.yml":
