@@ -77,7 +77,7 @@ THIS_VALIDATOR = (
 CHANGED_SOURCE = {
     # Versioned integration repair: frozen V1 runs on PR299, never the PR300
     # successor tree. This workflow blob is pinned exactly in the successor.
-    ".github/workflows/rhrc_opica_composition.yml": "be3af99736bde8a86f5984f4f4e869b5b53a16a1",
+    ".github/workflows/rhrc_opica_composition.yml": "17cb04bc9b2c72f5a35a60cbf107680718bf09fc",
     "research/RHRC/integration/opica_composition/cli.py": "e587c38e32ecc416df403133e5eef1038c00b176",
     "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json":
         "8851d0a9cd5bc234af376cf35ca0c9894dcee0df",

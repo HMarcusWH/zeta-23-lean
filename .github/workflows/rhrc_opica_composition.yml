@@ -606,6 +606,7 @@ jobs:
       - name: Authenticate historical #299 run and exact present-head source
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          REVIEWED_PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
           python3 -B -m research.RHRC.integration.opica_composition.post299.baseline_v1_provenance --repo . --output "$RUNNER_TEMP/original-v1.json"
@@ -619,11 +620,16 @@ jobs:
           curr=json.loads((p/"current-source.json").read_text())
           assert prev["status"]=="PASS_FROZEN_V1_PREVIOUSLY_ACCEPTED"
           assert prev["authority"]=="REGRESSION_ONLY_NO_CURRENT_HEAD_ACCEPTANCE"
-          assert curr["schema"]=="OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2"
+          expected_schema = {
+              300: "OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2",
+              301: "OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V3",
+          }.get(int(os.environ["REVIEWED_PR_NUMBER"]))
+          assert expected_schema is not None, "Unexpected PR for frozen-V1 regression"
+          assert curr["schema"] == expected_schema, "PR-specific successor source schema mismatch"
           assert curr["full_round4_accepted"] is False
           assert curr["successor_human_review"]=="PENDING"
           assert curr["RH"]=="OPEN" and curr["Step4"]=="OPEN"
-          print("Historical 15/15 V1 result authenticated; PR300 V1 jobs SKIPPED by versioned exception.")
+          print(f"Historical 15/15 V1 result authenticated; PR{os.environ['REVIEWED_PR_NUMBER']} V1 jobs SKIPPED by versioned exception.")
           print("NOT CURRENT V1 ACCEPTANCE. Separate real V2 source and current theorem gates required.")
           PY
       - name: Preserve historical regression and current-scope receipts
