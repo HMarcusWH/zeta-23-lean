@@ -1,0 +1,537 @@
+name: PR300 portable runtime V2 candidate - nonaccepting
+on:
+  pull_request:
+    branches:
+      - research/step4-parity-moment-shift-20261113
+      - main
+    paths:
+      - 'research/RHRC/integration/opica_composition/post299/portable_runtime.py'
+      - 'research/RHRC/integration/opica_composition/post299/test_portable_runtime.py'
+      - 'research/RHRC/integration/opica_composition/post299/test_source_checker_v2.py'
+      - 'research/RHRC/integration/opica_composition/post299/portable_runtime_diagnostic.py'
+      - 'research/RHRC/integration/opica_composition/post299/real_source_replay.py'
+      - 'research/RHRC/integration/opica_composition/post299/descendant.py'
+      - 'research/RHRC/integration/opica_composition/post299/baseline_v1_provenance.py'
+      - 'research/RHRC/integration/opica_composition/post299/composite_candidate.py'
+      - 'research/RHRC/integration/opica_composition/post299/release_review_gate.py'
+      - 'research/RHRC/integration/opica_composition/post299/source_checker_v2.py'
+      - 'research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md'
+      - '.github/workflows/rhrc_post300_runtime_portability_candidate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  candidate-portability-only:
+    name: V2 closed-runtime adversarial regression (NOT RELEASE)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.5'
+      - name: Install frozen evidence-backend dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_round2/python-checks.lock
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+          python -m pip install -r research/RHRC/requirements.txt
+      - name: Composite evidence and adversarial authority regression
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.composite_candidate --selftest
+          python3 -O -B -m research.RHRC.integration.opica_composition.post299.composite_candidate --selftest
+      - name: Closed-schema and production-checker behavior regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v \
+            research.RHRC.integration.opica_composition.post299.test_portable_runtime
+          python3 -O -B -m unittest -v \
+            research.RHRC.integration.opica_composition.post299.test_portable_runtime
+          python3 -B -m unittest -v \
+            research.RHRC.integration.opica_composition.post299.test_source_checker_v2
+          python3 -O -B -m unittest -v \
+            research.RHRC.integration.opica_composition.post299.test_source_checker_v2
+          python3 -B - <<'PY'
+          import ast
+          from pathlib import Path
+          root=Path('research/RHRC/integration/opica_composition/post299')
+          for name in ('portable_runtime.py','source_checker_v2.py'):
+              ast.parse((root/name).read_text(),filename=str(root/name))
+          # The proposed verifier is incapable of claiming V1 acceptance.
+          source=(root/'source_checker_v2.py').read_text()
+          assert "'acceptance_eligible':False" in source
+          assert "CANDIDATE_V2_RECOMPUTED_FINITE_SOURCE_NOT_RELEASE" in source
+          assert "OPICA4_SOURCE_NUMERICS_LANE_V2_CANDIDATE" in source
+          print('Candidate-only, never historical V1 acceptance.')
+          PY
+      - name: Inspect exact successor source delta (policy remains review-pending)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.descendant --selftest
+          python3 -B -m research.RHRC.integration.opica_composition.cli inspect --repo . \
+            --output "$RUNNER_TEMP/post299-source-review-pending.json"
+          python3 -B - <<'PY'
+          import json,os
+          from pathlib import Path
+          x=json.loads((Path(os.environ['RUNNER_TEMP'])/'post299-source-review-pending.json').read_text())
+          assert x['schema']=='OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2'
+          assert x['full_round4_accepted'] is False
+          assert x['successor_human_review']=='PENDING'
+          assert x['RH']=='OPEN' and x['Step4']=='OPEN'
+          print('Exact candidate path whitelist PASS, external review PENDING.')
+          PY
+      - name: Download exactly one prior SOURCE_NUMERICS artifact (diagnostic only)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica4-43700869719-1-lane-SOURCE_NUMERICS
+          repository: HMarcusWH/zeta-23-lean
+          run-id: 43700869719
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/opica4-reference
+      - name: Compare live runtime to SHA256-bound frozen producer evidence
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_STORED
+          import os
+          p=Path(os.environ["RUNNER_TEMP"])/"opica4-reference"
+          assert sorted(f.name for f in p.iterdir())==["bundle.zip","transport.json"]
+          with ZipFile(p/"referenced-transport.zip","w",compression=ZIP_STORED) as z:
+              for name in ("bundle.zip","transport.json"):
+                  z.write(p/name,name)
+          PY
+          python3 -B -m research.RHRC.integration.opica_composition.post299.portable_runtime_diagnostic \
+            "$RUNNER_TEMP/opica4-reference/referenced-transport.zip" "$RUNNER_TEMP/opica4-runtime-compare.json"
+      - name: Preserve nonaccepting field comparison report
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica4-v2-portability-diagnostic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/opica4-runtime-compare.json
+          if-no-files-found: warn
+
+  real-independent-source-replay:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    name: 'Frozen #299 real Arb V2 independent reconstruction (NOT RELEASE)'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    permissions:
+      contents: read
+      actions: read
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          path: controller
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: df914f38f26bdc4109aeaa13f48b3896c3bc61b1
+          fetch-depth: 0
+          path: host
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13.5'
+      - name: Install exact frozen numeric environment
+        working-directory: host
+        run: |
+          set -euo pipefail
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_round2/python-checks.lock
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+          python -m pip install -r research/RHRC/requirements.txt
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica4-43700869719-1-lane-SOURCE_NUMERICS
+          repository: HMarcusWH/zeta-23-lean
+          run-id: 43700869719
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/opica4-frozen-producer
+      - name: Authenticate separate source and independently reconstruct six real Arb cases
+        working-directory: controller
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.real_source_replay \
+            --subject "$GITHUB_WORKSPACE/host" \
+            --artifact "$RUNNER_TEMP/opica4-frozen-producer" \
+            --output "$RUNNER_TEMP/opica4-v2-real-source"
+      - name: Save diagnostic-only recomputation and failed receipts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica4-v2-real-independent-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/opica4-v2-real-source/
+          retention-days: 20
+          if-no-files-found: warn
+
+  accepted-baseline-and-current-parity-candidate:
+    name: V1 full-history plus present-head parity compilation (NOT RELEASE)
+    runs-on: ubuntu-24.04
+    needs: [candidate-portability-only, fresh-v2-independent]
+    timeout-minutes: 90
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Recheck original accepted V1 receipt without falsely claiming a new replay
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.baseline_v1_provenance --repo . --output "$RUNNER_TEMP/historical-v1.json"
+      - name: Verify exact present-source candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.descendant --selftest
+          python3 -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$RUNNER_TEMP/current-source.json"
+          python3 -B - <<'PY'
+          import json,os
+          from pathlib import Path
+          v=json.loads((Path(os.environ["RUNNER_TEMP"])/"current-source.json").read_text())
+          assert v["schema"]=="OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2"
+          assert v["status"]=="PASS_SOURCE_SCOPE_ONLY"
+          assert v["full_round4_accepted"] is False
+          assert v["successor_human_review"]=="PENDING"
+          assert v["RH"]=="OPEN" and v["Step4"]=="OPEN"
+          print("Closed successor source scope checked: candidate only")
+          PY
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Validate new exact Lean theorem and standard axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -En '(^|[[:space:]])(axiom|sorry|admit)([[:space:]]|$)' Zeta23/OPICARound5/ParityMomentBridge.lean; then exit 1; fi
+          lake build Zeta23.OPICARound5.ParityMomentBridge
+          lake env lean Zeta23/OPICARound5/ParityMomentBridge.lean | tee "$RUNNER_TEMP/current-parity-axioms.txt"
+          python3 research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
+          test -z "$(git status --porcelain --untracked-files=all)"
+          echo "Historical V1 regression + current-head theorem + V2 numerical candidate only"
+      - name: Preserve all candidate receipts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica5-provisional-composition-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/historical-v1.json
+            ${{ runner.temp }}/current-source.json
+            ${{ runner.temp }}/current-parity-axioms.txt
+          if-no-files-found: warn
+
+  fresh-v2-producer:
+    name: 'Fresh #299 numeric source producer (normal and optimized)'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      REQUESTED_HEAD: df914f38f26bdc4109aeaa13f48b3896c3bc61b1
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: df914f38f26bdc4109aeaa13f48b3896c3bc61b1
+          fetch-depth: 0
+          path: host
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13.5'
+      - name: Install SHA256-locked numeric engine
+        working-directory: host
+        run: |
+          set -euo pipefail
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_round2/python-checks.lock
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+          python -m pip install -r research/RHRC/requirements.txt
+      - name: Evaluate original six cases independently in two 256-bit execution modes
+        run: |
+          set -euo pipefail
+          test "$(git -C host rev-parse HEAD)" = "$REQUESTED_HEAD"
+          test "$(git -C host rev-parse 'HEAD^{tree}')" = "5fc2aa4793b658c58dd89c1d36b0ceee756d400d"
+          mkdir -p "$RUNNER_TEMP/fresh-source"
+          python3 -B host/research/RHRC/integration/opica_round4/source_evaluator.py --output-dir "$RUNNER_TEMP/fresh-source/normal" --precision-bits 256
+          python3 -O -B host/research/RHRC/integration/opica_round4/source_evaluator.py --output-dir "$RUNNER_TEMP/fresh-source/optimized" --precision-bits 256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica5-fresh-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/fresh-source/
+          if-no-files-found: error
+
+  fresh-v2-independent:
+    name: Fresh cross-runner V2 direct Arb validation (NOT RELEASE)
+    runs-on: ubuntu-24.04
+    needs: fresh-v2-producer
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      actions: read
+    env:
+      OPICA4_V2_SUBJECT_ROOT: ${{ github.workspace }}/host
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: df914f38f26bdc4109aeaa13f48b3896c3bc61b1
+          fetch-depth: 0
+          path: host
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          path: controller
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13.5'
+      - name: Install exact numeric engine to compare against separate producer
+        working-directory: host
+        run: |
+          set -euo pipefail
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_round2/python-checks.lock
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+          python -m pip install -r research/RHRC/requirements.txt
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica5-fresh-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/fresh-producer
+      - name: Reconstruct six cases directly at 512-bit precision and check all enclosures
+        working-directory: controller
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import os,json
+          from pathlib import Path
+          from research.RHRC.integration.opica_composition.post299.real_source_replay import verify_frozen_subject
+          from research.RHRC.integration.opica_composition.post299 import source_checker_v2 as V
+          subject=Path(os.environ['OPICA4_V2_SUBJECT_ROOT'])
+          identity=verify_frozen_subject(subject)
+          assert V.B.REPO.resolve()==subject.resolve()
+          temp=Path(os.environ['RUNNER_TEMP'])
+          record=V.verify_evaluator_evidence(temp/'fresh-producer',
+             temp/'fresh-refined',expected_head=identity['head'],expected_tree=identity['tree'])
+          assert record['schema']=='OPICA4_SOURCE_NUMERICS_LANE_V2_CANDIDATE'
+          assert record['status']=='CANDIDATE_V2_RECOMPUTED_FINITE_SOURCE_NOT_RELEASE'
+          assert record['acceptance_eligible'] is False
+          assert record['independently_recomputed_cases']==6
+          assert record['contained_interval_comparisons']>=10000
+          (temp/'fresh-result.json').write_text(json.dumps(record,indent=2,sort_keys=True))
+          print(json.dumps({'result':record['status'],'cases':6,
+            'containments':record['contained_interval_comparisons'],
+            'release':False,'RH':'OPEN','Step4':'OPEN'}))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        with:
+          name: opica5-fresh-refined-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/fresh-refined/
+            ${{ runner.temp }}/fresh-result.json
+          if-no-files-found: warn
+
+  current-generated-state-gate:
+    name: Current-head transactional derived-state and RHKG check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: .lake/build
+          key: post290-components-${{ hashFiles('lean-toolchain','lake-manifest.json') }}-${{ github.event.pull_request.head.sha || github.sha }}
+          restore-keys: post290-components-${{ hashFiles('lean-toolchain','lake-manifest.json') }}-
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Verify all current-head derived products without writing
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B research/RHRC/tools/materialize_derived_state.py --check
+          # The governed materializer traverses every declared RHKG/generated product.
+          # Do not conditionally hide a missing or failing second checker.
+          python3 -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$RUNNER_TEMP/post299-source-rhkg.json"
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"
+          printf '%s\n' "$(git rev-parse HEAD)" > "$RUNNER_TEMP/rhkg-checked-head.txt"
+          printf '%s\n' "$(git rev-parse 'HEAD^{tree}')" > "$RUNNER_TEMP/rhkg-checked-tree.txt"
+      - name: Preserve generated-state receipt
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica5-current-generated-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/post299-source-rhkg.json
+            ${{ runner.temp }}/rhkg-checked-head.txt
+            ${{ runner.temp }}/rhkg-checked-tree.txt
+          if-no-files-found: warn
+
+  post299-composite-evidence:
+    name: Cross-gate V1 history plus V2 numeric plus current Lean/RHKG (REVIEW PENDING)
+    runs-on: ubuntu-24.04
+    needs: [candidate-portability-only, fresh-v2-independent, accepted-baseline-and-current-parity-candidate, current-generated-state-gate]
+    if: ${{ always() }}
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Reject any skipped, failed or cancelled scientific prerequisite
+        env:
+          JOBS_JSON: ${{ toJSON(needs) }}
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import json,os
+          jobs=json.loads(os.environ['JOBS_JSON'])
+          expected={'candidate-portability-only','fresh-v2-independent',
+             'accepted-baseline-and-current-parity-candidate',
+             'current-generated-state-gate'}
+          assert set(jobs)==expected
+          assert all(x['result']=='success' for x in jobs.values()),jobs
+          print('Every mandatory successor research/formal/generated prerequisite is success')
+          PY
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica5-provisional-composition-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/composite-formal
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica5-fresh-refined-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/composite-numeric
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica5-current-generated-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/composite-generated
+      - name: Strictly join individually accepted historical, numeric, current theorem and generated receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat "$RUNNER_TEMP/composite-generated/rhkg-checked-head.txt")" = "$(git rev-parse HEAD)"
+          test "$(cat "$RUNNER_TEMP/composite-generated/rhkg-checked-tree.txt")" = "$(git rev-parse 'HEAD^{tree}')"
+          python3 -B -m research.RHRC.integration.opica_composition.post299.composite_candidate --selftest
+          python3 -B -m research.RHRC.integration.opica_composition.post299.composite_candidate \
+            --repo . \
+            --baseline "$RUNNER_TEMP/composite-formal/historical-v1.json" \
+            --current-source "$RUNNER_TEMP/composite-formal/current-source.json" \
+            --independent-source "$RUNNER_TEMP/composite-numeric/fresh-result.json" \
+            --axioms "$RUNNER_TEMP/composite-formal/current-parity-axioms.txt" \
+            --head "$(git rev-parse HEAD)" \
+            --tree "$(git rev-parse 'HEAD^{tree}')" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --output "$RUNNER_TEMP/composite-candidate-evidence.json"
+          python3 -B - <<'PY'
+          import json,os
+          from pathlib import Path
+          v=json.loads((Path(os.environ["RUNNER_TEMP"])/"composite-candidate-evidence.json").read_text())
+          assert v['merge_ready'] is False and v['independent_release_review']=='PENDING'
+          assert v['generated_state_release_check']=='SEPARATE_REQUIRED_GATE'
+          assert v['RH']=='OPEN' and v['Step4']=='OPEN'
+          print('Successor aggregate is evidence only; no human review has been presumed')
+          PY
+      - name: Preserve full versioned aggregate receipt
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica5-composite-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/composite-candidate-evidence.json
+          if-no-files-found: warn
+
+  independently-reviewed-support-release-gate:
+    name: Final supporting-PR approval and full-head CI gate (RH OPEN)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    needs: [post299-composite-evidence]
+    if: ${{ always() && github.event_name == 'pull_request' && (github.event.pull_request.number == 300 || github.event.pull_request.number == 301) }}
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Fail closed unless every candidate evidence gate has succeeded
+        env:
+          NEEDS_RESULT: ${{ needs.post299-composite-evidence.result }}
+        run: |
+          set -euo pipefail
+          test "$NEEDS_RESULT" = success
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica5-composite-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/approved-source
+      - name: Independently authenticate external approval, full exact-head CI and source hashes
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REVIEWED_PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.release_review_gate \
+            --repo . --pr "$REVIEWED_PR" \
+            --head "$(git rev-parse HEAD)" \
+            --tree "$(git rev-parse 'HEAD^{tree}')" \
+            --policy-git-blob "$(git hash-object research/RHRC/integration/opica_composition/post299/descendant.py)" \
+            --composite-run "$GITHUB_RUN_ID" \
+            --composite-attempt "$GITHUB_RUN_ATTEMPT" \
+            --composite "$RUNNER_TEMP/approved-source/composite-candidate-evidence.json" \
+            --output "$RUNNER_TEMP/final-supporting-merge-readiness.json"
+          echo 'Reviewed supporting PR gates are green; Step4 and RH remain OPEN'
+      - name: Preserve exact review and merged gate receipt even on failure
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica5-reviewed-release-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/final-supporting-merge-readiness.json
+          if-no-files-found: warn

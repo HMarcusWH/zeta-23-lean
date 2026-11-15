@@ -2,8 +2,8 @@
 
 This is a successor scope, NOT a change to the sealed OPICA4 descendant
 checker. The original descendant.py, Round4 manifest, test baselines and
-workflow selectors are inherited byte-for-byte. Versioned review of this
-source and its bounded file allowance remains a release prerequisite.
+workflow selectors are inherited byte-for-byte. Versioned independent review of this
+expanded bounded file allowance remains a release prerequisite.
 
 It authenticates the exact accepted PR299 merge tree before allowing ANY
 subsequent source change. No source/provider wildcard is admitted.
@@ -33,11 +33,33 @@ PARENT_TREE = "5fc2aa4793b658c58dd89c1d36b0ceee756d400d"
 # Changes require a new reviewed successor version and fresh compiler receipts.
 ADDED_SOURCE = {
     ".github/workflows/rhrc_post299_parity_candidate.yml":
-        "931f6b11340cf16446b3f60a84eb469aad2c306f",
+        "c8f1607e88c7fe0a6648fb56e66ad107b746a29e",
     "Zeta23/OPICARound5/ParityMomentBridge.lean":
         "acecc7d2cd78bf2178c67b03019de40fcb2eab79",
     ".github/workflows/rhrc_post299_rhkg_refresh.yml":
         "21b5fa56b56a17b408084bb098258d98af6330e1",
+    "research/RHRC/integration/opica_composition/post299/composite_candidate.py":
+        "5fed105ec352d439019e32daab3b7fe7c0af0a58",
+    "research/RHRC/integration/opica_composition/post299/release_review_gate.py":
+        "fde6c650b62bcae1c1ad415d58fd692d056d9588",
+    "research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md":
+        "45f29fa6f3a7a90f27a74bd72e71efaf0e4c356f",
+    "research/RHRC/integration/opica_composition/post299/portable_runtime.py":
+        "dabb4bfe508634204696e45c8ea7e7d930da81bc",
+    "research/RHRC/integration/opica_composition/post299/portable_runtime_diagnostic.py":
+        "2022be67d91001eb3d3a75bad0a79221fcfc5b56",
+    "research/RHRC/integration/opica_composition/post299/source_checker_v2.py":
+        "a078803629090f639f0a147367fccb3187ab252d",
+    "research/RHRC/integration/opica_composition/post299/test_portable_runtime.py":
+        "ac422abab2b2648d25081096a2ae040d9e28518c",
+    "research/RHRC/integration/opica_composition/post299/test_source_checker_v2.py":
+        "23f024eefa6426e80744c46c2d5674eae7440e96",
+    "research/RHRC/integration/opica_composition/post299/real_source_replay.py":
+        "28155e024f6dca95579c49bae24fae3623ad1f27",
+    ".github/workflows/rhrc_post300_runtime_portability_candidate.yml":
+        "8bc23e3b184e9221c39a104ef086c83d0206f4a1",
+    "research/RHRC/integration/opica_composition/post299/baseline_v1_provenance.py":
+        "32920ffd1fa81415b72aa5a14ec57acf583324f6",
 }
 THIS_VALIDATOR = (
     "research/RHRC/integration/opica_composition/post299/descendant.py"
@@ -45,7 +67,7 @@ THIS_VALIDATOR = (
 CHANGED_SOURCE = {
     # Versioned integration repair: frozen V1 runs on PR299, never the PR300
     # successor tree. This workflow blob is pinned exactly in the successor.
-    ".github/workflows/rhrc_opica_composition.yml": "588932e3be45856b36856e4be53c3ea348cb5826",
+    ".github/workflows/rhrc_opica_composition.yml": "05da57563f28c92636a479b87a72b464b47a4628",
     "research/RHRC/integration/opica_composition/cli.py": "e587c38e32ecc416df403133e5eef1038c00b176",
     "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json":
         "8851d0a9cd5bc234af376cf35ca0c9894dcee0df",
@@ -152,7 +174,7 @@ def validate_descendant(repo: Path = REPO, *, require_clean: bool = False) -> di
         ):
             require(False, "ignored executable/source provider: " + path)
     policy = {
-        "schema": "OPICA5_POST299_SUCCESSOR_SOURCE_POLICY_V1",
+        "schema": "OPICA5_POST299_SUCCESSOR_SOURCE_POLICY_V2",
         "parent": PARENT,
         "parent_tree": PARENT_TREE,
         "v1_policy": V1_POLICY,
@@ -167,7 +189,7 @@ def validate_descendant(repo: Path = REPO, *, require_clean: bool = False) -> di
         json.dumps(policy, sort_keys=True, separators=(",", ":")).encode()
     ).hexdigest()
     return {
-        "schema": "OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V1",
+        "schema": "OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2",
         "status": "PASS_SOURCE_SCOPE_ONLY",
         "checked_commit": git(repo, "rev-parse", "HEAD"),
         "checked_tree": git(repo, "rev-parse", "HEAD^{tree}"),
