@@ -69,7 +69,7 @@ by the Arb workflow, not treated as established evidence. Test precisely:
 2. Same source with the most recent included prime power removed.
 3. Same source with that prime-power weight increased by one quarter.
 4. Synthetic on-line zero-side increment (gamma=5, delta=0).
-5. Synthetic off-line zero-side increment (gamma=5, delta=1/4).
+5. Synthetic off-line zero-side increment (gamma=5, delta=1/4 at L=2 and delta=1/2 at L=3).
 
 Controls 4-5 use the existing `planted_increment` **only as a synthetic
 zero-side falsifier**. They do not construct alternate zeta functions
@@ -91,6 +91,7 @@ proof of absence of a first crossing or an all-aperture inequality.
 - **A positive K=5 scan is not Step 4 closure.** An RH-relevant result
   still needs a genuine-prime signed estimate and a source-preserving
   all-parameter (or rigorously adequate detector) implication.
+- The workflow uses inherited SHA256-pinned FLINT and SymPy environments and tests the two observed opposite synthetic off-line signs as **finite research regression**, not a zero theorem.
 - Before merging this branch, establish a *separate independently
   reviewed* source-scope policy and account for all inherited gates.
   Do not mutate #299 V1 acceptance, #300 pending source policy,

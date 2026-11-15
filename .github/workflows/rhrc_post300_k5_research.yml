@@ -47,10 +47,17 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.13.5"
       - name: Install finite Arb research dependencies
         run: |
-          python -m pip install --disable-pip-version-check numpy sympy python-flint
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_round2/python-checks.lock
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+          python - <<'PY'
+          import flint,sympy
+          assert flint.__version__=='0.9.0'
+          assert sympy.__version__=='1.14.0'
+          print('K5 Arb and symbolic environment pinned to inherited hash locks')
+          PY
       - name: Test native canonical source and five exact-control cases
         run: |
           python research/RHRC/integration/opica_round5/post300_k5_mixed_source.py \
@@ -70,6 +77,13 @@ jobs:
               assert set(c)=={"canonical","entering_prime_removed",
                              "entering_prime_weight_plus_quarter",
                              "synthetic_on_line","synthetic_off_line"}
+          # Frozen observational regression only. No universal claim follows.
+          l2=json.load(open("/tmp/k5-source-L2.json"))["finite_probe"]["controls"]
+          l3=json.load(open("/tmp/k5-source-L3.json"))["finite_probe"]["controls"]
+          assert l2["canonical"]["raw"]["schur"]["sign"]=="CERTIFIED_POSITIVE"
+          assert l2["synthetic_off_line"]["raw"]["schur"]["sign"]=="CERTIFIED_POSITIVE"
+          assert l3["canonical"]["raw"]["schur"]["sign"]=="CERTIFIED_POSITIVE"
+          assert l3["synthetic_off_line"]["raw"]["schur"]["sign"]=="CERTIFIED_NEGATIVE"
           # UNRESOLVED numerical signs are legitimate research outcomes.
           print("K5 research probe completed; no theorem promotion.")
           PY
