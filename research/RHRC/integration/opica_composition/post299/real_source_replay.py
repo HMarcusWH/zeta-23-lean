@@ -19,7 +19,7 @@ FROZEN_BLOBS = {
     "research/RHRC/integration/opica_round4/source_evaluator.py":"bf26f9c7771f76505e5c8116287ed89b3c122025",
     "research/RHRC/integration/opica_round4/source_checker.py":"0dcfad9ebf16b342d6f31570ead0e8f69371974e",
     "research/RHRC/integration/opica_round4/source_backend.py":"d4368a9f6b2501f8463210d38668f1b4934495de",
-    "research/RHRC/integration/opica_round3/source_backend.py":"48bc049e8ddf5a4a4ac6b1a897f6e437997cdca",
+    "research/RHRC/integration/opica_round3/source_backend.py":"48bc049852168e8435e599db03c204ef0b84004c",
 }
 PRODUCER_RUN = "43700869719"
 PRODUCER_ATTEMPT = 1
@@ -49,7 +49,7 @@ def verify_frozen_subject(root: Path) -> dict:
 
 
 def _safe_name(p: str, *, directory: bool = False) -> str:
-    if not isinstance(p,str) or not p or "\\\\" in p or "\\x00" in p:
+    if not isinstance(p,str) or not p or chr(92) in p or chr(0) in p:
         raise RuntimeError("Unsafe artifact filename")
     s=p[:-1] if directory and p.endswith("/") else p
     pure=PurePosixPath(s)

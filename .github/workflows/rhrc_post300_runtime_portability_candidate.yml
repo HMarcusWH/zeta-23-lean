@@ -144,9 +144,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 -B -m research.RHRC.integration.opica_composition.post299.real_source_replay \\
-            --subject "$GITHUB_WORKSPACE/host" \\
-            --artifact "$RUNNER_TEMP/opica4-frozen-producer" \\
+          python3 -B -m research.RHRC.integration.opica_composition.post299.real_source_replay \
+            --subject "$GITHUB_WORKSPACE/host" \
+            --artifact "$RUNNER_TEMP/opica4-frozen-producer" \
             --output "$RUNNER_TEMP/opica4-v2-real-source"
       - name: Save diagnostic-only recomputation and failed receipts
         if: ${{ always() }}
