@@ -67,7 +67,7 @@ ADDED_SOURCE = {
     "research/RHRC/integration/opica_composition/post299/real_source_replay.py":
         "28155e024f6dca95579c49bae24fae3623ad1f27",
     ".github/workflows/rhrc_post300_runtime_portability_candidate.yml":
-        "2cdfbcef3496175606835dd9870bfd36458e6be2",
+        "2ad4bd769c455adcb5b873a83e523f83fb7bab9a",
     "research/RHRC/integration/opica_composition/post299/baseline_v1_provenance.py":
         "32920ffd1fa81415b72aa5a14ec57acf583324f6",
 }
