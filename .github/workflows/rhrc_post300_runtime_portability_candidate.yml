@@ -11,6 +11,7 @@ on:
       - 'research/RHRC/integration/opica_composition/post299/portable_runtime_diagnostic.py'
       - 'research/RHRC/integration/opica_composition/post299/real_source_replay.py'
       - 'research/RHRC/integration/opica_composition/post299/descendant.py'
+      - 'research/RHRC/integration/opica_composition/post299/baseline_v1_provenance.py'
       - 'research/RHRC/integration/opica_composition/post299/source_checker_v2.py'
       - 'research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md'
       - '.github/workflows/rhrc_post300_runtime_portability_candidate.yml'
@@ -174,4 +175,70 @@ jobs:
           name: opica4-v2-real-independent-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/opica4-v2-real-source/
           retention-days: 20
+          if-no-files-found: warn
+
+  accepted-baseline-and-current-parity-candidate:
+    name: V1 full-history plus present-head parity compilation (NOT RELEASE)
+    runs-on: ubuntu-24.04
+    needs: [candidate-portability-only, real-independent-source-replay]
+    timeout-minutes: 90
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Recheck original accepted V1 receipt without falsely claiming a new replay
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.baseline_v1_provenance --repo . --output "$RUNNER_TEMP/historical-v1.json"
+      - name: Verify exact present-source candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.descendant --selftest
+          python3 -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$RUNNER_TEMP/current-source.json"
+          python3 -B - <<'PY'
+          import json,os
+          from pathlib import Path
+          v=json.loads((Path(os.environ["RUNNER_TEMP"])/"current-source.json").read_text())
+          assert v["schema"]=="OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2"
+          assert v["status"]=="PASS_SOURCE_SCOPE_ONLY"
+          assert v["full_round4_accepted"] is False
+          assert v["successor_human_review"]=="PENDING"
+          assert v["RH"]=="OPEN" and v["Step4"]=="OPEN"
+          print("Closed successor source scope checked: candidate only")
+          PY
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Validate new exact Lean theorem and standard axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -En '(^|[[:space:]])(axiom|sorry|admit)([[:space:]]|$)' Zeta23/OPICARound5/ParityMomentBridge.lean; then exit 1; fi
+          lake build Zeta23.OPICARound5.ParityMomentBridge
+          lake env lean Zeta23/OPICARound5/ParityMomentBridge.lean | tee "$RUNNER_TEMP/current-parity-axioms.txt"
+          python3 research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
+          test -z "$(git status --porcelain --untracked-files=all)"
+          echo "Historical V1 regression + current-head theorem + V2 numerical candidate only"
+      - name: Preserve all candidate receipts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica5-provisional-composition-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/historical-v1.json
+            ${{ runner.temp }}/current-source.json
+            ${{ runner.temp }}/current-parity-axioms.txt
           if-no-files-found: warn
