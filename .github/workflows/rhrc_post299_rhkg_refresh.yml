@@ -1,5 +1,6 @@
 name: PR300 guarded one-shot post299 RHKG refresh
 
+# Recheck repaired V2 composite source policy at the current PR300 head (one-shot).
 # Independently rebuild and double-check deterministic derived state for the
 # exact reviewed parity successor. The accepted PR299 source stays immutable.
 # No conjecture or source inequality is promoted by this workflow.
