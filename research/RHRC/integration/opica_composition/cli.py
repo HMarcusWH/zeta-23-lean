@@ -19,7 +19,10 @@ from .snapshot import (file_hash,unlinked,seal_evidence_tree,copy_evidence_tree,
                        TRANSPORT_MAX_ENTRIES,TRANSPORT_MAX_DEPTH,TRANSPORT_MAX_FILE_BYTES,
                        TRANSPORT_MAX_BYTES,TRANSPORT_MAX_CONTAINER_BYTES)
 from .snapshot import retire_copied_evidence_tree
-from .descendant import validate_descendant,BASE,BASE_TREE,git
+from .descendant import BASE,BASE_TREE,git
+# The accepted OPICA4 validator remains immutable. A reviewed post299 source
+# scope separately authenticates the descendant of PR299 at the current head.
+from .post299.descendant import validate_descendant
 from .accept import (ROUND4_LANES,verify_lane_bundle,require_test_receipt,accept_application_scope,
                      REPLAY_GROUP_IDS,group_lanes,verify_independent_group,join_independent_groups)
 
