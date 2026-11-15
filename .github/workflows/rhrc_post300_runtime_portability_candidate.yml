@@ -12,6 +12,8 @@ on:
       - 'research/RHRC/integration/opica_composition/post299/real_source_replay.py'
       - 'research/RHRC/integration/opica_composition/post299/descendant.py'
       - 'research/RHRC/integration/opica_composition/post299/baseline_v1_provenance.py'
+      - 'research/RHRC/integration/opica_composition/post299/composite_candidate.py'
+      - 'research/RHRC/integration/opica_composition/post299/release_review_gate.py'
       - 'research/RHRC/integration/opica_composition/post299/source_checker_v2.py'
       - 'research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md'
       - '.github/workflows/rhrc_post300_runtime_portability_candidate.yml'
@@ -45,6 +47,11 @@ jobs:
           python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_round2/python-checks.lock
           python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
           python -m pip install -r research/RHRC/requirements.txt
+      - name: Composite evidence and adversarial authority regression
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.composite_candidate --selftest
+          python3 -O -B -m research.RHRC.integration.opica_composition.post299.composite_candidate --selftest
       - name: Closed-schema and production-checker behavior regressions
         shell: bash
         run: |
@@ -247,7 +254,7 @@ jobs:
           if-no-files-found: warn
 
   fresh-v2-producer:
-    name: Fresh #299 numeric source producer (normal and optimized)
+    name: 'Fresh #299 numeric source producer (normal and optimized)'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     env:
@@ -354,4 +361,177 @@ jobs:
           path: |
             ${{ runner.temp }}/fresh-refined/
             ${{ runner.temp }}/fresh-result.json
+          if-no-files-found: warn
+
+  current-generated-state-gate:
+    name: Current-head transactional derived-state and RHKG check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: .lake/build
+          key: post290-components-${{ hashFiles('lean-toolchain','lake-manifest.json') }}-${{ github.event.pull_request.head.sha || github.sha }}
+          restore-keys: post290-components-${{ hashFiles('lean-toolchain','lake-manifest.json') }}-
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Verify all current-head derived products without writing
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B research/RHRC/tools/materialize_derived_state.py --check
+          # The governed materializer traverses every declared RHKG/generated product.
+          # Do not conditionally hide a missing or failing second checker.
+          python3 -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$RUNNER_TEMP/post299-source-rhkg.json"
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"
+          printf '%s\n' "$(git rev-parse HEAD)" > "$RUNNER_TEMP/rhkg-checked-head.txt"
+          printf '%s\n' "$(git rev-parse 'HEAD^{tree}')" > "$RUNNER_TEMP/rhkg-checked-tree.txt"
+      - name: Preserve generated-state receipt
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica5-current-generated-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/post299-source-rhkg.json
+            ${{ runner.temp }}/rhkg-checked-head.txt
+            ${{ runner.temp }}/rhkg-checked-tree.txt
+          if-no-files-found: warn
+
+  post299-composite-evidence:
+    name: Cross-gate V1 history plus V2 numeric plus current Lean/RHKG (REVIEW PENDING)
+    runs-on: ubuntu-24.04
+    needs: [candidate-portability-only, fresh-v2-independent, accepted-baseline-and-current-parity-candidate, current-generated-state-gate]
+    if: ${{ always() }}
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Reject any skipped, failed or cancelled scientific prerequisite
+        env:
+          JOBS_JSON: ${{ toJSON(needs) }}
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import json,os
+          jobs=json.loads(os.environ['JOBS_JSON'])
+          expected={'candidate-portability-only','fresh-v2-independent',
+             'accepted-baseline-and-current-parity-candidate',
+             'current-generated-state-gate'}
+          assert set(jobs)==expected
+          assert all(x['result']=='success' for x in jobs.values()),jobs
+          print('Every mandatory successor research/formal/generated prerequisite is success')
+          PY
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica5-provisional-composition-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/composite-formal
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica5-fresh-refined-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/composite-numeric
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica5-current-generated-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/composite-generated
+      - name: Strictly join individually accepted historical, numeric, current theorem and generated receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat "$RUNNER_TEMP/composite-generated/rhkg-checked-head.txt")" = "$(git rev-parse HEAD)"
+          test "$(cat "$RUNNER_TEMP/composite-generated/rhkg-checked-tree.txt")" = "$(git rev-parse 'HEAD^{tree}')"
+          python3 -B -m research.RHRC.integration.opica_composition.post299.composite_candidate --selftest
+          python3 -B -m research.RHRC.integration.opica_composition.post299.composite_candidate \
+            --repo . \
+            --baseline "$RUNNER_TEMP/composite-formal/historical-v1.json" \
+            --current-source "$RUNNER_TEMP/composite-formal/current-source.json" \
+            --independent-source "$RUNNER_TEMP/composite-numeric/fresh-result.json" \
+            --axioms "$RUNNER_TEMP/composite-formal/current-parity-axioms.txt" \
+            --head "$(git rev-parse HEAD)" \
+            --tree "$(git rev-parse 'HEAD^{tree}')" \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --output "$RUNNER_TEMP/composite-candidate-evidence.json"
+          python3 -B - <<'PY'
+          import json,os
+          from pathlib import Path
+          v=json.loads((Path(os.environ["RUNNER_TEMP"])/"composite-candidate-evidence.json").read_text())
+          assert v['merge_ready'] is False and v['independent_release_review']=='PENDING'
+          assert v['generated_state_release_check']=='SEPARATE_REQUIRED_GATE'
+          assert v['RH']=='OPEN' and v['Step4']=='OPEN'
+          print('Successor aggregate is evidence only; no human review has been presumed')
+          PY
+      - name: Preserve full versioned aggregate receipt
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica5-composite-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/composite-candidate-evidence.json
+          if-no-files-found: warn
+
+  independently-reviewed-support-release-gate:
+    name: Final supporting-PR approval and full-head CI gate (RH OPEN)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    needs: [post299-composite-evidence]
+    if: ${{ always() && github.event_name == 'pull_request' && (github.event.pull_request.number == 300 || github.event.pull_request.number == 301) }}
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Fail closed unless every candidate evidence gate has succeeded
+        env:
+          NEEDS_RESULT: ${{ needs.post299-composite-evidence.result }}
+        run: |
+          set -euo pipefail
+          test "$NEEDS_RESULT" = success
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica5-composite-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/approved-source
+      - name: Independently authenticate external approval, full exact-head CI and source hashes
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REVIEWED_PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.release_review_gate \
+            --repo . --pr "$REVIEWED_PR" \
+            --head "$(git rev-parse HEAD)" \
+            --tree "$(git rev-parse 'HEAD^{tree}')" \
+            --policy-git-blob "$(git hash-object research/RHRC/integration/opica_composition/post299/descendant.py)" \
+            --composite-run "$GITHUB_RUN_ID" \
+            --composite-attempt "$GITHUB_RUN_ATTEMPT" \
+            --composite "$RUNNER_TEMP/approved-source/composite-candidate-evidence.json" \
+            --output "$RUNNER_TEMP/final-supporting-merge-readiness.json"
+          echo 'Reviewed supporting PR gates are green; Step4 and RH remain OPEN'
+      - name: Preserve exact review and merged gate receipt even on failure
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica5-reviewed-release-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/final-supporting-merge-readiness.json
           if-no-files-found: warn
