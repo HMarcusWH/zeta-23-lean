@@ -20,6 +20,9 @@ env:
   LEAN_NUM_THREADS: '2'
 jobs:
   lanes:
+    # Historic #299 V1 is already 15/15 green at exactly the merged tree.
+    # For PR300 only: these V1 jobs are INTENTIONALLY skipped, never called passed.
+    if: ${{ !(github.event_name == 'pull_request' && github.event.pull_request.number == 300 && github.event.pull_request.head.ref == 'research/step4-parity-moment-shift-20261113') }}
     name: Round4 / ${{ matrix.lane }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
@@ -134,7 +137,7 @@ jobs:
   independent:
     name: Round4 / INDEPENDENT_${{ matrix.group }}
     needs: lanes
-    if: ${{ always() }}
+    if: ${{ always() && !(github.event_name == 'pull_request' && github.event.pull_request.number == 300 && github.event.pull_request.head.ref == 'research/step4-parity-moment-shift-20261113') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     strategy:
@@ -472,7 +475,7 @@ jobs:
   acceptance:
     name: Round4 / ACCEPTANCE
     needs: [lanes, independent]
-    if: ${{ always() }}
+    if: ${{ always() && !(github.event_name == 'pull_request' && github.event.pull_request.number == 300 && github.event.pull_request.head.ref == 'research/step4-parity-moment-shift-20261113') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
@@ -583,4 +586,51 @@ jobs:
           path: |
             ${{ runner.temp }}/opica4-diagnostics/ACCEPTANCE
             ${{ runner.temp }}/opica4-acceptance/failure-diagnostics
+          if-no-files-found: warn
+
+  historical-v1-baseline:
+    name: Round4 / POST299_HISTORICAL_15_OF_15_REGRESSION_NOT_REPLAY
+    if: ${{ (github.event_name == 'pull_request' && github.event.pull_request.number == 300 && github.event.pull_request.head.ref == 'research/step4-parity-moment-shift-20261113') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Authenticate historical #299 run and exact present-head source
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.baseline_v1_provenance --repo . --output "$RUNNER_TEMP/original-v1.json"
+          python3 -B -m research.RHRC.integration.opica_composition.post299.descendant --selftest
+          python3 -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$RUNNER_TEMP/current-source.json"
+          python3 -B - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])
+          prev=json.loads((p/"original-v1.json").read_text())
+          curr=json.loads((p/"current-source.json").read_text())
+          assert prev["status"]=="PASS_FROZEN_V1_PREVIOUSLY_ACCEPTED"
+          assert prev["authority"]=="REGRESSION_ONLY_NO_CURRENT_HEAD_ACCEPTANCE"
+          assert curr["schema"]=="OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2"
+          assert curr["full_round4_accepted"] is False
+          assert curr["successor_human_review"]=="PENDING"
+          assert curr["RH"]=="OPEN" and curr["Step4"]=="OPEN"
+          print("Historical 15/15 V1 result authenticated; PR300 V1 jobs SKIPPED by versioned exception.")
+          print("NOT CURRENT V1 ACCEPTANCE. Separate real V2 source and current theorem gates required.")
+          PY
+      - name: Preserve historical regression and current-scope receipts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: historical-v1-pr299-preserved-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/original-v1.json
+            ${{ runner.temp }}/current-source.json
           if-no-files-found: warn
