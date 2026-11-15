@@ -7,6 +7,7 @@ on:
       - 'research/RHRC/integration/opica_composition/post299/portable_runtime.py'
       - 'research/RHRC/integration/opica_composition/post299/test_portable_runtime.py'
       - 'research/RHRC/integration/opica_composition/post299/test_source_checker_v2.py'
+      - 'research/RHRC/integration/opica_composition/post299/portable_runtime_diagnostic.py'
       - 'research/RHRC/integration/opica_composition/post299/source_checker_v2.py'
       - 'research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md'
       - '.github/workflows/rhrc_post300_runtime_portability_candidate.yml'
@@ -14,6 +15,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   candidate-portability-only:
@@ -64,3 +66,34 @@ jobs:
           assert "OPICA4_SOURCE_NUMERICS_LANE_V2_CANDIDATE" in source
           print('Candidate-only, never historical V1 acceptance.')
           PY
+      - name: Download exactly one prior SOURCE_NUMERICS artifact (diagnostic only)
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica4-43700869719-1-lane-SOURCE_NUMERICS
+          repository: HMarcusWH/zeta-23-lean
+          run-id: 43700869719
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/opica4-reference
+      - name: Compare live runtime to SHA256-bound frozen producer evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_STORED
+          import os
+          p=Path(os.environ["RUNNER_TEMP"])/"opica4-reference"
+          assert sorted(f.name for f in p.iterdir())==["bundle.zip","transport.json"]
+          with ZipFile(p/"referenced-transport.zip","w",compression=ZIP_STORED) as z:
+              for name in ("bundle.zip","transport.json"):
+                  z.write(p/name,name)
+          PY
+          python3 -B -m research.RHRC.integration.opica_composition.post299.portable_runtime_diagnostic \
+            "$RUNNER_TEMP/opica4-reference/referenced-transport.zip" "$RUNNER_TEMP/opica4-runtime-compare.json"
+      - name: Preserve nonaccepting field comparison report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica4-v2-portability-diagnostic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/opica4-runtime-compare.json
+          if-no-files-found: warn
