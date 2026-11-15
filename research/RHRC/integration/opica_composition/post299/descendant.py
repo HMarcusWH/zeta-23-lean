@@ -38,6 +38,8 @@ ADDED_SOURCE = {
         "acecc7d2cd78bf2178c67b03019de40fcb2eab79",
     ".github/workflows/rhrc_post299_rhkg_refresh.yml":
         "21b5fa56b56a17b408084bb098258d98af6330e1",
+    ".github/workflows/rhrc_post300_k5_rhkg_refresh.yml":
+        "ceae5c37c50697fff60589de4811f5430bb8a382",
     ".github/workflows/rhrc_post300_k5_research.yml":
         "f2800c4d337f0e977d39655b88b7c2f1c3748b7a",
     "research/RHRC/integration/opica_round5/K5_MIXED_SOURCE_SPEC.md":
