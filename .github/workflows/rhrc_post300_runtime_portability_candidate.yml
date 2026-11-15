@@ -3,12 +3,14 @@ on:
   pull_request:
     branches:
       - research/step4-parity-moment-shift-20261113
+      - main
     paths:
       - 'research/RHRC/integration/opica_composition/post299/portable_runtime.py'
       - 'research/RHRC/integration/opica_composition/post299/test_portable_runtime.py'
       - 'research/RHRC/integration/opica_composition/post299/test_source_checker_v2.py'
       - 'research/RHRC/integration/opica_composition/post299/portable_runtime_diagnostic.py'
       - 'research/RHRC/integration/opica_composition/post299/real_source_replay.py'
+      - 'research/RHRC/integration/opica_composition/post299/descendant.py'
       - 'research/RHRC/integration/opica_composition/post299/source_checker_v2.py'
       - 'research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md'
       - '.github/workflows/rhrc_post300_runtime_portability_candidate.yml'
@@ -67,6 +69,23 @@ jobs:
           assert "OPICA4_SOURCE_NUMERICS_LANE_V2_CANDIDATE" in source
           print('Candidate-only, never historical V1 acceptance.')
           PY
+      - name: Inspect exact successor source delta (policy remains review-pending)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.descendant --selftest
+          python3 -B -m research.RHRC.integration.opica_composition.cli inspect --repo . \
+            --output "$RUNNER_TEMP/post299-source-review-pending.json"
+          python3 -B - <<'PY'
+          import json,os
+          from pathlib import Path
+          x=json.loads((Path(os.environ['RUNNER_TEMP'])/'post299-source-review-pending.json').read_text())
+          assert x['schema']=='OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2'
+          assert x['full_round4_accepted'] is False
+          assert x['successor_human_review']=='PENDING'
+          assert x['RH']=='OPEN' and x['Step4']=='OPEN'
+          print('Exact candidate path whitelist PASS, external review PENDING.')
+          PY
       - name: Download exactly one prior SOURCE_NUMERICS artifact (diagnostic only)
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
@@ -100,7 +119,7 @@ jobs:
           if-no-files-found: warn
 
   real-independent-source-replay:
-    name: Frozen #299 real Arb V2 independent reconstruction (NOT RELEASE)
+    name: 'Frozen #299 real Arb V2 independent reconstruction (NOT RELEASE)'
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     permissions:
