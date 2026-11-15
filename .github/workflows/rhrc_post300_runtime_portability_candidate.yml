@@ -1,0 +1,51 @@
+name: PR300 portable runtime V2 candidate - nonaccepting
+on:
+  pull_request:
+    branches:
+      - research/step4-parity-moment-shift-20261113
+    paths:
+      - 'research/RHRC/integration/opica_composition/post299/portable_runtime.py'
+      - 'research/RHRC/integration/opica_composition/post299/test_portable_runtime.py'
+      - 'research/RHRC/integration/opica_composition/post299/source_checker_v2.py'
+      - 'research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md'
+      - '.github/workflows/rhrc_post300_runtime_portability_candidate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-portability-only:
+    name: V2 closed-runtime adversarial regression (NOT RELEASE)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: No-dependency checks and compiler syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v \
+            research.RHRC.integration.opica_composition.post299.test_portable_runtime
+          python3 -O -B -m unittest -v \
+            research.RHRC.integration.opica_composition.post299.test_portable_runtime
+          python3 -B - <<'PY'
+          import ast
+          from pathlib import Path
+          root=Path('research/RHRC/integration/opica_composition/post299')
+          for name in ('portable_runtime.py','source_checker_v2.py'):
+              ast.parse((root/name).read_text(),filename=str(root/name))
+          # The proposed verifier is incapable of claiming V1 acceptance.
+          source=(root/'source_checker_v2.py').read_text()
+          assert "'acceptance_eligible':False" in source
+          assert "CANDIDATE_V2_RECOMPUTED_FINITE_SOURCE_NOT_RELEASE" in source
+          assert "OPICA4_SOURCE_NUMERICS_LANE_V2_CANDIDATE" in source
+          print('Candidate-only, never historical V1 acceptance.')
+          PY
