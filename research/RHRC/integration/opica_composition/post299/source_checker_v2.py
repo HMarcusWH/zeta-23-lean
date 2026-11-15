@@ -13,7 +13,12 @@ from research.RHRC.integration.opica_composition.post299.portable_runtime import
 import subprocess
 import sys
 
-HERE=Path(__file__).resolve().parents[2]/'opica_round4'
+import os
+# A real frozen-subject replay imports ONLY evaluator/backend bytes from the exact
+# separately authenticated #299 checkout. No controller checkout can stand in.
+SUBJECT_ROOT = os.environ.get('OPICA4_V2_SUBJECT_ROOT')
+HERE = (Path(SUBJECT_ROOT).resolve()/'research/RHRC/integration/opica_round4'
+        if SUBJECT_ROOT else Path(__file__).resolve().parents[2]/'opica_round4')
 import importlib.util
 def _module(name,path):
     if name in sys.modules:return sys.modules[name]

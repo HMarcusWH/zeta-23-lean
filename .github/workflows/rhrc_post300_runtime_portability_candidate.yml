@@ -8,6 +8,7 @@ on:
       - 'research/RHRC/integration/opica_composition/post299/test_portable_runtime.py'
       - 'research/RHRC/integration/opica_composition/post299/test_source_checker_v2.py'
       - 'research/RHRC/integration/opica_composition/post299/portable_runtime_diagnostic.py'
+      - 'research/RHRC/integration/opica_composition/post299/real_source_replay.py'
       - 'research/RHRC/integration/opica_composition/post299/source_checker_v2.py'
       - 'research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md'
       - '.github/workflows/rhrc_post300_runtime_portability_candidate.yml'
@@ -96,4 +97,62 @@ jobs:
         with:
           name: opica4-v2-portability-diagnostic-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/opica4-runtime-compare.json
+          if-no-files-found: warn
+
+  real-independent-source-replay:
+    name: Frozen #299 real Arb V2 independent reconstruction (NOT RELEASE)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    permissions:
+      contents: read
+      actions: read
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          path: controller
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: df914f38f26bdc4109aeaa13f48b3896c3bc61b1
+          fetch-depth: 0
+          path: host
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13.5'
+      - name: Install exact frozen numeric environment
+        working-directory: host
+        run: |
+          set -euo pipefail
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_round2/python-checks.lock
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+          python -m pip install -r research/RHRC/requirements.txt
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica4-43700869719-1-lane-SOURCE_NUMERICS
+          repository: HMarcusWH/zeta-23-lean
+          run-id: 43700869719
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/opica4-frozen-producer
+      - name: Authenticate separate source and independently reconstruct six real Arb cases
+        working-directory: controller
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.real_source_replay \\
+            --subject "$GITHUB_WORKSPACE/host" \\
+            --artifact "$RUNNER_TEMP/opica4-frozen-producer" \\
+            --output "$RUNNER_TEMP/opica4-v2-real-source"
+      - name: Save diagnostic-only recomputation and failed receipts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica4-v2-real-independent-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/opica4-v2-real-source/
+          retention-days: 20
           if-no-files-found: warn
