@@ -41,9 +41,9 @@ ADDED_SOURCE = {
     ".github/workflows/rhrc_post300_k5_rhkg_refresh.yml":
         "28b17e96b86e48fbe61abd5456e167448c81407b",
     "research/RHRC/integration/opica_composition/post299/composite_candidate.py":
-        "5fed105ec352d439019e32daab3b7fe7c0af0a58",
+        "c8eb38c47e905fea4889c868da3500cabacd2b1b",
     "research/RHRC/integration/opica_composition/post299/release_review_gate.py":
-        "ceb8069786d0c2e2d3744df427a128a94d62743f",
+        "cff588e5aec1eb8e9d2e290dfd19e58f1abad0a9",
     ".github/workflows/rhrc_post300_k5_research.yml":
         "f2800c4d337f0e977d39655b88b7c2f1c3748b7a",
     "research/RHRC/integration/opica_round5/K5_MIXED_SOURCE_SPEC.md":
@@ -67,7 +67,7 @@ ADDED_SOURCE = {
     "research/RHRC/integration/opica_composition/post299/real_source_replay.py":
         "28155e024f6dca95579c49bae24fae3623ad1f27",
     ".github/workflows/rhrc_post300_runtime_portability_candidate.yml":
-        "2ad4bd769c455adcb5b873a83e523f83fb7bab9a",
+        "76d0b2a891a24ded8f30479b62afe86ec2bc48b8",
     "research/RHRC/integration/opica_composition/post299/baseline_v1_provenance.py":
         "32920ffd1fa81415b72aa5a14ec57acf583324f6",
 }
