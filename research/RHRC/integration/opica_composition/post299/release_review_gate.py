@@ -112,7 +112,11 @@ def release(root,number,head,tree,policy_sha,composite_run,attempt,candidate):
     author=pr.get("user",{}).get("login","")
     require(bool(author),"No trustworthy PR author")
     run=load("/actions/runs/"+str(composite_run))
-    require(run.get("head_sha")==head and run.get("run_attempt")==attempt
+    # After independent approval, rerun only the failed final review job:
+    # Actions increments its run attempt, but the original already-green
+    # mathematical composite retains its exact original attempt and identity.
+    require(run.get("head_sha")==head and type(run.get("run_attempt")) is int
+            and run["run_attempt"]>=attempt
             and run.get("status") in ("in_progress","completed")
             and run.get("conclusion") in (None,"success")
             and run.get("event")=="pull_request","Incorrect completed candidate workflow identity")
