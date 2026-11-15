@@ -1,5 +1,6 @@
 name: PR301 guarded one-shot post299 RHKG refresh
 
+# PR301 V3 exact-source and latest integrated PR300 refresh verification.
 # Independently rebuild and double-check deterministic derived state for the
 # exact reviewed parity successor. The accepted PR299 source stays immutable.
 # No conjecture or source inequality is promoted by this workflow.
@@ -23,7 +24,7 @@ permissions:
 
 concurrency:
   group: pr301-one-shot-derived-state-refresh
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   materialize-and-commit:
