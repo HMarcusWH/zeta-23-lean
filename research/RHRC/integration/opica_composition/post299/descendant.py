@@ -38,6 +38,8 @@ ADDED_SOURCE = {
         "acecc7d2cd78bf2178c67b03019de40fcb2eab79",
     ".github/workflows/rhrc_post299_rhkg_refresh.yml":
         "21b5fa56b56a17b408084bb098258d98af6330e1",
+    "research/RHRC/integration/opica_composition/post299/composite_candidate.py":
+        "5fed105ec352d439019e32daab3b7fe7c0af0a58",
     "research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md":
         "45f29fa6f3a7a90f27a74bd72e71efaf0e4c356f",
     "research/RHRC/integration/opica_composition/post299/portable_runtime.py":
@@ -53,7 +55,7 @@ ADDED_SOURCE = {
     "research/RHRC/integration/opica_composition/post299/real_source_replay.py":
         "28155e024f6dca95579c49bae24fae3623ad1f27",
     ".github/workflows/rhrc_post300_runtime_portability_candidate.yml":
-        "531380563481393e0ce7903dca8dfe151ff5d1d2",
+        "69843d722767f173b3ccef45927a92f8800959a3",
     "research/RHRC/integration/opica_composition/post299/baseline_v1_provenance.py":
         "32920ffd1fa81415b72aa5a14ec57acf583324f6",
 }
