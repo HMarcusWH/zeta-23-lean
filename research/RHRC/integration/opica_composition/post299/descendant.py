@@ -37,7 +37,7 @@ ADDED_SOURCE = {
     "Zeta23/OPICARound5/ParityMomentBridge.lean":
         "acecc7d2cd78bf2178c67b03019de40fcb2eab79",
     ".github/workflows/rhrc_post299_rhkg_refresh.yml":
-        "21b5fa56b56a17b408084bb098258d98af6330e1",
+        "98ef1e1467e26c11db342fa5098a282cd55edccb",
     "research/RHRC/integration/opica_composition/post299/composite_candidate.py":
         "5fed105ec352d439019e32daab3b7fe7c0af0a58",
     "research/RHRC/integration/opica_composition/post299/release_review_gate.py":
