@@ -521,7 +521,9 @@ jobs:
           test "$NEEDS_RESULT" = success
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: opica5-composite-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          # If only the failed external-review job is rerun, retain the
+          # original accepted composite artifact with original attempt ID.
+          name: opica5-composite-evidence-${{ github.run_id }}-1
           path: ${{ runner.temp }}/approved-source
       - name: Independently authenticate external approval, full exact-head CI and source hashes
         env:
@@ -535,7 +537,7 @@ jobs:
             --tree "$(git rev-parse 'HEAD^{tree}')" \
             --policy-git-blob "$(git hash-object research/RHRC/integration/opica_composition/post299/descendant.py)" \
             --composite-run "$GITHUB_RUN_ID" \
-            --composite-attempt "$GITHUB_RUN_ATTEMPT" \
+            --composite-attempt 1 \
             --composite "$RUNNER_TEMP/approved-source/composite-candidate-evidence.json" \
             --output "$RUNNER_TEMP/final-supporting-merge-readiness.json"
           echo 'Reviewed supporting PR gates are green; Step4 and RH remain OPEN'

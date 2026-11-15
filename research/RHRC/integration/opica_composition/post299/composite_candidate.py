@@ -113,13 +113,24 @@ def numerical_check(x: dict):
             "V2 source identity is not clean and frozen")
 
 def formal_axioms(text: str):
-    rows=re.findall(r"depends on axioms: \[([^\]]+)\]",text)
-    require(len(rows)>=4,"Missing Lean theorem-specific #print axioms transcript")
-    for row in rows:
+    expected=(
+        "centeredMoment_shift",
+        "oddToEvenMomentShift_range_eq_center_ker",
+        "fixedMomentParityShortExact",
+        "oddToEvenPhysicalMomentShift",
+    )
+    # Four unrelated axioms lines must never authorize the theorem.
+    rows=re.findall(
+        r"'Zeta23\.OPICARound4\.ArithmeticFrontier\.([A-Za-z_]+)'"
+        r" depends on axioms: \[([^\]]+)\]",text)
+    require(len(rows)==len(expected),"Missing or extra exact parity axiom printouts")
+    require([name for name,_ in rows]==list(expected),
+            "Unexpected exact parity declarations")
+    for _, row in rows:
         names=frozenset(x.strip() for x in row.split(","))
-        require(names <= EXPECTED_AX,"Lean theorem introduced an unexpected axiom")
-    require(any("fixedMomentParityShortExact" in line for line in text.splitlines()),
-            "Missing exact short-sequence theorem axiom output")
+        require(bool(names) and names <= EXPECTED_AX,
+                "Lean parity theorem introduced unexpected axioms")
+
 
 def current_repo(root: Path, expected_head: str, expected_tree: str):
     def git(*args):
@@ -185,10 +196,22 @@ def _selftest():
         try:numerical_check(mutation)
         except ValueError:pass
         else:raise AssertionError("Nonaccepting composite admitted a bad numerical report: "+key)
-    formal_axioms("fixedMomentParityShortExact depends on axioms: [propext, Classical.choice, Quot.sound]\n"*4)
-    try: formal_axioms("fixedMomentParityShortExact depends on axioms: [unsound_custom]\n"*4)
-    except ValueError:pass
-    else:raise AssertionError("Unexpected project axiom accepted")
+    transcript="".join(
+        "'Zeta23.OPICARound4.ArithmeticFrontier."+name+
+        "' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+        for name in ("centeredMoment_shift",
+            "oddToEvenMomentShift_range_eq_center_ker",
+            "fixedMomentParityShortExact",
+            "oddToEvenPhysicalMomentShift"))
+    formal_axioms(transcript)
+    for broken in (
+        transcript.replace("Quot.sound","unsound_custom"),
+        transcript.replace("fixedMomentParityShortExact","irrelevantTheorem"),
+        transcript.splitlines(keepends=True)[0]*4,
+    ):
+        try: formal_axioms(broken)
+        except ValueError:pass
+        else:raise AssertionError("Incorrect parity axiom transcript accepted")
     print("Composite candidate evidence and negative controls: PASS")
 
 def main():
