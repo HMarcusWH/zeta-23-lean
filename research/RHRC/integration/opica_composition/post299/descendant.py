@@ -43,7 +43,7 @@ ADDED_SOURCE = {
     "research/RHRC/integration/opica_composition/post299/composite_candidate.py":
         "5fed105ec352d439019e32daab3b7fe7c0af0a58",
     "research/RHRC/integration/opica_composition/post299/release_review_gate.py":
-        "fde6c650b62bcae1c1ad415d58fd692d056d9588",
+        "ceb8069786d0c2e2d3744df427a128a94d62743f",
     ".github/workflows/rhrc_post300_k5_research.yml":
         "f2800c4d337f0e977d39655b88b7c2f1c3748b7a",
     "research/RHRC/integration/opica_round5/K5_MIXED_SOURCE_SPEC.md":
