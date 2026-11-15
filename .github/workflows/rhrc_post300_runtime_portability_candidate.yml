@@ -13,6 +13,7 @@ on:
       - 'research/RHRC/integration/opica_composition/post299/descendant.py'
       - 'research/RHRC/integration/opica_composition/post299/baseline_v1_provenance.py'
       - 'research/RHRC/integration/opica_composition/post299/composite_candidate.py'
+      - 'research/RHRC/integration/opica_composition/post299/release_review_gate.py'
       - 'research/RHRC/integration/opica_composition/post299/source_checker_v2.py'
       - 'research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md'
       - '.github/workflows/rhrc_post300_runtime_portability_candidate.yml'
@@ -253,7 +254,7 @@ jobs:
           if-no-files-found: warn
 
   fresh-v2-producer:
-    name: Fresh #299 numeric source producer (normal and optimized)
+    name: 'Fresh #299 numeric source producer (normal and optimized)'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     env:
@@ -391,7 +392,8 @@ jobs:
         run: |
           set -euo pipefail
           python3 -B research/RHRC/tools/materialize_derived_state.py --check
-          python3 -B research/RHRC/graph/build_rhkg.py --check || test ! -e research/RHRC/graph/build_rhkg.py
+          # The governed materializer traverses every declared RHKG/generated product.
+          # Do not conditionally hide a missing or failing second checker.
           python3 -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$RUNNER_TEMP/post299-source-rhkg.json"
           git diff --exit-code
           test -z "$(git status --porcelain --untracked-files=all)"
@@ -482,4 +484,54 @@ jobs:
         with:
           name: opica5-composite-evidence-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/composite-candidate-evidence.json
+          if-no-files-found: warn
+
+  independently-reviewed-support-release-gate:
+    name: Final supporting-PR approval and full-head CI gate (RH OPEN)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    needs: [post299-composite-evidence]
+    if: ${{ always() && github.event_name == 'pull_request' && (github.event.pull_request.number == 300 || github.event.pull_request.number == 301) }}
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Fail closed unless every candidate evidence gate has succeeded
+        env:
+          NEEDS_RESULT: ${{ needs.post299-composite-evidence.result }}
+        run: |
+          set -euo pipefail
+          test "$NEEDS_RESULT" = success
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica5-composite-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/approved-source
+      - name: Independently authenticate external approval, full exact-head CI and source hashes
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REVIEWED_PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_composition.post299.release_review_gate \
+            --repo . --pr "$REVIEWED_PR" \
+            --head "$(git rev-parse HEAD)" \
+            --tree "$(git rev-parse 'HEAD^{tree}')" \
+            --policy-git-blob "$(git hash-object research/RHRC/integration/opica_composition/post299/descendant.py)" \
+            --composite-run "$GITHUB_RUN_ID" \
+            --composite-attempt "$GITHUB_RUN_ATTEMPT" \
+            --composite "$RUNNER_TEMP/approved-source/composite-candidate-evidence.json" \
+            --output "$RUNNER_TEMP/final-supporting-merge-readiness.json"
+          echo 'Reviewed supporting PR gates are green; Step4 and RH remain OPEN'
+      - name: Preserve exact review and merged gate receipt even on failure
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica5-reviewed-release-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/final-supporting-merge-readiness.json
           if-no-files-found: warn
