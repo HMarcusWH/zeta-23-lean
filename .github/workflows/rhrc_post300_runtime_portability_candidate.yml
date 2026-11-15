@@ -6,6 +6,7 @@ on:
     paths:
       - 'research/RHRC/integration/opica_composition/post299/portable_runtime.py'
       - 'research/RHRC/integration/opica_composition/post299/test_portable_runtime.py'
+      - 'research/RHRC/integration/opica_composition/post299/test_source_checker_v2.py'
       - 'research/RHRC/integration/opica_composition/post299/source_checker_v2.py'
       - 'research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md'
       - '.github/workflows/rhrc_post300_runtime_portability_candidate.yml'
@@ -28,7 +29,17 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
           persist-credentials: false
-      - name: No-dependency checks and compiler syntax
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.5'
+      - name: Install frozen evidence-backend dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_round2/python-checks.lock
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+          python -m pip install -r research/RHRC/requirements.txt
+      - name: Closed-schema and production-checker behavior regressions
         shell: bash
         run: |
           set -euo pipefail
@@ -36,6 +47,10 @@ jobs:
             research.RHRC.integration.opica_composition.post299.test_portable_runtime
           python3 -O -B -m unittest -v \
             research.RHRC.integration.opica_composition.post299.test_portable_runtime
+          python3 -B -m unittest -v \
+            research.RHRC.integration.opica_composition.post299.test_source_checker_v2
+          python3 -O -B -m unittest -v \
+            research.RHRC.integration.opica_composition.post299.test_source_checker_v2
           python3 -B - <<'PY'
           import ast
           from pathlib import Path
