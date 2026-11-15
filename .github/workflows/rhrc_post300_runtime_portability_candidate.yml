@@ -387,6 +387,17 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
+      - name: Build exact Lean proof/export prerequisites for deterministic RHKG
+        shell: bash
+        run: |
+          set -euo pipefail
+          export POST290_CHECKED_HEAD="$(git rev-parse HEAD)"
+          export POST290_CHECKED_TREE="$(git rev-parse 'HEAD^{tree}')"
+          lake build \
+            Zeta23.RHRC.RegisteredClaimBindings \
+            Zeta23.RHRC.DeclarationDependencyExport \
+            Zeta23.RHRC.SourceCandidateResolution \
+            Zeta23.RHRC.Step123OutputBindings
       - name: Verify all current-head derived products without writing
         shell: bash
         run: |
