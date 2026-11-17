@@ -51,7 +51,7 @@ ADDED_SOURCE = {
     "research/RHRC/integration/opica_composition/post299/source_checker_v2.py":
         "a078803629090f639f0a147367fccb3187ab252d",
     "research/RHRC/integration/opica_composition/post299/test_portable_runtime.py":
-        "ac422abab2b2648d25081096a2ae040d9e28518c",
+        "520634ff43016268d8579ad0e822e9b6b687b8fd",
     "research/RHRC/integration/opica_composition/post299/test_source_checker_v2.py":
         "23f024eefa6426e80744c46c2d5674eae7440e96",
     "research/RHRC/integration/opica_composition/post299/real_source_replay.py":
@@ -68,7 +68,7 @@ CHANGED_SOURCE = {
     # Successor qualification executes all Round4 lanes at the candidate tree.
     # Only the frozen V1 receipt and its original source remain historical.
     ".github/workflows/rhrc_opica_composition.yml": "7887065361662e2c4f69011b8987bdc71555f71a",
-    "research/RHRC/integration/opica_composition/cli.py": "e71b9709328c642692597cc24edd69e3979caed1",
+    "research/RHRC/integration/opica_composition/cli.py": "ee05b718eb16598be45b42d30e36297ca41b9087",
     "research/RHRC/integration/opica_composition/service.py": "68b6923c0b5dd794079e4e899be5e428f32a727a",
     "research/RHRC/integration/opica_composition/tests/test_end_to_end.py": "c825b2ceeda43b2524d064d7d2b0bdc7c761cf7d",
     "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json":
@@ -210,6 +210,27 @@ def validate_descendant(repo: Path = REPO, *, require_clean: bool = False) -> di
     }
 
 
+def check_classification() -> bool:
+    import unittest
+    from ...opica_round2.tests.test_file_classes import ExactRound2FileClasses
+
+    class ExactSuccessorFileClasses(ExactRound2FileClasses):
+        @classmethod
+        def setUpClass(cls):
+            super().setUpClass()
+            module = "Zeta23.OPICARound5.ParityMomentBridge"
+            path = "Zeta23/OPICARound5/ParityMomentBridge.lean"
+            require(cls.round4 and module not in cls.round4_roles
+                    and cls.modules.get(module) == path,
+                    "Exact successor parity module and inherited Round4 scope required")
+            # Extend the expected map only. All inherited tests still see the
+            # actual live semantics, source inventory and import reachability.
+            cls.round4_roles = {**cls.round4_roles, module: "OPICA5_PARITY_SEED_FORMAL_SUPPORT"}
+
+    suite = unittest.defaultTestLoader.loadTestsFromTestCase(ExactSuccessorFileClasses)
+    return unittest.TextTestRunner().run(suite).wasSuccessful()
+
+
 def _selftest() -> None:
     parent = {"old.lean", "old.json", "research/RHRC/graph/generated/nodes.json", *EDITED}
     valid = [
@@ -238,6 +259,8 @@ def _selftest() -> None:
 if __name__ == "__main__":
     if sys.argv[1:] == ["--selftest"]:
         _selftest()
+    elif sys.argv[1:] == ["--check-classification"]:
+        sys.exit(0 if check_classification() else 1)
     else:
         print(json.dumps(validate_descendant(REPO, require_clean=True),
                          sort_keys=True, indent=2))
