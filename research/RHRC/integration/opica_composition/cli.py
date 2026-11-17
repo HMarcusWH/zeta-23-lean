@@ -675,7 +675,11 @@ def _verify_group_raw_receipts(repo,bundle,group,exp,manifest):
         from ..opica_round4.source_checker import caps
         from .post299.source_checker_v2 import PASS_STATUS
         prefix='SOURCE_NUMERICS/';row=load_bytes(evidence_bytes(bundle,prefix+'source-independent-result.json',MAX_BYTES))
-        ids=evaluator.EXPECTED_IDS;identity=evaluator.B.source_identity();caps(row)
+        ids=evaluator.EXPECTED_IDS;identity=evaluator.B.source_identity()
+        # The portable replay summary has V2 authority. Its case records still
+        # use the frozen V1 authority and are checked with caps() below.
+        require(all(type(row.get(k)) is type(v) and row[k]==v for k,v in evaluator.B.CAPS.items()),
+                'Changed finite source summary firewall')
         require(row.get('schema')=='OPICA4_SOURCE_NUMERICS_LANE_V2_CANDIDATE' and row.get('status')==PASS_STATUS and
                 row.get('acceptance_eligible') is False and row.get('checked_commit')==exp['requested_commit'] and
                 row.get('checked_tree')==exp['requested_tree'] and row.get('source_identity')==identity and
