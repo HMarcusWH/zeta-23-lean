@@ -8,7 +8,7 @@
     "RESOLVED_PRIVATE_OR_INTERNAL": 617,
     "RESOLVED_UNIQUE": 4928
   },
-  "rhkg_subject_digest_sha256": "12f2c8932c45c24234d3a4670d6b2d802cf6ca6f0b1d99e072e65d1802ce3850",
+  "rhkg_subject_digest_sha256": "39d42609fa7cece1eb6b99823b4a9c7d01c7fad7a56b50bca4a91e5135680668",
   "schema_version": "RHRC-source-candidate-summary-1.0",
   "scope": "RH_FORMAL_CORE_THEOREM_AND_LEMMA_SOURCE_SURFACE",
   "source_only_public_theorem_count": 1744,
