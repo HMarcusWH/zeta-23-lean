@@ -1,7 +1,10 @@
 """No-dependency, adversarial tests for the candidate V2 runtime identity boundary."""
 import hashlib
 from pathlib import Path
+import sys
+import tempfile
 import unittest
+from unittest.mock import patch
 
 from research.RHRC.integration.opica_composition.post299.portable_runtime import (
     RuntimeMismatch, compare_runtime, require_compatible,
@@ -40,6 +43,41 @@ AWS = "Linux-6.14.0-1034-aws-x86_64-with-glibc2.39"
 
 
 class PortableRuntimeContractTest(unittest.TestCase):
+    def test_classification_recipe_is_bound_to_source_scope(self):
+        from research.RHRC.integration.opica_composition.cli import classification_command
+
+        successor = [sys.executable, "-B", "-m",
+                     "research.RHRC.integration.opica_composition.post299.descendant",
+                     "--check-classification"]
+        for version in ("V2", "V3"):
+            with self.subTest(version=version):
+                source = {"schema": "OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_" + version}
+                self.assertEqual(classification_command(source), successor)
+        self.assertEqual(
+            classification_command({"schema": "OPICA4_CURRENT_SOURCE_INSPECTION_V1"}),
+            [sys.executable, "-B", "-m", "unittest",
+             "research.RHRC.integration.opica_round2.tests.test_file_classes"],
+        )
+
+    def test_independent_generated_state_uses_locally_checked_source(self):
+        from research.RHRC.integration.opica_composition import cli
+
+        source = {"schema": "OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2"}
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            files = {name: root / name for name in ("results.json", "source.json", "source-after.json")}
+            cli.write(files["results.json"], {})
+            cli.write(files["source.json"], source)
+            cli.write(files["source-after.json"], source)
+            output = root / "independent"
+            with patch.object(cli, "validate_descendant", return_value=source) as check_source, \
+                 patch.object(cli, "generated_state", return_value={}) as generated:
+                self.assertTrue(cli.verify_lane_raw(
+                    {"id": "GENERATED_STATE"}, {"experiment": {}}, files, ROOT, output,
+                ))
+            check_source.assert_called_once_with(ROOT, require_clean=True)
+            generated.assert_called_once_with(ROOT, output.resolve(), source)
+
     def test_frozen_v1_source_unchanged(self):
         data = V1.read_bytes()
         sha = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\x00" + data).hexdigest()

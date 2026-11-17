@@ -163,7 +163,7 @@ def _collect_failed_native_diagnostics(lane,repo,output):
     # receipt fields cannot redirect collection.
     # They share the native collector's byte/file budgets and no-follow reads.
     fixed_outputs=['tests/'+mode+suffix for mode in ('normal','optimized')
-                   for suffix in ('.json','.log','.driver.log')]+['canonical-current.log']
+                   for suffix in ('.json','.log','.driver.log')]+['canonical-current.log','classification.log']
     for relative in fixed_outputs:
         try:
             path=unlinked(output/relative);info=os.lstat(path)
@@ -319,7 +319,17 @@ def run_command(repo,argv,output,label):
     require(result.returncode==0,'Required command failed: '+str(log))
     return {'argv':list(map(str,argv)),'exit_code':result.returncode,'log':log.name,'sha256':file_hash(log)}
 
-def generated_state(repo,output):
+def classification_command(source):
+    # Source is the locally authenticated inspection, never the receipt.
+    if source.get('schema') in ('OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2',
+                               'OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V3'):
+        return [sys.executable,'-B','-m',
+                'research.RHRC.integration.opica_composition.post299.descendant',
+                '--check-classification']
+    return [sys.executable,'-B','-m','unittest',
+            'research.RHRC.integration.opica_round2.tests.test_file_classes']
+
+def generated_state(repo,output,source):
     # The original writer is preserved. Qualification checks products without rewriting source.
     before=git(repo,'status','--porcelain','--untracked-files=all')
     require(not before,'Generated-state qualification requires clean committed source')
@@ -329,7 +339,7 @@ def generated_state(repo,output):
     from .cache_owner import CacheWriterLease
     with CacheWriterLease(Path(repo)/'.lake/build'):
         canonical=run_command(repo,[sys.executable,'-B','research/RHRC/tools/materialize_derived_state.py','--check'],output,'canonical-current')
-    records=[canonical,run_command(repo,[sys.executable,'-B','-m','unittest','research.RHRC.integration.opica_round2.tests.test_file_classes'],output,'classification')]
+    records=[canonical,run_command(repo,classification_command(source),output,'classification')]
     require(not git(repo,'status','--porcelain','--untracked-files=all'),'Canonical checker changed source')
     require(products=={r['path']:file_hash(Path(repo)/r['path']) for r in paths},'Canonical check changed products')
     from .journal import Journal
@@ -389,7 +399,7 @@ def _run_lane_impl(lane,repo,output,exp,*,provider_root=None):
         require(provider_root is not None,'Pinned provider checkout required')
         results['provider']=produce(Path(provider_root),output/'provider-producer')
         results['provider_independent']=verify(Path(provider_root),output/'provider-producer',output/'provider-independent')
-    elif lane=='GENERATED_STATE':results['generated']=generated_state(repo,output)
+    elif lane=='GENERATED_STATE':results['generated']=generated_state(repo,output,source)
     elif lane in {'COMPOSITION_FORMAL','SEMANTIC_NEGATIVES','REPLAY_CAMPAIGN','FRAMEWORK_ADAPTERS'}:
         require(methods,'Actual required lane tests absent')
         if lane=='FRAMEWORK_ADAPTERS':results['support_regressions']=support_regressions(repo,output)
@@ -436,12 +446,12 @@ def verify_lane_raw(expected,record,files,repo,independent_output,provider_root=
     from .testing import emit_phase_diagnostic
     emit_phase_diagnostic(lane, 'replay.start')
     with _independent_native_scope(lane, repo, independent_output, record['experiment']):
-        _replay_lane_behavior(lane, results, record, files, repo, independent_output, provider_root)
+        _replay_lane_behavior(lane, results, record, files, repo, independent_output, provider_root, current)
     emit_phase_diagnostic(lane, 'replay.end')
     return True
 
 
-def _replay_lane_behavior(lane, results, record, files, repo, independent_output, provider_root):
+def _replay_lane_behavior(lane, results, record, files, repo, independent_output, provider_root, current):
     from .testing import checked_inventory, run_modes, emit_phase_diagnostic
     methods=sorted(r['method'] for r in checked_inventory()['tests'] if r['lane']==lane)
     if methods:
@@ -483,7 +493,7 @@ def _replay_lane_behavior(lane, results, record, files, repo, independent_output
         verify(Path(provider_root),files['results.json'].parent/'provider-producer',independent_output/'provider-independent')
     elif lane=='GENERATED_STATE':
         emit_phase_diagnostic(lane, 'canonical.start')
-        fresh=generated_state(repo,independent_output)
+        fresh=generated_state(repo,independent_output,current)
         write(independent_output/'generated-state.json',fresh)
         emit_phase_diagnostic(lane, 'canonical.end')
     elif lane=='FRAMEWORK_ADAPTERS':support_regressions(repo,independent_output)
@@ -627,7 +637,7 @@ def _group_tree_shape(manifest,group):
                 'Nonnative group lane cannot carry a native archive')
 
 
-def _verify_group_raw_receipts(repo,bundle,group,exp,manifest):
+def _verify_group_raw_receipts(repo,bundle,group,exp,manifest,current):
     """Cheap receipt completeness after source-owned replay, with no new execution."""
     from .testing import checked_inventory
     inventory=checked_inventory();hashes={row['path']:row['sha256'] for row in manifest['files']}
@@ -654,7 +664,7 @@ def _verify_group_raw_receipts(repo,bundle,group,exp,manifest):
                 row['canonical_products']=={item['path']:file_hash(Path(repo)/item['path']) for item in paths},
                 'Independent canonical product receipt differs')
         recipes=[([sys.executable,'-B','research/RHRC/tools/materialize_derived_state.py','--check'],'canonical-current.log'),
-                 ([sys.executable,'-B','-m','unittest','research.RHRC.integration.opica_round2.tests.test_file_classes'],'classification.log')]
+                 (classification_command(current),'classification.log')]
         require(type(row['commands']) is list and len(row['commands'])==2,'Both canonical commands required')
         for command,(argv,log) in zip(row['commands'],recipes):
             closed_keys(command,{'argv','exit_code','log','sha256'})
@@ -737,7 +747,7 @@ def _checked_group_bundle(repo,bundle,group,exp):
     require(load_bytes(evidence_bytes(bundle,'source.json',MAX_BYTES))==current==
             load_bytes(evidence_bytes(bundle,'source-after.json',MAX_BYTES)),
             'Independent group source differs from clean current checkout')
-    _verify_group_raw_receipts(repo,bundle,group,exp,manifest)
+    _verify_group_raw_receipts(repo,bundle,group,exp,manifest,current)
     require(_transport_seal(bundle)==sealed,'Independent group changed during verification')
     return record,sealed
 
