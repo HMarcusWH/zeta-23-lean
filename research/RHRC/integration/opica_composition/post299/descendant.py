@@ -37,11 +37,11 @@ ADDED_SOURCE = {
     "Zeta23/OPICARound5/ParityMomentBridge.lean":
         "acecc7d2cd78bf2178c67b03019de40fcb2eab79",
     ".github/workflows/rhrc_post299_rhkg_refresh.yml":
-        "98ef1e1467e26c11db342fa5098a282cd55edccb",
+        "db984f81ec7e671d9f5ac8d6f389fc2f957ab972",
     "research/RHRC/integration/opica_composition/post299/composite_candidate.py":
         "c8eb38c47e905fea4889c868da3500cabacd2b1b",
     "research/RHRC/integration/opica_composition/post299/release_review_gate.py":
-        "cff588e5aec1eb8e9d2e290dfd19e58f1abad0a9",
+        "bf7d94b53c487730f4bb806e957025ac4cd81686",
     "research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md":
         "45f29fa6f3a7a90f27a74bd72e71efaf0e4c356f",
     "research/RHRC/integration/opica_composition/post299/portable_runtime.py":
@@ -51,13 +51,13 @@ ADDED_SOURCE = {
     "research/RHRC/integration/opica_composition/post299/source_checker_v2.py":
         "a078803629090f639f0a147367fccb3187ab252d",
     "research/RHRC/integration/opica_composition/post299/test_portable_runtime.py":
-        "ac422abab2b2648d25081096a2ae040d9e28518c",
+        "520634ff43016268d8579ad0e822e9b6b687b8fd",
     "research/RHRC/integration/opica_composition/post299/test_source_checker_v2.py":
         "23f024eefa6426e80744c46c2d5674eae7440e96",
     "research/RHRC/integration/opica_composition/post299/real_source_replay.py":
         "28155e024f6dca95579c49bae24fae3623ad1f27",
     ".github/workflows/rhrc_post300_runtime_portability_candidate.yml":
-        "28da186da07c30d6e9937670da1d343071cdc55c",
+        "7378cf082bee979c6718fb49708208e96ce8cc92",
     "research/RHRC/integration/opica_composition/post299/baseline_v1_provenance.py":
         "32920ffd1fa81415b72aa5a14ec57acf583324f6",
 }
@@ -65,10 +65,12 @@ THIS_VALIDATOR = (
     "research/RHRC/integration/opica_composition/post299/descendant.py"
 )
 CHANGED_SOURCE = {
-    # Versioned integration repair: frozen V1 runs on PR299, never the PR300
-    # successor tree. This workflow blob is pinned exactly in the successor.
-    ".github/workflows/rhrc_opica_composition.yml": "05da57563f28c92636a479b87a72b464b47a4628",
-    "research/RHRC/integration/opica_composition/cli.py": "e587c38e32ecc416df403133e5eef1038c00b176",
+    # Successor qualification executes all Round4 lanes at the candidate tree.
+    # Only the frozen V1 receipt and its original source remain historical.
+    ".github/workflows/rhrc_opica_composition.yml": "7887065361662e2c4f69011b8987bdc71555f71a",
+    "research/RHRC/integration/opica_composition/cli.py": "ee05b718eb16598be45b42d30e36297ca41b9087",
+    "research/RHRC/integration/opica_composition/service.py": "68b6923c0b5dd794079e4e899be5e428f32a727a",
+    "research/RHRC/integration/opica_composition/tests/test_end_to_end.py": "c825b2ceeda43b2524d064d7d2b0bdc7c761cf7d",
     "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json":
         "8851d0a9cd5bc234af376cf35ca0c9894dcee0df",
 }
@@ -208,6 +210,27 @@ def validate_descendant(repo: Path = REPO, *, require_clean: bool = False) -> di
     }
 
 
+def check_classification() -> bool:
+    import unittest
+    from ...opica_round2.tests.test_file_classes import ExactRound2FileClasses
+
+    class ExactSuccessorFileClasses(ExactRound2FileClasses):
+        @classmethod
+        def setUpClass(cls):
+            super().setUpClass()
+            module = "Zeta23.OPICARound5.ParityMomentBridge"
+            path = "Zeta23/OPICARound5/ParityMomentBridge.lean"
+            require(cls.round4 and module not in cls.round4_roles
+                    and cls.modules.get(module) == path,
+                    "Exact successor parity module and inherited Round4 scope required")
+            # Extend the expected map only. All inherited tests still see the
+            # actual live semantics, source inventory and import reachability.
+            cls.round4_roles = {**cls.round4_roles, module: "OPICA5_PARITY_SEED_FORMAL_SUPPORT"}
+
+    suite = unittest.defaultTestLoader.loadTestsFromTestCase(ExactSuccessorFileClasses)
+    return unittest.TextTestRunner().run(suite).wasSuccessful()
+
+
 def _selftest() -> None:
     parent = {"old.lean", "old.json", "research/RHRC/graph/generated/nodes.json", *EDITED}
     valid = [
@@ -236,6 +259,8 @@ def _selftest() -> None:
 if __name__ == "__main__":
     if sys.argv[1:] == ["--selftest"]:
         _selftest()
+    elif sys.argv[1:] == ["--check-classification"]:
+        sys.exit(0 if check_classification() else 1)
     else:
         print(json.dumps(validate_descendant(REPO, require_clean=True),
                          sort_keys=True, indent=2))
