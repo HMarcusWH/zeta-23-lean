@@ -430,6 +430,8 @@ jobs:
     permissions:
       contents: read
       actions: read
+    outputs:
+      composite-attempt: ${{ steps.bind-composite-attempt.outputs.attempt }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -490,19 +492,24 @@ jobs:
           print('Successor aggregate is evidence only; no human review has been presumed')
           PY
       - name: Preserve full versioned aggregate receipt
-        if: ${{ always() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: opica5-composite-evidence-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/composite-candidate-evidence.json
-          if-no-files-found: warn
+          if-no-files-found: error
+      - name: Bind the successful composite to its attempt
+        id: bind-composite-attempt
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf 'attempt=%s\n' "$GITHUB_RUN_ATTEMPT" >> "$GITHUB_OUTPUT"
 
   independently-reviewed-support-release-gate:
     name: Final supporting-PR approval and full-head CI gate (RH OPEN)
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     needs: [post299-composite-evidence]
-    if: ${{ always() && github.event_name == 'pull_request' && (github.event.pull_request.number == 300 || github.event.pull_request.number == 301) }}
+    if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main' && (github.event.pull_request.number == 300 || github.event.pull_request.number == 301) }}
     permissions:
       contents: read
       actions: read
@@ -513,21 +520,52 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
           persist-credentials: false
-      - name: Fail closed unless every candidate evidence gate has succeeded
+      - name: Select the attempt of the successful composite job
+        id: select-composite-attempt
+        shell: bash
         env:
           NEEDS_RESULT: ${{ needs.post299-composite-evidence.result }}
+          COMPOSITE_ATTEMPT: ${{ needs.post299-composite-evidence.outputs.composite-attempt }}
         run: |
           set -euo pipefail
           test "$NEEDS_RESULT" = success
+          # GitHub retains outputs from dependencies preserved by a job-only
+          # retry. Two digits cover GitHub's maximum of 50 workflow reruns.
+          [[ "$COMPOSITE_ATTEMPT" =~ ^[1-9][0-9]?$ ]]
+          [[ "$GITHUB_RUN_ATTEMPT" =~ ^[1-9][0-9]?$ ]]
+          (( COMPOSITE_ATTEMPT <= GITHUB_RUN_ATTEMPT ))
+          printf 'attempt=%s\n' "$COMPOSITE_ATTEMPT" >> "$GITHUB_OUTPUT"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          # If only the failed external-review job is rerun, retain the
-          # original accepted composite artifact with original attempt ID.
-          name: opica5-composite-evidence-${{ github.run_id }}-1
+          name: opica5-composite-evidence-${{ github.run_id }}-${{ steps.select-composite-attempt.outputs.attempt }}
           path: ${{ runner.temp }}/approved-source
+      - name: Locate successful current-head full Round4 acceptance
+        id: current-round4
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import os, subprocess
+          from research.RHRC.integration.opica_composition.post299.release_review_gate import current_round4_run
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          evidence = current_round4_run(head)
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as outputs:
+              for key in ('run_id', 'artifact_name'):
+                  print(f'{key}={evidence[key]}', file=outputs)
+          PY
+      - name: Download the current-head Round4 acceptance receipt
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: ${{ steps.current-round4.outputs.artifact_name }}
+          run-id: ${{ steps.current-round4.outputs.run_id }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/round4-release-source
       - name: Independently authenticate external approval, full exact-head CI and source hashes
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          COMPOSITE_ATTEMPT: ${{ steps.select-composite-attempt.outputs.attempt }}
           REVIEWED_PR: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
@@ -537,8 +575,9 @@ jobs:
             --tree "$(git rev-parse 'HEAD^{tree}')" \
             --policy-git-blob "$(git hash-object research/RHRC/integration/opica_composition/post299/descendant.py)" \
             --composite-run "$GITHUB_RUN_ID" \
-            --composite-attempt 1 \
+            --composite-attempt "$COMPOSITE_ATTEMPT" \
             --composite "$RUNNER_TEMP/approved-source/composite-candidate-evidence.json" \
+            --round4-acceptance "$RUNNER_TEMP/round4-release-source/acceptance.json" \
             --output "$RUNNER_TEMP/final-supporting-merge-readiness.json"
           echo 'Reviewed supporting PR gates are green; Step4 and RH remain OPEN'
       - name: Preserve exact review and merged gate receipt even on failure

@@ -469,7 +469,7 @@ def _replay_lane_behavior(lane, results, record, files, repo, independent_output
         require(fresh['status']=='PASS_MATHEMATICAL_SUPPORT','Mathematical native replay failed')
         emit_phase_diagnostic(lane, 'compiler.mathematics.end')
     elif lane=='SOURCE_NUMERICS':
-        from research.RHRC.integration.opica_round4.source_checker import verify_evaluator_evidence
+        from .post299.source_checker_v2 import verify_evaluator_evidence
         root=files['results.json'].parent
         fresh=verify_evaluator_evidence(root/'source-producer',independent_output/'source-independent',require_clean=True,
             expected_head=record['experiment']['requested_commit'],expected_tree=record['experiment']['requested_tree'])
@@ -672,15 +672,20 @@ def _verify_group_raw_receipts(repo,bundle,group,exp,manifest):
         hashed(prefix+'determinism.db')
     if 'SOURCE_NUMERICS' in group_lanes(group):
         from ..opica_round4 import source_evaluator as evaluator,source_research as research
-        from ..opica_round4.source_checker import PASS_STATUS,caps
+        from ..opica_round4.source_checker import caps
+        from .post299.source_checker_v2 import PASS_STATUS
         prefix='SOURCE_NUMERICS/';row=load_bytes(evidence_bytes(bundle,prefix+'source-independent-result.json',MAX_BYTES))
-        ids=evaluator.EXPECTED_IDS;identity=evaluator.B.source_identity();caps(row)
-        require(row.get('schema')=='OPICA4_SOURCE_NUMERICS_LANE_V1' and row.get('status')==PASS_STATUS and
-                row.get('acceptance_eligible') is True and row.get('checked_commit')==exp['requested_commit'] and
+        ids=evaluator.EXPECTED_IDS;identity=evaluator.B.source_identity()
+        # The portable replay summary has V2 authority. Its case records still
+        # use the frozen V1 authority and are checked with caps() below.
+        require(all(type(row.get(k)) is type(v) and row[k]==v for k,v in evaluator.B.CAPS.items()),
+                'Changed finite source summary firewall')
+        require(row.get('schema')=='OPICA4_SOURCE_NUMERICS_LANE_V2_CANDIDATE' and row.get('status')==PASS_STATUS and
+                row.get('acceptance_eligible') is False and row.get('checked_commit')==exp['requested_commit'] and
                 row.get('checked_tree')==exp['requested_tree'] and row.get('source_identity')==identity and
                 row.get('modes')==['normal','optimized'] and row.get('case_ids')==ids and
                 type(row.get('independently_recomputed_cases')) is int and row['independently_recomputed_cases']==len(ids) and
-                row.get('authority')=='FINITE_INTERVAL_EVIDENCE_ONLY' and row.get('is_zero_generated_detector') is False and
+                row.get('authority')=='CANDIDATE_V2_FINITE_INTERVAL_EVIDENCE_NOT_RELEASE' and row.get('is_zero_generated_detector') is False and
                 row.get('kernel_or_cell_authority') is False and
                 row.get('identity_ball_checks')=='CONSISTENCY_ONLY_EXISTING_LEAN_IDENTITIES_RETAIN_THEOREM_AUTHORITY',
                 'Independent finite-source receipt differs')

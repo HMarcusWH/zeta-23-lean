@@ -80,6 +80,12 @@ All numerical signs must be determined from rigorous Arb enclosures;
 unknown/overlapping intervals remain unresolved. No finite scan is a
 proof of absence of a first crossing or an all-aperture inequality.
 
+In the V2 JSON format, finite `lower` and `upper` use exact rational
+strings for the directed Arb endpoints. Parse them as fractions, including
+integer strings for whole endpoints. V1 endpoint strings used rounded
+decimal display and should be treated as display values. The finite
+sign classifications are computed directly from the Arb balls.
+
 ## Acceptance and release rules
 
 - Exact algebra tests must pass without external packages.

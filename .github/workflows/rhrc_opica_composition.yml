@@ -10,20 +10,13 @@ concurrency:
   group: opica-round4-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 env:
-  # V1 historical acceptance on PR300 replays the immutable accepted PR299
-  # checkout only. This is regression evidence, NEVER current-head acceptance.
-  # Post299 successor source, compiler, graph and negative-control gates
-  # independently validate the actual PR300 head.
-  OPICA4_REPLAY_REF: ${{ (github.event_name == 'pull_request' && ((github.event.pull_request.number == 300 && github.event.pull_request.head.ref == 'research/step4-parity-moment-shift-20261113') || (github.event.pull_request.number == 301 && github.event.pull_request.head.ref == 'research/post300-k5-mixed-source-20261114'))) && 'df914f38f26bdc4109aeaa13f48b3896c3bc61b1' || (github.event.pull_request.head.sha || github.sha) }}
+  # Bind all live lanes to the current checkout. Historical #299 stays separate.
+  OPICA4_REPLAY_REF: ${{ github.event.pull_request.head.sha || github.sha }}
   PYTHONUTF8: '1'
   PYTHONDONTWRITEBYTECODE: '1'
   LEAN_NUM_THREADS: '2'
 jobs:
   lanes:
-    # Historic #299 V1 is already 15/15 green at exactly the merged tree.
-    # For explicitly named PR300 and PR301 successors, V1 historical jobs are
-    # intentionally SKIPPED; separately verify the accepted 15/15 original run.
-    if: ${{ !(github.event_name == 'pull_request' && ((github.event.pull_request.number == 300 && github.event.pull_request.head.ref == 'research/step4-parity-moment-shift-20261113') || (github.event.pull_request.number == 301 && github.event.pull_request.head.ref == 'research/post300-k5-mixed-source-20261114'))) }}
     name: Round4 / ${{ matrix.lane }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
@@ -138,7 +131,7 @@ jobs:
   independent:
     name: Round4 / INDEPENDENT_${{ matrix.group }}
     needs: lanes
-    if: ${{ always() && !(github.event_name == 'pull_request' && ((github.event.pull_request.number == 300 && github.event.pull_request.head.ref == 'research/step4-parity-moment-shift-20261113') || (github.event.pull_request.number == 301 && github.event.pull_request.head.ref == 'research/post300-k5-mixed-source-20261114'))) }}
+    if: ${{ always() }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     strategy:
@@ -476,7 +469,7 @@ jobs:
   acceptance:
     name: Round4 / ACCEPTANCE
     needs: [lanes, independent]
-    if: ${{ always() && !(github.event_name == 'pull_request' && ((github.event.pull_request.number == 300 && github.event.pull_request.head.ref == 'research/step4-parity-moment-shift-20261113') || (github.event.pull_request.number == 301 && github.event.pull_request.head.ref == 'research/post300-k5-mixed-source-20261114'))) }}
+    if: ${{ always() }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
@@ -555,6 +548,13 @@ jobs:
           name: opica4-acceptance-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/opica4-acceptance
           if-no-files-found: error
+      - name: Publish the exact accepted Round4 receipt for the successor release gate
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ success() && github.event_name == 'pull_request' && (github.event.pull_request.number == 300 || github.event.pull_request.number == 301) }}
+        with:
+          name: opica4-release-receipt-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/opica4-acceptance/acceptance.json
+          if-no-files-found: error
       - name: Record acceptance diagnostic disposition
         if: ${{ always() }}
         continue-on-error: true
@@ -629,8 +629,8 @@ jobs:
           assert curr["full_round4_accepted"] is False
           assert curr["successor_human_review"]=="PENDING"
           assert curr["RH"]=="OPEN" and curr["Step4"]=="OPEN"
-          print(f"Historical 15/15 V1 result authenticated; PR{os.environ['REVIEWED_PR_NUMBER']} V1 jobs SKIPPED by versioned exception.")
-          print("NOT CURRENT V1 ACCEPTANCE. Separate real V2 source and current theorem gates required.")
+          print("Historical 15/15 V1 result authenticated at the accepted #299 tree.")
+          print("The successor also requires its own full Round4 acceptance, V2 source evidence, and current theorem gates.")
           PY
       - name: Preserve historical regression and current-scope receipts
         if: ${{ always() }}

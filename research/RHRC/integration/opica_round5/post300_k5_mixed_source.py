@@ -14,9 +14,15 @@ import math
 from pathlib import Path
 import sys
 
+REPO = Path(__file__).resolve().parents[4]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from research.RHRC.closure_batch.interval_codec import DyadicInterval
+
 K = 5
 BASE_COMMIT = "df914f38f26bdc4109aeaa13f48b3896c3bc61b1"
-SCHEMA = "RHRC_POST300_K5_MIXED_SOURCE_RESEARCH_V1"
+SCHEMA = "RHRC_POST300_K5_MIXED_SOURCE_RESEARCH_V2"
 CAP = "EXPERIMENTAL_SIGNAL_ONLY"
 CENTER = {0: F(1), 1: -F(4,5), 2: F(2,5), 3: -F(4,35), 4: F(1,70), 5: F(0)}
 ODD = {1: F(42), 2: F(-48), 3: F(27), 4: F(-8), 5: F(1)}
@@ -116,8 +122,8 @@ def _record(z):
     sign = ("CERTIFIED_POSITIVE" if bool(z > 0) else
             "CERTIFIED_NEGATIVE" if bool(z < 0) else
             "CERTIFIED_ZERO" if z.is_zero() else "UNRESOLVED_CONTAINS_ZERO")
-    return {"sign":sign, "lower":z.lower().str(32,radius=False),
-            "upper":z.upper().str(32,radius=False)}
+    bounds = DyadicInterval.from_arb(z)
+    return {"sign": sign, "lower": fstr(bounds.lo), "upper": fstr(bounds.hi)}
 
 
 def _dot(A, x, y, arb):

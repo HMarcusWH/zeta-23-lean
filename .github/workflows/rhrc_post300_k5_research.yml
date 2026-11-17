@@ -21,7 +21,7 @@ jobs:
           persist-credentials: false
       - name: Run no-dependency exact rational checks
         run: |
-          python3 research/RHRC/integration/opica_round5/test_post300_k5_mixed_source.py
+          python3 research/RHRC/integration/opica_round5/test_post300_k5_mixed_source.py K5ParityQuotientTests
           python3 research/RHRC/integration/opica_round5/post300_k5_mixed_source.py --exact-only --output /tmp/k5-exact.json
           python3 -O research/RHRC/integration/opica_round5/post300_k5_mixed_source.py --exact-only --output /tmp/k5-exact-optimized.json
           python3 - <<'PY'
@@ -60,6 +60,7 @@ jobs:
           PY
       - name: Test native canonical source and five exact-control cases
         run: |
+          python research/RHRC/integration/opica_round5/test_post300_k5_mixed_source.py K5ArbEndpointTests
           python research/RHRC/integration/opica_round5/post300_k5_mixed_source.py \
             --L-num 2 --L-den 1 --cutoff 7 --precision 192 \
             --output /tmp/k5-source-L2.json

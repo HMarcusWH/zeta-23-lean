@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Zero-third-party-dependency exact checks for the post-300 K5 frame."""
+"""Exact K5 frame checks and an Arb endpoint regression."""
+from importlib.util import find_spec
+import json
 import unittest
 
 from post300_k5_mixed_source import (
-    K, CENTER, ODD, F, center, shift, moment, gram_poly, exact_geometry
+    K, CENTER, ODD, F, center, shift, moment, gram_poly, exact_geometry, _record
 )
 
 
@@ -51,6 +53,33 @@ class K5ParityQuotientTests(unittest.TestCase):
         # Arbitrary symmetric 2x2 source cannot force a positive quotient.
         a, b, c = F(1), F(2), F(1)
         self.assertLess(c-b*b/a, 0)
+
+
+@unittest.skipUnless(find_spec("flint") is not None, "Arb backend not installed")
+class K5ArbEndpointTests(unittest.TestCase):
+    def test_exact_endpoint_json_roundtrip(self):
+        from flint import arb, ctx
+
+        for precision in (192, 256):
+            with ctx.workprec(precision):
+                # An exact value with a repeating decimal exposes inward rounding
+                # when the ball's endpoints are printed at only 32 digits.
+                for q in (F(1, 3), F(-1, 3), F(0)):
+                    with self.subTest(precision=precision, q=q):
+                        value = arb(q.numerator) / q.denominator
+                        record = json.loads(json.dumps(_record(value)))
+                        lo, hi = F(record["lower"]), F(record["upper"])
+                        self.assertLessEqual(lo, q)
+                        self.assertGreaterEqual(hi, q)
+                        for endpoint, bound in ((value.lower(), lo), (value.upper(), hi)):
+                            mantissa, exponent = endpoint.man_exp()
+                            self.assertEqual(bound, F(int(mantissa)) * F(2) ** int(exponent))
+                        self.assertEqual(
+                            record["sign"],
+                            "CERTIFIED_POSITIVE" if q > 0 else
+                            "CERTIFIED_NEGATIVE" if q < 0 else "CERTIFIED_ZERO",
+                        )
+        self.assertEqual(_record(arb("nan")), {"sign": "UNRESOLVED_NONFINITE"})
 
 
 if __name__ == "__main__":

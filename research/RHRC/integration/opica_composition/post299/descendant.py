@@ -43,15 +43,15 @@ ADDED_SOURCE = {
     "research/RHRC/integration/opica_composition/post299/composite_candidate.py":
         "c8eb38c47e905fea4889c868da3500cabacd2b1b",
     "research/RHRC/integration/opica_composition/post299/release_review_gate.py":
-        "cff588e5aec1eb8e9d2e290dfd19e58f1abad0a9",
+        "bf7d94b53c487730f4bb806e957025ac4cd81686",
     ".github/workflows/rhrc_post300_k5_research.yml":
-        "f2800c4d337f0e977d39655b88b7c2f1c3748b7a",
+        "30fb8bb0e7fd0d31e9b4e9cc2c80aac4117c0825",
     "research/RHRC/integration/opica_round5/K5_MIXED_SOURCE_SPEC.md":
-        "e5c7a39264d7eaf9b17e896b6f4d8b143bd9eb23",
+        "2e0809820134a62dae4d836db00f015c97cfbd91",
     "research/RHRC/integration/opica_round5/post300_k5_mixed_source.py":
-        "eb02de2124a0b9ead71d9ca8a648bf67dfb26323",
+        "6271b99d2b75d0b71de54dd93d13d2e6e864c0ac",
     "research/RHRC/integration/opica_round5/test_post300_k5_mixed_source.py":
-        "9da8be9c50fc668fa27d561b28a6f115e2f55199",
+        "536182e1e46cf21f63dd641f499a22fbbf5a4efa",
     "research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md":
         "45f29fa6f3a7a90f27a74bd72e71efaf0e4c356f",
     "research/RHRC/integration/opica_composition/post299/portable_runtime.py":
@@ -67,7 +67,7 @@ ADDED_SOURCE = {
     "research/RHRC/integration/opica_composition/post299/real_source_replay.py":
         "28155e024f6dca95579c49bae24fae3623ad1f27",
     ".github/workflows/rhrc_post300_runtime_portability_candidate.yml":
-        "76d0b2a891a24ded8f30479b62afe86ec2bc48b8",
+        "a34ff24594b46c8d0ca90c122d574e8affb42aa4",
     "research/RHRC/integration/opica_composition/post299/baseline_v1_provenance.py":
         "32920ffd1fa81415b72aa5a14ec57acf583324f6",
 }
@@ -75,10 +75,12 @@ THIS_VALIDATOR = (
     "research/RHRC/integration/opica_composition/post299/descendant.py"
 )
 CHANGED_SOURCE = {
-    # Versioned integration repair: frozen V1 runs on PR299, never the PR300
-    # successor tree. This workflow blob is pinned exactly in the successor.
-    ".github/workflows/rhrc_opica_composition.yml": "17cb04bc9b2c72f5a35a60cbf107680718bf09fc",
-    "research/RHRC/integration/opica_composition/cli.py": "e587c38e32ecc416df403133e5eef1038c00b176",
+    "research/RHRC/integration/opica_composition/tests/test_end_to_end.py": "c825b2ceeda43b2524d064d7d2b0bdc7c761cf7d",
+    "research/RHRC/integration/opica_composition/service.py": "68b6923c0b5dd794079e4e899be5e428f32a727a",
+    # Successor qualification executes all Round4 lanes at the candidate tree.
+    # Only the frozen V1 receipt and its original source remain historical.
+    ".github/workflows/rhrc_opica_composition.yml": "8454fbce773e30c2f1a0a7fd0804d04791177897",
+    "research/RHRC/integration/opica_composition/cli.py": "e71b9709328c642692597cc24edd69e3979caed1",
     "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json":
         "8851d0a9cd5bc234af376cf35ca0c9894dcee0df",
 }
