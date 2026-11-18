@@ -158,12 +158,13 @@ def _collect_failed_native_diagnostics(lane,repo,output):
         unlinked(path.parent);path.parent.mkdir(parents=True,exist_ok=True);unlinked(path.parent)
         fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL|getattr(os,'O_NOFOLLOW',0),0o600)
         with os.fdopen(fd,'wb') as stream:stream.write(data)
-    # Test lanes can fail before native work starts. Only these six authored
-    # test output paths and the fixed canonical command log are eligible:
-    # receipt fields cannot redirect collection.
+    # Fixed authored paths cover tests, canonical commands and the selected
+    # provider replay receipt. Receipt fields cannot redirect collection.
     # They share the native collector's byte/file budgets and no-follow reads.
     fixed_outputs=['tests/'+mode+suffix for mode in ('normal','optimized')
                    for suffix in ('.json','.log','.driver.log')]+['canonical-current.log','classification.log']
+    if lane == 'PROVIDER_SELECTED':
+        fixed_outputs.append('provider-independent/result.json')
     for relative in fixed_outputs:
         try:
             path=unlinked(output/relative);info=os.lstat(path)
@@ -365,6 +366,32 @@ def support_regressions(repo,output):
         rows.append({'command':row,'receipt':receipt})
     return rows
 
+@contextmanager
+def _selected_provider_tools():
+    from .provider import configuration
+
+    # Both jobs install the same pinned provider toolchain. Use its Lake
+    # binary so replay identity is independent of the hosted Elan launcher.
+    toolchain = configuration()['toolchain']
+    installed_name = toolchain.replace('/', '--').replace(':', '---')
+    suffix = '.exe' if os.name == 'nt' else ''
+    binary_dir = Path.home() / '.elan' / 'toolchains' / installed_name / 'bin'
+    lake = unlinked(binary_dir / ('lake' + suffix))
+    require(lake.is_file(), 'Pinned provider Lake binary required')
+    require(unlinked(binary_dir / ('lean' + suffix)).is_file(), 'Pinned provider Lean binary required')
+    # Elan normally adds the chosen toolchain bin to PATH. Preserve that
+    # compiler resolution when running Lake directly, only for this provider.
+    previous_path = os.environ.get('PATH')
+    os.environ['PATH'] = str(binary_dir) + (os.pathsep + previous_path if previous_path else '')
+    try:
+        yield lake
+    finally:
+        if previous_path is None:
+            os.environ.pop('PATH', None)
+        else:
+            os.environ['PATH'] = previous_path
+
+
 def _run_lane_impl(lane,repo,output,exp,*,provider_root=None):
     source=validate_descendant(repo,require_clean=True);write(output/'source.json',source)
     from .testing import run_modes,checked_inventory
@@ -397,8 +424,9 @@ def _run_lane_impl(lane,repo,output,exp,*,provider_root=None):
     elif lane=='PROVIDER_SELECTED':
         from .provider import produce,verify
         require(provider_root is not None,'Pinned provider checkout required')
-        results['provider']=produce(Path(provider_root),output/'provider-producer')
-        results['provider_independent']=verify(Path(provider_root),output/'provider-producer',output/'provider-independent')
+        with _selected_provider_tools() as lake:
+            results['provider']=produce(Path(provider_root),output/'provider-producer',lake=lake)
+            results['provider_independent']=verify(Path(provider_root),output/'provider-producer',output/'provider-independent',lake=lake)
     elif lane=='GENERATED_STATE':results['generated']=generated_state(repo,output,source)
     elif lane in {'COMPOSITION_FORMAL','SEMANTIC_NEGATIVES','REPLAY_CAMPAIGN','FRAMEWORK_ADAPTERS'}:
         require(methods,'Actual required lane tests absent')
@@ -490,7 +518,9 @@ def _replay_lane_behavior(lane, results, record, files, repo, independent_output
     elif lane=='PROVIDER_SELECTED':
         from .provider import verify
         require(provider_root is not None,'Independent pinned provider required')
-        verify(Path(provider_root),files['results.json'].parent/'provider-producer',independent_output/'provider-independent')
+        with _selected_provider_tools() as lake:
+            verify(Path(provider_root),files['results.json'].parent/'provider-producer',
+                   independent_output/'provider-independent',lake=lake)
     elif lane=='GENERATED_STATE':
         emit_phase_diagnostic(lane, 'canonical.start')
         fresh=generated_state(repo,independent_output,current)

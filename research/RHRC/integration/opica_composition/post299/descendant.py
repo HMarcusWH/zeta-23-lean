@@ -80,7 +80,7 @@ CHANGED_SOURCE = {
     # Successor qualification executes all Round4 lanes at the candidate tree.
     # Only the frozen V1 receipt and its original source remain historical.
     ".github/workflows/rhrc_opica_composition.yml": "8454fbce773e30c2f1a0a7fd0804d04791177897",
-    "research/RHRC/integration/opica_composition/cli.py": "ee05b718eb16598be45b42d30e36297ca41b9087",
+    "research/RHRC/integration/opica_composition/cli.py": "5f12c95c8b056d73cc10c9a9873f9f8acbb883d1",
     "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json":
         "8851d0a9cd5bc234af376cf35ca0c9894dcee0df",
 }
