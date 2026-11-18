@@ -13894,6 +13894,19 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound5/ParityMomentBridge.lean",
+      "module": "Zeta23.OPICARound5.ParityMomentBridge",
+      "module_id": "rh:module:Zeta23.OPICARound5.ParityMomentBridge",
+      "named_source_declaration_count": 28,
+      "path": "Zeta23/OPICARound5/ParityMomentBridge.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA5_PARITY_SEED_FORMAL_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/PairCeiling/Bridge.lean",
       "module": "Zeta23.PairCeiling.Bridge",
       "module_id": "rh:module:Zeta23.PairCeiling.Bridge",
@@ -18474,7 +18487,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1260,
+  "entry_count": 1261,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

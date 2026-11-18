@@ -20,7 +20,7 @@ class EndToEndTests(unittest.TestCase):
         # Native source/config absence is an error, never a skipped test.
         from research.RHRC.integration.opica_composition.tests.test_executor import native_context,calibration
         from research.RHRC.integration.opica_composition.proposals import calibration_plan
-        from research.RHRC.integration.opica_composition.descendant import validate_descendant
+        from research.RHRC.integration.opica_composition.post299.descendant import validate_descendant
         worker,snapshot,root=native_context()
         require(worker.production is True,'Linux isolated end-to-end qualification required')
         validate_descendant(Path(snapshot.repo),require_clean=True)

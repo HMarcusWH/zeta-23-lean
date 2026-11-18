@@ -19,7 +19,10 @@ from .snapshot import (file_hash,unlinked,seal_evidence_tree,copy_evidence_tree,
                        TRANSPORT_MAX_ENTRIES,TRANSPORT_MAX_DEPTH,TRANSPORT_MAX_FILE_BYTES,
                        TRANSPORT_MAX_BYTES,TRANSPORT_MAX_CONTAINER_BYTES)
 from .snapshot import retire_copied_evidence_tree
-from .descendant import validate_descendant,BASE,BASE_TREE,git
+from .descendant import BASE,BASE_TREE,git
+# The accepted OPICA4 validator remains immutable. A reviewed post299 source
+# scope separately authenticates the descendant of PR299 at the current head.
+from .post299.descendant import validate_descendant
 from .accept import (ROUND4_LANES,verify_lane_bundle,require_test_receipt,accept_application_scope,
                      REPLAY_GROUP_IDS,group_lanes,verify_independent_group,join_independent_groups)
 
@@ -155,12 +158,13 @@ def _collect_failed_native_diagnostics(lane,repo,output):
         unlinked(path.parent);path.parent.mkdir(parents=True,exist_ok=True);unlinked(path.parent)
         fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL|getattr(os,'O_NOFOLLOW',0),0o600)
         with os.fdopen(fd,'wb') as stream:stream.write(data)
-    # Test lanes can fail before native work starts. Only these six authored
-    # test output paths and the fixed canonical command log are eligible:
-    # receipt fields cannot redirect collection.
+    # Fixed authored paths cover tests, canonical commands and the selected
+    # provider replay receipt. Receipt fields cannot redirect collection.
     # They share the native collector's byte/file budgets and no-follow reads.
     fixed_outputs=['tests/'+mode+suffix for mode in ('normal','optimized')
-                   for suffix in ('.json','.log','.driver.log')]+['canonical-current.log']
+                   for suffix in ('.json','.log','.driver.log')]+['canonical-current.log','classification.log']
+    if lane == 'PROVIDER_SELECTED':
+        fixed_outputs.append('provider-independent/result.json')
     for relative in fixed_outputs:
         try:
             path=unlinked(output/relative);info=os.lstat(path)
@@ -316,7 +320,17 @@ def run_command(repo,argv,output,label):
     require(result.returncode==0,'Required command failed: '+str(log))
     return {'argv':list(map(str,argv)),'exit_code':result.returncode,'log':log.name,'sha256':file_hash(log)}
 
-def generated_state(repo,output):
+def classification_command(source):
+    # Source is the locally authenticated inspection, never the receipt.
+    if source.get('schema') in ('OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2',
+                               'OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V3'):
+        return [sys.executable,'-B','-m',
+                'research.RHRC.integration.opica_composition.post299.descendant',
+                '--check-classification']
+    return [sys.executable,'-B','-m','unittest',
+            'research.RHRC.integration.opica_round2.tests.test_file_classes']
+
+def generated_state(repo,output,source):
     # The original writer is preserved. Qualification checks products without rewriting source.
     before=git(repo,'status','--porcelain','--untracked-files=all')
     require(not before,'Generated-state qualification requires clean committed source')
@@ -326,7 +340,7 @@ def generated_state(repo,output):
     from .cache_owner import CacheWriterLease
     with CacheWriterLease(Path(repo)/'.lake/build'):
         canonical=run_command(repo,[sys.executable,'-B','research/RHRC/tools/materialize_derived_state.py','--check'],output,'canonical-current')
-    records=[canonical,run_command(repo,[sys.executable,'-B','-m','unittest','research.RHRC.integration.opica_round2.tests.test_file_classes'],output,'classification')]
+    records=[canonical,run_command(repo,classification_command(source),output,'classification')]
     require(not git(repo,'status','--porcelain','--untracked-files=all'),'Canonical checker changed source')
     require(products=={r['path']:file_hash(Path(repo)/r['path']) for r in paths},'Canonical check changed products')
     from .journal import Journal
@@ -351,6 +365,32 @@ def support_regressions(repo,output):
         require(receipt['optimized'] is bool(mode),'Support regression mode differs')
         rows.append({'command':row,'receipt':receipt})
     return rows
+
+@contextmanager
+def _selected_provider_tools():
+    from .provider import configuration
+
+    # Both jobs install the same pinned provider toolchain. Use its Lake
+    # binary so replay identity is independent of the hosted Elan launcher.
+    toolchain = configuration()['toolchain']
+    installed_name = toolchain.replace('/', '--').replace(':', '---')
+    suffix = '.exe' if os.name == 'nt' else ''
+    binary_dir = Path.home() / '.elan' / 'toolchains' / installed_name / 'bin'
+    lake = unlinked(binary_dir / ('lake' + suffix))
+    require(lake.is_file(), 'Pinned provider Lake binary required')
+    require(unlinked(binary_dir / ('lean' + suffix)).is_file(), 'Pinned provider Lean binary required')
+    # Elan normally adds the chosen toolchain bin to PATH. Preserve that
+    # compiler resolution when running Lake directly, only for this provider.
+    previous_path = os.environ.get('PATH')
+    os.environ['PATH'] = str(binary_dir) + (os.pathsep + previous_path if previous_path else '')
+    try:
+        yield lake
+    finally:
+        if previous_path is None:
+            os.environ.pop('PATH', None)
+        else:
+            os.environ['PATH'] = previous_path
+
 
 def _run_lane_impl(lane,repo,output,exp,*,provider_root=None):
     source=validate_descendant(repo,require_clean=True);write(output/'source.json',source)
@@ -384,9 +424,10 @@ def _run_lane_impl(lane,repo,output,exp,*,provider_root=None):
     elif lane=='PROVIDER_SELECTED':
         from .provider import produce,verify
         require(provider_root is not None,'Pinned provider checkout required')
-        results['provider']=produce(Path(provider_root),output/'provider-producer')
-        results['provider_independent']=verify(Path(provider_root),output/'provider-producer',output/'provider-independent')
-    elif lane=='GENERATED_STATE':results['generated']=generated_state(repo,output)
+        with _selected_provider_tools() as lake:
+            results['provider']=produce(Path(provider_root),output/'provider-producer',lake=lake)
+            results['provider_independent']=verify(Path(provider_root),output/'provider-producer',output/'provider-independent',lake=lake)
+    elif lane=='GENERATED_STATE':results['generated']=generated_state(repo,output,source)
     elif lane in {'COMPOSITION_FORMAL','SEMANTIC_NEGATIVES','REPLAY_CAMPAIGN','FRAMEWORK_ADAPTERS'}:
         require(methods,'Actual required lane tests absent')
         if lane=='FRAMEWORK_ADAPTERS':results['support_regressions']=support_regressions(repo,output)
@@ -433,12 +474,12 @@ def verify_lane_raw(expected,record,files,repo,independent_output,provider_root=
     from .testing import emit_phase_diagnostic
     emit_phase_diagnostic(lane, 'replay.start')
     with _independent_native_scope(lane, repo, independent_output, record['experiment']):
-        _replay_lane_behavior(lane, results, record, files, repo, independent_output, provider_root)
+        _replay_lane_behavior(lane, results, record, files, repo, independent_output, provider_root, current)
     emit_phase_diagnostic(lane, 'replay.end')
     return True
 
 
-def _replay_lane_behavior(lane, results, record, files, repo, independent_output, provider_root):
+def _replay_lane_behavior(lane, results, record, files, repo, independent_output, provider_root, current):
     from .testing import checked_inventory, run_modes, emit_phase_diagnostic
     methods=sorted(r['method'] for r in checked_inventory()['tests'] if r['lane']==lane)
     if methods:
@@ -466,7 +507,7 @@ def _replay_lane_behavior(lane, results, record, files, repo, independent_output
         require(fresh['status']=='PASS_MATHEMATICAL_SUPPORT','Mathematical native replay failed')
         emit_phase_diagnostic(lane, 'compiler.mathematics.end')
     elif lane=='SOURCE_NUMERICS':
-        from research.RHRC.integration.opica_round4.source_checker import verify_evaluator_evidence
+        from .post299.source_checker_v2 import verify_evaluator_evidence
         root=files['results.json'].parent
         fresh=verify_evaluator_evidence(root/'source-producer',independent_output/'source-independent',require_clean=True,
             expected_head=record['experiment']['requested_commit'],expected_tree=record['experiment']['requested_tree'])
@@ -477,10 +518,12 @@ def _replay_lane_behavior(lane, results, record, files, repo, independent_output
     elif lane=='PROVIDER_SELECTED':
         from .provider import verify
         require(provider_root is not None,'Independent pinned provider required')
-        verify(Path(provider_root),files['results.json'].parent/'provider-producer',independent_output/'provider-independent')
+        with _selected_provider_tools() as lake:
+            verify(Path(provider_root),files['results.json'].parent/'provider-producer',
+                   independent_output/'provider-independent',lake=lake)
     elif lane=='GENERATED_STATE':
         emit_phase_diagnostic(lane, 'canonical.start')
-        fresh=generated_state(repo,independent_output)
+        fresh=generated_state(repo,independent_output,current)
         write(independent_output/'generated-state.json',fresh)
         emit_phase_diagnostic(lane, 'canonical.end')
     elif lane=='FRAMEWORK_ADAPTERS':support_regressions(repo,independent_output)
@@ -624,7 +667,7 @@ def _group_tree_shape(manifest,group):
                 'Nonnative group lane cannot carry a native archive')
 
 
-def _verify_group_raw_receipts(repo,bundle,group,exp,manifest):
+def _verify_group_raw_receipts(repo,bundle,group,exp,manifest,current):
     """Cheap receipt completeness after source-owned replay, with no new execution."""
     from .testing import checked_inventory
     inventory=checked_inventory();hashes={row['path']:row['sha256'] for row in manifest['files']}
@@ -651,7 +694,7 @@ def _verify_group_raw_receipts(repo,bundle,group,exp,manifest):
                 row['canonical_products']=={item['path']:file_hash(Path(repo)/item['path']) for item in paths},
                 'Independent canonical product receipt differs')
         recipes=[([sys.executable,'-B','research/RHRC/tools/materialize_derived_state.py','--check'],'canonical-current.log'),
-                 ([sys.executable,'-B','-m','unittest','research.RHRC.integration.opica_round2.tests.test_file_classes'],'classification.log')]
+                 (classification_command(current),'classification.log')]
         require(type(row['commands']) is list and len(row['commands'])==2,'Both canonical commands required')
         for command,(argv,log) in zip(row['commands'],recipes):
             closed_keys(command,{'argv','exit_code','log','sha256'})
@@ -669,15 +712,20 @@ def _verify_group_raw_receipts(repo,bundle,group,exp,manifest):
         hashed(prefix+'determinism.db')
     if 'SOURCE_NUMERICS' in group_lanes(group):
         from ..opica_round4 import source_evaluator as evaluator,source_research as research
-        from ..opica_round4.source_checker import PASS_STATUS,caps
+        from ..opica_round4.source_checker import caps
+        from .post299.source_checker_v2 import PASS_STATUS
         prefix='SOURCE_NUMERICS/';row=load_bytes(evidence_bytes(bundle,prefix+'source-independent-result.json',MAX_BYTES))
-        ids=evaluator.EXPECTED_IDS;identity=evaluator.B.source_identity();caps(row)
-        require(row.get('schema')=='OPICA4_SOURCE_NUMERICS_LANE_V1' and row.get('status')==PASS_STATUS and
-                row.get('acceptance_eligible') is True and row.get('checked_commit')==exp['requested_commit'] and
+        ids=evaluator.EXPECTED_IDS;identity=evaluator.B.source_identity()
+        # The portable replay summary has V2 authority. Its case records still
+        # use the frozen V1 authority and are checked with caps() below.
+        require(all(type(row.get(k)) is type(v) and row[k]==v for k,v in evaluator.B.CAPS.items()),
+                'Changed finite source summary firewall')
+        require(row.get('schema')=='OPICA4_SOURCE_NUMERICS_LANE_V2_CANDIDATE' and row.get('status')==PASS_STATUS and
+                row.get('acceptance_eligible') is False and row.get('checked_commit')==exp['requested_commit'] and
                 row.get('checked_tree')==exp['requested_tree'] and row.get('source_identity')==identity and
                 row.get('modes')==['normal','optimized'] and row.get('case_ids')==ids and
                 type(row.get('independently_recomputed_cases')) is int and row['independently_recomputed_cases']==len(ids) and
-                row.get('authority')=='FINITE_INTERVAL_EVIDENCE_ONLY' and row.get('is_zero_generated_detector') is False and
+                row.get('authority')=='CANDIDATE_V2_FINITE_INTERVAL_EVIDENCE_NOT_RELEASE' and row.get('is_zero_generated_detector') is False and
                 row.get('kernel_or_cell_authority') is False and
                 row.get('identity_ball_checks')=='CONSISTENCY_ONLY_EXISTING_LEAN_IDENTITIES_RETAIN_THEOREM_AUTHORITY',
                 'Independent finite-source receipt differs')
@@ -729,7 +777,7 @@ def _checked_group_bundle(repo,bundle,group,exp):
     require(load_bytes(evidence_bytes(bundle,'source.json',MAX_BYTES))==current==
             load_bytes(evidence_bytes(bundle,'source-after.json',MAX_BYTES)),
             'Independent group source differs from clean current checkout')
-    _verify_group_raw_receipts(repo,bundle,group,exp,manifest)
+    _verify_group_raw_receipts(repo,bundle,group,exp,manifest,current)
     require(_transport_seal(bundle)==sealed,'Independent group changed during verification')
     return record,sealed
 
