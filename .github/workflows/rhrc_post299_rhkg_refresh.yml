@@ -1,15 +1,16 @@
-name: PR300 guarded one-shot post299 RHKG refresh
+name: PR300 and PR302 guarded one-shot post299 RHKG refresh
 
-# Recheck repaired V2 composite source policy at the current PR300 head (one-shot).
-# Explicit verified source-scoped push trigger: changing this very workflow
-# satisfies the push paths filter, unlike an empty control commit.
+# Recheck the repaired V2 policy on the parity and stacked diagnostic branches.
+# Each branch has its own explicitly authorized commit prefix.
 # Independently rebuild and double-check deterministic derived state for the
 # exact reviewed parity successor. The accepted PR299 source stays immutable.
 # No conjecture or source inequality is promoted by this workflow.
 
 on:
   push:
-    branches: [research/step4-parity-moment-shift-20261113]
+    branches:
+      - research/step4-parity-moment-shift-20261113
+      - repair/pr300-runtime-portability-v2-20261115
     paths:
       - .github/workflows/rhrc_post299_rhkg_refresh.yml
       - research/RHRC/integration/opica_composition/post299/descendant.py
@@ -25,16 +26,23 @@ permissions:
   contents: write
 
 concurrency:
-  group: pr300-one-shot-derived-state-refresh
+  group: ${{ github.ref == 'refs/heads/repair/pr300-runtime-portability-v2-20261115' && 'pr302-one-shot-derived-state-refresh' || 'pr300-one-shot-derived-state-refresh' }}
   cancel-in-progress: false
 
 jobs:
   materialize-and-commit:
     if: >-
-      github.ref == 'refs/heads/research/step4-parity-moment-shift-20261113' &&
-      ((github.event_name == 'push' && startsWith(github.event.head_commit.message, 'ci(PR300): one-shot RHKG refresh')) ||
+      (github.ref == 'refs/heads/research/step4-parity-moment-shift-20261113' ||
+       github.ref == 'refs/heads/repair/pr300-runtime-portability-v2-20261115') &&
+      ((github.event_name == 'push' &&
+        ((github.ref == 'refs/heads/research/step4-parity-moment-shift-20261113' &&
+          startsWith(github.event.head_commit.message, 'ci(PR300): one-shot RHKG refresh')) ||
+         (github.ref == 'refs/heads/repair/pr300-runtime-portability-v2-20261115' &&
+          startsWith(github.event.head_commit.message, 'ci(PR302): one-shot RHKG refresh')))) ||
        (github.event_name == 'workflow_dispatch' && inputs.refresh_generated_state == true))
     runs-on: ubuntu-latest
+    env:
+      RHKG_REFRESH_PR: ${{ github.ref == 'refs/heads/repair/pr300-runtime-portability-v2-20261115' && '302' || '300' }}
     # Full 2,766-root regeneration + independent post-commit recheck exceeded
     # the former 90-minute limit on run 38815669679; retain all proof gates.
     # The initial no-write freshness observation may itself walk every root.
@@ -65,9 +73,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          case "$GITHUB_REF" in
-            refs/heads/research/step4-parity-moment-shift-20261113) ;;
-            *) echo 'Ref outside the sole authorized PR300 source branch'; exit 1 ;;
+          case "$GITHUB_REF:$RHKG_REFRESH_PR" in
+            refs/heads/research/step4-parity-moment-shift-20261113:300) ;;
+            refs/heads/repair/pr300-runtime-portability-v2-20261115:302) ;;
+            *) echo 'Ref and PR number do not match a guarded refresh branch'; exit 1 ;;
           esac
           test "$GITHUB_RUN_ATTEMPT" = "1"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
@@ -168,7 +177,7 @@ jobs:
           else
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m "chore(PR300): materialize and freeze exact-head RHKG derived state"
+            git commit -m "chore(PR${RHKG_REFRESH_PR}): materialize and freeze exact-head RHKG derived state"
             echo 'GENERATED_STATE_COMMITTED' > /tmp/pr300-rhkg/commit-disposition.txt
           fi
           git rev-parse HEAD > /tmp/pr300-rhkg/HEAD.txt
@@ -220,8 +229,12 @@ jobs:
           python - <<'PY'
           import base64, os, subprocess
           ref = os.environ['GITHUB_REF']
-          if ref != 'refs/heads/research/step4-parity-moment-shift-20261113':
-              raise SystemExit('Ref outside the sole authorized PR300 branch')
+          expected_ref = {
+              '300': 'refs/heads/research/step4-parity-moment-shift-20261113',
+              '302': 'refs/heads/repair/pr300-runtime-portability-v2-20261115',
+          }.get(os.environ['RHKG_REFRESH_PR'])
+          if ref != expected_ref:
+              raise SystemExit('Ref and PR number do not match a guarded refresh branch')
           token = os.environ.get('GH_PUSH_TOKEN')
           if not token:
               raise SystemExit('Missing final-push credential')
@@ -242,7 +255,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: pr300-rhkg-refresh-receipts-${{ github.run_id }}
+          name: pr${{ env.RHKG_REFRESH_PR }}-rhkg-refresh-receipts-${{ github.run_id }}
           path: /tmp/pr300-rhkg/
           retention-days: 20
           if-no-files-found: ignore
