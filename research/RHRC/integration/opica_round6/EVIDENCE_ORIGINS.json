@@ -1411,7 +1411,9 @@
     {
       "path": "step4-signed-correlation-round5-2026-11-11/SOURCE_CORE_FRAME_COMPOSITION.md",
       "original_sha256": "0a784aa0204dd66c5cf3dacc5b7fd406dc10214e7c7057f6283420161ddbe406",
-      "archive_member": false
+      "archive_member": false,
+      "published_sha256": "2f1d82d70850820df9decb3c6a9776eb6dba19df983fde5db441638f913fa111",
+      "publication_changes": "Historical readback and archive references mapped to the public survey and included notes."
     },
     {
       "path": "step4-signed-correlation-round5-2026-11-11/WEIGHTED_DISCREPANCY_ATTEMPT.md",

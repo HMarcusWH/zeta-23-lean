@@ -239,8 +239,8 @@ Its inverse cost remains explicit. Under (12), or under (13) on the actual loadi
 
 ### References and scope
 
-- `../step4-signed-response-round2-2026-11-10/OUTPUT_RECOVERY.md`, sections 3--8: sample nodes, rational tail, literal pole recovery and physical norms. This note constructs an additional linear map instead of inferring one from its final norm inequality.
-- `other-thread/1goT5JhaLBQg5FJM8r6wcXveZugUuY02C.txt`: A11 report 102 and its explicitly historical source-only mixed near-null estimate and rank cost.
-- `source-core/NEAR_NULL_CORE_THEOREM.md` and `source-core/SOURCE_COLUMN_CORE_AND_CLOSURE_CONTRACT.md`: exact preserved original Markdown proof bytes. `source-core/SOURCE_CORE_INPUT_PROVENANCE.json` records their verified hashes, original archive objects and every inventoried member path, together with the current source readback scope.
-- `FILTER_FAMILY_ATTEMPT.md`, sections 1 and 2: complete Gram-family bound and actual rough-prefix operators.
-- `../step4-complete-residual-round4-2026-11-10/ROUGH_ECHO_NATIVE_PAIRING.md`: prehistory, actual native rows, and full complement constraints.
+- See `OPICA_Round2_OUTPUT_RECOVERY.md` in the [research collection survey](../../DRIVE_SOURCE_SURVEY.json), sections 3--8: sample nodes, rational tail, literal pole recovery and physical norms. This note constructs an additional linear map instead of inferring one from its final norm inequality.
+- See `102_A11_NEAR_NULL_TO_FIXED_SPLIT_RESPONSE_BUDGET.md` in the [research collection survey](../../DRIVE_SOURCE_SURVEY.json). The report records the historical source-only mixed near-null estimate and rank cost.
+- The [research collection survey](../../DRIVE_SOURCE_SURVEY.json) lists `OPICA_Complete_Source_Core_Round5_2026-11-11.zip`. Its `source-core/` directory contains `NEAR_NULL_CORE_THEOREM.md` and `SOURCE_COLUMN_CORE_AND_CLOSURE_CONTRACT.md`. The archive member `source-core/SOURCE_CORE_INPUT_PROVENANCE.json` gives their original archive locations and verified hashes.
+- [Filter family attempt](FILTER_FAMILY_ATTEMPT.md), sections 1 and 2: complete Gram-family bound and actual rough-prefix operators.
+- [Rough echo native pairing](../step4-complete-residual-round4-2026-11-10/ROUGH_ECHO_NATIVE_PAIRING.md): prehistory, actual native rows, and full complement constraints.
