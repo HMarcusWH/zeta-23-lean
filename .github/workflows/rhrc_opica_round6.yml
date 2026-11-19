@@ -106,7 +106,7 @@ jobs:
           lake build "${modules[@]}"
           if [[ "$GROUP" == round6 ]]; then
             lake env lean -DwarningAsError=true -j2 -s262144 Zeta23/OPICARound6/PrimeFactorPaths/Verify.lean | tee "$out/finite-statements.log"
-            cp "$pkg/controls/NegativeTypes.lean.in" "$out/NegativeTypes.lean"
+            cp "$pkg/controls/NegativeTypes.lean.txt" "$out/NegativeTypes.lean"
             code=0
             lake env lean -DwarningAsError=true -j2 -s262144 "$out/NegativeTypes.lean" > "$out/negative-raw.log" 2>&1 || code=$?
             test "$code" -eq 1

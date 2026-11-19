@@ -1,6 +1,6 @@
 {
   "added": {
-    ".github/workflows/rhrc_opica_round6.yml": "b351623ea91f45bd406904d9704848ba3d5f23b5",
+    ".github/workflows/rhrc_opica_round6.yml": "a29cba0578074765c5bd712fe108507259057fa7",
     "Zeta23/OPICARound6/PrimeFactorPaths/DivisorStrip.lean": "34967c94c0a66d190e5cfa69bb4869946b06fc73",
     "Zeta23/OPICARound6/PrimeFactorPaths/FactorialKnot.lean": "3c16389557bd79d5aa6b59e4e87caf14db8a32c1",
     "Zeta23/OPICARound6/PrimeFactorPaths/FinitePairKernel.lean": "a0f7123ca0e6c670a57898bb84b3fa3e63b46fc8",
@@ -25,7 +25,7 @@
     "research/RHRC/integration/opica_round6/cone_parity.py": "a5fd8b23a07cf64b435fdad2819d060cf64a79af",
     "research/RHRC/integration/opica_round6/constraint_graph.py": "d454fd528c052087791156bd70673829becf0b4b",
     "research/RHRC/integration/opica_round6/controls/NegativeTypes.expected.txt": "d244bee1adb0dc147db62cb0a74e4f034b3ee183",
-    "research/RHRC/integration/opica_round6/controls/NegativeTypes.lean.in": "e8b977bc58bacd75f9b7cc6714830baa032d08f5",
+    "research/RHRC/integration/opica_round6/controls/NegativeTypes.lean.txt": "e8b977bc58bacd75f9b7cc6714830baa032d08f5",
     "research/RHRC/integration/opica_round6/evidence/step4-actual-loading-round6-2026-11-11/ACTUAL_LOADING_OPICA_CONSTRAINTS.md": "bb458526412aa9c12272a0b25288ac24b901fe8b",
     "research/RHRC/integration/opica_round6/evidence/step4-actual-loading-round6-2026-11-11/MOMENT_HIERARCHY_ATTEMPT.md": "0b6cfb366ad893bdada5a0fa8fee2b1f3ae092bf",
     "research/RHRC/integration/opica_round6/evidence/step4-actual-loading-round6-2026-11-11/POSITIVE_SOURCE_ENERGY_ATTEMPT.md": "9981fb0b0078a0f8ac0476239f31f63b0cd761f4",
