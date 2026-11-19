@@ -1,0 +1,96 @@
+name: Post300 K5 mixed-source research (candidate only)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "research/RHRC/integration/opica_round5/**"
+      - ".github/workflows/rhrc_post300_k5_research.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Run no-dependency exact rational checks
+        run: |
+          python3 research/RHRC/integration/opica_round5/test_post300_k5_mixed_source.py K5ParityQuotientTests
+          python3 research/RHRC/integration/opica_round5/post300_k5_mixed_source.py --exact-only --output /tmp/k5-exact.json
+          python3 -O research/RHRC/integration/opica_round5/post300_k5_mixed_source.py --exact-only --output /tmp/k5-exact-optimized.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/k5-exact.json'))
+          assert d['RH']=='OPEN' and d['Step4']=='OPEN'
+          assert d['claim_cap']=='EXPERIMENTAL_SIGNAL_ONLY'
+          assert d['exact_geometry']['gram_determinant_coefficientwise_positive']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: k5-exact-rational-frame
+          path: /tmp/k5-exact.json
+          if-no-files-found: error
+
+  finite-source-research:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13.5"
+      - name: Install finite Arb research dependencies
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_round2/python-checks.lock
+          python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
+          python - <<'PY'
+          import flint,sympy
+          assert flint.__version__=='0.9.0'
+          assert sympy.__version__=='1.14.0'
+          print('K5 Arb and symbolic environment pinned to inherited hash locks')
+          PY
+      - name: Test native canonical source and five exact-control cases
+        run: |
+          python research/RHRC/integration/opica_round5/test_post300_k5_mixed_source.py K5ArbEndpointTests
+          python research/RHRC/integration/opica_round5/post300_k5_mixed_source.py \
+            --L-num 2 --L-den 1 --cutoff 7 --precision 192 \
+            --output /tmp/k5-source-L2.json
+          python research/RHRC/integration/opica_round5/post300_k5_mixed_source.py \
+            --L-num 3 --L-den 1 --cutoff 20 --precision 192 \
+            --gamma-num 5 --gamma-den 1 --delta-num 1 --delta-den 2 \
+            --output /tmp/k5-source-L3.json
+          python - <<'PY'
+          import json
+          for name, atom in [("/tmp/k5-source-L2.json",7),("/tmp/k5-source-L3.json",19)]:
+              d=json.load(open(name))
+              assert d["RH"]=="OPEN" and d["Step4"]=="OPEN"
+              assert d["finite_probe"]["control_prime_power"]==atom
+              c=d["finite_probe"]["controls"]
+              assert set(c)=={"canonical","entering_prime_removed",
+                             "entering_prime_weight_plus_quarter",
+                             "synthetic_on_line","synthetic_off_line"}
+          # Frozen observational regression only. No universal claim follows.
+          l2=json.load(open("/tmp/k5-source-L2.json"))["finite_probe"]["controls"]
+          l3=json.load(open("/tmp/k5-source-L3.json"))["finite_probe"]["controls"]
+          assert l2["canonical"]["raw"]["schur"]["sign"]=="CERTIFIED_POSITIVE"
+          assert l2["synthetic_off_line"]["raw"]["schur"]["sign"]=="CERTIFIED_POSITIVE"
+          assert l3["canonical"]["raw"]["schur"]["sign"]=="CERTIFIED_POSITIVE"
+          assert l3["synthetic_off_line"]["raw"]["schur"]["sign"]=="CERTIFIED_NEGATIVE"
+          # UNRESOLVED numerical signs are legitimate research outcomes.
+          print("K5 research probe completed; no theorem promotion.")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k5-arb-finite-source-probe
+          path: /tmp/k5-source-L*.json
+          if-no-files-found: warn

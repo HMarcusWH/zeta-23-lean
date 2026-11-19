@@ -550,7 +550,7 @@ jobs:
           if-no-files-found: error
       - name: Publish the exact accepted Round4 receipt for the successor release gate
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: ${{ success() && github.event_name == 'pull_request' && github.event.pull_request.number == 300 }}
+        if: ${{ success() && github.event_name == 'pull_request' && (github.event.pull_request.number == 300 || github.event.pull_request.number == 301) }}
         with:
           name: opica4-release-receipt-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/opica4-acceptance/acceptance.json
@@ -591,7 +591,7 @@ jobs:
 
   historical-v1-baseline:
     name: Round4 / POST299_HISTORICAL_15_OF_15_REGRESSION_NOT_REPLAY
-    if: ${{ (github.event_name == 'pull_request' && github.event.pull_request.number == 300 && github.event.pull_request.head.ref == 'research/step4-parity-moment-shift-20261113') }}
+    if: ${{ (github.event_name == 'pull_request' && ((github.event.pull_request.number == 300 && github.event.pull_request.head.ref == 'research/step4-parity-moment-shift-20261113') || (github.event.pull_request.number == 301 && github.event.pull_request.head.ref == 'research/post300-k5-mixed-source-20261114'))) }}
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     permissions:
@@ -606,6 +606,7 @@ jobs:
       - name: Authenticate historical #299 run and exact present-head source
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          REVIEWED_PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
           python3 -B -m research.RHRC.integration.opica_composition.post299.baseline_v1_provenance --repo . --output "$RUNNER_TEMP/original-v1.json"
@@ -619,7 +620,12 @@ jobs:
           curr=json.loads((p/"current-source.json").read_text())
           assert prev["status"]=="PASS_FROZEN_V1_PREVIOUSLY_ACCEPTED"
           assert prev["authority"]=="REGRESSION_ONLY_NO_CURRENT_HEAD_ACCEPTANCE"
-          assert curr["schema"]=="OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2"
+          expected_schema = {
+              300: "OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2",
+              301: "OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V3",
+          }.get(int(os.environ["REVIEWED_PR_NUMBER"]))
+          assert expected_schema is not None, "Unexpected PR for frozen-V1 regression"
+          assert curr["schema"] == expected_schema, "PR-specific successor source schema mismatch"
           assert curr["full_round4_accepted"] is False
           assert curr["successor_human_review"]=="PENDING"
           assert curr["RH"]=="OPEN" and curr["Step4"]=="OPEN"

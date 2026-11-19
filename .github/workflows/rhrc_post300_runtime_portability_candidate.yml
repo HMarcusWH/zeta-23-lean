@@ -88,7 +88,7 @@ jobs:
           import json,os
           from pathlib import Path
           x=json.loads((Path(os.environ['RUNNER_TEMP'])/'post299-source-review-pending.json').read_text())
-          assert x['schema']=='OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2'
+          assert x['schema']=='OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V3'
           assert x['full_round4_accepted'] is False
           assert x['successor_human_review']=='PENDING'
           assert x['RH']=='OPEN' and x['Step4']=='OPEN'
@@ -218,7 +218,7 @@ jobs:
           import json,os
           from pathlib import Path
           v=json.loads((Path(os.environ["RUNNER_TEMP"])/"current-source.json").read_text())
-          assert v["schema"]=="OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2"
+          assert v["schema"]=="OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V3"
           assert v["status"]=="PASS_SOURCE_SCOPE_ONLY"
           assert v["full_round4_accepted"] is False
           assert v["successor_human_review"]=="PENDING"

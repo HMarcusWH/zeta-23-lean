@@ -33,15 +33,25 @@ PARENT_TREE = "5fc2aa4793b658c58dd89c1d36b0ceee756d400d"
 # Changes require a new reviewed successor version and fresh compiler receipts.
 ADDED_SOURCE = {
     ".github/workflows/rhrc_post299_parity_candidate.yml":
-        "c8f1607e88c7fe0a6648fb56e66ad107b746a29e",
+        "7039bb86a692fad36db498708678471f62ae3638",
     "Zeta23/OPICARound5/ParityMomentBridge.lean":
         "acecc7d2cd78bf2178c67b03019de40fcb2eab79",
     ".github/workflows/rhrc_post299_rhkg_refresh.yml":
         "70453a89a5d8b99a60e306dbdc5f5e1741f59971",
+    ".github/workflows/rhrc_post300_k5_rhkg_refresh.yml":
+        "61fbfa0dd543ba99e29636e6e1f5ba36c30854ed",
     "research/RHRC/integration/opica_composition/post299/composite_candidate.py":
         "c8eb38c47e905fea4889c868da3500cabacd2b1b",
     "research/RHRC/integration/opica_composition/post299/release_review_gate.py":
         "bf7d94b53c487730f4bb806e957025ac4cd81686",
+    ".github/workflows/rhrc_post300_k5_research.yml":
+        "30fb8bb0e7fd0d31e9b4e9cc2c80aac4117c0825",
+    "research/RHRC/integration/opica_round5/K5_MIXED_SOURCE_SPEC.md":
+        "2e0809820134a62dae4d836db00f015c97cfbd91",
+    "research/RHRC/integration/opica_round5/post300_k5_mixed_source.py":
+        "6271b99d2b75d0b71de54dd93d13d2e6e864c0ac",
+    "research/RHRC/integration/opica_round5/test_post300_k5_mixed_source.py":
+        "536182e1e46cf21f63dd641f499a22fbbf5a4efa",
     "research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md":
         "45f29fa6f3a7a90f27a74bd72e71efaf0e4c356f",
     "research/RHRC/integration/opica_composition/post299/portable_runtime.py":
@@ -57,7 +67,7 @@ ADDED_SOURCE = {
     "research/RHRC/integration/opica_composition/post299/real_source_replay.py":
         "28155e024f6dca95579c49bae24fae3623ad1f27",
     ".github/workflows/rhrc_post300_runtime_portability_candidate.yml":
-        "7378cf082bee979c6718fb49708208e96ce8cc92",
+        "a34ff24594b46c8d0ca90c122d574e8affb42aa4",
     "research/RHRC/integration/opica_composition/post299/baseline_v1_provenance.py":
         "32920ffd1fa81415b72aa5a14ec57acf583324f6",
 }
@@ -65,12 +75,12 @@ THIS_VALIDATOR = (
     "research/RHRC/integration/opica_composition/post299/descendant.py"
 )
 CHANGED_SOURCE = {
+    "research/RHRC/integration/opica_composition/tests/test_end_to_end.py": "c825b2ceeda43b2524d064d7d2b0bdc7c761cf7d",
+    "research/RHRC/integration/opica_composition/service.py": "68b6923c0b5dd794079e4e899be5e428f32a727a",
     # Successor qualification executes all Round4 lanes at the candidate tree.
     # Only the frozen V1 receipt and its original source remain historical.
-    ".github/workflows/rhrc_opica_composition.yml": "7887065361662e2c4f69011b8987bdc71555f71a",
+    ".github/workflows/rhrc_opica_composition.yml": "8454fbce773e30c2f1a0a7fd0804d04791177897",
     "research/RHRC/integration/opica_composition/cli.py": "5f12c95c8b056d73cc10c9a9873f9f8acbb883d1",
-    "research/RHRC/integration/opica_composition/service.py": "68b6923c0b5dd794079e4e899be5e428f32a727a",
-    "research/RHRC/integration/opica_composition/tests/test_end_to_end.py": "c825b2ceeda43b2524d064d7d2b0bdc7c761cf7d",
     "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json":
         "8851d0a9cd5bc234af376cf35ca0c9894dcee0df",
 }
@@ -176,7 +186,7 @@ def validate_descendant(repo: Path = REPO, *, require_clean: bool = False) -> di
         ):
             require(False, "ignored executable/source provider: " + path)
     policy = {
-        "schema": "OPICA5_POST299_SUCCESSOR_SOURCE_POLICY_V2",
+        "schema": "OPICA5_POST299_SUCCESSOR_SOURCE_POLICY_V3",
         "parent": PARENT,
         "parent_tree": PARENT_TREE,
         "v1_policy": V1_POLICY,
@@ -191,7 +201,7 @@ def validate_descendant(repo: Path = REPO, *, require_clean: bool = False) -> di
         json.dumps(policy, sort_keys=True, separators=(",", ":")).encode()
     ).hexdigest()
     return {
-        "schema": "OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2",
+        "schema": "OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V3",
         "status": "PASS_SOURCE_SCOPE_ONLY",
         "checked_commit": git(repo, "rev-parse", "HEAD"),
         "checked_tree": git(repo, "rev-parse", "HEAD^{tree}"),

@@ -45,7 +45,7 @@ jobs:
           import json, os
           from pathlib import Path
           d=json.loads((Path(os.environ["RUNNER_TEMP"])/"post299-current-source.json").read_text())
-          assert d["schema"]=="OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2"
+          assert d["schema"]=="OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V3"
           assert d["successor_human_review"]=="PENDING"
           assert d["current_compiler_accepted"] is False
           assert d["full_round4_accepted"] is False
