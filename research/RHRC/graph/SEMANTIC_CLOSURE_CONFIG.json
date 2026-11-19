@@ -550,7 +550,20 @@
     "Zeta23.OPICARound4.ArithmeticFrontier.NativeLeakageFactor": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
     "Zeta23.OPICARound4.ArithmeticFrontier.GeometryReconstruction": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
     "Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor": "OPICA4_SOURCE_FAITHFUL_SUPPORT",
-    "Zeta23.OPICARound5.ParityMomentBridge": "OPICA5_PARITY_SEED_FORMAL_SUPPORT"
+    "Zeta23.OPICARound5.ParityMomentBridge": "OPICA5_PARITY_SEED_FORMAL_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.DivisorStrip": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.TwoShellCalibration": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.Verify": "OPICA6_FINITE_ARITHMETIC_AUDIT"
   },
   "reachable_module_roles": {
     "Zeta23.CCM.CanonicalCompressedApertureC2": "CONTACT_CALCULUS_FORMAL_SUPPORT",

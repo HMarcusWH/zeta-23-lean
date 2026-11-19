@@ -1,0 +1,17 @@
+{
+  "endpoint_truncated": "0.873345856106718576801184",
+  "tracker_scale": "-1",
+  "endpoint_isolation_input": "Candidate.bound_isolated at 42cf5415",
+  "fine_bracket": [
+    "30633513567747080137921209697475748413322255558901/35076039295941670036888435985190792471742381031424",
+    "25527927973122566781601008081229790344435212965751/29230032746618058364073696654325660393118650859520"
+  ],
+  "height": 3000000000000,
+  "first_bin": 1732050,
+  "tail_log_upper": -107900,
+  "log_time": 288000,
+  "growth_log_upper": 107712,
+  "mass_lower": 128,
+  "normalized_negative_floor": "-exp(-180)",
+  "scope": "Exact rational scalar checks. Functional inequalities and external theorems are documented separately."
+}

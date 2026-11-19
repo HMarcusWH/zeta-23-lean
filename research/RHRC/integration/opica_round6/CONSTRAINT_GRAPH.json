@@ -1,0 +1,4571 @@
+{
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "catalog_sha256": "111fd92ba89b5724feec21e063276045cfa3fc6718dc5283198757fe27cff7aa",
+  "counts_by_status": {
+    "DERIVED": 40,
+    "EXPERIMENTAL_SIGNAL": 2,
+    "OPEN": 37,
+    "PROVED": 15,
+    "SOURCE_RECORD": 82
+  },
+  "edge_meaning": "Edges point from cited input to consumer. JOINT_INPUT is conjunctive; ALTERNATIVE_INPUT names an alternative for the same consumer. CONTEXT_ONLY has zero inferential weight. No status propagation.",
+  "edges": [
+    {
+      "from": "NORM_LOSS",
+      "kind": "CONTEXT_ONLY",
+      "to": "ACTUAL_UPPER"
+    },
+    {
+      "from": "ONE_POLARITY",
+      "kind": "CONTEXT_ONLY",
+      "to": "ACTUAL_UPPER"
+    },
+    {
+      "from": "SELECTED_SUPPORT",
+      "kind": "CONTEXT_ONLY",
+      "to": "ACTUAL_UPPER"
+    },
+    {
+      "from": "SIGNED_PACKET",
+      "kind": "CONTEXT_ONLY",
+      "to": "ACTUAL_UPPER"
+    },
+    {
+      "from": "FINITE_K5",
+      "kind": "CONTEXT_ONLY",
+      "to": "APERTURE"
+    },
+    {
+      "from": "HEIGHT",
+      "kind": "CONTEXT_ONLY",
+      "to": "APERTURE"
+    },
+    {
+      "from": "SIGNED_PRIME_AREA",
+      "kind": "CONTEXT_ONLY",
+      "to": "AREA_ECHO"
+    },
+    {
+      "from": "PRIMORIAL",
+      "kind": "CONTEXT_ONLY",
+      "to": "AREA_LOCALIZATION"
+    },
+    {
+      "from": "AREA_LOCALIZATION",
+      "kind": "CONTEXT_ONLY",
+      "to": "AREA_ROWS"
+    },
+    {
+      "from": "SIGNED_PRIME_AREA",
+      "kind": "CONTEXT_ONLY",
+      "to": "AREA_SIGNS"
+    },
+    {
+      "from": "NATIVE_HARMONIC",
+      "kind": "CONTEXT_ONLY",
+      "to": "BAND"
+    },
+    {
+      "from": "ACTUAL_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "CONE_CONTINGENCY"
+    },
+    {
+      "from": "CONE_MATCH",
+      "kind": "CONTEXT_ONLY",
+      "to": "CONE_CONTINGENCY"
+    },
+    {
+      "from": "ROUGHNODECHARGES",
+      "kind": "JOINT_INPUT",
+      "to": "CONE_CONTINGENCY"
+    },
+    {
+      "from": "ROUGH_TREE",
+      "kind": "JOINT_INPUT",
+      "to": "CONE_CONTINGENCY"
+    },
+    {
+      "from": "ROUGH_TREE",
+      "kind": "JOINT_INPUT",
+      "to": "CONE_MATCH"
+    },
+    {
+      "from": "FIXED_SIEVE",
+      "kind": "CONTEXT_ONLY",
+      "to": "CROSSING"
+    },
+    {
+      "from": "PAIR_CUT",
+      "kind": "CONTEXT_ONLY",
+      "to": "CROSSING"
+    },
+    {
+      "from": "NATIVE_HARMONIC",
+      "kind": "CONTEXT_ONLY",
+      "to": "DELAY"
+    },
+    {
+      "from": "RENEWAL_ALGEBRA",
+      "kind": "CONTEXT_ONLY",
+      "to": "DELAY"
+    },
+    {
+      "from": "FORMAL_GAP",
+      "kind": "CONTEXT_ONLY",
+      "to": "DIVISOR_FIBRE_LIMIT"
+    },
+    {
+      "from": "DURATION",
+      "kind": "CONTEXT_ONLY",
+      "to": "DIVISOR_PREFIX"
+    },
+    {
+      "from": "ROUGH_PHASE",
+      "kind": "CONTEXT_ONLY",
+      "to": "DIVISOR_PREFIX"
+    },
+    {
+      "from": "CROSSING",
+      "kind": "CONTEXT_ONLY",
+      "to": "DURATION"
+    },
+    {
+      "from": "VISIBLE_SCALAR",
+      "kind": "CONTEXT_ONLY",
+      "to": "DURATION"
+    },
+    {
+      "from": "FORMAL_COORDINATES",
+      "kind": "CONTEXT_ONLY",
+      "to": "FINITE_K5"
+    },
+    {
+      "from": "WHOLE_SHELLS",
+      "kind": "CONTEXT_ONLY",
+      "to": "FINITE_NATIVE_CHECK"
+    },
+    {
+      "from": "ROUGH_DECOMPOSITION",
+      "kind": "CONTEXT_ONLY",
+      "to": "FIXED_SIEVE"
+    },
+    {
+      "from": "ACTUAL_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "FORMAL_GAP"
+    },
+    {
+      "from": "GROUND",
+      "kind": "CONTEXT_ONLY",
+      "to": "FORMAL_GAP"
+    },
+    {
+      "from": "CR01",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-C1"
+    },
+    {
+      "from": "CR03",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-C2"
+    },
+    {
+      "from": "CR35",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-C2-SE"
+    },
+    {
+      "from": "CR05",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-CAUSAL"
+    },
+    {
+      "from": "CR51",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-DD"
+    },
+    {
+      "from": "CR04",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-K3"
+    },
+    {
+      "from": "CR52",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-ND"
+    },
+    {
+      "from": "CR02",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-PACKET"
+    },
+    {
+      "from": "CR31",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-PG"
+    },
+    {
+      "from": "CR34",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-SB"
+    },
+    {
+      "from": "CR32",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-SE"
+    },
+    {
+      "from": "CR41",
+      "kind": "CONTEXT_ONLY",
+      "to": "FRONT-SG"
+    },
+    {
+      "from": "DELAY",
+      "kind": "CONTEXT_ONLY",
+      "to": "GROUND"
+    },
+    {
+      "from": "NATIVE_TREE",
+      "kind": "CONTEXT_ONLY",
+      "to": "GROUND"
+    },
+    {
+      "from": "FINITE_K5",
+      "kind": "CONTEXT_ONLY",
+      "to": "HEIGHT"
+    },
+    {
+      "from": "FORMAL_COORDINATES",
+      "kind": "CONTEXT_ONLY",
+      "to": "HEIGHT"
+    },
+    {
+      "from": "DIVISOR_PREFIX",
+      "kind": "CONTEXT_ONLY",
+      "to": "LOCAL_RATIO"
+    },
+    {
+      "from": "CONE_MATCH",
+      "kind": "CONTEXT_ONLY",
+      "to": "MASK_BARRIER"
+    },
+    {
+      "from": "RESIDUE_GRAPH",
+      "kind": "CONTEXT_ONLY",
+      "to": "NATIVE_HARMONIC"
+    },
+    {
+      "from": "BAND",
+      "kind": "CONTEXT_ONLY",
+      "to": "NATIVE_TREE"
+    },
+    {
+      "from": "PAIR_ALGEBRA",
+      "kind": "CONTEXT_ONLY",
+      "to": "NATIVE_TREE"
+    },
+    {
+      "from": "SIGNED_PACKET",
+      "kind": "JOINT_INPUT",
+      "to": "NORM_LOSS"
+    },
+    {
+      "from": "ROUGH_TREE",
+      "kind": "JOINT_INPUT",
+      "to": "ONE_POLARITY"
+    },
+    {
+      "from": "AREA_LOCALIZATION",
+      "kind": "CONTEXT_ONLY",
+      "to": "OUTER_VARIATION"
+    },
+    {
+      "from": "HEIGHT",
+      "kind": "CONTEXT_ONLY",
+      "to": "PAIR_CUT"
+    },
+    {
+      "from": "FORMAL_GAP",
+      "kind": "CONTEXT_ONLY",
+      "to": "PAPER_ROUTE_VALIDATION"
+    },
+    {
+      "from": "ROUGHNODECHARGES",
+      "kind": "CONTEXT_ONLY",
+      "to": "PAPER_ROUTE_VALIDATION"
+    },
+    {
+      "from": "SELECTED_SUPPORT",
+      "kind": "CONTEXT_ONLY",
+      "to": "PARITY_BARRIER"
+    },
+    {
+      "from": "PRIME_VARIANCE",
+      "kind": "CONTEXT_ONLY",
+      "to": "PRIME_GRID"
+    },
+    {
+      "from": "HEIGHT",
+      "kind": "CONTEXT_ONLY",
+      "to": "PRIME_VARIANCE"
+    },
+    {
+      "from": "AREA_SIGNS",
+      "kind": "CONTEXT_ONLY",
+      "to": "PRIMORIAL"
+    },
+    {
+      "from": "KNOT_ALGEBRA",
+      "kind": "CONTEXT_ONLY",
+      "to": "RESIDUE_GRAPH"
+    },
+    {
+      "from": "OUTER_VARIATION",
+      "kind": "CONTEXT_ONLY",
+      "to": "RESIDUE_GRAPH"
+    },
+    {
+      "from": "RETAINED_TRIAL_IFF",
+      "kind": "CONTEXT_ONLY",
+      "to": "RETAINED_TRIAL_BOUND"
+    },
+    {
+      "from": "ACTUAL_FIELD_TRANSFER",
+      "kind": "CONTEXT_ONLY",
+      "to": "RH"
+    },
+    {
+      "from": "RETAINED_TRIAL_IFF",
+      "kind": "CONTEXT_ONLY",
+      "to": "RH"
+    },
+    {
+      "from": "STEP4",
+      "kind": "JOINT_INPUT",
+      "to": "RH"
+    },
+    {
+      "from": "APERTURE",
+      "kind": "CONTEXT_ONLY",
+      "to": "ROUGH_DECOMPOSITION"
+    },
+    {
+      "from": "FIXED_SIEVE",
+      "kind": "CONTEXT_ONLY",
+      "to": "ROUGH_PHASE"
+    },
+    {
+      "from": "NATIVE_TREE",
+      "kind": "JOINT_INPUT",
+      "to": "ROUGH_TREE"
+    },
+    {
+      "from": "CONE_MATCH",
+      "kind": "JOINT_INPUT",
+      "to": "SELECTED_SUPPORT"
+    },
+    {
+      "from": "SELECTOR_ALGEBRA",
+      "kind": "JOINT_INPUT",
+      "to": "SELECTED_SUPPORT"
+    },
+    {
+      "from": "WHOLE_SHELLS",
+      "kind": "JOINT_INPUT",
+      "to": "SELECTED_SUPPORT"
+    },
+    {
+      "from": "ONE_POLARITY",
+      "kind": "CONTEXT_ONLY",
+      "to": "SIGNED_PACKET"
+    },
+    {
+      "from": "PRIME_GRID",
+      "kind": "CONTEXT_ONLY",
+      "to": "SIGNED_PRIME_AREA"
+    },
+    {
+      "from": "SELECTED_SUPPORT",
+      "kind": "JOINT_INPUT",
+      "to": "SMALL_LARGE_PARITY"
+    },
+    {
+      "from": "GROUND",
+      "kind": "CONTEXT_ONLY",
+      "to": "SOURCE_LOADING_DEFECT"
+    },
+    {
+      "from": "SOURCE_LOADING",
+      "kind": "CONTEXT_ONLY",
+      "to": "SOURCE_LOADING_DEFECT"
+    },
+    {
+      "from": "CALIBRATION_ALGEBRA",
+      "kind": "CONTEXT_ONLY",
+      "to": "SOURCE_PROBES"
+    },
+    {
+      "from": "CONE_MATCH",
+      "kind": "CONTEXT_ONLY",
+      "to": "SOURCE_PROBES"
+    },
+    {
+      "from": "GRAM_ALGEBRA",
+      "kind": "CONTEXT_ONLY",
+      "to": "SOURCE_PROBES"
+    },
+    {
+      "from": "ROUGH_TREE",
+      "kind": "CONTEXT_ONLY",
+      "to": "SOURCE_PROBES"
+    },
+    {
+      "from": "A-X",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "A_SIGNED_OBSERVATION",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "B-Y",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "B_CAUSAL",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "C-Schur",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "C1_COFINAL_MOMENT_SLICES",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "C2_ACTUAL_LONG_TERM_LOWER",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "C_DIRECT_COMPLEMENT",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "D1_ACTUAL_RAYS",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "D2_NEGATIVE_GROUNDS",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "D3_NATIVE_JOINT_INDEX",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "D4_DIRECT",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "FRONT-C2-SE",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "FRONT-DD",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "FRONT-ND",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "FRONT-PG",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "FRONT-SB",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "FRONT-SE",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "FRONT-SG",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "P1_SELECTED_PACKET_GROUND_RESPONSE",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "RETAINED_TRIAL_BOUND",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "SURVIVOR_ROUTE",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "COMPLETE_WEIGHTED_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "STEP4"
+    },
+    {
+      "from": "FINITE_K5",
+      "kind": "CONTEXT_ONLY",
+      "to": "STEP4"
+    },
+    {
+      "from": "FRONT-CAUSAL",
+      "kind": "CONTEXT_ONLY",
+      "to": "STEP4"
+    },
+    {
+      "from": "FRONT-K3",
+      "kind": "CONTEXT_ONLY",
+      "to": "STEP4"
+    },
+    {
+      "from": "SMOOTH_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "STEP4"
+    },
+    {
+      "from": "SOURCE_LOADING_DEFECT",
+      "kind": "CONTEXT_ONLY",
+      "to": "STEP4"
+    },
+    {
+      "from": "COMPLETE_WEIGHTED_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVEY-BANDWIDTH_MOMENTS"
+    },
+    {
+      "from": "COMPLETE_WEIGHTED_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVEY-EULER_VARIATION"
+    },
+    {
+      "from": "ACTUAL_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVEY-HANKEL_DIRECTION"
+    },
+    {
+      "from": "ACTUAL_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVEY-HYPERBOLA_ALIAS"
+    },
+    {
+      "from": "SOURCE_LOADING_DEFECT",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVEY-RESOLVENT_HISTORY"
+    },
+    {
+      "from": "COMPLETE_WEIGHTED_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVEY-SQUARE_MAIN"
+    },
+    {
+      "from": "ACTUAL_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVEY-STATIONARY_ORIGIN"
+    },
+    {
+      "from": "GROUND",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVEY-TIE_CHANNELS"
+    },
+    {
+      "from": "COMPLETE_WEIGHTED_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVEY-VAUGHAN_GAPS"
+    },
+    {
+      "from": "ACTUAL_UPPER",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVIVOR_CONE_ZERO"
+    },
+    {
+      "from": "CONE_CONTINGENCY",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVIVOR_CONE_ZERO"
+    },
+    {
+      "from": "SELECTED_SUPPORT",
+      "kind": "JOINT_INPUT",
+      "to": "SURVIVOR_CONE_ZERO"
+    },
+    {
+      "from": "CONE_CONTINGENCY",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVIVOR_ROUTE"
+    },
+    {
+      "from": "SMALL_LARGE_PARITY",
+      "kind": "CONTEXT_ONLY",
+      "to": "SURVIVOR_ROUTE"
+    },
+    {
+      "from": "ACTUAL_UPPER",
+      "kind": "JOINT_INPUT",
+      "to": "SURVIVOR_ROUTE"
+    },
+    {
+      "from": "PAPER_ROUTE_VALIDATION",
+      "kind": "JOINT_INPUT",
+      "to": "SURVIVOR_ROUTE"
+    },
+    {
+      "from": "AREA_ROWS",
+      "kind": "CONTEXT_ONLY",
+      "to": "TERMINAL_FIBRES"
+    },
+    {
+      "from": "DIVISOR_STRIP_ALGEBRA",
+      "kind": "CONTEXT_ONLY",
+      "to": "TERMINAL_FIBRES"
+    },
+    {
+      "from": "FIXED_SIEVE",
+      "kind": "CONTEXT_ONLY",
+      "to": "VISIBLE_SCALAR"
+    },
+    {
+      "from": "ONE_POLARITY",
+      "kind": "JOINT_INPUT",
+      "to": "WHOLE_SHELLS"
+    }
+  ],
+  "input_branch_coverage": {
+    "A-X": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "ACTUAL_FIELD_TRANSFER": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "ACTUAL_UPPER": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "APERTURE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "AREA_ECHO": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "AREA_LOCALIZATION": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "AREA_ROWS": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "AREA_SIGNS": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "A_SIGNED_OBSERVATION": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "B-Y": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "BAND": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "B_CAUSAL": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "C-Schur": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "C1_COFINAL_MOMENT_SLICES": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "C2_ACTUAL_LONG_TERM_LOWER": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CALIBRATION_ALGEBRA": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "COMPLETE_WEIGHTED_UPPER": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CONE_CONTINGENCY": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CONE_MATCH": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR01": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR02": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR03": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR04": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR05": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR06": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR07": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR08": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR09": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR10": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR11": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR12": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR13": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR14": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR15": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR16": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR17": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR18": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR19": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR20": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR21": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR22": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR23": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR24": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR25": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR26": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR27": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR28": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR29": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR30": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR31": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR32": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR33": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR34": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR35": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR36": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR37": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR38": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR39": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR40": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR41": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR42": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR43": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR44": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR45": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR46": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR47": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR48": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR49": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR50": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR51": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR52": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CR53": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "CROSSING": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "C_DIRECT_COMPLEMENT": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "D1_ACTUAL_RAYS": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "D2_NEGATIVE_GROUNDS": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "D3_NATIVE_JOINT_INDEX": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "D4_DIRECT": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "DELAY": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "DIVISOR_FIBRE_LIMIT": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "DIVISOR_PREFIX": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "DIVISOR_STRIP_ALGEBRA": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "DURATION": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FINITE_K5": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FINITE_NATIVE_CHECK": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FIXED_SIEVE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FORMAL_COORDINATES": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FORMAL_GAP": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-C1": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-C2": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-C2-SE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-CAUSAL": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-DD": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-K3": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-ND": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-PACKET": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-PG": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-SB": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-SE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "FRONT-SG": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "GRAM_ALGEBRA": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "GROUND": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HEIGHT": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-APERTURE-METRIC": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-BOTTOM": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-CHECKER": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-COARSE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-CUTOFF": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-DESCENT": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-ENCLOSURE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-FLOOR": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-KERNEL": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-KERNELS": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-LEAK": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-LEAKAGE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-NC": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-POLE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-REACH": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-RECON": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-SCALAR": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-SG": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "HIST-S-TRACE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "KNOT_ALGEBRA": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "LOCAL_RATIO": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "MASK_BARRIER": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "NATIVE_HARMONIC": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "NATIVE_TREE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "NORM_LOSS": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "ONE_POLARITY": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "OUTER_VARIATION": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P1_SELECTED_PACKET_GROUND_RESPONSE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "PAIR_ALGEBRA": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "PAIR_CUT": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "PAPER_ROUTE_VALIDATION": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "PARITY_BARRIER": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "PRIMEAREAINTEGRAL": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "PRIME_GRID": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "PRIME_VARIANCE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "PRIMITIVEEULERMULTIPLIER": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "PRIMORIAL": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "RENEWAL_ALGEBRA": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "RESIDUE_GRAPH": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "RETAINED_TRIAL_BOUND": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "RETAINED_TRIAL_IFF": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "RH": {
+      "open_in_every_catalog_route": [
+        "STEP4"
+      ],
+      "open_on_any_input_branch": [
+        "A-X",
+        "ACTUAL_UPPER",
+        "A_SIGNED_OBSERVATION",
+        "B-Y",
+        "B_CAUSAL",
+        "C-Schur",
+        "C1_COFINAL_MOMENT_SLICES",
+        "C2_ACTUAL_LONG_TERM_LOWER",
+        "C_DIRECT_COMPLEMENT",
+        "D1_ACTUAL_RAYS",
+        "D2_NEGATIVE_GROUNDS",
+        "D3_NATIVE_JOINT_INDEX",
+        "D4_DIRECT",
+        "FRONT-C2-SE",
+        "FRONT-DD",
+        "FRONT-ND",
+        "FRONT-PG",
+        "FRONT-SB",
+        "FRONT-SE",
+        "FRONT-SG",
+        "P1_SELECTED_PACKET_GROUND_RESPONSE",
+        "PAPER_ROUTE_VALIDATION",
+        "RETAINED_TRIAL_BOUND",
+        "STEP4",
+        "SURVIVOR_ROUTE"
+      ],
+      "open_on_joint_edges_only": [
+        "STEP4"
+      ]
+    },
+    "ROUGHNODECHARGES": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "ROUGH_DECOMPOSITION": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "ROUGH_PHASE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "ROUGH_TREE": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SELECTED_SUPPORT": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SELECTOR_ALGEBRA": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SIGNED_PACKET": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SIGNED_PRIME_AREA": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SMALL_LARGE_PARITY": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SMOOTH_UPPER": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SOURCE_LOADING": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SOURCE_LOADING_DEFECT": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SOURCE_PORTABILITY": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SOURCE_PROBES": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SQUAREFREEPRIMECOST": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "STEP4": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [
+        "A-X",
+        "ACTUAL_UPPER",
+        "A_SIGNED_OBSERVATION",
+        "B-Y",
+        "B_CAUSAL",
+        "C-Schur",
+        "C1_COFINAL_MOMENT_SLICES",
+        "C2_ACTUAL_LONG_TERM_LOWER",
+        "C_DIRECT_COMPLEMENT",
+        "D1_ACTUAL_RAYS",
+        "D2_NEGATIVE_GROUNDS",
+        "D3_NATIVE_JOINT_INDEX",
+        "D4_DIRECT",
+        "FRONT-C2-SE",
+        "FRONT-DD",
+        "FRONT-ND",
+        "FRONT-PG",
+        "FRONT-SB",
+        "FRONT-SE",
+        "FRONT-SG",
+        "P1_SELECTED_PACKET_GROUND_RESPONSE",
+        "PAPER_ROUTE_VALIDATION",
+        "RETAINED_TRIAL_BOUND",
+        "SURVIVOR_ROUTE"
+      ],
+      "open_on_joint_edges_only": []
+    },
+    "STOPPEDPRIMEAREA": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SURVEY-BANDWIDTH_MOMENTS": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SURVEY-EULER_VARIATION": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SURVEY-HANKEL_DIRECTION": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SURVEY-HYPERBOLA_ALIAS": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SURVEY-RESOLVENT_HISTORY": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SURVEY-SQUARE_MAIN": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SURVEY-STATIONARY_ORIGIN": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SURVEY-TIE_CHANNELS": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SURVEY-VAUGHAN_GAPS": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SURVIVOR_CONE_ZERO": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "SURVIVOR_ROUTE": {
+      "open_in_every_catalog_route": [
+        "ACTUAL_UPPER",
+        "PAPER_ROUTE_VALIDATION"
+      ],
+      "open_on_any_input_branch": [
+        "ACTUAL_UPPER",
+        "PAPER_ROUTE_VALIDATION"
+      ],
+      "open_on_joint_edges_only": [
+        "ACTUAL_UPPER",
+        "PAPER_ROUTE_VALIDATION"
+      ]
+    },
+    "TERMINAL_FIBRES": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "VISIBLE_SCALAR": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "WHOLE_SHELLS": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    }
+  },
+  "nodes": {
+    "A-X": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/post290/STEP4_CUTS.json"
+      ],
+      "statement": "actual fixed-source X=Pi*j. forall epsilon>0, integral_0_infty exp(-2 epsilon t)|X(t)|^2 dt < infinity",
+      "status": "OPEN"
+    },
+    "ACTUAL_FIELD_TRANSFER": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/ExceptionalZero/Step4OutputSufficiency.lean"
+      ],
+      "statement": "The all-damping bound on the original prime field suffices for RH.",
+      "status": "PROVED"
+    },
+    "ACTUAL_UPPER": {
+      "alternatives": [],
+      "context": [
+        "NORM_LOSS",
+        "ONE_POLARITY",
+        "SELECTED_SUPPORT",
+        "SIGNED_PACKET"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/LOCAL_POLARITY_WINDOWS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PACKET_WIDTH_AND_NATIVE_NORM.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/WHOLE_COARSE_SURPLUS.md"
+      ],
+      "statement": "On complete native shells and the original signs, prove an independent cofinal bound for every positive exponent on the positive or negative weighted sum of squared residual node counts; include used donors, boundary regimes and actual quantifiers. Then discharge the native transfer and exact formal claim gates.",
+      "status": "OPEN"
+    },
+    "APERTURE": {
+      "alternatives": [],
+      "context": [
+        "FINITE_K5",
+        "HEIGHT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-euler-primitive-2026-11-19/RELATED_DETECTOR_CHECKS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-euler-primitive-2026-11-19/STEP4_PRIME_POWER_APERTURE_PRIMITIVE.md"
+      ],
+      "statement": "The fixed K5 carrier yields a signed aperture integral with local divisor bounds and a zero-sensitive one-sided criterion. Finite comparison, parity projection and frequency averaging leave a genuine uniform arithmetic upper open.",
+      "status": "DERIVED"
+    },
+    "AREA_ECHO": {
+      "alternatives": [],
+      "context": [
+        "SIGNED_PRIME_AREA"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/CRITICAL_FINITE_RANGE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/PRIME_POWER_ECHO.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/WEIGHTED_PRIME_FACTOR_CRITERION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/XI_AREA_ECHO.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/XI_ORDINARY_PI.md"
+      ],
+      "statement": "Positive xi averages force negative weighted and ordinary-prime area excursions, including the deterministic next prime-power term. A weighted prime-factor criterion and finite critical integral bound do not establish negativity at every late cutoff.",
+      "status": "DERIVED"
+    },
+    "AREA_LOCALIZATION": {
+      "alternatives": [],
+      "context": [
+        "PRIMORIAL"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/ETA_FILTERED_PRIME_LOCALIZATION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/FACTORIAL_PRIME_PROJECTIONS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/FIRST_BAND_OSCILLATION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/OLD_PRIME_LOCALIZATION.md"
+      ],
+      "statement": "Factorial and eta projections reconstruct the centered area from explicit old-prime ranges with signed weights. The eta version is unconditional in its stated cutoff range. Stronger factorial power localization uses the supplied project zero ceiling.",
+      "status": "DERIVED"
+    },
+    "AREA_ROWS": {
+      "alternatives": [],
+      "context": [
+        "AREA_LOCALIZATION"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/BOTH_ROW_ENERGIES.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/SHARED_PRODUCT_COVARIANCE.md"
+      ],
+      "statement": "Disjoint prime summation ranges provide two coupled reconstructions with controlled row energy and signed shared-product covariance. Both use related Möbius coefficient systems. Disjoint outer variables give no independence.",
+      "status": "DERIVED"
+    },
+    "AREA_SIGNS": {
+      "alternatives": [],
+      "context": [
+        "SIGNED_PRIME_AREA"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/DENSITY_ISOLATOR.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/LOCAL_FILTER_COST.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/NATIVE_SIGNED_AREA_RUNS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/ORDINARY_POWER_WINDOWS.md"
+      ],
+      "statement": "At a hypothetical rightward zero, true integrated ordinary-prime errors take both signs in prescribed late windows. Zero-density isolators, attained vs unattained edge and signed filter cost distinguish uniform power windows from constant ratio windows.",
+      "status": "DERIVED"
+    },
+    "A_SIGNED_OBSERVATION": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "statement": "Complete signed observation estimate including all cross terms and recovery budgets. OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE No complete new Lean route contract is supplied by this extension",
+      "status": "OPEN"
+    },
+    "B-Y": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/post290/STEP4_CUTS.json"
+      ],
+      "statement": "actual Yepsilon for native convolution Aepsilon. forall epsilon>0, Yepsilon in closure(range(Aepsilon))",
+      "status": "OPEN"
+    },
+    "BAND": {
+      "alternatives": [],
+      "context": [
+        "NATIVE_HARMONIC"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/FINITE_RANGE_AND_RECOVERY.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/FINITE_RATIONAL_COVARIANCE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/FIXED_BAND_THEOREM.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/FIXED_HEIGHT_OBSTRUCTION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/NATIVE_CUTOFF_AVERAGE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/POOLED_HARMONIC.md"
+      ],
+      "statement": "A pooled true signed row and localized fixed-height energies retain a rightward displacement. A sharp fixed-frequency prefix can detect remote zeros, so verified low-height zero freedom does not give its critical upper. Finite checked ranges are bounded.",
+      "status": "DERIVED"
+    },
+    "B_CAUSAL": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "statement": "Actual source-preserving causal Gram residual tends to zero. OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE No complete new Lean route contract is supplied by this extension",
+      "status": "OPEN"
+    },
+    "C-Schur": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/post290/STEP4_CUTS.json"
+      ],
+      "statement": "complete same-detector signed Schur loss with full complement and known shift. Source-specific subexponential upper law on all selectors returned by the registered producer, with all constants and quantifiers explicit",
+      "status": "OPEN"
+    },
+    "C1_COFINAL_MOMENT_SLICES": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "statement": "CofinalMomentSliceVanishingErrorBounds. for every n>=1 an aperture L>=n+2 and one parity covering its entire moment slice at the literal quartic cutoff with tolerance 1/n Read full compiler-exported Lean type; metadata is not a substitute",
+      "status": "OPEN"
+    },
+    "C2_ACTUAL_LONG_TERM_LOWER": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "statement": "Eventual constant lower bound on the literal native long term. exists C>0 and T before every t>=T Premise is stated inline in its consumer",
+      "status": "OPEN"
+    },
+    "CALIBRATION_ALGEBRA": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.TwoShellCalibration.two_shell",
+        "Zeta23.OPICARound6.PrimeFactorPaths.TwoShellCalibration.weighted_finite"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/TwoShellCalibration.lean"
+      ],
+      "statement": "Finite calibration support identities.",
+      "status": "PROVED"
+    },
+    "COMPLETE_WEIGHTED_UPPER": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-complete-residual-round4-2026-11-10/WEIGHTED_TARGET_TRANSFER.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-weighted-response-2026-11-10/COMBINED_FINITE_TARGET.md"
+      ],
+      "statement": "For every η>0 fix Cη before the lower horizon R. Find T≥max(R,16) with the integrated complete signed prime-power response, weighted by exp(−(T−t)/2), at most Cη exp(ηT).",
+      "status": "OPEN"
+    },
+    "CONE_CONTINGENCY": {
+      "alternatives": [],
+      "context": [
+        "ACTUAL_UPPER",
+        "CONE_MATCH"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.contingency_covariance"
+      ],
+      "depends_on": [
+        "ROUGHNODECHARGES",
+        "ROUGH_TREE"
+      ],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/RoughNodeCharges.lean",
+        "rh:file:research/RHRC/integration/opica_round6/CONE_CONTINGENCY.md",
+        "rh:file:research/RHRC/integration/opica_round6/cone_parity.py"
+      ],
+      "statement": "The actual sign and small-cofactor cone give a 2×2 interaction determinant with positive normalized mass of order X^(1−o(1)) on base cells in a whole shell comparable with X. The complementary signed marginal product compensates it. The finite audit checks both exact integer identities.",
+      "status": "DERIVED"
+    },
+    "CONE_MATCH": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "ROUGH_TREE"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/POLYNOMIAL_COFACTOR_AUDIT.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/POSITIVE_DENSITY_RETIREMENT.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/PRIME_SPLIT.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/SPARSE_COMPENSATION.md"
+      ],
+      "statement": "At aligned horizons, matching actual primes and small-cofactor rows against opposite-sign donors pays a graph decrement, including the stated cofactor regime and signed correction. The polynomial extension requires exact retained-neighbor accounting.",
+      "status": "DERIVED"
+    },
+    "CR01": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "n first; then L and the parity; then every slice vector. No fixed parity, rank, gap or bound between selected apertures.",
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "(C1) cofinal vanishing-error moment-slice bounds. For every n>=1 there is an aperture L>=n+2 and one parity whose entire moment slice at K=originalDetectorQuarticCutoff(L) satisfies Q_p(L,x) >= -(1/n)||x||^2 in the inherited physical norm.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR02": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "R before L; the restriction must hold on the eligible packet outputs themselves or one output must carry both packet properties and the restriction.",
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Selected-packet ground-response restriction. At late disjoint native states at the literal quartic cutoff, the corrected cubic source on the strictly lower negative even ground ray and the odd adjoint pairing on the strictly lower negative odd ground ray are both below one.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR03": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "C and T before every t.",
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "(C2) actual long-term eventual lower bound. There exist C>0 and T such that for all t>=T, hyperbolaT(actualCorrelationLogarithmicTest t)(actualCorrelationCutoff t/2) >= -C.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR04": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_ONLY_WITH_UNFORMALIZED_DERIVED_K3_REDUCTION",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Eventual in L; constants independent of L.",
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Native K3 ordinary-prime remainder E_ord. An eventual polynomial lower bound on either literal K3 scalar energy, equivalently control of E_ord = B_1 + 200 a beta^2 L + d_0 (H_2+16) L^2.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR05": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "As in CLOSURE_OBLIGATIONS B_CAUSAL.",
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Qualified causal alternative. The actual source-preserving causal Gram residual tends to zero.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR06": {
+      "alternatives": [],
+      "closing_relevance": "OPPOSING_OBSTRUCTION_INPUT",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "d before every late L.",
+      "source_disposition": "PROVED_PRODUCTION_SCOPE_9C517DB",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Fixed off-line-zero margin on both moment slices. Under an actual off-line zero there is d>0 such that eventually both slices contain nonzero literal trials with Q_p < -d||x||^2.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR07": {
+      "alternatives": [],
+      "closing_relevance": "NONVACUITY_GUARD",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Pointwise in L>0, K.",
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Exact slice dimensions and nonvacuity. dim even slice = K-3 and dim odd slice = K-4 (natural subtraction) for K>=2; at K=ceil(L^4)>=16 the slices have dimension at least 13 and 12.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR08": {
+      "alternatives": [],
+      "closing_relevance": "METRIC_ADAPTER",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Pointwise.",
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Physical congruence transport and frame comparisons. Slice bounds are exactly seed-coordinate bounds with the full Gram D^2; a coordinate tolerance eps gives physical eps/beta^2; a physical tolerance eps gives coordinate eps (beta+K^2)^2.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR09": {
+      "alternatives": [],
+      "closing_relevance": "REMOVES_SHARED_GROUND_PREMISE_ON_PACKET_ROUTE",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Pointwise.",
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Disjoint spectra exclude every bottom tie. Where the full even and odd native spectra are disjoint, the two Rayleigh bottoms differ.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR10": {
+      "alternatives": [],
+      "closing_relevance": "CONSUMER_ONLY",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Any trial X.",
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Inverse-residual block certificate (C3). A >= a > 0 and D - CX - X*C* + X*AX - a^{-1} R*R >= 0 with R = C* - AX imply the complete block is PSD; the exact form identity with A^{-1} holds.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR11": {
+      "alternatives": [],
+      "closing_relevance": "CONSUMER_ONLY",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Pointwise.",
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Finite source-core consumer (C4). Leakage eta <= eps/4 against the full complement and core form >= -(11 eps/12) imply H + eps I >= 0; column form keeps the nonorthogonal Gram.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR12": {
+      "alternatives": [],
+      "closing_relevance": "CONSUMER_ONLY",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Pointwise.",
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Negative-witness transport (E2). A trial with margin d and leakage eta < d/3 has a nonzero projected core component with margin d - 3 eta.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR13": {
+      "alternatives": [],
+      "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Pointwise.",
+      "source_disposition": "PROVED_WITHIN_EXTERNAL_LOCAL_RECEIPTS",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "K3 Archimedean gap. A_Gamma(L) > 0 for every L > 0.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR14": {
+      "alternatives": [],
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Pointwise.",
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Trace formula for the core residual. eta^2 = ||(I-P)H||_F^2 = tr(H^2) - tr(G_I^{-1}(H^4)_{II}).",
+      "status": "SOURCE_RECORD"
+    },
+    "CR15": {
+      "alternatives": [],
+      "closing_relevance": "OPTIONAL_SUPPORT",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "See source.",
+      "source_disposition": "PAPER_LEVEL_NOT_AUDITED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Universal approximate-kernel mixed estimate. Paper-level dimension and mixed-operator estimate behind the source-core reduction.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR16": {
+      "alternatives": [],
+      "closing_relevance": "BLOCKED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Eventual.",
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Fixed fractional saving against the positive K3 sector. B_1 >= -kappa (A_Gamma + B_{>=2}) eventually with fixed kappa < 1.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR17": {
+      "alternatives": [],
+      "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Fixed named states.",
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Pole channel vanishes on both carriers. The pole kernel is S(u u^T - v v^T) with u_n = L/d_n and v_n = 4 pi n/d_n; parity kills one profile and pole neutrality the other, so the pole energy is identically zero on both pole-neutral carriers. The native energy there is exactly -arch - prime.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR18": {
+      "alternatives": [],
+      "closing_relevance": "BLOCKED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Fixed named states.",
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Channel-separated supplier. lambda_min(-arch) + lambda_min(-prime) >= -1/n on the slice.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR19": {
+      "alternatives": [],
+      "closing_relevance": "BLOCKED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Fixed named states.",
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Scalar inverse-gap supplier on the Fourier-prefix split. D - a^-1 C C^T >= 0 for some a <= lambda_min(A).",
+      "status": "SOURCE_RECORD"
+    },
+    "CR20": {
+      "alternatives": [],
+      "closing_relevance": "BLOCKED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Fixed named states.",
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Shifted-prefix quarter gap, high-support unshifted gap and upper cap (separate identities). lambda_min(A_eps) >= 1/4 persists; A <= 9 persists.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR21": {
+      "alternatives": [],
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Fixed named states.",
+      "source_disposition": "PROVED_WITHIN_EXTERNAL_LOCAL_RECEIPTS",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Degree-m coupled polynomial certificate at the (C1) checkpoints. X = P_m(A) C^T in blockEnergy_nonneg_of_inverse_residual_certificate supplies the (C1) checkpoint at a tested degree m(n, L).",
+      "status": "SOURCE_RECORD"
+    },
+    "CR22": {
+      "alternatives": [],
+      "closing_relevance": "OPTIONAL_SUPPORT",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Fixed named states.",
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Near-null count law. The number of slice eigenvalues below a fixed small threshold (1e-2 to 1e-13) equals dim - N(2 pi K/L) up to O(log T).",
+      "status": "SOURCE_RECORD"
+    },
+    "CR23": {
+      "alternatives": [],
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Fixed named states.",
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Near-band coupling mass. The coupling C from the low slice block into the near-null directions of the complement block (eigenvalues of A within 1e-6 of eps) has total mass far below the scalar-gap charge.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR24": {
+      "alternatives": [],
+      "closing_relevance": "NONVACUITY_GUARD",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Fixed named states.",
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Detection threshold of off-line quartets at finite checkpoints. A checkpoint at tolerance eps and aperture L detects an off-line quartet of depth delta iff c(L) delta^2 >~ eps, with c(L) increasing in L.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR25": {
+      "alternatives": [],
+      "closing_relevance": "BLOCKED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Fixed named states.",
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Channel-separable control of -arch and -prime on the near-null subspace. Bounds -arch >= -kappa_A and -prime >= -kappa_P on V with kappa_A + kappa_P smaller than the required tolerance.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR26": {
+      "alternatives": [],
+      "closing_relevance": "BLOCKED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Fixed named states.",
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Stability of slice positivity under prime-cell truncation. The slice form -arch - prime_{q <= P} stays above -eps for some P < Q.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR27": {
+      "alternatives": [],
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Algebraic identity.",
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Inverse residual dominates the geometric tail at the same exact degree. For 0 < aI <= A <= bI, T = I - A/b, q = 1 - a/b and the exact polynomial action, S_IR - S_tail >= 0.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR28": {
+      "alternatives": [],
+      "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Algebraic identity.",
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Compressed commutator with all leakage terms. [Vᴴ D0 V, Vᴴ E V] = Vᴴ[D0,E]V + Z Lᴴ - L Zᴴ whenever (1 - V Vᴴ) D0 V = W Lᴴ and D0, E are self-adjoint.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR29": {
+      "alternatives": [],
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Finite.",
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Exact-data soundness of the shifted-factor certificate. 0 < tau and ||A - tau I - R Rᵀ||²_F < tau² imply xᵀAx > 0 for x ≠ 0; tau > 0 is necessary.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR30": {
+      "alternatives": [],
+      "closing_relevance": "METRIC_ADAPTER",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Algebraic identity.",
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Source-column Gram and discarded-sector trace identities. For C = H S with invertible G = CᴴC: G = Sᴴ H² S, Cᴴ H C = Sᴴ H³ S, P = C G⁻¹ Cᴴ is a self-adjoint idempotent and tr(((1-P)H)ᴴ((1-P)H)) = tr(H²) - tr(G⁻¹ Sᴴ H⁴ S).",
+      "status": "SOURCE_RECORD"
+    },
+    "CR31": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "parity, C, d, L0 before L and u.",
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "(PG) fixed-parity polynomial lower bound on the moment slices. Exists a parity p, C > 0, d : Nat and L0 with Q_p(L,u) >= -C (1+L)^d ||u||^2 for every u in M_p(L,K(L)) and every L >= L0.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR32": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "parity before alpha; C and L0 after alpha; all late L.",
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "(SE) fixed-parity subexponential lower bound. Exists p such that for every alpha > 0 there are C, L0 with Q_p(L,u) >= -C exp(alpha L) ||u||^2 for all L >= L0.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR33": {
+      "alternatives": [],
+      "closing_relevance": "NOT_CLOSING_FOR_POSITIVE_ALPHA",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "alpha fixed.",
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Fixed-rate partial exclusion. A fixed-parity bound -C exp(alpha L) at every late aperture, alpha >= 0, gives |Re rho - 1/2| <= alpha for every zero.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR34": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "C before every horizon.",
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "(SB) cofinal one-constant floor and the all-late fixed-depth witnesses (AD). Exists C >= 0 such that for every R some L > max R 2 has a parity with Q_p >= -C ||u||^2 on the whole slice.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR35": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "alpha, then C and T; every late t.",
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "(C2-SE) literal long-term subexponential lower bound. For every alpha > 0, T(t) >= -C exp(alpha t) at every late t, T the literal hyperbola long term.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR36": {
+      "alternatives": [],
+      "closing_relevance": "STRUCTURAL_ADAPTER",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Exact identity.",
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "(NC) native squared-index commutator cancellation and rank-one leakage. V* [D0, A] V = 0 for boundary-flat columns (full canonical source); D0 maps each slice into pole-neutral boundary-flat vectors and leaves it exactly through M6 (even) or M7 (odd).",
+      "status": "SOURCE_RECORD"
+    },
+    "CR37": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_SUPPLIED_VIA_PG",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "parity and constants before L.",
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910 (M59); PREMISE OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "(SG) geometry-diagonal and source-response growth (5A candidate). In one fixed parity, for all late L: ||V* E w|| <= C_z (1+L)^a and min_i <v_i, H v_i> >= -C_h (1+L)^b, with v_i the geometry eigenbasis of J = V* D0 V and w the unit leakage normal.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR38": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_SUPPLIED_VIA_PG",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "parity and constants before L.",
+      "source_disposition": "OPEN (reduction CP -> PG DERIVED, not formalized)",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "(CP) centered ordinary-prime discrepancy lower bound. In one fixed parity, for all late L and every slice vector f: D_theta(L, f) >= -C (1+L)^d ||f||^2, where Q_L = R_0 + D_theta - P_pp exactly, R_0 >= c_* ||f||^2 (c_* about -1.3722) and ||P_pp|| <= 2 L^2.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR39": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_SUPPLIED (paper sequence criterion)",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "a sequence; no uniform bound or rate.",
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "CAUSAL: Abel-output membership at a damping sequence. Distinct lambda_j > 0, lambda_j -> 0, with H_lambda_j in L2(0, infinity) for every j.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR40": {
+      "alternatives": [],
+      "closing_relevance": "STRUCTURAL_ADAPTER",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Exact identity.",
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Native rank-one leakage factor and rank-two compressed commutator. D0 u - P_S D0 u = (M6(u)/||r_e||^2) r_e (even), (M7(u)/||r_o||^2) r_o (odd); <u, P D0 P A v - P A P D0 v> = c(v) conj<r, A u> - conj(c(u)) <r, A v> for the full canonical source.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR41": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "parity, C, d, L0 before L.",
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Reconstruction bound and the (SG) certificate consumer. Re x*Hx >= (h0 - 2 n_z n_l / g)||x||^2 under the rank-two relation; a geometry-response certificate gives the slice bound at its floor; polynomial certificates at every late aperture in one parity give PG and RH.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR42": {
+      "alternatives": [],
+      "closing_relevance": "COARSE_GROWTH_ADAPTER",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "All-vector, every L.",
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Paid proper-prime-power adapter. ||P_pp(L)|| <= 2 L^2 on either compressed slice; PG holds for the full source iff it holds for the primes-only source.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR43": {
+      "alternatives": [],
+      "closing_relevance": "NOT_CLOSING (exponential rate 1/2)",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Every L.",
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Unconditional explicit-PNT all-vector bound. Q_L(f) >= [c_* - (1 + 4 pi K/L)(3 + (939/40) L^(303/200) e^(L/2 - 0.8274 sqrt L))] ||f||^2 (Johnston-Yang input).",
+      "status": "SOURCE_RECORD"
+    },
+    "CR44": {
+      "alternatives": [],
+      "closing_relevance": "RATE_LADDER_ADAPTER (closing only at a = 0, which is RH itself)",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "a first; then alpha > a; then C and L0; all vectors.",
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Graded rate equivalence: zero strip and fixed-rate native floor. For a >= 0 and each parity: every nontrivial zero has |Re rho - 1/2| <= a if and only if, for every alpha > a, the fixed-rate moment-slice bound at rate alpha holds at every large aperture. The new direction has explicit constants: on every boundary-flat native vector x at aperture L and cutoff K, Re<Q x, x> >= -S e^(aL) L (1 + (2 pi K/L)^2)^2 (2K + 1) ||x||^2 with S = sum m_rho/(1 + |gamma_rho|^2).",
+      "status": "SOURCE_RECORD"
+    },
+    "CR45": {
+      "alternatives": [],
+      "closing_relevance": "STRUCTURAL_ADAPTER",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "One aperture and one depth D; any packet.",
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Least-crossing cutoff at the first native space. If the cutoff-3 global pole-neutral bottom is below -D/2 (for instance one unit vector of either one-dimensional cutoff-3 parity space has energy below -D/2), every NativeDeepThresholdGroundData packet at that aperture has cutoff 3 and both predecessor spaces have dimension zero.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR46": {
+      "alternatives": [],
+      "closing_relevance": "NOT_CLOSING (removes (E) and (F) as independent suppliers)",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "delta and beta before L; cofinal in L.",
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Target consolidation: (U), (F) and (E) are one growth bound for the prime field Z. Under a hypothetical off-line zero of displacement delta, for every beta < delta there are arbitrarily late apertures where a cutoff-3 unit vector has energy below -e^(beta L); there the least-crossing cutoff is 3, the predecessor is {0}, and (E) is the plain L2 growth bound for Z at horizon L - c0. (F) is the weighted L2 growth bound because ||N v_L||^2 tends to ||U||^2 > 0. (U) is the weighted L1 growth bound. At rate eta each excludes zeros of displacement above eta and is implied by their absence.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR47": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_SUPPLIED (RH-equivalent scalar interface; a reformulation, not an independent supplier)",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "One explicit sequence of numbers indexed by L.",
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Scalar criterion on the even cutoff-3 energy. Let E_e(L) be the canonical energy of the unit vector of the even cutoff-3 pole-neutral boundary-flat space; its transform is R(z) = c_e (z^2 - 1/4)/(z prod_{a<=3}(z^2 + (2 pi a/L)^2)). Then sup Re rho - 1/2 is the least exponential rate at which E_e is bounded below. RH holds iff E_e(L) >= 0 for all large L, and under RH 0 < E_e(L) <= 12.94/L^5. The same holds for the odd vector.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR48": {
+      "alternatives": [],
+      "closing_relevance": "NOT_CLOSING (finite range of apertures)",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Every L; the bound degrades like e^(L/2).",
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Explicit floor with a verification height. If every zero below height H0 is on the line and theta0 = sup Re rho, then for every aperture, cutoff and boundary-flat vector c: E(c) >= -2 (2 pi)^6 S6(H0) (K^6/L^5) e^((theta0 - 1/2) L) |c|^2, S6(H0) = sum over gamma > H0 of gamma^-6. With the published height 3e12 the constant is about 4.4e-58, and with theta0 <= 1 the floor on the whole quartic carrier stays above -1 up to L about 86.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR49": {
+      "alternatives": [],
+      "closing_relevance": "NOT_CLOSING (real-rootedness of finite ground states does not distinguish RH from its failure)",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "One aperture, one space.",
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Native real-root lemma. If the bottom eigenvalue of the canonical form on a native space (full, boundary-flat, pole-neutral or moment slice) in one parity sector is simple, every zero z of the numerator of the ground transform has z^2 real.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR50": {
+      "alternatives": [],
+      "closing_relevance": "CLOSING_IF_SUPPLIED (the natural proof consumes canonical positivity)",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "A sequence of apertures.",
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Ground-state convergence candidate (CT). For a sequence L_j tending to infinity with simple even bottoms: if the normalised ground transforms converge locally uniformly to xi(1/2 + z), then RH (by CR49 and Hurwitz).",
+      "status": "SOURCE_RECORD"
+    },
+    "CR51": {
+      "alternatives": [],
+      "closing_relevance": "SHARP_INTERFACE (closing iff the descent inequality is supplied)",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "Costs A, G, h first; then the start L1 >= 1; then every large L and every eps >= 0.",
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Loss-tolerant delay descent is a sharp interface. Abstractly (fixed_rate_of_delay_descent): if P L eps is monotone in eps, holds with C0 e^(alpha L) from L1 on, and at every large L a bound eps on [L1, L - h(L)] gives P L (A(L) + G(L) eps), with h eventually >= h0 > 0, A eventually below every positive exponential rate and 2 G(L) <= e^(eta h(L)) eventually for every eta > 0, then P holds at every positive rate from L1 on. Natively (EvenDelayDescent, OddDelayDescent): with such costs the delay descent of the slice bottom in one parity gives (SE) and RH; under RH every eventually nonnegative cost profile satisfies it.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR52": {
+      "alternatives": [],
+      "closing_relevance": "SHARP_INTERFACE",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "theta, C, d, m first; then every large L and every eps >= 0.",
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Fractional-scale descent with polynomial costs is a sharp interface. For 0 < theta < 1, C >= 0 and exponents d, m: the slice bound eps at theta L giving the slice bound C(1+L)^d + C(1+L)^m eps at L, at every large L in one parity (EvenScaleDescent, OddScaleDescent), is equivalent to RH. It is an instance of CR51 with delay (1 - theta) L.",
+      "status": "SOURCE_RECORD"
+    },
+    "CR53": {
+      "alternatives": [],
+      "closing_relevance": "NOT_CLOSING (locates the unpaid term)",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "parameter_order": "One fixed kernel; every T.",
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "statement": "Tame integer drive and wild Moebius part: the exact Abel-Mertens bridge. For the fixed cutoff-4 kernel q4 = g * g, S(T) = sum_{n <= e^T} Lambda(n) n^(-1/2) q4(T - log n) equals int_0^T m(v) J(T - v) dv with m(v) = e^(-v/2) M(e^v), J = H' + H/2 and H(t) = sum_{n <= e^t} (log n / sqrt n) q4(t - log n); |H| <= C_H (1+t) and |H'| <= C_H' (1+t) with explicit rationals. |M(x)| <= C x^theta gives fixed-field rate theta - 1/2. J takes both signs (J(4) > 0 > J(6)).",
+      "status": "SOURCE_RECORD"
+    },
+    "CROSSING": {
+      "alternatives": [],
+      "context": [
+        "FIXED_SIEVE",
+        "PAIR_CUT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/NEGATIVE_INTERVAL_DURATION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/cuts/ACTUAL_CROSSING_RATE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/cuts/FIXED_WINDOW_ZERO_ISOLATION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/cuts/STATIONARY_CUT_PROFILE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/cuts/TRANSVERSE_NATIVE_CUT.md"
+      ],
+      "statement": "A transverse physical crossing has a source-fixed branch. Signed crossing separation, fixed-width isolation, stationary profile and the duration of negative intervals constrain a hypothetical off-line response; a one-sided duration or separation estimate is still needed.",
+      "status": "DERIVED"
+    },
+    "C_DIRECT_COMPLEMENT": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "statement": "Actual original detector forcing/complement upper bound beating the off-line lower exponent. OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE No complete new Lean route contract is supplied by this extension",
+      "status": "OPEN"
+    },
+    "D1_ACTUAL_RAYS": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "statement": "EventualActualRayClosure. exists R before every L>R, hL, K>=3 and every negative real resolvent shift; separate shared-negative-ground exclusion Read full compiler-exported Lean type; metadata is not a substitute",
+      "status": "OPEN"
+    },
+    "D2_NEGATIVE_GROUNDS": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "statement": "EventualNegativeGroundClosure. exists R before every L>R,K>=3; compare only corresponding actual negative ground strictly below opposite bottom; exclude shared negative ground separately Read full compiler-exported Lean type; metadata is not a substitute",
+      "status": "OPEN"
+    },
+    "D3_NATIVE_JOINT_INDEX": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "statement": "EventualNativeJointNegativeIndexCap. exists R before every L>R,K>=3; bound finrank of every strictly negative physical two-pole-neutral subspace by1 Read full compiler-exported Lean type; metadata is not a substitute",
+      "status": "OPEN"
+    },
+    "D4_DIRECT": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "statement": "EventualNoSimultaneousNegativity. exists R before every L>R,K>=3; no actual simultaneous parity negativity Read full compiler-exported Lean type; metadata is not a substitute",
+      "status": "OPEN"
+    },
+    "DELAY": {
+      "alternatives": [],
+      "context": [
+        "NATIVE_HARMONIC",
+        "RENEWAL_ALGEBRA"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/DELAYED_GAIN.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/POWER_DELAY.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/SIGNED_DELAYED_GAIN.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/SIGNED_PRIME_FACTORS.md"
+      ],
+      "statement": "Actual delayed arithmetic replay pays the tail at O(sqrt(x)). The middle delayed amplification and its two signs still carry a zero displacement; fitted relative signed-gain estimates would be circular.",
+      "status": "DERIVED"
+    },
+    "DIVISOR_FIBRE_LIMIT": {
+      "alternatives": [],
+      "context": [
+        "FORMAL_GAP"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/FACTOR_PARITY_ROUTES.json",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/FACTOR_PARITY_ROUTES.md"
+      ],
+      "statement": "Exact divisor-fibre inversion of a rough interval places its original signed charge in the coefficient at 1. A nonempty interval excluding 1 cannot be represented by nonnegative whole-fibre weights.",
+      "status": "DERIVED"
+    },
+    "DIVISOR_PREFIX": {
+      "alternatives": [],
+      "context": [
+        "DURATION",
+        "ROUGH_PHASE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/HEAT_VARIANCE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/PROJECTED_DIVISOR_GRAPH.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/sieve/INDIVIDUAL_PRIME_ECHO.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/sieve/OPTIMAL_PRIME_MASKS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/sieve/PROJECTED_PREFIX_SIGN.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/sieve/SUPERPOLYNOMIAL_NATIVE_MASKS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/sieve/UNRESTRICTED_TRANSLATION_LIMIT.md"
+      ],
+      "statement": "Same-group fixed primitive ratios, individual prime echoes and finite or superpolynomial sieve masks have explicit paid sectors. Smoothing before squaring can erase the critical fluctuation; restore the full signed variance and unrestricted translated history in any transfer.",
+      "status": "DERIVED"
+    },
+    "DIVISOR_STRIP_ALGEBRA": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.DivisorStrip.exists_divisor_of_residual_ne_zero",
+        "Zeta23.OPICARound6.PrimeFactorPaths.DivisorStrip.residual_prime_mul"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/DivisorStrip.lean"
+      ],
+      "statement": "Exact finite prime insertion and contributing-divisor support.",
+      "status": "PROVED"
+    },
+    "DURATION": {
+      "alternatives": [],
+      "context": [
+        "CROSSING",
+        "VISIBLE_SCALAR"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/ACTIVE_MODE_COMPARISON.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/POISSON_PRIME_RANGE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/jets/EULER_TAIL_FALSIFICATION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/jets/POISSON_STABLE_MODES.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/jets/SINGLE_SCALAR_CAYLEY.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/jets/UNSHIFTED_COFINAL_GRAPH.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/windows/CRITICAL_DURATION_AND_JETS.md"
+      ],
+      "statement": "A fixed scalar Cayley/Laguerre observation and localized Poisson prime range retain the visible zero modes and a duration criterion. A modified Euler tail reproduces any finite probe family, so finite data do not prove its eventual asymptotics.",
+      "status": "DERIVED"
+    },
+    "FINITE_K5": {
+      "alternatives": [],
+      "context": [
+        "FORMAL_COORDINATES"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round5/K5_MIXED_SOURCE_SPEC.md"
+      ],
+      "statement": "The K5 exact-rational Gram test and two genuine-source Arb probes give finite sign and Schur information with slot conditioning. Separate synthetic zero, ablation and weight controls cannot become an all-K estimate.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    "FINITE_NATIVE_CHECK": {
+      "alternatives": [],
+      "context": [
+        "WHOLE_SHELLS"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/BALANCED_TRANSPORT_CHECK.json",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/WHOLE_COARSE_SURPLUS.json"
+      ],
+      "statement": "Exact native enumeration distinguishes the first clipped positive charge from the first whole positive coarse cell after 2²⁰. On the observed final slab the moving and frozen masks give different energies.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    "FIXED_SIEVE": {
+      "alternatives": [],
+      "context": [
+        "ROUGH_DECOMPOSITION"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/ALL_HORIZON_DIAGONAL.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/COUNTERSIGN_ZERO_HEIGHT.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/FIXED_SIEVE_SIGN.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/divisor/FIXED_SIEVE_RECURRENCE_AUDIT.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/divisor/SIGN_THRESHOLD_CRITERION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/first_layer/INTERACTION_GRAPH.md"
+      ],
+      "statement": "At fixed Y=10⁷ the complete different-rough-part covariance has a one-sided sign criterion, with a numerical all-horizon diagonal lower and a conditional countersign height implication. The required eventual/cofinal signs have not been proved.",
+      "status": "DERIVED"
+    },
+    "FORMAL_COORDINATES": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.finrank_fixedEvenMomentSeed",
+        "Zeta23.OPICARound4.ArithmeticFrontier.finrank_fixedOddMomentSeed",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedMomentParityShortExact"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound5/ParityMomentBridge.lean"
+      ],
+      "statement": "The checked odd-to-even shift is injective and its image is the center-evaluation kernel. At K=5 the odd/even dimensions are one/two. The physical charts are nonunitary. No positivity or unconditional source upper follows.",
+      "status": "PROVED"
+    },
+    "FORMAL_GAP": {
+      "alternatives": [],
+      "context": [
+        "ACTUAL_UPPER",
+        "GROUND"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/FACTOR_PARITY_ROUTES.md"
+      ],
+      "statement": "The paper one-sided survivor criterion still requires an independent upper and a complete kernel-checked transfer on the actual source. The separate A-X implication already accepts an all-damping upper for the actual prime field.",
+      "status": "OPEN"
+    },
+    "FRONT-C1": {
+      "alternatives": [],
+      "context": [
+        "CR01"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "(C1) cofinal vanishing-error moment-slice bounds. For every n>=1 there is an aperture L>=n+2 and one parity whose entire moment slice at K=originalDetectorQuarticCutoff(L) satisfies Q_p(L,x) >= -(1/n)||x||^2 in the inherited physical norm. ",
+      "status": "OPEN"
+    },
+    "FRONT-C2": {
+      "alternatives": [],
+      "context": [
+        "CR03"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "(C2) actual long-term eventual lower bound. There exist C>0 and T such that for all t>=T, hyperbolaT(actualCorrelationLogarithmicTest t)(actualCorrelationCutoff t/2) >= -C. ",
+      "status": "OPEN"
+    },
+    "FRONT-C2-SE": {
+      "alternatives": [],
+      "context": [
+        "CR35"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "(C2-SE) literal long-term subexponential lower bound. For every alpha > 0, T(t) >= -C exp(alpha t) at every late t, T the literal hyperbola long term. ",
+      "status": "OPEN"
+    },
+    "FRONT-CAUSAL": {
+      "alternatives": [],
+      "context": [
+        "CR05"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Qualified causal alternative. The actual source-preserving causal Gram residual tends to zero. ",
+      "status": "OPEN"
+    },
+    "FRONT-DD": {
+      "alternatives": [],
+      "context": [
+        "CR51"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Loss-tolerant delay descent is a sharp interface. Abstractly (fixed_rate_of_delay_descent): if P L eps is monotone in eps, holds with C0 e^(alpha L) from L1 on, and at every large L a bound eps on [L1, L - h(L)] gives P L (A(L) + G(L) eps), with h eventually >= h0 > 0, A eventually below every positive exponential rate and 2 G(L) <= e^(eta h(L)) eventually for every eta > 0, then P holds at every positive rate from L1 on. Natively (EvenDelayDescent, OddDelayDescent): with such costs the delay descent of the slice bottom in one parity gives (SE) and RH; under RH every eventually nonnegative cost profile satisfies it. ",
+      "status": "OPEN"
+    },
+    "FRONT-K3": {
+      "alternatives": [],
+      "context": [
+        "CR04"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Native K3 ordinary-prime remainder E_ord. An eventual polynomial lower bound on either literal K3 scalar energy, equivalently control of E_ord = B_1 + 200 a beta^2 L + d_0 (H_2+16) L^2. Needs both the arithmetic bound and a formal end-to-end K3 reduction.",
+      "status": "OPEN"
+    },
+    "FRONT-ND": {
+      "alternatives": [],
+      "context": [
+        "CR52"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Fractional-scale descent with polynomial costs is a sharp interface. For 0 < theta < 1, C >= 0 and exponents d, m: the slice bound eps at theta L giving the slice bound C(1+L)^d + C(1+L)^m eps at L, at every large L in one parity (EvenScaleDescent, OddScaleDescent), is equivalent to RH. It is an instance of CR51 with delay (1 - theta) L. ",
+      "status": "OPEN"
+    },
+    "FRONT-PACKET": {
+      "alternatives": [],
+      "context": [
+        "CR02"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Selected-packet ground-response restriction. At late disjoint native states at the literal quartic cutoff, the corrected cubic source on the strictly lower negative even ground ray and the odd adjoint pairing on the strictly lower negative odd ground ray are both below one. ",
+      "status": "OPEN"
+    },
+    "FRONT-PG": {
+      "alternatives": [],
+      "context": [
+        "CR31"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "(PG) fixed-parity polynomial lower bound on the moment slices. Exists a parity p, C > 0, d : Nat and L0 with Q_p(L,u) >= -C (1+L)^d ||u||^2 for every u in M_p(L,K(L)) and every L >= L0. ",
+      "status": "OPEN"
+    },
+    "FRONT-SB": {
+      "alternatives": [],
+      "context": [
+        "CR34"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "(SB) cofinal one-constant floor and the all-late fixed-depth witnesses (AD). Exists C >= 0 such that for every R some L > max R 2 has a parity with Q_p >= -C ||u||^2 on the whole slice. ",
+      "status": "OPEN"
+    },
+    "FRONT-SE": {
+      "alternatives": [],
+      "context": [
+        "CR32"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "(SE) fixed-parity subexponential lower bound. Exists p such that for every alpha > 0 there are C, L0 with Q_p(L,u) >= -C exp(alpha L) ||u||^2 for all L >= L0. ",
+      "status": "OPEN"
+    },
+    "FRONT-SG": {
+      "alternatives": [],
+      "context": [
+        "CR41"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Reconstruction bound and the (SG) certificate consumer. Re x*Hx >= (h0 - 2 n_z n_l / g)||x||^2 under the rank-two relation; a geometry-response certificate gives the slice bound at its floor; polynomial certificates at every late aperture in one parity give PG and RH. ",
+      "status": "OPEN"
+    },
+    "GRAM_ALGEBRA": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.determinant_nonneg",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.ordered_minors",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.scalar_factorization",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.signed_energy"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/FiniteWeightedGram.lean"
+      ],
+      "statement": "Finite determinant and Gram identities.",
+      "status": "PROVED"
+    },
+    "GROUND": {
+      "alternatives": [],
+      "context": [
+        "DELAY",
+        "NATIVE_TREE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/GROUND_TRANSFER.md"
+      ],
+      "statement": "The genuine Möbius row maps into joint observation coordinates with bounded cell history. The remaining signed scalar has not been shown to be the canonical ground eigenray or reciprocal input required by the source constraints.",
+      "status": "OPEN"
+    },
+    "HEIGHT": {
+      "alternatives": [],
+      "context": [
+        "FINITE_K5",
+        "FORMAL_COORDINATES"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/NATIVE_WINDOW.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/POSITIVE_APERTURE_QUADRATURE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/REAL_MOMENTS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/STEP4_HEIGHT_AND_GRAPH_RESULTS.md"
+      ],
+      "statement": "Both lobes, reflection, Archimedean tail and zero multiplicities are retained. Finite verified height pays a generated-packet exclusion through log separation 288000 and fixed-center real-moment bounds. A uniform upper over unbounded centers or apertures remains open.",
+      "status": "DERIVED"
+    },
+    "HIST-S-APERTURE-METRIC": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Frozen aperture-metric comparison G(a) <= G(L) <= (b/a)^4 G(a).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-BOTTOM": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "FINITE_CERTIFICATE",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Certified positive simple bottoms on six constrained spaces at L = 2 (K = 16) and L = 3 (K = 81) (evidence/increment6a).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-CHECKER": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "FiniteCertificateSoundness: accepted data imply the stated native finite inequality.",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-COARSE": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Coarse-growth, fixed-rate, AD/SB and C2-SE consumers (CR31-CR35, M54-M56).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-CUTOFF": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "A cutoff-3 bottom below -D/2 forces least-crossing cutoff 3 and an empty predecessor (CR45, M61).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-DESCENT": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Loss-tolerant delay and scale descent are equivalent to RH (CR51, CR52, M62).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-ENCLOSURE": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Proved enclosure bridge from accepted data to canonicalSourceMatrix.",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-FLOOR": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Zero strip of half-width a if and only if fixed-rate native floors at every rate above a, with an explicit floor constant (CR44, M60).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-KERNEL": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Audit and, if useful, formalize the universal approximate-kernel estimate (CR15).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-KERNELS": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "FINITE_CERTIFICATE",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Exact kernel certificates: cutoff-3 vector, endpoint polynomial, cutoff-4 profile and constants; J(4) > 0 > J(6) (evidence/increment6b).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-LEAK": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Explicit rank-one leakage factor and the native rank-two commutator (CR40, M58).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-LEAKAGE": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "MomentLeakage and NativeLeakageArithmetic for the one-normal programme.",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-NC": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Native NC and rank-one leakage in functional form (CR36, M57).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-POLE": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Pole-channel annihilation and Q = -arch - prime on both pole-neutral carriers and moment slices (CR17, M50).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-REACH": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Constructive certificate production with apertures escaping every bounded interval and physical errors tending to zero; cofinal_moment_slice_bounds_of_tendsto is its consumer.",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-RECON": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Reconstruction bound and the (SG) certificate consumer (CR41, M59).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-SCALAR": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Scalar criterion on the even cutoff-3 energy E_e(L) (CR47).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-SG": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Candidate (SG) frozen and measured at L=4..6 (CR37, evidence/increment5a).",
+      "status": "SOURCE_RECORD"
+    },
+    "HIST-S-TRACE": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "OPEN",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "statement": "Formal trace identity for the core residual (CR14) and a rigorous enclosure.",
+      "status": "SOURCE_RECORD"
+    },
+    "KNOT_ALGEBRA": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.calibrated_residue",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.ramp_increment",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.twice_ramp_at_knot",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.weight_prefix"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/FactorialKnot.lean"
+      ],
+      "statement": "Signed factorial calibration and the integer-knot identities.",
+      "status": "PROVED"
+    },
+    "LOCAL_RATIO": {
+      "alternatives": [],
+      "context": [
+        "DIVISOR_PREFIX"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/LOG_RATIO_STRIP.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/POSITIVE_PRIME_MOMENT_COMPRESSION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/PRIME_COMPOSITE_CROSS_TERM.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/PRIME_INPUTS_TO_CUTS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/ROUGH_INTERVAL_CANCELLATION.md"
+      ],
+      "statement": "Matched small prime factors, restricted log ratio strips and long-interval rough cancellation price specified sectors. Sparse positive prime moment compression changes prime weights and does not remove a signed arithmetic premise.",
+      "status": "DERIVED"
+    },
+    "MASK_BARRIER": {
+      "alternatives": [],
+      "context": [
+        "CONE_MATCH"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/DETERMINISTIC_CONE_GCD.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/EXTERNAL_PARTNER_MASK_BARRIER.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/FIXED_COFACTOR_MASK.md"
+      ],
+      "statement": "The deterministic cone has a signed large-GCD bound. External replacement donors can create actual positive forbidden pairs with fixed-power cost; one cannot strip the native gcd mask after deletion by invoking the original full-source bound.",
+      "status": "DERIVED"
+    },
+    "NATIVE_HARMONIC": {
+      "alternatives": [],
+      "context": [
+        "RESIDUE_GRAPH"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-native-residual-2026-11-19/HARMONIC_SIGNED_MASS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-native-residual-2026-11-19/ONE_HARMONIC_ZERO_DETECTOR.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-native-residual-2026-11-19/SPARSE_NATIVE_TEST.md"
+      ],
+      "statement": "A true coprime-to-six one-harmonic Möbius row with its native phase has limsup exponent 1+B. Both positive and negative masses are separately quadratic. Sparse exact native-site interpolation reduces evaluations, not the signed upper.",
+      "status": "DERIVED"
+    },
+    "NATIVE_TREE": {
+      "alternatives": [],
+      "context": [
+        "BAND",
+        "PAIR_ALGEBRA"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/DYADIC_TREE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/PAID_PAIR_DISTANCES.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/PRIMITIVE_BAND_COVARIANCE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/RATIONAL_SIGNED_COVARIANCE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/SIGNED_COMPENSATION.md"
+      ],
+      "statement": "Near-diagonal primitive pairs, rational covariances and dyadic node squares realize the all-horizon positive-part exponent 2B−1. Fine levels and limited pair distances are paid. Positive and negative edge masses nearly compensate but their residual is unknown.",
+      "status": "DERIVED"
+    },
+    "NORM_LOSS": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "SIGNED_PACKET"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PACKET_WIDTH_AND_NATIVE_NORM.md"
+      ],
+      "statement": "An X^−1/2-width integrated signed packet recovers the native square root of the one-sided energy up to subpower additive error. Actual primes plus selected true positive semiprimes defeat uniform transfer from coarse packets through X^−2/5. This is a comparator, not the full prime/Möbius field.",
+      "status": "DERIVED"
+    },
+    "ONE_POLARITY": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "ROUGH_TREE"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/ONE_SIDED_NODE_CHARGES.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/SIGNED_CLAIM_ROUTES.md"
+      ],
+      "statement": "The positive and negative node-square masses separately have exact exponent 2B−1. One cofinal subpower upper at just one sign is sufficient. Merged proof-value paths establish a source-to-criterion implication with a positive-energy premise.",
+      "status": "DERIVED"
+    },
+    "OUTER_VARIATION": {
+      "alternatives": [],
+      "context": [
+        "AREA_LOCALIZATION"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/FACTORIAL_TERMINAL_MASS_EXPONENT.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/FULL_OUTER_VARIATION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/SUBSQUARE_ROOT_SOURCE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/TRUE_PRIME_TWIST_AND_BOTH_SIGNS.md"
+      ],
+      "statement": "Full outer-prime variation and terminal mass exponents identify real opposite large masses. Raw sub-square-root localization uses the external zero ceiling; the fixed smooth horizon has a different transfer. Geometry or absolute older-prime counts cannot supply the sharp upper.",
+      "status": "DERIVED"
+    },
+    "P1_SELECTED_PACKET_GROUND_RESPONSE": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "statement": "EventualDisjointQuarticGroundRestriction. exists R before every late disjoint quartic state; both exact ground responses below one; no shared-ground premise Read full compiler-exported Lean type; metadata is not a substitute",
+      "status": "OPEN"
+    },
+    "PAIR_ALGEBRA": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.geometric_moments",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.geometric_remainder",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.one_moment",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.rational_pair_remainder"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/FinitePairKernel.lean"
+      ],
+      "statement": "Finite signed pair-kernel identities.",
+      "status": "PROVED"
+    },
+    "PAIR_CUT": {
+      "alternatives": [],
+      "context": [
+        "HEIGHT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/graphs/ACTUAL_PRIME_CUT_LOCATIONS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/graphs/CROSSING_COMPARISON.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/graphs/DENSE_PRIME_PAIR_CANCELLATION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/graphs/GENUINE_DIVISOR_COVARIANCE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/graphs/NATIVE_WINDOW_GRAPH_DEDUCTION.md"
+      ],
+      "statement": "Two source-selected prime-pair ratio cuts, their transverse crossings and the complete divisor covariance retain opposite signed contributions. Dense prime-pair asymptotics or bounded arithmetic width alone do not bound their difference.",
+      "status": "DERIVED"
+    },
+    "PAPER_ROUTE_VALIDATION": {
+      "alternatives": [],
+      "context": [
+        "FORMAL_GAP",
+        "ROUGHNODECHARGES"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/ExceptionalZero/Step4OutputSufficiency.lean",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md"
+      ],
+      "statement": "Supply a complete kernel-checked transfer of the independent signed survivor estimate through the actual arithmetic source to the Step 4 statement. The finite selector lemma pays only its finite part.",
+      "status": "OPEN"
+    },
+    "PARITY_BARRIER": {
+      "alternatives": [],
+      "context": [
+        "SELECTED_SUPPORT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/COMPLEMENT_POSITIVE_ENERGY.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PARITY_MAJORANTS.md"
+      ],
+      "statement": "High factor-count layers have a subpower-cost majorant. Low divisor level alone leaves the parity problem open. For the deterministic large-cofactor complement R, its entire positive node energy has upper exponent max(0,min(1/6,2B−17/12)) on complete shells, strictly smaller than 2B−1 for B>1/2. The positive part of the full source includes the cone too.",
+      "status": "DERIVED"
+    },
+    "PRIMEAREAINTEGRAL": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral.integral_negative_iff_squarefree_prime_cost",
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral.integral_theta_eq_first_moment",
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral.integral_theta_sub_id_eq_rampArea"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/PrimeAreaIntegral.lean"
+      ],
+      "statement": "The declared finite integral identities identify the genuine Chebyshev prime area with its sum representation under the source hypotheses.",
+      "status": "PROVED"
+    },
+    "PRIME_GRID": {
+      "alternatives": [],
+      "context": [
+        "PRIME_VARIANCE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/COUNT_SAVING_SCOPE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/ENDPOINT_CHECK.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/QUARTIC_SIGNED_COUNTS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/RAW_POWER_GRID_QUADRATURE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/TRANSLATED_GRIDS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/VAUGHAN_GRID_BOUND.md"
+      ],
+      "statement": "Sawtooth estimates via Vaughan on true prime-power cells, translated grids, endpoint interpolation and raw fixed power grids preserve the true signed endpoint problem. Thresholds, shifts and real-cutoff versus active-source qualifications differ across these results.",
+      "status": "DERIVED"
+    },
+    "PRIME_VARIANCE": {
+      "alternatives": [],
+      "context": [
+        "HEIGHT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/INTERVAL_VARIANCE.md"
+      ],
+      "statement": "Square-root short-interval variance up to subpower on the specified genuine additive scale would control the published one-copy field. The notes derive the transfer, not this variance bound.",
+      "status": "OPEN"
+    },
+    "PRIMITIVEEULERMULTIPLIER": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier.cosineFactor_eq_euler",
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier.cosineFactor_pos",
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier.finite_primitive_euler_identity_and_pos"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/PrimitiveEulerMultiplier.lean"
+      ],
+      "statement": "Finite multiplier identities with the specified factors and primitive correction hold under their stated assumptions.",
+      "status": "PROVED"
+    },
+    "PRIMORIAL": {
+      "alternatives": [],
+      "context": [
+        "AREA_SIGNS"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/BALANCED_PRIME_EXCHANGES.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/PRIMORIAL_NEIGHBORS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/SQUAREFREE_COST.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/STOPPED_PRIME_GRAPH.md"
+      ],
+      "statement": "A one-sided all-squarefree cost inequality and stopped primorial maxima are paper criteria. Nearby prime exchanges realize small cost without estimating the signed old-prime prefix at every stop.",
+      "status": "DERIVED"
+    },
+    "RENEWAL_ALGEBRA": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.abel_history",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.history_upper",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.history_weight_total",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.renewal_upper"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/FiniteRenewal.lean"
+      ],
+      "statement": "Finite cutoff and replay algebra.",
+      "status": "PROVED"
+    },
+    "RESIDUE_GRAPH": {
+      "alternatives": [],
+      "context": [
+        "KNOT_ALGEBRA",
+        "OUTER_VARIATION"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/NATIVE_NUMERATOR_CANCELLATION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/PERIOD_AND_NATIVE_PHASE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/QUIET_PREFIX_AND_CALIBRATION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/RESIDUE_GRAPH_CRITERION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/SECOND_BAND_DYADIC_OBSTRUCTION.md"
+      ],
+      "statement": "The rational integer residue statistic at its native origin has the zero-edge exponent. Complete periods, second-band controls, the quiet initial prefix and numerator cancellation independently pay specific frequencies. The unpaid large-denominator, small-numerator native phase survives.",
+      "status": "DERIVED"
+    },
+    "RETAINED_TRIAL_BOUND": {
+      "alternatives": [],
+      "context": [
+        "RETAINED_TRIAL_IFF"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean"
+      ],
+      "statement": "Prove domination for the actual generated retained cubic trial at every eligible certificate beyond a single fixed aperture.",
+      "status": "OPEN"
+    },
+    "RETAINED_TRIAL_IFF": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_primeRemainderDominance_failure_of_offLine_zero",
+        "Zeta23.ExceptionalZero.generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean"
+      ],
+      "statement": "Generated retained-trial prime-remainder dominance is equivalent to Mathlib RH. An off-line zero forces arbitrarily late strict failure.",
+      "status": "PROVED"
+    },
+    "RH": {
+      "alternatives": [],
+      "context": [
+        "ACTUAL_FIELD_TRANSFER",
+        "RETAINED_TRIAL_IFF"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "STEP4"
+      ],
+      "source_files": [
+        "rh:file:Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "statement": "An unconditional exact RH statement still requires a complete validated proof. Each graph route includes its own original hypotheses.",
+      "status": "OPEN"
+    },
+    "ROUGHNODECHARGES": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.abs_charge_le_card",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.abs_roughSign_le_one",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.charge_sub_survivors",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.contingency_covariance",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.roughSign_factor",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.roughSign_split_parity",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.selector_energy_loss"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/RoughNodeCharges.lean"
+      ],
+      "statement": "The finite selector transports the literal squarefree rough Möbius sign with a bound on weighted cell loss. The signed contingency identity and the split over prime factors give exact finite source identities.",
+      "status": "PROVED"
+    },
+    "ROUGH_DECOMPOSITION": {
+      "alternatives": [],
+      "context": [
+        "APERTURE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-rough-squarefree-2026-11-19/MARKED_ARITHMETIC.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-rough-squarefree-2026-11-19/ROUGH_RESPONSE_OBSTRUCTION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-rough-squarefree-2026-11-19/STEP4_ROUGH_SQUAREFREE_RESIDUAL.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-rough-squarefree-2026-11-19/UNCONDITIONAL_RESIDUAL_BOUND.md"
+      ],
+      "statement": "The subpower weighted rough squarefree count isolates a cancellation between actual prime and composite layers at y=T². The complete residual has an unconditional pseudopower saving but still allows exponent 1/2; marked and unmarked sums have different behavior.",
+      "status": "DERIVED"
+    },
+    "ROUGH_PHASE": {
+      "alternatives": [],
+      "context": [
+        "FIXED_SIEVE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/COPRIME_DIVISOR_ENERGY.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/divisor/COUPLED_RESIDUE_MARKING.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/divisor/DETERMINISTIC_SIEVE_PROFILE.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/divisor/ROUGH_CORE_PHASE_TRANSITION.md"
+      ],
+      "statement": "Complete grouped divisor energies have a cutoff phase transition; deterministic moving cutoffs and residue-marked variants preserve specific signed relations. No independence between marked and unmarked histories follows.",
+      "status": "DERIVED"
+    },
+    "ROUGH_TREE": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "NATIVE_TREE"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/ROUGH_PRIME_TRANSPORT.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/TREE_HEIGHT_SPLIT.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/TREE_INTERVALS.md"
+      ],
+      "statement": "A growing roughness mask y=ceil(log₂X)² preserves the zero exponent. Disjoint-interval maximal estimates pay fine/coarse ranges and separate bounded-height from high-height edge behavior. Geometric near-pair concentration alone does not imply RH.",
+      "status": "DERIVED"
+    },
+    "SELECTED_SUPPORT": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "CONE_MATCH",
+        "SELECTOR_ALGEBRA",
+        "WHOLE_SHELLS"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/SMALL_PART_LARGE_PART.md"
+      ],
+      "statement": "After opposite-sign compensation with O(1) change per whole shell, all remaining rough squarefree labels can satisfy a cofactor floor, a uniform bound on running prime-factor discrepancy, and an explicit small/large-factor split. No equidistribution of final factor parity follows.",
+      "status": "DERIVED"
+    },
+    "SELECTOR_ALGEBRA": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.posSq_sub_le",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.signed_weight_energy_comparison",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.weighted_energy_comparison",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.weighted_sq_distance_le"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/FiniteSelectorEnergy.lean"
+      ],
+      "statement": "Finite weighted positive-part comparison for original and selected charges.",
+      "status": "PROVED"
+    },
+    "SIGNED_PACKET": {
+      "alternatives": [],
+      "context": [
+        "ONE_POLARITY"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/FIXED_LOCAL_COMPENSATION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/LOCAL_POLARITY_WINDOWS.md"
+      ],
+      "statement": "All-pole positive filters bound truly unopposed charge after subtracting opposite charge in a local neighborhood, with a uniform fixed compensation allowance and explicit support cost. Spared poles force both signs in fixed-width windows under the stated edge hypotheses. The native unweighted norm still needs compensation. A positive surplus after charging three times the opposing neighboring mass has subpower weighted energy under the stated interior-shell conditions.",
+      "status": "DERIVED"
+    },
+    "SIGNED_PRIME_AREA": {
+      "alternatives": [],
+      "context": [
+        "PRIME_GRID"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/ACTUAL_PRIME_AVERAGING_ERROR.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/ADDITIVE_PRIME_AREA.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/BANDLIMITED_THETA.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/ORDINARY_PRIME_AREA.md"
+      ],
+      "statement": "A positive average and desmoothing with the older verified-height theorem pay a continuous finite range: A_theta<0 through 1.21×10^48. The ordinary-prime area requires its own positive-kernel transfer. Finite ranges do not control unbounded terminal windows.",
+      "status": "DERIVED"
+    },
+    "SMALL_LARGE_PARITY": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/SMALL_PART_LARGE_PART.md"
+      ],
+      "statement": "After matching, the genuine small-prime product can be bounded by U^δ and the remaining factor count lies between any prescribed fixed lower count and a fixed upper count. The constants are chosen in the order given in the source. Parity of the remaining product is retained.",
+      "status": "DERIVED"
+    },
+    "SMOOTH_UPPER": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound4/QuarticErrorReduction.lean",
+        "rh:file:research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.json"
+      ],
+      "statement": "Obtain the independent opposing bound for smoothSourceMain on the same genuine quartic packet, preserving all three transported errors, full complements and the reciprocal arithmetic input.",
+      "status": "OPEN"
+    },
+    "SOURCE_LOADING": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-actual-loading-round6-2026-11-11/ACTUAL_LOADING_OPICA_CONSTRAINTS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-actual-loading-round6-2026-11-11/PREDECESSOR_LOADING_TEST.md"
+      ],
+      "statement": "Predecessor positivity bounds the complete h*h response of the projected translates. The actual projection defect remains an independent charge at the selected cutoff.",
+      "status": "DERIVED"
+    },
+    "SOURCE_LOADING_DEFECT": {
+      "alternatives": [],
+      "context": [
+        "GROUND",
+        "SOURCE_LOADING"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-actual-loading-round6-2026-11-11/ACTUAL_LOADING_OPICA_CONSTRAINTS.md"
+      ],
+      "statement": "Control the complete signed response of the actual translates outside the predecessor projection at its selected cutoff, with threshold fixed before packet selection.",
+      "status": "OPEN"
+    },
+    "SOURCE_PORTABILITY": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_composition/post299/source_checker_v2.py"
+      ],
+      "statement": "The independent post300 source checker replays exact enclosure arithmetic independently of producer backend variation. Numeric success certifies only listed controls, not a new arithmetic theorem.",
+      "status": "SOURCE_RECORD"
+    },
+    "SOURCE_PROBES": {
+      "alternatives": [],
+      "context": [
+        "CALIBRATION_ALGEBRA",
+        "CONE_MATCH",
+        "GRAM_ALGEBRA",
+        "ROUGH_TREE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/CENTERED_CONE_INTERVALS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/CONE_DRIFT.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/GRAM_DISCRIMINANT.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/SINGLE_PROBE_SCALES.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/TWO_ARITHMETIC_PROBES.md"
+      ],
+      "statement": "The deterministic cone has a real signed drift and centered counts. Two genuine arithmetic probes give a determinant detector and an exact Gram discriminant. Source-specific restrictions differ for the single-prime and single-cone endpoints.",
+      "status": "DERIVED"
+    },
+    "SQUAREFREEPRIMECOST": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.log_eq_sum_primeFactors",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.mismatch_identity",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.negative_ramp_below_five",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.negative_ramp_iff_integer_inequality",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.negative_ramp_of_integer_inequality",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.primorial_recovers_ramp",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.squarefree_score_le_ramp"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/SquarefreePrimeCost.lean"
+      ],
+      "statement": "Finite comparisons of costs for subsets of actual prime labels preserve the stated fixed cutoff and weights.",
+      "status": "PROVED"
+    },
+    "STEP4": {
+      "alternatives": [
+        "A-X",
+        "A_SIGNED_OBSERVATION",
+        "B-Y",
+        "B_CAUSAL",
+        "C-Schur",
+        "C1_COFINAL_MOMENT_SLICES",
+        "C2_ACTUAL_LONG_TERM_LOWER",
+        "C_DIRECT_COMPLEMENT",
+        "D1_ACTUAL_RAYS",
+        "D2_NEGATIVE_GROUNDS",
+        "D3_NATIVE_JOINT_INDEX",
+        "D4_DIRECT",
+        "FRONT-C2-SE",
+        "FRONT-DD",
+        "FRONT-ND",
+        "FRONT-PG",
+        "FRONT-SB",
+        "FRONT-SE",
+        "FRONT-SG",
+        "P1_SELECTED_PACKET_GROUND_RESPONSE",
+        "RETAINED_TRIAL_BOUND",
+        "SURVIVOR_ROUTE"
+      ],
+      "context": [
+        "COMPLETE_WEIGHTED_UPPER",
+        "FINITE_K5",
+        "FRONT-CAUSAL",
+        "FRONT-K3",
+        "SMOOTH_UPPER",
+        "SOURCE_LOADING_DEFECT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+        "rh:file:research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json",
+        "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "rh:file:research/RHRC/integration/post290/STEP4_CUTS.json"
+      ],
+      "statement": "Establish one complete, same-source closing route. Independent alternatives have their own horizons, cutoffs and carrier conditions.",
+      "status": "OPEN"
+    },
+    "STOPPEDPRIMEAREA": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea.active_primes_in_gap",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea.completed_square_in_gap",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea.stopping_point_unique_max"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/StoppedPrimeArea.lean"
+      ],
+      "statement": "The finite stopped prime-area identities retain the contributions of the selected ordered interval.",
+      "status": "PROVED"
+    },
+    "SURVEY-BANDWIDTH_MOMENTS": {
+      "alternatives": [],
+      "context": [
+        "COMPLETE_WEIGHTED_UPPER"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "Paper-level result in RH_Step4_Uniform_Bandwidth_and_Prime_Centering_2026-11-13.md",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "statement": "The K-linear normalized derivative estimate pays the prime-power and archimedean errors at order K/L² in the barycentric hierarchy. Three K real Dirichlet moments represent the ordinary-prime contribution. Their joint value at the required cutoff is the arithmetic input.",
+      "status": "SOURCE_RECORD"
+    },
+    "SURVEY-EULER_VARIATION": {
+      "alternatives": [],
+      "context": [
+        "COMPLETE_WEIGHTED_UPPER"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "Paper-level result in RH Step 4 — Prime-Power Variation Elimination and Euler-Factor Stability — 2026-11-13",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "statement": "Proper prime powers have a polylogarithmic variation budget for the normalized finite prime sum. A change of a single Euler factor preserves the nontrivial zero set in the comparison and disrupts the finite monotonicity test. The all-late ordinary-prime variation bound remains open.",
+      "status": "SOURCE_RECORD"
+    },
+    "SURVEY-HANKEL_DIRECTION": {
+      "alternatives": [],
+      "context": [
+        "ACTUAL_UPPER"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "Paper-level result in STEP4_PASS8_DISCRETE_HANKEL_AND_MOMENT_COMPRESSION_2026-11-01.md",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "statement": "The discrete-cutoff form admits a negative eigenvalue of order N even after restricting to squarefree indices. Polynomial moment compression controls the representation error and leaves the signed projection of the actual Möbius vector open.",
+      "status": "SOURCE_RECORD"
+    },
+    "SURVEY-HYPERBOLA_ALIAS": {
+      "alternatives": [],
+      "context": [
+        "ACTUAL_UPPER"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "Paper-level result in STEP4_PASS7_HYPERBOLA_BOUNDARY_ALIAS_AND_ONE_SIDED_CRITERION_2026-11-01.md",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "statement": "The short contribution decays faster than every power in the fixed smooth source. The long signed Hankel form retains the Möbius vector. Positivity of the full periodization fails.",
+      "status": "SOURCE_RECORD"
+    },
+    "SURVEY-RESOLVENT_HISTORY": {
+      "alternatives": [],
+      "context": [
+        "SOURCE_LOADING_DEFECT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "Paper-level result in RH_Step4_PostGreen_Resolvent_Ladder_2026-11-13.md",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "statement": "The paper resolvent recursion relates neighboring derivative orders and gives a cross-cutoff cancellation under the earlier normalized bounds. It leaves quantitative control on the actual response at the selected cutoff open.",
+      "status": "SOURCE_RECORD"
+    },
+    "SURVEY-SQUARE_MAIN": {
+      "alternatives": [],
+      "context": [
+        "COMPLETE_WEIGHTED_UPPER"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "Paper-level result in RH Step4 — Prime-square main-term rigidity and ordinary-prime renormalization — 2026-11-13",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "statement": "For the specific normalized carrier in this paper, the prime-square main term has order L¹⁴, the L¹² coefficient vanishes, and the contribution is eventually positive. The ordinary-prime compensation uses the same carrier.",
+      "status": "SOURCE_RECORD"
+    },
+    "SURVEY-STATIONARY_ORIGIN": {
+      "alternatives": [],
+      "context": [
+        "ACTUAL_UPPER"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "Paper-level result in RH_Step4_Stationary_Covariance_and_Fixed_Origin_Gap_2026-11-06.md",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "statement": "The complete increment has a summable stationary second moment after averaging the starting point. The constant-one transfer from the average to the required fixed origin fails a native check.",
+      "status": "SOURCE_RECORD"
+    },
+    "SURVEY-TIE_CHANNELS": {
+      "alternatives": [],
+      "context": [
+        "GROUND"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "Paper-level result in PR299_TIE_EXCLUSIVE_VISIBILITY_POSTGREEN_2026-11-01.md",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "statement": "Exactly one visible channel can coexist with a negative tied ground and a positive complement in explicit two-dimensional models. A quantitative statement about the genuine source is still needed.",
+      "status": "SOURCE_RECORD"
+    },
+    "SURVEY-VAUGHAN_GAPS": {
+      "alternatives": [],
+      "context": [
+        "COMPLETE_WEIGHTED_UPPER"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_disposition": "Paper-level result in RH_Step4_Vaughan_TypeI_MainTerms_TypeII_Compensation_and_MV_Gap_Cost_2026-11-04.md",
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "rh:file:research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "statement": "With U=V=floor(exp(sqrt(T))), the complete centered Type I error has a subexponential squared norm. For the actual Type II coefficients the reciprocal-gap bound costs exponential scale. Type I main terms and Type II cross terms still interact.",
+      "status": "SOURCE_RECORD"
+    },
+    "SURVIVOR_CONE_ZERO": {
+      "alternatives": [],
+      "context": [
+        "ACTUAL_UPPER",
+        "CONE_CONTINGENCY"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/CONE_CONTINGENCY.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md"
+      ],
+      "statement": "The actual matching removes every label in the small-cofactor cone. On survivors its sign coordinate is constantly +1, so every corresponding table has zero determinant even though the signed cell charge sits entirely in the marginal product.",
+      "status": "DERIVED"
+    },
+    "SURVIVOR_ROUTE": {
+      "alternatives": [],
+      "context": [
+        "CONE_CONTINGENCY",
+        "SMALL_LARGE_PARITY"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "ACTUAL_UPPER",
+        "PAPER_ROUTE_VALIDATION"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/SMALL_PART_LARGE_PART.md"
+      ],
+      "statement": "Close the selected-source route by proving the cofinal bound for one polarity and validating its complete mathematical transfer.",
+      "status": "OPEN"
+    },
+    "TERMINAL_FIBRES": {
+      "alternatives": [],
+      "context": [
+        "AREA_ROWS",
+        "DIVISOR_STRIP_ALGEBRA"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/ALL_PRIME_COFACTORS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/BALANCED_SEMIPRIME_REMOVAL.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/COMMON_PRIME_ROWS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/COMPLETE_TERMINAL_COMPOSITES.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/SEMIPRIME_FIBRE_CANCELLATION.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/THIN_PRODUCT_GRAPH.md"
+      ],
+      "statement": "Actual prime/semiprime cofactor selections and thin product localization retain original signed labels. Complete terminal composites contribute a positive large block, so a root-scale upper must restore the complete signed complement.",
+      "status": "DERIVED"
+    },
+    "VISIBLE_SCALAR": {
+      "alternatives": [],
+      "context": [
+        "FIXED_SIEVE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/shift/COMPOSITE_SHELLS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/shift/DISTINCT_PRIME_GAPS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/shift/FIXED_LINE_JETS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/shift/POSITIVE_TOTIENT_DELAY.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/shift/THETA_SHIFT_AND_GRAM.md"
+      ],
+      "statement": "Genuine positive totient delay and a small tilted observation coexist with a visible component. A fixed-line jet formulation or direct distinction of prime/composite gaps only transfers the burden to a specified signed estimate.",
+      "status": "DERIVED"
+    },
+    "WHOLE_SHELLS": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "ONE_POLARITY"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/WHOLE_COARSE_SURPLUS.md"
+      ],
+      "statement": "Complete shells in any fixed interior power interval suffice with the appropriate scaled exponent. Actual finite whole and clipped positive cells have different onsets; any fixed prime-factor truncation alone carries a large signed bias.",
+      "status": "DERIVED"
+    }
+  },
+  "open_entries": [
+    "A-X",
+    "ACTUAL_UPPER",
+    "A_SIGNED_OBSERVATION",
+    "B-Y",
+    "B_CAUSAL",
+    "C-Schur",
+    "C1_COFINAL_MOMENT_SLICES",
+    "C2_ACTUAL_LONG_TERM_LOWER",
+    "COMPLETE_WEIGHTED_UPPER",
+    "C_DIRECT_COMPLEMENT",
+    "D1_ACTUAL_RAYS",
+    "D2_NEGATIVE_GROUNDS",
+    "D3_NATIVE_JOINT_INDEX",
+    "D4_DIRECT",
+    "FORMAL_GAP",
+    "FRONT-C1",
+    "FRONT-C2",
+    "FRONT-C2-SE",
+    "FRONT-CAUSAL",
+    "FRONT-DD",
+    "FRONT-K3",
+    "FRONT-ND",
+    "FRONT-PACKET",
+    "FRONT-PG",
+    "FRONT-SB",
+    "FRONT-SE",
+    "FRONT-SG",
+    "GROUND",
+    "P1_SELECTED_PACKET_GROUND_RESPONSE",
+    "PAPER_ROUTE_VALIDATION",
+    "PRIME_VARIANCE",
+    "RETAINED_TRIAL_BOUND",
+    "RH",
+    "SMOOTH_UPPER",
+    "SOURCE_LOADING_DEFECT",
+    "STEP4",
+    "SURVIVOR_ROUTE"
+  ],
+  "schema": "OPICA_ROUND6_CONSTRAINT_GRAPH_V1",
+  "source_only_declaration_anchors": {
+    "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_primeRemainderDominance_failure_of_offLine_zero": {
+      "command": "THEOREM",
+      "line": 238,
+      "module": "Zeta23.ExceptionalZero.CanonicalArithmeticCriterion",
+      "rhkg_source_id": "rh:source-decl:97eb55356b8723288e0192892672f04a8ed28d7b0e0354631d327b81334b8532",
+      "source": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean"
+    },
+    "Zeta23.ExceptionalZero.generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis": {
+      "command": "THEOREM",
+      "line": 209,
+      "module": "Zeta23.ExceptionalZero.CanonicalArithmeticCriterion",
+      "rhkg_source_id": "rh:source-decl:12b8107b96d06ee67c8d5738db3b7428ad36ebd5dd7d0803144ef006acb3ed09",
+      "source": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean"
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": {
+      "command": "THEOREM",
+      "line": 25,
+      "module": "Zeta23.ExceptionalZero.Step4OutputSufficiency",
+      "rhkg_source_id": "rh:source-decl:5f330e308a00176d003b4da3c452041a508e9fcfc1dbaa8d437c1c9cb71a1b43",
+      "source": "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean"
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.finrank_fixedEvenMomentSeed": {
+      "command": "THEOREM",
+      "line": 270,
+      "module": "Zeta23.OPICARound5.ParityMomentBridge",
+      "rhkg_source_id": "rh:source-decl:ca000b87c2c79b2517b0822134077398293ac60969ad59951de15ec30bf41110",
+      "source": "Zeta23/OPICARound5/ParityMomentBridge.lean"
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.finrank_fixedOddMomentSeed": {
+      "command": "THEOREM",
+      "line": 279,
+      "module": "Zeta23.OPICARound5.ParityMomentBridge",
+      "rhkg_source_id": "rh:source-decl:330cdc8cd8d37a3dfda6d1376ef19b2d899283d45199f859601da84b4868e56d",
+      "source": "Zeta23/OPICARound5/ParityMomentBridge.lean"
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.fixedMomentParityShortExact": {
+      "command": "THEOREM",
+      "line": 322,
+      "module": "Zeta23.OPICARound5.ParityMomentBridge",
+      "rhkg_source_id": "rh:source-decl:1cf9ca87953a0e848b9e2f99b21b5e9fa78ffcbb435551b08d82c20a21c69495",
+      "source": "Zeta23/OPICARound5/ParityMomentBridge.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.DivisorStrip.exists_divisor_of_residual_ne_zero": {
+      "command": "THEOREM",
+      "line": 35,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.DivisorStrip",
+      "rhkg_source_id": "rh:source-decl:d776ed449eb1ba0c52786d554eb279b73780be7bf8230678e4a6108acff82e87",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/DivisorStrip.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.DivisorStrip.residual_prime_mul": {
+      "command": "THEOREM",
+      "line": 13,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.DivisorStrip",
+      "rhkg_source_id": "rh:source-decl:c589f675cedc161f4c44e8c4ceb24589ed575cdb02ed6682ba07c1adc21b8140",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/DivisorStrip.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.calibrated_residue": {
+      "command": "THEOREM",
+      "line": 67,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot",
+      "rhkg_source_id": "rh:source-decl:10d1a2a2ef7471ccb4a06e4e93b73e7365240313c54baedaa1b4c3f800b56cd1",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FactorialKnot.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.ramp_increment": {
+      "command": "THEOREM",
+      "line": 40,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot",
+      "rhkg_source_id": "rh:source-decl:10ed38de436b1d0192c4fac437d1f7cf7ff6abf54508f0eb49f8e6bbc46adf86",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FactorialKnot.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.twice_ramp_at_knot": {
+      "command": "THEOREM",
+      "line": 51,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot",
+      "rhkg_source_id": "rh:source-decl:1bf11235e985e3afa184dfd560fd292f056f75a698b64533fae203db04a4abf4",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FactorialKnot.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.weight_prefix": {
+      "command": "THEOREM",
+      "line": 28,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot",
+      "rhkg_source_id": "rh:source-decl:f0f9da366909e2270dd50ab5a2ba5a8ff3a25867c21aa22ceda8cf4c5e939aaa",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FactorialKnot.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.geometric_moments": {
+      "command": "THEOREM",
+      "line": 21,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel",
+      "rhkg_source_id": "rh:source-decl:37918410250752af42639fa60cdc81bb2b3b7df11c89dd5189bffb20dff7c6ca",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FinitePairKernel.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.geometric_remainder": {
+      "command": "THEOREM",
+      "line": 30,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel",
+      "rhkg_source_id": "rh:source-decl:a80e9fd4d4cf32d5817b2def1ed5fd64ed886f4cb6f207c97a441cf1528cfeed",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FinitePairKernel.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.one_moment": {
+      "command": "THEOREM",
+      "line": 10,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel",
+      "rhkg_source_id": "rh:source-decl:c77fcb3978ba8e633d1e843ec8d49642f43058b43a9943875f8325fde0784210",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FinitePairKernel.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.rational_pair_remainder": {
+      "command": "THEOREM",
+      "line": 40,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel",
+      "rhkg_source_id": "rh:source-decl:a472dd3bfe9acc1c86f0c44e4eda97739c2dbfa4f2cf4c1e719fa2cd89a61244",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FinitePairKernel.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.abel_history": {
+      "command": "THEOREM",
+      "line": 9,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal",
+      "rhkg_source_id": "rh:source-decl:f08639f5aa2aeb38625a0cbc98788715b50481e66a049e6380f564931f073285",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteRenewal.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.history_upper": {
+      "command": "THEOREM",
+      "line": 30,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal",
+      "rhkg_source_id": "rh:source-decl:9001489b532c94fa4ab4e1675820259765fedc6ee1ffb804e252abf5fbaae108",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteRenewal.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.history_weight_total": {
+      "command": "THEOREM",
+      "line": 21,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal",
+      "rhkg_source_id": "rh:source-decl:974bcec0cbfabc206e01e996185cdef6cf038687f690ab5c3617510e711dba9c",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteRenewal.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.renewal_upper": {
+      "command": "THEOREM",
+      "line": 48,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal",
+      "rhkg_source_id": "rh:source-decl:093fc4149acc270c1c8e489553e6b20a5e0d91076b643f42da726b213fbfa88f",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteRenewal.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.posSq_sub_le": {
+      "command": "THEOREM",
+      "line": 12,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy",
+      "rhkg_source_id": "rh:source-decl:a78a8a81de7859debffa48124874b8244875d81c465f54a3a78c15f8eb577f6a",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteSelectorEnergy.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.signed_weight_energy_comparison": {
+      "command": "THEOREM",
+      "line": 28,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy",
+      "rhkg_source_id": "rh:source-decl:801829f97a33efcd2ca8260eb64eb9587b402b08430542749fe48e405a8fe774",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteSelectorEnergy.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.weighted_energy_comparison": {
+      "command": "THEOREM",
+      "line": 45,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy",
+      "rhkg_source_id": "rh:source-decl:2949cb3dc1e37c2d7ffe9e885152383a913d80f5df29cf55067c1032469f84fc",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteSelectorEnergy.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.weighted_sq_distance_le": {
+      "command": "THEOREM",
+      "line": 55,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy",
+      "rhkg_source_id": "rh:source-decl:9e0e7f61ef11350a833240098b7a91583d0986cf51938a0c6417a400eeaae79b",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteSelectorEnergy.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.determinant_nonneg": {
+      "command": "THEOREM",
+      "line": 48,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram",
+      "rhkg_source_id": "rh:source-decl:59f8d83781a63caccf305a93a0936813a8322859733737d0b81a6c76353083d1",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteWeightedGram.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.ordered_minors": {
+      "command": "THEOREM",
+      "line": 28,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram",
+      "rhkg_source_id": "rh:source-decl:57794ae5c9a32f29b27a295904fcbfef9ee876fbddadc164328b47395460200e",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteWeightedGram.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.scalar_factorization": {
+      "command": "THEOREM",
+      "line": 14,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram",
+      "rhkg_source_id": "rh:source-decl:d9ff9c47f171d6d4d531d217b3488049c9188a21399447fa459cadde660f90bc",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteWeightedGram.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.signed_energy": {
+      "command": "THEOREM",
+      "line": 18,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram",
+      "rhkg_source_id": "rh:source-decl:ad009393738926d659455e7f0412623bbed76b8899173d8b0cf5c48c2536147e",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteWeightedGram.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral.integral_negative_iff_squarefree_prime_cost": {
+      "command": "THEOREM",
+      "line": 52,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral",
+      "rhkg_source_id": "rh:source-decl:99232f0072731bd5400176f3ddf04482598fe10e91ab1ee8fc9c01bbc24e758d",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/PrimeAreaIntegral.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral.integral_theta_eq_first_moment": {
+      "command": "THEOREM",
+      "line": 12,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral",
+      "rhkg_source_id": "rh:source-decl:3eabc6f287ef4ca06d5af84d4661fe4e1500da5fe7b52581d7c198bf15e8e1a3",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/PrimeAreaIntegral.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral.integral_theta_sub_id_eq_rampArea": {
+      "command": "THEOREM",
+      "line": 31,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral",
+      "rhkg_source_id": "rh:source-decl:d4ce15df7c9fc7eb89afe5b6acb08f03265582ebf213733afdd3492751f1b5f6",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/PrimeAreaIntegral.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier.cosineFactor_eq_euler": {
+      "command": "THEOREM",
+      "line": 25,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier",
+      "rhkg_source_id": "rh:source-decl:16988182b7ba070dbc7dc734da3143274816bf6eee16296daaeac35711f8c94b",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/PrimitiveEulerMultiplier.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier.cosineFactor_pos": {
+      "command": "THEOREM",
+      "line": 13,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier",
+      "rhkg_source_id": "rh:source-decl:284fde9064735de652dca37a10b38cf2fcce90f1bcfe950dc487294d33a7b3f8",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/PrimitiveEulerMultiplier.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier.finite_primitive_euler_identity_and_pos": {
+      "command": "THEOREM",
+      "line": 57,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier",
+      "rhkg_source_id": "rh:source-decl:a03931a7f13c4b8342d96923d757e44ebdfe9b831efdbd62ba4f050b4e8a25b6",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/PrimitiveEulerMultiplier.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.abs_charge_le_card": {
+      "command": "THEOREM",
+      "line": 53,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges",
+      "rhkg_source_id": "rh:source-decl:dbb6842391bb6f5165a741e2a820e484a951f3baf2df7477b2da783d7d1d44b0",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/RoughNodeCharges.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.abs_roughSign_le_one": {
+      "command": "THEOREM",
+      "line": 47,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges",
+      "rhkg_source_id": "rh:source-decl:695d15774bda2190a3ba1ff713d5b9fa6560fdbd6f4e594e6dfb3512ae4fe27d",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/RoughNodeCharges.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.charge_sub_survivors": {
+      "command": "THEOREM",
+      "line": 62,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges",
+      "rhkg_source_id": "rh:source-decl:322e05bd2790ebfb34b917605f6a402184bed4b792d85d775cdc86e0ecb43ff2",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/RoughNodeCharges.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.contingency_covariance": {
+      "command": "THEOREM",
+      "line": 17,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges",
+      "rhkg_source_id": "rh:source-decl:9d299919d4059c4cec9f2f9853bdb7a0e7775a233bb96d3752c394d1db3b58fc",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/RoughNodeCharges.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.roughSign_factor": {
+      "command": "THEOREM",
+      "line": 28,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges",
+      "rhkg_source_id": "rh:source-decl:319d0d178d5a6086b7ccefa52aab03450a8b324802fcf29d4eeb3df8a12e6ba6",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/RoughNodeCharges.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.roughSign_split_parity": {
+      "command": "THEOREM",
+      "line": 35,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges",
+      "rhkg_source_id": "rh:source-decl:0cbbdbf6a28a894df4f8231de846621e557de2a02c0968447a98ffa4669e8b79",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/RoughNodeCharges.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.selector_energy_loss": {
+      "command": "THEOREM",
+      "line": 70,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges",
+      "rhkg_source_id": "rh:source-decl:966498e49b528acecd27ebd82e897d61bba2e1edf6df9a857c2dcf441e3fbe47",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/RoughNodeCharges.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.log_eq_sum_primeFactors": {
+      "command": "THEOREM",
+      "line": 23,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost",
+      "rhkg_source_id": "rh:source-decl:274286a98e1e240d838a6350c9807671b9bf584a37ad040c5fcaf28ab404d290",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/SquarefreePrimeCost.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.mismatch_identity": {
+      "command": "THEOREM",
+      "line": 48,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost",
+      "rhkg_source_id": "rh:source-decl:1f94e1feebb680885cd278fb77601d66caecd436f6d21ada2403d59f21dcac16",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/SquarefreePrimeCost.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.negative_ramp_below_five": {
+      "command": "THEOREM",
+      "line": 116,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost",
+      "rhkg_source_id": "rh:source-decl:86ec56dd0d9a2e8b5ce8a066e65f3c6b808803657c645a6b332e173a460ea28d",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/SquarefreePrimeCost.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.negative_ramp_iff_integer_inequality": {
+      "command": "THEOREM",
+      "line": 144,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost",
+      "rhkg_source_id": "rh:source-decl:8520db75c907fde66b546eec11181eb4d528cc532a07c8d164c0f6b319829326",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/SquarefreePrimeCost.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.negative_ramp_of_integer_inequality": {
+      "command": "THEOREM",
+      "line": 104,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost",
+      "rhkg_source_id": "rh:source-decl:6693d8e5a76a82fe401ec6234e0cadb5ba4ed719d84f0bde016a3bb1d8de1d51",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/SquarefreePrimeCost.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.primorial_recovers_ramp": {
+      "command": "THEOREM",
+      "line": 96,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost",
+      "rhkg_source_id": "rh:source-decl:aa12775ebc2b4b54d73f0122b3686cf737774605f7a9c956fe4c492b3704319a",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/SquarefreePrimeCost.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.squarefree_score_le_ramp": {
+      "command": "THEOREM",
+      "line": 72,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost",
+      "rhkg_source_id": "rh:source-decl:509c305ca34babadba4b330b0b1e46566bff6c11900a0d40848dd7beb7907614",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/SquarefreePrimeCost.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea.active_primes_in_gap": {
+      "command": "THEOREM",
+      "line": 27,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea",
+      "rhkg_source_id": "rh:source-decl:8697817f3d5409499625b5a595cbedeeab8df7163ed3b5bb8b64f03dba2d54f4",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/StoppedPrimeArea.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea.completed_square_in_gap": {
+      "command": "THEOREM",
+      "line": 43,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea",
+      "rhkg_source_id": "rh:source-decl:d9c863d68dadea7be0274625452b8d275dfb1bef5508bc2f7598a906b645c8c6",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/StoppedPrimeArea.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea.stopping_point_unique_max": {
+      "command": "THEOREM",
+      "line": 61,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea",
+      "rhkg_source_id": "rh:source-decl:f45181c8a40db0de9ac798c5cae37347afec00514ada693290e9a0abc74a30a3",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/StoppedPrimeArea.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.TwoShellCalibration.two_shell": {
+      "command": "THEOREM",
+      "line": 26,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.TwoShellCalibration",
+      "rhkg_source_id": "rh:source-decl:22d8fa488227e1ed3d23f80c5bf1afa16970d5eec27cb73ad58fb1ee540856d2",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/TwoShellCalibration.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.TwoShellCalibration.weighted_finite": {
+      "command": "THEOREM",
+      "line": 81,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.TwoShellCalibration",
+      "rhkg_source_id": "rh:source-decl:c22852dd9c941869ff85df00ba177329e893b344019805690f63bed7b5a1f526",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/TwoShellCalibration.lean"
+    }
+  }
+}

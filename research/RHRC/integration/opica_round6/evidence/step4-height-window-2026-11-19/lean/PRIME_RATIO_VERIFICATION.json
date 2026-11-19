@@ -1,0 +1,30 @@
+{
+  "status": "LOCAL_LEAN_VERIFIED",
+  "verified_utc": "2026-11-19T16:58:59.8708164Z",
+  "compiler": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "mathlib_manifest_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "manifest_sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+  "module": "PrimeRatioSeparation",
+  "source": "PrimeRatioSeparation.lean",
+  "source_sha256": "b7ad56ad2f6e93028cd180660b2e58829e21ed8bf712bdd01832c3259dcbf746",
+  "object": "PrimeRatioSeparation.olean",
+  "object_sha256": "a3ab4e71761bcc02cd75b6a7c3581167116497578b782317e2e9e6075599a182",
+  "log": "prime-ratio.log",
+  "log_sha256": "18abb4548c19bb01656e2ba753a03b9d9a04e8b0c55b948c5c4cb4397c6c4374",
+  "command": "lean -DwarningAsError=true -j2 -s262144 -o PrimeRatioSeparation.olean PrimeRatioSeparation.lean",
+  "exit_code": 0,
+  "audited_declarations": [
+    "Step4.PrimeRatioSeparation.prime_pair_unique",
+    "Step4.PrimeRatioSeparation.fraction_gap",
+    "Step4.PrimeRatioSeparation.fraction_gap_of_denominators_le",
+    "Step4.PrimeRatioSeparation.distinct_prime_pairs_gap"
+  ],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "import_basis": "Warm pinned Mathlib imports in work/opica-round3-repo/.lake/packages/*/.lake/build/lib/lean. This module imports only Mathlib.",
+  "scope": "Prime denominators p and r, ordinary prime numerator q distinct from p, and arbitrary natural s. Equality q*r=s*p forces p=r and q=s. For signed integer numerators and positive natural denominators b,d, different real fractions differ by at least 1/(b d), hence by at least 1/X^2 for b,d ≤ X. The resulting real ratio gap is specialized to q/p and s/r for distinct prime pairs. No cancellation, energy, or RH theorem is claimed."
+}

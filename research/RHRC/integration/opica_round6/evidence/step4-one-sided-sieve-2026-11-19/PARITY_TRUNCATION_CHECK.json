@@ -1,0 +1,88 @@
+{
+  "scope": "Exact finite divisor/direct-pair checks. Complete graphs for the two small cutoffs; individual certified native rough rows for the large cutoffs. The finite calculations do not establish an asymptotic estimate.",
+  "complete_graphs": [
+    {
+      "cutoff": 8192,
+      "native_y": 169,
+      "full_native_nonzero_labels": 81,
+      "m0_weighted_squared_excess": "758551/262144",
+      "m2_weighted_squared_excess": "0",
+      "independent_ordered_pair_check": true
+    },
+    {
+      "cutoff": 16384,
+      "native_y": 196,
+      "full_native_nonzero_labels": 159,
+      "m0_weighted_squared_excess": "5779961/1048576",
+      "m2_weighted_squared_excess": "0",
+      "independent_ordered_pair_check": true
+    }
+  ],
+  "large_individual_rows": [
+    {
+      "native_cutoff_and_row": "100003",
+      "native_y": 289,
+      "prime_factors": [
+        100003
+      ],
+      "m": 0,
+      "exact_majorant_excess": 2
+    },
+    {
+      "native_cutoff_and_row": "1000650100302451",
+      "native_y": 2500,
+      "prime_factors": [
+        100003,
+        100019,
+        100043
+      ],
+      "m": 2,
+      "exact_majorant_excess": 8
+    },
+    {
+      "native_cutoff_and_row": "10017110688903446125345643",
+      "native_y": 7056,
+      "prime_factors": [
+        100003,
+        100019,
+        100043,
+        100049,
+        100057
+      ],
+      "m": 4,
+      "exact_majorant_excess": 32
+    },
+    {
+      "native_cutoff_and_row": "100343472384489266563603987891084801",
+      "native_y": 13689,
+      "prime_factors": [
+        100003,
+        100019,
+        100043,
+        100049,
+        100057,
+        100069,
+        100103
+      ],
+      "m": 6,
+      "exact_majorant_excess": 128
+    },
+    {
+      "native_cutoff_and_row": "1005824309417208708483830804658329564807186861",
+      "native_y": 22500,
+      "prime_factors": [
+        100003,
+        100019,
+        100043,
+        100049,
+        100057,
+        100069,
+        100103,
+        100109,
+        100129
+      ],
+      "m": 8,
+      "exact_majorant_excess": 512
+    }
+  ]
+}

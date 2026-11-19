@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "y": 2,
+      "integer_indices": 150,
+      "marked_linear_checks": 398,
+      "ordered_coprime_bilinear_checks": 22500,
+      "coefficient_stream_sha256": "554003d0b8f78317d5f81301b179794c0af449682a06293c07e2365272f0a91e"
+    },
+    {
+      "y": 5,
+      "integer_indices": 150,
+      "marked_linear_checks": 269,
+      "ordered_coprime_bilinear_checks": 22500,
+      "coefficient_stream_sha256": "d60547c0a7315a24e088d6b3e2b9ff3a4e046d46121ee748de1b5fb8b6154725"
+    },
+    {
+      "y": 11,
+      "integer_indices": 150,
+      "marked_linear_checks": 230,
+      "ordered_coprime_bilinear_checks": 22500,
+      "coefficient_stream_sha256": "e424c331d0dd2a08610ee35890b02e08725baf00c995a538c9df5ab14ae552b0"
+    }
+  ],
+  "basis": "formal ordered products of prime logarithms",
+  "scope": "Finite arithmetic coefficients in the exact identities. The continuum norm estimate is a paper inequality."
+}

@@ -1,0 +1,110 @@
+{
+  "status": "EXACT_FINITE_DETERMINISTIC_CONE_GRAM",
+  "scope": "Original cutoff, roughness, cell weights and GCD mask. Deterministic cone and its complete complement. No adaptive matching or asymptotic inference.",
+  "script_sha256": "c6f37b37a51e9922a37ee800aa6f3e77d2cd580f68ef1f67398056ac6b309c9b",
+  "tree_script_sha256": "de4914876ecee42b17c37202ade66b5d470c8a992f64bbaeee94f3304ffefc05",
+  "cases": [
+    {
+      "X": 65536,
+      "first": 58657,
+      "y": 256,
+      "integer_cofactor_cutoff": 1,
+      "cofactor_exponent": "1/1000",
+      "native_gcd_cap": 1,
+      "source_sign_sha256": "a5061f1c91db65ea18c9c540889863d7cae574d03dc6e9a6bd821a16a4a395f3",
+      "cone_complement_label_counts": [
+        609,
+        0
+      ],
+      "gram": [
+        [
+          "282024807/67108864",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "cosine_squared": null,
+      "squared_energy_difference": "79537991763387249/4503599627370496",
+      "four_gram_determinant": "0",
+      "discriminant_over_X": "79537991763387249/295147905179352825856",
+      "masked_cone_complement_mixed_full": [
+        "34941369/8388608",
+        "0",
+        "0",
+        "34941369/8388608"
+      ],
+      "masked_cross_direct_pair_check": true
+    },
+    {
+      "X": 131072,
+      "first": 116503,
+      "y": 289,
+      "integer_cofactor_cutoff": 1,
+      "cofactor_exponent": "1/1000",
+      "native_gcd_cap": 1,
+      "source_sign_sha256": "4079ffb3512fe8f18d7dc3d69b2550e73c8901664110dea5fcdc188a6fed485d",
+      "cone_complement_label_counts": [
+        1247,
+        63
+      ],
+      "gram": [
+        [
+          "591988305/134217728",
+          "-7552419/33554432"
+        ],
+        [
+          "-7552419/33554432",
+          "1632753/134217728"
+        ]
+      ],
+      "cosine_squared": "101402724891664/107396742328185",
+      "squared_energy_difference": "340351247829321/17592186044416",
+      "four_gram_determinant": "53946156928689/4503599627370496",
+      "discriminant_over_X": "87183865601234865/590295810358705651712",
+      "masked_cone_complement_mixed_full": [
+        "36680115/8388608",
+        "80675/8388608",
+        "-7552419/16777216",
+        "65969161/16777216"
+      ],
+      "masked_cross_direct_pair_check": true
+    },
+    {
+      "X": 1048576,
+      "first": 912839,
+      "y": 400,
+      "integer_cofactor_cutoff": 1,
+      "cofactor_exponent": "1/1000",
+      "native_gcd_cap": 1,
+      "source_sign_sha256": "29be5e50da7640596ca8d26443e0a50a0205a3a0a2590932a3bb40d3423b9024",
+      "cone_complement_label_counts": [
+        9800,
+        2515
+      ],
+      "gram": [
+        [
+          "31046674047/1073741824",
+          "-3966543289/536870912"
+        ],
+        [
+          "-3966543289/536870912",
+          "16258434221/8589934592"
+        ]
+      ],
+      "cosine_squared": "503470901232350000672/504770307773977362387",
+      "squared_energy_difference": "53877353799297401004025/73786976294838206464",
+      "four_gram_determinant": "1299406541627361715/2305843009213693952",
+      "discriminant_over_X": "53918934808629476578905/77371252455336267181195264",
+      "masked_cone_complement_mixed_full": [
+        "3875816809/134217728",
+        "124802029/67108864",
+        "-3966543289/268435456",
+        "4284298445/268435456"
+      ],
+      "masked_cross_direct_pair_check": false
+    }
+  ]
+}

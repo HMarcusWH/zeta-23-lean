@@ -1,0 +1,236 @@
+{
+  "qualification": "Finite exact checks of coefficients and interval sums. These are not evidence for a uniform asymptotic estimate.",
+  "identity": "mu(r)*1[Pminus(r)>Q] = sum_{d|r, Pplus(d)<=Q} mu(r/d); Pminus(1)=infinity; d=1 is included.",
+  "scaled": [
+    {
+      "cutoff": 1,
+      "tested_integers": 32768,
+      "smooth_divisors": 1,
+      "signed_sum": 26,
+      "squarefree_only_wrong": 0,
+      "first_squarefree_only_wrong": null,
+      "changed_since_previous_cutoff": null
+    },
+    {
+      "cutoff": 2,
+      "tested_integers": 32768,
+      "smooth_divisors": 16,
+      "signed_sum": -15,
+      "squarefree_only_wrong": 3321,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 6641
+    },
+    {
+      "cutoff": 3,
+      "tested_integers": 32768,
+      "smooth_divisors": 84,
+      "signed_sum": -109,
+      "squarefree_only_wrong": 3875,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 3322
+    },
+    {
+      "cutoff": 4,
+      "tested_integers": 32768,
+      "smooth_divisors": 84,
+      "signed_sum": -109,
+      "squarefree_only_wrong": 3875,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 0
+    },
+    {
+      "cutoff": 5,
+      "tested_integers": 32768,
+      "smooth_divisors": 240,
+      "signed_sum": -279,
+      "squarefree_only_wrong": 3691,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 1660
+    },
+    {
+      "cutoff": 6,
+      "tested_integers": 32768,
+      "smooth_divisors": 240,
+      "signed_sum": -279,
+      "squarefree_only_wrong": 3691,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 0
+    },
+    {
+      "cutoff": 7,
+      "tested_integers": 32768,
+      "smooth_divisors": 498,
+      "signed_sum": -513,
+      "squarefree_only_wrong": 3446,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 1040
+    },
+    {
+      "cutoff": 10,
+      "tested_integers": 32768,
+      "smooth_divisors": 498,
+      "signed_sum": -513,
+      "squarefree_only_wrong": 3446,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 0
+    },
+    {
+      "cutoff": 11,
+      "tested_integers": 32768,
+      "smooth_divisors": 814,
+      "signed_sum": -755,
+      "squarefree_only_wrong": 3240,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 606
+    },
+    {
+      "cutoff": 12,
+      "tested_integers": 32768,
+      "smooth_divisors": 814,
+      "signed_sum": -755,
+      "squarefree_only_wrong": 3240,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 0
+    },
+    {
+      "cutoff": 22,
+      "tested_integers": 32768,
+      "smooth_divisors": 2070,
+      "signed_sum": -1473,
+      "squarefree_only_wrong": 2798,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 1100
+    },
+    {
+      "cutoff": 23,
+      "tested_integers": 32768,
+      "smooth_divisors": 2527,
+      "signed_sum": -1679,
+      "squarefree_only_wrong": 2693,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 224
+    },
+    {
+      "cutoff": 24,
+      "tested_integers": 32768,
+      "smooth_divisors": 2527,
+      "signed_sum": -1679,
+      "squarefree_only_wrong": 2693,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 0
+    },
+    {
+      "cutoff": 28,
+      "tested_integers": 32768,
+      "smooth_divisors": 2527,
+      "signed_sum": -1679,
+      "squarefree_only_wrong": 2693,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 0
+    },
+    {
+      "cutoff": 29,
+      "tested_integers": 32768,
+      "smooth_divisors": 2962,
+      "signed_sum": -1857,
+      "squarefree_only_wrong": 2607,
+      "first_squarefree_only_wrong": 4,
+      "changed_since_previous_cutoff": 180
+    }
+  ],
+  "actual_fixed_Y": {
+    "cutoff": 10000000,
+    "first_primes_after_cutoff": [
+      10000019,
+      10000079
+    ],
+    "first_rough_squarefree_composite": 100000980001501,
+    "windows": [
+      {
+        "low_exclusive": 100000979951500,
+        "high_inclusive": 100000980001500,
+        "positive": 0,
+        "negative": 1499,
+        "zero": 48501,
+        "total": 50000,
+        "signed_sum": -1499,
+        "sha256_coefficient_plus_one_bytes": "d06678c32d4b390cbd051ac148c8dc82a879852c3ec5bc4fd334ae0bc1a10cf5"
+      },
+      {
+        "low_exclusive": 100000980001500,
+        "high_inclusive": 100000980051501,
+        "positive": 1,
+        "negative": 1533,
+        "zero": 48467,
+        "total": 50001,
+        "signed_sum": -1532,
+        "sha256_coefficient_plus_one_bytes": "e813328f82b50cf0fb735fefeebb2784ea2cb9b01c982f880bc7d760e94f29dc"
+      }
+    ],
+    "edge_case_integers": [
+      1,
+      10000019,
+      10000079,
+      100000380000361,
+      100000980001501,
+      100001580006241,
+      200001960003002,
+      1000011700033630028519
+    ],
+    "signs_by_cutoff": {
+      "10000000": [
+        1,
+        -1,
+        -1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "10000018": [
+        1,
+        -1,
+        -1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "10000019": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "10000078": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "10000079": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "scopes": "Scaled rows use fixed small integer cutoffs; actual rows use the native fixed cutoff 10000000 plus strict-boundary spot controls. Neither substitutes a finite cutoff for the growing sequence in the proof.",
+  "python_flint": "0.9.0",
+  "script_sha256": "0e09837d85915a3c2d8064558ad0d5c0cf00cfe42d23b9a2e4290a5498de14cb"
+}

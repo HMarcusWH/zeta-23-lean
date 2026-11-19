@@ -1,0 +1,18 @@
+{
+  "status": "PASS_BOUNDED_ALGEBRA_AND_NUMERICS",
+  "mobius_log_coefficient_identities": 4096,
+  "kernel_comparisons": 9,
+  "max_relative_kernel_residual": "1.9528e-56",
+  "max_weighted_carrier_moment_residual": "1.2907e-60",
+  "primitive_endpoint_signs_at_1_30_50": [
+    1,
+    -1,
+    1
+  ],
+  "exact_endpoint_moments_divided_by_K": [
+    0,
+    0,
+    1048576
+  ],
+  "scope": "No uniform arithmetic upper and no Lean proof."
+}

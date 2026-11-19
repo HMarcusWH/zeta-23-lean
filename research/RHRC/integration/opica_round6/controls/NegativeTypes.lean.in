@@ -1,0 +1,13 @@
+import Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral
+import Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges
+
+open Zeta23.OPICARound6.PrimeFactorPaths
+
+/-- Deliberately reverse the sign of the off-diagonal product. -/
+example : ∀ a b c d : ℝ,
+    (a+b+c+d)*(a-b-c+d) - (a+b-c-d)*(a-b+c-d) = 4*(a*d+b*c) :=
+  RoughNodeCharges.contingency_covariance
+
+/-- Deliberately drop the unresolved squarefree inequality in the equivalence. -/
+example : ∀ x : ℝ, 2 < x → (∫ u in 2..x, (Chebyshev.theta u - u)) < 0 :=
+  PrimeAreaIntegral.integral_negative_iff_squarefree_prime_cost

@@ -1,0 +1,25 @@
+{
+  "qualification": "Exact finite rough-Mobius counts on two short intervals at the first squarefree composite above the fixed cutoff. No cofinal bound.",
+  "least_prime_factor_strictly_above": 10000000,
+  "first_two_primes": [
+    10000019,
+    10000079
+  ],
+  "first_squarefree_composite": 100000980001501,
+  "intervals": [
+    {
+      "low_exclusive": 100000979951500,
+      "high_inclusive": 100000980001500,
+      "primes": 1499,
+      "squarefree_composites": 0,
+      "signed_count": -1499
+    },
+    {
+      "low_exclusive": 100000980001500,
+      "high_inclusive": 100000980051501,
+      "primes": 1533,
+      "squarefree_composites": 1,
+      "signed_count": -1532
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "status": "LOCAL_PINNED_LEAN_PASS",
+  "ended_utc": "2026-11-19T18:21:34.917122+00:00",
+  "pin_comparison_commit": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "pin_comparison_tree": "573cda1f06d2d7a0e61349a53183311e4ba621fc",
+  "warm_checkout_commit": "9c517db0befa1131bb60d37cfef2888ed69447a9",
+  "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "lean_version": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "manifest_sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+  "mathlib_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "direct_imports": {
+    "Mathlib.Analysis.SpecialFunctions.Pow.Real": {
+      "source_sha256": "38498a02a5fd1b01785fc9929b816a13dbd42dc4fa0730dbcd94cb24306b02ad",
+      "source_git_blob": "4fa7722f332deb748b54c7b0bda553bb1b979ad0",
+      "warm_object_sha256": "fcb19e3bc8f1e7c65c83c6f3b9ed7af5755fff70fd53a4bc62cc8b910eb7ca9d"
+    },
+    "Mathlib.Tactic": {
+      "source_sha256": "4eaeb173d5e6430a847da960aa5f50ad046769055acbebb87740c227c2f000dc",
+      "source_git_blob": "506ca9ab5e49632ced933922e83a845989e8c9e3",
+      "warm_object_sha256": "1a7827a1488536ad90cbfb71f574cb6b9c71bb14701414a91f8f32df09fda860"
+    }
+  },
+  "source_sha256": "f5e5e27b7e12b4e24f37020cf9a044bcec0bc550d2635b0bee14bfdd662f489c",
+  "object_sha256": "3257c6d5a3a3f72b3ac9f99330439e8108fe6e81b449aad599c465072a4e2e50",
+  "compiler_log_sha256": "b86d67fdd83a41ddccb2ab08f0f78124cac964e7aa5cc074a9af3f37deb7c6f2",
+  "command": [
+    "historical-host/lean.exe",
+    "-DwarningAsError=true",
+    "-j2",
+    "-s262144",
+    "-o",
+    "PrimitiveEulerMultiplier.olean",
+    "PrimitiveEulerMultiplier.lean"
+  ],
+  "exit_code": 0,
+  "audited_declarations": [
+    "cosineFactor_pos",
+    "cosineFactor_eq_euler",
+    "finite_primitive_euler_identity_and_pos"
+  ],
+  "transitive_axioms_each": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "scope": "One isolated module freshly compiled using warm pinned Mathlib imports. Exact normalized finite complex Euler product equals the primitive cosine product and is strictly positive whenever all real bases exceed one. No signed residual upper or project CI or RH claim."
+}

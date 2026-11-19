@@ -1,0 +1,590 @@
+{
+  "commit": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "tree": "573cda1f06d2d7a0e61349a53183311e4ba621fc",
+  "relation_rows": 1329677,
+  "proof_body_edge_rows": 1236174,
+  "registered_claims": 339,
+  "anchor_appears_as_declaration_in_any_relation": {
+    "native_source_explicit_formula": true,
+    "monicLaguerre_exact_norm_sq": true,
+    "monicLaguerre_orthogonality": true,
+    "nativeResidual_laguerre_inner": true,
+    "nativeAuxiliaryStableVector_factorial_bound": false,
+    "recovery_subexp_budget": true
+  },
+  "common_registered_consumers_with_native_explicit_formula": {
+    "monicLaguerre_exact_norm_sq": [
+      "OPICA2_S11",
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+      "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT"
+    ],
+    "monicLaguerre_orthogonality": [
+      "OPICA2_S11",
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+      "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT"
+    ],
+    "nativeResidual_laguerre_inner": [
+      "OPICA2_S11",
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+      "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT"
+    ],
+    "nativeAuxiliaryStableVector_factorial_bound": [],
+    "recovery_subexp_budget": []
+  },
+  "paths_anchor_to_claim": {
+    "native_source_explicit_formula": {
+      "OPICA2_S11": [
+        "Zeta23.OPICAFollowup.native_source_explicit_formula",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.originalPrimeField_allDampedL2_of_native_theta_zero",
+        "Zeta23.OPICARound2.native_actual_cuts_equivalent",
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence"
+      ],
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA": [
+        "Zeta23.OPICAFollowup.native_source_explicit_formula",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_old_memory_eventually_le_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE": [
+        "Zeta23.OPICAFollowup.native_source_explicit_formula",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.native_source_explicit_formula",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_old_memory_eventually_le_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.native_source_explicit_formula",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_old_memory_eventually_le_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.native_slow_source_window_rate"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA": [
+        "Zeta23.OPICAFollowup.native_source_explicit_formula"
+      ],
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT": [
+        "Zeta23.OPICAFollowup.native_source_explicit_formula",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.originalPrimeField_allDampedL2_of_native_theta_zero",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ]
+    },
+    "monicLaguerre_exact_norm_sq": {
+      "OPICA2_P04": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.probe_zero_separation_rangeClosure",
+        "Zeta23.OPICARound2.native_probe_zero_separation"
+      ],
+      "OPICA2_P15": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.probe_delayed_laplace_bound",
+        "Zeta23.OPICARound2.native_mobius_delayed_barrier",
+        "Zeta23.OPICARound2.native_mobius_delayed_barrier_rpow",
+        "Zeta23.OPICARound2.mobius_partial_zero_barrier"
+      ],
+      "OPICA2_P16": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probeFullEvaluation_bound",
+        "Zeta23.OPICARound2.noncausal_probe_leakage"
+      ],
+      "OPICA2_P22": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.regional_zero_residual_lower",
+        "Zeta23.OPICARound2.zero_region_of_finite_probe_certificate"
+      ],
+      "OPICA2_S04": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.causalInnerOperator_not_surjective",
+        "Zeta23.OPICARound2.native_probe_fixed_stable_filter"
+      ],
+      "OPICA2_S06": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.fixedFilteredProbeResidual_reduced_zero_lower",
+        "Zeta23.OPICARound2.filtered_rectangle_zero_witness_lower",
+        "Zeta23.OPICARound2.filtered_four_column_region_certificate"
+      ],
+      "OPICA2_S07": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.probe_residual_evaluation_bound",
+        "Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost"
+      ],
+      "OPICA2_S08": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.probe_residual_evaluation_bound",
+        "Zeta23.OPICARound2.native_probe_boundary_power_cost",
+        "Zeta23.OPICARound2.native_probe_visible_boundary_input_cost",
+        "Zeta23.OPICARound2.probeVisibleZero_coefficient_mass",
+        "Zeta23.OPICARound2.probeVisibleZero_adaptive_costs",
+        "Zeta23.OPICARound2.native_probe_adaptive_error_budgets"
+      ],
+      "OPICA2_S11": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICARound2.native_theta_le_of_damped_memLp",
+        "Zeta23.OPICARound2.nativeDampingEnergy_infinite_below_theta",
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence"
+      ],
+      "OPICA2_S12": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.synthetic_damped_output_separation",
+        "Zeta23.OPICARound2.synthetic_damped_output_distance",
+        "Zeta23.OPICARound2.positive_equal_power_causal_twins"
+      ],
+      "OPICA2_S16": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.fixed_filtered_native_zero_separation",
+        "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation"
+      ],
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta"
+      ],
+      "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TAIL_RESIDUAL_LOWER": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.native_slow_source_window_rate"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower"
+      ],
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT": [
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+        "Zeta23.OPICAFollowup.laguerreSquareProfile_integral",
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ]
+    },
+    "monicLaguerre_orthogonality": {
+      "OPICA2_P04": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.probe_zero_separation_rangeClosure",
+        "Zeta23.OPICARound2.native_probe_zero_separation"
+      ],
+      "OPICA2_P15": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.probe_delayed_laplace_bound",
+        "Zeta23.OPICARound2.native_mobius_delayed_barrier",
+        "Zeta23.OPICARound2.native_mobius_delayed_barrier_rpow",
+        "Zeta23.OPICARound2.mobius_partial_zero_barrier"
+      ],
+      "OPICA2_P16": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probeFullEvaluation_bound",
+        "Zeta23.OPICARound2.noncausal_probe_leakage"
+      ],
+      "OPICA2_P22": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.regional_zero_residual_lower",
+        "Zeta23.OPICARound2.zero_region_of_finite_probe_certificate"
+      ],
+      "OPICA2_S04": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.causalInnerOperator_not_surjective",
+        "Zeta23.OPICARound2.native_probe_fixed_stable_filter"
+      ],
+      "OPICA2_S06": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.fixedFilteredProbeResidual_reduced_zero_lower",
+        "Zeta23.OPICARound2.filtered_rectangle_zero_witness_lower",
+        "Zeta23.OPICARound2.filtered_four_column_region_certificate"
+      ],
+      "OPICA2_S07": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.probe_residual_evaluation_bound",
+        "Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost"
+      ],
+      "OPICA2_S08": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.probe_residual_evaluation_bound",
+        "Zeta23.OPICARound2.native_probe_boundary_power_cost",
+        "Zeta23.OPICARound2.native_probe_visible_boundary_input_cost",
+        "Zeta23.OPICARound2.probeVisibleZero_coefficient_mass",
+        "Zeta23.OPICARound2.probeVisibleZero_adaptive_costs",
+        "Zeta23.OPICARound2.native_probe_adaptive_error_budgets"
+      ],
+      "OPICA2_S11": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICARound2.native_theta_le_of_damped_memLp",
+        "Zeta23.OPICARound2.nativeDampingEnergy_infinite_below_theta",
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence"
+      ],
+      "OPICA2_S12": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.synthetic_damped_output_separation",
+        "Zeta23.OPICARound2.synthetic_damped_output_distance",
+        "Zeta23.OPICARound2.positive_equal_power_causal_twins"
+      ],
+      "OPICA2_S16": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICARound2.probeLaplaceWitness_norm_sq",
+        "Zeta23.OPICARound2.probeLaplaceWitness_normalization",
+        "Zeta23.OPICARound2.probe_laplace_evaluation_bound",
+        "Zeta23.OPICARound2.fixed_filtered_native_zero_separation",
+        "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation"
+      ],
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta"
+      ],
+      "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TAIL_RESIDUAL_LOWER": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.native_slow_source_window_rate"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower"
+      ],
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT": [
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ]
+    },
+    "nativeResidual_laguerre_inner": {
+      "OPICA2_S11": [
+        "Zeta23.OPICAFollowup.nativeResidual_laguerre_inner",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICARound2.native_theta_le_of_damped_memLp",
+        "Zeta23.OPICARound2.nativeDampingEnergy_infinite_below_theta",
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence"
+      ],
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA": [
+        "Zeta23.OPICAFollowup.nativeResidual_laguerre_inner",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TAIL_RESIDUAL_LOWER": [
+        "Zeta23.OPICAFollowup.nativeResidual_laguerre_inner",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.nativeResidual_laguerre_inner",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.nativeResidual_laguerre_inner",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.native_slow_source_window_rate"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER": [
+        "Zeta23.OPICAFollowup.nativeResidual_laguerre_inner",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower"
+      ],
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT": [
+        "Zeta23.OPICAFollowup.nativeResidual_laguerre_inner",
+        "Zeta23.OPICAFollowup.nativeResidual_tail_lower_bound",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ]
+    },
+    "nativeAuxiliaryStableVector_factorial_bound": {},
+    "recovery_subexp_budget": {
+      "OPICA_FOLLOWUP_RECOVERY_SUBEXP_BUDGET": [
+        "Zeta23.OPICAFollowup.recovery_subexp_budget"
+      ]
+    }
+  },
+  "shard_sha256": {
+    "relations/relations-0.jsonl": "83f2ae96280e3fa12eb5f8286ae0d407f2f39cfd7221bad7061113210959e495",
+    "relations/relations-1.jsonl": "2464a377d01e737981f2e0db5e0746d2f4b2fd96036cd591d5db6811390f62ff",
+    "relations/relations-2.jsonl": "27d66761c7bf4facf2a3189493daa434f40ee5727a561743887737e0ab14b976",
+    "relations/relations-3.jsonl": "7dd2f18968170a16668da2ccc71ce2bb8d8ca3aec746b941da42267dfba8e752",
+    "relations/relations-4.jsonl": "481d2ce4e82558ed13387694b1cd5f9dc5260577e49277514b9882fccce79ee7",
+    "relations/relations-5.jsonl": "11a28a6da093b5a4fc2dc297b81c6cf1a46d8a2fb3f811faaae56b0bedd1750a",
+    "relations/relations-6.jsonl": "278302334bee44ebd694a8f50f41950d47fd9430840be4c7d0790a0572dd05d4",
+    "relations/relations-7.jsonl": "f46b39bbdc0276b923e7b9879fd459324b487a31aa1e7f457e530c788b0eeef8",
+    "relations/relations-8.jsonl": "d065d4f11614f66db33fd46aef59932a2c8dc169355aa1309c718118d01f9de2",
+    "relations/relations-9.jsonl": "bfcdc7ebf089faab8e5ff9604b089cfd34293c33660090b57876b3c34f118b2c",
+    "relations/relations-a.jsonl": "d0f5ee598abeb6594eb0bf239c1e29f40b0277cc66f68ae738c470bcc1ee546e",
+    "relations/relations-b.jsonl": "cb012e6900a69e42fc3b5eff5d0fbfa45b5d02eccfb232807b3cbcef8b9626df",
+    "relations/relations-c.jsonl": "a31dd215eceea7c085155d812669dd43d797b78d2ca27f7f6054a9131dbf537d",
+    "relations/relations-d.jsonl": "de1f0810daa07faabd9caa8ec2d92cbee291321cbb9d2d387c8e627c3cfdce21",
+    "relations/relations-e.jsonl": "ec1df26724feecadbaf598b63d087082c58067b08819c901f8325c402a39c0eb",
+    "relations/relations-f.jsonl": "3b4a7a228212fd38e04bb205ebec22d69e63c7320196908014ca892d185bd1ca"
+  },
+  "scope": "Compiler proof-body uses, transitively, including each anchor itself. Logical consequences absent from the registered proof graph are possible."
+}

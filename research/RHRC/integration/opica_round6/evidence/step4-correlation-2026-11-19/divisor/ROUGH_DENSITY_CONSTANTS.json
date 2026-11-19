@@ -1,0 +1,36 @@
+{
+  "cutoff": 10000000,
+  "prime_count": 664579,
+  "sieve_sha256": "ab158d028a45c7419316d831fde03f2b164a2e31c28826083c339b83dcef43f6",
+  "original_check_sha256": "5a4201a3fdb456ea834e72cf1709de119afaf6bbc5505c7648f057ccaf270c9a",
+  "bonferroni_orders": [
+    1023,
+    1024
+  ],
+  "density_tail_log_upper": "[-3155.6166646202747022569334750296464846508014909612111 +/- 5.03e-50]",
+  "count_error_factor_log_upper": "[8372.6614974643273856408401357502225554407726787896103 +/- 4.40e-50]",
+  "sum_prime_inverse_sqrt_upper": "84063/128",
+  "sum_prime_inverse_fifth_power_two_upper": "481583/128",
+  "actual_density_times_energy_lower": "[1.1230950476998527746402992914459134734284426646874381e+73 +/- 4.10e+20]",
+  "signed_pointwise_interval": [
+    70000,
+    100000
+  ],
+  "every_integer_native_terminal_window": [
+    71000,
+    100000
+  ],
+  "windows": 29001,
+  "with_external_upper_actual_displacement": "<0.37335",
+  "extended_signed_pointwise_interval": [
+    70000,
+    144550
+  ],
+  "extended_every_integer_native_terminal_window": [
+    71000,
+    144550
+  ],
+  "extended_windows": 73551,
+  "pointwise_distinct_core_covariance_strict_upper": "-10^73",
+  "qualification": "Fresh finite sieve and Arb/rational constants for the paper comparison, using the original native band/verified zero-height inputs. No cofinal recurrence is asserted."
+}

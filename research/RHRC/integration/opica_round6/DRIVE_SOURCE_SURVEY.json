@@ -1,0 +1,4871 @@
+{
+  "as_of_utc": "2026-11-19",
+  "schema": "OPICA6_RESEARCH_COLLECTION_SURVEY_V1",
+  "collections": {
+    "1": "October research and early PR299 constraints",
+    "2": "Final gate and closure investigations",
+    "3": "Current-state map, further results and handovers"
+  },
+  "scope": {
+    "TEXT": "Text returned and indexed",
+    "JSON_PARSED": "Retrieved JSON parsed",
+    "TEXT_EXTRACTED": "PDF text returned",
+    "LEAN_SOURCE_RETRIEVED": "Lean file retrieved",
+    "ARCHIVE_DIRECTORY": "Original ZIP central directory enumerated from the file or from verified byte ranges",
+    "PRIOR_ARCHIVE_DIRECTORY": "Locally preserved namesake or file-ID archive with matching byte length; central directory inspected",
+    "LISTED": "Title and metadata only"
+  },
+  "qualification": "An inventory records coverage. Paper claims and independently verified declarations have separate entries in the constraint graph. Inspecting an archive directory does not validate its member claims.",
+  "collection_counts": {
+    "1": 80,
+    "2": 254,
+    "3": 441
+  },
+  "inspection_counts": {
+    "ARCHIVE_DIRECTORY": 115,
+    "JSON_PARSED": 119,
+    "LEAN_SOURCE_RETRIEVED": 2,
+    "PRIOR_ARCHIVE_DIRECTORY": 72,
+    "TEXT": 427,
+    "TEXT_EXTRACTED": 40
+  },
+  "files": [
+    {
+      "title": "00_Original_Paper_Audit_Index.json",
+      "bytes": "33099",
+      "read": "JSON_PARSED",
+      "collection": 1
+    },
+    {
+      "title": "00_PACKAGE_MANIFEST.json",
+      "bytes": "15930",
+      "read": "JSON_PARSED",
+      "collection": 1
+    },
+    {
+      "title": "00_START_HERE.md",
+      "bytes": "3359",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "01_OPICA_36_Paper_Step4_Research_2026-10-30.zip",
+      "bytes": "108761",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 26,
+      "collection": 1
+    },
+    {
+      "title": "01_Thread_Research_Reports_and_Audit_Index.zip",
+      "bytes": "247024",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 40,
+      "collection": 1
+    },
+    {
+      "title": "02_Interactive_Mathematical_Landscape_and_Graph_Audit.zip",
+      "bytes": "12972486",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "03_Causal_Impulse_and_Dual_Geometry_Evidence.zip",
+      "bytes": "44932793",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 9,
+      "collection": 1
+    },
+    {
+      "title": "04_FirstBirth_Schur_MixedJets_and_Literature_Evidence.zip",
+      "bytes": "1839800",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 7,
+      "collection": 1
+    },
+    {
+      "title": "05_Round2_Round3_Round4_Formal_and_CI_Evidence.zip",
+      "bytes": "11452390",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 12,
+      "collection": 1
+    },
+    {
+      "title": "06_Round2_Contracts_Manifests_and_Compatibility.zip",
+      "bytes": "55917486",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 5,
+      "collection": 1
+    },
+    {
+      "title": "07_Papers_Foundations_Normalization_and_Detection.zip",
+      "bytes": "2729824",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 8,
+      "collection": 1
+    },
+    {
+      "title": "08_Papers_CCM_Parity_FirstContact_and_Source.zip",
+      "bytes": "6292016",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 15,
+      "collection": 1
+    },
+    {
+      "title": "09_Papers_OPICA_Causal_ZeroJets_and_Fourier_Gaps.zip",
+      "bytes": "8570726",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 19,
+      "collection": 1
+    },
+    {
+      "title": "10_External_Recent_RH_Preprints_and_Research_Search.zip",
+      "bytes": "1900540",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "11_RH_Project_Baselines_and_Path_ABCD_Context.zip",
+      "bytes": "2331441",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 27,
+      "collection": 1
+    },
+    {
+      "title": "12_RH_Historical_PR292_Preparation_and_Handoffs.zip",
+      "bytes": "70803448",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 8,
+      "collection": 1
+    },
+    {
+      "title": "13_RH_Research_Master_ThreePath_v25_v26_v28.zip",
+      "bytes": "59870137",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 5,
+      "collection": 1
+    },
+    {
+      "title": "14_RH_Research_Master_v29_and_Round1_Round2.zip",
+      "bytes": "61417659",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 5,
+      "collection": 1
+    },
+    {
+      "title": "15_Historical_OPICA_Snapshot_Graph_Metadata_Theorem_Atlas.zip",
+      "bytes": "20136986",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 65,
+      "collection": 1
+    },
+    {
+      "title": "15_Historical_OPICA_Snapshot_Graph_Relations_0-3.zip",
+      "bytes": "23914815",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "15_Historical_OPICA_Snapshot_Graph_Relations_4-7.zip",
+      "bytes": "23953001",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "15_Historical_OPICA_Snapshot_Graph_Relations_8-b.zip",
+      "bytes": "23939268",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "15_Historical_OPICA_Snapshot_Graph_Relations_c-f.zip",
+      "bytes": "23922623",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "15_Historical_OPICA_Snapshot_Historical_Research_Ledgers_Routes.zip",
+      "bytes": "3370310",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 842,
+      "collection": 1
+    },
+    {
+      "title": "15_Historical_OPICA_Snapshot_Integration_Round2_3_4_Contracts.zip",
+      "bytes": "13575112",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 575,
+      "collection": 1
+    },
+    {
+      "title": "15_Historical_OPICA_Snapshot_Lean_Source_And_Build_Interfaces.zip",
+      "bytes": "4712604",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 1259,
+      "collection": 1
+    },
+    {
+      "title": "15_Historical_OPICA_Snapshot_OPICA_Followup_Research_Data.zip",
+      "bytes": "69968922",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 2338,
+      "collection": 1
+    },
+    {
+      "title": "16_Audited_OPICA_Snapshot_Graph_Metadata_Theorem_Atlas.zip",
+      "bytes": "20136947",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 65,
+      "collection": 1
+    },
+    {
+      "title": "16_Audited_OPICA_Snapshot_Graph_Relations_0-3.zip",
+      "bytes": "23914808",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "16_Audited_OPICA_Snapshot_Graph_Relations_4-7.zip",
+      "bytes": "23952994",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "16_Audited_OPICA_Snapshot_Graph_Relations_8-b.zip",
+      "bytes": "23939260",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "16_Audited_OPICA_Snapshot_Graph_Relations_c-f.zip",
+      "bytes": "23922616",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "16_Audited_OPICA_Snapshot_Historical_Research_Ledgers_Routes.zip",
+      "bytes": "3370318",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 842,
+      "collection": 1
+    },
+    {
+      "title": "16_Audited_OPICA_Snapshot_Integration_Round2_3_4_Contracts.zip",
+      "bytes": "13602225",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 575,
+      "collection": 1
+    },
+    {
+      "title": "16_Audited_OPICA_Snapshot_Lean_Source_And_Build_Interfaces.zip",
+      "bytes": "4712757",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 1259,
+      "collection": 1
+    },
+    {
+      "title": "16_Audited_OPICA_Snapshot_OPICA_Followup_Research_Data.zip",
+      "bytes": "69968914",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 2338,
+      "collection": 1
+    },
+    {
+      "title": "17_ThirdParty_Handover_A_Guide_Catalogue_Atlas.zip",
+      "bytes": "1771108",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 5,
+      "collection": 1
+    },
+    {
+      "title": "17_ThirdParty_Handover_B_Papers_and_Word_Documents.zip",
+      "bytes": "51522065",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 4,
+      "collection": 1
+    },
+    {
+      "title": "17_ThirdParty_Handover_C_Historical_Markdown_and_Lean.zip",
+      "bytes": "26102101",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 4,
+      "collection": 1
+    },
+    {
+      "title": "18_Embedded_Historical_Corpus_CI_and_Execution_Logs_01.zip",
+      "bytes": "17970599",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 517,
+      "collection": 1
+    },
+    {
+      "title": "18_Embedded_Historical_Corpus_Formal_Source_and_Executable_Code_01.zip",
+      "bytes": "9802507",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 3162,
+      "collection": 1
+    },
+    {
+      "title": "18_Embedded_Historical_Corpus_Historical_Research_Documents_01.zip",
+      "bytes": "61119409",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 2212,
+      "collection": 1
+    },
+    {
+      "title": "18_Embedded_Historical_Corpus_Historical_Research_Documents_02.zip",
+      "bytes": "4377531",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 118,
+      "collection": 1
+    },
+    {
+      "title": "18_Embedded_Historical_Corpus_Repository_Graph_and_Relations_Data_01.zip",
+      "bytes": "62013110",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 105,
+      "collection": 1
+    },
+    {
+      "title": "18_Embedded_Historical_Corpus_Repository_Graph_and_Relations_Data_02.zip",
+      "bytes": "16124407",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 67,
+      "collection": 1
+    },
+    {
+      "title": "18_Embedded_Historical_Corpus_Structured_Data_and_Certificates_01.zip",
+      "bytes": "60579436",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 1747,
+      "collection": 1
+    },
+    {
+      "title": "18_Embedded_Historical_Corpus_Structured_Data_and_Certificates_02.zip",
+      "bytes": "4420788",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 117,
+      "collection": 1
+    },
+    {
+      "title": "19_Historical_Handover_Original_Indexes_And_Restore_Tools.zip",
+      "bytes": "3077148",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 14,
+      "collection": 1
+    },
+    {
+      "title": "EMBEDDED_SOURCE_CAPSULE_CATALOGUE.json",
+      "bytes": "12331",
+      "read": "JSON_PARSED",
+      "collection": 1
+    },
+    {
+      "title": "OPICA Round 4 — Step 4 source audit and next tests (30 Oct 2026)",
+      "bytes": "4281",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "OPICA_STEP4_PASS2_OFFDIAGONAL_SIGN_BEURLING_FALSIFICATION_2026-10-31.zip",
+      "bytes": "20972",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 8,
+      "collection": 1
+    },
+    {
+      "title": "OPICA_STEP4_PASS3_INDEPENDENT_ARITHMETIC_ATTACK_2026-10-31.zip",
+      "bytes": "12544",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 8,
+      "collection": 1
+    },
+    {
+      "title": "OPICA_STEP4_PASS4_FINITE_SOURCE_SIGN_CERTIFICATE_2026-10-31.zip",
+      "bytes": "14522",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 7,
+      "collection": 1
+    },
+    {
+      "title": "OPICA_STEP4_PASS5_EXACT_PRIME_SITE_EULER_EXPONENT_THRESHOLD_2026-10-31.zip",
+      "bytes": "16005",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "OPICA_STEP4_PASS6_FLAT_MOBIUS_COVARIANCE_2026-11-01.zip",
+      "bytes": "15247",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "OPICA_STEP4_PASS7_HYPERBOLA_BOUNDARY_ALIAS_2026-11-01.zip",
+      "bytes": "14951",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 7,
+      "collection": 1
+    },
+    {
+      "title": "OPICA_STEP4_PASS8_DISCRETE_HANKEL_AND_MOMENT_COMPRESSION_2026-11-01.zip",
+      "bytes": "17226",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 7,
+      "collection": 1
+    },
+    {
+      "title": "OPICA_STEP4_PRIME_PAIR_ENERGY_RESEARCH_PACKET_2026-10-31.zip",
+      "bytes": "19976",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "OPICA_Step4_Promising_Strategies_Deep_Dive_2026-10-30.md",
+      "bytes": "24303",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "OPICA_Step4_Strip_Echo_Phase_Research_Note_2026-10-30.md",
+      "bytes": "22557",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "OPICA_Step4_Strip_Echo_Test_Packet_2026-10-30.zip",
+      "bytes": "15562",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 1
+    },
+    {
+      "title": "PR299_POST_GREEN_COMPOSITION_AND_SPECTRAL_FLOW_AUDIT_2026-11-01.md",
+      "bytes": "8845",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "PR299_TIE_EXCLUSIVE_VISIBILITY_POSTGREEN_2026-11-01.md",
+      "bytes": "6322",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "PR299_TIE_FIRSTBIRTH_SCHUR_COMPOSITION_AUDIT_2026-11-01.md",
+      "bytes": "6669",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "Quasi-RH complete DirichletL Lean tree — source file inventory (2026-10-30)",
+      "bytes": "176198",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_CLOSURE_PASS3_INDEPENDENT_ARITHMETIC_ATTACK_2026-10-31.md",
+      "bytes": "14921",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_CLOSURE_PASS4_FINITE_SIGN_CERTIFICATE_2026-10-31.md",
+      "bytes": "14538",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_CLOSURE_RESEARCH_PASS1_PRIME_PAIR_ENERGY_2026-10-31.md",
+      "bytes": "26989",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_CLOSURE_RESEARCH_PASS2_OFFDIAGONAL_SIGN_AND_BEURLING_FALSIFICATION_2026-10-31.md",
+      "bytes": "22158",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_PASS2_FINITE_SCAN_DISCOVERY_ONLY_2026-10-31.json",
+      "bytes": "5351",
+      "read": "JSON_PARSED",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_PASS2_LEAN_THEOREM_CONTRACTS_2026-10-31.json",
+      "bytes": "4391",
+      "read": "JSON_PARSED",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_PASS5_LEAN_CONTRACTS.json",
+      "bytes": "3176",
+      "read": "JSON_PARSED",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_PASS5_SOURCE_EXACT_EULER_PERTURBATION_AND_STABILITY_2026-10-31.md",
+      "bytes": "21566",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_PASS6_FLAT_MOBIUS_REDUCTION_2026-11-01.md",
+      "bytes": "20735",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_PASS6_LEAN_CONTRACTS_2026-11-01.json",
+      "bytes": "2920",
+      "read": "JSON_PARSED",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_PASS7_HYPERBOLA_BOUNDARY_ALIAS_AND_ONE_SIDED_CRITERION_2026-11-01.md",
+      "bytes": "17824",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_PASS7_LEAN_CONTRACTS_2026-11-01.json",
+      "bytes": "4129",
+      "read": "JSON_PARSED",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_PASS8_DISCRETE_HANKEL_AND_MOMENT_COMPRESSION_2026-11-01.md",
+      "bytes": "18106",
+      "read": "TEXT",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_PASS8_LEAN_CONTRACTS_2026-11-01.json",
+      "bytes": "3483",
+      "read": "JSON_PARSED",
+      "collection": 1
+    },
+    {
+      "title": "STEP4_PRIME_PAIR_LEAN_CONTRACTS_2026-10-31.json",
+      "bytes": "4462",
+      "read": "JSON_PARSED",
+      "collection": 1
+    },
+    {
+      "title": "exact_controls_normal.json",
+      "bytes": "5078",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "exact_harvest_controls.py",
+      "bytes": "10733",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "grwtsk_pr299_odd_trace_probe.csv",
+      "bytes": "2022",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "grwtsk_pr299_odd_trace_probe.json",
+      "bytes": "5947",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "grwtsk_pr299_odd_trace_probe.py",
+      "bytes": "6223",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "HARVEST_CONTRACTS.json",
+      "bytes": "7248",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "PR299_Build_Update_v2_2026-11-07.zip",
+      "bytes": "25567",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 2
+    },
+    {
+      "title": "PR299_Build_Update_v3_2026-11-08.zip",
+      "bytes": "124588",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 12,
+      "collection": 2
+    },
+    {
+      "title": "PR299_Full_Build_Instructions_v2_2026-11-07.md",
+      "bytes": "50842",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "PR299_Full_Build_Instructions_v3_2026-11-08.md",
+      "bytes": "63868",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "PR299_GRWTSK_Source_Harvest_and_Mathematical_Crosswalk_2026-11-07.md",
+      "bytes": "14808",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "PR299_OAI_Math_Harvest_2026-11-07.zip",
+      "bytes": "24969",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 9,
+      "collection": 2
+    },
+    {
+      "title": "PR299_OAI_Math_Source_Harvest_2026-11-07.md",
+      "bytes": "24810",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH Step 4 — Perspective Geometry, Sparse Anchors & Crossing Ledger — 2026-11-06 (RESEARCH NOTE)",
+      "bytes": "6262",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Abel_Closure_Attempt_2026-11-08.md",
+      "bytes": "19217",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Abel_Closure_Attempt_2026-11-08.zip",
+      "bytes": "44112",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 18,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_All_Rough_Resummation_and_Compensation_2026-11-05.pdf",
+      "bytes": "360860",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_All_Rough_Resummation_Evidence_2026-11-05.zip",
+      "bytes": "385880",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 26,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_All_Written_Work_2026-11-09.zip",
+      "bytes": "58483805",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 180,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Birds_Eye_Closure_Investigation_2026-11-07.md",
+      "bytes": "38738",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Birds_Eye_Closure_Investigation_2026-11-07.zip",
+      "bytes": "23246409",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 120,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Birds_Eye_Evidence_2026-11-07.zip",
+      "bytes": "511615",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 62,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Birds_Eye_Investigation_2026-11-07.pdf",
+      "bytes": "360659",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Cancellation_Geometry_and_Boundary_2026-11-05.pdf",
+      "bytes": "350782",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Cancellation_Geometry_Evidence_2026-11-05.zip",
+      "bytes": "383255",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 16,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Centered_Channels_Delivery_Record_2026-11-04.json",
+      "bytes": "718",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Centered_Channels_Integer_Forcing_and_Inversion_Cost_2026-11-04.md",
+      "bytes": "36058",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Centered_Prime_Continuation_2026-11-08.md",
+      "bytes": "28597",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Centered_Prime_Continuation_2026-11-08.zip",
+      "bytes": "49886",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 19,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Closure_Investigation_Coarse_Growth_2026-11-08.md",
+      "bytes": "33746",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Closure_Investigation_Coarse_Growth_2026-11-08.zip",
+      "bytes": "136360",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 29,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Continuation_2026-11-07.pdf",
+      "bytes": "462647",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Continuation_Evidence_2026-11-07.zip",
+      "bytes": "50504559",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 82,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Core_Certificate_and_Cross_Band_Obstruction_2026-11-07.md",
+      "bytes": "27308",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Core_Certificate_and_Cross_Band_Obstruction_2026-11-07.zip",
+      "bytes": "28458846",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 34,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Coupling_Resolved_Stage_Two_2026-11-06.md",
+      "bytes": "19559",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Coupling_Resolved_Stage_Two_2026-11-06.pdf",
+      "bytes": "99634",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Coupling_Resolved_Stage_Two_Evidence_2026-11-06.zip",
+      "bytes": "38158134",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 69,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Cross_Band_Obstruction_Certificate_2026-11-07.json",
+      "bytes": "1721",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Curvature_Bridge_Evidence_2026-11-06.zip",
+      "bytes": "102979",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 12,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Curvature_Controlled_Peak_Bridges_2026-11-06.md",
+      "bytes": "20712",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Curvature_Controlled_Peak_Bridges_2026-11-06.pdf",
+      "bytes": "89056",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Cutoff_Growth_Evidence_2026-11-05.zip",
+      "bytes": "401386",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 20,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Cutoff_Growth_Identity_and_Imported_Baseline_2026-11-05.md",
+      "bytes": "25818",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Cutoff_Growth_Identity_and_Imported_Baseline_2026-11-05.pdf",
+      "bytes": "360998",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Double_Check_Evidence_2026-11-06.zip",
+      "bytes": "47690808",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 133,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Double_Check_Fail_Closed_Repair_and_Next_Attack_2026-11-06.md",
+      "bytes": "21487",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Double_Check_Fail_Closed_Repair_and_Next_Attack_2026-11-06.pdf",
+      "bytes": "96380",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Dyadic_Arithmetic_Reassessment_2026-11-06.md",
+      "bytes": "15511",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Dyadic_Arithmetic_Reassessment_2026-11-06.pdf",
+      "bytes": "71718",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Dyadic_Arithmetic_Reassessment_Evidence_2026-11-06.zip",
+      "bytes": "79769",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Evidence_2026-11-05.zip",
+      "bytes": "155519",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 16,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Exact_Staircase_Attack_2026-11-05.md",
+      "bytes": "22241",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Exact_Staircase_Attack_2026-11-05.pdf",
+      "bytes": "312468",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Exact_Staircase_Evidence_2026-11-05.zip",
+      "bytes": "335529",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 19,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Exponential_Cutoff_Evidence_2026-11-05.zip",
+      "bytes": "128682",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 7,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Exponential_Cutoff_Tradeoff_and_Zero_Free_Gates_2026-11-05.md",
+      "bytes": "18169",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Exponential_Cutoff_Tradeoff_and_Zero_Free_Gates_2026-11-05.pdf",
+      "bytes": "141236",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Finite_Euler_Tail_and_Closure_Audit_2026-11-06.md",
+      "bytes": "21231",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Finite_Euler_Tail_and_Closure_Audit_2026-11-06.pdf",
+      "bytes": "356961",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Finite_Euler_Tail_Evidence_2026-11-06.zip",
+      "bytes": "2026420",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 33,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Full_Smooth_Transport_and_Residual_2026-11-05.pdf",
+      "bytes": "354354",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Full_Smooth_Transport_Evidence_2026-11-05.zip",
+      "bytes": "425397",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 36,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Gaussian_Contour_and_Closure_Audit_2026-11-05.md",
+      "bytes": "17456",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Gaussian_Contour_and_Closure_Audit_2026-11-05.pdf",
+      "bytes": "91359",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Gaussian_Contour_Evidence_2026-11-05.zip",
+      "bytes": "100947",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 8,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Gaussian_Converse_and_Abel_Test_2026-11-06.md",
+      "bytes": "23625",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Gaussian_Converse_and_Abel_Test_2026-11-06.pdf",
+      "bytes": "98640",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Gaussian_Converse_Evidence_2026-11-06.zip",
+      "bytes": "592228",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 29,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Gaussian_Recovery_and_Polynomial_Growth_Gate_2026-11-05.md",
+      "bytes": "24592",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Gaussian_Recovery_and_Polynomial_Growth_Gate_2026-11-05.pdf",
+      "bytes": "361685",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Gaussian_Recovery_Evidence_2026-11-05.zip",
+      "bytes": "380331",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 23,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Generalized_Prime_Falsifier_2026-11-05.md",
+      "bytes": "16779",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Generalized_Prime_Falsifier_2026-11-05.pdf",
+      "bytes": "120607",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Generalized_Prime_Falsifier_Evidence_2026-11-05.zip",
+      "bytes": "92383",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 7,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Global_Evidence_and_Packet_Closure_Attempt_2026-11-08.md",
+      "bytes": "24061",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Global_Evidence_and_Packet_Closure_Attempt_2026-11-08.zip",
+      "bytes": "1320839",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 19,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Global_Evidence_Artifact_Inspection_2026-11-08.json",
+      "bytes": "6731",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Global_Evidence_MP13_Access_Receipt_2026-11-08.json",
+      "bytes": "718",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Global_Gram_Certificate_and_Closure_Gap_2026-11-05.md",
+      "bytes": "20986",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Global_Gram_Certificate_and_Closure_Gap_2026-11-05.pdf",
+      "bytes": "319826",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Global_Gram_Evidence_2026-11-05.zip",
+      "bytes": "394673",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 77,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Growing_Count_Evidence_2026-11-05.zip",
+      "bytes": "399655",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 17,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Growing_Count_Theorem_and_Closure_Test_2026-11-05.md",
+      "bytes": "31579",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Growing_Count_Theorem_and_Closure_Test_2026-11-05.pdf",
+      "bytes": "365092",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Integrated_Closure_Audit_and_Execution_Plan_2026-11-06.md",
+      "bytes": "33497",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Integrated_Closure_Audit_and_Execution_Plan_2026-11-06.pdf",
+      "bytes": "104456",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Integrated_Closure_Audit_Evidence_2026-11-06.zip",
+      "bytes": "139495",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 23,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Methodology_Postmortem_2026-11-08.md",
+      "bytes": "16510",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Methodology_Postmortem_2026-11-08.zip",
+      "bytes": "57073",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 10,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Native_Core_Certificate_L5_2026-11-07.json",
+      "bytes": "1633",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Native_Endpoint_Certificates_and_Local_Bridge_2026-11-06.md",
+      "bytes": "20866",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Native_Endpoint_Certificates_and_Local_Bridge_2026-11-06.pdf",
+      "bytes": "100671",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Native_Endpoint_Evidence_2026-11-06.zip",
+      "bytes": "2869390",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 75,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Native_K3_Signed_Kernel_Evidence_2026-11-05.zip",
+      "bytes": "155144",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 24,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Native_K3_Signed_Kernel_Investigation_2026-11-05.md",
+      "bytes": "26454",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Native_K3_Signed_Kernel_Investigation_2026-11-05.pdf",
+      "bytes": "105993",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Next_Proof_Gates_After_Growing_Count_2026-11-05.md",
+      "bytes": "9502",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Nonperiodic_Divisor_Evidence_2026-11-06.zip",
+      "bytes": "133858",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 18,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Nonperiodic_Divisor_Separation_and_Closing_Gap_2026-11-06.md",
+      "bytes": "21283",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Nonperiodic_Divisor_Separation_and_Closing_Gap_2026-11-06.pdf",
+      "bytes": "100139",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Optimized_Cutoff_and_Forced_Cancellation_Evidence_2026-11-06.zip",
+      "bytes": "83688",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 7,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Optimized_Cutoff_Forced_Compensation_and_Next_Gate_2026-11-06.md",
+      "bytes": "12821",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Optimized_Cutoff_Forced_Compensation_and_Next_Gate_2026-11-06.pdf",
+      "bytes": "75709",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Paper_Attempt_Signed_Compensation_2026-11-07.zip",
+      "bytes": "30453",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 15,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Peak_Bridge_Evidence_2026-11-06.zip",
+      "bytes": "101746",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 15,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Polynomial_Geometry_and_Source_Response_2026-11-08.md",
+      "bytes": "35186",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Polynomial_Geometry_and_Source_Response_2026-11-08.zip",
+      "bytes": "459451",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 19,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Positive_Damping_Energy_Comparison_2026-11-08.md",
+      "bytes": "12735",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Positive_Damping_Energy_Comparison_2026-11-08.zip",
+      "bytes": "38602",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 28,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Positive_Damping_Exact_Controls_2026-11-08.json",
+      "bytes": "1054",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Positive_Damping_Interval_Certificate_2026-11-08.json",
+      "bytes": "6615",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Post_Gaussian_Abel_Threshold_and_Next_Gates_2026-11-06.md",
+      "bytes": "12679",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Post_Pi2_12_Full_Smooth_Cofactor_Audit_2026-11-05.md",
+      "bytes": "9774",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Prefix_Fourier_Continuation_2026-11-05.pdf",
+      "bytes": "142423",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Prefix_Fourier_Evidence_2026-11-05.zip",
+      "bytes": "175754",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 21,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Preflight_Error_and_Constraint_Audit_2026-11-08.md",
+      "bytes": "33637",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Preflight_Error_and_Constraint_Audit_2026-11-08.zip",
+      "bytes": "80814",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 30,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Prime_Only_Carrier_and_Complete_Mask_Gram_2026-11-04.md",
+      "bytes": "34695",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Reconciled_Closure_Plan_2026-11-05.md",
+      "bytes": "36196",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Reconciled_Closure_Plan_2026-11-05.pdf",
+      "bytes": "126135",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Reconciliation_and_Plan_Evidence_2026-11-05.zip",
+      "bytes": "173630",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 21,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Remaining_Work_Evidence_2026-11-05.zip",
+      "bytes": "160255",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 14,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Remaining_Work_Investigation_2026-11-05.pdf",
+      "bytes": "137200",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Research_2026-11-05.pdf",
+      "bytes": "211704",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Research_Continuation_2026-11-05.pdf",
+      "bytes": "954626",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Research_Evidence_2026-11-05.zip",
+      "bytes": "899051",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 29,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Response_Weighted_Certificates_and_Constrained_Displacement_2026-11-06.md",
+      "bytes": "25987",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Response_Weighted_Certificates_and_Constrained_Displacement_2026-11-06.pdf",
+      "bytes": "114412",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Response_Weighted_Certificates_Evidence_2026-11-06.zip",
+      "bytes": "34870258",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 171,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Same_State_Peak_Bridges_2026-11-06.md",
+      "bytes": "20327",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Same_State_Peak_Bridges_2026-11-06.pdf",
+      "bytes": "87094",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Shift_Cyclicity_and_Grid_Obstruction_2026-11-05.md",
+      "bytes": "16599",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Shift_Cyclicity_and_Grid_Obstruction_2026-11-05.pdf",
+      "bytes": "85564",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Shift_Cyclicity_Evidence_2026-11-05.zip",
+      "bytes": "92895",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 5,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Single_Source_and_TypeII_2026-11-05.pdf",
+      "bytes": "324765",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Single_Source_Evidence_2026-11-05.zip",
+      "bytes": "344544",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 15,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Stationary_Covariance_and_Fixed_Origin_Gap_2026-11-06.md",
+      "bytes": "19688",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Stationary_Covariance_and_Fixed_Origin_Gap_2026-11-06.pdf",
+      "bytes": "89977",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Stationary_Covariance_Evidence_2026-11-06.zip",
+      "bytes": "110719",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 16,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Tail_Free_Dilation_Defect_and_Closing_Bound_2026-11-06.md",
+      "bytes": "18528",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Tail_Free_Dilation_Defect_and_Closing_Bound_2026-11-06.pdf",
+      "bytes": "90033",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Tail_Free_Dilation_Evidence_2026-11-06.zip",
+      "bytes": "103922",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 15,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Tolerance_Aware_Peak_Evidence_2026-11-06.zip",
+      "bytes": "23656574",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 150,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Tolerance_Aware_Peaks_and_Cutoff_Crossings_2026-11-06.md",
+      "bytes": "18749",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Tolerance_Aware_Peaks_and_Cutoff_Crossings_2026-11-06.pdf",
+      "bytes": "90602",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Vaughan_Delivery_Record_2026-11-04.json",
+      "bytes": "1089",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Vaughan_TypeI_MainTerms_TypeII_Compensation_and_MV_Gap_Cost_2026-11-04.md",
+      "bytes": "34062",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Verified_Head_Audit_2026-11-09.md",
+      "bytes": "17834",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Verified_Head_Audit_2026-11-09.zip",
+      "bytes": "56280",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 19,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Weighted_Floor_Transfer_Attempt_2026-11-08.md",
+      "bytes": "18844",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Weighted_Floor_Transfer_Attempt_2026-11-08.zip",
+      "bytes": "18402",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 14,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Weighted_Summatory_Bridge_and_Euler_Density_2026-11-06.md",
+      "bytes": "19115",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Weighted_Summatory_Bridge_and_Euler_Density_2026-11-06.pdf",
+      "bytes": "131324",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Weighted_Summatory_Bridge_Evidence_2026-11-06.zip",
+      "bytes": "116347",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 10,
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Weighted_Zeta_Separation_and_Next_Attack_2026-11-05.md",
+      "bytes": "16703",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Weighted_Zeta_Separation_and_Next_Attack_2026-11-05.pdf",
+      "bytes": "99824",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "RH_Step4_Weighted_Zeta_Separation_Evidence_2026-11-05.zip",
+      "bytes": "123943",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 27,
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — All-Layer Prime Continuum and Discrepancy Stability — 2026-11-03",
+      "bytes": "14931",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — Compact Corrections and the First-Prime Budget — 2026-11-03",
+      "bytes": "15561",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — Compact-Correction Exact Checks — UNEXECUTED — 2026-11-03",
+      "bytes": "6113",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — Complete Rough Layers and the Nonzero Boundary Term — 2026-11-03",
+      "bytes": "15618",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — Complete Signed Energy and Largest-Prime Coherence — 2026-11-03",
+      "bytes": "16128",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — Factor-count tails and attenuation stability — 2026-11-03",
+      "bytes": "16865",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — Fixed-Horizon Signed Sweep and Complete-History Compensation — 2026-11-03",
+      "bytes": "13330",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — Full-Divisor Certificates and Their Exact Residuals — 2026-11-03",
+      "bytes": "19874",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — Local Signed-Mass Windows and Recombined Lower Bounds — 2026-11-03",
+      "bytes": "16928",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — Local Windows Delivery and Execution Record — 2026-11-03",
+      "bytes": "4617",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — Local Windows Exact Checker Candidate — UNEXECUTED — 2026-11-03",
+      "bytes": "5450",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann Step 4 — Source-Weighted Discrepancy Localization and the PNT Barrier — 2026-11-03",
+      "bytes": "17217",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Coding_Handoff_2026-11-02.zip",
+      "bytes": "103145",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 32,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Lower_Bound_Continuation_Signed_Mass_2026-11-02.md",
+      "bytes": "29660",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Lower_Bound_Signed_Mass_Package_2026-11-02.zip",
+      "bytes": "50644",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 13,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Reuse_and_Continuation_2026-11-02.txt",
+      "bytes": "28978",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Same_Aperture_K3_Proof_2026-11-02.md",
+      "bytes": "16172",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Causal_Age_Compensation_2026-11-03.md",
+      "bytes": "26242",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Causal_Age_Compensation_Package_2026-11-03.zip",
+      "bytes": "117396",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 34,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Causal_Age_Compensation_Verification_2026-11-03.json",
+      "bytes": "1385",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Causal_Profile_Compensation_2026-11-03.md",
+      "bytes": "29268",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Causal_Profile_Compensation_Package_2026-11-03.zip",
+      "bytes": "110356",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 28,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Causal_Profile_Compensation_Verification_2026-11-03.json",
+      "bytes": "1691",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Compact_Correction_Checks_UNEXECUTED_2026-11-03.py",
+      "bytes": "8912",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Compact_Corrections_and_First_Prime_Budget_2026-11-03.txt",
+      "bytes": "27729",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Compensated_Certificates_2026-11-03.md",
+      "bytes": "34370",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Compensated_Certificates_Package_2026-11-03.zip",
+      "bytes": "89276",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 18,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Compensated_Certificates_Verification_2026-11-03.json",
+      "bytes": "2718",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Complete_Rough_Layers_2026-11-03.txt",
+      "bytes": "26651",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Critical_Budget_Continuation_2026-11-03.md",
+      "bytes": "33953",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Critical_Budget_Continuation_Package_2026-11-03.zip",
+      "bytes": "1121012",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 30,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Critical_Budget_Continuation_Verification_2026-11-03.json",
+      "bytes": "3093",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Dense_Mask_Compensation_2026-11-03.md",
+      "bytes": "30323",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Dense_Mask_Compensation_Package_2026-11-03.zip",
+      "bytes": "810468",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 25,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Dense_Mask_Compensation_Verification_2026-11-03.json",
+      "bytes": "1586",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Euler_Boundary_Continuation_2026-11-03.md",
+      "bytes": "25604",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Euler_Boundary_Continuation_Package_2026-11-03.zip",
+      "bytes": "202919",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 30,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Euler_Boundary_Continuation_Verification_2026-11-03.json",
+      "bytes": "2013",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Factor_Count_Attenuation_2026-11-03.md",
+      "bytes": "29804",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Factor_Count_Attenuation_Checks_2026-11-03.py",
+      "bytes": "11690",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Fixed_Horizon_Signed_Sweep_2026-11-03.txt",
+      "bytes": "22345",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Fixed_Prime_Observable_External_Transfer_2026-11-03.md",
+      "bytes": "31905",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Full_Divisor_Certificates_2026-11-03.txt",
+      "bytes": "34494",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_K3_Coding_Package_2026-11-02.zip",
+      "bytes": "141766",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 40,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_K3_Continuation_2026-11-02.txt",
+      "bytes": "31786",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Largest_Prime_Energy_2026-11-03.md",
+      "bytes": "29390",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Largest_Prime_Energy_Package_2026-11-03.zip",
+      "bytes": "42107",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 11,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Largest_Prime_Energy_Verification_2026-11-03.json",
+      "bytes": "1362",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Local_Signed_Mass_Windows_2026-11-03.md",
+      "bytes": "33287",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Local_Windows_Checker_UNEXECUTED_2026-11-03.py",
+      "bytes": "7983",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Local_Windows_Execution_and_Delivery_Record_2026-11-03.txt",
+      "bytes": "6681",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Mask_Localization_2026-11-03.md",
+      "bytes": "25809",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Mask_Localization_Package_2026-11-03.zip",
+      "bytes": "720709",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 18,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Mask_Localization_Verification_2026-11-03.json",
+      "bytes": "1370",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Paper_Continuation_2026-11-02.pdf",
+      "bytes": "396785",
+      "read": "TEXT_EXTRACTED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Paper_Continuation_2026-11-02.txt",
+      "bytes": "90780",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Paper_Source_Package_2026-11-02.zip",
+      "bytes": "1713218",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 48,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_PostGreen_Missed_Connections_2026-11-03.md",
+      "bytes": "20856",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_PostGreen_Missed_Connections_Package_2026-11-03.zip",
+      "bytes": "21268",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 12,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_PostGreen_Missed_Connections_Verification_2026-11-03.json",
+      "bytes": "1929",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Primitive_Ratio_Closure_Attempt_2026-11-03.md",
+      "bytes": "30231",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Primitive_Ratio_Closure_Attempt_Package_2026-11-03.zip",
+      "bytes": "108155",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 33,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Primitive_Ratio_Closure_Attempt_Verification_2026-11-03.json",
+      "bytes": "1628",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Retained_Sector_Cancellation_2026-11-03.md",
+      "bytes": "29167",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Retained_Sector_Cancellation_Package_2026-11-03.zip",
+      "bytes": "901226",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 30,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Retained_Sector_Cancellation_Verification_2026-11-03.json",
+      "bytes": "1371",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Short_Cofactor_Continuation_2026-11-03.md",
+      "bytes": "27929",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Short_Cofactor_Continuation_Package_2026-11-03.zip",
+      "bytes": "1034680",
+      "read": "PRIOR_ARCHIVE_DIRECTORY",
+      "members": 38,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Short_Cofactor_Continuation_Verification_2026-11-03.json",
+      "bytes": "1729",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Square_Dilation_Continuation_2026-11-03.md",
+      "bytes": "23770",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Square_Dilation_Continuation_Package_2026-11-03.zip",
+      "bytes": "76064",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 20,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Square_Dilation_Continuation_Verification_2026-11-03.json",
+      "bytes": "2296",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Windowed_Frequency_Audit_2026-11-03.md",
+      "bytes": "27351",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Windowed_Frequency_Audit_Package_2026-11-03.zip",
+      "bytes": "136484",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 43,
+      "collection": 2
+    },
+    {
+      "title": "Riemann_Step4_Windowed_Frequency_Audit_Verification_2026-11-03.json",
+      "bytes": "2377",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "RUN_RECEIPT.json",
+      "bytes": "838",
+      "read": "JSON_PARSED",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 factor-count attenuation — runnable finite checks — NOT EXECUTED",
+      "bytes": "7013",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Cofinal Completion Bridge and Tracker-Backed Local Moment Saving — 2026-11-03",
+      "bytes": "20051",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Complete Continuum Centering, Prime-Power Budget, and the Shared-Remainder Gap — 2026-11-04",
+      "bytes": "16644",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Exceptional Principal Rectangles, Exact Recovery, and the Absolute-Slot Barrier — 2026-11-04",
+      "bytes": "17137",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Fixed Source Derivatives, Vanishing Type I Main Terms, and the Prefix Covariance Gap — 2026-11-04",
+      "bytes": "17414",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Full-Input Completion Quadratic and the Remaining Coercivity Gap — 2026-11-04",
+      "bytes": "15606",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Genuine Prefix Sign Sectors and the Unproved Correlation Upper — 2026-11-04",
+      "bytes": "10150",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Liu Endpoint Transfer, Critical-Class Deficit, and Joint-Moment Test — 2026-11-03",
+      "bytes": "17208",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Live CI Harvest, Filtered-Source Frontier, and Remaining Arithmetic Proof Contract — 2026-11-04",
+      "bytes": "10813",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Moment-Channel Visibility, Genuine Prime-Iteration Growth, and the Remaining Signed Bound — 2026-11-04",
+      "bytes": "19041",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Moving-Crossing Repair and Principal-Sector Covariance Audit — 2026-11-04",
+      "bytes": "16924",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Prime-Insertion Covariances, Genuine Stage Growth, and the Multiscale Gap — 2026-11-04",
+      "bytes": "16919",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Prime-Power Removal, Ordinary-Prime Zero Witness, and Missed-Dependency Audit — 2026-11-04",
+      "bytes": "13348",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Primitive-Corner Bounds and the Surviving Signed Bulk — 2026-11-04",
+      "bytes": "16507",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Remaining RH-Strength Arithmetic Proof, Pure-Prime Gap Obstruction, and Closing Gates — 2026-11-04",
+      "bytes": "12447",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Selberg Integer Conjugacy, Fixed-Frequency Nonaccretivity, and the Unproved Source Bound — 2026-11-04",
+      "bytes": "11210",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Temporal Echo Bounds, Fixed-Source Recovery Cost, and the Two-Slot Test — 2026-11-04",
+      "bytes": "19774",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step 4 — Uniform Density-Covariance Cancellation and the Remaining Prime–Prime Bound — 2026-11-04",
+      "bytes": "11374",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "Step4_Paper_Attempt_Signed_Compensation_2026-11-07.md",
+      "bytes": "35456",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "step4_signed_compensation_exact_controls.py",
+      "bytes": "6654",
+      "read": "TEXT",
+      "collection": 2
+    },
+    {
+      "title": "00_LATEST_STEP4_MAP_START_HERE.md",
+      "bytes": "16991",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "00_START_HERE_Current_state_and_missing_proofs.md",
+      "bytes": "27493",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "01_Current_state_and_missing_proofs.pdf",
+      "bytes": "117180",
+      "read": "TEXT_EXTRACTED",
+      "collection": 3
+    },
+    {
+      "title": "02_CI_and_scientific_harvest_2026-11-09.md",
+      "bytes": "11044",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "03_Repository_theorems_consumers_and_limits_2026-11-09.md",
+      "bytes": "20773",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "04_Signed_geometry_probe_localization.md",
+      "bytes": "9231",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "05_Actual_moving_normal_transform_visibility.md",
+      "bytes": "7463",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "06_Actual_source_coupling_and_remaining_ground.md",
+      "bytes": "13465",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "07_Correction_to_earlier_transform_attribution.md",
+      "bytes": "2756",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "08_Actual_projection_visibility_and_its_limit.md",
+      "bytes": "8179",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "09_Exact_closure_routes_and_missing_premises.md",
+      "bytes": "7002",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "100_A11_RESULTS_AND_FORMAL_SCOPE.json",
+      "bytes": "9370",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "101_A11_REPRODUCE_AND_REMAINING_WORK.md",
+      "bytes": "8307",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "102_A11_NEAR_NULL_TO_FIXED_SPLIT_RESPONSE_BUDGET.md",
+      "bytes": "9701",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "103_STEP4_CURRENT_CLOSURE_TARGETS_AND_SOURCE_CROSSWALK_2026-11-11.md",
+      "bytes": "14158",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "104_STEP4_RESEARCH_ROUNDS_AND_FALSIFICATION_STATUS_2026-11-11.md",
+      "bytes": "12590",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "105_STEP4_RELEASE_AND_COVERAGE_REGISTRY_2026-11-11.json",
+      "bytes": "7322",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "10_Historical_routes_gains_and_remaining_gaps.md",
+      "bytes": "10389",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "11_All_documented_findings_and_evidence_2026-11-09.zip",
+      "bytes": "4348093",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 558,
+      "collection": 3
+    },
+    {
+      "title": "12_Findings_archive_catalog.md",
+      "bytes": "13895",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "13_Remaining_material_to_review.csv",
+      "bytes": "193027",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "14_Original_source_library_with_links.csv",
+      "bytes": "66958",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "15_Exact_missing_proofs_and_repository_types.json",
+      "bytes": "25929",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "16_Reading_coverage_and_limits.json",
+      "bytes": "923",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "17_Archive_manifest_and_scope.json",
+      "bytes": "143451",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "18_STEP4_CONTINUATION_AND_REMAINING_BOUND.md",
+      "bytes": "8381",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "19_Conjugate_pair_visibility_and_full_complement_limit.md",
+      "bytes": "7855",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "20_Sharp_actual_normal_scale.md",
+      "bytes": "7085",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "21_Exact_K3_to_OPICA_slice_correction.md",
+      "bytes": "7729",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "22_Why_derivative_and_trace_constraints_do_not_close_the_bound.md",
+      "bytes": "13991",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "23_Continuation_archive_results_and_complete_Schur_response.md",
+      "bytes": "8299",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "24_STEP4_CONTINUATION_FINDINGS_AND_CHECKS.zip",
+      "bytes": "262986",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 97,
+      "collection": 3
+    },
+    {
+      "title": "25_REMAINING_MATERIAL_AFTER_PASS13.csv",
+      "bytes": "155149",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "26_Signed_arithmetic_complement_and_unpaid_terms.md",
+      "bytes": "9230",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "27_Actual_directional_Schur_response_and_limits.md",
+      "bytes": "7936",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "28_Actual_trace_test_paid_reference_and_signed_gap.md",
+      "bytes": "12841",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "29_Signed_source_findings_and_review_receipts.zip",
+      "bytes": "188161",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 64,
+      "collection": 3
+    },
+    {
+      "title": "30_CURRENT_remaining_material_668_contents.csv",
+      "bytes": "147271",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "31_CURRENT_reading_coverage_delta.json",
+      "bytes": "30550",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "32_Complete_causal_compensation_and_surviving_arithmetic.md",
+      "bytes": "7216",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "33_Integer_completion_and_native_Schur_applicability.md",
+      "bytes": "8095",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "34_Actual_native_logarithm_growth_and_signed_limit.md",
+      "bytes": "12762",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "35_Completion_findings_sources_and_review_receipts.zip",
+      "bytes": "141679",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 39,
+      "collection": 3
+    },
+    {
+      "title": "36_CURRENT_remaining_material_654_contents.csv",
+      "bytes": "143924",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "37_CURRENT_reading_coverage_delta.json",
+      "bytes": "16579",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "38_Centered_logarithm_literal_completion_and_remaining_bound.md",
+      "bytes": "11009",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "39_Continuum_and_complete_signed_source_findings.zip",
+      "bytes": "142183",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 48,
+      "collection": 3
+    },
+    {
+      "title": "40_CURRENT_remaining_material_635_contents.csv",
+      "bytes": "137962",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "41_CURRENT_reading_coverage_delta.json",
+      "bytes": "25482",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "42_Completed_moment_channels_and_remaining_signed_bound.md",
+      "bytes": "7941",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "43_Moment_channels_centered_seed_and_arithmetic_tail_evidence.zip",
+      "bytes": "221759",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 45,
+      "collection": 3
+    },
+    {
+      "title": "44_CURRENT_remaining_material_620_contents.csv",
+      "bytes": "135227",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "45_CURRENT_reading_coverage_delta.json",
+      "bytes": "14835",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "46_Current_signed_energy_findings_and_missing_bound.md",
+      "bytes": "8335",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "47_Complete_signed_compensation_findings_and_evidence.zip",
+      "bytes": "105539",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 27,
+      "collection": 3
+    },
+    {
+      "title": "48_CURRENT_remaining_material_609_contents.csv",
+      "bytes": "132761",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "49_CURRENT_reading_coverage_delta.json",
+      "bytes": "11863",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "50_Current_state_and_missing_signed_estimate.md",
+      "bytes": "9214",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "51_Complete_covariance_inverse_and_transport_review.zip",
+      "bytes": "121085",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 31,
+      "collection": 3
+    },
+    {
+      "title": "52_CURRENT_remaining_material_593_contents.csv",
+      "bytes": "127849",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "53_CURRENT_reading_coverage_delta.json",
+      "bytes": "25126",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "54_Completed_round_and_pause_handover.md",
+      "bytes": "9973",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "55_Actual_sign_compensation_and_terminal_energy_evidence.zip",
+      "bytes": "112442",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 35,
+      "collection": 3
+    },
+    {
+      "title": "56_CURRENT_remaining_material_574_contents.csv",
+      "bytes": "124336",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "57_CURRENT_reading_coverage_delta.json",
+      "bytes": "20547",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "58_RECONCILIATION_READING_REPORT.md",
+      "bytes": "16887",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "59_CURRENT_remaining_material_526_contents.csv",
+      "bytes": "112690",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "60_CURRENT_reading_coverage_delta.json",
+      "bytes": "82975",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "61_RECONCILIATION_EVIDENCE_LEDGER.json",
+      "bytes": "623035",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "62_PR299_Authority_Post196_and_WP0_WP7_2026-11-10.md",
+      "bytes": "23048",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "63_Singular_series_main_and_complete_residual.md",
+      "bytes": "24724",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "64_Independent_review_and_model_falsifier.md",
+      "bytes": "12792",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "65_Proper_powers_and_absolute_mixed_obstruction.md",
+      "bytes": "19300",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "66_Weighted_completion_and_large_prime_localization.md",
+      "bytes": "8135",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "67_Full_K3_checked_frontier_extension.md",
+      "bytes": "15893",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "68_Response_weighted_source_reading_report.md",
+      "bytes": "14881",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "69_CURRENT_remaining_material_520_contents.csv",
+      "bytes": "111244",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "70_CURRENT_reading_coverage_delta.json",
+      "bytes": "8805",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "71_RECONCILIATION_EVIDENCE_LEDGER.json",
+      "bytes": "344232",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "72_A09_Nine_Move_Status_and_Authority.json",
+      "bytes": "19455",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "73_Universal_Square_Root_Cutoff_and_Weighted_Residual.md",
+      "bytes": "11467",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "74_Rational_K3_Continuation_and_Qualification.md",
+      "bytes": "10097",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "75_Native_Entry_Review_and_Coverage.md",
+      "bytes": "5546",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "76_CURRENT_remaining_material_517_contents.csv",
+      "bytes": "110142",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "77_CURRENT_reading_coverage_delta.json",
+      "bytes": "4435",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "81_A09B_Adaptive_Response_and_Radical_Free_M52_Adapter.md",
+      "bytes": "10075",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "82_A09B_Entry_Enclosure_Replay_and_Coverage.md",
+      "bytes": "6133",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "83_A09B_Signed_Prime_Local_Cancellation_and_Falsifiers.md",
+      "bytes": "8336",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "84_A09B_K3_Provenance_and_Formal_Bridge_Audit.md",
+      "bytes": "6890",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "85_A09B_CURRENT_remaining_material_517_contents.csv",
+      "bytes": "110142",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "86_A09B_CURRENT_reading_coverage_delta.json",
+      "bytes": "5200",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "87_A09B_RECONCILIATION_EVIDENCE_LEDGER.json",
+      "bytes": "236564",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "88_A09B_ORIGINAL_LOCAL_UPLOAD_INSTRUCTIONS.md",
+      "bytes": "5644",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "89_A09B_COMPANION_RESPONSE_M52_RECONCILIATION.md",
+      "bytes": "4258",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "90_A10_REMAINING_WORK_AND_HOW.md",
+      "bytes": "8001",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "91_A10_PAID_RESPONSE_OPTIMAL_RANK.md",
+      "bytes": "8743",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "92_A10_K3_CROSS_BACKEND_DIAGNOSTICS.md",
+      "bytes": "3840",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "93_A10_FORMAL_BRIDGE_CONTRACT.json",
+      "bytes": "4023",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "94_A10_RESULTS_AND_COVERAGE_SCOPE.json",
+      "bytes": "3161",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "95_A11_L5_RESPONSE_SCALING_AND_REPLAY.md",
+      "bytes": "9140",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "96_A11_PHYSICAL_PIVOT_RANK_AND_COORDINATE_CONTROL.md",
+      "bytes": "7703",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "97_A11_L5_SOURCE_REGENERATION_AND_COVERAGE.md",
+      "bytes": "7088",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "98_CURRENT_remaining_material_514_contents.csv",
+      "bytes": "108974",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "99_A11_READING_COVERAGE_DELTA.json",
+      "bytes": "4482",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "ARCHIVE_00_LATEST_STEP4_MAP_AS_OF_A11_2026-11-10.md",
+      "bytes": "23290",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "BALANCED_PRIME_EXCHANGES.md",
+      "bytes": "9916",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "BOTH_ROW_ENERGIES.md",
+      "bytes": "4637",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "CRITICAL_FINITE_RANGE.md",
+      "bytes": "2359",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "ETA_FILTERED_PRIME_LOCALIZATION.md",
+      "bytes": "10745",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Fable_step4_round7_bundle_v3_FINAL_2026-11-11.zip",
+      "bytes": "503861",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 19,
+      "collection": 3
+    },
+    {
+      "title": "Fable_step4inv_bundle_2026-11-11.zip",
+      "bytes": "23106",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 13,
+      "collection": 3
+    },
+    {
+      "title": "Fable_step4inv_EXPORT_LEDGER_2026-11-11.md",
+      "bytes": "7508",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "FACTORIAL_PRIME_PROJECTIONS.md",
+      "bytes": "6541",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "FIRST_BAND_OSCILLATION.md",
+      "bytes": "7052",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "FULL_SLICE_CERTIFICATE.json",
+      "bytes": "1479",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "K5FullSliceBasis_CANDIDATE.lean",
+      "bytes": "4283",
+      "read": "LEAN_SOURCE_RETRIEVED",
+      "collection": 3
+    },
+    {
+      "title": "late_local_factor_falsifier.py",
+      "bytes": "1432",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "LATE_P2_TOWER.json",
+      "bytes": "1641",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "LEAN_CONTRACTS.md",
+      "bytes": "3917",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "MANIFEST.json",
+      "bytes": "2488",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "NEXT_LEAN_CONTRACTS.md",
+      "bytes": "3504",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "ODD_LAPLACE_CERTIFICATE.json",
+      "bytes": "4116",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OLD_PRIME_LOCALIZATION.md",
+      "bytes": "10458",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA Step 4 — signed graph results and remaining bound — 2026-11-19.md",
+      "bytes": "9655",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA Step 4 — signed prime probes and arithmetic graph evidence — 2026-11-19.zip",
+      "bytes": "1287333",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 199,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Actual_Source_Round6_ACTUAL_LOADING_OPICA_CONSTRAINTS.md",
+      "bytes": "19524",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Actual_Source_Round6_MOMENT_HIERARCHY_ATTEMPT.md",
+      "bytes": "19174",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Actual_Source_Round6_MOMENT_HIERARCHY_REVIEW.md",
+      "bytes": "8105",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Actual_Source_Round6_POSITIVE_SOURCE_ENERGY_ATTEMPT.md",
+      "bytes": "14950",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Actual_Source_Round6_POSITIVE_SOURCE_ENERGY_REVIEW.md",
+      "bytes": "8296",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Actual_Source_Round6_PREDECESSOR_LOADING_REVIEW.md",
+      "bytes": "9061",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Actual_Source_Round6_PREDECESSOR_LOADING_TEST.md",
+      "bytes": "19513",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Actual_Source_Round6_ROUND6_CHECKPOINT.md",
+      "bytes": "3642",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Actual_Source_Round6_TWO_TRANSLATE_PREDECESSOR_REVIEW.md",
+      "bytes": "14953",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Canonical_Source_Response_Review_2026-11-10.md",
+      "bytes": "2895",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Complete_Prime_Source_Column_2026-11-10.md",
+      "bytes": "13311",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Complete_Signed_Response_Round4_2026-11-11.md",
+      "bytes": "12285",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Complete_Signed_Response_Round4_2026-11-11.zip",
+      "bytes": "73051",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 18,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Complete_Source_Composition_Review_2026-11-10.md",
+      "bytes": "4685",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Complete_Source_Core_Round5_2026-11-11.md",
+      "bytes": "14702",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Complete_Source_Core_Round5_2026-11-11.zip",
+      "bytes": "154096",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 29,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Complete_Source_Weighted_Response_Research_2026-11-10.md",
+      "bytes": "9920",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Exact_Even_Input_Moment_Correction_2026-11-10.md",
+      "bytes": "10314",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Fourier_Source_Input_Budget_2026-11-10.md",
+      "bytes": "6375",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Full_Canonical_Source_Response_2026-11-10.md",
+      "bytes": "9350",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Input_Adapter_Review_2026-11-10.md",
+      "bytes": "8580",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_PR300_301_302_RESULTS_AND_STEP4_GAPS_2026-11-19.md",
+      "bytes": "15878",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_PR300_301_302_VERIFIED_EVIDENCE_2026-11-19.zip",
+      "bytes": "935566",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 39,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round2_NATIVE_SIGNED_TARGET.md",
+      "bytes": "8728",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round2_NATIVE_SIGNED_TARGET_REVIEW.md",
+      "bytes": "7765",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round2_OUTPUT_RECOVERY.md",
+      "bytes": "19921",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round2_OUTPUT_RECOVERY_REVIEW.md",
+      "bytes": "9618",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round2_POLE_CHANNEL_REVIEW.md",
+      "bytes": "13310",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round2_RECENT_INVERSE_ATTEMPT.md",
+      "bytes": "11263",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round2_REVIEW_FIRST_INCREMENT.md",
+      "bytes": "3495",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round2_SIGNED_CORE_ATTEMPT.md",
+      "bytes": "10150",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round3_AMPLITUDE_REVIEW.md",
+      "bytes": "6225",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round3_CANONICAL_TRANSLATION_ATTEMPT.md",
+      "bytes": "12296",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round3_CUTOFF_BALANCE.md",
+      "bytes": "3338",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round3_GROUND_AMPLITUDE_ATTEMPT.md",
+      "bytes": "13711",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round3_GROUND_TRANSLATION_SYNTHESIS.md",
+      "bytes": "8297",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round3_SHORT_FACTOR_REVIEW.md",
+      "bytes": "11482",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round3_SHORT_FACTOR_SIGNED_ATTEMPT.md",
+      "bytes": "17458",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round3_SHORT_FACTOR_ZERO_CHANNEL.md",
+      "bytes": "9215",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round3_SHORT_FACTOR_ZERO_CHANNEL_REVIEW.md",
+      "bytes": "7199",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round3_SYNTHESIS_CUTOFF_REVIEW.md",
+      "bytes": "7966",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round4_COMPLETE_COVARIANCE_ATTEMPT.md",
+      "bytes": "17085",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round4_COMPLETE_RESIDUAL_RECURRENCE.md",
+      "bytes": "17010",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round4_COVARIANCE_REVIEW.md",
+      "bytes": "7068",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round4_NATIVE_OUTPUT_MOMENTS.md",
+      "bytes": "15332",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round4_OUTPUT_MOMENT_SOURCE_REVIEW.md",
+      "bytes": "7451",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round4_PAIRING_WEIGHTED_REVIEW.md",
+      "bytes": "9081",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round4_Publication_Verification_2026-11-11.json",
+      "bytes": "814",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round4_RECURRENCE_REVIEW.md",
+      "bytes": "4223",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round4_ROUGH_ECHO_NATIVE_PAIRING.md",
+      "bytes": "10934",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round4_SOURCE_BOUND_AUDIT.md",
+      "bytes": "5248",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round4_WEIGHTED_TARGET_TRANSFER.md",
+      "bytes": "6793",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_DRIVE_FINAL_VERIFICATION.json",
+      "bytes": "955",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_FILTER_FAMILY_ATTEMPT.md",
+      "bytes": "14927",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_FILTER_FAMILY_REVIEW.md",
+      "bytes": "5238",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_FRAME_LOWER_ATTEMPT.md",
+      "bytes": "14877",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_FRAME_LOWER_REVIEW.md",
+      "bytes": "5105",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_LOCAL_PAUSE_BUNDLE_VERIFICATION.json",
+      "bytes": "6262",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_ROUGH_CORRELATION_ARITHMETIC.md",
+      "bytes": "15027",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_ROUGH_CORRELATION_REVIEW.md",
+      "bytes": "8098",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_SOURCE_CORE_FRAME_COMPOSITION.md",
+      "bytes": "13676",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_SOURCE_CORE_FRAME_REVIEW.md",
+      "bytes": "11382",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_WEIGHTED_DISCREPANCY_ATTEMPT.md",
+      "bytes": "16639",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Round5_WEIGHTED_DISCREPANCY_REVIEW.md",
+      "bytes": "7079",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Signed_Response_Round2_2026-11-10.md",
+      "bytes": "9529",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Signed_Response_Round2_2026-11-10.zip",
+      "bytes": "60339",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 15,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Signed_Response_Round3_2026-11-10.md",
+      "bytes": "13631",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Signed_Response_Round3_2026-11-10.zip",
+      "bytes": "75010",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 23,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_ALL_PRIME_COFACTORS.md",
+      "bytes": "13516",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_CENTERED_CONE_INTERVALS.md",
+      "bytes": "8366",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_Complete_Graph_Calculations.zip",
+      "bytes": "479566",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 96,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_CONE_DRIFT.md",
+      "bytes": "12967",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_COVARIANCE_SIGN_CONTROL.json",
+      "bytes": "8151",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_Current_State_and_Missing_Arithmetic.md",
+      "bytes": "7351",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_DELAYED_GAIN.md",
+      "bytes": "10458",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_DETERMINISTIC_CONE_GCD.md",
+      "bytes": "5311",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_DIVISOR_CONSUMER_GRAPH.json",
+      "bytes": "28561",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_Dyadic_covariance_evidence.zip",
+      "bytes": "707202",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 150,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_Dyadic_covariance_handover.md",
+      "bytes": "9444",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_DYADIC_TREE.md",
+      "bytes": "11367",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_DYADIC_TREE_CHECK.json",
+      "bytes": "6212",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_EXTERNAL_PARTNER_MASK_BARRIER.md",
+      "bytes": "4715",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FACTORIAL_RESIDUE_MASS_CHECK.json",
+      "bytes": "38553",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FACTORIAL_TERMINAL_MASS_EXPONENT.md",
+      "bytes": "11383",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FINITE_RANGE_AND_RECOVERY.md",
+      "bytes": "4964",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FINITE_RATIONAL_COVARIANCE.md",
+      "bytes": "2844",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_Finite_Weighted_Gram_Lean_Verification.json",
+      "bytes": "3329",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FinitePairKernel.lean",
+      "bytes": "2161",
+      "read": "LEAN_SOURCE_RETRIEVED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FinitePairKernel_VERIFICATION.json",
+      "bytes": "3369",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FiniteRenewal_VERIFICATION.json",
+      "bytes": "3298",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FIRST_POSITIVE_COARSE.json",
+      "bytes": "3125",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FIXED_BAND_CHECK.json",
+      "bytes": "3130",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FIXED_BAND_THEOREM.md",
+      "bytes": "10878",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FIXED_COFACTOR_MASK.md",
+      "bytes": "6113",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FIXED_HEIGHT_OBSTRUCTION.md",
+      "bytes": "9876",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FREQUENCY_BLOCK_CHECK.json",
+      "bytes": "10662",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_FULL_OUTER_VARIATION.md",
+      "bytes": "8032",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_GRAM_DISCRIMINANT.md",
+      "bytes": "7113",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_Graph_Calculations_Publication_Readback.json",
+      "bytes": "5420",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_GROUND_TRANSFER.md",
+      "bytes": "8870",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_HARMONIC_SIGNED_MASS.md",
+      "bytes": "2392",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_NATIVE_CUTOFF_AVERAGE.md",
+      "bytes": "7181",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_NATIVE_NUMERATOR_CANCELLATION.md",
+      "bytes": "5481",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_NATIVE_PAIR_SECTOR.json",
+      "bytes": "8923",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_NATIVE_RESIDUAL_CHECK.json",
+      "bytes": "9570",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_NATIVE_WINDOW_CHECK.json",
+      "bytes": "6050",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_ONE_HARMONIC_CHECK.json",
+      "bytes": "2026",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_ONE_HARMONIC_ZERO_DETECTOR.md",
+      "bytes": "7547",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_ONE_SIDED_NODE_CHARGES.md",
+      "bytes": "7065",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_ONE_SIDED_NODE_CHECK.json",
+      "bytes": "4965",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_PAID_PAIR_DISTANCES.md",
+      "bytes": "2032",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_PARITY_MAJORANTS.md",
+      "bytes": "10156",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_PERIOD_AND_NATIVE_PHASE.md",
+      "bytes": "9005",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_POLYNOMIAL_COFACTOR_AUDIT.md",
+      "bytes": "12164",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_POOL_CHECK.json",
+      "bytes": "4034",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_POOLED_HARMONIC.md",
+      "bytes": "3672",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_POSITIVE_DENSITY_RETIREMENT.md",
+      "bytes": "9119",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_POWER_DELAY.md",
+      "bytes": "5042",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_POWER_DELAY_REPLAY.json",
+      "bytes": "5904",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_PRIME_FACTOR_PATHS.md",
+      "bytes": "10515",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_PRIME_SPLIT.md",
+      "bytes": "12757",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_PRIMITIVE_BAND_COVARIANCE.md",
+      "bytes": "6430",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_RATIONAL_PAIR_CHECK.json",
+      "bytes": "71688",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_RATIONAL_SIGNED_COVARIANCE.md",
+      "bytes": "7070",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_RESIDUE_GRAPH_CRITERION.md",
+      "bytes": "16700",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_Residue_Graph_Evidence.zip",
+      "bytes": "448287",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 85,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_ROUGH_PRIME_TRANSPORT.md",
+      "bytes": "10381",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_SIGNED_CLAIM_ROUTES.json",
+      "bytes": "33942",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_SIGNED_CLAIM_ROUTES.md",
+      "bytes": "5492",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_SIGNED_COMPENSATION.md",
+      "bytes": "4603",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_SIGNED_DELAYED_GAIN.md",
+      "bytes": "5985",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_SIGNED_GRAM_CHECK.json",
+      "bytes": "3486",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_SIGNED_PRIME_FACTORS.md",
+      "bytes": "10320",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_SINGLE_PROBE_SCALES.md",
+      "bytes": "10550",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_SPARSE_COMPENSATION.md",
+      "bytes": "9444",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_SPARSE_NATIVE_TEST.md",
+      "bytes": "9662",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_THIN_PRODUCT_GRAPH.md",
+      "bytes": "8247",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_TREE_HEIGHT_SPLIT.md",
+      "bytes": "4987",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_TREE_INTERVALS.md",
+      "bytes": "11083",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_TWO_ARITHMETIC_PROBES.md",
+      "bytes": "12452",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_TWO_PROBE_CHECK.json",
+      "bytes": "13167",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_2026-11-19_Two_Shell_Calibration_Lean_Verification.json",
+      "bytes": "3394",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_Handover_and_Fable52_Prompt_2026-11-11.md",
+      "bytes": "42066",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_HANDOVER_CLAIM_CHECK_2026-11-11.md",
+      "bytes": "15678",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_HANDOVER_FOUNDATIONS_MAP.md",
+      "bytes": "23260",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_HANDOVER_PRIOR_ROUNDS_INDEX.json",
+      "bytes": "43651",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_Research_Round6_2026-11-11.zip",
+      "bytes": "234138",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 59,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_Rough_Squarefree_Evidence_2026-11-19.zip",
+      "bytes": "147192",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 17,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_Rough_Squarefree_Residual_2026-11-19.md",
+      "bytes": "10668",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_Round6_HANDOVER_PUBLICATION_VERIFIED_2026-11-11.json",
+      "bytes": "9193",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_Round7_Fable_SELECTED_PREDECESSOR_AND_SCALAR_TARGET_v3_FINAL_2026-11-11.md",
+      "bytes": "32995",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_Round7_Increment6A_HANDOVER_2026-11-12.md",
+      "bytes": "16364",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_Round7_Increment6A_results_2026-11-12.zip",
+      "bytes": "557299",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 40,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Step4_Round7_TARGET_CONSOLIDATION_v5_2026-11-12.md",
+      "bytes": "8589",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Weighted_Response_Combined_Exact_Target_2026-11-10.md",
+      "bytes": "6125",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Weighted_Response_Divisor_Research_2026-11-10.md",
+      "bytes": "9966",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Weighted_Response_Independent_Divisor_Review_2026-11-10.md",
+      "bytes": "7198",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Weighted_Response_Research_2026-11-10_increment3.zip",
+      "bytes": "85270",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 28,
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Weighted_Response_Research_2026-11-10_PUBLICATION_VERIFIED.json",
+      "bytes": "613",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "OPICA_Weighted_Response_Scale_Research_2026-11-10.md",
+      "bytes": "10502",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "PARITY_BOUNDARY_FALSIFICATION_K0_TO15.json",
+      "bytes": "3187",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "PARITY_EXACT_SEQUENCE_CERTIFICATE.json",
+      "bytes": "1635",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "POST_GREEN_PR300_MANIFEST_SHA256.json",
+      "bytes": "1143",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "POST_GREEN_RESEARCH_AND_FALSIFICATION_2026-11-13.md",
+      "bytes": "9066",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "PR299_9a88613_MATHEMATICAL_SUPPORT_diagnostics.zip",
+      "bytes": "6672050",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 389,
+      "collection": 3
+    },
+    {
+      "title": "PR300_CURRENT_HEAD_AND_FORMAL_GATE_2026-11-13.md",
+      "bytes": "4692",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "PR300_POST299_SOURCE_SCOPE_BLOCKER_AND_SUCCESSOR_MIGRATION_2026-11-13.md",
+      "bytes": "6118",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "PrimeAreaIntegral.lean",
+      "bytes": "2898",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RESEARCH_HANDOVER_2026-11-13.md",
+      "bytes": "16082",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH Step 4 — Centered Prime Discrepancy and Robust Transport Audit — 2026-11-13",
+      "bytes": "8476",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH Step 4 — First-contact carrier-motion and prime-seam audit — 2026-11-13",
+      "bytes": "11280",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH Step 4 — Prime-Power Variation Elimination and Euler-Factor Stability — 2026-11-13",
+      "bytes": "12015",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH Step 4 — Square-Grid Prime-Memory Renewal and Monotonicity Test — 2026-11-13",
+      "bytes": "8550",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH Step4 — Minimal Mean-Zero Quartic Carrier and Exact Off-Line Nonannihilation — 2026-11-13",
+      "bytes": "12504",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH Step4 — Prime-square main-term rigidity and ordinary-prime renormalization — 2026-11-13",
+      "bytes": "11067",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH Step4 — Prime-square numerical and Mertens evidence ledger — 2026-11-13",
+      "bytes": "8454",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_A03_RELEASE_VERIFICATION_2026-11-10.json",
+      "bytes": "583",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_A07_RELEASE_VERIFICATION_2026-11-10.json",
+      "bytes": "6906",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_A08_RELEASE_VERIFICATION_2026-11-10.json",
+      "bytes": "9534",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_A09B_DRIVE_PUBLICATION_VERIFICATION_2026-11-10.json",
+      "bytes": "7205",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_A09B_ORIGINAL_LOCAL_VERIFICATION_2026-11-10.json",
+      "bytes": "1455",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_A10_DRIVE_PUBLICATION_VERIFICATION_2026-11-10.json",
+      "bytes": "6099",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_A10_LOCAL_RELEASE_VERIFICATION_2026-11-10.json",
+      "bytes": "584",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_A11_DRIVE_PUBLICATION_VERIFICATION_2026-11-10.json",
+      "bytes": "8436",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_A11_LOCAL_RELEASE_VERIFICATION_2026-11-10.json",
+      "bytes": "591",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_CANON_A06_RECONCILIATION_UPLOAD_CHECKPOINT_2026-11-10",
+      "bytes": "5941",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_Canon_End_to_End_Map_2026-11-09.html",
+      "bytes": "59057",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_Canon_End_to_End_Map_2026-11-09.md",
+      "bytes": "47785",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_Canon_Folder_Map_Baseline_2026-11-09.zip",
+      "bytes": "6843903",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 99,
+      "collection": 3
+    },
+    {
+      "title": "RH_CANON_WIDER_ARCHIVE_HARVEST_A01_2026-11-09",
+      "bytes": "18415",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_CANON_WIDER_ARCHIVE_HARVEST_A02_2026-11-09",
+      "bytes": "18849",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_CANON_WIDER_ARCHIVE_HARVEST_A03_2026-11-10",
+      "bytes": "10577",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_CANON_WIDER_ARCHIVE_HARVEST_A03_2026-11-10.md",
+      "bytes": "22346",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_CANON_WIDER_ARCHIVE_HARVEST_A03_2026-11-10.zip",
+      "bytes": "15874585",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 70,
+      "collection": 3
+    },
+    {
+      "title": "RH_CANON_WIDER_ARCHIVE_HARVEST_A04_2026-11-10",
+      "bytes": "18230",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_CANON_WIDER_ARCHIVE_HARVEST_A05_2026-11-10",
+      "bytes": "6412",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_CANON_WIDER_ARCHIVE_HARVEST_A05_2026-11-10.md",
+      "bytes": "23716",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_CANON_WIDER_ARCHIVE_HARVEST_A05_2026-11-10.zip",
+      "bytes": "3138649",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 333,
+      "collection": 3
+    },
+    {
+      "title": "RH_CANON_WIDER_ARCHIVE_HARVEST_A05_2026-11-10_RELEASE_VERIFICATION.json",
+      "bytes": "360",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_DRIVE_REPO_RECHECK_2026-11-12.zip",
+      "bytes": "401644",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 7,
+      "collection": 3
+    },
+    {
+      "title": "RH_DRIVE_REPO_RECHECK_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "bytes": "4421",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_DRIVE_REPO_RECHECK_SUMMARY_2026-11-12.md",
+      "bytes": "3037",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_DRIVE_REPO_RECHECK_VERIFICATION_2026-11-12.json",
+      "bytes": "29088",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_A07_EVIDENCE_2026-11-10.zip",
+      "bytes": "26083801",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 289,
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_A08_EVIDENCE_2026-11-10.zip",
+      "bytes": "1669047",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 164,
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_A09_EVIDENCE_2026-11-10.zip",
+      "bytes": "41792261",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 675,
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_A09B_RESPONSE_M52_EVIDENCE_2026-11-10.zip",
+      "bytes": "38142860",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 500,
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_A10_OPTIMAL_RESPONSE_EVIDENCE_2026-11-10.zip",
+      "bytes": "41307454",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 538,
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_A11_L5_RESPONSE_EVIDENCE_2026-11-10.zip",
+      "bytes": "52284622",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 234,
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_EXECUTION_A07_2026-11-10.md",
+      "bytes": "20743",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_EXECUTION_A08_2026-11-10.md",
+      "bytes": "19967",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_EXECUTION_A09_2026-11-10.md",
+      "bytes": "14283",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_EXECUTION_A09B_RESPONSE_M52_2026-11-10.md",
+      "bytes": "15389",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_EXECUTION_A10_OPTIMAL_RESPONSE_2026-11-10.md",
+      "bytes": "9809",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_FINAL_GATE_PART3_EXECUTION_A11_L5_RESPONSE_2026-11-10.md",
+      "bytes": "13481",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_6B_FRONTIER_BOOTSTRAP_NO_GO_ADDENDUM_2026-11-12.md",
+      "bytes": "9197",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_A09_MOBIUS_HALF_APERTURE_CROSSWALK_2026-11-12.md",
+      "bytes": "13600",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_A09_MOBIUS_HALF_APERTURE_EVIDENCE_2026-11-12.zip",
+      "bytes": "12773",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 10,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_BACK_TO_FRONT_CLOSURE_AUDIT_2026-11-12.md",
+      "bytes": "33657",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_BACK_TO_FRONT_EVIDENCE_2026-11-12.zip",
+      "bytes": "135254",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 25,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_BACK_TO_FRONT_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "bytes": "1566",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_Birds_Eye_Closure_Attempt_2026-11-19.md",
+      "bytes": "14854",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_Closure_Attempt_Evidence_2026-11-19.zip",
+      "bytes": "12826",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 7,
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_Closure_Round2_2026-11-19.md",
+      "bytes": "16432",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_Closure_Round2_Evidence_2026-11-19.zip",
+      "bytes": "25579",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 21,
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_Closure_Round3_2026-11-19.md",
+      "bytes": "16798",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_Closure_Round3_Evidence_2026-11-19.zip",
+      "bytes": "25161",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 15,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_CROSSWALK_COMPLETENESS_AND_SECTOR_CANCELLATION_2026-11-12.md",
+      "bytes": "25843",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_CUTOFF_SCALE_AND_MERTENS_BRIDGE_2026-11-12.md",
+      "bytes": "22135",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_CUTOFF_SCALE_EVIDENCE_2026-11-12.zip",
+      "bytes": "24613",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 16,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_CUTOFF_SCALE_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "bytes": "2090",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_DOC_REFRESH_RELEASE_VERIFICATION_2026-11-11.json",
+      "bytes": "4730",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_ENDPOINT_KERNEL_AND_PRIME_POWER_AUDIT_2026-11-12.md",
+      "bytes": "26863",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_ENDPOINT_KERNEL_EVIDENCE_2026-11-12.zip",
+      "bytes": "1205228",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 24,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_ENDPOINT_KERNEL_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "bytes": "1850",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_EPISTEMIC_AUDIT_EVIDENCE_2026-11-12.zip",
+      "bytes": "12040",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 5,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_EPISTEMIC_AUDIT_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "bytes": "1545",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_EPISTEMIC_GAP_AND_ARITHMETIC_INFORMATION_AUDIT_2026-11-12.md",
+      "bytes": "18273",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_EXTERNAL_FRONTIER_AND_BOOTSTRAP_FALSIFICATION_2026-11-12.md",
+      "bytes": "12634",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_EXTERNAL_FRONTIER_FALSIFICATION_EVIDENCE_2026-11-12.zip",
+      "bytes": "8305",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 4,
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_Full_Parity_Duality_Odd_Carrier_2026-11-13.zip",
+      "bytes": "25182",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 17,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_HALF_APERTURE_CROSSWALK_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "bytes": "2656",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_LOG_DELAY_AND_SIGNED_MOBIUS_RETURN_2026-11-12.md",
+      "bytes": "23571",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_LOG_DELAY_EVIDENCE_2026-11-12.zip",
+      "bytes": "49861",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 24,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_LOG_DELAY_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "bytes": "1921",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_ORIGINAL_SOURCE_HALF_APERTURE_EVIDENCE_2026-11-12.zip",
+      "bytes": "12574",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 8,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_ORIGINAL_SOURCE_HALF_APERTURE_RETURN_2026-11-12.md",
+      "bytes": "16768",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_PostGreen_Parity_P2_Falsification_PR300_2026-11-13.zip",
+      "bytes": "9158",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 6,
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_PostGreen_Resolvent_Ladder_2026-11-13.md",
+      "bytes": "12488",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_Resolvent_and_Numerics_2026-11-13.zip",
+      "bytes": "9014",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 5,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_SECTOR_CANCELLATION_EVIDENCE_2026-11-12.zip",
+      "bytes": "83584",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 40,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_SECTOR_CANCELLATION_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "bytes": "2109",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_SIGNED_APERTURE_DESCENT_EVIDENCE_2026-11-12.zip",
+      "bytes": "603677",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 52,
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_SIGNED_APERTURE_DESCENT_INVESTIGATION_2026-11-12.md",
+      "bytes": "30969",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_STEP4_SIGNED_APERTURE_DESCENT_PUBLICATION_VERIFICATION_2026-11-12.json",
+      "bytes": "1740",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_Uniform_Bandwidth_and_Prime_Centering_2026-11-13.md",
+      "bytes": "18461",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "RH_Step4_Uniform_Bandwidth_Centered_Prime_2026-11-13.zip",
+      "bytes": "19748",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 12,
+      "collection": 3
+    },
+    {
+      "title": "SHARED_PRODUCT_COVARIANCE.md",
+      "bytes": "10992",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "SquarefreePrimeCost.lean",
+      "bytes": "7887",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step 4 — actual prime-to-composite graph cancellation — 2026-11-19.md",
+      "bytes": "4998",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step 4 — cancellation in the actual rough Möbius intervals — 2026-11-19.md",
+      "bytes": "5649",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step 4 — certified rough Möbius convolution — 2026-11-19.lean",
+      "bytes": "4631",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step 4 — exact repository graph paths to the RH criteria — 2026-11-19.md",
+      "bytes": "8580",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step 4 — finite negative prime area through 10^46 — 2026-11-19.md",
+      "bytes": "5843",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step 4 — one-sided fourth-power endpoint counts — 2026-11-19.md",
+      "bytes": "11321",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step 4 — ordinary-prime sign over the same full range — 2026-11-19.md",
+      "bytes": "3462",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step 4 — recovering the unsmoothed sign from actual local primes — 2026-11-19.md",
+      "bytes": "6266",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step 4 — rough Möbius graph and exact native rate — 2026-11-19.md",
+      "bytes": "14094",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step 4 — signed prime area through 1.21 × 10^48 — 2026-11-19.md",
+      "bytes": "7544",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Actual_Interaction_Graph_2026-11-19.md",
+      "bytes": "3645",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Actual_Prime_Cut_Locations_2026-11-19.md",
+      "bytes": "7454",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Current_Handover_Covariance_Duration_2026-11-19.md",
+      "bytes": "4821",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_DENSITY_ISOLATOR_2026-11-19.md",
+      "bytes": "8567",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_ECHO_GRAPH_2026-11-19.json",
+      "bytes": "14965",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Exact_Prime_Crossing_Rate_2026-11-19.md",
+      "bytes": "10056",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Fixed_Sieve_Covariance_2026-11-19.md",
+      "bytes": "11522",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Fixed_Sieve_Covariance_and_Crossings_2026-11-19.zip",
+      "bytes": "147820",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 46,
+      "collection": 3
+    },
+    {
+      "title": "Step4_Graph_Deductions_and_Native_Height_2026-11-19.md",
+      "bytes": "14664",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_LOCAL_FILTER_COST_2026-11-19.md",
+      "bytes": "6840",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_NATIVE_SIGNED_AREA_RUNS_2026-11-19.md",
+      "bytes": "15619",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_ORDINARY_POWER_WINDOWS_2026-11-19.md",
+      "bytes": "4313",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Poisson_Prime_Range_2026-11-19.md",
+      "bytes": "8194",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Prime_Area_and_Graph_Evidence_2026-11-19.zip",
+      "bytes": "515223",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 114,
+      "collection": 3
+    },
+    {
+      "title": "Step4_Prime_Area_and_Graph_HANDOVER_2026-11-19.md",
+      "bytes": "9503",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Prime_Graph_Cuts_and_Verification_2026-11-19.zip",
+      "bytes": "510155",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 37,
+      "collection": 3
+    },
+    {
+      "title": "STEP4_PRIME_POWER_APERTURE_EVIDENCE_2026-11-19.zip",
+      "bytes": "12889",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 4,
+      "collection": 3
+    },
+    {
+      "title": "STEP4_PRIME_POWER_APERTURE_PRIMITIVE_2026-11-19.md",
+      "bytes": "17221",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_PRIME_POWER_ECHO_2026-11-19.md",
+      "bytes": "9216",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_PrimitiveEulerMultiplier_2026-11-19.lean",
+      "bytes": "3321",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_PRIMORIAL_NEIGHBORS_2026-11-19.md",
+      "bytes": "3764",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Projected_Divisor_Graph_2026-11-19.md",
+      "bytes": "11349",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Projected_Divisor_Graph_and_Prime_Range_2026-11-19.zip",
+      "bytes": "348098",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 79,
+      "collection": 3
+    },
+    {
+      "title": "Step4_Projected_Graph_HANDOVER_2026-11-19.md",
+      "bytes": "8469",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Short_Window_Proof_2026-11-19.md",
+      "bytes": "10099",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Signed_Graph_Recurrence_2026-11-19.md",
+      "bytes": "9866",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_SignedLocalFilter_2026-11-19.lean",
+      "bytes": "2515",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_SQUAREFREE_COST_2026-11-19.md",
+      "bytes": "9469",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Squarefree_Prime_Graph_Evidence_2026-11-19.zip",
+      "bytes": "574151",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 73,
+      "collection": 3
+    },
+    {
+      "title": "Step4_Squarefree_Prime_Graph_HANDOVER_2026-11-19.md",
+      "bytes": "14313",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Squarefree_Prime_Graph_PUBLICATION_READBACK_2026-11-19.json",
+      "bytes": "7428",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "Step4_Stopped_Ordinary_Prime_Graph_2026-11-19.md",
+      "bytes": "8671",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_StoppedPrimeArea_2026-11-19.lean",
+      "bytes": "3073",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_XI_AREA_ECHO_2026-11-19.md",
+      "bytes": "8942",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "Step4_XI_ORDINARY_PI_2026-11-19.md",
+      "bytes": "7410",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "SUPERSEDED_v1_Fable_step4_round7_bundle_2026-11-11.zip",
+      "bytes": "502273",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 19,
+      "collection": 3
+    },
+    {
+      "title": "SUPERSEDED_v1_OPICA_Step4_Round7_Fable_SELECTED_PREDECESSOR_AND_SCALAR_TARGET_2026-11-11.md",
+      "bytes": "29723",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "SUPERSEDED_v1_OPICA_Step4_Round7_TARGET_CONSOLIDATION_2026-11-11.md",
+      "bytes": "7584",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "SUPERSEDED_v2_Fable_step4_round7_bundle_2026-11-11.zip",
+      "bytes": "503350",
+      "read": "ARCHIVE_DIRECTORY",
+      "members": 19,
+      "collection": 3
+    },
+    {
+      "title": "SUPERSEDED_v2_OPICA_Step4_Round7_Fable_SELECTED_PREDECESSOR_AND_SCALAR_TARGET_2026-11-11.md",
+      "bytes": "31909",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "SUPERSEDED_v2_OPICA_Step4_Round7_TARGET_CONSOLIDATION_2026-11-11.md",
+      "bytes": "7772",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "SUPERSEDED_v3_OPICA_Step4_Round7_TARGET_CONSOLIDATION_2026-11-11.md",
+      "bytes": "7844",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "SUPERSEDED_v4_OPICA_Step4_Round7_TARGET_CONSOLIDATION_2026-11-12.md",
+      "bytes": "7883",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "SYNTHETIC_QUARTET_PHASE_TEST.json",
+      "bytes": "2913",
+      "read": "JSON_PARSED",
+      "collection": 3
+    },
+    {
+      "title": "synthetic_quartet_phase_test.py",
+      "bytes": "1522",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "verify_parity_short_exact_boundary_cases.py",
+      "bytes": "1615",
+      "read": "TEXT",
+      "collection": 3
+    },
+    {
+      "title": "WEIGHTED_PRIME_FACTOR_CRITERION.md",
+      "bytes": "8486",
+      "read": "TEXT",
+      "collection": 3
+    }
+  ]
+}

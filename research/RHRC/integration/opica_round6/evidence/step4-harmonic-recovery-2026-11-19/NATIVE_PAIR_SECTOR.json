@@ -1,0 +1,221 @@
+{
+  "X": 2048,
+  "H": 5,
+  "centers": [
+    0,
+    14,
+    25
+  ],
+  "theta": "1/100",
+  "log_bin_width": "[0.063211359017448215191432854131 +/- 3.87e-31]",
+  "support_checks": {
+    "terminal": "q^100 > X^99 and q <= X",
+    "gcd": "gcd(q,r)^100 < X, equivalent here to gcd=1 since 1<X<2^100",
+    "bins": "floor(log(X/q)/exp(-sqrt(log X))) via a uniquely determined Arb floor at every terminal integer; q=X has exact quotient 0",
+    "separated_nonendpoint_bin_decisions": "[0.00370374012627887300753706 +/- 4.12e-27]",
+    "all_complete_active_labels": 623,
+    "outside_terminal_active": 577,
+    "terminal_active": 46,
+    "same_bin_unordered_pairs": 731,
+    "retained_same_bin_unordered_pairs": 694
+  },
+  "shell_results": {
+    "0": {
+      "integer_range": [
+        1923,
+        2048
+      ],
+      "all_integer_sites": 126,
+      "coprime_to_six_sites": 42,
+      "active_labels": [
+        1927,
+        1931,
+        1933,
+        1937,
+        1939,
+        1943,
+        1945,
+        1949,
+        1951,
+        1955,
+        1957,
+        1961,
+        1963,
+        1967,
+        1969,
+        1973,
+        1979,
+        1981,
+        1985,
+        1987,
+        1991,
+        1993,
+        1997,
+        1999,
+        2003,
+        2005,
+        2011,
+        2015,
+        2017,
+        2021,
+        2027,
+        2029,
+        2033,
+        2035,
+        2039,
+        2041,
+        2045,
+        2047
+      ],
+      "active_count": 38,
+      "diagonal": "[0.19137238385242663004488988346 +/- 1.53e-30]",
+      "all_unordered_pairs": 703,
+      "same_bin_coprime_pairs": 666,
+      "gcd_counts": {
+        "1": 666,
+        "5": 21,
+        "7": 3,
+        "11": 3,
+        "13": 6,
+        "19": 1,
+        "23": 1,
+        "37": 1,
+        "47": 1
+      },
+      "center_results": {
+        "0": {
+          "shell_energy": "[0.00031209266999515152503203871671 +/- 7.39e-34]",
+          "retained_coprime_signed": "[-0.18216693147153000855747299478 +/- 4.27e-30]",
+          "retained_coprime_absolute": "[6.6900691594514307582489813409 +/- 3.92e-29]",
+          "omitted_nontrivial_gcd_signed": "[-0.0088933597109014699623848499691 +/- 1.86e-32]"
+        },
+        "14": {
+          "shell_energy": "[0.0076316104347650405690296860173 +/- 1.11e-32]",
+          "retained_coprime_signed": "[-0.17315141902124622635619993282 +/- 3.54e-30]",
+          "retained_coprime_absolute": "[6.2631950614043973782028012473 +/- 1.79e-29]",
+          "omitted_nontrivial_gcd_signed": "[-0.010589354396415363119660264621 +/- 3.13e-31]"
+        },
+        "25": {
+          "shell_energy": "[0.024655073143826055748630904930 +/- 2.78e-31]",
+          "retained_coprime_signed": "[-0.15318428162888580837392832173 +/- 4.13e-30]",
+          "retained_coprime_absolute": "[5.4032215017874026767052631902 +/- 1.14e-29]",
+          "omitted_nontrivial_gcd_signed": "[-0.013533029079714765922330656805 +/- 3.79e-31]"
+        }
+      }
+    },
+    "1": {
+      "integer_range": [
+        1898,
+        1922
+      ],
+      "all_integer_sites": 25,
+      "coprime_to_six_sites": 8,
+      "active_labels": [
+        1901,
+        1903,
+        1907,
+        1909,
+        1913,
+        1915,
+        1919,
+        1921
+      ],
+      "active_count": 8,
+      "diagonal": "[0.041863426326728115935587596117 +/- 4.00e-31]",
+      "all_unordered_pairs": 28,
+      "same_bin_coprime_pairs": 28,
+      "gcd_counts": {
+        "1": 28
+      },
+      "center_results": {
+        "0": {
+          "shell_energy": "[0.020804321904207124454774294125 +/- 4.35e-31]",
+          "retained_coprime_signed": "[-0.021059104422520991480813301992 +/- 3.48e-32]",
+          "retained_coprime_absolute": "[0.29300777718462352283597596769 +/- 1.53e-30]",
+          "omitted_nontrivial_gcd_signed": "0"
+        },
+        "14": {
+          "shell_energy": "[0.020894234009059556082013069862 +/- 3.65e-31]",
+          "retained_coprime_signed": "[-0.020969192317668559853574526256 +/- 2.36e-31]",
+          "retained_coprime_absolute": "[0.29218193272178537784200706169 +/- 4.82e-30]",
+          "omitted_nontrivial_gcd_signed": "0"
+        },
+        "25": {
+          "shell_energy": "[0.021089828624722056127662803620 +/- 2.72e-31]",
+          "retained_coprime_signed": "[-0.020773597702006059807924792498 +/- 3.30e-31]",
+          "retained_coprime_absolute": "[0.29037990857998524080970126390 +/- 8.61e-31]",
+          "omitted_nontrivial_gcd_signed": "0"
+        }
+      }
+    }
+  },
+  "center_results": {
+    "0": {
+      "terminal_diagonal": "[0.23323581017915474598047747958 +/- 1.08e-30]",
+      "same_bin_small_gcd_signed": "[-0.20322603589405100003828629677 +/- 2.30e-30]",
+      "same_bin_small_gcd_absolute": "[6.9830769366360542810849573085 +/- 4.94e-29]",
+      "diagonal_plus_retained_signed": "[0.030009774285103745942191182811 +/- 2.25e-31]",
+      "sum_individual_shell_energies": "[0.021116414574202275979806332842 +/- 1.44e-31]",
+      "between_terminal_shells_signed": "[0.0011850950363330467679145207203 +/- 2.41e-32]",
+      "energy_of_full_terminal_field": "[0.022301509610535322747720853562 +/- 4.68e-31]",
+      "full_energy_from_three_group_Gram": "[41.936031445097346574455794377 +/- 5.80e-29]",
+      "three_group_Gram_diagonal": {
+        "-1": "[42.055962169277102589863720330 +/- 4.40e-28]",
+        "0": "[0.00031209266999515152503203871671 +/- 7.39e-34]",
+        "1": "[0.020804321904207124454774294125 +/- 4.35e-31]"
+      },
+      "three_group_cross_twice_real": {
+        "-1,0": "[-0.024940929745567428569383175023 +/- 2.72e-32]",
+        "-1,1": "[-0.11729130404472390958626363116 +/- 1.72e-30]",
+        "0,1": "[0.0011850950363330467679145207203 +/- 2.41e-32]"
+      }
+    },
+    "14": {
+      "terminal_diagonal": "[0.23323581017915474598047747958 +/- 1.08e-30]",
+      "same_bin_small_gcd_signed": "[-0.19412061133891478620977445908 +/- 7.06e-31]",
+      "same_bin_small_gcd_absolute": "[6.5553769941261827560448083090 +/- 1.27e-29]",
+      "diagonal_plus_retained_signed": "[0.039115198840239959770703020500 +/- 3.66e-31]",
+      "sum_individual_shell_energies": "[0.028525844443824596651042755879 +/- 5.39e-32]",
+      "between_terminal_shells_signed": "[0.0087005870520292619531350175986 +/- 1.80e-32]",
+      "energy_of_full_terminal_field": "[0.037226431495853858604177773478 +/- 4.36e-31]",
+      "full_energy_from_three_group_Gram": "[22.523286552374428549714497329 +/- 4.69e-29]",
+      "three_group_Gram_diagonal": {
+        "-1": "[22.245851254186139122873251305 +/- 1.75e-28]",
+        "0": "[0.0076316104347650405690296860173 +/- 1.11e-32]",
+        "1": "[0.020894234009059556082013069862 +/- 3.65e-31]"
+      },
+      "three_group_cross_twice_real": {
+        "-1,0": "[0.051107963543089953080780976861 +/- 4.03e-31]",
+        "-1,1": "[0.18910090314934561515628727388 +/- 3.58e-30]",
+        "0,1": "[0.0087005870520292619531350175986 +/- 1.80e-32]"
+      }
+    },
+    "25": {
+      "terminal_diagonal": "[0.23323581017915474598047747958 +/- 1.08e-30]",
+      "same_bin_small_gcd_signed": "[-0.17395787933089186818185311422 +/- 3.55e-30]",
+      "same_bin_small_gcd_absolute": "[5.6936014103673879175149644541 +/- 1.22e-29]",
+      "diagonal_plus_retained_signed": "[0.059277930848262877798624365355 +/- 3.85e-31]",
+      "sum_individual_shell_energies": "[0.045744901768548111876293708550 +/- 5.76e-33]",
+      "between_terminal_shells_signed": "[0.025391436782560945762614360841 +/- 8.73e-32]",
+      "energy_of_full_terminal_field": "[0.071136338551109057638908069391 +/- 8.17e-32]",
+      "full_energy_from_three_group_Gram": "[25.204172863537042261060137520 +/- 4.81e-28]",
+      "three_group_Gram_diagonal": {
+        "-1": "[25.133115351324480728567301915 +/- 1.42e-28]",
+        "0": "[0.024655073143826055748630904930 +/- 2.78e-31]",
+        "1": "[0.021089828624722056127662803620 +/- 2.72e-31]"
+      },
+      "three_group_cross_twice_real": {
+        "-1,0": "[0.13742731801460495900016326069 +/- 1.38e-30]",
+        "-1,1": "[-0.13750614435315248414623572446 +/- 2.51e-30]",
+        "0,1": "[0.025391436782560945762614360841 +/- 8.73e-32]"
+      }
+    }
+  },
+  "convention": "Complex Dirichlet polynomial of all mu(q)*1_(q,6)=1/sqrt(q); diagonal counts are separate. Every unordered off-diagonal pair contributes in both ordered directions. Absolute values apply after integrating each complete conjugate pair.",
+  "previous_complete_energy_sha256": "1f7b455c16b4ff4523905897c59bf991c9a19ccf6b57b6c0ba8b324b5da2c3b9",
+  "precision_bits": 160,
+  "flint_version": "0.9.0",
+  "script_sha256": "ff209b7d1159c312597e0eb74d5e441b79bcdc5132d2fb2dd6bc3c24b3fe9128",
+  "elapsed_seconds": 0.92,
+  "status": "FINITE_TERMINAL_SECTOR; no asymptotic statement"
+}

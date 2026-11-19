@@ -1,0 +1,27 @@
+{
+  "qualification": "Finite 160-bit interval checks only",
+  "maximum": 2000,
+  "runs": [
+    {
+      "numerator": 1,
+      "denominator": 2,
+      "integer_horizons_from_2": 1999,
+      "squarefree_integers_from_8": 1209,
+      "true_prime_integral_at_last": "[-8.610985394420967630282973604109577787344976 +/- 6.35e-43]"
+    },
+    {
+      "numerator": 3,
+      "denominator": 4,
+      "integer_horizons_from_2": 1999,
+      "squarefree_integers_from_8": 1209,
+      "true_prime_integral_at_last": "[-3.320726187313002940928473316180493049133021 +/- 9.18e-43]"
+    },
+    {
+      "numerator": 873346,
+      "denominator": 1000000,
+      "integer_horizons_from_2": 1999,
+      "squarefree_integers_from_8": 1209,
+      "true_prime_integral_at_last": "[-2.251316692249548209671790278047623140488897 +/- 7.24e-43]"
+    }
+  ]
+}

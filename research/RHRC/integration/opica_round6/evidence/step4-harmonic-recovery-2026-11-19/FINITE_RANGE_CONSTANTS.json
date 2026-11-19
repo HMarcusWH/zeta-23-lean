@@ -1,0 +1,15 @@
+{
+  "qualification": "Exact endpoint and elementary constants of the transfer. Large-range Mertens input is published external evidence.",
+  "source_sha256": "b4c94763daa4406a6964117835b59057a14fde93229a572efc55f21cb66f8389",
+  "full_statistic_top_L": 6943591429214285,
+  "full_statistic_top_site": 9999999999999998,
+  "range_L_2_through_2047_checked": 2046,
+  "small_L_maximizing_trivial_normalized_squared_bound": 2046,
+  "small_maximum_squared": "2066085147/147544108726432",
+  "large_normalized_bound_strict_upper": "6672804252979273431641/107278975337577246720000",
+  "coprime6_geometric_upper": "3125000/386679",
+  "literal_weight_upper_per_L": "675281250000000/13311622068256009",
+  "literal_harmonic_top_L": 10000000000000000,
+  "native_renewal_critical_defect_lower": "3/200",
+  "recovery_norm_upper_critical": "200/3 when the input is T_L/w_L"
+}

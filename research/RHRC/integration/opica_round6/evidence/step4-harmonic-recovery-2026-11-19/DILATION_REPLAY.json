@@ -1,0 +1,59 @@
+{
+  "scope": "Finite replay of the homogeneous physical h=1 row, with continuous site c*x. The separate integer-site and sine-normalization rounding is not built into v.",
+  "x": 4194304,
+  "z": 7,
+  "Q": 210,
+  "d": 8,
+  "extra_primes_product": 35,
+  "middle_k": [
+    2,
+    2048
+  ],
+  "tail_k": [
+    2049,
+    4194304
+  ],
+  "product_integer_interval": [
+    4026532,
+    4194304
+  ],
+  "product_sites": 167773,
+  "input_rows": {
+    "native_nonzero_labels": 50990,
+    "middle_nonempty_k_rows": 526,
+    "tail_nonempty_k_rows": 98160,
+    "middle_nonzero_pairs": 79302,
+    "tail_nonzero_pairs": 128838,
+    "middle_unweighted_absolute_pair_coefficients": 161902,
+    "tail_unweighted_absolute_pair_coefficients": 228952
+  },
+  "integer_coefficient_check": {
+    "sites_matching_independent_convolution_rhs": 167773,
+    "sites_with_nonzero_total": 0,
+    "middle_nonzero_after_j_grouping": 39858,
+    "tail_nonzero_after_j_grouping": 27985,
+    "max_abs_middle": 24,
+    "max_abs_tail": 24,
+    "coefficients_sha256": "3216a3a61f4ba00547aa094a746687abea9806dc7fffc4136dbd54a4e07b1884",
+    "encoding": "int32 little-endian, native then middle then tail, j increasing"
+  },
+  "v_x": "[-35.10760277733616508911861990 +/- 1.39e-27]",
+  "v_x_over_sqrt_x": "[-0.01714238416862117435992120112 +/- 2.37e-30]",
+  "signed_middle": "[73.30468941948433418258689872 +/- 3.55e-27]",
+  "signed_tail": "[-38.19708664214816909346827882 +/- 2.16e-27]",
+  "full_signed_sum": "[+/- 4.99e-32]",
+  "separately_product_grouped_middle": "[73.30468941948433418258689872 +/- 3.55e-27]",
+  "separately_product_grouped_tail": "[-38.19708664214816909346827882 +/- 2.16e-27]",
+  "row_triangle_middle": "[6108.162706679922587624752275 +/- 4.03e-25]",
+  "row_triangle_tail": "[159546.7304044506459671569099 +/- 4.89e-23]",
+  "middle_dilation_sqrt_weight_operator_l1": "[40.21893856290830554809369564 +/- 4.28e-27]",
+  "middle_signed_sqrt_weight_coefficients": "[-0.9724720275350285825523050918 +/- 1.44e-29]",
+  "product_triangle_middle": "[72223.07072015671018047576493 +/- 2.42e-24]",
+  "product_triangle_tail": "[55251.64458050858225676798795 +/- 3.27e-24]",
+  "absolute_pair_triangle_middle": "[142503.8984133112698509103605 +/- 4.49e-23]",
+  "absolute_pair_triangle_tail": "[201530.2036189626273139190328 +/- 1.27e-23]",
+  "precisions_bits": 128,
+  "flint_version": "0.9.0",
+  "source_sha256": "56f03e2da87a2e9f3e33a8177289510a4485b5ebfa5562285afa3a49edbbd766",
+  "seconds": 1.7
+}

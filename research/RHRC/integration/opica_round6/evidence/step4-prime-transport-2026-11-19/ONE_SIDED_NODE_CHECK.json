@@ -1,0 +1,144 @@
+{
+  "X": 1048576,
+  "first_terminal": 912839,
+  "roughness": 400,
+  "actual_label_signs": {
+    "-1": 9800,
+    "1": 2515
+  },
+  "vectors": "f=complete squarefree y-rough Mobius signs; p=-1 on the actual ordinary primes and 0 otherwise",
+  "scope": "Positive original node form, before mask or diagonal subtraction. No whole terminal shell at this finite X.",
+  "full": {
+    "node_set": "all depths",
+    "intersecting_nodes": 271490,
+    "per_sign": {
+      "positive": {
+        "nodes": 10245,
+        "occupied_nodes": 10245,
+        "sum_charges_counting_all_depths": 10665,
+        "energy": "91901/8589934592"
+      },
+      "negative": {
+        "nodes": 48911,
+        "occupied_nodes": 48911,
+        "sum_charges_counting_all_depths": -119940,
+        "energy": "17212793681/1073741824"
+      },
+      "zero": {
+        "nodes": 212334,
+        "occupied_nodes": 2410,
+        "sum_charges_counting_all_depths": 0,
+        "energy": "0"
+      }
+    },
+    "V_plus": "91901/8589934592",
+    "V_minus": "17212793681/1073741824",
+    "total_F_norm_squared": "137702441349/8589934592",
+    "total_P_norm_squared": "31046674047/1073741824",
+    "full_prime_wedge_squared": "1299406541627361715/9223372036854775808",
+    "sign_restricted_prime_wedge_squared": "1708628211944323/2305843009213693952",
+    "verified_lower_P_squared_min_V": "2853220391593347/9223372036854775808",
+    "node_pair_partition": [
+      {
+        "width": "cheap",
+        "polarity": "opposite_or_zero",
+        "unordered_distinct_node_pairs": 35604680422,
+        "nonzero_squared_minor_pairs": 643659155,
+        "prime_wedge_squared": "1708628211944323/2305843009213693952"
+      },
+      {
+        "width": "cheap",
+        "polarity": "same_nonzero",
+        "unordered_distinct_node_pairs": 1248591583,
+        "nonzero_squared_minor_pairs": 236723278,
+        "prime_wedge_squared": "187104532038376359/9223372036854775808"
+      },
+      {
+        "width": "remaining",
+        "polarity": "opposite_or_zero",
+        "unordered_distinct_node_pairs": 488,
+        "nonzero_squared_minor_pairs": 0,
+        "prime_wedge_squared": "0"
+      },
+      {
+        "width": "remaining",
+        "polarity": "same_nonzero",
+        "unordered_distinct_node_pairs": 1812,
+        "nonzero_squared_minor_pairs": 1809,
+        "prime_wedge_squared": "32945498727/274877906944"
+      }
+    ]
+  },
+  "coarse": {
+    "node_set": "2*k<d",
+    "intersecting_nodes": 1065,
+    "per_sign": {
+      "positive": {
+        "nodes": 0,
+        "occupied_nodes": 0,
+        "sum_charges_counting_all_depths": 0,
+        "energy": "0"
+      },
+      "negative": {
+        "nodes": 1057,
+        "occupied_nodes": 1057,
+        "sum_charges_counting_all_depths": -50995,
+        "energy": "537856957/33554432"
+      },
+      "zero": {
+        "nodes": 8,
+        "occupied_nodes": 0,
+        "sum_charges_counting_all_depths": 0,
+        "energy": "0"
+      }
+    },
+    "V_plus": "0",
+    "V_minus": "537856957/33554432",
+    "total_F_norm_squared": "537856957/33554432",
+    "total_P_norm_squared": "485071263/16777216",
+    "full_prime_wedge_squared": "155642383401413/1125899906842624",
+    "sign_restricted_prime_wedge_squared": "0",
+    "verified_lower_P_squared_min_V": "0",
+    "node_pair_partition": [
+      {
+        "width": "cheap",
+        "polarity": "opposite_or_zero",
+        "unordered_distinct_node_pairs": 7996,
+        "nonzero_squared_minor_pairs": 0,
+        "prime_wedge_squared": "0"
+      },
+      {
+        "width": "cheap",
+        "polarity": "same_nonzero",
+        "unordered_distinct_node_pairs": 556284,
+        "nonzero_squared_minor_pairs": 550798,
+        "prime_wedge_squared": "20697620615621/1125899906842624"
+      },
+      {
+        "width": "remaining",
+        "polarity": "opposite_or_zero",
+        "unordered_distinct_node_pairs": 488,
+        "nonzero_squared_minor_pairs": 0,
+        "prime_wedge_squared": "0"
+      },
+      {
+        "width": "remaining",
+        "polarity": "same_nonzero",
+        "unordered_distinct_node_pairs": 1812,
+        "nonzero_squared_minor_pairs": 1809,
+        "prime_wedge_squared": "32945498727/274877906944"
+      }
+    ]
+  },
+  "independent_checks": {
+    "full_prior_energy": "137702441349/8589934592",
+    "coarse_direct_sum_over_all_coarse_common_ancestors_of_true_signed_label_pairs": "537856957/33554432",
+    "full_prime_wedge_matches_previous": true
+  },
+  "sha256": {
+    "check_one_sided_nodes.py": "6c33cdcb1156e750a7edeeaf49b6606fea3b39b0a4721659dd1a61d9f5ff1831",
+    "check_two_probes.py": "bffe3ad4698c254bde109a5ecda251a008869fd917239e8da0de816665dcd76b",
+    "ROUGH_TREE_CHECK.json": "3475d8c62e87c08c87a19e04798163d09f9f808b05a570b4c91c7fe77ed871bd",
+    "TWO_PROBE_CHECK.json": "4c93c62b7f20e8b2754092bcf3ac1e11793897b7afc994284d2b2f9265d3fe72"
+  }
+}

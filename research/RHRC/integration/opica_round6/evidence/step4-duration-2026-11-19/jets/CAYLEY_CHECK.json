@@ -1,0 +1,138 @@
+{
+  "status": "PASS_PAPER_SCALAR_ENDPOINTS_AND_ARB_SAMPLE",
+  "method": "Exact rational endpoint inequalities; 160-bit Arb Taylor series of the actual logarithmic derivative with a rigorous native seed moment remainder.",
+  "inclusive_orders_with_finite_source_bound": [
+    0,
+    648000000000000000000000000000
+  ],
+  "number_of_orders": 648000000000000000000000000001,
+  "upper_bound_on_log_gain_at_endpoint": "484704000000000000000000000000/8999999999994000000000001",
+  "lower_bound_on_unspent_log_tail": "305999999676660000000053890/8999999999994000000000001",
+  "samples": [
+    {
+      "order": 0,
+      "real": "[-0.59277505759639 +/- 7.22e-15]",
+      "imaginary": "[3.7784429193427 +/- 4.16e-14]",
+      "absolute_value": "[3.8246585682437 +/- 4.41e-14]"
+    },
+    {
+      "order": 1,
+      "real": "[8.477581320459 +/- 3.12e-13]",
+      "imaginary": "[8.623251207713 +/- 1.06e-13]",
+      "absolute_value": "[12.092553346432 +/- 5.64e-13]"
+    },
+    {
+      "order": 2,
+      "real": "[24.107214106463 +/- 6.05e-13]",
+      "imaginary": "[8.251650672434 +/- 8.97e-13]",
+      "absolute_value": "[25.480335766915 +/- 8.89e-13]"
+    },
+    {
+      "order": 3,
+      "real": "[41.64335690906 +/- 4.50e-12]",
+      "imaginary": "[3.00351158468 +/- 6.93e-12]",
+      "absolute_value": "[41.75152998987 +/- 8.91e-12]"
+    },
+    {
+      "order": 4,
+      "real": "[56.3765814599 +/- 7.84e-11]",
+      "imaginary": "[-5.3066825745 +/- 6.81e-11]",
+      "absolute_value": "[56.6257875623 +/- 7.34e-11]"
+    },
+    {
+      "order": 5,
+      "real": "[63.990022912 +/- 2.79e-10]",
+      "imaginary": "[-14.471086030 +/- 6.15e-10]",
+      "absolute_value": "[65.605909514 +/- 4.60e-10]"
+    },
+    {
+      "order": 6,
+      "real": "[61.29820778 +/- 5.08e-9]",
+      "imaginary": "[-22.52072526 +/- 4.01e-9]",
+      "absolute_value": "[65.30431336 +/- 5.70e-9]"
+    },
+    {
+      "order": 7,
+      "real": "[46.6406783 +/- 4.13e-8]",
+      "imaginary": "[-27.9630162 +/- 6.07e-8]",
+      "absolute_value": "[54.3809079 +/- 4.67e-8]"
+    },
+    {
+      "order": 8,
+      "real": "[19.969242 +/- 4.76e-7]",
+      "imaginary": "[-29.841966 +/- 3.89e-7]",
+      "absolute_value": "[35.907013 +/- 4.03e-7]"
+    },
+    {
+      "order": 9,
+      "real": "[-17.271601 +/- 1.47e-7]",
+      "imaginary": "[-27.719343 +/- 3.21e-7]",
+      "absolute_value": "[32.659917 +/- 3.03e-7]"
+    },
+    {
+      "order": 10,
+      "real": "[-62.391579 +/- 8.69e-7]",
+      "imaginary": "[-21.618682 +/- 4.93e-7]",
+      "absolute_value": "[66.030876 +/- 6.51e-7]"
+    },
+    {
+      "order": 11,
+      "real": "[-111.77240 +/- 7.03e-6]",
+      "imaginary": "[-11.95127 +/- 6.13e-6]",
+      "absolute_value": "[112.40952 +/- 6.27e-6]"
+    },
+    {
+      "order": 12,
+      "real": "[-161.2162 +/- 2.96e-5]",
+      "imaginary": "[0.5660 +/- 5.29e-5]",
+      "absolute_value": "[161.2172 +/- 2.33e-5]"
+    },
+    {
+      "order": 13,
+      "real": "[-206.2961 +/- 5.58e-5]",
+      "imaginary": "[14.9952 +/- 8.55e-5]",
+      "absolute_value": "[206.8404 +/- 7.71e-5]"
+    },
+    {
+      "order": 14,
+      "real": "[-242.687 +/- 6.00e-4]",
+      "imaginary": "[30.260 +/- 2.71e-4]",
+      "absolute_value": "[244.567 +/- 6.69e-4]"
+    },
+    {
+      "order": 15,
+      "real": "[-266.46 +/- 5.86e-3]",
+      "imaginary": "[45.22 +/- 5.07e-3]",
+      "absolute_value": "[270.28 +/- 6.20e-3]"
+    },
+    {
+      "order": 16,
+      "real": "[-274.4 +/- 0.0508]",
+      "imaginary": "[58.76 +/- 8.14e-3]",
+      "absolute_value": "[280.58 +/- 9.33e-3]"
+    },
+    {
+      "order": 17,
+      "real": "[-263.9 +/- 0.0624]",
+      "imaginary": "[69.8 +/- 0.0536]",
+      "absolute_value": "[273.0 +/- 0.0488]"
+    },
+    {
+      "order": 18,
+      "real": "[-2.34e+2 +/- 0.340]",
+      "imaginary": "[7.7e+1 +/- 0.626]",
+      "absolute_value": "[2.46e+2 +/- 0.456]"
+    }
+  ],
+  "strict_adjacent_decrease_verified_at_n_for_full_coefficient": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    15,
+    16,
+    17
+  ],
+  "closure": "OPEN; no independent arithmetic upper at unbounded orders."
+}

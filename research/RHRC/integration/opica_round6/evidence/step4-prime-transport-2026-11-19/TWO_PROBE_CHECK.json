@@ -1,0 +1,446 @@
+{
+  "X": 1048576,
+  "roughness": 400,
+  "first": 912839,
+  "labels": "actual squarefree y-rough signed F, prime-only signed P, and signed squarefree cone A restricted by n/P+(n)",
+  "scope": "Positive weighted full-node form before any diagonal or GCD subtraction. This X has a clipped shell and no whole terminal shell, so no two-shell asymptotic test is claimed.",
+  "cases": [
+    {
+      "threshold": "floor(X^(1/1000))=1",
+      "full_prime_cone_label_counts": [
+        12315,
+        9800,
+        9800
+      ],
+      "grid": {
+        "s": 5,
+        "common_weight_denominator": 34359738368,
+        "charge_classes": 547,
+        "intersecting_nodes": 271490,
+        "shells": [
+          {
+            "U": 524288,
+            "observed_range": [
+              912839,
+              1048575
+            ],
+            "charges_F_P_A": [
+              -7285,
+              -9800,
+              -9800
+            ],
+            "intersecting_nodes": 271474,
+            "shell_ratio_A_over_P": "1"
+          },
+          {
+            "U": 1048576,
+            "observed_range": [
+              1048576,
+              1048576
+            ],
+            "charges_F_P_A": [
+              0,
+              0,
+              0
+            ],
+            "intersecting_nodes": 16,
+            "shell_ratio_A_over_P": null
+          }
+        ]
+      },
+      "gram_order": [
+        "F",
+        "P",
+        "A"
+      ],
+      "gram": [
+        [
+          "137702441349/8589934592",
+          "23113587469/1073741824",
+          "23113587469/1073741824"
+        ],
+        [
+          "23113587469/1073741824",
+          "31046674047/1073741824",
+          "31046674047/1073741824"
+        ],
+        [
+          "23113587469/1073741824",
+          "31046674047/1073741824",
+          "31046674047/1073741824"
+        ]
+      ],
+      "squared_wedges": {
+        "P_F": "1299406541627361715/9223372036854775808",
+        "A_F": "1299406541627361715/9223372036854775808",
+        "P_A": "0"
+      },
+      "two_probe_angular_sum": "1299406541627361715/4611686018427387904",
+      "native_area_partition": {
+        "cheap_criterion": "H_I^2 H_J^2 <= X H0_I H0_J at the actual underlying dyadic levels",
+        "crosscheck": "All weighted minors regrouped and summed independently by direct charge triples and shell/depth Gram products. All pieces nonnegative; all node-pair counts and total areas verified.",
+        "sectors": {
+          "cheap": {
+            "unordered_distinct_node_pairs": 36853272005,
+            "unordered_shell_depth_block_pairs_including_self": 466,
+            "squared_wedges": {
+              "P_F": "193939044886153651/9223372036854775808",
+              "A_F": "193939044886153651/9223372036854775808",
+              "P_A": "0"
+            },
+            "two_probe_angular_sum": "193939044886153651/4611686018427387904",
+            "fraction_of_single_prime_full_D": "193939044886153651/1299406541627361715",
+            "fraction_of_two_probe_full_angular_sum": "193939044886153651/1299406541627361715"
+          },
+          "remaining": {
+            "unordered_distinct_node_pairs": 2300,
+            "unordered_shell_depth_block_pairs_including_self": 30,
+            "squared_wedges": {
+              "P_F": "32945498727/274877906944",
+              "A_F": "32945498727/274877906944",
+              "P_A": "0"
+            },
+            "two_probe_angular_sum": "32945498727/137438953472",
+            "fraction_of_single_prime_full_D": "1105467496741208064/1299406541627361715",
+            "fraction_of_two_probe_full_angular_sum": "1105467496741208064/1299406541627361715"
+          }
+        }
+      },
+      "squared_P_A_sine": "0",
+      "lower_observability_coefficient_det_P_A_over_trace": "0",
+      "observed_angular_sum_over_F_norm_squared": "1299406541627361715/73928435271664140288",
+      "trace_times_angular_minus_F_norm_squared_times_P_A_area": "40342251352444236102171910605/2475880078570760549798248448",
+      "all_node_pair_minor_check": "Exact direct sum grouped by distinct integer charge triples, including clipped nodes. Each minor sum equals its Gram determinant.",
+      "node_charge_crosscheck": "Every node charge verified by independent sorted-label prefix differences and by ancestor accumulation.",
+      "examples": [
+        {
+          "nodes": [
+            [
+              19,
+              0,
+              55
+            ],
+            [
+              19,
+              0,
+              56
+            ]
+          ],
+          "charges_F_P_A": [
+            [
+              -225,
+              -322,
+              -322
+            ],
+            [
+              -912,
+              -1200,
+              -1200
+            ]
+          ],
+          "signed_minors_FxP_FxA_PxA": [
+            -23664,
+            -23664,
+            0
+          ],
+          "weighted_squared_minors_PF_AF_PA": [
+            "2187441/1073741824",
+            "2187441/1073741824",
+            "0"
+          ]
+        },
+        {
+          "nodes": [
+            [
+              19,
+              0,
+              55
+            ],
+            [
+              19,
+              0,
+              57
+            ]
+          ],
+          "charges_F_P_A": [
+            [
+              -225,
+              -322,
+              -322
+            ],
+            [
+              -886,
+              -1181,
+              -1181
+            ]
+          ],
+          "signed_minors_FxP_FxA_PxA": [
+            -19567,
+            -19567,
+            0
+          ],
+          "weighted_squared_minors_PF_AF_PA": [
+            "382867489/274877906944",
+            "382867489/274877906944",
+            "0"
+          ]
+        },
+        {
+          "nodes": [
+            [
+              19,
+              0,
+              55
+            ],
+            [
+              19,
+              0,
+              58
+            ]
+          ],
+          "charges_F_P_A": [
+            [
+              -225,
+              -322,
+              -322
+            ],
+            [
+              -882,
+              -1186,
+              -1186
+            ]
+          ],
+          "signed_minors_FxP_FxA_PxA": [
+            -17154,
+            -17154,
+            0
+          ],
+          "weighted_squared_minors_PF_AF_PA": [
+            "73564929/68719476736",
+            "73564929/68719476736",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "threshold": "512 (auxiliary)",
+      "full_prime_cone_label_counts": [
+        12315,
+        9800,
+        10536
+      ],
+      "grid": {
+        "s": 5,
+        "common_weight_denominator": 34359738368,
+        "charge_classes": 934,
+        "intersecting_nodes": 271490,
+        "shells": [
+          {
+            "U": 524288,
+            "observed_range": [
+              912839,
+              1048575
+            ],
+            "charges_F_P_A": [
+              -7285,
+              -9800,
+              -9064
+            ],
+            "intersecting_nodes": 271474,
+            "shell_ratio_A_over_P": "1133/1225"
+          },
+          {
+            "U": 1048576,
+            "observed_range": [
+              1048576,
+              1048576
+            ],
+            "charges_F_P_A": [
+              0,
+              0,
+              0
+            ],
+            "intersecting_nodes": 16,
+            "shell_ratio_A_over_P": null
+          }
+        ]
+      },
+      "gram_order": [
+        "F",
+        "P",
+        "A"
+      ],
+      "gram": [
+        [
+          "137702441349/8589934592",
+          "23113587469/1073741824",
+          "42777644893/2147483648"
+        ],
+        [
+          "23113587469/1073741824",
+          "31046674047/1073741824",
+          "57455849011/2147483648"
+        ],
+        [
+          "42777644893/2147483648",
+          "57455849011/2147483648",
+          "6645797529/268435456"
+        ]
+      ],
+      "squared_wedges": {
+        "P_F": "1299406541627361715/9223372036854775808",
+        "A_F": "358186317294271793/4611686018427387904",
+        "P_A": "103969068706799687/4611686018427387904"
+      },
+      "two_probe_angular_sum": "2015779176215905301/9223372036854775808",
+      "native_area_partition": {
+        "cheap_criterion": "H_I^2 H_J^2 <= X H0_I H0_J at the actual underlying dyadic levels",
+        "crosscheck": "All weighted minors regrouped and summed independently by direct charge triples and shell/depth Gram products. All pieces nonnegative; all node-pair counts and total areas verified.",
+        "sectors": {
+          "cheap": {
+            "unordered_distinct_node_pairs": 36853272005,
+            "unordered_shell_depth_block_pairs_including_self": 466,
+            "squared_wedges": {
+              "P_F": "193939044886153651/9223372036854775808",
+              "A_F": "55642107250670897/4611686018427387904",
+              "P_A": "24805884998033479/4611686018427387904"
+            },
+            "two_probe_angular_sum": "305223259387495445/9223372036854775808",
+            "fraction_of_single_prime_full_D": "193939044886153651/1299406541627361715",
+            "fraction_of_two_probe_full_angular_sum": "305223259387495445/2015779176215905301"
+          },
+          "remaining": {
+            "unordered_distinct_node_pairs": 2300,
+            "unordered_shell_depth_block_pairs_including_self": 30,
+            "squared_wedges": {
+              "P_F": "32945498727/274877906944",
+              "A_F": "36066080337/549755813888",
+              "P_A": "18873973777/1099511627776"
+            },
+            "two_probe_angular_sum": "101957077791/549755813888",
+            "fraction_of_single_prime_full_D": "1105467496741208064/1299406541627361715",
+            "fraction_of_two_probe_full_angular_sum": "1710555916828409856/2015779176215905301"
+          }
+        }
+      },
+      "squared_P_A_sine": "103969068706799687/3301278554643536477808",
+      "lower_observability_coefficient_det_P_A_over_trace": "103969068706799687/247518381853007413248",
+      "observed_angular_sum_over_F_norm_squared": "2015779176215905301/147856870543328280576",
+      "trace_times_angular_minus_F_norm_squared_times_P_A_area": "450359525845998416250197454489/39614081257132168796771975168",
+      "all_node_pair_minor_check": "Exact direct sum grouped by distinct integer charge triples, including clipped nodes. Each minor sum equals its Gram determinant.",
+      "node_charge_crosscheck": "Every node charge verified by independent sorted-label prefix differences and by ancestor accumulation.",
+      "examples": [
+        {
+          "nodes": [
+            [
+              19,
+              0,
+              55
+            ],
+            [
+              19,
+              0,
+              56
+            ]
+          ],
+          "charges_F_P_A": [
+            [
+              -225,
+              -322,
+              -292
+            ],
+            [
+              -912,
+              -1200,
+              -1114
+            ]
+          ],
+          "signed_minors_FxP_FxA_PxA": [
+            -23664,
+            -15654,
+            8308
+          ],
+          "weighted_squared_minors_PF_AF_PA": [
+            "2187441/1073741824",
+            "61261929/68719476736",
+            "4313929/17179869184"
+          ]
+        },
+        {
+          "nodes": [
+            [
+              19,
+              0,
+              55
+            ],
+            [
+              19,
+              0,
+              57
+            ]
+          ],
+          "charges_F_P_A": [
+            [
+              -225,
+              -322,
+              -292
+            ],
+            [
+              -886,
+              -1181,
+              -1095
+            ]
+          ],
+          "signed_minors_FxP_FxA_PxA": [
+            -19567,
+            -12337,
+            7738
+          ],
+          "weighted_squared_minors_PF_AF_PA": [
+            "382867489/274877906944",
+            "152201569/274877906944",
+            "14969161/68719476736"
+          ]
+        },
+        {
+          "nodes": [
+            [
+              19,
+              0,
+              55
+            ],
+            [
+              19,
+              0,
+              58
+            ]
+          ],
+          "charges_F_P_A": [
+            [
+              -225,
+              -322,
+              -292
+            ],
+            [
+              -882,
+              -1186,
+              -1096
+            ]
+          ],
+          "signed_minors_FxP_FxA_PxA": [
+            -17154,
+            -10944,
+            6600
+          ],
+          "weighted_squared_minors_PF_AF_PA": [
+            "73564929/68719476736",
+            "29241/67108864",
+            "680625/4294967296"
+          ]
+        }
+      ]
+    }
+  ],
+  "script_sha256": "bffe3ad4698c254bde109a5ecda251a008869fd917239e8da0de816665dcd76b"
+}

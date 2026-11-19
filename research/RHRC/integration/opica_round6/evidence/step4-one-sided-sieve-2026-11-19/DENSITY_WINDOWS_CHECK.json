@@ -1,0 +1,25 @@
+{
+  "scope": "Directed Arb bounds on the cited density integral only",
+  "density_input": "https://arxiv.org/html/2507.15184v2#S1",
+  "verified_height_input": "https://arxiv.org/abs/2004.09765",
+  "height": 3000000000000,
+  "precision_bits": 160,
+  "results": [
+    {
+      "abscissa": "0.79",
+      "packet_factor": "2",
+      "upper_bound_on_canceler_width": "[0.684342502617088879992172793992554306169352203 +/- 6.11e-46]",
+      "upper_bound_on_single_period": "[2.0943951023931954923084289221863352561314462662e-12 +/- 5.32e-59]",
+      "remaining_log_width": "[0.008804677940762034322666131973313832983961597 +/- 5.14e-46]",
+      "remaining_log_width_provably_exceeds": "0.001"
+    },
+    {
+      "abscissa": "0.80",
+      "packet_factor": "7/5",
+      "upper_bound_on_canceler_width": "[0.3343985539515302056119311945024828438750546656 +/- 5.11e-47]",
+      "upper_bound_on_single_period": "[2.0943951023931954923084289221863352561314462662e-12 +/- 5.32e-59]",
+      "remaining_log_width": "[0.0020736826675883297902690202222008173142423744 +/- 9.53e-47]",
+      "remaining_log_width_provably_exceeds": "0.001"
+    }
+  ]
+}

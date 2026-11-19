@@ -1,0 +1,13 @@
+NegativeTypes.lean:9:2: error: Type mismatch
+  RoughNodeCharges.contingency_covariance
+has type
+  ∀ (a b c d : ℝ), (a + b + c + d) * (a - b - c + d) - (a + b - c - d) * (a - b + c - d) = 4 * (a * d - b * c)
+but is expected to have type
+  ∀ (a b c d : ℝ), (a + b + c + d) * (a - b - c + d) - (a + b - c - d) * (a - b + c - d) = 4 * (a * d + b * c)
+NegativeTypes.lean:13:2: error: Type mismatch
+  PrimeAreaIntegral.integral_negative_iff_squarefree_prime_cost
+has type
+  (∀ (x : ℝ), 2 < x → ∫ (u : ℝ) in 2..x, Chebyshev.theta u - u < 0) ↔
+    ∀ (n : ℕ), 8 ≤ n → Squarefree n → Real.log ↑n ^ 2 + 4 < 2 * SquarefreePrimeCost.cost n
+but is expected to have type
+  ∀ (x : ℝ), 2 < x → ∫ (u : ℝ) in 2..x, Chebyshev.theta u - u < 0

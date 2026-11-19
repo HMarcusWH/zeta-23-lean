@@ -1,0 +1,124 @@
+name: OPICA Round 6 constraint graph and finite arithmetic proofs
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  graph:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Replay constraint deductions against the committed RHKG census
+        shell: bash
+        run: |
+          set -euo pipefail
+          pkg=research/RHRC/integration/opica_round6
+          python3 -B "$pkg/test_constraint_graph.py"
+          python3 -B -O "$pkg/test_constraint_graph.py"
+          python3 -B -m unittest research.RHRC.integration.opica_round6.test_source_scope
+          python3 -B -O -m unittest research.RHRC.integration.opica_round6.test_source_scope
+          python3 -B "$pkg/constraint_graph.py" --check --check-rhkg
+          python3 -B -O "$pkg/constraint_graph.py" --check
+          python3 -B -m research.RHRC.integration.opica_round6.cone_parity --check
+          mkdir -p "$RUNNER_TEMP/round6-graph"
+          cp "$pkg/CONSTRAINT_GRAPH.json" "$RUNNER_TEMP/round6-graph/"
+          git rev-parse HEAD 'HEAD^{tree}' > "$RUNNER_TEMP/round6-graph/head-tree.txt"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: round6-graph-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/round6-graph/
+          if-no-files-found: error
+
+  finite-source-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Recalculate signed finite pairs and actual semiprime transport
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence=research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19
+          out="$RUNNER_TEMP/round6-finite"
+          mkdir -p "$out"
+          for p in check_balanced_transport.py check_parity_truncation.py; do
+            cp "$evidence/$p" "$out/$p"
+            python3 -B "$out/$p"
+          done
+          cmp "$evidence/PARITY_TRUNCATION_CHECK.json" "$out/PARITY_TRUNCATION_CHECK.json"
+          cmp "$evidence/BALANCED_TRANSPORT_CHECK.json" "$out/BALANCED_TRANSPORT_CHECK.json"
+          git rev-parse HEAD 'HEAD^{tree}' > "$out/head-tree.txt"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: round6-finite-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/round6-finite/
+          if-no-files-found: error
+
+  compiler:
+    name: Compiler proofs (${{ matrix.group }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        group: [round6, prior-parity, other-history]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: .lake/build
+          key: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.event.pull_request.base.sha || github.sha }}
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Check exact finite statements and every catalog declaration against its source module
+        shell: bash
+        env:
+          GROUP: ${{ matrix.group }}
+        run: |
+          set -euo pipefail
+          pkg=research/RHRC/integration/opica_round6
+          out="$RUNNER_TEMP/round6-audit"
+          mkdir -p "$out"
+          git rev-parse HEAD 'HEAD^{tree}' > "$out/head-tree.txt"
+          python3 -B "$pkg/constraint_graph.py" --group "$GROUP" --build-imports > "$out/modules.txt"
+          mapfile -t modules < "$out/modules.txt"
+          test "${#modules[@]}" -gt 0
+          lake build "${modules[@]}"
+          if [[ "$GROUP" == round6 ]]; then
+            lake env lean -DwarningAsError=true -j2 -s262144 Zeta23/OPICARound6/PrimeFactorPaths/Verify.lean | tee "$out/finite-statements.log"
+            cp "$pkg/controls/NegativeTypes.lean.in" "$out/NegativeTypes.lean"
+            code=0
+            lake env lean -DwarningAsError=true -j2 -s262144 "$out/NegativeTypes.lean" > "$out/negative-raw.log" 2>&1 || code=$?
+            test "$code" -eq 1
+            sed 's|^.*/NegativeTypes\.lean:|NegativeTypes.lean:|' "$out/negative-raw.log" > "$out/negative-types.log"
+            diff -u "$pkg/controls/NegativeTypes.expected.txt" "$out/negative-types.log"
+          fi
+          python3 -B "$pkg/constraint_graph.py" --group "$GROUP" --audit-source "$out/CatalogAudit.lean"
+          lake env lean -DwarningAsError=true -j2 -s262144 "$out/CatalogAudit.lean" | tee "$out/catalog.log"
+          python3 -B "$pkg/constraint_graph.py" --group "$GROUP" --check-axioms "$out/catalog.log" > "$out/catalog-axioms.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: round6-compiler-${{ matrix.group }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/round6-audit/
+          if-no-files-found: warn

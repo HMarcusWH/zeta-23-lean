@@ -1,0 +1,154 @@
+{
+  "scope": "Every intersecting native coarse node at every integer from 2^20 through the first positive V_plus, with strict moving terminal bound. Integer sieve, all labels factorized in the witness. No asymptotic inference.",
+  "baseline": {
+    "X": 1048576,
+    "y": 400,
+    "counts_negative_zero_positive": [
+      1057,
+      8,
+      0
+    ],
+    "V_plus": "0"
+  },
+  "first_positive_X": 1049155,
+  "offset_from_2_to_20": 579,
+  "roughness_y": 441,
+  "first_terminal": 913338,
+  "consecutive_preceding_integer_cutoffs_with_zero_V_plus_including_baseline": 579,
+  "all_coarse": {
+    "counts_negative_zero_positive": [
+      1060,
+      0,
+      5
+    ],
+    "V_plus": "31/33554432"
+  },
+  "previous_cutoff": {
+    "X": 1049154,
+    "first_terminal": 913337,
+    "V_plus": "0",
+    "labels_leaving_through_lower_boundary": [
+      {
+        "n": 913337,
+        "prime_factors": [
+          913337
+        ],
+        "mu_y": -1
+      }
+    ]
+  },
+  "all_positive_coordinates": [
+    {
+      "j": 19,
+      "k": 2,
+      "node_index": 222,
+      "clipped_range": [
+        913338,
+        913408
+      ],
+      "charge": 1
+    },
+    {
+      "j": 19,
+      "k": 3,
+      "node_index": 445,
+      "clipped_range": [
+        913338,
+        913408
+      ],
+      "charge": 1
+    },
+    {
+      "j": 19,
+      "k": 4,
+      "node_index": 891,
+      "clipped_range": [
+        913338,
+        913408
+      ],
+      "charge": 1
+    },
+    {
+      "j": 19,
+      "k": 5,
+      "node_index": 1783,
+      "clipped_range": [
+        913338,
+        913408
+      ],
+      "charge": 1
+    },
+    {
+      "j": 19,
+      "k": 6,
+      "node_index": 3567,
+      "clipped_range": [
+        913338,
+        913408
+      ],
+      "charge": 1
+    }
+  ],
+  "witness": {
+    "j": 19,
+    "k": 2,
+    "base_depth_d": 14,
+    "s": 5,
+    "coarse": true,
+    "grid_index": 222,
+    "underlying_half_open_integer_range": [
+      909312,
+      913408
+    ],
+    "clipped_half_open_integer_range": [
+      913338,
+      913408
+    ],
+    "charge": 1,
+    "weight": "1/2097152",
+    "positive_energy_contribution": "1/2097152",
+    "nonzero_labels": [
+      {
+        "n": 913361,
+        "prime_factors": [
+          809,
+          1129
+        ],
+        "mu_y": 1
+      },
+      {
+        "n": 913373,
+        "prime_factors": [
+          913373
+        ],
+        "mu_y": -1
+      },
+      {
+        "n": 913391,
+        "prime_factors": [
+          577,
+          1583
+        ],
+        "mu_y": 1
+      },
+      {
+        "n": 913397,
+        "prime_factors": [
+          913397
+        ],
+        "mu_y": -1
+      },
+      {
+        "n": 913403,
+        "prime_factors": [
+          701,
+          1303
+        ],
+        "mu_y": 1
+      }
+    ],
+    "label_count_including_zero": 70,
+    "all_label_factorizations_sha256": "2b4a77c60d99d40554db07714985f13c54661c903b2a6f4211665649e4af1848"
+  },
+  "script_sha256": "4716876817529b6bea861c20f79677796c65cfb07c07422d12f9deb1a63a1ce6"
+}

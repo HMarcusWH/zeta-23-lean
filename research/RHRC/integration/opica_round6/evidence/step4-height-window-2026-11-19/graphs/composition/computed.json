@@ -1,0 +1,1562 @@
+{
+  "installed_main": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "native": {
+    "root": {
+      "id": "STEP4_ALTERNATIVES",
+      "kind": "OR",
+      "children": [
+        "D1_ACTUAL_RAYS",
+        "D2_NEGATIVE_GROUNDS",
+        "D3_NATIVE_JOINT_INDEX",
+        "D4_DIRECT",
+        "B_CAUSAL",
+        "A_SIGNED_OBSERVATION",
+        "C_DIRECT_COMPLEMENT",
+        "C1_COFINAL_MOMENT_SLICES",
+        "P1_SELECTED_PACKET_GROUND_RESPONSE",
+        "C2_ACTUAL_LONG_TERM_LOWER"
+      ]
+    },
+    "native_nodes": [
+      {
+        "id": "D1_ACTUAL_RAYS",
+        "kind": "LEAF",
+        "status": "OPEN",
+        "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+        "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+        "proposition": "EventualActualRayClosure",
+        "typed_declaration": "Zeta23.OPICARound4.EventualActualRayClosure",
+        "quantifiers": [
+          "exists R before every L>R, hL, K>=3 and every negative real resolvent shift; separate shared-negative-ground exclusion",
+          "Read full compiler-exported Lean type; metadata is not a substitute"
+        ],
+        "consumers": [
+          "Zeta23.OPICARound4.no_off_line_zero_of_eventual_actual_ray_closure"
+        ],
+        "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
+      },
+      {
+        "id": "D2_NEGATIVE_GROUNDS",
+        "kind": "LEAF",
+        "status": "OPEN",
+        "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+        "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+        "proposition": "EventualNegativeGroundClosure",
+        "typed_declaration": "Zeta23.OPICARound4.EventualNegativeGroundClosure",
+        "quantifiers": [
+          "exists R before every L>R,K>=3; compare only corresponding actual negative ground strictly below opposite bottom; exclude shared negative ground separately",
+          "Read full compiler-exported Lean type; metadata is not a substitute"
+        ],
+        "consumers": [
+          "Zeta23.OPICARound4.no_off_line_zero_of_eventual_ground_closure"
+        ],
+        "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
+      },
+      {
+        "id": "D3_NATIVE_JOINT_INDEX",
+        "kind": "LEAF",
+        "status": "OPEN",
+        "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+        "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+        "proposition": "EventualNativeJointNegativeIndexCap",
+        "typed_declaration": "Zeta23.OPICARound4.EventualNativeJointNegativeIndexCap",
+        "quantifiers": [
+          "exists R before every L>R,K>=3; bound finrank of every strictly negative physical two-pole-neutral subspace by1",
+          "Read full compiler-exported Lean type; metadata is not a substitute"
+        ],
+        "consumers": [
+          "Zeta23.OPICARound4.no_off_line_zero_of_eventual_native_joint_index"
+        ],
+        "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
+      },
+      {
+        "id": "D4_DIRECT",
+        "kind": "LEAF",
+        "status": "OPEN",
+        "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+        "witness": "SAME_L_K_SOURCE_AND_PHYSICAL_CARRIER",
+        "proposition": "EventualNoSimultaneousNegativity",
+        "typed_declaration": "Zeta23.OPICAComposition.EventualNoSimultaneousNegativity",
+        "quantifiers": [
+          "exists R before every L>R,K>=3; no actual simultaneous parity negativity",
+          "Read full compiler-exported Lean type; metadata is not a substitute"
+        ],
+        "consumers": [
+          "Zeta23.OPICARound4.no_off_line_zero_of_eventual_noBothNeg"
+        ],
+        "next_test": "Independently prove actual-source obligation or falsify candidate before promotion"
+      },
+      {
+        "id": "B_CAUSAL",
+        "kind": "LEAF",
+        "status": "OPEN",
+        "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+        "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+        "proposition": "Actual source-preserving causal Gram residual tends to zero",
+        "quantifiers": [
+          "OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE",
+          "No complete new Lean route contract is supplied by this extension"
+        ],
+        "consumers": [],
+        "next_test": "Source-specific proof or falsifying control before promotion",
+        "typed_declaration": null
+      },
+      {
+        "id": "A_SIGNED_OBSERVATION",
+        "kind": "LEAF",
+        "status": "OPEN",
+        "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+        "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+        "proposition": "Complete signed observation estimate including all cross terms and recovery budgets",
+        "quantifiers": [
+          "OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE",
+          "No complete new Lean route contract is supplied by this extension"
+        ],
+        "consumers": [],
+        "next_test": "Source-specific proof or falsifying control before promotion",
+        "typed_declaration": null
+      },
+      {
+        "id": "C_DIRECT_COMPLEMENT",
+        "kind": "LEAF",
+        "status": "OPEN",
+        "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+        "witness": "SAME_DEPENDENT_SOURCE_PACKET",
+        "proposition": "Actual original detector forcing/complement upper bound beating the off-line lower exponent",
+        "quantifiers": [
+          "OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE",
+          "No complete new Lean route contract is supplied by this extension"
+        ],
+        "consumers": [],
+        "next_test": "Source-specific proof or falsifying control before promotion",
+        "typed_declaration": null
+      },
+      {
+        "id": "C1_COFINAL_MOMENT_SLICES",
+        "kind": "LEAF",
+        "status": "OPEN",
+        "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+        "witness": "SAME_L_K_PARITY_CARRIER_AND_PHYSICAL_NORM",
+        "proposition": "CofinalMomentSliceVanishingErrorBounds",
+        "typed_declaration": "Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentSliceVanishingErrorBounds",
+        "quantifiers": [
+          "for every n>=1 an aperture L>=n+2 and one parity covering its entire moment slice at the literal quartic cutoff with tolerance 1/n",
+          "Read full compiler-exported Lean type; metadata is not a substitute"
+        ],
+        "consumers": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds"
+        ],
+        "next_test": "Predeclared E-H6 horizon and a source-specific supplier; finite certificates do not discharge the quantifier"
+      },
+      {
+        "id": "P1_SELECTED_PACKET_GROUND_RESPONSE",
+        "kind": "LEAF",
+        "status": "OPEN",
+        "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+        "witness": "SAME_SELECTED_PACKET_STATE",
+        "proposition": "EventualDisjointQuarticGroundRestriction",
+        "typed_declaration": "Zeta23.OPICARound4.ArithmeticFrontier.EventualDisjointQuarticGroundRestriction",
+        "quantifiers": [
+          "exists R before every late disjoint quartic state; both exact ground responses below one; no shared-ground premise",
+          "Read full compiler-exported Lean type; metadata is not a substitute"
+        ],
+        "consumers": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_eventual_disjoint_quartic_ground_restriction",
+          "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_selected_packet_ground_restriction"
+        ],
+        "next_test": "Uniform over eligible outputs or one output carrying both properties"
+      },
+      {
+        "id": "C2_ACTUAL_LONG_TERM_LOWER",
+        "kind": "LEAF",
+        "status": "OPEN",
+        "source": "ACTUAL_COMPLETE_ZETA_SOURCE",
+        "witness": "LITERAL_CORRELATION_SOURCE",
+        "proposition": "Eventual constant lower bound on the literal native long term",
+        "typed_declaration": null,
+        "quantifiers": [
+          "exists C>0 and T before every t>=T",
+          "Premise is stated inline in its consumer"
+        ],
+        "consumers": [
+          "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower"
+        ],
+        "next_test": "Complete signed off-diagonal with the rank-one term retained"
+      },
+      {
+        "id": "STEP4_ALTERNATIVES",
+        "kind": "OR",
+        "children": [
+          "D1_ACTUAL_RAYS",
+          "D2_NEGATIVE_GROUNDS",
+          "D3_NATIVE_JOINT_INDEX",
+          "D4_DIRECT",
+          "B_CAUSAL",
+          "A_SIGNED_OBSERVATION",
+          "C_DIRECT_COMPLEMENT",
+          "C1_COFINAL_MOMENT_SLICES",
+          "P1_SELECTED_PACKET_GROUND_RESPONSE",
+          "C2_ACTUAL_LONG_TERM_LOWER"
+        ]
+      }
+    ],
+    "closed_leaf_count": 0,
+    "or_minimal_sufficient_hypotheses": [
+      [
+        "D1_ACTUAL_RAYS"
+      ],
+      [
+        "D2_NEGATIVE_GROUNDS"
+      ],
+      [
+        "D3_NATIVE_JOINT_INDEX"
+      ],
+      [
+        "D4_DIRECT"
+      ],
+      [
+        "B_CAUSAL"
+      ],
+      [
+        "A_SIGNED_OBSERVATION"
+      ],
+      [
+        "C_DIRECT_COMPLEMENT"
+      ],
+      [
+        "C1_COFINAL_MOMENT_SLICES"
+      ],
+      [
+        "P1_SELECTED_PACKET_GROUND_RESPONSE"
+      ],
+      [
+        "C2_ACTUAL_LONG_TERM_LOWER"
+      ]
+    ],
+    "retained_historical_root": {
+      "id": "STEP4_ALTERNATIVES",
+      "kind": "OR",
+      "children": [
+        "D1_ACTUAL_RAYS",
+        "D2_NEGATIVE_GROUNDS",
+        "D3_NATIVE_JOINT_INDEX",
+        "D4_DIRECT",
+        "B_CAUSAL",
+        "A_SIGNED_OBSERVATION",
+        "C_DIRECT_COMPLEMENT"
+      ]
+    },
+    "actual_pointwise_edges": [
+      {
+        "theorem": "even_negative_ground_restriction_of_all_ray",
+        "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+        "line": 131,
+        "all_inputs": [
+          "EvenRayComparison"
+        ],
+        "output": "EvenNegativeGroundRestriction"
+      },
+      {
+        "theorem": "odd_negative_ground_restriction_of_all_ray",
+        "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+        "line": 136,
+        "all_inputs": [
+          "OddAdjointRayComparison"
+        ],
+        "output": "OddNegativeGroundRestriction"
+      },
+      {
+        "theorem": "noBothNeg_of_research_targets",
+        "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+        "line": 40,
+        "all_inputs": [
+          "EvenRayComparison",
+          "OddAdjointRayComparison",
+          "SharedGroundExclusion"
+        ],
+        "output": "PointwiseNoBothNeg"
+      },
+      {
+        "theorem": "noBothNeg_of_ground_restrictions",
+        "path": "Zeta23/OPICARound4/ClosureConsumers.lean",
+        "line": 167,
+        "all_inputs": [
+          "EvenNegativeGroundRestriction",
+          "OddNegativeGroundRestriction",
+          "SharedGroundExclusion"
+        ],
+        "output": "PointwiseNoBothNeg"
+      }
+    ],
+    "pointwise_symbolic_minimal_input_sets": [
+      [
+        "EvenNegativeGroundRestriction",
+        "OddAdjointRayComparison",
+        "SharedGroundExclusion"
+      ],
+      [
+        "EvenNegativeGroundRestriction",
+        "OddNegativeGroundRestriction",
+        "SharedGroundExclusion"
+      ],
+      [
+        "EvenRayComparison",
+        "OddAdjointRayComparison",
+        "SharedGroundExclusion"
+      ],
+      [
+        "EvenRayComparison",
+        "OddNegativeGroundRestriction",
+        "SharedGroundExclusion"
+      ]
+    ],
+    "pointwise_minimal_blocking_sets": [
+      [
+        "SharedGroundExclusion"
+      ],
+      [
+        "EvenNegativeGroundRestriction",
+        "EvenRayComparison"
+      ],
+      [
+        "OddAdjointRayComparison",
+        "OddNegativeGroundRestriction"
+      ]
+    ],
+    "pointwise_scope": "Four Lean implications only. Inputs are global research predicates. Output at 0<L and K>=3. Sets are symbolic supplier patterns, never evidence."
+  },
+  "registers": {
+    "historical_canonical_state": {
+      "current_operation": "POST271_COFINAL_ARITHMETIC_EQUIVALENCE_AUDIT",
+      "candidate_scope": {
+        "trust_zone": "RH_FORMAL_CORE",
+        "source_command_kinds": [
+          "THEOREM",
+          "LEMMA"
+        ],
+        "authority_cap": "DISCOVERY_ONLY"
+      },
+      "graph_theorem_promotion": false,
+      "repository_graph_authority": {
+        "pr": 271,
+        "validated_head": "3b1dfb8337125b10ce99febbb974ff8c7086394e",
+        "merge_commit": "c9fb1a6462e5cc828acb951aefd4e9fae33ddaaa",
+        "tree": "10ba766b13e63fb5e5567c3da7a3910f54fe6812",
+        "status": "MERGED_GREEN_POST271_GRAPH_STEADY_STATE",
+        "tracked_files": 1340,
+        "local_lean_modules": 647,
+        "named_source_declarations": 8383,
+        "document_nodes": 70,
+        "registered_roots": 86,
+        "graph_relations": 302670
+      }
+    },
+    "framework_claim_caps": {
+      "FFBBP_RUNTIME": {
+        "scope": "finite_synthetic_unknown_field_diagnostic_only",
+        "claim_cap": "DIAGNOSTIC_ONLY",
+        "status": "QUALIFIED_DIAGNOSTIC_RUNTIME"
+      },
+      "FFBBP_ASSURANCE": {
+        "scope": "typed_reduction_assurance_and_post_reference_candidate_cohorting",
+        "claim_cap": "RESEARCH_CONTROL_ONLY",
+        "status": "RHKG_SNAPSHOT_ASSURANCE_V17_INTEGRATED_RUNTIME_NOT_PROMOTED"
+      },
+      "OOL_MVS": {
+        "scope": "operational_semantics_and_governance_only",
+        "claim_cap": "RESEARCH_CONTROL_ONLY",
+        "status": "RHKG_PHASE_ATLAS_V277_INTEGRATION_ACTIVE"
+      },
+      "PERMANSSON_EMBEDDED": {
+        "scope": "embedded_theorem31_only",
+        "claim_cap": "AUXILIARY_FORMAL_ONLY",
+        "status": "INDEPENDENT_AUXILIARY_FORMALIZATION"
+      },
+      "PERMANSSON_EXTERNAL": {
+        "scope": "research_regime_and_intervention_semantics",
+        "claim_cap": "EXTERNAL_FORMAL_REFERENCE_ONLY",
+        "status": "PINNED_EXTERNAL_FORMAL_BRIDGE_PENDING"
+      },
+      "MCM_HMWH": {
+        "scope": "future_research_federation",
+        "claim_cap": "DISCOVERY_ONLY",
+        "status": "NOT_YET_INTEGRATED"
+      }
+    },
+    "frontier": {
+      "combination": "OR: one complete branch suffices; no branch is a hidden prerequisite of another.",
+      "closing_leaves": [
+        {
+          "id": "C1",
+          "register": "CR01",
+          "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds",
+          "status": "OPEN",
+          "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_bounds (M60, local compile). A sharp interface: proving it is proving RH."
+        },
+        {
+          "id": "PACKET",
+          "register": "CR02",
+          "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_eventual_disjoint_quartic_ground_restriction",
+          "status": "OPEN"
+        },
+        {
+          "id": "C2",
+          "register": "CR03",
+          "consumer": "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower",
+          "status": "OPEN"
+        },
+        {
+          "id": "K3",
+          "register": "CR04",
+          "consumer": null,
+          "status": "OPEN",
+          "note": "Needs both the arithmetic bound and a formal end-to-end K3 reduction."
+        },
+        {
+          "id": "CAUSAL",
+          "register": "CR05",
+          "consumer": null,
+          "status": "OPEN",
+          "note_4d": "Paper sequence criterion CR39 OPEN; the L2 first-variation shortcut is refuted by genuine critical zeros (DERIVED). The membership target itself is not refuted."
+        },
+        {
+          "id": "PG",
+          "register": "CR31",
+          "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_polynomial",
+          "status": "OPEN",
+          "implies": "SE",
+          "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_polynomial (M60, local compile). A sharp interface: proving it is proving RH."
+        },
+        {
+          "id": "SE",
+          "register": "CR32",
+          "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_subexponential",
+          "status": "OPEN",
+          "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_subexponential (M60, local compile). A sharp interface: proving it is proving RH."
+        },
+        {
+          "id": "SB",
+          "register": "CR34",
+          "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_semibounded",
+          "status": "OPEN",
+          "note_6a": "Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_semibounded (M60, local compile). A sharp interface: proving it is proving RH."
+        },
+        {
+          "id": "C2-SE",
+          "register": "CR35",
+          "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential",
+          "status": "OPEN"
+        },
+        {
+          "id": "SG",
+          "register": "CR41",
+          "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
+          "status": "OPEN",
+          "implies": "PG"
+        },
+        {
+          "id": "DD",
+          "register": "CR51",
+          "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_delay_descent",
+          "status": "OPEN",
+          "implies": "SE",
+          "note_6b": "EvenDelayDescent or OddDelayDescent for one admissible cost profile. Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_delay_descent (M62, local compile)."
+        },
+        {
+          "id": "ND",
+          "register": "CR52",
+          "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_scale_descent",
+          "status": "OPEN",
+          "implies": "DD",
+          "note_6b": "EvenScaleDescent or OddScaleDescent for one 0 < theta < 1. Equivalent to Mathlib RiemannHypothesis: Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_scale_descent (M62, local compile)."
+        }
+      ],
+      "supporting_statuses": {
+        "OPEN": 8,
+        "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910": 5,
+        "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED": 3,
+        "DERIVED_NOT_FORMALIZED": 1,
+        "FINITE_CERTIFICATE": 2
+      },
+      "explicit_implications": [
+        [
+          [
+            "PG"
+          ],
+          "SE"
+        ],
+        [
+          [
+            "SG"
+          ],
+          "PG"
+        ],
+        [
+          [
+            "DD"
+          ],
+          "SE"
+        ],
+        [
+          [
+            "ND"
+          ],
+          "DD"
+        ]
+      ],
+      "reachable_by_explicit_implications": {
+        "C1": [],
+        "PACKET": [],
+        "C2": [],
+        "K3": [],
+        "CAUSAL": [],
+        "PG": [
+          "SE"
+        ],
+        "SE": [],
+        "SB": [],
+        "C2-SE": [],
+        "SG": [
+          "PG",
+          "SE"
+        ],
+        "DD": [
+          "SE"
+        ],
+        "ND": [
+          "DD",
+          "SE"
+        ]
+      }
+    },
+    "constraint_axes": {
+      "native_validity": "Is the exact statement proved for the actual source and carrier?",
+      "closing_relevance": "Would it supply an opposing estimate strong enough to contradict the generated state?"
+    },
+    "constraint_count": 53,
+    "constraint_to_named_consumers": {
+      "CR01": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.cofinal_moment_closure_consumer"
+      ],
+      "CR02": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_eventual_disjoint_quartic_ground_restriction",
+        "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_selected_packet_ground_restriction",
+        "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_selected_packet_with_ground_restriction"
+      ],
+      "CR03": [
+        "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower"
+      ],
+      "CR04": [],
+      "CR05": [],
+      "CR06": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.eventually_no_moment_slice_lower_bound_below_margin"
+      ],
+      "CR07": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.quartic_moment_slices_nontrivial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.quartic_slice_dimension_consumer"
+      ],
+      "CR08": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_of_coordinate_tolerance",
+        "Zeta23.OPICARound4.ArithmeticFrontier.coordinate_tolerance_of_evenMomentSliceLowerBound"
+      ],
+      "CR09": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.noBothNeg_of_ground_response_and_disjoint_spectra"
+      ],
+      "CR10": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.inverse_residual_certificate_consumer"
+      ],
+      "CR11": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.Validation.core_shift_consumer"
+      ],
+      "CR12": [],
+      "CR13": [],
+      "CR14": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.core_shift_certificate (via Frobenius >= operator norm)"
+      ],
+      "CR15": [],
+      "CR16": [],
+      "CR17": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_arch_prime",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime"
+      ],
+      "CR18": [],
+      "CR19": [],
+      "CR20": [],
+      "CR21": [],
+      "CR22": [],
+      "CR23": [],
+      "CR24": [],
+      "CR25": [],
+      "CR26": [],
+      "CR27": [],
+      "CR28": [],
+      "CR29": [],
+      "CR30": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.core_shift_certificate_of_columns"
+      ],
+      "CR31": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_polynomial"
+      ],
+      "CR32": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_subexponential",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_subexponential_of_polynomial"
+      ],
+      "CR33": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_odd_fixed_rate"
+      ],
+      "CR34": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_semibounded",
+        "Zeta23.OPICARound4.ArithmeticFrontier.eventually_both_moment_slices_below",
+        "Zeta23.OPICARound4.ArithmeticFrontier.cofinal_semibounded_of_cofinal_moment_slice_bounds"
+      ],
+      "CR35": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_polynomial"
+      ],
+      "CR36": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.native_compressed_commutator_eq",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_even_slice_leakage",
+        "Zeta23.OPICARound4.ArithmeticFrontier.squaredIndex_mulVec_odd_slice_leakage"
+      ],
+      "CR37": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_of_certificate"
+      ],
+      "CR38": [],
+      "CR39": [],
+      "CR40": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.odd_native_rank_two_commutator",
+        "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice_form_lower_of_geometry_basis"
+      ],
+      "CR41": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_polynomial_of_geometry_response"
+      ],
+      "CR42": [],
+      "CR43": [],
+      "CR44": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.zeroStrip_iff_odd_fixed_rates",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedRateMomentSliceBounds_of_re_le",
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedRateMomentSliceBounds_of_half_lt",
+        "Zeta23.OPICARound4.ArithmeticFrontier.canonicalSource_re_inner_ge_neg_of_zeroStrip",
+        "Zeta23.OPICARound4.ArithmeticFrontier.momentSliceLowerBounds_zero_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_bounds",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_cofinal_moment_slice_semibounded",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_fixed_parity_subexponential"
+      ],
+      "CR45": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_predecessor_empty_of_bottom_three_lt",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_even_trial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.nativeDeepThresholdGround_cutoff_eq_three_of_odd_trial"
+      ],
+      "CR46": [],
+      "CR47": [],
+      "CR48": [],
+      "CR49": [],
+      "CR50": [],
+      "CR51": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixed_rate_of_delay_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenFixedRateMomentSliceBound_of_delayDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddFixedRateMomentSliceBound_of_delayDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_delay_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_delay_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_riemannHypothesis"
+      ],
+      "CR52": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.admissibleDescentCosts_polynomial",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_scaleDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_scaleDescent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_scale_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_scale_descent",
+        "Zeta23.OPICARound4.ArithmeticFrontier.evenScaleDescent_of_riemannHypothesis",
+        "Zeta23.OPICARound4.ArithmeticFrontier.oddScaleDescent_of_riemannHypothesis"
+      ],
+      "CR53": []
+    },
+    "selected_native_constraints": [
+      {
+        "id": "CR01",
+        "name": "(C1) cofinal vanishing-error moment-slice bounds",
+        "statement": "For every n>=1 there is an aperture L>=n+2 and one parity whose entire moment slice at K=originalDetectorQuarticCutoff(L) satisfies Q_p(L,x) >= -(1/n)||x||^2 in the inherited physical norm.",
+        "native_validity": "OPEN",
+        "closing_relevance": "CLOSING_IF_PROVED",
+        "scope": "Actual canonical source; actual even/odd pole-neutral carriers with physical M4=0 (even) or M3=M5=0 (odd); literal quartic cutoff.",
+        "consumers": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds",
+          "Zeta23.OPICARound4.ArithmeticFrontier.Validation.cofinal_moment_closure_consumer"
+        ],
+        "budget_improved": "Would discharge the closing premise directly."
+      },
+      {
+        "id": "CR04",
+        "name": "Native K3 ordinary-prime remainder E_ord",
+        "statement": "An eventual polynomial lower bound on either literal K3 scalar energy, equivalently control of E_ord = B_1 + 200 a beta^2 L + d_0 (H_2+16) L^2.",
+        "native_validity": "OPEN",
+        "closing_relevance": "CLOSING_ONLY_WITH_UNFORMALIZED_DERIVED_K3_REDUCTION",
+        "scope": "Fixed K=3 native vectors; different carriers from the quartic slices.",
+        "consumers": [],
+        "budget_improved": "Would close via the DERIVED fixed-K3 Landau argument, which is not formalized."
+      },
+      {
+        "id": "CR16",
+        "name": "Fixed fractional saving against the positive K3 sector",
+        "statement": "B_1 >= -kappa (A_Gamma + B_{>=2}) eventually with fixed kappa < 1.",
+        "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+        "closing_relevance": "BLOCKED",
+        "scope": "Native K3.",
+        "consumers": [],
+        "budget_improved": "Too strong even under RH."
+      },
+      {
+        "id": "CR17",
+        "name": "Pole channel vanishes on both carriers",
+        "statement": "The pole kernel is S(u u^T - v v^T) with u_n = L/d_n and v_n = 4 pi n/d_n; parity kills one profile and pole neutrality the other, so the pole energy is identically zero on both pole-neutral carriers. The native energy there is exactly -arch - prime.",
+        "native_validity": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+        "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
+        "scope": "Every L, K; both parities.",
+        "consumers": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_iff_arch_prime",
+          "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_iff_arch_prime"
+        ],
+        "budget_improved": "Removes the pole channel from every signed budget on the carriers; enclosures [+/- 1e-55] at every replayed state."
+      },
+      {
+        "id": "CR18",
+        "name": "Channel-separated supplier",
+        "statement": "lambda_min(-arch) + lambda_min(-prime) >= -1/n on the slice.",
+        "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+        "closing_relevance": "BLOCKED",
+        "scope": "Replayed L = 4, 5, 6.",
+        "consumers": [],
+        "budget_improved": "Even-slice minima: -arch -1.354/-1.719/-2.084, -prime -3.788/-4.774/-5.366 at L = 4/5/6 (rigorous Rayleigh values); the separated loss grows about linearly in L while the tolerance shrinks."
+      },
+      {
+        "id": "CR25",
+        "name": "Channel-separable control of -arch and -prime on the near-null subspace",
+        "statement": "Bounds -arch >= -kappa_A and -prime >= -kappa_P on V with kappa_A + kappa_P smaller than the required tolerance.",
+        "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+        "closing_relevance": "BLOCKED",
+        "scope": "Native slices at L = 4, 5, 6, both parities.",
+        "consumers": [],
+        "budget_improved": "EXPERIMENTAL SIGNAL with certified entries: on V each channel has O(1) negative eigenvalues (-arch down to -2.1, -prime down to -5.4) while the joint form is at most 7.5e-3; any channel-separable estimate loses O(1). -arch alone is certified not positive at L = 4, 5."
+      },
+      {
+        "id": "CR26",
+        "name": "Stability of slice positivity under prime-cell truncation",
+        "statement": "The slice form -arch - prime_{q <= P} stays above -eps for some P < Q.",
+        "native_validity": "FALSIFIED_SPECIFIC_TARGET",
+        "closing_relevance": "BLOCKED",
+        "scope": "L = 4, 5 (certified) and L = 6 (floating).",
+        "consumers": [],
+        "budget_improved": "Dropping only the largest prime power gives certified negative values (-1.06e-5 / -2.7e-3 at L = 4, -0.216 / -0.271 at L = 5); truncated forms are not native. A supplier must use the whole prime cell; truncation or monotone-in-P arguments are blocked."
+      },
+      {
+        "id": "CR31",
+        "name": "(PG) fixed-parity polynomial lower bound on the moment slices",
+        "statement": "Exists a parity p, C > 0, d : Nat and L0 with Q_p(L,u) >= -C (1+L)^d ||u||^2 for every u in M_p(L,K(L)) and every L >= L0.",
+        "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+        "closing_relevance": "CLOSING_IF_SUPPLIED",
+        "scope": "Actual quartic cutoff, coefficient physical norm, exact slices.",
+        "consumers": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_polynomial"
+        ],
+        "budget_improved": "Permits any fixed polynomial loss instead of a vanishing epsilon."
+      },
+      {
+        "id": "CR32",
+        "name": "(SE) fixed-parity subexponential lower bound",
+        "statement": "Exists p such that for every alpha > 0 there are C, L0 with Q_p(L,u) >= -C exp(alpha L) ||u||^2 for all L >= L0.",
+        "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+        "closing_relevance": "CLOSING_IF_SUPPLIED",
+        "scope": "As CR31.",
+        "consumers": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_fixed_parity_subexponential",
+          "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_subexponential_of_polynomial"
+        ],
+        "budget_improved": "Every positive exponential rate is affordable."
+      },
+      {
+        "id": "CR37",
+        "name": "(SG) geometry-diagonal and source-response growth (5A candidate)",
+        "statement": "In one fixed parity, for all late L: ||V* E w|| <= C_z (1+L)^a and min_i <v_i, H v_i> >= -C_h (1+L)^b, with v_i the geometry eigenbasis of J = V* D0 V and w the unit leakage normal.",
+        "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910 (M59); PREMISE OPEN",
+        "closing_relevance": "CLOSING_IF_SUPPLIED_VIA_PG",
+        "scope": "Paper candidate from RH_Step4_Polynomial_Geometry_and_Source_Response_2026-11-08.md (TEXT_REVIEWED).",
+        "consumers": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_geometry_response_polynomial",
+          "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_of_certificate"
+        ],
+        "budget_improved": "Reduces the all-vector bound to a geometry-diagonal family and one mixed response; the reduction loss 2 ||l|| ||z|| / g_J is polynomial but large (about 2e4 at L=4)."
+      },
+      {
+        "id": "CR38",
+        "name": "(CP) centered ordinary-prime discrepancy lower bound",
+        "statement": "In one fixed parity, for all late L and every slice vector f: D_theta(L, f) >= -C (1+L)^d ||f||^2, where Q_L = R_0 + D_theta - P_pp exactly, R_0 >= c_* ||f||^2 (c_* about -1.3722) and ||P_pp|| <= 2 L^2.",
+        "native_validity": "OPEN (reduction CP -> PG DERIVED, not formalized)",
+        "closing_relevance": "CLOSING_IF_SUPPLIED_VIA_PG",
+        "scope": "Paper reduction (Centered Prime Continuation, 8 November, TEXT_REVIEWED).",
+        "consumers": [],
+        "budget_improved": "Isolates the centered ordinary-prime tail; proper prime powers paid at 2 L^2."
+      },
+      {
+        "id": "CR40",
+        "name": "Native rank-one leakage factor and rank-two compressed commutator",
+        "statement": "D0 u - P_S D0 u = (M6(u)/||r_e||^2) r_e (even), (M7(u)/||r_o||^2) r_o (odd); <u, P D0 P A v - P A P D0 v> = c(v) conj<r, A u> - conj(c(u)) <r, A v> for the full canonical source.",
+        "native_validity": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+        "closing_relevance": "STRUCTURAL_ADAPTER",
+        "scope": "Both actual slices; ambient slices proved equal to the existing moment slices.",
+        "consumers": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.odd_native_rank_two_commutator",
+          "Zeta23.OPICARound4.ArithmeticFrontier.rieszSlice_form_lower_of_geometry_basis"
+        ],
+        "budget_improved": "Completes the native application of M51 (U4); no sign."
+      },
+      {
+        "id": "CR41",
+        "name": "Reconstruction bound and the (SG) certificate consumer",
+        "statement": "Re x*Hx >= (h0 - 2 n_z n_l / g)||x||^2 under the rank-two relation; a geometry-response certificate gives the slice bound at its floor; polynomial certificates at every late aperture in one parity give PG and RH.",
+        "native_validity": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+        "closing_relevance": "CLOSING_IF_SUPPLIED",
+        "scope": "Native slices; the certificate includes an orthonormal geometry eigenbasis, gap, diagonal, response and leakage numbers.",
+        "consumers": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.fixed_parity_polynomial_of_geometry_response"
+        ],
+        "budget_improved": "Entrywise Cauchy-Schwarz avoids a dimension factor; the K^2-scale loss of the leakage norm remains (5A)."
+      },
+      {
+        "id": "CR42",
+        "name": "Paid proper-prime-power adapter",
+        "statement": "||P_pp(L)|| <= 2 L^2 on either compressed slice; PG holds for the full source iff it holds for the primes-only source.",
+        "native_validity": "DERIVED_NOT_FORMALIZED",
+        "closing_relevance": "COARSE_GROWTH_ADAPTER",
+        "scope": "Paper (Centered Prime Continuation, section 4), DERIVED; elementary (no PNT or RH).",
+        "consumers": [],
+        "budget_improved": "Polynomial charge acceptable for PG, not for C1."
+      },
+      {
+        "id": "CR43",
+        "name": "Unconditional explicit-PNT all-vector bound",
+        "statement": "Q_L(f) >= [c_* - (1 + 4 pi K/L)(3 + (939/40) L^(303/200) e^(L/2 - 0.8274 sqrt L))] ||f||^2 (Johnston-Yang input).",
+        "native_validity": "DERIVED_NOT_FORMALIZED",
+        "closing_relevance": "NOT_CLOSING (exponential rate 1/2)",
+        "scope": "Paper (Centered Prime Continuation, section 7), DERIVED.",
+        "consumers": [],
+        "budget_improved": "Stretched-exponential saving inside an exponential allowance; an x^(1/2+eta) error input would give rate eta."
+      },
+      {
+        "id": "CR46",
+        "name": "Target consolidation: (U), (F) and (E) are one growth bound for the prime field Z",
+        "statement": "Under a hypothetical off-line zero of displacement delta, for every beta < delta there are arbitrarily late apertures where a cutoff-3 unit vector has energy below -e^(beta L); there the least-crossing cutoff is 3, the predecessor is {0}, and (E) is the plain L2 growth bound for Z at horizon L - c0. (F) is the weighted L2 growth bound because ||N v_L||^2 tends to ||U||^2 > 0. (U) is the weighted L1 growth bound. At rate eta each excludes zeros of displacement above eta and is implied by their absence.",
+        "native_validity": "DERIVED_NOT_FORMALIZED",
+        "closing_relevance": "NOT_CLOSING (removes (E) and (F) as independent suppliers)",
+        "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, sections 3 to 5), DERIVED, not independently reviewed. Without a dominance assumption the note does not show that the late apertures it produces coincide with the cofinal apertures of the compiled production detector.",
+        "consumers": [],
+        "budget_improved": "None. Three listed suppliers reduce to one."
+      },
+      {
+        "id": "CR47",
+        "name": "Scalar criterion on the even cutoff-3 energy",
+        "statement": "Let E_e(L) be the canonical energy of the unit vector of the even cutoff-3 pole-neutral boundary-flat space; its transform is R(z) = c_e (z^2 - 1/4)/(z prod_{a<=3}(z^2 + (2 pi a/L)^2)). Then sup Re rho - 1/2 is the least exponential rate at which E_e is bounded below. RH holds iff E_e(L) >= 0 for all large L, and under RH 0 < E_e(L) <= 12.94/L^5. The same holds for the odd vector.",
+        "native_validity": "DERIVED_NOT_FORMALIZED",
+        "closing_relevance": "CLOSING_IF_SUPPLIED (RH-equivalent scalar interface; a reformulation, not an independent supplier)",
+        "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, section 6), DERIVED. The energy and zero-sum identity is compiled (zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm); the Landau-type converse is not formalized.",
+        "consumers": [],
+        "budget_improved": "States the remaining premise on one sequence of finite smoothed prime sums. No bound is supplied."
+      },
+      {
+        "id": "CR50",
+        "name": "Ground-state convergence candidate (CT)",
+        "statement": "For a sequence L_j tending to infinity with simple even bottoms: if the normalised ground transforms converge locally uniformly to xi(1/2 + z), then RH (by CR49 and Hurwitz).",
+        "native_validity": "OPEN",
+        "closing_relevance": "CLOSING_IF_SUPPLIED (the natural proof consumes canonical positivity)",
+        "scope": "Paper level (round7/ROUND7_SELECTED_PREDECESSOR_AND_SCALAR_TARGET.md, section 8), LEAD.",
+        "consumers": [],
+        "budget_improved": "None. Identifying the near-radical vector with the ground vector needs the absence of eigenvalues below it, which is the missing estimate."
+      },
+      {
+        "id": "CR51",
+        "name": "Loss-tolerant delay descent is a sharp interface",
+        "statement": "Abstractly (fixed_rate_of_delay_descent): if P L eps is monotone in eps, holds with C0 e^(alpha L) from L1 on, and at every large L a bound eps on [L1, L - h(L)] gives P L (A(L) + G(L) eps), with h eventually >= h0 > 0, A eventually below every positive exponential rate and 2 G(L) <= e^(eta h(L)) eventually for every eta > 0, then P holds at every positive rate from L1 on. Natively (EvenDelayDescent, OddDelayDescent): with such costs the delay descent of the slice bottom in one parity gives (SE) and RH; under RH every eventually nonnegative cost profile satisfies it.",
+        "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+        "closing_relevance": "SHARP_INTERFACE (closing iff the descent inequality is supplied)",
+        "scope": "Actual quartic moment slices in one fixed parity; every admissible cost profile. The a priori base is the unconditional rate-one bound (explicit start L >= 1).",
+        "consumers": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.fixed_rate_of_delay_descent",
+          "Zeta23.OPICARound4.ArithmeticFrontier.evenFixedRateMomentSliceBound_of_delayDescent",
+          "Zeta23.OPICARound4.ArithmeticFrontier.oddFixedRateMomentSliceBound_of_delayDescent",
+          "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_delay_descent",
+          "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_delay_descent",
+          "Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_riemannHypothesis",
+          "Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_riemannHypothesis"
+        ],
+        "budget_improved": "The missing inequality may lose polynomial or subexponential factors and may compare an aperture with earlier ones; positivity at intermediate apertures and contraction are not needed. No descent inequality is supplied."
+      },
+      {
+        "id": "CR52",
+        "name": "Fractional-scale descent with polynomial costs is a sharp interface",
+        "statement": "For 0 < theta < 1, C >= 0 and exponents d, m: the slice bound eps at theta L giving the slice bound C(1+L)^d + C(1+L)^m eps at L, at every large L in one parity (EvenScaleDescent, OddScaleDescent), is equivalent to RH. It is an instance of CR51 with delay (1 - theta) L.",
+        "native_validity": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+        "closing_relevance": "SHARP_INTERFACE",
+        "scope": "Actual quartic moment slices; the contract (ND) of the signed-aperture note in its lower-bound form.",
+        "consumers": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.admissibleDescentCosts_polynomial",
+          "Zeta23.OPICARound4.ArithmeticFrontier.evenDelayDescent_of_scaleDescent",
+          "Zeta23.OPICARound4.ArithmeticFrontier.oddDelayDescent_of_scaleDescent",
+          "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_even_scale_descent",
+          "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_odd_scale_descent",
+          "Zeta23.OPICARound4.ArithmeticFrontier.evenScaleDescent_of_riemannHypothesis",
+          "Zeta23.OPICARound4.ArithmeticFrontier.oddScaleDescent_of_riemannHypothesis"
+        ],
+        "budget_improved": "As CR51."
+      },
+      {
+        "id": "CR53",
+        "name": "Tame integer drive and wild Moebius part: the exact Abel-Mertens bridge",
+        "statement": "For the fixed cutoff-4 kernel q4 = g * g, S(T) = sum_{n <= e^T} Lambda(n) n^(-1/2) q4(T - log n) equals int_0^T m(v) J(T - v) dv with m(v) = e^(-v/2) M(e^v), J = H' + H/2 and H(t) = sum_{n <= e^t} (log n / sqrt n) q4(t - log n); |H| <= C_H (1+t) and |H'| <= C_H' (1+t) with explicit rationals. |M(x)| <= C x^theta gives fixed-field rate theta - 1/2. J takes both signs (J(4) > 0 > J(6)).",
+        "native_validity": "DERIVED_NOT_FORMALIZED",
+        "closing_relevance": "NOT_CLOSING (locates the unpaid term)",
+        "scope": "Paper level (cutoff-scale note of 12 November), DERIVED; the identity uses finite partial summation only. The constants, the double zero of K at 1/2 and the two signs of J are recomputed exactly in evidence/increment6b (FINITE_CERTIFICATE).",
+        "consumers": [],
+        "budget_improved": "The whole integer drive (weight one on every integer) is paid unconditionally; the unpaid term is signed cancellation of mu against J. The classical Mertens criterion is the anchor, not a new input."
+      }
+    ],
+    "source_open_targets": [
+      {
+        "id": "C_DIRECT",
+        "priority": "FIRST arithmetic question; no new framework required",
+        "forced": "The exact stored original smooth trial has Re W(g,g) <= -4 exp(beta L).",
+        "missing": "A legitimate source-specific lower bound incompatible with that value on an available late packet. For example, an eventual lower bound -C exp(epsilon L), epsilon<beta, would suffice.",
+        "quantifiers": "Fix rho and 0<beta<|Re rho-1/2|, then a permitted phase. A bound with constants depending on fixed rho/beta is allowed if derived without circularity and its threshold is fixed before choosing the sufficiently late generated packet. Mere existence of unrelated quiet scales is insufficient.",
+        "benefit": "This bypasses Schur transport, common-ground tie exclusion and the full regular-cell programme if the direct estimate can be proved."
+      },
+      {
+        "id": "C_SMOOTH_SCHUR",
+        "priority": "SECOND arithmetic formulation if the inverse-weighted expression reveals useful cancellation",
+        "forced": "exists_generated_smooth_source_main_lower_threshold gives one source-only L0 before all generated-packet parameters. Every actual generated packet with lateness R>=L0 has smoothSourceMain>exp(beta*L)/4 at its own aperture. The complete finite-to-smooth difference has a proved vanishing bound.",
+        "missing": "An independent bound on that complete SmoothMain, retaining all signed histories, full Archimedean term, exact P and eta mass. Conditioning alone does not provide it.",
+        "quantifiers": "The existing all-selector subexponential consumer is sufficient, not necessary. A weaker actual-generated-family bound must come with its own correct quantified route to the same late packet.",
+        "benefit": "Removes approximation error as an explanation of the obstruction and identifies the precise surviving source arithmetic.",
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.exists_generated_smooth_source_main_lower_threshold"
+        ]
+      },
+      {
+        "id": "D_STRICT_EVEN",
+        "priority": "Alternative actual-ground route",
+        "forced": "Delta(r)=C(r)-1 at the actual even lower ground.",
+        "missing": "A source-specific restriction inconsistent with this equality. To use the existing response<1 consumer, Re Delta(r)>Re C(r)-1 on the relevant hypothetical negative-ground family suffices.",
+        "quantifiers": "Do not assert this on every positive strict ground, where the equality is valid too. To use eventual ground closure, retain its uniform L,K threshold; otherwise prove the narrower packet-matched sufficiency directly.",
+        "benefit": "Preserves the signed joint arithmetic rather than replacing it with separate absolute-value estimates."
+      },
+      {
+        "id": "D_STRICT_ODD",
+        "priority": "Alternative actual-ground route",
+        "forced": "Delta(v)=C(v)+1 on nativeOddReciprocalInput at the actual odd lower ground.",
+        "missing": "For the existing odd response<1 consumer, Re Delta(v)<Re C(v)+1 would suffice on the relevant negative-ground family.",
+        "quantifiers": "v is an even arithmetic input. The actual odd eigenray w carries the negative energy. Neither can be replaced by the corrected Riesz test.",
+        "benefit": "Eliminates the previously tempting wrong-input and wrong-sign shortcut."
+      },
+      {
+        "id": "D_SHARED",
+        "priority": "Required only for closing via all three ground alternatives",
+        "forced": "Negative common bottom with exact eigenmode, kernel/range and complement constraints.",
+        "missing": "A genuine-source obstruction to that entire shared-negative-ground alternative. Invisibility or a zero grouped residue alone does not exclude it.",
+        "quantifiers": "Generic arbitrary-multiplicity tie machinery is available; extra deep-selected simplicity/M4 facts require their own packet. Never assume spectral genericity to delete the case.",
+        "benefit": "Keeps the hard equality case visible and prevents a strict-gap proof from claiming global closure."
+      }
+    ],
+    "state_binding_rules": [
+      "COMMON-CUTOFF track: one L,K, actual canonical even/odd matrices, physical metric, two actual bottoms, ground rays and exact reciprocal map. It has simultaneous negativity but no automatic quartic cutoff, exponential depth or selected simplicity.",
+      "DEEP-DETECTOR track: one GeneratedStep123CompleteOutput, rho,beta,phase,separation,L,N=ceil(L^4), selected K,eta, original smooth trial, finite padded unit, predecessor P, forcing F and full complement. It has quantitative depth/inverse/error bounds. Its two phases are separately cofinal, not automatically at one common aperture.",
+      "CROSS-TRACK rule: require an explicit theorem identifying construction, source, L,K,metric,shift and state before transporting a conclusion. Similar names or shared ancestry do not suffice. This extension does not assume or promise a common-packet bridge that has not been proved.",
+      "ABSOLUTE ANCHOR rule: retain canonical equation-(4.4) normalization and absolute energy. Relative source/intertwining identities can survive a common scalar shift; that synthetic freedom is not a permitted modification of the genuine source.",
+      "No new actual-source restriction is established by definitions, property flags, positive finite probes, an empty negative subspace or a green replay. An inconsistency must be proved from correctly scoped hypotheses."
+    ],
+    "source_contract_dependency_entries": [
+      {
+        "id": "G01",
+        "assumptions": "0<L, 2<=K, u in actual pole-neutral even carrier",
+        "conclusion": "f(u)=C(u)-Delta(u), and Delta(u) equals the existing complete Chebyshev discrepancy integral.",
+        "dependencies": [
+          "AdaptiveBudget.nativeArchContinuumRow",
+          "SourceDiscrepancy.correctedSourceTest_complete_arithmetic",
+          "PrimeDiscrepancyIntegral.native_prime_discrepancy_integral"
+        ],
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.native_signed_source_decomposition",
+          "Zeta23.OPICARound4.native_signed_discrepancy_integral"
+        ],
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING"
+      },
+      {
+        "id": "G02E",
+        "assumptions": "0<L, 3<=K, hab:a<b; r is the exact actual even shifted ray at a",
+        "conclusion": "f(r)=1; Delta(r)=C(r)-1; P(r)=-1-A(r); norm(1+A(r))<=nativePrimeConcentrationBudget(L,K,correctedSourceRow,r).",
+        "dependencies": [
+          "exists_poleNeutral_strictEven_ground_shifted_normalization",
+          "native_prime_concentration_budget",
+          "correctedSourceRow_pole_cancelled",
+          "G01"
+        ],
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.actual_even_ground_ray_facts",
+          "Zeta23.OPICARound4.actual_even_ground_signed_discrepancy"
+        ],
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING"
+      },
+      {
+        "id": "G02O",
+        "assumptions": "0<L, 3<=K, hba:b<a; w exact odd adjoint ground ray and v exact nativeOddReciprocalInput at b",
+        "conclusion": "oddPairing(w)=1; f(v)=-1; Delta(v)=C(v)+1; P(v)=1-A(v); norm(1-A(v))<=nativePrimeConcentrationBudget(L,K,correctedSourceRow,v).",
+        "dependencies": [
+          "exists_poleNeutral_strictOdd_ground_adjoint_normalization",
+          "native_odd_response_eq_reciprocal_source",
+          "native_prime_concentration_budget",
+          "G01"
+        ],
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.actual_odd_ground_ray_facts",
+          "Zeta23.OPICARound4.actual_odd_ground_reciprocal_discrepancy"
+        ],
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING"
+      },
+      {
+        "id": "G03",
+        "assumptions": "0<L, 3<=K and actual strict ordering; source-normalized ray at corresponding bottom",
+        "conclusion": "Even lower: b-a<=R*c+tau/2. Odd lower: a-b<=R*c-tau/2.",
+        "dependencies": [
+          "native_even_complete_signed_budget",
+          "native_odd_complete_signed_budget",
+          "actual ground response-one"
+        ],
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.actual_even_ground_signed_budget_feasibility",
+          "Zeta23.OPICARound4.actual_odd_ground_signed_budget_feasibility"
+        ],
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING"
+      },
+      {
+        "id": "G04",
+        "assumptions": "0<L, 3<=K, a<b; exact r at a",
+        "conclusion": "(b-a)*norm(D r)^2<=Re(M4(r)) and 0<Re(M4(r)), retaining f(r)=1 and the actual eigenmode proof.",
+        "dependencies": [
+          "poleNeutral_source_moment_gap_le",
+          "poleNeutral_even_eigen_source_moment_pos_of_lt_odd_bottom",
+          "actual ground normalization"
+        ],
+        "evidence_declarations": [
+          "Zeta23.OPICARound4.actual_even_ground_ray_moment_feasibility"
+        ],
+        "status": "FORMALIZED / LOCAL LEAN PASS / CURRENT-HEAD PRODUCTION QUALIFICATION PENDING"
+      }
+    ],
+    "source_contract_exact_label_intersections": [
+      {
+        "left": "G02E",
+        "right": "G02O",
+        "shared_labels": [
+          "G01",
+          "native_prime_concentration_budget"
+        ]
+      }
+    ],
+    "closure_frontier": {
+      "register": "SOURCE_CONSTRAINTS.json",
+      "status": "OPEN",
+      "ground_join": "Zeta23.OPICARound4.NativeJointGroundConstraints",
+      "complete_smooth_expression": "Zeta23.OPICARound4.smoothSourceMain",
+      "state_rule": "The cofinal same-cutoff parity packet and quartic deep-detector packet are distinct unless a theorem identifies them.",
+      "direct_route": "The original smooth trial already has its negative depth. A source-specific contrary lower estimate can bypass ground/tie and full regular-cell closure.",
+      "error_reduction": "Vanishing finite-to-smooth error preserves the hypothetical loss; it does not supply the missing arithmetic sign.",
+      "metadata_can_discharge_leaf": false
+    },
+    "historical_cuts": [
+      {
+        "id": "A-X",
+        "status": "OPEN",
+        "input": "actual fixed-source X=Pi*j",
+        "required_property": "forall epsilon>0, integral_0_infty exp(-2 epsilon t)|X(t)|^2 dt < infinity",
+        "core_formal_sufficiency_module": "M24",
+        "native_link_modules": [
+          "M15",
+          "M17",
+          "M23"
+        ],
+        "lower_obstruction": "Actual original detector residue/non-subexponential correlation",
+        "optional_paper_refinement": "A03/continuation complete signed cofactor or coprime mixed-energy bound",
+        "not_implied_by": [
+          "rapid integer drive alone",
+          "positive q",
+          "termwise absolute bound"
+        ]
+      },
+      {
+        "id": "B-Y",
+        "status": "OPEN",
+        "input": "actual Yepsilon for native convolution Aepsilon",
+        "required_property": "forall epsilon>0, Yepsilon in closure(range(Aepsilon))",
+        "core_formal_sufficiency_module": "M24",
+        "native_link_modules": [
+          "M18",
+          "M20",
+          "M23"
+        ],
+        "lower_obstruction": "Nonzero final required native zero-jet pairing against a vector in ker(Aepsilon*)",
+        "not_implied_by": [
+          "positive contractive forward kernel",
+          "finite iteration residual decrease",
+          "stable filtered output"
+        ]
+      },
+      {
+        "id": "C-Schur",
+        "status": "OPEN",
+        "input": "complete same-detector signed Schur loss with full complement and known shift",
+        "required_property": "Source-specific subexponential upper law on all selectors returned by the registered producer, with all constants and quantifiers explicit",
+        "core_formal_sufficiency_module": "M24",
+        "native_link_modules": [
+          "M13",
+          "M17",
+          "M23"
+        ],
+        "lower_obstruction": "loss >= D-eta > D/2 at D=exp(beta L)",
+        "not_implied_by": [
+          "small predecessor inverse",
+          "bound on only response term",
+          "one-dimensional selected-ground scalar substituted for full detector complement"
+        ]
+      }
+    ],
+    "composition": {
+      "open_targets": [
+        {
+          "id": "EvenRayComparison",
+          "declaration": "Zeta23.OPICAComposition.EvenRayComparison",
+          "status": "OPEN",
+          "truth_established": false
+        },
+        {
+          "id": "OddAdjointRayComparison",
+          "declaration": "Zeta23.OPICAComposition.OddAdjointRayComparison",
+          "status": "OPEN",
+          "truth_established": false
+        },
+        {
+          "id": "SharedGroundExclusion",
+          "declaration": "Zeta23.OPICAComposition.SharedGroundExclusion",
+          "status": "OPEN",
+          "truth_established": false
+        },
+        {
+          "id": "EventualNoSimultaneousNegativity",
+          "declaration": "Zeta23.OPICAComposition.EventualNoSimultaneousNegativity",
+          "status": "OPEN",
+          "truth_established": false
+        }
+      ],
+      "approved_intermediate_edges": {
+        "INTEGRATION_CLOSURE": [
+          {
+            "declaration": "Zeta23.OPICARound4.eventual_noBothNeg_of_actual_ray_closure",
+            "type_sha256": "563fd9f8f0f4d31753b4facf6ca58166edb3d84c64b2553c66847041e018f212",
+            "source_sha256": "f88b0a4dfc43f9e3103705ca14b46022602bde566e87d2cb2f9d1dd3eac56717"
+          },
+          {
+            "declaration": "Zeta23.OPICARound4.no_off_line_zero_of_eventual_noBothNeg",
+            "type_sha256": "6f4abd87dd9525b65c613255ed25d492d2a969bee8fb791d27762c5f69fd080a",
+            "source_sha256": "f88b0a4dfc43f9e3103705ca14b46022602bde566e87d2cb2f9d1dd3eac56717"
+          }
+        ],
+        "INTEGRATION_SOURCE": [
+          {
+            "declaration": "Zeta23.OPICARound4.SearchSupport.strict_response_of_signed_upper",
+            "type_sha256": "d93be41c518c5c8499c07e4e6c5a139deb9f88cdc9854d90b229e5229a1d32d0",
+            "source_sha256": "a74b9ba1c5991de537ce32d3ef7a75b8e11549992da673528b99789b18b77826"
+          },
+          {
+            "declaration": "Zeta23.OPICARound4.native_even_complete_signed_budget",
+            "type_sha256": "380c9aaae71c296121bedda1fd004722a4afeae4cde48717308bbe47604cdfb7",
+            "source_sha256": "75856cd9ae5790b9bd4afa2ca86014671a845c11f1346c20b13afbb93562b62e"
+          }
+        ],
+        "INTEGRATION_INDEX": [
+          {
+            "declaration": "Zeta23.OPICARound4.frame_strictly_negative_native_plane",
+            "type_sha256": "a376224f9564a38c8091d572e1eb076659164675226e02b2aa71b658143667a0",
+            "source_sha256": "11cc95f5d1a400810e616f464c4e3b56d3c3e368c6cabb27dfd9cd9f56df7ef9"
+          },
+          {
+            "declaration": "Zeta23.OPICARound4.SearchSupport.index_two_contradicts_cap",
+            "type_sha256": "1a413428eba1c58ba805745dcfce940f5b00f38629b2ede43e539592339d9295",
+            "source_sha256": "a74b9ba1c5991de537ce32d3ef7a75b8e11549992da673528b99789b18b77826"
+          }
+        ]
+      },
+      "search_kernel_acceptance": false,
+      "catalogue_grants_proof": false,
+      "provider_exports": [
+        {
+          "declaration": "PermanssonResearch.ReverseSolver.FiniteMonitor.computedValue_eq_value",
+          "consumer": "OPICAProviderAudit.value_eq_spec_consumer"
+        },
+        {
+          "declaration": "PermanssonResearch.ReverseSolver.FiniteMonitor.leastMaximizingControl_spec",
+          "consumer": "OPICAProviderAudit.least_choice_consumer"
+        },
+        {
+          "declaration": "PermanssonResearch.ReverseSolver.FiniteMonitor.computedMaximizer_attains",
+          "consumer": "OPICAProviderAudit.maximizer_attains_consumer"
+        }
+      ],
+      "provider_mode": "POLICY_ADAPTER_ONLY",
+      "provider_commit": "17c315f7df7abf457eb94d393bd526d46da6f6f4",
+      "model_optimality": "NOT_ESTABLISHED",
+      "host_interfaces": {
+        "FFBBP": "research/RHRC/ffbbp/opica_composition.py",
+        "OoL": "research/RHRC/ool/opica_composition.py",
+        "Permansson": "research/RHRC/permansson/opica_composition.py"
+      },
+      "direct_cross_version_imports": false
+    }
+  },
+  "separate_stacked_diagnostic": {
+    "composite": {
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "authority": "HISTORICAL_FULL_V1_REGRESSION_PLUS_NEW_V2_NUMERICS_PLUS_CURRENT_LEAN_ONLY",
+      "case_digests": {
+        "K4_Q2_ENTERING_Q2": "9df5254d4154a495ad87af69609420288eabdce9d125facbf5b714ce5db0f51d",
+        "K4_Q3_FIVE_FOURTHS": "da130688815d985206ed03d9239031b891b894e61ce23b5fde899499d6470963",
+        "K4_Q4_ENTERING_Q4": "6f79d91b22f117946e0b83b0acd62e491abeda1fcb55bb66ff41c49aa4ef8465",
+        "K5_LOG4_SEAM": "092602bb5988d1eb9d0b6ec7f85e00d2930540ca720203bec83fd908138a19f1",
+        "K5_Q4_MODIFIED_Q2_HALF": "aef94f85df9cd87ff7cabbb2751fd9b6da10e54b4c66281b06d06c02f01d4517",
+        "K5_Q5_SEVEN_FOURTHS": "e2c4236ba73a8f0ef495afeccabae7e1b98962b572a5e2403c129befea73611b"
+      },
+      "current_head": "5b2bd397e733cee16d63d111269aafd64e02a6b4",
+      "current_source_policy_digest": "99ffa96b2b2695cb094553a8945bcb7bc101c6f986495cfac7276bcc3e48c0e2",
+      "current_tree": "e6b9783aa29146aeab60bfee170f278be121ad90",
+      "direct_interval_containments": 10012,
+      "frozen_subject": "df914f38f26bdc4109aeaa13f48b3896c3bc61b1",
+      "frozen_tree": "5fc2aa4793b658c58dd89c1d36b0ceee756d400d",
+      "full_historical_v1_jobs": 15,
+      "generated_state_release_check": "SEPARATE_REQUIRED_GATE",
+      "independent_release_review": "PENDING",
+      "independent_source_cases": 6,
+      "merge_ready": false,
+      "schema": "OPICA5_POST299_COMPOSITE_EVIDENCE_CANDIDATE_V1",
+      "source_policy_schema": "OPICA5_POST299_SUCCESSOR_SOURCE_INSPECTION_V2",
+      "status": "PASS_COMPOSITE_EVIDENCE_PENDING_INDEPENDENT_REVIEW",
+      "workflow_attempt": 2,
+      "workflow_run_id": "44257687280"
+    },
+    "six_interval_cases": {
+      "K4_Q2_ENTERING_Q2": {
+        "request": {
+          "id": "K4_Q2_ENTERING_Q2",
+          "K": 4,
+          "Q": 2,
+          "aperture": {
+            "kind": "scaled_log_integer",
+            "n": 2,
+            "scale": "10/9"
+          },
+          "source": {
+            "kind": "VON_MANGOLDT",
+            "prime2_multiplier": "1"
+          },
+          "entering_atom": 2
+        },
+        "authority": "FINITE_INTERVAL_EVIDENCE_ONLY",
+        "is_zero_generated_detector": false,
+        "rational_containment_recheck": {
+          "normal": 702,
+          "optimized": 702
+        },
+        "signed_endpoint_relative_to_one": "below",
+        "positive_reciprocal_mass_relative_to_one": "below",
+        "residue_signs": [
+          "above",
+          "above"
+        ],
+        "derivative_channel_signs": {
+          "0": "above",
+          "21/50": "above",
+          "43/100": "above"
+        }
+      },
+      "K4_Q3_FIVE_FOURTHS": {
+        "request": {
+          "id": "K4_Q3_FIVE_FOURTHS",
+          "K": 4,
+          "Q": 3,
+          "aperture": {
+            "kind": "rational",
+            "value": "5/4"
+          },
+          "source": {
+            "kind": "VON_MANGOLDT",
+            "prime2_multiplier": "1"
+          },
+          "entering_atom": null
+        },
+        "authority": "FINITE_INTERVAL_EVIDENCE_ONLY",
+        "is_zero_generated_detector": false,
+        "rational_containment_recheck": {
+          "normal": 612,
+          "optimized": 612
+        },
+        "signed_endpoint_relative_to_one": "below",
+        "positive_reciprocal_mass_relative_to_one": "below",
+        "residue_signs": [
+          "above",
+          "below"
+        ],
+        "derivative_channel_signs": {
+          "0": "above",
+          "21/50": "above",
+          "43/100": "above"
+        }
+      },
+      "K4_Q4_ENTERING_Q4": {
+        "request": {
+          "id": "K4_Q4_ENTERING_Q4",
+          "K": 4,
+          "Q": 4,
+          "aperture": {
+            "kind": "scaled_log_integer",
+            "n": 4,
+            "scale": "10/9"
+          },
+          "source": {
+            "kind": "VON_MANGOLDT",
+            "prime2_multiplier": "1"
+          },
+          "entering_atom": 4
+        },
+        "authority": "FINITE_INTERVAL_EVIDENCE_ONLY",
+        "is_zero_generated_detector": false,
+        "rational_containment_recheck": {
+          "normal": 704,
+          "optimized": 704
+        },
+        "signed_endpoint_relative_to_one": "below",
+        "positive_reciprocal_mass_relative_to_one": "below",
+        "residue_signs": [
+          "above",
+          "above"
+        ],
+        "derivative_channel_signs": {
+          "0": "above",
+          "21/50": "above",
+          "43/100": "above"
+        }
+      },
+      "K5_LOG4_SEAM": {
+        "request": {
+          "id": "K5_LOG4_SEAM",
+          "K": 5,
+          "Q": 4,
+          "aperture": {
+            "kind": "log_integer",
+            "n": 4
+          },
+          "source": {
+            "kind": "VON_MANGOLDT",
+            "prime2_multiplier": "1"
+          },
+          "entering_atom": null
+        },
+        "authority": "FINITE_INTERVAL_EVIDENCE_ONLY",
+        "is_zero_generated_detector": false,
+        "rational_containment_recheck": {
+          "normal": 995,
+          "optimized": 995
+        },
+        "signed_endpoint_relative_to_one": "below",
+        "positive_reciprocal_mass_relative_to_one": "below",
+        "residue_signs": [
+          "above",
+          "above",
+          "above"
+        ],
+        "derivative_channel_signs": {
+          "0": "above",
+          "21/50": "above",
+          "43/100": "above"
+        }
+      },
+      "K5_Q4_MODIFIED_Q2_HALF": {
+        "request": {
+          "id": "K5_Q4_MODIFIED_Q2_HALF",
+          "K": 5,
+          "Q": 4,
+          "aperture": {
+            "kind": "rational",
+            "value": "3/2"
+          },
+          "source": {
+            "kind": "MODIFIED_Q2_NOT_ZETA",
+            "prime2_multiplier": "1/2"
+          },
+          "entering_atom": null
+        },
+        "authority": "FINITE_INTERVAL_EVIDENCE_ONLY",
+        "is_zero_generated_detector": false,
+        "rational_containment_recheck": {
+          "normal": 996,
+          "optimized": 996
+        },
+        "signed_endpoint_relative_to_one": "above",
+        "positive_reciprocal_mass_relative_to_one": "above",
+        "residue_signs": [
+          "above",
+          "above",
+          "above"
+        ],
+        "derivative_channel_signs": {
+          "0": "above",
+          "21/50": "above",
+          "43/100": "above"
+        }
+      },
+      "K5_Q5_SEVEN_FOURTHS": {
+        "request": {
+          "id": "K5_Q5_SEVEN_FOURTHS",
+          "K": 5,
+          "Q": 5,
+          "aperture": {
+            "kind": "rational",
+            "value": "7/4"
+          },
+          "source": {
+            "kind": "VON_MANGOLDT",
+            "prime2_multiplier": "1"
+          },
+          "entering_atom": null
+        },
+        "authority": "FINITE_INTERVAL_EVIDENCE_ONLY",
+        "is_zero_generated_detector": false,
+        "rational_containment_recheck": {
+          "normal": 997,
+          "optimized": 997
+        },
+        "signed_endpoint_relative_to_one": "below",
+        "positive_reciprocal_mass_relative_to_one": "above",
+        "residue_signs": [
+          "above",
+          "above",
+          "below"
+        ],
+        "derivative_channel_signs": {
+          "0": "above",
+          "21/50": "above",
+          "43/100": "below"
+        }
+      }
+    },
+    "total_exact_containments_rechecked": 10012,
+    "k3": {
+      "box_verdicts": {
+        "PASS": 18
+      },
+      "all_aperture_positivity_certified": false,
+      "certified_negative_stop": false,
+      "tested_boxes": 18,
+      "terminal_claim": "RH_OPEN"
+    },
+    "panel": {
+      "consistent_pair_count": 44,
+      "prohibited_identification": "finite native probe is not a hypothetical-zero-generated original detector",
+      "independent_rh_theorem_authority": false
+    },
+    "wp6": {
+      "disposition": "FALSIFIED_AT_BOUNDED_TRUE_SOURCE_APERTURES",
+      "status": "EXPERIMENTAL_SIGNAL",
+      "tested_target": "unrestricted complete physical Q>=0 on all B>0 shifted K2 rays",
+      "not_claimed": [
+        "any first contact",
+        "the #247 negative selected ground",
+        "universal signed cancellation",
+        "RH"
+      ]
+    },
+    "registry_sha256": "7a7fe7b98bbb5014b0ddddb19e32a01bda120ba30322a6cfc9963991efa535e9",
+    "recomputed_artifact_hashes": {
+      "opica5-composite-evidence": {
+        "id": 14410759393,
+        "sha256": "f813c7815fd837749e97255142d54f79710c7067ff91d05bc6e3993b9f757ea0",
+        "members": {
+          "composite-candidate-evidence.json": "9c9e02e4c377b41cfea5259099d1d19abd870dbcc922dde64f13c3d174e0d967"
+        }
+      },
+      "opica5-fresh-refined": {
+        "id": 14407614573,
+        "sha256": "6796b714dc55ba84abc060cb94224b5c95ba742bfa0dd3983547bbcb110fe92d",
+        "members": {
+          "fresh-refined/K4_Q2_ENTERING_Q2.json": "9df5254d4154a495ad87af69609420288eabdce9d125facbf5b714ce5db0f51d",
+          "fresh-refined/K4_Q3_FIVE_FOURTHS.json": "da130688815d985206ed03d9239031b891b894e61ce23b5fde899499d6470963",
+          "fresh-refined/K4_Q4_ENTERING_Q4.json": "6f79d91b22f117946e0b83b0acd62e491abeda1fcb55bb66ff41c49aa4ef8465",
+          "fresh-refined/K5_LOG4_SEAM.json": "092602bb5988d1eb9d0b6ec7f85e00d2930540ca720203bec83fd908138a19f1",
+          "fresh-refined/K5_Q4_MODIFIED_Q2_HALF.json": "aef94f85df9cd87ff7cabbb2751fd9b6da10e54b4c66281b06d06c02f01d4517",
+          "fresh-refined/K5_Q5_SEVEN_FOURTHS.json": "e2c4236ba73a8f0ef495afeccabae7e1b98962b572a5e2403c129befea73611b"
+        }
+      },
+      "opica5-fresh-source": {
+        "id": 14408930040,
+        "sha256": "b76c917adb8c6b30cc4d6153c16779ad7e240d1b9d373127de1f73f5294b3cf5",
+        "members": {
+          "normal/K4_Q2_ENTERING_Q2.json": "d57f06845b0a8cf5052b835b8c692acb51829a200f4e8b658a8393262c4836b1",
+          "optimized/K4_Q2_ENTERING_Q2.json": "34c09c1111e9440b1c42c82dff9c417f5d5689ed245919219831a3d1d773accf",
+          "normal/K4_Q3_FIVE_FOURTHS.json": "c1699988c15fa0791cc9bfe9e9abb3238c38296486079a993f557d9e6307b0f6",
+          "optimized/K4_Q3_FIVE_FOURTHS.json": "253b4819aa5a49293f5da85212f86aab144af7d0c41857be24a0f2eac4dcdc97",
+          "normal/K4_Q4_ENTERING_Q4.json": "17ae2164c3a0a3fd28c624e35d6b69d71098cf34e49551ce5b2baea5d982ee22",
+          "optimized/K4_Q4_ENTERING_Q4.json": "ef689f7ce4b4aad2edcb7a4228d39387223191a17f246fce341c616424258559",
+          "normal/K5_LOG4_SEAM.json": "656ee87e0e3b320e7f324d34680040e871a7f6e884cf1570ecc29d7083c3915c",
+          "optimized/K5_LOG4_SEAM.json": "7202403674989f600acf0fce03bad47a27b3bc47b27b9fbae75e987f842ff002",
+          "normal/K5_Q4_MODIFIED_Q2_HALF.json": "436d4b1572be482d289147c2263023d410f53ff5d82d593b9ae519ba5eb343d4",
+          "optimized/K5_Q4_MODIFIED_Q2_HALF.json": "3991454615cc5b74ffed1346b4bf79981b191c367d7b09cac949ff6fdaf257a9",
+          "normal/K5_Q5_SEVEN_FOURTHS.json": "52b9bea06d95a61c8a9923d183c82235b60b9214ffe0abd4082d4aa50efdf6d3",
+          "optimized/K5_Q5_SEVEN_FOURTHS.json": "ae0b7e0fe57f714e4dd013323dbf4af59c8d1556aff7322996cac23a1a130fd6"
+        }
+      },
+      "post287-wp4-k3-gate": {
+        "id": 14409615388,
+        "sha256": "eeacce05728071ae36d9f3595d7d0c74ed8507454e667c460082497530376e2d",
+        "members": {
+          "wp4-k3-feasibility.json": "b9256a6793782f36e552229ff71c0b27dfe696e1267732be626619ad17985808"
+        }
+      },
+      "post290-native-observations": {
+        "id": 14408850611,
+        "sha256": "58b3f417883e213a2802a6f9ce6cf81c6b5996206fc7c41c5a94d735f0eebea2",
+        "members": {
+          "CONSTRAINTS.json": "16cb439a6a7d8fda72a3c41b7c376f27303ed1e4b3857845d2103ec6ecf54209"
+        }
+      },
+      "post287-wp6-signed-ray": {
+        "id": 14408451329,
+        "sha256": "14a05664b2dd28ae477bdf685fcbb090eb0cdc46bb3381ba83cca7ee015577aa",
+        "members": {
+          "post287-wp6.json": "b66568b59d408cb53cde1a81d5862f2a1708afb3a7e1bdb2747f0ae8d6f30751"
+        }
+      }
+    }
+  },
+  "main_file_sha256": {
+    "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json": "003ed6367c22f6f36835ba4bfdf2aaa9d1caecc67ef994fbdf2a77dafe4af20c",
+    "Zeta23/OPICARound4/ClosureConsumers.lean": "f88b0a4dfc43f9e3103705ca14b46022602bde566e87d2cb2f9d1dd3eac56717",
+    "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json": "cdbcf0b4c7652c1933de2d4712f44b1aa7f2a9fd0a3dcdffee23c053e8d451d2",
+    "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json": "f5be60580587d22f38e36739b290282085ebd72dbdd0df342d04231ef6d15c51",
+    "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.json": "98e942c679344799f748fddb5d0ad6f812527359611d4242a03023e42174101e",
+    "research/RHRC/integration/opica_composition/PUBLIC_TARGETS.json": "9ed6db0327ae993b9aa57559673f9c417a6d70e60ce1aa6ecc7c12e9f1eebee6",
+    "research/RHRC/integration/INTEGRATION_STATE.json": "1337e2295ee227a7d76a68bd299d6c549d0a862b39d0e11b6f0dbb0f4218db47",
+    "research/RHRC/integration/FRAMEWORK_REGISTRY.json": "44788b86affa5c99b13dfc23ec34d3aef9f70d6ca22ad99e721f5e3b9864e385",
+    "research/RHRC/integration/opica_composition/FRAMEWORK_PROVIDERS.json": "2ae6da4b881ace608b5e51d7f08ddbc5bfa72acb7d0a04be5b92482df7f8197e",
+    "research/RHRC/integration/opica_composition/providers/permansson/selected_exports.json": "d252fcbf4947d6c70c8eed191bb4e49cdfdb3827755d486e2c4c68f7c999fdbd",
+    "research/RHRC/integration/opica_composition/SEARCH_CONTRACTS.json": "6e925da944db348abd875a08c5cd3fc62ceb4ece9791806cf14b831b0a60434f",
+    "Zeta23/OPICARound4/IntegrationTargets.lean": "7ae6b92e6fa2e6d872e03750b222770acf47f334553652cab306070281849ed9",
+    "research/RHRC/integration/post290/STEP4_CUTS.json": "8ed47b7e14cb659c30b710c2a412ec570e9ec7dbb9bf84fb590b938d447ead42"
+  }
+}

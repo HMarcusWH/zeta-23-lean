@@ -1,0 +1,20 @@
+# OPICA research checkpoint, 19 November 2026
+
+**Step 4 and RH remain OPEN.** The pinned repository is [c867a8f1](https://github.com/HMarcusWH/zeta-23-lean/tree/c867a8f15320ad6ac69177e0a498de4cb9d744f9). This archive contains three calculations on its graphs, four supporting Lean modules and a paper attempt at the missing signed arithmetic upper. The current-state Drive folder also holds the previous squarefree and canonical-source investigations.
+
+**Start with the two actual cut locations.** The complete signed ordinary-prime sum below a source-selected ratio threshold is exponentially small on every sufficiently late terminal observation window. There are two independently definable cumulative curves, one over near pairs and the other over complementary far pairs. If an off-line zero has positive displacement then the locations of their first crossings in a fixed interval must be exponentially many edge ranks apart. To exclude such a zero it suffices to prove a cofinal upper for their separation using the genuine Mangoldt weights. The paired-cut estimate remains unproved. The four supporting Lean modules verify constituent bounds and prime-ratio arithmetic.
+
+| Evidence | Contents |
+|---|---|
+| [Prime cut locations](graphs/ACTUAL_PRIME_CUT_LOCATIONS.md) | Source moments, at least three fixed-width sign changes, first crossing, price of one prime-pair jump, sufficient separation estimate |
+| [Two dense prime graphs](graphs/DENSE_PRIME_PAIR_CANCELLATION.md) | Unconditional actual-prime limits with opposite leading signs and exact cancellation of all first-order marginal errors |
+| [Native graph deduction](graphs/NATIVE_WINDOW_GRAPH_DEDUCTION.md) | Terminal-window rate, positive quadrature, diagonal asymptotic, sparse mask bounds, complete higher-power restoration |
+| [Genuine divisor covariance](graphs/GENUINE_DIVISOR_COVARIANCE.md) | Literal divisor identity restricts the inner divisor to O(n²) with exponentially small total error at all sample times; the signed outer Möbius sums remain |
+| [Comparison Euler products](graphs/CROSSING_COMPARISON.md) | Altered Euler weights preserve the prime graph, sign changes, finite coefficients and upper growth ceiling while allowing crossings too far apart |
+| [Finite trial and external ceiling](STEP4_HEIGHT_AND_GRAPH_RESULTS.md) | Original two-lobe exclusion for center separation up to 288,000 and external exponent for the K5 composite residual |
+| [Local Lean verification](lean/VERIFICATION.json), [sparse graph verification](lean/SPARSE_INTERACTION_VERIFICATION.json), [ratio verification](lean/PRIME_RATIO_VERIFICATION.json) | Four Windows Lean compilations using pinned warm imports, fourteen audited declarations; sources, compiler output and objects included |
+| [Registered routes](graphs/compiler_routes.json), [atlas findings](graphs/atlas/FINDINGS.md), [carrier and numerical controls](graphs/composition/README.md) | All 16 relation shards, closure intersections, graph cuts, alternative suppliers, countermodels and 10,012 archived interval checks |
+| [Constant check](HEIGHT_CONSTANTS.json) | Rational scalar checks for the external endpoint and native finite-trial exclusion |
+| [Native window](NATIVE_WINDOW.md), [positive quadrature](POSITIVE_APERTURE_QUADRATURE.md), [interval variance](INTERVAL_VARIANCE.md), [real moments](REAL_MOMENTS.md) | Additional signed-source approaches, explicit transfer formulas, estimates and the unproved input for each |
+
+The cumulative cut and arithmetic closure implications have paper status. The previously uploaded first report records the seven declarations compiled at that checkpoint. The final archive adds seven graph and ratio declarations and their receipts. No new production run or closing theorem was submitted. The finite trial exclusion bounds a specific source observable, and the external ceiling is an imported result. The comparison sources are deliberate falsification controls. The archive includes a per-file size and SHA-256 manifest. The archived graph scripts accept the pinned repository or use the project mirror's documented archived CI artifact locations.

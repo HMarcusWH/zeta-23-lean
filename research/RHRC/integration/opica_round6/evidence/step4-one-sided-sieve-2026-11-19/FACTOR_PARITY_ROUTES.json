@@ -1,0 +1,777 @@
+{
+  "pin": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "tree": "573cda1f06d2d7a0e61349a53183311e4ba621fc",
+  "shards": 16,
+  "registry_size": 22198,
+  "edge_rows": 1329677,
+  "proof_value_rows": 1236174,
+  "public_local_theorems": 7840,
+  "arithmetic_count": 111,
+  "arithmetic_names": [
+    "Zeta23.CCM.Step123NativeFieldRecord.fromNative",
+    "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+    "Zeta23.CCM.native_divisor_coefficient_identity",
+    "Zeta23.CCM.native_divisor_convolution_identity",
+    "Zeta23.CCM.native_primeCoefficients_unique",
+    "Zeta23.CCM.native_weighted_dirichlet_identity",
+    "Zeta23.CCM.native_weighted_divisor_coefficient_identity",
+    "Zeta23.OPICA.divisorPairWeight_le_gcdWeight",
+    "Zeta23.OPICA.divisor_count_harmonic_sum_le",
+    "Zeta23.OPICA.divisor_count_inverse_sum_le",
+    "Zeta23.OPICA.divisor_count_sqrt_sum_le",
+    "Zeta23.OPICA.divisor_count_sqrt_sum_succ_le",
+    "Zeta23.OPICA.divisor_count_square_le",
+    "Zeta23.OPICA.divisor_count_submultiplicative",
+    "Zeta23.OPICA.divisor_low_sum_le",
+    "Zeta23.OPICA.holomorphicGerm_noZeroDivisors",
+    "Zeta23.OPICA.moebiusPaletteCoefficient.eq_1",
+    "Zeta23.OPICAFollowup.NativeCausalState.finiteEulerAction.eq_1",
+    "Zeta23.OPICAFollowup.NativeCausalState.laplace_finiteEulerAction",
+    "Zeta23.OPICAFollowup.NativeCausalState.laplace_inverseFiniteEulerAction",
+    "Zeta23.OPICAFollowup.NativeCausalState.laplace_truncatedMoebiusAction",
+    "Zeta23.OPICAFollowup.NativeCausalState.truncatedMoebiusAction.eq_1",
+    "Zeta23.OPICAFollowup.NativeGenerator.unit_log_cost_le",
+    "Zeta23.OPICAFollowup.arithmeticHistoryAction_palette_finite",
+    "Zeta23.OPICAFollowup.arithmeticHistoryAction_palette_power_iterate",
+    "Zeta23.OPICAFollowup.balancedField_eq_tuple_history",
+    "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound",
+    "Zeta23.OPICAFollowup.balanced_tuple_nonzero_product_bound",
+    "Zeta23.OPICAFollowup.complex_gap_leakage",
+    "Zeta23.OPICAFollowup.density_gap_leakage_sup",
+    "Zeta23.OPICAFollowup.finiteEulerMultiplier_analyticAt",
+    "Zeta23.OPICAFollowup.finiteEulerMultiplier_ne_zero_at_right_zero",
+    "Zeta23.OPICAFollowup.finiteEuler_unit_log_cost_le",
+    "Zeta23.OPICAFollowup.finiteEuler_unit_log_cost_le_rpow",
+    "Zeta23.OPICAFollowup.finiteEuler_unit_log_value",
+    "Zeta23.OPICAFollowup.fixed_two_factor_preparation",
+    "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+    "Zeta23.OPICAFollowup.inverseEuler_unit_log_cost_le_rpow",
+    "Zeta23.OPICAFollowup.jordan_gap_leakage",
+    "Zeta23.OPICAFollowup.large_coefficient_coprime",
+    "Zeta23.OPICAFollowup.latticeTransform_moebius_inverse",
+    "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp",
+    "Zeta23.OPICAFollowup.log_slack_full_minus_masked_energy_rate_difference",
+    "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference",
+    "Zeta23.OPICAFollowup.log_slack_native_decomposition",
+    "Zeta23.OPICAFollowup.log_slack_typeI_error",
+    "Zeta23.OPICAFollowup.moebiusComb_add_eq_latticeMeasure",
+    "Zeta23.OPICAFollowup.moebiusComb_conv_Iio_eq_zero",
+    "Zeta23.OPICAFollowup.moebiusComb_mutuallySingular",
+    "Zeta23.OPICAFollowup.moebiusMinusComb_sFinite",
+    "Zeta23.OPICAFollowup.moebiusPaletteCoefficient_abs_le_one",
+    "Zeta23.OPICAFollowup.moebiusPlusComb_sFinite",
+    "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb",
+    "Zeta23.OPICAFollowup.moebius_complex_value_bound",
+    "Zeta23.OPICAFollowup.moebius_divisor_sum",
+    "Zeta23.OPICAFollowup.moebius_inverse_jordan",
+    "Zeta23.OPICAFollowup.moebius_inverse_positive",
+    "Zeta23.OPICAFollowup.moebius_lattice_coefficients",
+    "Zeta23.OPICAFollowup.moebius_plus_minus_card",
+    "Zeta23.OPICAFollowup.nativeAbsorbedPaletteDrive_apply",
+    "Zeta23.OPICAFollowup.nativeInverseCoefficients.eq_1",
+    "Zeta23.OPICAFollowup.nativeLargeCoefficients_power_abs_le_divisor",
+    "Zeta23.OPICAFollowup.nativePaletteDriveIterate_apply",
+    "Zeta23.OPICAFollowup.nativePaletteDriveIterate_bound",
+    "Zeta23.OPICAFollowup.nativeRawPaletteDrive_apply",
+    "Zeta23.OPICAFollowup.nativeSmallCoefficients_abs_le_one",
+    "Zeta23.OPICAFollowup.nativeTypeIWindowVector_bound",
+    "Zeta23.OPICAFollowup.nativeTypeIWindowVector_tendsto_zero",
+    "Zeta23.OPICAFollowup.native_coefficients_moebius_inverse",
+    "Zeta23.OPICAFollowup.paletteDivisor_mul_zeta",
+    "Zeta23.OPICAFollowup.palette_absolute_mass_le",
+    "Zeta23.OPICAFollowup.palette_filter_log_delay",
+    "Zeta23.OPICAFollowup.small_palette_block_tail_bound",
+    "Zeta23.OPICAFollowup.truncatedMoebiusMultiplier_analyticAt",
+    "Zeta23.OPICAFollowup.tsum_abs_moebius_rpow",
+    "Zeta23.OPICAFollowup.tsum_abs_moebius_rpow_pos",
+    "Zeta23.OPICAFollowup.weightedLogNorm_moebiusComb",
+    "Zeta23.OPICAFollowup.weightedLogNorm_moebiusComb_lt_top",
+    "Zeta23.OPICAFollowup.weighted_gap_leakage",
+    "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap",
+    "Zeta23.OPICAFollowup.weighted_mobius_inverse",
+    "Zeta23.OPICAFollowup.zeta_power_eq_divisorCount",
+    "Zeta23.OPICAFollowup.zeta_ratio_re",
+    "Zeta23.OPICARound2.mobiusProbePartialOutput_before_next",
+    "Zeta23.OPICARound2.mobiusProbePartialOutput_coeFn",
+    "Zeta23.OPICARound2.mobiusProbePartialOutput_sum",
+    "Zeta23.OPICARound2.mobiusProbePartialResidual_delayed",
+    "Zeta23.OPICARound2.mobiusProbePartialResidual_laplace",
+    "Zeta23.OPICARound2.mobiusProbeSource_convolution_history",
+    "Zeta23.OPICARound2.mobiusProbeSource_convolution_integrable",
+    "Zeta23.OPICARound2.mobiusProbeSource_floor_inverse",
+    "Zeta23.OPICARound2.mobiusProbeSource_history",
+    "Zeta23.OPICARound2.mobiusProbeSource_integer_inverse",
+    "Zeta23.OPICARound2.mobiusProbe_completed_inverse",
+    "Zeta23.OPICARound2.mobius_partial_zero_barrier",
+    "Zeta23.OPICARound2.native_dictionary_prefix_rigidity",
+    "Zeta23.OPICARound2.native_mobius_delayed_barrier",
+    "Zeta23.OPICARound2.native_mobius_delayed_barrier_rpow",
+    "Zeta23.OPICARound2.native_mobius_probe_inverse",
+    "Zeta23.OPICARound2.native_prefix_coefficient_bound",
+    "Zeta23.OPICARound2.native_prefix_energy_residual_bound",
+    "Zeta23.OPICARound2.native_sparse_residual_prefix_point",
+    "Zeta23.OPICARound2.native_squarefree_omission_bound",
+    "Zeta23.OPICARound2.probeDivisorDefect.eq_1",
+    "Zeta23.OPICARound2.probeDivisorDefect_inversion",
+    "Zeta23.OPICARound2.probeDivisorDefect_sum",
+    "Zeta23.OPICARound2.probeMobius_divisor_sum",
+    "Zeta23.OPICARound2.probePulseShift_residual",
+    "Zeta23.OPICARound2.probePulseWPair_divisor",
+    "Zeta23.OPICARound2.probeSparse_divisor_sum",
+    "Zeta23.OPICARound2.probe_squarefree_omission_defect"
+  ],
+  "seed_values_or_types": [
+    "ArithmeticFunction.moebius",
+    "Nat.Coprime",
+    "Nat.divisors",
+    "Nat.primeFactors",
+    "Squarefree"
+  ],
+  "arithmetic_leaf_regex": "moebius|möbius|mobius|squarefree|mertens|sieve|divisor|coprime|prime_?factor|rough(number|part|prime|factor|integer)|cardDistinctFactors",
+  "parity_count": 506,
+  "parity_names_sha256": "61bc27b70197c2d44912f3a9b5362312dc3253a8296f75fd4c8722c7beb46a08",
+  "routes": {
+    "Zeta23.ExceptionalZero.canonicalFiniteWeilPositivity_iff_riemannHypothesis": {
+      "arithmetic": {
+        "total": 0,
+        "providers": [],
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      },
+      "parity": {
+        "total": 109,
+        "providers": null,
+        "sorted_names_sha256": "699c781be94d9aca421f6c6c5f4184b8337487e4941ada9f5a558da1faf2b037",
+        "shortest_paths_for_selected_providers": [
+          [
+            "Zeta23.CCM.boundaryFlatCoefficients_of_mem_euclideanParityBoundaryFlatSubspace",
+            "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.trial_boundaryFlat",
+            "Zeta23.ExceptionalZero.noRegularFirstBadCertificates_of_canonicalFiniteWeilPositivity",
+            "Zeta23.ExceptionalZero.canonicalFiniteWeilPositivity_iff_riemannHypothesis"
+          ],
+          [
+            "Zeta23.CCM.mem_euclideanEvenBoundaryFlatSubspace_iff",
+            "Zeta23.CCM.boundaryFlatCoefficients_of_mem_euclideanParityBoundaryFlatSubspace",
+            "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.trial_boundaryFlat",
+            "Zeta23.ExceptionalZero.noRegularFirstBadCertificates_of_canonicalFiniteWeilPositivity",
+            "Zeta23.ExceptionalZero.canonicalFiniteWeilPositivity_iff_riemannHypothesis"
+          ]
+        ]
+      }
+    },
+    "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": {
+      "arithmetic": {
+        "total": 0,
+        "providers": [],
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      },
+      "parity": {
+        "total": 109,
+        "providers": null,
+        "sorted_names_sha256": "699c781be94d9aca421f6c6c5f4184b8337487e4941ada9f5a558da1faf2b037",
+        "shortest_paths_for_selected_providers": [
+          [
+            "Zeta23.CCM.boundaryFlatCoefficients_of_mem_euclideanParityBoundaryFlatSubspace",
+            "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.trial_boundaryFlat",
+            "Zeta23.ExceptionalZero.noRegularFirstBadCertificates_of_canonicalFiniteWeilPositivity",
+            "Zeta23.ExceptionalZero.canonicalFiniteWeilPositivity_iff_riemannHypothesis",
+            "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+          ],
+          [
+            "Zeta23.CCM.mem_euclideanEvenBoundaryFlatSubspace_iff",
+            "Zeta23.CCM.boundaryFlatCoefficients_of_mem_euclideanParityBoundaryFlatSubspace",
+            "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.trial_boundaryFlat",
+            "Zeta23.ExceptionalZero.noRegularFirstBadCertificates_of_canonicalFiniteWeilPositivity",
+            "Zeta23.ExceptionalZero.canonicalFiniteWeilPositivity_iff_riemannHypothesis",
+            "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+          ]
+        ]
+      }
+    },
+    "Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis": {
+      "arithmetic": {
+        "total": 0,
+        "providers": [],
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      },
+      "parity": {
+        "total": 95,
+        "providers": null,
+        "sorted_names_sha256": "f56b92fd35322d3ae9a0c592d371ee750d59c8ee39ac559fea9b7e0fef8b8ede",
+        "shortest_paths_for_selected_providers": [
+          [
+            "Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound",
+            "Zeta23.CCM.jointCofinalBottomLowerBounds_of_jointCofinalCanonicalArithmeticLowerBounds",
+            "Zeta23.ExceptionalZero.cofinalCanonicalLowerCertificates_of_cofinalCanonicalArithmeticCertificates",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates",
+            "Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis"
+          ],
+          [
+            "Zeta23.CCM.globalParitySuccessorBottom_neg_of_anyParityBad",
+            "Zeta23.ExceptionalZero.criticalLine_of_cofinalCanonicalLowerCertificates",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalLowerCertificates",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates",
+            "Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis"
+          ]
+        ]
+      }
+    },
+    "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis": {
+      "arithmetic": {
+        "total": 0,
+        "providers": [],
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      },
+      "parity": {
+        "total": 131,
+        "providers": null,
+        "sorted_names_sha256": "c39b72ce01700a870e7971237ff7c4308fbc0b91a7241146527a702841cc2d9c",
+        "shortest_paths_for_selected_providers": [
+          [
+            "Zeta23.ExceptionalZero.globalBottomResidualExclusion_of_riemannHypothesis",
+            "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+          ],
+          [
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_globalBottomResidualExclusion",
+            "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+          ],
+          [
+            "Zeta23.CCM.GlobalBottomResidualState.same_L",
+            "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomResidualState_of_offLine_zero",
+            "Zeta23.ExceptionalZero.criticalLine_of_globalBottomResidualExclusion",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_globalBottomResidualExclusion",
+            "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+          ]
+        ]
+      }
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure": {
+      "arithmetic": {
+        "total": 0,
+        "providers": [],
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      },
+      "parity": {
+        "total": 0,
+        "providers": null,
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      }
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral": {
+      "arithmetic": {
+        "total": 4,
+        "providers": [
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+          "Zeta23.CCM.native_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.native_weighted_divisor_coefficient_identity"
+        ],
+        "sorted_names_sha256": "25cc1ceebd1e053aec4c07734ade7e3fe22f5741b6c54192128fbd3965c73c09",
+        "shortest_paths_for_selected_providers": [
+          [
+            "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+            "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+            "Zeta23.CCM.nativeCompletedInput_equation",
+            "Zeta23.CCM.nativeDampedCompletedInput_equation",
+            "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+            "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral"
+          ],
+          [
+            "Zeta23.CCM.native_weighted_dirichlet_identity",
+            "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+            "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+            "Zeta23.CCM.nativeCompletedInput_equation",
+            "Zeta23.CCM.nativeDampedCompletedInput_equation",
+            "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+            "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral"
+          ],
+          [
+            "Zeta23.CCM.native_divisor_coefficient_identity",
+            "Zeta23.CCM.native_weighted_divisor_coefficient_identity",
+            "Zeta23.CCM.native_weighted_dirichlet_identity",
+            "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+            "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+            "Zeta23.CCM.nativeCompletedInput_equation",
+            "Zeta23.CCM.nativeDampedCompletedInput_equation",
+            "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+            "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral"
+          ]
+        ]
+      },
+      "parity": {
+        "total": 0,
+        "providers": null,
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      }
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": {
+      "arithmetic": {
+        "total": 4,
+        "providers": [
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+          "Zeta23.CCM.native_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.native_weighted_divisor_coefficient_identity"
+        ],
+        "sorted_names_sha256": "25cc1ceebd1e053aec4c07734ade7e3fe22f5741b6c54192128fbd3965c73c09",
+        "shortest_paths_for_selected_providers": [
+          [
+            "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+            "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+            "Zeta23.CCM.nativeCompletedInput_equation",
+            "Zeta23.CCM.nativeDampedCompletedInput_equation",
+            "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+            "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+          ],
+          [
+            "Zeta23.CCM.native_weighted_dirichlet_identity",
+            "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+            "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+            "Zeta23.CCM.nativeCompletedInput_equation",
+            "Zeta23.CCM.nativeDampedCompletedInput_equation",
+            "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+            "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+          ],
+          [
+            "Zeta23.CCM.native_divisor_coefficient_identity",
+            "Zeta23.CCM.native_weighted_divisor_coefficient_identity",
+            "Zeta23.CCM.native_weighted_dirichlet_identity",
+            "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+            "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+            "Zeta23.CCM.nativeCompletedInput_equation",
+            "Zeta23.CCM.nativeDampedCompletedInput_equation",
+            "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+            "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+            "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+            "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+          ]
+        ]
+      },
+      "parity": {
+        "total": 0,
+        "providers": null,
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      }
+    },
+    "Zeta23.OPICAFollowup.moebius_inverse_positive": {
+      "arithmetic": {
+        "total": 5,
+        "providers": [
+          "Zeta23.OPICAFollowup.moebiusMinusComb_sFinite",
+          "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb",
+          "Zeta23.OPICAFollowup.moebius_divisor_sum",
+          "Zeta23.OPICAFollowup.moebius_lattice_coefficients",
+          "Zeta23.OPICAFollowup.moebius_plus_minus_card"
+        ],
+        "sorted_names_sha256": "cb6cd6e99dd3f265fe650c9c84159520db4b8eb98cdf0e5e80b0b735c053a6d6",
+        "shortest_paths_for_selected_providers": [
+          [
+            "Zeta23.OPICAFollowup.moebiusMinusComb_sFinite",
+            "Zeta23.OPICAFollowup.moebius_inverse_positive"
+          ],
+          [
+            "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb",
+            "Zeta23.OPICAFollowup.moebius_inverse_positive"
+          ],
+          [
+            "Zeta23.OPICAFollowup.moebius_lattice_coefficients",
+            "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb",
+            "Zeta23.OPICAFollowup.moebius_inverse_positive"
+          ],
+          [
+            "Zeta23.OPICAFollowup.moebius_plus_minus_card",
+            "Zeta23.OPICAFollowup.moebius_lattice_coefficients",
+            "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb",
+            "Zeta23.OPICAFollowup.moebius_inverse_positive"
+          ],
+          [
+            "Zeta23.OPICAFollowup.moebius_divisor_sum",
+            "Zeta23.OPICAFollowup.moebius_plus_minus_card",
+            "Zeta23.OPICAFollowup.moebius_lattice_coefficients",
+            "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb",
+            "Zeta23.OPICAFollowup.moebius_inverse_positive"
+          ]
+        ]
+      },
+      "parity": {
+        "total": 0,
+        "providers": null,
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      }
+    },
+    "Zeta23.OPICAFollowup.moebius_inverse_jordan": {
+      "arithmetic": {
+        "total": 9,
+        "providers": [
+          "Zeta23.OPICAFollowup.moebiusMinusComb_sFinite",
+          "Zeta23.OPICAFollowup.moebiusPlusComb_sFinite",
+          "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb",
+          "Zeta23.OPICAFollowup.moebius_divisor_sum",
+          "Zeta23.OPICAFollowup.moebius_inverse_positive",
+          "Zeta23.OPICAFollowup.moebius_lattice_coefficients",
+          "Zeta23.OPICAFollowup.moebius_plus_minus_card",
+          "Zeta23.OPICAFollowup.weightedLogNorm_moebiusComb",
+          "Zeta23.OPICAFollowup.weightedLogNorm_moebiusComb_lt_top"
+        ],
+        "sorted_names_sha256": "d4b11bd0793bf8f5e61b7db45f56148281bf1d15c684779a2b64ee9298fdb9b0",
+        "shortest_paths_for_selected_providers": [
+          [
+            "Zeta23.OPICAFollowup.moebiusMinusComb_sFinite",
+            "Zeta23.OPICAFollowup.moebius_inverse_jordan"
+          ],
+          [
+            "Zeta23.OPICAFollowup.moebiusPlusComb_sFinite",
+            "Zeta23.OPICAFollowup.moebius_inverse_jordan"
+          ],
+          [
+            "Zeta23.OPICAFollowup.moebius_inverse_positive",
+            "Zeta23.OPICAFollowup.moebius_inverse_jordan"
+          ],
+          [
+            "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb",
+            "Zeta23.OPICAFollowup.moebius_inverse_positive",
+            "Zeta23.OPICAFollowup.moebius_inverse_jordan"
+          ],
+          [
+            "Zeta23.OPICAFollowup.moebius_lattice_coefficients",
+            "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb",
+            "Zeta23.OPICAFollowup.moebius_inverse_positive",
+            "Zeta23.OPICAFollowup.moebius_inverse_jordan"
+          ],
+          [
+            "Zeta23.OPICAFollowup.moebius_plus_minus_card",
+            "Zeta23.OPICAFollowup.moebius_lattice_coefficients",
+            "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb",
+            "Zeta23.OPICAFollowup.moebius_inverse_positive",
+            "Zeta23.OPICAFollowup.moebius_inverse_jordan"
+          ],
+          [
+            "Zeta23.OPICAFollowup.moebius_divisor_sum",
+            "Zeta23.OPICAFollowup.moebius_plus_minus_card",
+            "Zeta23.OPICAFollowup.moebius_lattice_coefficients",
+            "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb",
+            "Zeta23.OPICAFollowup.moebius_inverse_positive",
+            "Zeta23.OPICAFollowup.moebius_inverse_jordan"
+          ]
+        ]
+      },
+      "parity": {
+        "total": 0,
+        "providers": null,
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      }
+    },
+    "Zeta23.OPICARound2.native_mobius_delayed_barrier_rpow": {
+      "arithmetic": {
+        "total": 7,
+        "providers": [
+          "Zeta23.OPICARound2.mobiusProbePartialOutput_before_next",
+          "Zeta23.OPICARound2.mobiusProbePartialOutput_coeFn",
+          "Zeta23.OPICARound2.mobiusProbePartialOutput_sum",
+          "Zeta23.OPICARound2.mobiusProbePartialResidual_delayed",
+          "Zeta23.OPICARound2.mobiusProbePartialResidual_laplace",
+          "Zeta23.OPICARound2.mobiusProbe_completed_inverse",
+          "Zeta23.OPICARound2.native_mobius_delayed_barrier"
+        ],
+        "sorted_names_sha256": "7cfbd44c5dfc707c2744f9df9fd8db8e22d95f6c1db43908f67535c1085e314d",
+        "shortest_paths_for_selected_providers": [
+          [
+            "Zeta23.OPICARound2.native_mobius_delayed_barrier",
+            "Zeta23.OPICARound2.native_mobius_delayed_barrier_rpow"
+          ],
+          [
+            "Zeta23.OPICARound2.mobiusProbePartialResidual_delayed",
+            "Zeta23.OPICARound2.native_mobius_delayed_barrier",
+            "Zeta23.OPICARound2.native_mobius_delayed_barrier_rpow"
+          ]
+        ]
+      },
+      "parity": {
+        "total": 0,
+        "providers": null,
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      }
+    },
+    "Zeta23.OPICARound2.native_squarefree_omission_bound": {
+      "arithmetic": {
+        "total": 8,
+        "providers": [
+          "Zeta23.OPICARound2.probeDivisorDefect.eq_1",
+          "Zeta23.OPICARound2.probeDivisorDefect_inversion",
+          "Zeta23.OPICARound2.probeDivisorDefect_sum",
+          "Zeta23.OPICARound2.probeMobius_divisor_sum",
+          "Zeta23.OPICARound2.probePulseShift_residual",
+          "Zeta23.OPICARound2.probePulseWPair_divisor",
+          "Zeta23.OPICARound2.probeSparse_divisor_sum",
+          "Zeta23.OPICARound2.probe_squarefree_omission_defect"
+        ],
+        "sorted_names_sha256": "2998cc5e10bd7a7840d590b57a8ffdd6606a8daa8259bd721bb75b423012a7be",
+        "shortest_paths_for_selected_providers": [
+          [
+            "Zeta23.OPICARound2.probe_squarefree_omission_defect",
+            "Zeta23.OPICARound2.native_squarefree_omission_bound"
+          ],
+          [
+            "Zeta23.OPICARound2.probeDivisorDefect_inversion",
+            "Zeta23.OPICARound2.probe_squarefree_omission_defect",
+            "Zeta23.OPICARound2.native_squarefree_omission_bound"
+          ]
+        ]
+      },
+      "parity": {
+        "total": 0,
+        "providers": null,
+        "sorted_names_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shortest_paths_for_selected_providers": []
+      }
+    }
+  },
+  "signatures": {
+    "Zeta23.CCM.GlobalBottomResidualState.same_L": {
+      "file": "Zeta23/CCM/GlobalParityBottomResidualState.lean",
+      "status": "nonunique-or-generated spelling"
+    },
+    "Zeta23.CCM.boundaryFlatCoefficients_of_mem_euclideanParityBoundaryFlatSubspace": {
+      "file": "Zeta23/CCM/RegularFirstBadRieszEnergy.lean",
+      "line": 27,
+      "signature": "theorem boundaryFlatCoefficients_of_mem_euclideanParityBoundaryFlatSubspace\n    (p : ReversalParity)\n    (K : ℕ)\n    (x : EuclideanSpace ℂ (Fin (2 * K + 1)))\n    (hx : x ∈ euclideanParityBoundaryFlatSubspace p K) :\n    BoundaryFlatCoefficients K\n      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/RegularFirstBadRieszEnergy.lean#L27"
+    },
+    "Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound": {
+      "file": "Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
+      "line": 91,
+      "signature": "theorem globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound\n    {L : ℝ} (hL : 0 < L) (N : ℕ) (hN : 1 ≤ N) (ε : ℝ)\n    (hcert : CanonicalArithmeticLowerBound L (N + 1) ε) :\n    -ε ≤ globalParitySuccessorBottom L N",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/CanonicalArithmeticLowerBound.lean#L91"
+    },
+    "Zeta23.CCM.globalParitySuccessorBottom_neg_of_anyParityBad": {
+      "file": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+      "line": 737,
+      "signature": "theorem globalParitySuccessorBottom_neg_of_anyParityBad\n    {L : ℝ} {N : ℕ}\n    (hbad : AnyParityBad L (N + 1)) :\n    globalParitySuccessorBottom L N < 0",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/GlobalParityBottomSpectrum.lean#L737"
+    },
+    "Zeta23.CCM.mem_euclideanEvenBoundaryFlatSubspace_iff": {
+      "file": "Zeta23/CCM/ConstrainedParityGeometry.lean",
+      "status": "nonunique-or-generated spelling"
+    },
+    "Zeta23.CCM.nativeIntegerPrimePair_fiber": {
+      "file": "Zeta23/CCM/NativeIntegerPrimeConvolution.lean",
+      "line": 90,
+      "signature": "theorem nativeIntegerPrimePair_fiber (j : ℝ → ℝ) (t : ℝ) (n : ℕ) :\n    (∑' p : (fun p : ℕ × ℕ => p.1 * p.2) ⁻¹' {n},\n      nativeIntegerPrimePairTerm j t p.val) =\n        nativeIntegerDriveCoefficient n * j (t - Real.log n)",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/NativeIntegerPrimeConvolution.lean#L90"
+    },
+    "Zeta23.CCM.native_divisor_coefficient_identity": {
+      "file": "Zeta23/CCM/NativeIntegerPrimeSource.lean",
+      "line": 24,
+      "signature": "theorem native_divisor_coefficient_identity (n : ℕ) :\n    ∑ d ∈ n.divisors, Λ d = Real.log n",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/NativeIntegerPrimeSource.lean#L24"
+    },
+    "Zeta23.CCM.native_weighted_dirichlet_identity": {
+      "file": "Zeta23/CCM/NativeIntegerPrimeSource.lean",
+      "line": 57,
+      "signature": "theorem native_weighted_dirichlet_identity (n : ℕ) :\n    ∑ d ∈ n.divisors,\n      nativeIntegerCoefficient (n / d) * nativePrimeCoefficient d =\n        nativeIntegerDriveCoefficient n",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/NativeIntegerPrimeSource.lean#L57"
+    },
+    "Zeta23.ExceptionalZero.canonicalFiniteWeilPositivity_iff_riemannHypothesis": {
+      "file": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+      "line": 93,
+      "signature": "theorem canonicalFiniteWeilPositivity_iff_riemannHypothesis :\n    CanonicalFiniteWeilPositivity ↔ RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean#L93"
+    },
+    "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": {
+      "file": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+      "line": 190,
+      "signature": "theorem canonicalPrimeRemainderDominance_iff_riemannHypothesis :\n    CanonicalPrimeRemainderDominance ↔ RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean#L190"
+    },
+    "Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis": {
+      "file": "Zeta23/ExceptionalZero/CofinalArithmeticEquivalenceAudit.lean",
+      "line": 63,
+      "signature": "theorem cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis :\n    CofinalCanonicalArithmeticCertificates ↔ RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CofinalArithmeticEquivalenceAudit.lean#L63"
+    },
+    "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis": {
+      "file": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+      "line": 90,
+      "signature": "theorem globalBottomResidualExclusion_iff_riemannHypothesis :\n    GlobalBottomResidualExclusion ↔ RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean#L90"
+    },
+    "Zeta23.ExceptionalZero.globalBottomResidualExclusion_of_riemannHypothesis": {
+      "file": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+      "line": 80,
+      "signature": "theorem globalBottomResidualExclusion_of_riemannHypothesis\n    (hRH : RiemannHypothesis) :\n    GlobalBottomResidualExclusion",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean#L80"
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_globalBottomResidualExclusion": {
+      "file": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+      "line": 68,
+      "signature": "theorem riemannHypothesis_of_globalBottomResidualExclusion\n    (hkill : GlobalBottomResidualExclusion) :\n    RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean#L68"
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure": {
+      "file": "Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean",
+      "line": 117,
+      "signature": "theorem riemannHypothesis_of_nativeInput_allRangeClosure\n    (hY : CCM.NativeInputAllRangeClosure) : RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean#L117"
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral": {
+      "file": "Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean",
+      "line": 135,
+      "signature": "theorem riemannHypothesis_of_originalPrimeField_allDampedIntegral\n    (hX : CCM.NativeOriginalPrimeFieldAllDampedIntegral) : RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean#L135"
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": {
+      "file": "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean",
+      "line": 25,
+      "signature": "theorem riemannHypothesis_of_step4_AX\n    (hAX : NativeOriginalPrimeFieldAllDampedIntegral) : RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/Step4OutputSufficiency.lean#L25"
+    },
+    "Zeta23.OPICAFollowup.moebiusMinusComb_sFinite": {
+      "file": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "status": "nonunique-or-generated spelling"
+    },
+    "Zeta23.OPICAFollowup.moebiusPlusComb_sFinite": {
+      "file": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "status": "nonunique-or-generated spelling"
+    },
+    "Zeta23.OPICAFollowup.moebiusPlus_conv_integerLogComb": {
+      "file": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "line": 930,
+      "signature": "theorem moebiusPlus_conv_integerLogComb :\n    moebiusPlusComb ∗ integerLogComb = Measure.dirac 0 + moebiusMinusComb ∗ integerLogComb",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/WeightedMixing.lean#L930"
+    },
+    "Zeta23.OPICAFollowup.moebius_divisor_sum": {
+      "file": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "line": 880,
+      "signature": "lemma moebius_divisor_sum (k : ℕ) :\n    ∑ d ∈ k.divisors, ArithmeticFunction.moebius d = if k = 1 then 1 else 0",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/WeightedMixing.lean#L880"
+    },
+    "Zeta23.OPICAFollowup.moebius_inverse_jordan": {
+      "file": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "line": 1295,
+      "signature": "theorem moebius_inverse_jordan {a : ℝ} (ha : 1 / 2 < a)\n    (σp σn ηp ηn : Measure ℝ) [SFinite σp] [SFinite σn] [SFinite ηp] [SFinite ηn]\n    (hσp : weightedLogNorm a σp < ∞) (hσn : weightedLogNorm a σn < ∞)\n    (hη : ηp + integerLogComb ∗ σn = ηn + integerLogComb ∗ σp) :\n    σp + (moebiusPlusComb ∗ ηn + moebiusMinusComb ∗ ηp) =\n      σn + (moebiusPlusComb ∗ ηp + moebiusMinusComb ∗ ηn)",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/WeightedMixing.lean#L1295"
+    },
+    "Zeta23.OPICAFollowup.moebius_inverse_positive": {
+      "file": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "line": 947,
+      "signature": "theorem moebius_inverse_positive (ρ : Measure ℝ) [SFinite ρ] :\n    moebiusPlusComb ∗ (integerLogComb ∗ ρ) = ρ + moebiusMinusComb ∗ (integerLogComb ∗ ρ)",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/WeightedMixing.lean#L947"
+    },
+    "Zeta23.OPICAFollowup.moebius_lattice_coefficients": {
+      "file": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "line": 900,
+      "signature": "lemma moebius_lattice_coefficients (k : ℕ) :\n    ∑ p ∈ Nat.divisorsAntidiagonal k,\n        (if ArithmeticFunction.moebius p.1 = 1 then latticeWeight p.1 else 0) * latticeWeight p.2 =\n      (if k = 1 then 1 else 0) +\n        ∑ p ∈ Nat.divisorsAntidiagonal k,\n          (if ArithmeticFunction.moebius p.1 = -1 then latticeWeight p.1 else 0) *\n            latticeWeight p.2",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/WeightedMixing.lean#L900"
+    },
+    "Zeta23.OPICAFollowup.moebius_plus_minus_card": {
+      "file": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "line": 886,
+      "signature": "lemma moebius_plus_minus_card {k : ℕ} (hk : k ≠ 1) :\n    (k.divisors.filter (fun d => ArithmeticFunction.moebius d = 1)).card =\n      (k.divisors.filter (fun d => ArithmeticFunction.moebius d = -1)).card",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/WeightedMixing.lean#L886"
+    },
+    "Zeta23.OPICARound2.mobiusProbePartialResidual_delayed": {
+      "file": "Zeta23/OPICARound2/TruncationControls.lean",
+      "line": 232,
+      "signature": "theorem mobiusProbePartialResidual_delayed (N : ℕ) :\n    ∀ᵐ t : ℝ, t < Real.log (N + 1 : ℕ) →\n      (mobiusProbePartialResidual N : ProbeL2) t = 0",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound2/TruncationControls.lean#L232"
+    },
+    "Zeta23.OPICARound2.native_mobius_delayed_barrier": {
+      "file": "Zeta23/OPICARound2/TruncationControls.lean",
+      "line": 288,
+      "signature": "theorem native_mobius_delayed_barrier (N : ℕ) (rho : zetaZeroConfig.carrier)\n    (hright : 1 / 2 < (rho : ℂ).re) :\n    (∀ᵐ t : ℝ, t < Real.log (N + 1 : ℕ) →\n      (mobiusProbePartialResidual N : ProbeL2) t = 0) ∧\n    Real.sqrt (2 * ((rho : ℂ) - 1 / 2).re) *\n      Real.exp (((rho : ℂ) - 1 / 2).re * Real.log (N + 1 : ℕ)) *\n      ‖CCM.nativeCompletionRationalMultiplier ((rho : ℂ) - 1 / 2) *\n        JPlus ((rho : ℂ) - 1 / 2)‖ ≤ ‖mobiusProbePartialResidual N‖",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound2/TruncationControls.lean#L288"
+    },
+    "Zeta23.OPICARound2.native_mobius_delayed_barrier_rpow": {
+      "file": "Zeta23/OPICARound2/TruncationControls.lean",
+      "line": 704,
+      "signature": "theorem native_mobius_delayed_barrier_rpow (N : ℕ) (rho : zetaZeroConfig.carrier)\n    (hright : 1 / 2 < (rho : ℂ).re) :\n    Real.sqrt (2 * ((rho : ℂ) - 1 / 2).re) *\n      ((N + 1 : ℕ) : ℝ) ^ (((rho : ℂ) - 1 / 2).re) *\n      ‖CCM.nativeCompletionRationalMultiplier ((rho : ℂ) - 1 / 2) *\n        JPlus ((rho : ℂ) - 1 / 2)‖ ≤ ‖mobiusProbePartialResidual N‖",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound2/TruncationControls.lean#L704"
+    },
+    "Zeta23.OPICARound2.native_squarefree_omission_bound": {
+      "file": "Zeta23/OPICARound2/TruncationControls.lean",
+      "line": 2396,
+      "signature": "theorem native_squarefree_omission_bound (x : ℕ →₀ ℂ) {k : ℕ}\n    (hk : 0 < k) (hmax : k ≤ 2047) (hsq : Squarefree k) (hx : x k = 0) :\n    probePulseSeparation / (∑ d ∈ k.divisors, (d : ℝ)) ≤ ‖probeSparseResidual x‖ ^ 2",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound2/TruncationControls.lean#L2396"
+    },
+    "Zeta23.OPICARound2.probeDivisorDefect_inversion": {
+      "file": "Zeta23/OPICARound2/TruncationControls.lean",
+      "line": 2322,
+      "signature": "theorem probeDivisorDefect_inversion (x : ℕ → ℂ) {k : ℕ} (hk : 0 < k) :\n    (∑ d ∈ k.divisors, (ArithmeticFunction.moebius (k / d) : ℂ) * probeDivisorDefect x d) =\n      (ArithmeticFunction.moebius k : ℂ) - x k",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound2/TruncationControls.lean#L2322"
+    },
+    "Zeta23.OPICARound2.probe_squarefree_omission_defect": {
+      "file": "Zeta23/OPICARound2/TruncationControls.lean",
+      "line": 2331,
+      "signature": "theorem probe_squarefree_omission_defect {x : ℕ → ℂ} {k : ℕ}\n    (hk : 0 < k) (hsq : Squarefree k) (hx : x k = 0) :\n    1 / (∑ d ∈ k.divisors, (d : ℝ)) ≤\n      ∑ d ∈ k.divisors, ‖probeDivisorDefect x d‖ ^ 2 / (d : ℝ)",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound2/TruncationControls.lean#L2331"
+    }
+  },
+  "hashes": {
+    "lean_declarations.jsonl": "deed8d35e01c1894d398958ec9dff5dac179dee4be8f74161a036839f68ae5d5",
+    "relations/relations-0.jsonl": "83f2ae96280e3fa12eb5f8286ae0d407f2f39cfd7221bad7061113210959e495",
+    "relations/relations-1.jsonl": "2464a377d01e737981f2e0db5e0746d2f4b2fd96036cd591d5db6811390f62ff",
+    "relations/relations-2.jsonl": "27d66761c7bf4facf2a3189493daa434f40ee5727a561743887737e0ab14b976",
+    "relations/relations-3.jsonl": "7dd2f18968170a16668da2ccc71ce2bb8d8ca3aec746b941da42267dfba8e752",
+    "relations/relations-4.jsonl": "481d2ce4e82558ed13387694b1cd5f9dc5260577e49277514b9882fccce79ee7",
+    "relations/relations-5.jsonl": "11a28a6da093b5a4fc2dc297b81c6cf1a46d8a2fb3f811faaae56b0bedd1750a",
+    "relations/relations-6.jsonl": "278302334bee44ebd694a8f50f41950d47fd9430840be4c7d0790a0572dd05d4",
+    "relations/relations-7.jsonl": "f46b39bbdc0276b923e7b9879fd459324b487a31aa1e7f457e530c788b0eeef8",
+    "relations/relations-8.jsonl": "d065d4f11614f66db33fd46aef59932a2c8dc169355aa1309c718118d01f9de2",
+    "relations/relations-9.jsonl": "bfcdc7ebf089faab8e5ff9604b089cfd34293c33660090b57876b3c34f118b2c",
+    "relations/relations-a.jsonl": "d0f5ee598abeb6594eb0bf239c1e29f40b0277cc66f68ae738c470bcc1ee546e",
+    "relations/relations-b.jsonl": "cb012e6900a69e42fc3b5eff5d0fbfa45b5d02eccfb232807b3cbcef8b9626df",
+    "relations/relations-c.jsonl": "a31dd215eceea7c085155d812669dd43d797b78d2ca27f7f6054a9131dbf537d",
+    "relations/relations-d.jsonl": "de1f0810daa07faabd9caa8ec2d92cbee291321cbb9d2d387c8e627c3cfdce21",
+    "relations/relations-e.jsonl": "ec1df26724feecadbaf598b63d087082c58067b08819c901f8325c402a39c0eb",
+    "relations/relations-f.jsonl": "3b4a7a228212fd38e04bb205ebec22d69e63c7320196908014ca892d185bd1ca",
+    "Zeta23/CCM/GlobalParityBottomResidualState.lean": "98a9c454a5c028dbe70a7380144a066bd737027fa8d09cc945834440c08d2f1d",
+    "Zeta23/CCM/RegularFirstBadRieszEnergy.lean": "7e89f277e5467c5be152a5a085c740ab5e842359eaa8a6629c78df68761b236f",
+    "Zeta23/CCM/CanonicalArithmeticLowerBound.lean": "b2fef4470316800aa034f39b2c37ffd17d479bd9331bb2b86afacf2c0d301f76",
+    "Zeta23/CCM/GlobalParityBottomSpectrum.lean": "f3bb61facfd756df13bd5d402b3790766ebae2fc66fc0f62226b28b95fede83c",
+    "Zeta23/CCM/ConstrainedParityGeometry.lean": "78577f99b5eddaf6010f1887c645de571b63b258e4c44e8618478ac6cfe3ea68",
+    "Zeta23/CCM/NativeIntegerPrimeConvolution.lean": "12773a269785022413552e6382cc1f99882d08b507215d4cea69a9ef47960406",
+    "Zeta23/CCM/NativeIntegerPrimeSource.lean": "c98e58682a18bc073cd794200dfd351edef65e9a0ac3bfe0f7d522216f651b31",
+    "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean": "7f14d903b66d390767bbd62ade7b87250402f29da2c08e7a1b3ce80e04c0333d",
+    "Zeta23/ExceptionalZero/CofinalArithmeticEquivalenceAudit.lean": "52342a6c73831708bd3a9ba6188cf1f4215cde99c6c4f2a7cba3e23899590340",
+    "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean": "da64801c1d0af82780af7c2d83d798e00ef9ea7511af7fc72c46e1f7e3c995bb",
+    "Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean": "02e84f654ca08d9e31755a900b644ed71853a94c2b696eb895bedefe29033192",
+    "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean": "ff745c1db8c360a44db7c821628f7d29d7246c51da7cc3ea437a188f873f41e7",
+    "Zeta23/OPICAFollowup/WeightedMixing.lean": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+    "Zeta23/OPICARound2/TruncationControls.lean": "1837ca3a1fd3c813613fd7e545e80b7452cb797f07a6af5595fdf19184ab3548"
+  }
+}

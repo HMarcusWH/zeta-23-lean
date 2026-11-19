@@ -1,0 +1,351 @@
+{
+  "scope": "Finite exact rational/integer and Arb checks of three-moment factorial graph; no asymptotic bound or closure test.",
+  "precision_bits": 160,
+  "flint_version": "0.9.0",
+  "source_sha256": "77a1ee305c8c35a3182f614d2a99d456c7fccea5e2b4f0daefd2d546c4f67529",
+  "coefficient_module_sha256": "3fce545f92e43d7410aade75af807cdef19d945d137053229ba777c48bf38a9b",
+  "true_calibrations": [
+    {
+      "L": 9,
+      "centres": [
+        27
+      ],
+      "native_cap": 9,
+      "native_H_after_L_plus_floor_L_to_5_over_6": 0,
+      "nonzero_coefficients": 8,
+      "exact_mean": "0",
+      "denominators_with_nonzero_S": 13,
+      "denominators_with_exact_zero_S": [],
+      "primitive_frequencies": 117,
+      "by_amplitude_sign": [
+        80,
+        37
+      ],
+      "midpoint_occurrences": 1,
+      "exact_folded_second_difference_entries": 291,
+      "symbol_checks": 117,
+      "independent_direct_source_DFT_coefficients": 37,
+      "site_checks": [
+        {
+          "n": 18,
+          "scope": "wider diagnostic",
+          "scale": 9,
+          "direct_exact": "2",
+          "signed_numerator_only": "[0.0022817749532202970673030 +/- 1.43e-26]",
+          "signed_unpaid": "[1.3996689419696219514310 +/- 2.42e-23]",
+          "nonzero_block_counts": {
+            "both": 6,
+            "open": 8,
+            "numerator_only": 5
+          }
+        },
+        {
+          "n": 28,
+          "scope": "wider diagnostic",
+          "scale": 18,
+          "direct_exact": "6631/2835",
+          "signed_numerator_only": "[0.11147130381193949706196 +/- 2.05e-24]",
+          "signed_unpaid": "[2.7064585301996729631588 +/- 4.51e-25]",
+          "nonzero_block_counts": {
+            "both": 12,
+            "open": 4,
+            "numerator_only": 3
+          }
+        },
+        {
+          "n": 109,
+          "scope": "wider diagnostic",
+          "scale": 72,
+          "direct_exact": "3/7",
+          "signed_numerator_only": "0",
+          "signed_unpaid": "[1.6034351333019828019224 +/- 4.77e-23]",
+          "nonzero_block_counts": {
+            "both": 18,
+            "open": 1
+          }
+        }
+      ]
+    },
+    {
+      "L": 36,
+      "centres": [
+        81,
+        90,
+        99,
+        108
+      ],
+      "native_cap": 37,
+      "native_H_after_L_plus_floor_L_to_5_over_6": 0,
+      "nonzero_coefficients": 34,
+      "exact_mean": "0",
+      "denominators_with_nonzero_S": 55,
+      "denominators_with_exact_zero_S": [],
+      "primitive_frequencies": 1497,
+      "by_amplitude_sign": [
+        434,
+        1063
+      ],
+      "midpoint_occurrences": 1,
+      "exact_folded_second_difference_entries": 4051,
+      "symbol_checks": 1497,
+      "independent_direct_source_DFT_coefficients": 211,
+      "site_checks": [
+        {
+          "n": 37,
+          "scope": "native",
+          "scale": 36,
+          "direct_exact": "0",
+          "signed_numerator_only": "[0.022174192156782835030733 +/- 5.00e-25]",
+          "signed_unpaid": "[2.3457180388061740176537 +/- 7.68e-24]",
+          "nonzero_block_counts": {
+            "both": 17,
+            "large_sieve_only": 1,
+            "open": 12,
+            "numerator_only": 4
+          }
+        },
+        {
+          "n": 72,
+          "scope": "wider diagnostic",
+          "scale": 36,
+          "direct_exact": "-27",
+          "signed_numerator_only": "[-0.067724883240853786024625 +/- 5.3e-27]",
+          "signed_unpaid": "[-30.237393123667750904346 +/- 1.11e-22]",
+          "nonzero_block_counts": {
+            "both": 17,
+            "large_sieve_only": 1,
+            "open": 12,
+            "numerator_only": 4
+          }
+        },
+        {
+          "n": 109,
+          "scope": "wider diagnostic",
+          "scale": 72,
+          "direct_exact": "-27064166071063/787655743056",
+          "signed_numerator_only": "[-0.19940752293669963088950 +/- 2.84e-24]",
+          "signed_unpaid": "[-40.767057763687511709581 +/- 8.97e-23]",
+          "nonzero_block_counts": {
+            "both": 24,
+            "large_sieve_only": 1,
+            "open": 7,
+            "numerator_only": 2
+          }
+        },
+        {
+          "n": 433,
+          "scope": "wider diagnostic",
+          "scale": 288,
+          "direct_exact": "-32831039432461/2707566616755",
+          "signed_numerator_only": "0",
+          "signed_unpaid": "[-16.851353921745659625349 +/- 1.79e-22]",
+          "nonzero_block_counts": {
+            "both": 32,
+            "large_sieve_only": 1,
+            "open": 1
+          }
+        }
+      ]
+    },
+    {
+      "L": 128,
+      "centres": [
+        261,
+        270,
+        279,
+        288,
+        297,
+        306,
+        315,
+        324,
+        333,
+        342,
+        351,
+        360,
+        369,
+        378
+      ],
+      "native_cap": 134,
+      "native_H_after_L_plus_floor_L_to_5_over_6": 0,
+      "nonzero_coefficients": 119,
+      "exact_mean": "0",
+      "denominators_with_nonzero_S": 199,
+      "denominators_with_exact_zero_S": [],
+      "primitive_frequencies": 18229,
+      "by_amplitude_sign": [
+        12352,
+        5877
+      ],
+      "midpoint_occurrences": 1,
+      "exact_folded_second_difference_entries": 49423,
+      "symbol_checks": 18229,
+      "independent_direct_source_DFT_coefficients": 355,
+      "site_checks": [
+        {
+          "n": 129,
+          "scope": "native",
+          "scale": 128,
+          "direct_exact": "0",
+          "signed_numerator_only": "[0.0074974937922854522821988 +/- 1.26e-26]",
+          "signed_unpaid": "[-6.9026454268172082704199 +/- 1.65e-23]",
+          "nonzero_block_counts": {
+            "both": 33,
+            "open": 13,
+            "numerator_only": 7
+          }
+        },
+        {
+          "n": 130,
+          "scope": "native",
+          "scale": 128,
+          "direct_exact": "1",
+          "signed_numerator_only": "[0.0070223738453496162368097 +/- 4.80e-26]",
+          "signed_unpaid": "[-6.6422735657919999754509 +/- 2.15e-23]",
+          "nonzero_block_counts": {
+            "both": 33,
+            "open": 13,
+            "numerator_only": 7
+          }
+        },
+        {
+          "n": 131,
+          "scope": "native",
+          "scale": 128,
+          "direct_exact": "1",
+          "signed_numerator_only": "[0.0057623006809009174696030 +/- 4.23e-26]",
+          "signed_unpaid": "[-6.2900237270870266388589 +/- 2.74e-23]",
+          "nonzero_block_counts": {
+            "both": 33,
+            "open": 13,
+            "numerator_only": 7
+          }
+        },
+        {
+          "n": 132,
+          "scope": "native",
+          "scale": 128,
+          "direct_exact": "0",
+          "signed_numerator_only": "[0.0039227607436995543227444 +/- 1.62e-26]",
+          "signed_unpaid": "[-5.8444029877872851861091 +/- 4.72e-23]",
+          "nonzero_block_counts": {
+            "both": 33,
+            "open": 13,
+            "numerator_only": 7
+          }
+        },
+        {
+          "n": 133,
+          "scope": "native",
+          "scale": 128,
+          "direct_exact": "-1",
+          "signed_numerator_only": "[0.0018547625134634426819715 +/- 2.37e-26]",
+          "signed_unpaid": "[-5.3045834315256415634927 +/- 2.85e-23]",
+          "nonzero_block_counts": {
+            "both": 33,
+            "open": 13,
+            "numerator_only": 7
+          }
+        },
+        {
+          "n": 134,
+          "scope": "native",
+          "scale": 128,
+          "direct_exact": "-1",
+          "signed_numerator_only": "[8.3883467243327908182957e-5 +/- 3.41e-28]",
+          "signed_unpaid": "[-4.6704238490961447715914 +/- 2.80e-23]",
+          "nonzero_block_counts": {
+            "both": 33,
+            "open": 13,
+            "numerator_only": 7
+          }
+        },
+        {
+          "n": 256,
+          "scope": "wider diagnostic",
+          "scale": 128,
+          "direct_exact": "53",
+          "signed_numerator_only": "[0.0022251973648966556039889 +/- 1.55e-26]",
+          "signed_unpaid": "[66.719036292707372050042 +/- 1.95e-22]",
+          "nonzero_block_counts": {
+            "both": 33,
+            "open": 13,
+            "numerator_only": 7
+          }
+        },
+        {
+          "n": 385,
+          "scope": "wider diagnostic",
+          "scale": 256,
+          "direct_exact": "30150789787492197670479298631389140599119145169751849/1040552422675122980213279158787550899418613456211616",
+          "signed_numerator_only": "[0.011299082292860616427944 +/- 1.98e-25]",
+          "signed_unpaid": "[12.318709552203524677703 +/- 3.40e-22]",
+          "nonzero_block_counts": {
+            "both": 41,
+            "open": 8,
+            "numerator_only": 4
+          }
+        },
+        {
+          "n": 1513,
+          "scope": "wider diagnostic",
+          "scale": 1024,
+          "direct_exact": "-1805628552109157983222172299627042663228544262175567/73574413724503645065585395065786427231619133267488",
+          "signed_numerator_only": "[-0.0051152702357679678905518 +/- 3.17e-26]",
+          "signed_unpaid": "[3.6742696128992785671298 +/- 3.67e-23]",
+          "nonzero_block_counts": {
+            "both": 50,
+            "open": 2,
+            "numerator_only": 1
+          }
+        }
+      ]
+    }
+  ],
+  "integer_gate_examples": [
+    {
+      "L": 128,
+      "N": 128,
+      "D": 128,
+      "K": 4,
+      "old": false,
+      "new": true,
+      "K_strictly_between_fourth_and_third_roots": true
+    },
+    {
+      "L": 16384,
+      "N": 16384,
+      "D": 16384,
+      "K": 16,
+      "old": false,
+      "new": true,
+      "K_strictly_between_fourth_and_third_roots": true
+    },
+    {
+      "L": 16384,
+      "N": 16384,
+      "D": 16384,
+      "K": 8,
+      "old": false,
+      "new": false,
+      "K_strictly_between_fourth_and_third_roots": false
+    },
+    {
+      "L": 16384,
+      "N": 16384,
+      "D": 16384,
+      "K": 32,
+      "old": true,
+      "new": true,
+      "K_strictly_between_fourth_and_third_roots": false
+    }
+  ],
+  "geometric_envelopes": {
+    "moduli_up_to": 48,
+    "coprime_prefix_indicator_vectors": 576,
+    "exact_divisor_interval_counts": 2016,
+    "fully_enumerated_reduced_periods_up_to": 32,
+    "exact_cyclic_geometric_identities": 11968,
+    "exact_consecutive_site_envelope_tests": 2112,
+    "envelope": "Q at zero; Q/(2*min(r,Q-r)) elsewhere; finite mean <= 1+H_floor(Q/2)"
+  }
+}

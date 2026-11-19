@@ -1,0 +1,994 @@
+{
+  "grid": 400,
+  "units_per_one": 1000000000,
+  "minimum": {
+    "alpha_left_numerator": 120,
+    "alpha_right_numerator": 122,
+    "units": 1088335060,
+    "semiprime_cells": 0,
+    "triple_cells": 3364
+  },
+  "all_bins": [
+    {
+      "alpha_left_numerator": 120,
+      "alpha_right_numerator": 122,
+      "units": 1088335060,
+      "semiprime_cells": 0,
+      "triple_cells": 3364
+    },
+    {
+      "alpha_left_numerator": 122,
+      "alpha_right_numerator": 124,
+      "units": 1102769614,
+      "semiprime_cells": 0,
+      "triple_cells": 3481
+    },
+    {
+      "alpha_left_numerator": 124,
+      "alpha_right_numerator": 126,
+      "units": 1117451247,
+      "semiprime_cells": 0,
+      "triple_cells": 3600
+    },
+    {
+      "alpha_left_numerator": 126,
+      "alpha_right_numerator": 128,
+      "units": 1132393551,
+      "semiprime_cells": 0,
+      "triple_cells": 3721
+    },
+    {
+      "alpha_left_numerator": 128,
+      "alpha_right_numerator": 130,
+      "units": 1147610737,
+      "semiprime_cells": 0,
+      "triple_cells": 3844
+    },
+    {
+      "alpha_left_numerator": 130,
+      "alpha_right_numerator": 132,
+      "units": 1163117608,
+      "semiprime_cells": 0,
+      "triple_cells": 3969
+    },
+    {
+      "alpha_left_numerator": 132,
+      "alpha_right_numerator": 134,
+      "units": 1178929725,
+      "semiprime_cells": 0,
+      "triple_cells": 4096
+    },
+    {
+      "alpha_left_numerator": 134,
+      "alpha_right_numerator": 136,
+      "units": 1194231880,
+      "semiprime_cells": 0,
+      "triple_cells": 4220
+    },
+    {
+      "alpha_left_numerator": 136,
+      "alpha_right_numerator": 138,
+      "units": 1207875953,
+      "semiprime_cells": 0,
+      "triple_cells": 4334
+    },
+    {
+      "alpha_left_numerator": 138,
+      "alpha_right_numerator": 140,
+      "units": 1220041614,
+      "semiprime_cells": 0,
+      "triple_cells": 4438
+    },
+    {
+      "alpha_left_numerator": 140,
+      "alpha_right_numerator": 142,
+      "units": 1231571942,
+      "semiprime_cells": 0,
+      "triple_cells": 4532
+    },
+    {
+      "alpha_left_numerator": 142,
+      "alpha_right_numerator": 144,
+      "units": 1242477504,
+      "semiprime_cells": 0,
+      "triple_cells": 4616
+    },
+    {
+      "alpha_left_numerator": 144,
+      "alpha_right_numerator": 146,
+      "units": 1252767758,
+      "semiprime_cells": 0,
+      "triple_cells": 4690
+    },
+    {
+      "alpha_left_numerator": 146,
+      "alpha_right_numerator": 148,
+      "units": 1262451045,
+      "semiprime_cells": 0,
+      "triple_cells": 4754
+    },
+    {
+      "alpha_left_numerator": 148,
+      "alpha_right_numerator": 150,
+      "units": 1271534593,
+      "semiprime_cells": 0,
+      "triple_cells": 4808
+    },
+    {
+      "alpha_left_numerator": 150,
+      "alpha_right_numerator": 152,
+      "units": 1280024466,
+      "semiprime_cells": 0,
+      "triple_cells": 4852
+    },
+    {
+      "alpha_left_numerator": 152,
+      "alpha_right_numerator": 154,
+      "units": 1287925522,
+      "semiprime_cells": 0,
+      "triple_cells": 4886
+    },
+    {
+      "alpha_left_numerator": 154,
+      "alpha_right_numerator": 156,
+      "units": 1295241328,
+      "semiprime_cells": 0,
+      "triple_cells": 4910
+    },
+    {
+      "alpha_left_numerator": 156,
+      "alpha_right_numerator": 158,
+      "units": 1301974109,
+      "semiprime_cells": 0,
+      "triple_cells": 4924
+    },
+    {
+      "alpha_left_numerator": 158,
+      "alpha_right_numerator": 160,
+      "units": 1308124574,
+      "semiprime_cells": 0,
+      "triple_cells": 4928
+    },
+    {
+      "alpha_left_numerator": 160,
+      "alpha_right_numerator": 162,
+      "units": 1313691818,
+      "semiprime_cells": 0,
+      "triple_cells": 4922
+    },
+    {
+      "alpha_left_numerator": 162,
+      "alpha_right_numerator": 164,
+      "units": 1318673078,
+      "semiprime_cells": 0,
+      "triple_cells": 4906
+    },
+    {
+      "alpha_left_numerator": 164,
+      "alpha_right_numerator": 166,
+      "units": 1323063504,
+      "semiprime_cells": 0,
+      "triple_cells": 4880
+    },
+    {
+      "alpha_left_numerator": 166,
+      "alpha_right_numerator": 168,
+      "units": 1326855739,
+      "semiprime_cells": 0,
+      "triple_cells": 4844
+    },
+    {
+      "alpha_left_numerator": 168,
+      "alpha_right_numerator": 170,
+      "units": 1330039539,
+      "semiprime_cells": 0,
+      "triple_cells": 4798
+    },
+    {
+      "alpha_left_numerator": 170,
+      "alpha_right_numerator": 172,
+      "units": 1332601124,
+      "semiprime_cells": 0,
+      "triple_cells": 4742
+    },
+    {
+      "alpha_left_numerator": 172,
+      "alpha_right_numerator": 174,
+      "units": 1334522332,
+      "semiprime_cells": 0,
+      "triple_cells": 4676
+    },
+    {
+      "alpha_left_numerator": 174,
+      "alpha_right_numerator": 176,
+      "units": 1335779495,
+      "semiprime_cells": 0,
+      "triple_cells": 4600
+    },
+    {
+      "alpha_left_numerator": 176,
+      "alpha_right_numerator": 178,
+      "units": 1336341783,
+      "semiprime_cells": 0,
+      "triple_cells": 4514
+    },
+    {
+      "alpha_left_numerator": 178,
+      "alpha_right_numerator": 180,
+      "units": 1336168969,
+      "semiprime_cells": 0,
+      "triple_cells": 4418
+    },
+    {
+      "alpha_left_numerator": 180,
+      "alpha_right_numerator": 182,
+      "units": 1335207943,
+      "semiprime_cells": 0,
+      "triple_cells": 4312
+    },
+    {
+      "alpha_left_numerator": 182,
+      "alpha_right_numerator": 184,
+      "units": 1333387534,
+      "semiprime_cells": 0,
+      "triple_cells": 4196
+    },
+    {
+      "alpha_left_numerator": 184,
+      "alpha_right_numerator": 186,
+      "units": 1330610171,
+      "semiprime_cells": 0,
+      "triple_cells": 4070
+    },
+    {
+      "alpha_left_numerator": 186,
+      "alpha_right_numerator": 188,
+      "units": 1326738051,
+      "semiprime_cells": 0,
+      "triple_cells": 3934
+    },
+    {
+      "alpha_left_numerator": 188,
+      "alpha_right_numerator": 190,
+      "units": 1321568455,
+      "semiprime_cells": 0,
+      "triple_cells": 3788
+    },
+    {
+      "alpha_left_numerator": 190,
+      "alpha_right_numerator": 192,
+      "units": 1314786286,
+      "semiprime_cells": 0,
+      "triple_cells": 3632
+    },
+    {
+      "alpha_left_numerator": 192,
+      "alpha_right_numerator": 194,
+      "units": 1305861663,
+      "semiprime_cells": 0,
+      "triple_cells": 3466
+    },
+    {
+      "alpha_left_numerator": 194,
+      "alpha_right_numerator": 196,
+      "units": 1293790672,
+      "semiprime_cells": 0,
+      "triple_cells": 3290
+    },
+    {
+      "alpha_left_numerator": 196,
+      "alpha_right_numerator": 198,
+      "units": 1276232202,
+      "semiprime_cells": 0,
+      "triple_cells": 3104
+    },
+    {
+      "alpha_left_numerator": 198,
+      "alpha_right_numerator": 200,
+      "units": 1261104433,
+      "semiprime_cells": 0,
+      "triple_cells": 2914
+    },
+    {
+      "alpha_left_numerator": 200,
+      "alpha_right_numerator": 202,
+      "units": 1265941805,
+      "semiprime_cells": 0,
+      "triple_cells": 3008
+    },
+    {
+      "alpha_left_numerator": 202,
+      "alpha_right_numerator": 204,
+      "units": 1290708452,
+      "semiprime_cells": 1,
+      "triple_cells": 3195
+    },
+    {
+      "alpha_left_numerator": 204,
+      "alpha_right_numerator": 206,
+      "units": 1320535887,
+      "semiprime_cells": 3,
+      "triple_cells": 3372
+    },
+    {
+      "alpha_left_numerator": 206,
+      "alpha_right_numerator": 208,
+      "units": 1347603371,
+      "semiprime_cells": 5,
+      "triple_cells": 3539
+    },
+    {
+      "alpha_left_numerator": 208,
+      "alpha_right_numerator": 210,
+      "units": 1372801643,
+      "semiprime_cells": 7,
+      "triple_cells": 3696
+    },
+    {
+      "alpha_left_numerator": 210,
+      "alpha_right_numerator": 212,
+      "units": 1396593729,
+      "semiprime_cells": 9,
+      "triple_cells": 3843
+    },
+    {
+      "alpha_left_numerator": 212,
+      "alpha_right_numerator": 214,
+      "units": 1419252601,
+      "semiprime_cells": 11,
+      "triple_cells": 3980
+    },
+    {
+      "alpha_left_numerator": 214,
+      "alpha_right_numerator": 216,
+      "units": 1440953191,
+      "semiprime_cells": 13,
+      "triple_cells": 4107
+    },
+    {
+      "alpha_left_numerator": 216,
+      "alpha_right_numerator": 218,
+      "units": 1461814527,
+      "semiprime_cells": 15,
+      "triple_cells": 4224
+    },
+    {
+      "alpha_left_numerator": 218,
+      "alpha_right_numerator": 220,
+      "units": 1481921270,
+      "semiprime_cells": 17,
+      "triple_cells": 4331
+    },
+    {
+      "alpha_left_numerator": 220,
+      "alpha_right_numerator": 222,
+      "units": 1501335745,
+      "semiprime_cells": 19,
+      "triple_cells": 4428
+    },
+    {
+      "alpha_left_numerator": 222,
+      "alpha_right_numerator": 224,
+      "units": 1520105025,
+      "semiprime_cells": 21,
+      "triple_cells": 4515
+    },
+    {
+      "alpha_left_numerator": 224,
+      "alpha_right_numerator": 226,
+      "units": 1538265450,
+      "semiprime_cells": 23,
+      "triple_cells": 4592
+    },
+    {
+      "alpha_left_numerator": 226,
+      "alpha_right_numerator": 228,
+      "units": 1555845480,
+      "semiprime_cells": 25,
+      "triple_cells": 4659
+    },
+    {
+      "alpha_left_numerator": 228,
+      "alpha_right_numerator": 230,
+      "units": 1572867660,
+      "semiprime_cells": 27,
+      "triple_cells": 4716
+    },
+    {
+      "alpha_left_numerator": 230,
+      "alpha_right_numerator": 232,
+      "units": 1589349958,
+      "semiprime_cells": 29,
+      "triple_cells": 4763
+    },
+    {
+      "alpha_left_numerator": 232,
+      "alpha_right_numerator": 234,
+      "units": 1605306743,
+      "semiprime_cells": 31,
+      "triple_cells": 4800
+    },
+    {
+      "alpha_left_numerator": 234,
+      "alpha_right_numerator": 236,
+      "units": 1620749468,
+      "semiprime_cells": 33,
+      "triple_cells": 4827
+    },
+    {
+      "alpha_left_numerator": 236,
+      "alpha_right_numerator": 238,
+      "units": 1635687207,
+      "semiprime_cells": 35,
+      "triple_cells": 4844
+    },
+    {
+      "alpha_left_numerator": 238,
+      "alpha_right_numerator": 240,
+      "units": 1650127009,
+      "semiprime_cells": 37,
+      "triple_cells": 4851
+    },
+    {
+      "alpha_left_numerator": 240,
+      "alpha_right_numerator": 242,
+      "units": 1664074185,
+      "semiprime_cells": 39,
+      "triple_cells": 4848
+    },
+    {
+      "alpha_left_numerator": 242,
+      "alpha_right_numerator": 244,
+      "units": 1677532559,
+      "semiprime_cells": 41,
+      "triple_cells": 4835
+    },
+    {
+      "alpha_left_numerator": 244,
+      "alpha_right_numerator": 246,
+      "units": 1690504631,
+      "semiprime_cells": 43,
+      "triple_cells": 4812
+    },
+    {
+      "alpha_left_numerator": 246,
+      "alpha_right_numerator": 248,
+      "units": 1702991692,
+      "semiprime_cells": 45,
+      "triple_cells": 4779
+    },
+    {
+      "alpha_left_numerator": 248,
+      "alpha_right_numerator": 250,
+      "units": 1714993935,
+      "semiprime_cells": 47,
+      "triple_cells": 4736
+    },
+    {
+      "alpha_left_numerator": 250,
+      "alpha_right_numerator": 252,
+      "units": 1726510518,
+      "semiprime_cells": 49,
+      "triple_cells": 4683
+    },
+    {
+      "alpha_left_numerator": 252,
+      "alpha_right_numerator": 254,
+      "units": 1737539637,
+      "semiprime_cells": 51,
+      "triple_cells": 4620
+    },
+    {
+      "alpha_left_numerator": 254,
+      "alpha_right_numerator": 256,
+      "units": 1748078554,
+      "semiprime_cells": 53,
+      "triple_cells": 4547
+    },
+    {
+      "alpha_left_numerator": 256,
+      "alpha_right_numerator": 258,
+      "units": 1758123647,
+      "semiprime_cells": 55,
+      "triple_cells": 4464
+    },
+    {
+      "alpha_left_numerator": 258,
+      "alpha_right_numerator": 260,
+      "units": 1767670415,
+      "semiprime_cells": 57,
+      "triple_cells": 4371
+    },
+    {
+      "alpha_left_numerator": 260,
+      "alpha_right_numerator": 262,
+      "units": 1776713465,
+      "semiprime_cells": 59,
+      "triple_cells": 4268
+    },
+    {
+      "alpha_left_numerator": 262,
+      "alpha_right_numerator": 264,
+      "units": 1784913983,
+      "semiprime_cells": 61,
+      "triple_cells": 4155
+    },
+    {
+      "alpha_left_numerator": 264,
+      "alpha_right_numerator": 266,
+      "units": 1791599612,
+      "semiprime_cells": 63,
+      "triple_cells": 4032
+    },
+    {
+      "alpha_left_numerator": 266,
+      "alpha_right_numerator": 268,
+      "units": 1797925358,
+      "semiprime_cells": 65,
+      "triple_cells": 3906
+    },
+    {
+      "alpha_left_numerator": 268,
+      "alpha_right_numerator": 270,
+      "units": 1804713550,
+      "semiprime_cells": 67,
+      "triple_cells": 3782
+    },
+    {
+      "alpha_left_numerator": 270,
+      "alpha_right_numerator": 272,
+      "units": 1811956025,
+      "semiprime_cells": 69,
+      "triple_cells": 3660
+    },
+    {
+      "alpha_left_numerator": 272,
+      "alpha_right_numerator": 274,
+      "units": 1819645647,
+      "semiprime_cells": 71,
+      "triple_cells": 3540
+    },
+    {
+      "alpha_left_numerator": 274,
+      "alpha_right_numerator": 276,
+      "units": 1827776191,
+      "semiprime_cells": 73,
+      "triple_cells": 3422
+    },
+    {
+      "alpha_left_numerator": 276,
+      "alpha_right_numerator": 278,
+      "units": 1836342347,
+      "semiprime_cells": 75,
+      "triple_cells": 3306
+    },
+    {
+      "alpha_left_numerator": 278,
+      "alpha_right_numerator": 280,
+      "units": 1845339701,
+      "semiprime_cells": 77,
+      "triple_cells": 3192
+    },
+    {
+      "alpha_left_numerator": 280,
+      "alpha_right_numerator": 282,
+      "units": 1854764649,
+      "semiprime_cells": 79,
+      "triple_cells": 3080
+    },
+    {
+      "alpha_left_numerator": 282,
+      "alpha_right_numerator": 284,
+      "units": 1864614397,
+      "semiprime_cells": 81,
+      "triple_cells": 2970
+    },
+    {
+      "alpha_left_numerator": 284,
+      "alpha_right_numerator": 286,
+      "units": 1874886933,
+      "semiprime_cells": 83,
+      "triple_cells": 2862
+    },
+    {
+      "alpha_left_numerator": 286,
+      "alpha_right_numerator": 288,
+      "units": 1885581004,
+      "semiprime_cells": 85,
+      "triple_cells": 2756
+    },
+    {
+      "alpha_left_numerator": 288,
+      "alpha_right_numerator": 290,
+      "units": 1896696148,
+      "semiprime_cells": 87,
+      "triple_cells": 2652
+    },
+    {
+      "alpha_left_numerator": 290,
+      "alpha_right_numerator": 292,
+      "units": 1908232630,
+      "semiprime_cells": 89,
+      "triple_cells": 2550
+    },
+    {
+      "alpha_left_numerator": 292,
+      "alpha_right_numerator": 294,
+      "units": 1920191464,
+      "semiprime_cells": 91,
+      "triple_cells": 2450
+    },
+    {
+      "alpha_left_numerator": 294,
+      "alpha_right_numerator": 296,
+      "units": 1932574390,
+      "semiprime_cells": 93,
+      "triple_cells": 2352
+    },
+    {
+      "alpha_left_numerator": 296,
+      "alpha_right_numerator": 298,
+      "units": 1945383967,
+      "semiprime_cells": 95,
+      "triple_cells": 2256
+    },
+    {
+      "alpha_left_numerator": 298,
+      "alpha_right_numerator": 300,
+      "units": 1958623440,
+      "semiprime_cells": 97,
+      "triple_cells": 2162
+    },
+    {
+      "alpha_left_numerator": 300,
+      "alpha_right_numerator": 302,
+      "units": 1972296873,
+      "semiprime_cells": 99,
+      "triple_cells": 2070
+    },
+    {
+      "alpha_left_numerator": 302,
+      "alpha_right_numerator": 304,
+      "units": 1986409111,
+      "semiprime_cells": 101,
+      "triple_cells": 1980
+    },
+    {
+      "alpha_left_numerator": 304,
+      "alpha_right_numerator": 306,
+      "units": 2000965820,
+      "semiprime_cells": 103,
+      "triple_cells": 1892
+    },
+    {
+      "alpha_left_numerator": 306,
+      "alpha_right_numerator": 308,
+      "units": 2015973518,
+      "semiprime_cells": 105,
+      "triple_cells": 1806
+    },
+    {
+      "alpha_left_numerator": 308,
+      "alpha_right_numerator": 310,
+      "units": 2031439615,
+      "semiprime_cells": 107,
+      "triple_cells": 1722
+    },
+    {
+      "alpha_left_numerator": 310,
+      "alpha_right_numerator": 312,
+      "units": 2047372407,
+      "semiprime_cells": 109,
+      "triple_cells": 1640
+    },
+    {
+      "alpha_left_numerator": 312,
+      "alpha_right_numerator": 314,
+      "units": 2063781180,
+      "semiprime_cells": 111,
+      "triple_cells": 1560
+    },
+    {
+      "alpha_left_numerator": 314,
+      "alpha_right_numerator": 316,
+      "units": 2080676235,
+      "semiprime_cells": 113,
+      "triple_cells": 1482
+    },
+    {
+      "alpha_left_numerator": 316,
+      "alpha_right_numerator": 318,
+      "units": 2098068961,
+      "semiprime_cells": 115,
+      "triple_cells": 1406
+    },
+    {
+      "alpha_left_numerator": 318,
+      "alpha_right_numerator": 320,
+      "units": 2115971898,
+      "semiprime_cells": 117,
+      "triple_cells": 1332
+    },
+    {
+      "alpha_left_numerator": 320,
+      "alpha_right_numerator": 322,
+      "units": 2134398803,
+      "semiprime_cells": 119,
+      "triple_cells": 1260
+    },
+    {
+      "alpha_left_numerator": 322,
+      "alpha_right_numerator": 324,
+      "units": 2153364752,
+      "semiprime_cells": 121,
+      "triple_cells": 1190
+    },
+    {
+      "alpha_left_numerator": 324,
+      "alpha_right_numerator": 326,
+      "units": 2172886263,
+      "semiprime_cells": 123,
+      "triple_cells": 1122
+    },
+    {
+      "alpha_left_numerator": 326,
+      "alpha_right_numerator": 328,
+      "units": 2192981374,
+      "semiprime_cells": 125,
+      "triple_cells": 1056
+    },
+    {
+      "alpha_left_numerator": 328,
+      "alpha_right_numerator": 330,
+      "units": 2213669812,
+      "semiprime_cells": 127,
+      "triple_cells": 992
+    },
+    {
+      "alpha_left_numerator": 330,
+      "alpha_right_numerator": 332,
+      "units": 2234973099,
+      "semiprime_cells": 129,
+      "triple_cells": 930
+    },
+    {
+      "alpha_left_numerator": 332,
+      "alpha_right_numerator": 334,
+      "units": 2256914796,
+      "semiprime_cells": 131,
+      "triple_cells": 870
+    },
+    {
+      "alpha_left_numerator": 334,
+      "alpha_right_numerator": 336,
+      "units": 2279520640,
+      "semiprime_cells": 133,
+      "triple_cells": 812
+    },
+    {
+      "alpha_left_numerator": 336,
+      "alpha_right_numerator": 338,
+      "units": 2302818799,
+      "semiprime_cells": 135,
+      "triple_cells": 756
+    },
+    {
+      "alpha_left_numerator": 338,
+      "alpha_right_numerator": 340,
+      "units": 2326840134,
+      "semiprime_cells": 137,
+      "triple_cells": 702
+    },
+    {
+      "alpha_left_numerator": 340,
+      "alpha_right_numerator": 342,
+      "units": 2351618510,
+      "semiprime_cells": 139,
+      "triple_cells": 650
+    },
+    {
+      "alpha_left_numerator": 342,
+      "alpha_right_numerator": 344,
+      "units": 2377191164,
+      "semiprime_cells": 141,
+      "triple_cells": 600
+    },
+    {
+      "alpha_left_numerator": 344,
+      "alpha_right_numerator": 346,
+      "units": 2403599118,
+      "semiprime_cells": 143,
+      "triple_cells": 552
+    },
+    {
+      "alpha_left_numerator": 346,
+      "alpha_right_numerator": 348,
+      "units": 2430887664,
+      "semiprime_cells": 145,
+      "triple_cells": 506
+    },
+    {
+      "alpha_left_numerator": 348,
+      "alpha_right_numerator": 350,
+      "units": 2459106997,
+      "semiprime_cells": 147,
+      "triple_cells": 462
+    },
+    {
+      "alpha_left_numerator": 350,
+      "alpha_right_numerator": 352,
+      "units": 2488312893,
+      "semiprime_cells": 149,
+      "triple_cells": 420
+    },
+    {
+      "alpha_left_numerator": 352,
+      "alpha_right_numerator": 354,
+      "units": 2518567580,
+      "semiprime_cells": 151,
+      "triple_cells": 380
+    },
+    {
+      "alpha_left_numerator": 354,
+      "alpha_right_numerator": 356,
+      "units": 2549940787,
+      "semiprime_cells": 153,
+      "triple_cells": 342
+    },
+    {
+      "alpha_left_numerator": 356,
+      "alpha_right_numerator": 358,
+      "units": 2582511057,
+      "semiprime_cells": 155,
+      "triple_cells": 306
+    },
+    {
+      "alpha_left_numerator": 358,
+      "alpha_right_numerator": 360,
+      "units": 2616367348,
+      "semiprime_cells": 157,
+      "triple_cells": 272
+    },
+    {
+      "alpha_left_numerator": 360,
+      "alpha_right_numerator": 362,
+      "units": 2651611108,
+      "semiprime_cells": 159,
+      "triple_cells": 240
+    },
+    {
+      "alpha_left_numerator": 362,
+      "alpha_right_numerator": 364,
+      "units": 2688358910,
+      "semiprime_cells": 161,
+      "triple_cells": 210
+    },
+    {
+      "alpha_left_numerator": 364,
+      "alpha_right_numerator": 366,
+      "units": 2726745950,
+      "semiprime_cells": 163,
+      "triple_cells": 182
+    },
+    {
+      "alpha_left_numerator": 366,
+      "alpha_right_numerator": 368,
+      "units": 2766930703,
+      "semiprime_cells": 165,
+      "triple_cells": 156
+    },
+    {
+      "alpha_left_numerator": 368,
+      "alpha_right_numerator": 370,
+      "units": 2809101345,
+      "semiprime_cells": 167,
+      "triple_cells": 132
+    },
+    {
+      "alpha_left_numerator": 370,
+      "alpha_right_numerator": 372,
+      "units": 2853484787,
+      "semiprime_cells": 169,
+      "triple_cells": 110
+    },
+    {
+      "alpha_left_numerator": 372,
+      "alpha_right_numerator": 374,
+      "units": 2900359826,
+      "semiprime_cells": 171,
+      "triple_cells": 90
+    },
+    {
+      "alpha_left_numerator": 374,
+      "alpha_right_numerator": 376,
+      "units": 2950077006,
+      "semiprime_cells": 173,
+      "triple_cells": 72
+    },
+    {
+      "alpha_left_numerator": 376,
+      "alpha_right_numerator": 378,
+      "units": 3003089782,
+      "semiprime_cells": 175,
+      "triple_cells": 56
+    },
+    {
+      "alpha_left_numerator": 378,
+      "alpha_right_numerator": 380,
+      "units": 3060005907,
+      "semiprime_cells": 177,
+      "triple_cells": 42
+    },
+    {
+      "alpha_left_numerator": 380,
+      "alpha_right_numerator": 382,
+      "units": 3121676808,
+      "semiprime_cells": 179,
+      "triple_cells": 30
+    },
+    {
+      "alpha_left_numerator": 382,
+      "alpha_right_numerator": 384,
+      "units": 3189363394,
+      "semiprime_cells": 181,
+      "triple_cells": 20
+    },
+    {
+      "alpha_left_numerator": 384,
+      "alpha_right_numerator": 386,
+      "units": 3265068208,
+      "semiprime_cells": 183,
+      "triple_cells": 12
+    },
+    {
+      "alpha_left_numerator": 386,
+      "alpha_right_numerator": 388,
+      "units": 3352265968,
+      "semiprime_cells": 185,
+      "triple_cells": 6
+    },
+    {
+      "alpha_left_numerator": 388,
+      "alpha_right_numerator": 390,
+      "units": 3457713429,
+      "semiprime_cells": 187,
+      "triple_cells": 2
+    },
+    {
+      "alpha_left_numerator": 390,
+      "alpha_right_numerator": 392,
+      "units": 3596708666,
+      "semiprime_cells": 189,
+      "triple_cells": 0
+    },
+    {
+      "alpha_left_numerator": 392,
+      "alpha_right_numerator": 394,
+      "units": 3812389140,
+      "semiprime_cells": 191,
+      "triple_cells": 0
+    },
+    {
+      "alpha_left_numerator": 394,
+      "alpha_right_numerator": 396,
+      "units": 4084648235,
+      "semiprime_cells": 193,
+      "triple_cells": 0
+    },
+    {
+      "alpha_left_numerator": 396,
+      "alpha_right_numerator": 398,
+      "units": 4455444808,
+      "semiprime_cells": 195,
+      "triple_cells": 0
+    },
+    {
+      "alpha_left_numerator": 398,
+      "alpha_right_numerator": 400,
+      "units": 4455444808,
+      "semiprime_cells": 195,
+      "triple_cells": 0
+    }
+  ],
+  "scope": "Exact combinatorial lower Darboux sums. Uniform prime asymptotics use ordinary PNT separately."
+}

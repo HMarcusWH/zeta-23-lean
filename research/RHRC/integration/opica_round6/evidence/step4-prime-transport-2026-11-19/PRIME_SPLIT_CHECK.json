@@ -1,0 +1,62 @@
+{
+  "scope": "Exact finite native interval/signs/tree; auxiliary cofactors and matching heights; native and auxiliary gcd caps independently compared. Does not exercise asymptotic surplus, cutoff alignment or the all-prime theorem.",
+  "script_sha256": "761ae31a152156cd19e3bf49b5e8d8cdf7b54a5859cdc93a8246b4fe1c6ea431",
+  "cases": [
+    {
+      "cutoff": 16384,
+      "source_labels": 460,
+      "prime_targets": 159,
+      "pairs_by_stage": [
+        75,
+        16,
+        5
+      ],
+      "remaining_prime_targets": 63,
+      "unmasked_signed_incidence": "-23015/524288",
+      "mask_comparisons": [
+        {
+          "cap": 1,
+          "native_cap": true,
+          "distinct_rejected_incident_pairs": 1323,
+          "direct_signed_incidence": "57533/524288",
+          "signed_defect": "-20137/131072"
+        },
+        {
+          "cap": 13,
+          "native_cap": false,
+          "distinct_rejected_incident_pairs": 0,
+          "direct_signed_incidence": "-23015/524288",
+          "signed_defect": "0"
+        }
+      ]
+    },
+    {
+      "cutoff": 32768,
+      "source_labels": 981,
+      "prime_targets": 306,
+      "pairs_by_stage": [
+        160,
+        33,
+        4
+      ],
+      "remaining_prime_targets": 109,
+      "unmasked_signed_incidence": "-93431/2097152",
+      "mask_comparisons": [
+        {
+          "cap": 1,
+          "native_cap": true,
+          "distinct_rejected_incident_pairs": 5524,
+          "direct_signed_incidence": "369621/2097152",
+          "signed_defect": "-115763/524288"
+        },
+        {
+          "cap": 13,
+          "native_cap": false,
+          "distinct_rejected_incident_pairs": 0,
+          "direct_signed_incidence": "-93431/2097152",
+          "signed_defect": "0"
+        }
+      ]
+    }
+  ]
+}

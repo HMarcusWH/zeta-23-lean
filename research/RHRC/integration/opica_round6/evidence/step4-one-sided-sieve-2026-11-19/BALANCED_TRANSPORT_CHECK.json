@@ -1,0 +1,406 @@
+{
+  "scope": "Finite source/dyadic-tree transport check; fixed target cone p<q with 16p\u00b2>9X and 16q\u00b2>9X. True squarefree rough source, all tree depths; separate optional global matching step for terminal debt. No asymptotic cost or signed bound inferred.",
+  "algorithm": "Increasing dyadic widths through the actual base; in each node pair remaining targets and prime donors in increasing label order. Any terminal spill selects nearest unused eligible prime, lower breaks ties.",
+  "cases": [
+    {
+      "X": 131093,
+      "first_terminal_integer": 116521,
+      "roughness_y": 324,
+      "s": 5,
+      "all_source_degrees": {
+        "rough_squarefree_degree_1": 1246,
+        "rough_squarefree_degree_2": 27,
+        "rough_nonsquarefree": 4
+      },
+      "balanced_semiprime_targets": 27,
+      "actual_prime_pool": 1246,
+      "number_matched_by_dyadic_integer_width": {
+        "4": 3,
+        "8": 6,
+        "16": 13,
+        "32": 2,
+        "64": 2
+      },
+      "base_local": {
+        "matches": 26,
+        "matched_base_crossings": 0,
+        "matched_shell_crossings": 0,
+        "unmatched_count": 1,
+        "unmatched_labels": [
+          131093
+        ],
+        "max_pair_displacement": 20,
+        "sum_pair_displacement": 200,
+        "number_donors_below_target": 12,
+        "boundary_base_cells": [
+          {
+            "which": "first",
+            "underlying": [
+              114688,
+              116736
+            ],
+            "clipped": [
+              116521,
+              116736
+            ],
+            "actual_target_count": 0,
+            "actual_donor_pool_count": 16,
+            "unmatched_targets": []
+          },
+          {
+            "which": "last",
+            "underlying": [
+              131072,
+              135168
+            ],
+            "clipped": [
+              131072,
+              131094
+            ],
+            "actual_target_count": 1,
+            "actual_donor_pool_count": 0,
+            "unmatched_targets": [
+              131093
+            ]
+          }
+        ],
+        "norms_squared": {
+          "F": "2268883135/536870912",
+          "all_targets_minus_selected_donors": "11663/536870912",
+          "actually_matched_targets_minus_donors": "217/33554432",
+          "F_minus_all_targets_plus_selected_donors": "141804341/33554432"
+        },
+        "dot_of_all_targets_minus_donors_with_remainder": "63/33554432",
+        "full_minus_remainder_norm_squared_difference": "13679/536870912",
+        "true_incident_ordered_off_diagonal": {
+          "all": "-13223/8388608",
+          "native_gcd_admitted": "-14887/8388608",
+          "native_gcd_rejected": "13/65536",
+          "rejected_unordered_pairs": 6,
+          "diagonal": "859951/536870912"
+        },
+        "all_pairing_sha256": "afc3b5b14a09b4ec6584fa388b0312112d3ec00570a76a708117859d77c311fe",
+        "exact_crosschecks": [
+          "node identity F=E+R at every node",
+          "both squared difference norms via direct signed source label pairs",
+          "full-minus-remainder via every incident label pair, retaining the literal gcd and its complement"
+        ]
+      },
+      "auxiliary_terminal_spill_pairs": [
+        {
+          "target": 131093,
+          "factors": [
+            337,
+            389
+          ],
+          "donor": 131071
+        }
+      ],
+      "after_terminal_spill": {
+        "matches": 27,
+        "matched_base_crossings": 1,
+        "matched_shell_crossings": 1,
+        "unmatched_count": 0,
+        "unmatched_labels": [],
+        "max_pair_displacement": 22,
+        "sum_pair_displacement": 222,
+        "number_donors_below_target": 13,
+        "boundary_base_cells": [
+          {
+            "which": "first",
+            "underlying": [
+              114688,
+              116736
+            ],
+            "clipped": [
+              116521,
+              116736
+            ],
+            "actual_target_count": 0,
+            "actual_donor_pool_count": 16,
+            "unmatched_targets": []
+          },
+          {
+            "which": "last",
+            "underlying": [
+              131072,
+              135168
+            ],
+            "clipped": [
+              131072,
+              131094
+            ],
+            "actual_target_count": 1,
+            "actual_donor_pool_count": 0,
+            "unmatched_targets": []
+          }
+        ],
+        "norms_squared": {
+          "F": "2268883135/536870912",
+          "all_targets_minus_selected_donors": "28043/536870912",
+          "actually_matched_targets_minus_donors": "28043/536870912",
+          "F_minus_all_targets_plus_selected_donors": "566300117/134217728"
+        },
+        "dot_of_all_targets_minus_donors_with_remainder": "114207/33554432",
+        "full_minus_remainder_norm_squared_difference": "3682667/536870912",
+        "true_incident_ordered_off_diagonal": {
+          "all": "43849/8388608",
+          "native_gcd_admitted": "42185/8388608",
+          "native_gcd_rejected": "13/65536",
+          "rejected_unordered_pairs": 6,
+          "diagonal": "876331/536870912"
+        },
+        "all_pairing_sha256": "da8e112fcb2961bb6499c0e07be3727f04981f8aa9c01c08d975c2ab559f490e",
+        "exact_crosschecks": [
+          "node identity F=E+R at every node",
+          "both squared difference norms via direct signed source label pairs",
+          "full-minus-remainder via every incident label pair, retaining the literal gcd and its complement"
+        ]
+      },
+      "endpoint_control": "All tested targets and donors belong to the same actual native terminal interval. The auxiliary spill may cross bases or shells, which is measured explicitly."
+    },
+    {
+      "X": 221189,
+      "first_terminal_integer": 195577,
+      "roughness_y": 324,
+      "s": 5,
+      "all_source_degrees": {
+        "rough_squarefree_degree_1": 2087,
+        "rough_squarefree_degree_2": 219,
+        "rough_nonsquarefree": 6
+      },
+      "balanced_semiprime_targets": 167,
+      "actual_prime_pool": 2087,
+      "number_matched_by_dyadic_integer_width": {
+        "4": 19,
+        "8": 49,
+        "16": 51,
+        "32": 35,
+        "64": 12
+      },
+      "base_local": {
+        "matches": 166,
+        "matched_base_crossings": 0,
+        "matched_shell_crossings": 0,
+        "unmatched_count": 1,
+        "unmatched_labels": [
+          221189
+        ],
+        "max_pair_displacement": 62,
+        "sum_pair_displacement": 1634,
+        "number_donors_below_target": 97,
+        "boundary_base_cells": [
+          {
+            "which": "first",
+            "underlying": [
+              192512,
+              196608
+            ],
+            "clipped": [
+              195577,
+              196608
+            ],
+            "actual_target_count": 5,
+            "actual_donor_pool_count": 82,
+            "unmatched_targets": []
+          },
+          {
+            "which": "last",
+            "underlying": [
+              221184,
+              225280
+            ],
+            "clipped": [
+              221184,
+              221190
+            ],
+            "actual_target_count": 1,
+            "actual_donor_pool_count": 0,
+            "unmatched_targets": [
+              221189
+            ]
+          }
+        ],
+        "norms_squared": {
+          "F": "1487903687/268435456",
+          "all_targets_minus_selected_donors": "14347/536870912",
+          "actually_matched_targets_minus_donors": "1539/134217728",
+          "F_minus_all_targets_plus_selected_donors": "2975790283/536870912"
+        },
+        "dot_of_all_targets_minus_donors_with_remainder": "343/134217728",
+        "full_minus_remainder_norm_squared_difference": "17091/536870912",
+        "true_incident_ordered_off_diagonal": {
+          "all": "-169407/33554432",
+          "native_gcd_admitted": "-243391/33554432",
+          "native_gcd_rejected": "289/131072",
+          "rejected_unordered_pairs": 126,
+          "diagonal": "2727603/536870912"
+        },
+        "all_pairing_sha256": "10cfaa1dab89e39b060aa0f36a1f8a1736088ca009f5f533ba55494e26975b5d",
+        "exact_crosschecks": [
+          "node identity F=E+R at every node",
+          "both squared difference norms via direct signed source label pairs",
+          "full-minus-remainder via every incident label pair, retaining the literal gcd and its complement"
+        ]
+      },
+      "auxiliary_terminal_spill_pairs": [
+        {
+          "target": 221189,
+          "factors": [
+            373,
+            593
+          ],
+          "donor": 221173
+        }
+      ],
+      "after_terminal_spill": {
+        "matches": 167,
+        "matched_base_crossings": 1,
+        "matched_shell_crossings": 0,
+        "unmatched_count": 0,
+        "unmatched_labels": [],
+        "max_pair_displacement": 62,
+        "sum_pair_displacement": 1650,
+        "number_donors_below_target": 98,
+        "boundary_base_cells": [
+          {
+            "which": "first",
+            "underlying": [
+              192512,
+              196608
+            ],
+            "clipped": [
+              195577,
+              196608
+            ],
+            "actual_target_count": 5,
+            "actual_donor_pool_count": 82,
+            "unmatched_targets": []
+          },
+          {
+            "which": "last",
+            "underlying": [
+              221184,
+              225280
+            ],
+            "clipped": [
+              221184,
+              221190
+            ],
+            "actual_target_count": 1,
+            "actual_donor_pool_count": 0,
+            "unmatched_targets": []
+          }
+        ],
+        "norms_squared": {
+          "F": "1487903687/268435456",
+          "all_targets_minus_selected_donors": "11301/268435456",
+          "actually_matched_targets_minus_donors": "11301/268435456",
+          "F_minus_all_targets_plus_selected_donors": "743127927/134217728"
+        },
+        "dot_of_all_targets_minus_donors_with_remainder": "409133/134217728",
+        "full_minus_remainder_norm_squared_difference": "1647833/268435456",
+        "true_incident_ordered_off_diagonal": {
+          "all": "2187/2097152",
+          "native_gcd_admitted": "-2437/2097152",
+          "native_gcd_rejected": "289/131072",
+          "rejected_unordered_pairs": 126,
+          "diagonal": "1367897/268435456"
+        },
+        "all_pairing_sha256": "c336c085ee3da0defd7a6392f6908f3f0f09a8505e0c5182ad64f2da4ab70656",
+        "exact_crosschecks": [
+          "node identity F=E+R at every node",
+          "both squared difference norms via direct signed source label pairs",
+          "full-minus-remainder via every incident label pair, retaining the literal gcd and its complement"
+        ]
+      },
+      "endpoint_control": "All tested targets and donors belong to the same actual native terminal interval. The auxiliary spill may cross bases or shells, which is measured explicitly."
+    },
+    {
+      "X": 1656575,
+      "first_terminal_integer": 1435553,
+      "roughness_y": 441,
+      "s": 5,
+      "all_source_degrees": {
+        "rough_squarefree_degree_1": 15492,
+        "rough_squarefree_degree_2": 4386,
+        "rough_nonsquarefree": 12
+      },
+      "balanced_semiprime_targets": 1130,
+      "actual_prime_pool": 15492,
+      "number_matched_by_dyadic_integer_width": {
+        "4": 99,
+        "8": 242,
+        "16": 341,
+        "32": 296,
+        "64": 136,
+        "128": 16
+      },
+      "base_local": {
+        "matches": 1130,
+        "matched_base_crossings": 0,
+        "matched_shell_crossings": 0,
+        "unmatched_count": 0,
+        "unmatched_labels": [],
+        "max_pair_displacement": 104,
+        "sum_pair_displacement": 14390,
+        "number_donors_below_target": 585,
+        "boundary_base_cells": [
+          {
+            "which": "first",
+            "underlying": [
+              1409024,
+              1441792
+            ],
+            "clipped": [
+              1435553,
+              1441792
+            ],
+            "actual_target_count": 32,
+            "actual_donor_pool_count": 443,
+            "unmatched_targets": []
+          },
+          {
+            "which": "last",
+            "underlying": [
+              1638400,
+              1671168
+            ],
+            "clipped": [
+              1638400,
+              1656576
+            ],
+            "actual_target_count": 101,
+            "actual_donor_pool_count": 1264,
+            "unmatched_targets": []
+          }
+        ],
+        "norms_squared": {
+          "F": "380011494349/17179869184",
+          "all_targets_minus_selected_donors": "14287/8589934592",
+          "actually_matched_targets_minus_donors": "14287/8589934592",
+          "F_minus_all_targets_plus_selected_donors": "380011451463/17179869184"
+        },
+        "dot_of_all_targets_minus_donors_with_remainder": "1789/4294967296",
+        "full_minus_remainder_norm_squared_difference": "21443/8589934592",
+        "true_incident_ordered_off_diagonal": {
+          "all": "-4625729/1073741824",
+          "native_gcd_admitted": "-13380801/1073741824",
+          "native_gcd_rejected": "68399/8388608",
+          "rejected_unordered_pairs": 3365,
+          "diagonal": "37027275/8589934592"
+        },
+        "all_pairing_sha256": "2baf4d9f04de4e0dde55da5eb6959ac416486b138b5858b463c514f568398f66",
+        "exact_crosschecks": [
+          "node identity F=E+R at every node",
+          "both squared difference norms via direct signed source label pairs",
+          "full-minus-remainder via every incident label pair, retaining the literal gcd and its complement"
+        ]
+      },
+      "auxiliary_terminal_spill_pairs": [],
+      "after_terminal_spill": "Identical to base_local; no spill.",
+      "endpoint_control": "All tested targets and donors belong to the same actual native terminal interval. The auxiliary spill may cross bases or shells, which is measured explicitly."
+    }
+  ],
+  "script_sha256": "4583b5fc911c180e89db9146e991842fa1cec2839aad03d85ea46aab72dd9f16"
+}

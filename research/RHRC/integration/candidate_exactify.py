@@ -129,7 +129,7 @@ def run_lean(candidates: list[dict]) -> str:
     driver_path: Path | None = None
     try:
         with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".tsv", encoding="utf-8", delete=False
+            mode="w", suffix=".tsv", encoding="utf-8", newline="\n", delete=False
         ) as query_handle:
             query_handle.write(render_query_tsv(candidates))
             query_path = Path(query_handle.name)

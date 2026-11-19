@@ -1,0 +1,164 @@
+{
+  "status": "FINITE_EULER_PATTERN_TREE_EVALUATION",
+  "cases": [
+    {
+      "X": 4103,
+      "y": 169,
+      "first_terminal": 3776,
+      "native_gcd_cap": 1,
+      "sign_counts": {
+        "rough": {
+          "-1": 40
+        },
+        "nonrough": {
+          "1": 49,
+          "-1": 12
+        },
+        "exact_pattern_5": {
+          "1": 8
+        }
+      },
+      "rough_label_prime_factor_count": {
+        "1": 40
+      },
+      "full_mu6_digest": "2c186879c06cd490b3ca9b2725491a22fe2ced4c552c835a24d5347d69b973fa",
+      "direct_ordered_weight_reconstruction_all_sectors": true,
+      "results": {
+        "full": {
+          "total_positive_energy": "82077/1048576",
+          "diagonal": "101493/1048576",
+          "strict_small_gcd_off_diagonal": "-1403/131072",
+          "complement_gcd_off_diagonal": "-1/128",
+          "absolute_label_control_small_gcd_off_diagonal": "275399/131072",
+          "coarse_small_gcd_off_diagonal": "-181/16384",
+          "deep_small_gcd_off_diagonal": "45/131072",
+          "deep_absolute_label_control_small_gcd_off_diagonal": "751/131072"
+        },
+        "rough": {
+          "total_positive_energy": "401731/1048576",
+          "diagonal": "40291/1048576",
+          "strict_small_gcd_off_diagonal": "11295/32768",
+          "complement_gcd_off_diagonal": "0",
+          "absolute_label_control_small_gcd_off_diagonal": "11295/32768",
+          "coarse_small_gcd_off_diagonal": "11/32",
+          "deep_small_gcd_off_diagonal": "31/32768",
+          "deep_absolute_label_control_small_gcd_off_diagonal": "31/32768"
+        },
+        "nonrough": {
+          "total_positive_energy": "162641/524288",
+          "diagonal": "30601/524288",
+          "strict_small_gcd_off_diagonal": "17017/65536",
+          "complement_gcd_off_diagonal": "-1/128",
+          "absolute_label_control_small_gcd_off_diagonal": "43961/65536",
+          "coarse_small_gcd_off_diagonal": "4245/16384",
+          "deep_small_gcd_off_diagonal": "37/65536",
+          "deep_absolute_label_control_small_gcd_off_diagonal": "149/65536"
+        },
+        "exact_pattern_5": {
+          "total_positive_energy": "551/32768",
+          "diagonal": "255/32768",
+          "strict_small_gcd_off_diagonal": "0",
+          "complement_gcd_off_diagonal": "37/4096",
+          "absolute_label_control_small_gcd_off_diagonal": "0",
+          "coarse_small_gcd_off_diagonal": "0",
+          "deep_small_gcd_off_diagonal": "0",
+          "deep_absolute_label_control_small_gcd_off_diagonal": "0"
+        },
+        "mixed_rough_nonrough": {
+          "total_positive_energy": "-80617/131072",
+          "diagonal": "0",
+          "strict_small_gcd_off_diagonal": "-80617/131072",
+          "complement_gcd_off_diagonal": "0",
+          "absolute_label_control_small_gcd_off_diagonal": "142297/131072",
+          "coarse_small_gcd_off_diagonal": "-5029/8192",
+          "deep_small_gcd_off_diagonal": "-153/131072",
+          "deep_absolute_label_control_small_gcd_off_diagonal": "329/131072"
+        }
+      }
+    },
+    {
+      "X": 1048576,
+      "y": 400,
+      "first_terminal": 912839,
+      "native_gcd_cap": 1,
+      "sign_counts": {
+        "rough": {
+          "-1": 9800,
+          "1": 2515
+        },
+        "nonrough": {
+          "-1": 10736,
+          "1": 18204
+        },
+        "exact_pattern_5": {
+          "1": 2238,
+          "-1": 75
+        }
+      },
+      "rough_label_prime_factor_count": {
+        "1": 9800,
+        "2": 2515
+      },
+      "full_mu6_digest": "29be5e50da7640596ca8d26443e0a50a0205a3a0a2590932a3bb40d3423b9024",
+      "direct_ordered_weight_reconstruction_all_sectors": false,
+      "results": {
+        "full": {
+          "total_positive_energy": "1215236689/8589934592",
+          "diagonal": "1351802585/8589934592",
+          "strict_small_gcd_off_diagonal": "-9613629/1073741824",
+          "complement_gcd_off_diagonal": "-1864277/268435456",
+          "absolute_label_control_small_gcd_off_diagonal": "511030426921/1073741824",
+          "coarse_small_gcd_off_diagonal": "-75295/8388608",
+          "deep_small_gcd_off_diagonal": "24131/1073741824",
+          "deep_absolute_label_control_small_gcd_off_diagonal": "31387561/1073741824"
+        },
+        "rough": {
+          "total_positive_energy": "137702441349/8589934592",
+          "diagonal": "403525605/8589934592",
+          "strict_small_gcd_off_diagonal": "4284298445/268435456",
+          "complement_gcd_off_diagonal": "98323/4194304",
+          "absolute_label_control_small_gcd_off_diagonal": "12217385023/268435456",
+          "coarse_small_gcd_off_diagonal": "8367287/524288",
+          "deep_small_gcd_off_diagonal": "247501/268435456",
+          "deep_absolute_label_control_small_gcd_off_diagonal": "711263/268435456"
+        },
+        "nonrough": {
+          "total_positive_energy": "36151810613/2147483648",
+          "diagonal": "237069245/2147483648",
+          "strict_small_gcd_off_diagonal": "1121339241/67108864",
+          "complement_gcd_off_diagonal": "3985707/268435456",
+          "absolute_label_control_small_gcd_off_diagonal": "116167490513/536870912",
+          "coarse_small_gcd_off_diagonal": "280318157/16777216",
+          "deep_small_gcd_off_diagonal": "66613/67108864",
+          "deep_absolute_label_control_small_gcd_off_diagonal": "7276721/536870912"
+        },
+        "exact_pattern_5": {
+          "total_positive_energy": "12047527671/8589934592",
+          "diagonal": "75790071/8589934592",
+          "strict_small_gcd_off_diagonal": "0",
+          "complement_gcd_off_diagonal": "5845575/4194304",
+          "absolute_label_control_small_gcd_off_diagonal": "0",
+          "coarse_small_gcd_off_diagonal": "0",
+          "deep_small_gcd_off_diagonal": "0",
+          "deep_absolute_label_control_small_gcd_off_diagonal": "0"
+        },
+        "mixed_rough_nonrough": {
+          "total_positive_energy": "-35136805889/1073741824",
+          "diagonal": "0",
+          "strict_small_gcd_off_diagonal": "-35088235265/1073741824",
+          "complement_gcd_off_diagonal": "-189729/4194304",
+          "absolute_label_control_small_gcd_off_diagonal": "229825905803/1073741824",
+          "coarse_small_gcd_off_diagonal": "-548221931/16777216",
+          "deep_small_gcd_off_diagonal": "-2031681/1073741824",
+          "deep_absolute_label_control_small_gcd_off_diagonal": "13989067/1073741824"
+        }
+      }
+    }
+  ],
+  "kernel": "Published dyadic ascending-pair incidence, includes all complementary nodes and exact GCD cutoff.",
+  "pattern": "y=(ceil(log2 X))^2, rough iff no prime <=y divides q; exact_pattern_5 means gcd(q,product_{p<=y}p)=5.",
+  "note": "For these cutoffs X<=5^100 every pair in the nonempty fixed-pattern-5 sector fails the strict native gcd cutoff. Its asymptotic result begins beyond the cutoff-dependent threshold.",
+  "flint": "0.9.0",
+  "source_sha256": "1eaea0b42330a6d4bcbccdd993045949a8514a54d5f8f4f5958dbd0f7ecf68a0",
+  "native_tree_verifier_sha256": "de4914876ecee42b17c37202ade66b5d470c8a992f64bbaeee94f3304ffefc05"
+}
