@@ -2054,6 +2054,7 @@
     "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal",
     "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy",
     "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram",
+    "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct",
     "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral",
     "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier",
     "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges",

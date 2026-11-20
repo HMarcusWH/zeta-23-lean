@@ -13985,6 +13985,19 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean",
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct",
+      "module_id": "rh:module:Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/PrimeAreaIntegral.lean",
       "module": "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral",
       "module_id": "rh:module:Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral",
@@ -18656,7 +18669,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1274,
+  "entry_count": 1275,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

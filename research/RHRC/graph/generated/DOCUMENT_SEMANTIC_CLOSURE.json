@@ -3249,7 +3249,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_round6/README.md",
-      "heading_count": 4,
+      "heading_count": 5,
       "path": "research/RHRC/integration/opica_round6/README.md",
       "route_mentions": []
     },
@@ -4521,6 +4521,76 @@
       "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/WHOLE_COARSE_SURPLUS.md",
       "heading_count": 3,
       "path": "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/WHOLE_COARSE_SURPLUS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_GAPS_AND_SIGNED_HALVES.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_GAPS_AND_SIGNED_HALVES.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_GAPS_AND_SIGNED_HALVES.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SHARP_FINGERPRINT_THRESHOLD.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SHARP_FINGERPRINT_THRESHOLD.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SHARP_FINGERPRINT_THRESHOLD.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/UNBALANCED_PRIME_SHARES.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/UNBALANCED_PRIME_SHARES.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/UNBALANCED_PRIME_SHARES.md",
       "route_mentions": []
     },
     {
@@ -6445,7 +6515,7 @@
       ]
     }
   ],
-  "entry_count": 622,
+  "entry_count": 629,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",
