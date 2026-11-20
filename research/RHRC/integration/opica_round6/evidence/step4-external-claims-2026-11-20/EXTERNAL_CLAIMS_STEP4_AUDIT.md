@@ -1,7 +1,7 @@
 # External RH proof claims — exact Step 4 cross-check (20 November 2026)
 
 **Disposition: RESEARCH AUDIT / CONDITIONAL REDUCTION. RH and Step 4 remain OPEN.**
-This note makes no independent RH claim and changes no Lean theorem authority. Main is pinned at merge commit \`3835cc66641fa48d78db932db1d32b57687f728c\` (PR #303). Claim-source validity, formal source validation, and actual-source inequalities are distinct questions.
+This note makes no independent RH claim and changes no Lean theorem authority. Main is pinned at merge commit `3835cc66641fa48d78db932db1d32b57687f728c` (PR #303). Claim-source validity, formal source validation, and actual-source inequalities are distinct questions.
 
 ## 1. Alpöge/Claude: the terminal Lean step is short, but *not* the new arithmetic bound
 
@@ -13,17 +13,17 @@ Unverified public source mirror:
 - https://github.com/CocoSgt/riemann-hypothesis-lean/blob/main/src/Development/AutomorphicArithmetic/CharacterBoxes/MainConclusion.lean
 - https://github.com/CocoSgt/riemann-hypothesis-lean/blob/main/src/Development/AutomorphicArithmetic/CharacterBoxes/EveryCharacter.lean
 
-The statement \`UpperTheory.EveryCharacter\` says that **all** Dirichlet L-functions have no zeros in Re(s)>1/2 (away from the trivial-character pole), i.e. a GRH-strength conclusion. The end of the imported chain is:
+The statement `UpperTheory.EveryCharacter` says that **all** Dirichlet L-functions have no zeros in Re(s)>1/2 (away from the trivial-character pole), i.e. a GRH-strength conclusion. The end of the imported chain is:
 
-\`\`\`lean
+```lean
 theorem allChi : UpperTheory.EveryCharacter :=
   UpperTheory.FinalTheorems.everyCharacter
 
 theorem rhOfAll : RiemannHypothesis :=
   Formalism.VW.rh_of_every allChi
-\`\`\`
+```
 
-The decisive mathematical assertion is upstream of \`allChi\`, through \`everyCharacter_of_row\` and its automorphic prerequisites. A one-line theorem using \`rhOfAll\` is **not** an independent OPICA source estimate. A separate independent kernel/dependency audit is necessary before citing this as established RH. Verification status and constraints: https://github.com/SINF-KEN/rh-lean-check.
+The decisive mathematical assertion is upstream of `allChi`, through `everyCharacter_of_row` and its automorphic prerequisites. A one-line theorem using `rhOfAll` is **not** an independent OPICA source estimate. A separate independent kernel/dependency audit is necessary before citing this as established RH. Verification status and constraints: https://github.com/SINF-KEN/rh-lean-check.
 
 **Conditional opportunity:** if the external mathematics survives verification, search the dependency chain for an independently meaningful *quantitative signed-source inequality*, stated on the **same native Möbius population** used in PR #303. Neither "zero-free" nor "RH" itself is eligible as an independent Step 4 arithmetic premise.
 
