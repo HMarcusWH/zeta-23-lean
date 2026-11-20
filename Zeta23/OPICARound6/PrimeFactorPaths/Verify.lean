@@ -11,6 +11,11 @@ import Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea
 import Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost
 import Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral
 import Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct
+import Zeta23.OPICARound6.PrimeFactorPaths.NativeCells
+import Zeta23.OPICARound6.PrimeFactorPaths.NativeGeometry
+import Zeta23.OPICARound6.PrimeFactorPaths.NativeFullTransfer
+import Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra
+import Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost
 
 /-! Independent import checks for the public finite arithmetic and algebraic statements. -/
 
@@ -389,5 +394,150 @@ section
     ∀ a : ℝ, (∀ x y : ℝ, 0 ≤ (max (x-y) 0)^2 - a * max x 0 * max (-y) 0 ∧
       (max (x-y) 0)^2 - a * max x 0 * max (-y) 0 ≤ (x+y)^2) → a = 4)
 #print axioms Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.forced_coefficient
+
+end
+
+section
+open Zeta23.OPICARound6.PrimeFactorPaths.NativeCells
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_terminalLabels :
+    ∀ X n : ℕ, n ∈ terminalLabels X ↔ n ≤ X ∧ X^99 < n^100 ∧ Squarefree n ∧
+      ∀ p ∈ n.primeFactors, roughCutoff X < p)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_terminalLabels
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_rawLabels :
+    ∀ (X : ℕ) (cell : Key) (n : ℕ), n ∈ rawLabels X cell ↔ n ∈ terminalLabels X ∧
+      cell.depth + baseShift X ≤ n.log2 ∧ keyOf X n cell.depth = cell)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_rawLabels
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_occupiedKeys :
+    ∀ (X : ℕ) (cell : Key), cell ∈ occupiedKeys X ↔ (rawLabels X cell).Nonempty)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_occupiedKeys
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.weight_nonneg :
+    ∀ cell : Key, 0 ≤ weight cell)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.weight_nonneg
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.aligned_index_iff :
+    ∀ X n j k i : ℕ, n / width X j k = i ↔ i * width X j k ≤ n ∧ n < (i+1)*width X j k)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.aligned_index_iff
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.survivor_sign :
+    ∀ (X : ℕ) (cell : Key) (removal : Removal) {n : ℕ},
+      n ∈ rawLabels X cell \ (removal.targets ∪ removal.spentPartners) →
+      Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.roughSign (roughCutoff X) n =
+        if Even n.primeFactors.card then (1:ℝ) else -1)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.survivor_sign
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.survivorCharge_eq_counts :
+    ∀ (X : ℕ) (cell : Key) (r : Removal),
+      Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.charge (roughCutoff X) (rawLabels X cell \ (r.targets ∪ r.spentPartners)) =
+        (evenPopulation X cell r : ℝ) - oddPopulation X cell r)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.survivorCharge_eq_counts
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.count_conservation :
+    ∀ (X : ℕ) (cell : Key) (r : Removal),
+      evenPopulation X cell r + oddPopulation X cell r + (rawLabels X cell ∩ (r.targets ∪ r.spentPartners)).card =
+        (rawLabels X cell).card)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.count_conservation
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.deviation_difference :
+    ∀ (X : ℕ) (cell : Key) (r : Removal), evenDeviation X cell r - oddDeviation X cell r =
+      Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.charge (roughCutoff X) (rawLabels X cell \ (r.targets ∪ r.spentPartners)))
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.deviation_difference
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.deviation_sum :
+    ∀ (X : ℕ) (cell : Key) (r : Removal), evenDeviation X cell r + oddDeviation X cell r =
+      (rawLabels X cell).card - (width X cell.shell cell.depth : ℝ) * density X)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.deviation_sum
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.weighted_deficit_transfer :
+    ∀ (X : ℕ) (r : Removal) (cells : Finset Key),
+      (∑ j ∈ cells, weight j * |(max (survivorCharge X j r) 0)^2 -
+        4 * max (evenDeviation X j r) 0 * max (-oddDeviation X j r) 0|) ≤
+      ∑ j ∈ cells, weight j * (unsignedDiscrepancy X j)^2)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.weighted_deficit_transfer
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.whole_coarse_deficit_transfer :
+    ∀ (X : ℕ) (r : Removal),
+      (∑ j ∈ wholeCoarseKeys X, weight j * |(max (survivorCharge X j r) 0)^2 -
+        4 * max (evenDeviation X j r) 0 * max (-oddDeviation X j r) 0|) ≤
+      ∑ j ∈ wholeCoarseKeys X, weight j * (unsignedDiscrepancy X j)^2)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.whole_coarse_deficit_transfer
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.native_energy_bracket :
+    ∀ (X : ℕ) (r : Removal) (cells : Finset Key),
+      let prod := ∑ j ∈ cells, weight j * (4 * max (evenDeviation X j r) 0 * max (-oddDeviation X j r) 0)
+      let energy := ∑ j ∈ cells, weight j * (max (survivorCharge X j r) 0)^2
+      let error := ∑ j ∈ cells, weight j * (unsignedDiscrepancy X j)^2
+      prod ≤ energy ∧ energy ≤ prod+error)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.native_energy_bracket
+
+-- This grid boundary needs only the integer parameters. The occupied witness
+-- below is certified symbolically instead of enumerating the large finite set.
+attribute [local irreducible] terminalLabels wholeCoarseKeys
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeGeometry.square_log_boundary :
+    roughCutoff (2^16) = 256 ∧ roughCutoff (2^16+1) = 289 ∧
+      baseShift (2^16+1) = 4 ∧ width (2^16+1) 16 0 = 4096 ∧ ¬completeShell (2^16+1) 16)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeGeometry.square_log_boundary
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeGeometry.mersenne_whole_base :
+    keyOf (2^127) (mersenne 127) 0 ∈ wholeCoarseKeys (2^127))
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeGeometry.mersenne_whole_base
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeFullTransfer.native_raw_energy_upper :
+    ∀ (X : ℕ) (r : Removal) (cells : Finset Key),
+      (∑ j ∈ cells, weight j * (max (Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.charge (roughCutoff X) (rawLabels X j)) 0)^2) ≤
+        (∑ j ∈ cells, weight j * (4 * max (evenDeviation X j r) 0 * max (-oddDeviation X j r) 0)) +
+        (∑ j ∈ cells, weight j * (unsignedDiscrepancy X j)^2) +
+        ∑ j ∈ cells, weight j * (2 * (rawLabels X j).card *
+          |Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.charge (roughCutoff X) (rawLabels X j ∩ (r.targets ∪ r.spentPartners))|))
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeFullTransfer.native_raw_energy_upper
+
+end
+
+section
+open Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.opposed_eq_charge_minus_discrepancy :
+    ∀ e o : ℝ, 4 * max e 0 * max (-o) 0 = max ((max (e-o) 0)^2 - (e+o)^2) 0)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.opposed_eq_charge_minus_discrepancy
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Charges.branch_of_total :
+    ∀ (t : Charges) (bound : ℤ) (depth : ℕ), bound ≤ (2:ℤ)^depth*t.total → t.highBranch bound depth)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Charges.branch_of_total
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.value_le_iff_cover :
+    ∀ (t : Observations) (cap : ℝ) (delay : ℕ), t.value delay ≤ cap ↔ t.canCover cap delay)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.value_le_iff_cover
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.lt_value_iff_highPath :
+    ∀ (t : Observations) (cap : ℝ) (delay : ℕ), cap < t.value delay ↔ t.hasHighPath cap delay)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.lt_value_iff_highPath
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.no_cover_iff_highPath :
+    ∀ (t : Observations) (cap : ℝ) (delay : ℕ), ¬t.canCover cap delay ↔ t.hasHighPath cap delay)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.no_cover_iff_highPath
+
+end
+
+section
+open Zeta23.OPICARound6.PrimeFactorPaths.NativeCells
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost.native_opposed_cost :
+    ∀ (X : ℕ) (key : Key) (r : Removal),
+      4 * max (evenDeviation X key r) 0 * max (-oddDeviation X key r) 0 =
+        max ((max (Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.charge (roughCutoff X)
+          (rawLabels X key \ (r.targets ∪ r.spentPartners))) 0)^2 -
+          ((rawLabels X key).card - (width X key.shell key.depth : ℝ)*density X)^2) 0)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost.native_opposed_cost
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost.native_opposed_cost_reverse :
+    ∀ (X : ℕ) (key : Key) (r : Removal),
+      4 * max (oddDeviation X key r) 0 * max (-evenDeviation X key r) 0 =
+        max ((max (-Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.charge (roughCutoff X)
+          (rawLabels X key \ (r.targets ∪ r.spentPartners))) 0)^2 -
+          ((rawLabels X key).card - (width X key.shell key.depth : ℝ)*density X)^2) 0)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost.native_opposed_cost_reverse
 
 end

@@ -18,7 +18,7 @@ PARENT_TREE = "573cda1f06d2d7a0e61349a53183311e4ba621fc"
 PREFIX = "research/RHRC/integration/opica_round6/"
 VALIDATOR = PREFIX + "source_scope.py"
 POLICY = PREFIX + "SOURCE_SCOPE.json"
-POLICY_SHA256 = "c26f9f1ab62ce35e180efba3fe660457651cb0f7659ac4eeb7b7238ba2b270b1"
+POLICY_SHA256 = "89523132c41527677afa1a1753d442efaacef92e3a6ed7501ff4e77e483dde55"
 SHA1 = re.compile("[0-9a-f]{40}\\Z")
 SHA256 = re.compile("[0-9a-f]{64}\\Z")
 FROZEN_PRODUCTS = {
@@ -32,9 +32,10 @@ ROLES = {
         ("OPICA6_FINITE_ARITHMETIC_AUDIT" if name == "Verify" else "OPICA6_FINITE_ARITHMETIC_SUPPORT")
     for name in (
         "DivisorStrip", "FactorialKnot", "FinitePairKernel", "FiniteRenewal",
-        "FiniteSelectorEnergy", "FiniteWeightedGram", "ParityDeficitProduct", "PrimeAreaIntegral",
+        "FiniteSelectorEnergy", "FiniteWeightedGram", "NativeCells", "NativeFullTransfer",
+        "NativeGeometry", "NativeStoppingCost", "ParityDeficitProduct", "PrimeAreaIntegral",
         "PrimitiveEulerMultiplier", "RoughNodeCharges", "SquarefreePrimeCost",
-        "StoppedPrimeArea", "TwoShellCalibration", "Verify",
+        "StoppedPrimeArea", "StoppingAlgebra", "TwoShellCalibration", "Verify",
     )
 }
 

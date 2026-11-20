@@ -17,3 +17,51 @@ has type
   0 ≤ max (e - o) 0 ^ 2 - 4 * max e 0 * max (-o) 0 ∧ max (e - o) 0 ^ 2 - 4 * max e 0 * max (-o) 0 ≤ (e + o) ^ 2
 but is expected to have type
   0 ≤ max (e - o) 0 ^ 2 - 5 * max e 0 * max (-o) 0 ∧ max (e - o) 0 ^ 2 - 5 * max e 0 * max (-o) 0 ≤ (e + o) ^ 2
+NegativeTypes.lean:28:2: error: Type mismatch
+  deviation_sum X j r
+has type
+  evenDeviation X j r + oddDeviation X j r = unsignedDiscrepancy X j
+but is expected to have type
+  evenDeviation X j r + oddDeviation X j r = ↑(survivingLabels X j r).card - ↑(width X j.shell j.depth) * density X
+NegativeTypes.lean:35:2: error: Type mismatch
+  weighted_deficit_transfer X r nodes
+has type
+  ∑ j ∈ nodes,
+      weight j * |max (survivorCharge X j r) 0 ^ 2 - 4 * max (evenDeviation X j r) 0 * max (-oddDeviation X j r) 0| ≤
+    ∑ j ∈ nodes, weight j * unsignedDiscrepancy X j ^ 2
+but is expected to have type
+  ∑ j ∈ nodes,
+      weight j * |max (survivorCharge X j r) 0 ^ 2 - 4 * max (evenDeviation X j r) 0 * max (oddDeviation X j r) 0| ≤
+    ∑ j ∈ nodes, weight j * unsignedDiscrepancy X j ^ 2
+NegativeTypes.lean:40:2: error: Type mismatch
+  mem_terminalLabels X n
+has type
+  n ∈ terminalLabels X ↔ n ≤ X ∧ X ^ 99 < n ^ 100 ∧ Squarefree n ∧ ∀ p ∈ n.primeFactors, roughCutoff X < p
+but is expected to have type
+  n ∈ terminalLabels X ↔ n ≤ X ∧ X ^ 99 ≤ n ^ 100 ∧ Squarefree n ∧ ∀ p ∈ n.primeFactors, roughCutoff X < p
+NegativeTypes.lean:50:2: error: Type mismatch
+  opposed_eq_charge_minus_discrepancy e o
+has type
+  4 * max e 0 * max (-o) 0 = max (max (e - o) 0 ^ 2 - (e + o) ^ 2) 0
+but is expected to have type
+  5 * max e 0 * max (-o) 0 = max (max (e - o) 0 ^ 2 - (e + o) ^ 2) 0
+NegativeTypes.lean:56:2: error: Type mismatch
+  (Charges.branch_of_total (l.fork r) b k h).right
+has type
+  Charges.highBranch b (k + 1) l ∨ Charges.highBranch b (k + 1) r
+but is expected to have type
+  Charges.highBranch b (k + 1) l ∧ Charges.highBranch b (k + 1) r
+NegativeTypes.lean:61:2: error: Type mismatch
+  Observations.lt_value_iff_highPath t c k
+has type
+  c < t.value k ↔ Observations.hasHighPath c t k
+but is expected to have type
+  c ≤ t.value k ↔ Observations.hasHighPath c t k
+NegativeTypes.lean:67:2: error: Type mismatch
+  native_opposed_cost_reverse X j r
+has type
+  4 * max (oddDeviation X j r) 0 * max (-evenDeviation X j r) 0 =
+    max (max (-survivorCharge X j r) 0 ^ 2 - unsignedDiscrepancy X j ^ 2) 0
+but is expected to have type
+  4 * max (oddDeviation X j r) 0 * max (-evenDeviation X j r) 0 =
+    max (max (survivorCharge X j r) 0 ^ 2 - unsignedDiscrepancy X j ^ 2) 0

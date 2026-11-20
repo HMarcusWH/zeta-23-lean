@@ -1,0 +1,42 @@
+{
+  "arithmetic": {
+    "U": 4096,
+    "actual_squarefree_rows": 1041,
+    "all_64_cells_agree": true,
+    "bad_divisor_labels_at_fixed_lambda_3_over_4": 72,
+    "roughness": 5,
+    "signed_collision_sum": -56,
+    "source_labels_by_number_of_flagged_edges": {
+      "1": 69,
+      "2": 9,
+      "3": 6
+    }
+  },
+  "exponents": {
+    "critical_pairs": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "1/4",
+        "9/20"
+      ],
+      [
+        "5/14",
+        "1/2"
+      ],
+      [
+        "3/7",
+        "17/35"
+      ],
+      [
+        "1/2",
+        "2/5"
+      ]
+    ],
+    "worst_u": "5/14"
+  },
+  "floor_checks": 960,
+  "scope": "Finite integer counting on specified test shells and rational exponent audit. No execution of the asymptotic selector or evidence for the missing signed upper."
+}

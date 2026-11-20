@@ -2553,7 +2553,8 @@
         "FRONT-ND",
         "RETAINED_TRIAL_BOUND",
         "SURVIVOR_ROUTE",
-        "P303_OPPOSED_PRODUCT_ROUTE"
+        "P303_OPPOSED_PRODUCT_ROUTE",
+        "N20_NESTED_ROUTE"
       ],
       "context": [
         "FINITE_K5",
@@ -2964,6 +2965,526 @@
         "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
       ],
       "statement": "The opposed-product version of the survivor route requires an independent arithmetic upper and the kernel-checked transfer through the actual source to Step 4. The paper deficit identity supplies only the comparison of arithmetic observables.",
+      "status": "OPEN"
+    },
+    {
+      "alternatives": [],
+      "closing_relevance": "Historical external finite checking only. Project compiler ownership, readbacks and axiom checks have separate bindings.",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_CELL_KERNEL",
+      "parameter_order": "Inputs are the explicitly quantified finite objects. The local receipt supplies no growing-horizon estimate.",
+      "source_disposition": "LOCAL_PINNED_LEAN_KERNEL_CHECKED",
+      "sources": [
+        "research/RHRC/integration/opica_round6/README.md"
+      ],
+      "statement": "The external cell receipt a320444c4b9f0b728493b41d5d377ab830eee196ee8e2ffa81d4a5cd771fed7b records the local pinned kernel readback of 16 originally named OPICA.Step4 theorems. The deployed register binds the corresponding project declarations separately.",
+      "status": "SOURCE_RECORD"
+    },
+    {
+      "alternatives": [],
+      "closing_relevance": "Historical external finite checking only. Project compiler ownership, readbacks and axiom checks have separate bindings.",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_STOP_KERNEL",
+      "parameter_order": "Inputs are the explicitly quantified finite objects. The local receipt supplies no growing-horizon estimate.",
+      "source_disposition": "LOCAL_PINNED_LEAN_KERNEL_CHECKED",
+      "sources": [
+        "research/RHRC/integration/opica_round6/README.md"
+      ],
+      "statement": "The external stopping receipt 939f289c6ded2c4ef18c79b701370f8fec0d6b19e6835e8328f049ac8649bc6c records the local pinned kernel readback of 7 originally named OPICA.Step4 theorems. The deployed register binds the corresponding project declarations separately.",
+      "status": "SOURCE_RECORD"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_CELL_KERNEL"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_terminalLabels",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_rawLabels",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_occupiedKeys",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.weight_nonneg",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.aligned_index_iff",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.survivor_sign",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.survivorCharge_eq_counts",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.count_conservation",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.deviation_difference",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.deviation_sum",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.weighted_deficit_transfer",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.whole_coarse_deficit_transfer",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.native_energy_bracket",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeGeometry.square_log_boundary",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeGeometry.mersenne_whole_base"
+      ],
+      "depends_on": [
+        "P303_DEFICIT_ALGEBRA"
+      ],
+      "id": "N20_FINITE_CELL_BRACKET",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/NativeCells.lean",
+        "Zeta23/OPICARound6/PrimeFactorPaths/NativeGeometry.lean"
+      ],
+      "statement": "For every finite collection of true native keys and each supplied removal, the positive selected charge-square energy lies between the opposed product P and P plus the full raw unsigned discrepancy energy. The difference of centered populations is the actual selected charge, and their sum is the raw unsigned discrepancy. Includes clipped cells with their full grid width.",
+      "status": "PROVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_CELL_KERNEL",
+        "SELECTED_SUPPORT"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeFullTransfer.native_raw_energy_upper"
+      ],
+      "depends_on": [
+        "N20_FINITE_CELL_BRACKET"
+      ],
+      "id": "N20_FINITE_SELECTOR_COST",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/NativeFullTransfer.lean"
+      ],
+      "statement": "The positive full arithmetic energy on the same native cells is at most P plus unsigned discrepancy energy plus the true incident selector cost, with every removed label counted once in each affected node. Finiteness and local readback give no cofinal bounds for the inputs.",
+      "status": "PROVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_STOP_KERNEL"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost.native_opposed_cost",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost.native_opposed_cost_reverse",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.opposed_eq_charge_minus_discrepancy"
+      ],
+      "depends_on": [
+        "N20_FINITE_CELL_BRACKET"
+      ],
+      "id": "N20_FINITE_POLARITY_COST",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/NativeStoppingCost.lean",
+        "Zeta23/OPICARound6/PrimeFactorPaths/StoppingAlgebra.lean"
+      ],
+      "statement": "At every actual key, for both separate polarities s, Q equals max([s r]_+² − D²,0), with r the genuine survivor charge and D the raw unsigned discrepancy using the same key and width.",
+      "status": "PROVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_STOP_KERNEL"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Charges.branch_of_total",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.value_le_iff_cover",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.lt_value_iff_highPath",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.no_cover_iff_highPath"
+      ],
+      "depends_on": [],
+      "id": "N20_FINITE_STOPPING",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/StoppingAlgebra.lean"
+      ],
+      "statement": "On a finite evaluation tree, thresholds for the min/max recursion are equivalent to a complete admissible low-cost cover, and failure is equivalent to a strictly high path. Child additivity propagates a signed total along one branch with the explicit dyadic loss.",
+      "status": "PROVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "ROUGH_TREE",
+        "SELECTED_SUPPORT",
+        "P303_UNSIGNED_FINGERPRINT",
+        "N20_FINITE_POLARITY_COST",
+        "N20_FINITE_STOPPING"
+      ],
+      "id": "N20_DETECTOR_PATH",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md"
+      ],
+      "statement": "For either fixed polarity and 0<a<c<1/4, the paper one-sided detector and maximal interval estimate force a path of true opposed costs. With b=B−1/2, the liminf exponent of the normalized native bottleneck is at least (2b−2c)_+, and its limsup is at most 2b. Uniformly late horizons, whole-shell cells and one polarity are essential.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "N20_DETECTOR_PATH",
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+      ],
+      "id": "N20_FINGERPRINT_WITNESS",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md"
+      ],
+      "statement": "A hereditary witness can keep one true subpower-sized fingerprint and its cofactor parity along the detected path, at subpower loss. Its excess is a property of the full signed population. A witness of that fingerprint need not be an excess inside that fingerprint alone.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_FINITE_CELL_BRACKET",
+        "NATIVE_TREE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_COARSE_GRID_CONTROL",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+        "Zeta23/OPICARound6/PrimeFactorPaths/NativeGeometry.lean"
+      ],
+      "statement": "When the boundary convention shifts the base by one depth, coarse one-sided energies on the same field satisfy the stated transfer with finite additive error. Literal cells at equal numeric depths can differ. The native grid uses floor log₂ inside the square root and a ceiling separately for the roughness.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_DETECTOR_PATH"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_SINGLE_COFACTOR_PRECISION"
+      ],
+      "id": "N20_PUNCTURED_PATH_CONTROL",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md"
+      ],
+      "statement": "On the separate aligned subpower selection, deleting the known negative fibre without payment makes the altered path diagnostic attain exponent 1−2c. This is a quantitative test of a dropped-complement argument on a different graph.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_UNSIGNED_FINGERPRINT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_DISJOINT_DISCREPANCY",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md"
+      ],
+      "statement": "For disjoint true integer intervals in a complete shell the full rough-squarefree unsigned fingerprint count at marked primes through (log X)^(2+o(1)) has summed squared total-variation discrepancy O_ε(U X^ε) against its specified density. Actual signed floor errors are summed over disjoint intervals and the long divisor tail belongs to the reference density.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "N20_DETECTOR_PATH",
+        "N20_FINITE_POLARITY_COST",
+        "N20_DISJOINT_DISCREPANCY"
+      ],
+      "id": "N20_TOTAL_CUT_DETECTOR",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md"
+      ],
+      "statement": "For one fixed polarity and 0<a<c<1/4 the paper detector lower on an early native node, with disjoint-cut discrepancy and Cauchy over the descendant pieces, gives liminf exponent at least (2b−c)_+ for the summed minimum total native cut cost. Its limsup is at most 2b. Both the analytic detector and these asymptotics have paper authority.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "N20_FINITE_STOPPING"
+      ],
+      "id": "N20_CUT_COMPARISON",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md"
+      ],
+      "statement": "On the same full trees and polarity, Z≤S≤(1+log₂ X)2^s X^c Z for bottleneck Z and minimum total cut S summed over whole shells. With c_i↓0 the two cofinal vanishing-exponent upper conditions imply one another, with explicit finite-window loss.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT",
+        "P303_GAP_SELECTION"
+      ],
+      "id": "N20_SPACED_DIVISORS",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SURVIVOR_DIVISOR_SPACING.md"
+      ],
+      "statement": "A paid choice of the existing matching excludes every pair of distinct divisors d<e with e−d≤d^(4/5−10/sqrt(log U)) on the same genuine survivor. The positive triple-count estimate pays both the new targets and any resulting unavailable donors, at O(1) one-sided cost per shell.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "SMALL_LARGE_PARITY"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT",
+        "N20_SPACED_DIVISORS"
+      ],
+      "id": "N20_PAID_PRIME_GRAPHS",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/PAID_PARTNER_GRAPHS.md"
+      ],
+      "statement": "A strengthened matching pays sparse outgoing prime-partner graphs, including lists assigned within each first-stage cell under the source degree and scale conditions. Allowed unions share a per-prime budget; actual old and new partners are accounted for. Every finished pair is internal above stage three. Its survivors may depend on the assigned tests.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_PAID_PRIME_GRAPHS"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "ROUGH_TREE"
+      ],
+      "id": "N20_RAW_SPARSE_SECTOR",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SPARSE_PRIME_FACTOR_CHARGES.md"
+      ],
+      "statement": "On the unselected actual rough field, large-prime collision graphs of uniformly subpower maximum degree and smaller prime ≥U^α have signed charge O_ε(U^(B−α(2B−1)+ε)). The complete raw complement retains the one-sided detector exponent. This argument uses B itself and the actual Möbius cofactor in every inclusion–exclusion term.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_PAID_PRIME_GRAPHS",
+        "N20_SHARED_ANCESTOR"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "N20_RAW_SPARSE_SECTOR",
+        "N20_TOTAL_CUT_DETECTOR",
+        "N20_DISJOINT_DISCREPANCY",
+        "N20_FINITE_POLARITY_COST"
+      ],
+      "id": "N20_LOCAL_PRIME_GRAPH_CUT",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SPARSE_PRIME_FACTOR_CHARGES.md"
+      ],
+      "statement": "For raw whole-shell cells, fix α>0 below 1/2 and a uniform subpower maximum-degree schedule. A different single shared graph per stopped cell can delete all its actual collision labels, with their complete signed contribution accounted for and true removed counts in the center. Optimized total cost S* is at most the ordinary total cut cost. If a cofinal S*≤C X^λ is proved, the paper detector gives B≤1/2+max(c/(2α),(c+λ)/2). A common graph per cell and a fixed degree schedule are essential. No measured choice achieves the cofinal upper here.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "SELECTED_SUPPORT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_BUCHSTAB_CAP",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/BUCHSTAB_BOUNDARY.md"
+      ],
+      "statement": "For the actual bounded marked product the complete signed large-prime density, retaining all orders, is a negative Dickman kernel. Around the central count k each charge has opposite sign from its neighbor and the sum saves a factor of order sqrt(A); true cap crossings are included. The specified below-central layers are genuine targets of the prior matching.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT",
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+      ],
+      "id": "N20_NEUTRAL_BAND",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md"
+      ],
+      "statement": "For a protected common cofactor core and unchanged survivor selection, all true insertions over the first marked interval of reciprocal mass one leave signed imbalance of order H/log U on long cells. Each true component has order H/log y. The union has full native squared energy of order H₀/log² U, with its actual complement compensating at the base.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "N20_NEUTRAL_BAND",
+        "P303_UNEQUAL_PRIME_SHARES"
+      ],
+      "id": "N20_ANGULAR_COMPENSATION",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md"
+      ],
+      "statement": "Two protected large-prime orders of equal angular volume cancel for every shared cofactor under the specified selector. The four-family all-depth energy upper gains a stretched exponential factor from H₀. Its available bound is still U^(1−o(1)).",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_NEUTRAL_BAND",
+        "N20_PAID_PRIME_GRAPHS",
+        "N20_SPACED_DIVISORS"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT",
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+      ],
+      "id": "N20_SHIFTED_RETIREMENT",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SHIFTED_PRIME_RETIREMENT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md"
+      ],
+      "statement": "With the permitted old donor exponent chosen α<β/10 before X, harmonic-mass-two shifted prime intervals retire a positive-density class strictly beyond the old donor ceiling, using distinct same-cofactor opposite partners and O(1) absolute one-sided loss per shell. Only new masked R→R′ costs O(1+2^(−s)U^β). The class is protected under its stated earlier selection.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_PAID_PRIME_GRAPHS",
+        "N20_SHIFTED_RETIREMENT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "N20_FINITE_POLARITY_COST"
+      ],
+      "id": "N20_SHARED_ANCESTOR",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md"
+      ],
+      "statement": "At all tested widths above the finishing stage, r_J=f_J and the raw D_J is shared by every matching whose paired endpoints are internal to each stage-three cell. The opposed cost, bottleneck and cut totals there are invariant. Two such selectors can still leave different sets of signed vertices at smaller depths.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_FINITE_CELL_BRACKET",
+        "N20_FINITE_SELECTOR_COST"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_CELL_FIXTURES",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/GEOMETRY_REPLAY.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_geometry.py",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SELECTED_PAIR.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_selected_pair.py"
+      ],
+      "statement": "Four actual horizons replayed row geometry and cone bits. A separate complete paired example at X=1,656,575 has coarse positive energy 3/134217728 before removal and zero after. These finite cases exercise the recorded choices of labels.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_DETECTOR_PATH"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_STOP_FIXTURE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/STOPPING_CHECK.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_stopping.py"
+      ],
+      "statement": "13,122 finite signed eight-leaf cases exercise bottleneck and polarity. On the native test base inside a clipped shell a hereditary witness ends at the genuine prime 1,463,447.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_DISJOINT_DISCREPANCY",
+        "N20_TOTAL_CUT_DETECTOR",
+        "N20_CUT_COMPARISON"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_DISJOINT_FIXTURE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CHECK.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_disjoint.py"
+      ],
+      "statement": "On an intact native base at X=1,656,575, 2,935 genuine rows have signed charge −1,679. 625 complete cuts, including 622 nonuniform cuts, were evaluated. The positive minimum total was exactly zero while the negative-polarity minimum was certified strictly positive. The computation also checked 248 fingerprint projections and four disjoint floor families.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_SPACED_DIVISORS",
+        "N20_RAW_SPARSE_SECTOR"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_SPACING_FIXTURE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DIVISOR_SPACING_CHECK.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_divisor_spacing.py"
+      ],
+      "statement": "960 finite floor checks and exact dyadic critical exponents were checked. On the finite independent shell all 64 cells agree and the chosen actual prime graph's signed collision sum equals −56.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_BUCHSTAB_CAP",
+        "N20_SHIFTED_RETIREMENT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_SHIFT_FIXTURE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/BUCHSTAB_TRANSPORT_CHECK.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_buchstab_transport.py"
+      ],
+      "statement": "At X=2^36+1, 10,165 true rough vertices give −617. Four auxiliary angular sectors give −681 and their complete complement +64. All 338 test targets have distinct opposite partners with total charges +214 and −214. The finite mark band and pairing are explicitly auxiliary.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_FINITE_CELL_BRACKET",
+        "N20_FINITE_SELECTOR_COST",
+        "N20_DETECTOR_PATH",
+        "N20_FINGERPRINT_WITNESS",
+        "N20_PUNCTURED_PATH_CONTROL",
+        "N20_COARSE_GRID_CONTROL",
+        "N20_TOTAL_CUT_DETECTOR",
+        "N20_CUT_COMPARISON",
+        "N20_SHARED_ANCESTOR",
+        "N20_PAID_PRIME_GRAPHS",
+        "N20_RAW_SPARSE_SECTOR",
+        "N20_ANGULAR_COMPENSATION",
+        "N20_SHIFTED_RETIREMENT",
+        "N20_BUCHSTAB_CAP",
+        "P303_OPPOSED_PRODUCT_UPPER",
+        "N20_LOCAL_PRIME_GRAPH_CUT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_JOINT_ARITHMETIC_UPPER",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md"
+      ],
+      "statement": "Independently prove S*≤C_i X^λ_i at arbitrarily late native horizons with one polarity, a fixed α>0 below 1/2, a valid uniform degree schedule, a_i=c_i/2, c_i↓0 and λ_i↓0 chosen before the horizons. A small ordinary total cut is sufficient via empty graphs, as is a small ordinary maximum-path cut at vanishing window depth loss. The optimized input permits a shared graph for all rows of each cell and charges its full arithmetic complement.",
+      "status": "OPEN"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_CUT_COMPARISON",
+        "P303_OPPOSED_PRODUCT_ROUTE",
+        "SURVIVOR_ROUTE"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "N20_JOINT_ARITHMETIC_UPPER",
+        "PAPER_ROUTE_VALIDATION",
+        "N20_LOCAL_PRIME_GRAPH_CUT"
+      ],
+      "id": "N20_NESTED_ROUTE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md"
+      ],
+      "statement": "Apply one genuinely independent changing-window upper to the same-source off-line-zero detector, with its exact sign and quantifiers. Qualifying Step 4 requires both that arithmetic input and the complete kernel-checked analytic transfer on the actual source.",
       "status": "OPEN"
     }
   ]

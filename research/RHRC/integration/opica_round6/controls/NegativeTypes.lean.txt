@@ -1,6 +1,6 @@
 import Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral
 import Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges
-import Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct
+import Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost
 open Zeta23.OPICARound6.PrimeFactorPaths
 
 /-- Deliberately reverse the sign of the off-diagonal product. -/
@@ -17,3 +17,53 @@ example (e o : ℝ) :
     0 ≤ (max (e-o) 0)^2 - 5 * max e 0 * max (-o) 0 ∧
     (max (e-o) 0)^2 - 5 * max e 0 * max (-o) 0 ≤ (e+o)^2 :=
   ParityDeficitProduct.quadrant_remainder e o
+
+section
+open Zeta23.OPICARound6.PrimeFactorPaths.NativeCells
+
+/-- Omitting the measured removals in the unsigned count is a different expression. -/
+example (X : ℕ) (j : Key) (r : Removal) :
+    evenDeviation X j r + oddDeviation X j r =
+      (survivingLabels X j r).card - (width X j.shell j.depth : ℝ)*density X :=
+  deviation_sum X j r
+
+/-- The other orientation of the odd deficit cannot use this same signed transfer. -/
+example (X : ℕ) (r : Removal) (nodes : Finset Key) :
+    (∑ j ∈ nodes, weight j * |(max (survivorCharge X j r) 0)^2 -
+        4 * max (evenDeviation X j r) 0 * max (oddDeviation X j r) 0|) ≤
+      ∑ j ∈ nodes, weight j * (unsignedDiscrepancy X j)^2 :=
+  weighted_deficit_transfer X r nodes
+
+/-- The genuine terminal comparison is strict at the lower endpoint. -/
+example (X n : ℕ) : n ∈ terminalLabels X ↔ n ≤ X ∧ X^99 ≤ n^100 ∧
+    Squarefree n ∧ ∀ p ∈ n.primeFactors, roughCutoff X < p :=
+  mem_terminalLabels X n
+
+end
+
+section
+open Zeta23.OPICARound6.PrimeFactorPaths.NativeCells Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra
+
+-- The coefficient 5 fails already at (1,-1).
+example (e o : ℝ) :
+    5 * max e 0 * max (-o) 0 = max ((max (e-o) 0)^2 - (e+o)^2) 0 :=
+  opposed_eq_charge_minus_discrepancy e o
+
+-- A qualifying positive branch does not require both children to qualify.
+example (l r : Charges) (b : ℤ) (k : ℕ)
+    (h : b ≤ (2:ℤ)^k*(l.total+r.total)) :
+    l.highBranch b (k+1) ∧ r.highBranch b (k+1) :=
+  (Charges.branch_of_total (.fork l r) b k h).2
+
+-- Equality can already give a cover at a single leaf.
+example (t : Observations) (c : ℝ) (k : ℕ) :
+    c ≤ t.value k ↔ t.hasHighPath c k :=
+  Observations.lt_value_iff_highPath t c k
+
+-- Reversing the selected parity reverses the native signed charge.
+example (X : ℕ) (j : Key) (r : Removal) :
+    4 * max (oddDeviation X j r) 0 * max (-evenDeviation X j r) 0 =
+      max ((max (survivorCharge X j r) 0)^2 - (unsignedDiscrepancy X j)^2) 0 :=
+  native_opposed_cost_reverse X j r
+
+end

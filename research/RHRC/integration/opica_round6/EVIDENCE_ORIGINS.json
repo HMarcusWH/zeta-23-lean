@@ -1742,5 +1742,221 @@
       "published_sha256": "3aff0b3ec7ecda9365877e54b8f6a5741c7b9fbbf8751bec1b5678efafb22b71",
       "transformation": "Repository-authored CLI for checking or writing the three finite receipts."
     }
+  },
+  "nested_cut_research": {
+    "source_commit": "a6a001fd570cd7cf9b97fdad59e373760a3153ec",
+    "source_tree": "f58c4c2b7870d54302cd3ae80f7d77c1eaa6784e",
+    "archive": "https://drive.google.com/file/d/1nX1SBRMxbmzBAe12Su3EWlk4wLoT746k/view",
+    "archive_sha256": "6e6f9b779e9866911f329bd62c2342cc5f9d99590b75ae780c1cdd98127946da",
+    "archive_manifest_sha256": "b11f4bc8f3b62424b5608b5a837c9cff91e13a17cff154d692843c6c8f676ac4",
+    "archive_member_count": 84,
+    "research_checkpoint": "https://drive.google.com/file/d/1iSkE1jq8rZfvYO2X6K0B-NpskJxRbso3/view",
+    "external_graph": "https://drive.google.com/file/d/1djf_FzrLp6EP7yzg1t7nSmaVM6oXdFQQ/view",
+    "scope": "Archived source on PR 303 before integration. The independent closing estimate remains open.",
+    "publications": {
+      "Zeta23/OPICARound6/PrimeFactorPaths/NativeCells.lean": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/NativeCells.lean": "88d792ef75670883140e5df7dcabde64f51cd16e13a5cc7cf4e7ff1a83052086"
+        },
+        "published_sha256": "01efdc80bc38548323fdc70825c959c80a6c8751f47f08544248a7bea8f64573",
+        "transformation": "Move the archived finite mathematics into its maintained project namespace and bind project imports."
+      },
+      "Zeta23/OPICARound6/PrimeFactorPaths/NativeFullTransfer.lean": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/NativeFullTransfer.lean": "c938bce8f841d4527ec026eb9e1791825da765c10774ec6fa40900f39d8a0b47"
+        },
+        "published_sha256": "69bf8ee77b612526554d836842a447075d2fcb39f29f2ec03bf7714a264791b5",
+        "transformation": "Move the archived finite mathematics into its maintained project namespace and bind project imports."
+      },
+      "Zeta23/OPICARound6/PrimeFactorPaths/NativeGeometry.lean": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/GeometryControls.lean": "d2994e520e4b0728a5200378d1aa29bd270ea9d78c0c9f7aa314ae9c8b490787"
+        },
+        "published_sha256": "31c2b5c5aa4e62699ed26e3be633a4baf4f2e47726a2d976b8829bd880272b62",
+        "transformation": "Move the archived finite mathematics into its maintained project namespace and bind project imports."
+      },
+      "Zeta23/OPICARound6/PrimeFactorPaths/NativeStoppingCost.lean": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/NativeStoppingCost.lean": "f2f78253b3c614963fa987f5743fb8aaf64aabeb9a44b116e299fb7c8ac3a4ba"
+        },
+        "published_sha256": "14558956856ce00c252fd5da5477c602214232075b6db57185906fa88ab2b0d7",
+        "transformation": "Move the archived finite mathematics into its maintained project namespace and bind project imports."
+      },
+      "Zeta23/OPICARound6/PrimeFactorPaths/StoppingAlgebra.lean": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/StoppingAlgebra.lean": "3c208290e53652ce330359f2ca43a7107c7dc63154349d31cd6a616e1d03d673"
+        },
+        "published_sha256": "ef817d19a47d7e271655434d259acc2fbae2186a0bf6e003e3a2592e76cf9fd3",
+        "transformation": "Move the archived finite mathematics into its maintained project namespace and bind project imports."
+      },
+      "Zeta23/OPICARound6/PrimeFactorPaths/Verify.lean": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/Audit.lean": "1d6e2e4ef65fa2b2901f2aa12b15d153182cafbc7432f3f2f35ebf8b91dfcfc3",
+          "step4-native-stopping-2026-11-20/StoppingAudit.lean": "5cc0deb08db3ac3ff55feb67b15063e412180c5e5935449a27653872da077aa6"
+        },
+        "published_sha256": "73e1a4d2b2c8a91c82a7a38fdfa5d088cdcea7f257293500c8e3ba3b1bf36c5f",
+        "transformation": "Extend the existing project verification module with the project-qualified finite theorem checks. The archived files are the earlier standalone checks."
+      },
+      "research/RHRC/integration/opica_round6/controls/NegativeTypes.lean.txt": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/NegativeTypes.lean": "a52b275d2d0c2f0d5c0e79b2ead705fc14451ad6eb43e01dc0f9ae6ad15b1dd1",
+          "step4-native-stopping-2026-11-20/StoppingNegative.lean": "eaffacf40642ad4d176301b98ba8e07d03a9c9b20819104671a5856345a3f171"
+        },
+        "published_sha256": "28e3eabf9555b049c15e3f21f520210d6e07ba8471f9502f649b97e4592b0804",
+        "transformation": "Retain the prior rejections and add the seven archived arithmetic type-error cases under their maintained namespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/BUCHSTAB_BOUNDARY.md": {
+        "archive_members": {
+          "step4-arithmetic-recursion-2026-11-20/BUCHSTAB_BOUNDARY.md": "22f29f4bb7aa38654181da32ba62d1fd3349f410d8ac8bc77a42a5742b42ce77"
+        },
+        "published_sha256": "22f29f4bb7aa38654181da32ba62d1fd3349f410d8ac8bc77a42a5742b42ce77",
+        "transformation": "Publish the archived bytes unchanged."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/BUCHSTAB_TRANSPORT_CHECK.json": {
+        "archive_members": {
+          "step4-arithmetic-recursion-2026-11-20/BUCHSTAB_TRANSPORT_CHECK.json": "391ded6203b77407bdda81f8e920380c320ddabf18bfcccfadb978eede97c812"
+        },
+        "published_sha256": "391ded6203b77407bdda81f8e920380c320ddabf18bfcccfadb978eede97c812",
+        "transformation": "Publish the archived bytes unchanged."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CHECK.json": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/DISJOINT_CHECK.json": "923f05d865b5c3994761982f67b98918c189d1e2a5521b967cade3bb0650155a"
+        },
+        "published_sha256": "923f05d865b5c3994761982f67b98918c189d1e2a5521b967cade3bb0650155a",
+        "transformation": "Publish the archived bytes unchanged."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/DISJOINT_CUT_DISCREPANCY.md": "65afcf511ffe8d9ea138e5adaab6c0a7f0c4d557f907eca8b96136e42105ee81"
+        },
+        "published_sha256": "755a38583951fa134a25635accbdb37b8901b0eafb36dc1e8ccad79cbabffa22",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DIVISOR_SPACING_CHECK.json": {
+        "archive_members": {
+          "step4-analytic-crosscheck-2026-11-20/DIVISOR_SPACING_CHECK.json": "6c2fa9b0bbfb37f13eca8f408d920fbd0fa9511eefa112beb961e9308a9e7b43"
+        },
+        "published_sha256": "6c2fa9b0bbfb37f13eca8f408d920fbd0fa9511eefa112beb961e9308a9e7b43",
+        "transformation": "Publish the archived bytes unchanged."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/GEOMETRY_REPLAY.json": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/GEOMETRY_REPLAY.json": "5d59ccfc9ee6b3bbad55225832cf7bc77411813f93d9d57b757d784ba63e2a43"
+        },
+        "published_sha256": "d55ffd536e0b992eedc9b4ea9fed7a3347b0482d7ce0114a1f27cce134d506a6",
+        "transformation": "Normalize CRLF to LF. The content is otherwise byte-identical."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md": "72604839b86cf6ea3fd9a4a46f5ba8ba45f12dd5e603fbd8be4e014f7e125736"
+        },
+        "published_sha256": "bdeb60b80a3fac2b0e0a510ba37fddca4d10de8a5731decd589c0a1a43ea38f9",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md": "ef96790d2ce604d7555b7a025dd2de8801db0981872cc64b1e859f284393184d"
+        },
+        "published_sha256": "c789377094f86f25349cdd3237a71d59b9a80063ddb28cdb9a3591b86c49eeaf",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md": {
+        "archive_members": {
+          "step4-arithmetic-recursion-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md": "bd38cbc6c9e1b0a915a3ba8a40bef1e1b47eb4a4bb18564d5e7cf1b05d73446a"
+        },
+        "published_sha256": "f6214cd71570f85882a4876d4069ba9a977a013c734325725dcc3baa52adb3f3",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/PAID_PARTNER_GRAPHS.md": {
+        "archive_members": {
+          "step4-analytic-crosscheck-2026-11-20/PAID_PARTNER_GRAPHS.md": "252aa40bdf0ea6543da1c7561b64e5944362cfc80efda7b8f8df7cad86c8fdf0"
+        },
+        "published_sha256": "c06e4cc9252b6b0dfbfb492cb2ffa57f54490d75f4a54cb4a39a43e7e60d54a1",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SELECTED_PAIR.json": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/SELECTED_PAIR.json": "588a8aa7e41992dab957dc0d1dcad94e269f2bbd824b2e7ca95f9ee30afd7dc2"
+        },
+        "published_sha256": "21d9dbbe03b5bfc8d89a4a852a6d351a4a4ae2f5d6306ba5ea7f2e6dffd20baf",
+        "transformation": "Normalize CRLF to LF. The content is otherwise byte-identical."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SHIFTED_PRIME_RETIREMENT.md": {
+        "archive_members": {
+          "step4-arithmetic-recursion-2026-11-20/SHIFTED_PRIME_RETIREMENT.md": "dac9dc06ac8679698ece85b1e3ebed7833d066b0bd4628f9657b8b89f6ad78b0"
+        },
+        "published_sha256": "9d125454973675ad40de5b7340348512336921b1e46088a59a86ca9fef2b742a",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SPARSE_PRIME_FACTOR_CHARGES.md": {
+        "archive_members": {
+          "step4-analytic-crosscheck-2026-11-20/SPARSE_PRIME_FACTOR_CHARGES.md": "fc7c69e36b1a33eb8661e5705ddc1333acb84d1d310b51fdbf4a6831b0c2116d"
+        },
+        "published_sha256": "d4aca3faf66b1242c9722399d0d9d338add700c7da6ef37a8269e42c4d898f31",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/STOPPING_CHECK.json": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/STOPPING_CHECK.json": "0eee01293d408fb97bb28518172e7cf933033bb95bd9b1389d6ac481b83ea643"
+        },
+        "published_sha256": "0eee01293d408fb97bb28518172e7cf933033bb95bd9b1389d6ac481b83ea643",
+        "transformation": "Publish the archived bytes unchanged."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SURVIVOR_DIVISOR_SPACING.md": {
+        "archive_members": {
+          "step4-analytic-crosscheck-2026-11-20/SURVIVOR_DIVISOR_SPACING.md": "a5ac94805246fb22007534c1e6a747c55130acdeae351db774a26aa75334a704"
+        },
+        "published_sha256": "7c4a70c349cd436a68d39c1000a06c541f60d6d1f97c7366590924a0b2fd209a",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_buchstab_transport.py": {
+        "archive_members": {
+          "step4-arithmetic-recursion-2026-11-20/check_buchstab_transport.py": "8d4e00ecbb6363316d03070ab90cb666a25b3fcda46c6c2d6ac44ec004b13ade"
+        },
+        "published_sha256": "6a03f30b037709379b58c503da9402f2b1b095a5aaac354ce50b97912163c9fc",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_disjoint.py": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/check_disjoint.py": "47d129469760bd2c197a9e8d3b913604c5f8ca3d753c45294c0ef583a1ea27e0"
+        },
+        "published_sha256": "7ed9a24d02a15738cb18243094ec1e7c8616645eb87d29a4c31986175b78ba1e",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_divisor_spacing.py": {
+        "archive_members": {
+          "step4-analytic-crosscheck-2026-11-20/check_divisor_spacing.py": "7bface0b4566deed8076bc76ec1da0f75036ad28df822963e07930d524ae2f31"
+        },
+        "published_sha256": "cd3e0ecce3259838c5cb7e03ce3850ae8b9c0da2bae765f5ffa64631e5ff1df2",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_geometry.py": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/check_geometry.py": "2da0624e401e14707d50c6891dcf17d6c2e00fd11198bc87bcba927389dad154"
+        },
+        "published_sha256": "9be1df6f497200ccaa9025cadd1a06fad5e1320134acbb0ce3b6fa44ad6782d2",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_selected_pair.py": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/check_selected_pair.py": "dfc445056f4f6e902982faa0066ef80e841bb0333e7b140c88d2b8c3c64c8859"
+        },
+        "published_sha256": "2018946cfa823d01ad199cd5df7a9018691726d6ea29b31974b31f8901c139b1",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_stopping.py": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/check_stopping.py": "2159c6d298dc305c6a4d37b0d8cf8c6a4aeeff448d48b8c58c343188a109ff93"
+        },
+        "published_sha256": "09d43a9cc3f2dc77c6ad0eb6d3d9b4f0f26478353e01e444b991dd1e1a07779a",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/finite_replay.py": {
+        "archive_members": {},
+        "published_sha256": "38b5d68510452868cbfe2e68f0cc660a51940708ed00526874e505cb55ff589a",
+        "transformation": "Repository-native command-line interface and exact comparison for the six finite fixtures."
+      }
+    }
   }
 }

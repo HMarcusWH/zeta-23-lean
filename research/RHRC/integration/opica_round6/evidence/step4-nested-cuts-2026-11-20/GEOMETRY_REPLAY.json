@@ -1,0 +1,61 @@
+{
+  "method": "All true signed generator rows, cone membership and occupied keys. Integer source boundary and native coarse energy recomputed independently.",
+  "rows": [
+    {
+      "X": 65536,
+      "s": 4,
+      "y": 256,
+      "first_label_candidate": 58657,
+      "rough_squarefree_count": 609,
+      "even": 0,
+      "odd": 609,
+      "occupied_nodes": 3076,
+      "coarse_nodes": 214,
+      "strict_complete_shell_coarse_nodes": 0,
+      "true_generator_energy": "0",
+      "source_match": true
+    },
+    {
+      "X": 65537,
+      "s": 4,
+      "y": 289,
+      "first_label_candidate": 58658,
+      "rough_squarefree_count": 609,
+      "even": 0,
+      "odd": 609,
+      "occupied_nodes": 3086,
+      "coarse_nodes": 220,
+      "strict_complete_shell_coarse_nodes": 0,
+      "true_generator_energy": "0",
+      "source_match": true
+    },
+    {
+      "X": 1049155,
+      "s": 5,
+      "y": 441,
+      "first_label_candidate": 913338,
+      "rough_squarefree_count": 12031,
+      "even": 2220,
+      "odd": 9811,
+      "occupied_nodes": 60494,
+      "coarse_nodes": 1065,
+      "strict_complete_shell_coarse_nodes": 0,
+      "true_generator_energy": "31/33554432",
+      "source_match": true
+    },
+    {
+      "X": 1656575,
+      "s": 5,
+      "y": 441,
+      "first_label_candidate": 1435553,
+      "rough_squarefree_count": 19878,
+      "even": 4386,
+      "odd": 15492,
+      "occupied_nodes": 99545,
+      "coarse_nodes": 1729,
+      "strict_complete_shell_coarse_nodes": 0,
+      "true_generator_energy": "3/134217728",
+      "source_match": true
+    }
+  ]
+}

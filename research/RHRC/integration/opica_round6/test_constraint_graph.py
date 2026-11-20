@@ -1,4 +1,5 @@
 import copy
+from hashlib import sha256
 import json
 from pathlib import Path
 import shutil
@@ -9,7 +10,7 @@ import unittest
 
 if __name__ == "__main__":
     sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
-from research.RHRC.integration.opica_round6.constraint_graph import HISTORICAL, build, check_axioms, check_historical, check_rhkg, encoding, explain
+from research.RHRC.integration.opica_round6.constraint_graph import HISTORICAL, audit_group, audit_input, build, check_axioms, check_historical, check_rhkg, encoding, explain
 
 
 def record(key, status, **extras):
@@ -144,6 +145,79 @@ class ConstraintGraphTests(unittest.TestCase):
         output = self.root / "export.json"
         result = subprocess.run(
             [sys.executable, "-O", "-B", str(self.root / "check_divisor_halves.py"),
+             "--output", str(output)], capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Finite replay differs", result.stderr)
+        self.assertFalse(output.exists())
+
+    def test_nested_cut_frontier_and_prior_graph(self):
+        package = Path(__file__).resolve().parent
+        graph = build(json.loads((package / "CONSTRAINTS.json").read_bytes()), package.parents[3])
+        nodes = graph["nodes"]
+        route = "N20_NESTED_ROUTE"
+        upper = "N20_JOINT_ARITHMETIC_UPPER"
+        formal = "PAPER_ROUTE_VALIDATION"
+        self.assertEqual(explain(graph, route)["open_in_every_catalog_route"], [upper, formal])
+        self.assertEqual(nodes[upper]["depends_on"] + nodes[upper]["alternatives"], [])
+        self.assertIn("N20_LOCAL_PRIME_GRAPH_CUT", nodes[route]["depends_on"])
+        self.assertIn("N20_RAW_SPARSE_SECTOR", nodes["N20_LOCAL_PRIME_GRAPH_CUT"]["depends_on"])
+        self.assertIn("N20_LOCAL_PRIME_GRAPH_CUT", nodes[upper]["context"])
+        self.assertNotIn("N20_PAID_PRIME_GRAPHS", nodes["N20_LOCAL_PRIME_GRAPH_CUT"]["depends_on"])
+        self.assertNotIn("N20_PAID_PRIME_GRAPHS", nodes["N20_SHIFTED_RETIREMENT"]["depends_on"])
+        for name in (route, upper, formal, "STEP4", "RH"):
+            self.assertEqual(nodes[name]["status"], "OPEN")
+        for edge in graph["edges"]:
+            if edge["from"].startswith("N20_") and nodes[edge["from"]]["status"] in {"SOURCE_RECORD", "EXPERIMENTAL_SIGNAL"}:
+                self.assertEqual(edge["kind"], "CONTEXT_ONLY")
+
+        # a6a001fd issued the original 190 entries, 168 edges, and 56 declaration anchors.
+        previous = {k: copy.deepcopy(v) for k, v in nodes.items() if not k.startswith("N20_")}
+        previous["STEP4"]["alternatives"].remove(route)
+        edges = [e for e in graph["edges"] if e["from"] in previous and e["to"] in previous]
+        anchors = graph["source_only_declaration_anchors"]
+        old_anchors = {name: anchors[name] for node in previous.values() for name in node["declarations"]}
+        self.assertEqual((len(previous), len(edges), len(old_anchors)), (190, 168, 56))
+        old = {"nodes": previous, "edges": edges, "anchors": old_anchors}
+        self.assertEqual(sha256(encoding(old)).hexdigest(),
+                         "acec50d94e3b1ca7dd8a2172103d348c1f05ccc78522989ebb47cceee26a3b71")
+
+        fresh = set(anchors) - set(old_anchors)
+        formal_rows = ("N20_FINITE_CELL_BRACKET", "N20_FINITE_SELECTOR_COST",
+                       "N20_FINITE_POLARITY_COST", "N20_FINITE_STOPPING")
+        self.assertEqual(fresh, {name for k in formal_rows for name in nodes[k]["declarations"]})
+        self.assertEqual(len(fresh), 23)
+        self.assertTrue(all(nodes[k]["status"] == "PROVED" for k in formal_rows))
+        self.assertTrue(all(nodes[k]["status"] == "DERIVED" for k in
+                            ("N20_DETECTOR_PATH", "N20_TOTAL_CUT_DETECTOR", "N20_LOCAL_PRIME_GRAPH_CUT")))
+
+    def test_concrete_geometry_readback_keeps_finite_sets_symbolic(self):
+        package = Path(__file__).resolve().parent
+        graph = build(json.loads((package / "CONSTRAINTS.json").read_bytes()), package.parents[3])
+        prefix = "Zeta23.OPICARound6.PrimeFactorPaths."
+        witness = prefix + "NativeGeometry.mersenne_whole_base"
+        attr = "attribute [local irreducible] " + prefix + "NativeCells.terminalLabels " + prefix + "NativeCells.wholeCoarseKeys"
+        for group in ("all", "round6", "prior-parity", "other-history"):
+            program = audit_input(graph, group)
+            selected = audit_group(graph, group)
+            self.assertEqual(program.count("#print axioms "), len(selected))
+            self.assertEqual(program.count("#check "), len(selected))
+            self.assertEqual(program.count("env.getModuleIdxFor?"), len(selected))
+            if group in ("all", "round6"):
+                self.assertIn(witness, selected)
+                self.assertEqual(program.count(attr), 1)
+                self.assertLess(program.index(attr), program.index("#check " + witness))
+            else:
+                self.assertNotIn(witness, selected)
+                self.assertNotIn(attr, program)
+
+    def test_stale_nested_replay_cannot_export(self):
+        fixtures = Path(__file__).resolve().parent / "evidence" / "step4-nested-cuts-2026-11-20"
+        for name in ("finite_replay.py", "check_divisor_spacing.py"):
+            shutil.copyfile(fixtures / name, self.root / name)
+        (self.root / "DIVISOR_SPACING_CHECK.json").write_bytes(b"{}\n")
+        output = self.root / "export.json"
+        result = subprocess.run(
+            [sys.executable, "-B", "-O", str(self.root / "check_divisor_spacing.py"),
              "--output", str(output)], capture_output=True, text=True)
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Finite replay differs", result.stderr)

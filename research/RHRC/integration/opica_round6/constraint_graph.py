@@ -214,6 +214,10 @@ def audit_input(graph, group="all"):
     anchors = audit_group(graph, group)
     modules = sorted({a["module"] for a in anchors.values()})
     lines = ["import Lean.Elab.Command"] + ["import " + module for module in modules]
+    if "Zeta23.OPICARound6.PrimeFactorPaths.NativeGeometry.mersenne_whole_base" in anchors:
+        # Printing the type of the concrete 2^127 witness must leave its finite sets symbolic.
+        cells = "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells"
+        lines.append(f"attribute [local irreducible] {cells}.terminalLabels {cells}.wholeCoarseKeys")
     lines.extend(["", "open Lean Elab Command", "run_cmd do", "  let env ← getEnv"])
     for name in sorted(anchors):
         tick = chr(96)
