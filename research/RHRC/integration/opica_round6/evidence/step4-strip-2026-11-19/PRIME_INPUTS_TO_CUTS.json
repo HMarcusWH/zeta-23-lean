@@ -1,0 +1,567 @@
+{
+  "commit": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "tree": "573cda1f06d2d7a0e61349a53183311e4ba621fc",
+  "relation_rows": 1329677,
+  "proof_value_rows": 1236174,
+  "declared_vertices_in_registry": 22198,
+  "registered_claims": 339,
+  "cuts": {
+    "balanced native cut": "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+    "native AX": "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
+    "native terminal rate": "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+    "canonical dominance iff RH": "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis",
+    "cofinal arithmetic implies RH": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates",
+    "scalar growth iff critical line": "Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine"
+  },
+  "reachability": {
+    "cumulative prime identity": {
+      "name": "Zeta23.CCM.canonicalPrimeCumulativeWeight_eq_weightedVonMangoldtSqrtSum",
+      "graph_role": "LOCAL_DEPENDENCY",
+      "transitive_consumers_excluding_self": 17,
+      "registered_consumers_including_self": 7,
+      "reachable_selected_cuts": {
+        "canonical dominance iff RH": [
+          "Zeta23.CCM.canonicalPrimeCumulativeWeight_eq_weightedVonMangoldtSqrtSum",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancyEnergy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_canonicalFiniteWeilPositivity",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+        ],
+        "cofinal arithmetic implies RH": [
+          "Zeta23.CCM.canonicalPrimeCumulativeWeight_eq_weightedVonMangoldtSqrtSum",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancyEnergy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_lowerBound_iff",
+          "Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy",
+          "Zeta23.CCM.boundaryFlatRayleighBottom_lowerBound_of_canonicalArithmeticLowerBound",
+          "Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound",
+          "Zeta23.CCM.jointCofinalBottomLowerBounds_of_jointCofinalCanonicalArithmeticLowerBounds",
+          "Zeta23.ExceptionalZero.cofinalCanonicalLowerCertificates_of_cofinalCanonicalArithmeticCertificates",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
+        ]
+      }
+    },
+    "finite prime sum": {
+      "name": "Zeta23.CCM.weightedVonMangoldtSqrtSum_eq_sum_Icc_two",
+      "graph_role": "LOCAL_DEPENDENCY",
+      "transitive_consumers_excluding_self": 18,
+      "registered_consumers_including_self": 7,
+      "reachable_selected_cuts": {
+        "canonical dominance iff RH": [
+          "Zeta23.CCM.weightedVonMangoldtSqrtSum_eq_sum_Icc_two",
+          "Zeta23.CCM.canonicalPrimeCumulativeWeight_eq_weightedVonMangoldtSqrtSum",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancyEnergy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_canonicalFiniteWeilPositivity",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+        ],
+        "cofinal arithmetic implies RH": [
+          "Zeta23.CCM.weightedVonMangoldtSqrtSum_eq_sum_Icc_two",
+          "Zeta23.CCM.canonicalPrimeCumulativeWeight_eq_weightedVonMangoldtSqrtSum",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancyEnergy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_lowerBound_iff",
+          "Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy",
+          "Zeta23.CCM.boundaryFlatRayleighBottom_lowerBound_of_canonicalArithmeticLowerBound",
+          "Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound",
+          "Zeta23.CCM.jointCofinalBottomLowerBounds_of_jointCofinalCanonicalArithmeticLowerBounds",
+          "Zeta23.ExceptionalZero.cofinalCanonicalLowerCertificates_of_cofinalCanonicalArithmeticCertificates",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
+        ]
+      }
+    },
+    "prime mass monotonicity": {
+      "name": "Zeta23.CCM.weightedVonMangoldtSqrtSum_monotone",
+      "graph_role": "LOCAL_DEPENDENCY",
+      "transitive_consumers_excluding_self": 16,
+      "registered_consumers_including_self": 7,
+      "reachable_selected_cuts": {
+        "canonical dominance iff RH": [
+          "Zeta23.CCM.weightedVonMangoldtSqrtSum_monotone",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancyEnergy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_canonicalFiniteWeilPositivity",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+        ],
+        "cofinal arithmetic implies RH": [
+          "Zeta23.CCM.weightedVonMangoldtSqrtSum_monotone",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancyEnergy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_lowerBound_iff",
+          "Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy",
+          "Zeta23.CCM.boundaryFlatRayleighBottom_lowerBound_of_canonicalArithmeticLowerBound",
+          "Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound",
+          "Zeta23.CCM.jointCofinalBottomLowerBounds_of_jointCofinalCanonicalArithmeticLowerBounds",
+          "Zeta23.ExceptionalZero.cofinalCanonicalLowerCertificates_of_cofinalCanonicalArithmeticCertificates",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
+        ]
+      }
+    },
+    "canonical signed energy identity": {
+      "name": "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+      "graph_role": "REGISTERED_CLAIM_ROOT",
+      "transitive_consumers_excluding_self": 14,
+      "registered_consumers_including_self": 7,
+      "reachable_selected_cuts": {
+        "canonical dominance iff RH": [
+          "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_canonicalFiniteWeilPositivity",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+        ],
+        "cofinal arithmetic implies RH": [
+          "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_lowerBound_iff",
+          "Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy",
+          "Zeta23.CCM.boundaryFlatRayleighBottom_lowerBound_of_canonicalArithmeticLowerBound",
+          "Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound",
+          "Zeta23.CCM.jointCofinalBottomLowerBounds_of_jointCofinalCanonicalArithmeticLowerBounds",
+          "Zeta23.ExceptionalZero.cofinalCanonicalLowerCertificates_of_cofinalCanonicalArithmeticCertificates",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
+        ]
+      }
+    },
+    "signed energy positivity equivalence": {
+      "name": "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le",
+      "graph_role": "LOCAL_DEPENDENCY",
+      "transitive_consumers_excluding_self": 2,
+      "registered_consumers_including_self": 1,
+      "reachable_selected_cuts": {
+        "canonical dominance iff RH": [
+          "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_canonicalFiniteWeilPositivity",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+        ]
+      }
+    },
+    "K=2 restricted positivity": {
+      "name": "Zeta23.CCM.primeTerm_nonneg_of_primeSample_two",
+      "graph_role": "REGISTERED_CLAIM_ROOT",
+      "transitive_consumers_excluding_self": 0,
+      "registered_consumers_including_self": 1,
+      "reachable_selected_cuts": {}
+    },
+    "residual weighted integral": {
+      "name": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral",
+      "graph_role": "REGISTERED_CLAIM_ROOT",
+      "transitive_consumers_excluding_self": 0,
+      "registered_consumers_including_self": 1,
+      "reachable_selected_cuts": {}
+    },
+    "signed gap separator": {
+      "name": "Zeta23.OPICA.signed_sharp_gap_separator",
+      "graph_role": "REGISTERED_CLAIM_ROOT",
+      "transitive_consumers_excluding_self": 13,
+      "registered_consumers_including_self": 5,
+      "reachable_selected_cuts": {}
+    },
+    "negative mass budget": {
+      "name": "Zeta23.OPICA.signed_gap_negative_mass_budget",
+      "graph_role": "REGISTERED_CLAIM_ROOT",
+      "transitive_consumers_excluding_self": 0,
+      "registered_consumers_including_self": 1,
+      "reachable_selected_cuts": {}
+    },
+    "Stieltjes positivity budget": {
+      "name": "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget",
+      "graph_role": "REGISTERED_CLAIM_ROOT",
+      "transitive_consumers_excluding_self": 1,
+      "registered_consumers_including_self": 2,
+      "reachable_selected_cuts": {}
+    },
+    "literal divisor identity": {
+      "name": "ArithmeticFunction.vonMangoldt_sum",
+      "graph_role": "EXTERNAL_BOUNDARY",
+      "transitive_consumers_excluding_self": 63,
+      "registered_consumers_including_self": 14,
+      "reachable_selected_cuts": {
+        "balanced native cut": [
+          "ArithmeticFunction.vonMangoldt_sum",
+          "Zeta23.CCM.native_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+          "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+          "Zeta23.CCM.nativeCompletedInput_equation",
+          "Zeta23.CCM.nativeDampedCompletedInput_equation",
+          "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+          "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
+          "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+        ],
+        "native AX": [
+          "ArithmeticFunction.vonMangoldt_sum",
+          "Zeta23.CCM.native_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+          "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+          "Zeta23.CCM.nativeCompletedInput_equation",
+          "Zeta23.CCM.nativeDampedCompletedInput_equation",
+          "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+          "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+        ],
+        "native terminal rate": [
+          "ArithmeticFunction.vonMangoldt_sum",
+          "Zeta23.CCM.native_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+          "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+          "Zeta23.OPICAFollowup.nativeAuxiliaryInput_completedPrime",
+          "Zeta23.OPICAFollowup.nativeTruncatedResidual_zero_before",
+          "Zeta23.OPICAFollowup.nativeResidual_norm_le_input_add_memory",
+          "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_terminal_memory_eventually_ge_exp",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+          "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+        ]
+      }
+    },
+    "prime weights nonnegative": {
+      "name": "ArithmeticFunction.vonMangoldt_nonneg",
+      "graph_role": "EXTERNAL_BOUNDARY",
+      "transitive_consumers_excluding_self": 267,
+      "registered_consumers_including_self": 55,
+      "reachable_selected_cuts": {
+        "balanced native cut": [
+          "ArithmeticFunction.vonMangoldt_nonneg",
+          "Zeta23.WeilEF.line_integral_swap",
+          "Zeta23.WeilEF.prime_side_line",
+          "Zeta23.WeilEF.EF_lit_zeta",
+          "Zeta23.WeilEF.EF_lit_zetaZeroConfig",
+          "Zeta23.OPICAFollowup.nativeNontrivialZeroTerm_summable_norm",
+          "Zeta23.OPICAFollowup.nativeNontrivialZeroSum_theta_bound",
+          "Zeta23.OPICAFollowup.native_field_theta_envelope",
+          "Zeta23.OPICAFollowup.originalPrimeField_allDampedL2_of_native_theta_zero",
+          "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+        ],
+        "native terminal rate": [
+          "ArithmeticFunction.vonMangoldt_nonneg",
+          "Zeta23.WeilEF.line_integral_swap",
+          "Zeta23.WeilEF.prime_side_line",
+          "Zeta23.WeilEF.EF_lit_zeta",
+          "Zeta23.WeilEF.EF_lit_zetaZeroConfig",
+          "Zeta23.OPICAFollowup.nativeNontrivialZeroTerm_summable_norm",
+          "Zeta23.OPICAFollowup.nativeNontrivialZeroSum_theta_bound",
+          "Zeta23.OPICAFollowup.native_field_theta_envelope",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_old_memory_eventually_le_exp",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+          "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+        ],
+        "canonical dominance iff RH": [
+          "ArithmeticFunction.vonMangoldt_nonneg",
+          "Zeta23.CCM.weightedVonMangoldtSqrtSum_monotone",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancyEnergy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_canonicalFiniteWeilPositivity",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+        ],
+        "cofinal arithmetic implies RH": [
+          "ArithmeticFunction.vonMangoldt_nonneg",
+          "Zeta23.CCM.weightedVonMangoldtSqrtSum_monotone",
+          "Zeta23.CCM.canonicalPolePrimeDiscrepancyEnergy_eq_neg_tail_sub_remainder",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_lowerBound_iff",
+          "Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy",
+          "Zeta23.CCM.boundaryFlatRayleighBottom_lowerBound_of_canonicalArithmeticLowerBound",
+          "Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound",
+          "Zeta23.CCM.jointCofinalBottomLowerBounds_of_jointCofinalCanonicalArithmeticLowerBounds",
+          "Zeta23.ExceptionalZero.cofinalCanonicalLowerCertificates_of_cofinalCanonicalArithmeticCertificates",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
+        ],
+        "scalar growth iff critical line": [
+          "ArithmeticFunction.vonMangoldt_nonneg",
+          "Zeta23.WeilEF.line_integral_swap",
+          "Zeta23.WeilEF.prime_side_line",
+          "Zeta23.WeilEF.EF_lit_zeta",
+          "Zeta23.ExceptionalZero.zeta_explicit_formula_literature",
+          "Zeta23.ExceptionalZero.absolutelySummableZeroFilter_weil",
+          "Zeta23.ExceptionalZero.arithmeticSideSubexponential_of_criticalLine",
+          "Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine"
+        ]
+      }
+    },
+    "logarithmic derivative identity": {
+      "name": "ArithmeticFunction.LSeries_vonMangoldt_eq_deriv_riemannZeta_div",
+      "graph_role": "EXTERNAL_BOUNDARY",
+      "transitive_consumers_excluding_self": 279,
+      "registered_consumers_including_self": 55,
+      "reachable_selected_cuts": {
+        "balanced native cut": [
+          "ArithmeticFunction.LSeries_vonMangoldt_eq_deriv_riemannZeta_div",
+          "Zeta23.WeilEF.integrand_eq_tsum",
+          "Zeta23.WeilEF.prime_side_line",
+          "Zeta23.WeilEF.EF_lit_zeta",
+          "Zeta23.WeilEF.EF_lit_zetaZeroConfig",
+          "Zeta23.OPICAFollowup.nativeNontrivialZeroTerm_summable_norm",
+          "Zeta23.OPICAFollowup.nativeNontrivialZeroSum_theta_bound",
+          "Zeta23.OPICAFollowup.native_field_theta_envelope",
+          "Zeta23.OPICAFollowup.originalPrimeField_allDampedL2_of_native_theta_zero",
+          "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+        ],
+        "native terminal rate": [
+          "ArithmeticFunction.LSeries_vonMangoldt_eq_deriv_riemannZeta_div",
+          "Zeta23.WeilEF.integrand_eq_tsum",
+          "Zeta23.WeilEF.prime_side_line",
+          "Zeta23.WeilEF.EF_lit_zeta",
+          "Zeta23.WeilEF.EF_lit_zetaZeroConfig",
+          "Zeta23.OPICAFollowup.nativeNontrivialZeroTerm_summable_norm",
+          "Zeta23.OPICAFollowup.nativeNontrivialZeroSum_theta_bound",
+          "Zeta23.OPICAFollowup.native_field_theta_envelope",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_old_memory_eventually_le_exp",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+          "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+          "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+        ],
+        "canonical dominance iff RH": [
+          "ArithmeticFunction.LSeries_vonMangoldt_eq_deriv_riemannZeta_div",
+          "Zeta23.WeilEF.integrand_eq_tsum",
+          "Zeta23.WeilEF.prime_side_line",
+          "Zeta23.WeilEF.EF_lit_zeta",
+          "Zeta23.ExceptionalZero.zeta_explicit_formula_literature",
+          "Zeta23.ExceptionalZero.zeta_W_literatureRHS_package",
+          "Zeta23.ExceptionalZero.zeta_Wsummand_summable",
+          "Zeta23.ExceptionalZero.zeta_W_self_re_nonnegative_of_criticalLine",
+          "Zeta23.ExceptionalZero.canonicalSourceQuadraticForm_re_nonnegative_of_criticalLine",
+          "Zeta23.ExceptionalZero.canonicalSourceChannelEnergy_nonnegative_of_criticalLine",
+          "Zeta23.ExceptionalZero.canonicalFiniteWeilPositivity_of_riemannHypothesis",
+          "Zeta23.ExceptionalZero.canonicalFiniteWeilPositivity_iff_riemannHypothesis",
+          "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+        ],
+        "cofinal arithmetic implies RH": [
+          "ArithmeticFunction.LSeries_vonMangoldt_eq_deriv_riemannZeta_div",
+          "Zeta23.WeilEF.integrand_eq_tsum",
+          "Zeta23.WeilEF.prime_side_line",
+          "Zeta23.WeilEF.EF_lit_zeta",
+          "Zeta23.ExceptionalZero.zeta_explicit_formula_literature",
+          "Zeta23.ExceptionalZero.zeta_literatureRHS_halfEven_eq",
+          "Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS",
+          "Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_cutoffFreeQuadraticForm",
+          "Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm",
+          "Zeta23.ExceptionalZero.eventually_all_apertures_have_negativeCanonicalSourceWitness_of_offLine_zero",
+          "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
+          "Zeta23.ExceptionalZero.eventually_all_apertures_have_globalFirstBad_of_offLine_zero",
+          "Zeta23.ExceptionalZero.criticalLine_of_cofinalCanonicalLowerCertificates",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalLowerCertificates",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
+        ],
+        "scalar growth iff critical line": [
+          "ArithmeticFunction.LSeries_vonMangoldt_eq_deriv_riemannZeta_div",
+          "Zeta23.WeilEF.integrand_eq_tsum",
+          "Zeta23.WeilEF.prime_side_line",
+          "Zeta23.WeilEF.EF_lit_zeta",
+          "Zeta23.ExceptionalZero.zeta_explicit_formula_literature",
+          "Zeta23.ExceptionalZero.absolutelySummableZeroFilter_weil",
+          "Zeta23.ExceptionalZero.arithmeticSideSubexponential_of_criticalLine",
+          "Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine"
+        ]
+      }
+    },
+    "native visible pole": {
+      "name": "Zeta23.OPICAFollowup.nativePrimeField_visiblePole",
+      "graph_role": "REGISTERED_CLAIM_ROOT",
+      "transitive_consumers_excluding_self": 30,
+      "registered_consumers_including_self": 7,
+      "reachable_selected_cuts": {}
+    },
+    "native all-damping equivalence": {
+      "name": "Zeta23.CCM.nativeOriginalPrimeField_allDampedL2_iff_integral",
+      "graph_role": "LOCAL_DEPENDENCY",
+      "transitive_consumers_excluding_self": 6,
+      "registered_consumers_including_self": 2,
+      "reachable_selected_cuts": {
+        "balanced native cut": [
+          "Zeta23.CCM.nativeOriginalPrimeField_allDampedL2_iff_integral",
+          "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+        ],
+        "native AX": [
+          "Zeta23.CCM.nativeOriginalPrimeField_allDampedL2_iff_integral",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+        ]
+      }
+    },
+    "native integral sufficiency": {
+      "name": "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
+      "graph_role": "LOCAL_DEPENDENCY",
+      "transitive_consumers_excluding_self": 3,
+      "registered_consumers_including_self": 2,
+      "reachable_selected_cuts": {
+        "balanced native cut": [
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
+          "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+        ],
+        "native AX": [
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+        ]
+      }
+    }
+  },
+  "extra_pinned_source_lemmas_present_in_graph_registry": {
+    "Zeta23.CCM.abs_psi_sub_self_sub_one_le": false,
+    "Zeta23.OPICARound4.native_prime_discrepancy_integral": false,
+    "Zeta23.OPICARound4.native_even_signed_upper": false,
+    "Zeta23.OPICARound4.native_odd_signed_upper": false
+  },
+  "signatures_from_pinned_source": {
+    "theorem weightedVonMangoldtSqrtSum_monotone": {
+      "file": "Zeta23/CCM/CanonicalPrimeRemainder.lean",
+      "line": 73,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/CanonicalPrimeRemainder.lean#L73",
+      "statement": "theorem weightedVonMangoldtSqrtSum_monotone :\n    Monotone weightedVonMangoldtSqrtSum"
+    },
+    "theorem canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget": {
+      "file": "Zeta23/CCM/CanonicalPrimeRemainder.lean",
+      "line": 267,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/CanonicalPrimeRemainder.lean#L267",
+      "statement": "theorem canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget\n    {L : ℝ} (hL : 0 < L)\n    (K : ℕ)\n    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :\n    canonicalSourceChannelEnergy L K x =\n      -canonicalPrimeRemainderEnergy L K x - canonicalPrimeFreeBudget L K x"
+    },
+    "theorem primeTerm_nonneg_of_primeSample_two": {
+      "file": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "line": 315,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/CanonicalK2SourceSignInterval.lean#L315",
+      "statement": "theorem primeTerm_nonneg_of_primeSample_two {z : Fin (2 * 2 + 1) → ℂ}\n    (hz : z ∈ evenBoundaryFlatSubspace 2) {L : ℝ} (hL : 0 < L) (hL16 : L ≤ Real.log 16)\n    {q : ℕ} (hq2 : 2 ≤ q) (hqL : (q : ℝ) ≤ Real.exp L) {β : ℝ} (hβ : 0 ≤ β) :\n    0 ≤ -(β * (quadraticForm (sourceMatrix (1 - Real.log q / L) 2) (indexMatrix 2 *ᵥ z)).re)"
+    },
+    "theorem arithmetic_stieltjes_sign_budget": {
+      "file": "Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean",
+      "line": 300,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean#L300",
+      "statement": "theorem arithmetic_stieltjes_sign_budget {κ : ℂ} (hκ : κ.im ≠ 0) :\n    Integrable (fun ξ => (‖(spectralEnergy ξ : ℂ) - κ‖ ^ 2)⁻¹) arithmeticSpectralMeasure ∧\n    (arithmeticStieltjes κ).im / κ.im =\n      ∫ ξ, (‖(spectralEnergy ξ : ℂ) - κ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure ∧\n    0 < ∫ ξ, (‖(spectralEnergy ξ : ℂ) - κ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure ∧\n    ‖arithmeticStieltjes κ‖ ≤\n      (1 + ‖κ‖ / |κ.im|) * (Real.log (2 * π) - Real.eulerMascheroniConstant) ∧\n    ∫ ξ, (‖(spectralEnergy ξ : ℂ) - κ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure ≤\n      (1 + ‖κ‖ / |κ.im|) * (Real.log (2 * π) - Real.eulerMascheroniConstant) / |κ.im|"
+    },
+    "theorem quiet_balanced_observation_implies_native_cut": {
+      "file": "Zeta23/OPICAFollowup/Consumers.lean",
+      "line": 326,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/Consumers.lean#L326",
+      "statement": "theorem quiet_balanced_observation_implies_native_cut\n    (time : ℕ → ℝ) (cofinal : Tendsto time atTop atTop)\n    (quiet :\n      (∀ epsilon : ℝ, 0 < epsilon → ∀ᶠ n : ℕ in atTop,\n        Real.log (1+max (nativeRawHigh 1 2 1 (logSlackY 2 8 (time n)) 2 (time n)) 0)/(2*time n) ≤ epsilon) ∨\n      (∀ epsilon : ℝ, 0 < epsilon → ∀ᶠ n : ℕ in atTop,\n        Real.log (1+max (nativeAbsorbedHigh 1 2 1 (by norm_num)\n          (logSlackY 2 8 (time n)) 2 (time n)) 0)/(2*time n) ≤ epsilon)) :\n    nativeZeroDisplacementSup=0 ∧\n    (∀ epsilon : ℝ, 0 < epsilon → MemLp\n      (fun t : ℝ => ((Real.exp (-epsilon*t)*primeFieldFamily 0 t : ℝ) : ℂ)) 2 volume) ∧\n    NativeOriginalPrimeFieldAllDampedL2 ∧ NativeOriginalPrimeFieldAllDampedIntegral ∧ RiemannHypothesis"
+    },
+    "theorem riemannHypothesis_of_step4_AX": {
+      "file": "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean",
+      "line": 25,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/Step4OutputSufficiency.lean#L25",
+      "statement": "theorem riemannHypothesis_of_step4_AX\n    (hAX : NativeOriginalPrimeFieldAllDampedIntegral) : RiemannHypothesis"
+    },
+    "theorem nativeCompletedInput_equation": {
+      "file": "Zeta23/CCM/NativeCompletionEquation.lean",
+      "line": 109,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/NativeCompletionEquation.lean#L109",
+      "statement": "theorem nativeCompletedInput_equation (t : ℝ) :\n    (∫ s : ℝ, nativePositiveCompletion s * nativeOriginalPrimeField (t - s)) =\n      nativeCompletedInput t"
+    },
+    "theorem nativeDampedCompletedInput_equation": {
+      "file": "Zeta23/CCM/NativeCompletedInputRangeOfPrimeLp.lean",
+      "line": 30,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/NativeCompletedInputRangeOfPrimeLp.lean#L30",
+      "statement": "theorem nativeDampedCompletedInput_equation (epsilon t : ℝ) :\n    nativeDampedCompletionPointwise epsilon (nativeOriginalDampedPrimeField epsilon) t =\n      nativeDampedCompletedInput epsilon t"
+    },
+    "theorem nativeCompletedInput_operator_eq_of_prime_memLp": {
+      "file": "Zeta23/CCM/NativeCompletedInputRangeOfPrimeLp.lean",
+      "line": 84,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/NativeCompletedInputRangeOfPrimeLp.lean#L84",
+      "statement": "theorem nativeCompletedInput_operator_eq_of_prime_memLp\n    (epsilon : ℝ) (hepsilon : 0 ≤ epsilon)\n    (hX : MemLp (nativeOriginalDampedPrimeField epsilon) 2 volume) :\n    nativeDampedCompletionCausalL2Operator epsilon hepsilon\n        (nativeOriginalDampedPrimeFieldCausalL2 epsilon hX) =\n      nativeCompletedInputCausalL2 epsilon hepsilon"
+    },
+    "def NativeOriginalPrimeFieldAllDampedIntegral": {
+      "file": "Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean",
+      "line": 28,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean#L28",
+      "statement": "def NativeOriginalPrimeFieldAllDampedIntegral : Prop :=\n  ∀ epsilon : ℝ, 0 < epsilon →\n    (∫⁻ t : ℝ in Ici 0, ENNReal.ofReal\n      (Real.exp (-2 * epsilon * t) * |nativeOriginalPrimeField t| ^ 2)) < ∞"
+    },
+    "theorem nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2": {
+      "file": "Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean",
+      "line": 107,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean#L107",
+      "statement": "theorem nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2\n    (hX : NativeOriginalPrimeFieldAllDampedL2) : NativeInputAllRangeClosure"
+    },
+    "def CanonicalPrimeRemainderDominance": {
+      "file": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+      "line": 171,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean#L171",
+      "statement": "def CanonicalPrimeRemainderDominance : Prop :=\n  ∀ L : ℝ, 0 < L →\n    ∀ K : ℕ, ∀ x : EuclideanSpace ℂ (Fin (2 * K + 1)),\n      EuclideanBoundaryFlat K x →\n        canonicalPrimeFreeBudget L K x ≤ -canonicalPrimeRemainderEnergy L K x"
+    },
+    "theorem canonicalPrimeRemainderDominance_iff_riemannHypothesis": {
+      "file": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+      "line": 190,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean#L190",
+      "statement": "theorem canonicalPrimeRemainderDominance_iff_riemannHypothesis :\n    CanonicalPrimeRemainderDominance ↔ RiemannHypothesis"
+    },
+    "def CofinalCanonicalArithmeticCertificates": {
+      "file": "Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean",
+      "line": 19,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean#L19",
+      "statement": "def CofinalCanonicalArithmeticCertificates : Prop :=\n  ∀ B : ℝ, ∃ L : ℝ,\n    0 < L ∧ B < L ∧ JointCofinalCanonicalArithmeticLowerBounds L"
+    },
+    "theorem riemannHypothesis_of_cofinalCanonicalArithmeticCertificates": {
+      "file": "Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean",
+      "line": 36,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean#L36",
+      "statement": "theorem riemannHypothesis_of_cofinalCanonicalArithmeticCertificates\n    (hcert : CofinalCanonicalArithmeticCertificates) :\n    RiemannHypothesis"
+    },
+    "theorem abs_psi_sub_self_sub_one_le": {
+      "file": "Zeta23/CCM/CanonicalWeightedChebyshevAbel.lean",
+      "line": 193,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/CanonicalWeightedChebyshevAbel.lean#L193",
+      "statement": "theorem abs_psi_sub_self_sub_one_le {x M : ℝ} (hx : 1 ≤ x)\n    (hM : ∀ t ∈ Icc 1 x, |weightedVonMangoldtSqrtRemainder t| ≤ M) :\n    |Chebyshev.psi x - x - 1| ≤ 2 * M * Real.sqrt x"
+    },
+    "theorem native_prime_discrepancy_integral": {
+      "file": "Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean",
+      "line": 211,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/PrimeDiscrepancyIntegral.lean#L211",
+      "statement": "theorem native_prime_discrepancy_integral {L : ℝ} (hL : 0 < L) (K : ℕ)\n    (u : poleNeutralEvenSubspace L K) :\n    (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,\n      primeSourceWeight q * correctedSourceTest L K u (Real.log q)) -\n      (∫ y in (0 : ℝ)..L, (Real.exp (y / 2) : ℂ) * correctedSourceTest L K u y) =\n      -∫ y in (0 : ℝ)..L,\n        ((Chebyshev.psi (Real.exp y) - Real.exp y : ℝ) : ℂ) * (Real.exp (-y / 2) : ℂ) *\n          (correctedSourceTestDerivative L K u y - correctedSourceTest L K u y / 2)"
+    },
+    "theorem native_even_signed_upper": {
+      "file": "Zeta23/OPICARound4/OperatorSignedBound.lean",
+      "line": 70,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/OperatorSignedBound.lean#L70",
+      "statement": "theorem native_even_signed_upper {L : ℝ} (hL : 0 < L)\n    (K : ℕ) (hK : 3 ≤ K) (lam : ℝ)\n    (hlam : lam < poleNeutralOddRayleighBottom L K hL hK) :\n    (poleNeutralOddRayleighBottom L K hL hK - lam) *\n      (poleNeutralCorrectedCubicSource L K (poleNeutralEvenShiftedRay hL K hK lam hlam)).re ≤\n      (‖nativeIndexInverseAdjoint hL K hK\n          (poleNeutralCorrectedCubicRieszVector L K)‖ * ‖poleNeutralCubicCompressionVector L K‖ +\n        (LinearMap.trace ℂ (poleNeutralOddSubspace L K) (poleNeutralOddCompressedCanonical L K) -\n          LinearMap.trace ℂ (poleNeutralEvenSubspace L K) (poleNeutralEvenCompressedCanonical L K)).re) / 2"
+    },
+    "theorem native_odd_signed_upper": {
+      "file": "Zeta23/OPICARound4/OperatorSignedBound.lean",
+      "line": 130,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/OperatorSignedBound.lean#L130",
+      "statement": "theorem native_odd_signed_upper {L : ℝ} (hL : 0 < L)\n    (K : ℕ) (hK : 3 ≤ K) (lam : ℝ)\n    (hlam : lam < poleNeutralEvenRayleighBottom L K hL hK) :\n    (poleNeutralEvenRayleighBottom L K hL hK - lam) *\n      (poleNeutralCubicPairingFunctional L K (poleNeutralOddAdjointShiftedRay hL K hK lam hlam)).re ≤\n      (‖(poleNeutralIndexEquiv hL K (by omega)).symm (poleNeutralCubicCompressionVector L K)‖ *\n          ‖poleNeutralCorrectedCubicRieszVector L K‖ +\n        (LinearMap.trace ℂ (poleNeutralEvenSubspace L K) (poleNeutralEvenCompressedCanonical L K) -\n          LinearMap.trace ℂ (poleNeutralOddSubspace L K) (poleNeutralOddCompressedCanonical L K)).re) / 2"
+    }
+  },
+  "relation_shard_sha256": {
+    "relations/relations-0.jsonl": "83f2ae96280e3fa12eb5f8286ae0d407f2f39cfd7221bad7061113210959e495",
+    "relations/relations-1.jsonl": "2464a377d01e737981f2e0db5e0746d2f4b2fd96036cd591d5db6811390f62ff",
+    "relations/relations-2.jsonl": "27d66761c7bf4facf2a3189493daa434f40ee5727a561743887737e0ab14b976",
+    "relations/relations-3.jsonl": "7dd2f18968170a16668da2ccc71ce2bb8d8ca3aec746b941da42267dfba8e752",
+    "relations/relations-4.jsonl": "481d2ce4e82558ed13387694b1cd5f9dc5260577e49277514b9882fccce79ee7",
+    "relations/relations-5.jsonl": "11a28a6da093b5a4fc2dc297b81c6cf1a46d8a2fb3f811faaae56b0bedd1750a",
+    "relations/relations-6.jsonl": "278302334bee44ebd694a8f50f41950d47fd9430840be4c7d0790a0572dd05d4",
+    "relations/relations-7.jsonl": "f46b39bbdc0276b923e7b9879fd459324b487a31aa1e7f457e530c788b0eeef8",
+    "relations/relations-8.jsonl": "d065d4f11614f66db33fd46aef59932a2c8dc169355aa1309c718118d01f9de2",
+    "relations/relations-9.jsonl": "bfcdc7ebf089faab8e5ff9604b089cfd34293c33660090b57876b3c34f118b2c",
+    "relations/relations-a.jsonl": "d0f5ee598abeb6594eb0bf239c1e29f40b0277cc66f68ae738c470bcc1ee546e",
+    "relations/relations-b.jsonl": "cb012e6900a69e42fc3b5eff5d0fbfa45b5d02eccfb232807b3cbcef8b9626df",
+    "relations/relations-c.jsonl": "a31dd215eceea7c085155d812669dd43d797b78d2ca27f7f6054a9131dbf537d",
+    "relations/relations-d.jsonl": "de1f0810daa07faabd9caa8ec2d92cbee291321cbb9d2d387c8e627c3cfdce21",
+    "relations/relations-e.jsonl": "ec1df26724feecadbaf598b63d087082c58067b08819c901f8325c402a39c0eb",
+    "relations/relations-f.jsonl": "3b4a7a228212fd38e04bb205ebec22d69e63c7320196908014ca892d185bd1ca"
+  },
+  "scope": "Breadth-first shortest paths from input to consumer in reverse LEAN_ENV_EXACT USES_CONSTANT proof-value edges, including self. A path records use of a constant, not derivation of each theorem hypothesis. A missing path covers only this registry."
+}

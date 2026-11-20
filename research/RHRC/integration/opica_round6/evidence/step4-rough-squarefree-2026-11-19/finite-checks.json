@@ -1,0 +1,107 @@
+{
+  "integer_range": [
+    1,
+    32768
+  ],
+  "inclusive_cutoffs": [
+    2,
+    5,
+    11,
+    17
+  ],
+  "prefixes": [
+    1,
+    2,
+    6,
+    30,
+    210,
+    1001,
+    8191,
+    32768
+  ],
+  "integer_cutoff_pairs": 131072,
+  "laplace_moments_in_units_of_K": [
+    0,
+    0,
+    1048576
+  ],
+  "runs": [
+    {
+      "cutoff": 2,
+      "sector_counts": {
+        "unit": 1,
+        "prime": 3511,
+        "pair": 6169,
+        "higher": 3598
+      },
+      "prefix_squarefree_rough_counts": [
+        1,
+        1,
+        3,
+        12,
+        85,
+        405,
+        3321,
+        13279
+      ]
+    },
+    {
+      "cutoff": 5,
+      "sector_counts": {
+        "unit": 1,
+        "prime": 3509,
+        "pair": 4000,
+        "higher": 787
+      },
+      "prefix_squarefree_rough_counts": [
+        1,
+        1,
+        1,
+        8,
+        53,
+        253,
+        2076,
+        8297
+      ]
+    },
+    {
+      "cutoff": 11,
+      "sector_counts": {
+        "unit": 1,
+        "prime": 3507,
+        "pair": 2947,
+        "higher": 196
+      },
+      "prefix_squarefree_rough_counts": [
+        1,
+        1,
+        1,
+        6,
+        42,
+        201,
+        1665,
+        6651
+      ]
+    },
+    {
+      "cutoff": 17,
+      "sector_counts": {
+        "unit": 1,
+        "prime": 3505,
+        "pair": 2299,
+        "higher": 34
+      },
+      "prefix_squarefree_rough_counts": [
+        1,
+        1,
+        1,
+        4,
+        40,
+        175,
+        1461,
+        5839
+      ]
+    }
+  ],
+  "scope": "Exact finite sieve, signed logarithmic coefficients and endpoint polynomial moments."
+}

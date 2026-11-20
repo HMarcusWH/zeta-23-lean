@@ -1,0 +1,12 @@
+{
+  "qualification": "Finite scalar margins for the paper proof. No cofinal arithmetic upper.",
+  "maximum_right_mode_log_gain_per_order": "[2.2223068296878283077257383573208717666104698512479249e-21 +/- 4.49e-74]",
+  "discarded_right_mode_log_decay_per_order_at_least": "[3.6418273981326498819147805226316596719801605145422e-23 +/- 3.14e-73]",
+  "discarded_right_mode_log_decay_using_only_critical_strip": "[3.6390273962473137298191344694638238506139504187872e-23 +/- 3.85e-73]",
+  "large_time_decay_in_retained_weight_per_unit_time": "[49.17737310090807107390342152401813002018817815961 +/- 8.06e-48]",
+  "lambda": 1000000,
+  "order_coefficient": "2.27e-19",
+  "upper_log_prime_slope": "2.33e-25",
+  "gaussian_threshold_upper": "4.15e-26",
+  "fixed_cutoff": 10000000
+}

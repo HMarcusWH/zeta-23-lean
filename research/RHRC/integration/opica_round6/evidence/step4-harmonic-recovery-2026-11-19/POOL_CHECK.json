@@ -1,0 +1,130 @@
+{
+  "status": "FINITE_COMPLETE_POOLED_LITERAL_ROW",
+  "L_inclusive": [
+    100,
+    8192
+  ],
+  "cutoffs": 8093,
+  "short_gap_max": 16,
+  "input": "n=floor(21L/20), 24L/25<q<=L, gcd(q,6)=1; coefficient mu(q)cos(2*pi*n/q)/(2q sin^2(pi/q)); squared arithmetic row weighted by 1/L^4.",
+  "literal_row_count_by_sign": {
+    "positive": 3701,
+    "negative": 4389,
+    "zero": 3
+  },
+  "integer_support": {
+    "coprime_labels_including_zeros": 448731,
+    "zero_mobius_labels": 39135,
+    "active_labels": 409596,
+    "mu_positive": 202768,
+    "mu_negative": 206828,
+    "diagonal_terms": 409596,
+    "total_distinct_unordered_pairs": 13455968,
+    "short_unordered_pairs": 1765961,
+    "long_unordered_pairs": 11690007,
+    "min_and_max_long_gap": [
+      18,
+      326
+    ],
+    "signed_cross_terms_include_both_orders": true
+  },
+  "complete_energy": "[9.515038916533668917359171328e-5 +/- 3.04e-33]",
+  "diagonal": "[0.0001105715741140766622253339848 +/- 4.76e-32]",
+  "short_signed_cross": "[-8.947623552674945787132641379e-6 +/- 5.43e-35]",
+  "long_signed_cross_by_total_difference": "[-6.473561396065027264609630090e-6 +/- 4.25e-34]",
+  "long_signed_cross_by_prefix": "[-6.473561396065027264609630090e-6 +/- 4.25e-34]",
+  "long_absolute_cross_by_prefix": "[0.001692587213736206175147038095 +/- 2.04e-31]",
+  "complete_energy_over_diagonal": "[0.8605321026466536432402868073 +/- 6.45e-30]",
+  "short_by_exact_gap": [
+    {
+      "gap": 1,
+      "unordered_pairs": 0,
+      "contribution": "0"
+    },
+    {
+      "gap": 2,
+      "unordered_pairs": 184377,
+      "contribution": "[-3.758846711756525220307513033e-6 +/- 4.69e-34]"
+    },
+    {
+      "gap": 3,
+      "unordered_pairs": 0,
+      "contribution": "0"
+    },
+    {
+      "gap": 4,
+      "unordered_pairs": 182345,
+      "contribution": "[9.435453449859780184712976484e-7 +/- 1.96e-35]"
+    },
+    {
+      "gap": 5,
+      "unordered_pairs": 0,
+      "contribution": "0"
+    },
+    {
+      "gap": 6,
+      "unordered_pairs": 359344,
+      "contribution": "[-3.575463749079107747740910636e-6 +/- 8.18e-35]"
+    },
+    {
+      "gap": 7,
+      "unordered_pairs": 0,
+      "contribution": "0"
+    },
+    {
+      "gap": 8,
+      "unordered_pairs": 176971,
+      "contribution": "[2.473245498017763373198909241e-7 +/- 4.68e-35]"
+    },
+    {
+      "gap": 9,
+      "unordered_pairs": 0,
+      "contribution": "0"
+    },
+    {
+      "gap": 10,
+      "unordered_pairs": 174783,
+      "contribution": "[-8.535206586226272199437726120e-7 +/- 2.01e-35]"
+    },
+    {
+      "gap": 11,
+      "unordered_pairs": 0,
+      "contribution": "0"
+    },
+    {
+      "gap": 12,
+      "unordered_pairs": 347672,
+      "contribution": "[1.231872338208263225730907495e-7 +/- 1.25e-35]"
+    },
+    {
+      "gap": 13,
+      "unordered_pairs": 0,
+      "contribution": "0"
+    },
+    {
+      "gap": 14,
+      "unordered_pairs": 171714,
+      "contribution": "[-1.977612650278139673506850466e-7 +/- 1.54e-36]"
+    },
+    {
+      "gap": 15,
+      "unordered_pairs": 0,
+      "contribution": "0"
+    },
+    {
+      "gap": 16,
+      "unordered_pairs": 168755,
+      "contribution": "[-1.876088296797452310154039373e-6 +/- 9.83e-35]"
+    }
+  ],
+  "native_position_scope": {
+    "cutoffs_with_site_above_L_plus_floor_L_5_over_6": 0,
+    "cutoffs_with_site_at_most_floor_L_101_over_100": 8086,
+    "qualifier": "The row formula is literal for all checked L; the additional late-site qualification used by the full unpaid graph is recorded separately."
+  },
+  "validation": "At each L, the entire signed long-gap sector was independently computed both by subtraction from the row square and by prefixing all earlier q with q_current-q>H. Counts partition every unordered pair, and every off-diagonal term is doubled.",
+  "precision_bits": 128,
+  "flint_version": "0.9.0",
+  "script_sha256": "8fed38893b013d01a4ce898b8e06f479e4ba5e51873eae3b8a018e252570ac8e",
+  "seconds": 2.08
+}

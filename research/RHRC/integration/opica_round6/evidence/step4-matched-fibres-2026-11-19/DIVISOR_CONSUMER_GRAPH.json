@@ -1,0 +1,375 @@
+{
+  "commit": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "tree": "573cda1f06d2d7a0e61349a53183311e4ba621fc",
+  "declaration_count": 22198,
+  "relation_rows": 1329677,
+  "lean_env_exact_uses_constant_rows": 1280018,
+  "type_only_rows": 43844,
+  "value_rows": 1236174,
+  "distinct_directed_value_edges": 1236174,
+  "registered_seed_consumer_comparison": {
+    "divisor": {
+      "direct_uses_by": 2,
+      "direct_consumers": [
+        "Zeta23.CCM.Step123NativeFieldRecord.fromNative",
+        "Zeta23.CCM.native_weighted_divisor_coefficient_identity"
+      ],
+      "all_transitive_consumers_excluding_self": 62,
+      "paths_to_tested_consumers": {
+        "fiber": [
+          "Zeta23.CCM.native_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber"
+        ],
+        "literal drive": [
+          "Zeta23.CCM.native_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+          "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField"
+        ],
+        "original prime integral": [
+          "Zeta23.CCM.native_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+          "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+          "Zeta23.CCM.nativeCompletedInput_equation",
+          "Zeta23.CCM.nativeDampedCompletedInput_equation",
+          "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+          "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral"
+        ],
+        "input range": null,
+        "Step 4 AX": [
+          "Zeta23.CCM.native_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_divisor_coefficient_identity",
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+          "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+          "Zeta23.CCM.nativeCompletedInput_equation",
+          "Zeta23.CCM.nativeDampedCompletedInput_equation",
+          "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+          "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+        ],
+        "visible pole": null
+      }
+    },
+    "weighted divisor": {
+      "direct_uses_by": 1,
+      "direct_consumers": [
+        "Zeta23.CCM.nativeIntegerPrimePair_fiber"
+      ],
+      "all_transitive_consumers_excluding_self": 60,
+      "paths_to_tested_consumers": {
+        "fiber": [
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber"
+        ],
+        "literal drive": [
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+          "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField"
+        ],
+        "original prime integral": [
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+          "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+          "Zeta23.CCM.nativeCompletedInput_equation",
+          "Zeta23.CCM.nativeDampedCompletedInput_equation",
+          "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+          "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral"
+        ],
+        "input range": null,
+        "Step 4 AX": [
+          "Zeta23.CCM.native_weighted_dirichlet_identity",
+          "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+          "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+          "Zeta23.CCM.nativeCompletedInput_equation",
+          "Zeta23.CCM.nativeDampedCompletedInput_equation",
+          "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+          "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+          "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+          "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+        ],
+        "visible pole": null
+      }
+    },
+    "weighted inversion": {
+      "direct_uses_by": 3,
+      "direct_consumers": [
+        "Zeta23.OPICAFollowup.complex_gap_leakage",
+        "Zeta23.OPICAFollowup.weighted_gap_leakage",
+        "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap"
+      ],
+      "all_transitive_consumers_excluding_self": 3,
+      "paths_to_tested_consumers": {
+        "fiber": null,
+        "literal drive": null,
+        "original prime integral": null,
+        "input range": null,
+        "Step 4 AX": null,
+        "visible pole": null
+      }
+    },
+    "squarefree omission": {
+      "direct_uses_by": 1,
+      "direct_consumers": [
+        "Zeta23.OPICARound2.native_dictionary_prefix_rigidity"
+      ],
+      "all_transitive_consumers_excluding_self": 1,
+      "paths_to_tested_consumers": {
+        "fiber": null,
+        "literal drive": null,
+        "original prime integral": null,
+        "input range": null,
+        "Step 4 AX": null,
+        "visible pole": null
+      }
+    },
+    "Mobius probe": {
+      "direct_uses_by": 0,
+      "direct_consumers": [],
+      "all_transitive_consumers_excluding_self": 0,
+      "paths_to_tested_consumers": {
+        "fiber": null,
+        "literal drive": null,
+        "original prime integral": null,
+        "input range": null,
+        "Step 4 AX": null,
+        "visible pole": null
+      }
+    }
+  },
+  "common_consumers": {
+    "divisor + weighted divisor": {
+      "public_project_consumers": 58,
+      "first_alphabetical": [
+        "Zeta23.CCM.GeneratedStep123IntegratedPacket.fromActualBoundary",
+        "Zeta23.CCM.Step123NativeArithmeticRangeEvidence.fromNative",
+        "Zeta23.CCM.Step123NativeFieldRecord.fromNative",
+        "Zeta23.CCM.exists_generatedStep123ComposedEvidencePacket_cofinal",
+        "Zeta23.CCM.exists_generatedStep123IntegratedPacket_cofinal"
+      ]
+    },
+    "weighted divisor + weighted inversion": {
+      "public_project_consumers": 0,
+      "first_alphabetical": []
+    },
+    "weighted divisor + squarefree omission": {
+      "public_project_consumers": 0,
+      "first_alphabetical": []
+    },
+    "weighted inversion + Mobius probe": {
+      "public_project_consumers": 0,
+      "first_alphabetical": []
+    },
+    "weighted inversion + squarefree omission": {
+      "public_project_consumers": 0,
+      "first_alphabetical": []
+    }
+  },
+  "declarations": {
+    "Zeta23.CCM.native_divisor_coefficient_identity": {
+      "name": "Zeta23.CCM.native_divisor_coefficient_identity",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/NativeIntegerPrimeSource.lean#L24",
+      "signature": "theorem native_divisor_coefficient_identity (n : ℕ) :\n    ∑ d ∈ n.divisors, Λ d = Real.log n",
+      "present_in_committed_registry": true
+    },
+    "Zeta23.CCM.native_weighted_dirichlet_identity": {
+      "name": "Zeta23.CCM.native_weighted_dirichlet_identity",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/NativeIntegerPrimeSource.lean#L57",
+      "signature": "theorem native_weighted_dirichlet_identity (n : ℕ) :\n    ∑ d ∈ n.divisors,\n      nativeIntegerCoefficient (n / d) * nativePrimeCoefficient d =\n        nativeIntegerDriveCoefficient n",
+      "present_in_committed_registry": true
+    },
+    "Zeta23.OPICAFollowup.weighted_mobius_inverse": {
+      "name": "Zeta23.OPICAFollowup.weighted_mobius_inverse",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/WeightedMixing.lean#L1409",
+      "signature": "theorem weighted_mobius_inverse (σ : LocallyFiniteComplexMeasure) (a : ℝ) (ha : 1 / 2 < a)\n    (hm : mixingExponentialMoment a σ < ∞) :\n    (∀ i : Fin 4, positiveLogMeasure (positiveDilationMixture (mixingCoordinate σ i)) =\n      integerLogComb ∗ mixingCoordinate σ i) ∧\n    (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.positive +\n        integerLogComb ∗ σ.rePart.negative =\n      positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.negative +\n        integerLogComb ∗ σ.rePart.positive) ∧\n    (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.positive +\n        integerLogComb ∗ σ.imPart.negative =\n      positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.negative +\n        integerLogComb ∗ σ.imPart.positive) ∧\n    (moebiusPlusComb ∗ integerLogComb = Measure.dirac 0 + moebiusMinusComb ∗ integerLogComb) ∧\n    (σ.rePart.positive +\n        (moebiusPlusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.negative +\n          moebiusMinusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.positive) =\n      σ.rePart.negative +\n        (moebiusPlusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.positive +\n          moebiusMinusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.negative)) ∧\n    (σ.imPart.positive +\n        (moebiusPlusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.negative +\n          moebiusMinusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.positive) =\n      σ.imPart.negative +\n        (moebiusPlusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.positive +\n          moebiusMinusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.negative)) ∧\n    (∀ i : Fin 4, weightedLogNorm a (mixingCoordinate σ i) < ∞) ∧\n    (weightedLogNorm a (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.positive) < ∞ ∧\n      weightedLogNorm a (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.negative) < ∞ ∧\n      weightedLogNorm a (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.positive) < ∞ ∧\n      weightedLogNorm a (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.negative) < ∞) ∧\n    (∀ (μ ρ : Measure ℝ) [SFinite ρ],\n      weightedLogNorm a (μ ∗ ρ) = weightedLogNorm a μ * weightedLogNorm a ρ) ∧\n    (weightedLogNorm a integerLogComb = ENNReal.ofReal (∑' n : ℕ, (n : ℝ) ^ (-(a + 1 / 2))) ∧\n      ((∑' n : ℕ, (n : ℝ) ^ (-(a + 1 / 2)) : ℝ) : ℂ) = riemannZeta ((a + 1 / 2 : ℝ) : ℂ)) ∧\n    (moebiusPlusComb ⟂ₘ moebiusMinusComb ∧\n      weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) =\n        ENNReal.ofReal (∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2))) ∧\n      ((∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2)) : ℝ) : ℂ) =\n        riemannZeta ((a + 1 / 2 : ℝ) : ℂ) / riemannZeta ((2 * a + 1 : ℝ) : ℂ))",
+      "present_in_committed_registry": true
+    },
+    "Zeta23.OPICARound2.native_squarefree_omission_bound": {
+      "name": "Zeta23.OPICARound2.native_squarefree_omission_bound",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound2/TruncationControls.lean#L2396",
+      "signature": "theorem native_squarefree_omission_bound (x : ℕ →₀ ℂ) {k : ℕ}\n    (hk : 0 < k) (hmax : k ≤ 2047) (hsq : Squarefree k) (hx : x k = 0) :\n    probePulseSeparation / (∑ d ∈ k.divisors, (d : ℝ)) ≤ ‖probeSparseResidual x‖ ^ 2",
+      "present_in_committed_registry": true
+    },
+    "Zeta23.OPICARound2.native_mobius_probe_inverse": {
+      "name": "Zeta23.OPICARound2.native_mobius_probe_inverse",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound2/TruncationControls.lean#L141",
+      "signature": "theorem native_mobius_probe_inverse :\n    (∀ T t : ℝ, t ≤ T → mobiusProbeSource t = ∑ n ∈ range (⌊Real.exp T⌋₊ + 1),\n      (ArithmeticFunction.moebius n : ℝ) / Real.sqrt (n : ℝ) * jPlus (t - Real.log n)) ∧\n    (∀ t : ℝ, CCM.nativeIntegerTranslateAction mobiusProbeSource t = jPlus t) ∧\n    (∀ t : ℝ, Integrable (fun s : ℝ => CCM.nativePositiveCompletion s * mobiusProbeSource (t - s))) ∧\n    (∀ t : ℝ, ((∫ s : ℝ, CCM.nativePositiveCompletion s * mobiusProbeSource (t - s) : ℝ) : ℂ) = probeV t)",
+      "present_in_committed_registry": true
+    },
+    "Zeta23.CCM.nativeIntegerPrimePair_fiber": {
+      "name": "Zeta23.CCM.nativeIntegerPrimePair_fiber",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/NativeIntegerPrimeConvolution.lean#L90",
+      "signature": "theorem nativeIntegerPrimePair_fiber (j : ℝ → ℝ) (t : ℝ) (n : ℕ) :\n    (∑' p : (fun p : ℕ × ℕ => p.1 * p.2) ⁻¹' {n},\n      nativeIntegerPrimePairTerm j t p.val) =\n        nativeIntegerDriveCoefficient n * j (t - Real.log n)",
+      "present_in_committed_registry": true
+    },
+    "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField": {
+      "name": "Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/NativeIntegerPrimeConvolution.lean#L144",
+      "signature": "theorem nativeIntegerTranslateAction_primeField_eq_integerDriveField\n    {s : ℝ} {j : ℝ → ℝ} (hj : NativeSourceSupported s j) (t : ℝ) :\n    nativeIntegerTranslateAction (nativePrimeField j) t = nativeIntegerDriveField j t",
+      "present_in_committed_registry": true
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral": {
+      "name": "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean#L135",
+      "signature": "theorem riemannHypothesis_of_originalPrimeField_allDampedIntegral\n    (hX : CCM.NativeOriginalPrimeFieldAllDampedIntegral) : RiemannHypothesis",
+      "present_in_committed_registry": true
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure": {
+      "name": "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean#L117",
+      "signature": "theorem riemannHypothesis_of_nativeInput_allRangeClosure\n    (hY : CCM.NativeInputAllRangeClosure) : RiemannHypothesis",
+      "present_in_committed_registry": true
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": {
+      "name": "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/Step4OutputSufficiency.lean#L25",
+      "signature": "theorem riemannHypothesis_of_step4_AX\n    (hAX : NativeOriginalPrimeFieldAllDampedIntegral) : RiemannHypothesis",
+      "present_in_committed_registry": true
+    },
+    "Zeta23.OPICAFollowup.nativePrimeField_visiblePole": {
+      "name": "Zeta23.OPICAFollowup.nativePrimeField_visiblePole",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/NativeSourceTransforms.lean#L435",
+      "signature": "theorem nativePrimeField_visiblePole (rho : zetaZeroConfig.carrier)\n    (hright : 1/2<(rho:ℂ).re) :\n    ∃ pole : Zeta23.OPICA.SimplePoleData (ℝ → ℝ),\n      pole.source=nativeOriginalSource ∧ pole.center=(rho:ℂ)-1/2 ∧\n      pole.field=nativePrimeTransformGerm ∧\n      pole.residue=-(zeroMult (rho:ℂ):ℂ)*nativeOriginalSourceLaplace ((rho:ℂ)-1/2) ∧\n      Meromorphic pole.field ∧\n      (∀ w : ℂ, 1/2<w.re →\n        (∫ t : ℝ, Complex.exp (-w*(t:ℂ))*(nativeOriginalPrimeField t:ℂ))=pole.field w)",
+      "present_in_committed_registry": true
+    },
+    "Zeta23.OPICARound4.weighted_convolution": {
+      "name": "Zeta23.OPICARound4.weighted_convolution",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/MobiusHyperbola.lean#L19",
+      "signature": "theorem weighted_convolution (f g : ArithmeticFunction ℝ) (w : ℕ → ℝ) (N : ℕ)\n    (hw : ∀ n, N < n → w n = 0) :\n    (∑ n ∈ Ioc 0 N, (f * g) n * w n) =\n      ∑ a ∈ Ioc 0 N, ∑ b ∈ Ioc 0 N, f a * g b * w (a * b)",
+      "present_in_committed_registry": false
+    },
+    "Zeta23.OPICARound4.vonMangoldt_weighted_is_hyperbolaU": {
+      "name": "Zeta23.OPICARound4.vonMangoldt_weighted_is_hyperbolaU",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/MobiusHyperbola.lean#L234",
+      "signature": "theorem vonMangoldt_weighted_is_hyperbolaU (w : ℕ → ℝ) (N : ℕ)\n    (hw : ∀ n, N < n → w n = 0) :\n    (∑ n ∈ Ioc 0 N, ArithmeticFunction.vonMangoldt n * w n) =\n      hyperbolaU (finiteLogarithmicTest w N) N",
+      "present_in_committed_registry": false
+    },
+    "Zeta23.OPICARound4.finite_vonMangoldt_hyperbola_half": {
+      "name": "Zeta23.OPICARound4.finite_vonMangoldt_hyperbola_half",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/MobiusHyperbola.lean#L293",
+      "signature": "theorem finite_vonMangoldt_hyperbola_half (w : ℕ → ℝ) (N : ℕ)\n    (hw : ∀ n, N < n → w n = 0) :\n    (∑ n ∈ Ioc 0 N, ArithmeticFunction.vonMangoldt n * w n) =\n      2 * hyperbolaE (finiteLogarithmicTest w N) (N / 2) -\n        hyperbolaT (finiteLogarithmicTest w N) (N / 2)",
+      "present_in_committed_registry": false
+    },
+    "Zeta23.OPICARound4.actualCorrelationPrimeField_hyperbola_half": {
+      "name": "Zeta23.OPICARound4.actualCorrelationPrimeField_hyperbola_half",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L326",
+      "signature": "theorem actualCorrelationPrimeField_hyperbola_half (t : ℝ) :\n    actualCorrelationPrimeField t =\n      2 * hyperbolaE (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2) -\n        hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2)",
+      "present_in_committed_registry": false
+    },
+    "Zeta23.OPICARound4.actualCorrelationPrimeField_add_longTerm_rapid_bound": {
+      "name": "Zeta23.OPICARound4.actualCorrelationPrimeField_add_longTerm_rapid_bound",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L431",
+      "signature": "theorem actualCorrelationPrimeField_add_longTerm_rapid_bound (A : ℝ) (hA : 0 < A) :\n    ∃ C : ℝ, 0 < C ∧ ∃ T : ℝ, 0 ≤ T ∧ ∀ t : ℝ, T ≤ t →\n      |actualCorrelationPrimeField t +\n        hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2)| ≤\n        C * Real.exp (-A * t)",
+      "present_in_committed_registry": false
+    },
+    "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower": {
+      "name": "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L1555",
+      "signature": "theorem riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower\n    (hbound : ∃ C : ℝ, 0<C ∧ ∃ T : ℝ, ∀ t : ℝ, T≤t →\n      -C ≤ hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t/2)) :\n    RiemannHypothesis",
+      "present_in_committed_registry": false
+    },
+    "Zeta23.XiPrime.prime_of_isPrimePow_dvd_squarefree": {
+      "name": "Zeta23.XiPrime.prime_of_isPrimePow_dvd_squarefree",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/XiPrime/Coeff/MainTerm/Squarefree.lean#L35",
+      "signature": "lemma prime_of_isPrimePow_dvd_squarefree {N d : ℕ} (hN : Squarefree N) (hd : d ∣ N)\n    (hpp : IsPrimePow d) : d.Prime",
+      "present_in_committed_registry": false
+    },
+    "Zeta23.OPICARound4.weighted_mobius_inverse": {
+      "name": "Zeta23.OPICARound4.weighted_mobius_inverse",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/MobiusHyperbola.lean#L41",
+      "signature": "theorem weighted_mobius_inverse (w : ℕ → ℝ) (N : ℕ) (hN : 0 < N)\n    (hw : ∀ n, N < n → w n = 0) :\n    (∑ b ∈ Ioc 0 N, ∑ c ∈ Ioc 0 N, (mobiusR b) * w (b * c)) = w 1",
+      "present_in_committed_registry": false
+    },
+    "Zeta23.OPICARound4.hyperbolaT_negative_test": {
+      "name": "Zeta23.OPICARound4.hyperbolaT_negative_test",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/MobiusHyperbola.lean#L258",
+      "signature": "theorem hyperbolaT_negative_test :\n    hyperbolaT (fun n => if n = 1 then -1 else 0) 1 < 0",
+      "present_in_committed_registry": false
+    },
+    "Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined": {
+      "name": "Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L1187",
+      "signature": "theorem actualCorrelationLongTerm_eventual_lower_iff_combined :\n    (∃ C : ℝ, 0 < C ∧ ∃ T0 : ℝ, ∀ t : ℝ, T0 ≤ t →\n      -C ≤ hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2)) ↔\n    (∃ C : ℝ, 0 < C ∧ ∃ T0 : ℝ, ∀ t : ℝ, T0 ≤ t →\n      -C ≤ (mobiusPoissonRankOne actualFlatSamplingMass (Real.exp t)\n          (Nat.sqrt (actualCorrelationCutoff t / 2)) +\n        mobiusPoissonOffDiagonal actualFlatSamplingRemainder (Real.exp t)\n          (Nat.sqrt (actualCorrelationCutoff t / 2))) / Real.sqrt (Real.exp t))",
+      "present_in_committed_registry": false
+    }
+  },
+  "additional_source_only_chain": [
+    {
+      "from_dependency": "Zeta23.OPICARound4.weighted_convolution",
+      "to_consumer": "Zeta23.OPICARound4.vonMangoldt_weighted_is_hyperbolaU",
+      "literal_source_calls": [
+        {
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/MobiusHyperbola.lean#L239",
+          "text": "rw [weighted_convolution _ _ w N hw]"
+        }
+      ]
+    },
+    {
+      "from_dependency": "Zeta23.OPICARound4.vonMangoldt_weighted_is_hyperbolaU",
+      "to_consumer": "Zeta23.OPICARound4.finite_vonMangoldt_hyperbola_half",
+      "literal_source_calls": [
+        {
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/MobiusHyperbola.lean#L298",
+          "text": "rw [vonMangoldt_weighted_is_hyperbolaU w N hw,"
+        }
+      ]
+    },
+    {
+      "from_dependency": "Zeta23.OPICARound4.finite_vonMangoldt_hyperbola_half",
+      "to_consumer": "Zeta23.OPICARound4.actualCorrelationPrimeField_hyperbola_half",
+      "literal_source_calls": [
+        {
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L331",
+          "text": "exact finite_vonMangoldt_hyperbola_half _ _ (actualCorrelationWeight_zero_above t)"
+        }
+      ]
+    },
+    {
+      "from_dependency": "Zeta23.OPICARound4.actualCorrelationPrimeField_hyperbola_half",
+      "to_consumer": "Zeta23.OPICARound4.actualCorrelationPrimeField_add_longTerm_rapid_bound",
+      "literal_source_calls": [
+        {
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L442",
+          "text": "rw [actualCorrelationPrimeField_hyperbola_half]"
+        }
+      ]
+    },
+    {
+      "from_dependency": "Zeta23.OPICARound4.actualCorrelationPrimeField_add_longTerm_rapid_bound",
+      "to_consumer": "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower",
+      "literal_source_calls": [
+        {
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L1560",
+          "text": "obtain ⟨D,hD,S,hS,hsmall⟩ := actualCorrelationPrimeField_add_longTerm_rapid_bound 1 (by norm_num)"
+        }
+      ]
+    }
+  ],
+  "mathematical_readout": [
+    "The genuine weighted prime-power divisor identity feeds native completion and the original-prime all-damped L2/integral implications. The shortest AX witness passes through a theorem requiring prime-field MemLp. Its terminal premise remains NativeOriginalPrimeFieldAllDampedIntegral.",
+    "The registered Followup weighted_mobius_inverse uses exponent a > 1/2 and a separately supplied finite mixing moment. It differs from the Round4 finite weighted_mobius_inverse in the pinned source. The squarefree omission bound requires 0 < k <= 2047 and a vanished coefficient of a finite probe vector.",
+    "The separate five-edge source chain connects actual finite Mobius flattening to RH under an eventual lower on the actual long term. Its pinned equivalence retains the rank-one plus full signed off-diagonal. A signed sum over older ordinary primes or a large positive and negative factorial mass requires an independent transfer to this normalized functional and an upper/lower at the quantifiers in the source; the formal graph supplies neither automatically.",
+    "A concrete generic counterexample in the pinned source makes hyperbolaT negative at cutoff one for a signed test. It excludes a general positivity inference and does not reject the actual fixed-source bound."
+  ],
+  "scope": "Graph reachability follows dependency to user and includes values of definitions and proofs. Source-only calls are checked literally in pinned Lean proof bodies and are not attributed to the compiler graph. Null paths describe this graph only. No build or proof gate was run."
+}

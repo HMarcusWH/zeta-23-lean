@@ -1,0 +1,155 @@
+{
+  "scope": "Exact finite dyadic-tree energy and primitive signed covariance; no asymptotic or RH qualification",
+  "terminal_condition": "q**100 > X**99 and q <= X",
+  "primitive_condition": "gcd(q,r)**100 < X",
+  "pair_weight_per_shared_node": "2/(2**j * 2**k) for unordered q<r, j shell and k within-base depth",
+  "deep_level": "2*k >= max(0,j-s) inside each base",
+  "false_source_control": "Replace every nonzero Mobius sign by +1; keep identical labels and primitive pair inventory",
+  "script_sha256": "de4914876ecee42b17c37202ade66b5d470c8a992f64bbaeee94f3304ffefc05",
+  "positive_sign_fixture_selection": "2424 was the first positive result in 2000,2053,...; it is a sign control, not an unbiased sample",
+  "runs": [
+    {
+      "X": 2424,
+      "first_terminal_q": 2243,
+      "last_terminal_q": 2424,
+      "ceil_sqrt_floor_log2_X": 4,
+      "largest_included_gcd": 1,
+      "inventory": {
+        "excluded_non_coprime_6": 121,
+        "squareful_coprime_6": 5,
+        "mobius_positive": 23,
+        "mobius_negative": 33
+      },
+      "nonempty_nodes_counting_depths": 201,
+      "all_native_mu6_signed_labels_sha256_bytes_mu6_plus_one": "e268e4648f1879f2b76d59c7bd66ef6094914ac90e6783ccc27e11bc78069d64",
+      "common_denominator": 262144,
+      "integer_numerators": {
+        "total_positive_energy": 15456,
+        "diagonal": 14280,
+        "strict_small_gcd_off_diagonal": 3096,
+        "complement_gcd_off_diagonal": -1920,
+        "absolute_label_control_small_gcd_off_diagonal": 289800,
+        "coarse_small_gcd_off_diagonal": 3168,
+        "deep_small_gcd_off_diagonal": -72,
+        "deep_absolute_label_control_small_gcd_off_diagonal": 808
+      },
+      "reduced_rationals": {
+        "total_positive_energy": "483/8192",
+        "diagonal": "1785/32768",
+        "strict_small_gcd_off_diagonal": "387/32768",
+        "complement_gcd_off_diagonal": "-15/2048",
+        "absolute_label_control_small_gcd_off_diagonal": "36225/32768",
+        "coarse_small_gcd_off_diagonal": "99/8192",
+        "deep_small_gcd_off_diagonal": "-9/32768",
+        "deep_absolute_label_control_small_gcd_off_diagonal": "101/32768"
+      },
+      "independent_direct_pair_controls": [
+        {
+          "largest_included_gcd": 1,
+          "native": true,
+          "exact_equality": true
+        },
+        {
+          "largest_included_gcd": 5,
+          "native": false,
+          "exact_equality": true
+        },
+        {
+          "largest_included_gcd": 19,
+          "native": false,
+          "exact_equality": true
+        }
+      ]
+    },
+    {
+      "X": 4103,
+      "first_terminal_q": 3776,
+      "last_terminal_q": 4103,
+      "ceil_sqrt_floor_log2_X": 4,
+      "largest_included_gcd": 1,
+      "inventory": {
+        "excluded_non_coprime_6": 219,
+        "squareful_coprime_6": 8,
+        "mobius_positive": 49,
+        "mobius_negative": 52
+      },
+      "nonempty_nodes_counting_depths": 363,
+      "all_native_mu6_signed_labels_sha256_bytes_mu6_plus_one": "2c186879c06cd490b3ca9b2725491a22fe2ced4c552c835a24d5347d69b973fa",
+      "common_denominator": 1048576,
+      "integer_numerators": {
+        "total_positive_energy": 82077,
+        "diagonal": 101493,
+        "strict_small_gcd_off_diagonal": -11224,
+        "complement_gcd_off_diagonal": -8192,
+        "absolute_label_control_small_gcd_off_diagonal": 2203192,
+        "coarse_small_gcd_off_diagonal": -11584,
+        "deep_small_gcd_off_diagonal": 360,
+        "deep_absolute_label_control_small_gcd_off_diagonal": 6008
+      },
+      "reduced_rationals": {
+        "total_positive_energy": "82077/1048576",
+        "diagonal": "101493/1048576",
+        "strict_small_gcd_off_diagonal": "-1403/131072",
+        "complement_gcd_off_diagonal": "-1/128",
+        "absolute_label_control_small_gcd_off_diagonal": "275399/131072",
+        "coarse_small_gcd_off_diagonal": "-181/16384",
+        "deep_small_gcd_off_diagonal": "45/131072",
+        "deep_absolute_label_control_small_gcd_off_diagonal": "751/131072"
+      },
+      "independent_direct_pair_controls": [
+        {
+          "largest_included_gcd": 1,
+          "native": true,
+          "exact_equality": true
+        },
+        {
+          "largest_included_gcd": 5,
+          "native": false,
+          "exact_equality": true
+        },
+        {
+          "largest_included_gcd": 19,
+          "native": false,
+          "exact_equality": true
+        }
+      ]
+    },
+    {
+      "X": 1048576,
+      "first_terminal_q": 912839,
+      "last_terminal_q": 1048576,
+      "ceil_sqrt_floor_log2_X": 5,
+      "largest_included_gcd": 1,
+      "inventory": {
+        "excluded_non_coprime_6": 90492,
+        "squareful_coprime_6": 3991,
+        "mobius_positive": 20719,
+        "mobius_negative": 20536
+      },
+      "nonempty_nodes_counting_depths": 148273,
+      "all_native_mu6_signed_labels_sha256_bytes_mu6_plus_one": "29be5e50da7640596ca8d26443e0a50a0205a3a0a2590932a3bb40d3423b9024",
+      "common_denominator": 34359738368,
+      "integer_numerators": {
+        "total_positive_energy": 4860946756,
+        "diagonal": 5407210340,
+        "strict_small_gcd_off_diagonal": -307636128,
+        "complement_gcd_off_diagonal": -238627456,
+        "absolute_label_control_small_gcd_off_diagonal": 16352973661472,
+        "coarse_small_gcd_off_diagonal": -308408320,
+        "deep_small_gcd_off_diagonal": 772192,
+        "deep_absolute_label_control_small_gcd_off_diagonal": 1004401952
+      },
+      "reduced_rationals": {
+        "total_positive_energy": "1215236689/8589934592",
+        "diagonal": "1351802585/8589934592",
+        "strict_small_gcd_off_diagonal": "-9613629/1073741824",
+        "complement_gcd_off_diagonal": "-1864277/268435456",
+        "absolute_label_control_small_gcd_off_diagonal": "511030426921/1073741824",
+        "coarse_small_gcd_off_diagonal": "-75295/8388608",
+        "deep_small_gcd_off_diagonal": "24131/1073741824",
+        "deep_absolute_label_control_small_gcd_off_diagonal": "31387561/1073741824"
+      },
+      "independent_direct_pair_controls": []
+    }
+  ]
+}

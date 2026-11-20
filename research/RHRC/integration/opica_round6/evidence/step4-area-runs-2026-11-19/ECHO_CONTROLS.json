@@ -1,0 +1,217 @@
+{
+  "classification": "Finite integer identities and diagnostic quadrature; infinite-range results rely on the paper proofs.",
+  "kernel_checks": [
+    {
+      "shift": "0",
+      "quadrature_real": 0.4971207781883141,
+      "quadrature_imag": 0.0,
+      "absolute_difference": 0.0
+    },
+    {
+      "shift": "-0.16666666666666666",
+      "quadrature_real": 0.49743992824449845,
+      "quadrature_imag": 0.0,
+      "absolute_difference": 1.1102230246251565e-16
+    },
+    {
+      "shift": "0.25",
+      "quadrature_real": 0.49783913388588075,
+      "quadrature_imag": 0.0,
+      "absolute_difference": 5.551115123125783e-17
+    },
+    {
+      "shift": "(0.2+4j)",
+      "quadrature_real": 0.34188311582337355,
+      "quadrature_imag": 0.012991109582271787,
+      "absolute_difference": 1.734723475976807e-17
+    },
+    {
+      "shift": "14.134725141734695j",
+      "quadrature_real": 1.1274197908421214e-17,
+      "quadrature_imag": 0.0,
+      "absolute_difference": 1.2436664940079438e-17
+    }
+  ],
+  "critical_pair_interval": {
+    "endpoints": [
+      {
+        "ordinate": 14,
+        "xi_ball": "[0.0002012944442352575094899684374380655231922034357016455 +/- 1.45e-56] + [+/- 1.61e-56]j"
+      },
+      {
+        "ordinate": 15,
+        "xi_ball": "[-0.000705697958821547420630625038745286493029264938023089 +/- 2.51e-55] + [+/- 8.31e-56]j"
+      }
+    ],
+    "interpretation": "On the critical line xi is continuous and real by reflection. The opposite signs enclose a critical-line zero below 15, sufficient for the mean-square lower bound."
+  },
+  "genuine_weighted_prime_area_checks": [
+    {
+      "center": 1000,
+      "average_normalized_by_kernel_mass": -0.8840089163913352,
+      "quadrature_refinement_difference": 4.0369456832944905e-07
+    },
+    {
+      "center": 10000,
+      "average_normalized_by_kernel_mass": -0.8397163796359882,
+      "quadrature_refinement_difference": 4.152399601942136e-08
+    },
+    {
+      "center": 100000,
+      "average_normalized_by_kernel_mass": -0.7855382315255609,
+      "quadrature_refinement_difference": 1.9597477352029102e-07
+    },
+    {
+      "center": 1000000,
+      "average_normalized_by_kernel_mass": -0.7484672546093,
+      "quadrature_refinement_difference": 2.5176990081643424e-07
+    }
+  ],
+  "prime_power_graph": {
+    "cutoff": 1000000,
+    "divisibility_edges": 79020,
+    "edges_by_k": {
+      "1": 78734,
+      "2": 193,
+      "3": 35,
+      "4": 17,
+      "5": 9,
+      "6": 7,
+      "7": 5,
+      "8": 4,
+      "9": 3,
+      "10": 2,
+      "11": 2,
+      "12": 2,
+      "13": 1,
+      "14": 1,
+      "15": 1,
+      "16": 1,
+      "17": 1,
+      "18": 1,
+      "19": 1
+    },
+    "net_event_count_by_prime_power_exponent": {
+      "1": 78498,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 0,
+      "18": 0,
+      "19": 0
+    }
+  },
+  "synthetic_quartet_checks": [
+    {
+      "radius": "0.04",
+      "scaled_cost_over_limit": 0.9696767516260846,
+      "largest_annihilation_residual": 2.6727647100921956e-51
+    },
+    {
+      "radius": "0.01",
+      "scaled_cost_over_limit": 0.9980755710353856,
+      "largest_annihilation_residual": 6.842277657836021e-49
+    },
+    {
+      "radius": "0.0025",
+      "scaled_cost_over_limit": 0.999879607704505,
+      "largest_annihilation_residual": 1.7516230804060213e-46
+    },
+    {
+      "radius": "0.000625",
+      "scaled_cost_over_limit": 0.999992475030097,
+      "largest_annihilation_residual": 4.484155085839415e-44
+    },
+    {
+      "radius": "0.00015625",
+      "scaled_cost_over_limit": 0.9999995296876175,
+      "largest_annihilation_residual": 1.1479437019748901e-41
+    }
+  ],
+  "true_local_prime_edges_with_test_filter": [
+    {
+      "center": 300,
+      "radius": 0.04,
+      "prime_cut_incidences": 5,
+      "filtered_true_area": -0.3070064651742104,
+      "signed_local_remainder": 0.5572471480092794,
+      "identity_residual": 1.0012427175696936e-50
+    },
+    {
+      "center": 300,
+      "radius": 0.02,
+      "prime_cut_incidences": 0,
+      "filtered_true_area": -0.9849826450970587,
+      "signed_local_remainder": -0.1206861950589729,
+      "identity_residual": 5.046513868242827e-49
+    },
+    {
+      "center": 300,
+      "radius": 0.01,
+      "prime_cut_incidences": 0,
+      "filtered_true_area": -0.9847289129183815,
+      "signed_local_remainder": -0.12042176612325166,
+      "identity_residual": 6.036773193331985e-48
+    },
+    {
+      "center": 3000,
+      "radius": 0.04,
+      "prime_cut_incidences": 48,
+      "filtered_true_area": -0.8766130291660544,
+      "signed_local_remainder": -0.03528439895054554,
+      "identity_residual": 1.3262746584251681e-49
+    },
+    {
+      "center": 3000,
+      "radius": 0.02,
+      "prime_cut_incidences": 23,
+      "filtered_true_area": 1.0327613833379152,
+      "signed_local_remainder": 1.8741249334828312,
+      "identity_residual": 9.569750520587916e-49
+    },
+    {
+      "center": 3000,
+      "radius": 0.01,
+      "prime_cut_incidences": 10,
+      "filtered_true_area": -14.83133827977776,
+      "signed_local_remainder": -13.989966009841035,
+      "identity_residual": 6.798210449678376e-47
+    },
+    {
+      "center": 30000,
+      "radius": 0.04,
+      "prime_cut_incidences": 384,
+      "filtered_true_area": -0.42459812661491475,
+      "signed_local_remainder": 0.3718920616258209,
+      "identity_residual": 8.05838560092797e-49
+    },
+    {
+      "center": 30000,
+      "radius": 0.02,
+      "prime_cut_incidences": 183,
+      "filtered_true_area": -1.316608313377013,
+      "signed_local_remainder": -0.5200522917980026,
+      "identity_residual": 1.7153093956245593e-48
+    },
+    {
+      "center": 30000,
+      "radius": 0.01,
+      "prime_cut_incidences": 95,
+      "filtered_true_area": 9.263835196665605,
+      "signed_local_remainder": 10.060407657575762,
+      "identity_residual": 5.013939548338578e-48
+    }
+  ]
+}

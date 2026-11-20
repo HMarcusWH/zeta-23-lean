@@ -1,0 +1,56 @@
+{
+  "adaptive_projection_node_mask_checks": 248,
+  "base": [
+    1441792,
+    1474560
+  ],
+  "complete_cuts": 625,
+  "cut_depths": [
+    2,
+    4
+  ],
+  "density_bound": "Integral-test interval for true zeta(2), rounded outwards at 50 binary places; complete Euler prime product.",
+  "disjoint_floor_divisors_each": 25340,
+  "disjoint_floor_families": 4,
+  "genuine_signed_charge": -1679,
+  "horizon": 1656575,
+  "integer_sites": 32768,
+  "marked_primes": [
+    443,
+    449,
+    457
+  ],
+  "nonuniform_cuts": 622,
+  "nonzero_floor_coefficients": 22797,
+  "observed_fingerprints": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "overlapping_tests": 2,
+  "rough_cutoff": 441,
+  "scope": "An intact native dyadic base in a clipped shell; finite checks do not estimate an asymptotic exponent.",
+  "shell_base": 1048576,
+  "signed_stopping_sum": {
+    "-1": {
+      "certified_min_sum_interval": [
+        "6694301519814426153238054777/39614081257132168796771975168",
+        "6694492009122883393872142207/39614081257132168796771975168"
+      ]
+    },
+    "1": {
+      "certified_min_sum_interval": [
+        "0",
+        "0"
+      ]
+    }
+  },
+  "source": "PR303 complete signed source; no removals",
+  "source_head": "a6a001fd570cd7cf9b97fdad59e373760a3153ec",
+  "true_density_enclosure": [
+    "12878510527029/140737488355328",
+    "51521570725207/562949953421312"
+  ],
+  "true_rows": 2935
+}

@@ -1,0 +1,65 @@
+{
+  "status": "LOCAL_LEAN_VERIFIED",
+  "verified_utc": "2026-11-19T16:45:20.2565641Z",
+  "pinned_lean": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "mathlib_manifest_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "manifest_sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+  "compared_main": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "main_tree": "573cda1f06d2d7a0e61349a53183311e4ba621fc",
+  "warm_imports": [
+    {
+      "name": "Zeta23.CCM.UniversalSincDetector",
+      "local_source_sha256": "a383785569a65c36424cd8d273c822792df1b8041dc859b91f51ed5827ddb552",
+      "local_object_sha256": "3f2ae1d63480db43cecedc0d8b4e4e9c52bee4042f2fa77d355787bf51da9652",
+      "source_blob_at_main": "c7c22d9af8dfb6e7aff49286b30956072f3e9113"
+    },
+    {
+      "name": "Zeta23.CCM.UniversalSincSourceComplexTransform",
+      "local_source_sha256": "cbc280a8956c98e47ca4b26bb40a6a8e8922c9d217b8bd473331c5869a035138",
+      "local_object_sha256": "17e09199fb11b9ce9cd5646a69fa3f7657d79e6b54e5cba09a8119414bd5edd6",
+      "source_blob_at_main": "74645f74d1140d76d9717c7d1093c2817fa6483a"
+    }
+  ],
+  "import_basis": "Existing opica-round3-repo/.lake/build/lib/lean and its .lake/packages/*/.lake/build/lib/lean. The sibling GevreyStrip.olean was newly compiled in this directory and used by GevreyFactorial.",
+  "modules": [
+    {
+      "name": "GevreyStrip",
+      "src": "GevreyStrip.lean",
+      "src_sha256": "d975c1dab9cd0dad3c4ab856440d50fb33d7d45cce0b964b03c9b516d9737799",
+      "object": "GevreyStrip.olean",
+      "object_sha256": "99ad9986451599f0aafdb4203ce38d80e713386a6707ae61968e88be6acdf7fc",
+      "log": "compiler.log",
+      "log_sha256": "be3e144e7ff31428802b03092ffb4925c455fbf3b4753d541b59a68b63a1f3e4",
+      "command": "lean -DwarningAsError=true -j2 -s262144 -o GevreyStrip.olean GevreyStrip.lean",
+      "exit_code": 0,
+      "audited_declarations": [
+        "Step4.GevreyStrip.norm_sinc_le_strip_min",
+        "Step4.GevreyStrip.norm_scaled_sinc_le_strip_min",
+        "Step4.GevreyStrip.norm_prefix_le",
+        "Step4.GevreyStrip.norm_product_le_strip_half_pow",
+        "Step4.GevreyStrip.norm_product_le_gevrey",
+        "Step4.GevreyStrip.norm_densityTransform_le_gevrey"
+      ]
+    },
+    {
+      "name": "GevreyFactorial",
+      "src": "GevreyFactorial.lean",
+      "src_sha256": "646eb1caf79122dad9a21baacabb80c2b19389edc6911b7f9ad96a6ee41244d7",
+      "object": "GevreyFactorial.olean",
+      "object_sha256": "df2d7000bd828312cab656e6fbd1059522001b4f515a04a9f35ac3a63595124f",
+      "log": "factorial.log",
+      "log_sha256": "0beb6cef2fdbc2f1970d4caae69996117a0ae379d0a40d7427b62956236b902f",
+      "command": "lean -DwarningAsError=true -j2 -s262144 -o GevreyFactorial.olean GevreyFactorial.lean",
+      "exit_code": 0,
+      "audited_declarations": [
+        "Step4.GevreyStrip.norm_densityTransform_le_factorial"
+      ]
+    }
+  ],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "scope": "The precise strip bounds, finite-prefix inequality and decay of the actual original density transform are checked. This isolated Windows build uses warm imports. The simplified asymptotic implication of the factorial bound is a paper corollary. No signed prime-energy estimate or Step 4 theorem is established."
+}

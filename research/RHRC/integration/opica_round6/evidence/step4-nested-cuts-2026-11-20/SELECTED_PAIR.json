@@ -1,0 +1,139 @@
+{
+  "X": 1656575,
+  "selector": "First occupied native base with a prime target and a positive noncone donor belonging to a separate coarse node of strictly positive charge. Illustrative finite selector.",
+  "target": 1638431,
+  "partner": 1656337,
+  "native_parent": [
+    20,
+    0,
+    50
+  ],
+  "signed_removed_by_node": [
+    {
+      "key": [
+        20,
+        0,
+        50
+      ],
+      "charge": 0
+    },
+    {
+      "key": [
+        20,
+        1,
+        100
+      ],
+      "charge": -1
+    },
+    {
+      "key": [
+        20,
+        1,
+        101
+      ],
+      "charge": 1
+    },
+    {
+      "key": [
+        20,
+        2,
+        200
+      ],
+      "charge": -1
+    },
+    {
+      "key": [
+        20,
+        2,
+        202
+      ],
+      "charge": 1
+    },
+    {
+      "key": [
+        20,
+        3,
+        400
+      ],
+      "charge": -1
+    },
+    {
+      "key": [
+        20,
+        3,
+        404
+      ],
+      "charge": 1
+    },
+    {
+      "key": [
+        20,
+        4,
+        800
+      ],
+      "charge": -1
+    },
+    {
+      "key": [
+        20,
+        4,
+        808
+      ],
+      "charge": 1
+    },
+    {
+      "key": [
+        20,
+        5,
+        1600
+      ],
+      "charge": -1
+    },
+    {
+      "key": [
+        20,
+        5,
+        1617
+      ],
+      "charge": 1
+    },
+    {
+      "key": [
+        20,
+        6,
+        3200
+      ],
+      "charge": -1
+    },
+    {
+      "key": [
+        20,
+        6,
+        3235
+      ],
+      "charge": 1
+    },
+    {
+      "key": [
+        20,
+        7,
+        6400
+      ],
+      "charge": -1
+    },
+    {
+      "key": [
+        20,
+        7,
+        6470
+      ],
+      "charge": 1
+    }
+  ],
+  "full_positive_energy": "3/134217728",
+  "survivor_positive_energy": "0",
+  "absolute_change": "3/134217728",
+  "signed_removal_cost": "146045/67108864",
+  "coarse_nodes": 1729,
+  "source_sha256": "d2927aa38f97ee77229c7d8e9b782d549975bba6fd1a7acb9c895d0da709cec7"
+}

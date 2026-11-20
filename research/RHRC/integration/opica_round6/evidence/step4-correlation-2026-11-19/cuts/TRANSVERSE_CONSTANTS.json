@@ -1,0 +1,19 @@
+{
+  "source_s": "1/4096",
+  "dimensionless_tilt": "1/8192",
+  "G_centered_squared_integral_lower": 11200,
+  "K0_prime_at_one_upper": -22000,
+  "K0_second_absolute_upper": 400000000000,
+  "K0_prime_absolute_upper": 8000000000,
+  "dimensionless_bracket": [
+    "99999999/100000000",
+    "1"
+  ],
+  "derivative_upper_on_bracket": -16000,
+  "one_minus_root_strict_interval": [
+    "3e-33",
+    "2e-27"
+  ],
+  "runtime_arithmetic": "exact rational",
+  "scope": "scalar inequalities for the accompanying analytic proof on the fixed rescaled native source"
+}

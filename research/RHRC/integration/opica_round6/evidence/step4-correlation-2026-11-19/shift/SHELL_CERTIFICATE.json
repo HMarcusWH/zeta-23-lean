@@ -1,0 +1,72 @@
+{
+  "source": "one-copy native source, tilt one",
+  "coefficients": [
+    0,
+    -864,
+    8136,
+    -13384,
+    6704,
+    -1184,
+    64
+  ],
+  "gaussian_argument": "a=pi*exp(-2u)",
+  "exp_4s_upper": "1001/1000",
+  "roots": [
+    {
+      "lo": "133/1000",
+      "hi": "67/500",
+      "left_sign": -1,
+      "right_sign": 1,
+      "derivative_sign": -1,
+      "derivative_domain": [
+        "19/143",
+        "67067/500000"
+      ]
+    },
+    {
+      "lo": "817/1000",
+      "hi": "409/500",
+      "left_sign": 1,
+      "right_sign": -1,
+      "derivative_sign": 1,
+      "derivative_domain": [
+        "817/1001",
+        "409409/500000"
+      ]
+    },
+    {
+      "lo": "2387/1000",
+      "hi": "597/250",
+      "left_sign": -1,
+      "right_sign": 1,
+      "derivative_sign": -1,
+      "derivative_domain": [
+        "31/13",
+        "597597/250000"
+      ]
+    },
+    {
+      "lo": "519/100",
+      "hi": "5191/1000",
+      "left_sign": 1,
+      "right_sign": -1,
+      "derivative_sign": 1,
+      "derivative_domain": [
+        "5190/1001",
+        "5196191/1000000"
+      ]
+    },
+    {
+      "lo": "9971/1000",
+      "hi": "2493/250",
+      "left_sign": -1,
+      "right_sign": 1,
+      "derivative_sign": -1,
+      "derivative_domain": [
+        "767/77",
+        "2495493/250000"
+      ]
+    }
+  ],
+  "qualification": "Exact rational polynomial and derivative brackets. Analytic smoothing proof is in COMPOSITE_SHELLS.md."
+}

@@ -1,0 +1,29 @@
+{
+  "status": "LOCAL_LEAN_VERIFIED",
+  "verified_utc": "2026-11-19T16:55:55.9954087Z",
+  "compiler": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "mathlib_manifest_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "manifest_sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+  "module": "SparseInteraction",
+  "source": "SparseInteraction.lean",
+  "source_sha256": "631c1005269914bb19532e5a09dae0115a299b7c9a094ab6181e0c5fc03df618",
+  "object": "SparseInteraction.olean",
+  "object_sha256": "05d923a100e4611b334dfa19e91dcc8a611e963ef138cb18d24cfd55886f90fe",
+  "log": "sparse.log",
+  "log_sha256": "27d09d1f8cef2a0b31d1bfcc59ca517ce7b79e4f3db1f843ac9f682ab08328f9",
+  "command": "lean -DwarningAsError=true -j2 -s262144 -o SparseInteraction.olean SparseInteraction.lean",
+  "exit_code": 0,
+  "audited_declarations": [
+    "Step4.SparseInteraction.sum_abs_products_le_degree_energy",
+    "Step4.SparseInteraction.abs_masked_sum_le_degree_energy",
+    "Step4.SparseInteraction.abs_weighted_masks_le_degree_energy"
+  ],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "import_basis": "Warm Mathlib objects in work/opica-round3-repo/.lake/packages/*/.lake/build/lib/lean. The module imports only Mathlib.",
+  "scope": "Three finite inequalities for a symmetric ordered support. Loops are permitted and counted once per row, off-diagonal symmetric pairs are counted in both orientations. The weighted version permits a different symmetric support and arbitrary signed edge coefficients, bounded by one in magnitude on each support, at each positively or zero weighted observation. It asserts no estimate for the unmasked prime-field remainder, Step 4, or RH."
+}

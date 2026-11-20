@@ -1,0 +1,3491 @@
+{
+  "schema": "OPICA_ROUND6_CONSTRAINTS_V1",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "parent": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "constraints": [
+    {
+      "id": "FORMAL_COORDINATES",
+      "status": "PROVED",
+      "statement": "The checked odd-to-even shift is injective and its image is the center-evaluation kernel. At K=5 the odd/even dimensions are one/two. The physical charts are nonunitary. No positivity or unconditional source upper follows.",
+      "sources": [
+        "Zeta23/OPICARound5/ParityMomentBridge.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.fixedMomentParityShortExact",
+        "Zeta23.OPICARound4.ArithmeticFrontier.finrank_fixedEvenMomentSeed",
+        "Zeta23.OPICARound4.ArithmeticFrontier.finrank_fixedOddMomentSeed"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "FINITE_K5",
+      "status": "EXPERIMENTAL_SIGNAL",
+      "statement": "The K5 exact-rational Gram test and two genuine-source Arb probes give finite sign and Schur information with slot conditioning. Separate synthetic zero, ablation and weight controls cannot become an all-K estimate.",
+      "sources": [
+        "research/RHRC/integration/opica_round5/K5_MIXED_SOURCE_SPEC.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "FORMAL_COORDINATES"
+      ]
+    },
+    {
+      "id": "SOURCE_PORTABILITY",
+      "status": "SOURCE_RECORD",
+      "statement": "The independent post300 source checker replays exact enclosure arithmetic independently of producer backend variation. Numeric success certifies only listed controls, not a new arithmetic theorem.",
+      "sources": [
+        "research/RHRC/integration/opica_composition/post299/source_checker_v2.py"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "HEIGHT",
+      "status": "DERIVED",
+      "statement": "Both lobes, reflection, Archimedean tail and zero multiplicities are retained. Finite verified height pays a generated-packet exclusion through log separation 288000 and fixed-center real-moment bounds. A uniform upper over unbounded centers or apertures remains open.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/STEP4_HEIGHT_AND_GRAPH_RESULTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/NATIVE_WINDOW.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/REAL_MOMENTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/POSITIVE_APERTURE_QUADRATURE.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "FORMAL_COORDINATES",
+        "FINITE_K5"
+      ]
+    },
+    {
+      "id": "PAIR_CUT",
+      "status": "DERIVED",
+      "statement": "Two source-selected prime-pair ratio cuts, their transverse crossings and the complete divisor covariance retain opposite signed contributions. Dense prime-pair asymptotics or bounded arithmetic width alone do not bound their difference.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/graphs/ACTUAL_PRIME_CUT_LOCATIONS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/graphs/CROSSING_COMPARISON.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/graphs/DENSE_PRIME_PAIR_CANCELLATION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/graphs/GENUINE_DIVISOR_COVARIANCE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/graphs/NATIVE_WINDOW_GRAPH_DEDUCTION.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "HEIGHT"
+      ]
+    },
+    {
+      "id": "PRIME_VARIANCE",
+      "status": "OPEN",
+      "statement": "Square-root short-interval variance up to subpower on the specified genuine additive scale would control the published one-copy field. The notes derive the transfer, not this variance bound.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-height-window-2026-11-19/INTERVAL_VARIANCE.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "HEIGHT"
+      ]
+    },
+    {
+      "id": "APERTURE",
+      "status": "DERIVED",
+      "statement": "The fixed K5 carrier yields a signed aperture integral with local divisor bounds and a zero-sensitive one-sided criterion. Finite comparison, parity projection and frequency averaging leave a genuine uniform arithmetic upper open.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-euler-primitive-2026-11-19/STEP4_PRIME_POWER_APERTURE_PRIMITIVE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-euler-primitive-2026-11-19/RELATED_DETECTOR_CHECKS.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "HEIGHT",
+        "FINITE_K5"
+      ]
+    },
+    {
+      "id": "ROUGH_DECOMPOSITION",
+      "status": "DERIVED",
+      "statement": "The subpower weighted rough squarefree count isolates a cancellation between actual prime and composite layers at y=T². The complete residual has an unconditional pseudopower saving but still allows exponent 1/2; marked and unmarked sums have different behavior.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-rough-squarefree-2026-11-19/STEP4_ROUGH_SQUAREFREE_RESIDUAL.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-rough-squarefree-2026-11-19/UNCONDITIONAL_RESIDUAL_BOUND.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-rough-squarefree-2026-11-19/MARKED_ARITHMETIC.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-rough-squarefree-2026-11-19/ROUGH_RESPONSE_OBSTRUCTION.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "APERTURE"
+      ]
+    },
+    {
+      "id": "FIXED_SIEVE",
+      "status": "DERIVED",
+      "statement": "At fixed Y=10⁷ the complete different-rough-part covariance has a one-sided sign criterion, with a numerical all-horizon diagonal lower and a conditional countersign height implication. The required eventual/cofinal signs have not been proved.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/FIXED_SIEVE_SIGN.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/ALL_HORIZON_DIAGONAL.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/COUNTERSIGN_ZERO_HEIGHT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/divisor/FIXED_SIEVE_RECURRENCE_AUDIT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/divisor/SIGN_THRESHOLD_CRITERION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/first_layer/INTERACTION_GRAPH.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "ROUGH_DECOMPOSITION"
+      ]
+    },
+    {
+      "id": "ROUGH_PHASE",
+      "status": "DERIVED",
+      "statement": "Complete grouped divisor energies have a cutoff phase transition; deterministic moving cutoffs and residue-marked variants preserve specific signed relations. No independence between marked and unmarked histories follows.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/divisor/ROUGH_CORE_PHASE_TRANSITION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/divisor/DETERMINISTIC_SIEVE_PROFILE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/divisor/COUPLED_RESIDUE_MARKING.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/COPRIME_DIVISOR_ENERGY.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "FIXED_SIEVE"
+      ]
+    },
+    {
+      "id": "CROSSING",
+      "status": "DERIVED",
+      "statement": "A transverse physical crossing has a source-fixed branch. Signed crossing separation, fixed-width isolation, stationary profile and the duration of negative intervals constrain a hypothetical off-line response; a one-sided duration or separation estimate is still needed.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/cuts/ACTUAL_CROSSING_RATE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/cuts/FIXED_WINDOW_ZERO_ISOLATION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/cuts/STATIONARY_CUT_PROFILE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/cuts/TRANSVERSE_NATIVE_CUT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/NEGATIVE_INTERVAL_DURATION.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "PAIR_CUT",
+        "FIXED_SIEVE"
+      ]
+    },
+    {
+      "id": "VISIBLE_SCALAR",
+      "status": "DERIVED",
+      "statement": "Genuine positive totient delay and a small tilted observation coexist with a visible component. A fixed-line jet formulation or direct distinction of prime/composite gaps only transfers the burden to a specified signed estimate.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/shift/COMPOSITE_SHELLS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/shift/DISTINCT_PRIME_GAPS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/shift/FIXED_LINE_JETS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/shift/POSITIVE_TOTIENT_DELAY.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/shift/THETA_SHIFT_AND_GRAM.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "FIXED_SIEVE"
+      ]
+    },
+    {
+      "id": "DURATION",
+      "status": "DERIVED",
+      "statement": "A fixed scalar Cayley/Laguerre observation and localized Poisson prime range retain the visible zero modes and a duration criterion. A modified Euler tail reproduces any finite probe family, so finite data do not prove its eventual asymptotics.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/POISSON_PRIME_RANGE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/ACTIVE_MODE_COMPARISON.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/jets/EULER_TAIL_FALSIFICATION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/jets/POISSON_STABLE_MODES.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/jets/SINGLE_SCALAR_CAYLEY.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/jets/UNSHIFTED_COFINAL_GRAPH.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/windows/CRITICAL_DURATION_AND_JETS.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "VISIBLE_SCALAR",
+        "CROSSING"
+      ]
+    },
+    {
+      "id": "DIVISOR_PREFIX",
+      "status": "DERIVED",
+      "statement": "Same-group fixed primitive ratios, individual prime echoes and finite or superpolynomial sieve masks have explicit paid sectors. Smoothing before squaring can erase the critical fluctuation; restore the full signed variance and unrestricted translated history in any transfer.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/PROJECTED_DIVISOR_GRAPH.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/HEAT_VARIANCE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/sieve/INDIVIDUAL_PRIME_ECHO.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/sieve/OPTIMAL_PRIME_MASKS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/sieve/PROJECTED_PREFIX_SIGN.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/sieve/SUPERPOLYNOMIAL_NATIVE_MASKS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-duration-2026-11-19/sieve/UNRESTRICTED_TRANSLATION_LIMIT.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "ROUGH_PHASE",
+        "DURATION"
+      ]
+    },
+    {
+      "id": "PRIME_GRID",
+      "status": "DERIVED",
+      "statement": "Sawtooth estimates via Vaughan on true prime-power cells, translated grids, endpoint interpolation and raw fixed power grids preserve the true signed endpoint problem. Thresholds, shifts and real-cutoff versus active-source qualifications differ across these results.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/VAUGHAN_GRID_BOUND.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/RAW_POWER_GRID_QUADRATURE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/TRANSLATED_GRIDS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/ENDPOINT_CHECK.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/QUARTIC_SIGNED_COUNTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/COUNT_SAVING_SCOPE.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "PRIME_VARIANCE"
+      ]
+    },
+    {
+      "id": "SIGNED_PRIME_AREA",
+      "status": "DERIVED",
+      "statement": "A positive average and desmoothing with the older verified-height theorem pay a continuous finite range: A_theta<0 through 1.21×10^48. The ordinary-prime area requires its own positive-kernel transfer. Finite ranges do not control unbounded terminal windows.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/ACTUAL_PRIME_AVERAGING_ERROR.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/ADDITIVE_PRIME_AREA.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/BANDLIMITED_THETA.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/ORDINARY_PRIME_AREA.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "PRIME_GRID"
+      ]
+    },
+    {
+      "id": "LOCAL_RATIO",
+      "status": "DERIVED",
+      "statement": "Matched small prime factors, restricted log ratio strips and long-interval rough cancellation price specified sectors. Sparse positive prime moment compression changes prime weights and does not remove a signed arithmetic premise.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/LOG_RATIO_STRIP.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/PRIME_COMPOSITE_CROSS_TERM.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/POSITIVE_PRIME_MOMENT_COMPRESSION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/ROUGH_INTERVAL_CANCELLATION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-strip-2026-11-19/PRIME_INPUTS_TO_CUTS.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "DIVISOR_PREFIX"
+      ]
+    },
+    {
+      "id": "AREA_SIGNS",
+      "status": "DERIVED",
+      "statement": "At a hypothetical rightward zero, true integrated ordinary-prime errors take both signs in prescribed late windows. Zero-density isolators, attained vs unattained edge and signed filter cost distinguish uniform power windows from constant ratio windows.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/DENSITY_ISOLATOR.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/LOCAL_FILTER_COST.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/NATIVE_SIGNED_AREA_RUNS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/ORDINARY_POWER_WINDOWS.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "SIGNED_PRIME_AREA"
+      ]
+    },
+    {
+      "id": "AREA_ECHO",
+      "status": "DERIVED",
+      "statement": "Positive xi averages force negative weighted and ordinary-prime area excursions, including the deterministic next prime-power term. A weighted prime-factor criterion and finite critical integral bound do not establish negativity at every late cutoff.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/PRIME_POWER_ECHO.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/XI_AREA_ECHO.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/XI_ORDINARY_PI.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/WEIGHTED_PRIME_FACTOR_CRITERION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/CRITICAL_FINITE_RANGE.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "SIGNED_PRIME_AREA"
+      ]
+    },
+    {
+      "id": "PRIMORIAL",
+      "status": "DERIVED",
+      "statement": "A one-sided all-squarefree cost inequality and stopped primorial maxima are paper criteria. Nearby prime exchanges realize small cost without estimating the signed old-prime prefix at every stop.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/STOPPED_PRIME_GRAPH.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/SQUAREFREE_COST.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/PRIMORIAL_NEIGHBORS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/BALANCED_PRIME_EXCHANGES.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "AREA_SIGNS"
+      ]
+    },
+    {
+      "id": "AREA_LOCALIZATION",
+      "status": "DERIVED",
+      "statement": "Factorial and eta projections reconstruct the centered area from explicit old-prime ranges with signed weights. The eta version is unconditional in its stated cutoff range. Stronger factorial power localization uses the supplied project zero ceiling.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/FACTORIAL_PRIME_PROJECTIONS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/OLD_PRIME_LOCALIZATION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/ETA_FILTERED_PRIME_LOCALIZATION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/FIRST_BAND_OSCILLATION.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "PRIMORIAL"
+      ]
+    },
+    {
+      "id": "AREA_ROWS",
+      "status": "DERIVED",
+      "statement": "Disjoint prime summation ranges provide two coupled reconstructions with controlled row energy and signed shared-product covariance. Both use related Möbius coefficient systems. Disjoint outer variables give no independence.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/SHARED_PRODUCT_COVARIANCE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-area-runs-2026-11-19/BOTH_ROW_ENERGIES.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "AREA_LOCALIZATION"
+      ]
+    },
+    {
+      "id": "TERMINAL_FIBRES",
+      "status": "DERIVED",
+      "statement": "Actual prime/semiprime cofactor selections and thin product localization retain original signed labels. Complete terminal composites contribute a positive large block, so a root-scale upper must restore the complete signed complement.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/ALL_PRIME_COFACTORS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/BALANCED_SEMIPRIME_REMOVAL.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/COMMON_PRIME_ROWS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/COMPLETE_TERMINAL_COMPOSITES.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/SEMIPRIME_FIBRE_CANCELLATION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/THIN_PRODUCT_GRAPH.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "AREA_ROWS",
+        "DIVISOR_STRIP_ALGEBRA"
+      ]
+    },
+    {
+      "id": "OUTER_VARIATION",
+      "status": "DERIVED",
+      "statement": "Full outer-prime variation and terminal mass exponents identify real opposite large masses. Raw sub-square-root localization uses the external zero ceiling; the fixed smooth horizon has a different transfer. Geometry or absolute older-prime counts cannot supply the sharp upper.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/FULL_OUTER_VARIATION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/FACTORIAL_TERMINAL_MASS_EXPONENT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/SUBSQUARE_ROOT_SOURCE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/TRUE_PRIME_TWIST_AND_BOTH_SIGNS.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "AREA_LOCALIZATION"
+      ]
+    },
+    {
+      "id": "RESIDUE_GRAPH",
+      "status": "DERIVED",
+      "statement": "The rational integer residue statistic at its native origin has the zero-edge exponent. Complete periods, second-band controls, the quiet initial prefix and numerator cancellation independently pay specific frequencies. The unpaid large-denominator, small-numerator native phase survives.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/RESIDUE_GRAPH_CRITERION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/PERIOD_AND_NATIVE_PHASE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/NATIVE_NUMERATOR_CANCELLATION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/QUIET_PREFIX_AND_CALIBRATION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-matched-fibres-2026-11-19/SECOND_BAND_DYADIC_OBSTRUCTION.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "OUTER_VARIATION",
+        "KNOT_ALGEBRA"
+      ]
+    },
+    {
+      "id": "NATIVE_HARMONIC",
+      "status": "DERIVED",
+      "statement": "A true coprime-to-six one-harmonic Möbius row with its native phase has limsup exponent 1+B. Both positive and negative masses are separately quadratic. Sparse exact native-site interpolation reduces evaluations, not the signed upper.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-native-residual-2026-11-19/ONE_HARMONIC_ZERO_DETECTOR.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-native-residual-2026-11-19/HARMONIC_SIGNED_MASS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-native-residual-2026-11-19/SPARSE_NATIVE_TEST.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "RESIDUE_GRAPH"
+      ]
+    },
+    {
+      "id": "DELAY",
+      "status": "DERIVED",
+      "statement": "Actual delayed arithmetic replay pays the tail at O(sqrt(x)). The middle delayed amplification and its two signs still carry a zero displacement; fitted relative signed-gain estimates would be circular.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/POWER_DELAY.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/DELAYED_GAIN.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/SIGNED_DELAYED_GAIN.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/SIGNED_PRIME_FACTORS.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "NATIVE_HARMONIC",
+        "RENEWAL_ALGEBRA"
+      ]
+    },
+    {
+      "id": "BAND",
+      "status": "DERIVED",
+      "statement": "A pooled true signed row and localized fixed-height energies retain a rightward displacement. A sharp fixed-frequency prefix can detect remote zeros, so verified low-height zero freedom does not give its critical upper. Finite checked ranges are bounded.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/FIXED_BAND_THEOREM.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/FIXED_HEIGHT_OBSTRUCTION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/POOLED_HARMONIC.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/FINITE_RATIONAL_COVARIANCE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/FINITE_RANGE_AND_RECOVERY.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/NATIVE_CUTOFF_AVERAGE.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "NATIVE_HARMONIC"
+      ]
+    },
+    {
+      "id": "NATIVE_TREE",
+      "status": "DERIVED",
+      "statement": "Near-diagonal primitive pairs, rational covariances and dyadic node squares realize the all-horizon positive-part exponent 2B−1. Fine levels and limited pair distances are paid. Positive and negative edge masses nearly compensate but their residual is unknown.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/PRIMITIVE_BAND_COVARIANCE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/RATIONAL_SIGNED_COVARIANCE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/DYADIC_TREE.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/PAID_PAIR_DISTANCES.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/SIGNED_COMPENSATION.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "BAND",
+        "PAIR_ALGEBRA"
+      ]
+    },
+    {
+      "id": "GROUND",
+      "status": "OPEN",
+      "statement": "The genuine Möbius row maps into joint observation coordinates with bounded cell history. The remaining signed scalar has not been shown to be the canonical ground eigenray or reciprocal input required by the source constraints.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-harmonic-recovery-2026-11-19/GROUND_TRANSFER.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "DELAY",
+        "NATIVE_TREE"
+      ]
+    },
+    {
+      "id": "ROUGH_TREE",
+      "status": "DERIVED",
+      "statement": "A growing roughness mask y=ceil(log₂X)² preserves the zero exponent. Disjoint-interval maximal estimates pay fine/coarse ranges and separate bounded-height from high-height edge behavior. Geometric near-pair concentration alone does not imply RH.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/ROUGH_PRIME_TRANSPORT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/TREE_INTERVALS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/TREE_HEIGHT_SPLIT.md"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "NATIVE_TREE"
+      ],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "CONE_MATCH",
+      "status": "DERIVED",
+      "statement": "At aligned horizons, matching actual primes and small-cofactor rows against opposite-sign donors pays a graph decrement, including the stated cofactor regime and signed correction. The polynomial extension requires exact retained-neighbor accounting.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/PRIME_SPLIT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/POSITIVE_DENSITY_RETIREMENT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/POLYNOMIAL_COFACTOR_AUDIT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/SPARSE_COMPENSATION.md"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "ROUGH_TREE"
+      ],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "MASK_BARRIER",
+      "status": "DERIVED",
+      "statement": "The deterministic cone has a signed large-GCD bound. External replacement donors can create actual positive forbidden pairs with fixed-power cost; one cannot strip the native gcd mask after deletion by invoking the original full-source bound.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/DETERMINISTIC_CONE_GCD.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/FIXED_COFACTOR_MASK.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/EXTERNAL_PARTNER_MASK_BARRIER.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CONE_MATCH"
+      ]
+    },
+    {
+      "id": "SOURCE_PROBES",
+      "status": "DERIVED",
+      "statement": "The deterministic cone has a real signed drift and centered counts. Two genuine arithmetic probes give a determinant detector and an exact Gram discriminant. Source-specific restrictions differ for the single-prime and single-cone endpoints.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/CONE_DRIFT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/CENTERED_CONE_INTERVALS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/GRAM_DISCRIMINANT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/TWO_ARITHMETIC_PROBES.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/SINGLE_PROBE_SCALES.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "ROUGH_TREE",
+        "CONE_MATCH",
+        "CALIBRATION_ALGEBRA",
+        "GRAM_ALGEBRA"
+      ]
+    },
+    {
+      "id": "ONE_POLARITY",
+      "status": "DERIVED",
+      "statement": "The positive and negative node-square masses separately have exact exponent 2B−1. One cofinal subpower upper at just one sign is sufficient. Merged proof-value paths establish a source-to-criterion implication with a positive-energy premise.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/ONE_SIDED_NODE_CHARGES.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-prime-transport-2026-11-19/SIGNED_CLAIM_ROUTES.md"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "ROUGH_TREE"
+      ],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "WHOLE_SHELLS",
+      "status": "DERIVED",
+      "statement": "Complete shells in any fixed interior power interval suffice with the appropriate scaled exponent. Actual finite whole and clipped positive cells have different onsets; any fixed prime-factor truncation alone carries a large signed bias.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/WHOLE_COARSE_SURPLUS.md"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "ONE_POLARITY"
+      ],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "SELECTED_SUPPORT",
+      "status": "DERIVED",
+      "statement": "After opposite-sign compensation with O(1) change per whole shell, all remaining rough squarefree labels can satisfy a cofactor floor, a uniform bound on running prime-factor discrepancy, and an explicit small/large-factor split. No equidistribution of final factor parity follows.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/SMALL_PART_LARGE_PART.md"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "WHOLE_SHELLS",
+        "CONE_MATCH",
+        "SELECTOR_ALGEBRA"
+      ],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "PARITY_BARRIER",
+      "status": "DERIVED",
+      "statement": "High factor-count layers have a subpower-cost majorant. Low divisor level alone leaves the parity problem open. For the deterministic large-cofactor complement R, its entire positive node energy has upper exponent max(0,min(1/6,2B−17/12)) on complete shells, strictly smaller than 2B−1 for B>1/2. The positive part of the full source includes the cone too.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PARITY_MAJORANTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/COMPLEMENT_POSITIVE_ENERGY.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "SELECTED_SUPPORT"
+      ]
+    },
+    {
+      "id": "SIGNED_PACKET",
+      "status": "DERIVED",
+      "statement": "All-pole positive filters bound truly unopposed charge after subtracting opposite charge in a local neighborhood, with a uniform fixed compensation allowance and explicit support cost. Spared poles force both signs in fixed-width windows under the stated edge hypotheses. The native unweighted norm still needs compensation. A positive surplus after charging three times the opposing neighboring mass has subpower weighted energy under the stated interior-shell conditions.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/LOCAL_POLARITY_WINDOWS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/FIXED_LOCAL_COMPENSATION.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "ONE_POLARITY"
+      ]
+    },
+    {
+      "id": "NORM_LOSS",
+      "status": "DERIVED",
+      "statement": "An X^−1/2-width integrated signed packet recovers the native square root of the one-sided energy up to subpower additive error. Actual primes plus selected true positive semiprimes defeat uniform transfer from coarse packets through X^−2/5. This is a comparator, not the full prime/Möbius field.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PACKET_WIDTH_AND_NATIVE_NORM.md"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "SIGNED_PACKET"
+      ],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "ACTUAL_UPPER",
+      "status": "OPEN",
+      "statement": "On complete native shells and the original signs, prove an independent cofinal bound for every positive exponent on the positive or negative weighted sum of squared residual node counts; include used donors, boundary regimes and actual quantifiers. Then discharge the native transfer and exact formal claim gates.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/WHOLE_COARSE_SURPLUS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/LOCAL_POLARITY_WINDOWS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PACKET_WIDTH_AND_NATIVE_NORM.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "ONE_POLARITY",
+        "SELECTED_SUPPORT",
+        "SIGNED_PACKET",
+        "NORM_LOSS"
+      ]
+    },
+    {
+      "id": "FORMAL_GAP",
+      "status": "OPEN",
+      "statement": "The paper one-sided survivor criterion still requires an independent upper and a complete kernel-checked transfer on the actual source. The separate A-X implication already accepts an all-damping upper for the actual prime field.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/FACTOR_PARITY_ROUTES.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "ACTUAL_UPPER",
+        "GROUND"
+      ]
+    },
+    {
+      "id": "DIVISOR_STRIP_ALGEBRA",
+      "status": "PROVED",
+      "statement": "Exact finite prime insertion and contributing-divisor support.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/DivisorStrip.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.DivisorStrip.residual_prime_mul",
+        "Zeta23.OPICARound6.PrimeFactorPaths.DivisorStrip.exists_divisor_of_residual_ne_zero"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "KNOT_ALGEBRA",
+      "status": "PROVED",
+      "statement": "Signed factorial calibration and the integer-knot identities.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/FactorialKnot.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.weight_prefix",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.ramp_increment",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.twice_ramp_at_knot",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FactorialKnot.calibrated_residue"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "PAIR_ALGEBRA",
+      "status": "PROVED",
+      "statement": "Finite signed pair-kernel identities.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/FinitePairKernel.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.one_moment",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.geometric_moments",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.geometric_remainder",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FinitePairKernel.rational_pair_remainder"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "RENEWAL_ALGEBRA",
+      "status": "PROVED",
+      "statement": "Finite cutoff and replay algebra.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/FiniteRenewal.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.abel_history",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.history_weight_total",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.history_upper",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal.renewal_upper"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "CALIBRATION_ALGEBRA",
+      "status": "PROVED",
+      "statement": "Finite calibration support identities.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/TwoShellCalibration.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.TwoShellCalibration.two_shell",
+        "Zeta23.OPICARound6.PrimeFactorPaths.TwoShellCalibration.weighted_finite"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "GRAM_ALGEBRA",
+      "status": "PROVED",
+      "statement": "Finite determinant and Gram identities.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/FiniteWeightedGram.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.scalar_factorization",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.signed_energy",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.ordered_minors",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram.determinant_nonneg"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "SELECTOR_ALGEBRA",
+      "status": "PROVED",
+      "statement": "Finite weighted positive-part comparison for original and selected charges.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/FiniteSelectorEnergy.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.posSq_sub_le",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.signed_weight_energy_comparison",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.weighted_energy_comparison",
+        "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy.weighted_sq_distance_le"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "ROUGHNODECHARGES",
+      "status": "PROVED",
+      "statement": "The finite selector transports the literal squarefree rough Möbius sign with a bound on weighted cell loss. The signed contingency identity and the split over prime factors give exact finite source identities.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/RoughNodeCharges.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.contingency_covariance",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.roughSign_factor",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.roughSign_split_parity",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.abs_roughSign_le_one",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.abs_charge_le_card",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.charge_sub_survivors",
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.selector_energy_loss"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "SQUAREFREEPRIMECOST",
+      "status": "PROVED",
+      "statement": "Finite comparisons of costs for subsets of actual prime labels preserve the stated fixed cutoff and weights.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/SquarefreePrimeCost.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.log_eq_sum_primeFactors",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.mismatch_identity",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.squarefree_score_le_ramp",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.primorial_recovers_ramp",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.negative_ramp_of_integer_inequality",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.negative_ramp_below_five",
+        "Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost.negative_ramp_iff_integer_inequality"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "PRIMITIVEEULERMULTIPLIER",
+      "status": "PROVED",
+      "statement": "Finite multiplier identities with the specified factors and primitive correction hold under their stated assumptions.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/PrimitiveEulerMultiplier.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier.cosineFactor_pos",
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier.cosineFactor_eq_euler",
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier.finite_primitive_euler_identity_and_pos"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "STOPPEDPRIMEAREA",
+      "status": "PROVED",
+      "statement": "The finite stopped prime-area identities retain the contributions of the selected ordered interval.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/StoppedPrimeArea.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea.active_primes_in_gap",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea.completed_square_in_gap",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea.stopping_point_unique_max"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "PRIMEAREAINTEGRAL",
+      "status": "PROVED",
+      "statement": "The declared finite integral identities identify the genuine Chebyshev prime area with its sum representation under the source hypotheses.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/PrimeAreaIntegral.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral.integral_theta_eq_first_moment",
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral.integral_theta_sub_id_eq_rampArea",
+        "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral.integral_negative_iff_squarefree_prime_cost"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "CR01",
+      "status": "SOURCE_RECORD",
+      "statement": "(C1) cofinal vanishing-error moment-slice bounds. For every n>=1 there is an aperture L>=n+2 and one parity whose entire moment slice at K=originalDetectorQuarticCutoff(L) satisfies Q_p(L,x) >= -(1/n)||x||^2 in the inherited physical norm.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN",
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "parameter_order": "n first; then L and the parity; then every slice vector. No fixed parity, rank, gap or bound between selected apertures."
+    },
+    {
+      "id": "CR02",
+      "status": "SOURCE_RECORD",
+      "statement": "Selected-packet ground-response restriction. At late disjoint native states at the literal quartic cutoff, the corrected cubic source on the strictly lower negative even ground ray and the odd adjoint pairing on the strictly lower negative odd ground ray are both below one.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN",
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "parameter_order": "R before L; the restriction must hold on the eligible packet outputs themselves or one output must carry both packet properties and the restriction."
+    },
+    {
+      "id": "CR03",
+      "status": "SOURCE_RECORD",
+      "statement": "(C2) actual long-term eventual lower bound. There exist C>0 and T such that for all t>=T, hyperbolaT(actualCorrelationLogarithmicTest t)(actualCorrelationCutoff t/2) >= -C.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN",
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "parameter_order": "C and T before every t."
+    },
+    {
+      "id": "CR04",
+      "status": "SOURCE_RECORD",
+      "statement": "Native K3 ordinary-prime remainder E_ord. An eventual polynomial lower bound on either literal K3 scalar energy, equivalently control of E_ord = B_1 + 200 a beta^2 L + d_0 (H_2+16) L^2.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN",
+      "closing_relevance": "CLOSING_ONLY_WITH_UNFORMALIZED_DERIVED_K3_REDUCTION",
+      "parameter_order": "Eventual in L; constants independent of L."
+    },
+    {
+      "id": "CR05",
+      "status": "SOURCE_RECORD",
+      "statement": "Qualified causal alternative. The actual source-preserving causal Gram residual tends to zero.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN",
+      "closing_relevance": "CLOSING_IF_PROVED",
+      "parameter_order": "As in CLOSURE_OBLIGATIONS B_CAUSAL."
+    },
+    {
+      "id": "CR06",
+      "status": "SOURCE_RECORD",
+      "statement": "Fixed off-line-zero margin on both moment slices. Under an actual off-line zero there is d>0 such that eventually both slices contain nonzero literal trials with Q_p < -d||x||^2.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_PRODUCTION_SCOPE_9C517DB",
+      "closing_relevance": "OPPOSING_OBSTRUCTION_INPUT",
+      "parameter_order": "d before every late L."
+    },
+    {
+      "id": "CR07",
+      "status": "SOURCE_RECORD",
+      "statement": "Exact slice dimensions and nonvacuity. dim even slice = K-3 and dim odd slice = K-4 (natural subtraction) for K>=2; at K=ceil(L^4)>=16 the slices have dimension at least 13 and 12.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "NONVACUITY_GUARD",
+      "parameter_order": "Pointwise in L>0, K."
+    },
+    {
+      "id": "CR08",
+      "status": "SOURCE_RECORD",
+      "statement": "Physical congruence transport and frame comparisons. Slice bounds are exactly seed-coordinate bounds with the full Gram D^2; a coordinate tolerance eps gives physical eps/beta^2; a physical tolerance eps gives coordinate eps (beta+K^2)^2.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "METRIC_ADAPTER",
+      "parameter_order": "Pointwise."
+    },
+    {
+      "id": "CR09",
+      "status": "SOURCE_RECORD",
+      "statement": "Disjoint spectra exclude every bottom tie. Where the full even and odd native spectra are disjoint, the two Rayleigh bottoms differ.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "REMOVES_SHARED_GROUND_PREMISE_ON_PACKET_ROUTE",
+      "parameter_order": "Pointwise."
+    },
+    {
+      "id": "CR10",
+      "status": "SOURCE_RECORD",
+      "statement": "Inverse-residual block certificate (C3). A >= a > 0 and D - CX - X*C* + X*AX - a^{-1} R*R >= 0 with R = C* - AX imply the complete block is PSD; the exact form identity with A^{-1} holds.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "CONSUMER_ONLY",
+      "parameter_order": "Any trial X."
+    },
+    {
+      "id": "CR11",
+      "status": "SOURCE_RECORD",
+      "statement": "Finite source-core consumer (C4). Leakage eta <= eps/4 against the full complement and core form >= -(11 eps/12) imply H + eps I >= 0; column form keeps the nonorthogonal Gram.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "CONSUMER_ONLY",
+      "parameter_order": "Pointwise."
+    },
+    {
+      "id": "CR12",
+      "status": "SOURCE_RECORD",
+      "statement": "Negative-witness transport (E2). A trial with margin d and leakage eta < d/3 has a nonzero projected core component with margin d - 3 eta.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "CONSUMER_ONLY",
+      "parameter_order": "Pointwise."
+    },
+    {
+      "id": "CR13",
+      "status": "SOURCE_RECORD",
+      "statement": "K3 Archimedean gap. A_Gamma(L) > 0 for every L > 0.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_WITHIN_EXTERNAL_LOCAL_RECEIPTS",
+      "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
+      "parameter_order": "Pointwise."
+    },
+    {
+      "id": "CR14",
+      "status": "SOURCE_RECORD",
+      "statement": "Trace formula for the core residual. eta^2 = ||(I-P)H||_F^2 = tr(H^2) - tr(G_I^{-1}(H^4)_{II}).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "parameter_order": "Pointwise."
+    },
+    {
+      "id": "CR15",
+      "status": "SOURCE_RECORD",
+      "statement": "Universal approximate-kernel mixed estimate. Paper-level dimension and mixed-operator estimate behind the source-core reduction.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PAPER_LEVEL_NOT_AUDITED",
+      "closing_relevance": "OPTIONAL_SUPPORT",
+      "parameter_order": "See source."
+    },
+    {
+      "id": "CR16",
+      "status": "SOURCE_RECORD",
+      "statement": "Fixed fractional saving against the positive K3 sector. B_1 >= -kappa (A_Gamma + B_{>=2}) eventually with fixed kappa < 1.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "parameter_order": "Eventual."
+    },
+    {
+      "id": "CR17",
+      "status": "SOURCE_RECORD",
+      "statement": "Pole channel vanishes on both carriers. The pole kernel is S(u u^T - v v^T) with u_n = L/d_n and v_n = 4 pi n/d_n; parity kills one profile and pole neutrality the other, so the pole energy is identically zero on both pole-neutral carriers. The native energy there is exactly -arch - prime.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
+      "parameter_order": "Fixed named states."
+    },
+    {
+      "id": "CR18",
+      "status": "SOURCE_RECORD",
+      "statement": "Channel-separated supplier. lambda_min(-arch) + lambda_min(-prime) >= -1/n on the slice.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "parameter_order": "Fixed named states."
+    },
+    {
+      "id": "CR19",
+      "status": "SOURCE_RECORD",
+      "statement": "Scalar inverse-gap supplier on the Fourier-prefix split. D - a^-1 C C^T >= 0 for some a <= lambda_min(A).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "parameter_order": "Fixed named states."
+    },
+    {
+      "id": "CR20",
+      "status": "SOURCE_RECORD",
+      "statement": "Shifted-prefix quarter gap, high-support unshifted gap and upper cap (separate identities). lambda_min(A_eps) >= 1/4 persists; A <= 9 persists.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "parameter_order": "Fixed named states."
+    },
+    {
+      "id": "CR21",
+      "status": "SOURCE_RECORD",
+      "statement": "Degree-m coupled polynomial certificate at the (C1) checkpoints. X = P_m(A) C^T in blockEnergy_nonneg_of_inverse_residual_certificate supplies the (C1) checkpoint at a tested degree m(n, L).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_WITHIN_EXTERNAL_LOCAL_RECEIPTS",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "parameter_order": "Fixed named states."
+    },
+    {
+      "id": "CR22",
+      "status": "SOURCE_RECORD",
+      "statement": "Near-null count law. The number of slice eigenvalues below a fixed small threshold (1e-2 to 1e-13) equals dim - N(2 pi K/L) up to O(log T).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN",
+      "closing_relevance": "OPTIONAL_SUPPORT",
+      "parameter_order": "Fixed named states."
+    },
+    {
+      "id": "CR23",
+      "status": "SOURCE_RECORD",
+      "statement": "Near-band coupling mass. The coupling C from the low slice block into the near-null directions of the complement block (eigenvalues of A within 1e-6 of eps) has total mass far below the scalar-gap charge.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "parameter_order": "Fixed named states."
+    },
+    {
+      "id": "CR24",
+      "status": "SOURCE_RECORD",
+      "statement": "Detection threshold of off-line quartets at finite checkpoints. A checkpoint at tolerance eps and aperture L detects an off-line quartet of depth delta iff c(L) delta^2 >~ eps, with c(L) increasing in L.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN",
+      "closing_relevance": "NONVACUITY_GUARD",
+      "parameter_order": "Fixed named states."
+    },
+    {
+      "id": "CR25",
+      "status": "SOURCE_RECORD",
+      "statement": "Channel-separable control of -arch and -prime on the near-null subspace. Bounds -arch >= -kappa_A and -prime >= -kappa_P on V with kappa_A + kappa_P smaller than the required tolerance.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "parameter_order": "Fixed named states."
+    },
+    {
+      "id": "CR26",
+      "status": "SOURCE_RECORD",
+      "statement": "Stability of slice positivity under prime-cell truncation. The slice form -arch - prime_{q <= P} stays above -eps for some P < Q.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "FALSIFIED_SPECIFIC_TARGET",
+      "closing_relevance": "BLOCKED",
+      "parameter_order": "Fixed named states."
+    },
+    {
+      "id": "CR27",
+      "status": "SOURCE_RECORD",
+      "statement": "Inverse residual dominates the geometric tail at the same exact degree. For 0 < aI <= A <= bI, T = I - A/b, q = 1 - a/b and the exact polynomial action, S_IR - S_tail >= 0.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "parameter_order": "Algebraic identity."
+    },
+    {
+      "id": "CR28",
+      "status": "SOURCE_RECORD",
+      "statement": "Compressed commutator with all leakage terms. [Vᴴ D0 V, Vᴴ E V] = Vᴴ[D0,E]V + Z Lᴴ - L Zᴴ whenever (1 - V Vᴴ) D0 V = W Lᴴ and D0, E are self-adjoint.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "POSITIVE_PIECE_NOT_CLOSING",
+      "parameter_order": "Algebraic identity."
+    },
+    {
+      "id": "CR29",
+      "status": "SOURCE_RECORD",
+      "statement": "Exact-data soundness of the shifted-factor certificate. 0 < tau and ||A - tau I - R Rᵀ||²_F < tau² imply xᵀAx > 0 for x ≠ 0; tau > 0 is necessary.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "CERTIFICATE_INPUT",
+      "parameter_order": "Finite."
+    },
+    {
+      "id": "CR30",
+      "status": "SOURCE_RECORD",
+      "statement": "Source-column Gram and discarded-sector trace identities. For C = H S with invertible G = CᴴC: G = Sᴴ H² S, Cᴴ H C = Sᴴ H³ S, P = C G⁻¹ Cᴴ is a self-adjoint idempotent and tr(((1-P)H)ᴴ((1-P)H)) = tr(H²) - tr(G⁻¹ Sᴴ H⁴ S).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_QUALIFIED_AT_dab9fbe_RUN_42438907841",
+      "closing_relevance": "METRIC_ADAPTER",
+      "parameter_order": "Algebraic identity."
+    },
+    {
+      "id": "CR31",
+      "status": "SOURCE_RECORD",
+      "statement": "(PG) fixed-parity polynomial lower bound on the moment slices. Exists a parity p, C > 0, d : Nat and L0 with Q_p(L,u) >= -C (1+L)^d ||u||^2 for every u in M_p(L,K(L)) and every L >= L0.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "parameter_order": "parity, C, d, L0 before L and u."
+    },
+    {
+      "id": "CR32",
+      "status": "SOURCE_RECORD",
+      "statement": "(SE) fixed-parity subexponential lower bound. Exists p such that for every alpha > 0 there are C, L0 with Q_p(L,u) >= -C exp(alpha L) ||u||^2 for all L >= L0.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "parameter_order": "parity before alpha; C and L0 after alpha; all late L."
+    },
+    {
+      "id": "CR33",
+      "status": "SOURCE_RECORD",
+      "statement": "Fixed-rate partial exclusion. A fixed-parity bound -C exp(alpha L) at every late aperture, alpha >= 0, gives |Re rho - 1/2| <= alpha for every zero.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "closing_relevance": "NOT_CLOSING_FOR_POSITIVE_ALPHA",
+      "parameter_order": "alpha fixed."
+    },
+    {
+      "id": "CR34",
+      "status": "SOURCE_RECORD",
+      "statement": "(SB) cofinal one-constant floor and the all-late fixed-depth witnesses (AD). Exists C >= 0 such that for every R some L > max R 2 has a parity with Q_p >= -C ||u||^2 on the whole slice.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "parameter_order": "C before every horizon."
+    },
+    {
+      "id": "CR35",
+      "status": "SOURCE_RECORD",
+      "statement": "(C2-SE) literal long-term subexponential lower bound. For every alpha > 0, T(t) >= -C exp(alpha t) at every late t, T the literal hyperbola long term.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "parameter_order": "alpha, then C and T; every late t."
+    },
+    {
+      "id": "CR36",
+      "status": "SOURCE_RECORD",
+      "statement": "(NC) native squared-index commutator cancellation and rank-one leakage. V* [D0, A] V = 0 for boundary-flat columns (full canonical source); D0 maps each slice into pole-neutral boundary-flat vectors and leaves it exactly through M6 (even) or M7 (odd).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "closing_relevance": "STRUCTURAL_ADAPTER",
+      "parameter_order": "Exact identity."
+    },
+    {
+      "id": "CR37",
+      "status": "SOURCE_RECORD",
+      "statement": "(SG) geometry-diagonal and source-response growth (5A candidate). In one fixed parity, for all late L: ||V* E w|| <= C_z (1+L)^a and min_i <v_i, H v_i> >= -C_h (1+L)^b, with v_i the geometry eigenbasis of J = V* D0 V and w the unit leakage normal.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910 (M59); PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED_VIA_PG",
+      "parameter_order": "parity and constants before L."
+    },
+    {
+      "id": "CR38",
+      "status": "SOURCE_RECORD",
+      "statement": "(CP) centered ordinary-prime discrepancy lower bound. In one fixed parity, for all late L and every slice vector f: D_theta(L, f) >= -C (1+L)^d ||f||^2, where Q_L = R_0 + D_theta - P_pp exactly, R_0 >= c_* ||f||^2 (c_* about -1.3722) and ||P_pp|| <= 2 L^2.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN (reduction CP -> PG DERIVED, not formalized)",
+      "closing_relevance": "CLOSING_IF_SUPPLIED_VIA_PG",
+      "parameter_order": "parity and constants before L."
+    },
+    {
+      "id": "CR39",
+      "status": "SOURCE_RECORD",
+      "statement": "CAUSAL: Abel-output membership at a damping sequence. Distinct lambda_j > 0, lambda_j -> 0, with H_lambda_j in L2(0, infinity) for every j.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED (paper sequence criterion)",
+      "parameter_order": "a sequence; no uniform bound or rate."
+    },
+    {
+      "id": "CR40",
+      "status": "SOURCE_RECORD",
+      "statement": "Native rank-one leakage factor and rank-two compressed commutator. D0 u - P_S D0 u = (M6(u)/||r_e||^2) r_e (even), (M7(u)/||r_o||^2) r_o (odd); <u, P D0 P A v - P A P D0 v> = c(v) conj<r, A u> - conj(c(u)) <r, A v> for the full canonical source.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910",
+      "closing_relevance": "STRUCTURAL_ADAPTER",
+      "parameter_order": "Exact identity."
+    },
+    {
+      "id": "CR41",
+      "status": "SOURCE_RECORD",
+      "statement": "Reconstruction bound and the (SG) certificate consumer. Re x*Hx >= (h0 - 2 n_z n_l / g)||x||^2 under the rank-two relation; a geometry-response certificate gives the slice bound at its floor; polynomial certificates at every late aperture in one parity give PG and RH.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "CONSUMER PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910; PREMISE OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED",
+      "parameter_order": "parity, C, d, L0 before L."
+    },
+    {
+      "id": "CR42",
+      "status": "SOURCE_RECORD",
+      "statement": "Paid proper-prime-power adapter. ||P_pp(L)|| <= 2 L^2 on either compressed slice; PG holds for the full source iff it holds for the primes-only source.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "COARSE_GROWTH_ADAPTER",
+      "parameter_order": "All-vector, every L."
+    },
+    {
+      "id": "CR43",
+      "status": "SOURCE_RECORD",
+      "statement": "Unconditional explicit-PNT all-vector bound. Q_L(f) >= [c_* - (1 + 4 pi K/L)(3 + (939/40) L^(303/200) e^(L/2 - 0.8274 sqrt L))] ||f||^2 (Johnston-Yang input).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (exponential rate 1/2)",
+      "parameter_order": "Every L."
+    },
+    {
+      "id": "CR44",
+      "status": "SOURCE_RECORD",
+      "statement": "Graded rate equivalence: zero strip and fixed-rate native floor. For a >= 0 and each parity: every nontrivial zero has |Re rho - 1/2| <= a if and only if, for every alpha > a, the fixed-rate moment-slice bound at rate alpha holds at every large aperture. The new direction has explicit constants: on every boundary-flat native vector x at aperture L and cutoff K, Re<Q x, x> >= -S e^(aL) L (1 + (2 pi K/L)^2)^2 (2K + 1) ||x||^2 with S = sum m_rho/(1 + |gamma_rho|^2).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "RATE_LADDER_ADAPTER (closing only at a = 0, which is RH itself)",
+      "parameter_order": "a first; then alpha > a; then C and L0; all vectors."
+    },
+    {
+      "id": "CR45",
+      "status": "SOURCE_RECORD",
+      "statement": "Least-crossing cutoff at the first native space. If the cutoff-3 global pole-neutral bottom is below -D/2 (for instance one unit vector of either one-dimensional cutoff-3 parity space has energy below -D/2), every NativeDeepThresholdGroundData packet at that aperture has cutoff 3 and both predecessor spaces have dimension zero.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "STRUCTURAL_ADAPTER",
+      "parameter_order": "One aperture and one depth D; any packet."
+    },
+    {
+      "id": "CR46",
+      "status": "SOURCE_RECORD",
+      "statement": "Target consolidation: (U), (F) and (E) are one growth bound for the prime field Z. Under a hypothetical off-line zero of displacement delta, for every beta < delta there are arbitrarily late apertures where a cutoff-3 unit vector has energy below -e^(beta L); there the least-crossing cutoff is 3, the predecessor is {0}, and (E) is the plain L2 growth bound for Z at horizon L - c0. (F) is the weighted L2 growth bound because ||N v_L||^2 tends to ||U||^2 > 0. (U) is the weighted L1 growth bound. At rate eta each excludes zeros of displacement above eta and is implied by their absence.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (removes (E) and (F) as independent suppliers)",
+      "parameter_order": "delta and beta before L; cofinal in L."
+    },
+    {
+      "id": "CR47",
+      "status": "SOURCE_RECORD",
+      "statement": "Scalar criterion on the even cutoff-3 energy. Let E_e(L) be the canonical energy of the unit vector of the even cutoff-3 pole-neutral boundary-flat space; its transform is R(z) = c_e (z^2 - 1/4)/(z prod_{a<=3}(z^2 + (2 pi a/L)^2)). Then sup Re rho - 1/2 is the least exponential rate at which E_e is bounded below. RH holds iff E_e(L) >= 0 for all large L, and under RH 0 < E_e(L) <= 12.94/L^5. The same holds for the odd vector.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "CLOSING_IF_SUPPLIED (RH-equivalent scalar interface; a reformulation, not an independent supplier)",
+      "parameter_order": "One explicit sequence of numbers indexed by L."
+    },
+    {
+      "id": "CR48",
+      "status": "SOURCE_RECORD",
+      "statement": "Explicit floor with a verification height. If every zero below height H0 is on the line and theta0 = sup Re rho, then for every aperture, cutoff and boundary-flat vector c: E(c) >= -2 (2 pi)^6 S6(H0) (K^6/L^5) e^((theta0 - 1/2) L) |c|^2, S6(H0) = sum over gamma > H0 of gamma^-6. With the published height 3e12 the constant is about 4.4e-58, and with theta0 <= 1 the floor on the whole quartic carrier stays above -1 up to L about 86.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (finite range of apertures)",
+      "parameter_order": "Every L; the bound degrades like e^(L/2)."
+    },
+    {
+      "id": "CR49",
+      "status": "SOURCE_RECORD",
+      "statement": "Native real-root lemma. If the bottom eigenvalue of the canonical form on a native space (full, boundary-flat, pole-neutral or moment slice) in one parity sector is simple, every zero z of the numerator of the ground transform has z^2 real.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (real-rootedness of finite ground states does not distinguish RH from its failure)",
+      "parameter_order": "One aperture, one space."
+    },
+    {
+      "id": "CR50",
+      "status": "SOURCE_RECORD",
+      "statement": "Ground-state convergence candidate (CT). For a sequence L_j tending to infinity with simple even bottoms: if the normalised ground transforms converge locally uniformly to xi(1/2 + z), then RH (by CR49 and Hurwitz).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN",
+      "closing_relevance": "CLOSING_IF_SUPPLIED (the natural proof consumes canonical positivity)",
+      "parameter_order": "A sequence of apertures."
+    },
+    {
+      "id": "CR51",
+      "status": "SOURCE_RECORD",
+      "statement": "Loss-tolerant delay descent is a sharp interface. Abstractly (fixed_rate_of_delay_descent): if P L eps is monotone in eps, holds with C0 e^(alpha L) from L1 on, and at every large L a bound eps on [L1, L - h(L)] gives P L (A(L) + G(L) eps), with h eventually >= h0 > 0, A eventually below every positive exponential rate and 2 G(L) <= e^(eta h(L)) eventually for every eta > 0, then P holds at every positive rate from L1 on. Natively (EvenDelayDescent, OddDelayDescent): with such costs the delay descent of the slice bottom in one parity gives (SE) and RH; under RH every eventually nonnegative cost profile satisfies it.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "SHARP_INTERFACE (closing iff the descent inequality is supplied)",
+      "parameter_order": "Costs A, G, h first; then the start L1 >= 1; then every large L and every eps >= 0."
+    },
+    {
+      "id": "CR52",
+      "status": "SOURCE_RECORD",
+      "statement": "Fractional-scale descent with polynomial costs is a sharp interface. For 0 < theta < 1, C >= 0 and exponents d, m: the slice bound eps at theta L giving the slice bound C(1+L)^d + C(1+L)^m eps at L, at every large L in one parity (EvenScaleDescent, OddScaleDescent), is equivalent to RH. It is an instance of CR51 with delay (1 - theta) L.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED",
+      "closing_relevance": "SHARP_INTERFACE",
+      "parameter_order": "theta, C, d, m first; then every large L and every eps >= 0."
+    },
+    {
+      "id": "CR53",
+      "status": "SOURCE_RECORD",
+      "statement": "Tame integer drive and wild Moebius part: the exact Abel-Mertens bridge. For the fixed cutoff-4 kernel q4 = g * g, S(T) = sum_{n <= e^T} Lambda(n) n^(-1/2) q4(T - log n) equals int_0^T m(v) J(T - v) dv with m(v) = e^(-v/2) M(e^v), J = H' + H/2 and H(t) = sum_{n <= e^t} (log n / sqrt n) q4(t - log n); |H| <= C_H (1+t) and |H'| <= C_H' (1+t) with explicit rationals. |M(x)| <= C x^theta gives fixed-field rate theta - 1/2. J takes both signs (J(4) > 0 > J(6)).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "DERIVED_NOT_FORMALIZED",
+      "closing_relevance": "NOT_CLOSING (locates the unpaid term)",
+      "parameter_order": "One fixed kernel; every T."
+    },
+    {
+      "id": "HIST-S-TRACE",
+      "status": "SOURCE_RECORD",
+      "statement": "Formal trace identity for the core residual (CR14) and a rigorous enclosure.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN"
+    },
+    {
+      "id": "HIST-S-CHECKER",
+      "status": "SOURCE_RECORD",
+      "statement": "FiniteCertificateSoundness: accepted data imply the stated native finite inequality.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN"
+    },
+    {
+      "id": "HIST-S-ENCLOSURE",
+      "status": "SOURCE_RECORD",
+      "statement": "Proved enclosure bridge from accepted data to canonicalSourceMatrix.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN"
+    },
+    {
+      "id": "HIST-S-APERTURE-METRIC",
+      "status": "SOURCE_RECORD",
+      "statement": "Frozen aperture-metric comparison G(a) <= G(L) <= (b/a)^4 G(a).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN"
+    },
+    {
+      "id": "HIST-S-LEAKAGE",
+      "status": "SOURCE_RECORD",
+      "statement": "MomentLeakage and NativeLeakageArithmetic for the one-normal programme.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN"
+    },
+    {
+      "id": "HIST-S-KERNEL",
+      "status": "SOURCE_RECORD",
+      "statement": "Audit and, if useful, formalize the universal approximate-kernel estimate (CR15).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN"
+    },
+    {
+      "id": "HIST-S-REACH",
+      "status": "SOURCE_RECORD",
+      "statement": "Constructive certificate production with apertures escaping every bounded interval and physical errors tending to zero; cofinal_moment_slice_bounds_of_tendsto is its consumer.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN"
+    },
+    {
+      "id": "HIST-S-POLE",
+      "status": "SOURCE_RECORD",
+      "statement": "Pole-channel annihilation and Q = -arch - prime on both pole-neutral carriers and moment slices (CR17, M50).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910"
+    },
+    {
+      "id": "HIST-S-COARSE",
+      "status": "SOURCE_RECORD",
+      "statement": "Coarse-growth, fixed-rate, AD/SB and C2-SE consumers (CR31-CR35, M54-M56).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910"
+    },
+    {
+      "id": "HIST-S-NC",
+      "status": "SOURCE_RECORD",
+      "statement": "Native NC and rank-one leakage in functional form (CR36, M57).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910"
+    },
+    {
+      "id": "HIST-S-SG",
+      "status": "SOURCE_RECORD",
+      "statement": "Candidate (SG) frozen and measured at L=4..6 (CR37, evidence/increment5a).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "OPEN"
+    },
+    {
+      "id": "HIST-S-LEAK",
+      "status": "SOURCE_RECORD",
+      "statement": "Explicit rank-one leakage factor and the native rank-two commutator (CR40, M58).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910"
+    },
+    {
+      "id": "HIST-S-RECON",
+      "status": "SOURCE_RECORD",
+      "statement": "Reconstruction bound and the (SG) certificate consumer (CR41, M59).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_CI_GREEN_AT_b3afa61_RUN_42539385910"
+    },
+    {
+      "id": "HIST-S-FLOOR",
+      "status": "SOURCE_RECORD",
+      "statement": "Zero strip of half-width a if and only if fixed-rate native floors at every rate above a, with an explicit floor constant (CR44, M60).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED"
+    },
+    {
+      "id": "HIST-S-CUTOFF",
+      "status": "SOURCE_RECORD",
+      "statement": "A cutoff-3 bottom below -D/2 forces least-crossing cutoff 3 and an empty predecessor (CR45, M61).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED"
+    },
+    {
+      "id": "HIST-S-SCALAR",
+      "status": "SOURCE_RECORD",
+      "statement": "Scalar criterion on the even cutoff-3 energy E_e(L) (CR47).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "DERIVED_NOT_FORMALIZED"
+    },
+    {
+      "id": "HIST-S-BOTTOM",
+      "status": "SOURCE_RECORD",
+      "statement": "Certified positive simple bottoms on six constrained spaces at L = 2 (K = 16) and L = 3 (K = 81) (evidence/increment6a).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "FINITE_CERTIFICATE"
+    },
+    {
+      "id": "HIST-S-DESCENT",
+      "status": "SOURCE_RECORD",
+      "statement": "Loss-tolerant delay and scale descent are equivalent to RH (CR51, CR52, M62).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "PROVED_LOCAL_LINUX_PINNED_COMPILE_CURRENT_HEAD_CI_REQUIRED"
+    },
+    {
+      "id": "HIST-S-KERNELS",
+      "status": "SOURCE_RECORD",
+      "statement": "Exact kernel certificates: cutoff-3 vector, endpoint polynomial, cutoff-4 profile and constants; J(4) > 0 > J(6) (evidence/increment6b).",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [],
+      "source_disposition": "FINITE_CERTIFICATE"
+    },
+    {
+      "id": "FRONT-C1",
+      "status": "OPEN",
+      "statement": "(C1) cofinal vanishing-error moment-slice bounds. For every n>=1 there is an aperture L>=n+2 and one parity whose entire moment slice at K=originalDetectorQuarticCutoff(L) satisfies Q_p(L,x) >= -(1/n)||x||^2 in the inherited physical norm. ",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR01"
+      ]
+    },
+    {
+      "id": "FRONT-PACKET",
+      "status": "OPEN",
+      "statement": "Selected-packet ground-response restriction. At late disjoint native states at the literal quartic cutoff, the corrected cubic source on the strictly lower negative even ground ray and the odd adjoint pairing on the strictly lower negative odd ground ray are both below one. ",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR02"
+      ]
+    },
+    {
+      "id": "FRONT-C2",
+      "status": "OPEN",
+      "statement": "(C2) actual long-term eventual lower bound. There exist C>0 and T such that for all t>=T, hyperbolaT(actualCorrelationLogarithmicTest t)(actualCorrelationCutoff t/2) >= -C. ",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR03"
+      ]
+    },
+    {
+      "id": "FRONT-K3",
+      "status": "OPEN",
+      "statement": "Native K3 ordinary-prime remainder E_ord. An eventual polynomial lower bound on either literal K3 scalar energy, equivalently control of E_ord = B_1 + 200 a beta^2 L + d_0 (H_2+16) L^2. Needs both the arithmetic bound and a formal end-to-end K3 reduction.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR04"
+      ]
+    },
+    {
+      "id": "FRONT-CAUSAL",
+      "status": "OPEN",
+      "statement": "Qualified causal alternative. The actual source-preserving causal Gram residual tends to zero. ",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR05"
+      ]
+    },
+    {
+      "id": "FRONT-PG",
+      "status": "OPEN",
+      "statement": "(PG) fixed-parity polynomial lower bound on the moment slices. Exists a parity p, C > 0, d : Nat and L0 with Q_p(L,u) >= -C (1+L)^d ||u||^2 for every u in M_p(L,K(L)) and every L >= L0. ",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR31"
+      ]
+    },
+    {
+      "id": "FRONT-SE",
+      "status": "OPEN",
+      "statement": "(SE) fixed-parity subexponential lower bound. Exists p such that for every alpha > 0 there are C, L0 with Q_p(L,u) >= -C exp(alpha L) ||u||^2 for all L >= L0. ",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR32"
+      ]
+    },
+    {
+      "id": "FRONT-SB",
+      "status": "OPEN",
+      "statement": "(SB) cofinal one-constant floor and the all-late fixed-depth witnesses (AD). Exists C >= 0 such that for every R some L > max R 2 has a parity with Q_p >= -C ||u||^2 on the whole slice. ",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR34"
+      ]
+    },
+    {
+      "id": "FRONT-C2-SE",
+      "status": "OPEN",
+      "statement": "(C2-SE) literal long-term subexponential lower bound. For every alpha > 0, T(t) >= -C exp(alpha t) at every late t, T the literal hyperbola long term. ",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR35"
+      ]
+    },
+    {
+      "id": "FRONT-SG",
+      "status": "OPEN",
+      "statement": "Reconstruction bound and the (SG) certificate consumer. Re x*Hx >= (h0 - 2 n_z n_l / g)||x||^2 under the rank-two relation; a geometry-response certificate gives the slice bound at its floor; polynomial certificates at every late aperture in one parity give PG and RH. ",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR41"
+      ]
+    },
+    {
+      "id": "FRONT-DD",
+      "status": "OPEN",
+      "statement": "Loss-tolerant delay descent is a sharp interface. Abstractly (fixed_rate_of_delay_descent): if P L eps is monotone in eps, holds with C0 e^(alpha L) from L1 on, and at every large L a bound eps on [L1, L - h(L)] gives P L (A(L) + G(L) eps), with h eventually >= h0 > 0, A eventually below every positive exponential rate and 2 G(L) <= e^(eta h(L)) eventually for every eta > 0, then P holds at every positive rate from L1 on. Natively (EvenDelayDescent, OddDelayDescent): with such costs the delay descent of the slice bottom in one parity gives (SE) and RH; under RH every eventually nonnegative cost profile satisfies it. ",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR51"
+      ]
+    },
+    {
+      "id": "FRONT-ND",
+      "status": "OPEN",
+      "statement": "Fractional-scale descent with polynomial costs is a sharp interface. For 0 < theta < 1, C >= 0 and exponents d, m: the slice bound eps at theta L giving the slice bound C(1+L)^d + C(1+L)^m eps at L, at every large L in one parity (EvenScaleDescent, OddScaleDescent), is equivalent to RH. It is an instance of CR51 with delay (1 - theta) L. ",
+      "sources": [
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/CONSTRAINT_REGISTER.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "CR52"
+      ]
+    },
+    {
+      "id": "D1_ACTUAL_RAYS",
+      "status": "OPEN",
+      "statement": "EventualActualRayClosure. exists R before every L>R, hL, K>=3 and every negative real resolvent shift; separate shared-negative-ground exclusion Read full compiler-exported Lean type; metadata is not a substitute",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "D2_NEGATIVE_GROUNDS",
+      "status": "OPEN",
+      "statement": "EventualNegativeGroundClosure. exists R before every L>R,K>=3; compare only corresponding actual negative ground strictly below opposite bottom; exclude shared negative ground separately Read full compiler-exported Lean type; metadata is not a substitute",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "D3_NATIVE_JOINT_INDEX",
+      "status": "OPEN",
+      "statement": "EventualNativeJointNegativeIndexCap. exists R before every L>R,K>=3; bound finrank of every strictly negative physical two-pole-neutral subspace by1 Read full compiler-exported Lean type; metadata is not a substitute",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "D4_DIRECT",
+      "status": "OPEN",
+      "statement": "EventualNoSimultaneousNegativity. exists R before every L>R,K>=3; no actual simultaneous parity negativity Read full compiler-exported Lean type; metadata is not a substitute",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "B_CAUSAL",
+      "status": "OPEN",
+      "statement": "Actual source-preserving causal Gram residual tends to zero. OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE No complete new Lean route contract is supplied by this extension",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "A_SIGNED_OBSERVATION",
+      "status": "OPEN",
+      "statement": "Complete signed observation estimate including all cross terms and recovery budgets. OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE No complete new Lean route contract is supplied by this extension",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "C_DIRECT_COMPLEMENT",
+      "status": "OPEN",
+      "statement": "Actual original detector forcing/complement upper bound beating the off-line lower exponent. OPEN_FULL_SOURCE_ANALYTIC_ESTIMATE No complete new Lean route contract is supplied by this extension",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "C1_COFINAL_MOMENT_SLICES",
+      "status": "OPEN",
+      "statement": "CofinalMomentSliceVanishingErrorBounds. for every n>=1 an aperture L>=n+2 and one parity covering its entire moment slice at the literal quartic cutoff with tolerance 1/n Read full compiler-exported Lean type; metadata is not a substitute",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "P1_SELECTED_PACKET_GROUND_RESPONSE",
+      "status": "OPEN",
+      "statement": "EventualDisjointQuarticGroundRestriction. exists R before every late disjoint quartic state; both exact ground responses below one; no shared-ground premise Read full compiler-exported Lean type; metadata is not a substitute",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "C2_ACTUAL_LONG_TERM_LOWER",
+      "status": "OPEN",
+      "statement": "Eventual constant lower bound on the literal native long term. exists C>0 and T before every t>=T Premise is stated inline in its consumer",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "A-X",
+      "status": "OPEN",
+      "statement": "actual fixed-source X=Pi*j. forall epsilon>0, integral_0_infty exp(-2 epsilon t)|X(t)|^2 dt < infinity",
+      "sources": [
+        "research/RHRC/integration/post290/STEP4_CUTS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "B-Y",
+      "status": "OPEN",
+      "statement": "actual Yepsilon for native convolution Aepsilon. forall epsilon>0, Yepsilon in closure(range(Aepsilon))",
+      "sources": [
+        "research/RHRC/integration/post290/STEP4_CUTS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "C-Schur",
+      "status": "OPEN",
+      "statement": "complete same-detector signed Schur loss with full complement and known shift. Source-specific subexponential upper law on all selectors returned by the registered producer, with all constants and quantifiers explicit",
+      "sources": [
+        "research/RHRC/integration/post290/STEP4_CUTS.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "RETAINED_TRIAL_IFF",
+      "status": "PROVED",
+      "statement": "Generated retained-trial prime-remainder dominance is equivalent to Mathlib RH. An off-line zero forces arbitrarily late strict failure.",
+      "sources": [
+        "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean"
+      ],
+      "declarations": [
+        "Zeta23.ExceptionalZero.generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis",
+        "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_primeRemainderDominance_failure_of_offLine_zero"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "RETAINED_TRIAL_BOUND",
+      "status": "OPEN",
+      "statement": "Prove domination for the actual generated retained cubic trial at every eligible certificate beyond a single fixed aperture.",
+      "sources": [
+        "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "RETAINED_TRIAL_IFF"
+      ]
+    },
+    {
+      "id": "ACTUAL_FIELD_TRANSFER",
+      "status": "PROVED",
+      "statement": "The all-damping bound on the original prime field suffices for RH.",
+      "sources": [
+        "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean"
+      ],
+      "declarations": [
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "COMPLETE_WEIGHTED_UPPER",
+      "status": "OPEN",
+      "statement": "For every η>0 fix Cη before the lower horizon R. Find T≥max(R,16) with the integrated complete signed prime-power response, weighted by exp(−(T−t)/2), at most Cη exp(ηT).",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-weighted-response-2026-11-10/COMBINED_FINITE_TARGET.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-complete-residual-round4-2026-11-10/WEIGHTED_TARGET_TRANSFER.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "SOURCE_LOADING",
+      "status": "DERIVED",
+      "statement": "Predecessor positivity bounds the complete h*h response of the projected translates. The actual projection defect remains an independent charge at the selected cutoff.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-actual-loading-round6-2026-11-11/ACTUAL_LOADING_OPICA_CONSTRAINTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-actual-loading-round6-2026-11-11/PREDECESSOR_LOADING_TEST.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "SOURCE_LOADING_DEFECT",
+      "status": "OPEN",
+      "statement": "Control the complete signed response of the actual translates outside the predecessor projection at its selected cutoff, with threshold fixed before packet selection.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-actual-loading-round6-2026-11-11/ACTUAL_LOADING_OPICA_CONSTRAINTS.md"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "SOURCE_LOADING",
+        "GROUND"
+      ]
+    },
+    {
+      "id": "SMOOTH_UPPER",
+      "status": "OPEN",
+      "statement": "Obtain the independent opposing bound for smoothSourceMain on the same genuine quartic packet, preserving all three transported errors, full complements and the reciprocal arithmetic input.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.json",
+        "Zeta23/OPICARound4/QuarticErrorReduction.lean"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "SMALL_LARGE_PARITY",
+      "status": "DERIVED",
+      "statement": "After matching, the genuine small-prime product can be bounded by U^δ and the remaining factor count lies between any prescribed fixed lower count and a fixed upper count. The constants are chosen in the order given in the source. Parity of the remaining product is retained.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/SMALL_PART_LARGE_PART.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT"
+      ],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "id": "FINITE_NATIVE_CHECK",
+      "status": "EXPERIMENTAL_SIGNAL",
+      "statement": "Exact native enumeration distinguishes the first clipped positive charge from the first whole positive coarse cell after 2²⁰. On the observed final slab the moving and frozen masks give different energies.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/WHOLE_COARSE_SURPLUS.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/BALANCED_TRANSPORT_CHECK.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "WHOLE_SHELLS"
+      ]
+    },
+    {
+      "id": "DIVISOR_FIBRE_LIMIT",
+      "status": "DERIVED",
+      "statement": "Exact divisor-fibre inversion of a rough interval places its original signed charge in the coefficient at 1. A nonempty interval excluding 1 cannot be represented by nonnegative whole-fibre weights.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/FACTOR_PARITY_ROUTES.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/FACTOR_PARITY_ROUTES.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "FORMAL_GAP"
+      ]
+    },
+    {
+      "id": "CONE_CONTINGENCY",
+      "status": "DERIVED",
+      "statement": "The actual sign and small-cofactor cone give a 2×2 interaction determinant with positive normalized mass of order X^(1−o(1)) on base cells in a whole shell comparable with X. The complementary signed marginal product compensates it. The finite audit checks both exact integer identities.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/CONE_CONTINGENCY.md",
+        "research/RHRC/integration/opica_round6/cone_parity.py",
+        "Zeta23/OPICARound6/PrimeFactorPaths/RoughNodeCharges.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges.contingency_covariance"
+      ],
+      "depends_on": [
+        "ROUGHNODECHARGES",
+        "ROUGH_TREE"
+      ],
+      "alternatives": [],
+      "context": [
+        "CONE_MATCH",
+        "ACTUAL_UPPER"
+      ]
+    },
+    {
+      "id": "SURVIVOR_CONE_ZERO",
+      "status": "DERIVED",
+      "statement": "The actual matching removes every label in the small-cofactor cone. On survivors its sign coordinate is constantly +1, so every corresponding table has zero determinant even though the signed cell charge sits entirely in the marginal product.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/CONE_CONTINGENCY.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT"
+      ],
+      "alternatives": [],
+      "context": [
+        "CONE_CONTINGENCY",
+        "ACTUAL_UPPER"
+      ]
+    },
+    {
+      "id": "PAPER_ROUTE_VALIDATION",
+      "status": "OPEN",
+      "statement": "Supply a complete kernel-checked transfer of the independent signed survivor estimate through the actual arithmetic source to the Step 4 statement. The finite selector lemma pays only its finite part.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md",
+        "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "FORMAL_GAP",
+        "ROUGHNODECHARGES"
+      ]
+    },
+    {
+      "id": "SURVIVOR_ROUTE",
+      "status": "OPEN",
+      "statement": "Close the selected-source route by proving the cofinal bound for one polarity and validating its complete mathematical transfer.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-one-sided-sieve-2026-11-19/SMALL_PART_LARGE_PART.md"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "ACTUAL_UPPER",
+        "PAPER_ROUTE_VALIDATION"
+      ],
+      "alternatives": [],
+      "context": [
+        "SMALL_LARGE_PARITY",
+        "CONE_CONTINGENCY"
+      ]
+    },
+    {
+      "id": "STEP4",
+      "status": "OPEN",
+      "statement": "Establish one complete, same-source closing route. Independent alternatives have their own horizons, cutoffs and carrier conditions.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json",
+        "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json",
+        "research/RHRC/integration/post290/STEP4_CUTS.json",
+        "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [
+        "D1_ACTUAL_RAYS",
+        "D2_NEGATIVE_GROUNDS",
+        "D3_NATIVE_JOINT_INDEX",
+        "D4_DIRECT",
+        "B_CAUSAL",
+        "A_SIGNED_OBSERVATION",
+        "C_DIRECT_COMPLEMENT",
+        "C1_COFINAL_MOMENT_SLICES",
+        "P1_SELECTED_PACKET_GROUND_RESPONSE",
+        "C2_ACTUAL_LONG_TERM_LOWER",
+        "A-X",
+        "B-Y",
+        "C-Schur",
+        "FRONT-PG",
+        "FRONT-SE",
+        "FRONT-SB",
+        "FRONT-C2-SE",
+        "FRONT-SG",
+        "FRONT-DD",
+        "FRONT-ND",
+        "RETAINED_TRIAL_BOUND",
+        "SURVIVOR_ROUTE",
+        "P303_OPPOSED_PRODUCT_ROUTE",
+        "N20_NESTED_ROUTE"
+      ],
+      "context": [
+        "FINITE_K5",
+        "SOURCE_LOADING_DEFECT",
+        "SMOOTH_UPPER",
+        "COMPLETE_WEIGHTED_UPPER",
+        "FRONT-K3",
+        "FRONT-CAUSAL"
+      ]
+    },
+    {
+      "id": "RH",
+      "status": "OPEN",
+      "statement": "An unconditional exact RH statement still requires a complete validated proof. Each graph route includes its own original hypotheses.",
+      "sources": [
+        "research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json",
+        "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "STEP4"
+      ],
+      "alternatives": [],
+      "context": [
+        "RETAINED_TRIAL_IFF",
+        "ACTUAL_FIELD_TRANSFER"
+      ]
+    },
+    {
+      "id": "SURVEY-TIE_CHANNELS",
+      "status": "SOURCE_RECORD",
+      "statement": "Exactly one visible channel can coexist with a negative tied ground and a positive complement in explicit two-dimensional models. A quantitative statement about the genuine source is still needed.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "GROUND"
+      ],
+      "source_disposition": "Paper-level result in PR299_TIE_EXCLUSIVE_VISIBILITY_POSTGREEN_2026-11-01.md"
+    },
+    {
+      "id": "SURVEY-HYPERBOLA_ALIAS",
+      "status": "SOURCE_RECORD",
+      "statement": "The short contribution decays faster than every power in the fixed smooth source. The long signed Hankel form retains the Möbius vector. Positivity of the full periodization fails.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "ACTUAL_UPPER"
+      ],
+      "source_disposition": "Paper-level result in STEP4_PASS7_HYPERBOLA_BOUNDARY_ALIAS_AND_ONE_SIDED_CRITERION_2026-11-01.md"
+    },
+    {
+      "id": "SURVEY-HANKEL_DIRECTION",
+      "status": "SOURCE_RECORD",
+      "statement": "The discrete-cutoff form admits a negative eigenvalue of order N even after restricting to squarefree indices. Polynomial moment compression controls the representation error and leaves the signed projection of the actual Möbius vector open.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "ACTUAL_UPPER"
+      ],
+      "source_disposition": "Paper-level result in STEP4_PASS8_DISCRETE_HANKEL_AND_MOMENT_COMPRESSION_2026-11-01.md"
+    },
+    {
+      "id": "SURVEY-STATIONARY_ORIGIN",
+      "status": "SOURCE_RECORD",
+      "statement": "The complete increment has a summable stationary second moment after averaging the starting point. The constant-one transfer from the average to the required fixed origin fails a native check.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "ACTUAL_UPPER"
+      ],
+      "source_disposition": "Paper-level result in RH_Step4_Stationary_Covariance_and_Fixed_Origin_Gap_2026-11-06.md"
+    },
+    {
+      "id": "SURVEY-VAUGHAN_GAPS",
+      "status": "SOURCE_RECORD",
+      "statement": "With U=V=floor(exp(sqrt(T))), the complete centered Type I error has a subexponential squared norm. For the actual Type II coefficients the reciprocal-gap bound costs exponential scale. Type I main terms and Type II cross terms still interact.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "COMPLETE_WEIGHTED_UPPER"
+      ],
+      "source_disposition": "Paper-level result in RH_Step4_Vaughan_TypeI_MainTerms_TypeII_Compensation_and_MV_Gap_Cost_2026-11-04.md"
+    },
+    {
+      "id": "SURVEY-RESOLVENT_HISTORY",
+      "status": "SOURCE_RECORD",
+      "statement": "The paper resolvent recursion relates neighboring derivative orders and gives a cross-cutoff cancellation under the earlier normalized bounds. It leaves quantitative control on the actual response at the selected cutoff open.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "SOURCE_LOADING_DEFECT"
+      ],
+      "source_disposition": "Paper-level result in RH_Step4_PostGreen_Resolvent_Ladder_2026-11-13.md"
+    },
+    {
+      "id": "SURVEY-BANDWIDTH_MOMENTS",
+      "status": "SOURCE_RECORD",
+      "statement": "The K-linear normalized derivative estimate pays the prime-power and archimedean errors at order K/L² in the barycentric hierarchy. Three K real Dirichlet moments represent the ordinary-prime contribution. Their joint value at the required cutoff is the arithmetic input.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "COMPLETE_WEIGHTED_UPPER"
+      ],
+      "source_disposition": "Paper-level result in RH_Step4_Uniform_Bandwidth_and_Prime_Centering_2026-11-13.md"
+    },
+    {
+      "id": "SURVEY-SQUARE_MAIN",
+      "status": "SOURCE_RECORD",
+      "statement": "For the specific normalized carrier in this paper, the prime-square main term has order L¹⁴, the L¹² coefficient vanishes, and the contribution is eventually positive. The ordinary-prime compensation uses the same carrier.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "COMPLETE_WEIGHTED_UPPER"
+      ],
+      "source_disposition": "Paper-level result in RH Step4 — Prime-square main-term rigidity and ordinary-prime renormalization — 2026-11-13"
+    },
+    {
+      "id": "SURVEY-EULER_VARIATION",
+      "status": "SOURCE_RECORD",
+      "statement": "Proper prime powers have a polylogarithmic variation budget for the normalized finite prime sum. A change of a single Euler factor preserves the nontrivial zero set in the comparison and disrupts the finite monotonicity test. The all-late ordinary-prime variation bound remains open.",
+      "sources": [
+        "research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md",
+        "research/RHRC/integration/opica_round6/DRIVE_SOURCE_SURVEY.json"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "alternatives": [],
+      "context": [
+        "COMPLETE_WEIGHTED_UPPER"
+      ],
+      "source_disposition": "Paper-level result in RH Step 4 — Prime-Power Variation Elimination and Euler-Factor Stability — 2026-11-13"
+    },
+    {
+      "id": "P303_DEFICIT_ALGEBRA",
+      "status": "PROVED",
+      "statement": "For arbitrary real excess and shortfall, the positive signed square differs from four times the opposed positive parts by a nonnegative error at most the squared total discrepancy. The absolute-error estimate sums over any finite index set with nonnegative weights. The universal coefficient is uniquely four.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.quadrant_remainder",
+        "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.weighted_absolute_remainder",
+        "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.forced_coefficient"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "ROUGH_TREE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "P303_UNSIGNED_FINGERPRINT",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "On complete native shells the genuine unsigned rough-squarefree fingerprint count through z=(log X)^(2+o(1)) has subpower weighted squared total-variation discrepancy at all nodes and sibling splits, uniformly over fingerprint subsets chosen per cell. The analogous Euler approximation fails already for parity in U^(3/5)<p≤U^(7/10).",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "P303_UNSIGNED_FINGERPRINT",
+        "SELECTED_SUPPORT",
+        "P303_DEFICIT_ALGEBRA"
+      ],
+      "id": "P303_DEFICIT_PRODUCT",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "With both spent endpoints counted in the survivor center, the actual weighted positive signed-node energy differs from the opposed parity-deficit product 4 Σ w [p]_+ [−m]_+ by O_ε(X^ε), with absolute errors inside the sum. The opposite polarity swaps p,m. Raw/survivor transfer uses the complete populations, aggregated before the sign test. The result on the arithmetic field is a paper deduction.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT"
+      ],
+      "id": "P303_GAP_SELECTION",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_GAPS_AND_SIGNED_HALVES.md"
+      ],
+      "statement": "For fixed 0<γ<β<1−log 2 a strengthened whole-shell selector removes vertices with a divisor within (log U)^β in log distance of ½ log n, together with actual spent partners, at bounded signed one-sided energy change per shell.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "DIVISOR_FIBRE_LIMIT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_GAP_SELECTION"
+      ],
+      "id": "P303_SIGNED_DIVISOR_HALVES",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_GAPS_AND_SIGNED_HALVES.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_divisor_halves.py",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_HALVES_EXACT.json"
+      ],
+      "statement": "On this strengthened selector, each full divisor half on each surviving vertex annihilates polynomials in log d of degree below the true small-prime count. Puncturing the upper endpoint returns −μ(n)P(log n). The two half transforms bound divisor responses separately from the signed vertex population.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "SELECTED_SUPPORT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "CONE_MATCH"
+      ],
+      "id": "P303_COFACTOR_CANCELLATION",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_survivor_cofactor_pairs.py",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS_CHECK.json"
+      ],
+      "statement": "Under the aligned all-rough subpower selector, the different-cofactor sum compensates the large positive same-largest-prime-cofactor pair family with VK relative error, including the stated primitive restriction. A fixed-power selector has a separate bound depending on the true zero edge B. The absolute residual can still have power size. Additional target lists can invalidate the protected cofactor count.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "CONE_MATCH",
+        "SELECTED_SUPPORT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "P303_UNEQUAL_PRIME_SHARES",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/UNBALANCED_PRIME_SHARES.md"
+      ],
+      "statement": "Before selection, two separated ordered prime baskets of different factor counts have matching continuum kernels on their common small cofactor. Their true raw charges cancel up to U exp(−c Φ(log U)) uniformly on the stated cells. The single-share and double-share observations use different weights. A selector depending on the full label can destroy the fixed-cofactor comparison.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "P303_UNSIGNED_FINGERPRINT"
+      ],
+      "id": "P303_FINGERPRINT_THRESHOLD",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SHARP_FINGERPRINT_THRESHOLD.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "For fixed K>2, the complete unselected unsigned squarefree-rough fingerprint energy with all primes y<p≤(log X)^K has exact exponent 1−2/K against Euler weights. This persists after restricting to the exact observed fingerprints of each cell and renormalizing either to reference or observed total. The real lower witnesses have atypically many prime factors. This estimates a particular marginal and supplies no upper for the selected signed source.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_DEFICIT_PRODUCT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_UNSIGNED_FINGERPRINT",
+        "P303_COFACTOR_CANCELLATION"
+      ],
+      "id": "P303_SINGLE_COFACTOR_PRECISION",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md"
+      ],
+      "statement": "At aligned cutoffs in the earlier subpower selection, deleting one entire true negative cofactor fibre without replacement preserves the deletion-corrected unsigned discrepancy and a relative cofactor cancellation law, yet increases the positive deficit-product energy on the base cells by X^(1−o(1)). This actual modified subgraph is a precision control and is ineligible as the matched source.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_SINGLE_COFACTOR_PRECISION"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "CONE_MATCH",
+        "MASK_BARRIER"
+      ],
+      "id": "P303_SINGLE_COFACTOR_MIXED",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md"
+      ],
+      "statement": "On the unchanged aligned subpower survivor graph, the complete signed ordered mixed incidence of this one fibre against its entire complement is −2g_J² up to a VK-small relative error in the original weighted sum of absolute errors. Rejected GCD incidence of that one fibre costs O(H₀/(U log U)) absolutely. The remaining signed mixed-incidence error has no critical absolute bound here.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_FINGERPRINT_THRESHOLD",
+        "P303_GAP_SELECTION"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT",
+        "SMALL_LARGE_PARITY"
+      ],
+      "id": "P303_CORRECTED_SURVIVOR_HISTOGRAM",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_truncated_fingerprints.py",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/TRUNCATED_FINGERPRINTS_CHECK.json"
+      ],
+      "statement": "One paid three-stage selection supports product-truncated divisor interpolation for every family of small-prime cutoffs with a uniform subpower envelope. The center subtracts the complete truncated divisibility vector of every removed target and spent partner. Its possibly signed prediction of the unsigned survivor histogram has subpower weighted squared total-variation error. At a fixed-power threshold chosen after δ, keeping the small part ≤U^δ and the large factor count between fixed k and u+1 costs X^(δ+ε) instead. The optional strengthened divisor gap can share the matching; the earlier aligned cofactor selector is distinct.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_DEFICIT_PRODUCT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+      ],
+      "id": "P303_PREDICTOR_REMAINDER",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "For any bounded cell/fingerprint prediction of the actual remaining cofactor parity, the true signed node charge equals the centered prediction plus the full signed prediction residual on the same survivors plus an independently paid histogram error. Same-direction centered even/odd fluctuations have paid cost; the sum of predicted signed charge and true residual still needs its own bound.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_DEFICIT_PRODUCT",
+        "P303_SIGNED_DIVISOR_HALVES",
+        "P303_COFACTOR_CANCELLATION",
+        "P303_UNEQUAL_PRIME_SHARES",
+        "P303_FINGERPRINT_THRESHOLD",
+        "P303_SINGLE_COFACTOR_PRECISION",
+        "P303_SINGLE_COFACTOR_MIXED",
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM",
+        "P303_PREDICTOR_REMAINDER"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "P303_OPPOSED_PRODUCT_UPPER",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "For one fixed polarity of the actual survivor graph, prove independently that for each ε>0 and every lower horizon R there is X≥R with its entire opposed deficit product ≤C_ε X^ε. Use the original weights, common cutoff, complete terminal shells, genuine signs and all spent partners in the center.",
+      "status": "OPEN"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "SURVIVOR_ROUTE"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_DEFICIT_PRODUCT",
+        "P303_OPPOSED_PRODUCT_UPPER",
+        "PAPER_ROUTE_VALIDATION"
+      ],
+      "id": "P303_OPPOSED_PRODUCT_ROUTE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "The opposed-product version of the survivor route requires an independent arithmetic upper and the kernel-checked transfer through the actual source to Step 4. The paper deficit identity supplies only the comparison of arithmetic observables.",
+      "status": "OPEN"
+    },
+    {
+      "alternatives": [],
+      "closing_relevance": "Historical external finite checking only. Project compiler ownership, readbacks and axiom checks have separate bindings.",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_CELL_KERNEL",
+      "parameter_order": "Inputs are the explicitly quantified finite objects. The local receipt supplies no growing-horizon estimate.",
+      "source_disposition": "LOCAL_PINNED_LEAN_KERNEL_CHECKED",
+      "sources": [
+        "research/RHRC/integration/opica_round6/README.md"
+      ],
+      "statement": "The external cell receipt a320444c4b9f0b728493b41d5d377ab830eee196ee8e2ffa81d4a5cd771fed7b records the local pinned kernel readback of 16 originally named OPICA.Step4 theorems. The deployed register binds the corresponding project declarations separately.",
+      "status": "SOURCE_RECORD"
+    },
+    {
+      "alternatives": [],
+      "closing_relevance": "Historical external finite checking only. Project compiler ownership, readbacks and axiom checks have separate bindings.",
+      "context": [],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_STOP_KERNEL",
+      "parameter_order": "Inputs are the explicitly quantified finite objects. The local receipt supplies no growing-horizon estimate.",
+      "source_disposition": "LOCAL_PINNED_LEAN_KERNEL_CHECKED",
+      "sources": [
+        "research/RHRC/integration/opica_round6/README.md"
+      ],
+      "statement": "The external stopping receipt 939f289c6ded2c4ef18c79b701370f8fec0d6b19e6835e8328f049ac8649bc6c records the local pinned kernel readback of 7 originally named OPICA.Step4 theorems. The deployed register binds the corresponding project declarations separately.",
+      "status": "SOURCE_RECORD"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_CELL_KERNEL"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_terminalLabels",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_rawLabels",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.mem_occupiedKeys",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.weight_nonneg",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.aligned_index_iff",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.survivor_sign",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.survivorCharge_eq_counts",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.count_conservation",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.deviation_difference",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.deviation_sum",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.weighted_deficit_transfer",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.whole_coarse_deficit_transfer",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeCells.native_energy_bracket",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeGeometry.square_log_boundary",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeGeometry.mersenne_whole_base"
+      ],
+      "depends_on": [
+        "P303_DEFICIT_ALGEBRA"
+      ],
+      "id": "N20_FINITE_CELL_BRACKET",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/NativeCells.lean",
+        "Zeta23/OPICARound6/PrimeFactorPaths/NativeGeometry.lean"
+      ],
+      "statement": "For every finite collection of true native keys and each supplied removal, the positive selected charge-square energy lies between the opposed product P and P plus the full raw unsigned discrepancy energy. The difference of centered populations is the actual selected charge, and their sum is the raw unsigned discrepancy. Includes clipped cells with their full grid width.",
+      "status": "PROVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_CELL_KERNEL",
+        "SELECTED_SUPPORT"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeFullTransfer.native_raw_energy_upper"
+      ],
+      "depends_on": [
+        "N20_FINITE_CELL_BRACKET"
+      ],
+      "id": "N20_FINITE_SELECTOR_COST",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/NativeFullTransfer.lean"
+      ],
+      "statement": "The positive full arithmetic energy on the same native cells is at most P plus unsigned discrepancy energy plus the true incident selector cost, with every removed label counted once in each affected node. Finiteness and local readback give no cofinal bounds for the inputs.",
+      "status": "PROVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_STOP_KERNEL"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost.native_opposed_cost",
+        "Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost.native_opposed_cost_reverse",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.opposed_eq_charge_minus_discrepancy"
+      ],
+      "depends_on": [
+        "N20_FINITE_CELL_BRACKET"
+      ],
+      "id": "N20_FINITE_POLARITY_COST",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/NativeStoppingCost.lean",
+        "Zeta23/OPICARound6/PrimeFactorPaths/StoppingAlgebra.lean"
+      ],
+      "statement": "At every actual key, for both separate polarities s, Q equals max([s r]_+² − D²,0), with r the genuine survivor charge and D the raw unsigned discrepancy using the same key and width.",
+      "status": "PROVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_STOP_KERNEL"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Charges.branch_of_total",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.value_le_iff_cover",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.lt_value_iff_highPath",
+        "Zeta23.OPICARound6.PrimeFactorPaths.StoppingAlgebra.Observations.no_cover_iff_highPath"
+      ],
+      "depends_on": [],
+      "id": "N20_FINITE_STOPPING",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/StoppingAlgebra.lean"
+      ],
+      "statement": "On a finite evaluation tree, thresholds for the min/max recursion are equivalent to a complete admissible low-cost cover, and failure is equivalent to a strictly high path. Child additivity propagates a signed total along one branch with the explicit dyadic loss.",
+      "status": "PROVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "ROUGH_TREE",
+        "SELECTED_SUPPORT",
+        "P303_UNSIGNED_FINGERPRINT",
+        "N20_FINITE_POLARITY_COST",
+        "N20_FINITE_STOPPING"
+      ],
+      "id": "N20_DETECTOR_PATH",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md"
+      ],
+      "statement": "For either fixed polarity and 0<a<c<1/4, the paper one-sided detector and maximal interval estimate force a path of true opposed costs. With b=B−1/2, the liminf exponent of the normalized native bottleneck is at least (2b−2c)_+, and its limsup is at most 2b. Uniformly late horizons, whole-shell cells and one polarity are essential.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "N20_DETECTOR_PATH",
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+      ],
+      "id": "N20_FINGERPRINT_WITNESS",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md"
+      ],
+      "statement": "A hereditary witness can keep one true subpower-sized fingerprint and its cofactor parity along the detected path, at subpower loss. Its excess is a property of the full signed population. A witness of that fingerprint need not be an excess inside that fingerprint alone.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_FINITE_CELL_BRACKET",
+        "NATIVE_TREE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_COARSE_GRID_CONTROL",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+        "Zeta23/OPICARound6/PrimeFactorPaths/NativeGeometry.lean"
+      ],
+      "statement": "When the boundary convention shifts the base by one depth, coarse one-sided energies on the same field satisfy the stated transfer with finite additive error. Literal cells at equal numeric depths can differ. The native grid uses floor log₂ inside the square root and a ceiling separately for the roughness.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_DETECTOR_PATH"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_SINGLE_COFACTOR_PRECISION"
+      ],
+      "id": "N20_PUNCTURED_PATH_CONTROL",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md"
+      ],
+      "statement": "On the separate aligned subpower selection, deleting the known negative fibre without payment makes the altered path diagnostic attain exponent 1−2c. This is a quantitative test of a dropped-complement argument on a different graph.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_UNSIGNED_FINGERPRINT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_DISJOINT_DISCREPANCY",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md"
+      ],
+      "statement": "For disjoint true integer intervals in a complete shell the full rough-squarefree unsigned fingerprint count at marked primes through (log X)^(2+o(1)) has summed squared total-variation discrepancy O_ε(U X^ε) against its specified density. Actual signed floor errors are summed over disjoint intervals and the long divisor tail belongs to the reference density.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "N20_DETECTOR_PATH",
+        "N20_FINITE_POLARITY_COST",
+        "N20_DISJOINT_DISCREPANCY"
+      ],
+      "id": "N20_TOTAL_CUT_DETECTOR",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md"
+      ],
+      "statement": "For one fixed polarity and 0<a<c<1/4 the paper detector lower on an early native node, with disjoint-cut discrepancy and Cauchy over the descendant pieces, gives liminf exponent at least (2b−c)_+ for the summed minimum total native cut cost. Its limsup is at most 2b. Both the analytic detector and these asymptotics have paper authority.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "N20_FINITE_STOPPING"
+      ],
+      "id": "N20_CUT_COMPARISON",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md"
+      ],
+      "statement": "On the same full trees and polarity, Z≤S≤(1+log₂ X)2^s X^c Z for bottleneck Z and minimum total cut S summed over whole shells. With c_i↓0 the two cofinal vanishing-exponent upper conditions imply one another, with explicit finite-window loss.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT",
+        "P303_GAP_SELECTION"
+      ],
+      "id": "N20_SPACED_DIVISORS",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SURVIVOR_DIVISOR_SPACING.md"
+      ],
+      "statement": "A paid choice of the existing matching excludes every pair of distinct divisors d<e with e−d≤d^(4/5−10/sqrt(log U)) on the same genuine survivor. The positive triple-count estimate pays both the new targets and any resulting unavailable donors, at O(1) one-sided cost per shell.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "SMALL_LARGE_PARITY"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT",
+        "N20_SPACED_DIVISORS"
+      ],
+      "id": "N20_PAID_PRIME_GRAPHS",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/PAID_PARTNER_GRAPHS.md"
+      ],
+      "statement": "A strengthened matching pays sparse outgoing prime-partner graphs, including lists assigned within each first-stage cell under the source degree and scale conditions. Allowed unions share a per-prime budget; actual old and new partners are accounted for. Every finished pair is internal above stage three. Its survivors may depend on the assigned tests.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_PAID_PRIME_GRAPHS"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "ROUGH_TREE"
+      ],
+      "id": "N20_RAW_SPARSE_SECTOR",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SPARSE_PRIME_FACTOR_CHARGES.md"
+      ],
+      "statement": "On the unselected actual rough field, large-prime collision graphs of uniformly subpower maximum degree and smaller prime ≥U^α have signed charge O_ε(U^(B−α(2B−1)+ε)). The complete raw complement retains the one-sided detector exponent. This argument uses B itself and the actual Möbius cofactor in every inclusion–exclusion term.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_PAID_PRIME_GRAPHS",
+        "N20_SHARED_ANCESTOR"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "N20_RAW_SPARSE_SECTOR",
+        "N20_TOTAL_CUT_DETECTOR",
+        "N20_DISJOINT_DISCREPANCY",
+        "N20_FINITE_POLARITY_COST"
+      ],
+      "id": "N20_LOCAL_PRIME_GRAPH_CUT",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SPARSE_PRIME_FACTOR_CHARGES.md"
+      ],
+      "statement": "For raw whole-shell cells, fix α>0 below 1/2 and a uniform subpower maximum-degree schedule. A different single shared graph per stopped cell can delete all its actual collision labels, with their complete signed contribution accounted for and true removed counts in the center. Optimized total cost S* is at most the ordinary total cut cost. If a cofinal S*≤C X^λ is proved, the paper detector gives B≤1/2+max(c/(2α),(c+λ)/2). A common graph per cell and a fixed degree schedule are essential. No measured choice achieves the cofinal upper here.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "SELECTED_SUPPORT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_BUCHSTAB_CAP",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/BUCHSTAB_BOUNDARY.md"
+      ],
+      "statement": "For the actual bounded marked product the complete signed large-prime density, retaining all orders, is a negative Dickman kernel. Around the central count k each charge has opposite sign from its neighbor and the sum saves a factor of order sqrt(A); true cap crossings are included. The specified below-central layers are genuine targets of the prior matching.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT",
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+      ],
+      "id": "N20_NEUTRAL_BAND",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md"
+      ],
+      "statement": "For a protected common cofactor core and unchanged survivor selection, all true insertions over the first marked interval of reciprocal mass one leave signed imbalance of order H/log U on long cells. Each true component has order H/log y. The union has full native squared energy of order H₀/log² U, with its actual complement compensating at the base.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "N20_NEUTRAL_BAND",
+        "P303_UNEQUAL_PRIME_SHARES"
+      ],
+      "id": "N20_ANGULAR_COMPENSATION",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md"
+      ],
+      "statement": "Two protected large-prime orders of equal angular volume cancel for every shared cofactor under the specified selector. The four-family all-depth energy upper gains a stretched exponential factor from H₀. Its available bound is still U^(1−o(1)).",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_NEUTRAL_BAND",
+        "N20_PAID_PRIME_GRAPHS",
+        "N20_SPACED_DIVISORS"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT",
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+      ],
+      "id": "N20_SHIFTED_RETIREMENT",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SHIFTED_PRIME_RETIREMENT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md"
+      ],
+      "statement": "With the permitted old donor exponent chosen α<β/10 before X, harmonic-mass-two shifted prime intervals retire a positive-density class strictly beyond the old donor ceiling, using distinct same-cofactor opposite partners and O(1) absolute one-sided loss per shell. Only new masked R→R′ costs O(1+2^(−s)U^β). The class is protected under its stated earlier selection.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_PAID_PRIME_GRAPHS",
+        "N20_SHIFTED_RETIREMENT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "N20_FINITE_POLARITY_COST"
+      ],
+      "id": "N20_SHARED_ANCESTOR",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md"
+      ],
+      "statement": "At all tested widths above the finishing stage, r_J=f_J and the raw D_J is shared by every matching whose paired endpoints are internal to each stage-three cell. The opposed cost, bottleneck and cut totals there are invariant. Two such selectors can still leave different sets of signed vertices at smaller depths.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_FINITE_CELL_BRACKET",
+        "N20_FINITE_SELECTOR_COST"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_CELL_FIXTURES",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/GEOMETRY_REPLAY.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_geometry.py",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SELECTED_PAIR.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_selected_pair.py"
+      ],
+      "statement": "Four actual horizons replayed row geometry and cone bits. A separate complete paired example at X=1,656,575 has coarse positive energy 3/134217728 before removal and zero after. These finite cases exercise the recorded choices of labels.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_DETECTOR_PATH"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_STOP_FIXTURE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/STOPPING_CHECK.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_stopping.py"
+      ],
+      "statement": "13,122 finite signed eight-leaf cases exercise bottleneck and polarity. On the native test base inside a clipped shell a hereditary witness ends at the genuine prime 1,463,447.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_DISJOINT_DISCREPANCY",
+        "N20_TOTAL_CUT_DETECTOR",
+        "N20_CUT_COMPARISON"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_DISJOINT_FIXTURE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CHECK.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_disjoint.py"
+      ],
+      "statement": "On an intact native base at X=1,656,575, 2,935 genuine rows have signed charge −1,679. 625 complete cuts, including 622 nonuniform cuts, were evaluated. The positive minimum total was exactly zero while the negative-polarity minimum was certified strictly positive. The computation also checked 248 fingerprint projections and four disjoint floor families.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_SPACED_DIVISORS",
+        "N20_RAW_SPARSE_SECTOR"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_SPACING_FIXTURE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DIVISOR_SPACING_CHECK.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_divisor_spacing.py"
+      ],
+      "statement": "960 finite floor checks and exact dyadic critical exponents were checked. On the finite independent shell all 64 cells agree and the chosen actual prime graph's signed collision sum equals −56.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_BUCHSTAB_CAP",
+        "N20_SHIFTED_RETIREMENT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_SHIFT_FIXTURE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/BUCHSTAB_TRANSPORT_CHECK.json",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_buchstab_transport.py"
+      ],
+      "statement": "At X=2^36+1, 10,165 true rough vertices give −617. Four auxiliary angular sectors give −681 and their complete complement +64. All 338 test targets have distinct opposite partners with total charges +214 and −214. The finite mark band and pairing are explicitly auxiliary.",
+      "status": "EXPERIMENTAL_SIGNAL"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_FINITE_CELL_BRACKET",
+        "N20_FINITE_SELECTOR_COST",
+        "N20_DETECTOR_PATH",
+        "N20_FINGERPRINT_WITNESS",
+        "N20_PUNCTURED_PATH_CONTROL",
+        "N20_COARSE_GRID_CONTROL",
+        "N20_TOTAL_CUT_DETECTOR",
+        "N20_CUT_COMPARISON",
+        "N20_SHARED_ANCESTOR",
+        "N20_PAID_PRIME_GRAPHS",
+        "N20_RAW_SPARSE_SECTOR",
+        "N20_ANGULAR_COMPENSATION",
+        "N20_SHIFTED_RETIREMENT",
+        "N20_BUCHSTAB_CAP",
+        "P303_OPPOSED_PRODUCT_UPPER",
+        "N20_LOCAL_PRIME_GRAPH_CUT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "N20_JOINT_ARITHMETIC_UPPER",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md"
+      ],
+      "statement": "Independently prove S*≤C_i X^λ_i at arbitrarily late native horizons with one polarity, a fixed α>0 below 1/2, a valid uniform degree schedule, a_i=c_i/2, c_i↓0 and λ_i↓0 chosen before the horizons. A small ordinary total cut is sufficient via empty graphs, as is a small ordinary maximum-path cut at vanishing window depth loss. The optimized input permits a shared graph for all rows of each cell and charges its full arithmetic complement.",
+      "status": "OPEN"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "N20_CUT_COMPARISON",
+        "P303_OPPOSED_PRODUCT_ROUTE",
+        "SURVIVOR_ROUTE"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "N20_JOINT_ARITHMETIC_UPPER",
+        "PAPER_ROUTE_VALIDATION",
+        "N20_LOCAL_PRIME_GRAPH_CUT"
+      ],
+      "id": "N20_NESTED_ROUTE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md"
+      ],
+      "statement": "Apply one genuinely independent changing-window upper to the same-source off-line-zero detector, with its exact sign and quantifiers. Qualifying Step 4 requires both that arithmetic input and the complete kernel-checked analytic transfer on the actual source.",
+      "status": "OPEN"
+    }
+  ]
+}

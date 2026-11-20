@@ -1,0 +1,7 @@
+{
+  "archive": "STEP4_RESIDUE_GRAPH_EVIDENCE.zip",
+  "bytes": 448287,
+  "sha256": "9b35e813c4c8983e084d3830c19b1bc44ea545e7185122189a6654b8c6ab3c3f",
+  "files_plus_manifest": 85,
+  "source_comparison": "every member matched its original SHA-256 after ZIP readback"
+}

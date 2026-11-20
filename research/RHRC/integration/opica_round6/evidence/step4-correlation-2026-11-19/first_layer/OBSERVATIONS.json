@@ -1,0 +1,93 @@
+{
+  "scope": "Complete actual pointwise covariance at four selected early horizons, full one-copy source. No unbounded inference.",
+  "cutoff": 10000000,
+  "source_scale": "1/4096",
+  "bits": 160,
+  "flint": "0.9.0",
+  "harmonics": 511,
+  "boxes": 1024,
+  "uniform_scaled_kernel_error": "[0.00024798854237337620816638574327372262391212162 +/- 5.63e-48]",
+  "prime_table_sha256": "12c4956dbb3e1e4e2e05bd2d1ca663bd6a77bb488ad281a681252a926560f625",
+  "observations": [
+    {
+      "center": 21000000,
+      "inclusive_active_integer_bounds": [
+        20994874,
+        21005127
+      ],
+      "prime_atoms": 608,
+      "proper_powers": 1,
+      "distinct_double_prime_atoms": 323,
+      "signed_matrix_nonzero_ordered_entries": 497743,
+      "inertia_on_active_integer_atoms": [
+        1,
+        323,
+        608
+      ],
+      "native_field_times_s5": "[-43.043 +/- 7.41e-4]",
+      "cancelled_double_prime_field_times_s5": "[-4.0723 +/- 3.88e-5]",
+      "signed_covariance_times_s10": "[-385.85 +/- 6.92e-3]",
+      "sign": -1
+    },
+    {
+      "center": 23000000,
+      "inclusive_active_integer_bounds": [
+        22994386,
+        23005615
+      ],
+      "prime_atoms": 683,
+      "proper_powers": 0,
+      "distinct_double_prime_atoms": 340,
+      "signed_matrix_nonzero_ordered_entries": 580040,
+      "inertia_on_active_integer_atoms": [
+        1,
+        340,
+        682
+      ],
+      "native_field_times_s5": "[91.655 +/- 8.93e-4]",
+      "cancelled_double_prime_field_times_s5": "[0.5054 +/- 5.79e-5]",
+      "signed_covariance_times_s10": "[-110.64 +/- 6.10e-3]",
+      "sign": -1
+    },
+    {
+      "center": 25000000,
+      "inclusive_active_integer_bounds": [
+        24993898,
+        25006104
+      ],
+      "prime_atoms": 721,
+      "proper_powers": 0,
+      "distinct_double_prime_atoms": 360,
+      "signed_matrix_nonzero_ordered_entries": 648720,
+      "inertia_on_active_integer_atoms": [
+        1,
+        360,
+        720
+      ],
+      "native_field_times_s5": "[95.820 +/- 8.83e-4]",
+      "cancelled_double_prime_field_times_s5": "[-1.5506 +/- 5.29e-5]",
+      "signed_covariance_times_s10": "[277.71 +/- 5.40e-3]",
+      "sign": 1
+    },
+    {
+      "center": 29000000,
+      "inclusive_active_integer_bounds": [
+        28992921,
+        29007080
+      ],
+      "prime_atoms": 817,
+      "proper_powers": 0,
+      "distinct_double_prime_atoms": 422,
+      "signed_matrix_nonzero_ordered_entries": 867632,
+      "inertia_on_active_integer_atoms": [
+        1,
+        422,
+        816
+      ],
+      "native_field_times_s5": "[18.712 +/- 9.44e-4]",
+      "cancelled_double_prime_field_times_s5": "[-2.3529 +/- 2.52e-5]",
+      "signed_covariance_times_s10": "[64.75 +/- 6.79e-3]",
+      "sign": 1
+    }
+  ]
+}

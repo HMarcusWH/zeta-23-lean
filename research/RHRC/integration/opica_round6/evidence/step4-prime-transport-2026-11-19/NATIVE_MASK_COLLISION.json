@@ -1,0 +1,31 @@
+{
+  "qualification": "Exact two-label arithmetic and original tree/mask geometry; unmasked covariance and the full matching were not evaluated.",
+  "cutoff_X": "2^1399600",
+  "kappa": "1/1000",
+  "alpha_fixture": "1/125 (only kappa is used by these two mandatory targets)",
+  "rough_cutoff": 1958880160000,
+  "common_prime": "2^1398269-1",
+  "common_prime_authority": "https://www.mersenne.org/primes/?press=M1398269",
+  "cofactors": [
+    "2^1279-157",
+    "2^1279-1"
+  ],
+  "cofactor_primality": "python-flint 0.9.0 fmpz.is_prime() returned 1 for both",
+  "labels": [
+    "(2^1398269-1)(2^1279-157)",
+    "(2^1398269-1)(2^1279-1)"
+  ],
+  "mobius_signs": [
+    1,
+    1
+  ],
+  "gcd_equals_common_prime": true,
+  "mask_rejects": true,
+  "s": 1184,
+  "shell": "[2^1399547, 2^1399548)",
+  "common_base_cell": "last of 2^1184; length 2^1398363",
+  "last_shared_dyadic_depth_relative_to_base": 86,
+  "ordered_signed_removed_weight_at_base": "2/2^1399547",
+  "ordered_signed_removed_weight_all_levels": "(4-2^(1-86))/2^1399547",
+  "source_sha256": "e97588f2b5e96e0272ef80321d026895d5aff6467422775f2f7b54ea3f06bf3d"
+}

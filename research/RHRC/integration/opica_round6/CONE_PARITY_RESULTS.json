@@ -1,0 +1,197 @@
+{
+  "graph_sha256": "f0c612a02cb33c38b8be8ecc15597fc91294e554f8bdf41d51324acaa2d30225",
+  "nodes": [
+    "CONE_CONTINGENCY",
+    "CONE_MATCH",
+    "ONE_POLARITY",
+    "ROUGH_TREE"
+  ],
+  "results": [
+    {
+      "cofactor_cap": 1,
+      "horizon": 131093,
+      "labels": 1273,
+      "max_abs_coarse_determinant_example": {
+        "cell": [
+          114688,
+          116736
+        ],
+        "charge": -16,
+        "cone_charge": -16,
+        "counts": [
+          0,
+          16,
+          0,
+          0
+        ],
+        "determinant": 0
+      },
+      "occupied_nodes": 6406,
+      "positive_charge_energy": "63/4194304",
+      "positive_normalized_determinant_energy": "0"
+    },
+    {
+      "cofactor_cap": 1024,
+      "horizon": 131093,
+      "labels": 1273,
+      "max_abs_coarse_determinant_example": {
+        "cell": [
+          114688,
+          116736
+        ],
+        "charge": -16,
+        "cone_charge": -16,
+        "counts": [
+          0,
+          16,
+          0,
+          0
+        ],
+        "determinant": 0
+      },
+      "occupied_nodes": 6406,
+      "positive_charge_energy": "63/4194304",
+      "positive_normalized_determinant_energy": "0"
+    },
+    {
+      "cofactor_cap": 1,
+      "horizon": 221189,
+      "labels": 2306,
+      "max_abs_coarse_determinant_example": {
+        "cell": [
+          192512,
+          196608
+        ],
+        "charge": -75,
+        "cone_charge": -82,
+        "counts": [
+          7,
+          82,
+          0,
+          0
+        ],
+        "determinant": 0
+      },
+      "occupied_nodes": 11567,
+      "positive_charge_energy": "63/4194304",
+      "positive_normalized_determinant_energy": "0"
+    },
+    {
+      "cofactor_cap": 1024,
+      "horizon": 221189,
+      "labels": 2306,
+      "max_abs_coarse_determinant_example": {
+        "cell": [
+          192512,
+          196608
+        ],
+        "charge": -75,
+        "cone_charge": -75,
+        "counts": [
+          0,
+          82,
+          0,
+          7
+        ],
+        "determinant": 0
+      },
+      "occupied_nodes": 11567,
+      "positive_charge_energy": "63/4194304",
+      "positive_normalized_determinant_energy": "0"
+    },
+    {
+      "cofactor_cap": 1,
+      "horizon": 1049155,
+      "labels": 12031,
+      "max_abs_coarse_determinant_example": {
+        "cell": [
+          901120,
+          917504
+        ],
+        "charge": -211,
+        "cone_charge": -287,
+        "counts": [
+          76,
+          287,
+          0,
+          0
+        ],
+        "determinant": 0
+      },
+      "occupied_nodes": 60494,
+      "positive_charge_energy": "31/33554432",
+      "positive_normalized_determinant_energy": "0"
+    },
+    {
+      "cofactor_cap": 1024,
+      "horizon": 1049155,
+      "labels": 12031,
+      "max_abs_coarse_determinant_example": {
+        "cell": [
+          901120,
+          917504
+        ],
+        "charge": -211,
+        "cone_charge": -211,
+        "counts": [
+          0,
+          287,
+          0,
+          76
+        ],
+        "determinant": 0
+      },
+      "occupied_nodes": 60494,
+      "positive_charge_energy": "31/33554432",
+      "positive_normalized_determinant_energy": "0"
+    },
+    {
+      "cofactor_cap": 1,
+      "horizon": 1656575,
+      "labels": 19878,
+      "max_abs_coarse_determinant_example": {
+        "cell": [
+          1409024,
+          1441792
+        ],
+        "charge": -322,
+        "cone_charge": -443,
+        "counts": [
+          121,
+          443,
+          0,
+          0
+        ],
+        "determinant": 0
+      },
+      "occupied_nodes": 99545,
+      "positive_charge_energy": "3/134217728",
+      "positive_normalized_determinant_energy": "0"
+    },
+    {
+      "cofactor_cap": 1024,
+      "horizon": 1656575,
+      "labels": 19878,
+      "max_abs_coarse_determinant_example": {
+        "cell": [
+          1605632,
+          1638400
+        ],
+        "charge": -1626,
+        "cone_charge": -1763,
+        "counts": [
+          137,
+          2291,
+          0,
+          528
+        ],
+        "determinant": 72336
+      },
+      "occupied_nodes": 99545,
+      "positive_charge_energy": "3/134217728",
+      "positive_normalized_determinant_energy": "257658185363570732330981689183606752228054906245953001560566994582752063880952296407410448691816005048575691716713785714770672396202586420112873423987249431858479290290220527731430663902504922576536321463501943/4304139758229790791468500562997479885704556630468018719572668441294247467497975057425153831035608709400059228222564702466311463988297043481234183589806187912411333360906919113523154200700038752842303930368000000"
+    }
+  ],
+  "schema": "OPICA6_CONE_PARITY_PROBE_V1",
+  "scope": "Finite native terminal rows and weights including clips. At these horizons floor(X^(1/1000))=1; 1024 is a separate sensitivity control. Neither is an asymptotic certificate."
+}

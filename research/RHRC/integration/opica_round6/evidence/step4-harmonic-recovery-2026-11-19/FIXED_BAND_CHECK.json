@@ -1,0 +1,77 @@
+{
+  "status": "FINITE_COMPLETE_SIGNED_COVARIANCE",
+  "X": 2048,
+  "half_width_H": 5,
+  "centers": [
+    0,
+    14,
+    25
+  ],
+  "coprime_to_six_labels": 683,
+  "nonzero_labels": 623,
+  "positive_labels": 284,
+  "negative_labels": 339,
+  "zero_labels": 60,
+  "unordered_cross_pairs_per_center": 193753,
+  "ordered_cross_terms_per_center": 387506,
+  "exact_diagonal_rational_sha256": "d177d4787b95e7f6983ba335a4dd541e4d4dbda5d06de421dfe9389a1d27eb15",
+  "rational_diagonal_rule": "2H times the exact sum of 1/q over 1<=q<=X with (q,6)=1 and mu(q) nonzero; includes q=1.",
+  "signed_cross_rule": "Each p<q denotes two ordered integer labels, contributing 4 mu6(p)mu6(q) cos(j*log(q/p))*sin(H*log(q/p))/(sqrt(pq)*log(q/p)).",
+  "absolute_cross_rule": "Sum of the absolute values of these integrated paired contributions, taken after each conjugate pair is combined; not the integral of a pointwise absolute cross sum.",
+  "results": {
+    "0": {
+      "band": [
+        -5,
+        5
+      ],
+      "diagonal": "[29.934893699002808353224533408 +/- 2.50e-28]",
+      "signed_cross": "[12.001137746094538221231260969 +/- 1.92e-28]",
+      "absolute_cross": "[1656.4185418174335802592188596 +/- 3.83e-26]",
+      "energy": "[41.936031445097346574455794377 +/- 5.80e-29]",
+      "positive_cross_pairs": 96931,
+      "negative_cross_pairs": 96822
+    },
+    "14": {
+      "band": [
+        9,
+        19
+      ],
+      "diagonal": "[29.934893699002808353224533408 +/- 2.50e-28]",
+      "signed_cross": "[-7.4116071466283798035100360787 +/- 4.10e-30]",
+      "absolute_cross": "[1051.1486633582272646830482082 +/- 3.74e-26]",
+      "energy": "[22.523286552374428549714497329 +/- 4.69e-29]",
+      "positive_cross_pairs": 96856,
+      "negative_cross_pairs": 96897
+    },
+    "25": {
+      "band": [
+        20,
+        30
+      ],
+      "diagonal": "[29.934893699002808353224533408 +/- 2.50e-28]",
+      "signed_cross": "[-4.7307208354657660921643958873 +/- 3.00e-29]",
+      "absolute_cross": "[1047.6604765041517270131817531 +/- 1.43e-26]",
+      "energy": "[25.204172863537042261060137520 +/- 4.81e-28]",
+      "positive_cross_pairs": 96749,
+      "negative_cross_pairs": 97004
+    }
+  },
+  "independent_quadrature": {
+    "polynomial_degree": 15,
+    "panels": 256,
+    "distinct_grid_samples": 3841,
+    "raw_sum": "[22.523286552374428549714497329 +/- 4.69e-29]",
+    "analytic_remainder_upper": "[1.3877283251947255406445458324e-18 +/- 4.28e-47]",
+    "certified_direct_integral": "[22.52328655237442855 +/- 1.68e-18]",
+    "band": [
+      9,
+      19
+    ],
+    "reason": "Integrate the original |D(t)|^2 directly. Exact rational polynomial weights are checked against every monomial through degree 15. Remainder <= (2H)*(sum|a_q|)^2*(panel_width*log(X))^16/16!."
+  },
+  "precision_bits": 128,
+  "flint_version": "0.9.0",
+  "source_sha256": "8ce873777231e4521a02df1465d32f676f29af3cde7b391c57158586b7638779",
+  "seconds": 2.91,
+  "scope": "Three actual length-ten bands at one finite integer cutoff. No claim of a bound as X or the band center varies."
+}

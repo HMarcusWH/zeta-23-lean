@@ -1,0 +1,1962 @@
+{
+  "archive_sha256": "7a0af9ed94970cc0d4159d9c864e10c1d52c079eed96d352ee3ac45f531eae8d",
+  "archive_payloads_verified": 198,
+  "scope": "Source origins for published notes, finite calculations and historical research inputs. Line endings and whitespace are normalized. Private navigation is omitted. Historical Lean snippets are displayed as text and carry no new compiler authority.",
+  "files": [
+    {
+      "path": "step4-actual-loading-round6-2026-11-11/ACTUAL_LOADING_OPICA_CONSTRAINTS.md",
+      "original_sha256": "1638101ef6605654b5cdc170791b89f1c0d2530d1725272475c7a73a5e3ac548",
+      "archive_member": false
+    },
+    {
+      "path": "step4-actual-loading-round6-2026-11-11/MOMENT_HIERARCHY_ATTEMPT.md",
+      "original_sha256": "5b105900b87cfdab6e00310f036e69aab9c83db13de844116fd906eb71fce3b0",
+      "archive_member": false
+    },
+    {
+      "path": "step4-actual-loading-round6-2026-11-11/POSITIVE_SOURCE_ENERGY_ATTEMPT.md",
+      "original_sha256": "a11e30dd85a07f5c90d0a0cd4cc5fac627ea0397779d04db9b9f406538179112",
+      "archive_member": false
+    },
+    {
+      "path": "step4-actual-loading-round6-2026-11-11/PREDECESSOR_LOADING_TEST.md",
+      "original_sha256": "8129b5d32b38dcc6c6696cbf108e47c586e58f71ee744c4e7c7bc4a7ef164361",
+      "archive_member": false
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/BALANCED_PRIME_EXCHANGES.md",
+      "original_sha256": "4acc5d0f25a3a2f606587be5e0b1f78451473269ec4c6ecf74da259ae4d39d2f",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/BOTH_ROW_ENERGIES.md",
+      "original_sha256": "bc6cc5969c45bcf6b9f69f9715cb462503a6de636918fefa29064ba103612a71",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/CRITICAL_FINITE_RANGE.md",
+      "original_sha256": "43ca0a076fc4fb8ce5279f3c374fdd2c6b584d22739680ceaa15c1535d020d0d",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/DENSITY_ISOLATOR.md",
+      "original_sha256": "f7743150021eadb9f723bcda4fc2f6975af976452ea443ce274ff81ca7c267fc",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/ECHO_CONTROLS.json",
+      "original_sha256": "c92d0d38bd33ddc9e93fd094c9c8d7c1db95a1d9e2e18c429ab4319ff95d0fd0",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/ECHO_GRAPH.json",
+      "original_sha256": "7c8f0eecdf4b6bc11af14e4ae83875bb5af76aeddcaaefffc414d3dd5341d62d",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/ETA_FILTERED_PRIME_LOCALIZATION.md",
+      "original_sha256": "e881436188251292dea22d22dd25da5e7c2ef7e5384740ad7550085298b1f080",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/FACTORIAL_PRIME_PROJECTIONS.md",
+      "original_sha256": "48fe60959476e50a99ded44d3c8eb683a513441cae429dec1c782cf2db5ab526",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/FIRST_BAND_OSCILLATION.md",
+      "original_sha256": "ed8931ed704559873d730def4d6abdcae0a6fa72665cb986edabb4774a2a4bab",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/FULL_PRODUCT_ROWS_CHECK.json",
+      "original_sha256": "3ddb22ad9da17ad3176e6fceb270903e503fd649b48bec171f5b7e8cfdf1d62d",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/LOCAL_FILTER_COST.md",
+      "original_sha256": "86a00fb9fe4541cc229d495fd277cd13f8aedb0e60bccf814af50a9faf1191ec",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/NATIVE_SIGNED_AREA_RUNS.md",
+      "original_sha256": "272a0337062ce30171b9a2b4b480373b80a3a2e84c018795a3200682e6822c7f",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/OLD_PRIME_LOCALIZATION.md",
+      "original_sha256": "7fdfc597c9bae5310f9376a6c253f634d8bffb503255bdfc8d8937d15a2ff4bd",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/ORDINARY_POWER_WINDOWS.md",
+      "original_sha256": "5a0e10c7973cc014a6e71b1bf9ad1ec97d73d3568ac17fb83bf7bdb9ca96716d",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/PRIME_POWER_ECHO.md",
+      "original_sha256": "0458b661fb66cd7c1088af8d9f84511d87af85477050a91c00b11e8b725a64ba",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/PRIMORIAL_NEIGHBORS.md",
+      "original_sha256": "03b1882588dd00fc2dc0c679d33ad183458818b40c62300039f759283220de0c",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/SHARED_PRODUCT_COVARIANCE.md",
+      "original_sha256": "dff76ad841b90fee27825e2b0c5ad4f22a8e56e00b05004aab87d7d00222f217",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/SHARED_SEMIPRIMES_CHECK.json",
+      "original_sha256": "979e395056463b874f207d63ad5c4b3d217fa8549d9d15cf31a1b6fee32d1888",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/SQUAREFREE_CHECK.json",
+      "original_sha256": "c9a9ffa423b12a6550d5a112abc99dabccc68b01f8db3df56ed70927f030339f",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/SQUAREFREE_COST.md",
+      "original_sha256": "dbc3faf1687460eac3ebaca3010785da83321fd1dc995f4ebe9e3aae6a27ef44",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/STOPPED_PRIME_CHECK.json",
+      "original_sha256": "e2d534fa84489fbe506b64bcb2e645a7b1f82db3792d9e864d2027f0ccde929e",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/STOPPED_PRIME_GRAPH.md",
+      "original_sha256": "2a6b15bacc80aa1405cb3b61a93d404aec620adf96af47d8e635a36096974b4b",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/WEIGHTED_FACTORS_CHECK.json",
+      "original_sha256": "34beebb40d0280e304b14743b54973877e274f49f889f1b72a3b6f65b0bb56fd",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/WEIGHTED_PRIME_FACTOR_CRITERION.md",
+      "original_sha256": "e8ce12804802ad1bb32fcf7102ccbb6401af356eb0514896dc96607e79b79b93",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/XI_AREA_ECHO.md",
+      "original_sha256": "159b96414f0576fea3be01a9a9bd6c8440f67b917fb1e6d0f2e18bc207b3d990",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/XI_ORDINARY_PI.md",
+      "original_sha256": "9e584a9e2a411039923b8439217d269ee4ccba7bfebc33abc2a637b2c5ca45da",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/check_echo.py",
+      "original_sha256": "cb6eadea8940d2e79c123d3b7b8c93b170e1ebea3e35ddb31500662a87fba0e1",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/check_full_product_rows.py",
+      "original_sha256": "465275f6fe7feb4259dc5d12ac302998dbef7be7c78bc327285ce4913f1c0fca",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/check_shared_semiprimes.py",
+      "original_sha256": "fc99692a4767cef91d0b0e59074ff77335c50fdccca313e0d341fcf80c6ffca4",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/check_squarefree_cost.py",
+      "original_sha256": "f9716ffd9e56216292ab030fe13cbac7baa83511240555f2edfd6c00c398900d",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/check_stopped_primes.py",
+      "original_sha256": "c55894cc8c13c3663555ed17f9ed699ff11d0bf133ecfc220747e9df8c825d0f",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/check_weighted_factors.py",
+      "original_sha256": "d9f9c576644c2e8e96fb641ddd6b18b145b00779e05b1f81c8cf16f64ae50468",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/graph_echo_paths.py",
+      "original_sha256": "d22aaf02e9950b24057486367badad236a30c7f89969b8a9922f4aed84e52b77",
+      "archive_member": true
+    },
+    {
+      "path": "step4-area-runs-2026-11-19/squarefree-lean/SquarefreePrimeCost.lean.md",
+      "original_sha256": "9ebc3d36d8dd40e3cfa998c3c1fb64d5787c0b76389a430389f498e0f2fd90f1",
+      "archive_member": false
+    },
+    {
+      "path": "step4-complete-residual-round4-2026-11-10/COMPLETE_COVARIANCE_ATTEMPT.md",
+      "original_sha256": "c3f2eb9e4dc5d6346d3c800aebeaf71e4065d4f6cc25ce5070b804ce403a5f70",
+      "archive_member": false
+    },
+    {
+      "path": "step4-complete-residual-round4-2026-11-10/COMPLETE_RESIDUAL_RECURRENCE.md",
+      "original_sha256": "191fec2d7e165afe7f3c72b85fa0200c4528acc87c564db987c3d4332f72cf99",
+      "archive_member": false
+    },
+    {
+      "path": "step4-complete-residual-round4-2026-11-10/ROUGH_ECHO_NATIVE_PAIRING.md",
+      "original_sha256": "6fd63c271f91b5cbc99d8cdf6a819baee8d0b64d2346ab33b8195296828ecc7e",
+      "archive_member": false
+    },
+    {
+      "path": "step4-complete-residual-round4-2026-11-10/WEIGHTED_TARGET_TRANSFER.md",
+      "original_sha256": "dd8c43d7fc24f99fc92f873abac1f14d384b3e155055eb61cdc91556abc8352b",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/ALL_HORIZON_DIAGONAL.md",
+      "original_sha256": "3626f7a9c91c498b0eae1905a4329535698dd0c26b0928ad9b106a5cfa0d214c",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/COPRIME_CHECK.json",
+      "original_sha256": "66c9a05199d8fbd4071965cff00f72ebc141500241002dff79c4cee26baea1a8",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/COPRIME_DIVISOR_ENERGY.md",
+      "original_sha256": "2138c25a8c36e2ff1bd7a5daa52d7c9c318983ac07bd8b8d8e7596f71884e02f",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/COUNTERSIGN_ZERO_HEIGHT.md",
+      "original_sha256": "aa624e5abbf5b39c6d7db8151c5dab670d8751bcb54f037eb1182f08d9ae4f76",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/FIXED_SIEVE_CONSTANTS.json",
+      "original_sha256": "e01a2425c63b40c1b7e94d99fdcece58b431b140b5a047541a71dd52a2282d61",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/FIXED_SIEVE_SIGN.md",
+      "original_sha256": "0abc4452db2f8cf5f6f1c754566da840b2cfac49c28ac449bc686d4518878756",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/MERGED_GRAPH_CONSUMERS.json",
+      "original_sha256": "0e500d1a78debd831e5b9db7d9ca8f5e299fb7ba843c88f29eb231bda2e76663",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/NEGATIVE_INTERVAL_DURATION.md",
+      "original_sha256": "5effb389b429bcc7ae791a3911272a64d5979507c823b4bb370ed85331caf7bd",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/README.md",
+      "original_sha256": "10d7048bb3ebcfe3626dca7c9c71dccbe3234f1da63ba4d91d1bad2ffeecf9a2",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/check_coprime.py",
+      "original_sha256": "e62cc693aebbcd11edaebbd5748d1239bac78a11352b64f8add34e224d1d4df5",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/check_fixed_sieve.py",
+      "original_sha256": "5a4201a3fdb456ea834e72cf1709de119afaf6bbc5505c7648f057ccaf270c9a",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/cuts/ACTUAL_CROSSING_RATE.md",
+      "original_sha256": "0ead9e1ca6d16209d97691fa3326d846699e534b51d802b583915ae995bc9529",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/cuts/FIXED_WINDOW_ZERO_ISOLATION.md",
+      "original_sha256": "8378f0f1ac42b4c28e5c6854c9d54404458cabad5aae9581fff1df33686dd31d",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/cuts/STATIONARY_CUT_PROFILE.md",
+      "original_sha256": "3e33c5119746cc2cd3d63dc23caf68665ff2535e86d16ba7c01f9d6fc9614b93",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/cuts/TRANSVERSE_CONSTANTS.json",
+      "original_sha256": "a6534f3c06cd3095f4d6b9f5797ff22c01c5d71f35e915067ab4edd38fae4693",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/cuts/TRANSVERSE_NATIVE_CUT.md",
+      "original_sha256": "047e2eddbce8ebb750d5e154cacaf71aa3b3f0003980d67a0b40de832c3a8c3a",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/divisor/COUPLED_RESIDUE_MARKING.md",
+      "original_sha256": "ef6b9f32ea5e338df2ebc66f941a6b6911c85972fc5796944f7c5c1f2bb73559",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/divisor/DETERMINISTIC_SIEVE_PROFILE.md",
+      "original_sha256": "369269f6dee296b13bd4d97f8e8a282b576d543edacfcf19722ffc40f7ee3e2b",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/divisor/FIXED_SIEVE_RECURRENCE_AUDIT.md",
+      "original_sha256": "7ca888004d022011160e25fde4975eb7e36287f7f53360be4a1b16de245ba4dc",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/divisor/ROUGH_CORE_PHASE_TRANSITION.md",
+      "original_sha256": "0e134651f21b5761f80a428c693a2532ac9a55620d0c3fab12f7c9920bd37759",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/divisor/ROUGH_DENSITY_CONSTANTS.json",
+      "original_sha256": "49f3d3fe147a02974d2208828fa325709855f11c85e1a7e38203180a7438f408",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/divisor/SIGN_THRESHOLD_CRITERION.md",
+      "original_sha256": "cf720162977483f07b963e0ccfde90178d59460c84ebbed39650df190e1b4749",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/divisor/check_rough_density.py",
+      "original_sha256": "3a37471ce911d3e00d4ca0c8eb5a500e21781d270aace90c008efc630c9ea43b",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/first_layer/INTERACTION_GRAPH.md",
+      "original_sha256": "2609fafc30a2bcf3d3e54a67364da223bcbb97fcc69396699c0024a335aac973",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/first_layer/OBSERVATIONS.json",
+      "original_sha256": "5642baec1b3d11c7e25d60b7198b7a521b9534c252683656604eb624d8666e21",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/first_layer/check_graph.py",
+      "original_sha256": "2284425165ae4ee6e497a1193479f562ee3c3812549bbbcbd0a6e42ea0bb7256",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/lean/NativeSignedComparison.lean.md",
+      "original_sha256": "7ad4464957b6f51f0a888c8d1a7f6ee5709bc8a2643769940f25ac7fa69d4742",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/lean/VERIFICATION.json",
+      "original_sha256": "61ea0d3c0aa96e99022f3c9241e6375952052ee0370a0a15c57c04d72f478030",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/query_merged_graph.py",
+      "original_sha256": "deb2f949c1adfcc5c455fdeda19b648cc8f6d2af32e290fd1db13665483adae2",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/shift/COMPOSITE_SHELLS.md",
+      "original_sha256": "40b3fd9238812418b47c77d73b7a6775431526bef03178d8469e07f8dbbefdfc",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/shift/DISTINCT_PRIME_GAPS.md",
+      "original_sha256": "5a4d48d6bded211a493bfa06f85536a5813f34bc40ff2fbce9839497718e33bd",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/shift/FIXED_LINE_JETS.md",
+      "original_sha256": "a0b603f500ca1b4ebfaa76027a5610aa22d085012980d36c9bcb966fd1008666",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/shift/FIXED_LINE_JET_CHECK.json",
+      "original_sha256": "4ef24dda4c4335c87219c542e58b01877f2adb430238d53846b60234fbd21f8d",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/shift/POSITIVE_TOTIENT_DELAY.md",
+      "original_sha256": "b8161a1a78208cfb38052fe2877e45394eb3676c256cbe0b6d1eb7e8a3c936f5",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/shift/SHELL_CERTIFICATE.json",
+      "original_sha256": "58943d04aa97fde442008e030524e85c9ccee65b54ae6f7aab45813d2310ef84",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/shift/SIX_SHELL_SAMPLES.json",
+      "original_sha256": "afe1d23dfb504d6fc34bf577b8da00315b2eda0ac85339bfb2e292be009d7ff6",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/shift/THETA_SHIFT_AND_GRAM.md",
+      "original_sha256": "d748ff6657d09607bb8f32b80f01585835f961901bf863ad7764ed09ad9c4c3b",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/shift/check_fixed_line_jets.py",
+      "original_sha256": "a4b8e461657726eacab3b82c2b6ca7b0db7f0204a092dd5000bd1e139b89b5b3",
+      "archive_member": false
+    },
+    {
+      "path": "step4-correlation-2026-11-19/shift/sample_shells.py",
+      "original_sha256": "47a7518829e8f9fd440075a21389458456ee100e26ca1879a0e1746c396d5037",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/ACTIVE_MODE_COMPARISON.md",
+      "original_sha256": "236190cd6f6079728961491e161ae6574f91544fe54c03d86fe58c31a58c151b",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/GRAPH_JOINT_CONSUMERS.json",
+      "original_sha256": "a2631356590fbebb3699e48d27430ab10dc8532b5c78d7a9530ae78046a9f3bc",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/HEAT_VARIANCE.md",
+      "original_sha256": "e7ae284c282ce0985536b1ea1828bcd814b3fe08a5e91dfad4bb8d08d06dd6e0",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/LOCALIZATION_CONSTANTS.json",
+      "original_sha256": "7925b5f133be3e88c93545b2df0dc582b7dd078275c623f841b6918b9e98d4ed",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/POISSON_PRIME_RANGE.md",
+      "original_sha256": "d4776acd3ff31ea7aac5bba3528621a93ad97acfb9e4526960da84bbd33e53f8",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/PRIMITIVE_PATTERN_CHECK.json",
+      "original_sha256": "bed1d83385b2cb972b69a01164caefe64b7090c03ec30e6d8905edfb9322ec77",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/PROJECTED_DIVISOR_GRAPH.md",
+      "original_sha256": "6a3899bd6bcc590cbaeb2717f591d8e3ca578bb634dd98ac5a5a9fc5e11acdf7",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/README.md",
+      "original_sha256": "ee4ce14d95acecfb8652b1a13567f4b9ba8f80c42f157db01e5f98e0406e90ba",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/check_localization.py",
+      "original_sha256": "46a945e7e64ff6808b835d82cf1b447c41c9a7463a21d2d652406cf4626deb8d",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/check_primitive_patterns.py",
+      "original_sha256": "781a5f1dadd695584917e9badcbf81680ca4f3106f23d00941acb39b5616e95b",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/graph_joint_consumers.py",
+      "original_sha256": "3b4e84059d6719e30a02968063b84dc410ea696b5cc8b312e010420718331c67",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/jets/CAYLEY_CHECK.json",
+      "original_sha256": "29bb0f442ad17d98757cc955e28556368bf11ff530006bfb2db9a1cd20563f8b",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/jets/EULER_TAIL_FALSIFICATION.md",
+      "original_sha256": "fa4758544df54923f73d45547343dab20383b093485e7b2744dc761e461f00a6",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/jets/POISSON_STABLE_MODES.md",
+      "original_sha256": "01604b9da3398b98c968ab422134924655b6a5c3940c3ecff4119a22c1684823",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/jets/SINGLE_SCALAR_CAYLEY.md",
+      "original_sha256": "531dc18eb55911fc3c32d07e28dba53ffaa1124cf94775c668f261b5d0eb2024",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/jets/UNSHIFTED_COFINAL_GRAPH.md",
+      "original_sha256": "d70d1336cd532f574d8f7c3a3dd096acd5edd037154e519649db9d9579b019ca",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/jets/check_cayley.py",
+      "original_sha256": "2906233cb4dbd730439d9c6fdb734dda825f598044d30e181cc1888cccdfe5f0",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/lean/PrimitiveEulerMultiplier.lean.md",
+      "original_sha256": "f5e5e27b7e12b4e24f37020cf9a044bcec0bc550d2635b0bee14bfdd662f489c",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/lean/VERIFICATION.json",
+      "original_sha256": "09727a2f04499b3ce43387fca537e50bad8db9e6662546c16190a487adc8a41b",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/sieve/INDIVIDUAL_PRIME_CHECK.json",
+      "original_sha256": "bada4a8ea07edb0f0aabc45e92bad3d6ddfb1237115da3cf6888222935eea43a",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/sieve/INDIVIDUAL_PRIME_ECHO.md",
+      "original_sha256": "5e5807d3fbe2ae758c59cfacff575d3e51a58483a7f62e950e87820acc859ce1",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/sieve/OPTIMAL_PRIME_MASKS.md",
+      "original_sha256": "28d297dbb349ebccb4863c739ac8cd0e11b8e1c10617bd05a1bad37edff309e3",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/sieve/OPTIMAL_PRIME_MASK_CHECK.json",
+      "original_sha256": "a899208daf7a02416059bce337bd6daf40088bba41cba85fb804db325a344ec9",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/sieve/PROJECTED_PREFIX_SIGN.md",
+      "original_sha256": "094ac2bc18d3b4d8003f2513eec9fe85feb2c85a43a75f20c2c6161bb3d901d2",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/sieve/SUPERPOLYNOMIAL_NATIVE_MASKS.md",
+      "original_sha256": "443a9d11c1c2b45b0f1edb7e59dc4a8c7b49720deac3520dfa1ca1a94f1efa06",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/sieve/UNRESTRICTED_TRANSLATION_LIMIT.md",
+      "original_sha256": "e5594287efee8c36b603b38a16ba4471ddb9bdf9ef15830fc5fe1053a51a030a",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/sieve/check_individual_prime.py",
+      "original_sha256": "bd0494a1e1fee969f65ff10cccb8773e69b67e419020029522f1dea037c700a8",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/sieve/check_optimal_prime_masks.py",
+      "original_sha256": "df29e7dc0635e7a9a01e80729f87e6665b8854e718ccb017afdf4fcada609c20",
+      "archive_member": false
+    },
+    {
+      "path": "step4-duration-2026-11-19/windows/CRITICAL_DURATION_AND_JETS.md",
+      "original_sha256": "c1ccdb1da98ab295b2da7bb10c3d3fcf341810166540838deae1be1d4952c697",
+      "archive_member": false
+    },
+    {
+      "path": "step4-euler-primitive-2026-11-19/RELATED_DETECTOR_CHECKS.md",
+      "original_sha256": "a7d57e205c71e25d793ea660ae2154d4b8ede330d2982f649fb259b5363e46ff",
+      "archive_member": false
+    },
+    {
+      "path": "step4-euler-primitive-2026-11-19/STEP4_PRIME_POWER_APERTURE_PRIMITIVE.md",
+      "original_sha256": "ecd8ea9c96c821d67fd4ecd4203559809c0c481ba52bd2dcf4a2a06b0c427ff0",
+      "archive_member": false
+    },
+    {
+      "path": "step4-euler-primitive-2026-11-19/check.py",
+      "original_sha256": "875c179a4ae3116dc6a094831279bebc84ebf7fc8d7bfee135ff591f6a11d7c5",
+      "archive_member": false
+    },
+    {
+      "path": "step4-euler-primitive-2026-11-19/finite-checks.json",
+      "original_sha256": "4e26f0e428367bd05590fad69f2b75f5021d619a57c85dbbf9bdd500317be388",
+      "archive_member": false
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/COVARIANCE_SIGN_CONTROL.json",
+      "original_sha256": "0e43c248b5479a9eebf91f5990ee7067d00326b7cf860882e08e461fc630a46c",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/DELAYED_GAIN.md",
+      "original_sha256": "595f2a2efaa6b5979287778a0110b84c641cd1d96fd7a2f5fa1b24d10af05cda",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/DILATION_REPLAY.json",
+      "original_sha256": "5edb98fa020eaa713567d1c74dd877267bc41cc4986e71a5c3831a4f5f46744f",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/DYADIC_TREE.md",
+      "original_sha256": "745468e441a2c4ecbd6cccafef960932ea54dab2e2fb6e2be7cc12eb425e1d29",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/DYADIC_TREE_CHECK.json",
+      "original_sha256": "d049eda97c6ef7e73fff7d5949e08c1a562edbf3fc2d8606e62fba01cae43d8f",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/FINITE_RANGE_AND_RECOVERY.md",
+      "original_sha256": "a71a9378f58853a19a567177e244220f652c6ecb152d4b85ea049b3aa129800f",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/FINITE_RANGE_CONSTANTS.json",
+      "original_sha256": "f53ea000387d71c054f70bdcd20447ddf5f34f615296620500725ca11bb91692",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/FINITE_RATIONAL_COVARIANCE.md",
+      "original_sha256": "3637b280c6e9d7141a2abb4a96b9036880c07f3393e46f0874f71494d4df8b20",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/FIXED_BAND_CHECK.json",
+      "original_sha256": "1f7b455c16b4ff4523905897c59bf991c9a19ccf6b57b6c0ba8b324b5da2c3b9",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/FIXED_BAND_THEOREM.md",
+      "original_sha256": "26756d8eafd3038314dc6fee563b5307e50a57be677c1fde52ba28d10d9b9fdd",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/FIXED_HEIGHT_OBSTRUCTION.md",
+      "original_sha256": "d5a90fa53d6e835ff1e9b277601f19f90d68038224743843549b5b5f29e08018",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/GROUND_TRANSFER.md",
+      "original_sha256": "1a3af788d516a2f8f44360400d71adbdbd2a54d8515e123a1131585208ecdc48",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/GROUND_TRANSPORT_CHECK.json",
+      "original_sha256": "ff42d7a06d564f14d2124b4cfe2b0e09bb3187727641095ea2c158e4271fca29",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/NATIVE_CUTOFF_AVERAGE.md",
+      "original_sha256": "9ab2328b979966640b97e2c9071946276cbecfb6a26484e8658e7af0f6f274bc",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/NATIVE_PAIR_SECTOR.json",
+      "original_sha256": "86552e94862a5fc95b33ab37e972d19f6004d7ba64c1da59ab68939a4bb42a89",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/PAID_PAIR_DISTANCES.md",
+      "original_sha256": "529a08dda1343c24049639f76df5ec61a48b8c9ac99c1a0cd9d61b6ecc8a68e3",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/POOLED_HARMONIC.md",
+      "original_sha256": "ec2d039495952ca6fe8999511f4ff6678d9dc9d4b6b32a81833dad7b54386d59",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/POOL_CHECK.json",
+      "original_sha256": "c22af7daeba03966ff0c9940ba58ea9c8ae7192395f8132dcd83cff0f4a34181",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/POWER_DELAY.md",
+      "original_sha256": "022a6b4e1538050a8f2d1f03497d958ad618712a63a4512d27aa34209357b29b",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/POWER_DELAY_CHECK.json",
+      "original_sha256": "802ea469b045837481cf8d5aa8988d15a62d4f924bfcdbc71767d9fb7a1f8124",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/POWER_DELAY_REPLAY.json",
+      "original_sha256": "96c4eeeef40b702371ceea35fc71cacf0ff583d2b3d0c655213caaf9445693a7",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/PRIMITIVE_BAND_COVARIANCE.md",
+      "original_sha256": "e605b93545ebed724d9c768d8c7987c8985b1312b5da7d153bd618d3a8572707",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/RATIONAL_PAIR_CHECK.json",
+      "original_sha256": "62eabfe3a7b3a151ac46d0ae58376f871fe0b7e7f0ac5f16d41f03d23825ec1f",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/RATIONAL_SIGNED_COVARIANCE.md",
+      "original_sha256": "42e901e6def2740fdd711bb10fe04710d1f165864155eec2829574fff0660d80",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/SIGNED_COMPENSATION.md",
+      "original_sha256": "aefbf6c8942dd4f7ae19089d9cbedd6f1afeb5cce12d3d560dc59cdf7c7cc124",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/SIGNED_DELAYED_GAIN.md",
+      "original_sha256": "20e082451e79d86e4cbf68d0eca9a2671d2a33c9585651a9edd12de0cafd8071",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/SIGNED_PRIME_FACTORS.md",
+      "original_sha256": "8e5d098ceba47957ef83a1c96ae0ba0e7c5a0bee8d13ce6678de22749f03b475",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/check_covariance_sign.py",
+      "original_sha256": "6279c4fc0b6a5200c28ad77a1d28159bc8daa35e49b7705408fcb385f24d02d3",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/check_dilation_replay.py",
+      "original_sha256": "56f03e2da87a2e9f3e33a8177289510a4485b5ebfa5562285afa3a49edbbd766",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/check_dyadic_tree.py",
+      "original_sha256": "de4914876ecee42b17c37202ade66b5d470c8a992f64bbaeee94f3304ffefc05",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/check_finite_range.py",
+      "original_sha256": "b4c94763daa4406a6964117835b59057a14fde93229a572efc55f21cb66f8389",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/check_fixed_band.py",
+      "original_sha256": "8ce873777231e4521a02df1465d32f676f29af3cde7b391c57158586b7638779",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/check_ground_transport.py",
+      "original_sha256": "28a520d2f54637848dd28bc38a8b36ccc35addf79a7107280d0a0bf0db52425f",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/check_native_pair_sector.py",
+      "original_sha256": "ff209b7d1159c312597e0eb74d5e441b79bcdc5132d2fb2dd6bc3c24b3fe9128",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/check_pool.py",
+      "original_sha256": "8fed38893b013d01a4ce898b8e06f479e4ba5e51873eae3b8a018e252570ac8e",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/check_power_delay.py",
+      "original_sha256": "4632e468c786dc051759e95fa9ded774360eeaac708828c377580407a8fe3fd7",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/check_power_delay_prefix.py",
+      "original_sha256": "518a49fb42bba1bd6190a9016e8745caef14796afd9199a3e4a9c620d81ed823",
+      "archive_member": true
+    },
+    {
+      "path": "step4-harmonic-recovery-2026-11-19/check_rational_pairs.py",
+      "original_sha256": "ba24a16d299c0674b5442b270291b8502f4f871398309a45f7ef41686d57e8b9",
+      "archive_member": true
+    },
+    {
+      "path": "step4-height-window-2026-11-19/HEIGHT_CONSTANTS.json",
+      "original_sha256": "3afb13d30b5568e1ca76445d5ece78599e065db2cb57ef2b772849f0d0588ae9",
+      "archive_member": true
+    },
+    {
+      "path": "step4-height-window-2026-11-19/INTERVAL_VARIANCE.md",
+      "original_sha256": "4ec9f50a88ea20e5a3a591aa5fcd728de2f912de67b88ca643c2e425636eb8e4",
+      "archive_member": true
+    },
+    {
+      "path": "step4-height-window-2026-11-19/NATIVE_WINDOW.md",
+      "original_sha256": "f0bca9fc763ac7d7da15ec693c99dfbc34b5c2ba585bf8f4cb8e8eee168ff239",
+      "archive_member": true
+    },
+    {
+      "path": "step4-height-window-2026-11-19/POSITIVE_APERTURE_QUADRATURE.md",
+      "original_sha256": "7669af15dd0613f46f1cca14cdbf246f11f170c186c426369b1150305e192408",
+      "archive_member": true
+    },
+    {
+      "path": "step4-height-window-2026-11-19/README.md",
+      "original_sha256": "fff8de7a0eb83dae718aed5cf9c2e00ba1dcd93e5788d2754025ce1fff06522a",
+      "archive_member": true
+    },
+    {
+      "path": "step4-height-window-2026-11-19/REAL_MOMENTS.md",
+      "original_sha256": "c9b373ab54fc4c5040ded09f62942605ff126532c133ef5d88ead08316b65271",
+      "archive_member": true
+    },
+    {
+      "path": "step4-height-window-2026-11-19/STEP4_HEIGHT_AND_GRAPH_RESULTS.md",
+      "original_sha256": "66ba2ea6a4a39daa563bc6ea47fbdc7ebea91f07ef0befff36bd707ba2a64ead",
+      "archive_member": true
+    },
+    {
+      "path": "step4-height-window-2026-11-19/check_constants.py",
+      "original_sha256": "284a04887dece972b5ce1e158ed48359f2ca95812c0040955b08fd730ee2c76a",
+      "archive_member": true
+    },
+    {
+      "path": "step4-height-window-2026-11-19/graphs/ACTUAL_PRIME_CUT_LOCATIONS.md",
+      "original_sha256": "ac90804b17631207d37c963e16546c4e97ae54937ee9032afbec8e075234575a",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/graphs/CROSSING_COMPARISON.md",
+      "original_sha256": "9f0a6703237a76df8b69b027195321149dcc22373125166fea6af5a919775169",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/graphs/DENSE_PRIME_PAIR_CANCELLATION.md",
+      "original_sha256": "f71ae6c50b239508e83fbd86ae8b3bd066ecf83a489395c36f0ba50192490560",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/graphs/GENUINE_DIVISOR_COVARIANCE.md",
+      "original_sha256": "7283d8802906bd1734772922a264c7e28297e55e96ca93c477a3f196e550e519",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/graphs/NATIVE_WINDOW_GRAPH_DEDUCTION.md",
+      "original_sha256": "0cf6d516ceff81126d015c537e173e649db370df3e3cd92910741246d3da673e",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/graphs/atlas/FINDINGS.md",
+      "original_sha256": "bc6923fdd48174e61d4aaeae241e36caed602755f6d3fb2332b3f8c1f22a3958",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/graphs/compiler_routes.json",
+      "original_sha256": "b282a2af54c7ffadd2d9a876a3d69271640eba4af46148a699b3a31f65199f39",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/graphs/composition/README.md",
+      "original_sha256": "9eede5292e3f1f0275e201dea5c29acd4d5abdc55a595547cf95495afcde4918",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/graphs/composition/compute.py",
+      "original_sha256": "2755caf64a494c712396ad954d0248830ed9b44098195a797062a1f049250d08",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/graphs/composition/computed.json",
+      "original_sha256": "dd80177fea013968c84ea889ab242a34c234465aeb53152ae12394f39d9d3ae6",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/lean/PRIME_RATIO_VERIFICATION.json",
+      "original_sha256": "63900fb1fa319d32c5aa8d51d733a9ccba72e7963e1a43a91adc573a72083991",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/lean/SPARSE_INTERACTION_VERIFICATION.json",
+      "original_sha256": "beb8f8b6c9b863552bae0b9a7160d4759a84a5fbb4dad0e4647c2309ef3bdcad",
+      "archive_member": false
+    },
+    {
+      "path": "step4-height-window-2026-11-19/lean/VERIFICATION.json",
+      "original_sha256": "6bd8dfdfa03f0db50871808e4c4bf43dcd1654a5992bb0144f94078846ed96f5",
+      "archive_member": false
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/ALL_PRIME_COFACTORS.md",
+      "original_sha256": "f1250915ee65f4f6ef02f09f3272c394a272011f97519ce17f484e2babff903b",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/BALANCED_SEMIPRIME_REMOVAL.md",
+      "original_sha256": "5db4d73e26fc9678a4c5314bacb0bf100762146d5e50faa4ed4f505b28cd684d",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/COMMON_PRIME_ROWS.md",
+      "original_sha256": "cb15f805d8ca81ac488a8d2e474884c4dddc4e978e5217b5061ae5c72d35f268",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/COMPLETE_TERMINAL_COMPOSITES.md",
+      "original_sha256": "b1c9749a295c710bd68ffb87b316727e1c59d550eb9a430f5c8fb4caec5dc413",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/DIVISOR_CONSUMER_GRAPH.json",
+      "original_sha256": "9b22a53893b674353d4a6de25883c88b30c726ccb7f7dd6fb577168aed5b36f5",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/FACTORIAL_RESIDUE_MASS_CHECK.json",
+      "original_sha256": "58976bb0c4192e3bccb18fcbbf6598d6f84124eccc9dc3c768eafff5b9d562c5",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/FACTORIAL_TERMINAL_MASS_EXPONENT.md",
+      "original_sha256": "b080da881b0902fd9bb2701c1faa44bfaa330cb8f38cdf8d4d201a4b11d0e775",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/FREQUENCY_BLOCK_CHECK.json",
+      "original_sha256": "ba3161c233d681326c4f699575206163d75fdb2ab6bb2d8b6edc754f3da886cd",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/FULL_OUTER_VARIATION.md",
+      "original_sha256": "5663f4b4c16e00e4bdc8ef312a783061cee8a3c28af5b780752898a0ecec8e48",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/FULL_PRIME_COFACTOR_SUPPLY.json",
+      "original_sha256": "5621d6750a7f68e319eb81a623b64ad22fde71f3bdf56b61f85a2397a317102b",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/NATIVE_NUMERATOR_CANCELLATION.md",
+      "original_sha256": "babae1e7f3be0004444551b7b35eb7f0ae9c1f36396e7e9bad49eacb4fd1d721",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/PACKAGE_VERIFICATION.json",
+      "original_sha256": "8cd8c22be6277b8fc5b7107d137ddd48adacf52c318ddee7643d8a2403a9affd",
+      "archive_member": false
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/PERIOD_AND_NATIVE_PHASE.md",
+      "original_sha256": "f8b826f88af610409c4fe8a677b519822999c7dc26603ea12a3c6fb591048530",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/PERIOD_GRAPH_CHECK.json",
+      "original_sha256": "952a93901703edb8dc6babd8ab22225d680b82cc133c84628913a2156e4b373c",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/QUIET_PREFIX_AND_CALIBRATION.md",
+      "original_sha256": "a1c00ded1d971172bf75d2904c72e727b9c1cacd1224bd440aabdaa01e4bebb0",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/RESIDUE_GRAPH_CRITERION.md",
+      "original_sha256": "62da9242394297eb59f46a13dd52153cff8459c9ca98f10d30b709bfdfd0b76e",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/SECOND_BAND_DYADIC_OBSTRUCTION.md",
+      "original_sha256": "1d5910259bd6ab52300a7057a7fb315c2ce41c7caea55709c6840e2f76f73e2c",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/SEMIPRIME_FIBRE_CANCELLATION.md",
+      "original_sha256": "4a8c3a373c9df1bcecbe67142a4b3abefa50cfd58c386ccd1d91332383242ec8",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/SUBSQUARE_ROOT_SOURCE.md",
+      "original_sha256": "808aea0df8fda3822d7f41590c17b5fba3751c46fc1f76db4f76c5678de331e8",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/THIN_PRODUCT_GRAPH.md",
+      "original_sha256": "6e7a391bc32cdbb85334f2dbbab8155e9553289f2aa37822feb35dc3dda25375",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/TRUE_COFACTOR_REMOVAL_CHECK.json",
+      "original_sha256": "8802c3becc60d3fad42a9b8e44493bde322fc15cd8c662ae5ba889d8a41d8bf9",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/TRUE_PRIME_TWIST_AND_BOTH_SIGNS.md",
+      "original_sha256": "342b0063835a2f4fd22dfcba1577beb79341e1bb68aaa6d7e2df33914c1c279a",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/check_factorial_residue_mass.py",
+      "original_sha256": "6cd32ae7d5a51f4d16456203c988763cc654171b9e563c6d916e49a967b7b8ab",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/check_frequency_blocks.py",
+      "original_sha256": "77a1ee305c8c35a3182f614d2a99d456c7fccea5e2b4f0daefd2d546c4f67529",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/check_full_prime_cofactor_supply.py",
+      "original_sha256": "c379867e1a117d13d7e1f3c0273cc843fc0811387879a3e2f750a7907ff44655",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/check_period_graph.py",
+      "original_sha256": "3fce545f92e43d7410aade75af807cdef19d945d137053229ba777c48bf38a9b",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/check_true_cofactor_removal.py",
+      "original_sha256": "7da8251bbdad87e19babdffb0c89b97b0068c06d9c1d02c23040a5bbb6711416",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/lean-period/FactorialKnot.lean.md",
+      "original_sha256": "29c0a307ee39f2c52a7d95f9c13e839bfcc0d0f4b49c6ccd8cfc54ae7906e11d",
+      "archive_member": true
+    },
+    {
+      "path": "step4-matched-fibres-2026-11-19/trace_divisor_consumers.py",
+      "original_sha256": "b985aa85231753a6c12bd6c9edf7f1b048ab4268db608282c2ff2a7e37030962",
+      "archive_member": true
+    },
+    {
+      "path": "step4-native-residual-2026-11-19/CURRENT_STATE.md",
+      "original_sha256": "98d640906cdcf88335d7f635ffe0953c84957b58c481f47bb364b029061c49cb",
+      "archive_member": true
+    },
+    {
+      "path": "step4-native-residual-2026-11-19/HARMONIC_SIGNED_MASS.md",
+      "original_sha256": "320efcb031ccf2b5a87a7f64e4b4781eec0eae2950998cfeff4061e870b11251",
+      "archive_member": true
+    },
+    {
+      "path": "step4-native-residual-2026-11-19/NATIVE_RESIDUAL_CHECK.json",
+      "original_sha256": "ad3d16fb7fbab039a89d2808da3f9144a1711ea3656ba93ff7346ce431e09e53",
+      "archive_member": true
+    },
+    {
+      "path": "step4-native-residual-2026-11-19/NATIVE_WINDOW_CHECK.json",
+      "original_sha256": "348bd690daca49c6d458b111aab9100559eef09bea7b6b75fdde563393e714bf",
+      "archive_member": true
+    },
+    {
+      "path": "step4-native-residual-2026-11-19/ONE_HARMONIC_CHECK.json",
+      "original_sha256": "2d94b2b8071b3f41125e8c3ba88b2c4b76be95a31364d7b76da47fb781cd7f3b",
+      "archive_member": true
+    },
+    {
+      "path": "step4-native-residual-2026-11-19/ONE_HARMONIC_ZERO_DETECTOR.md",
+      "original_sha256": "80f1f6bb2b4aabab24067d25b65f9c4e8fbf3762532ce0655b1d532f1748d559",
+      "archive_member": true
+    },
+    {
+      "path": "step4-native-residual-2026-11-19/SPARSE_NATIVE_TEST.md",
+      "original_sha256": "d03d2b6d4627690aad4ee5f2b509fda556b9e9970c8ed4875cdefac9f2a28e2e",
+      "archive_member": true
+    },
+    {
+      "path": "step4-native-residual-2026-11-19/check_native_residual.py",
+      "original_sha256": "364bc57645d4be3a412350f0d4affd90288d49d5e3298f3be4827b4a5a78db33",
+      "archive_member": true
+    },
+    {
+      "path": "step4-native-residual-2026-11-19/check_native_window.py",
+      "original_sha256": "62219c377f781a8bd094655d66df661933792ac019c771221322c112c7ce3314",
+      "archive_member": true
+    },
+    {
+      "path": "step4-native-residual-2026-11-19/check_one_harmonic.py",
+      "original_sha256": "89555eed1954ae125496f468216ce074f5838a657b9958e977e2da2269c9c4ed",
+      "archive_member": true
+    },
+    {
+      "path": "step4-new-work-review-2026-11-10/ARITHMETIC_A07_A09B_REVIEW.md",
+      "original_sha256": "aabf61b25be4e1b45690fb1f210a84fc7b3ef973eca63b9b25fc569eb1d28c55",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/BALANCED_TRANSPORT_CHECK.json",
+      "original_sha256": "11a91fdc1d505420d9bcd4e7460e6820f73d79c7b91619d584325fd24b51b69f",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/COMPLEMENT_POSITIVE_ENERGY.md",
+      "original_sha256": "08fa11c8222c91b914faa9120e1925e6115802f9c89ec3bbf4b4558cf9fc9b9e",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/DENSITY_WINDOWS_CHECK.json",
+      "original_sha256": "381628246d8375da461099ffa02aed0f261dc58fe7b916f65f52f80f5de5efa9",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/FACTOR_PARITY_ROUTES.json",
+      "original_sha256": "dbeb4107a424a5005aefb80fbd24948969f591a1464b22873a77cd9673dbf3ea",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/FACTOR_PARITY_ROUTES.md",
+      "original_sha256": "ddec9f7e44756bcf79b6997c1611f5e9855deac196bab0ce5d9fac05eefef180",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/FIXED_LOCAL_COMPENSATION.md",
+      "original_sha256": "3590d930743b977502ad1488b484e6bc5d782ee137be9502979859a3829daaa9",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/LOCAL_POLARITY_WINDOWS.md",
+      "original_sha256": "dcb18f8ea4d28333807d1440377279ada3c4a6bd519a50b1a6014b9810692c4b",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/PACKET_WIDTH_AND_NATIVE_NORM.md",
+      "original_sha256": "baf876bb3d7eee9547c62c21cb21258bb88b991db18418b954334eb51ed778a7",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/PARITY_MAJORANTS.md",
+      "original_sha256": "ef6058128499cd629ea06a9267b95d7febe872992f9d20b7ca1ac003722b6805",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/PARITY_TRUNCATION_CHECK.json",
+      "original_sha256": "cb773f70e37d261e0e9139b7b363fd91b0152de05bf3c557fbd54d86c52ae3c5",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/PRIME_FACTOR_PATHS.md",
+      "original_sha256": "6276db41d02b728c8edb044702dc7a2f2f82892adbc5db915f0f7cf936a88208",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/SMALL_PART_LARGE_PART.md",
+      "original_sha256": "d514e8f842858fc5f02e0c18241151ae811ccacf773f022739b32c6db114305f",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/WHOLE_COARSE_SURPLUS.json",
+      "original_sha256": "a906d9e04614cea2381baa32dcfe7a972d4d18e430004ff52e0d06c54b4c27e7",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/WHOLE_COARSE_SURPLUS.md",
+      "original_sha256": "0b9dc3e4bf27b4a84f27a3d9114aaa4c92665b74723e84540dc1ca74a82d7af3",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/check_balanced_transport.py",
+      "original_sha256": "4583b5fc911c180e89db9146e991842fa1cec2839aad03d85ea46aab72dd9f16",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/check_density_windows.py",
+      "original_sha256": "39d24f1605e0fbae866cbf3021d18053cebb63e9a3995568851a988a41a4e257",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/check_factor_parity_routes.py",
+      "original_sha256": "2d3d8641f87df83fa8a048d7c5f32c7a1cec7ab0f57b3323866c2fe789b3764e",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/check_parity_truncation.py",
+      "original_sha256": "2f39973672b343c47a6f740a4f03daa8ce0ab846951ea5c8fe497f250af59bb7",
+      "archive_member": false
+    },
+    {
+      "path": "step4-one-sided-sieve-2026-11-19/check_whole_coarse_surplus.py",
+      "original_sha256": "742188d464374ebf1622ebbcc1be47e83a5d201a27c6c861dd367db603e815b5",
+      "archive_member": false
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/CENTERED_CONE_INTERVALS.md",
+      "original_sha256": "5cc94d9af4e2e8c80e0ecf6a3465f9979e11ee39458609fc5cf8748db994f067",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/CONE_DRIFT.md",
+      "original_sha256": "9ab4bfaa83b2299097bd16d32b714f4fed694cb019bbed87339e65b9da2effe4",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/DETERMINISTIC_CONE_GCD.md",
+      "original_sha256": "f8a3d851639241a0a242b3e1d37592ce3aa9b73c27f72258c64cf72f918016ba",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/EXTERNAL_PARTNER_MASK_BARRIER.md",
+      "original_sha256": "3fd8259682fa837231bf2c0a1b5659bb86c9b4f168da69cc494b03562d73ce3c",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/FIRST_POSITIVE_COARSE.json",
+      "original_sha256": "4b70e8018d83af0b7e810d4e79921dd28f1413c03faf1bbead35d5d0bb40d664",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/FIXED_COFACTOR_MASK.md",
+      "original_sha256": "14407e39ff8d4138a04f3a3000ac30b3cdfd1b4f74ff20ff542a96d6ec0c54fa",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/GRAM_DISCRIMINANT.md",
+      "original_sha256": "a18b227b27033b700224d4fe01b88988fbd189d466538c3b81338965f5c5b72e",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/NATIVE_MASK_COLLISION.json",
+      "original_sha256": "102dc9ca2f9d30433391c1962a5b805b911e4189154df508a7c35603b6d6b7a9",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/ONE_SIDED_NODE_CHARGES.md",
+      "original_sha256": "9947b668e69b0cc1520a018fb6b85426bfaf95cc71d49bf2b1b0365f3eb1ff2e",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/ONE_SIDED_NODE_CHECK.json",
+      "original_sha256": "1a0d19f086545066772fae8d3638b9db0b84f296c422a2792ad3c6aa13dc88e5",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/POLYNOMIAL_COFACTOR_AUDIT.md",
+      "original_sha256": "38dd98e7eef565113dd9c60b599815ab3b5787bb401cd5a733e3c9bb288d63ff",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/POSITIVE_DENSITY_RETIREMENT.md",
+      "original_sha256": "168b9b3bad5a821a44fa24d6c2ab8a5385e31230412391d610cc027f83a5c3a8",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/PRIME_SPLIT.md",
+      "original_sha256": "2a1d44dca4cc3241ba9bc6fc2ecb9248619ea90bd0660a013b7c0f00dc4f6a12",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/PRIME_SPLIT_CHECK.json",
+      "original_sha256": "988bdcc9702d98fea07ab00eae12084f4bdccc4176d1527f1480e393cd7997ad",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/ROUGH_PRIME_TRANSPORT.md",
+      "original_sha256": "8d86a4bc3c9d8abf07ab9dee8ca93d682052b9b168a6b2be15f8033b5dcf49ce",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/ROUGH_TREE_CHECK.json",
+      "original_sha256": "3475d8c62e87c08c87a19e04798163d09f9f808b05a570b4c91c7fe77ed871bd",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/SIGNED_CLAIM_ROUTES.json",
+      "original_sha256": "5f1b08cfdacfaa00f75b6a0d3bd17d969df072a6e2f0733b3dd1904c37e7a23f",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/SIGNED_CLAIM_ROUTES.md",
+      "original_sha256": "528ccca1f6341ee62b311840093336ef9b9853b0af0299004122537eca6302eb",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/SIGNED_GRAM_CHECK.json",
+      "original_sha256": "aca960be91ef67550076293d986c876d158bd028438d5448ebdd99ae697b6f25",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/SINGLE_PROBE_SCALES.md",
+      "original_sha256": "94653bc3471dfc9d0e8311498cc82e84ed05ff755db977c31d441bcdbd9027b3",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/SPARSE_COMPENSATION.md",
+      "original_sha256": "6cb7a6f8f6a4e0f2aa4020df9c70322cdcd8c933b6b6e96ebf56b4afda743c59",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/TREE_HEIGHT_SPLIT.md",
+      "original_sha256": "bda05986269ddbffd3cf0dd9b6d43702eb72293ef111374b1623edea214d9fc4",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/TREE_INTERVALS.md",
+      "original_sha256": "443c5ad3173f745face18e769939f95a874befaa2ef751b16393ce284a5b3785",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/TWO_ARITHMETIC_PROBES.md",
+      "original_sha256": "f85462ba59991055421e7c34df2c4f47d1c686968a9e3dc0c09863dbe27816ca",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/TWO_PROBE_CHECK.json",
+      "original_sha256": "4c93c62b7f20e8b2754092bcf3ac1e11793897b7afc994284d2b2f9265d3fe72",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/check_claim_routes.py",
+      "original_sha256": "b019aca935d908b62261896e4649ff29c033fa093be1f5d2773a8dae8e313d7e",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/check_first_positive_coarse.py",
+      "original_sha256": "4716876817529b6bea861c20f79677796c65cfb07c07422d12f9deb1a63a1ce6",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/check_native_mask_collision.py",
+      "original_sha256": "e97588f2b5e96e0272ef80321d026895d5aff6467422775f2f7b54ea3f06bf3d",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/check_one_sided_nodes.py",
+      "original_sha256": "6c33cdcb1156e750a7edeeaf49b6606fea3b39b0a4721659dd1a61d9f5ff1831",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/check_prime_split.py",
+      "original_sha256": "761ae31a152156cd19e3bf49b5e8d8cdf7b54a5859cdc93a8246b4fe1c6ea431",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/check_rough_tree.py",
+      "original_sha256": "1eaea0b42330a6d4bcbccdd993045949a8514a54d5f8f4f5958dbd0f7ecf68a0",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/check_signed_gram.py",
+      "original_sha256": "c6f37b37a51e9922a37ee800aa6f3e77d2cd580f68ef1f67398056ac6b309c9b",
+      "archive_member": true
+    },
+    {
+      "path": "step4-prime-transport-2026-11-19/check_two_probes.py",
+      "original_sha256": "bffe3ad4698c254bde109a5ecda251a008869fd917239e8da0de816665dcd76b",
+      "archive_member": true
+    },
+    {
+      "path": "step4-rough-squarefree-2026-11-19/MARKED_ARITHMETIC.md",
+      "original_sha256": "ce027444e1f892e171c4e6b658fe38051f122eacafe716ec7822825116a268f7",
+      "archive_member": false
+    },
+    {
+      "path": "step4-rough-squarefree-2026-11-19/README.md",
+      "original_sha256": "998c4e6312b04cb4b5b6d057aff68f74a2f93a6dd4f09f93bd27cc949a2c39f7",
+      "archive_member": false
+    },
+    {
+      "path": "step4-rough-squarefree-2026-11-19/ROUGH_RESPONSE_OBSTRUCTION.md",
+      "original_sha256": "a0216966424b6412ed16701311b1644d086de23aece986436691f9faa4f5d0b7",
+      "archive_member": false
+    },
+    {
+      "path": "step4-rough-squarefree-2026-11-19/STEP4_ROUGH_SQUAREFREE_RESIDUAL.md",
+      "original_sha256": "33b550bf0f6b6206e54e531a8eb1b2b1884c88c2624793bf3d97f364c8bf96cb",
+      "archive_member": false
+    },
+    {
+      "path": "step4-rough-squarefree-2026-11-19/UNCONDITIONAL_RESIDUAL_BOUND.md",
+      "original_sha256": "3960a8dffb99719b5dc2038cb35860f21ca16dd950f5eb9624883f3cf1a457ab",
+      "archive_member": false
+    },
+    {
+      "path": "step4-rough-squarefree-2026-11-19/check.py",
+      "original_sha256": "01550a7cc2f6297d955e2fdf800d7c9db23eac96d862cd300f4c4d3c58895c27",
+      "archive_member": false
+    },
+    {
+      "path": "step4-rough-squarefree-2026-11-19/finite-checks.json",
+      "original_sha256": "04e0335e1617597cccd8f1dac3a1384c3a2b840262b7bbde226ccef96e5e4bb7",
+      "archive_member": false
+    },
+    {
+      "path": "step4-route-selection-2026-11-10/ADVERSARIAL_COMPARISON.md",
+      "original_sha256": "c2c1e3d572e502dfe944f2ad33cfcc17916c5f0bfd43b375acb9ff72929f4cfb",
+      "archive_member": false
+    },
+    {
+      "path": "step4-route-selection-2026-11-10/GEOMETRY_COMPARISON.md",
+      "original_sha256": "a917b6900e2c74681f0bc56063c10d68a251d5ca2f9579f6b8cde239b79d935d",
+      "archive_member": false
+    },
+    {
+      "path": "step4-route-selection-2026-11-10/PRIME_COMPARISON.md",
+      "original_sha256": "af114de612218c567c301dc96e2c43230e9d30ada6fe1a9ee719c55b5d6b90d3",
+      "archive_member": false
+    },
+    {
+      "path": "step4-route-selection-2026-11-10/PR_IDENTITY.json",
+      "original_sha256": "4f7bfe8a8e2bc37b163849d4d40163478362ca51f846f52574ef7ab3118e50ef",
+      "archive_member": false
+    },
+    {
+      "path": "step4-route-selection-2026-11-10/ROUTE_DECISION.md",
+      "original_sha256": "15dea92b6e537e245ac5ea99fc1f99d04b2b1f50f2b3e9850f9b71f10b9a5d68",
+      "archive_member": false
+    },
+    {
+      "path": "step4-signed-amplitude-round3-2026-11-10/ROUND3_CHECKPOINT.md",
+      "original_sha256": "eaf04b4a6ce7e5474e146f22b8cbbe728ce693ade82cad987e563b89fb115442",
+      "archive_member": false
+    },
+    {
+      "path": "step4-signed-correlation-round5-2026-11-11/FILTER_FAMILY_ATTEMPT.md",
+      "original_sha256": "5210e5a70a07a6763143c4858d25ce48346f5fe61e8ab78bb35bc430cd080198",
+      "archive_member": false
+    },
+    {
+      "path": "step4-signed-correlation-round5-2026-11-11/FRAME_LOWER_ATTEMPT.md",
+      "original_sha256": "b991b6ee6346fa180718ba0ee3155c4928e09a9737dff68ad3566dadd2116804",
+      "archive_member": false
+    },
+    {
+      "path": "step4-signed-correlation-round5-2026-11-11/ROUGH_CORRELATION_ARITHMETIC.md",
+      "original_sha256": "244295f0c161ad02cf8cad65c4836a7b58d8e75aa6dc8a36cbf38e6a0a61c3f2",
+      "archive_member": false
+    },
+    {
+      "path": "step4-signed-correlation-round5-2026-11-11/SOURCE_CORE_FRAME_COMPOSITION.md",
+      "original_sha256": "0a784aa0204dd66c5cf3dacc5b7fd406dc10214e7c7057f6283420161ddbe406",
+      "archive_member": false,
+      "published_sha256": "2f1d82d70850820df9decb3c6a9776eb6dba19df983fde5db441638f913fa111",
+      "publication_changes": "Historical readback and archive references mapped to the public survey and included notes."
+    },
+    {
+      "path": "step4-signed-correlation-round5-2026-11-11/WEIGHTED_DISCREPANCY_ATTEMPT.md",
+      "original_sha256": "8398f7a58e288b946eff2956395567fe65cc8c8267760e947dc009d036987215",
+      "archive_member": false
+    },
+    {
+      "path": "step4-signed-response-round2-2026-11-10/RECENT_INVERSE_ATTEMPT.md",
+      "original_sha256": "55b7fabe3df4fa4cbf169657f71a8ea76eb9cede3773e402686b6543baf1902f",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/ACTUAL_PRIME_AVERAGING_ERROR.md",
+      "original_sha256": "85cdec0dfd3c08c402b6221bc0b65f10045e1513be958255cf63b9f259ff28a3",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/ADDITIVE_PRIME_AREA.md",
+      "original_sha256": "46d7062341743ebc443111b908ff7ae946fddd8fa9e9d577f3edbf3bdf939ce7",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/ADDITIVE_PRIME_AREA_CHECK.json",
+      "original_sha256": "40dc74c223d54ba7105a53d148b223ec6be03b7cf96a2679d6239bd65f275872",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/BANDLIMITED_THETA.md",
+      "original_sha256": "938a0226b1c431c94d5dd7815e7620ae148f7d0e8ecabc25f2d181281e6b3b66",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/COUNT_SAVING_SCOPE.md",
+      "original_sha256": "c5460b3e61702cb117f53397f11526ff90941ad780ff88a5b87bc195426ac8d3",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/ENDPOINT_CHECK.md",
+      "original_sha256": "3fbcfb9646f7c3c5f5b290634e9e9b8348865825dab8877053a64d6833ecc530",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/FIRST_ROUGH_COMPOSITE.json",
+      "original_sha256": "863bcec782e750614b19f23e74ddcfd165ed7a52225ead150b6d935d7d0d05cf",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/LOG_RATIO_STRIP.md",
+      "original_sha256": "ae79bfb29aa6694804ade3e66516d12f3f259699bbdaf2a3920f1385b4a31ae1",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/ORDINARY_AREA_CHECK.json",
+      "original_sha256": "2f987683aba7104f48807540935922bc62a3b2306abae413703366cf8f15c692",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/ORDINARY_PRIME_AREA.md",
+      "original_sha256": "c22050ee05587b7fb7b8d539b4115b6c1bd0fd9948999f019c97a9dd142a8d19",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/POSITIVE_PRIME_MOMENT_COMPRESSION.md",
+      "original_sha256": "b060a2b3448899f45de07c245875722d563bbc3c0210faf136915dc233b14480",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/PRIME_COMPOSITE_CROSS_TERM.md",
+      "original_sha256": "ac5d490b1dc1847e934431e47a9fd2bb874bff96629804a43a23abc0d67b92b1",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/PRIME_INPUTS_TO_CUTS.json",
+      "original_sha256": "651c41efdaf8b672ea1aefaec064d30586b758a269af2b19056e7e269709979f",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/PRIME_INPUTS_TO_CUTS.md",
+      "original_sha256": "b3e4ecc6f72c1c77f0625fa5949548ba17572b17280a66ab09e461584b56e4bb",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/QUARTIC_COUNTS.json",
+      "original_sha256": "3e7ee070babc7844559bbcf306f69976302f1175e333beebecbf11ea7a6e9767",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/QUARTIC_SIGNED_COUNTS.md",
+      "original_sha256": "7bdad9efa0ac42fc3e901648a801293aa808639492da93cb3ed41836d4eae4aa",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/RAW_POWER_GRID_QUADRATURE.md",
+      "original_sha256": "4cfb4441e4010479cb02954cdcc4fa51a44e5fa21f427cc11416318e72df91ee",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/ROUGH_CONVOLUTION_CHECKS.json",
+      "original_sha256": "9ce5d1d526ad94cb53faf7f9c7b14efbaa8f94a14fd74a38e09aa04ec85e6532",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/ROUGH_INTERVAL_CANCELLATION.md",
+      "original_sha256": "027b1d2f67aba5ecdcaca9f247daffa38a88d89ed929db7b8f4cc578bf38d88d",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/TRANSLATED_GRIDS.md",
+      "original_sha256": "968925f05348d2ab7c1934c9766b7b604daae3fcf3afbaade3c06f64d5bf1b19",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/VAUGHAN_GRID_BOUND.md",
+      "original_sha256": "f6e7a33bcb9f41829e2a01f652385ea5a06d681e40412ba12fc1f4c3d09e988e",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/check_additive_prime_area.py",
+      "original_sha256": "e98aa5f39b41188c9588ddf4a78dd35aa99ebfc95b7aeec9142579e2843559e7",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/check_bandlimited_theta.py",
+      "original_sha256": "cdf017d5756682bbd057c0bfc90937f7fdb2eda2b7275c33258a186b79e5d534",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/check_first_rough_composite.py",
+      "original_sha256": "67083b935ea44c4bac723fc8f124d9b54544765ff603c454008fa6e4e6b25363",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/check_ordinary_area.py",
+      "original_sha256": "f8846dd8b4ad638e2b23e3035cf347019b0a887b59abf7016c11ca03109da2f0",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/check_quartic_counts.py",
+      "original_sha256": "4dd2df706ac2de2eba650d8dfbd8b632eb7212dd5dd69d17e7eb7b3908297dff",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/check_rough_convolution.py",
+      "original_sha256": "0e09837d85915a3c2d8064558ad0d5c0cf00cfe42d23b9a2e4290a5498de14cb",
+      "archive_member": false
+    },
+    {
+      "path": "step4-strip-2026-11-19/query_prime_inputs_to_cuts.py",
+      "original_sha256": "c6d371252f8fffcf264d3052f95c4bdf3451688030a5a02ae939d6772559a727",
+      "archive_member": false
+    },
+    {
+      "path": "step4-study-2026-11-09/ACTUAL_NATIVE_LOGARITHM_OBSTRUCTION_15.md",
+      "original_sha256": "97013eb1392b943b5592524f995625168f2fa7ea20871c2b963334c8b4745422",
+      "archive_member": false
+    },
+    {
+      "path": "step4-study-2026-11-09/ACTUAL_TRACE_SOURCE_TEST_14.md",
+      "original_sha256": "a4cecc085bc9f52a653f4f09a22c7e02a7e7fd3cd46fce653b2b713acf5f036b",
+      "archive_member": false
+    },
+    {
+      "path": "step4-study-2026-11-09/CURRENT_CLOSURE_PREMISE_MAP_12.md",
+      "original_sha256": "db0243c0a94e28c389acef70517c2f5118f59339e09fbcbd1f1436362d659301",
+      "archive_member": false
+    },
+    {
+      "path": "step4-study-2026-11-09/DRIVE_HISTORY.md",
+      "original_sha256": "125c6440d790dc1207bf2147493aba1b901e8e0697d3004aaef630d4f3396dea",
+      "archive_member": false
+    },
+    {
+      "path": "step4-study-2026-11-09/PASS16_PRIMITIVE_AND_SIGNED_PRIME_ENERGY_REVIEW.md",
+      "original_sha256": "08780abf9ddb88b75521004d1fc3646b2615cc6f3d4bc3d28919d38f7b3c7294",
+      "archive_member": false
+    },
+    {
+      "path": "step4-study-2026-11-09/PASS18_CENTERED_JETS_AND_COMPLETE_COVARIANCE_REVIEW.md",
+      "original_sha256": "b552da78c0616a8398e080974bf811e614d72592c574fcda19ac08b8c5409323",
+      "archive_member": false
+    },
+    {
+      "path": "step4-study-2026-11-09/PASS20_POSITIVE_SOURCE_GRAM_AND_TERMINAL_COLLAR.md",
+      "original_sha256": "1ad56489de57423c93070ac5c0ecf92c214934180f8171080a29a0488505b492",
+      "archive_member": false
+    },
+    {
+      "path": "step4-study-2026-11-09/SOURCE_COUPLING_APPLICABILITY_12.md",
+      "original_sha256": "4205de0c42e498e7353714aec8e2794d66c3e4bfaeb465f3317022f35800536d",
+      "archive_member": false
+    },
+    {
+      "path": "step4-study-2026-11-09/SOURCE_DERIVATIVE_TRACE_OBSTRUCTION_13.md",
+      "original_sha256": "0f5dd3ebf0438a6660e9eb4cdd4432fb495421f66fc6c060a52862a495e4070e",
+      "archive_member": false
+    },
+    {
+      "path": "step4-weighted-response-2026-11-10/CANONICAL_COLUMN_EXTENSION.md",
+      "original_sha256": "9df0e1611add58b17e525018462ffb38d11dd1caee13f2ac7f6f21d7b0879503",
+      "archive_member": false
+    },
+    {
+      "path": "step4-weighted-response-2026-11-10/COMBINED_FINITE_TARGET.md",
+      "original_sha256": "aa2c391b77e3283ca8198bca775b7fb0e91aced4152d693d93551af3158a1573",
+      "archive_member": false
+    },
+    {
+      "path": "step4-weighted-response-2026-11-10/DIVISOR_RESEARCH.md",
+      "original_sha256": "029046e334df32d72181752fca37a704fa5c1c98a7d36b5777b640c30f8f5e47",
+      "archive_member": false
+    },
+    {
+      "path": "step4-weighted-response-2026-11-10/FOURIER_INPUT_BRIDGE.md",
+      "original_sha256": "df5278c358763cb57f56153a60b28c242322c38f32c6e3ee715234afaae46e46",
+      "archive_member": false
+    },
+    {
+      "path": "step4-weighted-response-2026-11-10/INPUT_MOMENT_CORRECTION.md",
+      "original_sha256": "b3b9242247d28323511b0730d4d31f744b7c874a36d55eff748a339930aa921b",
+      "archive_member": false
+    }
+  ],
+  "post303_research": {
+    "source_tree": "8ed7eaba2f04c213e4c1d633d99673fd19ffe220",
+    "source_commit": "adc9c6ce04f73dc276513b81ae4a316a0a8367eb",
+    "archive": "https://drive.google.com/file/d/1ucDOp1k-_1BhE-mqIvAthw4pFuFzCtcM/view",
+    "archive_sha256": "b54a0d673f9373cbf8967de5814e552ecf7d907ef5007e74660b92d9e7c14fa3",
+    "handover": "https://drive.google.com/file/d/11cq_IWmjQQAAZkgXfGmIOgF-4SyPkAqT/view",
+    "scope": "Original bytes for seven paper deductions, three finite checks and receipts, and the local parity-deficit source and coefficient control. Repository versions bind their own compiler module names, script paths, and output verification.",
+    "members": {
+      "DIVISOR_GAPS_AND_SIGNED_HALVES.md": "dfa34fbae05732c5b9d7033a4147a3842b93e9b7bf1e1469bef6ea974f7f3616",
+      "DIVISOR_HALVES_EXACT.json": "6484ff888f0c83c6680203cb6976f432e0362f7f31f69c7986a5ff22dd59823f",
+      "MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md": "16a6ad67a92e08ad36ca4d7571dd832213eb9ed01906f18f204425484daf0b2c",
+      "ParityDeficitProduct.lean": "a1e36a2a5a15b81a4f5db739bba788f473e04ec76b4183c0961421ecd3380a58",
+      "RejectWrongCoefficient.lean": "0433610b19651a13ea2635865b4559c9d4d0f53829503283a7e4a77ebbe3f75d",
+      "SHARP_FINGERPRINT_THRESHOLD.md": "7f17cfe7460f6b8c38c288e99b48d033b32f212ea1537ccd229c5cfdaa74642a",
+      "SINGLE_COFACTOR_PARITY_DEFICIT.md": "eb9260579e9f7b5bba22d987c0fec715479ba14bb2bb1ae43ae6e7dc4b52d2c1",
+      "SURVIVOR_COFACTOR_PAIRS.md": "4e6b309d634c73b45abde0ef7af2d64c653b5eaf2246dbd5bab4ddbc8f9bbede",
+      "SURVIVOR_COFACTOR_PAIRS_CHECK.json": "cdc75fd42be270dde67d11a33fc66c73fe20d1bc148209b437f86036836b84bb",
+      "SURVIVOR_HAAR_FINGERPRINTS.md": "7cebac1947f036977ca945c1169cc47776c8a8b94bc49fa8f97796b23fec9bc5",
+      "TRUNCATED_FINGERPRINTS_CHECK.json": "9b33193ee4edbe3a549dee97163b3a19a33eefbaa144d3452f9627fd56f59b30",
+      "UNBALANCED_PRIME_SHARES.md": "54c6371d8ae4089e68e28e5d517d62ee248fe66a8e4c0bf1680f38243e1e74b9",
+      "check_divisor_halves.py": "a7ad45e8fbb4253dc63ab86e7463d5d975fbc3a18b5bee390bf18de64b64dbde",
+      "check_survivor_cofactor_pairs.py": "d1247e71bfeb03dc7181b7814478c4c1ba791102cb61467789d422c05f6d5961",
+      "check_truncated_fingerprints.py": "b35267306a234635ed9e885b51b2cf01f5b717acc8ee30ffe25ecfab6ac28497"
+    }
+  },
+  "post303_publications": {
+    "Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean": {
+      "archive_member": "ParityDeficitProduct.lean",
+      "published_sha256": "89e4d4770caf9cd74c3e35cb22c28cc21c7c1a3f1b7d34665b15c030652e648f",
+      "transformation": "Place the three original finite theorems in the repository namespace and expose their axiom checks in the Verify module."
+    },
+    "research/RHRC/integration/opica_round6/controls/NegativeTypes.lean.txt": {
+      "archive_member": "RejectWrongCoefficient.lean",
+      "published_sha256": "e4d78fb1ea3e4eab78321942d7b3783288df0ba69adbc55c242d9cb46f2915d2",
+      "transformation": "Integrate the coefficient-five rejection as a type mismatch against the actual quadrant_remainder theorem alongside the earlier controls."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_GAPS_AND_SIGNED_HALVES.md": {
+      "archive_member": "DIVISOR_GAPS_AND_SIGNED_HALVES.md",
+      "published_sha256": "9f3e8dc52df19f2d31d32963d085b58bb7ea3d4e454a7e9e30bbe5cc90454f28",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_HALVES_EXACT.json": {
+      "archive_member": "DIVISOR_HALVES_EXACT.json",
+      "published_sha256": "6484ff888f0c83c6680203cb6976f432e0362f7f31f69c7986a5ff22dd59823f",
+      "transformation": "Reproduce the original receipt byte for byte using the repository fixture."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md": {
+      "archive_member": "MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md",
+      "published_sha256": "83fbbb7ca837f224a59c2b2ae581a2302ec35d5252994895a19c22ca5a902472",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SHARP_FINGERPRINT_THRESHOLD.md": {
+      "archive_member": "SHARP_FINGERPRINT_THRESHOLD.md",
+      "published_sha256": "727d95b51d344a978c280f3d764995a09f91a31772c99fe028a791d47328fe79",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md": {
+      "archive_member": "SINGLE_COFACTOR_PARITY_DEFICIT.md",
+      "published_sha256": "42190c32648b2df80582ed270541a73dfa8099fa1d32d0cce40e7d1bb23e30b0",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md": {
+      "archive_member": "SURVIVOR_COFACTOR_PAIRS.md",
+      "published_sha256": "3ae00aa2e5cd319b32555de3522c1013c1af144f6c014a4cd0e40d6b4fd1be06",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS_CHECK.json": {
+      "archive_member": "SURVIVOR_COFACTOR_PAIRS_CHECK.json",
+      "published_sha256": "f8d91441274cecc87bbb643740f58adbc54cbf866591a426a121a41c7eb08a40",
+      "transformation": "Recompute the arithmetic receipt and replace historical graph and script identifiers with the native generator digest."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md": {
+      "archive_member": "SURVIVOR_HAAR_FINGERPRINTS.md",
+      "published_sha256": "4c093ba93854ee93438c40757badbef15eaf665f7d6fdc4c6e870e2246b8020c",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/TRUNCATED_FINGERPRINTS_CHECK.json": {
+      "archive_member": "TRUNCATED_FINGERPRINTS_CHECK.json",
+      "published_sha256": "48c3f650c9441ccfdf04dae68a2a91666eb4f8e37e1b451d0f74187c0e3ea792",
+      "transformation": "Recompute the arithmetic receipt and replace historical graph and script identifiers with the native generator digest."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/UNBALANCED_PRIME_SHARES.md": {
+      "archive_member": "UNBALANCED_PRIME_SHARES.md",
+      "published_sha256": "1b6606de92c3fa9ca1363b2127614905016cf56e06124f881f232c86627499a7",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links. Normalize the final blank line."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_divisor_halves.py": {
+      "archive_member": "check_divisor_halves.py",
+      "published_sha256": "cdb85b33edeb129efda05d7ba3378927fadb2f3030bc62afeba481450beeb5bc",
+      "transformation": "Expose the exact divisor-cube cases through the shared replay CLI and preserve arithmetic rejection under optimized Python."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_survivor_cofactor_pairs.py": {
+      "archive_member": "check_survivor_cofactor_pairs.py",
+      "published_sha256": "96aa7d89a8dda0d3b67a4244a12fec16852b795a0c003ed04a3e3067b48b10ee",
+      "transformation": "Expose the original arithmetic cases through the shared replay CLI and bind the native generator."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_truncated_fingerprints.py": {
+      "archive_member": "check_truncated_fingerprints.py",
+      "published_sha256": "94eed053041b8fcd99d1c7b5cb396044fbbeb423c7d0b765ba49d5d8dd6e1ed5",
+      "transformation": "Expose the original arithmetic cases through the shared replay CLI and bind the native generator."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/receipt.py": {
+      "archive_member": null,
+      "published_sha256": "3aff0b3ec7ecda9365877e54b8f6a5741c7b9fbbf8751bec1b5678efafb22b71",
+      "transformation": "Repository-authored CLI for checking or writing the three finite receipts."
+    }
+  },
+  "nested_cut_research": {
+    "source_commit": "a6a001fd570cd7cf9b97fdad59e373760a3153ec",
+    "source_tree": "f58c4c2b7870d54302cd3ae80f7d77c1eaa6784e",
+    "archive": "https://drive.google.com/file/d/1nX1SBRMxbmzBAe12Su3EWlk4wLoT746k/view",
+    "archive_sha256": "6e6f9b779e9866911f329bd62c2342cc5f9d99590b75ae780c1cdd98127946da",
+    "archive_manifest_sha256": "b11f4bc8f3b62424b5608b5a837c9cff91e13a17cff154d692843c6c8f676ac4",
+    "archive_member_count": 84,
+    "research_checkpoint": "https://drive.google.com/file/d/1iSkE1jq8rZfvYO2X6K0B-NpskJxRbso3/view",
+    "external_graph": "https://drive.google.com/file/d/1djf_FzrLp6EP7yzg1t7nSmaVM6oXdFQQ/view",
+    "scope": "Archived source on PR 303 before integration. The independent closing estimate remains open.",
+    "publications": {
+      "Zeta23/OPICARound6/PrimeFactorPaths/NativeCells.lean": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/NativeCells.lean": "88d792ef75670883140e5df7dcabde64f51cd16e13a5cc7cf4e7ff1a83052086"
+        },
+        "published_sha256": "01efdc80bc38548323fdc70825c959c80a6c8751f47f08544248a7bea8f64573",
+        "transformation": "Move the archived finite mathematics into its maintained project namespace and bind project imports."
+      },
+      "Zeta23/OPICARound6/PrimeFactorPaths/NativeFullTransfer.lean": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/NativeFullTransfer.lean": "c938bce8f841d4527ec026eb9e1791825da765c10774ec6fa40900f39d8a0b47"
+        },
+        "published_sha256": "69bf8ee77b612526554d836842a447075d2fcb39f29f2ec03bf7714a264791b5",
+        "transformation": "Move the archived finite mathematics into its maintained project namespace and bind project imports."
+      },
+      "Zeta23/OPICARound6/PrimeFactorPaths/NativeGeometry.lean": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/GeometryControls.lean": "d2994e520e4b0728a5200378d1aa29bd270ea9d78c0c9f7aa314ae9c8b490787"
+        },
+        "published_sha256": "31c2b5c5aa4e62699ed26e3be633a4baf4f2e47726a2d976b8829bd880272b62",
+        "transformation": "Move the archived finite mathematics into its maintained project namespace and bind project imports."
+      },
+      "Zeta23/OPICARound6/PrimeFactorPaths/NativeStoppingCost.lean": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/NativeStoppingCost.lean": "f2f78253b3c614963fa987f5743fb8aaf64aabeb9a44b116e299fb7c8ac3a4ba"
+        },
+        "published_sha256": "14558956856ce00c252fd5da5477c602214232075b6db57185906fa88ab2b0d7",
+        "transformation": "Move the archived finite mathematics into its maintained project namespace and bind project imports."
+      },
+      "Zeta23/OPICARound6/PrimeFactorPaths/StoppingAlgebra.lean": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/StoppingAlgebra.lean": "3c208290e53652ce330359f2ca43a7107c7dc63154349d31cd6a616e1d03d673"
+        },
+        "published_sha256": "ef817d19a47d7e271655434d259acc2fbae2186a0bf6e003e3a2592e76cf9fd3",
+        "transformation": "Move the archived finite mathematics into its maintained project namespace and bind project imports."
+      },
+      "Zeta23/OPICARound6/PrimeFactorPaths/Verify.lean": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/Audit.lean": "1d6e2e4ef65fa2b2901f2aa12b15d153182cafbc7432f3f2f35ebf8b91dfcfc3",
+          "step4-native-stopping-2026-11-20/StoppingAudit.lean": "5cc0deb08db3ac3ff55feb67b15063e412180c5e5935449a27653872da077aa6"
+        },
+        "published_sha256": "73e1a4d2b2c8a91c82a7a38fdfa5d088cdcea7f257293500c8e3ba3b1bf36c5f",
+        "transformation": "Extend the existing project verification module with the project-qualified finite theorem checks. The archived files are the earlier standalone checks."
+      },
+      "research/RHRC/integration/opica_round6/controls/NegativeTypes.lean.txt": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/NegativeTypes.lean": "a52b275d2d0c2f0d5c0e79b2ead705fc14451ad6eb43e01dc0f9ae6ad15b1dd1",
+          "step4-native-stopping-2026-11-20/StoppingNegative.lean": "eaffacf40642ad4d176301b98ba8e07d03a9c9b20819104671a5856345a3f171"
+        },
+        "published_sha256": "28e3eabf9555b049c15e3f21f520210d6e07ba8471f9502f649b97e4592b0804",
+        "transformation": "Retain the prior rejections and add the seven archived arithmetic type-error cases under their maintained namespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/BUCHSTAB_BOUNDARY.md": {
+        "archive_members": {
+          "step4-arithmetic-recursion-2026-11-20/BUCHSTAB_BOUNDARY.md": "22f29f4bb7aa38654181da32ba62d1fd3349f410d8ac8bc77a42a5742b42ce77"
+        },
+        "published_sha256": "22f29f4bb7aa38654181da32ba62d1fd3349f410d8ac8bc77a42a5742b42ce77",
+        "transformation": "Publish the archived bytes unchanged."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/BUCHSTAB_TRANSPORT_CHECK.json": {
+        "archive_members": {
+          "step4-arithmetic-recursion-2026-11-20/BUCHSTAB_TRANSPORT_CHECK.json": "391ded6203b77407bdda81f8e920380c320ddabf18bfcccfadb978eede97c812"
+        },
+        "published_sha256": "391ded6203b77407bdda81f8e920380c320ddabf18bfcccfadb978eede97c812",
+        "transformation": "Publish the archived bytes unchanged."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CHECK.json": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/DISJOINT_CHECK.json": "923f05d865b5c3994761982f67b98918c189d1e2a5521b967cade3bb0650155a"
+        },
+        "published_sha256": "923f05d865b5c3994761982f67b98918c189d1e2a5521b967cade3bb0650155a",
+        "transformation": "Publish the archived bytes unchanged."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/DISJOINT_CUT_DISCREPANCY.md": "65afcf511ffe8d9ea138e5adaab6c0a7f0c4d557f907eca8b96136e42105ee81"
+        },
+        "published_sha256": "755a38583951fa134a25635accbdb37b8901b0eafb36dc1e8ccad79cbabffa22",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DIVISOR_SPACING_CHECK.json": {
+        "archive_members": {
+          "step4-analytic-crosscheck-2026-11-20/DIVISOR_SPACING_CHECK.json": "6c2fa9b0bbfb37f13eca8f408d920fbd0fa9511eefa112beb961e9308a9e7b43"
+        },
+        "published_sha256": "6c2fa9b0bbfb37f13eca8f408d920fbd0fa9511eefa112beb961e9308a9e7b43",
+        "transformation": "Publish the archived bytes unchanged."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/GEOMETRY_REPLAY.json": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/GEOMETRY_REPLAY.json": "5d59ccfc9ee6b3bbad55225832cf7bc77411813f93d9d57b757d784ba63e2a43"
+        },
+        "published_sha256": "d55ffd536e0b992eedc9b4ea9fed7a3347b0482d7ce0114a1f27cce134d506a6",
+        "transformation": "Normalize CRLF to LF. The content is otherwise byte-identical."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md": "72604839b86cf6ea3fd9a4a46f5ba8ba45f12dd5e603fbd8be4e014f7e125736"
+        },
+        "published_sha256": "bdeb60b80a3fac2b0e0a510ba37fddca4d10de8a5731decd589c0a1a43ea38f9",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md": "ef96790d2ce604d7555b7a025dd2de8801db0981872cc64b1e859f284393184d"
+        },
+        "published_sha256": "c789377094f86f25349cdd3237a71d59b9a80063ddb28cdb9a3591b86c49eeaf",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md": {
+        "archive_members": {
+          "step4-arithmetic-recursion-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md": "bd38cbc6c9e1b0a915a3ba8a40bef1e1b47eb4a4bb18564d5e7cf1b05d73446a"
+        },
+        "published_sha256": "f6214cd71570f85882a4876d4069ba9a977a013c734325725dcc3baa52adb3f3",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/PAID_PARTNER_GRAPHS.md": {
+        "archive_members": {
+          "step4-analytic-crosscheck-2026-11-20/PAID_PARTNER_GRAPHS.md": "252aa40bdf0ea6543da1c7561b64e5944362cfc80efda7b8f8df7cad86c8fdf0"
+        },
+        "published_sha256": "c06e4cc9252b6b0dfbfb492cb2ffa57f54490d75f4a54cb4a39a43e7e60d54a1",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SELECTED_PAIR.json": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/SELECTED_PAIR.json": "588a8aa7e41992dab957dc0d1dcad94e269f2bbd824b2e7ca95f9ee30afd7dc2"
+        },
+        "published_sha256": "21d9dbbe03b5bfc8d89a4a852a6d351a4a4ae2f5d6306ba5ea7f2e6dffd20baf",
+        "transformation": "Normalize CRLF to LF. The content is otherwise byte-identical."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SHIFTED_PRIME_RETIREMENT.md": {
+        "archive_members": {
+          "step4-arithmetic-recursion-2026-11-20/SHIFTED_PRIME_RETIREMENT.md": "dac9dc06ac8679698ece85b1e3ebed7833d066b0bd4628f9657b8b89f6ad78b0"
+        },
+        "published_sha256": "9d125454973675ad40de5b7340348512336921b1e46088a59a86ca9fef2b742a",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SPARSE_PRIME_FACTOR_CHARGES.md": {
+        "archive_members": {
+          "step4-analytic-crosscheck-2026-11-20/SPARSE_PRIME_FACTOR_CHARGES.md": "fc7c69e36b1a33eb8661e5705ddc1333acb84d1d310b51fdbf4a6831b0c2116d"
+        },
+        "published_sha256": "d4aca3faf66b1242c9722399d0d9d338add700c7da6ef37a8269e42c4d898f31",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/STOPPING_CHECK.json": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/STOPPING_CHECK.json": "0eee01293d408fb97bb28518172e7cf933033bb95bd9b1389d6ac481b83ea643"
+        },
+        "published_sha256": "0eee01293d408fb97bb28518172e7cf933033bb95bd9b1389d6ac481b83ea643",
+        "transformation": "Publish the archived bytes unchanged."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SURVIVOR_DIVISOR_SPACING.md": {
+        "archive_members": {
+          "step4-analytic-crosscheck-2026-11-20/SURVIVOR_DIVISOR_SPACING.md": "a5ac94805246fb22007534c1e6a747c55130acdeae351db774a26aa75334a704"
+        },
+        "published_sha256": "7c4a70c349cd436a68d39c1000a06c541f60d6d1f97c7366590924a0b2fd209a",
+        "transformation": "Retain the paper text with repository-resolving links and normalized boundary whitespace."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_buchstab_transport.py": {
+        "archive_members": {
+          "step4-arithmetic-recursion-2026-11-20/check_buchstab_transport.py": "8d4e00ecbb6363316d03070ab90cb666a25b3fcda46c6c2d6ac44ec004b13ade"
+        },
+        "published_sha256": "6a03f30b037709379b58c503da9402f2b1b095a5aaac354ce50b97912163c9fc",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_disjoint.py": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/check_disjoint.py": "47d129469760bd2c197a9e8d3b913604c5f8ca3d753c45294c0ef583a1ea27e0"
+        },
+        "published_sha256": "7ed9a24d02a15738cb18243094ec1e7c8616645eb87d29a4c31986175b78ba1e",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_divisor_spacing.py": {
+        "archive_members": {
+          "step4-analytic-crosscheck-2026-11-20/check_divisor_spacing.py": "7bface0b4566deed8076bc76ec1da0f75036ad28df822963e07930d524ae2f31"
+        },
+        "published_sha256": "cd3e0ecce3259838c5cb7e03ce3850ae8b9c0da2bae765f5ffa64631e5ff1df2",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_geometry.py": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/check_geometry.py": "2da0624e401e14707d50c6891dcf17d6c2e00fd11198bc87bcba927389dad154"
+        },
+        "published_sha256": "9be1df6f497200ccaa9025cadd1a06fad5e1320134acbb0ce3b6fa44ad6782d2",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_selected_pair.py": {
+        "archive_members": {
+          "step4-native-cells-2026-11-20/check_selected_pair.py": "dfc445056f4f6e902982faa0066ef80e841bb0333e7b140c88d2b8c3c64c8859"
+        },
+        "published_sha256": "2018946cfa823d01ad199cd5df7a9018691726d6ea29b31974b31f8901c139b1",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/check_stopping.py": {
+        "archive_members": {
+          "step4-native-stopping-2026-11-20/check_stopping.py": "2159c6d298dc305c6a4d37b0d8cf8c6a4aeeff448d48b8c58c343188a109ff93"
+        },
+        "published_sha256": "09d43a9cc3f2dc77c6ad0eb6d3d9b4f0f26478353e01e444b991dd1e1a07779a",
+        "transformation": "Adapt the finite calculation to the repository replay interface and relative evidence paths."
+      },
+      "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/finite_replay.py": {
+        "archive_members": {},
+        "published_sha256": "38b5d68510452868cbfe2e68f0cc660a51940708ed00526874e505cb55ff589a",
+        "transformation": "Repository-native command-line interface and exact comparison for the six finite fixtures."
+      }
+    }
+  }
+}

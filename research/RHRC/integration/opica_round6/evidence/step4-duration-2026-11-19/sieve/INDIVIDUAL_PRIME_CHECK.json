@@ -1,0 +1,46 @@
+{
+  "exact_algebraic_cases": 55,
+  "samples": [
+    {
+      "p": 100003,
+      "prime_count": 9592,
+      "h": 0.5,
+      "first_peak": 0.32239894824892223,
+      "first_log_euler": 51.46658728604612,
+      "third_log_euler": 27.388464704031822,
+      "weighted_mean_log_p_over_q": 2.6144168696578047,
+      "phase_at_first_peak": 3.7117647329980064,
+      "phase_prediction": 4.064601835780698,
+      "cosine_at_log_p": -0.8418081031342274,
+      "cosine_at_log_p_squared": 0.4172817650048919
+    },
+    {
+      "p": 1000003,
+      "prime_count": 78498,
+      "h": 0.5,
+      "first_peak": 0.26228535096654165,
+      "first_log_euler": 143.80381466323445,
+      "third_log_euler": 82.9816086349766,
+      "weighted_mean_log_p_over_q": 2.536526407619492,
+      "phase_at_first_peak": 3.6236068223324938,
+      "phase_prediction": 3.848104029265356,
+      "cosine_at_log_p": -0.886063023013286,
+      "cosine_at_log_p_squared": 0.570215361502886
+    },
+    {
+      "p": 10000019,
+      "prime_count": 664579,
+      "h": 0.5,
+      "first_peak": 0.2206668020909497,
+      "first_log_euler": 401.61754519720125,
+      "third_log_euler": 251.20151380649415,
+      "weighted_mean_log_p_over_q": 2.4438095010808927,
+      "phase_at_first_peak": 3.5567290423595423,
+      "phase_prediction": 3.7030444781649305,
+      "cosine_at_log_p": -0.9150613214047721,
+      "cosine_at_log_p_squared": 0.6746744438620955
+    }
+  ],
+  "sample_scope": "Undamped finite Euler products sampled in two positive frequency bands. No source-weighted frequency integration or cofinal verification.",
+  "script_sha256": "bd0494a1e1fee969f65ff10cccb8773e69b67e419020029522f1dea037c700a8"
+}

@@ -1,0 +1,12 @@
+{
+  "upper_n": 40000,
+  "precision_bits": 160,
+  "squarefree_n_examined": 24304,
+  "violations": 0,
+  "smallest_observed_margin_for_W_minus_log_squared_over_two_minus_two": {
+    "n": 10,
+    "ball": "[4.7825348680511934865574277147502824879802820005 +/- 4.56e-47]"
+  },
+  "equal_factor_sets_at_integer_center": 0,
+  "scope": "Genuine primes, squarefree products, real and integer bucket centers. Algebra independently bounds enumerated values. Finite check only."
+}

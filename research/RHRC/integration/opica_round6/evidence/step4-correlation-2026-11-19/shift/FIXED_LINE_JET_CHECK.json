@@ -1,0 +1,25 @@
+{
+  "status": "EXACT_SCALAR_CHECKS_PASS",
+  "scope": "Rational endpoint arithmetic for the local paper proof, using the cited upstream bounds.",
+  "all_time_squared_prime_field_derivative_orders_below_10_to_63": [
+    0,
+    115000
+  ],
+  "number_of_such_orders": 115001,
+  "signed_jet_orders_below_minus_10_to_70": [
+    50000,
+    115000
+  ],
+  "number_of_signed_orders": 65001,
+  "exponential_tail_log_margin_at_largest_order": "49063/4000",
+  "comparison_taylor_sum_minus_500_over_313": "490779797032727203257589230073/3230760960000000000000000000000000",
+  "diagonal_lower_all_integer_orders_from": 50000,
+  "diagonal_lower_bound": "156250000000000000000000000000000000000000000000000000000000000000000000/3",
+  "contrary_sign_implies_one_zero_in_ordinate_range": "3e12 < |Im rho| < (16 k)^2",
+  "supporting_file_sha256": {
+    "FIXED_SIEVE_SIGN.md": "0abc4452db2f8cf5f6f1c754566da840b2cfac49c28ac449bc686d4518878756",
+    "FIXED_SIEVE_CONSTANTS.json": "e01a2425c63b40c1b7e94d99fdcece58b431b140b5a047541a71dd52a2282d61",
+    "ALL_HORIZON_DIAGONAL.md": "3626f7a9c91c498b0eae1905a4329535698dd0c26b0928ad9b106a5cfa0d214c"
+  },
+  "cofinal_upper_proved": false
+}

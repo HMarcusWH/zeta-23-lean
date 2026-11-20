@@ -1,0 +1,36 @@
+{
+  "cutoff": 10000000,
+  "source_scale": "1/4096",
+  "prime_flags_sha256": "ab158d028a45c7419316d831fde03f2b164a2e31c28826083c339b83dcef43f6",
+  "high_prime_count": 586081,
+  "threshold_prime_range": [
+    1000000,
+    10000000
+  ],
+  "negative_log_product_cost_upper": "183691421922325125318659/3421861640104954696650",
+  "squared_Euler_product_log_lower_above": 200,
+  "actual_zeta_derivative_modulus_enclosure": "[3e+0 +/- 0.606]",
+  "frequency_band": [
+    "0.199",
+    "0.200"
+  ],
+  "line_response_bound_strict": "1e31",
+  "same_group_limiting_energy_lower_strict": "1e73",
+  "numeric_lower_from_certificate": "[1.1230950476998527746402992914459134734284426647e+73 +/- 1.73e+26]",
+  "flint": "0.9.0",
+  "bits": 160,
+  "consecutive_integer_horizons": [
+    50000,
+    100000
+  ],
+  "with_external_ceiling": [
+    50000,
+    144000
+  ],
+  "signed_covariance_upper_strict": "-1e74",
+  "upper_sum_p_minus_two_fifths": "481583/128",
+  "native_one_copy_spectral_tail_log_upper": -53890,
+  "uniform_diagonal_mean_lower_after_50000": "1e72",
+  "opposite_sign_forces_a_single_zero_in": "3e12 < abs(Im rho) < (12 n)^2 and n*(Re rho-1/2) > sqrt(abs(Im rho))/33",
+  "qualification": "Finite prime sieve, exact rational constants and Arb ball bounds. Uses analytic identities specified in the paper. No finite check of the missing cofinal sign."
+}

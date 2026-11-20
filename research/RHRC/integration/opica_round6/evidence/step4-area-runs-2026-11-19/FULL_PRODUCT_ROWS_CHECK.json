@@ -1,0 +1,208 @@
+{
+  "status": "FINITE_ARITHMETIC_PASS",
+  "precision_bits": 224,
+  "flint_version": "0.9.0",
+  "source_sha256": "465275f6fe7feb4259dc5d12ac302998dbef7be7c78bc327285ce4913f1c0fca",
+  "scope": "True finite outer-prime sets, separately distributed calibrations, all ordered product indices. These small cases can have overlapping outer-prime ranges. No asymptotic signed bound is tested.",
+  "cases": [
+    {
+      "x": 2048,
+      "factorial": {
+        "L": 2,
+        "average_base_count": 2,
+        "coefficient_count": 9,
+        "moment_values": [
+          "[1.00000000000000000000000 +/- 3e-29]",
+          "[1.00000000000000000000000 +/- 3e-29]",
+          "[-0.684765236089936523095543 +/- 3.52e-25]",
+          "[2.00000000000000000000000 +/- 3e-28]"
+        ],
+        "first_band": [
+          -1,
+          0
+        ],
+        "prime_labels": 101,
+        "lower_cutoff": "[79.2057216370506301435853 +/- 3.69e-23]",
+        "upper_cutoff": "[682.666666666666666666667 +/- 3.34e-22]",
+        "native": "[14152.8729182064380862123 +/- 3.59e-20]",
+        "regrouped": "[14152.8729182064380862123 +/- 3.59e-20]",
+        "energy_over_x_cubed": "[1.44351809939275999198140 +/- 3.35e-24]",
+        "parseval_over_x_cubed": "[1.44351809939275999198140 +/- 3.35e-24]",
+        "additive_phases_checked": 2048
+      },
+      "eta": {
+        "L": 16,
+        "average_base_count": 16,
+        "coefficient_count": 79,
+        "moment_values": [
+          "[1.00000000000000000000000 +/- 3e-29]",
+          "[1.34863743473063314328215 +/- 2.93e-24]",
+          "[-1.29113409382172037630541 +/- 2.55e-24]",
+          "[+/- 6.58e-61]"
+        ],
+        "first_band": [
+          -1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          -1,
+          0,
+          -1,
+          1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "prime_labels": 30,
+        "lower_cutoff": "[1.20999408921929260005069 +/- 4.10e-24]",
+        "upper_cutoff": "[120.470588235294117647059 +/- 1.77e-22]",
+        "native": "[-110808.918306001352337938 +/- 4.59e-19]",
+        "regrouped": "[-110808.918306001352337938 +/- 4.59e-19]",
+        "energy_over_x_cubed": "[7.16159045070148859804135 +/- 6.42e-25]",
+        "parseval_over_x_cubed": "[7.16159045070148859804135 +/- 6.42e-25]",
+        "additive_phases_checked": 2048
+      },
+      "overlapping_outer_primes": 8,
+      "native_product_over_x_cubed": "[-0.182570021016145609017150 +/- 3.88e-25]",
+      "partition": {
+        "shift_floor": 15,
+        "lcm_floor": 32399,
+        "n_ordered_pairs": 4194304,
+        "families": {
+          "equal": {
+            "pairs": 2048,
+            "signed_over_x_cubed": "[0.104442985963004007284388 +/- 4.24e-25]",
+            "absolute_over_x_cubed": "[0.176505473714626382471973 +/- 1.79e-26]"
+          },
+          "unequal_near_small_lcm": {
+            "pairs": 7164,
+            "signed_over_x_cubed": "[-0.0858395888395380555419261 +/- 1.06e-26]",
+            "absolute_over_x_cubed": "[0.255319045219352172449298 +/- 4.10e-25]"
+          },
+          "near_large_lcm": {
+            "pairs": 54036,
+            "signed_over_x_cubed": "[0.507062576657362938670181 +/- 9.52e-26]",
+            "absolute_over_x_cubed": "[21.1991006892679688714150 +/- 3.44e-23]"
+          },
+          "far_small_lcm": {
+            "pairs": 405270,
+            "signed_over_x_cubed": "[-0.0459558762436473845545677 +/- 1.72e-26]",
+            "absolute_over_x_cubed": "[29.7200602526707973720596 +/- 2.43e-24]"
+          },
+          "far_large_lcm": {
+            "pairs": 3725786,
+            "signed_over_x_cubed": "[-0.662280118553327114875225 +/- 7.54e-26]",
+            "absolute_over_x_cubed": "[1114.26692274790774798942 +/- 1.48e-21]"
+          }
+        }
+      }
+    },
+    {
+      "x": 4096,
+      "factorial": {
+        "L": 2,
+        "average_base_count": 2,
+        "coefficient_count": 9,
+        "moment_values": [
+          "[1.00000000000000000000000 +/- 3e-29]",
+          "[1.00000000000000000000000 +/- 3e-29]",
+          "[-0.684765236089936523095543 +/- 3.52e-25]",
+          "[2.00000000000000000000000 +/- 3e-28]"
+        ],
+        "first_band": [
+          -1,
+          0
+        ],
+        "prime_labels": 186,
+        "lower_cutoff": "[133.207614784358899063653 +/- 2.23e-22]",
+        "upper_cutoff": "[1365.33333333333333333333 +/- 3.34e-21]",
+        "native": "[165301.553852153251636428 +/- 3.00e-19]",
+        "regrouped": "[165301.553852153251636428 +/- 3.00e-19]",
+        "energy_over_x_cubed": "[2.05362213480905395392025 +/- 2.38e-24]",
+        "parseval_over_x_cubed": "[2.05362213480905395392025 +/- 2.38e-24]",
+        "additive_phases_checked": 4096
+      },
+      "eta": {
+        "L": 21,
+        "average_base_count": 21,
+        "coefficient_count": 104,
+        "moment_values": [
+          "[1.00000000000000000000000 +/- 3e-29]",
+          "[1.34863743473063314328215 +/- 2.93e-24]",
+          "[-1.29113409382172037630541 +/- 2.55e-24]",
+          "[+/- 7.15e-61]"
+        ],
+        "first_band": [
+          1,
+          -1,
+          0,
+          -1,
+          1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          0,
+          -1,
+          -1
+        ],
+        "prime_labels": 42,
+        "lower_cutoff": "[1.23114441334491628449939 +/- 3.07e-24]",
+        "upper_cutoff": "[186.181818181818181818182 +/- 1.82e-22]",
+        "native": "[-320674.245128204945311634 +/- 4.28e-20]",
+        "regrouped": "[-320674.245128204945311634 +/- 4.28e-20]",
+        "energy_over_x_cubed": "[8.34516472402014546675528 +/- 4.03e-24]",
+        "parseval_over_x_cubed": "[8.34516472402014546675528 +/- 4.03e-24]",
+        "additive_phases_checked": 4096
+      },
+      "overlapping_outer_primes": 10,
+      "native_product_over_x_cubed": "[-0.771367209382276083697071 +/- 3.36e-25]",
+      "partition": {
+        "shift_floor": 17,
+        "lcm_floor": 73263,
+        "n_ordered_pairs": 16777216,
+        "families": {
+          "equal": {
+            "pairs": 4096,
+            "signed_over_x_cubed": "[0.125421153584256331922153 +/- 4.24e-25]",
+            "absolute_over_x_cubed": "[0.209762226073734608368138 +/- 1.91e-25]"
+          },
+          "unequal_near_small_lcm": {
+            "pairs": 12278,
+            "signed_over_x_cubed": "[0.00297373178210977853929740 +/- 2.05e-28]",
+            "absolute_over_x_cubed": "[0.107017250232209761262744 +/- 2.21e-25]"
+          },
+          "near_large_lcm": {
+            "pairs": 126680,
+            "signed_over_x_cubed": "[0.693946469836593259988596 +/- 2.33e-25]",
+            "absolute_over_x_cubed": "[30.4974797149847405034610 +/- 4.44e-23]"
+          },
+          "far_small_lcm": {
+            "pairs": 1092798,
+            "signed_over_x_cubed": "[0.207433990199864935671786 +/- 4.50e-25]",
+            "absolute_over_x_cubed": "[36.4626035924523063961850 +/- 4.90e-23]"
+          },
+          "far_large_lcm": {
+            "pairs": 15541364,
+            "signed_over_x_cubed": "[-1.80114255478510038981890 +/- 3.53e-24]",
+            "absolute_over_x_cubed": "[2966.18764411717775967094 +/- 4.80e-21]"
+          }
+        }
+      }
+    }
+  ]
+}

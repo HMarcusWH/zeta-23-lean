@@ -1,0 +1,371 @@
+{
+  "pin": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "tree": "573cda1f06d2d7a0e61349a53183311e4ba621fc",
+  "graph_declaration_rows": 22198,
+  "all_relation_rows": 1329677,
+  "proof_value_edges": 1236174,
+  "paths_provider_to_cut": {
+    "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget -> Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": null,
+    "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget -> Zeta23.ExceptionalZero.generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis": "UNINDEXED_ENDPOINT",
+    "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget -> Zeta23.ExceptionalZero.exists_arbitrarilyLarge_primeRemainderDominance_failure_of_offLine_zero": "UNINDEXED_ENDPOINT",
+    "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget -> Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": null,
+    "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget -> Zeta23.ExceptionalZero.riemannHypothesis_of_originalDetectorSchurSubexponential": "UNINDEXED_ENDPOINT",
+    "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget -> Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined": "UNINDEXED_ENDPOINT",
+    "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget -> Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower": "UNINDEXED_ENDPOINT",
+    "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget -> Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget -> Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": [
+      "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+      "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le",
+      "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_canonicalFiniteWeilPositivity",
+      "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+    ],
+    "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget -> Zeta23.ExceptionalZero.generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget -> Zeta23.ExceptionalZero.exists_arbitrarilyLarge_primeRemainderDominance_failure_of_offLine_zero": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget -> Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": null,
+    "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget -> Zeta23.ExceptionalZero.riemannHypothesis_of_originalDetectorSchurSubexponential": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget -> Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget -> Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget -> Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le -> Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": [
+      "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le",
+      "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_canonicalFiniteWeilPositivity",
+      "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+    ],
+    "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le -> Zeta23.ExceptionalZero.generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le -> Zeta23.ExceptionalZero.exists_arbitrarilyLarge_primeRemainderDominance_failure_of_offLine_zero": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le -> Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": null,
+    "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le -> Zeta23.ExceptionalZero.riemannHypothesis_of_originalDetectorSchurSubexponential": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le -> Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le -> Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower": "UNINDEXED_ENDPOINT",
+    "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le -> Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential": "UNINDEXED_ENDPOINT",
+    "Zeta23.OPICAFollowup.recovery_subexp_budget -> Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": null,
+    "Zeta23.OPICAFollowup.recovery_subexp_budget -> Zeta23.ExceptionalZero.generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis": "UNINDEXED_ENDPOINT",
+    "Zeta23.OPICAFollowup.recovery_subexp_budget -> Zeta23.ExceptionalZero.exists_arbitrarilyLarge_primeRemainderDominance_failure_of_offLine_zero": "UNINDEXED_ENDPOINT",
+    "Zeta23.OPICAFollowup.recovery_subexp_budget -> Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": null,
+    "Zeta23.OPICAFollowup.recovery_subexp_budget -> Zeta23.ExceptionalZero.riemannHypothesis_of_originalDetectorSchurSubexponential": "UNINDEXED_ENDPOINT",
+    "Zeta23.OPICAFollowup.recovery_subexp_budget -> Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined": "UNINDEXED_ENDPOINT",
+    "Zeta23.OPICAFollowup.recovery_subexp_budget -> Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower": "UNINDEXED_ENDPOINT",
+    "Zeta23.OPICAFollowup.recovery_subexp_budget -> Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential": "UNINDEXED_ENDPOINT",
+    "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero -> Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": null,
+    "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero -> Zeta23.ExceptionalZero.generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis": "UNINDEXED_ENDPOINT",
+    "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero -> Zeta23.ExceptionalZero.exists_arbitrarilyLarge_primeRemainderDominance_failure_of_offLine_zero": "UNINDEXED_ENDPOINT",
+    "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero -> Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": null,
+    "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero -> Zeta23.ExceptionalZero.riemannHypothesis_of_originalDetectorSchurSubexponential": "UNINDEXED_ENDPOINT",
+    "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero -> Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined": "UNINDEXED_ENDPOINT",
+    "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero -> Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower": "UNINDEXED_ENDPOINT",
+    "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero -> Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential": "UNINDEXED_ENDPOINT"
+  },
+  "common_public_downstream_declarations": {
+    "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget -> Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": {
+      "count": 0,
+      "nearest": []
+    },
+    "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget -> Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": {
+      "count": 0,
+      "nearest": []
+    },
+    "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget -> Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": {
+      "count": 1,
+      "nearest": [
+        "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+      ]
+    },
+    "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget -> Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": {
+      "count": 0,
+      "nearest": []
+    },
+    "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le -> Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": {
+      "count": 1,
+      "nearest": [
+        "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+      ]
+    },
+    "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le -> Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": {
+      "count": 0,
+      "nearest": []
+    },
+    "Zeta23.OPICAFollowup.recovery_subexp_budget -> Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": {
+      "count": 0,
+      "nearest": []
+    },
+    "Zeta23.OPICAFollowup.recovery_subexp_budget -> Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": {
+      "count": 0,
+      "nearest": []
+    },
+    "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero -> Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": {
+      "count": 0,
+      "nearest": []
+    },
+    "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero -> Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": {
+      "count": 0,
+      "nearest": []
+    }
+  },
+  "selected_short_names_explicitly_present_in_local_proof_text": {
+    "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": [],
+    "Zeta23.ExceptionalZero.generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis": [
+      "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le"
+    ],
+    "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_primeRemainderDominance_failure_of_offLine_zero": [
+      "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget"
+    ],
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": [],
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_originalDetectorSchurSubexponential": [],
+    "Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined": [
+      "Zeta23.OPICARound4.actualCorrelationNativeDiagonal_bound",
+      "Zeta23.OPICARound4.actualCorrelationLongTerm_eq_normalized_combined"
+    ],
+    "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower": [
+      "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero",
+      "Zeta23.OPICARound4.actualCorrelationPrimeField_add_longTerm_rapid_bound"
+    ],
+    "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential": [
+      "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_longTerm_subexponential"
+    ],
+    "Zeta23.OPICARound4.ArithmeticFrontier.ActualLongTermFixedRateLowerBound": [],
+    "Zeta23.OPICARound4.ArithmeticFrontier.ActualLongTermSubexponentialLowerBound": [
+      "Zeta23.OPICARound4.ArithmeticFrontier.ActualLongTermFixedRateLowerBound"
+    ],
+    "Zeta23.OPICARound4.ArithmeticFrontier.correlation_lower_of_longTerm_fixed_rate": [
+      "Zeta23.OPICARound4.actualCorrelationPrimeField_add_longTerm_rapid_bound"
+    ],
+    "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_longTerm_fixed_rate": [
+      "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero",
+      "Zeta23.OPICARound4.ArithmeticFrontier.correlation_lower_of_longTerm_fixed_rate"
+    ],
+    "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_longTerm_subexponential": [
+      "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_longTerm_fixed_rate"
+    ]
+  },
+  "checked_source": {
+    "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget": {
+      "in_compiler_graph": true,
+      "path": "Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean",
+      "line": 300,
+      "signature": "theorem arithmetic_stieltjes_sign_budget {κ : ℂ} (hκ : κ.im ≠ 0) :\n    Integrable (fun ξ => (‖(spectralEnergy ξ : ℂ) - κ‖ ^ 2)⁻¹) arithmeticSpectralMeasure ∧\n    (arithmeticStieltjes κ).im / κ.im =\n      ∫ ξ, (‖(spectralEnergy ξ : ℂ) - κ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure ∧\n    0 < ∫ ξ, (‖(spectralEnergy ξ : ℂ) - κ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure ∧\n    ‖arithmeticStieltjes κ‖ ≤\n      (1 + ‖κ‖ / |κ.im|) * (Real.log (2 * π) - Real.eulerMascheroniConstant) ∧\n    ∫ ξ, (‖(spectralEnergy ξ : ℂ) - κ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure ≤\n      (1 + ‖κ‖ / |κ.im|) * (Real.log (2 * π) - Real.eulerMascheroniConstant) / |κ.im|",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean#L300"
+    },
+    "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget": {
+      "in_compiler_graph": true,
+      "path": "Zeta23/CCM/CanonicalPrimeRemainder.lean",
+      "line": 267,
+      "signature": "theorem canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget\n    {L : ℝ} (hL : 0 < L)\n    (K : ℕ)\n    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :\n    canonicalSourceChannelEnergy L K x =\n      -canonicalPrimeRemainderEnergy L K x - canonicalPrimeFreeBudget L K x",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/CanonicalPrimeRemainder.lean#L267"
+    },
+    "Zeta23.CCM.canonicalSourceChannelEnergy_nonneg_iff_budget_le": {
+      "in_compiler_graph": true,
+      "path": "Zeta23/CCM/CanonicalPrimeRemainder.lean",
+      "line": 280,
+      "signature": "theorem canonicalSourceChannelEnergy_nonneg_iff_budget_le\n    {L : ℝ} (hL : 0 < L)\n    (K : ℕ)\n    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :\n    0 ≤ canonicalSourceChannelEnergy L K x ↔\n      canonicalPrimeFreeBudget L K x ≤ -canonicalPrimeRemainderEnergy L K x",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/CCM/CanonicalPrimeRemainder.lean#L280"
+    },
+    "Zeta23.OPICAFollowup.recovery_subexp_budget": {
+      "in_compiler_graph": true,
+      "path": "Zeta23/OPICAFollowup/JointObservation.lean",
+      "line": 200,
+      "signature": "theorem recovery_subexp_budget {F : ℕ → Type*}\n    [∀ n, NormedAddCommGroup (F n)] [∀ n, NormedSpace 𝕜 (F n)]\n    (T : Zeta23.OPICA.HorizonSchedule) (R : ∀ n, F n →L[𝕜] 𝕜) (error : ∀ n, F n)\n    (recovery_budget : Zeta23.OPICA.SubexpAlong T (fun n => ‖R n‖))\n    (error_budget : Zeta23.OPICA.SubexpAlong T (fun n => ‖error n‖)) :\n    Zeta23.OPICA.SubexpAlong T (fun n => R n (error n))",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/JointObservation.lean#L200"
+    },
+    "Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero": {
+      "in_compiler_graph": true,
+      "path": "Zeta23/ExceptionalZero/UniversalSincSignedExcursions.lean",
+      "line": 131,
+      "signature": "theorem fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero\n    (ρ : zetaZeroConfig.carrier) (hoff : (ρ : ℂ).re ≠ 1 / 2)\n    {β : ℝ} (hβ : β < |(ρ : ℂ).re - 1 / 2|) (A M : ℝ) :\n    (∃ a : ℝ, A < a ∧ M * Real.exp (2 * β * a) < fixedOriginalSincCorrelationReal a) ∧\n    (∃ a : ℝ, A < a ∧ fixedOriginalSincCorrelationReal a < -(M * Real.exp (2 * β * a)))",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/UniversalSincSignedExcursions.lean#L131"
+    },
+    "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis": {
+      "in_compiler_graph": true,
+      "path": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+      "line": 190,
+      "signature": "theorem canonicalPrimeRemainderDominance_iff_riemannHypothesis :\n    CanonicalPrimeRemainderDominance ↔ RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean#L190"
+    },
+    "Zeta23.ExceptionalZero.generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+      "line": 209,
+      "signature": "theorem generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis :\n    GeneratedRetainedPrimeRemainderDominance ↔ RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean#L209"
+    },
+    "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_primeRemainderDominance_failure_of_offLine_zero": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+      "line": 238,
+      "signature": "theorem exists_arbitrarilyLarge_primeRemainderDominance_failure_of_offLine_zero\n    (ρ₀ : zetaZeroConfig.carrier)\n    (hoff : (ρ₀ : ℂ).re ≠ 1 / 2)\n    (A : ℝ) :\n    ∃ Q : ℕ, ∃ c : WholeCellBiRegularNegativeEnergyCertificate Q,\n      A < c.retained.energy.firstBad.L ∧\n        -canonicalPrimeRemainderEnergy\n            c.retained.energy.firstBad.L\n            (c.retained.energy.firstBad.Nstar + 1) (wholeCellRetainedTrial c) <\n          canonicalPrimeFreeBudget\n            c.retained.energy.firstBad.L\n            (c.retained.energy.firstBad.Nstar + 1) (wholeCellRetainedTrial c)",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean#L238"
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX": {
+      "in_compiler_graph": true,
+      "path": "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean",
+      "line": 25,
+      "signature": "theorem riemannHypothesis_of_step4_AX\n    (hAX : NativeOriginalPrimeFieldAllDampedIntegral) : RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/Step4OutputSufficiency.lean#L25"
+    },
+    "Zeta23.ExceptionalZero.riemannHypothesis_of_originalDetectorSchurSubexponential": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean",
+      "line": 38,
+      "signature": "theorem riemannHypothesis_of_originalDetectorSchurSubexponential\n    (hC : NativeOriginalDetectorSchurSubexponential) : RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/Step4OutputSufficiency.lean#L38"
+    },
+    "Zeta23.OPICARound4.actualCorrelationLongTerm_eventual_lower_iff_combined": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 1187,
+      "signature": "theorem actualCorrelationLongTerm_eventual_lower_iff_combined :\n    (∃ C : ℝ, 0 < C ∧ ∃ T0 : ℝ, ∀ t : ℝ, T0 ≤ t →\n      -C ≤ hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2)) ↔\n    (∃ C : ℝ, 0 < C ∧ ∃ T0 : ℝ, ∀ t : ℝ, T0 ≤ t →\n      -C ≤ (mobiusPoissonRankOne actualFlatSamplingMass (Real.exp t)\n          (Nat.sqrt (actualCorrelationCutoff t / 2)) +\n        mobiusPoissonOffDiagonal actualFlatSamplingRemainder (Real.exp t)\n          (Nat.sqrt (actualCorrelationCutoff t / 2))) / Real.sqrt (Real.exp t))",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L1187"
+    },
+    "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 1555,
+      "signature": "theorem riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower\n    (hbound : ∃ C : ℝ, 0<C ∧ ∃ T : ℝ, ∀ t : ℝ, T≤t →\n      -C ≤ hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t/2)) :\n    RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L1555"
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean",
+      "line": 120,
+      "signature": "theorem riemannHypothesis_of_longTerm_subexponential\n    (h : ActualLongTermSubexponentialLowerBound) : RiemannHypothesis",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean#L120"
+    },
+    "Zeta23.ExceptionalZero.CanonicalPrimeRemainderDominance": {
+      "in_compiler_graph": true,
+      "path": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+      "line": 171,
+      "signature": "def CanonicalPrimeRemainderDominance : Prop",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean#L171",
+      "definition": "def CanonicalPrimeRemainderDominance : Prop :=\n  ∀ L : ℝ, 0 < L →\n    ∀ K : ℕ, ∀ x : EuclideanSpace ℂ (Fin (2 * K + 1)),\n      EuclideanBoundaryFlat K x →\n        canonicalPrimeFreeBudget L K x ≤ -canonicalPrimeRemainderEnergy L K x"
+    },
+    "Zeta23.ExceptionalZero.GeneratedRetainedPrimeRemainderDominance": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+      "line": 197,
+      "signature": "def GeneratedRetainedPrimeRemainderDominance : Prop",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean#L197",
+      "definition": "def GeneratedRetainedPrimeRemainderDominance : Prop :=\n  ∃ A : ℝ,\n    ∀ Q : ℕ, ∀ c : WholeCellBiRegularNegativeEnergyCertificate Q,\n      A < c.retained.energy.firstBad.L →\n        canonicalPrimeFreeBudget\n            c.retained.energy.firstBad.L\n            (c.retained.energy.firstBad.Nstar + 1) (wholeCellRetainedTrial c) ≤\n          -canonicalPrimeRemainderEnergy\n            c.retained.energy.firstBad.L\n            (c.retained.energy.firstBad.Nstar + 1) (wholeCellRetainedTrial c)"
+    },
+    "Zeta23.CCM.NativeOriginalPrimeFieldAllDampedIntegral": {
+      "in_compiler_graph": true,
+      "path": "Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean",
+      "line": 28,
+      "signature": "def NativeOriginalPrimeFieldAllDampedIntegral : Prop",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean#L28",
+      "definition": "def NativeOriginalPrimeFieldAllDampedIntegral : Prop :=\n  ∀ epsilon : ℝ, 0 < epsilon →\n    (∫⁻ t : ℝ in Ici 0, ENNReal.ofReal\n      (Real.exp (-2 * epsilon * t) * |nativeOriginalPrimeField t| ^ 2)) < ∞"
+    },
+    "Zeta23.OPICARound4.actualCorrelationNativeDiagonal_bound": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 1150,
+      "signature": "theorem actualCorrelationNativeDiagonal_bound :\n    ∃ D : ℝ, 0 < D ∧ ∀ t : ℝ,\n      |aliasDiagonal actualFlatSamplingRemainder (Real.exp t)\n        (Nat.sqrt (actualCorrelationCutoff t / 2))| ≤ D*Real.sqrt (Real.exp t)",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L1150"
+    },
+    "Zeta23.OPICARound4.actualCorrelationLongTerm_eq_normalized_combined": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 1168,
+      "signature": "theorem actualCorrelationLongTerm_eq_normalized_combined (t : ℝ) :\n    hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2) =\n      (mobiusPoissonRankOne actualFlatSamplingMass (Real.exp t)\n          (Nat.sqrt (actualCorrelationCutoff t / 2)) +\n        mobiusPoissonOffDiagonal actualFlatSamplingRemainder (Real.exp t)\n          (Nat.sqrt (actualCorrelationCutoff t / 2))) / Real.sqrt (Real.exp t) +\n      aliasDiagonal actualFlatSamplingRemainder (Real.exp t)\n          (Nat.sqrt (actualCorrelationCutoff t / 2)) / Real.sqrt (Real.exp t)",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L1168"
+    },
+    "Zeta23.OPICARound4.actualCorrelationPrimeField_add_longTerm_rapid_bound": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 431,
+      "signature": "theorem actualCorrelationPrimeField_add_longTerm_rapid_bound (A : ℝ) (hA : 0 < A) :\n    ∃ C : ℝ, 0 < C ∧ ∃ T : ℝ, 0 ≤ T ∧ ∀ t : ℝ, T ≤ t →\n      |actualCorrelationPrimeField t +\n        hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2)| ≤\n        C * Real.exp (-A * t)",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L431"
+    },
+    "Zeta23.OPICARound4.actualFlatSamplingMass_pos": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ActualSourceHyperbola.lean",
+      "line": 1387,
+      "signature": "theorem actualFlatSamplingMass_pos : 0 < actualFlatSamplingMass",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ActualSourceHyperbola.lean#L1387"
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.ActualLongTermFixedRateLowerBound": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean",
+      "line": 32,
+      "signature": "def ActualLongTermFixedRateLowerBound (α : ℝ) : Prop",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean#L32",
+      "definition": "def ActualLongTermFixedRateLowerBound (α : ℝ) : Prop :=\n  ∃ C : ℝ, 0 < C ∧ ∃ T : ℝ, ∀ t : ℝ, T ≤ t →\n    -(C * Real.exp (α * t)) ≤\n      hyperbolaT (actualCorrelationLogarithmicTest t) (actualCorrelationCutoff t / 2)"
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.ActualLongTermSubexponentialLowerBound": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean",
+      "line": 38,
+      "signature": "def ActualLongTermSubexponentialLowerBound : Prop",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean#L38",
+      "definition": "def ActualLongTermSubexponentialLowerBound : Prop :=\n  ∀ α : ℝ, 0 < α → ActualLongTermFixedRateLowerBound α"
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.correlation_lower_of_longTerm_fixed_rate": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean",
+      "line": 49,
+      "signature": "theorem correlation_lower_of_longTerm_fixed_rate {α : ℝ} (hα : 0 ≤ α)\n    (h : ActualLongTermFixedRateLowerBound α) :\n    ∃ K A : ℝ, 0 < K ∧ 0 ≤ A ∧ ∀ a : ℝ, A ≤ a →\n      -(K * Real.exp (2 * α * a)) ≤ fixedOriginalSincCorrelationReal a",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean#L49"
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_longTerm_fixed_rate": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean",
+      "line": 82,
+      "signature": "theorem abs_re_sub_half_le_of_longTerm_fixed_rate {α : ℝ} (hα : 0 ≤ α)\n    (h : ActualLongTermFixedRateLowerBound α) (ρ : zetaZeroConfig.carrier) :\n    |(ρ : ℂ).re - 1 / 2| ≤ α",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean#L82"
+    },
+    "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_longTerm_subexponential": {
+      "in_compiler_graph": false,
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean",
+      "line": 105,
+      "signature": "theorem no_off_line_zero_of_longTerm_subexponential\n    (h : ActualLongTermSubexponentialLowerBound) :\n    ∀ ρ : zetaZeroConfig.carrier, (ρ : ℂ).re = 1 / 2",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean#L105"
+    }
+  },
+  "sha256": {
+    "lean_declarations.jsonl": "deed8d35e01c1894d398958ec9dff5dac179dee4be8f74161a036839f68ae5d5",
+    "relations/relations-0.jsonl": "83f2ae96280e3fa12eb5f8286ae0d407f2f39cfd7221bad7061113210959e495",
+    "relations/relations-1.jsonl": "2464a377d01e737981f2e0db5e0746d2f4b2fd96036cd591d5db6811390f62ff",
+    "relations/relations-2.jsonl": "27d66761c7bf4facf2a3189493daa434f40ee5727a561743887737e0ab14b976",
+    "relations/relations-3.jsonl": "7dd2f18968170a16668da2ccc71ce2bb8d8ca3aec746b941da42267dfba8e752",
+    "relations/relations-4.jsonl": "481d2ce4e82558ed13387694b1cd5f9dc5260577e49277514b9882fccce79ee7",
+    "relations/relations-5.jsonl": "11a28a6da093b5a4fc2dc297b81c6cf1a46d8a2fb3f811faaae56b0bedd1750a",
+    "relations/relations-6.jsonl": "278302334bee44ebd694a8f50f41950d47fd9430840be4c7d0790a0572dd05d4",
+    "relations/relations-7.jsonl": "f46b39bbdc0276b923e7b9879fd459324b487a31aa1e7f457e530c788b0eeef8",
+    "relations/relations-8.jsonl": "d065d4f11614f66db33fd46aef59932a2c8dc169355aa1309c718118d01f9de2",
+    "relations/relations-9.jsonl": "bfcdc7ebf089faab8e5ff9604b089cfd34293c33660090b57876b3c34f118b2c",
+    "relations/relations-a.jsonl": "d0f5ee598abeb6594eb0bf239c1e29f40b0277cc66f68ae738c470bcc1ee546e",
+    "relations/relations-b.jsonl": "cb012e6900a69e42fc3b5eff5d0fbfa45b5d02eccfb232807b3cbcef8b9626df",
+    "relations/relations-c.jsonl": "a31dd215eceea7c085155d812669dd43d797b78d2ca27f7f6054a9131dbf537d",
+    "relations/relations-d.jsonl": "de1f0810daa07faabd9caa8ec2d92cbee291321cbb9d2d387c8e627c3cfdce21",
+    "relations/relations-e.jsonl": "ec1df26724feecadbaf598b63d087082c58067b08819c901f8325c402a39c0eb",
+    "relations/relations-f.jsonl": "3b4a7a228212fd38e04bb205ebec22d69e63c7320196908014ca892d185bd1ca",
+    "Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean": "0fdc93080087bea2d07cab551261df7bbb9964fd4a8163e00b35c014b7cc789d",
+    "Zeta23/CCM/CanonicalPrimeRemainder.lean": "48ff5e8cbae0579445ccabe91b1f16aab59ea73490218d130dc60d34b6409cdb",
+    "Zeta23/OPICAFollowup/JointObservation.lean": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
+    "Zeta23/ExceptionalZero/UniversalSincSignedExcursions.lean": "1f5e424e248cf555cd982c208bacbf237a7002617b1b0cc2a02c24fdbfb55655",
+    "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean": "7f14d903b66d390767bbd62ade7b87250402f29da2c08e7a1b3ce80e04c0333d",
+    "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean": "ff745c1db8c360a44db7c821628f7d29d7246c51da7cc3ea437a188f873f41e7",
+    "Zeta23/OPICARound4/ActualSourceHyperbola.lean": "568292f2b9008892772550b544a48fdaa5730be44d87e453fd8008f9bbb1a350",
+    "Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean": "29a7639dff0f29d0b5f8f684bf4296ec01cc5b204725861fc130816ad9310b8d",
+    "Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean": "02e84f654ca08d9e31755a900b644ed71853a94c2b696eb895bedefe29033192",
+    "research/RHRC/integration/opica_round4/arithmetic_frontier/OPEN_PREMISES.json": "cdbcf0b4c7652c1933de2d4712f44b1aa7f2a9fd0a3dcdffee23c053e8d451d2"
+  },
+  "open_ledger": {
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "combination": "OR: one complete branch suffices; no branch is a hidden prerequisite of another.",
+    "targets": [
+      {
+        "id": "C2",
+        "register": "CR03",
+        "consumer": "Zeta23.OPICARound4.riemannHypothesis_of_actualCorrelationLongTerm_eventual_lower",
+        "status": "OPEN"
+      },
+      {
+        "id": "C2-SE",
+        "register": "CR35",
+        "consumer": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_longTerm_subexponential",
+        "status": "OPEN"
+      }
+    ]
+  },
+  "scope": "Exact stored Lean proof-value use paths, counted including endpoints. Source-block mentions are checked separately. Missing graph endpoints have no path decision. This examines formal uses, not abstract logical entailment."
+}

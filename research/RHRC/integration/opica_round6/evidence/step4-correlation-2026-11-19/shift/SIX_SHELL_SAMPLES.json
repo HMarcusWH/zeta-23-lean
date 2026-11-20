@@ -1,0 +1,138 @@
+[
+  {
+    "X": 16,
+    "last_index": 192,
+    "complete_shell_mass": [
+      "0",
+      "[21.8532244440 +/- 1.60e-11]",
+      "[289.889871239 +/- 2.72e-10]",
+      "[926.50965109 +/- 2.98e-9]",
+      "[1222.4487018 +/- 5.14e-8]",
+      "[467.17062700 +/- 3.98e-9]"
+    ],
+    "deficit": "[96.8050706 +/- 6.17e-8]",
+    "integer_observer": "[0.0009027 +/- 3.91e-8]",
+    "visible_observer": "[96.8059733 +/- 4.91e-8]",
+    "visible_sign": 1,
+    "interval_method": "Arb 144-bit balls, genuine even-seed variance, fourth derivative support bound, all remaining indices bounded"
+  },
+  {
+    "X": 32,
+    "last_index": 384,
+    "complete_shell_mass": [
+      "[0.574788881855 +/- 2.09e-13]",
+      "[78.8326720557 +/- 6.13e-11]",
+      "[787.813091974 +/- 8.85e-10]",
+      "[2388.92013071 +/- 5.02e-9]",
+      "[2472.3686507 +/- 3.74e-8]",
+      "[860.15378265 +/- 9.51e-9]"
+    ],
+    "deficit": "[-67.1500538 +/- 6.57e-8]",
+    "integer_observer": "[7.90e-5 +/- 7.02e-8]",
+    "visible_observer": "[-67.1499748 +/- 3.26e-8]",
+    "visible_sign": -1,
+    "interval_method": "Arb 144-bit balls, genuine even-seed variance, fourth derivative support bound, all remaining indices bounded"
+  },
+  {
+    "X": 64,
+    "last_index": 768,
+    "complete_shell_mass": [
+      "[1.965892066552 +/- 6.23e-13]",
+      "[164.5980121708 +/- 5.34e-11]",
+      "[1526.56105578 +/- 2.92e-9]",
+      "[4248.0133953 +/- 3.35e-8]",
+      "[4535.6723778 +/- 3.43e-8]",
+      "[1617.2736257 +/- 2.36e-8]"
+    ],
+    "deficit": "[34.3142925 +/- 7.57e-8]",
+    "integer_observer": "[7e-6 +/- 1.07e-7]",
+    "visible_observer": "[34.3142994 +/- 6.60e-8]",
+    "visible_sign": 1,
+    "interval_method": "Arb 144-bit balls, genuine even-seed variance, fourth derivative support bound, all remaining indices bounded"
+  },
+  {
+    "X": 128,
+    "last_index": 1536,
+    "complete_shell_mass": [
+      "[4.966849119573 +/- 8.22e-13]",
+      "[334.6612058465 +/- 7.12e-11]",
+      "[2863.16055469 +/- 2.53e-9]",
+      "[7747.0374433 +/- 5.26e-8]",
+      "[7936.7758072 +/- 4.31e-8]",
+      "[2723.3270233 +/- 5.05e-8]"
+    ],
+    "deficit": "[-0.1224615 +/- 8.46e-8]",
+    "integer_observer": "[+/- 7.37e-7]",
+    "visible_observer": "[-0.1224609 +/- 5.48e-8]",
+    "visible_sign": -1,
+    "interval_method": "Arb 144-bit balls, genuine even-seed variance, fourth derivative support bound, all remaining indices bounded"
+  },
+  {
+    "X": 256,
+    "last_index": 3072,
+    "complete_shell_mass": [
+      "[10.36925429187 +/- 1.54e-12]",
+      "[613.572576563 +/- 2.05e-10]",
+      "[5032.31684539 +/- 7.20e-9]",
+      "[13061.3052627 +/- 6.47e-8]",
+      "[13196.9422623 +/- 9.27e-8]",
+      "[4603.7029578 +/- 7.68e-8]"
+    ],
+    "deficit": "[-38.952435 +/- 1.54e-7]",
+    "integer_observer": "[+/- 2.48e-7]",
+    "visible_observer": "[-38.9524349 +/- 8.55e-8]",
+    "visible_sign": -1,
+    "interval_method": "Arb 144-bit balls, genuine even-seed variance, fourth derivative support bound, all remaining indices bounded"
+  },
+  {
+    "X": 512,
+    "last_index": 6144,
+    "complete_shell_mass": [
+      "[19.93107106737 +/- 5.82e-12]",
+      "[1070.761490456 +/- 2.61e-10]",
+      "[8491.65889094 +/- 7.93e-9]",
+      "[21823.3962349 +/- 6.59e-8]",
+      "[21831.519545 +/- 4.95e-7]",
+      "[7367.726974 +/- 1.36e-7]"
+    ],
+    "deficit": "[81.224808 +/- 2.86e-7]",
+    "integer_observer": "[+/- 3.11e-7]",
+    "visible_observer": "[81.224808 +/- 1.26e-7]",
+    "visible_sign": 1,
+    "interval_method": "Arb 144-bit balls, genuine even-seed variance, fourth derivative support bound, all remaining indices bounded"
+  },
+  {
+    "X": 1024,
+    "last_index": 12288,
+    "complete_shell_mass": [
+      "[35.18684154382 +/- 6.45e-12]",
+      "[1791.632923972 +/- 7.44e-10]",
+      "[13929.7056830 +/- 5.67e-8]",
+      "[35350.7411495 +/- 9.04e-8]",
+      "[34867.489421 +/- 3.82e-7]",
+      "[11802.925509 +/- 3.92e-7]"
+    ],
+    "deficit": "[-112.917637 +/- 8.15e-7]",
+    "integer_observer": "[+/- 4.78e-7]",
+    "visible_observer": "[-112.917637 +/- 5.52e-7]",
+    "visible_sign": -1,
+    "interval_method": "Arb 144-bit balls, genuine even-seed variance, fourth derivative support bound, all remaining indices bounded"
+  },
+  {
+    "X": 2048,
+    "last_index": 24576,
+    "complete_shell_mass": [
+      "[60.3486107858 +/- 5.07e-11]",
+      "[2946.72630339 +/- 5.10e-9]",
+      "[22418.7935133 +/- 1.82e-8]",
+      "[56417.162307 +/- 4.09e-7]",
+      "[55671.784761 +/- 5.54e-7]",
+      "[18666.896145 +/- 3.50e-7]"
+    ],
+    "deficit": "[120.14213 +/- 1.04e-6]",
+    "integer_observer": "[+/- 7.39e-7]",
+    "visible_observer": "[120.142130 +/- 5.94e-7]",
+    "visible_sign": 1,
+    "interval_method": "Arb 144-bit balls, genuine even-seed variance, fourth derivative support bound, all remaining indices bounded"
+  }
+]

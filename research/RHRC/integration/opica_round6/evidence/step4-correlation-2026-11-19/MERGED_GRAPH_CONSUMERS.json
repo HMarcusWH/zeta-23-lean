@@ -1,0 +1,175 @@
+{
+  "head": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "tree": "573cda1f06d2d7a0e61349a53183311e4ba621fc",
+  "scope": "Reverse reachability, including identity, on all compiler-exact USED_IN_VALUE constant edges. Consumer paths record dependency. A missing edge is not a logical impossibility.",
+  "registered_claims": 339,
+  "shards_sha256": {
+    "relations/relations-0.jsonl": "83f2ae96280e3fa12eb5f8286ae0d407f2f39cfd7221bad7061113210959e495",
+    "relations/relations-1.jsonl": "2464a377d01e737981f2e0db5e0746d2f4b2fd96036cd591d5db6811390f62ff",
+    "relations/relations-2.jsonl": "27d66761c7bf4facf2a3189493daa434f40ee5727a561743887737e0ab14b976",
+    "relations/relations-3.jsonl": "7dd2f18968170a16668da2ccc71ce2bb8d8ca3aec746b941da42267dfba8e752",
+    "relations/relations-4.jsonl": "481d2ce4e82558ed13387694b1cd5f9dc5260577e49277514b9882fccce79ee7",
+    "relations/relations-5.jsonl": "11a28a6da093b5a4fc2dc297b81c6cf1a46d8a2fb3f811faaae56b0bedd1750a",
+    "relations/relations-6.jsonl": "278302334bee44ebd694a8f50f41950d47fd9430840be4c7d0790a0572dd05d4",
+    "relations/relations-7.jsonl": "f46b39bbdc0276b923e7b9879fd459324b487a31aa1e7f457e530c788b0eeef8",
+    "relations/relations-8.jsonl": "d065d4f11614f66db33fd46aef59932a2c8dc169355aa1309c718118d01f9de2",
+    "relations/relations-9.jsonl": "bfcdc7ebf089faab8e5ff9604b089cfd34293c33660090b57876b3c34f118b2c",
+    "relations/relations-a.jsonl": "d0f5ee598abeb6594eb0bf239c1e29f40b0277cc66f68ae738c470bcc1ee546e",
+    "relations/relations-b.jsonl": "cb012e6900a69e42fc3b5eff5d0fbfa45b5d02eccfb232807b3cbcef8b9626df",
+    "relations/relations-c.jsonl": "a31dd215eceea7c085155d812669dd43d797b78d2ca27f7f6054a9131dbf537d",
+    "relations/relations-d.jsonl": "de1f0810daa07faabd9caa8ec2d92cbee291321cbb9d2d387c8e627c3cfdce21",
+    "relations/relations-e.jsonl": "ec1df26724feecadbaf598b63d087082c58067b08819c901f8325c402a39c0eb",
+    "relations/relations-f.jsonl": "3b4a7a228212fd38e04bb205ebec22d69e63c7320196908014ca892d185bd1ca"
+  },
+  "registered_consumers": {
+    "native_source_explicit_formula": [
+      "OPICA2_S11",
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+      "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+      "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
+      "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT"
+    ],
+    "native_fixed_source_window_rate": [
+      "OPICA2_S11",
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT"
+    ],
+    "native_zero_sup_bounds": [
+      "OPICA2_S11",
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+      "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+      "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
+      "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT"
+    ],
+    "recovery_subexp_budget": [
+      "OPICA_FOLLOWUP_RECOVERY_SUBEXP_BUDGET"
+    ]
+  },
+  "shortest_witness_paths": {
+    "native_source_explicit_formula": {
+      "OPICA2_S11": [
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
+        "Zeta23.OPICARound2.native_actual_cuts_equivalent",
+        "Zeta23.OPICAFollowup.originalPrimeField_allDampedL2_of_native_theta_zero",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.native_source_explicit_formula"
+      ],
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA": [
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_old_memory_eventually_le_exp",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.native_source_explicit_formula"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE": [
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.native_source_explicit_formula"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_old_memory_eventually_le_exp",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.native_source_explicit_formula"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.native_slow_source_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_window_rate_eventually_gt_of_right_zero",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.actual_old_memory_eventually_le_exp",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.native_source_explicit_formula"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA": [
+        "Zeta23.OPICAFollowup.native_source_explicit_formula"
+      ],
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT": [
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICAFollowup.originalPrimeField_allDampedL2_of_native_theta_zero",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.native_source_explicit_formula"
+      ]
+    },
+    "native_fixed_source_window_rate": {
+      "OPICA2_S11": [
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
+        "Zeta23.OPICARound2.nativeDampingEnergy_infinite_below_theta",
+        "Zeta23.OPICARound2.native_theta_le_of_damped_memLp",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+      ],
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA": [
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+      ],
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT": [
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+      ]
+    },
+    "native_zero_sup_bounds": {
+      "OPICA2_S11": [
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
+        "Zeta23.OPICARound2.native_positive_damping_abscissa",
+        "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+      ],
+      "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA": [
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE": [
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.fixedSource_continuous_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE": [
+        "Zeta23.OPICAFollowup.native_slow_source_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceRealHorizons_window_rate",
+        "Zeta23.OPICAFollowup.NativeWindowProof.Asymptotic.slowSourceSchedule_window_rate",
+        "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+      ],
+      "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS": [
+        "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+      ],
+      "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT": [
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+      ]
+    },
+    "recovery_subexp_budget": {
+      "OPICA_FOLLOWUP_RECOVERY_SUBEXP_BUDGET": [
+        "Zeta23.OPICAFollowup.recovery_subexp_budget"
+      ]
+    }
+  }
+}

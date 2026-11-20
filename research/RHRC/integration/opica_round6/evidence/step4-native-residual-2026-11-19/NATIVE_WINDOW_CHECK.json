@@ -1,0 +1,208 @@
+{
+  "status": "BOUNDED_COMPLETE_NATIVE_WINDOW",
+  "precision_bits": 128,
+  "flint": "0.9.0",
+  "L": 262144,
+  "N": 262144,
+  "prefix": 32768,
+  "first": 294913,
+  "last": 296978,
+  "site_count": 2066,
+  "source_sha256": "62219c377f781a8bd094655d66df661933792ac019c771221322c112c7ce3314",
+  "calibration": {
+    "rule": "a_m=-mu(m)/m, 2<=m<=L; exact three targets 1,3,13 corrected at R,2R,4R and equally averaged over 9|R, 2L<R<=3L",
+    "first": 524295,
+    "last": 786429,
+    "count": 29127,
+    "moduli": 246740,
+    "max_modulus": 3145716
+  },
+  "blocks": [
+    {
+      "D": 32768,
+      "q_max": 65535,
+      "K": [
+        1
+      ],
+      "contributing_denominators": 32342,
+      "reduced_frequencies_including_conjugates": 64684
+    },
+    {
+      "D": 65536,
+      "q_max": 131071,
+      "K": [
+        1,
+        2,
+        4
+      ],
+      "contributing_denominators": 63837,
+      "reduced_frequencies_including_conjugates": 592168
+    },
+    {
+      "D": 131072,
+      "q_max": 262143,
+      "K": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "contributing_denominators": 115814,
+      "reduced_frequencies_including_conjugates": 2191550
+    },
+    {
+      "D": 262144,
+      "q_max": 524287,
+      "K": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "contributing_denominators": 60681,
+      "reduced_frequencies_including_conjugates": 1490668
+    },
+    {
+      "D": 524288,
+      "q_max": 1048575,
+      "K": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "contributing_denominators": 55827,
+      "reduced_frequencies_including_conjugates": 2702232
+    },
+    {
+      "D": 1048576,
+      "q_max": 2097151,
+      "K": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ],
+      "contributing_denominators": 29127,
+      "reduced_frequencies_including_conjugates": 2280420
+    },
+    {
+      "D": 2097152,
+      "q_max": 3145716,
+      "K": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "contributing_denominators": 29127,
+      "reduced_frequencies_including_conjugates": 4511316
+    }
+  ],
+  "frequencies_including_conjugates": 13833038,
+  "all_signed_conjugate_coefficients_L1": "[1299687606.678240241421281843 +/- 5.01e-19]",
+  "maximum_abs_frequency": "127/1048590",
+  "interpolation": {
+    "method": "Degree 15 real Lagrange, integer nodes, derivative remainder norm*(2*pi*maxfreq)^16*|product(n-x_i)|/16!, direct independent right endpoint",
+    "nodes": [
+      294913,
+      295050,
+      295187,
+      295324,
+      295461,
+      295598,
+      295735,
+      295872,
+      296009,
+      296146,
+      296283,
+      296420,
+      296557,
+      296694,
+      296831,
+      296968
+    ],
+    "signed_values": [
+      "[347410.1973536547926820003 +/- 3.41e-20]",
+      "[364431.0379150652873181978 +/- 3.54e-20]",
+      "[381655.0506409829626376872 +/- 7.29e-20]",
+      "[399073.852966679274249738 +/- 4.49e-19]",
+      "[416678.936001278909342991 +/- 7.29e-19]",
+      "[434461.72994585453420930 +/- 1.77e-18]",
+      "[452413.66817992771746139 +/- 5.49e-18]",
+      "[470526.24951443342583483 +/- 8.12e-18]",
+      "[488791.0981315042180385 +/- 2.16e-17]",
+      "[507200.0207574218671137 +/- 5.83e-17]",
+      "[525745.060644514714112 +/- 4.33e-16]",
+      "[544418.547970368066580 +/- 6.56e-16]",
+      "[563213.146298157839080 +/- 5.46e-16]",
+      "[582121.89477988855966 +/- 5.07e-15]",
+      "[601138.24582447167543 +/- 7.41e-15]",
+      "[620256.09799455936167 +/- 8.96e-15]"
+    ],
+    "maximum_site_remainder": "[1.631707695124421373191883204e-9 +/- 3.46e-37]",
+    "signed_right_endpoint_direct": "[621655.3811311530150148626 +/- 1.73e-20]",
+    "signed_site_examples": {
+      "294913": {
+        "unpaid": "[347410.1973536547926820003 +/- 3.41e-20]",
+        "exact_full": 305095,
+        "paid": "[-42315.1973536547926820003 +/- 3.41e-20]"
+      },
+      "295945": {
+        "unpaid": "[480240.18878369134 +/- 2.47e-12]",
+        "exact_full": 434123,
+        "paid": "[-46117.18878369134 +/- 2.47e-12]"
+      },
+      "296978": {
+        "unpaid": "[621655.38113115 +/- 4.49e-9]",
+        "exact_full": 562371,
+        "paid": "[-59284.38113115 +/- 4.49e-9]"
+      }
+    }
+  },
+  "H": "[3.83585007520686e-8 +/- 6.08e-23]",
+  "H_scaled_outward_1e25": [
+    "383585007520686392",
+    "383585007520686608"
+  ],
+  "critical_scale": "0.001953125000000000000000000000",
+  "H_over_critical": "[1.963955238505915e-5 +/- 6.73e-21]",
+  "weighted_absolute_full_knot_on_same_window": "[3.446785119488933060392365014e-8 +/- 3.72e-36]",
+  "weighted_absolute_inferred_paid_on_same_window": "[3.8906495571793e-9 +/- 3.02e-23]",
+  "unweighted_signed_unpaid_sum": "[995219533.230714 +/- 4.49e-7]",
+  "unweighted_signed_sum_of_full_integer_knots": "894331441.0000000000000000000",
+  "signs_of_unpaid_response": {
+    "positive": 2066,
+    "negative": 0,
+    "unresolved": 0
+  },
+  "true_modulus_ramp_checks": {
+    "294913": {
+      "exact": 305095,
+      "modular": "[305095.000000000000000000000 +/- 4.41e-22]"
+    },
+    "295945": {
+      "exact": 434123,
+      "modular": "[434123.000000000000000000000 +/- 4.42e-22]"
+    },
+    "296978": {
+      "exact": 562371,
+      "modular": "[562371.000000000000000000000 +/- 4.43e-22]"
+    }
+  },
+  "site_digest_input": "One ASCII line per native n: n, signed Arb value printed with 28 digits, exact complete integer, separated by spaces.",
+  "site_sha256": "d04d2d0fbaf8917ae50059207f7244746ecc6b2417817f22c94373c5bde699b8",
+  "sampling_seconds": 79.33,
+  "total_seconds": 79.69,
+  "scope": "Fully retained signed residual at one L. The exact full knot includes every paid frequency and the zero mode, hence is a separate comparison. Finite calculations leave cofinal arithmetic upper and RH open."
+}

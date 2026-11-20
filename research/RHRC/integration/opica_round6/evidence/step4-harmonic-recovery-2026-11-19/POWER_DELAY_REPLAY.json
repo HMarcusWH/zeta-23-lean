@@ -1,0 +1,143 @@
+{
+  "scope": "Full finite rational dilation replay of homogeneous v(x) at the actual real arguments x/k. No discrete site rounding, sine-normalization replacement, or continuous-history supremum is asserted.",
+  "x": 4194304,
+  "Y": 45,
+  "m": 46,
+  "K": 92160,
+  "b_m": "-966095815553184/94802618345435",
+  "common_denominator": 94802618345435,
+  "small_b": {
+    "1": 1,
+    "5": -1,
+    "7": -1,
+    "11": -1,
+    "13": -1,
+    "17": -1,
+    "19": -1,
+    "23": -1,
+    "29": -1,
+    "31": -1,
+    "35": 1,
+    "37": -1,
+    "41": -1,
+    "43": -1
+  },
+  "delay": {
+    "first_nonzero_after_k_1": 46,
+    "exact_zero_weight_interval": [
+      2,
+      45
+    ]
+  },
+  "product_j": [
+    4026532,
+    4194304
+  ],
+  "all_product_coefficients_exactly_zero": 167773,
+  "scaled_integer_coefficients_sha256": "dc6fa51c78d1fd8d419b5e8e5e6e0fd3664f9c4ce05df01552a2b72691af95d3",
+  "digest_encoding": "Three consecutive arrays in native, middle, tail order; all j ascending, coefficients multiplied by common_denominator, signed int128 little-endian.",
+  "middle": {
+    "k_interval": [
+      46,
+      92160
+    ],
+    "nonzero_weight_k": 19075,
+    "nonempty_rows": 15654,
+    "nonzero_pairs": 90199,
+    "nonzero_after_product_grouping": 27100,
+    "signed": "[58.98351281521417151541448837 +/- 3.94e-27]",
+    "sum_absolute_rows": "[25508.94239998218027102004358 +/- 8.26e-25]",
+    "sum_absolute_pairs": "[110366.2587574621680389815616 +/- 4.33e-23]",
+    "sum_absolute_grouped_products": "[53600.07189400275035747193461 +/- 4.79e-24]",
+    "critical_coefficient_l1": "[170.5094309330364752827402526 +/- 4.23e-26]",
+    "signed_critical_coefficients": "[-0.4156719612835510015421353512 +/- 3.48e-30]",
+    "historical_sup_abs_v_over_sqrt_argument": {
+      "maximum": "[0.2626842062428669301527284785 +/- 2.24e-29]",
+      "maximizing_k": [
+        3157
+      ],
+      "inputs_x_over_k": [
+        "4194304/3157"
+      ]
+    }
+  },
+  "tail": {
+    "k_interval": [
+      92161,
+      4194304
+    ],
+    "nonempty_rows": 63417,
+    "nonzero_pairs": 63417,
+    "exactly_one_source_pair_per_nonempty_row": true,
+    "nonzero_after_product_grouping": 52465,
+    "signed": "[-23.87591003787800642629586848 +/- 4.68e-27]",
+    "sum_absolute_rows": "[76831.70554908581180735690566 +/- 4.84e-24]",
+    "sum_absolute_pairs": "[76831.70554908581180735690566 +/- 4.84e-24]",
+    "sum_absolute_grouped_products": "[53701.33963182482823071099647 +/- 4.49e-24]",
+    "critical_coefficient_l1_on_nonempty_rows": "[96.01347878107043233725435506 +/- 1.60e-27]",
+    "historical_sup_abs_v_over_sqrt_argument": {
+      "maximum": "[0.9510540377264674600613934084 +/- 6.90e-30]",
+      "maximizing_k": [
+        4194301
+      ],
+      "inputs_x_over_k": [
+        "4194304/4194301"
+      ]
+    }
+  },
+  "v_x": "[-35.10760277733616508911861990 +/- 1.39e-27]",
+  "v_x_over_sqrt_x": "[-0.01714238416862117435992120112 +/- 2.37e-30]",
+  "signed_complete": "[+/- 3.55e-32]",
+  "precision_bits": 128,
+  "flint_version": "0.9.0",
+  "sqrt_sup_scope": "All k in the indicated sector with rational weight nonzero; empty v(x/k) rows have field zero, so cannot enlarge either strictly positive maximum.",
+  "source_sha256": "4632e468c786dc051759e95fa9ded774360eeaac708828c377580407a8fe3fd7",
+  "imported_helper_sha256": "56f03e2da87a2e9f3e33a8177289510a4485b5ebfa5562285afa3a49edbbd766",
+  "prior_v_x_receipt_sha256": "5edb98fa020eaa713567d1c74dd877267bc41cc4986e71a5c3831a4f5f46744f",
+  "seconds": 1.98,
+  "exact_prefix_discrepancy": {
+    "definition": "W(t)=sum_{k<=t}w(k)=sum_e b_e[C6(t/e)-t/(3e)], C6(u)=#{1<=n<=u:gcd(n,6)=1}. For real t, W is constant on each interval between integer sites.",
+    "independent_constructions": "Every one of the integer prefixes compared from a divisor-weight sieve and the separate sum of b_e*C6(floor(t/e)); C6 is computed via the coprime-to-6 indicator.",
+    "integer_prefix_count": 4194304,
+    "through": 4194304,
+    "nonzero_weight_indices": 862928,
+    "exact_minimum": "-1100299377833151/94802618345435",
+    "first_minimum_at": 869170,
+    "exact_maximum": "1062126399859614/94802618345435",
+    "first_maximum_at": 3363013,
+    "exact_maximum_absolute": "1100299377833151/94802618345435",
+    "all_real_t_discrepancy_absolute_upper": "4586664944778548/284407855036305",
+    "bound_proof": "C6(t+6)=C6(t)+2. Inspecting the jumps at t=1,5 in [0,6] gives |C6(t)-t/3|<=2/3 for all real t>=0.",
+    "middle_prefix_range": [
+      "-82409088751061/7292509103495",
+      "999890918870219/94802618345435"
+    ],
+    "tail_prefix_range": [
+      "-1100299377833151/94802618345435",
+      "1062126399859614/94802618345435"
+    ],
+    "selected_prefixes": {
+      "1": "1",
+      "45": "1",
+      "46": "-871293197207749/94802618345435",
+      "92160": "-125384330496302/94802618345435",
+      "92161": "-125384330496302/94802618345435",
+      "4194304": "43204798815488/8618419849585"
+    }
+  },
+  "critical_normalizations": {
+    "middle": {
+      "signed_over_sqrt_x": "[0.0288005433668037946852609806 +/- 5.14e-29]",
+      "absolute_signed_over_sqrt_x_over_discrete_sector_history_sup": "[0.109639417530020841549992445 +/- 4.65e-28]",
+      "triangle_rows_over_sqrt_x": "[12.4555382812412989604590057 +/- 4.62e-26]"
+    },
+    "tail": {
+      "signed_over_sqrt_x": "[-0.0116581591981826203253397795 +/- 3.36e-29]",
+      "absolute_signed_over_sqrt_x_over_discrete_sector_history_sup": "[0.0122581459472606982624809959 +/- 4.48e-29]",
+      "triangle_rows_over_sqrt_x": "[37.5154812251395565465609891 +/- 1.06e-26]"
+    }
+  },
+  "product_replay_receipt_sha256": "802ea469b045837481cf8d5aa8988d15a62d4f924bfcdbc71767d9fb7a1f8124",
+  "prefix_script_sha256": "518a49fb42bba1bd6190a9016e8745caef14796afd9199a3e4a9c620d81ed823",
+  "prefix_seconds": 10.0
+}

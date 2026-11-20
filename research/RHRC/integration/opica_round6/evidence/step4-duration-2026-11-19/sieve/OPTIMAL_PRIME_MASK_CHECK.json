@@ -1,0 +1,38 @@
+{
+  "degrees_checked": 30,
+  "max_extremal_identity_error": 8.881784197001252e-15,
+  "cases": [
+    {
+      "p": 503,
+      "selected": 310,
+      "normalization_A": 9.946243063215702,
+      "extra_mass_over_A": 0.08757555714674016,
+      "base_grid_max_at": 4.049709280018092,
+      "new_grid_max_at": 4.491495746929157,
+      "sampled_base_log_modulus_over_A": 0.4574392749098206,
+      "sampled_new_log_modulus_over_A": 0.4745091302476925
+    },
+    {
+      "p": 1009,
+      "selected": 835,
+      "normalization_A": 12.653571832637796,
+      "extra_mass_over_A": 0.09560042182078154,
+      "base_grid_max_at": 4.049709280018092,
+      "new_grid_max_at": 4.417864669110647,
+      "sampled_base_log_modulus_over_A": 0.49355632649006204,
+      "sampled_new_log_modulus_over_A": 0.5039703928398558
+    },
+    {
+      "p": 3163,
+      "selected": 4259,
+      "normalization_A": 19.04957388766882,
+      "extra_mass_over_A": 0.10882043058390845,
+      "base_grid_max_at": 3.902447124381071,
+      "new_grid_max_at": 4.344233591292136,
+      "sampled_base_log_modulus_over_A": 0.5589994118153565,
+      "sampled_new_log_modulus_over_A": 0.5539672123935326
+    }
+  ],
+  "scope": "Floating-point finite diagnostics of deterministic layer-2 masks and sine polynomial identities. No global integration, rigorous rounding certificate, or independent Step 4 closure.",
+  "script_sha256": "df29e7dc0635e7a9a01e80729f87e6665b8854e718ccb017afdf4fcada609c20"
+}

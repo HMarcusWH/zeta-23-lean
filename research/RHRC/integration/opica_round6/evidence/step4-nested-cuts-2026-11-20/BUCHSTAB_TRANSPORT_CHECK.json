@@ -1,0 +1,145 @@
+{
+  "actual_finite_matching": {
+    "all_pairs_sha256": "a2061d3b9713eb3624475294d6bb9a06bf50c2a775cae481c0489be57dc071f1",
+    "first_three_pairs": [
+      [
+        68182607173,
+        68182605899
+      ],
+      [
+        68182609091,
+        68182605913
+      ],
+      [
+        68182610641,
+        68182605923
+      ]
+    ],
+    "signed_spent": -214,
+    "signed_surviving": -617,
+    "signed_target": 214,
+    "spent_count": 338,
+    "target_count": 338
+  },
+  "angular": {
+    "cells": [
+      {
+        "example_n_prime_factors_sign": [
+          68182605853,
+          [
+            68182605853
+          ],
+          -1
+        ],
+        "large_count": 1,
+        "population": 5204,
+        "signed": -5204,
+        "small_count": 0
+      },
+      {
+        "example_n_prime_factors_sign": [
+          68182605899,
+          [
+            7723,
+            8828513
+          ],
+          1
+        ],
+        "large_count": 2,
+        "population": 4303,
+        "signed": 4303,
+        "small_count": 0
+      },
+      {
+        "example_n_prime_factors_sign": [
+          68182606831,
+          [
+            1777,
+            38369503
+          ],
+          1
+        ],
+        "large_count": 1,
+        "population": 276,
+        "signed": 276,
+        "small_count": 1
+      },
+      {
+        "example_n_prime_factors_sign": [
+          68182607173,
+          [
+            1549,
+            5387,
+            8171
+          ],
+          -1
+        ],
+        "large_count": 2,
+        "population": 56,
+        "signed": -56,
+        "small_count": 1
+      }
+    ],
+    "signed_complete_complement": 64,
+    "signed_union": -681
+  },
+  "auxiliary": {
+    "log_share_strict": [
+      "3/10",
+      "49/100"
+    ],
+    "mark_interval_open_closed": [
+      1369,
+      1800
+    ],
+    "mark_prime_count": 59,
+    "marked_cap": 2400000,
+    "scope": "Finite mark window, cofactor 1, two angular orders and local pairing. The asymptotic harmonic-mass-one and survivor selectors are separate."
+  },
+  "full": {
+    "negative": 5391,
+    "positive": 4774,
+    "signed": -617,
+    "source_vertices": 10165
+  },
+  "native": {
+    "H0": 536870912,
+    "U": 34359738368,
+    "X": 68719476737,
+    "closed_node": [
+      68182605824,
+      68182736895
+    ],
+    "node_length": 131072,
+    "s": 6,
+    "scope": "Unclipped descendant in the retained part of one finite shell.",
+    "weight": "1/140737488355328",
+    "y": 1369
+  },
+  "outside_cap": {
+    "example_n_prime_factors_sign": [
+      68182635803,
+      [
+        1597,
+        1663,
+        25673
+      ],
+      -1
+    ],
+    "labels": 6,
+    "signed": -6
+  },
+  "signed_by_mark_count_capped_replayed": {
+    "0": -821,
+    "1": 214,
+    "2": -4
+  },
+  "signed_by_mark_count_uncapped": {
+    "0": -821,
+    "1": 214,
+    "2": -10
+  },
+  "source_head": "a6a001fd570cd7cf9b97fdad59e373760a3153ec",
+  "source_tree": "f58c4c2b7870d54302cd3ae80f7d77c1eaa6784e",
+  "status": "EXACT_FINITE_CONTROL"
+}

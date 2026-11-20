@@ -1,0 +1,47 @@
+{
+  "status": "LOCAL_LEAN_VERIFIED",
+  "completed_utc": "2026-11-19T17:28:32.945100+00:00",
+  "comparison_head": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "comparison_tree": "573cda1f06d2d7a0e61349a53183311e4ba621fc",
+  "compiler": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "manifest_sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+  "warm_imports": {
+    "NativeWindowRate": {
+      "path": "Zeta23/OPICAFollowup/NativeWindowRate.lean",
+      "source_blob": "dc4c39fe364e958a067c0f5ab74d032c3487bfa8",
+      "warm_source_sha256": "1b388ffd7828390307605cc4804d7d9e1400343a3bafa0858a9d76aa0f369b33",
+      "warm_object_sha256": "2a6414a3e941c558e95b7b1c01065b2f8535cd9e0c1b00a36726dcf830e1792e"
+    },
+    "NativeExplicitFormula": {
+      "path": "Zeta23/OPICAFollowup/NativeExplicitFormula.lean",
+      "source_blob": "5d8f82d6decb5ac0623b2950af2e2a133ec6eade",
+      "warm_source_sha256": "442a2601350001ea50a18db8d761a555fae3279851f438959a8e4a854eedcca5",
+      "warm_object_sha256": "a14a238d7008227688bbe6166e8415c4e15c890f53ee697dad53b1ba987c8b31"
+    },
+    "NativeSourceFamily": {
+      "path": "Zeta23/OPICAFollowup/NativeSourceFamily.lean",
+      "source_blob": "9f0b473d8eb0a2261568bd4932fd4429fa9f7ade",
+      "warm_source_sha256": "c4adaf7a1b6b066a3906b58f4d48e8a536f2aa768bf3f193af19047a9087ad26",
+      "warm_object_sha256": "bf9e21b10747dbbfd7c8e1683a0831222520742a7af2529f352b738a6cb96a03"
+    }
+  },
+  "source": "NativeSignedComparison.lean",
+  "source_sha256": "7ad4464957b6f51f0a888c8d1a7f6ee5709bc8a2643769940f25ac7fa69d4742",
+  "object": "NativeSignedComparison.olean",
+  "object_sha256": "92e7e05ac59b26c59a3608e3a16de102665de29e2f8ce27136f0e882a38e9baa",
+  "log": "compiler.log",
+  "log_sha256": "ed43c65fd6cdb9868cb03dd51e70221d737c7c009d508aa457bb32323412a82e",
+  "command": "lean -DwarningAsError=true -j2 -s262144 -o NativeSignedComparison.olean NativeSignedComparison.lean",
+  "exit_code": 0,
+  "audited_declarations": [
+    "Step4.NativeSignedComparison.displacement_eq_zero_of_cofinal_nonpositive",
+    "Step4.NativeSignedComparison.no_right_zero_of_cofinal_nonpositive"
+  ],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "scope": "Native order zero, actual terminal integral on [T-C log T,T] with C>1. The comparator has values in the nonnegative reals and its log energy divided by 2T is assumed to tend to zero. The true terminal signed difference is assumed nonpositive at arbitrarily late common horizons. Only the implication is proved. No independent arithmetic sign or production qualification is supplied."
+}

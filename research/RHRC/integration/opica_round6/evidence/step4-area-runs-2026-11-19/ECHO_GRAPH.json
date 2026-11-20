@@ -1,0 +1,278 @@
+{
+  "commit": "c867a8f15320ad6ac69177e0a498de4cb9d744f9",
+  "tree": "573cda1f06d2d7a0e61349a53183311e4ba621fc",
+  "declarations": 22198,
+  "relation_rows": 1329677,
+  "proof_edges": 1236174,
+  "transitive_consumers_excluding_self": {
+    "moment zero": 31,
+    "zero multiplicity": 40,
+    "visible pole": 30,
+    "recovery budget": 0,
+    "joint noise estimate": 0,
+    "terminal growth": 8,
+    "quiet observation": 2,
+    "integral criterion": 3
+  },
+  "reachable_selected_pairs": {
+    "moment zero": {
+      "quiet observation": [
+        "Zeta23.ExceptionalZero.nativeZeroJet_kernelMoments_eq_zero",
+        "Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ],
+      "integral criterion": [
+        "Zeta23.ExceptionalZero.nativeZeroJet_kernelMoments_eq_zero",
+        "Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+      ]
+    },
+    "zero multiplicity": {
+      "moment zero": [
+        "Zeta23.ExceptionalZero.nativeActualKernelLaplace_order_of_zero",
+        "Zeta23.ExceptionalZero.nativeZeroJet_kernelMoments_eq_zero"
+      ],
+      "quiet observation": [
+        "Zeta23.ExceptionalZero.nativeActualKernelLaplace_order_of_zero",
+        "Zeta23.ExceptionalZero.nativeZeroJet_kernelMoments_eq_zero",
+        "Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ],
+      "integral criterion": [
+        "Zeta23.ExceptionalZero.nativeActualKernelLaplace_order_of_zero",
+        "Zeta23.ExceptionalZero.nativeZeroJet_kernelMoments_eq_zero",
+        "Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"
+      ]
+    },
+    "visible pole": {},
+    "recovery budget": {},
+    "joint noise estimate": {},
+    "terminal growth": {
+      "quiet observation": [
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.fixed_two_factor_scheduled_mask_rates",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ]
+    },
+    "quiet observation": {},
+    "integral criterion": {
+      "quiet observation": [
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ]
+    }
+  },
+  "pairwise_public_common_consumers": {
+    "moment zero + zero multiplicity": {
+      "public_common_consumers": 30,
+      "nearest": [
+        "Zeta23.ExceptionalZero.nativeZeroJet_kernelMoments_eq_zero",
+        "Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero",
+        "Zeta23.ExceptionalZero.nativeZeroJet_annihilates_range"
+      ]
+    },
+    "moment zero + visible pole": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "moment zero + recovery budget": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "moment zero + joint noise estimate": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "moment zero + terminal growth": {
+      "public_common_consumers": 3,
+      "nearest": [
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICARound2.native_complete_quiet_iff_theta_zero"
+      ]
+    },
+    "moment zero + quiet observation": {
+      "public_common_consumers": 3,
+      "nearest": [
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
+        "Zeta23.OPICARound2.native_complete_quiet_iff_theta_zero"
+      ]
+    },
+    "moment zero + integral criterion": {
+      "public_common_consumers": 4,
+      "nearest": [
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence"
+      ]
+    },
+    "zero multiplicity + visible pole": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "zero multiplicity + recovery budget": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "zero multiplicity + joint noise estimate": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "zero multiplicity + terminal growth": {
+      "public_common_consumers": 3,
+      "nearest": [
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICARound2.native_complete_quiet_iff_theta_zero"
+      ]
+    },
+    "zero multiplicity + quiet observation": {
+      "public_common_consumers": 3,
+      "nearest": [
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
+        "Zeta23.OPICARound2.native_complete_quiet_iff_theta_zero"
+      ]
+    },
+    "zero multiplicity + integral criterion": {
+      "public_common_consumers": 4,
+      "nearest": [
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence"
+      ]
+    },
+    "visible pole + recovery budget": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "visible pole + joint noise estimate": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "visible pole + terminal growth": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "visible pole + quiet observation": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "visible pole + integral criterion": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "recovery budget + joint noise estimate": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "recovery budget + terminal growth": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "recovery budget + quiet observation": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "recovery budget + integral criterion": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "joint noise estimate + terminal growth": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "joint noise estimate + quiet observation": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "joint noise estimate + integral criterion": {
+      "public_common_consumers": 0,
+      "nearest": []
+    },
+    "terminal growth + quiet observation": {
+      "public_common_consumers": 3,
+      "nearest": [
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICARound2.native_complete_quiet_iff_theta_zero",
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence"
+      ]
+    },
+    "terminal growth + integral criterion": {
+      "public_common_consumers": 3,
+      "nearest": [
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICARound2.native_complete_quiet_iff_theta_zero",
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence"
+      ]
+    },
+    "quiet observation + integral criterion": {
+      "public_common_consumers": 3,
+      "nearest": [
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+        "Zeta23.OPICARound2.native_complete_quiet_iff_theta_zero",
+        "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence"
+      ]
+    }
+  },
+  "pinned_signatures": {
+    "moment zero": {
+      "name": "Zeta23.ExceptionalZero.nativeZeroJet_kernelMoments_eq_zero",
+      "signature": "theorem nativeZeroJet_kernelMoments_eq_zero\n    (rho : zetaZeroConfig.carrier) (hoff : (rho : ℂ).re ≠ 1 / 2) :\n    ∀ j < zeroMult (rho : ℂ), CCM.nativeCompletionKernelLaplaceMoment\n      (nativeZeroJetDamping rho) (nativeZeroJetParameter rho) j = 0 ",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/NativeActualKernelZeroJets.lean#L77"
+    },
+    "zero multiplicity": {
+      "name": "Zeta23.ExceptionalZero.nativeActualKernelLaplace_order_of_zero",
+      "signature": "theorem nativeActualKernelLaplace_order_of_zero\n    (epsilon : ℝ) (hepsilon : 0 ≤ epsilon) (rho : zetaZeroConfig.carrier)\n    (w : ℂ) (hw : 0 < w.re)\n    (hcenter : w + (epsilon : ℂ) = (rho : ℂ) - 1 / 2) :\n    analyticOrderAt (fun z : ℂ => CCM.nativeCompletionKernelLaplaceMoment epsilon z 0) w =\n      (zeroMult (rho : ℂ) : ℕ∞) ",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/NativeActualKernelZeroJets.lean#L42"
+    },
+    "visible pole": {
+      "name": "Zeta23.OPICAFollowup.nativePrimeField_visiblePole",
+      "signature": "theorem nativePrimeField_visiblePole (rho : zetaZeroConfig.carrier)\n    (hright : 1/2<(rho:ℂ).re) :\n    ∃ pole : Zeta23.OPICA.SimplePoleData (ℝ → ℝ),\n      pole.source=nativeOriginalSource ∧ pole.center=(rho:ℂ)-1/2 ∧\n      pole.field=nativePrimeTransformGerm ∧\n      pole.residue=-(zeroMult (rho:ℂ):ℂ)*nativeOriginalSourceLaplace ((rho:ℂ)-1/2) ∧\n      Meromorphic pole.field ∧\n      (∀ w : ℂ, 1/2<w.re →\n        (∫ t : ℝ, Complex.exp (-w*(t:ℂ))*(nativeOriginalPrimeField t:ℂ))=pole.field w) ",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/NativeSourceTransforms.lean#L435"
+    },
+    "recovery budget": {
+      "name": "Zeta23.OPICAFollowup.recovery_subexp_budget",
+      "signature": "theorem recovery_subexp_budget {F : ℕ → Type*}\n    [∀ n, NormedAddCommGroup (F n)] [∀ n, NormedSpace 𝕜 (F n)]\n    (T : Zeta23.OPICA.HorizonSchedule) (R : ∀ n, F n →L[𝕜] 𝕜) (error : ∀ n, F n)\n    (recovery_budget : Zeta23.OPICA.SubexpAlong T (fun n => ‖R n‖))\n    (error_budget : Zeta23.OPICA.SubexpAlong T (fun n => ‖error n‖)) :\n    Zeta23.OPICA.SubexpAlong T (fun n => R n (error n)) ",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/JointObservation.lean#L200"
+    },
+    "joint noise estimate": {
+      "name": "Zeta23.OPICAFollowup.joint_recovery_noise_bound",
+      "signature": "theorem joint_recovery_noise_bound (P : E →L[𝕜] Y) (C : E →L[𝕜] H)\n    (ell : E →L[𝕜] 𝕜) (R : WithLp 2 (Y × H) →L[𝕜] 𝕜)\n    (hR : ∀ x, R (jointObservation P C x) = ell x)\n    (epsilon : ℝ) (_hepsilon : 0 ≤ epsilon) (x : E) (y : WithLp 2 (Y × H))\n    (herror : ‖y - jointObservation P C x‖ ≤ epsilon) :\n    ‖ell x - R y‖ ≤ ‖R‖ * epsilon ",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/JointObservation.lean#L185"
+    },
+    "terminal growth": {
+      "name": "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+      "signature": "theorem native_fixed_source_window_rate (d : ℕ) (C : ℝ) (hC : 1 < C) :\n    Tendsto (fun T : ℝ =>\n      Real.log (1+(∫ t : ℝ in Icc (T-C*Real.log T) T, |primeFieldFamily d t|^2))/(2*T))\n      atTop (𝓝 nativeZeroDisplacementSup) ",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/NativeWindowRate.lean#L1154"
+    },
+    "quiet observation": {
+      "name": "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+      "signature": "theorem quiet_balanced_observation_implies_native_cut\n    (time : ℕ → ℝ) (cofinal : Tendsto time atTop atTop)\n    (quiet :\n      (∀ epsilon : ℝ, 0 < epsilon → ∀ᶠ n : ℕ in atTop,\n        Real.log (1+max (nativeRawHigh 1 2 1 (logSlackY 2 8 (time n)) 2 (time n)) 0)/(2*time n) ≤ epsilon) ∨\n      (∀ epsilon : ℝ, 0 < epsilon → ∀ᶠ n : ℕ in atTop,\n        Real.log (1+max (nativeAbsorbedHigh 1 2 1 (by norm_num)\n          (logSlackY 2 8 (time n)) 2 (time n)) 0)/(2*time n) ≤ epsilon)) :\n    nativeZeroDisplacementSup=0 ∧\n    (∀ epsilon : ℝ, 0 < epsilon → MemLp\n      (fun t : ℝ => ((Real.exp (-epsilon*t)*primeFieldFamily 0 t : ℝ) : ℂ)) 2 volume) ∧\n    NativeOriginalPrimeFieldAllDampedL2 ∧ NativeOriginalPrimeFieldAllDampedIntegral ∧ RiemannHypothesis ",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/OPICAFollowup/Consumers.lean#L326"
+    },
+    "integral criterion": {
+      "name": "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
+      "signature": "theorem riemannHypothesis_of_step4_AX\n    (hAX : NativeOriginalPrimeFieldAllDampedIntegral) : RiemannHypothesis ",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/c867a8f15320ad6ac69177e0a498de4cb9d744f9/Zeta23/ExceptionalZero/Step4OutputSufficiency.lean#L25"
+    }
+  },
+  "interpretation": "Directed edges indicate actual uses in Lean proof values. A path can require additional hypotheses. Missing edges are relative to this registry."
+}

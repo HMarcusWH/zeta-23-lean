@@ -1,0 +1,45 @@
+{
+  "modulus_pair_checks": 1024,
+  "rational_source_checks": [
+    {
+      "L": 3,
+      "nonzero_moduli": 5,
+      "period": 36,
+      "variance_from_gcd_graph": "4453/2187",
+      "full_period_sites_directly_checked": 36
+    },
+    {
+      "L": 6,
+      "nonzero_moduli": 7,
+      "period": 360,
+      "variance_from_gcd_graph": "2726597/54000",
+      "full_period_sites_directly_checked": 360
+    },
+    {
+      "L": 9,
+      "nonzero_moduli": 8,
+      "period": 3780,
+      "variance_from_gcd_graph": "9962648/2460375",
+      "full_period_sites_directly_checked": 3780
+    },
+    {
+      "L": 12,
+      "nonzero_moduli": 13,
+      "period": 166320,
+      "variance_from_gcd_graph": "1804222923773/3734416224000"
+    },
+    {
+      "L": 36,
+      "nonzero_moduli": 34,
+      "period": 43321065868080,
+      "variance_from_gcd_graph": "15903322308552263076826251930403/39955862375635714071467904000"
+    },
+    {
+      "L": 72,
+      "nonzero_moduli": 68,
+      "period": 241030438614733951137923448480,
+      "variance_from_gcd_graph": "42398464275153239494008232648876065265260078994307097526019749760821/56970242974263584070679279637703735275595368748428096378778931200"
+    }
+  ],
+  "qualification": "Exact finite checks of CRT, calibration, native initial zeroes and the complete-period variance at the explicitly enumerated cutoffs."
+}
