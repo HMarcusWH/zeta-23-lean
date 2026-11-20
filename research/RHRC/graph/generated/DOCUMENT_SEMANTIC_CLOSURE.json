@@ -3249,7 +3249,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_round6/README.md",
-      "heading_count": 5,
+      "heading_count": 6,
       "path": "research/RHRC/integration/opica_round6/README.md",
       "route_mentions": []
     },
@@ -4421,6 +4421,96 @@
       "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-native-residual-2026-11-19/SPARSE_NATIVE_TEST.md",
       "heading_count": 6,
       "path": "research/RHRC/integration/opica_round6/evidence/step4-native-residual-2026-11-19/SPARSE_NATIVE_TEST.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/BUCHSTAB_BOUNDARY.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/BUCHSTAB_BOUNDARY.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/BUCHSTAB_BOUNDARY.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md",
+      "heading_count": 3,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/DISJOINT_CUT_DISCREPANCY.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NESTED_SIGNED_OBSTRUCTION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/NEUTRAL_PRIME_TRANSPORT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/PAID_PARTNER_GRAPHS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/PAID_PARTNER_GRAPHS.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/PAID_PARTNER_GRAPHS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SHIFTED_PRIME_RETIREMENT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SHIFTED_PRIME_RETIREMENT.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SHIFTED_PRIME_RETIREMENT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SPARSE_PRIME_FACTOR_CHARGES.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SPARSE_PRIME_FACTOR_CHARGES.md",
+      "heading_count": 3,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SPARSE_PRIME_FACTOR_CHARGES.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SURVIVOR_DIVISOR_SPACING.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SURVIVOR_DIVISOR_SPACING.md",
+      "heading_count": 3,
+      "path": "research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/SURVIVOR_DIVISOR_SPACING.md",
       "route_mentions": []
     },
     {
@@ -6515,7 +6605,7 @@
       ]
     }
   ],
-  "entry_count": 629,
+  "entry_count": 638,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",
