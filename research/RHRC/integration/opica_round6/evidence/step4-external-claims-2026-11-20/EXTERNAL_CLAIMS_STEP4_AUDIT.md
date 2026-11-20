@@ -49,7 +49,7 @@ I_n
 &\ge \frac{1}{8\sqrt{3/2}}\log(n/6)\xrightarrow[n\to\infty]{}+\infty.
 \end{aligned}
 \]
-The \(u=-1\) term vanishes for support on positive \(t>1\) in this trivial-character specialization. Therefore the claimed uniform absolute bound is **false as written for the stated approximating family**. In particular the stated bound cannot justify the Montel normal-family step without an additional cancellation, subtraction, modified space of tests, or other correction. This local countercheck **does not** establish that the entire proposed trace-formula strategy is impossible.
+For the trivial character the \(u=-1\) summand is likewise nonnegative (the test depends on the absolute value); using the \(u=+1\) summand alone already proves divergence. Therefore the claimed uniform absolute bound is **false as written for the stated approximating family**. In particular the stated bound cannot justify the Montel normal-family step without an additional cancellation, subtraction, modified space of tests, or other correction. This local countercheck **does not** establish that the entire proposed trace-formula strategy is impossible.
 
 An independent textual completeness issue: Chapter 13, printed p.522, labels Theorem 13.3.1.2 with "Insert statement" and "State and prove the Main Theorems"; it is not a completed written proof in the circulating draft.
 
