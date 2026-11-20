@@ -1,12 +1,12 @@
 {
   "RH": "OPEN",
   "Step4": "OPEN",
-  "catalog_sha256": "111fd92ba89b5724feec21e063276045cfa3fc6718dc5283198757fe27cff7aa",
+  "catalog_sha256": "e5c1ac1a05fc789df96d22dd0bffbafaa93f8018baccf5e1016b455af023a0bb",
   "counts_by_status": {
-    "DERIVED": 40,
+    "DERIVED": 51,
     "EXPERIMENTAL_SIGNAL": 2,
-    "OPEN": 37,
-    "PROVED": 15,
+    "OPEN": 39,
+    "PROVED": 16,
     "SOURCE_RECORD": 82
   },
   "edge_meaning": "Edges point from cited input to consumer. JOINT_INPUT is conjunctive; ALTERNATIVE_INPUT names an alternative for the same consumer. CONTEXT_ONLY has zero inferential weight. No status propagation.",
@@ -282,6 +282,191 @@
       "to": "OUTER_VARIATION"
     },
     {
+      "from": "SELECTED_SUPPORT",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_COFACTOR_CANCELLATION"
+    },
+    {
+      "from": "CONE_MATCH",
+      "kind": "JOINT_INPUT",
+      "to": "P303_COFACTOR_CANCELLATION"
+    },
+    {
+      "from": "P303_FINGERPRINT_THRESHOLD",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+    },
+    {
+      "from": "P303_GAP_SELECTION",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+    },
+    {
+      "from": "SELECTED_SUPPORT",
+      "kind": "JOINT_INPUT",
+      "to": "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+    },
+    {
+      "from": "SMALL_LARGE_PARITY",
+      "kind": "JOINT_INPUT",
+      "to": "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+    },
+    {
+      "from": "P303_DEFICIT_ALGEBRA",
+      "kind": "JOINT_INPUT",
+      "to": "P303_DEFICIT_PRODUCT"
+    },
+    {
+      "from": "P303_UNSIGNED_FINGERPRINT",
+      "kind": "JOINT_INPUT",
+      "to": "P303_DEFICIT_PRODUCT"
+    },
+    {
+      "from": "SELECTED_SUPPORT",
+      "kind": "JOINT_INPUT",
+      "to": "P303_DEFICIT_PRODUCT"
+    },
+    {
+      "from": "P303_UNSIGNED_FINGERPRINT",
+      "kind": "JOINT_INPUT",
+      "to": "P303_FINGERPRINT_THRESHOLD"
+    },
+    {
+      "from": "SELECTED_SUPPORT",
+      "kind": "JOINT_INPUT",
+      "to": "P303_GAP_SELECTION"
+    },
+    {
+      "from": "SURVIVOR_ROUTE",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_OPPOSED_PRODUCT_ROUTE"
+    },
+    {
+      "from": "P303_DEFICIT_PRODUCT",
+      "kind": "JOINT_INPUT",
+      "to": "P303_OPPOSED_PRODUCT_ROUTE"
+    },
+    {
+      "from": "P303_OPPOSED_PRODUCT_UPPER",
+      "kind": "JOINT_INPUT",
+      "to": "P303_OPPOSED_PRODUCT_ROUTE"
+    },
+    {
+      "from": "PAPER_ROUTE_VALIDATION",
+      "kind": "JOINT_INPUT",
+      "to": "P303_OPPOSED_PRODUCT_ROUTE"
+    },
+    {
+      "from": "P303_COFACTOR_CANCELLATION",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_OPPOSED_PRODUCT_UPPER"
+    },
+    {
+      "from": "P303_CORRECTED_SURVIVOR_HISTOGRAM",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_OPPOSED_PRODUCT_UPPER"
+    },
+    {
+      "from": "P303_DEFICIT_PRODUCT",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_OPPOSED_PRODUCT_UPPER"
+    },
+    {
+      "from": "P303_FINGERPRINT_THRESHOLD",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_OPPOSED_PRODUCT_UPPER"
+    },
+    {
+      "from": "P303_PREDICTOR_REMAINDER",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_OPPOSED_PRODUCT_UPPER"
+    },
+    {
+      "from": "P303_SIGNED_DIVISOR_HALVES",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_OPPOSED_PRODUCT_UPPER"
+    },
+    {
+      "from": "P303_SINGLE_COFACTOR_MIXED",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_OPPOSED_PRODUCT_UPPER"
+    },
+    {
+      "from": "P303_SINGLE_COFACTOR_PRECISION",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_OPPOSED_PRODUCT_UPPER"
+    },
+    {
+      "from": "P303_UNEQUAL_PRIME_SHARES",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_OPPOSED_PRODUCT_UPPER"
+    },
+    {
+      "from": "P303_DEFICIT_PRODUCT",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_PREDICTOR_REMAINDER"
+    },
+    {
+      "from": "P303_CORRECTED_SURVIVOR_HISTOGRAM",
+      "kind": "JOINT_INPUT",
+      "to": "P303_PREDICTOR_REMAINDER"
+    },
+    {
+      "from": "DIVISOR_FIBRE_LIMIT",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_SIGNED_DIVISOR_HALVES"
+    },
+    {
+      "from": "P303_GAP_SELECTION",
+      "kind": "JOINT_INPUT",
+      "to": "P303_SIGNED_DIVISOR_HALVES"
+    },
+    {
+      "from": "P303_SINGLE_COFACTOR_PRECISION",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_SINGLE_COFACTOR_MIXED"
+    },
+    {
+      "from": "CONE_MATCH",
+      "kind": "JOINT_INPUT",
+      "to": "P303_SINGLE_COFACTOR_MIXED"
+    },
+    {
+      "from": "MASK_BARRIER",
+      "kind": "JOINT_INPUT",
+      "to": "P303_SINGLE_COFACTOR_MIXED"
+    },
+    {
+      "from": "P303_DEFICIT_PRODUCT",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_SINGLE_COFACTOR_PRECISION"
+    },
+    {
+      "from": "P303_COFACTOR_CANCELLATION",
+      "kind": "JOINT_INPUT",
+      "to": "P303_SINGLE_COFACTOR_PRECISION"
+    },
+    {
+      "from": "P303_UNSIGNED_FINGERPRINT",
+      "kind": "JOINT_INPUT",
+      "to": "P303_SINGLE_COFACTOR_PRECISION"
+    },
+    {
+      "from": "CONE_MATCH",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_UNEQUAL_PRIME_SHARES"
+    },
+    {
+      "from": "SELECTED_SUPPORT",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_UNEQUAL_PRIME_SHARES"
+    },
+    {
+      "from": "ROUGH_TREE",
+      "kind": "CONTEXT_ONLY",
+      "to": "P303_UNSIGNED_FINGERPRINT"
+    },
+    {
       "from": "HEIGHT",
       "kind": "CONTEXT_ONLY",
       "to": "PAIR_CUT"
@@ -518,6 +703,11 @@
     },
     {
       "from": "P1_SELECTED_PACKET_GROUND_RESPONSE",
+      "kind": "ALTERNATIVE_INPUT",
+      "to": "STEP4"
+    },
+    {
+      "from": "P303_OPPOSED_PRODUCT_ROUTE",
       "kind": "ALTERNATIVE_INPUT",
       "to": "STEP4"
     },
@@ -1318,6 +1508,85 @@
       "open_on_any_input_branch": [],
       "open_on_joint_edges_only": []
     },
+    "P303_COFACTOR_CANCELLATION": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_CORRECTED_SURVIVOR_HISTOGRAM": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_DEFICIT_ALGEBRA": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_DEFICIT_PRODUCT": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_FINGERPRINT_THRESHOLD": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_GAP_SELECTION": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_OPPOSED_PRODUCT_ROUTE": {
+      "open_in_every_catalog_route": [
+        "P303_OPPOSED_PRODUCT_UPPER",
+        "PAPER_ROUTE_VALIDATION"
+      ],
+      "open_on_any_input_branch": [
+        "P303_OPPOSED_PRODUCT_UPPER",
+        "PAPER_ROUTE_VALIDATION"
+      ],
+      "open_on_joint_edges_only": [
+        "P303_OPPOSED_PRODUCT_UPPER",
+        "PAPER_ROUTE_VALIDATION"
+      ]
+    },
+    "P303_OPPOSED_PRODUCT_UPPER": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_PREDICTOR_REMAINDER": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_SIGNED_DIVISOR_HALVES": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_SINGLE_COFACTOR_MIXED": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_SINGLE_COFACTOR_PRECISION": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_UNEQUAL_PRIME_SHARES": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
+    "P303_UNSIGNED_FINGERPRINT": {
+      "open_in_every_catalog_route": [],
+      "open_on_any_input_branch": [],
+      "open_on_joint_edges_only": []
+    },
     "PAIR_ALGEBRA": {
       "open_in_every_catalog_route": [],
       "open_on_any_input_branch": [],
@@ -1409,6 +1678,8 @@
         "FRONT-SE",
         "FRONT-SG",
         "P1_SELECTED_PACKET_GROUND_RESPONSE",
+        "P303_OPPOSED_PRODUCT_ROUTE",
+        "P303_OPPOSED_PRODUCT_UPPER",
         "PAPER_ROUTE_VALIDATION",
         "RETAINED_TRIAL_BOUND",
         "STEP4",
@@ -1517,6 +1788,8 @@
         "FRONT-SE",
         "FRONT-SG",
         "P1_SELECTED_PACKET_GROUND_RESPONSE",
+        "P303_OPPOSED_PRODUCT_ROUTE",
+        "P303_OPPOSED_PRODUCT_UPPER",
         "PAPER_ROUTE_VALIDATION",
         "RETAINED_TRIAL_BOUND",
         "SURVIVOR_ROUTE"
@@ -3429,6 +3702,232 @@
       "statement": "EventualDisjointQuarticGroundRestriction. exists R before every late disjoint quartic state; both exact ground responses below one; no shared-ground premise Read full compiler-exported Lean type; metadata is not a substitute",
       "status": "OPEN"
     },
+    "P303_COFACTOR_CANCELLATION": {
+      "alternatives": [],
+      "context": [
+        "SELECTED_SUPPORT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "CONE_MATCH"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS_CHECK.json",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_survivor_cofactor_pairs.py"
+      ],
+      "statement": "Under the aligned all-rough subpower selector, the different-cofactor sum compensates the large positive same-largest-prime-cofactor pair family with VK relative error, including the stated primitive restriction. A fixed-power selector has a separate bound depending on the true zero edge B. The absolute residual can still have power size. Additional target lists can invalidate the protected cofactor count.",
+      "status": "DERIVED"
+    },
+    "P303_CORRECTED_SURVIVOR_HISTOGRAM": {
+      "alternatives": [],
+      "context": [
+        "P303_FINGERPRINT_THRESHOLD",
+        "P303_GAP_SELECTION"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT",
+        "SMALL_LARGE_PARITY"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/TRUNCATED_FINGERPRINTS_CHECK.json",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_truncated_fingerprints.py"
+      ],
+      "statement": "One paid three-stage selection supports product-truncated divisor interpolation for every family of small-prime cutoffs with a uniform subpower envelope. The center subtracts the complete truncated divisibility vector of every removed target and spent partner. Its possibly signed prediction of the unsigned survivor histogram has subpower weighted squared total-variation error. At a fixed-power threshold chosen after δ, keeping the small part ≤U^δ and the large factor count between fixed k and u+1 costs X^(δ+ε) instead. The optional strengthened divisor gap can share the matching; the earlier aligned cofactor selector is distinct.",
+      "status": "DERIVED"
+    },
+    "P303_DEFICIT_ALGEBRA": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.forced_coefficient",
+        "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.quadrant_remainder",
+        "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.weighted_absolute_remainder"
+      ],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean"
+      ],
+      "statement": "For arbitrary real excess and shortfall, the positive signed square differs from four times the opposed positive parts by a nonnegative error at most the squared total discrepancy. The absolute-error estimate sums over any finite index set with nonnegative weights. The universal coefficient is uniquely four.",
+      "status": "PROVED"
+    },
+    "P303_DEFICIT_PRODUCT": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "P303_DEFICIT_ALGEBRA",
+        "P303_UNSIGNED_FINGERPRINT",
+        "SELECTED_SUPPORT"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "With both spent endpoints counted in the survivor center, the actual weighted positive signed-node energy differs from the opposed parity-deficit product 4 Σ w [p]_+ [−m]_+ by O_ε(X^ε), with absolute errors inside the sum. The opposite polarity swaps p,m. Raw/survivor transfer uses the complete populations, aggregated before the sign test. The result on the arithmetic field is a paper deduction.",
+      "status": "DERIVED"
+    },
+    "P303_FINGERPRINT_THRESHOLD": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "P303_UNSIGNED_FINGERPRINT"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SHARP_FINGERPRINT_THRESHOLD.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "For fixed K>2, the complete unselected unsigned squarefree-rough fingerprint energy with all primes y<p≤(log X)^K has exact exponent 1−2/K against Euler weights. This persists after restricting to the exact observed fingerprints of each cell and renormalizing either to reference or observed total. The real lower witnesses have atypically many prime factors. This estimates a particular marginal and supplies no upper for the selected signed source.",
+      "status": "DERIVED"
+    },
+    "P303_GAP_SELECTION": {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_GAPS_AND_SIGNED_HALVES.md"
+      ],
+      "statement": "For fixed 0<γ<β<1−log 2 a strengthened whole-shell selector removes vertices with a divisor within (log U)^β in log distance of ½ log n, together with actual spent partners, at bounded signed one-sided energy change per shell.",
+      "status": "DERIVED"
+    },
+    "P303_OPPOSED_PRODUCT_ROUTE": {
+      "alternatives": [],
+      "context": [
+        "SURVIVOR_ROUTE"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_DEFICIT_PRODUCT",
+        "P303_OPPOSED_PRODUCT_UPPER",
+        "PAPER_ROUTE_VALIDATION"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "The opposed-product version of the survivor route requires an independent arithmetic upper and the kernel-checked transfer through the actual source to Step 4. The paper deficit identity supplies only the comparison of arithmetic observables.",
+      "status": "OPEN"
+    },
+    "P303_OPPOSED_PRODUCT_UPPER": {
+      "alternatives": [],
+      "context": [
+        "P303_COFACTOR_CANCELLATION",
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM",
+        "P303_DEFICIT_PRODUCT",
+        "P303_FINGERPRINT_THRESHOLD",
+        "P303_PREDICTOR_REMAINDER",
+        "P303_SIGNED_DIVISOR_HALVES",
+        "P303_SINGLE_COFACTOR_MIXED",
+        "P303_SINGLE_COFACTOR_PRECISION",
+        "P303_UNEQUAL_PRIME_SHARES"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "For one fixed polarity of the actual survivor graph, prove independently that for each ε>0 and every lower horizon R there is X≥R with its entire opposed deficit product ≤C_ε X^ε. Use the original weights, common cutoff, complete terminal shells, genuine signs and all spent partners in the center.",
+      "status": "OPEN"
+    },
+    "P303_PREDICTOR_REMAINDER": {
+      "alternatives": [],
+      "context": [
+        "P303_DEFICIT_PRODUCT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "For any bounded cell/fingerprint prediction of the actual remaining cofactor parity, the true signed node charge equals the centered prediction plus the full signed prediction residual on the same survivors plus an independently paid histogram error. Same-direction centered even/odd fluctuations have paid cost; the sum of predicted signed charge and true residual still needs its own bound.",
+      "status": "DERIVED"
+    },
+    "P303_SIGNED_DIVISOR_HALVES": {
+      "alternatives": [],
+      "context": [
+        "DIVISOR_FIBRE_LIMIT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_GAP_SELECTION"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_GAPS_AND_SIGNED_HALVES.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_HALVES_EXACT.json",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_divisor_halves.py"
+      ],
+      "statement": "On this strengthened selector, each full divisor half on each surviving vertex annihilates polynomials in log d of degree below the true small-prime count. Puncturing the upper endpoint returns −μ(n)P(log n). The two half transforms bound divisor responses separately from the signed vertex population.",
+      "status": "DERIVED"
+    },
+    "P303_SINGLE_COFACTOR_MIXED": {
+      "alternatives": [],
+      "context": [
+        "P303_SINGLE_COFACTOR_PRECISION"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "CONE_MATCH",
+        "MASK_BARRIER"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md"
+      ],
+      "statement": "On the unchanged aligned subpower survivor graph, the complete signed ordered mixed incidence of this one fibre against its entire complement is −2g_J² up to a VK-small relative error in the original weighted sum of absolute errors. Rejected GCD incidence of that one fibre costs O(H₀/(U log U)) absolutely. The remaining signed mixed-incidence error has no critical absolute bound here.",
+      "status": "DERIVED"
+    },
+    "P303_SINGLE_COFACTOR_PRECISION": {
+      "alternatives": [],
+      "context": [
+        "P303_DEFICIT_PRODUCT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_COFACTOR_CANCELLATION",
+        "P303_UNSIGNED_FINGERPRINT"
+      ],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md",
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "At aligned cutoffs in the earlier subpower selection, deleting one entire true negative cofactor fibre without replacement preserves the deletion-corrected unsigned discrepancy and a relative cofactor cancellation law, yet increases the positive deficit-product energy on the base cells by X^(1−o(1)). This actual modified subgraph is a precision control and is ineligible as the matched source.",
+      "status": "DERIVED"
+    },
+    "P303_UNEQUAL_PRIME_SHARES": {
+      "alternatives": [],
+      "context": [
+        "CONE_MATCH",
+        "SELECTED_SUPPORT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/UNBALANCED_PRIME_SHARES.md"
+      ],
+      "statement": "Before selection, two separated ordered prime baskets of different factor counts have matching continuum kernels on their common small cofactor. Their true raw charges cancel up to U exp(−c Φ(log U)) uniformly on the stated cells. The single-share and double-share observations use different weights. A selector depending on the full label can destroy the fixed-cofactor comparison.",
+      "status": "DERIVED"
+    },
+    "P303_UNSIGNED_FINGERPRINT": {
+      "alternatives": [],
+      "context": [
+        "ROUGH_TREE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "source_files": [
+        "rh:file:research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "On complete native shells the genuine unsigned rough-squarefree fingerprint count through z=(log X)^(2+o(1)) has subpower weighted squared total-variation discrepancy at all nodes and sibling splits, uniformly over fingerprint subsets chosen per cell. The analogous Euler approximation fails already for parity in U^(3/5)<p≤U^(7/10).",
+      "status": "DERIVED"
+    },
     "PAIR_ALGEBRA": {
       "alternatives": [],
       "context": [],
@@ -3898,6 +4397,7 @@
         "FRONT-SE",
         "FRONT-SG",
         "P1_SELECTED_PACKET_GROUND_RESPONSE",
+        "P303_OPPOSED_PRODUCT_ROUTE",
         "RETAINED_TRIAL_BOUND",
         "SURVIVOR_ROUTE"
       ],
@@ -4185,6 +4685,8 @@
     "FRONT-SG",
     "GROUND",
     "P1_SELECTED_PACKET_GROUND_RESPONSE",
+    "P303_OPPOSED_PRODUCT_ROUTE",
+    "P303_OPPOSED_PRODUCT_UPPER",
     "PAPER_ROUTE_VALIDATION",
     "PRIME_VARIANCE",
     "RETAINED_TRIAL_BOUND",
@@ -4391,6 +4893,27 @@
       "module": "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram",
       "rhkg_source_id": "rh:source-decl:ad009393738926d659455e7f0412623bbed76b8899173d8b0cf5c48c2536147e",
       "source": "Zeta23/OPICARound6/PrimeFactorPaths/FiniteWeightedGram.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.forced_coefficient": {
+      "command": "THEOREM",
+      "line": 53,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct",
+      "rhkg_source_id": "rh:source-decl:3ca8000ba2d92f1aebe8987ff83ef8476340ee3af556e473ad19cd9776018439",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.quadrant_remainder": {
+      "command": "THEOREM",
+      "line": 16,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct",
+      "rhkg_source_id": "rh:source-decl:0b3f7efe53f6789172d2b5c23d09d24c4136898bd81e049b55793d24cfc0fd67",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean"
+    },
+    "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.weighted_absolute_remainder": {
+      "command": "THEOREM",
+      "line": 42,
+      "module": "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct",
+      "rhkg_source_id": "rh:source-decl:8150166a32a36eb25a20fd9ab25b0da09b19182b2a067edbba0fd1bb9e1ee3e0",
+      "source": "Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean"
     },
     "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral.integral_negative_iff_squarefree_prime_cost": {
       "command": "THEOREM",

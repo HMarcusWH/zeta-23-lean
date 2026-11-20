@@ -557,6 +557,7 @@
     "Zeta23.OPICARound6.PrimeFactorPaths.FiniteRenewal": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
     "Zeta23.OPICARound6.PrimeFactorPaths.FiniteSelectorEnergy": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
     "Zeta23.OPICARound6.PrimeFactorPaths.FiniteWeightedGram": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
+    "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
     "Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
     "Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier": "OPICA6_FINITE_ARITHMETIC_SUPPORT",
     "Zeta23.OPICARound6.PrimeFactorPaths.RoughNodeCharges": "OPICA6_FINITE_ARITHMETIC_SUPPORT",

@@ -60,6 +60,26 @@ jobs:
           cmp "$evidence/PARITY_TRUNCATION_CHECK.json" "$out/PARITY_TRUNCATION_CHECK.json"
           cmp "$evidence/BALANCED_TRANSPORT_CHECK.json" "$out/BALANCED_TRANSPORT_CHECK.json"
           git rev-parse HEAD 'HEAD^{tree}' > "$out/head-tree.txt"
+      - name: Verify divisor halves, signed cofactor pairs and corrected survivor fingerprints
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence=research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20
+          out="$RUNNER_TEMP/round6-finite/parity-deficit"
+          mkdir -p "$out/normal" "$out/optimized"
+          for mode in normal optimized; do
+            flags=(-B)
+            if [[ "$mode" == optimized ]]; then flags+=(-O); fi
+            for pair in \
+              check_divisor_halves.py:DIVISOR_HALVES_EXACT.json \
+              check_survivor_cofactor_pairs.py:SURVIVOR_COFACTOR_PAIRS_CHECK.json \
+              check_truncated_fingerprints.py:TRUNCATED_FINGERPRINTS_CHECK.json; do
+              script=${pair%%:*}
+              receipt=${pair#*:}
+              python3 "${flags[@]}" "$evidence/$script" --output "$out/$mode/$receipt"
+              cmp "$evidence/$receipt" "$out/$mode/$receipt"
+            done
+          done
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: round6-finite-${{ github.run_id }}-${{ github.run_attempt }}

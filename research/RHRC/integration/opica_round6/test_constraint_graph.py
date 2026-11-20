@@ -1,6 +1,8 @@
 import copy
 import json
 from pathlib import Path
+import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -106,6 +108,46 @@ class ConstraintGraphTests(unittest.TestCase):
         row["parameter_order"] = "cut last"
         with self.assertRaisesRegex(ValueError, "differs"):
             check_historical(g, old)
+
+    def test_opposed_product_preserves_both_open_inputs(self):
+        package = Path(__file__).resolve().parent
+        catalog = json.loads((package / "CONSTRAINTS.json").read_bytes())
+        graph = build(catalog, package.parents[3])
+        nodes = graph["nodes"]
+        route = "P303_OPPOSED_PRODUCT_ROUTE"
+        upper = "P303_OPPOSED_PRODUCT_UPPER"
+        validation = "PAPER_ROUTE_VALIDATION"
+        self.assertEqual(set(explain(graph, route)["open_in_every_catalog_route"]),
+                         {upper, validation})
+        self.assertEqual(set(explain(graph, "SURVIVOR_ROUTE")["open_in_every_catalog_route"]),
+                         {"ACTUAL_UPPER", validation})
+        self.assertEqual(nodes[upper]["depends_on"] + nodes[upper]["alternatives"], [])
+        self.assertIn("P303_PREDICTOR_REMAINDER", nodes[upper]["context"])
+        for target in ("STEP4", "RH", route, upper, validation):
+            self.assertEqual(nodes[target]["status"], "OPEN")
+        steps = explain(graph, "STEP4")["shortest_open_routes"][upper]
+        self.assertEqual([(step["from"], step["kind"], step["to"]) for step in steps],
+                         [(upper, "JOINT_INPUT", route), (route, "ALTERNATIVE_INPUT", "STEP4")])
+        algebra = nodes["P303_DEFICIT_ALGEBRA"]
+        module = "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct."
+        self.assertEqual(algebra["status"], "PROVED")
+        self.assertEqual(set(algebra["declarations"]), {module + name for name in
+                         ("quadrant_remainder", "weighted_absolute_remainder", "forced_coefficient")})
+        self.assertEqual(nodes["P303_DEFICIT_PRODUCT"]["status"], "DERIVED")
+        self.assertIn("P303_DEFICIT_ALGEBRA", nodes["P303_DEFICIT_PRODUCT"]["depends_on"])
+
+    def test_stale_finite_replay_cannot_export(self):
+        fixtures = Path(__file__).resolve().parent / "evidence" / "step4-parity-deficit-2026-11-20"
+        for name in ("receipt.py", "check_divisor_halves.py"):
+            shutil.copyfile(fixtures / name, self.root / name)
+        (self.root / "DIVISOR_HALVES_EXACT.json").write_bytes(b'{}\n')
+        output = self.root / "export.json"
+        result = subprocess.run(
+            [sys.executable, "-O", "-B", str(self.root / "check_divisor_halves.py"),
+             "--output", str(output)], capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Finite replay differs", result.stderr)
+        self.assertFalse(output.exists())
 
 
 if __name__ == "__main__":

@@ -1,0 +1,54 @@
+{
+  "scope": "Finite native PR 303 base. Exact raw divisibility counts are the input. One-cell auxiliary matched selector tests Boolean algebra, not asymptotic density, full three-stage selection, or the Step 4 signed upper.",
+  "native_generator_sha256_lf": "d2927aa38f97ee77229c7d8e9b782d549975bba6fd1a7acb9c895d0da709cec7",
+  "X": 1656575,
+  "cell": [
+    1441792,
+    1474560
+  ],
+  "right_open": true,
+  "y": 441,
+  "z": 2000,
+  "M": 1450000,
+  "marks": 218,
+  "admissible_divisors": 14175,
+  "nonzero_marginals": 302,
+  "marginal_sha256": "da3f74ace49f4227dbee77db3957727a51676eb1c20f1821a049e22cb570836c",
+  "raw_labels": 2935,
+  "matched_positive_targets": 231,
+  "matched_negative_donors": 231,
+  "first_matching_pair": [
+    1450037,
+    1441807
+  ],
+  "survivors": 2473,
+  "survivors_with_two_marks": 83,
+  "occupied_fingerprints": 129,
+  "measured_charge": -1679,
+  "surviving_charge": -1679,
+  "raw_interpolation_example": {
+    "target": 1450037,
+    "marks": [
+      1019,
+      1423
+    ],
+    "terms": [
+      [
+        "empty",
+        -1
+      ],
+      [
+        "1019",
+        1
+      ],
+      [
+        "1423",
+        1
+      ]
+    ]
+  },
+  "reconstruction_l1": 0,
+  "direct_sha256": "f3f64b64eedff61f2740455d04356503673efe75e30bfe42b588ca08780d501e",
+  "reconstructed_sha256": "f3f64b64eedff61f2740455d04356503673efe75e30bfe42b588ca08780d501e",
+  "wrong_point_subtraction_l1": 924
+}

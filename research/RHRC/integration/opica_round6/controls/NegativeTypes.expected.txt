@@ -11,3 +11,9 @@ has type
     ∀ (n : ℕ), 8 ≤ n → Squarefree n → Real.log ↑n ^ 2 + 4 < 2 * SquarefreePrimeCost.cost n
 but is expected to have type
   ∀ (x : ℝ), 2 < x → ∫ (u : ℝ) in 2..x, Chebyshev.theta u - u < 0
+NegativeTypes.lean:19:2: error: Type mismatch
+  ParityDeficitProduct.quadrant_remainder e o
+has type
+  0 ≤ max (e - o) 0 ^ 2 - 4 * max e 0 * max (-o) 0 ∧ max (e - o) 0 ^ 2 - 4 * max e 0 * max (-o) 0 ≤ (e + o) ^ 2
+but is expected to have type
+  0 ≤ max (e - o) 0 ^ 2 - 5 * max e 0 * max (-o) 0 ∧ max (e - o) 0 ^ 2 - 5 * max e 0 * max (-o) 0 ≤ (e + o) ^ 2

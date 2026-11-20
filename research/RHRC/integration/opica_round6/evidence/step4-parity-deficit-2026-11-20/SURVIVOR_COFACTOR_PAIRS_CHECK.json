@@ -1,0 +1,64 @@
+{
+  "scope": "Finite exact preselection. The composite-only restriction excludes ordinary primes without matching. These horizons have D<2 and are outside the asymptotic protected-cofactor regime.",
+  "native_generator_sha256_lf": "d2927aa38f97ee77229c7d8e9b782d549975bba6fd1a7acb9c895d0da709cec7",
+  "results": [
+    {
+      "X": 1049155,
+      "y": 441,
+      "base_cell": [
+        917504,
+        933888
+      ],
+      "base_right_open": true,
+      "full_rough_source": {
+        "labels": 1456,
+        "cofactor_fibres": 77,
+        "positive_labels": 256,
+        "ordered_pairs": 2118480,
+        "same": 1439554,
+        "different": -549874,
+        "same_primitive": 1438800,
+        "different_primitive": -550160
+      },
+      "deterministic_composite_only": {
+        "labels": 256,
+        "cofactor_fibres": 76,
+        "positive_labels": 256,
+        "ordered_pairs": 65280,
+        "same": 754,
+        "different": 64526,
+        "same_primitive": 0,
+        "different_primitive": 64240
+      }
+    },
+    {
+      "X": 1656575,
+      "y": 441,
+      "base_cell": [
+        1441792,
+        1474560
+      ],
+      "base_right_open": true,
+      "full_rough_source": {
+        "labels": 2935,
+        "cofactor_fibres": 113,
+        "positive_labels": 628,
+        "ordered_pairs": 8611290,
+        "same": 5323298,
+        "different": -2507192,
+        "same_primitive": 5319942,
+        "different_primitive": -2508320
+      },
+      "deterministic_composite_only": {
+        "labels": 628,
+        "cofactor_fibres": 112,
+        "positive_labels": 628,
+        "ordered_pairs": 393756,
+        "same": 3356,
+        "different": 390400,
+        "same_primitive": 0,
+        "different_primitive": 389272
+      }
+    }
+  ]
+}

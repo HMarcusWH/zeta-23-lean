@@ -1635,5 +1635,112 @@
       "original_sha256": "b3b9242247d28323511b0730d4d31f744b7c874a36d55eff748a339930aa921b",
       "archive_member": false
     }
-  ]
+  ],
+  "post303_research": {
+    "source_tree": "8ed7eaba2f04c213e4c1d633d99673fd19ffe220",
+    "source_commit": "adc9c6ce04f73dc276513b81ae4a316a0a8367eb",
+    "archive": "https://drive.google.com/file/d/1ucDOp1k-_1BhE-mqIvAthw4pFuFzCtcM/view",
+    "archive_sha256": "b54a0d673f9373cbf8967de5814e552ecf7d907ef5007e74660b92d9e7c14fa3",
+    "handover": "https://drive.google.com/file/d/11cq_IWmjQQAAZkgXfGmIOgF-4SyPkAqT/view",
+    "scope": "Original bytes for seven paper deductions, three finite checks and receipts, and the local parity-deficit source and coefficient control. Repository versions bind their own compiler module names, script paths, and output verification.",
+    "members": {
+      "DIVISOR_GAPS_AND_SIGNED_HALVES.md": "dfa34fbae05732c5b9d7033a4147a3842b93e9b7bf1e1469bef6ea974f7f3616",
+      "DIVISOR_HALVES_EXACT.json": "6484ff888f0c83c6680203cb6976f432e0362f7f31f69c7986a5ff22dd59823f",
+      "MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md": "16a6ad67a92e08ad36ca4d7571dd832213eb9ed01906f18f204425484daf0b2c",
+      "ParityDeficitProduct.lean": "a1e36a2a5a15b81a4f5db739bba788f473e04ec76b4183c0961421ecd3380a58",
+      "RejectWrongCoefficient.lean": "0433610b19651a13ea2635865b4559c9d4d0f53829503283a7e4a77ebbe3f75d",
+      "SHARP_FINGERPRINT_THRESHOLD.md": "7f17cfe7460f6b8c38c288e99b48d033b32f212ea1537ccd229c5cfdaa74642a",
+      "SINGLE_COFACTOR_PARITY_DEFICIT.md": "eb9260579e9f7b5bba22d987c0fec715479ba14bb2bb1ae43ae6e7dc4b52d2c1",
+      "SURVIVOR_COFACTOR_PAIRS.md": "4e6b309d634c73b45abde0ef7af2d64c653b5eaf2246dbd5bab4ddbc8f9bbede",
+      "SURVIVOR_COFACTOR_PAIRS_CHECK.json": "cdc75fd42be270dde67d11a33fc66c73fe20d1bc148209b437f86036836b84bb",
+      "SURVIVOR_HAAR_FINGERPRINTS.md": "7cebac1947f036977ca945c1169cc47776c8a8b94bc49fa8f97796b23fec9bc5",
+      "TRUNCATED_FINGERPRINTS_CHECK.json": "9b33193ee4edbe3a549dee97163b3a19a33eefbaa144d3452f9627fd56f59b30",
+      "UNBALANCED_PRIME_SHARES.md": "54c6371d8ae4089e68e28e5d517d62ee248fe66a8e4c0bf1680f38243e1e74b9",
+      "check_divisor_halves.py": "a7ad45e8fbb4253dc63ab86e7463d5d975fbc3a18b5bee390bf18de64b64dbde",
+      "check_survivor_cofactor_pairs.py": "d1247e71bfeb03dc7181b7814478c4c1ba791102cb61467789d422c05f6d5961",
+      "check_truncated_fingerprints.py": "b35267306a234635ed9e885b51b2cf01f5b717acc8ee30ffe25ecfab6ac28497"
+    }
+  },
+  "post303_publications": {
+    "Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean": {
+      "archive_member": "ParityDeficitProduct.lean",
+      "published_sha256": "89e4d4770caf9cd74c3e35cb22c28cc21c7c1a3f1b7d34665b15c030652e648f",
+      "transformation": "Place the three original finite theorems in the repository namespace and expose their axiom checks in the Verify module."
+    },
+    "research/RHRC/integration/opica_round6/controls/NegativeTypes.lean.txt": {
+      "archive_member": "RejectWrongCoefficient.lean",
+      "published_sha256": "e4d78fb1ea3e4eab78321942d7b3783288df0ba69adbc55c242d9cb46f2915d2",
+      "transformation": "Integrate the coefficient-five rejection as a type mismatch against the actual quadrant_remainder theorem alongside the earlier controls."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_GAPS_AND_SIGNED_HALVES.md": {
+      "archive_member": "DIVISOR_GAPS_AND_SIGNED_HALVES.md",
+      "published_sha256": "9f3e8dc52df19f2d31d32963d085b58bb7ea3d4e454a7e9e30bbe5cc90454f28",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_HALVES_EXACT.json": {
+      "archive_member": "DIVISOR_HALVES_EXACT.json",
+      "published_sha256": "6484ff888f0c83c6680203cb6976f432e0362f7f31f69c7986a5ff22dd59823f",
+      "transformation": "Reproduce the original receipt byte for byte using the repository fixture."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md": {
+      "archive_member": "MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md",
+      "published_sha256": "83fbbb7ca837f224a59c2b2ae581a2302ec35d5252994895a19c22ca5a902472",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SHARP_FINGERPRINT_THRESHOLD.md": {
+      "archive_member": "SHARP_FINGERPRINT_THRESHOLD.md",
+      "published_sha256": "727d95b51d344a978c280f3d764995a09f91a31772c99fe028a791d47328fe79",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md": {
+      "archive_member": "SINGLE_COFACTOR_PARITY_DEFICIT.md",
+      "published_sha256": "42190c32648b2df80582ed270541a73dfa8099fa1d32d0cce40e7d1bb23e30b0",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md": {
+      "archive_member": "SURVIVOR_COFACTOR_PAIRS.md",
+      "published_sha256": "3ae00aa2e5cd319b32555de3522c1013c1af144f6c014a4cd0e40d6b4fd1be06",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS_CHECK.json": {
+      "archive_member": "SURVIVOR_COFACTOR_PAIRS_CHECK.json",
+      "published_sha256": "f8d91441274cecc87bbb643740f58adbc54cbf866591a426a121a41c7eb08a40",
+      "transformation": "Recompute the arithmetic receipt and replace historical graph and script identifiers with the native generator digest."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md": {
+      "archive_member": "SURVIVOR_HAAR_FINGERPRINTS.md",
+      "published_sha256": "4c093ba93854ee93438c40757badbef15eaf665f7d6fdc4c6e870e2246b8020c",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/TRUNCATED_FINGERPRINTS_CHECK.json": {
+      "archive_member": "TRUNCATED_FINGERPRINTS_CHECK.json",
+      "published_sha256": "48c3f650c9441ccfdf04dae68a2a91666eb4f8e37e1b451d0f74187c0e3ea792",
+      "transformation": "Recompute the arithmetic receipt and replace historical graph and script identifiers with the native generator digest."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/UNBALANCED_PRIME_SHARES.md": {
+      "archive_member": "UNBALANCED_PRIME_SHARES.md",
+      "published_sha256": "1b6606de92c3fa9ca1363b2127614905016cf56e06124f881f232c86627499a7",
+      "transformation": "Publish the archived paper with same-repository citations converted to relative links. Normalize the final blank line."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_divisor_halves.py": {
+      "archive_member": "check_divisor_halves.py",
+      "published_sha256": "cdb85b33edeb129efda05d7ba3378927fadb2f3030bc62afeba481450beeb5bc",
+      "transformation": "Expose the exact divisor-cube cases through the shared replay CLI and preserve arithmetic rejection under optimized Python."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_survivor_cofactor_pairs.py": {
+      "archive_member": "check_survivor_cofactor_pairs.py",
+      "published_sha256": "96aa7d89a8dda0d3b67a4244a12fec16852b795a0c003ed04a3e3067b48b10ee",
+      "transformation": "Expose the original arithmetic cases through the shared replay CLI and bind the native generator."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_truncated_fingerprints.py": {
+      "archive_member": "check_truncated_fingerprints.py",
+      "published_sha256": "94eed053041b8fcd99d1c7b5cb396044fbbeb423c7d0b765ba49d5d8dd6e1ed5",
+      "transformation": "Expose the original arithmetic cases through the shared replay CLI and bind the native generator."
+    },
+    "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/receipt.py": {
+      "archive_member": null,
+      "published_sha256": "3aff0b3ec7ecda9365877e54b8f6a5741c7b9fbbf8751bec1b5678efafb22b71",
+      "transformation": "Repository-authored CLI for checking or writing the three finite receipts."
+    }
+  }
 }

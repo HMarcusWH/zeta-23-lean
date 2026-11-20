@@ -2552,7 +2552,8 @@
         "FRONT-DD",
         "FRONT-ND",
         "RETAINED_TRIAL_BOUND",
-        "SURVIVOR_ROUTE"
+        "SURVIVOR_ROUTE",
+        "P303_OPPOSED_PRODUCT_ROUTE"
       ],
       "context": [
         "FINITE_K5",
@@ -2724,6 +2725,246 @@
         "COMPLETE_WEIGHTED_UPPER"
       ],
       "source_disposition": "Paper-level result in RH Step 4 — Prime-Power Variation Elimination and Euler-Factor Stability — 2026-11-13"
+    },
+    {
+      "id": "P303_DEFICIT_ALGEBRA",
+      "status": "PROVED",
+      "statement": "For arbitrary real excess and shortfall, the positive signed square differs from four times the opposed positive parts by a nonnegative error at most the squared total discrepancy. The absolute-error estimate sums over any finite index set with nonnegative weights. The universal coefficient is uniquely four.",
+      "sources": [
+        "Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean"
+      ],
+      "declarations": [
+        "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.quadrant_remainder",
+        "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.weighted_absolute_remainder",
+        "Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.forced_coefficient"
+      ],
+      "depends_on": [],
+      "alternatives": [],
+      "context": []
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "ROUGH_TREE"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "P303_UNSIGNED_FINGERPRINT",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "On complete native shells the genuine unsigned rough-squarefree fingerprint count through z=(log X)^(2+o(1)) has subpower weighted squared total-variation discrepancy at all nodes and sibling splits, uniformly over fingerprint subsets chosen per cell. The analogous Euler approximation fails already for parity in U^(3/5)<p≤U^(7/10).",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "P303_UNSIGNED_FINGERPRINT",
+        "SELECTED_SUPPORT",
+        "P303_DEFICIT_ALGEBRA"
+      ],
+      "id": "P303_DEFICIT_PRODUCT",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "With both spent endpoints counted in the survivor center, the actual weighted positive signed-node energy differs from the opposed parity-deficit product 4 Σ w [p]_+ [−m]_+ by O_ε(X^ε), with absolute errors inside the sum. The opposite polarity swaps p,m. Raw/survivor transfer uses the complete populations, aggregated before the sign test. The result on the arithmetic field is a paper deduction.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT"
+      ],
+      "id": "P303_GAP_SELECTION",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_GAPS_AND_SIGNED_HALVES.md"
+      ],
+      "statement": "For fixed 0<γ<β<1−log 2 a strengthened whole-shell selector removes vertices with a divisor within (log U)^β in log distance of ½ log n, together with actual spent partners, at bounded signed one-sided energy change per shell.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "DIVISOR_FIBRE_LIMIT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_GAP_SELECTION"
+      ],
+      "id": "P303_SIGNED_DIVISOR_HALVES",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_GAPS_AND_SIGNED_HALVES.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_divisor_halves.py",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/DIVISOR_HALVES_EXACT.json"
+      ],
+      "statement": "On this strengthened selector, each full divisor half on each surviving vertex annihilates polynomials in log d of degree below the true small-prime count. Puncturing the upper endpoint returns −μ(n)P(log n). The two half transforms bound divisor responses separately from the signed vertex population.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "SELECTED_SUPPORT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "CONE_MATCH"
+      ],
+      "id": "P303_COFACTOR_CANCELLATION",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_survivor_cofactor_pairs.py",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS_CHECK.json"
+      ],
+      "statement": "Under the aligned all-rough subpower selector, the different-cofactor sum compensates the large positive same-largest-prime-cofactor pair family with VK relative error, including the stated primitive restriction. A fixed-power selector has a separate bound depending on the true zero edge B. The absolute residual can still have power size. Additional target lists can invalidate the protected cofactor count.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "CONE_MATCH",
+        "SELECTED_SUPPORT"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "P303_UNEQUAL_PRIME_SHARES",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/UNBALANCED_PRIME_SHARES.md"
+      ],
+      "statement": "Before selection, two separated ordered prime baskets of different factor counts have matching continuum kernels on their common small cofactor. Their true raw charges cancel up to U exp(−c Φ(log U)) uniformly on the stated cells. The single-share and double-share observations use different weights. A selector depending on the full label can destroy the fixed-cofactor comparison.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [],
+      "declarations": [],
+      "depends_on": [
+        "P303_UNSIGNED_FINGERPRINT"
+      ],
+      "id": "P303_FINGERPRINT_THRESHOLD",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SHARP_FINGERPRINT_THRESHOLD.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "For fixed K>2, the complete unselected unsigned squarefree-rough fingerprint energy with all primes y<p≤(log X)^K has exact exponent 1−2/K against Euler weights. This persists after restricting to the exact observed fingerprints of each cell and renormalizing either to reference or observed total. The real lower witnesses have atypically many prime factors. This estimates a particular marginal and supplies no upper for the selected signed source.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_DEFICIT_PRODUCT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_UNSIGNED_FINGERPRINT",
+        "P303_COFACTOR_CANCELLATION"
+      ],
+      "id": "P303_SINGLE_COFACTOR_PRECISION",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md"
+      ],
+      "statement": "At aligned cutoffs in the earlier subpower selection, deleting one entire true negative cofactor fibre without replacement preserves the deletion-corrected unsigned discrepancy and a relative cofactor cancellation law, yet increases the positive deficit-product energy on the base cells by X^(1−o(1)). This actual modified subgraph is a precision control and is ineligible as the matched source.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_SINGLE_COFACTOR_PRECISION"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "CONE_MATCH",
+        "MASK_BARRIER"
+      ],
+      "id": "P303_SINGLE_COFACTOR_MIXED",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md"
+      ],
+      "statement": "On the unchanged aligned subpower survivor graph, the complete signed ordered mixed incidence of this one fibre against its entire complement is −2g_J² up to a VK-small relative error in the original weighted sum of absolute errors. Rejected GCD incidence of that one fibre costs O(H₀/(U log U)) absolutely. The remaining signed mixed-incidence error has no critical absolute bound here.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_FINGERPRINT_THRESHOLD",
+        "P303_GAP_SELECTION"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "SELECTED_SUPPORT",
+        "SMALL_LARGE_PARITY"
+      ],
+      "id": "P303_CORRECTED_SURVIVOR_HISTOGRAM",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/check_truncated_fingerprints.py",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/TRUNCATED_FINGERPRINTS_CHECK.json"
+      ],
+      "statement": "One paid three-stage selection supports product-truncated divisor interpolation for every family of small-prime cutoffs with a uniform subpower envelope. The center subtracts the complete truncated divisibility vector of every removed target and spent partner. Its possibly signed prediction of the unsigned survivor histogram has subpower weighted squared total-variation error. At a fixed-power threshold chosen after δ, keeping the small part ≤U^δ and the large factor count between fixed k and u+1 costs X^(δ+ε) instead. The optional strengthened divisor gap can share the matching; the earlier aligned cofactor selector is distinct.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_DEFICIT_PRODUCT"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM"
+      ],
+      "id": "P303_PREDICTOR_REMAINDER",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/MOMENT_CORRECTED_SURVIVOR_FINGERPRINTS.md",
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "For any bounded cell/fingerprint prediction of the actual remaining cofactor parity, the true signed node charge equals the centered prediction plus the full signed prediction residual on the same survivors plus an independently paid histogram error. Same-direction centered even/odd fluctuations have paid cost; the sum of predicted signed charge and true residual still needs its own bound.",
+      "status": "DERIVED"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "P303_DEFICIT_PRODUCT",
+        "P303_SIGNED_DIVISOR_HALVES",
+        "P303_COFACTOR_CANCELLATION",
+        "P303_UNEQUAL_PRIME_SHARES",
+        "P303_FINGERPRINT_THRESHOLD",
+        "P303_SINGLE_COFACTOR_PRECISION",
+        "P303_SINGLE_COFACTOR_MIXED",
+        "P303_CORRECTED_SURVIVOR_HISTOGRAM",
+        "P303_PREDICTOR_REMAINDER"
+      ],
+      "declarations": [],
+      "depends_on": [],
+      "id": "P303_OPPOSED_PRODUCT_UPPER",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "For one fixed polarity of the actual survivor graph, prove independently that for each ε>0 and every lower horizon R there is X≥R with its entire opposed deficit product ≤C_ε X^ε. Use the original weights, common cutoff, complete terminal shells, genuine signs and all spent partners in the center.",
+      "status": "OPEN"
+    },
+    {
+      "alternatives": [],
+      "context": [
+        "SURVIVOR_ROUTE"
+      ],
+      "declarations": [],
+      "depends_on": [
+        "P303_DEFICIT_PRODUCT",
+        "P303_OPPOSED_PRODUCT_UPPER",
+        "PAPER_ROUTE_VALIDATION"
+      ],
+      "id": "P303_OPPOSED_PRODUCT_ROUTE",
+      "sources": [
+        "research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md"
+      ],
+      "statement": "The opposed-product version of the survivor route requires an independent arithmetic upper and the kernel-checked transfer through the actual source to Step 4. The paper deficit identity supplies only the comparison of arithmetic observables.",
+      "status": "OPEN"
     }
   ]
 }

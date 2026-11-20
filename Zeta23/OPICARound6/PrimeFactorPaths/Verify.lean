@@ -10,6 +10,7 @@ import Zeta23.OPICARound6.PrimeFactorPaths.PrimitiveEulerMultiplier
 import Zeta23.OPICARound6.PrimeFactorPaths.StoppedPrimeArea
 import Zeta23.OPICARound6.PrimeFactorPaths.SquarefreePrimeCost
 import Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral
+import Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct
 
 /-! Independent import checks for the public finite arithmetic and algebraic statements. -/
 
@@ -367,5 +368,26 @@ open MeasureTheory
     (∀ x : ℝ, 2 < x → (∫ u in 2..x, (Chebyshev.theta u - u)) < 0) ↔
     (∀ n : ℕ, 8 ≤ n → Squarefree n → (Real.log n) ^ 2 + 4 < 2 * cost n))
 #print axioms Zeta23.OPICARound6.PrimeFactorPaths.PrimeAreaIntegral.integral_negative_iff_squarefree_prime_cost
+
+end
+
+section
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.quadrant_remainder :
+    ∀ x y : ℝ, 0 ≤ (max (x-y) 0)^2 - 4 * max x 0 * max (-y) 0 ∧
+      (max (x-y) 0)^2 - 4 * max x 0 * max (-y) 0 ≤ (x+y)^2)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.quadrant_remainder
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.weighted_absolute_remainder :
+    ∀ {ι : Type*} (nodes : Finset ι) (x y weight : ι → ℝ),
+      (∀ i ∈ nodes, 0 ≤ weight i) →
+      (∑ i ∈ nodes, weight i * |(max (x i - y i) 0)^2 - 4 * max (x i) 0 * max (-y i) 0|) ≤
+        ∑ i ∈ nodes, weight i * (x i + y i)^2)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.weighted_absolute_remainder
+
+#check (@Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.forced_coefficient :
+    ∀ a : ℝ, (∀ x y : ℝ, 0 ≤ (max (x-y) 0)^2 - a * max x 0 * max (-y) 0 ∧
+      (max (x-y) 0)^2 - a * max x 0 * max (-y) 0 ≤ (x+y)^2) → a = 4)
+#print axioms Zeta23.OPICARound6.PrimeFactorPaths.ParityDeficitProduct.forced_coefficient
 
 end
