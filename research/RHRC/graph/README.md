@@ -1,5 +1,23 @@
 # RHKG: repository knowledge graph
 
+## Final source and constraint queries
+
+The [Round 6 constraint graph](../integration/opica_round6/README.md) adds
+explicit source-scoped route deductions and countercontrols to the final
+research map. Its [constraint register](../integration/opica_round6/CONSTRAINTS.json)
+and [query implementation](../integration/opica_round6/constraint_graph.py)
+retain distinct edge semantics. A `depends_on` list supplies joint inputs,
+reported by the query as `JOINT_INPUT` edges; reachability through those edges
+does not discharge the premises.
+
+Use the [bounded graph example](../../../docs/EXAMPLES.md#infrastructure-replay)
+to inspect the stored route requiring `ACTUAL_UPPER` and
+`PAPER_ROUTE_VALIDATION`. It is a query of a committed graph, not a new Lean
+proof or a complete graph rebuild. Compiler `USES_CONSTANT`, source mentions,
+module imports, countermodel refutations and research route requirements have
+different evidential roles. The [reproduction guide](../../../docs/REPRODUCIBILITY.md)
+explains the independent canonical freshness check.
+
 Use the [repository map](../../../docs/REPOSITORY_MAP.md) for a question-by-question
 index of graph products and the [dated snapshot](../../../docs/CURRENT_STATE.md)
 for active source scope. The [project guide](../../../docs/PROJECT_GUIDE.md)

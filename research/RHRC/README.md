@@ -1,18 +1,45 @@
 # RHRC research programme
 
-**RH and Step 4 remain OPEN.** The repository-wide reading path is the
-[README](../../README.md), [project guide](../../docs/PROJECT_GUIDE.md),
-[dated current snapshot](../../docs/CURRENT_STATE.md) and
-[repository/graph map](../../docs/REPOSITORY_MAP.md).
-For exact proof scope use live source, compiler receipts and all workflow results.
+This directory preserves the RH-directed research built on Zeta23: finite
+Weil/CCM and exceptional-zero routes, source-faithful OPICA constructions,
+arithmetic experiments, countermodels and research-control infrastructure.
+The mathematical attempt is incomplete; its independent Step 4 estimates remain
+open in the [21 November research snapshot](../../docs/CURRENT_STATE.md).
 
-Start with the [integration packages](integration/README.md),
-[Round 4 handover](integration/opica_round4/INTEGRATION_HANDOVER.md),
-[closure obligations](integration/opica_round4/CLOSURE_OBLIGATIONS.json),
-[countermodels](countermodels/README.md) and
-[documentation authority policy](DOCUMENTATION_AUTHORITY.md).
-The historical account below preserves the route and control history;
-old “current” headings do not route the active Round 4 branch.
+## Read by purpose
+
+| Purpose | Entry point |
+| --- | --- |
+| Understand the mathematical attempt | [Project guide](../../docs/PROJECT_GUIDE.md), [glossary](../../docs/MATHEMATICAL_GLOSSARY.md) |
+| Locate a reusable result | [Component catalogue](../../docs/REUSABLE_COMPONENTS.md), [examples](../../docs/EXAMPLES.md) |
+| Connect written results to formal source | [Result map](../../docs/RESULTS_AND_FORMALIZATION.md), [paper archive](../../papers/README.md) |
+| Reproduce a theorem, finite calculation or graph query | [Reproduction recipes](../../docs/REPRODUCIBILITY.md), [repository map](../../docs/REPOSITORY_MAP.md) |
+| Inspect proof and research governance | [Framework guide](../../docs/FRAMEWORKS.md), [authority policy](DOCUMENTATION_AUTHORITY.md) |
+| Find an earlier failed inference | [Failure lessons](../../docs/PROJECT_GUIDE.md#what-failed-and-what-would-justify-reopening-it), [countermodels](countermodels/README.md), [dead-route ledger](DEAD_ROUTES.md) |
+
+## Final source entry points
+
+The [integration index](integration/README.md) follows OPICA through the native
+follow-up and Rounds 2–6. The [arithmetic-frontier guide](integration/opica_round4/arithmetic_frontier/README.md)
+locates the November moment-slice and rate work, and the
+[Round 5 source](../../Zeta23/OPICARound5/ParityMomentBridge.lean) supplies the
+parity-moment bridge. The [Round 6 guide](integration/opica_round6/README.md)
+connects finite native-cell/stopping algebra with the final paper reductions.
+
+The [Round 4 closure register](integration/opica_round4/CLOSURE_OBLIGATIONS.json)
+and [Round 6 constraint register](integration/opica_round6/CONSTRAINTS.json)
+keep their own objects and scopes. The latter distinguishes independent
+arithmetic uppers from the formal validation of complete growing-horizon paper
+routes. Graph context, finite evidence and theorem implications have different
+meanings.
+
+## Preserved research history
+
+The account below retains route, theorem and control checkpoints. Its old
+“current”, “next” and active-PR wording describes the stated historical source.
+It does not direct new work on this documentation branch. Use the
+[frozen orientation](../../docs/CURRENT_STATE.md) and the exact source/evidence
+links before using a historical result.
 
 <details>
 <summary>Historical Control-v2 snapshot: frozen PR #287 scope</summary>

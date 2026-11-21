@@ -1,14 +1,27 @@
 # Formal audit history and evidence
 
-For current repository routing, read the [README](README.md),
-[dated snapshot](docs/CURRENT_STATE.md), [project guide](docs/PROJECT_GUIDE.md)
-and [repository map](docs/REPOSITORY_MAP.md).
-The [upstream README](UPSTREAM_README.md), [upstream audit](UPSTREAM_AUDIT.md),
-[LICENSE](LICENSE) and [NOTICE](NOTICE) retain original attribution.
-RH, Step 4 and the independent closing premises remain OPEN.
+This file preserves the programme's audit history. For the mathematical source
+archived on 21 November 2026, start with the [frozen orientation](docs/CURRENT_STATE.md),
+[results and formalization map](docs/RESULTS_AND_FORMALIZATION.md) and
+[reproduction recipes](docs/REPRODUCIBILITY.md). The archive commit and earlier
+theorem-evidence checkpoints are separate objects.
 
-The account below is historical. Its dates, theorem anchors and pending-work
-labels must be read with their exact source receipts, not as live PR status.
+A formal result is its exact declaration with all hypotheses, imported
+dependencies and the corresponding compiler/consumer/axiom evidence. A fully
+proved conditional implication does not establish its open antecedent. Finite
+certification, historical replay, source inventory and complete package
+acceptance each have their own scope. The [authority guide](research/RHRC/DOCUMENTATION_AUTHORITY.md)
+defines the precedence rules.
+
+The [upstream README](UPSTREAM_README.md), [upstream audit](UPSTREAM_AUDIT.md),
+[comparator guide](comparator/README.md), [LICENSE](LICENSE) and [NOTICE](NOTICE)
+retain the inherited project's separate statements and attribution.
+This repository's RH attempt and independent Step 4 estimates remain incomplete.
+
+The dated records below are preserved. Their theorem anchors, counts, old
+“current” labels and pending work describe the exact sources to which the
+records refer. The frozen machine block is retained byte-for-byte; it is not
+current PR routing or new validation of the documentation checkout.
 
 <details>
 <summary>Historical Control-v2 snapshot: frozen PR #287 scope</summary>

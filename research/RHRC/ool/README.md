@@ -1,5 +1,14 @@
 # OoL-MVS RH integration
 
+## Using this component
+
+Start with the [framework reuse guide](../../../docs/FRAMEWORKS.md) for the
+inputs, source coupling, evidence boundaries and adaptation work. The
+[bounded infrastructure example](../../../docs/EXAMPLES.md#infrastructure-replay)
+separates a finite selector or graph query from kernel verification. A framework
+assessment does not change a theorem's status. For the full attempt, use the
+[frozen snapshot](../../../docs/CURRENT_STATE.md).
+
 Claim firewall: **RH and Step 4 remain OPEN.**
 
 ## Current entry point

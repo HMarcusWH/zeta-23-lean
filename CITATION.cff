@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: >-
+  Cite the exact commit and the particular module or manuscript you use.
+  This record identifies the research fork's frozen snapshot; it does not
+  replace the authorship and attribution of the upstream formalization,
+  individual source files, or archived manuscripts.
+type: software
+title: "Zeta23 RH research fork: finite detectors, source transport, and arithmetic constraints"
+authors:
+  - family-names: Hermansson
+    given-names: Marcus
+repository-code: "https://github.com/HMarcusWH/zeta-23-lean"
+url: "https://github.com/HMarcusWH/zeta-23-lean/tree/7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9"
+commit: "7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9"
+date-released: "2026-11-21"
+version: "research-snapshot-2026-11-21"
+abstract: >-
+  Research fork maintained by Marcus Hermansson. It records an incomplete
+  Riemann-hypothesis attempt, associated Lean mathematics, finite arithmetic
+  calculations, source-bound research tooling, and 43 archived manuscripts.
+  The inherited Zeta23 formalization is separately attributed in NOTICE,
+  UPSTREAM_README.md, UPSTREAM_AUDIT.md and the source headers. This citation
+  record does not assert a completed RH proof or change any licence terms.
+keywords:
+  - Lean
+  - formal mathematics
+  - Riemann zeta function
+  - spectral theory
+  - research reproducibility
+references:
+  - type: software
+    title: "Zeta23 — a Lean 4 formalization of critical-line zero-proportion theorems"
+    authors:
+      - name: "Anthropic, PBC"
+    repository-code: "https://github.com/anthropics/zeta-23-lean"
+    notes: "Upstream attribution as recorded in NOTICE; preserve individual source headers and dependency notices."

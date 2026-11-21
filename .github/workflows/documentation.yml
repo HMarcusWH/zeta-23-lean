@@ -1,0 +1,121 @@
+name: Documentation source scope and reader examples
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  documentation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check the exact archive and documentation source boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/documentation-review"
+          mkdir -p "$out"
+          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
+          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check-classification 2>&1 | tee "$out/classification.log"
+          python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests.log"
+          python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
+          python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
+      - name: Check reader links and run bounded exact examples
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/documentation-review"
+          python3 -B -m research.RHRC.integration.documentation_2026_11_21.check_documentation | tee "$out/links.log"
+          python3 -B docs/examples/exact_examples.py | tee "$out/exact-examples.log"
+          python3 -O -B docs/examples/exact_examples.py | tee "$out/exact-examples-optimized.log"
+          python3 -B docs/examples/infrastructure_replay.py | tee "$out/infrastructure-replay.log"
+          python3 -O -B docs/examples/infrastructure_replay.py | tee "$out/infrastructure-replay-optimized.log"
+          git diff --check
+          test -z "$(git status --porcelain --untracked-files=all)"
+          git rev-parse HEAD 'HEAD^{tree}' > "$out/head-tree.txt"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: documentation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/documentation-review/
+          if-no-files-found: error
+
+  canonical-refresh:
+    name: Canonical generated-state candidate for documentation
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.head_ref == 'docs/repository-guide-and-reuse-2026-11-21'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: .lake/build
+          key: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.event.pull_request.head.sha }}
+          restore-keys: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13.5'
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Authenticate source and build the existing exporters
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/documentation-canonical"
+          mkdir -p "$out"
+          git rev-parse HEAD 'HEAD^{tree}' > "$out/input-head-tree.txt"
+          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
+          lake env lean --version > "$out/lean-version.txt"
+          lake build Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution 2>&1 | tee "$out/exporter-build.log"
+      - name: Regenerate through the canonical producer and check its output
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/documentation-canonical"
+          python3 -B research/RHRC/tools/materialize_derived_state.py --write > "$out/materialize.log" 2>&1 || { tail -100 "$out/materialize.log"; exit 1; }
+          python3 -B research/RHRC/tools/materialize_derived_state.py --check > "$out/canonical-check.log" 2>&1 || { tail -100 "$out/canonical-check.log"; exit 1; }
+          python3 -B - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          policy = json.loads(Path('research/RHRC/integration/documentation_2026_11_21/SOURCE_SCOPE.json').read_text())
+          allowed = set(policy['generated'])
+          changed = subprocess.check_output(['git', 'diff', '--name-only', '-z', 'HEAD']).split(b'\0')
+          names = {name.decode() for name in changed if name}
+          if not names <= allowed:
+              raise SystemExit('Canonical producer modified an undeclared source: ' + repr(sorted(names - allowed)))
+          if subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard']).strip():
+              raise SystemExit('Canonical producer created undeclared files')
+          print('Generated candidate paths:', len(names))
+          PY
+          git diff --check
+          git diff --binary HEAD > "$out/generated-state.patch"
+          git diff --stat HEAD > "$out/generated-stat.txt"
+          cd "$out"
+          sha256sum generated-state.patch > generated-state.patch.sha256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: documentation-canonical-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/documentation-canonical/
+          if-no-files-found: error

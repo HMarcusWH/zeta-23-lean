@@ -1,3 +1,102 @@
+# Frozen research orientation — 21 November 2026
+
+This page describes the mathematical source and research record preserved at
+[archive commit `7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9`](https://github.com/HMarcusWH/zeta-23-lean/tree/7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9).
+Later documentation changes explain that snapshot. They do not retroactively
+change the source to which earlier proof or experimental receipts apply.
+
+**This repository's RH attempt remains incomplete.** Its independent Step 4
+arithmetic estimates are open. This is a statement about the archived programme,
+not an undated assessment of external RH research.
+
+Start with the [README](../README.md), [project guide](PROJECT_GUIDE.md),
+[reusable components](REUSABLE_COMPONENTS.md), [results and formalization](RESULTS_AND_FORMALIZATION.md)
+or [reproduction recipes](REPRODUCIBILITY.md).
+
+## Source identity and evidence identity
+
+| Object | Identity and interpretation |
+| --- | --- |
+| Research and manuscript archive | Commit `7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9`, tree `9248b76d7aff60aab3bb775c4be9750dc6006003` |
+| Named archive branch | `archive/2026-11-21-research-freeze`; use the commit above for an immutable citation |
+| Written manuscript inventory | [43 original PDFs](../papers/README.md) and their [byte/blob manifest](../papers/MANIFEST_2026-11-21.json); two older PDFs remain elsewhere in the source |
+| Current documentation | Read at the current checkout/PR commit; it is an explanation of the archive, not a new mathematical theorem checkpoint |
+| Formal evidence | Declaration- and package-specific compiler, axiom and independent-consumer records; consult the [result map](RESULTS_AND_FORMALIZATION.md) and original receipts |
+| Numerical and paper evidence | Individual finite ranges, methods, source pins and derivation status remain attached to each record |
+| Source-policy and generated-state checks | Follow the [current authority guide](../research/RHRC/DOCUMENTATION_AUTHORITY.md); accepting the file inventory does not establish a mathematical claim |
+
+The archive commit added manuscripts and documentation. It did not perform a
+new whole-repository Lean build or independent mathematical review. A package's
+old green receipt must be matched to its checked source; the later presence of
+that package in a merge does not create a new receipt.
+
+## What the final source includes
+
+| Layer | Contents | Inspect |
+| --- | --- | --- |
+| Upstream Zeta23 | Zero-proportion results and analytic/linear algebra foundations with their own comparator statements | [Upstream guide](../UPSTREAM_README.md), [audit](../UPSTREAM_AUDIT.md) |
+| Finite Weil / CCM and exceptional-zero programme | Exact canonical forms, boundary-flat detectors, parity and contact geometry, and the complete Step 1–3 packet | [Project guide](PROJECT_GUIDE.md), [complete output](../Zeta23/ExceptionalZero/Step123CompleteOutput.lean) |
+| OPICA, follow-up and Rounds 2–4 | Obstruction transport, native fields/window rates, causal/Gram certificates, simultaneous parity negativity, source/spectral budgets and conditional closure consumers | [Integration map](../research/RHRC/integration/README.md) |
+| November arithmetic frontier | Moment-slice carriers, finite certificate soundness, zero-strip rate ladder and RH-equivalent lower-bound contracts | [Frontier guide](../research/RHRC/integration/opica_round4/arithmetic_frontier/README.md), [12 November handover](../research/RHRC/integration/opica_round4/arithmetic_frontier/HANDOVER_2026-11-12.md), [ZeroFreeFloor.lean](../Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean) |
+| Round 5 parity bridge | Exact moment shift, range/kernel relation, dimensions and parity-seed short exact sequence | [ParityMomentBridge.lean](../Zeta23/OPICARound5/ParityMomentBridge.lean) |
+| Round 6 finite arithmetic | Native cells and shell geometry, signed costs, survivor/partner accounting, parity-deficit products and stopping trees | [Round 6 guide](../research/RHRC/integration/opica_round6/README.md), [finite typed audit](../Zeta23/OPICARound6/PrimeFactorPaths/Verify.lean) |
+| Supporting research system | Bounded composition, independent evidence checking, framework adapters, compiler dependency graph and arithmetic constraint graph | [Framework guide](FRAMEWORKS.md), [repository map](REPOSITORY_MAP.md) |
+
+The arithmetic-frontier handover includes increments 6A and 6B. Its original
+“current-head CI pending” language is historical evidence wording, not a live
+status for this documentation branch. The original native follow-up also keeps
+its separate [100-root/28-unit ledger](../research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json).
+Later package completion does not silently complete that older acceptance scope.
+
+## Where the mathematics stopped
+
+The project has several alternative sufficient routes. The final source does
+not require every route to succeed, and a new coordinate description is not a
+new independent arithmetic input.
+
+| Route family | Available mechanism | Missing input or boundary |
+| --- | --- | --- |
+| Ground/resolvent and joint-index routes | Conditional consumers, actual source identities and physical parity/ground adapters | Independent source comparisons, relevant shared-ground or singular cases, or the stated joint-index bound; read the [closure register](../research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json) in its exact scope |
+| Causal approximation and signed observation | Exact range/residual and quiet-observation implications | A source-specific zero residual limit or sufficiently small complete signed observation with all costs retained; see [NativeCuts.lean](../Zeta23/OPICARound2/NativeCuts.lean) |
+| Moment-slice bounds | RH equivalences for cofinal, semibounded, polynomial and subexponential contracts, plus a zero-strip rate ladder | Proof of the required arithmetic bound; proving equivalence does not establish it |
+| Round 6 survivor/parity-product routes | Finite algebra, native-cell transfers and paper reductions to signed arithmetic targets | The independent growing-horizon upper and formal validation of the complete paper transfer remain separate obligations |
+
+For Round 6, [the route guide](../research/RHRC/integration/opica_round6/README.md)
+explains `ACTUAL_UPPER`, `P303_OPPOSED_PRODUCT_UPPER`,
+`N20_JOINT_ARITHMETIC_UPPER` and `PAPER_ROUTE_VALIDATION`.
+The [constraint register](../research/RHRC/integration/opica_round6/CONSTRAINTS.json)
+keeps source records, joint premises, alternative routes and context edges
+separate. Finite stopping or cancellation identities do not supply the
+asymptotic signed estimate.
+
+Later manuscripts may strengthen a selected packet or remove an obstacle on a
+specified subroute. Read the [result-level supersession map](RESULTS_AND_FORMALIZATION.md)
+before treating an older open statement as the final formulation. Those scoped
+improvements do not establish the independent Step 4 estimate.
+
+## How to use this snapshot
+
+To understand the attempt, follow the [four-step guide](PROJECT_GUIDE.md). To
+reuse a result, choose a [component](REUSABLE_COMPONENTS.md), inspect its exact
+assumptions and imports, and follow its [example](EXAMPLES.md). To reproduce
+formal or finite evidence, select a [recipe](REPRODUCIBILITY.md) with the intended
+scope. The default build is the inherited root, not an audit of every research
+file.
+
+The [archive overview](RESEARCH_ARCHIVE_2026-11-21.md) describes the manuscripts
+and provenance. Research freeze and GitHub's administrative read-only archive
+setting are separate; this page records the former and does not assert the
+latter.
+
+## Earlier orientation, preserved as history
+
+The complete earlier page follows unchanged. Its active-PR directions, counts,
+“current” headings and pending gates belong to the dated checkpoints stated
+there; use the November 21 sections above for repository-wide orientation.
+
+<details>
+<summary>30 October snapshot with 2 and 7 November overlays</summary>
+
 # Dated source and navigation snapshot — 30 October 2026
 
 **Arithmetic frontier — 7 November 2026:** Increment 1 on PR #299 adds exact moment-slice carriers, conditional (C1) and selected-packet consumers and finite certificate consumers; see the [build specification](../research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md). RH and Step 4 remain OPEN.
@@ -90,3 +189,5 @@ Refresh this human navigation alongside package handovers; retain frozen
 machine blocks and historical records. The
 [documentation authority policy](../research/RHRC/DOCUMENTATION_AUTHORITY.md)
 explains the precedence rules.
+
+</details>

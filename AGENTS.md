@@ -2,27 +2,30 @@
 
 Read [README.md](README.md), [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md),
 [docs/AGENT_GUIDE.md](docs/AGENT_GUIDE.md) and the relevant package contract.
-The live PR head and exact compiler/CI receipts determine validation scope.
-RH, Step 4 and independent source restrictions remain OPEN.
+The research and manuscript baseline is the [21 November 2026 archive](https://github.com/HMarcusWH/zeta-23-lean/tree/7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9).
+This repository's RH attempt, Step 4 and independent closing estimates remain
+OPEN. Documentation work explains the snapshot and does not promote a theorem.
 
-The current closing-attempt work is [PR #299, Madness?](https://github.com/HMarcusWH/zeta-23-lean/pull/299)
-on `research/madness`, descended from merged Round 4 PR #298. Read the
-[2 November research handover](research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md) and its portable evidence inventory before continuing.
-Research resumed on 7 November 2026 at the maintainer's explicit instruction with
-the [arithmetic-frontier build](research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md);
-archived documents still authorize no automatic continuation or theorem promotion. The
+The public source includes the [arithmetic frontier](research/RHRC/integration/opica_round4/arithmetic_frontier/README.md),
+[Round 5 parity bridge](Zeta23/OPICARound5/ParityMomentBridge.lean) and
+[Round 6 finite arithmetic](research/RHRC/integration/opica_round6/README.md).
+Use the current checkout and its exact source policy for new work. The
+[authority guide](research/RHRC/DOCUMENTATION_AUTHORITY.md) and
+[reproduction recipes](docs/REPRODUCIBILITY.md) distinguish source inventory,
+historical replay, fresh compiler evidence and full package acceptance.
+
+The [2 November handover](research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md),
 [original Round 4 contract](research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md)
-and [closure obligations](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json)
-retain their exact scopes. Use the current checkout and reconcile historical overlays.
+and later handovers retain their dated scopes. Their old active-PR instructions
+are historical. A new documentation or research change must name its exact
+reviewed delta and evidence; it does not reopen an archived mathematical task
+or authorize arbitrary parent changes.
 
-The original native follow-up remains a separate 100-root / 28-unit scope.
-Its [continuation guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md)
-and Stage 22 ledger distinguish 41 historical source-bound roots from 59 narrow
-local gates; this is not full original-contract release acceptance.
-Frozen renderer blocks and older checkpoint instructions retain their historical
-scope. The preserved instructions below continue to govern source integrity,
-build discipline and Post-Green research. The newer documentation migration is
-an exact named set, not permission for arbitrary parent changes.
+The native follow-up remains a separate 100-root / 28-unit scope. Its
+[continuation guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md)
+and Stage 22 ledger distinguish historical source-bound roots from narrow local
+gates; neither is a substitute for the original full-release acceptance.
+Preserve historical renderer blocks and the instruction tail below exactly.
 
 Keep the original Markdown/JSON contracts and both foundational PDFs unchanged.
 Read their full statements and physical/domain requirements. Record necessary

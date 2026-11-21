@@ -20,9 +20,9 @@ from .snapshot import (file_hash,unlinked,seal_evidence_tree,copy_evidence_tree,
                        TRANSPORT_MAX_BYTES,TRANSPORT_MAX_CONTAINER_BYTES)
 from .snapshot import retire_copied_evidence_tree
 from .descendant import BASE,BASE_TREE,git
-# The accepted OPICA4 validator remains immutable. A reviewed post299 source
-# scope separately authenticates the descendant of PR299 at the current head.
-from ..opica_round6.source_scope import validate_descendant
+# Historical validators remain immutable. The documentation successor accounts
+# for the paper archive before authenticating the exact current source delta.
+from ..documentation_2026_11_21.source_scope import validate_descendant
 from .accept import (ROUND4_LANES,verify_lane_bundle,require_test_receipt,accept_application_scope,
                      REPLAY_GROUP_IDS,group_lanes,verify_independent_group,join_independent_groups)
 
@@ -321,6 +321,10 @@ def run_command(repo,argv,output,label):
     return {'argv':list(map(str,argv)),'exit_code':result.returncode,'log':log.name,'sha256':file_hash(log)}
 
 def classification_command(source):
+    if source.get('schema') == 'RHRC_DOCUMENTATION_SOURCE_INSPECTION_V1':
+        return [sys.executable, '-B', '-m',
+                'research.RHRC.integration.documentation_2026_11_21.source_scope',
+                '--check-classification']
     if source.get('schema') == 'OPICA6_CURRENT_SOURCE_INSPECTION_V1':
         return [sys.executable, '-B', '-m',
                 'research.RHRC.integration.opica_round6.source_scope',

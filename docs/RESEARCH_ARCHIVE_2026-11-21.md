@@ -2,11 +2,26 @@
 
 **Archive date:** 21 November 2026. **Project:** `HMarcusWH/zeta-23-lean`. **Author of the listed manuscripts:** Marcus Hermansson. **Sources:** the original Git history, pinned Lean theorem modules and 43 unmodified PDF manuscripts in [the paper index](../papers/README.md).
 
+**Research baseline:** commit [7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9](https://github.com/HMarcusWH/zeta-23-lean/commit/7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9), tree `9248b76d7aff60aab3bb775c4be9750dc6006003`. The guides added after that archive explain the retained source; they do not create a new mathematical checkpoint. This repository's RH attempt, independent Step 4 estimates and final closing routes remain **OPEN**.
+
+## Read the snapshot
+
+| Reader question | Guide |
+| --- | --- |
+| What did the attempt construct, and where did it stop? | [Project guide](PROJECT_GUIDE.md) and [frozen current state](CURRENT_STATE.md) |
+| Which paper result corresponds to which Lean source? | [Results and formalization](RESULTS_AND_FORMALIZATION.md), covering all 43 manuscripts and later records |
+| Which parts can be used outside this attempt? | [Reusable components](REUSABLE_COMPONENTS.md), with hypotheses, import maturity and attribution |
+| In what order should I read the papers? | [Paper reading routes and short titles](../papers/README.md#reading-guide) |
+| What does one concrete calculation look like? | [Examples](EXAMPLES.md), including Gram witnesses, singular Schur responses, finite certificates and stopping trees |
+| What evidence can I reproduce or cite? | [Reproducibility](REPRODUCIBILITY.md) and [citation](REPRODUCIBILITY.md#citation) |
+
+The four-step narrative below explains the RH route. The reusable outputs form a second route through the archive: finite linear algebra, local analytic quotients, Fourier separation, Laplace-jet Grams, quantitative approximation and evidence tooling can be read on their own. Their applicability depends on their individual assumptions, even when the surrounding RH programme is incomplete.
+
 ## Why preserve this work
 
 The programme was a sustained, source-specific attempt to translate the Riemann hypothesis (RH) into finite, computable, and formally auditable consequences of a hypothetical nontrivial zeta zero away from the critical line. The mathematics does not become uninteresting merely because another group has announced a proposed proof. An announced RH proof, however, must not be represented as an independently accepted theorem before the relevant checks and mathematical scrutiny are complete.
 
-The fork begins from the Anthropic `zeta-23-lean` work on a different zeta-zero theorem. The fork's contributions and the upstream proof are distinct; see `UPSTREAM_README.md`, `UPSTREAM_AUDIT.md`, `FORK_NOTES.md`, `LICENSE`, and `NOTICE`.
+The fork begins from the Anthropic `zeta-23-lean` work on a different zeta-zero theorem. The fork's contributions and the upstream proof are distinct; see [UPSTREAM_README](../UPSTREAM_README.md), [UPSTREAM_AUDIT](../UPSTREAM_AUDIT.md), [FORK_NOTES](../FORK_NOTES.md), [LICENSE](../LICENSE) and [NOTICE](../NOTICE). In particular, the seven-file `RHLinalg` development retains its upstream authorship; the reuse catalogue does not attribute it to the fork.
 
 ## Four-step research architecture
 
@@ -26,13 +41,42 @@ The fork begins from the Anthropic `zeta-23-lean` work on a different zeta-zero 
 - **Native causal source:** Source-specific transforms, residual/memory bounds, exact logarithmic-window growth rates and finite Gram certificates distinguish obstruction detection from an opposing upper bound. An exact four-column filtered certificate excludes only a small region already covered by classical zero verification; the same raw trial has a much larger error.
 - **Late research:** The signed Möbius/Mellin, regular quartic Schur-inertia and prime-phase noncollision manuscripts (Papers XXV–XXVII) sharpen exact source geometry and feasible conditional packets without establishing the independent sign estimate.
 
+These are summaries of specific results, not whole-paper verification labels. The [result crosswalk](RESULTS_AND_FORMALIZATION.md#find-a-result) links each manuscript to representative exact declarations and states which compositions or refinements remain paper-level. The [same-source packet example](EXAMPLES.md#step123-packet) explains how the late results fit together while retaining the source, parity, aperture and cutoff.
+
+## Final-source coverage beyond the 43 PDFs
+
+The paper archive is complete for the source folder copied on the archive date. It is not a complete index of the repository's mathematical output. Important November developments live in Lean modules and Markdown research records, including the November 19–20 finite arithmetic and stopping programme.
+
+| Final source family | What is present | What the reader must retain |
+| --- | --- | --- |
+| [Arithmetic frontier](../research/RHRC/integration/opica_round4/arithmetic_frontier/README.md) | The actual source policy, cost and compression programme, finite positivity certificates, and a hierarchy of native moment-slice bounds | Initial specifications and later theorems have different dates. Read the actual [ZeroFreeFloor](../Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean) equivalences before treating a proposed weaker bound as an independent route. |
+| [Source-column core](../Zeta23/OPICARound4/ArithmeticFrontier/SourceColumnCore.lean) and [finite certificate soundness](../Zeta23/OPICARound4/ArithmeticFrontier/FiniteCertificateSoundness.lean) | Generic lower-bound transfer with full complement leakage; exact real shifted-factor positivity | The core inequality, leakage estimate and native enclosure bridge are separate premises. A numerical candidate does not supply them automatically. |
+| [Round 5 parity-moment bridge](../Zeta23/OPICARound5/ParityMomentBridge.lean) | The exact sequence and finite-dimensional relations between the specified even and odd moment slices | Its namespace remains `Zeta23.OPICARound4.ArithmeticFrontier`. The centered-index map is nonunitary; dimension information alone does not transfer positivity. |
+| [Round 6 finite arithmetic](../research/RHRC/integration/opica_round6/README.md) and [independent consumer surface](../Zeta23/OPICARound6/PrimeFactorPaths/Verify.lean) | Finite weighted Gram identities, selector-energy stability, native cells and whole-shell transfer, opposed-sign products and stopping-tree duality | Exact finite lemmas do not certify a uniform growing-horizon estimate or the entire analytic paper route. Preserve fixed origin, complete shells and spent partners. |
+| [Parity-deficit route](../research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_HAAR_FINGERPRINTS.md) | A source-dependent reduction to an opposed-product estimate, with the scalar coefficient four formally accounted for | `P303_OPPOSED_PRODUCT_UPPER` and `PAPER_ROUTE_VALIDATION` remain open obligations. |
+| [Nested-cut route](../research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/LOCAL_PRIME_GRAPH_CUTS.md) | A later growing-horizon route organized through complete cuts and persistent paths | `N20_JOINT_ARITHMETIC_UPPER` and `PAPER_ROUTE_VALIDATION` remain open. The original survivor route separately retains `ACTUAL_UPPER`. |
+
+The [later-source result map](RESULTS_AND_FORMALIZATION.md#later-source-and-research-records) identifies exact theorem names and mapping limits. The [Round 6 constraint register](../research/RHRC/integration/opica_round6/CONSTRAINTS.json) and [constraint graph](../research/RHRC/integration/opica_round6/CONSTRAINT_GRAPH.json) retain the actual route obligations. None of those obligations is discharged by giving its name to a packet or a successful wrapper run.
+
+### Earlier boundaries and later advances
+
+The source history includes real advances after earlier papers marked a step open. The [supersession map](RESULTS_AND_FORMALIZATION.md#scoped-supersessions) keeps the exact scopes visible. Global arithmetic derivative transport resolves the F04 issue for the canonical even boundary-flat family, including prime seams. Paper X identifies the exact native terminal-window rate, without proving that rate zero. Paper XXIII strengthens the earlier cofinal two-parity result to eventual negativity at the prescribed original quartic cutoff. Paper XXVII selects cofinal deep packets with regularity and disjoint even/odd spectra at every cutoff from 3 through the selected deep cutoff.
+
+The last conclusion is a selection theorem with a retained rate parameter `0 < β < |Re ρ − 1/2|`. It is not a statement that every aperture has disjoint spectra, and it gives no uniform spectral gap or source-overlap magnitude. Papers XXV and XXVI combine existing formal ingredients with new manuscript arguments; their complete analytic compositions are not newly formalized by being included in this archive.
+
 ## How to interpret novelty and verification
 
 These manuscripts contain candidate new *source-specific* theorems, decompositions, constants, normalization identities and formal proof integrations. Many ingredients (Weil positivity, Bombieri's finite negative index, Fourier convolution, Mellin methods, Nyman–Beurling approximation, Schur complements, Jordan measures and Laguerre polynomials) have extensive prior art. Mathematical originality and priority beyond the explicitly compared literature require independent expert assessment.
 
 `PROVED` means the exact theorem and hypotheses have a claimed pinned Lean/CI verification trail, not that every claim in an accompanying PDF was independently compiled or refereed. `DERIVED` is a manuscript-level consequence; `EXPERIMENTAL` is a bounded computation; `OPEN` is an unproved obligation. No new whole-repository Lean run or specialist referee report was performed for this archival commit.
 
+When reading those historical labels, separate the mathematical role from the evidence status. A conditional implication can be formally proved while its premise remains open. A manuscript composition can be mathematically derived while no single Lean declaration states the complete result. A source file, an expected-type consumer, an execution log and a full acceptance receipt establish different facts. The [formalization guide](RESULTS_AND_FORMALIZATION.md#how-to-read-the-evidence) and [reproduction guide](REPRODUCIBILITY.md) explain those distinctions.
+
+The raw [43-PDF inventory](../papers/README.md#all-pdfs-in-this-snapshot) and [metadata manifest](../papers/MANIFEST_2026-11-21.json) remain unchanged. A separately named Paper XXIV PDF was absent from that source folder; its cited code ingredients and the two older PDFs retained elsewhere are identified in [missing and partially mapped material](RESULTS_AND_FORMALIZATION.md#missing-and-partially-mapped-material). The guides expose those gaps instead of inferring an absent manuscript or an unrecorded verification receipt.
+
 ## External proposed RH proof (20–21 November 2026)
+
+The following paragraph is retained as dated archival context. It is not a current survey of external RH research or evidence for a theorem in this repository.
 
 Levent Alpöge reported an RH/Dirichlet-GRH proof produced with Claude and released a large Lean formalization. Early independent kernel/build checks were publicly reported, but independent mathematical review and wider acceptance were still developing as of this archive date. Reference: https://www.nature.com/articles/d41586-026-03812-7 and https://apnews.com/article/4fe8b69a891f160f9e7f0c85af8c55c8 . This separate claim is not a theorem established by this fork, and no logical equivalence between the two approaches is asserted.
 

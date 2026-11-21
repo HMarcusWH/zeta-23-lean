@@ -1,8 +1,16 @@
 # The research programme: from a hypothetical zero to an independent contradiction
 
-**The Riemann Hypothesis (RH) remains OPEN in this repository.** The project
-contains proved supporting mathematics, conditional criteria, counterexamples
-to proposed shortcuts, and finite computations. Their roles are different.
+**This repository does not establish the Riemann hypothesis (RH).** Its
+independent Step 4 estimates remain open. The programme produced supporting
+mathematics, conditional criteria, counterexamples to proposed shortcuts and
+finite computations. Their roles are different.
+
+This guide follows the mathematical source preserved in the
+[21 November 2026 snapshot](CURRENT_STATE.md), including the later arithmetic
+frontier and Round 5/6 work. For individual claims, use the
+[results and formalization map](RESULTS_AND_FORMALIZATION.md). For another
+application, use the [component catalogue](REUSABLE_COMPONENTS.md),
+[worked examples](EXAMPLES.md) and [reproduction recipes](REPRODUCIBILITY.md).
 
 RH says that every nontrivial zero of the Riemann zeta function has real part
 `1/2`. This programme asks what an actual hypothetical zero away from that line
@@ -21,7 +29,7 @@ from historical labels that reuse the same letters.
 
 ## The four steps
 
-The project's current explanation of these steps is in the
+A detailed account of these steps is preserved in the
 [Round 2 research account, section 3](../research/RHRC/integration/opica_round2/paper/ROUND2_POSTGREEN_V2_1.md#3-what-steps-13-now-contribute).
 The numbers describe mathematical roles, not four automatically completed tasks.
 
@@ -66,7 +74,10 @@ exponent strictly between zero and its horizontal displacement, a requested
 phase and any lateness bound, the construction produces a sufficiently late
 packet. It is noncomputable mathematical existence, not a program that finds
 an off-line zero. The original producer supplies each phase separately;
-their apertures need not agree.
+their apertures need not agree. The [typed complete-output consumer](../Zeta23/RHRC/Step123CompleteOutputConsumer.lean)
+checks the assembled statement. The [packet walkthrough](EXAMPLES.md) follows
+its inputs, selected outputs and the independent premise still needed by a
+Step 4 consumer.
 
 "Same source" does not mean that every vector is equal. Finite approximation,
 projection, normalization, ground selection and parity transfer can change a
@@ -261,6 +272,9 @@ from GitHub and the exact checked receipts.
 | Repository Round 2, [#295](https://github.com/HMarcusWH/zeta-23-lean/pull/295) | Delayed causal probe, Gram/residual analysis, fixed filtering, source-prefix error budgets and finite certificates. | [Round 2 guide](../research/RHRC/integration/opica_round2/README.md), [its recorded use as Round 3 parent](../research/RHRC/integration/opica_round3/README.md) |
 | Round 3, [#297](https://github.com/HMarcusWH/zeta-23-lean/pull/297) | Simultaneous parity negativity, local negative frames, first common cutoff and regular/resonant newborn source witnesses. | [Round 3 guide](../research/RHRC/integration/opica_round3/README.md), [recorded Round 4 parent](../research/RHRC/integration/opica_composition/README.md) |
 | Round 4, [#298](https://github.com/HMarcusWH/zeta-23-lean/pull/298) | Governed bounded deduction, signed spectral/source budgets, observation/index support, conditional closure consumers and independent finite probes. | [Mathematical guide](../research/RHRC/integration/opica_round4/README.md), [integration handover](../research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md) |
+| November arithmetic frontier | Exact moment slices, source-column bounds and finite certificates, followed by a zero-strip rate ladder and RH equivalences for the stated slice contracts. | [Frontier guide](../research/RHRC/integration/opica_round4/arithmetic_frontier/README.md), [12 November handover](../research/RHRC/integration/opica_round4/arithmetic_frontier/HANDOVER_2026-11-12.md), [rate ladder](../Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean) |
+| Round 5 parity bridge | The moment-shift range/kernel identity, exact seed dimensions and short exact sequence. | [ParityMomentBridge.lean](../Zeta23/OPICARound5/ParityMomentBridge.lean) |
+| Round 6 finite arithmetic | Native-cell source identities, signed selector costs, parity-deficit products, shell geometry and finite stopping duality; paper routes retain their separate growing-horizon obligations. | [Round 6 guide](../research/RHRC/integration/opica_round6/README.md), [typed finite audit](../Zeta23/OPICARound6/PrimeFactorPaths/Verify.lean) |
 
 These layers add reusable mathematics; later layers do not silently replace
 the original contracts. The original facade, follow-up facade, later round
@@ -280,7 +294,7 @@ In particular, a green legacy Track D job does not prove the modern Path D
 no-exit target. The [taxonomy warning](../research/RHRC/integration/opica_round2/paper/ROUND2_POSTGREEN_V2_1.md#23-a-naming-trap-to-avoid)
 is part of the source audit, not a cosmetic naming preference.
 
-## What the latest layers make possible, and what remains OPEN
+## What the parity and source layers make possible
 
 Round 3 strengthens separate parity cofinality to simultaneous negativity at
 one aperture and cutoff, using the tail cover, openness, connectedness and
@@ -310,6 +324,121 @@ The regular-cell programme remains incomplete. It is one possible method,
 not a prerequisite for every direct or ground-restricted route. Its unresolved
 selection, nonidentity, singular, shared-ground and uniformity issues remain
 visible in the [integration handover](../research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md).
+These paragraphs describe those consumers' stated scopes. Later selected-packet
+results have their own assumptions and quantifiers; the
+[result-level supersession map](RESULTS_AND_FORMALIZATION.md) identifies where
+a later manuscript strengthens an earlier boundary.
+
+## The final arithmetic frontier
+
+### Moment slices and the rate ladder
+
+The November frontier restricts the actual finite form to specified even and
+odd moment slices at the original detector's quartic cutoff. A slice lower
+bound controls every vector in that slice using its physical norm. A favorable
+value on one trial vector is a different statement.
+
+The source provides four RH equivalences in
+[ZeroFreeFloor.lean](../Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean):
+
+| Contract | Exact kind of lower bound | Quantifier that matters |
+| --- | --- | --- |
+| C1 | Vanishing-error bounds at the literal quartic detector cutoff | For each required accuracy/horizon, one sufficiently late aperture; one parity covers its entire slice |
+| SB | One uniform semibound on cofinally many apertures | The floor is fixed before the horizon; parity may vary between apertures, not between vectors |
+| PG | A polynomial error bound in one fixed parity | One constant and natural exponent, then every sufficiently large aperture |
+| SE | A subexponential error bound in one fixed parity | Parity is fixed before every positive rate; each rate has its own eventual bound |
+
+The corresponding declarations are
+`riemannHypothesis_iff_cofinal_moment_slice_bounds`,
+`riemannHypothesis_iff_cofinal_moment_slice_semibounded`,
+`riemannHypothesis_iff_fixed_parity_polynomial` and
+`riemannHypothesis_iff_fixed_parity_subexponential`. Their definitions are in
+[MomentSlices.lean](../Zeta23/OPICARound4/ArithmeticFrontier/MomentSlices.lean),
+[CofinalSemiboundedClosure.lean](../Zeta23/OPICARound4/ArithmeticFrontier/CofinalSemiboundedClosure.lean)
+and [GrowthClosure.lean](../Zeta23/OPICARound4/ArithmeticFrontier/GrowthClosure.lean).
+
+The same module gives a graded statement: for `a >= 0`, confinement of every
+nontrivial zero to displacement at most `a` is equivalent to each fixed-rate
+slice bound at every rate strictly above `a`, separately for either parity.
+The strict rate margin matters. The repository supplies the unconditional
+rates above `1/2` from its strip bound; these adapters do not supply an improved
+zero-free strip. Its delay and fractional-scale descent equivalences likewise
+retain their displayed cost-profile and parameter hypotheses.
+
+This makes the logical strength of several proposed “last estimates” explicit.
+A proof of one of the RH-equivalent lower bounds would close the route. Proving
+that equivalence has not proved the lower bound.
+
+### The parity-moment exact sequence
+
+[ParityMomentBridge.lean](../Zeta23/OPICARound5/ParityMomentBridge.lean) multiplies
+centered coefficients by their centered index. On the fixed seeds, the resulting
+odd-to-even map is injective and its range is exactly the kernel of the center
+coordinate. For `K >= 4`, center evaluation is surjective, giving the short exact
+sequence recorded by `fixedMomentParityShortExact`.
+
+The two seed dimensions are `K - 3` and `K - 4` for `K >= 2`, with natural-number
+subtraction. Thus there is one extra complex direction on the even side in the
+short-exact-sequence range. The coordinate maps to the physical moment slices
+are invertible and generally nonunitary. The exact sequence identifies algebraic
+structure; it does not transfer the sign of the energy without a metric-aware
+argument. The file lives under `OPICARound5`, while its declarations remain in
+`Zeta23.OPICARound4.ArithmeticFrontier`.
+
+### Round 6: from finite identities to the signed upper
+
+Round 6 moves the arithmetic question onto native cells and complete terminal
+shells. Its finite modules retain the actual rough squarefree labels, both
+signs, selector removals and the partners consumed by those removals. A
+complete stopping cut partitions the relevant tree; choosing convenient cells
+alone does not provide that partition.
+
+One reusable part can be understood without zeta. For real centered counts
+`e,o`, write `[x]+ = max(x,0)`. The
+[parity-deficit theorem](../Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean)
+proves
+
+$$
+0 \le [e-o]_+^2-4[e]_+[-o]_+ \le (e+o)^2.
+$$
+
+The coefficient four is forced, and the remainder estimate sums with arbitrary
+nonnegative finite weights. It compares positive signed energy with the product
+of an even excess and an odd deficit, paying for the total count discrepancy.
+It is a finite algebraic theorem; it does not assume or prove a prime-distribution
+estimate. [StoppingAlgebra.lean](../Zeta23/OPICARound6/PrimeFactorPaths/StoppingAlgebra.lean)
+then identifies the existence of a complete low-cost stopping cover with a
+finite value bound, and failure of such a cover with a high-path alternative.
+
+A concrete reading route follows these objects:
+
+1. Read the finite count identity and its nonnegative-weight hypothesis.
+2. Use [NativeCells.lean](../Zeta23/OPICARound6/PrimeFactorPaths/NativeCells.lean)
+   and [NativeFullTransfer.lean](../Zeta23/OPICARound6/PrimeFactorPaths/NativeFullTransfer.lean)
+   to identify the arithmetic labels, selected population and complete removal
+   cost at the finite state.
+3. Read [NativeGeometry.lean](../Zeta23/OPICARound6/PrimeFactorPaths/NativeGeometry.lean)
+   and [NativeStoppingCost.lean](../Zeta23/OPICARound6/PrimeFactorPaths/NativeStoppingCost.lean)
+   for the native shell and stopping interfaces.
+4. Follow the [paper reductions](../research/RHRC/integration/opica_round6/README.md)
+   from those finite quantities to the growing-horizon source criterion.
+5. Locate the independent arithmetic upper and the full paper-route validation
+   separately in the [constraint register](../research/RHRC/integration/opica_round6/CONSTRAINTS.json).
+
+On the survivor route the missing upper controls the complete weighted squared
+positive survivor charge on all whole terminal shells, at arbitrarily late
+native cutoffs for each requested positive tolerance. Constants are fixed before
+the lower horizon. The opposed-product and nested-cut routes use their own
+specified population, normalization and allowed choices. These are alternatives;
+an estimate for one modified statistic cannot be silently used for another.
+
+The register labels their independent inputs `ACTUAL_UPPER`,
+`P303_OPPOSED_PRODUCT_UPPER` and `N20_JOINT_ARITHMETIC_UPPER`.
+`PAPER_ROUTE_VALIDATION` is the separate obligation to formally validate the
+complete growing-horizon transfer. The finite Lean algebra, paper reductions
+and finite arithmetic replays each contribute useful evidence, but none supplies
+both of those open inputs. The [worked examples](EXAMPLES.md) give smaller
+finite illustrations before returning to the native arithmetic.
 
 ## What failed, and what would justify reopening it
 
@@ -326,6 +455,10 @@ A logical-strength audit is different again: it can show that a proposed
 | Positive finite Grams, decreasing errors or strong residual convergence imply residual zero. | `STRONG_LIMIT_NONZERO` in the [executable control bank](../research/RHRC/integration/opica_composition/countermodels.py) converges to a nonzero residual. The [Round 2 registry](../research/RHRC/integration/opica_round2/CONTROL_REGISTRY.json) retains stationary-residual and finite-limit warnings. | An actual zero-limit estimate, not convergence to an unspecified projection. |
 | Transfer data or a positive observed measure sees every negative ground. | `SHARED_INVISIBLE_NEGATIVE_GROUND` and `HERGLOTZ_INVISIBLE_NEGATIVE_GROUND` in the [control register](../research/RHRC/integration/opica_round4/COUNTERMODEL_REGISTER.json) retain a negative mode invisible to that observation. | A source-specific visibility or shared-ground exclusion theorem. |
 | Renaming an equivalent terminal condition makes it independent sub-RH progress. | [NativeCuts.lean](../Zeta23/OPICARound2/NativeCuts.lean) and the [post-247 audit](../research/RHRC/HISTORICAL_ROUTE_AUDIT_POST_247_RECONCILIATION.md) expose exact RH-strength conditions. | A genuinely proved new input; an equivalence alone establishes no closing premise. |
+| Averaged-origin control bounds the required fixed origin with no extra cost. | The [earlier-constraints map](../research/RHRC/integration/opica_round6/DRIVE_RESEARCH_MAP.md#averaged-variance-and-the-fixed-arithmetic-origin) records the failed constant-one transfer. | A proved fixed-origin estimate or a valid, quantitatively priced transfer. |
+| Recurring negative instants provide the required negative window integral. | The [duration analysis](../research/RHRC/integration/opica_round6/evidence/step4-correlation-2026-11-19/README.md) separates recurrence from the needed interval width. | Control on duration and the complete signed integral with the stated cutoff. |
+| A favorable cofinal scalar subsequence meets an all-late scalar bound. | The [native residual account](../research/RHRC/integration/opica_round6/evidence/step4-native-residual-2026-11-19/CURRENT_STATE.md) explains why its scalar can be small infinitely often even under an off-line zero. | The actual quantifier of the selected criterion; cofinal and eventual bounds are not interchangeable. |
+| Deleting matched targets leaves the old source unchanged. | [Survivor cofactor pairs](../research/RHRC/integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SURVIVOR_COFACTOR_PAIRS.md) and [paid partner graphs](../research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/PAID_PARTNER_GRAPHS.md) retain spent partners and the full complement. | Account for all removed rows and partners on the same population before bounding its residual charge. |
 
 An unobserved eigenmode stays unobserved under its iterates; an arbitrary
 vector in an instantaneous observation kernel need not. The control bank
@@ -351,8 +484,9 @@ fixed test cannot be substituted for that selected moving family.
 
 These are research directions already identified by the project, not new
 claims from this guide. Consult the [closure-obligation register](../research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json)
-and [post-green record](../research/RHRC/integration/opica_round4/POST_GREEN_RESEARCH.json)
-before choosing a theorem target. Preserve the known countermodels and test
+and [post-green record](../research/RHRC/integration/opica_round4/POST_GREEN_RESEARCH.json),
+then the [final Round 6 route account](../research/RHRC/integration/opica_round6/README.md)
+and [result-level map](RESULTS_AND_FORMALIZATION.md), before choosing a theorem target. Preserve the known countermodels and test
 any proposed restriction on boundary, shared-ground and modified-source cases.
 
 For both readers and agents, the decisive distinction is the exact statement:

@@ -2,9 +2,11 @@
 
 Read [AGENTS.md](../AGENTS.md) first. This guide explains the repository workflow;
 it does not override the parent project instructions or source-preservation rules.
-Start from the [dated snapshot](CURRENT_STATE.md), [repository map](REPOSITORY_MAP.md)
-and live [PR #298](https://github.com/HMarcusWH/zeta-23-lean/pull/298), then read the
-relevant package's exact contract, source and receipt.
+Start from the [21 November frozen snapshot](CURRENT_STATE.md),
+[repository map](REPOSITORY_MAP.md) and [reproducibility guide](REPRODUCIBILITY.md),
+then read the relevant package's exact contract, source and receipt. Historical
+PRs describe their own checkpoints. A documentation branch does not resume the
+mathematical research programme or promote an open claim.
 
 ## Establish the object before changing it
 
@@ -13,11 +15,13 @@ relevant package's exact contract, source and receipt.
 2. Read definitions and full theorem statements, including dependent hypotheses,
    domains, quantifier order, carrier metrics and imports. Inspect axioms and the
    exact independent expected-type consumer.
-3. Identify the governed source scope. The Round 4
-   [manifest](../research/RHRC/integration/opica_round4/BUILD_MANIFEST.json)
-   is checked against an audited closed path policy; it cannot authorize arbitrary
-   changes to itself. Documentation migration `DOC_NAV_2026_10_28_01` is a finite
-   named set and preserves frozen renderer blocks and the AGENTS instruction tail.
+3. Identify the governed source scope. The
+   [documentation successor](../research/RHRC/integration/documentation_2026_11_21/README.md)
+   authenticates the unchanged Round 6 policy, the exact paper-archive delta, and
+   the named documentation operations. Its policy binds exact blob IDs and the
+   validator template; it cannot authorize arbitrary edits to itself. Historical
+   Round 4 and Round 6 policies remain unchanged. Renderer blocks and the AGENTS
+   instruction tail are preserved byte-for-byte.
 4. Check live jobs and reviews for the exact run head, including failed steps
    inside workflows still running. Page all jobs and attempts. Do not substitute
    a mutable nested pull-request head for an Actions run's recorded `head_sha`.
@@ -53,14 +57,19 @@ the repository root, the runtime's documented interface starts with:
 
 ```text
 python -B -m research.RHRC.integration.opica_composition.cli --help
+python -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check
+python -B -m research.RHRC.integration.documentation_2026_11_21.check_documentation
 python -B research/RHRC/control_v2/render_current_state.py --check
-python -B -m unittest research.RHRC.integration.opica_composition.tests.test_descendant
-python -O -B -m unittest research.RHRC.integration.opica_composition.tests.test_descendant
+python -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope
+python -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope
 ```
 
 The renderer check protects the preserved historical block; it does not update
-current PR routing. The descendant tests check source-policy behavior, not Lean
-proofs. Production lane commands and their environment requirements are in
+current routing. The successor requires a clean, committed source checkout.
+`--check-tree` is a separately labelled sparse-clone Git-object inspection; it
+does not qualify the production working tree. The policy tests check rejection
+of undeclared changes, not Lean proofs. The [examples](EXAMPLES.md) have smaller
+bounded recipes. Production lane commands and their environment requirements are in
 [rhrc_opica_composition.yml](../.github/workflows/rhrc_opica_composition.yml),
 the [runtime guide](../research/RHRC/integration/opica_composition/README.md)
 and [test inventory](../research/RHRC/integration/opica_composition/EXPECTED_TESTS.json).
@@ -84,7 +93,11 @@ orders the graph/framework producers transactionally. Update the explicit
 reviewed source manifest and file classifications, include authored files in
 the tracked census, regenerate through the canonical producers and run their
 validators. Do not edit generated outputs or broaden a path whitelist by prefix.
-Keep authored navigation separate from generated semantic products.
+Keep authored navigation separate from generated semantic products. Documentation
+changes can affect the tracked-file census and document semantic products even
+when no Lean source changes. A passing documentation/source-scope check does not
+replace the independent canonical `--check` gate. The 77 active generated paths
+and four frozen historical products retain their existing boundary.
 
 Local Windows execution is development evidence. Round 4 Linux production
 qualification additionally requires read-only project/package/toolchain mounts,
