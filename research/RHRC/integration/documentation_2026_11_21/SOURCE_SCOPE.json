@@ -1,10 +1,10 @@
 {
   "added": {
-    ".github/workflows/documentation.yml": "b352c1f2c86f5c87041b2091e617379918c15b22",
+    ".github/workflows/documentation.yml": "c276f74f1f417285dd6052eefc53ea4890f6da7c",
     "CITATION.cff": "fbb6995bf97a31ceb93638874f7ee37949daf3e2",
     "docs/EXAMPLES.md": "df7feb1ef0559e7fe655b48604f930c09b15d6bd",
     "docs/REPRODUCIBILITY.md": "2d2202b51e2a6da259b2be3962756426184d697e",
-    "docs/RESULTS_AND_FORMALIZATION.md": "d162b33315e1f9795705318f2ad1164a3a8038e1",
+    "docs/RESULTS_AND_FORMALIZATION.md": "62f98396d3c535c27c2c3a35666043146c3cfab5",
     "docs/REUSABLE_COMPONENTS.md": "ff65e249b78fa68ecd3a35a9c39cbaa5baceaf58",
     "docs/examples/exact_examples.py": "f6ad1faec35ba1a1dfb256d44d2d9ac890525dec",
     "docs/examples/infrastructure_replay.py": "e7ee8465492a29196d420f058c1dff96b3b02009",

@@ -8,7 +8,9 @@ The map covers **all 43 archived manuscripts**, with representative result-level
 
 ## How to read the evidence
 
-A declaration link establishes where to inspect a statement and its proof term. It does not by itself establish a successful fresh compilation, independent mathematical review, or priority. This documentation pass checked the presence of each representative identifier and its source path. It did not recompile the entire research development or individually rebind all historical receipts to the archive commit.
+A declaration link establishes where to inspect a statement and its proof term. It does not by itself establish a successful fresh compilation, independent mathematical review, or priority. This documentation pass checked the archived PDF identities, manuscript statement locations, representative identifiers and the cited consumer or axiom-audit source surfaces. It did not recompile the entire research development or individually rebind all historical receipts to the archive commit.
+
+**PDF page numbers are one-based file pages.** Each manuscript checkpoint is the historical source revision cited by that paper; the relative consumer links navigate the retained archive source. The entry identifies whether that surface is an independently stated consumer, a downstream theorem, an anonymous example or an explicit type/axiom audit. A matching historical source-file blob does not rebind its transitive dependencies or establish a fresh compiler receipt.
 
 | Dimension | What to record and inspect |
 | --- | --- |
@@ -57,6 +59,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** This certifies one pair block. A positive background can mask that direction in the complete form.
 
+**Manuscript location:** Theorem 2.5 and equation (2.1), PDF p. 3.
+
+**Consumer / audit and checkpoint:** [`dotProduct_pairBlock_orthoWitness_neg`](../Zeta23/ExceptionalZero/ProbeGramNegativity.lean) (same-file downstream theorem; no separate independent consumer mapped here). Historical manuscript source: [`a47095149377`](https://github.com/HMarcusWH/zeta-23-lean/commit/a47095149377aeec01a0335945fcdcde311f0444); §9, PDF p. 9.
+
 ### A39
 
 **[Complete two-translate detectors](../papers/2026-11-21/Complete_Two_Translate_Detectors_Theorem_Core_v0_3_PROOFREAD.pdf).** Every hypothetical off-critical zero eventually produces determinant failures along the explicit countable radius bank, with the aperture allowed to depend on its index.
@@ -66,6 +72,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named tail-detection declaration; the same module records the countable-bank critical-line equivalence. Other statements require their individual source maps.
 
 **Boundary:** Universal determinant nonnegativity remains a premise; countability does not prove it.
+
+**Manuscript location:** Theorem 7.4 and its quantifier boundary in Remark 7.5, PDF p. 10; the countable-bank equivalence is Theorem 7.9 on that page.
+
+**Consumer / audit and checkpoint:** [`eventually_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero`](../Zeta23/ExceptionalZero/TwoTranslateCountableCriterion.lean) (same-file #print axioms audit). Historical manuscript source: [`5e19483c905c`](https://github.com/HMarcusWH/zeta-23-lean/commit/5e19483c905c07cfe9fef0a97f834004e77b5fb9); §10 and the visible archival verification record, PDF pp. 11–12. Use the visible archival record, which supersedes the older PR #54 draft note retained in the text layer.
 
 ### A42
 
@@ -77,6 +87,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** The generic rank-at-most-two completion is a separate reusable theorem. A matrix identity supplies no positivity.
 
+**Manuscript location:** Theorem 5.2 and equations (5.3)–(5.4), PDF p. 7.
+
+**Consumer / audit and checkpoint:** [`zeroSideDiscrepancy_eq_tentDefect_smul_ones`](../Zeta23/CCM/DictionaryZeroSideTentDefect.lean) (same-file #print axioms audit). Historical manuscript source: [`317958bb495e`](https://github.com/HMarcusWH/zeta-23-lean/commit/317958bb495e2fe603c047480342d24fb0932519); §8, PDF pp. 9–10.
+
 ### A41
 
 **[Exact normalization reconciliation](../papers/2026-11-21/Exact_Normalization_Reconciliation_Finite_Weil_CCM_2026-08-31_v0_1_PROOFREAD.pdf).** The direct-source canonical matrix differs from the literal later printed normalization by the specified scalar identity correction.
@@ -87,6 +101,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** The identity-matrix correction is not the rank-one all-ones defect in A42. Absolute eigenvalues depend on the normalization.
 
+**Manuscript location:** Theorem 5.2 and equation (5.6), PDF p. 5.
+
+**Consumer / audit and checkpoint:** [`canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction`](../Zeta23/CCM/SourceNormalizationRepair.lean) (same-file #print axioms audit). Historical manuscript source: [`54077e55f75b`](https://github.com/HMarcusWH/zeta-23-lean/commit/54077e55f75bf6bf556a1cfd3f92fc4259db50e6); §9, PDF p. 9.
+
 ### A40
 
 **[Persistent finite detection](../papers/2026-11-21/Persistent_Finite_Detection_Off_Critical_Zeros_Weil_CCM_2026-09-03_v0_2.pdf).** A hypothetical off-critical zero forces a nonzero boundary-flat finite vector with negative canonical energy; centered extension preserves its value.
@@ -96,6 +114,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named finite-detection declaration; persistence uses NestedFinite and NestedEuclideanObstruction. The paper distinguishes the core from its composed RH-equivalent criterion.
 
 **Boundary:** Three moment constraints and the common support/approximation topology are essential. This is conditional detection, not positivity.
+
+**Manuscript location:** Theorem 6.3, PDF pp. 9–10; the composed persistence theorem is Theorem 9.1, PDF pp. 11–12.
+
+**Consumer / audit and checkpoint:** [`exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero`](../Zeta23/ExceptionalZero/FiniteNegativeObstruction.lean) (same-file #print axioms audit). Historical manuscript source: [`c7129b1856ea`](https://github.com/HMarcusWH/zeta-23-lean/commit/c7129b1856ea03cdf8b831ae1424140f8a7d90a9); §11, PDF pp. 15–17.
 
 ## Spectral geometry and aperture calculus
 
@@ -109,6 +131,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** Predecessor nonnegativity and a safe negative shift are retained. The negative root is characterized, not excluded.
 
+**Manuscript location:** Theorem 5.4, especially equivalence (47), PDF p. 10.
+
+**Consumer / audit and checkpoint:** [`cubicSecularScalar_eq_zero_iff_exists_eigenmode`](../Zeta23/CCM/CubicSecularEquation.lean) (same-file #print axioms audit). Historical manuscript source: [`e1192857afed`](https://github.com/HMarcusWH/zeta-23-lean/commit/e1192857afed9f68fa4a13143ce690b62191b997); §12, PDF pp. 18–20.
+
 ### A37
 
 **[Zero-shift source rigidity](../papers/2026-11-21/Zero_Shift_Source_Rigidity_Weil_CCM_2026-09-10_v0_3.pdf).** With the stated zero-shift preimages, the cross-parity coefficient times the production source vanishes on every even predecessor-kernel vector.
@@ -118,6 +144,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named denominator-free kernel/source identity.
 
 **Boundary:** Solvability and a nonzero transfer coefficient are not automatic. Substituting zero into a singular resolvent is not licensed.
+
+**Manuscript location:** Theorem 7.1 and equation (61), PDF p. 13.
+
+**Consumer / audit and checkpoint:** [`crossParityZeroShiftGamma_mul_explicitSource_eq_zero_on_evenKernel`](../Zeta23/CCM/ZeroShiftCrossParityTransfer.lean) (same-file #print axioms audit). Historical manuscript source: [`753ee53a7fc0`](https://github.com/HMarcusWH/zeta-23-lean/commit/753ee53a7fc08bd3be9a5a0f37417629122395f9); §12, PDF pp. 17–19.
 
 ### A36
 
@@ -129,6 +159,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** Selecting a new regular aperture needs witness persistence. No opposing canonical energy sign follows.
 
+**Manuscript location:** Theorem 11.2, PDF p. 17; the additional off-critical-zero input is Theorem 12.2, PDF p. 18.
+
+**Consumer / audit and checkpoint:** [`exists_regular_cellMinimal_negativeCanonicalEnergyCertificate`](../Zeta23/CCM/RegularFirstBadCanonicalEnergy.lean) (same-file #print axioms audit). Historical manuscript source: [`b6622dadab91`](https://github.com/HMarcusWH/zeta-23-lean/commit/b6622dadab911008c0a7238e9dc711c6f9946302); §15, PDF pp. 21–22. The archive refactors this endpoint through the stronger retained-first-bad constructor; do not transfer the old whole-file receipt to the changed blob.
+
 ### A35
 
 **[Moment-jet rigidity](../papers/2026-11-21/Moment_Jet_Rigidity_Weil_CCM_2026-09-19_v0_2.pdf).** Vanishing lower centered moments determines the first surviving odd endpoint jet of the exact source energy.
@@ -138,6 +172,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named moment/jet identity; Riesz recurrences and the off-critical negative Riesz certificate are further mapped results.
 
 **Boundary:** Endpoint terms must be retained. No independent sign for the arithmetic Riesz endpoint scalar is supplied.
+
+**Manuscript location:** Theorem 4.1 and equation (40), PDF p. 9.
+
+**Consumer / audit and checkpoint:** [`iteratedDeriv_odd_sourceAtomRealEnergy_eq_moment_normSq_of_prefix`](../Zeta23/CCM/CanonicalSourceMomentJets.lean) (same-file #print axioms audit). Historical manuscript source: [`b418ff034428`](https://github.com/HMarcusWH/zeta-23-lean/commit/b418ff034428f92594bab0e5b8276181a086ee4b); §10, PDF pp. 18–19.
 
 ### A34
 
@@ -149,6 +187,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** Two lower-cost inequalities combine by their maximum, not their sum. Resonant and other parity branches remain visible.
 
+**Manuscript location:** Theorem 6.5 and equation (69), PDF p. 13; the odd-good budget is the additional Theorem 7.1 on that page.
+
+**Consumer / audit and checkpoint:** [`star_cubicSecularScalar_odd_mul_shellInner_eq_source_completion_of_even_root`](../Zeta23/CCM/CrossParitySecularCompletion.lean) (same-file #print axioms audit). Historical manuscript source: [`b6c90fc29e6b`](https://github.com/HMarcusWH/zeta-23-lean/commit/b6c90fc29e6ba372efb02d12c7998d3b0c7dac5d); §13, PDF pp. 18–19.
+
 ### A33
 
 **[One-coefficient cross-parity rigidity](../papers/2026-11-21/One_Coefficient_Cross_Parity_Rigidity_Weil_CCM_2026-09-23_FINAL.pdf).** The two cubic correction directions are collinear, forcing the exact affine relation between the transfer coefficients.
@@ -158,6 +200,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named relation 6Γ+(2N−1)α=2N+5; source-coupling and zero-shift variants are separate declarations.
 
 **Boundary:** One free coefficient does not give its sign or exclude the negative root.
+
+**Manuscript location:** Theorem 5.2 and equations (44)–(45), PDF pp. 10–11.
+
+**Consumer / audit and checkpoint:** [`six_mul_crossParitySecularGamma_add_index_mul_alpha`](../Zeta23/CCM/CrossParitySecularCorrectionCollapse.lean) (same-file #print axioms audit). Historical manuscript source: [`f9623be70595`](https://github.com/HMarcusWH/zeta-23-lean/commit/f9623be705955bd98ef563aa75d3244712009cac); §13, PDF pp. 18–20.
 
 ### A29
 
@@ -169,6 +215,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** The positive-deficit and radius/sign hypotheses needed for exclusion are not proved by this implication.
 
+**Manuscript location:** Theorem 12.2, PDF p. 11; the combined escape dichotomy is Theorem 12.4, PDF p. 12.
+
+**Consumer / audit and checkpoint:** [`RegularCellMinimalNegativeEnergyCertificate.retainedGamma_neg_implies_shellCenter_sq_lt_sharpRadius`](../Zeta23/CCM/RegularFirstBadGammaObstruction.lean) (same-file #print axioms audit). Historical manuscript source: [`afc0f2d89fce`](https://github.com/HMarcusWH/zeta-23-lean/commit/afc0f2d89fce9f216053b75e45efb76bc61b00c2); §15, PDF pp. 13–15.
+
 ### A32
 
 **[True-ground source arithmetic](../papers/2026-11-21/True_Ground_Source_Arithmetic_Rigidity_Weil_CCM_2026-09-26_v0_2_PROOFREAD.pdf).** The prime-remainder energy is the exact weighted integral for the same true-ground residual state, rather than a separately chosen vector.
@@ -178,6 +228,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Representative same-state arithmetic identity; ground attainment, trichotomy and endpoint-jet results are separately mapped in the paper.
 
 **Boundary:** A sign for a few endpoint derivatives is not a global sign for the selected arithmetic weight.
+
+**Manuscript location:** Definition 9.1 and equation (31), PDF p. 11; the imported arithmetic decomposition is equations (29)–(30), PDF p. 10.
+
+**Consumer / audit and checkpoint:** [`GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral`](../Zeta23/CCM/GlobalParityBottomPrimeWeight.lean) (same-file #print axioms audit). Historical manuscript source: [`d228f35ca333`](https://github.com/HMarcusWH/zeta-23-lean/commit/d228f35ca3338520131a883b9091fad16ef9c9b9); §18, PDF pp. 14–16.
 
 ### A30
 
@@ -189,6 +243,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** Keep the finite dimension fixed for the contact argument. A zero contact does not establish a first crossing or an outgoing barrier.
 
+**Manuscript location:** Theorem 7.1, PDF p. 8; subsequent zero-contact extraction is Theorem 12.2, PDF p. 10.
+
+**Consumer / audit and checkpoint:** [`exists_fixedN_ground_sign_opposition_of_offLine_zero`](../Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean) (same-file #print axioms audit). Historical manuscript source: [`53daac5a0690`](https://github.com/HMarcusWH/zeta-23-lean/commit/53daac5a0690e3ae52a0e758c2ac8ba7a26290e7); §15, PDF pp. 11–13.
+
 ### A31
 
 **[Canonical first-crossing shell rigidity](../papers/2026-11-21/Canonical_First_Crossing_Shell_Rigidity_Weil_CCM_2026-10-01_v0_2_PROOFREAD.pdf).** The selected first-crossing shell has regular negative zero-shift endpoints arbitrarily close on the outgoing side.
@@ -198,6 +256,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named local selection result, supported by plateau, kernel-tower and contact-regime modules.
 
 **Boundary:** Interior and logarithmic-seam closing barriers are additional obligations. Stationarity alone does not prohibit crossing.
+
+**Manuscript location:** Theorem 9.1, PDF p. 10.
+
+**Consumer / audit and checkpoint:** [`CanonicalParityFirstCrossingShell.exists_arbitrarilyClose_regularZeroShiftEndpoint_neg`](../Zeta23/CCM/FirstCrossingSourceDynamics.lean) (same-file #print axioms audit). Historical manuscript source: [`a716d62f386a`](https://github.com/HMarcusWH/zeta-23-lean/commit/a716d62f386ac6d43c70672c68ac316b62a613e2); §18, PDF pp. 14–16.
 
 ### A28
 
@@ -209,6 +271,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** This paper leaves moving-aperture arithmetic authority F04 separate. A26 subsequently supplies that authority for the stated even family.
 
+**Manuscript location:** Theorem 6.1, PDF pp. 8–9; the displayed derivative of the first-jet operator is the selected source endpoint.
+
+**Consumer / audit and checkpoint:** [`hasDerivAt_productionParityFirstJetCLM_pos`](../Zeta23/CCM/CanonicalFrozenApertureC2.lean) (same-file #print axioms audit). Historical manuscript source: [`7225489a1d60`](https://github.com/HMarcusWH/zeta-23-lean/commit/7225489a1d60812743e419d5b9042c8dca7eef53); §12, PDF pp. 15–16. The pending historical Control-v2 check is resolved only in the later A27 record.
+
 ### A27
 
 **[Inherited stationarity and Schur curvature](../papers/2026-11-21/Inherited_Stationarity_Optimized_Schur_Curvature_Weil_CCM_2026-10-10_v0_3_MERGE_VERIFIED.pdf).** The inherited contact kernel has zero compressed first variation; the stationary strict-even Schur contact has vanishing optimized curvature under its hypotheses.
@@ -218,6 +284,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named inherited stationarity declaration; production_stationary_schur_curvature_eq_zero is the separate curvature endpoint.
 
 **Boundary:** Simple-kernel, inherited/fresh-born and parity hypotheses matter. The paper's conditional F04 bridge is strengthened by A26.
+
+**Manuscript location:** Theorem 5.3, PDF p. 7; the separate optimized-curvature endpoint is Theorem 11.2, PDF p. 15.
+
+**Consumer / audit and checkpoint:** [`GeneratedGlobalFirstCrossing.inheritedContactFirstJetRestriction_eq_zero`](../Zeta23/CCM/FirstCrossingInheritedStationarity.lean) (same-file #print axioms audit). Historical manuscript source: [`7225489a1d60`](https://github.com/HMarcusWH/zeta-23-lean/commit/7225489a1d60812743e419d5b9042c8dca7eef53); §16, PDF pp. 22–24.
 
 ### A26
 
@@ -229,6 +299,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** An exact necessary saturation equality is not an incompatible inequality. Other contact branches are not generally excluded.
 
+**Manuscript location:** Theorem 5.3, PDF p. 10; downstream Euler-corrected identity is Theorem 6.2, PDF p. 11.
+
+**Consumer / audit and checkpoint:** [`productionContactF04DerivativeAuthority_of_pos`](../Zeta23/CCM/CanonicalGlobalF04.lean) (same-file #print axioms audit). Historical manuscript source: [`40495f39b751`](https://github.com/HMarcusWH/zeta-23-lean/commit/40495f39b7510b49a7fe3493b42d9fe3880d6d22); §11, PDF pp. 16–18.
+
 ### A25
 
 **[Exact parity inertia and moment filtration](../papers/2026-11-21/Exact_Parity_Inertia_Moment_Filtration_Finite_Sign_Rigidity_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf).** The elementary source matrix has exact even/odd inertia on the legal carriers for source coordinate 0<ω≤1/2.
@@ -238,6 +312,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named even result; oddBoundaryFlat_source_exactInertia is its partner. Filtration and countermodels have separate declarations.
 
 **Boundary:** An elementary source atom is not the full pole–Archimedean–prime operator. Its sign does not establish canonical positivity.
+
+**Manuscript location:** Theorem 6.2, PDF p. 14 (both even and odd legal-carrier inertia).
+
+**Consumer / audit and checkpoint:** [`evenBoundaryFlat_source_exactInertia`](../Zeta23/CCM/CanonicalAndreiefInertia.lean) (same-file #print axioms audit). Historical manuscript source: [`40495f39b751`](https://github.com/HMarcusWH/zeta-23-lean/commit/40495f39b7510b49a7fe3493b42d9fe3880d6d22); §12, PDF pp. 24–26. The full half-interval statement belongs to PR #287, beyond the selected PR #285 claims registered by PR #286.
 
 ## Fourier analysis and co-Poisson profiles
 
@@ -251,6 +329,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** The actual contact-to-admissible-measure bridge is not supplied. Do not omit Jordan-part, growth or sign hypotheses.
 
+**Manuscript location:** Theorem 1.1, PDF p. 2; signed pairing and separator proof in §§3–4, PDF pp. 6–8.
+
+**Consumer / audit and checkpoint:** [`consume_signed_sharp_gap_separator`](../Zeta23/OPICA/Validation.lean) (restated expected-type consumer). Historical manuscript source: [`d53dd70d38b0`](https://github.com/HMarcusWH/zeta-23-lean/commit/d53dd70d38b0762af130b1d19b795af259f505f5); §13, PDF pp. 23–25.
+
 ### A22
 
 **[Actual-zero co-Poisson measures](../papers/2026-11-21/Actual_Zero_CoPoisson_Measures_Self_Dual_Profiles_2026-10-24_v0_2_PROOFREAD.pdf).** A source-normalized measure at an actual nontrivial zero has the precise gap, Fourier, variation and lattice properties, including its signed off-lattice behavior.
@@ -260,6 +342,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named measure package; zero_profile_regular_selfdual and tail/jump declarations cover the associated profile.
 
 **Boundary:** The profile obeys a forced arithmetic equation. The paper's Euler consequence is a manuscript derivation at its pin.
+
+**Manuscript location:** Theorem 1.1, PDF pp. 2–3; detailed measure construction and properties in §§4–5.
+
+**Consumer / audit and checkpoint:** [`expected_zero_measure_exact_properties`](../Zeta23/OPICAFollowup/Validation.lean) (restated expected-type consumer and axiom audit). Historical manuscript source: [`b9627cc1e76c`](https://github.com/HMarcusWH/zeta-23-lean/commit/b9627cc1e76c7e4541cf86de8d79d31acda8f7d5); §13, PDF pp. 25–27. The manuscript explicitly records incomplete follow-up aggregate acceptance.
 
 ### A23
 
@@ -271,6 +357,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** Uniform variation control is essential. A nonzero distributional limit need not be a locally finite measure.
 
+**Manuscript location:** Theorem 1.1, PDF p. 2; quantitative estimate and controlled-limit proof in §§4–5, PDF pp. 8–9.
+
+**Consumer / audit and checkpoint:** [`independent_expected_near_gap_controlled_limit_zero`](../Zeta23/OPICAFollowup/Validation.lean) (independent expected-type consumer and axiom audit). Historical manuscript source: [`7b156e062343`](https://github.com/HMarcusWH/zeta-23-lean/commit/7b156e062343e99211d65b893bed1b619d01c82d); §13, PDF pp. 20–21. The archive file adds later CT13Support and compact-continuous extraction results; do not transfer the old whole-file receipt to the changed blob.
+
 ### A20
 
 **[Paper VII: arithmetic sawtooth and sampling](../papers/2026-11-21/Paper_VII_Arithmetic_Sawtooth_Stieltjes_Spectral_Sampling_2026-10-24_v0_2.pdf).** The actual arithmetic spectral measure gives a Stieltjes transform with the specified half-plane sign and exact native sampling identities.
@@ -280,6 +370,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Representative sign theorem; native_sample_stieltjes_identity supplies the zero-profile sampling bridge.
 
 **Boundary:** Positive resolvent/Gram expressions do not make a parameter of a forced equation real.
+
+**Manuscript location:** Theorem 6.5, holomorphic arithmetic Stieltjes calculus (PDF p. 11), and Corollary 6.6 (p. 12); exact source sampling is the separate Theorem 8.2 (p. 15).
+
+**Consumer and historical evidence:** [ExpectedWeightedSpectralMeasure.lean](../research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWeightedSpectralMeasure.lean) — `expected_arithmetic_stieltjes_sign_budget`; independent consumer of the nonreal Stieltjes sign and resolvent budget. The manuscript source crosswalk is §13 (PDF pp. 25–26), pinned to [cea7b2f](https://github.com/HMarcusWH/zeta-23-lean/commit/cea7b2f62ea847c18958cc7385151c8c2b09520d). The paper records the narrow weighted-measure checks and explicitly leaves the combined actual_force_sampling_consumer OPEN at this historical pin; the positive-Gram/forced-sampling composition is a separate obligation.
 
 ### A19
 
@@ -291,6 +385,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** The nonlinear operation is on a scalar profile. The permitted correction class and regularity assumptions cannot be discarded.
 
+**Manuscript location:** Theorem 5.3, no tempered lattice repair (PDF p. 5); the actual-zeta-zero specialization is Theorem 7.1 (p. 7).
+
+**Consumer and historical evidence:** [ExpectedSquareDefect.lean](../research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSquareDefect.lean) — `expected_square_no_lattice_repair`; `expected_actual_square`; independent no-repair consumer and actual-zero specialization. The manuscript source crosswalk is §9 (PDF pp. 8–9), pinned to [cea7b2f](https://github.com/HMarcusWH/zeta-23-lean/commit/cea7b2f62ea847c18958cc7385151c8c2b09520d). The paper records four narrow square-defect checks while the full 100-root aggregate remained unaccepted at its pin.
+
 ### A16
 
 **[Paper XI: finite quadratic non-repair](../papers/2026-11-21/Paper_XI_Finite_Quadratic_Rigidity_Lattice_NonRepair_2026-10-27_v0_2_PROOFREAD.pdf).** For an eligible finite realified block of actual profiles, self-duality of a symmetric quadratic combination forces its coefficient matrix to vanish.
@@ -301,6 +399,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** Distinct spectral nodes, symmetry, finite dimension and the stated correction domain are essential; no infinite-family or quadratic-jet classification follows.
 
+**Manuscript location:** Theorems 1.1 and 1.2, finite real quadratic rigidity and lattice non-repair (PDF p. 2); proofs are developed in §§3–6.
+
+**Consumer and historical evidence:** [ProfileControls.lean](../Zeta23/OPICARound2/Validation/ProfileControls.lean) — `actual_finite_symmetric_quadratic_rigidity`; `actual_quadratic_arbitrary_tempered_lattice_measure_control`; native real symmetric-block consumer and its arbitrary tempered lattice-measure control. The manuscript source crosswalk is §9 (PDF pp. 10–11), pinned to [07278f0](https://github.com/HMarcusWH/zeta-23-lean/commit/07278f01fcd17fb14d465630766a02e940abb8a0). The paper binds the statement to the Round 2 source pin. The consumer file supplies types and axiom commands, not by its presence a new compiler result.
+
 ### A15
 
 **[Paper XII: co-Poisson jets and sign rigidity](../papers/2026-11-21/Paper_XII_Multiplicity_Sensitive_CoPoisson_Zero_Jets_Finite_Span_Sign_Rigidity_2026-10-27_v0_2_PROOFREAD.pdf).** A fixed independent finite basis of admissible zero-jet combinations has a coefficient norm controlled by weighted off-lattice negative mass.
@@ -310,6 +412,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named quantitative finite-span result; multiplicity-jet construction and confluent independence are upstream results.
 
 **Boundary:** The coercivity constant depends on the chosen basis. No basis-uniform estimate or off-critical exclusion is asserted.
+
+**Manuscript location:** Theorem 1.4, fixed-basis quantitative negative-mass rigidity (PDF p. 3), proved in §9 (pp. 12–14).
+
+**Consumer and historical evidence:** [ExpectedActualFixedBudget.lean](../research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedActualFixedBudget.lean) — `expected_full_actual_euclidean_budget`; `no_positive_budget_without_independence`; independent actual-basis budget consumer and a negative control removing basis independence. The manuscript source crosswalk is §12 (PDF p. 16), pinned to [416aec2](https://github.com/HMarcusWH/zeta-23-lean/commit/416aec21d4d6634675639b5397cc300d1f826e34). The paper uses the merged PR #294 snapshot and its recorded narrow consumer checks; it does not claim a fresh aggregate replay.
 
 ## Native causal arithmetic and approximation
 
@@ -323,6 +429,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** Local pole survival, physical norm growth and an incompatible arithmetic estimate are different claims. A17 later identifies the native window rate.
 
+**Manuscript location:** Theorem 4.1, exact native corrected germ (PDF p. 7), using the correction recurrence in Proposition 3.2 (p. 6).
+
+**Consumer and historical evidence:** [Validation.lean](../Zeta23/OPICAFollowup/Validation.lean) — `expected_nativeWord_corrected_transform`; explicit expected-type declaration in the relocated validation assembly; that assembly labels itself UNACCEPTED. The related [ExpectedWordJet.lean](../research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWordJet.lean) exposes `expected_step123_word_jet_consumer`. The manuscript source crosswalk is §14 and Table 2 (PDF pp. 24–26), plus Appendix C.2 (p. 30), pinned to [ff7b7c7](https://github.com/HMarcusWH/zeta-23-lean/commit/ff7b7c70f072606afeaf9ea7d9ccacd2442b483c). The manuscript uses ff7b7c7 as its primary source pin and compares the later cea7b2f editorial checkpoint with identical theorem-module blobs. Its 41 historical/48 narrow/11 open split, and the later 41/49/10 split, both retain false aggregate acceptance.
+
 ### A18
 
 **[Paper IX: multiplicity-sensitive residual memory](../papers/2026-11-21/Paper_IX_Multiplicity_Sensitive_Native_Residual_Terminal_Memory_2026-10-24_v0_2_PROOFREAD.pdf).** An actual right-of-line zero with its multiplicity forces exponential terminal memory for the unchanged native prime field, via a Laguerre residual pairing.
@@ -332,6 +442,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named conditional lower bound; exact norm and residual-pairing declarations identify its source and multiplicity.
 
 **Boundary:** Keep the stable-input subtraction, positive part and completion parameters. This does not supply an opposing upper bound.
+
+**Manuscript location:** Theorem 6.3, exact source-weighted terminal-memory lower bound (PDF p. 8).
+
+**Consumer and historical evidence:** [ExpectedMultiplicity.lean](../research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean) — `expected_native_terminal_memory_lower`; explicit native terminal-memory consumer retaining multiplicity and stable-input subtraction. The manuscript source crosswalk is §9 (PDF pp. 10–11), pinned to [cea7b2f](https://github.com/HMarcusWH/zeta-23-lean/commit/cea7b2f62ea847c18958cc7385151c8c2b09520d). The paper records four narrowly checked multiplicity roots and preserves the pending aggregate boundary; it does not claim complete original-contract acceptance.
 
 ### A17
 
@@ -343,6 +457,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** Identifying Θ does not prove Θ=0; no claim is made at the boundary damping value.
 
+**Manuscript location:** Theorem 1.1, exact fixed-source logarithmic-window rate (PDF p. 2), with its continuous-horizon proof in §6 (pp. 9–10).
+
+**Consumer and historical evidence:** [ExpectedPhysicalRates.lean](../research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedPhysicalRates.lean) — `expected_fixed_source`; `expected_order_zero`; independent fixed-source and original-source consumers of the physical-window limit. The manuscript source crosswalk is §10 (PDF pp. 13–14), pinned to [416aec2](https://github.com/HMarcusWH/zeta-23-lean/commit/416aec21d4d6634675639b5397cc300d1f826e34). The main rate theorem uses merged PR #294. The manuscript’s later positive-damping result refers separately to Round 2 pin 07278f0; those two source checkpoints must not be conflated.
+
 ### A14
 
 **[Paper XIII: native causal probes and finite Grams](../papers/2026-11-21/Paper_XIII_Native_Causal_Probes_Finite_Gram_Certified_Regional_Exclusion_2026-10-27_v0_2_PROOFREAD.pdf).** The exact finite native Gram system gives Schur/determinant formulas for optimal projection error and a conditional regional-exclusion interface.
@@ -352,6 +470,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named finite error identity; source approximation budgets and regional certification require additional declarations.
 
 **Boundary:** The recorded raw numerical trial returned NO_CERTIFICATE. Finite Gram positivity does not prove the limiting error vanishes.
+
+**Manuscript location:** Theorem 6.1, native finite Schur/determinant identity (PDF p. 7).
+
+**Consumer and historical evidence:** [ProbeGram.lean](../Zeta23/OPICARound2/Validation/ProbeGram.lean) — `expected_p09_schur`; `expected_p09_bordered_determinant`; `expected_p09_actual_minimizer`; separate Schur-error, bordered-determinant, and native minimizer consumers. The manuscript source crosswalk is §14 (PDF pp. 17–18) and Appendix E (p. 21), pinned to [07278f0](https://github.com/HMarcusWH/zeta-23-lean/commit/07278f01fcd17fb14d465630766a02e940abb8a0). The manuscript records NO_CERTIFICATE and false full-core/release status at this pin. Those historical limits remain separate from the validity claimed for individual source declarations.
 
 ### A13
 
@@ -363,6 +485,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** Exact nonrange does not exclude approximation by unbounded inputs. No approximation limit is proved.
 
+**Manuscript location:** Theorem 8.2, native critical-boundary power-law lower bound (PDF p. 8), summarized in Theorem 1.2 (p. 2). The paper’s further statements using external simple-zero results and its coefficient deductions are additional arguments; they do not follow from an existence claim for an approximating family.
+
+**Consumer and historical evidence:** [TruncationControls.lean](../Zeta23/OPICARound2/Validation/TruncationControls.lean) — `truncation_consumer_026`; direct consumer retaining the source zero order k < zeroMult and the resulting norm-cost exponent. The manuscript source crosswalk is §14 (PDF pp. 13–14), pinned to [07278f0](https://github.com/HMarcusWH/zeta-23-lean/commit/07278f01fcd17fb14d465630766a02e940abb8a0). The manuscript cites the Round 2 declaration and its type/axiom audit surface at this historical pin.
+
 ### A12
 
 **[Paper XV: fixed-filter four-column certificate](../papers/2026-11-21/Paper_XV_Fixed_Causal_Filter_Four_Column_Certificate_v0_2_PROOFREAD.pdf).** For the original source and four rational coefficients, a rigorous filtered residual upper bound contradicts the zero-evaluation lower bound on the stated small rectangle.
@@ -372,6 +498,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named finite filtered certificate, with FiniteFilteredBaseline validation consumers.
 
 **Boundary:** The rectangle was already known by stronger classical verification. The filter is not surjective on the causal space; the raw norm is a different problem.
+
+**Manuscript location:** Theorem 1.1, fixed-filter four-column certificate (PDF p. 2); its upper and hypothetical-zero lower bounds are Propositions 4.3 and 5.3 (pp. 7–8).
+
+**Consumer and historical evidence:** [FiniteFilteredBaseline.lean](../Zeta23/OPICARound2/Validation/FiniteFilteredBaseline.lean) — `baseline_actual_native_four_column_upper`; `baseline_actual_zero_witness_lower`; `baseline_actual_closed_rectangle_nonvanishing`; `baseline_actual_reflected_rectangle_nonvanishing`; separate consumers for the upper bound, hypothetical-zero lower bound, and original/reflected region conclusions. The manuscript source crosswalk is §6.4 (PDF p. 9) and Appendix B (pp. 10–11), pinned to [07278f0](https://github.com/HMarcusWH/zeta-23-lean/commit/07278f01fcd17fb14d465630766a02e940abb8a0). The source pin and paper rational arithmetic checks are distinct evidence from a fresh analytic or Lean dependency replay.
 
 ### A11
 
@@ -383,6 +513,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** This same-vector contrast gives neither a global approximation limit nor a conclusion about every coefficient sequence.
 
+**Manuscript location:** Theorem 6.1, Bessel divisor-defect inequality (PDF p. 7), supplies the source ingredient; the selected same-vector raw/filtered separation is Theorem 1.1 (p. 2), with the twelve-defect calculation in Lemma 7.1 and Proposition 7.2 (pp. 7–8). The exact raw/filtered Python example checks the finite rational arithmetic, not an independent proof of the analytic source inequality.
+
+**Consumer and historical evidence:** [TruncationControls.lean](../Zeta23/OPICARound2/Validation/TruncationControls.lean) — `consumer_040`; consumer of the native pulse-separation constant and the finite Bessel lower bound for K contained in {1,…,2047}. The manuscript source crosswalk is Appendix B (PDF p. 11), pinned to [07278f0](https://github.com/HMarcusWH/zeta-23-lean/commit/07278f01fcd17fb14d465630766a02e940abb8a0). The paper identifies the existing native truncation source at this pin. Appendix B separates the new rational same-vector composition from a separately compiled Lean endpoint.
+
 ### A10
 
 **[Paper XVII: confluent Laplace jets](../papers/2026-11-21/Paper_XVII_Confluent_Laplace_Jets_Conjugate_Pair_Bounds_v0_2_PROOFREAD.pdf).** Distinct right-half-plane nodes with multiplicity jets have an exact positive-definite confluent Laplace Gram and determinant, supporting simultaneous projection bounds.
@@ -392,6 +526,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named general Gram package; the conjugate-pair improvement and displayed derivative-jet increment are paper integrations at the manuscript pin.
 
 **Boundary:** Node distinctness and the positive real part matter. The displayed improvement is a lower-bound improvement, not an upper bound on the exact projection ratio.
+
+**Manuscript location:** Theorem 3.1, confluent Gram matrix and determinant (PDF pp. 3–4); simultaneous distance is Theorem 4.1 (p. 4). The conjugate-pair factor and derivative refinements in Theorem 1.1, Proposition 5.1, and Theorem 6.2 are manuscript consequences, not additional endpoints certified merely by laplace_jet_gram.
+
+**Consumer and historical evidence:** [DualCertificates.lean](../Zeta23/OPICARound2/Validation/DualCertificates.lean) — `expected_p17_complete`; explicit full Gram/determinant consumer, accompanied by repeated-node and factorial negative controls. The manuscript source crosswalk is §7.2 (PDF p. 8) and Appendix B (p. 9), pinned to [775692f](https://github.com/HMarcusWH/zeta-23-lean/commit/775692f2e72d76b6a97cf66926a86cc96342c109). The manuscript distinguishes source-established Gram statements from its symbolic checks and paper deductions; this documentation pass does not rerun those compiler checks.
 
 ## Joint-source and late spectral synthesis
 
@@ -405,6 +543,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** The two parity births need not coincide. An eventual joint negative-index upper bound of one is an independent closing premise.
 
+**Manuscript location:** Theorem 5.2, cofinal simultaneous physical parity negativity, and Corollary 5.3 (PDF p. 9).
+
+**Consumer and historical evidence:** [CofinalSimultaneousNegative.lean](../Zeta23/OPICARound3/Validation/CofinalSimultaneousNegative.lean) — `cofinally_both_neutral_negative_of_off_line_zero_consumer`; `simultaneous_physical_witnesses_consumer`; direct cofinal consumer and extraction of same-cutoff physical witnesses. The manuscript source crosswalk is §10.2 (PDF pp. 17–18), pinned to [8109728](https://github.com/HMarcusWH/zeta-23-lean/commit/8109728135135a58eb98920180e03f77439c1da4). The authoritative theorem is in the merged PR #297 snapshot. The paper separately mentions the later Round 4 index at 3cf99b4; that later index does not supply a new replay of this theorem.
+
 ### A02
 
 **[Paper XIX: grouped residues and visibility](../papers/2026-11-21/Paper_XIX_Grouped_Signed_Spectral_Residues_Source_Visibility_2026-10-29_v0_2_PROOFREAD.pdf).** In the stated Hermitian rank-one interface, a grouped zero residue is equivalent to whole-eigenspace input or transported-output invisibility.
@@ -414,6 +556,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named visibility equivalence; signed resolvent/Pick expansions and actual-ground closure consumers are separate results.
 
 **Boundary:** A zero residue does not remove an eigenvalue. Strict-ground comparisons plus tie exclusion restate eventual positivity rather than proving a weaker independent estimate.
+
+**Manuscript location:** Theorem 5.3, grouped zero-residue rigidity (PDF p. 10).
+
+**Consumer and historical evidence:** [IntegrationVisibilityRigidity.lean](../Zeta23/OPICARound4/Validation/IntegrationVisibilityRigidity.lean) — `native_even_zero_residue_classification`; `native_odd_zero_residue_classification`; native parity specializations of the grouped-residue equivalence, with type/axiom audit commands. The manuscript source crosswalk is §10.3 (PDF p. 18) and Appendix C (PDF pp. 22–23), pinned to [3cf99b4](https://github.com/HMarcusWH/zeta-23-lean/commit/3cf99b4ea74209bba372beca7c66e5150ee6fa4c). The paper inspected the open PR #298 source on 29 October 2026; its source inspection was not a fresh compiler or full axiom replay.
 
 ### A03
 
@@ -425,6 +571,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** The adaptive prime-discrepancy and continuum–Archimedean smallness estimates remain premises. Mixed rows and diagonal energies are not interchangeable.
 
+**Manuscript location:** Theorem 7.2, exact native corrected-source Chebyshev discrepancy, with endpoint cancellation in Lemma 7.1 (PDF p. 13).
+
+**Consumer and historical evidence:** [IntegrationSource.lean](../Zeta23/OPICARound4/Validation/IntegrationSource.lean) — `native_prime_discrepancy_integral`; explicit #check and #print axioms commands for this declaration; no separately named proof consumer for this exact identity is identified here. The manuscript source crosswalk is Appendix C (PDF pp. 24–25), pinned to [3cf99b4](https://github.com/HMarcusWH/zeta-23-lean/commit/3cf99b4ea74209bba372beca7c66e5150ee6fa4c). The paper records source inspection on 30 October 2026 at the open PR #298 pin; it does not report a new full-tree replay.
+
 ### A08
 
 **[Paper XXI: finite-to-smooth Schur transport](../papers/2026-11-21/Paper_XXI_Complete_Finite_to_Smooth_Schur_Transport_FINAL.pdf).** The complete three-channel comparison error has a source-only envelope vanishing after every fixed exponential rescaling at the prescribed quartic cutoff.
@@ -434,6 +584,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named envelope limit; finite forcing, Schur transport and packet-uniform threshold declarations provide the full comparison.
 
 **Boundary:** This preserves a lower obstruction. It does not bound the genuine smooth-source expression from above.
+
+**Manuscript location:** Theorem 7.1, vanishing after every fixed exponential rescaling (PDF p. 10).
+
+**Consumer and historical evidence:** [ErrorReduction.lean](../Zeta23/OPICARound4/Validation/ErrorReduction.lean) — `all_exponential_rates_consumer`; `threshold_before_packet_consumer`; direct consumers of the all-exponential-rates limit and the threshold-before-packet quantifier order. The manuscript source crosswalk is §10 and Appendix A (PDF pp. 13–14), pinned to [ff323fe](https://github.com/HMarcusWH/zeta-23-lean/commit/ff323fef60cf297cd12ce7f0d54768fa8545891f). The manuscript records local type/axiom checks at its Round 4 pin; this is not a fresh full Linux acceptance receipt.
 
 ### A07
 
@@ -445,6 +599,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** An exhaustive disjunction does not exclude its branches. The odd source and reciprocal even input carry different signs.
 
+**Manuscript location:** Theorem 8.2, branch-complete same-cutoff ground certificate (PDF p. 13); its conditional cofinal form is Theorem 9.2 (p. 14).
+
+**Consumer and historical evidence:** [GroundConstraints.lean](../Zeta23/OPICARound4/Validation/GroundConstraints.lean) — `joint_ground_constraints_of_both_negative`; `cofinally_joint_ground_constraints_of_off_line_zero`; independently stated anonymous example declarations applying the fixed-state and cofinal theorems. The manuscript source crosswalk is Appendix C (PDF pp. 19–20), pinned to [ff323fe](https://github.com/HMarcusWH/zeta-23-lean/commit/ff323fef60cf297cd12ce7f0d54768fa8545891f). The paper reports local compiler/type/axiom checks with existing dependencies and keeps the complete Linux production lanes separate.
+
 ### A06
 
 **[Paper XXIII: joint quartic ground synchronization](../papers/2026-11-21/Paper_XXIII_Joint_Quartic_Ground_Source_Rigidity_FINAL_v1_0.pdf).** A hypothetical off-critical zero forces both physical parity sectors negative at the original prescribed quartic cutoff for every sufficiently large aperture.
@@ -454,6 +612,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named synchronization theorem; own-birth complement bounds and tie visibility are separate mapped declarations. The paper's full final grouping is a composition.
 
 **Boundary:** Detector, selected predecessor, own-newborn and true-ground vectors/cutoffs remain distinct. No uniform global index upper bound is supplied.
+
+**Manuscript location:** Theorem 23.2, eventual common-quartic two-parity negativity (PDF p. 9); the later packet synchronization is Theorem 23.3 (p. 11). The expanded joint synthesis in Theorem 23.8 (PDF pp. 17–18) combines additional source declarations; it is broader than this one representative endpoint.
+
+**Consumer and historical evidence:** [JointGround.lean](../Zeta23/OPICARound4/Validation/JointGround.lean) — `common_quartic_uniform_threshold_consumer`; direct consumer extracting a uniform eventual-aperture threshold from the representative theorem. The manuscript source crosswalk is §11 (PDF pp. 22–24) and Appendix A (pp. 25–27), pinned to [fb45853](https://github.com/HMarcusWH/zeta-23-lean/commit/fb45853c49ec7099e4f3d3617373fe3bbd6a06ee). The manuscript records selected local support compilation, while new visibility replay and full current-head acceptance remained separate obligations.
 
 ### A05
 
@@ -465,6 +627,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** An equivalent representation does not prove the missing arithmetic lower bound. Source-blind Hankel positivity is ruled out, not established.
 
+**Manuscript location:** Theorem 25.5, moment compression with O(N) error (PDF p. 14); Theorem 25.7, signed Mellin–Fourier representation (p. 18); Theorem 25.8, equivalence of the three critical lower-bound formulations (p. 20). Section 13 expressly asserts no matching new Lean declarations for any of the eight main Paper XXV theorems. The listed new module names in §13.2 are proposals, not existing formalizations.
+
+**Consumer and historical evidence:** [Hyperbola.lean](../Zeta23/OPICARound4/Validation/Hyperbola.lean) — `validation_madness_exact_sampling_bridge`; consumer of the earlier exact sampling identity used as an ingredient by this paper. The manuscript source crosswalk is §13.1 (PDF pp. 23–24), pinned to [451ad69](https://github.com/HMarcusWH/zeta-23-lean/commit/451ad696437d6f8fc5badd827ce252dfcfd801e3). The pin fixes the literal native definitions and existing arithmetic interfaces. Section 13 distinguishes those inspected definitions from a fresh compiler replay.
+
 ### A04
 
 **[Paper XXVI: regular quartic spectral flow](../papers/2026-11-21/Paper_XXVI_Regular_Quartic_Spectral_Flow_Schur_Inertia_FINAL_v1_0.pdf).** At a regular selected aperture, negative inertia equals the count of negative one-shell Schur pivots, yielding a local chamber and first-birth ledger.
@@ -475,6 +641,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 
 **Boundary:** Nonunitary congruence preserves inertia, not eigenvalues. Local chambers do not automatically cross prime seams or quartic jumps.
 
+**Manuscript location:** Theorem 26.2, cofinal quartic negativity with all-predecessor regularity (PDF p. 9). The one-shell inertia formula (Theorem 26.4, PDF p. 11), finite ledger (26.5, p. 13), local chamber (26.6, p. 15), and full synthesis (26.8, pp. 19–20) are explicitly paper-proved algebra or compositions, without separately compiled endpoints at this pin.
+
+**Consumer and historical evidence:** [NativeGroundRegularity.lean](../Zeta23/OPICARound4/Validation/NativeGroundRegularity.lean) — `cofinal_native_regular_births_consumer`; related downstream consumer of cofinally_regular_first_common_births, rather than a separate direct consumer of the representative theorem. The manuscript source crosswalk is Appendix C (PDF pp. 29–30), pinned to [451ad69](https://github.com/HMarcusWH/zeta-23-lean/commit/451ad696437d6f8fc5badd827ce252dfcfd801e3). The paper records selected local Windows native compilation with historical parent dependencies at draft PR #299; fresh independent current-head acceptance remained required.
+
 ### A01
 
 **[Paper XXVII: prime-phase noncollision](../papers/2026-11-21/Paper_XXVII_Prime_Phase_Noncollision_Source_Packet_FINAL_v1_0.pdf).** A hypothetical off-critical zero yields cofinally selected same-source deep packets with simultaneous invertibility and disjoint parity spectra for 3≤K≤Kd at the original quartic detector.
@@ -484,6 +654,10 @@ See [reproducibility](REPRODUCIBILITY.md) for actual commands and [citation](REP
 **Mapping:** Named central conjunction; visibility and simplicity are additional exact compositions with SeparatedSourceVisibility, not one blanket whole-paper certificate.
 
 **Boundary:** The packet retains any requested parity and 0<β<|Re ρ−1/2|. No uniform spectral gap, overlap lower bound, every-aperture noncollision or opposing source sign follows.
+
+**Manuscript location:** Theorem 27.8 (PDF pp. 20–21), especially the explicit joint certificate through equations (51)–(54). The source-visibility and simplicity conclusions at the end of Theorem 27.8 additionally compose the separate SeparatedSourceVisibility declarations; the expanded final sentence is not one separately compiled endpoint.
+
+**Consumer and historical evidence:** [NativeNoncollision.lean](../Zeta23/OPICARound4/Validation/NativeNoncollision.lean) — `genuine_packet_same_detector_spectral_check`; direct independently stated consumer of the representative joint certificate. The manuscript source crosswalk is Appendix D, §§D.1–D.4 (PDF pp. 31–32), pinned to [8bf89fd](https://github.com/HMarcusWH/zeta-23-lean/commit/8bf89fd668f48c28a1629cf791e717eb00ec6242). The manuscript reports local type/axiom checks at the open PR #299 pin and explicitly does not claim a fresh independent full production replay.
 
 ## Later source and research records
 
