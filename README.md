@@ -1,5 +1,8 @@
 # Zeta23 / RHRC: formal mathematics and the search for an RH obstruction
 
+> **21 November 2026 — research and manuscript freeze:** [43 original PDF manuscripts](papers/README.md) and a [mathematical approach / scientific-status guide](docs/RESEARCH_ARCHIVE_2026-11-21.md) have been archived on branch `archive/2026-11-21-research-freeze`. This preserves the research and its open obligations; it does not claim this fork proves RH. A separate proposed proof was announced by Levent Alpöge/Claude on 20 November 2026 and remains subject to ongoing external assessment. All older historical validation blocks below retain their original scope.
+
+
 **2 November 2026 — PR #299 research handover:** [Start here](research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md). The complete archived progress, negative results, external proof sources and reading map are published for the requested research break. RH and Step 4 remain OPEN. Older snapshots below retain their historical scope.
 
 
