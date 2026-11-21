@@ -1,0 +1,354 @@
+{
+  "archive_date": "2026-11-21",
+  "source_folder": "https://drive.google.com/drive/folders/1gc4Sr8zPDzbb3DJqKlY71-hznIEU49sx",
+  "repository": "HMarcusWH/zeta-23-lean",
+  "total_files": 43,
+  "total_size_bytes": 23387176,
+  "scientific_status": "research manuscripts; RH/Step 4 not proved by these works",
+  "files": [
+    {
+      "path": "papers/2026-11-21/Paper_XXVII_Prime_Phase_Noncollision_Source_Packet_FINAL_v1_0.pdf",
+      "filename": "Paper_XXVII_Prime_Phase_Noncollision_Source_Packet_FINAL_v1_0.pdf",
+      "drive_file_id": "1PlmCJQKiF9cV0mpqhUNTfFEJk5o1lIPM",
+      "drive_url": "https://drive.google.com/file/d/1PlmCJQKiF9cV0mpqhUNTfFEJk5o1lIPM/view",
+      "size_bytes": 680209,
+      "git_blob_sha1": "641ee42c8e1b431b21693b8f97670eeceb49a760"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XIX_Grouped_Signed_Spectral_Residues_Source_Visibility_2026-10-29_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_XIX_Grouped_Signed_Spectral_Residues_Source_Visibility_2026-10-29_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1OqkuOCWnvrnM6OBkfsoBCldR6X-qdAUd",
+      "drive_url": "https://drive.google.com/file/d/1OqkuOCWnvrnM6OBkfsoBCldR6X-qdAUd/view",
+      "size_bytes": 487729,
+      "git_blob_sha1": "4d27c9c70d691179526e22c70ec6027ab4d04ec7"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XX_Exact_Chebyshev_Discrepancy_Concentration_Source_Tests_2026-10-30_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_XX_Exact_Chebyshev_Discrepancy_Concentration_Source_Tests_2026-10-30_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1cGxqLQ7GwdSG8Y8EbKWunZPvFH_NB4Ga",
+      "drive_url": "https://drive.google.com/file/d/1cGxqLQ7GwdSG8Y8EbKWunZPvFH_NB4Ga/view",
+      "size_bytes": 377595,
+      "git_blob_sha1": "2c0bad68898c18afbfd117bd1e728830662cdbce"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XXVI_Regular_Quartic_Spectral_Flow_Schur_Inertia_FINAL_v1_0.pdf",
+      "filename": "Paper_XXVI_Regular_Quartic_Spectral_Flow_Schur_Inertia_FINAL_v1_0.pdf",
+      "drive_file_id": "1SPK11Fsikl2K_9NTZi8RT4o2w6Hzuo4F",
+      "drive_url": "https://drive.google.com/file/d/1SPK11Fsikl2K_9NTZi8RT4o2w6Hzuo4F/view",
+      "size_bytes": 665399,
+      "git_blob_sha1": "ff23ad08b7b12e77190093f1e1c9c28435c1792f"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XXV_Signed_Mobius_Mellin_Moment_Compression_FINAL_v1_0.pdf",
+      "filename": "Paper_XXV_Signed_Mobius_Mellin_Moment_Compression_FINAL_v1_0.pdf",
+      "drive_file_id": "1_l2Tjk_zvFcKQqke1ANrh6NOy-RVwaSZ",
+      "drive_url": "https://drive.google.com/file/d/1_l2Tjk_zvFcKQqke1ANrh6NOy-RVwaSZ/view",
+      "size_bytes": 613101,
+      "git_blob_sha1": "1be6c7fe15f921d2f8e103e52998b55f536ff1ed"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XXIII_Joint_Quartic_Ground_Source_Rigidity_FINAL_v1_0.pdf",
+      "filename": "Paper_XXIII_Joint_Quartic_Ground_Source_Rigidity_FINAL_v1_0.pdf",
+      "drive_file_id": "1zHQtauSRmwodT9nBdvanBy3n65lJc_AA",
+      "drive_url": "https://drive.google.com/file/d/1zHQtauSRmwodT9nBdvanBy3n65lJc_AA/view",
+      "size_bytes": 685629,
+      "git_blob_sha1": "327748ad6b5d777cdc821d4bc33184a891580b88"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XXII_Exact_Ground_Arithmetic_Branch_Complete_Source_Rigidity_v0_1.pdf",
+      "filename": "Paper_XXII_Exact_Ground_Arithmetic_Branch_Complete_Source_Rigidity_v0_1.pdf",
+      "drive_file_id": "186s-HOmrMNm1RXY8a7sT_ejvS8nXrze2",
+      "drive_url": "https://drive.google.com/file/d/186s-HOmrMNm1RXY8a7sT_ejvS8nXrze2/view",
+      "size_bytes": 413735,
+      "git_blob_sha1": "215b0a375c4f352f71ac1a2c8ca51f0719cfd5b6"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XXI_Complete_Finite_to_Smooth_Schur_Transport_FINAL.pdf",
+      "filename": "Paper_XXI_Complete_Finite_to_Smooth_Schur_Transport_FINAL.pdf",
+      "drive_file_id": "1ptJO1pxFhsqHONUjecmUIsPHSUdhK5Td",
+      "drive_url": "https://drive.google.com/file/d/1ptJO1pxFhsqHONUjecmUIsPHSUdhK5Td/view",
+      "size_bytes": 359537,
+      "git_blob_sha1": "07e0e31d6d8bb87ce8534d125c827966b9841f77"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XVIII_Cofinal_Two_Parity_Instability_2026-10-29_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_XVIII_Cofinal_Two_Parity_Instability_2026-10-29_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1wDFd4S1asSyjeIILE8RcScATKqO0T8DU",
+      "drive_url": "https://drive.google.com/file/d/1wDFd4S1asSyjeIILE8RcScATKqO0T8DU/view",
+      "size_bytes": 429638,
+      "git_blob_sha1": "0f9ad82b921057fb2690c735fedb488d32b48e7b"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XVII_Confluent_Laplace_Jets_Conjugate_Pair_Bounds_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_XVII_Confluent_Laplace_Jets_Conjugate_Pair_Bounds_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "18eFtiJ__ZgZTBlAl7YQ05N24D8vyDOk_",
+      "drive_url": "https://drive.google.com/file/d/18eFtiJ__ZgZTBlAl7YQ05N24D8vyDOk_/view",
+      "size_bytes": 505893,
+      "git_blob_sha1": "fa7fcf871f49eb987f51c3bcd6e466d4945c8941"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XVI_Finite_Prefix_Rigidity_Raw_Filtered_Separation_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_XVI_Finite_Prefix_Rigidity_Raw_Filtered_Separation_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "10mZvju3Ip6M3lZqYegv-J5VWqJDqBtPi",
+      "drive_url": "https://drive.google.com/file/d/10mZvju3Ip6M3lZqYegv-J5VWqJDqBtPi/view",
+      "size_bytes": 488761,
+      "git_blob_sha1": "aebe2da91bd9e259233493802d52c947aa428f40"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XV_Fixed_Causal_Filter_Four_Column_Certificate_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_XV_Fixed_Causal_Filter_Four_Column_Certificate_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1gw6mK9X_-9gXPG6qSMZpWMBNjQsCMkNH",
+      "drive_url": "https://drive.google.com/file/d/1gw6mK9X_-9gXPG6qSMZpWMBNjQsCMkNH/view",
+      "size_bytes": 419953,
+      "git_blob_sha1": "b027e557aa2621cee13837b2496d93bfb1a5c9a0"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XIV_Critical_Boundary_Multiplicity_Source_Visibility_Causal_Zeta_2026-10-27_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_XIV_Critical_Boundary_Multiplicity_Source_Visibility_Causal_Zeta_2026-10-27_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1dGN3aw5fcy-ya2__pQWqExgH0DPk6PpT",
+      "drive_url": "https://drive.google.com/file/d/1dGN3aw5fcy-ya2__pQWqExgH0DPk6PpT/view",
+      "size_bytes": 542882,
+      "git_blob_sha1": "e6fafe887dc3aaa24aa660ccf49f0440f3db5704"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XIII_Native_Causal_Probes_Finite_Gram_Certified_Regional_Exclusion_2026-10-27_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_XIII_Native_Causal_Probes_Finite_Gram_Certified_Regional_Exclusion_2026-10-27_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1eVQeyiBd-T59aBT5_GARuk7jBhYr8cNl",
+      "drive_url": "https://drive.google.com/file/d/1eVQeyiBd-T59aBT5_GARuk7jBhYr8cNl/view",
+      "size_bytes": 640570,
+      "git_blob_sha1": "8003e60cd6069c102696fd585892363d3528b9e6"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XII_Multiplicity_Sensitive_CoPoisson_Zero_Jets_Finite_Span_Sign_Rigidity_2026-10-27_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_XII_Multiplicity_Sensitive_CoPoisson_Zero_Jets_Finite_Span_Sign_Rigidity_2026-10-27_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1HuDNt0PMQn_LR7YeYgdjKn09uZfpXGeO",
+      "drive_url": "https://drive.google.com/file/d/1HuDNt0PMQn_LR7YeYgdjKn09uZfpXGeO/view",
+      "size_bytes": 638589,
+      "git_blob_sha1": "8d9cc885afaede706e259753741c3e771bc0bf07"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_XI_Finite_Quadratic_Rigidity_Lattice_NonRepair_2026-10-27_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_XI_Finite_Quadratic_Rigidity_Lattice_NonRepair_2026-10-27_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1Lq7ZTOmJ40hZKOuhFKJ8yOKsw84dulmn",
+      "drive_url": "https://drive.google.com/file/d/1Lq7ZTOmJ40hZKOuhFKJ8yOKsw84dulmn/view",
+      "size_bytes": 502986,
+      "git_blob_sha1": "f74d4bc3480e017ffdb456734f7cf8fc0375bafa"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_X_Exact_Native_Logarithmic_Window_Rates_2026-10-27_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_X_Exact_Native_Logarithmic_Window_Rates_2026-10-27_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1zeMVQcIHfgTpH7ogTeKdADWzA3ck6x3Z",
+      "drive_url": "https://drive.google.com/file/d/1zeMVQcIHfgTpH7ogTeKdADWzA3ck6x3Z/view",
+      "size_bytes": 605193,
+      "git_blob_sha1": "7a85bfcc709d4df135d0ec300ba237a21c48fc40"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_IX_Multiplicity_Sensitive_Native_Residual_Terminal_Memory_2026-10-24_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_IX_Multiplicity_Sensitive_Native_Residual_Terminal_Memory_2026-10-24_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1SFeB4V9toA5idml074XzUfTakyEEG5cZ",
+      "drive_url": "https://drive.google.com/file/d/1SFeB4V9toA5idml074XzUfTakyEEG5cZ/view",
+      "size_bytes": 463400,
+      "git_blob_sha1": "f20e7d6bb3167fbe65f329c6fea1ccadd630b73f"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_VIII_Nonlinear_Fourier_Duality_Defects_2026-10-24_v0_2_PROOFREAD.pdf",
+      "filename": "Paper_VIII_Nonlinear_Fourier_Duality_Defects_2026-10-24_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1Xa61ZhH8V29U2OLX5Q2cFULIJYVbEQ3c",
+      "drive_url": "https://drive.google.com/file/d/1Xa61ZhH8V29U2OLX5Q2cFULIJYVbEQ3c/view",
+      "size_bytes": 499970,
+      "git_blob_sha1": "e484b37e986a90002802fa6a1952f05ff086b363"
+    },
+    {
+      "path": "papers/2026-11-21/Paper_VII_Arithmetic_Sawtooth_Stieltjes_Spectral_Sampling_2026-10-24_v0_2.pdf",
+      "filename": "Paper_VII_Arithmetic_Sawtooth_Stieltjes_Spectral_Sampling_2026-10-24_v0_2.pdf",
+      "drive_file_id": "1UpC2OTvtDTPE4hz390XhAQwl1xQ7aHTZ",
+      "drive_url": "https://drive.google.com/file/d/1UpC2OTvtDTPE4hz390XhAQwl1xQ7aHTZ/view",
+      "size_bytes": 733954,
+      "git_blob_sha1": "a5aa162fc16d3da3a26a1624d7c8304eafac7e64"
+    },
+    {
+      "path": "papers/2026-11-21/Corrected_Native_Source_Transforms_Double_Exponential_Localization_Weil_OPICA_2026-10-24_v0_2_PROOFREAD.pdf",
+      "filename": "Corrected_Native_Source_Transforms_Double_Exponential_Localization_Weil_OPICA_2026-10-24_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1encYX7PsMy8nrPrl1QvzoKQlcudSGqxw",
+      "drive_url": "https://drive.google.com/file/d/1encYX7PsMy8nrPrl1QvzoKQlcudSGqxw/view",
+      "size_bytes": 731955,
+      "git_blob_sha1": "3a2a1ab74a6e1bd55c6c0a048057aa748dcae3a5"
+    },
+    {
+      "path": "papers/2026-11-21/Actual_Zero_CoPoisson_Measures_Self_Dual_Profiles_2026-10-24_v0_2_PROOFREAD.pdf",
+      "filename": "Actual_Zero_CoPoisson_Measures_Self_Dual_Profiles_2026-10-24_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1OTGDBsoosJ020wagmkhqRw5-gwmZ3LZT",
+      "drive_url": "https://drive.google.com/file/d/1OTGDBsoosJ020wagmkhqRw5-gwmZ3LZT/view",
+      "size_bytes": 684644,
+      "git_blob_sha1": "62ba034efa6b817b3ed9037b145759a84bdca5c2"
+    },
+    {
+      "path": "papers/2026-11-21/Controlled_Near_Sharp_Fourier_Gaps_Distributional_Escape_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf",
+      "filename": "Controlled_Near_Sharp_Fourier_Gaps_Distributional_Escape_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1Zh2Qvf5qsGgqsWqadG5gj1LR12HTkgs0",
+      "drive_url": "https://drive.google.com/file/d/1Zh2Qvf5qsGgqsWqadG5gj1LR12HTkgs0/view",
+      "size_bytes": 670466,
+      "git_blob_sha1": "ade1f5663f1130c9a26cdbc11b5d48d98eff2f5c"
+    },
+    {
+      "path": "papers/2026-11-21/Signed_Fourier_Gap_Rigidity_Weighted_Arithmetic_Mixing_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf",
+      "filename": "Signed_Fourier_Gap_Rigidity_Weighted_Arithmetic_Mixing_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1GNzAVcVZAF4485rXRIh1_NJ5c7U8oN7_",
+      "drive_url": "https://drive.google.com/file/d/1GNzAVcVZAF4485rXRIh1_NJ5c7U8oN7_/view",
+      "size_bytes": 658847,
+      "git_blob_sha1": "b9d2b82e093e8916891b0dd42cff4249ed5b01df"
+    },
+    {
+      "path": "papers/2026-11-21/Exact_Parity_Inertia_Moment_Filtration_Finite_Sign_Rigidity_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf",
+      "filename": "Exact_Parity_Inertia_Moment_Filtration_Finite_Sign_Rigidity_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1pBqZGQz-Fw1xakuXHnvcQnCaOU_aZYpj",
+      "drive_url": "https://drive.google.com/file/d/1pBqZGQz-Fw1xakuXHnvcQnCaOU_aZYpj/view",
+      "size_bytes": 648228,
+      "git_blob_sha1": "91c8d1d06f2453383fd05deff7d7945869d9f6b9"
+    },
+    {
+      "path": "papers/2026-11-21/Global_Arithmetic_Derivative_Transport_Canonical_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf",
+      "filename": "Global_Arithmetic_Derivative_Transport_Canonical_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1lFZcpIHi3hWA2zNYcy8M9sDiVvLo02vY",
+      "drive_url": "https://drive.google.com/file/d/1lFZcpIHi3hWA2zNYcy8M9sDiVvLo02vY/view",
+      "size_bytes": 589895,
+      "git_blob_sha1": "76c3a8c4efc2bd29068685dc69dfa6ac6ca10a2d"
+    },
+    {
+      "path": "papers/2026-11-21/Inherited_Stationarity_Optimized_Schur_Curvature_Weil_CCM_2026-10-10_v0_3_MERGE_VERIFIED.pdf",
+      "filename": "Inherited_Stationarity_Optimized_Schur_Curvature_Weil_CCM_2026-10-10_v0_3_MERGE_VERIFIED.pdf",
+      "drive_file_id": "1OnBAvHnL7azbQroZm5BRTtBV17thtpsX",
+      "drive_url": "https://drive.google.com/file/d/1OnBAvHnL7azbQroZm5BRTtBV17thtpsX/view",
+      "size_bytes": 603390,
+      "git_blob_sha1": "cda74b1dd568d582162e3d49bd3c3f4232b6ff90"
+    },
+    {
+      "path": "papers/2026-11-21/Second_Order_Prime_Seam_Regularity_Weil_CCM_2026-10-09_v0_2_PROOFREAD.pdf",
+      "filename": "Second_Order_Prime_Seam_Regularity_Weil_CCM_2026-10-09_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1vklEk7fuhZv-G_TQ2ZcHU8akT6oLhnkm",
+      "drive_url": "https://drive.google.com/file/d/1vklEk7fuhZv-G_TQ2ZcHU8akT6oLhnkm/view",
+      "size_bytes": 536409,
+      "git_blob_sha1": "a3d53dadfae1a916b8bb038a242a7ccacefc95da"
+    },
+    {
+      "path": "papers/2026-11-21/Retained_Real_Cross_Parity_Gamma_Escape_Weil_CCM_2026-09-24_v0_2_PROOFREAD.pdf",
+      "filename": "Retained_Real_Cross_Parity_Gamma_Escape_Weil_CCM_2026-09-24_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1aXhUTvCji9JgoK1XlkRmx93BVCbhQ1K5",
+      "drive_url": "https://drive.google.com/file/d/1aXhUTvCji9JgoK1XlkRmx93BVCbhQ1K5/view",
+      "size_bytes": 430949,
+      "git_blob_sha1": "4c739b561d3c3cf64d9545cdf148de18feabc55a"
+    },
+    {
+      "path": "papers/2026-11-21/Fixed_Dimension_Ground_Contact_Weil_CCM_2026-09-30_v0_2_PROOFREAD.pdf",
+      "filename": "Fixed_Dimension_Ground_Contact_Weil_CCM_2026-09-30_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1RmNgn3XmlfaN3abmDRI0zKZDEn91EQZe",
+      "drive_url": "https://drive.google.com/file/d/1RmNgn3XmlfaN3abmDRI0zKZDEn91EQZe/view",
+      "size_bytes": 425309,
+      "git_blob_sha1": "07b53e513231a645381733c52157d447a60db962"
+    },
+    {
+      "path": "papers/2026-11-21/Canonical_First_Crossing_Shell_Rigidity_Weil_CCM_2026-10-01_v0_2_PROOFREAD.pdf",
+      "filename": "Canonical_First_Crossing_Shell_Rigidity_Weil_CCM_2026-10-01_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "17fEfT0p6JafxfYjNw5yl0oOVsjbtlLuQ",
+      "drive_url": "https://drive.google.com/file/d/17fEfT0p6JafxfYjNw5yl0oOVsjbtlLuQ/view",
+      "size_bytes": 431507,
+      "git_blob_sha1": "e456ad37891bf49c073eddcaa6fd1daecd48ebdf"
+    },
+    {
+      "path": "papers/2026-11-21/True_Ground_Source_Arithmetic_Rigidity_Weil_CCM_2026-09-26_v0_2_PROOFREAD.pdf",
+      "filename": "True_Ground_Source_Arithmetic_Rigidity_Weil_CCM_2026-09-26_v0_2_PROOFREAD.pdf",
+      "drive_file_id": "1xgWQRVIBMa9Vs0XaBgDYfa1D41Pz0wIA",
+      "drive_url": "https://drive.google.com/file/d/1xgWQRVIBMa9Vs0XaBgDYfa1D41Pz0wIA/view",
+      "size_bytes": 529571,
+      "git_blob_sha1": "f040bf454b70b52d37f1e10f9e0869ea25a472dd"
+    },
+    {
+      "path": "papers/2026-11-21/One_Coefficient_Cross_Parity_Rigidity_Weil_CCM_2026-09-23_FINAL.pdf",
+      "filename": "One_Coefficient_Cross_Parity_Rigidity_Weil_CCM_2026-09-23_FINAL.pdf",
+      "drive_file_id": "1ycyGthS6p3F9vsrOARO9UWOH8wtvaxu8",
+      "drive_url": "https://drive.google.com/file/d/1ycyGthS6p3F9vsrOARO9UWOH8wtvaxu8/view",
+      "size_bytes": 594258,
+      "git_blob_sha1": "b9a2774d50fc78060d482831aeab9a9b1f3b84ef"
+    },
+    {
+      "path": "papers/2026-11-21/Cross_Parity_Source_Secular_Rigidity_Weil_CCM_2026-09-19_v0_2.pdf",
+      "filename": "Cross_Parity_Source_Secular_Rigidity_Weil_CCM_2026-09-19_v0_2.pdf",
+      "drive_file_id": "1INxYvCUP6NGxnxZFVwravSZKvLd982Bh",
+      "drive_url": "https://drive.google.com/file/d/1INxYvCUP6NGxnxZFVwravSZKvLd982Bh/view",
+      "size_bytes": 570059,
+      "git_blob_sha1": "448fb88f6608f3ac879de48cb61c5eb29c22b3cb"
+    },
+    {
+      "path": "papers/2026-11-21/Moment_Jet_Rigidity_Weil_CCM_2026-09-19_v0_2.pdf",
+      "filename": "Moment_Jet_Rigidity_Weil_CCM_2026-09-19_v0_2.pdf",
+      "drive_file_id": "1hjdw-3xKNgvkPnOjnjyuT2F8PxSOYs2Z",
+      "drive_url": "https://drive.google.com/file/d/1hjdw-3xKNgvkPnOjnjyuT2F8PxSOYs2Z/view",
+      "size_bytes": 518933,
+      "git_blob_sha1": "c6573e6dc4d76a468b66b80c9a13b68ac235e12b"
+    },
+    {
+      "path": "papers/2026-11-21/Log_Cover_Determinant_Rigidity_Weil_CCM_2026-09-12_v0_6.pdf",
+      "filename": "Log_Cover_Determinant_Rigidity_Weil_CCM_2026-09-12_v0_6.pdf",
+      "drive_file_id": "1WF19sdE7dMM9tzsRbi12f7Vzu2pHc4M3",
+      "drive_url": "https://drive.google.com/file/d/1WF19sdE7dMM9tzsRbi12f7Vzu2pHc4M3/view",
+      "size_bytes": 511809,
+      "git_blob_sha1": "4c238915d4da0994c1afc4b07d2890142d3e21e7"
+    },
+    {
+      "path": "papers/2026-11-21/Zero_Shift_Source_Rigidity_Weil_CCM_2026-09-10_v0_3.pdf",
+      "filename": "Zero_Shift_Source_Rigidity_Weil_CCM_2026-09-10_v0_3.pdf",
+      "drive_file_id": "1CHuOFIR6x8rNZAyOHAjhCrpv3UoA-Qk_",
+      "drive_url": "https://drive.google.com/file/d/1CHuOFIR6x8rNZAyOHAjhCrpv3UoA-Qk_/view",
+      "size_bytes": 466401,
+      "git_blob_sha1": "5ce1cb01b24c077c84ad210eaabb14fdfe825c06"
+    },
+    {
+      "path": "papers/2026-11-21/First_Bad_Cubic_Rigidity_Weil_CCM_2026-09-08_v0_2.pdf",
+      "filename": "First_Bad_Cubic_Rigidity_Weil_CCM_2026-09-08_v0_2.pdf",
+      "drive_file_id": "1NWW1KF83HviNdySwkRIA1H2h4iWpQ7R2",
+      "drive_url": "https://drive.google.com/file/d/1NWW1KF83HviNdySwkRIA1H2h4iWpQ7R2/view",
+      "size_bytes": 648414,
+      "git_blob_sha1": "aa5711f6b70ca93237b138150524bb6a18d01aba"
+    },
+    {
+      "path": "papers/2026-11-21/Complete_Two_Translate_Detectors_Theorem_Core_v0_3_PROOFREAD.pdf",
+      "filename": "Complete_Two_Translate_Detectors_Theorem_Core_v0_3_PROOFREAD.pdf",
+      "drive_file_id": "1t0lSfW8IfcpFQxi_Mcv8lTpE058bohZ2",
+      "drive_url": "https://drive.google.com/file/d/1t0lSfW8IfcpFQxi_Mcv8lTpE058bohZ2/view",
+      "size_bytes": 705471,
+      "git_blob_sha1": "4d9a19bc10145a78072e7b456b922c6137e764ae"
+    },
+    {
+      "path": "papers/2026-11-21/Persistent_Finite_Detection_Off_Critical_Zeros_Weil_CCM_2026-09-03_v0_2.pdf",
+      "filename": "Persistent_Finite_Detection_Off_Critical_Zeros_Weil_CCM_2026-09-03_v0_2.pdf",
+      "drive_file_id": "1sN3belRkmjHL6Y7PWhv-z27uhmllnLjM",
+      "drive_url": "https://drive.google.com/file/d/1sN3belRkmjHL6Y7PWhv-z27uhmllnLjM/view",
+      "size_bytes": 402389,
+      "git_blob_sha1": "28d9b8c56b728f16a640e92a7de87135f88c1162"
+    },
+    {
+      "path": "papers/2026-11-21/Exact_Normalization_Reconciliation_Finite_Weil_CCM_2026-08-31_v0_1_PROOFREAD.pdf",
+      "filename": "Exact_Normalization_Reconciliation_Finite_Weil_CCM_2026-08-31_v0_1_PROOFREAD.pdf",
+      "drive_file_id": "1MkMwI_riS-6kbKeF5ESKNVjcn_BWRJDX",
+      "drive_url": "https://drive.google.com/file/d/1MkMwI_riS-6kbKeF5ESKNVjcn_BWRJDX/view",
+      "size_bytes": 439133,
+      "git_blob_sha1": "93d85a744a69e0bce589dfa3c7e757e5342a2994"
+    },
+    {
+      "path": "papers/2026-11-21/Scalar_Defect_Reduction_Finite_Weil_CCM_Dictionaries_2026-08-30_v0_1_PROOFREAD.pdf",
+      "filename": "Scalar_Defect_Reduction_Finite_Weil_CCM_Dictionaries_2026-08-30_v0_1_PROOFREAD.pdf",
+      "drive_file_id": "1kqwxrahnsdc6vrJouXOwFyxaBq5gJZ3w",
+      "drive_url": "https://drive.google.com/file/d/1kqwxrahnsdc6vrJouXOwFyxaBq5gJZ3w/view",
+      "size_bytes": 425210,
+      "git_blob_sha1": "c5415765e8a657647fba9b175bad7030ca1d88eb"
+    },
+    {
+      "path": "papers/2026-11-21/Explicit_Gram_Witnesses_Off_Critical_Pair_Blocks_2026-08-25_v1_2_PROOFREAD.pdf",
+      "filename": "Explicit_Gram_Witnesses_Off_Critical_Pair_Blocks_2026-08-25_v1_2_PROOFREAD.pdf",
+      "drive_file_id": "1qfEBG6yS1lclPGxSQhpAJMsQv1WHhYBL",
+      "drive_url": "https://drive.google.com/file/d/1qfEBG6yS1lclPGxSQhpAJMsQv1WHhYBL/view",
+      "size_bytes": 409206,
+      "git_blob_sha1": "3fd1a9f739d9456335d76648fce18eb0a3e708c4"
+    }
+  ]
+}
