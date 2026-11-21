@@ -106,7 +106,9 @@ jobs:
               print(path)
           PY
           git diff --cached --check
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$RUNNER_TEMP/post-source-scope.json"
+          # The governed patch is intentionally staged at this point. The
+          # strict --check requires a clean, committed tree; run it after commit.
+          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check-tree > "$RUNNER_TEMP/staged-source-tree.json"
       - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: .lake/build
@@ -140,6 +142,9 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m "chore(PR306): materialize exact-head RHKG graph outputs"
+          # Validate generated files only once they are committed and the
+          # original clean-tree invariant becomes valid again.
+          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$RUNNER_TEMP/post-source-scope.json"
           test "$(git rev-parse HEAD^)" = "$SOURCE_SHA"
           test -z "$(git status --porcelain --untracked-files=all)"
           git fetch --no-tags origin "$TARGET_BRANCH"
