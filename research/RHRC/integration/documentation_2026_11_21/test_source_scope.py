@@ -52,6 +52,18 @@ class DocumentationScopeTests(unittest.TestCase):
                      "papers/2026-11-21/unlisted.pdf", "Zeta23/Unlisted.lean"):
             self.assertFalse(any(scope.re.search(row["pattern"], path) for row in rules))
 
+    def test_document_semantic_inputs_are_utf8(self):
+        """Both graph document readers require text for their entire real corpus."""
+        from ..opica_round2.tests.test_file_classes import graph
+
+        contract = graph.load_classification_contract()
+        documents = [path for path in graph.tracked_files()
+                     if graph.classify(path, contract)[0] in {"DOCUMENTATION", "LIVING_SSOT"}]
+        self.assertTrue(documents, "The real document corpus must not be empty")
+        for path in documents:
+            with self.subTest(path=path):
+                (graph.REPO / path).read_text(encoding="utf-8")
+
     def test_undeclared_changes_fail_closed(self):
         cases = {
             "extra-document": {**self.current, "docs/unreviewed.md": self.new},

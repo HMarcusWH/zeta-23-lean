@@ -31,7 +31,7 @@ RESEARCH_PARENT_TREE = "f90fe234adcc9ddabe481c6569230cf64bfc98ac"
 PREFIX = "research/RHRC/integration/documentation_2026_11_21/"
 POLICY = PREFIX + "SOURCE_SCOPE.json"
 VALIDATOR = PREFIX + "source_scope.py"
-POLICY_SHA256 = "f62bd1da775a536de265e6dbb8afbb441bb6d12dd1bfc2a9db6253043d78f83f"
+POLICY_SHA256 = "efb50a9ed565f0988e08d1308308db7d74bd5a757f6813a8ffe3dddbd8ebee45"
 SCHEMA = "RHRC_DOCUMENTATION_SOURCE_INSPECTION_V1"
 POLICY_SCHEMA = "RHRC_DOCUMENTATION_CLOSED_SOURCE_POLICY_V1"
 
@@ -233,7 +233,7 @@ def documentation_classification_rules(policy: dict) -> list[dict]:
              ("__init__.py", "source_scope.py", "test_source_scope.py", "check_documentation.py")],
              "RESEARCH_EXECUTABLE"),
         rule("research_archive_2026_11_21_papers", [name for name in policy["archive_added"]
-             if name.endswith(".pdf")], "DOCUMENTATION"),
+             if name.endswith(".pdf")], "RESEARCH_FIXTURE"),
         rule("research_snapshot_citation", ["CITATION.cff"], "LICENSE_OR_METADATA"),
     ]
 

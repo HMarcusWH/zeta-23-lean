@@ -8,10 +8,10 @@
     "docs/REUSABLE_COMPONENTS.md": "ff65e249b78fa68ecd3a35a9c39cbaa5baceaf58",
     "docs/examples/exact_examples.py": "f6ad1faec35ba1a1dfb256d44d2d9ac890525dec",
     "docs/examples/infrastructure_replay.py": "e7ee8465492a29196d420f058c1dff96b3b02009",
-    "research/RHRC/integration/documentation_2026_11_21/README.md": "1dd95d67b8b610cb34ac15381970956a73434757",
+    "research/RHRC/integration/documentation_2026_11_21/README.md": "ac3d50618c8039ba0ed2522178d19ccc26ce30c7",
     "research/RHRC/integration/documentation_2026_11_21/__init__.py": "4a971e3b4ded5b1640e0654c2ba9a6ee5b4327df",
     "research/RHRC/integration/documentation_2026_11_21/check_documentation.py": "a9dd9033e8ed6a36dcdc851208985c8fa76220c3",
-    "research/RHRC/integration/documentation_2026_11_21/test_source_scope.py": "b3dd2192ebe26265e1321743f43937d15264388b",
+    "research/RHRC/integration/documentation_2026_11_21/test_source_scope.py": "d52ca75a6d8315271e51c65d506f9be8a9d8f3e8",
     "research/RHRC/integration/opica_round4/arithmetic_frontier/README.md": "3c6c6f63e1362f81fb7c1941df5fc48a6d0a2550"
   },
   "archive_added": {
@@ -82,7 +82,7 @@
     "research/RHRC/README.md": "697b4161b56170f2425ba1c8a3a315d204e8a64b",
     "research/RHRC/countermodels/README.md": "27d32b593829f8d22190513d2d9cc8bbe2898bcf",
     "research/RHRC/ffbbp/README.md": "c6b8c070362679523855b923fe625e4d9e650403",
-    "research/RHRC/graph/FILE_CLASSES.json": "14621143ad879d96577962213a803b6dfeb73f22",
+    "research/RHRC/graph/FILE_CLASSES.json": "0c1a41f313dbc7c58acccf3deaf4225aed2c4f43",
     "research/RHRC/graph/README.md": "e564bec72dcfa6216a39619dc0a25a5a1ce0954d",
     "research/RHRC/integration/README.md": "21938db6f4de45bfd65a39fceb11e3f10b7fc4bd",
     "research/RHRC/integration/opica_composition/README.md": "2c9b45cb2b0dd73ac2dfebb268a317d9101952d0",
@@ -178,5 +178,5 @@
   "research_parent": "3835cc66641fa48d78db932db1d32b57687f728c",
   "research_parent_tree": "f90fe234adcc9ddabe481c6569230cf64bfc98ac",
   "schema": "RHRC_DOCUMENTATION_CLOSED_SOURCE_POLICY_V1",
-  "validator_template_sha256": "33391f5d96ab8546a8942356c98e8ca9806185463b5658e671dc2bfbe8f65e57"
+  "validator_template_sha256": "e5c3c591dcdc358c2702ca5b3aa22e1f4307e13c5299875ffb527376909704af"
 }

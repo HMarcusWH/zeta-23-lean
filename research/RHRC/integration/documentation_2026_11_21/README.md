@@ -24,6 +24,14 @@ archive, examples, scope tools and citation metadata. The entire inherited
 classification order and assertions remain checked. Historical validators
 continue to describe their original source objects.
 
+The 43 exact archived PDF paths are `RESEARCH_FIXTURE` / `AUDIT_ONLY`, matching
+the existing treatment of binary paper inputs. The graph indexes their original
+blobs as fixtures; the [paper index](../../../../papers/README.md) and
+[result crosswalk](../../../../docs/RESULTS_AND_FORMALIZATION.md) provide textual
+navigation. `DOCUMENTATION` and `LIVING_SSOT` remain UTF-8 text inputs for both
+document-reference and semantic-closure producers. A real-corpus regression
+checks that every file in those classes decodes successfully.
+
 The existing 77 active generated products retain the same exact path inventory
 and their separate canonical freshness requirement. The four historical products
 remain immutable. The successor does not make a generated product current merely
