@@ -22,7 +22,7 @@ from .snapshot import retire_copied_evidence_tree
 from .descendant import BASE,BASE_TREE,git
 # Historical validators remain immutable. The common-pin successor replays
 # their pinned parent objects before authenticating its exact reviewed delta.
-from ..opica_step4_production.source_scope import validate_descendant
+from ..opica_step4_production.canonical_source_scope_v2 import validate_descendant
 from .accept import (ROUND4_LANES,verify_lane_bundle,require_test_receipt,accept_application_scope,
                      REPLAY_GROUP_IDS,group_lanes,verify_independent_group,join_independent_groups)
 
@@ -321,6 +321,10 @@ def run_command(repo,argv,output,label):
     return {'argv':list(map(str,argv)),'exit_code':result.returncode,'log':log.name,'sha256':file_hash(log)}
 
 def classification_command(source):
+    if source.get('schema') == 'OPICAS4_CANONICAL_INDEX_SOURCE_INSPECTION_V2':
+        return [sys.executable, '-B', '-m',
+                'research.RHRC.integration.opica_step4_production.canonical_source_scope_v2',
+                '--check-classification']
     if source.get('schema') == 'OPICAS4_COMMON_PIN_SOURCE_INSPECTION_V1':
         return [sys.executable, '-B', '-m',
                 'research.RHRC.integration.opica_step4_production.source_scope',

@@ -101,7 +101,7 @@ def _search_contract(repo,target):
 
 def freeze(repo,experiment,output,*,worker):
     """Freeze only an independently reviewed complete source/worker profile."""
-    from ..opica_step4_production.source_scope import validate_descendant
+    from ..opica_step4_production.canonical_source_scope_v2 import validate_descendant
     from .config import check_configuration
     from .qualification import _packages
     repo=unlinked(repo).resolve();worker_capability(worker)
