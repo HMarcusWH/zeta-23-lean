@@ -1,23 +1,27 @@
 # Mathematical glossary and historical terminology crosswalk
 
-Version 1 — 28 October 2026. This is a navigation crosswalk for the current
-source lineage, not a new mathematical specification. RH and Step 4 remain OPEN.
+Version 2 — 21 November 2026 research snapshot. This navigation crosswalk
+covers the archived source through the arithmetic frontier and Round 5/6. It is
+not a new mathematical specification. This repository's RH attempt and
+independent Step 4 estimates remain incomplete.
 
 The project has reused letters and metaphors across different campaigns.
 Resolve a label through its dated document, actual source object and exact
 theorem before transferring a result. A similar name is not an equivalence.
 The [project guide](PROJECT_GUIDE.md) explains the programme in connected prose;
 the [framework guide](FRAMEWORKS.md) covers the evidence and governance systems.
+Use the [result map](RESULTS_AND_FORMALIZATION.md) for an exact paper/declaration
+mapping and [reusable components](REUSABLE_COMPONENTS.md) for applications.
 
 ## Mathematical objects and symbols
 
 | Term | Meaning in this programme | Scope to retain |
 | --- | --- | --- |
-| RH | Every actual nontrivial zeta zero has real part `1/2`. | The terminal conjecture is OPEN. A theorem with an explicit RH-strength premise is conditional. |
+| RH | Every actual nontrivial zeta zero has real part `1/2`. | The terminal conclusion is not established by this repository. A theorem with an explicit RH-strength premise remains conditional. |
 | `rho` | An element of the repository's actual nontrivial-zeta-zero carrier. | A synthetic off-line atom is a control, not such an element. |
 | `lambda = rho - 1/2` | The shifted complex coordinate used by causal Laplace obstructions. | Distinct from a real spectral shift also named `lam` in finite resolvent theorems. |
 | `kappa = rho(1-rho)` | The spectral coordinate used by zero profiles and sampling. | It is not the shifted coordinate `lambda`; off-line applications retain their nonreal-domain conditions. |
-| `L` | Physical aperture in the canonical finite/contact programme. | It is not automatically the physical observation time `T`. A scale change needs its adapter. |
+| `L` | Physical aperture in the canonical finite/contact programme. Some later arithmetic notes use `L` for an integer denominator cutoff. | Resolve the local definition; neither is automatically the observation time `T`. A scale change needs its adapter. |
 | `K` | Finite Fourier cutoff for the actual canonical matrix/carrier. | It is not a common global cutoff for every aperture unless the theorem says so. |
 | `Theta` | The actual supremum of nontrivial-zero displacement from the critical line. | The [native cuts](../Zeta23/OPICARound2/NativeCuts.lean) relate `Theta=0` to RH; they do not prove it. |
 | `beta` | Often an exponent with `0 < beta < abs(Re(rho)-1/2)` in the Step123 producer. | The walkthrough's `alpha,beta` instead name two real ground energies locally. Other source multipliers also use Greek letters. Read the declaration. |
@@ -33,6 +37,50 @@ The actual [Step123 producer](../Zeta23/ExceptionalZero/Step123OutputProducer.le
 [corrected intertwining](../Zeta23/CCM/CanonicalPoleNeutralIntertwining.lean) and
 [ground adapters](../Zeta23/OPICARound4/NativeWitnessCosts.lean) are primary
 definition/type references for these distinctions.
+
+## November arithmetic and finite structures
+
+| Term | Definition or role | Scope to retain |
+| --- | --- | --- |
+| Moment slice | A specified even/odd subspace of the physical pole-neutral carrier, with extra centered-moment constraints | The lower bound controls every vector in the entire slice using the physical norm. See [MomentSlices.lean](../Zeta23/OPICARound4/ArithmeticFrontier/MomentSlices.lean). |
+| Quartic detector cutoff | The literal `originalDetectorQuarticCutoff L` used by the frontier's slice contracts | A different cutoff needs a theorem connecting its carrier and estimates. |
+| Fixed-rate floor | Error allowance `C * exp(alpha * L)` below zero for an entire slice at every sufficiently large aperture | The rate is fixed before its constant and eventual threshold. See [GrowthClosure.lean](../Zeta23/OPICARound4/ArithmeticFrontier/GrowthClosure.lean). |
+| C1 / SB | Cofinal vanishing-error slice bounds / one cofinal semibound | Parity can vary between selected apertures, but one parity must cover every vector at a given state. Both contracts are RH-equivalent in [ZeroFreeFloor.lean](../Zeta23/OPICARound4/ArithmeticFrontier/ZeroFreeFloor.lean). |
+| PG / SE | Fixed-parity polynomial / fixed-parity subexponential slice bounds | PG fixes one exponent; SE fixes the parity before every positive rate. Their equivalences do not prove the arithmetic bounds. |
+| Zero-strip rate ladder | For `a >= 0`, displacement at most `a` is equivalent to the stated bounds at every rate strictly above `a` | The strict margin is part of the theorem. It does not give the endpoint rate or an unconditional improvement. |
+| Parity seed | Fixed centered-coefficient coordinates for a physical moment slice | The coordinate chart is generally nonunitary. [Round 5](../Zeta23/OPICARound5/ParityMomentBridge.lean) gives an exact algebraic sequence, not an energy-sign transfer. |
+| Native cell / whole shell | The actual arithmetic cell and complete terminal-shell geometry used by a chosen Round 6 reduction | Retain the specified labels, endpoints, normalization and all cells required by that route. See [NativeCells](../Zeta23/OPICARound6/PrimeFactorPaths/NativeCells.lean) and [NativeGeometry](../Zeta23/OPICARound6/PrimeFactorPaths/NativeGeometry.lean). |
+| Survivor charge | Signed charge of the population left after the route's prescribed removals | The total removed population and both signs affect the remaining charge. |
+| Spent partner | A partner consumed by a matched removal and therefore also absent from the surviving population | Deleting only the designated target changes the source accounting. See [paid partner graphs](../research/RHRC/integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/PAID_PARTNER_GRAPHS.md). |
+| Opposed product | `4 * max(e,0) * max(-o,0)` for real centered even/odd counts | Its error relative to `max(e-o,0)^2` is bounded by `(e+o)^2`; finite sums of the error require nonnegative weights. See [ParityDeficitProduct](../Zeta23/OPICARound6/PrimeFactorPaths/ParityDeficitProduct.lean). |
+| Complete stopping cut | A selection covering every branch of the finite tree after the allowed delay | [StoppingAlgebra](../Zeta23/OPICARound6/PrimeFactorPaths/StoppingAlgebra.lean) relates complete covers to its value and the high-path alternative. Selecting only favorable branches is not a complete cut. |
+| Fixed origin / averaged origin | Observation at the required arithmetic starting point / observation averaged over starting points | An average bound needs a separate valid transfer to control the chosen origin. |
+| `X` in final arithmetic routes | Native cutoff/horizon for the growing family | Its allowed values, weights, shells and fixed tolerance precede the cofinal choice. Read the selected route's definition. |
+| `B` in the late paper routes | Supremum of real parts of nontrivial zeros | Distinct from the shifted displacement supremum and from matrices also called `B`; normalization and factor-two rates must be read locally. |
+| Paper-route validation | Formal validation of the complete growing-horizon transfer from an arithmetic target to the source criterion | `PAPER_ROUTE_VALIDATION` is distinct from the independent upper bound in the [Round 6 register](../research/RHRC/integration/opica_round6/CONSTRAINTS.json). |
+
+### Quantifier patterns
+
+An **eventual** assertion has a threshold after which every allowed state obeys
+the bound. A **cofinal** assertion provides a suitable state beyond every
+requested threshold. For a predicate `P`, the patterns are:
+
+| Pattern | Meaning |
+| --- | --- |
+| `exists R, forall x >= R, P(x)` | Eventual: every later allowed state |
+| `forall R, exists x >= R, P(x)` | Cofinal: arbitrarily late allowed states |
+| `forall epsilon > 0, exists C, forall R, exists X >= R, P(epsilon,C,X)` | A cofinal tolerance-dependent bound whose constant is fixed before the requested lower horizon |
+
+These patterns explain the vocabulary; each actual theorem adds its carrier,
+cutoff, positivity and source hypotheses. Choosing a new constant after the
+horizon can weaken the statement. Choosing a different parity for every vector
+can weaken an entire-slice statement. A finite list of successful cutoffs
+establishes neither an eventual nor a cofinal asymptotic claim.
+
+A fixed sieve cutoff and a moving sieve cutoff can also produce different
+observables and diagonal energies. Refer to the source definition before
+transferring a bound between them. The [final project-guide walkthrough](PROJECT_GUIDE.md#round-6-from-finite-identities-to-the-signed-upper)
+shows how these distinctions enter the Round 6 routes.
 
 ## Current Steps and Paths
 
@@ -115,6 +163,9 @@ Sources for the historical mappings:
 | Repository Round 2 | `Zeta23.OPICARound2`: delayed causal probe, approximation, Gram/error budgets and finite certificates. | Internal Round 2 of the follow-up paper. |
 | Round 3 | `Zeta23.OPICARound3`: simultaneous negativity and actual newborn-state integration. | A proof of an independent source exclusion. |
 | Round 4 | `Zeta23.OPICARound4` plus governed composition/evidence runtime. | A replacement for the original contracts or a complete theorem-discovery procedure. |
+| Arithmetic-frontier increments and paper rounds | Subpackages under `OPICARound4/ArithmeticFrontier` and dated research notes, including internal round 7/8 notes | Later repository namespaces with similar numbers, or automatic proof of the bounds being formulated |
+| Round 5 parity bridge | File `Zeta23/OPICARound5/ParityMomentBridge.lean`; declarations in `Zeta23.OPICARound4.ArithmeticFrontier` | An energy isometry or independent sign estimate |
+| Round 6 | `Zeta23.OPICARound6.PrimeFactorPaths` plus the finite arithmetic and paper-route constraint records | Formal validation of every growing-horizon paper reduction |
 | R3-D01 | Eventual even-or-odd negative cover under an actual off-line zero. | D02's simultaneous state. |
 | R3-D02 | Cofinal both-parity negativity at one aperture and common cutoff. | A result from separate cofinality alone. |
 | R3-D03 | Local continuous negative frames and interval-specific margins. | A global uniform cutoff, interval width or margin. |

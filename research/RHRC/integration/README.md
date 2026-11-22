@@ -1,25 +1,42 @@
 # Integration packages and authority boundaries
 
-Start with the [repository README](../../../README.md),
-[dated snapshot](../../../docs/CURRENT_STATE.md),
-[project guide](../../../docs/PROJECT_GUIDE.md) and
-[framework guide](../../../docs/FRAMEWORKS.md). RH and Step 4 remain OPEN.
+This index covers the mathematical and research-tool packages present in the
+[21 November 2026 archive](../../../docs/CURRENT_STATE.md). Begin with the
+[project guide](../../../docs/PROJECT_GUIDE.md) for the argument,
+[reusable components](../../../docs/REUSABLE_COMPONENTS.md) for another
+application, or [reproduction recipes](../../../docs/REPRODUCIBILITY.md) for
+checks. This repository's independent Step 4 estimates remain open.
 
-| Package | Read first |
-| --- | --- |
-| Original OPICA | [Architecture and original theorem programme](opica/README.md) |
-| Native follow-up | [100-root programme and scoped continuation receipts](opica_followup/README.md) |
-| Round 2 | [Obstruction research, contracts and open estimates](opica_round2/README.md) |
-| Round 3 | [D01–D05, first-bad structure and finite probes](opica_round3/README.md) |
-| Round 4 | [Programme](opica_round4/README.md), [handover](opica_round4/INTEGRATION_HANDOVER.md), [contracts](opica_round4/MATH_CONTRACTS.json), [OPEN closures](opica_round4/CLOSURE_OBLIGATIONS.json) |
-| Governed composition | [Runtime, bounded search, production checks and aggregate](opica_composition/README.md) |
+| Package | Mathematical or operational role | Read first |
+| --- | --- | --- |
+| Step 1–3 integration | Assemble the hypothetical-zero detector and source-bound outputs | [Complete output](../../../Zeta23/ExceptionalZero/Step123CompleteOutput.lean), [project walkthrough](../../../docs/PROJECT_GUIDE.md#what-is-actually-carried-through-steps-13) |
+| Original OPICA | Obstruction preservation, corrections, rates and independent-constraint interfaces | [Architecture and original programme](opica/README.md) |
+| Native follow-up | Actual-source transforms, explicit formulas, rates, observations, profiles and jets | [100-root programme and scoped receipts](opica_followup/README.md) |
+| Round 2 | Delayed causal probes, Gram/residual analysis, fixed filters and finite certificates | [Programme and open estimates](opica_round2/README.md) |
+| Round 3 | Common-aperture parity negativity, local frames and actual newborn witnesses | [D01–D05 and finite probes](opica_round3/README.md) |
+| Round 4 | Signed source/spectral budgets, ground/observation support and conditional closure consumers | [Programme](opica_round4/README.md), [contracts](opica_round4/MATH_CONTRACTS.json), [open closures](opica_round4/CLOSURE_OBLIGATIONS.json) |
+| Arithmetic frontier | Moment slices, finite certificate soundness and the zero-strip/RH rate ladder | [Current package guide](opica_round4/arithmetic_frontier/README.md), [12 November handover](opica_round4/arithmetic_frontier/HANDOVER_2026-11-12.md) |
+| Round 5 parity bridge | Moment shift, exact seed dimensions and the short exact sequence | [ParityMomentBridge.lean](../../../Zeta23/OPICARound5/ParityMomentBridge.lean) |
+| Round 6 | Finite native-cell and prime-factor algebra, survivor costs, parity deficits, stopping trees and paper-route constraints | [Programme](opica_round6/README.md), [constraint register](opica_round6/CONSTRAINTS.json), [finite audit](../../../Zeta23/OPICARound6/PrimeFactorPaths/Verify.lean) |
+| Governed composition | Bounded proof search, source-bound evidence, independent consumers and acceptance aggregation | [Runtime guide](opica_composition/README.md), [framework guide](../../../docs/FRAMEWORKS.md) |
+
+Package rounds differ from the four mathematical steps. A later package does
+not replace an earlier contract or extend its historical receipt automatically.
+In particular, finite Round 6 transfers and the growing-horizon paper route
+have separate validation requirements. The [result map](../../../docs/RESULTS_AND_FORMALIZATION.md)
+records exact mathematical statements and source correspondence.
 
 The [integration boundary](INTEGRATION_BOUNDARY.json) separates mathematical
 authority, source-discovery evidence and framework outputs. The historical
-[framework registry](FRAMEWORK_REGISTRY.json) and active
-[provider selection](opica_composition/FRAMEWORK_PROVIDERS.json) are distinct.
-The older foundation account below explains the original extraction and authority
-design; its three anchor PRs are historical checkpoints, not the current head.
+[framework registry](FRAMEWORK_REGISTRY.json) and selected
+[provider configuration](opica_composition/FRAMEWORK_PROVIDERS.json) are distinct.
+Use the [current authority guide](../DOCUMENTATION_AUTHORITY.md) for source-policy
+routing and the [repository map](../../../docs/REPOSITORY_MAP.md) for graph and
+build surfaces.
+
+The older foundation account below preserves the original extraction and
+authority design. Its three anchor PRs and pending-work instructions belong to
+those checkpoints; they are not a live acceptance receipt for this checkout.
 
 <details>
 <summary>Preserved historical account and checkpoint wording</summary>

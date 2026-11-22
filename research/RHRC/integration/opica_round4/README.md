@@ -1,3 +1,20 @@
+# OPICA Round 4 and the later arithmetic frontier
+
+The [frozen source overview](../../../../docs/CURRENT_STATE.md) describes the
+whole repository. Read the [arithmetic-frontier guide](arithmetic_frontier/README.md)
+for the later November increments, then the [Round 5 bridge](../../../../Zeta23/OPICARound5/ParityMomentBridge.lean)
+and [Round 6 finite arithmetic](../opica_round6/README.md). The original Round 4
+contract and its release obligations keep their historical scope.
+
+The [result crosswalk](../../../../docs/RESULTS_AND_FORMALIZATION.md) maps later
+regularity and selected-packet results; it should be read alongside older open
+boundaries below. Cofinal selection does not provide an independent uniform
+arithmetic upper. Use the [reuse catalogue](../../../../docs/REUSABLE_COMPONENTS.md)
+and [reproduction recipes](../../../../docs/REPRODUCIBILITY.md) for a narrow module.
+
+<details>
+<summary>Preserved Round 4 package account and original acceptance scope</summary>
+
 # OPICA Round 4
 
 Round 4 combines a governed deduction runtime with source-faithful mathematical
@@ -57,3 +74,5 @@ Linux production qualification and the exact pushed commit are established
 by Actions artifacts, not by checked-in claims about a future commit.
 
 RH and Step 4 remain **OPEN**.
+
+</details>

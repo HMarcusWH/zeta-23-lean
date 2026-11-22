@@ -1,28 +1,133 @@
-# Zeta23 / RHRC: formal mathematics and the search for an RH obstruction
+# Zeta23 / RHRC: mathematics from an RH research programme
 
-> **21 November 2026 — research and manuscript freeze:** [43 original PDF manuscripts](papers/README.md) and a [mathematical approach / scientific-status guide](docs/RESEARCH_ARCHIVE_2026-11-21.md) have been archived on branch `archive/2026-11-21-research-freeze`. This preserves the research and its open obligations; it does not claim this fork proves RH. A separate proposed proof was announced by Levent Alpöge/Claude on 20 November 2026 and remains subject to ongoing external assessment. All older historical validation blocks below retain their original scope.
+This repository contains an attempt to derive the Riemann hypothesis (RH) from
+an independent restriction on the actual zeta source. It built finite detectors,
+exact spectral and arithmetic identities, causal approximation tools,
+conditional criteria, counterexamples and a governed formal-research runtime.
+Many of those results can be studied or adapted without pursuing RH.
 
+**The attempt is incomplete.** The independent Step 4 arithmetic estimates
+remain open in this programme. A conditional theorem can be fully proved while
+its required arithmetic premise is still missing.
 
-**2 November 2026 — PR #299 research handover:** [Start here](research/RHRC/integration/opica_round4/progress/2026-11-02/HANDOVER.md). The complete archived progress, negative results, external proof sources and reading map are published for the requested research break. RH and Step 4 remain OPEN. Older snapshots below retain their historical scope.
+**Research snapshot: 21 November 2026.** The [frozen overview](docs/CURRENT_STATE.md)
+identifies archive commit `7597acd`, its source contents and the separate evidence
+checkpoints. The [43 original manuscripts](papers/README.md) preserve the written
+research. This documentation guides readers through that snapshot; it is not a
+new whole-repository proof receipt.
 
+## Choose a reading route
 
-**7 November 2026 — arithmetic frontier, Increment 1:** [build specification](research/RHRC/integration/opica_round4/arithmetic_frontier/BUILD_SPEC.md). Exact moment-slice carriers and conditional consumers; no arithmetic sign is supplied.
+| I want to… | Start here | Continue with |
+| --- | --- | --- |
+| Understand what the RH attempt built | [Project guide](docs/PROJECT_GUIDE.md) | [Mathematical glossary](docs/MATHEMATICAL_GLOSSARY.md), [paper/result map](docs/RESULTS_AND_FORMALIZATION.md) |
+| See where the attempt stopped | [Frozen current state](docs/CURRENT_STATE.md) | [Final arithmetic routes](research/RHRC/integration/opica_round6/README.md), [earlier closure alternatives](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json) |
+| Reuse a theorem or technique | [Reusable components](docs/REUSABLE_COMPONENTS.md) | [Worked examples](docs/EXAMPLES.md), [reproduction recipes](docs/REPRODUCIBILITY.md) |
+| Inspect the Lean source and checks | [Repository map](docs/REPOSITORY_MAP.md) | [Results and formalization](docs/RESULTS_AND_FORMALIZATION.md), [reproducibility](docs/REPRODUCIBILITY.md) |
+| Understand or adapt the research tooling | [Framework guide](docs/FRAMEWORKS.md) | [Governed runner](research/RHRC/integration/opica_composition/README.md), [graph guide](research/RHRC/graph/README.md) |
+| Learn from failed approaches | [Failure lessons](docs/PROJECT_GUIDE.md#what-failed-and-what-would-justify-reopening-it) | [Countermodels](research/RHRC/countermodels/README.md), [dead-route records](research/RHRC/DEAD_ROUTES.md) |
 
-**The Riemann Hypothesis (RH) and this programme's Step 4 remain OPEN.**
-This repository contains Lean proofs, conditional reductions, counterexamples,
-finite experiments and research infrastructure. Each answers a different question.
+Contributors and AI agents should read [AGENTS.md](AGENTS.md) and the
+[agent guide](docs/AGENT_GUIDE.md) before changing source or claims.
 
-Start with the [project guide](docs/PROJECT_GUIDE.md) for the mathematics,
-the [repository map](docs/REPOSITORY_MAP.md) for files and graphs, or the
-[agent guide](docs/AGENT_GUIDE.md) before contributing.
-The [dated current-state page](docs/CURRENT_STATE.md) identifies the active package
-and evidence boundary. Check [PR #298](https://github.com/HMarcusWH/zeta-23-lean/pull/298)
-for its live head and CI; this README is not a live acceptance receipt.
+## What is in the repository
 
-The latest [source-constraint extension](research/RHRC/integration/opica_round4/SOURCE_CONSTRAINTS.md)
-compares the genuine source with the consequences of an off-line zero and
-prices the complete finite-to-smooth approximation error. It identifies the
-remaining arithmetic estimate; it does not establish that estimate or close RH.
+The project builds on [Anthropic's Zeta23](https://github.com/anthropics/zeta-23-lean),
+which formalizes *More than two thirds of the zeros of the Riemann zeta function
+are simple and on the critical line*. That upstream theorem has a different
+scope from the fork's RH programme. The [upstream README](UPSTREAM_README.md),
+[upstream audit](UPSTREAM_AUDIT.md), [LICENSE](LICENSE) and [NOTICE](NOTICE)
+preserve its statements, provenance and attribution.
+
+| Part | What was built | Entry point |
+| --- | --- | --- |
+| Upstream analytic and linear algebra foundations | Zeta and Dirichlet zero-proportion results, explicit-formula inputs, Hermitian linear algebra and independent comparator statements | [Upstream account](UPSTREAM_README.md), [comparator](comparator/README.md) |
+| Finite Weil / CCM mathematics | Canonical finite forms, normalization, boundary-flat carriers, parity maps, Schur/contact calculus and source identities | [Project guide](docs/PROJECT_GUIDE.md), [CCM source](Zeta23/CCM) |
+| Exceptional-zero and Step 1–3 construction | A hypothetical actual off-line zero produces a packet retaining its detector, finite image, source and quantitative consequences | [Complete output](Zeta23/ExceptionalZero/Step123CompleteOutput.lean), [typed consumer](Zeta23/RHRC/Step123CompleteOutputConsumer.lean) |
+| OPICA and native follow-up | Obstruction transport, source transforms, window rates, Fourier/co-Poisson results, observations and their costs | [Original OPICA](research/RHRC/integration/opica/README.md), [follow-up](research/RHRC/integration/opica_followup/README.md) |
+| Rounds 2–4 | Causal Gram/filter certificates, common-aperture parity negativity, newborn witnesses, signed spectral/source budgets and conditional closure consumers | [Package index](research/RHRC/integration/README.md), [Round 4](research/RHRC/integration/opica_round4/README.md) |
+| Arithmetic frontier and Round 5 | Moment-slice bounds, zero-strip rate equivalences, exact finite certificates and a parity-moment exact sequence | [Frontier guide](research/RHRC/integration/opica_round4/arithmetic_frontier/README.md), [parity bridge](Zeta23/OPICARound5/ParityMomentBridge.lean) |
+| Round 6 finite arithmetic | Native signed cells, prime-factor paths, survivor and partner accounting, parity-deficit products and finite stopping trees | [Round 6 guide](research/RHRC/integration/opica_round6/README.md), [finite source](Zeta23/OPICARound6/PrimeFactorPaths) |
+| Research infrastructure | Source-bound evidence, bounded proof composition, independent consumers, finite-menu selection and dependency/constraint graphs | [Framework guide](docs/FRAMEWORKS.md), [repository map](docs/REPOSITORY_MAP.md) |
+
+Package numbers are development layers. They are not the four mathematical
+steps, percentages of a proof, or interchangeable verification scopes.
+
+## The mathematical attempt
+
+RH says that every nontrivial zeta zero has real part `1/2`. This programme starts
+with a hypothetical actual zero away from that line and tracks what it forces.
+
+| Step | Mathematical role | Boundary |
+| --- | --- | --- |
+| **1. Fingerprint** | Produce a sign-sensitive obstruction while retaining source and multiplicity. | Detection does not exclude the zero. |
+| **2. No-hide** | Show that suitable canonical finite detectors must reveal the obstruction. | Existence of a negative witness does not establish positivity of all detectors. |
+| **3. Synchronized tracking** | Carry the same source lineage through finite, spectral, Fourier, arithmetic and causal descriptions. | An exact identity or transport does not supply an independent upper bound. |
+| **4. Independent contradiction** | Prove a matching restriction incompatible with the forced obstruction. | The required independent arithmetic information remains open. |
+
+The [project guide](docs/PROJECT_GUIDE.md) develops the argument, including a
+same-aperture, same-cutoff even/odd ground example. Its four modern Paths A–D
+cover complete signed observation, causal approximation, detector/contact energy
+and pole-neutral parity geometry. The final November work makes several signed
+arithmetic targets and their quantifiers more explicit. It also distinguishes
+finite Lean transfer results from growing-horizon arguments that remain at
+paper level.
+
+## Using results outside this attempt
+
+Start with the [component catalogue](docs/REUSABLE_COMPONENTS.md), which separates
+abstract statements, source-specific constructions and research infrastructure.
+Promising entry points include finite Gram witnesses, Schur derivative and
+kernel-safe completion formulas, analytic-jet identities, exact-data positivity
+certificates, weighted finite identities and stopping-cover duality.
+
+Mathematical portability and software packaging are separate. Some modules have
+small Mathlib-only import surfaces; a generic statement elsewhere may import a
+large part of the zeta development. A new application must retain the theorem's
+hypotheses or prove the adapter that changes them. The
+[examples](docs/EXAMPLES.md) and [reproduction guide](docs/REPRODUCIBILITY.md)
+show how to inspect that boundary.
+
+## Read a claim with its evidence
+
+| Description | What to inspect |
+| --- | --- |
+| Formal theorem, conditional implication or equivalence | Exact Lean declaration, all hypotheses, source pin, consumer and axiom/compiler receipt |
+| Paper theorem or composition | Manuscript version, proof location and correspondence to formal ingredients |
+| Finite certificate | Complete input domain, arithmetic method and independent reconstruction |
+| Numerical or search observation | Tested range, uncertainty, configuration and scientific disposition |
+| Counterexample or negative control | The precise inference refuted and the assumptions retained |
+| Open target | The missing proposition and its quantifiers |
+
+The [result map](docs/RESULTS_AND_FORMALIZATION.md) records these distinctions at
+result level. A `FINAL` or `PROOFREAD` filename is not a referee report. A green
+historical replay retains its historical scope, and a graph contact is not a
+mathematical implication. The [authority policy](research/RHRC/DOCUMENTATION_AUTHORITY.md)
+explains how source, contracts, evidence and narrative relate.
+
+## Build, reproduce and cite
+
+The default `lake build` follows the inherited [Zeta23 root](Zeta23.lean); it does
+not compile every research module in the repository. Use the
+[reproducibility recipes](docs/REPRODUCIBILITY.md) for a named theorem, package,
+finite replay or full governed acceptance. Compiler/package pins live in
+[lean-toolchain](lean-toolchain) and [lake-manifest.json](lake-manifest.json).
+Historical replay, source-inventory checks and fresh proof checks have distinct
+roles.
+
+The [paper index](papers/README.md) and
+[manifest](papers/MANIFEST_2026-11-21.json) retain the original PDF identities and
+hashes. Cite a particular result with its paper version or source commit, and
+retain upstream attribution when using inherited work. See [CITATION.cff](CITATION.cff)
+and the [archive overview](docs/RESEARCH_ARCHIVE_2026-11-21.md).
+
+## Historical records
+
+[FORK_NOTES.md](FORK_NOTES.md), [AUDIT.md](AUDIT.md), dated handovers and old
+research deltas preserve how the programme developed. Their former “current”
+labels describe those checkpoints. The preserved block below is a historical
+Control-v2 receipt; the [21 November overview](docs/CURRENT_STATE.md) is the
+human entry point for this archive.
 
 <details>
 <summary>Historical Control-v2 snapshot: frozen PR #287 scope</summary>
@@ -83,165 +188,3 @@ RESEARCH / CONTROL FIREWALL
 <!-- RHRC_CURRENT_STATE_END -->
 
 </details>
-
-<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
-## What this project is
-
-RH says that every nontrivial zero of the Riemann zeta function lies on the
-critical line, with real part `1/2`. Our research starts by supposing there is
-an actual zero away from that line and asking what it would force.
-The goal is to prove an independent property of the actual zeta construction
-that contradicts those forced consequences.
-
-The repository builds on [Anthropic's Zeta23](https://github.com/anthropics/zeta-23-lean).
-Its upstream project formalizes the paper *More than two thirds of the zeros of
-the Riemann zeta function are simple and on the critical line*.
-That result and the fork's RH programme have different scopes. Read the retained
-[upstream README](UPSTREAM_README.md), [upstream audit](UPSTREAM_AUDIT.md),
-[license](LICENSE) and [notice](NOTICE) for attribution and original provenance.
-The fork's development is recorded in [FORK_NOTES.md](FORK_NOTES.md),
-[AUDIT.md](AUDIT.md) and the guide's [history](docs/PROJECT_GUIDE.md#how-the-opica-layers-fit-together).
-
-## The four mathematical steps
-
-| Step | Purpose | What the result does not supply |
-| --- | --- | --- |
-| **1. Fingerprint** | Turn a hypothetical off-line zero into a sign-sensitive obstruction, retaining its source and multiplicity. | A restriction excluding that zero. |
-| **2. No-hide** | Produce canonical witnesses at suitable scales; the obstruction cannot escape every detector. | Positivity of every detector. |
-| **3. Synchronized tracking** | Preserve the same source lineage through states, transforms, jets, fields and observations. | An independent bound on those objects. |
-| **4. Independent contradiction** | Prove a source-matched restriction incompatible with the obstruction. | This closing mathematics is still OPEN. |
-
-```mermaid
-flowchart LR
-    Z[Hypothetical off-line zero] --> W[1 and 2: detectable obstruction]
-    W --> T[3: source-preserving transport]
-    T --> R[A, B, C and D: restrictions to test]
-    R -. independent theorem still OPEN .-> X[4: contradiction]
-```
-
-A negative quadratic form, a pole, a nonzero jet and a failed approximation can
-encode the same obstruction. Moving between them does not by itself exclude it.
-An RH-equivalent criterion is useful, but proving the equivalence does not prove
-its positivity or convergence premise. The [worked example](docs/PROJECT_GUIDE.md)
-traces the actual source, common aperture and cutoff through the even/odd contact
-case split and identifies the missing opposing inequality.
-
-## Four paths to Step 4
-
-These are the **modern Paths A–D**. Historical CI tracks, Pair A–D, old route
-letters and continuation stages use different numbering; use the
-[terminology crosswalk](docs/MATHEMATICAL_GLOSSARY.md).
-
-| Path | Mathematical route | Missing independent information |
-| --- | --- | --- |
-| **A — complete signed observation** | Recover the obstruction through arithmetic observations without losing its sign. | A bound or recovery-cost comparison retaining masks, collisions, mixed terms and repeated prime products. |
-| **B — causal approximation** | Approximate the actual causal target `v` by completed-source dictionary outputs, with the required coefficients and whole-line residual control. | Prove the source-specific residual tends to zero; approximating the source `jPlus` itself or proving finite Gram identities does not establish this limit. |
-| **C — contact / detector energy** | Use continuous contact geometry or the original detector's quantitative energy. | A matching bound on the full source and complementary energy, with correct growth and normalization. |
-| **D — pole-neutral parity geometry** | Force simultaneous even/odd negativity and study the first bad contact. | Exclude it using actual source arithmetic, the physical metric, full complement and singular/shared-ground cases. |
-
-The paths can interact. Geometry can select a ray for an arithmetic estimate;
-an observation theorem can price what a projection lost; an approximation
-theorem can constrain the same source in another representation. A composition
-must retain the same source, quantifiers, carriers and costs. The
-[guide](docs/PROJECT_GUIDE.md) distinguishes useful combinations from merely
-restating RH in another form.
-
-## OPICA and its rounds
-
-**OPICA** means **Obstruction-Preservation and Independent-Constraint
-Architecture**. It records what survives a transformation, what becomes
-invisible, and which independently justified constraints can be combined.
-
-| Package | Contribution | Where to read |
-| --- | --- | --- |
-| Original OPICA | Local residues, jets, transformations, energy, source adapters and counterexamples. | [Original package](research/RHRC/integration/opica/README.md) |
-| Native follow-up | A source-bound theorem programme with 100 original roots and 28 acceptance units; historical and narrow receipts remain distinct from full release acceptance. | [Follow-up and Stage 22 ledger](research/RHRC/integration/opica_followup/README.md) |
-| Round 2 | Research contracts, obstruction transport, source-faithful causal/observation interfaces and countermodels. | [Round 2](research/RHRC/integration/opica_round2/README.md) |
-| Round 3 | Pole-neutral overlap and first-bad structure, D01–D05, finite arithmetic probes, atlas and falsification gates. | [Round 3](research/RHRC/integration/opica_round3/README.md) |
-| Round 4 | Governed theorem composition, independent checking, additional signed-source/spectral support and finite research probes. | [Round 4](research/RHRC/integration/opica_round4/README.md) and [integration handover](research/RHRC/integration/opica_round4/INTEGRATION_HANDOVER.md) |
-
-These package rounds are different from the four mathematical steps above.
-Round 4 supplies checked support and tools for investigating Step 4; it does
-not supply an independent closing estimate or a proof of RH. Its current
-[closure obligations](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json)
-retain the alternative routes and unresolved regular-cell/shared-ground cases.
-
-## What the frameworks do
-
-| Framework | Role here | Boundary |
-| --- | --- | --- |
-| **RHKG** | Map files, imports, declarations, claims, dependencies and research contacts. | A graph contact or common dependency is not a mathematical implication. |
-| **FFBBP** | Typed assurance and separate source, kernel, axiom and independently reconstructed type checks. | Passing infrastructure checks cannot promote an OPEN mathematical claim. |
-| **OoL-MVS** | Exact context/witness ports, compatibility checks and governed composition records. | A valid certificate is not an RH proof. |
-| **Permansson** | Formal trajectory-law machinery plus a separately pinned finite control provider for the runtime. | Host and provider Lean objects stay separate; finite-menu fairness is not global proof-search optimality. |
-
-The [framework guide](docs/FRAMEWORKS.md) explains these distinct surfaces,
-versions, pipelines and exact boundaries. The
-[governed runner](research/RHRC/integration/opica_composition/README.md) proposes
-bounded compositions; Lean and an independent consumer must accept the full
-statement. A resource stop says that a budget ended, not that no proof exists.
-
-## How to read a result
-
-| Label | Meaning |
-| --- | --- |
-| **PROVED** | The exact Lean statement passed its stated compiler and validation gates. Read its hypotheses and source scope. |
-| **DERIVED** | A straightforward mathematical consequence not yet separately formalized. |
-| **EXPERIMENTAL SIGNAL** | A numerical, finite-search or discovery observation within its recorded domain. |
-| **LEAD / HYPOTHESIS** | A proposed route requiring proof and falsification. |
-| **OPEN** | Not established, including the independent Step 4 premises. |
-
-A green regression preserves its historical result. It does not turn an old
-numerical signal into a theorem. Missing, skipped, stale or pending evidence
-does not count as a passed gate. Source-only declaration counts are discovery
-inventory, not theorem authority. See the [evidence policy](research/RHRC/DOCUMENTATION_AUTHORITY.md).
-
-Failed approaches are part of the mathematical record. Generic rank-one
-positivity, a source-only kernel cancellation and finite Grams implying a zero
-limiting residual all have recorded countercontrols. Reopening a route requires
-identifying which missing source-specific premise changed. A green replay may
-preserve a falsification; read the [failure lessons](docs/PROJECT_GUIDE.md#what-failed-and-what-would-justify-reopening-it).
-
-## Choose a reading path
-
-- **New reader or mathematician:** [project guide](docs/PROJECT_GUIDE.md),
-  [glossary](docs/MATHEMATICAL_GLOSSARY.md), then the relevant package's exact
-  declarations, contracts and open obligations.
-- **Developer:** [repository map](docs/REPOSITORY_MAP.md),
-  [current-state snapshot](docs/CURRENT_STATE.md),
-  [runner guide](research/RHRC/integration/opica_composition/README.md), then the
-  relevant workflow and acceptance inventory.
-- **AI agent or contributor:** [AGENTS.md](AGENTS.md),
-  [agent guide](docs/AGENT_GUIDE.md), the live PR head, and the source-bound
-  receipts before changing any code or claims.
-- **Research reviewer:** the guide's failure lessons,
-  [countermodels](research/RHRC/countermodels/README.md),
-  [Round 4 contracts](research/RHRC/integration/opica_round4/MATH_CONTRACTS.json)
-  and [remaining closure alternatives](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json).
-
-## Files, graphs and reproducibility
-
-The [repository map](docs/REPOSITORY_MAP.md) connects the Lean tree, research
-records, theorem inventories, graph exports, assurance products and workflows.
-The [graph guide](research/RHRC/graph/README.md) explains each view and its edge
-semantics; read it before treating a diagram as an implication chain.
-The same canonical machine records support both human navigation and agents.
-
-Compiler pins live in [lean-toolchain](lean-toolchain) and
-[lake-manifest.json](lake-manifest.json). Use compatible caches and the exact
-workflow for the package being tested. The
-[agent guide](docs/AGENT_GUIDE.md) explains narrow checks, generated-state
-refresh, historical replay and the stricter production acceptance boundary.
-The Round 4 aggregate independently requires all eleven lane bundles.
-Older workflows retain their own historical scopes and remain separate.
-
-When a result becomes green, inspect its proof, assumptions and every workflow's
-scientific disposition. Ask which open obligation became smaller and try to
-falsify promising deductions before extending the theorem programme.
-The [open research records](research/RHRC/integration/opica_round3/OPEN_RESEARCH.json)
-and Round 4 closure register identify what still needs new mathematics.
-
-Historical documents remain available with explicit checkpoint labels. The
-[pre-polish README](https://github.com/HMarcusWH/zeta-23-lean/blob/bd95b5b5c2448c4da042702adcb6ba221c03415a/README.md)
-preserves the earlier chronological landing page. Its old “current” headings
-must be read at their original dates, not as the live status of this branch.

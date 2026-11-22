@@ -1,14 +1,27 @@
 # Fork history and provenance
 
-For current repository routing, read the [README](README.md),
-[dated snapshot](docs/CURRENT_STATE.md), [project guide](docs/PROJECT_GUIDE.md)
-and [repository map](docs/REPOSITORY_MAP.md).
-The [upstream README](UPSTREAM_README.md), [upstream audit](UPSTREAM_AUDIT.md),
-[LICENSE](LICENSE) and [NOTICE](NOTICE) retain original attribution.
-RH, Step 4 and the independent closing premises remain OPEN.
+The fork's mathematical research is preserved in the
+[21 November 2026 snapshot](docs/CURRENT_STATE.md). Use the
+[project guide](docs/PROJECT_GUIDE.md) for the argument,
+[result map](docs/RESULTS_AND_FORMALIZATION.md) for individual contributions and
+[reusable components](docs/REUSABLE_COMPONENTS.md) for another application.
 
-The account below is historical. Its dates, theorem anchors and pending-work
-labels must be read with their exact source receipts, not as live PR status.
+| Provenance | Where to inspect it |
+| --- | --- |
+| Inherited Zeta23 results and supporting mathematics | [UPSTREAM_README.md](UPSTREAM_README.md), [UPSTREAM_AUDIT.md](UPSTREAM_AUDIT.md), source-file headers, [LICENSE](LICENSE) and [NOTICE](NOTICE) |
+| Fork's RH-directed constructions and later arithmetic | [Repository map](docs/REPOSITORY_MAP.md), [integration packages](research/RHRC/integration/README.md), original declarations and package contracts |
+| Written manuscripts | [Paper index](papers/README.md), [unchanged-byte manifest](papers/MANIFEST_2026-11-21.json), [archive overview](docs/RESEARCH_ARCHIVE_2026-11-21.md) |
+| Formal and research evidence | [AUDIT.md](AUDIT.md), [result/evidence map](docs/RESULTS_AND_FORMALIZATION.md), original receipts and finite input records |
+
+The fork's independent Step 4 estimates remain open. Archiving the research does
+not attribute the upstream theorem to the fork or treat a manuscript as a
+whole-paper formal verification receipt. Cite the particular source and retain
+its attribution.
+
+The dated account below remains historical. Its former active-PR instructions,
+theorem anchors and pending-work labels must be read at their original
+checkpoints. The [frozen orientation](docs/CURRENT_STATE.md) supplies the current
+human reading route, and [AGENTS.md](AGENTS.md) governs changes to the source.
 
 <details>
 <summary>Historical Control-v2 snapshot: frozen PR #287 scope</summary>

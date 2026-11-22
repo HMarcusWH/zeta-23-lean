@@ -1,5 +1,28 @@
 # Countermodel and regression-fixture registry
 
+## Find a failed inference
+
+Use this table with the [project guide](../../../docs/PROJECT_GUIDE.md) and
+[final source snapshot](../../../docs/CURRENT_STATE.md). The linked controls
+have different roles: exact finite counterexamples, actual-source calculations,
+and logical-strength/quantifier checks. Their conclusions stay with the source
+and assumptions tested.
+
+| Inference to avoid | Control or missing premise |
+| --- | --- |
+| A negative pair block makes the complete form negative | [Gram witness example](../../../docs/EXAMPLES.md#gram-witness): a positive background can mask the block; retain a full-form estimate. |
+| A nonunitary chart lets us retain Euclidean norm or Rayleigh bounds without transporting the Gram metric | [Physical metric discussion](../../../docs/REUSABLE_COMPONENTS.md): retain the transported quadratic form and its metric. Invertible congruence itself preserves positivity. |
+| Improving a finite Gram or a filtered residual proves the raw limit is zero | [Raw/filtered comparison](../../../docs/EXAMPLES.md#raw-filtered): fix the source, filter, coefficients and norm before making a limiting claim. |
+| An averaged-origin estimate establishes the fixed-origin source bound | [Round 6 constraints](../integration/opica_round6/README.md): the observable and its origin are part of the hypothesis. |
+| A relative cancellation estimate supplies the required absolute opposed-energy bound | [Single-cofactor precision control](../integration/opica_round6/evidence/step4-parity-deficit-2026-11-20/SINGLE_COFACTOR_PARITY_DEFICIT.md): deletion preserves the relative estimate while exposing uncontrolled absolute opposed energy. |
+| A selected relation removes signed charge for free | [Paid partner graphs](../integration/opica_round6/evidence/step4-nested-cuts-2026-11-20/PAID_PARTNER_GRAPHS.md): charge every deleted target, spent partner and repeated incidence. |
+| A favorable subsequence supplies an eventual lower bound | [C2 growth closure](../../../Zeta23/OPICARound4/ArithmeticFrontier/C2GrowthClosure.lean): the closing input quantifies over all sufficiently late times. |
+
+Revisit a route when its failed premise changes, and state that change. A
+synthetic model that defeats a generic inference is not a counterexample to the
+actual zeta function. The registry and dated accounts below are retained in
+their original scopes.
+
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
 

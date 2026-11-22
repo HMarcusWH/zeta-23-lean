@@ -40,7 +40,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:README.md",
-      "heading_count": 10,
+      "heading_count": 9,
       "path": "README.md",
       "route_mentions": []
     },
@@ -100,8 +100,18 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:docs/CURRENT_STATE.md",
-      "heading_count": 6,
+      "heading_count": 12,
       "path": "docs/CURRENT_STATE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:docs/EXAMPLES.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:docs/EXAMPLES.md",
+      "heading_count": 10,
+      "path": "docs/EXAMPLES.md",
       "route_mentions": []
     },
     {
@@ -110,7 +120,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:docs/FRAMEWORKS.md",
-      "heading_count": 6,
+      "heading_count": 10,
       "path": "docs/FRAMEWORKS.md",
       "route_mentions": []
     },
@@ -120,7 +130,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:docs/MATHEMATICAL_GLOSSARY.md",
-      "heading_count": 6,
+      "heading_count": 8,
       "path": "docs/MATHEMATICAL_GLOSSARY.md",
       "route_mentions": [
         "R001_exceptional_zero",
@@ -134,7 +144,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:docs/PROJECT_GUIDE.md",
-      "heading_count": 15,
+      "heading_count": 19,
       "path": "docs/PROJECT_GUIDE.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -146,11 +156,61 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:docs/REPOSITORY_MAP.md",
-      "heading_count": 5,
+      "heading_count": 7,
       "path": "docs/REPOSITORY_MAP.md",
       "route_mentions": [
         "R003_ccm_bridge"
       ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:docs/REPRODUCIBILITY.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:docs/REPRODUCIBILITY.md",
+      "heading_count": 20,
+      "path": "docs/REPRODUCIBILITY.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:docs/RESEARCH_ARCHIVE_2026-11-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:docs/RESEARCH_ARCHIVE_2026-11-21.md",
+      "heading_count": 10,
+      "path": "docs/RESEARCH_ARCHIVE_2026-11-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:docs/RESULTS_AND_FORMALIZATION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:docs/RESULTS_AND_FORMALIZATION.md",
+      "heading_count": 57,
+      "path": "docs/RESULTS_AND_FORMALIZATION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:docs/REUSABLE_COMPONENTS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:docs/REUSABLE_COMPONENTS.md",
+      "heading_count": 28,
+      "path": "docs/REUSABLE_COMPONENTS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:papers/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:papers/README.md",
+      "heading_count": 6,
+      "path": "papers/README.md",
+      "route_mentions": []
     },
     {
       "claim_mentions": [
@@ -271,7 +331,7 @@
       "document_role": "LIVING_PROJECT_STATE",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/README.md",
-      "heading_count": 26,
+      "heading_count": 29,
       "path": "research/RHRC/README.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -454,7 +514,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/ffbbp/README.md",
-      "heading_count": 4,
+      "heading_count": 5,
       "path": "research/RHRC/ffbbp/README.md",
       "route_mentions": []
     },
@@ -513,7 +573,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/graph/README.md",
-      "heading_count": 14,
+      "heading_count": 15,
       "path": "research/RHRC/graph/README.md",
       "route_mentions": []
     },
@@ -525,6 +585,16 @@
       "file_id": "rh:file:research/RHRC/integration/README.md",
       "heading_count": 8,
       "path": "research/RHRC/integration/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/documentation_2026_11_21/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/documentation_2026_11_21/README.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/documentation_2026_11_21/README.md",
       "route_mentions": []
     },
     {
@@ -595,7 +665,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_composition/README.md",
-      "heading_count": 1,
+      "heading_count": 2,
       "path": "research/RHRC/integration/opica_composition/README.md",
       "route_mentions": []
     },
@@ -2025,7 +2095,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica_round4/README.md",
-      "heading_count": 1,
+      "heading_count": 2,
       "path": "research/RHRC/integration/opica_round4/README.md",
       "route_mentions": []
     },
@@ -2149,6 +2219,16 @@
       "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/QUALIFIED_BASELINE.json",
       "heading_count": 0,
       "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/QUALIFIED_BASELINE.json",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round4/arithmetic_frontier/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round4/arithmetic_frontier/README.md",
+      "heading_count": 3,
+      "path": "research/RHRC/integration/opica_round4/arithmetic_frontier/README.md",
       "route_mentions": []
     },
     {
@@ -6050,7 +6130,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/ool/README.md",
-      "heading_count": 3,
+      "heading_count": 4,
       "path": "research/RHRC/ool/README.md",
       "route_mentions": []
     },
@@ -6060,7 +6140,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/permansson/README.md",
-      "heading_count": 5,
+      "heading_count": 6,
       "path": "research/RHRC/permansson/README.md",
       "route_mentions": []
     },
@@ -6605,7 +6685,7 @@
       ]
     }
   ],
-  "entry_count": 638,
+  "entry_count": 646,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

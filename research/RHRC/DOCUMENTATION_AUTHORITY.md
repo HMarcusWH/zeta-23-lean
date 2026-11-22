@@ -1,9 +1,24 @@
 # Documentation authority and navigation
 
-Use the [README](../../README.md) and [dated current snapshot](../../docs/CURRENT_STATE.md)
+Use the [README](../../README.md) and [21 November frozen snapshot](../../docs/CURRENT_STATE.md)
 for repository-wide routing. Read the [agent guide](../../docs/AGENT_GUIDE.md)
 before edits and the [repository map](../../docs/REPOSITORY_MAP.md) for graphs.
-RH, Step 4 and the independent closing premises remain OPEN.
+This repository's RH attempt, Step 4 and independent closing premises remain OPEN.
+
+The human reader map covers the final arithmetic frontier and Rounds 5–6, as
+well as the [paper/result crosswalk](../../docs/RESULTS_AND_FORMALIZATION.md) and
+[reusable components](../../docs/REUSABLE_COMPONENTS.md). A statement's
+mathematical role and its verification status are separate: an implication can
+be proved while its antecedent remains open. The exact declaration, assumptions
+and evidence checkpoint take precedence over a page-level label.
+
+Current source inspection enters through the
+[21 November documentation successor](integration/documentation_2026_11_21/README.md).
+It accounts for the archive commit, pins the exact documentation delta, and
+preserves the original policies, historical renderer blocks and AGENTS tail.
+Its source-only receipt grants no compiler, generated-state or theorem authority.
+Canonical products retain their separate freshness check; original release
+obligations are not replaced by the documentation workflow.
 
 When sources disagree, use this order:
 
@@ -21,7 +36,10 @@ Missing, stale, skipped and pending evidence never count as passed gates.
 The machine block and earlier update law below are preserved historical records.
 Their PR numbers and dated “current” statements are scoped to those checkpoints,
 not competing routing instructions. Keep renderer bytes and protected sources
-unchanged; update the named navigation documents through the closed manifest.
+unchanged; update the named navigation documents through the exact successor
+policy and normal review. See [reproducibility](../../docs/REPRODUCIBILITY.md)
+for the distinction between source review, finite replay, compiler checks and
+production acceptance.
 
 <details>
 <summary>Historical Control-v2 snapshot: frozen PR #287 scope</summary>

@@ -1,5 +1,13 @@
 # OPICA Round 6 — constraints on the signed Step 4 response
 
+This is the final finite-arithmetic package included in the
+[21 November snapshot](../../../../docs/CURRENT_STATE.md). The
+[result crosswalk](../../../../docs/RESULTS_AND_FORMALIZATION.md),
+[reuse catalogue](../../../../docs/REUSABLE_COMPONENTS.md) and
+[worked examples](../../../../docs/EXAMPLES.md) provide shorter entry paths.
+The [workflow index](../../../../docs/REPRODUCIBILITY.md#workflow-index) separates
+its finite, graph and compiler checks from full production qualification.
+
 Step 4 and RH remain **OPEN**. The finite theorems, arithmetic experiments and paper reductions below concern the same proof search. They have different evidentiary force.
 
 ## Follow the arithmetic

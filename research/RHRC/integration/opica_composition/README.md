@@ -1,5 +1,15 @@
 # Governed deduction for OPICA Round 4
 
+## Reader and reuse entry points
+
+The [framework guide](../../../../docs/FRAMEWORKS.md) explains which journal,
+finite-menu and evidence-binding components can be adapted. The
+[reproducibility guide](../../../../docs/REPRODUCIBILITY.md) distinguishes bounded
+examples from the complete eleven-lane production workload. Current source
+inspection uses the [documentation successor](../documentation_2026_11_21/README.md),
+which accounts for the paper archive while preserving the historical validators.
+It does not replace compiler, canonical-product or release acceptance.
+
 This implements `ROUND4_GOVERNED_DEDUCTION_V1` around the retained
 `THREE_FRAMEWORK_INTEGRATED_V1` contract. The reviewed parent is PR #297,
 `fe16565b2a31fb8b68bef916ae8f04d535880e7a`. Runtime evidence is external to Git.

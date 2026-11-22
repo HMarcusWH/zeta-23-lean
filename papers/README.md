@@ -8,11 +8,76 @@ Read [the approach and mathematical results](../docs/RESEARCH_ARCHIVE_2026-11-21
 
 ## Reading guide
 
-- **Core finite theory:** explicit Gram witnesses; complete two-translate detectors; scalar-defect reduction; exact normalization reconciliation; persistent finite detection.
-- **Finite spectral/prime seam:** first-bad cubic shells, zero-shift and log-cover rigidity; moment–jet and cross-parity transfer; true grounds, first crossings, second-order seam calculus, arithmetic derivative transport.
-- **Fourier and co-Poisson analysis:** signed gaps and negative-mass budgets; source-specific actual-zero profiles, multiplicity jets, and quadratic non-repair.
-- **Native arithmetic and causal approximation:** fixed-source transforms, sawtooth and spectral sampling, window-energy rates, residual memory, four-column filtered certificates, and raw/filtered limitations.
-- **Late synthesis:** simultaneous pole-neutral parity instability; grouped spectral residues; Chebyshev-discrepancy source tests; quartic source transport, joint-ground rigidity, Möbius moment compression, spectral flow and prime-phase noncollision.
+The archive is easiest to read by mathematical dependency. The inventory order below records the original folder contents; it is not the argument order. **A01–A43** in the reader guides mean rows 1–43 of that inventory. Author labels such as “Paper XVII” are a separate numbering system.
+
+Start with the [project guide](../docs/PROJECT_GUIDE.md), then choose a route. The [mathematical glossary](../docs/MATHEMATICAL_GLOSSARY.md) explains the source, aperture, cutoff, parity, boundary-flat constraints and evidence labels used throughout. A reader looking for a component to use elsewhere can start directly with [reusable components](../docs/REUSABLE_COMPONENTS.md) and the [examples](../docs/EXAMPLES.md).
+
+| Route | Prerequisites | Suggested sequence and purpose |
+| --- | --- | --- |
+| Finite detection | Finite quadratic forms, Gram matrices; then the explicit formula | A43 → A39 → A42 → A41 → A40. Start with the explicit negative pair witness, then distinguish detection, the exact finite dictionary, normalization and persistent admissible negativity. |
+| Spectral geometry | The finite detector route; self-adjoint operators, Schur complements and derivatives | A38 → A37 → A36 → A35 → A34 → A33, followed by A29/A32/A30/A31 and A28/A27/A26/A25. Follow first-bad shells, source moments, cross-parity maps, true grounds and seam transport. |
+| Fourier and co-Poisson analysis | Fourier transforms, distributions, signed measures; local analytic jets for the later papers | A24 → A22 → A23 → A20 → A19 → A16 → A15. Read the exact signed gap first, then actual-source profiles and the limitations of nonlinear or quadratic repairs. |
+| Native causal arithmetic | Laplace/Mellin transforms, Hilbert-space projection and finite Gram matrices | A21 → A18 → A17 → A14 → A13 → A12 → A11 → A10. Track the fixed source and metric through residual memory, exact growth rates, raw trials, filtered certificates and confluent jet bounds. |
+| Joint-source and late synthesis | Finite detection and spectral geometry; the causal route for the native observation channel | A09 → A02 → A03 → A08 → A07 → A06 → A05 → A04 → A01. The sequence ends with conditional cofinal packets combining deep negativity, source transport and all-cutoff spectral noncollision. |
+| Final November frontier | Joint-source synthesis; finite weighted energies and tree recursions | Continue beyond the PDFs to the [arithmetic frontier, Round 5 and Round 6 map](../docs/RESULTS_AND_FORMALIZATION.md#later-source-and-research-records). These Lean and Markdown records contain later equivalences, compression, stopping and nested-cut routes. |
+
+The arrows give an editorial reading order, not a claim that every result formally imports the preceding paper. A later theorem supersedes an earlier limitation only within its stated hypotheses. The [supersession map](../docs/RESULTS_AND_FORMALIZATION.md#scoped-supersessions) records those changes, including F04 transport, exact native window rates, eventual quartic negativity and cofinal prime-phase noncollision.
+
+### Short titles and result-level crosswalk
+
+Every row below leads to a statement-level source entry. Each entry names a representative Lean declaration or identifies a paper composition, lists its important hypotheses and limits, and says what has not been mapped. A single source link does not certify a whole PDF. Read the complete theorem type and the evidence checkpoint before using a claim.
+
+| Inventory ID | Short title | Mathematical family and source map |
+| --- | --- | --- |
+| A01 | [Paper XXVII: prime-phase noncollision](2026-11-21/Paper_XXVII_Prime_Phase_Noncollision_Source_Packet_FINAL_v1_0.pdf) | [Joint-source and late spectral synthesis](../docs/RESULTS_AND_FORMALIZATION.md#a01) |
+| A02 | [Paper XIX: grouped residues and visibility](2026-11-21/Paper_XIX_Grouped_Signed_Spectral_Residues_Source_Visibility_2026-10-29_v0_2_PROOFREAD.pdf) | [Joint-source and late spectral synthesis](../docs/RESULTS_AND_FORMALIZATION.md#a02) |
+| A03 | [Paper XX: corrected Chebyshev discrepancy](2026-11-21/Paper_XX_Exact_Chebyshev_Discrepancy_Concentration_Source_Tests_2026-10-30_v0_2_PROOFREAD.pdf) | [Joint-source and late spectral synthesis](../docs/RESULTS_AND_FORMALIZATION.md#a03) |
+| A04 | [Paper XXVI: regular quartic spectral flow](2026-11-21/Paper_XXVI_Regular_Quartic_Spectral_Flow_Schur_Inertia_FINAL_v1_0.pdf) | [Joint-source and late spectral synthesis](../docs/RESULTS_AND_FORMALIZATION.md#a04) |
+| A05 | [Paper XXV: signed Möbius/Mellin compression](2026-11-21/Paper_XXV_Signed_Mobius_Mellin_Moment_Compression_FINAL_v1_0.pdf) | [Joint-source and late spectral synthesis](../docs/RESULTS_AND_FORMALIZATION.md#a05) |
+| A06 | [Paper XXIII: joint quartic ground synchronization](2026-11-21/Paper_XXIII_Joint_Quartic_Ground_Source_Rigidity_FINAL_v1_0.pdf) | [Joint-source and late spectral synthesis](../docs/RESULTS_AND_FORMALIZATION.md#a06) |
+| A07 | [Paper XXII: branch-complete ground arithmetic](2026-11-21/Paper_XXII_Exact_Ground_Arithmetic_Branch_Complete_Source_Rigidity_v0_1.pdf) | [Joint-source and late spectral synthesis](../docs/RESULTS_AND_FORMALIZATION.md#a07) |
+| A08 | [Paper XXI: finite-to-smooth Schur transport](2026-11-21/Paper_XXI_Complete_Finite_to_Smooth_Schur_Transport_FINAL.pdf) | [Joint-source and late spectral synthesis](../docs/RESULTS_AND_FORMALIZATION.md#a08) |
+| A09 | [Paper XVIII: cofinal two-parity instability](2026-11-21/Paper_XVIII_Cofinal_Two_Parity_Instability_2026-10-29_v0_2_PROOFREAD.pdf) | [Joint-source and late spectral synthesis](../docs/RESULTS_AND_FORMALIZATION.md#a09) |
+| A10 | [Paper XVII: confluent Laplace jets](2026-11-21/Paper_XVII_Confluent_Laplace_Jets_Conjugate_Pair_Bounds_v0_2_PROOFREAD.pdf) | [Native causal arithmetic](../docs/RESULTS_AND_FORMALIZATION.md#a10) |
+| A11 | [Paper XVI: raw/filtered separation](2026-11-21/Paper_XVI_Finite_Prefix_Rigidity_Raw_Filtered_Separation_v0_2_PROOFREAD.pdf) | [Native causal arithmetic](../docs/RESULTS_AND_FORMALIZATION.md#a11) |
+| A12 | [Paper XV: fixed-filter four-column certificate](2026-11-21/Paper_XV_Fixed_Causal_Filter_Four_Column_Certificate_v0_2_PROOFREAD.pdf) | [Native causal arithmetic](../docs/RESULTS_AND_FORMALIZATION.md#a12) |
+| A13 | [Paper XIV: critical-boundary input cost](2026-11-21/Paper_XIV_Critical_Boundary_Multiplicity_Source_Visibility_Causal_Zeta_2026-10-27_v0_2_PROOFREAD.pdf) | [Native causal arithmetic](../docs/RESULTS_AND_FORMALIZATION.md#a13) |
+| A14 | [Paper XIII: native causal probes and finite Grams](2026-11-21/Paper_XIII_Native_Causal_Probes_Finite_Gram_Certified_Regional_Exclusion_2026-10-27_v0_2_PROOFREAD.pdf) | [Native causal arithmetic](../docs/RESULTS_AND_FORMALIZATION.md#a14) |
+| A15 | [Paper XII: co-Poisson jets and sign rigidity](2026-11-21/Paper_XII_Multiplicity_Sensitive_CoPoisson_Zero_Jets_Finite_Span_Sign_Rigidity_2026-10-27_v0_2_PROOFREAD.pdf) | [Fourier and co-Poisson analysis](../docs/RESULTS_AND_FORMALIZATION.md#a15) |
+| A16 | [Paper XI: finite quadratic non-repair](2026-11-21/Paper_XI_Finite_Quadratic_Rigidity_Lattice_NonRepair_2026-10-27_v0_2_PROOFREAD.pdf) | [Fourier and co-Poisson analysis](../docs/RESULTS_AND_FORMALIZATION.md#a16) |
+| A17 | [Paper X: exact logarithmic-window rates](2026-11-21/Paper_X_Exact_Native_Logarithmic_Window_Rates_2026-10-27_v0_2_PROOFREAD.pdf) | [Native causal arithmetic](../docs/RESULTS_AND_FORMALIZATION.md#a17) |
+| A18 | [Paper IX: multiplicity-sensitive residual memory](2026-11-21/Paper_IX_Multiplicity_Sensitive_Native_Residual_Terminal_Memory_2026-10-24_v0_2_PROOFREAD.pdf) | [Native causal arithmetic](../docs/RESULTS_AND_FORMALIZATION.md#a18) |
+| A19 | [Paper VIII: nonlinear Fourier defects](2026-11-21/Paper_VIII_Nonlinear_Fourier_Duality_Defects_2026-10-24_v0_2_PROOFREAD.pdf) | [Fourier and co-Poisson analysis](../docs/RESULTS_AND_FORMALIZATION.md#a19) |
+| A20 | [Paper VII: arithmetic sawtooth and sampling](2026-11-21/Paper_VII_Arithmetic_Sawtooth_Stieltjes_Spectral_Sampling_2026-10-24_v0_2.pdf) | [Fourier and co-Poisson analysis](../docs/RESULTS_AND_FORMALIZATION.md#a20) |
+| A21 | [Corrected native source transforms](2026-11-21/Corrected_Native_Source_Transforms_Double_Exponential_Localization_Weil_OPICA_2026-10-24_v0_2_PROOFREAD.pdf) | [Native causal arithmetic](../docs/RESULTS_AND_FORMALIZATION.md#a21) |
+| A22 | [Actual-zero co-Poisson measures](2026-11-21/Actual_Zero_CoPoisson_Measures_Self_Dual_Profiles_2026-10-24_v0_2_PROOFREAD.pdf) | [Fourier and co-Poisson analysis](../docs/RESULTS_AND_FORMALIZATION.md#a22) |
+| A23 | [Near-sharp gaps and distributional escape](2026-11-21/Controlled_Near_Sharp_Fourier_Gaps_Distributional_Escape_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf) | [Fourier and co-Poisson analysis](../docs/RESULTS_AND_FORMALIZATION.md#a23) |
+| A24 | [Signed Fourier gaps and weighted mixing](2026-11-21/Signed_Fourier_Gap_Rigidity_Weighted_Arithmetic_Mixing_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf) | [Fourier and co-Poisson analysis](../docs/RESULTS_AND_FORMALIZATION.md#a24) |
+| A25 | [Exact parity inertia and moment filtration](2026-11-21/Exact_Parity_Inertia_Moment_Filtration_Finite_Sign_Rigidity_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a25) |
+| A26 | [Global arithmetic derivative transport](2026-11-21/Global_Arithmetic_Derivative_Transport_Canonical_Weil_CCM_2026-10-24_v0_2_PROOFREAD.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a26) |
+| A27 | [Inherited stationarity and Schur curvature](2026-11-21/Inherited_Stationarity_Optimized_Schur_Curvature_Weil_CCM_2026-10-10_v0_3_MERGE_VERIFIED.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a27) |
+| A28 | [Second-order prime-seam regularity](2026-11-21/Second_Order_Prime_Seam_Regularity_Weil_CCM_2026-10-09_v0_2_PROOFREAD.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a28) |
+| A29 | [Retained real Gamma escape](2026-11-21/Retained_Real_Cross_Parity_Gamma_Escape_Weil_CCM_2026-09-24_v0_2_PROOFREAD.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a29) |
+| A30 | [Fixed-dimension ground contact](2026-11-21/Fixed_Dimension_Ground_Contact_Weil_CCM_2026-09-30_v0_2_PROOFREAD.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a30) |
+| A31 | [Canonical first-crossing shell rigidity](2026-11-21/Canonical_First_Crossing_Shell_Rigidity_Weil_CCM_2026-10-01_v0_2_PROOFREAD.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a31) |
+| A32 | [True-ground source arithmetic](2026-11-21/True_Ground_Source_Arithmetic_Rigidity_Weil_CCM_2026-09-26_v0_2_PROOFREAD.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a32) |
+| A33 | [One-coefficient cross-parity rigidity](2026-11-21/One_Coefficient_Cross_Parity_Rigidity_Weil_CCM_2026-09-23_FINAL.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a33) |
+| A34 | [Cross-parity source-secular rigidity](2026-11-21/Cross_Parity_Source_Secular_Rigidity_Weil_CCM_2026-09-19_v0_2.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a34) |
+| A35 | [Moment-jet rigidity](2026-11-21/Moment_Jet_Rigidity_Weil_CCM_2026-09-19_v0_2.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a35) |
+| A36 | [Log-cover determinant rigidity](2026-11-21/Log_Cover_Determinant_Rigidity_Weil_CCM_2026-09-12_v0_6.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a36) |
+| A37 | [Zero-shift source rigidity](2026-11-21/Zero_Shift_Source_Rigidity_Weil_CCM_2026-09-10_v0_3.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a37) |
+| A38 | [First-bad cubic rigidity](2026-11-21/First_Bad_Cubic_Rigidity_Weil_CCM_2026-09-08_v0_2.pdf) | [Spectral geometry and aperture calculus](../docs/RESULTS_AND_FORMALIZATION.md#a38) |
+| A39 | [Complete two-translate detectors](2026-11-21/Complete_Two_Translate_Detectors_Theorem_Core_v0_3_PROOFREAD.pdf) | [Finite detectors and dictionaries](../docs/RESULTS_AND_FORMALIZATION.md#a39) |
+| A40 | [Persistent finite detection](2026-11-21/Persistent_Finite_Detection_Off_Critical_Zeros_Weil_CCM_2026-09-03_v0_2.pdf) | [Finite detectors and dictionaries](../docs/RESULTS_AND_FORMALIZATION.md#a40) |
+| A41 | [Exact normalization reconciliation](2026-11-21/Exact_Normalization_Reconciliation_Finite_Weil_CCM_2026-08-31_v0_1_PROOFREAD.pdf) | [Finite detectors and dictionaries](../docs/RESULTS_AND_FORMALIZATION.md#a41) |
+| A42 | [Scalar-defect reduction](2026-11-21/Scalar_Defect_Reduction_Finite_Weil_CCM_Dictionaries_2026-08-30_v0_1_PROOFREAD.pdf) | [Finite detectors and dictionaries](../docs/RESULTS_AND_FORMALIZATION.md#a42) |
+| A43 | [Explicit Gram witnesses](2026-11-21/Explicit_Gram_Witnesses_Off_Critical_Pair_Blocks_2026-08-25_v1_2_PROOFREAD.pdf) | [Finite detectors and dictionaries](../docs/RESULTS_AND_FORMALIZATION.md#a43) |
+
+### How to cite and reproduce a result
+
+Use the manuscript for the written argument and the immutable source revision for the formal declaration. [Citation instructions](../docs/REPRODUCIBILITY.md#citation) explain how to cite both. The [reproduction guide](../docs/REPRODUCIBILITY.md) distinguishes source inventory, an exact consumer, a historical replay and a fresh compiler check. This documentation pass supplies navigation and scope checks; it does not recompile or independently referee every paper result.
+
+The raw inventory and its metadata below remain the provenance record for the original PDF bytes. The scientific disposition of a result belongs to its exact theorem and evidence, not to its filename, upload order or a whole-paper status label.
 
 ## All PDFs in this snapshot
 
