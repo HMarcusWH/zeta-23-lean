@@ -1,0 +1,96 @@
+{
+  "schema": "OPICAS4_EXACT_RUNTIME_PROFILES_V1",
+  "authority": "REGISTRATION_ONLY_NO_PROOF_ACCEPTANCE",
+  "profiles": {
+    "NATIVE_4330RC2_RETAINED_V1": {
+      "lean_toolchain": "leanprover/lean4:v4.33.0-rc2\n",
+      "compiler_version": "4.33.0-rc2",
+      "compiler_commit": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+      "manifest_sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+      "packages": {
+        "plausible": {
+          "rev": "123d15766ba49356c02ebad2a4462dfe12d79899",
+          "url": "https://github.com/leanprover-community/plausible"
+        },
+        "LeanSearchClient": {
+          "rev": "f5c090429dff3cf66cb65562526c9ea6e8edfbcb",
+          "url": "https://github.com/leanprover-community/LeanSearchClient"
+        },
+        "importGraph": {
+          "rev": "bb3469a87774349fe01898d8bf2fc6a1ce6411ca",
+          "url": "https://github.com/leanprover-community/import-graph"
+        },
+        "proofwidgets": {
+          "rev": "222c58dad7706a6e7cae46c0edd65ea881d3ee27",
+          "url": "https://github.com/leanprover-community/ProofWidgets4"
+        },
+        "aesop": {
+          "rev": "7db8190085343afde2f5d2cdcc9bac719b6ec02c",
+          "url": "https://github.com/leanprover-community/aesop"
+        },
+        "Qq": {
+          "rev": "ef42f8944eaf5b6cbfbe75d1917d824c7dd6cf33",
+          "url": "https://github.com/leanprover-community/quote4"
+        },
+        "batteries": {
+          "rev": "76e1c118b0700b4ceafe99532e887d6431625e1a",
+          "url": "https://github.com/leanprover-community/batteries"
+        },
+        "Cli": {
+          "rev": "1319485273bf87833fa472afbcefdedecb16b45f",
+          "url": "https://github.com/leanprover/lean4-cli"
+        },
+        "mathlib": {
+          "rev": "51e6992efd06126df61a496bebf8f49482a4e129",
+          "url": "https://github.com/leanprover-community/mathlib4"
+        }
+      },
+      "benchmark_blob": "e5224d533ef27b001224859a9b36696846a7e7fe"
+    },
+    "STEP4_COMMON_4331_PROPOSED_V1": {
+      "lean_toolchain": "leanprover/lean4:v4.33.1\n",
+      "compiler_version": "4.33.1",
+      "compiler_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+      "manifest_sha256": "66755638a6dd6b924f0e73153e7e5704646d3c4825aa05530a70906570853212",
+      "packages": {
+        "mathlib": {
+          "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+          "url": "https://github.com/leanprover-community/mathlib4"
+        },
+        "plausible": {
+          "rev": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+          "url": "https://github.com/leanprover-community/plausible"
+        },
+        "LeanSearchClient": {
+          "rev": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+          "url": "https://github.com/leanprover-community/LeanSearchClient"
+        },
+        "importGraph": {
+          "rev": "16f02aa7642864af59f1ff0e384a015994db9118",
+          "url": "https://github.com/leanprover-community/import-graph"
+        },
+        "proofwidgets": {
+          "rev": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+          "url": "https://github.com/leanprover-community/ProofWidgets4"
+        },
+        "aesop": {
+          "rev": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+          "url": "https://github.com/leanprover-community/aesop"
+        },
+        "Qq": {
+          "rev": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+          "url": "https://github.com/leanprover-community/quote4"
+        },
+        "batteries": {
+          "rev": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+          "url": "https://github.com/leanprover-community/batteries"
+        },
+        "Cli": {
+          "rev": "6130a47896ce867c6a4a55373441e59e565bad0f",
+          "url": "https://github.com/leanprover/lean4-cli"
+        }
+      },
+      "benchmark_blob": "e5224d533ef27b001224859a9b36696846a7e7fe"
+    }
+  }
+}

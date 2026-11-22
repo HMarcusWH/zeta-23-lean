@@ -36,6 +36,24 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
+      "id": "opica_step4_production_executable",
+      "pattern": "\\A(?:research/RHRC/integration/opica_step4_production/__init__\\.py|research/RHRC/integration/opica_step4_production/runtime_profile\\.py|research/RHRC/integration/opica_step4_production/source_scope\\.py|research/RHRC/integration/opica_step4_production/test_runtime_profile\\.py|research/RHRC/integration/opica_step4_production/test_source_scope\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_step4_production_configuration",
+      "pattern": "\\A(?:research/RHRC/integration/opica_step4_production/RUNTIME_PROFILES\\.json|research/RHRC/integration/opica_step4_production/SOURCE_SCOPE\\.json)\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_step4_production_fixture",
+      "pattern": "\\A(?:research/RHRC/integration/opica_step4_production/fixtures/common\\-manifest\\.json|research/RHRC/integration/opica_step4_production/fixtures/legacy\\-manifest\\.json)\\Z",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "documentation_2026_11_21_examples",
       "pattern": "\\A(?:docs/examples/exact_examples\\.py|docs/examples/infrastructure_replay\\.py)\\Z",
       "file_class": "RESEARCH_EXECUTABLE",

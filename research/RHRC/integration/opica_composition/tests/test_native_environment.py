@@ -756,6 +756,9 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
 
     def assert_probe_preparation_order(self):
         """Mock orchestration stops before qualification; no full PASS fixture."""
+        from research.RHRC.integration.opica_step4_production.runtime_profile import select_profile
+        legacy_manifest = Path(__file__).resolve().parents[2] / 'opica_step4_production/fixtures/legacy-manifest.json'
+        legacy_profile = select_profile((qualification.LEAN_PIN + '\n').encode(), legacy_manifest.read_bytes())
         worker = self.smoke_worker(project=True)
         standard = str((Path(worker.toolchain_root) / "lib" / "lean").resolve())
         compiled = str((self.repo / ".lake/build/lib/lean").resolve())
@@ -776,7 +779,7 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
                 commands[label] = (argv, seconds)
                 payloads = {"volume": json.dumps({"filesystems": [{"fstype": "tmpfs", "size": 4294967296,
                             "target": str(self.native)}]}),
-                            "compiler": "Lean (version 4.33.0-rc2, d8b18978322de05a8f3dba51ef03cf5461676c17)",
+                            "compiler": "Lean (version 4.33.0-rc2, x86_64-unknown-linux-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
                             "prefix": worker.toolchain_root, "lean-path": worker.lean,
                             "selected-build": "mock selected build command only",
                             "import-paths": os.pathsep.join([compiled, standard])}
@@ -811,6 +814,7 @@ class FailedNativeDiagnosticTests(unittest.TestCase):
                     patch.object(qualification.platform, "system", return_value="Linux"), \
                     patch.object(qualification, "git", side_effect=git), \
                     patch.object(qualification, "_packages", return_value={"fixture": "a" * 40}), \
+                    patch.object(qualification, "_runtime_profile", return_value=legacy_profile), \
                     patch.object(qualification, "frozen_atlas", return_value=[{"module": "Fixture.Module"}]), \
                     patch.object(qualification, "_source", side_effect=source_scope), \
                     patch.object(qualification, "_materialize_pinned_benchmark_alias", return_value={"fixture": "NO_GIT_WRITE"}), \

@@ -28,10 +28,10 @@ jobs:
           set -euo pipefail
           out="$RUNNER_TEMP/documentation-review"
           mkdir -p "$out"
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check-classification 2>&1 | tee "$out/classification.log"
-          python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests.log"
-          python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
+          python3 -B -m research.RHRC.integration.opica_step4_production.source_scope --check > "$out/source-scope.json"
+          python3 -B -m research.RHRC.integration.opica_step4_production.source_scope --check-classification 2>&1 | tee "$out/classification.log"
+          python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope research.RHRC.integration.opica_step4_production.test_runtime_profile research.RHRC.integration.opica_step4_production.test_source_scope 2>&1 | tee "$out/scope-tests.log"
+          python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope research.RHRC.integration.opica_step4_production.test_runtime_profile research.RHRC.integration.opica_step4_production.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
           python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
       - name: Check reader links and run bounded exact examples
         shell: bash
@@ -89,7 +89,7 @@ jobs:
           out="$RUNNER_TEMP/documentation-canonical"
           mkdir -p "$out"
           git rev-parse HEAD 'HEAD^{tree}' > "$out/input-head-tree.txt"
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
+          python3 -B -m research.RHRC.integration.opica_step4_production.source_scope --check > "$out/source-scope.json"
           lake env lean --version > "$out/lean-version.txt"
           lake build Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution 2>&1 | tee "$out/exporter-build.log"
       - name: Regenerate through the canonical producer and check its output
@@ -102,7 +102,7 @@ jobs:
           python3 -B - <<'PY'
           import json, subprocess
           from pathlib import Path
-          policy = json.loads(Path('research/RHRC/integration/documentation_2026_11_21/SOURCE_SCOPE.json').read_text())
+          policy = json.loads(Path('research/RHRC/integration/opica_step4_production/SOURCE_SCOPE.json').read_text())
           allowed = set(policy['generated'])
           changed = subprocess.check_output(['git', 'diff', '--name-only', '-z', 'HEAD']).split(b'\0')
           names = {name.decode() for name in changed if name}

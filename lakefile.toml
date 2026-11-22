@@ -10,7 +10,7 @@ maxHeartbeats = 800000
 [[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4"
-rev = "51e6992efd06126df61a496bebf8f49482a4e129"
+rev = "0df444a360eaa60ab8c11dca51a86af692955474"
 
 [[lean_lib]]
 name = "Zeta23"

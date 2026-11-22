@@ -31,7 +31,10 @@ from ..opica_round4.math_gate import (MODULES as MATHEMATICAL_MODULES,
 
 ATLAS='research/RHRC/integration/opica_round3/atlas/CONSTRAINT_ATLAS.jsonl'
 ATLAS_SHA256='c0becd027e18be98c29647b85e0d18aeb0748a66c2c6ab6690a4940b2945150e'
-LEAN_PIN='leanprover/lean4:v4.33.0-rc2'
+# Retain the old constant for historical fixture compatibility. Actual selection
+# is the exact source-bound two-profile resolver, never a version override.
+from ..opica_step4_production.runtime_profile import runtime_for as _runtime_profile, LEGACY_LEAN_PIN
+LEAN_PIN=LEGACY_LEAN_PIN
 CORE_MODULES=(
  'Zeta23.RHRC.OpicaComposition.Protocol','Zeta23.RHRC.OpicaComposition.Elaborate',
  'Zeta23.RHRC.OpicaComposition.Export','Zeta23.RHRC.OpicaComposition.Audit',
@@ -49,6 +52,7 @@ ATLAS_FIELDS={'schema','declaration','module','kind','universe_parameters','type
 
 
 def _packages(repo):
+    profile=_runtime_profile(repo)
     manifest=load_bytes((repo/'lake-manifest.json').read_bytes());require(manifest['packagesDir']=='.lake/packages','Package location override')
     result={}
     for row in manifest['packages']:
@@ -57,7 +61,10 @@ def _packages(repo):
         require(git(root,'rev-parse','HEAD')==row['rev'],'Actual package revision differs: '+row['name'])
         require(not git(root,'-c','core.autocrlf=false','status','--porcelain','--untracked-files=all'),'Dirty native package source: '+row['name'])
         result[row['name']]={'commit':row['rev'],'tree':git(root,'rev-parse','HEAD^{tree}'),'url':row['url']}
-    require(result.get('mathlib',{}).get('commit')=='51e6992efd06126df61a496bebf8f49482a4e129','Host Mathlib pin drift')
+    require(set(result)==set(profile.package_revisions) and
+            all(result[name]['commit']==profile.package_revisions[name] and
+                result[name]['url']==profile.package_urls[name] for name in result),
+            'Actual package tuple differs from the selected reviewed runtime')
     return result
 
 
@@ -166,7 +173,7 @@ def _worker_version(repo,output,worker):
     c=_command([worker.lean,'--version'],repo,env,output,'worker-version',30)
     require(c['returncode']==0 and not c['timeout'],'Actual worker compiler unavailable')
     text=(output/c['stdout']).read_text(encoding='utf-8').strip()
-    require(text.startswith('Lean (version 4.33.0-rc2,') and 'd8b18978322de05a8f3dba51ef03cf5461676c17' in text,'Wrong current-child worker compiler')
+    _runtime_profile(repo).check_compiler(text)
     return c
 
 
@@ -473,7 +480,7 @@ def _native_infrastructure_smoke(output,worker,*,probe='stdlib'):
 def prepare_native(repo,output):
     """Single-owner Linux bootstrap; root calls this after the implementation freeze."""
     require(platform.system()=='Linux','Production native preparation requires Linux')
-    repo=unlinked(repo).resolve();require((repo/'lean-toolchain').read_text(encoding='utf-8').strip()==LEAN_PIN,'Host toolchain pin drift')
+    repo=unlinked(repo).resolve();profile=_runtime_profile(repo)
     require(not git(repo,'status','--porcelain','--untracked-files=all'),'Production native preparation requires clean source')
     packages=_packages(repo)
     rows=frozen_atlas(repo);modules=sorted(set(CORE_MODULES)|{r['module'] for r in rows})
@@ -482,8 +489,9 @@ def prepare_native(repo,output):
       'checked_commit':git(repo,'rev-parse','HEAD'),'checked_tree':git(repo,'rev-parse','HEAD^{tree}'),
       'source_sha256':before,'requested_modules':modules,'RH':'OPEN','Step4':'OPEN'}
     report['pinned_packages']=packages
+    report['runtime_profile']=profile.record()
     env={k:v for k,v in os.environ.items() if not k.startswith(('LEAN_','ELAN_'))}
-    env.update({'ELAN_TOOLCHAIN':LEAN_PIN,'LEAN_NUM_THREADS':'2','GIT_NO_LAZY_FETCH':'1','GIT_TERMINAL_PROMPT':'0'})
+    env.update({'ELAN_TOOLCHAIN':profile.lean_pin,'LEAN_NUM_THREADS':'2','GIT_NO_LAZY_FETCH':'1','GIT_TERMINAL_PROMPT':'0'})
     lake=shutil.which('lake');require(lake,'Pinned host Lake is missing')
     def run(argv,label,seconds=60):
         c=_command(argv,repo,env,output,label,seconds);report['commands'].append(c)
@@ -494,8 +502,8 @@ def prepare_native(repo,output):
         report['coordinator_file_descriptor_limit']={'scope':'ACTUAL_PREPARATION_COORDINATOR_RLIMIT_NOFILE',
           'soft':soft,'hard':hard}
         projection=_materialize_pinned_benchmark_alias(repo/'.lake/packages/mathlib',
-          expected_commit='51e6992efd06126df61a496bebf8f49482a4e129',
-          expected_blob='e5224d533ef27b001224859a9b36696846a7e7fe')
+          expected_commit=profile.mathlib_commit,
+          expected_blob=profile.benchmark_blob)
         report['dependency_source_projections']=[{'package':'mathlib',**projection}]
         require(_packages(repo)==packages,'Pinned package identity changed during source preparation')
         scope=discover_source_paths(repo)
@@ -510,7 +518,7 @@ def prepare_native(repo,output):
         fs=mount['filesystems'];require(len(fs)==1 and fs[0]['fstype']=='tmpfs' and 0<int(fs[0]['size'])<=SearchBudget().disk_bytes,'Actual native tmpfs volume is absent or exceeds disk budget')
         report['native_volume']=fs[0]
         version=run([lake,'env','lean','--version'],'compiler').read_text(encoding='utf-8').strip()
-        require(version.startswith('Lean (version 4.33.0-rc2,') and 'd8b18978322de05a8f3dba51ef03cf5461676c17' in version,'Wrong actual host compiler')
+        profile.check_compiler(version)
         prefix=unlinked(run([lake,'env','lean','--print-prefix'],'prefix').read_text(encoding='utf-8').strip()).resolve()
         lean=unlinked(run([lake,'env','which','lean'],'lean-path').read_text(encoding='utf-8').strip()).resolve()
         require(lean.is_relative_to(prefix),'Host Lean binary/prefix mismatch')
