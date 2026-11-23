@@ -151,6 +151,38 @@ class SourceProofAdmissionTests(unittest.TestCase):
         with self.assertRaises(ContractError):
             targets.selected(chosen)
 
+    def test_dual_type_review_registration_is_authenticated(self):
+        from types import SimpleNamespace
+        from research.RHRC.integration.opica_next_acceptance import targets as t
+        from research.RHRC.integration.opica_composition.canonical import ContractError
+        from copy import deepcopy
+        h,tr,rid,attempt="a"*40,"b"*40,"123",1
+        rec={"schema":"OPICA_NEXT_DUAL_COMPILER_TYPES_V1","status":"PASS_TYPES_ONLY",
+             "head":h,"tree":tr,"run_id":rid,"attempt":attempt,"role":"reviewer",
+             "expected_types_checked":True,"target_values":[
+                 {"declaration":n,"expected_type_sha256":"a"*64} for n in t.SCALAR_NAMES],
+             "support_types":[{"declaration":n,"module":m,"type_sha256":"b"*64,"axioms":["propext"]}
+                              for n,m in t.EXTRA_SUPPORT],"compiler_log_sha256":"c"*64,
+             "proof_acceptance":False,"RH":"OPEN","C1":"OPEN","Step4":"OPEN"}
+        kw=dict(head=h,tree=tr,run_id=rid,attempt=attempt,role="reviewer")
+        t._validate_type_receipt(rec,**kw)
+        for key,value in (("head","d"*40),("expected_types_checked",False),("RH","PROVED"),("support_types",[])):
+            bad=deepcopy(rec);bad[key]=value
+            with self.assertRaises(ContractError): t._validate_type_receipt(bad,**kw)
+        s1=SimpleNamespace(repo=str(s.REPO),commit=h,tree=tr,environment={})
+        self.assertEqual(len(t.reviewed_registry(s1)["targets"]),3)
+        auth={"run_id":rid,"head":h,"tree":tr,"target_values":rec["target_values"],
+              "support_types":rec["support_types"]}
+        s1.environment[t.TYPE_REVIEW]=auth
+        with patch.object(t,"authenticate_type_review",return_value=auth):
+            ext=t.reviewed_registry(s1)
+            self.assertEqual(len(ext["targets"]),5)
+            self.assertEqual(len(ext["source_theorems"]),6)
+            self.assertEqual(len(ext["targets"][0]["approved_constants"]),5)
+            self.assertEqual(len(ext["targets"][-1]["approved_constants"]),1)
+            s1.environment[t.TYPE_REVIEW]={**auth,"tree":"e"*40}
+            with self.assertRaises(ContractError): t.reviewed_registry(s1)
+
     def test_reviewed_allowed_file_content_is_sealed(self):
         native=s.round6.tree
         def changed_allowed(repo,ref):

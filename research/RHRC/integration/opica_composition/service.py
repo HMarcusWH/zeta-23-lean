@@ -54,7 +54,7 @@ def _target(repo,snapshot,target_id):
     from ..opica_next_acceptance import targets as next_targets
     if next_targets.selected(snapshot):
         return next_targets.target(repo,snapshot,target_id)
-    require(target_id not in next_targets.TARGET_IDS,
+    require(target_id not in next_targets.ALL_TARGET_IDS,
             "next-source research target requires independently selected experiment")
     registry=_registry(repo)
     rows=[*registry["calibration"],*registry.get("open",[]),*registry.get("open_research",[]),*registry.get("intermediate",[])]

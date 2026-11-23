@@ -42,6 +42,64 @@ FORBIDDEN=sorted({
     "Zeta23.OPICAComposition.cofinal_schur_packet_calibration",
 })
 COHORT="OPICA_NEXT_REVIEWED_FINITE_SIGNED_SOURCE_V1"
+TYPE_REVIEW="opica_next_dual_compiler_type_review_v1"
+SCALAR_NS="Zeta23.OPICARound6.PrimeDeficit"
+SCALAR_MODULE=SCALAR_NS+".Source"
+SCALAR_IDS=("NEXT_LARGE_PRIME_DEFICIT_SUBPOWER","NEXT_PRIME_DEFICIT_TO_LITERAL_G_BRIDGE")
+SCALAR_NAMES=(SCALAR_NS+".LargePrimeDeficitSubpower",SCALAR_NS+".MissingPrimeDeficitToLiteralGBridge")
+ALL_TARGET_IDS=TARGET_IDS+SCALAR_IDS
+STOP_MODULE="Zeta23.OPICARound6.PrimeFactorPaths.NativeStoppingCost"
+TRANSFER_MODULE="Zeta23.OPICARound6.PrimeFactorPaths.NativeFullTransfer"
+EXTRA_SUPPORT=(
+    (SCALAR_NS+".positiveDeficitEnergy_nonneg", SCALAR_MODULE),
+    (STOP_MODULE+".native_opposed_cost", STOP_MODULE),
+    (STOP_MODULE+".native_opposed_cost_reverse", STOP_MODULE),
+    (TRANSFER_MODULE+".native_raw_energy_upper", TRANSFER_MODULE),
+)
+REVIEW_ROLES=("producer","reviewer")
+_TYPE_REVIEW_CACHE={}
+
+# These are independently stated propositions and exact typed applications,
+# not inferred proposals and not proofs of the two OPEN scalar targets.
+EXPECTED_TYPES_LEAN="""
+noncomputable section
+open scoped Classical
+open Zeta23.OPICARound6.PrimeDeficit
+open Zeta23.OPICARound6.PrimeFactorPaths
+open Zeta23.OPICARound6.PrimeFactorPaths.NativeCells
+
+example : LargePrimeDeficitSubpower =
+  (∀ η : ℝ, 0 < η → ∀ K₀ : ℕ,
+    ∃ K : ℕ, max K₀ 64 ≤ K ∧ positiveDeficitEnergy K ≤ (K:ℝ)^η) := rfl
+
+example : MissingPrimeDeficitToLiteralGBridge =
+  (LargePrimeDeficitSubpower →
+    ∀ η : ℝ, 0 < η → ∀ Y₀ : ℝ,
+      ∃ Y : ℝ, max Y₀ 2 ≤ Y ∧ literalGEnergy Y ≤ Y^η) := rfl
+
+example : ∀ (K : ℕ), 0 ≤ positiveDeficitEnergy K :=
+  positiveDeficitEnergy_nonneg
+
+example : ∀ (X : ℕ) (j : Key) (r : Removal),
+    4 * max (evenDeviation X j r) 0 * max (-oddDeviation X j r) 0 =
+      max ((max (survivorCharge X j r) 0)^2 - (unsignedDiscrepancy X j)^2) 0 :=
+  NativeStoppingCost.native_opposed_cost
+
+example : ∀ (X : ℕ) (j : Key) (r : Removal),
+    4 * max (oddDeviation X j r) 0 * max (-evenDeviation X j r) 0 =
+      max ((max (-survivorCharge X j r) 0)^2 - (unsignedDiscrepancy X j)^2) 0 :=
+  NativeStoppingCost.native_opposed_cost_reverse
+
+example : ∀ (X : ℕ) (r : Removal) (nodes : Finset Key),
+    (∑ j ∈ nodes, weight j * (max (RoughNodeCharges.charge (roughCutoff X) (rawLabels X j)) 0)^2) ≤
+      (∑ j ∈ nodes, weight j * (4 * max (evenDeviation X j r) 0 * max (-oddDeviation X j r) 0)) +
+      (∑ j ∈ nodes, weight j * (unsignedDiscrepancy X j)^2) +
+      ∑ j ∈ nodes, weight j *
+        (2 * (rawLabels X j).card * |RoughNodeCharges.charge (roughCutoff X) (removedLabels X j r)|) :=
+  NativeFullTransfer.native_raw_energy_upper
+end
+"""
+
 
 def registry(repo):
     repo=Path(repo)
@@ -99,9 +157,134 @@ def selected(snapshot):
     registry(repo)
     return True
 
+def _validate_type_receipt(doc, *, head, tree, run_id, attempt, role):
+    require(type(doc) is dict and set(doc)=={
+        "schema","status","head","tree","run_id","attempt","role","expected_types_checked",
+        "target_values","support_types","compiler_log_sha256","proof_acceptance","RH","C1","Step4"},
+        "closed dual compiler type receipt required")
+    require(doc["schema"]=="OPICA_NEXT_DUAL_COMPILER_TYPES_V1" and
+            doc["status"]=="PASS_TYPES_ONLY" and doc["head"]==head and doc["tree"]==tree and
+            doc["run_id"]==run_id and doc["attempt"]==attempt and doc["role"]==role and
+            doc["expected_types_checked"] is (role=="reviewer") and
+            doc["proof_acceptance"] is False and all(doc[k]=="OPEN" for k in ("RH","C1","Step4")),
+            "stale or promoted compiler type receipt")
+    require(re.fullmatch(r"[0-9a-f]{64}",doc["compiler_log_sha256"]),
+            "missing compiler log digest")
+    rows=doc["target_values"]
+    require(type(rows) is list and len(rows)==2 and
+            [x["declaration"] for x in rows]==list(SCALAR_NAMES) and
+            all(set(x)=={"declaration","expected_type_sha256"} and
+                re.fullmatch(r"[0-9a-f]{64}",x["expected_type_sha256"]) for x in rows),
+            "exact scalar target values required")
+    supports=doc["support_types"]
+    require(type(supports) is list and len(supports)==len(EXTRA_SUPPORT) and
+            [(x["declaration"],x["module"]) for x in supports]==list(EXTRA_SUPPORT),
+            "exact finite support inventory required")
+    for x in supports:
+        require(set(x)=={"declaration","module","type_sha256","axioms"} and
+                re.fullmatch(r"[0-9a-f]{64}",x["type_sha256"]) and
+                type(x["axioms"]) is list and x["axioms"]==sorted(set(x["axioms"])) and
+                set(x["axioms"])<=ALLOWED_AXIOMS,"unapproved support type/axiom record")
+    return doc
+
+def review_types(repo, output, role, run_id, attempt):
+    from .gate import check
+    from ..opica_composition.qualification import atlas_driver
+    require(role in REVIEW_ROLES,"explicit producer/reviewer role required")
+    run_id=_run_id(run_id)
+    require(type(attempt) is int and attempt>0,"exact run attempt required")
+    repo=Path(repo).resolve(); source=check(repo,require_clean=True)
+    output=Path(output).resolve()
+    require(not output.exists() and not output.is_relative_to(repo),"fresh external type review directory required")
+    output.mkdir(parents=True)
+    rows=[{"declaration":n,"module":m} for n,m in EXTRA_SUPPORT]
+    driver="import Zeta23.RHRC.OpicaComposition.Export\n"+atlas_driver(rows)
+    if role=="reviewer":
+        driver+="\n"+EXPECTED_TYPES_LEAN
+    for n in SCALAR_NAMES:
+        driver+="\nrun_cmd Zeta23.RHRC.OpicaComposition.exportTarget "+chr(96)+n+' "value"\n'
+    path=output/"TypeReview.lean";path.write_text(driver,encoding="utf-8")
+    with (output/"compiler.log").open("xb") as log:
+        result=subprocess.run(["lake","env","lean","-DwarningAsError=true",str(path)],
+                              cwd=repo,stdout=log,stderr=subprocess.STDOUT,timeout=1800)
+    require(result.returncode==0,"actual compiler type review failed")
+    raw=(output/"compiler.log").read_bytes()
+    require(b"sorryAx" not in raw,"sorryAx in compiler review")
+    values=[load_bytes(l.split(b"\t",1)[1]) for l in raw.splitlines() if l.startswith(b"OPICA_TARGET\t")]
+    exports=[load_bytes(l.split(b"\t",1)[1]) for l in raw.splitlines() if l.startswith(b"OPICA3_ATLAS\t")]
+    require(len(values)==2 and len(exports)==len(EXTRA_SUPPORT),"incomplete compiler type review exports")
+    by_name={x["declaration"]:x for x in exports}
+    require(set(by_name)=={n for n,_ in EXTRA_SUPPORT},"compiler support identities differ")
+    support=[]
+    for name,module in EXTRA_SUPPORT:
+        row=by_name[name]
+        require(row["module"]==module and row["kind"]=="THEOREM" and
+                not (set(row["value_constants"])&set(FORBIDDEN)),"unapproved source provider")
+        support.append({"declaration":name,"module":module,
+                        "type_sha256":expression_hash(row["type_expression"]),
+                        "axioms":sorted(row["axioms"])})
+    doc={"schema":"OPICA_NEXT_DUAL_COMPILER_TYPES_V1","status":"PASS_TYPES_ONLY",
+         "head":source["checked_commit"],"tree":source["checked_tree"],"run_id":run_id,"attempt":attempt,
+         "role":role,"expected_types_checked":role=="reviewer",
+         "target_values":[{"declaration":n,"expected_type_sha256":expression_hash(v)} for n,v in zip(SCALAR_NAMES,values)],
+         "support_types":support,"compiler_log_sha256":file_hash(output/"compiler.log"),
+         "proof_acceptance":False,"RH":"OPEN","C1":"OPEN","Step4":"OPEN"}
+    _validate_type_receipt(doc,head=doc["head"],tree=doc["tree"],run_id=run_id,attempt=attempt,role=role)
+    require(check(repo,require_clean=True)==source,"source changed during type review")
+    (output/"review.json").write_bytes(canonical_bytes(doc))
+    return doc
+
+def authenticate_type_review(repo, run_id):
+    from .gate import git
+    repo=Path(repo).resolve();run_id=_run_id(run_id)
+    head,tree=git(repo,"rev-parse","HEAD"),git(repo,"rev-parse","HEAD^{tree}")
+    key=(str(repo),head,tree,run_id)
+    if key in _TYPE_REVIEW_CACHE:
+        return dict(_TYPE_REVIEW_CACHE[key])
+    run=_gh_json("/actions/runs/"+run_id)
+    attempt=run.get("run_attempt")
+    require(type(attempt) is int and attempt>0,"exact type-review attempt required")
+    jobs=_gh_json("/actions/runs/"+run_id+"/attempts/"+str(attempt)+"/jobs?per_page=100")
+    _verify_run(run,jobs,run_id=run_id,head=head,workflow=".github/workflows/opica-next-acceptance.yml",
+                required_jobs=tuple("NextTypes / "+role for role in REVIEW_ROLES))
+    docs=[];hashes=[]
+    for role in REVIEW_ROLES:
+        doc,sha=_receipt(run_id,"opica-next-type-review-"+role+"-"+head+"-"+run_id+"-"+str(attempt),"review.json")
+        docs.append(_validate_type_receipt(doc,head=head,tree=tree,run_id=run_id,attempt=attempt,role=role))
+        hashes.append(sha)
+    for field in ("target_values","support_types"):
+        require(docs[0][field]==docs[1][field],"independent compiler type review differs: "+field)
+    result={"schema":"OPICA_NEXT_AUTHENTICATED_TYPES_V1","head":head,"tree":tree,
+            "run_id":run_id,"attempt":attempt,"producer_receipt_sha256":hashes[0],
+            "reviewer_receipt_sha256":hashes[1],"target_values":docs[1]["target_values"],
+            "support_types":docs[1]["support_types"],"proof_acceptance":False,
+            "RH":"OPEN","C1":"OPEN","Step4":"OPEN"}
+    _TYPE_REVIEW_CACHE[key]=dict(result)
+    return result
+
+def reviewed_registry(snapshot):
+    d=registry(snapshot.repo)
+    supplied=snapshot.environment.get(TYPE_REVIEW)
+    if supplied is None:
+        return d
+    require(type(supplied) is dict,"authenticated type review required")
+    actual=authenticate_type_review(snapshot.repo,supplied.get("run_id"))
+    require(supplied==actual and actual["head"]==snapshot.commit and actual["tree"]==snapshot.tree,
+            "exact snapshot compiler type review differs")
+    support=actual["support_types"]
+    d["source_theorems"] += support
+    extra_signed=[{"declaration":x["declaration"],"module":x["module"]} for x in support[1:]]
+    for row in d["targets"]:
+        row["approved_constants"] += extra_signed
+    for target_id,row in zip(SCALAR_IDS,actual["target_values"]):
+        d["targets"].append({"id":target_id,"declaration":row["declaration"],"module":SCALAR_MODULE,
+            "target_kind":"value","status":"OPEN","expected_type_sha256":row["expected_type_sha256"],
+            "approved_constants":[{"declaration":support[0]["declaration"],"module":SCALAR_MODULE}]})
+    return d
+
 def target(repo,snapshot,target_id):
     require(selected(snapshot),"next-target experiment was not explicitly selected")
-    d=registry(repo)
+    d=reviewed_registry(snapshot)
     matches=[x for x in d["targets"] if x["id"]==target_id]
     require(len(matches)==1,"unregistered next-source target")
     row=matches[0];table=[];constants={}
@@ -111,8 +294,8 @@ def target(repo,snapshot,target_id):
                    domain="OPICA_APPROVED_CONSTANT_V1")
         constants[cid]=name
         table.append({"id":cid,"declaration":name,"module":mod,"role":"constant"})
-    return TargetSpec(target_id,row["declaration"],MODULE,row["expected_type_sha256"],
-                      constants,sorted(ALLOWED_AXIOMS),[MODULE],list(PER_ATTEMPT_GATES),
+    return TargetSpec(target_id,row["declaration"],row["module"],row["expected_type_sha256"],
+                      constants,sorted(ALLOWED_AXIOMS),sorted({row["module"]}|{x["module"] for x in row["approved_constants"]}),list(PER_ATTEMPT_GATES),
                       "value",FORBIDDEN),table
 
 def member(name):
@@ -121,7 +304,7 @@ def member(name):
 def check_inventory(snapshot,inv):
     require(selected(snapshot) and inv.snapshot_digest==snapshot.generation,
             "signed inventory belongs to a different source generation")
-    expected={x["declaration"]:x for x in registry(snapshot.repo)["source_theorems"]}
+    expected={x["declaration"]:x for x in reviewed_registry(snapshot)["source_theorems"]}
     require(len(inv.statements)==len(expected) and
             {r["declaration"] for r in inv.statements}==set(expected),
             "exact two-source signed cohort required")
@@ -129,7 +312,7 @@ def check_inventory(snapshot,inv):
         rec=StatementContract.from_dict({k:v for k,v in row.items() if k!="memberships"})
         want=expected[rec.declaration]
         require(rec.module==want["module"] and rec.type_sha256==want["type_sha256"]
-                and set(rec.axioms)==ALLOWED_AXIOMS
+                and set(rec.axioms)==set(want.get("axioms",ALLOWED_AXIOMS))
                 and not (set(rec.value_constants)&set(FORBIDDEN))
                 and row.get("memberships")==[member(rec.declaration)],
                 "signed theorem type/axiom/membership or premise boundary differs")
@@ -146,8 +329,8 @@ def validate_retrieval(snapshot,inv,doc):
             and doc["registry_sha256"]==snapshot.environment[SELECTION]
             and doc["native_export_sha256"]==inv.native_export_sha256
             and doc["proof_acceptance"] is False,"retrieval contract not source-bound")
-    d=registry(snapshot.repo)
-    require(type(doc["targets"]) is list and len(doc["targets"])==3,
+    d=reviewed_registry(snapshot)
+    require(type(doc["targets"]) is list and len(doc["targets"])==len(d["targets"]),
             "exact three compiler target values required")
     for item,want in zip(doc["targets"],d["targets"]):
         require(set(item)=={"target_id","expected_expression","proof_constants"}
@@ -158,7 +341,7 @@ def validate_retrieval(snapshot,inv,doc):
                 all(type(v) is str for v in item["proof_constants"]),
                 "invalid compiler target proof constants")
     rows={r["declaration"]:r for r in inv.statements}
-    require(type(doc["statements"]) is list and len(doc["statements"])==2
+    require(type(doc["statements"]) is list and len(doc["statements"])==len(rows)
             and {r["declaration"] for r in doc["statements"]}==set(rows),
             "exact signed compiler statement set required")
     for row in doc["statements"]:
@@ -186,11 +369,14 @@ def inventory(repo,snapshot,output,*,worker):
     require(worker_environment(worker)==snapshot.environment["worker_environment"],
             "compiler/import objects differ before signed inventory")
     output=Path(output);native=output/"next-native";native.mkdir()
-    d=registry(repo)
+    d=reviewed_registry(snapshot)
+    theorem_names=[x["declaration"] for x in d["source_theorems"]]
+    target_names=[x["declaration"] for x in d["targets"]]
+    target_ids=[x["id"] for x in d["targets"]]
     driver="import Zeta23.RHRC.OpicaComposition.Export\n"+atlas_driver(d["source_theorems"])
-    for name in THEOREM_NAMES:
+    for name in theorem_names:
         driver+="\nrun_cmd Zeta23.RHRC.OpicaComposition.exportRetrievalProofConstants "+chr(96)+name+' "type"\n'
-    for name in TARGET_NAMES:
+    for name in target_names:
         driver+="\nrun_cmd Zeta23.RHRC.OpicaComposition.exportTarget "+chr(96)+name+' "value"\n'
         driver+="run_cmd Zeta23.RHRC.OpicaComposition.exportRetrievalProofConstants "+chr(96)+name+' "value"\n'
     source="NextInventory.lean";(native/source).write_text(driver,encoding="utf-8")
@@ -209,18 +395,18 @@ def inventory(repo,snapshot,output,*,worker):
     for line in log.read_bytes().splitlines():
         if line.startswith(b"OPICA_TARGET\t"):target_values.append(load_bytes(line.split(b"\t",1)[1]))
         if line.startswith(b"OPICA_RETRIEVAL_PROOFS\t"):proofs.append(load_bytes(line.split(b"\t",1)[1]))
-    require(len(target_values)==3 and len(proofs)==5,"incomplete signed retrieval exports")
+    require(len(target_values)==len(target_names) and len(proofs)==len(theorem_names)+len(target_names),"incomplete signed retrieval exports")
     rows={r["declaration"]:r for r in inv.statements}
     doc={"schema":"OPICA_NEXT_NATIVE_RETRIEVAL_CONTRACT_V1",
          "source_generation":snapshot.generation,"snapshot_digest":snapshot.digest,
          "registry_sha256":snapshot.environment[SELECTION],
          "native_export_sha256":inv.native_export_sha256,
-         "targets":[{"target_id":tid,"expected_expression":val,"proof_constants":proofs[i+2]}
-                    for i,(tid,val) in enumerate(zip(TARGET_IDS,target_values))],
-         "statements":[{**rows[n],"proof_constants":proofs[i]} for i,n in enumerate(THEOREM_NAMES)],
+         "targets":[{"target_id":tid,"expected_expression":val,"proof_constants":proofs[i+len(theorem_names)]}
+                    for i,(tid,val) in enumerate(zip(target_ids,target_values))],
+         "statements":[{**rows[n],"proof_constants":proofs[i]} for i,n in enumerate(theorem_names)],
          "proof_acceptance":False}
     validate_retrieval(snapshot,inv,doc)
-    cohort=CohortInventory(list(THEOREM_NAMES),[member(n) for n in THEOREM_NAMES])
+    cohort=CohortInventory(theorem_names,[member(n) for n in theorem_names])
     coverage=check_membership_coverage(inv,cohort)
     require(coverage.complete,"signed native membership coverage incomplete")
     check_snapshot(snapshot)
@@ -403,6 +589,8 @@ def enforce_qualification(snapshot):
     require(supplied == actual and actual["successor_head"] == snapshot.commit
             and actual["successor_tree"] == snapshot.tree,
             "snapshot qualification receipt differs from authenticated source")
+    if TYPE_REVIEW in snapshot.environment:
+        reviewed_registry(snapshot)
 
 
 def run_bounded_menu(plan,dispatch,verify):
@@ -454,7 +642,7 @@ def run_bounded_menu(plan,dispatch,verify):
             "bounded_retrieval_disposition":batch["disposition"],
             "attempts":attempts,"independent_verified_conditional_applications":accepted}
 
-def campaign(repo,output,target_id,reviewed_head,*,worker,parent_run,round4_run):
+def campaign(repo,output,target_id,reviewed_head,*,worker,parent_run,round4_run,type_run=None):
     """Explicitly selected exact-head governed lifecycle; no automatic theorem promotion."""
     from .gate import check
     from ..opica_composition import service
@@ -462,19 +650,23 @@ def campaign(repo,output,target_id,reviewed_head,*,worker,parent_run,round4_run)
     from ..opica_composition.snapshot import discover_source_paths,hash_inventory
     repo=Path(repo).resolve();admission=check(repo,require_clean=True)
     require(admission["checked_commit"]==reviewed_head,"explicitly selected source head differs")
-    require(target_id in TARGET_IDS and worker.production,"reviewed signed target and production worker required")
+    require(target_id in ALL_TARGET_IDS and worker.production,"reviewed signed target and production worker required")
     output=Path(output).resolve()
     require(not output.exists() and not output.is_relative_to(repo),"fresh external campaign directory required")
     native=Path(os.environ["OPICA_NATIVE_OUTPUT"]).resolve()
     require(output.is_relative_to(native),"campaign must use provisioned bounded native volume")
     output.mkdir(parents=True)
     qualified=authenticate_qualification(repo,parent_run,round4_run)
+    require(target_id not in SCALAR_IDS or type_run is not None,"scalar targets require separately authenticated dual compiler review")
+    review=authenticate_type_review(repo,type_run) if type_run is not None else None
+    require(type_run is None or type_run not in {parent_run,round4_run},"separate compiler review execution required")
     (output/"qualification.json").write_bytes(canonical_bytes(qualified))
     paths=discover_source_paths(repo)|{"lean-toolchain","lake-manifest.json","lakefile.toml"}
     approved=ExperimentSpec("ROUND4_GOVERNED_DEDUCTION_V1",reviewed_head,
                             hash_inventory(repo,paths),
                             {"worker_environment":worker_environment(worker),
-                             SELECTION:file_hash(repo/REGISTRY),QUALIFICATION:qualified},"REVIEWED_FROZEN")
+                             SELECTION:file_hash(repo/REGISTRY),QUALIFICATION:qualified,
+                             **({TYPE_REVIEW:review} if review is not None else {})},"REVIEWED_FROZEN")
     (output/"experiment.json").write_bytes(approved.to_bytes())
     snap=service.freeze(repo,approved,output/"snapshot.json",worker=worker)
     inv=service.inventory(repo,snap,output/"inventory",worker=worker)
@@ -501,20 +693,28 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument("--output",type=Path,required=True)
     p.add_argument("--scalar-candidate",action="store_true")
-    p.add_argument("--target",choices=TARGET_IDS)
+    p.add_argument("--target",choices=ALL_TARGET_IDS)
+    p.add_argument("--type-run")
+    p.add_argument("--type-review-role",choices=REVIEW_ROLES)
+    p.add_argument("--run-id")
+    p.add_argument("--run-attempt",type=int)
     p.add_argument("--reviewed-head")
     p.add_argument("--parent-run")
     p.add_argument("--round4-run")
     a=p.parse_args()
     from .gate import REPO
-    if a.scalar_candidate:
+    if a.type_review_role is not None:
+        require(not a.scalar_candidate and a.target is None,"separate type-review execution required")
+        r=review_types(REPO,a.output,a.type_review_role,a.run_id,a.run_attempt)
+    elif a.scalar_candidate:
         require(a.target is None and a.reviewed_head is None,"scalar candidate is not an approved proof attempt")
         r=export_scalar_candidate(REPO,a.output)
     else:
         from ..opica_composition.cli import worker_from_environment
         require(a.target is not None and a.reviewed_head is not None,"explicit target/head required")
         r=campaign(REPO,a.output,a.target,a.reviewed_head,worker=worker_from_environment(),
-                   parent_run=_run_id(a.parent_run),round4_run=_run_id(a.round4_run))
+                   parent_run=_run_id(a.parent_run),round4_run=_run_id(a.round4_run),
+                   type_run=_run_id(a.type_run) if a.type_run else None)
     print(json.dumps({"schema":r["schema"],"status":r["status"],"RH":"OPEN","proof_acceptance":False}))
     if r["status"].startswith("INCOMPLETE_"):
         raise SystemExit(2)

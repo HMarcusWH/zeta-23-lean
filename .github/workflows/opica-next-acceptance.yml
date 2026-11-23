@@ -22,7 +22,7 @@ on:
         description: Select a reviewed non-promoting execution
         required: true
         type: choice
-        options: [source, canonical, signed-targets]
+        options: [source, canonical, type-review, signed-targets, scalar-targets]
         default: source
       reviewed_head:
         description: Exact selected commit (required for heavy execution)
@@ -34,6 +34,10 @@ on:
         type: string
       round4_run:
         description: Exact successful full Round4 successor run ID (signed-targets only)
+        required: false
+        type: string
+      type_run:
+        description: Exact successful dual compiler type-review run ID (required for scalar/expanded targets)
         required: false
         type: string
 permissions:
@@ -149,8 +153,47 @@ jobs:
             ${{ runner.temp }}/opica4-source-before.json
           compression-level: 0
           if-no-files-found: warn
+  dual-compiler-types:
+    name: NextTypes / ${{ matrix.role }}
+    if: ${{ github.repository == 'HMarcusWH/zeta-23-lean' && ((github.event_name == 'push' && contains(github.event.head_commit.message, '[review-types]')) || (github.event_name == 'workflow_dispatch' && inputs.mode == 'type-review' && inputs.reviewed_head == github.sha)) }}
+    needs: source-admission
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        role: [producer, reviewer]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          path: host
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: 3.13.5
+      - uses: ./host/.github/actions/opica4-runtime
+        with:
+          native: 'true'
+          provider: 'false'
+      - name: Independently compile exact source types and reviewed literal signatures
+        working-directory: host
+        env:
+          REVIEW_ROLE: ${{ matrix.role }}
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_next_acceptance.targets \
+            --type-review-role "$REVIEW_ROLE" --run-id "$GITHUB_RUN_ID" \
+            --run-attempt "$GITHUB_RUN_ATTEMPT" --output "$RUNNER_TEMP/type-review"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-next-type-review-${{ matrix.role }}-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/type-review/
+          if-no-files-found: warn
   governed-signed-targets:
-    if: ${{ github.repository == 'HMarcusWH/zeta-23-lean' && github.event_name == 'workflow_dispatch' && inputs.mode == 'signed-targets' && inputs.reviewed_head == github.sha && inputs.parent_run != '' && inputs.round4_run != '' }}
+    if: ${{ github.repository == 'HMarcusWH/zeta-23-lean' && github.event_name == 'workflow_dispatch' && (inputs.mode == 'signed-targets' || (inputs.mode == 'scalar-targets' && inputs.type_run != '')) && inputs.reviewed_head == github.sha && inputs.parent_run != '' && inputs.round4_run != '' }}
     needs: source-admission
     runs-on: ubuntu-24.04
     timeout-minutes: 360
@@ -158,7 +201,7 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        target: [NEXT_POSITIVE_RAW_SUBPOWER, NEXT_NEGATIVE_RAW_SUBPOWER, NEXT_ONE_POLARITY_RAW_SUBPOWER]
+        target: ${{ fromJSON(inputs.mode == 'scalar-targets' && '["NEXT_LARGE_PRIME_DEFICIT_SUBPOWER","NEXT_PRIME_DEFICIT_TO_LITERAL_G_BRIDGE"]' || '["NEXT_POSITIVE_RAW_SUBPOWER","NEXT_NEGATIVE_RAW_SUBPOWER","NEXT_ONE_POLARITY_RAW_SUBPOWER"]') }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -187,10 +230,16 @@ jobs:
           TARGET_ID: ${{ matrix.target }}
           PARENT_RUN: ${{ inputs.parent_run }}
           ROUND4_RUN: ${{ inputs.round4_run }}
+          TYPE_RUN: ${{ inputs.type_run }}
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           [[ "$PARENT_RUN" =~ ^[1-9][0-9]{0,19}$ && "$ROUND4_RUN" =~ ^[1-9][0-9]{0,19}$ ]]
+          type_args=()
+          if [[ -n "$TYPE_RUN" ]]; then
+            [[ "$TYPE_RUN" =~ ^[1-9][0-9]{0,19}$ ]]
+            type_args=(--type-run "$TYPE_RUN")
+          fi
           sudo --preserve-env=GH_TOKEN systemd-run --setenv=GH_TOKEN --wait --pipe --collect --unit="opica-next-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
             --uid="$(id -u)" --gid="$(id -g)" \
             -p MemoryMax=4294967296 -p MemorySwapMax=0 -p TasksMax=64 -p CPUQuota=200% \
@@ -199,7 +248,7 @@ jobs:
             "OPICA_NATIVE_OUTPUT=$OPICA_NATIVE_OUTPUT" "OPICA_NATIVE_CONFIG=$OPICA_NATIVE_CONFIG" \
             python3 -B -m research.RHRC.integration.opica_next_acceptance.targets \
               --target "$TARGET_ID" --reviewed-head "$GITHUB_SHA" \
-              --parent-run "$PARENT_RUN" --round4-run "$ROUND4_RUN" \
+              --parent-run "$PARENT_RUN" --round4-run "$ROUND4_RUN" "${type_args[@]}" \
               --output "$OPICA_NATIVE_OUTPUT/next-target-campaign"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
