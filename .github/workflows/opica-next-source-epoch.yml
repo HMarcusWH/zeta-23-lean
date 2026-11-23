@@ -1,0 +1,185 @@
+name: OPICA reviewed combined source epoch v1 (NO theorem promotion)
+on:
+  push:
+    branches: [research/opica-next-source-epoch-v1-20261123]
+    paths:
+      - .github/workflows/opica-next-source-epoch.yml
+      - research/RHRC/integration/opica_next_epoch/**
+      - research/RHRC/integration/opica_round6/next_search/**
+      - research/RHRC/integration/opica_round6/prime_deficit/**
+      - research/RHRC/graph/FILE_CLASSES.json
+      - research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: opica-combined-v1-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Freeze combined source and negative controls in both Python modes
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$PWD"
+          python3 -B research/RHRC/integration/opica_next_epoch/scope.py \
+            --output "$RUNNER_TEMP/OPICA_NEXT_EPOCH_SOURCE.json"
+          (cd research/RHRC/integration/opica_next_epoch && python3 -B -m unittest -v test_scope)
+          (cd research/RHRC/integration/opica_next_epoch && python3 -O -B -m unittest -v test_scope)
+          (cd research/RHRC/integration/opica_round6/next_search && python3 -B -m unittest -v test_source_scope)
+          (cd research/RHRC/integration/opica_round6/next_search && python3 -O -B -m unittest -v test_source_scope)
+          (cd research/RHRC/integration/opica_round6/prime_deficit && python3 -B -m unittest -v test_scope)
+          (cd research/RHRC/integration/opica_round6/prime_deficit && python3 -O -B -m unittest -v test_scope)
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-next-epoch-source-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/OPICA_NEXT_EPOCH_SOURCE.json
+          if-no-files-found: warn
+  native-source-lean:
+    needs: source
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: .
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile four exact mathematical and audit modules at native Lean pin
+        run: |
+          set -euo pipefail
+          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.33.0-rc2"
+          lake build Zeta23.OPICARound6.NextSearch.SourceEnergies
+          lake build Zeta23.OPICARound6.PrimeDeficit.Source
+          lake env lean Zeta23/OPICARound6/NextSearch/Verify.lean >"$RUNNER_TEMP/OPICA_AX_307.log" 2>&1
+          lake env lean Zeta23/OPICARound6/PrimeDeficit/Verify.lean >"$RUNNER_TEMP/OPICA_AX_308.log" 2>&1
+          cat "$RUNNER_TEMP/OPICA_AX_307.log" "$RUNNER_TEMP/OPICA_AX_308.log"
+          ! grep -Ei 'sorryAx|error:|declaration uses axiom' "$RUNNER_TEMP/OPICA_AX_307.log" "$RUNNER_TEMP/OPICA_AX_308.log"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-next-epoch-lean-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/OPICA_AX_307.log
+            ${{ runner.temp }}/OPICA_AX_308.log
+          if-no-files-found: warn
+  typed-retrieval:
+    needs: native-source-lean
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: .
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Export five true Lean expression DAGs and run three bounded typed searches
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$PWD"
+          lake build Zeta23.OPICARound6.NextSearch.SourceEnergies
+          lake build Zeta23.RHRC.OpicaComposition.Export
+          lake build Zeta23.RHRC.OpicaRound3AtlasExport
+          python3 -B research/RHRC/integration/opica_round6/next_search/typed_export.py \
+            --output "$RUNNER_TEMP/OPICA_NEXT_EPOCH_TYPES.json"
+          python3 -B research/RHRC/integration/opica_round6/next_search/campaign.py \
+            --output "$RUNNER_TEMP/OPICA_NEXT_EPOCH_RETRIEVAL.json"
+          python3 - <<'PY'
+          import os,json
+          from pathlib import Path
+          r=json.loads((Path(os.environ["RUNNER_TEMP"])/"OPICA_NEXT_EPOCH_RETRIEVAL.json").read_text())
+          assert len(r["targets"]) == 3 and r["RH"] == "OPEN" and r["Step4"] == "OPEN"
+          assert r["proof_acceptance"] is False and r["formal_kernel_proof"] == "NOT_ESTABLISHED_BY_THIS_SEARCH"
+          print("TYPED_RETRIEVAL_ONLY",[(x["target"],x["bounded_disposition"]) for x in r["targets"]])
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-next-epoch-retrieval-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/OPICA_NEXT_EPOCH_TYPES.json
+            ${{ runner.temp }}/OPICA_NEXT_EPOCH_RETRIEVAL.json
+          if-no-files-found: warn
+  canonical-materializer-candidate:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    needs: native-source-lean
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: .
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Write and check 78 current native derived products (review-only)
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$PWD"
+          python3 -B research/RHRC/integration/opica_next_epoch/scope.py \
+            --output "$RUNNER_TEMP/OPICA_NEW_MATERIALIZER_SCOPE.json"
+          python3 -B research/RHRC/tools/materialize_derived_state.py --write >"$RUNNER_TEMP/OPICA_NEW_WRITE.log" 2>&1
+          python3 -B research/RHRC/tools/materialize_derived_state.py --check >"$RUNNER_TEMP/OPICA_NEW_CHECK.log" 2>&1
+          git diff --check
+          git diff --binary HEAD >"$RUNNER_TEMP/OPICA_NEW_REVIEW_ONLY.patch"
+          python3 - <<'PY'
+          import json,os,subprocess,hashlib
+          from pathlib import Path
+          coverage=json.loads(Path("research/RHRC/graph/generated/REPOSITORY_COVERAGE.json").read_text())
+          allowed=set(coverage["declared_generated_products"])
+          allowed.add("research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl")
+          paths=set(filter(None,subprocess.check_output(["git","diff","--name-only","HEAD"],text=True).splitlines()))
+          assert len(allowed)==78 and paths<=allowed,(len(allowed),sorted(paths-allowed))
+          p=Path(os.environ["RUNNER_TEMP"])/"OPICA_NEW_REVIEW_ONLY.patch"
+          receipt={"status":"REVIEW_ONLY_GENERATED_STATE","changed_paths":sorted(paths),
+                   "patch_sha256":hashlib.sha256(p.read_bytes()).hexdigest(),
+                   "proof_acceptance":False,"RH":"OPEN","Step4":"OPEN"}
+          (Path(os.environ["RUNNER_TEMP"])/"OPICA_NEW_MATERIALIZER_RECEIPT.json").write_text(
+            json.dumps(receipt,indent=2)+"\n")
+          print(receipt)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-next-epoch-canonical-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/OPICA_NEW_MATERIALIZER_SCOPE.json
+            ${{ runner.temp }}/OPICA_NEW_WRITE.log
+            ${{ runner.temp }}/OPICA_NEW_CHECK.log
+            ${{ runner.temp }}/OPICA_NEW_REVIEW_ONLY.patch
+            ${{ runner.temp }}/OPICA_NEW_MATERIALIZER_RECEIPT.json
+          if-no-files-found: warn
