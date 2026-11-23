@@ -1,0 +1,35 @@
+{
+  "schema": "OPICA_BIPOLAR_CANDIDATE_V1",
+  "base": "4f81c784d3b330395507f6dcd1c8b0010b3835cc",
+  "tree": "84b235c455980cfd516a8c0ccaf7749bce3c5339",
+  "reviewed": {
+    ".github/workflows/opica-bipolar-transfer.yml": "17d193bf06f28397e76e3bcf66eadbde5ca8ab98",
+    "Zeta23/OPICARound6/NextSearch/BipolarTransfer.lean": "e2437f422e13b361a8bf268edfe0f76b12733be9",
+    "Zeta23/OPICARound6/NextSearch/BipolarVerify.lean": "2088116da6749061df9368ea3d25f252baf610fb",
+    "research/RHRC/integration/opica_round6/bipolar_transfer/README.md": "cc310371610c4d2094886aa3b07741e29c456e53",
+    "research/RHRC/integration/opica_round6/bipolar_transfer/finite_controls.py": "ca6aa3d814dca5ad5287de8ce2b76cecc0e8966a"
+  },
+  "validator_template_oid": "c76cc569ef6d61d94184eb51f6784901f0afcaef",
+  "roots": [
+    "Zeta23.OPICARound6.NextSearch.raw_survivor_polarity_difference",
+    "Zeta23.OPICARound6.NextSearch.reverseOpposedSurvivorEnergy_bracket",
+    "Zeta23.OPICARound6.NextSearch.rawNegativeEnergy_bracket",
+    "Zeta23.OPICARound6.NextSearch.rawNegativeEnergy_le_full_components",
+    "Zeta23.OPICARound6.NextSearch.rawPositiveEnergy_bracket",
+    "Zeta23.OPICARound6.NextSearch.rawSquareEnergy_eq_polarities",
+    "Zeta23.OPICARound6.NextSearch.rawSquareEnergy_removal_bound",
+    "Zeta23.OPICARound6.NextSearch.pairedOpposedSurvivorEnergy_eq",
+    "Zeta23.OPICARound6.NextSearch.pairedOpposedSurvivorEnergy_bracket",
+    "Zeta23.OPICARound6.NextSearch.rawBipolarEnergy_bracket",
+    "Zeta23.OPICARound6.NextSearch.unsignedErrorEnergy_nonnegative",
+    "Zeta23.OPICARound6.NextSearch.cofinalSubpower_of_tail_error",
+    "Zeta23.OPICARound6.NextSearch.cofinalSubpower_iff_of_tail_error",
+    "Zeta23.OPICARound6.NextSearch.positiveRawSubpower_iff_opposed_of_tail_error",
+    "Zeta23.OPICARound6.NextSearch.negativeRawSubpower_iff_opposed_of_tail_error",
+    "Zeta23.OPICARound6.NextSearch.onePolarityRawSubpower_iff_opposed_of_tail_error"
+  ],
+  "proof_acceptance": false,
+  "RH": "OPEN",
+  "C1": "OPEN",
+  "Step4": "OPEN"
+}

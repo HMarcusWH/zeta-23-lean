@@ -1,0 +1,71 @@
+name: OPICA bipolar same-source finite transfer candidate
+on:
+  push:
+    branches: [research/opica-bipolar-energy-transfer-20261123]
+permissions:
+  contents: read
+concurrency:
+  group: opica-bipolar-transfer-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  source-and-finite-controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Exact additive source and rational falsification controls
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/bipolar-source"
+          python3 -B -m research.RHRC.integration.opica_round6.bipolar_transfer.scope --output "$out/source.json"
+          python3 -B research/RHRC/integration/opica_round6/bipolar_transfer/finite_controls.py --output "$out/finite.json"
+          python3 -O -B research/RHRC/integration/opica_round6/bipolar_transfer/finite_controls.py --output "$out/finite-optimized.json"
+          cmp "$out/finite.json" "$out/finite-optimized.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: bipolar-source-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bipolar-source/
+          if-no-files-found: warn
+  native-compiler:
+    needs: source-and-finite-controls
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Strict native finite/conditional proofs and named transitive axioms
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/bipolar-compiler"
+          mkdir -p "$out"
+          python3 -B -m research.RHRC.integration.opica_round6.bipolar_transfer.scope --output "$out/source-before.json"
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.33.0-rc2'
+          lake build Zeta23.OPICARound6.NextSearch.BipolarTransfer 2>&1 | tee "$out/build.log"
+          lake env lean -DwarningAsError=true Zeta23/OPICARound6/NextSearch/BipolarTransfer.lean 2>&1 | tee "$out/strict-source.log"
+          lake env lean -DwarningAsError=true Zeta23/OPICARound6/NextSearch/BipolarVerify.lean > "$out/axioms.log" 2>&1
+          cat "$out/axioms.log"
+          python3 -B -m research.RHRC.integration.opica_round6.bipolar_transfer.scope --axiom-log "$out/axioms.log" --output "$out/axiom-receipt.json"
+          python3 -B -m research.RHRC.integration.opica_round6.bipolar_transfer.scope --output "$out/source-after.json"
+          cmp "$out/source-before.json" "$out/source-after.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: bipolar-compiler-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bipolar-compiler/
+          if-no-files-found: warn
