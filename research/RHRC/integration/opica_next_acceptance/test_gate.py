@@ -98,6 +98,21 @@ class SourceProofAdmissionTests(unittest.TestCase):
             with self.assertRaises(s.ScopeError):
                 s.check()
 
+    def test_original_eleven_lanes_and_independent_partition_unchanged(self):
+        from research.RHRC.integration.opica_composition.accept import (
+            ROUND4_LANES, REPLAY_GROUP_IDS, group_lanes, verify_gate_inventory)
+        self.assertEqual(len(ROUND4_LANES),11)
+        self.assertEqual(REPLAY_GROUP_IDS,("CORE","AUXILIARY","CANONICAL"))
+        self.assertEqual(tuple(verify_gate_inventory(ROUND4_LANES)),ROUND4_LANES)
+        joined=tuple(name for group in REPLAY_GROUP_IDS for name in group_lanes(group))
+        self.assertEqual(len(joined),len(set(joined)))
+        self.assertEqual(set(joined),set(ROUND4_LANES))
+        self.assertIn("MATHEMATICAL_SUPPORT",joined)
+        self.assertIn("SOURCE_NUMERICS",joined)
+        self.assertIn("GENERATED_STATE",joined)
+        with self.assertRaises(ContractError):
+            verify_gate_inventory(ROUND4_LANES[:-1])
+
     def test_historical_source_validator_fails_closed(self):
         # Earlier frozen source epoch is NOT enlarged retroactively.
         with self.assertRaises(ContractError):
