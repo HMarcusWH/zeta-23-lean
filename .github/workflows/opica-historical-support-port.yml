@@ -5,6 +5,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: opica-support-port-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
   source-contract:
     runs-on: ubuntu-24.04
@@ -13,8 +16,15 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - run: python3 -B research/RHRC/integration/opica_support_port/check_candidate.py
-      - run: python3 -O -B research/RHRC/integration/opica_support_port/check_candidate.py
+      - run: python3 -B research/RHRC/integration/opica_support_port/check_candidate.py --receipt "$RUNNER_TEMP/support-source.json"
+      - run: cd research/RHRC/integration/opica_support_port/ && python3 -B -m unittest -v test_candidate
+      - run: cd research/RHRC/integration/opica_support_port/ && python3 -O -B -m unittest -v test_candidate
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-support-source-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/support-source.json
+          if-no-files-found: error
   native-candidate:
     needs: source-contract
     runs-on: ubuntu-24.04
@@ -32,12 +42,56 @@ jobs:
           lint: false
           use-github-cache: false
           use-mathlib-cache: true
-      - name: Compile exact native candidate and audit 72 historical roots
-        run: python3 -B research/RHRC/integration/opica_support_port/check_candidate.py "$RUNNER_TEMP/opica-support-port"
+      - run: python3 -B research/RHRC/integration/opica_support_port/check_candidate.py --build "$RUNNER_TEMP/opica-support-port"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: opica-support-port-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/opica-support-port/
+          if-no-files-found: warn
+          retention-days: 90
+  independent-candidate:
+    needs: native-candidate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          path: host
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: HMarcusWH/riemann-hypothesis
+          ref: 5601d19ff185d58376e109d82dd4512488295372
+          path: checker-tools
+          persist-credentials: false
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: host
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Fresh pinned independent checker
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/support-checker-venv"
+          "$RUNNER_TEMP/support-checker-venv/bin/python" -m pip install -r checker-tools/verification/opica-v436/requirements.txt
+          "$RUNNER_TEMP/support-checker-venv/bin/python" checker-tools/verification/opica-v436/bootstrap_checker.py --work "$RUNNER_TEMP/support-checker" --timeout 2400 --memory-mib 6000
+      - name: Rebuild and independently check the exact 201 selected roots
+        working-directory: host
+        run: |
+          set -euo pipefail
+          python3 -B research/RHRC/integration/opica_support_port/check_candidate.py --build "$RUNNER_TEMP/opica-support-independent" --checker-work "$RUNNER_TEMP/support-checker" --checker-code "$GITHUB_WORKSPACE/checker-tools/verification/opica-v436"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-support-independent-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/opica-support-independent/
+            ${{ runner.temp }}/support-checker/BOOTSTRAP_RECEIPT.json
           if-no-files-found: warn
           retention-days: 90

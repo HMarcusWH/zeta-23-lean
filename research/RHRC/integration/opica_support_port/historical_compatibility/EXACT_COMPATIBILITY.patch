@@ -1,0 +1,96 @@
+--- native@7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9/Zeta23/Taper/Norms.lean
++++ compatibility/Zeta23/Taper/Norms.lean
+@@ -3,7 +3,6 @@
+ Released under Apache 2.0 license as described in the file LICENSE.
+ SPDX-License-Identifier: Apache-2.0
+ -/
+-import Mathlib
+ import Zeta23.Taper.Basic
+ 
+ open Complex MeasureTheory Real Set Filter Topology
+--- native@7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9/Zeta23/Taper/Decay.lean
++++ compatibility/Zeta23/Taper/Decay.lean
+@@ -11,7 +11,6 @@
+ generic parameters (ϱ : ℝ → ℝ) (L w : ℝ); paper's side condition is 1 ≤ w ≤ L/8 [eq:wrange];
+ each lemma carries the minimal hypothesis it needs.
+ -/
+-import Mathlib
+ import Zeta23.Taper.Norms
+ import Zeta23.Taper.Strip
+ 
+--- native@7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9/Zeta23/Taper/Fourier.lean
++++ compatibility/Zeta23/Taper/Fourier.lean
+@@ -1,3 +1,6 @@
++import Mathlib.Analysis.Fourier.FourierTransformDeriv
++import Mathlib.Analysis.Fourier.Convolution
++import Mathlib.Analysis.Fourier.Inversion
+ /-
+ Copyright (c) 2026 Anthropic, PBC. All rights reserved.
+ Released under Apache 2.0 license as described in the file LICENSE.
+@@ -24,7 +27,6 @@
+ * smoothness  Real.contDiff_fourier  (Mathlib/Analysis/Fourier/FourierTransformDeriv.lean);
+ * integrable_inv_one_add_sq  (dominating function (1+r²)⁻¹ for the decay |φ̂(r)| ≤ min(C₀, C₂/r²)).
+ -/
+-import Mathlib
+ import Zeta23.Taper.Strip
+ 
+ open Complex MeasureTheory Real Set Filter Topology
+--- native@7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9/Zeta23/PrimeSideA/Defs.lean
++++ compatibility/Zeta23/PrimeSideA/Defs.lean
+@@ -1,3 +1,5 @@
++import Mathlib.Analysis.Real.Pi.Bounds
++import Mathlib.Analysis.SumIntegralComparisons
+ /-
+ Copyright (c) 2026 Anthropic, PBC. All rights reserved.
+ Released under Apache 2.0 license as described in the file LICENSE.
+@@ -44,7 +46,6 @@
+ this side we only meet φ̂ and Φ := (φ²)^ on ℝ, where they are real and even; we carry them as
+ functions ℝ → ℝ (= `phiHatR`, `PhiR` of Defs.lean).
+ -/
+-import Mathlib
+ import Zeta23.Hypotheses
+ 
+ 
+--- native@7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9/Zeta23/PrimeSideA/EndsE1.lean
++++ compatibility/Zeta23/PrimeSideA/EndsE1.lean
+@@ -323,7 +323,7 @@
+     set G : ℕ → ℝ := fun m => psiA cϱ p ((τ - p.T) + m * p.h) ^ 2 with hG
+     have hinj : Set.InjOn ι Sm := by
+       intro a ha b hb hab
+-      simp only [hSm, Finset.coe_filter, Set.mem_setOf_eq] at ha hb
++      simp only [hSm, Finset.coe_filter, Set.mem_ofPred_eq] at ha hb
+       simp only [hι] at hab
+       apply Subtype.ext
+       have := congrArg (fun n : ℕ => (n : ℤ)) hab
+--- native@7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9/Zeta23/MV/Spacing.lean
++++ compatibility/Zeta23/MV/Spacing.lean
+@@ -1,10 +1,10 @@
++import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
+ /-
+ Copyright (c) 2026 Anthropic, PBC. All rights reserved.
+ Released under Apache 2.0 license as described in the file LICENSE.
+ SPDX-License-Identifier: Apache-2.0
+ -/
+ 
+-import Mathlib
+ 
+ /-!
+ # MV step 0 — spacing lemmas for admissible weights
+@@ -57,6 +57,8 @@
+ /-- The intervals are pairwise disjoint. -/
+ lemma itv_disjoint (h : Adm freq δ) :
+     Set.univ.PairwiseDisjoint (fun t : ι => Adm.itv (freq := freq) (δ := δ) t) := by
++  let _keepFintype : Fintype ι := inferInstance
++  let _keepDecidableEq : DecidableEq ι := inferInstance
+   intro t _ t' _ htt
+   have hfar := h.centers_far htt
+   rw [Function.onFun, Set.disjoint_left]
+@@ -153,6 +155,8 @@
+ private lemma mem_window (h : Adm freq δ) {s t : ι} (hts : t ≠ s) {R : ℝ}
+     (hR : 3 / 2 * |freq s - freq t| ≤ R) {u : ℝ}
+     (hu : u ∈ Adm.itv (freq := freq) (δ := δ) t) : u ∈ window freq δ s R := by
++  let _keepFintype : Fintype ι := inferInstance
++  let _keepDecidableEq : DecidableEq ι := inferInstance
+   have hb := h.abs_le_of_mem_itv hts hu
+   have h1 : |u - freq s| ≤ R := by
+     rw [abs_sub_comm]; exact hb.1.trans hR

@@ -36,6 +36,36 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
+      "id": "support_port_lean",
+      "pattern": "\\A(?:Zeta23/OPICASupport/ActualDensityEnergy/Composition\\.lean|Zeta23/OPICASupport/ApertureSlack/FormStability\\.lean|Zeta23/OPICASupport/ApertureSlack/NativeGoodAperture\\.lean|Zeta23/OPICASupport/CofinalAperture/Sampling\\.lean|Zeta23/OPICASupport/DensityCompatibility/ActualDistinctGrowth\\.lean|Zeta23/OPICASupport/FourierBridge/BoundaryFlatFourierSampling\\.lean|Zeta23/OPICASupport/FourierBridge/FiniteFourierRational\\.lean|Zeta23/OPICASupport/FourierBridge/FiniteFourierResonance\\.lean|Zeta23/OPICASupport/FourierEnergy/BoundaryFlatStrictEnergy\\.lean|Zeta23/OPICASupport/FourierEnergy/EuclideanEnergyLowerBound\\.lean|Zeta23/OPICASupport/NativeParityActual/ActualZeroSampling\\.lean|Zeta23/OPICASupport/NativeParityActual/FiniteFiberSampling\\.lean|Zeta23/OPICASupport/NativeParityRational/MomentSliceIdentification\\.lean|Zeta23/OPICASupport/NativeParityRational/MomentSliceSampling\\.lean|Zeta23/OPICASupport/NativeParityRational/PolynomialReversal\\.lean|Zeta23/OPICASupport/NativeSliceInterpolation/Interpolation\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatCharacterization\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatGram\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatRationalSampling\\.lean|Zeta23/OPICASupport/OPICAStep4/FiniteCauchySampling\\.lean|Zeta23/OPICASupport/OPICAStep4/RationalSamplingSharpness\\.lean|Zeta23/OPICASupport/ParityRational/PoleSquareSampling\\.lean|Zeta23/OPICASupport/SamplingDensity/DistinctGrowthFromFraction\\.lean|Zeta23/OPICASupport/SamplingDensity/ResonanceCounting\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "id": "support_port_workflow",
+      "pattern": "\\A(?:\\.github/workflows/opica\\-historical\\-support\\-port\\.yml)\\Z",
+      "file_class": "CI_WORKFLOW",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "support_port_code",
+      "pattern": "\\A(?:research/RHRC/integration/opica_support_port/check_candidate\\.py|research/RHRC/integration/opica_support_port/independent_port\\.py|research/RHRC/integration/opica_support_port/test_candidate\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "support_port_receipts",
+      "pattern": "\\A(?:research/RHRC/integration/opica_support_port/historical_receipts/01_BOUNDARY_FLAT_CHARACTERIZATION_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/02_BOUNDARY_FLAT_GRAM_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/03_FINITE_RATIONAL_SAMPLING_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/04_FOURIER_BRIDGE_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/05_MODAL_VALUE_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/06_CONDITIONAL_DENSITY_SUPPLIER_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/07_CONDITIONAL_ENERGY_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/08_PARITY_RATIONAL_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/09_ACTUAL_DISTINCT_GROWTH_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/10_ACTUAL_DENSITY_ENERGY_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/11_NATIVE_PARITY_SAMPLING_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/12_ACTUAL_NATIVE_PARITY_SAMPLING_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/13_COFINAL_APERTURE_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/14_DIMENSION_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/15_NATIVE_SLICE_INTERPOLATION_RECEIPT\\.json|research/RHRC/integration/opica_support_port/historical_receipts/16_APERTURE_SLACK_RECEIPT\\.json)\\Z",
+      "file_class": "RESEARCH_RECEIPT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "support_port_metadata",
+      "pattern": "\\A(?:research/RHRC/integration/opica_support_port/HISTORICAL_PACKAGE_REGISTRY\\.json|research/RHRC/integration/opica_support_port/PORT_CONTRACT\\.json|research/RHRC/integration/opica_support_port/README\\.md|research/RHRC/integration/opica_support_port/SEALED_PORT\\.json|research/RHRC/integration/opica_support_port/historical_compatibility/EXACT_COMPATIBILITY\\.patch)\\Z",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "documentation_2026_11_21_examples",
       "pattern": "\\A(?:docs/examples/exact_examples\\.py|docs/examples/infrastructure_replay\\.py)\\Z",
       "file_class": "RESEARCH_EXECUTABLE",

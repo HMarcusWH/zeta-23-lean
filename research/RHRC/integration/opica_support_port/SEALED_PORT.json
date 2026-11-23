@@ -1,0 +1,287 @@
+{
+  "schema": "OPICA_SUPPORT_SEALED_PORT_V2",
+  "base": "bb7c8184a135b2823c6296917c5ac893bebf2a71",
+  "base_tree": "2b19357e1b65cc500f3e3a5b5d4df14601b02062",
+  "reviewed": {
+    ".github/workflows/documentation.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07f2809ece1995adf11bd10f0dc0a1015585d236"
+    },
+    ".github/workflows/opica-historical-support-port.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "527edf6803d3cad2dd1227ab65c8e774a5660bf7"
+    },
+    ".github/workflows/rhrc_opica_followup.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6adb7b4dffe7b4ad9b0d136437a2c564899161a5"
+    },
+    ".github/workflows/rhrc_opica_round2.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "75dfd65e821428a33544ac452d40199a0c1cda2f"
+    },
+    ".github/workflows/rhrc_opica_round3.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "64a55ddf7826dfa35e1dd8b4ca7c81e0d882cdab"
+    },
+    ".github/workflows/rhrc_opica.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b733e1d3d451e05ec4eae523f61f4cbc79b5022b"
+    },
+    ".github/workflows/rhrc.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7fc2aa695354e32863712dca8664b5b30ba36ba2"
+    },
+    "research/RHRC/graph/FILE_CLASSES.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05a0696487058c716d0bacdb5ceb278f0006d7bb"
+    },
+    "research/RHRC/integration/opica_composition/cli.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0986db370c95f11acf0fb49a731f118b4baeee67"
+    },
+    "research/RHRC/integration/opica_support_port/historical_compatibility/EXACT_COMPATIBILITY.patch": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c0dbdd216a8cb86999843bb91d1dafb9b7254c84"
+    },
+    "research/RHRC/integration/opica_support_port/HISTORICAL_PACKAGE_REGISTRY.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "18be14a321e8bc448edd9987488202ad08d0554d"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/01_BOUNDARY_FLAT_CHARACTERIZATION_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "27912b1999295afd9a6a91ccdfdbb656182b5a5c"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/02_BOUNDARY_FLAT_GRAM_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d2a56d0776f4d77224c2ef3258d5b9165b50a296"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/03_FINITE_RATIONAL_SAMPLING_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c38e5ce8ee28585c6542fae8c729453c30c5c8e5"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/04_FOURIER_BRIDGE_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7a8ddd7faf535812916703c92efcaab092ba91f4"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/05_MODAL_VALUE_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7dbf06ff084f3eb14cbedab3dcf15251a35583b"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/06_CONDITIONAL_DENSITY_SUPPLIER_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6efacfb5b708cbd5af3312766bbf8b79c15f7cc9"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/07_CONDITIONAL_ENERGY_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a43d63ceabdb1d699bf361817996b089904d7fd7"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/08_PARITY_RATIONAL_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5e03f380235a9b058ecc5b3b15fddf055fe90224"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/09_ACTUAL_DISTINCT_GROWTH_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "81c3e2c6bcc5fc494b147a517d8e132e5b442bc5"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/10_ACTUAL_DENSITY_ENERGY_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f6d336faeab36b291d10fe110fba579040642d25"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/11_NATIVE_PARITY_SAMPLING_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a5fcb112b3d524162b19d46f763af49442ad8c81"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/12_ACTUAL_NATIVE_PARITY_SAMPLING_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2870dff0ad40d11adfd7c317e0511529b95c8d45"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/13_COFINAL_APERTURE_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ebf9ab55de209c497519efcedeeec91b16812cb6"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/14_DIMENSION_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a91e756152573a056cdfc320e895b1fa377de2c"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/15_NATIVE_SLICE_INTERPOLATION_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea1c690e35a4891674f31a039e76bccf08fd1d93"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/16_APERTURE_SLACK_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06ebfcce762a1424d41277975fa27f0f205a50bd"
+    },
+    "research/RHRC/integration/opica_support_port/independent_port.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb169d6e85a37f5e5adaaefd9c1bb9584a20101e"
+    },
+    "research/RHRC/integration/opica_support_port/PORT_CONTRACT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67e4576255859c9bad0fca1eb50feeba44e5826f"
+    },
+    "research/RHRC/integration/opica_support_port/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "14daf30e7adc822677bf8e03b5c5faad94df00ca"
+    },
+    "research/RHRC/integration/opica_support_port/test_candidate.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8f162139c1fb544b75473084861fde0c46dc6e8f"
+    },
+    "Zeta23/OPICASupport/ActualDensityEnergy/Composition.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4291edd7c9c8fbdcf1b3d0d98868a6da5fc9e4d9"
+    },
+    "Zeta23/OPICASupport/ApertureSlack/FormStability.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "541cb6b942a160042bd2c820bf78a7e09a64262a"
+    },
+    "Zeta23/OPICASupport/ApertureSlack/NativeGoodAperture.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1567b2b75b1c3c68130a6c273ca8fb33ed76ff78"
+    },
+    "Zeta23/OPICASupport/CofinalAperture/Sampling.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c68b8550aea76ec5ace249499623ff0590413c6"
+    },
+    "Zeta23/OPICASupport/DensityCompatibility/ActualDistinctGrowth.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdedb7d907b57d550456cb7bf2b30cb81670a131"
+    },
+    "Zeta23/OPICASupport/FourierBridge/BoundaryFlatFourierSampling.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa578b324445bc8086d20fbae6ac92d0a026a7cb"
+    },
+    "Zeta23/OPICASupport/FourierBridge/FiniteFourierRational.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2324cb1c3f4cfe4eb0f26a3e12fd349f57b278d7"
+    },
+    "Zeta23/OPICASupport/FourierBridge/FiniteFourierResonance.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c887432be159076ebd69e20987f6a071683f04a"
+    },
+    "Zeta23/OPICASupport/FourierEnergy/BoundaryFlatStrictEnergy.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "121ee984fd97ccd1b81b36d50382f56dd82a7f7b"
+    },
+    "Zeta23/OPICASupport/FourierEnergy/EuclideanEnergyLowerBound.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "79037ee70ffb566f96b36b68874e706f493ea012"
+    },
+    "Zeta23/OPICASupport/NativeParityActual/ActualZeroSampling.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ab3dad7f631d7ba045892ffd7bff31a7213f277"
+    },
+    "Zeta23/OPICASupport/NativeParityActual/FiniteFiberSampling.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c607ae66e478755350950d6e438bc7a57c89b11d"
+    },
+    "Zeta23/OPICASupport/NativeParityRational/MomentSliceIdentification.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "db37a4e48487852341197a72c254d56489fd37eb"
+    },
+    "Zeta23/OPICASupport/NativeParityRational/MomentSliceSampling.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3230c125b120079804549c2dd0c955b95a534605"
+    },
+    "Zeta23/OPICASupport/NativeParityRational/PolynomialReversal.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9d11645a1832bfe9b3dcd413ce2b2c77a9d6bb9"
+    },
+    "Zeta23/OPICASupport/NativeSliceInterpolation/Interpolation.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "98bb2d6070760940bbfc01c21f51cec932c9f263"
+    },
+    "Zeta23/OPICASupport/OPICAStep4/BoundaryFlatCharacterization.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c7731ebb0e85c89d4afdaa95917476c662d015c"
+    },
+    "Zeta23/OPICASupport/OPICAStep4/BoundaryFlatGram.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4adb7dec9d432f267be7ec7ebe60b6eea31d63e8"
+    },
+    "Zeta23/OPICASupport/OPICAStep4/BoundaryFlatRationalSampling.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "946c1a72c5a4aa675f1a0c6723e8606d67e213ad"
+    },
+    "Zeta23/OPICASupport/OPICAStep4/FiniteCauchySampling.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e492efbba87e5101d33db2de1c803884b2816247"
+    },
+    "Zeta23/OPICASupport/OPICAStep4/RationalSamplingSharpness.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e991686c8d57260d3d99596e3cb187bd7757f2d2"
+    },
+    "Zeta23/OPICASupport/ParityRational/PoleSquareSampling.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a5acb113e8494d86a713d4b11acd5ccff260b8c1"
+    },
+    "Zeta23/OPICASupport/SamplingDensity/DistinctGrowthFromFraction.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f47ad6ae53eabbe9099954d09b1674fb7a97204"
+    },
+    "Zeta23/OPICASupport/SamplingDensity/ResonanceCounting.lean": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "abeaa3da4453f05ea2c1101a64a00cb83e306ba9"
+    }
+  },
+  "validator_template_oid": "aa96c08a786f238272fbdd08f7606f6cf97e1e2c",
+  "proof_acceptance": false,
+  "RH": "OPEN",
+  "C1": "OPEN",
+  "Step4": "OPEN"
+}

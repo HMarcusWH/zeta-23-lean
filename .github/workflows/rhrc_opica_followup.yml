@@ -44,7 +44,7 @@ jobs:
           test -z "$(git status --porcelain --untracked-files=all)"
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$evidence/current-round4-source-scope.json"
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --historical-projection --repo . --output "$evidence/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           git cat-file -e 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{commit}' || git fetch --no-tags origin fe16565b2a31fb8b68bef916ae8f04d535880e7a
@@ -147,7 +147,7 @@ jobs:
           test -z "$(git status --porcelain --untracked-files=all)"
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$evidence/current-round4-source-scope.json"
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --historical-projection --repo . --output "$evidence/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           git cat-file -e 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{commit}' || git fetch --no-tags origin fe16565b2a31fb8b68bef916ae8f04d535880e7a
@@ -297,7 +297,7 @@ jobs:
           test -z "$(git status --porcelain --untracked-files=all)"
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$evidence/current-round4-source-scope.json"
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --historical-projection --repo . --output "$evidence/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           git cat-file -e 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{commit}' || git fetch --no-tags origin fe16565b2a31fb8b68bef916ae8f04d535880e7a
@@ -1013,7 +1013,7 @@ jobs:
           test -z "$(git status --porcelain --untracked-files=all)"
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$evidence/current-round4-source-scope.json"
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --historical-projection --repo . --output "$evidence/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           git cat-file -e 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{commit}' || git fetch --no-tags origin fe16565b2a31fb8b68bef916ae8f04d535880e7a
@@ -1161,7 +1161,7 @@ jobs:
           test -z "$(git status --porcelain --untracked-files=all)"
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$evidence/current-round4-source-scope.json"
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --historical-projection --repo . --output "$evidence/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           git cat-file -e 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{commit}' || git fetch --no-tags origin fe16565b2a31fb8b68bef916ae8f04d535880e7a
@@ -1335,7 +1335,7 @@ jobs:
           test -z "$(git status --porcelain --untracked-files=all)"
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$evidence/current-round4-source-scope.json"
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --historical-projection --repo . --output "$evidence/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           git cat-file -e 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{commit}' || git fetch --no-tags origin fe16565b2a31fb8b68bef916ae8f04d535880e7a
@@ -1448,7 +1448,7 @@ jobs:
           test -z "$(git status --porcelain --untracked-files=all)"
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$evidence/current-round4-source-scope.json"
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --historical-projection --repo . --output "$evidence/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           git cat-file -e 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{commit}' || git fetch --no-tags origin fe16565b2a31fb8b68bef916ae8f04d535880e7a

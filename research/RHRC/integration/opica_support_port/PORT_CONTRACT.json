@@ -10,9 +10,69 @@
   },
   "historical_checkpoint_sha256": "b7ad91c93cf36583bf8c5728288340eb167c2089bf141c6b6e95ab6a4a63cb4f",
   "checkpoint_manifest_sha256": "ac0034e8210bd27c9d9a1a74930dff4b2647158ddc9e78d88cf35a78da3edf9e",
-  "source_recovery_scope": "Selected first-part source bytes checked against embedded historical manifest; full checkpoint archive not freshly reassembled/rehashed",
+  "source_recovery_scope": "All 16 historical families accounted for; selected nested archive bytes matched checkpoint manifest; all newly recovered authored modules matched historical receipt SHA-256 (density adapter matched direct checkpoint manifest); dimension source modules matched existing native Git bytes. Whole checkpoint not reassembled in this session.",
   "report_bundle_sha256": "a525b90a68583ee918bb7488f569e944362f71a3eb60c94bced6896a87c0ec25",
   "candidate_modules": [
+    {
+      "path": "Zeta23/OPICASupport/ActualDensityEnergy/Composition.lean",
+      "module": "Zeta23.OPICASupport.ActualDensityEnergy.Composition",
+      "archive_member": "resource_strategy/actual_density_energy_v1/actual_density_energy_evidence.tar.gz!src/ActualDensityEnergy/Composition.lean",
+      "package_index": 10,
+      "original_sha256": "4786b7bbd2a662da06c188bbef0fc717896fa9547724d3f1bf6237a4a4987bcf",
+      "ported_sha256": "f9e3f78778046814a3377ddc20ab9c355d4d86e1ed38291b65cbb1df82106cc6",
+      "original_bytes": 8975,
+      "receipt_sha256": "7a20b3419231831f5f039e990d668943142093a84a45b9da352fd70592844130",
+      "archive_sha256": "292c720fa3b839eb655e4651873931ec929a5699d1b2b3d4a5f5b8afafa448cf",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/ApertureSlack/FormStability.lean",
+      "module": "Zeta23.OPICASupport.ApertureSlack.FormStability",
+      "archive_member": "math_compression/aperture_slack_v1/APERTURE_SLACK_ACCEPTED_PACKAGE.zip!ApertureSlack/FormStability.lean",
+      "package_index": 16,
+      "original_sha256": "efc6c85245fa1a34d2ec3027817d84b4629cb1023c9f47843c358ab307e3fb20",
+      "ported_sha256": "efc6c85245fa1a34d2ec3027817d84b4629cb1023c9f47843c358ab307e3fb20",
+      "original_bytes": 1838,
+      "receipt_sha256": "f73c660120055faecc18ccebc5fa3f3bc74d34015391b7e8a7dd5007bc15be16",
+      "archive_sha256": "378310426be70f276431cc14e37c0d48bd803133c8a5a225248ff81785eded50",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/ApertureSlack/NativeGoodAperture.lean",
+      "module": "Zeta23.OPICASupport.ApertureSlack.NativeGoodAperture",
+      "archive_member": "math_compression/aperture_slack_v1/APERTURE_SLACK_ACCEPTED_PACKAGE.zip!ApertureSlack/NativeGoodAperture.lean",
+      "package_index": 16,
+      "original_sha256": "dfe8cf8998f29d1e81211b1d4b5e39a529184bd50e2bc42be745d2d4c9e9372d",
+      "ported_sha256": "099f5015621a66e03bcb622464cfaab20544167a4fa73821a1f40625a91a245d",
+      "original_bytes": 11119,
+      "receipt_sha256": "f73c660120055faecc18ccebc5fa3f3bc74d34015391b7e8a7dd5007bc15be16",
+      "archive_sha256": "378310426be70f276431cc14e37c0d48bd803133c8a5a225248ff81785eded50",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/CofinalAperture/Sampling.lean",
+      "module": "Zeta23.OPICASupport.CofinalAperture.Sampling",
+      "archive_member": "resource_strategy/cofinal_aperture_v1/cofinal_aperture_evidence.tar.gz!src/CofinalAperture/Sampling.lean",
+      "package_index": 13,
+      "original_sha256": "7c5c0e99d1f81d254a2b6163f9b8d0a9e797f0cddc6a7e062a709071888bc0e6",
+      "ported_sha256": "2a4874c3bb14c90eb0462b27781866692cd15f6d7389677595e61db6e0aa6a73",
+      "original_bytes": 7781,
+      "receipt_sha256": "edae24501ac71c410e68ab6938bcd560b148d6482f11911e2c07849c874eec58",
+      "archive_sha256": "36988f2815b22c16e9f97b2ccd8aeec3acaf5871599d1730e738a04017d8240c",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/DensityCompatibility/ActualDistinctGrowth.lean",
+      "module": "Zeta23.OPICASupport.DensityCompatibility.ActualDistinctGrowth",
+      "archive_member": "resource_strategy/density_import_compat_v4/src/DensityCompatibility/ActualDistinctGrowth.lean!DensityCompatibility/ActualDistinctGrowth.lean",
+      "package_index": 9,
+      "original_sha256": "321eecad48da30b368aa4268575ed7701b29fff59d1f7cbaa52aff0ae5b38237",
+      "ported_sha256": "5de6426ac71a96a458f0049487be5b395b7dcce78f1e607c50a728387991206c",
+      "original_bytes": 1473,
+      "receipt_sha256": "8248e2d81130195f71f84f65479034221c085960a5d3d991f7093d6c25176f16",
+      "archive_sha256": "321eecad48da30b368aa4268575ed7701b29fff59d1f7cbaa52aff0ae5b38237",
+      "transformation": "Import-prefix relocation only"
+    },
     {
       "path": "Zeta23/OPICASupport/FourierBridge/BoundaryFlatFourierSampling.lean",
       "module": "Zeta23.OPICASupport.FourierBridge.BoundaryFlatFourierSampling",
@@ -66,6 +126,78 @@
       "ported_sha256": "64546ce1e1f9c00ccbce36cc303893d361bf5fac261308b5b800c97cf82963f7",
       "original_bytes": 5489,
       "receipt_sha256": "7d3b20b786a6d96a41101157d906334cab2f19ab552df653421c37fc649f5b4d",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeParityActual/ActualZeroSampling.lean",
+      "module": "Zeta23.OPICASupport.NativeParityActual.ActualZeroSampling",
+      "archive_member": "math_compression/native_parity_actual/actual_native_parity_sampling_evidence.tar.gz!native_parity_actual/NativeParityActual/ActualZeroSampling.lean",
+      "package_index": 12,
+      "original_sha256": "22d86c31b76574187c751a19b9d8efc770923f54a5ff85619136f0f7f56d4740",
+      "ported_sha256": "a4fff83898aca1676700f14eb91a55bf7c274b9d2f241f3280d5ef34ae7e6544",
+      "original_bytes": 3574,
+      "receipt_sha256": "b84442e6e5183b71ab0fbccfd5b644473acbde52d9ec6e76a2e401f70c629ec0",
+      "archive_sha256": "1ae28f4fe47284f83fb5cefa446a2019f88fd78da8779d0ebec76c26f8f2514a",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeParityActual/FiniteFiberSampling.lean",
+      "module": "Zeta23.OPICASupport.NativeParityActual.FiniteFiberSampling",
+      "archive_member": "math_compression/native_parity_actual/actual_native_parity_sampling_evidence.tar.gz!native_parity_actual/NativeParityActual/FiniteFiberSampling.lean",
+      "package_index": 12,
+      "original_sha256": "ade8b424e7c357928a831081b6d75b908140af9942f801c80f1ea03c1ecee287",
+      "ported_sha256": "ade8b424e7c357928a831081b6d75b908140af9942f801c80f1ea03c1ecee287",
+      "original_bytes": 1526,
+      "receipt_sha256": "b84442e6e5183b71ab0fbccfd5b644473acbde52d9ec6e76a2e401f70c629ec0",
+      "archive_sha256": "1ae28f4fe47284f83fb5cefa446a2019f88fd78da8779d0ebec76c26f8f2514a",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeParityRational/MomentSliceIdentification.lean",
+      "module": "Zeta23.OPICASupport.NativeParityRational.MomentSliceIdentification",
+      "archive_member": "math_compression/native_parity_rational/native_parity_sampling_evidence.tar.gz!native_parity_rational/NativeParityRational/MomentSliceIdentification.lean",
+      "package_index": 11,
+      "original_sha256": "6c0c393f28b8418499a2f44e7bfb8a66e6b9f6b6b0b3985f961843b9762404a2",
+      "ported_sha256": "dfee66e7691c164619a556e1ef1c8a1d6e4bd49734ef47155834c8bd471c123c",
+      "original_bytes": 9039,
+      "receipt_sha256": "a7e2b21568bb81b8e85a0afe84e04da27efed8333c492829161a8406fe377427",
+      "archive_sha256": "7e9c6d737641cecb90ba211021624fd28bb0e375d0a31b560f1602328e654ed2",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeParityRational/MomentSliceSampling.lean",
+      "module": "Zeta23.OPICASupport.NativeParityRational.MomentSliceSampling",
+      "archive_member": "math_compression/native_parity_rational/native_parity_sampling_evidence.tar.gz!native_parity_rational/NativeParityRational/MomentSliceSampling.lean",
+      "package_index": 11,
+      "original_sha256": "d4800e0ce9dc7ba2649bca04dbf80c339684a8c3a01012d9c7819b26b09b5c55",
+      "ported_sha256": "c5694278dd9d143eb6af312a3fa5de20e66391f392a8677f74c88d409ff3db8c",
+      "original_bytes": 7963,
+      "receipt_sha256": "a7e2b21568bb81b8e85a0afe84e04da27efed8333c492829161a8406fe377427",
+      "archive_sha256": "7e9c6d737641cecb90ba211021624fd28bb0e375d0a31b560f1602328e654ed2",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeParityRational/PolynomialReversal.lean",
+      "module": "Zeta23.OPICASupport.NativeParityRational.PolynomialReversal",
+      "archive_member": "math_compression/native_parity_rational/native_parity_sampling_evidence.tar.gz!native_parity_rational/NativeParityRational/PolynomialReversal.lean",
+      "package_index": 11,
+      "original_sha256": "3faaf2164d221889aa88fd511f9b1da0156c86cad386ecf86020d467afba2614",
+      "ported_sha256": "af6f3080b1d8b6340f82df4dd4cab9b25c52d70793c445e2740fa5f313ff1826",
+      "original_bytes": 4947,
+      "receipt_sha256": "a7e2b21568bb81b8e85a0afe84e04da27efed8333c492829161a8406fe377427",
+      "archive_sha256": "7e9c6d737641cecb90ba211021624fd28bb0e375d0a31b560f1602328e654ed2",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeSliceInterpolation/Interpolation.lean",
+      "module": "Zeta23.OPICASupport.NativeSliceInterpolation.Interpolation",
+      "archive_member": "resource_strategy/native_slice_interpolation_v1/native_slice_interpolation_evidence.tar.gz!src/NativeSliceInterpolation/Interpolation.lean",
+      "package_index": 15,
+      "original_sha256": "c6574254b70364e366aa3735048024dc2db375e8067634652a95e7d6d2c94666",
+      "ported_sha256": "6486cf5b365d4597d4badae235f2246ad4d4031c1f7b8187e4a47e6b7775c7f5",
+      "original_bytes": 10093,
+      "receipt_sha256": "b28d4285e81abd89a26916d9020a704cb3d7f2e2b2b320d5d15c3b8d552dafdc",
+      "archive_sha256": "1a28e307153a8492207a5dabd0942c3f90910e7eecb07da94f3bdc91d19e8e95",
       "transformation": "Import-prefix relocation only"
     },
     {
@@ -353,7 +485,7 @@
         "import_roots",
         "transitive_axioms"
       ],
-      "port_status": "SOURCE_PORT_PENDING"
+      "port_status": "CANDIDATE_SOURCE_STAGED"
     },
     {
       "index": 10,
@@ -382,7 +514,7 @@
         "import_roots",
         "transitive_axioms"
       ],
-      "port_status": "SOURCE_PORT_PENDING"
+      "port_status": "CANDIDATE_SOURCE_STAGED"
     },
     {
       "index": 11,
@@ -434,7 +566,7 @@
         "import_roots",
         "transitive_axioms"
       ],
-      "port_status": "SOURCE_PORT_PENDING"
+      "port_status": "CANDIDATE_SOURCE_STAGED"
     },
     {
       "index": 12,
@@ -454,7 +586,7 @@
         "import_roots",
         "transitive_axioms"
       ],
-      "port_status": "SOURCE_PORT_PENDING"
+      "port_status": "CANDIDATE_SOURCE_STAGED"
     },
     {
       "index": 13,
@@ -483,7 +615,7 @@
         "import_roots",
         "transitive_axioms"
       ],
-      "port_status": "SOURCE_PORT_PENDING"
+      "port_status": "CANDIDATE_SOURCE_STAGED"
     },
     {
       "index": 14,
@@ -500,7 +632,7 @@
         "import_roots",
         "transitive_axioms"
       ],
-      "port_status": "SOURCE_PORT_PENDING"
+      "port_status": "EXISTING_NATIVE_SOURCE_MATCHED"
     },
     {
       "index": 15,
@@ -529,7 +661,7 @@
         "import_roots",
         "transitive_axioms"
       ],
-      "port_status": "SOURCE_PORT_PENDING"
+      "port_status": "CANDIDATE_SOURCE_STAGED"
     },
     {
       "index": 16,
@@ -548,9 +680,32 @@
         "import_roots",
         "transitive_axioms"
       ],
-      "port_status": "SOURCE_PORT_PENDING"
+      "port_status": "CANDIDATE_SOURCE_STAGED"
     }
   ],
   "claim_status": "RH_OPEN; C1_OPEN; STEP4_OPEN",
-  "candidate_scope": "Fresh native compiler and named axiom gate only; no independent full dependency-closure acceptance and no theorem promotion"
+  "candidate_scope": "Native source-port candidate, complete 167 historical public root inventory; fresh compiler, exact-type comparison, proof closure and promotion remain separate gates.",
+  "existing_native_modules": [
+    {
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "sha256": "262922e4d62d5749eb5580328242a4fae709c405a04d2a054452d6d5258422ef",
+      "package_index": 14,
+      "receipt_sha256": "a69737fc1ab3343a9e0912bb9463e849a8fed72740bdb967ef1af7141adf9b9d"
+    },
+    {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/MomentSliceCoordinates.lean",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates",
+      "sha256": "6dedec49866970f447ca9267dcc6b910c993efad04b258f4204215372d7424fd",
+      "package_index": 14,
+      "receipt_sha256": "a69737fc1ab3343a9e0912bb9463e849a8fed72740bdb967ef1af7141adf9b9d"
+    }
+  ],
+  "compatibility_patch": {
+    "path": "research/RHRC/integration/opica_support_port/historical_compatibility/EXACT_COMPATIBILITY.patch",
+    "archive_member": "resource_strategy/density_import_compat_v4/EXACT_COMPATIBILITY.patch",
+    "sha256": "f91343658736b8e471f78c0724f64be87da570b1d4104da089442bd400ebb3bd",
+    "bytes": 3903,
+    "status": "ARCHIVAL_ONLY_COMMON_PIN_NOT_APPLIED"
+  }
 }

@@ -1232,6 +1232,7 @@ def main():
     for name in ('inspect','prepare','lane','accept','transport-pack','transport-unpack',
                  'accept-group','group-transport-pack','group-transport-unpack','accept-groups'):
         q=sub.add_parser(name,aliases=['check-descendant'] if name=='inspect' else []);q.add_argument('--repo',type=Path,default=REPO);q.add_argument('--output','--out',type=Path,required=True)
+        if name=='inspect':q.add_argument('--historical-projection',action='store_true')
         if name in {'lane','accept','transport-pack','transport-unpack','accept-group',
                     'group-transport-pack','group-transport-unpack','accept-groups'}:
             q.add_argument('--run-id',required=True);q.add_argument('--attempt',type=int,required=True);q.add_argument('--provider-root',type=Path)
@@ -1255,7 +1256,13 @@ def main():
         if name in {'run-one','replay','export'}:q.add_argument('--journal',required=True,type=Path)
         if name=='verify':q.add_argument('--receipt',required=True,type=Path)
     a=p.parse_args()
-    if a.command in {'inspect','check-descendant'}:write(external(a.repo,a.output),validate_descendant(a.repo,require_clean=True))
+    if a.command in {'inspect','check-descendant'}:
+        if a.historical_projection:
+            from ..opica_support_port.check_candidate import check as support_scope
+            result=support_scope(a.repo)
+        else:
+            result=validate_descendant(a.repo,require_clean=True)
+        write(external(a.repo,a.output),result)
     elif a.command=='prepare':
         from .qualification import prepare_native
         from .cache_owner import CacheWriterLease

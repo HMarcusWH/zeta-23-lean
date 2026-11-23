@@ -28,11 +28,20 @@ jobs:
           set -euo pipefail
           out="$RUNNER_TEMP/documentation-review"
           mkdir -p "$out"
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check-classification 2>&1 | tee "$out/classification.log"
-          python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests.log"
-          python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
-          python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
+          python3 -B research/RHRC/integration/opica_support_port/check_candidate.py --receipt "$out/current-support-candidate.json"
+          historical="$RUNNER_TEMP/documentation-frozen-native"
+          git worktree add --detach "$historical" bb7c8184a135b2823c6296917c5ac893bebf2a71
+          (
+            cd "$historical"
+            test "$(git rev-parse HEAD^{tree})" = 2b19357e1b65cc500f3e3a5b5d4df14601b02062
+            git rev-parse HEAD 'HEAD^{tree}' > "$out/historical-head-tree.txt"
+            python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
+            python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check-classification 2>&1 | tee "$out/classification.log"
+            python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests.log"
+            python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
+            python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
+          )
+          git worktree remove "$historical"
       - name: Check reader links and run bounded exact examples
         shell: bash
         run: |
