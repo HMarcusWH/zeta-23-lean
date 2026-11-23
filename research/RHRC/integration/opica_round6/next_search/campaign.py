@@ -67,6 +67,39 @@ def read_exports(data,load):
             "Original Lean compiler did not export complete source/target set")
     return statements,target,proofs
 
+def classify_unverified_proposals(candidates):
+    """Label seed constants versus nontrivial plans without theorem promotion.
+
+    This function does NOT type-check or kernel-check the retrieved plans.
+    The original enumerate_candidates menu, budget and historical receipts
+    are intentionally unchanged.
+    """
+    require(type(candidates) is list, "closed proposal list required")
+    bare=structured=rejected=0
+    for row in candidates:
+        require(type(row) is dict and row.get("kernel_acceptance") is False,
+                "retrieval cannot contain a kernel-accepted theorem")
+        if row.get("status")=="REJECTED_UNAPPROVED_CONSTANT":
+            rejected+=1
+            continue
+        require(row.get("status")=="PROPOSED_NOT_KERNEL_CHECKED"
+                and type(row.get("term_plan")) is dict,
+                "unknown proposed candidate disposition")
+        if row["term_plan"].get("tag")=="const":
+            bare+=1
+        else:
+            structured+=1
+    return {
+        "schema":"OPICA_NEXT_SOURCE_CANDIDATE_COUNTS_V2",
+        "bare_approved_source_constant_seeds":bare,
+        "unverified_nontrivial_composition_plans":structured,
+        "rejected_before_kernel":rejected,
+        "kernel_accepted_target_proofs":0,
+        "research_disposition":("SEED_ONLY_NO_NEW_COMPOSITION" if
+                                  structured==0 else
+                                  "UNVERIFIED_COMPOSITION_PLANS_PRESENT"),
+    }
+
 def campaign(output:Path):
     require(not output.exists(),"Do not overwrite previous research result")
     s=scope.check()
@@ -162,10 +195,15 @@ def campaign(output:Path):
                 "action_id":item["action_id"],"term_plan":item["term_plan"],
                 "used_theorems":sorted(constants[c] for c in approved),
                 "kernel_acceptance":False})
+        # Versioned research-only accounting. enumerate_candidates appends the
+        # permitted bare source constants even when no genuine composition is
+        # retrieved; never report those seeds as new arithmetic proofs.
+        counts=classify_unverified_proposals(candidates)
         results.append({
             "target":name,"exact_type_sha256":target.expected_type_hash,
             "compiler_type_dag":expected,
             "candidate_count":len(candidates),"candidates":candidates,
+            "candidate_classification_v2":counts,
             "bounded_disposition":batch.disposition,"bounded_menu_complete":batch.complete,
             "native_kernel_attempt":"NOT_RUN_BY_RETRIEVAL","independent_replay":"NOT_RUN"})
     result={
