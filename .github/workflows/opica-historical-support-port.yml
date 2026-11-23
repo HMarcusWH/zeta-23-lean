@@ -95,3 +95,89 @@ jobs:
             ${{ runner.temp }}/support-checker/BOOTSTRAP_RECEIPT.json
           if-no-files-found: warn
           retention-days: 90
+
+  historical-type-export:
+    needs: source-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          path: host
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9
+          fetch-depth: 0
+          persist-credentials: false
+          path: historical
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: HMarcusWH/riemann-hypothesis
+          ref: acb5b817a6b174bf0fff35da9957a28b914ab888
+          path: common-lock
+          persist-credentials: false
+      - name: Reconstruct exact historical support sources at common pin
+        working-directory: host
+        run: |
+          python3 -B research/RHRC/integration/opica_support_port/check_candidate.py \
+            --prepare-historical "$GITHUB_WORKSPACE/historical" \
+            "$GITHUB_WORKSPACE/common-lock/opica-step4/native_bootstrap/lake-manifest.json" \
+            "$RUNNER_TEMP/historical-input.json"
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: historical
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile and export all 167 original common-pin types
+        working-directory: host
+        run: |
+          python3 -B research/RHRC/integration/opica_support_port/check_candidate.py \
+            --historical-types "$GITHUB_WORKSPACE/historical" "$RUNNER_TEMP/historical-input.json" "$RUNNER_TEMP/historical-types"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-support-historical-types-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/historical-input.json
+            ${{ runner.temp }}/historical-types/
+          if-no-files-found: warn
+          retention-days: 90
+  cross-pin-type-comparison:
+    needs: [native-candidate, independent-candidate, historical-type-export]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica-support-port-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/native
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica-support-independent-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/independent
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica-support-historical-types-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/historical
+      - name: Require same exact native and historical compiler root types
+        run: |
+          python3 -B research/RHRC/integration/opica_support_port/check_candidate.py \
+            --compare-types "$RUNNER_TEMP/native" "$RUNNER_TEMP/independent/opica-support-independent" \
+            "$RUNNER_TEMP/historical/historical-types" "$RUNNER_TEMP/cross-pin-type-comparison.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-support-cross-pin-comparison-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/cross-pin-type-comparison.json
+          if-no-files-found: warn
+          retention-days: 90

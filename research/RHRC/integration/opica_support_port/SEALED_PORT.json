@@ -11,7 +11,7 @@
     ".github/workflows/opica-historical-support-port.yml": {
       "mode": "100644",
       "type": "blob",
-      "sha": "527edf6803d3cad2dd1227ab65c8e774a5660bf7"
+      "sha": "6f30ed553273b131071f9c5cb9abefb278df2d7f"
     },
     ".github/workflows/rhrc_opica_followup.yml": {
       "mode": "100644",
@@ -156,7 +156,7 @@
     "research/RHRC/integration/opica_support_port/test_candidate.py": {
       "mode": "100644",
       "type": "blob",
-      "sha": "956b85a20fa5b862da3159c2a24fc43449e62b74"
+      "sha": "7ba46d6f3bf6d03004fb311aeb313c2c3b96d287"
     },
     "Zeta23/OPICASupport/ActualDensityEnergy/Composition.lean": {
       "mode": "100644",
@@ -279,7 +279,7 @@
       "sha": "abeaa3da4453f05ea2c1101a64a00cb83e306ba9"
     }
   },
-  "validator_template_oid": "237d6c9799f04fbb947252515dc8d0b4a99eef65",
+  "validator_template_oid": "c7552f703a1aa27055f0c1588a36b58fed45cb0b",
   "proof_acceptance": false,
   "RH": "OPEN",
   "C1": "OPEN",

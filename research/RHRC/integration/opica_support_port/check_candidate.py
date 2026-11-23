@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
 POLICY = "research/RHRC/integration/opica_support_port/SEALED_PORT.json"
 VALIDATOR = "research/RHRC/integration/opica_support_port/check_candidate.py"
-POLICY_BLOB = "ddec7217bbf3a227fc631d50d4edde9295f3cf84"
+POLICY_BLOB = "9fdf85a24576bae556810c546b9d5ee57977e009"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 PREFIXES = rb"OPICAStep4|FourierBridge|FourierEnergy|SamplingDensity|ParityRational|DensityCompatibility|ActualDensityEnergy|NativeParityRational|NativeParityActual|CofinalAperture|NativeSliceInterpolation|ApertureSlack"
 PRIMITIVES = ("Quot", "Quot.mk", "Quot.lift", "Quot.ind", "propext", "Quot.sound",
@@ -211,13 +211,205 @@ def build(output, *, checker_work=None, checker_code=None):
         save()
         print(json.dumps({"status": receipt["status"], "proof_acceptance": False, "RH": "OPEN"}), flush=True)
 
+
+HISTORICAL_HEAD = "7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9"
+HISTORICAL_TREE = "9248b76d7aff60aab3bb775c4be9750dc6006003"
+COMMON_LOCK_OID = "33038d620ce50e274683c0d939e128d7541b653e"
+COMMON_MATHLIB = "0df444a360eaa60ab8c11dca51a86af692955474"
+COMMON_TOOLCHAIN = "leanprover/lean4:v4.33.1"
+COMPATIBILITY_PATHS = {
+    "Zeta23/Taper/Norms.lean", "Zeta23/Taper/Decay.lean", "Zeta23/Taper/Fourier.lean",
+    "Zeta23/PrimeSideA/Defs.lean", "Zeta23/PrimeSideA/EndsE1.lean", "Zeta23/MV/Spacing.lean",
+}
+
+def historical_checkout(repo):
+    need(not repo.is_relative_to(ROOT) and repo != ROOT and
+         run("git","rev-parse","HEAD",cwd=repo)==HISTORICAL_HEAD and
+         run("git","rev-parse","HEAD^{tree}",cwd=repo)==HISTORICAL_TREE,
+         "Historical replay must use separate exact common-pin worktree")
+
+def historical_changes(repo, expected):
+    modified=set(run("git","diff","--name-only","HEAD",cwd=repo).splitlines())
+    untracked=set(run("git","ls-files","--others","--exclude-standard",cwd=repo).splitlines())
+    need(modified|untracked==set(expected) and not (modified&untracked),
+         "Unexpected historical worktree delta")
+    for rel, sha in expected.items():
+        need(digest(read_regular(repo,rel))==sha,"Historical replay input changed: "+rel)
+
+def prepare_historical(repo, lock, evidence):
+    # All edits are in a disposable pinned historical checkout; never native HEAD.
+    source=check();spec=json.loads((HERE/"PORT_CONTRACT.json").read_text())
+    repo,lock,evidence=repo.resolve(),lock.resolve(),evidence.resolve()
+    historical_checkout(repo)
+    need(not run("git","status","--porcelain","--untracked-files=all",cwd=repo),"Historical checkout dirty")
+    need(not evidence.exists() and not evidence.is_relative_to(repo) and not evidence.is_relative_to(ROOT),
+         "Fresh external historical input evidence required")
+    raw=lock.read_bytes()
+    need(oid(raw)==COMMON_LOCK_OID,"Historical common Mathlib lock bytes differ")
+    packages=json.loads(raw)["packages"]
+    need([x["rev"] for x in packages if x["name"]=="mathlib"]==[COMMON_MATHLIB],
+         "Historical Mathlib pin differs")
+    compat=ROOT/spec["compatibility_patch"]["path"]
+    need(digest(compat.read_bytes())==spec["compatibility_patch"]["sha256"],"Historical patch differs")
+    subprocess.run(["git","apply","--check","-p1",str(compat)],cwd=repo,check=True,timeout=120)
+    subprocess.run(["git","apply","-p1",str(compat)],cwd=repo,check=True,timeout=120)
+    need(set(run("git","diff","--name-only","HEAD",cwd=repo).splitlines())==COMPATIBILITY_PATHS,
+         "Historical compatibility patch scope differs")
+    paths=set(COMPATIBILITY_PATHS)
+    module_names=[]
+    for row in spec["candidate_modules"]:
+        module=row["module"].removeprefix("Zeta23.OPICASupport.")
+        rel=module.replace(".","/")+".lean"
+        target=repo/rel
+        need(not target.exists(),"Historical module would overwrite native source: "+rel)
+        original=re.sub(rb"^import Zeta23\.OPICASupport\.("+PREFIXES+rb")\.",rb"import \1.",
+                        (ROOT/row["path"]).read_bytes(),flags=re.M)
+        need(digest(original)==row["original_sha256"] and len(original)==row["original_bytes"],
+             "Historical original bytes differ")
+        target.parent.mkdir(parents=True,exist_ok=True)
+        target.write_bytes(original)
+        paths.add(rel);module_names.append(module)
+    for row in spec["existing_native_modules"]:
+        need(digest(read_regular(repo,row["path"]))==row["sha256"],"Historical native root source differs")
+        module_names.append(row["module"])
+    lake=repo/"lakefile.toml";text=lake.read_text()
+    old=spec["native_mathlib"]
+    need(text.count(old)==1,"Historical Lake Mathlib declaration not unique")
+    text=text.replace(old,COMMON_MATHLIB)
+    for prefix in sorted({m.split(".")[0] for m in module_names if not m.startswith("Zeta23.")}):
+        text+='\n[[lean_lib]]\nname = "'+prefix+'"\n'
+    lake.write_text(text)
+    (repo/"lake-manifest.json").write_bytes(raw)
+    (repo/"lean-toolchain").write_text(COMMON_TOOLCHAIN+"\n")
+    paths.update(("lakefile.toml","lake-manifest.json","lean-toolchain"))
+    expected={rel:digest(read_regular(repo,rel)) for rel in sorted(paths)}
+    historical_changes(repo,expected)
+    record={"schema":"OPICA_SUPPORT_HISTORICAL_INPUT_V1","source":source,"historical_head":HISTORICAL_HEAD,
+            "historical_tree":HISTORICAL_TREE,"common_mathlib":COMMON_MATHLIB,"common_toolchain":COMMON_TOOLCHAIN,
+            "lock_git_blob":COMMON_LOCK_OID,"patch_sha256":spec["compatibility_patch"]["sha256"],
+            "modules":module_names,"changed_files":expected,"proof_acceptance":False,"RH":"OPEN","C1":"OPEN","Step4":"OPEN"}
+    evidence.parent.mkdir(parents=True,exist_ok=True);evidence.write_text(json.dumps(record,indent=2)+"\n")
+    return record
+
+def type_rows(log, roots):
+    expressions=[json.loads(line.split("\t",1)[1]) for line in log.splitlines() if line.startswith("OPICA_TARGET\t")]
+    need(len(expressions)==len(roots),"Missing compiler-derived theorem type DAGs")
+    from research.RHRC.integration.opica_composition.inventory import expression_hash
+    return [{"name":n,"expression":t,"sha256":expression_hash(t)} for n,t in zip(roots,expressions)]
+
+def historical_types(repo, evidence, output):
+    repo,evidence,output=repo.resolve(),evidence.resolve(),output.resolve()
+    source=check()
+    record=json.loads(evidence.read_text())
+    need(record.get("schema")=="OPICA_SUPPORT_HISTORICAL_INPUT_V1" and record.get("source")==source,
+         "Historical replay source identity differs")
+    historical_checkout(repo)
+    historical_changes(repo,record["changed_files"])
+    need(not output.exists() and not output.is_relative_to(repo) and not output.is_relative_to(ROOT),
+         "Fresh historical type output required")
+    output.mkdir(parents=True)
+    result={"schema":"OPICA_SUPPORT_HISTORICAL_TYPES_V1","source":source,"historical_head":HISTORICAL_HEAD,
+            "historical_tree":HISTORICAL_TREE,"status":"INCOMPLETE","proof_acceptance":False,
+            "RH":"OPEN","C1":"OPEN","Step4":"OPEN"}
+    def command(label,argv,timeout):
+        with (output/(label+".log")).open("xb") as f:
+            c=subprocess.run(argv,cwd=repo,stdout=f,stderr=subprocess.STDOUT,timeout=timeout)
+        need(c.returncode==0,"Historical compiler command failed: "+label)
+    def packages():
+        return {x["name"]:run("git","rev-parse","HEAD",cwd=repo/".lake/packages"/x["name"])
+                for x in json.loads((repo/"lake-manifest.json").read_text())["packages"]}
+    try:
+        need("version 4.33.1" in run("lake","env","lean","--version",cwd=repo),"Wrong common compiler version")
+        expected_packages={x["name"]:x["rev"] for x in json.loads((repo/"lake-manifest.json").read_text())["packages"]}
+        need(packages()==expected_packages,"Historical dependency checkout differs")
+        roots=source["roots"];modules=record["modules"]
+        command("historical_build",["lake","build",*modules,"Zeta23.RHRC.OpicaComposition.Export"],9000)
+        driver=output/"HistoricalTypeAudit.lean"
+        driver.write_text("\n".join("import "+m for m in modules+["Zeta23.RHRC.OpicaComposition.Export"]) +
+            "\nset_option pp.fullNames true\nset_option pp.universes false\n"+
+            "\n".join("#check @"+n+"\n#print axioms "+n+"\nrun_cmd Zeta23.RHRC.OpicaComposition.exportTarget "+chr(96)+n+' "type"' for n in roots)+"\n")
+        command("historical_root_types",["lake","env","lean","--root="+str(output),"-DwarningAsError=true",str(driver)],3600)
+        log=(output/"historical_root_types.log").read_text()
+        result["axioms"]=axiom_reports(log,roots)
+        rows=type_rows(log,roots)
+        (output/"HISTORICAL_TYPE_CANDIDATES.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n")
+        historical_changes(repo,record["changed_files"])
+        need(packages()==expected_packages and check()==source,"Historical input changed during replay")
+        result.update(status="PASS_HISTORICAL_TYPE_EXPORT_ONLY",type_rows_sha256=digest((output/"HISTORICAL_TYPE_CANDIDATES.json").read_bytes()),
+                      input_receipt_sha256=digest(evidence.read_bytes()),dependency_commits=expected_packages)
+    except BaseException as exc:
+        result.update(status="INCOMPLETE_OR_REJECTED",failure=str(exc)[:2000])
+        raise
+    finally:
+        (output/"receipt.json").write_text(json.dumps(result,indent=2)+"\n")
+    return result
+
+def compare_type_rows(native, historical, roots):
+    from research.RHRC.integration.opica_composition.inventory import expression_hash
+    maps=[]
+    for rows in (native,historical):
+        need(type(rows) is list and len(rows)==len(roots),"Exact theorem type inventory required")
+        index={}
+        for row in rows:
+            need(set(row)=={"name","expression","sha256"} and row["name"] in roots and row["name"] not in index and
+                 expression_hash(row["expression"])==row["sha256"],"Invalid compiler expression row")
+            index[row["name"]]=row
+        need(set(index)==set(roots),"Missing named type root")
+        maps.append(index)
+    return [{"name":n,"native_type_sha256":maps[0][n]["sha256"],"historical_type_sha256":maps[1][n]["sha256"]}
+            for n in roots if maps[0][n]["expression"]!=maps[1][n]["expression"] or
+                                maps[0][n]["sha256"]!=maps[1][n]["sha256"]]
+
+def compare_historical(native, independent, historical, output):
+    source=check();roots=source["roots"];output=output.resolve()
+    need(not output.exists() and not output.is_relative_to(ROOT),"Fresh external comparison required")
+    nr,ir,hr=[json.loads((p/"receipt.json").read_text()) for p in (native,independent,historical)]
+    for record in (nr,ir):
+        need(record.get("checked_commit")==source["checked_commit"] and record.get("checked_tree")==source["checked_tree"] and
+             record.get("proof_acceptance") is False,"Native receipt identity differs")
+    need(nr["status"]=="NATIVE_CANDIDATE_COMPILE_AXIOMS_STOCK_PASS" and
+         ir["status"]=="NATIVE_CANDIDATE_INDEPENDENT_SELECTED_CLOSURE_PASS" and
+         hr["status"]=="PASS_HISTORICAL_TYPE_EXPORT_ONLY" and hr["source"]==source and
+         hr["historical_head"]==HISTORICAL_HEAD and hr["historical_tree"]==HISTORICAL_TREE,
+         "Full native, independent and historical type receipts required")
+    n,i,h=[json.loads((p/file).read_text()) for p,file in (
+        (native,"NATIVE_TYPE_CANDIDATES.json"),(independent,"NATIVE_TYPE_CANDIDATES.json"),
+        (historical,"HISTORICAL_TYPE_CANDIDATES.json"))]
+    need(not compare_type_rows(n,i,roots),"Independent native type export differs")
+    need(hr["type_rows_sha256"]==digest((historical/"HISTORICAL_TYPE_CANDIDATES.json").read_bytes()),
+         "Historical exported type bytes differ")
+    differences=compare_type_rows(n,h,roots)
+    axiom_differences=[name for name in roots if nr["axioms"][name]!=ir["axioms"][name] or
+                                             nr["axioms"][name]!=hr["axioms"][name]]
+    result={"schema":"OPICA_SUPPORT_CROSS_PIN_TYPE_COMPARISON_V1","source":source,
+            "historical_head":HISTORICAL_HEAD,"historical_tree":HISTORICAL_TREE,
+            "status":"PASS_EXACT_ROOT_TYPE_DAGS_AND_AXIOMS_ONLY" if not differences and not axiom_differences else "TYPE_OR_AXIOM_DIFFERENCES_REQUIRE_REVIEW",
+            "root_count":len(roots),"exact_type_matches":len(roots)-len(differences),
+            "type_differences":differences,"axiom_differences":axiom_differences,
+            "cross_version_definition_equivalence":"NOT_ESTABLISHED_BY_TYPE_DAG_EQUALITY",
+            "proof_acceptance":False,"RH":"OPEN","C1":"OPEN","Step4":"OPEN"}
+    output.parent.mkdir(parents=True,exist_ok=True);output.write_text(json.dumps(result,indent=2)+"\n")
+    need(not differences and not axiom_differences,"Historical type or axiom differences require explicit review")
+    return result
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--receipt", type=Path)
     parser.add_argument("--build", type=Path)
     parser.add_argument("--checker-work", type=Path)
     parser.add_argument("--checker-code", type=Path)
+    parser.add_argument("--prepare-historical", nargs=3, type=Path, metavar=("CHECKOUT","LOCK","EVIDENCE"))
+    parser.add_argument("--historical-types", nargs=3, type=Path, metavar=("CHECKOUT","EVIDENCE","OUTPUT"))
+    parser.add_argument("--compare-types", nargs=4, type=Path, metavar=("NATIVE","INDEPENDENT","HISTORICAL","OUTPUT"))
     args = parser.parse_args()
+    actions=[args.build,args.receipt,args.prepare_historical,args.historical_types,args.compare_types]
+    need(sum(v is not None for v in actions)<=1,"Select one operation")
+    if args.prepare_historical:
+        prepare_historical(*args.prepare_historical);return
+    if args.historical_types:
+        historical_types(*args.historical_types);return
+    if args.compare_types:
+        compare_historical(*args.compare_types);return
     need(not args.build or not args.receipt, "Select one action")
     need(bool(args.checker_work) == bool(args.checker_code) and (not args.checker_work or args.build), "Explicit independent checker inputs required")
     if args.build:

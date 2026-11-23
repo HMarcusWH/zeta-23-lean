@@ -23,4 +23,17 @@ class Boundary(unittest.TestCase):
         for bad in ("'x' depends on axioms: [sorryAx]","'x' depends on axioms: [unknown]","'x' depends on axioms: [propext]\n'x' depends on axioms: [propext]",""):
             with self.assertRaises(Reject): axiom_reports(bad,["x"])
 
+    def test_cross_pin_type_differences_report_exact_roots(self):
+        from check_candidate import compare_type_rows
+        import sys
+        import check_candidate as c
+        sys.path.insert(0,str(c.ROOT))
+        a=[{"name":"x","expression":{"root":"x"},"sha256":"a"*64}]
+        b=[{"name":"x","expression":{"root":"y"},"sha256":"b"*64}]
+        with patch("research.RHRC.integration.opica_composition.inventory.expression_hash",
+                   side_effect=lambda e: ("a" if e["root"]=="x" else "b")*64):
+            self.assertEqual(compare_type_rows(a,a,["x"]),[])
+            self.assertEqual([r["name"] for r in compare_type_rows(a,b,["x"])],["x"])
+            with self.assertRaises(Reject): compare_type_rows(a,b,["y"])
+
 if __name__=="__main__": unittest.main()
