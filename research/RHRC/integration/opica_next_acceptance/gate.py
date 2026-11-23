@@ -15,6 +15,7 @@ from pathlib import Path
 
 from research.RHRC.integration.documentation_2026_11_21 import source_scope as historical
 from research.RHRC.integration.opica_round6 import source_scope as round6
+from research.RHRC.integration.opica_composition.descendant import validate_workflow_migration
 
 REPO = Path(__file__).resolve().parents[4]
 BASE = "a32b11c472230e2f280cbd0214e1f512ee95382f"
@@ -129,6 +130,9 @@ def check(repo=REPO, *, require_clean=False):
         need(not git(repo,"status","--porcelain","--untracked-files=all"),
              "source checkout dirty")
     historical.check_worktree(repo,current)
+    # Retain the unchanged inherited source/workflow migration guard rather
+    # than treating the new source epoch as a bypass of earlier preflights.
+    validate_workflow_migration(repo)
     ignored=subprocess.check_output(["git","-C",str(repo),"ls-files","-z","--others",
                                      "--ignored","--exclude-standard"]).split(b"\x00")
     for raw_name in ignored:
