@@ -9,3 +9,7 @@ The CLI and production service freeze both select the reviewed successor gate. A
 The source workflow probes actual freeze routing, exact source seal, and original eleven producers/three replay partitions. [run-canonical] requests exact-head review-only generated state. The original full 11-lane workflow is triggered on a reviewed generated-state patch pushed to this stacked branch. [run-next-targets] requests a separate governed signed-target campaign, which refuses stale canonical state. Heavy execution is never represented by source-only green.
 
 Source/CI acceptance, mathematical lemmas, typed plans, attempted proofs and independent final authority are distinct. C1, independent Step 4 and RH remain OPEN.
+
+### Required authenticated prerequisite receipts
+
+The signed-target campaign now requires explicit parent and Round4 run IDs. Its production service authenticates exact successful Actions attempts, the separate parent source receipt, all eleven producers and three independent groups, and the small exact-head aggregate receipt. It refuses missing, stale or incomplete receipts, including at direct service freeze and subsequent snapshot consumers. The signed-target workflow is manual-only after reviewed canonical regeneration and full Round4 execution; no caller-authored PASS JSON establishes qualification. This is infrastructure qualification only; RH, C1 and Step4 stay OPEN.

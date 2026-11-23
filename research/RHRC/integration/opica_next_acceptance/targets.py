@@ -266,6 +266,145 @@ def export_scalar_candidate(repo,output):
     output.write_bytes(canonical_bytes(result))
     return result
 
+# Only authenticated Actions executions supply qualification, not local PASS flags.
+QUALIFICATION = "opica_next_qualification_v1"
+RUN_REPOSITORY = "HMarcusWH/zeta-23-lean"
+_QUALIFICATION_CACHE = {}
+
+def _run_id(value):
+    require(type(value) is str and re.fullmatch(r"[1-9][0-9]{0,19}", value),
+            "explicit numeric Actions run ID required")
+    return value
+
+def _gh_json(endpoint):
+    require(bool(os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")),
+            "read-only authenticated Actions access required")
+    proc = subprocess.run(["gh", "api", "--method", "GET",
+                           "repos/" + RUN_REPOSITORY + endpoint],
+                          capture_output=True, timeout=90, check=False)
+    require(proc.returncode == 0 and len(proc.stdout) <= 16*1024*1024,
+            "authenticated Actions metadata unavailable")
+    return json.loads(proc.stdout)
+
+def _verify_run(run, jobs, *, run_id, head, workflow, required_jobs):
+    require(str(run.get("id")) == run_id and run.get("head_sha") == head
+            and run.get("path", "").split("@", 1)[0] == workflow
+            and run.get("repository", {}).get("full_name") == RUN_REPOSITORY
+            and run.get("head_repository", {}).get("full_name") == RUN_REPOSITORY
+            and run.get("event") in {"push", "workflow_dispatch"}
+            and run.get("status") == "completed" and run.get("conclusion") == "success"
+            and type(run.get("run_attempt")) is int and run["run_attempt"] > 0,
+            "Actions run is not the exact successful reviewed source/workflow")
+    require(type(jobs) is dict and type(jobs.get("jobs")) is list
+            and jobs.get("total_count") == len(jobs["jobs"]),
+            "complete Actions attempt job inventory required")
+    rows = jobs["jobs"]
+    for name in required_jobs:
+        matched = [j for j in rows if j.get("name") == name]
+        require(len(matched) == 1 and matched[0].get("status") == "completed"
+                and matched[0].get("conclusion") == "success"
+                and str(matched[0].get("run_id")) == run_id
+                and matched[0].get("run_attempt", run["run_attempt"]) == run["run_attempt"],
+                "missing or unsuccessful required Actions job: " + name)
+    return run["run_attempt"]
+
+def _receipt(run_id, name, filename):
+    listing = _gh_json("/actions/runs/" + run_id + "/artifacts?per_page=100")
+    require(type(listing.get("artifacts")) is list
+            and listing.get("total_count") == len(listing["artifacts"]),
+            "complete Actions artifact inventory required")
+    rows = [x for x in listing["artifacts"] if x.get("name") == name
+            and x.get("expired") is False]
+    require(len(rows) == 1 and type(rows[0].get("size_in_bytes")) is int
+            and 0 < rows[0]["size_in_bytes"] <= 1024*1024,
+            "exact bounded qualification artifact missing or ambiguous")
+    with tempfile.TemporaryDirectory(prefix="opica-qualification-") as tmp:
+        proc = subprocess.run(["gh", "run", "download", run_id, "--repo",
+                               RUN_REPOSITORY, "--name", name, "--dir", tmp],
+                              capture_output=True, timeout=120, check=False)
+        require(proc.returncode == 0, "authenticated Actions artifact download failed")
+        f = unlinked(Path(tmp)/filename)
+        require(f.is_file() and f.stat().st_size <= 1024*1024,
+                "exact qualification receipt missing")
+        raw = f.read_bytes()
+        return json.loads(raw), hashlib.sha256(raw).hexdigest()
+
+def _verify_parent_receipt(doc, *, head, tree):
+    require(doc.get("schema") == "OPICA_NEXT_SOURCE_EPOCH_VERIFICATION_V1"
+            and doc.get("status") == "PASS_REVIEWED_COMBINED_EPOCH_V1"
+            and doc.get("head") == head and doc.get("tree") == tree
+            and doc.get("proof_acceptance") is False
+            and all(doc.get(k) == "OPEN" for k in ("RH", "C1", "Step4")),
+            "parent source receipt identity or claim boundary differs")
+
+def _verify_round4_receipt(doc, *, head, tree, run_id, attempt, profile):
+    from ..opica_composition.accept import ROUND4_LANES, REPLAY_GROUP_IDS, group_lanes
+    expected = {"run_id": run_id, "attempt": attempt, "requested_commit": head,
+                "requested_tree": tree, "profile_digest": profile}
+    require(doc.get("schema") == "OPICA4_INTEGRATED_ACCEPTANCE_V1"
+            and doc.get("status") == "PASS_DECLARED_INTEGRATED_SCOPE"
+            and doc.get("experiment") == expected
+            and doc.get("RH") == doc.get("Step4") == "OPEN",
+            "Round4 aggregate receipt is stale, incomplete, or promoted")
+    lanes = doc.get("independently_reconstructed_lanes")
+    groups = doc.get("independent_groups")
+    require(type(lanes) is list and [x.get("id") for x in lanes] == list(ROUND4_LANES)
+            and all(re.fullmatch(r"[0-9a-f]{64}", x.get("evidence_digest", "")) for x in lanes)
+            and type(groups) is list and [x.get("group_id") for x in groups] == list(REPLAY_GROUP_IDS),
+            "all eleven lanes and three independent groups required")
+    require(all(g.get("conclusion") == "success" and g.get("lanes") == list(group_lanes(g["group_id"]))
+                and re.fullmatch(r"[0-9a-f]{64}", g.get("evidence_digest", "")) for g in groups),
+            "independent acceptance partition differs")
+
+def authenticate_qualification(repo, parent_run, round4_run):
+    from .gate import BASE, TREE, git
+    from ..opica_composition.accept import ROUND4_LANES, REPLAY_GROUP_IDS
+    repo = Path(repo).resolve()
+    parent_run, round4_run = _run_id(parent_run), _run_id(round4_run)
+    require(parent_run != round4_run, "separate parent and successor runs required")
+    head, tree = git(repo, "rev-parse", "HEAD"), git(repo, "rev-parse", "HEAD^{tree}")
+    profile = file_hash(repo/"research/RHRC/integration/opica_composition/PROFILE.json")
+    key = (str(repo), head, tree, profile, parent_run, round4_run)
+    if key in _QUALIFICATION_CACHE:
+        return dict(_QUALIFICATION_CACHE[key])
+    def checked(run_id, sha, workflow, names):
+        run = _gh_json("/actions/runs/" + run_id)
+        attempt = run.get("run_attempt")
+        require(type(attempt) is int and attempt > 0, "exact Actions attempt required")
+        jobs = _gh_json("/actions/runs/" + run_id + "/attempts/" + str(attempt) + "/jobs?per_page=100")
+        return _verify_run(run, jobs, run_id=run_id, head=sha,
+                           workflow=".github/workflows/" + workflow, required_jobs=names)
+    pa = checked(parent_run, BASE, "opica-next-source-epoch.yml",
+                 ("source", "native-source-lean", "typed-retrieval"))
+    pd, ph = _receipt(parent_run, "opica-next-epoch-source-" + BASE + "-" + parent_run + "-" + str(pa),
+                      "OPICA_NEXT_EPOCH_SOURCE.json")
+    _verify_parent_receipt(pd, head=BASE, tree=TREE)
+    ra = checked(round4_run, head, "rhrc_opica_composition.yml",
+                 tuple("Round4 / " + lane for lane in ROUND4_LANES)
+                 + tuple("Round4 / INDEPENDENT_" + g for g in REPLAY_GROUP_IDS)
+                 + ("Round4 / ACCEPTANCE",))
+    rd, rh = _receipt(round4_run, "opica4-release-receipt-" + round4_run + "-" + str(ra),
+                      "acceptance.json")
+    _verify_round4_receipt(rd, head=head, tree=tree, run_id=round4_run, attempt=ra, profile=profile)
+    result = {"schema": "OPICA_NEXT_AUTHENTICATED_PREREQUISITES_V1",
+              "parent_run": parent_run, "parent_attempt": pa, "parent_head": BASE, "parent_tree": TREE,
+              "parent_receipt_sha256": ph, "round4_run": round4_run, "round4_attempt": ra,
+              "successor_head": head, "successor_tree": tree, "round4_receipt_sha256": rh,
+              "proof_acceptance": False, "RH": "OPEN", "C1": "OPEN", "Step4": "OPEN"}
+    _QUALIFICATION_CACHE[key] = dict(result)
+    return result
+
+def enforce_qualification(snapshot):
+    if not selected(snapshot):
+        return
+    supplied = snapshot.environment.get(QUALIFICATION)
+    require(type(supplied) is dict, "authenticated parent and full Round4 receipts required")
+    actual = authenticate_qualification(snapshot.repo, supplied.get("parent_run"), supplied.get("round4_run"))
+    require(supplied == actual and actual["successor_head"] == snapshot.commit
+            and actual["successor_tree"] == snapshot.tree,
+            "snapshot qualification receipt differs from authenticated source")
+
+
 def run_bounded_menu(plan,dispatch,verify):
     """One attempt per reviewed action; distinguish execution from scientific results."""
     ids=set(plan["proposals"])
@@ -315,7 +454,7 @@ def run_bounded_menu(plan,dispatch,verify):
             "bounded_retrieval_disposition":batch["disposition"],
             "attempts":attempts,"independent_verified_conditional_applications":accepted}
 
-def campaign(repo,output,target_id,reviewed_head,*,worker):
+def campaign(repo,output,target_id,reviewed_head,*,worker,parent_run,round4_run):
     """Explicitly selected exact-head governed lifecycle; no automatic theorem promotion."""
     from .gate import check
     from ..opica_composition import service
@@ -329,11 +468,13 @@ def campaign(repo,output,target_id,reviewed_head,*,worker):
     native=Path(os.environ["OPICA_NATIVE_OUTPUT"]).resolve()
     require(output.is_relative_to(native),"campaign must use provisioned bounded native volume")
     output.mkdir(parents=True)
+    qualified=authenticate_qualification(repo,parent_run,round4_run)
+    (output/"qualification.json").write_bytes(canonical_bytes(qualified))
     paths=discover_source_paths(repo)|{"lean-toolchain","lake-manifest.json","lakefile.toml"}
     approved=ExperimentSpec("ROUND4_GOVERNED_DEDUCTION_V1",reviewed_head,
                             hash_inventory(repo,paths),
                             {"worker_environment":worker_environment(worker),
-                             SELECTION:file_hash(repo/REGISTRY)},"REVIEWED_FROZEN")
+                             SELECTION:file_hash(repo/REGISTRY),QUALIFICATION:qualified},"REVIEWED_FROZEN")
     (output/"experiment.json").write_bytes(approved.to_bytes())
     snap=service.freeze(repo,approved,output/"snapshot.json",worker=worker)
     inv=service.inventory(repo,snap,output/"inventory",worker=worker)
@@ -362,6 +503,8 @@ def main():
     p.add_argument("--scalar-candidate",action="store_true")
     p.add_argument("--target",choices=TARGET_IDS)
     p.add_argument("--reviewed-head")
+    p.add_argument("--parent-run")
+    p.add_argument("--round4-run")
     a=p.parse_args()
     from .gate import REPO
     if a.scalar_candidate:
@@ -370,7 +513,8 @@ def main():
     else:
         from ..opica_composition.cli import worker_from_environment
         require(a.target is not None and a.reviewed_head is not None,"explicit target/head required")
-        r=campaign(REPO,a.output,a.target,a.reviewed_head,worker=worker_from_environment())
+        r=campaign(REPO,a.output,a.target,a.reviewed_head,worker=worker_from_environment(),
+                   parent_run=_run_id(a.parent_run),round4_run=_run_id(a.round4_run))
     print(json.dumps({"schema":r["schema"],"status":r["status"],"RH":"OPEN","proof_acceptance":False}))
     if r["status"].startswith("INCOMPLETE_"):
         raise SystemExit(2)

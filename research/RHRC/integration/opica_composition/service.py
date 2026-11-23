@@ -40,7 +40,10 @@ def _snapshot(repo,value):
     if isinstance(value,(str,Path)): value=load_bytes(unlinked(value).read_bytes())
     snapshot=as_record(value,SnapshotIdentity)
     require(Path(snapshot.repo).resolve()==Path(repo).resolve(),"snapshot belongs to another checkout")
-    return check_snapshot(snapshot)
+    snapshot=check_snapshot(snapshot)
+    from ..opica_next_acceptance import targets as next_targets
+    next_targets.enforce_qualification(snapshot)
+    return snapshot
 
 def _profile(repo): return load_bytes((Path(repo)/"research/RHRC/integration/opica_composition/PROFILE.json").read_bytes())
 
@@ -119,7 +122,7 @@ def freeze(repo,experiment,output,*,worker):
     require(approved.environment.get("worker_environment")==worker_environment(worker),"approved compiler/import-object environment differs")
     snapshot=freeze_source_epoch(repo,approved)
     from ..opica_next_acceptance import targets as next_targets
-    next_targets.selected(snapshot)
+    next_targets.enforce_qualification(snapshot)
     _write(repo,output,snapshot);return snapshot
 
 def inventory(repo,snapshot,output,*,worker):

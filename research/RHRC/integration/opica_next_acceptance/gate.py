@@ -23,7 +23,7 @@ TREE = "84b235c455980cfd516a8c0ccaf7749bce3c5339"
 PIN = "leanprover/lean4:v4.33.0-rc2"
 POLICY = "research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY.json"
 VALIDATOR = "research/RHRC/integration/opica_next_acceptance/gate.py"
-POLICY_BLOB_OID = "ecfb012055ee18c4c5ce73ee267ab5c2b0bf5301"
+POLICY_BLOB_OID = "8fb873e9a00f021ade37ccbd20a1cc9a6ce985fe"
 
 ADDED = frozenset({
     ".github/workflows/opica-next-acceptance.yml",
@@ -42,6 +42,7 @@ EDITED = frozenset({
     "research/RHRC/integration/opica_composition/qualification.py",
     ".github/workflows/documentation.yml",
     ".github/workflows/rhrc_opica_composition.yml",
+    ".github/workflows/rhrc_opica_round3.yml",
 })
 FROZEN = frozenset(round6.FROZEN_PRODUCTS)
 

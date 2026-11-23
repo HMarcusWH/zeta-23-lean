@@ -188,6 +188,52 @@ class SourceProofAdmissionTests(unittest.TestCase):
         with self.assertRaises(ContractError):
             run_bounded_menu(menu,lambda *_:{"choice":{"action_id":"a"},"status":"TYPE_REJECTED_THIS_APPLICATION"},lambda *_:None)
 
+
+    def test_qualification_rejects_missing_stale_and_incomplete(self):
+        from research.RHRC.integration.opica_next_acceptance import targets as t
+        from research.RHRC.integration.opica_composition.accept import ROUND4_LANES, REPLAY_GROUP_IDS, group_lanes
+        from types import SimpleNamespace
+        from copy import deepcopy
+        head, tree, profile, run = "a"*40, "b"*40, "c"*64, "123"
+        exp = {"run_id":run,"attempt":1,"requested_commit":head,"requested_tree":tree,"profile_digest":profile}
+        receipt = {"schema":"OPICA4_INTEGRATED_ACCEPTANCE_V1","status":"PASS_DECLARED_INTEGRATED_SCOPE",
+                   "experiment":exp,"RH":"OPEN","Step4":"OPEN",
+                   "independently_reconstructed_lanes":[{"id":l,"evidence_digest":"d"*64} for l in ROUND4_LANES],
+                   "independent_groups":[{"group_id":g,"conclusion":"success","lanes":list(group_lanes(g)),
+                                          "evidence_digest":"e"*64} for g in REPLAY_GROUP_IDS]}
+        kw = dict(head=head,tree=tree,run_id=run,attempt=1,profile=profile)
+        t._verify_round4_receipt(receipt,**kw)
+        for mutation in ("lane","group","head","claim","status"):
+            bad=deepcopy(receipt)
+            if mutation=="lane": bad["independently_reconstructed_lanes"].pop()
+            if mutation=="group": bad["independent_groups"][0]["conclusion"]="failure"
+            if mutation=="head": bad["experiment"]["requested_commit"]="0"*40
+            if mutation=="claim": bad["RH"]="PROVED"
+            if mutation=="status": bad["status"]="INCOMPLETE"
+            with self.assertRaises(ContractError): t._verify_round4_receipt(bad,**kw)
+        with patch.object(t,"selected",return_value=True):
+            with self.assertRaises(ContractError):
+                t.enforce_qualification(SimpleNamespace(environment={}))
+        with self.assertRaises(ContractError): t._run_id("123/../../artifacts")
+
+    def test_qualification_authenticates_exact_actions_attempt(self):
+        from research.RHRC.integration.opica_next_acceptance import targets as t
+        from copy import deepcopy
+        run={"id":123,"head_sha":"a"*40,"path":".github/workflows/test.yml",
+             "repository":{"full_name":t.RUN_REPOSITORY},"head_repository":{"full_name":t.RUN_REPOSITORY},
+             "event":"push","status":"completed","conclusion":"success","run_attempt":2}
+        jobs={"total_count":1,"jobs":[{"name":"source","status":"completed","conclusion":"success",
+                                     "run_id":123,"run_attempt":2}]}
+        kw=dict(run_id="123",head="a"*40,workflow=".github/workflows/test.yml",required_jobs=("source",))
+        self.assertEqual(t._verify_run(run,jobs,**kw),2)
+        for mutate in ("missing","wrong_attempt","failure","duplicate"):
+            bad=deepcopy(jobs)
+            if mutate=="missing": bad["total_count"]=2
+            if mutate=="wrong_attempt": bad["jobs"][0]["run_attempt"]=1
+            if mutate=="failure": bad["jobs"][0]["conclusion"]="failure"
+            if mutate=="duplicate": bad["jobs"]*=2;bad["total_count"]=2
+            with self.assertRaises(ContractError): t._verify_run(run,bad,**kw)
+
     def test_historical_source_validator_fails_closed(self):
         # Earlier frozen source epoch is NOT enlarged retroactively.
         with self.assertRaises(ContractError):

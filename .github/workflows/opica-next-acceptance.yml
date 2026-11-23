@@ -28,8 +28,17 @@ on:
         description: Exact selected commit (required for heavy execution)
         required: true
         type: string
+      parent_run:
+        description: Exact successful combined-source parent run ID (signed-targets only)
+        required: false
+        type: string
+      round4_run:
+        description: Exact successful full Round4 successor run ID (signed-targets only)
+        required: false
+        type: string
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: opica-source-acceptance-v2-${{ github.ref }}
   cancel-in-progress: false
@@ -141,7 +150,7 @@ jobs:
           compression-level: 0
           if-no-files-found: warn
   governed-signed-targets:
-    if: ${{ github.repository == 'HMarcusWH/zeta-23-lean' && ((github.event_name == 'push' && contains(github.event.head_commit.message, '[run-next-targets]')) || (github.event_name == 'workflow_dispatch' && inputs.mode == 'signed-targets' && inputs.reviewed_head == github.sha)) }}
+    if: ${{ github.repository == 'HMarcusWH/zeta-23-lean' && github.event_name == 'workflow_dispatch' && inputs.mode == 'signed-targets' && inputs.reviewed_head == github.sha && inputs.parent_run != '' && inputs.round4_run != '' }}
     needs: source-admission
     runs-on: ubuntu-24.04
     timeout-minutes: 360
@@ -176,9 +185,13 @@ jobs:
         shell: bash
         env:
           TARGET_ID: ${{ matrix.target }}
+          PARENT_RUN: ${{ inputs.parent_run }}
+          ROUND4_RUN: ${{ inputs.round4_run }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          sudo systemd-run --wait --pipe --collect --unit="opica-next-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
+          [[ "$PARENT_RUN" =~ ^[1-9][0-9]{0,19}$ && "$ROUND4_RUN" =~ ^[1-9][0-9]{0,19}$ ]]
+          sudo --preserve-env=GH_TOKEN systemd-run --setenv=GH_TOKEN --wait --pipe --collect --unit="opica-next-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
             --uid="$(id -u)" --gid="$(id -g)" \
             -p MemoryMax=4294967296 -p MemorySwapMax=0 -p TasksMax=64 -p CPUQuota=200% \
             -p "WorkingDirectory=$PWD" /usr/bin/env \
@@ -186,6 +199,7 @@ jobs:
             "OPICA_NATIVE_OUTPUT=$OPICA_NATIVE_OUTPUT" "OPICA_NATIVE_CONFIG=$OPICA_NATIVE_CONFIG" \
             python3 -B -m research.RHRC.integration.opica_next_acceptance.targets \
               --target "$TARGET_ID" --reviewed-head "$GITHUB_SHA" \
+              --parent-run "$PARENT_RUN" --round4-run "$ROUND4_RUN" \
               --output "$OPICA_NATIVE_OUTPUT/next-target-campaign"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()

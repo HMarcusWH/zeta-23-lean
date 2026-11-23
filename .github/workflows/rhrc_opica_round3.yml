@@ -83,6 +83,11 @@ jobs:
       shell: bash
       run: |
         set -euo pipefail
+        mkdir -p "$OPICA3_OUTPUT/source"
+        if ! test -f "$OPICA3_OUTPUT/source/before.json"; then
+          printf '%s\n' '{"schema":"OPICA3_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA3_OUTPUT/source/failure.json"
+          exit 1
+        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA3_OUTPUT/source/before.json"
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
       if: ${{ always() }}
@@ -180,6 +185,11 @@ jobs:
       shell: bash
       run: |
         set -euo pipefail
+        mkdir -p "$OPICA3_OUTPUT/source"
+        if ! test -f "$OPICA3_OUTPUT/source/before.json"; then
+          printf '%s\n' '{"schema":"OPICA3_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA3_OUTPUT/source/failure.json"
+          exit 1
+        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA3_OUTPUT/source/before.json"
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
       if: ${{ always() }}
@@ -305,6 +315,11 @@ jobs:
       shell: bash
       run: |
         set -euo pipefail
+        mkdir -p "$OPICA3_OUTPUT/source"
+        if ! test -f "$OPICA3_OUTPUT/source/before.json"; then
+          printf '%s\n' '{"schema":"OPICA3_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA3_OUTPUT/source/failure.json"
+          exit 1
+        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA3_OUTPUT/source/before.json"
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
       if: ${{ always() }}
@@ -398,6 +413,11 @@ jobs:
       shell: bash
       run: |
         set -euo pipefail
+        mkdir -p "$OPICA3_OUTPUT/source"
+        if ! test -f "$OPICA3_OUTPUT/source/before.json"; then
+          printf '%s\n' '{"schema":"OPICA3_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA3_OUTPUT/source/failure.json"
+          exit 1
+        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA3_OUTPUT/source/before.json"
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
       if: ${{ always() }}
@@ -497,6 +517,11 @@ jobs:
       shell: bash
       run: |
         set -euo pipefail
+        mkdir -p "$OPICA3_OUTPUT/source"
+        if ! test -f "$OPICA3_OUTPUT/source/before.json"; then
+          printf '%s\n' '{"schema":"OPICA3_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA3_OUTPUT/source/failure.json"
+          exit 1
+        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA3_OUTPUT/source/before.json"
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
       if: ${{ always() }}
