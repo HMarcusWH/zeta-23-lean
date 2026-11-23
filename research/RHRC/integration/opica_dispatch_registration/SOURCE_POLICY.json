@@ -1,0 +1,34 @@
+{
+  "schema": "OPICA_DISPATCH_REGISTRATION_SOURCE_V1",
+  "base": "bb7c8184a135b2823c6296917c5ac893bebf2a71",
+  "base_tree": "2b19357e1b65cc500f3e3a5b5d4df14601b02062",
+  "reviewed_blobs": {
+    ".github/workflows/documentation.yml": "304c6cbb3a06868724f88d774662f8a9d39d8b2c",
+    ".github/workflows/opica-dispatch-registration-review.yml": "fda1f4deb8c9c824afa0c8089c96e418384dd6c5",
+    ".github/workflows/opica-next-acceptance.yml": "4d851a53e5c4fd153bb096c9428e5910211164a4",
+    ".github/workflows/opica-next-source-epoch.yml": "5abb98a57488f136ea69211e6371571ed24c7b33",
+    "research/RHRC/integration/opica_composition/cli.py": "ae301df4b8b77eb779ac86b6c7088f39243d2aa1",
+    "research/RHRC/integration/opica_composition/service.py": "9cb1313b9f290d7a19f5933bd421b27b71351513",
+    "research/RHRC/integration/opica_dispatch_registration/README.md": "9d91398fa88d47a589f7cb5826825c385b6877fe",
+    "research/RHRC/integration/opica_dispatch_registration/test_gate.py": "ac95bb9d5d8249c47833d749e83677f5fafb0b9b"
+  },
+  "validator_template_blob_oid": "1bd74361f11d0c39e0a95a8593d8a8677a8656bf",
+  "added": [
+    ".github/workflows/opica-dispatch-registration-review.yml",
+    ".github/workflows/opica-next-acceptance.yml",
+    ".github/workflows/opica-next-source-epoch.yml",
+    "research/RHRC/integration/opica_dispatch_registration/README.md",
+    "research/RHRC/integration/opica_dispatch_registration/SOURCE_POLICY.json",
+    "research/RHRC/integration/opica_dispatch_registration/gate.py",
+    "research/RHRC/integration/opica_dispatch_registration/test_gate.py"
+  ],
+  "edited": [
+    ".github/workflows/documentation.yml",
+    "research/RHRC/integration/opica_composition/cli.py",
+    "research/RHRC/integration/opica_composition/service.py"
+  ],
+  "proof_acceptance": false,
+  "RH": "OPEN",
+  "C1": "OPEN",
+  "Step4": "OPEN"
+}

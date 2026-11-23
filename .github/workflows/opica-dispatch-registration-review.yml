@@ -1,0 +1,64 @@
+name: OPICA dispatch registration source and canonical review
+on:
+  push:
+    branches: [ops/opica-dispatch-registration-20261123]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/RHRC/integration/opica_dispatch_registration/**'
+      - '.github/workflows/opica-next-acceptance.yml'
+      - '.github/workflows/opica-next-source-epoch.yml'
+permissions:
+  contents: read
+concurrency:
+  group: opica-dispatch-registration-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  registration-source:
+    if: ${{ github.repository == 'HMarcusWH/zeta-23-lean' && (github.event_name == 'push' || github.head_ref == 'ops/opica-dispatch-registration-20261123') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Authenticate registration only and reject changed source
+        run: |
+          set -euo pipefail
+          python3 -B -m research.RHRC.integration.opica_dispatch_registration.gate --output "$RUNNER_TEMP/registration-source.json"
+          python3 -B -m unittest -v research.RHRC.integration.opica_dispatch_registration.test_gate
+          python3 -O -B -m unittest -v research.RHRC.integration.opica_dispatch_registration.test_gate
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: registration-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/registration-source.json
+          if-no-files-found: error
+  canonical-candidate:
+    needs: registration-source
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - run: python3 -B -m research.RHRC.integration.opica_dispatch_registration.gate --canonical-candidate "$RUNNER_TEMP/registration-canonical"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: registration-canonical-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/registration-canonical/
+          if-no-files-found: warn
