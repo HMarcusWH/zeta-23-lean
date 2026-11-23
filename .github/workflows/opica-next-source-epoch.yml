@@ -7,6 +7,8 @@ on:
       - research/RHRC/integration/opica_next_epoch/**
       - research/RHRC/integration/opica_round6/next_search/**
       - research/RHRC/integration/opica_round6/prime_deficit/**
+      - Zeta23/OPICARound6/NextSearch/**
+      - Zeta23/OPICARound6/PrimeDeficit/**
       - research/RHRC/graph/FILE_CLASSES.json
       - research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json
   workflow_dispatch:
