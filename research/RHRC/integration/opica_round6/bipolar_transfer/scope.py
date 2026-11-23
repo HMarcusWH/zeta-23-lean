@@ -5,12 +5,12 @@ from pathlib import Path
 from research.RHRC.integration.documentation_2026_11_21 import source_scope as historical
 from research.RHRC.integration.opica_round6 import source_scope as round6
 
-ROOT=Path(__file__).resolve().parents[4]
+ROOT=Path(__file__).resolve().parents[5]
 BASE="4f81c784d3b330395507f6dcd1c8b0010b3835cc"
 TREE="84b235c455980cfd516a8c0ccaf7749bce3c5339"
 POLICY="research/RHRC/integration/opica_round6/bipolar_transfer/POLICY.json"
 VALIDATOR="research/RHRC/integration/opica_round6/bipolar_transfer/scope.py"
-POLICY_BLOB="9a38710021f7826ecd76e9e281a8b3ef49011d8a"
+POLICY_BLOB="b7f878d969ed424424cc56cf02a48009d8cbd8a6"
 ADDED=set([".github/workflows/opica-bipolar-transfer.yml","Zeta23/OPICARound6/NextSearch/BipolarTransfer.lean","Zeta23/OPICARound6/NextSearch/BipolarVerify.lean","research/RHRC/integration/opica_round6/bipolar_transfer/POLICY.json","research/RHRC/integration/opica_round6/bipolar_transfer/README.md","research/RHRC/integration/opica_round6/bipolar_transfer/finite_controls.py","research/RHRC/integration/opica_round6/bipolar_transfer/scope.py"])
 ROOTS=tuple(["Zeta23.OPICARound6.NextSearch.raw_survivor_polarity_difference","Zeta23.OPICARound6.NextSearch.reverseOpposedSurvivorEnergy_bracket","Zeta23.OPICARound6.NextSearch.rawNegativeEnergy_bracket","Zeta23.OPICARound6.NextSearch.rawNegativeEnergy_le_full_components","Zeta23.OPICARound6.NextSearch.rawPositiveEnergy_bracket","Zeta23.OPICARound6.NextSearch.rawSquareEnergy_eq_polarities","Zeta23.OPICARound6.NextSearch.rawSquareEnergy_removal_bound","Zeta23.OPICARound6.NextSearch.pairedOpposedSurvivorEnergy_eq","Zeta23.OPICARound6.NextSearch.pairedOpposedSurvivorEnergy_bracket","Zeta23.OPICARound6.NextSearch.rawBipolarEnergy_bracket","Zeta23.OPICARound6.NextSearch.unsignedErrorEnergy_nonnegative","Zeta23.OPICARound6.NextSearch.cofinalSubpower_of_tail_error","Zeta23.OPICARound6.NextSearch.cofinalSubpower_iff_of_tail_error","Zeta23.OPICARound6.NextSearch.positiveRawSubpower_iff_opposed_of_tail_error","Zeta23.OPICARound6.NextSearch.negativeRawSubpower_iff_opposed_of_tail_error","Zeta23.OPICARound6.NextSearch.onePolarityRawSubpower_iff_opposed_of_tail_error"])
 ALLOWED={"propext","Classical.choice","Quot.sound"}

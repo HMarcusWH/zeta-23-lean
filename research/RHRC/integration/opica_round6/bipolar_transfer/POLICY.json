@@ -9,7 +9,7 @@
     "research/RHRC/integration/opica_round6/bipolar_transfer/README.md": "cc310371610c4d2094886aa3b07741e29c456e53",
     "research/RHRC/integration/opica_round6/bipolar_transfer/finite_controls.py": "ca6aa3d814dca5ad5287de8ce2b76cecc0e8966a"
   },
-  "validator_template_oid": "c76cc569ef6d61d94184eb51f6784901f0afcaef",
+  "validator_template_oid": "72251447b4f63248fa6b8a5995b75bf9557017b2",
   "roots": [
     "Zeta23.OPICARound6.NextSearch.raw_survivor_polarity_difference",
     "Zeta23.OPICARound6.NextSearch.reverseOpposedSurvivorEnergy_bracket",
