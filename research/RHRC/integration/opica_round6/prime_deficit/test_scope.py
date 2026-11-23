@@ -46,7 +46,7 @@ class SourceContractTests(unittest.TestCase):
         with self.assertRaises(scope.ScopeError):
           scope.validate_semantics(contract,source.replace(old,new))
     with self.assertRaises(scope.ScopeError):
-      scope.validate_semantics(contract,source+"\\naxiom fakeBridge : False\\n")
+      scope.validate_semantics(contract,source+"\naxiom fakeBridge : False\n")
 
   def test_adversarial_git_source_and_parent_scope(self):
     from unittest.mock import patch
@@ -59,7 +59,7 @@ class SourceContractTests(unittest.TestCase):
         scope.assert_source()
     def extra_path(*a):
       if a==("diff","--name-status",scope.BASE,"HEAD"):
-        return original(*a)+"\\nA\\tUNREVIEWED.txt"
+        return original(*a)+"\nA\tUNREVIEWED.txt"
       return original(*a)
     with patch.object(scope,"git",side_effect=extra_path):
       with self.assertRaises(scope.ScopeError):
