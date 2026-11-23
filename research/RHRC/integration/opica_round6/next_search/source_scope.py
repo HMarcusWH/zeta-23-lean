@@ -18,6 +18,7 @@ NEW=(
  "research/RHRC/integration/opica_round6/next_search/README.md",
  "research/RHRC/integration/opica_round6/next_search/SOURCE_CONTRACTS.json",
  "research/RHRC/integration/opica_round6/next_search/TARGETS.json",
+ "research/RHRC/integration/opica_round6/next_search/campaign.py",
  "research/RHRC/integration/opica_round6/next_search/source_scope.py",
  "research/RHRC/integration/opica_round6/next_search/test_source_scope.py",
  "research/RHRC/integration/opica_round6/next_search/typed_export.py",

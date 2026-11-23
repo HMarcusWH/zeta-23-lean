@@ -87,6 +87,22 @@ jobs:
           assert record["proof_acceptance"] is False
           print("COMPILED_TYPE_DAGS_ONLY; RH OPEN")
           PY
+      - name: Run actual original OPICA typed-DAG backward source search
+        id: search
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$PWD"
+          python3 -B research/RHRC/integration/opica_round6/next_search/campaign.py \
+            --output "$RUNNER_TEMP/OPICA_NEXT_TYPED_SOURCE_SEARCH.json"
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          d=json.loads((Path(os.environ["RUNNER_TEMP"])/"OPICA_NEXT_TYPED_SOURCE_SEARCH.json").read_text())
+          assert len(d["targets"])==3 and d["RH"]=="OPEN" and d["Step4"]=="OPEN"
+          assert d["formal_kernel_proof"]=="NOT_ESTABLISHED_BY_THIS_SEARCH"
+          assert d["proof_acceptance"] is False
+          print("SOURCE_BOUND_OPICA_RETRIEVAL_NOT_A_PROOF")
+          PY
       - name: Preserve exact native compiler evidence and incomplete diagnostics
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -96,5 +112,6 @@ jobs:
             ${{ runner.temp }}/OPICA_NEXT_SOURCE_SCOPE_COMPILER.json
             ${{ runner.temp }}/OPICA_NEXT_LEAN_AXIOM_AUDIT.log
             ${{ runner.temp }}/OPICA_NEXT_TYPED_TARGETS.json
+            ${{ runner.temp }}/OPICA_NEXT_TYPED_SOURCE_SEARCH.json
           retention-days: 90
           if-no-files-found: warn

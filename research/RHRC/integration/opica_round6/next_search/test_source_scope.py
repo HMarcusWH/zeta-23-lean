@@ -5,7 +5,7 @@ import source_scope as s
 class NextArithmeticSourceScopeTests(unittest.TestCase):
   def test_no_old_11_lane_promotion(self):
     self.assertEqual(s.BASE,"bb7c8184a135b2823c6296917c5ac893bebf2a71")
-    self.assertEqual(len(s.NEW),10)
+    self.assertEqual(len(s.NEW),11)
     self.assertNotIn("research/RHRC/integration/opica_composition/PUBLIC_TARGETS.json",s.NEW)
     self.assertIn("research/RHRC/integration/opica_composition/PUBLIC_TARGETS.json",s.FROZEN)
   def test_exact_open_research_target_ids(self):
