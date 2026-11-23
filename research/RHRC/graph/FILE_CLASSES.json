@@ -36,6 +36,48 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
+      "id": "opica_next_epoch_math_source",
+      "pattern": "\\A(?:Zeta23/OPICARound6/NextSearch/SourceEnergies\\.lean|Zeta23/OPICARound6/PrimeDeficit/Source\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "id": "opica_next_epoch_lean_audit",
+      "pattern": "\\A(?:Zeta23/OPICARound6/NextSearch/Verify\\.lean|Zeta23/OPICARound6/PrimeDeficit/Verify\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_next_epoch_workflows",
+      "pattern": "\\A(?:\\.github/workflows/opica-next-arithmetic\\.yml|\\.github/workflows/opica-next-source-epoch\\.yml|\\.github/workflows/opica-prime-deficit\\.yml)\\Z",
+      "file_class": "CI_WORKFLOW",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_next_epoch_executables",
+      "pattern": "\\A(?:research/RHRC/integration/opica_next_epoch/scope\\.py|research/RHRC/integration/opica_next_epoch/test_scope\\.py|research/RHRC/integration/opica_round6/next_search/campaign\\.py|research/RHRC/integration/opica_round6/next_search/source_scope\\.py|research/RHRC/integration/opica_round6/next_search/test_source_scope\\.py|research/RHRC/integration/opica_round6/next_search/typed_export\\.py|research/RHRC/integration/opica_round6/prime_deficit/scope\\.py|research/RHRC/integration/opica_round6/prime_deficit/test_scope\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_next_epoch_configuration",
+      "pattern": "\\A(?:research/RHRC/integration/opica_next_epoch/SOURCE_EPOCH\\.json|research/RHRC/integration/opica_round6/next_search/SOURCE_CONTRACTS\\.json|research/RHRC/integration/opica_round6/next_search/TARGETS\\.json|research/RHRC/integration/opica_round6/prime_deficit/SOURCE_CONTRACT\\.json)\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_next_epoch_documents",
+      "pattern": "\\A(?:research/RHRC/integration/opica_next_epoch/README\\.md|research/RHRC/integration/opica_round6/next_search/README\\.md|research/RHRC/integration/opica_round6/prime_deficit/README\\.md)\\Z",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "opica_next_epoch_falsifiers",
+      "pattern": "\\A(?:research/RHRC/integration/opica_round6/next_search/FALSIFIERS\\.json)\\Z",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
       "id": "documentation_2026_11_21_examples",
       "pattern": "\\A(?:docs/examples/exact_examples\\.py|docs/examples/infrastructure_replay\\.py)\\Z",
       "file_class": "RESEARCH_EXECUTABLE",
