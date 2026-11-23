@@ -1,0 +1,57 @@
+name: OPICA exact next-source admission and original coordinator probe
+on:
+  push:
+    branches: [research/opica-next-acceptance-v2-20261123]
+    paths:
+      - .github/workflows/opica-next-acceptance.yml
+      - research/RHRC/integration/opica_next_acceptance/**
+      - research/RHRC/integration/opica_composition/cli.py
+      - research/RHRC/graph/FILE_CLASSES.json
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: opica-source-acceptance-v2-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  source-admission:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check exact parent head, only six new paths, two reviewed edits and no proof claim
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$PWD"
+          python3 -B -m research.RHRC.integration.opica_next_acceptance.gate \
+            --output "$RUNNER_TEMP/OPICA_NEXT_ADMISSION.json"
+          python3 -B -m unittest -v research.RHRC.integration.opica_next_acceptance.test_gate
+          python3 -O -B -m unittest -v research.RHRC.integration.opica_next_acceptance.test_gate
+          python3 -B -m research.RHRC.integration.opica_next_acceptance.gate \
+            --check-classification
+          python3 -B -m research.RHRC.integration.opica_composition.cli \
+            inspect --repo "$PWD" --output "$RUNNER_TEMP/OPICA_NEXT_CLI_INSPECTION.json"
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          r=json.loads((Path(os.environ["RUNNER_TEMP"])/"OPICA_NEXT_CLI_INSPECTION.json").read_text())
+          if (r.get("schema")!="OPICA_NEXT_SOURCE_ACCEPTANCE_ADMISSION_V1"
+              or r.get("status")!="PASS_SOURCE_SCOPE_ONLY"
+              or r.get("full_round4_accepted") is not False
+              or r.get("proof_acceptance") is not False
+              or any(r.get(k)!="OPEN" for k in ("RH","C1","Step4"))):
+              raise SystemExit("INVALID_CURRENT_SOURCE_CLAIM_DISPOSITION")
+          print("SOURCE_ADMITTED_FOR_NEW_11_LANE_REPLAY_ONLY",r["checked_commit"])
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-next-proof-source-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/OPICA_NEXT_ADMISSION.json
+            ${{ runner.temp }}/OPICA_NEXT_CLI_INSPECTION.json
+          if-no-files-found: warn
