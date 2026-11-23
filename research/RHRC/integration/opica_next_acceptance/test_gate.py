@@ -6,6 +6,7 @@ import unittest
 from unittest.mock import patch
 
 from research.RHRC.integration.opica_next_acceptance import gate as s
+from research.RHRC.integration.opica_composition.canonical import ContractError
 
 class SourceProofAdmissionTests(unittest.TestCase):
     @classmethod
@@ -99,7 +100,7 @@ class SourceProofAdmissionTests(unittest.TestCase):
 
     def test_historical_source_validator_fails_closed(self):
         # Earlier frozen source epoch is NOT enlarged retroactively.
-        with self.assertRaises(Exception):
+        with self.assertRaises(ContractError):
             s.historical.inspect_committed_tree(s.REPO)
 
 if __name__=="__main__":
