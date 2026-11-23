@@ -73,7 +73,16 @@ jobs:
           lake env lean Zeta23/OPICARound6/NextSearch/Verify.lean >"$RUNNER_TEMP/OPICA_AX_307.log" 2>&1
           lake env lean Zeta23/OPICARound6/PrimeDeficit/Verify.lean >"$RUNNER_TEMP/OPICA_AX_308.log" 2>&1
           cat "$RUNNER_TEMP/OPICA_AX_307.log" "$RUNNER_TEMP/OPICA_AX_308.log"
-          ! grep -Ei 'sorryAx|error:|declaration uses axiom' "$RUNNER_TEMP/OPICA_AX_307.log" "$RUNNER_TEMP/OPICA_AX_308.log"
+          python3 -B - <<'PY'
+          import os,json
+          from pathlib import Path
+          from research.RHRC.integration.opica_next_epoch.scope import check_axiom_reports
+          root=Path(os.environ["RUNNER_TEMP"])
+          result=check_axiom_reports("\n".join((root/n).read_text() for n in
+                                      ("OPICA_AX_307.log","OPICA_AX_308.log")))
+          (root/"OPICA_EXACT_AXIOM_AUDIT.json").write_text(json.dumps(result,indent=2)+"\n")
+          print("EXACT_NAMED_TRANSITIVE_AXIOM_AUDIT_PASS",len(result))
+          PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
@@ -81,6 +90,7 @@ jobs:
           path: |
             ${{ runner.temp }}/OPICA_AX_307.log
             ${{ runner.temp }}/OPICA_AX_308.log
+            ${{ runner.temp }}/OPICA_EXACT_AXIOM_AUDIT.json
           if-no-files-found: warn
   typed-retrieval:
     needs: native-source-lean
@@ -148,52 +158,22 @@ jobs:
           lint: false
           use-github-cache: false
           use-mathlib-cache: true
-      - name: Write and check 78 current native derived products (review-only)
+      - name: Prepare native compiler exporters and write/check only 77 active products
         run: |
           set -euo pipefail
           export PYTHONPATH="$PWD"
-          python3 -B research/RHRC/integration/opica_next_epoch/scope.py \
-            --output "$RUNNER_TEMP/OPICA_NEW_MATERIALIZER_SCOPE.json"
-          python3 -B research/RHRC/tools/materialize_derived_state.py --write >"$RUNNER_TEMP/OPICA_NEW_WRITE.log" 2>&1
-          python3 -B research/RHRC/tools/materialize_derived_state.py --check >"$RUNNER_TEMP/OPICA_NEW_CHECK.log" 2>&1
-          git diff --check
-          git diff --binary HEAD >"$RUNNER_TEMP/OPICA_NEW_REVIEW_ONLY.patch"
-          python3 - <<'PY'
-          import json,os,subprocess,hashlib
+          python3 -B - <<'PY'
+          import os
           from pathlib import Path
-          coverage=json.loads(Path("research/RHRC/graph/generated/REPOSITORY_COVERAGE.json").read_text())
-          allowed=set(coverage["declared_generated_products"])
-          allowed.add("research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl")
-          paths=set(filter(None,subprocess.check_output(["git","diff","--name-only","HEAD"],text=True).splitlines()))
-          untracked=set(filter(None,subprocess.check_output(
-              ["git","ls-files","--others","--exclude-standard"],text=True).splitlines()))
-          if len(allowed)!=78 or not paths<=allowed or untracked:
-              raise SystemExit("UNREVIEWED_CANONICAL_MUTATION: "+repr({
-                  "allowed_count":len(allowed),"outside_generated":sorted(paths-allowed),
-                  "untracked":sorted(untracked)}))
-          hashes={q:hashlib.sha256(Path(q).read_bytes()).hexdigest() for q in sorted(allowed)}
-          p=Path(os.environ["RUNNER_TEMP"])/"OPICA_NEW_REVIEW_ONLY.patch"
-          head=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
-          tree=subprocess.check_output(["git","rev-parse","HEAD^{tree}"],text=True).strip()
-          receipt={"schema":"OPICA_NEXT_EPOCH_CANONICAL_CANDIDATE_V2",
-                   "status":"REVIEW_ONLY_GENERATED_STATE",
-                   "source_head":head,"source_tree":tree,
-                   "generated_products":len(hashes),"generated_sha256":hashes,
-                   "changed_paths":sorted(paths),"changed_count":len(paths),
-                   "patch_sha256":hashlib.sha256(p.read_bytes()).hexdigest(),
-                   "proof_acceptance":False,"C1":"OPEN","RH":"OPEN","Step4":"OPEN"}
-          (Path(os.environ["RUNNER_TEMP"])/"OPICA_NEW_MATERIALIZER_RECEIPT.json").write_text(
-            json.dumps(receipt,indent=2)+"\n")
-          print(receipt)
+          from research.RHRC.integration.opica_next_epoch.scope import check,canonical_candidate
+          r=check()
+          canonical_candidate(Path(os.environ["RUNNER_TEMP"])/"OPICA_CANONICAL_REVIEW",
+                              r["head"],r["tree"])
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: opica-next-epoch-canonical-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            ${{ runner.temp }}/OPICA_NEW_MATERIALIZER_SCOPE.json
-            ${{ runner.temp }}/OPICA_NEW_WRITE.log
-            ${{ runner.temp }}/OPICA_NEW_CHECK.log
-            ${{ runner.temp }}/OPICA_NEW_REVIEW_ONLY.patch
-            ${{ runner.temp }}/OPICA_NEW_MATERIALIZER_RECEIPT.json
+            ${{ runner.temp }}/OPICA_CANONICAL_REVIEW/
           if-no-files-found: warn

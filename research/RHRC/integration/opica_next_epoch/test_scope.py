@@ -85,6 +85,27 @@ class JointEpochScopeTests(unittest.TestCase):
             with self.assertRaises(epoch.ScopeError):
                 epoch.check()
 
+    def test_sealed_content_and_axiom_reports(self):
+        raw=(epoch.REPO/epoch.POLICY).read_bytes()
+        epoch.verify_reviewed_content(self.policy,raw)
+        with self.assertRaises(epoch.ScopeError):
+            epoch.verify_reviewed_content(self.policy,raw+b" ")
+        original=epoch.git
+        def changed_allowed(*args):
+            if args==("rev-parse","HEAD:.github/workflows/opica-next-source-epoch.yml"):
+                return "0"*40
+            return original(*args)
+        with patch.object(epoch,"git",side_effect=changed_allowed):
+            with self.assertRaises(epoch.ScopeError):
+                epoch.verify_reviewed_content(self.policy,raw)
+        good="\n".join("'"+n+"' depends on axioms: [propext,\n Classical.choice, Quot.sound]"
+                       for n in sorted(epoch.AXIOM_TARGETS))
+        self.assertEqual(set(epoch.check_axiom_reports(good)),epoch.AXIOM_TARGETS)
+        for bad in (good.replace("Quot.sound","project.fakeAxiom"),good+"\nsorryAx",
+                    good.split("\n",2)[0],good+"\n"+good):
+            with self.assertRaises(epoch.ScopeError):
+                epoch.check_axiom_reports(bad)
+
     def test_original_source_guards_still_refuse_unreviewed_extension(self):
         # The current epoch has a new gate; historical scopes are never
         # automatically made to accept it by widening their frozen manifests.
