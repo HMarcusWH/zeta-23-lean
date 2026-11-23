@@ -164,6 +164,30 @@ class SourceProofAdmissionTests(unittest.TestCase):
             with self.assertRaisesRegex(s.ScopeError,"reviewed source blob"):
                 s.check()
 
+    def test_bounded_attempt_menu_is_distinct_and_failure_is_not_acceptance(self):
+        from types import SimpleNamespace
+        from research.RHRC.integration.opica_next_acceptance.targets import run_bounded_menu
+        menu={"proposals":{"a":{},"b":{}},"candidates":{"complete":True,"disposition":"ENUMERATED"}}
+        calls=[]
+        def dispatch(i,credits):
+            calls.append((i,credits))
+            if credits==0:
+                return {"kind":"STOP"}
+            return {"choice":{"action_id":("a","b")[i]},"status":"TYPE_REJECTED_THIS_APPLICATION"}
+        outcome=run_bounded_menu(menu,dispatch,lambda *_:self.fail("rejected attempt was verified"))
+        self.assertEqual(calls,[(0,1),(1,1),(2,0)])
+        self.assertEqual(outcome["attempted_action_ids"],["a","b"])
+        self.assertEqual(outcome["status"],"NO_KERNEL_ACCEPTED_APPLICATION_IN_ENUMERATED_MENU")
+        bad=run_bounded_menu(menu,lambda *_:{"choice":{"action_id":"a"},"status":"RESOURCE_EXHAUSTED"},lambda *_:None)
+        self.assertEqual(bad["status"],"INCOMPLETE_EXECUTION")
+        self.assertEqual(bad["independent_verified_conditional_applications"],0)
+        forged=run_bounded_menu(menu,lambda *_:{"choice":{"action_id":"a"},"status":"PROVED_CONDITIONAL"},
+                                lambda *_:SimpleNamespace(status="PROVED_CONDITIONAL",publication_eligible=False))
+        self.assertEqual(forged["status"],"INCOMPLETE_EXECUTION")
+        self.assertEqual(forged["independent_verified_conditional_applications"],0)
+        with self.assertRaises(ContractError):
+            run_bounded_menu(menu,lambda *_:{"choice":{"action_id":"a"},"status":"TYPE_REJECTED_THIS_APPLICATION"},lambda *_:None)
+
     def test_historical_source_validator_fails_closed(self):
         # Earlier frozen source epoch is NOT enlarged retroactively.
         with self.assertRaises(ContractError):

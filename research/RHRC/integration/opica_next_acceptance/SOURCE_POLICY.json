@@ -117,7 +117,7 @@
   "proof_acceptance": false,
   "reviewed_blob_oids": {
     ".github/workflows/documentation.yml": "b5fc9c8ccda3c42bbcd3d02cdad0d77bb89680de",
-    ".github/workflows/opica-next-acceptance.yml": "cbf82358ca5ffc7fcf9f9fdc1657faa39bd58b96",
+    ".github/workflows/opica-next-acceptance.yml": "ba57762916b9390672841b8d98b0b0af74261e4d",
     ".github/workflows/rhrc_opica_composition.yml": "aadd146c4b8d80cb91d90609d36dc8377ae84c43",
     "research/RHRC/graph/FILE_CLASSES.json": "75d35981aa6797144c47f925d8c1b33553dc0eef",
     "research/RHRC/integration/opica_composition/cli.py": "f5df5d624eef8b4e66aa5236924bc4c285e90cd8",
@@ -126,8 +126,8 @@
     "research/RHRC/integration/opica_next_acceptance/NEXT_TARGETS.json": "a4af5416f9dfe369e1224608b5d5deefb2f54bc9",
     "research/RHRC/integration/opica_next_acceptance/README.md": "e701d1697fa0c0d6ee83bb3e0a6cf108b3e0335a",
     "research/RHRC/integration/opica_next_acceptance/__init__.py": "85940cff9563d44bd4612996f3999441b5c79838",
-    "research/RHRC/integration/opica_next_acceptance/targets.py": "f35026d066eae3148439cc950e2c3378f66733ba",
-    "research/RHRC/integration/opica_next_acceptance/test_gate.py": "27178787cd4ef8caa26d0eb09957cf6e61d5fcc7"
+    "research/RHRC/integration/opica_next_acceptance/targets.py": "0db03c66e3191b19e162398d369b370a6d5872fb",
+    "research/RHRC/integration/opica_next_acceptance/test_gate.py": "10ebcbe4c13e03428fbe31420b5d3a1f73788e1d"
   },
   "validator_template_blob_oid": "2a093c266388017b55905a5a31cc1a023e6d5412"
 }

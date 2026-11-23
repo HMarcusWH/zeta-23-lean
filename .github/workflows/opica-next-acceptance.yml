@@ -135,6 +135,7 @@ jobs:
           path: |
             ${{ runner.temp }}/OPICA_SUCCESSOR_CANONICAL/
             ${{ runner.temp }}/OPICA_SCALAR_TYPE_CANDIDATE.json
+            ${{ runner.temp }}/OPICA_SCALAR_TYPE_CANDIDATE.compiler.log
             ${{ runner.temp }}/opica4-native/bootstrap/result.json
             ${{ runner.temp }}/opica4-source-before.json
           compression-level: 0

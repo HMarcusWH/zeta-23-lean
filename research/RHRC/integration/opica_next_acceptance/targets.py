@@ -90,7 +90,7 @@ def registry(repo):
     return d
 
 def selected(snapshot):
-    if SELECTION not in snapshot.environment:
+    if SELECTION not in getattr(snapshot,"environment",{}):
         return False
     repo=Path(snapshot.repo)
     require(snapshot.source_policy=="REVIEWED_FROZEN" and
@@ -259,8 +259,61 @@ def export_scalar_candidate(repo,output):
             "proof_acceptance":False,"RH":"OPEN","C1":"OPEN","Step4":"OPEN"}
     require(check(repo,require_clean=True)==admission,"scalar source changed during export")
     output.parent.mkdir(parents=True,exist_ok=True)
+    log=output.with_suffix(".compiler.log")
+    require(not log.exists(),"scalar compiler log already exists")
+    log.write_bytes(proc.stdout)
+    result["compiler_log_sha256"]=file_hash(log)
     output.write_bytes(canonical_bytes(result))
     return result
+
+def run_bounded_menu(plan,dispatch,verify):
+    """One attempt per reviewed action; distinguish execution from scientific results."""
+    ids=set(plan["proposals"])
+    batch=plan["candidates"]
+    require(type(batch["complete"]) is bool,"closed search completion flag required")
+    attempts=[];seen=set();accepted=0;incomplete=None
+    for i in range(len(ids)):
+        row=dispatch(i,1)
+        attempts.append(row)
+        if row.get("kind")=="STOP":
+            incomplete="EARLY_DISPATCH_STOP"
+            break
+        action=row["choice"]["action_id"]
+        require(action in ids and action not in seen,"repeated or unauthorized action")
+        seen.add(action)
+        status=row.get("status")
+        if status=="PROVED_CONDITIONAL":
+            result=verify(i,row)
+            if result.status!="PROVED_CONDITIONAL" or result.publication_eligible is not True:
+                incomplete="INDEPENDENT_VERIFICATION_NOT_ACCEPTED"
+                break
+            accepted+=1
+        elif status in {"ENVIRONMENT_ERROR","RESOURCE_EXHAUSTED"}:
+            incomplete=status
+            break
+        else:
+            require(status in {"TYPE_REJECTED_THIS_APPLICATION","UNRESOLVED","ADAPTER_REQUIRED"},
+                    "unexpected native attempt disposition")
+    if incomplete is None:
+        require(seen==ids,"bounded menu attempt coverage incomplete")
+        stop=dispatch(len(ids),0)
+        require(stop.get("kind")=="STOP","explicit zero-budget terminal stop required")
+        attempts.append(stop)
+    if incomplete is not None:
+        status="INCOMPLETE_EXECUTION"
+    elif not batch["complete"]:
+        status="INCOMPLETE_BOUNDED_RETRIEVAL"
+    elif accepted:
+        status="INDEPENDENT_CONDITIONAL_APPLICATIONS_RECORDED"
+    elif ids:
+        status="NO_KERNEL_ACCEPTED_APPLICATION_IN_ENUMERATED_MENU"
+    else:
+        status="NO_MATCH_IN_REVIEWED_GRAMMAR"
+    return {"status":status,"incomplete_reason":incomplete,
+            "candidate_count":len(ids),"attempted_action_ids":sorted(seen),
+            "bounded_menu_complete":batch["complete"],
+            "bounded_retrieval_disposition":batch["disposition"],
+            "attempts":attempts,"independent_verified_conditional_applications":accepted}
 
 def campaign(repo,output,target_id,reviewed_head,*,worker):
     """Explicitly selected exact-head governed lifecycle; no automatic theorem promotion."""
@@ -286,24 +339,19 @@ def campaign(repo,output,target_id,reviewed_head,*,worker):
     inv=service.inventory(repo,snap,output/"inventory",worker=worker)
     budget=SearchBudget(**(worker.budget or {}))
     plan=service.plan(repo,snap,output/"inventory/inventory.json",target_id,output/"plan",budget=budget)
-    journal=output/"journal.sqlite";attempts=[];accepted=0
-    candidates=len(plan["proposals"])
-    for i in range(candidates+1):
-        row=service.run_one(repo,snap,output/"plan",journal,output/("iteration-"+str(i)),worker=worker,budget=1)
-        attempts.append(row)
-        if row.get("kind")=="STOP":
-            break
-        if row.get("status")=="PROVED_CONDITIONAL":
-            service.verify(repo,snap,Path(row["receipt"]),output/("verified-"+str(i)),worker=worker)
-            accepted+=1
-        if row.get("status") in {"ENVIRONMENT_ERROR","RESOURCE_EXHAUSTED"}:
-            break
+    journal=output/"journal.sqlite"
+    def dispatch(index,credits):
+        return service.run_one(repo,snap,output/"plan",journal,
+                               output/("iteration-"+str(index)),worker=worker,budget=credits)
+    def verify(index,row):
+        result=service.verify(repo,snap,Path(row["receipt"]),output/("verified-"+str(index)),worker=worker)
+        (output/("independent-verification-"+str(index)+".json")).write_bytes(result.to_bytes())
+        return result
+    bounded=run_bounded_menu(plan,dispatch,verify)
     replay=service.replay(repo,journal,output/"replay")
     views=service.export(repo,journal,output/"views")
     result={"schema":"OPICA_NEXT_GOVERNED_CAMPAIGN_V1","source_head":reviewed_head,
-            "target":target_id,"candidate_count":candidates,
-            "attempts":attempts,"independent_verified_conditional_applications":accepted,
-            "replay":replay["status"],"export":views,
+            "target":target_id,**bounded,"replay":replay["status"],"export":views,
             "proof_acceptance":False,"RH":"OPEN","C1":"OPEN","Step4":"OPEN"}
     (output/"campaign.json").write_bytes(canonical_bytes(result))
     return result
@@ -323,7 +371,9 @@ def main():
         from ..opica_composition.cli import worker_from_environment
         require(a.target is not None and a.reviewed_head is not None,"explicit target/head required")
         r=campaign(REPO,a.output,a.target,a.reviewed_head,worker=worker_from_environment())
-    print(json.dumps({"schema":r["schema"],"RH":"OPEN","proof_acceptance":False}))
+    print(json.dumps({"schema":r["schema"],"status":r["status"],"RH":"OPEN","proof_acceptance":False}))
+    if r["status"].startswith("INCOMPLETE_"):
+        raise SystemExit(2)
 
 if __name__=="__main__":
     main()
