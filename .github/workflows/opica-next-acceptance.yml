@@ -8,7 +8,7 @@ on:
         description: Select a reviewed non-promoting execution
         required: true
         type: choice
-        options: [source, canonical, signed-targets]
+        options: [source, canonical, type-review, signed-targets, scalar-targets]
         default: source
       reviewed_head:
         description: Exact selected commit (required for heavy execution)
@@ -20,6 +20,10 @@ on:
         type: string
       round4_run:
         description: Exact successful full Round4 successor run ID (signed-targets only)
+        required: false
+        type: string
+      type_run:
+        description: Exact successful dual compiler type-review run ID (required for scalar/expanded targets)
         required: false
         type: string
 permissions:
