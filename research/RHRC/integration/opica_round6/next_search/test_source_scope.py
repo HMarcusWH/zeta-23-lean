@@ -48,6 +48,8 @@ class NextArithmeticSourceScopeTests(unittest.TestCase):
   def test_frozen_native_dag_has_full_compiler_schema(self):
     # Real historical original OPICA compiler exports, not a mocked string.
     record=json.loads((s.REPO/"research/RHRC/integration/opica_composition/SEARCH_CONTRACTS.json").read_text())
+    import sys
+    if str(s.REPO) not in sys.path: sys.path.insert(0,str(s.REPO))
     from research.RHRC.integration.opica_composition.inventory import expression_hash
     for row in record["targets"]:
       dag=row["expected_expression"]
