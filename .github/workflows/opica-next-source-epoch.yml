@@ -165,11 +165,23 @@ jobs:
           allowed=set(coverage["declared_generated_products"])
           allowed.add("research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl")
           paths=set(filter(None,subprocess.check_output(["git","diff","--name-only","HEAD"],text=True).splitlines()))
-          assert len(allowed)==78 and paths<=allowed,(len(allowed),sorted(paths-allowed))
+          untracked=set(filter(None,subprocess.check_output(
+              ["git","ls-files","--others","--exclude-standard"],text=True).splitlines()))
+          if len(allowed)!=78 or not paths<=allowed or untracked:
+              raise SystemExit("UNREVIEWED_CANONICAL_MUTATION: "+repr({
+                  "allowed_count":len(allowed),"outside_generated":sorted(paths-allowed),
+                  "untracked":sorted(untracked)}))
+          hashes={q:hashlib.sha256(Path(q).read_bytes()).hexdigest() for q in sorted(allowed)}
           p=Path(os.environ["RUNNER_TEMP"])/"OPICA_NEW_REVIEW_ONLY.patch"
-          receipt={"status":"REVIEW_ONLY_GENERATED_STATE","changed_paths":sorted(paths),
+          head=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
+          tree=subprocess.check_output(["git","rev-parse","HEAD^{tree}"],text=True).strip()
+          receipt={"schema":"OPICA_NEXT_EPOCH_CANONICAL_CANDIDATE_V2",
+                   "status":"REVIEW_ONLY_GENERATED_STATE",
+                   "source_head":head,"source_tree":tree,
+                   "generated_products":len(hashes),"generated_sha256":hashes,
+                   "changed_paths":sorted(paths),"changed_count":len(paths),
                    "patch_sha256":hashlib.sha256(p.read_bytes()).hexdigest(),
-                   "proof_acceptance":False,"RH":"OPEN","Step4":"OPEN"}
+                   "proof_acceptance":False,"C1":"OPEN","RH":"OPEN","Step4":"OPEN"}
           (Path(os.environ["RUNNER_TEMP"])/"OPICA_NEW_MATERIALIZER_RECEIPT.json").write_text(
             json.dumps(receipt,indent=2)+"\n")
           print(receipt)
