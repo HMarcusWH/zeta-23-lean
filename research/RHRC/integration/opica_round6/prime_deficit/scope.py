@@ -69,6 +69,12 @@ def validate_semantics(manifest, lean):
         need(name in lean, "canonical prime source/window changed: "+name)
 
 def assert_source():
+    # The original seven-file source gate remains exact on PR #308. A
+    # registered joint source epoch is checked by a separate strict successor.
+    successor=REPO/"research/RHRC/integration/opica_next_epoch/SOURCE_EPOCH.json"
+    if successor.is_file():
+        from research.RHRC.integration.opica_next_epoch.scope import check as check_epoch
+        return check_epoch()
     need(git("rev-parse",BASE+"^{tree}")==TREE,"base tree drift")
     need(subprocess.run(["git","-C",str(REPO),"merge-base","--is-ancestor",BASE,"HEAD"],
                         capture_output=True).returncode==0,"not child of base")
