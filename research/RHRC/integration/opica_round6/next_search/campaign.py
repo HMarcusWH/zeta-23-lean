@@ -70,7 +70,9 @@ def read_exports(data,load):
 def campaign(output:Path):
     require(not output.exists(),"Do not overwrite previous research result")
     s=scope.check()
-    require(s["status"]=="PASS_ADDITIVE_SOURCE_BYTES_ONLY","Original source scope not frozen")
+    require(s["status"] in {"PASS_ADDITIVE_SOURCE_BYTES_ONLY",
+                            "PASS_REVIEWED_COMBINED_EPOCH_V1"},
+            "Native source scope not independently qualified")
     types=source_json("SOURCE_CONTRACTS.json")
     require(types["status"]=="PENDING_FRESH_COMPILER_EXPORT"
             and types["handwritten_expected_type_sha256"] is None,
