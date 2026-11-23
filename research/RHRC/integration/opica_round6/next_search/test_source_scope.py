@@ -108,6 +108,35 @@ class NextArithmeticSourceScopeTests(unittest.TestCase):
     self.assertEqual(restored.statements[0]["type_sha256"],typed.type_sha256)
     campaign=(s.REPO/"research/RHRC/integration/opica_round6/next_search/campaign.py").read_text()
     self.assertIn("[record.to_dict() for record in typed]",campaign)
+  def test_seed_constants_do_not_count_as_new_proofs(self):
+    from campaign import classify_unverified_proposals
+    seed=lambda ident: {
+        "status":"PROPOSED_NOT_KERNEL_CHECKED",
+        "action_id":ident,
+        "term_plan":{"tag":"const","constant_id":ident},
+        "kernel_acceptance":False}
+    seeds=[seed("source-a"),seed("source-b")]
+    seen=classify_unverified_proposals(seeds)
+    self.assertEqual(seen["schema"],"OPICA_NEXT_SOURCE_CANDIDATE_COUNTS_V2")
+    self.assertEqual(seen["bare_approved_source_constant_seeds"],2)
+    self.assertEqual(seen["unverified_nontrivial_composition_plans"],0)
+    self.assertEqual(seen["kernel_accepted_target_proofs"],0)
+    self.assertEqual(seen["research_disposition"],"SEED_ONLY_NO_NEW_COMPOSITION")
+    nontrivial={**seed("plan-1"),
+                "term_plan":{"tag":"app","function":{"tag":"const",
+                              "constant_id":"source-a"},"arguments":[]}}
+    combined=classify_unverified_proposals(seeds+[nontrivial])
+    self.assertEqual(combined["unverified_nontrivial_composition_plans"],1)
+    self.assertEqual(combined["kernel_accepted_target_proofs"],0)
+    self.assertEqual(combined["research_disposition"],"UNVERIFIED_COMPOSITION_PLANS_PRESENT")
+    rejected={"status":"REJECTED_UNAPPROVED_CONSTANT",
+              "action_id":"forbidden","kernel_acceptance":False}
+    self.assertEqual(classify_unverified_proposals(seeds+[rejected])["rejected_before_kernel"],1)
+    with self.assertRaises(ValueError):
+      classify_unverified_proposals(seeds+[{**seed("forged"),"kernel_acceptance":True}])
+    with self.assertRaises(ValueError):
+      classify_unverified_proposals(seeds+[{"status":"PROVED","kernel_acceptance":False}])
+
   def test_static_source_scope(self):
     a=s.check()
     self.assertIn(a["status"],{"PASS_ADDITIVE_SOURCE_BYTES_ONLY",
