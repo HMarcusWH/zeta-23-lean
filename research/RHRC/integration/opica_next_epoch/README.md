@@ -9,7 +9,7 @@ Native baseline: bb7c8184a135b2823c6296917c5ac893bebf2a71, tree 2b19357e1b65cc50
 This branch combines the **18 exact original added source paths** from:
 
 - PR #307 head e2f8492e46cf8c3b3a220e2945838ddd20155a9c (signed rough-Möbius energy, finite conditional transfers, three OPEN subpower Prop targets and compiler-DAG retrieval).
-- PR #308 head c528426cf9a95e486aafbd7cd8e1e54831d87f49 (separate scalar large-prime deficit and finite nonnegativity theorem; subpower and complete G transfer OPEN).
+- PR #308 head d78224185055b85effb8b70a11731e23b21b19bb (separate scalar large-prime deficit and finite nonnegativity theorem; subpower and complete G transfer OPEN).
 
 SOURCE_EPOCH.json pins the original Git blob IDs, source branch commits, allowed 23 additions and two RHKG classification/disposition edits. Five reviewed integration transport/guard files may change from the PR-specific versions; the original Lean mathematics and other original source must remain byte-identical to their PR head blobs.
 
