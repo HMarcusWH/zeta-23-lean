@@ -156,7 +156,7 @@
     "research/RHRC/integration/opica_support_port/test_candidate.py": {
       "mode": "100644",
       "type": "blob",
-      "sha": "8f162139c1fb544b75473084861fde0c46dc6e8f"
+      "sha": "956b85a20fa5b862da3159c2a24fc43449e62b74"
     },
     "Zeta23/OPICASupport/ActualDensityEnergy/Composition.lean": {
       "mode": "100644",
@@ -279,7 +279,7 @@
       "sha": "abeaa3da4453f05ea2c1101a64a00cb83e306ba9"
     }
   },
-  "validator_template_oid": "aa96c08a786f238272fbdd08f7606f6cf97e1e2c",
+  "validator_template_oid": "237d6c9799f04fbb947252515dc8d0b4a99eef65",
   "proof_acceptance": false,
   "RH": "OPEN",
   "C1": "OPEN",

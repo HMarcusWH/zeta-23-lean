@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
 POLICY = "research/RHRC/integration/opica_support_port/SEALED_PORT.json"
 VALIDATOR = "research/RHRC/integration/opica_support_port/check_candidate.py"
-POLICY_BLOB = "1474131a34cc46efc1221dcf36e973cbee4e8253"
+POLICY_BLOB = "ddec7217bbf3a227fc631d50d4edde9295f3cf84"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 PREFIXES = rb"OPICAStep4|FourierBridge|FourierEnergy|SamplingDensity|ParityRational|DensityCompatibility|ActualDensityEnergy|NativeParityRational|NativeParityActual|CofinalAperture|NativeSliceInterpolation|ApertureSlack"
 PRIMITIVES = ("Quot", "Quot.mk", "Quot.lift", "Quot.ind", "propext", "Quot.sound",
@@ -79,15 +79,14 @@ def normalized_validator(raw):
 
 def axiom_reports(text, roots):
     found = {}
-    for line in text.splitlines():
-        m = re.fullmatch(r"'(.+)' depends on axioms: \[(.*)\]", line)
-        n = re.fullmatch(r"'(.+)' does not depend on any axioms", line)
-        if m or n:
-            name = (m or n).group(1)
-            need(name in roots and name not in found, "Unknown/duplicate named axiom report: " + name)
-            values = [] if n else [x.strip() for x in m.group(2).split(",") if x.strip()]
-            need(len(values) == len(set(values)) and set(values) <= ALLOWED, "Nonstandard axiom: " + name)
-            found[name] = sorted(values)
+    need(not re.search(r"\bsorryAx\b|(?:^|\n).*?\berror:", text), "Compiler error or sorryAx")
+    matches = list(re.finditer(r"(?m)^'([^'\n]+)' (?:depends on axioms:\s*\[([^\]]*)\]|does not depend on any axioms)[ \t]*(?=\n|$)", text))
+    for match in matches:
+        name, raw = match.groups()
+        need(name in roots and name not in found, "Unknown/duplicate named axiom report: " + name)
+        values = [] if raw is None else [x.strip() for x in raw.split(",") if x.strip()]
+        need(len(values) == len(set(values)) and set(values) <= ALLOWED, "Nonstandard axiom: " + name)
+        found[name] = sorted(values)
     need(set(found) == set(roots), "Missing exact named axiom reports")
     return found
 
@@ -191,8 +190,10 @@ def build(output, *, checker_work=None, checker_code=None):
         env = dict(os.environ)
         paths = run("lake", "env", "printenv", "LEAN_PATH")
         env["LEAN_PATH"] = str(output) + os.pathsep + paths
+        checker = Path(run("lake", "env", "lean", "--print-prefix")) / "bin" / "leanchecker"
+        need(checker.is_file(), "Pinned stock kernel checker unavailable")
         with (output/"stock_fresh.log").open("xb") as log:
-            cp = subprocess.run(["lake", "env", "leanchecker", "--fresh", "OPICASupportAudit"], cwd=ROOT, env=env,
+            cp = subprocess.run([str(checker), "--fresh", "--verbose", "OPICASupportAudit"], cwd=ROOT, env=env,
                                 stdout=log, stderr=subprocess.STDOUT, timeout=9000)
         need(cp.returncode == 0, "Fresh stock-kernel replay failed")
         receipt["stages"].append("FRESH_STOCK_KERNEL_REPLAY_PASS")

@@ -14,6 +14,7 @@ class Boundary(unittest.TestCase):
         b={"mode":"100644","type":"blob","sha":"b"*40}
         base={"native":a}; good={**base,"candidate":b,POLICY:a,VALIDATOR:b}
         verify_delta(base,good,{"candidate":b},a["sha"],b["sha"])
+        self.assertEqual(axiom_reports("'x' depends on axioms: [propext,\n  Classical.choice,\n  Quot.sound]\n", ["x"]), {"x":["Classical.choice","Quot.sound","propext"]})
         for bad in ({**good,"extra":b},{**good,"native":b},{k:v for k,v in good.items() if k!="native"},{**good,"candidate":a}):
             with self.assertRaises(Reject): verify_delta(base,bad,{"candidate":b},a["sha"],b["sha"])
 
