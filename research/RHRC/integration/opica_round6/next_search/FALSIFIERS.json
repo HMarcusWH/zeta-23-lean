@@ -1,0 +1,47 @@
+{
+  "schema": "OPICA_NEXT_SEARCH_FALSIFIERS_V1",
+  "status": "TEST_REQUIREMENTS_UNEXECUTED",
+  "tests": [
+    {
+      "id": "COMPLETE_SHELL",
+      "required": "Preserve wholeCoarseKeys and completeShell, not clipped finite samples"
+    },
+    {
+      "id": "SPENT_PARTNERS",
+      "required": "Removal.all includes targets and spentPartners; never waive the latter"
+    },
+    {
+      "id": "FIXED_POLARITY",
+      "required": "Select sign before all epsilon and horizon quantifiers"
+    },
+    {
+      "id": "PHYSICAL_WEIGHTS",
+      "required": "Use native weight/roughCutoff/rawLabels, not an unweighted surrogate"
+    },
+    {
+      "id": "MISSING_CORRECTION",
+      "required": "Previously a removed positive-probe correction changed exact control 7 to 2095"
+    },
+    {
+      "id": "PRIME_BIAS",
+      "required": "Previously unsigned source incurred large positive prime bias"
+    },
+    {
+      "id": "NEAR_ROOT",
+      "required": "Absolute near-root family fails the stated small-epsilon exponent budget"
+    },
+    {
+      "id": "NONUNITARY_GRAM",
+      "required": "Do not replace physical D*D norm by Euclidean identity"
+    },
+    {
+      "id": "CIRCULARITY",
+      "required": "Forbid RH, RH->C1, RH equivalences, renamed RH-strength premises"
+    },
+    {
+      "id": "ZERO_CANDIDATES",
+      "required": "No match in bounded grammar does not imply unprovability"
+    }
+  ],
+  "scope": "Each control must retain all premises of any claimed source countermodel; no theorem authority."
+}

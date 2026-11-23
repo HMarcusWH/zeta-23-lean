@@ -1,0 +1,118 @@
+name: OPICA next arithmetic source/typed-target validation
+on:
+  push:
+    branches: [research/opica-next-arithmetic-search-20261123]
+    paths:
+      - .github/workflows/opica-next-arithmetic.yml
+      - Zeta23/OPICARound6/NextSearch/**
+      - research/RHRC/integration/opica_round6/next_search/**
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: opica-next-arithmetic-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Validate additive mathematical epoch against frozen Round6 baseline
+        run: |
+          set -euo pipefail
+          export PYTHONDONTWRITEBYTECODE=1
+          python3 research/RHRC/integration/opica_round6/next_search/source_scope.py \
+            --output "$RUNNER_TEMP/OPICA_NEXT_SOURCE_SCOPE.json"
+          (cd research/RHRC/integration/opica_round6/next_search &&
+            python3 -B -m unittest -v test_source_scope)
+          (cd research/RHRC/integration/opica_round6/next_search &&
+            python3 -O -B -m unittest -v test_source_scope)
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-next-source-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/OPICA_NEXT_SOURCE_SCOPE.json
+          retention-days: 90
+          if-no-files-found: warn
+  compiler:
+    needs: source
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Install pinned native Lean, do not mix external supplier objects
+        uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: .
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile the exact new mathematical module and exporter
+        id: module
+        run: |
+          set -euo pipefail
+          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.33.0-rc2"
+          python3 research/RHRC/integration/opica_round6/next_search/source_scope.py \
+            --output "$RUNNER_TEMP/OPICA_NEXT_SOURCE_SCOPE_COMPILER.json"
+          lake build Zeta23.OPICARound6.NextSearch.SourceEnergies
+          lake build Zeta23.RHRC.OpicaComposition.Export
+          lake build Zeta23.RHRC.OpicaRound3AtlasExport
+          lake env lean Zeta23/OPICARound6/NextSearch/Verify.lean \
+            >"$RUNNER_TEMP/OPICA_NEXT_LEAN_AXIOM_AUDIT.log" 2>&1
+          cat "$RUNNER_TEMP/OPICA_NEXT_LEAN_AXIOM_AUDIT.log"
+          ! grep -E 'sorryAx|unsound|declaration uses axiom' "$RUNNER_TEMP/OPICA_NEXT_LEAN_AXIOM_AUDIT.log"
+      - name: Run original OPICA native compiler expression-DAG exporter
+        id: types
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$PWD"
+          python3 -B research/RHRC/integration/opica_round6/next_search/typed_export.py \
+            --output "$RUNNER_TEMP/OPICA_NEXT_TYPED_TARGETS.json"
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          record=json.loads((Path(os.environ["RUNNER_TEMP"])/"OPICA_NEXT_TYPED_TARGETS.json").read_text())
+          assert record["status"]=="COMPILER_TYPE_EXPORT_NOT_THEOREM_PROOF"
+          assert record["target_count"]==3 and record["conditional_consumer_count"]==2
+          assert len(record["entries"])==5
+          assert record["proof_acceptance"] is False
+          print("COMPILED_TYPE_DAGS_ONLY; RH OPEN")
+          PY
+      - name: Run actual original OPICA typed-DAG backward source search
+        id: search
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$PWD"
+          python3 -B research/RHRC/integration/opica_round6/next_search/campaign.py \
+            --output "$RUNNER_TEMP/OPICA_NEXT_TYPED_SOURCE_SEARCH.json"
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          d=json.loads((Path(os.environ["RUNNER_TEMP"])/"OPICA_NEXT_TYPED_SOURCE_SEARCH.json").read_text())
+          assert len(d["targets"])==3 and d["RH"]=="OPEN" and d["Step4"]=="OPEN"
+          assert d["formal_kernel_proof"]=="NOT_ESTABLISHED_BY_THIS_SEARCH"
+          assert d["proof_acceptance"] is False
+          print("SOURCE_BOUND_OPICA_RETRIEVAL_NOT_A_PROOF")
+          PY
+      - name: Preserve exact native compiler evidence and incomplete diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: opica-next-typed-native-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/OPICA_NEXT_SOURCE_SCOPE_COMPILER.json
+            ${{ runner.temp }}/OPICA_NEXT_LEAN_AXIOM_AUDIT.log
+            ${{ runner.temp }}/OPICA_NEXT_TYPED_TARGETS.json
+            ${{ runner.temp }}/OPICA_NEXT_TYPED_SOURCE_SEARCH.json
+          retention-days: 90
+          if-no-files-found: warn
