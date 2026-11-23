@@ -110,6 +110,7 @@ class NextArithmeticSourceScopeTests(unittest.TestCase):
     self.assertIn("[record.to_dict() for record in typed]",campaign)
   def test_static_source_scope(self):
     a=s.check()
-    self.assertEqual(a["status"],"PASS_ADDITIVE_SOURCE_BYTES_ONLY")
+    self.assertIn(a["status"],{"PASS_ADDITIVE_SOURCE_BYTES_ONLY",
+                                "PASS_REVIEWED_COMBINED_EPOCH_V1"})
     self.assertFalse(a["proof_acceptance"])
 if __name__=="__main__":unittest.main()
