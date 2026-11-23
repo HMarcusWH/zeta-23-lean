@@ -71,7 +71,7 @@ class SourceProofAdmissionTests(unittest.TestCase):
         native=s.round6.tree
         def edit_lean(repo,ref):
             out=native(repo,ref)
-            if ref=="HEAD":
+            if ref!=s.BASE:
                 out=dict(out)
                 p="Zeta23/OPICARound6/NextSearch/SourceEnergies.lean"
                 out[p]=(out[p][0],out[p][1],"0"*40)
@@ -81,7 +81,7 @@ class SourceProofAdmissionTests(unittest.TestCase):
                 s.check()
         def unreviewed(repo,ref):
             out=native(repo,ref)
-            if ref=="HEAD":
+            if ref!=s.BASE:
                 out=dict(out);out["NEW_PROOF.lean"]=("100644","blob","0"*40)
             return out
         with patch.object(s.round6,"tree",side_effect=unreviewed):
@@ -90,7 +90,7 @@ class SourceProofAdmissionTests(unittest.TestCase):
         p=next(iter(sorted(s.FROZEN)))
         def rewrite_history(repo,ref):
             out=native(repo,ref)
-            if ref=="HEAD":
+            if ref!=s.BASE:
                 out=dict(out);out[p]=(out[p][0],out[p][1],"0"*40)
             return out
         with patch.object(s.round6,"tree",side_effect=rewrite_history):
