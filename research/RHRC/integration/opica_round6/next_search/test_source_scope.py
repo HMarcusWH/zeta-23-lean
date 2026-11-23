@@ -61,6 +61,53 @@ class NextArithmeticSourceScopeTests(unittest.TestCase):
     self.assertIn("lake build Zeta23.RHRC.OpicaRound3AtlasExport",workflow)
     self.assertIn("lake build Zeta23.RHRC.OpicaComposition.Export",workflow)
     self.assertIn("Run actual original OPICA typed-DAG backward source search",workflow)
+  def test_compiler_dag_statement_inventory_native_json_roundtrip(self):
+    # Exercise the exact validation boundary from the search job that failed
+    # at head 853a808e. Use a *real frozen native Lean expression DAG* rather
+    # than a handwritten fake type hash. No proof claim is made by this test.
+    import sys
+    if str(s.REPO) not in sys.path: sys.path.insert(0,str(s.REPO))
+    from research.RHRC.integration.opica_composition.canonical import ContractError
+    from research.RHRC.integration.opica_composition.contracts import (
+        StatementContract, StatementInventory)
+    from research.RHRC.integration.opica_composition.inventory import expression_hash
+
+    archive=json.loads((s.REPO/"research/RHRC/integration/opica_composition/SEARCH_CONTRACTS.json").read_text())
+    prior=archive["statements"][0]
+    dag=prior["type_expression"]
+    binders=[]
+    cursor=int(dag["root"])
+    while True:
+      node=dag["nodes"][cursor]
+      if node[0]=="mdata":
+        cursor=int(node[2])
+        continue
+      if node[0]!="forall": break
+      info=node[2]
+      binders.append({"position":len(binders),"name":"frozenCompilerBinder",
+                      "binder_info":info,"domain_text":"frozen compiler domain",
+                      "domain_is_prop":False,
+                      "typeclass_binder":info=="instImplicit",
+                      "class_name":None})
+      cursor=int(node[4])
+    typed=StatementContract(
+        declaration=prior["declaration"],module=prior["module"],
+        type_expression=dag,type_sha256=expression_hash(dag),
+        universe_parameters=[],outer_telescope=binders,
+        conclusion_text="frozen native DAG codec fixture",
+        type_constants=[],value_constants=[],axioms=[])
+    generation="0"*64
+    export_hash="1"*64
+    # The old bug was feeding dataclass instances straight into this codec.
+    with self.assertRaises(ContractError):
+      StatementInventory(generation,[typed],export_hash)
+    sealed=StatementInventory(generation,[typed.to_dict()],export_hash)
+    restored=StatementInventory.from_bytes(sealed.to_bytes())
+    self.assertEqual(restored.to_bytes(),sealed.to_bytes())
+    self.assertEqual(restored.digest,sealed.digest)
+    self.assertEqual(restored.statements[0]["type_sha256"],typed.type_sha256)
+    campaign=(s.REPO/"research/RHRC/integration/opica_round6/next_search/campaign.py").read_text()
+    self.assertIn("[record.to_dict() for record in typed]",campaign)
   def test_static_source_scope(self):
     a=s.check()
     self.assertEqual(a["status"],"PASS_ADDITIVE_SOURCE_BYTES_ONLY")
