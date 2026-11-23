@@ -66,6 +66,7 @@ jobs:
             --output "$RUNNER_TEMP/OPICA_NEXT_SOURCE_SCOPE_COMPILER.json"
           lake build Zeta23.OPICARound6.NextSearch.SourceEnergies
           lake build Zeta23.RHRC.OpicaComposition.Export
+          lake build Zeta23.RHRC.OpicaRound3AtlasExport
           lake env lean Zeta23/OPICARound6/NextSearch/Verify.lean \
             >"$RUNNER_TEMP/OPICA_NEXT_LEAN_AXIOM_AUDIT.log" 2>&1
           cat "$RUNNER_TEMP/OPICA_NEXT_LEAN_AXIOM_AUDIT.log"

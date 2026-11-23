@@ -56,6 +56,11 @@ class NextArithmeticSourceScopeTests(unittest.TestCase):
       self.assertEqual(set(dag),{"format","root","nodes"})
       self.assertEqual(dag["format"],"LEAN_EXPR_DAG_V1")
       self.assertEqual(len(expression_hash(dag)),64)
+  def test_actual_atlas_exporter_is_in_compiler_dependency_set(self):
+    workflow=(s.REPO/".github/workflows/opica-next-arithmetic.yml").read_text()
+    self.assertIn("lake build Zeta23.RHRC.OpicaRound3AtlasExport",workflow)
+    self.assertIn("lake build Zeta23.RHRC.OpicaComposition.Export",workflow)
+    self.assertIn("Run actual original OPICA typed-DAG backward source search",workflow)
   def test_static_source_scope(self):
     a=s.check()
     self.assertEqual(a["status"],"PASS_ADDITIVE_SOURCE_BYTES_ONLY")
