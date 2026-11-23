@@ -63,6 +63,27 @@ ORIGINAL_SOURCE_HEADS = {
     "PR307": "e2f8492e46cf8c3b3a220e2945838ddd20155a9c",
     "PR308": "c528426cf9a95e486aafbd7cd8e1e54831d87f49",
 }
+ORIGINAL_BLOBS = {
+    ".github/workflows/opica-next-arithmetic.yml": "b4524f8a69b07315f865ed9302b2f09e62ed6124",
+    ".github/workflows/opica-prime-deficit.yml": "c2e1ea2fdbd096062435ec5803079073e2cabb95",
+    "research/RHRC/integration/opica_round6/next_search/campaign.py": "64f39c3b5134e1b80d016f87b434fde12d1c7b5c",
+    "research/RHRC/integration/opica_round6/next_search/FALSIFIERS.json": "564f0e6eec557fe4de772eb67e18b1158730b894",
+    "research/RHRC/integration/opica_round6/next_search/README.md": "fd79e7ff115888a553e596237f317464b2094932",
+    "research/RHRC/integration/opica_round6/next_search/SOURCE_CONTRACTS.json": "90459baf84d287cd9933696f9c1153c0aee22f8e",
+    "research/RHRC/integration/opica_round6/next_search/source_scope.py": "de1f01761ba0df4b2a0f6f7003bd4f6a60c606ae",
+    "research/RHRC/integration/opica_round6/next_search/TARGETS.json": "3db4447712187dd3d7ad28103eecabbf53721c36",
+    "research/RHRC/integration/opica_round6/next_search/test_source_scope.py": "c44fcb8e8e042d928bff1d8faba5f616c9d61575",
+    "research/RHRC/integration/opica_round6/next_search/typed_export.py": "c6d4eac784ed53a91dfcaa4d239e4fe22935c631",
+    "research/RHRC/integration/opica_round6/prime_deficit/README.md": "06d36b100f19c006cddd3baacbcc049e24e8b15c",
+    "research/RHRC/integration/opica_round6/prime_deficit/scope.py": "0651e828c1fb029d2f1c34915dab9ed4f8595bf7",
+    "research/RHRC/integration/opica_round6/prime_deficit/SOURCE_CONTRACT.json": "0e6aea600c9f4fe49bd67b96f3187392b8697a0c",
+    "research/RHRC/integration/opica_round6/prime_deficit/test_scope.py": "1fe02700e6209a69fc06912dd0a2ff771bbccc56",
+    "Zeta23/OPICARound6/NextSearch/SourceEnergies.lean": "f5024bf53e1472d9229369ad2821993a7ef1ab8a",
+    "Zeta23/OPICARound6/NextSearch/Verify.lean": "a185918eba7ef9274013d2f7423f277e0ec2d00f",
+    "Zeta23/OPICARound6/PrimeDeficit/Source.lean": "9b231cba5c67ad6b4e1a59e4c39a4ecf6191f5fa",
+    "Zeta23/OPICARound6/PrimeDeficit/Verify.lean": "46fe5ccea089883c2ded6c80d24851ffca6f69b9"
+}
+
 EXPECTED_ROLES = {
     "Zeta23.OPICARound6.NextSearch.SourceEnergies": "OPICA6_SIGNED_SOURCE_CONDITIONAL",
     "Zeta23.OPICARound6.NextSearch.Verify": "OPICA6_SIGNED_SOURCE_AUDIT",
@@ -126,6 +147,7 @@ def contract(policy):
     need(policy["required_standalone_module_roles"] == EXPECTED_ROLES,
          "source-module dispositions differ")
     original = policy["source_pr_original_blob_oids"]
+    need(original == ORIGINAL_BLOBS, "approved original source blobs differ")
     need(type(original) is dict and set(original) == set(ORIGINAL_PATHS),
          "original 18 exact source blobs missing or extra")
     need(all(type(v) is str and re.fullmatch(r"[0-9a-f]{40}",v) for v in original.values()),
