@@ -45,6 +45,15 @@ class NextArithmeticSourceScopeTests(unittest.TestCase):
     self.assertIn('set(expression) != {"format","root","nodes"}',code)
     self.assertIn('expression_hash(expression)',code)
     self.assertNotIn('isinstance(expression,str)',code)
+  def test_frozen_native_dag_has_full_compiler_schema(self):
+    # Real historical original OPICA compiler exports, not a mocked string.
+    record=json.loads((s.REPO/"research/RHRC/integration/opica_composition/SEARCH_CONTRACTS.json").read_text())
+    from research.RHRC.integration.opica_composition.inventory import expression_hash
+    for row in record["targets"]:
+      dag=row["expected_expression"]
+      self.assertEqual(set(dag),{"format","root","nodes"})
+      self.assertEqual(dag["format"],"LEAN_EXPR_DAG_V1")
+      self.assertEqual(len(expression_hash(dag)),64)
   def test_static_source_scope(self):
     a=s.check()
     self.assertEqual(a["status"],"PASS_ADDITIVE_SOURCE_BYTES_ONLY")
