@@ -42,7 +42,7 @@ class NextArithmeticSourceScopeTests(unittest.TestCase):
     # plain string; malformed objects fail the existing expression validator.
     code=(s.REPO/"research/RHRC/integration/opica_round6/next_search/typed_export.py").read_text()
     self.assertIn('type(expression) is not dict',code)
-    self.assertIn('set(expression) != {"root","nodes"}',code)
+    self.assertIn('set(expression) != {"format","root","nodes"}',code)
     self.assertIn('expression_hash(expression)',code)
     self.assertNotIn('isinstance(expression,str)',code)
   def test_static_source_scope(self):

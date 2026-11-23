@@ -52,7 +52,7 @@ def export(output:Path):
             # The original OPICA exporter writes a JSON object representing
             # the complete expression DAG, NOT an encoded JSON string.
             expression=json.loads(body)
-            if type(expression) is not dict or set(expression) != {"root","nodes"}:
+            if type(expression) is not dict or set(expression) != {"format","root","nodes"} or expression["format"] != "LEAN_EXPR_DAG_V1":
                 raise ValueError("Lean exporter did not return a closed expression DAG object")
             h=expression_hash(expression)  # validates graph shape + canonical codec
             entries.append({"name":name,"kind":kind,"compiler_expression":expression,
