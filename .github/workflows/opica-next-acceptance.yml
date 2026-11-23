@@ -30,7 +30,7 @@ jobs:
           record_outcome() {
             result=$?
             trap - EXIT
-            printf '{"schema":"OPICA_NEXT_ADMISSION_JOB_OUTCOME_V1","checked_head":"%s","failed_or_completed_stage":"%s","exit_code":%s,"proof_acceptance":false,"RH":"OPEN","C1":"OPEN","Step4":"OPEN"}\\n' \
+            printf '{"schema":"OPICA_NEXT_ADMISSION_JOB_OUTCOME_V1","checked_head":"%s","failed_or_completed_stage":"%s","exit_code":%s,"proof_acceptance":false,"RH":"OPEN","C1":"OPEN","Step4":"OPEN"}\n' \
               "$GITHUB_SHA" "$CURRENT_STAGE" "$result" >"$RUNNER_TEMP/OPICA_NEXT_JOB_OUTCOME.json"
             exit "$result"
           }
