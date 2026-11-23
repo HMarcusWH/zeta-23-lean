@@ -61,7 +61,7 @@ INTEGRATION_OVERRIDES = frozenset({
 })
 ORIGINAL_SOURCE_HEADS = {
     "PR307": "e2f8492e46cf8c3b3a220e2945838ddd20155a9c",
-    "PR308": "c528426cf9a95e486aafbd7cd8e1e54831d87f49",
+    "PR308": "d78224185055b85effb8b70a11731e23b21b19bb",
 }
 ORIGINAL_BLOBS = {
     ".github/workflows/opica-next-arithmetic.yml": "b4524f8a69b07315f865ed9302b2f09e62ed6124",
@@ -77,7 +77,7 @@ ORIGINAL_BLOBS = {
     "research/RHRC/integration/opica_round6/prime_deficit/README.md": "06d36b100f19c006cddd3baacbcc049e24e8b15c",
     "research/RHRC/integration/opica_round6/prime_deficit/scope.py": "0651e828c1fb029d2f1c34915dab9ed4f8595bf7",
     "research/RHRC/integration/opica_round6/prime_deficit/SOURCE_CONTRACT.json": "0e6aea600c9f4fe49bd67b96f3187392b8697a0c",
-    "research/RHRC/integration/opica_round6/prime_deficit/test_scope.py": "1fe02700e6209a69fc06912dd0a2ff771bbccc56",
+    "research/RHRC/integration/opica_round6/prime_deficit/test_scope.py": "dfede1cd1c1238b01ab3a3bed6fb6ca5f2f24b17",
     "Zeta23/OPICARound6/NextSearch/SourceEnergies.lean": "f5024bf53e1472d9229369ad2821993a7ef1ab8a",
     "Zeta23/OPICARound6/NextSearch/Verify.lean": "a185918eba7ef9274013d2f7423f277e0ec2d00f",
     "Zeta23/OPICARound6/PrimeDeficit/Source.lean": "9b231cba5c67ad6b4e1a59e4c39a4ecf6191f5fa",
