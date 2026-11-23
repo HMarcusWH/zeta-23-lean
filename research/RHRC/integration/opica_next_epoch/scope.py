@@ -223,9 +223,31 @@ def main():
     ap.add_argument("--output",type=Path,required=True)
     args=ap.parse_args()
     need(not args.output.exists(),"do not overwrite source receipt")
-    result=check()
-    args.output.parent.mkdir(parents=True,exist_ok=True)
-    args.output.write_text(json.dumps(result,indent=2)+"\n")
-    print(json.dumps({k:result[k] for k in ("status","head","proof_acceptance","RH")}))
+    try:
+        result=check()
+    except Exception as exc:
+        # Failure evidence is written BEFORE preserving the failing exit.
+        # A missing producer receipt must never masquerade as acceptance.
+        try:
+            checked_head=git("rev-parse","HEAD")
+        except Exception:
+            checked_head="UNRESOLVED"
+        result={
+            "schema":"OPICA_NEXT_SOURCE_EPOCH_FAILURE_V1",
+            "status":("SOURCE_POLICY_REJECTED" if isinstance(exc,ScopeError)
+                      else "SOURCE_INSPECTION_ERROR"),
+            "checked_head":checked_head,
+            "exception_type":type(exc).__name__,
+            "exception_message":str(exc)[:1200],
+            "proof_acceptance":False,"RH":"OPEN","C1":"OPEN","Step4":"OPEN",
+        }
+        args.output.parent.mkdir(parents=True,exist_ok=True)
+        args.output.write_text(json.dumps(result,indent=2)+"\\n")
+        print(json.dumps(result),flush=True)
+        raise
+    else:
+        args.output.parent.mkdir(parents=True,exist_ok=True)
+        args.output.write_text(json.dumps(result,indent=2)+"\\n")
+        print(json.dumps({k:result[k] for k in ("status","head","proof_acceptance","RH")}))
 if __name__=="__main__":
     main()
