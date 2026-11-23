@@ -89,9 +89,10 @@ def check(repo=REPO, *, require_clean=False):
     need(subprocess.run(["git","-C",str(repo),"merge-base","--is-ancestor",BASE,"HEAD"],
                         capture_output=True).returncode==0,
          "not an exact descendant of reviewed PR311 source")
-    current=round6.tree(repo,"HEAD")
+    head=git(repo,"rev-parse","HEAD")
+    current=round6.tree(repo,head)
     parent=round6.tree(repo,BASE)
-    need(git(repo,"rev-parse","HEAD")!=BASE, "successor source must have distinct commit")
+    need(head!=BASE, "successor source must have distinct commit")
     need(POLICY in current,"successor policy missing from Git tree")
     raw=(repo/POLICY).read_bytes()
     need(git(repo,"hash-object",POLICY)==current[POLICY][2],
@@ -135,7 +136,7 @@ def check(repo=REPO, *, require_clean=False):
         need(not (name.startswith(("Zeta23/","research/",".github/","docs/examples/"))
                   and name.endswith((".lean",".lean.in",".py",".yml",".yaml"))),
              "ignored executable/source provider: "+name)
-    need(git(repo,"rev-parse","HEAD")==git(repo,"rev-parse","HEAD"),
+    need(head==git(repo,"rev-parse","HEAD"),
          "source head changed while checking")
     return {
         "schema":"OPICA_NEXT_SOURCE_ACCEPTANCE_ADMISSION_V1",
