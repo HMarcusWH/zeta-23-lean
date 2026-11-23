@@ -54,7 +54,7 @@ def validate_semantics(manifest, lean):
          manifest.get("RH")=="OPEN" and manifest.get("Step4")=="OPEN",
          "forbidden proof or Step4 promotion")
     need(type(lean) is str and bool(lean), "Lean source text required")
-    need(not re.search(r"(?m)^\\s*(axiom|sorry|unsafe\\s+theorem|partial\\s+theorem)\\b",lean),
+    need(not re.search(r"(?m)^\s*(axiom|sorry|unsafe\s+theorem|partial\s+theorem)\b",lean),
          "source inserted axiom/placeholder")
     need("_root_.riemannHypothesis" not in lean and
          "cofinal_moment_slice_bounds_of_riemannHypothesis" not in lean,
@@ -72,7 +72,7 @@ def assert_source():
     need(git("rev-parse",BASE+"^{tree}")==TREE,"base tree drift")
     need(subprocess.run(["git","-C",str(REPO),"merge-base","--is-ancestor",BASE,"HEAD"],
                         capture_output=True).returncode==0,"not child of base")
-    rows=[x.split("\\t",1) for x in git("diff","--name-status",BASE,"HEAD").splitlines()]
+    rows=[x.split("\t",1) for x in git("diff","--name-status",BASE,"HEAD").splitlines()]
     need(all(len(x)==2 and x[0]=="A" for x in rows),
          "original sources modified/deleted")
     need(sorted(x[1] for x in rows)==list(ADDITIONS),"new source scope differs")
@@ -81,6 +81,8 @@ def assert_source():
     for path in FROZEN:
         need(git("rev-parse","HEAD:"+path)==git("rev-parse",BASE+":"+path),
              "frozen path changed: "+path)
+    need((REPO/"lean-toolchain").read_text().strip()=="leanprover/lean4:v4.33.0-rc2",
+         "native compiler toolchain differs")
     manifest=json.loads((REPO/"research/RHRC/integration/opica_round6/prime_deficit/SOURCE_CONTRACT.json").read_text())
     lean=(REPO/"Zeta23/OPICARound6/PrimeDeficit/Source.lean").read_text()
     validate_semantics(manifest,lean)
