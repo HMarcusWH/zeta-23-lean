@@ -2,7 +2,7 @@ name: Documentation source scope and reader examples
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, research/opica-next-source-epoch-v1-20261123]
   workflow_dispatch:
 
 permissions:

@@ -234,6 +234,20 @@ class SourceProofAdmissionTests(unittest.TestCase):
             if mutate=="duplicate": bad["jobs"]*=2;bad["total_count"]=2
             with self.assertRaises(ContractError): t._verify_run(run,bad,**kw)
 
+    def test_historical_workflows_select_stacked_successor(self):
+        root=s.REPO
+        for name,count in (("rhrc_opica.yml",4),("rhrc_opica_followup.yml",7),
+                           ("rhrc_opica_round2.yml",8),("rhrc_opica_round3.yml",5),
+                           ("rhrc.yml",1)):
+            body=(root/".github/workflows"/name).read_text()
+            self.assertIn("research/opica-next-source-epoch-v1-20261123",body)
+            self.assertEqual(body.count("python -B -m research.RHRC.integration.opica_next_acceptance.gate --output"),count)
+            self.assertEqual(body.count("python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output"),count)
+            self.assertEqual(body.count("# R4_PARENT_SCOPE_V1"),count)
+        for name in ("documentation.yml","rhrc_opica_round6.yml"):
+            self.assertIn("research/opica-next-source-epoch-v1-20261123",
+                          (root/".github/workflows"/name).read_text())
+
     def test_historical_source_validator_fails_closed(self):
         # Earlier frozen source epoch is NOT enlarged retroactively.
         with self.assertRaises(ContractError):

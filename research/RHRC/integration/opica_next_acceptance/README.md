@@ -13,3 +13,7 @@ Source/CI acceptance, mathematical lemmas, typed plans, attempted proofs and ind
 ### Required authenticated prerequisite receipts
 
 The signed-target campaign now requires explicit parent and Round4 run IDs. Its production service authenticates exact successful Actions attempts, the separate parent source receipt, all eleven producers and three independent groups, and the small exact-head aggregate receipt. It refuses missing, stale or incomplete receipts, including at direct service freeze and subsequent snapshot consumers. The signed-target workflow is manual-only after reviewed canonical regeneration and full Round4 execution; no caller-authored PASS JSON establishes qualification. This is infrastructure qualification only; RH, C1 and Step4 stay OPEN.
+
+### Historical regression routing (successor only)
+
+The successful PR311 source qualification at `4f81c784d3b330395507f6dcd1c8b0010b3835cc` remains frozen; its old PR history is not relabelled. Round2, Round3, original paper, follow-up, RHRC diagnostics, documentation and Round6 workflows now select the stacked PR base as well as main. Every historical selector admits the sealed successor through the source-only gate before the original exact historical checkout/projection. The original validator remains mandatory on historical sources. Admission failure preserves a non-promoting diagnostic; missing source-freeze evidence explicitly fails rather than masquerading as a replay. Full original lanes still require new canonical state and independent replay, and no source receipt establishes RH/C1/Step4.
