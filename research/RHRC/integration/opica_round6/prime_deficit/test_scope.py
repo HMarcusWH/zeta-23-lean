@@ -50,24 +50,27 @@ class SourceContractTests(unittest.TestCase):
 
   def test_adversarial_git_source_and_parent_scope(self):
     from unittest.mock import patch
-    original=scope.git
+    target=scope
+    if (scope.REPO/"research/RHRC/integration/opica_next_epoch/SOURCE_EPOCH.json").is_file():
+      from research.RHRC.integration.opica_next_epoch import scope as target
+    original=target.git
     def changed_parent(*a):
       if a==("rev-parse",scope.BASE+"^{tree}"): return "0"*40
       return original(*a)
-    with patch.object(scope,"git",side_effect=changed_parent):
+    with patch.object(target,"git",side_effect=changed_parent):
       with self.assertRaises(scope.ScopeError):
         scope.assert_source()
     def extra_path(*a):
       if a==("diff","--name-status",scope.BASE,"HEAD"):
         return original(*a)+"\\nA\\tUNREVIEWED.txt"
       return original(*a)
-    with patch.object(scope,"git",side_effect=extra_path):
+    with patch.object(target,"git",side_effect=extra_path):
       with self.assertRaises(scope.ScopeError):
         scope.assert_source()
     def toolchain_drift(*a):
       if a==("rev-parse","HEAD:lean-toolchain"): return "0"*40
       return original(*a)
-    with patch.object(scope,"git",side_effect=toolchain_drift):
+    with patch.object(target,"git",side_effect=toolchain_drift):
       with self.assertRaises(scope.ScopeError):
         scope.assert_source()
   def test_clean_additive_scope(self):
