@@ -49,10 +49,12 @@ def export(output:Path):
         from research.RHRC.integration.opica_composition.inventory import expression_hash
         entries=[]
         for (name,kind),body in zip(names,payloads):
+            # The original OPICA exporter writes a JSON object representing
+            # the complete expression DAG, NOT an encoded JSON string.
             expression=json.loads(body)
-            if not isinstance(expression,str):
-                raise ValueError("Lean DAG output is not a canonical string")
-            h=expression_hash(expression)
+            if type(expression) is not dict or set(expression) != {"root","nodes"}:
+                raise ValueError("Lean exporter did not return a closed expression DAG object")
+            h=expression_hash(expression)  # validates graph shape + canonical codec
             entries.append({"name":name,"kind":kind,"compiler_expression":expression,
                             "type_sha256":h})
         result={

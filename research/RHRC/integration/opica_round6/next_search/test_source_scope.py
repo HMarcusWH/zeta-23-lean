@@ -36,6 +36,15 @@ class NextArithmeticSourceScopeTests(unittest.TestCase):
     self.assertEqual(code.count("0 < ε → ∃ C : ℝ, 0 ≤ C ∧ ∀ X₀ : ℕ"),2)
     self.assertIn("max X₀ 64 ≤ X",code)
     self.assertIn("C * (X : ℝ)^ε",code)
+  def test_compiler_expression_dag_is_object_not_string(self):
+    # Lean's Export.exportTarget emits OPICA_TARGET followed by compact JSON
+    # with root/nodes. The original structured DAG cannot be treated as a
+    # plain string; malformed objects fail the existing expression validator.
+    code=(s.REPO/"research/RHRC/integration/opica_round6/next_search/typed_export.py").read_text()
+    self.assertIn('type(expression) is not dict',code)
+    self.assertIn('set(expression) != {"root","nodes"}',code)
+    self.assertIn('expression_hash(expression)',code)
+    self.assertNotIn('isinstance(expression,str)',code)
   def test_static_source_scope(self):
     a=s.check()
     self.assertEqual(a["status"],"PASS_ADDITIVE_SOURCE_BYTES_ONLY")
