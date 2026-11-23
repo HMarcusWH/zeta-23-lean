@@ -58,20 +58,20 @@ class SourceContractTests(unittest.TestCase):
       if a==("rev-parse",scope.BASE+"^{tree}"): return "0"*40
       return original(*a)
     with patch.object(target,"git",side_effect=changed_parent):
-      with self.assertRaises(scope.ScopeError):
+      with self.assertRaises(target.ScopeError):
         scope.assert_source()
     def extra_path(*a):
       if a==("diff","--name-status",scope.BASE,"HEAD"):
         return original(*a)+"\nA\tUNREVIEWED.txt"
       return original(*a)
     with patch.object(target,"git",side_effect=extra_path):
-      with self.assertRaises(scope.ScopeError):
+      with self.assertRaises(target.ScopeError):
         scope.assert_source()
     def toolchain_drift(*a):
       if a==("rev-parse","HEAD:lean-toolchain"): return "0"*40
       return original(*a)
     with patch.object(target,"git",side_effect=toolchain_drift):
-      with self.assertRaises(scope.ScopeError):
+      with self.assertRaises(target.ScopeError):
         scope.assert_source()
   def test_clean_additive_scope(self):
     self.assertFalse(scope.assert_source()["proof_acceptance"])
