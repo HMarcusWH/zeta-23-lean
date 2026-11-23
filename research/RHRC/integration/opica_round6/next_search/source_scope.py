@@ -42,6 +42,12 @@ def git(*args):
                           capture_output=True,text=True,timeout=120).stdout.strip()
 def check(repo=REPO):
     need(repo==REPO,"Unexpected repo")
+    # An explicitly versioned combined epoch is a different closed source
+    # transaction. Do NOT relax the original 11-file additive validator.
+    successor=REPO/"research/RHRC/integration/opica_next_epoch/SOURCE_EPOCH.json"
+    if successor.is_file():
+        from research.RHRC.integration.opica_next_epoch.scope import check as check_epoch
+        return check_epoch()
     need(git("rev-parse",BASE+"^{tree}")==BASE_TREE,"Base original tree changed")
     need(subprocess.run(["git","-C",str(REPO),"merge-base","--is-ancestor",BASE,"HEAD"],
                         capture_output=True).returncode==0,"Not a child of exact native base")
