@@ -31,6 +31,11 @@ class NextArithmeticSourceScopeTests(unittest.TestCase):
     for bad in ("\naxiom ","\nsorry","\nby sorry","native_decide", "_root_.riemannHypothesis"):
       self.assertNotIn(bad,code)
     self.assertIn("NativeFullTransfer.native_raw_energy_upper",code)
+  def test_subpower_constants_before_horizon(self):
+    code=(s.REPO/"Zeta23/OPICARound6/NextSearch/SourceEnergies.lean").read_text()
+    self.assertEqual(code.count("0 < ε → ∃ C : ℝ, 0 ≤ C ∧ ∀ X₀ : ℕ"),2)
+    self.assertIn("max X₀ 64 ≤ X",code)
+    self.assertIn("C * (X : ℝ)^ε",code)
   def test_static_source_scope(self):
     a=s.check()
     self.assertEqual(a["status"],"PASS_ADDITIVE_SOURCE_BYTES_ONLY")

@@ -65,13 +65,13 @@ theorem rawPositiveEnergy_le_of_component_budgets
 
 /-- Source-native OPEN surrogate, NOT the original full ACTUAL_UPPER node. -/
 def PositiveRawSubpower : Prop :=
-  ∀ ε : ℝ, 0 < ε → ∀ X₀ : ℕ,
-    ∃ X : ℕ, X₀ ≤ X ∧ rawPositiveEnergy X ≤ (X : ℝ)^ε
+  ∀ ε : ℝ, 0 < ε → ∃ C : ℝ, 0 ≤ C ∧ ∀ X₀ : ℕ,
+    ∃ X : ℕ, max X₀ 64 ≤ X ∧ rawPositiveEnergy X ≤ C * (X : ℝ)^ε
 
 /-- Fixed-negative-polarity surrogate. OPEN. -/
 def NegativeRawSubpower : Prop :=
-  ∀ ε : ℝ, 0 < ε → ∀ X₀ : ℕ,
-    ∃ X : ℕ, X₀ ≤ X ∧ rawNegativeEnergy X ≤ (X : ℝ)^ε
+  ∀ ε : ℝ, 0 < ε → ∃ C : ℝ, 0 ≤ C ∧ ∀ X₀ : ℕ,
+    ∃ X : ℕ, max X₀ 64 ≤ X ∧ rawNegativeEnergy X ≤ C * (X : ℝ)^ε
 
 /-- One polarity selected BEFORE all epsilon/horizon quantifiers. OPEN. -/
 def OnePolarityRawSubpower : Prop :=

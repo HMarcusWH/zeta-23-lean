@@ -12,7 +12,9 @@ NativeFullTransfer with THREE explicitly retained open component budgets.
 It does not supply a new source estimate.
 
 The newly defined fixed-positive, fixed-negative and one-polarity subpower
-Propositions are local source-qualified search surrogates, NOT mathematically
+propositions retain a source-independent constant C_epsilon, chosen after
+epsilon but BEFORE the cofinal horizon. They require X >= max(X0,64).
+They are local source-qualified search surrogates, NOT mathematically
 identified with the stronger stopped-cut ACTUAL_UPPER. P303, N20 and
 PAPER_ROUTE_VALIDATION stay OPEN because their admissible graph, shared
 horizon/partner costs, and analytic transfer require real missing theorems.
