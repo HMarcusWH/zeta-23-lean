@@ -48,6 +48,11 @@ def _registry(repo):
     return load_bytes((Path(repo)/"research/RHRC/integration/opica_composition/PUBLIC_TARGETS.json").read_bytes())
 
 def _target(repo,snapshot,target_id):
+    from ..opica_next_acceptance import targets as next_targets
+    if next_targets.selected(snapshot):
+        return next_targets.target(repo,snapshot,target_id)
+    require(target_id not in next_targets.TARGET_IDS,
+            "next-source research target requires independently selected experiment")
     registry=_registry(repo)
     rows=[*registry["calibration"],*registry.get("open",[]),*registry.get("open_research",[]),*registry.get("intermediate",[])]
     matches=[r for r in rows if r["id"]==target_id]
@@ -101,7 +106,7 @@ def _search_contract(repo,target):
 
 def freeze(repo,experiment,output,*,worker):
     """Freeze only an independently reviewed complete source/worker profile."""
-    from ..documentation_2026_11_21.source_scope import validate_descendant
+    from ..opica_next_acceptance.gate import validate_descendant
     from .config import check_configuration
     from .qualification import _packages
     repo=unlinked(repo).resolve();worker_capability(worker)
@@ -113,12 +118,17 @@ def freeze(repo,experiment,output,*,worker):
     require(approved.profile_id==_profile(repo)["profile_id"],"approved profile differs from frozen host profile")
     require(approved.environment.get("worker_environment")==worker_environment(worker),"approved compiler/import-object environment differs")
     snapshot=freeze_source_epoch(repo,approved)
+    from ..opica_next_acceptance import targets as next_targets
+    next_targets.selected(snapshot)
     _write(repo,output,snapshot);return snapshot
 
 def inventory(repo,snapshot,output,*,worker):
     from .qualification import check_current_compatibility,frozen_atlas
     snapshot=_snapshot(repo,snapshot);output=_directory(repo,output)
     require(worker.production is True,"production native inventory required")
+    from ..opica_next_acceptance import targets as next_targets
+    if next_targets.selected(snapshot):
+        return next_targets.inventory(repo,snapshot,output,worker=worker)
     native=check_current_compatibility(Path(repo),output/"compiler",worker)
     require(native["status"]=="PASS_CURRENT_COMPATIBILITY","complete actual native inventory did not pass")
     result=load_statement_inventory(snapshot,Path(native["native_export_path"]))
@@ -138,6 +148,9 @@ def inventory(repo,snapshot,output,*,worker):
 def _load_inventory(snapshot,path):
     result=StatementInventory.from_bytes(unlinked(path).read_bytes())
     require(result.snapshot_digest==snapshot.generation,"inventory belongs to another mathematical generation")
+    from ..opica_next_acceptance import targets as next_targets
+    if next_targets.selected(snapshot):
+        return next_targets.check_inventory(snapshot,result)
     from .qualification import frozen_atlas
     expected={r["declaration"]:r for r in frozen_atlas(Path(snapshot.repo))}
     require(len(result.statements)==len(expected) and {r["declaration"] for r in result.statements}==set(expected),"complete frozen declaration inventory differs")
@@ -150,12 +163,24 @@ def _load_inventory(snapshot,path):
         require(row.get("memberships")==members,"cohort membership was dropped or replaced")
     return result
 
+def _resolved_search_contract(repo,snapshot,inventory,target,folder):
+    from ..opica_next_acceptance import targets as next_targets
+    if next_targets.selected(snapshot):
+        return next_targets.search_contract(snapshot,inventory,target,Path(folder)/"next-contract.json")
+    return _search_contract(repo,target)
+
 def plan(repo,snapshot,inventory_file,target_id,output,*,budget=None):
     snapshot=_snapshot(repo,snapshot);table_inventory=_load_inventory(snapshot,inventory_file)
     target,constants=_target(repo,snapshot,target_id);budget=budget or SearchBudget()
     grammar=GrammarProfile(GOLD,[])
-    candidates=enumerate_candidates(table_inventory,target,grammar,budget,search_contract=_search_contract(repo,target))
+    candidates=enumerate_candidates(table_inventory,target,grammar,budget,
+        search_contract=_resolved_search_contract(repo,snapshot,table_inventory,target,Path(inventory_file).parent))
     output=_directory(repo,output)
+    from ..opica_next_acceptance import targets as next_targets
+    if next_targets.selected(snapshot):
+        doc=load_bytes(unlinked(Path(inventory_file).parent/"next-contract.json").read_bytes())
+        next_targets.validate_retrieval(snapshot,table_inventory,doc)
+        _write(repo,output/"next-contract.json",doc)
     proposals={r["action_id"]:CompositionProposal(r["action_id"],target_id,snapshot.generation,r["term_plan"]).to_dict() for r in candidates.candidates}
     row={"schema":"OPICA_SERVICE_PLAN_V1","source_generation":snapshot.generation,"snapshot_digest":snapshot.digest,
          "target_id":target_id,"target":target.to_dict(),"constant_table":constants,"budget":budget.to_dict(),
@@ -181,7 +206,8 @@ def run_one(repo,snapshot,proposals,journal,output,*,worker,budget=1):
     require(supplied["target"]==target.to_dict() and supplied["constant_table"]==table,"candidate attempted to replace target/import/constant policy")
     inv=_load_inventory(snapshot,folder/"inventory.json");search=SearchBudget.from_dict(supplied["budget"])
     require(search==SearchBudget(**(worker.budget or {})),"planner/worker resource profile differs")
-    candidates=enumerate_candidates(inv,target,GrammarProfile(GOLD,[]),search,search_contract=_search_contract(repo,target))
+    candidates=enumerate_candidates(inv,target,GrammarProfile(GOLD,[]),search,
+        search_contract=_resolved_search_contract(repo,snapshot,inv,target,folder))
     require(supplied["inventory_digest"]==inv.digest and supplied["candidates"]==candidates.to_dict(),"menu/inventory reconstruction differs")
     wanted={r["action_id"]:CompositionProposal(r["action_id"],target.target_id,snapshot.generation,r["term_plan"]) for r in candidates.candidates}
     require(supplied["proposals"]=={k:v.to_dict() for k,v in wanted.items()},"proposal/menu substitution")

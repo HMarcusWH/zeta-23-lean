@@ -18,10 +18,12 @@ from research.RHRC.integration.opica_round6 import source_scope as round6
 from research.RHRC.integration.opica_composition.descendant import validate_workflow_migration
 
 REPO = Path(__file__).resolve().parents[4]
-BASE = "a32b11c472230e2f280cbd0214e1f512ee95382f"
-TREE = "55674ee01daf74b7eaa4a5b3312a89b2dbbf6fab"
+BASE = "4f81c784d3b330395507f6dcd1c8b0010b3835cc"
+TREE = "84b235c455980cfd516a8c0ccaf7749bce3c5339"
 PIN = "leanprover/lean4:v4.33.0-rc2"
 POLICY = "research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY.json"
+VALIDATOR = "research/RHRC/integration/opica_next_acceptance/gate.py"
+POLICY_BLOB_OID = "d81ec83fd7b549e2f861bbedb5a4358d2d3f3c56"
 
 ADDED = frozenset({
     ".github/workflows/opica-next-acceptance.yml",
@@ -30,10 +32,16 @@ ADDED = frozenset({
     "research/RHRC/integration/opica_next_acceptance/gate.py",
     "research/RHRC/integration/opica_next_acceptance/test_gate.py",
     "research/RHRC/integration/opica_next_acceptance/README.md",
+    "research/RHRC/integration/opica_next_acceptance/NEXT_TARGETS.json",
+    "research/RHRC/integration/opica_next_acceptance/targets.py",
 })
 EDITED = frozenset({
     "research/RHRC/integration/opica_composition/cli.py",
     "research/RHRC/graph/FILE_CLASSES.json",
+    "research/RHRC/integration/opica_composition/service.py",
+    "research/RHRC/integration/opica_composition/qualification.py",
+    ".github/workflows/documentation.yml",
+    ".github/workflows/rhrc_opica_composition.yml",
 })
 FROZEN = frozenset(round6.FROZEN_PRODUCTS)
 
@@ -62,7 +70,8 @@ def validate_policy(policy, active):
             "parent_accepted_by","toolchain","allowed_added","allowed_edited",
             "allowed_generated","unchanged_frozen_products",
             "original_round4_acceptance","new_11_lane_acceptance",
-            "scientific_claims","proof_acceptance"}
+            "scientific_claims","proof_acceptance","reviewed_blob_oids",
+            "validator_template_blob_oid"}
     need(type(policy) is dict and set(policy)==fields,
          "unreviewed successor source policy fields")
     need(policy["schema"]=="OPICA_NEXT_SOURCE_PROOF_ADMISSION_POLICY_V1",
@@ -83,6 +92,28 @@ def validate_policy(policy, active):
          and policy["proof_acceptance"] is False,
          "unapproved scientific claim or proof acceptance")
 
+def git_blob_oid(raw):
+    return hashlib.sha1(b"blob "+str(len(raw)).encode("ascii")+b"\0"+raw).hexdigest()
+
+def normalized_validator_oid(raw):
+    line=('POLICY_BLOB_OID = "'+POLICY_BLOB_OID+'"\n').encode("ascii")
+    need(raw.count(line)==1,"exactly one validator policy pin required")
+    return git_blob_oid(raw.replace(line,b'POLICY_BLOB_OID = "<policy-blob-oid>"\n',1))
+
+def verify_sealed_source(repo,current,policy,raw):
+    reviewed=policy["reviewed_blob_oids"]
+    need(type(reviewed) is dict and set(reviewed)==(ADDED|EDITED)-{POLICY,VALIDATOR},
+         "exact reviewed source content inventory required")
+    need(all(type(v) is str and re.fullmatch(r"[0-9a-f]{40}",v)
+             for v in reviewed.values()),"invalid reviewed source Git blob OID")
+    need(git_blob_oid(raw)==POLICY_BLOB_OID and
+         current[POLICY][2]==POLICY_BLOB_OID,"reviewed source policy bytes differ")
+    need(normalized_validator_oid((repo/VALIDATOR).read_bytes())==
+         policy["validator_template_blob_oid"],"reviewed validator template differs")
+    for name,oid in reviewed.items():
+        need(current.get(name)==("100644","blob",oid),
+             "reviewed source blob differs: "+name)
+
 def check(repo=REPO, *, require_clean=False):
     repo=Path(repo).resolve()
     need(git(repo,"rev-parse",BASE+"^{tree}")==TREE,
@@ -101,6 +132,7 @@ def check(repo=REPO, *, require_clean=False):
     policy=json.loads(raw)
     generated=expected_generated(repo)
     validate_policy(policy,generated)
+    verify_sealed_source(repo,current,policy,raw)
 
     new=set(current)-set(parent)
     need(new==ADDED,"unexpected new-source additions: "+repr(sorted(new^ADDED)))
@@ -108,7 +140,7 @@ def check(repo=REPO, *, require_clean=False):
     changed={p for p in parent if parent[p]!=current[p]}
     actual_generated=changed&set(generated)
     need(changed-actual_generated==EDITED,
-         "unreviewed changes beyond CLI/classification/77 derived products: "+
+         "unreviewed changes beyond sealed source edits/77 derived products: "+
          repr(sorted((changed-actual_generated)^EDITED)))
     for p in FROZEN:
         need(parent[p]==current[p],"frozen historical generated product changed: "+p)
@@ -145,11 +177,12 @@ def check(repo=REPO, *, require_clean=False):
     return {
         "schema":"OPICA_NEXT_SOURCE_ACCEPTANCE_ADMISSION_V1",
         "status":"PASS_SOURCE_SCOPE_ONLY",
-        "checked_commit":git(repo,"rev-parse","HEAD"),
-        "checked_tree":git(repo,"rev-parse","HEAD^{tree}"),
+        "checked_commit":head,
+        "checked_tree":git(repo,"rev-parse",head+"^{tree}"),
         "base":BASE,"base_tree":TREE,
         "source_epoch":"OPICA_NEXT_SOURCE_EPOCH_V1",
         "path_policy_sha256":hashlib.sha256(raw).hexdigest(),
+        "reviewed_source_blob_count":len(policy["reviewed_blob_oids"]),
         "manifest_sha256":hashlib.sha256((repo/"research/RHRC/integration/opica_round4/BUILD_MANIFEST.json").read_bytes()).hexdigest(),
         "delta":{"added":sorted(new),"edited":sorted(EDITED),
                  "generated":sorted(actual_generated),"deleted":[]},

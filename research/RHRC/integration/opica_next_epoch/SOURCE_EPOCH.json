@@ -79,5 +79,31 @@
     "C1": "OPEN",
     "Step4": "OPEN"
   },
-  "proof_acceptance": false
+  "proof_acceptance": false,
+  "reviewed_blob_oids": {
+    ".github/workflows/opica-next-arithmetic.yml": "b4524f8a69b07315f865ed9302b2f09e62ed6124",
+    ".github/workflows/opica-next-source-epoch.yml": "8893ad9dcac087ec1d01e17aa4e27a7a6594d6e3",
+    ".github/workflows/opica-prime-deficit.yml": "c2e1ea2fdbd096062435ec5803079073e2cabb95",
+    "Zeta23/OPICARound6/NextSearch/SourceEnergies.lean": "f5024bf53e1472d9229369ad2821993a7ef1ab8a",
+    "Zeta23/OPICARound6/NextSearch/Verify.lean": "a185918eba7ef9274013d2f7423f277e0ec2d00f",
+    "Zeta23/OPICARound6/PrimeDeficit/Source.lean": "9b231cba5c67ad6b4e1a59e4c39a4ecf6191f5fa",
+    "Zeta23/OPICARound6/PrimeDeficit/Verify.lean": "46fe5ccea089883c2ded6c80d24851ffca6f69b9",
+    "research/RHRC/graph/FILE_CLASSES.json": "e26fac4c80703198dc08eb43fc19283e1ed09954",
+    "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json": "44f9443c20158de4c918772e931a1f02c4a5c62a",
+    "research/RHRC/integration/opica_next_epoch/README.md": "9ea559d9d03ada0c43fbb4cb40a78dd7c774dc5b",
+    "research/RHRC/integration/opica_next_epoch/test_scope.py": "afc4845786449fbd6f0c57dc0e35bbebbc9214e5",
+    "research/RHRC/integration/opica_round6/next_search/FALSIFIERS.json": "564f0e6eec557fe4de772eb67e18b1158730b894",
+    "research/RHRC/integration/opica_round6/next_search/README.md": "fd79e7ff115888a553e596237f317464b2094932",
+    "research/RHRC/integration/opica_round6/next_search/SOURCE_CONTRACTS.json": "90459baf84d287cd9933696f9c1153c0aee22f8e",
+    "research/RHRC/integration/opica_round6/next_search/TARGETS.json": "3db4447712187dd3d7ad28103eecabbf53721c36",
+    "research/RHRC/integration/opica_round6/next_search/campaign.py": "c322734c71e5103186cc096b1c8053e1ce27023a",
+    "research/RHRC/integration/opica_round6/next_search/source_scope.py": "5aa05fa9f67929fa33a91d56573351439b3ae1e9",
+    "research/RHRC/integration/opica_round6/next_search/test_source_scope.py": "4601686cefa9d845274588780327456b1a3aff28",
+    "research/RHRC/integration/opica_round6/next_search/typed_export.py": "c6d4eac784ed53a91dfcaa4d239e4fe22935c631",
+    "research/RHRC/integration/opica_round6/prime_deficit/README.md": "06d36b100f19c006cddd3baacbcc049e24e8b15c",
+    "research/RHRC/integration/opica_round6/prime_deficit/SOURCE_CONTRACT.json": "0e6aea600c9f4fe49bd67b96f3187392b8697a0c",
+    "research/RHRC/integration/opica_round6/prime_deficit/scope.py": "f65f368e13c743a30a1ac365d613916d067e8862",
+    "research/RHRC/integration/opica_round6/prime_deficit/test_scope.py": "82b8da8393af9394e6f2ea5eb7113a8136a9a643"
+  },
+  "validator_template_blob_oid": "828acd5c943b215775d97e908a1052c21b3ed50d"
 }

@@ -113,6 +113,57 @@ class SourceProofAdmissionTests(unittest.TestCase):
         with self.assertRaises(ContractError):
             verify_gate_inventory(ROUND4_LANES[:-1])
 
+    def test_service_freeze_calls_new_source_admission(self):
+        from types import SimpleNamespace
+        from research.RHRC.integration.opica_composition import service
+        # Exercise the actual freeze entry point through its admission boundary.
+        # No mocked worker may be described as a production compiler pass.
+        with patch.object(service,"worker_capability",return_value=None):
+            with patch.object(s,"validate_descendant",side_effect=s.ScopeError("FREEZE_ROUTING_SENTINEL")) as called:
+                with self.assertRaisesRegex(s.ScopeError,"FREEZE_ROUTING_SENTINEL"):
+                    service.freeze(s.REPO,{},Path("/nonexistent-opica-test-output"),
+                                   worker=SimpleNamespace(production=True))
+                called.assert_called_once_with(s.REPO,require_clean=True)
+
+    def test_registered_signed_targets_require_explicit_frozen_experiment(self):
+        from types import SimpleNamespace
+        from research.RHRC.integration.opica_composition import service
+        from research.RHRC.integration.opica_next_acceptance import targets
+        from research.RHRC.integration.opica_composition.snapshot import file_hash
+        r=targets.registry(s.REPO)
+        self.assertEqual(len(r["targets"]),3)
+        self.assertEqual(len(r["source_theorems"]),2)
+        self.assertEqual(len(r["scalar_pending_compiler_type_review"]),2)
+        self.assertFalse(r["proof_acceptance"])
+        digest=file_hash(s.REPO/targets.REGISTRY)
+        chosen=SimpleNamespace(repo=str(s.REPO),source_policy="REVIEWED_FROZEN",
+                               environment={targets.SELECTION:digest},
+                               files={targets.REGISTRY:digest},generation="0"*64)
+        for item in r["targets"]:
+            target,table=service._target(s.REPO,chosen,item["id"])
+            self.assertEqual(target.expected_type_hash,item["expected_type_sha256"])
+            self.assertEqual(set(target.allowed_constants.values()),set(targets.THEOREM_NAMES))
+            self.assertEqual(len(table),2)
+        missing=SimpleNamespace(repo=str(s.REPO),environment={},files={})
+        with self.assertRaises(ContractError):
+            service._target(s.REPO,missing,targets.TARGET_IDS[0])
+        chosen.files={}
+        with self.assertRaises(ContractError):
+            targets.selected(chosen)
+
+    def test_reviewed_allowed_file_content_is_sealed(self):
+        native=s.round6.tree
+        def changed_allowed(repo,ref):
+            out=native(repo,ref)
+            if ref!=s.BASE:
+                out=dict(out)
+                p="research/RHRC/integration/opica_composition/service.py"
+                out[p]=(out[p][0],out[p][1],"0"*40)
+            return out
+        with patch.object(s.round6,"tree",side_effect=changed_allowed):
+            with self.assertRaisesRegex(s.ScopeError,"reviewed source blob"):
+                s.check()
+
     def test_historical_source_validator_fails_closed(self):
         # Earlier frozen source epoch is NOT enlarged retroactively.
         with self.assertRaises(ContractError):

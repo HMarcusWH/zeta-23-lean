@@ -36,6 +36,18 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
+      "id": "opica_next_acceptance_target_registry",
+      "pattern": "\\Aresearch/RHRC/integration/opica_next_acceptance/NEXT_TARGETS\\.json\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_next_acceptance_target_service",
+      "pattern": "\\Aresearch/RHRC/integration/opica_next_acceptance/targets\\.py\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "opica_next_acceptance_ci",
       "pattern": "\\A(?:\\.github/workflows/opica-next-acceptance\\.yml)\\Z",
       "file_class": "CI_WORKFLOW",

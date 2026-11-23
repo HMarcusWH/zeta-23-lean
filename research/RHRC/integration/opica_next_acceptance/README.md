@@ -1,13 +1,11 @@
-# OPICA Next Source — Reviewed Proof Admission Adapter
+# OPICA next-source proof admission and signed target service
 
-This is a **stacked draft** on PR #311 head `a32b11c472230e2f280cbd0214e1f512ee95382f` (tree `55674ee01daf74b7eaa4a5b3312a89b2dbbf6fab`).
+This successor is stacked on repaired #311 commit 4f81c784d3b330395507f6dcd1c8b0010b3835cc, tree 84b235c455980cfd516a8c0ccaf7749bce3c5339. It does not modify the frozen historical documentation validator, original Round4 acceptance lane algorithms, original PUBLIC_TARGETS/SEARCH_CONTRACTS or 462-declaration atlas.
 
-Its purpose is to allow the **unchanged original Round4 11-producer / three-independent-group science** to be rerun under the new source epoch, without modifying the frozen historical `documentation_2026_11_21/source_scope.py` validator. The old validator continues to reject this newer source, correctly, when invoked directly. Only the reviewed proof coordinator imports the explicit selector. Older source epochs still use the original validator.
+The source policy pins every reviewed added/edited file as a Git blob and normalizes exactly one validator policy-pin line to break the digest cycle. The 77 active canonical outputs may be changed only after a separately reviewed exact-head materializer candidate; all four historical products are preserved. The candidate includes 81 before/write/check hashes and is never auto-committed.
 
-The independent successor gate accepts only six new versioned source/CI files, two explicitly reviewed edits (the old coordinator import and exact classifications), and a bounded **77 active canonical generated** product set. Four dated/frozen generated products are byte-preserved, and the entire parent tree of Lean mathematics, research contracts and earlier source gates is immutable. The original compiler, source guards, Lean toolchain, 11 lane definitions, 3 independent groups, acceptance algorithms and proof boundaries are NOT changed.
+The CLI and production service freeze both select the reviewed successor gate. An explicit experiment registry hash selects a separate two-declaration signed-source cohort and three OPEN targets. Independent expected type hashes were exported by #307 run 45187059999, not inferred from proposals. The original production worker and independent attempt/replay mechanisms are reused. The original atlas path is unchanged when no next-source experiment is selected. Two scalar targets receive a fresh compiler-type candidate only; they remain unregistered until independent review.
 
-Source check SUCCESS proves **only** that the new Git tree and working tree match the reviewed policy. The parent PR #311 needs its **own exact source/Lean CI**; the adapter never grants that result by construction. The generated products must first be updated by a separate reviewed source-pinned canonical materialization candidate, and then compiled and checked at the exact current head.
+The source workflow probes actual freeze routing, exact source seal, and original eleven producers/three replay partitions. [run-canonical] requests exact-head review-only generated state. The original full 11-lane workflow is triggered on a reviewed generated-state patch pushed to this stacked branch. [run-next-targets] requests a separate governed signed-target campaign, which refuses stale canonical state. Heavy execution is never represented by source-only green.
 
-A subsequent new-source Round4 campaign must complete **every producer, all independent groups and final aggregate acceptance**. Failed or skipped historical/current jobs remain failed or skipped. A green source adapter is neither a kernel proof nor C1 or RH.
-
-**OPEN:** the cofinal arithmetic subpower, literal G bridge, independent C1, Step 4 and Riemann Hypothesis.
+Source/CI acceptance, mathematical lemmas, typed plans, attempted proofs and independent final authority are distinct. C1, independent Step 4 and RH remain OPEN.

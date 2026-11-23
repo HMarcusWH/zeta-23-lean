@@ -9,6 +9,8 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
+import sys
 import re
 import subprocess
 from pathlib import Path
@@ -16,6 +18,8 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[4]
 HERE = Path(__file__).resolve().parent
 POLICY = "research/RHRC/integration/opica_next_epoch/SOURCE_EPOCH.json"
+VALIDATOR = "research/RHRC/integration/opica_next_epoch/scope.py"
+POLICY_BLOB_OID = "54925a4fb65d2b9d662447e6f7d84355c47fbbaa"
 BASE = "bb7c8184a135b2823c6296917c5ac893bebf2a71"
 BASE_TREE = "2b19357e1b65cc500f3e3a5b5d4df14601b02062"
 LEAN_PIN = "leanprover/lean4:v4.33.0-rc2"
@@ -121,6 +125,7 @@ def contract(policy):
         "required_standalone_module_roles", "frozen_historical_source_policies",
         "historical_round4_11_lane_acceptance", "new_source_round4_11_lane_acceptance",
         "original_generated_state", "claims", "proof_acceptance",
+        "reviewed_blob_oids", "validator_template_blob_oid",
     }
     need(set(policy) == expected and policy["schema"] == "OPICA_NEXT_SOURCE_EPOCH_V1",
          "unreviewed epoch contract schema/field set")
@@ -152,12 +157,161 @@ def contract(policy):
          "original 18 exact source blobs missing or extra")
     need(all(type(v) is str and re.fullmatch(r"[0-9a-f]{40}",v) for v in original.values()),
          "original Git source blob ID not closed")
+    reviewed=policy["reviewed_blob_oids"]
+    need(type(reviewed) is dict and set(reviewed)==
+         (REVIEWED_ADDITIONS | REVIEWED_EDITS)-{POLICY,VALIDATOR},
+         "closed reviewed source content inventory required")
+    need(all(type(v) is str and re.fullmatch(r"[0-9a-f]{40}",v)
+             for v in reviewed.values()),"invalid reviewed Git blob OID")
+    need(type(policy["validator_template_blob_oid"]) is str and
+         re.fullmatch(r"[0-9a-f]{40}",policy["validator_template_blob_oid"]),
+         "missing normalized validator template OID")
     return original
+
+def git_blob_oid(raw):
+    return hashlib.sha1(b"blob "+str(len(raw)).encode("ascii")+b"\0"+raw).hexdigest()
+
+def template_oid(raw):
+    line=('POLICY_BLOB_OID = "'+POLICY_BLOB_OID+'"\n').encode("ascii")
+    need(raw.count(line)==1,"validator policy pin must occur exactly once")
+    return git_blob_oid(raw.replace(line,b'POLICY_BLOB_OID = "<policy-blob-oid>"\n',1))
+
+def verify_reviewed_content(policy, raw):
+    need(git_blob_oid(raw)==POLICY_BLOB_OID,"reviewed policy blob differs")
+    need(template_oid((REPO/VALIDATOR).read_bytes())==
+         policy["validator_template_blob_oid"],"reviewed validator template differs")
+    for path,oid in policy["reviewed_blob_oids"].items():
+        need(git("rev-parse","HEAD:"+path)==oid,
+             "reviewed source content changed: "+path)
+
+AXIOM_TARGETS = {
+    "Zeta23.OPICARound6.NextSearch.rawPositiveEnergy_le_full_components",
+    "Zeta23.OPICARound6.NextSearch.rawPositiveEnergy_le_of_component_budgets",
+    "Zeta23.OPICARound6.PrimeDeficit.positiveDeficitEnergy_nonneg",
+}
+ALLOWED_AXIOMS = {"propext","Classical.choice","Quot.sound"}
+
+def check_axiom_reports(text):
+    need(type(text) is str and not re.search(r"sorryAx|error:|declaration uses axiom",text,re.I),
+         "compiler error or forbidden proof placeholder")
+    rows=re.findall(r"'([^']+)' depends on axioms:\s*\[([^\]]*)\]",text)
+    need(len(rows)==len(AXIOM_TARGETS) and {n for n,_ in rows}==AXIOM_TARGETS,
+         "exact three named transitive axiom reports required")
+    result={}
+    for name,axioms in rows:
+        values=[s.strip() for s in axioms.split(",") if s.strip()]
+        need(len(values)==len(set(values)) and set(values)==ALLOWED_AXIOMS,
+             "unreviewed transitive axiom set: "+name)
+        result[name]=sorted(values)
+    return result
+
+def canonical_candidate(output, checked_head, checked_tree):
+    """Regenerate only independently enumerated active products; no source promotion."""
+    from research.RHRC.integration.opica_round6.source_scope import FROZEN_PRODUCTS
+    output=Path(output).resolve()
+    need(not output.is_relative_to(REPO) and not output.exists(),
+         "fresh external candidate directory required")
+    output.mkdir(parents=True)
+    receipt={"schema":"OPICA_CANONICAL_CANDIDATE_V3",
+             "status":"INCOMPLETE","source_head":checked_head,
+             "source_tree":checked_tree,"proof_acceptance":False,
+             "RH":"OPEN","C1":"OPEN","Step4":"OPEN"}
+    def persist():
+        (output/"receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
+    def run(command,label,timeout):
+        receipt["phase"]=label
+        persist()
+        with (output/(label+".log")).open("xb") as out:
+            subprocess.run(command,cwd=REPO,stdout=out,stderr=subprocess.STDOUT,
+                           check=True,timeout=timeout)
+    manifest="research/RHRC/integration/opica_round4/BUILD_MANIFEST.json"
+    coverage="research/RHRC/graph/generated/REPOSITORY_COVERAGE.json"
+    def clean_source():
+        need(git("rev-parse","HEAD")==checked_head and
+             git("rev-parse","HEAD^{tree}")==checked_tree,
+             "candidate source head/tree changed")
+    def hashes(paths):
+        out={}
+        for p in sorted(paths):
+            f=REPO/p
+            need(f.is_file() and not f.is_symlink(),"missing/nonregular product: "+p)
+            out[p]=hashlib.sha256(f.read_bytes()).hexdigest()
+        return out
+    def changed(active):
+        rows=[x.split("\t",1) for x in git("diff","--name-status","--no-renames","HEAD").splitlines()]
+        need(all(len(x)==2 and x[0]=="M" and x[1] in active for x in rows),
+             "candidate changed source or frozen/generated inventory: "+repr(rows)[:1500])
+        need(not git("ls-files","--others","--exclude-standard"),
+             "candidate introduced untracked files")
+        clean_source()
+        return sorted(x[1] for x in rows)
+    try:
+        clean_source()
+        need(not git("status","--porcelain","--untracked-files=all"),
+             "candidate must start from clean reviewed source")
+        need(git("rev-parse","HEAD:"+manifest)==git("rev-parse",BASE+":"+manifest),
+             "original 81-product manifest changed")
+        items=json.loads((REPO/manifest).read_text())["generated"]
+        all_paths={r["path"] for r in items}
+        frozen=set(FROZEN_PRODUCTS)
+        active=all_paths-frozen
+        need(len(items)==len(all_paths)==81 and len(frozen)==4 and
+             frozen<=all_paths and len(active)==77,"canonical 77+4 inventory differs")
+        def coverage_matches():
+            rows=json.loads((REPO/coverage).read_text())["declared_generated_products"]
+            need(len(rows)==77 and set(rows)==active,
+                 "generated coverage does not equal immutable active inventory")
+        coverage_matches()
+        for p in frozen:
+            need(git("rev-parse","HEAD:"+p)==git("rev-parse",BASE+":"+p),
+                 "frozen historical product Git blob changed: "+p)
+        before=hashes(all_paths)
+        run(["lake","build","Zeta23.RHRC.DeclarationDependencyExport",
+             "Zeta23.RHRC.SourceCandidateResolution"],"compiler-preparation",7200)
+        need(not changed(set()) and hashes(all_paths)==before,
+             "compiler preparation changed tracked state")
+        run([sys.executable,"-B","research/RHRC/tools/materialize_derived_state.py",
+             "--write"],"write",10800)
+        after_write=hashes(all_paths)
+        coverage_matches()
+        changed_paths=changed(active)
+        need(all(after_write[p]==before[p] for p in frozen),
+             "write modified frozen historical products")
+        run([sys.executable,"-B","research/RHRC/tools/materialize_derived_state.py",
+             "--check"],"check",10800)
+        after_check=hashes(all_paths)
+        need(after_check==after_write and changed(active)==changed_paths,
+             "canonical check changed source or generated bytes")
+        coverage_matches()
+        need(all(after_check[p]==before[p] for p in frozen),
+             "check modified frozen historical products")
+        subprocess.run(["git","-C",str(REPO),"diff","--check","HEAD"],check=True)
+        patch=subprocess.check_output(["git","-C",str(REPO),"diff","--binary","HEAD"])
+        (output/"generated-state.patch").write_bytes(patch)
+        receipt.update({"status":"REVIEW_ONLY_GENERATED_STATE","phase":"COMPLETE",
+                        "active_count":77,"frozen_count":4,"total_count":81,
+                        "before_sha256":before,"after_write_sha256":after_write,
+                        "after_check_sha256":after_check,
+                        "frozen_git_oids":{p:git("rev-parse",BASE+":"+p) for p in sorted(frozen)},
+                        "changed_paths":changed_paths,"changed_count":len(changed_paths),
+                        "patch_sha256":hashlib.sha256(patch).hexdigest(),
+                        "logs_sha256":{p.name:hashlib.sha256(p.read_bytes()).hexdigest()
+                                       for p in sorted(output.glob("*.log"))}})
+        persist()
+        print(json.dumps({k:receipt[k] for k in ("status","source_head","active_count",
+                                                 "frozen_count","changed_count","proof_acceptance")}))
+        return receipt
+    except Exception as exc:
+        receipt.update({"status":"INCOMPLETE_NOT_ACCEPTED",
+                        "error_type":type(exc).__name__,"error":str(exc)[:1200]})
+        persist()
+        raise
 
 def check():
     need(git("rev-parse", BASE+"^{tree}") == BASE_TREE, "baseline Git tree changed")
     need(subprocess.run(["git","-C",str(REPO),"merge-base","--is-ancestor",BASE,"HEAD"],
                         capture_output=True).returncode == 0, "epoch not a child of native base")
+    head=git("rev-parse","HEAD")
     raw = git("diff","--name-status", BASE, "HEAD").splitlines()
     delta = [r.split("\t",1) for r in raw]
     need(all(len(r)==2 and r[0] in ("A","M") for r in delta),
@@ -168,11 +322,16 @@ def check():
          "unreviewed added source paths: " + repr(sorted(added ^ REVIEWED_ADDITIONS)))
     need(edited == REVIEWED_EDITS,
          "unreviewed modified source paths: " + repr(sorted(edited ^ REVIEWED_EDITS)))
-    need(not git("status","--porcelain","--untracked-files=no"), "tracked worktree drift")
+    need(not git("status","--porcelain","--untracked-files=all"), "worktree drift")
     need((REPO/"lean-toolchain").read_text().strip() == LEAN_PIN, "native compiler pin differs")
 
-    policy = json.loads((REPO/POLICY).read_text())
+    policy_raw=(REPO/POLICY).read_bytes()
+    policy = json.loads(policy_raw)
     original = contract(policy)
+    verify_reviewed_content(policy,policy_raw)
+    from research.RHRC.integration.documentation_2026_11_21.source_scope import check_worktree
+    from research.RHRC.integration.opica_round6.source_scope import tree
+    check_worktree(REPO,tree(REPO,head))
     for name in FROZEN:
         need(git("rev-parse","HEAD:"+name)==git("rev-parse",BASE+":"+name),
              "frozen historical object changed: "+name)
@@ -201,6 +360,8 @@ def check():
         need(matches and matches[0]["file_class"] != classes["unknown_class"]
              and matches[0]["trust_zone"] != classes["unknown_trust_zone"],
              "new source not explicitly classified: "+name)
+    need(git("rev-parse","HEAD")==head and not git("status","--porcelain","--untracked-files=all"),
+         "source changed during inspection")
     # Source validation does not establish any of the OPEN propositions.
     return {
         "schema":"OPICA_NEXT_SOURCE_EPOCH_VERIFICATION_V1",
