@@ -1,0 +1,1757 @@
+{
+  "scope": "Supporting package receipts at their recorded common pin; this investigation reviewed sources and receipts and did not rerun Lean. No combined C1 acceptance or original-pin production acceptance.",
+  "native_head": "7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9",
+  "lean": "4.33.1",
+  "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "checkpoint_sha256": "b7ad91c93cf36583bf8c5728288340eb167c2089bf141c6b6e95ab6a4a63cb4f",
+  "packages": [
+    {
+      "closed_C1": false,
+      "public_roots": 4,
+      "scope": "C1 iff full boundary-flat nonnegativity",
+      "status": "STRICT_COMPILE_AND_NAMED_STOCK_KERNEL_PASS",
+      "package_index": 1,
+      "checkpoint_receipt_member": "math_compression/BOUNDARY_FLAT_CHARACTERIZATION_RECEIPT.json",
+      "receipt_sha256": "5c938c66f65b6d00d1f5a76569151d6ad246a81f0847f62ac4449e5ca13d8a8a",
+      "bundle_receipt_path": "evidence/supporting_receipts/01_BOUNDARY_FLAT_CHARACTERIZATION_RECEIPT.json",
+      "source_hashes_from_receipt": "e19bfb13fcb523930617aae99c9d1190cccb1ec3915feae610f7195c68bbef61",
+      "root_fields_from_receipt": {
+        "axioms": {
+          "Zeta23.OPICARound20.even_zero_bound_of_all_boundary_flat_nonnegative": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.c1_iff_all_boundary_flat_nonnegative": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.riemannHypothesis_iff_all_boundary_flat_nonnegative": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finite_negative_boundary_flat_witness_refutes_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      },
+      "scope_fields_from_receipt": {
+        "scope": "Named-module check against imported common-pin environment, not a full imported-declaration replay. Equivalences and conditional consequences only.",
+        "status": "PASS",
+        "c1_closed": false,
+        "rh_closed": false
+      },
+      "source_members_matched_by_sha256": {
+        "e19bfb13fcb523930617aae99c9d1190cccb1ec3915feae610f7195c68bbef61": []
+      }
+    },
+    {
+      "C1_assumption_preserved": true,
+      "public_roots": 9,
+      "scope": "Conditional Gram identity and nullspace",
+      "status": "STRICT_COMPILE_AND_NAMED_STOCK_KERNEL_PASS",
+      "package_index": 2,
+      "checkpoint_receipt_member": "math_compression/BOUNDARY_FLAT_GRAM_RECEIPT.json",
+      "receipt_sha256": "e6f3b363c726da6f4dcdbbbbd94fb8be6068d3928ab9bd416eb724c5d441a5c2",
+      "bundle_receipt_path": "evidence/supporting_receipts/02_BOUNDARY_FLAT_GRAM_RECEIPT.json",
+      "source_hashes_from_receipt": "2682b15712b29437ddaf1a092e4237e8472fa741c9472c3d95816994ce507f84",
+      "root_fields_from_receipt": {
+        "axioms": {
+          "Zeta23.OPICARound20.zeroSampleEnergy_nonnegative": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.zeta_Wsummand_re_eq_zeroSampleEnergy_of_re_eq_half": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.zeroSampleEnergy_summable_of_criticalLine": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.zeta_W_re_eq_tsum_zeroSampleEnergy_of_criticalLine": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.canonicalSourceEnergy_eq_zeroSampleEnergy_of_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.zeroSampleEnergy_le_canonicalSourceEnergy_of_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.canonicalSourceQuadraticForm_zero_of_all_samples_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.canonicalSourceEnergy_zero_iff_all_samples_zero_of_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.canonicalSourceEnergy_pos_iff_exists_nonzero_sample_of_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      },
+      "scope_fields_from_receipt": {
+        "scope": "Fresh authored native-only source compilation and named-module kernel replay against imported common-pin environment; no full fresh imported-declaration replay",
+        "status": "PASS",
+        "c1_closed": false,
+        "rh_closed": false
+      },
+      "source_members_matched_by_sha256": {
+        "2682b15712b29437ddaf1a092e4237e8472fa741c9472c3d95816994ce507f84": [
+          "math_compression/OPICAStep4/BoundaryFlatGram.lean"
+        ]
+      }
+    },
+    {
+      "independent_records": 12055,
+      "public_roots": 20,
+      "scope": "Finite rational sampling and sharpness",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 3,
+      "checkpoint_receipt_member": "math_compression/FINITE_RATIONAL_SAMPLING_RECEIPT.json",
+      "receipt_sha256": "f4a82933f24c670736c21771ad4d80a716b96cf11930993becf43d939e48965e",
+      "bundle_receipt_path": "evidence/supporting_receipts/03_FINITE_RATIONAL_SAMPLING_RECEIPT.json",
+      "source_hashes_from_receipt": null,
+      "root_fields_from_receipt": {},
+      "scope_fields_from_receipt": {
+        "scope": "Fresh finite rational-sampling supporting algebra; no Fourier identity, density proof, supplier closure, C1, or RH conclusion",
+        "status": "PASS",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound20.finiteCauchyNumerator_eval": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finiteCauchyNumerator_eval_pole": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finiteCauchyNumerator_eq_zero_iff": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finiteCauchyNumerator_natDegree_le": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finiteCauchyNumerator_shift": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finiteCauchyNumerator_moment_shift": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finiteCauchyNumerator_degree_defect": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finiteCauchySum_zero_forces_coefficients": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finite_moments_force_coefficients": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finiteCauchySum_nonzero_sample": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finiteCauchySum_zero_set_card_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.boundaryFlat_scaled_moments": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.boundaryFlat_rational_samples_force_coefficients": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.boundaryFlat_rational_sampling_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.boundaryFlat_coefficients_zero_of_cutoff_le_one": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.rationalSamplingSharpness_boundaryFlat": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.rationalSamplingSharpness_nonzero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.rationalSamplingSharpness_zero_sample": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.rationalSamplingSharpness_nonzero_sample": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.rationalSamplingSharpness_sample_is_not_pole": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      },
+      "source_members_matched_by_sha256": {}
+    },
+    {
+      "independent_records": 36557,
+      "public_roots": 10,
+      "scope": "Exact native Fourier identity and finite sampling",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 4,
+      "checkpoint_receipt_member": "fourier_bridge/validation_v1/FOURIER_BRIDGE_RECEIPT.json",
+      "receipt_sha256": "76b63166edabf20715cc3297877abce8aea319dbd516ebe9d784bcbc580bad50",
+      "bundle_receipt_path": "evidence/supporting_receipts/04_FOURIER_BRIDGE_RECEIPT.json",
+      "source_hashes_from_receipt": null,
+      "root_fields_from_receipt": {},
+      "scope_fields_from_receipt": {
+        "scope": "Exact arbitrary-coefficient native finite Fourier rational identity, whole-exponential nonresonance control, and actual boundary-flat finite sampling; no supplier closure, density theorem, C1 or RH conclusion",
+        "status": "PASS",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_intervalIntegral": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_rational": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.paperKernel_eq_one_of_modal_resonance": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.paperModeDenominator_ne_zero_of_exp_ne_one": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.finiteFourierScale_ne_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.paperFT_localizedFiniteVector_zero_iff_rational_sum_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_zero_at_nonmodal_resonance": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.boundaryFlat_paperFT_sampling_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.boundaryFlat_paperFT_samples_force_coefficients": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      },
+      "source_members_matched_by_sha256": {}
+    },
+    {
+      "independent_records": 35838,
+      "public_roots": 2,
+      "scope": "Exact direct modal Fourier values",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 5,
+      "checkpoint_receipt_member": "fourier_bridge/resonance_validation_v1/MODAL_VALUE_RECEIPT.json",
+      "receipt_sha256": "84dab9f22bcf03ade95b398ed6ba0d315544cce8179ed09c591ae3838b96ce03",
+      "bundle_receipt_path": "evidence/supporting_receipts/05_MODAL_VALUE_RECEIPT.json",
+      "source_hashes_from_receipt": null,
+      "root_fields_from_receipt": {},
+      "scope_fields_from_receipt": {
+        "scope": "Exact arbitrary-coefficient modal transform evaluation by integration; no C1/RH conclusion",
+        "status": "PASS",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel_at_resonance": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.paperFT_localizedFiniteVector_at_modal_point": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      },
+      "source_members_matched_by_sha256": {}
+    },
+    {
+      "actual_distinct_fraction_assumption_preserved": true,
+      "independent_records": 60581,
+      "public_roots": 9,
+      "scope": "Conditional distinct-growth sampling supplier and actual unconditional RvM wrapper",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 6,
+      "checkpoint_receipt_member": "math_compression/CONDITIONAL_DENSITY_SUPPLIER_RECEIPT.json",
+      "receipt_sha256": "4d1880e302bd58c59cfc2f0ff16a35f8c4c352f8d1127818459204ce05d3bfbc",
+      "bundle_receipt_path": "evidence/supporting_receipts/06_CONDITIONAL_DENSITY_SUPPLIER_RECEIPT.json",
+      "source_hashes_from_receipt": null,
+      "root_fields_from_receipt": {},
+      "scope_fields_from_receipt": {
+        "scope": "Conditional superlinear DISTINCT window growth implies nonresonant samples; explicit positive-distinct-fraction driver; unconditional actual RvM wrapper. Native Final/Unconditional density supplier remains unverified. No C1/RH closure.",
+        "status": "PASS",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound20.gammaOf_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.exponential_gamma_argument": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.resonance_mem_grid_of_ordinate_bounds": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.resonanceGrid_card_lt_linear": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.nonresonantZeroSet_infinite_of_distinct_growth": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.exists_nonresonant_zero_samples_of_distinct_growth": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.distinct_growth_of_positive_fraction": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.actual_zeta_riemannVonMangoldt": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.actual_zeta_distinct_growth_of_positive_fraction": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      },
+      "source_members_matched_by_sha256": {}
+    },
+    {
+      "C1_and_sample_supply_assumptions_preserved": true,
+      "independent_records": 65899,
+      "public_roots": 8,
+      "scope": "Conditional strict energy and fixed-parameter physical-norm coercivity",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 7,
+      "checkpoint_receipt_member": "fourier_energy/validation_v1/CONDITIONAL_ENERGY_RECEIPT.json",
+      "receipt_sha256": "7d3b20b786a6d96a41101157d906334cab2f19ab552df653421c37fc649f5b4d",
+      "bundle_receipt_path": "evidence/supporting_receipts/07_CONDITIONAL_ENERGY_RECEIPT.json",
+      "source_hashes_from_receipt": null,
+      "root_fields_from_receipt": {},
+      "scope_fields_from_receipt": {
+        "scope": "Native C1 plus a separate distinct nonresonant actual-zero sample supply imply strict complete canonical energy and a positive fixed-(L,K) Euclidean norm-square lower bound. Both premises remain visible; no unconditional C1/RH or zero-density claim",
+        "status": "PASS",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound20.boundaryFlat_exists_nonzero_actual_sample_of_supply": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.canonicalSourceEnergy_pos_of_c1_and_nonresonant_samples": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.canonicalSourceEnergy_zero_iff_coefficients_zero_of_c1_and_samples": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.canonicalSourceEnergy_pos_euclidean_of_c1_and_samples": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.nonresonantActualZeroSamples_of_cutoff_le_one": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.canonicalSourceEnergy_low_cutoff_euclidean_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.canonicalSourceEnergy_exists_positive_euclidean_lower_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.canonicalSourceEnergy_exists_positive_coefficient_l2_lower_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      },
+      "source_members_matched_by_sha256": {}
+    },
+    {
+      "added_record_structurally_matches_actual_runtime": true,
+      "independent_input_records": 9394,
+      "independent_prepared_records": 9395,
+      "native_slice_identification": "PROVED_BY_SEPARATE_37_ROOT_NATIVE_ADAPTER; original generic theorem scope unchanged",
+      "pinned_prelude_records_added": [
+        "Empty"
+      ],
+      "public_roots": 10,
+      "scope": "Generic conditional parity/pole factorization and folded finite Cauchy sampling",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 8,
+      "checkpoint_receipt_member": "math_compression/parity_rational/PARITY_RATIONAL_RECEIPT.json",
+      "receipt_sha256": "7a741dd6ec39d160f25f44f1d8e10175633ecabf078b849571df5b425ab4012b",
+      "bundle_receipt_path": "evidence/supporting_receipts/08_PARITY_RATIONAL_RECEIPT.json",
+      "source_hashes_from_receipt": null,
+      "root_fields_from_receipt": {},
+      "scope_fields_from_receipt": {
+        "scope": "Generic conditional polynomial parity/pole factorization and folded finite Cauchy sampling. Native parity/moment/pole-neutral identification remains OPEN.",
+        "status": "PASS",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound20.ParityRational.even_pole_factorization": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.ParityRational.odd_pole_factorization": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.ParityRational.even_pole_factor_natDegree": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.ParityRational.odd_pole_factor_natDegree": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.ParityRational.even_moment_pole_samples_force_coefficients": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.ParityRational.odd_moment_pole_samples_force_coefficients": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.ParityRational.even_six_moment_samples_force_coefficients": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.ParityRational.odd_seven_moment_samples_force_coefficients": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.ParityRational.even_six_moment_low_cutoff_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.ParityRational.odd_seven_moment_low_cutoff_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      },
+      "source_members_matched_by_sha256": {}
+    },
+    {
+      "C1_or_RH_assumption": false,
+      "compatible_native_modules": 44,
+      "independent_records": 67978,
+      "independent_total_roots": 39,
+      "native_files_with_recorded_compatibility_changes": 6,
+      "pinned_prelude_records_added": [],
+      "public_roots": 5,
+      "receipt_sha256": "8248e2d81130195f71f84f65479034221c085960a5d3d991f7093d6c25176f16",
+      "scope": "Actual distinct-zero density, superlinear distinct growth and arbitrary finite nonresonant actual-zero samples",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 9,
+      "checkpoint_receipt_member": "resource_strategy/density_import_compat_v4/validation_v2/ACTUAL_DISTINCT_GROWTH_RECEIPT.json",
+      "bundle_receipt_path": "evidence/supporting_receipts/09_ACTUAL_DISTINCT_GROWTH_RECEIPT.json",
+      "source_hashes_from_receipt": null,
+      "root_fields_from_receipt": {
+        "ordered_independent_roots": [
+          "Quot",
+          "Quot.mk",
+          "Quot.lift",
+          "Quot.ind",
+          "propext",
+          "Quot.sound",
+          "Classical.choice",
+          "Nat.add",
+          "Nat.sub",
+          "Nat.mul",
+          "Nat.pow",
+          "Nat.gcd",
+          "Nat.div",
+          "Nat.mod",
+          "Nat.beq",
+          "Nat.ble",
+          "Nat.land",
+          "Nat.lor",
+          "Nat.xor",
+          "Nat.shiftLeft",
+          "Nat.shiftRight",
+          "String.ofList",
+          "Char.ofNat",
+          "List",
+          "eagerReduce",
+          "Nat",
+          "String",
+          "String.mk",
+          "Char",
+          "optParam",
+          "autoParam",
+          "semiOutParam",
+          "outParam",
+          "Empty",
+          "Zeta23.thmC₀",
+          "Zeta23.three_quarters_distinct",
+          "Zeta23.OPICARound20.DensityCompatibility.eventually_half_distinct",
+          "Zeta23.OPICARound20.DensityCompatibility.actual_distinct_window_superlinear",
+          "Zeta23.OPICARound20.DensityCompatibility.actual_nonresonant_zero_samples"
+        ]
+      },
+      "scope_fields_from_receipt": {
+        "scope": "Actual native thmC₀ and unconditional distinct growth/nonresonant samples at the common pin, with narrowed imports, one identical deprecated alias and local retention bindings preserving existing section parameters; unchanged-source replay remains failed",
+        "status": "PASS",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.thmC₀": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.three_quarters_distinct": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.DensityCompatibility.eventually_half_distinct": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.DensityCompatibility.actual_distinct_window_superlinear": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.DensityCompatibility.actual_nonresonant_zero_samples": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "complete_selected_proof_and_type_closure": "PASS",
+        "pinned_prelude_records_synthesized": 0
+      },
+      "source_members_matched_by_sha256": {}
+    },
+    {
+      "C1_assumption_preserved_for_energy": true,
+      "C1_or_RH_assumption_in_sampling": false,
+      "independent_records": 71320,
+      "independent_total_roots": 48,
+      "pinned_prelude_records_added": [],
+      "public_roots": 14,
+      "receipt_sha256": "7a20b3419231831f5f039e990d668943142093a84a45b9da352fd70592844130",
+      "scope": "Unconditional actual sampling and C1-only strict energy/coercivity, with universal C1 equivalences",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 10,
+      "checkpoint_receipt_member": "resource_strategy/actual_density_energy_v1/validation_v2/ACTUAL_DENSITY_ENERGY_RECEIPT.json",
+      "bundle_receipt_path": "evidence/supporting_receipts/10_ACTUAL_DENSITY_ENERGY_RECEIPT.json",
+      "source_hashes_from_receipt": "4786b7bbd2a662da06c188bbef0fc717896fa9547724d3f1bf6237a4a4987bcf",
+      "root_fields_from_receipt": {
+        "selected_safe_theorems": [
+          "Zeta23.OPICARound21.ActualDensityEnergy.actual_nonresonant_samples",
+          "Zeta23.OPICARound21.ActualDensityEnergy.exists_actual_zero_sampling_injective",
+          "Zeta23.OPICARound21.ActualDensityEnergy.boundaryFlat_exists_nonzero_actual_zero_sample",
+          "Zeta23.OPICARound21.ActualDensityEnergy.boundaryFlat_all_actual_zero_samples_vanish_iff",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_pos_of_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_zero_iff_coefficients_zero_of_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_pos_euclidean_of_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_exists_positive_euclidean_bound_of_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_exists_positive_coefficient_l2_bound_of_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_strict_positive",
+          "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_euclidean_coercive",
+          "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_coefficient_l2_coercive",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_nonpositive_witness_refutes_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_low_cutoff_positive_euclidean_bound"
+        ],
+        "ordered_independent_roots": [
+          "Quot",
+          "Quot.mk",
+          "Quot.lift",
+          "Quot.ind",
+          "propext",
+          "Quot.sound",
+          "Classical.choice",
+          "Nat.add",
+          "Nat.sub",
+          "Nat.mul",
+          "Nat.pow",
+          "Nat.gcd",
+          "Nat.div",
+          "Nat.mod",
+          "Nat.beq",
+          "Nat.ble",
+          "Nat.land",
+          "Nat.lor",
+          "Nat.xor",
+          "Nat.shiftLeft",
+          "Nat.shiftRight",
+          "String.ofList",
+          "Char.ofNat",
+          "List",
+          "eagerReduce",
+          "Nat",
+          "String",
+          "String.mk",
+          "Char",
+          "optParam",
+          "autoParam",
+          "semiOutParam",
+          "outParam",
+          "Empty",
+          "Zeta23.OPICARound21.ActualDensityEnergy.actual_nonresonant_samples",
+          "Zeta23.OPICARound21.ActualDensityEnergy.exists_actual_zero_sampling_injective",
+          "Zeta23.OPICARound21.ActualDensityEnergy.boundaryFlat_exists_nonzero_actual_zero_sample",
+          "Zeta23.OPICARound21.ActualDensityEnergy.boundaryFlat_all_actual_zero_samples_vanish_iff",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_pos_of_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_zero_iff_coefficients_zero_of_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_pos_euclidean_of_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_exists_positive_euclidean_bound_of_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_exists_positive_coefficient_l2_bound_of_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_strict_positive",
+          "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_euclidean_coercive",
+          "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_coefficient_l2_coercive",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_nonpositive_witness_refutes_c1",
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_low_cutoff_positive_euclidean_bound"
+        ]
+      },
+      "scope_fields_from_receipt": {
+        "scope": "Unconditional actual-zero Fourier sampling and C1-only complete BF strict energy/coercivity, with exact universally quantified equivalences",
+        "status": "PASS",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound21.ActualDensityEnergy.actual_nonresonant_samples": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.exists_actual_zero_sampling_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.boundaryFlat_exists_nonzero_actual_zero_sample": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.boundaryFlat_all_actual_zero_samples_vanish_iff": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_pos_of_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_zero_iff_coefficients_zero_of_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_pos_euclidean_of_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_exists_positive_euclidean_bound_of_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_exists_positive_coefficient_l2_bound_of_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_strict_positive": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_euclidean_coercive": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_coefficient_l2_coercive": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_nonpositive_witness_refutes_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_low_cutoff_positive_euclidean_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "complete_selected_proof_and_type_closure": "PASS",
+        "pinned_prelude_records_synthesized": 0
+      },
+      "source_members_matched_by_sha256": {
+        "4786b7bbd2a662da06c188bbef0fc717896fa9547724d3f1bf6237a4a4987bcf": []
+      }
+    },
+    {
+      "C1_or_RH_assumption": false,
+      "actual_zero_sample_supply_for_native_counts": "PROVED_BY_SEPARATE_5_ROOT_ACTUAL_NATIVE_PARITY_PACKAGE",
+      "independent_records": 37094,
+      "independent_total_roots": 71,
+      "pinned_prelude_records_added": [],
+      "public_roots": 37,
+      "receipt_sha256": "a7e2b21568bb81b8e85a0afe84e04da27efed8333c492829161a8406fe377427",
+      "sample_conditions": "Square-distinct; full exponential nonresonance; squared point not -1/4",
+      "sample_count_optimality": "PROVED_BY_SEPARATE_14_ROOT_INTERPOLATION_PACKAGE for L>0,K>=2 and complex-linear scalar measurements; positive dimension enforced by the strict count inequality",
+      "scope": "Exact native parity, six/seven moments, physical pole factors and sufficient K-3/K-4 Fourier sampling",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 11,
+      "checkpoint_receipt_member": "math_compression/native_parity_rational/validation_v1/NATIVE_PARITY_SAMPLING_RECEIPT.json",
+      "bundle_receipt_path": "evidence/supporting_receipts/11_NATIVE_PARITY_SAMPLING_RECEIPT.json",
+      "source_hashes_from_receipt": {
+        "/workspace/scratch/c5836ca317eb/math_compression/native_parity_rational/NativeParityRational/PolynomialReversal.lean": "3faaf2164d221889aa88fd511f9b1da0156c86cad386ecf86020d467afba2614",
+        "/workspace/scratch/c5836ca317eb/math_compression/native_parity_rational/validation_v1/source/NativeParityRational/PolynomialReversal.lean": "3faaf2164d221889aa88fd511f9b1da0156c86cad386ecf86020d467afba2614",
+        "/workspace/scratch/c5836ca317eb/math_compression/native_parity_rational/NativeParityRational/MomentSliceIdentification.lean": "6c0c393f28b8418499a2f44e7bfb8a66e6b9f6b6b0b3985f961843b9762404a2",
+        "/workspace/scratch/c5836ca317eb/math_compression/native_parity_rational/validation_v1/source/NativeParityRational/MomentSliceIdentification.lean": "6c0c393f28b8418499a2f44e7bfb8a66e6b9f6b6b0b3985f961843b9762404a2",
+        "/workspace/scratch/c5836ca317eb/math_compression/native_parity_rational/NativeParityRational/MomentSliceSampling.lean": "d4800e0ce9dc7ba2649bca04dbf80c339684a8c3a01012d9c7819b26b09b5c55",
+        "/workspace/scratch/c5836ca317eb/math_compression/native_parity_rational/validation_v1/source/NativeParityRational/MomentSliceSampling.lean": "d4800e0ce9dc7ba2649bca04dbf80c339684a8c3a01012d9c7819b26b09b5c55"
+      },
+      "root_fields_from_receipt": {
+        "ordered_independent_roots": [
+          "Quot",
+          "Quot.mk",
+          "Quot.lift",
+          "Quot.ind",
+          "propext",
+          "Quot.sound",
+          "Classical.choice",
+          "Nat.add",
+          "Nat.sub",
+          "Nat.mul",
+          "Nat.pow",
+          "Nat.gcd",
+          "Nat.div",
+          "Nat.mod",
+          "Nat.beq",
+          "Nat.ble",
+          "Nat.land",
+          "Nat.lor",
+          "Nat.xor",
+          "Nat.shiftLeft",
+          "Nat.shiftRight",
+          "String.ofList",
+          "Char.ofNat",
+          "List",
+          "eagerReduce",
+          "Nat",
+          "String",
+          "String.mk",
+          "Char",
+          "optParam",
+          "autoParam",
+          "semiOutParam",
+          "outParam",
+          "Empty",
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_reindex",
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_neg_coefficients",
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_comp_neg_X",
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_even_of_reversal",
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_odd_of_reversal",
+          "Zeta23.OPICARound20.NativeParityRational.exists_square_composition_of_odd_coefficients_zero",
+          "Zeta23.OPICARound20.NativeParityRational.exists_X_square_composition_of_even_coefficients_zero",
+          "Zeta23.OPICARound20.NativeParityRational.exists_square_composition_of_comp_neg_X_eq",
+          "Zeta23.OPICARound20.NativeParityRational.exists_X_square_composition_of_comp_neg_X_eq_neg",
+          "Zeta23.OPICARound20.NativeParityRational.physicalPole_reverse",
+          "Zeta23.OPICARound20.NativeParityRational.physicalPole_injective",
+          "Zeta23.OPICARound20.NativeParityRational.physicalPole_ne_of_nonresonance",
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchySum_physicalPole_eq",
+          "Zeta23.OPICARound20.NativeParityRational.evenPhysicalCoefficients_mem",
+          "Zeta23.OPICARound20.NativeParityRational.oddPhysicalCoefficients_mem",
+          "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_centered_moments",
+          "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_centered_moments",
+          "Zeta23.OPICARound20.NativeParityRational.physicalPole_moment_prefix",
+          "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_square_form",
+          "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_square_form",
+          "Zeta23.OPICARound20.NativeParityRational.paperFT_imaginary_half_axis",
+          "Zeta23.OPICARound20.NativeParityRational.half_imaginary_nonresonant",
+          "Zeta23.OPICARound20.NativeParityRational.evenPhysical_paperFT_half_imaginary_zero",
+          "Zeta23.OPICARound20.NativeParityRational.oddPhysical_paperFT_half_imaginary_zero",
+          "Zeta23.OPICARound20.NativeParityRational.physicalNumerator_root_of_paperFT_zero",
+          "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_half_imaginary_root",
+          "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_half_imaginary_root",
+          "Zeta23.OPICARound20.NativeParityRational.half_imaginary_sq",
+          "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_pole_factorization",
+          "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_pole_factorization",
+          "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_paperFT_samples_force_zero",
+          "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_paperFT_samples_force_zero",
+          "Zeta23.OPICARound20.NativeParityRational.paperFT_localized_coefficients_sub",
+          "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_paperFT_sampling_injective",
+          "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_paperFT_sampling_injective",
+          "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_low_cutoff_zero",
+          "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_low_cutoff_zero"
+        ]
+      },
+      "scope_fields_from_receipt": {
+        "scope": "Actual native parity, six/seven centered moments, physical pole factorization, and K-3/K-4 square-distinct nonresonant Fourier sampling on the unchanged native moment slices",
+        "status": "PASS",
+        "original_pin_production_acceptance": "NOT_CLAIMED; accepted common-pin native objects reused unchanged",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_reindex": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_neg_coefficients": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_comp_neg_X": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_even_of_reversal": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_odd_of_reversal": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.exists_square_composition_of_odd_coefficients_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.exists_X_square_composition_of_even_coefficients_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.exists_square_composition_of_comp_neg_X_eq": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.exists_X_square_composition_of_comp_neg_X_eq_neg": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.physicalPole_reverse": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.physicalPole_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.physicalPole_ne_of_nonresonance": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.finiteCauchySum_physicalPole_eq": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.evenPhysicalCoefficients_mem": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.oddPhysicalCoefficients_mem": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_centered_moments": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_centered_moments": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.physicalPole_moment_prefix": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_square_form": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_square_form": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.paperFT_imaginary_half_axis": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.half_imaginary_nonresonant": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.evenPhysical_paperFT_half_imaginary_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.oddPhysical_paperFT_half_imaginary_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.physicalNumerator_root_of_paperFT_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_half_imaginary_root": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_half_imaginary_root": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.half_imaginary_sq": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_pole_factorization": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_pole_factorization": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_paperFT_samples_force_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_paperFT_samples_force_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.paperFT_localized_coefficients_sub": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_paperFT_sampling_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_paperFT_sampling_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_low_cutoff_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_low_cutoff_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "complete_selected_proof_and_type_closure": "PASS",
+        "pinned_prelude_records_synthesized": 0
+      },
+      "source_members_matched_by_sha256": {
+        "3faaf2164d221889aa88fd511f9b1da0156c86cad386ecf86020d467afba2614": [],
+        "6c0c393f28b8418499a2f44e7bfb8a66e6b9f6b6b0b3985f961843b9762404a2": [],
+        "d4800e0ce9dc7ba2649bca04dbf80c339684a8c3a01012d9c7819b26b09b5c55": []
+      }
+    },
+    {
+      "C1_or_RH_assumption": false,
+      "independent_records": 68249,
+      "independent_total_roots": 39,
+      "pinned_prelude_records_added": [],
+      "public_roots": 5,
+      "receipt_sha256": "b84442e6e5183b71ab0fbccfd5b644473acbde52d9ec6e76a2e401f70c629ec0",
+      "scope": "Unconditional actual-zero square-distinct nonresonant Fourier sampling at K-3/K-4 coordinates on exact native parity slices, for every L>0,K",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 12,
+      "checkpoint_receipt_member": "math_compression/native_parity_actual/validation_v2/ACTUAL_NATIVE_PARITY_SAMPLING_RECEIPT.json",
+      "bundle_receipt_path": "evidence/supporting_receipts/12_ACTUAL_NATIVE_PARITY_SAMPLING_RECEIPT.json",
+      "source_hashes_from_receipt": {
+        "/workspace/scratch/c5836ca317eb/math_compression/native_parity_actual/NativeParityActual/FiniteFiberSampling.lean": "ade8b424e7c357928a831081b6d75b908140af9942f801c80f1ea03c1ecee287",
+        "/workspace/scratch/c5836ca317eb/math_compression/native_parity_actual/validation_v2/source/NativeParityActual/FiniteFiberSampling.lean": "ade8b424e7c357928a831081b6d75b908140af9942f801c80f1ea03c1ecee287",
+        "/workspace/scratch/c5836ca317eb/math_compression/native_parity_actual/NativeParityActual/ActualZeroSampling.lean": "22d86c31b76574187c751a19b9d8efc770923f54a5ff85619136f0f7f56d4740",
+        "/workspace/scratch/c5836ca317eb/math_compression/native_parity_actual/validation_v2/source/NativeParityActual/ActualZeroSampling.lean": "22d86c31b76574187c751a19b9d8efc770923f54a5ff85619136f0f7f56d4740"
+      },
+      "root_fields_from_receipt": {
+        "ordered_independent_roots": [
+          "Quot",
+          "Quot.mk",
+          "Quot.lift",
+          "Quot.ind",
+          "propext",
+          "Quot.sound",
+          "Classical.choice",
+          "Nat.add",
+          "Nat.sub",
+          "Nat.mul",
+          "Nat.pow",
+          "Nat.gcd",
+          "Nat.div",
+          "Nat.mod",
+          "Nat.beq",
+          "Nat.ble",
+          "Nat.land",
+          "Nat.lor",
+          "Nat.xor",
+          "Nat.shiftLeft",
+          "Nat.shiftRight",
+          "String.ofList",
+          "Char.ofNat",
+          "List",
+          "eagerReduce",
+          "Nat",
+          "String",
+          "String.mk",
+          "Char",
+          "optParam",
+          "autoParam",
+          "semiOutParam",
+          "outParam",
+          "Empty",
+          "Zeta23.OPICARound21.NativeParityActual.infinite_image_of_finite_fibers",
+          "Zeta23.OPICARound21.NativeParityActual.exists_samples_with_distinct_images",
+          "Zeta23.OPICARound21.NativeParityActual.actual_square_distinct_nonresonant_samples",
+          "Zeta23.OPICARound21.NativeParityActual.exists_evenMomentSlice_actual_zero_sampling",
+          "Zeta23.OPICARound21.NativeParityActual.exists_oddMomentSlice_actual_zero_sampling"
+        ]
+      },
+      "scope_fields_from_receipt": {
+        "scope": "Unconditional square-distinct actual-zero sample supply and K-3/K-4 Fourier injection on the exact native even/odd moment slices",
+        "status": "PASS",
+        "original_pin_production_acceptance": "NOT_CLAIMED; uses unchanged accepted common-pin density compatibility overlay",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound21.NativeParityActual.infinite_image_of_finite_fibers": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeParityActual.exists_samples_with_distinct_images": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeParityActual.actual_square_distinct_nonresonant_samples": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeParityActual.exists_evenMomentSlice_actual_zero_sampling": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeParityActual.exists_oddMomentSlice_actual_zero_sampling": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "complete_selected_proof_and_type_closure": "PASS",
+        "pinned_prelude_records_synthesized": 0
+      },
+      "source_members_matched_by_sha256": {
+        "ade8b424e7c357928a831081b6d75b908140af9942f801c80f1ea03c1ecee287": [],
+        "22d86c31b76574187c751a19b9d8efc770923f54a5ff85619136f0f7f56d4740": []
+      }
+    },
+    {
+      "C1_or_RH_assumption": false,
+      "independent_records": 61105,
+      "independent_total_roots": 48,
+      "pinned_prelude_records_added": [],
+      "public_roots": 14,
+      "receipt_sha256": "edae24501ac71c410e68ab6938bcd560b148d6482f11911e2c07849c874eec58",
+      "scope": "Dense and cofinal choices of L with all-cutoff actual sampling, without the positive distinct-fraction supplier; aperture selected before every K",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 13,
+      "checkpoint_receipt_member": "resource_strategy/cofinal_aperture_v1/validation_v1/COFINAL_APERTURE_RECEIPT.json",
+      "bundle_receipt_path": "evidence/supporting_receipts/13_COFINAL_APERTURE_RECEIPT.json",
+      "source_hashes_from_receipt": "7c5c0e99d1f81d254a2b6163f9b8d0a9e797f0cddc6a7e062a709071888bc0e6",
+      "root_fields_from_receipt": {
+        "selected_safe_theorems": [
+          "Zeta23.OPICARound21.CofinalAperture.resonance_apertures_countable",
+          "Zeta23.OPICARound21.CofinalAperture.countable_bad_apertures",
+          "Zeta23.OPICARound21.CofinalAperture.good_apertures_dense",
+          "Zeta23.OPICARound21.CofinalAperture.exists_nonresonant_aperture_in_interval",
+          "Zeta23.OPICARound21.CofinalAperture.zeroConfig_carrier_countable",
+          "Zeta23.OPICARound21.CofinalAperture.zeroConfig_carrier_infinite_of_riemannVonMangoldt",
+          "Zeta23.OPICARound21.CofinalAperture.actual_zero_carrier_infinite",
+          "Zeta23.OPICARound21.CofinalAperture.actual_gamma_ne_zero",
+          "Zeta23.OPICARound21.CofinalAperture.actual_good_apertures_dense",
+          "Zeta23.OPICARound21.CofinalAperture.exists_actual_nonresonant_aperture_in_interval",
+          "Zeta23.OPICARound21.CofinalAperture.actual_samples_at_good_aperture",
+          "Zeta23.OPICARound21.CofinalAperture.exists_interval_aperture_all_cutoff_samples",
+          "Zeta23.OPICARound21.CofinalAperture.exists_interval_aperture_all_cutoff_fourier_sampling",
+          "Zeta23.OPICARound21.CofinalAperture.cofinal_literal_quartic_samples"
+        ],
+        "ordered_independent_roots": [
+          "Quot",
+          "Quot.mk",
+          "Quot.lift",
+          "Quot.ind",
+          "propext",
+          "Quot.sound",
+          "Classical.choice",
+          "Nat.add",
+          "Nat.sub",
+          "Nat.mul",
+          "Nat.pow",
+          "Nat.gcd",
+          "Nat.div",
+          "Nat.mod",
+          "Nat.beq",
+          "Nat.ble",
+          "Nat.land",
+          "Nat.lor",
+          "Nat.xor",
+          "Nat.shiftLeft",
+          "Nat.shiftRight",
+          "String.ofList",
+          "Char.ofNat",
+          "List",
+          "eagerReduce",
+          "Nat",
+          "String",
+          "String.mk",
+          "Char",
+          "optParam",
+          "autoParam",
+          "semiOutParam",
+          "outParam",
+          "Empty",
+          "Zeta23.OPICARound21.CofinalAperture.resonance_apertures_countable",
+          "Zeta23.OPICARound21.CofinalAperture.countable_bad_apertures",
+          "Zeta23.OPICARound21.CofinalAperture.good_apertures_dense",
+          "Zeta23.OPICARound21.CofinalAperture.exists_nonresonant_aperture_in_interval",
+          "Zeta23.OPICARound21.CofinalAperture.zeroConfig_carrier_countable",
+          "Zeta23.OPICARound21.CofinalAperture.zeroConfig_carrier_infinite_of_riemannVonMangoldt",
+          "Zeta23.OPICARound21.CofinalAperture.actual_zero_carrier_infinite",
+          "Zeta23.OPICARound21.CofinalAperture.actual_gamma_ne_zero",
+          "Zeta23.OPICARound21.CofinalAperture.actual_good_apertures_dense",
+          "Zeta23.OPICARound21.CofinalAperture.exists_actual_nonresonant_aperture_in_interval",
+          "Zeta23.OPICARound21.CofinalAperture.actual_samples_at_good_aperture",
+          "Zeta23.OPICARound21.CofinalAperture.exists_interval_aperture_all_cutoff_samples",
+          "Zeta23.OPICARound21.CofinalAperture.exists_interval_aperture_all_cutoff_fourier_sampling",
+          "Zeta23.OPICARound21.CofinalAperture.cofinal_literal_quartic_samples"
+        ]
+      },
+      "scope_fields_from_receipt": {
+        "scope": "Generic countable resonance avoidance; actual good apertures are dense, one positive good aperture supports all cutoffs, including the cofinal literal quartic cutoff; no positive distinct-density input or energy-sign claim",
+        "status": "PASS",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound21.CofinalAperture.resonance_apertures_countable": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.countable_bad_apertures": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.good_apertures_dense": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.exists_nonresonant_aperture_in_interval": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.zeroConfig_carrier_countable": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.zeroConfig_carrier_infinite_of_riemannVonMangoldt": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.actual_zero_carrier_infinite": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.actual_gamma_ne_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.actual_good_apertures_dense": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.exists_actual_nonresonant_aperture_in_interval": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.actual_samples_at_good_aperture": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.exists_interval_aperture_all_cutoff_samples": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.exists_interval_aperture_all_cutoff_fourier_sampling": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.CofinalAperture.cofinal_literal_quartic_samples": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "complete_selected_proof_and_type_closure": "PASS",
+        "pinned_prelude_records_synthesized": 0
+      },
+      "source_members_matched_by_sha256": {
+        "7c5c0e99d1f81d254a2b6163f9b8d0a9e797f0cddc6a7e062a709071888bc0e6": []
+      }
+    },
+    {
+      "C1_or_RH_assumption": false,
+      "independent_records": 25864,
+      "independent_total_roots": 36,
+      "pinned_prelude_records_added": [],
+      "public_roots": 2,
+      "receipt_sha256": "a69737fc1ab3343a9e0912bb9463e849a8fed72740bdb967ef1af7141adf9b9d",
+      "scope": "Unchanged historical native slice dimensions freshly accepted: for L>0,K>=2, even finrank K-3 and odd finrank K-4",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 14,
+      "checkpoint_receipt_member": "supplier_audit/native_moment_slice_dimensions/validation_v1/DIMENSION_RECEIPT.json",
+      "bundle_receipt_path": "evidence/supporting_receipts/14_DIMENSION_RECEIPT.json",
+      "source_hashes_from_receipt": {
+        "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/OPICARound4/RegularCells/FixedSeed.lean": "262922e4d62d5749eb5580328242a4fae709c405a04d2a054452d6d5258422ef",
+        "/workspace/scratch/c5836ca317eb/supplier_audit/native_moment_slice_dimensions/validation_v1/source/Zeta23/OPICARound4/RegularCells/FixedSeed.lean": "262922e4d62d5749eb5580328242a4fae709c405a04d2a054452d6d5258422ef",
+        "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/OPICARound4/ArithmeticFrontier/MomentSliceCoordinates.lean": "6dedec49866970f447ca9267dcc6b910c993efad04b258f4204215372d7424fd",
+        "/workspace/scratch/c5836ca317eb/supplier_audit/native_moment_slice_dimensions/validation_v1/source/Zeta23/OPICARound4/ArithmeticFrontier/MomentSliceCoordinates.lean": "6dedec49866970f447ca9267dcc6b910c993efad04b258f4204215372d7424fd"
+      },
+      "root_fields_from_receipt": {
+        "selected_safe_theorems": [
+          "Zeta23.OPICARound4.ArithmeticFrontier.finrank_evenMomentSlice",
+          "Zeta23.OPICARound4.ArithmeticFrontier.finrank_oddMomentSlice"
+        ],
+        "ordered_independent_roots": [
+          "Quot",
+          "Quot.mk",
+          "Quot.lift",
+          "Quot.ind",
+          "propext",
+          "Quot.sound",
+          "Classical.choice",
+          "Nat.add",
+          "Nat.sub",
+          "Nat.mul",
+          "Nat.pow",
+          "Nat.gcd",
+          "Nat.div",
+          "Nat.mod",
+          "Nat.beq",
+          "Nat.ble",
+          "Nat.land",
+          "Nat.lor",
+          "Nat.xor",
+          "Nat.shiftLeft",
+          "Nat.shiftRight",
+          "String.ofList",
+          "Char.ofNat",
+          "List",
+          "eagerReduce",
+          "Nat",
+          "String",
+          "String.mk",
+          "Char",
+          "optParam",
+          "autoParam",
+          "semiOutParam",
+          "outParam",
+          "Empty",
+          "Zeta23.OPICARound4.ArithmeticFrontier.finrank_evenMomentSlice",
+          "Zeta23.OPICARound4.ArithmeticFrontier.finrank_oddMomentSlice"
+        ]
+      },
+      "scope_fields_from_receipt": {
+        "scope": "Fresh unchanged FixedSeed and MomentSliceCoordinates; exact K-3/K-4 native slice dimensions for L>0 and K>=2",
+        "status": "PASS",
+        "original_pin_production_acceptance": "NOT_CLAIMED; common Lean4.33.1/mathlib pin only",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound4.ArithmeticFrontier.finrank_evenMomentSlice": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound4.ArithmeticFrontier.finrank_oddMomentSlice": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "complete_selected_proof_and_type_closure": "PASS",
+        "pinned_prelude_records_synthesized": 0
+      },
+      "source_members_matched_by_sha256": {
+        "262922e4d62d5749eb5580328242a4fae709c405a04d2a054452d6d5258422ef": [],
+        "6dedec49866970f447ca9267dcc6b910c993efad04b258f4204215372d7424fd": []
+      }
+    },
+    {
+      "C1_or_RH_assumption": false,
+      "audited_linear_map_definitions": 2,
+      "independent_records": 68840,
+      "independent_total_roots": 48,
+      "norm_and_energy_scope": "Original physical coordinates retained; no isometry, effective inverse, uniform bound or canonical energy sign",
+      "pinned_prelude_records_added": [],
+      "public_roots": 14,
+      "receipt_sha256": "b28d4285e81abd89a26916d9020a704cb3d7f2e2b2b320d5d15c3b8d552dafdc",
+      "sample_quantifiers": "forall L>0,K>=2, exists an eligible actual-zero family, forall complex target values, exists a unique native interpolant",
+      "scope": "Bijective native complex-linear Fourier sampling, unique arbitrary-data interpolation at actual zeros, and sharp complex-linear measurement counts for L>0,K>=2",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 15,
+      "checkpoint_receipt_member": "resource_strategy/native_slice_interpolation_v1/validation_v4/NATIVE_SLICE_INTERPOLATION_RECEIPT.json",
+      "bundle_receipt_path": "evidence/supporting_receipts/15_NATIVE_SLICE_INTERPOLATION_RECEIPT.json",
+      "source_hashes_from_receipt": "c6574254b70364e366aa3735048024dc2db375e8067634652a95e7d6d2c94666",
+      "root_fields_from_receipt": {
+        "selected_safe_theorems": [
+          "Zeta23.OPICARound21.NativeSliceInterpolation.paperFT_localized_coefficients_add",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.paperFT_localized_coefficients_smul",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_apply",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_apply",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_injective",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_injective",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_bijective",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_bijective",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_unique_interpolation",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_unique_interpolation",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.exists_even_actual_zero_interpolation",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.exists_odd_actual_zero_interpolation",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.even_fewer_linear_evaluations_not_injective",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.odd_fewer_linear_evaluations_not_injective"
+        ],
+        "ordered_independent_roots": [
+          "Quot",
+          "Quot.mk",
+          "Quot.lift",
+          "Quot.ind",
+          "propext",
+          "Quot.sound",
+          "Classical.choice",
+          "Nat.add",
+          "Nat.sub",
+          "Nat.mul",
+          "Nat.pow",
+          "Nat.gcd",
+          "Nat.div",
+          "Nat.mod",
+          "Nat.beq",
+          "Nat.ble",
+          "Nat.land",
+          "Nat.lor",
+          "Nat.xor",
+          "Nat.shiftLeft",
+          "Nat.shiftRight",
+          "String.ofList",
+          "Char.ofNat",
+          "List",
+          "eagerReduce",
+          "Nat",
+          "String",
+          "String.mk",
+          "Char",
+          "optParam",
+          "autoParam",
+          "semiOutParam",
+          "outParam",
+          "Empty",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.paperFT_localized_coefficients_add",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.paperFT_localized_coefficients_smul",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_apply",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_apply",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_injective",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_injective",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_bijective",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_bijective",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_unique_interpolation",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_unique_interpolation",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.exists_even_actual_zero_interpolation",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.exists_odd_actual_zero_interpolation",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.even_fewer_linear_evaluations_not_injective",
+          "Zeta23.OPICARound21.NativeSliceInterpolation.odd_fewer_linear_evaluations_not_injective"
+        ]
+      },
+      "scope_fields_from_receipt": {
+        "scope": "Complex-linear Fourier evaluation on exact native physical even/odd moment slices; sharp K-3/K-4 interpolation at admissible samples; actual-zero sample existence",
+        "status": "PASS",
+        "original_pin_production_acceptance": "NOT_CLAIMED; accepted isolated common-pin density compatibility implementation is inherited unchanged",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound21.NativeSliceInterpolation.paperFT_localized_coefficients_add": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.paperFT_localized_coefficients_smul": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_apply": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_apply": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_bijective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_bijective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_unique_interpolation": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_unique_interpolation": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.exists_even_actual_zero_interpolation": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.exists_odd_actual_zero_interpolation": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.even_fewer_linear_evaluations_not_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound21.NativeSliceInterpolation.odd_fewer_linear_evaluations_not_injective": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "complete_selected_proof_and_type_closure": "PASS",
+        "pinned_prelude_records_synthesized": 0
+      },
+      "source_members_matched_by_sha256": {
+        "c6574254b70364e366aa3735048024dc2db375e8067634652a95e7d6d2c94666": []
+      }
+    },
+    {
+      "C1_or_RH_closed": false,
+      "archive_sha256": "378310426be70f276431cc14e37c0d48bd803133c8a5a225248ff81785eded50",
+      "audited_definitions": 1,
+      "direct_equivalence_inputs": "Actual-zero countability and nonzero gamma, operator continuity and error slack. Actual-zero infinitude is used downstream for arbitrary finite sample supply, not by this aperture equivalence.",
+      "direct_route_audit_scope": "Actual RH constant and named native RH gateways excluded by complete logical traversal. The preserved supplemental receiver-name typo is not relied on; see the root review.",
+      "independent_records": 58387,
+      "independent_total_roots": 39,
+      "metric": "Exact physical Euclidean norm, transported through the full D*D Gram",
+      "new_energy_sign_or_uniform_gap": false,
+      "pinned_prelude_records_added": [],
+      "public_roots": 4,
+      "receipt_sha256": "f73c660120055faecc18ccebc5fa3f3bc74d34015391b7e8a7dd5007bc15be16",
+      "root_post_green_review_sha256": "7f638f8aab78b2e77f8cce679c69cca2c626061bb7a92c6fec2b8c6eb6ae9fd1",
+      "scope": "Direct native C1 equivalence with simultaneous actual-zero nonresonant apertures, plus generic and exact native whole-slice stability under positive error slack",
+      "status": "COMPILE_AXIOMS_STOCK_AND_INDEPENDENT_COMPLETE_SELECTED_PROOF_CLOSURE_PASS",
+      "package_index": 16,
+      "checkpoint_receipt_member": "math_compression/aperture_slack_v1/validation_v1/APERTURE_SLACK_RECEIPT.json",
+      "bundle_receipt_path": "evidence/supporting_receipts/16_APERTURE_SLACK_RECEIPT.json",
+      "source_hashes_from_receipt": {
+        "/workspace/scratch/c5836ca317eb/math_compression/aperture_slack_v1/ApertureSlack/FormStability.lean": "efc6c85245fa1a34d2ec3027817d84b4629cb1023c9f47843c358ab307e3fb20",
+        "/workspace/scratch/c5836ca317eb/math_compression/aperture_slack_v1/validation_v1/source/ApertureSlack/FormStability.lean": "efc6c85245fa1a34d2ec3027817d84b4629cb1023c9f47843c358ab307e3fb20",
+        "/workspace/scratch/c5836ca317eb/math_compression/aperture_slack_v1/ApertureSlack/NativeGoodAperture.lean": "dfe8cf8998f29d1e81211b1d4b5e39a529184bd50e2bc42be745d2d4c9e9372d",
+        "/workspace/scratch/c5836ca317eb/math_compression/aperture_slack_v1/validation_v1/source/ApertureSlack/NativeGoodAperture.lean": "dfe8cf8998f29d1e81211b1d4b5e39a529184bd50e2bc42be745d2d4c9e9372d"
+      },
+      "root_fields_from_receipt": {
+        "selected_safe_theorems": [
+          "Zeta23.OPICARound22.ApertureSlack.eventually_lower_bound_on_set_of_operator_continuity",
+          "Zeta23.OPICARound22.ApertureSlack.evenMomentSliceLowerBound_eventually_of_slack",
+          "Zeta23.OPICARound22.ApertureSlack.oddMomentSliceLowerBound_eventually_of_slack",
+          "Zeta23.OPICARound22.ApertureSlack.c1_iff_good_aperture_c1"
+        ],
+        "selected_safe_definitions": [
+          "Zeta23.OPICARound22.ApertureSlack.GoodApertureC1"
+        ],
+        "ordered_independent_roots": [
+          "Quot",
+          "Quot.mk",
+          "Quot.lift",
+          "Quot.ind",
+          "propext",
+          "Quot.sound",
+          "Classical.choice",
+          "Nat.add",
+          "Nat.sub",
+          "Nat.mul",
+          "Nat.pow",
+          "Nat.gcd",
+          "Nat.div",
+          "Nat.mod",
+          "Nat.beq",
+          "Nat.ble",
+          "Nat.land",
+          "Nat.lor",
+          "Nat.xor",
+          "Nat.shiftLeft",
+          "Nat.shiftRight",
+          "String.ofList",
+          "Char.ofNat",
+          "List",
+          "eagerReduce",
+          "Nat",
+          "String",
+          "String.mk",
+          "Char",
+          "optParam",
+          "autoParam",
+          "semiOutParam",
+          "outParam",
+          "Empty",
+          "Zeta23.OPICARound22.ApertureSlack.eventually_lower_bound_on_set_of_operator_continuity",
+          "Zeta23.OPICARound22.ApertureSlack.evenMomentSliceLowerBound_eventually_of_slack",
+          "Zeta23.OPICARound22.ApertureSlack.oddMomentSliceLowerBound_eventually_of_slack",
+          "Zeta23.OPICARound22.ApertureSlack.c1_iff_good_aperture_c1",
+          "Zeta23.OPICARound22.ApertureSlack.GoodApertureC1"
+        ]
+      },
+      "scope_fields_from_receipt": {
+        "scope": "Generic operator lower-bound stability; exact physical even/odd fixed-cutoff slack stability; direct C1 iff all-zero-nonresonant-aperture C1 with the same literal quartic cutoff.",
+        "status": "PASS",
+        "original_pin_production_acceptance": "NOT_CLAIMED; exact accepted common Lean4.33.1/mathlib only",
+        "c1_closed": false,
+        "rh_closed": false,
+        "transitive_axioms": {
+          "Zeta23.OPICARound22.ApertureSlack.eventually_lower_bound_on_set_of_operator_continuity": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound22.ApertureSlack.evenMomentSliceLowerBound_eventually_of_slack": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound22.ApertureSlack.oddMomentSliceLowerBound_eventually_of_slack": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound22.ApertureSlack.c1_iff_good_aperture_c1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICARound22.ApertureSlack.GoodApertureC1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "complete_selected_proof_and_type_closure": "PASS",
+        "pinned_prelude_records_synthesized": 0
+      },
+      "source_members_matched_by_sha256": {
+        "efc6c85245fa1a34d2ec3027817d84b4629cb1023c9f47843c358ab307e3fb20": [],
+        "dfe8cf8998f29d1e81211b1d4b5e39a529184bd50e2bc42be745d2d4c9e9372d": []
+      }
+    }
+  ],
+  "receipt_enrichment_note": "All 16 receipt byte hashes were computed from the SHA256-verified v18 archive during this review. Existing expected receipt digests matched. Raw historical receipts are preserved without editing. Historical absolute paths inside them are provenance, not current workspace locations. Empty source-member matches require consulting the receipt and its named source package; no source identity is invented."
+}

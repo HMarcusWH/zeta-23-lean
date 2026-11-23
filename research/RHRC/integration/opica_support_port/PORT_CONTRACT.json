@@ -1,0 +1,556 @@
+{
+  "schema": "OPICA_HISTORICAL_SUPPORT_NATIVE_PORT_V1",
+  "native_base": "bb7c8184a135b2823c6296917c5ac893bebf2a71",
+  "native_tree": "2b19357e1b65cc500f3e3a5b5d4df14601b02062",
+  "native_toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "native_mathlib": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "historical_pin": {
+    "lean": "4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "historical_checkpoint_sha256": "b7ad91c93cf36583bf8c5728288340eb167c2089bf141c6b6e95ab6a4a63cb4f",
+  "checkpoint_manifest_sha256": "ac0034e8210bd27c9d9a1a74930dff4b2647158ddc9e78d88cf35a78da3edf9e",
+  "source_recovery_scope": "Selected first-part source bytes checked against embedded historical manifest; full checkpoint archive not freshly reassembled/rehashed",
+  "report_bundle_sha256": "a525b90a68583ee918bb7488f569e944362f71a3eb60c94bced6896a87c0ec25",
+  "candidate_modules": [
+    {
+      "path": "Zeta23/OPICASupport/FourierBridge/BoundaryFlatFourierSampling.lean",
+      "module": "Zeta23.OPICASupport.FourierBridge.BoundaryFlatFourierSampling",
+      "archive_member": "fourier_bridge/FourierBridge/BoundaryFlatFourierSampling.lean",
+      "package_index": 4,
+      "original_sha256": "ec3af306abcbbe45a732c34894f28ca1f222560d10be9ccb7323095e9ee12295",
+      "ported_sha256": "97d203b7fae8769d2aaa8a925f3be8b5e7dc98f41b62d1be485715bb0566eeef",
+      "original_bytes": 3616,
+      "receipt_sha256": "76b63166edabf20715cc3297877abce8aea319dbd516ebe9d784bcbc580bad50",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/FourierBridge/FiniteFourierRational.lean",
+      "module": "Zeta23.OPICASupport.FourierBridge.FiniteFourierRational",
+      "archive_member": "fourier_bridge/FourierBridge/FiniteFourierRational.lean",
+      "package_index": 4,
+      "original_sha256": "134096bff4470454b84839299de027cb9eda9a03bc3ad7525efba430f1c829ce",
+      "ported_sha256": "134096bff4470454b84839299de027cb9eda9a03bc3ad7525efba430f1c829ce",
+      "original_bytes": 8180,
+      "receipt_sha256": "76b63166edabf20715cc3297877abce8aea319dbd516ebe9d784bcbc580bad50",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/FourierBridge/FiniteFourierResonance.lean",
+      "module": "Zeta23.OPICASupport.FourierBridge.FiniteFourierResonance",
+      "archive_member": "fourier_bridge/FourierBridge/FiniteFourierResonance.lean",
+      "package_index": 5,
+      "original_sha256": "608801dd8b8c92f773dc67c0e6116b994d5bf2ea29c667a11ecbbae3638b0c4e",
+      "ported_sha256": "008800dff186924cadada0f215235aceb8d0d885e0d87040ab579e3a1e4042e6",
+      "original_bytes": 4007,
+      "receipt_sha256": "84dab9f22bcf03ade95b398ed6ba0d315544cce8179ed09c591ae3838b96ce03",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/FourierEnergy/BoundaryFlatStrictEnergy.lean",
+      "module": "Zeta23.OPICASupport.FourierEnergy.BoundaryFlatStrictEnergy",
+      "archive_member": "fourier_energy/FourierEnergy/BoundaryFlatStrictEnergy.lean",
+      "package_index": 7,
+      "original_sha256": "10152ca10a63318736d8e46025a97fb2d392b6f05be251c6bc0d975b077b80e5",
+      "ported_sha256": "a7167ac1424883d2ff9d5ad1ae7b43d7b3e4c95914d683dc315a7c5b601ad27e",
+      "original_bytes": 4240,
+      "receipt_sha256": "7d3b20b786a6d96a41101157d906334cab2f19ab552df653421c37fc649f5b4d",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/FourierEnergy/EuclideanEnergyLowerBound.lean",
+      "module": "Zeta23.OPICASupport.FourierEnergy.EuclideanEnergyLowerBound",
+      "archive_member": "fourier_energy/FourierEnergy/EuclideanEnergyLowerBound.lean",
+      "package_index": 7,
+      "original_sha256": "a57957f460ec709e6dafe323497785923c730964f7f6fa50477cfb148384a38b",
+      "ported_sha256": "64546ce1e1f9c00ccbce36cc303893d361bf5fac261308b5b800c97cf82963f7",
+      "original_bytes": 5489,
+      "receipt_sha256": "7d3b20b786a6d96a41101157d906334cab2f19ab552df653421c37fc649f5b4d",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/OPICAStep4/BoundaryFlatCharacterization.lean",
+      "module": "Zeta23.OPICASupport.OPICAStep4.BoundaryFlatCharacterization",
+      "archive_member": "fork-9e3d30f25cb7ba442e4707f88fb67a513721093f/opica-step4/portable_gate/OPICAStep4/BoundaryFlatCharacterization.lean",
+      "package_index": 1,
+      "original_sha256": "e19bfb13fcb523930617aae99c9d1190cccb1ec3915feae610f7195c68bbef61",
+      "ported_sha256": "e19bfb13fcb523930617aae99c9d1190cccb1ec3915feae610f7195c68bbef61",
+      "original_bytes": 4218,
+      "receipt_sha256": "5c938c66f65b6d00d1f5a76569151d6ad246a81f0847f62ac4449e5ca13d8a8a",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/OPICAStep4/BoundaryFlatGram.lean",
+      "module": "Zeta23.OPICASupport.OPICAStep4.BoundaryFlatGram",
+      "archive_member": "math_compression/OPICAStep4/BoundaryFlatGram.lean",
+      "package_index": 2,
+      "original_sha256": "2682b15712b29437ddaf1a092e4237e8472fa741c9472c3d95816994ce507f84",
+      "ported_sha256": "151d79eec8c21355100cbdd8d2fb194d3c51fa675c2c7275b8b4c336278c868b",
+      "original_bytes": 8804,
+      "receipt_sha256": "e6f3b363c726da6f4dcdbbbbd94fb8be6068d3928ab9bd416eb724c5d441a5c2",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/OPICAStep4/BoundaryFlatRationalSampling.lean",
+      "module": "Zeta23.OPICASupport.OPICAStep4.BoundaryFlatRationalSampling",
+      "archive_member": "math_compression/OPICAStep4/BoundaryFlatRationalSampling.lean",
+      "package_index": 3,
+      "original_sha256": "3bb56c4a0e56d692e4bf8537635486ba45adb60a29625482e9ad33c94a3a409d",
+      "ported_sha256": "a1bb01637fb4b8f0abc8c1383aba228a819e7ceb75e761b4d5451d524dac4c6c",
+      "original_bytes": 3946,
+      "receipt_sha256": "f4a82933f24c670736c21771ad4d80a716b96cf11930993becf43d939e48965e",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/OPICAStep4/FiniteCauchySampling.lean",
+      "module": "Zeta23.OPICASupport.OPICAStep4.FiniteCauchySampling",
+      "archive_member": "math_compression/OPICAStep4/FiniteCauchySampling.lean",
+      "package_index": 3,
+      "original_sha256": "db1f88f3b154ae4fc64788bbfdc10f9c19c03ae3ab5bf506491dff680914af19",
+      "ported_sha256": "db1f88f3b154ae4fc64788bbfdc10f9c19c03ae3ab5bf506491dff680914af19",
+      "original_bytes": 8300,
+      "receipt_sha256": "f4a82933f24c670736c21771ad4d80a716b96cf11930993becf43d939e48965e",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/OPICAStep4/RationalSamplingSharpness.lean",
+      "module": "Zeta23.OPICASupport.OPICAStep4.RationalSamplingSharpness",
+      "archive_member": "math_compression/OPICAStep4/RationalSamplingSharpness.lean",
+      "package_index": 3,
+      "original_sha256": "fdb050c4f462f7b59c0e1f8c89421f35caf89793fd77fad0823d5d20577c8628",
+      "ported_sha256": "f4502a75b418dfab6fee34406170c2c823e8617ebefef37ad6533d552d81481c",
+      "original_bytes": 1677,
+      "receipt_sha256": "f4a82933f24c670736c21771ad4d80a716b96cf11930993becf43d939e48965e",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/ParityRational/PoleSquareSampling.lean",
+      "module": "Zeta23.OPICASupport.ParityRational.PoleSquareSampling",
+      "archive_member": "math_compression/parity_rational/ParityRational/PoleSquareSampling.lean",
+      "package_index": 8,
+      "original_sha256": "51df575e18b11f3a071b743a20bb0fbc135481fd8ac09eb9529fc4a8f04a1326",
+      "ported_sha256": "adfb143bfce70d7431be32c07d83bc3a6d824173967b0c77cae96d7437ebffae",
+      "original_bytes": 9260,
+      "receipt_sha256": "7a741dd6ec39d160f25f44f1d8e10175633ecabf078b849571df5b425ab4012b",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/SamplingDensity/DistinctGrowthFromFraction.lean",
+      "module": "Zeta23.OPICASupport.SamplingDensity.DistinctGrowthFromFraction",
+      "archive_member": "math_compression/SamplingDensity/DistinctGrowthFromFraction.lean",
+      "package_index": 6,
+      "original_sha256": "1ef7b70f14f652dc838c67c1a081f7c61a57daa6a8c8e773d35ef32415a3516a",
+      "ported_sha256": "ada4b6d0a6becb1069d59d7fa51fe9434417ed6edfa6d488eccb2bf27d61f171",
+      "original_bytes": 2739,
+      "receipt_sha256": "4d1880e302bd58c59cfc2f0ff16a35f8c4c352f8d1127818459204ce05d3bfbc",
+      "transformation": "Import-prefix relocation only"
+    },
+    {
+      "path": "Zeta23/OPICASupport/SamplingDensity/ResonanceCounting.lean",
+      "module": "Zeta23.OPICASupport.SamplingDensity.ResonanceCounting",
+      "archive_member": "math_compression/SamplingDensity/ResonanceCounting.lean",
+      "package_index": 6,
+      "original_sha256": "732c207b92eadba2d36f49a0fb1565cb62ea919e4f5e5738695a8d73ad4caac1",
+      "ported_sha256": "732c207b92eadba2d36f49a0fb1565cb62ea919e4f5e5738695a8d73ad4caac1",
+      "original_bytes": 6290,
+      "receipt_sha256": "4d1880e302bd58c59cfc2f0ff16a35f8c4c352f8d1127818459204ce05d3bfbc",
+      "transformation": "Import-prefix relocation only"
+    }
+  ],
+  "historical_package_roots": [
+    {
+      "index": 1,
+      "declared_public_count": 4,
+      "receipt_root_count": 4,
+      "receipt_roots": [
+        "Zeta23.OPICARound20.even_zero_bound_of_all_boundary_flat_nonnegative",
+        "Zeta23.OPICARound20.c1_iff_all_boundary_flat_nonnegative",
+        "Zeta23.OPICARound20.riemannHypothesis_iff_all_boundary_flat_nonnegative",
+        "Zeta23.OPICARound20.finite_negative_boundary_flat_witness_refutes_c1"
+      ],
+      "receipt_root_fields": [
+        "axioms"
+      ],
+      "port_status": "CANDIDATE_SOURCE_STAGED"
+    },
+    {
+      "index": 2,
+      "declared_public_count": 9,
+      "receipt_root_count": 9,
+      "receipt_roots": [
+        "Zeta23.OPICARound20.zeroSampleEnergy_nonnegative",
+        "Zeta23.OPICARound20.zeta_Wsummand_re_eq_zeroSampleEnergy_of_re_eq_half",
+        "Zeta23.OPICARound20.zeroSampleEnergy_summable_of_criticalLine",
+        "Zeta23.OPICARound20.zeta_W_re_eq_tsum_zeroSampleEnergy_of_criticalLine",
+        "Zeta23.OPICARound20.canonicalSourceEnergy_eq_zeroSampleEnergy_of_c1",
+        "Zeta23.OPICARound20.zeroSampleEnergy_le_canonicalSourceEnergy_of_c1",
+        "Zeta23.OPICARound20.canonicalSourceQuadraticForm_zero_of_all_samples_zero",
+        "Zeta23.OPICARound20.canonicalSourceEnergy_zero_iff_all_samples_zero_of_c1",
+        "Zeta23.OPICARound20.canonicalSourceEnergy_pos_iff_exists_nonzero_sample_of_c1"
+      ],
+      "receipt_root_fields": [
+        "axioms"
+      ],
+      "port_status": "CANDIDATE_SOURCE_STAGED"
+    },
+    {
+      "index": 3,
+      "declared_public_count": 20,
+      "receipt_root_count": 20,
+      "receipt_roots": [
+        "Zeta23.OPICARound20.finiteCauchyNumerator_eval",
+        "Zeta23.OPICARound20.finiteCauchyNumerator_eval_pole",
+        "Zeta23.OPICARound20.finiteCauchyNumerator_eq_zero_iff",
+        "Zeta23.OPICARound20.finiteCauchyNumerator_natDegree_le",
+        "Zeta23.OPICARound20.finiteCauchyNumerator_shift",
+        "Zeta23.OPICARound20.finiteCauchyNumerator_moment_shift",
+        "Zeta23.OPICARound20.finiteCauchyNumerator_degree_defect",
+        "Zeta23.OPICARound20.finiteCauchySum_zero_forces_coefficients",
+        "Zeta23.OPICARound20.finite_moments_force_coefficients",
+        "Zeta23.OPICARound20.finiteCauchySum_nonzero_sample",
+        "Zeta23.OPICARound20.finiteCauchySum_zero_set_card_bound",
+        "Zeta23.OPICARound20.boundaryFlat_scaled_moments",
+        "Zeta23.OPICARound20.boundaryFlat_rational_samples_force_coefficients",
+        "Zeta23.OPICARound20.boundaryFlat_rational_sampling_injective",
+        "Zeta23.OPICARound20.boundaryFlat_coefficients_zero_of_cutoff_le_one",
+        "Zeta23.OPICARound20.rationalSamplingSharpness_boundaryFlat",
+        "Zeta23.OPICARound20.rationalSamplingSharpness_nonzero",
+        "Zeta23.OPICARound20.rationalSamplingSharpness_zero_sample",
+        "Zeta23.OPICARound20.rationalSamplingSharpness_nonzero_sample",
+        "Zeta23.OPICARound20.rationalSamplingSharpness_sample_is_not_pole"
+      ],
+      "receipt_root_fields": [
+        "canonical_import_roots",
+        "selected_safe_theorem_roots",
+        "transitive_axioms",
+        "independent_object_roots"
+      ],
+      "port_status": "CANDIDATE_SOURCE_STAGED"
+    },
+    {
+      "index": 4,
+      "declared_public_count": 10,
+      "receipt_root_count": 10,
+      "receipt_roots": [
+        "Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel",
+        "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_intervalIntegral",
+        "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_rational",
+        "Zeta23.OPICARound20.paperKernel_eq_one_of_modal_resonance",
+        "Zeta23.OPICARound20.paperModeDenominator_ne_zero_of_exp_ne_one",
+        "Zeta23.OPICARound20.finiteFourierScale_ne_zero",
+        "Zeta23.OPICARound20.paperFT_localizedFiniteVector_zero_iff_rational_sum_zero",
+        "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_zero_at_nonmodal_resonance",
+        "Zeta23.OPICARound20.boundaryFlat_paperFT_sampling_injective",
+        "Zeta23.OPICARound20.boundaryFlat_paperFT_samples_force_coefficients"
+      ],
+      "receipt_root_fields": [
+        "canonical_import_roots",
+        "selected_safe_theorem_roots",
+        "transitive_axioms",
+        "independent_object_roots"
+      ],
+      "port_status": "CANDIDATE_SOURCE_STAGED"
+    },
+    {
+      "index": 5,
+      "declared_public_count": 2,
+      "receipt_root_count": 2,
+      "receipt_roots": [
+        "Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel_at_resonance",
+        "Zeta23.OPICARound20.paperFT_localizedFiniteVector_at_modal_point"
+      ],
+      "receipt_root_fields": [
+        "selected_safe_theorem_roots",
+        "canonical_import_roots",
+        "transitive_axioms"
+      ],
+      "port_status": "CANDIDATE_SOURCE_STAGED"
+    },
+    {
+      "index": 6,
+      "declared_public_count": 9,
+      "receipt_root_count": 9,
+      "receipt_roots": [
+        "Zeta23.OPICARound20.gammaOf_injective",
+        "Zeta23.OPICARound20.exponential_gamma_argument",
+        "Zeta23.OPICARound20.resonance_mem_grid_of_ordinate_bounds",
+        "Zeta23.OPICARound20.resonanceGrid_card_lt_linear",
+        "Zeta23.OPICARound20.nonresonantZeroSet_infinite_of_distinct_growth",
+        "Zeta23.OPICARound20.exists_nonresonant_zero_samples_of_distinct_growth",
+        "Zeta23.OPICARound20.distinct_growth_of_positive_fraction",
+        "Zeta23.OPICARound20.actual_zeta_riemannVonMangoldt",
+        "Zeta23.OPICARound20.actual_zeta_distinct_growth_of_positive_fraction"
+      ],
+      "receipt_root_fields": [
+        "selected_safe_roots",
+        "import_roots",
+        "transitive_axioms"
+      ],
+      "port_status": "CANDIDATE_SOURCE_STAGED"
+    },
+    {
+      "index": 7,
+      "declared_public_count": 8,
+      "receipt_root_count": 8,
+      "receipt_roots": [
+        "Zeta23.OPICARound20.boundaryFlat_exists_nonzero_actual_sample_of_supply",
+        "Zeta23.OPICARound20.canonicalSourceEnergy_pos_of_c1_and_nonresonant_samples",
+        "Zeta23.OPICARound20.canonicalSourceEnergy_zero_iff_coefficients_zero_of_c1_and_samples",
+        "Zeta23.OPICARound20.canonicalSourceEnergy_pos_euclidean_of_c1_and_samples",
+        "Zeta23.OPICARound20.nonresonantActualZeroSamples_of_cutoff_le_one",
+        "Zeta23.OPICARound20.canonicalSourceEnergy_low_cutoff_euclidean_bound",
+        "Zeta23.OPICARound20.canonicalSourceEnergy_exists_positive_euclidean_lower_bound",
+        "Zeta23.OPICARound20.canonicalSourceEnergy_exists_positive_coefficient_l2_lower_bound"
+      ],
+      "receipt_root_fields": [
+        "canonical_import_roots",
+        "selected_safe_theorem_roots",
+        "transitive_axioms",
+        "independent_object_roots"
+      ],
+      "port_status": "CANDIDATE_SOURCE_STAGED"
+    },
+    {
+      "index": 8,
+      "declared_public_count": 10,
+      "receipt_root_count": 10,
+      "receipt_roots": [
+        "Zeta23.OPICARound20.ParityRational.even_pole_factorization",
+        "Zeta23.OPICARound20.ParityRational.odd_pole_factorization",
+        "Zeta23.OPICARound20.ParityRational.even_pole_factor_natDegree",
+        "Zeta23.OPICARound20.ParityRational.odd_pole_factor_natDegree",
+        "Zeta23.OPICARound20.ParityRational.even_moment_pole_samples_force_coefficients",
+        "Zeta23.OPICARound20.ParityRational.odd_moment_pole_samples_force_coefficients",
+        "Zeta23.OPICARound20.ParityRational.even_six_moment_samples_force_coefficients",
+        "Zeta23.OPICARound20.ParityRational.odd_seven_moment_samples_force_coefficients",
+        "Zeta23.OPICARound20.ParityRational.even_six_moment_low_cutoff_zero",
+        "Zeta23.OPICARound20.ParityRational.odd_seven_moment_low_cutoff_zero"
+      ],
+      "receipt_root_fields": [
+        "canonical_import_roots",
+        "selected_safe_theorem_roots",
+        "transitive_axioms",
+        "independent_object_roots",
+        "no_authored_axiom_sorry_admit"
+      ],
+      "port_status": "CANDIDATE_SOURCE_STAGED"
+    },
+    {
+      "index": 9,
+      "declared_public_count": 5,
+      "receipt_root_count": 5,
+      "receipt_roots": [
+        "Zeta23.thmC₀",
+        "Zeta23.three_quarters_distinct",
+        "Zeta23.OPICARound20.DensityCompatibility.eventually_half_distinct",
+        "Zeta23.OPICARound20.DensityCompatibility.actual_distinct_window_superlinear",
+        "Zeta23.OPICARound20.DensityCompatibility.actual_nonresonant_zero_samples"
+      ],
+      "receipt_root_fields": [
+        "selected_safe_roots",
+        "explicit_foundation_roots",
+        "ordered_independent_roots",
+        "import_roots",
+        "transitive_axioms"
+      ],
+      "port_status": "SOURCE_PORT_PENDING"
+    },
+    {
+      "index": 10,
+      "declared_public_count": 14,
+      "receipt_root_count": 14,
+      "receipt_roots": [
+        "Zeta23.OPICARound21.ActualDensityEnergy.actual_nonresonant_samples",
+        "Zeta23.OPICARound21.ActualDensityEnergy.exists_actual_zero_sampling_injective",
+        "Zeta23.OPICARound21.ActualDensityEnergy.boundaryFlat_exists_nonzero_actual_zero_sample",
+        "Zeta23.OPICARound21.ActualDensityEnergy.boundaryFlat_all_actual_zero_samples_vanish_iff",
+        "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_pos_of_c1",
+        "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_zero_iff_coefficients_zero_of_c1",
+        "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_pos_euclidean_of_c1",
+        "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_exists_positive_euclidean_bound_of_c1",
+        "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_exists_positive_coefficient_l2_bound_of_c1",
+        "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_strict_positive",
+        "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_euclidean_coercive",
+        "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_coefficient_l2_coercive",
+        "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_nonpositive_witness_refutes_c1",
+        "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_low_cutoff_positive_euclidean_bound"
+      ],
+      "receipt_root_fields": [
+        "selected_safe_theorems",
+        "explicit_foundation_roots",
+        "ordered_independent_roots",
+        "import_roots",
+        "transitive_axioms"
+      ],
+      "port_status": "SOURCE_PORT_PENDING"
+    },
+    {
+      "index": 11,
+      "declared_public_count": 37,
+      "receipt_root_count": 37,
+      "receipt_roots": [
+        "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_reindex",
+        "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_neg_coefficients",
+        "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_comp_neg_X",
+        "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_even_of_reversal",
+        "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_odd_of_reversal",
+        "Zeta23.OPICARound20.NativeParityRational.exists_square_composition_of_odd_coefficients_zero",
+        "Zeta23.OPICARound20.NativeParityRational.exists_X_square_composition_of_even_coefficients_zero",
+        "Zeta23.OPICARound20.NativeParityRational.exists_square_composition_of_comp_neg_X_eq",
+        "Zeta23.OPICARound20.NativeParityRational.exists_X_square_composition_of_comp_neg_X_eq_neg",
+        "Zeta23.OPICARound20.NativeParityRational.physicalPole_reverse",
+        "Zeta23.OPICARound20.NativeParityRational.physicalPole_injective",
+        "Zeta23.OPICARound20.NativeParityRational.physicalPole_ne_of_nonresonance",
+        "Zeta23.OPICARound20.NativeParityRational.finiteCauchySum_physicalPole_eq",
+        "Zeta23.OPICARound20.NativeParityRational.evenPhysicalCoefficients_mem",
+        "Zeta23.OPICARound20.NativeParityRational.oddPhysicalCoefficients_mem",
+        "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_centered_moments",
+        "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_centered_moments",
+        "Zeta23.OPICARound20.NativeParityRational.physicalPole_moment_prefix",
+        "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_square_form",
+        "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_square_form",
+        "Zeta23.OPICARound20.NativeParityRational.paperFT_imaginary_half_axis",
+        "Zeta23.OPICARound20.NativeParityRational.half_imaginary_nonresonant",
+        "Zeta23.OPICARound20.NativeParityRational.evenPhysical_paperFT_half_imaginary_zero",
+        "Zeta23.OPICARound20.NativeParityRational.oddPhysical_paperFT_half_imaginary_zero",
+        "Zeta23.OPICARound20.NativeParityRational.physicalNumerator_root_of_paperFT_zero",
+        "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_half_imaginary_root",
+        "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_half_imaginary_root",
+        "Zeta23.OPICARound20.NativeParityRational.half_imaginary_sq",
+        "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_pole_factorization",
+        "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_pole_factorization",
+        "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_paperFT_samples_force_zero",
+        "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_paperFT_samples_force_zero",
+        "Zeta23.OPICARound20.NativeParityRational.paperFT_localized_coefficients_sub",
+        "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_paperFT_sampling_injective",
+        "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_paperFT_sampling_injective",
+        "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_low_cutoff_zero",
+        "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_low_cutoff_zero"
+      ],
+      "receipt_root_fields": [
+        "selected_safe_theorem_roots",
+        "explicit_foundation_roots",
+        "ordered_independent_roots",
+        "import_roots",
+        "transitive_axioms"
+      ],
+      "port_status": "SOURCE_PORT_PENDING"
+    },
+    {
+      "index": 12,
+      "declared_public_count": 5,
+      "receipt_root_count": 5,
+      "receipt_roots": [
+        "Zeta23.OPICARound21.NativeParityActual.infinite_image_of_finite_fibers",
+        "Zeta23.OPICARound21.NativeParityActual.exists_samples_with_distinct_images",
+        "Zeta23.OPICARound21.NativeParityActual.actual_square_distinct_nonresonant_samples",
+        "Zeta23.OPICARound21.NativeParityActual.exists_evenMomentSlice_actual_zero_sampling",
+        "Zeta23.OPICARound21.NativeParityActual.exists_oddMomentSlice_actual_zero_sampling"
+      ],
+      "receipt_root_fields": [
+        "selected_safe_theorem_roots",
+        "explicit_foundation_roots",
+        "ordered_independent_roots",
+        "import_roots",
+        "transitive_axioms"
+      ],
+      "port_status": "SOURCE_PORT_PENDING"
+    },
+    {
+      "index": 13,
+      "declared_public_count": 14,
+      "receipt_root_count": 14,
+      "receipt_roots": [
+        "Zeta23.OPICARound21.CofinalAperture.resonance_apertures_countable",
+        "Zeta23.OPICARound21.CofinalAperture.countable_bad_apertures",
+        "Zeta23.OPICARound21.CofinalAperture.good_apertures_dense",
+        "Zeta23.OPICARound21.CofinalAperture.exists_nonresonant_aperture_in_interval",
+        "Zeta23.OPICARound21.CofinalAperture.zeroConfig_carrier_countable",
+        "Zeta23.OPICARound21.CofinalAperture.zeroConfig_carrier_infinite_of_riemannVonMangoldt",
+        "Zeta23.OPICARound21.CofinalAperture.actual_zero_carrier_infinite",
+        "Zeta23.OPICARound21.CofinalAperture.actual_gamma_ne_zero",
+        "Zeta23.OPICARound21.CofinalAperture.actual_good_apertures_dense",
+        "Zeta23.OPICARound21.CofinalAperture.exists_actual_nonresonant_aperture_in_interval",
+        "Zeta23.OPICARound21.CofinalAperture.actual_samples_at_good_aperture",
+        "Zeta23.OPICARound21.CofinalAperture.exists_interval_aperture_all_cutoff_samples",
+        "Zeta23.OPICARound21.CofinalAperture.exists_interval_aperture_all_cutoff_fourier_sampling",
+        "Zeta23.OPICARound21.CofinalAperture.cofinal_literal_quartic_samples"
+      ],
+      "receipt_root_fields": [
+        "selected_safe_theorems",
+        "explicit_foundation_roots",
+        "ordered_independent_roots",
+        "import_roots",
+        "transitive_axioms"
+      ],
+      "port_status": "SOURCE_PORT_PENDING"
+    },
+    {
+      "index": 14,
+      "declared_public_count": 2,
+      "receipt_root_count": 2,
+      "receipt_roots": [
+        "Zeta23.OPICARound4.ArithmeticFrontier.finrank_evenMomentSlice",
+        "Zeta23.OPICARound4.ArithmeticFrontier.finrank_oddMomentSlice"
+      ],
+      "receipt_root_fields": [
+        "selected_safe_theorems",
+        "explicit_foundation_roots",
+        "ordered_independent_roots",
+        "import_roots",
+        "transitive_axioms"
+      ],
+      "port_status": "SOURCE_PORT_PENDING"
+    },
+    {
+      "index": 15,
+      "declared_public_count": 14,
+      "receipt_root_count": 14,
+      "receipt_roots": [
+        "Zeta23.OPICARound21.NativeSliceInterpolation.paperFT_localized_coefficients_add",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.paperFT_localized_coefficients_smul",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_apply",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_apply",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_injective",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_injective",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_bijective",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_bijective",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_unique_interpolation",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_unique_interpolation",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.exists_even_actual_zero_interpolation",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.exists_odd_actual_zero_interpolation",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.even_fewer_linear_evaluations_not_injective",
+        "Zeta23.OPICARound21.NativeSliceInterpolation.odd_fewer_linear_evaluations_not_injective"
+      ],
+      "receipt_root_fields": [
+        "selected_safe_theorems",
+        "explicit_foundation_roots",
+        "ordered_independent_roots",
+        "import_roots",
+        "transitive_axioms"
+      ],
+      "port_status": "SOURCE_PORT_PENDING"
+    },
+    {
+      "index": 16,
+      "declared_public_count": 4,
+      "receipt_root_count": 4,
+      "receipt_roots": [
+        "Zeta23.OPICARound22.ApertureSlack.eventually_lower_bound_on_set_of_operator_continuity",
+        "Zeta23.OPICARound22.ApertureSlack.evenMomentSliceLowerBound_eventually_of_slack",
+        "Zeta23.OPICARound22.ApertureSlack.oddMomentSliceLowerBound_eventually_of_slack",
+        "Zeta23.OPICARound22.ApertureSlack.c1_iff_good_aperture_c1"
+      ],
+      "receipt_root_fields": [
+        "selected_safe_theorems",
+        "explicit_foundation_roots",
+        "ordered_independent_roots",
+        "import_roots",
+        "transitive_axioms"
+      ],
+      "port_status": "SOURCE_PORT_PENDING"
+    }
+  ],
+  "claim_status": "RH_OPEN; C1_OPEN; STEP4_OPEN",
+  "candidate_scope": "Fresh native compiler and named axiom gate only; no independent full dependency-closure acceptance and no theorem promotion"
+}

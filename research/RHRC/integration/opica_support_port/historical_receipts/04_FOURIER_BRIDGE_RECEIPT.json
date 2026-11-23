@@ -1,0 +1,517 @@
+{
+  "schema": "NATIVE_FINITE_FOURIER_BRIDGE_V1",
+  "status": "PASS",
+  "started_utc": "2026-11-21T15:55:36.670957+00:00",
+  "processes": [
+    {
+      "name": "compile_FiniteFourierRational",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "--root=/workspace/scratch/c5836ca317eb/fourier_bridge",
+        "/workspace/scratch/c5836ca317eb/fourier_bridge/FourierBridge/FiniteFourierRational.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/lib/FourierBridge/FiniteFourierRational.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/lib/FourierBridge/FiniteFourierRational.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/fourier_bridge",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/compile_FiniteFourierRational.log",
+      "started_utc": "2026-11-21T15:55:36.736618+00:00",
+      "timeout_seconds": 180,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T15:55:40.245482+00:00",
+      "elapsed_seconds": 3.509,
+      "max_sampled_rss_bytes": 3663355904,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 3663355904,
+      "log_sha256": "25c2c12e67040f89ec481e0d2d516a68b3b6c34b908241a8c54753b5cf57bfde"
+    },
+    {
+      "name": "compile_BoundaryFlatFourierSampling",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "--root=/workspace/scratch/c5836ca317eb/fourier_bridge",
+        "/workspace/scratch/c5836ca317eb/fourier_bridge/FourierBridge/BoundaryFlatFourierSampling.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/lib/FourierBridge/BoundaryFlatFourierSampling.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/lib/FourierBridge/BoundaryFlatFourierSampling.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/fourier_bridge",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/compile_BoundaryFlatFourierSampling.log",
+      "started_utc": "2026-11-21T15:55:40.246560+00:00",
+      "timeout_seconds": 180,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T15:55:43.004387+00:00",
+      "elapsed_seconds": 2.758,
+      "max_sampled_rss_bytes": 3647324160,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 3647324160,
+      "log_sha256": "3f28be412d185645f315515c4e29422d72a90f48c9211844505e83406b3ee13f"
+    },
+    {
+      "name": "types_axioms_safe_roots",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/workspace/scratch/c5836ca317eb/fourier_bridge/FourierAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/fourier_bridge",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/types_axioms_safe_roots.log",
+      "started_utc": "2026-11-21T15:55:43.005600+00:00",
+      "timeout_seconds": 180,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T15:55:46.515495+00:00",
+      "elapsed_seconds": 3.51,
+      "max_sampled_rss_bytes": 4049784832,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 4049784832,
+      "log_sha256": "f657e70ea9926fa128a23d6a0217ba3b14d90b53f39a5e7109a66e64be39eb62"
+    },
+    {
+      "name": "stock_kernel_replay_FiniteFourierRational",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "FourierBridge.FiniteFourierRational"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/fourier_bridge",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/stock_kernel_replay_FiniteFourierRational.log",
+      "started_utc": "2026-11-21T15:55:48.130068+00:00",
+      "timeout_seconds": 300,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T15:55:52.432712+00:00",
+      "elapsed_seconds": 4.303,
+      "max_sampled_rss_bytes": 3264438272,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 3264438272,
+      "log_sha256": "7edf955909e5750d59fbd21b522259703450f258b797b1262bce2a3c79656a04"
+    },
+    {
+      "name": "stock_kernel_replay_BoundaryFlatFourierSampling",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "FourierBridge.BoundaryFlatFourierSampling"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/fourier_bridge",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/stock_kernel_replay_BoundaryFlatFourierSampling.log",
+      "started_utc": "2026-11-21T15:55:52.446965+00:00",
+      "timeout_seconds": 300,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T15:55:56.717896+00:00",
+      "elapsed_seconds": 4.271,
+      "max_sampled_rss_bytes": 3264217088,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 3264217088,
+      "log_sha256": "0d38ea100cb41c4c168a008b313f0ec183ac226ca5fdf54e3807ea32a8285b0f"
+    },
+    {
+      "name": "independent_complete_proof_closure",
+      "command": [
+        "/workspace/scratch/c5836ca317eb/resource_strategy/conleche-control/con-leche/.lake/build/bin/con-leche",
+        "--verified",
+        "--jobs=1",
+        "--progress=30s",
+        "--olean",
+        "--search-path=/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/lib:/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/native-object-view:/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean",
+        "--constant=Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel",
+        "--constant=Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_intervalIntegral",
+        "--constant=Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_rational",
+        "--constant=Zeta23.OPICARound20.paperKernel_eq_one_of_modal_resonance",
+        "--constant=Zeta23.OPICARound20.paperModeDenominator_ne_zero_of_exp_ne_one",
+        "--constant=Zeta23.OPICARound20.finiteFourierScale_ne_zero",
+        "--constant=Zeta23.OPICARound20.paperFT_localizedFiniteVector_zero_iff_rational_sum_zero",
+        "--constant=Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_zero_at_nonmodal_resonance",
+        "--constant=Zeta23.OPICARound20.boundaryFlat_paperFT_sampling_injective",
+        "--constant=Zeta23.OPICARound20.boundaryFlat_paperFT_samples_force_coefficients",
+        "FourierBridge.BoundaryFlatFourierSampling"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/fourier_bridge",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/independent_complete_proof_closure.log",
+      "started_utc": "2026-11-21T15:55:58.497750+00:00",
+      "timeout_seconds": 900,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T15:56:48.829500+00:00",
+      "elapsed_seconds": 50.332,
+      "max_sampled_rss_bytes": 1212010496,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 1212010496,
+      "log_sha256": "b6e612a5c812870a6b2edd75cb920c8024dcc93f8755289adec336640ad1b918"
+    }
+  ],
+  "scope": "Exact arbitrary-coefficient native finite Fourier rational identity, whole-exponential nonresonance control, and actual boundary-flat finite sampling; no supplier closure, density theorem, C1 or RH conclusion",
+  "c1_closed": false,
+  "rh_closed": false,
+  "native_head": "7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9",
+  "native_tree": "9248b76d7aff60aab3bb775c4be9750dc6006003",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "compiler": "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+  "compiler_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "compiler_version": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "stock_kernel_checker_sha256": "84bc3e7cd6efa5bfecd1e7c37571fed9428fb2b3e16da0ddf62f2163573486d0",
+  "stock_runtime_manifest_sha256": "550bbf7a1fc8e2549ecf2d122ff5bfa2007f71d78e3ce1dba42d02fb1ae72793",
+  "stock_runtime_files": [
+    {
+      "path": "bin/cadical",
+      "sha256": "8e92f427cfb72072fc605ec6d5f641443c35921b29c39ab2f027776cd533afce",
+      "bytes": 1111624
+    },
+    {
+      "path": "bin/clang",
+      "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def",
+      "bytes": 119320
+    },
+    {
+      "path": "bin/lake",
+      "sha256": "60330ab6f07dce20f3fa9ebb08e8b984ea9549eac172afeb15d9d2227060e2b3",
+      "bytes": 13840
+    },
+    {
+      "path": "bin/ld.lld",
+      "sha256": "d32d5121d96810b624306e48faacc75e41f7302ad0e4865be63c3bbf8f4cd810",
+      "bytes": 6001368
+    },
+    {
+      "path": "bin/lean",
+      "sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "bytes": 9024
+    },
+    {
+      "path": "bin/leanc",
+      "sha256": "cc293b2c81b7bc16d750959c7c82d61f4b95f50c2942d1131d57c078b8245ac1",
+      "bytes": 36848
+    },
+    {
+      "path": "bin/leanchecker",
+      "sha256": "84bc3e7cd6efa5bfecd1e7c37571fed9428fb2b3e16da0ddf62f2163573486d0",
+      "bytes": 50896
+    },
+    {
+      "path": "bin/leanir",
+      "sha256": "9c2f8ffa93085e545a6ae723e56f4c12d263e0937ffd37be92973cd397a407c3",
+      "bytes": 221024
+    },
+    {
+      "path": "bin/leanmake",
+      "sha256": "07c96082b95fce057ed9656cc80da50477d596250973cfdd414f74e7631eb56d",
+      "bytes": 839
+    },
+    {
+      "path": "bin/leantar",
+      "sha256": "06d613dffd2a6fd996b095bfd835c2bb720886f9eb7e13ed2adddd7df4507bf3",
+      "bytes": 2692960
+    },
+    {
+      "path": "bin/llvm-ar",
+      "sha256": "697c4da3ff7080716bf591ddf38d02fb093f3173e12188ddd4243304228004ad",
+      "bytes": 76888
+    },
+    {
+      "path": "lib/libLLVM.so.22.1",
+      "sha256": "5145af96bc961289f6dff7efc0dc7f75cbc4b91634aa3b5d517749dce5f3f300",
+      "bytes": 77258216
+    },
+    {
+      "path": "lib/libatomic.so.1.2.0",
+      "sha256": "b2d3f7d9ebf9a0d5dc9caedcb33a43f6ac1b33221ada1f029147d8a66db43c09",
+      "bytes": 26416
+    },
+    {
+      "path": "lib/libc++.so",
+      "sha256": "9a82146864488c9d491a6e60be5af3ca986a9af57f6057763c5c0a8dda85a66e",
+      "bytes": 37
+    },
+    {
+      "path": "lib/libc++.so.1.0",
+      "sha256": "0ec88ab403524f6c3bc3d9029772b97d9af08837267a2973bf6b24fa79119704",
+      "bytes": 1337744
+    },
+    {
+      "path": "lib/libc++abi.so.1.0",
+      "sha256": "3cb42a1a34f48dd20da4aa7559e634ca2eaeab6b019869fd060f90128ae3cb8b",
+      "bytes": 408152
+    },
+    {
+      "path": "lib/libclang-cpp.so.22.1",
+      "sha256": "e11640dbbd29d2abebcdb62f8e90e8a965d7276df914e3cdcfd5263f427208eb",
+      "bytes": 65075176
+    },
+    {
+      "path": "lib/libgcc_s.so",
+      "sha256": "69a56a9993b7729b29b274e65016031c81f2397f176ed5ad44d59bd50425e0bd",
+      "bytes": 132
+    },
+    {
+      "path": "lib/libgcc_s.so.1",
+      "sha256": "3f499bb3b14f33c5c321f52015d385c145c7bd4551a66c5fcff4262c833f2d2a",
+      "bytes": 102664
+    },
+    {
+      "path": "lib/libunwind.so.1.0",
+      "sha256": "c54929622b0991b21088050bf3f23d6756d3d2e082acd293b0e788ddc901da72",
+      "bytes": 69928
+    },
+    {
+      "path": "lib/libz.so.1.2.11",
+      "sha256": "d0aeafffcfe309a107a857dfa1f9afd0db90796d32c2b735a3959eccb317f5b4",
+      "bytes": 100640
+    },
+    {
+      "path": "lib/lean/libInit_shared.so",
+      "sha256": "2f96493ac9046f64ec7bcb78102a4c1e7cd9a7042487f246af45eda8a96667f5",
+      "bytes": 6232
+    },
+    {
+      "path": "lib/lean/libLake_shared.so",
+      "sha256": "b1d164bf248f35b9e9664e696f4cd05a79a7066065510fb9b459139c78beb354",
+      "bytes": 12462304
+    },
+    {
+      "path": "lib/lean/libleanshared.so",
+      "sha256": "23d636cac1cadcba37beac30eff9b9b20d66cee726cf5defb4ae39f1284a3e5a",
+      "bytes": 230925168
+    },
+    {
+      "path": "lib/lean/libleanshared_1.so",
+      "sha256": "2f96493ac9046f64ec7bcb78102a4c1e7cd9a7042487f246af45eda8a96667f5",
+      "bytes": 6232
+    },
+    {
+      "path": "lib/lean/libleanshared_2.so",
+      "sha256": "2f96493ac9046f64ec7bcb78102a4c1e7cd9a7042487f246af45eda8a96667f5",
+      "bytes": 6232
+    }
+  ],
+  "canonical_import_roots": [
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/lib",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean"
+  ],
+  "selected_safe_theorem_roots": [
+    "Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel",
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_intervalIntegral",
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_rational",
+    "Zeta23.OPICARound20.paperKernel_eq_one_of_modal_resonance",
+    "Zeta23.OPICARound20.paperModeDenominator_ne_zero_of_exp_ne_one",
+    "Zeta23.OPICARound20.finiteFourierScale_ne_zero",
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_zero_iff_rational_sum_zero",
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_zero_at_nonmodal_resonance",
+    "Zeta23.OPICARound20.boundaryFlat_paperFT_sampling_injective",
+    "Zeta23.OPICARound20.boundaryFlat_paperFT_samples_force_coefficients"
+  ],
+  "sources_sha256_before": {
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/FourierBridge/FiniteFourierRational.lean": "134096bff4470454b84839299de027cb9eda9a03bc3ad7525efba430f1c829ce",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/FourierBridge/BoundaryFlatFourierSampling.lean": "ec3af306abcbbe45a732c34894f28ca1f222560d10be9ccb7323095e9ee12295",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/FourierAudit.lean": "a905cb5471d90a0914cfb8604403db7fcbdc9297005588b3b109ff7f1616d5af",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/FOURIER_ROOTS.json": "5c86443fabd2b09648729b32fde4e3c4dd779eabe5ddcfcba494b94ebbb6a8fe",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/build-environment.json": "ac7295558dd18987c5cd51e3b19bf25afa43a49469e9e0dd5693c47fddd1acc0",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/verify_fourier_bridge.py": "831572468b7c436702addf66d095bacd5795644579065370dbf90687db6f181a",
+    "/workspace/scratch/c5836ca317eb/round20_bundle/independent/common.py": "530eb00d4e2aebdf5ceb4862845ec02b4bcad4290eca0439e5198349ac173874",
+    "/workspace/scratch/c5836ca317eb/math_compression/FINITE_RATIONAL_SAMPLING_RECEIPT.json": "f4a82933f24c670736c21771ad4d80a716b96cf11930993becf43d939e48965e",
+    "/workspace/scratch/c5836ca317eb/resource_strategy/conleche-control/COMPATIBILITY_RECEIPT.json": "6f37151e826ce95d7314127ffadfea8a6bb21170a23fbf36de3347e195eaeca3",
+    "/workspace/scratch/c5836ca317eb/round20_bundle/native_bootstrap/runtime_files.json": "550bbf7a1fc8e2549ecf2d122ff5bfa2007f71d78e3ce1dba42d02fb1ae72793",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/Defs.lean": "216b34de76394522aea610c57d342f3dfe8aa1c3d9d6b2ec11509de92f1c6bb0",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/CCM/LocalizedBasis.lean": "9bc60c98939d4fa8cd64c82504ca2060f03fb00ce5ccefda006884d788976e6c",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/CCM/LocalizedFiniteSpace.lean": "d75346311470781aedfca62853b4d68459340ce6b8dc01d1e84129f8b657f9d0",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/CCM/BoundaryFlatFiniteSpace.lean": "4db4411d64b0c97370db263efd3b64f8e2bfc3f90cd7e694e13fb69bc4b83f56"
+  },
+  "finite_rational_sampling_receipt_sha256": "f4a82933f24c670736c21771ad4d80a716b96cf11930993becf43d939e48965e",
+  "independent_checker_source_head": "cd2eceab2e9b10404c663b468639c8aa99d0d1f2",
+  "independent_checker_sha256": "6d8dd758515bcf4180a12b47193e0c4c3772e45fac652bb513a70b3907e6ba4f",
+  "independent_checker_build_runtime": "Lean 4.36.0",
+  "cross_version_compatibility_receipt_sha256": "6f37151e826ce95d7314127ffadfea8a6bb21170a23fbf36de3347e195eaeca3",
+  "fresh_checker_metatheory_build_claimed": false,
+  "trusted_host_assumption": "No concurrent writer on common package, native, runtime, algebra or fresh Fourier inputs; pre/post hashes bind checked bytes under this assumption.",
+  "stock_kernel_replay_scope": "Named new modules only; independent checker replays the complete selected proof/type closure rather than relying on an unchecked imported environment.",
+  "transitive_axioms": {
+    "Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_intervalIntegral": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_rational": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.paperKernel_eq_one_of_modal_resonance": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.paperModeDenominator_ne_zero_of_exp_ne_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finiteFourierScale_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_zero_iff_rational_sum_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_zero_at_nonmodal_resonance": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.boundaryFlat_paperFT_sampling_injective": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.boundaryFlat_paperFT_samples_force_coefficients": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "native_imported_modules": [
+    "Zeta23.CCM.Kernel",
+    "Zeta23.Defs",
+    "Zeta23.ExplicitFormula",
+    "Zeta23.CCM.Components",
+    "Zeta23.CCM.FiniteMatrix",
+    "Zeta23.LinAlg.PosIndex",
+    "Zeta23.LinAlg.HermitianPosPart",
+    "Zeta23.LinAlg.Sylvester",
+    "Zeta23.LinAlg.Inertia",
+    "Zeta23.LinAlg.VonNeumann",
+    "Zeta23.LinAlg.RankTrace",
+    "Zeta23.LinAlg.Weyl",
+    "Zeta23.LinAlg",
+    "Zeta23.Assembly.Inputs",
+    "Zeta23.Hypotheses",
+    "Zeta23.Hypotheses.GzGp",
+    "Zeta23.ZeroSide",
+    "Zeta23.ExceptionalZero.Defs",
+    "Zeta23.ExceptionalZero.DisplacementTransfer",
+    "Zeta23.CCM.DividedDifference",
+    "Zeta23.CCM.SourceMatrix",
+    "Zeta23.CCM.FiniteDictionary",
+    "Zeta23.CCM.KernelAnalysis",
+    "Zeta23.CCM.DictionaryDeterministicRHS",
+    "Zeta23.CCM.LocalizedBasis",
+    "Zeta23.CCM.DictionaryAnalysis",
+    "Zeta23.CCM.DictionaryRegularity",
+    "Zeta23.CCM.DictionaryResidualBranches",
+    "Zeta23.CCM.DictionaryResidualSecondOrder",
+    "Zeta23.CCM.DictionaryResidualGluing",
+    "Zeta23.CCM.DictionaryResidualFirstOrderGluing",
+    "Zeta23.CCM.DictionaryResidualDerivativeIdentities",
+    "Zeta23.CCM.DictionaryResidualSecondOrderGluing",
+    "Zeta23.Poisson.PaperFT",
+    "Zeta23.CCM.DictionaryTent",
+    "Zeta23.CCM.ComplexMomentIntegral",
+    "Zeta23.CCM.DictionaryTentTransform",
+    "Zeta23.CCM.Displacement",
+    "Zeta23.CCM.DictionaryPole",
+    "Zeta23.CCM.DictionaryPoleCompletion",
+    "Zeta23.CCM.DictionarySourceTest",
+    "Zeta23.CCM.DictionaryPoleSource",
+    "Zeta23.CCM.DictionaryArchPhysical",
+    "Zeta23.GammaFacts",
+    "Zeta23.GammaFacts.Series",
+    "Zeta23.Analytic.Stirling",
+    "Zeta23.GammaFacts.Mu",
+    "Zeta23.CCM.DictionaryArchBridge",
+    "Zeta23.CCM.DictionaryArchLaplace",
+    "Zeta23.CCM.DictionaryArchCompletion",
+    "Zeta23.CCM.DictionaryTentDecay",
+    "Zeta23.CCM.DictionaryArchFourier",
+    "Zeta23.CCM.DictionaryArchSourceFourier",
+    "Zeta23.CCM.DictionaryArchSourceIntegrability",
+    "Zeta23.CCM.DictionaryArchWeight",
+    "Zeta23.CCM.DictionaryArchMuGrowth",
+    "Zeta23.CCM.DictionaryArchSourceDecay",
+    "Zeta23.CCM.DictionaryArchSourceMuIntegrability",
+    "Zeta23.CCM.DictionaryArchDensityBridge",
+    "Zeta23.CCM.DictionaryArchSourceBridge",
+    "Zeta23.CCM.DictionaryArchOffDiagonal",
+    "Zeta23.CCM.DictionaryArchDiagonal",
+    "Zeta23.CCM.DictionaryArchDiagonalPhysical",
+    "Zeta23.CCM.DictionaryArchDiagonalEvaluation",
+    "Zeta23.CCM.DictionaryArchEntries",
+    "Zeta23.CCM.DictionaryFiniteExpansion",
+    "Zeta23.CCM.LocalizedFiniteSpace",
+    "Zeta23.CCM.BoundaryFlatFiniteSpace"
+  ],
+  "imported_objects_manifest_sha256": "9d386f839b120a2b66a84b091d3202e71510bf83bc8c043568baeb96219bc476",
+  "independent_object_roots": [
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/lib",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/native-object-view",
+    "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean"
+  ],
+  "independent_accepted_declarations": 36557,
+  "source_and_runtime_integrity": "PASS",
+  "all_imported_object_integrity": "PASS",
+  "imported_module_count": 5657,
+  "imported_object_bytes": 1170317872,
+  "authored_objects": {
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/lib/FourierBridge/FiniteFourierRational.ilean": "33f292809494b9fc8ac4950797847bdc595b682ee346fd13f5209054dc438294",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/lib/FourierBridge/FiniteFourierRational.olean": "3ec85733be747090a24920fbd68a4260b91be7e5d65277dfc8f147329b830abc",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/lib/FourierBridge/BoundaryFlatFourierSampling.ilean": "7d6f0276588575ea19eca91722aac44927f064ef6be4e08f9e732b1a610513e9",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/lib/FourierBridge/BoundaryFlatFourierSampling.olean": "08f32b32a5053f62dd1acaf441fed787095f09ceeb6d2ae3a244ddc65852fa0a"
+  },
+  "completed_utc": "2026-11-21T15:56:50.172658+00:00"
+}

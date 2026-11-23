@@ -1,0 +1,752 @@
+{
+  "schema": "ACTUAL_NATIVE_DISTINCT_GROWTH_COMPATIBILITY_V1",
+  "status": "PASS",
+  "started_utc": "2026-11-21T17:33:56.718388+00:00",
+  "verification_runner_sha256": "0ff6f4a415fc18f4708005ecd9561dc9a5b3f76185bd01ac415c5bf491aba3b8",
+  "scope": "Actual native thmC\u2080 and unconditional distinct growth/nonresonant samples at the common pin, with narrowed imports, one identical deprecated alias and local retention bindings preserving existing section parameters; unchanged-source replay remains failed",
+  "native_head": "7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9",
+  "native_tree": "9248b76d7aff60aab3bb775c4be9750dc6006003",
+  "compiler": {
+    "compiler": "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+    "compiler_version": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+    "compiler_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "kernel_checker": "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+    "kernel_checker_sha256": "84bc3e7cd6efa5bfecd1e7c37571fed9428fb2b3e16da0ddf62f2163573486d0",
+    "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "import_roots": [
+      "/workspace/scratch/c5836ca317eb/resource_strategy/modular-component-validation-v2/canonical-lib",
+      "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean",
+      "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean",
+      "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean",
+      "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean",
+      "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean",
+      "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean",
+      "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+      "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean",
+      "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean",
+      "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/build/lib/lean",
+      "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean"
+    ],
+    "scope": "Native-only canonical environment before external module loading",
+    "jobs": 1
+  },
+  "original_native_pin_preserved": true,
+  "common_mathlib": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "compatibility_modules": [
+    {
+      "module": "Zeta23.Defs.Profile",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Defs/Profile.lean",
+      "source_sha256": "fd0f4e10c04f6941ca400eaf3856e3ca4f9c8e8bc8577c996651bac33b763d69",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Defs/Profile.olean",
+      "object_sha256": "213ea785d1fe107dd161b8a8c792c1367357e30d8c829a75b6251e5f0efe553b",
+      "compile_receipt_sha256": "ba8c0bd476e41f832cfb38436132bc5de47d609907ea6ab09689b6aa892bafff"
+    },
+    {
+      "module": "Zeta23.Taper.Basic",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Taper/Basic.lean",
+      "source_sha256": "4866d1950ca20bc632c00655e2611ef690fce0fb10efafb35614d77d7cbc972c",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Taper/Basic.olean",
+      "object_sha256": "da7d4a0c11b06cf6d0f49d30a175a8fcd5ffa5ff5e022635f0c05444298f8461",
+      "compile_receipt_sha256": "e331804e3d5f2f63eaf82de7cec16465d4c8bc5a22b0a50cc8a2b3498ef48404"
+    },
+    {
+      "module": "Zeta23.Taper.Norms",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Taper/Norms.lean",
+      "source_sha256": "d14e913e0b55859e62dfe29139517dff65529838c69fa379f37dcc69f790a0a9",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Taper/Norms.olean",
+      "object_sha256": "773d0f0bd1c4afb768b21f1bb5658abde361e608b8e940fc005dfaf50cc0503d",
+      "compile_receipt_sha256": "5e87f880966736dabdae1e680b070ab313fc0e15343aaae27a74c42acf3efaa2"
+    },
+    {
+      "module": "Zeta23.Taper.Strip",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Taper/Strip.lean",
+      "source_sha256": "03bd8e55856a7a5e58a02ecf477db74d231e599e46858bc9cf8397462de2d04c",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Taper/Strip.olean",
+      "object_sha256": "0bbb5c51059fad0afa51c01fdcd133255a40a9f5b8c28e8c84a13249e387a4e1",
+      "compile_receipt_sha256": "b4e84d0d0c6aeed44ab513bfe8d65b5c3b6a64b701e271d61d538ba3064120e8"
+    },
+    {
+      "module": "Zeta23.Taper.Params",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Taper/Params.lean",
+      "source_sha256": "66519846d14eb0b370303ab728b4eee4cb332a5bea71f122592f89746c5a1465",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Taper/Params.olean",
+      "object_sha256": "6c46c59da4dfeaace0ca40fd14f8fa610d62ba8ea883f93fbf8b26e9be391f7b",
+      "compile_receipt_sha256": "f921be39d0c95d84b15222257c61f593927f1fee4dffdc1fa3351fcaa7b4bb14"
+    },
+    {
+      "module": "Zeta23.Taper.Decay",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Taper/Decay.lean",
+      "source_sha256": "2c30c6e4f9677bdeb316aecdd74ee538e1356de41e6ad6e923154587a71abc2d",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Taper/Decay.olean",
+      "object_sha256": "2442a24d31b16bc58ab0af25a36638de30cd137bf919770b5b6a991ba826366a",
+      "compile_receipt_sha256": "824ea50d6e5a5ef92763261d684717182ba772d673c70dd9f2f5bc3c693a80a3"
+    },
+    {
+      "module": "Zeta23.Taper.Fourier",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Taper/Fourier.lean",
+      "source_sha256": "0147c20418212f935ff51aa0278be38eb196236dddfdfe03b5ba35914d7b43c8",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Taper/Fourier.olean",
+      "object_sha256": "8fb16bcc7c696ef24b6f3ee9677f91a22558cf90d7fc6e6396707e05e6a44615",
+      "compile_receipt_sha256": "621f5599afcddb69b42e72e35c09ecc71e51099cce5d1af24f6b8763c4c6e57a"
+    },
+    {
+      "module": "Zeta23.Taper",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Taper.lean",
+      "source_sha256": "b4b91e74d3f9598a99183e3b73f88661483018fe5cee6b64f515003e21d9f209",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Taper.olean",
+      "object_sha256": "89e5dc01646096d4e09f8ef2114308db51a66e6feabd6f7f5c86059e4e585168",
+      "compile_receipt_sha256": "6515cf381eaaf4d60f820031e7e33c365a3d1c6ad0a182febcfa0dea287e3b3a"
+    },
+    {
+      "module": "Zeta23.Tail.Package",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Tail/Package.lean",
+      "source_sha256": "d295a377c91b90aaf71d447d0361e089bca8005b2b7fc5ee229a302a83029efb",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Tail/Package.olean",
+      "object_sha256": "4fecc83766a967300086ece503e13c30feb39416a29d0ca2e4d00d1dc090f050",
+      "compile_receipt_sha256": "e9f137268ba79ad65a694a926407fdfb6d70bc560b168fe1797a840d3bfcca8e"
+    },
+    {
+      "module": "Zeta23.Poisson",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Poisson.lean",
+      "source_sha256": "0b73daec743724f14be6db73bbff74e0ba206869f9d76805a8c2f3456b849194",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Poisson.olean",
+      "object_sha256": "3426c6860018fb520d6bd547febbfe3c67b22dcfa5c6eab93e580698ef04c896",
+      "compile_receipt_sha256": "38ae93d4ba04db3ec9ef0fb5bb98d7249dccc9f2a3dae076b51bd89b7dac349a"
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.Mertens",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/FromPNTPlus/Mertens.lean",
+      "source_sha256": "8df79fab65cdc6b9f28c4f2e5f39e0d8d284ac17ac4e06b3cb1f5d4cb8ae3be4",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/FromPNTPlus/Mertens.olean",
+      "object_sha256": "d205d1565ff3fcab5304cb7f430a6b5b0d46fd8a259c501e4d233ecc0ee8b874",
+      "compile_receipt_sha256": "a6482718aeb4ff516b38cd5e32f52c5822798101531c50094e5fa6b21ba426b1"
+    },
+    {
+      "module": "Zeta23.Chebyshev",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Chebyshev.lean",
+      "source_sha256": "daa9a056ca00730d6318fc12f6587cb420c31b8c0426b3b851c993731e47c270",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Chebyshev.olean",
+      "object_sha256": "8d9486d71880526e8f37124426015c28dcb8207fdd133d7cc7f9c06d1274728f",
+      "compile_receipt_sha256": "be4a047c7ccbc8f570170257a1d7d72cd874dfd44002ce0a06094af509dbab43"
+    },
+    {
+      "module": "Zeta23.Main",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Main.lean",
+      "source_sha256": "9ffe70b13e0695022bd155803190dbcb031845e748de4a0a59477e84e8242e50",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Main.olean",
+      "object_sha256": "5c8e5e758f43080b7d812d047e6f4a0922cbe62a85ce57ed86266560d296d1a5",
+      "compile_receipt_sha256": "c30c0a16134293a55ed1d684d77b6e1d37bc0af92cd4eb18b64bc8671e7a188f"
+    },
+    {
+      "module": "Zeta23.PrimeSideB",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideB.lean",
+      "source_sha256": "dacc44622988ac4b8973f5402b69eb95cfc8a5a489117eb4cad4fd525f274214",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideB.olean",
+      "object_sha256": "d9aed0a0d9d80a6248d7c9e45c394d598ecfa042dde108c10ab12c0aa70b449a",
+      "compile_receipt_sha256": "bf462f199b942cbdbb50f9e87752a32a0ffd5472b1047a930877597cdb441ba6"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.Defs",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/Defs.lean",
+      "source_sha256": "d844e5e9cfcafe81fbfc72b118693da853383da05d534e27747a4d18791aebb4",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/Defs.olean",
+      "object_sha256": "0fa49bb0daecc2f1ea11ad24dfa7429f31f6336506878734c91e9df50c6270d3",
+      "compile_receipt_sha256": "5dfc83588a55254995dc01bdb0205497ccdad836235f98a5ecc30e7dafd4d5e3"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.Basic",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/Basic.lean",
+      "source_sha256": "06703868b1fc098ab900c7651ec7b3c17ce83c770cb896e0033694c7645edc1f",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/Basic.olean",
+      "object_sha256": "592ad405af912c5682dba449a8beae00df112ab79afa8bd416fd5cc1ca471825",
+      "compile_receipt_sha256": "22b77cca19daf6ce0d51d225c4e2b6272eeb8c99f9a4a9c34a777480645e7994"
+    },
+    {
+      "module": "Zeta23.PrimeSideB.Concrete",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideB/Concrete.lean",
+      "source_sha256": "5e10180dd43ce19821d3522f9090478566c8369d0b54cb5f9804957d95b3565e",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideB/Concrete.olean",
+      "object_sha256": "9216106c876d7390d68079c8048cca4a0257f8b943310821d933b2b82510b1f1",
+      "compile_receipt_sha256": "f237709b6c6441ad9c036398faf2904bea814c8e9e74a76f1b58e0f8ee825e24"
+    },
+    {
+      "module": "Zeta23.PrimeSideB.PPKernel",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideB/PPKernel.lean",
+      "source_sha256": "afe6d56c4d153de6a812fa888a587d2cfe6f7904bbebb5497acff5cdadd48723",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideB/PPKernel.olean",
+      "object_sha256": "3effc9ef999a4b8903da0686456948a5206d5dc2ede2e46a1c29321d6e6c1b08",
+      "compile_receipt_sha256": "7fb627bd09f20872f72ddb8cb63bedc8925ea2d9705b73a243ee2ab7dd46358c"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.MuMu",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/MuMu.lean",
+      "source_sha256": "883a8079e1bcfbeebafb1d2c67d70c30c7366596d78b5a349a17c49d4cd63784",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/MuMu.olean",
+      "object_sha256": "05b36e80bce83bb4357a516dff271df66fbd0701cb7f767f5f89cdb754f16de5",
+      "compile_receipt_sha256": "21b34d22167428259a54ccc5cd610eccc343dbe1e4afe0f7ace674398f58c000"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.CrossMuPCore",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/CrossMuPCore.lean",
+      "source_sha256": "41139eba2832c4d77f3e307f86dc4ccccf4ffc04df870ef02d88750c0a2d859f",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/CrossMuPCore.olean",
+      "object_sha256": "3708fd747ba5d63a13ab35fe6d9491f3d84223611b75901727873f41dfc46810",
+      "compile_receipt_sha256": "b30b056a97dedd85a69508374c76c05ac363379f98e28873007bf3956ce87db4"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.CrossMuP",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/CrossMuP.lean",
+      "source_sha256": "32f6b6e673080b8d3804c9f5840cdd5e744f8d6ad30f8b8af852cd5cdd4a7e7b",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/CrossMuP.olean",
+      "object_sha256": "b630d00b24614c63a237059b1a2dd02e7cd6b7a248761cf4f557d073b053dc30",
+      "compile_receipt_sha256": "2016d11ff2f27493611698592dbe8986777f6b0c158b6ddb8bb3ce025537b063"
+    },
+    {
+      "module": "Zeta23.PiFacts",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PiFacts.lean",
+      "source_sha256": "aa9fba24f9eb8583266fad5442de94fcdce2767be65d5cbe11a4960b744039f8",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PiFacts.olean",
+      "object_sha256": "8ef8f7780f92d8a37240bb0f0aa5a3e70fde3ef39f5372283b128aa85e517771",
+      "compile_receipt_sha256": "c2fee7ed89a60cde80f2c8b041e4cd989895b13a2c1948cfc63322446d4f743f"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.EndsCore",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/EndsCore.lean",
+      "source_sha256": "70dfd12f92a3a3f51750c48e46717f5c2624083c93e997402b96cf537e843421",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/EndsCore.olean",
+      "object_sha256": "201f00f1fa2ed8c98daf19e78a41c95444cc2b317f7e5bee657591dc0b48b8d5",
+      "compile_receipt_sha256": "2c35e72ab778427c7177fc7ddd191edf1e718db22db94ec4f3dec90800aff71c"
+    },
+    {
+      "module": "Zeta23.Defs.LeafIntegrals",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Defs/LeafIntegrals.lean",
+      "source_sha256": "bce0a60cc5bb5a542cc32146ca2aceb6612718428d1e2afa64c53702c321abc6",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Defs/LeafIntegrals.olean",
+      "object_sha256": "2808cc75a94f0eee42580d23ddc31a4ba5d43bcf7172883a44657bb07425693d",
+      "compile_receipt_sha256": "52dd57f18a1cdc7cf4991dc17b29576d3c2de9adb4f1b596c1165c030a8cdab3"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.EndsE1",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/EndsE1.lean",
+      "source_sha256": "e20254dab695019128e58d40f4ad418d6e21835526ee31c73e604b601e131cb3",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/EndsE1.olean",
+      "object_sha256": "6b4a9d9a9792d288c77ce175c587a7d196c1018be5e8c0a1ae3bea1f9de27a9c",
+      "compile_receipt_sha256": "a371716459a228be4586994b39a2f47b1c5058a76183c2761430efbf970871cb"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.EndsWeighted",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/EndsWeighted.lean",
+      "source_sha256": "712af4d3cf29a5e169ee53337edc796e738e82e90040a8ab2a3077cceebb7cad",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/EndsWeighted.olean",
+      "object_sha256": "960b078ad83488f0c7dc51197d23df230388dc7f6589806de18536214472accf",
+      "compile_receipt_sha256": "a00ce7392cf25a7ee593e75b560e5af807428cbf2eb2a3b429dff21cb015e9e2"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.EndsNu",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/EndsNu.lean",
+      "source_sha256": "d0b2b73d52f0c9d36f24646c5bc9447418e18793166c026f13570d991e0c4d15",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/EndsNu.olean",
+      "object_sha256": "9f60db3fdd7ebfa91164a35a411f05d62b9acdd50a4bb09ea9cd98b81e6bb9a0",
+      "compile_receipt_sha256": "2bf6b1ce7b0d3221c5441d4ff60fba5505753174a85405fb77958e7e2461db92"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.EndsE2",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/EndsE2.lean",
+      "source_sha256": "971fdaf7eed843761faeeede1816368c94f1fa3b75c7b23553197f124ded7b56",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/EndsE2.olean",
+      "object_sha256": "1668029fbf22fc87e5a5f3c80b83ef16519fc56bbb5bafa6b93f2acd2e212be4",
+      "compile_receipt_sha256": "a083c797a9028a8ab993e476cbc55d94d918c7f3fdf9bc022d3d0e4484b685c1"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.Ends",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/Ends.lean",
+      "source_sha256": "c3aa6ec890bdc92a981a2f6367a5f3ad1132cc67fa1be35413d96710017c01bd",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/Ends.olean",
+      "object_sha256": "a85047ecc06ac50203370eac9a5e15971a12f8d97aa4db251bc34f2f3dad2668",
+      "compile_receipt_sha256": "e9869d6a58ab342dfbe13454467f66c38ea8d20b758b41fb163fb4a3b06d238e"
+    },
+    {
+      "module": "Zeta23.PrimeSideA",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA.lean",
+      "source_sha256": "2a9034d661f2133429bd51081e30ff93ff29539bc62fae560d95b210dd38cfe3",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA.olean",
+      "object_sha256": "0923dca0ec80902f759c11b55f5a751ff51ea2d14fb5462429fdb36f6d47b6ce",
+      "compile_receipt_sha256": "895008784d2a5246f0e99f97a23a51001ff2440e98fe55317cef83a81109f48c"
+    },
+    {
+      "module": "Zeta23.PrimeSideB.PPOffDiag",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideB/PPOffDiag.lean",
+      "source_sha256": "6f3c33c5798a53f13dc6026c67b9dc3c0b6be8847e79589f5aa272c1343e3a1e",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideB/PPOffDiag.olean",
+      "object_sha256": "49cc164e54698603562842ab15576f120856641fee7b4cc7de4d87e70792297d",
+      "compile_receipt_sha256": "41493c0541fb0e7f40968d09ab6e72c890bc1a38fbd14f962650d504b8936f25"
+    },
+    {
+      "module": "Zeta23.PrimeSideB.PP",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideB/PP.lean",
+      "source_sha256": "3759e83b719726503eb16cfac801e11ab4a912c6b84ecea275cea71dc4b950dd",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideB/PP.olean",
+      "object_sha256": "89d763baca9e82937f09d4df0b9b93b3f290d794dea7c670ac0a6d9c8683a941",
+      "compile_receipt_sha256": "3698cd3c18ac1b6d4ec24946c4be6f6b8a811143ea79810eea62ad9f3a480218"
+    },
+    {
+      "module": "Zeta23.PrimeSideB.Traces",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideB/Traces.lean",
+      "source_sha256": "6aac050bf8306ad7439488366b9e88e6540822d9960404896a42321ac9cc5c3b",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideB/Traces.olean",
+      "object_sha256": "3d7e9e030291e813dd0c8699a25db4a949f20d258fe2b7e2eb5055cc3d2acc6d",
+      "compile_receipt_sha256": "4d2645807cc35f462284fce97c4f54fcb85b562dc642432285ab1fb6e41d0d4a"
+    },
+    {
+      "module": "Zeta23.PrimeSideA.Bridge",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideA/Bridge.lean",
+      "source_sha256": "9e42263a0b2a7b636a99f17df00075b849fd7f5248b41a5cc11a211f5218de75",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideA/Bridge.olean",
+      "object_sha256": "d9740c8d264f4f892c8814496e928fcc8235aaa69506ef36b0c1e8ad600e8f31",
+      "compile_receipt_sha256": "68092d25a87f15f3fc4d667fdb8629d3d71344c1c347b70939077ef51e69c64e"
+    },
+    {
+      "module": "Zeta23.PrimeSideB.Final",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/PrimeSideB/Final.lean",
+      "source_sha256": "879226ec5632ac4f4430512b8535f801ad443423cf68450c0fbabec293831a90",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/PrimeSideB/Final.olean",
+      "object_sha256": "7c774eede4fd35bd83fa6fc7be584cb6afe75f4df4a7aa0d1c8e34cbfa565224",
+      "compile_receipt_sha256": "efaed91ddaeee1bbed57913170d09d99d0d9e7cf04889cbedae88b57eb2ff2da"
+    },
+    {
+      "module": "Zeta23.MV",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/MV.lean",
+      "source_sha256": "203f1b47b1f8c5cb945d35225d8f0c80db05446668d99c2a8a56fa0130043a7a",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/MV.olean",
+      "object_sha256": "59ccf3652185ffaf3aec247ec26c3441db6d9d8e88de2018a7f0581636e5ffdc",
+      "compile_receipt_sha256": "c19f8bf2b031ad4f5fab70cfd76f62110cf3cd209859e5b1c5571f0ffde55310"
+    },
+    {
+      "module": "Zeta23.MV.Spacing",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/MV/Spacing.lean",
+      "source_sha256": "7b3f233239a1dea695c196d7108c5fa432f4b3b67535e1d749359deb4cf69c76",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/MV/Spacing.olean",
+      "object_sha256": "fd5ec397be4ffc8f0e54418a3d31796d5176ba42c1245b044c8e6a6b0039de83",
+      "compile_receipt_sha256": "dabb4e6a895a900b30ffe948d678d0bf199beee8451a697c7c940cb0c64115bd"
+    },
+    {
+      "module": "Zeta23.MV.Quadratic",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/MV/Quadratic.lean",
+      "source_sha256": "ac0f2fbdde09b867649f3140703085b74041b06cca20ef736aedf5d310858f88",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/MV/Quadratic.olean",
+      "object_sha256": "204b81ff132e85ee5900f28c964f3cedb71176f978cd52f667935bbff64659ba",
+      "compile_receipt_sha256": "f515a538c4b6f14a2ab0bed7e3a66830986e907f402df78d45fe455a6aadd113"
+    },
+    {
+      "module": "Zeta23.MV.EigenIdentity",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/MV/EigenIdentity.lean",
+      "source_sha256": "e5fa5981760e91aaf277d9122bd63b71cd42004cb1a062cdfe3f82c0bebe3e36",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/MV/EigenIdentity.olean",
+      "object_sha256": "dd094630880bb5355273ec95d0b282c94b32aca5575a22b2ab9873423130848f",
+      "compile_receipt_sha256": "5f11f0664b2579f8e48da8283f313d2d3e9cba85d3297249315613a8610c0b2c"
+    },
+    {
+      "module": "Zeta23.MV.Eigen",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/MV/Eigen.lean",
+      "source_sha256": "751cea17c7d08126f5a6a5edb9b9a4e84e89e11e407227d8d1b256f19b8316fa",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/MV/Eigen.olean",
+      "object_sha256": "5199975ed89ebddd259360e457a18202bd2949d0dfbc72f15e104a648d44b457",
+      "compile_receipt_sha256": "52073075144ad1a251988bef940960be998dc7ffe9a4bedc624711b811fc9a3b"
+    },
+    {
+      "module": "Zeta23.MV.Duality",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/MV/Duality.lean",
+      "source_sha256": "5250202b9eda682e5b283c0eddb9c960025908c0e7abf78decccb1905b54862d",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/MV/Duality.olean",
+      "object_sha256": "5d27507f99f3cd7bc06919aa7ab9c8fb1d3e3ad7ef524180a37e8e33f73e199b",
+      "compile_receipt_sha256": "195b91e63b0717380f011d6f5f8efecbd27926074890da2bf8a675a72af4ea7e"
+    },
+    {
+      "module": "Zeta23.MV.Final",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/MV/Final.lean",
+      "source_sha256": "d25c97590ba882c9acf73112a5e306b5885c9dca5bfa50d35f7d120993d0c941",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/MV/Final.olean",
+      "object_sha256": "a5d3b95410ece73804480da26f6bde3c89a746d7f6e39f69a76a2e233f94098b",
+      "compile_receipt_sha256": "d6fea09d328a27d78f34ff91419adb3f1924e146e46d9846fdd6510212521061"
+    },
+    {
+      "module": "Zeta23.Final",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Final.lean",
+      "source_sha256": "46ffcd80ca80b3d5021c08b9829ac1c03a371fee7cecbbc9eeb76fcc1fb1cae6",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Final.olean",
+      "object_sha256": "9cd285edc85972e54b2a1510749291adcae4593c0dd0bf8c15544aa503dba267",
+      "compile_receipt_sha256": "bc3fbaafbc5a7a55519eb737273b9a6b082bb9f6c085fd0f2aebc7b30b22bb5a"
+    },
+    {
+      "module": "Zeta23.Unconditional",
+      "source": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/Zeta23/Unconditional.lean",
+      "source_sha256": "fb4cd9af8e3ed2409cfbbcb69d9a802054fd826699e1d55fdbf7054196fd3ceb",
+      "object": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib/Zeta23/Unconditional.olean",
+      "object_sha256": "586e024addcd3289c239c14d1306c96eaaaf963597433eec8a9694f5fdb23a4f",
+      "compile_receipt_sha256": "60bae5d627aeae426e881ceb5f7c3526d9cbeb5cd762eaf33e9037e5e69066cc"
+    }
+  ],
+  "selected_safe_roots": [
+    "Zeta23.thmC\u2080",
+    "Zeta23.three_quarters_distinct",
+    "Zeta23.OPICARound20.DensityCompatibility.eventually_half_distinct",
+    "Zeta23.OPICARound20.DensityCompatibility.actual_distinct_window_superlinear",
+    "Zeta23.OPICARound20.DensityCompatibility.actual_nonresonant_zero_samples"
+  ],
+  "explicit_foundation_roots": [
+    "Quot",
+    "Quot.mk",
+    "Quot.lift",
+    "Quot.ind",
+    "propext",
+    "Quot.sound",
+    "Classical.choice",
+    "Nat.add",
+    "Nat.sub",
+    "Nat.mul",
+    "Nat.pow",
+    "Nat.gcd",
+    "Nat.div",
+    "Nat.mod",
+    "Nat.beq",
+    "Nat.ble",
+    "Nat.land",
+    "Nat.lor",
+    "Nat.xor",
+    "Nat.shiftLeft",
+    "Nat.shiftRight",
+    "String.ofList",
+    "Char.ofNat",
+    "List",
+    "eagerReduce",
+    "Nat",
+    "String",
+    "String.mk",
+    "Char",
+    "optParam",
+    "autoParam",
+    "semiOutParam",
+    "outParam",
+    "Empty"
+  ],
+  "ordered_independent_roots": [
+    "Quot",
+    "Quot.mk",
+    "Quot.lift",
+    "Quot.ind",
+    "propext",
+    "Quot.sound",
+    "Classical.choice",
+    "Nat.add",
+    "Nat.sub",
+    "Nat.mul",
+    "Nat.pow",
+    "Nat.gcd",
+    "Nat.div",
+    "Nat.mod",
+    "Nat.beq",
+    "Nat.ble",
+    "Nat.land",
+    "Nat.lor",
+    "Nat.xor",
+    "Nat.shiftLeft",
+    "Nat.shiftRight",
+    "String.ofList",
+    "Char.ofNat",
+    "List",
+    "eagerReduce",
+    "Nat",
+    "String",
+    "String.mk",
+    "Char",
+    "optParam",
+    "autoParam",
+    "semiOutParam",
+    "outParam",
+    "Empty",
+    "Zeta23.thmC\u2080",
+    "Zeta23.three_quarters_distinct",
+    "Zeta23.OPICARound20.DensityCompatibility.eventually_half_distinct",
+    "Zeta23.OPICARound20.DensityCompatibility.actual_distinct_window_superlinear",
+    "Zeta23.OPICARound20.DensityCompatibility.actual_nonresonant_zero_samples"
+  ],
+  "import_roots": [
+    "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/lib",
+    "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib",
+    "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean"
+  ],
+  "processes": [
+    {
+      "name": "checker_dynamic_linkage",
+      "command": [
+        "/usr/bin/readelf",
+        "-d",
+        "/workspace/scratch/c5836ca317eb/resource_strategy/conleche-control/con-leche/.lake/build/bin/con-leche"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/checker_dynamic_linkage.log",
+      "started_utc": "2026-11-21T17:33:56.720552+00:00",
+      "timeout_seconds": 30,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T17:33:56.971642+00:00",
+      "elapsed_seconds": 0.251,
+      "max_sampled_rss_bytes": 0,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 0,
+      "log_sha256": "2eafa649a13cd1c6acf585c3831ac015a08b3dad5021824b8e8fcb07044577e0"
+    },
+    {
+      "name": "compile_actual_growth_adapter",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "--root=/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src",
+        "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src/DensityCompatibility/ActualDistinctGrowth.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/lib/DensityCompatibility/ActualDistinctGrowth.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/lib/DensityCompatibility/ActualDistinctGrowth.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/compile_actual_growth_adapter.log",
+      "started_utc": "2026-11-21T17:33:56.972931+00:00",
+      "timeout_seconds": 180,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T17:33:59.980331+00:00",
+      "elapsed_seconds": 3.007,
+      "max_sampled_rss_bytes": 3931951104,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 3931951104,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "types_axioms_safe_roots",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M6144",
+        "-DwarningAsError=true",
+        "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/DensityAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/types_axioms_safe_roots.log",
+      "started_utc": "2026-11-21T17:33:59.981467+00:00",
+      "timeout_seconds": 180,
+      "rss_plus_swap_limit_bytes": 8053063680,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T17:34:02.989746+00:00",
+      "elapsed_seconds": 3.008,
+      "max_sampled_rss_bytes": 4335173632,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 4335173632,
+      "log_sha256": "a94fa60d7aadbd1991d378d3c65c00d3ddb07889cacd169f2d66a7ec98b57f1a"
+    },
+    {
+      "name": "stock_Zeta23_Final",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "Zeta23.Final"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/stock_Zeta23_Final.log",
+      "started_utc": "2026-11-21T17:34:14.923830+00:00",
+      "timeout_seconds": 300,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T17:34:19.730739+00:00",
+      "elapsed_seconds": 4.807,
+      "max_sampled_rss_bytes": 3575328768,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 3575328768,
+      "log_sha256": "7e64669fb99b7c981c581c5d43737097e5dd6ad11360ecb62137cd3c31515fd6"
+    },
+    {
+      "name": "stock_Zeta23_Unconditional",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "Zeta23.Unconditional"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/stock_Zeta23_Unconditional.log",
+      "started_utc": "2026-11-21T17:34:19.744801+00:00",
+      "timeout_seconds": 300,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T17:34:24.288249+00:00",
+      "elapsed_seconds": 4.543,
+      "max_sampled_rss_bytes": 3575472128,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 3575472128,
+      "log_sha256": "9e9761d4ecd07d3021d0f65cc76ddea214c3d457ba3a4e4337bac48efe79b7b7"
+    },
+    {
+      "name": "stock_DensityCompatibility_ActualDistinctGrowth",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "DensityCompatibility.ActualDistinctGrowth"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/stock_DensityCompatibility_ActualDistinctGrowth.log",
+      "started_utc": "2026-11-21T17:34:24.289994+00:00",
+      "timeout_seconds": 300,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T17:34:28.567969+00:00",
+      "elapsed_seconds": 4.278,
+      "max_sampled_rss_bytes": 3576504320,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 3576504320,
+      "log_sha256": "ccf555c2f38372901663202d614bffa1af707355ad11da2cd25d244aa8327525"
+    },
+    {
+      "name": "independent_complete_selected_closure",
+      "command": [
+        "/workspace/scratch/c5836ca317eb/resource_strategy/conleche-control/con-leche/.lake/build/bin/con-leche",
+        "--verified",
+        "--jobs=1",
+        "--progress=30s",
+        "--olean",
+        "--search-path=/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/lib:/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib:/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/lib:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean",
+        "--constant=Quot",
+        "--constant=Quot.mk",
+        "--constant=Quot.lift",
+        "--constant=Quot.ind",
+        "--constant=propext",
+        "--constant=Quot.sound",
+        "--constant=Classical.choice",
+        "--constant=Nat.add",
+        "--constant=Nat.sub",
+        "--constant=Nat.mul",
+        "--constant=Nat.pow",
+        "--constant=Nat.gcd",
+        "--constant=Nat.div",
+        "--constant=Nat.mod",
+        "--constant=Nat.beq",
+        "--constant=Nat.ble",
+        "--constant=Nat.land",
+        "--constant=Nat.lor",
+        "--constant=Nat.xor",
+        "--constant=Nat.shiftLeft",
+        "--constant=Nat.shiftRight",
+        "--constant=String.ofList",
+        "--constant=Char.ofNat",
+        "--constant=List",
+        "--constant=eagerReduce",
+        "--constant=Nat",
+        "--constant=String",
+        "--constant=String.mk",
+        "--constant=Char",
+        "--constant=optParam",
+        "--constant=autoParam",
+        "--constant=semiOutParam",
+        "--constant=outParam",
+        "--constant=Empty",
+        "--constant=Zeta23.thmC\u2080",
+        "--constant=Zeta23.three_quarters_distinct",
+        "--constant=Zeta23.OPICARound20.DensityCompatibility.eventually_half_distinct",
+        "--constant=Zeta23.OPICARound20.DensityCompatibility.actual_distinct_window_superlinear",
+        "--constant=Zeta23.OPICARound20.DensityCompatibility.actual_nonresonant_zero_samples",
+        "DensityCompatibility.ActualDistinctGrowth"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/src",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/resource_strategy/density_import_compat_v4/validation_v2/independent_complete_selected_closure.log",
+      "started_utc": "2026-11-21T17:34:28.569627+00:00",
+      "timeout_seconds": 900,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T17:36:11.110112+00:00",
+      "elapsed_seconds": 102.54,
+      "max_sampled_rss_bytes": 1320517632,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 1320517632,
+      "log_sha256": "19792b0378c8fe1262d08c461d827889a788f547dae8aa8b7ef643798e9b497b"
+    }
+  ],
+  "c1_closed": false,
+  "rh_closed": false,
+  "c1_or_rh_premise": false,
+  "statement_count": "Ndist: ncard of actual riemannZeta strip zeros in (T,2T]; Ncount only supplies the comparison scale",
+  "numeric_fraction_used": "thmC\u2080 at epsilon=1/4 gives eventual1/2, then generic positive-fraction growth",
+  "fresh_checker_metatheory_build_claimed": false,
+  "stock_kernel_scope": "All44 modules strictly compiled; named Final/Unconditional/new adapter replays; complete selected proof/type closure independently replayed",
+  "trusted_execution_model": "No concurrent writer; imported original object bytes and pinned stock runtime are rehashed before/after; host/compiler/runtime/system libraries/hardware remain trusted",
+  "independent_checker_dynamic_dependencies": [
+    "libc.so.6",
+    "ld-linux-x86-64.so.2",
+    "libpthread.so.0",
+    "libdl.so.2",
+    "librt.so.1",
+    "libm.so.6"
+  ],
+  "independent_runtime_linkage": "Lean runtime compiled into bound checker executable; listed host system libraries remain trusted",
+  "transitive_axioms": {
+    "Zeta23.thmC\u2080": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.three_quarters_distinct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.DensityCompatibility.eventually_half_distinct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.DensityCompatibility.actual_distinct_window_superlinear": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.DensityCompatibility.actual_nonresonant_zero_samples": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "imported_object_manifest_sha256": "c8094597d179ad6d7f5f650373809823b3753d951d26a27f2bcdb9b2f288a9f4",
+  "independent_accepted_records": 67978,
+  "independent_fold_records": 67978,
+  "pinned_prelude_records_synthesized": 0,
+  "complete_selected_proof_and_type_closure": "PASS",
+  "ended_utc": "2026-11-21T17:36:19.029854+00:00",
+  "all_bound_inputs_rehashed": true,
+  "imported_object_count": 24092,
+  "imported_object_bytes": 4868799288,
+  "bound_input_inventory_sha256": "887a7cc8b721d424860acd41c665d8b0d5f7e8d7174269257952877e345da7a5",
+  "fresh_adapter_object_sha256": "a1b416f33a87686596d54da661ecdce9d27aa2bbd7dd01fb5110a66f33d624e1"
+}

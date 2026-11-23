@@ -1,0 +1,410 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-11-21T15:51:32.808013+00:00",
+  "processes": [
+    {
+      "name": "compile_FiniteCauchySampling",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M6144",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "--root=/workspace/scratch/c5836ca317eb/math_compression",
+        "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/FiniteCauchySampling.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/FiniteCauchySampling.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/FiniteCauchySampling.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 180,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/compile_FiniteCauchySampling.log",
+      "exit_code": 0,
+      "elapsed_seconds": 3.014,
+      "max_sampled_aggregate_rss_bytes": 2162118656,
+      "failure": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PASS"
+    },
+    {
+      "name": "compile_BoundaryFlatRationalSampling",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M6144",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "--root=/workspace/scratch/c5836ca317eb/math_compression",
+        "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatRationalSampling.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/BoundaryFlatRationalSampling.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/BoundaryFlatRationalSampling.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 180,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/compile_BoundaryFlatRationalSampling.log",
+      "exit_code": 0,
+      "elapsed_seconds": 3.22,
+      "max_sampled_aggregate_rss_bytes": 3623632896,
+      "failure": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PASS"
+    },
+    {
+      "name": "compile_RationalSamplingSharpness",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M6144",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "--root=/workspace/scratch/c5836ca317eb/math_compression",
+        "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/RationalSamplingSharpness.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/RationalSamplingSharpness.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/RationalSamplingSharpness.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 180,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/compile_RationalSamplingSharpness.log",
+      "exit_code": 0,
+      "elapsed_seconds": 3.61,
+      "max_sampled_aggregate_rss_bytes": 3631316992,
+      "failure": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PASS"
+    },
+    {
+      "name": "types_axioms_safe_roots",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M6144",
+        "-DwarningAsError=true",
+        "/workspace/scratch/c5836ca317eb/math_compression/FiniteSamplingAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 180,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/types_axioms_safe_roots.log",
+      "exit_code": 0,
+      "elapsed_seconds": 2.609,
+      "max_sampled_aggregate_rss_bytes": 4045299712,
+      "failure": null,
+      "log_sha256": "151f136ff14e6c03b7a7a42f079d7b2eb396f6d3d26cfd38a171437e06fa2452",
+      "status": "PASS"
+    },
+    {
+      "name": "stock_kernel_replay_FiniteCauchySampling",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "OPICAStep4.FiniteCauchySampling"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 300,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/stock_kernel_replay_FiniteCauchySampling.log",
+      "exit_code": 0,
+      "elapsed_seconds": 3.635,
+      "max_sampled_aggregate_rss_bytes": 1861177344,
+      "failure": null,
+      "log_sha256": "808588cfb137a2e2921ecfa8bb7736efbe7b8cac11b63f8b3c858eef8c8ee65e",
+      "status": "PASS"
+    },
+    {
+      "name": "stock_kernel_replay_BoundaryFlatRationalSampling",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "OPICAStep4.BoundaryFlatRationalSampling"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 300,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/stock_kernel_replay_BoundaryFlatRationalSampling.log",
+      "exit_code": 0,
+      "elapsed_seconds": 4.439,
+      "max_sampled_aggregate_rss_bytes": 3250896896,
+      "failure": null,
+      "log_sha256": "58ed08b06db8fb412ccb667a245a50b203f389b1c8f0e46e31142b2dce500eff",
+      "status": "PASS"
+    },
+    {
+      "name": "stock_kernel_replay_RationalSamplingSharpness",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "OPICAStep4.RationalSamplingSharpness"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 300,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/stock_kernel_replay_RationalSamplingSharpness.log",
+      "exit_code": 0,
+      "elapsed_seconds": 4.229,
+      "max_sampled_aggregate_rss_bytes": 3252436992,
+      "failure": null,
+      "log_sha256": "cdd112887b3651e94bd29278426518f83420d4e7f5d56d60fce230d893de04a3",
+      "status": "PASS"
+    },
+    {
+      "name": "independent_complete_proof_closure",
+      "command": [
+        "/workspace/scratch/c5836ca317eb/resource_strategy/conleche-control/con-leche/.lake/build/bin/con-leche",
+        "--verified",
+        "--jobs=1",
+        "--progress=30s",
+        "--olean",
+        "--search-path=/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/native-object-view:/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean",
+        "--constant=Zeta23.OPICARound20.finiteCauchyNumerator_eval",
+        "--constant=Zeta23.OPICARound20.finiteCauchyNumerator_eval_pole",
+        "--constant=Zeta23.OPICARound20.finiteCauchyNumerator_eq_zero_iff",
+        "--constant=Zeta23.OPICARound20.finiteCauchyNumerator_natDegree_le",
+        "--constant=Zeta23.OPICARound20.finiteCauchyNumerator_shift",
+        "--constant=Zeta23.OPICARound20.finiteCauchyNumerator_moment_shift",
+        "--constant=Zeta23.OPICARound20.finiteCauchyNumerator_degree_defect",
+        "--constant=Zeta23.OPICARound20.finiteCauchySum_zero_forces_coefficients",
+        "--constant=Zeta23.OPICARound20.finite_moments_force_coefficients",
+        "--constant=Zeta23.OPICARound20.finiteCauchySum_nonzero_sample",
+        "--constant=Zeta23.OPICARound20.finiteCauchySum_zero_set_card_bound",
+        "--constant=Zeta23.OPICARound20.boundaryFlat_scaled_moments",
+        "--constant=Zeta23.OPICARound20.boundaryFlat_rational_samples_force_coefficients",
+        "--constant=Zeta23.OPICARound20.boundaryFlat_rational_sampling_injective",
+        "--constant=Zeta23.OPICARound20.boundaryFlat_coefficients_zero_of_cutoff_le_one",
+        "--constant=Zeta23.OPICARound20.rationalSamplingSharpness_boundaryFlat",
+        "--constant=Zeta23.OPICARound20.rationalSamplingSharpness_nonzero",
+        "--constant=Zeta23.OPICARound20.rationalSamplingSharpness_zero_sample",
+        "--constant=Zeta23.OPICARound20.rationalSamplingSharpness_nonzero_sample",
+        "--constant=Zeta23.OPICARound20.rationalSamplingSharpness_sample_is_not_pole",
+        "OPICAStep4.RationalSamplingSharpness"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 600,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/independent_complete_proof_closure.log",
+      "exit_code": 0,
+      "elapsed_seconds": 33.449,
+      "max_sampled_aggregate_rss_bytes": 1211285504,
+      "failure": null,
+      "log_sha256": "7d8fd536842601ce706daa62374c377868a2e84a1c5332eb2ccc35019a6c9f27",
+      "status": "PASS"
+    }
+  ],
+  "scope": "Fresh finite rational-sampling supporting algebra; no Fourier identity, density proof, supplier closure, C1, or RH conclusion",
+  "native_head": "7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9",
+  "native_tree": "9248b76d7aff60aab3bb775c4be9750dc6006003",
+  "compiler": "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+  "compiler_version": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "compiler_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "kernel_checker_sha256": "84bc3e7cd6efa5bfecd1e7c37571fed9428fb2b3e16da0ddf62f2163573486d0",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "canonical_import_roots": [
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean"
+  ],
+  "sources_sha256_before": {
+    "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/FiniteCauchySampling.lean": "db1f88f3b154ae4fc64788bbfdc10f9c19c03ae3ab5bf506491dff680914af19",
+    "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatRationalSampling.lean": "3bb56c4a0e56d692e4bf8537635486ba45adb60a29625482e9ad33c94a3a409d",
+    "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/RationalSamplingSharpness.lean": "fdb050c4f462f7b59c0e1f8c89421f35caf89793fd77fad0823d5d20577c8628",
+    "/workspace/scratch/c5836ca317eb/math_compression/FiniteSamplingAudit.lean": "a576c73eeff32d2b90927c2bb2110a18b80aaee2ef90e01b37aafbfb1eb4af47",
+    "/workspace/scratch/c5836ca317eb/math_compression/verify_finite_sampling.py": "e2e00f3753a6f7c9c33a86e0ec605568b96facf25ca72f6a6bd5785ea91332bc",
+    "/workspace/scratch/c5836ca317eb/math_compression/FINITE_SAMPLING_ROOTS.json": "0995acab4149e1af99ba5802c02eea3456283d6ab09d283c6e8a42757f71018f",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/CCM/BoundaryFlatFiniteSpace.lean": "4db4411d64b0c97370db263efd3b64f8e2bfc3f90cd7e694e13fb69bc4b83f56",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/CCM/FiniteMatrix.lean": "d92b78f0d9491f85d327d64c51b3ccff0dd91c6b977036f03a463c2c15e07274",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/CCM/SourceMatrix.lean": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc"
+  },
+  "selected_safe_theorem_roots": [
+    "Zeta23.OPICARound20.finiteCauchyNumerator_eval",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_eval_pole",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_eq_zero_iff",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_natDegree_le",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_shift",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_moment_shift",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_degree_defect",
+    "Zeta23.OPICARound20.finiteCauchySum_zero_forces_coefficients",
+    "Zeta23.OPICARound20.finite_moments_force_coefficients",
+    "Zeta23.OPICARound20.finiteCauchySum_nonzero_sample",
+    "Zeta23.OPICARound20.finiteCauchySum_zero_set_card_bound",
+    "Zeta23.OPICARound20.boundaryFlat_scaled_moments",
+    "Zeta23.OPICARound20.boundaryFlat_rational_samples_force_coefficients",
+    "Zeta23.OPICARound20.boundaryFlat_rational_sampling_injective",
+    "Zeta23.OPICARound20.boundaryFlat_coefficients_zero_of_cutoff_le_one",
+    "Zeta23.OPICARound20.rationalSamplingSharpness_boundaryFlat",
+    "Zeta23.OPICARound20.rationalSamplingSharpness_nonzero",
+    "Zeta23.OPICARound20.rationalSamplingSharpness_zero_sample",
+    "Zeta23.OPICARound20.rationalSamplingSharpness_nonzero_sample",
+    "Zeta23.OPICARound20.rationalSamplingSharpness_sample_is_not_pole"
+  ],
+  "fresh_output_directory": true,
+  "c1_closed": false,
+  "rh_closed": false,
+  "independent_checker_source_head": "cd2eceab2e9b10404c663b468639c8aa99d0d1f2",
+  "independent_checker_sha256": "6d8dd758515bcf4180a12b47193e0c4c3772e45fac652bb513a70b3907e6ba4f",
+  "independent_checker_build_runtime": "Lean 4.36.0",
+  "cross_version_compatibility_receipt_sha256": "6f37151e826ce95d7314127ffadfea8a6bb21170a23fbf36de3347e195eaeca3",
+  "fresh_checker_metatheory_build_claimed": false,
+  "input_integrity_scope": "Authored sources and fresh objects plus named native definition sources/objects are rehashed; inherited official package inventory is not freshly rehashed by this subtask. All selected proof and type dependencies are replayed from the exact object path view by the independent checker. No concurrent writer is authorized on those package/native input paths.",
+  "transitive_axioms": {
+    "Zeta23.OPICARound20.finiteCauchyNumerator_eval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finiteCauchyNumerator_eval_pole": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finiteCauchyNumerator_eq_zero_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finiteCauchyNumerator_natDegree_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finiteCauchyNumerator_shift": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finiteCauchyNumerator_moment_shift": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finiteCauchyNumerator_degree_defect": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finiteCauchySum_zero_forces_coefficients": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finite_moments_force_coefficients": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finiteCauchySum_nonzero_sample": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finiteCauchySum_zero_set_card_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.boundaryFlat_scaled_moments": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.boundaryFlat_rational_samples_force_coefficients": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.boundaryFlat_rational_sampling_injective": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.boundaryFlat_coefficients_zero_of_cutoff_le_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.rationalSamplingSharpness_boundaryFlat": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.rationalSamplingSharpness_nonzero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.rationalSamplingSharpness_zero_sample": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.rationalSamplingSharpness_nonzero_sample": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.rationalSamplingSharpness_sample_is_not_pole": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "independent_object_roots": [
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/native-object-view",
+    "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean"
+  ],
+  "independent_accepted_declarations": 12055,
+  "sources_unchanged": true,
+  "objects_unchanged": true,
+  "sources_sha256_after": {
+    "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/FiniteCauchySampling.lean": "db1f88f3b154ae4fc64788bbfdc10f9c19c03ae3ab5bf506491dff680914af19",
+    "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatRationalSampling.lean": "3bb56c4a0e56d692e4bf8537635486ba45adb60a29625482e9ad33c94a3a409d",
+    "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/RationalSamplingSharpness.lean": "fdb050c4f462f7b59c0e1f8c89421f35caf89793fd77fad0823d5d20577c8628",
+    "/workspace/scratch/c5836ca317eb/math_compression/FiniteSamplingAudit.lean": "a576c73eeff32d2b90927c2bb2110a18b80aaee2ef90e01b37aafbfb1eb4af47",
+    "/workspace/scratch/c5836ca317eb/math_compression/verify_finite_sampling.py": "e2e00f3753a6f7c9c33a86e0ec605568b96facf25ca72f6a6bd5785ea91332bc",
+    "/workspace/scratch/c5836ca317eb/math_compression/FINITE_SAMPLING_ROOTS.json": "0995acab4149e1af99ba5802c02eea3456283d6ab09d283c6e8a42757f71018f",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/CCM/BoundaryFlatFiniteSpace.lean": "4db4411d64b0c97370db263efd3b64f8e2bfc3f90cd7e694e13fb69bc4b83f56",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/CCM/FiniteMatrix.lean": "d92b78f0d9491f85d327d64c51b3ccff0dd91c6b977036f03a463c2c15e07274",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/CCM/SourceMatrix.lean": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc"
+  },
+  "objects_sha256": {
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/FiniteCauchySampling.olean": "e4075c453fdf22dd7fc7a263410e295eec3cca9b30cb364a3d8657475f5018c0",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/BoundaryFlatRationalSampling.olean": "52b348815c16b6858403ba7fdef9b39e0ce3351d48e260028a3c45507952f498",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/RationalSamplingSharpness.olean": "1b44347255aa73f26752a9589029070138a43fedc00599b11796dfe98be826c6",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/BoundaryFlatRationalSampling.ilean": "bec30071daa1f4cf4ee4adeec624e1beeff80aa45183d3a4572e025b6e6b423e",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/FiniteCauchySampling.ilean": "97492112c870418196cc9f6c27c7ec2dcab72b686d7608013a97cb0f99385d99",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/RationalSamplingSharpness.ilean": "1fd706213b0c24e3674ebd53447e256d055c62ea4806c462f3f378e9370c8630",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/build/lib/lean/Zeta23/CCM/BoundaryFlatFiniteSpace.olean": "433fde4258f5cf90e2d72f67e57879daa5492334053f8b7fffc36d8ce3f4b40f",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/build/lib/lean/Zeta23/CCM/FiniteMatrix.olean": "48bfc74c2dc4675eaeaacc8a1209ca0a6905659f943240ccae18afe1ec95fceb",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/build/lib/lean/Zeta23/CCM/SourceMatrix.olean": "3ff68a4fa9caff93f798b2e1e527cfe17ef2748763612d97648514c9cfb501af"
+  },
+  "source_placeholder_scan": "No axiom/sorry/admit declarations in the three authored theorem modules",
+  "completed_utc": "2026-11-21T15:52:31.082389+00:00"
+}

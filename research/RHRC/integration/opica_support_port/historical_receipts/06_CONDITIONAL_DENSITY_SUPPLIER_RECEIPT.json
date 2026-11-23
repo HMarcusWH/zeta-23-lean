@@ -1,0 +1,270 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-11-21T16:06:15.105715+00:00",
+  "processes": [
+    {
+      "name": "compile_ResonanceCounting",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M6144",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "--root=/workspace/scratch/c5836ca317eb/math_compression",
+        "/workspace/scratch/c5836ca317eb/math_compression/SamplingDensity/ResonanceCounting.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib/SamplingDensity/ResonanceCounting.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib/SamplingDensity/ResonanceCounting.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 180,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/compile_ResonanceCounting.log",
+      "exit_code": 0,
+      "elapsed_seconds": 3.41,
+      "max_sampled_aggregate_rss_bytes": 3241619456,
+      "failure": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PASS"
+    },
+    {
+      "name": "compile_DistinctGrowthFromFraction",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M6144",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "--root=/workspace/scratch/c5836ca317eb/math_compression",
+        "/workspace/scratch/c5836ca317eb/math_compression/SamplingDensity/DistinctGrowthFromFraction.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib/SamplingDensity/DistinctGrowthFromFraction.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib/SamplingDensity/DistinctGrowthFromFraction.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 180,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/compile_DistinctGrowthFromFraction.log",
+      "exit_code": 0,
+      "elapsed_seconds": 3.414,
+      "max_sampled_aggregate_rss_bytes": 3921211392,
+      "failure": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PASS"
+    },
+    {
+      "name": "density_types_axioms_safe_roots",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M6144",
+        "-DwarningAsError=true",
+        "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/DensitySupplierAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 180,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/density_types_axioms_safe_roots.log",
+      "exit_code": 0,
+      "elapsed_seconds": 4.847,
+      "max_sampled_aggregate_rss_bytes": 4307877888,
+      "failure": null,
+      "log_sha256": "29d0dfa163b94517107440caa08b8d55ff4ba4ca86a4853cbed8a300cf6da9a1",
+      "status": "PASS"
+    },
+    {
+      "name": "stock_kernel_ResonanceCounting",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "SamplingDensity.ResonanceCounting"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 300,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/stock_kernel_ResonanceCounting.log",
+      "exit_code": 0,
+      "elapsed_seconds": 4.452,
+      "max_sampled_aggregate_rss_bytes": 2870710272,
+      "failure": null,
+      "log_sha256": "3223221091ea993c69af5748c7186e7e79716a2fa339f8b120f6b9309194eea7",
+      "status": "PASS"
+    },
+    {
+      "name": "stock_kernel_DistinctGrowthFromFraction",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "SamplingDensity.DistinctGrowthFromFraction"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 300,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/stock_kernel_DistinctGrowthFromFraction.log",
+      "exit_code": 0,
+      "elapsed_seconds": 4.854,
+      "max_sampled_aggregate_rss_bytes": 3524509696,
+      "failure": null,
+      "log_sha256": "e60ab0db9c1241498a7c99709e2cef362b9cf8c10929e0183ef06aa84c59b0c0",
+      "status": "PASS"
+    },
+    {
+      "name": "independent_complete_selected_proof_closure",
+      "command": [
+        "/workspace/scratch/c5836ca317eb/resource_strategy/conleche-control/con-leche/.lake/build/bin/con-leche",
+        "--verified",
+        "--jobs=1",
+        "--progress=30s",
+        "--olean",
+        "--search-path=/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean",
+        "--constant=Zeta23.OPICARound20.gammaOf_injective",
+        "--constant=Zeta23.OPICARound20.exponential_gamma_argument",
+        "--constant=Zeta23.OPICARound20.resonance_mem_grid_of_ordinate_bounds",
+        "--constant=Zeta23.OPICARound20.resonanceGrid_card_lt_linear",
+        "--constant=Zeta23.OPICARound20.nonresonantZeroSet_infinite_of_distinct_growth",
+        "--constant=Zeta23.OPICARound20.exists_nonresonant_zero_samples_of_distinct_growth",
+        "--constant=Zeta23.OPICARound20.distinct_growth_of_positive_fraction",
+        "--constant=Zeta23.OPICARound20.actual_zeta_riemannVonMangoldt",
+        "--constant=Zeta23.OPICARound20.actual_zeta_distinct_growth_of_positive_fraction",
+        "SamplingDensity.DistinctGrowthFromFraction"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "timeout_seconds": 600,
+      "aggregate_rss_limit_bytes": 7516192768,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/independent_complete_selected_proof_closure.log",
+      "exit_code": 0,
+      "elapsed_seconds": 96.549,
+      "max_sampled_aggregate_rss_bytes": 1308569600,
+      "failure": null,
+      "log_sha256": "27768f57a81b7bdde9e5b0f22b87782293324ddbf92504b3508cd2fbab002951",
+      "status": "PASS"
+    }
+  ],
+  "scope": "Conditional superlinear DISTINCT window growth implies nonresonant samples; explicit positive-distinct-fraction driver; unconditional actual RvM wrapper. Native Final/Unconditional density supplier remains unverified. No C1/RH closure.",
+  "native_head": "7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9",
+  "native_tree": "9248b76d7aff60aab3bb775c4be9750dc6006003",
+  "compiler_version": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "compiler_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "kernel_checker_sha256": "84bc3e7cd6efa5bfecd1e7c37571fed9428fb2b3e16da0ddf62f2163573486d0",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "source_sha256_before": {
+    "/workspace/scratch/c5836ca317eb/math_compression/SamplingDensity/ResonanceCounting.lean": "732c207b92eadba2d36f49a0fb1565cb62ea919e4f5e5738695a8d73ad4caac1",
+    "/workspace/scratch/c5836ca317eb/math_compression/SamplingDensity/DistinctGrowthFromFraction.lean": "1ef7b70f14f652dc838c67c1a081f7c61a57daa6a8c8e773d35ef32415a3516a",
+    "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/DensitySupplierAudit.lean": "809ef52b938ef08dbc67694577ab0e3520f934d32b6ec0735c26d1890512f067",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/Defs.lean": "216b34de76394522aea610c57d342f3dfe8aa1c3d9d6b2ec11509de92f1c6bb0",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/Defs/Counting.lean": "0d403d6d4d3f4cdfa370b374376dede2d56fa79e1b0146d48ce8c4321496ee0d",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/Statement.lean": "3458af8531decf948319517543f731dcdc2c5a7de47e9339f9a443530e60d205",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/Statement/SeamClosed.lean": "b2b03190fb3cf4520d273f8bdb9fc7a89939381c8aaff360e5845108b4d8b88d",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/Assembly.lean": "ff1c57696310e3b9cf0bb39ce7fcfc4f4c4ba654a605daa30b66c3c9b900e7cf",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/RvM/Statement.lean": "3226fbc3de1b223a067d1d454c1e7400ac81c652dbbb58f494e42a6a583061f6",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/GammaFacts/Complete.lean": "d43b2d4f3fa0c1d22210e1f671b875a88b09747247e67becbbc38f85f34f2fb0"
+  },
+  "selected_safe_roots": [
+    "Zeta23.OPICARound20.gammaOf_injective",
+    "Zeta23.OPICARound20.exponential_gamma_argument",
+    "Zeta23.OPICARound20.resonance_mem_grid_of_ordinate_bounds",
+    "Zeta23.OPICARound20.resonanceGrid_card_lt_linear",
+    "Zeta23.OPICARound20.nonresonantZeroSet_infinite_of_distinct_growth",
+    "Zeta23.OPICARound20.exists_nonresonant_zero_samples_of_distinct_growth",
+    "Zeta23.OPICARound20.distinct_growth_of_positive_fraction",
+    "Zeta23.OPICARound20.actual_zeta_riemannVonMangoldt",
+    "Zeta23.OPICARound20.actual_zeta_distinct_growth_of_positive_fraction"
+  ],
+  "import_roots": [
+    "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean"
+  ],
+  "native_actual_distinct_fraction_supplier": "OPEN_UNVERIFIED_NATIVE_FINAL_CLOSURE",
+  "c1_closed": false,
+  "rh_closed": false,
+  "fresh_output_directory": true,
+  "process_helper_sha256": "e2e00f3753a6f7c9c33a86e0ec605568b96facf25ca72f6a6bd5785ea91332bc",
+  "transitive_axioms": {
+    "Zeta23.OPICARound20.gammaOf_injective": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.exponential_gamma_argument": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.resonance_mem_grid_of_ordinate_bounds": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.resonanceGrid_card_lt_linear": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.nonresonantZeroSet_infinite_of_distinct_growth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.exists_nonresonant_zero_samples_of_distinct_growth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.distinct_growth_of_positive_fraction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.actual_zeta_riemannVonMangoldt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.actual_zeta_distinct_growth_of_positive_fraction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "independent_checker_sha256": "6d8dd758515bcf4180a12b47193e0c4c3772e45fac652bb513a70b3907e6ba4f",
+  "independent_checker_source_head": "cd2eceab2e9b10404c663b468639c8aa99d0d1f2",
+  "independent_checker_build_runtime": "Lean4.36.0",
+  "fresh_checker_metatheory_build_claimed": false,
+  "cross_version_compatibility_receipt_sha256": "6f37151e826ce95d7314127ffadfea8a6bb21170a23fbf36de3347e195eaeca3",
+  "independent_accepted_declarations": 60581,
+  "sources_unchanged": true,
+  "fresh_objects_unchanged": true,
+  "objects_sha256": {
+    "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib/SamplingDensity/DistinctGrowthFromFraction.olean": "1cedc3275bff43113a76476e89ddbfe5aaee1133c577d15a5c20cffeee044e89",
+    "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib/SamplingDensity/ResonanceCounting.ilean": "e1d2d826f9b09622854a407e164ff74d7c31d7ee71e4acb8a8e39a1a1a0a36bc",
+    "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib/SamplingDensity/ResonanceCounting.olean": "bf52ca4abe675d43fa9b9749dcb5f6e0bbbc61375f26dd3aded2ec324eb20e98",
+    "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/lib/SamplingDensity/DistinctGrowthFromFraction.ilean": "78c8b4b87e22e488c68ea4bcff5aa8908d1269f7e60d2c3c060732f50b5f6bcc"
+  },
+  "source_sha256_after": {
+    "/workspace/scratch/c5836ca317eb/math_compression/SamplingDensity/ResonanceCounting.lean": "732c207b92eadba2d36f49a0fb1565cb62ea919e4f5e5738695a8d73ad4caac1",
+    "/workspace/scratch/c5836ca317eb/math_compression/SamplingDensity/DistinctGrowthFromFraction.lean": "1ef7b70f14f652dc838c67c1a081f7c61a57daa6a8c8e773d35ef32415a3516a",
+    "/workspace/scratch/c5836ca317eb/math_compression/density_lemmas/validation_v1/DensitySupplierAudit.lean": "809ef52b938ef08dbc67694577ab0e3520f934d32b6ec0735c26d1890512f067",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/Defs.lean": "216b34de76394522aea610c57d342f3dfe8aa1c3d9d6b2ec11509de92f1c6bb0",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/Defs/Counting.lean": "0d403d6d4d3f4cdfa370b374376dede2d56fa79e1b0146d48ce8c4321496ee0d",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/Statement.lean": "3458af8531decf948319517543f731dcdc2c5a7de47e9339f9a443530e60d205",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/Statement/SeamClosed.lean": "b2b03190fb3cf4520d273f8bdb9fc7a89939381c8aaff360e5845108b4d8b88d",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/Assembly.lean": "ff1c57696310e3b9cf0bb39ce7fcfc4f4c4ba654a605daa30b66c3c9b900e7cf",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/RvM/Statement.lean": "3226fbc3de1b223a067d1d454c1e7400ac81c652dbbb58f494e42a6a583061f6",
+    "/workspace/scratch/ba87d581091d/research_round19/native-project/Zeta23/GammaFacts/Complete.lean": "d43b2d4f3fa0c1d22210e1f671b875a88b09747247e67becbbc38f85f34f2fb0"
+  },
+  "completed_utc": "2026-11-21T16:08:12.673922+00:00"
+}

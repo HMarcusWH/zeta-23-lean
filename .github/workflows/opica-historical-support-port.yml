@@ -1,0 +1,43 @@
+name: OPICA historical support native candidate
+on:
+  push:
+    branches: [research/opica-historical-support-port-20261123]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - run: python3 -B research/RHRC/integration/opica_support_port/check_candidate.py
+      - run: python3 -O -B research/RHRC/integration/opica_support_port/check_candidate.py
+  native-candidate:
+    needs: source-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile exact native candidate and audit 72 historical roots
+        run: python3 -B research/RHRC/integration/opica_support_port/check_candidate.py "$RUNNER_TEMP/opica-support-port"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-support-port-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/opica-support-port/
+          if-no-files-found: warn
+          retention-days: 90

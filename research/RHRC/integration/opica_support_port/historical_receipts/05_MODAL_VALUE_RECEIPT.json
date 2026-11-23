@@ -1,0 +1,171 @@
+{
+  "schema": "NATIVE_FINITE_FOURIER_MODAL_VALUE_V1",
+  "status": "PASS",
+  "started_utc": "2026-11-21T15:58:06.371646+00:00",
+  "processes": [
+    {
+      "name": "compile_modal_theorems",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "--root=/workspace/scratch/c5836ca317eb/fourier_bridge",
+        "/workspace/scratch/c5836ca317eb/fourier_bridge/FourierBridge/FiniteFourierResonance.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/fourier_bridge/resonance_validation_v1/lib/FourierBridge/FiniteFourierResonance.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/fourier_bridge/resonance_validation_v1/lib/FourierBridge/FiniteFourierResonance.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/fourier_bridge",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/fourier_bridge/resonance_validation_v1/compile_modal_theorems.log",
+      "started_utc": "2026-11-21T15:58:06.388655+00:00",
+      "timeout_seconds": 180,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T15:58:09.899872+00:00",
+      "elapsed_seconds": 3.511,
+      "max_sampled_rss_bytes": 3654057984,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 3654057984,
+      "log_sha256": "7e1124325ad6338ded76bc87edf360fadcc6ca721f900922ea4e3fd498893057"
+    },
+    {
+      "name": "types_axioms_safe_roots",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/workspace/scratch/c5836ca317eb/fourier_bridge/FourierResonanceAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/fourier_bridge",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/fourier_bridge/resonance_validation_v1/types_axioms_safe_roots.log",
+      "started_utc": "2026-11-21T15:58:09.900670+00:00",
+      "timeout_seconds": 180,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T15:58:12.919374+00:00",
+      "elapsed_seconds": 3.019,
+      "max_sampled_rss_bytes": 4044910592,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 4044910592,
+      "log_sha256": "65f205895474313d849542033316b8d6a3b9a3ad0d8bec783f7ee44aba1892a3"
+    },
+    {
+      "name": "stock_kernel_replay_modal",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "FourierBridge.FiniteFourierResonance"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/fourier_bridge",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/fourier_bridge/resonance_validation_v1/stock_kernel_replay_modal.log",
+      "started_utc": "2026-11-21T15:58:12.920198+00:00",
+      "timeout_seconds": 180,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T15:58:16.681692+00:00",
+      "elapsed_seconds": 3.762,
+      "max_sampled_rss_bytes": 3264864256,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 3264864256,
+      "log_sha256": "15c041b1d2a41e71c36976d7cd3ab1dd1dd9a4719f2207f84cfc28dba7e4a002"
+    },
+    {
+      "name": "independent_complete_proof_closure",
+      "command": [
+        "/workspace/scratch/c5836ca317eb/resource_strategy/conleche-control/con-leche/.lake/build/bin/con-leche",
+        "--verified",
+        "--jobs=1",
+        "--progress=30s",
+        "--olean",
+        "--search-path=/workspace/scratch/c5836ca317eb/fourier_bridge/resonance_validation_v1/lib:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean",
+        "--constant=Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel_at_resonance",
+        "--constant=Zeta23.OPICARound20.paperFT_localizedFiniteVector_at_modal_point",
+        "FourierBridge.FiniteFourierResonance"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/fourier_bridge",
+      "status": "PASS",
+      "expected_exit_code": 0,
+      "log": "/workspace/scratch/c5836ca317eb/fourier_bridge/resonance_validation_v1/independent_complete_proof_closure.log",
+      "started_utc": "2026-11-21T15:58:16.683531+00:00",
+      "timeout_seconds": 900,
+      "rss_plus_swap_limit_bytes": 6442450944,
+      "exit_code": 0,
+      "ended_utc": "2026-11-21T15:59:04.442292+00:00",
+      "elapsed_seconds": 47.759,
+      "max_sampled_rss_bytes": 1200324608,
+      "max_sampled_swap_bytes": 0,
+      "max_sampled_rss_plus_swap_bytes": 1200324608,
+      "log_sha256": "b5e76045d6c2618ee2bec36d048d8daef6caa26eb7e93bfef7fd4ebbe5ae5353"
+    }
+  ],
+  "selected_safe_theorem_roots": [
+    "Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel_at_resonance",
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_at_modal_point"
+  ],
+  "scope": "Exact arbitrary-coefficient modal transform evaluation by integration; no C1/RH conclusion",
+  "c1_closed": false,
+  "rh_closed": false,
+  "sources_sha256_before": {
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/FourierBridge/FiniteFourierResonance.lean": "608801dd8b8c92f773dc67c0e6116b994d5bf2ea29c667a11ecbbae3638b0c4e",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/FourierResonanceAudit.lean": "ee9d8ba723e56add9a5b289dd67d9f1f7b90b61a8f894db504d3159a3536747f",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/verify_modal_resonance.py": "0e7587245f168ccbacb5689a949ebf5ab03bf588553b93b7bcbe0af18f0f1660",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/FOURIER_BRIDGE_RECEIPT.json": "76b63166edabf20715cc3297877abce8aea319dbd516ebe9d784bcbc580bad50",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/validation_v1/IMPORTED_OBJECTS.json": "9d386f839b120a2b66a84b091d3202e71510bf83bc8c043568baeb96219bc476"
+  },
+  "canonical_import_roots": [
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/resonance_validation_v1/lib",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean"
+  ],
+  "base_bridge_receipt_sha256": "76b63166edabf20715cc3297877abce8aea319dbd516ebe9d784bcbc580bad50",
+  "copied_core_object_sha256": "3ec85733be747090a24920fbd68a4260b91be7e5d65277dfc8f147329b830abc",
+  "compiler_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "kernel_checker_sha256": "84bc3e7cd6efa5bfecd1e7c37571fed9428fb2b3e16da0ddf62f2163573486d0",
+  "native_head": "7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "independent_checker_sha256": "6d8dd758515bcf4180a12b47193e0c4c3772e45fac652bb513a70b3907e6ba4f",
+  "independent_checker_source_head": "cd2eceab2e9b10404c663b468639c8aa99d0d1f2",
+  "cross_version_compatibility_receipt_sha256": "6f37151e826ce95d7314127ffadfea8a6bb21170a23fbf36de3347e195eaeca3",
+  "fresh_checker_metatheory_build_claimed": false,
+  "trusted_host_assumption": "No concurrent writer on common package, native, runtime, algebra or fresh Fourier inputs; pre/post hashes bind checked bytes under this assumption.",
+  "transitive_axioms": {
+    "Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel_at_resonance": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_at_modal_point": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "independent_accepted_declarations": 35838,
+  "authored_and_copied_objects_sha256": {
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/resonance_validation_v1/lib/FourierBridge/FiniteFourierResonance.ilean": "e56dfbc6bd8696965d509c668d8181a86dd928ecdd0cd770206e165df51ab1f8",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/resonance_validation_v1/lib/FourierBridge/FiniteFourierRational.olean": "3ec85733be747090a24920fbd68a4260b91be7e5d65277dfc8f147329b830abc",
+    "/workspace/scratch/c5836ca317eb/fourier_bridge/resonance_validation_v1/lib/FourierBridge/FiniteFourierResonance.olean": "65542ccc6ae0fdb270d9a5587df893e74500dd1c111daa6c5e2e271b9c51c8e1"
+  },
+  "input_integrity": "PASS: exact base input inventory plus modal sources/objects and stock runtime",
+  "completed_utc": "2026-11-21T15:59:05.698416+00:00"
+}

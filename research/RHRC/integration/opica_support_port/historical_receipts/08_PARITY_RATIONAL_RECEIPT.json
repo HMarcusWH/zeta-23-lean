@@ -1,0 +1,241 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-11-21T17:03:16.174415+00:00",
+  "processes": [
+    {
+      "name": "fresh_strict_compile",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M3072",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "--root=/workspace/scratch/c5836ca317eb/math_compression/parity_rational",
+        "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/ParityRational/PoleSquareSampling.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/lib/ParityRational/PoleSquareSampling.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/lib/ParityRational/PoleSquareSampling.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression/parity_rational",
+      "timeout_seconds": 300,
+      "aggregate_rss_and_swap_limit_bytes": 4294967296,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/fresh_strict_compile.log",
+      "exit_code": 0,
+      "elapsed_seconds": 2.808,
+      "max_sampled_aggregate_rss_and_swap_bytes": 2154598400,
+      "failure": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PASS"
+    },
+    {
+      "name": "types_axioms_safe_roots",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M3072",
+        "-DwarningAsError=true",
+        "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/ParityRationalAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression/parity_rational",
+      "timeout_seconds": 300,
+      "aggregate_rss_and_swap_limit_bytes": 4294967296,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/types_axioms_safe_roots.log",
+      "exit_code": 0,
+      "elapsed_seconds": 3.411,
+      "max_sampled_aggregate_rss_and_swap_bytes": 2627190784,
+      "failure": null,
+      "log_sha256": "a23a1bd38ee2890d43675051352872712da7b3a6ed3aa54acb727cda88d60700",
+      "status": "PASS"
+    },
+    {
+      "name": "stock_kernel_replay",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "ParityRational.PoleSquareSampling"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression/parity_rational",
+      "timeout_seconds": 300,
+      "aggregate_rss_and_swap_limit_bytes": 4294967296,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/stock_kernel_replay.log",
+      "exit_code": 0,
+      "elapsed_seconds": 3.612,
+      "max_sampled_aggregate_rss_and_swap_bytes": 1865687040,
+      "failure": null,
+      "log_sha256": "e56890063f6e2a2dc73c1adf33082fbe5f75eef7444b77d5d30e1ce40738700c",
+      "status": "PASS"
+    },
+    {
+      "name": "independent_complete_selected_closure",
+      "command": [
+        "/workspace/scratch/c5836ca317eb/resource_strategy/conleche-control/con-leche/.lake/build/bin/con-leche",
+        "--verified",
+        "--jobs=1",
+        "--progress=30s",
+        "--olean",
+        "--search-path=/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/lib:/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean:/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/native-object-view:/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean",
+        "--constant=Zeta23.OPICARound20.ParityRational.even_pole_factorization",
+        "--constant=Zeta23.OPICARound20.ParityRational.odd_pole_factorization",
+        "--constant=Zeta23.OPICARound20.ParityRational.even_pole_factor_natDegree",
+        "--constant=Zeta23.OPICARound20.ParityRational.odd_pole_factor_natDegree",
+        "--constant=Zeta23.OPICARound20.ParityRational.even_moment_pole_samples_force_coefficients",
+        "--constant=Zeta23.OPICARound20.ParityRational.odd_moment_pole_samples_force_coefficients",
+        "--constant=Zeta23.OPICARound20.ParityRational.even_six_moment_samples_force_coefficients",
+        "--constant=Zeta23.OPICARound20.ParityRational.odd_seven_moment_samples_force_coefficients",
+        "--constant=Zeta23.OPICARound20.ParityRational.even_six_moment_low_cutoff_zero",
+        "--constant=Zeta23.OPICARound20.ParityRational.odd_seven_moment_low_cutoff_zero",
+        "ParityRational.PoleSquareSampling"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression/parity_rational",
+      "timeout_seconds": 300,
+      "aggregate_rss_and_swap_limit_bytes": 4294967296,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/independent_complete_selected_closure.log",
+      "exit_code": 0,
+      "elapsed_seconds": 18.133,
+      "max_sampled_aggregate_rss_and_swap_bytes": 652591104,
+      "failure": null,
+      "log_sha256": "076753c9924d25d5056a738205a485f77b20534b19877c5f284e5598dbe8e6a1",
+      "status": "PASS"
+    }
+  ],
+  "scope": "Generic conditional polynomial parity/pole factorization and folded finite Cauchy sampling. Native parity/moment/pole-neutral identification remains OPEN.",
+  "compiler": "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+  "compiler_version": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "compiler_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "stock_kernel_checker_sha256": "84bc3e7cd6efa5bfecd1e7c37571fed9428fb2b3e16da0ddf62f2163573486d0",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "native_source_head_unchanged": "7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9",
+  "canonical_import_roots": [
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/lib",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean"
+  ],
+  "sources_and_inherited_object_before": {
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/ParityRational/PoleSquareSampling.lean": "51df575e18b11f3a071b743a20bb0fbc135481fd8ac09eb9529fc4a8f04a1326",
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/ParityRationalAudit.lean": "c7708f5222971490a6c7140c21ebe7ba32f8059ac2f09fa89c0c9c42e126842c",
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/ROOTS.json": "0aa9b55803bde018250a427da7020b4f3149f8a8e8a238eccfa3529e42baac4e",
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/verify_parity_rational.py": "9627cf283cf724993cf78f88b309d8052e59e1fb4ed7213892753cb8b566cf26",
+    "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/FiniteCauchySampling.lean": "db1f88f3b154ae4fc64788bbfdc10f9c19c03ae3ab5bf506491dff680914af19",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/FiniteCauchySampling.olean": "e4075c453fdf22dd7fc7a263410e295eec3cca9b30cb364a3d8657475f5018c0"
+  },
+  "selected_safe_theorem_roots": [
+    "Zeta23.OPICARound20.ParityRational.even_pole_factorization",
+    "Zeta23.OPICARound20.ParityRational.odd_pole_factorization",
+    "Zeta23.OPICARound20.ParityRational.even_pole_factor_natDegree",
+    "Zeta23.OPICARound20.ParityRational.odd_pole_factor_natDegree",
+    "Zeta23.OPICARound20.ParityRational.even_moment_pole_samples_force_coefficients",
+    "Zeta23.OPICARound20.ParityRational.odd_moment_pole_samples_force_coefficients",
+    "Zeta23.OPICARound20.ParityRational.even_six_moment_samples_force_coefficients",
+    "Zeta23.OPICARound20.ParityRational.odd_seven_moment_samples_force_coefficients",
+    "Zeta23.OPICARound20.ParityRational.even_six_moment_low_cutoff_zero",
+    "Zeta23.OPICARound20.ParityRational.odd_seven_moment_low_cutoff_zero"
+  ],
+  "fresh_output_directory": true,
+  "c1_closed": false,
+  "rh_closed": false,
+  "native_slice_identification_proved": false,
+  "independent_checker_source_head": "cd2eceab2e9b10404c663b468639c8aa99d0d1f2",
+  "independent_checker_sha256": "6d8dd758515bcf4180a12b47193e0c4c3772e45fac652bb513a70b3907e6ba4f",
+  "independent_checker_build_runtime": "Lean 4.36.0",
+  "accepted_cauchy_receipt_sha256": "f4a82933f24c670736c21771ad4d80a716b96cf11930993becf43d939e48965e",
+  "cross_version_compatibility_receipt_sha256": "6f37151e826ce95d7314127ffadfea8a6bb21170a23fbf36de3347e195eaeca3",
+  "checker_metatheory_build_claimed": false,
+  "input_integrity_scope": "Authored source/audit/runner, accepted Cauchy source/object, fresh products, and executable hashes are bound and rehashed. Shared official package inventory is inherited, not freshly rehashed in full. No concurrent writes to those inputs are authorized. Independent replay includes all selected proof/type dependencies.",
+  "transitive_axioms": {
+    "Zeta23.OPICARound20.ParityRational.even_pole_factorization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.ParityRational.odd_pole_factorization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.ParityRational.even_pole_factor_natDegree": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.ParityRational.odd_pole_factor_natDegree": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.ParityRational.even_moment_pole_samples_force_coefficients": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.ParityRational.odd_moment_pole_samples_force_coefficients": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.ParityRational.even_six_moment_samples_force_coefficients": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.ParityRational.odd_seven_moment_samples_force_coefficients": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.ParityRational.even_six_moment_low_cutoff_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.ParityRational.odd_seven_moment_low_cutoff_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "independent_object_roots": [
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/lib",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Cli/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/batteries/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/Qq/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/aesop/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/plausible/.lake/build/lib/lean",
+    "/workspace/scratch/ba87d581091d/research_round19/integration/.lake/packages/mathlib/.lake/build/lib/lean",
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/native-object-view",
+    "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/lib/lean"
+  ],
+  "independent_accepted_declarations": 9394,
+  "sources_and_inherited_object_after": {
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/ParityRational/PoleSquareSampling.lean": "51df575e18b11f3a071b743a20bb0fbc135481fd8ac09eb9529fc4a8f04a1326",
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/ParityRationalAudit.lean": "c7708f5222971490a6c7140c21ebe7ba32f8059ac2f09fa89c0c9c42e126842c",
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/ROOTS.json": "0aa9b55803bde018250a427da7020b4f3149f8a8e8a238eccfa3529e42baac4e",
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/verify_parity_rational.py": "9627cf283cf724993cf78f88b309d8052e59e1fb4ed7213892753cb8b566cf26",
+    "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/FiniteCauchySampling.lean": "db1f88f3b154ae4fc64788bbfdc10f9c19c03ae3ab5bf506491dff680914af19",
+    "/workspace/scratch/c5836ca317eb/math_compression/finite_sampling_validation_v3/lib/OPICAStep4/FiniteCauchySampling.olean": "e4075c453fdf22dd7fc7a263410e295eec3cca9b30cb364a3d8657475f5018c0"
+  },
+  "products_sha256": {
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/lib/ParityRational/PoleSquareSampling.olean": "8e397f00519bb015349f71d59aa2456e243942df762446984aec40df67ee2dd1",
+    "/workspace/scratch/c5836ca317eb/math_compression/parity_rational/validation_v1/lib/ParityRational/PoleSquareSampling.ilean": "33d7b3713781b3280273a3bd23ae3cde7100860cbbc0ac836c89fe1ed62a93c8"
+  },
+  "sources_unchanged": true,
+  "objects_unchanged": true,
+  "executables_unchanged": true,
+  "no_authored_axiom_sorry_admit": true,
+  "completed_utc": "2026-11-21T17:03:44.228880+00:00"
+}

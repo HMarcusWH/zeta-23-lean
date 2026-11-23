@@ -1,0 +1,113 @@
+{
+  "status": "PASS",
+  "scope": "Fresh authored native-only source compilation and named-module kernel replay against imported common-pin environment; no full fresh imported-declaration replay",
+  "native_head": "7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9",
+  "native_tree": "9248b76d7aff60aab3bb775c4be9750dc6006003",
+  "source_sha256": "2682b15712b29437ddaf1a092e4237e8472fa741c9472c3d95816994ce507f84",
+  "preexisting_object": false,
+  "compiler_version": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "compiler_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "kernel_checker_sha256": "84bc3e7cd6efa5bfecd1e7c37571fed9428fb2b3e16da0ddf62f2163573486d0",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "boundary_flat_characterization_source_sha256": "e19bfb13fcb523930617aae99c9d1190cccb1ec3915feae610f7195c68bbef61",
+  "native_build_receipt_sha256": "375c68a794781cab584821897f470ef784e08b5acf223d758475cda15c5e0c15",
+  "c1_closed": false,
+  "rh_closed": false,
+  "processes": [
+    {
+      "name": "gram_compile",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-M6144",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "--root=/workspace/scratch/c5836ca317eb/math_compression",
+        "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatGram.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatGram.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatGram.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "exit_code": 0,
+      "elapsed_seconds": 4.228,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/gram_compile.log",
+      "log_sha256": "b82ea8bd182dbba8e4b54f07fdfe30b4565d20beb70413fe34783100f63edcb7"
+    },
+    {
+      "name": "gram_kernel_replay",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "OPICAStep4.BoundaryFlatGram"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "exit_code": 0,
+      "elapsed_seconds": 4.911,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/gram_kernel_replay.log",
+      "log_sha256": "e85aba73fa8f0fe78fd89d4fd46249c7ae667a92a82a8bbbaa16ba3c11be5221"
+    }
+  ],
+  "started_utc": "2026-11-21T15:07:09.612511+00:00",
+  "source_unchanged": true,
+  "axioms": {
+    "Zeta23.OPICARound20.zeroSampleEnergy_nonnegative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.zeta_Wsummand_re_eq_zeroSampleEnergy_of_re_eq_half": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.zeroSampleEnergy_summable_of_criticalLine": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.zeta_W_re_eq_tsum_zeroSampleEnergy_of_criticalLine": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.canonicalSourceEnergy_eq_zeroSampleEnergy_of_c1": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.zeroSampleEnergy_le_canonicalSourceEnergy_of_c1": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.canonicalSourceQuadraticForm_zero_of_all_samples_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.canonicalSourceEnergy_zero_iff_all_samples_zero_of_c1": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.canonicalSourceEnergy_pos_iff_exists_nonzero_sample_of_c1": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "products": {
+    ".olean": {
+      "path": "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatGram.olean",
+      "sha256": "79c0b3f0dfebf01e3cceb25030c87f136f6f084921e347fcc93e6a4a5fb30458"
+    },
+    ".ilean": {
+      "path": "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatGram.ilean",
+      "sha256": "b22a43730cc89c411f3fe13fc222605a4f7ea02ad06b343b671415f1cb70aea9"
+    }
+  },
+  "completed_utc": "2026-11-21T15:07:18.753713+00:00"
+}

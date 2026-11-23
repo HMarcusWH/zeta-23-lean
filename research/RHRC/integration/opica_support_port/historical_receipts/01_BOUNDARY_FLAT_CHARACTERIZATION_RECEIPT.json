@@ -1,0 +1,82 @@
+{
+  "scope": "Named-module check against imported common-pin environment, not a full imported-declaration replay. Equivalences and conditional consequences only.",
+  "native_head": "7597acdba0c7d0a81b8c3a5f229598e3f9b74ac9",
+  "native_tree": "9248b76d7aff60aab3bb775c4be9750dc6006003",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "source_sha256": "e19bfb13fcb523930617aae99c9d1190cccb1ec3915feae610f7195c68bbef61",
+  "preexisting_object": false,
+  "c1_closed": false,
+  "rh_closed": false,
+  "processes": [
+    {
+      "name": "compile",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/lean",
+        "-j1",
+        "-DwarningAsError=true",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "--root=/workspace/scratch/c5836ca317eb/math_compression",
+        "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatCharacterization.lean",
+        "-o",
+        "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatCharacterization.olean",
+        "-i",
+        "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatCharacterization.ilean"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "exit_code": 0,
+      "elapsed_seconds": 12.821049182000934,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/compile.log",
+      "log_sha256": "2f4fe164d6baf8b5ac35025b0651dd758273e61134e0938930a5e7ab5ae34f00"
+    },
+    {
+      "name": "kernel_replay",
+      "command": [
+        "/workspace/scratch/ba87d581091d/research_round19/toolchains/lean-4.33.1-linux/bin/leanchecker",
+        "--verbose",
+        "OPICAStep4.BoundaryFlatCharacterization"
+      ],
+      "cwd": "/workspace/scratch/c5836ca317eb/math_compression",
+      "exit_code": 0,
+      "elapsed_seconds": 4.559032189999925,
+      "log": "/workspace/scratch/c5836ca317eb/math_compression/kernel_replay.log",
+      "log_sha256": "257077572e4765dea67cb29d0976ef4c4c46934fd4431866ba33147d22c32aef"
+    }
+  ],
+  "status": "PASS",
+  "compiler_version": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "products": {
+    ".olean": {
+      "path": "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatCharacterization.olean",
+      "sha256": "8ce812f279c80945ba2727e0dea9a9a0a15627e0d8b1b272e44f5fa7e2d045ca"
+    },
+    ".ilean": {
+      "path": "/workspace/scratch/c5836ca317eb/math_compression/OPICAStep4/BoundaryFlatCharacterization.ilean",
+      "sha256": "4336779a9e1f1a8caeace3d2091311401c842e2aef1f5fc50c2630835494673e"
+    }
+  },
+  "axioms": {
+    "Zeta23.OPICARound20.even_zero_bound_of_all_boundary_flat_nonnegative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.c1_iff_all_boundary_flat_nonnegative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.riemannHypothesis_iff_all_boundary_flat_nonnegative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICARound20.finite_negative_boundary_flat_witness_refutes_c1": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_unchanged": true,
+  "native_build_receipt_sha256": "375c68a794781cab584821897f470ef784e08b5acf223d758475cda15c5e0c15"
+}
