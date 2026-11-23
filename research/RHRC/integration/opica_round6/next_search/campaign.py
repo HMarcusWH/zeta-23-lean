@@ -129,7 +129,11 @@ def campaign(output:Path):
                    domain="OPICA_APPROVED_CONSTANT_V1")
         constants[cid]=name
         table.append({"id":cid,"declaration":name,"module":MODULE,"role":"constant"})
-    inv=StatementInventory(generation,typed,hashlib.sha256(data).hexdigest())
+    # StatementInventory is a canonical JSON evidence record, not a Python
+    # object container. Preserve validated source types in `typed` locally,
+    # but seal only their full closed dictionaries in the original codec.
+    inv=StatementInventory(generation,[record.to_dict() for record in typed],
+                           hashlib.sha256(data).hexdigest())
     budget=SearchBudget(candidates=8,term_nodes=512,term_depth=16,
                         wall_seconds=90,heartbeats=800000)
     results=[]
