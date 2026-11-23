@@ -26,15 +26,29 @@ jobs:
       - name: Check exact parent head, only six new paths, two reviewed edits and no proof claim
         run: |
           set -euo pipefail
+          CURRENT_STAGE=SOURCE_SCOPE
+          record_outcome() {
+            result=$?
+            trap - EXIT
+            printf '{"schema":"OPICA_NEXT_ADMISSION_JOB_OUTCOME_V1","checked_head":"%s","failed_or_completed_stage":"%s","exit_code":%s,"proof_acceptance":false,"RH":"OPEN","C1":"OPEN","Step4":"OPEN"}\\n' \
+              "$GITHUB_SHA" "$CURRENT_STAGE" "$result" >"$RUNNER_TEMP/OPICA_NEXT_JOB_OUTCOME.json"
+            exit "$result"
+          }
+          trap record_outcome EXIT
           export PYTHONPATH="$PWD"
           python3 -B -m research.RHRC.integration.opica_next_acceptance.gate \
             --output "$RUNNER_TEMP/OPICA_NEXT_ADMISSION.json"
+          CURRENT_STAGE=TESTS_NORMAL
           python3 -B -m unittest -v research.RHRC.integration.opica_next_acceptance.test_gate
+          CURRENT_STAGE=TESTS_OPTIMIZED
           python3 -O -B -m unittest -v research.RHRC.integration.opica_next_acceptance.test_gate
+          CURRENT_STAGE=EXACT_CLASSIFICATION
           python3 -B -m research.RHRC.integration.opica_next_acceptance.gate \
             --check-classification
+          CURRENT_STAGE=ORIGINAL_COORDINATOR_INSPECTION
           python3 -B -m research.RHRC.integration.opica_composition.cli \
             inspect --repo "$PWD" --output "$RUNNER_TEMP/OPICA_NEXT_CLI_INSPECTION.json"
+          CURRENT_STAGE=RECEIPT_CLAIM_FIREWALL
           python3 - <<'PY'
           import json,os
           from pathlib import Path
@@ -54,4 +68,5 @@ jobs:
           path: |
             ${{ runner.temp }}/OPICA_NEXT_ADMISSION.json
             ${{ runner.temp }}/OPICA_NEXT_CLI_INSPECTION.json
+            ${{ runner.temp }}/OPICA_NEXT_JOB_OUTCOME.json
           if-no-files-found: warn
