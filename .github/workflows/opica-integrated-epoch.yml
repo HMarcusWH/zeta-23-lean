@@ -1,0 +1,118 @@
+name: OPICA integrated source candidate (non-promoting)
+on:
+  push:
+    branches: [research/opica-integrated-epoch-20261124]
+  pull_request:
+    branches: [research/opica-next-acceptance-v2-20261123]
+  workflow_dispatch:
+    inputs:
+      reviewed_head:
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: opica-integrated-${{ github.event.pull_request.head.ref || github.ref }}
+  cancel-in-progress: false
+jobs:
+  scope:
+    if: ${{ github.repository == 'HMarcusWH/zeta-23-lean' && (github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == 'HMarcusWH/zeta-23-lean' && github.head_ref == 'research/opica-integrated-epoch-20261124') || (github.event_name == 'workflow_dispatch' && github.ref_name == 'research/opica-integrated-epoch-20261124' && inputs.reviewed_head == github.sha)) }}
+    runs-on: ubuntu-24.04
+    outputs:
+      ready: ${{ steps.review.outputs.ready }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Exact scope and regression tests
+        run: |
+          set -euo pipefail
+          python3 -B research/RHRC/integration/opica_integrated_epoch/review.py source "$RUNNER_TEMP/integrated-source.json"
+          cd research/RHRC/integration/opica_integrated_epoch/
+          python3 -B -m unittest -v test_review
+          python3 -O -B -m unittest -v test_review
+      - name: Read producer evidence without promoting it
+        id: review
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 -B research/RHRC/integration/opica_integrated_epoch/review.py readiness "$RUNNER_TEMP/integrated-readiness.json"
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          s=json.loads((Path(os.environ["RUNNER_TEMP"])/"integrated-readiness.json").read_text())
+          with open(os.environ["GITHUB_OUTPUT"],"a") as f:
+              print("ready="+str(s["status"]=="READY_FOR_CANDIDATE_REPLAY").lower(),file=f)
+          print(s["status"])
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: integrated-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/integrated-*.json
+          if-no-files-found: warn
+  native-candidate:
+    needs: scope
+    if: needs.scope.outputs.ready == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile and replay all 183 named candidate roots
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B research/RHRC/integration/opica_integrated_epoch/review.py build "$RUNNER_TEMP/integrated-build"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: integrated-native-candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/integrated-build/
+          if-no-files-found: warn
+          retention-days: 90
+  canonical-candidate:
+    needs: [scope, native-candidate]
+    if: needs.scope.outputs.ready == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+          path: host
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: 3.13.5
+      - uses: ./host/.github/actions/opica4-runtime
+        with:
+          native: 'true'
+          provider: 'false'
+      - name: Review-only canonical candidate
+        working-directory: host
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B research/RHRC/integration/opica_integrated_epoch/review.py canonical "$RUNNER_TEMP/integrated-canonical"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: integrated-canonical-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/integrated-canonical/
+          if-no-files-found: warn
+          retention-days: 90
