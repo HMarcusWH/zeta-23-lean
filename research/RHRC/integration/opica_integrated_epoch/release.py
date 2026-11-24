@@ -31,7 +31,7 @@ def authenticate_run(run_id,head,workflow,names):
         require(len(j)==1 and j[0]["status"]=="completed" and j[0]["conclusion"]=="success" and str(j[0]["run_id"])==run_id and j[0].get("run_attempt",attempt)==attempt,"Required job failed or missing: "+n)
     return attempt
 
-def artifact_member(run_id,name,leaf):
+def artifact_member(run_id,name,leaf,member_limit=4<<20):
     x=api("/actions/runs/"+run_id+"/artifacts?per_page=100")
     require(x["total_count"]==len(x["artifacts"]),"Incomplete artifact inventory")
     found=[a for a in x["artifacts"] if a["name"]==name and not a["expired"]]
@@ -47,7 +47,7 @@ def artifact_member(run_id,name,leaf):
             members=z.infolist()
             require(len(members)<=20000 and sum(m.file_size for m in members)<=768<<20,"Artifact population cap")
             hits=[m for m in members if Path(m.filename).name==leaf]
-            require(len(hits)==1 and not stat.S_ISLNK(hits[0].external_attr>>16) and hits[0].file_size<=4<<20,"Missing/linked/oversized receipt")
+            require(len(hits)==1 and not stat.S_ISLNK(hits[0].external_attr>>16) and hits[0].file_size<=member_limit,"Missing/linked/oversized receipt")
             raw=z.read(hits[0])
     return json.loads(raw),{"artifact_id":a["id"],"archive_sha256":expected[7:],"member":leaf,"member_sha256":sha(raw)}
 
@@ -56,6 +56,38 @@ def verify_canonical(receipt,source_head,source_tree,before,after,changed):
     require((receipt["total_count"],receipt["active_count"],receipt["frozen_count"])==(81,77,4),"Generated census differs")
     require(receipt["before_sha256"]==before and receipt["after_write_sha256"]==receipt["after_check_sha256"]==after,"Canonical application bytes differ")
     require(receipt["changed_paths"]==sorted(changed) and receipt["changed_count"]==len(changed),"Canonical path delta differs")
+
+def compare_historical_subset(integrated,historical,expected_roots,integrated_axioms,historical_axioms):
+    require(len(expected_roots)==len(set(expected_roots)),"Duplicate expected historical roots")
+    it={x["name"]:x for x in integrated};ht={x["name"]:x for x in historical}
+    require(len(it)==len(integrated) and len(ht)==len(historical) and set(ht)==set(expected_roots) and set(ht)<=set(it),"Historical type population differs")
+    for n in expected_roots:
+        require(it[n]["sha256"]==ht[n]["sha256"] and it[n]["expression"]==ht[n]["expression"],"Integrated historical type drift: "+n)
+        require(integrated_axioms[n]==historical_axioms[n],"Integrated historical axiom drift: "+n)
+    return len(expected_roots)
+
+def historical_expected_review(repo,head,curtree,current_run,current_attempt,dual):
+    lock=json.loads((repo/(DIR+"LOCK.json")).read_text())
+    specs=[s for s in lock["prerequisites"] if s["path"]==".github/workflows/opica-historical-support-port.yml"]
+    require(len(specs)==1,"Exact historical prerequisite missing")
+    spec=specs[0];oldhead=spec["head"];oldtree=lock["donor_trees"][oldhead];oldrun=str(spec["run"])
+    oa=authenticate_run(oldrun,oldhead,spec["path"],tuple(spec["jobs"]))
+    comparison,cr=artifact_member(oldrun,f"opica-support-cross-pin-comparison-{oldhead}-{oldrun}-{oa}","cross-pin-type-comparison.json",64<<20)
+    source=comparison["source"]
+    roots=source["roots"]
+    require(len(roots)==lock["historical_root_count"]==167 and set(roots)<=set(lock["roots"]),"Historical root count differs")
+    require(comparison["schema"]=="OPICA_SUPPORT_CROSS_PIN_TYPE_COMPARISON_V2" and comparison["status"]=="PASS_RELOCATION_AWARE_ROOT_TYPE_DAGS_AND_AXIOMS_ONLY" and comparison["reviewed_old_evidence"] is False and source["checked_commit"]==oldhead and source["checked_tree"]==oldtree and comparison["root_count"]==comparison["normalized_type_matches"]==167 and not comparison["type_differences"] and not comparison["axiom_differences"] and comparison["proof_acceptance"] is False,"Fresh historical type comparison rejected")
+    historical_name=f"opica-support-port-{oldhead}-{oldrun}-{oa}"
+    ht,ha=artifact_member(oldrun,historical_name,"NATIVE_TYPE_CANDIDATES.json",128<<20)
+    hr,hra=artifact_member(oldrun,historical_name,"receipt.json",16<<20)
+    require(hr["status"]=="NATIVE_CANDIDATE_COMPILE_AXIOMS_STOCK_PASS" and hr["checked_commit"]==oldhead and hr["checked_tree"]==oldtree and hr["proof_acceptance"] is False,"Historical native receipt differs")
+    integrated_name=f"integrated-native-candidate-{current_run}-{current_attempt}"
+    it,ia=artifact_member(current_run,integrated_name,"NATIVE_TYPE_CANDIDATES.json",128<<20)
+    ir,ira=artifact_member(current_run,integrated_name,"receipt.json",16<<20)
+    require(ia["member_sha256"]==dual["types_sha256"] and ira["member_sha256"]==dual["stock_receipt_sha256"],"Integrated types are not bound to dual review")
+    require(ir["head"]==head and ir["tree"]==curtree and ir["status"]=="INTEGRATED_NATIVE_CANDIDATE_PASS_ONLY" and ir["proof_acceptance"] is False,"Integrated native receipt differs")
+    count=compare_historical_subset(it,ht,roots,ir["axioms"],hr["axioms"])
+    return {"status":"PASS_167_EXACT_NATIVE_TYPES_AND_AXIOMS_BOUND_TO_FRESH_HISTORICAL_REVIEW","count":count,"historical_comparison":cr,"historical_types":ha,"historical_native":hra,"integrated_types":ia,"integrated_native":ira,"cross_version_definition_equivalence":"NOT_ESTABLISHED_BY_TYPE_DAG_EQUALITY","proof_acceptance":False}
 
 def verify(repo,candidate_head,candidate_run,current_run,round4_run):
     scope=check(repo,require_clean=True)
@@ -79,13 +111,14 @@ def verify(repo,candidate_head,candidate_run,current_run,round4_run):
     dual,da=artifact_member(current_run,f"integrated-dual-review-{current_run}-{current_attempt}","integrated-dual-review.json")
     roots=json.loads((repo/(DIR+"LOCK.json")).read_text())["roots"]
     require(dual["schema"]=="OPICA_INTEGRATED_DUAL_REVIEW_V1" and dual["status"]=="DUAL_NATIVE_CANDIDATE_PASS_ONLY" and dual["head"]==head and dual["tree"]==curtree and dual["roots"]==roots and all(dual[k]==v for k,v in CLAIMS.items()),"Fresh combined candidate receipt differs")
+    expected=historical_expected_review(repo,head,curtree,current_run,current_attempt,dual)
     names=tuple("Round4 / "+l for l in ROUND4_LANES)+tuple("Round4 / INDEPENDENT_"+g for g in REPLAY_GROUP_IDS)+("Round4 / ACCEPTANCE",)
     ra=authenticate_run(round4_run,head,ROUND4_WORKFLOW,names)
     aggregate,aa=artifact_member(round4_run,f"opica4-release-receipt-{round4_run}-{ra}","acceptance.json")
     profile=sha((repo/"research/RHRC/integration/opica_composition/PROFILE.json").read_bytes())
     _verify_round4_receipt(aggregate,head=head,tree=curtree,run_id=round4_run,attempt=ra,profile=profile)
     require(check(repo,require_clean=True)==scope,"Source changed during release evidence review")
-    return {"schema":"OPICA_INTEGRATED_RELEASE_REVIEW_V1","status":"PASS_INTEGRATED_SUPPORT_SCOPE_REVIEW_ONLY","head":head,"tree":curtree,"source_fingerprint":scope["source_fingerprint"],"candidate_head":candidate_head,"canonical":ca,"fresh_combined":da,"round4":aa,"runs":{"canonical":candidate_run,"current":current_run,"round4":round4_run},"canonical_application_count":len(changed),"historical_expected_type_admission":"SEPARATE_REVIEW_REQUIRED","human_review":"PENDING","new_theorem_promotion":False,**CLAIMS}
+    return {"schema":"OPICA_INTEGRATED_RELEASE_REVIEW_V1","status":"PASS_INTEGRATED_SUPPORT_SCOPE_REVIEW_ONLY","head":head,"tree":curtree,"source_fingerprint":scope["source_fingerprint"],"candidate_head":candidate_head,"canonical":ca,"fresh_combined":da,"round4":aa,"runs":{"canonical":candidate_run,"current":current_run,"round4":round4_run},"canonical_application_count":len(changed),"historical_expected_type_admission":expected,"human_review":"PENDING","new_theorem_promotion":False,**CLAIMS}
 
 def main():
     p=argparse.ArgumentParser()

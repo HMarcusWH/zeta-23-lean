@@ -1,6 +1,6 @@
 import unittest
 from research.RHRC.integration.opica_integrated_epoch.admission import verify_delta,SEAL,VALIDATOR
-from research.RHRC.integration.opica_integrated_epoch.release import verify_canonical
+from research.RHRC.integration.opica_integrated_epoch.release import verify_canonical,compare_historical_subset
 
 class IntegratedAdmissionTests(unittest.TestCase):
     def test_closed_delta(self):
@@ -17,5 +17,13 @@ class IntegratedAdmissionTests(unittest.TestCase):
         verify_canonical(r,"h","t",before,after,{"x"})
         for changed in ({**r,"after_check_sha256":before},{**r,"proof_acceptance":True},{**r,"changed_paths":[]}):
             with self.assertRaises(Exception):verify_canonical(changed,"h","t",before,after,{"x"})
+
+    def test_exact_historical_subset(self):
+        h=[{"name":"h","sha256":"a"*64,"expression":{"tag":"x"}}]
+        i=h+[{"name":"b","sha256":"b"*64,"expression":{"tag":"y"}}]
+        self.assertEqual(compare_historical_subset(i,h,["h"],{"h":[],"b":[]},{"h":[]}),1)
+        for wrong in ([{**h[0],"sha256":"c"*64}],[{**h[0],"expression":{"tag":"z"}}],h+h):
+            with self.assertRaises(Exception):compare_historical_subset(i,wrong,["h"],{"h":[]},{"h":[]})
+        with self.assertRaises(Exception):compare_historical_subset(i,h,["h"],{"h":["propext"]},{"h":[]})
 
 if __name__=="__main__":unittest.main()
