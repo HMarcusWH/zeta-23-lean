@@ -4,7 +4,7 @@
   "tree": "84b235c455980cfd516a8c0ccaf7749bce3c5339",
   "reviewed": {
     ".github/workflows/opica-bipolar-transfer.yml": "17d193bf06f28397e76e3bcf66eadbde5ca8ab98",
-    "Zeta23/OPICARound6/NextSearch/BipolarTransfer.lean": "e2437f422e13b361a8bf268edfe0f76b12733be9",
+    "Zeta23/OPICARound6/NextSearch/BipolarTransfer.lean": "6e52d5d1e9c6b3147684f932fd28130d34b15e75",
     "Zeta23/OPICARound6/NextSearch/BipolarVerify.lean": "2088116da6749061df9368ea3d25f252baf610fb",
     "research/RHRC/integration/opica_round6/bipolar_transfer/README.md": "cc310371610c4d2094886aa3b07741e29c456e53",
     "research/RHRC/integration/opica_round6/bipolar_transfer/finite_controls.py": "ca6aa3d814dca5ad5287de8ce2b76cecc0e8966a"

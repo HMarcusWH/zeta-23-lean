@@ -38,9 +38,10 @@ def pairedOpposedSurvivorEnergy (X : ℕ) (r : Removal) : ℝ :=
 private theorem survivor_abs_le_raw_card (X : ℕ) (j : Key) (r : Removal) :
     |survivorCharge X j r| ≤ ((rawLabels X j).card : ℝ) := by
   unfold survivorCharge survivingLabels
+  have hcard : (rawLabels X j \ r.all).card ≤ (rawLabels X j).card :=
+    Finset.card_le_card Finset.sdiff_subset
   exact (RoughNodeCharges.abs_charge_le_card (roughCutoff X) _).trans
-    (by exact_mod_cast Finset.card_le_card
-      (Finset.sdiff_subset (s := rawLabels X j) (t := r.all)))
+    (by exact_mod_cast hcard)
 
 private theorem raw_sub_survivor (X : ℕ) (j : Key) (r : Removal) :
     RoughNodeCharges.charge (roughCutoff X) (rawLabels X j) -
