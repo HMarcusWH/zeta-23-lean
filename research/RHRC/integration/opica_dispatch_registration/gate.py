@@ -16,8 +16,8 @@ BASE = "bb7c8184a135b2823c6296917c5ac893bebf2a71"
 BASE_TREE = "2b19357e1b65cc500f3e3a5b5d4df14601b02062"
 POLICY = "research/RHRC/integration/opica_dispatch_registration/SOURCE_POLICY.json"
 VALIDATOR = "research/RHRC/integration/opica_dispatch_registration/gate.py"
-POLICY_BLOB_OID = "c25bf908848099bd9b2a15848823306bd7d8191e"
-ADDED = frozenset([".github/workflows/opica-dispatch-registration-review.yml",".github/workflows/opica-next-acceptance.yml",".github/workflows/opica-next-source-epoch.yml","research/RHRC/integration/opica_dispatch_registration/README.md","research/RHRC/integration/opica_dispatch_registration/SOURCE_POLICY.json","research/RHRC/integration/opica_dispatch_registration/gate.py","research/RHRC/integration/opica_dispatch_registration/test_gate.py"])
+POLICY_BLOB_OID = "00da1e16a9f3a5bc0c15e225f7459ab992174f51"
+ADDED = frozenset([".github/workflows/opica-integrated-release-review.yml",".github/workflows/opica-dispatch-registration-review.yml",".github/workflows/opica-next-acceptance.yml",".github/workflows/opica-next-source-epoch.yml","research/RHRC/integration/opica_dispatch_registration/README.md","research/RHRC/integration/opica_dispatch_registration/SOURCE_POLICY.json","research/RHRC/integration/opica_dispatch_registration/gate.py","research/RHRC/integration/opica_dispatch_registration/test_gate.py"])
 EDITED = frozenset([".github/workflows/documentation.yml","research/RHRC/integration/opica_composition/cli.py","research/RHRC/integration/opica_composition/service.py","research/RHRC/integration/opica_composition/tests/test_end_to_end.py"])
 FROZEN = frozenset(round6.FROZEN_PRODUCTS)
 

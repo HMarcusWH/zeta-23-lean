@@ -1,0 +1,30 @@
+name: OPICA integrated release evidence review (no promotion)
+on:
+  workflow_dispatch:
+    inputs:
+      reviewed_head:
+        required: true
+        type: string
+      candidate_head:
+        required: true
+        type: string
+      candidate_run:
+        required: true
+        type: string
+      current_run:
+        required: true
+        type: string
+      round4_run:
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  registration-only:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Refuse execution of registration stub
+        run: |
+          echo 'REGISTRATION_ONLY; NO_PROOF_ACCEPTANCE'
+          echo 'Select research/opica-integrated-epoch-20261124 at the exact reviewed head.'
+          exit 2

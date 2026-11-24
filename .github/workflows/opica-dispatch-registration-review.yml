@@ -8,6 +8,7 @@ on:
       - 'research/RHRC/integration/opica_dispatch_registration/**'
       - '.github/workflows/opica-next-acceptance.yml'
       - '.github/workflows/opica-next-source-epoch.yml'
+      - '.github/workflows/opica-integrated-release-review.yml'
 permissions:
   contents: read
 concurrency:

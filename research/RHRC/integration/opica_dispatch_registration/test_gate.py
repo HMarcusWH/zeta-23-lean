@@ -27,14 +27,14 @@ class RegistrationTests(unittest.TestCase):
             altered=copy.deepcopy(policy)
             altered[key]=True if key=="proof_acceptance" else "bad"
             with self.assertRaises(g.Reject): g.validate_delta(parent,current,altered,active,vid)
-        for name in (".github/workflows/opica-next-acceptance.yml",next(iter(g.FROZEN)),"lean-toolchain"):
+        for name in (".github/workflows/opica-integrated-release-review.yml",".github/workflows/opica-next-acceptance.yml",next(iter(g.FROZEN)),"lean-toolchain"):
             modified={**current,name:("100644","blob","0"*40)}
             with self.assertRaises(g.Reject):g.validate_delta(parent,modified,policy,active,vid)
         for modified in ({**current,"unexpected.lean":("100644","blob","0"*40)},
                          {p:v for p,v in current.items() if p!="lean-toolchain"}):
             with self.assertRaises(g.Reject):g.validate_delta(parent,modified,policy,active,vid)
     def test_stubs_are_nonexecuting(self):
-        for name in (".github/workflows/opica-next-acceptance.yml",".github/workflows/opica-next-source-epoch.yml"):
+        for name in (".github/workflows/opica-integrated-release-review.yml",".github/workflows/opica-next-acceptance.yml",".github/workflows/opica-next-source-epoch.yml"):
             body=(g.REPO/name).read_text()
             self.assertIn("workflow_dispatch:",body)
             self.assertIn("REGISTRATION_ONLY; NO_PROOF_ACCEPTANCE",body)

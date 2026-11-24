@@ -7,3 +7,7 @@ Run the registration review workflow to prepare a canonical patch. It first vali
 ### Exact replay admission repair
 
 The registration-epoch Round4 end-to-end `test_t73` now calls the same sealed source selector as the coordinator and binds the receipt to the exact snapshot commit/tree. All D02/D05 kernel, replay, journal and publication assertions are unchanged. The original historical validator is unchanged and must still reject this registration-only epoch. Source controls exercise the real selected route and reject mismatched or rejected receipts. Generate a new review-only canonical patch after this repair; the earlier 17-file candidate is not authority for the changed source. Do not merge until the new generated patch is reviewed, committed and exact-head gates pass.
+
+### Integrated release-review dispatch registration
+
+The third workflow is a nonexecuting registration stub with the exact five input names of the pinned integrated release-review workflow. It always exits 2, has read-only permissions, and performs no source checkout or proof work. Dispatch the real workflow on `research/opica-integrated-epoch-20261124` only after reviewing and applying the integrated candidate and obtaining fresh dual replay and Round4 receipts. This changed registration source requires its own fresh canonical candidate and exact-head acceptance. Historical receipts remain historical; no theorem authority or merge is granted.
