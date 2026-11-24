@@ -86,7 +86,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 90
   canonical-candidate:
-    needs: [scope, native-candidate]
+    needs: [scope, dual-review]
     if: needs.scope.outputs.ready == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 360
@@ -116,3 +116,71 @@ jobs:
           path: ${{ runner.temp }}/integrated-canonical/
           if-no-files-found: warn
           retention-days: 90
+  independent-candidate:
+    needs: scope
+    if: needs.scope.outputs.ready == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+          path: host
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: HMarcusWH/riemann-hypothesis
+          ref: 5601d19ff185d58376e109d82dd4512488295372
+          path: checker-tools
+          persist-credentials: false
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: host
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Fresh pinned checker and negative controls
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/integrated-checker-venv"
+          "$RUNNER_TEMP/integrated-checker-venv/bin/python" -m pip install -r checker-tools/verification/opica-v436/requirements.txt
+          "$RUNNER_TEMP/integrated-checker-venv/bin/python" checker-tools/verification/opica-v436/bootstrap_checker.py --work "$RUNNER_TEMP/integrated-checker" --timeout 2400 --memory-mib 6000
+      - name: Independent selected closure at the combined tree
+        working-directory: host
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B research/RHRC/integration/opica_integrated_epoch/review.py build "$RUNNER_TEMP/integrated-independent" --checker-work "$RUNNER_TEMP/integrated-checker" --checker-code "$GITHUB_WORKSPACE/checker-tools/verification/opica-v436"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: integrated-independent-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/integrated-independent/
+          if-no-files-found: warn
+          retention-days: 90
+  dual-review:
+    needs: [native-candidate, independent-candidate]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: integrated-native-candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/stock
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: integrated-independent-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/independent
+      - run: python3 -B research/RHRC/integration/opica_integrated_epoch/compare.py "$RUNNER_TEMP/stock" "$RUNNER_TEMP/independent" "$RUNNER_TEMP/integrated-dual-review.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: integrated-dual-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/integrated-dual-review.json
+          if-no-files-found: error

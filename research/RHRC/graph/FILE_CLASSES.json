@@ -55,7 +55,7 @@
     },
     {
       "id": "opica_integrated_tools",
-      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/review\\.py|research/RHRC/integration/opica_integrated_epoch/test_review\\.py)\\Z",
+      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/review\\.py|research/RHRC/integration/opica_integrated_epoch/test_review\\.py|research/RHRC/integration/opica_integrated_epoch/independent_review\\.py|research/RHRC/integration/opica_integrated_epoch/compare\\.py)\\Z",
       "file_class": "RESEARCH_EXECUTABLE",
       "trust_zone": "AUDIT_ONLY"
     },

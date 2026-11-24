@@ -17,6 +17,11 @@ FC="research/RHRC/graph/FILE_CLASSES.json"
 SEM="research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json"
 CLAIMS={"proof_acceptance":False,"RH":"OPEN","C1":"OPEN","Step4":"OPEN"}
 ALLOWED={"propext","Classical.choice","Quot.sound"}
+PRIMITIVES = ("Quot", "Quot.mk", "Quot.lift", "Quot.ind", "propext", "Quot.sound",
+    "Classical.choice", "Nat.add", "Nat.sub", "Nat.mul", "Nat.pow", "Nat.gcd", "Nat.div",
+    "Nat.mod", "Nat.beq", "Nat.ble", "Nat.land", "Nat.lor", "Nat.xor", "Nat.shiftLeft",
+    "Nat.shiftRight", "String.ofList", "Char.ofNat", "List", "eagerReduce", "Nat", "String",
+    "String.mk", "Char", "optParam", "autoParam", "semiOutParam", "outParam", "Empty")
 
 def need(ok, msg):
     if not ok:
@@ -64,7 +69,7 @@ def check():
     need(len(overlay)==26 and len({x["path"] for x in overlay})==26,"Overlay count")
     need(len(s["roots"])==len(set(s["roots"]))==183 and s["historical_root_count"]==167 and s["bipolar_root_count"]==16,"Root census")
     need(all(re.fullmatch(r"[\w.']+",x) for x in s["roots"]),"Invalid declaration name")
-    own={REL+x for x in ("LOCK.json","review.py","test_review.py","README.md")}|{WORKFLOW}
+    own={REL+x for x in ("LOCK.json","review.py","test_review.py","README.md","independent_review.py","compare.py")}|{WORKFLOW}
     raw=git("diff","--name-status","--no-renames",s["parent"],head)
     pairs=[x.split("\t",1) for x in raw.splitlines()]
     need(all(len(x)==2 for x in pairs),"Invalid change record")
@@ -115,7 +120,7 @@ def readiness():
             rows.append({"run":x["run"],"ready":False,"error":str(exc)[:1200]})
     return {"schema":"OPICA_INTEGRATED_READINESS_V1","status":"READY_FOR_CANDIDATE_REPLAY" if all(r["ready"] for r in rows) else "WAITING_FOR_UPSTREAM_EVIDENCE","producers":rows,"independent_integrated_replay":"NOT_RUN",**CLAIMS}
 
-def build(out):
+def build(out,checker_work=None,checker_code=None):
     before=check()
     need(not out.exists() and not out.is_relative_to(ROOT),"Fresh external output required")
     out.mkdir(parents=True)
@@ -151,6 +156,11 @@ def build(out):
         receipt["stages"].append("FRESH_STOCK_KERNEL_PASS")
         need(check()==before,"Source changed during build")
         receipt["status"]="INTEGRATED_NATIVE_CANDIDATE_PASS_ONLY"
+        if checker_work is not None:
+            from independent_review import independent
+            receipt["independent_full_closure"]=independent(ROOT,out,checker_work,checker_code,roots,run("lake","env","printenv","LEAN_PATH"))
+            receipt["status"]="INTEGRATED_INDEPENDENT_CANDIDATE_PASS_ONLY"
+        need(check()==before,"Source changed during replay")
     except BaseException as exc:
         receipt.update(status="INCOMPLETE_OR_REJECTED",failure=str(exc)[:2000])
         raise
@@ -161,7 +171,11 @@ def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("mode",choices=["source","readiness","build","canonical"])
     ap.add_argument("output",type=Path)
+    ap.add_argument("--checker-work",type=Path)
+    ap.add_argument("--checker-code",type=Path)
     a=ap.parse_args()
+    need((a.checker_work is None)==(a.checker_code is None),"Both checker paths required")
+    need(a.checker_work is None or a.mode=="build","Checker only for build")
     out=a.output.resolve()
     need(not out.is_relative_to(ROOT),"Evidence must stay outside checkout")
     if a.mode=="source":
@@ -173,7 +187,7 @@ def main():
         r=readiness()
         need(r["status"]=="READY_FOR_CANDIDATE_REPLAY","Upstream evidence incomplete")
         if a.mode=="build":
-            build(out)
+            build(out,a.checker_work.resolve() if a.checker_work else None,a.checker_code.resolve() if a.checker_code else None)
         else:
             before=check()
             sys.path.insert(0,str(ROOT))
