@@ -13907,6 +13907,58 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound6/NextSearch/SourceEnergies.lean",
+      "module": "Zeta23.OPICARound6.NextSearch.SourceEnergies",
+      "module_id": "rh:module:Zeta23.OPICARound6.NextSearch.SourceEnergies",
+      "named_source_declaration_count": 10,
+      "path": "Zeta23/OPICARound6/NextSearch/SourceEnergies.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA6_SIGNED_SOURCE_CONDITIONAL",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound6/NextSearch/Verify.lean",
+      "module": "Zeta23.OPICARound6.NextSearch.Verify",
+      "module_id": "rh:module:Zeta23.OPICARound6.NextSearch.Verify",
+      "named_source_declaration_count": 0,
+      "path": "Zeta23/OPICARound6/NextSearch/Verify.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA6_SIGNED_SOURCE_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound6/PrimeDeficit/Source.lean",
+      "module": "Zeta23.OPICARound6.PrimeDeficit.Source",
+      "module_id": "rh:module:Zeta23.OPICARound6.PrimeDeficit.Source",
+      "named_source_declaration_count": 13,
+      "path": "Zeta23/OPICARound6/PrimeDeficit/Source.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA6_PRIME_DEFICIT_SOURCE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICARound6/PrimeDeficit/Verify.lean",
+      "module": "Zeta23.OPICARound6.PrimeDeficit.Verify",
+      "module_id": "rh:module:Zeta23.OPICARound6.PrimeDeficit.Verify",
+      "named_source_declaration_count": 0,
+      "path": "Zeta23/OPICARound6/PrimeDeficit/Verify.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA6_PRIME_DEFICIT_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/OPICARound6/PrimeFactorPaths/DivisorStrip.lean",
       "module": "Zeta23.OPICARound6.PrimeFactorPaths.DivisorStrip",
       "module_id": "rh:module:Zeta23.OPICARound6.PrimeFactorPaths.DivisorStrip",
@@ -18734,7 +18786,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1280,
+  "entry_count": 1284,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",
