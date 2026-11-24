@@ -141,7 +141,7 @@
     "research/RHRC/integration/opica_support_port/independent_port.py": {
       "mode": "100644",
       "type": "blob",
-      "sha": "eb169d6e85a37f5e5adaaefd9c1bb9584a20101e"
+      "sha": "3c7b3edbc45eaa47dfd5b3c058812c785882d7d0"
     },
     "research/RHRC/integration/opica_support_port/PORT_CONTRACT.json": {
       "mode": "100644",
@@ -156,7 +156,7 @@
     "research/RHRC/integration/opica_support_port/test_candidate.py": {
       "mode": "100644",
       "type": "blob",
-      "sha": "7ba46d6f3bf6d03004fb311aeb313c2c3b96d287"
+      "sha": "022ab6938b6f241d2b57ee466e4d4a816f29736e"
     },
     "Zeta23/OPICASupport/ActualDensityEnergy/Composition.lean": {
       "mode": "100644",

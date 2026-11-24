@@ -7,6 +7,51 @@ import re
 import subprocess
 import sys
 
+def import_roots(repo, lean_path, core):
+    """Use exact existing Lake roots, recording only absent pinned-package roots.
+    The independent checker still resolves every imported declaration and fails
+    on missing modules; an absent optional package build directory contributes
+    no objects. Never substitute another root or change search precedence.
+    """
+    from check_candidate import need
+    repo = Path(repo).resolve()
+    core = Path(core).resolve()
+    manifest = json.loads((repo/"lake-manifest.json").read_text())
+    packages = {}
+    for row in manifest["packages"]:
+        package = (repo/manifest["packagesDir"]/row["name"]).resolve()
+        root = (package/".lake/build/lib/lean").resolve()
+        need(root not in packages, "Duplicate pinned package root")
+        packages[root] = (package, row["rev"])
+    native = (repo/".lake/build/lib/lean").resolve()
+    need(native.is_dir() and core.is_dir(), "Mandatory native/core object root absent")
+    paths = []
+    omitted = []
+    duplicates = []
+    raw = [p for p in lean_path.split(os.pathsep) if p]
+    for entry in raw:
+        q = Path(entry)
+        q = (q if q.is_absolute() else repo/q).resolve()
+        need(q in packages or q in (native, core), "Unrecognized Lake object root: " + str(q))
+        if q in packages:
+            package, rev = packages[q]
+            need(package.is_dir(), "Pinned package checkout absent: " + str(package))
+            actual = subprocess.check_output(["git","-C",str(package),"rev-parse","HEAD"], text=True, timeout=60).strip()
+            need(actual == rev, "Pinned package revision differs: " + str(package))
+        if not q.exists():
+            need(q in packages, "Mandatory object root absent: " + str(q))
+            omitted.append({"root": str(q), "package": str(packages[q][0]), "rev": packages[q][1], "reason": "ABSENT_PACKAGE_BUILD_DIRECTORY"})
+            continue
+        need(q.is_dir(), "Non-directory object root: " + str(q))
+        if q in paths:
+            duplicates.append(str(q))
+            continue
+        paths.append(q)
+    need(native in paths, "Native object root omitted from Lake search path")
+    if core not in paths:
+        paths.append(core)
+    return paths, {"raw": raw, "effective": list(map(str, paths)), "absent_pinned_package_roots": omitted, "duplicate_canonical_roots": duplicates}
+
 def independent(repo, output, checker_work, checker_code, roots, lean_path):
     from check_candidate import need, PRIMITIVES, run
     sys.path.insert(0, str(checker_code))
@@ -32,10 +77,8 @@ def independent(repo, output, checker_work, checker_code, roots, lean_path):
     verify_file_inventory(runtime, runtime_files)
     native_prefix = Path(run("lake", "env", "lean", "--print-prefix")).resolve()
     core = native_prefix/"lib/lean"
-    paths = [Path(p).resolve() for p in lean_path.split(os.pathsep) if p]
-    if core not in paths:
-        paths.append(core)
-    need(len(paths) == len(set(paths)) and all(p.is_dir() for p in paths), "Invalid native import root inventory")
+    paths, root_receipt = import_roots(repo, lean_path, core)
+    (output/"INDEPENDENT_IMPORT_ROOTS.json").write_text(json.dumps(root_receipt, indent=2)+"\n")
     # Only the isolated audit module is added to the native proof import roots.
     audit_root = output/"audit-object"
     audit_root.mkdir()

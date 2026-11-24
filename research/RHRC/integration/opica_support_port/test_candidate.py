@@ -36,4 +36,30 @@ class Boundary(unittest.TestCase):
             self.assertEqual([r["name"] for r in compare_type_rows(a,b,["x"])],["x"])
             with self.assertRaises(Reject): compare_type_rows(a,b,["y"])
 
+
+    def test_pinned_absent_import_root(self):
+        from independent_port import import_roots
+        from pathlib import Path
+        import json, os, tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            native = repo/".lake/build/lib/lean"
+            core = repo/"runtime/lib/lean"
+            pkg = repo/".lake/packages/Cli"
+            for p in (native, core, pkg): p.mkdir(parents=True)
+            (repo/"lake-manifest.json").write_text(json.dumps({"packagesDir":".lake/packages","packages":[{"name":"Cli","rev":"a"*40}]}))
+            missing = pkg/".lake/build/lib/lean"
+            with patch("independent_port.subprocess.check_output", return_value="a"*40+"\n"):
+                paths, receipt = import_roots(repo, os.pathsep.join(map(str,(missing,native,native))), core)
+                self.assertEqual(paths,[native,core])
+                self.assertEqual(len(receipt["absent_pinned_package_roots"]),1)
+                self.assertEqual(len(receipt["duplicate_canonical_roots"]),1)
+                with self.assertRaises(Reject):
+                    import_roots(repo, os.pathsep.join(map(str,(native,repo/"unknown"))), core)
+                with self.assertRaises(Reject):
+                    import_roots(repo,str(missing),core)
+            with patch("independent_port.subprocess.check_output", return_value="b"*40+"\n"):
+                with self.assertRaises(Reject):
+                    import_roots(repo,os.pathsep.join(map(str,(missing,native))),core)
+
 if __name__=="__main__": unittest.main()
