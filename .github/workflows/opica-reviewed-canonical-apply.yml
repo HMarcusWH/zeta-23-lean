@@ -1,0 +1,50 @@
+name: OPICA reviewed canonical patch staging (isolated)
+on:
+  push:
+    branches: [ops/opica-reviewed-canonical-apply-20261124]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: opica-reviewed-canonical-stage-20261124
+  cancel-in-progress: false
+jobs:
+  stage:
+    if: github.repository == 'HMarcusWH/zeta-23-lean' && github.ref == 'refs/heads/ops/opica-reviewed-canonical-apply-20261124'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - key: '312'
+            head: ff0c8185f55b7cf172570e702cb3e8d4d62bbca0
+          - key: '314'
+            head: 1bf6242c0ba8033b076d3506189b90f1d382b5c9
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          path: controller
+          persist-credentials: false
+          sparse-checkout: |
+            /.github/scripts/opica-reviewed-canonical-stage.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ matrix.head }}
+          path: native
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Authenticate, apply, verify all bytes and stage only
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PATCH_KEY: ${{ matrix.key }}
+        working-directory: native
+        run: python3 -B ../controller/.github/scripts/opica-reviewed-canonical-stage.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: canonical-stage-${{ matrix.key }}
+          path: ${{ runner.temp }}/canonical-stage.json
+          if-no-files-found: warn
