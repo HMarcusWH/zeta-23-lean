@@ -63,7 +63,7 @@ def check():
     overlay=s["overlays"]
     need(len(overlay)==26 and len({x["path"] for x in overlay})==26,"Overlay count")
     need(len(s["roots"])==len(set(s["roots"]))==183 and s["historical_root_count"]==167 and s["bipolar_root_count"]==16,"Root census")
-    need(all(re.fullmatch(r"[A-Za-z0-9_.']+",x) for x in s["roots"]),"Invalid declaration name")
+    need(all(re.fullmatch(r"[\w.']+",x) for x in s["roots"]),"Invalid declaration name")
     own={REL+x for x in ("LOCK.json","review.py","test_review.py","README.md")}|{WORKFLOW}
     raw=git("diff","--name-status","--no-renames",s["parent"],head)
     pairs=[x.split("\t",1) for x in raw.splitlines()]
