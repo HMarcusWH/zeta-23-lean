@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: opica-support-port-${{ github.ref }}
   cancel-in-progress: false
@@ -17,6 +18,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - run: python3 -B research/RHRC/integration/opica_support_port/check_candidate.py --receipt "$RUNNER_TEMP/support-source.json"
+      - run: python3 -B research/RHRC/integration/opica_support_port/check_candidate.py --check-classification
       - run: cd research/RHRC/integration/opica_support_port/ && python3 -B -m unittest -v test_candidate
       - run: cd research/RHRC/integration/opica_support_port/ && python3 -O -B -m unittest -v test_candidate
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -179,5 +181,79 @@ jobs:
         with:
           name: opica-support-cross-pin-comparison-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/cross-pin-type-comparison.json
+          if-no-files-found: warn
+          retention-days: 90
+
+  review-old-receipts:
+    needs: source-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Authenticate exact old compiler and independent receipts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,subprocess,zipfile
+          def need(x,msg):
+              if not x:raise RuntimeError(msg)
+          repo="HMarcusWH/zeta-23-lean";base=pathlib.Path(os.environ["RUNNER_TEMP"])/"old-support";base.mkdir()
+          def api(path):return json.loads(subprocess.check_output(["gh","api",path]))
+          run=api("repos/"+repo+"/actions/runs/45409686092")
+          need(run["head_sha"]=="983b6e78eccf9156ee7e2ec55f6772bd64cedccd" and run["path"].split("@")[0]==".github/workflows/opica-historical-support-port.yml" and run["run_attempt"]==1 and run["repository"]["full_name"]==repo,"Wrong evidence run")
+          jobs=api("repos/"+repo+"/actions/runs/45409686092/attempts/1/jobs?per_page=100")["jobs"]
+          for label,jname,ident,sha,filename in [
+            ("native","native-candidate",14938505029,"b08467d8de1c18856d93a6b15fffb7e0740499164d167950aab9ba8a69b56968","NATIVE_TYPE_CANDIDATES.json"),
+            ("independent","independent-candidate",14944915024,"e6c76e76f2616d7c77f0b4a070d7f3836d4ef6ea9daf878de7c2a9e8b74f731c","NATIVE_TYPE_CANDIDATES.json"),
+            ("historical","historical-type-export",14931574995,"19de0c6c2d633111775c3925aa53aab27a3b703417f341dd0852c1671928a40d","HISTORICAL_TYPE_CANDIDATES.json")]:
+              need(sum(j["name"]==jname and j["conclusion"]=="success" for j in jobs)==1,"Producer not successful")
+              meta=api(f"repos/{repo}/actions/artifacts/{ident}")
+              need(meta["workflow_run"]["id"]==run["id"] and meta["digest"]=="sha256:"+sha and not meta["expired"],"Artifact identity")
+              p=base/(label+".zip")
+              with p.open("wb") as f:subprocess.run(["gh","api",f"repos/{repo}/actions/artifacts/{ident}/zip"],stdout=f,check=True,timeout=300)
+              need(hashlib.sha256(p.read_bytes()).hexdigest()==sha,"Archive digest")
+              dest=base/label;dest.mkdir()
+              with zipfile.ZipFile(p) as z:
+                  for leaf in ("receipt.json",filename):
+                      matches=[n for n in z.namelist() if pathlib.PurePosixPath(n).name==leaf]
+                      need(len(matches)==1,"Ambiguous member")
+                      (dest/leaf).write_bytes(z.read(matches[0]))
+          PY
+          python3 -B research/RHRC/integration/opica_support_port/check_candidate.py --compare-reviewed-old "$RUNNER_TEMP/old-support/native" "$RUNNER_TEMP/old-support/independent" "$RUNNER_TEMP/old-support/historical" "$RUNNER_TEMP/reviewed-old-cross-pin-type-comparison.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-support-reviewed-old-comparison-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/reviewed-old-cross-pin-type-comparison.json
+          if-no-files-found: warn
+          retention-days: 90
+  canonical-candidate:
+    needs: source-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - run: python3 -B research/RHRC/integration/opica_support_port/check_candidate.py --canonical-candidate "$RUNNER_TEMP/historical-canonical"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-support-canonical-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/historical-canonical/
           if-no-files-found: warn
           retention-days: 90

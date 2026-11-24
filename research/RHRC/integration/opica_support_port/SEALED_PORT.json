@@ -1,5 +1,5 @@
 {
-  "schema": "OPICA_SUPPORT_SEALED_PORT_V2",
+  "schema": "OPICA_SUPPORT_SEALED_PORT_V3",
   "base": "bb7c8184a135b2823c6296917c5ac893bebf2a71",
   "base_tree": "2b19357e1b65cc500f3e3a5b5d4df14601b02062",
   "reviewed": {
@@ -11,7 +11,17 @@
     ".github/workflows/opica-historical-support-port.yml": {
       "mode": "100644",
       "type": "blob",
-      "sha": "6f30ed553273b131071f9c5cb9abefb278df2d7f"
+      "sha": "bd01e3184e907a3d35fee77e03a8df39a40677d9"
+    },
+    ".github/workflows/rhrc.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7fc2aa695354e32863712dca8664b5b30ba36ba2"
+    },
+    ".github/workflows/rhrc_opica.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b733e1d3d451e05ec4eae523f61f4cbc79b5022b"
     },
     ".github/workflows/rhrc_opica_followup.yml": {
       "mode": "100644",
@@ -27,136 +37,6 @@
       "mode": "100644",
       "type": "blob",
       "sha": "64a55ddf7826dfa35e1dd8b4ca7c81e0d882cdab"
-    },
-    ".github/workflows/rhrc_opica.yml": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "b733e1d3d451e05ec4eae523f61f4cbc79b5022b"
-    },
-    ".github/workflows/rhrc.yml": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "7fc2aa695354e32863712dca8664b5b30ba36ba2"
-    },
-    "research/RHRC/graph/FILE_CLASSES.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "05a0696487058c716d0bacdb5ceb278f0006d7bb"
-    },
-    "research/RHRC/integration/opica_composition/cli.py": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "0986db370c95f11acf0fb49a731f118b4baeee67"
-    },
-    "research/RHRC/integration/opica_support_port/historical_compatibility/EXACT_COMPATIBILITY.patch": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "c0dbdd216a8cb86999843bb91d1dafb9b7254c84"
-    },
-    "research/RHRC/integration/opica_support_port/HISTORICAL_PACKAGE_REGISTRY.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "18be14a321e8bc448edd9987488202ad08d0554d"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/01_BOUNDARY_FLAT_CHARACTERIZATION_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "27912b1999295afd9a6a91ccdfdbb656182b5a5c"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/02_BOUNDARY_FLAT_GRAM_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "d2a56d0776f4d77224c2ef3258d5b9165b50a296"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/03_FINITE_RATIONAL_SAMPLING_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "c38e5ce8ee28585c6542fae8c729453c30c5c8e5"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/04_FOURIER_BRIDGE_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "7a8ddd7faf535812916703c92efcaab092ba91f4"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/05_MODAL_VALUE_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "e7dbf06ff084f3eb14cbedab3dcf15251a35583b"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/06_CONDITIONAL_DENSITY_SUPPLIER_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "6efacfb5b708cbd5af3312766bbf8b79c15f7cc9"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/07_CONDITIONAL_ENERGY_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "a43d63ceabdb1d699bf361817996b089904d7fd7"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/08_PARITY_RATIONAL_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "5e03f380235a9b058ecc5b3b15fddf055fe90224"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/09_ACTUAL_DISTINCT_GROWTH_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "81c3e2c6bcc5fc494b147a517d8e132e5b442bc5"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/10_ACTUAL_DENSITY_ENERGY_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "f6d336faeab36b291d10fe110fba579040642d25"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/11_NATIVE_PARITY_SAMPLING_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "a5fcb112b3d524162b19d46f763af49442ad8c81"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/12_ACTUAL_NATIVE_PARITY_SAMPLING_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "2870dff0ad40d11adfd7c317e0511529b95c8d45"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/13_COFINAL_APERTURE_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "ebf9ab55de209c497519efcedeeec91b16812cb6"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/14_DIMENSION_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "1a91e756152573a056cdfc320e895b1fa377de2c"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/15_NATIVE_SLICE_INTERPOLATION_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "ea1c690e35a4891674f31a039e76bccf08fd1d93"
-    },
-    "research/RHRC/integration/opica_support_port/historical_receipts/16_APERTURE_SLACK_RECEIPT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "06ebfcce762a1424d41277975fa27f0f205a50bd"
-    },
-    "research/RHRC/integration/opica_support_port/independent_port.py": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "3c7b3edbc45eaa47dfd5b3c058812c785882d7d0"
-    },
-    "research/RHRC/integration/opica_support_port/PORT_CONTRACT.json": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "67e4576255859c9bad0fca1eb50feeba44e5826f"
-    },
-    "research/RHRC/integration/opica_support_port/README.md": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "14daf30e7adc822677bf8e03b5c5faad94df00ca"
-    },
-    "research/RHRC/integration/opica_support_port/test_candidate.py": {
-      "mode": "100644",
-      "type": "blob",
-      "sha": "022ab6938b6f241d2b57ee466e4d4a816f29736e"
     },
     "Zeta23/OPICASupport/ActualDensityEnergy/Composition.lean": {
       "mode": "100644",
@@ -277,9 +157,144 @@
       "mode": "100644",
       "type": "blob",
       "sha": "abeaa3da4453f05ea2c1101a64a00cb83e306ba9"
+    },
+    "research/RHRC/graph/FILE_CLASSES.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05a0696487058c716d0bacdb5ceb278f0006d7bb"
+    },
+    "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7324984da35c0bf9883ca7d99efebc8e87f9f23f"
+    },
+    "research/RHRC/integration/opica_composition/cli.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f39d652bfc754e39f4f7efea2fdc7812b68eac43"
+    },
+    "research/RHRC/integration/opica_composition/service.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "167d627d789fd751af352283ab5123c33f2206d2"
+    },
+    "research/RHRC/integration/opica_composition/tests/test_end_to_end.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e21525798a6a08768413d6403a7507be4162c09"
+    },
+    "research/RHRC/integration/opica_support_port/HISTORICAL_PACKAGE_REGISTRY.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "18be14a321e8bc448edd9987488202ad08d0554d"
+    },
+    "research/RHRC/integration/opica_support_port/PORT_CONTRACT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67e4576255859c9bad0fca1eb50feeba44e5826f"
+    },
+    "research/RHRC/integration/opica_support_port/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "117afa1fca23de332216f4699013778f4f99394f"
+    },
+    "research/RHRC/integration/opica_support_port/historical_compatibility/EXACT_COMPATIBILITY.patch": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c0dbdd216a8cb86999843bb91d1dafb9b7254c84"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/01_BOUNDARY_FLAT_CHARACTERIZATION_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "27912b1999295afd9a6a91ccdfdbb656182b5a5c"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/02_BOUNDARY_FLAT_GRAM_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d2a56d0776f4d77224c2ef3258d5b9165b50a296"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/03_FINITE_RATIONAL_SAMPLING_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c38e5ce8ee28585c6542fae8c729453c30c5c8e5"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/04_FOURIER_BRIDGE_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7a8ddd7faf535812916703c92efcaab092ba91f4"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/05_MODAL_VALUE_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7dbf06ff084f3eb14cbedab3dcf15251a35583b"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/06_CONDITIONAL_DENSITY_SUPPLIER_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6efacfb5b708cbd5af3312766bbf8b79c15f7cc9"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/07_CONDITIONAL_ENERGY_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a43d63ceabdb1d699bf361817996b089904d7fd7"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/08_PARITY_RATIONAL_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5e03f380235a9b058ecc5b3b15fddf055fe90224"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/09_ACTUAL_DISTINCT_GROWTH_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "81c3e2c6bcc5fc494b147a517d8e132e5b442bc5"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/10_ACTUAL_DENSITY_ENERGY_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f6d336faeab36b291d10fe110fba579040642d25"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/11_NATIVE_PARITY_SAMPLING_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a5fcb112b3d524162b19d46f763af49442ad8c81"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/12_ACTUAL_NATIVE_PARITY_SAMPLING_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2870dff0ad40d11adfd7c317e0511529b95c8d45"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/13_COFINAL_APERTURE_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ebf9ab55de209c497519efcedeeec91b16812cb6"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/14_DIMENSION_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a91e756152573a056cdfc320e895b1fa377de2c"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/15_NATIVE_SLICE_INTERPOLATION_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea1c690e35a4891674f31a039e76bccf08fd1d93"
+    },
+    "research/RHRC/integration/opica_support_port/historical_receipts/16_APERTURE_SLACK_RECEIPT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06ebfcce762a1424d41277975fa27f0f205a50bd"
+    },
+    "research/RHRC/integration/opica_support_port/independent_port.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c7b3edbc45eaa47dfd5b3c058812c785882d7d0"
+    },
+    "research/RHRC/integration/opica_support_port/test_candidate.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d2f442e3afc1b7663d832c4cfadde58686db6ecc"
     }
   },
-  "validator_template_oid": "c7552f703a1aa27055f0c1588a36b58fed45cb0b",
+  "validator_template_oid": "6d9373a17747ac398d4f8ac0aff8be313ada129a",
   "proof_acceptance": false,
   "RH": "OPEN",
   "C1": "OPEN",

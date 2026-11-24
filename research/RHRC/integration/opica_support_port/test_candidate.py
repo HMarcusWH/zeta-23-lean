@@ -37,6 +37,33 @@ class Boundary(unittest.TestCase):
             with self.assertRaises(Reject): compare_type_rows(a,b,["y"])
 
 
+    def test_relocation_only_narrow(self):
+        from check_candidate import relocation_only
+        import copy
+        def name(parts):
+            n=["anonymous"]
+            for tag,p in parts:n=[tag,n,p]
+            return n
+        suffix=[("str","OPICAStep4"),("str","FiniteCauchySampling"),("num","12"),("str","_hygCtx"),("str","_hyg"),("num","3")]
+        prefix=[("str","inst"),("str","_@")]
+        old={"format":"LEAN_EXPR_DAG_V1","root":"1","nodes":[["sort",["zero"]],["forall",name(prefix+suffix),"instImplicit","0","0"]]}
+        new=copy.deepcopy(old);new["nodes"][1][1]=name(prefix+[("str","Zeta23"),("str","OPICASupport")]+suffix)
+        modules=["Zeta23.OPICASupport.OPICAStep4.FiniteCauchySampling"]
+        self.assertEqual(len(relocation_only(new,old,modules)),1)
+        for index,value in ((2,"implicit"),(3,"1"),(4,"1"),(1,name(prefix+[("str","Wrong")]+suffix))):
+            bad=copy.deepcopy(new);bad["nodes"][1][index]=value
+            self.assertIsNone(relocation_only(bad,old,modules))
+        bad=copy.deepcopy(new);bad["nodes"][0]=["sort",["succ",["zero"]]]
+        self.assertIsNone(relocation_only(bad,old,modules))
+        self.assertIsNone(relocation_only(new,old,["Zeta23.OPICASupport.Other.Module"]))
+
+    def test_generated_boundary(self):
+        a={"mode":"100644","type":"blob","sha":"a"*40};b={**a,"sha":"b"*40}
+        parent={"source":a,"generated":a};now={**parent,"generated":b,POLICY:a,VALIDATOR:b}
+        verify_delta(parent,now,{},a["sha"],b["sha"],{"generated"})
+        with self.assertRaises(Reject):verify_delta(parent,now,{},a["sha"],b["sha"],set())
+        with self.assertRaises(Reject):verify_delta(parent,{**now,"source":b},{},a["sha"],b["sha"],{"generated"})
+
     def test_pinned_absent_import_root(self):
         from independent_port import import_roots
         from pathlib import Path

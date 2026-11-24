@@ -20,10 +20,11 @@ class EndToEndTests(unittest.TestCase):
         # Native source/config absence is an error, never a skipped test.
         from research.RHRC.integration.opica_composition.tests.test_executor import native_context,calibration
         from research.RHRC.integration.opica_composition.proposals import calibration_plan
-        from research.RHRC.integration.documentation_2026_11_21.source_scope import validate_descendant
+        from research.RHRC.integration.opica_support_port.check_candidate import validate_descendant
         worker,snapshot,root=native_context()
         require(worker.production is True,'Linux isolated end-to-end qualification required')
-        validate_descendant(Path(snapshot.repo),require_clean=True)
+        receipt=validate_descendant(Path(snapshot.repo),require_clean=True)
+        require(receipt["status"]=="PASS_SOURCE_SCOPE_ONLY" and receipt["checked_commit"]==snapshot.commit and receipt["checked_tree"]==snapshot.tree,"Replay source receipt differs from exact snapshot")
         snapshot=replace(snapshot,source_policy='REVIEWED_FROZEN')
         target,artifacts,_=calibration('D05')
         names=('Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero',
