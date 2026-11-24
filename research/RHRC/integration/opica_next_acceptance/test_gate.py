@@ -285,5 +285,33 @@ class SourceProofAdmissionTests(unittest.TestCase):
         with self.assertRaises(ContractError):
             s.historical.inspect_committed_tree(s.REPO)
 
+    def test_end_to_end_replay_uses_exact_epoch_admission(self):
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        from research.RHRC.integration.opica_composition import cli
+        from research.RHRC.integration.opica_composition.canonical import ContractError
+        from research.RHRC.integration.opica_composition.tests.test_end_to_end import _validate_replay_source
+        self.assertIs(cli.validate_descendant, s.validate_descendant)
+        report = s.check(require_clean=True)
+        snapshot = SimpleNamespace(repo=str(s.REPO), commit=report["checked_commit"],
+                                   tree=report["checked_tree"])
+        actual = _validate_replay_source(snapshot)
+        self.assertEqual(actual["schema"], "OPICA_NEXT_SOURCE_ACCEPTANCE_ADMISSION_V1")
+        self.assertEqual(actual, report)
+        self.assertFalse(actual["proof_acceptance"])
+        for field in ("commit", "tree"):
+            bad = SimpleNamespace(**vars(snapshot))
+            setattr(bad, field, "0" * 40)
+            with self.assertRaisesRegex(ContractError, "differs from exact snapshot"):
+                _validate_replay_source(bad)
+        with patch.object(cli, "validate_descendant",
+                          side_effect=ContractError("REPLAY_ADMISSION_REJECTED")) as called:
+            with self.assertRaisesRegex(ContractError, "REPLAY_ADMISSION_REJECTED"):
+                _validate_replay_source(snapshot)
+            called.assert_called_once_with(Path(snapshot.repo), require_clean=True)
+        # The frozen earlier source gate still rejects this newer tree.
+        with self.assertRaises(ContractError):
+            s.historical.inspect_committed_tree(s.REPO)
+
 if __name__=="__main__":
     unittest.main()
