@@ -23,7 +23,7 @@ from .descendant import BASE,BASE_TREE,git
 # The historical documentation validator is still executed unchanged for
 # every old source. Only a *separately versioned* reviewed next-source epoch
 # enters the newer selector, which makes no theorem or 11-lane proof claim.
-from ..opica_next_acceptance.gate import validate_descendant
+from ..opica_integrated_epoch.admission import validate_descendant
 from .accept import (ROUND4_LANES,verify_lane_bundle,require_test_receipt,accept_application_scope,
                      REPLAY_GROUP_IDS,group_lanes,verify_independent_group,join_independent_groups)
 
@@ -322,6 +322,10 @@ def run_command(repo,argv,output,label):
     return {'argv':list(map(str,argv)),'exit_code':result.returncode,'log':log.name,'sha256':file_hash(log)}
 
 def classification_command(source):
+    if source.get('schema') == 'OPICA_INTEGRATED_SOURCE_ADMISSION_V1':
+        return [sys.executable,'-B','-m',
+                'research.RHRC.integration.opica_integrated_epoch.admission',
+                '--check-classification']
     if source.get('schema') == 'OPICA_NEXT_SOURCE_ACCEPTANCE_ADMISSION_V1':
         return [sys.executable,'-B','-m',
                 'research.RHRC.integration.opica_next_acceptance.gate',

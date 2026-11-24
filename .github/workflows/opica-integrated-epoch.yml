@@ -31,6 +31,9 @@ jobs:
         run: |
           set -euo pipefail
           python3 -B research/RHRC/integration/opica_integrated_epoch/review.py source "$RUNNER_TEMP/integrated-source.json"
+          python3 -B -m research.RHRC.integration.opica_integrated_epoch.admission --check-classification
+          python3 -B -m unittest research.RHRC.integration.opica_integrated_epoch.test_admission
+          python3 -O -B -m unittest research.RHRC.integration.opica_integrated_epoch.test_admission
           cd research/RHRC/integration/opica_integrated_epoch/
           python3 -B -m unittest -v test_review
           python3 -O -B -m unittest -v test_review

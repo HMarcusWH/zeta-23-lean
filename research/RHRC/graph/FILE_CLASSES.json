@@ -36,6 +36,24 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
+      "id": "opica_integrated_release_seal",
+      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/SOURCE_SEAL\\.json)\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_integrated_admission_tools",
+      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/admission\\.py|research/RHRC/integration/opica_integrated_epoch/release\\.py|research/RHRC/integration/opica_integrated_epoch/test_admission\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_integrated_release_ci",
+      "pattern": "\\A(?:\\.github/workflows/opica-integrated-release-review\\.yml)\\Z",
+      "file_class": "CI_WORKFLOW",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "opica_integrated_historical_support",
       "pattern": "\\A(?:Zeta23/OPICASupport/ActualDensityEnergy/Composition\\.lean|Zeta23/OPICASupport/ApertureSlack/FormStability\\.lean|Zeta23/OPICASupport/ApertureSlack/NativeGoodAperture\\.lean|Zeta23/OPICASupport/CofinalAperture/Sampling\\.lean|Zeta23/OPICASupport/DensityCompatibility/ActualDistinctGrowth\\.lean|Zeta23/OPICASupport/FourierBridge/BoundaryFlatFourierSampling\\.lean|Zeta23/OPICASupport/FourierBridge/FiniteFourierRational\\.lean|Zeta23/OPICASupport/FourierBridge/FiniteFourierResonance\\.lean|Zeta23/OPICASupport/FourierEnergy/BoundaryFlatStrictEnergy\\.lean|Zeta23/OPICASupport/FourierEnergy/EuclideanEnergyLowerBound\\.lean|Zeta23/OPICASupport/NativeParityActual/ActualZeroSampling\\.lean|Zeta23/OPICASupport/NativeParityActual/FiniteFiberSampling\\.lean|Zeta23/OPICASupport/NativeParityRational/MomentSliceIdentification\\.lean|Zeta23/OPICASupport/NativeParityRational/MomentSliceSampling\\.lean|Zeta23/OPICASupport/NativeParityRational/PolynomialReversal\\.lean|Zeta23/OPICASupport/NativeSliceInterpolation/Interpolation\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatCharacterization\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatGram\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatRationalSampling\\.lean|Zeta23/OPICASupport/OPICAStep4/FiniteCauchySampling\\.lean|Zeta23/OPICASupport/OPICAStep4/RationalSamplingSharpness\\.lean|Zeta23/OPICASupport/ParityRational/PoleSquareSampling\\.lean|Zeta23/OPICASupport/SamplingDensity/DistinctGrowthFromFraction\\.lean|Zeta23/OPICASupport/SamplingDensity/ResonanceCounting\\.lean)\\Z",
       "file_class": "LEAN_SOURCE",

@@ -61,7 +61,10 @@ def axiom_reports(text, roots):
 def check():
     s=load(HERE/"LOCK.json")
     need(s["schema"]=="OPICA_INTEGRATED_SOURCE_CANDIDATE_V1" and all(s[k]==v for k,v in CLAIMS.items()),"Claim boundary")
-    head=git("rev-parse","HEAD")
+    sys.path.insert(0,str(ROOT))
+    from research.RHRC.integration.opica_integrated_epoch.admission import check as source_check
+    admitted=source_check(ROOT,require_clean=True)
+    head=admitted["checked_commit"]
     need(git("rev-parse",s["parent"]+"^{tree}")==s["parent_tree"],"Parent tree mismatch")
     need(git("merge-base",s["parent"],head)==s["parent"],"Wrong ancestry")
     need(not git("status","--porcelain","--untracked-files=all"),"Dirty worktree")
@@ -69,13 +72,9 @@ def check():
     need(len(overlay)==26 and len({x["path"] for x in overlay})==26,"Overlay count")
     need(len(s["roots"])==len(set(s["roots"]))==183 and s["historical_root_count"]==167 and s["bipolar_root_count"]==16,"Root census")
     need(all(re.fullmatch(r"[\w.']+",x) for x in s["roots"]),"Invalid declaration name")
-    own={REL+x for x in ("LOCK.json","review.py","test_review.py","README.md","independent_review.py","compare.py")}|{WORKFLOW}
-    raw=git("diff","--name-status","--no-renames",s["parent"],head)
-    pairs=[x.split("\t",1) for x in raw.splitlines()]
-    need(all(len(x)==2 for x in pairs),"Invalid change record")
-    actual={p:a for a,p in pairs}
-    need(len(actual)==len(pairs),"Duplicate change")
-    check_delta(actual,{x["path"] for x in overlay}|own,{FC,SEM})
+    # The new sealed admission authenticates the entire predecessor and
+    # exact source edits plus only the frozen 77-product writable set.
+    actual={x["path"] for x in overlay}|{FC,SEM}|set(admitted["delta"]["added"])|set(admitted["delta"]["edited"])
     for donor,t in s["donor_trees"].items():
         need(git("rev-parse",donor+"^{tree}")==t,"Donor tree mismatch")
     for row in overlay:
@@ -97,7 +96,7 @@ def check():
     need(not set(sem["standalone_module_roles"])&set(s["module_roles"]),"Role collision")
     sem["standalone_module_roles"].update(s["module_roles"])
     need(load(ROOT/SEM)==sem,"Module roles exceed reviewed overlay")
-    return {"schema":"OPICA_INTEGRATED_SCOPE_RECEIPT_V1","status":"SOURCE_SCOPE_ONLY","head":head,"tree":git("rev-parse","HEAD^{tree}"),"parent":s["parent"],"overlays":overlay,"root_count":183,"source_sha256":{p:sha(ROOT/p) for p in sorted(actual)},**CLAIMS}
+    return {"schema":"OPICA_INTEGRATED_SCOPE_RECEIPT_V1","status":"SOURCE_SCOPE_ONLY","head":head,"tree":git("rev-parse","HEAD^{tree}"),"parent":s["parent"],"overlays":overlay,"root_count":183,"source_sha256":{p:sha(ROOT/p) for p in sorted(actual)},"source_fingerprint":admitted["source_fingerprint"],**CLAIMS}
 
 def api(path):
     return json.loads(run("gh","api",path))
