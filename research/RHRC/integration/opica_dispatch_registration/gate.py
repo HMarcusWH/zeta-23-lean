@@ -16,9 +16,9 @@ BASE = "bb7c8184a135b2823c6296917c5ac893bebf2a71"
 BASE_TREE = "2b19357e1b65cc500f3e3a5b5d4df14601b02062"
 POLICY = "research/RHRC/integration/opica_dispatch_registration/SOURCE_POLICY.json"
 VALIDATOR = "research/RHRC/integration/opica_dispatch_registration/gate.py"
-POLICY_BLOB_OID = "881a1600320c2e4f67aa751dbaf5b8b97f9a3422"
+POLICY_BLOB_OID = "c25bf908848099bd9b2a15848823306bd7d8191e"
 ADDED = frozenset([".github/workflows/opica-dispatch-registration-review.yml",".github/workflows/opica-next-acceptance.yml",".github/workflows/opica-next-source-epoch.yml","research/RHRC/integration/opica_dispatch_registration/README.md","research/RHRC/integration/opica_dispatch_registration/SOURCE_POLICY.json","research/RHRC/integration/opica_dispatch_registration/gate.py","research/RHRC/integration/opica_dispatch_registration/test_gate.py"])
-EDITED = frozenset([".github/workflows/documentation.yml","research/RHRC/integration/opica_composition/cli.py","research/RHRC/integration/opica_composition/service.py"])
+EDITED = frozenset([".github/workflows/documentation.yml","research/RHRC/integration/opica_composition/cli.py","research/RHRC/integration/opica_composition/service.py","research/RHRC/integration/opica_composition/tests/test_end_to_end.py"])
 FROZEN = frozenset(round6.FROZEN_PRODUCTS)
 
 class Reject(ValueError):

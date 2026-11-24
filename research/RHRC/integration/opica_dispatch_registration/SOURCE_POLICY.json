@@ -9,10 +9,11 @@
     ".github/workflows/opica-next-source-epoch.yml": "5abb98a57488f136ea69211e6371571ed24c7b33",
     "research/RHRC/integration/opica_composition/cli.py": "ae301df4b8b77eb779ac86b6c7088f39243d2aa1",
     "research/RHRC/integration/opica_composition/service.py": "9cb1313b9f290d7a19f5933bd421b27b71351513",
-    "research/RHRC/integration/opica_dispatch_registration/README.md": "9d91398fa88d47a589f7cb5826825c385b6877fe",
-    "research/RHRC/integration/opica_dispatch_registration/test_gate.py": "ac95bb9d5d8249c47833d749e83677f5fafb0b9b"
+    "research/RHRC/integration/opica_composition/tests/test_end_to_end.py": "bfb69d1ed8c69efb3ff776c023a5f8f59a0b66ce",
+    "research/RHRC/integration/opica_dispatch_registration/README.md": "3a81d12e361d991b58109feda808a30028a78a7c",
+    "research/RHRC/integration/opica_dispatch_registration/test_gate.py": "0ff7876b02940790419b103855ae15d0c8111eda"
   },
-  "validator_template_blob_oid": "1bd74361f11d0c39e0a95a8593d8a8677a8656bf",
+  "validator_template_blob_oid": "ab83fd20e68dd8c3367281570531dd5bf65b495c",
   "added": [
     ".github/workflows/opica-dispatch-registration-review.yml",
     ".github/workflows/opica-next-acceptance.yml",
@@ -25,7 +26,8 @@
   "edited": [
     ".github/workflows/documentation.yml",
     "research/RHRC/integration/opica_composition/cli.py",
-    "research/RHRC/integration/opica_composition/service.py"
+    "research/RHRC/integration/opica_composition/service.py",
+    "research/RHRC/integration/opica_composition/tests/test_end_to_end.py"
   ],
   "proof_acceptance": false,
   "RH": "OPEN",
