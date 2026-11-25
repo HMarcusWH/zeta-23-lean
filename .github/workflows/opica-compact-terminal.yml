@@ -1,0 +1,179 @@
+name: OPICA compact terminal Step 4 candidate (NO automatic promotion)
+on:
+  push:
+    branches: [opica/compact-step4-terminal-20261125]
+    paths:
+      - 'verification/opica-compact-terminal/**'
+      - '.github/workflows/opica-compact-terminal.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: compact-terminal-${{ github.sha }}
+  cancel-in-progress: false
+jobs:
+  source-lock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+          path: native
+      - name: Stage exact fresh native and compact supplier source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C native cat-file -e 2fe4a756e8576203cfb009314861616accdb6dde^{commit} || git -C native fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git 2fe4a756e8576203cfb009314861616accdb6dde
+          git -C native rev-parse HEAD HEAD^{tree}
+          mkdir -p "$RUNNER_TEMP/result" "$RUNNER_TEMP/grh-pinned"
+          git -C "$RUNNER_TEMP/grh-pinned" init
+          git -C "$RUNNER_TEMP/grh-pinned" fetch --depth 1 https://github.com/lsernau/grh-lean.git 72fead102f663d5c7a407964a13dc0cf9d977207
+          git -C "$RUNNER_TEMP/grh-pinned" checkout --detach FETCH_HEAD
+          python native/verification/opica-compact-terminal/stage.py --native native --original "$RUNNER_TEMP/grh-pinned" --out "$GITHUB_WORKSPACE/common" --receipt "$RUNNER_TEMP/result/source.json"
+      - name: Source extraction controls
+        run: |
+          set -euo pipefail
+          python native/verification/opica-compact-terminal/extract_all.py --test
+          python -O native/verification/opica-compact-terminal/extract_all.py --test
+          python -m py_compile native/verification/opica-compact-terminal/stage.py native/verification/opica-compact-terminal/compare.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: compact-terminal-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+
+  native-pin-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+          path: native
+      - name: Stage exact fresh native and compact supplier source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C native cat-file -e 2fe4a756e8576203cfb009314861616accdb6dde^{commit} || git -C native fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git 2fe4a756e8576203cfb009314861616accdb6dde
+          git -C native rev-parse HEAD HEAD^{tree}
+          mkdir -p "$RUNNER_TEMP/result" "$RUNNER_TEMP/grh-pinned"
+          git -C "$RUNNER_TEMP/grh-pinned" init
+          git -C "$RUNNER_TEMP/grh-pinned" fetch --depth 1 https://github.com/lsernau/grh-lean.git 72fead102f663d5c7a407964a13dc0cf9d977207
+          git -C "$RUNNER_TEMP/grh-pinned" checkout --detach FETCH_HEAD
+          python native/verification/opica-compact-terminal/stage.py --native native --original "$RUNNER_TEMP/grh-pinned" --out "$GITHUB_WORKSPACE/common" --receipt "$RUNNER_TEMP/result/source.json"
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: common
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Fresh native port at exact compact Mathlib pin
+        run: bash native/verification/opica-compact-terminal/run.sh "$GITHUB_WORKSPACE/common" "$RUNNER_TEMP/result" native
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: compact-terminal-native-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+
+  common-terminal:
+    needs: source-lock
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+          path: native
+      - name: Stage exact fresh native and compact supplier source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C native cat-file -e 2fe4a756e8576203cfb009314861616accdb6dde^{commit} || git -C native fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git 2fe4a756e8576203cfb009314861616accdb6dde
+          git -C native rev-parse HEAD HEAD^{tree}
+          mkdir -p "$RUNNER_TEMP/result" "$RUNNER_TEMP/grh-pinned"
+          git -C "$RUNNER_TEMP/grh-pinned" init
+          git -C "$RUNNER_TEMP/grh-pinned" fetch --depth 1 https://github.com/lsernau/grh-lean.git 72fead102f663d5c7a407964a13dc0cf9d977207
+          git -C "$RUNNER_TEMP/grh-pinned" checkout --detach FETCH_HEAD
+          python native/verification/opica-compact-terminal/stage.py --native native --original "$RUNNER_TEMP/grh-pinned" --out "$GITHUB_WORKSPACE/common" --receipt "$RUNNER_TEMP/result/source.json"
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: common
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile supplier, native C1 and exact terminal; audit and stock replay
+        run: bash native/verification/opica-compact-terminal/run.sh "$GITHUB_WORKSPACE/common" "$RUNNER_TEMP/result" terminal
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: compact-terminal-common-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+
+  independent-stock-replay:
+    needs: [source-lock, native-pin-preflight, common-terminal]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+          path: native
+      - name: Stage exact fresh native and compact supplier source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C native cat-file -e 2fe4a756e8576203cfb009314861616accdb6dde^{commit} || git -C native fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git 2fe4a756e8576203cfb009314861616accdb6dde
+          git -C native rev-parse HEAD HEAD^{tree}
+          mkdir -p "$RUNNER_TEMP/result" "$RUNNER_TEMP/grh-pinned"
+          git -C "$RUNNER_TEMP/grh-pinned" init
+          git -C "$RUNNER_TEMP/grh-pinned" fetch --depth 1 https://github.com/lsernau/grh-lean.git 72fead102f663d5c7a407964a13dc0cf9d977207
+          git -C "$RUNNER_TEMP/grh-pinned" checkout --detach FETCH_HEAD
+          python native/verification/opica-compact-terminal/stage.py --native native --original "$RUNNER_TEMP/grh-pinned" --out "$GITHUB_WORKSPACE/common" --receipt "$RUNNER_TEMP/result/source.json"
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: common
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Fresh independent stock reconstruction
+        run: bash native/verification/opica-compact-terminal/run.sh "$GITHUB_WORKSPACE/common" "$RUNNER_TEMP/result" terminal
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: compact-terminal-common-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/first
+      - name: Compare exact type, axiom and proof-closure receipts
+        run: |
+          set -euo pipefail
+          python native/verification/opica-compact-terminal/compare.py "$RUNNER_TEMP/first" "$RUNNER_TEMP/result" | tee "$RUNNER_TEMP/result/independent-comparison.log"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: compact-terminal-independent-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+
