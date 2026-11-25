@@ -1,0 +1,23 @@
+{
+  "status": "UNVALIDATED_CANDIDATE",
+  "source_repository": "HMarcusWH/riemann-hypothesis",
+  "original_commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+  "original_tree": "e517b335d21898fd2506ad538a1e1775c0aaa4e4",
+  "lean": "leanprover/lean4:v4.33.1",
+  "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "files": [
+    {
+      "path": "verification/opica-terminal/OPICATerminalSupplier/Principal.lean",
+      "origin": "research/opica_extract_round1/Principal.lean",
+      "blob": "0db977ea86efe6bbcc7d3c94bfc2d3f045e93da4",
+      "commit": "7026cc4b8b2cee4e64fce998782f00b6fed4bb7f"
+    },
+    {
+      "path": "verification/opica-terminal/OPICATerminalSupplier/PrincipalHost.lean",
+      "origin": "research/opica_recursive_round2/PrincipalHost.lean",
+      "blob": "869a2d8ac471417d3877df950dfed6521171cab0",
+      "commit": "7026cc4b8b2cee4e64fce998782f00b6fed4bb7f"
+    }
+  ],
+  "extraction": "ClosedPrincipal follows original MainConclusion -> EveryCharacterOfLiteratureOfVWin -> SiegelEisensteinSecondTermHypotheses -> TopPlug argument assembly, cutting before zeroFreeAll_of_topG"
+}
