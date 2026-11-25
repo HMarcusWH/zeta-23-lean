@@ -50,8 +50,10 @@ theorem principalG_eq_literal (x : ℝ) :
     change (∑ _i : Unit, (1 : ℝ) * (Deduction.Gchi
       (1 : DirichletCharacter ℂ 1) x).re) = Deduction.G x
     rw [Fintype.sum_unique, one_mul]
-    simp only [Deduction.Gchi, if_pos (rfl : (1 : DirichletCharacter ℂ 1) = 1),
-      hχ, Complex.sub_re, Complex.add_re, Complex.ofReal_re, Deduction.G]
+    -- The reflexive character equality simplifies to True at both pins.
+    -- Reduce that branch before taking real parts of the ramp expression.
+    simp only [Deduction.Gchi, eq_self, if_true, hχ,
+      Complex.sub_re, Complex.add_re, Complex.ofReal_re, Deduction.G]
   exact hfamily.trans (hG.trans (OPICAExtractionR1.native_literalG_eq_rampG x).symm)
 
 theorem nativeZero_mem_principal (ρ : ℂ) (hρ : ρ ∈ zetaZeroConfig.carrier) :

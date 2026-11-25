@@ -45,8 +45,8 @@ jobs:
             git -C native rev-parse HEAD HEAD^{tree}
             git -C original rev-parse HEAD HEAD^{tree}
             cd native/verification/opica-terminal
-            python3 -B -m unittest -v test_stage_common test_verify_audit_receipts
-            python3 -O -B -m unittest -v test_stage_common test_verify_audit_receipts
+            python3 -B -m unittest -v test_stage_common test_verify_audit_receipts test_common_frontiers
+            python3 -O -B -m unittest -v test_stage_common test_verify_audit_receipts test_common_frontiers
             python3 -B stage_common.py --native ../.. --original ../../../original --output "$RUNNER_TEMP/terminal-source.json"
           } 2>&1 | tee "$RUNNER_TEMP/terminal-source.log"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

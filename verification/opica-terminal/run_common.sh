@@ -22,20 +22,58 @@ build() {
   lake build "$1" 2>&1 | tee "$out/$2-build.log"
 }
 audit() {
-  lake env lean "src/$1.lean" 2>&1 | tee "$out/$2-audit.log"
-  ! grep -E 'sorryAx|error:|declaration uses .sorry.' "$out/$2-audit.log"
+  local rc=0
+  lake env lean "src/$1.lean" 2>&1 | tee "$out/$2-audit.log" || return $?
+  grep -E 'sorryAx|error:|declaration uses .sorry.' "$out/$2-audit.log" || rc=$?
+  # grep 1 means no forbidden output; both match and grep error fail closed.
+  if (( rc != 1 )); then
+    return 1
+  fi
 }
-build Zeta23.OPICATerminal.LiteralEnergyGrowth literal-growth
-build Zeta23.OPICATerminal.DisplacementGrowth displacement-growth
-build Zeta23.OPICATerminal.DirectEnergyCrosscheck direct-crosscheck
-build Zeta23.OPICATerminal.PowerDetectorSupply power-supply
-build Zeta23.OPICATerminal.AuditNative native
-audit Zeta23/OPICATerminal/AuditNative native
-build OPICATerminalSupplier.AuditHost host
-audit OPICATerminalSupplier/AuditHost host
-build OPICATerminalSupplier.AuditTopG topg
-audit OPICATerminalSupplier/AuditTopG topg
-build OPICATerminalSupplier.ClosedPrincipal closed-principal
+# Each frontier uses explicit short-circuiting because Bash suppresses
+# errexit inside conditionally invoked functions. Keep independent failure
+# diagnostics without admitting a partial proof as a terminal success.
+native_frontier() {
+  build Zeta23.OPICATerminal.LiteralEnergyGrowth literal-growth &&
+  build Zeta23.OPICATerminal.DisplacementGrowth displacement-growth &&
+  build Zeta23.OPICATerminal.DirectEnergyCrosscheck direct-crosscheck &&
+  build Zeta23.OPICATerminal.PowerDetectorSupply power-supply &&
+  build Zeta23.OPICATerminal.AuditNative native &&
+  audit Zeta23/OPICATerminal/AuditNative native
+}
+host_frontier() {
+  build OPICATerminalSupplier.AuditHost host &&
+  audit OPICATerminalSupplier/AuditHost host
+}
+topg_frontier() {
+  build OPICATerminalSupplier.AuditTopG topg &&
+  audit OPICATerminalSupplier/AuditTopG topg
+}
+run_frontier() {
+  local label="$1" rc=0
+  shift
+  "$@" || rc=$?
+  printf '%s exit=%s\n' "$label" "$rc" | tee "$out/$label.status" || return $?
+  return "$rc"
+}
+native_rc=0
+host_rc=0
+topg_rc=0
+closed_rc=0
+run_frontier native native_frontier || native_rc=$?
+run_frontier host host_frontier || host_rc=$?
+run_frontier topg topg_frontier || topg_rc=$?
+if (( host_rc == 0 && topg_rc == 0 )); then
+  run_frontier closed-principal build OPICATerminalSupplier.ClosedPrincipal closed-principal || closed_rc=$?
+else
+  closed_rc=125
+  printf '%s\n' 'closed-principal skipped: host or TopG failed' | tee "$out/closed-principal.status"
+fi
+if (( native_rc != 0 || host_rc != 0 || topg_rc != 0 || closed_rc != 0 )); then
+  printf 'COMMON_PIN_FRONTIER_BLOCKED native=%s host=%s topg=%s closed=%s\n' \
+    "$native_rc" "$host_rc" "$topg_rc" "$closed_rc" | tee "$out/terminal.status"
+  exit 1
+fi
 build OPICATerminalSupplier.AuditTerminal terminal
 audit OPICATerminalSupplier/AuditTerminal terminal
 python3 -B "$native/verification/opica-terminal/verify_audit_receipts.py" verify \
