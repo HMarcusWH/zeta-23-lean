@@ -1,5 +1,6 @@
 import OPICATerminalSupplier.ClosedPrincipal
 import Zeta23.OPICATerminal.PowerDetectorSupply
+import Zeta23.OPICATerminal.DirectEnergyCrosscheck
 
 /-! Arithmetic-supplied terminal candidate, checked only in a single common
 Lean/Mathlib epoch. No hypothesis is permitted in the exact root. -/
@@ -17,6 +18,10 @@ theorem native_c1_arithmetic_supplied : CofinalMomentSliceVanishingErrorBounds :
 theorem riemannHypothesis_step4_arithmetic_supplied : RiemannHypothesis :=
   riemannHypothesis_of_cofinal_moment_slice_bounds native_c1_arithmetic_supplied
 
+/-- Independent direct-energy cross-check using the same arithmetic premise. -/
+theorem riemannHypothesis_step4_direct_crosscheck : RiemannHypothesis :=
+  riemannHypothesis_of_nativeEnergySubpower_direct native_energy_subpower_arithmetic_supplied
+
 end Zeta23.OPICATerminal
 
 example : RiemannHypothesis :=
@@ -30,3 +35,6 @@ example : RiemannHypothesis :=
 #print axioms Zeta23.OPICATerminal.native_energy_subpower_arithmetic_supplied
 #print axioms Zeta23.OPICATerminal.native_c1_arithmetic_supplied
 #print axioms Zeta23.OPICATerminal.riemannHypothesis_step4_arithmetic_supplied
+
+example : RiemannHypothesis := Zeta23.OPICATerminal.riemannHypothesis_step4_direct_crosscheck
+#print axioms Zeta23.OPICATerminal.riemannHypothesis_step4_direct_crosscheck

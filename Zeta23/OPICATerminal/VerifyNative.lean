@@ -1,4 +1,5 @@
 import Zeta23.OPICATerminal.PowerDetectorSupply
+import Zeta23.OPICATerminal.DirectEnergyCrosscheck
 
 open Filter Set
 open Zeta23.OPICATerminal
@@ -45,3 +46,10 @@ example : (∀ η : ℝ, 0 < η → ∀ Y₀ : ℝ,
 #print axioms Zeta23.OPICATerminal.powerDetectorSupply_proved
 #print axioms Zeta23.OPICATerminal.directEnergyToC1_proved
 #print axioms Zeta23.OPICATerminal.riemannHypothesis_of_nativeEnergySubpower
+
+-- The direct consumer is a separate route, not a substitute for C1.
+example : OPICAExtractionR1.NativeEnergySubpower → RiemannHypothesis :=
+  riemannHypothesis_of_nativeEnergySubpower_direct
+
+#print axioms Zeta23.OPICATerminal.displacement_eq_zero_of_nativeEnergySubpower
+#print axioms Zeta23.OPICATerminal.riemannHypothesis_of_nativeEnergySubpower_direct

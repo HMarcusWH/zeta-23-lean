@@ -7,7 +7,8 @@ import hashlib
 import json
 import subprocess
 from pathlib import Path
-from lean_header import imports as lean_imports, rewrite_imports
+from lean_header import rewrite_imports
+from source_census import scan_imports, require_clean, git_blob_sha, reviewed_cut
 
 ORIGINAL = "40e56bab026552e089d7afcfeff08d2defb9c005"
 ORIGINAL_TREE = "e517b335d21898fd2506ad538a1e1775c0aaa4e4"
@@ -23,6 +24,16 @@ FOCK = BASE + "ThetaCorrespondence/FockModels/"
 DENIED = {"Main", "Statements", "Challenge", "Solution",
           (BOX + "MainConclusion").replace("/", "."),
           (BOX + "RiemannHypothesisOfEveryCharacter").replace("/", ".")}
+TEMPERED = BASE + "AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TemperedProductOfSquareIntegrable.lean"
+CUT_REVIEW = {
+    BOX+"ZeroFreeAllOfTopG.lean": ("54d1b4b84e8c4b97c98379f0bf1bd6bf2f3b2da1", ["def TopG", "theorem hypV_of_cls", "theorem eFamC_of_cls"]),
+    BOX+"EveryCharacter.lean": ("6ac769568b67f85f33565ba3e1eef7b91f53c55f", ["def UpperTheory.EveryCharacter"]),
+    FOCK+"EveryCharacterE.lean": ("01e60174b728fc6b473a308c5bf5dbffbe017afe", ["theorem hypsE₂", "structure CovE"]),
+    THIRD+"TopPlug.lean": ("c51cb6b5bd4bf2944ace89e00a2990da16bd519a", []),
+    THIRD+"SiegelEisensteinSecondTermHypotheses.lean": ("42abe20ee235820aaa924dbabce5e1d2c2540380", ["theorem nonempty_hyps_definite_side_of_closed_bound"]),
+    THIRD+"EveryCharacterOfLiteratureOfVWin.lean": ("a13ba1f8c38d4dbf2ddd809fbf9610a007936c24", ["structure UpperTheory.LiteratureTheorems.OpenLiteratureStatements", "theorem UpperTheory.LiteratureTheorems.published_results_eigen", "theorem UpperTheory.LiteratureTheorems.published_results_first", "theorem UpperTheory.LiteratureTheorems.published_results_arithmetic"]),
+    TEMPERED: ("7498ed442bf7b99617e420ee6437f8287ca5d09e", ["structure UpperTheory.LiteratureTheorems.OpenImageCondition", "theorem UpperTheory.LiteratureTheorems.tempered_product_of_square_integrable_of_open", "theorem UpperTheory.LiteratureTheorems.galois_cohomology_from_literature"]),
+}
 EXTERNAL = {"Mathlib","Lean","Std","Init","Batteries","Aesop","Qq",
             "ProofWidgets","Plausible","ImportGraph","Cli","Lake","LeanSearchClient"}
 
@@ -60,16 +71,16 @@ def source_cuts(repo):
         require(orig == subprocess.check_output(
             ["git","-C",str(repo),"show",ORIGINAL+":src/"+rel], text=True),
             "source modified before cut: "+rel)
-        new = fn(orig)
-        require(new != orig, "empty cut: "+rel)
+        new = reviewed_cut(rel, orig, fn, CUT_REVIEW)
         p.write_text(new, encoding="utf-8")
-        edits[rel] = {"before":digest(orig.encode()), "after":digest(new.encode())}
+        edits[rel] = {"original_blob":git_blob_sha(orig.encode()), "before":digest(orig.encode()),
+                      "after":digest(new.encode()), "retained_markers":CUT_REVIEW[rel][1]}
     # Keep all source-producing arguments, remove only downstream terminal consumers.
     edit(BOX+"ZeroFreeAllOfTopG.lean", lambda s: trim(s,
         "\ntheorem zeroFreeAll_of_topG ", "\nend UpperTheory.Top\n\nend\n"))
-    edit(BOX+"EveryCharacter.lean", lambda s: cut_between(s,
-        "\ntheorem UpperTheory.Top.plugWin ", "\ndef UpperTheory.EveryCharacter ").split(
-        "\ntheorem UpperTheory.Top.plugAll ",1)[0]+"\n")
+    edit(BOX+"EveryCharacter.lean", lambda s: trim(cut_between(s,
+        "\ntheorem UpperTheory.Top.plugWin ", "\ndef UpperTheory.EveryCharacter "),
+        "\ntheorem UpperTheory.Top.plugAll ", "\n"))
     edit(FOCK+"EveryCharacterE.lean", lambda s: cut_between(s,
         "\ntheorem everyE₂ ", "\nstructure CovE "))
     edit(THIRD+"TopPlug.lean", lambda s: trim(s,
@@ -82,29 +93,17 @@ def source_cuts(repo):
         exactly_remove(s,"import "+(BOX+"RiemannHypothesisOfEveryCharacter").replace("/",".")+"\n"),
         "\ntheorem UpperTheory.LiteratureTheorems.every_character_of_literature_of_vWin ",
         "\nend\n"))
+    # Only the one import is removed; missing legitimate declarations must
+    # be repaired by explicit imports of their nonterminal defining modules.
+    edit(TEMPERED, lambda s: exactly_remove(s,
+        "import "+(BOX+"RiemannHypothesisOfEveryCharacter").replace("/",".")+"\n"))
+    require(set(edits)==set(CUT_REVIEW), "reviewed cut inventory mismatch")
     return edits
 
 def import_closure(root, roots):
-    pending = [(m, "<root>", 0) for m in roots]
-    seen = set()
-    files = {}
-    while pending:
-        m, parent, line = pending.pop()
-        if m in seen:
-            continue
-        location = f"{parent}:{line}"
-        require(m not in DENIED, f"terminal module in source closure: {m} imported by {location}")
-        seen.add(m)
-        p = root / (m.replace(".","/")+".lean")
-        require(not p.is_symlink(), "symlink source: "+m)
-        if not p.is_file():
-            require(m.split(".")[0] in EXTERNAL,
-                    f"unresolved source import: {m} imported by {location}")
-            continue
-        data = p.read_bytes()
-        files[m] = digest(data)
-        pending += [(i.name, m, i.line) for i in lean_imports(data.decode("utf-8"), m)]
-    return files
+    census = scan_imports(root, roots, DENIED, EXTERNAL)
+    require_clean(census)
+    return census["files"]
 
 def stage(native, original, output):
     require(git(original,"rev-parse","HEAD")==ORIGINAL, "original commit mismatch")
@@ -152,16 +151,24 @@ def stage(native, original, output):
     with lake.open("a",encoding="utf-8") as f:
         f.write('\n[[lean_lib]]\nname = "Zeta23"\nleanOptions = {autoImplicit = true, maxHeartbeats = 800000}\n')
         f.write('\n[[lean_lib]]\nname = "OPICATerminalSupplier"\nglobs = ["OPICATerminalSupplier.+"]\n')
-    imports = import_closure(original/"src",["OPICATerminalSupplier.AuditTerminal",
-                  "Zeta23.OPICATerminal.AuditNative"])
-    out = {"schema":"OPICA_TERMINAL_COMMON_SOURCE_V1","status":"STAGED_NOT_COMPILED",
+    roots = ["OPICATerminalSupplier.AuditTerminal", "OPICATerminalSupplier.AuditHost",
+             "OPICATerminalSupplier.AuditTopG", "Zeta23.OPICATerminal.AuditNative"]
+    census = scan_imports(original/"src", roots, DENIED, EXTERNAL, edits, staged)
+    out = {"schema":"OPICA_TERMINAL_COMMON_SOURCE_V2",
+           "status":"BLOCKED_SOURCE_CLOSURE" if census["violations"] else "STAGED_NOT_COMPILED",
            "native_head":git(native,"rev-parse","HEAD"),"native_tree":git(native,"rev-parse","HEAD^{tree}"),
            "original_head":ORIGINAL,"original_tree":ORIGINAL_TREE,"toolchain":TOOLCHAIN,"mathlib":MATHLIB,
            "analytic_equivalence":analytic,"endpoint_source_cuts":edits,"staged_native":staged,
-           "import_closure":imports,"lakefile_sha256":digest(lake.read_bytes()),
+           "import_closure":census["files"],"source_census":census,
+           "lakefile_sha256":digest(lake.read_bytes()),
            "proof_acceptance":False,"RH":"OPEN"}
     output.write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
-    print("OPICA_TERMINAL_STAGED_NOT_COMPILED",len(imports),"source modules")
+    print("OPICA_TERMINAL_SOURCE_CENSUS", len(census["files"]), "source modules;",
+          len(census["violations"]), "violations", flush=True)
+    for row in census["violations"]:
+        print(json.dumps(row,ensure_ascii=False,sort_keys=True), flush=True)
+    require_clean(census)
+    print("OPICA_TERMINAL_STAGED_NOT_COMPILED",len(census["files"]),"source modules")
 
 if __name__=="__main__":
     parser=argparse.ArgumentParser()

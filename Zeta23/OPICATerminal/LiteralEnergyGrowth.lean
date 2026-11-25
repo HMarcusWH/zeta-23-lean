@@ -49,7 +49,7 @@ theorem principalG_eq_literal (x : ℝ) :
   have hfamily : Deduction.Gm principalFamily x = Deduction.G x := by
     change (∑ _i : Unit, (1 : ℝ) * (Deduction.Gchi
       (1 : DirichletCharacter ℂ 1) x).re) = Deduction.G x
-    rw [Finset.sum_unique, one_mul]
+    rw [Fintype.sum_unique, one_mul]
     simp only [Deduction.Gchi, if_pos (rfl : (1 : DirichletCharacter ℂ 1) = 1),
       hχ, Complex.sub_re, Complex.add_re, Complex.ofReal_re, Deduction.G]
   exact hfamily.trans (hG.trans (OPICAExtractionR1.native_literalG_eq_rampG x).symm)
@@ -174,7 +174,8 @@ theorem later_window_weighted_le_one {Y c θ h : ℝ} (hY : 2 ≤ Y)
   have htail : t * (∫ x in u..v, x^(-2*θ:ℝ)) ≤ 1 := by
     have he : u^(1-2*θ:ℝ) = Y^(c*(1-2*θ):ℝ) := (Real.rpow_mul hYpos.le _ _).symm
     have hm : (2*θ-1)⁻¹ ≤ Y^(-(h+c*(1-2*θ)):ℝ) := by
-      convert hmargin using 1 <;> ring
+      rw [show -(h+c*(1-2*θ)) = c*(2*θ-1)-h by ring]
+      exact hmargin
     have hprod : Y^(h+c*(1-2*θ):ℝ) * (2*θ-1)⁻¹ ≤ 1 := by
       calc
         _ ≤ Y^(h+c*(1-2*θ):ℝ) * Y^(-(h+c*(1-2*θ)):ℝ) :=
