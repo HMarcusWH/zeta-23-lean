@@ -1,0 +1,91 @@
+{
+  "source": "HMarcusWH/riemann-hypothesis",
+  "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+  "transform": "import paths only",
+  "files": [
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/IteratedDerivLaplace.lean",
+      "origin": "src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/IteratedDerivLaplace.lean",
+      "blob": "c1c05ec801b258064f1e14fb9d7e624eb7345382",
+      "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+      "imports": [
+        "import Zeta23.OPICATerminal.Analytic.LandauZeroFreeCriterion"
+      ]
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LogDerivLocal.lean",
+      "origin": "src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LogDerivLocal.lean",
+      "blob": "56dd45f8630096e041bdad64152e07862e0d4c27",
+      "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+      "imports": [
+        "import Zeta23.OPICATerminal.Analytic.LandauZeroFreeCriterion"
+      ]
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LFunctionConj.lean",
+      "origin": "src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LFunctionConj.lean",
+      "blob": "e43f4fab2a28eb31e20c5815ae6a923fd3d5b3de",
+      "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+      "imports": [
+        "import Zeta23.OPICATerminal.Analytic.LandauZeroFreeCriterion"
+      ]
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/CharFamilyLFunctionNeZeroOfOneLeRe.lean",
+      "origin": "src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/CharFamilyLFunctionNeZeroOfOneLeRe.lean",
+      "blob": "e3aaad883b956e2d45c50bdf6d58367d6f9ef109",
+      "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+      "imports": [
+        "import Zeta23.OPICATerminal.Analytic.LandauZeroFreeCriterion"
+      ]
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/mellinGchiOfNeOne.lean",
+      "origin": "src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/mellinGchiOfNeOne.lean",
+      "blob": "675a25d278977948c8327f0e1e2e31fb3a990a7d",
+      "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+      "imports": [
+        "import Zeta23.OPICATerminal.Analytic.LandauZeroFreeCriterion",
+        "import Zeta23.OPICATerminal.Analytic.LandauTheorems.MellinRamp"
+      ]
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/mellinGchiModOne.lean",
+      "origin": "src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/mellinGchiModOne.lean",
+      "blob": "11776c96437e9a4e53fbc3ff06c5e2e8e3c640bc",
+      "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+      "imports": [
+        "import Zeta23.OPICATerminal.Analytic.LandauZeroFreeCriterion",
+        "import Zeta23.OPICATerminal.Analytic.LandauTheorems.MellinRamp"
+      ]
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/measurableGchi.lean",
+      "origin": "src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/measurableGchi.lean",
+      "blob": "3b014d914efcdcf58e8de1823570aeb3c64babf3",
+      "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+      "imports": [
+        "import Zeta23.OPICATerminal.Analytic.LandauZeroFreeCriterion"
+      ]
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/GchiGrowth.lean",
+      "origin": "src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/GchiGrowth.lean",
+      "blob": "0adbad2399f91f6cd547c9195d4464ccb5512d45",
+      "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+      "imports": [
+        "import Zeta23.OPICATerminal.Analytic.LandauZeroFreeCriterion"
+      ]
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/GchiConj.lean",
+      "origin": "src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/GchiConj.lean",
+      "blob": "63cdd6a1ec3e729a5465803a19ebcf5ab9c9577c",
+      "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+      "imports": [
+        "import Zeta23.OPICATerminal.Analytic.LandauZeroFreeCriterion",
+        "import Zeta23.OPICATerminal.Analytic.LandauTheorems.LFunctionConj"
+      ]
+    }
+  ]
+}
