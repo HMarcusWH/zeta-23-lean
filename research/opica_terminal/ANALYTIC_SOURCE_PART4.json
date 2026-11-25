@@ -1,0 +1,17 @@
+{
+  "source": "HMarcusWH/riemann-hypothesis",
+  "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+  "transform": "import paths only",
+  "files": [
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/MellinRamp.lean",
+      "origin": "src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/MellinRamp.lean",
+      "blob": "f0a83b2bfc171061bfd86c2e00a0a5b963a3122e",
+      "commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+      "imports": [
+        "import Zeta23.OPICATerminal.Analytic.LandauZeroFreeCriterion",
+        "import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals"
+      ]
+    }
+  ]
+}
