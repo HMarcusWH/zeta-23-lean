@@ -152,7 +152,8 @@ def stage(native, original, output):
         f.write('\n[[lean_lib]]\nname = "Zeta23"\nleanOptions = {autoImplicit = true, maxHeartbeats = 800000}\n')
         f.write('\n[[lean_lib]]\nname = "OPICATerminalSupplier"\nglobs = ["OPICATerminalSupplier.+"]\n')
     roots = ["OPICATerminalSupplier.AuditTerminal", "OPICATerminalSupplier.AuditHost",
-             "OPICATerminalSupplier.AuditTopG", "Zeta23.OPICATerminal.AuditNative"]
+             "OPICATerminalSupplier.AuditTopG", "OPICATerminalSupplier.AuditClosedPrincipal",
+             "Zeta23.OPICATerminal.AuditNative"]
     census = scan_imports(original/"src", roots, DENIED, EXTERNAL, edits, staged)
     out = {"schema":"OPICA_TERMINAL_COMMON_SOURCE_V2",
            "status":"BLOCKED_SOURCE_CLOSURE" if census["violations"] else "STAGED_NOT_COMPILED",
@@ -161,6 +162,7 @@ def stage(native, original, output):
            "analytic_equivalence":analytic,"endpoint_source_cuts":edits,"staged_native":staged,
            "import_closure":census["files"],"source_census":census,
            "lakefile_sha256":digest(lake.read_bytes()),
+           "lake_manifest_sha256":digest((original/"lake-manifest.json").read_bytes()),
            "proof_acceptance":False,"RH":"OPEN"}
     output.write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
     print("OPICA_TERMINAL_SOURCE_CENSUS", len(census["files"]), "source modules;",

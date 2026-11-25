@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
-# This script runs inside a freshly staged original source workspace.
-# Separate receipts survive failure at a later frontier; no compiled native
-# proof objects are imported from another pin.
+# Same-pin source compilation and independent audit frontiers. Diagnostic builds
+# may proceed after audit failures; candidate evidence never may.
 set -euo pipefail
 native="$(realpath "$1")"
 source_receipt="$(realpath "$2")"
 out="$(realpath "$3")"
-mkdir -p "$out/audit"
+mkdir -p "$out"
+test ! -e "$out/evidence.json"
+test ! -e "$out/audit"
+mkdir "$out/audit"
 export OPICA_TERMINAL_AUDIT_DIR="$out/audit"
+source_prefix=src/
+source "$native/verification/opica-terminal/frontier_helpers.sh"
 test "$(cat lean-toolchain)" = "leanprover/lean4:v4.33.1"
 test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = "0df444a360eaa60ab8c11dca51a86af692955474"
 python3 - <<'PY'
@@ -18,65 +22,65 @@ for row in json.loads(Path("lake-manifest.json").read_text())["packages"]:
     if actual!=row["rev"]:
         raise RuntimeError("dependency mismatch: "+row["name"])
 PY
-build() {
-  lake build "$1" 2>&1 | tee "$out/$2-build.log"
-}
-audit() {
-  local rc=0
-  lake env lean "src/$1.lean" 2>&1 | tee "$out/$2-audit.log" || return $?
-  grep -E 'sorryAx|error:|declaration uses .sorry.' "$out/$2-audit.log" || rc=$?
-  # grep 1 means no forbidden output; both match and grep error fail closed.
-  if (( rc != 1 )); then
-    return 1
-  fi
-}
-# Each frontier uses explicit short-circuiting because Bash suppresses
-# errexit inside conditionally invoked functions. Keep independent failure
-# diagnostics without admitting a partial proof as a terminal success.
-native_frontier() {
-  build Zeta23.OPICATerminal.LiteralEnergyGrowth literal-growth &&
-  build Zeta23.OPICATerminal.DisplacementGrowth displacement-growth &&
-  build Zeta23.OPICATerminal.DirectEnergyCrosscheck direct-crosscheck &&
-  build Zeta23.OPICATerminal.PowerDetectorSupply power-supply &&
-  build Zeta23.OPICATerminal.AuditNative native &&
-  audit Zeta23/OPICATerminal/AuditNative native
-}
-host_frontier() {
-  build OPICATerminalSupplier.AuditHost host &&
-  audit OPICATerminalSupplier/AuditHost host
-}
-topg_frontier() {
-  build OPICATerminalSupplier.AuditTopG topg &&
-  audit OPICATerminalSupplier/AuditTopG topg
-}
-run_frontier() {
-  local label="$1" rc=0
-  shift
-  "$@" || rc=$?
-  printf '%s exit=%s\n' "$label" "$rc" | tee "$out/$label.status" || return $?
-  return "$rc"
-}
-native_rc=0
-host_rc=0
-topg_rc=0
-closed_rc=0
-run_frontier native native_frontier || native_rc=$?
-run_frontier host host_frontier || host_rc=$?
-run_frontier topg topg_frontier || topg_rc=$?
+native_rc=0; host_rc=0; topg_rc=0; closed_rc=125; terminal_rc=125
+controls_rc=0; na_rc=125; ha_rc=125; ta_rc=125; ca_rc=125; ea_rc=125
+run_frontier auditor-controls auditor_controls || controls_rc=$?
+run_frontier native-math native_math || native_rc=$?
+run_frontier host-math build OPICATerminalSupplier.PrincipalHost host || host_rc=$?
+run_frontier topg-math build OPICATerminalSupplier.TopGSource topg || topg_rc=$?
 if (( host_rc == 0 && topg_rc == 0 )); then
-  run_frontier closed-principal build OPICATerminalSupplier.ClosedPrincipal closed-principal || closed_rc=$?
+  closed_rc=0
+  run_frontier closed-principal-math build OPICATerminalSupplier.ClosedPrincipal closed-principal || closed_rc=$?
 else
-  closed_rc=125
-  printf '%s\n' 'closed-principal skipped: host or TopG failed' | tee "$out/closed-principal.status"
+  skip_frontier closed-principal-math 'host or TopG mathematical build failed'
 fi
-if (( native_rc != 0 || host_rc != 0 || topg_rc != 0 || closed_rc != 0 )); then
-  printf 'COMMON_PIN_FRONTIER_BLOCKED native=%s host=%s topg=%s closed=%s\n' \
-    "$native_rc" "$host_rc" "$topg_rc" "$closed_rc" | tee "$out/terminal.status"
+if (( native_rc == 0 && closed_rc == 0 )); then
+  terminal_rc=0
+  run_frontier terminal-math build OPICATerminalSupplier.Terminal terminal || terminal_rc=$?
+else
+  skip_frontier terminal-math 'native or closed-principal mathematical build failed'
+fi
+# Run every eligible proof audit even when a different audit has failed.
+if (( native_rc == 0 )); then
+  na_rc=0
+  run_frontier native-audit audit_module Zeta23.OPICATerminal.AuditNative native || na_rc=$?
+else
+  skip_frontier native-audit 'native mathematical build failed'
+fi
+if (( host_rc == 0 )); then
+  ha_rc=0
+  run_frontier host-audit audit_module OPICATerminalSupplier.AuditHost host || ha_rc=$?
+else
+  skip_frontier host-audit 'host mathematical build failed'
+fi
+if (( topg_rc == 0 )); then
+  ta_rc=0
+  run_frontier topg-audit audit_module OPICATerminalSupplier.AuditTopG topg || ta_rc=$?
+else
+  skip_frontier topg-audit 'TopG mathematical build failed'
+fi
+if (( closed_rc == 0 )); then
+  ca_rc=0
+  run_frontier closed-principal-audit audit_module OPICATerminalSupplier.AuditClosedPrincipal closed-principal || ca_rc=$?
+else
+  skip_frontier closed-principal-audit 'closed-principal mathematical build failed'
+fi
+if (( terminal_rc == 0 )); then
+  ea_rc=0
+  run_frontier terminal-audit audit_module OPICATerminalSupplier.AuditTerminal terminal || ea_rc=$?
+else
+  skip_frontier terminal-audit 'terminal mathematical build failed'
+fi
+if (( native_rc || host_rc || topg_rc || closed_rc || terminal_rc || controls_rc || na_rc || ha_rc || ta_rc || ca_rc || ea_rc )); then
+  printf 'COMMON_PIN_FRONTIER_BLOCKED math=%s,%s,%s,%s,%s audits=%s,%s,%s,%s,%s controls=%s\n' \
+    "$native_rc" "$host_rc" "$topg_rc" "$closed_rc" "$terminal_rc" "$na_rc" "$ha_rc" "$ta_rc" "$ca_rc" "$ea_rc" "$controls_rc" | tee "$out/terminal.status"
   exit 1
 fi
-build OPICATerminalSupplier.AuditTerminal terminal
-audit OPICATerminalSupplier/AuditTerminal terminal
-python3 -B "$native/verification/opica-terminal/verify_audit_receipts.py" verify \
-  --workspace . --native "$native" --source "$source_receipt" \
-  --mode common --audit-dir "$out/audit" --output "$out/evidence.json"
+verify_receipts() {
+  python3 -B "$native/verification/opica-terminal/verify_audit_receipts.py" verify \
+    --workspace . --native "$native" --source "$source_receipt" \
+    --mode common --audit-dir "$out/audit" --output "$out/evidence.json" &&
+  test -s "$out/evidence.json"
+}
+run_frontier receipt verify_receipts
 printf '%s\n' 'COMMON_PIN_KERNEL_CANDIDATE_ONLY; INDEPENDENT_REPLAY_AND_RELEASE_REVIEW_REQUIRED'

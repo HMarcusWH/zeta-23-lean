@@ -12,11 +12,13 @@ from pathlib import Path
 PREFIX = "Zeta23.OPICATerminal."
 NATIVE_ROOTS = {PREFIX+n for n in (
     "eventual_literalGEnergy_ge_rpow", "powerDetectorSupply_proved",
-    "directEnergyToC1_proved", "riemannHypothesis_of_nativeEnergySubpower_direct")}
+    "directEnergyToC1_proved", "riemannHypothesis_of_nativeEnergySubpower_direct",
+    "bothParityPowerComparison_proved")} | {"OPICAExtractionR1.native_energy_of_ramp_windows"}
 COMMON_ROOTS = NATIVE_ROOTS | {
     "OPICAR2Original.principal_host_from_source",
     "OPICATerminalSupplier.topG_from_original",
     "OPICATerminalSupplier.principal_ramp_windows_proved",
+    PREFIX+"native_energy_subpower_arithmetic_supplied",
     PREFIX+"riemannHypothesis_step4_arithmetic_supplied",
     PREFIX+"riemannHypothesis_step4_direct_crosscheck"}
 STOCK_ROOTS = {PREFIX+"riemannHypothesis_step4_arithmetic_supplied",
@@ -33,14 +35,17 @@ DENIED_DECLS = {"UpperTheory.riemannHypothesis_of_everyCharacter",
                 "UpperTheory.Lit.every_character_of_theta_integrals_local_matching",
                 "UpperTheory.LiteratureTheorems.every_character_of_literature_of_vWin"}
 REQUIRED = {
+    PREFIX+"bothParityPowerComparison_proved": {PREFIX+"eventual_literalGEnergy_ge_rpow", PREFIX+"displacement_bound"},
+    "OPICAExtractionR1.native_energy_of_ramp_windows": {"OPICAExtractionR1.window_energy_bound", "OPICAExtractionR1.native_literalG_eq_rampG", "OPICAExtractionR1.rampG_continuousOn_pos"},
+    PREFIX+"native_energy_subpower_arithmetic_supplied": {"OPICATerminalSupplier.principal_ramp_windows_proved", "OPICAExtractionR1.native_energy_of_ramp_windows"},
     PREFIX+"eventual_literalGEnergy_ge_rpow": {"Deduction.landau_window", "Deduction.poleData", PREFIX+"principalG_eq_literal", PREFIX+"nativeZero_mem_principal", PREFIX+"eventual_energy_growth_of_right_zero"},
-    PREFIX+"powerDetectorSupply_proved": {PREFIX+"bothParityPowerComparison_proved", PREFIX+"eventual_literalGEnergy_ge_rpow"},
+    PREFIX+"powerDetectorSupply_proved": {PREFIX+"bothParityPowerComparison_proved", PREFIX+"eventual_literalGEnergy_ge_rpow", "Deduction.landau_window", "Deduction.poleData"},
     PREFIX+"directEnergyToC1_proved": {PREFIX+"powerDetectorSupply_proved", "OPICAR2.directEnergyToC1_of_power_supply"},
-    PREFIX+"riemannHypothesis_of_nativeEnergySubpower_direct": {PREFIX+"displacement_eq_zero_of_nativeEnergySubpower", PREFIX+"eventual_literalGEnergy_ge_rpow", PREFIX+"displacement_bound"},
+    PREFIX+"riemannHypothesis_of_nativeEnergySubpower_direct": {PREFIX+"displacement_eq_zero_of_nativeEnergySubpower", PREFIX+"eventual_literalGEnergy_ge_rpow", PREFIX+"displacement_bound", "Deduction.landau_window", "Deduction.poleData"},
     "OPICAR2Original.principal_host_from_source": {"OPICAR2Original.principal_vwin_from_source", "UpperTheory.One.vwin_of_row", "UpperTheory.Gal.Int.galoisLocalGlobalStrong_recParameter"},
     "OPICATerminalSupplier.topG_from_original": {"OPICATerminalSupplier.literature_from_original", "UpperTheory.Gal.Int.galoisLocalGlobalStrong_recParameter", "UpperTheory.Zero.LLC.recTExists", "UpperTheory.LiteratureTheorems.published_results_eigen", "UpperTheory.LiteratureTheorems.published_results_first", "SelfIntersectionVolumeEstimates.topCovolSlim2_use_alt_alt", "UpperTheory.Lit.nonempty_hyps_definite_side_of_closed_bound", "GlobalTheory.Fc.forall_goal_of_shape_of_hyps"},
     "OPICATerminalSupplier.principal_ramp_windows_proved": {"OPICATerminalSupplier.topG_from_original", "OPICAR2Original.principal_host_from_source", "OPICAExtractionR1.principal_ramp_windows_of_connected"},
-    PREFIX+"riemannHypothesis_step4_arithmetic_supplied": {"OPICATerminalSupplier.principal_ramp_windows_proved", PREFIX+"native_energy_subpower_arithmetic_supplied", PREFIX+"native_c1_arithmetic_supplied", PREFIX+"directEnergyToC1_proved", PREFIX+"powerDetectorSupply_proved", PREFIX+"eventual_literalGEnergy_ge_rpow", "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds"},
+    PREFIX+"riemannHypothesis_step4_arithmetic_supplied": {"OPICATerminalSupplier.principal_ramp_windows_proved", PREFIX+"native_energy_subpower_arithmetic_supplied", PREFIX+"native_c1_arithmetic_supplied", PREFIX+"directEnergyToC1_proved", PREFIX+"powerDetectorSupply_proved", PREFIX+"eventual_literalGEnergy_ge_rpow", PREFIX+"bothParityPowerComparison_proved", "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds"},
     PREFIX+"riemannHypothesis_step4_direct_crosscheck": {"OPICATerminalSupplier.principal_ramp_windows_proved", PREFIX+"native_energy_subpower_arithmetic_supplied", PREFIX+"riemannHypothesis_of_nativeEnergySubpower_direct", PREFIX+"eventual_literalGEnergy_ge_rpow"}}
 DIRECT_ROOTS = {PREFIX+"riemannHypothesis_of_nativeEnergySubpower_direct",
                 PREFIX+"riemannHypothesis_step4_direct_crosscheck"}
@@ -48,6 +53,11 @@ DIRECT_FORBIDDEN = {PREFIX+n for n in (
     "directEnergyToC1_proved", "powerDetectorSupply_proved", "bothParityPowerComparison_proved",
     "native_c1_arithmetic_supplied", "riemannHypothesis_step4_arithmetic_supplied")}
 DIRECT_FORBIDDEN.add("Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds")
+EXPECTED_EXCLUDED = {
+    PREFIX+"riemannHypothesis_of_nativeEnergySubpower_direct": DIRECT_FORBIDDEN - {
+        PREFIX+"native_c1_arithmetic_supplied", PREFIX+"riemannHypothesis_step4_arithmetic_supplied"},
+    PREFIX+"riemannHypothesis_step4_direct_crosscheck": DIRECT_FORBIDDEN,
+}
 
 def require(ok, message):
     if not ok:
@@ -76,17 +86,21 @@ def validate_root(row, root, analytic, mode):
     deps = {d["name"]:d["module"] for d in row["dependencies"]}
     require(len(deps)==len(row["dependencies"])==row["constants"] and root in deps,
             "incomplete or duplicate dependency inventory: "+root)
+    require(set(row["required"])==REQUIRED[root], "required audit policy drift: "+root)
+    require(set(row["excluded"])==EXPECTED_EXCLUDED.get(root,set()), "excluded audit policy drift: "+root)
     require(REQUIRED[root] <= set(deps) and set(row["required"]) <= set(deps),
             "missing required proof dependency: "+root)
     require(not (set(row["excluded"]) & set(deps)), "excluded dependency present")
     if root in DIRECT_ROOTS:
         require(not (DIRECT_FORBIDDEN & set(deps)), "detector contamination in direct cross-check")
     if root in STOCK_ROOTS:
+        require(row.get("root_type_const")=="RiemannHypothesis", "not exact stock RH constant: "+root)
         require(row["root_type"].strip()=="RiemannHypothesis", "not exact stock RH: "+root)
         require("RiemannHypothesis" in row["root_type_expr"], "missing stock RH type expression")
     for name, module in deps.items():
         require(module and module not in DENIED_MODULES, "forbidden or missing origin: "+name)
-        require(name != "sorryAx" and name not in DENIED_DECLS and not name.startswith("UpperTheory.FinalTheorems.")
+        require(name != "sorryAx" and name not in DENIED_DECLS and not name.startswith(("UpperTheory.FinalTheorems.",
+                "UpperTheory.riemannHypothesis_of_everyCharacter", "UpperTheory.zeta_ne_zero_of_everyCharacter"))
                 and not name.endswith("_of_riemannHypothesis")
                 and not name.startswith("Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_iff_"),
                 "forbidden declaration: "+name)
@@ -101,6 +115,7 @@ def validate_root(row, root, analytic, mode):
                         "Aesop","Qq","ProofWidgets","Plausible","ImportGraph","Cli","Lake","LeanSearchClient"},
                         "non-native origin: "+module)
     return {"root_type":row["root_type"],"root_type_expr":row["root_type_expr"],
+            "root_type_const":row["root_type_const"],
             "axioms":sorted(row["axioms"]),"required":sorted(row["required"]),
             "excluded":sorted(row["excluded"]),"native_only":row["native_only"],
             "dependencies":dict(sorted(deps.items()))}
@@ -116,6 +131,7 @@ def verify(workspace, native, audit_dir, source, mode, out):
         pkg = workspace/".lake/packages"/p["name"]
         require(git(pkg,"rev-parse","HEAD")==p["rev"], "package pin mismatch: "+p["name"])
         require(not git(pkg,"diff","--name-only","HEAD"), "modified package: "+p["name"])
+        require(not git(pkg,"ls-files","--others","--exclude-standard","--","*.lean"), "untracked package Lean source: "+p["name"])
         packages[p["name"]]=(pkg,p["rev"])
     toolchain = (workspace/"lean-toolchain").read_text().strip()
     expected_toolchain = "leanprover/lean4:v4.33.1" if common else "leanprover/lean4:v4.33.0-rc2"
@@ -123,6 +139,7 @@ def verify(workspace, native, audit_dir, source, mode, out):
     require(toolchain==expected_toolchain and packages["mathlib"][1]==expected_mathlib, "wrong toolchain/mathlib pin")
     lean_prefix = Path(run(workspace,"lean","--print-prefix"))
     lean_version = run(workspace,"lean","--version")
+    require("version "+expected_toolchain.split(":v",1)[1]+"," in lean_version, "running Lean version differs from pin: "+lean_version)
     analytic = set()
     for f in sorted((native/"research/opica_terminal").glob("ANALYTIC_SOURCE_PART*.json")):
         for x in load(f)["files"]:
@@ -136,6 +153,7 @@ def verify(workspace, native, audit_dir, source, mode, out):
                 and manifest["original_tree"]==git(workspace,"rev-parse","HEAD^{tree}"),
                 "common source identity mismatch")
         require(sha(workspace/"lakefile.toml")==manifest["lakefile_sha256"], "staged lakefile changed")
+        require(sha(workspace/"lake-manifest.json")==manifest["lake_manifest_sha256"], "staged package manifest changed")
     expected = COMMON_ROOTS if common else NATIVE_ROOTS
     actual = {p.stem for p in audit_dir.glob("*.json")}
     require(actual==expected, "audit root inventory differs: missing="+str(sorted(expected-actual))+" extra="+str(sorted(actual-expected)))
@@ -147,6 +165,7 @@ def verify(workspace, native, audit_dir, source, mode, out):
         rel = m.replace(".","/")+".lean"
         local = (workspace/"src" if common else workspace)/rel
         if local.is_file():
+            require(not local.is_symlink(), "symlink local source origin: "+m)
             digest = sha(local)
             if common:
                 require(manifest["import_closure"].get(m)==digest, "compiled local origin not in pinned staged closure: "+m)
@@ -167,6 +186,10 @@ def verify(workspace, native, audit_dir, source, mode, out):
         unique = {str(f.resolve()):(f,meta) for f,meta in candidates}
         require(len(unique)==1, "unresolved or ambiguous source origin: "+m)
         f,meta = next(iter(unique.values()))
+        require(not f.is_symlink(), "symlink source origin: "+m)
+        if meta["kind"]=="package":
+            base,rev = packages[meta["package"]]
+            require(git(base,"ls-files","--",meta["path"])==meta["path"], "untracked package source origin: "+m)
         source_hashes[m]={**meta,"sha256":sha(f)}
     receipt = {"schema":"OPICA_TERMINAL_EVIDENCE_V2","status":"CANDIDATE_AUDIT_ONLY",
                "native_head":head,"native_tree":tree,"original_head":manifest.get("original_head"),
@@ -179,6 +202,10 @@ def verify(workspace, native, audit_dir, source, mode, out):
 
 def compare(first, second, out):
     a,b=load(first),load(second)
+    require(set(a.get("roots",{}))==COMMON_ROOTS and set(b.get("roots",{}))==COMMON_ROOTS,
+            "independent replay incomplete root inventory")
+    require(a.get("module_source_hashes") and b.get("module_source_hashes"), "independent replay missing origins")
+    require(a.get("status")==b.get("status")=="CANDIDATE_AUDIT_ONLY" and a.get("proof_acceptance") is False and b.get("proof_acceptance") is False, "invalid replay receipt status")
     require(a["mode"]==b["mode"]=="common" and a["schema"]==b["schema"]=="OPICA_TERMINAL_EVIDENCE_V2",
             "comparison requires two common-pin receipts")
     for key in ("native_head","native_tree","original_head","original_tree","toolchain","lean_version","packages","roots","module_source_hashes"):

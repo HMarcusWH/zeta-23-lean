@@ -1,0 +1,12 @@
+/-! Negative and positive auditor fixtures. This module is NEVER staged
+into the terminal source tree or imported by a mathematical proof. -/
+namespace OPICAAuditFixture
+theorem leaf : True := True.intro
+theorem middle : True := leaf
+theorem clean : True := middle
+axiom deliberatelyForbidden : True
+theorem dirtyMiddle : True := deliberatelyForbidden
+theorem dirty : True := dirtyMiddle
+theorem rejected_of_riemannHypothesis : True := leaf
+theorem forbiddenNameRoot : True := rejected_of_riemannHypothesis
+end OPICAAuditFixture

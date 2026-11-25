@@ -1,6 +1,6 @@
 # OPICA terminal proof candidate — 2026-11-25
 
-**Status: SOURCE_IMPLEMENTED_CANDIDATE / NOT KERNEL VALIDATED / RH_OPEN.**
+**Status: SOURCE_IMPLEMENTED_CANDIDATE / NATIVE CONDITIONAL MATH COMPILED ON PRIOR HEAD / TERMINAL ACCEPTANCE OPEN / RH_OPEN.**
 Base: native #311 head 4f81c784d3b330395507f6dcd1c8b0010b3835cc, not merged authority.
 This work is explicitly arithmetic-supplied, not an independent rediscovery of
 Alpöge's arithmetic, and not independent Step 4 closure.
@@ -70,3 +70,11 @@ Independent replay, complete anti-circularity review, original all-lane
 acceptance, canonical materialization, and full workflow harvest remain
 mandatory and OPEN. Neither a successful build of a conditional theorem
 nor a source-only root is an accepted RH theorem. No registry changes made.
+
+## Fourth repair: separate kernel compilation from audit execution
+
+The prior native run 45656366638 compiled VerifyNative and printed only the three admitted standard axioms for the eleven listed declarations. The prior common-pin log also reached AuditNative, with the identical multiline run_cmd syntax failures. The arithmetic producer builds were still running at the latest observation; no arithmetic success is inferred.
+
+The fourth repair changes no mathematical proof body, source pin or reviewed source cut. All nine original audit calls are explicitly scoped, including the independent direct-consumer exclusions. PrincipalHost, TopGSource, ClosedPrincipal and Terminal build separately from their audits. Audits and isolated Lean positive/negative controls are mandatory even if the mathematical builds succeed. The native runner uses the same separation. No final evidence receipt may be written until all required gates pass. The expanded root inventory includes both-parity comparison, generic energy-upper transfer and closed arithmetic-supplied energy. Exact stock RH type constants and exact receipt policy sets are checked, as are source provenance and replay agreement.
+
+The intentionally axiom-bearing control fixture is a .lean.txt template, compiled only in an isolated temporary directory, never staged or imported by the terminal proof. Per-head concurrency preserves the previous terminal diagnostic run. See research/opica_terminal/REPAIR_45656366638.md for the repair and unresolved release obligations.

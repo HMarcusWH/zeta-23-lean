@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from verify_audit_receipts import (
-    PREFIX, REQUIRED, DIRECT_FORBIDDEN, NATIVE_ROOTS, validate_root, compare,
+    PREFIX, REQUIRED, DIRECT_FORBIDDEN, NATIVE_ROOTS, COMMON_ROOTS, STOCK_ROOTS, EXPECTED_EXCLUDED, validate_root, compare,
 )
 
 class EvidenceControls(unittest.TestCase):
@@ -14,9 +14,10 @@ class EvidenceControls(unittest.TestCase):
             if x.startswith("Deduction."):
                 deps[x]="Zeta23.OPICATerminal.Analytic.Test"
         return {"schema":"OPICA_TERMINAL_DECLARATION_AUDIT_V2","root":root,
-                "root_type":"RiemannHypothesis" if root.endswith("arithmetic_supplied") else "test type",
+                "root_type":"RiemannHypothesis" if root in STOCK_ROOTS else "test type",
+                "root_type_const":"RiemannHypothesis" if root in STOCK_ROOTS else "",
                 "root_type_expr":"Expr.const RiemannHypothesis",
-                "axioms":["propext"],"required":sorted(REQUIRED[root]),"excluded":[],
+                "axioms":["propext"],"required":sorted(REQUIRED[root]),"excluded":sorted(EXPECTED_EXCLUDED.get(root,set())),
                 "native_only":root in NATIVE_ROOTS,"constants":len(deps),
                 "dependencies":[{"name":n,"module":m} for n,m in deps.items()]}
 
@@ -55,7 +56,7 @@ class EvidenceControls(unittest.TestCase):
         root=PREFIX+"riemannHypothesis_of_nativeEnergySubpower_direct"
         row=self.row(root)
         self.add(row,sorted(DIRECT_FORBIDDEN)[0],"Zeta23.Test")
-        with self.assertRaisesRegex(RuntimeError,"detector contamination"):
+        with self.assertRaisesRegex(RuntimeError,"detector contamination|excluded dependency present"):
             validate_root(row,root,set(),"native")
 
     def test_unapproved_axiom(self):
@@ -72,12 +73,48 @@ class EvidenceControls(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,"not exact stock RH"):
             validate_root(row,root,set(),"common")
 
+    def test_required_policy_cannot_be_weakened(self):
+        root=PREFIX+"powerDetectorSupply_proved"
+        row=self.row(root)
+        row["required"].pop()
+        with self.assertRaisesRegex(RuntimeError,"required audit policy drift"):
+            validate_root(row,root,set(),"native")
+
+    def test_excluded_policy_cannot_be_weakened(self):
+        root=PREFIX+"riemannHypothesis_of_nativeEnergySubpower_direct"
+        row=self.row(root)
+        row["excluded"].pop()
+        with self.assertRaisesRegex(RuntimeError,"excluded audit policy drift"):
+            validate_root(row,root,set(),"native")
+
+    def test_stock_type_const_is_checked(self):
+        root=PREFIX+"riemannHypothesis_step4_direct_crosscheck"
+        row=self.row(root)
+        row["root_type_const"]="Fake.RiemannHypothesis"
+        with self.assertRaisesRegex(RuntimeError,"not exact stock RH constant"):
+            validate_root(row,root,set(),"common")
+
+    def test_denied_prefix_matches_lean_policy(self):
+        root=PREFIX+"powerDetectorSupply_proved"
+        row=self.row(root)
+        self.add(row,"UpperTheory.zeta_ne_zero_of_everyCharacter_variant","Zeta23.Test")
+        with self.assertRaisesRegex(RuntimeError,"forbidden declaration"):
+            validate_root(row,root,set(),"native")
+
+    def test_replay_rejects_empty_root_inventory(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            (p/"a").write_text("{}")
+            with self.assertRaisesRegex(RuntimeError,"incomplete root inventory"):
+                compare(p/"a",p/"a",p/"out")
+
     def test_replay_receipt_mismatch(self):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d)
             a={"schema":"OPICA_TERMINAL_EVIDENCE_V2","mode":"common",
                "native_head":"a","native_tree":"t","original_head":"o","original_tree":"ot",
-               "toolchain":"v","lean_version":"v","packages":{},"roots":{},"module_source_hashes":{}}
+               "toolchain":"v","lean_version":"v","packages":{},"roots":{r:{} for r in COMMON_ROOTS},"module_source_hashes":{"M":"test"},
+               "status":"CANDIDATE_AUDIT_ONLY","proof_acceptance":False}
             b={**a,"native_tree":"wrong"}
             (p/"a").write_text(json.dumps(a))
             (p/"b").write_text(json.dumps(b))

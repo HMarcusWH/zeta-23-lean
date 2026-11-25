@@ -137,12 +137,20 @@ def audit (root : Name) (required : List Name) (nativeOnly : Bool)
       throwError "required proof dependency absent: {root} -> {n}"
   let some rootInfo := env.find? root
     | throwError "missing root type: {root}"
+  let typeConst := match rootInfo.type with
+    | .const nm [] => nm.toString
+    | _ => ""
+  if ["Zeta23.OPICATerminal.riemannHypothesis_step4_arithmetic_supplied",
+      "Zeta23.OPICATerminal.riemannHypothesis_step4_direct_crosscheck"].contains root.toString then
+    unless rootInfo.type == mkConst (Name.mkSimple "RiemannHypothesis") do
+      throwError "terminal root is not the exact stock RiemannHypothesis constant: {root}"
   let rootType ← liftTermElabM (Meta.ppExpr rootInfo.type)
   let receipt := Json.mkObj [
     ("schema", Json.str "OPICA_TERMINAL_DECLARATION_AUDIT_V2"),
     ("root", Json.str root.toString),
     ("root_type", Json.str (toString rootType)),
     ("root_type_expr", Json.str (reprStr rootInfo.type)),
+    ("root_type_const", Json.str typeConst),
     ("axioms", Json.arr (axs.map (fun n => Json.str n.toString))),
     ("required", Json.arr (required.toArray.map (fun n => Json.str n.toString))),
     ("excluded", Json.arr (excluded.toArray.map (fun n => Json.str n.toString))),
