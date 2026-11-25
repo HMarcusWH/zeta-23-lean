@@ -1,9 +1,22 @@
 import Zeta23.OPICATerminal.PowerDetectorSupply
 
+open Filter Set
 open Zeta23.OPICATerminal
 open Zeta23.OPICARound4.ArithmeticFrontier
 open Zeta23.OPICARound6.PrimeDeficit
 open Zeta23.OPICARound3 Zeta23.CCM Zeta23.ExceptionalZero
+
+-- Independently restate the growth proposition and the exact original literal source.
+example (x : ℝ) : Deduction.Gm principalFamily x = literalG x :=
+  principalG_eq_literal x
+
+example (ρ : ℂ) (hρ : ρ ∈ Zeta23.zetaZeroConfig.carrier) :
+    ρ ∈ Deduction.zeroSet principalFamily :=
+  nativeZero_mem_principal ρ hρ
+
+example {h : ℝ} (hh : 0 < h) (hha : h < 3*displacement) :
+    ∀ᶠ Y in Filter.atTop, Y^h ≤ literalGEnergy Y :=
+  eventual_literalGEnergy_ge_rpow hh hha
 
 example : ∃ δ : ℝ, 0 < δ ∧ ∃ Y₀ : ℝ, ∀ Y : ℝ, max Y₀ 2 ≤ Y →
     EvenMomentSliceLowerBound (Real.log Y) (originalDetectorQuarticCutoff (Real.log Y))

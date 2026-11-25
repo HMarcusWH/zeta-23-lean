@@ -5,9 +5,9 @@ This is candidate engineering, not a proof-acceptance receipt.
 import argparse
 import hashlib
 import json
-import re
 import subprocess
 from pathlib import Path
+from lean_header import imports as lean_imports, rewrite_imports
 
 ORIGINAL = "40e56bab026552e089d7afcfeff08d2defb9c005"
 ORIGINAL_TREE = "e517b335d21898fd2506ad538a1e1775c0aaa4e4"
@@ -24,8 +24,7 @@ DENIED = {"Main", "Statements", "Challenge", "Solution",
           (BOX + "MainConclusion").replace("/", "."),
           (BOX + "RiemannHypothesisOfEveryCharacter").replace("/", ".")}
 EXTERNAL = {"Mathlib","Lean","Std","Init","Batteries","Aesop","Qq",
-            "ProofWidgets","Plausible","ImportGraph","Cli","Lake"}
-IMPORT = re.compile(r"^\s*(?:public\s+)?import\s+([^\s]+)", re.M)
+            "ProofWidgets","Plausible","ImportGraph","Cli","Lake","LeanSearchClient"}
 
 def require(cond, msg):
     if not cond:
@@ -86,23 +85,25 @@ def source_cuts(repo):
     return edits
 
 def import_closure(root, roots):
-    pending = list(roots)
+    pending = [(m, "<root>", 0) for m in roots]
     seen = set()
     files = {}
     while pending:
-        m = pending.pop()
+        m, parent, line = pending.pop()
         if m in seen:
             continue
-        require(m not in DENIED, "terminal module in source closure: "+m)
+        location = f"{parent}:{line}"
+        require(m not in DENIED, f"terminal module in source closure: {m} imported by {location}")
         seen.add(m)
         p = root / (m.replace(".","/")+".lean")
-        if not p.is_file():
-            require(m.split(".")[0] in EXTERNAL, "unresolved source import: "+m)
-            continue
         require(not p.is_symlink(), "symlink source: "+m)
+        if not p.is_file():
+            require(m.split(".")[0] in EXTERNAL,
+                    f"unresolved source import: {m} imported by {location}")
+            continue
         data = p.read_bytes()
         files[m] = digest(data)
-        pending += IMPORT.findall(data.decode("utf-8"))
+        pending += [(i.name, m, i.line) for i in lean_imports(data.decode("utf-8"), m)]
     return files
 
 def stage(native, original, output):
@@ -124,8 +125,7 @@ def stage(native, original, output):
             require(git(original,"rev-parse",ORIGINAL+":"+src)==row["blob"],
                     "original analytic blob mismatch")
             source = (original/src).read_text(encoding="utf-8")
-            expected = re.sub(r"^(\s*(?:public\s+)?import\s+)("+re.escape(OLD)+r"[A-Za-z0-9_.]+)",
-                lambda m:m[1]+NEW+m[2][len(OLD):],source,flags=re.M)
+            expected = rewrite_imports(source, OLD, NEW, src)
             require(expected==(native/row["path"]).read_text(encoding="utf-8"),
                     "analytic port not an import-only change: "+row["path"])
             analytic[row["path"]] = {"origin":src,"blob":row["blob"]}
@@ -145,8 +145,7 @@ def stage(native, original, output):
         require(not dst.exists(), "source collision: "+target)
         dst.parent.mkdir(parents=True,exist_ok=True)
         text = src.read_text(encoding="utf-8")
-        new = re.sub(r"^(\s*(?:public\s+)?import\s+)("+re.escape(NEW)+r"[A-Za-z0-9_.]+)",
-            lambda m:m[1]+OLD+m[2][len(NEW):],text,flags=re.M)
+        new = rewrite_imports(text, NEW, OLD, rel)
         dst.write_text(new,encoding="utf-8")
         staged[target] = {"tracked":rel,"before":digest(text.encode()),"after":digest(new.encode())}
     lake = original/"lakefile.toml"

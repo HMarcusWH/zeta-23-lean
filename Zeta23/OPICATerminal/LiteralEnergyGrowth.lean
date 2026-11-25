@@ -27,18 +27,37 @@ def principalFamily : Deduction.CharFamily where
 
 theorem principalG_eq_literal (x : ℝ) :
     Deduction.Gm principalFamily x = literalG x := by
+  classical
   have hχ : ∀ n : ℕ, (1 : DirichletCharacter ℂ 1) n = 1 := by
     intro n
     exact MulChar.one_apply (isUnit_of_subsingleton _)
-  rw [OPICAExtractionR1.native_literalG_eq_rampG]
-  simp [Deduction.Gm, principalFamily, Deduction.Gchi, Deduction.ramp,
-    OPICAExtractionR1.rampG, hχ, Complex.re_sum, Complex.sub_re, Complex.add_re, Complex.mul_re,
-    Complex.ofReal_re, Complex.ofReal_im]
+  have hr : (∑ n ∈ Finset.range (⌊x⌋₊ + 1),
+      (ArithmeticFunction.vonMangoldt n : ℂ) * (1 : ℂ) *
+        ((max (x / (n : ℝ) - 1) 0 : ℝ) : ℂ)).re =
+      ∑ n ∈ Finset.range (⌊x⌋₊ + 1),
+        ArithmeticFunction.vonMangoldt n * max (x / (n : ℝ) - 1) 0 := by
+    change Complex.reCLM (∑ n ∈ Finset.range (⌊x⌋₊ + 1),
+      (ArithmeticFunction.vonMangoldt n : ℂ) * (1 : ℂ) *
+        ((max (x / (n : ℝ) - 1) 0 : ℝ) : ℂ)) = _
+    rw [map_sum]
+    apply Finset.sum_congr rfl
+    intro n hn
+    simp [Complex.mul_re]
+  have hG : Deduction.G x = OPICAExtractionR1.rampG x := by
+    unfold Deduction.G Deduction.ramp OPICAExtractionR1.rampG
+    rw [hr]
+  have hfamily : Deduction.Gm principalFamily x = Deduction.G x := by
+    change (∑ _i : Unit, (1 : ℝ) * (Deduction.Gchi
+      (1 : DirichletCharacter ℂ 1) x).re) = Deduction.G x
+    rw [Finset.sum_unique, one_mul]
+    simp only [Deduction.Gchi, if_pos (rfl : (1 : DirichletCharacter ℂ 1) = 1),
+      hχ, Complex.sub_re, Complex.add_re, Complex.ofReal_re, Deduction.G]
+  exact hfamily.trans (hG.trans (OPICAExtractionR1.native_literalG_eq_rampG x).symm)
 
 theorem nativeZero_mem_principal (ρ : ℂ) (hρ : ρ ∈ zetaZeroConfig.carrier) :
     ρ ∈ Deduction.zeroSet principalFamily := by
   have hz : IsNontrivialZero ρ := by simpa using hρ
-  refine ⟨(zetaZeroConfig.strip ρ hρ).1, (), Or.inl ?_⟩
+  refine ⟨hz.2.1, (), Or.inl ?_⟩
   change DirichletCharacter.LFunction (1 : DirichletCharacter ℂ 1) ρ = 0
   rw [DirichletCharacter.LFunction_modOne_eq]
   exact hz.1
@@ -99,7 +118,7 @@ theorem weighted_positive_young {x t θ : ℝ} (hx : 0 < x) (ht : 0 < t) :
 theorem tail_integral_bound {u v θ : ℝ} (hu : 0 < u) (huv : u ≤ v)
     (hθ : 1/2 < θ) :
     (∫ x in u..v, x^(-2*θ:ℝ)) ≤ u^(1-2*θ:ℝ)/(2*θ-1) := by
-  have h0 : (0:ℝ) ∉ [[u,v]] := by
+  have h0 : (0:ℝ) ∉ Set.uIcc u v := by
     rw [uIcc_of_le huv]
     intro h
     exact (not_le_of_gt hu) h.1
@@ -108,11 +127,14 @@ theorem tail_integral_bound {u v θ : ℝ} (hu : 0 < u) (huv : u ≤ v)
   rw [he]
   have hp : 0 < 2*θ-1 := by linarith
   have hpow : 0 ≤ v^(1-2*θ:ℝ) := Real.rpow_nonneg (hu.le.trans huv) _
-  have he' : 1-2*θ = -(2*θ-1) := by ring
-  calc
-    _ = (u^(1-2*θ:ℝ)-v^(1-2*θ:ℝ))/(2*θ-1) := by
-      rw [he', div_neg, ← neg_div, neg_sub]
-    _ ≤ _ := div_le_div_of_nonneg_right (sub_le_self _ hpow) hp.le
+  have hden : 1-2*θ ≠ 0 := by linarith
+  -- Keep the exponents untouched when changing the denominator's sign.
+  have hsign : ∀ A B : ℝ, (B-A)/(1-2*θ) = (A-B)/(2*θ-1) := by
+    intro A B
+    apply (div_eq_div_iff hden hp.ne').2
+    ring
+  rw [hsign]
+  exact div_le_div_of_nonneg_right (sub_le_self _ hpow) hp.le
 
 /-- If a full window has small positive energy, the later subwindow has
     a one-sided weighted integral at most one. No pointwise upper bound is assumed. -/
@@ -134,9 +156,12 @@ theorem later_window_weighted_le_one {Y c θ h : ℝ} (hY : 2 ≤ Y)
   have huv : u ≤ v := Real.rpow_le_rpow_of_exponent_le hY1 hc'
   have hu : 0 < u := hYpos.trans_le hYu
   have hp : 0 < 2*θ-1 := by linarith
-  have hfull := (density_continuousOn (v := v) hYpos).intervalIntegrable_of_Icc (hYu.trans huv)
-  have hi := (density_continuousOn (v := v) hu).intervalIntegrable_of_Icc huv
-  have hw := (weighted_positive_continuousOn (v := v) hu θ).intervalIntegrable_of_Icc huv
+  have hfull : IntervalIntegrable density volume Y v :=
+    (density_continuousOn (v := v) hYpos).intervalIntegrable_of_Icc (hYu.trans huv)
+  have hi : IntervalIntegrable density volume u v :=
+    (density_continuousOn (v := v) hu).intervalIntegrable_of_Icc huv
+  have hw : IntervalIntegrable (fun x : ℝ => max (literalG x) 0 * x^(-θ-1:ℝ)) volume u v :=
+    (weighted_positive_continuousOn (v := v) hu θ).intervalIntegrable_of_Icc huv
   have hj : IntervalIntegrable (fun x : ℝ => x^(-2*θ:ℝ)) volume u v :=
     (show ContinuousOn (fun x : ℝ => x^(-2*θ:ℝ)) (Icc u v) from
       fun x hx => (Real.continuousAt_rpow_const x _ (Or.inl (hu.trans_le hx.1).ne')).continuousWithinAt).intervalIntegrable_of_Icc huv
@@ -163,7 +188,9 @@ theorem later_window_weighted_le_one {Y c θ h : ℝ} (hY : 2 ≤ Y)
       _ ≤ 1 := hprod
   have hm := intervalIntegral.integral_mono_on (μ := volume) huv
     (hw.const_mul 2) ((hi.const_mul t⁻¹).add (hj.const_mul t))
-    (fun x hx => weighted_positive_young (hu.trans_le hx.1) ht (θ := θ))
+    (fun x hx => by
+      -- The two integrands are pointwise identical to the Young inequality.
+      exact weighted_positive_young (hu.trans_le hx.1) ht (θ := θ))
   rw [intervalIntegral.integral_const_mul,
     intervalIntegral.integral_add (hi.const_mul t⁻¹) (hj.const_mul t),
     intervalIntegral.integral_const_mul, intervalIntegral.integral_const_mul] at hm
@@ -217,7 +244,7 @@ theorem eventual_energy_growth_of_right_zero {h θ c : ℝ}
     ∀ᶠ Y in atTop, Y^h ≤ literalGEnergy Y := by
   by_contra hn
   rw [eventually_atTop] at hn
-  push_neg at hn
+  push Not at hn
   have hbad : ∀ R : ℝ, ∃ Y : ℝ, R ≤ Y ∧ literalGEnergy Y ≤ Y^h := by
     intro R
     obtain ⟨Y,hY,hlt⟩ := hn R

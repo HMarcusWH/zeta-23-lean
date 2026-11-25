@@ -3,7 +3,11 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
     paths:
-      - Zeta23/OPICATerminal/**
+      - Zeta23/**
+      - Zeta23.lean
+      - lakefile.toml
+      - lake-manifest.json
+      - lean-toolchain
       - verification/opica-terminal/**
       - research/opica_terminal/**
       - .github/workflows/opica_terminal_step4.yml
@@ -36,16 +40,23 @@ jobs:
       - name: Verify source pins, source-only staging, and endpoint cuts
         run: |
           set -euo pipefail
-          cd native/verification/opica-terminal
-          python3 -B -m unittest -v test_stage_common
-          python3 -O -B -m unittest -v test_stage_common
-          python3 -B stage_common.py --native ../.. --original ../../../original --output "$RUNNER_TEMP/terminal-source.json"
+          {
+            test "$(git -C native rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+            git -C native rev-parse HEAD HEAD^{tree}
+            git -C original rev-parse HEAD HEAD^{tree}
+            cd native/verification/opica-terminal
+            python3 -B -m unittest -v test_stage_common
+            python3 -O -B -m unittest -v test_stage_common
+            python3 -B stage_common.py --native ../.. --original ../../../original --output "$RUNNER_TEMP/terminal-source.json"
+          } 2>&1 | tee "$RUNNER_TEMP/terminal-source.log"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: terminal-source-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/terminal-source.json
-          if-no-files-found: warn
+          path: |
+            ${{ runner.temp }}/terminal-source.json
+            ${{ runner.temp }}/terminal-source.log
+          if-no-files-found: error
 
   native-energy-c1:
     runs-on: ubuntu-24.04
@@ -70,7 +81,11 @@ jobs:
           set -euo pipefail
           test "$(cat lean-toolchain)" = "leanprover/lean4:v4.33.0-rc2"
           test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = "51e6992efd06126df61a496bebf8f49482a4e129"
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
           git rev-parse HEAD HEAD^{tree} | tee "$RUNNER_TEMP/native-tree.log"
+          # Build the failing frontier first, so the log distinguishes
+          # literal-source/energy errors from the downstream power comparison.
+          lake build Zeta23.OPICATerminal.LiteralEnergyGrowth 2>&1 | tee "$RUNNER_TEMP/native-literal-growth.log"
           lake build Zeta23.OPICATerminal.AuditNative 2>&1 | tee "$RUNNER_TEMP/native-build.log"
           lake env lean Zeta23/OPICATerminal/AuditNative.lean 2>&1 | tee "$RUNNER_TEMP/native-audit.log"
           grep -F 'OPICA_TERMINAL_DEPENDENCY_AUDIT Zeta23.OPICATerminal.powerDetectorSupply_proved' "$RUNNER_TEMP/native-audit.log"
@@ -83,6 +98,7 @@ jobs:
           name: terminal-native-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             ${{ runner.temp }}/native-tree.log
+            ${{ runner.temp }}/native-literal-growth.log
             ${{ runner.temp }}/native-build.log
             ${{ runner.temp }}/native-audit.log
           if-no-files-found: warn
@@ -107,7 +123,12 @@ jobs:
       - name: Stage fresh source in the original proof epoch
         run: |
           set -euo pipefail
-          python3 -B native/verification/opica-terminal/stage_common.py --native native --original original --output "$RUNNER_TEMP/common-source.json"
+          {
+            test "$(git -C native rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+            git -C native rev-parse HEAD HEAD^{tree}
+            git -C original rev-parse HEAD HEAD^{tree}
+            python3 -B native/verification/opica-terminal/stage_common.py --native native --original original --output "$RUNNER_TEMP/common-source.json"
+          } 2>&1 | tee "$RUNNER_TEMP/common-source.log"
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
           lake-package-directory: original
@@ -133,6 +154,12 @@ jobs:
           PY
           lake build Zeta23.OPICATerminal.AuditNative 2>&1 | tee "$RUNNER_TEMP/common-native-build.log"
           lake env lean src/Zeta23/OPICATerminal/AuditNative.lean 2>&1 | tee "$RUNNER_TEMP/common-native-audit.log"
+          grep -F 'OPICA_TERMINAL_DEPENDENCY_AUDIT Zeta23.OPICATerminal.powerDetectorSupply_proved' "$RUNNER_TEMP/common-native-audit.log"
+          grep -F 'OPICA_TERMINAL_DEPENDENCY_AUDIT Zeta23.OPICATerminal.directEnergyToC1_proved' "$RUNNER_TEMP/common-native-audit.log"
+          ! grep -E 'sorryAx|error:|declaration uses .sorry.' "$RUNNER_TEMP/common-native-audit.log"
+          # Preserve a distinct supplier frontier receipt before final assembly.
+          lake build OPICATerminalSupplier.PrincipalHost 2>&1 | tee "$RUNNER_TEMP/common-principal-host.log"
+          lake build OPICATerminalSupplier.ClosedPrincipal 2>&1 | tee "$RUNNER_TEMP/common-principal-closed.log"
           lake build OPICATerminalSupplier.AuditTerminal 2>&1 | tee "$RUNNER_TEMP/common-terminal-build.log"
           lake env lean src/OPICATerminalSupplier/AuditTerminal.lean 2>&1 | tee "$RUNNER_TEMP/common-terminal-audit.log"
           grep -F 'OPICA_TERMINAL_DEPENDENCY_AUDIT OPICATerminalSupplier.principal_ramp_windows_proved' "$RUNNER_TEMP/common-terminal-audit.log"
@@ -145,8 +172,11 @@ jobs:
           name: terminal-common-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             ${{ runner.temp }}/common-source.json
+            ${{ runner.temp }}/common-source.log
             ${{ runner.temp }}/common-native-build.log
             ${{ runner.temp }}/common-native-audit.log
+            ${{ runner.temp }}/common-principal-host.log
+            ${{ runner.temp }}/common-principal-closed.log
             ${{ runner.temp }}/common-terminal-build.log
             ${{ runner.temp }}/common-terminal-audit.log
           if-no-files-found: warn

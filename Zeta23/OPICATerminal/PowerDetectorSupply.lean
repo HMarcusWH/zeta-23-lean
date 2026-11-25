@@ -121,9 +121,9 @@ theorem bothParityPowerComparison_proved :
     have ha : 0 < a := lt_of_le_of_ne displacement_nonneg (Ne.symm hz)
     have hs : ∀ ρ ∈ zetaZeroConfig.carrier, |ρ.re-1/2| ≤ a := displacement_bound
     obtain ⟨Ce,hCe,he⟩ := evenMomentSliceLowerBound_explicit_of_zeroStrip
-      (α := 5*a/4) (by linarith) hs
+      (a := a) (α := 5*a/4) (by linarith) hs
     obtain ⟨Co,hCo,ho⟩ := oddMomentSliceLowerBound_explicit_of_zeroStrip
-      (α := 5*a/4) (by linarith) hs
+      (a := a) (α := 5*a/4) (by linarith) hs
     have hga : 2*a < 3*displacement := by dsimp [a] at *; linarith
     obtain ⟨B,hB⟩ := eventually_atTop.1
       (eventual_literalGEnergy_ge_rpow (show 0 < 2*a by positivity) hga)
