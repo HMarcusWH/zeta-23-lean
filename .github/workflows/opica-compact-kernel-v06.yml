@@ -1,0 +1,90 @@
+name: OPICA compact arithmetic kernel and full declaration graph (NO RH promotion)
+on:
+  push:
+    branches: [research/compact-supplier-kernel-v0-6-20261125]
+    paths:
+      - 'research/opica_compact_extraction/AuditArithmetic.lean'
+      - '.github/workflows/opica-compact-kernel-v06.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: compact-arithmetic-kernel-${{ github.sha }}
+  cancel-in-progress: false
+jobs:
+  compact-arithmetic-kernel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          path: native
+      - name: Recreate exact compact source cut
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/grh-pinned" "$RUNNER_TEMP/compact-kernel-result"
+          git -C "$RUNNER_TEMP/grh-pinned" init
+          git -C "$RUNNER_TEMP/grh-pinned" fetch --depth 1 https://github.com/lsernau/grh-lean.git 72fead102f663d5c7a407964a13dc0cf9d977207
+          git -C "$RUNNER_TEMP/grh-pinned" checkout --detach FETCH_HEAD
+          python native/research/opica_compact_extraction/extract_all.py --source "$RUNNER_TEMP/grh-pinned" --out "$RUNNER_TEMP/compact-kernel-source"
+          tar -xzf "$RUNNER_TEMP/compact-kernel-source/grh-compact/arithmetic-source-slice.tar.gz"
+          cp "$RUNNER_TEMP/compact-kernel-source/grh-compact/ARITHMETIC_SLICE_MANIFEST.json" "$RUNNER_TEMP/compact-kernel-result/"
+          cp native/research/opica_compact_extraction/AuditArithmetic.lean "$RUNNER_TEMP/AuditArithmetic.lean"
+          test "$(cat grh-compact-arithmetic/lean-toolchain)" = "leanprover/lean4:v4.35.0"
+          git -C native rev-parse HEAD HEAD^{tree} > "$RUNNER_TEMP/compact-kernel-result/EXTRACTOR_GIT.txt"
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: grh-compact-arithmetic
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Verify all standard dependency pins
+        working-directory: grh-compact-arithmetic
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, subprocess, pathlib, os
+          m=json.loads(pathlib.Path("lake-manifest.json").read_text())
+          orig=json.loads((pathlib.Path(os.environ["RUNNER_TEMP"])/"grh-pinned/grh-compact/lake-manifest.json").read_text())
+          assert {p["name"]:p["rev"] for p in m["packages"]} == {p["name"]:p["rev"] for p in orig["packages"]}
+          for p in orig["packages"]:
+              got=subprocess.check_output(["git","-C",".lake/packages/"+p["name"],"rev-parse","HEAD"],text=True).strip()
+              assert got==p["rev"],(p["name"],got,p["rev"])
+              print(p["name"],got)
+          PY
+          lean --version
+      - name: Compile actual arithmetic-only source
+        working-directory: grh-compact-arithmetic
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build New.ArithmeticOnly 2>&1 | tee "$RUNNER_TEMP/compact-kernel-result/build.log"
+      - name: Export proof values, types, structural dependencies and allowed axioms
+        working-directory: grh-compact-arithmetic
+        shell: bash
+        run: |
+          set -euo pipefail
+          export OPICA_COMPACT_AUDIT_DIR="$RUNNER_TEMP/compact-kernel-result/graph"
+          cp "$RUNNER_TEMP/AuditArithmetic.lean" AuditArithmetic.lean
+          lake env lean AuditArithmetic.lean 2>&1 | tee "$RUNNER_TEMP/compact-kernel-result/audit.log"
+          test -f "$OPICA_COMPACT_AUDIT_DIR/SUMMARY.json"
+      - name: Stock kernel module replay
+        working-directory: grh-compact-arithmetic
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env leanchecker New.ArithmeticOnly 2>&1 | tee "$RUNNER_TEMP/compact-kernel-result/leanchecker.log"
+      - name: Preserve exact receipts, including failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: compact-arithmetic-kernel-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/compact-kernel-result/
+          if-no-files-found: warn
+          retention-days: 30
