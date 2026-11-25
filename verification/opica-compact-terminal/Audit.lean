@@ -2,6 +2,7 @@ import Zeta23.OPICACompactTerminal.Terminal
 import Lean
 
 open Lean Elab Command Filter
+open Zeta23.CCM Zeta23.ExceptionalZero Zeta23.OPICARound3 Zeta23.OPICARound4
 open Zeta23.OPICARound4.ArithmeticFrontier
 open Zeta23.OPICACompactTerminal
 

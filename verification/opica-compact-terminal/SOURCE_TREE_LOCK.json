@@ -7,10 +7,10 @@
   "mathlib": "56a005855ea17e0b0958f73ec801ae140b0a1679",
   "native": {
     "repository": "HMarcusWH/zeta-23-lean",
-    "commit": "347c89e926a0f335caaab13d005ea738b80ee34b",
-    "tree": "61c265e150ef006c786ef889dc33b4825613f092"
+    "commit": "2fe4a756e8576203cfb009314861616accdb6dde",
+    "tree": "4571fe6cc82466115beae5bea5037071ebec3524"
   },
-  "source": "GitHub untruncated recursive tree; byte rehash pending",
+  "source": "Upstream recursive Git tree frozen by source extraction run 45712665996; native field updated to #316 for this independent successor; fresh byte rehash required",
   "claim": "RH_OPEN",
   "blobs": [
     {

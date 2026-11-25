@@ -27,8 +27,7 @@ theorem weighted_upper_at (P : Parameters) {β : ℝ}
     constructor <;> linarith
   have hexp : 8 * ε + (2 : ℝ)⁻¹ - 1 ≤ β - 1 := by
     dsimp [ε]
-    norm_num
-    linarith
+    norm_num <;> linarith
   filter_upwards [eventually_primeError_le_rpow P hε,
     eventually_ge_atTop (1 : ℝ)] with x hx hx1
   exact hx.trans (Real.rpow_le_rpow_of_exponent_le hx1 hexp)
@@ -54,18 +53,17 @@ theorem zeta_ne_zero_of_principal_weighted_upper {β : ℝ}
     (hβ : 1 / 2 < β) (h : PrincipalWeightedUpper β)
     (ρ : ℂ) (hρ : β < ρ.re) (hs1 : ρ ≠ 1) : riemannZeta ρ ≠ 0 := by
   intro hz
-  let χ : DirichletCharacter ℂ 1 := 1
-  have hχ : χ.LFunction ρ = 0 := by
-    rw [DirichletCharacter.LFunction_modOne_eq]
-    exact hz
-  have h_induced :
-      entireL (χ.changeLevel (show 1 ∣ 18480 by decide)) ρ = 0 := by
-    rw [entireL]
-    grind [LFunction_changeLevel, changeLevel_eq_one_iff]
+  -- Exact stock principal Euler-factor identity at this pin.
+  have htriv : DirichletCharacter.LFunctionTrivChar 18480 ρ = 0 := by
+    rw [DirichletCharacter.LFunctionTrivChar_eq_mul_riemannZeta hs1, hz, mul_zero]
+  have h_induced : entireL (1 : DirichletCharacter ℂ 18480) ρ = 0 := by
+    simp only [entireL, eq_self, if_true,
+      DirichletCharacter.LFunctionTrivChar₁, Function.update_of_ne hs1,
+      htriv, mul_zero]
   have ha : IsUnit (9239 : ZMod 18480) :=
     .of_mul_eq_one (9239 : ZMod 18480) (by decide)
   exact entireL_ne_zero_of_primeError_le (M := 18480)
-    (a := 9239) hβ ha h ρ hρ _ h_induced
+    (a := 9239) hβ ha h ρ hρ (1 : DirichletCharacter ℂ 18480) h_induced
 
 /-- One fixed tolerance at a time, not an imported terminal RH/GRH result. -/
 theorem principal_fixed_strip {β : ℝ} (hβ : 1 / 2 < β)

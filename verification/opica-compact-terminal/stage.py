@@ -12,6 +12,7 @@ def git(root,*args):
     return subprocess.check_output(["git","-C",str(root),*args])
 def file_sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def stage(native,original,out,receipt):
+    require(LOCK["native"]["commit"]==NATIVE and LOCK["native"]["tree"]==NATIVE_TREE,"native lock metadata mismatch")
     require(git(native,"rev-parse",NATIVE+"^{tree}").decode().strip()==NATIVE_TREE,"native parent tree mismatch")
     require(git(original,"rev-parse","HEAD").decode().strip()==LOCK["commit"],"upstream commit mismatch")
     require(git(original,"rev-parse","HEAD^{tree}").decode().strip()==LOCK["tree"],"upstream tree mismatch")

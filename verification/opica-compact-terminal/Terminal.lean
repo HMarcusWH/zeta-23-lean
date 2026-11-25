@@ -11,7 +11,7 @@ No claim of independent native arithmetic or the literal-energy splice.
 -/
 noncomputable section
 open Set Filter
-open Zeta23.CCM Zeta23.ExceptionalZero Zeta23.OPICARound3
+open Zeta23.CCM Zeta23.ExceptionalZero Zeta23.OPICARound3 Zeta23.OPICARound4
 open Zeta23.OPICARound4.ArithmeticFrontier
 
 namespace Zeta23.OPICACompactTerminal
