@@ -1,0 +1,152 @@
+name: OPICA terminal Step 4 candidate (NO automatic promotion)
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - Zeta23/OPICATerminal/**
+      - verification/opica-terminal/**
+      - research/opica_terminal/**
+      - .github/workflows/opica_terminal_step4.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: opica-terminal-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-lock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+          path: native
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: HMarcusWH/riemann-hypothesis
+          ref: 40e56bab026552e089d7afcfeff08d2defb9c005
+          persist-credentials: false
+          path: original
+      - name: Verify source pins, source-only staging, and endpoint cuts
+        run: |
+          set -euo pipefail
+          cd native/verification/opica-terminal
+          python3 -B -m unittest -v test_stage_common
+          python3 -O -B -m unittest -v test_stage_common
+          python3 -B stage_common.py --native ../.. --original ../../../original --output "$RUNNER_TEMP/terminal-source.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: terminal-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/terminal-source.json
+          if-no-files-found: warn
+
+  native-energy-c1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: .
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Native kernel candidate and required root dependencies
+        run: |
+          set -euo pipefail
+          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.33.0-rc2"
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = "51e6992efd06126df61a496bebf8f49482a4e129"
+          git rev-parse HEAD HEAD^{tree} | tee "$RUNNER_TEMP/native-tree.log"
+          lake build Zeta23.OPICATerminal.AuditNative 2>&1 | tee "$RUNNER_TEMP/native-build.log"
+          lake env lean Zeta23/OPICATerminal/AuditNative.lean 2>&1 | tee "$RUNNER_TEMP/native-audit.log"
+          grep -F 'OPICA_TERMINAL_DEPENDENCY_AUDIT Zeta23.OPICATerminal.powerDetectorSupply_proved' "$RUNNER_TEMP/native-audit.log"
+          grep -F 'OPICA_TERMINAL_DEPENDENCY_AUDIT Zeta23.OPICATerminal.directEnergyToC1_proved' "$RUNNER_TEMP/native-audit.log"
+          ! grep -E 'sorryAx|error:|declaration uses .sorry.' "$RUNNER_TEMP/native-audit.log"
+          printf '%s\n' 'NATIVE_CANDIDATE_KERNEL_AND_DEPENDENCIES_ONLY; NO PROJECT PROMOTION'
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: terminal-native-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/native-tree.log
+            ${{ runner.temp }}/native-build.log
+            ${{ runner.temp }}/native-audit.log
+          if-no-files-found: warn
+
+  common-pin-terminal:
+    needs: source-lock
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+          path: native
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: HMarcusWH/riemann-hypothesis
+          ref: 40e56bab026552e089d7afcfeff08d2defb9c005
+          persist-credentials: false
+          path: original
+      - name: Stage fresh source in the original proof epoch
+        run: |
+          set -euo pipefail
+          python3 -B native/verification/opica-terminal/stage_common.py --native native --original original --output "$RUNNER_TEMP/common-source.json"
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: original
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile native bridge and supplier/terminal in the SAME Lean environment
+        working-directory: original
+        run: |
+          set -euo pipefail
+          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.33.1"
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = "0df444a360eaa60ab8c11dca51a86af692955474"
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          for row in json.loads(Path("lake-manifest.json").read_text())["packages"]:
+              actual=subprocess.check_output(["git","-C",str(Path(".lake/packages")/row["name"]),"rev-parse","HEAD"],text=True).strip()
+              if actual!=row["rev"]:
+                  raise RuntimeError("dependency mismatch: "+row["name"])
+          PY
+          lake build Zeta23.OPICATerminal.AuditNative 2>&1 | tee "$RUNNER_TEMP/common-native-build.log"
+          lake env lean src/Zeta23/OPICATerminal/AuditNative.lean 2>&1 | tee "$RUNNER_TEMP/common-native-audit.log"
+          lake build OPICATerminalSupplier.AuditTerminal 2>&1 | tee "$RUNNER_TEMP/common-terminal-build.log"
+          lake env lean src/OPICATerminalSupplier/AuditTerminal.lean 2>&1 | tee "$RUNNER_TEMP/common-terminal-audit.log"
+          grep -F 'OPICA_TERMINAL_DEPENDENCY_AUDIT OPICATerminalSupplier.principal_ramp_windows_proved' "$RUNNER_TEMP/common-terminal-audit.log"
+          grep -F 'OPICA_TERMINAL_DEPENDENCY_AUDIT Zeta23.OPICATerminal.riemannHypothesis_step4_arithmetic_supplied' "$RUNNER_TEMP/common-terminal-audit.log"
+          ! grep -E 'sorryAx|error:|declaration uses .sorry.' "$RUNNER_TEMP/common-terminal-audit.log"
+          printf '%s\n' 'COMMON_PIN_KERNEL_CANDIDATE_ONLY; INDEPENDENT_REPLAY_AND_RELEASE_REVIEW_REQUIRED'
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: terminal-common-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/common-source.json
+            ${{ runner.temp }}/common-native-build.log
+            ${{ runner.temp }}/common-native-audit.log
+            ${{ runner.temp }}/common-terminal-build.log
+            ${{ runner.temp }}/common-terminal-audit.log
+          if-no-files-found: warn
