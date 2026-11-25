@@ -32,7 +32,7 @@ theorem principalG_eq_literal (x : ℝ) :
     exact MulChar.one_apply (isUnit_of_subsingleton _)
   rw [OPICAExtractionR1.native_literalG_eq_rampG]
   simp [Deduction.Gm, principalFamily, Deduction.Gchi, Deduction.ramp,
-    OPICAExtractionR1.rampG, hχ, Complex.sub_re, Complex.add_re, Complex.mul_re,
+    OPICAExtractionR1.rampG, hχ, Complex.sum_re, Complex.sub_re, Complex.add_re, Complex.mul_re,
     Complex.ofReal_re, Complex.ofReal_im]
 
 theorem nativeZero_mem_principal (ρ : ℂ) (hρ : ρ ∈ zetaZeroConfig.carrier) :
@@ -111,8 +111,7 @@ theorem tail_integral_bound {u v θ : ℝ} (hu : 0 < u) (huv : u ≤ v)
   have he' : 1-2*θ = -(2*θ-1) := by ring
   calc
     _ = (u^(1-2*θ:ℝ)-v^(1-2*θ:ℝ))/(2*θ-1) := by
-      rw [show (1-2*θ:ℝ) = -(2*θ-1) by ring] at *
-      ring
+      rw [he', div_neg, ← neg_div, neg_sub]
     _ ≤ _ := div_le_div_of_nonneg_right (sub_le_self _ hpow) hp.le
 
 /-- If a full window has small positive energy, the later subwindow has

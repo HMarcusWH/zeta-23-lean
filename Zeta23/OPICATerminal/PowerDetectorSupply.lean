@@ -64,7 +64,9 @@ theorem eventual_literalGEnergy_ge_rpow {h : ℝ} (hh : 0 < h)
   have hhalf : a ≤ 1/2 := displacement_le_half
   have hratio : h/(2*a) < 3/2 :=
     (div_lt_iff₀ (by positivity : 0 < 2*a)).2 (by dsimp [a]; linarith)
-  obtain ⟨c,hc,hc'⟩ := exists_between (max_lt (by norm_num : (1:ℝ)<3/2) hratio)
+  have hmax : max (1:ℝ) (h/(2*a)) < 3/2 :=
+    max_lt_iff.mpr ⟨by norm_num,hratio⟩
+  obtain ⟨c,hc,hc'⟩ := exists_between hmax
   have hc1 : 1 < c := (le_max_left _ _).trans_lt hc
   have hcpos : 0 < c := by linarith
   have hhc : h < 2*a*c := by
@@ -82,7 +84,10 @@ theorem eventual_literalGEnergy_ge_rpow {h : ℝ} (hh : 0 < h)
     dsimp [θ]
     nlinarith
   obtain ⟨ρ,hρ,hr⟩ := exists_right_zero_of_lt_displacement hθ.le
-    (show θ-1/2 < displacement by dsimp [θ] at *; dsimp [a] at ht2; linarith)
+    (show θ-1/2 < displacement by
+      change θ-1/2 < a
+      dsimp [θ]
+      linarith)
   exact eventual_energy_growth_of_right_zero hc1 hc' hθ hθ' hm ρ hρ hr
 
 /-- Stronger than R2's disjunction: both original slices, same error and cutoff. -/
