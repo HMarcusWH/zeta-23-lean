@@ -28,10 +28,10 @@ jobs:
           set -euo pipefail
           out="$RUNNER_TEMP/documentation-review"
           mkdir -p "$out"
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check-classification 2>&1 | tee "$out/classification.log"
-          python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests.log"
-          python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
+          python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check > "$out/source-scope.json"
+          python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check-classification 2>&1 | tee "$out/classification.log"
+          python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope research.RHRC.integration.documentation_2026_11_26.test_archive_scope research.RHRC.integration.documentation_2026_11_26.test_source_scope 2>&1 | tee "$out/scope-tests.log"
+          python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope research.RHRC.integration.documentation_2026_11_26.test_archive_scope research.RHRC.integration.documentation_2026_11_26.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
           python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
       - name: Check reader links and run bounded exact examples
         shell: bash
@@ -58,7 +58,8 @@ jobs:
     if: >-
       github.event_name == 'pull_request' &&
       github.event.pull_request.head.repo.full_name == github.repository &&
-      github.head_ref == 'docs/repository-guide-and-reuse-2026-11-21'
+      (github.head_ref == 'docs/repository-guide-and-reuse-2026-11-21' ||
+       github.head_ref == 'docs/papers-2026-11-26-terminal')
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
@@ -89,7 +90,7 @@ jobs:
           out="$RUNNER_TEMP/documentation-canonical"
           mkdir -p "$out"
           git rev-parse HEAD 'HEAD^{tree}' > "$out/input-head-tree.txt"
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
+          python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check > "$out/source-scope.json"
           lake env lean --version > "$out/lean-version.txt"
           lake build Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution 2>&1 | tee "$out/exporter-build.log"
       - name: Regenerate through the canonical producer and check its output

@@ -1,0 +1,15 @@
+{
+  "schema": "RHRC_PAPER_DOCUMENTATION_CLOSED_SOURCE_POLICY_V1",
+  "added": {
+    "research/RHRC/integration/documentation_2026_11_26/ARCHIVE_BYTES.json": "c4a2c7f49ef82fd9a77f98bba066b140ad3bcc0a",
+    "research/RHRC/integration/documentation_2026_11_26/archive_scope.py": "f87ddb66361c5328c8e490437cffa3643df19ef9",
+    "research/RHRC/integration/documentation_2026_11_26/test_archive_scope.py": "d0e053370d4e8c3050e6d8e875029d3c165b2a15",
+    "research/RHRC/integration/documentation_2026_11_26/test_source_scope.py": "0c335fd4acd9be23be3714b4a573c9c1fd47a1f7"
+  },
+  "edited": {
+    "research/RHRC/integration/opica_composition/cli.py": "6172cd78b931a96374c3df408b4d3635c23271c4",
+    ".github/workflows/documentation.yml": "a2940392194e34ee46190420057e42773b1d74c4",
+    "research/RHRC/graph/FILE_CLASSES.json": "d978224a829976126afa1c0866c77c124136a3cb"
+  },
+  "validator_template_sha256": "3eda35e6c2e7aa49259556f3f34dc91d51d039dbd61854983d1f38d466a5efea"
+}

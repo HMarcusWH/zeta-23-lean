@@ -22,7 +22,7 @@ from .snapshot import retire_copied_evidence_tree
 from .descendant import BASE,BASE_TREE,git
 # Historical validators remain immutable. The documentation successor accounts
 # for the paper archive before authenticating the exact current source delta.
-from ..documentation_2026_11_21.source_scope import validate_descendant
+from ..documentation_2026_11_26.source_scope import SCHEMA as PAPER_DOCUMENTATION_SCHEMA, validate_descendant
 from .accept import (ROUND4_LANES,verify_lane_bundle,require_test_receipt,accept_application_scope,
                      REPLAY_GROUP_IDS,group_lanes,verify_independent_group,join_independent_groups)
 
@@ -321,6 +321,10 @@ def run_command(repo,argv,output,label):
     return {'argv':list(map(str,argv)),'exit_code':result.returncode,'log':log.name,'sha256':file_hash(log)}
 
 def classification_command(source):
+    if source.get('schema') == PAPER_DOCUMENTATION_SCHEMA:
+        return [sys.executable, '-B', '-m',
+                'research.RHRC.integration.documentation_2026_11_26.source_scope',
+                '--check-classification']
     if source.get('schema') == 'RHRC_DOCUMENTATION_SOURCE_INSPECTION_V1':
         return [sys.executable, '-B', '-m',
                 'research.RHRC.integration.documentation_2026_11_21.source_scope',
