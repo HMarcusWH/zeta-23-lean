@@ -18,7 +18,8 @@ import Mathlib.Analysis.Complex.RemovableSingularity
 import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
 import Mathlib.Analysis.Meromorphic.NormalForm
 import Zeta23.FromPNTPlus.Rectangle
-import Zeta23.FromPNTPlus.Tactic.AdditiveCombination
+import Mathlib.Tactic.Abel
+import Mathlib.Tactic.LinearCombination
 
 open Complex BigOperators Nat Classical Real Topology Filter
 open Set MeasureTheory intervalIntegral Asymptotics
@@ -340,7 +341,7 @@ lemma RectanglePullToNhdOfPole' [CompleteSpace E] {z₀ z₁ z₂ z₃ p : ℂ}
   have h₇ := RectangleIntegralHSplit' hright' hright
   have h₈ := fHolo.vanishesOnRectangle hright''
   simp only [re_add_im] at *
-  additive_combination h₁ + h₂ + h₃ + h₄ + h₅ + h₆ + h₇ + h₈
+  linear_combination (norm := abel) h₁ + h₂ + h₃ + h₄ + h₅ + h₆ + h₇ + h₈
 
 /-- Given `f` holomorphic on a rectangle `z` and `w` except at
 a point `p`, the integral of `f` over the rectangle with

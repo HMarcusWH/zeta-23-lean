@@ -175,8 +175,8 @@ theorem nativeAdjointResidualStep_kernelProjection_preserved
     change inner ℂ (nativeDampedCompletionCausalL2Adjoint epsilon hepsilon z) _ = 0
     rw [hz, inner_zero_left]
   unfold nativeAdjointResidualStep nativeCompletionAdjointKernelProjection
-  rw [map_sub, (nativeCompletionAdjointKernel epsilon hepsilon).orthogonalProjectionOnto_eq_zero_iff.mpr hz,
-    sub_zero]
+  rw [map_sub, (nativeCompletionAdjointKernel epsilon hepsilon).orthogonalProjectionOnto_eq_zero_iff.mpr hz]
+  exact sub_zero _
 
 theorem nativeAdjointResidual_kernelProjection_preserved
     (epsilon : ℝ) (hepsilon : 0 ≤ epsilon) (e : nativeCompletionCausalL2) (n : ℕ) :

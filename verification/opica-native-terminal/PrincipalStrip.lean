@@ -60,8 +60,10 @@ theorem zeta_ne_zero_of_principal_weighted_upper {β : ℝ}
     simp only [entireL, eq_self, if_true,
       DirichletCharacter.LFunctionTrivChar₁, Function.update_of_ne hs1,
       htriv, mul_zero]
-  have ha : IsUnit (9239 : ZMod 18480) :=
-    .of_mul_eq_one (9239 : ZMod 18480) (by decide)
+  have ha : IsUnit (9239 : ZMod 18480) := by
+    apply (ZMod.isUnit_iff_coprime 9239 18480).2
+    change Nat.gcd 9239 18480 = 1
+    rfl
   exact entireL_ne_zero_of_primeError_le (M := 18480)
     (a := 9239) hβ ha h ρ hρ (1 : DirichletCharacter ℂ 18480) h_induced
 
