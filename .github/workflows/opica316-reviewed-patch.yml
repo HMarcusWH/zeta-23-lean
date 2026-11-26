@@ -1,0 +1,49 @@
+name: Stage verified integrated graph products
+on:
+  push:
+    branches: [ops/rh-workmode-opica316-canonical-relay]
+    paths:
+      - .github/workflows/opica316-reviewed-patch.yml
+permissions:
+  actions: read
+  contents: write
+jobs:
+  relay:
+    if: github.repository == 'HMarcusWH/zeta-23-lean'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          path: relay
+          sparse-checkout: |
+            .github/operations/opica316-canonical-relay
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '2fe4a756e8576203cfb009314861616accdb6dde'
+          persist-credentials: false
+          path: base
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: 3.13.5
+      - name: Verify exact review and fast-forward its dedicated review ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REVIEWED_RESULT_TREE: '803417ce3650bbbc5920523d9b390c5ac4800fc4'
+          REVIEWED_PATCH_SHA256: 'aefee239b5a57ad93f517182b9aff8da0d9bf127b1d200258c7f5cbd69183fcc'
+          REVIEWED_CHANGED_PATHS: '["research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json","research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json","research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json","research/RHRC/graph/generated/MODULE_SEMANTIC_CLOSURE.json","research/RHRC/graph/generated/REPOSITORY_COVERAGE.json","research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json","research/RHRC/graph/generated/lean_modules.jsonl","research/RHRC/graph/generated/lean_source_declarations.jsonl","research/RHRC/graph/generated/registry_nodes.jsonl","research/RHRC/graph/generated/relations/relations-0.jsonl","research/RHRC/graph/generated/relations/relations-1.jsonl","research/RHRC/graph/generated/relations/relations-2.jsonl","research/RHRC/graph/generated/relations/relations-3.jsonl","research/RHRC/graph/generated/relations/relations-4.jsonl","research/RHRC/graph/generated/relations/relations-5.jsonl","research/RHRC/graph/generated/relations/relations-6.jsonl","research/RHRC/graph/generated/relations/relations-7.jsonl","research/RHRC/graph/generated/relations/relations-8.jsonl","research/RHRC/graph/generated/relations/relations-9.jsonl","research/RHRC/graph/generated/relations/relations-a.jsonl","research/RHRC/graph/generated/relations/relations-b.jsonl","research/RHRC/graph/generated/relations/relations-c.jsonl","research/RHRC/graph/generated/relations/relations-d.jsonl","research/RHRC/graph/generated/relations/relations-e.jsonl","research/RHRC/graph/generated/relations/relations-f.jsonl","research/RHRC/graph/generated/repository_files.jsonl","research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json","research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json"]'
+        run: |
+          set -euo pipefail
+          path=relay/.github/operations/opica316-canonical-relay
+          python3 -B "$path/publish_reviewed.py" \
+            --run 45497184672 \
+            --attempt 2 \
+            --artifact '15149311133' \
+            --sha256 'a02fd5312054328aac1b392bebc3a6eec03b2a6a443034c39d6b00af72f1013d' \
+            --head '2fe4a756e8576203cfb009314861616accdb6dde' \
+            --tree '4571fe6cc82466115beae5bea5037071ebec3524' \
+            --base base \
+            --census "$path/GENERATED_PRODUCT_CENSUS.json" \
+            --consumer "$path/verify_canonical_candidate.py"
