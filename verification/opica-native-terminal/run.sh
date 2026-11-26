@@ -4,7 +4,7 @@ work="$1"; out="$2"; mode="$3"
 here="$(cd "$(dirname "$0")" && pwd)"
 cd "$work"
 mkdir -p "$out/audit"
-locked="${OPICA_R3_LOCKED_SOURCE_RECEIPT:?source-lock receipt required}"
+locked="${OPICA_R4_LOCKED_SOURCE_RECEIPT:?source-lock receipt required}"
 cmp "$locked" "$out/source.json"
 python "$here/epoch.py" --out "$work" --verify-pins | tee "$out/pins.log"
 python "$here/epoch.py" --out "$work" --receipt "$out/source.json" --verify-stage | tee "$out/effective-source-before.log"
@@ -18,8 +18,9 @@ if [[ -d .lake/build/lib/lean ]]; then
     echo "pre-existing project olean" >&2; exit 2; }
 fi
 pnt=(Zeta23.FromPNTPlus.Tactic.AdditiveCombination Zeta23.FromPNTPlus.ResidueCalcOnRectangles Zeta23.FromPNTPlus.StrongPNTPrefix Zeta23.FromPNTPlus.EulerMaclaurin)
-gamma=(Zeta23.CCM.DictionaryArchDiagonal Zeta23.WeilEF.GammaRBracket Zeta23.RvM.GammaSide Zeta23.GammaFacts.IntMu)
-operator=(Zeta23.CCM.UniversalSincSourceLaw Zeta23.CCM.NativeDampedCompletionResidual)
+gamma=(Zeta23.CCM.DictionaryArchDiagonal Zeta23.WeilEF.GammaRBracket Zeta23.RvM.GammaSide Zeta23.GammaFacts.IntMu Zeta23.ThmE.IntMuChi)
+operator=(Zeta23.CCM.UniversalSincSourceLaw Zeta23.CCM.NativeDampedCompletionResidual Zeta23.CCM.UniversalSincSourceCharacteristic)
+analytic=(Zeta23.Analytic.RectangleLogDeriv Zeta23.WeilEF.Landau)
 kernel_replay() {
   local mod="$1"
   lake env leanchecker --verbose "$mod" 2>&1 | tee -a "$out/leanchecker.log"
@@ -46,8 +47,9 @@ case "$mode" in
   leaf-pnt) lake build "${pnt[@]}" 2>&1 | tee "$out/native-leaves.log" ;;
   leaf-gamma) lake build "${gamma[@]}" 2>&1 | tee "$out/native-leaves.log" ;;
   leaf-operator) lake build "${operator[@]}" 2>&1 | tee "$out/native-leaves.log" ;;
+  leaf-analytic) lake build "${analytic[@]}" 2>&1 | tee "$out/native-leaves.log" ;;
   native)
-    lake build "${pnt[@]}" "${gamma[@]}" "${operator[@]}" 2>&1 | tee "$out/native-leaves.log"
+    lake build "${pnt[@]}" "${gamma[@]}" "${operator[@]}" "${analytic[@]}" 2>&1 | tee "$out/native-leaves.log"
     OPICA_NATIVE_TYPE_SURFACE="$out/public-types.json" lake env lean TypeSurface.lean 2>&1 | tee "$out/public-types.log"
     lake build Zeta23.OPICARound4.ArithmeticFrontier.ZeroFreeFloor \
       Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentClosure \
@@ -79,7 +81,8 @@ case "$mode" in
     test -x /usr/bin/bwrap
     test -x "$toolbin/nanoda_bin"
     test -x "$toolbin/leanexport"
-    sha256sum "$toolbin/lake" "$toolbin/leanexport" "$toolbin/leanchecker" "$toolbin/nanoda_bin" /usr/bin/bwrap > "$out/comparator-tools.sha256"
+    bash "$here/checker-preflight.sh" "$out" --probe-only
+    cp "$out/checker-tools.sha256" "$out/comparator-tools.sha256"
     export COMPARATOR_BWRAP=/usr/bin/bwrap
     lake comparator --config comparator/config-native-rh.json 2>&1 | tee "$out/comparator.log"
     grep -F 'Running nanoda kernel on solution' "$out/comparator.log"
@@ -90,5 +93,5 @@ esac
 python "$here/epoch.py" --out "$work" --verify-pins | tee "$out/pins-after.log"
 python "$here/epoch.py" --out "$work" --receipt "$out/source.json" --verify-stage | tee "$out/effective-source.log"
 cmp "$locked" "$out/source.json"
-printf 'NATIVE_R3_%s_PASS\n' "$(echo "$mode" | tr '[:lower:]-' '[:upper:]_')" > "$out/mode-pass.txt"
+printf 'NATIVE_R4_%s_PASS\n' "$(echo "$mode" | tr '[:lower:]-' '[:upper:]_')" > "$out/mode-pass.txt"
 python "$here/receipts.py" "$mode" "$out"

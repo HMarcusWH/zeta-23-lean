@@ -113,3 +113,39 @@ arithmetic adapter repair is included. Local pinned Lean execution was
 unavailable; the proposed proof bodies and verification pipeline remain
 qualification-pending. RH_OPEN; no automatic claim promotion, no assertion of
 independent arithmetic invention, and no closure of the separate literal-energy route.
+
+## R4 — downstream compatibility and checker qualification
+
+Baseline: R3 176e582916156e1df90252aeb7746dd904f24983, tree 11ebe592671e8e604d86ab851dc39dabdef7f02c, native run 45804486743.
+R3 compiled all three compatibility groups; its complete native frontier
+exposed eight first-cause proof sites (12 diagnostics) in four modules.
+R1 arithmetic passed its four-root audit; expanded arithmetic qualification
+remains independent. The R3 checker preflight passed stock and fresh replay,
+but Bubblewrap could not establish its UID map; nanoda was not reached.
+
+R4 adds exactly four common-pin replacements: UniversalSincSourceCharacteristic
+(mapped probability mass), RectangleLogDeriv (two pointwise multiplication
+conversions), WeilEF.Landau (finite pointwise product and two nonnegative
+ordered-product lemmas), and IntMuChi (two explicit continuity repairs).
+The 10 R3 replacements and all historical source, 792 relocated arithmetic
+modules, principal adapter, terminal proof, original port manifest, AuditCore,
+and sixteen-root inventory remain frozen. All four new replacements carry
+their actual historical provenance; no invented R1 history. R3 is archived.
+The type surface now covers all 13 mathematical overlay modules, excluding only
+the retired tactic engine. Cross-epoch comparison is a common-terminal
+prerequisite. Four explicit repair groups run before the native frontier.
+
+The two checker jobs use Ubuntu 22.04 as a candidate isolated runner.
+Both run real unprivileged namespace and Bubblewrap probes, record runner
+information and hash the same checker binaries. The small comparator accepts
+a clean proof and rejects a forbidden axiom before full alternate verification.
+Final admission requires matching checker OS/architecture/tool digests, not
+a mere executable version string. No fallback bypasses sandboxing.
+
+Use the R4 receipt and OPICA_R4_LOCKED_SOURCE_RECEIPT. In addition to the
+R3 modes, run leaf-analytic on an independent fresh stage. All required
+receipt controls run in normal and optimized Python. The final packet
+recomputes public type comparison and retains manual admission and historical
+workflow harvest. The optional arithmetic-only endpoint is deliberately not
+part of this frozen repair. Local Lean execution was unavailable; CI must
+qualify these proposed proof bodies and runner configuration. RH_OPEN.

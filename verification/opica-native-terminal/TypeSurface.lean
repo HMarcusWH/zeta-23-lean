@@ -8,6 +8,10 @@ import Zeta23.FromPNTPlus.Tactic.AdditiveCombination
 import Zeta23.GammaFacts.IntMu
 import Zeta23.RvM.GammaSide
 import Zeta23.WeilEF.GammaRBracket
+import Zeta23.CCM.UniversalSincSourceCharacteristic
+import Zeta23.Analytic.RectangleLogDeriv
+import Zeta23.WeilEF.Landau
+import Zeta23.ThmE.IntMuChi
 import Lean
 
 /-! Public declaration types, not proof bodies. The retired tactic engine is
@@ -20,7 +24,11 @@ run_cmd do
   let modules := ["Zeta23.CCM.DictionaryArchDiagonal", "Zeta23.CCM.NativeDampedCompletionResidual",
     "Zeta23.CCM.UniversalSincSourceLaw", "Zeta23.FromPNTPlus.EulerMaclaurin",
     "Zeta23.FromPNTPlus.ResidueCalcOnRectangles", "Zeta23.FromPNTPlus.StrongPNTPrefix",
-    "Zeta23.GammaFacts.IntMu", "Zeta23.RvM.GammaSide", "Zeta23.WeilEF.GammaRBracket"]
+    "Zeta23.GammaFacts.IntMu", "Zeta23.RvM.GammaSide", "Zeta23.WeilEF.GammaRBracket",
+    "Zeta23.CCM.UniversalSincSourceCharacteristic",
+    "Zeta23.Analytic.RectangleLogDeriv",
+    "Zeta23.WeilEF.Landau",
+    "Zeta23.ThmE.IntMuChi"]
   let mut rows : Array Json := #[]
   for (n, c) in env.constants.toList do
     let some idx := env.getModuleIdxFor? n | continue

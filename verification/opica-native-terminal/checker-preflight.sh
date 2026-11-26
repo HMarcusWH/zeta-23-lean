@@ -12,7 +12,35 @@ export PATH="$toolbin:$PATH"
 test -x "$toolbin/leanchecker"
 test -x "$toolbin/leanexport"
 test -x "$toolbin/nanoda_bin"
-sha256sum "$toolbin/lake" "$toolbin/leanchecker" "$toolbin/leanexport" "$toolbin/nanoda_bin" /usr/bin/bwrap > "$out/preflight-tools.sha256"
+# Record actual runner and tool identity; use identical probe in both checker jobs.
+mkdir -p "$out"
+test "$(uname -s)" = Linux
+{
+  uname -a
+  cat /etc/os-release
+  printf 'ImageOS=%s\nImageVersion=%s\n' "${ImageOS:-unknown}" "${ImageVersion:-unknown}"
+  id
+  /usr/bin/bwrap --version
+} > "$out/checker-runner.log"
+python - "$toolbin" "$out" <<'PY'
+import hashlib, json, os, pathlib, sys, platform
+bin_dir, out = map(pathlib.Path, sys.argv[1:])
+release = platform.freedesktop_os_release()
+tools = {n: bin_dir/n for n in ("lake", "lean", "leanchecker", "leanexport", "nanoda_bin")}
+tools["bwrap"] = pathlib.Path("/usr/bin/bwrap")
+digests = {n: hashlib.sha256(p.read_bytes()).hexdigest() for n,p in tools.items()}
+(out/"checker-tools.sha256").write_text("".join(f"{v}  {k}\n" for k,v in sorted(digests.items())))
+(out/"checker-environment.json").write_text(json.dumps({
+    "os": release["ID"], "version": release["VERSION_ID"], "arch": platform.machine(),
+    "tools": digests, "nonroot": os.getuid() != 0}, sort_keys=True, indent=2)+"\n")
+PY
+# Real namespace and sandbox operation, not merely executable discovery.
+unshare --user --map-root-user /usr/bin/true 2>&1 | tee "$out/userns-probe.log"
+/usr/bin/bwrap --unshare-user --unshare-pid --unshare-net --die-with-parent \
+  --ro-bind / / --proc /proc --dev /dev -- /usr/bin/true 2>&1 | tee "$out/bwrap-probe.log"
+printf 'NATIVE_REAL_SANDBOX_PASS\n' | tee -a "$out/bwrap-probe.log"
+if [[ "${2:-}" == "--probe-only" ]]; then exit 0; fi
+cp "$out/checker-tools.sha256" "$out/preflight-tools.sha256"
 export COMPARATOR_BWRAP=/usr/bin/bwrap
 setup() {
   local dir="$1"

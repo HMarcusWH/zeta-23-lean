@@ -27,6 +27,9 @@ def compare(a, b):
         print("NATIVE_PROOF_GRAPH_MATCH", root, d)
     print("NATIVE_INDEPENDENT_STOCK_REPLAY_MATCH", len(ROOTS))
 
+def equal_checker_environment(a, b):
+    require(a == b, "checker runner/tool provenance differs")
+
 def self_test():
     from receipts import expect_text
     spec = {"name": "root", "role": "native", "edges": True}
@@ -54,8 +57,12 @@ def self_test():
         e.write_text(json.dumps(rows[0])+"\n")
         rejects(lambda: graph_digest(p,spec,members))
         marker=p/"marker"; marker.write_text("forged\n")
-        rejects(lambda: expect_text(marker,"NATIVE_R3_TERMINAL_PASS"))
-    print("NATIVE_R3_COMPARATOR_CONTROLS_PASS 6")
+        rejects(lambda: expect_text(marker,"NATIVE_R4_TERMINAL_PASS"))
+    env = {"os":"ubuntu","version":"22.04","tools":{"lean":"a"}}
+    equal_checker_environment(env, copy.deepcopy(env))
+    bad = copy.deepcopy(env); bad["tools"]["lean"] = "b"
+    rejects(lambda: equal_checker_environment(env, bad))
+    print("NATIVE_R4_COMPARATOR_CONTROLS_PASS 7")
 
 if __name__ == "__main__":
     ap=argparse.ArgumentParser(); ap.add_argument("paths",nargs="*",type=P); ap.add_argument("--self-test",action="store_true")

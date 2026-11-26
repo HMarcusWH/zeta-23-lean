@@ -1,0 +1,127 @@
+{
+  "schema": "OPICA_NATIVE_REPAIR_MANIFEST_V3",
+  "version": "R3",
+  "baseline_commit": "cfc0e6bc92be1db226d4a84f9542ace9c4868e16",
+  "baseline_tree": "1732a82a22c6d48230a865c81249aa090b428afe",
+  "acquisition_commit": "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736",
+  "acquisition_tree": "ad3dc3ced9a58dbd4619f8635600791a692bce34",
+  "native_base": "2fe4a756e8576203cfb009314861616accdb6dde",
+  "source_run": 45794998702,
+  "source_leaf_jobs": {
+    "gamma": 139833049864,
+    "operator": 139833049490
+  },
+  "arithmetic_frontier_jobs": {
+    "R1": 139802668921,
+    "R2": 139833049273
+  },
+  "compiler": "NOT_RUN_FOR_R3",
+  "claim": "RH_OPEN",
+  "changes": [
+    {
+      "path": ".github/workflows/opica-native-step4.yml",
+      "old_git_blob": "3039b5e01d4cfa9b8ef807aec16281ea22b5f6ea",
+      "new_git_blob": "adcde33b1745806b3d1d2c37461ac851809aff71",
+      "reason": "Retain read-only full qualification; fetch immutable R2 ancestry, synchronize artifact identity, preflight real checkers early.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/README.md",
+      "old_git_blob": "f316fbf5979a522896b2065c45d1b54eaa2c9445",
+      "new_git_blob": "a9e2d8c619fb30757d8152d6db3c060ad9258126",
+      "reason": "Document exact R3 scope, reproduction and claim boundary.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/admission.py",
+      "old_git_blob": "9ee264efff585d21aa1a8969eba026a6aaa2ebdb",
+      "new_git_blob": "31eeee4a404b4a5e53b4b36ab4b7f02cb4fc16c2",
+      "reason": "Require R3 source and checker receipts; verify exact historical/common type evidence; retain manual admission.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/checker-preflight.sh",
+      "old_git_blob": null,
+      "new_git_blob": "ddfb47d3a91d11e8cd59215ec1331964cbeb4ab1",
+      "reason": "Isolated small stock/fresh replay, real sandbox/nanoda acceptance and explicit forbidden-axiom rejection.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compare.py",
+      "old_git_blob": "858de7bcea74a960372fb2db77da74efefc8d769",
+      "new_git_blob": "c2335e7e43f4d6287a4fa5f1a22b1251b29c3ed2",
+      "reason": "R3 verification and negative-control markers.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compare_type_surfaces.py",
+      "old_git_blob": "ade67435ca1c646bc63e28e0379ff5947f5eecd9",
+      "new_git_blob": "09c9d8c2b55a522f9224aca67d90a0b24ceddadd",
+      "reason": "R3 type comparison receipt; strict comparison retained.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/OVERLAY_MANIFEST.json",
+      "old_git_blob": "d2f4caafed0c50f90533989c3096e4d1119da121",
+      "new_git_blob": "75bcbe7302fe5ef30dde5bb0170857074d3fd10a",
+      "reason": "Bind exactly two changed replacement blobs; preserve all other R0/R1/R2 provenance.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/NativeDampedCompletionResidual.lean",
+      "old_git_blob": "bf9d3fe3a6c03d6506f0c1517301153f1bf2ba6a",
+      "new_git_blob": "63d9f4d6c6cae4e9528aac8710781826b2f7b955",
+      "reason": "Separate map_sub, congrArg in the actual kernel submodule, and sub_zero; no public statement change.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/GammaFacts/IntMu.lean",
+      "old_git_blob": "d7747295f1d95fa15be9e61759fa113ca6819b88",
+      "new_git_blob": "455b90504a691b66decc515290b953ed79f2bb6b",
+      "reason": "Explicitly instantiate both maps and both points of pinned ContinuousAt.comp_of_eq; no public statement change.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "verification/opica-native-terminal/epoch.py",
+      "old_git_blob": "0e25e79193ea4fbb60976b628dc001272a11dc7e",
+      "new_git_blob": "dfa328616ab41d7403a65b3fbe8cd4a42e2d6bfd",
+      "reason": "Preserve and validate R0/R1/R2 ancestry; exact R3 scope, immutable eight overlays, source receipt and expanded controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/historical.sh",
+      "old_git_blob": "8b9e4ea498eaa59556fb2f1e3c5e693e62b39a97",
+      "new_git_blob": "2cd87277cc3bef0b5914bddd417b83f8add19a3b",
+      "reason": "R3 historical receipt identity; retain historical compiler and source.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/history/R2_REPAIR_MANIFEST.json",
+      "old_git_blob": null,
+      "new_git_blob": "67883e4cc537d3be9a229c0a420fafc9587624fd",
+      "reason": "Archive exact R2 manifest Git blob.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/receipts.py",
+      "old_git_blob": "3c0cccc81da86ecab61d3d58060320610f161638",
+      "new_git_blob": "8da4eb84cf0b04079f1565c0f218f39c11ed1106",
+      "reason": "R3 source/qualification schemas and real preflight evidence verification.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/run.sh",
+      "old_git_blob": "c384d46a0854147d132cf588718c005d34f0092d",
+      "new_git_blob": "73e426369eb6d70731723cae05f31c2248111d28",
+      "reason": "R3 receipt identity and isolated checker preflight mode.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/stage_controls.py",
+      "old_git_blob": "da9b7af85471167e695766d217543639f4bc1af7",
+      "new_git_blob": "e8cfa2d401fe7ec44ed074e0fb50c6fc3e4943b3",
+      "reason": "R3 staging control markers, preserve adversarial tests.",
+      "statement_policy": "VERIFICATION_ONLY"
+    }
+  ]
+}

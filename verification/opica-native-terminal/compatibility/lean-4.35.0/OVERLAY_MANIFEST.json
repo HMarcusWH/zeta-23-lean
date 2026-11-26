@@ -1,6 +1,6 @@
 {
   "schema": "OPICA_NATIVE_COMPATIBILITY_OVERLAY_V1",
-  "version": "R3",
+  "version": "R4",
   "native_base": "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736",
   "toolchain": "leanprover/lean4:v4.35.0",
   "mathlib": "56a005855ea17e0b0958f73ec801ae140b0a1679",
@@ -94,6 +94,42 @@
       "r1_replacement_git_blob": "912eba4ba32f3692dd0bdbeea53075016ec4a45f",
       "statement_policy": "PRESERVE",
       "reason": "Explicit pointwise function product for Gamma logarithmic derivative."
+    },
+    {
+      "destination": "Zeta23/CCM/UniversalSincSourceCharacteristic.lean",
+      "historical_git_blob": "b25133aa8f762f3e96fe5d20d628394d14ccdb0f",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/UniversalSincSourceCharacteristic.lean",
+      "replacement_git_blob": "ecdae6fbb41c87611861e7b52947be36be80c2dc",
+      "introduced_in": "R4",
+      "statement_policy": "PRESERVE",
+      "reason": "Mapped probability mass-one proof."
+    },
+    {
+      "destination": "Zeta23/Analytic/RectangleLogDeriv.lean",
+      "historical_git_blob": "db30df619c414827f45a20b95fd173edd3600ee1",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/Analytic/RectangleLogDeriv.lean",
+      "replacement_git_blob": "45e7901507466c6d7d09d4c5423bc66023ef7489",
+      "introduced_in": "R4",
+      "statement_policy": "PRESERVE",
+      "reason": "Two explicit pointwise multiplication conversions."
+    },
+    {
+      "destination": "Zeta23/WeilEF/Landau.lean",
+      "historical_git_blob": "5b6d356d64a6e7a1bf6bc0e98406d3dfe5a7f4d6",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/WeilEF/Landau.lean",
+      "replacement_git_blob": "3621570e78521acad989662945e8035527f701c8",
+      "introduced_in": "R4",
+      "statement_policy": "PRESERVE",
+      "reason": "Pointwise finite product and nonnegative ordered products."
+    },
+    {
+      "destination": "Zeta23/ThmE/IntMuChi.lean",
+      "historical_git_blob": "8b2456f220cacdefa91b0e945a06455de9992333",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/ThmE/IntMuChi.lean",
+      "replacement_git_blob": "9c1a3cd57e8f43c8d4ede1bda2d23858c63688f3",
+      "introduced_in": "R4",
+      "statement_policy": "PRESERVE",
+      "reason": "R3 typed log continuity pattern."
     }
   ]
 }
