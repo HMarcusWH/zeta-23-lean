@@ -1,101 +1,72 @@
-name: Native Step 4 compact source port and terminal proof (NO automatic promotion)
+name: Native Step 4 repair qualification (committed source only; NO automatic promotion)
 on:
   push:
     branches: [opica/native-step4-compact-source-20261125]
     paths:
+      - 'Zeta23/**'
+      - 'Zeta23Arithmetic/**'
       - 'verification/opica-native-terminal/**'
       - '.github/workflows/opica-native-step4.yml'
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
-  group: opica-native-step4-${{ github.ref }}
+  group: opica-native-repair-${{ github.ref }}-${{ github.sha }}
   cancel-in-progress: false
 jobs:
-  materialize-source:
+  source-lock:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 2
+          fetch-depth: 4
           persist-credentials: false
-      - name: One-time byte-authenticated source port
-        run: |
-          set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/grh-pinned"
-          git -C "$RUNNER_TEMP/grh-pinned" init
-          git -C "$RUNNER_TEMP/grh-pinned" fetch --depth 1 https://github.com/lsernau/grh-lean.git 72fead102f663d5c7a407964a13dc0cf9d977207
-          git -C "$RUNNER_TEMP/grh-pinned" checkout --detach FETCH_HEAD
-          python verification/opica-native-terminal/extract_all.py --test
-          python verification/opica-native-terminal/port.py --original "$RUNNER_TEMP/grh-pinned" --out "$RUNNER_TEMP/native-port"
-          python -O verification/opica-native-terminal/port.py --out "$RUNNER_TEMP/native-port" --verify-only
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with:
-          name: native-source-port-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/native-port/
-          if-no-files-found: error
-          retention-days: 30
-  commit-native-source:
-    needs: materialize-source
-    runs-on: ubuntu-24.04
-    timeout-minutes: 20
-    permissions:
-      contents: write
-    outputs:
-      head: ${{ steps.publish.outputs.head }}
-      tree: ${{ steps.publish.outputs.tree }}
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: ${{ github.sha }}
-          fetch-depth: 2
-          persist-credentials: true
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          name: native-source-port-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/native-port
-      - name: Verify exact port and commit only the allowed source paths
-        id: publish
-        env:
-          EXPECTED: ${{ github.sha }}
-        run: |
-          set -euo pipefail
-          test "$GITHUB_REF" = "refs/heads/opica/native-step4-compact-source-20261125"
-          test "$(git rev-parse HEAD)" = "$EXPECTED"
-          test "$(git ls-remote origin "refs/heads/opica/native-step4-compact-source-20261125" | cut -f1)" = "$EXPECTED"
-          python verification/opica-native-terminal/port.py --out "$RUNNER_TEMP/native-port" --verify-only
-          test ! -e Zeta23Arithmetic
-          test ! -e Zeta23/OPICANativeTerminal
-          cp -a "$RUNNER_TEMP/native-port/Zeta23Arithmetic" .
-          cp -a "$RUNNER_TEMP/native-port/Zeta23/OPICANativeTerminal" Zeta23/
-          cp "$RUNNER_TEMP/native-port/verification/opica-native-terminal/PORT_MANIFEST.json" verification/opica-native-terminal/
-          git add -- Zeta23Arithmetic Zeta23/OPICANativeTerminal verification/opica-native-terminal/PORT_MANIFEST.json
-          git -c user.name='OPICA native source port' -c user.email='github-actions[bot]@users.noreply.github.com' commit -m 'Materialize attributed arithmetic proof bodies as native repository source'
-          git push origin "HEAD:refs/heads/opica/native-step4-compact-source-20261125"
-          echo "head=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-          echo "tree=$(git rev-parse HEAD^{tree})" >> "$GITHUB_OUTPUT"
-          git rev-parse HEAD HEAD^{tree}
-  native-common-terminal:
-    needs: commit-native-source
-    runs-on: ubuntu-24.04
-    timeout-minutes: 360
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: ${{ needs.commit-native-source.outputs.head }}
-          fetch-depth: 2
-          persist-credentials: false
-      - name: Stage from committed source only
-        env:
-          EXACT_HEAD: ${{ needs.commit-native-source.outputs.head }}
+      - name: Reconstruct committed repair epoch
+        shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
+          git cat-file -e b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736
           git cat-file -e 2fe4a756e8576203cfb009314861616accdb6dde^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git 2fe4a756e8576203cfb009314861616accdb6dde
-          python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$EXACT_HEAD"
+          python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - name: Verify source lock and negative controls in normal and optimized modes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile verification/opica-native-terminal/epoch.py verification/opica-native-terminal/port.py verification/opica-native-terminal/compare.py
+          python verification/opica-native-terminal/extract_all.py --test
+          python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --head "$GITHUB_SHA" --self-test
+          python -O verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --head "$GITHUB_SHA" --self-test
+          python -O verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/optimized-epoch" --receipt "$RUNNER_TEMP/optimized-source.json" --head "$GITHUB_SHA"
+          cmp "$RUNNER_TEMP/result/source.json" "$RUNNER_TEMP/optimized-source.json"
+          printf 'NATIVE_REPAIR_SOURCE_LOCK_PASS\n' | tee "$RUNNER_TEMP/result/source-lock-pass.txt"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-repair-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  audit-smoke:
+    needs: source-lock
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 4
+          persist-credentials: false
+      - name: Reconstruct committed repair epoch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          git cat-file -e b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736
+          git cat-file -e 2fe4a756e8576203cfb009314861616accdb6dde^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git 2fe4a756e8576203cfb009314861616accdb6dde
+          python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
           lake-package-directory: native_epoch
@@ -105,33 +76,141 @@ jobs:
           lint: false
           use-github-cache: false
           use-mathlib-cache: true
-      - name: Compile all required local arithmetic and native terminal proof roots
-        run: bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result"
+      - name: audit-smoke exact source compilation and audit
+        run: bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" smoke
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-terminal-common-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-repair-audit-smoke-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
-          if-no-files-found: error
+          if-no-files-found: warn
+          retention-days: 30
+  native-frontier:
+    needs: [source-lock, audit-smoke]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 4
+          persist-credentials: false
+      - name: Reconstruct committed repair epoch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          git cat-file -e b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736
+          git cat-file -e 2fe4a756e8576203cfb009314861616accdb6dde^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git 2fe4a756e8576203cfb009314861616accdb6dde
+          python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: native-frontier exact source compilation and audit
+        run: bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" native
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-repair-native-frontier-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  arithmetic-frontier:
+    needs: [source-lock, audit-smoke]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 4
+          persist-credentials: false
+      - name: Reconstruct committed repair epoch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          git cat-file -e b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736
+          git cat-file -e 2fe4a756e8576203cfb009314861616accdb6dde^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git 2fe4a756e8576203cfb009314861616accdb6dde
+          python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: arithmetic-frontier exact source compilation and audit
+        run: bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" arithmetic
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-repair-arithmetic-frontier-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  common-terminal:
+    needs: [source-lock, audit-smoke, native-frontier, arithmetic-frontier]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 4
+          persist-credentials: false
+      - name: Reconstruct committed repair epoch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          git cat-file -e b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736
+          git cat-file -e 2fe4a756e8576203cfb009314861616accdb6dde^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git 2fe4a756e8576203cfb009314861616accdb6dde
+          python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: common-terminal exact source compilation and audit
+        run: bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" terminal
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-repair-common-terminal-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
           retention-days: 30
   independent-stock-replay:
-    needs: [commit-native-source, native-common-terminal]
+    needs: common-terminal
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: ${{ needs.commit-native-source.outputs.head }}
-          fetch-depth: 2
+          ref: ${{ github.sha }}
+          fetch-depth: 4
           persist-credentials: false
-      - name: Stage from committed source only
-        env:
-          EXACT_HEAD: ${{ needs.commit-native-source.outputs.head }}
+      - name: Reconstruct committed repair epoch
+        shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
+          git cat-file -e b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736
           git cat-file -e 2fe4a756e8576203cfb009314861616accdb6dde^{commit} || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git 2fe4a756e8576203cfb009314861616accdb6dde
-          python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$EXACT_HEAD"
+          python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
           lake-package-directory: native_epoch
@@ -141,20 +220,20 @@ jobs:
           lint: false
           use-github-cache: false
           use-mathlib-cache: true
-      - name: Compile all required local arithmetic and native terminal proof roots
-        run: bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result"
+      - name: Fresh stock compilation and transitive kernel replay
+        run: bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" independent
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-terminal-common-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-repair-common-terminal-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/first
-      - name: Compare exact source, root types, axioms and dependency receipts
+      - name: Compare exact source, types, axioms, memberships and edges
         run: |
           set -euo pipefail
           python verification/opica-native-terminal/compare.py "$RUNNER_TEMP/first" "$RUNNER_TEMP/result" | tee "$RUNNER_TEMP/result/independent-comparison.log"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-terminal-independent-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-repair-independent-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30

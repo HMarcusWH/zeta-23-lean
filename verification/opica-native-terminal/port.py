@@ -30,7 +30,9 @@ def write(path,b):
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_bytes(b)
 def module_path(m):return P(PREFIX)/P(*m.split(".")).with_suffix(".lean")
-def verify_files(out):
+def verify_files(out, repaired_adapters=None):
+    repaired_adapters = repaired_adapters or {}
+    require(set(repaired_adapters) <= {"Zeta23Arithmetic/NativePrincipal.lean", "Zeta23/OPICANativeTerminal/Terminal.lean"}, "unapproved adapter repair scope")
     manifest=json.loads((out/"verification/opica-native-terminal/PORT_MANIFEST.json").read_text())
     require(manifest["supplier_commit"]==LOCK["commit"] and manifest["supplier_tree"]==LOCK["tree"],"supplier manifest drift")
     require(manifest["native_base"]==BASE and manifest["native_tree"]==BASE_TREE,"native manifest drift")
@@ -61,7 +63,11 @@ def verify_files(out):
         origin="LICENSE" if name=="LICENSE" else "grh-compact/"+name
         require(blob(p.read_bytes())==LOCKMAP[origin]["sha"],"attribution drift "+name)
     for p in ("Zeta23Arithmetic/NativePrincipal.lean","Zeta23/OPICANativeTerminal/Terminal.lean"):
-        require(sha((out/p).read_bytes())==manifest["new_source"][p],"new source drift "+p)
+        b=(out/p).read_bytes()
+        if p in repaired_adapters:
+            require(blob(b)==repaired_adapters[p], "repaired adapter byte drift "+p)
+        else:
+            require(sha(b)==manifest["new_source"][p],"new source drift "+p)
     require(imports((out/PREFIX/"NativePrincipal.lean").read_text())==[mapping(ROOT)],"principal import drift")
     require(imports((out/"Zeta23/OPICANativeTerminal/Terminal.lean").read_text())[0]==PREFIX+".NativePrincipal","terminal import drift")
     print("NATIVE_PORT_SOURCE_PASS",len(rows),"exact inverse proof body checks",flush=True)
