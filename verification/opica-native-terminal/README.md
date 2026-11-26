@@ -180,3 +180,38 @@ Use OPICA_R5_LOCKED_SOURCE_RECEIPT and existing run.sh modes on fresh stages.
 Local Lean was unavailable at implementation; CI qualification is pending.
 No automatic claim promotion or closure of the separate literal-energy route.
 RH_OPEN.
+
+
+## R6 — downstream matrix and interval-L2 compatibility
+
+Baseline: R5 85bc42262d47a5e9da889ca95b65b249a64357c7, tree a88ac20db4c2d02a35c374f43f98bffcc707ccbb;
+native run 45832580225, native-frontier job 139974923560. R5 passed source-lock
+and all four compatibility groups, including all five R5 repair sites.
+Both compiler epochs extracted 308 public declarations; exact cross-epoch
+comparison was not reached. R5 checker preflight 139963379824 passed actual
+sandbox, stock/fresh replay and clean/forbidden Nanoda controls. R3 arithmetic
+job 139863614118 completed all six roots with unchanged dependency counts and
+both stock kernel replays.
+
+R6 adds exactly two compatibility overlays: OriginalDetectorPaddedFinitePhaseSymmetry
+(three explicit toLpLin evaluations) and NativeWeilResponse (typed null-measurable
+interval witness). All seventeen R5 overlay rows, historical source, 792 relocated
+arithmetic modules, principal adapter, original port manifest, exact terminal
+declaration, AuditCore and sixteen-root inventory remain unchanged. R5 repair
+manifest archived byte-for-byte. Public type comparison covers eighteen
+mathematical modules; the retired tactic engine remains excluded.
+
+R5's deterministic advisory scan traversed 1365 local modules and found 473
+lexical candidates. It missed the removed toEuclideanLin_apply_piLp_toLp
+suffix because its previous pattern matched only the base evaluation name.
+R6 explicitly covers that suffix, other Euclidean API names and
+memLp_indicator_iff_restrict, with an extended self-test. This is an advisory
+inventory, not proof or a complete Lean API compatibility classifier.
+Normal/optimized Python comparison and exact source-lock provenance remain.
+
+Use OPICA_R6_LOCKED_SOURCE_RECEIPT and existing run.sh modes on fresh stages.
+Ubuntu 22.04 and all independent checker gates remain. Local pinned Lean
+execution is unavailable; compiler qualification is pending. No automatic
+canonical admission or claim promotion. The attributed arithmetic source port
+and native direct C1 composition do not establish independent arithmetic
+invention or the separate literal-energy route. RH_OPEN.

@@ -1,4 +1,4 @@
-name: Native Step 4 R5 qualification (separate compiler epochs; RH_OPEN)
+name: Native Step 4 R6 qualification (separate compiler epochs; RH_OPEN)
 on:
   push:
     branches: [opica/native-step4-compact-source-20261125]
@@ -11,7 +11,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: opica-native-r5-${{ github.ref }}-${{ github.sha }}
+  group: opica-native-r6-${{ github.ref }}-${{ github.sha }}
   cancel-in-progress: false
 jobs:
   source-lock:
@@ -23,12 +23,12 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 4
           persist-credentials: false
-      - name: Reconstruct exact committed R5 epoch
+      - name: Reconstruct exact committed R6 epoch
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
-          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065; do
+          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7; do
             git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
@@ -53,11 +53,11 @@ jobs:
           python verification/opica-native-terminal/compatibility_scan.py --work "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --out "$RUNNER_TEMP/result/compatibility-scan.json"
           python -O verification/opica-native-terminal/compatibility_scan.py --work "$RUNNER_TEMP/optimized-epoch" --receipt "$RUNNER_TEMP/optimized-source.json" --out "$RUNNER_TEMP/optimized-compatibility-scan.json"
           cmp "$RUNNER_TEMP/result/compatibility-scan.json" "$RUNNER_TEMP/optimized-compatibility-scan.json"
-          printf 'NATIVE_R5_SOURCE_LOCK_PASS\n' | tee "$RUNNER_TEMP/result/source-lock-pass.txt"
+          printf 'NATIVE_R6_SOURCE_LOCK_PASS\n' | tee "$RUNNER_TEMP/result/source-lock-pass.txt"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-source-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-source-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30
@@ -71,18 +71,18 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 4
           persist-credentials: false
-      - name: Reconstruct exact committed R5 epoch
+      - name: Reconstruct exact committed R6 epoch
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
-          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065; do
+          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7; do
             git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-source-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-source-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/source-lock
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
@@ -96,12 +96,12 @@ jobs:
       - name: Compile and qualify smoke
         shell: bash
         run: |
-          export OPICA_R5_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          export OPICA_R6_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
           bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "smoke"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-smoke-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-smoke-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30
@@ -119,18 +119,18 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 4
           persist-credentials: false
-      - name: Reconstruct exact committed R5 epoch
+      - name: Reconstruct exact committed R6 epoch
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
-          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065; do
+          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7; do
             git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-source-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-source-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/source-lock
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
@@ -144,12 +144,12 @@ jobs:
       - name: Compile and qualify leaf-${{ matrix.group }}
         shell: bash
         run: |
-          export OPICA_R5_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          export OPICA_R6_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
           bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "leaf-${{ matrix.group }}"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-leaf-${{ matrix.group }}-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-leaf-${{ matrix.group }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30
@@ -163,18 +163,18 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 4
           persist-credentials: false
-      - name: Reconstruct exact committed R5 epoch
+      - name: Reconstruct exact committed R6 epoch
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
-          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065; do
+          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7; do
             git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-source-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-source-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/source-lock
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
@@ -188,12 +188,12 @@ jobs:
       - name: Compile and qualify native
         shell: bash
         run: |
-          export OPICA_R5_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          export OPICA_R6_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
           bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "native"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-native-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-native-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30
@@ -207,18 +207,18 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 4
           persist-credentials: false
-      - name: Reconstruct exact committed R5 epoch
+      - name: Reconstruct exact committed R6 epoch
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
-          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065; do
+          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7; do
             git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-source-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-source-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/source-lock
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
@@ -232,12 +232,12 @@ jobs:
       - name: Compile and qualify arithmetic
         shell: bash
         run: |
-          export OPICA_R5_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          export OPICA_R6_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
           bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "arithmetic"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-arithmetic-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-arithmetic-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30
@@ -265,7 +265,7 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-historical-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-historical-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30
@@ -282,11 +282,11 @@ jobs:
           persist-credentials: false
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-historical-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-historical-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/historical
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-native-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-native-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/native
       - name: Compare exact public declaration type expressions
         shell: bash
@@ -296,7 +296,7 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-type-comparison-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-type-comparison-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30
@@ -310,18 +310,18 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 4
           persist-credentials: false
-      - name: Reconstruct exact committed R5 epoch
+      - name: Reconstruct exact committed R6 epoch
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
-          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065; do
+          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7; do
             git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-source-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-source-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/source-lock
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
@@ -335,12 +335,12 @@ jobs:
       - name: Compile and qualify terminal
         shell: bash
         run: |
-          export OPICA_R5_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          export OPICA_R6_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
           bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "terminal"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-terminal-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-terminal-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30
@@ -354,18 +354,18 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 4
           persist-credentials: false
-      - name: Reconstruct exact committed R5 epoch
+      - name: Reconstruct exact committed R6 epoch
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
-          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065; do
+          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7; do
             git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-source-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-source-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/source-lock
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
@@ -379,11 +379,11 @@ jobs:
       - name: Compile and qualify independent
         shell: bash
         run: |
-          export OPICA_R5_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          export OPICA_R6_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
           bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "independent"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-terminal-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-terminal-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/first
       - name: Compare fresh stock reconstruction against common terminal
         shell: bash
@@ -393,14 +393,14 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-independent-comparison-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-independent-comparison-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/independent-comparison.log
           if-no-files-found: warn
           retention-days: 30
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-independent-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-independent-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30
@@ -414,18 +414,18 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 4
           persist-credentials: false
-      - name: Reconstruct exact committed R5 epoch
+      - name: Reconstruct exact committed R6 epoch
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
-          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065; do
+          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7; do
             git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-source-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-source-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/source-lock
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
@@ -448,12 +448,12 @@ jobs:
       - name: Qualify isolated checker preflight
         shell: bash
         run: |
-          export OPICA_R5_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          export OPICA_R6_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
           bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "checker-preflight"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-checker-preflight-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-checker-preflight-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30
@@ -467,18 +467,18 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 4
           persist-credentials: false
-      - name: Reconstruct exact committed R5 epoch
+      - name: Reconstruct exact committed R6 epoch
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
-          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065; do
+          for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7; do
             git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-source-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-source-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/source-lock
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
@@ -501,12 +501,12 @@ jobs:
       - name: Compile and qualify comparator
         shell: bash
         run: |
-          export OPICA_R5_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          export OPICA_R6_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
           bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "comparator"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-comparator-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-comparator-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30
@@ -522,59 +522,59 @@ jobs:
           persist-credentials: false
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-source-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-source-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/source
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-smoke-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-smoke-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/smoke
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-leaf-pnt-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-leaf-pnt-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/leaf-pnt
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-leaf-gamma-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-leaf-gamma-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/leaf-gamma
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-leaf-operator-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-leaf-operator-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/leaf-operator
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-leaf-analytic-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-leaf-analytic-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/leaf-analytic
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-native-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-native-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/native
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-arithmetic-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-arithmetic-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/arithmetic
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-historical-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-historical-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/historical
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-type-comparison-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-type-comparison-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/type-comparison
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-terminal-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-terminal-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/terminal
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-independent-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-independent-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/independent
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-comparator-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-comparator-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/comparator
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: native-r5-checker-preflight-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-checker-preflight-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qualifications/checker-preflight
       - name: Produce exact-head packet for manual canonical review
         shell: bash
@@ -584,7 +584,7 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: native-r5-canonical-review-${{ github.run_id }}-${{ github.run_attempt }}
+          name: native-r6-canonical-review-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/result/
           if-no-files-found: warn
           retention-days: 30

@@ -9,7 +9,9 @@ P = pathlib.Path
 ROOT = "Zeta23.OPICANativeTerminal.Terminal"
 PATTERNS = {
     "removed_probability_map": r"\bisProbabilityMeasure_map\b",
-    "removed_euclidean_eval": r"\btoEuclideanLin_apply\b",
+    "removed_euclidean_eval": r"\btoEuclideanLin_apply(?:_piLp_toLp)?\b",
+    "other_euclidean_api": r"\btoEuclideanLin_(?!apply(?:_piLp_toLp)?\b|one\b)[A-Za-z0-9_']+\b",
+    "indicator_restrict": r"\bmemLp_indicator_iff_restrict\b",
     "removed_euclidean_one": r"\btoEuclideanLin_one\b",
     "log_derivative": r"\blogDeriv_(?:mul|div)\b",
     "continuity": r"\bcomp_of_eq\b",
@@ -25,7 +27,7 @@ def candidates(text):
 
 def scan(work, receipt):
     source = json.loads(receipt.read_text())
-    require(source["schema"] == "NATIVE_TERMINAL_REPAIR_EPOCH_V5" and
+    require(source["schema"] == "NATIVE_TERMINAL_REPAIR_EPOCH_V6" and
             source["claim"] == "RH_OPEN", "wrong source lock for scan")
     overlay = {r["destination"] for r in source["overlay"]}
     seen, pending, rows, external = set(), [ROOT], [], set()
@@ -50,7 +52,7 @@ def scan(work, receipt):
                          ("FROZEN_ARITHMETIC" if module.startswith("Zeta23Arithmetic.") else "HISTORICAL_NATIVE"),
                          "disposition": "REVIEW_OR_COMPILE"})
     rows.sort(key=lambda r: (r["path"], r["line"], r["family"], r["token"]))
-    return {"schema": "NATIVE_R5_LEXICAL_COMPATIBILITY_SCAN", "status": "ADVISORY_ONLY",
+    return {"schema": "NATIVE_R6_LEXICAL_COMPATIBILITY_SCAN", "status": "ADVISORY_ONLY",
             "head": source["head"], "tree": source["tree"], "source_sha256": sha(receipt.read_bytes()),
             "claim": "RH_OPEN", "root": ROOT, "local_modules": sorted(seen),
             "external_imports": sorted(external), "counts": dict(sorted(Counter(r["family"] for r in rows).items())),
@@ -58,11 +60,17 @@ def scan(work, receipt):
             "limitations": "Lexical import traversal and token matches only; no compatibility or proof authority."}
 
 def self_test():
-    text = '-- toEuclideanLin_apply\n/- isProbabilityMeasure_map /- map_sub -/ -/\n' + \
-           'def x := "logDeriv_mul"\n  rw [Matrix.toEuclideanLin_apply, logDeriv_mul]\n'
+    text = '-- toEuclideanLin_apply_piLp_toLp\n/- isProbabilityMeasure_map /- map_sub -/ -/\n' + \
+           'def x := "logDeriv_mul"\n  rw [Matrix.toEuclideanLin_apply, logDeriv_mul]\n' + \
+           '  rw [Matrix.toEuclideanLin_apply_piLp_toLp, memLp_indicator_iff_restrict]\n' + \
+           '  rw [Matrix.toEuclideanLin_one, Matrix.toEuclideanLin_eq_toLin_orthonormal]\n'
     require(candidates(text) == [(4, "removed_euclidean_eval", "toEuclideanLin_apply"),
-                                (4, "log_derivative", "logDeriv_mul")], "lexical scan control failed")
-    print("NATIVE_R5_LEXICAL_SCAN_CONTROL_PASS")
+                                (4, "log_derivative", "logDeriv_mul"),
+                                (5, "removed_euclidean_eval", "toEuclideanLin_apply_piLp_toLp"),
+                                (5, "indicator_restrict", "memLp_indicator_iff_restrict"),
+                                (6, "other_euclidean_api", "toEuclideanLin_eq_toLin_orthonormal"),
+                                (6, "removed_euclidean_one", "toEuclideanLin_one")], "lexical scan control failed")
+    print("NATIVE_R6_LEXICAL_SCAN_CONTROL_PASS")
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
@@ -76,4 +84,4 @@ if __name__ == "__main__":
     else:
         r = scan(a.work, a.receipt)
         a.out.write_text(json.dumps(r, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-        print("NATIVE_R5_LEXICAL_SCAN_COMPLETE", len(r["local_modules"]), len(r["occurrences"]), r["counts"])
+        print("NATIVE_R6_LEXICAL_SCAN_COMPLETE", len(r["local_modules"]), len(r["occurrences"]), r["counts"])

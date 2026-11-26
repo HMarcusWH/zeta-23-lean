@@ -1,6 +1,6 @@
 {
   "schema": "OPICA_NATIVE_COMPATIBILITY_OVERLAY_V1",
-  "version": "R5",
+  "version": "R6",
   "native_base": "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736",
   "toolchain": "leanprover/lean4:v4.35.0",
   "mathlib": "56a005855ea17e0b0958f73ec801ae140b0a1679",
@@ -157,6 +157,24 @@
       "introduced_in": "R5",
       "statement_policy": "PRESERVE",
       "reason": "Pinned toLpLin_apply and toLpLin_one; preserve inner pairing and orthogonality."
+    },
+    {
+      "destination": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseSymmetry.lean",
+      "historical_git_blob": "98feb942ca2375078e5d515ec1cc359be7f3e105",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseSymmetry.lean",
+      "replacement_git_blob": "c3167cbfc6f2ce09e080d112c2312aa7066911d2",
+      "introduced_in": "R6",
+      "statement_policy": "PRESERVE",
+      "reason": "Three explicit toLpLin evaluations at p=q=2; preserve exact reversal and circulant energy identities."
+    },
+    {
+      "destination": "Zeta23/CCM/NativeWeilResponse.lean",
+      "historical_git_blob": "0de339752b35664494e2b30a4e9e684fac5ec1f1",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/NativeWeilResponse.lean",
+      "replacement_git_blob": "34eba320b6acea19958bd88998fc31a351de6b48",
+      "introduced_in": "R6",
+      "statement_policy": "PRESERVE",
+      "reason": "Supply explicitly typed null-measurable Icc witness for indicator/restriction equivalence; preserve interval L2 statement."
     }
   ]
 }
