@@ -8,6 +8,18 @@ from research.RHRC.integration.opica_composition.journal import Journal,replay_e
 from research.RHRC.permansson.opica_composition import require_comparable_experiments,Action
 from research.RHRC.ffbbp.opica_composition import assess_composition_reduction,deduplicate_evidence_origins
 
+def _validate_replay_source(snapshot):
+    """Use the same exact-source admission as the production Round4 coordinator."""
+    from research.RHRC.integration.opica_composition.cli import validate_descendant
+    receipt = validate_descendant(Path(snapshot.repo), require_clean=True)
+    require(receipt["status"] == "PASS_SOURCE_SCOPE_ONLY",
+            "Replay source admission did not pass")
+    require(receipt["checked_commit"] == snapshot.commit and
+            receipt["checked_tree"] == snapshot.tree,
+            "Replay source receipt differs from exact snapshot")
+    return receipt
+
+
 class EndToEndTests(unittest.TestCase):
     def test_t62(self):
         with self.assertRaises(ContractError):require_hidden_partition({'partition':'CONSTRUCTION','retrieved_ids':['answer']},
@@ -20,10 +32,9 @@ class EndToEndTests(unittest.TestCase):
         # Native source/config absence is an error, never a skipped test.
         from research.RHRC.integration.opica_composition.tests.test_executor import native_context,calibration
         from research.RHRC.integration.opica_composition.proposals import calibration_plan
-        from research.RHRC.integration.documentation_2026_11_21.source_scope import validate_descendant
         worker,snapshot,root=native_context()
         require(worker.production is True,'Linux isolated end-to-end qualification required')
-        validate_descendant(Path(snapshot.repo),require_clean=True)
+        _validate_replay_source(snapshot)
         snapshot=replace(snapshot,source_policy='REVIEWED_FROZEN')
         target,artifacts,_=calibration('D05')
         names=('Zeta23.OPICARound3.cofinally_both_neutral_negative_of_off_line_zero',
