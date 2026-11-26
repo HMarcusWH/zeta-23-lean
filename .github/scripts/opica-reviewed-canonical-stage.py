@@ -8,10 +8,9 @@ def sha(path):
 def api(path):
     return json.loads(run("gh","api",path))
 repo="HMarcusWH/zeta-23-lean"
-specs={
-"312":{"head":"ff0c8185f55b7cf172570e702cb3e8d4d62bbca0","tree":"1a7f91834edfa541658c905d731abb9b49d76c3e","run":45415104185,"artifact":14951996827,"archive":"521eda3d4caabbf376d3c9fb215069f73e8532083925ed6f47ae629e0522af50","patch":"7cde65da54a63b1d73d15dab3961587019a3f40dd8ef908f5c76f6cce1dca5cf","count":30,"workflow":".github/workflows/opica-next-acceptance.yml","stage":"ops/opica-canonical-staged-312-20261124","target":"research/opica-next-acceptance-v2-20261123","message":"Apply reviewed generated-only OPICA successor canonical state [review-types]"},
-"314":{"head":"1bf6242c0ba8033b076d3506189b90f1d382b5c9","tree":"64ab5471fdad017984eb0d8a607bb6bc6b9cfa9b","run":45415223581,"artifact":14951591655,"archive":"68fa51d388b7de03d1ce8340f4ea6242965c43ed7e1fc745f1a753632017b09d","patch":"d9dac8d1251045ab796c0c370804e94b64ca493268b98c9f7a76b155bd6bfd11","count":17,"workflow":".github/workflows/opica-dispatch-registration-review.yml","stage":"ops/opica-canonical-staged-314-20261124","target":"ops/opica-dispatch-registration-20261123","message":"Apply reviewed generated-only dispatch-registration canonical state"}}
-key=os.environ["PATCH_KEY"];s=specs[key];root=pathlib.Path.cwd()
+s={'head': 'eae5672cbbb18c4d53f50eccb664efb0421b877a', 'tree': '4efb4851013134e01742c230f64c256e0046375c', 'run': 45497774256, 'artifact': 14986188748, 'archive': '0e4c361f39691ec3ec61ee2fe61e0c5b588e656846d7bf69a9a61f1cde12fcc8', 'patch': '7781a97fc2bf1b43b6f8c378f6596e5f07cd0d6cbb5939fb2cb51e6fd1059a0d', 'count': 10, 'workflow': '.github/workflows/opica-dispatch-registration-review.yml', 'stage': 'ops/opica-canonical-staged-314-eae5672', 'target': 'ops/opica-dispatch-registration-20261123', 'message': 'Stage exact dispatch-registration canonical products for review'}
+key="314"
+root=pathlib.Path.cwd()
 r=api(f"repos/{repo}/actions/runs/{s['run']}")
 need(r["head_sha"]==s["head"] and r["repository"]["full_name"]==repo and r["path"].split("@")[0]==s["workflow"] and r["run_attempt"]==1,"Producer identity")
 jobs=api(f"repos/{repo}/actions/runs/{s['run']}/attempts/1/jobs?per_page=100")["jobs"]
@@ -61,7 +60,9 @@ with tempfile.TemporaryDirectory() as d:
     run("git","config","user.email","opica-review@invalid.example")
     run("git","commit","-m",s["message"],"-m",f"Reviewed artifact {s['artifact']} from run {s['run']}; archive {s['archive']}; exact before/write/check hashes. RH, C1, Step4 OPEN.")
     commit=run("git","rev-parse","HEAD");tree=run("git","rev-parse","HEAD^{tree}")
+    need(tree=="7ab96c28f455d0bfdd280856b6d9e0bcf7015e5c","Result tree differs from independently checked candidate")
     need(run("git","rev-parse","HEAD^")==s["head"] and not run("git","status","--porcelain","--untracked-files=all"),"Staged commit")
+    need(run("git","ls-remote","--heads","origin","refs/heads/"+s["target"]).split()[0]==s["head"],"Target changed during staging")
     need(not run("git","ls-remote","--heads","origin","refs/heads/"+s["stage"]),"Staging ref already exists; review instead of overwrite")
     run("git","push","origin","HEAD:refs/heads/"+s["stage"])
     result={"status":"STAGED_REVIEWED_CANONICAL_COMMIT_ONLY","source_head":s["head"],"source_tree":s["tree"],"commit":commit,"tree":tree,"staging_ref":s["stage"],"target_ref":s["target"],"changed_count":len(changed),"archive_sha256":s["archive"],"patch_sha256":s["patch"],"proof_acceptance":False,"RH":"OPEN","C1":"OPEN","Step4":"OPEN"}
