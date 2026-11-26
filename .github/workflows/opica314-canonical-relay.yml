@@ -1,0 +1,46 @@
+name: Relay reviewed registration canonical candidate
+on:
+  push:
+    branches: [ops/rh-workmode-opica314-canonical-relay]
+    paths:
+      - .github/workflows/opica314-canonical-relay.yml
+permissions:
+  actions: read
+  contents: read
+jobs:
+  relay:
+    if: github.repository == 'HMarcusWH/zeta-23-lean'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          path: relay
+          sparse-checkout: |
+            .github/operations/opica314-canonical-relay
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'eae5672cbbb18c4d53f50eccb664efb0421b877a'
+          persist-credentials: false
+          path: base
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: 3.13.5
+      - name: Authenticate and verify the scoped generated patch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          path=relay/.github/operations/opica314-canonical-relay
+          python3 -B "$path/relay.py" \
+            --run 45497774256 \
+            --attempt 1 \
+            --artifact '14986188748' \
+            --sha256 '0e4c361f39691ec3ec61ee2fe61e0c5b588e656846d7bf69a9a61f1cde12fcc8' \
+            --head 'eae5672cbbb18c4d53f50eccb664efb0421b877a' \
+            --tree '4efb4851013134e01742c230f64c256e0046375c' \
+            --base base \
+            --census "$path/GENERATED_PRODUCT_CENSUS.json" \
+            --consumer "$path/verify_canonical_candidate.py"

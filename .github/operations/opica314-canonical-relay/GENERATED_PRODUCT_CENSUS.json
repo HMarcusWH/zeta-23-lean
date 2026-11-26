@@ -1,0 +1,578 @@
+{
+  "schema": "RH_WORKMODE_REGISTRATION_GENERATED_PRODUCT_CENSUS_V1",
+  "head_trees": {
+    "314": {
+      "head": "eae5672cbbb18c4d53f50eccb664efb0421b877a",
+      "tree": "4efb4851013134e01742c230f64c256e0046375c"
+    }
+  },
+  "products": [
+    {
+      "path": "research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "1bda4659224eabafde4c218b1c4267a0fa583e31"
+      }
+    },
+    {
+      "path": "research/RHRC/ffbbp/generated/history/RHKG_CANDIDATE_REDUCTION_ASSURANCE_v1_PR265.json",
+      "role": "FROZEN",
+      "trees": {
+        "314": "3b6e28345f811b0db486e538fa148b06d9128f01"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl",
+      "role": "FROZEN",
+      "trees": {
+        "314": "fe3a38eb24d395b18ba68dd8924f11f7566ba06b"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-0.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "2b467bf451717c66c347074e1c365936d11440bc"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-1.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "54ae3af51ee7350c86858a235a45f1079c5ea219"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-2.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "c3763d711e32a018b799d3ebcd6404cdedcc6eb8"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-3.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "3a611dbb8f8fc47f68d7e268ab2a97ad4234925a"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-4.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "9d2d2aa75558929b3ed7d02250ecad2102d343b8"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-5.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "f19c0f7d36a1c84379e69a6d6cd35864dedaf8d4"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-6.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "2514d73d538fd25efb546d97389f84a10b681335"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-7.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "9d29e2742ecb12b377634df819b7c8f6ec745203"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-8.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "e71e2425730b3a2fd09e6faf30b4df7b8cc4f37a"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-9.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "df185d8bea7fb88a3a4377636b261456914ec6d6"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-a.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "ee51324b8a7d4c6c9820869c55a9a96448fcd0cf"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-b.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "0c4a69646cd5539907cf9c90bd6e2ad58a8bb2b7"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-c.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "ac9cd22c61d35b5555219ad07f2fca8f6d7460e9"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-d.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "d023f7b036f61aba0efdd2ffab60afe825e6b945"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-e.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "175bfd208a511f8a37bbf0c32871ad5c02cdbeec"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-f.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "9d9855f612c797b88506253b452887b9653b83eb"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/CONTACT_QUOTIENT_DECLARATION_DEPENDENCIES.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "06c0dcc1a17b61bf218f3070df916d744d14f82b"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/CONTACT_QUOTIENT_VIEW.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "10d10ea43892b4239cf6c952b75ef20cf1ad036e"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_BRIDGE_FRONTIERS.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "e094cf4beacb91bb7d95303143034228917bcc5d"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_COHORT_ATOMS.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "b3e9cda9b939c66d492453f9378fa0c7897a48db"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_COHORT_OVERLAP.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "4a406540aa0f1d7b9b72d2b46ff01660bbe43491"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_KERNEL_ATLAS.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "4f2086244cf416e00cc58d553256129d6930547b"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_KERNEL_QUOTIENT.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "af934957ded4f4904918997c8b07f2115b83d002"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_FRONTIERS.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "579a16e22f99d1e62d45578baa706da7b1c48671"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_QUOTIENTS.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "71670d8f10fa086e25554ad510c8d8a5ea0c5881"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_SUMMARY.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "68d7b93acd225140d84e88e31617355727900538"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/DEPENDENCY_SIGNATURE_CLASSES.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "1a01e16a963aecbeb8f435a97f8791c6766cdc55"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "d8ae8a9f5d9dfe858a3b113d3a3e20af47d75a25"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "84babf8489e040912509226d84eeb94b2e76c004"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/MODULE_SEMANTIC_CLOSURE.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "1831839486f8f3564e41209ddc869821093e6444"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "e3804a9e7e667a01f232390e623dc7f6b50d600f"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "b7eb9419657d0fe6f813e2baea40e29031d70e28"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "9e26cfc4bb7e8aa9668652499cb77dec708a790a"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "39bc7b1f754dbaf3cd696d8a098f9440c8b9da84"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/lean_declarations.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "b96c195d2b56b989cf53547388fa63761d36af90"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/lean_modules.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "22e0622aa3e9b396722fc14dc8f222dcc23e54b4"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/lean_source_declarations.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "edefc18ec9dcea8c25d128ee906cf0dd68e6b0e6"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/registry_nodes.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "da6a828bf861ecb87bb4753f0a9d027473c7b1c4"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-0.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "241e222d7dd472004c13496ac23c0d8380aafee2"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-1.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "80a7d0f1adceb5559640ef91947aae08fd5c9fbe"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-2.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "1d495dc9f81a4e996e63b915ab804cb1d612f21d"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-3.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "771099d6a7e15a863d82c0e26ee3934dfa20bcba"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-4.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "5ba3e0a8aecd92f07b7b9c7d27302117255e7b1d"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-5.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "e99ef285b66a12afafe14314aa0097f010df77d5"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-6.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "5f01b8e5744b200b897a26519aa11ffc20559bdf"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-7.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "ec9cffa324b2bfb2495cc66db27743c031521c59"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-8.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "6e149a13c1cce6cf5cef103e3589dac3208a0177"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-9.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "4edbb21b082eb09cce77cf3113204d58b88916c0"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-a.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "dcdd78606380a33184b9d580934ca043f7baa8cd"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-b.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "aca3633885c44ec8834b6e48a1faa7233d8d9eea"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-c.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "b54005a1efc95f63c370969808dcfb9bbafe5266"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-d.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "b3b860533a83699f97a6678ae0c0bb59e01c14ac"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-e.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "4d1ea1d298a6fd41bd1990f0c535f0962b450120"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/relations/relations-f.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "05972e9eb5f2cde0d2d811997dff8a6d38511d58"
+      }
+    },
+    {
+      "path": "research/RHRC/graph/generated/repository_files.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "a79b18ecb8f5aae3650584f2d43758e05e2b9fc4"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "b6c7513c620bfc3466243031d9b74c903db954c5"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "bd93455cd66bb0d8da836749c79fd3702a23d94b"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "6875a880d34e72d53887ab57f0840f40196a7c27"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-0.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "4298a6ca9e1e93b9e17ef9b5ad25f742cf63ff58"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-1.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "b40a43a5db5a644ab89c14b74d460e2a99bcecb0"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-2.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "e68c2f0b238af56ca7b4684097f2f5e086652aa4"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-3.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "e1a68ff86c4be88d895b7890961f3f725265f3a6"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-4.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "f6bd87bfe264aa1765b1010e9cb7f2c0f511a872"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-5.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "2e050c58c3f6dc0131885f6cabe385e997a73996"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-6.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "01480b60212f3f960da8f12b186517097ae0915b"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-7.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "d3430c6ebfba39acfe1d2c264c6373b875cc47a8"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-8.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "409ca46e037faa519b85af1b1d94b6756150c66c"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-9.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "1b7281c9bce932f972f308fa963c677003cb650d"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-a.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "5607b99096a309efaf5d89ad7e132f55cf920ce2"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-b.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "0b4fef654c750ab2992eb96a337205f1b72654ce"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-c.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "8358fc755123200d2228338f6709e4419bad4440"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-d.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "316e5c0d386b78a46d7fdf347cbdb62b1b6179cb"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-e.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "c0d31691523e877756ef3baa5b7a24a0b342e706"
+      }
+    },
+    {
+      "path": "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-f.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "29aac35920db8ef453a4c975e2c0bcea7caddf2e"
+      }
+    },
+    {
+      "path": "research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "ef836a6dc3a872827dd1613e0bb38b95a2ff4168"
+      }
+    },
+    {
+      "path": "research/RHRC/ool/generated/RHKG_OOL_ROUTE_CONTACTS.jsonl",
+      "role": "ACTIVE",
+      "trees": {
+        "314": "e91b6d5d116ec6b495f245c5854e8db85f9f8dec"
+      }
+    },
+    {
+      "path": "research/RHRC/ool/generated/history/RHKG_OOL_PHASE_ATLAS_v1_PR266.json",
+      "role": "FROZEN",
+      "trees": {
+        "314": "a9f3c2bded1034b41fdbca8426cd81a726aec0df"
+      }
+    },
+    {
+      "path": "research/RHRC/ool/generated/history/RHKG_OOL_ROUTE_CONTACTS_v1_PR266.jsonl",
+      "role": "FROZEN",
+      "trees": {
+        "314": "b58c942b733f7f2de55e75a4325e88e4170a4198"
+      }
+    }
+  ]
+}
