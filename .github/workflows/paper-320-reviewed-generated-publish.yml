@@ -1,0 +1,199 @@
+name: 'Stage the reviewed #320 generated Git tree'
+
+on:
+  push:
+    branches: [workmode/paper-320-reviewed-generated-publish]
+    paths: [.github/workflows/paper-320-reviewed-generated-publish.yml]
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 9b53264a9cabe18211a6dcfac0a66fb1709768eb
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Authenticate and stage only the independently reviewed generated Git patch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_ID: '15142823977'
+          ARTIFACT_SHA256: '8e0c4f0b79927bd5c8ecfadc2290511069e275210236bf4d3ed46b522d1738d8'
+          PATCH_SHA256: 'e22f3c38b410e83166f55cb4c72552155dd2591a1c942471cbd5d2d4cae90695'
+          CANDIDATE_TREE: '2f6697329d38fde80b671aafbd7be0fdca02f760'
+          PATCH_PATHS: '["research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json","research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json","research/RHRC/graph/generated/REPOSITORY_COVERAGE.json","research/RHRC/graph/generated/registry_nodes.jsonl","research/RHRC/graph/generated/relations/relations-0.jsonl","research/RHRC/graph/generated/relations/relations-1.jsonl","research/RHRC/graph/generated/relations/relations-2.jsonl","research/RHRC/graph/generated/relations/relations-4.jsonl","research/RHRC/graph/generated/relations/relations-5.jsonl","research/RHRC/graph/generated/relations/relations-7.jsonl","research/RHRC/graph/generated/relations/relations-8.jsonl","research/RHRC/graph/generated/relations/relations-9.jsonl","research/RHRC/graph/generated/relations/relations-a.jsonl","research/RHRC/graph/generated/relations/relations-b.jsonl","research/RHRC/graph/generated/relations/relations-e.jsonl","research/RHRC/graph/generated/relations/relations-f.jsonl","research/RHRC/graph/generated/repository_files.jsonl","research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json","research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json"]'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = HMarcusWH/zeta-23-lean
+          test "$GITHUB_REF" = refs/heads/workmode/paper-320-reviewed-generated-publish
+          test "$(git ls-remote origin refs/heads/workmode/paper-320-reviewed-generated | cut -f1)" = 9b53264a9cabe18211a6dcfac0a66fb1709768eb
+          python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check
+          test "$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/45854986909/attempts/1" --jq '.status + ":" + .conclusion + ":" + .head_sha')" = completed:success:9b53264a9cabe18211a6dcfac0a66fb1709768eb
+          test "$(git rev-parse HEAD)" = 9b53264a9cabe18211a6dcfac0a66fb1709768eb
+          test "$(git rev-parse 'HEAD^{tree}')" = d7d12f31217573a7c711ced1d1bc24ad26e1e6c4
+          gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID" > "$RUNNER_TEMP/artifact.json"
+          gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID/zip" > "$RUNNER_TEMP/artifact.zip"
+          python3 -B - <<'PY'
+          from hashlib import sha256
+          from io import BytesIO
+          import json
+          import os
+          from pathlib import Path, PurePosixPath
+          import re
+          import stat
+          import subprocess
+          from zipfile import ZipFile
+
+          def require(condition, message):
+              if not condition:
+                  raise SystemExit(message)
+
+          def git(*args, data=None):
+              return subprocess.run(["git", *args], check=True, input=data,
+                                    stdout=subprocess.PIPE).stdout
+
+          runner = Path(os.environ["RUNNER_TEMP"])
+          head = "9b53264a9cabe18211a6dcfac0a66fb1709768eb"
+          tree = "d7d12f31217573a7c711ced1d1bc24ad26e1e6c4"
+          archive_name = "documentation-canonical-45854986909-1"
+          pinned_id = int(os.environ["ARTIFACT_ID"])
+          pinned_sha256 = os.environ["ARTIFACT_SHA256"]
+          require(re.fullmatch("[a-f0-9]{64}", pinned_sha256), "Missing archive digest pin")
+          info = json.loads((runner / "artifact.json").read_text(encoding="utf-8"))
+          run = info["workflow_run"]
+          require((info["name"], info["id"], info["digest"], info["expired"]) ==
+                  (archive_name, pinned_id, "sha256:" + pinned_sha256, False), "Unexpected artifact metadata")
+          require((run["id"], run["head_sha"], run["head_branch"], run["head_repository_id"]) ==
+                  (45854986909, head, "docs/papers-2026-11-26-terminal", 1339954300), "Unexpected run/source")
+          archive = (runner / "artifact.zip").read_bytes()
+          require(len(archive) == info["size_in_bytes"] and len(archive) <= 4_000_000 and
+                  sha256(archive).hexdigest() == pinned_sha256, "Archive bytes differ")
+
+          entries = {"input-head-tree.txt", "source-scope.json", "lean-version.txt", "exporter-build.log",
+                     "materialize.log", "canonical-check.log", "generated-state.patch", "generated-stat.txt",
+                     "generated-state.patch.sha256"}
+          with ZipFile(BytesIO(archive)) as zipped:
+              contents = zipped.infolist()
+              require(set(zipped.namelist()) == entries and len(contents) == len(entries),
+                      "Unexpected artifact inventory")
+              require(sum(item.file_size for item in contents) <= 128_000_000, "Artifact expanded size too large")
+              for item in contents:
+                  mode = (item.external_attr >> 16) & 0o170000
+                  path = PurePosixPath(item.filename)
+                  require(len(path.parts) == 1 and mode in (0, stat.S_IFREG) and not item.is_dir(),
+                          "Nonregular artifact entry")
+              require(zipped.read("input-head-tree.txt").decode("ascii").splitlines() == [head, tree],
+                      "Artifact head/tree mismatch")
+              receipt = json.loads(zipped.read("source-scope.json"))
+              require((receipt["checked_commit"], receipt["checked_tree"], receipt["status"]) ==
+                      (head, tree, "PASS_SOURCE_SCOPE_ONLY"), "Artifact scope receipt mismatch")
+              require(b"RHRC DERIVED STATE: PASS" in zipped.read("canonical-check.log"), "Missing canonical check")
+              patch = zipped.read("generated-state.patch")
+              patch_digest = sha256(patch).hexdigest()
+              require(zipped.read("generated-state.patch.sha256").decode("ascii").split() ==
+                      [patch_digest, "generated-state.patch"], "Generated patch digest differs")
+
+          inherited = json.loads(Path(
+              "research/RHRC/integration/documentation_2026_11_21/SOURCE_SCOPE.json"
+          ).read_text(encoding="utf-8"))
+          allowed = set(inherited["generated"])
+          require(len(allowed) == 77 and not git("status", "--porcelain", "--untracked-files=all"),
+                  "Wrong checkout inventory")
+          require(bool(patch) and len(patch) <= 110_000_000, "Missing or oversized generated patch")
+          git("apply", "--check", "--index", "-", data=patch)
+          git("apply", "--index", "-", data=patch)
+          git("diff", "--cached", "--check")
+          paths = git("diff", "--cached", "--name-only", "-z", "HEAD").decode("utf-8").strip("\0").split("\0")
+          modified = git("diff", "--cached", "--name-only", "-z", "--diff-filter=M", "HEAD").decode("utf-8").strip("\0").split("\0")
+          require(bool(paths) and set(paths) == set(modified) and set(paths) <= allowed and
+                  not git("diff", "--cached", "--summary"), "Unexpected generated patch scope or file type")
+
+          inventory = Path("research/RHRC/graph/generated/repository_files.jsonl")
+          byte_policy = json.loads(Path(
+              "research/RHRC/integration/documentation_2026_11_26/ARCHIVE_BYTES.json"
+          ).read_text(encoding="utf-8"))
+          expected_pdfs = {p: item["git_blob"] for p, item in byte_policy["added"].items()
+                           if item["file_kind"] == "BINARY_PDF"}
+          require(len(expected_pdfs) == 6, "Paper byte policy must name six binary subjects")
+          observed_pdfs = {}
+          with inventory.open(encoding="utf-8") as stream:
+              for line in stream:
+                  row = json.loads(line)
+                  if row.get("classification_rule") == "research_archive_2026_11_26_papers":
+                      require((row["type"], row["file_class"], row["trust_zone"], row["generated_product"]) ==
+                              ("RepoFile", "RESEARCH_FIXTURE", "AUDIT_ONLY", False),
+                              "Paper mistaken for a generated or authority-bearing record")
+                      require(row["path"] not in observed_pdfs, "Duplicate archived paper record")
+                      observed_pdfs[row["path"]] = row["git_blob"]
+          require(observed_pdfs == expected_pdfs, "Generated paper records disagree with exact binary inventory")
+          require(patch_digest == os.environ["PATCH_SHA256"], "Patch hash differs from independent review")
+          candidate_tree = git("write-tree").decode("ascii").strip()
+          require(candidate_tree == os.environ["CANDIDATE_TREE"], "Staged Git tree differs from independent review")
+          require(sorted(paths) == json.loads(os.environ["PATCH_PATHS"]),
+                  "Generated paths differ from independent review")
+          require(not git("diff", "--name-only") and
+                  not git("ls-files", "--others", "--exclude-standard"),
+                  "Unexpected unstaged or untracked change")
+          receipt = {"parent": head, "tree": candidate_tree, "patch_sha256": patch_digest,
+                     "artifact_sha256": pinned_sha256, "artifact_id": pinned_id,
+                     "paths": sorted(paths), "verified_binary_papers": len(observed_pdfs)}
+          (runner / "reviewed-publication-receipt.json").write_text(
+              json.dumps(receipt, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(receipt, sort_keys=True))
+          PY
+      - name: Preserve the reviewed commit on a dedicated review ref
+        env:
+          GH_PUSH_TOKEN: ${{ github.token }}
+          CANDIDATE_TREE: '2f6697329d38fde80b671aafbd7be0fdca02f760'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = HMarcusWH/zeta-23-lean
+          test "$GITHUB_REF" = refs/heads/workmode/paper-320-reviewed-generated-publish
+          source=9b53264a9cabe18211a6dcfac0a66fb1709768eb
+          ref=refs/heads/workmode/paper-320-reviewed-generated
+          test "$(git ls-remote origin "$ref" | cut -f1)" = "$source"
+          test "$(git rev-parse HEAD)" = "$source"
+          test "$(git write-tree)" = "$CANDIDATE_TREE"
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -m "chore(PR320): materialize independently reviewed exact-head RHKG products"
+          test "$(git rev-parse HEAD^)" = "$source"
+          test "$(git rev-parse 'HEAD^{tree}')" = "$CANDIDATE_TREE"
+          test -z "$(git status --porcelain --untracked-files=all)"
+          python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check
+          python3 -B - <<'PY'
+          import base64
+          import os
+          import subprocess
+
+          environment = os.environ.copy()
+          token = environment.pop("GH_PUSH_TOKEN", "")
+          if not token:
+              raise SystemExit("Publication credential absent")
+          environment.update(
+              GIT_TERMINAL_PROMPT="0", GIT_CONFIG_COUNT="1",
+              GIT_CONFIG_KEY_0="http.https://github.com/.extraheader",
+              GIT_CONFIG_VALUE_0="AUTHORIZATION: basic " +
+              base64.b64encode(("x-access-token:" + token).encode()).decode("ascii"),
+          )
+          subprocess.run(["git", "push", "https://github.com/HMarcusWH/zeta-23-lean.git",
+                          "HEAD:refs/heads/workmode/paper-320-reviewed-generated"],
+                         check=True, env=environment)
+          PY
+          git rev-parse HEAD 'HEAD^{tree}' >> "$RUNNER_TEMP/reviewed-publication-head-tree.txt"
+          printf 'Published exact review commit: %s\n' "$(git rev-parse HEAD)"
+      - name: Retain review-branch evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper320-reviewed-publication-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/reviewed-publication-receipt.json
+            ${{ runner.temp }}/reviewed-publication-head-tree.txt
+          if-no-files-found: ignore
