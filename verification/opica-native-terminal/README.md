@@ -26,3 +26,48 @@ The one-time acquisition and source publication are complete at b1e3e3e99fd913ba
 The R1 repair manifest binds every changed path to the exact original and repaired Git blob. The historical default Lean epoch is not changed; this branch's compatibility edits are qualified only in the explicitly staged Lean 4.35.0 project. Older-pin requalification and canonical admission remain required; no historical receipts inherit authority from this repair. The retired additive tactic implementation is replaced by a compatibility spelling for stock linear_combination with abel, rather than inventing new mathematical axioms or global instances. All other mathematical edits target proof bodies; compiler/type comparison is pending.
 
 The replacement workflow is read-only and compile-only. It never fetches lsernau/grh-lean or republishes source. Source custody and optimized negative controls precede audit smoke. Separate native and arithmetic frontiers must pass before the full common-pin candidate runs. Independent stock replay reconstructs the same committed source again and compares root types, permitted axioms, membership sets, and complete type/value/structural edges for arithmetic and terminal roots. A fresh stock kernel replay is not an alternate kernel. Comparator/alternate-checker and claim-validation admission remain explicitly OPEN. The direct-strip supplied route is unchanged; the independent arithmetic and literal-energy formalization are not closed by this repair. 
+
+
+## R2 — versioned compiler compatibility and verification
+
+R2 restores the ten historical native source blobs exactly to #316 / R0.
+The common Lean 4.35.0 source package is reconstructed from the committed tree
+by applying exactly the ten full-source compatibility replacements listed in
+`compatibility/lean-4.35.0/OVERLAY_MANIFEST.json`. Seven are the R1 blobs,
+three are revised proof bodies (Borel–Carathéodory denominator clearing,
+four logarithmic continuity sites, adjoint kernel projection preservation).
+The 792-module arithmetic port, original PORT_MANIFEST, R1 principal adapter,
+and exact Terminal.lean are frozen. The R1 manifest is kept under history/.
+No historical toolchain or default lake target is migrated.
+
+R2 implements source-lock and optimized-mode rejection controls; three
+independently diagnosable native leaf jobs; complete native and arithmetic
+frontiers; public compiler declaration type comparison across the two epochs;
+16 exact named root audits, including both parity floors and the actual
+critical-line intermediates; fresh stock terminal reconstruction and full
+type/value/structural edge comparison; and a separate sandboxed Mathlib-only
+RH challenge using Lean 4.35's built-in `lake comparator`, its matching
+`leanexport` and the bundled nanoda kernel. Deliberate negative proof fixtures
+and the challenge placeholder are outside the claim-bearing source closure.
+The comparator must run on a fresh source stage, without fake sandbox or
+prebuilt solution. Unsupported checker/sandbox or unequal public type
+expressions are blockers, not successful verification.
+
+Each passing job emits a source-bound qualification receipt with evidence
+hashes. The aggregate packet is explicitly READY_FOR_MANUAL_CANONICAL_REVIEW,
+not RH_PROVED: all attached historical workflow results must still be harvested,
+semantic review and explicit admission are required. The literal-energy route
+and independent arithmetic invention are not claimed. The arithmetic R1 run
+was still in progress at R2 implementation; newly exposed errors require an
+additional explicit repair epoch, never changes to the frozen arithmetic port
+by default. Full reruns (rather than failed-only reruns) regenerate the same
+attempt's source-lock and other evidence artifacts. Local pinned Lean execution
+was not available to the implementation agent; CI is authoritative.
+
+For local execution stage from the committed R2 head with epoch.py as above.
+Preserve source.json outside the stage, set OPICA_R2_LOCKED_SOURCE_RECEIPT to
+that exact source-lock receipt, and use run.sh with absolute stage and output
+paths and one of smoke, leaf-pnt, leaf-gamma, leaf-operator, native, arithmetic,
+terminal, independent, comparator. Each mode requires a freshly reconstructed
+stage, pinned Mathlib setup and no existing project .olean. The final workflow
+also compares compiler public types against the restored historical epoch.

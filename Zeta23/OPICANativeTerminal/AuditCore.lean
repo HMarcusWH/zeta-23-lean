@@ -8,7 +8,8 @@ def structural (c : ConstantInfo) : List Name :=
   match c with
   | .inductInfo i => i.ctors ++ i.all
   | .ctorInfo i => [i.induct]
-  | .recInfo i => i.all
+  | .recInfo i => i.all ++ i.rules.flatMap
+      (fun r => r.ctor :: r.rhs.getUsedConstantsAsSet.toList)
   | _ => []
 
 def closure (root : Name) : CoreM (Array Name) := do
@@ -48,13 +49,31 @@ def bannedModule (s : String) : Bool :=
   ["Zeta23Arithmetic.New.Main", "Zeta23Arithmetic.Statements", "Zeta23Arithmetic.Main",
     "Zeta23Arithmetic.Challenge", "Zeta23Arithmetic.New.Reduction.OneSidedBound"].contains s ||
   s.startsWith "Zeta23.OPICATerminal." || s.startsWith "Development." ||
+  s == "Zeta23.OPICANativeTerminal.AuditCore" ||
+  s.startsWith "Challenge." || s.startsWith "Solution." ||
   s == "Lib" || s.startsWith "Lib." || s == "New" || s.startsWith "New."
 
 def allowedAxiom (n : Name) : Bool :=
   n == ``propext || n == ``Classical.choice || n == ``Quot.sound
 
+def supplierOrigin (m : String) : Bool :=
+  m == "Zeta23Arithmetic" || m.startsWith "Zeta23Arithmetic."
+
+def nativeOrigin (m : String) : Bool :=
+  m == "Zeta23" || m.startsWith "Zeta23."
+
+def permittedOrigin (m : String) (nativeOnly arithmeticOnly allowSmokeFixtures : Bool) : Bool :=
+  !bannedModule m &&
+  (!nativeOnly || !supplierOrigin m) &&
+  (!arithmeticOnly || !nativeOrigin m) &&
+  ((allowSmokeFixtures && m == "AuditSmokeFixtures") ||
+    ["Zeta23", "Zeta23Arithmetic", "Mathlib", "Lean", "Init", "Std", "Batteries", "Aesop",
+      "Qq", "ProofWidgets", "Plausible", "LeanSearchClient", "ImportGraph", "Cli", "Lake"].any
+        (fun p => m == p || m.startsWith (p ++ ".")))
+
 def audit (root : Name) (required : List Name) (nativeOnly : Bool := false)
-    (expectedType : Option Name := none) (withEdges : Bool := false) : CommandElabM Unit := do
+    (expectedType : Option Name := none) (withEdges : Bool := false)
+    (arithmeticOnly : Bool := false) (allowSmokeFixtures : Bool := false) : CommandElabM Unit := do
   let axs ← Lean.collectAxioms root
   for ax in axs do
     unless allowedAxiom ax do throwError "forbidden axiom {root} -> {ax}"
@@ -76,11 +95,8 @@ def audit (root : Name) (required : List Name) (nativeOnly : Bool := false)
     let some idx := env.getModuleIdxFor? n | throwError "missing module index {n}"
     let some moduleOriginName := env.header.moduleNames[idx.toNat]? | throwError "bad origin {n}"
     let m := moduleOriginName.toString
-    if bannedModule m then throwError "forbidden origin {m}: {n}"
-    unless ["Zeta23", "Zeta23Arithmetic", "Mathlib", "Lean", "Init", "Std", "Batteries", "Aesop", "Qq", "ProofWidgets", "Plausible", "LeanSearchClient", "ImportGraph", "Cli", "Lake"].any (fun p => m == p || m.startsWith (p ++ ".")) do
-      throwError "foreign module origin {m}: {n}"
-    if nativeOnly && (m == "Zeta23Arithmetic" || m.startsWith "Zeta23Arithmetic.") then
-      throwError "supplier contamination {n}"
+    unless permittedOrigin m nativeOnly arithmeticOnly allowSmokeFixtures do
+      throwError "forbidden module origin {m}: {n}"
     rows := rows.push (Json.mkObj [("name", Json.str n.toString), ("module", Json.str m)])
     if let some handle := edgeHandle then
       let tv := c.type.getUsedConstantsAsSet
@@ -101,7 +117,8 @@ def audit (root : Name) (required : List Name) (nativeOnly : Bool := false)
     ("type", Json.str (toString pp)), ("type_expr", Json.str (reprStr c.type)),
     ("axioms", Json.arr (axs.map (fun n => Json.str n.toString))),
     ("dependencies", Json.arr rows), ("required", Json.arr (required.toArray.map (fun n => Json.str n.toString))),
-    ("native_only", toJson nativeOnly), ("with_edges", toJson withEdges), ("count", toJson deps.size)]
+    ("native_only", toJson nativeOnly), ("arithmetic_only", toJson arithmeticOnly),
+    ("smoke_fixture", toJson allowSmokeFixtures), ("with_edges", toJson withEdges), ("count", toJson deps.size)]
   liftIO <| IO.FS.createDirAll dir
   liftIO <| IO.FS.writeFile (dir / (root.toString ++ ".json")) (receipt.compress ++ "\n")
   liftIO <| IO.println s!"NATIVE_TERMINAL_ROOT_PASS {root} {deps.size}"

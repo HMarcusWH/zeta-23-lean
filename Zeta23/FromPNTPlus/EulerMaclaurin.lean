@@ -15,7 +15,6 @@ Modified 2026 by Anthropic PBC.
 module
 
 public import Mathlib.NumberTheory.AbelSummation
-public import Mathlib.MeasureTheory.Function.Floor
 
 /-! We prove the 1st order Euler-Maclaurin formula by specialising Abel summation and manipulating integrals. -/
 
@@ -30,10 +29,8 @@ noncomputable def B1 (x : ℝ) : ℝ := x - ⌊x⌋₊ - 1 / 2
 
 @[fun_prop]
 lemma aestronglyMeasurable_B1 : AEStronglyMeasurable B1 := by
-  have hcast : Measurable (fun n : ℕ => (n : ℝ)) := measurable_of_countable _
-  have hfloor : Measurable (fun x : ℝ => (⌊x⌋₊ : ℝ)) :=
-    hcast.comp Nat.measurable_floor
-  exact ((measurable_id.sub hfloor).sub measurable_const).aestronglyMeasurable
+  unfold B1
+  fun_prop
 
 lemma abs_B1_le_half {x : ℝ} (hx : 0 ≤ x) : |B1 x| ≤ 1 / 2 := by
   unfold B1

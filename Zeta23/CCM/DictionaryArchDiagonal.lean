@@ -102,7 +102,6 @@ private theorem digamma_quarter_sub_three_quarters :
   have hleft :
       logDeriv (fun z : ℂ => Complex.Gamma z * Complex.Gamma (1 - z)) q =
         Complex.digamma q - Complex.digamma (1 - q) := by
-    change logDeriv (Complex.Gamma * (fun z : ℂ => Complex.Gamma (1 - z))) q = _
     rw [logDeriv_mul q hGq hG1q hdGq hdComp,
       show logDeriv Complex.Gamma q = Complex.digamma q from rfl,
       logDeriv_Gamma_comp_one_sub]
@@ -117,11 +116,7 @@ private theorem digamma_quarter_sub_three_quarters :
           (fun z : ℂ => (Real.pi : ℂ) /
             Complex.sin ((Real.pi : ℂ) * z)) q =
         -(Real.pi : ℂ) := by
-    change logDeriv ((fun _ : ℂ => (Real.pi : ℂ)) /
-      (fun z : ℂ => Complex.sin ((Real.pi : ℂ) * z))) q = _
-    have hpi : (Real.pi : ℂ) ≠ 0 := Complex.ofReal_ne_zero.mpr Real.pi_ne_zero
-    rw [logDeriv_div (f := fun _ : ℂ => (Real.pi : ℂ))
-      (g := fun z : ℂ => Complex.sin ((Real.pi : ℂ) * z)) q hpi hsin
+    rw [logDeriv_div q (by exact_mod_cast Real.pi_ne_zero) hsin
       (by fun_prop) (by fun_prop), logDeriv_sin_pi_mul]
     simp only [logDeriv_const, Pi.zero_apply, zero_sub]
     rw [show (Real.pi : ℂ) * q = (((Real.pi / 4 : ℝ) : ℂ)) by
@@ -188,7 +183,6 @@ private theorem digamma_quarter_add_three_quarters :
       logDeriv
           (fun z : ℂ => Complex.Gamma z * Complex.Gamma (z + 1 / 2)) q =
         Complex.digamma q + Complex.digamma (q + 1 / 2) := by
-    change logDeriv (Complex.Gamma * (fun z : ℂ => Complex.Gamma (z + 1 / 2))) q = _
     rw [logDeriv_mul q hGq hG3q hdGq hdComp3q,
       show logDeriv Complex.Gamma q = Complex.digamma q from rfl,
       logDeriv_Gamma_comp_add_half]
@@ -197,10 +191,8 @@ private theorem digamma_quarter_add_three_quarters :
           (fun z : ℂ => Complex.Gamma (2 * z) *
             (2 : ℂ) ^ (1 - 2 * z) * ((Real.sqrt Real.pi : ℝ) : ℂ)) q =
         2 * Complex.digamma (2 * q) - 2 * Complex.log 2 := by
-    rw [logDeriv_mul_const q ((Real.sqrt Real.pi : ℝ) : ℂ) hsqrt]
-    change logDeriv ((fun z : ℂ => Complex.Gamma (2 * z)) *
-      (fun z : ℂ => (2 : ℂ) ^ (1 - 2 * z))) q = _
-    rw [logDeriv_mul q hG2q hp hdComp2q hdp,
+    rw [logDeriv_mul_const q ((Real.sqrt Real.pi : ℝ) : ℂ) hsqrt,
+      logDeriv_mul q hG2q hp hdComp2q hdp,
       logDeriv_Gamma_comp_two_mul q hdG2q,
       logDeriv_two_cpow_one_sub_two_mul]
     ring

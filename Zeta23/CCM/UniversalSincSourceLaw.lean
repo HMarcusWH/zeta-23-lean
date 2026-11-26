@@ -151,12 +151,8 @@ def originalSourceLaw (s : ℝ) : Measure ℝ :=
   sourceCoordinateLaw.map (sourceSampleSum s)
 
 theorem originalSourceLaw_isProbabilityMeasure {s : ℝ} (hs : 0 ≤ s) :
-    IsProbabilityMeasure (originalSourceLaw s) := by
-  constructor
-  unfold originalSourceLaw
-  rw [Measure.map_apply (measurable_sourceSampleSum hs) MeasurableSet.univ,
-    Set.preimage_univ]
-  exact measure_univ
+    IsProbabilityMeasure (originalSourceLaw s) :=
+  Measure.isProbabilityMeasure_map (measurable_sourceSampleSum hs).aemeasurable
 
 theorem originalSourceLaw_interval_mass {s : ℝ} (hs : 0 ≤ s) :
     originalSourceLaw s (Icc (-s) s) = 1 := by
