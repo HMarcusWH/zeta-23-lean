@@ -25,6 +25,13 @@ EXTRA_ASSETS = {
         "comparator/StrictSolution/ExactRH.lean", "comparator/config.json",
     )
 } | {WORKFLOW}
+REPAIR_PARENT = "dee12959e2c96d85bb6e8c47fa6b089a088fe8fa"
+OVERLAY_TARGETS = {
+    "Zeta23/OPICATerminal/Analytic/LandauTheorems/mellinGchiOfNeOne.lean",
+    "Zeta23/CCM/OriginalDetectorFourHistoryLocalXBound.lean",
+}
+OVERLAY_PREFIX = PREFIX + "compatibility/lean-4.35.0/"
+REPAIR_MODIFIED = {PREFIX + name for name in ("stage.py", "SOURCE_POLICY.json", "README.md")} | {WORKFLOW}
 STAGE_ASSETS = {
     "Audit.lean": "AuditStrictReference.lean",
     "comparator/StrictChallenge/ExactRH.lean":
@@ -116,7 +123,7 @@ def check_scope(repo, head, policy):
     require(git_text(repo, "rev-parse", "HEAD") == head, "candidate checkout HEAD drift")
     require(not git_text(repo, "status", "--porcelain", "--untracked-files=no"),
             "dirty candidate checkout")
-    require(policy["schema"] == "STRICT_STEP4_SOURCE_V1" and
+    require(policy["schema"] == "STRICT_STEP4_SOURCE_V2" and
             policy["claim"] == "RH_OPEN" and policy["r7"] == R7 and
             policy["r7_tree"] == R7_TREE and policy["perron"] == PERRON and
             policy["donor"] == DONOR and policy["donor_tree"] == DONOR_TREE,
@@ -124,10 +131,24 @@ def check_scope(repo, head, policy):
     require(git_text(repo, "rev-parse", R7 + "^{tree}") == R7_TREE, "base tree drift")
     require(git_text(repo, "rev-parse", DONOR + "^{tree}") == DONOR_TREE, "donor tree drift")
     git(repo, "merge-base", "--is-ancestor", PERRON, head)
+    git(repo, "merge-base", "--is-ancestor", REPAIR_PARENT, head)
+    overlays = policy["overlays"]
+    require(set(overlays) == OVERLAY_TARGETS, "strict overlay target inventory differs")
+    overlay_paths = {OVERLAY_PREFIX + target for target in OVERLAY_TARGETS}
+    delta = git_text(repo, "diff", "--name-status", "--no-renames", REPAIR_PARENT, head).splitlines()
+    require(len(delta) == len(overlay_paths) + len(REPAIR_MODIFIED) and set(delta) ==
+            ({f"A\t{path}" for path in overlay_paths} | {f"M\t{path}" for path in REPAIR_MODIFIED}),
+            "strict compatibility repair scope differs")
+    for target, entry in overlays.items():
+        overlay = OVERLAY_PREFIX + target
+        exact_source(overlay, git(repo, "show", head + ":" + overlay), entry)
+        original = git(repo, "show", REPAIR_PARENT + ":" + target)
+        verify_preimage(target, original, entry)
+        require(original == git(repo, "show", head + ":" + target), "tracked original differs")
     paths = {entry["path"] for entry in policy["modules"]}
     require(len(paths) == len(policy["modules"]), "duplicate strict source path")
     validate_delta(git_text(repo, "diff", "--name-status", "--no-renames", R7, head),
-                   paths | EXTRA_ASSETS)
+                   paths | EXTRA_ASSETS | overlay_paths)
     for entry in policy["modules"]:
         path = entry["path"]
         safe(path)
@@ -148,6 +169,11 @@ def check_scope(repo, head, policy):
                     "unexpected strict source origin")
     require(git(repo, "show", head + ":" + PREFIX + "SOURCE_POLICY.json")
             == (HERE / "SOURCE_POLICY.json").read_bytes(), "active policy bytes drift")
+
+
+def verify_preimage(target, raw, entry):
+    require(blob(raw) == entry["original_git_blob"] and digest(raw) == entry["original_sha256"],
+            "strict overlay preimage differs: " + target)
 
 
 def stage_sources(repo, baseline, stage, baseline_receipt, receipt, head):
@@ -172,6 +198,13 @@ def stage_sources(repo, baseline, stage, baseline_receipt, receipt, head):
         require(not target.exists(), "strict source would overwrite inherited path")
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(git(repo, "show", head + ":" + path))
+    for path, entry in policy["overlays"].items():
+        target = stage / safe(path)
+        require(target.is_file() and not target.is_symlink(), "strict overlay target is missing or a symlink")
+        verify_preimage(path, target.read_bytes(), entry)
+        patch = git(repo, "show", head + ":" + entry["path"])
+        exact_source(entry["path"], patch, entry)
+        target.write_bytes(patch)
     for src, dst in STAGE_ASSETS.items():
         target = stage / safe(dst)
         require(not target.exists(), "strict control would overwrite inherited path")
@@ -219,7 +252,10 @@ def self_test():
     expect_rejection(lambda: validate_delta("M\t" + path, {path}))
     expect_rejection(lambda: validate_delta("", {path}))
     expect_rejection(lambda: validate_delta("A\t" + path + "\nA\tZeta23/Extra.lean", {path}))
-    print("STRICT_SOURCE_CONTROLS_PASS", 8)
+    preimage = {"original_git_blob": blob(raw), "original_sha256": digest(raw)}
+    verify_preimage(path, raw, preimage)
+    expect_rejection(lambda: verify_preimage(path, raw + b" ", preimage))
+    print("STRICT_SOURCE_CONTROLS_PASS", 9)
 
 
 if __name__ == "__main__":

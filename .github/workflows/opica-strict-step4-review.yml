@@ -2,7 +2,7 @@ name: Strict literal-ramp Step 4 qualification (RH_OPEN)
 
 on:
   push:
-    branches: [review/rh-strict-step4-20261126]
+    branches: [review/rh-strict-step4-20261126, review/rh-strict-step4-common-pin-20261126]
   workflow_dispatch:
 
 permissions:
@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 32
           persist-credentials: false
       - name: Reconstruct the pinned strict source
         shell: bash
@@ -48,7 +48,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 32
           persist-credentials: false
       - name: Reconstruct the pinned strict source
         shell: bash
@@ -92,7 +92,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 32
           persist-credentials: false
       - name: Reconstruct the pinned strict source
         shell: bash
@@ -132,7 +132,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 32
           persist-credentials: false
       - name: Reconstruct the pinned strict source
         shell: bash
@@ -180,7 +180,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 32
           persist-credentials: false
       - name: Reconstruct the pinned strict source
         shell: bash
@@ -228,7 +228,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 32
           persist-credentials: false
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:

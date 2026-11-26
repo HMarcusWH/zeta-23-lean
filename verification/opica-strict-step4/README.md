@@ -18,3 +18,12 @@ Use a pinned candidate checkout on Linux. The hosted workflow reconstructs an in
 - Verification-only expected type: `Zeta23/RHReference/CompactEnergyTerminalExpected.lean`.
 - Independent closure audit: `AuditStrictReference.lean` in the staged project.
 - Alternate challenge: Mathlib only, with the exact standard proposition and three permitted axioms.
+
+## Lean 4.35 compatibility successor
+
+Two staged proof-body variants replace the exact authenticated preimages after the R7 and
+strict donor checks. The Mellin proof discharges the actual two goals produced by
+`convert`. The four-history proof supplies continuity-based measurability explicitly.
+The historical R7 and donor sources, proof statements, pinned arithmetic, exact RH
+challenge, and all independent verification and manual admission gates are kept.
+The repaired variants require fresh qualification on this successor.

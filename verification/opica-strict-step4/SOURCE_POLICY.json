@@ -1,5 +1,5 @@
 {
-  "schema": "STRICT_STEP4_SOURCE_V1",
+  "schema": "STRICT_STEP4_SOURCE_V2",
   "claim": "RH_OPEN",
   "r7": "7b2414b97cbfefabf15e23707d31b02708c59284",
   "r7_tree": "4432385398aeba99780828505faf8c40eb796849",
@@ -358,5 +358,21 @@
       "sha256": "2627ce0e886dcdb19745a7110c09c911436110a155b5631d6dc672ddc7e9fdd8",
       "origin": "reference"
     }
-  ]
+  ],
+  "overlays": {
+    "Zeta23/OPICATerminal/Analytic/LandauTheorems/mellinGchiOfNeOne.lean": {
+      "path": "verification/opica-strict-step4/compatibility/lean-4.35.0/Zeta23/OPICATerminal/Analytic/LandauTheorems/mellinGchiOfNeOne.lean",
+      "original_git_blob": "1ea4c4328a4bca1d0b918fd7b5b190074ec7e7dd",
+      "original_sha256": "e0e38a41be1ca569636c90f47b04bc3b3ac1dbb9ff869c94b21550ec3b06c0d5",
+      "git_blob": "726a36ca8939445bb3943563a73a160bcdaf096a",
+      "sha256": "1bd895efac47a9e14ea86765e9e2aa5f01294b88096b35c95c647e2d949fa938"
+    },
+    "Zeta23/CCM/OriginalDetectorFourHistoryLocalXBound.lean": {
+      "path": "verification/opica-strict-step4/compatibility/lean-4.35.0/Zeta23/CCM/OriginalDetectorFourHistoryLocalXBound.lean",
+      "original_git_blob": "513d35efb9c60688e559eba46adfb761d3397f38",
+      "original_sha256": "21c20893cccd3f3a3ebda21a03e614f10e4bec335a11d59413f014b17a4ee862",
+      "git_blob": "c1d1f5b30f594f9189d0413f5c37f8962f3ba8a0",
+      "sha256": "af30fdd1e430232babe72943e81e9b863d2149f85050f4f728de527e32f21154"
+    }
+  }
 }
