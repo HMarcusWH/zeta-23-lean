@@ -1,0 +1,13 @@
+{
+  "challenge_module": "StrictChallenge.ExactRH",
+  "solution_module": "StrictSolution.ExactRH",
+  "theorem_names": [
+    "strict_reference_rh"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

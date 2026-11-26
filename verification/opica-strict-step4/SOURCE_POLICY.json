@@ -1,0 +1,362 @@
+{
+  "schema": "STRICT_STEP4_SOURCE_V1",
+  "claim": "RH_OPEN",
+  "r7": "7b2414b97cbfefabf15e23707d31b02708c59284",
+  "r7_tree": "4432385398aeba99780828505faf8c40eb796849",
+  "perron": "21b1663d2b2e84f4d4b2c17a9f43bf09a72127f5",
+  "donor": "347c89e926a0f335caaab13d005ea738b80ee34b",
+  "donor_tree": "61c265e150ef006c786ef889dc33b4825613f092",
+  "modules": [
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/CharFamily.lean",
+      "git_blob": "5e1191ba6fb679734cb00d73634511761b621456",
+      "sha256": "38fa6af5a051a0fa5285a460c2e83ca1be8dbd608cc845b4b95a3f8f52fbe9a4",
+      "origin": "reduced-donor",
+      "donor_blob": "81c8dfd66d910d083d5bc88c664c7917fdbdfe96"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/CharFamilyLFunctionNeZeroOfOneLeRe.lean",
+      "git_blob": "b82be47418578deb2c855f46ddf3b68f12e58bb0",
+      "sha256": "8b327dc37fdb26f30cd369998fb1770cbd12626003d0d5026fadada1896e9488",
+      "origin": "donor",
+      "donor_blob": "b82be47418578deb2c855f46ddf3b68f12e58bb0"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/GchiConj.lean",
+      "git_blob": "283bed915b4a5f1c2dd477b2b0d94626c57cbdc2",
+      "sha256": "bd4f587290101f708b1dbae4f19e1753155069a1a3d6cea484836cc6f261feb5",
+      "origin": "donor",
+      "donor_blob": "283bed915b4a5f1c2dd477b2b0d94626c57cbdc2"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/GchiGrowth.lean",
+      "git_blob": "34fc10ae4fb2ed4017d8771b89035554b97d2c09",
+      "sha256": "5017af0c6678f4aa492375fc966793cb42149dc3f893926f98b2539629a5184f",
+      "origin": "donor",
+      "donor_blob": "34fc10ae4fb2ed4017d8771b89035554b97d2c09"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/IteratedDerivLaplace.lean",
+      "git_blob": "6e46a3c6f2fb230ba438478b0d3279386b4190d2",
+      "sha256": "6030368e9aceafbbd0bb250a8a9f1cb343a7141e77720a2a0fffa1d95b62087d",
+      "origin": "donor",
+      "donor_blob": "6e46a3c6f2fb230ba438478b0d3279386b4190d2"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LFunctionConj.lean",
+      "git_blob": "012ab346736b12d6445dbe645875cba95ba546ee",
+      "sha256": "eb694ab7677aa9563c78dc54bd78633e0f90eb29d3316f44c54bc4fed9141b48",
+      "origin": "donor",
+      "donor_blob": "012ab346736b12d6445dbe645875cba95ba546ee"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LandauCauchy.lean",
+      "git_blob": "9405a623b92a30f9f473dbc864191dc933a900fd",
+      "sha256": "7c833f418e6ea15d73b8a3d8c39fbf7792dde8b3c0a47fb6d0c99c83e8f1bc5e",
+      "origin": "donor",
+      "donor_blob": "9405a623b92a30f9f473dbc864191dc933a900fd"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LandauCoeff.lean",
+      "git_blob": "47119b606d772aef0c20b020b2f31540c4c85782",
+      "sha256": "7dda1332d03def3789441d987f6f5395524c239e7bbfc3d757d00c9eac281806",
+      "origin": "donor",
+      "donor_blob": "47119b606d772aef0c20b020b2f31540c4c85782"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LandauDichotomy.lean",
+      "git_blob": "db4918abccc7a19108a981442001dee2f9495758",
+      "sha256": "3571b41b59a55f247303dc758f45673e4437b89231e54a76b79d59cb6e7ff025",
+      "origin": "donor",
+      "donor_blob": "db4918abccc7a19108a981442001dee2f9495758"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LandauFinite.lean",
+      "git_blob": "d3cc4d2e68fac0c00bb6694e6a54ecc87e3fba4f",
+      "sha256": "b94f18049af2d7276ccaecf1c0dd0ee3f7df678c1c72c628e9be60b3acba82f8",
+      "origin": "donor",
+      "donor_blob": "d3cc4d2e68fac0c00bb6694e6a54ecc87e3fba4f"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LandauGrowthContra.lean",
+      "git_blob": "7d7f4d144fca8e72d311c8452786546db595fa18",
+      "sha256": "a03ff22640099dcbba1621ef9df237d24eb9909ed19a8dcccb8f981efb8ad1f2",
+      "origin": "donor",
+      "donor_blob": "7d7f4d144fca8e72d311c8452786546db595fa18"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LandauKernelMax.lean",
+      "git_blob": "74db0cc3e41c40b1beb0a2d4a909dda0df4391cf",
+      "sha256": "4cb82f3cd10bbe3f37b9e88d31b3df5e9ffb47cc49ff779c2620f23a9140de1f",
+      "origin": "donor",
+      "donor_blob": "74db0cc3e41c40b1beb0a2d4a909dda0df4391cf"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LandauNearest.lean",
+      "git_blob": "573c9f85765374bdfed8a6b96a5b75129f4ee0f4",
+      "sha256": "3a7373ee12c6ae6e7d57da0b54f0f84a22f76912d8576e10a0a45a4047845957",
+      "origin": "donor",
+      "donor_blob": "573c9f85765374bdfed8a6b96a5b75129f4ee0f4"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LandauPoleAsym.lean",
+      "git_blob": "f596e7e116ccde5ea00b603728b00fb390e2c547",
+      "sha256": "f5d3e024830b5fab6955e9493a99ccdbff1c00ef8f9ec195dcaea86797db2314",
+      "origin": "donor",
+      "donor_blob": "f596e7e116ccde5ea00b603728b00fb390e2c547"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LandauPoleReLe.lean",
+      "git_blob": "08ca3cb4ba2ba27ebef998ebee03f64b53b99d7e",
+      "sha256": "90310ac96ee10107fe8a659e6fe2c3bea206e16a8c43834f5fb9b25ee0de1949",
+      "origin": "donor",
+      "donor_blob": "08ca3cb4ba2ba27ebef998ebee03f64b53b99d7e"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/LogDerivLocal.lean",
+      "git_blob": "9c0776663e7fc026c260ffcc3cd6f8875c26670c",
+      "sha256": "861d7e7c1771c1509a2093d543f345444961c4e3ecea6b44184d0fefbfc0d819",
+      "origin": "donor",
+      "donor_blob": "9c0776663e7fc026c260ffcc3cd6f8875c26670c"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/MellinRamp.lean",
+      "git_blob": "1d5f8e96e5d7f6d1461f63071d8e873ce729ef93",
+      "sha256": "4330b2d99950b50c88ef4509498a387e0310e8aa109fdb5fcf3c542799c7e825",
+      "origin": "donor",
+      "donor_blob": "1d5f8e96e5d7f6d1461f63071d8e873ce729ef93"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/WindowHypUOfWindowHyp.lean",
+      "git_blob": "3e2a47057424aeca03a9f9f7931411cbc8a5fa75",
+      "sha256": "2fd5b4943b46200d86434d676aa634bc3ef44d5919a0b973f63b30d81bf24efe",
+      "origin": "donor",
+      "donor_blob": "3e2a47057424aeca03a9f9f7931411cbc8a5fa75"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/kernelIntegral.lean",
+      "git_blob": "4c3fc45a680a5f4608d26f656898e347c2678c4c",
+      "sha256": "b8febe19d2dfc558df047754dca2a0662435eaf98573ec2496b568808a7914e7",
+      "origin": "donor",
+      "donor_blob": "4c3fc45a680a5f4608d26f656898e347c2678c4c"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/landauTails.lean",
+      "git_blob": "c15f2bdb1b26a0dbe5d93f8f3cc4344b136a5af4",
+      "sha256": "1e2f0f4ee566f7b74c4c22dee23fb7ce23189cacef8bdf3f7811e7e353e0289f",
+      "origin": "donor",
+      "donor_blob": "c15f2bdb1b26a0dbe5d93f8f3cc4344b136a5af4"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/landauWindow.lean",
+      "git_blob": "7485daafd1ee0e2a48a039d03741c06099aa2655",
+      "sha256": "0bcb6acb533b9b0326db9dc80429211617834cbf5d0f704339b2d7ef37c9e896",
+      "origin": "donor",
+      "donor_blob": "7485daafd1ee0e2a48a039d03741c06099aa2655"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/landauWindowIneq.lean",
+      "git_blob": "471ee311dad2e59131c02f5bbf0de25d26d4a1c3",
+      "sha256": "556b6f59e3f20cf41fe1c11e801b8480d807cf6de619f86c1db6f62cef6328d6",
+      "origin": "donor",
+      "donor_blob": "471ee311dad2e59131c02f5bbf0de25d26d4a1c3"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/measurableGchi.lean",
+      "git_blob": "61e1dfbbadea9b58d6d30b80803780665ca04c68",
+      "sha256": "e5eab411d968830aafaaa5e1d29a30f1cbbb691346d3eac8c9e20a5e542f03ae",
+      "origin": "donor",
+      "donor_blob": "61e1dfbbadea9b58d6d30b80803780665ca04c68"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/mellinGchiModOne.lean",
+      "git_blob": "3b9b4d156f6a493016c04c38d58867f4d60a4993",
+      "sha256": "368dc60bf692d35beb80fc570a5130974aa98f50f4ed3639fc52324a59094f70",
+      "origin": "donor",
+      "donor_blob": "3b9b4d156f6a493016c04c38d58867f4d60a4993"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/mellinGchiOfNeOne.lean",
+      "git_blob": "1ea4c4328a4bca1d0b918fd7b5b190074ec7e7dd",
+      "sha256": "e0e38a41be1ca569636c90f47b04bc3b3ac1dbb9ff869c94b21550ec3b06c0d5",
+      "origin": "donor",
+      "donor_blob": "1ea4c4328a4bca1d0b918fd7b5b190074ec7e7dd"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauTheorems/poleData.lean",
+      "git_blob": "dfecff7af99c5d8ce8c535c507ed6d4fae4bf474",
+      "sha256": "0c31357349b484f26baf3523382a8794a02e07841bf498b67f46a91beabf553d",
+      "origin": "donor",
+      "donor_blob": "dfecff7af99c5d8ce8c535c507ed6d4fae4bf474"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Analytic/LandauZeroFreeCriterion.lean",
+      "git_blob": "3aac131a58843acc412b8ed96a2b2803a9200142",
+      "sha256": "97f6936bf46c55111cbbec4afbaf338d3b2f6d5e0795aec51b02fb64a17a65db",
+      "origin": "reduced-donor",
+      "donor_blob": "cd1f301a6a13b0ad131c872c86f49757fe766c50"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Common.lean",
+      "git_blob": "ed581117d7876ecf5c007c67074729d469e0c7dc",
+      "sha256": "b1dfda2355e780d92f2333d1c8edf0873d433db39800b5a3878b9cf6fff81ed8",
+      "origin": "reduced-donor",
+      "donor_blob": "8f6c96d78e23cc720895655fa3334cb06254016e"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/DisplacementGrowth.lean",
+      "git_blob": "86ef29580b3fce3591c20965333982f28fc39b58",
+      "sha256": "34a12c94e7ba1681cc19c782692209702fe52c2d8a03dff837806a6501b15dad",
+      "origin": "donor",
+      "donor_blob": "86ef29580b3fce3591c20965333982f28fc39b58"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/Energy.lean",
+      "git_blob": "8c77a9197cfd2a724671a26cf61cdffebfdeef8c",
+      "sha256": "625c46d4a6a174ae597ad81883ec2a63d4985cfcea13dfa8cd77f625eb55cd6d",
+      "origin": "reduced-donor",
+      "donor_blob": "ea5a9a8050a69b17ec78b1b43598c476fba61cfa"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/LiteralEnergyGrowth.lean",
+      "git_blob": "7b9f789c165db904aab0e68fd9349bdc0053ba69",
+      "sha256": "9f750f7b3335d772cf6bbaa32b490a9d92b134ab83e3bdb8cb8e776b74949e5a",
+      "origin": "donor",
+      "donor_blob": "7b9f789c165db904aab0e68fd9349bdc0053ba69"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/PowerDetectorSupply.lean",
+      "git_blob": "acfdf34f01089f66769df73c0c0a46d9b4fae2d2",
+      "sha256": "e9fef033c5b724076adbe1c986b8562ecf01e2acdc05a88903685c0bd82b38ac",
+      "origin": "reduced-donor",
+      "donor_blob": "77b1c49573fea3b603b089e1abb102bf89b3d919"
+    },
+    {
+      "path": "Zeta23/OPICATerminal/SourceNormalization.lean",
+      "git_blob": "ac3d078f91800a46c218ce0502d6abce8e1ccf23",
+      "sha256": "ebe81da6e47f0a63aa3407834f3a675719f59bc1c3977406b291fca65cc95dc1",
+      "origin": "reduced-donor",
+      "donor_blob": "0d465aa066420bb45411f70d3da6a53c50cdd126"
+    },
+    {
+      "path": "Zeta23/RHReference/CompactEnergyAdapter.lean",
+      "git_blob": "629e81d5d0997c8364accfcb8d062cd064db6eb9",
+      "sha256": "8dec6ff9c0d167bb5709478053da1cf5e045791be0f9fbe767b86ad995b59398",
+      "origin": "reference"
+    },
+    {
+      "path": "Zeta23/RHReference/CompactEnergyClosure.lean",
+      "git_blob": "1a2c570c1b55a20c19f2fdc8ea102ca7545f7b5c",
+      "sha256": "958a860ee648730767c2fe70b63d136ff0468730ce484b55f116572481256745",
+      "origin": "reference"
+    },
+    {
+      "path": "Zeta23/RHReference/CompactEnergyRate.lean",
+      "git_blob": "493247d237e5c4994cb6898e76142e87feb6e9a3",
+      "sha256": "9f83eb80570dd6a21deef9d4ac8f89560e13e5278c89e6e7bf51bd6f9eb260d3",
+      "origin": "reference"
+    },
+    {
+      "path": "Zeta23/RHReference/CompactEnergyTerminalExpected.lean",
+      "git_blob": "e11df81625a4287381669e4f88bb9d119867e0da",
+      "sha256": "3915efe5cb94c4029925ff15b5423cfd4ec9c50f807982bd93659554acb5eff5",
+      "origin": "reference"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/FixedGapLogDerivative.lean",
+      "git_blob": "5f2a3329b035c17bea6092e755ff9393860e9957",
+      "sha256": "9111865b54586066077b861c98f88fb54690132a7b526c68908cab76ff79ed83",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/LiteralPerronDirichlet.lean",
+      "git_blob": "49270078cd806598e7d0d2d5cf6c44c2299bc699",
+      "sha256": "6a7de373f47773fe7270bc4dc34f8227e34115b644fbbd63d0b49b14bf417ac2",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/LiteralPerronFixedGapBound.lean",
+      "git_blob": "3167fde6ef4976f57071dff03839c5759cc83dd1",
+      "sha256": "3fd487f9f2699ee7c376dbd310e305edc16cc5a88bbbb0668793307638bc8f65",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/LiteralPerronFixedStripTransfer.lean",
+      "git_blob": "81cdeef3c422aa1c1de319119dfc3e482fd8adf6",
+      "sha256": "0370e9b6e89e5c45e4e707df650785ab682f0ef028860442f6362b562d55f552",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/LiteralPerronPole.lean",
+      "git_blob": "97f5d2771d0b5944deccd6653706bd361b0e0335",
+      "sha256": "54a042f61a4c9a17e0e6667b25bd0e843e5b8932156fa9fbd74c3059454fea71",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/LiteralPerronPowerBound.lean",
+      "git_blob": "d60b25e66346d26bd8dc73f2a9cd67049504a394",
+      "sha256": "bacb1659fb1d90b094d5cdba0d4b184efb3e821edf698d7c354bce413479d58f",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/LiteralPerronRectangle.lean",
+      "git_blob": "bd607fbc9038a919f9379566d25d91c82c16d684",
+      "sha256": "334c7301794c8bcdd96227fddbc14580a7dfc54d56b02edc0e88c4a76b095cc5",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/LiteralPerronRemainder.lean",
+      "git_blob": "a375d755c12c68ebcd42c1005c84d39877b6fa8c",
+      "sha256": "f14c859f7669b42776e006523a200d066a39a812de140144e445cdb4dd9b9a1d",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/LiteralPerronShift.lean",
+      "git_blob": "64b1a067df97c9bfff08b31ab5e3ea1c9fe6c9f7",
+      "sha256": "d0aee0dce1d593483a7f559cfd660e5fdbca3b219ae9e9bb274c239c76dbcc40",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/LiteralRampMellin.lean",
+      "git_blob": "282cdc9d2d27cf1c57fdcf3b0ec2b29345c6a3c5",
+      "sha256": "3ba8a1c381ae8e2c1779e299ef2833a3276ff473c95a33a01842cab5b0e5b8a7",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/PerronFixedGapEdges.lean",
+      "git_blob": "35d5197c3133c687046a0c4f2a943ef638be22d5",
+      "sha256": "4d3633edbee1033fa9e8b2ded8904beafb4add61f713fd4c882d077853aa76f6",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/PerronHeightWeight.lean",
+      "git_blob": "8586a20130c8ff257887e58d8020f31b270b1d58",
+      "sha256": "b1eddc25ba3625ad01669bf2718495d024f4f5f135367ae5e45b6370567be99c",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Perron/PerronHorizontalDecay.lean",
+      "git_blob": "6d70d6fab66c35e0966538d54f11138c27cbce25",
+      "sha256": "a14c8f23d0720470e2a4da0109f115fb90852bf633829e10d8f78b8a900432c2",
+      "origin": "perron"
+    },
+    {
+      "path": "Zeta23/RHReference/Step123Expected.lean",
+      "git_blob": "5a9de9befdd3f9dd8dabf4514a0a528a7179b183",
+      "sha256": "bd1f6c656093a17a5333a9c9de17da5b22240aff1d04cdace47e604a649d8788",
+      "origin": "reference"
+    },
+    {
+      "path": "Zeta23/RHReference/Step123MomentHandoff.lean",
+      "git_blob": "c7701088d78c86c8ede99e706c4fd1a31190e8b3",
+      "sha256": "043cc5287941f3bb15e06843aeb3c8ffc49d6f48f3d83b984948d07b94c3278f",
+      "origin": "reference"
+    },
+    {
+      "path": "Zeta23/RHReference/Step123MomentHandoffAudit.lean",
+      "git_blob": "437a42e2f1dda5382c580d96cbcb0bb411eb9ded",
+      "sha256": "2627ce0e886dcdb19745a7110c09c911436110a155b5631d6dc672ddc7e9fdd8",
+      "origin": "reference"
+    }
+  ]
+}
