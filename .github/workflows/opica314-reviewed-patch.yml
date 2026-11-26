@@ -1,0 +1,49 @@
+name: Stage verified dispatch registration graph products
+on:
+  push:
+    branches: [ops/rh-workmode-opica314-canonical-relay]
+    paths:
+      - .github/workflows/opica314-reviewed-patch.yml
+permissions:
+  actions: read
+  contents: write
+jobs:
+  relay:
+    if: github.repository == 'HMarcusWH/zeta-23-lean'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          path: relay
+          sparse-checkout: |
+            .github/operations/opica314-canonical-relay
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'eae5672cbbb18c4d53f50eccb664efb0421b877a'
+          persist-credentials: false
+          path: base
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: 3.13.5
+      - name: Verify exact review and fast-forward its dedicated review ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REVIEWED_RESULT_TREE: '7ab96c28f455d0bfdd280856b6d9e0bcf7015e5c'
+          REVIEWED_PATCH_SHA256: '7781a97fc2bf1b43b6f8c378f6596e5f07cd0d6cbb5939fb2cb51e6fd1059a0d'
+          REVIEWED_CHANGED_PATHS: '["research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json","research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json","research/RHRC/graph/generated/REPOSITORY_COVERAGE.json","research/RHRC/graph/generated/registry_nodes.jsonl","research/RHRC/graph/generated/relations/relations-4.jsonl","research/RHRC/graph/generated/repository_files.jsonl","research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json","research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json"]'
+        run: |
+          set -euo pipefail
+          path=relay/.github/operations/opica314-canonical-relay
+          python3 -B "$path/publish_reviewed.py" \
+            --run 45497774256 \
+            --attempt 1 \
+            --artifact '14986188748' \
+            --sha256 '0e4c361f39691ec3ec61ee2fe61e0c5b588e656846d7bf69a9a61f1cde12fcc8' \
+            --head 'eae5672cbbb18c4d53f50eccb664efb0421b877a' \
+            --tree '4efb4851013134e01742c230f64c256e0046375c' \
+            --base base \
+            --census "$path/GENERATED_PRODUCT_CENSUS.json" \
+            --consumer "$path/verify_canonical_candidate.py"
