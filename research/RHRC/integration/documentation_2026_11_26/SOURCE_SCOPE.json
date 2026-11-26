@@ -9,7 +9,8 @@
   "edited": {
     "research/RHRC/integration/opica_composition/cli.py": "6172cd78b931a96374c3df408b4d3635c23271c4",
     ".github/workflows/documentation.yml": "a2940392194e34ee46190420057e42773b1d74c4",
-    "research/RHRC/graph/FILE_CLASSES.json": "d978224a829976126afa1c0866c77c124136a3cb"
+    "research/RHRC/graph/FILE_CLASSES.json": "d978224a829976126afa1c0866c77c124136a3cb",
+    "research/RHRC/integration/opica_composition/tests/test_end_to_end.py": "bfb69d1ed8c69efb3ff776c023a5f8f59a0b66ce"
   },
-  "validator_template_sha256": "3eda35e6c2e7aa49259556f3f34dc91d51d039dbd61854983d1f38d466a5efea"
+  "validator_template_sha256": "b1fa2a44f969d80bcf7885f35645aca19d43fc7552f0f312c2e8f0a8599c7aa8"
 }
