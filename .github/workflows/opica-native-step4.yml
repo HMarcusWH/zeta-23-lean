@@ -37,7 +37,8 @@ jobs:
         run: |
           set -euo pipefail
           python -m py_compile verification/opica-native-terminal/*.py
-          bash -n verification/opica-native-terminal/run.sh verification/opica-native-terminal/historical.sh
+          bash -n verification/opica-native-terminal/run.sh
+          bash -n verification/opica-native-terminal/historical.sh
           python verification/opica-native-terminal/extract_all.py --test
           for opt in "" "-O"; do
             python $opt verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --head "$GITHUB_SHA" --self-test
