@@ -26,8 +26,11 @@ def require(condition, message):
 
 
 def digest(path):
+    result = hashlib.sha256()
     with path.open("rb") as stream:
-        return hashlib.file_digest(stream, "sha256").hexdigest()
+        for block in iter(lambda: stream.read(1 << 20), b""):
+            result.update(block)
+    return result.hexdigest()
 
 
 def read(path):
