@@ -54,8 +54,8 @@ def self_test():
         e.write_text(json.dumps(rows[0])+"\n")
         rejects(lambda: graph_digest(p,spec,members))
         marker=p/"marker"; marker.write_text("forged\n")
-        rejects(lambda: expect_text(marker,"NATIVE_R2_TERMINAL_PASS"))
-    print("NATIVE_R2_COMPARATOR_CONTROLS_PASS 6")
+        rejects(lambda: expect_text(marker,"NATIVE_R3_TERMINAL_PASS"))
+    print("NATIVE_R3_COMPARATOR_CONTROLS_PASS 6")
 
 if __name__ == "__main__":
     ap=argparse.ArgumentParser(); ap.add_argument("paths",nargs="*",type=P); ap.add_argument("--self-test",action="store_true")

@@ -27,4 +27,4 @@ with tempfile.TemporaryDirectory() as t:
         rejects(lambda:verify_stage(work,receipt))
     finally:p.unlink()
 verify_stage(work,receipt)
-print("NATIVE_R2_STAGE_CONTROLS_PASS 6")
+print("NATIVE_R3_STAGE_CONTROLS_PASS 6")

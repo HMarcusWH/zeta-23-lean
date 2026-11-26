@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reconstruct the exact committed R2 source overlay, never mutate the historical checkout."""
+"""Reconstruct the exact committed R3 source overlay, never mutate the historical checkout."""
 import argparse, copy, io, json, os, pathlib, re, subprocess, tarfile
 from port import verify_files, require, git, BASE, BASE_TREE, MATHLIB, HERE, PREFIX, sha, blob
 
@@ -9,8 +9,11 @@ R0 = "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736"
 R0_TREE = "ad3dc3ced9a58dbd4619f8635600791a692bce34"
 R1 = "c109fb02385bd4f7a00890594478e3bf664cbd14"
 R1_TREE = "855dfc4d6f9126be4b7078e0772e2b7c1bda3b4d"
+R2 = "cfc0e6bc92be1db226d4a84f9542ace9c4868e16"
+R2_TREE = "1732a82a22c6d48230a865c81249aa090b428afe"
 REPAIR_PATH = V + "REPAIR_MANIFEST.json"
 R1_PATH = V + "history/R1_REPAIR_MANIFEST.json"
+R2_PATH = V + "history/R2_REPAIR_MANIFEST.json"
 PORT_PATH = V + "PORT_MANIFEST.json"
 OVERLAY_DIR = V + "compatibility/lean-4.35.0/"
 OVERLAY_PATH = OVERLAY_DIR + "OVERLAY_MANIFEST.json"
@@ -20,6 +23,28 @@ TERMINAL_BLOB = "7f1e2cc138279c91e6972d1046d5528c5d9536a6"
 ADAPTER = "Zeta23Arithmetic/NativePrincipal.lean"
 ADAPTER_BLOB = "310daf8dce577ab1fb3dcbb454f3e1af00f8204a"
 WORKFLOW = ".github/workflows/opica-native-step4.yml"
+R3_REPAIRED_DESTINATIONS = {
+    "Zeta23/GammaFacts/IntMu.lean",
+    "Zeta23/CCM/NativeDampedCompletionResidual.lean",
+}
+# Exact R2 -> R3 scope; neither historical Lean nor arithmetic/terminal code can enter.
+R3_SCOPE = {
+    ".github/workflows/opica-native-step4.yml",
+    "verification/opica-native-terminal/README.md",
+    "verification/opica-native-terminal/admission.py",
+    "verification/opica-native-terminal/checker-preflight.sh",
+    "verification/opica-native-terminal/compare.py",
+    "verification/opica-native-terminal/compare_type_surfaces.py",
+    "verification/opica-native-terminal/compatibility/lean-4.35.0/OVERLAY_MANIFEST.json",
+    "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/NativeDampedCompletionResidual.lean",
+    "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/GammaFacts/IntMu.lean",
+    "verification/opica-native-terminal/epoch.py",
+    "verification/opica-native-terminal/historical.sh",
+    "verification/opica-native-terminal/history/R2_REPAIR_MANIFEST.json",
+    "verification/opica-native-terminal/receipts.py",
+    "verification/opica-native-terminal/run.sh",
+    "verification/opica-native-terminal/stage_controls.py",
+}
 CONFIG = '''name = "Zeta23"
 version = "0.1.0"
 defaultTargets = ["Zeta23Arithmetic", "Zeta23NativeTerminal"]
@@ -89,9 +114,17 @@ def validate_overlay(repo, head, overlay):
                 if r["path"].startswith("Zeta23/") and r["old_git_blob"]}
     require(len(expected) == 10, "wrong historical repair inventory")
     require(overlay["schema"] == "OPICA_NATIVE_COMPATIBILITY_OVERLAY_V1" and
-            overlay["version"] == "R2" and overlay["native_base"] == R0 and
+            overlay["version"] == "R3" and overlay["native_base"] == R0 and
             overlay["toolchain"] == TOOLCHAIN and overlay["mathlib"] == MATHLIB,
             "overlay identity drift")
+    previous_overlay = json.loads(committed(repo, R2, OVERLAY_PATH))
+    require(previous_overlay["version"] == "R2" and
+            {k: v for k, v in overlay.items() if k not in {"version", "replacements"}} ==
+            {k: v for k, v in previous_overlay.items() if k not in {"version", "replacements"}},
+            "R2 overlay metadata drift")
+    previous = {r["destination"]: r for r in previous_overlay["replacements"]}
+    require(len(previous) == len(previous_overlay["replacements"]) == 10 and
+            set(previous) == set(expected), "R2 overlay inventory drift")
     rows = overlay["replacements"]
     dests = [r["destination"] for r in rows]
     require(len(dests) == len(set(dests)) == 10 and set(dests) == set(expected),
@@ -104,6 +137,17 @@ def validate_overlay(repo, head, overlay):
         p, repl = r["destination"], r["replacement_path"]
         safe_path(p); safe_path(repl)
         old = expected[p]
+        prior = previous[p]
+        require(object_at(repo, R2, repl) == prior["replacement_git_blob"] and
+                blob(committed(repo, R2, repl)) == prior["replacement_git_blob"],
+                "R2 replacement ancestry drift " + p)
+        if p in R3_REPAIRED_DESTINATIONS:
+            require({k: v for k, v in r.items() if k not in {"replacement_git_blob", "reason"}} ==
+                    {k: v for k, v in prior.items() if k not in {"replacement_git_blob", "reason"}} and
+                    r["replacement_git_blob"] != prior["replacement_git_blob"],
+                    "R3 repair identity drift " + p)
+        else:
+            require(r == prior, "unapproved overlay change " + p)
         require(repl == OVERLAY_DIR + p and p != TERMINAL and
                 not p.startswith(PREFIX + "/"), "overlay destination escape " + p)
         require(r["historical_git_blob"] == old["old_git_blob"] and
@@ -121,47 +165,61 @@ def validate_overlay(repo, head, overlay):
     return rows
 
 def validate_scope(repo, head, m):
-    require(m["schema"] == "OPICA_NATIVE_REPAIR_MANIFEST_V2" and m["version"] == "R2",
+    require(m["schema"] == "OPICA_NATIVE_REPAIR_MANIFEST_V3" and m["version"] == "R3",
             "bad repair manifest schema")
-    require(m["baseline_commit"] == R1 and m["baseline_tree"] == R1_TREE and
-            m["acquisition_commit"] == R0 and m["acquisition_tree"] == R0_TREE,
-            "repair baseline mismatch")
-    for rev, tree in ((BASE, BASE_TREE), (R0, R0_TREE), (R1, R1_TREE)):
+    require(m["baseline_commit"] == R2 and m["baseline_tree"] == R2_TREE and
+            m["acquisition_commit"] == R0 and m["acquisition_tree"] == R0_TREE and
+            m["native_base"] == BASE, "repair baseline mismatch")
+    for rev, tree in ((BASE, BASE_TREE), (R0, R0_TREE), (R1, R1_TREE), (R2, R2_TREE)):
         require(git(repo, "rev-parse", rev + "^{tree}").decode().strip() == tree,
                 "baseline tree drift " + rev)
     require(m["claim"] == "RH_OPEN", "invalid claim promotion")
     require(committed(repo, head, R1_PATH) == committed(repo, R1, REPAIR_PATH),
             "R1 manifest history drift")
+    require(committed(repo, head, R2_PATH) == committed(repo, R2, REPAIR_PATH),
+            "R2 manifest history drift")
+    prior = json.loads(committed(repo, R2, REPAIR_PATH))
+    require(prior["schema"] == "OPICA_NATIVE_REPAIR_MANIFEST_V2" and
+            prior["version"] == "R2" and prior["baseline_commit"] == R1 and
+            prior["baseline_tree"] == R1_TREE and prior["claim"] == "RH_OPEN",
+            "R2 history identity drift")
+    prior_paths = [r["path"] for r in prior["changes"]]
+    require(len(prior_paths) == len(set(prior_paths)) and REPAIR_PATH not in prior_paths and
+            set(git(repo, "diff", "--name-only", R1, R2).decode().splitlines()) ==
+                set(prior_paths) | {REPAIR_PATH}, "R2 historical scope drift")
+    for row in prior["changes"]:
+        p = row["path"]; safe_path(p)
+        require(object_at(repo, R1, p) == row["old_git_blob"] and
+                object_at(repo, R2, p) == row["new_git_blob"],
+                "R2 historical repair blob drift " + p)
     require(committed(repo, head, PORT_PATH) == committed(repo, R0, PORT_PATH),
             "original port manifest modified")
     overlay = json.loads(committed(repo, head, OVERLAY_PATH))
     rows = validate_overlay(repo, head, overlay)
-    restores = {r["destination"] for r in rows}
     changes = m["changes"]
     paths = [r["path"] for r in changes]
-    require(len(paths) == len(set(paths)) and REPAIR_PATH not in paths,
-            "duplicate/self-referential repair path")
-    changed = set(git(repo, "diff", "--name-only", R1, head).decode().splitlines())
+    require(len(paths) == len(set(paths)) and set(paths) == R3_SCOPE,
+            "unexpected R3 repair inventory")
+    changed = set(git(repo, "diff", "--name-only", R2, head).decode().splitlines())
     require(changed == set(paths) | {REPAIR_PATH},
             "repair scope drift: " + str(sorted(changed.symmetric_difference(set(paths) | {REPAIR_PATH}))))
-    require(restores <= set(paths), "historical restoration missing")
     for r in changes:
         p = r["path"]; safe_path(p)
-        require(p in restores or p.startswith(V) or p == WORKFLOW or
-                p == "Zeta23/OPICANativeTerminal/AuditCore.lean",
-                "unexpected R2 scope " + p)
-        require(p != PORT_PATH and p != TERMINAL, "frozen proof edit " + p)
-        require(object_at(repo, R1, p) == r["old_git_blob"] and
-                object_at(repo, head, p) == r["new_git_blob"] and r["new_git_blob"] is not None,
+        require(p in R3_SCOPE and p != PORT_PATH and p != TERMINAL,
+                "frozen or unapproved path " + p)
+        require(object_at(repo, R2, p) == r["old_git_blob"] and
+                object_at(repo, head, p) == r["new_git_blob"] and
+                r["new_git_blob"] is not None and r["old_git_blob"] != r["new_git_blob"],
                 "repair blob drift " + p)
         require(blob((repo / p).read_bytes()) == r["new_git_blob"], "working tree drift " + p)
-        require(bool(r["reason"]) and r["statement_policy"] in
-                {"PRESERVE", "RESTORE_HISTORICAL", "RETIRED_TACTIC_ENGINE", "VERIFICATION_ONLY"},
-                "unclassified repair " + p)
+        policy = "PRESERVE" if p in {OVERLAY_DIR + d for d in R3_REPAIRED_DESTINATIONS} else "VERIFICATION_ONLY"
+        require(bool(r["reason"]) and r["statement_policy"] == policy, "unclassified repair " + p)
     native_delta = set(git(repo, "diff", "--name-only", BASE, head, "--", "Zeta23", "Zeta23.lean")
                        .decode().splitlines())
     require(native_delta == {TERMINAL, "Zeta23/OPICANativeTerminal/AuditCore.lean"},
             "historical native tree drift " + str(native_delta))
+    require(not git(repo, "diff", "--name-only", R2, head, "--", PREFIX).strip(),
+            "arithmetic source changed")
     require(object_at(repo, head, TERMINAL) == TERMINAL_BLOB, "terminal changed")
     require(object_at(repo, head, ADAPTER) == ADAPTER_BLOB, "R1 principal adapter changed")
     require(committed(repo, head, ADAPTER) == committed(repo, head, V + "PrincipalStrip.lean"),
@@ -184,6 +242,9 @@ def test_scope(repo, head):
     a = copy.deepcopy(m); a["changes"].pop(); mutations.append(a)
     a = copy.deepcopy(m); a["baseline_tree"] = "0" * 40; mutations.append(a)
     a = copy.deepcopy(m); a["claim"] = "RH_PROVED"; mutations.append(a)
+    a = copy.deepcopy(m); a["baseline_commit"] = R1; mutations.append(a)
+    a = copy.deepcopy(m); a["changes"][0]["path"] = TERMINAL; mutations.append(a)
+    a = copy.deepcopy(m); a["changes"][0]["old_git_blob"] = "0" * 40; mutations.append(a)
     for i, a in enumerate(mutations):
         reject(lambda a=a: validate_scope(repo, head, a), "manifest " + str(i))
     overlay = json.loads(committed(repo, head, OVERLAY_PATH))
@@ -196,9 +257,18 @@ def test_scope(repo, head):
         a = copy.deepcopy(overlay); a["replacements"][0][key] = value; om.append(a)
     a = copy.deepcopy(overlay); a["toolchain"] = "leanprover/lean4:v4.33.0-rc2"; om.append(a)
     a = copy.deepcopy(overlay); a["mathlib"] = "0" * 40; om.append(a)
+    untouched = next(i for i, row in enumerate(overlay["replacements"])
+                     if row["destination"] not in R3_REPAIRED_DESTINATIONS)
+    a = copy.deepcopy(overlay); a["replacements"][untouched]["reason"] += " (unauthorized)"; om.append(a)
+    repaired = next(i for i, row in enumerate(overlay["replacements"])
+                    if row["destination"] in R3_REPAIRED_DESTINATIONS)
+    previous = {r["destination"]: r for r in json.loads(committed(repo, R2, OVERLAY_PATH))["replacements"]}
+    a = copy.deepcopy(overlay)
+    a["replacements"][repaired] = previous[a["replacements"][repaired]["destination"]]
+    om.append(a)
     for i, a in enumerate(om):
         reject(lambda a=a: validate_overlay(repo, head, a), "overlay " + str(i))
-    print("NATIVE_R2_SCOPE_CONTROLS_PASS", len(mutations) + len(om), flush=True)
+    print("NATIVE_R3_SCOPE_CONTROLS_PASS", len(mutations) + len(om), flush=True)
 
 def staged_files(out):
     paths = []
@@ -215,16 +285,18 @@ def staged_files(out):
 
 def verify_stage(out, receipt):
     r = json.loads(receipt.read_text())
-    require(r["schema"] == "NATIVE_TERMINAL_REPAIR_EPOCH_V2" and
+    require(r["schema"] == "NATIVE_TERMINAL_REPAIR_EPOCH_V3" and
             r["claim"] == "RH_OPEN" and r["toolchain"] == TOOLCHAIN and
-            r["mathlib"] == MATHLIB, "source receipt schema drift")
+            r["mathlib"] == MATHLIB and r["repair_baseline"] == R2 and
+            r["acquisition_commit"] == R0 and r["native_base"] == BASE and
+            len(r["overlay"]) == 10, "source receipt schema drift")
     require(staged_files(out) == r["files"], "effective staged source drift")
     require(blob((out / TERMINAL).read_bytes()) == TERMINAL_BLOB, "effective terminal changed")
     require(blob((out / ADAPTER).read_bytes()) == ADAPTER_BLOB, "effective adapter changed")
     for row in r["overlay"]:
         require(blob((out / row["destination"]).read_bytes()) == row["replacement_git_blob"],
                 "effective overlay drift " + row["destination"])
-    print("NATIVE_R2_EFFECTIVE_SOURCE_PASS", r["head"], len(r["files"]), flush=True)
+    print("NATIVE_R3_EFFECTIVE_SOURCE_PASS", r["head"], len(r["files"]), flush=True)
 
 def stage(repo, out, receipt, head):
     require(git(repo, "rev-parse", "HEAD").decode().strip() == head, "checkout HEAD drift")
@@ -268,9 +340,9 @@ def stage(repo, out, receipt, head):
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes(committed(repo, head, V + src))
     receipt.parent.mkdir(parents=True, exist_ok=True)
-    receipt.write_text(json.dumps({"schema": "NATIVE_TERMINAL_REPAIR_EPOCH_V2", "head": head,
+    receipt.write_text(json.dumps({"schema": "NATIVE_TERMINAL_REPAIR_EPOCH_V3", "head": head,
       "tree": git(repo, "rev-parse", head + "^{tree}").decode().strip(), "native_base": BASE,
-      "repair_baseline": R1, "acquisition_commit": R0,
+      "repair_baseline": R2, "acquisition_commit": R0,
       "repair_manifest_sha256": sha(committed(repo, head, REPAIR_PATH)),
       "overlay_manifest_sha256": sha(committed(repo, head, OVERLAY_PATH)),
       "original_port_manifest_sha256": sha(committed(repo, head, PORT_PATH)),
@@ -278,7 +350,7 @@ def stage(repo, out, receipt, head):
       "external_project_packages": 0, "mathlib": MATHLIB, "toolchain": TOOLCHAIN,
       "overlay": overlay, "files": staged_files(out), "claim": "RH_OPEN"}, indent=2) + "\n")
     verify_stage(out, receipt)
-    print("NATIVE_R2_EPOCH_STAGE_PASS", head, flush=True)
+    print("NATIVE_R3_EPOCH_STAGE_PASS", head, flush=True)
 
 def pins(out):
     actual = json.loads((out / "lake-manifest.json").read_text())

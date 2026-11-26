@@ -1,6 +1,6 @@
 {
   "schema": "OPICA_NATIVE_COMPATIBILITY_OVERLAY_V1",
-  "version": "R2",
+  "version": "R3",
   "native_base": "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736",
   "toolchain": "leanprover/lean4:v4.35.0",
   "mathlib": "56a005855ea17e0b0958f73ec801ae140b0a1679",
@@ -18,10 +18,10 @@
       "destination": "Zeta23/CCM/NativeDampedCompletionResidual.lean",
       "historical_git_blob": "3e5b53a269dade6b231b5c8017ead5d0d2ff4a13",
       "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/NativeDampedCompletionResidual.lean",
-      "replacement_git_blob": "bf9d3fe3a6c03d6506f0c1517301153f1bf2ba6a",
+      "replacement_git_blob": "63d9f4d6c6cae4e9528aac8710781826b2f7b955",
       "r1_replacement_git_blob": "8be456504dcfc5f078e5a433894e5005178b4322",
       "statement_policy": "PRESERVE",
-      "reason": "Typed projection subtraction simplification. R2: explicit typed algebra/continuity/projection repair."
+      "reason": "Typed projection subtraction simplification. R2: explicit typed algebra/continuity/projection repair. R3: Use map_sub, typed congrArg, and sub_zero as separate steps."
     },
     {
       "destination": "Zeta23/CCM/UniversalSincSourceLaw.lean",
@@ -72,10 +72,10 @@
       "destination": "Zeta23/GammaFacts/IntMu.lean",
       "historical_git_blob": "4e74f60e72515bed2145c42853ff667980b03105",
       "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/GammaFacts/IntMu.lean",
-      "replacement_git_blob": "d7747295f1d95fa15be9e61759fa113ca6819b88",
+      "replacement_git_blob": "455b90504a691b66decc515290b953ed79f2bb6b",
       "r1_replacement_git_blob": "bd72372b90ec60726c4cae8fcebebf6ffbca0938",
       "statement_policy": "PRESERVE",
-      "reason": "Explicit nonzero logarithm arguments from positive tau and pi. R2: explicit typed algebra/continuity/projection repair."
+      "reason": "Explicit nonzero logarithm arguments from positive tau and pi. R2: explicit typed algebra/continuity/projection repair. R3: Explicitly instantiate both functions and both points in ContinuousAt.comp_of_eq."
     },
     {
       "destination": "Zeta23/RvM/GammaSide.lean",

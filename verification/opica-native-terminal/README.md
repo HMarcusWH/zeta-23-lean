@@ -64,10 +64,52 @@ by default. Full reruns (rather than failed-only reruns) regenerate the same
 attempt's source-lock and other evidence artifacts. Local pinned Lean execution
 was not available to the implementation agent; CI is authoritative.
 
-For local execution stage from the committed R2 head with epoch.py as above.
-Preserve source.json outside the stage, set OPICA_R2_LOCKED_SOURCE_RECEIPT to
-that exact source-lock receipt, and use run.sh with absolute stage and output
-paths and one of smoke, leaf-pnt, leaf-gamma, leaf-operator, native, arithmetic,
-terminal, independent, comparator. Each mode requires a freshly reconstructed
+R2 local execution used the R2-specific receipt schema and environment variable.
+For the current epoch use the R3 instructions below. The modes were smoke,
+leaf-pnt, leaf-gamma, leaf-operator, native, arithmetic, terminal, independent,
+and comparator. Each mode requires a freshly reconstructed
 stage, pinned Mathlib setup and no existing project .olean. The final workflow
 also compares compiler public types against the restored historical epoch.
+
+## R3 — repair the two remaining exposed native elaboration errors
+
+R3 starts at R2 cfc0e6bc92be1db226d4a84f9542ace9c4868e16, tree 1732a82a22c6d48230a865c81249aa090b428afe, run 45794998702.
+The historical proof files, eight other overlay variants, 792 arithmetic
+modules, R1 principal adapter, root inventory, AuditCore and terminal theorem
+are frozen. Only the IntMu private continuity helper and the final typed
+subtraction in nativeAdjointResidualStep_kernelProjection_preserved change.
+The Gamma repair uses the explicitly instantiated composition lemma at the
+common Mathlib pin. The projection repair uses map_sub, congrArg in the
+kernel submodule and sub_zero as separate steps. Neither theorem statement
+nor public definition is changed.
+
+The R2 repair manifest is archived byte-for-byte. R3 validates the historical
+R1/R2 lineage and the exact R2-to-R3 changed-path inventory; the two repaired
+overlay replacements have new bound blob IDs, and the other eight must match
+R2 exactly. All previous scope/staging/receipt controls remain mandatory;
+new controls reject an unauthorized R2 delta, overlay changes and R2 rollback.
+R3-specific receipts cannot be mixed with earlier epochs.
+
+The checker-preflight job runs a small independent scratch project in parallel
+with the expensive frontiers: real stock replay, fresh kernel replay, real
+bubblewrap and nanoda acceptance of a clean proof and rejection of a well-typed
+forbidden-axiom solution. It does not build or use an RH solution or qualify
+the RH theorem. Both preflight and the full independent stock replay are
+prerequisites for the full alternate-checker job; all must pass before manual
+canonical review. The historical regressions still require a complete harvest.
+
+Local execution: stage the exact R3 checkout with epoch.py, keep the
+source-lock receipt outside the stage, and set OPICA_R3_LOCKED_SOURCE_RECEIPT
+to the matching receipt. Use run.sh with absolute paths and mode smoke,
+checker-preflight, leaf-pnt, leaf-gamma, leaf-operator, native, arithmetic,
+terminal, independent or comparator. Every mode starts from freshly
+reconstructed source and pinned dependencies, without project oleans.
+For checker-preflight and comparator a functioning real bubblewrap sandbox
+is required; no unsandboxed fallback is admitted.
+
+R1 and R2 arithmetic-frontier jobs were still running at the implementation
+snapshot and their unfinished logs were unavailable. No speculative
+arithmetic adapter repair is included. Local pinned Lean execution was
+unavailable; the proposed proof bodies and verification pipeline remain
+qualification-pending. RH_OPEN; no automatic claim promotion, no assertion of
+independent arithmetic invention, and no closure of the separate literal-energy route.

@@ -13,7 +13,7 @@ def load(path):
 a,b,out=map(P,sys.argv[1:4]);x,y=load(a),load(b)
 missing=sorted(set(x)-set(y));extra=sorted(set(y)-set(x))
 changed=sorted(k for k in set(x)&set(y) if x[k]!=y[k])
-r={"schema":"NATIVE_R2_PUBLIC_TYPE_COMPARISON","historical_sha256":digest(a),
+r={"schema":"NATIVE_R3_PUBLIC_TYPE_COMPARISON","historical_sha256":digest(a),
    "common_sha256":digest(b),"historical_count":len(x),"common_count":len(y),
    "missing":missing,"extra":extra,"changed":changed,
    "status":"PASS" if not (missing or extra or changed) else "REVIEW_REQUIRED","claim":"RH_OPEN"}

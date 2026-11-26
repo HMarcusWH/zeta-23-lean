@@ -183,7 +183,11 @@ theorem nativeAdjointResidualStep_kernelProjection_preserved
     change (nativeCompletionAdjointKernel epsilon hepsilon).orthogonalProjectionOnto v = 0
     exact (nativeCompletionAdjointKernel epsilon hepsilon).orthogonalProjectionOnto_eq_zero_iff.mpr hz
   change P (e - v) = P e
-  simpa only [hzero, sub_zero] using (map_sub P e v)
+  calc
+    P (e - v) = P e - P v := map_sub P e v
+    _ = P e - (0 : nativeCompletionAdjointKernel epsilon hepsilon) :=
+      congrArg (fun w : nativeCompletionAdjointKernel epsilon hepsilon => P e - w) hzero
+    _ = P e := sub_zero (P e)
 
 theorem nativeAdjointResidual_kernelProjection_preserved
     (epsilon : ℝ) (hepsilon : 0 ≤ epsilon) (e : nativeCompletionCausalL2) (n : ℕ) :

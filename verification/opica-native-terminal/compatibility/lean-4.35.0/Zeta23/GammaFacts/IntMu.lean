@@ -34,9 +34,10 @@ private theorem continuousAt_log_scaled_native_epoch (τ : ℝ) (hτ : 0 < τ) :
     continuousAt_id.div_const _
   have ho : ContinuousAt Real.log (τ / (2 * Real.pi)) :=
     Real.continuousAt_log harg
-  have hc : ContinuousAt (Real.log ∘ (fun t : ℝ => t / (2 * Real.pi))) τ :=
-    ho.comp hi
-  exact hc
+  exact ContinuousAt.comp_of_eq
+    (f := fun t : ℝ => t / (2 * Real.pi))
+    (g := Real.log) (x := τ) (y := τ / (2 * Real.pi))
+    ho hi rfl
 
 /-- FTC anchor: ∫_T^{2T} (1/2π)·log(τ/2π) dτ = T·ℓ₁/(2π) for T > 0. -/
 lemma integral_main_eq {T : ℝ} (hT : 0 < T) :

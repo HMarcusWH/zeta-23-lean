@@ -111,16 +111,16 @@ def validate_audits(path, mode):
 
 def verify_evidence(path, mode):
     src = read_json(path / "source.json")
-    require(src["schema"] == "NATIVE_TERMINAL_REPAIR_EPOCH_V2" and src["claim"] == "RH_OPEN" and
+    require(src["schema"] == "NATIVE_TERMINAL_REPAIR_EPOCH_V3" and src["claim"] == "RH_OPEN" and
             src["toolchain"] == "leanprover/lean4:v4.35.0" and src["package_count"] == 1 and
             src["external_project_packages"] == 0, "wrong source receipt")
     require(len(src["head"]) == len(src["tree"]) == 40 and len(src["overlay"]) == 10,
             "wrong source identity")
     contains(path / "pins.log", "NATIVE_COMMON_PIN_PASS")
     contains(path / "pins-after.log", "NATIVE_COMMON_PIN_PASS")
-    contains(path / "effective-source.log", "NATIVE_R2_EFFECTIVE_SOURCE_PASS " + src["head"])
+    contains(path / "effective-source.log", "NATIVE_R3_EFFECTIVE_SOURCE_PASS " + src["head"])
     contains(path / "lean-version.log", "version 4.35.0")
-    expect_text(path / "mode-pass.txt", "NATIVE_R2_" + mode.upper().replace("-", "_") + "_PASS")
+    expect_text(path / "mode-pass.txt", "NATIVE_R3_" + mode.upper().replace("-", "_") + "_PASS")
     if mode in {"terminal", "independent"}:
         expect_text(path / "kernel-pass.txt", "NATIVE_TERMINAL_STOCK_KERNEL_AND_AUDITS_PASS")
         for mod in ("Zeta23Arithmetic.New.ArithmeticOnly", "Zeta23Arithmetic.NativePrincipal",
@@ -133,6 +133,15 @@ def verify_evidence(path, mode):
     if mode == "arithmetic":
         for mod in ("Zeta23Arithmetic.New.ArithmeticOnly", "Zeta23Arithmetic.NativePrincipal"):
             contains(path / "leanchecker.log", "STOCK_KERNEL_PASS " + mod)
+    if mode == "checker-preflight":
+        expect_text(path / "checker-preflight-pass.txt", "NATIVE_CHECKER_PREFLIGHT_PASS")
+        contains(path / "preflight-stock.log", "STOCK_PREFLIGHT_PASS")
+        contains(path / "preflight-fresh.log", "FRESH_PREFLIGHT_PASS")
+        contains(path / "preflight-clean.log", "Running nanoda kernel on solution")
+        contains(path / "preflight-clean.log", "Your solution is okay!")
+        expect_text(path / "preflight-forbidden-exit.txt", "1")
+        contains(path / "preflight-forbidden.log", "nativePreflightForbidden")
+        require((path / "preflight-tools.sha256").is_file(), "missing checker preflight provenance")
     if mode == "comparator":
         contains(path / "comparator.log", "Running nanoda kernel on solution")
         contains(path / "comparator.log", "Your solution is okay!")
@@ -145,17 +154,17 @@ def verify_evidence(path, mode):
 
 def write(path, mode):
     src, edges = verify_evidence(path, mode)
-    q = {"schema": "OPICA_NATIVE_QUALIFICATION_R2", "mode": mode, "head": src["head"],
+    q = {"schema": "OPICA_NATIVE_QUALIFICATION_R3", "mode": mode, "head": src["head"],
          "tree": src["tree"], "claim": "RH_OPEN", "root_spec_sha256": digest(ROOT_SPEC),
          "source_sha256": digest(path / "source.json"), "edge_digests": edges,
          "files": inventory(path)}
     (path / "qualification.json").write_text(json.dumps(q, sort_keys=True, indent=2) + "\n")
-    print("NATIVE_R2_QUALIFICATION_RECEIPT", mode, src["head"])
+    print("NATIVE_R3_QUALIFICATION_RECEIPT", mode, src["head"])
 
 def verify(path, mode):
     q = read_json(path / "qualification.json")
     src, edges = verify_evidence(path, mode)
-    require(q["schema"] == "OPICA_NATIVE_QUALIFICATION_R2" and q["mode"] == mode and
+    require(q["schema"] == "OPICA_NATIVE_QUALIFICATION_R3" and q["mode"] == mode and
             q["claim"] == "RH_OPEN" and (q["head"], q["tree"]) == (src["head"], src["tree"]) and
             q["root_spec_sha256"] == digest(ROOT_SPEC) and
             q["source_sha256"] == digest(path / "source.json") and q["edge_digests"] == edges and

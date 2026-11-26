@@ -24,7 +24,7 @@ python - "$out" <<'PY'
 import json,pathlib,subprocess,sys
 out=pathlib.Path(sys.argv[1])
 def git(*args): return subprocess.check_output(["git",*args],text=True).strip()
-(out/"historical.json").write_text(json.dumps({"schema":"NATIVE_R2_HISTORICAL_TYPE_SURFACE",
+(out/"historical.json").write_text(json.dumps({"schema":"NATIVE_R3_HISTORICAL_TYPE_SURFACE",
  "status":"PASS","head":git("rev-parse","HEAD"),"tree":git("rev-parse","HEAD^{tree}"),
  "toolchain":"leanprover/lean4:v4.33.0-rc2","mathlib":"51e6992efd06126df61a496bebf8f49482a4e129",
  "claim":"RH_OPEN"},indent=2)+"\n")

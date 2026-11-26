@@ -4,7 +4,7 @@ work="$1"; out="$2"; mode="$3"
 here="$(cd "$(dirname "$0")" && pwd)"
 cd "$work"
 mkdir -p "$out/audit"
-locked="${OPICA_R2_LOCKED_SOURCE_RECEIPT:?source-lock receipt required}"
+locked="${OPICA_R3_LOCKED_SOURCE_RECEIPT:?source-lock receipt required}"
 cmp "$locked" "$out/source.json"
 python "$here/epoch.py" --out "$work" --verify-pins | tee "$out/pins.log"
 python "$here/epoch.py" --out "$work" --receipt "$out/source.json" --verify-stage | tee "$out/effective-source-before.log"
@@ -39,6 +39,9 @@ case "$mode" in
     lake build Zeta23.OPICANativeTerminal.AuditCore AuditSmokeFixtures 2>&1 | tee "$out/audit-core.log"
     lake env lean AuditSmoke.lean 2>&1 | tee "$out/audit-smoke.log"
     grep -F 'NATIVE_AUDIT_SMOKE_PASS' "$out/audit-smoke.log"
+    ;;
+  checker-preflight)
+    bash "$here/checker-preflight.sh" "$out"
     ;;
   leaf-pnt) lake build "${pnt[@]}" 2>&1 | tee "$out/native-leaves.log" ;;
   leaf-gamma) lake build "${gamma[@]}" 2>&1 | tee "$out/native-leaves.log" ;;
@@ -87,5 +90,5 @@ esac
 python "$here/epoch.py" --out "$work" --verify-pins | tee "$out/pins-after.log"
 python "$here/epoch.py" --out "$work" --receipt "$out/source.json" --verify-stage | tee "$out/effective-source.log"
 cmp "$locked" "$out/source.json"
-printf 'NATIVE_R2_%s_PASS\n' "$(echo "$mode" | tr '[:lower:]-' '[:upper:]_')" > "$out/mode-pass.txt"
+printf 'NATIVE_R3_%s_PASS\n' "$(echo "$mode" | tr '[:lower:]-' '[:upper:]_')" > "$out/mode-pass.txt"
 python "$here/receipts.py" "$mode" "$out"
