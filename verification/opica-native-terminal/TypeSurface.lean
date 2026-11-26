@@ -12,6 +12,9 @@ import Zeta23.CCM.UniversalSincSourceCharacteristic
 import Zeta23.Analytic.RectangleLogDeriv
 import Zeta23.WeilEF.Landau
 import Zeta23.ThmE.IntMuChi
+import Zeta23.CCM.UniversalSincSourceTail
+import Zeta23.XiPrime.ExplicitFormula.ZeroFree
+import Zeta23.OPICARound4.SourceDiscrepancy
 import Lean
 
 /-! Public declaration types, not proof bodies. The retired tactic engine is
@@ -28,7 +31,10 @@ run_cmd do
     "Zeta23.CCM.UniversalSincSourceCharacteristic",
     "Zeta23.Analytic.RectangleLogDeriv",
     "Zeta23.WeilEF.Landau",
-    "Zeta23.ThmE.IntMuChi"]
+    "Zeta23.ThmE.IntMuChi",
+    "Zeta23.CCM.UniversalSincSourceTail",
+    "Zeta23.XiPrime.ExplicitFormula.ZeroFree",
+    "Zeta23.OPICARound4.SourceDiscrepancy"]
   let mut rows : Array Json := #[]
   for (n, c) in env.constants.toList do
     let some idx := env.getModuleIdxFor? n | continue

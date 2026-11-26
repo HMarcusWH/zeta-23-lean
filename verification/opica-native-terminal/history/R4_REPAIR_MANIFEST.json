@@ -1,0 +1,147 @@
+{
+  "schema": "OPICA_NATIVE_REPAIR_MANIFEST_V4",
+  "version": "R4",
+  "baseline_commit": "176e582916156e1df90252aeb7746dd904f24983",
+  "baseline_tree": "11ebe592671e8e604d86ab851dc39dabdef7f02c",
+  "acquisition_commit": "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736",
+  "acquisition_tree": "ad3dc3ced9a58dbd4619f8635600791a692bce34",
+  "native_base": "2fe4a756e8576203cfb009314861616accdb6dde",
+  "source_run": 45804486743,
+  "source_native_job": 139868752046,
+  "source_checker_job": 139863614186,
+  "arithmetic_frontier_jobs": {
+    "R1": 139802668921,
+    "R2": 139833049273,
+    "R3": 139863614118
+  },
+  "compiler": "NOT_RUN_FOR_R4",
+  "claim": "RH_OPEN",
+  "changes": [
+    {
+      "path": ".github/workflows/opica-native-step4.yml",
+      "old_git_blob": "adcde33b1745806b3d1d2c37461ac851809aff71",
+      "new_git_blob": "15bfa4ff12f218c59a1f34a4762692f4ebf857fa",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/README.md",
+      "old_git_blob": "a9e2d8c619fb30757d8152d6db3c060ad9258126",
+      "new_git_blob": "3861ad5cf6e3ff39bfa26c3122f1ccd87200cb22",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/TypeSurface.lean",
+      "old_git_blob": "3002339459174ea837033ef60370e281b15b698f",
+      "new_git_blob": "5c8a123267ed7650c0593d7750d4946e2d9946f2",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/admission.py",
+      "old_git_blob": "31eeee4a404b4a5e53b4b36ab4b7f02cb4fc16c2",
+      "new_git_blob": "4abc0b5ce8ab28d894aab55ec824dda92a4daa55",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/checker-preflight.sh",
+      "old_git_blob": "ddfb47d3a91d11e8cd59215ec1331964cbeb4ab1",
+      "new_git_blob": "a08d757a2654ad17cbba6083fdc267374d40fb3e",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compare.py",
+      "old_git_blob": "c2335e7e43f4d6287a4fa5f1a22b1251b29c3ed2",
+      "new_git_blob": "54d187e8a3884ed844a9772fc6aa078c71ea2e60",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compare_type_surfaces.py",
+      "old_git_blob": "09c9d8c2b55a522f9224aca67d90a0b24ceddadd",
+      "new_git_blob": "04e2a7b15c5fe0fe3f7850d008cbe18cef5f4a0d",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/OVERLAY_MANIFEST.json",
+      "old_git_blob": "75bcbe7302fe5ef30dde5bb0170857074d3fd10a",
+      "new_git_blob": "0161f016fc98ebb40c4f6dd2237dbcf1a00c2175",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/Analytic/RectangleLogDeriv.lean",
+      "old_git_blob": null,
+      "new_git_blob": "45e7901507466c6d7d09d4c5423bc66023ef7489",
+      "reason": "Two explicit pointwise multiplication conversions.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/UniversalSincSourceCharacteristic.lean",
+      "old_git_blob": null,
+      "new_git_blob": "ecdae6fbb41c87611861e7b52947be36be80c2dc",
+      "reason": "Mapped probability mass-one proof.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/ThmE/IntMuChi.lean",
+      "old_git_blob": null,
+      "new_git_blob": "9c1a3cd57e8f43c8d4ede1bda2d23858c63688f3",
+      "reason": "R3 typed log continuity pattern.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/WeilEF/Landau.lean",
+      "old_git_blob": null,
+      "new_git_blob": "3621570e78521acad989662945e8035527f701c8",
+      "reason": "Pointwise finite product and nonnegative ordered products.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "verification/opica-native-terminal/epoch.py",
+      "old_git_blob": "dfa328616ab41d7403a65b3fbe8cd4a42e2d6bfd",
+      "new_git_blob": "1e6b50086dadf80d711fd5acf809eae4e4aa50c9",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/historical.sh",
+      "old_git_blob": "2cd87277cc3bef0b5914bddd417b83f8add19a3b",
+      "new_git_blob": "88016900772adb34361036f2ed171eaebebc1d49",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/history/R3_REPAIR_MANIFEST.json",
+      "old_git_blob": null,
+      "new_git_blob": "684292f58f026ebc54e4e28932b2e0b89c42d493",
+      "reason": "Archive exact R3 manifest bytes.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/receipts.py",
+      "old_git_blob": "8da4eb84cf0b04079f1565c0f218f39c11ed1106",
+      "new_git_blob": "2aa9baaff8780c3d0583ce7fa4fc786cb5bfb895",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/run.sh",
+      "old_git_blob": "73e426369eb6d70731723cae05f31c2248111d28",
+      "new_git_blob": "c1ed514ccbdc916af835dd7ec694f0a11027f637",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/stage_controls.py",
+      "old_git_blob": "e8cfa2d401fe7ec44ed074e0fb50c6fc3e4943b3",
+      "new_git_blob": "a97ec076fd7a7441f59f6f71b0367b3f01f3eb0f",
+      "reason": "R4 source-bound qualification, coverage, provenance or runner controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    }
+  ]
+}

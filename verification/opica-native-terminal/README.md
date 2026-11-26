@@ -149,3 +149,34 @@ recomputes public type comparison and retains manual admission and historical
 workflow harvest. The optional arithmetic-only endpoint is deliberately not
 part of this frozen repair. Local Lean execution was unavailable; CI must
 qualify these proposed proof bodies and runner configuration. RH_OPEN.
+
+
+## R5 — native downstream API migration
+
+Baseline: R4 92bfa975807f5bc22975c3f403ab79e680d64065, tree 69baeb56a6e14aef7c68ec59ceaba8576e94f01e;
+native run 45814873480, native-frontier job 139907926078. R4 compiled all
+four compatibility groups and exposed five primary errors in three modules.
+R2 arithmetic-frontier job 139833049273 passed all six roots and both stock
+kernel replays; R4 checker preflight 139901632977 passed real sandbox,
+stock/fresh replay, clean nanoda acceptance and forbidden-axiom rejection.
+
+R5 adds exactly three compatibility overlays: UniversalSincSourceTail (two
+mapped mass-one proofs), XiPrime.ExplicitFormula.ZeroFree (pointwise product),
+and OPICARound4.SourceDiscrepancy (toLpLin_apply and toLpLin_one).
+All fourteen R4 overlays, historical sources, 792 relocated arithmetic modules,
+principal adapter, original port manifest, exact terminal declaration, AuditCore
+and sixteen-root inventory remain unchanged. R4 manifest archived byte-for-byte.
+Public type comparison covers sixteen mathematical modules. Ubuntu 22.04 and
+all independent checker and source-lock gates remain mandatory.
+
+A deterministic lexical migration-family scan of the staged terminal import
+closure is produced in source-lock; normal and optimized Python must agree.
+It is advisory only: occurrences require review or compilation, and do not
+establish API breakage or theorem authority. No speculative additional Lean
+changes. Full compiler qualification, historical workflow harvest, semantic
+review and manual canonical admission remain required.
+
+Use OPICA_R5_LOCKED_SOURCE_RECEIPT and existing run.sh modes on fresh stages.
+Local Lean was unavailable at implementation; CI qualification is pending.
+No automatic claim promotion or closure of the separate literal-energy route.
+RH_OPEN.

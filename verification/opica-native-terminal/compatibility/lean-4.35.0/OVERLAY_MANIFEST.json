@@ -1,6 +1,6 @@
 {
   "schema": "OPICA_NATIVE_COMPATIBILITY_OVERLAY_V1",
-  "version": "R4",
+  "version": "R5",
   "native_base": "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736",
   "toolchain": "leanprover/lean4:v4.35.0",
   "mathlib": "56a005855ea17e0b0958f73ec801ae140b0a1679",
@@ -130,6 +130,33 @@
       "introduced_in": "R4",
       "statement_policy": "PRESERVE",
       "reason": "R3 typed log continuity pattern."
+    },
+    {
+      "destination": "Zeta23/CCM/UniversalSincSourceTail.lean",
+      "historical_git_blob": "2e2fb9000ed0b40115e55f6bd6274516eabc100a",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/UniversalSincSourceTail.lean",
+      "replacement_git_blob": "1e169fd8b831b943196941a42a87ec8859ab7dd9",
+      "introduced_in": "R5",
+      "statement_policy": "PRESERVE",
+      "reason": "Two direct mapped mass-one proofs; preserve original laws and convolution."
+    },
+    {
+      "destination": "Zeta23/XiPrime/ExplicitFormula/ZeroFree.lean",
+      "historical_git_blob": "9b486018e86ff3fab9a3e0bcf36e9d28c00063a5",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/XiPrime/ExplicitFormula/ZeroFree.lean",
+      "replacement_git_blob": "4e7360933c7e674ff3375dccf482deec94e723a2",
+      "introduced_in": "R5",
+      "statement_policy": "PRESERVE",
+      "reason": "Explicit pointwise multiplication conversion for logarithmic derivative."
+    },
+    {
+      "destination": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "historical_git_blob": "73c99d70ddcd3ba73fcda3d88de9a999bd91d8ac",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "replacement_git_blob": "b60ed25088ea74ed57ca943e6c80c080a37ae75d",
+      "introduced_in": "R5",
+      "statement_policy": "PRESERVE",
+      "reason": "Pinned toLpLin_apply and toLpLin_one; preserve inner pairing and orthogonality."
     }
   ]
 }

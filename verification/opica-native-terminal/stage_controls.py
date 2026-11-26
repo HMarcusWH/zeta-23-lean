@@ -16,7 +16,7 @@ with tempfile.TemporaryDirectory() as t:
     for key,value in (("claim","RH_PROVED"),("toolchain","leanprover/lean4:v4.33.0-rc2"),("mathlib","0"*40)):
         m=copy.deepcopy(r);m[key]=value;q.write_text(json.dumps(m))
         rejects(lambda:verify_stage(work,q))
-    for key,value in (("schema","NATIVE_TERMINAL_REPAIR_EPOCH_V3"),("repair_baseline","cfc0e6bc92be1db226d4a84f9542ace9c4868e16")):
+    for key,value in (("schema","NATIVE_TERMINAL_REPAIR_EPOCH_V4"),("repair_baseline","176e582916156e1df90252aeb7746dd904f24983")):
         m=copy.deepcopy(r);m[key]=value;q.write_text(json.dumps(m))
         rejects(lambda:verify_stage(work,q))
     m=copy.deepcopy(r);m["overlay"].pop();q.write_text(json.dumps(m))
@@ -32,4 +32,4 @@ with tempfile.TemporaryDirectory() as t:
         rejects(lambda:verify_stage(work,receipt))
     finally:p.unlink()
 verify_stage(work,receipt)
-print("NATIVE_R4_STAGE_CONTROLS_PASS 9")
+print("NATIVE_R5_STAGE_CONTROLS_PASS 9")
