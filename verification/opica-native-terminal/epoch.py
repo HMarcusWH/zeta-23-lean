@@ -43,6 +43,8 @@ R7_NEW_DESTINATIONS = {
     "Zeta23/CCM/NativeWeilResponseBounds.lean",
 }
 R7_SCOPE = {
+    V + "AuditNativeFrontier.lean",
+    V + "Audit.lean",
     ".github/workflows/opica-native-step4.yml",
     "verification/opica-native-terminal/epoch.py",
     "verification/opica-native-terminal/run.sh",

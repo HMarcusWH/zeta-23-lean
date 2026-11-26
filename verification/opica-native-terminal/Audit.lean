@@ -21,14 +21,14 @@ example {β : ℝ} (hβ : 1 / 2 < β) (hβ1 : β < 1)
 example (h : CofinalMomentSliceVanishingErrorBounds) : RiemannHypothesis :=
   riemannHypothesis_of_cofinal_moment_slice_bounds h
 example (h : CofinalMomentSliceVanishingErrorBounds) :
-    ∀ ρ : zetaZeroConfig.carrier, (ρ : ℂ).re = 1 / 2 :=
+    ∀ ρ : Zeta23.zetaZeroConfig.carrier, (ρ : ℂ).re = 1 / 2 :=
   no_off_line_zero_of_cofinal_moment_slice_bounds h
 open Zeta23.OPICANativeTerminal
 example : CofinalMomentSliceVanishingErrorBounds := step4C1_native_arithmetic
 example : RiemannHypothesis := riemannHypothesis_step4_native_arithmetic
-example (ρ : ℂ) (hρ : ρ ∈ zetaZeroConfig.carrier) : ρ.re ≤ 1 / 2 :=
+example (ρ : ℂ) (hρ : ρ ∈ Zeta23.zetaZeroConfig.carrier) : ρ.re ≤ 1 / 2 :=
   actual_zero_re_le_half ρ hρ
-example (ρ : ℂ) (hρ : ρ ∈ zetaZeroConfig.carrier) : ρ.re = 1 / 2 :=
+example (ρ : ℂ) (hρ : ρ ∈ Zeta23.zetaZeroConfig.carrier) : ρ.re = 1 / 2 :=
   actual_critical_line_arithmetic ρ hρ
 example (L : ℝ) (hL : 0 < L) :
     EvenMomentSliceLowerBound L (originalDetectorQuarticCutoff L) 0 ∧

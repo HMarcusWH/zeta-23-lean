@@ -7,7 +7,7 @@ open Zeta23.OPICARound4.ArithmeticFrontier
 example (h : CofinalMomentSliceVanishingErrorBounds) : RiemannHypothesis :=
   riemannHypothesis_of_cofinal_moment_slice_bounds h
 example (h : CofinalMomentSliceVanishingErrorBounds) :
-    ∀ ρ : zetaZeroConfig.carrier, (ρ : ℂ).re = 1 / 2 :=
+    ∀ ρ : Zeta23.zetaZeroConfig.carrier, (ρ : ℂ).re = 1 / 2 :=
   no_off_line_zero_of_cofinal_moment_slice_bounds h
 
 set_option maxHeartbeats 0 in

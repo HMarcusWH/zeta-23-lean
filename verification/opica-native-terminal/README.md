@@ -239,3 +239,12 @@ include the new overlay. Compiler and independent qualification are pending.
 Use `OPICA_R7_LOCKED_SOURCE_RECEIPT` with `run.sh` on fresh committed stages.
 RH_OPEN remains in force through terminal compilation, independent stock
 replay, alternate checking and explicit canonical review.
+
+### R7 audit namespace qualification
+
+At the exact predecessor `54cf16d26475520c2bb8d2f2b55d6eb1d2bc24c2`, the native
+frontier compiled and its five named dependency roots passed, but the independent
+example could not resolve the unqualified zero carrier in the top-level audit file.
+The frontier and terminal audit examples now name `Zeta23.zetaZeroConfig.carrier`
+explicitly. The proof sources, audit roots, type targets, and qualification gates
+are the same. This head requires its own clean qualification and RH remains OPEN.

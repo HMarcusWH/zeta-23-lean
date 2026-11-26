@@ -28,9 +28,23 @@
       "statement_policy": "VERIFICATION_ONLY"
     },
     {
+      "path": "verification/opica-native-terminal/Audit.lean",
+      "old_git_blob": "d3254cb3b906fbb7b981357dcc472f8a603bfb8c",
+      "reason": "Qualify the exact native zero carrier at top level in the audit examples.",
+      "statement_policy": "VERIFICATION_ONLY",
+      "new_git_blob": "220c0e3079e38d33ecca2ba2b33ef38fc3751bf4"
+    },
+    {
+      "path": "verification/opica-native-terminal/AuditNativeFrontier.lean",
+      "old_git_blob": "04140778f3ae1a03332a0f65d2b59b03de4bd9aa",
+      "reason": "Qualify the exact native zero carrier at top level in the audit examples.",
+      "statement_policy": "VERIFICATION_ONLY",
+      "new_git_blob": "75f13c259f7be188f3df33ca3f3683ef17c6666a"
+    },
+    {
       "path": "verification/opica-native-terminal/README.md",
       "old_git_blob": "370903a3c83dba23b07c1fe13cf2b9e55162ff20",
-      "new_git_blob": "3caf59c16599398acfb7d55f32d1ea70f653ec5b",
+      "new_git_blob": "a61c8f3f5592d543fc6f73cd0951099cd611d40f",
       "reason": "Document the exact R6 failure, supporting evidence, and R7 repair and acceptance boundary.",
       "statement_policy": "VERIFICATION_ONLY"
     },
@@ -86,7 +100,7 @@
     {
       "path": "verification/opica-native-terminal/epoch.py",
       "old_git_blob": "d0049ae8b96030c642f223eb24c779c084a53d02",
-      "new_git_blob": "5597d78530d295bbea764b4198cc076d29aa8388",
+      "new_git_blob": "4ab44af434cecda1fea7dc1794694f7eacd5bcf0",
       "reason": "Require the exact R6 parent tree and frozen R0–R6 manifest lineage. Preserve 19 overlays and bind the new twentieth overlay and exact R7 scope.",
       "statement_policy": "VERIFICATION_ONLY"
     },
@@ -133,5 +147,13 @@
     "second_attempt_failed_job": 140089271346,
     "scope": "ANCESTOR_TRANSPORT_ONLY",
     "qualification": "NOT_RUN"
+  },
+  "audit_name_retry": {
+    "previous_candidate_commit": "54cf16d26475520c2bb8d2f2b55d6eb1d2bc24c2",
+    "run": 45873156086,
+    "job": 140176399973,
+    "artifact": 15155887388,
+    "scope": "EXACT_ZERO_CARRIER_NAME_IN_AUDITS_ONLY",
+    "qualification": "PENDING"
   }
 }
