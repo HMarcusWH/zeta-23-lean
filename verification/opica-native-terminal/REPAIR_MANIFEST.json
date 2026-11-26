@@ -23,8 +23,8 @@
     {
       "path": ".github/workflows/opica-native-step4.yml",
       "old_git_blob": "7e24342bdb14aa2bb7d4272b67429625a38bd308",
-      "new_git_blob": "6f326080d6d51b3d4fdf52a3143882571faf2a84",
-      "reason": "Version exact R7 receipts and artifacts. Fetch pinned R6 ancestry in all nine source reconstruction blocks. Preserve all job dependencies, permissions, sandbox and runner pins.",
+      "new_git_blob": "66ac51640f9cab0f2e45d2b53da77e87098a60d7",
+      "reason": "Version exact R7 receipts and artifacts. Fetch pinned R6 ancestry in all nine source reconstruction blocks. Preserve all job dependencies, permissions, sandbox and runner pins. Fetch depth 16 covers the linear ancestry and retains exact pin checks. A missing ancestor gets at most three HTTP/1.1 fetch attempts and must pass git cat-file.",
       "statement_policy": "VERIFICATION_ONLY"
     },
     {
@@ -125,5 +125,13 @@
       "reason": "Reject a stale R6 stage schema and R5 parent and retain all nine controls.",
       "statement_policy": "VERIFICATION_ONLY"
     }
-  ]
+  ],
+  "operational_retry_candidate": {
+    "previous_candidate_commit": "7b2414b97cbfefabf15e23707d31b02708c59284",
+    "first_attempt_run": 45859606664,
+    "first_attempt_job": 140046866252,
+    "second_attempt_failed_job": 140089271346,
+    "scope": "ANCESTOR_TRANSPORT_ONLY",
+    "qualification": "NOT_RUN"
+  }
 }

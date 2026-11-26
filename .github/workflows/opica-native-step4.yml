@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 16
           persist-credentials: false
       - name: Reconstruct exact committed R7 epoch
         shell: bash
@@ -29,7 +29,15 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
           for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
-            git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - name: Verify exact source and adversarial controls
@@ -69,7 +77,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 16
           persist-credentials: false
       - name: Reconstruct exact committed R7 epoch
         shell: bash
@@ -77,7 +85,15 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
           for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
-            git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
@@ -117,7 +133,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 16
           persist-credentials: false
       - name: Reconstruct exact committed R7 epoch
         shell: bash
@@ -125,7 +141,15 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
           for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
-            git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
@@ -161,7 +185,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 16
           persist-credentials: false
       - name: Reconstruct exact committed R7 epoch
         shell: bash
@@ -169,7 +193,15 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
           for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
-            git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
@@ -205,7 +237,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 16
           persist-credentials: false
       - name: Reconstruct exact committed R7 epoch
         shell: bash
@@ -213,7 +245,15 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
           for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
-            git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
@@ -308,7 +348,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 16
           persist-credentials: false
       - name: Reconstruct exact committed R7 epoch
         shell: bash
@@ -316,7 +356,15 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
           for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
-            git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
@@ -352,7 +400,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 16
           persist-credentials: false
       - name: Reconstruct exact committed R7 epoch
         shell: bash
@@ -360,7 +408,15 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
           for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
-            git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
@@ -412,7 +468,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 16
           persist-credentials: false
       - name: Reconstruct exact committed R7 epoch
         shell: bash
@@ -420,7 +476,15 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
           for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
-            git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
@@ -465,7 +529,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 4
+          fetch-depth: 16
           persist-credentials: false
       - name: Reconstruct exact committed R7 epoch
         shell: bash
@@ -473,7 +537,15 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/result"
           for rev in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
-            git cat-file -e "$rev^{commit}" || git fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
           done
           python verification/opica-native-terminal/epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
