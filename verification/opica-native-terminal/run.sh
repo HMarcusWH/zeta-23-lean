@@ -4,7 +4,7 @@ work="$1"; out="$2"; mode="$3"
 here="$(cd "$(dirname "$0")" && pwd)"
 cd "$work"
 mkdir -p "$out/audit"
-locked="${OPICA_R6_LOCKED_SOURCE_RECEIPT:?source-lock receipt required}"
+locked="${OPICA_R7_LOCKED_SOURCE_RECEIPT:?source-lock receipt required}"
 cmp "$locked" "$out/source.json"
 python "$here/epoch.py" --out "$work" --verify-pins | tee "$out/pins.log"
 python "$here/epoch.py" --out "$work" --receipt "$out/source.json" --verify-stage | tee "$out/effective-source-before.log"
@@ -20,7 +20,7 @@ fi
 pnt=(Zeta23.FromPNTPlus.Tactic.AdditiveCombination Zeta23.FromPNTPlus.ResidueCalcOnRectangles Zeta23.FromPNTPlus.StrongPNTPrefix Zeta23.FromPNTPlus.EulerMaclaurin)
 gamma=(Zeta23.CCM.DictionaryArchDiagonal Zeta23.WeilEF.GammaRBracket Zeta23.RvM.GammaSide Zeta23.GammaFacts.IntMu Zeta23.ThmE.IntMuChi)
 operator=(Zeta23.CCM.UniversalSincSourceLaw Zeta23.CCM.NativeDampedCompletionResidual Zeta23.CCM.UniversalSincSourceCharacteristic Zeta23.CCM.UniversalSincSourceTail Zeta23.OPICARound4.SourceDiscrepancy Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry)
-analytic=(Zeta23.Analytic.RectangleLogDeriv Zeta23.WeilEF.Landau Zeta23.XiPrime.ExplicitFormula.ZeroFree Zeta23.CCM.NativeWeilResponse)
+analytic=(Zeta23.Analytic.RectangleLogDeriv Zeta23.WeilEF.Landau Zeta23.XiPrime.ExplicitFormula.ZeroFree Zeta23.CCM.NativeWeilResponse Zeta23.CCM.NativeWeilResponseBounds)
 kernel_replay() {
   local mod="$1"
   lake env leanchecker --verbose "$mod" 2>&1 | tee -a "$out/leanchecker.log"
@@ -93,5 +93,5 @@ esac
 python "$here/epoch.py" --out "$work" --verify-pins | tee "$out/pins-after.log"
 python "$here/epoch.py" --out "$work" --receipt "$out/source.json" --verify-stage | tee "$out/effective-source.log"
 cmp "$locked" "$out/source.json"
-printf 'NATIVE_R6_%s_PASS\n' "$(echo "$mode" | tr '[:lower:]-' '[:upper:]_')" > "$out/mode-pass.txt"
+printf 'NATIVE_R7_%s_PASS\n' "$(echo "$mode" | tr '[:lower:]-' '[:upper:]_')" > "$out/mode-pass.txt"
 python "$here/receipts.py" "$mode" "$out"

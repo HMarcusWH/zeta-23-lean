@@ -8,7 +8,7 @@ OVERLAY=HERE/"compatibility/lean-4.35.0/OVERLAY_MANIFEST.json"
 def expected_modules():
     rows=json.loads(OVERLAY.read_text())["replacements"]
     modules={r["destination"].removesuffix(".lean").replace("/", ".") for r in rows}
-    require(len(modules)==19 and "Zeta23.FromPNTPlus.Tactic.AdditiveCombination" in modules,
+    require(len(modules)==20 and "Zeta23.FromPNTPlus.Tactic.AdditiveCombination" in modules,
             "overlay module inventory drift")
     return modules-{"Zeta23.FromPNTPlus.Tactic.AdditiveCombination"}
 def load(path):
@@ -22,7 +22,7 @@ def comparison(a,b):
     x,y=load(a),load(b)
     missing=sorted(set(x)-set(y));extra=sorted(set(y)-set(x))
     changed=sorted(k for k in set(x)&set(y) if x[k]!=y[k])
-    return {"schema":"NATIVE_R6_PUBLIC_TYPE_COMPARISON","historical_sha256":digest(a),
+    return {"schema":"NATIVE_R7_PUBLIC_TYPE_COMPARISON","historical_sha256":digest(a),
        "common_sha256":digest(b),"historical_count":len(x),"common_count":len(y),
        "modules":sorted(expected_modules()),
        "missing":[list(k) for k in missing],"extra":[list(k) for k in extra],
@@ -44,7 +44,7 @@ def self_test():
         b.write_text(json.dumps(wrong));reject(lambda:comparison(a,b))
         wrong=[dict(r) for r in rows];wrong[0]["type_expr"]="False"
         b.write_text(json.dumps(wrong));require(comparison(a,b)["status"]=="REVIEW_REQUIRED","changed type accepted")
-    print("NATIVE_R6_TYPE_CONTROLS_PASS 4")
+    print("NATIVE_R7_TYPE_CONTROLS_PASS 4")
 if __name__=="__main__":
     if sys.argv[1:]==["--self-test"]: self_test()
     else:

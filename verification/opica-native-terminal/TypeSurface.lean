@@ -17,6 +17,7 @@ import Zeta23.XiPrime.ExplicitFormula.ZeroFree
 import Zeta23.OPICARound4.SourceDiscrepancy
 import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry
 import Zeta23.CCM.NativeWeilResponse
+import Zeta23.CCM.NativeWeilResponseBounds
 import Lean
 
 /-! Public declaration types, not proof bodies. The retired tactic engine is
@@ -38,7 +39,8 @@ run_cmd do
     "Zeta23.XiPrime.ExplicitFormula.ZeroFree",
     "Zeta23.OPICARound4.SourceDiscrepancy",
     "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry",
-    "Zeta23.CCM.NativeWeilResponse"]
+    "Zeta23.CCM.NativeWeilResponse",
+    "Zeta23.CCM.NativeWeilResponseBounds"]
   let mut rows : Array Json := #[]
   for (n, c) in env.constants.toList do
     let some idx := env.getModuleIdxFor? n | continue

@@ -215,3 +215,27 @@ execution is unavailable; compiler qualification is pending. No automatic
 canonical admission or claim promotion. The attributed arithmetic source port
 and native direct C1 composition do not establish independent arithmetic
 invention or the separate literal-energy route. RH_OPEN.
+
+## R7 — interval product order at the Lean 4.35 pin
+
+R6 source custody, historical type export, audit smoke, four compatibility
+leaves and checker preflight passed on exact commit
+`f2bc83962ec6d331f3503095a33a91e9af8fa286`, tree
+`a1bdddd092ffc47a86f798ef697b42fb3d81a758`. Its native frontier first built
+4,292 leaf jobs and exported 332 public declarations at the common pin, matching
+the historical count. The [native frontier log](https://github.com/HMarcusWH/zeta-23-lean/actions/runs/45844171814/job/140017592705)
+then reported exactly one direct Lean error at
+`Zeta23/CCM/NativeWeilResponseBounds.lean:212:6`. The deprecated `MemLp.mul'`
+argument order produced `h ξ * g ξ` at the common pin, while the integrability
+proof expected `g ξ * h ξ`. Cross-epoch type comparison was skipped.
+
+R7 adds one common-pin overlay for that proof body. It uses typed `MemLp g 2`
+and `MemLp h 2` inputs in that order with `MemLp.fun_mul (r := 1)`.
+The historical module, its public statements, all 19 earlier overlays, the
+arithmetic source port, terminal declaration and audit roots are preserved.
+The corresponding analytic leaf and both compiler-epoch public type exports
+include the new overlay. Compiler and independent qualification are pending.
+
+Use `OPICA_R7_LOCKED_SOURCE_RECEIPT` with `run.sh` on fresh committed stages.
+RH_OPEN remains in force through terminal compilation, independent stock
+replay, alternate checking and explicit canonical review.

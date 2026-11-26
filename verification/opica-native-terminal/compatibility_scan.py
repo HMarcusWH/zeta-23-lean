@@ -27,7 +27,7 @@ def candidates(text):
 
 def scan(work, receipt):
     source = json.loads(receipt.read_text())
-    require(source["schema"] == "NATIVE_TERMINAL_REPAIR_EPOCH_V6" and
+    require(source["schema"] == "NATIVE_TERMINAL_REPAIR_EPOCH_V7" and
             source["claim"] == "RH_OPEN", "wrong source lock for scan")
     overlay = {r["destination"] for r in source["overlay"]}
     seen, pending, rows, external = set(), [ROOT], [], set()
@@ -52,7 +52,7 @@ def scan(work, receipt):
                          ("FROZEN_ARITHMETIC" if module.startswith("Zeta23Arithmetic.") else "HISTORICAL_NATIVE"),
                          "disposition": "REVIEW_OR_COMPILE"})
     rows.sort(key=lambda r: (r["path"], r["line"], r["family"], r["token"]))
-    return {"schema": "NATIVE_R6_LEXICAL_COMPATIBILITY_SCAN", "status": "ADVISORY_ONLY",
+    return {"schema": "NATIVE_R7_LEXICAL_COMPATIBILITY_SCAN", "status": "ADVISORY_ONLY",
             "head": source["head"], "tree": source["tree"], "source_sha256": sha(receipt.read_bytes()),
             "claim": "RH_OPEN", "root": ROOT, "local_modules": sorted(seen),
             "external_imports": sorted(external), "counts": dict(sorted(Counter(r["family"] for r in rows).items())),
@@ -70,7 +70,7 @@ def self_test():
                                 (5, "indicator_restrict", "memLp_indicator_iff_restrict"),
                                 (6, "other_euclidean_api", "toEuclideanLin_eq_toLin_orthonormal"),
                                 (6, "removed_euclidean_one", "toEuclideanLin_one")], "lexical scan control failed")
-    print("NATIVE_R6_LEXICAL_SCAN_CONTROL_PASS")
+    print("NATIVE_R7_LEXICAL_SCAN_CONTROL_PASS")
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
@@ -84,4 +84,4 @@ if __name__ == "__main__":
     else:
         r = scan(a.work, a.receipt)
         a.out.write_text(json.dumps(r, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-        print("NATIVE_R6_LEXICAL_SCAN_COMPLETE", len(r["local_modules"]), len(r["occurrences"]), r["counts"])
+        print("NATIVE_R7_LEXICAL_SCAN_COMPLETE", len(r["local_modules"]), len(r["occurrences"]), r["counts"])
