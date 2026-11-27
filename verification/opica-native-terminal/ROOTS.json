@@ -1,0 +1,85 @@
+{
+  "schema": "OPICA_NATIVE_ROOTS_R2",
+  "roots": [
+    {
+      "name": "eventually_primeError_le_rpow",
+      "role": "arithmetic",
+      "edges": true
+    },
+    {
+      "name": "entireL_ne_zero_of_primeError_le",
+      "role": "arithmetic",
+      "edges": false
+    },
+    {
+      "name": "Zeta23Arithmetic.Principal.weighted_upper_at",
+      "role": "arithmetic",
+      "edges": false
+    },
+    {
+      "name": "Zeta23Arithmetic.Principal.principal_weighted_upper",
+      "role": "arithmetic",
+      "edges": false
+    },
+    {
+      "name": "Zeta23Arithmetic.Principal.zeta_ne_zero_of_principal_weighted_upper",
+      "role": "arithmetic",
+      "edges": false
+    },
+    {
+      "name": "Zeta23Arithmetic.Principal.principal_fixed_strip",
+      "role": "arithmetic",
+      "edges": false
+    },
+    {
+      "name": "Zeta23.OPICARound4.ArithmeticFrontier.riemannHypothesis_of_cofinal_moment_slice_bounds",
+      "role": "native",
+      "edges": false
+    },
+    {
+      "name": "Zeta23.OPICARound4.ArithmeticFrontier.no_off_line_zero_of_cofinal_moment_slice_bounds",
+      "role": "native",
+      "edges": false
+    },
+    {
+      "name": "Zeta23.OPICARound4.ArithmeticFrontier.evenMomentSliceLowerBound_zero_of_critical_line",
+      "role": "native",
+      "edges": false
+    },
+    {
+      "name": "Zeta23.OPICARound4.ArithmeticFrontier.oddMomentSliceLowerBound_zero_of_critical_line",
+      "role": "native",
+      "edges": false
+    },
+    {
+      "name": "Zeta23.OPICARound4.ArithmeticFrontier.abs_re_sub_half_le_of_re_le",
+      "role": "native",
+      "edges": false
+    },
+    {
+      "name": "Zeta23.OPICANativeTerminal.actual_zero_re_le_half",
+      "role": "terminal",
+      "edges": false
+    },
+    {
+      "name": "Zeta23.OPICANativeTerminal.actual_critical_line_arithmetic",
+      "role": "terminal",
+      "edges": false
+    },
+    {
+      "name": "Zeta23.OPICANativeTerminal.both_parity_zero_floor_arithmetic",
+      "role": "terminal",
+      "edges": false
+    },
+    {
+      "name": "Zeta23.OPICANativeTerminal.step4C1_native_arithmetic",
+      "role": "terminal",
+      "edges": false
+    },
+    {
+      "name": "Zeta23.OPICANativeTerminal.riemannHypothesis_step4_native_arithmetic",
+      "role": "terminal",
+      "edges": true
+    }
+  ]
+}

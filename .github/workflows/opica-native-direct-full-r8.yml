@@ -1,0 +1,667 @@
+name: Native Step 4 full direct R8 qualification (RH OPEN)
+on:
+  push:
+    branches: [review/pr319-direct-full-r8]
+    paths:
+      - 'Zeta23/**'
+      - 'Zeta23Arithmetic/**'
+      - 'verification/opica-native-terminal/**'
+      - 'verification/opica-native-surface-trial/**'
+      - '.github/workflows/opica-native-direct-full-r8.yml'
+  workflow_dispatch:
+env:
+  OPICA_DIRECT_FULL_R8: "1"
+permissions:
+  contents: read
+concurrency:
+  group: opica-native-full-r8-${{ github.ref }}-${{ github.sha }}
+  cancel-in-progress: false
+jobs:
+  source-lock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 16
+          persist-credentials: false
+      - name: Reconstruct the full direct epoch at the current commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          for rev in 42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f 0e8c9fc21693c2e250e756e550ba9ac8940ab401 b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
+          done
+          python verification/opica-native-terminal/full_r8_epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - name: Verify exact source and adversarial controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile verification/opica-native-terminal/*.py
+          bash -n verification/opica-native-terminal/run.sh
+          bash -n verification/opica-native-terminal/historical.sh
+          bash -n verification/opica-native-terminal/checker-preflight.sh
+          python verification/opica-native-terminal/extract_all.py --test
+          for opt in "" "-O"; do
+            python $opt verification/opica-native-terminal/compare.py --self-test
+            python $opt verification/opica-native-terminal/compare_type_surfaces.py --self-test
+            python $opt verification/opica-native-terminal/compatibility_scan.py --self-test
+            python $opt verification/opica-native-terminal/full_r8_controls.py "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result/source.json"
+          done
+          python -O verification/opica-native-terminal/full_r8_epoch.py --repo "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/optimized-epoch" --receipt "$RUNNER_TEMP/optimized-source.json" --head "$GITHUB_SHA"
+          cmp "$RUNNER_TEMP/result/source.json" "$RUNNER_TEMP/optimized-source.json"
+          python verification/opica-native-terminal/compatibility_scan.py --work "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --out "$RUNNER_TEMP/result/compatibility-scan.json"
+          python -O verification/opica-native-terminal/compatibility_scan.py --work "$RUNNER_TEMP/optimized-epoch" --receipt "$RUNNER_TEMP/optimized-source.json" --out "$RUNNER_TEMP/optimized-compatibility-scan.json"
+          cmp "$RUNNER_TEMP/result/compatibility-scan.json" "$RUNNER_TEMP/optimized-compatibility-scan.json"
+          printf 'NATIVE_R8_SOURCE_LOCK_PASS\n' | tee "$RUNNER_TEMP/result/source-lock-pass.txt"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  audit-smoke:
+    needs: [source-lock]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 16
+          persist-credentials: false
+      - name: Reconstruct the full direct epoch at the current commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          for rev in 42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f 0e8c9fc21693c2e250e756e550ba9ac8940ab401 b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
+          done
+          python verification/opica-native-terminal/full_r8_epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/source-lock
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile and qualify smoke
+        shell: bash
+        run: |
+          export OPICA_R7_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "smoke"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-smoke-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  native-leaves:
+    needs: [source-lock, audit-smoke]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    strategy:
+      fail-fast: false
+      matrix:
+        group: [pnt, gamma, operator, analytic]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 16
+          persist-credentials: false
+      - name: Reconstruct the full direct epoch at the current commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          for rev in 42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f 0e8c9fc21693c2e250e756e550ba9ac8940ab401 b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
+          done
+          python verification/opica-native-terminal/full_r8_epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/source-lock
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile and qualify leaf-${{ matrix.group }}
+        shell: bash
+        run: |
+          export OPICA_R7_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "leaf-${{ matrix.group }}"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-leaf-${{ matrix.group }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  native-frontier:
+    needs: [source-lock, audit-smoke, native-leaves]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 16
+          persist-credentials: false
+      - name: Reconstruct the full direct epoch at the current commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          for rev in 42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f 0e8c9fc21693c2e250e756e550ba9ac8940ab401 b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
+          done
+          python verification/opica-native-terminal/full_r8_epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/source-lock
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile and qualify native
+        shell: bash
+        run: |
+          export OPICA_R7_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "native"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-native-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  arithmetic-frontier:
+    needs: [source-lock, audit-smoke]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 16
+          persist-credentials: false
+      - name: Reconstruct the full direct epoch at the current commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          for rev in 42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f 0e8c9fc21693c2e250e756e550ba9ac8940ab401 b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
+          done
+          python verification/opica-native-terminal/full_r8_epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/source-lock
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile and qualify arithmetic
+        shell: bash
+        run: |
+          export OPICA_R7_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "arithmetic"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-arithmetic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  historical-public-types:
+    needs: [source-lock]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 4
+          persist-credentials: false
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile restored historical source and native consumers
+        shell: bash
+        run: bash verification/opica-native-terminal/historical.sh "$RUNNER_TEMP/result"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-historical-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+
+  cross-epoch-type-comparison:
+    needs: [historical-public-types, native-frontier]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 4
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-historical-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/historical
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-native-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/native
+      - name: Compare exact public declaration type expressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          status=0
+          python verification/opica-native-terminal/compare_type_surfaces.py "$RUNNER_TEMP/historical/public-types.json" "$RUNNER_TEMP/native/public-types.json" "$RUNNER_TEMP/result/type-comparison.json" || status=$?
+          python verification/opica-native-terminal/full_r8_epoch.py --public-inputs "$RUNNER_TEMP/historical/public-types.json" "$RUNNER_TEMP/native/public-types.json" "$RUNNER_TEMP/result/type-comparison.json"
+          exit "$status"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-type-comparison-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  common-terminal:
+    needs: [source-lock, audit-smoke, native-frontier, arithmetic-frontier, cross-epoch-type-comparison]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 16
+          persist-credentials: false
+      - name: Reconstruct the full direct epoch at the current commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          for rev in 42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f 0e8c9fc21693c2e250e756e550ba9ac8940ab401 b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
+          done
+          python verification/opica-native-terminal/full_r8_epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/source-lock
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile and qualify terminal
+        shell: bash
+        run: |
+          export OPICA_R7_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "terminal"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-terminal-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  independent-stock-replay:
+    needs: [common-terminal]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 16
+          persist-credentials: false
+      - name: Reconstruct the full direct epoch at the current commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          for rev in 42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f 0e8c9fc21693c2e250e756e550ba9ac8940ab401 b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
+          done
+          python verification/opica-native-terminal/full_r8_epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/source-lock
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile and qualify independent
+        shell: bash
+        run: |
+          export OPICA_R7_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "independent"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-terminal-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/first
+      - name: Compare fresh stock reconstruction against common terminal
+        shell: bash
+        run: |
+          set -euo pipefail
+          python verification/opica-native-terminal/compare.py "$RUNNER_TEMP/first" "$RUNNER_TEMP/result" | tee "$RUNNER_TEMP/independent-comparison.log"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-independent-comparison-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/independent-comparison.log
+          if-no-files-found: warn
+          retention-days: 30
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-independent-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  checker-preflight:
+    needs: [source-lock, audit-smoke]
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 16
+          persist-credentials: false
+      - name: Reconstruct the full direct epoch at the current commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          for rev in 42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f 0e8c9fc21693c2e250e756e550ba9ac8940ab401 b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
+          done
+          python verification/opica-native-terminal/full_r8_epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/source-lock
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Install real bubblewrap sandbox
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! test -x /usr/bin/bwrap; then
+            sudo apt-get update
+            sudo apt-get install -y bubblewrap
+          fi
+          /usr/bin/bwrap --version
+      - name: Qualify isolated checker preflight
+        shell: bash
+        run: |
+          export OPICA_R7_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "checker-preflight"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-checker-preflight-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  alternate-checker:
+    needs: [independent-stock-replay, checker-preflight]
+    runs-on: ubuntu-22.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 16
+          persist-credentials: false
+      - name: Reconstruct the full direct epoch at the current commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/result"
+          for rev in 42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f 0e8c9fc21693c2e250e756e550ba9ac8940ab401 b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
+            if ! git cat-file -e "$rev^{commit}"; then
+              for attempt in 1 2 3; do
+                if git -c http.version=HTTP/1.1 fetch --depth 1 https://github.com/HMarcusWH/zeta-23-lean.git "$rev"; then
+                  break
+                fi
+                [[ "$attempt" == 3 ]] || sleep "$((attempt * 2))"
+              done
+              git cat-file -e "$rev^{commit}"
+            fi
+          done
+          python verification/opica-native-terminal/full_r8_epoch.py --repo "$GITHUB_WORKSPACE" --out "$GITHUB_WORKSPACE/native_epoch" --receipt "$RUNNER_TEMP/result/source.json" --head "$GITHUB_SHA"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/source-lock
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Install real bubblewrap sandbox
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! test -x /usr/bin/bwrap; then
+            sudo apt-get update
+            sudo apt-get install -y bubblewrap
+          fi
+          /usr/bin/bwrap --version
+      - name: Compile and qualify comparator
+        shell: bash
+        run: |
+          export OPICA_R7_LOCKED_SOURCE_RECEIPT="$RUNNER_TEMP/source-lock/source.json"
+          bash verification/opica-native-terminal/run.sh "$GITHUB_WORKSPACE/native_epoch" "$RUNNER_TEMP/result" "comparator"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-comparator-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30
+  canonical-review-packet:
+    needs: [source-lock, audit-smoke, checker-preflight, native-leaves, native-frontier, arithmetic-frontier, historical-public-types, cross-epoch-type-comparison, common-terminal, independent-stock-replay, alternate-checker]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 16
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/source
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-smoke-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/smoke
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-leaf-pnt-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/leaf-pnt
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-leaf-gamma-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/leaf-gamma
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-leaf-operator-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/leaf-operator
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-leaf-analytic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/leaf-analytic
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-native-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/native
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-arithmetic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/arithmetic
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-historical-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/historical
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-type-comparison-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/type-comparison
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-terminal-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/terminal
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-independent-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/independent
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-comparator-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/comparator
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: native-full-r8-checker-preflight-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qualifications/checker-preflight
+      - name: Produce exact-head packet for manual canonical review
+        shell: bash
+        run: |
+          set -euo pipefail
+          python verification/opica-native-terminal/admission.py "$RUNNER_TEMP/qualifications" "$RUNNER_TEMP/result/canonical-review.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-full-r8-canonical-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: warn
+          retention-days: 30

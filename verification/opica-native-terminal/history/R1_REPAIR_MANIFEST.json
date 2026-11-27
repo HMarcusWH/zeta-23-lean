@@ -1,0 +1,173 @@
+{
+  "schema": "OPICA_NATIVE_REPAIR_MANIFEST_V1",
+  "version": "R1",
+  "baseline_commit": "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736",
+  "baseline_tree": "ad3dc3ced9a58dbd4619f8635600791a692bce34",
+  "source_run": 45716397974,
+  "arithmetic_diagnostic_run": 45713758389,
+  "claim": "RH_OPEN",
+  "compiler": "NOT_RUN_FOR_REPAIRED_HEAD",
+  "changes": [
+    {
+      "path": ".github/workflows/opica-native-step4.yml",
+      "old_git_blob": "152118f8c3b470a982d93820c4adc505d7d3a086",
+      "new_git_blob": "5a81ad6940f30246b4953742e640550d62c5ec25",
+      "reason": "Replace one-time source publication with read-only exact-head gated compilation.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchDiagonal.lean",
+      "old_git_blob": "69cd6e05b8e0ee36c7427e3fe853c1d29165d367",
+      "new_git_blob": "51c0cd27f8ef77f58434ebe84f534c1ab9f6545c",
+      "reason": "Explicit pointwise function shape for Gamma product and quotient logarithmic derivatives.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "Zeta23/CCM/NativeDampedCompletionResidual.lean",
+      "old_git_blob": "3e5b53a269dade6b231b5c8017ead5d0d2ff4a13",
+      "new_git_blob": "8be456504dcfc5f078e5a433894e5005178b4322",
+      "reason": "Typed projection subtraction simplification.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "Zeta23/CCM/UniversalSincSourceLaw.lean",
+      "old_git_blob": "ea656a68e4701801b665512ce99fcb951e38e2fd",
+      "new_git_blob": "a42da427cda24d4cd6328c170470b2d6cb835fdf",
+      "reason": "Direct mass-one proof using unchanged mapped probability measure.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/EulerMaclaurin.lean",
+      "old_git_blob": "f3ca3c690fab42b9c3dacef30669f66259bf826f",
+      "new_git_blob": "3e153dfd3cf6d67c010c3f14e5f13e4ede5557c1",
+      "reason": "Explicit measurable floor and cast; unchanged Bernoulli function.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+      "old_git_blob": "1f0119d42de0d67b003b84a66cb7eddc6e16d6d7",
+      "new_git_blob": "12f5000482f36a4edc464db715163bff47b7a155",
+      "reason": "Use stock linear_combination with abel for the original rectangle identity.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/StrongPNTPrefix.lean",
+      "old_git_blob": "3edad168ab314e283c54b58da800fcc076946b18",
+      "new_git_blob": "77485e8c91b7a4c8c6fd20b2c8f83fe4da291aa0",
+      "reason": "Explicit denominator nonzero and nonnegative-factor product theorem.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+      "old_git_blob": "2832808d7b80914afed648efe8cae5b860ea9b85",
+      "new_git_blob": "a3bed47778826682fa7986e920f0595fc93a749f",
+      "reason": "Retire removed metaprogram engine, preserve tactic spelling and stock abelian normalization.",
+      "statement_policy": "RETIRED_TACTIC_ENGINE"
+    },
+    {
+      "path": "Zeta23/GammaFacts/IntMu.lean",
+      "old_git_blob": "4e74f60e72515bed2145c42853ff667980b03105",
+      "new_git_blob": "bd72372b90ec60726c4cae8fcebebf6ffbca0938",
+      "reason": "Explicit nonzero logarithm arguments from positive tau and pi.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "Zeta23/OPICANativeTerminal/AuditCore.lean",
+      "old_git_blob": null,
+      "new_git_blob": "c8d6cdba9cc3b7f69c36b862d69658a43051864b",
+      "reason": "Verification-only reusable dependency auditor; eliminate ambiguous origin binder.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "Zeta23/RvM/GammaSide.lean",
+      "old_git_blob": "de2771c636a6e2f4353dc63ba44fc32c62b63779",
+      "new_git_blob": "a82e7bfa800e608b32dac4f832ac2882938af85b",
+      "reason": "Explicit pointwise function product for Gamma logarithmic derivative.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "Zeta23/WeilEF/GammaRBracket.lean",
+      "old_git_blob": "48eba58762cccfc47ac06b7af5c386b68fdba20c",
+      "new_git_blob": "912eba4ba32f3692dd0bdbeea53075016ec4a45f",
+      "reason": "Explicit pointwise function product for Gamma logarithmic derivative.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "Zeta23Arithmetic/NativePrincipal.lean",
+      "old_git_blob": "be088a7ac2e6e1855b062a4cbeeabecfd8f32274",
+      "new_git_blob": "310daf8dce577ab1fb3dcbb454f3e1af00f8204a",
+      "reason": "Kernel-computable natural gcd proof of the same ZMod unit condition.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "verification/opica-native-terminal/Audit.lean",
+      "old_git_blob": "0dcad520f8f25997823830bf62a27cea44675baa",
+      "new_git_blob": "ca4b7ee8edbdcb7c591113dc71afe45062394481",
+      "reason": "Use shared independent audit core with exact type and edge export.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/AuditArithmetic.lean",
+      "old_git_blob": null,
+      "new_git_blob": "1fa11cdda8a99847e075593bde3be29dba7fee22",
+      "reason": "Separate arithmetic root and dependency qualification.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/AuditNativeFrontier.lean",
+      "old_git_blob": null,
+      "new_git_blob": "cf2b2af04598d9b1b428933faf275e4c38dbfa6e",
+      "reason": "Separate supplier-free native conditional consumer qualification.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/AuditSmoke.lean",
+      "old_git_blob": null,
+      "new_git_blob": "82fad3abb714844bc4a98a37ccc204bb90ee3403",
+      "reason": "Compile small audit first and reject a missing required dependency.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/PrincipalStrip.lean",
+      "old_git_blob": "be088a7ac2e6e1855b062a4cbeeabecfd8f32274",
+      "new_git_blob": "310daf8dce577ab1fb3dcbb454f3e1af00f8204a",
+      "reason": "Synchronize template with actual repaired principal adapter.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/README.md",
+      "old_git_blob": "cd2f4c5c648b17eb9f7d033d69587743d7dda383",
+      "new_git_blob": "6f2102c6faf1981bc85a61a6f93d77d2eecb00f6",
+      "reason": "Record overnight evidence, repair decisions and nonpromotion boundary.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compare.py",
+      "old_git_blob": "3e59d4030b95fb588449ad643a33383047ea8630",
+      "new_git_blob": "874bd5f57faea0cad301907a5f76746309419e4a",
+      "reason": "Compare exact root receipts plus full arithmetic and terminal edge coverage and digests.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/epoch.py",
+      "old_git_blob": "a35a9cabcaec0fb78a5c2a9f2c54072287958a61",
+      "new_git_blob": "e193f6ff43cdeb5b3d05a8d4b0c7cbe3ff393750",
+      "reason": "Bind repair scope to original/repaired Git blobs, stage committed bytes only, add negative controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/port.py",
+      "old_git_blob": "77d9c5f85d820abaed7bfe1aed5591067005adf3",
+      "new_git_blob": "2e1e7df401a234dde8e655ab66a89b08d824d48a",
+      "reason": "Permit only hash-bound changes to new adapters; preserve all 792 frozen proof source rows.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/run.sh",
+      "old_git_blob": "376f975272c8fc8ed703e34fd9549739b495b7c7",
+      "new_git_blob": "d37ff97c2690089d2b3e6098b9ef25b4889002a5",
+      "reason": "Split leaf, frontier, terminal and independent replay execution.",
+      "statement_policy": "VERIFICATION_ONLY"
+    }
+  ]
+}

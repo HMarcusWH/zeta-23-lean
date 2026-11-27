@@ -1,0 +1,13 @@
+{
+  "challenge_module": "Challenge.NativeRH",
+  "solution_module": "Solution.NativeRH",
+  "theorem_names": [
+    "native_rh"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

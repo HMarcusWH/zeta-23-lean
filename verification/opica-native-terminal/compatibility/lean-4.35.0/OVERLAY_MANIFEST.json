@@ -1,0 +1,189 @@
+{
+  "schema": "OPICA_NATIVE_COMPATIBILITY_OVERLAY_V1",
+  "version": "R7",
+  "native_base": "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736",
+  "toolchain": "leanprover/lean4:v4.35.0",
+  "mathlib": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "replacements": [
+    {
+      "destination": "Zeta23/CCM/DictionaryArchDiagonal.lean",
+      "historical_git_blob": "69cd6e05b8e0ee36c7427e3fe853c1d29165d367",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/DictionaryArchDiagonal.lean",
+      "replacement_git_blob": "51c0cd27f8ef77f58434ebe84f534c1ab9f6545c",
+      "r1_replacement_git_blob": "51c0cd27f8ef77f58434ebe84f534c1ab9f6545c",
+      "statement_policy": "PRESERVE",
+      "reason": "Explicit pointwise function shape for Gamma product and quotient logarithmic derivatives."
+    },
+    {
+      "destination": "Zeta23/CCM/NativeDampedCompletionResidual.lean",
+      "historical_git_blob": "3e5b53a269dade6b231b5c8017ead5d0d2ff4a13",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/NativeDampedCompletionResidual.lean",
+      "replacement_git_blob": "63d9f4d6c6cae4e9528aac8710781826b2f7b955",
+      "r1_replacement_git_blob": "8be456504dcfc5f078e5a433894e5005178b4322",
+      "statement_policy": "PRESERVE",
+      "reason": "Typed projection subtraction simplification. R2: explicit typed algebra/continuity/projection repair. R3: Use map_sub, typed congrArg, and sub_zero as separate steps."
+    },
+    {
+      "destination": "Zeta23/CCM/UniversalSincSourceLaw.lean",
+      "historical_git_blob": "ea656a68e4701801b665512ce99fcb951e38e2fd",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/UniversalSincSourceLaw.lean",
+      "replacement_git_blob": "a42da427cda24d4cd6328c170470b2d6cb835fdf",
+      "r1_replacement_git_blob": "a42da427cda24d4cd6328c170470b2d6cb835fdf",
+      "statement_policy": "PRESERVE",
+      "reason": "Direct mass-one proof using unchanged mapped probability measure."
+    },
+    {
+      "destination": "Zeta23/FromPNTPlus/EulerMaclaurin.lean",
+      "historical_git_blob": "f3ca3c690fab42b9c3dacef30669f66259bf826f",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/FromPNTPlus/EulerMaclaurin.lean",
+      "replacement_git_blob": "3e153dfd3cf6d67c010c3f14e5f13e4ede5557c1",
+      "r1_replacement_git_blob": "3e153dfd3cf6d67c010c3f14e5f13e4ede5557c1",
+      "statement_policy": "PRESERVE",
+      "reason": "Explicit measurable floor and cast; unchanged Bernoulli function."
+    },
+    {
+      "destination": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+      "historical_git_blob": "1f0119d42de0d67b003b84a66cb7eddc6e16d6d7",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+      "replacement_git_blob": "12f5000482f36a4edc464db715163bff47b7a155",
+      "r1_replacement_git_blob": "12f5000482f36a4edc464db715163bff47b7a155",
+      "statement_policy": "PRESERVE",
+      "reason": "Use stock linear_combination with abel for the original rectangle identity."
+    },
+    {
+      "destination": "Zeta23/FromPNTPlus/StrongPNTPrefix.lean",
+      "historical_git_blob": "3edad168ab314e283c54b58da800fcc076946b18",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/FromPNTPlus/StrongPNTPrefix.lean",
+      "replacement_git_blob": "6e28a7a9deaecff6a779b175f9b3039c03640443",
+      "r1_replacement_git_blob": "77485e8c91b7a4c8c6fd20b2c8f83fe4da291aa0",
+      "statement_policy": "PRESERVE",
+      "reason": "Explicit denominator nonzero and nonnegative-factor product theorem. R2: explicit typed algebra/continuity/projection repair."
+    },
+    {
+      "destination": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+      "historical_git_blob": "2832808d7b80914afed648efe8cae5b860ea9b85",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+      "replacement_git_blob": "a3bed47778826682fa7986e920f0595fc93a749f",
+      "r1_replacement_git_blob": "a3bed47778826682fa7986e920f0595fc93a749f",
+      "statement_policy": "RETIRED_TACTIC_ENGINE",
+      "reason": "Retire removed metaprogram engine, preserve tactic spelling and stock abelian normalization."
+    },
+    {
+      "destination": "Zeta23/GammaFacts/IntMu.lean",
+      "historical_git_blob": "4e74f60e72515bed2145c42853ff667980b03105",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/GammaFacts/IntMu.lean",
+      "replacement_git_blob": "455b90504a691b66decc515290b953ed79f2bb6b",
+      "r1_replacement_git_blob": "bd72372b90ec60726c4cae8fcebebf6ffbca0938",
+      "statement_policy": "PRESERVE",
+      "reason": "Explicit nonzero logarithm arguments from positive tau and pi. R2: explicit typed algebra/continuity/projection repair. R3: Explicitly instantiate both functions and both points in ContinuousAt.comp_of_eq."
+    },
+    {
+      "destination": "Zeta23/RvM/GammaSide.lean",
+      "historical_git_blob": "de2771c636a6e2f4353dc63ba44fc32c62b63779",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/RvM/GammaSide.lean",
+      "replacement_git_blob": "a82e7bfa800e608b32dac4f832ac2882938af85b",
+      "r1_replacement_git_blob": "a82e7bfa800e608b32dac4f832ac2882938af85b",
+      "statement_policy": "PRESERVE",
+      "reason": "Explicit pointwise function product for Gamma logarithmic derivative."
+    },
+    {
+      "destination": "Zeta23/WeilEF/GammaRBracket.lean",
+      "historical_git_blob": "48eba58762cccfc47ac06b7af5c386b68fdba20c",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/WeilEF/GammaRBracket.lean",
+      "replacement_git_blob": "912eba4ba32f3692dd0bdbeea53075016ec4a45f",
+      "r1_replacement_git_blob": "912eba4ba32f3692dd0bdbeea53075016ec4a45f",
+      "statement_policy": "PRESERVE",
+      "reason": "Explicit pointwise function product for Gamma logarithmic derivative."
+    },
+    {
+      "destination": "Zeta23/CCM/UniversalSincSourceCharacteristic.lean",
+      "historical_git_blob": "b25133aa8f762f3e96fe5d20d628394d14ccdb0f",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/UniversalSincSourceCharacteristic.lean",
+      "replacement_git_blob": "ecdae6fbb41c87611861e7b52947be36be80c2dc",
+      "introduced_in": "R4",
+      "statement_policy": "PRESERVE",
+      "reason": "Mapped probability mass-one proof."
+    },
+    {
+      "destination": "Zeta23/Analytic/RectangleLogDeriv.lean",
+      "historical_git_blob": "db30df619c414827f45a20b95fd173edd3600ee1",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/Analytic/RectangleLogDeriv.lean",
+      "replacement_git_blob": "45e7901507466c6d7d09d4c5423bc66023ef7489",
+      "introduced_in": "R4",
+      "statement_policy": "PRESERVE",
+      "reason": "Two explicit pointwise multiplication conversions."
+    },
+    {
+      "destination": "Zeta23/WeilEF/Landau.lean",
+      "historical_git_blob": "5b6d356d64a6e7a1bf6bc0e98406d3dfe5a7f4d6",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/WeilEF/Landau.lean",
+      "replacement_git_blob": "3621570e78521acad989662945e8035527f701c8",
+      "introduced_in": "R4",
+      "statement_policy": "PRESERVE",
+      "reason": "Pointwise finite product and nonnegative ordered products."
+    },
+    {
+      "destination": "Zeta23/ThmE/IntMuChi.lean",
+      "historical_git_blob": "8b2456f220cacdefa91b0e945a06455de9992333",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/ThmE/IntMuChi.lean",
+      "replacement_git_blob": "9c1a3cd57e8f43c8d4ede1bda2d23858c63688f3",
+      "introduced_in": "R4",
+      "statement_policy": "PRESERVE",
+      "reason": "R3 typed log continuity pattern."
+    },
+    {
+      "destination": "Zeta23/CCM/UniversalSincSourceTail.lean",
+      "historical_git_blob": "2e2fb9000ed0b40115e55f6bd6274516eabc100a",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/UniversalSincSourceTail.lean",
+      "replacement_git_blob": "1e169fd8b831b943196941a42a87ec8859ab7dd9",
+      "introduced_in": "R5",
+      "statement_policy": "PRESERVE",
+      "reason": "Two direct mapped mass-one proofs; preserve original laws and convolution."
+    },
+    {
+      "destination": "Zeta23/XiPrime/ExplicitFormula/ZeroFree.lean",
+      "historical_git_blob": "9b486018e86ff3fab9a3e0bcf36e9d28c00063a5",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/XiPrime/ExplicitFormula/ZeroFree.lean",
+      "replacement_git_blob": "4e7360933c7e674ff3375dccf482deec94e723a2",
+      "introduced_in": "R5",
+      "statement_policy": "PRESERVE",
+      "reason": "Explicit pointwise multiplication conversion for logarithmic derivative."
+    },
+    {
+      "destination": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "historical_git_blob": "73c99d70ddcd3ba73fcda3d88de9a999bd91d8ac",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "replacement_git_blob": "b60ed25088ea74ed57ca943e6c80c080a37ae75d",
+      "introduced_in": "R5",
+      "statement_policy": "PRESERVE",
+      "reason": "Pinned toLpLin_apply and toLpLin_one; preserve inner pairing and orthogonality."
+    },
+    {
+      "destination": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseSymmetry.lean",
+      "historical_git_blob": "98feb942ca2375078e5d515ec1cc359be7f3e105",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseSymmetry.lean",
+      "replacement_git_blob": "c3167cbfc6f2ce09e080d112c2312aa7066911d2",
+      "introduced_in": "R6",
+      "statement_policy": "PRESERVE",
+      "reason": "Three explicit toLpLin evaluations at p=q=2; preserve exact reversal and circulant energy identities."
+    },
+    {
+      "destination": "Zeta23/CCM/NativeWeilResponse.lean",
+      "historical_git_blob": "0de339752b35664494e2b30a4e9e684fac5ec1f1",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/NativeWeilResponse.lean",
+      "replacement_git_blob": "34eba320b6acea19958bd88998fc31a351de6b48",
+      "introduced_in": "R6",
+      "statement_policy": "PRESERVE",
+      "reason": "Supply explicitly typed null-measurable Icc witness for indicator/restriction equivalence; preserve interval L2 statement."
+    },
+    {
+      "destination": "Zeta23/CCM/NativeWeilResponseBounds.lean",
+      "historical_git_blob": "925b0580562b9023d58a8cc88e8ceabd66e24547",
+      "replacement_path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/NativeWeilResponseBounds.lean",
+      "replacement_git_blob": "aa76614ce52b29ba7e43e6d29bb775b8fe0e4400",
+      "introduced_in": "R7",
+      "statement_policy": "PRESERVE",
+      "reason": "Apply pinned MeasureTheory.MemLp.fun_mul in g*h order with explicit L² inputs and L¹ output. Preserve historical mixed H¹ bound statement."
+    }
+  ]
+}
