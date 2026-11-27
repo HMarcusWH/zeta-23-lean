@@ -4,13 +4,14 @@
     "research/RHRC/integration/documentation_2026_11_26/ARCHIVE_BYTES.json": "c4a2c7f49ef82fd9a77f98bba066b140ad3bcc0a",
     "research/RHRC/integration/documentation_2026_11_26/archive_scope.py": "f87ddb66361c5328c8e490437cffa3643df19ef9",
     "research/RHRC/integration/documentation_2026_11_26/test_archive_scope.py": "d0e053370d4e8c3050e6d8e875029d3c165b2a15",
-    "research/RHRC/integration/documentation_2026_11_26/test_source_scope.py": "0c335fd4acd9be23be3714b4a573c9c1fd47a1f7"
+    "research/RHRC/integration/documentation_2026_11_26/test_source_scope.py": "bee56f6fa71133ff071e1ad6f2f2452248b37e53"
   },
   "edited": {
     "research/RHRC/integration/opica_composition/cli.py": "6172cd78b931a96374c3df408b4d3635c23271c4",
     ".github/workflows/documentation.yml": "a2940392194e34ee46190420057e42773b1d74c4",
     "research/RHRC/graph/FILE_CLASSES.json": "d978224a829976126afa1c0866c77c124136a3cb",
-    "research/RHRC/integration/opica_composition/tests/test_end_to_end.py": "bfb69d1ed8c69efb3ff776c023a5f8f59a0b66ce"
+    "research/RHRC/integration/opica_composition/tests/test_end_to_end.py": "bfb69d1ed8c69efb3ff776c023a5f8f59a0b66ce",
+    "research/RHRC/integration/opica_composition/service.py": "ad6a210dfbf0210367a114ed2f28c8e136aa366d"
   },
-  "validator_template_sha256": "b1fa2a44f969d80bcf7885f35645aca19d43fc7552f0f312c2e8f0a8599c7aa8"
+  "validator_template_sha256": "27ec64352a782fc7c5343d224ed24c2e0295fe59f9c0b27ba2939fbd8637e27a"
 }

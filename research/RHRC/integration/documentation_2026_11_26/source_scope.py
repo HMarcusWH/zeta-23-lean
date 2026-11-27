@@ -20,13 +20,14 @@ from ..opica_composition.snapshot import file_hash, unlinked
 PREFIX = "research/RHRC/integration/documentation_2026_11_26/"
 POLICY = PREFIX + "SOURCE_SCOPE.json"
 VALIDATOR = PREFIX + "source_scope.py"
-POLICY_SHA256 = "e47ef1bb8aa45eef8ceb01b8a77c7fded03204e1c144ee5ace69f1014bf57cf4"
+POLICY_SHA256 = "187a6cf36c905022dc7a77d54fe9c2e6327af7438db4f4f2fb72d0d09685059b"
 SCHEMA = "RHRC_PAPER_DOCUMENTATION_SOURCE_INSPECTION_V1"
 POLICY_SCHEMA = "RHRC_PAPER_DOCUMENTATION_CLOSED_SOURCE_POLICY_V1"
 CLASSIFICATION_PATH = "research/RHRC/graph/FILE_CLASSES.json"
 EDIT_PATHS = {
     ".github/workflows/documentation.yml",
     "research/RHRC/integration/opica_composition/cli.py",
+    "research/RHRC/integration/opica_composition/service.py",
     "research/RHRC/integration/opica_composition/tests/test_end_to_end.py",
     CLASSIFICATION_PATH,
 }

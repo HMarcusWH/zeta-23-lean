@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+from pathlib import Path
 import re
+from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 from ..opica_composition.canonical import ContractError
 from . import source_scope as scope
@@ -25,6 +28,17 @@ class PaperScopeTests(unittest.TestCase):
         result = scope.classify(self.base, self.changed, self.policy, self.allowed)
         self.assertEqual(result["deleted"], [])
         self.assertEqual(result["generated"], [self.generated])
+
+    def test_production_freeze_requires_the_same_clean_source_as_the_coordinator(self):
+        from ..opica_composition import cli, service
+
+        self.assertIs(cli.validate_descendant, scope.validate_descendant)
+        with patch.object(service, "worker_capability"), patch.object(
+            cli, "validate_descendant", side_effect=ContractError("source admission rejected")
+        ) as admission:
+            with self.assertRaisesRegex(ContractError, "source admission rejected"):
+                service.freeze(scope.REPO, {}, Path("unused.json"), worker=SimpleNamespace(production=True))
+        admission.assert_called_once_with(scope.REPO, require_clean=True)
 
     def test_paper_and_frozen_history_may_not_change(self):
         for path in (self.archive_pdf, self.frozen):
