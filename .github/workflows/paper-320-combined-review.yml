@@ -1,0 +1,94 @@
+name: Inspect the pinned registration and paper reconciliation
+on:
+  push:
+    branches: [workmode/paper-320-reviewed-generated-publish]
+    paths:
+      - .github/workflows/paper-320-combined-review.yml
+      - verification/paper-320-combined-review/**
+permissions:
+  contents: read
+
+jobs:
+  candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          path: control
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Reproduce exact parents and their independent original checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          main=d4c7fc7114e5f1b61b90ea9037890969358ff0cc
+          paper=30b3a430c350eeeef9ff1aa8c99d10cd30dc3fb3
+          out="$RUNNER_TEMP/combined-review"
+          mkdir -p "$out"
+          test "$(git -C control ls-remote origin refs/heads/main | cut -f1)" = "$main"
+          test "$(git -C control ls-remote origin refs/pull/320/head | cut -f1)" = "$paper"
+          cp -r control/verification/paper-320-combined-review "$RUNNER_TEMP/replay"
+          python3 -B "$RUNNER_TEMP/replay/build.py" control
+          cp "$RUNNER_TEMP/replay/"{layout.json,authored.patch} "$out/"
+          test "$(jq -r .commit "$out/layout.json")" = f3c45bf57d9d084f8337616978a3f15e4fa9df4d
+          for epoch in main paper; do
+            if [[ "$epoch" == main ]]; then sha="$main"; else sha="$paper"; fi
+            git -C control worktree add --detach "$RUNNER_TEMP/parent-$epoch" "$sha"
+            (
+              cd "$RUNNER_TEMP/parent-$epoch"
+              if [[ "$epoch" == main ]]; then
+                python3 -B -m research.RHRC.integration.opica_dispatch_registration.gate --output "$out/main-source.json"
+                python3 -B -m research.RHRC.integration.opica_dispatch_registration.gate --check-classification > "$out/main-classes.json"
+              else
+                git merge-base --is-ancestor 59ff631e9e965abdb172c941b8dacee44eb97629 HEAD
+                python3 -B -m research.RHRC.integration.opica_composition.cli check-descendant --repo . --output "$out/paper-source.json"
+                python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check-classification > "$out/paper-classes.log" 2>&1
+                python3 -B -m unittest research.RHRC.integration.documentation_2026_11_26.test_archive_scope research.RHRC.integration.documentation_2026_11_26.test_source_scope > "$out/paper-tests.log" 2>&1
+                python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_26.test_archive_scope research.RHRC.integration.documentation_2026_11_26.test_source_scope > "$out/paper-tests-optimized.log" 2>&1
+              fi
+              test "$(jq -r .checked_commit "$out/$epoch-source.json")" = "$sha"
+              test "$(jq -r .checked_tree "$out/$epoch-source.json")" = "$(git rev-parse HEAD^{tree})"
+            )
+            git -C control worktree remove "$RUNNER_TEMP/parent-$epoch"
+          done
+          git -C control worktree add --detach "$GITHUB_WORKSPACE/candidate" f3c45bf57d9d084f8337616978a3f15e4fa9df4d
+          python3 -B "$RUNNER_TEMP/replay/verify_candidate.py" candidate before "$out/input.json"
+          cd candidate
+          if python3 -B -m research.RHRC.integration.opica_composition.cli check-descendant --repo . --output "$out/mixed-receipt.json" > "$out/mixed-source.log" 2>&1; then exit 1; fi
+          grep -F 'Combined documentation requires independently reviewed source admission' "$out/mixed-source.log"
+          test ! -e "$out/mixed-receipt.json"
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13.5'
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: candidate
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Materialize and check the review candidate with the original exporters
+        working-directory: candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/combined-review"
+          lake env lean --version > "$out/lean-version.txt"
+          lake build Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution 2>&1 | tee "$out/exporters.log"
+          python3 -B research/RHRC/tools/materialize_derived_state.py --write > "$out/materialize.log" 2>&1 || { tail -100 "$out/materialize.log"; exit 1; }
+          python3 -B research/RHRC/tools/materialize_derived_state.py --check > "$out/check.log" 2>&1 || { tail -100 "$out/check.log"; exit 1; }
+          python3 -B "$RUNNER_TEMP/replay/verify_candidate.py" . after "$out/output.json"
+          git diff --check
+          git diff --binary --full-index HEAD > "$out/candidate-products.patch"
+          cd "$out"
+          sha256sum input.json output.json candidate-products.patch > hashes.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: paper-main-review-only-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/combined-review/
+          if-no-files-found: error
