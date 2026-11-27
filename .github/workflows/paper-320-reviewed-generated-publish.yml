@@ -1,4 +1,4 @@
-name: 'Stage the reviewed #320 generated Git tree'
+name: Stage the verified paper products for review
 
 on:
   push:
@@ -12,32 +12,37 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 69ce27c51122e92e2046f7b44dcf51ca8ac644bb
+          ref: b1e57c979ee75cf833c2c6587ff4049dee42a8f3
           fetch-depth: 0
           persist-credentials: false
-      - name: Authenticate and stage only the independently reviewed generated Git patch
+      - name: Load the pinned preimage census and four source rows
+        shell: bash
+        run: |
+          python3 -B - <<'INPUTS'
+          from pathlib import Path
+          import os,base64,zlib
+          runner=Path(os.environ['RUNNER_TEMP'])
+          (runner/'candidate-preimage.json').write_bytes(zlib.decompress(base64.b64decode('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')))
+          (runner/'known-stale-repository-inventory.json').write_bytes(zlib.decompress(base64.b64decode('eNqlk0trGzEQgO/5FcbnEOv96C1xtm0gicvaDfQkRqNRvMX2LrvrQAj975Wdx6Enk57EjJhP84mZl7PJZLomSNMvk2nkpC1664msxuykRIFGO5uzYsonIiXAZTk9P1QNI2wodH2b9jgeynsaCHpcz+rv9Xz22EO3nj3SjnoYKc166tqhGdv+OeRmQ8PF76HdbV5Rza7bj2HbDFsYcU1Dob2U/ORfZrMbqXDHpt3NUov7Le3GYxQEEyZwHoSZLRc/63kVlvPFj+r4yAet8Lp93DTDmlIY2n2PFOKmjYfmwSetmFdCJwYuCoNOZFJaJaMgKcgKNWkejw0fUR9qodk9lUYOZu80h9Ey5Bqi5zxrJZlPRgKCQY0p5pQRRC6/foT9Of+07JvFgG1HF93zSaoRnGEsCiDjDYtSipicQcmjEK40Bdllo+SJqp5r6xkkbrhylhQBWCsLwwB5QKe9sMpI/G/VkYYxfMqXSJtsMljOpcyZWU4ckskiC6WFUC5KS1qe5stQSp3LRGDykYSMJC1XUYG2Ej3ycmWBZ3uqb9s1CAHb7XE9DpmB+qcGT9YrJiA4SzlmVk5pyvNcUSp2Dh1xaQCkMek0PbLEJCIHxaXSSJjBW2my9UlRmRPJDTPK5je9szfFaWqGd4ED5mtZwrBcXd6WRXzdx6vbxVWoq/mivl6GxdWyqh+q63BzH+aLu7ub1aoE36r7qr5cHdMP1f1qUf+anv05+wu6rGvk')))
+          INPUTS
+      - name: Authenticate the archive and report only reviewed Git metadata
         env:
           GH_TOKEN: ${{ github.token }}
-          ARTIFACT_ID: '15166442043'
-          ARTIFACT_SHA256: 'c19847d2b8332112d461cefa669c9764301214e022d2949fb4964385178e59fc'
-          PATCH_SHA256: 'd6c6eed2a81d60c0e9faa0a723e68f239eeb50b330c697156ff324828df79d82'
-          CANDIDATE_TREE: 'e3acc27eee20adbb4bdeb998093f8fb1af0f6580'
-          PATCH_PATHS: '["research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json","research/RHRC/graph/generated/REPOSITORY_COVERAGE.json","research/RHRC/graph/generated/registry_nodes.jsonl","research/RHRC/graph/generated/repository_files.jsonl","research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json","research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json"]'
+          ARTIFACT_ID: '15208101505'
+          ARTIFACT_SHA256: 'df7d6be458edad6d7a0fc59cd5469e451aa632e22b2235b48761d16eca4acf10'
+          EXPECTED_PRODUCTS: '8'
+          REQUIRED_PATHS: '["research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json","research/RHRC/graph/generated/REPOSITORY_COVERAGE.json","research/RHRC/graph/generated/registry_nodes.jsonl","research/RHRC/graph/generated/repository_files.jsonl","research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json","research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json"]'
         shell: bash
         run: |
           set -euo pipefail
           test "$GITHUB_REPOSITORY" = HMarcusWH/zeta-23-lean
-          test "$GITHUB_REF" = refs/heads/workmode/paper-320-reviewed-generated-publish
-          test "$(git ls-remote origin refs/heads/workmode/paper-320-reviewed-generated | cut -f1)" = 69ce27c51122e92e2046f7b44dcf51ca8ac644bb
-          python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check
-          test "$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/45914173967/attempts/1" --jq '.status + ":" + .conclusion + ":" + .head_sha')" = completed:success:69ce27c51122e92e2046f7b44dcf51ca8ac644bb
-          test "$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/45930055996/attempts/1" --jq '.status + ":" + .conclusion + ":" + .head_sha')" = completed:success:f865ce9c293eebc40879c7bbb8765097f7f64769
-          test "$(git rev-parse HEAD)" = 69ce27c51122e92e2046f7b44dcf51ca8ac644bb
-          test "$(git rev-parse 'HEAD^{tree}')" = 5cecf0cffa5110ee354b725f829cb7e4c4be46c8
+          test "$(git rev-parse HEAD)" = b1e57c979ee75cf833c2c6587ff4049dee42a8f3
+          test "$(git rev-parse 'HEAD^{tree}')" = 146f23e3e8931766585b90f0cbbef22f91b3d378
+          test "$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/46001224880/attempts/1" --jq '.status + ":" + .conclusion + ":" + .head_sha')" = completed:success:b1e57c979ee75cf833c2c6587ff4049dee42a8f3
           gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID" > "$RUNNER_TEMP/artifact.json"
           gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID/zip" > "$RUNNER_TEMP/artifact.zip"
           python3 -B - <<'PY'
@@ -60,9 +65,10 @@ jobs:
                                     stdout=subprocess.PIPE).stdout
 
           runner = Path(os.environ["RUNNER_TEMP"])
-          head = "69ce27c51122e92e2046f7b44dcf51ca8ac644bb"
-          tree = "5cecf0cffa5110ee354b725f829cb7e4c4be46c8"
-          archive_name = "documentation-canonical-45914173967-1"
+          head = "b1e57c979ee75cf833c2c6587ff4049dee42a8f3"
+          tree = "146f23e3e8931766585b90f0cbbef22f91b3d378"
+          require(git("rev-parse", "HEAD", "HEAD^{tree}").decode().splitlines() == [head, tree], "Wrong replay checkout")
+          archive_name = "documentation-canonical-46001224880-1"
           pinned_id = int(os.environ["ARTIFACT_ID"])
           pinned_sha256 = os.environ["ARTIFACT_SHA256"]
           require(re.fullmatch("[a-f0-9]{64}", pinned_sha256), "Missing archive digest pin")
@@ -71,7 +77,7 @@ jobs:
           require((info["name"], info["id"], info["digest"], info["expired"]) ==
                   (archive_name, pinned_id, "sha256:" + pinned_sha256, False), "Unexpected artifact metadata")
           require((run["id"], run["head_sha"], run["head_branch"], run["head_repository_id"]) ==
-                  (45914173967, head, "docs/papers-2026-11-26-terminal", 1339954300), "Unexpected run/source")
+                  (46001224880, head, "docs/papers-2026-11-26-terminal", 1339954300), "Unexpected run/source")
           archive = (runner / "artifact.zip").read_bytes()
           require(len(archive) == info["size_in_bytes"] and len(archive) <= 4_000_000 and
                   sha256(archive).hexdigest() == pinned_sha256, "Archive bytes differ")
@@ -133,68 +139,165 @@ jobs:
                       require(row["path"] not in observed_pdfs, "Duplicate archived paper record")
                       observed_pdfs[row["path"]] = row["git_blob"]
           require(observed_pdfs == expected_pdfs, "Generated paper records disagree with exact binary inventory")
-          require(patch_digest == os.environ["PATCH_SHA256"], "Patch hash differs from independent review")
-          candidate_tree = git("write-tree").decode("ascii").strip()
-          require(candidate_tree == os.environ["CANDIDATE_TREE"], "Staged Git tree differs from independent review")
-          require(sorted(paths) == json.loads(os.environ["PATCH_PATHS"]),
-                  "Generated paths differ from independent review")
-          require(not git("diff", "--name-only") and
-                  not git("ls-files", "--others", "--exclude-standard"),
-                  "Unexpected unstaged or untracked change")
-          receipt = {"parent": head, "tree": candidate_tree, "patch_sha256": patch_digest,
-                     "artifact_sha256": pinned_sha256, "artifact_id": pinned_id,
-                     "paths": sorted(paths), "verified_binary_papers": len(observed_pdfs)}
-          (runner / "reviewed-publication-receipt.json").write_text(
-              json.dumps(receipt, sort_keys=True, indent=2) + "\n", encoding="utf-8")
-          print(json.dumps(receipt, sort_keys=True))
+
+          source_changes = json.loads((runner / "known-stale-repository-inventory.json").read_bytes())
+          require(source_changes["head"] == head and source_changes["stale_product"] == str(inventory),
+                  "Stale-record evidence belongs to a different source")
+          input_mismatches = source_changes["input_mismatches"]
+          require(len(input_mismatches) == 4, "Expected the four repaired source blobs")
+          seen = set()
+          with inventory.open(encoding="utf-8") as stream:
+              for line in stream:
+                  row = json.loads(line)
+                  path = row.get("path")
+                  if path in input_mismatches:
+                      actual = git("rev-parse", head + ":" + path).decode().strip()
+                      require(path not in seen and actual == row["git_blob"] ==
+                              input_mismatches[path]["published_source_blob"], "Unrepaired source blob inventory")
+                      seen.add(path)
+          require(seen == set(input_mismatches), "A repaired source path disappeared from inventory")
+          require(len(paths) == int(os.environ["EXPECTED_PRODUCTS"]), "Product count differs from successful producer")
+          required = set(json.loads(os.environ["REQUIRED_PATHS"]))
+          require(required <= set(paths), "Known stale products are missing from the candidate")
+          shards = []
+          parent_records = git("diff", "--cached", "--raw", "--no-abbrev", "-z", "HEAD").split(b"\0")
+          require(len(parent_records) == 2 * len(paths) + 1, "Invalid raw Git diff inventory")
+          for i in range(0, len(parent_records) - 1, 2):
+              mode_old, mode_new, blob_old, blob_new, status = parent_records[i].decode("ascii").split()
+              path = parent_records[i + 1].decode("utf-8")
+              require((mode_old, mode_new, status) == (":100644", "100644", "M") and path in allowed,
+                      "Review patch modifies a nonregular product")
+              require(re.fullmatch("[a-f0-9]{40}", blob_old) and re.fullmatch("[a-f0-9]{40}", blob_new)
+                      and blob_old != blob_new, "Invalid before/after Git blob pair")
+              staged = git("cat-file", "blob", ":" + path)
+              require(bool(staged) and b"\0" not in staged, "Generated product is empty or binary")
+              shards.append({"path": path, "before_git_blob": blob_old, "after_git_blob": blob_new,
+                             "sha256": sha256(staged).hexdigest(), "bytes_after": len(staged)})
+          metadata = {"source_head": head, "source_tree": tree, "run": run["id"], "attempt": 1,
+                      "artifact": pinned_id, "zip_sha256": pinned_sha256, "patch_sha256": patch_digest,
+                      "patch_bytes": len(patch), "candidate_tree": git("write-tree").decode().strip(),
+                      "paths": sorted(paths), "products": shards, "verified_binary_papers": len(observed_pdfs),
+                      "proof_acceptance": False}
+
+          preimages = json.loads((runner / "candidate-preimage.json").read_bytes())
+          require((preimages["head"], preimages["tree"]) == (head, tree), "Mismatched preimage census")
+          before = preimages["products"]
+          require(len(before) == 81 and allowed == {p for p,row in before.items() if row["frozen"] is False},
+                  "Incomplete active/frozen inventory")
+          complete_census = {}
+          for path, pre in before.items():
+              original = git("rev-parse", head + ":" + path).decode().strip()
+              staged = git("rev-parse", ":" + path).decode().strip()
+              require(original == pre["git_blob"], "Wrong census input: " + path)
+              require((staged != original) == (path in paths), "Unexpected product change: " + path)
+              if pre["frozen"]:
+                  require(staged == original, "Changed frozen product: " + path)
+              raw = git("cat-file", "blob", staged)
+              complete_census[path] = {"before": pre, "after_git_blob": staged,
+                                       "after_sha256": sha256(raw).hexdigest(), "bytes_after": len(raw)}
+          (runner / "verified-product-census.json").write_text(json.dumps(complete_census, indent=2) + "\n")
+          metadata["verified_active_products"] = 77
+          metadata["verified_frozen_products"] = 4
+          metadata["verified_repaired_source_blobs"] = sorted(seen)
+
+          """Validate all catalogued source/index blobs and every archived PDF against its original Git object."""
+          import hashlib
+          from pathlib import Path
+          import subprocess
+
+          def validate_bytes(repo, head, tree, products, policy):
+              def git(*args):
+                  return subprocess.check_output(['git','-C',str(repo),*args])
+              def oid(spec):
+                  return git('rev-parse',spec).decode().strip()
+              def require(condition,label):
+                  if not condition:
+                      raise ValueError(label)
+              require(oid('HEAD')==head and oid(head+'^{tree}')==tree,'source/tree')
+              archive=policy['archive_commit']
+              require(oid(archive+'^{tree}')==policy['archive_tree'],'archive/tree')
+              git('merge-base','--is-ancestor',archive,head)
+              require(len(products)==81 and sum(r['frozen'] for r in products.values())==4,'catalogue size')
+              pdfs={}
+              for path,row in policy['added'].items():
+                  if row['file_kind']!='BINARY_PDF':
+                      continue
+                  blob=oid(archive+':'+path)
+                  require(blob==oid(head+':'+path)==oid(':'+path)==row['git_blob'],path)
+                  data=git('cat-file','blob',blob)
+                  require(data.startswith(b'%PDF-') and len(data)==row['size_bytes'] and hashlib.sha256(data).hexdigest()==row['sha256'],path)
+                  pdfs[path]=blob
+              require(len(pdfs)==6,'PDF count')
+              for path,row in products.items():
+                  original=oid(head+':'+path)
+                  require(original==row['git_blob'],path)
+                  data=git('cat-file','blob',original)
+                  require(len(data)==row['bytes'] and hashlib.sha256(data).hexdigest()==row['sha256'],path)
+                  if row['frozen']:
+                      require(original==oid(':'+path),path)
+              return pdfs
+
+          require(validate_bytes(Path.cwd(),head,tree,before,byte_policy)==observed_pdfs,"Archived PDF bytes differ")
+          predicted={'research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json': 'b52e78ed2f633c3a48b93d9852e8ee807bb457315edcc870fed84a6e86b61a80', 'research/RHRC/graph/generated/REPOSITORY_COVERAGE.json': 'decd4b1c08a9162e876fab9cfaddc272b2f58c4314487b87d898b2ef3cdbb193', 'research/RHRC/graph/generated/registry_nodes.jsonl': 'eba4a28ca02b9b0637c2bb23e1fa9a5debd0d00cc33dd6726ff7ddbdacbee0c5', 'research/RHRC/graph/generated/repository_files.jsonl': 'c0604f8df7f8aaa9d72f80931dbe4384651f6a352f11db8b64760e053df62a73', 'research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl': '51c3212e07f265f145d66c3b9dca59d0058eb61e9e34f6cfd502729b92927513', 'research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl': '38a8c9855cac111724504fb3673e42a54043f9a210d06921dac5abbe1b327bc5', 'research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json': '9006ead3c11e8c0f73b440c68863ebf68545eef037e11134ed91d71d36d5de47', 'research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json': '0eceb8e9c447dc7547a99ab073d5965c2c12340011d9bc11e0735a5b90979e68'}
+          require(predicted=={x["path"]:x["sha256"] for x in shards},"Independent byte predictions differ from canonical")
+          (runner/"verified-paper-replay.json").write_text(json.dumps(metadata,indent=2)+"\n")
+          print("PAPER320_REVIEW_META " + json.dumps(metadata, sort_keys=True))
           PY
-      - name: Preserve the reviewed commit on a dedicated review ref
-        env:
-          GH_PUSH_TOKEN: ${{ github.token }}
-          CANDIDATE_TREE: 'e3acc27eee20adbb4bdeb998093f8fb1af0f6580'
+      - name: Confirm the independently reviewed candidate and publish on the evidence branch
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           test "$GITHUB_REPOSITORY" = HMarcusWH/zeta-23-lean
           test "$GITHUB_REF" = refs/heads/workmode/paper-320-reviewed-generated-publish
-          source=69ce27c51122e92e2046f7b44dcf51ca8ac644bb
-          ref=refs/heads/workmode/paper-320-reviewed-generated
-          test "$(git ls-remote origin "$ref" | cut -f1)" = "$source"
+          source=b1e57c979ee75cf833c2c6587ff4049dee42a8f3
+          reviewref=refs/heads/workmode/paper-320-reviewed-generated
+          old=e7b940fece806876a9f4ff6de05aca3cee3f06f0
+          test "$(git ls-remote origin "$reviewref" | cut -f1)" = "$old"
+          test "$(git ls-remote origin refs/heads/docs/papers-2026-11-26-terminal | cut -f1)" = "$source"
           test "$(git rev-parse HEAD)" = "$source"
-          test "$(git write-tree)" = "$CANDIDATE_TREE"
-          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
-            commit -m "chore(PR320): materialize independently reviewed exact-head RHKG products"
+          git merge-base --is-ancestor "$old" "$source"
+          gh api "/repos/$GITHUB_REPOSITORY/actions/runs/46019974859/attempts/1" > "$RUNNER_TEMP/independent-run.json"
+          gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/15207442985" > "$RUNNER_TEMP/independent-info.json"
+          gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/15207442985/zip" > "$RUNNER_TEMP/independent.zip"
+          python3 -B - <<'PYTHON'
+          import hashlib,json,os,zipfile
+          from pathlib import Path
+          d=Path(os.environ['RUNNER_TEMP'])
+          def required(ok,reason):
+              if not ok: raise ValueError(reason)
+          w=json.loads((d/'independent-run.json').read_bytes())
+          required((w['id'],w['run_attempt'],w['event'],w['path'],w['head_sha'],w['head_branch'],w['status'],w['conclusion'])==(46019974859,1,'push','.github/workflows/paper-320-generated-artifact-relay.yml','301bfd6c059caa1e93f31b56875bdec01ee5a7c9','workmode/paper-320-generated-artifact-relay','completed','success'),'wrong independent verifier')
+          a=json.loads((d/'independent-info.json').read_bytes())
+          required((a['id'],a['name'],a['expired'],a['digest'],a['workflow_run']['id'],a['workflow_run']['head_sha'])==(15207442985,'paper-320-replay-46019974859-1',False,'sha256:0aa4566211d7e6f09bcee32dbb7b1819d26bc32aebdfc9418e32eac6a43f9324',46019974859,'301bfd6c059caa1e93f31b56875bdec01ee5a7c9'),'wrong reviewer artifact')
+          raw=(d/'independent.zip').read_bytes()
+          required(len(raw)==a['size_in_bytes'] and len(raw)<2_000_000 and 'sha256:'+hashlib.sha256(raw).hexdigest()==a['digest'],'review archive bytes')
+          with zipfile.ZipFile(d/'independent.zip') as z:
+              required(sorted(z.namelist())==['verified-paper-replay.json','verified-product-census.json'] and sum(i.file_size for i in z.infolist())<2_000_000,'incorrect review inventory')
+              for n in z.namelist():
+                  required(json.loads(z.read(n))==json.loads((d/n).read_bytes()),'independent mismatch '+n)
+          local=json.loads((d/'verified-paper-replay.json').read_bytes())
+          required((local['patch_sha256'],local['candidate_tree'])==('2c7d4352346405d79324da7da5c6a37a4f6bd749cff4badd108aafbb54003157','dbbbdd2dfc7c78f462b89a7a85001aa58341a221'),'local pin differs')
+          PYTHON
+          test "$(git write-tree)" = dbbbdd2dfc7c78f462b89a7a85001aa58341a221
+          git diff --quiet
+          test -z "$(git ls-files --others --exclude-standard)"
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m "Stage eight independently verified #320 generated products"
           test "$(git rev-parse HEAD^)" = "$source"
-          test "$(git rev-parse 'HEAD^{tree}')" = "$CANDIDATE_TREE"
-          test -z "$(git status --porcelain --untracked-files=all)"
+          test "$(git rev-parse HEAD^{tree})" = dbbbdd2dfc7c78f462b89a7a85001aa58341a221
           python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check
-          python3 -B - <<'PY'
-          import base64
-          import os
-          import subprocess
-
-          environment = os.environ.copy()
-          token = environment.pop("GH_PUSH_TOKEN", "")
-          if not token:
-              raise SystemExit("Publication credential absent")
-          environment.update(
-              GIT_TERMINAL_PROMPT="0", GIT_CONFIG_COUNT="1",
-              GIT_CONFIG_KEY_0="http.https://github.com/.extraheader",
-              GIT_CONFIG_VALUE_0="AUTHORIZATION: basic " +
-              base64.b64encode(("x-access-token:" + token).encode()).decode("ascii"),
-          )
-          subprocess.run(["git", "push", "https://github.com/HMarcusWH/zeta-23-lean.git",
-                          "HEAD:refs/heads/workmode/paper-320-reviewed-generated"],
-                         check=True, env=environment)
-          PY
-          git rev-parse HEAD 'HEAD^{tree}' >> "$RUNNER_TEMP/reviewed-publication-head-tree.txt"
-          printf 'Published exact review commit: %s\n' "$(git rev-parse HEAD)"
-      - name: Retain review-branch evidence
-        if: always()
+          test -z "$(git status --porcelain --untracked-files=all)"
+          git merge-base --is-ancestor "$old" HEAD
+          git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push --force-with-lease="$reviewref:$old" origin "HEAD:$reviewref"
+          test "$(git ls-remote origin "$reviewref" | cut -f1)" = "$(git rev-parse HEAD)"
+          git rev-parse HEAD HEAD^ HEAD^{tree} > "$RUNNER_TEMP/reviewed-publication-head-tree.txt"
+      - name: Retain the evidence branch receipt
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: paper320-reviewed-publication-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            ${{ runner.temp }}/reviewed-publication-receipt.json
+            ${{ runner.temp }}/verified-paper-replay.json
+            ${{ runner.temp }}/verified-product-census.json
             ${{ runner.temp }}/reviewed-publication-head-tree.txt
-          if-no-files-found: ignore
+          if-no-files-found: error
