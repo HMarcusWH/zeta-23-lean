@@ -36,6 +36,42 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
+      "id": "opica_next_acceptance_target_registry",
+      "pattern": "\\Aresearch/RHRC/integration/opica_next_acceptance/NEXT_TARGETS\\.json\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_next_acceptance_target_service",
+      "pattern": "\\Aresearch/RHRC/integration/opica_next_acceptance/targets\\.py\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_next_acceptance_ci",
+      "pattern": "\\A(?:\\.github/workflows/opica-next-acceptance\\.yml)\\Z",
+      "file_class": "CI_WORKFLOW",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_next_acceptance_source",
+      "pattern": "\\A(?:research/RHRC/integration/opica_next_acceptance/__init__\\.py|research/RHRC/integration/opica_next_acceptance/gate\\.py|research/RHRC/integration/opica_next_acceptance/test_gate\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_next_acceptance_policy",
+      "pattern": "\\A(?:research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY\\.json)\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_next_acceptance_readme",
+      "pattern": "\\A(?:research/RHRC/integration/opica_next_acceptance/README\\.md)\\Z",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
       "id": "opica_next_epoch_math_source",
       "pattern": "\\A(?:Zeta23/OPICARound6/NextSearch/SourceEnergies\\.lean|Zeta23/OPICARound6/PrimeDeficit/Source\\.lean)\\Z",
       "file_class": "LEAN_SOURCE",

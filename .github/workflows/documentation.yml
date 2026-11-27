@@ -2,7 +2,7 @@ name: Documentation source scope and reader examples
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, research/opica-next-source-epoch-v1-20261123]
   workflow_dispatch:
 
 permissions:
@@ -28,11 +28,30 @@ jobs:
           set -euo pipefail
           out="$RUNNER_TEMP/documentation-review"
           mkdir -p "$out"
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check-classification 2>&1 | tee "$out/classification.log"
-          python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests.log"
-          python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
-          python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
+          if test -f research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY.json; then
+            python3 -B -m research.RHRC.integration.opica_next_acceptance.gate \
+              --output "$out/current-source-admission.json"
+            python3 -B -m research.RHRC.integration.opica_next_acceptance.gate \
+              --check-classification > "$out/current-classification.json"
+            historical="$RUNNER_TEMP/documentation-frozen-native"
+            git worktree add --detach "$historical" bb7c8184a135b2823c6296917c5ac893bebf2a71
+            (
+              cd "$historical"
+              git rev-parse HEAD 'HEAD^{tree}' > "$out/historical-head-tree.txt"
+              python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
+              python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check-classification 2>&1 | tee "$out/classification.log"
+              python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests.log"
+              python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
+              python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
+            )
+            git worktree remove "$historical"
+          else
+            python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
+            python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check-classification 2>&1 | tee "$out/classification.log"
+            python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests.log"
+            python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
+            python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
+          fi
       - name: Check reader links and run bounded exact examples
         shell: bash
         run: |

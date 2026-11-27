@@ -1951,6 +1951,26 @@
       "route_mentions": []
     },
     {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_next_acceptance/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_next_acceptance/README.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_next_acceptance/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_next_epoch/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_next_epoch/README.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_next_epoch/README.md",
+      "route_mentions": []
+    },
+    {
       "claim_mentions": [
         "OPICA2_P05",
         "OPICA2_P12",
@@ -5384,6 +5404,26 @@
       "route_mentions": []
     },
     {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/next_search/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/next_search/README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_round6/next_search/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_round6/prime_deficit/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_round6/prime_deficit/README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_round6/prime_deficit/README.md",
+      "route_mentions": []
+    },
+    {
       "claim_mentions": [
         "R003_COMPRESSED_PRODUCTION_C2",
         "R003_INHERITED_FIRST_VARIATION_RESTRICTION"
@@ -6685,7 +6725,7 @@
       ]
     }
   ],
-  "entry_count": 646,
+  "entry_count": 650,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",
