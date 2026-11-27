@@ -26,6 +26,7 @@ EXTRA_ASSETS = {
     )
 } | {WORKFLOW}
 REPAIR_PARENT = "dee12959e2c96d85bb6e8c47fa6b089a088fe8fa"
+AUDIT_REPAIR_PARENT = "5b64a28a7638c66a4c787e3e3177b53bd30bbdef"
 OVERLAY_TARGETS = {
     "Zeta23/OPICATerminal/Analytic/LandauTheorems/mellinGchiOfNeOne.lean",
     "Zeta23/CCM/OriginalDetectorFourHistoryLocalXBound.lean",
@@ -135,7 +136,16 @@ def check_scope(repo, head, policy):
     overlays = policy["overlays"]
     require(set(overlays) == OVERLAY_TARGETS, "strict overlay target inventory differs")
     overlay_paths = {OVERLAY_PREFIX + target for target in OVERLAY_TARGETS}
-    delta = git_text(repo, "diff", "--name-status", "--no-renames", REPAIR_PARENT, head).splitlines()
+    require(git_text(repo, "rev-list", "--parents", "-n", "1", head).split() ==
+            [head, AUDIT_REPAIR_PARENT], "unexpected audit repair parent")
+    audit_path = PREFIX + "Audit.lean"
+    repair_delta = git_text(repo, "diff", "--name-status", "--no-renames",
+                            AUDIT_REPAIR_PARENT, head).splitlines()
+    require(sorted(repair_delta) == sorted(["M\t" + audit_path, "M\t" + PREFIX + "stage.py"]),
+            "unexpected audit repair paths")
+    require(digest(git(repo, "show", head + ":" + audit_path)) ==
+            "69731036e5699e332babb3306c019acde252d440ae6c4280ecd210e1a2238a8e", "strict dependency auditor differs")
+    delta = git_text(repo, "diff", "--name-status", "--no-renames", REPAIR_PARENT, AUDIT_REPAIR_PARENT).splitlines()
     require(len(delta) == len(overlay_paths) + len(REPAIR_MODIFIED) and set(delta) ==
             ({f"A\t{path}" for path in overlay_paths} | {f"M\t{path}" for path in REPAIR_MODIFIED}),
             "strict compatibility repair scope differs")

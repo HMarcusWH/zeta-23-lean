@@ -88,13 +88,13 @@ private def audit (root : Name) (required direct : List Name)
     if n != root && ci.type == mkConst ``RiemannHypothesis then
       throwError "unconditional RH dependency {n}"
     let some idx := env.getModuleIdxFor? n | throwError "strict dependency origin missing {n}"
-    let some origin := env.header.moduleNames[idx.toNat]? | throwError "bad origin {n}"
-    unless originAllowed origin.toString nativeOnly do
-      throwError "forbidden strict proof origin {origin}: {n}"
-    audited := audited.push (Json.mkObj [("name", Json.str n.toString), ("module", Json.str origin.toString)])
+    let some dependencyModuleName := env.header.moduleNames[idx.toNat]? | throwError "bad origin {n}"
+    unless originAllowed dependencyModuleName.toString nativeOnly do
+      throwError "forbidden strict proof origin {dependencyModuleName}: {n}"
+    audited := audited.push (Json.mkObj [("name", Json.str n.toString), ("module", Json.str dependencyModuleName.toString)])
     if let some f := handle then
       let valueRefs := (ci.value? (allowOpaque := true)).map (fun e => e.getUsedConstantsAsSet.toList)
-      let row := Json.mkObj [("name", Json.str n.toString), ("module", Json.str origin.toString),
+      let row := Json.mkObj [("name", Json.str n.toString), ("module", Json.str dependencyModuleName.toString),
         ("type_refs", refs ci.type.getUsedConstantsAsSet.toList),
         ("value_refs", refs (valueRefs.getD [])),
         ("structural_refs", refs (OPICANativeTerminalAudit.structural ci))]
