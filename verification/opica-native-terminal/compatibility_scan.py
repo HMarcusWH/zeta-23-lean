@@ -4,6 +4,7 @@ Not a Lean parser, dependency audit, or proof gate. Occurrences require review/c
 """
 import argparse, json, pathlib, re
 from collections import Counter
+from receipts import SOURCE_SCHEMA, VERSION
 from extract_all import imports, mask, require, sha
 P = pathlib.Path
 ROOT = "Zeta23.OPICANativeTerminal.Terminal"
@@ -27,7 +28,7 @@ def candidates(text):
 
 def scan(work, receipt):
     source = json.loads(receipt.read_text())
-    require(source["schema"] == "NATIVE_TERMINAL_REPAIR_EPOCH_V7" and
+    require(source["schema"] == SOURCE_SCHEMA and
             source["claim"] == "RH_OPEN", "wrong source lock for scan")
     overlay = {r["destination"] for r in source["overlay"]}
     seen, pending, rows, external = set(), [ROOT], [], set()
@@ -52,7 +53,7 @@ def scan(work, receipt):
                          ("FROZEN_ARITHMETIC" if module.startswith("Zeta23Arithmetic.") else "HISTORICAL_NATIVE"),
                          "disposition": "REVIEW_OR_COMPILE"})
     rows.sort(key=lambda r: (r["path"], r["line"], r["family"], r["token"]))
-    return {"schema": "NATIVE_R7_LEXICAL_COMPATIBILITY_SCAN", "status": "ADVISORY_ONLY",
+    return {"schema": f"NATIVE_{VERSION}_LEXICAL_COMPATIBILITY_SCAN", "status": "ADVISORY_ONLY",
             "head": source["head"], "tree": source["tree"], "source_sha256": sha(receipt.read_bytes()),
             "claim": "RH_OPEN", "root": ROOT, "local_modules": sorted(seen),
             "external_imports": sorted(external), "counts": dict(sorted(Counter(r["family"] for r in rows).items())),

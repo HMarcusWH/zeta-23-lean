@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Mechanical review packet, NOT canonical admission or RH promotion."""
 import json, pathlib, sys
-from receipts import verify, read_json, require, digest, expect_text
+from receipts import FULL_R8, VERSION, verify, read_json, require, digest, expect_text
 from compare import compare, equal_checker_environment
 from compare_type_surfaces import comparison
 P=pathlib.Path
@@ -10,15 +10,19 @@ modes=("smoke","checker-preflight","leaf-pnt","leaf-gamma","leaf-operator","leaf
 rows={mode:verify(root/mode,mode) for mode in modes}
 sources=[read_json(root/m/"source.json") for m in modes]
 lock=read_json(root/"source"/"source.json")
-expect_text(root/"source"/"source-lock-pass.txt","NATIVE_R7_SOURCE_LOCK_PASS")
+expect_text(root/"source"/"source-lock-pass.txt",f"NATIVE_{VERSION}_SOURCE_LOCK_PASS")
 scan=read_json(root/"source"/"compatibility-scan.json")
-require(scan["schema"]=="NATIVE_R7_LEXICAL_COMPATIBILITY_SCAN" and
+require(scan["schema"]==f"NATIVE_{VERSION}_LEXICAL_COMPATIBILITY_SCAN" and
         scan["head"]==lock["head"] and scan["tree"]==lock["tree"] and
         scan["source_sha256"]==digest(root/"source"/"source.json") and
         scan["claim"]=="RH_OPEN" and scan["status"]=="ADVISORY_ONLY",
         "compatibility scan provenance mismatch")
 require(all(s==lock for s in sources),"qualification stages differ from source lock")
 compare(root/"terminal",root/"independent")
+if FULL_R8:
+    from full_r8_epoch import check_public_inputs
+    check_public_inputs(root/"historical"/"public-types.json", root/"native"/"public-types.json",
+                        root/"type-comparison"/"type-comparison.json")
 types=read_json(root/"type-comparison"/"type-comparison.json")
 require(types==comparison(root/"historical"/"public-types.json",root/"native"/"public-types.json"),
         "recomputed type comparison differs")
@@ -37,7 +41,7 @@ require(historical["head"]==lock["head"] and historical["tree"]==lock["tree"] an
         historical["claim"]=="RH_OPEN" and historical["status"]=="PASS" and
         historical["toolchain"]=="leanprover/lean4:v4.33.0-rc2" and
         historical["mathlib"]=="51e6992efd06126df61a496bebf8f49482a4e129","historical identity mismatch")
-packet={"schema":"OPICA_NATIVE_R7_CANONICAL_REVIEW_PACKET","claim":"RH_OPEN",
+packet={"schema":f"OPICA_NATIVE_{VERSION}_CANONICAL_REVIEW_PACKET","claim":"RH_OPEN",
  "status":"READY_FOR_MANUAL_CANONICAL_REVIEW","head":lock["head"],"tree":lock["tree"],
  "source_sha256":digest(root/"source"/"source.json"),
  "compatibility_scan_sha256":digest(root/"source"/"compatibility-scan.json"),
@@ -51,4 +55,4 @@ packet={"schema":"OPICA_NATIVE_R7_CANONICAL_REVIEW_PACKET","claim":"RH_OPEN",
  "literal_energy_route":"OPEN","independent_arithmetic_invention":False}
 out.parent.mkdir(parents=True,exist_ok=True)
 out.write_text(json.dumps(packet,indent=2)+"\n")
-print("NATIVE_R7_REVIEW_PACKET_READY; RH_OPEN")
+print(f"NATIVE_{VERSION}_REVIEW_PACKET_READY; RH_OPEN")

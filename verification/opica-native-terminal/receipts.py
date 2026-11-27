@@ -11,6 +11,13 @@ ROOTS = json.loads(ROOT_SPEC.read_text())["roots"]
 TERMINAL = "Zeta23.OPICANativeTerminal.riemannHypothesis_step4_native_arithmetic"
 C1 = "Zeta23.OPICANativeTerminal.step4C1_native_arithmetic"
 
+# The full direct workflow explicitly selects its own proof receipts. Historical
+# invocations continue to require the original R7 schemas and markers.
+import os
+FULL_R8 = os.environ.get("OPICA_DIRECT_FULL_R8") == "1"
+VERSION = "R8" if FULL_R8 else "R7"
+SOURCE_SCHEMA = "NATIVE_TERMINAL_REPAIR_EPOCH_V8" if FULL_R8 else "NATIVE_TERMINAL_REPAIR_EPOCH_V7"
+
 def require(ok, message):
     if not ok:
         raise RuntimeError(message)
@@ -111,16 +118,19 @@ def validate_audits(path, mode):
 
 def verify_evidence(path, mode):
     src = read_json(path / "source.json")
-    require(src["schema"] == "NATIVE_TERMINAL_REPAIR_EPOCH_V7" and src["claim"] == "RH_OPEN" and
+    if FULL_R8:
+        from full_r8_epoch import validate_receipt
+        validate_receipt(src)
+    require(src["schema"] == SOURCE_SCHEMA and src["claim"] == "RH_OPEN" and
             src["toolchain"] == "leanprover/lean4:v4.35.0" and src["package_count"] == 1 and
             src["external_project_packages"] == 0, "wrong source receipt")
-    require(len(src["head"]) == len(src["tree"]) == 40 and len(src["overlay"]) == 20,
+    require(len(src["head"]) == len(src["tree"]) == 40 and len(src["overlay"]) == (24 if FULL_R8 else 20),
             "wrong source identity")
     contains(path / "pins.log", "NATIVE_COMMON_PIN_PASS")
     contains(path / "pins-after.log", "NATIVE_COMMON_PIN_PASS")
-    contains(path / "effective-source.log", "NATIVE_R7_EFFECTIVE_SOURCE_PASS " + src["head"])
+    contains(path / "effective-source.log", f"NATIVE_{VERSION}_EFFECTIVE_SOURCE_PASS " + src["head"])
     contains(path / "lean-version.log", "version 4.35.0")
-    expect_text(path / "mode-pass.txt", "NATIVE_R7_" + mode.upper().replace("-", "_") + "_PASS")
+    expect_text(path / "mode-pass.txt", f"NATIVE_{VERSION}_" + mode.upper().replace("-", "_") + "_PASS")
     if mode in {"terminal", "independent"}:
         expect_text(path / "kernel-pass.txt", "NATIVE_TERMINAL_STOCK_KERNEL_AND_AUDITS_PASS")
         for mod in ("Zeta23Arithmetic.New.ArithmeticOnly", "Zeta23Arithmetic.NativePrincipal",
@@ -164,23 +174,35 @@ def verify_evidence(path, mode):
         contains(path / "native-leaves.log", "Build completed successfully")
     if mode == "native":
         require(bool(read_json(path / "public-types.json")), "missing native public types")
+        if FULL_R8:
+            receipt = read_json(path / "additional-producers.json")
+            expected = {"operator-comparison.json", "tent-comparison.json", "mixed-comparison.json",
+                        "mixed-historical-auxiliary.json", "companion-bridge-kernel.log"}
+            require(receipt["schema"] == "DIRECT_R8_AUXILIARY_KERNEL_REPLAY"
+                    and receipt["claim"] == "RH_OPEN"
+                    and (receipt["head"], receipt["tree"]) == (src["head"], src["tree"])
+                    and receipt["chain"] == ["Zeta23.CCM.DictionaryTentArchLimit",
+                        "Zeta23.CCM.DictionaryTentEFExtension", "Zeta23.CCM.DictionaryZeroSideBridge"]
+                    and set(receipt["reports"]) == expected
+                    and all(receipt["reports"][name] == digest(path / name) for name in expected),
+                    "missing or altered native auxiliary source/kernel records")
     if mode == "smoke":
         contains(path / "audit-smoke.log", "NATIVE_AUDIT_SMOKE_PASS")
     return src, validate_audits(path, mode)
 
 def write(path, mode):
     src, edges = verify_evidence(path, mode)
-    q = {"schema": "OPICA_NATIVE_QUALIFICATION_R7", "mode": mode, "head": src["head"],
+    q = {"schema": f"OPICA_NATIVE_QUALIFICATION_{VERSION}", "mode": mode, "head": src["head"],
          "tree": src["tree"], "claim": "RH_OPEN", "root_spec_sha256": digest(ROOT_SPEC),
          "source_sha256": digest(path / "source.json"), "edge_digests": edges,
          "files": inventory(path)}
     (path / "qualification.json").write_text(json.dumps(q, sort_keys=True, indent=2) + "\n")
-    print("NATIVE_R7_QUALIFICATION_RECEIPT", mode, src["head"])
+    print(f"NATIVE_{VERSION}_QUALIFICATION_RECEIPT", mode, src["head"])
 
 def verify(path, mode):
     q = read_json(path / "qualification.json")
     src, edges = verify_evidence(path, mode)
-    require(q["schema"] == "OPICA_NATIVE_QUALIFICATION_R7" and q["mode"] == mode and
+    require(q["schema"] == f"OPICA_NATIVE_QUALIFICATION_{VERSION}" and q["mode"] == mode and
             q["claim"] == "RH_OPEN" and (q["head"], q["tree"]) == (src["head"], src["tree"]) and
             q["root_spec_sha256"] == digest(ROOT_SPEC) and
             q["source_sha256"] == digest(path / "source.json") and q["edge_digests"] == edges and

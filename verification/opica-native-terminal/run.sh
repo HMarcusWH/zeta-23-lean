@@ -2,12 +2,18 @@
 set -euo pipefail
 work="$1"; out="$2"; mode="$3"
 here="$(cd "$(dirname "$0")" && pwd)"
+epoch="$here/epoch.py"
+version=R7
+if [[ "${OPICA_DIRECT_FULL_R8:-0}" == 1 ]]; then
+  epoch="$here/full_r8_epoch.py"
+  version=R8
+fi
 cd "$work"
 mkdir -p "$out/audit"
 locked="${OPICA_R7_LOCKED_SOURCE_RECEIPT:?source-lock receipt required}"
 cmp "$locked" "$out/source.json"
-python "$here/epoch.py" --out "$work" --verify-pins | tee "$out/pins.log"
-python "$here/epoch.py" --out "$work" --receipt "$out/source.json" --verify-stage | tee "$out/effective-source-before.log"
+python "$epoch" --out "$work" --verify-pins | tee "$out/pins.log"
+python "$epoch" --out "$work" --receipt "$out/source.json" --verify-stage | tee "$out/effective-source-before.log"
 lean --version | tee "$out/lean-version.log"
 toolbin="$(lean --print-prefix)/bin"
 export PATH="$toolbin:$PATH"
@@ -55,6 +61,9 @@ case "$mode" in
       Zeta23.OPICARound4.ArithmeticFrontier.CofinalMomentClosure \
       Zeta23.OPICANativeTerminal.AuditCore 2>&1 | tee "$out/native-frontier.log"
     lake env lean AuditNativeFrontier.lean 2>&1 | tee "$out/audit.log"
+    if [[ "$version" == R8 ]]; then
+      python "$epoch" --out "$work" --extra-producers "$out"
+    fi
     ;;
   arithmetic)
     lake build Zeta23Arithmetic.New.ArithmeticOnly 2>&1 | tee "$out/arithmetic-core.log"
@@ -90,8 +99,8 @@ case "$mode" in
     ;;
   *) printf 'unknown mode %s\n' "$mode" >&2; exit 2 ;;
 esac
-python "$here/epoch.py" --out "$work" --verify-pins | tee "$out/pins-after.log"
-python "$here/epoch.py" --out "$work" --receipt "$out/source.json" --verify-stage | tee "$out/effective-source.log"
+python "$epoch" --out "$work" --verify-pins | tee "$out/pins-after.log"
+python "$epoch" --out "$work" --receipt "$out/source.json" --verify-stage | tee "$out/effective-source.log"
 cmp "$locked" "$out/source.json"
-printf 'NATIVE_R7_%s_PASS\n' "$(echo "$mode" | tr '[:lower:]-' '[:upper:]_')" > "$out/mode-pass.txt"
+printf 'NATIVE_%s_%s_PASS\n' "$version" "$(echo "$mode" | tr '[:lower:]-' '[:upper:]_')" > "$out/mode-pass.txt"
 python "$here/receipts.py" "$mode" "$out"

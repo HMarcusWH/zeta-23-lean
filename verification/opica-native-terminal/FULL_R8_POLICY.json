@@ -1,0 +1,27 @@
+{
+  "schema": "OPICA_DIRECT_R8_QUALIFICATION_POLICY",
+  "claim": "RH_OPEN",
+  "original_head": "42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f",
+  "original_tree": "badbdee500034ef10617499d4d3817c190c8b6d2",
+  "diagnostic_parent": "0e8c9fc21693c2e250e756e550ba9ac8940ab401",
+  "diagnostic_tree": "8eea24fc76e8e11ee3eaf6d94d726c6f2919186b",
+  "verified_source_archive": {
+    "run": 46069901329,
+    "job": 140744067257,
+    "artifact": 15233901092,
+    "sha256": "0c0f147bc4421a063c0d10f30e04f7ac9b88f4abda9d5528528ee9827f6a6096"
+  },
+  "effective_count": 2117,
+  "effective_files_sha256": "e5472877989c66fc02cd4fa15b1f5d39814c5d0fa17981150812972c398e9293",
+  "verification_blobs": {
+    ".github/workflows/opica-native-direct-full-r8.yml": "3648d789a6b4074f680984f98244e0925fdcb61e",
+    "verification/opica-native-terminal/admission.py": "9fad04967ad8f0a737ec1b70d76c1c2365eb6602",
+    "verification/opica-native-terminal/compatibility_scan.py": "25ca04df98db04252f2d2a9daf5e7c8ae6ecaac5",
+    "verification/opica-native-terminal/full_r8_controls.py": "a7890572751596fb80dc57cd65aa97fea0d249f0",
+    "verification/opica-native-terminal/full_r8_epoch.py": "3dbdca46d924b33540466a759ebb57531e93472e",
+    "verification/opica-native-terminal/receipts.py": "b6fca4d463015a8f089b0193ad5c165a87167266",
+    "verification/opica-native-terminal/run.sh": "de2fa7490a5489703e41faca41de1be4e7dbcaf6"
+  },
+  "expected_type_disposition": "Last diagnostic returned REVIEW_REQUIRED on 34 of 355 declarations. This full candidate requires original exact equality and a fresh same-head pass for each dependent gate.",
+  "review": "Independent human semantic judgment and explicit canonical admission remain separate."
+}
