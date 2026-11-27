@@ -1,0 +1,19 @@
+# Registration only. GitHub evaluates the workflow version at the selected ref.
+# Never run research or interpret a default-branch dispatch as qualification.
+name: OPICA reviewed combined source epoch v1 (NO theorem promotion)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  registration-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Refuse execution of the registration-only workflow
+        shell: bash
+        run: |
+          echo 'REGISTRATION_ONLY; NO_PROOF_ACCEPTANCE'
+          echo 'Select the separately reviewed branch: research/opica-next-source-epoch-v1-20261123'
+          echo 'RH OPEN; C1 OPEN; Step4 OPEN'
+          exit 2
