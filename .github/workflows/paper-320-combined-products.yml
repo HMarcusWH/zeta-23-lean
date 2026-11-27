@@ -1,0 +1,134 @@
+name: Independently replay and stage the combined canonical products
+on:
+  push:
+    branches: [workmode/paper-320-reviewed-generated-publish]
+    paths: [.github/workflows/paper-320-combined-products.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    outputs:
+      receipt_id: ${{ steps.upload.outputs.artifact-id }}
+      receipt_digest: ${{ steps.upload.outputs.artifact-digest }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Authenticate the original producer and replay it on a private Git index
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = HMarcusWH/zeta-23-lean
+          test "$GITHUB_REF" = refs/heads/workmode/paper-320-reviewed-generated-publish
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git show -s --format=%P "$GITHUB_SHA")" = e5cd77d41a97899a9c9709f9119e6d3c85cf19ac
+          test "$(sha256sum verification/paper-320-combined-canonical/verify_canonical.py | cut -d' ' -f1)" = fe4706646278afc88e38bbdf265e21fb979b5b77d600f1914a89a089de090a2a
+          out="$RUNNER_TEMP/combined-replay"
+          api="/repos/$GITHUB_REPOSITORY/actions"
+          mkdir -p "$out"
+          gh api "$api/runs/46043516731/attempts/1" > "$out/run.json"
+          gh api "$api/jobs/140656936351" > "$out/job.json"
+          gh api "$api/jobs/140656937024" > "$out/documentation-job.json"
+          gh api "$api/artifacts/15222487382" > "$out/documentation-artifact.json"
+          gh api "$api/artifacts/15222487382/zip" > "$out/documentation.zip"
+          gh api "$api/artifacts/15231356302" > "$out/artifact.json"
+          gh api "$api/artifacts/15231356302/zip" > "$out/artifact.zip"
+          python3 -B verification/paper-320-combined-canonical/verify_canonical.py --repo . --folder "$out" --head abf552b0320b7904c2b54be0b635cb9d53855082 --tree 5b915af5d0157d2ee6ba9a78826e6bc6849977a3 --run 46043516731 --attempt 1 --job 140656936351 --artifact 15231356302 --sha256 1c7ad423295e1a8b779e12d55b4c22e0567041c45a4dc833b087980faf0a487d --out "$out/verified.json"
+          test "$(sha256sum "$out/verified.json" | cut -d' ' -f1)" = 9350839cf546b0b655e3c528b77b755d16756cdf8d250787e14f0a0263defcee
+          test "$(jq -r .candidate_tree "$out/verified.json")" = ae4823637a0c946edc3eb681807cfda087b18e70
+      - id: upload
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: combined-source-canonical-replay-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/combined-replay/verified.json
+          if-no-files-found: error
+  stage:
+    needs: replay
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      actions: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Compare the read-only replay and stage its single-parent product tree
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPLAY_ARTIFACT: ${{ needs.replay.outputs.receipt_id }}
+          REPLAY_DIGEST: ${{ needs.replay.outputs.receipt_digest }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = HMarcusWH/zeta-23-lean
+          test "$GITHUB_REF" = refs/heads/workmode/paper-320-reviewed-generated-publish
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git show -s --format=%P "$GITHUB_SHA")" = e5cd77d41a97899a9c9709f9119e6d3c85cf19ac
+          test "$(sha256sum verification/paper-320-combined-canonical/verify_canonical.py | cut -d' ' -f1)" = fe4706646278afc88e38bbdf265e21fb979b5b77d600f1914a89a089de090a2a
+          out="$RUNNER_TEMP/combined-replay"
+          api="/repos/$GITHUB_REPOSITORY/actions"
+          mkdir -p "$out"
+          gh api "$api/runs/46043516731/attempts/1" > "$out/run.json"
+          gh api "$api/jobs/140656936351" > "$out/job.json"
+          gh api "$api/jobs/140656937024" > "$out/documentation-job.json"
+          gh api "$api/artifacts/15222487382" > "$out/documentation-artifact.json"
+          gh api "$api/artifacts/15222487382/zip" > "$out/documentation.zip"
+          gh api "$api/artifacts/15231356302" > "$out/artifact.json"
+          gh api "$api/artifacts/15231356302/zip" > "$out/artifact.zip"
+          python3 -B verification/paper-320-combined-canonical/verify_canonical.py --repo . --folder "$out" --head abf552b0320b7904c2b54be0b635cb9d53855082 --tree 5b915af5d0157d2ee6ba9a78826e6bc6849977a3 --run 46043516731 --attempt 1 --job 140656936351 --artifact 15231356302 --sha256 1c7ad423295e1a8b779e12d55b4c22e0567041c45a4dc833b087980faf0a487d --out "$out/verified.json"
+          test "$(sha256sum "$out/verified.json" | cut -d' ' -f1)" = 9350839cf546b0b655e3c528b77b755d16756cdf8d250787e14f0a0263defcee
+          test "$(jq -r .candidate_tree "$out/verified.json")" = ae4823637a0c946edc3eb681807cfda087b18e70
+          api="/repos/$GITHUB_REPOSITORY/actions"
+          gh api "$api/artifacts/$REPLAY_ARTIFACT" > "$out/independent.json"
+          test "$(jq -r '[.name,.digest,.expired,.workflow_run.id,.workflow_run.head_sha]|map(tostring)|join(" ")' "$out/independent.json")" = "combined-source-canonical-replay-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT sha256:$REPLAY_DIGEST false $GITHUB_RUN_ID $GITHUB_SHA"
+          gh api "$api/artifacts/$REPLAY_ARTIFACT/zip" > "$out/independent.zip"
+          test "$(sha256sum "$out/independent.zip" | cut -d' ' -f1)" = "$REPLAY_DIGEST"
+          test "$(unzip -Z -1 "$out/independent.zip")" = verified.json
+          unzip -p "$out/independent.zip" verified.json | cmp - "$out/verified.json"
+          source=abf552b0320b7904c2b54be0b635cb9d53855082
+          candidate=ae4823637a0c946edc3eb681807cfda087b18e70
+          target=refs/heads/review/paper-320-combined-products-abf552b0320b
+          guard() {
+            test "$(git ls-remote origin refs/heads/main | cut -f1)" = d4c7fc7114e5f1b61b90ea9037890969358ff0cc
+            test "$(gh api "/repos/$GITHUB_REPOSITORY/pulls/320" --jq '[.state,.base.ref,.head.ref,.head.sha]|join(" ")')" = 'open main docs/papers-2026-11-26-terminal 30b3a430c350eeeef9ff1aa8c99d10cd30dc3fb3'
+            test "$(git ls-remote origin refs/heads/review/paper-320-combined-source | cut -f1)" = "$source"
+            test "$(git ls-remote origin "$GITHUB_REF" | cut -f1)" = "$GITHUB_SHA"
+          }
+          guard
+          if [[ "$candidate" = 5b915af5d0157d2ee6ba9a78826e6bc6849977a3 ]]; then
+            echo "$source $candidate already-fresh" > "$out/staged.txt"
+            exit 0
+          fi
+          export GIT_AUTHOR_NAME='Closure review' GIT_COMMITTER_NAME='Closure review'
+          export GIT_AUTHOR_EMAIL=review@localhost GIT_COMMITTER_EMAIL=review@localhost
+          export GIT_AUTHOR_DATE='2026-11-27T20:57:25Z' GIT_COMMITTER_DATE='2026-11-27T20:57:25Z'
+          commit="$(git commit-tree "$candidate" -p "$source" -m 'Stage the exact combined documentation products after independent replay')"
+          test "$(git show -s --format='%T %P' "$commit")" = "$candidate $source"
+          git worktree add --detach "$RUNNER_TEMP/staged" "$commit"
+          (
+            cd "$RUNNER_TEMP/staged"
+            python3 -B -m research.RHRC.integration.opica_composition.cli check-descendant --repo . --output "$out/staged-scope.json"
+            test "$(jq -r '[.checked_commit,.checked_tree,.status,.schema,.RH,.Step4]|join(" ")' "$out/staged-scope.json")" = "$commit $candidate PASS_SOURCE_SCOPE_ONLY RHRC_COMBINED_DOCUMENTATION_SOURCE_INSPECTION_V1 OPEN OPEN"
+            test -z "$(git status --porcelain --untracked-files=all)"
+          )
+          guard
+          existing="$(git ls-remote origin "$target" | cut -f1)"
+          if [[ "$existing" != "$commit" ]]; then
+            test -z "$existing"
+            git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push --force-with-lease="$target:" origin "$commit:$target"
+          fi
+          test "$(git ls-remote origin "$target" | cut -f1)" = "$commit"
+          git show -s --format='%H%n%T%n%P' "$commit" > "$out/staged.txt"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: combined-generated-stage-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/combined-replay/staged.txt
+            ${{ runner.temp }}/combined-replay/staged-scope.json
+            ${{ runner.temp }}/combined-replay/verified.json
+          if-no-files-found: error
