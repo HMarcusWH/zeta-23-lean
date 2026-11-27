@@ -1,0 +1,9 @@
+{
+  "blobs": {
+    ".github/workflows/documentation.yml": "43cdbe077d359eb66e9d495c1c8da4daa11625f1",
+    "research/RHRC/integration/documentation_combined/test_source_scope.py": "1f68f36318aa5637cea312dcaed5fb02bd845a43",
+    "research/RHRC/integration/opica_composition/cli.py": "d94a6dda4fa4f7d88b715323dee8bde7cf058f46"
+  },
+  "schema": "RHRC_COMBINED_DOCUMENTATION_SOURCE_POLICY_V1",
+  "validator_template_sha256": "e24b39641e1113f0069696a7ae7ddbd1003172e2e2c0162018c205bc88c1e176"
+}

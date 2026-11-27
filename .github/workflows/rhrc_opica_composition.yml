@@ -2,15 +2,6 @@ name: OPICA Round4 governed deduction and independent source gates
 on:
   pull_request:
     branches: [main]
-  push:
-    branches: [research/opica-next-acceptance-v2-20261123, research/opica-integrated-epoch-20261124]
-    # A reviewed generated-state patch activates the complete original matrix.
-    paths:
-      - research/RHRC/graph/compiler/registered_dependencies/**
-      - research/RHRC/graph/generated/**
-      - research/RHRC/integration/generated/**
-      - research/RHRC/ffbbp/generated/**
-      - research/RHRC/ool/generated/**
   workflow_dispatch:
 permissions:
   contents: read
@@ -559,7 +550,7 @@ jobs:
           if-no-files-found: error
       - name: Publish the exact accepted Round4 receipt for the successor release gate
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: ${{ success() && ((github.event_name == 'pull_request' && (github.event.pull_request.number == 300 || github.event.pull_request.number == 301)) || ((github.event_name == 'push' || github.event_name == 'workflow_dispatch') && (github.ref == 'refs/heads/research/opica-next-acceptance-v2-20261123' || github.ref == 'refs/heads/research/opica-integrated-epoch-20261124'))) }}
+        if: ${{ success() && github.event_name == 'pull_request' && (github.event.pull_request.number == 300 || github.event.pull_request.number == 301) }}
         with:
           name: opica4-release-receipt-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/opica4-acceptance/acceptance.json

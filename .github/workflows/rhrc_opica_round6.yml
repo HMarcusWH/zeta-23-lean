@@ -2,7 +2,7 @@ name: OPICA Round 6 constraint graph and finite arithmetic proofs
 
 on:
   pull_request:
-    branches: [main, research/opica-next-source-epoch-v1-20261123]
+    branches: [main]
   workflow_dispatch:
 
 permissions:

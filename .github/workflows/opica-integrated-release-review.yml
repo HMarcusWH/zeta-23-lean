@@ -19,33 +19,12 @@ on:
         type: string
 permissions:
   contents: read
-  actions: read
 jobs:
-  evidence-review:
-    if: github.repository == 'HMarcusWH/zeta-23-lean' && github.ref_name == 'research/opica-integrated-epoch-20261124' && github.sha == inputs.reviewed_head
+  registration-only:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: ${{ github.sha }}
-          fetch-depth: 0
-          persist-credentials: false
-      - env:
-          GH_TOKEN: ${{ github.token }}
-          REVIEWED_HEAD: ${{ inputs.reviewed_head }}
-          CANDIDATE_HEAD: ${{ inputs.candidate_head }}
-          CANDIDATE_RUN: ${{ inputs.candidate_run }}
-          CURRENT_RUN: ${{ inputs.current_run }}
-          ROUND4_RUN: ${{ inputs.round4_run }}
+      - name: Refuse execution of registration stub
         run: |
-          set -euo pipefail
-          python3 -B -m unittest research.RHRC.integration.opica_integrated_epoch.test_admission
-          python3 -B -O -m unittest research.RHRC.integration.opica_integrated_epoch.test_admission
-          python3 -B -m research.RHRC.integration.opica_integrated_epoch.release --reviewed-head "$REVIEWED_HEAD" --candidate-head "$CANDIDATE_HEAD" --candidate-run "$CANDIDATE_RUN" --current-run "$CURRENT_RUN" --round4-run "$ROUND4_RUN" --output "$RUNNER_TEMP/integrated-release.json"
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with:
-          name: integrated-release-review-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/integrated-release.json
-          if-no-files-found: warn
+          echo 'REGISTRATION_ONLY; NO_PROOF_ACCEPTANCE'
+          echo 'Select research/opica-integrated-epoch-20261124 at the exact reviewed head.'
+          exit 2

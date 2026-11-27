@@ -20,10 +20,9 @@ from .snapshot import (file_hash,unlinked,seal_evidence_tree,copy_evidence_tree,
                        TRANSPORT_MAX_BYTES,TRANSPORT_MAX_CONTAINER_BYTES)
 from .snapshot import retire_copied_evidence_tree
 from .descendant import BASE,BASE_TREE,git
-# The historical documentation validator is still executed unchanged for
-# every old source. Only a *separately versioned* reviewed next-source epoch
-# enters the newer selector, which makes no theorem or 11-lane proof claim.
-from ..opica_integrated_epoch.admission import validate_descendant
+# Historical validators remain immutable. The documentation successor accounts
+# for the paper archive before authenticating the exact current source delta.
+from ..documentation_2026_11_26.source_scope import SCHEMA as PAPER_DOCUMENTATION_SCHEMA
 from .accept import (ROUND4_LANES,verify_lane_bundle,require_test_receipt,accept_application_scope,
                      REPLAY_GROUP_IDS,group_lanes,verify_independent_group,join_independent_groups)
 
@@ -321,14 +320,45 @@ def run_command(repo,argv,output,label):
     require(result.returncode==0,'Required command failed: '+str(log))
     return {'argv':list(map(str,argv)),'exit_code':result.returncode,'log':log.name,'sha256':file_hash(log)}
 
+def documentation_epoch(repo):
+    """Select the original validator from authenticated Git ancestry."""
+    env = {**os.environ, 'GIT_NO_REPLACE_OBJECTS': '1', 'GIT_NO_LAZY_FETCH': '1'}
+    def includes(anchor):
+        command = ['git', '-C', str(repo), 'merge-base', '--is-ancestor', anchor, 'HEAD']
+        result = subprocess.run(command, env=env, check=False, timeout=120)
+        require(result.returncode in (0, 1), 'Cannot authenticate documentation ancestry')
+        return result.returncode == 0
+    registration = includes('f92691ef1d0cd8129e0df01cee747e5d70f939f6')
+    paper = includes('b1e57c979ee75cf833c2c6587ff4049dee42a8f3')
+    if registration and paper:
+        return 'combined'
+    if registration:
+        return 'registration'
+    return 'paper' if paper else 'historical'
+
+
+def validate_descendant(repo, *, require_clean=False):
+    epoch = documentation_epoch(repo)
+    if epoch == 'combined':
+        from ..documentation_combined.source_scope import validate_descendant as original
+    elif epoch == 'registration':
+        from ..opica_dispatch_registration.gate import validate_descendant as original
+    elif epoch == 'paper':
+        from ..documentation_2026_11_26.source_scope import validate_descendant as original
+    else:
+        from ..documentation_2026_11_21.source_scope import validate_descendant as original
+    return original(repo, require_clean=require_clean)
+
+
 def classification_command(source):
-    if source.get('schema') == 'OPICA_INTEGRATED_SOURCE_ADMISSION_V1':
-        return [sys.executable,'-B','-m',
-                'research.RHRC.integration.opica_integrated_epoch.admission',
-                '--check-classification']
-    if source.get('schema') == 'OPICA_NEXT_SOURCE_ACCEPTANCE_ADMISSION_V1':
-        return [sys.executable,'-B','-m',
-                'research.RHRC.integration.opica_next_acceptance.gate',
+    if source.get('schema') == 'RHRC_COMBINED_DOCUMENTATION_SOURCE_INSPECTION_V1':
+        return [sys.executable, '-B', '-m',
+                'research.RHRC.integration.documentation_combined.source_scope', '--check-classification']
+    if source.get('schema') == 'OPICA_DISPATCH_REGISTRATION_INSPECTION_V1':
+        return [sys.executable, '-B', '-m', 'research.RHRC.integration.opica_dispatch_registration.gate', '--check-classification']
+    if source.get('schema') == PAPER_DOCUMENTATION_SCHEMA:
+        return [sys.executable, '-B', '-m',
+                'research.RHRC.integration.documentation_2026_11_26.source_scope',
                 '--check-classification']
     if source.get('schema') == 'RHRC_DOCUMENTATION_SOURCE_INSPECTION_V1':
         return [sys.executable, '-B', '-m',

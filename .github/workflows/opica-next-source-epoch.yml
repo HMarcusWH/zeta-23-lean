@@ -1,179 +1,19 @@
+# Registration only. GitHub evaluates the workflow version at the selected ref.
+# Never run research or interpret a default-branch dispatch as qualification.
 name: OPICA reviewed combined source epoch v1 (NO theorem promotion)
 on:
-  push:
-    branches: [research/opica-next-source-epoch-v1-20261123]
-    paths:
-      - .github/workflows/opica-next-source-epoch.yml
-      - research/RHRC/integration/opica_next_epoch/**
-      - research/RHRC/integration/opica_round6/next_search/**
-      - research/RHRC/integration/opica_round6/prime_deficit/**
-      - Zeta23/OPICARound6/NextSearch/**
-      - Zeta23/OPICARound6/PrimeDeficit/**
-      - research/RHRC/graph/FILE_CLASSES.json
-      - research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json
   workflow_dispatch:
 permissions:
   contents: read
-concurrency:
-  group: opica-combined-v1-${{ github.ref }}
-  cancel-in-progress: false
 jobs:
-  source:
+  registration-only:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: ${{ github.sha }}
-          persist-credentials: false
-          fetch-depth: 0
-      - name: Freeze combined source and negative controls in both Python modes
+      - name: Refuse execution of the registration-only workflow
+        shell: bash
         run: |
-          set -euo pipefail
-          export PYTHONPATH="$PWD"
-          python3 -B research/RHRC/integration/opica_next_epoch/scope.py \
-            --output "$RUNNER_TEMP/OPICA_NEXT_EPOCH_SOURCE.json"
-          (cd research/RHRC/integration/opica_next_epoch && python3 -B -m unittest -v test_scope)
-          (cd research/RHRC/integration/opica_next_epoch && python3 -O -B -m unittest -v test_scope)
-          (cd research/RHRC/integration/opica_round6/next_search && python3 -B -m unittest -v test_source_scope)
-          (cd research/RHRC/integration/opica_round6/next_search && python3 -O -B -m unittest -v test_source_scope)
-          (cd research/RHRC/integration/opica_round6/prime_deficit && python3 -B -m unittest -v test_scope)
-          (cd research/RHRC/integration/opica_round6/prime_deficit && python3 -O -B -m unittest -v test_scope)
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with:
-          name: opica-next-epoch-source-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/OPICA_NEXT_EPOCH_SOURCE.json
-          if-no-files-found: warn
-  native-source-lean:
-    needs: source
-    runs-on: ubuntu-24.04
-    timeout-minutes: 360
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: ${{ github.sha }}
-          persist-credentials: false
-          fetch-depth: 0
-      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
-        with:
-          lake-package-directory: .
-          auto-config: false
-          build: false
-          test: false
-          lint: false
-          use-github-cache: false
-          use-mathlib-cache: true
-      - name: Compile four exact mathematical and audit modules at native Lean pin
-        run: |
-          set -euo pipefail
-          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.33.0-rc2"
-          lake build Zeta23.OPICARound6.NextSearch.SourceEnergies
-          lake build Zeta23.OPICARound6.PrimeDeficit.Source
-          lake env lean Zeta23/OPICARound6/NextSearch/Verify.lean >"$RUNNER_TEMP/OPICA_AX_307.log" 2>&1
-          lake env lean Zeta23/OPICARound6/PrimeDeficit/Verify.lean >"$RUNNER_TEMP/OPICA_AX_308.log" 2>&1
-          cat "$RUNNER_TEMP/OPICA_AX_307.log" "$RUNNER_TEMP/OPICA_AX_308.log"
-          python3 -B - <<'PY'
-          import os,json
-          from pathlib import Path
-          from research.RHRC.integration.opica_next_epoch.scope import check_axiom_reports
-          root=Path(os.environ["RUNNER_TEMP"])
-          result=check_axiom_reports("\n".join((root/n).read_text() for n in
-                                      ("OPICA_AX_307.log","OPICA_AX_308.log")))
-          (root/"OPICA_EXACT_AXIOM_AUDIT.json").write_text(json.dumps(result,indent=2)+"\n")
-          print("EXACT_NAMED_TRANSITIVE_AXIOM_AUDIT_PASS",len(result))
-          PY
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with:
-          name: opica-next-epoch-lean-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: |
-            ${{ runner.temp }}/OPICA_AX_307.log
-            ${{ runner.temp }}/OPICA_AX_308.log
-            ${{ runner.temp }}/OPICA_EXACT_AXIOM_AUDIT.json
-          if-no-files-found: warn
-  typed-retrieval:
-    needs: native-source-lean
-    runs-on: ubuntu-24.04
-    timeout-minutes: 360
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: ${{ github.sha }}
-          persist-credentials: false
-          fetch-depth: 0
-      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
-        with:
-          lake-package-directory: .
-          auto-config: false
-          build: false
-          test: false
-          lint: false
-          use-github-cache: false
-          use-mathlib-cache: true
-      - name: Export five true Lean expression DAGs and run three bounded typed searches
-        run: |
-          set -euo pipefail
-          export PYTHONPATH="$PWD"
-          lake build Zeta23.OPICARound6.NextSearch.SourceEnergies
-          lake build Zeta23.RHRC.OpicaComposition.Export
-          lake build Zeta23.RHRC.OpicaRound3AtlasExport
-          python3 -B research/RHRC/integration/opica_round6/next_search/typed_export.py \
-            --output "$RUNNER_TEMP/OPICA_NEXT_EPOCH_TYPES.json"
-          python3 -B research/RHRC/integration/opica_round6/next_search/campaign.py \
-            --output "$RUNNER_TEMP/OPICA_NEXT_EPOCH_RETRIEVAL.json"
-          python3 - <<'PY'
-          import os,json
-          from pathlib import Path
-          r=json.loads((Path(os.environ["RUNNER_TEMP"])/"OPICA_NEXT_EPOCH_RETRIEVAL.json").read_text())
-          assert len(r["targets"]) == 3 and r["RH"] == "OPEN" and r["Step4"] == "OPEN"
-          assert r["proof_acceptance"] is False and r["formal_kernel_proof"] == "NOT_ESTABLISHED_BY_THIS_SEARCH"
-          print("TYPED_RETRIEVAL_ONLY",[(x["target"],x["bounded_disposition"]) for x in r["targets"]])
-          PY
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with:
-          name: opica-next-epoch-retrieval-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: |
-            ${{ runner.temp }}/OPICA_NEXT_EPOCH_TYPES.json
-            ${{ runner.temp }}/OPICA_NEXT_EPOCH_RETRIEVAL.json
-          if-no-files-found: warn
-  canonical-materializer-candidate:
-    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && contains(github.event.head_commit.message, '[run-canonical]')) }}
-    needs: native-source-lean
-    runs-on: ubuntu-24.04
-    timeout-minutes: 360
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: ${{ github.sha }}
-          persist-credentials: false
-          fetch-depth: 0
-      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
-        with:
-          lake-package-directory: .
-          auto-config: false
-          build: false
-          test: false
-          lint: false
-          use-github-cache: false
-          use-mathlib-cache: true
-      - name: Prepare native compiler exporters and write/check only 77 active products
-        run: |
-          set -euo pipefail
-          export PYTHONPATH="$PWD"
-          python3 -B - <<'PY'
-          import os
-          from pathlib import Path
-          from research.RHRC.integration.opica_next_epoch.scope import check,canonical_candidate
-          r=check()
-          canonical_candidate(Path(os.environ["RUNNER_TEMP"])/"OPICA_CANONICAL_REVIEW",
-                              r["head"],r["tree"])
-          PY
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with:
-          name: opica-next-epoch-canonical-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: |
-            ${{ runner.temp }}/OPICA_CANONICAL_REVIEW/
-          if-no-files-found: warn
+          echo 'REGISTRATION_ONLY; NO_PROOF_ACCEPTANCE'
+          echo 'Select the separately reviewed branch: research/opica-next-source-epoch-v1-20261123'
+          echo 'RH OPEN; C1 OPEN; Step4 OPEN'
+          exit 2

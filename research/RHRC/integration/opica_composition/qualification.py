@@ -476,14 +476,7 @@ def prepare_native(repo,output):
     repo=unlinked(repo).resolve();require((repo/'lean-toolchain').read_text(encoding='utf-8').strip()==LEAN_PIN,'Host toolchain pin drift')
     require(not git(repo,'status','--porcelain','--untracked-files=all'),'Production native preparation requires clean source')
     packages=_packages(repo)
-    rows=frozen_atlas(repo)
-    modules=set(CORE_MODULES)|{r['module'] for r in rows}
-    from ..opica_next_acceptance.targets import REGISTRY,registry
-    if (repo/REGISTRY).is_file():
-        registry(repo)
-        modules.update({"Zeta23.OPICARound6.NextSearch.SourceEnergies",
-                        "Zeta23.OPICARound6.PrimeDeficit.Source"})
-    modules=sorted(modules)
+    rows=frozen_atlas(repo);modules=sorted(set(CORE_MODULES)|{r['module'] for r in rows})
     before=_source(repo,modules);output=_external(repo,output,True)
     report={'schema':'OPICA_NATIVE_PREPARATION_V1','status':'ENVIRONMENT_ERROR','commands':[],
       'checked_commit':git(repo,'rev-parse','HEAD'),'checked_tree':git(repo,'rev-parse','HEAD^{tree}'),

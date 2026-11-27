@@ -3,7 +3,6 @@ name: OPICA Round2 exact-source core and research controls
   pull_request:
     branches:
     - main
-    - research/opica-next-source-epoch-v1-20261123
   push:
     branches:
     - research/opica-round2
@@ -46,11 +45,7 @@ jobs:
         if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          if test -f research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY.json; then
-            python -B -m research.RHRC.integration.opica_next_acceptance.gate --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          else
-            python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          fi
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
@@ -98,11 +93,6 @@ jobs:
       shell: bash
       run: |-
         set -euo pipefail
-        mkdir -p "$OPICA2_OUTPUT_DIR/source"
-        if ! test -f "$OPICA2_OUTPUT_DIR/source/before.json"; then
-          printf '%s\n' '{"schema":"OPICA2_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA2_OUTPUT_DIR/source/failure.json"
-          exit 1
-        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
       if: ${{ always() }}
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -135,11 +125,7 @@ jobs:
         if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          if test -f research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY.json; then
-            python -B -m research.RHRC.integration.opica_next_acceptance.gate --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          else
-            python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          fi
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
@@ -195,11 +181,6 @@ jobs:
       shell: bash
       run: |-
         set -euo pipefail
-        mkdir -p "$OPICA2_OUTPUT_DIR/source"
-        if ! test -f "$OPICA2_OUTPUT_DIR/source/before.json"; then
-          printf '%s\n' '{"schema":"OPICA2_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA2_OUTPUT_DIR/source/failure.json"
-          exit 1
-        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
       if: ${{ always() }}
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -243,11 +224,7 @@ jobs:
         if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          if test -f research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY.json; then
-            python -B -m research.RHRC.integration.opica_next_acceptance.gate --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          else
-            python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          fi
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
@@ -359,11 +336,6 @@ jobs:
       shell: bash
       run: |-
         set -euo pipefail
-        mkdir -p "$OPICA2_OUTPUT_DIR/source"
-        if ! test -f "$OPICA2_OUTPUT_DIR/source/before.json"; then
-          printf '%s\n' '{"schema":"OPICA2_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA2_OUTPUT_DIR/source/failure.json"
-          exit 1
-        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
       if: ${{ always() }}
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -400,11 +372,7 @@ jobs:
         if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          if test -f research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY.json; then
-            python -B -m research.RHRC.integration.opica_next_acceptance.gate --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          else
-            python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          fi
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
@@ -478,11 +446,6 @@ jobs:
       shell: bash
       run: |-
         set -euo pipefail
-        mkdir -p "$OPICA2_OUTPUT_DIR/source"
-        if ! test -f "$OPICA2_OUTPUT_DIR/source/before.json"; then
-          printf '%s\n' '{"schema":"OPICA2_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA2_OUTPUT_DIR/source/failure.json"
-          exit 1
-        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
       if: ${{ always() }}
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -517,11 +480,7 @@ jobs:
         if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          if test -f research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY.json; then
-            python -B -m research.RHRC.integration.opica_next_acceptance.gate --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          else
-            python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          fi
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
@@ -621,11 +580,6 @@ jobs:
       shell: bash
       run: |-
         set -euo pipefail
-        mkdir -p "$OPICA2_OUTPUT_DIR/source"
-        if ! test -f "$OPICA2_OUTPUT_DIR/source/before.json"; then
-          printf '%s\n' '{"schema":"OPICA2_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA2_OUTPUT_DIR/source/failure.json"
-          exit 1
-        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
       if: ${{ always() }}
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -664,11 +618,7 @@ jobs:
         if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          if test -f research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY.json; then
-            python -B -m research.RHRC.integration.opica_next_acceptance.gate --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          else
-            python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          fi
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
@@ -823,11 +773,6 @@ jobs:
       shell: bash
       run: |-
         set -euo pipefail
-        mkdir -p "$OPICA2_OUTPUT_DIR/source"
-        if ! test -f "$OPICA2_OUTPUT_DIR/source/before.json"; then
-          printf '%s\n' '{"schema":"OPICA2_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA2_OUTPUT_DIR/source/failure.json"
-          exit 1
-        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
       if: ${{ always() }}
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -864,11 +809,7 @@ jobs:
         if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          if test -f research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY.json; then
-            python -B -m research.RHRC.integration.opica_next_acceptance.gate --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          else
-            python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          fi
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
@@ -938,11 +879,6 @@ jobs:
       shell: bash
       run: |-
         set -euo pipefail
-        mkdir -p "$OPICA2_OUTPUT_DIR/source"
-        if ! test -f "$OPICA2_OUTPUT_DIR/source/before.json"; then
-          printf '%s\n' '{"schema":"OPICA2_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA2_OUTPUT_DIR/source/failure.json"
-          exit 1
-        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
       if: ${{ always() }}
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -983,11 +919,7 @@ jobs:
         if [ -f research/RHRC/integration/opica_round4/BUILD_MANIFEST.json ]; then
           round4_child_head=$(git rev-parse HEAD)
           round4_child_tree=$(git rev-parse 'HEAD^{tree}')
-          if test -f research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY.json; then
-            python -B -m research.RHRC.integration.opica_next_acceptance.gate --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          else
-            python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
-          fi
+          python -B -m research.RHRC.integration.opica_composition.cli inspect --repo . --output "$OPICA2_OUTPUT_DIR/current-round4-source-scope.json"
           test "$(git rev-parse HEAD)" = "$round4_child_head"
           test -z "$(git status --porcelain --untracked-files=all)"
           test "$(git rev-parse 'fe16565b2a31fb8b68bef916ae8f04d535880e7a^{tree}')" = 5442650eb749576e4a82e2d57460a4b97e19b5a9
@@ -1115,11 +1047,6 @@ jobs:
       shell: bash
       run: |-
         set -euo pipefail
-        mkdir -p "$OPICA2_OUTPUT_DIR/source"
-        if ! test -f "$OPICA2_OUTPUT_DIR/source/before.json"; then
-          printf '%s\n' '{"schema":"OPICA2_SOURCE_FREEZE_FAILURE_V1","status":"NOT_ESTABLISHED","reason":"SOURCE_FREEZE_NOT_PRODUCED","proof_acceptance":false,"RH":"OPEN","Step4":"OPEN"}' > "$OPICA2_OUTPUT_DIR/source/failure.json"
-          exit 1
-        fi
         python -B research/RHRC/tools/run_suite.py --verify-source-freeze "$OPICA2_OUTPUT_DIR/source/before.json"
       if: ${{ always() }}
     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

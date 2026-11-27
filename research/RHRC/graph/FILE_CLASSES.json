@@ -36,136 +36,16 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
-      "id": "opica_integrated_release_seal",
-      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/SOURCE_SEAL\\.json)\\Z",
-      "file_class": "BUILD_CONFIGURATION",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_integrated_admission_tools",
-      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/admission\\.py|research/RHRC/integration/opica_integrated_epoch/release\\.py|research/RHRC/integration/opica_integrated_epoch/test_admission\\.py)\\Z",
-      "file_class": "RESEARCH_EXECUTABLE",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_integrated_release_ci",
-      "pattern": "\\A(?:\\.github/workflows/opica-integrated-release-review\\.yml)\\Z",
-      "file_class": "CI_WORKFLOW",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_integrated_historical_support",
-      "pattern": "\\A(?:Zeta23/OPICASupport/ActualDensityEnergy/Composition\\.lean|Zeta23/OPICASupport/ApertureSlack/FormStability\\.lean|Zeta23/OPICASupport/ApertureSlack/NativeGoodAperture\\.lean|Zeta23/OPICASupport/CofinalAperture/Sampling\\.lean|Zeta23/OPICASupport/DensityCompatibility/ActualDistinctGrowth\\.lean|Zeta23/OPICASupport/FourierBridge/BoundaryFlatFourierSampling\\.lean|Zeta23/OPICASupport/FourierBridge/FiniteFourierRational\\.lean|Zeta23/OPICASupport/FourierBridge/FiniteFourierResonance\\.lean|Zeta23/OPICASupport/FourierEnergy/BoundaryFlatStrictEnergy\\.lean|Zeta23/OPICASupport/FourierEnergy/EuclideanEnergyLowerBound\\.lean|Zeta23/OPICASupport/NativeParityActual/ActualZeroSampling\\.lean|Zeta23/OPICASupport/NativeParityActual/FiniteFiberSampling\\.lean|Zeta23/OPICASupport/NativeParityRational/MomentSliceIdentification\\.lean|Zeta23/OPICASupport/NativeParityRational/MomentSliceSampling\\.lean|Zeta23/OPICASupport/NativeParityRational/PolynomialReversal\\.lean|Zeta23/OPICASupport/NativeSliceInterpolation/Interpolation\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatCharacterization\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatGram\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatRationalSampling\\.lean|Zeta23/OPICASupport/OPICAStep4/FiniteCauchySampling\\.lean|Zeta23/OPICASupport/OPICAStep4/RationalSamplingSharpness\\.lean|Zeta23/OPICASupport/ParityRational/PoleSquareSampling\\.lean|Zeta23/OPICASupport/SamplingDensity/DistinctGrowthFromFraction\\.lean|Zeta23/OPICASupport/SamplingDensity/ResonanceCounting\\.lean)\\Z",
-      "file_class": "LEAN_SOURCE",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_integrated_bipolar",
-      "pattern": "\\A(?:Zeta23/OPICARound6/NextSearch/BipolarTransfer\\.lean|Zeta23/OPICARound6/NextSearch/BipolarVerify\\.lean)\\Z",
-      "file_class": "LEAN_SOURCE",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_integrated_policy",
-      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/LOCK\\.json)\\Z",
-      "file_class": "BUILD_CONFIGURATION",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_integrated_tools",
-      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/review\\.py|research/RHRC/integration/opica_integrated_epoch/test_review\\.py|research/RHRC/integration/opica_integrated_epoch/independent_review\\.py|research/RHRC/integration/opica_integrated_epoch/compare\\.py)\\Z",
-      "file_class": "RESEARCH_EXECUTABLE",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_integrated_workflow",
-      "pattern": "\\A(?:\\.github/workflows/opica-integrated-epoch\\.yml)\\Z",
-      "file_class": "CI_WORKFLOW",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_integrated_notes",
-      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/README\\.md)\\Z",
-      "file_class": "DOCUMENTATION",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_next_acceptance_target_registry",
-      "pattern": "\\Aresearch/RHRC/integration/opica_next_acceptance/NEXT_TARGETS\\.json\\Z",
-      "file_class": "BUILD_CONFIGURATION",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_next_acceptance_target_service",
-      "pattern": "\\Aresearch/RHRC/integration/opica_next_acceptance/targets\\.py\\Z",
-      "file_class": "RESEARCH_EXECUTABLE",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_next_acceptance_ci",
-      "pattern": "\\A(?:\\.github/workflows/opica-next-acceptance\\.yml)\\Z",
-      "file_class": "CI_WORKFLOW",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_next_acceptance_source",
-      "pattern": "\\A(?:research/RHRC/integration/opica_next_acceptance/__init__\\.py|research/RHRC/integration/opica_next_acceptance/gate\\.py|research/RHRC/integration/opica_next_acceptance/test_gate\\.py)\\Z",
-      "file_class": "RESEARCH_EXECUTABLE",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_next_acceptance_policy",
-      "pattern": "\\A(?:research/RHRC/integration/opica_next_acceptance/SOURCE_POLICY\\.json)\\Z",
-      "file_class": "BUILD_CONFIGURATION",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_next_acceptance_readme",
-      "pattern": "\\A(?:research/RHRC/integration/opica_next_acceptance/README\\.md)\\Z",
-      "file_class": "DOCUMENTATION",
-      "trust_zone": "RESEARCH_ONLY"
-    },
-    {
-      "id": "opica_next_epoch_math_source",
-      "pattern": "\\A(?:Zeta23/OPICARound6/NextSearch/SourceEnergies\\.lean|Zeta23/OPICARound6/PrimeDeficit/Source\\.lean)\\Z",
-      "file_class": "LEAN_SOURCE",
-      "trust_zone": "AUXILIARY_FORMALIZATION"
-    },
-    {
-      "id": "opica_next_epoch_lean_audit",
-      "pattern": "\\A(?:Zeta23/OPICARound6/NextSearch/Verify\\.lean|Zeta23/OPICARound6/PrimeDeficit/Verify\\.lean)\\Z",
-      "file_class": "LEAN_SOURCE",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_next_epoch_workflows",
-      "pattern": "\\A(?:\\.github/workflows/opica-next-arithmetic\\.yml|\\.github/workflows/opica-next-source-epoch\\.yml|\\.github/workflows/opica-prime-deficit\\.yml)\\Z",
-      "file_class": "CI_WORKFLOW",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_next_epoch_executables",
-      "pattern": "\\A(?:research/RHRC/integration/opica_next_epoch/scope\\.py|research/RHRC/integration/opica_next_epoch/test_scope\\.py|research/RHRC/integration/opica_round6/next_search/campaign\\.py|research/RHRC/integration/opica_round6/next_search/source_scope\\.py|research/RHRC/integration/opica_round6/next_search/test_source_scope\\.py|research/RHRC/integration/opica_round6/next_search/typed_export\\.py|research/RHRC/integration/opica_round6/prime_deficit/scope\\.py|research/RHRC/integration/opica_round6/prime_deficit/test_scope\\.py)\\Z",
-      "file_class": "RESEARCH_EXECUTABLE",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_next_epoch_configuration",
-      "pattern": "\\A(?:research/RHRC/integration/opica_next_epoch/SOURCE_EPOCH\\.json|research/RHRC/integration/opica_round6/next_search/SOURCE_CONTRACTS\\.json|research/RHRC/integration/opica_round6/next_search/TARGETS\\.json|research/RHRC/integration/opica_round6/prime_deficit/SOURCE_CONTRACT\\.json)\\Z",
-      "file_class": "BUILD_CONFIGURATION",
-      "trust_zone": "AUDIT_ONLY"
-    },
-    {
-      "id": "opica_next_epoch_documents",
-      "pattern": "\\A(?:research/RHRC/integration/opica_next_epoch/README\\.md|research/RHRC/integration/opica_round6/next_search/README\\.md|research/RHRC/integration/opica_round6/prime_deficit/README\\.md)\\Z",
-      "file_class": "DOCUMENTATION",
-      "trust_zone": "RESEARCH_ONLY"
-    },
-    {
-      "id": "opica_next_epoch_falsifiers",
-      "pattern": "\\A(?:research/RHRC/integration/opica_round6/next_search/FALSIFIERS\\.json)\\Z",
+      "id": "research_archive_2026_11_26_papers",
+      "pattern": "\\A(?:papers/2026\\-11\\-26/Paper_XXIV_Exact_Native_Mobius_Hyperbola_Discrete_Hankel_Criteria_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXIX_Signed_Mobius_Survivor_Energies_Opposed_Parity_Stopping_Covers_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXVIII_Exact_Moment_Slice_Parity_Sequences_Cofinal_RH_Criteria_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXXII_Principal_Character_Arithmetic_Supply_Terminal_Composition_v0_2_PROOFREAD_CANDIDATE\\.pdf|papers/2026\\-11\\-26/Paper_XXXI_Both_Parity_Power_Comparison_Cofinal_Moment_Slice_Closure_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXX_Literal_Prime_Ramp_Normalization_Positive_Energy_Localization_v0_2_PROOFREAD\\.pdf)\\Z",
       "file_class": "RESEARCH_FIXTURE",
-      "trust_zone": "RESEARCH_ONLY"
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "documentation_2026_11_26_scope",
+      "pattern": "\\A(?:research/RHRC/integration/documentation_2026_11_26/archive_scope\\.py|research/RHRC/integration/documentation_2026_11_26/source_scope\\.py|research/RHRC/integration/documentation_2026_11_26/test_archive_scope\\.py|research/RHRC/integration/documentation_2026_11_26/test_source_scope\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "documentation_2026_11_21_examples",
