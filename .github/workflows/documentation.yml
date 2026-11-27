@@ -28,7 +28,16 @@ jobs:
           set -euo pipefail
           out="$RUNNER_TEMP/documentation-review"
           mkdir -p "$out"
-          if test -f research/RHRC/integration/opica_dispatch_registration/SOURCE_POLICY.json; then
+          epoch=$(python3 -B -c 'from pathlib import Path; from research.RHRC.integration.opica_composition.cli import documentation_epoch; print(documentation_epoch(Path.cwd()))')
+          case "$epoch" in
+            paper)
+              python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check > "$out/source-scope.json"
+              python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check-classification 2>&1 | tee "$out/classification.log"
+              python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope research.RHRC.integration.documentation_2026_11_26.test_archive_scope research.RHRC.integration.documentation_2026_11_26.test_source_scope 2>&1 | tee "$out/scope-tests.log"
+              python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope research.RHRC.integration.documentation_2026_11_26.test_archive_scope research.RHRC.integration.documentation_2026_11_26.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
+              python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
+              ;;
+            registration)
             python3 -B -m research.RHRC.integration.opica_dispatch_registration.gate --output "$out/current-registration-admission.json"
             python3 -B -m research.RHRC.integration.opica_dispatch_registration.gate --check-classification > "$out/current-classification.json"
             historical="$RUNNER_TEMP/documentation-frozen-native"
@@ -43,13 +52,43 @@ jobs:
               python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
             )
             git worktree remove "$historical"
-          else
+
+              ;;
+            historical)
             python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
             python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check-classification 2>&1 | tee "$out/classification.log"
             python3 -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests.log"
             python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
             python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
-          fi
+              ;;
+            combined)
+              registration="$RUNNER_TEMP/registration-parent"
+              papers="$RUNNER_TEMP/paper-parent"
+              git worktree add --detach "$registration" d4c7fc7114e5f1b61b90ea9037890969358ff0cc
+              (
+                cd "$registration"
+                python3 -B -m research.RHRC.integration.opica_dispatch_registration.gate --output "$out/registration-parent.json"
+                python3 -B -m research.RHRC.integration.opica_dispatch_registration.gate --check-classification > "$out/registration-classes.json"
+              )
+              git worktree remove "$registration"
+              git worktree add --detach "$papers" 30b3a430c350eeeef9ff1aa8c99d10cd30dc3fb3
+              (
+                cd "$papers"
+                python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check > "$out/paper-parent.json"
+                python3 -B -m research.RHRC.integration.documentation_2026_11_26.source_scope --check-classification 2>&1 | tee "$out/paper-classes.log"
+                tests=(research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope research.RHRC.integration.documentation_2026_11_26.test_archive_scope research.RHRC.integration.documentation_2026_11_26.test_source_scope)
+                python3 -B -m unittest "${tests[@]}" 2>&1 | tee "$out/paper-tests.log"
+                python3 -O -B -m unittest "${tests[@]}" 2>&1 | tee "$out/paper-tests-optimized.log"
+              )
+              git worktree remove "$papers"
+              python3 -B -m research.RHRC.integration.documentation_combined.source_scope --check-classification 2>&1 | tee "$out/combined-classes.log"
+              python3 -B -m unittest research.RHRC.integration.documentation_combined.test_source_scope 2>&1 | tee "$out/combined-tests.log"
+              python3 -O -B -m unittest research.RHRC.integration.documentation_combined.test_source_scope 2>&1 | tee "$out/combined-tests-optimized.log"
+              python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
+              python3 -B -m research.RHRC.integration.opica_composition.cli check-descendant --repo . --output "$out/combined-source.json"
+              ;;
+            *) exit 2 ;;
+          esac
       - name: Check reader links and run bounded exact examples
         shell: bash
         run: |
@@ -73,21 +112,24 @@ jobs:
   canonical-refresh:
     name: Canonical generated-state candidate for documentation
     if: >-
-      github.event_name == 'pull_request' &&
-      github.event.pull_request.head.repo.full_name == github.repository &&
-      github.head_ref == 'docs/repository-guide-and-reuse-2026-11-21'
+      (github.event_name == 'pull_request' &&
+       github.event.pull_request.head.repo.full_name == github.repository &&
+       (github.head_ref == 'docs/repository-guide-and-reuse-2026-11-21' ||
+        github.head_ref == 'docs/papers-2026-11-26-terminal')) ||
+      (github.event_name == 'workflow_dispatch' &&
+       github.ref == 'refs/heads/review/paper-320-combined-source')
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
         with:
           path: .lake/build
-          key: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.event.pull_request.head.sha }}
+          key: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.event.pull_request.head.sha || github.sha }}
           restore-keys: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
@@ -106,7 +148,7 @@ jobs:
           out="$RUNNER_TEMP/documentation-canonical"
           mkdir -p "$out"
           git rev-parse HEAD 'HEAD^{tree}' > "$out/input-head-tree.txt"
-          python3 -B -m research.RHRC.integration.documentation_2026_11_21.source_scope --check > "$out/source-scope.json"
+          python3 -B -m research.RHRC.integration.opica_composition.cli check-descendant --repo . --output "$out/source-scope.json"
           lake env lean --version > "$out/lean-version.txt"
           lake build Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution 2>&1 | tee "$out/exporter-build.log"
       - name: Regenerate through the canonical producer and check its output

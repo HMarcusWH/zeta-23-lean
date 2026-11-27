@@ -36,6 +36,18 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
+      "id": "research_archive_2026_11_26_papers",
+      "pattern": "\\A(?:papers/2026\\-11\\-26/Paper_XXIV_Exact_Native_Mobius_Hyperbola_Discrete_Hankel_Criteria_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXIX_Signed_Mobius_Survivor_Energies_Opposed_Parity_Stopping_Covers_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXVIII_Exact_Moment_Slice_Parity_Sequences_Cofinal_RH_Criteria_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXXII_Principal_Character_Arithmetic_Supply_Terminal_Composition_v0_2_PROOFREAD_CANDIDATE\\.pdf|papers/2026\\-11\\-26/Paper_XXXI_Both_Parity_Power_Comparison_Cofinal_Moment_Slice_Closure_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXX_Literal_Prime_Ramp_Normalization_Positive_Energy_Localization_v0_2_PROOFREAD\\.pdf)\\Z",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "documentation_2026_11_26_scope",
+      "pattern": "\\A(?:research/RHRC/integration/documentation_2026_11_26/archive_scope\\.py|research/RHRC/integration/documentation_2026_11_26/source_scope\\.py|research/RHRC/integration/documentation_2026_11_26/test_archive_scope\\.py|research/RHRC/integration/documentation_2026_11_26/test_source_scope\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "documentation_2026_11_21_examples",
       "pattern": "\\A(?:docs/examples/exact_examples\\.py|docs/examples/infrastructure_replay\\.py)\\Z",
       "file_class": "RESEARCH_EXECUTABLE",
