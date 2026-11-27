@@ -123,8 +123,15 @@
     {
       "destination": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
       "preimage": "b60ed25088ea74ed57ca943e6c80c080a37ae75d",
-      "postimage": "91c2897973cd51b895fb5f809040b6aca721b2e2",
+      "postimage": "8ae35478d65840bda89c93dbfa7709b9ac33440f",
       "local_evidence": {
+        "scope": "Four scalar projection repairs across the complete SourceDiscrepancy surface. Each of those four raw public types still differs by two FunLike binders. The independent full 355-declaration comparison is required.",
+        "source_parent": "ba03c628dd7f4ac69dd08ebd2db4e225a927abfe",
+        "compiled_import_head": "925865c3651ccfc343e4bc66723fada739bdf076",
+        "cache_context": "fourth",
+        "receipt_sha256": "ea1a506f62e880dce9d6a9b281a2ba439123503fda4871fb10e9d7320123fb50"
+      },
+      "previous_local_evidence": {
         "scope": "full module, 11 declarations; 211 prerequisites and baseline/candidate stock kernel replays",
         "receipt_sha256": "86c74e1e0cbde26a1e5ea0d1088717403f22048ed93d6b4b0c29d03ddd20ddde"
       }

@@ -7,12 +7,23 @@ namespace Zeta23.OPICARound4
 open CCM Matrix
 open scoped BigOperators ComplexConjugate
 
+-- Use the division-semiring projection from the historical matrix equivalence.
+-- The type annotation leaves each public statement expressed through Mathlib's
+-- original matrix equivalence and its ordinary function coercion.
+attribute [local instance 1100] DivisionSemiring.toSemiring in
+private def sourceMatrixEquivShape {𝕜 : Type*} [RCLike 𝕜] {m n : Type*}
+    [Fintype n] [DecidableEq n] :
+    Matrix m n 𝕜 ≃ₗ[𝕜] EuclideanSpace 𝕜 n →ₗ[𝕜] EuclideanSpace 𝕜 m :=
+  Matrix.toEuclideanLin
+
 /-- The mixed source pairing is the physical coefficient inner product.
 Both left and right vectors are retained, so signed cross terms survive. -/
 theorem sourceAtomPairing_eq_physical_inner (K : ℕ)
     (h u : EuclideanSpace ℂ (Fin (2 * K + 1))) (omega : ℝ) :
     sourceAtomPairing K h u omega =
-      inner ℂ h ((sourceMatrix omega K).toEuclideanLin u) := by
+      inner ℂ h ((@DFunLike.coe (type_of% (@sourceMatrixEquivShape ℂ Complex.instRCLike
+        (Fin (2 * K + 1)) (Fin (2 * K + 1)) _ _))
+        _ _ _ Matrix.toEuclideanLin (sourceMatrix omega K)) u) := by
   rw [EuclideanSpace.inner_eq_star_dotProduct]
   simp only [sourceAtomPairing, dotProduct, Matrix.toEuclideanLin, Matrix.toLpLin_apply,
     WithLp.ofLp_toLp, Matrix.mulVec, sourceMatrix_apply, sourceEntry_eq_ofReal,
@@ -36,7 +47,9 @@ def correctedSourceTest (L : ℝ) (K : ℕ)
 theorem correctedSourceTest_eq_inner (L : ℝ) (K : ℕ)
     (u : poleNeutralEvenSubspace L K) (y : ℝ) :
     correctedSourceTest L K u y =
-      inner ℂ (correctedSourceRow L K) ((sourceMatrix (1 - y / L) K).toEuclideanLin
+      inner ℂ (correctedSourceRow L K) ((@DFunLike.coe (type_of% (@sourceMatrixEquivShape ℂ Complex.instRCLike
+        (Fin (2 * K + 1)) (Fin (2 * K + 1)) _ _))
+        _ _ _ Matrix.toEuclideanLin (sourceMatrix (1 - y / L) K))
         (u.val : EuclideanSpace ℂ (Fin (2 * K + 1)))) :=
   sourceAtomPairing_eq_physical_inner K _ _ _
 
@@ -89,7 +102,9 @@ theorem correctedSourceTest_hasDerivAt (L : ℝ) (K : ℕ)
 /-- Exact all-prime-power pairing of the same row and the same input state. -/
 theorem correctedSourceTest_prime_pairing (L : ℝ) (K : ℕ)
     (u : poleNeutralEvenSubspace L K) :
-    inner ℂ (correctedSourceRow L K) ((canonicalPrimeMatrix L K).toEuclideanLin
+    inner ℂ (correctedSourceRow L K) ((@DFunLike.coe (type_of% (@sourceMatrixEquivShape ℂ Complex.instRCLike
+        (Fin (2 * K + 1)) (Fin (2 * K + 1)) _ _))
+        _ _ _ Matrix.toEuclideanLin (canonicalPrimeMatrix L K))
         (u.val : EuclideanSpace ℂ (Fin (2 * K + 1)))) =
       ∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
         primeSourceWeight q * correctedSourceTest L K u (Real.log q) := by
@@ -104,7 +119,9 @@ theorem correctedSourceTest_complete_arithmetic {L : ℝ} (hL : 0 < L)
     (K : ℕ) (hK : 2 ≤ K) (u : poleNeutralEvenSubspace L K) :
     poleNeutralCorrectedCubicSource L K u =
       -inner ℂ (correctedSourceRow L K)
-        ((canonicalArchMatrix L K).toEuclideanLin
+        ((@DFunLike.coe (type_of% (@sourceMatrixEquivShape ℂ Complex.instRCLike
+        (Fin (2 * K + 1)) (Fin (2 * K + 1)) _ _))
+        _ _ _ Matrix.toEuclideanLin (canonicalArchMatrix L K))
           (u.val : EuclideanSpace ℂ (Fin (2 * K + 1)))) -
       ∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
         primeSourceWeight q * correctedSourceTest L K u (Real.log q) := by
