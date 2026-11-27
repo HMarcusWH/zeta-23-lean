@@ -1,0 +1,515 @@
+{
+  "schema": "OPICA_INTEGRATED_SOURCE_CANDIDATE_V1",
+  "parent": "db485c5f5f9704da66a1cb8505ee1464a9f72da3",
+  "parent_tree": "3d5823f4998f6489efb3af30cb57f1a528b5ac2a",
+  "donor_trees": {
+    "9180f489f39f4d807692b1da6871550bfdbbcbc5": "71ecc1c926933df94fd92532659f467c563fa115",
+    "1eab1eb59e47d503ade1615a2c465f967fa65c6e": "d3dfbc79c927426511bdf140603f8987761000d5"
+  },
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "overlays": [
+    {
+      "path": "Zeta23/OPICASupport/ActualDensityEnergy/Composition.lean",
+      "module": "Zeta23.OPICASupport.ActualDensityEnergy.Composition",
+      "sha": "4291edd7c9c8fbdcf1b3d0d98868a6da5fc9e4d9",
+      "sha256": "f9e3f78778046814a3377ddc20ab9c355d4d86e1ed38291b65cbb1df82106cc6",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/ApertureSlack/FormStability.lean",
+      "module": "Zeta23.OPICASupport.ApertureSlack.FormStability",
+      "sha": "541cb6b942a160042bd2c820bf78a7e09a64262a",
+      "sha256": "efc6c85245fa1a34d2ec3027817d84b4629cb1023c9f47843c358ab307e3fb20",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/ApertureSlack/NativeGoodAperture.lean",
+      "module": "Zeta23.OPICASupport.ApertureSlack.NativeGoodAperture",
+      "sha": "1567b2b75b1c3c68130a6c273ca8fb33ed76ff78",
+      "sha256": "099f5015621a66e03bcb622464cfaab20544167a4fa73821a1f40625a91a245d",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/CofinalAperture/Sampling.lean",
+      "module": "Zeta23.OPICASupport.CofinalAperture.Sampling",
+      "sha": "8c68b8550aea76ec5ace249499623ff0590413c6",
+      "sha256": "2a4874c3bb14c90eb0462b27781866692cd15f6d7389677595e61db6e0aa6a73",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/DensityCompatibility/ActualDistinctGrowth.lean",
+      "module": "Zeta23.OPICASupport.DensityCompatibility.ActualDistinctGrowth",
+      "sha": "cdedb7d907b57d550456cb7bf2b30cb81670a131",
+      "sha256": "5de6426ac71a96a458f0049487be5b395b7dcce78f1e607c50a728387991206c",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/FourierBridge/BoundaryFlatFourierSampling.lean",
+      "module": "Zeta23.OPICASupport.FourierBridge.BoundaryFlatFourierSampling",
+      "sha": "aa578b324445bc8086d20fbae6ac92d0a026a7cb",
+      "sha256": "97d203b7fae8769d2aaa8a925f3be8b5e7dc98f41b62d1be485715bb0566eeef",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/FourierBridge/FiniteFourierRational.lean",
+      "module": "Zeta23.OPICASupport.FourierBridge.FiniteFourierRational",
+      "sha": "2324cb1c3f4cfe4eb0f26a3e12fd349f57b278d7",
+      "sha256": "134096bff4470454b84839299de027cb9eda9a03bc3ad7525efba430f1c829ce",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/FourierBridge/FiniteFourierResonance.lean",
+      "module": "Zeta23.OPICASupport.FourierBridge.FiniteFourierResonance",
+      "sha": "3c887432be159076ebd69e20987f6a071683f04a",
+      "sha256": "008800dff186924cadada0f215235aceb8d0d885e0d87040ab579e3a1e4042e6",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/FourierEnergy/BoundaryFlatStrictEnergy.lean",
+      "module": "Zeta23.OPICASupport.FourierEnergy.BoundaryFlatStrictEnergy",
+      "sha": "121ee984fd97ccd1b81b36d50382f56dd82a7f7b",
+      "sha256": "a7167ac1424883d2ff9d5ad1ae7b43d7b3e4c95914d683dc315a7c5b601ad27e",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/FourierEnergy/EuclideanEnergyLowerBound.lean",
+      "module": "Zeta23.OPICASupport.FourierEnergy.EuclideanEnergyLowerBound",
+      "sha": "79037ee70ffb566f96b36b68874e706f493ea012",
+      "sha256": "64546ce1e1f9c00ccbce36cc303893d361bf5fac261308b5b800c97cf82963f7",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeParityActual/ActualZeroSampling.lean",
+      "module": "Zeta23.OPICASupport.NativeParityActual.ActualZeroSampling",
+      "sha": "0ab3dad7f631d7ba045892ffd7bff31a7213f277",
+      "sha256": "a4fff83898aca1676700f14eb91a55bf7c274b9d2f241f3280d5ef34ae7e6544",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeParityActual/FiniteFiberSampling.lean",
+      "module": "Zeta23.OPICASupport.NativeParityActual.FiniteFiberSampling",
+      "sha": "c607ae66e478755350950d6e438bc7a57c89b11d",
+      "sha256": "ade8b424e7c357928a831081b6d75b908140af9942f801c80f1ea03c1ecee287",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeParityRational/MomentSliceIdentification.lean",
+      "module": "Zeta23.OPICASupport.NativeParityRational.MomentSliceIdentification",
+      "sha": "db37a4e48487852341197a72c254d56489fd37eb",
+      "sha256": "dfee66e7691c164619a556e1ef1c8a1d6e4bd49734ef47155834c8bd471c123c",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeParityRational/MomentSliceSampling.lean",
+      "module": "Zeta23.OPICASupport.NativeParityRational.MomentSliceSampling",
+      "sha": "3230c125b120079804549c2dd0c955b95a534605",
+      "sha256": "c5694278dd9d143eb6af312a3fa5de20e66391f392a8677f74c88d409ff3db8c",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeParityRational/PolynomialReversal.lean",
+      "module": "Zeta23.OPICASupport.NativeParityRational.PolynomialReversal",
+      "sha": "a9d11645a1832bfe9b3dcd413ce2b2c77a9d6bb9",
+      "sha256": "af6f3080b1d8b6340f82df4dd4cab9b25c52d70793c445e2740fa5f313ff1826",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/NativeSliceInterpolation/Interpolation.lean",
+      "module": "Zeta23.OPICASupport.NativeSliceInterpolation.Interpolation",
+      "sha": "98bb2d6070760940bbfc01c21f51cec932c9f263",
+      "sha256": "6486cf5b365d4597d4badae235f2246ad4d4031c1f7b8187e4a47e6b7775c7f5",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/OPICAStep4/BoundaryFlatCharacterization.lean",
+      "module": "Zeta23.OPICASupport.OPICAStep4.BoundaryFlatCharacterization",
+      "sha": "3c7731ebb0e85c89d4afdaa95917476c662d015c",
+      "sha256": "e19bfb13fcb523930617aae99c9d1190cccb1ec3915feae610f7195c68bbef61",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/OPICAStep4/BoundaryFlatGram.lean",
+      "module": "Zeta23.OPICASupport.OPICAStep4.BoundaryFlatGram",
+      "sha": "4adb7dec9d432f267be7ec7ebe60b6eea31d63e8",
+      "sha256": "151d79eec8c21355100cbdd8d2fb194d3c51fa675c2c7275b8b4c336278c868b",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/OPICAStep4/BoundaryFlatRationalSampling.lean",
+      "module": "Zeta23.OPICASupport.OPICAStep4.BoundaryFlatRationalSampling",
+      "sha": "946c1a72c5a4aa675f1a0c6723e8606d67e213ad",
+      "sha256": "a1bb01637fb4b8f0abc8c1383aba228a819e7ceb75e761b4d5451d524dac4c6c",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/OPICAStep4/FiniteCauchySampling.lean",
+      "module": "Zeta23.OPICASupport.OPICAStep4.FiniteCauchySampling",
+      "sha": "e492efbba87e5101d33db2de1c803884b2816247",
+      "sha256": "db1f88f3b154ae4fc64788bbfdc10f9c19c03ae3ab5bf506491dff680914af19",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/OPICAStep4/RationalSamplingSharpness.lean",
+      "module": "Zeta23.OPICASupport.OPICAStep4.RationalSamplingSharpness",
+      "sha": "e991686c8d57260d3d99596e3cb187bd7757f2d2",
+      "sha256": "f4502a75b418dfab6fee34406170c2c823e8617ebefef37ad6533d552d81481c",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/ParityRational/PoleSquareSampling.lean",
+      "module": "Zeta23.OPICASupport.ParityRational.PoleSquareSampling",
+      "sha": "a5acb113e8494d86a713d4b11acd5ccff260b8c1",
+      "sha256": "adfb143bfce70d7431be32c07d83bc3a6d824173967b0c77cae96d7437ebffae",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/SamplingDensity/DistinctGrowthFromFraction.lean",
+      "module": "Zeta23.OPICASupport.SamplingDensity.DistinctGrowthFromFraction",
+      "sha": "0f47ad6ae53eabbe9099954d09b1674fb7a97204",
+      "sha256": "ada4b6d0a6becb1069d59d7fa51fe9434417ed6edfa6d488eccb2bf27d61f171",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICASupport/SamplingDensity/ResonanceCounting.lean",
+      "module": "Zeta23.OPICASupport.SamplingDensity.ResonanceCounting",
+      "sha": "abeaa3da4453f05ea2c1101a64a00cb83e306ba9",
+      "sha256": "732c207b92eadba2d36f49a0fb1565cb62ea919e4f5e5738695a8d73ad4caac1",
+      "donor": "9180f489f39f4d807692b1da6871550bfdbbcbc5"
+    },
+    {
+      "path": "Zeta23/OPICARound6/NextSearch/BipolarTransfer.lean",
+      "module": "Zeta23.OPICARound6.NextSearch.BipolarTransfer",
+      "sha": "6e52d5d1e9c6b3147684f932fd28130d34b15e75",
+      "donor": "1eab1eb59e47d503ade1615a2c465f967fa65c6e"
+    },
+    {
+      "path": "Zeta23/OPICARound6/NextSearch/BipolarVerify.lean",
+      "module": "Zeta23.OPICARound6.NextSearch.BipolarVerify",
+      "sha": "2088116da6749061df9368ea3d25f252baf610fb",
+      "donor": "1eab1eb59e47d503ade1615a2c465f967fa65c6e"
+    }
+  ],
+  "existing_native_modules": [
+    {
+      "path": "Zeta23/OPICARound4/RegularCells/FixedSeed.lean",
+      "module": "Zeta23.OPICARound4.RegularCells.FixedSeed",
+      "sha256": "262922e4d62d5749eb5580328242a4fae709c405a04d2a054452d6d5258422ef",
+      "package_index": 14,
+      "receipt_sha256": "a69737fc1ab3343a9e0912bb9463e849a8fed72740bdb967ef1af7141adf9b9d"
+    },
+    {
+      "path": "Zeta23/OPICARound4/ArithmeticFrontier/MomentSliceCoordinates.lean",
+      "module": "Zeta23.OPICARound4.ArithmeticFrontier.MomentSliceCoordinates",
+      "sha256": "6dedec49866970f447ca9267dcc6b910c993efad04b258f4204215372d7424fd",
+      "package_index": 14,
+      "receipt_sha256": "a69737fc1ab3343a9e0912bb9463e849a8fed72740bdb967ef1af7141adf9b9d"
+    }
+  ],
+  "roots": [
+    "Zeta23.OPICARound20.even_zero_bound_of_all_boundary_flat_nonnegative",
+    "Zeta23.OPICARound20.c1_iff_all_boundary_flat_nonnegative",
+    "Zeta23.OPICARound20.riemannHypothesis_iff_all_boundary_flat_nonnegative",
+    "Zeta23.OPICARound20.finite_negative_boundary_flat_witness_refutes_c1",
+    "Zeta23.OPICARound20.zeroSampleEnergy_nonnegative",
+    "Zeta23.OPICARound20.zeta_Wsummand_re_eq_zeroSampleEnergy_of_re_eq_half",
+    "Zeta23.OPICARound20.zeroSampleEnergy_summable_of_criticalLine",
+    "Zeta23.OPICARound20.zeta_W_re_eq_tsum_zeroSampleEnergy_of_criticalLine",
+    "Zeta23.OPICARound20.canonicalSourceEnergy_eq_zeroSampleEnergy_of_c1",
+    "Zeta23.OPICARound20.zeroSampleEnergy_le_canonicalSourceEnergy_of_c1",
+    "Zeta23.OPICARound20.canonicalSourceQuadraticForm_zero_of_all_samples_zero",
+    "Zeta23.OPICARound20.canonicalSourceEnergy_zero_iff_all_samples_zero_of_c1",
+    "Zeta23.OPICARound20.canonicalSourceEnergy_pos_iff_exists_nonzero_sample_of_c1",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_eval",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_eval_pole",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_eq_zero_iff",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_natDegree_le",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_shift",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_moment_shift",
+    "Zeta23.OPICARound20.finiteCauchyNumerator_degree_defect",
+    "Zeta23.OPICARound20.finiteCauchySum_zero_forces_coefficients",
+    "Zeta23.OPICARound20.finite_moments_force_coefficients",
+    "Zeta23.OPICARound20.finiteCauchySum_nonzero_sample",
+    "Zeta23.OPICARound20.finiteCauchySum_zero_set_card_bound",
+    "Zeta23.OPICARound20.boundaryFlat_scaled_moments",
+    "Zeta23.OPICARound20.boundaryFlat_rational_samples_force_coefficients",
+    "Zeta23.OPICARound20.boundaryFlat_rational_sampling_injective",
+    "Zeta23.OPICARound20.boundaryFlat_coefficients_zero_of_cutoff_le_one",
+    "Zeta23.OPICARound20.rationalSamplingSharpness_boundaryFlat",
+    "Zeta23.OPICARound20.rationalSamplingSharpness_nonzero",
+    "Zeta23.OPICARound20.rationalSamplingSharpness_zero_sample",
+    "Zeta23.OPICARound20.rationalSamplingSharpness_nonzero_sample",
+    "Zeta23.OPICARound20.rationalSamplingSharpness_sample_is_not_pole",
+    "Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel",
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_intervalIntegral",
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_rational",
+    "Zeta23.OPICARound20.paperKernel_eq_one_of_modal_resonance",
+    "Zeta23.OPICARound20.paperModeDenominator_ne_zero_of_exp_ne_one",
+    "Zeta23.OPICARound20.finiteFourierScale_ne_zero",
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_zero_iff_rational_sum_zero",
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_eq_zero_at_nonmodal_resonance",
+    "Zeta23.OPICARound20.boundaryFlat_paperFT_sampling_injective",
+    "Zeta23.OPICARound20.boundaryFlat_paperFT_samples_force_coefficients",
+    "Zeta23.OPICARound20.intervalIntegral_localizedMode_mul_paperKernel_at_resonance",
+    "Zeta23.OPICARound20.paperFT_localizedFiniteVector_at_modal_point",
+    "Zeta23.OPICARound20.gammaOf_injective",
+    "Zeta23.OPICARound20.exponential_gamma_argument",
+    "Zeta23.OPICARound20.resonance_mem_grid_of_ordinate_bounds",
+    "Zeta23.OPICARound20.resonanceGrid_card_lt_linear",
+    "Zeta23.OPICARound20.nonresonantZeroSet_infinite_of_distinct_growth",
+    "Zeta23.OPICARound20.exists_nonresonant_zero_samples_of_distinct_growth",
+    "Zeta23.OPICARound20.distinct_growth_of_positive_fraction",
+    "Zeta23.OPICARound20.actual_zeta_riemannVonMangoldt",
+    "Zeta23.OPICARound20.actual_zeta_distinct_growth_of_positive_fraction",
+    "Zeta23.OPICARound20.boundaryFlat_exists_nonzero_actual_sample_of_supply",
+    "Zeta23.OPICARound20.canonicalSourceEnergy_pos_of_c1_and_nonresonant_samples",
+    "Zeta23.OPICARound20.canonicalSourceEnergy_zero_iff_coefficients_zero_of_c1_and_samples",
+    "Zeta23.OPICARound20.canonicalSourceEnergy_pos_euclidean_of_c1_and_samples",
+    "Zeta23.OPICARound20.nonresonantActualZeroSamples_of_cutoff_le_one",
+    "Zeta23.OPICARound20.canonicalSourceEnergy_low_cutoff_euclidean_bound",
+    "Zeta23.OPICARound20.canonicalSourceEnergy_exists_positive_euclidean_lower_bound",
+    "Zeta23.OPICARound20.canonicalSourceEnergy_exists_positive_coefficient_l2_lower_bound",
+    "Zeta23.OPICARound20.ParityRational.even_pole_factorization",
+    "Zeta23.OPICARound20.ParityRational.odd_pole_factorization",
+    "Zeta23.OPICARound20.ParityRational.even_pole_factor_natDegree",
+    "Zeta23.OPICARound20.ParityRational.odd_pole_factor_natDegree",
+    "Zeta23.OPICARound20.ParityRational.even_moment_pole_samples_force_coefficients",
+    "Zeta23.OPICARound20.ParityRational.odd_moment_pole_samples_force_coefficients",
+    "Zeta23.OPICARound20.ParityRational.even_six_moment_samples_force_coefficients",
+    "Zeta23.OPICARound20.ParityRational.odd_seven_moment_samples_force_coefficients",
+    "Zeta23.OPICARound20.ParityRational.even_six_moment_low_cutoff_zero",
+    "Zeta23.OPICARound20.ParityRational.odd_seven_moment_low_cutoff_zero",
+    "Zeta23.thmC₀",
+    "Zeta23.three_quarters_distinct",
+    "Zeta23.OPICARound20.DensityCompatibility.eventually_half_distinct",
+    "Zeta23.OPICARound20.DensityCompatibility.actual_distinct_window_superlinear",
+    "Zeta23.OPICARound20.DensityCompatibility.actual_nonresonant_zero_samples",
+    "Zeta23.OPICARound21.ActualDensityEnergy.actual_nonresonant_samples",
+    "Zeta23.OPICARound21.ActualDensityEnergy.exists_actual_zero_sampling_injective",
+    "Zeta23.OPICARound21.ActualDensityEnergy.boundaryFlat_exists_nonzero_actual_zero_sample",
+    "Zeta23.OPICARound21.ActualDensityEnergy.boundaryFlat_all_actual_zero_samples_vanish_iff",
+    "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_pos_of_c1",
+    "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_zero_iff_coefficients_zero_of_c1",
+    "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_pos_euclidean_of_c1",
+    "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_exists_positive_euclidean_bound_of_c1",
+    "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_exists_positive_coefficient_l2_bound_of_c1",
+    "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_strict_positive",
+    "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_euclidean_coercive",
+    "Zeta23.OPICARound21.ActualDensityEnergy.c1_iff_all_boundary_flat_coefficient_l2_coercive",
+    "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_nonpositive_witness_refutes_c1",
+    "Zeta23.OPICARound21.ActualDensityEnergy.canonicalSourceEnergy_low_cutoff_positive_euclidean_bound",
+    "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_reindex",
+    "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_neg_coefficients",
+    "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_comp_neg_X",
+    "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_even_of_reversal",
+    "Zeta23.OPICARound20.NativeParityRational.finiteCauchyNumerator_odd_of_reversal",
+    "Zeta23.OPICARound20.NativeParityRational.exists_square_composition_of_odd_coefficients_zero",
+    "Zeta23.OPICARound20.NativeParityRational.exists_X_square_composition_of_even_coefficients_zero",
+    "Zeta23.OPICARound20.NativeParityRational.exists_square_composition_of_comp_neg_X_eq",
+    "Zeta23.OPICARound20.NativeParityRational.exists_X_square_composition_of_comp_neg_X_eq_neg",
+    "Zeta23.OPICARound20.NativeParityRational.physicalPole_reverse",
+    "Zeta23.OPICARound20.NativeParityRational.physicalPole_injective",
+    "Zeta23.OPICARound20.NativeParityRational.physicalPole_ne_of_nonresonance",
+    "Zeta23.OPICARound20.NativeParityRational.finiteCauchySum_physicalPole_eq",
+    "Zeta23.OPICARound20.NativeParityRational.evenPhysicalCoefficients_mem",
+    "Zeta23.OPICARound20.NativeParityRational.oddPhysicalCoefficients_mem",
+    "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_centered_moments",
+    "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_centered_moments",
+    "Zeta23.OPICARound20.NativeParityRational.physicalPole_moment_prefix",
+    "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_square_form",
+    "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_square_form",
+    "Zeta23.OPICARound20.NativeParityRational.paperFT_imaginary_half_axis",
+    "Zeta23.OPICARound20.NativeParityRational.half_imaginary_nonresonant",
+    "Zeta23.OPICARound20.NativeParityRational.evenPhysical_paperFT_half_imaginary_zero",
+    "Zeta23.OPICARound20.NativeParityRational.oddPhysical_paperFT_half_imaginary_zero",
+    "Zeta23.OPICARound20.NativeParityRational.physicalNumerator_root_of_paperFT_zero",
+    "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_half_imaginary_root",
+    "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_half_imaginary_root",
+    "Zeta23.OPICARound20.NativeParityRational.half_imaginary_sq",
+    "Zeta23.OPICARound20.NativeParityRational.evenPhysicalNumerator_pole_factorization",
+    "Zeta23.OPICARound20.NativeParityRational.oddPhysicalNumerator_pole_factorization",
+    "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_paperFT_samples_force_zero",
+    "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_paperFT_samples_force_zero",
+    "Zeta23.OPICARound20.NativeParityRational.paperFT_localized_coefficients_sub",
+    "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_paperFT_sampling_injective",
+    "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_paperFT_sampling_injective",
+    "Zeta23.OPICARound20.NativeParityRational.evenMomentSlice_low_cutoff_zero",
+    "Zeta23.OPICARound20.NativeParityRational.oddMomentSlice_low_cutoff_zero",
+    "Zeta23.OPICARound21.NativeParityActual.infinite_image_of_finite_fibers",
+    "Zeta23.OPICARound21.NativeParityActual.exists_samples_with_distinct_images",
+    "Zeta23.OPICARound21.NativeParityActual.actual_square_distinct_nonresonant_samples",
+    "Zeta23.OPICARound21.NativeParityActual.exists_evenMomentSlice_actual_zero_sampling",
+    "Zeta23.OPICARound21.NativeParityActual.exists_oddMomentSlice_actual_zero_sampling",
+    "Zeta23.OPICARound21.CofinalAperture.resonance_apertures_countable",
+    "Zeta23.OPICARound21.CofinalAperture.countable_bad_apertures",
+    "Zeta23.OPICARound21.CofinalAperture.good_apertures_dense",
+    "Zeta23.OPICARound21.CofinalAperture.exists_nonresonant_aperture_in_interval",
+    "Zeta23.OPICARound21.CofinalAperture.zeroConfig_carrier_countable",
+    "Zeta23.OPICARound21.CofinalAperture.zeroConfig_carrier_infinite_of_riemannVonMangoldt",
+    "Zeta23.OPICARound21.CofinalAperture.actual_zero_carrier_infinite",
+    "Zeta23.OPICARound21.CofinalAperture.actual_gamma_ne_zero",
+    "Zeta23.OPICARound21.CofinalAperture.actual_good_apertures_dense",
+    "Zeta23.OPICARound21.CofinalAperture.exists_actual_nonresonant_aperture_in_interval",
+    "Zeta23.OPICARound21.CofinalAperture.actual_samples_at_good_aperture",
+    "Zeta23.OPICARound21.CofinalAperture.exists_interval_aperture_all_cutoff_samples",
+    "Zeta23.OPICARound21.CofinalAperture.exists_interval_aperture_all_cutoff_fourier_sampling",
+    "Zeta23.OPICARound21.CofinalAperture.cofinal_literal_quartic_samples",
+    "Zeta23.OPICARound4.ArithmeticFrontier.finrank_evenMomentSlice",
+    "Zeta23.OPICARound4.ArithmeticFrontier.finrank_oddMomentSlice",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.paperFT_localized_coefficients_add",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.paperFT_localized_coefficients_smul",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_apply",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_apply",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_injective",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_injective",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_bijective",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_bijective",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.evenFourierEvaluation_unique_interpolation",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.oddFourierEvaluation_unique_interpolation",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.exists_even_actual_zero_interpolation",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.exists_odd_actual_zero_interpolation",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.even_fewer_linear_evaluations_not_injective",
+    "Zeta23.OPICARound21.NativeSliceInterpolation.odd_fewer_linear_evaluations_not_injective",
+    "Zeta23.OPICARound22.ApertureSlack.eventually_lower_bound_on_set_of_operator_continuity",
+    "Zeta23.OPICARound22.ApertureSlack.evenMomentSliceLowerBound_eventually_of_slack",
+    "Zeta23.OPICARound22.ApertureSlack.oddMomentSliceLowerBound_eventually_of_slack",
+    "Zeta23.OPICARound22.ApertureSlack.c1_iff_good_aperture_c1",
+    "Zeta23.OPICARound6.NextSearch.raw_survivor_polarity_difference",
+    "Zeta23.OPICARound6.NextSearch.reverseOpposedSurvivorEnergy_bracket",
+    "Zeta23.OPICARound6.NextSearch.rawNegativeEnergy_bracket",
+    "Zeta23.OPICARound6.NextSearch.rawNegativeEnergy_le_full_components",
+    "Zeta23.OPICARound6.NextSearch.rawPositiveEnergy_bracket",
+    "Zeta23.OPICARound6.NextSearch.rawSquareEnergy_eq_polarities",
+    "Zeta23.OPICARound6.NextSearch.rawSquareEnergy_removal_bound",
+    "Zeta23.OPICARound6.NextSearch.pairedOpposedSurvivorEnergy_eq",
+    "Zeta23.OPICARound6.NextSearch.pairedOpposedSurvivorEnergy_bracket",
+    "Zeta23.OPICARound6.NextSearch.rawBipolarEnergy_bracket",
+    "Zeta23.OPICARound6.NextSearch.unsignedErrorEnergy_nonnegative",
+    "Zeta23.OPICARound6.NextSearch.cofinalSubpower_of_tail_error",
+    "Zeta23.OPICARound6.NextSearch.cofinalSubpower_iff_of_tail_error",
+    "Zeta23.OPICARound6.NextSearch.positiveRawSubpower_iff_opposed_of_tail_error",
+    "Zeta23.OPICARound6.NextSearch.negativeRawSubpower_iff_opposed_of_tail_error",
+    "Zeta23.OPICARound6.NextSearch.onePolarityRawSubpower_iff_opposed_of_tail_error"
+  ],
+  "historical_root_count": 167,
+  "bipolar_root_count": 16,
+  "classification_rules": [
+    {
+      "id": "opica_integrated_release_seal",
+      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/SOURCE_SEAL\\.json)\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_integrated_admission_tools",
+      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/admission\\.py|research/RHRC/integration/opica_integrated_epoch/release\\.py|research/RHRC/integration/opica_integrated_epoch/test_admission\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_integrated_release_ci",
+      "pattern": "\\A(?:\\.github/workflows/opica-integrated-release-review\\.yml)\\Z",
+      "file_class": "CI_WORKFLOW",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_integrated_historical_support",
+      "pattern": "\\A(?:Zeta23/OPICASupport/ActualDensityEnergy/Composition\\.lean|Zeta23/OPICASupport/ApertureSlack/FormStability\\.lean|Zeta23/OPICASupport/ApertureSlack/NativeGoodAperture\\.lean|Zeta23/OPICASupport/CofinalAperture/Sampling\\.lean|Zeta23/OPICASupport/DensityCompatibility/ActualDistinctGrowth\\.lean|Zeta23/OPICASupport/FourierBridge/BoundaryFlatFourierSampling\\.lean|Zeta23/OPICASupport/FourierBridge/FiniteFourierRational\\.lean|Zeta23/OPICASupport/FourierBridge/FiniteFourierResonance\\.lean|Zeta23/OPICASupport/FourierEnergy/BoundaryFlatStrictEnergy\\.lean|Zeta23/OPICASupport/FourierEnergy/EuclideanEnergyLowerBound\\.lean|Zeta23/OPICASupport/NativeParityActual/ActualZeroSampling\\.lean|Zeta23/OPICASupport/NativeParityActual/FiniteFiberSampling\\.lean|Zeta23/OPICASupport/NativeParityRational/MomentSliceIdentification\\.lean|Zeta23/OPICASupport/NativeParityRational/MomentSliceSampling\\.lean|Zeta23/OPICASupport/NativeParityRational/PolynomialReversal\\.lean|Zeta23/OPICASupport/NativeSliceInterpolation/Interpolation\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatCharacterization\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatGram\\.lean|Zeta23/OPICASupport/OPICAStep4/BoundaryFlatRationalSampling\\.lean|Zeta23/OPICASupport/OPICAStep4/FiniteCauchySampling\\.lean|Zeta23/OPICASupport/OPICAStep4/RationalSamplingSharpness\\.lean|Zeta23/OPICASupport/ParityRational/PoleSquareSampling\\.lean|Zeta23/OPICASupport/SamplingDensity/DistinctGrowthFromFraction\\.lean|Zeta23/OPICASupport/SamplingDensity/ResonanceCounting\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_integrated_bipolar",
+      "pattern": "\\A(?:Zeta23/OPICARound6/NextSearch/BipolarTransfer\\.lean|Zeta23/OPICARound6/NextSearch/BipolarVerify\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_integrated_policy",
+      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/LOCK\\.json)\\Z",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_integrated_tools",
+      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/review\\.py|research/RHRC/integration/opica_integrated_epoch/test_review\\.py|research/RHRC/integration/opica_integrated_epoch/independent_review\\.py|research/RHRC/integration/opica_integrated_epoch/compare\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_integrated_workflow",
+      "pattern": "\\A(?:\\.github/workflows/opica-integrated-epoch\\.yml)\\Z",
+      "file_class": "CI_WORKFLOW",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_integrated_notes",
+      "pattern": "\\A(?:research/RHRC/integration/opica_integrated_epoch/README\\.md)\\Z",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "AUDIT_ONLY"
+    }
+  ],
+  "module_roles": {
+    "Zeta23.OPICASupport.ActualDensityEnergy.Composition": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.ApertureSlack.FormStability": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.ApertureSlack.NativeGoodAperture": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.CofinalAperture.Sampling": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.DensityCompatibility.ActualDistinctGrowth": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.FourierBridge.BoundaryFlatFourierSampling": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.FourierBridge.FiniteFourierRational": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.FourierBridge.FiniteFourierResonance": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.FourierEnergy.BoundaryFlatStrictEnergy": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.FourierEnergy.EuclideanEnergyLowerBound": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.NativeParityActual.ActualZeroSampling": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.NativeParityActual.FiniteFiberSampling": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.NativeParityRational.MomentSliceIdentification": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.NativeParityRational.MomentSliceSampling": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.NativeParityRational.PolynomialReversal": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.NativeSliceInterpolation.Interpolation": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.OPICAStep4.BoundaryFlatCharacterization": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.OPICAStep4.BoundaryFlatGram": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.OPICAStep4.BoundaryFlatRationalSampling": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.OPICAStep4.FiniteCauchySampling": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.OPICAStep4.RationalSamplingSharpness": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.ParityRational.PoleSquareSampling": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.SamplingDensity.DistinctGrowthFromFraction": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICASupport.SamplingDensity.ResonanceCounting": "OPICA_HISTORICAL_PORT_SUPPORT_CANDIDATE_ONLY",
+    "Zeta23.OPICARound6.NextSearch.BipolarTransfer": "OPICA_BIPOLAR_CONDITIONAL_CANDIDATE_ONLY",
+    "Zeta23.OPICARound6.NextSearch.BipolarVerify": "OPICA_BIPOLAR_CONDITIONAL_CANDIDATE_ONLY"
+  },
+  "prerequisites": [
+    {
+      "run": 45485535483,
+      "head": "db485c5f5f9704da66a1cb8505ee1464a9f72da3",
+      "path": ".github/workflows/opica-next-acceptance.yml",
+      "jobs": [
+        "source-admission"
+      ]
+    },
+    {
+      "run": 45473412897,
+      "head": "9180f489f39f4d807692b1da6871550bfdbbcbc5",
+      "path": ".github/workflows/opica-historical-support-port.yml",
+      "jobs": [
+        "source-contract",
+        "native-candidate",
+        "independent-candidate",
+        "historical-type-export",
+        "cross-pin-type-comparison"
+      ]
+    },
+    {
+      "run": 45409447656,
+      "head": "1eab1eb59e47d503ade1615a2c465f967fa65c6e",
+      "path": ".github/workflows/opica-bipolar-transfer.yml",
+      "jobs": [
+        "source-and-finite-controls",
+        "native-compiler"
+      ]
+    }
+  ],
+  "proof_acceptance": false,
+  "RH": "OPEN",
+  "C1": "OPEN",
+  "Step4": "OPEN"
+}
