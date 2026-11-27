@@ -16,23 +16,23 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 9b53264a9cabe18211a6dcfac0a66fb1709768eb
+          ref: 69ce27c51122e92e2046f7b44dcf51ca8ac644bb
           fetch-depth: 1
           persist-credentials: false
       - name: Authenticate the archive and report only reviewed Git metadata
         env:
           GH_TOKEN: ${{ github.token }}
-          ARTIFACT_ID: '15142823977'
-          ARTIFACT_SHA256: '8e0c4f0b79927bd5c8ecfadc2290511069e275210236bf4d3ed46b522d1738d8'
-          EXPECTED_PRODUCTS: '21'
-          REQUIRED_PATHS: '["research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json","research/RHRC/graph/generated/REPOSITORY_COVERAGE.json","research/RHRC/graph/generated/registry_nodes.jsonl","research/RHRC/graph/generated/relations/relations-0.jsonl","research/RHRC/graph/generated/relations/relations-1.jsonl","research/RHRC/graph/generated/relations/relations-2.jsonl","research/RHRC/graph/generated/relations/relations-4.jsonl","research/RHRC/graph/generated/relations/relations-5.jsonl","research/RHRC/graph/generated/relations/relations-7.jsonl","research/RHRC/graph/generated/relations/relations-8.jsonl","research/RHRC/graph/generated/relations/relations-9.jsonl","research/RHRC/graph/generated/relations/relations-a.jsonl","research/RHRC/graph/generated/relations/relations-b.jsonl","research/RHRC/graph/generated/relations/relations-e.jsonl","research/RHRC/graph/generated/relations/relations-f.jsonl","research/RHRC/graph/generated/repository_files.jsonl"]'
+          ARTIFACT_ID: '15166442043'
+          ARTIFACT_SHA256: 'c19847d2b8332112d461cefa669c9764301214e022d2949fb4964385178e59fc'
+          EXPECTED_PRODUCTS: '8'
+          REQUIRED_PATHS: '["research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json","research/RHRC/graph/generated/REPOSITORY_COVERAGE.json","research/RHRC/graph/generated/registry_nodes.jsonl","research/RHRC/graph/generated/repository_files.jsonl","research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl","research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json","research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json"]'
         shell: bash
         run: |
           set -euo pipefail
           test "$GITHUB_REPOSITORY" = HMarcusWH/zeta-23-lean
-          test "$(git rev-parse HEAD)" = 9b53264a9cabe18211a6dcfac0a66fb1709768eb
-          test "$(git rev-parse 'HEAD^{tree}')" = d7d12f31217573a7c711ced1d1bc24ad26e1e6c4
-          test "$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/45854986909/attempts/1" --jq '.status + ":" + .conclusion + ":" + .head_sha')" = completed:success:9b53264a9cabe18211a6dcfac0a66fb1709768eb
+          test "$(git rev-parse HEAD)" = 69ce27c51122e92e2046f7b44dcf51ca8ac644bb
+          test "$(git rev-parse 'HEAD^{tree}')" = 5cecf0cffa5110ee354b725f829cb7e4c4be46c8
+          test "$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/45914173967/attempts/1" --jq '.status + ":" + .conclusion + ":" + .head_sha')" = completed:success:69ce27c51122e92e2046f7b44dcf51ca8ac644bb
           gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID" > "$RUNNER_TEMP/artifact.json"
           gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID/zip" > "$RUNNER_TEMP/artifact.zip"
           python3 -B - <<'PY'
@@ -55,9 +55,9 @@ jobs:
                                     stdout=subprocess.PIPE).stdout
 
           runner = Path(os.environ["RUNNER_TEMP"])
-          head = "9b53264a9cabe18211a6dcfac0a66fb1709768eb"
-          tree = "d7d12f31217573a7c711ced1d1bc24ad26e1e6c4"
-          archive_name = "documentation-canonical-45854986909-1"
+          head = "69ce27c51122e92e2046f7b44dcf51ca8ac644bb"
+          tree = "5cecf0cffa5110ee354b725f829cb7e4c4be46c8"
+          archive_name = "documentation-canonical-45914173967-1"
           pinned_id = int(os.environ["ARTIFACT_ID"])
           pinned_sha256 = os.environ["ARTIFACT_SHA256"]
           require(re.fullmatch("[a-f0-9]{64}", pinned_sha256), "Missing archive digest pin")
@@ -66,7 +66,7 @@ jobs:
           require((info["name"], info["id"], info["digest"], info["expired"]) ==
                   (archive_name, pinned_id, "sha256:" + pinned_sha256, False), "Unexpected artifact metadata")
           require((run["id"], run["head_sha"], run["head_branch"], run["head_repository_id"]) ==
-                  (45854986909, head, "docs/papers-2026-11-26-terminal", 1339954300), "Unexpected run/source")
+                  (45914173967, head, "docs/papers-2026-11-26-terminal", 1339954300), "Unexpected run/source")
           archive = (runner / "artifact.zip").read_bytes()
           require(len(archive) == info["size_in_bytes"] and len(archive) <= 4_000_000 and
                   sha256(archive).hexdigest() == pinned_sha256, "Archive bytes differ")
