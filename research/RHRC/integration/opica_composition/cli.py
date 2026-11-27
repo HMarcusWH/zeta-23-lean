@@ -331,6 +331,14 @@ def documentation_epoch(repo):
     registration = includes('f92691ef1d0cd8129e0df01cee747e5d70f939f6')
     paper = includes('b1e57c979ee75cf833c2c6587ff4049dee42a8f3')
     if registration and paper:
+        # Historical checkouts may predate the import. If its object is available,
+        # choose the policy by real ancestry, even for a tree that removes its files.
+        strict_main = 'd649f57310bb05a306d3d488ba019e4ab45b0b20'
+        available = subprocess.run(['git', '-C', str(repo), 'cat-file', '-e',
+                                    strict_main + '^{commit}'], env=env, check=False,
+                                   stderr=subprocess.DEVNULL, timeout=120)
+        if available.returncode == 0 and includes(strict_main):
+            return 'strict-integration'
         return 'combined'
     if registration:
         return 'registration'
@@ -339,7 +347,9 @@ def documentation_epoch(repo):
 
 def validate_descendant(repo, *, require_clean=False):
     epoch = documentation_epoch(repo)
-    if epoch == 'combined':
+    if epoch == 'strict-integration':
+        from ..documentation_combined.strict_scope import validate_descendant as original
+    elif epoch == 'combined':
         from ..documentation_combined.source_scope import validate_descendant as original
     elif epoch == 'registration':
         from ..opica_dispatch_registration.gate import validate_descendant as original
@@ -351,6 +361,9 @@ def validate_descendant(repo, *, require_clean=False):
 
 
 def classification_command(source):
+    if source.get('schema') == 'RHRC_STRICT_MAIN_SOURCE_INSPECTION_V1':
+        return [sys.executable, '-B', '-m',
+                'research.RHRC.integration.documentation_combined.strict_scope', '--check-classification']
     if source.get('schema') == 'RHRC_COMBINED_DOCUMENTATION_SOURCE_INSPECTION_V1':
         return [sys.executable, '-B', '-m',
                 'research.RHRC.integration.documentation_combined.source_scope', '--check-classification']

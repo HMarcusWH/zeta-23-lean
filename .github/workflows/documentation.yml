@@ -61,7 +61,7 @@ jobs:
             python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
             python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
               ;;
-            combined)
+            combined|strict-integration)
               registration="$RUNNER_TEMP/registration-parent"
               papers="$RUNNER_TEMP/paper-parent"
               git worktree add --detach "$registration" d4c7fc7114e5f1b61b90ea9037890969358ff0cc
@@ -81,9 +81,23 @@ jobs:
                 python3 -O -B -m unittest "${tests[@]}" 2>&1 | tee "$out/paper-tests-optimized.log"
               )
               git worktree remove "$papers"
-              python3 -B -m research.RHRC.integration.documentation_combined.source_scope --check-classification 2>&1 | tee "$out/combined-classes.log"
-              python3 -B -m unittest research.RHRC.integration.documentation_combined.test_source_scope 2>&1 | tee "$out/combined-tests.log"
-              python3 -O -B -m unittest research.RHRC.integration.documentation_combined.test_source_scope 2>&1 | tee "$out/combined-tests-optimized.log"
+              combined="$PWD"
+              if [[ "$epoch" == strict-integration ]]; then
+                combined="$RUNNER_TEMP/combined-parent"
+                git worktree add --detach "$combined" 4044e7335bc0499d77d6961a1bc20bdf46283224
+              fi
+              (
+                cd "$combined"
+                python3 -B -m research.RHRC.integration.documentation_combined.source_scope --check-classification 2>&1 | tee "$out/combined-classes.log"
+                python3 -B -m unittest research.RHRC.integration.documentation_combined.test_source_scope 2>&1 | tee "$out/combined-tests.log"
+                python3 -O -B -m unittest research.RHRC.integration.documentation_combined.test_source_scope 2>&1 | tee "$out/combined-tests-optimized.log"
+              )
+              if [[ "$epoch" == strict-integration ]]; then
+                git worktree remove "$combined"
+                python3 -B -m research.RHRC.integration.documentation_combined.strict_scope --check-classification 2>&1 | tee "$out/strict-classes.log"
+                python3 -B -m unittest research.RHRC.integration.documentation_combined.test_strict_scope 2>&1 | tee "$out/strict-tests.log"
+                python3 -O -B -m unittest research.RHRC.integration.documentation_combined.test_strict_scope 2>&1 | tee "$out/strict-tests-optimized.log"
+              fi
               python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
               python3 -B -m research.RHRC.integration.opica_composition.cli check-descendant --repo . --output "$out/combined-source.json"
               ;;
@@ -115,9 +129,11 @@ jobs:
       (github.event_name == 'pull_request' &&
        github.event.pull_request.head.repo.full_name == github.repository &&
        (github.head_ref == 'docs/repository-guide-and-reuse-2026-11-21' ||
-        github.head_ref == 'docs/papers-2026-11-26-terminal')) ||
+        github.head_ref == 'docs/papers-2026-11-26-terminal' ||
+        (github.repository == 'HMarcusWH/zeta-23-lean' && github.head_ref == 'fix/strict-step4-ci'))) ||
       (github.event_name == 'workflow_dispatch' &&
-       github.ref == 'refs/heads/review/paper-320-combined-source')
+       (github.ref == 'refs/heads/review/paper-320-combined-source' ||
+        (github.repository == 'HMarcusWH/zeta-23-lean' && github.ref == 'refs/heads/fix/strict-step4-ci')))
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
@@ -142,6 +158,9 @@ jobs:
           lint: false
           use-mathlib-cache: true
       - name: Authenticate source and build the existing exporters
+        env:
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          SOURCE_BRANCH: ${{ github.head_ref || github.ref_name }}
         shell: bash
         run: |
           set -euo pipefail
@@ -149,6 +168,20 @@ jobs:
           mkdir -p "$out"
           git rev-parse HEAD 'HEAD^{tree}' > "$out/input-head-tree.txt"
           python3 -B -m research.RHRC.integration.opica_composition.cli check-descendant --repo . --output "$out/source-scope.json"
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          if [[ "$SOURCE_BRANCH" == fix/strict-step4-ci ]]; then
+            git --no-replace-objects merge-base --is-ancestor d649f57310bb05a306d3d488ba019e4ab45b0b20 HEAD
+            python3 -B - "$out/source-scope.json" "$SOURCE_SHA" <<'PYTHON'
+          import json, sys
+          from pathlib import Path
+          receipt = json.loads(Path(sys.argv[1]).read_bytes())
+          if (receipt["schema"], receipt["status"], receipt["checked_commit"], receipt["base"]) != (
+              "RHRC_STRICT_MAIN_SOURCE_INSPECTION_V1", "PASS_SOURCE_SCOPE_ONLY", sys.argv[2],
+              "d649f57310bb05a306d3d488ba019e4ab45b0b20"
+          ):
+              raise SystemExit("Strict repair dispatch has a different source identity or scope")
+          PYTHON
+          fi
           lake env lean --version > "$out/lean-version.txt"
           lake build Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution 2>&1 | tee "$out/exporter-build.log"
       - name: Regenerate through the canonical producer and check its output

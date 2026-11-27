@@ -1,0 +1,15 @@
+{
+  "blobs": {
+    ".github/actions/opica4-runtime/action.yml": "b89be8e69aad6c5697155ee44baf9a5d8312b04a",
+    ".github/workflows/documentation.yml": "d98f6496616fd85d88bce37d56faad5418976d44",
+    "README.md": "f8a91c13bcfe1bb431f4eab9989c53905e3cceb5",
+    "research/RHRC/graph/FILE_CLASSES.json": "8936a7c5632db81768fe6444ef5e52858b544caf",
+    "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json": "ddeb0df5723dd26e6fdc3644754bdf70c6335d9b",
+    "research/RHRC/graph/build.py": "1d285ce7baa9c03a60b3287fac310247ec2deb9b",
+    "research/RHRC/integration/documentation_combined/strict_classification.py": "5a61393509b6bdd23d5fb850c0c028931bfdbe2a",
+    "research/RHRC/integration/documentation_combined/test_strict_scope.py": "a76a1d97e2372452b97bf756a426f54047c57f28",
+    "research/RHRC/integration/opica_composition/cli.py": "3f81e2fb6a577b5fadb2350ffdab3193e3fb34bd"
+  },
+  "schema": "RHRC_STRICT_MAIN_SOURCE_POLICY_V1",
+  "validator_template_sha256": "5b2123a1c2a07bdd94f0a4730d40c4c5b2ecef7df4f5e8588d362bcd421f3faa"
+}
