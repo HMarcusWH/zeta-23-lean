@@ -339,8 +339,9 @@ def documentation_epoch(repo):
 
 def validate_descendant(repo, *, require_clean=False):
     epoch = documentation_epoch(repo)
-    require(epoch != 'combined', 'Combined documentation requires independently reviewed source admission')
-    if epoch == 'registration':
+    if epoch == 'combined':
+        from ..documentation_combined.source_scope import validate_descendant as original
+    elif epoch == 'registration':
         from ..opica_dispatch_registration.gate import validate_descendant as original
     elif epoch == 'paper':
         from ..documentation_2026_11_26.source_scope import validate_descendant as original
@@ -350,6 +351,9 @@ def validate_descendant(repo, *, require_clean=False):
 
 
 def classification_command(source):
+    if source.get('schema') == 'RHRC_COMBINED_DOCUMENTATION_SOURCE_INSPECTION_V1':
+        return [sys.executable, '-B', '-m',
+                'research.RHRC.integration.documentation_combined.source_scope', '--check-classification']
     if source.get('schema') == 'OPICA_DISPATCH_REGISTRATION_INSPECTION_V1':
         return [sys.executable, '-B', '-m', 'research.RHRC.integration.opica_dispatch_registration.gate', '--check-classification']
     if source.get('schema') == PAPER_DOCUMENTATION_SCHEMA:
