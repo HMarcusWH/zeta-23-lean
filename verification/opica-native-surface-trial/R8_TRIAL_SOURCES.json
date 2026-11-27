@@ -4,6 +4,15 @@
   "first_trial": "23436c2abcac5c92850aabbe55330f1b1a3d09a1",
   "sources": [
     {
+      "destination": "Zeta23/Analytic/RectangleLogDeriv.lean",
+      "preimage": "45e7901507466c6d7d09d4c5423bc66023ef7489",
+      "postimage": "bb9184a71351655ea1319d70989e0c47acbb4920",
+      "local_evidence": {
+        "scope": "Complete six-declaration inventory including the weighted rectangle matcher, exact historical types and kinds, stock kernel replay",
+        "receipt_sha256": "5deb322d08135dc4122cd5bb1605158f14d745b0a928e7c7d0e9ee408b5fd265"
+      }
+    },
+    {
       "destination": "Zeta23/CCM/DictionaryArchDiagonal.lean",
       "preimage": "51c0cd27f8ef77f58434ebe84f534c1ab9f6545c",
       "postimage": "099c3de531f43313093eb1e7e68cb33a1b574170",
