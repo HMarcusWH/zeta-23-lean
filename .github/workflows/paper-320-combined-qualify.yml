@@ -1,0 +1,41 @@
+name: Run the original canonical documentation workflow on the combined source
+on:
+  push:
+    branches: [workmode/paper-320-reviewed-generated-publish]
+    paths: [.github/workflows/paper-320-combined-qualify.yml]
+permissions:
+  contents: read
+  actions: write
+  pull-requests: read
+jobs:
+  dispatch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Recheck the source refs and request the original canonical producer
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = HMarcusWH/zeta-23-lean
+          test "$GITHUB_REF" = refs/heads/workmode/paper-320-reviewed-generated-publish
+          repo="/repos/$GITHUB_REPOSITORY"
+          branch=review/paper-320-combined-source
+          sha=abf552b0320b7904c2b54be0b635cb9d53855082
+          check_source() {
+            test "$(gh api "$repo/git/ref/heads/$branch" --jq .object.sha)" = "$sha"
+            test "$(gh api "$repo/git/ref/heads/main" --jq .object.sha)" = d4c7fc7114e5f1b61b90ea9037890969358ff0cc
+            test "$(gh api "$repo/pulls/320" --jq '[.state,.base.ref,.head.ref,.head.sha] | join(" ")')" = 'open main docs/papers-2026-11-26-terminal 30b3a430c350eeeef9ff1aa8c99d10cd30dc3fb3'
+            test "$(gh api "$repo/git/ref/heads/workmode/paper-320-reviewed-generated-publish" --jq .object.sha)" = "$GITHUB_SHA"
+          }
+          check_source
+          test "$(gh api "$repo/git/commits/$GITHUB_SHA" --jq '[.parents[].sha] | join(" ")')" = 48b35b046a824b0605a72c856f213531605f506d
+          test "$(gh api "$repo/git/commits/$sha" --jq '[.tree.sha, (.parents|length|tostring), .parents[0].sha] | join(" ")')" = '5b915af5d0157d2ee6ba9a78826e6bc6849977a3 1 0242ac003843a5d9bf612d72491d23189e319203'
+          endpoint="$repo/actions/workflows/documentation.yml"
+          runs="$(gh api --method GET "$endpoint/runs" -f head_sha="$sha" -f branch="$branch" -f event=workflow_dispatch --jq .total_count)"
+          if [[ "$runs" = 0 ]]; then
+            check_source
+            gh api --method POST "$endpoint/dispatches" -f ref="$branch"
+          fi
+          check_source
