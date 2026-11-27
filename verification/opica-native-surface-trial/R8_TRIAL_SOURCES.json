@@ -13,6 +13,23 @@
       }
     },
     {
+      "destination": "Zeta23/CCM/DictionaryTentArchLimit.lean",
+      "preimage": "0ed3fd734a8399e9b24b1e16bb43494c2b3c2508",
+      "postimage": "64a7935739be13d758602748555cd4073ded20b3",
+      "common_pin_inventory": {
+        "count": 5,
+        "changed": [
+          "Zeta23.CCM.integrable_norm_paperFT_dictionaryTent_mul_sqrt"
+        ],
+        "baseline_inventory_sha256": "b65eb0c46f52e3a3fd37b9a338b6323d034a1da68a62a9e19eb8fc890353d800",
+        "candidate_inventory_sha256": "3f6a2192bb81ce4a2899c22beeacadb55bd9620aec5ffb0978825bc7e29b3aa3"
+      },
+      "local_evidence": {
+        "scope": "full producer, 5 declarations; DictionaryTentEFExtension and DictionaryZeroSideBridge compile and stock kernel replays",
+        "receipt_sha256": "ab54c31e0622f50f232fb0c9e949a14b5ade2d3125b29895eaad7127ff46c229"
+      }
+    },
+    {
       "destination": "Zeta23/CCM/NativeDampedCompletionOperator.lean",
       "preimage": "be4bc781764dfdf7cb80094d9fe7f3014dbf822c",
       "postimage": "789c3965a219064ab94665c1bffdeb8272459db7",
@@ -35,6 +52,24 @@
         ],
         "baseline_inventory_sha256": "26ba047564c02e625fc8f99e42f9d765369518d35b6d0199eabe7e37c76d8a6a",
         "candidate_inventory_sha256": "32ad9e14dc828ab43011613d7e3ee9cee1a80d33b1ab3382398357b2e7c187df"
+      }
+    },
+    {
+      "destination": "Zeta23/CCM/NativeWeilResponse.lean",
+      "preimage": "34eba320b6acea19958bd88998fc31a351de6b48",
+      "postimage": "b7033b663d87e4394e135f0ca61cc7ae8bf4d09d",
+      "local_evidence": {
+        "scope": "full module, 22 declarations; 321-module dependency build and stock kernel replay",
+        "receipt_sha256": "bac235bc80508da65e7c16c41cd165af73d1b95c4f950c641e6f5143f9184fb0"
+      }
+    },
+    {
+      "destination": "Zeta23/CCM/NativeWeilResponseBounds.lean",
+      "preimage": "aa76614ce52b29ba7e43e6d29bb775b8fe0e4400",
+      "postimage": "fe02b2d110223072b453e39131ce14586d2a5758",
+      "local_evidence": {
+        "scope": "full module, 23 declarations; 321-module dependency build and stock kernel replay",
+        "receipt_sha256": "e0a96168bbcdca103b55ca05bc2a5c4bf1de854ce4fa647564bb0e9ecc3147b8"
       }
     },
     {
@@ -90,8 +125,8 @@
       "preimage": "4e7360933c7e674ff3375dccf482deec94e723a2",
       "postimage": "159c45bbd5d3dba797ec9b497af266151203a9c7",
       "local_evidence": {
-        "scope": "two theorem excerpts with original proofs; full-module comparison pending",
-        "receipt_sha256": "d8297e8f2309dfc051e76d96f62a7b14662c36518294f6ec23ea8a42641c5549"
+        "scope": "full module, 54 declarations; baseline and candidate stock kernel replays",
+        "receipt_sha256": "59d434c0c63c6d6ba0ee29d3c1d97abf1d54cda24906cd6dc0b41e443d6cf638"
       }
     }
   ]

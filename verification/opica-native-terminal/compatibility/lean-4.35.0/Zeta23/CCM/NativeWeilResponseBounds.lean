@@ -1,3 +1,4 @@
+import Zeta23.OPICACompatibility.ContinuousENorm
 import Zeta23.CCM.NativeWeilResponse
 import Mathlib.MeasureTheory.Function.L2Space
 
@@ -29,6 +30,7 @@ private theorem integrable_fourier_of_paperFT {f : ℝ → ℂ}
   rw [heq] at hf
   exact (integrable_comp_mul_left_iff (𝓕 f) (neg_ne_zero.mpr (by positivity))).mp hf
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 /-- Compact autocorrelation gives Parseval with the exact `+i` and `2π`
 normalization.  The Fourier-square integrability is an internal analytic
 condition discharged below for the source and its first derivative. -/
@@ -68,6 +70,7 @@ theorem nativePaperFT_parseval_of_integrable_sq {f : ℝ → ℂ}
   norm_num [Complex.mul_re, Complex.mul_im] at hre
   linarith only [hre]
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 /-- The exact C2 decay estimate implies the weighted Fourier-square is
 integrable; no regularity above C2 is used. -/
 theorem nativePaperFT_weighted_sq_integrable {f : ℝ → ℂ}
@@ -92,6 +95,7 @@ theorem nativePaperFT_weighted_sq_integrable {f : ℝ → ℂ}
     (mul_nonneg (norm_nonneg (paperFT f (ξ : ℂ))) (by positivity : 0 ≤ 1 + ξ ^ 2)) hb 2
   nlinarith only [hs]
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 theorem nativePaperFT_sq_integrable {f : ℝ → ℂ}
     (hf : ContDiff ℝ 2 f) (hfc : HasCompactSupport f) :
     Integrable (fun ξ : ℝ => ‖paperFT f (ξ : ℂ)‖ ^ 2) := by
@@ -101,6 +105,7 @@ theorem nativePaperFT_sq_integrable {f : ℝ → ℂ}
   rw [Real.norm_of_nonneg (sq_nonneg _)]
   nlinarith [mul_nonneg (sq_nonneg ξ) (sq_nonneg ‖paperFT f (ξ : ℂ)‖)]
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 theorem nativePaperFT_deriv_sq_integrable {f : ℝ → ℂ}
     (hf : ContDiff ℝ 2 f) (hfc : HasCompactSupport f) :
     Integrable (fun ξ : ℝ => ‖paperFT (deriv f) (ξ : ℂ)‖ ^ 2) := by
@@ -174,6 +179,7 @@ private theorem integral_mul_le_sqrt_sq {g h : ℝ → ℝ}
     (by simpa using hglp) (by simpa using hhlp)
   simpa only [Real.rpow_two, Real.sqrt_eq_rpow] using hi
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 theorem nativePaperFT_H1_mixed_bound {f v : ℝ → ℂ}
     (hf : ContDiff ℝ 2 f) (hv : ContDiff ℝ 2 v)
     (hfc : HasCompactSupport f) (hvc : HasCompactSupport v) :

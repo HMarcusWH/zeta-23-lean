@@ -1,3 +1,4 @@
+import Zeta23.OPICACompatibility.ContinuousENorm
 import Zeta23.ExceptionalZero.WeilLiteratureBridge
 import Zeta23.CCM.UniversalSincPhysicalBounds
 import Zeta23.CCM.NativeIntegerPrimeField
@@ -76,6 +77,7 @@ theorem nativeGammaBracket_quadratic_bound :
       nlinarith [sq_nonneg ξ, mul_nonneg hC (sq_nonneg ξ),
         mul_nonneg hCψ.le (sq_nonneg ξ)]
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 /-- Actual gamma-weighted Fourier integrability, with the proved gamma
 facts instantiated rather than passed as an explicit-formula premise. -/
 theorem nativeWeilArch_fourier_integrable {f : ℝ → ℂ}
@@ -376,6 +378,7 @@ theorem nativeWeilResponse_continuous {f : ℝ → ℂ}
   ((nativeWeilArchResponse_continuous hf hfc).add (nativeWeilPoleResponse_continuous f)).sub
     (nativeWeilPrimeResponse_continuous hf.continuous hfc)
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 /-- The total physical response has actual L2 membership on every finite
 interval. This makes no global exterior-L2 assertion. -/
 theorem nativeWeilResponse_memLp_two_on_interval {f : ℝ → ℂ}
@@ -385,6 +388,7 @@ theorem nativeWeilResponse_memLp_two_on_interval {f : ℝ → ℂ}
   exact (memLp_two_iff_integrable_sq_norm hc.aestronglyMeasurable).mpr
     (hc.norm.pow 2).continuousOn.integrableOn_Icc
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 theorem nativeWeilResponse_indicator_memLp_two {f : ℝ → ℂ}
     (hf : ContDiff ℝ 2 f) (hfc : HasCompactSupport f) (a b : ℝ) :
     MemLp ((Icc a b).indicator (nativeWeilResponse f)) 2 volume := by
@@ -439,6 +443,7 @@ theorem nativeWeilResponse_pairing {f v : ℝ → ℂ}
   unfold nativePrimeCoefficient
   ring
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 /-- The actual gamma-weighted Fourier multiplier is L2 as well as L1.
 Its uniform bound comes from the proved quadratic gamma majorant and
 actual compact-C2 Fourier decay. -/
@@ -497,6 +502,7 @@ private theorem nativeFourier_memLp_two_of_integrable {k : ℝ → ℂ}
     simpa [phi, gC, Complex.real_smul] using! hpair
   exact MemLp.ae_eq hae.symm (Lp.memLp V)
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 /-- The literal full-line Archimedean response itself belongs to L2.
 The pointwise Fourier integral is identified with the actual L2 transform,
 rather than transferring membership from its multiplier by terminology. -/

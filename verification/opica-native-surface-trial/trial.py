@@ -18,6 +18,8 @@ OLD_COMPARISON = "27a159604ab498e8bff13107d426a7824c2659a7879eaf306450c968ccd974
 OLD_COMMON = "08e3e26e3e385e39b2bfca7e60a7e82c3ab1ac7342b0cdfb7b050e3e5491ad2e"
 FIRST_TRIAL = "23436c2abcac5c92850aabbe55330f1b1a3d09a1"
 FIRST_TREE = "719f8f4eca8b6835a0ac30d6594129e6f08b6a5d"
+PREVIOUS_TRIAL = "50593c3d0a9174c9f809a3b9b8e87ba404f23286"
+PREVIOUS_TREE = "b15e6008cc273c64ea8e7ec9f6e8377d2bb16391"
 R7 = Path("verification/opica-native-terminal")
 OVERLAYS = R7 / "compatibility/lean-4.35.0"
 HELPER = "Zeta23/OPICACompatibility/ContinuousENorm.lean"
@@ -56,9 +58,10 @@ def source_plan(head):
     permitted = {r["destination"]: r["replacement_git_blob"] for r in inventory["replacements"]
                  if r["destination"].removesuffix(".lean").replace("/", ".") in expected_modules()}
     require("Zeta23/FromPNTPlus/StrongPNTPrefix.lean" in names, "original diagnostic module missing")
+    producers = {n.replace(".", "/") + ".lean" for n in operator_audit.PRODUCERS.values()}
     for row in rows:
         path = row["destination"]
-        require(path in permitted or path in {HELPER, operator_audit.DESTINATION}, "unexpected mathematical source: " + path)
+        require(path in permitted or path == HELPER or path in producers, "unexpected mathematical source: " + path)
         source = OVERLAYS / path
         require(git("ls-tree", head, source).startswith("100644 blob "), "unexpected source mode: " + path)
         actual = git("rev-parse", f"{head}:{source}")
@@ -67,14 +70,14 @@ def source_plan(head):
             require(row["preimage"] is None and not git("ls-tree", BASE, source)
                     and not git("ls-tree", BASE, path), "unexpected existing helper")
             require(row.get("attribution") == HELPER_SOURCE, "compatibility helper origin mismatch")
-        elif path == operator_audit.DESTINATION:
+        elif path in producers:
             require(not git("ls-tree", BASE, source) and row["preimage"] == git("rev-parse", f"{BASE}:{path}"),
-                    "operator baseline preimage mismatch")
+                    "additional producer baseline preimage mismatch")
             expected = row["common_pin_inventory"]
             require(isinstance(expected["count"], int) and expected["count"] > 0 and
                     expected["changed"] == sorted(set(expected["changed"])) and
                     all(re.fullmatch(r"[0-9a-f]{64}", expected[key])
-                        for key in ("baseline_inventory_sha256", "candidate_inventory_sha256")), "invalid operator scope")
+                        for key in ("baseline_inventory_sha256", "candidate_inventory_sha256")), "invalid additional producer scope")
         else:
             require(row["preimage"] == permitted[path] == git("rev-parse", f"{BASE}:{source}"),
                     "R7 source preimage mismatch: " + path)
@@ -87,8 +90,9 @@ def source_plan(head):
 def stage(work, out):
     head = os.environ["GITHUB_SHA"]
     require(git("rev-parse", "HEAD") == head, "trial checkout head mismatch")
-    subprocess.run(["git", "-C", REPO, "merge-base", "--is-ancestor", FIRST_TRIAL, head], check=True)
-    require(git("rev-parse", BASE + "^{tree}") == TREE and git("rev-parse", FIRST_TRIAL + "^{tree}") == FIRST_TREE,
+    subprocess.run(["git", "-C", REPO, "merge-base", "--is-ancestor", PREVIOUS_TRIAL, head], check=True)
+    require(git("rev-parse", BASE + "^{tree}") == TREE and git("rev-parse", FIRST_TRIAL + "^{tree}") == FIRST_TREE
+            and git("rev-parse", PREVIOUS_TRIAL + "^{tree}") == PREVIOUS_TREE,
             "baseline tree mismatch")
     require(not git("status", "--porcelain", "--untracked-files=no"), "dirty checkout")
     plan = source_plan(head)
@@ -135,19 +139,30 @@ def run_compiler(work, out):
                if line.startswith("import Zeta23.")]
     require(len(modules) == 20 and set(modules) == expected_modules() | {"Zeta23.FromPNTPlus.Tactic.AdditiveCombination"},
             "exporter import inventory changed")
+    if any(r["destination"] == "Zeta23/CCM/DictionaryTentArchLimit.lean" for r in receipt["sources"]):
+        bridge = "Zeta23.CCM.DictionaryZeroSideBridge"
+        subprocess.run(["lake", "build", bridge], cwd=work, check=True)
+        chain = [operator_audit.PRODUCERS["tent"], "Zeta23.CCM.DictionaryTentEFExtension", bridge]
+        with (out / "companion-bridge-kernel.log").open("w") as log:
+            for module in chain:
+                subprocess.run(["lake", "env", "leanchecker", "--verbose", module], cwd=work,
+                               stdout=log, stderr=subprocess.STDOUT, check=True)
+        save(out / "companion-bridge.json", {"head": receipt["head"], "tree": receipt["tree"],
+             "compiled": bridge, "stock_kernel_replays": chain, "claim": "RH_OPEN"})
     subprocess.run(["lake", "build", *modules], cwd=work, check=True)
     env = dict(os.environ, OPICA_NATIVE_TYPE_SURFACE=str(out / "public-types.json"))
     subprocess.run(["lake", "env", "lean", "TypeSurface.lean"], cwd=work, env=env, check=True)
     verify()
 
 
-def operator(work, out):
+def audit_producer(work, out, role):
     receipt = json.loads((out / "trial-source.json").read_text())
     require(receipt["head"] == git("rev-parse", "HEAD") == os.environ["GITHUB_SHA"], "trial head mismatch")
-    rows = [r for r in receipt["sources"] if r["destination"] == operator_audit.DESTINATION]
+    destination = operator_audit.PRODUCERS[role].replace(".", "/") + ".lean"
+    rows = [r for r in receipt["sources"] if r["destination"] == destination]
     if rows:
         require(staged_files(work) == receipt["files"], "operator trial source drift")
-        operator_audit.run(work, out, REPO, BASE, rows[0]["common_pin_inventory"])
+        operator_audit.run(work, out, REPO, BASE, rows[0]["common_pin_inventory"], role)
 
 
 def compare(out, historical_archive, comparison_archive):
@@ -194,4 +209,7 @@ def compare(out, historical_archive, comparison_archive):
 if __name__ == "__main__":
     mode = sys.argv[1]
     argv = [Path(arg).resolve() for arg in sys.argv[2:]]
-    {"stage": stage, "compile": run_compiler, "operator": operator, "compare": compare}[mode](*argv)
+    if mode in operator_audit.PRODUCERS:
+        audit_producer(*argv, role=mode)
+    else:
+        {"stage": stage, "compile": run_compiler, "compare": compare}[mode](*argv)
