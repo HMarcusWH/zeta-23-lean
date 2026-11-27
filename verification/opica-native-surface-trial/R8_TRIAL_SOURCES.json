@@ -112,6 +112,15 @@
       }
     },
     {
+      "destination": "Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "preimage": "b60ed25088ea74ed57ca943e6c80c080a37ae75d",
+      "postimage": "91c2897973cd51b895fb5f809040b6aca721b2e2",
+      "local_evidence": {
+        "scope": "full module, 11 declarations; 211 prerequisites and baseline/candidate stock kernel replays",
+        "receipt_sha256": "86c74e1e0cbde26a1e5ea0d1088717403f22048ed93d6b4b0c29d03ddd20ddde"
+      }
+    },
+    {
       "destination": "Zeta23/RvM/GammaSide.lean",
       "preimage": "a82e7bfa800e608b32dac4f832ac2882938af85b",
       "postimage": "1266f4244be3d2921b1d6aef1f8bbb6e527d663c",

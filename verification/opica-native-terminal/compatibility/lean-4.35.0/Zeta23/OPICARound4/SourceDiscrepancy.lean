@@ -54,11 +54,31 @@ theorem correctedSourceTest_upper_endpoint {L : ℝ} (hL : 0 < L) (K : ℕ)
   rw [correctedSourceTest_eq_inner]
   simp [div_self hL.ne', sourceMatrix_zero]
 
+-- Expose the historical real scalar action and real-domain module chosen by
+-- the published statements. Each projection is checked on the common pin.
+local notation "historicalRealSemiring" =>
+  Real.denselyNormedField.toNontriviallyNormedField.toNormedField.toField.toSemifield.toDivisionSemiring.toSemiring
+
+local notation "historicalRealComplexSMul" =>
+  @SMulZeroClass.toSMul ℝ ℂ
+    Complex.addCommGroup.toAddGroup.toSubNegMonoid.toAddMonoid.toAddZeroClass.toAddZero.toZero
+    (@DistribSMul.toSMulZeroClass ℝ ℂ
+      Complex.addCommGroup.toAddGroup.toSubNegMonoid.toAddMonoid.toAddZeroClass
+      (@DistribMulAction.toDistribSMul ℝ ℂ (@Semiring.toMonoid ℝ historicalRealSemiring)
+        Complex.addCommGroup.toAddGroup.toSubNegMonoid.toAddMonoid
+        (@Module.toDistribMulAction ℝ ℂ historicalRealSemiring Complex.addCommGroup.toAddCommMonoid _)))
+
+local notation "historicalRealComplexHasDerivAt" =>
+  @HasDerivAt ℝ _ ℂ _ _ _ (@IsBoundedSMul.continuousSMul ℝ ℂ _ _ _ _ historicalRealComplexSMul _)
+
+local notation "historicalRealComplexDifferentiable" =>
+  @Differentiable ℝ _ ℝ _ (@Semiring.toModule ℝ historicalRealSemiring) _ ℂ _ _ _
+
 /-- Exact source differentiation cost. The aperture factor is present and no
 uniform bound over resolvent-selected states is asserted. -/
 theorem correctedSourceTest_hasDerivAt (L : ℝ) (K : ℕ)
     (u : poleNeutralEvenSubspace L K) (y : ℝ) :
-    HasDerivAt (correctedSourceTest L K u)
+    historicalRealComplexHasDerivAt (correctedSourceTest L K u)
       ((-(1 / L) : ℝ) • sourceAtomPairingDerivative K (correctedSourceRow L K)
         (u.val : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - y / L)) y := by
   have hcoord : HasDerivAt (fun x : ℝ => 1 - x / L) (-(1 / L)) y := by
@@ -97,7 +117,7 @@ theorem actual_even_ray_test_prerequisites {L : ℝ} (hL : 0 < L)
     (hlam : lam < poleNeutralOddRayleighBottom L K hL hK) :
     let u := poleNeutralEvenShiftedRay hL K hK lam hlam
     correctedSourceTest L K u 0 = 0 ∧ correctedSourceTest L K u L = 0 ∧
-      Differentiable ℝ (correctedSourceTest L K u) := by
+      historicalRealComplexDifferentiable (correctedSourceTest L K u) := by
   dsimp only
   exact ⟨correctedSourceTest_lower_endpoint L K _, correctedSourceTest_upper_endpoint hL K _,
     fun y => (correctedSourceTest_hasDerivAt L K _ y).differentiableAt⟩
@@ -110,7 +130,7 @@ theorem actual_odd_resolvent_test_prerequisites {L : ℝ} (hL : 0 < L)
     let u := (poleNeutralEvenShiftedCanonicalEquiv hL K hK lam hlam).symm
       (poleNeutralCorrectedCubicRieszVector L K)
     correctedSourceTest L K u 0 = 0 ∧ correctedSourceTest L K u L = 0 ∧
-      Differentiable ℝ (correctedSourceTest L K u) := by
+      historicalRealComplexDifferentiable (correctedSourceTest L K u) := by
   dsimp only
   exact ⟨correctedSourceTest_lower_endpoint L K _, correctedSourceTest_upper_endpoint hL K _,
     fun y => (correctedSourceTest_hasDerivAt L K _ y).differentiableAt⟩
