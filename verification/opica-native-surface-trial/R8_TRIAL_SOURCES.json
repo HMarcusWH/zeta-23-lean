@@ -39,6 +39,26 @@
       }
     },
     {
+      "destination": "Zeta23/CCM/MixedSourceDerivativeTransport.lean",
+      "preimage": "03d393b3ea72e16850bf628cb759910fb78ec4ff",
+      "postimage": "a9a1f717b1b8b54c608723037ff4e3f5fa22cde8",
+      "common_pin_inventory": {
+        "count": 19,
+        "changed": [],
+        "baseline_inventory_sha256": "c8588c98a0019d8618e9c50c3f1381422f4812fad86236dbf4805fb5807034cb",
+        "candidate_inventory_sha256": "c8588c98a0019d8618e9c50c3f1381422f4812fad86236dbf4805fb5807034cb",
+        "baseline_equation_sha256": "bbf9b6de831143a6d02a1431f2f3b66c2e591149d6d09ac19aa71ea4190bc0fb",
+        "candidate_equation_sha256": "53217e6abf3e41bd8d2ce3a4dfedad7e9246a0d429574ed87ee1bb820ff951ca"
+      },
+      "local_evidence": {
+        "scope": "The complete additional producer surface, original stock kernels, and genuine compiler-generated sourceAtomPairing equation. The unchanged R7 comparison establishes full status.",
+        "compiled_import_head": "925865c3651ccfc343e4bc66723fada739bdf076",
+        "receipt_sha256": "fa0e192b21fac16136d6b2c3c53aae5b04e65ed49744f22ce015c4d78f7cff42",
+        "downstream_compiler_receipt_sha256": "78fe7d54efdc3e27a52b3979ca42c93ad28422dd939d8495239ae728344f049a",
+        "downstream_scope": "All 11 actual SourceDiscrepancy exports and stock kernel. Only the compiler-generated equation changes; its raw type retains two FunLike binders."
+      }
+    },
+    {
       "destination": "Zeta23/CCM/NativeDampedCompletionOperator.lean",
       "preimage": "be4bc781764dfdf7cb80094d9fe7f3014dbf822c",
       "postimage": "789c3965a219064ab94665c1bffdeb8272459db7",

@@ -7,7 +7,27 @@ import shutil
 import subprocess
 
 PRODUCERS = {"operator": "Zeta23.CCM.NativeDampedCompletionOperator",
-             "tent": "Zeta23.CCM.DictionaryTentArchLimit"}
+             "tent": "Zeta23.CCM.DictionaryTentArchLimit",
+             "mixed": "Zeta23.CCM.MixedSourceDerivativeTransport"}
+
+
+GENERATED_MIXED_EQUATION = """import Zeta23.CCM.MixedSourceDerivativeTransport
+import Lean
+
+open Lean Elab Command
+set_option maxHeartbeats 0 in
+run_cmd do
+  let via := ``Zeta23.CCM.sourceAtomPairing
+  let some names ← liftTermElabM (Lean.Meta.getEqnsFor? via)
+    | throwError "No generated equations for {via}"
+  let expected := `Zeta23.CCM.sourceAtomPairing.eq_1
+  unless names == #[expected] do throwError "Unexpected generated equation names {names}"
+  let env := (← getEnv).setExporting false
+  let some info := env.find? expected | throwError "Missing compiler-generated equation {expected}"
+  let .thmInfo _ := info | throwError "Expected a theorem at {expected}"
+  let some output ← IO.getEnv "COORDINATE_EQUATION_REPR" | throwError "Output path required"
+  liftIO <| IO.FS.writeFile output (reprStr info.type)
+"""
 
 
 def inventory(path, module):
@@ -58,6 +78,9 @@ def run(work, out, checkout, base, expected, role):
     subprocess.run(["lake", "env", "lean", "-R", baseline, "-o", olean, source], cwd=work, check=True)
     exporter = scratch / "OperatorSurface.lean"
     exporter.write_text(export_program(work / "TypeSurface.lean", module))
+    equation_exporter = scratch / "GeneratedEquation.lean"
+    if role == "mixed":
+        equation_exporter.write_text(GENERATED_MIXED_EQUATION)
     results = []
     for label, search in (("baseline", str(baseline) + os.pathsep + normal), ("candidate", normal)):
         path = out / f"{role}-{label}.json"
@@ -66,6 +89,12 @@ def run(work, out, checkout, base, expected, role):
         with (out / f"{role}-{label}-kernel.log").open("w") as log:
             subprocess.run([*env, "leanchecker", "--verbose", module], cwd=work, stdout=log,
                            stderr=subprocess.STDOUT, check=True)
+        if role == "mixed":
+            raw = out / f"mixed-{label}-generated-equation.txt"
+            subprocess.run([*env, "COORDINATE_EQUATION_REPR=" + str(raw), "lean", equation_exporter],
+                           cwd=work, check=True)
+            if hashlib.sha256(raw.read_bytes()).hexdigest() != expected[label + "_equation_sha256"]:
+                raise RuntimeError("generated equation differs from the independently compiled " + label)
         results.append(inventory(path, module))
     left, right = results
     missing = sorted(left.keys() - right.keys())

@@ -59,6 +59,10 @@ jobs:
         id: tent
         continue-on-error: true
         run: python -B verification/opica-native-surface-trial/trial.py tent native_epoch "$RUNNER_TEMP/result"
+      - name: Check the complete mixed derivative producer and its compiler-generated equation
+        id: mixed
+        continue-on-error: true
+        run: python -B verification/opica-native-surface-trial/trial.py mixed native_epoch "$RUNNER_TEMP/result"
       - name: Retrieve the pinned original historical export and comparison
         env:
           GH_TOKEN: ${{ github.token }}
@@ -70,7 +74,7 @@ jobs:
           python -B verification/opica-native-surface-trial/trial.py compare "$RUNNER_TEMP/result" \
             "$RUNNER_TEMP/historical.zip" "$RUNNER_TEMP/comparison.zip"
       - name: Require the independent additional producer audits
-        if: ${{ !cancelled() && (steps.operator.outcome == 'failure' || steps.tent.outcome == 'failure') }}
+        if: ${{ !cancelled() && (steps.operator.outcome == 'failure' || steps.tent.outcome == 'failure' || steps.mixed.outcome == 'failure') }}
         run: exit 1
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
