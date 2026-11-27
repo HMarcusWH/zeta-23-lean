@@ -1,0 +1,129 @@
+{
+  "schema": "OPICA_NATIVE_REPAIR_MANIFEST_V7",
+  "version": "R7",
+  "baseline_commit": "f2bc83962ec6d331f3503095a33a91e9af8fa286",
+  "baseline_tree": "a1bdddd092ffc47a86f798ef697b42fb3d81a758",
+  "acquisition_commit": "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736",
+  "acquisition_tree": "ad3dc3ced9a58dbd4619f8635600791a692bce34",
+  "native_base": "2fe4a756e8576203cfb009314861616accdb6dde",
+  "source_run": 45844171814,
+  "source_native_job": 140017592705,
+  "source_checker_job": 140005301916,
+  "arithmetic_frontier_jobs": {
+    "R1": 139802668921,
+    "R2": 139833049273,
+    "R3": 139863614118,
+    "R4": 139901632965,
+    "R5": 139963379918,
+    "R6": 140005301915
+  },
+  "compiler": "NOT_RUN_FOR_R7",
+  "claim": "RH_OPEN",
+  "changes": [
+    {
+      "path": ".github/workflows/opica-native-step4.yml",
+      "old_git_blob": "7e24342bdb14aa2bb7d4272b67429625a38bd308",
+      "new_git_blob": "6f326080d6d51b3d4fdf52a3143882571faf2a84",
+      "reason": "Version exact R7 receipts and artifacts. Fetch pinned R6 ancestry in all nine source reconstruction blocks. Preserve all job dependencies, permissions, sandbox and runner pins.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/README.md",
+      "old_git_blob": "370903a3c83dba23b07c1fe13cf2b9e55162ff20",
+      "new_git_blob": "3caf59c16599398acfb7d55f32d1ea70f653ec5b",
+      "reason": "Document the exact R6 failure, supporting evidence, and R7 repair and acceptance boundary.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/TypeSurface.lean",
+      "old_git_blob": "2b85a326bb991662aca7bb39c026158de3562e3f",
+      "new_git_blob": "dbc680930fc228c9afe2768a14b12f2a70cbb78d",
+      "reason": "Export the new mathematical overlay's public declarations in both epochs.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/admission.py",
+      "old_git_blob": "9cbbcee57bc011689dfca85e3f9b072e5e2111db",
+      "new_git_blob": "5e78510edc6ce6f28568b4e27d9294101686133b",
+      "reason": "Bind review aggregation to R7 receipts, exact public-type comparison and checker environment. Preserve manual admission.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compare.py",
+      "old_git_blob": "7249cb743a4415d04416bba2dc46b4822e0786ce",
+      "new_git_blob": "257803917434af48e659aff535bca9d420484937",
+      "reason": "Version comparator regression markers while preserving dependency and checker equality requirements.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compare_type_surfaces.py",
+      "old_git_blob": "4a009b6862a4978e22cdab0308a3e810624ed7ad",
+      "new_git_blob": "b0ca99d2e6d259bfdb8a1efb687ef3f6632a9f0e",
+      "reason": "Require compiler public-type agreement for all 19 mathematical overlays.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/OVERLAY_MANIFEST.json",
+      "old_git_blob": "1c70fffe69d1d563859df84295b9426d80591bb9",
+      "new_git_blob": "8a882de034f66330bc1ffccf28125ebd04c94375",
+      "reason": "Preserve all 19 existing overlay records and add the single compiler-driven compatibility repair.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/NativeWeilResponseBounds.lean",
+      "old_git_blob": null,
+      "new_git_blob": "aa76614ce52b29ba7e43e6d29bb775b8fe0e4400",
+      "reason": "Repair the single R6 first-cause Lean 4.35 mismatch in a proof body using the pinned Hölder API.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility_scan.py",
+      "old_git_blob": "60c296bcaf784e2c2d2bb5b240d9d4351dfe0873",
+      "new_git_blob": "45e0b5bfbc029ffcb42262c81d9821fc7728b0b4",
+      "reason": "Version the advisory compatibility inventory against exact R7 source.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/epoch.py",
+      "old_git_blob": "d0049ae8b96030c642f223eb24c779c084a53d02",
+      "new_git_blob": "5597d78530d295bbea764b4198cc076d29aa8388",
+      "reason": "Require the exact R6 parent tree and frozen R0–R6 manifest lineage. Preserve 19 overlays and bind the new twentieth overlay and exact R7 scope.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/historical.sh",
+      "old_git_blob": "81df9c64eceeb88ac6fecf767e1565ba400b635a",
+      "new_git_blob": "edc79cbe29f96f162d8f187145022017c38f3837",
+      "reason": "Compile the original module and export its public declaration types at the historical pin.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/history/R6_REPAIR_MANIFEST.json",
+      "old_git_blob": null,
+      "new_git_blob": "0c91cab49ba73ab4e26ee802026ccbd4929b95f1",
+      "reason": "Archive the exact R6 repair manifest bytes.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/receipts.py",
+      "old_git_blob": "8ba259c895d8c74ba8dea4ad4cac9a1cdbff8288",
+      "new_git_blob": "0bce189d52b84e1f8707bffb0bc6eb7bdd7b4ebc",
+      "reason": "Require R7 source and qualification schemas and the exact 20-overlay inventory.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/run.sh",
+      "old_git_blob": "d009380ebb530c3bac8107247b38d5b5b3ea21d6",
+      "new_git_blob": "d8977d06ea7ac7024c6461687eb359ddc6873f02",
+      "reason": "Compile the new module in the analytic leaves and bind R7 markers. Preserve all validation and replay commands.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/stage_controls.py",
+      "old_git_blob": "dd572e61ed76cb5e1840f9e269a1ed5da0a5ae08",
+      "new_git_blob": "1d47c30fe4a31cec95038654af80fb5bff82efe4",
+      "reason": "Reject a stale R6 stage schema and R5 parent and retain all nine controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    }
+  ]
+}

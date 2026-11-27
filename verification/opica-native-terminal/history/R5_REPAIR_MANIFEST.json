@@ -1,0 +1,141 @@
+{
+  "schema": "OPICA_NATIVE_REPAIR_MANIFEST_V5",
+  "version": "R5",
+  "baseline_commit": "92bfa975807f5bc22975c3f403ab79e680d64065",
+  "baseline_tree": "69baeb56a6e14aef7c68ec59ceaba8576e94f01e",
+  "acquisition_commit": "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736",
+  "acquisition_tree": "ad3dc3ced9a58dbd4619f8635600791a692bce34",
+  "native_base": "2fe4a756e8576203cfb009314861616accdb6dde",
+  "source_run": 45814873480,
+  "source_native_job": 139907926078,
+  "source_checker_job": 139901632977,
+  "arithmetic_frontier_jobs": {
+    "R1": 139802668921,
+    "R2": 139833049273,
+    "R3": 139863614118,
+    "R4": 139901632965
+  },
+  "compiler": "NOT_RUN_FOR_R5",
+  "claim": "RH_OPEN",
+  "changes": [
+    {
+      "path": ".github/workflows/opica-native-step4.yml",
+      "old_git_blob": "15bfa4ff12f218c59a1f34a4762692f4ebf857fa",
+      "new_git_blob": "f4a9b8df95714df617041ccdeb22ce4e61bfcad2",
+      "reason": "R5 artifacts, all nine ancestry fetch blocks, deterministic source-lock scan; preserve runner and gates.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/admission.py",
+      "old_git_blob": "4abc0b5ce8ab28d894aab55ec824dda92a4daa55",
+      "new_git_blob": "e9636373b76145342ae47178b2aae841cd8f1df2",
+      "reason": "Bind source-locked advisory inventory to R5 manual-review packet.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compare_type_surfaces.py",
+      "old_git_blob": "04e2a7b15c5fe0fe3f7850d008cbe18cef5f4a0d",
+      "new_git_blob": "59760d45f96e811864a0e5a1eaf0f709f218b640",
+      "reason": "Require all 16 mathematical overlay modules in cross-epoch comparison.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compare.py",
+      "old_git_blob": "54d187e8a3884ed844a9772fc6aa078c71ea2e60",
+      "new_git_blob": "c0f7e631cd5cb51f4d6584965fd509871b256384",
+      "reason": "Bind comparator controls to R5 markers.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility_scan.py",
+      "old_git_blob": null,
+      "new_git_blob": "ed4cc4bdbbbcae586ec1d2f8125aab32f70c482d",
+      "reason": "Source-bound advisory lexical migration-family inventory and self-test.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/OVERLAY_MANIFEST.json",
+      "old_git_blob": "0161f016fc98ebb40c4f6dd2237dbcf1a00c2175",
+      "new_git_blob": "11366a4cf6d9888ccbfff238b8e85b81995831ac",
+      "reason": "Extend fourteen frozen R4 overlays by three.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/CCM/UniversalSincSourceTail.lean",
+      "old_git_blob": null,
+      "new_git_blob": "1e169fd8b831b943196941a42a87ec8859ab7dd9",
+      "reason": "Two direct mapped mass-one proofs; preserve original laws and convolution.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/OPICARound4/SourceDiscrepancy.lean",
+      "old_git_blob": null,
+      "new_git_blob": "b60ed25088ea74ed57ca943e6c80c080a37ae75d",
+      "reason": "Pinned toLpLin_apply and toLpLin_one; preserve inner pairing and orthogonality.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "verification/opica-native-terminal/compatibility/lean-4.35.0/Zeta23/XiPrime/ExplicitFormula/ZeroFree.lean",
+      "old_git_blob": null,
+      "new_git_blob": "4e7360933c7e674ff3375dccf482deec94e723a2",
+      "reason": "Explicit pointwise multiplication conversion for logarithmic derivative.",
+      "statement_policy": "PRESERVE"
+    },
+    {
+      "path": "verification/opica-native-terminal/epoch.py",
+      "old_git_blob": "1e6b50086dadf80d711fd5acf809eae4e4aa50c9",
+      "new_git_blob": "12ca41c9534a68a17c3c46aaf7f38954a2d13563",
+      "reason": "Verify R5 scope, R0–R4 ancestry, fourteen frozen overlays, 17 replacements and current receipts.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/historical.sh",
+      "old_git_blob": "88016900772adb34361036f2ed171eaebebc1d49",
+      "new_git_blob": "b036f2e0ff8c6b076bb10050dc9a76f044ad0a30",
+      "reason": "Build historical counterparts and extract expanded public types.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/history/R4_REPAIR_MANIFEST.json",
+      "old_git_blob": null,
+      "new_git_blob": "ed2e052b5bcf237db4f59eea2860a1902ea4da51",
+      "reason": "Archive exact R4 repair manifest bytes.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/README.md",
+      "old_git_blob": "3861ad5cf6e3ff39bfa26c3122f1ccd87200cb22",
+      "new_git_blob": "a84f87a278a05e75cefab949248d823318c6fbc1",
+      "reason": "Document R5 scope, claim boundary, evidence and reproduction.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/receipts.py",
+      "old_git_blob": "2aa9baaff8780c3d0583ce7fa4fc786cb5bfb895",
+      "new_git_blob": "bc80ce72027fbd4cc509e0fbd1c9338a919c0454",
+      "reason": "R5 qualification/source schemas and 17-overlay inventory.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/run.sh",
+      "old_git_blob": "c1ed514ccbdc916af835dd7ec694f0a11027f637",
+      "new_git_blob": "2a21567c779c875dc243e15f65ce1fb6eedb94b3",
+      "reason": "Add new modules to diagnostic groups and R5 markers.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/stage_controls.py",
+      "old_git_blob": "a97ec076fd7a7441f59f6f71b0367b3f01f3eb0f",
+      "new_git_blob": "ef89fa8f6214474867fdb62b4bcdea782bde7fad",
+      "reason": "Reject stale R4 schema and R3 baseline; preserve all nine controls.",
+      "statement_policy": "VERIFICATION_ONLY"
+    },
+    {
+      "path": "verification/opica-native-terminal/TypeSurface.lean",
+      "old_git_blob": "5c8a123267ed7650c0593d7750d4946e2d9946f2",
+      "new_git_blob": "19eac01853bf9e7bf9541e22fea81f530a434226",
+      "reason": "Extract all 16 mathematical public type surfaces.",
+      "statement_policy": "VERIFICATION_ONLY"
+    }
+  ]
+}
