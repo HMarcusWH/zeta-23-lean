@@ -101,9 +101,19 @@ theorem isBigO_mul_logDeriv_near_zero {f g : ℂ → ℂ} {ρ : ℂ} (hf : Analy
     ((hslope.const_mul (analyticOrderNatAt f ρ : ℂ)).add hcont).isBigO_one ℂ
   exact hO.congr' hexp EventuallyEq.rfl
 
+local notation "historicalComplexScalarModule" =>
+  @Semiring.toModule ℂ
+    (@DivisionSemiring.toSemiring ℂ
+      (@Semifield.toDivisionSemiring ℂ
+        (@Field.toSemifield ℂ
+          (@NormedField.toField ℂ
+            (@NontriviallyNormedField.toNormedField ℂ
+              (@DenselyNormedField.toNontriviallyNormedField ℂ
+                Complex.instDenselyNormedField))))))
+
 /-- Near a simple pole q of the weight g (principal part r/(· − q)), with F differentiable at q:
 g·F − r·F(q)/(· − q) is bounded on a punctured neighbourhood of q. -/
-theorem isBigO_mul_near_weightPole {F g : ℂ → ℂ} {q r : ℂ} (hF : DifferentiableAt ℂ F q)
+theorem isBigO_mul_near_weightPole {F g : ℂ → ℂ} {q r : ℂ} (hF : @DifferentiableAt ℂ _ ℂ _ historicalComplexScalarModule _ ℂ _ historicalComplexScalarModule _ F q)
     (hg : (g - fun s => r / (s - q)) =O[𝓝[≠] q] (1 : ℂ → ℂ)) :
     ((fun s => g s * F s) - fun s => r * F q / (s - q)) =O[𝓝[≠] q] (1 : ℂ → ℂ) := by
   have hFc : Tendsto F (𝓝[≠] q) (𝓝 (F q)) := hF.continuousAt.tendsto.mono_left nhdsWithin_le_nhds
@@ -324,7 +334,7 @@ theorem logDeriv_xi_reflect (s : ℂ) : logDeriv xi (reflect s) = -conj (logDeri
 /-- ψ is differentiable (in particular continuous) on the open right half-plane
 (Γ analytic and nonvanishing there; as in Zeta23.WeilEF.digamma_growth_strip). -/
 theorem differentiableAt_digamma {s : ℂ} (hs : 0 < s.re) :
-    DifferentiableAt ℂ Complex.digamma s := by
+    @DifferentiableAt ℂ _ ℂ _ historicalComplexScalarModule _ ℂ _ historicalComplexScalarModule _ Complex.digamma s := by
   have hzero : ∀ m : ℕ, s ≠ -(m : ℂ) := by
     intro m h
     rw [h] at hs

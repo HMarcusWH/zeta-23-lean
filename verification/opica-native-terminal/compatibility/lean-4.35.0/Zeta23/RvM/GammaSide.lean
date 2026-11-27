@@ -29,7 +29,22 @@ def rightHalfPlane : Set ℂ := {s : ℂ | 0 < s.re}
 lemma isOpen_rightHalfPlane : IsOpen rightHalfPlane :=
   isOpen_lt continuous_const Complex.continuous_re
 
-lemma Gamma_half_differentiableAt {s : ℂ} (hs : 0 < s.re) : DifferentiableAt ℂ Complex.Gamma (s / 2) := by
+local notation "historicalComplexSemiring" =>
+  @DivisionSemiring.toSemiring ℂ
+    (@Semifield.toDivisionSemiring ℂ
+      (@Field.toSemifield ℂ
+        (@NormedField.toField ℂ
+          (@NontriviallyNormedField.toNormedField ℂ
+            (@DenselyNormedField.toNontriviallyNormedField ℂ Complex.instDenselyNormedField)))))
+
+local notation "historicalComplexModule" => @Semiring.toModule ℂ historicalComplexSemiring
+local notation "historicalComplexDifferentiableOn" =>
+  @DifferentiableOn ℂ _ ℂ _ historicalComplexModule _ ℂ _ historicalComplexModule _
+
+local notation "historicalComplexDifferentiableAt" =>
+  @DifferentiableAt ℂ _ ℂ _ historicalComplexModule _ ℂ _ historicalComplexModule _
+
+lemma Gamma_half_differentiableAt {s : ℂ} (hs : 0 < s.re) : historicalComplexDifferentiableAt Complex.Gamma (s / 2) := by
   apply Complex.differentiableAt_Gamma
   intro m h
   have := congrArg Complex.re h
@@ -37,7 +52,7 @@ lemma Gamma_half_differentiableAt {s : ℂ} (hs : 0 < s.re) : DifferentiableAt �
   have : (0:ℝ) ≤ m := Nat.cast_nonneg m
   linarith
 
-lemma Gammaℝ_differentiableOn : DifferentiableOn ℂ Complex.Gammaℝ rightHalfPlane := by
+lemma Gammaℝ_differentiableOn : historicalComplexDifferentiableOn Complex.Gammaℝ rightHalfPlane := by
   intro s hs
   apply DifferentiableAt.differentiableWithinAt
   have h1 : DifferentiableAt ℂ (fun s : ℂ => (Real.pi : ℂ) ^ (-s / 2)) s := by
@@ -53,7 +68,7 @@ lemma Gammaℝ_analyticOnNhd : AnalyticOnNhd ℂ Complex.Gammaℝ rightHalfPlane
   Gammaℝ_differentiableOn.analyticOnNhd isOpen_rightHalfPlane
 
 /-- logDeriv Γℝ is holomorphic on Re s > 0. -/
-lemma logDeriv_Gammaℝ_differentiableOn : DifferentiableOn ℂ (logDeriv Complex.Gammaℝ) rightHalfPlane := by
+lemma logDeriv_Gammaℝ_differentiableOn : historicalComplexDifferentiableOn (logDeriv Complex.Gammaℝ) rightHalfPlane := by
   have hA := Gammaℝ_analyticOnNhd
   have hd : DifferentiableOn ℂ (deriv Complex.Gammaℝ) rightHalfPlane := hA.deriv.differentiableOn
   have : logDeriv Complex.Gammaℝ = fun s => deriv Complex.Gammaℝ s / Complex.Gammaℝ s := by

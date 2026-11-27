@@ -12,6 +12,7 @@ v4.29.0 port (commit 10e1218932db7e2432aa5881d750acb819e91f19) when the project
 moved to Lean v4.32.2 / Mathlib 905b95818eb32af7874a58b427f50c1711a5e96c.
 Modified 2026 by Anthropic PBC.
 -/
+import Zeta23.OPICACompatibility.ContinuousENorm
 import Mathlib.Analysis.Complex.CauchyIntegral
 import Mathlib.Analysis.Complex.Convex
 import Mathlib.Analysis.Complex.RemovableSingularity
@@ -77,6 +78,7 @@ noncomputable def VerticalIntegral (f : ℂ → E) (σ : ℝ) : E :=
 noncomputable abbrev VerticalIntegral' (f : ℂ → E) (σ : ℝ) : E :=
     (1 / (2 * π * I)) • VerticalIntegral f σ
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 lemma verticalIntegral_split_three (a b : ℝ)
     (hf : Integrable (fun t : ℝ ↦ f (σ + t * I))) :
     VerticalIntegral f σ =
@@ -87,6 +89,7 @@ lemma verticalIntegral_split_three (a b : ℝ)
   rw [← integral_Iic_sub_Iic hf.restrict hf.restrict, add_sub_cancel,
     integral_Iic_eq_integral_Iio, integral_Iio_add_Ici hf.restrict hf.restrict]
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 lemma DiffVertRect_eq_UpperLowerUs {σ σ' T : ℝ}
     (f_int_σ : Integrable (fun (t : ℝ) ↦ f (σ + t * I)))
     (f_int_σ' : Integrable (fun (t : ℝ) ↦ f (σ' + t * I))) :
@@ -1081,14 +1084,21 @@ private lemma toMeromorphicNFOn_add_integral {f : ℂ → ℂ} {z w : ℂ}
     RectangleBorderIntegrable.add h_holoPart_border
       (principalPart_borderIntegrable f_no_poles_boundary f_poles_finite), smul_add]
 
+-- Keep the public pole-order comparisons on the integer order used by the historical export.
+local notation "meromorphicIntOrder" =>
+  @WithTop.instPreorder ℤ
+    Int.instConditionallyCompleteLinearOrder.toConditionallyCompleteLattice.toConditionallyCompletePartialOrder.toConditionallyCompletePartialOrderSup.toPartialOrder.toPreorder
+local infix:50 " <ₘ " => @LT.lt (WithTop ℤ) (@Preorder.toLT _ meromorphicIntOrder)
+local infix:50 " ≤ₘ " => @LE.le (WithTop ℤ) (@Preorder.toLE _ meromorphicIntOrder)
+
 /-- The Residue Theorem on a rectangle for functions with simple poles. -/
 lemma RectangleIntegral'_eq_sumResiduesIn {f : ℂ → ℂ} {z w : ℂ}
     (zRe_le_wRe : z.re ≤ w.re) (zIm_le_wIm : z.im ≤ w.im)
     (f_mero : MeromorphicOn f (Rectangle z w))
-    (f_no_poles_boundary : Disjoint (RectangleBorder z w) {z | meromorphicOrderAt f z < 0})
-    (f_poles_finite : (Rectangle z w ∩ {z | meromorphicOrderAt f z < 0}).Finite)
+    (f_no_poles_boundary : Disjoint (RectangleBorder z w) {z | meromorphicOrderAt f z <ₘ 0})
+    (f_poles_finite : (Rectangle z w ∩ {z | meromorphicOrderAt f z <ₘ 0}).Finite)
     (f_simple_poles : HasSimplePolesOn f (Rectangle z w)) :
-    RectangleIntegral' f z w = sumResiduesIn f (Rectangle z w ∩ {z | meromorphicOrderAt f z < 0}) := by
+    RectangleIntegral' f z w = sumResiduesIn f (Rectangle z w ∩ {z | meromorphicOrderAt f z <ₘ 0}) := by
   let R : Set ℂ := Rectangle z w
   let poles : Set ℂ := R ∩ {u | meromorphicOrderAt f u < 0}
   let polesFin : Finset ℂ := f_poles_finite.toFinset
@@ -1128,7 +1138,7 @@ lemma RectangleIntegral'_eq_sumResiduesIn {f : ℂ → ℂ} {z w : ℂ}
     _ = sumResiduesIn f poles := h_residue_congr.symm
 
 lemma residue_eq_zero_of_not_pole_of_meromorphicAt {F : ℂ → ℂ} {s : ℂ}
-    (hs_mero : MeromorphicAt F s) (hs_not_pole : 0 ≤ meromorphicOrderAt F s) :
+    (hs_mero : MeromorphicAt F s) (hs_not_pole : 0 ≤ₘ meromorphicOrderAt F s) :
     residue F s = 0 := by
   apply residue_eq_of_tendsto
   obtain ⟨c, hc⟩ := tendsto_nhds_of_meromorphicOrderAt_nonneg hs_mero hs_not_pole

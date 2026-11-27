@@ -69,22 +69,24 @@ theorem borelCaratheodory' {M r R : ℝ} {f : ℂ → ℂ} {z : ℂ}
   gcongr
   · exact mul_nonneg (mul_nonneg (zero_le_two) (le_of_lt Mpos)) (le_trans (norm_nonneg z) hyp_z)
 
-local notation "historicalComplexDeriv" =>
-  @deriv ℂ _ ℂ _
-    (@Semiring.toModule ℂ
-      (@DivisionSemiring.toSemiring ℂ
-        (@Semifield.toDivisionSemiring ℂ
-          (@Field.toSemifield ℂ
-            (@NormedField.toField ℂ
-              (@NontriviallyNormedField.toNormedField ℂ
-                (@DenselyNormedField.toNontriviallyNormedField ℂ
-                  Complex.instDenselyNormedField))))))) _
+local notation "historicalComplexSemiring" =>
+  @DivisionSemiring.toSemiring ℂ
+    (@Semifield.toDivisionSemiring ℂ
+      (@Field.toSemifield ℂ
+        (@NormedField.toField ℂ
+          (@NontriviallyNormedField.toNormedField ℂ
+            (@DenselyNormedField.toNontriviallyNormedField ℂ Complex.instDenselyNormedField)))))
+
+local notation "historicalComplexModule" => @Semiring.toModule ℂ historicalComplexSemiring
+local notation "historicalComplexDeriv" => @deriv ℂ _ ℂ _ historicalComplexModule _
+local notation "historicalComplexDifferentiableOn" =>
+  @DifferentiableOn ℂ _ ℂ _ historicalComplexModule _ ℂ _ historicalComplexModule _
 
 lemma cauchy_formula_deriv {r r' R : ℝ} {f : ℂ → ℂ} {z : ℂ}
     (r_lt_r' : r < r') (r'_lt_R : r' < R)
-    (hf_on_ball : DifferentiableOn ℂ f (Metric.ball 0 R))
+    (hf_on_ball : historicalComplexDifferentiableOn f (Metric.ball 0 R))
     (hz : z ∈ Metric.closedBall 0 r) :
-    deriv f z = (1 / (2 * Real.pi * I)) • ∮ w in C(0, r'), (w - z)⁻¹ ^ 2 • f w := by
+    historicalComplexDeriv f z = (1 / (2 * Real.pi * I)) • ∮ w in C(0, r'), (w - z)⁻¹ ^ 2 • f w := by
   have hz_in_ball : z ∈ Metric.ball 0 r' :=
     Metric.mem_ball.mpr <| (Metric.mem_closedBall.mp hz).trans_lt r_lt_r'
   simp [← Complex.two_pi_I_inv_smul_circleIntegral_sub_sq_inv_smul_of_differentiable
@@ -207,7 +209,7 @@ theorem LogOfAnalyticFunction' {r' r R : ℝ} {B : ℂ → ℂ}
     (Bnonzero : ∀ z ∈ Metric.closedBall (0 : ℂ) r, B z ≠ 0) :
     ∃ (J_B : ℂ → ℂ), (AnalyticOnNhd ℂ J_B (Metric.ball 0 r)) ∧
       (J_B 0 = 0) ∧
-      (∀ z ∈ Metric.closedBall 0 r', (deriv J_B) z = (deriv B) z / (B z)) ∧
+      (∀ z ∈ Metric.closedBall 0 r', (historicalComplexDeriv J_B) z = (historicalComplexDeriv B) z / (B z)) ∧
       (∀ z ∈ Metric.ball 0 r, Real.log ‖B z‖ - Real.log ‖B 0‖ = (J_B z).re) := by
   have BanalyticOnNhdOfDr : AnalyticOnNhd ℂ B (Metric.closedBall (0 : ℂ) r) := BanalyticOnNhdOfDR.mono (Metric.closedBall_subset_closedBall r_lt_R.le)
   exact LogOfAnalyticFunction r'_pos r'_lt_r BanalyticOnNhdOfDr Bnonzero
@@ -224,11 +226,23 @@ lemma finiteSetOfZeros_mono {r : ℝ} {f : ℂ → ℂ}
   intro z hz
   exact ⟨by linarith, hz.2⟩
 
+section
+attribute [local instance 1100] DivisionSemiring.toSemiring
+
+private theorem historicalAnalyticWitness
+    {𝕜 E : Type*} [NontriviallyNormedField 𝕜] [NormedAddCommGroup E] [NormedSpace 𝕜 E]
+    {f : 𝕜 → E} {z₀ : 𝕜}
+    (hf : AnalyticAt 𝕜 f z₀) (hn : analyticOrderAt f z₀ ≠ ⊤) :
+    ∃ g, AnalyticAt 𝕜 g z₀ ∧ g z₀ ≠ 0 ∧
+      f =ᶠ[nhds z₀] fun z ↦ (z - z₀) ^ analyticOrderNatAt f z₀ • g z :=
+  hf.analyticOrderAt_ne_top.mp hn
+end
+
 open Classical
 noncomputable def ZeroFactor (f : ℂ → ℂ) (z : ℂ) : ℂ :=
   if h1 : AnalyticAt ℂ f z then
     if h2 : analyticOrderAt f z ≠ ⊤ then
-      (h1.analyticOrderAt_ne_top.mp h2).choose z
+      (historicalAnalyticWitness h1 h2).choose z
     else 0
   else 0
 

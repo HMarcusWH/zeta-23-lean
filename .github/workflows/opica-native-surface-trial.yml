@@ -1,4 +1,4 @@
-name: Direct R8 single-overlay compiler diagnostic (RH OPEN)
+name: Direct R8 cumulative compiler diagnostic (RH OPEN)
 on:
   push:
     branches: [review/pr319-exact-type-trial-r8]
@@ -33,7 +33,7 @@ jobs:
               85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
             git cat-file -e "$sha^{commit}"
           done
-      - name: Reconstruct the original R7 epoch and apply the single trial overlay
+      - name: Reconstruct the original R7 epoch and apply the hash-bound trial sources
         env:
           GH_TOKEN: ${{ github.token }}
           GIT_CONFIG_COUNT: "1"
@@ -51,6 +51,10 @@ jobs:
           use-mathlib-cache: true
       - name: Compile the public surface of all R7 mathematical overlays
         run: python -B verification/opica-native-surface-trial/trial.py compile native_epoch "$RUNNER_TEMP/result"
+      - name: Check the complete common-pin operator inventory and stock replays
+        id: operator
+        continue-on-error: true
+        run: python -B verification/opica-native-surface-trial/trial.py operator native_epoch "$RUNNER_TEMP/result"
       - name: Retrieve the pinned original historical export and comparison
         env:
           GH_TOKEN: ${{ github.token }}
@@ -61,6 +65,9 @@ jobs:
         run: |
           python -B verification/opica-native-surface-trial/trial.py compare "$RUNNER_TEMP/result" \
             "$RUNNER_TEMP/historical.zip" "$RUNNER_TEMP/comparison.zip"
+      - name: Require the independent operator audit
+        if: ${{ !cancelled() && steps.operator.outcome == 'failure' }}
+        run: exit 1
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

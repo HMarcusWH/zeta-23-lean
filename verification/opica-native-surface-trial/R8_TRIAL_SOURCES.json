@@ -1,0 +1,98 @@
+{
+  "schema": "R8_CUMULATIVE_SURFACE_SOURCES_V1",
+  "r7": "42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f",
+  "first_trial": "23436c2abcac5c92850aabbe55330f1b1a3d09a1",
+  "sources": [
+    {
+      "destination": "Zeta23/CCM/DictionaryArchDiagonal.lean",
+      "preimage": "51c0cd27f8ef77f58434ebe84f534c1ab9f6545c",
+      "postimage": "099c3de531f43313093eb1e7e68cb33a1b574170",
+      "local_evidence": {
+        "scope": "full module with compatibility helper, 11 declarations",
+        "receipt_sha256": "1b5abe7664e84038fde3be54bb5388b124a60ab3b59c794684ecba7e2a17d787"
+      }
+    },
+    {
+      "destination": "Zeta23/CCM/NativeDampedCompletionOperator.lean",
+      "preimage": "be4bc781764dfdf7cb80094d9fe7f3014dbf822c",
+      "postimage": "789c3965a219064ab94665c1bffdeb8272459db7",
+      "local_evidence": {
+        "scope": "full producer, 23 declarations; unchanged consumer, 31 declarations",
+        "receipt_sha256": "fc0a4a671b9407e42d604622a6b4b6c11a854f8e0ca711d56d9d334332442f14"
+      },
+      "common_pin_inventory": {
+        "count": 23,
+        "changed": [
+          "Zeta23.CCM.nativeCompletionCausalL2",
+          "Zeta23.CCM.nativeCompletionCausalL2_completeSpace",
+          "Zeta23.CCM.nativeCompletionCausalL2_isClosed",
+          "Zeta23.CCM.nativeDampedCompletionCausalL2Operator",
+          "Zeta23.CCM.nativeDampedCompletionCausalL2Operator_coe_apply",
+          "Zeta23.CCM.nativeDampedCompletionCausalL2Operator_norm_le_full",
+          "Zeta23.CCM.nativeDampedCompletionCausalL2Operator_norm_lt_605_div_621",
+          "Zeta23.CCM.nativeDampedCompletionL2Integrand_causal",
+          "Zeta23.CCM.nativeDampedCompletionL2Operator_causal"
+        ],
+        "baseline_inventory_sha256": "26ba047564c02e625fc8f99e42f9d765369518d35b6d0199eabe7e37c76d8a6a",
+        "candidate_inventory_sha256": "32ad9e14dc828ab43011613d7e3ee9cee1a80d33b1ab3382398357b2e7c187df"
+      }
+    },
+    {
+      "destination": "Zeta23/FromPNTPlus/EulerMaclaurin.lean",
+      "preimage": "3e153dfd3cf6d67c010c3f14e5f13e4ede5557c1",
+      "postimage": "a16dc3aa5361308159ea9d9e604abab731e81b70",
+      "local_evidence": {
+        "scope": "full module, 8 declarations",
+        "receipt_sha256": "68be2133a23f9e8755989125dd1694f157b32e701951b171e8d71763f5f2a7d0"
+      }
+    },
+    {
+      "destination": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+      "preimage": "12f5000482f36a4edc464db715163bff47b7a155",
+      "postimage": "c2a8dda72da6bc11049239d3a4cecd0e2f7aa14b",
+      "local_evidence": {
+        "scope": "full module with compatibility helper, 79 declarations",
+        "receipt_sha256": "55f282476515f86da18dbff303489c93375340bfe483a03d48a41471d5bfa85f"
+      }
+    },
+    {
+      "destination": "Zeta23/FromPNTPlus/StrongPNTPrefix.lean",
+      "preimage": "6e28a7a9deaecff6a779b175f9b3039c03640443",
+      "postimage": "7b4a6fd11c4320c5033af8ed3988e8597ded01ca",
+      "local_evidence": {
+        "scope": "full module, 23 declarations",
+        "receipt_sha256": "e8fff3415deae6b892c0388d5064cf05735a6aca2d52163212c5d0ba364a46cb"
+      }
+    },
+    {
+      "destination": "Zeta23/OPICACompatibility/ContinuousENorm.lean",
+      "preimage": null,
+      "postimage": "a061d26c8d8776ec0ff8b1585c8ba0b3efa1f113",
+      "attribution": {
+        "repository": "leanprover-community/mathlib4",
+        "commit": "51e6992efd06126df61a496bebf8f49482a4e129",
+        "path": "Mathlib/Analysis/Normed/Group/Continuity.lean",
+        "blob": "062cd64a5c88bf2303d8a24bc2b486ca3cf2d427",
+        "declaration": "SeminormedGroup.toContinuousENorm"
+      }
+    },
+    {
+      "destination": "Zeta23/RvM/GammaSide.lean",
+      "preimage": "a82e7bfa800e608b32dac4f832ac2882938af85b",
+      "postimage": "1266f4244be3d2921b1d6aef1f8bbb6e527d663c",
+      "local_evidence": {
+        "scope": "full module, 11 declarations, original import order control",
+        "receipt_sha256": "669ef94d8b0489cc4283910bb2fd7ea48cc5fec2ca9478efa88b4b6aceb02bed"
+      }
+    },
+    {
+      "destination": "Zeta23/XiPrime/ExplicitFormula/ZeroFree.lean",
+      "preimage": "4e7360933c7e674ff3375dccf482deec94e723a2",
+      "postimage": "159c45bbd5d3dba797ec9b497af266151203a9c7",
+      "local_evidence": {
+        "scope": "two theorem excerpts with original proofs; full-module comparison pending",
+        "receipt_sha256": "d8297e8f2309dfc051e76d96f62a7b14662c36518294f6ec23ea8a42641c5549"
+      }
+    }
+  ]
+}

@@ -41,8 +41,24 @@ lemma abs_B1_le_half {x : ℝ} (hx : 0 ≤ x) : |B1 x| ≤ 1 / 2 := by
   · grind [Nat.floor_le hx]
   · grind [Nat.lt_succ_floor x]
 
+-- Use the same semiring projections as the historical public statements.
+attribute [local instance 1100] DivisionSemiring.toSemiring
+
+local notation "historicalRealDifferentiableAt" =>
+  @DifferentiableAt ℝ _ ℝ _
+    (@Semiring.toModule ℝ
+      (@DivisionSemiring.toSemiring ℝ
+        (@Semifield.toDivisionSemiring ℝ
+          (@Field.toSemifield ℝ
+            (@NormedField.toField ℝ
+              (@NontriviallyNormedField.toNormedField ℝ
+                (@DenselyNormedField.toNontriviallyNormedField ℝ
+                  Real.denselyNormedField))))))) _ _ _ _ _
+
+attribute [local instance 1200] Real.semiring
+
 lemma integral_deriv_mul_add_const (c : 𝕜) (hab : a ≤ b) (h_int : IntervalIntegrable (deriv f) volume a b)
-    (hf_diff : ∀ t ∈ Set.Icc a b, DifferentiableAt ℝ f t) :
+    (hf_diff : ∀ t ∈ Set.Icc a b, historicalRealDifferentiableAt f t) :
     ∫ t in a..b, (t + c) * deriv f t = (b + c) * f b - (a + c) * f a - ∫ t in a..b, f t := by
   rw [← Set.uIcc_of_le hab] at hf_diff
   have : ∀ t ∈ [[a, b]], HasDerivAt (fun (t : ℝ) ↦ t + c) 1 t := by
@@ -65,7 +81,7 @@ lemma intervalIntegrable_deriv_mul_B1 (ha : 0 ≤ a) (hab : a ≤ b) (h_cont : C
   exact abs_B1_le_half (by linarith)
 
 lemma integral_deriv_mul_floor_add_one (ha : 0 ≤ a) (hab : a ≤ b)
-    (hf_diff : ∀ t ∈ Set.Icc a b, DifferentiableAt ℝ f t) (h_cont : ContinuousOn (deriv f) [[a, b]]) :
+    (hf_diff : ∀ t ∈ Set.Icc a b, historicalRealDifferentiableAt f t) (h_cont : ContinuousOn (deriv f) [[a, b]]) :
     ∫ t in a..b, deriv f t * (⌊t⌋₊ + 1) = (b + 1 / 2) * f b - (a + 1 / 2) * f a - (∫ t in a..b, f t) - ∫ t in a..b, deriv f t * B1 t := by
   calc
   _ = ∫ t in a..b, (deriv f t * (t + 1 / 2) -deriv f t * B1 t) := by
@@ -81,7 +97,7 @@ lemma integral_deriv_mul_floor_add_one (ha : 0 ≤ a) (hab : a ≤ b)
     rw [integral_deriv_mul_add_const _ hab h_cont.intervalIntegrable hf_diff]
 
 theorem sum_eq_integral_add_integral_deriv (ha : 0 ≤ a) (hab : a ≤ b)
-    (hf_diff : ∀ t ∈ Set.Icc a b, DifferentiableAt ℝ f t)
+    (hf_diff : ∀ t ∈ Set.Icc a b, historicalRealDifferentiableAt f t)
     (h_cont : ContinuousOn (deriv f) [[a, b]]) :
     ∑ k ∈ Ioc ⌊a⌋₊ ⌊b⌋₊, f k =
       f a * B1 a - f b * B1 b + (∫ t in a..b, f t) + ∫ t in a..b, deriv f t * B1 t  := by

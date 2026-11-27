@@ -1,3 +1,4 @@
+import Zeta23.OPICACompatibility.ContinuousENorm
 import Zeta23.CCM.DictionaryArchSourceBridge
 import Mathlib.Analysis.SpecialFunctions.Gamma.Beta
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.ArctanDeriv
@@ -359,6 +360,7 @@ private theorem archReferenceIntegrand_nonneg
   exact mul_nonneg (sub_nonneg.mpr he)
     (div_nonneg (Real.exp_pos _).le hd.le)
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 theorem integrableOn_one_sub_exp_mul_archDensity_Ioi :
     IntegrableOn
       (fun x : ℝ => (1 - Real.exp (-x / 2)) * archDensity x)
@@ -474,6 +476,7 @@ private theorem tendsto_archTailPrimitive_atTop :
     norm_num
   nlinarith
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 theorem integrableOn_exp_neg_half_mul_archDensity_Ioi
     {L : ℝ} (hL : 0 < L) :
     IntegrableOn
@@ -615,6 +618,7 @@ private theorem exists_paperFT_dictionaryTent_inv_quad_bound
     dsimp [C]
     nlinarith
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 /-- The canonical tent transform is integrable with the exact square-root
 weight used by the proved `mu - mu 0` growth estimate. -/
 theorem integrable_norm_paperFT_dictionaryTent_mul_sqrt
@@ -731,6 +735,7 @@ private theorem integrable_norm_paperFT_dictionaryTent_add_mul_sqrt
   have htranslated := hg.comp_add_right a
   simpa only [Complex.ofReal_add, add_sub_cancel_right] using htranslated
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 /-- The diagonal basis transform is integrable after multiplication by the
 square-root weight.  This is the analytic gate missing from the source-only
 development. -/
@@ -801,6 +806,7 @@ theorem integrable_norm_paperFT_dictionaryBasisTest_diag_mul_sqrt
             ((τ : ℂ) - (dictionaryFrequency n L : ℂ))‖ *
             Real.sqrt |τ / 2|) := by ring
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 /-- Absolute integrability of the diagonal transform against `mu - mu 0`. -/
 theorem integrable_paperFT_dictionaryBasisTest_diag_mul_mu_sub_mu_zero
     {L : ℝ} (hL : 0 < L) (n : ℤ) :
@@ -845,6 +851,7 @@ theorem integrable_paperFT_dictionaryBasisTest_diag_mul_mu_sub_mu_zero
   dsimp [Cmu]
   simpa [mul_assoc, mul_left_comm, mul_comm] using hmul
 
+attribute [local instance] SeminormedAddGroup.toContinuousENorm in
 /-- Public full-`mu` integrability gate required by the finite arch-channel
 linearity lift. -/
 theorem integrable_paperFT_dictionaryBasisTest_diag_mul_mu
