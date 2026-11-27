@@ -69,6 +69,17 @@ theorem borelCaratheodory' {M r R : ℝ} {f : ℂ → ℂ} {z : ℂ}
   gcongr
   · exact mul_nonneg (mul_nonneg (zero_le_two) (le_of_lt Mpos)) (le_trans (norm_nonneg z) hyp_z)
 
+local notation "historicalComplexDeriv" =>
+  @deriv ℂ _ ℂ _
+    (@Semiring.toModule ℂ
+      (@DivisionSemiring.toSemiring ℂ
+        (@Semifield.toDivisionSemiring ℂ
+          (@Field.toSemifield ℂ
+            (@NormedField.toField ℂ
+              (@NontriviallyNormedField.toNormedField ℂ
+                (@DenselyNormedField.toNontriviallyNormedField ℂ
+                  Complex.instDenselyNormedField))))))) _
+
 lemma cauchy_formula_deriv {r r' R : ℝ} {f : ℂ → ℂ} {z : ℂ}
     (r_lt_r' : r < r') (r'_lt_R : r' < R)
     (hf_on_ball : DifferentiableOn ℂ f (Metric.ball 0 R))
@@ -85,7 +96,7 @@ lemma DerivativeBound {M r r' R : ℝ} {f : ℂ → ℂ} {z : ℂ}
     (f_zero_at_zero : f 0 = 0)
     (re_f_le_M : ∀ z ∈ Metric.ball 0 R, (f z).re ≤ M)
     (z_in_r : z ∈ Metric.closedBall 0 r) :
-    ‖(deriv f) z‖ ≤ 2 * M * (r') ^ 2 / ((R - r') * (r' - r) ^ 2) := by
+    ‖(historicalComplexDeriv f) z‖ ≤ 2 * M * (r') ^ 2 / ((R - r') * (r' - r) ^ 2) := by
   rw [cauchy_formula_deriv r_lt_r' r'_lt_R analytic_f.differentiableOn  z_in_r, one_div]
   grw [circleIntegral.norm_two_pi_i_inv_smul_integral_le_of_norm_le_const (by linarith) (C := 2 * M * r' / ((R - r') * (r' - r) ^ 2))]
   · exact le_of_eq (by ring)
@@ -111,7 +122,7 @@ theorem BorelCaratheodoryDeriv {M r R : ℝ} {f : ℂ → ℂ} {z : ℂ}
     (zeroAtZero : f 0 = 0)
     (realPartBounded : ∀ z ∈ Metric.ball 0 R, (f z).re ≤ M)
     (hyp_z : z ∈ Metric.closedBall 0 r) :
-    ‖deriv f z‖ ≤ 16 * M * R ^ 2 / (R - r) ^ 3 := by
+    ‖historicalComplexDeriv f z‖ ≤ 16 * M * R ^ 2 / (R - r) ^ 3 := by
   have hr' : 2 * M * ((R + r) / 2) ^ 2 / ((R - (R + r) / 2) * ((R + r) / 2 - r) ^ 2) =
       4 * M * (R + r) ^ 2 / (R - r) ^ 3 := by
     have hgap : R - r ≠ 0 := by linarith
@@ -137,7 +148,7 @@ theorem LogOfAnalyticFunction {r R : ℝ} {B : ℂ → ℂ}
     (Bnonzero : ∀ z ∈ Metric.closedBall (0 : ℂ) R, B z ≠ 0) :
     ∃ (J_B : ℂ → ℂ), (AnalyticOnNhd ℂ J_B (Metric.ball 0 R)) ∧
       (J_B 0 = 0) ∧
-      (∀ z ∈ Metric.closedBall 0 r, (deriv J_B) z = (deriv B) z / (B z)) ∧
+      (∀ z ∈ Metric.closedBall 0 r, (historicalComplexDeriv J_B) z = (historicalComplexDeriv B) z / (B z)) ∧
       (∀ z ∈ Metric.ball 0 R, Real.log ‖B z‖ - Real.log ‖B 0‖ = (J_B z).re) := by
   obtain ⟨J_B, hJB⟩ : ∃ J_B : ℂ → ℂ, (∀ z ∈ Metric.ball 0 R, (HasDerivAt J_B (deriv B z / B z) z)) ∧ J_B 0 = 0 ∧ (∀ z ∈ Metric.ball 0 R, Real.log ‖B z‖ - Real.log ‖B 0‖ = (J_B z).re) := by
     set f : ℂ → ℂ := fun z => deriv B z / B z;
@@ -489,4 +500,3 @@ theorem ZerosBound {B r R : ℝ} {f : ℂ → ℂ}
       rw[← blaschke_eq]
       exact DiskBound r_pos r_lt_R R_lt_one finiteZeros hfAnalytic
         hf0_ne_zero fz_bound (Metric.mem_closedBall_self (le_of_lt R_pos))
-

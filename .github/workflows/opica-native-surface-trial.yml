@@ -1,0 +1,70 @@
+name: Direct R8 single-overlay compiler diagnostic (RH OPEN)
+on:
+  push:
+    branches: [review/pr319-exact-type-trial-r8]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  compiler-surface:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 16
+          persist-credentials: false
+      - name: Verify the full ancestry of this branch and the frozen R7 source epochs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if [[ "$(git rev-parse --is-shallow-repository)" == true ]]; then
+            git config remote.origin.promisor true
+            git config remote.origin.partialclonefilter blob:none
+            git -c credential.helper= -c 'credential.helper=!gh auth git-credential' \
+              fetch --filter=blob:none --no-tags --unshallow origin "$GITHUB_SHA"
+          fi
+          git merge-base --is-ancestor 42184bcd5018ad1bfec7f2a83af1dcd6cbd8b15f "$GITHUB_SHA"
+          for sha in b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736 c109fb02385bd4f7a00890594478e3bf664cbd14 \
+              2fe4a756e8576203cfb009314861616accdb6dde cfc0e6bc92be1db226d4a84f9542ace9c4868e16 \
+              176e582916156e1df90252aeb7746dd904f24983 92bfa975807f5bc22975c3f403ab79e680d64065 \
+              85bc42262d47a5e9da889ca95b65b249a64357c7 f2bc83962ec6d331f3503095a33a91e9af8fa286; do
+            git cat-file -e "$sha^{commit}"
+          done
+      - name: Reconstruct the original R7 epoch and apply the single trial overlay
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GIT_CONFIG_COUNT: "1"
+          GIT_CONFIG_KEY_0: credential.helper
+          GIT_CONFIG_VALUE_0: "!gh auth git-credential"
+        run: python -B verification/opica-native-surface-trial/trial.py stage native_epoch "$RUNNER_TEMP/result"
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: native_epoch
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Compile the public surface of all R7 mathematical overlays
+        run: python -B verification/opica-native-surface-trial/trial.py compile native_epoch "$RUNNER_TEMP/result"
+      - name: Retrieve the pinned original historical export and comparison
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/HMarcusWH/zeta-23-lean/actions/artifacts/15161592519/zip > "$RUNNER_TEMP/historical.zip"
+          gh api repos/HMarcusWH/zeta-23-lean/actions/artifacts/15164550350/zip > "$RUNNER_TEMP/comparison.zip"
+      - name: Compare every compiler export with the original R7 comparator
+        run: |
+          python -B verification/opica-native-surface-trial/trial.py compare "$RUNNER_TEMP/result" \
+            "$RUNNER_TEMP/historical.zip" "$RUNNER_TEMP/comparison.zip"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: direct-r8-surface-diagnostic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/result/
+          if-no-files-found: error
+          retention-days: 30
