@@ -1,0 +1,37 @@
+name: Retry the complete Round4 paper review
+on:
+  push:
+    branches: [workmode/paper-320-reviewed-generated-publish]
+    paths: [.github/workmode/round4-retry/46068027549-attempt-2]
+permissions: {}
+concurrency:
+  group: round4-retry-46068027549
+  cancel-in-progress: false
+jobs:
+  retry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+      actions: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          sparse-checkout: |
+            .github/scripts
+            .github/workmode/round4-retry
+          persist-credentials: false
+      - name: Recheck the first attempt and request a full rerun
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = HMarcusWH/zeta-23-lean
+          test "$GITHUB_REF" = refs/heads/workmode/paper-320-reviewed-generated-publish
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(cat .github/workmode/round4-retry/46068027549-attempt-2)" = '46068027549 2 e0e97e0f53f20fb8c5b34404c697b0950d3ef46d'
+          printf '%s  %s\n' 1a50340bc5c88163aeb7cc3b8500ec7927f28a2e8134284b69a389846578461f .github/scripts/round4-retry-e0e97e0f.py | sha256sum --check -
+          python3 .github/scripts/round4-retry-e0e97e0f.py --retry
