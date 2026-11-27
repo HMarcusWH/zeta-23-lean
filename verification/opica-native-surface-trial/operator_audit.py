@@ -30,6 +30,66 @@ run_cmd do
 """
 
 
+def check_historical_mixed(expected, baseline, candidate, out):
+    import base64
+    import hashlib
+    import json
+    import zlib
+
+    snapshots = expected["historical_auxiliary"]
+    frozen = {
+        "Zeta23.CCM.sourcePairingCoefficientSum.eq_1": (
+            493888, "492a5e810c5cd6d932b17afff5446298d0bb75074e3a372f7a43e2deeeda068f",
+            "3b45b80f292d5ecbc494318ab6ce5aba7ef44f22689f7bd0ad54d1a8f669e1bc"),
+        "Zeta23.CCM.sourcePairingRightDefect.eq_1": (
+            538535, "bad8131f2d8ab54edb3cd1dae9ca4a6b3e57727ebad96c5f6315ba79b75e9d1a",
+            "8ff1ab86653e060d493d8992c6e583006cdff34ed86386c6634ff70977d6878b"),
+    }
+    archive = {
+        "archive_id": 15182125482,
+        "archive_sha256": "3fdeb147e4ba3fdec49cbe7d4c1aabd8f3f5b55b072674f0faf12b2459b888f1",
+        "git_commit": "e7b940fece806876a9f4ff6de05aca3cee3f06f0",
+        "source_git_oid": "03d393b3ea72e16850bf628cb759910fb78ec4ff",
+        "olean_sha256": "cdeab7275e9a3cd3e4392b2d57a0ed6121fb239d107bcd06361f117c671b7165",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "encoding": "gzip+base64",
+    }
+    if (any(snapshots.get(key) != value for key, value in archive.items())
+            or set(snapshots["rows"]) != set(frozen) or expected["changed"] != sorted(frozen)):
+        raise RuntimeError("wrong historical auxiliary compiler snapshot or changed scope")
+    old_binder = "`x.«_@».Mathlib.Data.FunLike.Basic"
+    current_binder = "`x.«_@».Mathlib.Basic.FunLike.Basic"
+    rows = {}
+    for name, (size, historical_digest, baseline_digest) in frozen.items():
+        packed = base64.b64decode(snapshots["rows"][name], validate=True)
+        decoder = zlib.decompressobj(zlib.MAX_WBITS | 16)
+        raw = decoder.decompress(packed, size + 1)
+        if (len(raw) != size or not decoder.eof or decoder.unused_data or decoder.unconsumed_tail
+                or hashlib.sha256(raw).hexdigest() != historical_digest):
+            raise RuntimeError("incorrect preserved old compiler bytes for " + name)
+        original = raw.decode("utf-8")
+        left_kind, left = baseline[name]
+        right_kind, right = candidate[name]
+        if (original.count(old_binder) != 1 or original.count(current_binder) != 0
+                or left_kind != right_kind or left_kind != "theorem"
+                or hashlib.sha256(left.encode()).hexdigest() != baseline_digest):
+            raise RuntimeError("unexpected parent type or historical binder for " + name)
+        if (original == right or right.count(current_binder) != 1
+                or original.replace(old_binder, current_binder) != right):
+            raise RuntimeError("unexpected auxiliary historical type difference for " + name)
+        rows[name] = {
+            "historical_raw_sha256": historical_digest,
+            "baseline_raw_sha256": baseline_digest,
+            "candidate_raw_sha256": hashlib.sha256(right.encode()).hexdigest(),
+            "literal_historical_match": False,
+            "remaining_binder_differences": 1,
+        }
+    report = {"schema": "MIXED_PRODUCER_HISTORICAL_RAW_DELTA", **archive, "rows": rows,
+              "historical_status": "REVIEW_REQUIRED", "claim": "RH_OPEN"}
+    (out / "mixed-historical-auxiliary.json").write_text(json.dumps(report, indent=2) + "\n")
+    return report
+
+
 def inventory(path, module):
     records = json.loads(path.read_text())
     declarations = {r["name"]: (r["kind"], r["type_expr"]) for r in records}
@@ -110,3 +170,5 @@ def run(work, out, checkout, base, expected, role):
     if (missing or extra or len(right) != expected["count"] or changed != expected["changed"]
             or any(digest != expected[key] for key, digest in hashes.items())):
         raise RuntimeError("unexpected public producer declaration changes in " + module)
+    if role == "mixed":
+        check_historical_mixed(expected, left, right, out)
