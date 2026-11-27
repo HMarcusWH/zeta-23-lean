@@ -204,6 +204,26 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:papers/2026-11-26/Paper_XXXIII_Compact_Arithmetic_and_Native_Terminal_Closure_v0_1.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:papers/2026-11-26/Paper_XXXIII_Compact_Arithmetic_and_Native_Terminal_Closure_v0_1.md",
+      "heading_count": 8,
+      "path": "papers/2026-11-26/Paper_XXXIII_Compact_Arithmetic_and_Native_Terminal_Closure_v0_1.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:papers/2026-11-26/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:papers/2026-11-26/README.md",
+      "heading_count": 3,
+      "path": "papers/2026-11-26/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:papers/README.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
@@ -677,16 +697,6 @@
       "file_id": "rh:file:research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md",
       "heading_count": 6,
       "path": "research/RHRC/integration/opica_composition/post299/CROSS_RUNNER_V2_REPAIR.md",
-      "route_mentions": []
-    },
-    {
-      "claim_mentions": [],
-      "document_id": "rh:document:research/RHRC/integration/opica_dispatch_registration/README.md",
-      "document_role": "DOCUMENTATION_ARTIFACT",
-      "file_class": "DOCUMENTATION",
-      "file_id": "rh:file:research/RHRC/integration/opica_dispatch_registration/README.md",
-      "heading_count": 3,
-      "path": "research/RHRC/integration/opica_dispatch_registration/README.md",
       "route_mentions": []
     },
     {
@@ -6695,7 +6705,7 @@
       ]
     }
   ],
-  "entry_count": 647,
+  "entry_count": 648,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

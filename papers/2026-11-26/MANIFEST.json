@@ -1,0 +1,66 @@
+{
+  "archive_date": "2026-11-26",
+  "previous_archive": "papers/2026-11-21",
+  "scientific_status": "RH_OPEN; author research and terminal composition review candidate",
+  "base_commit": "bb7c8184a135b2823c6296917c5ac893bebf2a71",
+  "terminal_pr": 319,
+  "terminal_inspected_head": "b1e3e3e99fd913ba2b3560ceb3b5436cdb71f736",
+  "upstream_commit": "72fead102f663d5c7a407964a13dc0cf9d977207",
+  "total_pdf_files": 6,
+  "total_pdf_bytes": 4207884,
+  "files": [
+    {
+      "paper": "XXIV",
+      "path": "papers/2026-11-26/Paper_XXIV_Exact_Native_Mobius_Hyperbola_Discrete_Hankel_Criteria_v0_2_PROOFREAD.pdf",
+      "size_bytes": 607567,
+      "git_blob_sha1": "da9306882e06b48cf6453d08c15e3151155a8da3",
+      "sha256": "80c43538fd5d7db249018e01e903bc3ba8394816c6e25059309600efd1c9f10a",
+      "source": "user-supplied PDF; exact Git blob match via original Drive archive"
+    },
+    {
+      "paper": "XXVIII",
+      "path": "papers/2026-11-26/Paper_XXVIII_Exact_Moment_Slice_Parity_Sequences_Cofinal_RH_Criteria_v0_2_PROOFREAD.pdf",
+      "size_bytes": 660096,
+      "git_blob_sha1": "59bb224968252e0b572d856d713c7f6482271058",
+      "sha256": "a39dc83eac891093e587ea9ee12887d607dcf3f3459f5610c52acd761a01545a",
+      "source": "user-supplied PDF; exact Git blob match via original Drive archive"
+    },
+    {
+      "paper": "XXIX",
+      "path": "papers/2026-11-26/Paper_XXIX_Signed_Mobius_Survivor_Energies_Opposed_Parity_Stopping_Covers_v0_2_PROOFREAD.pdf",
+      "size_bytes": 886121,
+      "git_blob_sha1": "e215aaa56ff5a643e6ffdcf20202dc9309575496",
+      "sha256": "08d47ae8fd69a73d8eba8fae873c7cbe8c3f08cd2114d6179a2a36efc9b25dac",
+      "source": "user-supplied PDF; exact Git blob match via original Drive archive"
+    },
+    {
+      "paper": "XXX",
+      "path": "papers/2026-11-26/Paper_XXX_Literal_Prime_Ramp_Normalization_Positive_Energy_Localization_v0_2_PROOFREAD.pdf",
+      "size_bytes": 692342,
+      "git_blob_sha1": "bb4c7414c47dec06e616eb16c34c36d73ea4fe46",
+      "sha256": "0d90d57a8edce540e2a609d673228a023927a4a09d53f599b4fe380c6c1136fe",
+      "source": "user-supplied PDF; exact Git blob match via original Drive archive"
+    },
+    {
+      "paper": "XXXI",
+      "path": "papers/2026-11-26/Paper_XXXI_Both_Parity_Power_Comparison_Cofinal_Moment_Slice_Closure_v0_2_PROOFREAD.pdf",
+      "size_bytes": 668808,
+      "git_blob_sha1": "96d73e7a37b95c960081578b5cb968a7d075fe4f",
+      "sha256": "43c580855c012fd05b967342b4eef09f7a52a26d74c5ab6f3ea2c95b0bb3f01e",
+      "source": "user-supplied PDF; exact Git blob match via original Drive archive"
+    },
+    {
+      "paper": "XXXII",
+      "path": "papers/2026-11-26/Paper_XXXII_Principal_Character_Arithmetic_Supply_Terminal_Composition_v0_2_PROOFREAD_CANDIDATE.pdf",
+      "size_bytes": 692950,
+      "git_blob_sha1": "bd5bb19f1dcac55c8523c07cc010cb2ec3d47e4f",
+      "sha256": "295e8c7e65088c84b39d40b681bdfe1d578bc2347b46156697533a44216f1e82",
+      "source": "user-supplied PDF; exact Git blob match via original Drive archive"
+    }
+  ],
+  "new_manuscript": {
+    "path": "papers/2026-11-26/Paper_XXXIII_Compact_Arithmetic_and_Native_Terminal_Closure_v0_1.md",
+    "format": "Markdown with display mathematics",
+    "status": "v0.1 review candidate"
+  }
+}
