@@ -47,6 +47,26 @@ def read_json(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def comparator_export_command(lake, exporter, module, config):
+    """Match the pinned judge's compareIt export roots, never the whole environment."""
+    lock = read_json(HERE / "SOURCE_LOCK.json")
+    roots = lock["comparator_export_roots"]
+    axioms = config["permitted_axioms"]
+    require(set(axioms) == set(lock["allowed_axioms"]), "export axiom policy mismatch")
+    groups = {
+        "quotient_targets": roots["quotient_targets_when_Quot_sound_permitted"] if "Quot.sound" in axioms else [],
+        "theorem_names": config["theorem_names"],
+        "permitted_axioms": axioms,
+        "primitive_targets": roots["primitive_targets"],
+        "definition_names": config.get("definition_names", []),
+    }
+    require(groups["theorem_names"], "export must name a theorem")
+    targets = [target for group in roots["assembly_order"] for target in groups[group]]
+    require(all(isinstance(name, str) and name for name in targets) and len(targets) == len(set(targets)),
+            "empty or duplicate comparator export root")
+    return [str(lake), "env", str(exporter), module, "--", *targets]
+
+
 def git(repo, *args):
     return subprocess.check_output(["git", "-C", str(repo), *args])
 

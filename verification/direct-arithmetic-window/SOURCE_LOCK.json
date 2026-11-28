@@ -21,6 +21,22 @@
     "build_toolchain": "leanprover/lean4:v4.33.1"
   },
   "judge_toolchain": "leanprover/lean4:v4.36.0",
+  "comparator_export_roots": {
+    "source_repository": "https://github.com/leanprover/lean4",
+    "source_tag": "v4.36.0",
+    "source_commit": "611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9",
+    "source_path": "src/lake/Lake/CLI/Check.lean",
+    "source_git_blob": "8ec393aabb3d106da38db76c31b8f179fb6eac80",
+    "source_functions": ["Lake.Check.primitiveTargets", "Lake.Check.builtinTargets", "Lake.Check.compareIt"],
+    "primitive_targets": [
+      "Nat.add", "Nat.sub", "Nat.mul", "Nat.pow", "Nat.gcd", "Nat.div", "Nat.mod",
+      "Nat.beq", "Nat.ble", "Nat.land", "Nat.lor", "Nat.xor", "Nat.shiftLeft", "Nat.shiftRight",
+      "String.ofList", "Char.ofNat", "List", "eagerReduce", "Nat", "String", "String.mk", "Char",
+      "optParam", "autoParam", "semiOutParam", "outParam"
+    ],
+    "quotient_targets_when_Quot_sound_permitted": ["Quot", "Quot.mk", "Quot.lift", "Quot.ind"],
+    "assembly_order": ["quotient_targets", "theorem_names", "permitted_axioms", "primitive_targets", "definition_names"]
+  },
   "terminal": "Zeta23.RHReference.riemannHypothesis_direct_arithmetic_windows",
   "comparison_name": "direct_window_rh",
   "allowed_axioms": [

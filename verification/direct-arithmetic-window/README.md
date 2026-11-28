@@ -85,8 +85,9 @@ full run never creates acceptance.
 ## Staging
 
 Use a clean, committed checkout for qualifying runs. Keep outputs outside it.
-The script preserves `.lake/packages`; production staging requires that no
-project `.olean` files exist at entry.
+The script preserves real `.lake/packages` directories; production staging
+rejects project-cache symlinks and preexisting project build or configuration
+artifacts at entry.
 
 ```bash
 set -euo pipefail
@@ -118,6 +119,17 @@ Mathlib cache with `lake exe mathlib/cache get`; never restore a submission cach
 or run `lake update`. Set `MATHLIB_CACHE_GET_URL` to
 `https://cache.mathlib.org/mathlib4` and `LAKE_ARTIFACT_CACHE=false`.
 
+After cache retrieval, run `prepare-dependencies`. It executes only the pinned
+`lake build Mathlib` target outside the proof sandbox to initialize missing
+dependency hashes and cached target metadata. It checks every package's exact
+Git commit and clean status before and after, rejects untracked nonignored
+source, and requires the dependency manifest and staged source to remain
+unchanged. Preparation records its command log and both package inventories;
+it does not qualify a native or original proof. The production proof build
+then uses the same dependencies read-only. This preparation is necessary even
+when the official cache already contains compiled objects: Lake can create
+missing `.hash` files while replaying an up-to-date target.
+
 The workflow gives executable commands for all phases. The common runner API is:
 
 ```bash
@@ -125,6 +137,10 @@ export DIRECT_WINDOW_RUN_ID="unique-local-run-id"
 export DIRECT_WINDOW_RUN_ATTEMPT=1
 DW_SOURCE_PREFIX=$(elan run leanprover/lean4:v4.33.1 lean --print-prefix)
 DW_JUDGE_PREFIX=$(elan run leanprover/lean4:v4.36.0 lean --print-prefix)
+python3 -B verification/direct-arithmetic-window/run.py prepare-dependencies \
+  --stage "$DW_WORK/stage" --source "$DW_WORK/source.json" \
+  --source-prefix "$DW_SOURCE_PREFIX" --jobs 16 \
+  --out "$DW_WORK/dependency-preparation"
 python3 -B verification/direct-arithmetic-window/run.py supplier-frontier \
   --stage "$DW_WORK/stage" --source "$DW_WORK/source.json" \
   --source-prefix "$DW_SOURCE_PREFIX" --jobs 16 \
@@ -133,11 +149,12 @@ python3 -B verification/direct-arithmetic-window/run.py supplier-frontier \
 
 `native-frontier` and `common-terminal` use the same API. `bootstrap-tools`
 builds the locked exporter. `prepare-challenge` creates a separate, Mathlib-only
-challenge project, fetches its own official cache, and exports the exact stock
-statement before the untrusted original build runs. `checker-preflight`
+challenge project, fetches its own official cache, performs the same dependency
+preparation, and exports the exact stock statement before the untrusted original
+build runs. `checker-preflight`
 qualifies the tools and rejection behavior before the expensive build.
 
-Builds run in bubblewrap with no network, hidden home directories, a read-only
+Qualifying proof builds run in bubblewrap with no network, hidden home directories, a read-only
 source compiler, source and dependencies, and explicitly writable build/audit
 directories. The export stage additionally makes the compiled build read-only.
 The judge runs from a separate empty directory with the trusted configuration;
@@ -159,6 +176,13 @@ invocation and export; it does not pretend that copying the log is another run.
 Do not add blanket `--paranoid`, which enables additional checkers with known
 cross-version incompatibilities. The source compiler alone is not the final
 independent acceptance gate.
+
+All preflight, challenge, and solution exports use one shared command constructor.
+`SOURCE_LOCK.json` records the exact primitive and quotient roots required by
+the official judge's [`primitiveTargets`, `builtinTargets`, and `compareIt`](https://github.com/leanprover/lean4/blob/611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9/src/lake/Lake/CLI/Check.lean),
+with its source commit and Git blob. Those roots accompany the configured
+theorems and the unchanged three permitted axioms. This matches the pinned
+comparator's export procedure without exporting unrelated environment contents.
 
 Large solution exports are retained outside the small evidence artifact, using
 the candidate SHA, run ID and attempt in the filename. The dispatched workflow
@@ -202,8 +226,11 @@ python3 -B verification/direct-arithmetic-window/controls.py
 python3 -O -B verification/direct-arithmetic-window/controls.py
 ```
 
-The Python controls exercise safe paths, nested comments in import parsing,
-changed staged bytes, missing/mixed receipts, and proof-only NDJSON tampering.
+The Python controls exercise safe paths, cache symlink rejection, nested comments
+in import parsing, changed staged bytes, dependency source mutation during
+metadata preparation, missing/mixed receipts, and proof-only NDJSON tampering.
+They also enforce exact comparator-root command construction and reject duplicate
+roots or an expanded axiom policy.
 `controls.py --audit` compiles real Lean fixtures for wrong types, missing
 dependencies, custom axioms, `sorry`, hidden endpoints, type-only edges, unused
 constructor edges, a definitionally aliased endpoint, and forbidden origins.
@@ -212,8 +239,11 @@ Each rejection must contain the expected diagnostic.
 `controls.py --checker` builds and exports a valid Init-only proof, requires it
 to pass the three configured kernels, and then requires rejection of a wrong
 statement, an extra axiom, and a tampered proof with an unchanged statement.
-The entire tiny Init module is exported because the judge needs core markers
-such as `outParam` even when those markers are absent from the proof of `True`.
+The tiny control exports its theorem plus the exact pinned comparator roots,
+including markers such as `outParam` absent from the proof of `True`. Exporting
+the entire Init environment previously made Nanoda encounter unrelated
+`Lean.trustCompiler` references; targeted exports avoid that unrelated content
+without disabling a kernel or expanding the permitted axioms.
 
 The final aggregate requires all eight phases: source lock, checker preflight,
 supplier frontier, native frontier, common terminal, independent replay,

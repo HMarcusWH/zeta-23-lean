@@ -80,6 +80,56 @@ class SourceControls(unittest.TestCase):
             (cache / "lakefile.olean").write_bytes(b"stale project configuration")
             self.assertFalse(stage.project_cache_is_fresh(project))
 
+    def test_dependency_preparation_rejects_source_mutation(self):
+        runner = load("run")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); package = root / ".lake/packages/mathlib"
+            package.mkdir(parents=True)
+            (package / ".gitignore").write_text(".lake/\n*.hash\n")
+            (package / "Source.lean").write_text("-- pinned source\n")
+            def git(*args):
+                return subprocess.check_output(["git", "-C", str(package), *args], stderr=subprocess.STDOUT)
+            git("init", "--quiet"); git("add", ".")
+            git("-c", "user.name=Control", "-c", "user.email=control@example.invalid", "commit", "--quiet", "-m", "fixture")
+            pin = git("rev-parse", "HEAD").decode().strip()
+            (root / "lake-manifest.json").write_text(json.dumps({"packages": [{"type": "git", "name": "mathlib", "rev": pin}]}))
+            class FixtureRun:
+                args = argparse.Namespace(jobs=2)
+                out = root / "preparation"
+                mutate = False
+                def command(self, argv, _name, cwd, _env):
+                    if argv[1:] != ["build", "Mathlib"] or cwd != root:
+                        raise ValueError("preparation attempted a different target")
+                    cache = package / ".lake"; cache.mkdir(exist_ok=True)
+                    (cache / "cached.olean.hash").write_text("metadata")
+                    if self.mutate:
+                        (package / "Untracked.lean").write_text("-- unexpected source\n")
+            fixture = FixtureRun()
+            with patch.dict(runner.LOCK, mathlib=pin):
+                runner.prepare_dependencies(fixture, root, root / "compiler")
+                self.assertTrue((fixture.out / "dependency-packages-after.json").is_file())
+                fixture.mutate = True
+                with self.assertRaisesRegex(ValueError, "package source changed"):
+                    runner.prepare_dependencies(fixture, root, root / "compiler")
+
+    def test_exact_comparator_export_roots(self):
+        config = json.loads((HERE / "comparator/config.json").read_text())
+        config["theorem_names"] = ["direct_window_preflight"]
+        primitives = ["Nat.add", "Nat.sub", "Nat.mul", "Nat.pow", "Nat.gcd", "Nat.div", "Nat.mod",
+                      "Nat.beq", "Nat.ble", "Nat.land", "Nat.lor", "Nat.xor", "Nat.shiftLeft", "Nat.shiftRight",
+                      "String.ofList", "Char.ofNat", "List", "eagerReduce", "Nat", "String", "String.mk", "Char",
+                      "optParam", "autoParam", "semiOutParam", "outParam"]
+        expected = ["lake", "env", "exporter", "PreflightSolution", "--", "Quot", "Quot.mk", "Quot.lift", "Quot.ind",
+                    "direct_window_preflight", "propext", "Quot.sound", "Classical.choice", *primitives]
+        self.assertEqual(stage.comparator_export_command("lake", "exporter", "PreflightSolution", config), expected)
+        lock = stage.read_json(HERE / "SOURCE_LOCK.json")
+        lock["comparator_export_roots"]["primitive_targets"].append("outParam")
+        with patch.object(stage, "read_json", return_value=lock), self.assertRaisesRegex(ValueError, "duplicate"):
+            stage.comparator_export_command("lake", "exporter", "PreflightSolution", config)
+        config["permitted_axioms"].append("Lean.trustCompiler")
+        with self.assertRaisesRegex(ValueError, "axiom policy"):
+            stage.comparator_export_command("lake", "exporter", "PreflightSolution", config)
+
     def test_changed_effective_source_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp); (p / "lean-toolchain").write_text("leanprover/lean4:v4.33.1\n")
@@ -161,10 +211,9 @@ def checker_controls(prefix, judge_prefix, exporter, work, out):
     def export(where, module, target, label):
         command([prefix / "bin/lake", "build", module], where, out / (label + "-build.log"), env)
         with target.open("wb") as handle, (out / (label + "-export.log")).open("wb") as errors:
-            # Export this tiny Init-only module completely. The 4.36 judge also
-            # expects core marker definitions such as outParam, even when they
-            # are absent from the transitive proof of the proposition True.
-            r = subprocess.run([str(prefix / "bin/lake"), "env", str(exporter), module],
+            # Use exactly the judge's required primitive roots alongside the
+            # fixture. Whole-Init exports include unrelated compiler-trust code.
+            r = subprocess.run(stage.comparator_export_command(prefix / "bin/lake", exporter, module, settings),
                                cwd=where, env=env, stdout=handle, stderr=errors)
         stage.require(r.returncode == 0 and target.stat().st_size > 0, "preflight export failed")
     setup(challenge, "PreflightChallenge", "import Init\ntheorem direct_window_preflight : True := by sorry\n")

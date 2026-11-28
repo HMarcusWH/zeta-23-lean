@@ -168,6 +168,9 @@ jobs:
             --stage "$work/stage" --receipt "$work/source.json" --head "$SOURCE_SHA" --scope native
           (cd "$work/stage" && lake exe mathlib/cache get)
           prefix=$(elan run leanprover/lean4:v4.33.1 lean --print-prefix)
+          python3 -B "$here/run.py" prepare-dependencies --stage "$work/stage" \
+            --source "$work/source.json" --source-prefix "$prefix" --jobs 2 \
+            --out "$work/evidence/native-frontier/dependency-preparation"
           python3 -B "$here/controls.py" --audit --source-prefix "$prefix" \
             --work "$work/audit-controls" --out "$work/control-evidence"
           python3 -B "$here/run.py" native-frontier --repo "$PWD" --stage "$work/stage" \
@@ -249,8 +252,12 @@ jobs:
           exporter="$DW_WORK/tools/lean4export/.lake/build/bin/lean4export"
           printf 'DW_EXPORTER=%s\n' "$exporter" >> "$GITHUB_ENV"
           (cd "$DW_WORK/stage" && lake exe mathlib/cache get)
+          python3 -B "$here/run.py" prepare-dependencies --stage "$DW_WORK/stage" \
+            --source "$DW_WORK/source.json" --source-prefix "$source_prefix" --jobs "$LEAN_NUM_THREADS" \
+            --out "$DW_WORK/evidence/dependency-preparation"
           python3 -B "$here/run.py" prepare-challenge --work "$DW_WORK/challenge" \
-            --source-prefix "$source_prefix" --exporter "$exporter" --out "$DW_WORK/challenge-evidence"
+            --source-prefix "$source_prefix" --exporter "$exporter" --jobs "$LEAN_NUM_THREADS" \
+            --out "$DW_WORK/challenge-evidence"
           python3 -B "$here/run.py" checker-preflight --stage "$DW_WORK/stage" \
             --source "$DW_WORK/source.json" --source-prefix "$source_prefix" --judge-prefix "$judge_prefix" \
             --exporter "$exporter" --work "$DW_WORK/preflight" --out "$DW_WORK/evidence/checker-preflight"

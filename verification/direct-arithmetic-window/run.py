@@ -103,6 +103,7 @@ def source_env(prefix):
 
 def verify_packages(stage):
     manifest = json.loads((stage / "lake-manifest.json").read_text())
+    verified = {}
     for package in manifest["packages"]:
         require(package["type"] == "git", "unlocked package kind")
         path = stage / ".lake/packages" / package["name"]
@@ -110,6 +111,23 @@ def verify_packages(stage):
         require(head == package["rev"], "package commit drift: " + package["name"])
         require(not subprocess.check_output(["git", "-C", str(path), "status", "--porcelain", "--untracked-files=all"]).strip(),
                 "package source changed: " + package["name"])
+        verified[package["name"]] = {"commit": head, "status": "clean"}
+    return verified
+
+
+def prepare_dependencies(run, work, prefix):
+    """Initialize pinned dependency metadata before the read-only proof build."""
+    manifest = (work / "lake-manifest.json").read_bytes()
+    before = verify_packages(work)
+    require(before.get("mathlib", {}).get("commit") == LOCK["mathlib"], "preparation Mathlib pin mismatch")
+    write(run.out / "dependency-packages-before.json", before)
+    env = dict(source_env(prefix), LEAN_NUM_THREADS=str(run.args.jobs))
+    run.command([prefix / "bin/lake", "build", "Mathlib"], "prepare-mathlib-metadata", work, env)
+    require((work / "lake-manifest.json").read_bytes() == manifest, "dependency preparation changed the manifest")
+    after = verify_packages(work)
+    require(after == before, "dependency preparation changed package identities")
+    write(run.out / "dependency-packages-after.json", after)
+    print("DIRECT_WINDOW_DEPENDENCIES_PREPARED", LOCK["mathlib"], flush=True)
 
 
 def sandbox(stage, prefix, audit=None, writable=False, exporter=None, jobs=2):
@@ -193,9 +211,13 @@ def prepare_challenge(run, work, prefix, exporter):
     write(work / "lake-manifest.json", manifest)
     shutil.copyfile(HERE / "comparator/DirectWindowChallenge.lean", work / "DirectWindowChallenge.lean")
     run.command([prefix / "bin/lake", "exe", "mathlib/cache", "get"], "challenge-mathlib-cache", work, source_env(prefix))
+    prepare_dependencies(run, work, prefix)
     run.command(sandbox(work, prefix, writable=True, jobs=run.args.jobs) + ["lake", "build", "DirectWindowChallenge"], "build-challenge")
     target = run.out / "challenge.export"
-    run.command(sandbox(work, prefix, exporter=exporter) + ["lake", "env", "/opt/direct-window-exporter", "DirectWindowChallenge", "--", "direct_window_rh", "propext", "Classical.choice", "Quot.sound"], "export-challenge", stdout=target)
+    config = json.loads((HERE / "comparator/config.json").read_text())
+    run.command(sandbox(work, prefix, exporter=exporter) +
+                stage_api.comparator_export_command("lake", "/opt/direct-window-exporter", "DirectWindowChallenge", config),
+                "export-challenge", stdout=target)
     write(run.out / "challenge.json", {"sha256": evidence.digest(target), "bytes": target.stat().st_size,
           "source_toolchain": LOCK["source_toolchain"], "mathlib": LOCK["mathlib"],
           "source_sha256": evidence.digest(work / "DirectWindowChallenge.lean")})
@@ -234,14 +256,15 @@ def judge_exports(run, source):
     require(source["scope"] == "terminal", "independent replay requires terminal scope")
     # The checker phase owns a new export and an empty judge working directory.
     exported = run.out / "solution.export"
+    config = HERE / "comparator/config.json"
     run.command(sandbox(run.args.stage, prefix, exporter=run.args.exporter) +
-                ["lake", "env", "/opt/direct-window-exporter", "DirectWindowSolution", "--", "direct_window_rh", "propext", "Classical.choice", "Quot.sound"],
+                stage_api.comparator_export_command("lake", "/opt/direct-window-exporter", "DirectWindowSolution",
+                                                   json.loads(config.read_text())),
                 "export-solution", stdout=exported)
     judge_work = run.out / "judge"; judge_work.mkdir()
     env = dict(os.environ, PATH=str(judge / "bin") + os.pathsep + os.environ["PATH"])
     run.command([judge / "bin/lean", "--version"], "judge-version", env=env)
     require("version 4.36.0" in (run.out / "judge-version.log").read_text(), "wrong independent judge")
-    config = HERE / "comparator/config.json"
     run.command([judge / "bin/lake", "comparator", "--config", config,
                  "--challenge-from-export", run.args.challenge_export.resolve(), "--solution-from-export", exported],
                 "comparator", judge_work, env)
@@ -268,7 +291,7 @@ def judge_exports(run, source):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("phase", choices=[*evidence.PHASES, "resource-pilot", "bootstrap-tools", "prepare-challenge"])
+    p.add_argument("phase", choices=[*evidence.PHASES, "resource-pilot", "bootstrap-tools", "prepare-dependencies", "prepare-challenge"])
     p.add_argument("--stage", type=Path)
     p.add_argument("--source", type=Path)
     p.add_argument("--out", type=Path, required=True)
@@ -289,6 +312,11 @@ def main():
         bootstrap_tools(run, a.work.resolve(), a.source_prefix.resolve()); return
     if a.phase == "prepare-challenge":
         prepare_challenge(run, a.work.resolve(), a.source_prefix.resolve(), a.exporter.resolve()); return
+    if a.phase == "prepare-dependencies":
+        require(a.stage and a.source and a.source_prefix, "dependency preparation needs stage, source receipt, and compiler")
+        stage_api.verify_stage(a.stage.resolve(), a.source.resolve())
+        prepare_dependencies(run, a.stage.resolve(), a.source_prefix.resolve())
+        stage_api.verify_stage(a.stage.resolve(), a.source.resolve()); return
     if a.phase == "resource-pilot":
         source = stage_api.verify_stage(a.stage.resolve(), a.source.resolve())
         resource_pilot(source, a.stage.resolve(), run.out / "resource-pilot.json", a.full); return
