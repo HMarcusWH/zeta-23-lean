@@ -1,0 +1,5 @@
+{
+  "schema": "DIRECT_WINDOW_COMPATIBILITY_V1",
+  "source_toolchain": "leanprover/lean4:v4.33.1",
+  "overlays": []
+}

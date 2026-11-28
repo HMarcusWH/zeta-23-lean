@@ -61,7 +61,7 @@ jobs:
             python3 -O -B -m unittest research.RHRC.integration.documentation_2026_11_21.test_source_scope research.RHRC.integration.opica_round6.test_source_scope 2>&1 | tee "$out/scope-tests-optimized.log"
             python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
               ;;
-            combined)
+            combined|strict-integration|direct-window)
               registration="$RUNNER_TEMP/registration-parent"
               papers="$RUNNER_TEMP/paper-parent"
               git worktree add --detach "$registration" d4c7fc7114e5f1b61b90ea9037890969358ff0cc
@@ -81,9 +81,37 @@ jobs:
                 python3 -O -B -m unittest "${tests[@]}" 2>&1 | tee "$out/paper-tests-optimized.log"
               )
               git worktree remove "$papers"
-              python3 -B -m research.RHRC.integration.documentation_combined.source_scope --check-classification 2>&1 | tee "$out/combined-classes.log"
-              python3 -B -m unittest research.RHRC.integration.documentation_combined.test_source_scope 2>&1 | tee "$out/combined-tests.log"
-              python3 -O -B -m unittest research.RHRC.integration.documentation_combined.test_source_scope 2>&1 | tee "$out/combined-tests-optimized.log"
+              combined="$PWD"
+              if [[ "$epoch" != combined ]]; then
+                combined="$RUNNER_TEMP/combined-parent"
+                git worktree add --detach "$combined" 4044e7335bc0499d77d6961a1bc20bdf46283224
+              fi
+              (
+                cd "$combined"
+                python3 -B -m research.RHRC.integration.documentation_combined.source_scope --check-classification 2>&1 | tee "$out/combined-classes.log"
+                python3 -B -m unittest research.RHRC.integration.documentation_combined.test_source_scope 2>&1 | tee "$out/combined-tests.log"
+                python3 -O -B -m unittest research.RHRC.integration.documentation_combined.test_source_scope 2>&1 | tee "$out/combined-tests-optimized.log"
+              )
+              if [[ "$epoch" != combined ]]; then
+                git worktree remove "$combined"
+                strict="$PWD"
+                if [[ "$epoch" == direct-window ]]; then
+                  strict="$RUNNER_TEMP/strict-parent"
+                  git worktree add --detach "$strict" 3aefdaa46a4a16c5fd9978b9cf65b251c38ca2c1
+                fi
+                (
+                  cd "$strict"
+                  python3 -B -m research.RHRC.integration.documentation_combined.strict_scope --check-classification 2>&1 | tee "$out/strict-classes.log"
+                  python3 -B -m unittest research.RHRC.integration.documentation_combined.test_strict_scope 2>&1 | tee "$out/strict-tests.log"
+                  python3 -O -B -m unittest research.RHRC.integration.documentation_combined.test_strict_scope 2>&1 | tee "$out/strict-tests-optimized.log"
+                )
+                if [[ "$epoch" == direct-window ]]; then
+                  git worktree remove "$strict"
+                  python3 -B -m research.RHRC.integration.documentation_combined.direct_window_scope --check-classification 2>&1 | tee "$out/direct-window-classes.log"
+                  python3 -B -m unittest research.RHRC.integration.documentation_combined.test_direct_window_scope 2>&1 | tee "$out/direct-window-tests.log"
+                  python3 -O -B -m unittest research.RHRC.integration.documentation_combined.test_direct_window_scope 2>&1 | tee "$out/direct-window-tests-optimized.log"
+                fi
+              fi
               python3 -B research/RHRC/control_v2/render_current_state.py --check | tee "$out/renderer.log"
               python3 -B -m research.RHRC.integration.opica_composition.cli check-descendant --repo . --output "$out/combined-source.json"
               ;;
@@ -111,13 +139,21 @@ jobs:
 
   canonical-refresh:
     name: Canonical generated-state candidate for documentation
+    permissions:
+      contents: write
     if: >-
       (github.event_name == 'pull_request' &&
        github.event.pull_request.head.repo.full_name == github.repository &&
        (github.head_ref == 'docs/repository-guide-and-reuse-2026-11-21' ||
-        github.head_ref == 'docs/papers-2026-11-26-terminal')) ||
+        github.head_ref == 'docs/papers-2026-11-26-terminal' ||
+        (github.repository == 'HMarcusWH/zeta-23-lean' &&
+         (github.head_ref == 'fix/strict-step4-ci' ||
+          github.head_ref == 'research/direct-arithmetic-window-20261128')))) ||
       (github.event_name == 'workflow_dispatch' &&
-       github.ref == 'refs/heads/review/paper-320-combined-source')
+       (github.ref == 'refs/heads/review/paper-320-combined-source' ||
+        (github.repository == 'HMarcusWH/zeta-23-lean' &&
+         (github.ref == 'refs/heads/fix/strict-step4-ci' ||
+          github.ref == 'refs/heads/research/direct-arithmetic-window-20261128'))))
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
@@ -125,7 +161,13 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
-          persist-credentials: false
+          persist-credentials: >-
+            ${{ github.event_name == 'pull_request' &&
+                github.repository == 'HMarcusWH/zeta-23-lean' &&
+                github.event.pull_request.head.repo.full_name == github.repository &&
+                github.event.pull_request.base.repo.full_name == github.repository &&
+                github.event.pull_request.base.ref == 'main' &&
+                github.head_ref == 'research/direct-arithmetic-window-20261128' }}
       - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
         with:
           path: .lake/build
@@ -142,6 +184,9 @@ jobs:
           lint: false
           use-mathlib-cache: true
       - name: Authenticate source and build the existing exporters
+        env:
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          SOURCE_BRANCH: ${{ github.head_ref || github.ref_name }}
         shell: bash
         run: |
           set -euo pipefail
@@ -149,6 +194,33 @@ jobs:
           mkdir -p "$out"
           git rev-parse HEAD 'HEAD^{tree}' > "$out/input-head-tree.txt"
           python3 -B -m research.RHRC.integration.opica_composition.cli check-descendant --repo . --output "$out/source-scope.json"
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          if [[ "$SOURCE_BRANCH" == fix/strict-step4-ci ]]; then
+            git --no-replace-objects merge-base --is-ancestor d649f57310bb05a306d3d488ba019e4ab45b0b20 HEAD
+            python3 -B - "$out/source-scope.json" "$SOURCE_SHA" <<'PYTHON'
+          import json, sys
+          from pathlib import Path
+          receipt = json.loads(Path(sys.argv[1]).read_bytes())
+          if (receipt["schema"], receipt["status"], receipt["checked_commit"], receipt["base"]) != (
+              "RHRC_STRICT_MAIN_SOURCE_INSPECTION_V1", "PASS_SOURCE_SCOPE_ONLY", sys.argv[2],
+              "d649f57310bb05a306d3d488ba019e4ab45b0b20"
+          ):
+              raise SystemExit("Strict repair dispatch has a different source identity or scope")
+          PYTHON
+          fi
+          if [[ "$SOURCE_BRANCH" == research/direct-arithmetic-window-20261128 ]]; then
+            git --no-replace-objects merge-base --is-ancestor 3aefdaa46a4a16c5fd9978b9cf65b251c38ca2c1 HEAD
+            python3 -B - "$out/source-scope.json" "$SOURCE_SHA" <<'PYTHON'
+          import json, sys
+          from pathlib import Path
+          receipt = json.loads(Path(sys.argv[1]).read_bytes())
+          if (receipt["schema"], receipt["status"], receipt["checked_commit"], receipt["base"]) != (
+              "RHRC_DIRECT_WINDOW_SOURCE_INSPECTION_V1", "PASS_SOURCE_SCOPE_ONLY", sys.argv[2],
+              "3aefdaa46a4a16c5fd9978b9cf65b251c38ca2c1"
+          ):
+              raise SystemExit("Direct-window dispatch has a different source identity or scope")
+          PYTHON
+          fi
           lake env lean --version > "$out/lean-version.txt"
           lake build Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution 2>&1 | tee "$out/exporter-build.log"
       - name: Regenerate through the canonical producer and check its output
@@ -176,6 +248,104 @@ jobs:
           git diff --stat HEAD > "$out/generated-stat.txt"
           cd "$out"
           sha256sum generated-state.patch > generated-state.patch.sha256
+      - name: Commit checked canonical products on the owned direct-window branch
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.repository == 'HMarcusWH/zeta-23-lean' &&
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          github.event.pull_request.base.repo.full_name == github.repository &&
+          github.event.pull_request.base.ref == 'main' &&
+          github.head_ref == 'research/direct-arithmetic-window-20261128'
+        env:
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
+          SOURCE_EVENT: ${{ github.event_name }}
+          SOURCE_REPOSITORY: ${{ github.repository }}
+          SOURCE_HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
+          SOURCE_BASE_REPOSITORY: ${{ github.event.pull_request.base.repo.full_name }}
+          SOURCE_BRANCH: ${{ github.head_ref }}
+          SOURCE_BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          target='research/direct-arithmetic-window-20261128'
+          expected_repo='HMarcusWH/zeta-23-lean'
+          test "$SOURCE_EVENT" = pull_request
+          test "$SOURCE_REPOSITORY" = "$expected_repo"
+          test "$SOURCE_HEAD_REPOSITORY" = "$expected_repo"
+          test "$SOURCE_BASE_REPOSITORY" = "$expected_repo"
+          test "$SOURCE_BRANCH" = "$target"
+          test "$SOURCE_BASE_BRANCH" = main
+          [[ "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          origin=$(git remote get-url origin)
+          case "$origin" in
+            https://github.com/HMarcusWH/zeta-23-lean|https://github.com/HMarcusWH/zeta-23-lean.git) ;;
+            *) echo 'Refusing a different canonical publication remote' >&2; exit 1 ;;
+          esac
+          out="$RUNNER_TEMP/documentation-canonical"
+          mkdir -p "$out"
+          git diff --cached --quiet
+          python3 -B - "$out/allowed-generated-paths.nul" <<'PY'
+          import json, os, subprocess, sys
+          from pathlib import Path
+          policy = json.loads(subprocess.check_output([
+              'git', 'show', os.environ['SOURCE_SHA'] +
+              ':research/RHRC/integration/documentation_2026_11_21/SOURCE_SCOPE.json']))
+          rows = policy['generated']
+          allowed = set(rows)
+          if len(rows) != 77 or len(allowed) != 77:
+              raise SystemExit('Canonical publication requires the exact 77-product inventory')
+          if any(not isinstance(p, str) or p.startswith('/') or '..' in Path(p).parts or
+                 not Path(p).is_file() or Path(p).is_symlink() for p in rows):
+              raise SystemExit('Invalid or missing canonical product path')
+          changed = {p.decode() for p in subprocess.check_output(
+              ['git', 'diff', '--no-ext-diff', '--no-renames', '--name-only', '-z', 'HEAD']).split(b'\0') if p}
+          if not changed <= allowed:
+              raise SystemExit('Refusing authored source changes: ' + repr(sorted(changed - allowed)))
+          if subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard']).strip():
+              raise SystemExit('Refusing untracked canonical publication inputs')
+          Path(sys.argv[1]).write_bytes(b''.join(p.encode() + b'\0' for p in sorted(allowed)))
+          PY
+          if git diff --quiet HEAD --; then
+            echo 'Canonical products already current; no commit or push'
+            printf '%s\n' "$SOURCE_SHA" > "$out/canonical-noop-head.txt"
+            exit 0
+          fi
+          remote_head=$(git ls-remote --exit-code origin "refs/heads/$target")
+          test "$remote_head" = "$SOURCE_SHA"$'\t'"refs/heads/$target" || {
+            echo 'Canonical source head changed before commit; rerun on the new head' >&2
+            exit 1
+          }
+          git --literal-pathspecs add --pathspec-from-file="$out/allowed-generated-paths.nul" --pathspec-file-nul
+          git diff --quiet
+          git diff --cached --check
+          python3 -B - "$out/allowed-generated-paths.nul" <<'PY'
+          import subprocess, sys
+          from pathlib import Path
+          allowed = {p for p in Path(sys.argv[1]).read_bytes().split(b'\0') if p}
+          staged = {p for p in subprocess.check_output(
+              ['git', 'diff', '--cached', '--no-ext-diff', '--no-renames', '--name-only', '-z']).split(b'\0') if p}
+          if not staged or not staged <= allowed:
+              raise SystemExit('Refusing empty or noncanonical staged commit')
+          PY
+          git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit --no-gpg-sign -m 'Refresh canonical products for direct arithmetic windows'
+          test "$(git rev-parse HEAD^)" = "$SOURCE_SHA"
+          remote_head=$(git ls-remote --exit-code origin "refs/heads/$target")
+          test "$remote_head" = "$SOURCE_SHA"$'\t'"refs/heads/$target" || {
+            echo 'Canonical source head changed before push; refusing publication' >&2
+            exit 1
+          }
+          git push --porcelain origin "HEAD:refs/heads/$target"
+          published=$(git rev-parse HEAD)
+          remote_head=$(git ls-remote --exit-code origin "refs/heads/$target")
+          test "$remote_head" = "$published"$'\t'"refs/heads/$target" || {
+            echo 'Canonical branch advanced during publication; inspect the new head' >&2
+            exit 1
+          }
+          git rev-parse HEAD 'HEAD^{tree}' > "$out/canonical-published-head-tree.txt"
+          echo "Published canonical products at $published"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

@@ -57,8 +57,11 @@ runs:
         python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_round2/python-checks.lock
         python -m pip install --require-hashes --only-binary=:all: -r research/RHRC/integration/opica_followup/python-checks.lock
         python -m pip install -r research/RHRC/requirements.txt
-        sudo apt-get update -qq
-        sudo apt-get install -y bubblewrap util-linux
+        # Install these Ubuntu packages from the runner's signed archive only.
+        test -s /etc/apt/sources.list.d/ubuntu.sources
+        ubuntu_sources=(-o Dir::Etc::sourcelist=/etc/apt/sources.list.d/ubuntu.sources -o Dir::Etc::sourceparts=-)
+        sudo apt-get "${ubuntu_sources[@]}" update --error-on=any --no-list-cleanup -qq
+        sudo apt-get "${ubuntu_sources[@]}" install -y bubblewrap util-linux
         # Ubuntu's unprivileged user-namespace AppArmor policy is runner-wide;
         # candidate processes still have their own isolated namespaces.
         sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0

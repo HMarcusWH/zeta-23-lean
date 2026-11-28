@@ -1,27 +1,42 @@
-# Zeta23 / RHRC: mathematics from an RH research programme
+# Zeta23 / RHRC
 
-This repository contains an attempt to derive the Riemann hypothesis (RH) from
-an independent restriction on the actual zeta source. It built finite detectors,
-exact spectral and arithmetic identities, causal approximation tools,
-conditional criteria, counterexamples and a governed formal-research runtime.
-Many of those results can be studied or adapted without pursuing RH.
+## A Riemann Hypothesis proof checked by Lean and Nanoda
 
-**The attempt is incomplete.** The independent Step 4 arithmetic estimates
-remain open in this programme. A conditional theorem can be fully proved while
-its required arithmetic premise is still missing.
+This repository contains a formal proof of Mathlib's exact
+`RiemannHypothesis` statement. The proof combines Zeta23's native spectral
+construction (Steps 1–3) with credited external arithmetic for Step 4.
+Stock Lean accepted the proof, including a fresh replay of its dependency
+chain. The separate Nanoda checker accepted the same submitted solution. The
+checks ran on revision `75c200a9`. The proof source is on `main`. Independent
+human mathematical review and formal project admission remain pending.
 
-**Research snapshot: 21 November 2026.** The [frozen overview](docs/CURRENT_STATE.md)
-identifies archive commit `7597acd`, its source contents and the separate evidence
-checkpoints. The [43 original manuscripts](papers/README.md) preserve the written
-research. This documentation guides readers through that snapshot; it is not a
-new whole-repository proof receipt.
+- [Terminal Lean proof](Zeta23/RHReference/CompactEnergyAdapter.lean)
+- [Pinned verification and reproduction instructions](https://github.com/HMarcusWH/zeta-23-lean/blob/75c200a9c90f96c5b67e468afd1d8a3afeda4188/verification/opica-strict-step4/README.md#reproduction)
+- [Lean, Nanoda, and review packet workflow](https://github.com/HMarcusWH/zeta-23-lean/actions/runs/45992350728)
+- [Review packet](https://github.com/HMarcusWH/zeta-23-lean/actions/runs/45992350728/artifacts/15236109332)
+
+The repository also contains finite detectors, exact spectral and arithmetic
+identities, causal approximation tools, conditional criteria, counterexamples,
+and a formal research framework. Many of these results can be used independently.
+
+## Direct arithmetic-window candidate
+
+A new [direct-window route](docs/direct-arithmetic-window.md) extracts complete
+cofinal arithmetic windows from the original Alpöge development before its
+zero-exclusion consumer. It feeds those windows into the native literal energy,
+C1, and the actual generated even/odd trial contradiction. The implementation
+and its [separate verification workflow](verification/direct-arithmetic-window/README.md)
+are under validation; this new terminal has no completed independent-checker
+receipt yet. The checked compact/Perron route and its receipts above retain
+their existing scope.
 
 ## Choose a reading route
 
 | I want to… | Start here | Continue with |
 | --- | --- | --- |
+| Inspect the checked RH proof | [Terminal theorem](Zeta23/RHReference/CompactEnergyAdapter.lean) | [Native spectral handoff](Zeta23/RHReference/Step123MomentHandoff.lean), [Step 4 composition](Zeta23/RHReference/CompactEnergyClosure.lean) |
 | Understand what the RH attempt built | [Project guide](docs/PROJECT_GUIDE.md) | [Mathematical glossary](docs/MATHEMATICAL_GLOSSARY.md), [paper/result map](docs/RESULTS_AND_FORMALIZATION.md) |
-| See where the attempt stopped | [Frozen current state](docs/CURRENT_STATE.md) | [Final arithmetic routes](research/RHRC/integration/opica_round6/README.md), [earlier closure alternatives](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json) |
+| Read the November 21 research snapshot | [Frozen current state](docs/CURRENT_STATE.md) | [Final arithmetic routes](research/RHRC/integration/opica_round6/README.md), [earlier closure alternatives](research/RHRC/integration/opica_round4/CLOSURE_OBLIGATIONS.json) |
 | Reuse a theorem or technique | [Reusable components](docs/REUSABLE_COMPONENTS.md) | [Worked examples](docs/EXAMPLES.md), [reproduction recipes](docs/REPRODUCIBILITY.md) |
 | Inspect the Lean source and checks | [Repository map](docs/REPOSITORY_MAP.md) | [Results and formalization](docs/RESULTS_AND_FORMALIZATION.md), [reproducibility](docs/REPRODUCIBILITY.md) |
 | Understand or adapt the research tooling | [Framework guide](docs/FRAMEWORKS.md) | [Governed runner](research/RHRC/integration/opica_composition/README.md), [graph guide](research/RHRC/graph/README.md) |
@@ -53,7 +68,7 @@ preserve its statements, provenance and attribution.
 Package numbers are development layers. They are not the four mathematical
 steps, percentages of a proof, or interchangeable verification scopes.
 
-## The mathematical attempt
+## The proof route
 
 RH says that every nontrivial zeta zero has real part `1/2`. This programme starts
 with a hypothetical actual zero away from that line and tracks what it forces.
@@ -63,9 +78,14 @@ with a hypothetical actual zero away from that line and tracks what it forces.
 | **1. Fingerprint** | Produce a sign-sensitive obstruction while retaining source and multiplicity. | Detection does not exclude the zero. |
 | **2. No-hide** | Show that suitable canonical finite detectors must reveal the obstruction. | Existence of a negative witness does not establish positivity of all detectors. |
 | **3. Synchronized tracking** | Carry the same source lineage through finite, spectral, Fourier, arithmetic and causal descriptions. | An exact identity or transport does not supply an independent upper bound. |
-| **4. Independent contradiction** | Prove a matching restriction incompatible with the forced obstruction. | The required independent arithmetic information remains open. |
+| **4. Contradiction** | Apply a credited fixed-strip zero-free estimate. A Perron transfer turns it into a ramp-energy upper bound. The native comparison gives bounds contradicted by the original even and odd witnesses. | The checked proof uses the supplied arithmetic. |
 
-The [project guide](docs/PROJECT_GUIDE.md) develops the argument, including a
+The proof uses [`principal_fixed_strip`](Zeta23Arithmetic/NativePrincipal.lean)
+at one threshold. The fully quantified arithmetic theorem is equivalent to RH.
+The [arithmetic port notice](Zeta23Arithmetic/PORT_NOTICE.md) credits the
+upstream work of Levent Alpöge with Claude and Anthropic.
+
+The [project guide](docs/PROJECT_GUIDE.md) develops the native argument, including a
 same-aperture, same-cutoff even/odd ground example. Its four modern Paths A–D
 cover complete signed observation, causal approximation, detector/contact energy
 and pole-neutral parity geometry. The final November work makes several signed
@@ -107,6 +127,10 @@ explains how source, contracts, evidence and narrative relate.
 
 ## Build, reproduce and cite
 
+Reproduce the terminal proof with the
+[pinned strict instructions](https://github.com/HMarcusWH/zeta-23-lean/blob/75c200a9c90f96c5b67e468afd1d8a3afeda4188/verification/opica-strict-step4/README.md#reproduction).
+They reconstruct the checked Lean 4.35.0 and Mathlib source tree.
+
 The default `lake build` follows the inherited [Zeta23 root](Zeta23.lean); it does
 not compile every research module in the repository. Use the
 [reproducibility recipes](docs/REPRODUCIBILITY.md) for a named theorem, package,
@@ -122,6 +146,10 @@ retain upstream attribution when using inherited work. See [CITATION.cff](CITATI
 and the [archive overview](docs/RESEARCH_ARCHIVE_2026-11-21.md).
 
 ## Historical records
+
+The [November 21 research snapshot](docs/CURRENT_STATE.md) records how the
+programme stood at archive commit `7597acd`. The
+[original manuscripts](papers/README.md) preserve the written research.
 
 [FORK_NOTES.md](FORK_NOTES.md), [AUDIT.md](AUDIT.md), dated handovers and old
 research deltas preserve how the programme developed. Their former “current”

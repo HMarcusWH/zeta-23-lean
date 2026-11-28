@@ -1,0 +1,49 @@
+{
+  "schema": "DIRECT_WINDOW_SOURCE_LOCK_V1",
+  "original": {
+    "repository": "https://github.com/CocoSgt/riemann-hypothesis-lean.git",
+    "commit": "7cbf7a0c32fca1badf05931879a37c3f8a2b03b4",
+    "source_directory": "src",
+    "reported_author_archive_sha256": "9631b4f020199e580ba86178cb56c6e9b09f690c2369a80dc4334aa93f49c7fc",
+    "author_archive_parity_verified_here": false,
+    "reuse_terms": "Original archive has no stated license; acquire locked external source, do not relabel under compact edition license."
+  },
+  "source_toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "original_config_sha256": {
+    "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "lake-manifest.json": "fee57ee9ed399d0a638ca955e5ad40a37a36eeb9b6dfd9f5964114fa7bbe4774",
+    "lakefile.toml": "b831ad8cac0babb7bf713433259bdfe5163e58c90734e86d71536d4e30ddec4c"
+  },
+  "exporter": {
+    "repository": "https://github.com/leanprover/lean4export.git",
+    "commit": "15f6055e299ad5b89345e533cc2192f4cc00f659",
+    "build_toolchain": "leanprover/lean4:v4.33.1"
+  },
+  "judge_toolchain": "leanprover/lean4:v4.36.0",
+  "comparator_export_roots": {
+    "source_repository": "https://github.com/leanprover/lean4",
+    "source_tag": "v4.36.0",
+    "source_commit": "611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9",
+    "source_path": "src/lake/Lake/CLI/Check.lean",
+    "source_git_blob": "8ec393aabb3d106da38db76c31b8f179fb6eac80",
+    "source_functions": ["Lake.Check.primitiveTargets", "Lake.Check.builtinTargets", "Lake.Check.compareIt"],
+    "primitive_targets": [
+      "Nat.add", "Nat.sub", "Nat.mul", "Nat.pow", "Nat.gcd", "Nat.div", "Nat.mod",
+      "Nat.beq", "Nat.ble", "Nat.land", "Nat.lor", "Nat.xor", "Nat.shiftLeft", "Nat.shiftRight",
+      "String.ofList", "Char.ofNat", "List", "eagerReduce", "Nat", "String", "String.mk", "Char",
+      "optParam", "autoParam", "semiOutParam", "outParam"
+    ],
+    "quotient_targets_when_Quot_sound_permitted": ["Quot", "Quot.mk", "Quot.lift", "Quot.ind"],
+    "assembly_order": ["quotient_targets", "theorem_names", "permitted_axioms", "primitive_targets", "definition_names"]
+  },
+  "terminal": "Zeta23.RHReference.riemannHypothesis_direct_arithmetic_windows",
+  "comparison_name": "direct_window_rh",
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "native_mathematical_baseline": "d649f57310bb05a306d3d488ba019e4ab45b0b20",
+  "native_base": "3aefdaa46a4a16c5fd9978b9cf65b251c38ca2c1"
+}
