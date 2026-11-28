@@ -1,0 +1,328 @@
+name: Direct arithmetic windows (native checks; full proof by opt-in)
+
+on:
+  pull_request:
+    branches: [main, fix/strict-step4-ci]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  workflow_dispatch:
+    inputs:
+      full_verification:
+        description: Build the original supplier and independently check the complete terminal
+        type: boolean
+        default: false
+      full_runner:
+        description: JSON runner labels for a provisioned large Linux machine (availability is not assumed)
+        type: string
+        default: '["self-hosted","linux","x64","rh-original"]'
+      build_threads:
+        description: Concurrent Lean tasks on the large runner
+        type: string
+        default: '16'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: direct-window-${{ github.event_name }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  LEAN_ABORT_ON_PANIC: '1'
+  LAKE_ARTIFACT_CACHE: 'false'
+  MATHLIB_CACHE_GET_URL: https://cache.mathlib.org/mathlib4
+  SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+
+jobs:
+  source-lock:
+    name: Source locks, full closure measurement, and canonical state
+    runs-on: ubuntu-22.04
+    timeout-minutes: 180
+    env:
+      LEAN_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Acquire pinned original source and measure the exact full closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          here=verification/direct-arithmetic-window
+          work="$RUNNER_TEMP/direct-window-source"
+          mkdir -p "$work/evidence"
+          bash "$here/acquire.sh" "$work/original"
+          python3 -B "$here/stage.py" --repo "$PWD" --original "$work/original" \
+            --stage "$work/stage" --receipt "$work/source.json" --head "$SOURCE_SHA" --scope terminal
+          python3 -B "$here/run.py" source-lock --repo "$PWD" --stage "$work/stage" \
+            --source "$work/source.json" --out "$work/evidence/source-lock"
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Build the default-epoch canonical exporters and verify generated state
+        shell: bash
+        run: |
+          set -euo pipefail
+          here=verification/direct-arithmetic-window
+          work="$RUNNER_TEMP/direct-window-source"
+          lake build Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution
+          python3 -B "$here/run.py" check-generated --repo "$PWD" --stage "$work/stage" \
+            --source "$work/source.json" --out "$work/evidence/check-generated"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: direct-window-source-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/direct-window-source/evidence
+          if-no-files-found: error
+          compression-level: 9
+          retention-days: 30
+
+  checker-preflight:
+    name: Qualify export/checker pipeline and reject invalid proofs
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: verification/direct-arithmetic-window/epoch-lean-4.33.1
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Run clean and deliberately invalid independent checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap
+          here=verification/direct-arithmetic-window
+          work="$RUNNER_TEMP/direct-window-checker"
+          mkdir -p "$work"
+          bash "$here/acquire.sh" "$work/original"
+          python3 -B "$here/stage.py" --repo "$PWD" --original "$work/original" \
+            --stage "$work/stage" --receipt "$work/source.json" --head "$SOURCE_SHA" --scope controls
+          elan toolchain install leanprover/lean4:v4.36.0
+          source_prefix=$(elan run leanprover/lean4:v4.33.1 lean --print-prefix)
+          judge_prefix=$(elan run leanprover/lean4:v4.36.0 lean --print-prefix)
+          python3 -B "$here/run.py" bootstrap-tools --work "$work/tools" \
+            --source-prefix "$source_prefix" --out "$work/tool-evidence"
+          python3 -B "$here/run.py" checker-preflight --stage "$work/stage" --source "$work/source.json" \
+            --source-prefix "$source_prefix" --judge-prefix "$judge_prefix" \
+            --exporter "$work/tools/lean4export/.lake/build/bin/lean4export" \
+            --work "$work/preflight" --out "$work/evidence/checker-preflight"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: direct-window-checker-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/direct-window-checker/evidence/checker-preflight
+          if-no-files-found: error
+          compression-level: 9
+          retention-days: 30
+
+  native-frontier:
+    name: Native cofinal consumer and principal normalization
+    runs-on: ubuntu-22.04
+    timeout-minutes: 180
+    env:
+      LEAN_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: verification/direct-arithmetic-window/epoch-lean-4.33.1
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Prepare a fresh native stage and official Mathlib cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap
+          here=verification/direct-arithmetic-window
+          work="$RUNNER_TEMP/direct-window-native"
+          mkdir -p "$work"
+          bash "$here/acquire.sh" "$work/original"
+          python3 -B "$here/stage.py" --repo "$PWD" --original "$work/original" \
+            --stage "$work/stage" --receipt "$work/source.json" --head "$SOURCE_SHA" --scope native
+          (cd "$work/stage" && lake exe mathlib/cache get)
+          prefix=$(elan run leanprover/lean4:v4.33.1 lean --print-prefix)
+          python3 -B "$here/controls.py" --audit --source-prefix "$prefix" \
+            --work "$work/audit-controls" --out "$work/control-evidence"
+          python3 -B "$here/run.py" native-frontier --repo "$PWD" --stage "$work/stage" \
+            --source "$work/source.json" --source-prefix "$prefix" --jobs 2 \
+            --out "$work/evidence/native-frontier"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: direct-window-native-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/direct-window-native/evidence/native-frontier
+          if-no-files-found: error
+          compression-level: 9
+          retention-days: 30
+
+  full-verification:
+    name: Original supplier, common terminal, and fresh independent kernels
+    if: >-
+      ${{ (github.event_name == 'workflow_dispatch' && inputs.full_verification) ||
+          (github.event_name == 'pull_request' && github.repository == 'HMarcusWH/zeta-23-lean' &&
+           github.event.pull_request.head.repo.full_name == 'HMarcusWH/zeta-23-lean' &&
+           github.event.pull_request.head.ref == 'research/direct-arithmetic-window-20261128' &&
+           contains(github.event.pull_request.labels.*.name, 'direct-window-full-verification')) }}
+    needs: [source-lock, native-frontier, checker-preflight]
+    runs-on: ${{ fromJSON(inputs.full_runner || '["self-hosted","linux","x64","rh-original"]') }}
+    timeout-minutes: 1440
+    env:
+      LEAN_NUM_THREADS: ${{ inputs.build_threads || '16' }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check the selected runner and prepare immutable full source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(uname -s)" = Linux
+          test "$(id -u)" -ne 0
+          command -v bwrap
+          here=verification/direct-arithmetic-window
+          work="$RUNNER_TEMP/direct-window-full-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          mkdir -p "$work/evidence"
+          printf 'DW_WORK=%s\n' "$work" >> "$GITHUB_ENV"
+          printf 'DW_EXPORTS=%s\n' "$HOME/direct-window-exports" >> "$GITHUB_ENV"
+          bash "$here/acquire.sh" "$work/original"
+          python3 -B "$here/stage.py" --repo "$PWD" --original "$work/original" \
+            --stage "$work/stage" --receipt "$work/source.json" --head "$SOURCE_SHA" --scope terminal
+          python3 -B "$here/run.py" resource-pilot --stage "$work/stage" \
+            --source "$work/source.json" --out "$work/resource-pilot" --full
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: direct-window-source-${{ github.run_attempt }}
+          path: ${{ env.DW_WORK }}/evidence
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: direct-window-native-${{ github.run_attempt }}
+          path: ${{ env.DW_WORK }}/evidence/native-frontier
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          lake-package-directory: verification/direct-arithmetic-window/epoch-lean-4.33.1
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Prepare source/export and independent judge toolchains
+        shell: bash
+        run: |
+          set -euo pipefail
+          here=verification/direct-arithmetic-window
+          elan toolchain install leanprover/lean4:v4.36.0
+          source_prefix=$(elan run leanprover/lean4:v4.33.1 lean --print-prefix)
+          judge_prefix=$(elan run leanprover/lean4:v4.36.0 lean --print-prefix)
+          printf 'DW_SOURCE_PREFIX=%s\nDW_JUDGE_PREFIX=%s\n' "$source_prefix" "$judge_prefix" >> "$GITHUB_ENV"
+          python3 -B "$here/run.py" bootstrap-tools --work "$DW_WORK/tools" \
+            --source-prefix "$source_prefix" --out "$DW_WORK/tool-evidence"
+          exporter="$DW_WORK/tools/lean4export/.lake/build/bin/lean4export"
+          printf 'DW_EXPORTER=%s\n' "$exporter" >> "$GITHUB_ENV"
+          (cd "$DW_WORK/stage" && lake exe mathlib/cache get)
+          python3 -B "$here/run.py" prepare-challenge --work "$DW_WORK/challenge" \
+            --source-prefix "$source_prefix" --exporter "$exporter" --out "$DW_WORK/challenge-evidence"
+          python3 -B "$here/run.py" checker-preflight --stage "$DW_WORK/stage" \
+            --source "$DW_WORK/source.json" --source-prefix "$source_prefix" --judge-prefix "$judge_prefix" \
+            --exporter "$exporter" --work "$DW_WORK/preflight" --out "$DW_WORK/evidence/checker-preflight"
+      - name: Compile and audit the original arithmetic supplier
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B verification/direct-arithmetic-window/run.py supplier-frontier \
+            --stage "$DW_WORK/stage" --source "$DW_WORK/source.json" --source-prefix "$DW_SOURCE_PREFIX" \
+            --jobs "$LEAN_NUM_THREADS" --out "$DW_WORK/evidence/supplier-frontier"
+      - name: Compile and audit the exact common terminal
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B verification/direct-arithmetic-window/run.py common-terminal \
+            --stage "$DW_WORK/stage" --source "$DW_WORK/source.json" --source-prefix "$DW_SOURCE_PREFIX" \
+            --jobs "$LEAN_NUM_THREADS" --out "$DW_WORK/evidence/common-terminal"
+      - name: Export afresh and require Lean default, Lean paranoid, and Nanoda
+        shell: bash
+        run: |
+          set -euo pipefail
+          here=verification/direct-arithmetic-window
+          python3 -B "$here/run.py" independent-replay --stage "$DW_WORK/stage" --source "$DW_WORK/source.json" \
+            --source-prefix "$DW_SOURCE_PREFIX" --judge-prefix "$DW_JUDGE_PREFIX" --exporter "$DW_EXPORTER" \
+            --challenge-export "$DW_WORK/challenge-evidence/challenge.export" --export-directory "$DW_EXPORTS" \
+            --out "$DW_WORK/evidence/independent-replay"
+          python3 -B "$here/run.py" alternate-checker --stage "$DW_WORK/stage" --source "$DW_WORK/source.json" \
+            --independent-evidence "$DW_WORK/evidence/independent-replay" --out "$DW_WORK/evidence/alternate-checker"
+      - name: Accept only the complete same-head evidence set
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B verification/direct-arithmetic-window/evidence.py aggregate "$DW_WORK/evidence" \
+            --output "$DW_WORK/evidence/acceptance.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: direct-window-full-${{ github.run_attempt }}
+          path: ${{ env.DW_WORK }}/evidence
+          if-no-files-found: error
+          compression-level: 9
+          retention-days: 90
+
+  report-scope:
+    name: Report actual verification scope
+    if: always()
+    needs: [source-lock, native-frontier, checker-preflight, full-verification]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Distinguish narrow checks from complete acceptance
+        env:
+          SOURCE_RESULT: ${{ needs.source-lock.result }}
+          NATIVE_RESULT: ${{ needs.native-frontier.result }}
+          CHECKER_RESULT: ${{ needs.checker-preflight.result }}
+          FULL_RESULT: ${{ needs.full-verification.result }}
+          FULL_REQUESTED: >-
+            ${{ (github.event_name == 'workflow_dispatch' && inputs.full_verification) ||
+                (github.event_name == 'pull_request' && github.repository == 'HMarcusWH/zeta-23-lean' &&
+                 github.event.pull_request.head.repo.full_name == 'HMarcusWH/zeta-23-lean' &&
+                 github.event.pull_request.head.ref == 'research/direct-arithmetic-window-20261128' &&
+                 contains(github.event.pull_request.labels.*.name, 'direct-window-full-verification')) }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf 'Source checks: %s\nNative frontier: %s\nChecker preflight: %s\nFull verification: %s\n' \
+            "$SOURCE_RESULT" "$NATIVE_RESULT" "$CHECKER_RESULT" "$FULL_RESULT" >> "$GITHUB_STEP_SUMMARY"
+          test "$SOURCE_RESULT" = success
+          test "$NATIVE_RESULT" = success
+          test "$CHECKER_RESULT" = success
+          if [[ "$FULL_REQUESTED" == true ]]; then
+            test "$FULL_RESULT" = success
+            echo 'Complete acceptance requires the uploaded acceptance.json for this head and run.' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'NO TERMINAL ACCEPTANCE: full original supplier and independent checking were not requested.' >> "$GITHUB_STEP_SUMMARY"
+          fi

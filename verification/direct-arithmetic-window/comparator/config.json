@@ -1,0 +1,10 @@
+{
+  "challenge_module": "DirectWindowChallenge",
+  "solution_module": "DirectWindowSolution",
+  "theorem_names": ["direct_window_rh"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "external_kernels": {
+    "Lean paranoid": ["leanchecker-paranoid", "--silent", "--from-export"],
+    "nanoda": ["nanoda_bin"]
+  }
+}

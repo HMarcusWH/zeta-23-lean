@@ -36,6 +36,42 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
+      "id": "direct_arithmetic_window_mathematics",
+      "pattern": "\\A(?:Zeta23/RHReference/CofinalEnergyClosure\\.lean|Zeta23/RHReference/DirectWindowAdapter\\.lean|Zeta23/RHReference/DirectWindowContract\\.lean|Zeta23/RHReference/DirectWindowEnergy\\.lean|Zeta23/RHReference/DirectWindowSource\\.lean|Zeta23WindowArithmetic/PrincipalNormalization\\.lean|Zeta23WindowArithmetic/PrincipalWindowSupply\\.lean|Zeta23WindowArithmetic/ProvedInputs\\.lean|Zeta23WindowArithmetic/WindowExtraction\\.lean)\\Z",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "id": "direct_arithmetic_window_checker_inputs",
+      "pattern": "\\A(?:verification/direct\\-arithmetic\\-window/AuditCore\\.lean|verification/direct\\-arithmetic\\-window/AuditNative\\.lean|verification/direct\\-arithmetic\\-window/AuditSmoke\\.lean|verification/direct\\-arithmetic\\-window/AuditSupplier\\.lean|verification/direct\\-arithmetic\\-window/AuditTerminal\\.lean|verification/direct\\-arithmetic\\-window/Expected\\.lean|verification/direct\\-arithmetic\\-window/SmokeFixtures\\.lean|verification/direct\\-arithmetic\\-window/comparator/DirectWindowChallenge\\.lean|verification/direct\\-arithmetic\\-window/comparator/DirectWindowSolution\\.lean)\\Z",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "direct_arithmetic_window_tools",
+      "pattern": "\\A(?:research/RHRC/integration/documentation_combined/direct_window_scope\\.py|research/RHRC/integration/documentation_combined/test_direct_window_scope\\.py|verification/direct\\-arithmetic\\-window/acquire\\.sh|verification/direct\\-arithmetic\\-window/cleanup_completed\\.py|verification/direct\\-arithmetic\\-window/controls\\.py|verification/direct\\-arithmetic\\-window/evidence\\.py|verification/direct\\-arithmetic\\-window/run\\.py|verification/direct\\-arithmetic\\-window/stage\\.py)\\Z",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "direct_arithmetic_window_manifests",
+      "pattern": "\\A(?:research/RHRC/integration/documentation_combined/DIRECT_WINDOW_SCOPE\\.json|verification/direct\\-arithmetic\\-window/COMPATIBILITY\\.json|verification/direct\\-arithmetic\\-window/OWNERSHIP\\.json|verification/direct\\-arithmetic\\-window/ROOTS\\.json|verification/direct\\-arithmetic\\-window/SOURCE_LOCK\\.json|verification/direct\\-arithmetic\\-window/comparator/config\\.json|verification/direct\\-arithmetic\\-window/epoch\\-lean\\-4\\.33\\.1/lake\\-manifest\\.json|verification/direct\\-arithmetic\\-window/epoch\\-lean\\-4\\.33\\.1/lakefile\\.toml|verification/direct\\-arithmetic\\-window/epoch\\-lean\\-4\\.33\\.1/lean\\-toolchain)\\Z",
+      "file_class": "EXTERNAL_SOURCE_MANIFEST",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "direct_arithmetic_window_documentation",
+      "pattern": "\\A(?:docs/direct\\-arithmetic\\-window\\.md|verification/direct\\-arithmetic\\-window/README\\.md)\\Z",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "direct_arithmetic_window_workflow",
+      "pattern": "\\A(?:\\.github/workflows/direct\\-arithmetic\\-window\\-review\\.yml)\\Z",
+      "file_class": "CI_WORKFLOW",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "research_archive_2026_11_26_papers",
       "pattern": "\\A(?:papers/2026\\-11\\-26/Paper_XXIV_Exact_Native_Mobius_Hyperbola_Discrete_Hankel_Criteria_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXIX_Signed_Mobius_Survivor_Energies_Opposed_Parity_Stopping_Covers_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXVIII_Exact_Moment_Slice_Parity_Sequences_Cofinal_RH_Criteria_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXXII_Principal_Character_Arithmetic_Supply_Terminal_Composition_v0_2_PROOFREAD_CANDIDATE\\.pdf|papers/2026\\-11\\-26/Paper_XXXI_Both_Parity_Power_Comparison_Cofinal_Moment_Slice_Closure_v0_2_PROOFREAD\\.pdf|papers/2026\\-11\\-26/Paper_XXX_Literal_Prime_Ramp_Normalization_Positive_Energy_Localization_v0_2_PROOFREAD\\.pdf)\\Z",
       "file_class": "RESEARCH_FIXTURE",

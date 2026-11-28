@@ -1,0 +1,77 @@
+name = "DirectArithmeticWindow"
+srcDir = "."
+defaultTargets = ["Zeta23.RHReference.DirectWindowAdapter"]
+moreLeanArgs = ["--tstack=400000"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+maxSynthPendingDepth = 3
+pp.unicode.fun = true
+maxHeartbeats = 4000000
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "0df444a360eaa60ab8c11dca51a86af692955474"
+
+[[lean_lib]]
+name = "BuildAid"
+globs = ["BuildAid.+"]
+
+[[lean_lib]]
+name = "CompanionTheory"
+globs = ["CompanionTheory.+"]
+
+[[lean_lib]]
+name = "Development"
+globs = ["Development.+"]
+
+[[lean_lib]]
+name = "Formalism"
+globs = ["Formalism.+"]
+
+[[lean_lib]]
+name = "GroundTheory"
+globs = ["GroundTheory.ArithmeticGeometry.+", "GroundTheory.AutomorphicForms.+", "GroundTheory.Brauer.+", "GroundTheory.FunctionField.+", "GroundTheory.HeightsAndTheta.+", "GroundTheory.IdeleRoots.+", "GroundTheory.PAdicHodge.+", "GroundTheory.PowerSubgroups.+", "GroundTheory.ProfiniteCohomology.+", "GroundTheory.TateCohomology.+"]
+
+[[lean_lib]]
+name = "GroundTheoryFields"
+globs = ["GroundTheory.LocalFields.+", "GroundTheory.GlobalFields.+"]
+leanOptions = {synthInstance.maxHeartbeats = 400000}
+
+[[lean_lib]]
+name = "Lemmata"
+globs = ["Lemmata.+"]
+
+[[lean_lib]]
+name = "PositivityTheory"
+globs = ["PositivityTheory.+"]
+
+[[lean_lib]]
+name = "ReciprocityTheory"
+globs = ["ReciprocityTheory.+"]
+
+[[lean_lib]]
+name = "Supplements"
+globs = ["Supplements.+"]
+
+
+
+# Native proof code keeps its source library options. Original libraries above
+# keep their original options, including the GroundTheoryFields budget.
+[[lean_lib]]
+name = "Zeta23"
+globs = ["Zeta23.+"]
+leanOptions = {autoImplicit = true, relaxedAutoImplicit = false, maxHeartbeats = 800000}
+
+[[lean_lib]]
+name = "Zeta23WindowArithmetic"
+globs = ["Zeta23WindowArithmetic.+"]
+
+[[lean_lib]]
+name = "DirectWindowAudit"
+globs = ["DirectWindowAudit.+"]
+
+[[lean_lib]]
+name = "DirectWindowSolution"

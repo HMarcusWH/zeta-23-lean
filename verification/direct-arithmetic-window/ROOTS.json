@@ -1,0 +1,77 @@
+{
+  "schema": "DIRECT_WINDOW_ROOTS_V1",
+  "roots": [
+    {
+      "name": "Zeta23WindowArithmetic.principal_original_windows",
+      "role": "supplier",
+      "phase": "supplier-frontier",
+      "exact_type": null,
+      "required": [
+        "Zeta23WindowArithmetic.arithmeticInputs",
+        "Zeta23WindowArithmetic.principal_level_kept",
+        "Zeta23WindowArithmetic.principal_level_gm_eq_Gz",
+        "Zeta23WindowArithmetic.principal_original_windows_of_inputs",
+        "UpperTheory.Comparison\u2082.level_gm_le_on_family_scales",
+        "UpperTheory.Gal.Int.galoisLocalGlobalStrong_recParameter",
+        "UpperTheory.Zero.LLC.recTExists"
+      ]
+    },
+    {
+      "name": "Zeta23WindowArithmetic.principal_level_gm_eq_Gz",
+      "role": "supplier",
+      "phase": "native-frontier",
+      "exact_type": null,
+      "required": [
+        "Zeta23WindowArithmetic.principal_level_kept"
+      ]
+    },
+    {
+      "name": "Zeta23.RHReference.c1_of_direct_windows",
+      "role": "native",
+      "phase": "native-frontier",
+      "exact_type": null,
+      "required": [
+        "Zeta23.RHReference.literal_energy_le_of_window",
+        "Zeta23.RHReference.cofinal_energy_upper_of_windows",
+        "Zeta23.RHReference.cofinal_normalized_energy_of_power_upper",
+        "Zeta23.RHReference.c1_of_cofinal_normalized_energy",
+        "Zeta23.OPICATerminal.bothParityPowerComparison_proved",
+        "Deduction.landau_window",
+        "Deduction.poleData"
+      ]
+    },
+    {
+      "name": "Zeta23.RHReference.riemannHypothesis_of_c1_through_generated_pair",
+      "role": "native",
+      "phase": "native-frontier",
+      "exact_type": null,
+      "required": [
+        "Zeta23.RHReference.generated_pair_excludes_c1",
+        "Zeta23.RHReference.generated_pair_eventually_refutes_slice_bounds",
+        "Zeta23.ExceptionalZero.exists_generatedStep123CompleteOutput"
+      ]
+    },
+    {
+      "name": "Zeta23.RHReference.riemannHypothesis_direct_arithmetic_windows",
+      "role": "terminal",
+      "phase": "common-terminal",
+      "exact_type": "RiemannHypothesis",
+      "required": [
+        "Zeta23WindowArithmetic.principal_original_windows",
+        "Zeta23WindowArithmetic.arithmeticInputs",
+        "Zeta23WindowArithmetic.principal_level_gm_eq_Gz",
+        "Zeta23.RHReference.originalGz_eq_literalG",
+        "Zeta23.RHReference.principal_literal_windows",
+        "Zeta23.RHReference.literal_energy_le_of_window",
+        "Zeta23.RHReference.cofinal_energy_upper_of_windows",
+        "Zeta23.RHReference.cofinal_normalized_energy_of_power_upper",
+        "Zeta23.RHReference.c1_of_cofinal_normalized_energy",
+        "Zeta23.RHReference.c1_of_direct_windows",
+        "Zeta23.RHReference.riemannHypothesis_of_c1_through_generated_pair",
+        "Zeta23.RHReference.generated_pair_excludes_c1",
+        "Zeta23.RHReference.generated_pair_eventually_refutes_slice_bounds",
+        "Zeta23.OPICATerminal.bothParityPowerComparison_proved"
+      ]
+    }
+  ]
+}

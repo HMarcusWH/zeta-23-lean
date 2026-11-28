@@ -1447,7 +1447,16 @@
     "Zeta23Arithmetic.New.TwistedHecke.InterlacingCone": "UPSTREAM_DERIVED_STANDALONE",
     "Zeta23Arithmetic.New.TwistedHecke.RootLemma": "UPSTREAM_DERIVED_STANDALONE",
     "Zeta23Arithmetic.New.TwistedHecke.TwistingData": "UPSTREAM_DERIVED_STANDALONE",
-    "Zeta23Arithmetic.New.Weil.FockCoeffDecay": "UPSTREAM_DERIVED_STANDALONE"
+    "Zeta23Arithmetic.New.Weil.FockCoeffDecay": "UPSTREAM_DERIVED_STANDALONE",
+    "Zeta23WindowArithmetic.ProvedInputs": "DIRECT_ARITHMETIC_WINDOW_PROVED_INPUTS",
+    "Zeta23WindowArithmetic.PrincipalNormalization": "DIRECT_ARITHMETIC_WINDOW_PRINCIPAL_NORMALIZATION",
+    "Zeta23WindowArithmetic.WindowExtraction": "DIRECT_ARITHMETIC_WINDOW_EXTRACTION",
+    "Zeta23WindowArithmetic.PrincipalWindowSupply": "DIRECT_ARITHMETIC_WINDOW_SUPPLIER",
+    "Zeta23.RHReference.DirectWindowContract": "DIRECT_ARITHMETIC_WINDOW_CONTRACT",
+    "Zeta23.RHReference.DirectWindowSource": "DIRECT_ARITHMETIC_WINDOW_LITERAL_NORMALIZATION",
+    "Zeta23.RHReference.DirectWindowEnergy": "DIRECT_ARITHMETIC_WINDOW_ENERGY_TRANSFER",
+    "Zeta23.RHReference.CofinalEnergyClosure": "DIRECT_ARITHMETIC_WINDOW_COFINAL_CONSUMER",
+    "Zeta23.RHReference.DirectWindowAdapter": "DIRECT_ARITHMETIC_WINDOW_TERMINAL_SOURCE"
   },
   "reachable_module_roles": {
     "Zeta23.CCM.CanonicalCompressedApertureC2": "CONTACT_CALCULUS_FORMAL_SUPPORT",

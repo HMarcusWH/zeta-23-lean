@@ -338,6 +338,22 @@ def documentation_epoch(repo):
                                     strict_main + '^{commit}'], env=env, check=False,
                                    stderr=subprocess.DEVNULL, timeout=120)
         if available.returncode == 0 and includes(strict_main):
+            direct_base = '3aefdaa46a4a16c5fd9978b9cf65b251c38ca2c1'
+            direct_available = subprocess.run(['git', '-C', str(repo), 'cat-file', '-e',
+                                               direct_base + '^{commit}'], env=env, check=False,
+                                              stderr=subprocess.DEVNULL, timeout=120)
+            if direct_available.returncode == 0 and includes(direct_base):
+                # Preserve the new epoch even if a later commit removes its
+                # policy. A file-presence selector would allow that removal to
+                # fall back to a historical validator.
+                direct_history = subprocess.run(
+                    ['git', '-C', str(repo), 'log', '--format=%H', '--diff-filter=A',
+                     direct_base + '..HEAD', '--',
+                     'research/RHRC/integration/documentation_combined/DIRECT_WINDOW_SCOPE.json'],
+                    env=env, check=False, stdout=subprocess.PIPE, timeout=120)
+                require(direct_history.returncode == 0, 'Cannot authenticate direct-window source introduction')
+                if direct_history.stdout.strip():
+                    return 'direct-window'
             return 'strict-integration'
         return 'combined'
     if registration:
@@ -347,7 +363,9 @@ def documentation_epoch(repo):
 
 def validate_descendant(repo, *, require_clean=False):
     epoch = documentation_epoch(repo)
-    if epoch == 'strict-integration':
+    if epoch == 'direct-window':
+        from ..documentation_combined.direct_window_scope import validate_descendant as original
+    elif epoch == 'strict-integration':
         from ..documentation_combined.strict_scope import validate_descendant as original
     elif epoch == 'combined':
         from ..documentation_combined.source_scope import validate_descendant as original
@@ -361,6 +379,9 @@ def validate_descendant(repo, *, require_clean=False):
 
 
 def classification_command(source):
+    if source.get('schema') == 'RHRC_DIRECT_WINDOW_SOURCE_INSPECTION_V1':
+        return [sys.executable, '-B', '-m',
+                'research.RHRC.integration.documentation_combined.direct_window_scope', '--check-classification']
     if source.get('schema') == 'RHRC_STRICT_MAIN_SOURCE_INSPECTION_V1':
         return [sys.executable, '-B', '-m',
                 'research.RHRC.integration.documentation_combined.strict_scope', '--check-classification']

@@ -1,0 +1,221 @@
+{
+  "schema": "DIRECT_WINDOW_OWNERSHIP_V1",
+  "owners": [
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.CharFamily",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.CharFamily",
+      "native_sha256": "38fa6af5a051a0fa5285a460c2e83ca1be8dbd608cc845b4b95a3f8f52fbe9a4",
+      "original_sha256": "ca0ca8acb80ff4ffc36896204650f9ca16167193a22c36a140402b27cfc8c336",
+      "relation": "original_superset",
+      "reason": "Native body is the original body with only the ZeroFree proposition definition omitted. Original owns identical shared declarations."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.CharFamilyLFunctionNeZeroOfOneLeRe",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.CharFamilyLFunctionNeZeroOfOneLeRe",
+      "native_sha256": "8b327dc37fdb26f30cd369998fb1770cbd12626003d0d5026fadada1896e9488",
+      "original_sha256": "bd25dd6f7b19d2683b3cb937b3cca4edfe798a492e3dcedeade371f0e3ff48b3",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.GchiConj",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.GchiConj",
+      "native_sha256": "bd4f587290101f708b1dbae4f19e1753155069a1a3d6cea484836cc6f261feb5",
+      "original_sha256": "88a3897329c8a53bd97aaa46b1235bbf3e1d1a8a4b5281f44cc7399c20a4c37e",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.GchiGrowth",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.GchiGrowth",
+      "native_sha256": "5017af0c6678f4aa492375fc966793cb42149dc3f893926f98b2539629a5184f",
+      "original_sha256": "3943c2eba98d5ed2a2e521f4a1986281a8e031f9319e2acc3160de6d521db02e",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.IteratedDerivLaplace",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.IteratedDerivLaplace",
+      "native_sha256": "6030368e9aceafbbd0bb250a8a9f1cb343a7141e77720a2a0fffa1d95b62087d",
+      "original_sha256": "3beee9b6dbdb25ae9e3c6fecb83e21cfee34c01e2065b5c5c383ce725f85189b",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.LFunctionConj",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LFunctionConj",
+      "native_sha256": "eb694ab7677aa9563c78dc54bd78633e0f90eb29d3316f44c54bc4fed9141b48",
+      "original_sha256": "913ec01ca1654d6ba1281693c8f52ee63a1437f0fcac4c139d9db6f7eb0e1862",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.LandauCauchy",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauCauchy",
+      "native_sha256": "7c833f418e6ea15d73b8a3d8c39fbf7792dde8b3c0a47fb6d0c99c83e8f1bc5e",
+      "original_sha256": "fdd3d3cdebfe075a825bd3249713b362daef806e79e4a10341cdc1104a023b39",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.LandauCoeff",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauCoeff",
+      "native_sha256": "7dda1332d03def3789441d987f6f5395524c239e7bbfc3d757d00c9eac281806",
+      "original_sha256": "e8bd6a4a51c2299ccdd213fd7b99a67c7a2968b14cd8752cf15ab3aa14874543",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.LandauDichotomy",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauDichotomy",
+      "native_sha256": "3571b41b59a55f247303dc758f45673e4437b89231e54a76b79d59cb6e7ff025",
+      "original_sha256": "f358ff8aecbe34019afe20224ae9a5890c99d55f6b6f7d838c1277e3b1d255ad",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.LandauFinite",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauFinite",
+      "native_sha256": "b94f18049af2d7276ccaecf1c0dd0ee3f7df678c1c72c628e9be60b3acba82f8",
+      "original_sha256": "1c24afcda94b779f176b3e46a2cad08e32414bd41aeee9d890e187391479129a",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.LandauGrowthContra",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauGrowthContra",
+      "native_sha256": "a03ff22640099dcbba1621ef9df237d24eb9909ed19a8dcccb8f981efb8ad1f2",
+      "original_sha256": "2f3e6d7a5d2e7b1cf2b0b92c82f50b2ebb661ab8fb519092795fcade18f88df5",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.LandauKernelMax",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauKernelMax",
+      "native_sha256": "4cb82f3cd10bbe3f37b9e88d31b3df5e9ffb47cc49ff779c2620f23a9140de1f",
+      "original_sha256": "9fe6836f5bbab547e0b1d154ad4133a0b0d6aaf9ba8cde93b6310a49d5dd5259",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.LandauNearest",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauNearest",
+      "native_sha256": "3a7373ee12c6ae6e7d57da0b54f0f84a22f76912d8576e10a0a45a4047845957",
+      "original_sha256": "ae084dbb3f161d2dd369ff224f2117b818243b501ca596d3da2c92d83b65a67c",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.LandauPoleAsym",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauPoleAsym",
+      "native_sha256": "f5d3e024830b5fab6955e9493a99ccdbff1c00ef8f9ec195dcaea86797db2314",
+      "original_sha256": "c70dba4115698a4ee22654f0aaf213b886afe28a2d1d44a8e4370aec72fc3944",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.LandauPoleReLe",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauPoleReLe",
+      "native_sha256": "90310ac96ee10107fe8a659e6fe2c3bea206e16a8c43834f5fb9b25ee0de1949",
+      "original_sha256": "da3615e42c27329c6b8ba7e948cba526d86b45c423225c8c111946cf409ef2ef",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.LogDerivLocal",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LogDerivLocal",
+      "native_sha256": "861d7e7c1771c1509a2093d543f345444961c4e3ecea6b44184d0fefbfc0d819",
+      "original_sha256": "5b7228c12addef3e12bc5665819fccaf5bdc9845bf29578614e7cfa409a515b0",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.MellinRamp",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.MellinRamp",
+      "native_sha256": "4330b2d99950b50c88ef4509498a387e0310e8aa109fdb5fcf3c542799c7e825",
+      "original_sha256": "b3a4ff30ab74518685987e24c0617626b0ef698f1bae8ffa73dab3bc6944e948",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.WindowHypUOfWindowHyp",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.WindowHypUOfWindowHyp",
+      "native_sha256": "2fd5b4943b46200d86434d676aa634bc3ef44d5919a0b973f63b30d81bf24efe",
+      "original_sha256": "2e4ac8197f1fda900ba710cef10627ebd0576d2bc4207d919f0a8a769ba13c98",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.kernelIntegral",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.kernelIntegral",
+      "native_sha256": "b8febe19d2dfc558df047754dca2a0662435eaf98573ec2496b568808a7914e7",
+      "original_sha256": "b487d899307a350276d6c5fa1be392104f912a6ccd3e32f426828d7421030502",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.landauTails",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauTails",
+      "native_sha256": "1e2f0f4ee566f7b74c4c22dee23fb7ce23189cacef8bdf3f7811e7e353e0289f",
+      "original_sha256": "5700277144d95eea3d90d3d4e2efa3743c3d892753ed41ed27f6f38a2e92708c",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.landauWindow",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauWindow",
+      "native_sha256": "0bcb6acb533b9b0326db9dc80429211617834cbf5d0f704339b2d7ef37c9e896",
+      "original_sha256": "57f49606e6ffd8cab45672d8d4b9c7ded6c0b6b0d140821cc51b5baeb4f67ab5",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.landauWindowIneq",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauWindowIneq",
+      "native_sha256": "556b6f59e3f20cf41fe1c11e801b8480d807cf6de619f86c1db6f62cef6328d6",
+      "original_sha256": "e3d5d760bcefe1242d4f5b0ced44fc055f1fa8dfe048a2222cf2c39ae812e59c",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.measurableGchi",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.measurableGchi",
+      "native_sha256": "e5eab411d968830aafaaa5e1d29a30f1cbbb691346d3eac8c9e20a5e542f03ae",
+      "original_sha256": "4838a8a6154d8fa0fb87a4008feeb663bca977cdc66fcdb16b6294e3177d5e4b",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.mellinGchiModOne",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiModOne",
+      "native_sha256": "368dc60bf692d35beb80fc570a5130974aa98f50f4ed3639fc52324a59094f70",
+      "original_sha256": "57054bee6a57d89958d6a4d862f74083e68afea8ce0af701b49881e2043767c5",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.mellinGchiOfNeOne",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiOfNeOne",
+      "native_sha256": "e0e38a41be1ca569636c90f47b04bc3b3ac1dbb9ff869c94b21550ec3b06c0d5",
+      "original_sha256": "22192caa33f0e9b840298329573ca3ea15e3e5d9e60624efcda3562f8ddff26a",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauTheorems.poleData",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.poleData",
+      "native_sha256": "0c31357349b484f26baf3523382a8794a02e07841bf498b67f46a91beabf553d",
+      "original_sha256": "78fb8ae795a01ad687440b035c377a9fde71088c726d1ac862ba0fd8bb1fc3c0",
+      "relation": "identical_modulo_imports",
+      "reason": "Original source is authoritative; native duplicate is replaced only in the isolated staged environment."
+    },
+    {
+      "native_module": "Zeta23.OPICATerminal.Analytic.LandauZeroFreeCriterion",
+      "original_module": "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion",
+      "native_sha256": "97f6936bf46c55111cbbec4afbaf338d3b2f6d5e0795aec51b02fb64a17a65db",
+      "original_sha256": "d4c5a8ba961bb0e91121212b697217904bf0ba56c2e89c00435fb7ee416a22d7",
+      "relation": "original_superset",
+      "reason": "Native body retains the original declarations before famD; original additionally defines famD, GmLevel, ZeroFreeAbove, and LandauZeroFreeCriterion. Shared declarations are unchanged."
+    }
+  ]
+}

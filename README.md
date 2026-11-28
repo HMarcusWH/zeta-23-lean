@@ -19,6 +19,17 @@ The repository also contains finite detectors, exact spectral and arithmetic
 identities, causal approximation tools, conditional criteria, counterexamples,
 and a formal research framework. Many of these results can be used independently.
 
+## Direct arithmetic-window candidate
+
+A new [direct-window route](docs/direct-arithmetic-window.md) extracts complete
+cofinal arithmetic windows from the original Alpöge development before its
+zero-exclusion consumer. It feeds those windows into the native literal energy,
+C1, and the actual generated even/odd trial contradiction. The implementation
+and its [separate verification workflow](verification/direct-arithmetic-window/README.md)
+are under validation; this new terminal has no completed independent-checker
+receipt yet. The checked compact/Perron route and its receipts above retain
+their existing scope.
+
 ## Choose a reading route
 
 | I want to… | Start here | Continue with |

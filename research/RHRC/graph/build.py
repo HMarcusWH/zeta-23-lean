@@ -342,6 +342,13 @@ def declaration_id(declaration: str) -> str:
 def module_name(path: str) -> str:
     if path == "Zeta23.lean":
         return "Zeta23"
+    if path in {
+        "Zeta23WindowArithmetic/ProvedInputs.lean",
+        "Zeta23WindowArithmetic/PrincipalNormalization.lean",
+        "Zeta23WindowArithmetic/WindowExtraction.lean",
+        "Zeta23WindowArithmetic/PrincipalWindowSupply.lean",
+    }:
+        return path[:-5].replace("/", ".")
     if path.startswith(("Zeta23/", "Zeta23Arithmetic/")) and path.endswith(".lean"):
         return path[:-5].replace("/", ".")
     if path.startswith("comparator/") and path.endswith(".lean"):
