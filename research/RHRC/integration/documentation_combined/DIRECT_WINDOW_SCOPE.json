@@ -35,7 +35,7 @@
     "verification/direct-arithmetic-window/comparator/DirectWindowChallenge.lean": "f5fe7f6c94b1bd7250306e4832b4091d04ffb95d",
     "verification/direct-arithmetic-window/comparator/DirectWindowSolution.lean": "772f20c077b018238a143a29687b69f28ee19650",
     "verification/direct-arithmetic-window/comparator/config.json": "8dca048520f9a7ef29913a0b0e5d36125b29d356",
-    "verification/direct-arithmetic-window/controls.py": "0c82fefd30a8c03fd1c8cc9b1f03c1794fe5a8ee",
+    "verification/direct-arithmetic-window/controls.py": "a59a08437ef690a8facfe4c775890a95e689ba9d",
     "verification/direct-arithmetic-window/epoch-lean-4.33.1/lake-manifest.json": "d54993c7f3e90958194496a58804a5452305a503",
     "verification/direct-arithmetic-window/epoch-lean-4.33.1/lakefile.toml": "a6f12c205b9c4d225a1dad8fa6e920dbc4713a24",
     "verification/direct-arithmetic-window/epoch-lean-4.33.1/lean-toolchain": "a8afa7d1b02d96f0671eba854a8dc4b416beb473",

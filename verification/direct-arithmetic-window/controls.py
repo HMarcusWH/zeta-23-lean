@@ -49,6 +49,16 @@ def tamper_export(source, target, theorem):
     stage.require(count == 1, "tamper control did not find exactly one target theorem")
 
 
+def validate_tampered_rejection(text, exit_code):
+    stage.require(exit_code != 0, "tampered proof unexpectedly accepted")
+    # Official Nanoda reports this assertion for the observed type mismatch.
+    # A generic panic or a missing declaration is not the intended rejection.
+    pattern = r"mismatch|expected|typecheck|type check|assertion failed: self\.def_eq\(u, v\)"
+    stage.require(re.search(pattern, text, re.I), "tampered proof failed for an unrelated reason")
+    for kernel in ("Lean default", "Lean paranoid", "nanoda"):
+        stage.require(kernel + " kernel rejected the solution" in text, "tampered proof not rejected by " + kernel)
+
+
 class SourceControls(unittest.TestCase):
     def test_imports_ignore_nested_comments(self):
         src = b'import A\n/- import Never\n/- import Nested -/\nimport this file.\n-/\nimport B C -- tail\n'
@@ -129,6 +139,29 @@ class SourceControls(unittest.TestCase):
         config["permitted_axioms"].append("Lean.trustCompiler")
         with self.assertRaisesRegex(ValueError, "axiom policy"):
             stage.comparator_export_command("lake", "exporter", "PreflightSolution", config)
+
+    def test_observed_nanoda_type_rejection(self):
+        observed = """Running Lean paranoid kernel on solution
+Lean paranoid kernel rejected the solution
+Running nanoda kernel on solution
+thread 'thread_2' (5) panicked at src/tc.rs:955:71:
+assertion failed: self.def_eq(u, v)
+thread 'main' (2) panicked at src/tc.rs:173:26:
+A thread in `check_all_declars` panicked while being joined: Any { .. }
+nanoda kernel rejected the solution
+Running Lean default kernel on solution
+error: Lean paranoid exited with 1
+Lean default kernel rejected the solution
+"""
+        validate_tampered_rejection(observed, 1)
+        unrelated = observed.replace("assertion failed: self.def_eq(u, v)",
+                                     "declaration not found in infer_const, Lean.trustCompiler")
+        with self.assertRaisesRegex(ValueError, "unrelated reason"):
+            validate_tampered_rejection(unrelated, 101)
+        with self.assertRaisesRegex(ValueError, "not rejected by nanoda"):
+            validate_tampered_rejection(observed.replace("nanoda kernel rejected the solution", ""), 1)
+        with self.assertRaisesRegex(ValueError, "unexpectedly accepted"):
+            validate_tampered_rejection(observed, 0)
 
     def test_changed_effective_source_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -249,10 +282,8 @@ def checker_controls(prefix, judge_prefix, exporter, work, out):
             stage.require("direct_window_extra_axiom" in text, "wrong axiom rejection")
         rejected.append(label)
     bad = work / "tampered.export"; tamper_export(clean_export, bad, "direct_window_preflight")
-    text, _ = judge_export(bad, "tampered-export", False)
-    stage.require(re.search(r"mismatch|expected|typecheck|type check", text, re.I), "tampered proof failed for an unrelated reason")
-    for kernel in ("Lean default", "Lean paranoid", "nanoda"):
-        stage.require(kernel + " kernel rejected the solution" in text, "tampered proof not rejected by " + kernel)
+    text, rc = judge_export(bad, "tampered-export", False)
+    validate_tampered_rejection(text, rc)
     rejected.append("tampered-export")
     (out / "preflight.json").write_text(json.dumps({"accepted_clean": True, "rejected": rejected,
         "source_version": source_version, "judge_version": judge_version, "exporter_commit": exporter_commit,
